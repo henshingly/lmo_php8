@@ -33,7 +33,7 @@ if((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()==
 <script type="text/javascript">
 <!--
  NS4 = (document.layers);
- if (NS4) { document.write('<link rel="stylesheet" href="nc.css" type="text/css">'); }
+ if (NS4) { document.write('<link rel="stylesheet" href="lmo-style-nc.css" type="text/css">'); }
   else { document.write('<link rel="stylesheet" href="lmo-style.css" type="text/css">'); }
 //-->
 </script>
@@ -45,8 +45,8 @@ setlocale(LC_TIME, "de_DE");
 $array = array();
 
 require_once("lmo-cfgload.php");
-if(isset($HTTP_GET_VARS["lmouserlang"])){$HTTP_SESSION_VARS["lmouserlang"]=$HTTP_GET_VARS["lmouserlang"];}
-if(isset($HTTP_SESSION_VARS["lmouserlang"])){$lmouserlang=$HTTP_SESSION_VARS["lmouserlang"];}else{$lmouserlang=$deflang;}
+if(isset($_GET["lmouserlang"])){$_SESSION["lmouserlang"]=$_GET["lmouserlang"];}
+if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
 require_once("lmo-langload.php");
 require_once("lmo-archiv.php");
 require_once("lmo-showdir.php");
@@ -84,7 +84,7 @@ elseif ($_REQUEST["action"] == "tipp")
 }
 else
 {
-  if($file=="")
+  if(!isset($file) || $file=="")
     {AuswahlLiga();}
   else
   {

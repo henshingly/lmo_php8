@@ -18,14 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-$lmouserok=0;
 session_start();
-session_register("lmouserok","lmousername","lmouserpass","lmouserfile");
-if(isset($HTTP_SESSION_VARS["lmouserok"])){$lmouserok=$HTTP_SESSION_VARS["lmouserok"];}
-if(isset($HTTP_SESSION_VARS["lmousername"])){$lmousername=$HTTP_SESSION_VARS["lmousername"];}
-if(isset($HTTP_SESSION_VARS["lmouserpass"])){$lmouserpass=$HTTP_SESSION_VARS["lmouserpass"];}
-if(isset($HTTP_SESSION_VARS["lmouserfile"])){$lmouserfile=$HTTP_SESSION_VARS["lmouserfile"];}
-if(($action=="admin") && ($todo=="download") && (($HTTP_SESSION_VARS["lmouserok"]==1) || ($HTTP_SESSION_VARS["lmouserok"]==2))){
+if(($action=="admin") && ($todo=="download") && (($_SESSION["lmouserok"]==1) || ($_SESSION["lmouserok"]==2))){
   if($down>0){
     require("lmo-cfgload.php");
     $ftype=".l98";

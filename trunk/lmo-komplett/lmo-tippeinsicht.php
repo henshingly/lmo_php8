@@ -44,7 +44,7 @@ if($file!="" && $todo=="einsicht" && $tippeinsicht==1){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP if($HTTP_SESSION_VARS["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text[2158];} ?></font>
+    <font color=black><?PHP if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text[2158];} ?></font>
   </td></tr>
 <?PHP if($einsichterst==1){ ?><tr><td class="lmost4" align="center"><?PHP echo $text[2220]." ".$text[2216]; ?></td></tr><?PHP } ?>
 <?PHP if($einsichterst==2){ ?><tr><td class="lmost4" align="center"><?PHP echo $text[2220]." ".$text[2217]; ?></td></tr><?PHP } ?>

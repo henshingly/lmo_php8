@@ -23,58 +23,58 @@ if($file!=""){
   require("lmo-openfile.php");
   if(!isset($save)){$save=0;}
   if($save==1){
-if($HTTP_SESSION_VARS['lmouserok']==2){
-    $titel=trim($HTTP_POST_VARS["xtitel"]);
+if($_SESSION['lmouserok']==2){
+    $titel=trim($_POST["xtitel"]);
     if($titel==""){$titel="No Name";}
   }
-    $favteam=trim($HTTP_POST_VARS["xfavteam"]);
-    $selteam=trim($HTTP_POST_VARS["xselteam"]);
+    $favteam=trim($_POST["xfavteam"]);
+    $selteam=trim($_POST["xselteam"]);
     if($lmtype==0){
-      $stat1=trim($HTTP_POST_VARS["xstat1"]);
-      $stat2=trim($HTTP_POST_VARS["xstat2"]);
+      $stat1=trim($_POST["xstat1"]);
+      $stat2=trim($_POST["xstat2"]);
       }
-if($lmouserok==2){
+if($_SESSION['lmouserok']==2){
     if($lmtype==0){
-      $minus=trim($HTTP_POST_VARS["xminus"]);
-      $spez=trim($HTTP_POST_VARS["xspez"]);
-      $hidr=trim($HTTP_POST_VARS["xhidr"]);
-      $onrun=trim($HTTP_POST_VARS["xonrun"]);
-      $direkt=trim($HTTP_POST_VARS["xdirekt"]);
-      $kegel=trim($HTTP_POST_VARS["xkegel"]);
-      $hands=trim($HTTP_POST_VARS["xhands"]);
-      $pns=trim($HTTP_POST_VARS["xpns"]);
-      $pnu=trim($HTTP_POST_VARS["xpnu"]);
-      $pnn=trim($HTTP_POST_VARS["xpnn"]);
-      $pxs=trim($HTTP_POST_VARS["xpxs"]);
-      $pxu=trim($HTTP_POST_VARS["xpxu"]);
-      $pxn=trim($HTTP_POST_VARS["xpxn"]);
-      $pps=trim($HTTP_POST_VARS["xpps"]);
-      $ppu=trim($HTTP_POST_VARS["xppu"]);
-      $ppn=trim($HTTP_POST_VARS["xppn"]);
-      $champ=trim($HTTP_POST_VARS["xchamp"]);
-      $anzcl=trim($HTTP_POST_VARS["xanzcl"]);
-      $anzck=trim($HTTP_POST_VARS["xanzck"]);
-      $anzuc=trim($HTTP_POST_VARS["xanzuc"]);
-      $anzar=trim($HTTP_POST_VARS["xanzar"]);
-      $anzab=trim($HTTP_POST_VARS["xanzab"]);
-      $namepkt=trim($HTTP_POST_VARS["xnamepkt"]);
+      $minus=trim($_POST["xminus"]);
+      $spez=trim($_POST["xspez"]);
+      $hidr=trim($_POST["xhidr"]);
+      $onrun=trim($_POST["xonrun"]);
+      $direkt=trim($_POST["xdirekt"]);
+      $kegel=trim($_POST["xkegel"]);
+      $hands=trim($_POST["xhands"]);
+      $pns=trim($_POST["xpns"]);
+      $pnu=trim($_POST["xpnu"]);
+      $pnn=trim($_POST["xpnn"]);
+      $pxs=trim($_POST["xpxs"]);
+      $pxu=trim($_POST["xpxu"]);
+      $pxn=trim($_POST["xpxn"]);
+      $pps=trim($_POST["xpps"]);
+      $ppu=trim($_POST["xppu"]);
+      $ppn=trim($_POST["xppn"]);
+      $champ=trim($_POST["xchamp"]);
+      $anzcl=trim($_POST["xanzcl"]);
+      $anzck=trim($_POST["xanzck"]);
+      $anzuc=trim($_POST["xanzuc"]);
+      $anzar=trim($_POST["xanzar"]);
+      $anzab=trim($_POST["xanzab"]);
+      $namepkt=trim($_POST["xnamepkt"]);
       if($namepkt==$orgpkt){$namepkt="";}
-      $nametor=trim($HTTP_POST_VARS["xnametor"]);
+      $nametor=trim($_POST["xnametor"]);
       if($nametor==$orgtor){$nametor="";}
-      $kurve=trim($HTTP_POST_VARS["xkurve"]);
-      $kreuz=trim($HTTP_POST_VARS["xkreuz"]);
+      $kurve=trim($_POST["xkurve"]);
+      $kreuz=trim($_POST["xkreuz"]);
       }
     else{
-      $klfin=trim($HTTP_POST_VARS["xklfin"]);
+      $klfin=trim($_POST["xklfin"]);
       }
-    $dats=trim($HTTP_POST_VARS["xdats"]);
-    $datm=trim($HTTP_POST_VARS["xdatm"]);
-    $datf=trim($HTTP_POST_VARS["xdatf"]);
-    $datc=trim($HTTP_POST_VARS["xdatc"]);
+    $dats=trim($_POST["xdats"]);
+    $datm=trim($_POST["xdatm"]);
+    $datf=trim($_POST["xdatf"]);
+    $datc=trim($_POST["xdatc"]);
     if(($dats==0) && ($datm==0)){$datc=0;}
-    $urlt=trim($HTTP_POST_VARS["xurlt"]);
+    $urlt=trim($_POST["xurlt"]);
   }
-    $urlb=trim($HTTP_POST_VARS["xurlb"]);
+    $urlb=trim($_POST["xurlb"]);
     require("lmo-savefile.php");
     }
   $addr=$PHP_SELF."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
@@ -88,7 +88,7 @@ if($lmouserok==2){
   for($i=1;$i<=$anzst;$i++){
     echo "<td align=\"right\" ";
     if($i<>$st){
-      echo "class=\"lmost0\"><a href=\"javascript:chklmolink('".$addr.$i."');\" title=\"".$text[9]."\">".$i."</a>";
+      echo "class=\"lmost0\"><a href='$addr$i' onclick=\"return chklmolink(this.href);\" title=\"".$text[9]."\">".$i."</a>";
       }
     else{
       echo "class=\"lmost1\">".$i;
@@ -116,7 +116,7 @@ if($lmouserok==2){
   <input type="hidden" name="save" value="1">
   <input type="hidden" name="file" value="<?PHP echo $file; ?>">
   <input type="hidden" name="st" value="<?PHP echo $st; ?>">
-<?PHP if($lmouserok==2){ ?>
+<?PHP if($_SESSION['lmouserok']==2){ ?>
   <tr>
     <td class="lmost4" colspan="3"><nobr><?PHP echo $text[183]; ?></nobr></td>
   </tr>
@@ -129,7 +129,7 @@ if($lmouserok==2){
   <tr>
     <td class="lmost4" colspan="3"><nobr><?PHP echo $text[264]; ?></nobr></td>
   </tr>
-<?PHP if($lmouserok==2){ ?>
+<?PHP if($_SESSION['lmouserok']==2){ ?>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[268] ?>"><?PHP echo $text[267]; ?></acronym></nobr></td>
@@ -163,7 +163,7 @@ if($lmouserok==2){
       </select>
     </acronym></td>
   </tr>
-<?PHP if($lmouserok==2){ ?>
+<?PHP if($_SESSION['lmouserok']==2){ ?>
   <tr>
     <td class="lmost4" colspan="3"><nobr><?PHP echo $text[250]; ?></nobr></td>
   </tr>
@@ -360,7 +360,7 @@ if($lmouserok==2){
       </select>
     </acronym></nobr></td>
   </tr>
-<?PHP if($lmouserok==2){ ?>
+<?PHP if($_SESSION['lmouserok']==2){ ?>
   <tr>
     <td class="lmost4" colspan="3"><nobr><?PHP echo $text[62]; ?></nobr></td>
   </tr>
@@ -602,7 +602,7 @@ if($lmouserok==2){
 <?PHP }} ?>
   <tr>
     <td class="lmost4" colspan="2">
-<?PHP if(($lmouserok==2) && ($lmtype==0)){echo "<a href=\"javascript:chklmolink('".$addr."-3');\" title=\"".$text[339]."\">".$text[338]."</a>";}else{echo "&nbsp;";} ?>
+<?PHP if(($_SESSION['lmouserok']==2) && ($lmtype==0)){echo "<a href='$addr-3' onclick=\"return chklmolink(this.href);\" title=\"".$text[339]."\">".$text[338]."</a>";}else{echo "&nbsp;";} ?>
     </td>
     <td class="lmost4" align="right">
       <acronym title="<?PHP echo $text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<?PHP echo $text[188]; ?>"></acronym>
@@ -614,12 +614,12 @@ if($lmouserok==2){
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  if($st!=-1){echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addr."-1');\" title=\"".$text[100]."\">".$text[99]."</a></td>";}
+  if($st!=-1){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-1' onclick=\"return chklmolink(this.href);\" title=\"".$text[100]."\">".$text[99]."</a></td>";}
     else{echo "<td class=\"lmost1\" align=\"center\">".$text[99]."</td>";}
-  if($hands==1){if($todo!="tabs"){echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addb.$stx."');\" title=\"".$text[409]."\">".$text[410]."</a></td>";}
+  if($hands==1){if($todo!="tabs"){echo "<td class=\"lmost2\" align=\"center\"><a href='$addb$stx' onclick=\"return chklmolink(this.href);\" title=\"".$text[409]."\">".$text[410]."</a></td>";}
     else{echo "<td class=\"lmost1\" align=\"center\">".$text[410]."</td>";}}
-if($lmouserok==2){
-  if($st!=-2){echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addr."-2');\" title=\"".$text[102]."\">".$text[101]."</a></td>";}
+if($_SESSION['lmouserok']==2){
+  if($st!=-2){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-2' onclick=\"return chklmolink(this.href);\" title=\"".$text[102]."\">".$text[101]."</a></td>";}
     else{echo "<td class=\"lmost1\" align=\"center\">".$text[101]."</td>";}
   }
 ?>

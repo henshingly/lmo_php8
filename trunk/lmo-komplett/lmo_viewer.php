@@ -27,8 +27,8 @@
 //= Normalerweise mÅssen und sollen nur dise beiden Dateien 			   =//
 //= verÑndert resp. angepasst werden.									   =//
 //////////////////////////////////////////////////////////////////////////////
-if (isset($HTTP_GET_VARS['multi']) && strpos($HTTP_GET_VARS['multi'],"http:")===FALSE) {
-	$multi=$HTTP_GET_VARS['multi'];
+if (isset($_GET['multi']) && strpos($_GET['multi'],"http:")===FALSE) {
+	$multi=$_GET['multi'];
 } else {
 	$multi="std.multi.inc.php";
 }

@@ -25,9 +25,9 @@
 if($file!="" && $tippfieber==1){
   if(!isset($save)){$save=0;}
   if($save==1){
-    $stat1=trim($HTTP_POST_VARS["xstat1"]);
-    $stat2=trim($HTTP_POST_VARS["xstat2"]);
-    $kurvenmodus=trim($HTTP_POST_VARS["xkurvenmodus"]);
+    $stat1=trim($_POST["xstat1"]);
+    $stat2=trim($_POST["xstat2"]);
+    $kurvenmodus=trim($_POST["xkurvenmodus"]);
     }
 
   if(!isset($eigpos)){$eigpos=0;}

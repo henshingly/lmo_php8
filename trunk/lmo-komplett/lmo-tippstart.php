@@ -25,11 +25,11 @@
 require_once("lmo-tipptest.php");
 
 session_register("lmotipperok","lmotippername","lmotipperpass","lmotipperverein");
-if(!isset($HTTP_SESSION_VARS["lmotipperok"])){$HTTP_SESSION_VARS["lmotipperok"]="0";}
-if(isset($HTTP_SESSION_VARS["lmotipperok"])){$lmotipperok=$HTTP_SESSION_VARS["lmotipperok"];}
-if(isset($HTTP_SESSION_VARS["lmotippername"])){$lmotippername=$HTTP_SESSION_VARS["lmotippername"];}
-if(isset($HTTP_SESSION_VARS["lmotipperpass"])){$lmotipperpass=$HTTP_SESSION_VARS["lmotipperpass"];}
-if(isset($HTTP_SESSION_VARS["lmotipperverein"])){$lmotipperverein=$HTTP_SESSION_VARS["lmotipperverein"];}
+if(!isset($_SESSION["lmotipperok"])){$_SESSION["lmotipperok"]="0";}
+if(isset($_SESSION["lmotipperok"])){$lmotipperok=$_SESSION["lmotipperok"];}
+if(isset($_SESSION["lmotippername"])){$lmotippername=$_SESSION["lmotippername"];}
+if(isset($_SESSION["lmotipperpass"])){$lmotipperpass=$_SESSION["lmotipperpass"];}
+if(isset($_SESSION["lmotipperverein"])){$lmotipperverein=$_SESSION["lmotipperverein"];}
 if(!isset($todo)){$todo="";}
 if(!isset($liga)){$liga="";}
 if(!isset($file)){$file="";}
@@ -41,23 +41,23 @@ if(!isset($endtab)){$endtab=0;}
 if(!isset($tippeinsicht)){$tippeinsicht=1;}
 if(!isset($jokertippmulti)){$jokertippmulti=2;}
 if($todo=="logout"){
-  $HTTP_SESSION_VARS["lmotipperok"]=0;
+  $_SESSION["lmotipperok"]=0;
   $lmotipperpass="";
   $lmotipperverein="";
   }
 if($todo=="newtipper"){
-  $HTTP_SESSION_VARS["lmotipperok"]=-4;
+  $_SESSION["lmotipperok"]=-4;
   }
 if($todo=="getpass"){
-  $HTTP_SESSION_VARS["lmotipperok"]=-5;
+  $_SESSION["lmotipperok"]=-5;
   }
 $action="tipp";
 require("lmo-tippauth.php");
 setlocale (LC_TIME, "de_DE");
-if($HTTP_SESSION_VARS["lmotipperok"]>0){
+if($_SESSION["lmotipperok"]>0){
   require("lmo-tippmain.php");
   }
-if($HTTP_SESSION_VARS["lmotipperok"]==-4){
+if($_SESSION["lmotipperok"]==-4){
   require("lmo-tippernew.php");
   }
 ?>

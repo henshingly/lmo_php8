@@ -19,20 +19,20 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
+if(($file!="") && ($_SESSION['lmouserok']==2)){
   require("lmo-openfile.php");
   if(!isset($team)){$team="";}
   if(!isset($save)){$save=0;}
   if($save==1){
     for($i=1;$i<=$anzteams;$i++){
-      if($HTTP_POST_VARS["xteams".$i]!=""){$teams[$i]=$HTTP_POST_VARS["xteams".$i];}
-      $teamk[$i]=$HTTP_POST_VARS["xteamk".$i];
+      if($_POST["xteams".$i]!=""){$teams[$i]=$_POST["xteams".$i];}
+      $teamk[$i]=$_POST["xteamk".$i];
       if($teamk[$i]==""){$teamk[$i]=substr($teams[$i],0,5);}
-      $teamu[$i]=$HTTP_POST_VARS["xteamu".$i];
-      $teamn[$i]=$HTTP_POST_VARS["xteamn".$i];
+      $teamu[$i]=$_POST["xteamu".$i];
+      $teamn[$i]=$_POST["xteamn".$i];
       if($lmtype==0){
-        $strafp[$i]=intval($HTTP_POST_VARS["xstrafp".$i]);
-        if($minus==2){$strafm[$i]=intval($HTTP_POST_VARS["xstrafm".$i]);}
+        $strafp[$i]=intval($_POST["xstrafp".$i]);
+        if($minus==2){$strafm[$i]=intval($_POST["xstrafm".$i]);}
         }
       }
     require("lmo-savefile.php");
@@ -135,7 +135,7 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
   for($i=1;$i<=$anzst;$i++){
     echo "<td align=\"right\" ";
     if($i<>$st){
-      echo "class=\"lmost0\"><a href=\"javascript:chklmolink('".$addr.$i."');\" title=\"".$text[9]."\">".$i."</a>";
+      echo "class=\"lmost0\"><a href='$addr$i' onclick=\"return chklmolink(this.href);\" title=\"".$text[9]."\">".$i."</a>";
       }
     else{
       echo "class=\"lmost1\">".$i;
@@ -180,7 +180,7 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
     <td class="lmost5" width="2">&nbsp;</td>
     <td class="lmost5"><nobr>
 <?PHP
-  if($team!=""){echo "<a href=\"javascript:chklmolink('".$addr."-3');\" title=\"".$text[339]."\">".$text[338]."</a>";}
+  if($team!=""){echo "<a href='$addr-3' onclick=\"return chklmolink(this.href);\" title=\"".$text[339]."\">".$text[338]."</a>";}
     else{echo "&nbsp;";}
 ?>
     </nobr></td>
@@ -234,11 +234,11 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  if($st!=-1){echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addr."-1');\" title=\"".$text[100]."\">".$text[99]."</a></td>";}
+  if($st!=-1){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-1' onclick=\"return chklmolink(this.href);\" title=\"".$text[100]."\">".$text[99]."</a></td>";}
     else{echo "<td class=\"lmost1\" align=\"center\">".$text[99]."</td>";}
-  if($hands==1){if($todo!="tabs"){echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addb.$stx."');\" title=\"".$text[409]."\">".$text[410]."</a></td>";}
+  if($hands==1){if($todo!="tabs"){echo "<td class=\"lmost2\" align=\"center\"><a href='$addb$stx' onclick=\"return chklmolink(this.href);\" title=\"".$text[409]."\">".$text[410]."</a></td>";}
     else{echo "<td class=\"lmost1\" align=\"center\">".$text[410]."</td>";}}
-  if($st!=-2){echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addr."-2');\" title=\"".$text[102]."\">".$text[101]."</a></td>";}
+  if($st!=-2){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-2' onclick=\"return chklmolink(this.href);\" title=\"".$text[102]."\">".$text[101]."</a></td>";}
     else{echo "<td class=\"lmost1\" align=\"center\">".$text[101]."</td>";}
 ?>
     </tr></table></td>

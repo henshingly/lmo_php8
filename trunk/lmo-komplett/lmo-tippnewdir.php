@@ -39,13 +39,13 @@ if($ftype!=""){
   $tt1="";
   $i=0;
   $j=0;
-  if(!isset($lmouserok)){$lmouserok=0;}
+  if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
   for($k=0;$k<count($dummy);$k++){
     $files=$dummy[$k];
-    if($lmouserok!=1){$ftest=1;}
-    elseif($lmouserok==1){
+    if($_SESSION['lmouserok']!=1){$ftest=1;}
+    elseif($_SESSION['lmouserok']==1){
       $ftest=0;
-      $ftest1 = split("[,]",$lmouserfile);
+      $ftest1 = split("[,]",$_SESSION['lmouserfile']);
       if(isset($ftest1)){
         for($u=0;$u<count($ftest1);$u++){
           if($ftest1[$u].".l98"==$files){$ftest=1;}

@@ -26,6 +26,7 @@ notzizanzeigen=1
 text_sportgericht=-Entscheid durch Sportgericht
 text_sportgericht2=Das Ergebnis zählt für beide Mannschaften gleichermaßen aus Sicht der Heimmannschaft.
 dirtipp=tipps/
+tippauthtxt=lmo-tippauth.txt
 shownick=1
 showname=1
 showemail=0

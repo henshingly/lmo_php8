@@ -74,7 +74,7 @@ if(($action=="tipp") && ($todo=="delaccount")){
     array_pop($users); // die letzte Zeile abgeschnitten
     require("lmo-tippsaveauth.php");
     
-    $HTTP_SESSION_VARS["lmotipperok"]=0;
+    $_SESSION["lmotipperok"]=0;
     $lmotipperpass="";
     $lmotipperverein="";
     } // end ($newpage==1)

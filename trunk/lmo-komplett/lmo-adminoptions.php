@@ -24,38 +24,38 @@
 //
 
 require_once("lmo-admintest.php");
-  isset($HTTP_POST_VARS['save'])?$save=$HTTP_POST_VARS['save']:$save=0;
+  isset($_POST['save'])?$save=$_POST['save']:$save=0;
   if($save==1){
     
-    $dirliga=trim($HTTP_POST_VARS["xdirliga"]);
+    $dirliga=trim($_POST["xdirliga"]);
     if($dirliga==""){$dirliga="./";}
     $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
     if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergänzen falls nicht vorhanden
     
     //Variablen belegen
-    $tabpkt=trim($HTTP_POST_VARS["xtabpkt"]);
-    $tabonres=trim($HTTP_POST_VARS["xtabonres"]);
+    $tabpkt=trim($_POST["xtabpkt"]);
+    $tabonres=trim($_POST["xtabonres"]);
     
-    $deflang=trim($HTTP_POST_VARS["xdeflang"]);
+    $deflang=trim($_POST["xdeflang"]);
     
-    $backlink=isset($HTTP_POST_VARS["xbacklink"])?1:0;
-    $calctime=isset($HTTP_POST_VARS["xcalctime"])?1:0;
-    $einsavehtml=isset($HTTP_POST_VARS["xeinsavehtml"])?1:0;
-    $einspieler=isset($HTTP_POST_VARS["xeinspieler"])?1:0;
-    $eintippspiel=isset($HTTP_POST_VARS["xeintippspiel"])?1:0;
-    $einspielfrei=isset($HTTP_POST_VARS["xeinspielfrei"])?1:0;
-    $einzutore=isset($HTTP_POST_VARS["xeinzutore"])?1:0;
-    $einzutoretab=isset($HTTP_POST_VARS["xeinzutoretab"])?1:0;
-    $einhinrueck=isset($HTTP_POST_VARS["xeinhinrueck"])?1:0;
-    $einzustats=isset($HTTP_POST_VARS["xeinzustats"])?1:0;
+    $backlink=isset($_POST["xbacklink"])?1:0;
+    $calctime=isset($_POST["xcalctime"])?1:0;
+    $einsavehtml=isset($_POST["xeinsavehtml"])?1:0;
+    $einspieler=isset($_POST["xeinspieler"])?1:0;
+    $eintippspiel=isset($_POST["xeintippspiel"])?1:0;
+    $einspielfrei=isset($_POST["xeinspielfrei"])?1:0;
+    $einzutore=isset($_POST["xeinzutore"])?1:0;
+    $einzutoretab=isset($_POST["xeinzutoretab"])?1:0;
+    $einhinrueck=isset($_POST["xeinhinrueck"])?1:0;
+    $einzustats=isset($_POST["xeinzustats"])?1:0;
     
     //Zeitformat kontrollieren
-    $deftime=trim($HTTP_POST_VARS["xdeftime"]);
+    $deftime=trim($_POST["xdeftime"]);
     if($deftime==""){$deftime="15:30";}
     $datum_tmp = explode(':',$deftime);
     $deftime=strftime("%H:%M", mktime($datum_tmp[0],$datum_tmp[1]));
     
-    $aadr=trim($HTTP_POST_VARS["xadr"]);
+    $aadr=trim($_POST["xadr"]);
     require("lmo-savecfg.php");
   }?>
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">

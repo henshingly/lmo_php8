@@ -1,6 +1,6 @@
-FORM { padding: 0px 0px 0px 0px; margin: 0px; }
+FORM { padding: 0; margin: 0; }
 acronym {cursor:help;border-bottom:1px dotted $tabccolo;}
-TABLE { padding: 0px 0px 0px 0px; margin: 0px; }
+TABLE { padding: 0; margin: 0; }
   .lmomaina { background: $tababack; border: $tababord; }
   .lmosta { background: $tabbback; border: $tabbbord; }
   .lmostb {  background: $tabcback; border: $tabcbord; }
@@ -92,19 +92,19 @@ TD {}
     .lmotab8 a:hover { background: $tabftab5; color: $tabclin2; font-weight: normal; text-decoration: overline underline; }
   .lmotab6 { padding: 2px; background: $tabftab7; color: $tabccolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: normal; }
   .lmotab7 { padding: 2px; background: $tabftab8; color: $tabccolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: normal; }
-  .lmocross1 { padding: 2px; background: $tabbback; color: $tabbcolo; font-family: $tabcfont; font-size: 8pt; font-weight: bold; }
-  .lmocross2 { padding: 2px; background: $tabbback; color: $tabccolo; font-family: $tabcfont; font-size: 8pt; font-weight: normal; }
+  .lmocross1 { padding: 2px; background: $tabbback; color: $tabbcolo; font-family: $tabcfont; font-size: 75%; font-weight: bold; }
+  .lmocross2 { padding: 2px; background: $tabbback; color: $tabccolo; font-family: $tabcfont; font-size: 75%; font-weight: normal; }
     .lmocross2 a:link { background: $tabbback; color: $tabbcolo; font-weight: normal; text-decoration: none; }
     .lmocross2 a:visited { background: $tabbback; color: $tabbcolo; font-weight: normal; text-decoration: none; }
     .lmocross2 a:active { background: $tabbcolo; color: $tabbback; font-weight: normal; text-decoration: none; }
     .lmocross2 a:hover { background: $tabbcolo; color: $tabbback; font-weight: normal; text-decoration: none; }
-  .lmocross4 { padding: 2px; background: $tabcgrey; color: $tabccolo; font-family: $tabcfont; font-size: 8pt; font-weight: bold; }
-  .lmocross5 { padding: 2px; background: $tabcback; color: $tabccolo; font-family: $tabcfont; font-size: 8pt; font-weight: normal; }
+  .lmocross4 { padding: 2px; background: $tabcgrey; color: $tabccolo; font-family: $tabcfont; font-size: 75%; font-weight: bold; }
+  .lmocross5 { padding: 2px; background: $tabcback; color: $tabccolo; font-family: $tabcfont; font-size: 75%; font-weight: normal; }
     .lmocross5 a:link { background: $tabcback; color: $tabclin1; font-weight: normal; text-decoration: none; }
     .lmocross5 a:visited { background: $tabcback; color: $tabclin1; font-weight: normal; text-decoration: none; }
     .lmocross5 a:active { background: $tabcback; color: $tabclin2; font-weight: normal; text-decoration: overline underline; }
     .lmocross5 a:hover { background: $tabcback; color: $tabclin2; font-weight: normal; text-decoration: overline underline; }
-  .lmocross6 { padding: 2px; background: $tabftur1; color: $tabccolo; font-family: $tabcfont; font-size: 8pt; font-weight: normal; }
+  .lmocross6 { padding: 2px; background: $tabftur1; color: $tabccolo; font-family: $tabcfont; font-size: 75%; font-weight: normal; }
     .lmocross6 a:link { background: $tabftur1; color: $tabclin1; font-weight: normal; text-decoration: none; }
     .lmocross6 a:visited { background: $tabftur1; color: $tabclin1; font-weight: normal; text-decoration: none; }
     .lmocross6 a:active { background: $tabftur1; color: $tabclin2; font-weight: normal; text-decoration: overline underline; }
@@ -132,7 +132,7 @@ TD {}
     .lmocalhe a:hover { background: $tabhback; color: $tabclin2; font-weight: normal; text-decoration: overline underline; }
   .lmotext { padding: 6px; background: $tabcback; color: $tabccolo; text-align: justify; font-family: $tabcfont; font-size: $tabcsize; font-weight: normal; }
 DIV,SPAN {}
-  .lmofett { background: $tabcback; color: $tabccolo; text-align: justify; font-family: $tabcfont; font-size: 10pt; font-weight: bold; }
+  .lmofett { background: $tabcback; color: $tabccolo; text-align: justify; font-family: $tabcfont; font-size:85%; font-weight: bold; }
 LI {}
   .lmoadminli { padding-bottom: 4px; }
 INPUT { }

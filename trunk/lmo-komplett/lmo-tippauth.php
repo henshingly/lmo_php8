@@ -27,7 +27,7 @@ if($action=="tipp"){
   if(!isset($lmotippername)){$lmotippername="";}
   if(!isset($lmotipperpass)){$lmotipperpass="";}
   if(!isset($lmotipperverein)){$lmotipperverein="";}
-  if($HTTP_SESSION_VARS["lmotipperok"]<1 && $HTTP_SESSION_VARS["lmotipperok"]>-4){
+  if($_SESSION["lmotipperok"]<1 && $_SESSION["lmotipperok"]>-4){
     $xtippername2="";
     if(isset($xtippername) && isset($xtipperpass)){
       $lmotippername=$xtippername;
@@ -42,15 +42,15 @@ if($action=="tipp"){
         }
       fclose($datei);
       array_shift($dumma);
-      $HTTP_SESSION_VARS["lmotipperok"]=-2;
-      for($i=0;$i<count($dumma) && $HTTP_SESSION_VARS["lmotipperok"]==-2;$i++){
+      $_SESSION["lmotipperok"]=-2;
+      for($i=0;$i<count($dumma) && $_SESSION["lmotipperok"]==-2;$i++){
         $dummb = split("[|]",$dumma[$i]);
         if($lmotippername==$dummb[0]){ // Nick gefunden
-          $HTTP_SESSION_VARS["lmotipperok"]=-1;
+          $_SESSION["lmotipperok"]=-1;
           if($lmotipperpass==$dummb[1]){ // Passwort richtig
             $lmotipperverein=$dummb[5];
-            $HTTP_SESSION_VARS["lmotipperok"]=$dummb[2];
-            if($HTTP_SESSION_VARS["lmotipperok"]==5){
+            $_SESSION["lmotipperok"]=$dummb[2];
+            if($_SESSION["lmotipperok"]==5){
               array_shift($dumma);
               }
             }
@@ -58,10 +58,10 @@ if($action=="tipp"){
         }
       }
     }
-  if($HTTP_SESSION_VARS["lmotipperok"]==-5){ // Passwort-Anforderung
+  if($_SESSION["lmotipperok"]==-5){ // Passwort-Anforderung
     require("lmo-tippemailpass.php");
     }
-  if($HTTP_SESSION_VARS["lmotipperok"]<1 && $HTTP_SESSION_VARS["lmotipperok"]>-4){
+  if($_SESSION["lmotipperok"]<1 && $_SESSION["lmotipperok"]>-4){
     $addw=$PHP_SELF."?action=tipp&amp;todo=wert&amp;file=";
     $adda=$PHP_SELF."?action=tipp&amp;todo=";
 
@@ -114,9 +114,8 @@ if($action=="tipp"){
     <td class="lmomain1" width="8">&nbsp;</td>
     <td class="lmomain1" align="right"><nobr>
 <?PHP
-    if($regeln==1){
-      echo "<a href=\"".$regelnlink."\">".$text[2185]."</a>";
-      echo "&nbsp;&nbsp;";
+    if($regeln==1){?>
+        <a href='<?=$regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text[2185]?></a>&nbsp;&nbsp;<?
       }
     if(isset($todo) && $todo!="logout"){echo "<a href=\"".$PHP_SELF."?action=tipp\" title=\"".$text[2159]."\">".$text[2159]."</a>";}
     else{echo $text[2159];}
@@ -150,12 +149,12 @@ if($action=="tipp"){
     <tr>
       <td class="lmost4" colspan="2"><nobr><?PHP echo $text[2044]; ?></nobr></td>
     </tr>
-<?PHP if($HTTP_SESSION_VARS["lmotipperok"]==-2){ // Benutzer nicht gefunden ?> 
+<?PHP if($_SESSION["lmotipperok"]==-2){ // Benutzer nicht gefunden ?> 
     <tr>
       <td class="lmost5"  align="right" colspan="2"><font color=red><?PHP echo $text[2043]; ?></font></td>
     </tr>
 <?PHP } ?>
-<?PHP if(isset($xtippersub) & $HTTP_SESSION_VARS["lmotipperok"]=="" && !isset($emailbody)){ // Benutzer nicht freigeschaltet ?> 
+<?PHP if(isset($xtippersub) & $_SESSION["lmotipperok"]=="" && !isset($emailbody)){ // Benutzer nicht freigeschaltet ?> 
     <tr>
       <td class="lmost5"  align="right" colspan="2"><font color=red><?PHP echo $text[2148]; ?></font></td>
     </tr>
@@ -165,7 +164,7 @@ if($action=="tipp"){
       <td class="lmost5"><acronym title="<?PHP echo $text[307] ?>"><input class="lmoadminein" type="text" name="xtippername" size="16" maxlength="32" value="<?PHP echo $lmotippername; ?>"></acronym></a>
     </tr>
     <tr>
-<?PHP if($HTTP_SESSION_VARS["lmotipperok"]==-1){ $xtippername2=$lmotippername; // Passwort falsch ?> 
+<?PHP if($_SESSION["lmotipperok"]==-1){ $xtippername2=$lmotippername; // Passwort falsch ?> 
     <tr>
       <td class="lmost5" align="right" colspan="2"><font color=red><?PHP echo $text[2042]; ?></font></td>
     </tr>
@@ -228,7 +227,7 @@ if($action=="tipp"){
   <form name="lmotippedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
   <input type="hidden" name="action" value="tipp">
   <input type="hidden" name="todo" value="getpass">
-<?PHP if($HTTP_SESSION_VARS["lmotipperok"]==-3){ // Benutzer nicht gefunden ?> 
+<?PHP if($_SESSION["lmotipperok"]==-3){ // Benutzer nicht gefunden ?> 
     <tr>
       <td class="lmost5"  align="right" colspan="2"><font color=red><?PHP echo $text[2043]; ?></font></td>
     </tr>
@@ -252,8 +251,8 @@ if($action=="tipp"){
 
 <?PHP
     }
-  $HTTP_SESSION_VARS["lmotipperok"]=$HTTP_SESSION_VARS["lmotipperok"];
+  $_SESSION["lmotipperok"]=$_SESSION["lmotipperok"];
   $lmotippername=$lmotippername;
-  $HTTP_SESSION_VARS["lmotipperpass"]=$lmotipperpass;
+  $_SESSION["lmotipperpass"]=$lmotipperpass;
   }
 ?>

@@ -28,7 +28,7 @@ $wmldir="output/";
  * Spieltag als html-Datei ausgeben: Die Datei ist im Ligenverzeichnis und hat den Namen der l98-Datei plus "-st.html"
  *   
  */
-if(($HTTP_SESSION_VARS['lmouserok']==2)||($HTTP_SESSION_VARS['lmouserok']==1)){
+if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
 if($st>0){$actual=$anzst;}else{$actual=$stx;}
 if($lmtype==0){
 	for($i1=0;$i1<$anzsp;$i1++){

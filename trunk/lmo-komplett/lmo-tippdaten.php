@@ -123,10 +123,10 @@ if(($action=="tipp") && ($todo=="daten")){
     if($adresse==1){$users[$save].="|".$xtipperstrasse."|".$xtipperplz."|".$xtipperort;}
     else{$users[$save].="|".$dummb[6]."|".$dummb[7]."|".$dummb[8];}
     $users[$save].="|";
-    if(trim($HTTP_POST_VARS["xnews"])==1){$users[$save].="1";}
+    if(trim($_POST["xnews"])==1){$users[$save].="1";}
     else{$users[$save].="-1";}
     $users[$save].="|";
-    if(trim($HTTP_POST_VARS["xremind"])==1){$users[$save].="1";}
+    if(trim($_POST["xremind"])==1){$users[$save].="1";}
     else{$users[$save].="-1";}
     $users[$save].="|EOL";
     require("lmo-tippsaveauth.php");

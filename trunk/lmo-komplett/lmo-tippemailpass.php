@@ -34,11 +34,11 @@ if(isset($xtippername2)){
     }
   fclose($datei);
   array_shift($dumma);
-  for($i=0;$i<count($dumma) && $HTTP_SESSION_VARS["lmotipperok"]==-5;$i++){
+  for($i=0;$i<count($dumma) && $_SESSION["lmotipperok"]==-5;$i++){
     $dummb = split("[|]",$dumma[$i]);
     if($xtippername2==$dummb[0] || ($xtippername2==$dummb[4] && strpos($dummb[4],"@")!=false)){ // User gefunden
       $lmotippername=$dummb[0];
-      $HTTP_SESSION_VARS["lmotipperok"]=0;
+      $_SESSION["lmotipperok"]=0;
       $emailbody = "Hallo ".$dummb[0]."\n\n".$text[2077]."\n".$text[2023].": ".$dummb[0]."\n".$text[308].": ".$dummb[1]; 
       $header="From:$aadr\n";
 //      $header .= "Reply-To: $aadr\n"; 
@@ -54,8 +54,8 @@ if(isset($xtippername2)){
       else{echo $text[2080]." ".$aadr;}
       }
     }
-  if($HTTP_SESSION_VARS["lmotipperok"]==-5){$HTTP_SESSION_VARS["lmotipperok"]=-3;} // Benutzer nicht gefunden
+  if($_SESSION["lmotipperok"]==-5){$_SESSION["lmotipperok"]=-3;} // Benutzer nicht gefunden
   }
-  else{$HTTP_SESSION_VARS["lmotipperok"]=0;} // kein Name angegeben
+  else{$_SESSION["lmotipperok"]=0;} // kein Name angegeben
 
 ?>

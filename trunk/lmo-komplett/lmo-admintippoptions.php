@@ -30,22 +30,22 @@
   
   if(!isset($save)){$save=0;}
   if($save==1){
-    if(!isset($HTTP_POST_VARS["xshownick"])){$HTTP_POST_VARS["xshownick"]="";}
-    if(!isset($HTTP_POST_VARS["xshowname"])){$HTTP_POST_VARS["xshowname"]="";}
-    if(!isset($HTTP_POST_VARS["xshowemail"])){$HTTP_POST_VARS["xshowemail"]="";}
-    if(!isset($HTTP_POST_VARS["xshowtendenzabs"])){$HTTP_POST_VARS["xshowtendenzabs"]="";}
-    if(!isset($HTTP_POST_VARS["xshowtendenzpro"])){$HTTP_POST_VARS["xshowtendenzpro"]="";}
-    if(!isset($HTTP_POST_VARS["xshowdurchschntipp"])){$HTTP_POST_VARS["xshowdurchschntipp"]="";}
-    $tippmodus=trim($HTTP_POST_VARS["xtippmodus"]);
+    if(!isset($_POST["xshownick"])){$_POST["xshownick"]="";}
+    if(!isset($_POST["xshowname"])){$_POST["xshowname"]="";}
+    if(!isset($_POST["xshowemail"])){$_POST["xshowemail"]="";}
+    if(!isset($_POST["xshowtendenzabs"])){$_POST["xshowtendenzabs"]="";}
+    if(!isset($_POST["xshowtendenzpro"])){$_POST["xshowtendenzpro"]="";}
+    if(!isset($_POST["xshowdurchschntipp"])){$_POST["xshowdurchschntipp"]="";}
+    $tippmodus=trim($_POST["xtippmodus"]);
 
     if($tippmodus==1){
-      $rergebnis=trim($HTTP_POST_VARS["xrergebnis"]);
+      $rergebnis=trim($_POST["xrergebnis"]);
       if($rergebnis==""){$rergebnis=0;}
       else{
         $rergebnis=intval(trim($rergebnis));
         if($rergebnis=="" || $rergebnis<0){$rergebnis="0";}
         }
-      $rtendenzdiff=trim($HTTP_POST_VARS["xrtendenzdiff"]);
+      $rtendenzdiff=trim($_POST["xrtendenzdiff"]);
       if($rtendenzdiff==""){$rtendenzdiff=0;}
       else{
         $rtendenzdiff=intval(trim($rtendenzdiff));
@@ -53,7 +53,7 @@
         }
       if($rergebnis<$rtendenzdiff){$rergebnis=$rtendenzdiff;}
       
-      $rtendenz=trim($HTTP_POST_VARS["xrtendenz"]);
+      $rtendenz=trim($_POST["xrtendenz"]);
       if($rtendenz==""){$rtendenz=0;}
       else{
         $rtendenz=intval(trim($rtendenz));
@@ -61,117 +61,117 @@
         }
       if($rtendenzdiff<$rtendenz){$rtendenzdiff=$rtendenz;}
 
-      $rtor=trim($HTTP_POST_VARS["xrtor"]);
+      $rtor=trim($_POST["xrtor"]);
       if($rtor==""){$rtor=0;}
       else{
         $rtor=intval(trim($rtor));
         if($rtor=="" || $rtor<0){$rtor=0;}
         }
-      $rtendenztor=trim($HTTP_POST_VARS["xrtendenztor"]);
-      $rtendenzremis=trim($HTTP_POST_VARS["xrtendenzremis"]);
-      $pfeiltipp=trim($HTTP_POST_VARS["xpfeiltipp"]);
-      $sttipp=trim($HTTP_POST_VARS["xsttipp"]);
-      $viewertipp=trim($HTTP_POST_VARS["xviewertipp"]);
+      $rtendenztor=trim($_POST["xrtendenztor"]);
+      $rtendenzremis=trim($_POST["xrtendenzremis"]);
+      $pfeiltipp=trim($_POST["xpfeiltipp"]);
+      $sttipp=trim($_POST["xsttipp"]);
+      $viewertipp=trim($_POST["xviewertipp"]);
       if($viewertipp==1){
-        $viewertage=trim($HTTP_POST_VARS["xviewertage"]);
+        $viewertage=trim($_POST["xviewertage"]);
         if($viewertage==""){$viewertage=8;}
         else{
           $viewertage=intval(trim($viewertage));
           if($viewertage=="" || $viewertage<0){$viewertage=8;}
           }
         }
-      $showdurchschntipp=trim($HTTP_POST_VARS["xshowdurchschntipp"]);
+      $showdurchschntipp=trim($_POST["xshowdurchschntipp"]);
       if($showdurchschntipp!=1){$showdurchschntipp=0;}
     }
 
-    $tipptabelle1=trim($HTTP_POST_VARS["xtipptabelle1"]);
-    $tipptabelle=trim($HTTP_POST_VARS["xtipptabelle"]);
-    $showzus=trim($HTTP_POST_VARS["xshowzus"]);
-    $showstsiege=trim($HTTP_POST_VARS["xshowstsiege"]);
-    $krit1=trim($HTTP_POST_VARS["xkrit1"]);
-    $krit2=trim($HTTP_POST_VARS["xkrit2"]);
-    $krit3=trim($HTTP_POST_VARS["xkrit3"]);
-    $dirtipp=trim($HTTP_POST_VARS["xdirtipp"]);
+    $tipptabelle1=trim($_POST["xtipptabelle1"]);
+    $tipptabelle=trim($_POST["xtipptabelle"]);
+    $showzus=trim($_POST["xshowzus"]);
+    $showstsiege=trim($_POST["xshowstsiege"]);
+    $krit1=trim($_POST["xkrit1"]);
+    $krit2=trim($_POST["xkrit2"]);
+    $krit3=trim($_POST["xkrit3"]);
+    $dirtipp=trim($_POST["xdirtipp"]);
     if($dirtipp==""){$dirtipp="tipps/";}
     $dummy=$dirtipp;
     $dirtipp=str_replace("\\","/",$dummy);
     if(substr($dirtipp,-1)!="/"){$dirtipp=$dirtipp."/";}
     if($dirtipp=="/"){$dirtipp="tipps/";}
 
-    $shownick=trim($HTTP_POST_VARS["xshownick"]);
+    $shownick=trim($_POST["xshownick"]);
     if($shownick!=1){$shownick=0;}
-    $showname=trim($HTTP_POST_VARS["xshowname"]);
+    $showname=trim($_POST["xshowname"]);
     if($showname!=1){$showname=0;}
-    $showemail=trim($HTTP_POST_VARS["xshowemail"]);
+    $showemail=trim($_POST["xshowemail"]);
     if($showemail!=1){$showemail=0;}
     if($showname==0 && $showemail==0){$shownick=1;}
 
-    $showtendenzabs=trim($HTTP_POST_VARS["xshowtendenzabs"]);
+    $showtendenzabs=trim($_POST["xshowtendenzabs"]);
     if($showtendenzabs!=1){$showtendenzabs=0;}
-    $showtendenzpro=trim($HTTP_POST_VARS["xshowtendenzpro"]);
+    $showtendenzpro=trim($_POST["xshowtendenzpro"]);
     if($showtendenzpro!=1){$showtendenzpro=0;}
 
-    $tippspiel=trim($HTTP_POST_VARS["xtippspiel"]);
-    $regeln=trim($HTTP_POST_VARS["xregeln"]);
+    $tippspiel=trim($_POST["xtippspiel"]);
+    $regeln=trim($_POST["xregeln"]);
     if($regeln==1){
-      $regelnlink=trim($HTTP_POST_VARS["xregelnlink"]);
+      $regelnlink=trim($_POST["xregelnlink"]);
       }
-    $freischaltung=trim($HTTP_POST_VARS["xfreischaltung"]);
-    $entscheidungnv=trim($HTTP_POST_VARS["xentscheidungnv"]);
-    $entscheidungie=trim($HTTP_POST_VARS["xentscheidungie"]);
-    $einsichterst=trim($HTTP_POST_VARS["xeinsichterst"]);
+    $freischaltung=trim($_POST["xfreischaltung"]);
+    $entscheidungnv=trim($_POST["xentscheidungnv"]);
+    $entscheidungie=trim($_POST["xentscheidungie"]);
+    $einsichterst=trim($_POST["xeinsichterst"]);
 
-    $rremis=trim($HTTP_POST_VARS["xrremis"]);
+    $rremis=trim($_POST["xrremis"]);
     if($rremis==""){$rremis=0;}
     else{
       $rremis=intval(trim($rremis));
       if($rremis=="" || $rremis<0){$rremis=0;}
       }
-    $gtpunkte=trim($HTTP_POST_VARS["xgtpunkte"]);
+    $gtpunkte=trim($_POST["xgtpunkte"]);
 
-    $anzseite=trim($HTTP_POST_VARS["xanzseite"]);
+    $anzseite=trim($_POST["xanzseite"]);
     if($anzseite==""){$anzseite=0;}
     else{
       $anzseite=intval(trim($anzseite));
       if($anzseite=="" || $anzseite<0){$anzseite=0;}
       }
-    $anzseite1=trim($HTTP_POST_VARS["xanzseite1"]);
+    $anzseite1=trim($_POST["xanzseite1"]);
     if($anzseite1==""){$anzseite1=0;}
     else{
       $anzseite1=intval(trim($anzseite1));
       if($anzseite1=="" || $anzseite1<0){$anzseite1=0;}
       }
-    $tippeinsicht=trim($HTTP_POST_VARS["xtippeinsicht"]);
-    $tippfieber=trim($HTTP_POST_VARS["xtippfieber"]);
+    $tippeinsicht=trim($_POST["xtippeinsicht"]);
+    $tippfieber=trim($_POST["xtippfieber"]);
 
-    $wertverein=trim($HTTP_POST_VARS["xwertverein"]);
-    $aktauswert=trim($HTTP_POST_VARS["xaktauswert"]);
-    $aktauswertges=trim($HTTP_POST_VARS["xaktauswertges"]);
-    $akteinsicht=trim($HTTP_POST_VARS["xakteinsicht"]);
+    $wertverein=trim($_POST["xwertverein"]);
+    $aktauswert=trim($_POST["xaktauswert"]);
+    $aktauswertges=trim($_POST["xaktauswertges"]);
+    $akteinsicht=trim($_POST["xakteinsicht"]);
     if($showtendenzabs==1 || $showtendenzpro==1 || ($showdurchschntipp==1 && $tippmodus==1)){$akteinsicht=1;}
 
-    $adresse=trim($HTTP_POST_VARS["xadresse"]);
-    $realname=trim($HTTP_POST_VARS["xrealname"]);
-    $gesamt=trim($HTTP_POST_VARS["xgesamt"]);
-    $tippohne=trim($HTTP_POST_VARS["xtippohne"]);
-    $tippbis=trim($HTTP_POST_VARS["xtippbis"]);
+    $adresse=trim($_POST["xadresse"]);
+    $realname=trim($_POST["xrealname"]);
+    $gesamt=trim($_POST["xgesamt"]);
+    $tippohne=trim($_POST["xtippohne"]);
+    $tippbis=trim($_POST["xtippbis"]);
     if($tippbis==""){$tippbis=0;}
     else{
       $tippbis=intval(trim($tippbis));
       if($tippbis==""){$tippbis=0;}
       }
-    $tipperimteam=trim($HTTP_POST_VARS["xtipperteam"]);
-    $imvorraus=trim($HTTP_POST_VARS["ximvorraus"]);
-    $jokertipp=trim($HTTP_POST_VARS["xjokertipp"]);
+    $tipperimteam=trim($_POST["xtipperteam"]);
+    $imvorraus=trim($_POST["ximvorraus"]);
+    $jokertipp=trim($_POST["xjokertipp"]);
     if($jokertipp==1){
-      $jokertippmulti=trim($HTTP_POST_VARS["xjokertippmulti"]);
+      $jokertippmulti=trim($_POST["xjokertippmulti"]);
       }
-    $immeralle=trim($HTTP_POST_VARS["ximmeralle"]);
+    $immeralle=trim($_POST["ximmeralle"]);
     $ligenzutippen="";
     if($immeralle!=1){
       $immeralle=0;
-      if($HTTP_POST_VARS["xtipperligen"]!=""){
-        foreach($HTTP_POST_VARS["xtipperligen"] as $key => $value){
+      if($_POST["xtipperligen"]!=""){
+        foreach($_POST["xtipperligen"] as $key => $value){
           $ligenzutippen.=$value.",";
           }
         }
@@ -1063,9 +1063,9 @@ lmotest=false;
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adda."');\" title=\"".$text[2063]."\">".$text[2063]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adde."');\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addu."');\" title=\"".$text[2114]."\">".$text[2114]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$adda' onclick=\"return chklmolink(this.href);\" title=\"".$text[2063]."\">".$text[2063]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$adde' onclick=\"return chklmolink(this.href);\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$addu' onclick=\"return chklmolink(this.href);\" title=\"".$text[2114]."\">".$text[2114]."</a></td>";
   echo "<td class=\"lmost1\" align=\"center\">".$text[86]."</td>";
 ?>
     </tr></table></td>

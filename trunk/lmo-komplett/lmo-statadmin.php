@@ -41,7 +41,7 @@ if (isset($file) && $file!="") {
 	require("lmo-statloadconfig.php");
 
 	//Adminkontrolle
-	if ($lmouserok==2 || ($lmouserok==1 && $allowauxadmin==1)) {
+	if ($_SESSION['lmouserok']==2 || ($_SESSION['lmouserok']==1 && $allowauxadmin==1)) {
 		//zu speichernde Konfiguration
 		if (isset($_REQUEST['picswidth']))          { $picswidth=$_REQUEST['picswidth']; }
 		if (isset($_REQUEST['defaultsort']))        { $defaultsort=$_REQUEST['defaultsort']; }
@@ -280,8 +280,8 @@ if (isset($file) && $file!="") {
 				fputs($filepointer,$text[3042]."=".$displayperpageadmin."\n");
 				fputs($filepointer,$text[3023]."=".$displayzeros."\n");
 				fputs($filepointer,$text[3024]."=".$nonamesort."\n");
-				if ($lmouserok==2) fputs($filepointer,$text[3031]."=".$allowauxadmin."\n");
-				if ($lmouserok==2) fputs($filepointer,$text[3046]."=".$allowauxadmins."\n");
+				if ($_SESSION['lmouserok']==2) fputs($filepointer,$text[3031]."=".$allowauxadmin."\n");
+				if ($_SESSION['lmouserok']==2) fputs($filepointer,$text[3046]."=".$allowauxadmins."\n");
 				fputs($filepointer,$text[3041]."=".$ligalink."\n");
 				fclose($filepointer);
 				break;
@@ -342,7 +342,7 @@ function sel(x) {
 				<tr>
 					<td colspan="2">&nbsp;</td>
 				</tr><?
-				if ($lmouserok==2 || ($lmouserok==1 && $allowauxadmin==1 && $allowauxadmins==1)) {?>
+				if ($_SESSION['lmouserok']==2 || ($_SESSION['lmouserok']==1 && $allowauxadmin==1 && $allowauxadmins==1)) {?>
 				<tr>
 					<td class="lmost4" colspan="2"><?=$text[3005]?></td>
 				</tr>
@@ -553,13 +553,13 @@ function sel(x) {
 						<td class="lmost4"><nobr><?=$text[3041]?>: </nobr></td>
 						<td><input type="text" name="ligalink" value="<?= $ligalink?>" size="<?=strlen($ligalink);?>"></td>
 						<td class="lmost4"><nobr><?=$text[3031]?>: </nobr></td>
-						<td><?if($lmouserok==2){?><input type="checkbox" name="allowauxadmin" value="<?=$allowauxadmin?>" <?if ($allowauxadmin==1) echo "checked";?> onClick="if (this.checked==true) document.form1.allowauxadmins.disabled=false; else {document.form1.allowauxadmins.disabled=true;document.form1.allowauxadmins.checked=false;}"><?}?></td>
+						<td><?if($_SESSION['lmouserok']==2){?><input type="checkbox" name="allowauxadmin" value="<?=$allowauxadmin?>" <?if ($allowauxadmin==1) echo "checked";?> onClick="if (this.checked==true) document.form1.allowauxadmins.disabled=false; else {document.form1.allowauxadmins.disabled=true;document.form1.allowauxadmins.checked=false;}"><?}?></td>
 					</tr>
 					<tr>
 						<td class="lmost4"><nobr><?=$text[3020]?>: </nobr></td>
 						<td><input type="text" name="picswidth"value="<?= $picswidth?>" size="<?=strlen($picswidth);?>"></td>
 						<td class="lmost4"><nobr><?=$text[3046]?>: </nobr></td>
-						<td><?if($lmouserok==2){?><input <?if ($allowauxadmin!=1) echo "disabled"?> type="checkbox" name="allowauxadmins" value="<?=$allowauxadmins?>" <?if ($allowauxadmins==1) echo "checked";?>><?}?></td>
+						<td><?if($_SESSION['lmouserok']==2){?><input <?if ($allowauxadmin!=1) echo "disabled"?> type="checkbox" name="allowauxadmins" value="<?=$allowauxadmins?>" <?if ($allowauxadmins==1) echo "checked";?>><?}?></td>
 					</tr>
 					<tr>
 						<td class="lmost4"><nobr><?=$text[3024]?>: </nobr></td>
@@ -578,8 +578,8 @@ function sel(x) {
 		</tr>
 		<tr>
 		<td class="lmost2" align="center">
-			<a href="javascript:chklmolink('<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=$file&amp;st=-1"?>');" title="<?=$text[100]?>"><?=$text[99]?></a>&nbsp; &nbsp;
-			<a href="javascript:chklmolink('<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=$file&amp;st=-2"?>');" title="<?=$text[102]?>"><?=$text[101]?></a>
+			<a href='<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=$file&amp;st=-1"?>' onclick='return chklmolink(this.href);' title="<?=$text[100]?>"><?=$text[99]?></a>&nbsp; &nbsp;
+			<a href='<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=$file&amp;st=-2"?>' onclick='return chklmolink(this.href);' title="<?=$text[102]?>"><?=$text[101]?></a>
 		</td>
 	</tr>
 </table>
@@ -604,12 +604,12 @@ function cmpStr ($a2, $a1) {
   return $c;
 }
 function makeCompat() {
-  global $HTTP_GET_VARS,$HTTP_POST_VARS,$HTTP_SESSION_VARS,$HTTP_COOKIE_VARS,$HTTP_SERVER_VARS;
+  global $_GET,$_POST,$_SESSION,$HTTP_COOKIE_VARS,$HTTP_SERVER_VARS;
 	if (!isset($_GET)) {
-		$_GLOBALS['_GET'] = $HTTP_GET_VARS;
-  	$_GLOBALS['_POST'] = $HTTP_POST_VARS;
-		$_GLOBALS['_REQUEST'] = $HTTP_POST_VARS+$HTTP_GET_VARS;
-  	$_GLOBALS['_SESSION'] = $HTTP_SESSION_VARS;
+		$_GLOBALS['_GET'] = $_GET;
+  	$_GLOBALS['_POST'] = $_POST;
+		$_GLOBALS['_REQUEST'] = $_POST+$_GET;
+  	$_GLOBALS['_SESSION'] = $_SESSION;
   	$_GLOBALS['_COOKIE'] = $HTTP_COOKIE_VARS;
   	$_GLOBALS['_SERVER'] = $HTTP_SERVER_VARS;
 	}

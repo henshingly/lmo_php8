@@ -35,7 +35,7 @@ if($message!=""){
     }
   fclose($datei);
   array_shift($dumma);
-  $subject=$HTTP_POST_VARS["betreff"];
+  $subject=$_POST["betreff"];
   $header="From:$aadr\n";
   $para5="-f $aadr";
   $anzemail=0;

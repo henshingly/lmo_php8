@@ -23,7 +23,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-  if(isset($HTTP_POST_VARS['save']) && $HTTP_POST_VARS['save']==1){
+  if(isset($_POST['save']) && $_POST['save']==1){
     require("lmo-savecss.php");  
   }
   require("lmo-cssload.php");?>

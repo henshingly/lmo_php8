@@ -83,9 +83,9 @@ if($viewertipp==1 && $file=="viewer"){
 
   if(!isset($save)){$save=0;}
   if($save==1){
-    $start=trim($HTTP_POST_VARS["xstart"]);
-    $now1=trim($HTTP_POST_VARS["xnow"]);
-    $then1=trim($HTTP_POST_VARS["xthen"]);
+    $start=trim($_POST["xstart"]);
+    $now1=trim($_POST["xnow"]);
+    $then1=trim($_POST["xthen"]);
     }
   else{
     if(!isset($start)){$start=0;}
@@ -135,19 +135,19 @@ if($viewertipp==1 && $file=="viewer"){
     for($i=0;$i<$anzspiele;$i++){
       $btip=tippaenderbar($mterm[$i],$datum1[$i],$datum2[$i]);
       if($btip==true){
-        if($jokertipp==1 && isset($HTTP_POST_VARS["xjokerspiel_".$liga[$i]."_".$spieltag[$i]])){
-          $jksp[$i]=trim($HTTP_POST_VARS["xjokerspiel_".$liga[$i]."_".$spieltag[$i]]);
+        if($jokertipp==1 && isset($_POST["xjokerspiel_".$liga[$i]."_".$spieltag[$i]])){
+          $jksp[$i]=trim($_POST["xjokerspiel_".$liga[$i]."_".$spieltag[$i]]);
           if($jokertippaktiv[$i]>0 && $jokertippaktiv[$i]<$now){$jksp[$i]=0;} // jokeranticheat
           }
         if($tippmodus==1){
-          $tippa[$i]=trim($HTTP_POST_VARS["xtippa".$i]);
+          $tippa[$i]=trim($_POST["xtippa".$i]);
           if($tippa[$i]=="" || $tippa[$i]<0){$tippa[$i]=-1;}
           elseif($tippa[$i]=="_"){$tippa[$i]=-1;}
           else{
             $tippa[$i]=intval(trim($tippa[$i]));
             if($tippa[$i]==""){$tippa[$i]="0";}
             }
-          $tippb[$i]=trim($HTTP_POST_VARS["xtippb".$i]);
+          $tippb[$i]=trim($_POST["xtippb".$i]);
           if($tippb[$i]=="" || $tippb[$i]<0){$tippb[$i]=-1;}
           elseif($tippb[$i]=="_"){$tippb[$i]=-1;}
           else{
@@ -156,16 +156,16 @@ if($viewertipp==1 && $file=="viewer"){
             }
           }
         elseif($tippmodus==0){
-          if(!isset($HTTP_POST_VARS["xtipp".$i])){$HTTP_POST_VARS["xtipp".$i]=0;}
-          if($HTTP_POST_VARS["xtipp".$i]==1){
+          if(!isset($_POST["xtipp".$i])){$_POST["xtipp".$i]=0;}
+          if($_POST["xtipp".$i]==1){
             $tippa[$i]="1";
             $tippb[$i]="0";
             }
-          elseif($HTTP_POST_VARS["xtipp".$i]==2){
+          elseif($_POST["xtipp".$i]==2){
             $tippa[$i]="0";
             $tippb[$i]="1";
             }
-          elseif($HTTP_POST_VARS["xtipp".$i]==3){
+          elseif($_POST["xtipp".$i]==3){
             $tippa[$i]="0";
             $tippb[$i]="0";
             }
@@ -402,7 +402,7 @@ if($showdurchschntipp==1){ ?>
    if($btip==true){ ?>
     <td class="lmost5" align="right"><acronym title="<?PHP echo $text[2241] ?>"><input class="lmoadminein" type="text" name="xtippa<?PHP echo $i; ?>" size="4" maxlength="4" value="<?PHP echo $tippa[$i]; ?>" onKeyDown="lmotorclk('a','<?PHP echo $i; ?>',event.keyCode)"></acronym></td>
 <?PHP if($pfeiltipp==1){ ?>
-    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="javascript:lmotorauf('a','<?PHP echo $i; ?>',1);" title="<?PHP echo $text[2243]; ?>" onMouseOver="lmoimg('<?PHP echo $i; ?>a',img1)" onMouseOut="lmoimg('<?PHP echo $i; ?>a',img0)"><img src="lmo-admin0.gif" name="ximg<?PHP echo $i; ?>a" width="7" height="7" border="0"></a></td></tr><tr><td><a href="javascript:lmotorauf('a','<?PHP echo $i; ?>',-1);" title="<?PHP echo $text[2243]; ?>" onMouseOver="lmoimg('<?PHP echo $i; ?>b',img3)" onMouseOut="lmoimg('<?PHP echo $i; ?>b',img2)"><img src="lmo-admin2.gif" name="ximg<?PHP echo $i; ?>b" width="7" height="7" border="0"></a></td></tr></table></td>
+    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?PHP echo $i; ?>\",1);" title="<?PHP echo $text[2243]; ?>" onMouseOver="lmoimg(\"<?PHP echo $i; ?>a\",img1)" onMouseOut="lmoimg(\"<?PHP echo $i; ?>a\",img0)"><img src="lmo-admin0.gif" name="ximg<?PHP echo $i; ?>a" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?PHP echo $i; ?>\",-1);" title="<?PHP echo $text[2243]; ?>" onMouseOver="lmoimg(\"<?PHP echo $i; ?>b\",img3)" onMouseOut="lmoimg(\"<?PHP echo $i; ?>b\",img2)"><img src="lmo-admin2.gif" name="ximg<?PHP echo $i; ?>b" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
 <?PHP } 
     }else{
    if($pfeiltipp==1){ ?>
@@ -414,7 +414,7 @@ if($showdurchschntipp==1){ ?>
 <?PHP if($btip==true){ ?>
     <td class="lmost5" align="right"><acronym title="<?PHP echo $text[2242] ?>"><input class="lmoadminein" type="text" name="xtippb<?PHP echo $i; ?>" size="4" maxlength="4" value="<?PHP echo $tippb[$i]; ?>" onKeyDown="lmotorclk('b','<?PHP echo $i; ?>',event.keyCode)"></acronym></td>
 <?PHP if($pfeiltipp==1){ ?>
-    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="javascript:lmotorauf('b','<?PHP echo $i; ?>',1);" title="<?PHP echo $text[2244]; ?>" onMouseOver="lmoimg('<?PHP echo $i; ?>f',img1)" onMouseOut="lmoimg('<?PHP echo $i; ?>f',img0)"><img src="lmo-admin0.gif" name="ximg<?PHP echo $i; ?>f" width="7" height="7" border="0"></a></td></tr><tr><td><a href="javascript:lmotorauf('b','<?PHP echo $i; ?>',-1);" title="<?PHP echo $text[2244]; ?>" onMouseOver="lmoimg('<?PHP echo $i; ?>d',img3)" onMouseOut="lmoimg('<?PHP echo $i; ?>d',img2)"><img src="lmo-admin2.gif" name="ximg<?PHP echo $i; ?>d" width="7" height="7" border="0"></a></td></tr></table></td>
+    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?PHP echo $i; ?>\",1);" title="<?PHP echo $text[2244]; ?>" onMouseOver="lmoimg(\"<?PHP echo $i; ?>f\",img1)" onMouseOut="lmoimg(\"<?PHP echo $i; ?>f\",img0)"><img src="lmo-admin0.gif" name="ximg<?PHP echo $i; ?>f" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?PHP echo $i; ?>\",-1);" title="<?PHP echo $text[2244]; ?>" onMouseOver="lmoimg(\"<?PHP echo $i; ?>d\",img3)" onMouseOut="lmoimg(\"<?PHP echo $i; ?>d\",img2)"><img src="lmo-admin2.gif" name="ximg<?PHP echo $i; ?>d" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
 <?PHP } ?>
 <?PHP }else{ ?>
     <td class="lmost5"><?PHP echo $tippb[$i]; ?></td>

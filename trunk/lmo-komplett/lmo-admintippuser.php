@@ -23,7 +23,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-if($HTTP_SESSION_VARS["lmouserok"]==2){
+if($_SESSION["lmouserok"]==2){
   $users = array("");
   if(!isset($del)){$del="";}
   if(!isset($save)){$save=0;}
@@ -36,7 +36,7 @@ if($HTTP_SESSION_VARS["lmouserok"]==2){
     }
   fclose($datei);
   if($save==-1){ /// neuen User speichern
-    array_push($users,trim($HTTP_POST_VARS["xnickx"])."|".trim($HTTP_POST_VARS["xpassx"])."|5|||||||1|1|EOL");
+    array_push($users,trim($_POST["xnickx"])."|".trim($_POST["xpassx"])."|5|||||||1|1|EOL");
     require("lmo-tippsaveauth.php");
     }
   elseif($del!=""){
@@ -91,37 +91,37 @@ if($HTTP_SESSION_VARS["lmouserok"]==2){
   <tr>
     <td class="lmost4" align="right"><nobr>
 <?PHP
- if($sort!="id"){echo "<a href=\"javascript:chklmolink('".$adds."id');\">";}
+ if($sort!="id"){echo "<a href='{$adds}id' onclick=\"return chklmolink(this.href);\">";}
    echo "ID"; // ID
  if($sort!="id"){echo "</a>";}
 ?></nobr></td>
     <td class="lmost4"><nobr>
 <?PHP
- if($sort!="nick"){echo "<a href=\"javascript:chklmolink('".$adds."nick');\">";}
+ if($sort!="nick"){echo "<a href='{$adds}nick' onclick=\"return chklmolink(this.href);\">";}
    echo $text[2023]; // Nickname
  if($sort!="nick"){echo "</a>";}
 ?></nobr></td>
     <td class="lmost4"><nobr>
 <?PHP
- if($sort!="pass"){echo "<a href=\"javascript:chklmolink('".$adds."pass');\">";}
+ if($sort!="pass"){echo "<a href='{$adds}pass' onclick=\"return chklmolink(this.href);\">";}
    echo $text[323]; // passwort
  if($sort!="pass"){echo "</a>";}
 ?></nobr></td>
     <td class="lmost4"><nobr>
 <?PHP
- if($sort!="name"){echo "<a href=\"javascript:chklmolink('".$adds."name');\">";}
+ if($sort!="name"){echo "<a href='{$adds}name' onclick=\"return chklmolink(this.href);\">";}
    echo $text[2134]; // Name
  if($sort!="name"){echo "</a>";}
 ?></nobr></td>
     <td class="lmost4"><nobr>
 <?PHP
- if($sort!="team"){echo "<a href=\"javascript:chklmolink('".$adds."team');\">";}
+ if($sort!="team"){echo "<a href='{$adds}team' onclick=\"return chklmolink(this.href);\">";}
    echo $text[2027]; // Team
  if($sort!="team"){echo "</a>";}
 ?></nobr></td>
     <td class="lmost4"><nobr>
 <?PHP
- if($sort!="ltipp"){echo "<a href=\"javascript:chklmolink('".$adds."ltipp');\">";}
+ if($sort!="ltipp"){echo "<a href='{$adds}ltipp' onclick=\"return chklmolink(this.href);\">";}
    echo $text[2270]; // letzter Tipp
  if($sort!="ltipp"){echo "</a>";}
 ?></nobr></td>
@@ -183,8 +183,8 @@ if($HTTP_SESSION_VARS["lmouserok"]==2){
     <td class="lmost5"><?PHP echo $team[$i]; ?></td>
     <td class="lmost5"><?PHP if($ltipp[$i]>0){echo date("d.m.Y H:i",$ltipp[$i]);} ?></td>
 <?PHP    
-    echo "<td class=\"lmost5\"><a href=\"javascript:chklmolink('".$added.$nick[$i]."');\">".$text[2098]."</a></td>";
-    echo "<td class=\"lmost5\"><a href=\"javascript:chklmolink('".$addd.$nick[$i]."');\">".$text[82]."</a></td>";
+    echo "<td class=\"lmost5\"><a href='{$added}{$nick[$i]}' onclick=\"return chklmolink(this.href);\">".$text[2098]."</a></td>";
+    echo "<td class=\"lmost5\"><a href='{$addd}{$nick[$i]}' onclick=\"return chklmolink(this.href);\">".$text[82]."</a></td>";
     }
   } ?>
 
@@ -207,10 +207,10 @@ if($HTTP_SESSION_VARS["lmouserok"]==2){
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adda."');\" title=\"".$text[2063]."\">".$text[2063]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adde."');\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$adda' onclick=\"return chklmolink(this.href);\" title=\"".$text[2063]."\">".$text[2063]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$adde' onclick=\"return chklmolink(this.href);\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
   echo "<td class=\"lmost1\" align=\"center\">".$text[2114]."</td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addo."');\" title=\"".$text[2055]."\">".$text[86]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$addo' onclick=\"return chklmolink(this.href);\" title=\"".$text[2055]."\">".$text[86]."</a></td>";
 ?>
     </tr></table></td>
   </tr>
