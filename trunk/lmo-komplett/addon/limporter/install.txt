@@ -1,0 +1,43 @@
+#################################################################################################
+_______________________Installation: Limporter-Addon für LMO v3.99_______________________________
+#################################################################################################
+#                             Welche Dateien werden benötigt?                                   #
+#                                 - lmo-adminmain.php                                           #
+#                                                                                               #
+#               Nicht vergessen vorher ein Backup der Dateien zu machen!!!!                     #
+#                                                                                               #
+#                                                                                               #
+#################################################################################################
+
+In der lmo-tippernew.php folgende Änderungen vornehmen:
+
+###########
+Suche nach:
+###########
+
+  if($todo!="new"){echo "<a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink();' title='{$text[79]}'>{$text[78]}</a>";}else{echo $text[78];}
+  echo "&nbsp;";
+
+############################
+Danach diese Zeile einfügen:
+############################
+
+// Importfunktion Anfang
+  if($todo!="import"){echo "<a href='{$adda}import&amp;imppage=".$newpage."' onclick='return chklmolink();' title=\""."Eine neue Liga aus einem Spielplan importieren"."\">"."Import"."</a>";}else{echo "Import";}
+  echo "&nbsp;";
+// Importfunktion Ende
+
+
+###########
+Suche nach:
+###########
+
+    elseif($todo==""){require(PATH_TO_LMO."/lmo-adminpad.php");}
+
+############################
+Danach diese Zeile einfügen:
+############################
+
+// Importer Start
+  	elseif($todo=="import"){require(PATH_TO_ADDONDIR."/limporter/lmo-adminimport.php");}
+// Importer Ende
