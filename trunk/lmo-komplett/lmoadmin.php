@@ -45,25 +45,22 @@ if($todo=="logout"){
 </head>
 <body>
 <center>
-
 <?PHP
 $action="admin";
-$array = array("");
-require("lmo-adminauth.php");
+$array = array();
 setlocale (LC_TIME, "de_DE");
-require_once("lmo-cfgload.php");
+require("lmo-cfgload.php");
+require("lmo-adminauth.php");
 if (isset($HTTP_POST_VARS["xdeflang"]) && $deflang!=trim($HTTP_POST_VARS["xdeflang"])) {
   $HTTP_SESSION_VARS['lmouserlang']=trim($HTTP_POST_VARS["xdeflang"]);
 }
 if(isset($HTTP_SESSION_VARS["lmouserlang"])){$lmouserlang=$HTTP_SESSION_VARS["lmouserlang"];}else{$lmouserlang=$deflang;}
 require("lmo-langload.php");
-
+require("lmo-adminauth.php");
 if($lmouserok>0){
   require_once("lmo-adminmain.php");
 }
-
 ?>
-
 </center>
 </body>
 </html>

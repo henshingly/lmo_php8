@@ -22,12 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
-function getmicrotime(){
-  list($usec, $sec) = explode(" ",microtime());
-  return ((float)$usec + (float)$sec);
-  }
-$startzeit = getmicrotime();
+
 if($action=="tipp"){
   if(!isset($lmotippername)){$lmotippername="";}
   if(!isset($lmotipperpass)){$lmotipperpass="";}

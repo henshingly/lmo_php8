@@ -22,12 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
-function getmicrotime(){
-  list($usec, $sec) = explode(" ",microtime());
-  return ((float)$usec + (float)$sec);
-}
 
-$startzeit = getmicrotime();
 if(($file!="") && ($action!="")){
   $addm=$PHP_SELF."?file=".$file."&amp;action=";
   if(!isset($endtab)){
@@ -40,7 +35,26 @@ if(($file!="") && ($action!="")){
   }?>
 <table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmomain0" colspan="3" align="center"><? echo $titel; ?></td>
+    <td class="lmomain0" colspan="2" align="center"><? echo $titel; ?></td>
+    <td class="lmomain2" align="right"><?
+  $handle=opendir ('.');
+  while (false!==($f=readdir($handle))) {
+    if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
+      if ($lang[1]=="") $lang[1]=$text[505];?>
+        <a href="<?="{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}"?>" title="<?=$lang[1];?>"
+        ><?
+      $lang[1]==""?$imgfile=$text[505].".gif":$imgfile=$lang[1].".gif";
+      if (!file_exists($imgfile)) {
+        echo $lang[1];
+      }else{
+        $c=@getimagesize($imgfile);
+        echo "<img src='{$imgfile}' border='1' title='{$lang[1]}' {$c[3]} alt='{$lang[1]}'>";
+      }
+      ?></a><?
+    } 
+  }
+  closedir($handle);?>
+    </td>
   </tr><? 
   if(($nticker==1) && ($file!="")){ ?>
   <tr>

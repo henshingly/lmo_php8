@@ -20,15 +20,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
-
-
-//==============================================================================
-// Verzeichnis für das Archiv eintragen
-
-$GLOBALS["ArchivDir"] = "ligen/archiv/";
-
-
-// sonst sind keine Eintragungen zu machen
 //==============================================================================
                    // sichergehen, dass der Slah am Ende dran ist    
 $GLOBALS["ArchivDir"] .= preg_match("=/?=", $ArchivDir) ? "" : "/";
@@ -88,6 +79,7 @@ function VerzeichnisInfo($verz)
 //===============================================//
 function AuswahlArchiv()
 {                  // Zuerst alle unterverzeichnisse auslesen
+  
   $Dirs = LiesVerzeichnisse($GLOBALS["ArchivDir"]);
 
                    // Rahmen ausgeben
