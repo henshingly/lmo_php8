@@ -127,7 +127,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   } /* ende if($nick!="")*/?>
         <tr>
           <th align="left" colspan="6"> <?=$tabdat; ?> &nbsp;</th>
-          <th width="2">&nbsp;</th>
+          <th>&nbsp;</th>
           <th class="nobr" align="right"> <?=$text[33]; ?> &nbsp;</th>
           <th class="nobr" align="right"> <?=$text[34]; ?> &nbsp;</th><? 
    if($hidr!=1){?>
@@ -135,16 +135,16 @@ if ($file!="" && $tipp_tipptabelle1==1) {
    }?>
           <th class="nobr" align="right"> <?=$text[36]; ?> &nbsp;</th><? 
    if($tabpkt==0){?>
-          <th width="2">&nbsp;</th>
+          <th>&nbsp;</th>
           <th class="nobr" <?=$dummy?>> <?=$text[37]?> &nbsp;</th><?
    }
    if($tipp_tippmodus==1){ ?>
-          <th width="2">&nbsp;</th>
+          <th>&nbsp;</th>
           <th class="nobr" colspan="3" align="center"> <?=$text[38]; ?> </th>
           <th class="nobr" align="right"> <?=$text[39]; ?> </th><? 
    }
    if($tabpkt==1){ ?>
-          <th class="nobr" width="2">&nbsp;</th>
+          <th>&nbsp;</th>
           <th class="nobr" <?=$dummy?>><?=$text[37]?> </th><?
    }?>
           <th class="nobr" align="right"><?=$text[37]."/".$text[33]; ?></th>
@@ -208,14 +208,14 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="">&nbsp;<?
     }?>
       </td>
-      <td class="<?=$lmo_tabelle_class; ?> nobr"> <?
+      <td class="<?=$lmo_tabelle_class; ?> nobr" align="left"> <?
     echo $dummy.$teams[$i].$dumm2;
     if (($teamu[$i]!="") && ($urlt==1)) {
-      echo " <a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\">&#8599;</a> ";
+      echo " <a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\">»</a> ";
     }?>
       </td>
-      <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
-      <td class="<?=$lmo_tabelle_class; ?>"><? 
+      <td class="<?=$lmo_tabelle_class; ?>">&nbsp;</td>
+      <td class="<?=$lmo_tabelle_class; ?>" align="center"><? 
     
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
       if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
@@ -256,7 +256,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       if ($teamn[$i]!="") {
         $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong> ".$teamn[$i];
       }?>
-        <a href='#' onclick="alert('<?=mysql_escape_string(htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?=URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt=''><span class='popup'><!--[if IE]><table><tr><td style=\"width: 25em\"><![endif]--><?=nl2br($lmo_tabellennotiz)?><!--[if IE]></td></tr></table><![endif]--></span></a><?
+        <a href='#' onclick="alert('<?=mysql_escape_string(htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?=URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt=''><span class='popup'><?=nl2br($lmo_tabellennotiz)?></span></a><?
       $lmo_tabellennotiz="";
     } else {
       echo "&nbsp;";

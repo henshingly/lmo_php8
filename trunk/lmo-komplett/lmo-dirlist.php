@@ -24,15 +24,16 @@ $addi=$_SERVER["PHP_SELF"]."?todo=".$todo."&amp;file=";
 $_SESSION['liga_sort']=isset($_REQUEST['liga_sort'])?$_REQUEST['liga_sort']:$liga_sort;
 $_SESSION['liga_sort_direction']=isset($_REQUEST['liga_sort_direction'])?$_REQUEST['liga_sort_direction']:$liga_sort_direction;
 
-$verz=opendir(substr(PATH_TO_LMO."/".$dirliga,0,-1));
+$verz=substr($dirliga,-1)=='/'?opendir(substr(PATH_TO_LMO."/".$dirliga,0,-1)):opendir(PATH_TO_LMO."/".$dirliga);
 $liga_counter=0;
 $unbenannte_liga_counter=0;
 $ligadatei=array();
 while($files=readdir($verz)){
   if(strtolower(substr($files,-4))==".l98"){
     $sekt="";
-    $datei = @fopen(PATH_TO_LMO."/".$dirliga.$files,"rb");
+    $datei = fopen(PATH_TO_LMO."/".$dirliga.$files,"rb");
     if ($datei && check_hilfsadmin($files)) {
+      
       $ligadatei[$liga_counter]['file_date']=filemtime(PATH_TO_LMO."/".$dirliga.$files); //Datum
       $ligadatei[$liga_counter]['file_name']=$files;
   
@@ -102,7 +103,7 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
 
 <script type="text/javascript" src="<?=URL_TO_LMO?>/js/sortable/sortabletable.js"></script>
 <script type="text/javascript" src="<?=URL_TO_LMO?>/js/sortable/limSortFunctions.js"></script>
-<table id="ligaliste" class="lmoInner" cellspacing="0">
+<table id="ligaliste" class="lmoInner" cellspacing="0" width="99%">
   <thead>
 		<tr>
 			<th class="nobr" align="left" title="<?=$text[525].' '.$text[529].' '.$text[526]?>">

@@ -97,7 +97,7 @@ if ($action == "tipp") {
       <form name="lmotippedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">  
         <input type="hidden" name="file" value="<?=$file?>">  
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" width="99%">
           <caption><? echo $text['tipp'][158]; ?></caption>
           <tr>
             <th colspan="2"><? echo $text['tipp'][44]; ?></th>
@@ -129,8 +129,7 @@ if ($action == "tipp") {
             <td align="left"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<? echo $_SESSION['lmotipperpass']; ?>"></td>
           </tr>
           <tr>
-            <td>&nbsp</td>
-&nbsp;</td>
+            <td>&nbsp;</td>
             <td align="left"><input class="lmo-formular-button" title="<? echo $text[311] ?>" type="submit" name="xtippersub" value="<? echo $text['tipp'][12]; ?>"></td>
           </tr>
         </table>
@@ -139,7 +138,7 @@ if ($action == "tipp") {
   </tr>
   <tr>
     <td>
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" width="99%">
         <tr>
           <th colspan="3"><? echo $text['tipp'][45]; ?></td>
         </tr>
@@ -149,7 +148,7 @@ if ($action == "tipp") {
             <form name="lmotippedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
               <input type="hidden" name="action" value="tipp">
               <input type="hidden" name="todo" value="newtipper">
-              <acronym title="<? echo $text['tipp'][11] ?>"><input class="lmo-formular-button" type="submit" name="xtippersub" value="<? echo $text['tipp'][11]; ?>" ></acronym>
+              <input class="lmo-formular-button" type="submit" name="xtippersub" value="<? echo $text['tipp'][11]; ?>" >
             </form>
           </td>
         </tr>
@@ -158,7 +157,7 @@ if ($action == "tipp") {
   </tr>
   <tr>
     <td>
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" width="99%">
         <tr>
           <th colspan="3"><? echo $text['tipp'][4]; ?></td>
         </tr>
@@ -196,7 +195,7 @@ if ($action == "tipp") {
       <form name="lmotippedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="getpass">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" width="99%">
           <tr>
             <th colspan="3"><? echo $text['tipp'][74]; ?></td>
           </tr><?  
@@ -207,12 +206,12 @@ if ($action == "tipp") {
           </tr><? 
             }?>
           <tr>
-            <td align="right"><? echo " ".$text['tipp'][23]." ".$text['tipp'][218]." ".$text['tipp'][219]; ?></td>
-            <td align="left"><acronym title="<? echo $text[307] ?>"><input class="lmo-formular-input" type="text" name="xtippername2" size="16" maxlength="32" value="<? echo $xtippername2; ?>"></acronym>
+            <td align="right"><acronym title="<? echo $text[307] ?>"><? echo " ".$text['tipp'][23]." ".$text['tipp'][218]." ".$text['tipp'][219]; ?></acronym></td>
+            <td align="left"><input class="lmo-formular-input" type="text" name="xtippername2" size="16" maxlength="32" value="<? echo $xtippername2; ?>"></td>
           </tr>
           <tr>
             <td align="right"><? echo $text['tipp'][75]; ?></td>
-            <td align="left"><acronym title="<? echo $text['tipp'][76] ?>"><input class="lmo-formular-button" type="submit" name="xtippersub" value="<? echo $text['tipp'][76]; ?>" ></acronym></td>
+            <td align="left"><input class="lmo-formular-button" type="submit" name="xtippersub" value="<? echo $text['tipp'][76]; ?>" ></td>
           </tr>
         </table>
       </form>

@@ -21,7 +21,7 @@
     <td class="lmoFooter" colspan="2">
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td valign="bottom" align="left"><!--Archiv--><!--Ligenuebersicht--></td>
+          <td valign="bottom" align="left"><!--Ligenuebersicht--></td>
           <td valign="bottom" align="right"><!--LetzteAuswertung--><br><!--Berechnungszeit--><br><!--Infolink--></td>
         </tr>
 	    </table>

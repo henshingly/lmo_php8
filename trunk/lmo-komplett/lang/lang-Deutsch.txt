@@ -52,7 +52,7 @@
 051=Dummy
 052=Herzlich Willkommen!
 053=Bitte wählen Sie eine Liga aus
-054=<acronym title="Liga Manager Online">LMO</acronym> 4.0&beta;1
+054=<acronym title="Liga Manager Online">LMO</acronym> 4.0&beta;2
 055=© 1997-2004 LMO-Group
 056=[ <a href="http://www.hollwitz.de/" target="_blank" title="Dieses und weitere Scripte können Sie auf meiner PHP-Seite downloaden">Hollwitz.Net(z)</a> | <a href="http://lmo.sourceforge.net/" target="_blank" title="Die neueste Version bei Sourceforge">LMO-Projekt</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
 057=Die Statistik 1 von
@@ -113,7 +113,7 @@
 112=Notiz zum Spiel (max. 255 Zeichen, eine eventuelle Grüne-Tisch-Entscheidung braucht hier nicht nochmal erwähnt zu werden)
 113=Name der Liga
 114=Klicken Sie hier, um Ihre Änderungen zu speichern
-115==> zur Besucheransicht
+115=» zur Besucheransicht
 116=So sehen Ihre Besucher das Script (wird in einem neuen Fenster geöffnet)
 117=Sie haben keine Änderungen vorgenommen.\nTrotzdem speichern?
 118=Der Name der Liga wird den Nutzern immer als Überschrift angezeigt (max. 60 Zeichen, z.B. '1. Bundesliga 2001/02')
@@ -258,7 +258,7 @@
 257=Format der Anstoßtermine
 258=In welchem Format sollen die Anstoßtermine dargestellt werden?
 259=von
-260=Weiter =>
+260=Weiter »
 261=Klicken Sie hier, um die Daten zu übernehmen und zum nächsten Schritt zu gelangen
 262=URL des Spielber.
 263=Tragen Sie hier den Link zum Spielbericht ein, falls Sie das anbieten möchten. (bitte eine komplette URL, die wird dann übrigens immer in einem neuen Fenster geöffnet)
@@ -290,7 +290,7 @@
 289=Liga speichern
 290=Klicken Sie hier, um Ihre neue Liga zu speichern und anschließend mit der detailierten Einrichtung zu beginnen
 291=<b>Herzlichen Glückwunsch</b><br><br>Ihre neue Liga ist jetzt vorbereitet worden. Sie können nun<br>beginnen, die detailierten Einstellungen vorzunehmen.
-292==> Eingabe der Mannschaften
+292=» Eingabe der Mannschaften
 293=Als erstes sollten Sie nun die Namen der Mannschaften eingeben, bevor Sie weitere Bearbeitungen vornehmen
 294=Öffnen einer Liga
 295=Löschen einer Liga
@@ -508,7 +508,7 @@
 507=Unbenannte Liga
 508=« zum Archiv
 509=Archiv
-510=Soll den Nutzern ein Link zum Archiv angezeigt werden?
+510=Soll den Nutzern das Archiv angezeigt werden?
 511=Sollen die Spielpläne dargestellt werden?
 512=Soll die Ergebnisübersicht dargestellt werden?
 513=Sollen die Tabellen dargestellt werden?
@@ -560,6 +560,7 @@
 559=erweiterte Rechte
 560=Gibt dem Hilfsadministrator erweiterte Rechte
 561=Achtung! Diese Einstellungen können eine <br>bestehende Liga unbrauchbar machen. <br>Bitte benutzen Sie diese Optionen nur, <br>wenn Sie wirklich sicher sind.<br>
+562=zurück
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde

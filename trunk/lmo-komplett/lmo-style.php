@@ -7,13 +7,11 @@ require(dirname(__FILE__)."/init.php");
 .message{
   margin: 0;
   color: #080;
-  background-color:transparent;
 }
 
 .error{
   margin: 0;
   color: #a00;
-  background-color:transparent;
 }
 
 .nobr {
@@ -459,7 +457,8 @@ font-size:100%;
 
 }
 
-.colorpicker {
+span.colorpicker {
+  background-image:url("<?=URL_TO_IMGDIR?>/blank.gif");
   border: 1px solid #000; 
   font-size:15px; 
   text-decoration: none;
@@ -469,25 +468,30 @@ font-size:100%;
   background-repeat:		no-repeat;
 	margin:					0 2px;
   display:inline;
+  cursor:crosshair;
 }
 
-.colorpicker.nocolor {
-  background:url("<?=URL_TO_IMGDIR?>/transparent.gif");
-  /*background-color:red;*/
+span.colorpicker.nocolor {
+  display:inline;
+  background-image:url("<?=URL_TO_IMGDIR?>/transparent.gif");
+  background-repeat: repeat;
 }
-.colorpicker.invalid {
-  background:url("<?=URL_TO_IMGDIR?>/attention.gif") 50% 50% no-repeat;
-  /*background-color:green;*/
+span.colorpicker.invalid {
+  display:inline;
+  background-image:url("<?=URL_TO_IMGDIR?>/attention.gif");
+  background-position:center;
+  background-repeat: no-repeat;
   border: 0; 
 }
 
-a.colorpicker table {
+span.colorpicker table {
   background:#fff;
   color:#000;
 }
 
-.sort-arrow {
-	width:					11px;
+.sortarrow {
+	background-image:		url("<?=URL_TO_IMGDIR?>/blank.png");
+  width:					11px;
 	height:					11px;
 	background-position:	center center;
 	background-repeat:		no-repeat;
@@ -495,11 +499,13 @@ a.colorpicker table {
   display:inline;
 }
 
-.sort-arrow.descending {
+.sortarrow.descending {
+  display:inline;
 	background-image:		url("<?=URL_TO_IMGDIR?>/downsimple.png");
 }
 
-.sort-arrow.ascending {
+.sortarrow.ascending {
+  display:inline;
   background-image:		url("<?=URL_TO_IMGDIR?>/upsimple.png");
 }
 a span.popup, a:link span.popup{
@@ -512,7 +518,7 @@ a:hover span.popup{
   background-color: <?=$lmo_middle_background1?>; 
   color: <?=$lmo_middle_color1?>;
   border: <?=$lmo_middle_border1?>;
-  max-width: 15em;
+  width: 15em;
 	margin: 1.5em 0 0 -4em;  
   padding: 0.2em;
 	z-index: 999;
@@ -521,4 +527,8 @@ a:hover span.popup{
   text-align:left;
 }
 
-a:hover span.popup{\-moz-border-radius: 8px;}
+a:hover>span.popup {
+  width:auto;
+  max-width:15em;
+  \-moz-border-radius: 8px;
+}

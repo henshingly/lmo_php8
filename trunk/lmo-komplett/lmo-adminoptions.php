@@ -34,6 +34,7 @@ if($save==1){
       if($dirliga==""){$dirliga="./";}
       $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
       if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergänzen falls nicht vorhanden
+      $ArchivDir=$dirliga.'archiv/';
       
       $deflang=isset($_POST["xdeflang"])?trim($_POST["xdeflang"]):$deflang;
       

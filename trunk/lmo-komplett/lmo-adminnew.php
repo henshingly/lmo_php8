@@ -28,7 +28,6 @@ $xanzst=isset($_POST['xanzst'])?$_POST['xanzst']:0;
 $xanzsp=isset($_POST['xanzsp'])?$_POST['xanzsp']:0;
 $xteams=isset($_POST['xteams'])?$_POST['xteams']:0;
 
-print_r($array);
 if ($newpage == 0) {
   if ($xfile == "") {
     $xfile = "noname";

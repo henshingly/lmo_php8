@@ -108,7 +108,7 @@ SortableTable.prototype.initHeader = function (oSortTypes) {
 		img = this.document.createElement("pre");
     myText = document.createTextNode("  ");
 		img.appendChild(myText);
-    img.className = "sort-arrow";
+    img.className = "sortarrow";
     //for (i in img.style) alert(i+" "+img.style[i])
 		c.style.cursor="n-resize";
     c.appendChild(img);
@@ -143,13 +143,14 @@ SortableTable.prototype.uninitHeader = function () {
 SortableTable.prototype.updateHeaderArrows = function () {
 	var cells = this.tHead.rows[0].cells;
 	var l = cells.length;
-	var img;
+  var img;
 	for (var i = 0; i < l; i++) {
 		img = cells[i].lastChild;
-		if (i == this.sortColumn)
-			img.className = "sort-arrow " + (this.descending ? "descending" : "ascending");
-		else
-			img.className = "sort-arrow";
+		if (i == this.sortColumn) {
+      img.className = "sortarrow " + (this.descending ? "descending" : "ascending");
+		} else {
+			img.className = "sortarrow";
+    }
 	}
 };
 
@@ -279,17 +280,23 @@ SortableTable.prototype.getRowValue = function (oRow, sType, nColumn) {
 
 	var s;
 	var c = oRow.cells[nColumn];
-  s = SortableTable.getInnerText(c);
-  var cs = c.childNodes;
-	var l = cs.length;
-	return this.getValueFromString(s, sType);
+  if (typeof c != "undefined") {
+    s = SortableTable.getInnerText(c);
+    var cs = c.childNodes;
+  	var l = cs.length;
+  	return this.getValueFromString(s, sType);
+  } else return '';
 };
 
 SortableTable.getInnerText = function (oNode) {
 	var s = "";
-	var cs = oNode.childNodes;
-	var l = cs.length;
-	for (var i = 0; i < l; i++) {
+  if (typeof oNode != "undefined") {
+    var cs = oNode.childNodes;
+    var l = cs.length;
+  } else {
+    var l = 0;
+  }
+  for (var i = 0; i < l; i++) {
 		switch (cs[i].nodeType) {
 			case 1: //ELEMENT_NODE
 				s += SortableTable.getInnerText(cs[i]);

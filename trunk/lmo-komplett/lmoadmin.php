@@ -40,11 +40,7 @@ if($todo=="logout"){
 <head>
 <title>LMO Admin</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
-  <script type='text/javascript'>
-    if (window.captureEvents && document.layers) {
-      document.write('<link rel=\"stylesheet\" href=\"<?=URL_TO_LMO?>/lmo-style-nc.php\" type=\"text/css\">');
-    }
-  </script>
+  <link type='text/css' rel='stylesheet' href='<?=URL_TO_LMO?>/lmo-style-nc.php'>
   <style type='text/css'>@import url('<?=URL_TO_LMO?>/lmo-style.php');</style>
 </head>
 <body>
