@@ -84,7 +84,7 @@ if($_SESSION["lmouserok"]==2){
       if($dummy>-1){$datum2[$st-1]=strftime("%d.%m.%Y",$dummy);}else{$datum2[$st-1]="";}
       }
   }
-    if($hands==1){for($i=$st-1;$i<$stanz;$i++){$handp[$i]=0;}}
+    if($hands==1){for($i=$st-1;$i<$anzst;$i++){$handp[$i]=0;}}
     for($i=0;$i<$anzsp;$i++){
       if($lmtype==0){
         $dum1=trim($_POST["xatdat".$i]);
@@ -217,6 +217,9 @@ if($_SESSION['lmouserok']==2){
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center" class="lmomain0"><?=$titel?></td>
+  </tr>
   <tr>
     <td align="center">
       <table cellspacing="0" cellpadding="0" border="0">

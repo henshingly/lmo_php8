@@ -112,6 +112,9 @@ if($file!=""){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
+    <td align="center" colspan="2" class="lmomain0"><?=$titel?></td>
+  </tr>
+  <tr>
     <td valign="top">
       <table cellspacing="0" cellpadding="0" border="0">
         <tr><td align="right"<?if ($show==0) {?> class="lmost1"><?=$text[183]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text[183]; ?></a><?}?></td></tr><?
