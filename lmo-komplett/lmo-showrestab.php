@@ -194,7 +194,6 @@ if(isset($file) && $file!=""){
 <tr>  
 <td class="lmomain2" align="center">
 <?PHP
-require("lmo-zustat-config.php");
 if ($einzutore==1) { 
 $strs=".l98";
 $stre=".l98.php";
@@ -455,7 +454,6 @@ if (($anzteams-($anzst/2+1))!=0){
 <tr>  
 <td class="lmomain2" align="center">
 <?PHP 
-require("lmo-zustat-config.php");
 if ($einzutoretab==1) {
 $strs=".l98";
 $stre=".l98.php";

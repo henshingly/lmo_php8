@@ -152,7 +152,6 @@ if($file!=""){
 <td class="lmomain2" align="center">
 
 <?PHP
-require("lmo-zustat-config.php");
 if ($einzutore==1) {  
 $strs=".l98";
 $stre=".l98.php";

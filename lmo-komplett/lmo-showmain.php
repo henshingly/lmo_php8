@@ -85,7 +85,7 @@ var msg1="";
     <td class="lmomain1"><nobr>
 
 <?PHP
-  include("lmo-zustat-config.php");
+
   if ($einspieler==1) { 
   if(!isset($mittore)){$mittore=0;}
   } 
@@ -213,4 +213,3 @@ var msg1="";
 </table>
 
 <?PHP } ?>
-

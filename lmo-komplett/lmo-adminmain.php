@@ -272,7 +272,7 @@ function opencal(feld,startdat){
     <td class="lmomain1"><nobr>
 
 <?PHP
-include("lmo-zustat-config.php");
+
 if($lmouserok==2){
   if($todo!="new"){echo "<a href=\"javascript:chklmolink('".$adda."new&amp;newpage=".$newpage."');\" title=\"".$text[79]."\">".$text[78]."</a>";}else{echo $text[78];}
   echo "&nbsp;";
