@@ -74,10 +74,10 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   $template = new LBTemplate(LMO_TEMPLATE); 
 }
 
-if ($action!="tipp") {
+//if ($action!="tipp") {
 
   //Titel
-  $output_titel.=$file==""?$text[53]:$titel; 
+  if ($action!="tipp") {$output_titel.=$file==""?$text[53]:$titel; }
   
   //Stylesheet
   $output_stylesheet.="
@@ -206,53 +206,58 @@ if ($action!="tipp") {
       }
   	}
     //Spieler-Addon
-    if($action=="spieler")if ($mittore==1)                {require(PATH_TO_ADDONDIR."/spieler/lmo-statshow.php");}
+    if($action=="spieler"){if ($mittore==1)                {require(PATH_TO_ADDONDIR."/spieler/lmo-statshow.php");}}
     //Spieler-Addon
-    if($action=="info")                                   {require(PATH_TO_LMO."/lmo-showinfo.php");}
+    
+	if($action=="info")                                   {require(PATH_TO_LMO."/lmo-showinfo.php");}
     $p0="p1";$$p0=c(1).$addm.c(0);
-  }elseif ($backlink==1)                                  {require(PATH_TO_LMO."/lmo-showdir.php");}
+  }elseif ($backlink==1 && $action!="tipp")                                  {require(PATH_TO_LMO."/lmo-showdir.php");}
+  if($action=="tipp") require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");
   $output_hauptteil.=ob_get_contents();ob_end_clean();
   
-  if ($file!="") { 
-    //Letzte Auswertung
-    $output_letzteauswertung.=$text[406].':&nbsp;'.$stand;
-    
-    //SaveHTML
-    if ($einsavehtml==1) {
-      ob_start();?>
-        <table width="100%" cellspacing="0" cellpadding="0" border="0">
-          <tr><? 
-      if($lmtype==0 || $druck==1){include(PATH_TO_LMO."/lmo-savehtml.php");}?> 
-           <td class="lmomain1" align="center"><? 
-      if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' target='_blank' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
-            </td>  
-            <td class="lmomain1" align="center"><? 
-      if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' target='_blank' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
-            </td>
-          </tr>
-        </table><? 
-      $output_savehtml.=ob_get_contents();ob_end_clean();
-    }
-    
-    //Ligenübersicht
-    if($backlink==1){
-      $output_ligenuebersicht.="<a href='{$_SERVER['PHP_SELF']}' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
-    }
-  }else{
-    if($archivlink==1){
-      if (isset($archiv) && $archiv!=""){
-        $output_archiv.="<a href=\"".$_SERVER["PHP_SELF"]."\">{$text[391]}</a><br>";
-      }
-      if (!isset($archiv) || $archiv!="dir"){
-        $output_archiv.="<a href=\"".$_SERVER["PHP_SELF"]."?archiv=dir\">{$text[508]}</a><br>";
+  if ($action!="tipp") {
+    if ($file!="") { 
+      //Letzte Auswertung
+      $output_letzteauswertung.=$text[406].':&nbsp;'.$stand;
+      
+      //SaveHTML
+      if ($einsavehtml==1) {
+        ob_start();?>
+          <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr><? 
+        if($lmtype==0 || $druck==1){include(PATH_TO_LMO."/lmo-savehtml.php");}?> 
+             <td class="lmomain1" align="center"><? 
+        if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' target='_blank' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
+              </td>  
+              <td class="lmomain1" align="center"><? 
+        if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' target='_blank' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
+              </td>
+            </tr>
+          </table><? 
+        $output_savehtml.=ob_get_contents();ob_end_clean();
       }
       
+      //Ligenübersicht
+      if($backlink==1){
+        $output_ligenuebersicht.="<a href='{$_SERVER['PHP_SELF']}' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
+      }
+    }else{
+      if($archivlink==1){
+        if (isset($archiv) && $archiv!=""){
+          $output_archiv.="<a href=\"".$_SERVER["PHP_SELF"]."\">{$text[391]}</a><br>";
+        }
+        if (!isset($archiv) || $archiv!="dir"){
+          $output_archiv.="<a href=\"".$_SERVER["PHP_SELF"]."?archiv=dir\">{$text[508]}</a><br>";
+        }
+        
+      }
+    }
+    //Berechnungszeit
+    if($calctime==1){
+       $output_berechnungszeit.=$text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
     }
   }
-  //Berechnungszeit
-  if($calctime==1){
-     $output_berechnungszeit.=$text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
-  }
+  
   
   //Spieler-Addon
    if ($file!="" && $einspieler==1 && $mittore==1) {
@@ -274,7 +279,7 @@ if ($action!="tipp") {
   //Tippspiel-Addon
   $output_tippspiel="";
   if ($eintippspiel==1) {
-    if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
+	if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
       $output_tippspiel.="<a href='{$_SERVER['PHP_SELF']}?action=tipp&amp;file={$file}'>{$text['tipp'][0]}</a>&nbsp;&nbsp;";
     }
   }
@@ -310,5 +315,5 @@ if ($action!="tipp") {
   $template->show();
   
   
-}else {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");d($template->toString());}
+//}else {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");d($template->toString());}
 ?>

@@ -11,8 +11,8 @@ TABLE { padding: 0; margin: 0; }
 
 .lmomain0 { padding: 2px; background: $tababack; color: $tabacoti; font-family: $tabafont; font-size: $tabatite; font-weight: bold; }
   
-.lmomain1 { padding: 2px; font-weight: bold; font-size: $tabasize;}
-.lmomain1,.lmomain1 a { background: $tababack; color: $tabacolo; font-family: $tabafont;  }
+.lmomain1 { padding: 2px; font-weight: bold; font-size: $tabasize; white-space:nowrap}
+.lmomain1,.lmomain1 a { background: $tababack; color: $tabacolo; font-family: $tabafont; }
   .lmomain1 a:link, .lmomain1 a:visited { font-weight: normal; text-decoration: none; }
   .lmomain1 a:hover, .lmomain1 a:active { background: $tabacolo; color: $tababack; font-weight: normal; text-decoration: none; }
 
