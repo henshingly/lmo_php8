@@ -22,60 +22,77 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-if($file!="" && $tipp_tipptabelle1==1){
-  if($endtab==0){
+if ($file!="" && $tipp_tipptabelle1==1) {
+  if ($endtab==0) {
     $endtab=$anzst;
     $tabdat="";
-    }
-  else{
+  } else {
     $tabdat=$endtab.". ".$text[2];
-    }
-  if(!isset($tabtype)){$tabtype=0;}
-  if(!isset($nick)){$nick=$lmotippername;}
-  if($tipp_einsichterst==1){require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");}
-  if($file!=""){
-    if($nick!=""){
+  }
+  if (!isset($tabtype)) {
+    $tabtype=0;
+  }
+  if (!isset($nick)) {
+    $nick=$lmotippername;
+  }
+  if ($tipp_einsichterst==1) {
+    require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
+  }
+  if ($file!="") {
+    if ($nick!="") {
       $m=0;
       $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$nick.".tip";
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileall.php");
       $anztipper=1;
-      if(($endtab>1) && ($tabtype==0) && ($tabdat!="")){
+      if (($endtab>1) && ($tabtype==0) && ($tabdat!="")) {
         $endtab--;
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
         $endtab++;
         $platz1 = array("");
         $platz1 = array_pad($array,$anzteams+1,"");
-        for($x=0;$x<$anzteams;$x++){$x3=intval(substr($tab0[$x],42));$platz1[$x3]=$x+1;}
+        for ($x=0; $x<$anzteams; $x++) {
+          $x3=intval(substr($tab0[$x],42));
+          $platz1[$x3]=$x+1;
         }
-      require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
       }
-    elseif($tipp_tipptabelle==1){ // alle Tipper
+      require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
+    } else if ($tipp_tipptabelle==1) {
+      // alle Tipper
       $tabdat="";
       $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
       $dummy=array("");
       $liga=substr($file, strrpos($file,"/")+1, -4);
-      while($files=readdir($verz)){
-        if(strtolower(substr($files,0,strrpos($files,"_")))==strtolower($liga) && strtolower(substr($files,-4))==".tip"){array_push($dummy,$files);}
+      while ($files=readdir($verz)) {
+        if (strtolower(substr($files,0,strrpos($files,"_")))==strtolower($liga) && strtolower(substr($files,-4))==".tip") {
+          array_push($dummy,$files);
         }
+      }
       closedir($verz);
       array_shift($dummy);
       $anztipper=count($dummy);
-      for($m=0;$m<$anztipper;$m++){
-      	$nick=substr($dummy[$m],strrpos($dummy[$m],"_")+1,-4);
-      	$tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$nick.".tip";
+      for ($m=0; $m<$anztipper; $m++) {
+        $nick=substr($dummy[$m],strrpos($dummy[$m],"_")+1,-4);
+        $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$nick.".tip";
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileall.php");
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
-        }
-      $nick="";
       }
+      $nick="";
     }
+  }
   $platz0 = array("");
   $platz0 = array_pad($array,$anzteams+1,"");
-  for($x=0;$x<$anzteams;$x++){$x3=intval(substr($tab0[$x],42));$platz0[$x3]=$x+1;}
-  if($tabdat==""){$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;nick=".$nick."&amp;tabtype=";}else{$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=".$endtab."&amp;PHPSESSID=".$PHPSESSID."&amp;nick=".$nick."&amp;tabtype=";}
-  $addt2=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;tabtype=".$tabtype."&amp;nick=".$nick."&amp;endtab=";
-  $addt=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=&amp;PHPSESSID=".$PHPSESSID."&amp;nick=";
-?>
+  for ($x=0; $x<$anzteams; $x++) {
+    $x3=intval(substr($tab0[$x],42));
+    $platz0[$x3]=$x+1;
+  }
+  if ($tabdat=="") {
+    $addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."nick=".$nick."&amp;tabtype=";
+  } else {
+    $addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=".$endtab."&amp;nick=".$nick."&amp;tabtype=";
+  }
+  $addt2=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;tabtype=".$tabtype."&amp;nick=".$nick."&amp;endtab=";
+  $addt=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=&amp;nick=";
+  ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
@@ -114,7 +131,8 @@ if($file!="" && $tipp_tipptabelle1==1){
 ?>
     <tr></table></td>
   </tr>
-<?PHP } // ende if($nick!="") ?>
+<?PHP } // ende if($nick!="") 
+?>
   <tr>
     <td class="lmost4" align="center">
     <?PHP if($nick==$lmotippername && $nick!=""){echo $text['tipp'][173];}elseif($nick!=""){echo $text['tipp'][181]." ".$nick;}else{echo $text['tipp'][184];} ?>
@@ -138,20 +156,20 @@ if($file!="" && $tipp_tipptabelle1==1){
   $i=$i+1;
 
   if($i<>$tabtype && $einhinrueck==1){
-  echo "class=\"lmost0\"><a href=\"".$addt1.$i."\" title=\"".$text[490]."\">".$text[490]."</a>";
+  echo "class=\"lmost0\"><a href=\"".$addt1.$i."\" title=\"".$text[4002]."\">".$text[4002]."</a>";
   	}
   elseif($einhinrueck==1){
-      echo "class=\"lmost1\">".$text[490];
+      echo "class=\"lmost1\">".$text[4002];
   	}	
   echo "&nbsp;</td>";
   
   echo "<td ";
   $i=$i-1;
   if($i<>$tabtype && $einhinrueck==1){
-  echo "class=\"lmost0\"><a href=\"".$addt1.$i."\" title=\"".$text[476]."\">".$text[476]."</a>";
+  echo "class=\"lmost0\"><a href=\"".$addt1.$i."\" title=\"".$text[4003]."\">".$text[4003]."</a>";
   	}
   elseif($einhinrueck==1){
-      echo "class=\"lmost1\">".$text[476];
+      echo "class=\"lmost1\">".$text[4003];
   	}
   echo "&nbsp;</td>";
 ?>

@@ -142,9 +142,8 @@ function lmotorauf(x,y,z){
     <td class="lmomain1" width="8">&nbsp;</td>
     <td class="lmomain1" align="right"><nobr>
 <?PHP
-    if($tipp_regeln==1){
-      echo "<a href=\"".$tipp_regelnlink."\">".$text['tipp'][185]."</a>";
-      echo "&nbsp;&nbsp;";
+    if($tipp_regeln==1){?>
+      <a href='<?=URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
       }
     echo "<a href=\"".$adda."logout\">".$text[88]."</a>";
     echo "&nbsp;&nbsp;";

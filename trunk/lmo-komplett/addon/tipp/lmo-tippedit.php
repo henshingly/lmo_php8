@@ -26,7 +26,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+//require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if($file!=""){
   $tipp_showzus=0;
   require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcpkt.php");

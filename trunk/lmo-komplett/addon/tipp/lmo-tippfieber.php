@@ -29,7 +29,7 @@ if($file!="" && $tipp_tippfieber==1){
     $stat2=trim($_POST["xstat2"]);
     $kurvenmodus=trim($_POST["xkurvenmodus"]);
     }
-
+  
   if(!isset($eigpos)){$eigpos=0;}
   if(!isset($stat1)){$stat1=-1;}
   if(!isset($stat2)){$stat2=-1;}
@@ -37,6 +37,7 @@ if($file!="" && $tipp_tippfieber==1){
   if(!isset($kurvenmodus)){$kurvenmodus=1;}
   $addg=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=fieber&amp;file=".$file."&amp;stat1=";
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcgraph.php");
+  echo $anztipper;
 ?>
 <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
   <input type="hidden" name="action" value="tipp">
@@ -61,7 +62,7 @@ if($file!="" && $tipp_tippfieber==1){
           <option value="-1"<?if($stat1==-1){echo " selected";}?>>___</option><?
   for($i=0;$i<$anztipper;$i++){
     $j=intval(substr($tab[$i],-7));?>
-          <option value="$j"<?if($stat1==$j){echo " selected";}?>><?=$tippernick[$j]?></option><?
+          <option value="<?=$j?>"<?if($stat1==$j){echo " selected";}?>><?=$tippernick[$j]?></option><?
     }?>
         </select>
       </td>
@@ -86,7 +87,7 @@ if($file!="" && $tipp_tippfieber==1){
          <input type="submit" name="best" value="<? echo $text['tipp'][236]; ?>">
       </td>
     </tr><?
-  if (count($tippernick)>1) {?>
+  if (isset($tippernick) && count($tippernick)>1) {?>
     <tr>
       <td colspan="4" align="center" class="lmost3">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><?

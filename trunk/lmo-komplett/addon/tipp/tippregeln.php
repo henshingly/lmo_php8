@@ -28,8 +28,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require(PATH_TO_LMO."/lmo-langload.php");
-require(PATH_TO_ADDONDIR."/tipp/PATH_TO_LMO."/lmo-cfgload.php"load.php");
+require(dirname(__FILE__)."/../../init.php");
 ?>
 <style type="text/css">
   body { background: #fff; color: #000; font-family: sans-serif; font-size: 91%; }
