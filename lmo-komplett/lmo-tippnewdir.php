@@ -115,7 +115,7 @@ if($ftype!=""){
                 if($st>0){$t1=$st;}
                 }
               echo "<option value=\"0\"";if($t1==0){echo " selected";}echo ">"; // alle Spieltage
-              if($t2==$text[2]){echo $text[728];}else{echo $text[729];}
+              if($t2==$text[2]){echo $text[2228];}else{echo $text[2229];}
               echo "</option>";
               
               for($y=1;$y<=$anzst;$y++){
@@ -162,7 +162,7 @@ if($ftype!=""){
 
   if($iptype=="auswert"){
     echo "<option value=\"0\"";if($t1==0){echo " selected";}echo ">"; // alle Spieltage
-    if($t2==$text[2]){echo $text[728];}else{echo $text[729];}
+    if($t2==$text[2]){echo $text[2228];}else{echo $text[2229];}
     echo "</option>";
     }
 
@@ -184,7 +184,7 @@ if($ftype!=""){
     }
 ?>
     </select>
-    <?PHP echo $text[664]; //Tipper
+    <?PHP echo $text[2164]; //Tipper
     $start1=1;
     if($liga==substr($files,0,-4) && (($save==2 && $iptype=="auswert") || ($save==3 && $iptype=="einsicht"))){
     	if(isset($start)){$start1=$start;}
@@ -205,7 +205,7 @@ if($ftype!=""){
     	}
     ?> 
     <input class="lmoadminein" type="text" name="ende" size="2" maxlength="4" value="<?PHP echo $ende1; ?>">
-    <input class="lmoadminbut" type="submit" name="best" value="<?PHP if($iptype=="einsicht"){echo $text[656];}else{echo $text[558];}  ?>">
+    <input class="lmoadminbut" type="submit" name="best" value="<?PHP if($iptype=="einsicht"){echo $text[2156];}else{echo $text[2058];}  ?>">
     </form>
       </td>
      </tr>

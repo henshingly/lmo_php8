@@ -47,7 +47,7 @@ if($file!="" && $st>0 && $lmotippername!=""){
       echo "<font color=\"#ff0000\">".$text[283]."</font>";
       exit;
       }else{
-        //echo "<font color=\"#008800\">".$text[541]."<br></font>";
+        //echo "<font color=\"#008800\">".$text[2041]."<br></font>";
         }
     flock($datei,2);
 

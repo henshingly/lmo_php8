@@ -76,7 +76,7 @@ if($HTTP_SESSION_VARS["lmouserok"]==2){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?PHP echo $text[614] ?></td>
+    <td class="lmost1" align="center"><?PHP echo $text[2114] ?></td>
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 
@@ -98,7 +98,7 @@ if($HTTP_SESSION_VARS["lmouserok"]==2){
     <td class="lmost4"><nobr>
 <?PHP
  if($sort!="nick"){echo "<a href=\"javascript:chklmolink('".$adds."nick');\">";}
-   echo $text[523]; // Nickname
+   echo $text[2023]; // Nickname
  if($sort!="nick"){echo "</a>";}
 ?></nobr></td>
     <td class="lmost4"><nobr>
@@ -110,19 +110,19 @@ if($HTTP_SESSION_VARS["lmouserok"]==2){
     <td class="lmost4"><nobr>
 <?PHP
  if($sort!="name"){echo "<a href=\"javascript:chklmolink('".$adds."name');\">";}
-   echo $text[634]; // Name
+   echo $text[2134]; // Name
  if($sort!="name"){echo "</a>";}
 ?></nobr></td>
     <td class="lmost4"><nobr>
 <?PHP
  if($sort!="team"){echo "<a href=\"javascript:chklmolink('".$adds."team');\">";}
-   echo $text[527]; // Team
+   echo $text[2027]; // Team
  if($sort!="team"){echo "</a>";}
 ?></nobr></td>
     <td class="lmost4"><nobr>
 <?PHP
  if($sort!="ltipp"){echo "<a href=\"javascript:chklmolink('".$adds."ltipp');\">";}
-   echo $text[770]; // letzter Tipp
+   echo $text[2270]; // letzter Tipp
  if($sort!="ltipp"){echo "</a>";}
 ?></nobr></td>
     <td class="lmost4">&nbsp;</td>
@@ -183,13 +183,13 @@ if($HTTP_SESSION_VARS["lmouserok"]==2){
     <td class="lmost5"><?PHP echo $team[$i]; ?></td>
     <td class="lmost5"><?PHP if($ltipp[$i]>0){echo date("d.m.Y H:i",$ltipp[$i]);} ?></td>
 <?PHP    
-    echo "<td class=\"lmost5\"><a href=\"javascript:chklmolink('".$added.$nick[$i]."');\">".$text[598]."</a></td>";
+    echo "<td class=\"lmost5\"><a href=\"javascript:chklmolink('".$added.$nick[$i]."');\">".$text[2098]."</a></td>";
     echo "<td class=\"lmost5\"><a href=\"javascript:chklmolink('".$addd.$nick[$i]."');\">".$text[82]."</a></td>";
     }
   } ?>
 
   <tr>
-    <td class="lmost4" colspan="8"><nobr><?PHP echo $text[636]; ?></nobr></td>
+    <td class="lmost4" colspan="8"><nobr><?PHP echo $text[2136]; ?></nobr></td>
   </tr>
   <form name="lmoeditx" action="<?PHP echo $PHP_SELF; ?>" method="post">
   <input type="hidden" name="action" value="admin">
@@ -207,10 +207,10 @@ if($HTTP_SESSION_VARS["lmouserok"]==2){
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adda."');\" title=\"".$text[563]."\">".$text[563]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adde."');\" title=\"".$text[665]."\">".$text[665]."</a></td>";
-  echo "<td class=\"lmost1\" align=\"center\">".$text[614]."</td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addo."');\" title=\"".$text[555]."\">".$text[86]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adda."');\" title=\"".$text[2063]."\">".$text[2063]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adde."');\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
+  echo "<td class=\"lmost1\" align=\"center\">".$text[2114]."</td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addo."');\" title=\"".$text[2055]."\">".$text[86]."</a></td>";
 ?>
     </tr></table></td>
   </tr>

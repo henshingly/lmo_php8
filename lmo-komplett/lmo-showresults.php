@@ -161,7 +161,7 @@ $temp11=basename($zustatdir);
 if (file_exists("$temp11/$file16")){
 require("$temp11/$file16");
 
-echo $text[1500].$text[38].": ".$zutore[$st]."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[1501].": ".$dstore[$st];
+echo $text[4000].$text[38].": ".$zutore[$st]."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[4001].": ".$dstore[$st];
 
 }
 } ?>
@@ -182,7 +182,7 @@ if (($anzteams-($anzst/2+1))!=0){
 		if (in_array($hoy8,$spielfreic)) {
 		}
 		else {
-			if ($hoy5==1) {echo $text[1504].": ";}
+			if ($hoy5==1) {echo $text[4004].": ";}
 			else {echo "";}
 			echo "<a href=\"".$addp.$teams[$hoy8[$hoy8]].$hoy8."\" title=\"".$text[269]."\">";
 			echo "&nbsp;".$teams[$hoy8]."&nbsp;&nbsp;";

@@ -50,7 +50,7 @@ if(($action=="tipp") && ($todo=="delaccount")){
     $xtipperpass=trim($xtipperpass);
     if($xtipperpass!=$dummb[1]){
       $newpage=0;
-      echo "<font color=red>".$text[542]."</font><br>";
+      echo "<font color=red>".$text[2042]."</font><br>";
       }
     }
 
@@ -83,7 +83,7 @@ if(($action=="tipp") && ($todo=="delaccount")){
   <tr><td align="center" class="lmost1">
     <font color=black><?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></font>
   </td></tr>
-  <tr><td align="center" class="lmost1"><?PHP echo $text[506]; ?></td></tr>
+  <tr><td align="center" class="lmost1"><?PHP echo $text[2006]; ?></td></tr>
   <tr><td align="center" class="lmost3">
   <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 <?PHP if($newpage!=1){ ?>
@@ -94,7 +94,7 @@ if(($action=="tipp") && ($todo=="delaccount")){
   <input type="hidden" name="newpage" value="1">
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right"><acronym><?PHP echo " ".$text[569]; ?></acronym></td>
+      <td class="lmost5" align="right"><acronym><?PHP echo " ".$text[2069]; ?></acronym></td>
       <td class="lmost5"><acronym><input class="lmoadminein" type="password" name="xtipperpass" size="16" maxlength="32" value="<?PHP echo $xtipperpass; ?>"></acronym></td>
     </tr>
     <tr>
@@ -106,10 +106,10 @@ if(($action=="tipp") && ($todo=="delaccount")){
 <?PHP } ?>
 <?PHP if($newpage==1){ // erfolgreich ?>
    <tr>
-      <td class="lmost5" align="center"><?PHP echo $text[621]; ?></td>
+      <td class="lmost5" align="center"><?PHP echo $text[2121]; ?></td>
    </tr>
    <tr>
-      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF."?action=tipp&amp"; ?>">=> <?PHP echo $text[641]; ?></a></td>
+      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF."?action=tipp&amp"; ?>">=> <?PHP echo $text[2141]; ?></a></td>
    </tr>
 <?PHP } ?>
 

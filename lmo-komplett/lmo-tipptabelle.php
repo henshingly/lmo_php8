@@ -79,7 +79,7 @@ if($file!="" && $tipptabelle1==1){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP if($HTTP_SESSION_VARS["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text[658];} ?></font>
+    <font color=black><?PHP if($HTTP_SESSION_VARS["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text[2158];} ?></font>
   </td></tr>
 <?PHP if($nick!=""){ ?>
   <tr>
@@ -117,7 +117,7 @@ if($file!="" && $tipptabelle1==1){
 <?PHP } // ende if($nick!="") ?>
   <tr>
     <td class="lmost4" align="center">
-    <?PHP if($nick==$lmotippername && $nick!=""){echo $text[673];}elseif($nick!=""){echo $text[681]." ".$nick;}else{echo $text[684];} ?>
+    <?PHP if($nick==$lmotippername && $nick!=""){echo $text[2173];}elseif($nick!=""){echo $text[2181]." ".$nick;}else{echo $text[2184];} ?>
     </td>
   </tr>
 <?PHP if($nick!=""){ ?>
@@ -288,7 +288,7 @@ if($file!="" && $tipptabelle1==1){
     <td><?PHP echo "&nbsp;" ?></td>
   </tr>
   <tr>
-    <td class="lmost4" align="center"><?PHP echo $text[761]; ?></td>
+    <td class="lmost4" align="center"><?PHP echo $text[2261]; ?></td>
   </tr>
 <?PHP
 $st=$endtab;
@@ -351,13 +351,13 @@ for($x=0;$x<$anzteams;$x++){
     <td class="lmost4"<?PHP echo $dummy; ?>>
     <?PHP
     if($tippmodus==1){echo $text[37];}
-    else{echo $text[622];}
+    else{echo $text[2122];}
    ?></td>
     <td class="lmost4" width="2">&nbsp;</td>
     <td class="lmost4"<?PHP echo $dummy; ?>><b>
     <?PHP
     if($tippmodus==1){echo $text[37]."/".$text[33];}
-    else{echo $text[623]."&#37;";}
+    else{echo $text[2123]."&#37;";}
     ?></b></td>
    </tr>
 <?PHP
@@ -448,9 +448,9 @@ if($tabdat!=""){ ?>
 <?PHP } ?>
   <tr>
     <td class="lmocross4" align="center">
-    <?PHP if($nick!=$lmotippername && $lmotippername!=""){echo "<a href=\"".$addt.$lmotippername."\" title=\"".$text[673]."\">".$text[682]."</a>";}
+    <?PHP if($nick!=$lmotippername && $lmotippername!=""){echo "<a href=\"".$addt.$lmotippername."\" title=\"".$text[2173]."\">".$text[2182]."</a>";}
           echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-          if($nick!="" && $tipptabelle==1){echo "<a href=\"".$addt."\" title=\"".$text[684]."\">".$text[683]."</a>";}?>
+          if($nick!="" && $tipptabelle==1){echo "<a href=\"".$addt."\" title=\"".$text[2184]."\">".$text[2183]."</a>";}?>
     </td>
   </tr>
 </table>

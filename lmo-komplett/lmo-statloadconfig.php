@@ -43,16 +43,16 @@ if ($config=@file($configfile)) {
 	for ($i=0;$i<count($config);$i++){
 		$row=explode("=",$config[$i],2);
 		switch ($row[0]) {
-			case $text[820]:$picswidth=$row[1];break;
-			case $text[821]:$defaultsort=(int)$row[1];break;
-			case $text[822]:$displayperpage=(int)$row[1];break;
-			case $text[842]:$displayperpageadmin=(int)$row[1];break;
-			case $text[823]:$displayzeros=(int)$row[1];break;
-			case $text[824]:$nonamesort=(int)$row[1];break;
-			case $text[831]:$allowauxadmin=(int)$row[1];break;
-			case $text[846]:$allowauxadmins=(int)$row[1];break;
-			case $text[840]:$adminsort=$row[1];break;
-			case $text[841]:$ligalink=$row[1];break;
+			case $text[3020]:$picswidth=$row[1];break;
+			case $text[3021]:$defaultsort=(int)$row[1];break;
+			case $text[3022]:$displayperpage=(int)$row[1];break;
+			case $text[3042]:$displayperpageadmin=(int)$row[1];break;
+			case $text[3023]:$displayzeros=(int)$row[1];break;
+			case $text[3024]:$nonamesort=(int)$row[1];break;
+			case $text[3031]:$allowauxadmin=(int)$row[1];break;
+			case $text[3046]:$allowauxadmins=(int)$row[1];break;
+			case $text[3040]:$adminsort=$row[1];break;
+			case $text[3041]:$ligalink=$row[1];break;
 		}
 	}
 }

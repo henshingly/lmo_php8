@@ -44,10 +44,10 @@ if($file!="" && $todo=="einsicht" && $tippeinsicht==1){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP if($HTTP_SESSION_VARS["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text[658];} ?></font>
+    <font color=black><?PHP if($HTTP_SESSION_VARS["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text[2158];} ?></font>
   </td></tr>
-<?PHP if($einsichterst==1){ ?><tr><td class="lmost4" align="center"><?PHP echo $text[720]." ".$text[716]; ?></td></tr><?PHP } ?>
-<?PHP if($einsichterst==2){ ?><tr><td class="lmost4" align="center"><?PHP echo $text[720]." ".$text[717]; ?></td></tr><?PHP } ?>
+<?PHP if($einsichterst==1){ ?><tr><td class="lmost4" align="center"><?PHP echo $text[2220]." ".$text[2216]; ?></td></tr><?PHP } ?>
+<?PHP if($einsichterst==2){ ?><tr><td class="lmost4" align="center"><?PHP echo $text[2220]." ".$text[2217]; ?></td></tr><?PHP } ?>
   <tr>
     <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP
@@ -96,7 +96,7 @@ if($file!="" && $todo=="einsicht" && $tippeinsicht==1){
   <tr>
     <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP
-    echo "<td align=\"right\" valign=\"top\" class=\"lmost1\" rowspan=\"".(floor($anzseiten/10)+1)."\">".$text[664]."&nbsp;</td>";
+    echo "<td align=\"right\" valign=\"top\" class=\"lmost1\" rowspan=\"".(floor($anzseiten/10)+1)."\">".$text[2164]."&nbsp;</td>";
     for($i=0;$i<$anzseiten;$i++){
       $von=$i*$anzseite;
       $bis=($i+1)*$anzseite-1;
@@ -129,8 +129,8 @@ for($l=$start-1;$l<=($ende+2);$l++){
   <td align="right" class="lmocross4">
   <?PHP
   if($l>=$start && $l<$ende){echo "<nobr>".$tippernick[$k]."</nobr>"; } // Nickname links
-  elseif($l==$ende && $anztipper>0){echo "<nobr>".$text[688]."</nobr>"; } // Tipptendenz 
-  elseif($l==($ende+1) && $anztipper>0 && $tippmodus==1){echo "<nobr>"."&Oslash;-".$text[530]."</nobr>"; } // Durchschnittstipp ?>
+  elseif($l==$ende && $anztipper>0){echo "<nobr>".$text[2188]."</nobr>"; } // Tipptendenz 
+  elseif($l==($ende+1) && $anztipper>0 && $tippmodus==1){echo "<nobr>"."&Oslash;-".$text[2030]."</nobr>"; } // Durchschnittstipp ?>
   </td>
   <?PHP
   $punktetipper=0;
@@ -164,11 +164,11 @@ for($l=$start-1;$l<=($ende+2);$l++){
           if($n==0){echo $teamk[$teama[$st-1][$i]]."<br>";}
           if($lmtype!=0){
             echo $goala[$st-1][$i][$n].":".$goalb[$st-1][$i][$n];
-            if($mtipp[$st-1][$i][$n]==1){echo $text[730];$nw=1;}
+            if($mtipp[$st-1][$i][$n]==1){echo $text[2230];$nw=1;}
             }
           else{
             echo $goala[$st-1][$i].":".$goalb[$st-1][$i];
-            if($mtipp[$st-1][$i]==1){echo $text[730];$nw=1;}
+            if($mtipp[$st-1][$i]==1){echo $text[2230];$nw=1;}
             }
           if($n==0){echo "<br>".$teamk[$teamb[$st-1][$i]];}
           ?>
@@ -317,7 +317,7 @@ for($l=$start-1;$l<=($ende+2);$l++){
   <?PHP if($l>=$start && $l<$ende){echo "= ".$punktetipper." ".$text[37];} ?>
   </nobr></td>
   <td class="lmocross4"><nobr>
-  <?PHP if($tipptabelle1==1 && $l>=$start && $l<$ende && $lmtype==0){echo "<a href=\"".$addt.htmlentities($tippernick[$k])."\" title=\"".$text[681]." ".$tippernick[$k]."\">".$text[672]."</a>"; } ?>
+  <?PHP if($tipptabelle1==1 && $l>=$start && $l<$ende && $lmtype==0){echo "<a href=\"".$addt.htmlentities($tippernick[$k])."\" title=\"".$text[2181]." ".$tippernick[$k]."\">".$text[2172]."</a>"; } ?>
   </nobr></td>
   </tr>
   <?PHP
@@ -329,7 +329,7 @@ for($l=$start-1;$l<=($ende+2);$l++){
   <tr>
     <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP
-    echo "<td align=\"right\" valign=\"top\" class=\"lmost1\" rowspan=\"".(floor($anzseiten/10)+1)."\">".$text[664]."&nbsp;</td>";
+    echo "<td align=\"right\" valign=\"top\" class=\"lmost1\" rowspan=\"".(floor($anzseiten/10)+1)."\">".$text[2164]."&nbsp;</td>";
     for($i=0;$i<$anzseiten;$i++){
       $von=$i*$anzseite;
       $bis=($i+1)*$anzseite-1;

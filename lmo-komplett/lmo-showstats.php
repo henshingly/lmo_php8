@@ -191,55 +191,55 @@ $temp11=basename($zustatdir);
 if (file_exists("$temp11/$file16")){
 require("$temp11/$file16");
 
-echo "<br>"."<tr><td class=\"lmost1\" align=\"center\"> ".$text[1509]."</td></tr>";?>
+echo "<br>"."<tr><td class=\"lmost1\" align=\"center\"> ".$text[4009]."</td></tr>";?>
 
 <table class="lmosta" width="100%" align="center" cellspacing="0" cellpadding="0" border="0">
 <?PHP
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[1500].$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzutore."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[38]."&nbsp;".$text[1501].":"."&nbsp;&nbsp;".$gdstore."&nbsp;"."</td></tr>";
+echo "&nbsp;".$text[4000].$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzutore."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[38]."&nbsp;".$text[4001].":"."&nbsp;&nbsp;".$gdstore."&nbsp;"."</td></tr>";
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[1510].$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gheimtore."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[38]."&nbsp;".$text[1501].":"."&nbsp;&nbsp;".$dsheimtore."&nbsp;"."</td></tr>";
+echo "&nbsp;".$text[4010].$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gheimtore."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[38]."&nbsp;".$text[4001].":"."&nbsp;&nbsp;".$dsheimtore."&nbsp;"."</td></tr>";
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[1511].$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$ggasttore."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[38]."&nbsp;".$text[1501].":"."&nbsp;&nbsp;".$dsgasttore."&nbsp;"."</td></tr>";
+echo "&nbsp;".$text[4011].$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$ggasttore."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[38]."&nbsp;".$text[4001].":"."&nbsp;&nbsp;".$dsgasttore."&nbsp;"."</td></tr>";
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[1506].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzusieg1."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+echo "&nbsp;".$text[4006].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzusieg1."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
 echo "<tr><td class=\"lmost5\" align=\"right\">";
-echo "&nbsp;".$text[1507].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzusieg2."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+echo "&nbsp;".$text[4007].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzusieg2."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[1508].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzuunent."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+echo "&nbsp;".$text[4008].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzuunent."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[1512].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gbeide."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+echo "&nbsp;".$text[4012].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gbeide."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[1513].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsieg." - ".$hgastsieg."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsiegtor.":".$hgastsiegtor."&nbsp;(".$text[1514]."&nbsp;".$spieltagflag.")&nbsp;"."</td></tr>";
+echo "&nbsp;".$text[4013].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsieg." - ".$hgastsieg."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsiegtor.":".$hgastsiegtor."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag.")&nbsp;"."</td></tr>";
 if ($hheimsiegtor1>0) {
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsieg1." - ".$hgastsieg1."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsiegtor1.":".$hgastsiegtor1."&nbsp;(".$text[1514]."&nbsp;".$spieltagflag1.")&nbsp;"."</td></tr>";
+echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsieg1." - ".$hgastsieg1."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsiegtor1.":".$hgastsiegtor1."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag1.")&nbsp;"."</td></tr>";
 	if ($counteranz>2) {
 	$counteranz0=$counteranz-2;
 	echo "<tr><td class=\"lmost5\"  align=\"right\">";
-	echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[1515]."&nbsp;".$counteranz0."&nbsp;".$text[1516]."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+	echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[4015]."&nbsp;".$counteranz0."&nbsp;".$text[4016]."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
 	}
 }
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[1517].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsieg." - ".$agastsieg."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsiegtor.":".$agastsiegtor."&nbsp;(".$text[1514]."&nbsp;".$spieltagflag2.")&nbsp;"."</td></tr>";
+echo "&nbsp;".$text[4017].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsieg." - ".$agastsieg."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsiegtor.":".$agastsiegtor."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag2.")&nbsp;"."</td></tr>";
 if ($agastsiegtor1>0) {
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsieg1." - ".$agastsieg1."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsiegtor1.":".$agastsiegtor1."&nbsp;(".$text[1514]."&nbsp;".$spieltagflag3.")&nbsp;"."</td></tr>";
+echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsieg1." - ".$agastsieg1."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsiegtor1.":".$agastsiegtor1."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag3.")&nbsp;"."</td></tr>";
 	if ($counteranz1>2) {
 	$counteranz4=$counteranz1-2;
 	echo "<tr><td class=\"lmost5\"  align=\"right\">";
-	echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[1515]."&nbsp;".$counteranz4."&nbsp;".$text[1516]."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+	echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[4015]."&nbsp;".$counteranz4."&nbsp;".$text[4016]."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
 	}
 }
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[1518]."&nbsp;".$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreichm1." - ".$htorreichm2."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreicht1.":".$htorreicht2."&nbsp;(".$text[1514]."&nbsp;".$spieltagflag4.")&nbsp;"."</td></tr>";
+echo "&nbsp;".$text[4018]."&nbsp;".$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreichm1." - ".$htorreichm2."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreicht1.":".$htorreicht2."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag4.")&nbsp;"."</td></tr>";
 if ($spieltagflag5<>0) {
 echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreichm3." - ".$htorreichm4."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreicht3.":".$htorreicht4."&nbsp;(".$text[1514]."&nbsp;".$spieltagflag5.")&nbsp;"."</td></tr>";
+echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreichm3." - ".$htorreichm4."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreicht3.":".$htorreicht4."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag5.")&nbsp;"."</td></tr>";
 	if ($counteranz5>2) {
 	$counteranz6=$counteranz5-2;
 	echo "<tr><td class=\"lmost5\"  align=\"right\">";
-	echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[1515]."&nbsp;".$counteranz6."&nbsp;".$text[1519]."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+	echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[4015]."&nbsp;".$counteranz6."&nbsp;".$text[4019]."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
 	}
 }
 }

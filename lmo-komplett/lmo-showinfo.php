@@ -29,7 +29,7 @@
   <tr><td align="center" class="lmost3"><table class="lmostb" width="500" cellspacing="0" cellpadding="0" border="0">
     <tr><td class="lmotext"><?PHP echo $text[47]; ?><br><br><?PHP echo $text[48]; ?><br><br><?PHP echo $text[49]; ?><br><br><?PHP echo $text[50]; ?></td></tr>
   </table></td></tr>
-  <tr><td align="center" class="lmost1"><?PHP echo $text[584]; ?></td></tr>
-  <tr><td align="center" class="lmost0"><?PHP echo $text[585]; ?><br><?PHP echo $text[755]; ?></td></tr>
+  <tr><td align="center" class="lmost1"><?PHP echo $text[2084]; ?></td></tr>
+  <tr><td align="center" class="lmost0"><?PHP echo $text[2085]; ?><br><?PHP echo $text[2255]; ?></td></tr>
 </table>
 

@@ -290,7 +290,7 @@ if($lmouserok==2){
     <td class="lmost4" width="2"><nobr><acronym title="<?PHP echo $text[112] ?>"><?PHP echo $text[218]; ?></acronym></nobr></td>
     <td class="lmost4" width="2"><nobr><acronym title="<?PHP echo $text[263] ?>"><?PHP echo $text[262]; ?></acronym></nobr></td>
 <?PHP if($lmouserok==2 && $ftest0==1){ ?>
-    <td class="lmost4" width="2"><nobr><acronym title="<?PHP echo $text[557] ?>"><?PHP echo $text[557]; ?></acronym></nobr></td>
+    <td class="lmost4" width="2"><nobr><acronym title="<?PHP echo $text[2057] ?>"><?PHP echo $text[2057]; ?></acronym></nobr></td>
 <?PHP } ?>
   </tr>
 
@@ -411,7 +411,7 @@ if($lmouserok==2){
     <td class="lmost5"><acronym title="<?PHP echo $text[112] ?>"><input class="lmoadminein" type="text" name="xmnote<?PHP echo $i; ?>" size="16" maxlength="255" value="<?PHP echo $mnote[$st-1][$i]; ?>" onChange="dolmoedit()"></acronym></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[263] ?>"><input class="lmoadminein" type="text" name="xmberi<?PHP echo $i; ?>" size="16" maxlength="128" value="<?PHP echo $mberi[$st-1][$i]; ?>" onChange="dolmoedit()"></acronym></td>
 <?PHP if($lmouserok==2 && $ftest0==1){ ?>
-    <td class="lmost5"><acronym title="<?PHP echo $text[557] ?>">
+    <td class="lmost5"><acronym title="<?PHP echo $text[2057] ?>">
     <select class="lmoadminein" name="xmtipp<?PHP echo $i; ?>" onChange="dolmoedit()">
 <?PHP
   echo "<option value=\"0\"";
@@ -419,7 +419,7 @@ if($lmouserok==2){
     echo ">_</option>";
   echo "<option value=\"1\"";
     if($mtipp[$st-1][$i]==1){echo " selected";}
-    echo ">".$text[699]."</option>";
+    echo ">".$text[2199]."</option>";
 ?>
 </select>
 </acronym>
@@ -554,7 +554,7 @@ if($lmouserok==2){
     <td class="lmost5"><acronym title="<?PHP echo $text[112] ?>"><input class="lmoadminein" type="text" name="xmnote<?PHP echo $i.$n; ?>" size="16" maxlength="255" value="<?PHP echo $mnote[$st-1][$i][$n]; ?>" onChange="dolmoedit()"></acronym></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[263] ?>"><input class="lmoadminein" type="text" name="xmberi<?PHP echo $i.$n; ?>" size="16" maxlength="128" value="<?PHP echo $mberi[$st-1][$i][$n]; ?>" onChange="dolmoedit()"></acronym></td>
 <?PHP if($lmouserok==2 && $ftest0==1){ ?>
-    <td class="lmost5"><acronym title="<?PHP echo $text[557] ?>">
+    <td class="lmost5"><acronym title="<?PHP echo $text[2057] ?>">
     <select class="lmoadminein" name="xmtipp<?PHP echo $i.$n; ?>" onChange="dolmoedit()">
 <?PHP
   echo "<option value=\"0\"";
@@ -562,7 +562,7 @@ if($lmouserok==2){
     echo ">_</option>";
   echo "<option value=\"1\"";
     if($mtipp[$st-1][$i][$n]==1){echo " selected";}
-    echo ">".$text[699]."</option>";
+    echo ">".$text[2199]."</option>";
 ?>
 </select>
 </acronym>

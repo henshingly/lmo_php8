@@ -40,12 +40,12 @@
   $auswertfile=$dirtipp."auswert/gesamt.aus";
   $auswertdatei = fopen($auswertfile,"wb");
   if (!$auswertdatei) {
-    echo "<font color=\"#ff0000\">".$text[529]." ".$auswertdatei.$text[283]."</font>";
+    echo "<font color=\"#ff0000\">".$text[2029]." ".$auswertdatei.$text[283]."</font>";
     exit;
     }
   flock($auswertdatei,2);
   $addw="lmo-start.php?action=tipp&amp;todo=wert&amp;all=1";
-  echo "<font color=\"#008800\">".$text[529]." <a target=\"_blank\" href=\"".$addw."\">Gesamt</a> ".$text[565]."<br></font>";
+  echo "<font color=\"#008800\">".$text[2029]." <a target=\"_blank\" href=\"".$addw."\">Gesamt</a> ".$text[2065]."<br></font>";
   $tippernick = array_pad($array,$anztipper+1,"");
   if($showname==1){$tippername = array_pad($array,$anztipper+1,"");}
   if($showemail==1){$tipperemail = array_pad($array,$anztipper+1,"");}
@@ -95,7 +95,7 @@
     if($ftest==0 && $immeralle==0){ // Liga darf nicht in Gesamtwertung einfliessen
       }
     elseif(!file_exists($auswertfile1))
-      echo $text[517]."<br>";
+      echo $text[2017]."<br>";
     else{
       $liganame[$anzligenaus]=$dummy[$k];
       $datei = fopen($auswertfile1,"rb");

@@ -1,2 +1,3 @@
 admin|lmo|2|EOL
 helfer|lmo|1|EOL
+NeuerUser|syu68xj1|1|EOL

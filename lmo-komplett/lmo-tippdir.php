@@ -97,7 +97,7 @@ if($ftype!=""){
         $i++;
         if($sttipp!=-1){
           $tippfile=$dirtipp.substr($dummy[$k],0,-4)."_".str_replace(" ","_",$lmotippername).".tip";
-          echo "<li><a href=\"".$addi.$dirliga.$dummy[$k]."&amp;PHPSESSID=".$PHPSESSID."\">".$t0;if(file_exists($tippfile)){echo "<br><small>".$text[638]." ".date("d.m.Y H:i",filectime($tippfile)).$t3."</small>";} echo "</a></li>";
+          echo "<li><a href=\"".$addi.$dirliga.$dummy[$k]."&amp;PHPSESSID=".$PHPSESSID."\">".$t0;if(file_exists($tippfile)){echo "<br><small>".$text[2138]." ".date("d.m.Y H:i",filectime($tippfile)).$t3."</small>";} echo "</a></li>";
           }
         $tt1.=$dummy[$k]."|";
         $tt0.=$t0."|";
@@ -105,10 +105,10 @@ if($ftype!=""){
         }
       }
     }
-  if($i==0){echo "<li>[".$text[522]."]</li>";}
+  if($i==0){echo "<li>[".$text[2022]."]</li>";}
   else{
     if($viewertipp==1){
-      echo "<li><a href=\"".$addi."viewer&amp;PHPSESSID=".$PHPSESSID."\"><b>".$text[752]." ".$viewertage." ".$text[671]."</b></a></li>";
+      echo "<li><a href=\"".$addi."viewer&amp;PHPSESSID=".$PHPSESSID."\"><b>".$text[2252]." ".$viewertage." ".$text[2171]."</b></a></li>";
       }
     }
   echo"</ul>";

@@ -51,10 +51,10 @@ if($message!=""){
         $textmessage=str_replace("[nick]",$dummb[0],$textmessage); 
         $textmessage=str_replace("[pass]",$dummb[1],$textmessage); 
         $textmessage=str_replace("[name]",$dummb[3],$textmessage); 
-        if(mail($dummb[4],$subject,$textmessage,$header,$para5)){$anzemail++;}else{echo $text[676];}
+        if(mail($dummb[4],$subject,$textmessage,$header,$para5)){$anzemail++;}else{echo $text[2176];}
         }
       }
-    echo $anzemail." ".$text[675]."<br>";
+    echo $anzemail." ".$text[2175]."<br>";
     }
 
 
@@ -147,7 +147,7 @@ if($message!=""){
                     $spiele=$spiele.$j.":\n";
                     }
                   }
-                $spiele=$spiele.$text[587]." ".$zeit[$i].": ".$teama[$i]." - ".$teamb[$i]."\n";
+                $spiele=$spiele.$text[2087]." ".$zeit[$i].": ".$teama[$i]." - ".$teamb[$i]."\n";
                 $lliga=$liga[$i];
                 $lspieltag=$spieltag[$i];
                 }
@@ -158,7 +158,7 @@ if($message!=""){
             $textmessage=str_replace("[pass]",$dummb[1],$textmessage); 
             $textmessage=str_replace("[name]",$dummb[3],$textmessage); 
             $textmessage=str_replace("[spiele]",$spiele,$textmessage); 
-            if(mail($dummb[4],$subject,$textmessage,$header,$para5)){$anzemail++;}else{echo $text[676];}
+            if(mail($dummb[4],$subject,$textmessage,$header,$para5)){$anzemail++;}else{echo $text[2176];}
             }
           }
         }
@@ -191,7 +191,7 @@ if($message!=""){
                     $zeit=zeit($mterm[$st0][$dd],$datum1[$st0],$datum2[$st0]);
                     if($now<$zeit && $then>$zeit){
                       if((($st==0 && $goaltippa[$st0][$dd]=="_") || ($st>0 && $goaltippa[$dd]=="_")) && $teama[$st0][$dd]>0){
-                        $spiele=$spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text[587]." ".strftime("%A, %d.%m.%Y %R", $zeit).")\n"; 
+                        $spiele=$spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text[2087]." ".strftime("%A, %d.%m.%Y %R", $zeit).")\n"; 
                         }
                       }
                     }
@@ -202,7 +202,7 @@ if($message!=""){
                       $zeit=zeit($mterm[$st0][$dd][$ddd],$datum1[$st0],$datum2[$st0]);
                       if($now<$zeit && $then>$zeit){
                         if((($st==0 && $goaltippa[$st0][$dd][$ddd]=="_") || ($st>0 && $goaltippa[$dd][$ddd]=="_")) && $teama[$st0][$dd]>0){
-                          $spiele=$spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text[587]." ".strftime("%A, %d.%m.%Y %R", $zeit).")\n"; 
+                          $spiele=$spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text[2087]." ".strftime("%A, %d.%m.%Y %R", $zeit).")\n"; 
                           }
                         }
                       }
@@ -216,13 +216,13 @@ if($message!=""){
               $textmessage=str_replace("[pass]",$dummb[1],$textmessage); 
               $textmessage=str_replace("[name]",$dummb[3],$textmessage); 
               $textmessage=str_replace("[spiele]",$spiele,$textmessage); 
-              if(mail($dummb[4],$subject,$textmessage,$header,$para5)){$anzemail++;}else{echo $text[676];}
+              if(mail($dummb[4],$subject,$textmessage,$header,$para5)){$anzemail++;}else{echo $text[2176];}
               }
             }
           } // ende if($dummb[10]!=-1)
         } // ende for($tippernr=0;$tippernr<$anztipper;$tippernr++)
       }
-      echo $anzemail." ".$text[675]."<br>";
+      echo $anzemail." ".$text[2175]."<br>";
     } // ende if($emailart==1)
 
   elseif($emailart==2 && $adressat!=""){
@@ -231,7 +231,7 @@ if($message!=""){
     $message=str_replace("[nick]",$dummb[0],$message); 
     $message=str_replace("[pass]",$dummb[1],$message); 
     $message=str_replace("[name]",$dummb[3],$message); 
-    if(mail($dummb[4],$subject,$message,$header,$para5)){echo "1 ".$text[675]."<br>";}else{echo $text[676];}
+    if(mail($dummb[4],$subject,$message,$header,$para5)){echo "1 ".$text[2175]."<br>";}else{echo $text[2176];}
     }
   }
 ?>

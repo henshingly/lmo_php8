@@ -39,7 +39,7 @@ if(isset($xtippername2)){
     if($xtippername2==$dummb[0] || ($xtippername2==$dummb[4] && strpos($dummb[4],"@")!=false)){ // User gefunden
       $lmotippername=$dummb[0];
       $HTTP_SESSION_VARS["lmotipperok"]=0;
-      $emailbody = "Hallo ".$dummb[0]."\n\n".$text[577]."\n".$text[523].": ".$dummb[0]."\n".$text[308].": ".$dummb[1]; 
+      $emailbody = "Hallo ".$dummb[0]."\n\n".$text[2077]."\n".$text[2023].": ".$dummb[0]."\n".$text[308].": ".$dummb[1]; 
       $header="From:$aadr\n";
 //      $header .= "Reply-To: $aadr\n"; 
 //      $header .= "Bcc: $aadr\n"; 
@@ -47,11 +47,11 @@ if(isset($xtippername2)){
 //      $header .= "X-Sender-IP: $REMOTE_ADDR\n"; 
 //      $header .= "Content-Type: text/plain"; 
       $para5="-f $aadr";
-      if(mail($dummb[4],$text[579],$emailbody,$header,$para5)){
-        echo $text[578]."<br>";
+      if(mail($dummb[4],$text[2079],$emailbody,$header,$para5)){
+        echo $text[2078]."<br>";
         $xtippername2="";
         }
-      else{echo $text[580]." ".$aadr;}
+      else{echo $text[2080]." ".$aadr;}
       }
     }
   if($HTTP_SESSION_VARS["lmotipperok"]==-5){$HTTP_SESSION_VARS["lmotipperok"]=-3;} // Benutzer nicht gefunden

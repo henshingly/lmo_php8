@@ -117,7 +117,7 @@ var msg1="";
     if ($einspieler==1) {
 	include("lmo-statloadconfig.php");
 	echo "&nbsp;&nbsp;";
-	if($action!="spieler" && $mittore==1) {echo "<a href=\"".$addm."spieler\" title=\"".$text[812]."\">".$ligalink."</a> ";}else{if($mittore==1)echo $ligalink." ";}
+	if($action!="spieler" && $mittore==1) {echo "<a href=\"".$addm."spieler\" title=\"".$text[3012]."\">".$ligalink."</a> ";}else{if($mittore==1)echo $ligalink." ";}
 	}
     }
   else{
@@ -193,7 +193,7 @@ var msg1="";
       <td class="lmomain1" valign="bottom">
 <?PHP
  if ($eintippspiel==1) {
- if($tippspiel==1 && ($immeralle==1 || strpos($ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){echo "<a href=\"".$PHP_SELF."?action=tipp&amp;file=".$file."&amp;todo=edit\">".$text[5]." ".$text[594]."</a>&nbsp;&nbsp;&nbsp;<br>";
+ if($tippspiel==1 && ($immeralle==1 || strpos($ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){echo "<a href=\"".$PHP_SELF."?action=tipp&amp;file=".$file."&amp;todo=edit\">".$text[5]." ".$text[2094]."</a>&nbsp;&nbsp;&nbsp;<br>";
    }
  }  
  else{
@@ -206,7 +206,7 @@ var msg1="";
    } 
 ?>
 </td>
-      <td class="lmomain2" align="right"><nobr><?PHP echo $text[406].": ".$stand; ?><br><?PHP if($calctime==1){echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";} ?><?PHP echo $text[54]; ?> - <?PHP echo $text[55]; echo "<br>".$text[1505];?></nobr></td>
+      <td class="lmomain2" align="right"><nobr><?PHP echo $text[406].": ".$stand; ?><br><?PHP if($calctime==1){echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";} ?><?PHP echo $text[54]; ?> - <?PHP echo $text[55]; echo "<br>".$text[4005];?></nobr></td>
     </tr>
 	</table>
   </td></tr>

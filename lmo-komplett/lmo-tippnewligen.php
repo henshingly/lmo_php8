@@ -64,7 +64,7 @@ if(($action=="tipp") && ($todo=="newligen")){
   <tr><td align="center" class="lmost1">
     <font color=black><?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></font>
   </td></tr>
-  <tr><td align="center" class="lmost1"><?PHP echo $text[635]; ?></td></tr>
+  <tr><td align="center" class="lmost1"><?PHP echo $text[2135]; ?></td></tr>
   <tr><td align="center" class="lmost3">
   <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5"><nobr>
 <?PHP if($newpage!=1){ ?>
@@ -78,7 +78,7 @@ if(($action=="tipp") && ($todo=="newligen")){
     <tr>
       <td class="lmost4" colspan="3" align="right">
 <?PHP if($i!=0){ ?>
-      <acronym><input class="lmoadminbut" type="submit" name="xtippersub" value="<?PHP echo $text[511]; ?>"></acronym>
+      <acronym><input class="lmoadminbut" type="submit" name="xtippersub" value="<?PHP echo $text[2011]; ?>"></acronym>
 <?PHP } ?>
       </td>
     </tr>
@@ -86,12 +86,12 @@ if(($action=="tipp") && ($todo=="newligen")){
 <?PHP } ?>
 <?PHP if($newpage==1){ // Anmeldung erfolgreich ?>
    <tr>
-      <td class="lmost5" align="center">  <?PHP echo $text[520]; ?></td>
+      <td class="lmost5" align="center">  <?PHP echo $text[2020]; ?></td>
    </tr>
 <?PHP } ?>
 <?PHP if($newpage==1 || $i==0){ // zurück zur Übersicht ?>
    <tr>
-      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text[501]; ?></a></td>
+      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text[2001]; ?></a></td>
    </tr>
 <?PHP } ?>
 

@@ -46,9 +46,9 @@ if($file!="" && $tippfieber==1){
   <input type="hidden" name="file" value="<?PHP echo $file; ?>">
   <input type="hidden" name="save" value="1">
   <tr>
-    <td class="lmost1"><?PHP echo $text[664]." 1";?></td>
-    <td class="lmost1"><?PHP echo $text[664]." 2";?></td>
-    <td class="lmost1"><?PHP echo $text[783];?></td>
+    <td class="lmost1"><?PHP echo $text[2164]." 1";?></td>
+    <td class="lmost1"><?PHP echo $text[2164]." 2";?></td>
+    <td class="lmost1"><?PHP echo $text[2283];?></td>
     <td></td>
   </tr>
   <tr>
@@ -94,21 +94,21 @@ if($file!="" && $tippfieber==1){
 <?PHP
   echo "<option value=\"1\"";
   if($kurvenmodus==1){echo " selected";}
-   echo ">$text[735]</option>";
+   echo ">$text[2235]</option>";
   echo "<option value=\"2\"";
   if($kurvenmodus==2){echo " selected";}
-   echo ">$text[732]</option>";
+   echo ">$text[2232]</option>";
   echo "<option value=\"3\"";
   if($kurvenmodus==3){echo " selected";}
-   echo ">$text[734]</option>";
+   echo ">$text[2234]</option>";
   echo "<option value=\"4\"";
   if($kurvenmodus==4){echo " selected";}
-   echo ">$text[733]</option>";
+   echo ">$text[2233]</option>";
 ?>
       </select>
     </td>
     <td>
-       <input type="submit" name="best" value="<?PHP echo $text[736]; ?>">
+       <input type="submit" name="best" value="<?PHP echo $text[2236]; ?>">
     </td>
   </tr>
   </form>
@@ -121,7 +121,7 @@ if($file!="" && $tippfieber==1){
     $stat2=-1;
     }
   if($stat1<0){
-    echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text[784]."<br>&nbsp;</td></tr>";
+    echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text[2284]."<br>&nbsp;</td></tr>";
     }
   else{
     $dummy="lmo-tipppaintgraph.php?pganz=";
@@ -172,7 +172,7 @@ if($file!="" && $tippfieber==1){
       }
     $dummy=$dummy."&amp;kmodus=".$kurvenmodus;
     $dummy=$dummy."&amp;pgtext1=".$text[135]; //SPIELTAGE
-    if($kurvenmodus==1){$dummy=$dummy."&amp;pgtext2=".strtoupper($text[538]);} // PUNKTE
+    if($kurvenmodus==1){$dummy=$dummy."&amp;pgtext2=".strtoupper($text[2038]);} // PUNKTE
     else{$dummy=$dummy."&amp;pgtext2=".$text[136];} //PLATZIERUNG
 ?>
 <tr><td class="lmost5" colspan="3"><img src="<?PHP echo $dummy; ?>" border="0"></td></tr>

@@ -33,7 +33,7 @@ if($lmtype!=0){
   }
 $einsichtfile=$dirtipp."einsicht/".substr($file, strrpos($file,"/")+1,-4)."_".$st.".ein"; 
 if(!file_exists($einsichtfile))
-  echo $text[517]."<br>";
+  echo $text[2017]."<br>";
 else{
   $datei = fopen($einsichtfile,"rb");
   $anztipper=0;
