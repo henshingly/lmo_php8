@@ -199,8 +199,17 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
           fclose($auswertdatei);
         }
       }
-    }
-    echo "<a href='".$_SERVER['PHP_SELF']."?action=admin&todo=tippuser'>".$text['tipp'][111]."</a>";
+    }?>
+    <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="50%">
+      <tr>
+        <th class="lmoMenu"><?=$text['tipp'][114]?></th>
+      </tr>
+      <tr>
+        <td align="center">
+          <a href='<?=$_SERVER['PHP_SELF']?>?action=admin&todo=tippuser'><?=$text[5]." ".$text['tipp'][111]." ".$text['tipp'][53]?></a>
+        </td>
+      </tr>
+    </table><?
   } else {
 ?>
 
