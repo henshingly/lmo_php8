@@ -66,7 +66,7 @@ if ($file != "") {
     }
     require(PATH_TO_LMO."/lmo-savefile.php");
   }
-  echo $todo;
+  
   $handt = array_pad($array, $anzteams+2, "");
   for($i = 0; $i < $anzteams; $i++) {
     if ($handp[$st-1] != 0) {
@@ -81,7 +81,6 @@ if ($file != "") {
   if ($spez == 1) {
     $breite = $breite+2;
   }
-  
   include(PATH_TO_LMO."/lmo-adminsubnavi.php");?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
