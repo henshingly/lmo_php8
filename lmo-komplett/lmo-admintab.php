@@ -67,7 +67,7 @@ if($file!=""){
     $j=$i;$k=$text[413];
     echo "<td align=\"right\" ";
     if($i<>$st){
-      echo "><a href='$addb$i' onclick=\"return chklmolink(this.href);\" title=\"".$k."\">".$j."</a>";
+      echo "><a href='$addb$i' onclick=\"return chklmolink();\" title=\"".$k."\">".$j."</a>";
       }
     else{
       echo "class=\"active\">".$j;

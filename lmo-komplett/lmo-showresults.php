@@ -16,6 +16,8 @@ if($dats==1){
 $datsort = $mterm[$st-1];
 asort($datsort);
 reset($datsort);
+$spielfreia=array();
+$spielfreib=array();
 while (list ($key, $val) = each ($datsort)) {
   $i = $key;
   if (($teama[$st-1][$i] > 0) && ($teamb[$st-1][$i] > 0)) {?>
@@ -143,7 +145,7 @@ while (list ($key, $val) = each ($datsort)) {
 
 if ($einzutore == 1) {?>
   <tr>  
-    <td class="lmoFooter" align="center" width="100%" colspan="<?=$breite; ?>"><?
+    <td class="lmoFooter" align="center" width="100%" colspan="<?=$breite; ?>">&nbsp;<?
 
   $strs = ".l98";
   $stre = ".l98.php";
@@ -173,7 +175,7 @@ if ($einspielfrei == 1) {?>
           echo $text[4004].": ";
         }
         $hoy5++;?>
-        &nbsp;<a href="<?=$add.$hoy8?>" title="<?=$text[269]?>"><?=$teams[$hoy8]?></a>&nbsp;&nbsp;<?
+        &nbsp;<a href="<?=$addp.$hoy8?>" title="<?=$text[269]?>"><?=$teams[$hoy8]?></a>&nbsp;&nbsp;<?
       }
     }
   //}

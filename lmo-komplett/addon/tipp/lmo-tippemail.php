@@ -24,19 +24,20 @@
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
+$message=isset($_POST['message'])?$_POST['message']:"";
 if ($message != "") {
-  $dumma = array("");
+  $dumma = array();
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  $datei = fopen($pswfile, "rb");
-  while (!feof($datei)) {
-    $zeile = fgets($datei, 1000);
-    $zeile = chop($zeile);
-    if ($zeile != "") {
-      array_push($dumma, $zeile);
+  if ($datei = fopen($pswfile, "rb")) {
+    while (!feof($datei)) {
+      $zeile = fgets($datei, 1000);
+      $zeile = chop($zeile);
+      if ($zeile != "") {
+        array_push($dumma, $zeile);
+      }
     }
+    fclose($datei);
   }
-  fclose($datei);
-  array_shift($dumma);
   $subject = $_POST["betreff"];
   $header = "From:$aadrn";
   $para5 = "-f $aadr";
@@ -57,14 +58,19 @@ if ($message != "") {
         $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
         $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
         $textmessage = str_replace("[name]", $dummb[3], $textmessage);
-        if (mail($dummb[4], $subject, $textmessage, $header, $para5)) {
+        if (@ini_get('safe_mode')=="0") {
+          $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
+        } else {
+          $sent=mail($dummb[4], $subject, $textmessage, $header);
+        }
+        if ($sent) {
           $anzemail++;
         } else {
-          echo $text['tipp'][176];
+          echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][176].'</p>';
         }
       }
     }
-    echo $anzemail." ".$text['tipp'][175]."<br>";
+    echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$anzemail." ".$text['tipp'][175]."</p>";
   }
    
    
@@ -103,16 +109,16 @@ if ($message != "") {
        
       $teams = array_pad($array, 65, "");
       $teams[0] = "___";
-      $liga = array("");
-      $titel = array("");
-      $lmtype = array("");
-      $anzst = array("");
-      $spieltag = array("");
-      $modus = array("");
-      $spiel = array("");
-      $teama = array("");
-      $teamb = array("");
-      $zeit = array("");
+      $liga = array();
+      $titel = array();
+      $lmtype = array();
+      $anzst = array();
+      $spieltag = array();
+      $modus = array();
+      $spiel = array();
+      $teama = array();
+      $teamb = array();
+      $zeit = array();
        
       $anzspiele = 0;
        
@@ -122,17 +128,6 @@ if ($message != "") {
       }
        
       $goaltipp = array_pad(array("_"), $anzspiele+1, "_");
-       
-      array_shift($liga);
-      array_shift($titel);
-      array_shift($lmtype);
-      array_shift($anzst);
-      array_shift($spieltag);
-      array_shift($modus);
-      array_shift($spiel);
-      array_shift($teama);
-      array_shift($teamb);
-      array_shift($zeit);
        
       for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
         $dummb = split("[|]", $dumma[$tippernr]);
@@ -188,10 +183,15 @@ if ($message != "") {
             $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
             $textmessage = str_replace("[name]", $dummb[3], $textmessage);
             $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-            if (mail($dummb[4], $subject, $textmessage, $header, $para5)) {
+            if (@ini_get('safe_mode')=="0") {
+              $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
+            } else {
+              $sent=mail($dummb[4], $subject, $textmessage, $header);
+            }
+            if ($sent) {
               $anzemail++;
             } else {
-              echo $text['tipp'][176];
+              echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][176]."</p>";
             }
           }
         }
@@ -251,17 +251,22 @@ if ($message != "") {
               $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
               $textmessage = str_replace("[name]", $dummb[3], $textmessage);
               $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-              if (mail($dummb[4], $subject, $textmessage, $header, $para5)) {
+              if (@ini_get('safe_mode')=="0") {
+                $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
+              } else {
+                $sent=mail($dummb[4], $subject, $textmessage, $header);
+              }
+              if ($sent) {
                 $anzemail++;
               } else {
-                echo $text['tipp'][176];
+                echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][176]."</p>";
               }
             }
           }
         } // ende if($dummb[10]!=-1)
       } // ende for($tippernr=0;$tippernr<$anztipper;$tippernr++)
     }
-    echo $anzemail." ".$text['tipp'][175]."<br>";
+    echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$anzemail." ".$text['tipp'][175]."</p>";
   } // ende if($emailart==1)
    
   elseif($emailart == 2 && $adressat != "") {
@@ -272,10 +277,15 @@ if ($message != "") {
     $message = str_replace("[nick]", $dummb[0], $message);
     $message = str_replace("[pass]", $dummb[1], $message);
     $message = str_replace("[name]", $dummb[3], $message);
-    if (mail($dummb[4], $subject, $message, $header, $para5)) {
-      echo "1 ".$text['tipp'][175]."<br>";
+    if (@ini_get('safe_mode')=="0") {
+      $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
     } else {
-      echo $text['tipp'][176];
+      $sent=mail($dummb[4], $subject, $textmessage, $header);
+    }
+    if ($sent) {
+      echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> 1 '.$text['tipp'][175]."</p>";
+    } else {
+      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][176]."</p>";
     }
   }
 }

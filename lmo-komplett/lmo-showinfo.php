@@ -23,7 +23,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 ?>
-<table class="lmoMiddle" width="80%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" width="400" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><h1><?=$text[54]; ?></h1></td>
   </tr>
@@ -35,7 +35,7 @@
   </tr>
   <tr>
     <td align="center">
-      <table class="lmoInner" width="80%" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmotext">
             <p><?=$text[47]; ?></p>

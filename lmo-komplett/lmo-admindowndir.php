@@ -74,13 +74,13 @@ if ($ftype != "") {
         $j++;
         $t0 = $text[223]." ".$j;
       }
-      echo "<li><a href=\"".$addi.($k+1)."&amp;".SID."\">".$t0."</a></li>";
+      echo "<li><a href='".$addi.($k+1)."'>".$t0."</a></li>";
     }
   }
   if ($i == 0) {
     echo "<li>[".$text[223]."]</li>";
   } elseif(($i > 1) && ($_SESSION['lmouserok'] == 2)) {
-    echo "<li><a href=\"".$addi."-1&amp;".SID."\"><strong>".$text[402]."</strong></a></li>";
+    echo "<li><a href='".$addi."-1'><strong>".$text[402]."</strong></a></li>";
   }
   echo"</ul>";
 }

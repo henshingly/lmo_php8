@@ -34,9 +34,9 @@ if($action=="admin"){
   if(!isset($st)){$sty=0;}else{$sty=$st;}
   if(!isset($newpage)){$newpage=0;}
   $file=isset($_REQUEST['file'])?$_REQUEST['file']:"";
-  include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
 
 ?>
+<script type="text/javascript" src="<?=URL_TO_LMO?>/js/admin.js.php"></script>
 <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><h1><?=$text[77]." ".$text[54];?></h1></td>
@@ -46,7 +46,7 @@ if($action=="admin"){
       if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
         if ($lang[1]=="") $lang[1]=$text[505];
         if ($lang[1]!=$lmouserlang) {
-          echo "<a href='{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;todo={$todo}&amp;file={$file}' title='{$lang[1]}'>";
+          echo "<a href='{$_SERVER['PHP_SELF']}?{$_SERVER['QUERY_STRING']}&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'>";
           $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
           
           if (!@fopen($imgfile,"rb")) {
@@ -66,51 +66,53 @@ if($action=="admin"){
     <td class="lmoMenu" align="left"><?
 require_once(PATH_TO_LMO."/lmo-openfile.php");
 if($_SESSION['lmouserok']==2){
-  if($todo!="new"){echo "<a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink(this.href);' title='{$text[79]}'>{$text[78]}</a>";}else{echo $text[78];}
+  if($todo!="new"){echo "<a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink();' title='{$text[79]}'>{$text[78]}</a>";}else{echo $text[78];}
   echo "&nbsp;";
   
 /* Importfunktion Anfang
-  if($todo!="import"){echo "<a href='{$adda}import&amp;imppage=".$newpage."' onclick='return chklmolink(this.href);' title=\""."Eine neue Liga aus einem Spielplan importieren"."\">"."Import"."</a>";}else{echo "Import";}
+  if($todo!="import"){echo "<a href='{$adda}import&amp;imppage=".$newpage."' onclick='return chklmolink();' title=\""."Eine neue Liga aus einem Spielplan importieren"."\">"."Import"."</a>";}else{echo "Import";}
   echo "&nbsp;";
 // Importfunktion Ende*/
   
-  if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink(this.href);' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
+  if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
   echo "&nbsp;";
-  if($todo!="delete"){echo "<a href='{$adda}delete' onclick='return chklmolink(this.href);' title='{$text[83]}'>{$text[82]}</a>";}else{echo $text[82];}
+  if($todo!="delete"){echo "<a href='{$adda}delete' onclick='return chklmolink();' title='{$text[83]}'>{$text[82]}</a>";}else{echo $text[82];}
   echo "&nbsp;";
   if($file!=""){
-    if(($todo!="edit") && ($todo!="tabs")){echo "<a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text[91]}'>{$text[90]}</a>";}else{echo $text[90];}
+    if(($todo!="edit") && ($todo!="tabs")){echo "<a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' title='{$text[91]}'>{$text[90]}</a>";}else{echo $text[90];}
     echo "&nbsp;";
     }
-  if($todo!="upload"){echo "<a href='{$adda}upload' onclick='return chklmolink(this.href);' title='{$text[85]}'>{$text[84]}</a>";}else{echo $text[84];}
+  if($todo!="upload"){echo "<a href='{$adda}upload' onclick='return chklmolink();' title='{$text[85]}'>{$text[84]}</a>";}else{echo $text[84];}
   echo "&nbsp;";
-  if($todo!="download"){echo "<a href='{$adda}download' onclick='return chklmolink(this.href);' title='{$text[315]}'>{$text[314]}</a>";}else{echo $text[314];}
+  if($todo!="download"){echo "<a href='{$adda}download' onclick='return chklmolink();' title='{$text[315]}'>{$text[314]}</a>";}else{echo $text[314];}
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
-    if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text['spieler'][1]}'>{$text['spieler'][18]}</a>";}else{echo $text['spieler'][18];}echo "&nbsp;";  
+    if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink();' title='{$text['spieler'][1]}'>{$text['spieler'][18]}</a>";}else{echo $text['spieler'][18];}echo "&nbsp;";  
   } 
   echo "&nbsp;";
-  if(($todo!="options") && ($todo!="addons") && ($todo!="user") && ($todo!="design")){echo "<a href='{$adda}options' onclick='return chklmolink(this.href);' title='{$text[87]}'>{$text[86]}</a>";}else{echo $text[86];}
+  if(($todo!="options") && ($todo!="addons") && ($todo!="user") && ($todo!="design")){echo "<a href='{$adda}options' onclick='return chklmolink();' title='{$text[87]}'>{$text[86]}</a>";}else{echo $text[86];}
   echo "&nbsp;";
-  if(($todo!="tipp") && ($todo!="tippemail") && ($todo!="tippuser") && ($todo!="tippuseredit") && ($todo!="tippoptions")){echo "<a href='{$adda}tipp' onclick='return chklmolink(this.href);' title='{$text['tipp'][57]}'>{$text['tipp'][0]}</a>";}else{echo $text['tipp'][0];}
+  if(($todo!="tipp") && ($todo!="tippemail") && ($todo!="tippuser") && ($todo!="tippuseredit") && ($todo!="tippoptions")){echo "<a href='{$adda}tipp' onclick='return chklmolink();' title='{$text['tipp'][57]}'>{$text['tipp'][0]}</a>";}else{echo $text['tipp'][0];}
+  echo "&nbsp;";
+  if(($todo!="vieweroptions")){echo "<a href='{$adda}vieweroptions' onclick='return chklmolink();' title='{$text['viewer'][21]}'>{$text['viewer'][20]}</a>";}else{echo $text['viewer'][20];}
   }
 elseif($_SESSION['lmouserok']==1){
-  if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink(this.href);' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
+  if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
   echo "&nbsp;";
   if($file!=""){
-    if(($todo!="edit") && ($todo!="tabs")){echo "<a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text[91]}'>{$text[90]}</a>";}else{echo $text[90];}
+    if(($todo!="edit") && ($todo!="tabs")){echo "<a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' title='{$text[91]}'>{$text[90]}</a>";}else{echo $text[90];}
     echo "&nbsp;";
     }
-  if($todo!="download"){echo "<a href='{$adda}download' onclick='return chklmolink(this.href);' title='{$text[315]}'>{$text[314]}</a>";}else{echo $text[314];}
+  if($todo!="download"){echo "<a href='{$adda}download' onclick='return chklmolink();' title='{$text[315]}'>{$text[314]}</a>";}else{echo $text[314];}
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
     require_once(PATH_TO_LMO."/lmo-openfile.php");
-    if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text['spieler'][1]}'>{$text['spieler'][18]}</a>";}else{echo $text['spieler'][18];}echo "&nbsp;";  
+    if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink();' title='{$text['spieler'][1]}'>{$text['spieler'][18]}</a>";}else{echo $text['spieler'][18];}echo "&nbsp;";  
     } 
   }?>
     </td>
     <td class="lmoMenu" align="right"><?
-  echo "<a href='{$adda}logout' onclick='return chklmolink(this.href);' title='{$text[89]}'>{$text[88]}</a>";
+  echo "<a href='{$adda}logout' onclick='return chklmolink();' title='{$text[89]}'>{$text[88]}</a>";
   echo "&nbsp;";
   if($_SESSION['lmouserok']==2){echo "<a href='lmohelp1.htm' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}else{echo "<a href='lmohelp2.htm' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}?>
      </td>
@@ -128,6 +130,9 @@ elseif($_SESSION['lmouserok']==1){
     $tipp_addr_user=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser";
     $tipp_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions";
     /*Tippspiel-Addon*/
+    /*Viewer-Addon*/
+    $viewer_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=vieweroptions";
+    /*Viewer-Addon*/
     if($todo=="new"){require(PATH_TO_LMO."/lmo-adminnew.php");}
     elseif($todo=="open"){require(PATH_TO_LMO."/lmo-adminopen.php");}
     elseif($todo=="delete"){require(PATH_TO_LMO."/lmo-admindelete.php");}
@@ -150,6 +155,7 @@ elseif($_SESSION['lmouserok']==1){
     elseif($todo=="tippuser"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippuser.php");}
     elseif($todo=="tippuseredit"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippuseredit.php");}
     elseif($todo=="tippoptions"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippoptions.php");}
+    elseif($todo=="vieweroptions"){require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");}
     elseif($todo==""){require(PATH_TO_LMO."/lmo-adminpad.php");}
     
 // Importer Start

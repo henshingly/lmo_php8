@@ -18,7 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
-
 $todo=isset($_GET['todo']) && $_GET['todo']!="" ?$_GET['todo']:isset($_GET['file']) && $_GET['file']!=""?'edit':'';
 $addi=$_SERVER["PHP_SELF"]."?todo=".$todo."&amp;file=";
 
@@ -30,18 +29,16 @@ $liga_counter=0;
 $unbenannte_liga_counter=0;
 while($files=readdir($verz)){
   if(strtolower(substr($files,-4))==".l98"){
-
-    $ligadatei[$liga_counter]['file_date']=filemtime(PATH_TO_LMO."/".$dirliga.$files); //Datum
-    $ligadatei[$liga_counter]['file_name']=$files;
-
-    $ligadatei[$liga_counter]['liga_name']="";  //Liganame
-    $ligadatei[$liga_counter]['aktueller_spieltag']="";  //Aktueller Spieltag
-    $ligadatei[$liga_counter]['anz_teams']="";  //Anzahl der Mannschaften
-    $ligadatei[$liga_counter]['rundenbezeichnung']=$text[2];  //Spieltag oder Pokalrunde
-
     $sekt="";
-    $datei = fopen(PATH_TO_LMO."/".$dirliga.$files,"rb");
-    if ($datei) {
+    $datei = @fopen(PATH_TO_LMO."/".$dirliga.$files,"rb");
+    if ($datei && check_hilfsadmin($files)) {
+      $ligadatei[$liga_counter]['file_date']=filemtime(PATH_TO_LMO."/".$dirliga.$files); //Datum
+      $ligadatei[$liga_counter]['file_name']=$files;
+  
+      $ligadatei[$liga_counter]['liga_name']="";  //Liganame
+      $ligadatei[$liga_counter]['aktueller_spieltag']="";  //Aktueller Spieltag
+      $ligadatei[$liga_counter]['anz_teams']="";  //Anzahl der Mannschaften
+      $ligadatei[$liga_counter]['rundenbezeichnung']=$text[2];  //Spieltag oder Pokalrunde
       while (!feof($datei)) {
         $zeile = fgets($datei,1000);
         $zeile=trim($zeile);
@@ -94,7 +91,7 @@ while($files=readdir($verz)){
         $ligadatei[$liga_counter]['rundenbezeichnung']="";
       }
       $liga_counter++;
-    }
+    } 
   }
 }
 closedir($verz);
@@ -123,22 +120,20 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
       </th>
 			<th class="nobr" align="left" title="<?=$text[525]." ".$text[530]." ".$text[526]?>">
         <noscript><a href="<?=$_SERVER['PHP_SELF']?>?liga_sort=file_date&amp;liga_sort_direction=asc" title="<?=$text[527].' '.$text[525].' '.$text[530].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="8" height="7" border="0" alt="&and;"></a> <?=$text[530]?> <a href="<?=$_SERVER['PHP_SELF']?>?liga_sort=file_date&amp;liga_sort_direction=desc" title="<?=$text[528].' '.$text[525].' '.$text[530].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="8" height="7" border="0" alt="&or;"></a></noscript>
-        <script type="text/javascript">document.write('<?=$text[531]?>');</script>
+        <script type="text/javascript">document.write('<?=$text[530]?>');</script>
       </th>
 		</tr>
   </thead>
   <tbody>
 <? foreach($ligadatei as $liga){?>
 		<tr onMouseOver="this.className='lmoTabelleMeister';" onMouseOut="this.className=''">
-			<td class="nobr" align="left"><a href="<?=$addi.$dirliga.$liga['file_name']?>"><?=$liga['liga_name']?></a></td><?
+			<td class="nobr" align="left"><a href="<?=$addi.$dirliga.$liga['file_name']?>"><?=$liga['liga_name']?></a> &nbsp;</td><?
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
-      <td class="nobr" align="left"><?=$liga['file_name']?></div></td><?
+      <td class="nobr" align="left"><?=$liga['file_name']?> &nbsp;</td><?
   }?>
-			<td class="nobr" align="left"><?=$liga['rundenbezeichnung']." ".$liga['aktueller_spieltag'];?></td>
-			<td class="nobr" align="left"><?=date("d.m.Y H:i",filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name']))?></td>
-		</tr>
-
-<?
+			<td class="nobr" align="left"><?=$liga['rundenbezeichnung']." ".$liga['aktueller_spieltag'];?> &nbsp;</td>
+			<td class="nobr" align="left"><?=strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name']))?></td>
+		</tr><?
 }
 if($liga_counter==0){echo "<td colspan='4'>[".$text[223]."]</td>";}?>
 
@@ -148,10 +143,10 @@ if($liga_counter==0){echo "<td colspan='4'>[".$text[223]."]</td>";}?>
   var ligaTable = new SortableTable(document.getElementById("ligaliste"),<?
 if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
   $sortprojection=array('liga_name'=>0,'file_name'=>1,'file_date'=>3,'asc'=>0,'desc'=>1);?>
-                  ["CaseInsensitiveString","CaseInsensitiveString","RoundSort", "GermanDateTime"]);<?
+                  ["CaseInsensitiveString","CaseInsensitiveString","RoundSort", "Date"]);<?
 } else {
   $sortprojection=array('liga_name'=>0,'file_name'=>1,'file_date'=>2,'asc'=>0,'desc'=>1);?>
-                  ["CaseInsensitiveString","RoundSort", "GermanDateTime"]);<?
+                  ["CaseInsensitiveString","RoundSort", "Date"]);<?
 }
 
 if (isset($_SESSION['liga_sort']) && isset($_SESSION['liga_sort_direction'])) {

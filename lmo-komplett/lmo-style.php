@@ -187,10 +187,11 @@ acronym {
 .lmoMiddle .lmoSubmenu {
   background: <?=$lmo_middle_background6?>; 
   color: <?=$lmo_middle_color6?>;
-  border: 0<?=$lmo_middle_border6?>; 
+  border: 0<?=$lmo_middle_border6?>;
 }
 
 .lmoMiddle .lmoSubmenu a {
+  padding:0;
   background: <?=$lmo_middle_background7?>; 
   color: <?=$lmo_middle_color7?>;
   border: 0<?=$lmo_middle_border7?>; 
@@ -203,6 +204,7 @@ acronym {
 
 /** Innerer Bereich */
 .lmoInner {
+  margin-left:auto;margin-right:auto;
   padding: 0.2em; 
   background: <?=$lmo_inner_background1?>; 
   color: <?=$lmo_inner_color1?>;
@@ -212,11 +214,15 @@ acronym {
 }
 
 .lmoInner a {  
-  line-height:80%;
+  line-height:100%;
   text-decoration: none; 
   background: <?=$lmo_inner_background1?>; 
   color: <?=$lmo_inner_color1?>; 
   font-weight: normal;
+}
+.lmoInner a:hover {  
+  background: <?=$lmo_inner_color1?>; 
+  color: <?=$lmo_inner_background1?>; 
 }
 
 .lmoInner td {

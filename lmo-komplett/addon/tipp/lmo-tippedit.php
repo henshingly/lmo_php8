@@ -82,7 +82,7 @@ if ($file!="") {
   }
   if ($save==1) {
     if ($tipp_jokertipp==1) {
-      $jksp=trim($_POST["xjokerspiel"]);
+      $jksp=isset($_POST["xjokerspiel"])?trim($_POST["xjokerspiel"]):"";
     }
     for ($i=0; $i<$anzsp; $i++) {
       if ($lmtype==0) {

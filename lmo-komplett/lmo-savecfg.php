@@ -24,32 +24,36 @@
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($_SESSION['lmouserok']==2){
+  $ok=true;
   $datei = fopen($cfgfile,"wb");
   if ($datei) {
-    echo "<p class='message'>".$text[138]."</p>";
     flock($datei,LOCK_EX);
     foreach($cfgarray as $cfgname => $cfgvalue) {
       if (is_array($cfgvalue)) {                         // Addonvariablen
         $addon_datei = fopen(PATH_TO_CONFIGDIR.'/'.$cfgname.'/cfg.txt',"wb");  //Addondatei
         if ($addon_datei) {
-          flock($datei,LOCK_EX);
-          echo "<p class='message'>{$text[138]} ($cfgname)</p>";
+          $ok=flock($datei,LOCK_EX) && $ok;
           foreach($cfgvalue as $addon_cfgname => $addon_cfgvalue) {
             //echo "<pre>".$addon_datei.":".$addon_cfgname."=".${$cfgname."_".$addon_cfgname}."</pre>";
-            fwrite($addon_datei, $addon_cfgname."=".${$cfgname."_".$addon_cfgname}."\n");
+            $ok=fwrite($addon_datei, $addon_cfgname."=".${$cfgname."_".$addon_cfgname}."\n") && $ok;
           }
           flock($addon_datei,LOCK_UN);
           fclose($addon_datei);
           clearstatcache();
         }
       }else{                                             // Hauptkonfiguration
-        fwrite($datei, "$cfgname=${$cfgname}\n");
+        $ok=fwrite($datei, "$cfgname=${$cfgname}\n") && $ok;
       }
     }
     flock($datei,LOCK_UN);
     fclose($datei);
     clearstatcache();
   }else{
+    $ok=false;
+  }
+  if ($ok) {
+    echo "<p class='message'>{$text[138]}</p>";
+  } else {
     echo "<p class='error'>".$text[283]."</p>";
   }
 }

@@ -28,7 +28,7 @@ if ($tippfile == "") {
 if (substr($tippfile, -4) != ".tip") {
   exit;
 }
-$tippdaten = array("");
+$tippdaten = array();
 $sekt = "";
 $datei = fopen($tippfile, "rb");
 if ($datei == false) {
@@ -50,7 +50,7 @@ while (!feof($datei)) {
   }
 }
 fclose($datei);
-array_shift($tippdaten);
+
  
 if ($lmtype == 0) {
   $jksp = array_pad($array, 116, "");

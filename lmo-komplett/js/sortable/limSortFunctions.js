@@ -19,6 +19,14 @@ function germanDateTime(str) {
 
 SortableTable.prototype.addSortType( "GermanDateTime", germanDateTime );
 
+function timeStamp(str) {
+	var match = /<!--(.*)-->/;
+  match.exec(str);
+  return $1;
+}
+
+SortableTable.prototype.addSortType( "timeStamp", germanDateTime );
+
 function roundSort(str) {
   str = str.toUpperCase();
 	var parts = str.split(" ",2);

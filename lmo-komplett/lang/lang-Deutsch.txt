@@ -107,8 +107,8 @@
 106=Enddatum des Spieltags (Format TT.MM.JJJJ - ggf. mit führenden Nullen)
 107=Heimmannschaft auswählen
 108=Gastmannschaft auswählen
-109=Heimtore (0 - 9999, _ oder X) - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
-110=Gasttore (0 - 9999, _ oder X) - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
+109=Heimtore (0 - 9999, _ oder X)
+110=Gasttore (0 - 9999, _ oder X)
 111=Spielende auswählen
 112=Notiz zum Spiel (max. 255 Zeichen, eine eventuelle Grüne-Tisch-Entscheidung braucht hier nicht nochmal erwähnt zu werden)
 113=Name der Liga
@@ -504,7 +504,7 @@
 503=Hervorhebungen
 504=Sprache
 505=Standardsprache
-506=Welche Sprachdatei soll geladen werden? (Sprachdateien besitzen das Format lang-[Sprache].txt und können mit einem Texteditor selbst erstellt und geändert werden)
+506=Welche Sprachdatei soll geladen werden? Beachte: Nur vollständige Übersetzungen auswählen!
 507=Unbenannte Liga
 508=« zum Archiv
 509=Archiv
@@ -519,7 +519,7 @@
 518=%
 519=Sprachauswahl
 520=Sollen die Flaggen zur Sprachauswahl angezeigt werden?
-521=Abzug/Hinzufügen von Toren (negative Torangaben werden hinzugefügt)
+521=Abzug/Hinzufügen von Toren
 522=Straf-/Bonustore
 523=Stafpunkte-/tore ab Spieltag X einrechnen
 524=ab
@@ -540,6 +540,17 @@
 539=Hauptmenü
 540=Untermenü
 541=Links
+542=Strafe
+543=Bonus
+544=Abbrechen
+545=Wochentag
+546=Tag
+547=Monat
+548=Jahr
+549=Uhrzeit
+550=Versand nicht erfolgreich
+551=Playdown ermöglichen
+552=Kann der Verlierer eine Runde weiterkommen?
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde

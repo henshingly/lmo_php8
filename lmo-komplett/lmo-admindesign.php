@@ -131,10 +131,10 @@ if(isset($_POST['save']) && $_POST['save']==1){
 <script src="<?=URL_TO_JSDIR?>/colorpicker.js" type="text/javascript"></script>
 <table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
-    <td align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
+    <td align="center"><a href="<?=$addr_options?>" onclick="return chklmolink();" title="<?=$text[320]?>"><?=$text[319]?></a></td>
+    <td align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink();" title="<?=$text[498]?>"><?=$text[497]?></a></td>
     <td class="active" align="center"><?=$text[421]?></td>
-    <td align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
+    <td align="center"><a href="<?=$addr_user?>" onclick="return chklmolink();" title="<?=$text[318]?>"><?=$text[317]?></a></td>
   </tr>
 </table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">

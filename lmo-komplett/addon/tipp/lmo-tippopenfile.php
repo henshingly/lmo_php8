@@ -32,7 +32,7 @@ if ($tippfile == "") {
 if (substr($tippfile, -4) != ".tip") {
   exit;
 }
-$tippdaten = array("");
+$tippdaten = array();
 $sekt = "";
 $jkwert = "";
 $jksp = "";
@@ -55,7 +55,7 @@ while (!feof($datei)) {
   }
 }
 fclose($datei);
-array_shift($tippdaten);
+
 if ($lmtype == 0) {
   $goaltippa = array_pad(array("_"), $anzsp+1, "_");
   $goaltippb = array_pad(array("_"), $anzsp+1, "_");

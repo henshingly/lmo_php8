@@ -91,6 +91,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           }
         } else {
           fputs($datei,"KlFin=".$klfin."\n");
+          fputs($datei,"playdown=".$playdown."\n");
         }
         fputs($datei,"DatC=".$datc."\n");
         fputs($datei,"DatS=".$dats."\n");

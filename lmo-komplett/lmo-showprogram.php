@@ -82,7 +82,7 @@ if($file!=""){
           }
 ?>        </td>
           <td align="center" width="10">-</td>
-          <td class="nobr"><?
+          <td class="nobr" align="left"><?
           if ($selteam==$teamb[$j][$i]){
             echo "<strong>";
           }

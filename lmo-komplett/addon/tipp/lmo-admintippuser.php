@@ -104,41 +104,41 @@ if ($_SESSION["lmouserok"] == 2) {
           <th class="nobr" align="right">
             <script type="text/javascript">document.write('ID');</script>
             <noscript>
-              <a href="<?=$adds?>id&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              <a href="<?=$adds?>id&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
               ID
-              <a href="<?=$adds?>id&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+              <a href="<?=$adds?>id&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
             </noscript>
           </th>
           <th align="left" class="nobr">
             <script type="text/javascript">document.write('<?=$text['tipp'][23]?>');</script>
             <noscript>
-              <a href="<?=$adds?>nick&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              <a href="<?=$adds?>nick&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
               <?=$text['tipp'][23]?>
-              <a href="<?=$adds?>nick&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+              <a href="<?=$adds?>nick&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
             </noscript>
           </th>
           <th align="left" class="nobr">
             <script type="text/javascript">document.write('<?=$text['tipp'][134]?>');</script>
             <noscript>
-              <a href="<?=$adds?>name&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              <a href="<?=$adds?>name&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
               <?=$text['tipp'][134]?>
-              <a href="<?=$adds;?>name&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+              <a href="<?=$adds;?>name&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
             </noscript>
           </th>
           <th align="left" class="nobr">
             <script type="text/javascript">document.write('<?=$text['tipp'][27]?>');</script>
             <noscript>
-              <a href="<?=$adds?>team&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              <a href="<?=$adds?>team&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
               <?=$text['tipp'][27]?>
-              <a href="<?=$adds;?>team&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+              <a href="<?=$adds;?>team&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
             </noscript>
           </th>
           <th align="left" class="nobr">
             <script type="text/javascript">document.write('<?=$text['tipp'][270]?>');</script>
             <noscript>
-              <a href="<?=$adds?>ltipp&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              <a href="<?=$adds?>ltipp&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
               <?=$text['tipp'][270]?>
-              <a href="<?=$adds;?>ltipp&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+              <a href="<?=$adds;?>ltipp&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
             </noscript>
           </th>
           <th>&nbsp;</th>
@@ -191,8 +191,8 @@ if ($_SESSION["lmouserok"] == 2) {
           <td align="left"><?=$tab0[$x]['name']; ?></td>
           <td align="left"><?=$tab0[$x]['team']; ?></td>
           <td align="left"><? if($tab0[$x]['ltipp']>0){echo date("d.m.Y H:i",$tab0[$x]['ltipp']);} ?></td>    
-          <td align="left"><a href='<?=$added.$tab0[$x]['nick']?>' onClick="return chklmolink(this.href);"><?=$text['tipp'][98]?></a></td>
-          <td align="left"><a href='<?=$addd.$tab0[$x]['nick']?>' onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/delete.gif" border="0" width="11" height="13" alt="<?=$text[82]?>"></a></td><?
+          <td align="left"><a href='<?=$added.$tab0[$x]['nick']?>' onClick="return chklmolink();"><?=$text['tipp'][98]?></a></td>
+          <td align="left"><a href='<?=$addd.$tab0[$x]['nick']?>' onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/delete.gif" border="0" width="11" height="13" alt="<?=$text[82]?>"></a></td><?
     }?>
         </tr><?
   } ?>

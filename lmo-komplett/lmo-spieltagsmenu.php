@@ -29,16 +29,16 @@
       echo $j;
     }
     echo "&nbsp;</td>";
-    if (($anzst>49) && (($anzst%4)==0)) {
+    if (($anzst>47) && (($anzst%4)==0)) {
       if (($i==$anzst/4) || ($i==$anzst/2) || ($i==$anzst/4*3)) {
         echo "</tr><tr>";
       }
-    } else if (($anzst>38) && (($anzst%3)==0)) {
-      if (($i==$anzst/3) || ($i==$anzst/3*2)) {
+    } elseif (($anzst>35)) {
+      if (($i==ceil($anzst/3)) || ($i==ceil($anzst/3*2))) {
         echo "</tr><tr>";
       }
-    } else if (($anzst>29) && (($anzst%2)==0)) {
-      if ($i==$anzst/2) {
+    } elseif (($anzst>23)) {
+      if ($i==ceil($anzst/2)) {
         echo "</tr><tr>";
       }
     }

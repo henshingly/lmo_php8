@@ -99,15 +99,13 @@ if ($file != "") {
                 if ($minus == 2) {
                   $negativ[$a] = $negativ[$a]+$p0n;
                 }
-              }
-              else if ($goaltippa[$j][$i] < $goaltippb[$j][$i]) {
+              } elseif ($goaltippa[$j][$i] < $goaltippb[$j][$i]) {
                 $nieder[$a] = $nieder[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0n;
                 if ($minus == 2) {
                   $negativ[$a] = $negativ[$a]+$p0s;
                 }
-              }
-              else if ($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
+              } elseif ($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
                 $unent[$a] = $unent[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0u;
                 if ($minus == 2) {
@@ -148,7 +146,7 @@ if ($file != "") {
       // ende for($i=0;$i<$anzsp;$i++)
     }
     // ende for($j=$hoy;$j<$endtab;$j++)
-    if ($tabtype == 0 or $tabtype == 3 or $tabtype == 4) {
+    if (($tabtype == 0 or $tabtype == 3 or $tabtype == 4) && $m==0) {
       $punkte[$a] = $punkte[$a]-$strafp[$a];
       if ($minus == 2) {
         $negativ[$a] = $negativ[$a]-$strafm[$a];
@@ -215,6 +213,7 @@ if ($file != "") {
   // ende if($m==($anztipper-1))
 }
 // ende if($file!="")
+
 
 
 ?>

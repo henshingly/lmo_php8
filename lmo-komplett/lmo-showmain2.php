@@ -101,7 +101,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
       if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
         if ($lang[1]=="") $lang[1]=$text[505];
         if ($lang[1]!=$lmouserlang) {
-          $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;archiv={$archiv}' title='{$lang[1]}'>";
+          $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?{$_SERVER['QUERY_STRING']}&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'>";
           $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
           
           if (!@fopen($imgfile,"rb")) {

@@ -40,10 +40,10 @@ if($save==1){
 }?>
 <table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
+    <td align="center"><a href="<?=$addr_options?>" onclick="return chklmolink();" title="<?=$text[320]?>"><?=$text[319]?></a></td>
     <td align="center"><?=$text[497]?></td>
-    <td align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
-    <td align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
+    <td align="center"><a href="<?=$addr_design?>" onclick="return chklmolink();" title="<?=$text[422]?>"><?=$text[421]?></a></td>
+    <td align="center"><a href="<?=$addr_user?>" onclick="return chklmolink();" title="<?=$text[318]?>"><?=$text[317]?></a></td>
   </tr>
 </table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="100%">

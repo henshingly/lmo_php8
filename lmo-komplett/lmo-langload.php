@@ -27,11 +27,24 @@
 // von der neuen Sprache überschrieben (So werden auch unvollständige Übersetzungen 
 // akzeptiert)
 
+$languages=array(
+    'Deutsch'=>array('de_DE', 'de_DE@euro', 'de', 'ge', 'german'),
+    'Cestina'=>array('cs'),
+    'Francais'=>array('fr'),
+    'English'=>array('en'),
+    'Nederlands'=>array('nl'),
+    'Slovenskega'=>array('sl'));
+
 $text=array();
 read_langfile($text,PATH_TO_LANGDIR."/lang-{$deflang}.txt");
-if (isset($lmouserlang)) {
+if (isset($lmouserlang) && $lmouserlang!=$deflang) {
   if (file_exists(PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt");
+  setlocale (LC_ALL, $languages[$lmouserlang][0]);  // PHP <4.3
+  setlocale (LC_ALL, $languages[$lmouserlang]);     //PHP >4.3
 }
+
+
+
 
 //Alle lang-Dateien im Addon-Verzeichnis 
 $handle=opendir (PATH_TO_LANGDIR);
@@ -61,6 +74,7 @@ function read_langfile(&$text,$langfile,$addon="") {
 }
 $orgpkt=$text[37];
 $orgtor=$text[38];
+
 ?><?
 
 

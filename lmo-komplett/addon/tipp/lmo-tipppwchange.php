@@ -97,35 +97,33 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
   } // end ($newpage==1)
 ?>
-<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+  <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
   <tr>
-    <td align="center" class="active"><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></td>
-  </tr>
-  <tr>
-    <td align="center" class="active"><?=$text['tipp'][107]; ?></td>
-  </tr>
-  <tr>
-    <td align="center"><? 
+    <th align="center"><?=$text['tipp'][107]; ?></th>
+  </tr><? 
   if($newpage!=1){ ?>
+  <tr>
+    <td align="center">
       <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="pwchange">
         <input type="hidden" name="newpage" value="1">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><?=" ".$text['tipp'][140]; ?></td>
-            <td class="lmost5"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>"></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right"><?=" ".$text['tipp'][140]; ?> &nbsp;</td>
+            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>"></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><?=" ".$text['tipp'][139]; ?></td>
-            <td class="lmost5"><input class="lmo-formular-input" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?=$xtipperpassneu; ?>"></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right"><?=" ".$text['tipp'][139]; ?> &nbsp;</td>
+            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?=$xtipperpassneu; ?>"></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><?=" ".$text['tipp'][139]." ".$text['tipp'][19]; ?></td>
-            <td class="lmost5"><input class="lmo-formular-input" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?=$xtipperpassneuw; ?>"></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right"><?=" ".$text['tipp'][139]." ".$text['tipp'][19]; ?> &nbsp;</td>
+            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?=$xtipperpassneuw; ?>"></td>
           </tr>
           <tr>
             <td class="lmost4" colspan="3" align="right">
@@ -133,20 +131,18 @@ if (($action == "tipp") && ($todo == "pwchange")) {
             </td>
           </tr>
         </table>
-      </form><? 
+      </form>
+    </td>
+  </tr><? 
   }
   if($newpage==1){ /* erfolgreich */?>
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-          <td class="lmost5" align="center"><?=$text['tipp'][121]; ?></td>
-        </tr>
-        <tr>
-          <td class="lmost4" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>
-        </tr>
-      </table><? 
-  }?>
-    </td>
+  <tr>
+    <td class="message" align="center"><img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt=""> <?=$text['tipp'][121]; ?></td>
   </tr>
+  <tr>
+    <td class="lmoFooter" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>
+  </tr><? 
+  }?>
 </table><? 
 } 
 $file=""; ?>

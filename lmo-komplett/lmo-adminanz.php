@@ -56,74 +56,67 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
   $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
 ?>
-
+<table class="lmoSubmenu" width="100%" cellpadding="0" cellspacing="0">
+ <tr>
+   <td align="left"><? include(PATH_TO_LMO."/lmo-adminnaviunten.php"); ?></td>
+  </tr>
+</table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center">
-      <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
+      <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
-        <input type="hidden" name="file" value="<?PHP echo $file; ?>">
-        <input type="hidden" name="st" value="<?PHP echo $st; ?>">
+        <input type="hidden" name="file" value="<?=$file; ?>">
+        <input type="hidden" name="st" value="<?=$st; ?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost4" colspan="3"><?PHP echo $text[340]; ?></td>
+            <th class="nobr" align="left" colspan="4"><?=$text[340]; ?></th>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><acronym title="<?PHP echo $text[275] ?>"><?PHP echo $text[274]; ?></acronym></td>
-            <td class="lmost5">
+            <td width="20">&nbsp;</td>
+            <td align="right"><acronym title="<?=$text[275] ?>"><?=$text[274]; ?></acronym></td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xanzst" size="3" maxlength="3" value="<?=$anzst?>" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
+            <td align="center">
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td class="lmost5" align="right"><input class="lmo-formular-input" type="text" name="xanzst" size="3" maxlength="3" value="<?=$anzst?>" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
-                  <td class="lmost5" align="center">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\'sa\',img1)" onMouseOut="lmoimg(\'sa\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"></a>')</script></td>
-                      </tr>
-                      <tr>
-                        <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',-1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\'sb\',img3)" onMouseOut="lmoimg(\'sb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"></a>')</script></td>
-                      </tr>
-                    </table>
-                  </td>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',1);" title="<?=$text[276]; ?>" onMouseOver="lmoimg(\'sa\',img1)" onMouseOut="lmoimg(\'sa\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"></a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',-1);" title="<?=$text[276]; ?>" onMouseOver="lmoimg(\'sb\',img3)" onMouseOut="lmoimg(\'sb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"></a>')</script></td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><acronym title="<?PHP echo $text[278] ?>"><?PHP echo $text[277]; ?></acronym></td>
-            <td class="lmost5">
+            <td width="20">&nbsp;</td>
+            <td align="right"><acronym title="<?=$text[278] ?>"><?=$text[277]; ?></acronym></td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xanzsp" size="2" maxlength="2" value="<?=$anzsp?>" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
+            <td align="center">
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td class="lmost5" align="right"><input class="lmo-formular-input" type="text" name="xanzsp" size="2" maxlength="2" value="<?=$anzsp?>" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
-                  <td class="lmost5" align="center">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\'pa\',img1)" onMouseOut="lmoimg(\'pa\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"></a>')</script></td>
-                      </tr>
-                      <tr>
-                        <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',-1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\'pb\',img3)" onMouseOut="lmoimg(\'pb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"></a>')</script></td>
-                      </tr>
-                    </table>
-                  </td>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',1);" title="<?=$text[279]; ?>" onMouseOver="lmoimg(\'pa\',img1)" onMouseOut="lmoimg(\'pa\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"></a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',-1);" title="<?=$text[279]; ?>" onMouseOver="lmoimg(\'pb\',img3)" onMouseOut="lmoimg(\'pb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"></a>')</script></td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
-            <td class="lmost4" colspan="3" align="right">
-              <acronym title="<?PHP echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="best" value="<?PHP echo $text[188]; ?>"></acronym>
+            <td colspan="4" align="right">
+              <input title="<?=$text[114] ?>" class="lmo-formular-button" type="submit" name="best" value="<?=$text[188]; ?>">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" class="lmoFooter" align="left">
+              <a href="<?=$addr?>-1"><?=$text[544] ?></a>
             </td>
           </tr>
         </table>
       </form>
     </td>
   </tr>
-  <tr>
-    <td><? include(PATH_TO_LMO."/lmo-adminnaviunten.php"); ?></td>
-  </tr>
-</table>
-
-<?PHP } ?>
+</table><?
+}?>

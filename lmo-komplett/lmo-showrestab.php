@@ -113,7 +113,7 @@ if (isset($file) && $file != "") {
         <tr><?  
    $st0 = $st-1;
    if ($st > 1) {?>
-          <td align='left'>&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a>&nbsp;</td><?
+          <td align="left">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a>&nbsp;</td><?
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>

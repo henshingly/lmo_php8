@@ -22,14 +22,14 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-if(isset($file) && $file!=""){
+if(isset($file) && $file!="" && check_hilfsadmin($file)){
   $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
   if(substr($file,-4)==".l98"){
     $daten=array();
     $sekt="";
-    $stand=date("d.m.Y H:i",filemtime(PATH_TO_LMO.'/'.$file));
     $datei = @file(PATH_TO_LMO.'/'.$file);
     if ($datei) {
+      $stand=date("d.m.Y H:i",filemtime(PATH_TO_LMO.'/'.$file));
       $lmtype=0;
       for($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];
@@ -99,6 +99,7 @@ if(isset($file) && $file!=""){
               }
             }else{
               if($schl=="KlFin"){         $klfin=$wert;}
+              if($schl=="playdown"){      $playdown=$wert;}
             }
           }
           $daten[]="$sekt|$schl|$wert|EOL";
@@ -338,6 +339,8 @@ if(isset($file) && $file!=""){
           if(($op2=="Round") && ($op8=="AT")){$mterm[$op3][$op6][$op7]=$dum[2];}
         }
       }
+    } else {
+      die('<p class="error">'.$text[224].'</p>');
     }
   }
 }
