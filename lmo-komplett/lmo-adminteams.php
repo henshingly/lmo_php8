@@ -33,10 +33,13 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
       if($lmtype==0){
         $strafp[$i]=intval($_POST["xstrafp".$i]);
         if($minus==2){$strafm[$i]=intval($_POST["xstrafm".$i]);}
-        }
+        $torkorrektur1[$i]=intval($HTTP_POST_VARS["xtorkorrektur1".$i]); // Hack-Straftore
+		    $torkorrektur2[$i]=intval($HTTP_POST_VARS["xtorkorrektur2".$i]); // Hack-Straftore
+		    $strafdat[$i]=intval($HTTP_POST_VARS["xstrafdat".$i]); // Hack-Straftore
       }
-    require(PATH_TO_LMO."/lmo-savefile.php");
     }
+    require(PATH_TO_LMO."/lmo-savefile.php");
+  }
   elseif($team!=""){
     if($team>1){
       if($anzteams>4){
