@@ -171,7 +171,7 @@ if (($action == "tipp") && ($todo == "daten")) {
     
   } // end ($newpage==1)
 ?>
-<table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
   <tr>
     <th align="center"><?=$text['tipp'][106];if($tipp_tipperimteam>=0){echo " / ".$text['tipp'][2];} ?></th>

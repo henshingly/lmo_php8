@@ -15,7 +15,7 @@
 		<script language="JavaScript" src="addon/limporter/js/tree.js"></script>
 		<script language="JavaScript" src="addon/limporter/js/tree_tpl.js"></script>
 		<script language="JavaScript">
-		new tree (<?PHP echo jsLigaTree($liga);?>, tree_tpl);
+		new tree (<? echo jsLigaTree($liga);?>, tree_tpl);
 		</script>
 		</td>
 		<td valign="top">
@@ -34,7 +34,7 @@
   </tr>
   <tr>
     <td class="lmost5" colspan="3"><nobr>&nbsp;
-    <textarea name="fileContent" class="lmoadminein" cols="60" rows="10" wrap="OFF"><?PHP echo $liga->fileContent(); ?></textarea>
+    <textarea name="fileContent" class="lmoadminein" cols="60" rows="10" wrap="OFF"><? echo $liga->fileContent(); ?></textarea>
     <br>&nbsp;</nobr>
     </td>
   </tr>

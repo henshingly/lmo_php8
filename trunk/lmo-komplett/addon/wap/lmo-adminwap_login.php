@@ -1,4 +1,4 @@
-<?php
+<?
 /*
 ---------------------------------------------------------------
 Datei: lmo-adminwap_login.php
@@ -20,7 +20,7 @@ if (!isset($wap_file))$file="";?>
   	<br/>
   	<small><anchor>
   		Einloggen
-  		<go href="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  		<go href="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
   			<postfield name="xusername" value="$(lmousername)"/>
   			<postfield name="xuserpass" value="$(lmouserpass)"/>
         <postfield name="op" value="liga"/>

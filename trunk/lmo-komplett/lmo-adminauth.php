@@ -1,4 +1,4 @@
-<?PHP
+<?
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -38,18 +38,20 @@ if($action=="admin"){
           </tr>
           <tr>
             <td align="center">
-              <table width="100%" class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+              <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
                 <tr>
-                  <td class="lmost5" align="right"><acronym title="<?=$text[307] ?>"><?=" ".$text[306]; ?></acronym></td>
-                  <td class="lmost5"><acronym title="<?=$text[307] ?>"><input class="lmo-formular-input" type="text" name="xusername" size="16" maxlength="32" value="<?=$_SESSION['lmousername']; ?>"></acronym></a>
+                  <td align="right">
+<acronym title="<?=$text[307] ?>"><?=" ".$text[306]; ?></acronym></td>
+                  <td align="left"><acronym title="<?=$text[307] ?>"><input class="lmo-formular-input" type="text" name="xusername" size="16" maxlength="32" value="<?=$_SESSION['lmousername']; ?>"></acronym></a>
                 </tr>
                 <tr>
-                  <td class="lmost5" align="right"><acronym title="<?=$text[309] ?>"><?=" ".$text[308]; ?></acronym></td>
-                  <td class="lmost5"><acronym title="<?=$text[309] ?>"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value="<?=$_SESSION['lmouserpass']; ?>"></acronym></a>
+                  <td align="right">
+<acronym title="<?=$text[309] ?>"><?=" ".$text[308]; ?></acronym></td>
+                  <td align="left"><acronym title="<?=$text[309] ?>"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value="<?=$_SESSION['lmouserpass']; ?>"></acronym></a>
                 </tr>
                 <tr>
-                  <td class="lmost5">&nbsp;</td>
-                  <td class="lmost5"><acronym title="<?=$text[311] ?>"><input class="lmo-formular-button" type="submit" name="xusersub" value="<?=$text[310]; ?>"></acronym></td>
+                  <td align="left">&nbsp;</td>
+                  <td align="left"><acronym title="<?=$text[311] ?>"><input class="lmo-formular-button" type="submit" name="xusersub" value="<?=$text[310]; ?>"></acronym></td>
                 </tr>
               </table>
             </td>

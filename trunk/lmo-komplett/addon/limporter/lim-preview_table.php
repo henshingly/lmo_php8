@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Version 1.0
 // Copyright (C) 2003 by Tim Schumacher
@@ -29,7 +29,7 @@ require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
   <tr>
   	<td width="48" class="csvtableheader" colspan=2>&nbsp;</td>
 
-<?PHP
+<?
 
 	$regExpArray = array_values($lim_format_exp);
 	$regExpNameArray =  array_keys($lim_format_exp);

@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Addon for LigaManager Online
 // Copyright (C) 2003 by Tim Schumacher
@@ -37,7 +37,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   $addz=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=-2&amp;team=";
 	$meldung = '';
 
- include(PATH_TO_LMO."/lmo-adminnaviunten.php"); ?>
+ include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?>
 
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -53,7 +53,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<? echo $file; ?>">
         <input type="hidden" name="st" value="<? echo $st; ?>">
-<?PHP
+<?
 
   $liga1 = new liga();
 	if ($liga1->loadFile(PATH_TO_LMO."/".$file)==false)
@@ -97,9 +97,9 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 	$liga->loadFile(PATH_TO_LMO."/".$file);
 
 ?>
-        <?php echo "<font color=\"#008800\">".$meldung."</font>"; ?>
+        <? echo "<font color=\"#008800\">".$meldung."</font>"; ?>
         <table border= '0' cellspacing='0' align='center' class="lmoInner">
-        <?php foreach ($liga->spieltage as $spTag) { ?>
+        <? foreach ($liga->spieltage as $spTag) { ?>
         <tr>
         	<th width=15 class="nobr">&nbsp;</th>
         	<th colspan=6 class="nobr" align='left'>
@@ -108,7 +108,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         	<th colspan=3 class="nobr" align='left'>&nbsp;</th>
       	</tr>
 
-<?PHP
+<?
     $pcount = 1;
     $teamArray = array();
     foreach ($spTag->partien as $partie) {
@@ -126,17 +126,25 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
       $teamArray[] = $partie->gast->nr;
 ?>
         <tr>
-          <td class="lmost5">&nbsp</td>
-          <td class="lmost5"><?=$partie->datumString()." ".$partie->zeitString(); ?></td>
-          <td class="lmost5"><?=$partie->heim->name; ?></td>
-          <td class="lmost5">-</td>
-          <td class="lmost5"><?=$partie->gast->name; ?></td>
+          <td">&nbsp</td>
+
+          <td>&nbsp</td>
+<?=$partie->datumString()." ".$partie->zeitString(); ?></td>
+          <td>&nbsp</td>
+<?=$partie->heim->name; ?></td>
+          <td>&nbsp</td>
+-</td>
+          <td>&nbsp</td>
+<?=$partie->gast->name; ?></td>
           <td class="lmost5" align='right' ><?=$hTore; ?></td>
-          <td class="lmost5">:</td>
+          <td>&nbsp</td>
+:</td>
           <td class="lmost5" align='center'><?=$gTore; ?></td>
-          <td class="lmost5"></td>
-          <td class="lmost5">
-<?PHP
+          <td>&nbsp</td>
+</td>
+          <td>&nbsp</td>
+
+<?
       echo "<select class=\"lmo-formular-input\" onChange=\"dolmoedit()\" name=\"sp_";
       echo $spTag->nr."_".$partie->heim->nr."_".$partie->gast->nr."\">\n";
       for ($sp = 1;$sp <= $liga->spieltageCount();$sp++) {
@@ -148,7 +156,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 ?>
 					</td>
       	</tr>
-<?PHP
+<?
       $pcount++;
     }
 		if ($liga->options->valueForKey("Type") == 0 ) {
@@ -156,14 +164,19 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
     	if (!in_array($team->nr,$teamArray)) {
 ?>
         <tr>
-          <td class="lmost5">&nbsp</td>
-          <td class="lmost5">&nbsp;</td>
-          <td class="lmost5">&nbsp;</td>
-          <td class="lmost5">&nbsp;</td>
-          <td class="lmost5"><?=$team->name; ?></td>
+          <td">&nbsp</td>
+
+          <td>&nbsp</td>
+&nbsp;</td>
+          <td>&nbsp</td>
+&nbsp;</td>
+          <td>&nbsp</td>
+&nbsp;</td>
+          <td>&nbsp</td>
+<?=$team->name; ?></td>
           <td class="lmost5" align='right' colspan=3>Spielfrei</td>
         </tr>
-<?php
+<?
     	} // if
     } 	// foreach ($liga->teams as $team)
     }
@@ -174,7 +187,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 
 ?>
   <tr>
-    <td class="lmost5" colspan="10" align="center"><?PHP echo LIM_VERSIONS ; ?></td>
+    <td class="lmost5" colspan="10" align="center"><? echo LIM_VERSIONS ; ?></td>
   </tr>
 
 

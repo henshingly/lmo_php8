@@ -113,7 +113,7 @@ if($file!=""){
   $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
   $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
 
-include(PATH_TO_LMO."/lmo-adminnaviunten.php"); 
+include(PATH_TO_LMO."/lmo-adminsubnavi.php"); 
 ?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">

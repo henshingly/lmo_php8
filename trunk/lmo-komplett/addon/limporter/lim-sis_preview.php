@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Version 0.1
 // Copyright (C) 2003 by Tim Schumacher
@@ -42,7 +42,7 @@ $regExpArray = split($limporter_delimiter,$limporter_formatValues);
 </style>
 </head>
 <body leftmargin="1" topmargin="1" class="csvtablebody">
-<?PHP
+<?
 if( isset($HTTP_GET_VARS)) {
   	reset ($HTTP_GET_VARS);
   	foreach ($HTTP_GET_VARS as $k=>$elem) {
@@ -97,7 +97,7 @@ if(isset($file) and ($pv==1)){
   <tr>
   	<td width="48" class="csvtableheader" colspan=2>&nbsp;</td>
 
-<?PHP
+<?
  for ($i=0;$i<$col;$i++) {
     echo "<td class=\"csvtableheader\" align=\"center\">";
         $spTitel = "";

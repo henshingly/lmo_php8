@@ -1,43 +1,14 @@
-<FilesMatch *.txt>
-	order deny,allow
+<FilesMatch "\.(txt|aus|tip|ein|stat|cfg|l98|csv)$">
 	deny from all
-	allow from localhost
 </FilesMatch>
-<FilesMatch *.aus>
-	order deny,allow
-	deny from all
-	allow from localhost
-</FilesMatch>
-<FilesMatch *.tip>
-	order deny,allow
-	deny from all
-	allow from localhost
-</FilesMatch>
-<FilesMatch *.ein>
-	order deny,allow
-	deny from all
-	allow from localhost
-</FilesMatch>
-<FilesMatch *stat>
-	order deny,allow
-	deny from all
-	allow from localhost
-</FilesMatch>
-<FilesMatch *.cfg>
-	order deny,allow
-	deny from all
-	allow from localhost
-</FilesMatch>
-<FilesMatch *.l98>
-	order deny,allow
-	deny from all
-	allow from localhost
-</FilesMatch>
-<FilesMatch *.csv>
-	order deny,allow
-	deny from all
-	allow from localhost
-</FilesMatch>
-<FilesMatch gpl.txt>
+<Files gpl.txt>
 	allow from all
-</FilesMatch>
+</Files>
+
+# Entfernen Sie im unteren Bereich die Kommenatrzeichen (#), falls Sie Probleme mit Sessions haben
+# ACHTUNG: NICHT ALLE SERVER ERLAUBEN DIESE BEFEHLE!
+#
+#<IfModule mod_php4.c>
+#	php_flag session.use_trans_sid 1
+#	php_value arg_separator.output &amp;
+#</IfModule>

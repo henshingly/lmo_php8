@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Class Library Version 0.1
 // Copyright (C) 2003 by Tim Schumacher
@@ -22,11 +22,12 @@
 ?>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" colspan="2"><nobr><?PHP echo "Datenformat der Importquelle" ?></nobr></td>
+    <td class="lmost5" colspan="2"><nobr><? echo "Datenformat der Importquelle" ?></nobr></td>
   </tr>
 
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo "Geben Sie hier das Datenformat der Importquelle an. (z.B. HTML Tabelle für eine .php / .asp Internetseite)" ?>"><?PHP echo "Datenformat"; ?></acronym></nobr></td>
-    <td class="lmost5" align="left"><acronym title="<?PHP echo "Geben Sie hier das Datenformat der Importquelle an. (z.B. HTML Tabelle für eine .php / .asp Internetseite)" ?>"><select class="lmo-formular-input" name="ximporttype" onChange="dolmoedit()"><?PHP echo "<option value=\"0\""; if($ximporttype==0){echo " selected";} echo ">"."HTML - Tabelle (Internetseite)"."</option>"; echo "<option value=\"1\""; if($ximporttype==1){echo " selected";} echo ">"."CSV - Datei (Trennzeichen separiert)"."</option>"; ?></select></acronym></td>
+    <td align="right">
+<nobr><acronym title="<? echo "Geben Sie hier das Datenformat der Importquelle an. (z.B. HTML Tabelle für eine .php / .asp Internetseite)" ?>"><? echo "Datenformat"; ?></acronym></nobr></td>
+    <td class="lmost5" align="left"><acronym title="<? echo "Geben Sie hier das Datenformat der Importquelle an. (z.B. HTML Tabelle für eine .php / .asp Internetseite)" ?>"><select class="lmo-formular-input" name="ximporttype" onChange="dolmoedit()"><? echo "<option value=\"0\""; if($ximporttype==0){echo " selected";} echo ">"."HTML - Tabelle (Internetseite)"."</option>"; echo "<option value=\"1\""; if($ximporttype==1){echo " selected";} echo ">"."CSV - Datei (Trennzeichen separiert)"."</option>"; ?></select></acronym></td>
   </tr>

@@ -1,4 +1,4 @@
-<?php
+<?
 $begin=isset($_REQUEST['begin'])?$_REQUEST['begin']:0;?>
 <card id="index" title="Ligenauswahl">
   <p><?
@@ -131,5 +131,5 @@ if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
 }
 ?>
   </p>
-  <p><small><a href="<?php echo $_SERVER['PHP_SELF']; ?>?op=exit">Logout</a></small></p>
+  <p><small><a href="<? echo $_SERVER['PHP_SELF']; ?>?op=exit">Logout</a></small></p>
 </card>

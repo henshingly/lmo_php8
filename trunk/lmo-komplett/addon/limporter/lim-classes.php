@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Class Library Version 1.5 (01/2004)
 // Copyright (C) 2003 by Tim Schumacher

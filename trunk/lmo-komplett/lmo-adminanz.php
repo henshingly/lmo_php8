@@ -1,4 +1,4 @@
-<?PHP
+<?
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -58,7 +58,7 @@ if($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1
 ?>
 <table class="lmoSubmenu" width="100%" cellpadding="0" cellspacing="0">
  <tr>
-   <td align="left"><? include(PATH_TO_LMO."/lmo-adminnaviunten.php"); ?></td>
+   <td align="left"><? include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?></td>
   </tr>
 </table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">

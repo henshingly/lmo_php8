@@ -12,7 +12,8 @@ if($tabonres==2){
   $gesamtbreite=3*$breite+11;
 }else{
   $gesamtbreite=$breite+11;
-}?>
+}
+?>
 
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><?

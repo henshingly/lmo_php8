@@ -3,7 +3,7 @@ _______________________Installation: Limporter-Addon für LMO v3.99______________
 #################################################################################################
 #                             Welche Dateien werden benötigt?                                   #
 #                                 - lmo-adminmain.php                                           #
-#                                 - lmo-adminnaviunten.php                                      #
+#                                 - lmo-adminsubnavi.php                                      #
 #                                                                                               #
 #               Nicht vergessen vorher ein Backup der Dateien zu machen!!!!                     #
 #                                                                                               #
@@ -65,7 +65,7 @@ Danach diese Zeile einfügen:
 
 #################################################################################################
 
-lmo-adminnaviunten.php:
+lmo-adminsubnavi.php:
 
 
 ###########

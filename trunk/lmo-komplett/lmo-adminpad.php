@@ -41,8 +41,10 @@ if(($action=="admin") && ($todo=="")){
   }?>
               <li class="lmoadminli"><?="<a href='".$adda."download'>".$text[349]."</a>"; ?></li><? 
   if($_SESSION['lmouserok']==2){ ?>
-              <li class="lmoadminli"><?="<a href='".$adda."options'>".$text[97]."</a>"; ?></li>
+              <li class="lmoadminli"><?="<a href='".$adda."options'>".$text[97]."</a>"; ?></li><?
+    if ($eintippspiel) {?>
               <li class="lmoadminli"><?="<a href='".$adda."tipp'>".$text['tipp'][115]."</a>"; ?></li><? 
+    }
   }?>
               <li class="lmoadminli"><?="<a href='".$adda."logout'>".$text[98]."</a>"; ?></li>
             </ul>

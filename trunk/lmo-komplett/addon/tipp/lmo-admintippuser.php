@@ -206,7 +206,7 @@ if ($_SESSION["lmouserok"] == 2) {
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="tippuser">
         <input type="hidden" name="save" value="-1">
-        <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0"
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"
           <tr>
             <th class="nobr" align="left" colspan="7"><?=$text['tipp'][136]; ?></th>
           </tr>

@@ -1,4 +1,4 @@
-<?PHP
+<?
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -87,9 +87,9 @@ if(($file!="") && ($kurve==1)){
     $dummy=$dummy."&pgtext1=".$text[135];
     $dummy=$dummy."&pgtext2=".$text[136];?>
         <tr>
-          <td><img src="<?PHP echo $dummy; ?>" border="0" alt="<?=$text[133]?>"></td>
+          <td><img src="<? echo $dummy; ?>" border="0" alt="<?=$text[133]?>"></td>
         </tr>
-<?PHP } ?>
+<? } ?>
 
   </table></td>
     <td valign="top" align="center">
@@ -119,4 +119,4 @@ if(($file!="") && ($kurve==1)){
   </tr>
 </table>
 
-<?PHP } ?>
+<? } ?>

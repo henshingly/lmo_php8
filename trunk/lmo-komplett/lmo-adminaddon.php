@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02b
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -77,8 +77,9 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
       foreach ($addon_cfg as $cfg_name => $cfg_value) {   //Alle Konfigwerte des Addon
         ?><tr>
             <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><?=$cfg_name?></td>
-            <td class="lmost5"><input class="lmo-formular-input" type="text" name="x<?=$cfg_name?>" size="30" value="<?=$cfg_value;?>" onChange="dolmoedit()"></td>
+            <td align="right">
+<?=$cfg_name?></td>
+            <td align="left"><input class="lmo-formular-input" type="text" name="x<?=$cfg_name?>" size="30" value="<?=$cfg_value;?>" onChange="dolmoedit()"></td>
           </tr><?
       }
     }

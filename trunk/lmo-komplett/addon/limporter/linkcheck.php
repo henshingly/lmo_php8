@@ -1,4 +1,4 @@
-<?php 
+<? 
 
 function phpLinkCheck($url, $r = FALSE) 
 { 

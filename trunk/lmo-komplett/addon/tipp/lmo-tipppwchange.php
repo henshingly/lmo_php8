@@ -93,7 +93,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
   } // end ($newpage==1)
 ?>
-<table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
   <tr>
     <th align="center"><?=$text['tipp'][107]; ?></th>

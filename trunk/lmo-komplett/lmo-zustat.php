@@ -1,4 +1,4 @@
-<?PHP
+<?
 /**
  * LMO-ZuStat-Addon V1.08 für den LMO 3.02b
  * lmo-zustat.php: Tore pro Spieltag und Durchschnitt der Tore ausgeben
@@ -19,7 +19,7 @@ $zustatoutput = '';
 if ($_SESSION['lmouserok'] > 0) {
   if ($lmtype == 0) {
     $zustatfile = fopen($diroutput.basename($file).".php", "wb+");
-    $zustatoutput .= '<?php ';
+    $zustatoutput .= '<? ';
     $gzutore = 0;
     $gzuanzsp = 0;
     $gzusieg1 = 0;

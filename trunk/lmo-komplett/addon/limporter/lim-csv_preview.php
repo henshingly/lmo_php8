@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Version 0.1
 // Copyright (C) 2003 by Tim Schumacher
@@ -40,7 +40,7 @@ require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
 </style>
 </head>
 <body leftmargin="1" topmargin="1" class="csvtablebody">
-<?PHP
+<?
 if( isset($HTTP_GET_VARS)) {
   	reset ($HTTP_GET_VARS);
   	foreach ($HTTP_GET_VARS as $k=>$elem) {

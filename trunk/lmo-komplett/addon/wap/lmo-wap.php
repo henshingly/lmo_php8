@@ -1,4 +1,4 @@
-<?php
+<?
 /*
 ---------------------------------------------------------------
 Datei: lmo-adminwap.php
@@ -403,8 +403,8 @@ if($lmtype==0){
 
 	}
 }?>
-<p><a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=day&amp;st=<?php echo $st; ?>"><?=$text[10];?></a> | 
-   <a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=help&amp;st=<?php echo $st; ?>"><?=$text[20];?></a>
+<p><a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=day&amp;st=<? echo $st; ?>"><?=$text[10];?></a> | 
+   <a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=help&amp;st=<? echo $st; ?>"><?=$text[20];?></a>
 </p>
 <p><small><a href="<?=$_SERVER['PHP_SELF']?>">Home</a></small></p>
 </card><?

@@ -1,6 +1,6 @@
 <card id="tab" title="Tabelle">
  <p>
-<?php
+<?
 if($st>0){$actual=$st;}else{$actual=$stx;}
 if($lmtype==0){
 	for($i1=0;$i1<$anzsp;$i1++){
@@ -47,6 +47,6 @@ if($lmtype==0){
 
 	}
 }?>
-<br/><a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=day&amp;st=<?=$st?>"><?=$text[10];?></a> | <a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=help&amp;st=<?php echo $st; ?>"><?=$text[20];?></a><?
+<br/><a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=day&amp;st=<?=$st?>"><?=$text[10];?></a> | <a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=help&amp;st=<? echo $st; ?>"><?=$text[20];?></a><?
 echo("<br/><small><a href='{$_SERVER['PHP_SELF']}'>Home</a></small></p></card>");
 ?>

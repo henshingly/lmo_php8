@@ -126,7 +126,7 @@ if ($file != "") {
           } else {
             $dum1="";
           }?>
-          <td class="nobr"><nobr><?=$dum1; ?></nobr></td><? 
+          <td class="nobr"><?=$dum1; ?></td><? 
         }?>
           <td class="nobr" width="2">&nbsp;</td><?
         if ($n == 0) {
@@ -134,11 +134,11 @@ if ($file != "") {
           $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
           $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
           if ($m == 1) {
-            echo "<td class=\"lmoTurnierSieger\" align=\"right\"><nobr>";
+            echo "<td class=\"lmoTurnierSieger nobr\" align=\"right\">";
           } elseif ($m==2) {
-            echo "<td class=\"lmoTurnierVerlierer\" align=\"right\"><nobr>";
+            echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"right\">";
           } else {
-            echo "<td align=\"right\"><nobr>";
+            echo "<td class='nobr' align=\"right\">";
           }
           echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
           if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {

@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Addon for LigaManager Online
 // Copyright (C) 2003 by Tim Schumacher
@@ -189,41 +189,41 @@
   } // end if($imppage==3)
 ?>
 
-<?PHP include(PATH_TO_ADDONDIR."/limporter/lim-javascript.php");?>
+<? include(PATH_TO_ADDONDIR."/limporter/lim-javascript.php");?>
 
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?PHP echo "Neue Liga importieren";/* $text[243];*/ ?></h1></td>
+    <td align="center"><h1><? echo "Neue Liga importieren";/* $text[243];*/ ?></h1></td>
   </tr>
   <tr><td align="center" class="lmost3">
 
-<?PHP if($imppage<1){ ?>
-  <form onSubmit="return checkHinweis();" name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
-<?PHP }
+<? if($imppage<1){ ?>
+  <form onSubmit="return checkHinweis();" name="lmoedit" action="<? echo $PHP_SELF; ?>" method="post">
+<? }
 	else if ($imppage<3){ ?>
-  <form  onSubmit="return checkSettings();" name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
-<?PHP }	?>
+  <form  onSubmit="return checkSettings();" name="lmoedit" action="<? echo $PHP_SELF; ?>" method="post">
+<? }	?>
 
-<?PHP if($imppage<3){ ?>
+<? if($imppage<3){ ?>
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="import">
-  <input type="hidden" name="imppage" value="<?PHP echo ($imppage+1); ?>">
-<?PHP if($imppage>0){ ?>
-  <input type="hidden" name="xfile" value="<?PHP echo $xfile; ?>">
-  <input type="hidden" name="xtitel" value="<?PHP echo $xtitel; ?>">
-  <input type="hidden" name="ximporttype" value="<?PHP echo $ximporttype; ?>">
-<?PHP } ?>
-<?PHP if($imppage>1){ ?>
-  <input type="hidden" name="ximporturl" value="<?PHP echo $ximporturl; ?>">
-  <input type="hidden" name="ximportFile" value="<?PHP echo $ximportFile; ?>">
-<?PHP }} ?>
+  <input type="hidden" name="imppage" value="<? echo ($imppage+1); ?>">
+<? if($imppage>0){ ?>
+  <input type="hidden" name="xfile" value="<? echo $xfile; ?>">
+  <input type="hidden" name="xtitel" value="<? echo $xtitel; ?>">
+  <input type="hidden" name="ximporttype" value="<? echo $ximporttype; ?>">
+<? } ?>
+<? if($imppage>1){ ?>
+  <input type="hidden" name="ximporturl" value="<? echo $ximporturl; ?>">
+  <input type="hidden" name="ximportFile" value="<? echo $ximportFile; ?>">
+<? }} ?>
   <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[246]." ".($imppage+1)." ".$text[259]." 4"; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><? echo $text[246]." ".($imppage+1)." ".$text[259]." 4"; ?></nobr></td>
   </tr>
 
-<?PHP if($imppage==0){ ?>
+<? if($imppage==0){ ?>
 
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
@@ -243,33 +243,38 @@
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5">&nbsp;</td>
+    <td>&nbsp</td>
+&nbsp;</td>
     <td class="lmost5" align="left">&nbsp;</td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" colspan="2"><nobr><?PHP echo "Allgemeine Ligainformationen" ?></nobr></td>
+    <td class="lmost5" colspan="2"><nobr><? echo "Allgemeine Ligainformationen" ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[245]; ?>"><?PHP echo $text[244]; ?></acronym></nobr></td>
-    <td class="lmost5" align="left"><nobr><acronym title="<?PHP echo $text[245]; ?>"><?PHP echo $dirliga; ?><input class="lmo-formular-input" type="text" name="xfile" size="28" maxlength="28" value="<?PHP echo $xfile; ?>" onChange="lmofilename()">.l98</acronym></nobr></td>
+    <td align="right">
+<nobr><acronym title="<? echo $text[245]; ?>"><? echo $text[244]; ?></acronym></nobr></td>
+    <td class="lmost5" align="left"><nobr><acronym title="<? echo $text[245]; ?>"><? echo $dirliga; ?><input class="lmo-formular-input" type="text" name="xfile" size="28" maxlength="28" value="<? echo $xfile; ?>" onChange="lmofilename()">.l98</acronym></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[118] ?>"><?PHP echo $text[113]; ?></acronym></nobr></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[118] ?>"><input class="lmo-formular-input" type="text" name="xtitel" size="40" maxlength="60" value="<?PHP echo $xtitel; ?>" onChange="lmotitelname()"></acronym></td>
+    <td align="right">
+<nobr><acronym title="<? echo $text[118] ?>"><? echo $text[113]; ?></acronym></nobr></td>
+    <td>&nbsp</td>
+<acronym title="<? echo $text[118] ?>"><input class="lmo-formular-input" type="text" name="xtitel" size="40" maxlength="60" value="<? echo $xtitel; ?>" onChange="lmotitelname()"></acronym></td>
   </tr>
     <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[175] ?>"><?PHP echo $text[174]; ?></acronym></nobr></td>
-    <td class="lmost5" align="left"><acronym title="<?PHP echo $text[175] ?>"><select class="lmo-formular-input" name="xtype" onChange="alert('Sorry, KO Turniere werden z.Zt. noch nicht unterstützt.');this.form.xtype.value=0;dolmoedit()"><?PHP echo "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>";
+    <td align="right">
+<nobr><acronym title="<? echo $text[175] ?>"><? echo $text[174]; ?></acronym></nobr></td>
+    <td class="lmost5" align="left"><acronym title="<? echo $text[175] ?>"><select class="lmo-formular-input" name="xtype" onChange="alert('Sorry, KO Turniere werden z.Zt. noch nicht unterstützt.');this.form.xtype.value=0;dolmoedit()"><? echo "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>";
 echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$text[177]."</option>";
       ?>
      </select></acronym></td>
   </tr>
 
-<?PHP
+<?
 	include(PATH_TO_ADDONDIR."/limporter/lim-typ_select.php");
  }
 
@@ -279,7 +284,7 @@ echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$
     <tr>
     <td class="lmost5" colspan="3"><nobr>&nbsp;</nobr></td>
   </tr>
-<?PHP
+<?
 }
   if($imppage==2){
   	if ($ximporttype == 0) {
@@ -291,40 +296,40 @@ echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$
   }
 ?>
   <tr>
-    <td class="lmost5" colspan="3" align="center"><?PHP echo LIM_VERSIONS ; ?></td>
+    <td class="lmost5" colspan="3" align="center"><? echo LIM_VERSIONS ; ?></td>
   </tr>
 
-<?PHP if($imppage<3){ ?>
+<? if($imppage<3){ ?>
   <tr>
     <td class="lmost4" colspan="2">
-      <a href="<?PHP echo $_SERVER['PHP_SELF']; ?>" onclick="return siklmolink(this.href);" title="<?PHP echo $text[248]; ?>"><?PHP echo $text[247]; ?></a>
+      <a href="<? echo $_SERVER['PHP_SELF']; ?>" onclick="return siklmolink(this.href);" title="<? echo $text[248]; ?>"><? echo $text[247]; ?></a>
 
     </td>
-<?PHP if($imppage<2){ ?>
+<? if($imppage<2){ ?>
     <td class="lmost4" align="right">
-      <acronym title="<?PHP echo $text[261]; ?>"><input class="lmo-formular-button" type="submit" name="best" value="<?PHP echo $text[260]; ?>"></acronym>
+      <acronym title="<? echo $text[261]; ?>"><input class="lmo-formular-button" type="submit" name="best" value="<? echo $text[260]; ?>"></acronym>
     </td>
-<?PHP }else{ ?>
+<? }else{ ?>
     <td class="lmost4" align="right">
-      <acronym title="<?PHP echo $text[290]; ?>"><input onClick="nextButtonClicked=1;"  class="lmo-formular-button" type="submit" name="best" value="<?PHP echo $text[289]; ?>"></acronym>
+      <acronym title="<? echo $text[290]; ?>"><input onClick="nextButtonClicked=1;"  class="lmo-formular-button" type="submit" name="best" value="<? echo $text[289]; ?>"></acronym>
     </td>
-<?PHP } ?>
+<? } ?>
   </tr>
   </form>
-<?PHP } ?>
+<? } ?>
 
-<?PHP if($imppage==3){ ?>
+<? if($imppage==3){ ?>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" colspan="2"><nobr>&nbsp;<br><?PHP echo $text[291]; ?><br>&nbsp;</nobr></td>
+    <td class="lmost5" colspan="2"><nobr>&nbsp;<br><? echo $text[291]; ?><br>&nbsp;</nobr></td>
   </tr>
-<?PHP include(PATH_TO_ADDONDIR."/limporter/lim-filecontent.php");?>
+<? include(PATH_TO_ADDONDIR."/limporter/lim-filecontent.php");?>
   <tr>
     <td class="lmost4" colspan="3" align="right"><nobr>
-          <a href="<?PHP echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;st=-1&amp;file=".$file; ?>" title="<?PHP echo $text[293]; ?>"><?PHP echo "Liga Optionen bearbeiten"; ?></a>
+          <a href="<? echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;st=-1&amp;file=".$file; ?>" title="<? echo $text[293]; ?>"><? echo "Liga Optionen bearbeiten"; ?></a>
     </nobr></td>
   </tr>
-<?PHP } ?>
+<? } ?>
 
   </table>
   </td>
