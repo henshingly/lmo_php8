@@ -11,7 +11,7 @@ Dies ist die sogenantne Userseite, die auf dem Handy per WAP
 die aktuellen Ergebnisse und Tabelle anzeigt
 */
 
-require_once("init.php");
+require_once("../init.php");
 $_SERVER['PHP_SELF']=$_SERVER['PHP_SELF']."?wap_file=";
 $home=$_SERVER['PHP_SELF'];
 

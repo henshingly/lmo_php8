@@ -1,0 +1,5 @@
+000=Alle Ergebnisse des letzten Spieltages
+001=.Spieltag
+002=-Entscheid durch Sportgericht
+003=Das Ergebnis zählt für beide Mannschaften gleichermaßen aus Sicht der Heimmannschaft.
+004=Zur Zeit keine Meldungen

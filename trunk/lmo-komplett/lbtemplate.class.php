@@ -276,7 +276,11 @@ class LBTemplate {
 		if(get_class($content) == "lbtemplate")
 			$content = $content->toString();
 		
-		$this->content["$varname"] .= "".$content;
+		if (isset($this->content["$varname"])) {
+      $this->content["$varname"] .= "".$content;
+    }else{
+      $this->content["$varname"] = "".$content;
+    }
 		return true;
 	}
 	
