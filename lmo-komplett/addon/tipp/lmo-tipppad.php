@@ -53,7 +53,7 @@ if(($action=="tipp") && ($todo=="")){
       }
     }
   }
-  if($tipp_gesamt==1 && $u>2){
+  if($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
     $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";?>
         <li>
           <a href="<?=$addw."&amp;all=1"; ?>"><strong><?=$text['tipp'][25];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";} ?> </strong></a>

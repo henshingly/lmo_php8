@@ -63,8 +63,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
       exit;
     }
     flock($einsichtdatei, 2);
-    $addw = "lmo-start.php?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;st=".$st;
-    echo "<p class='message'>".$text['tipp'][157]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text['tipp'][65]."<br></p>";
+    echo "<p class='message'>".$text['tipp'][157]." ".$liga." ".$text['tipp'][65]."</p>";
      
     for($k = 0; $k < $anztipper; $k++) {
       // durchlaufe alle Tipper

@@ -180,7 +180,7 @@ if ($action == "tipp") {
                 }
               }
             }
-            if($tipp_gesamt==1 && $u>2){
+            if($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
               $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";?>
               <li class="lmoadminli"><a href="<? echo $addw."&amp;all=1" ?>"><strong><? echo $text['tipp'][25];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?> </strong></a></li><?
             }
