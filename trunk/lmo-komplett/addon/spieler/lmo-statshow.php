@@ -29,7 +29,7 @@ $begin = isset($_GET['begin'])? $_GET['begin']: 0;
 $direction = isset($_GET['direction'])? $_GET['direction']: $spieler_standard_richtung;
 $team = !empty($_GET['team'])? urldecode($_GET['team']): '';
  
-if ($filepointer = fopen($filename, "r+b")) {
+if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
   $spalten = array(); //Spaltenbezeichnung
   $data = array(); //Daten
   $typ = array(); //Spaltentyp (TRUE=String)

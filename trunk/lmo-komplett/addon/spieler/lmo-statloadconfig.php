@@ -27,7 +27,7 @@ $filename=basename($file);
 $configfile=PATH_TO_ADDONDIR."/spieler/stats/".substr($filename,0,strlen($filename)-4).".cfg";
 $filename=PATH_TO_ADDONDIR."/spieler/stats/".substr($filename,0,strlen($filename)-4).".stat";
 $spieler_ligalink=$text['spieler'][18];
-if ($config=@file($configfile)) {
+if (is_readable($configfile) && $config=file($configfile)) {
 	for ($i=0;$i<count($config);$i++){
 		$row=explode("=",$config[$i],2);
 		switch ($row[0]) {

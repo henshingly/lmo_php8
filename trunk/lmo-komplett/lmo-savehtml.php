@@ -167,7 +167,7 @@ if($lmtype==0 && $st>0){
       $z=array_filter($teama[$st-1],"filterZero");
       if (!empty($z)) {?>
 	<table>
-    <caption><?=$actual+1?>. <?=$text[2]?><?if ($datum1[$datumanz]!='') { echo ' - '.$datum1[$datumanz].' '.$text[4].' '.$datum2[$datumanz];}?></caption><?
+    <caption><?=$actual+1?>. <?=$text[2]?><?if ($datum1[$actual]!='') { echo ' - '.$datum1[$actual].' '.$text[4].' '.$datum2[$actual];}?></caption><?
         $datsort= $mterm[$actual];
         asort($datsort);
         reset($datsort);

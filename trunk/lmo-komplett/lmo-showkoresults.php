@@ -140,7 +140,9 @@ if ($file != "") {
           } else {
             echo "<td class='nobr' align=\"right\">";
           }
-          echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+          if ($plan==1) {
+            echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+          }
           if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
             echo "<strong>";
           }
@@ -148,7 +150,9 @@ if ($file != "") {
           if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
             echo "</strong>";
           }
-          echo "</a>";
+          if ($plan==1) {
+            echo "</a>";
+          }
           if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$st-1][$i]].".gif")) {
               $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$st-1][$i]].".gif");
   
@@ -168,7 +172,9 @@ if ($file != "") {
   
                ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teamb[$st-1][$i]])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$teamb[$st-1][$i]]?>">&nbsp;<?
           }
-          echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+          if ($plan==1) {
+            echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+          }
           if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
             echo "<strong>";
           }
@@ -176,7 +182,10 @@ if ($file != "") {
           if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
             echo "</strong>";
           }
-          echo "</a></td>";
+          if ($plan==1) {
+            echo "</a>";
+          }?>
+          </td><?
         } else { ?>
           <td class="nobr" colspan="3">&nbsp;</td><? 
         }?>

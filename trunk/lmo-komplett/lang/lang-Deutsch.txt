@@ -450,9 +450,9 @@
 449=Buttons
 450=Tabelle
 451=Meister
-452=Champions-League-Teilnehmer
+452=Champions-League-Teilnehmer/Aufsteiger
 453=Champions-League-Qualifikanten
-454=Aufsteiger/UEFA-Cup-Teilnehmer
+454=UEFA-Cup-Teilnehmer
 455=Teilnehmer Abstiegs-Relegation
 456=feststehende Absteiger
 457=Heimtabelle (nur für unterhalb der Ergebnisse)

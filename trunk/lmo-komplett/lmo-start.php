@@ -17,8 +17,6 @@
   *
   */
   
-  
-// Erweiterung für Archiv Funktion durch Georg Strey
 function getmicrotime(){
   list($usec, $sec) = explode(" ",microtime());
   return ((float)$usec + (float)$sec);
@@ -32,7 +30,7 @@ if((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()==
 
 $array = array();
 $ftype=".l98";
-
+if (isset($_REQUEST['st'])) {$st=$_REQUEST['st'];}
 if(!isset($_REQUEST["action"])){$_REQUEST["action"]="";$action="";}else{$action=$_REQUEST["action"];}
 if(!isset($_REQUEST["file"])){$_REQUEST["file"]="";$file="";}else{$file=$_REQUEST["file"];}
 $subdir=isset($_REQUEST["subdir"])?$_REQUEST["subdir"]:'';

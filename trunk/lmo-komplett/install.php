@@ -1,7 +1,7 @@
 <?
 $filelist=array(
   '666'=>array('lmo-auth.txt','config/cfg.txt','config/tipp/cfg.txt',/*'config/viewer/cfg.txt',*/'config/spieler/cfg.txt','config/ticker/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98'),
-  '777'=>array('ligen','output','ligen/archiv','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine'),
+  '777'=>array('ligen','output','ligen/archiv','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
   '644'=>array('init-parameters.php')
   );
 error_reporting(E_ERROR | E_PARSE);

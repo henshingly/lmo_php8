@@ -50,7 +50,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
     }
     require(PATH_TO_LMO."/lmo-savefile.php");
   } elseif($team != "") {
-    if ($team > 1) {
+    if($team >= 1 && $team <= $anzteams){
       if ($anzteams > 4) {
         for($i = 0; $i < $anzst; $i++) {
           for($j = 0; $j < $anzsp; $j++) {
