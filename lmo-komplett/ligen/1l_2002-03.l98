@@ -1,7 +1,6 @@
 [Options]
-Title=LigaManager Online 3.02
+Title=<acronym title="Liga Manager Online">LMO</acronym> 3.99alpha1
 Name=1. Bundesliga 2002/2003
-mittore=
 Type=0
 Teams=18
 Rounds=34
@@ -31,13 +30,19 @@ DatM=1
 DatF=%a.%d.%m. %H:%M
 urlT=1
 urlB=0
-Graph=1
-Kreuz=1
+Plan=1
+Sprachauswahl=1
+Ergebnis=1
+mittore=
 favTeam=13
 selTeam=13
+ticker=0
+Graph=1
+Kreuz=1
+Tabelle=1
+Ligastats=1
 kurve1=13
 kurve2=14
-ticker=0
 
 [Teams]
 1=Borussia Dortmund
@@ -81,91 +86,145 @@ ticker=0
 
 [Team1]
 SP=0
+TOR1=0
+TOR2=2
+STDA=0
 URL=http://www.borussia-dortmund.de/
 NOT=Titelverteidiger
 
 [Team2]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.bayer04.de/
 NOT=Champions League
 
 [Team3]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.fcbayern.de/
 NOT=Champions League-Qualifikation
 
 [Team4]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.herthabsc.de/
 NOT=UEFA-Cup / Ligapokal-Sieger
 
 [Team5]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.schalke04.de/
 NOT=UEFA-Cup / DFB-Pokalsieger
 
 [Team6]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.werder-online.de/
 NOT=
 
 [Team7]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.fck.de/
 NOT=
 
 [Team8]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.vfb-stuttgart.de/
 NOT=
 
 [Team9]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.tsv1860.de/
 NOT=
 
 [Team10]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.vfl-wolfsburg.de/
 NOT=
 
 [Team11]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.hsv.de/
 NOT=
 
 [Team12]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.borussia.de/
 NOT=
 
 [Team13]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.fcenergie.de/
 NOT=
 
 [Team14]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.fc-hansa.de/
 NOT=
 
 [Team15]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.fcn.de/
 NOT=
 
 [Team16]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.hannover96.de/
 NOT=Aufsteiger
 
 [Team17]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.dsc-arminia-bielefeld.de/
 NOT=Aufsteiger
 
 [Team18]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=http://www.vfl-bochum.de/
 NOT=Aufsteiger
 

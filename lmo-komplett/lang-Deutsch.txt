@@ -107,8 +107,8 @@
 106=Enddatum des Spieltags (Format TT.MM.JJJJ - ggf. mit führenden Nullen)
 107=Heimmannschaft auswählen
 108=Gastmannschaft auswählen
-109=Heimtore (0 - 9999, "_" oder "X") - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
-110=Gasttore (0 - 9999, "_" oder "X") - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
+109=Heimtore (0 - 9999, _ oder X) - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
+110=Gasttore (0 - 9999, _ oder X) - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
 111=Spielende auswählen
 112=Notiz zum Spiel (max. 255 Zeichen, eine eventuelle Grüne-Tisch-Entscheidung braucht hier nicht nochmal erwähnt zu werden)
 113=Name der Liga
@@ -118,8 +118,8 @@
 117=Sie haben keine Änderungen vorgenommen.\nTrotzdem speichern?
 118=Der Name der Liga wird den Nutzern immer als Überschrift angezeigt (max. 60 Zeichen, z.B. '1. Bundesliga 2001/02')
 119=Es wurden hier Änderungen vorgenommen, die noch\nnicht gespeichert wurden.\n\nKlicken Sie 'Ja', um die Änderungen zu verwerfen\nund fortzufahren, oder 'Nein', um hierzubleiben,\num die Änderungen noch speichern zu können.
-120=Einstellung der Heimtore (0 - 9999, "_" oder "X")
-121=Einstellung der Gasttore (0 - 9999, "_" oder "X")
+120=Einstellung der Heimtore (0 - 9999, _ oder X)
+121=Einstellung der Gasttore (0 - 9999, _ oder X)
 122=Anstoßdatum des Spiels (Format TT.MM.JJJJ - ggf. mit führenden Nullen)
 123=AnstoßZeit des Spiels (Format HH:MM - ggf. mit führenden Nullen) - lassen Sie dieses Feld leer, wird beim Speichern automatisch die Standard-Anstoßzeit eingesetzt
 124=Mannschaft
@@ -396,7 +396,7 @@
 395=erzielte Tore zählen vor Tordiff.
 396=Zählen die erzielten Tore bei Punktgleichheit mehr als die Tordifferenz (z.B. beim Kegeln)?
 397=Freigegebene Ligen
-398=Geben Sie hier die Namen der Ligen ein, die dieser Hilfs-Admin bearbeiten darf (bitte mit Komma getrennt und ohne Pfad und Namenserweiterung, also z.B. "1l_2001-02,dp_2001-02"). Die angegebenen Ligen müssen bereits auf dem Server existieren!
+398=Geben Sie hier die Namen der Ligen ein, die dieser Hilfs-Admin bearbeiten darf (bitte mit Komma getrennt und ohne Pfad und Namenserweiterung, also z.B. 1l_2001-02,dp_2001-02). Die angegebenen Ligen müssen bereits auf dem Server existieren!
 399=Startanzeige
 400=Was soll beim Aufruf einer Liga zuerst angezeigt werden?
 401=Alle Ligen auf einmal versenden

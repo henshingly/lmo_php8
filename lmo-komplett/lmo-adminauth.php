@@ -20,36 +20,7 @@
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($action=="admin"){
-  if(!isset($_SESSION['lmousername'])){$_SESSION['lmousername']="";}
-  if(!isset($_SESSION['lmouserpass'])){$_SESSION['lmouserpass']="";}
-  if(!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok']==0){
-    if(isset($_POST["xusername"])){
-      $_SESSION['lmousername']=$_POST["xusername"];
-      $_SESSION['lmouserpass']=$_POST["xuserpass"];
-      $pswfile=PATH_TO_LMO."/lmo-auth.txt";
-      $psw1file=PATH_TO_LMO."/lmo-access.txt";
-      if (($admins=@file($pswfile))===FALSE) $admins = array();
-     
-      foreach($admins as $admin){
-        $admin_files = explode('|',trim($admin));
-        if(($_SESSION['lmousername']==$admin_files[0]) && ($_SESSION['lmouserpass']==$admin_files[1])){
-          $_SESSION['lmouserok']=$admin_files[2];
-          if($_SESSION['lmouserok']==1){
-            if ($datei=fopen($psw1file,"rb")) {
-              while ($dateien=fgetcsv($datei,1000,'|')) {
-                if(count($dateien)>0){
-                  if($_SESSION['lmousername']==$dateien[0]){$_SESSION['lmouserfile']=$dateien[1];}
-                }
-              }
-              fclose($datei);
-            }
-          }elseif($_SESSION['lmouserok']==2){
-            $_SESSION['lmouserfile']="";
-          }
-        }
-      }
-    }
-  }
+  require(PATH_TO_LMO."/lmo-admincheck_auth.php");
   if(!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok']==0){
 ?>
 

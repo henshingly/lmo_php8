@@ -25,58 +25,68 @@
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 isset($_POST['save'])?$save=$_POST['save']:$save=0;
-  $r=0;
+isset($_REQUEST['show'])?$show=$_REQUEST['show']:$show=0;
 if($save==1){
   
-  //$diraddon=trim($_POST["xdiraddon"]);
-  $dirliga=trim($_POST["xdirliga"]);
-  if($dirliga==""){$dirliga="./";}
-  $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
-  if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergänzen falls nicht vorhanden
-  
-  //Variablen belegen
-  $tabpkt=trim($_POST["xtabpkt"]);
-  $tabonres=trim($_POST["xtabonres"]);
-  
-  $deflang=trim($_POST["xdeflang"]);
-  
-  $backlink=isset($_POST["xbacklink"])?1:0;
-  $archivlink=isset($_POST["xarchivlink"])?1:0;
-  $calctime=isset($_POST["xcalctime"])?1:0;
-  $einsavehtml=isset($_POST["xeinsavehtml"])?1:0;
-  $einspieler=isset($_POST["xeinspieler"])?1:0;
-  $eintippspiel=isset($_POST["xeintippspiel"])?1:0;
-  $einspielfrei=isset($_POST["xeinspielfrei"])?1:0;
-  $einzutore=isset($_POST["xeinzutore"])?1:0;
-  $einzutoretab=isset($_POST["xeinzutoretab"])?1:0;
-  $einhinrueck=isset($_POST["xeinhinrueck"])?1:0;
-  $einzustats=isset($_POST["xeinzustats"])?1:0;
-  
-  //Zeitformat kontrollieren
-  $deftime=trim($_POST["xdeftime"]);
-  if($deftime==""){$deftime="15:30";}
-  $datum_tmp = explode(':',$deftime);
-  $deftime=strftime("%H:%M", mktime($datum_tmp[0],$datum_tmp[1]));
-  
-  $aadr=trim($_POST["xadr"]);
+  switch ($show) {
+    case 0:
+      $dirliga=trim($_POST["xdirliga"]);
+      if($dirliga==""){$dirliga="./";}
+      $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
+      if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergänzen falls nicht vorhanden
+      
+      $deflang=trim($_POST["xdeflang"]);
+      
+      //Zeitformat kontrollieren
+      $deftime=trim($_POST["xdeftime"]);
+      if($deftime==""){$deftime="15:30";}
+      $datum_tmp = explode(':',$deftime);
+      $deftime=strftime("%H:%M", mktime($datum_tmp[0],$datum_tmp[1]));
+      
+      $aadr=trim($_POST["xadr"]);
+      
+      break;
+    case 1:
+      $tabpkt=trim($_POST["xtabpkt"]);
+      $tabonres=trim($_POST["xtabonres"]);
+      break;
+    case 2:
+      $backlink=isset($_POST["xbacklink"])?1:0;
+      $archivlink=isset($_POST["xarchivlink"])?1:0;
+      $calctime=isset($_POST["xcalctime"])?1:0;
+      $einsavehtml=isset($_POST["xeinsavehtml"])?1:0;
+      $einspieler=isset($_POST["xeinspieler"])?1:0;
+      $eintippspiel=isset($_POST["xeintippspiel"])?1:0;
+      $einspielfrei=isset($_POST["xeinspielfrei"])?1:0;
+      $einzutore=isset($_POST["xeinzutore"])?1:0;
+      $einzutoretab=isset($_POST["xeinzutoretab"])?1:0;
+      $einhinrueck=isset($_POST["xeinhinrueck"])?1:0;
+      $einzustats=isset($_POST["xeinzustats"])?1:0;
+      break;
+  }
   require(PATH_TO_LMO."/lmo-savecfg.php");
 }?>
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0" >
   <tr>
-    <td class="lmost1" align="center"><?=$text[225]?><script type="text/javascript">document.write('</td><td class="lmost1"><a href="#" onclick="blendall2(this)"><img border="0" src="img/plus.gif" alt="+" title="Alle Sektionen einblenden" width="10" height="10"></a>');</script></td>
+    <td class="lmost1" align="center" colspan="2"><?=$text[225]?></td>
   </tr>
   <tr>
-    <td align="center" class="lmost3">
+    <td valign="top">
+      <table cellspacing="0" cellpadding="0" border="0">
+        <tr><td align="right"<?if ($show==0) {?> class="lmost1"><?=$text[99];?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=options&amp;show=0";?>"><?=$text[99];?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==1) {?> class="lmost1"><?=$text[226];?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=options&amp;show=1";?>"><?=$text[226];?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==2) {?> class="lmost1"><?=$text[250];?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=options&amp;show=2";?>"><?=$text[250];?></a><?}?></td></tr>
+      </table>
+    </td>
+    <td align="left" valign="top" class="lmost3">
       <form name="lmoedit" action="<?=$_SERVER['PHP_SELF'];?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="options">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?=$file;?>">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td class="lmost4" colspan="5"><?=$text[99];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+        <input type="hidden" name="show" value="<?=$show;?>">
+        <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><?
+if ($show==0) {?>          
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[506]?>"><?=$text[505];?></acronym></td>
             <td class="lmost5" colspan="4">
@@ -102,12 +112,8 @@ if($save==1){
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[344]?>"><?=$text[343];?></acronym></td>
             <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xadr" size="40" maxlength="128" value="<?=$aadr;?>" onChange="dolmoedit()"></td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="5"><?=$text[226];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><?
+}elseif ($show==1) {?>          
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[228]?>"><?=$text[227];?></acronym></td>
             <td class="lmost5" colspan="4">
@@ -126,12 +132,8 @@ if($save==1){
                 <option value="2"<?if($tabonres==2){echo " selected";}?>><?=$text[235]?></option>
               </select>
             </td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="5"><?=$text[250];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><?
+}elseif ($show==2) {?>          
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[390]?>"><?=$text[389];?></acronym></td>
             <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xbacklink" onChange="dolmoedit()"<?if($backlink==1){echo " checked";}?>></td>
@@ -168,9 +170,8 @@ if($save==1){
             <td class="lmost5" colspan="4">
               <input type="checkbox" class="lmoadminein" name="xeinzutore" onChange="dolmoedit()"<?if($einzutore==1){echo " checked";}?>>&nbsp;<?=$text[492]?>
             </td>
-          </tr>
-          
-          </tbody>
+          </tr><?
+}?>          
           <tr>
             <td class="lmost5" colspan="6" align="center">
               <acronym title="<?=$text[114]?>"><input class="lmoadminbut" type="submit" name="best" value="<?=$text[188];?>"></acronym>
@@ -181,7 +182,7 @@ if($save==1){
     </td>
   </tr>
   <tr>
-    <td>
+    <td colspan="2">
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmost1" align="center"><?=$text[319]?></td>
@@ -193,4 +194,3 @@ if($save==1){
     </td>
   </tr>
 </table>
-<script type="text/javascript">blendall();</script>
