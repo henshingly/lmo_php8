@@ -21,18 +21,31 @@
 require_once("lmo-admintest.php");
   if(!isset($save)){$save=0;}
   if($save==1){
+    
     $dirliga=trim($HTTP_POST_VARS["xdirliga"]);
     if($dirliga==""){$dirliga="./";}
-    $dummy=$dirliga;$dirliga=str_replace("\\","/",$dummy);
-    if(substr($dirliga,-1)!="/"){$dirliga=$dirliga."/";}
+    $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
+    if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergänzen falls nicht vorhanden
+    
     $tabpkt=trim($HTTP_POST_VARS["xtabpkt"]);
     $tabonres=trim($HTTP_POST_VARS["xtabonres"]);
-    $backlink=trim($HTTP_POST_VARS["xbacklink"]);
-    $calctime=trim($HTTP_POST_VARS["xcalctime"]);
+    
+    $backlink=isset($HTTP_POST_VARS["xbacklink"])?1:0;
+    $calctime=isset($HTTP_POST_VARS["xcalctime"])?1:0;
+    $einsavehtml=isset($HTTP_POST_VARS["xeinsavehtml"])?1:0;
+    $einspieler=isset($HTTP_POST_VARS["xeinspieler"])?1:0;
+    $eintippspiel=isset($HTTP_POST_VARS["xeintippspiel"])?1:0;
+    $einspielfrei=isset($HTTP_POST_VARS["xeinspielfrei"])?1:0;
+    $einzutore=isset($HTTP_POST_VARS["xeinzutore"])?1:0;
+    $einzutoretab=isset($HTTP_POST_VARS["xeinzutoretab"])?1:0;
+    $einhinrueck=isset($HTTP_POST_VARS["xeinhinrueck"])?1:0;
+    $einzustats=isset($HTTP_POST_VARS["xeinzustats"])?1:0;
+    
     $deftime=trim($HTTP_POST_VARS["xdeftime"]);
     if($deftime==""){$deftime="15:30";}
-    $datu2 = split("[:]",$deftime);
-    $deftime=strftime("%H:%M", mktime($datu2[0],$datu2[1]));
+    $datum_tmp = explode(':',$deftime);
+    $deftime=strftime("%H:%M", mktime($datum_tmp[0],$datum_tmp[1]));
+    
     $aadr=trim($HTTP_POST_VARS["xadr"]);
     require("lmo-savecfg.php");
     }
@@ -42,121 +55,128 @@ require_once("lmo-admintest.php");
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?PHP echo $text[225] ?></td>
-  </tr>
-  <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post" onSubmit="return chklmopass()">
-  
-  <input type="hidden" name="action" value="admin">
-  <input type="hidden" name="todo" value="options">
-  <input type="hidden" name="save" value="1">
-  <input type="hidden" name="file" value="<?PHP echo $file; ?>">
-  <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[220]; ?></nobr></td>
+    <td class="lmost1" align="center"><?=$text[225]?></td>
   </tr>
   <tr>
-    <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[222] ?>"><?PHP echo $text[221]; ?></acronym></nobr></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[222] ?>"><input class="lmoadminein" type="text" name="xdirliga" size="40" maxlength="80" value="<?PHP echo $dirliga; ?>" onChange="dolmoedit()"></acronym></td>
+    <td align="center" class="lmost3">
+      <form name="lmoedit" action="<?=$PHP_SELF;?>" method="post" onSubmit="return chklmopass()">
+        <input type="hidden" name="action" value="admin">
+        <input type="hidden" name="todo" value="options">
+        <input type="hidden" name="save" value="1">
+        <input type="hidden" name="file" value="<?=$file;?>">
+        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="lmost4" colspan="3"><?=$text[220];?></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[222]?>"><?=$text[221];?></acronym></td>
+            <td class="lmost5"><input class="lmoadminein" type="text" name="xdirliga" size="40" maxlength="80" value="<?=$dirliga;?>" onChange="dolmoedit()"></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[481]?>"><?=$text[482];?></acronym></td>
+            <td class="lmost5"><input class="lmoadminein" type="text" name="xdiraddon" size="60" maxlength="200" value="<?=$diraddon;?>" onChange="dolmoedit()"></td>
+          </tr>
+          <tr>
+            <td class="lmost4" colspan="3"><?=$text[226];?></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[228]?>"><?=$text[227];?></acronym></td>
+            <td class="lmost5">
+              <select class="lmoadminein" name="xtabpkt" onChange="dolmoedit()">
+                <option value="0"<?if($tabpkt==0){echo " selected";}?>><?=$text[229]?></option>
+                <option value="1"<?if($tabpkt==1){echo " selected";}?>><?=$text[230]?></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[232]?>"><?=$text[231]?></acronym></td>
+            <td class="lmost5">
+              <select class="lmoadminein" name="xtabonres" onChange="dolmoedit()">
+                <option value="0"<?if($tabonres==0){echo " selected";}?>><?=$text[233]?></option>
+                <option value="1"<?if($tabonres==1){echo " selected";}?>><?=$text[234]?></option>
+                <option value="2"<?if($tabonres==2){echo " selected";}?>><?=$text[235]?></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="lmost4" colspan="3"><?=$text[236];?></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[390]?>"><?=$text[389];?></acronym></td>
+            <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xbacklink" onChange="dolmoedit()"<?if($backlink==1){echo " checked";}?>></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[473]?>"><?=$text[472];?></acronym></td>
+            <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xcalctime" onChange="dolmoedit()"<?if($calctime==1){echo " checked";}?>></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[484]?>"><?=$text[483];?></acronym></td>
+            <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xeinsavehtml" onChange="dolmoedit()"<?if($einsavehtml==1){echo " checked";}?>></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[490]?>"><?=$text[489];?></acronym></td>
+            <td class="lmost5">
+              <?=$text[491]?>: <input type="checkbox" class="lmoadminein" name="xeinzutoretab" onChange="dolmoedit()"<?if($einzutoretab==1){echo " checked";}?>>
+              <?=$text[492]?>: <input type="checkbox" class="lmoadminein" name="xeinzutore" onChange="dolmoedit()"<?if($einzutore==1){echo " checked";}?>>
+            </td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[494]?>"><?=$text[493];?></acronym></td>
+            <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xeinhinrueck" onChange="dolmoedit()"<?if($einhinrueck==1){echo " checked";}?>></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[496]?>"><?=$text[495];?></acronym></td>
+            <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xeinzustats" onChange="dolmoedit()"<?if($einzustats==1){echo " checked";}?>></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[486]?>"><?=$text[485];?></acronym></td>
+            <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xeinspieler" onChange="dolmoedit()"<?if($einspieler==1){echo " checked";}?>></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[488]?>"><?=$text[487];?></acronym></td>
+            <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xeintippspiel" onChange="dolmoedit()"<?if($eintippspiel==1){echo " checked";}?>></td>
+          </tr>
+          
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[240]?>"><?=$text[239];?></acronym></td>
+            <td class="lmost5"><input class="lmoadminein" type="text" name="xdeftime" size="5" maxlength="5" value="<?=$deftime;?>" onChange="dolmoedit()"></td>
+          </tr>
+          <tr>
+            <td class="lmost5" width="20">&nbsp;</td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[344]?>"><?=$text[343];?></acronym></td>
+            <td class="lmost5"><input class="lmoadminein" type="text" name="xadr" size="40" maxlength="128" value="<?=$aadr;?>" onChange="dolmoedit()"></td>
+          </tr>
+          <tr>
+            <td class="lmost4" colspan="3" align="right">
+              <acronym title="<?=$text[114]?>">?<input class="lmoadminbut" type="submit" name="best" value="<?=$text[188];?>"></acronym>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[226]; ?></nobr></td>
-  </tr>
-  <tr>
-    <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[228] ?>"><?PHP echo $text[227]; ?></acronym></nobr></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[228] ?>">
-      <select class="lmoadminein" name="xtabpkt" onChange="dolmoedit()">
-      <?PHP
-        echo "<option value=\"0\"";
-          if($tabpkt==0){echo " selected";}
-          echo ">".$text[229]."</option>";
-        echo "<option value=\"1\"";
-          if($tabpkt==1){echo " selected";}
-          echo ">".$text[230]."</option>";
-      ?>
-      </select>
-    </acronym></td>
-  </tr>
-  <tr>
-    <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[232] ?>"><?PHP echo $text[231]; ?></acronym></nobr></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[232] ?>">
-      <select class="lmoadminein" name="xtabonres" onChange="dolmoedit()">
-      <?PHP
-        echo "<option value=\"0\"";
-          if($tabonres==0){echo " selected";}
-          echo ">".$text[233]."</option>";
-        echo "<option value=\"1\"";
-          if($tabonres==1){echo " selected";}
-          echo ">".$text[234]."</option>";
-        echo "<option value=\"2\"";
-          if($tabonres==2){echo " selected";}
-          echo ">".$text[235]."</option>";
-      ?>
-      </select>
-    </acronym></td>
-  </tr>
-  <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[236]; ?></nobr></td>
-  </tr>
-  <tr>
-    <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[390] ?>"><?PHP echo $text[389]; ?></acronym></nobr></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[390] ?>">
-      <select class="lmoadminein" name="xbacklink" onChange="dolmoedit()">
-      <?PHP
-        echo "<option value=\"1\"";
-          if($backlink==1){echo " selected";}
-          echo ">".$text[181]."</option>";
-        echo "<option value=\"0\"";
-          if($backlink==0){echo " selected";}
-          echo ">".$text[182]."</option>";
-      ?>
-      </select>
-    </acronym></td>
-  </tr>
-  <tr>
-    <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[473] ?>"><?PHP echo $text[472]; ?></acronym></nobr></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[473] ?>">
-      <select class="lmoadminein" name="xcalctime" onChange="dolmoedit()">
-      <?PHP
-        echo "<option value=\"1\"";
-          if($calctime==1){echo " selected";}
-          echo ">".$text[181]."</option>";
-        echo "<option value=\"0\"";
-          if($calctime==0){echo " selected";}
-          echo ">".$text[182]."</option>";
-      ?>
-      </select>
-    </acronym></td>
-  </tr>
-  <tr>
-    <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[240] ?>"><?PHP echo $text[239]; ?></acronym></nobr></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[240] ?>"><input class="lmoadminein" type="text" name="xdeftime" size="5" maxlength="5" value="<?PHP echo $deftime; ?>" onChange="dolmoedit()"></acronym></td>
-  </tr>
-  <tr>
-    <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[344] ?>"><?PHP echo $text[343]; ?></acronym></nobr></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[344] ?>"><input class="lmoadminein" type="text" name="xadr" size="40" maxlength="128" value="<?PHP echo $aadr; ?>" onChange="dolmoedit()"></acronym></td>
-  </tr>
-
-  <tr><td class="lmost4" colspan="3" align="right">
-      <acronym title="<?PHP echo $text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<?PHP echo $text[188]; ?>"></acronym>
-  </td></tr>
-  </form>
-
-  </table></td></tr>
-  <tr>
-    <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
-<?PHP 
-  echo "<td class=\"lmost1\" align=\"center\">".$text[319]."</td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addf."');\" title=\"".$text[422]."\">".$text[421]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addu."');\" title=\"".$text[318]."\">".$text[317]."</a></td>";
-?>
-    </tr></table></td>
+    <td>
+      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="lmost1" align="center"><?=$text[319]?></td>
+          <td class="lmost2" align="center"><a href="<?=$addf?>" onclick="return chklmolink('<?=$addf?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
+          <td class="lmost2" align="center"><a href="<?=$addu?>" onclick="return chklmolink('<?=$addu?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
+        </tr>
+      </table>
+    </td>
   </tr>
 </table>
