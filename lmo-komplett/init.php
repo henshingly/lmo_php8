@@ -1,5 +1,5 @@
 <?
-// Dies ist der Dateipfad zum LMO-Verzeichnis ausgehend von deinem Rootverzeichnis (ohne abschliessenden '/'!)
+// Dies ist der Dateipfad zum LMO-Verzeichnis ausgehend von deinem HTML-Stammverzeichnis (ohne abschliessenden '/'!)
 $lmo_dateipfad="/tmp/lmo-komplett/lmo";
 // Dies ist die absolute URL zum LMO-Verzeichnis (ohne abschliessenden '/'!)
 $lmo_url='http://localhost/tmp/lmo-komplett/lmo';
