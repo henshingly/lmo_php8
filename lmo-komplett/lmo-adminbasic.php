@@ -52,6 +52,7 @@ if($file!=""){
         break;
       case 2:
         if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){
+          $enablegamesort=isset($_POST["xenablegamesort"])?1:0;
           $datm=isset($_POST["xdatm"])?1:0;
           if (!empty($_POST["xdatfselect"])) {
             $datf=isset($_POST["xdatf"])?$_POST["xdatf"]:$defdateformat;
@@ -245,7 +246,11 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           </tr><? 
     }
   }elseif ($show==2) {
-    if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ 
+    if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
+          <tr>
+            <td class="nobr" align="right"><acronym title="<?=$text[570];?>"><?=$text[569];?></acronym></td>
+            <td class="nobr" align="left"><input type="checkbox" class="lmo-formular-input" name="xenablegamesort" onChange="dolmoedit()"<?if($enablegamesort==1){echo " checked";}?>></td>
+          </tr><?
       if($lmtype==1){ ?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?=$text[418];?>"><?=$text[417];?></acronym></td>

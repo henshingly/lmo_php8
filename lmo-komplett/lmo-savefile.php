@@ -42,6 +42,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         fputs($datei,"Teams=".$anzteams."\n");
         fputs($datei,"goalfaktor=".$goalfaktor."\n");
         fputs($datei,"pointsfaktor=".$pointsfaktor."\n");
+        fputs($datei,"enableGameSort=".$enablegamesort."\n");
         if ($lmtype==0) {
           fputs($datei,"Rounds=".$anzst."\n");
           fputs($datei,"Matches=".$anzsp."\n");

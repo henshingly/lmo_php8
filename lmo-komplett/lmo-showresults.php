@@ -12,8 +12,9 @@ if($dats==1){
 }?>
     </th>
   </tr><?
-
-if(filterZero($mterm[$st-1])) { // Wenn Spieltermine angegeben, dann nach Datum sortieren
+// Wenn Spieltermine angegeben und Sortierung eingeschaltet, dann nach Datum sortieren
+$datsort = $mterm[$st-1];
+if($enablegamesort == '1' && filterZero($mterm[$st-1])) { 
   $datsort = $mterm[$st-1];
   asort($datsort);
   reset($datsort);
@@ -43,7 +44,9 @@ while (list ($key, $val) = each ($datsort)) {
     <td width="2">&nbsp;</td>
     <td class="nobr" align="right"><?
  
-    echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+    if ($plan == "1") {
+      echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+    }
     if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
       echo "<strong>";
     }
@@ -51,14 +54,17 @@ while (list ($key, $val) = each ($datsort)) {
     if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
       echo "</strong>";
     }
-    echo "</a>";
-
+    if ($plan == "1") {
+      echo "</a>";
+    }
     ?>
     </td>
     <td align="center" width="10">-</td>
     <td class="nobr" align="left"><?
 
-    echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+    if ($plan == "1") {
+      echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+    }
     if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
       echo "<strong>";
     }
@@ -66,8 +72,9 @@ while (list ($key, $val) = each ($datsort)) {
     if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
       echo "</strong>";
     }
-    echo "</a>";
-
+    if ($plan == "1") {
+      echo "</a>";
+    }
       ?>
     </td>
     <td width="2">&nbsp;</td>

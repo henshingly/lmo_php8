@@ -57,7 +57,8 @@ if(!empty($file) && check_hilfsadmin($file)){
               case "selTeam":      if(!isset($selteam))$selteam=$wert;break;
               case "ticker":       $nticker=$wert;break;
               case "goalfaktor":   $goalfaktor=$wert;break;
-              case "pointsfaktor":   $pointsfaktor=$wert;break;
+              case "pointsfaktor": $pointsfaktor=$wert;break;
+              case "enableGameSort":$enablegamesort=$wert;break;
             }
             if($lmtype==0){
               switch ($schl) {
@@ -127,6 +128,7 @@ if(!empty($file) && check_hilfsadmin($file)){
       if(!isset($urlb)){                       $urlb=0;}
       if(!isset($goalfaktor) || $goalfaktor=="")    { $goalfaktor=1;}
       if(!isset($pointsfaktor) || $pointsfaktor==""){ $pointsfaktor=1;}
+      if(!isset($enablegamesort)){             $enablegamesort=1;}
       if($lmtype==0){
         if(!isset($kurve)){                    $kurve=1;}
         if(!isset($kreuz)){                    $kreuz=1;}
