@@ -50,7 +50,7 @@ if($file!=""){
         break;
       case 2:
         if($_SESSION['lmouserok']==2){
-          $onrun=isset($_POST["xonrun"])?1:0;
+          $onrun=isset($_POST["xonrun"])?$_POST["xonrun"]:0;
           $datm=isset($_POST["xdatm"])?1:0;
           $datf=isset($_POST["xdatf"])?$_POST["xdatf"]:false;
           $dats=isset($_POST["xdats"])?1:0;

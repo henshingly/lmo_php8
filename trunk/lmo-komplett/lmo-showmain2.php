@@ -35,9 +35,9 @@ if($file!=""){
     $ste=$endtab;
   }
   if ($action=="") {
-    if(!isset($onrun) || $onrun==0){
+    if(!isset($onrun) || $onrun==0 || $tabelle==0){
       $action="results";
-    }else{
+    }elseif ($ergebnis==0){
       $action="table";
     }
   }
@@ -186,12 +186,13 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
       //Normal
       switch($action) {
         case "cal":      if($datc==1)                     {require(PATH_TO_LMO."/lmo-showcal.php");}break;
-        case "results":  if ($ergebnis==1)                {require(PATH_TO_LMO."/lmo-showrestab.php");}break;
-        case "table":    if ($tabelle==1)                 {require(PATH_TO_LMO."/lmo-showrestab.php");}break;
+        case "results":  if ($ergebnis==1)                {$druck=1;require(PATH_TO_LMO."/lmo-showrestab.php");}break;
+        case "table":    if ($tabelle==1)                 {$druck=1;require(PATH_TO_LMO."/lmo-showrestab.php");}break;
         case "cross":    if ($kreuz==1)                   {require(PATH_TO_LMO."/lmo-showcross.php");}break;
         case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showprogram.php");}break;
         case "graph":    if ($kurve==1)                   {require(PATH_TO_LMO."/lmo-showgraph.php");}break;
         case "stats":    if ($ligastats==1)               {require(PATH_TO_LMO."/lmo-showstats.php");}break;
+        case "":         /*Auswahlseite*/break;
       }
     //Pokal
     }else{
