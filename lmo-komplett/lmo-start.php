@@ -19,9 +19,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // Erweiterung für Archiv Funktion durch Georg Strey
-define('PATH_TO_LMO', $_SERVER['DOCUMENT_ROOT'].'/tmp/lmo-komplett/lmo');
-define('PATH_TO_ADDON_DIR', $_SERVER['DOCUMENT_ROOT'].'/tmp/lmo-komplett/lmo/addon');
-
+require("init.php");
 function getmicrotime(){
   list($usec, $sec) = explode(" ",microtime());
   return ((float)$usec + (float)$sec);
@@ -32,25 +30,11 @@ $startzeit = getmicrotime();
 if((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()=="") {
   session_start();
 }
-?>
-<script type="text/javascript">
-<!--
- NS4 = (document.layers);
- if (NS4) { document.write('<link rel="stylesheet" href="lmo-style-nc.css" type="text/css">'); }
-  else { document.write('<link rel="stylesheet" href="lmo-style.css" type="text/css">'); }
-//-->
-</script>
-<noscript>
-<link rel="stylesheet" href="lmo-style.css" type="text/css">
-</noscript>
-<?php
+
 setlocale(LC_TIME, "de_DE");
 $array = array();
 $ftype=".l98";
-require_once(PATH_TO_LMO."/lmo-cfgload.php");
-if(isset($_GET["lmouserlang"])){$_SESSION["lmouserlang"]=$_GET["lmouserlang"];}
-if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
-require_once(PATH_TO_LMO."/lmo-langload.php");
+
 require_once(PATH_TO_LMO."/lmo-archiv.php");
 
 if(!isset($_REQUEST["action"])){$_REQUEST["action"]="";$action="";}
@@ -59,37 +43,6 @@ if(!isset($_REQUEST["archiv"])){$_REQUEST["archiv"]="";$archiv="";}
 
 if($_REQUEST["action"]=="admin"){$_REQUEST["action"]="";$action="";}
 
-include(PATH_TO_LMO."/lmo-showmain.php");
-/*
-if($_REQUEST["action"]==""){
-  if($_REQUEST["file"]=="" || !file_exists($_REQUEST["file"])){
-    if(isset($_REQUEST["archiv"])){
-      if($_REQUEST["archiv"]=="dir"){
-        AuswahlArchiv();
-      }else
-        {WechselLigaVerzeichnis();}
-    }else{
-      AuswahlLiga();
-    }
-  }else{
-    require_once(PATH_TO_LMO."/lmo-openfile.php");
-    if($onrun==0){$action="results";}else{$action="table";}
-    require(PATH_TO_LMO."/lmo-showmain.php");
-  }
-}
-elseif ($_REQUEST["action"] == "tipp")
-{
-  define('LMO_TIPPAUTH', 1);
-  require(PATH_TO_LMO."/lmo-tippstart.php");
-}
-else
-{
-  if(!isset($_REQUEST["file"]) || $_REQUEST["file"]=="")
-    {AuswahlLiga();}
-  else
-  {
-    require_once(PATH_TO_LMO."/lmo-openfile.php");
-    require(PATH_TO_LMO."/lmo-showmain.php");
-  }
-}*/
+include(PATH_TO_LMO."/lmo-showmain2.php");
+
 ?>

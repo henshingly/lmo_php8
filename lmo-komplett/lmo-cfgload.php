@@ -33,11 +33,11 @@ if (file_exists($cfgfile)) {
   //Fehlerhandling hier rein
 }           
             
-$handle=opendir (PATH_TO_ADDON_DIR);
+$handle=opendir (PATH_TO_ADDONDIR);
 while (false!==($f=readdir($handle))) {
 
-  if (is_dir(PATH_TO_ADDON_DIR.'/'.$f) && $f!='.' && $f!='..') {
-    $addon_cfgfile=PATH_TO_ADDON_DIR."/$f/cfg.txt";                       // Konfigurationsdatei
+  if (is_dir(PATH_TO_ADDONDIR.'/'.$f) && $f!='.' && $f!='..') {
+    $addon_cfgfile=PATH_TO_ADDONDIR."/$f/cfg.txt";                       // Konfigurationsdatei
     if (file_exists($addon_cfgfile)) {
       $addon_cfgarray=parse_ini_file($addon_cfgfile);         // in Array lesen
       $cfgarray[$f]=$addon_cfgarray;

@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02a
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -23,14 +23,12 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 define('LMO_AUTH', 1);
-define('PATH_TO_LMO', $_SERVER['DOCUMENT_ROOT'].'/tmp/lmo-komplett/lmo');
-define('PATH_TO_ADDON_DIR', $_SERVER['DOCUMENT_ROOT'].'/tmp/lmo-komplett/lmo/addon');
-session_start();
+require_once("init.php");
 if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
 if(!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
 if(!isset($_SESSION["lmouserpass"])){$_SESSION["lmouserpass"]="";}
 if(!isset($_SESSION["lmouserfile"])){$_SESSION["lmouserfile"]="";}
-if(isset($_GET["lmouserlang"])){$_SESSION["lmouserlang"]=$_GET["lmouserlang"];}
+
 isset($_REQUEST['todo'])?$todo=$_REQUEST['todo']:$todo="";
 if($todo=="logout"){
   $_SESSION['lmouserok']=0;
@@ -48,17 +46,10 @@ if($todo=="logout"){
 </head>
 <body>
 <center>
-<?PHP
+<?
 $action="admin";
 $array = array();
 setlocale (LC_TIME, "de_DE");
-require(PATH_TO_LMO."/lmo-cfgload.php");
-
-if (isset($_POST["xdeflang"]) && $deflang!=trim($_POST["xdeflang"])) {
-  $_SESSION['lmouserlang']=trim($_POST["xdeflang"]);
-}
-if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
-require(PATH_TO_LMO."/lmo-langload.php");
 require(PATH_TO_LMO."/lmo-adminauth.php");
 
 if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0){

@@ -29,17 +29,29 @@
   }
   $image = imagecreate($breit,$hoch);
   imageinterlace($image,1);
+
+  //Farbwerte aus css-datei lesen
+  ob_start();
+  @readfile("lmo-style.css");
+  $f=ob_get_clean();
+  
   $farbe_body=imagecolorallocate($image,255,255,255);
-  $farbe_a=imagecolorallocate($image,0,0,0);
-  $farbe_b=imagecolorallocate($image,192,192,192);
-  $farbe_c=imagecolorallocate($image,0,0,255);
-  $farbe_d=imagecolorallocate($image,255,0,0);
-  $farbe_e=imagecolorallocate($image,237,244,156);
-  $farbe_f=imagecolorallocate($image,204,205,254);
-  $farbe_g=imagecolorallocate($image,166,238,237);
-  $farbe_h=imagecolorallocate($image,192,255,192);
-  $farbe_i=imagecolorallocate($image,255,187,208);
-  $farbe_j=imagecolorallocate($image,255,208,239);
+  $farbe_a=imagecolorallocate($image,0,0,0);  //Schrift
+  $farbe_b=imagecolorallocate($image,192,192,192);  //Gitter
+  $farbe_c=imagecolorallocate($image,0,0,255);  //Linie1 & Mannschaft1
+  $farbe_d=imagecolorallocate($image,255,0,0);  //Linie2 & Mannschaft2
+  if(($color=get_color($f,"lmotab1"))===FALSE) $color=array(237,244,156);
+  $farbe_e=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Meister
+  if(($color=get_color($f,"lmotab2"))===FALSE) $color=array(204,205,254);
+  $farbe_f=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Champleague
+  if(($color=get_color($f,"lmotab3"))===FALSE) $color=array(166,238,237);
+  $farbe_g=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Champquali
+  if(($color=get_color($f,"lmotab4"))===FALSE) $color=array(192,255,192);
+  $farbe_h=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //UEFA
+  if(($color=get_color($f,"lmotab5"))===FALSE) $color=array(255,187,208);
+  $farbe_i=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Abstiegsrelegation
+  if(($color=get_color($f,"lmotab6"))===FALSE) $color=array(255,208,239);
+  $farbe_j=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Abstieg
   imagestring($image,2,28,28+(($pgteams+1)*12), $pgtext1, $farbe_a);
   imagestringup($image,2,4,$hoch-28, $pgtext2, $farbe_a);
   for($i=1;$i<=$pgteams;$i++){
@@ -72,14 +84,14 @@
   $linie = split("[,]",$pgplatz1);
   if($pganz==2){$lini2 = split("[,]",$pgplatz2);}
   for($i=1;$i<$pgst;$i++){
-    if($linie[$i]>0){
+    if($linie[$i]>0 && $linie[$i-1]>0){
       imageline($image,24+($i*12),22+($linie[$i-1]*12),24+(($i+1)*12),22+($linie[$i]*12),$farbe_c);
       imageline($image,23+($i*12),22+($linie[$i-1]*12),23+(($i+1)*12),22+($linie[$i]*12),$farbe_c);
       imageline($image,24+($i*12),23+($linie[$i-1]*12),24+(($i+1)*12),23+($linie[$i]*12),$farbe_c);
       imageline($image,23+($i*12),23+($linie[$i-1]*12),23+(($i+1)*12),23+($linie[$i]*12),$farbe_c);
       }
     if($pganz==2){
-      if($lini2[$i]>0){
+      if($lini2[$i]>0 && $lini2[$i-1]>0){
         imageline($image,24+($i*12),22+($lini2[$i-1]*12),24+(($i+1)*12),22+($lini2[$i]*12),$farbe_d);
         imageline($image,23+($i*12),22+($lini2[$i-1]*12),23+(($i+1)*12),22+($lini2[$i]*12),$farbe_d);
         imageline($image,24+($i*12),23+($lini2[$i-1]*12),24+(($i+1)*12),23+($lini2[$i]*12),$farbe_d);
@@ -89,4 +101,14 @@
     }
   header("Content-Type: image/png");
   imagepng($image);
+  
+  function get_color(&$styledatei,$styleclass) {
+    preg_match("/$styleclass.*background:.?#(.*);/imsU",$styledatei,$match);
+    if (strlen($match[1])==3) {
+      return(array(hexdec(substr($match[1],0,1).substr($match[1],0,1)),hexdec(substr($match[1],1,1).substr($match[1],1,1)),hexdec(substr($match[1],2,1).substr($match[1],2,1))));
+    }elseif (strlen($match[1])==6) {
+      return(array(hexdec(substr($match[1],0,2)),hexdec(substr($match[1],2,2)),hexdec(substr($match[1],4,2))));
+    }
+    return false;
+  }
 ?>

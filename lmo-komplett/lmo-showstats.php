@@ -60,35 +60,47 @@ if($file!=""){
 <?PHP if($stat2>0){$dummy=" align=\"center\"";}else{$dummy="";} ?>
 <?PHP
   $serie1="&nbsp;";
-  if($ser1[$stat1]>0){$serie1=$ser1[$stat1]." ".$text[474]."<br>".$ser2[$stat1]." ".$text[75];}
-  elseif($ser3[$stat1]>0){$serie1=$ser3[$stat1]." ".$text[475]."<br>".$ser4[$stat1]." ".$text[76];}
-  elseif($ser2[$stat1]>=$ser4[$stat1]){$serie1=$ser2[$stat1]." ".$text[75];}
-  else{$serie1=$ser4[$stat1]." ".$text[76];}
-if($stat2>0){
+if ($ser1[$stat1]>0) {
+  $serie1=$ser1[$stat1]." ".$text[474]."<br>".$ser2[$stat1]." ".$text[75];
+} else if ($ser3[$stat1]>0) {
+  $serie1=$ser3[$stat1]." ".$text[475]."<br>".$ser4[$stat1]." ".$text[76];
+} else if ($ser2[$stat1]>=$ser4[$stat1]) {
+  $serie1=$ser2[$stat1]." ".$text[75];
+} else {
+  $serie1=$ser4[$stat1]." ".$text[76];
+}
+if ($stat2>0) {
   $chg1="k.A.";
   $chg2="k.A.";
-  if(($spiele[$stat1])&&($spiele[$stat2])){
-$a=(100*$siege[$stat1]/$spiele[$stat1])+(100*$nieder[$stat2]/$spiele[$stat2]);
-$b=(100*$siege[$stat2]/$spiele[$stat2])+(100*$nieder[$stat1]/$spiele[$stat1]);
-$c=($etore[$stat1]/$spiele[$stat1])+($atore[$stat2]/$spiele[$stat2]);
-$d=($etore[$stat2]/$spiele[$stat2])+($atore[$stat1]/$spiele[$stat1]);
-}
-
+  if (($spiele[$stat1])&&($spiele[$stat2])) {
+    $a=(100*$siege[$stat1]/$spiele[$stat1])+(100*$nieder[$stat2]/$spiele[$stat2]);
+    $b=(100*$siege[$stat2]/$spiele[$stat2])+(100*$nieder[$stat1]/$spiele[$stat1]);
+    $c=($etore[$stat1]/$spiele[$stat1])+($atore[$stat2]/$spiele[$stat2]);
+    $d=($etore[$stat2]/$spiele[$stat2])+($atore[$stat1]/$spiele[$stat1]);
+  }
+  
   $e=$a+$b;
   $f=$c+$d;
-  if(($e>0) && ($f>0)){
+  if (($e>0) && ($f>0)) {
     $a=round(10000*$a/$e);
     $b=round(10000*$b/$e);
     $c=round(10000*$c/$f);
     $d=round(10000*$d/$f);
     $chg1=number_format((($a+$c)/200),2,",",".");
     $chg2=number_format((($b+$d)/200),2,",",".");
-    }
+  }
   $serie2="&nbsp;";
-  if($ser1[$stat2]>0){$serie2=$ser1[$stat2]." ".$text[474]."<br>".$ser2[$stat2]." ".$text[75];}
-  elseif($ser3[$stat2]>0){$serie2=$ser3[$stat2]." ".$text[475]."<br>".$ser4[$stat2]." ".$text[76];}
-  elseif($ser2[$stat2]>=$ser4[$stat2]){$serie2=$ser2[$stat2]." ".$text[75];}
-  else{$serie2=$ser4[$stat2]." ".$text[76];}
+  if ($ser1[$stat2]>0) {
+    $serie2=$ser1[$stat2]." ".$text[474]."<br>".$ser2[$stat2]." ".$text[75];
+  } else if ($ser3[$stat2]>0) {
+    $serie2=$ser3[$stat2]." ".$text[475]."<br>".$ser4[$stat2]." ".$text[76];
+  } else if ($ser2[$stat2]>=$ser4[$stat2]) {
+    $serie2=$ser2[$stat2]." ".$text[75];
+  } else {
+    $serie2=$ser4[$stat2]." ".$text[76];
+  }
+  
+
 ?>
       <tr>
         <td valign="top" align="right" class="lmost5"><?PHP echo $chg1; ?>%</td>
@@ -173,77 +185,170 @@ $d=($etore[$stat2]/$spiele[$stat2])+($atore[$stat1]/$spiele[$stat1]);
     echo "</td></tr>";
     }
 ?>
-    </table></td>
-  </tr>
+    </table>
+  </td>
+</tr>
 </table>
-
-
-<!-- * LMO-Zustat-Addon-Beginn	- Autor: Bernd Hoyer - eMail: info@salzland-info.de -->
-<table class="lmostc" width="100%" cellspacing="0" cellpadding="0" border="0">
-
-<?PHP
+<?
 if ($einzustats==1) {  
 $strs=".l98";
 $stre=".l98.php";
 $str=basename($file);
 $file16=str_replace($strs,$stre,$str);
-$temp11=basename($zustatdir);
+$temp11=basename($diroutput);
 if (file_exists("$temp11/$file16")){
-require("$temp11/$file16");
-
-echo "<br>"."<tr><td class=\"lmost1\" align=\"center\"> ".$text[4009]."</td></tr>";?>
-
-<table class="lmosta" width="100%" align="center" cellspacing="0" cellpadding="0" border="0">
-<?PHP
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[4000].$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzutore."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[38]."&nbsp;".$text[4001].":"."&nbsp;&nbsp;".$gdstore."&nbsp;"."</td></tr>";
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[4010].$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gheimtore."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[38]."&nbsp;".$text[4001].":"."&nbsp;&nbsp;".$dsheimtore."&nbsp;"."</td></tr>";
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[4011].$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$ggasttore."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[38]."&nbsp;".$text[4001].":"."&nbsp;&nbsp;".$dsgasttore."&nbsp;"."</td></tr>";
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[4006].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzusieg1."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
-echo "<tr><td class=\"lmost5\" align=\"right\">";
-echo "&nbsp;".$text[4007].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzusieg2."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[4008].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gzuunent."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[4012].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$gbeide."&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[4013].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsieg." - ".$hgastsieg."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsiegtor.":".$hgastsiegtor."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag.")&nbsp;"."</td></tr>";
-if ($hheimsiegtor1>0) {
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsieg1." - ".$hgastsieg1."</td>"."<td class=\"lmost5\"  align=\"left\">".$hheimsiegtor1.":".$hgastsiegtor1."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag1.")&nbsp;"."</td></tr>";
+require(PATH_TO_LMO."/$temp11/$file16");?>
+<table>
+<tr>
+    <td class="lmost1" align="center"><?=$text[4009]?></td>
+  </tr>
+<tr>
+  <td>
+<table class="lmosta" align="center" cellspacing="0" cellpadding="0" border="0">
+  
+  <tr>
+    <td colspan="5">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="lmost4" align="right"><?=$text[63]?> </td>
+    <td colspan="4" align="center">
+      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="lmost4" align="center"> <?=$text[516]?> </td>
+          <td class="lmost4" align="center"> <?=$text[4006]?> </td>
+          <td class="lmost4" align="center"> <?=$text[4007]?> </td>
+          <td class="lmost4" align="center"> <?=$text[4008]?> </td>
+        </tr>
+        <tr>
+          <td class="lmost5" align="center"> <?=$ggesamt=$gzusieg1+$gzusieg2+$gzuunent+$gbeide;?></td>
+          <td class="lmost5" align="center"> <?=$gzusieg1?><?if ($ggesamt>0) {$v=round($gzusieg1/$ggesamt*100);echo " ($v%)";}?> </td>
+          <td class="lmost5" align="center"> <?=$gzusieg2?><?if ($ggesamt>0) {$v=round($gzusieg2/$ggesamt*100);echo " ($v%)";}?> </td>
+          <td class="lmost5" align="center"> <?=$gzuunent?><?if ($ggesamt>0) {$v=round($gzuunent/$ggesamt*100);echo " ($v%)";}?> </td>
+        </tr>
+      </table>
+    </td>
+  </tr><?
+  if ($gbeide>0) {?>
+  <tr>
+    <td class="lmost4" align="right"><?=$text[4012]?></td>
+    <td class="lmost5" colspan="2" align="center"><?=$gbeide?><?if ($ggesamt>0) {$v=round($gbeide/$ggesamt*100);echo " ($v%)";}?></td>
+  </tr><?
+  }?>
+  <tr>
+    <td colspan="5">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="lmost4" align="right"><?=$text[38]?> </td>
+    <td colspan="4" align="center">
+      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="lmost4" align="center"></td>
+          <td class="lmost4" align="center"> <?=$text[516]?> </td>
+          <td class="lmost4" align="center"> <?=$text[4010]?> </td>
+          <td class="lmost4" align="center"> <?=$text[4011]?> </td>
+        </tr>
+        <tr>
+          <td class="lmost5"></td>
+          <td class="lmost5" align="center"> <?=$gzutore?> </td>
+          <td class="lmost5" align="center"> <?=$gheimtore?><?if ($gdstore>0) {$v=round($dsheimtore/$gdstore*100);echo " ($v%)";}?> </td>
+          <td class="lmost5" align="center"> <?=$ggasttore?><?if ($gdstore>0) {echo " (".(100-$v)."%)";}?> </td>
+        </tr>
+        <tr>
+          <td class="lmost5" align="center"> <?=$text[517]?> </td>
+          <td class="lmost5" align="center"> <?=$gdstore?> </td>
+          <td class="lmost5" align="center"> <?=$dsheimtore?> </td>
+          <td class="lmost5" align="center"> <?=$dsgasttore?> </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5">&nbsp;</td>
+  </tr>   
+  <tr>
+    <td class="lmost4" align="right"><?=$text[4013]?></td>
+    <td class="lmost5" align="right"><?=$hheimsieg?></td>
+    <td class="lmost5">-</td>
+    <td class="lmost5" align="left"><?=$hgastsieg?></td>
+    <td class="lmost5" align="left"><?=$hheimsiegtor?>:<?=$hgastsiegtor?> (<?=$spieltagflag?>.<?=$text[4014]?>)</td>
+  </tr><?
+if ($hheimsiegtor1>0) {?>
+  <tr>
+    <td class="lmost4"></td>
+    <td class="lmost5" align="right"><?=$hheimsieg1?></td>
+    <td class="lmost5">-</td>
+    <td class="lmost5" align="left"><?=$hgastsieg1?></td>
+    <td class="lmost5" align="left"><?=$hheimsiegtor1?>:<?=$hgastsiegtor1?> (<?=$text[4014]?>.<?=$spieltagflag1?>)</td>
+  </tr><?
 	if ($counteranz>2) {
-	$counteranz0=$counteranz-2;
-	echo "<tr><td class=\"lmost5\"  align=\"right\">";
-	echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[4015]."&nbsp;".$counteranz0."&nbsp;".$text[4016]."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+	$counteranz0=$counteranz-2;?>
+	<tr>
+    <td class="lmost4"></td>
+    <td class="lmost5" colspan="4" align="right"><small><?=$text[4015]?> <?=$counteranz0?> <?=$text[4016]?></small></td>
+  </tr><?
 	}
-}
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[4017].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsieg." - ".$agastsieg."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsiegtor.":".$agastsiegtor."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag2.")&nbsp;"."</td></tr>";
-if ($agastsiegtor1>0) {
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsieg1." - ".$agastsieg1."</td>"."<td class=\"lmost5\"  align=\"left\">".$aheimsiegtor1.":".$agastsiegtor1."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag3.")&nbsp;"."</td></tr>";
+}?>
+  <tr>
+    <td colspan="5">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="lmost4" align="right"><?=$text[4017]?></td>
+    <td class="lmost5" align="right"><?=$aheimsieg?></td>
+    <td class="lmost5">-</td>
+    <td class="lmost5" align="left"><?=$agastsieg?></td>
+    <td class="lmost5" align="left"><?=$aheimsiegtor?>:<?=$agastsiegtor?> (<?=$spieltagflag2?>.<?=$text[4014]?>)</td>
+  </tr>  <?
+if ($agastsiegtor1>0) {?>
+  <tr>
+    <td class="lmost4"></td>
+    <td class="lmost5" align="right"><?=$aheimsieg1?></td>
+    <td class="lmost5">-</td>
+    <td class="lmost5" align="left"><?=$agastsieg1?></td>
+    <td class="lmost5" align="left"><?=$aheimsiegtor1?>:<?=$agastsiegtor1?>  (<?=$spieltagflag3?>.<?=$text[4014]?>)</td>
+  </tr><?
 	if ($counteranz1>2) {
-	$counteranz4=$counteranz1-2;
-	echo "<tr><td class=\"lmost5\"  align=\"right\">";
-	echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[4015]."&nbsp;".$counteranz4."&nbsp;".$text[4016]."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+	$counteranz4=$counteranz1-2;?>
+  <tr> 
+    <td class="lmost4"></td>
+    <td class="lmost5" colspan="4" align="right"><small><?=$text[4015]?> <?=$counteranz4?> <?=$text[4016]?></small></td>
+  </tr><?
 	}
-}
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;".$text[4018]."&nbsp;".$text[38].":"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreichm1." - ".$htorreichm2."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreicht1.":".$htorreicht2."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag4.")&nbsp;"."</td></tr>";
-if ($spieltagflag5<>0) {
-echo "<tr><td class=\"lmost5\"  align=\"right\">";
-echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreichm3." - ".$htorreichm4."</td>"."<td class=\"lmost5\"  align=\"left\">".$htorreicht3.":".$htorreicht4."&nbsp;(".$text[4014]."&nbsp;".$spieltagflag5.")&nbsp;"."</td></tr>";
+}?>
+  <tr>
+    <td colspan="5">&nbsp;</td>
+  </tr>
+    <tr>
+      <td class="lmost4" align="right"><?=$text[4018]?>  <?=$text[38]?></td>
+      <td class="lmost5" align="right"><?=$htorreichm1?></td>
+      <td class="lmost5">-</td>
+      <td class="lmost5" align="left"><?=$htorreichm2?></td>
+      <td class="lmost5" align="left"><?=$htorreicht1?>:<?=$htorreicht2?>  (<?=$spieltagflag4?>.<?=$text[4014]?>)</td>
+    </tr><?
+if ($spieltagflag5<>0) {?>
+    <tr>
+      <td class="lmost4"></td>
+      <td class="lmost5" align="right"><?=$htorreichm3?></td>
+      <td class="lmost5">-</td>
+      <td class="lmost5" align="left"><?=$htorreichm4?></td>
+      <td class="lmost5" align="left"><?=$htorreicht3?>:<?=$htorreicht4?>  (<?=$spieltagflag5?>.<?=$text[4014]?>)</td>
+    </tr><?
 	if ($counteranz5>2) {
-	$counteranz6=$counteranz5-2;
-	echo "<tr><td class=\"lmost5\"  align=\"right\">";
-	echo "&nbsp;"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td>"."<td class=\"lmost5\"  align=\"left\">".$text[4015]."&nbsp;".$counteranz6."&nbsp;".$text[4019]."</td>"."<td class=\"lmost5\"  align=\"left\">"."</td></tr>";
+	$counteranz6=$counteranz5-2;?>
+	  <tr>
+       <td class="lmost4">  </td>
+       <td class="lmost5" colspan="4" align="right"><small><?=$text[4015]?> <?=$counteranz6?> <?=$text[4019]?></small></td>
+     </tr><?
 	}
-}
+}?>
+    <tr>
+      <td colspan="5">&nbsp;</td>
+    </tr>
+  </table><?
 }
 } ?>
+     
+ </td>
+</tr>
 </table>
 <!-- * LMO-Zustat-Addon-ENDE	- Autor: Bernd Hoyer - eMail: info@salzland-info.de -->
 

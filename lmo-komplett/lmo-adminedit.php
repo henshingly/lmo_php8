@@ -27,9 +27,9 @@ if($file!=""){
   $ftest0=1;
   $liga=substr($file, strrpos($file,"/")+1,-4);
 
-  if($immeralle==0){
+  if($tipp_immeralle==0){
     $ftest0=0;$ftest1="";
-    $ftest1=split("[,]",$ligenzutippen);
+    $ftest1=split("[,]",$tipp_ligenzutippen);
     if(isset($ftest1)){
       for($u=0;$u<count($ftest1);$u++){
         if($ftest1[$u]==$liga){$ftest0=1;}
@@ -175,10 +175,10 @@ if($_SESSION['lmouserok']==2){
 
     if($ftest0==1){ // Liga darf getippt werden
       if($aktauswert==1){
-        require(PATH_TO_LMO."/lmo-tippsavewert.php");
+        require(PATH_TO_ADDON."/lmo-tippsavewert.php");
         }
       if($aktauswertges==1){
-        require(PATH_TO_LMO."/lmo-tippsavewertgesamt.php");
+        require(PATH_TO_ADDON."/lmo-tippsavewertgesamt.php");
         }
       }
     $stz=trim($_POST["xstx"]);
@@ -298,7 +298,7 @@ if($_SESSION['lmouserok']==2){
             <td class="lmost4" width="2"><nobr><acronym title="<?=$text[112] ?>"><?=$text[218]; ?></acronym></nobr></td>
             <td class="lmost4" width="2"><nobr><acronym title="<?=$text[263] ?>"><?=$text[262]; ?></acronym></nobr></td>
 <? if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
-            <td class="lmost4" width="2"><nobr><acronym title="<?=$text[2057] ?>"><?=$text[2057]; ?></acronym></nobr></td>
+            <td class="lmost4" width="2"><nobr><acronym title="<?=$text['tipp'][57] ?>"><?=$text['tipp'][57]; ?></acronym></nobr></td>
 <? } ?>
           </tr>
 
@@ -419,7 +419,7 @@ if($_SESSION['lmouserok']==2){
     <td class="lmost5"><acronym title="<?=$text[112] ?>"><input class="lmoadminein" type="text" name="xmnote<?=$i; ?>" size="16" maxlength="255" value="<?=$mnote[$st-1][$i]; ?>" onChange="dolmoedit()"></acronym></td>
     <td class="lmost5"><acronym title="<?=$text[263] ?>"><input class="lmoadminein" type="text" name="xmberi<?=$i; ?>" size="16" maxlength="128" value="<?=$mberi[$st-1][$i]; ?>" onChange="dolmoedit()"></acronym></td>
 <? if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
-    <td class="lmost5"><acronym title="<?=$text[2057] ?>">
+    <td class="lmost5"><acronym title="<?=$text['tipp'][57] ?>">
     <select class="lmoadminein" name="xmtipp<?=$i; ?>" onChange="dolmoedit()">
 <?
   echo "<option value=\"0\"";
@@ -427,7 +427,7 @@ if($_SESSION['lmouserok']==2){
     echo ">_</option>";
   echo "<option value=\"1\"";
     if($mtipp[$st-1][$i]==1){echo " selected";}
-    echo ">".$text[2199]."</option>";
+    echo ">".$text['tipp'][199]."</option>";
 ?>
 </select>
 </acronym>
@@ -562,7 +562,7 @@ if($_SESSION['lmouserok']==2){
     <td class="lmost5"><acronym title="<?=$text[112] ?>"><input class="lmoadminein" type="text" name="xmnote<?=$i.$n; ?>" size="16" maxlength="255" value="<?=$mnote[$st-1][$i][$n]; ?>" onChange="dolmoedit()"></acronym></td>
     <td class="lmost5"><acronym title="<?=$text[263] ?>"><input class="lmoadminein" type="text" name="xmberi<?=$i.$n; ?>" size="16" maxlength="128" value="<?=$mberi[$st-1][$i][$n]; ?>" onChange="dolmoedit()"></acronym></td>
 <? if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
-    <td class="lmost5"><acronym title="<?=$text[2057] ?>">
+    <td class="lmost5"><acronym title="<?=$text['tipp'][57] ?>">
     <select class="lmoadminein" name="xmtipp<?=$i.$n; ?>" onChange="dolmoedit()">
 <?
   echo "<option value=\"0\"";
@@ -570,7 +570,7 @@ if($_SESSION['lmouserok']==2){
     echo ">_</option>";
   echo "<option value=\"1\"";
     if($mtipp[$st-1][$i][$n]==1){echo " selected";}
-    echo ">".$text[2199]."</option>";
+    echo ">".$text[199]."</option>";
 ?>
 </select>
 </acronym>

@@ -2,23 +2,22 @@
 
 name="lmo3";
 img0 = new Image();
-img0.src = "img/lmo-admin0.gif";
+img0.src = "<?=URL_TO_IMGDIR?>/lmo-admin0.gif";
 img1 = new Image();
-img1.src = "img/lmo-admin1.gif";
+img1.src = "<?=URL_TO_IMGDIR?>/lmo-admin1.gif";
 img2 = new Image();
-img2.src = "img/lmo-admin2.gif";
+img2.src = "<?=URL_TO_IMGDIR?>/lmo-admin2.gif";
 img3 = new Image();
-img3.src = "img/lmo-admin3.gif";
+img3.src = "<?=URL_TO_IMGDIR?>/lmo-admin3.gif";
 img4 = new Image();
-img4.src = "img/lmo-admin4.gif";
+img4.src = "<?=URL_TO_IMGDIR?>/lmo-admin4.gif";
 img5 = new Image();
-img5.src = "img/lmo-admin5.gif";
+img5.src = "<?=URL_TO_IMGDIR?>/lmo-admin5.gif";
 var lmotest=true;
+
 function lmoimg(x,y){
   document.getElementsByName("ximg"+x)[0].src = y.src;
   }
-
-
 function lmotorclk(x,y,z){
   if(document.all && !window.opera){
     if(z==38){lmotorauf(x,y,1);}
@@ -205,7 +204,7 @@ function ateamlmolink(adresse){
   return confirm("<? echo $text[335] ?>");
 }
 function opencal(feld,startdat){
-  lmocal="lmo-admincal.php?abs=lmoedit&feld="+feld;
+  lmocal="<?=URL_TO_LMO?>/lmo-admincal.php?abs=lmoedit&feld="+feld;
   if(startdat!=""){lmocal=lmocal+"&calshow="+startdat;}
   lmowin = window.open(lmocal,"lmocalpop","width=180,height=200,resizable=yes,dependent=yes");
   lmotest=false;
@@ -213,33 +212,68 @@ function opencal(feld,startdat){
 }
 
 function blend(it) {
-  if (it.parentNode.parentNode.parentNode.nextSibling.style.display=="none") {  //einblenden
-    if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==1) // richtiges Objekt (IE)
-      if (document.all) it.parentNode.parentNode.parentNode.nextSibling.style.display="inline";
-      else it.parentNode.parentNode.parentNode.nextSibling.style.display="table-row-group";
-    else if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==3) {       //Leerzeichen ist Textobjekt (Moz), dann nächsten Knoten
-      it.parentNode.parentNode.parentNode.nextSibling.nextSibling.style.display="table-row-group";//table-row-group"; 
-    }
-    it.lastChild.src="img/minus.gif";
-    it.lastChild.alt="-";
-    it.lastChild.title="Sektion ausblenden"; 
-  }else{  //ausblenden 
-    if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==1) // richtiges Objekt
-      it.parentNode.parentNode.parentNode.nextSibling.style.display="none";
-    else if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==3)
-      it.parentNode.parentNode.parentNode.nextSibling.nextSibling.style.display="none"; //Leerzeichen ist Textobjekt bei Mozilla, dann nächsten Knoten
-    it.lastChild.src="img/plus.gif";
-    it.lastChild.alt="+";
-    it.lastChild.title="Sektion einblenden";
-    
+  if (!window.opera && !document.layers) {
+    if (it.parentNode.parentNode.parentNode.nextSibling.style.display=="none") {  //einblenden
+      if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==1) // richtiges Objekt (IE)
+        document.all?it.parentNode.parentNode.parentNode.nextSibling.style.display="inline":it.parentNode.parentNode.parentNode.nextSibling.style.display="table-row-group";
+      else if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==3) {       //Leerzeichen ist Textobjekt (Moz), dann nächsten Knoten
+        it.parentNode.parentNode.parentNode.nextSibling.nextSibling.style.display="table-row-group";
+      }
+      it.lastChild.src="<?=URL_TO_IMGDIR?>/minus.gif";
+      it.lastChild.alt="-";
+      it.lastChild.title="Sektion ausblenden"; 
+    }else{  //ausblenden 
+      if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==1) // richtiges Objekt
+        it.parentNode.parentNode.parentNode.nextSibling.style.display="none";
+      else if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==3)
+        it.parentNode.parentNode.parentNode.nextSibling.nextSibling.style.display="none"; //Leerzeichen ist Textobjekt bei Mozilla, dann nächsten Knoten
+      it.lastChild.src="<?=URL_TO_IMGDIR?>/plus.gif";
+      it.lastChild.alt="+";
+      it.lastChild.title="Sektion einblenden";
+    }  
   }
 }
 function blendall() {
-  minus=new Image(); minus.src="img/minus.gif";
-  x=document.getElementsByTagName("tbody");
-  for (i=0;i<x.length;i++) {
-    
-    if (x[i].className=="blend_object") {x[i].style.display="none";}
+  if (!window.opera && !document.layers) {
+    minus=new Image(); minus.src="<?=URL_TO_IMGDIR?>/minus.gif";
+    x=document.getElementsByTagName("tbody");
+    for (i=0;i<x.length;i++) {
+      if (x[i].className=="blend_object") {
+        x[i].style.display="none";
+      }
+    }
   }
 }
+function blendall2(it) {
+  if (!window.opera && !document.layers) {
+    x=document.getElementsByTagName("tbody");
+    r=0;
+    for (i=0;i<x.length;i++) {
+      if (x[i].className=="blend_object") {
+        if (it.lastChild.alt=="-") {
+          x[i].style.display="none";
+          document.getElementsByName("blendimg"+r)[0].src="<?=URL_TO_IMGDIR?>/plus.gif";
+          document.getElementsByName("blendimg"+r)[0].alt="+";
+          document.getElementsByName("blendimg"+r)[0].title="Sektion einblenden";
+        }else{
+          document.all?x[i].style.display="inline":x[i].style.display="table-row-group";
+          document.getElementsByName("blendimg"+r)[0].src="<?=URL_TO_IMGDIR?>/minus.gif";
+          document.getElementsByName("blendimg"+r)[0].alt="-";
+          document.getElementsByName("blendimg"+r)[0].title="Sektion ausblenden"; 
+        }
+        r++;
+      }
+    }
+    if (it.lastChild.alt=="-"){
+      it.lastChild.src="<?=URL_TO_IMGDIR?>/plus.gif";
+      it.lastChild.alt="+";
+      it.lastChild.title="Sektion einblenden";
+    }else{
+      it.lastChild.src="<?=URL_TO_IMGDIR?>/minus.gif";
+      it.lastChild.alt="-";
+      it.lastChild.title="Sektion ausblenden"; 
+    }
+  }
+}
+
 </script>

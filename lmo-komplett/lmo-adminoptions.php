@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02b
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -25,8 +25,10 @@
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 isset($_POST['save'])?$save=$_POST['save']:$save=0;
+  $r=0;
 if($save==1){
   
+  $diraddon=trim($_POST["xdiraddon"]);
   $dirliga=trim($_POST["xdirliga"]);
   if($dirliga==""){$dirliga="./";}
   $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
@@ -61,7 +63,7 @@ if($save==1){
 }?>
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0" >
   <tr>
-    <td class="lmost1" align="center"><?=$text[225]?></td>
+    <td class="lmost1" align="center"><?=$text[225]?><script type="text/javascript">document.write('</td><td class="lmost1"><a href="#" onclick="blendall2(this)"><img border="0" src="img/plus.gif" alt="+" title="Alle Sektionen einblenden" width="10" height="10"></a>');</script></td>
   </tr>
   <tr>
     <td align="center" class="lmost3">
@@ -72,8 +74,9 @@ if($save==1){
         <input type="hidden" name="file" value="<?=$file;?>">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost4" colspan="6"><?=$text[504];?></td>
+            <td class="lmost4" colspan="5"><?=$text[504];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[506]?>"><?=$text[505];?></acronym></td>
             <td class="lmost5" colspan="4">
@@ -88,16 +91,24 @@ if($save==1){
               ?>
               </select></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="6"><?=$text[220];?></td>
+            <td class="lmost4" colspan="5"><?=$text[220];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[222]?>"><?=$text[221];?></acronym></td>
             <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xdirliga" size="20" maxlength="80" value="<?=$dirliga;?>" onChange="dolmoedit()"></td>
           </tr>
           <tr>
-            <td class="lmost4" colspan="6"><?=$text[226];?></td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[481]?>"><?=$text[482];?></acronym></td>
+            <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xdiraddon" size="30" maxlength="80" value="<?=$diraddon;?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
+          <tr>
+            <td class="lmost4" colspan="5"><?=$text[226];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+          </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[228]?>"><?=$text[227];?></acronym></td>
             <td class="lmost5" colspan="4">
@@ -117,8 +128,9 @@ if($save==1){
               </select>
             </td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="5"><?=$text[236];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="5"><?=$text[236];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>

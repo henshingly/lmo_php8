@@ -64,7 +64,7 @@ if(($action=="admin") && ($todo=="email") && (($_SESSION["lmouserok"]==1) || ($_
         if ($mail->send()===TRUE){?>
   <p class="lmofett"><?=$text[348]?></p><?
         }else{?>
-  <p class="lmofett"><?=$text[2176]?></p>      <?
+  <p class="lmofett"><?=$text[176]?></p>      <?
         }?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?=$text[347]?><\/a>');</script></p><?
       }
@@ -83,9 +83,9 @@ if(($action=="admin") && ($todo=="email") && (($_SESSION["lmouserok"]==1) || ($_
         $mail->body = $text[342]."\n\n--------------------------------------------------\nSender: ".$_SERVER['REMOTE_ADDR']." (".$_SERVER['HTTP_USER_AGENT'].")\n";
         $mail->add_attachment($zipfile -> file(), "lmo_".substr($dummy[$down-1],0,-4).".zip", "application/octet-stream");
         if ($mail->send()===TRUE){?>
-  <p class="lmofett"><?=$text[2175]?></p><?
+  <p class="lmofett"><?=$text[175]?></p><?
         }else{?>
-  <p class="lmofett"><?=$text[2176]?></p>      <?
+  <p class="lmofett"><?=$text[176]?></p>      <?
         }?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?=$text[347]?><\/a>');</script></p><?
       }

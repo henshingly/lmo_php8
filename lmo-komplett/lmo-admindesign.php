@@ -26,10 +26,11 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
   if(isset($_POST['save']) && $_POST['save']==1){
     require(PATH_TO_LMO."/lmo-savecss.php");  
   }
-  require(PATH_TO_LMO."/lmo-cssload.php");?>
+  require(PATH_TO_LMO."/lmo-cssload.php");
+  $r=0;?>
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?=$text[432] ?></td>
+    <td class="lmost1" align="center"><?=$text[432] ?><script type="text/javascript">document.write('</td><td class="lmost1"><a href="#" onclick="blendall2(this)"><img border="0" src="img/plus.gif" alt="+" title="Alle Sektionen einblenden" width="10" height="10"></a>');</script></td>
   </tr>
   <tr>
     <td align="center" class="lmost3">
@@ -39,7 +40,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
         <input type="hidden" name="save" value="1">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[423]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="3"><?=$text[423]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>
@@ -69,7 +70,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
           </tr>
           </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[436]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="3"><?=$text[436]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>
@@ -94,7 +95,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
           </tr>
           </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[441]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="3"><?=$text[441]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>
@@ -124,7 +125,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
           </tr>
           </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[450]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="3"><?=$text[450]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>
@@ -169,7 +170,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
           </tr>
           </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[459]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="3"><?=$text[459]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>
@@ -194,7 +195,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
           </tr>
           </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[464]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="3"><?=$text[464]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>
@@ -209,7 +210,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
           </tr>
           </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[447]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="3"><?=$text[447]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>
@@ -229,21 +230,25 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
           </tr>
           </tbody>
           <tr>
-            <td class="lmost4" colspan="4"><?=$text[448]?></td>
+            <td class="lmost4" colspan="3"><?=$text[448]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabeback" size="7" maxlength="7" value="<?=$stylearr["INPUT.lmoadminein"]["background"]?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabecolo" size="7" maxlength="7" value="<?=$stylearr["INPUT.lmoadminein"]["color"]?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="4"><?=$text[449]?></td>
+            <td class="lmost4" colspan="3"><?=$text[449]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabkback" size="7" maxlength="7" value="<?=$stylearr["INPUT.lmoadminbut"]["background"]?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabkcolo" size="7" maxlength="7" value="<?=$stylearr["INPUT.lmoadminbut"]["color"]?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
             <td class="lmost5" colspan="3" align="center">
               <acronym title="<?=$text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<?=$text[188]?>"></acronym>
