@@ -1,0 +1,5 @@
+load_lmo_cfg=1
+load_lmo_lang=1
+lmo_md5=0
+lmo_auth_verz=
+ftype=.l98
