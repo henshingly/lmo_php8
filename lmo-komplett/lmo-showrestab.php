@@ -121,7 +121,7 @@ if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ ?>
 
     </nobr></td>
     <td class="lmost5" align="center" width="10">-</td>
-    <td class="lmost5"><nobr>
+    <td class="lmost5" align="left"><nobr>
 
 <?PHP
   echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
@@ -135,7 +135,7 @@ if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ ?>
     <td class="lmost5" width="2">&nbsp;</td>
     <td class="lmost5" align="right"><?PHP echo $goala[$st-1][$i]; ?></td>
     <td class="lmost5" align="center" width="8">:</td>
-    <td class="lmost5"><?PHP echo $goalb[$st-1][$i]; ?></td>
+    <td class="lmost5" align="left"><?PHP echo $goalb[$st-1][$i]; ?></td>
   <?PHP if($spez==1){ ?>
     <td class="lmost5" width="2">&nbsp;</td>
     <td class="lmost5"><?PHP echo $mspez[$st-1][$i]; ?></td>
@@ -220,7 +220,7 @@ if (($anzteams-($anzst/2+1))!=0){
 <!-- * Spielfrei-Hack-Ende2 - Autor: Bernd Hoyer - eMail: info@salzland-info.de-->  
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
-<?PHP $st0=$st-1;if($st>1){echo "<td class=\"lmost2\"><a href=\"".$addr.$st0."\" title=\"".$text[6]."\">".$text[5]."</a></td>";} ?>
+<?PHP $st0=$st-1;if($st>1){echo "<td class=\"lmost2\" align='left'><a href=\"".$addr.$st0."\" title=\"".$text[6]."\">".$text[5]."</a></td>";} ?>
 <?PHP $st0=$st+1;if($st<$anzst){echo "<td align=\"right\" class=\"lmost2\"><a href=\"".$addr.$st0."\" title=\"".$text[8]."\">".$text[7]."</a></td>";} ?>
     </tr></table></td>
   </tr>
@@ -317,7 +317,7 @@ if (($anzteams-($anzst/2+1))!=0){
              ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt=""><?
       }
         ?></td>
-    <td class="<?PHP echo $dumm1; ?>"><nobr>
+    <td class="<?PHP echo $dumm1; ?>" align="left"><nobr>
 <?PHP
   if(($teamu[$i]!="") && ($urlt==1)){echo "<a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\">";}
   echo $dummy.$teams[$i].$dumm2;
