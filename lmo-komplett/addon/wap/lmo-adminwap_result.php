@@ -28,10 +28,10 @@ if ($file!="") {
         echo "</b>";
       }
       
-      $heim_tore=applyFactor($goala[$st-1][$i],$goalfaktor);
-      $gast_tore=applyFactor($goalb[$st-1][$i],$goalfaktor);
+      $heim_tore=$goala[$st-1][$i];
+      $gast_tore=$goalb[$st-1][$i];
       
-      if ($heim_tore=="_" && $gast_tore=="_") {
+      if (($heim_tore=="_" || $heim_tore==-1) && ($gast_tore=="_" || $gast_tore==-1)) {
         $heim_tore='';
         $gast_tore='';
       }?>
@@ -41,20 +41,23 @@ if ($file!="") {
     </p>
     <p align="center"><?
   if($st>1){?>
-    <a href="<?=$_SERVER['PHP_SELF']?>?wap_file=<?=$file?>&amp;op=day&amp;st=<?=$st_before?>">«</a>&nbsp;|<?
+    <a href="<?=$_SERVER['PHP_SELF']?>?wap_file=<?=$file?>&amp;op=day&amp;st=<?=$st_before?>">«</a>&#160;|<?
   }?>
     <anchor>Speichern
-	    <go href="<?=$_SERVER['PHP_SELF']?>?wap_file=<?=$file?>&amp;op=save&amp;st=<?=$st?>" method="post"><?
+	    <go href="<?=$_SERVER['PHP_SELF']?>" method="post"><?
   for($i=0;$i<$anzsp;$i++){ 
     if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){?>
-				<postfield name="heim<?=$i?>" value="$(anzheim<?=$i?>)"/>
+				<postfield name="st" value="<?=$st?>"/>
+        <postfield name="op" value="save"/>
+        <postfield name="wap_file" value="<?=$file?>"/>
+        <postfield name="heim<?=$i?>" value="$(anzheim<?=$i?>)"/>
 				<postfield name="gast<?=$i?>" value="$(anzgast<?=$i?>)"/>
         <postfield name="<?=session_name();?>" value="<?=session_id(); ?>"/><?
 	  }
   }?>	</go> 
     </anchor><?
   if($st<$anzst){?>
-    |&nbsp;<a href="<?=$_SERVER['PHP_SELF']?>?wap_file=<?=$file?>&amp;op=day&amp;st=<?=$st_next?>">»</a>&nbsp;<?
+    |&#160;<a href="<?=$_SERVER['PHP_SELF']?>?wap_file=<?=$file?>&amp;op=day&amp;st=<?=$st_next?>">»</a>&#160;<?
   }?>
   </p>
   <p><a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=table&amp;st=<?=$st?>"><?=$text[16];?></a> | <a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=help&amp;st=<?=$st; ?>"><?=$text[20];?></a></p><?

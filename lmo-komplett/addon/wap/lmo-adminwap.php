@@ -15,11 +15,10 @@ require(PATH_TO_LMO."/lmo-admincheck_auth.php");
 $array = array();
 if (isset($_REQUEST['wap_file'])) $file=$_REQUEST['wap_file'];
 
-require_once(PATH_TO_LMO.'/lmo-openfile.php');
-
+require(PATH_TO_LMO.'/lmo-openfile.php');
 if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
-  if (!isset($_REQUEST['op'])) $_REQUEST['op']="";
-	switch($_REQUEST['op']) {
+  $op=isset($_REQUEST['op'])?$_REQUEST['op']:'';
+	switch($op) {
 	    case "exit":
         $_SESSION=array();
         session_destroy();
@@ -45,7 +44,7 @@ if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
 		    include (PATH_TO_ADDONDIR."/wap/lmo-adminwap_liga.php");
 		    break;
 	} # Ende switch($op)
-}else { # Ende	if(check_auth($login, $pwd, basename($file)))
+}else { 
 	require(PATH_TO_ADDONDIR."/wap/lmo-adminwap_login.php");
 }
 echo("</wml>\n");

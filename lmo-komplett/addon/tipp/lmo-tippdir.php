@@ -21,14 +21,13 @@
 $addi=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=edit&amp;file=";
 if ($ftype!="") {
   $verz=opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp,0,-1));
-  $dummy=array("");
+  $dummy=array();
   while ($files=readdir($verz)) {
     if (substr($files,-5-strlen($lmotippername))=="_".$lmotippername.$ftype) {
       array_push($dummy,$files);
     }
   }
   closedir($verz);
-  array_shift($dummy);
   sort($dummy);
   
   $i=0;
@@ -47,7 +46,7 @@ if ($ftype!="") {
       $datei = fopen(PATH_TO_LMO."/".$dirliga.$dummy[$k],"rb");
       if ($datei) {
         while (!feof($datei)) {
-          $zeile = fgets($datei,1000);
+          $zeile = fgets($datei,10000);
           $zeile=trim($zeile);
           
           if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")) {
@@ -119,9 +118,9 @@ if ($ftype!="") {
         $i++;
         if ($tipp_sttipp!=-1) {
           $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dummy[$k],0,-4)."_".str_replace(" ","_",$lmotippername).".tip";
-          echo "<li><a href='".$addi.$dirliga.$dummy[$k]."'>".$t0;
+          echo "<li><a href='".$addi.$dummy[$k]."'>".$t0;
           if (file_exists($tippfile)) {
-            echo "<br><small>".$text['tipp'][138]." ".date("d.m.Y H:i",filemtime($tippfile)).$t3."</small>";
+            echo "<br><small>".$text['tipp'][138]." ".strftime($defdateformat,filemtime($tippfile)).$t3."</small>";
           }
           echo "</a></li>";
         }

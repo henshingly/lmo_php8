@@ -7,7 +7,7 @@ if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
   $dummy=array();
   $dummy2=array();
   $r=0;
-  while ($files=readdir($verz)) {
+  while ($verz && $files=readdir($verz)) {
     if (strtolower(substr($files,-4))==".l98") {
       $dummy2['"'.(filemtime(PATH_TO_LMO.'/'.$dirliga.$files)+$r).'"']=$files;
       $r++;
@@ -43,20 +43,21 @@ if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
         }
       }
     }
+    $t0="";
+    $t1="";
+    $t4="";
+    $t2=$text[2];
+    $t3='';
     if ($ftest==1) {
       #############
       $sekt="";
-      $t0="";
-      $t1="";
-      $t4="";
-      $t2=$text[2];
+      
       $datei = fopen(PATH_TO_LMO.'/'.$dirliga.$files,"rb");
       if (!$datei) {
         die("<b>Error</b>");
       }
       while (!feof($datei)) {
-        $zeile = fgets($datei,1000);
-        $zeile=chop($zeile);
+        $zeile = fgets($datei,10000);
         $zeile=trim($zeile);
         if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")) {
           $sekt=substr($zeile,1,-1);
@@ -110,20 +111,23 @@ if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
       } else {
         $t3="";
       }
-    }
+    
       //Ligenliste laden Ende
   	  
   	$t0= ($t0);?>
     <small>
-      <a href="<?=$_SERVER['PHP_SELF']."?file=".$dirliga.$files?>&amp;op=nav&amp;st=<?=$t1?>"><?=$t0?></a>
-      <br/><?=date("d.m.y H:i",filemtime(PATH_TO_LMO."/".$dirliga.$files)).$t3?>
+      <a href="<?=$_SERVER['PHP_SELF']."?file=".$files?>&amp;op=nav&amp;st=<?=$t1?>"><?=$t0?></a>
+      <br/><?=strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$files)).$t3?>
     </small>
     <br/><?  
+    } else {
+          if ($ende<count($dummy)) $ende++;
+        }
   }
   if ($begin-1>0) {?>
       <a href='<?=$_SERVER['PHP_SELF']?>?begin=<?=$begin-$wap_anzahl_ligen_pro_seite?>'>zurück</a><?
   }
-  if ($begin-1>0 && $ende+1<count($dummy)) echo "&nbsp;|&nbsp;";
+  if ($begin-1>0 && $ende+1<count($dummy)) echo "&#160;|&#160;";
   if ($ende+1<count($dummy)) {?>
       <a href='<?=$_SERVER['PHP_SELF']?>?begin=<?=$begin+$wap_anzahl_ligen_pro_seite?>'>weiter</a><?
   }

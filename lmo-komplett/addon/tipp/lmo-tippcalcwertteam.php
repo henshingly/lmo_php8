@@ -24,7 +24,7 @@ if (!isset($all)) {
 if ($all == 1) {
   $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
 } else {
-  $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, strrpos($file, "/")+1, -4).".aus";
+  $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, 0, -4).".aus";
 }
 if (!file_exists($auswertfile))
 echo $text['tipp'][17]."<br>";

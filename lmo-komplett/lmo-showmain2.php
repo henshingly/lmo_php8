@@ -256,7 +256,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   //Tippspiel-Addon
   $output_tippspiel="";
   if ($eintippspiel==1) {
-    if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
+    if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr($file,0,-4))>-1)){
       $output_tippspiel.=$action!="tipp"?       "<a href='{$addm}tipp' title='{$text['tipp'][0]}'>{$text['tipp'][0]}</a>&nbsp;&nbsp;":$text['tipp'][0]."&nbsp;&nbsp;";
     }
   }

@@ -21,7 +21,7 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($action=="admin"){
   require(PATH_TO_LMO."/lmo-admincheck_auth.php");
-  if(!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok']==0){
+  if(empty($_SESSION['lmouserok'])){
 ?>
 
 <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
@@ -32,7 +32,7 @@ if($action=="admin"){
     <td colspan="3" align="center">
       <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">
-        <table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td align="center"><h1><?=$text[305]; ?></h1></td>
           </tr>

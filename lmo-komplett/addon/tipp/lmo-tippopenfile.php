@@ -34,7 +34,6 @@ if ($datei == false) {
 }
 while (!feof($datei)) {
   $zeile = fgets($datei, 1000);
-  $zeile = chop($zeile);
   $zeile = trim($zeile);
   if ((substr($zeile, 0, 1) == "@") && (substr($zeile, -1) == "@")) {
     $jkwert = trim(substr($zeile, 1, -1));

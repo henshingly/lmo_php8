@@ -20,7 +20,7 @@
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
-$message=isset($_POST['message'])?$_POST['message']:"";
+
 if ($message != "") {
   $dumma = array();
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
@@ -192,18 +192,18 @@ if ($message != "") {
         }
       }
     } elseif($liga != "" && $tage > 0 && $st >= 0) {
-      $file = $dirliga.$liga;
+      $file = $liga;
       if ($st > 0) {
         require(PATH_TO_LMO."/lmo-openfiledat.php");
       } elseif($st == 0) {
-        require_once(PATH_TO_LMO."/lmo-openfile.php");
+        require(PATH_TO_LMO."/lmo-openfile.php");
       }
        
       for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
         $dummb = explode('|', $dumma[$tippernr]);
         if ($dummb[10] != -1 && $dummb[4] != "") {
           $textmessage = $message;
-          $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, strrpos($file, "/")+1, -4)."_".$dummb[0].".tip";
+          $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, 0, -4)."_".$dummb[0].".tip";
           $spiele = "";
           if (file_exists($tippfile)) {
             if ($st > 0) {
@@ -269,9 +269,10 @@ if ($message != "") {
     for($i = 0; $i < $anztipper && $adressat != $dummb[0]; $i++) {
       $dummb = explode('|', $dumma[$i]);
     }
-    $message = str_replace("[nick]", $dummb[0], $message);
-    $message = str_replace("[pass]", $dummb[1], $message);
-    $message = str_replace("[name]", $dummb[3], $message);
+    $textmessage = $message;
+    $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
+    $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
+    $textmessage = str_replace("[name]", $dummb[3], $textmessage);
     if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
       $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
     } else {

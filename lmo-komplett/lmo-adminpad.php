@@ -21,7 +21,7 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($action=="admin") && ($todo=="")){
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";?>
-<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><h1><?=$text[92];?></h1></td>
   </tr>

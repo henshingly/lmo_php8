@@ -173,6 +173,15 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][186]; ?></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xregelnlink" size="30" maxlength="256" value="<? echo $tipp_regelnlink; ?>" onChange="dolmoedit()"<? if($tipp_regeln==0){echo " disabled";}?>></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><? echo $text['tipp'][200]; ?></td>
+            <td align="left">
+            <input type="checkbox" name="xshownick" value="1" <? if($tipp_shownick==1){echo "checked";} ?> onClick="dolmoedit()"><? echo $text['tipp'][23]; ?>
+            <input type="checkbox" name="xshowname" value="1" <? if($tipp_showname==1){echo "checked";} ?> onClick="dolmoedit()"><? echo $text['tipp'][134]; ?>
+            <input type="checkbox" name="xshowemail" value="1" <? if($tipp_showemail==1){echo "checked";} ?> onClick="dolmoedit()"><? echo $text['tipp'][219]; ?>
+            </td>
           </tr><? 
   }elseif ($show==4) {?>
           <tr>
@@ -339,15 +348,6 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][302]; ?></td>
             <td align="left"><input type="checkbox" name="xnurgesamt" onClick="dolmoedit()"<?if($tipp_nurgesamt==1){echo " checked";}?><? if($tipp_gesamt==0){echo " disabled";}?>></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><? echo $text['tipp'][200]; ?></td>
-            <td align="left">
-            <input type="checkbox" name="xshownick" value="1" <? if($tipp_shownick==1){echo "checked";} ?> onClick="dolmoedit()"><? echo $text['tipp'][23]; ?>
-            <input type="checkbox" name="xshowname" value="1" <? if($tipp_showname==1){echo "checked";} ?> onClick="dolmoedit()"><? echo $text['tipp'][134]; ?>
-            <input type="checkbox" name="xshowemail" value="1" <? if($tipp_showemail==1){echo "checked";} ?> onClick="dolmoedit()"><? echo $text['tipp'][219]; ?>
-            </td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>

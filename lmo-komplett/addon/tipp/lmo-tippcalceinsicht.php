@@ -28,19 +28,17 @@ if ($lmtype != 0) {
   }
 }
 
-$einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".substr($file, strrpos($file, "/")+1, -4)."_".$st.".ein";
-if (!file_exists($einsichtfile))
-echo $text['tipp'][17]."<br>";
-else
-  {
+$einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".substr($file, 0, -4)."_".$st.".ein";
+if (!file_exists($einsichtfile)) {
+  echo $text['tipp'][17]."<br>";
+} else {
   $datei = fopen($einsichtfile, "rb");
   $anztipper = 0;
   if ($datei != false) {
-    $tippdaten = array("");
+    $tippdaten = array();
     $sekt = "";
     while (!feof($datei)) {
-      $zeile = fgets($datei, 1000);
-      $zeile = chop($zeile);
+      $zeile = fgets($datei, 10000);
       $zeile = trim($zeile);
       if ((substr($zeile, 0, 1) == "@") && (substr($zeile, -1) == "@")) {
         $jkwert = trim(substr($zeile, 1, -1));
@@ -62,7 +60,6 @@ else
     }
     fclose($datei);
   }
-  array_shift($tippdaten);
    
   $tippernick = array_pad($array, $anztipper+1, "");
   $jksp2 = array_pad($array, $anztipper+1, "");
@@ -178,11 +175,10 @@ else
   }
    
   if ($todo = "einsicht") {
-    $tab0 = array("");
+    $tab0 = array();
     for($a = 0; $a < $anztipper; $a++) {
       array_push($tab0, strtolower($tippernick[$a]).(50000000+$a));
     }
-    array_shift($tab0);
     sort($tab0, SORT_STRING);
   }
   clearstatcache();

@@ -75,7 +75,6 @@ if (isset($_POST['step'])) {
     }
     
     if ($conn && $conn2) {
-      echo $ftppath;
       ftp_chdir($conn,$ftppath);
       if (!ftp_site($conn, "CHMOD 0644 install.php")) {  //Pathtest
         $patherror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler">Der automatisch ermittelte Pfad "'.$ftppath.'" ist inkorrekt. Geben Sie manuell den Pfad vom FTP-Hauptverzeichnis zum LMO an.</p>';

@@ -38,7 +38,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   if ($file!="") {
     if ($nick!="") {
       $m=0;
-      $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$nick.".tip";
+      $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file,0,-4)."_".$nick.".tip";
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileall.php");
       $anztipper=1;
       if (($endtab>1) && ($tabtype==0) && ($tabdat!="")) {
@@ -68,8 +68,8 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       array_shift($dummy);
       $anztipper=count($dummy);
       for ($m=0; $m<$anztipper; $m++) {
-        $nick=substr($dummy[$m],strrpos($dummy[$m],"_")+1,-4);
-        $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$nick.".tip";
+        $nick=substr($dummy[$m],0,-4);
+        $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file,0,-4)."_".$nick.".tip";
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileall.php");
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
       }
@@ -353,8 +353,8 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         array_shift($dummy);
         $anztipper=count($dummy);
         for ($m=0; $m<$anztipper; $m++) {
-          $nick=substr($dummy[$m],strrpos($dummy[$m],"_")+1,-4);
-          $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/vereine/".substr($file,strrpos($file,"/")+1,-4)."_".$nick.".ver";
+          $nick=substr($dummy[$m],0,-4);
+          $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/vereine/".substr($file,0,-4)."_".$nick.".ver";
           require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcwertverein.php");
         }
         $nick="";

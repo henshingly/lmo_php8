@@ -109,7 +109,7 @@ if ($action == "tipp") {
     <td colspan="3" align="center"><?
   if ($_SESSION["lmotipperok"] == 5) {
     if ($file != "" && $viewermode != 1) {
-      $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, strrpos($file, "/")+1, -4)."_".$lmotippername.".tip";
+      $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, 0, -4)."_".$lmotippername.".tip";
     }
     if ($viewermode == 1) {
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippviewer.php");

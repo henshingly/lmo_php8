@@ -41,9 +41,11 @@ function setColor(color) {
 
   field.value = color;
   if (color == '') {
-    color = nocolor;
+    link.className = 'colorpicker nocolor';
+  } else {
+    link.className = 'colorpicker';
+    link.style.backgroundColor = color;
   }
-  link.style.background = color;
   picker.style.display = 'none';
 
   getObj(curId).title = color;
@@ -163,15 +165,14 @@ function relateColor(id, color) {
   if (color.substr(0,1)!='#') { color="#" + color;}
 
   if ((color.search(/^#[0-9|a-f|A-F]{3}$/) == -1) && (color.search(/^#[0-9|a-f|A-F]{6}$/) == -1)) {
-    link.style.backgroundColor = nocolor;
+    link.style.backgroundColor = 'transparent';
     if (color=="#") {
       link.className = 'colorpicker nocolor';
-      
       link.title="No Color";
     } else{
-      
-      link.title="No valid Color!";
       link.className = 'colorpicker invalid';
+      link.title="No valid Color!";
+      
       
       
     }

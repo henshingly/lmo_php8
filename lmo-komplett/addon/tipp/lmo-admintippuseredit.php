@@ -109,7 +109,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
 
     $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
     while($files=readdir($verz)){
-      if(substr($files,strrpos($files,"_")+1,-4)==$nick && strtolower(substr($files,-4))==".tip"){
+      if(substr($files,0,-4)==$nick && strtolower(substr($files,-4))==".tip"){
         $delete=1;
         if($xtipperligen!=""){
           foreach($xtipperligen as $key => $value){
@@ -129,7 +129,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
         $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
         while($files=readdir($verz)){
           $create=1;
-          if(substr($files,strrpos($files,"_")+1,-4)==$nick && substr($files,0,strrpos($files,"_"))==$value && strtolower(substr($files,-4))==".tip"){
+          if(substr($files,0,-4)==$nick && substr($files,0,strrpos($files,"_"))==$value && strtolower(substr($files,-4))==".tip"){
             $create=0; // bereits abonniert
             break;
             }

@@ -8,6 +8,7 @@ if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
 }
 
 if (session_id()=="") session_start();
+@ini_set("session.use_trans_sid","1");
 @ini_set("arg_separator.output","&amp;");
 if (!defined('PATH_TO_LMO'))        define('PATH_TO_LMO',         $lmo_dateipfad);
 if (!defined('PATH_TO_ADDONDIR'))   define('PATH_TO_ADDONDIR',    PATH_TO_LMO.'/addon');

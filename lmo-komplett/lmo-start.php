@@ -35,7 +35,7 @@ $ftype=".l98";
 
 if(!isset($_REQUEST["action"])){$_REQUEST["action"]="";$action="";}else{$action=$_REQUEST["action"];}
 if(!isset($_REQUEST["file"])){$_REQUEST["file"]="";$file="";}else{$file=$_REQUEST["file"];}
-if(isset($_REQUEST["dirliga"])){$dirliga=$_REQUEST["dirliga"];}
+$subdir=isset($_REQUEST["subdir"])?$_REQUEST["subdir"]:'';
 
 if($_REQUEST["action"]=="admin"){$_REQUEST["action"]="";$action="";}
 

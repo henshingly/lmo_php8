@@ -21,7 +21,7 @@ if($lmtype==0){
 		
 		
 		$datumanz=$actual;
-		echo $datumanz.".&nbsp;".$text[2];
+		echo $datumanz.".&#160;".$text[2];
 		$wmloutput="<table title=\"tabelle\" columns=\"4\" align=\"LLCR\">\n<tr><td><b>Pl.</b></td><td><b>Team</b></td><td><b>P+</b></td><td><b>+/-</b></td></tr>\n";
 		
 		for ($i1=0;$i1<$anzteams;$i1++){
@@ -35,7 +35,7 @@ if($lmtype==0){
 			$torverhaeltnis=applyFactor($dtore[$i4],$goalfaktor);
 			
 			
-			$wmloutput.="<tr><td>$platz.&nbsp;</td><td>$teamname&nbsp;</td><td>$pluspunkte";
+			$wmloutput.="<tr><td>$platz.&#160;</td><td>$teamname&#160;</td><td>$pluspunkte";
 			if ($torverhaeltnis>0) $torverhaeltnis = "+".$torverhaeltnis;
 			$wmloutput.="</td><td>$torverhaeltnis</td>";
 			

@@ -36,12 +36,15 @@ include(PATH_TO_LMO."/lmo-dirlist.php");?>
   <tr>
     <td align="left"><?
 if ($archivlink==1) {
-  $dirs = get_dir($dirliga);
-  if (substr($dirliga,-1)!='/') $dirliga.='/';
+  $subdir=str_replace(array('../','./'),array('',''),$subdir);
+  $dirs = get_dir($dirliga.$subdir);
+  natcasesort($dirs);
+  if (!empty($subdir) && substr($subdir,-1)!='/') $subdir.='/';
+ 
   $output='';
   foreach($dirs as $dir) {
-    $descr=@implode("",file($dirliga.$dir."/dir-descr.txt"));
-    $output.=  "<tr><td><a href='".$_SERVER['PHP_SELF']."?dirliga=".$dirliga.$dir."/'>".$dir."</a></td>";
+    $descr=@implode("",file($dirliga.$subdir.$dir."/dir-descr.txt"));
+    $output.=  "<tr><td><a href='".$_SERVER['PHP_SELF']."?subdir=".$subdir.$dir."/'>".$dir."</a></td>";
     if ($descr!="") {
       $output.= "<td><small>".htmlentities($descr)."</small></td>";
     }
@@ -56,8 +59,8 @@ if ($archivlink==1) {
         <?=$output?>
       </table><?
   }
-  if (substr_count($dirliga,'/')>1) {?>
-      <p><a href="<?=$_SERVER['PHP_SELF']?>?dirliga=<?=dirname($dirliga).'/'?>"><?=$text[5];?> <?=$text[562];?></a></p><?
+  if (strpos($subdir,'/')) {?>
+      <p><a href="<?=$_SERVER['PHP_SELF']?>?subdir=<?=dirname($subdir).'/'?>"><?=$text[5];?> <?=$text[562];?></a></p><?
   }
 }?>
     </td>

@@ -24,17 +24,17 @@ $addi=$_SERVER["PHP_SELF"]."?todo=".$todo."&amp;file=";
 $_SESSION['liga_sort']=isset($_REQUEST['liga_sort'])?$_REQUEST['liga_sort']:$liga_sort;
 $_SESSION['liga_sort_direction']=isset($_REQUEST['liga_sort_direction'])?$_REQUEST['liga_sort_direction']:$liga_sort_direction;
 
-$verz=substr($dirliga,-1)=='/'?opendir(substr(PATH_TO_LMO."/".$dirliga,0,-1)):opendir(PATH_TO_LMO."/".$dirliga);
+$verz=substr($dirliga.$subdir,-1)=='/'?opendir(substr(PATH_TO_LMO."/".$dirliga.$subdir,0,-1)):opendir(PATH_TO_LMO."/".$dirliga.$subdir);
 $liga_counter=0;
 $unbenannte_liga_counter=0;
 $ligadatei=array();
 while($files=readdir($verz)){
   if(strtolower(substr($files,-4))==".l98"){
     $sekt="";
-    $datei = fopen(PATH_TO_LMO."/".$dirliga.$files,"rb");
+    $datei = fopen(PATH_TO_LMO."/".$dirliga.$subdir.$files,"rb");
     if ($datei && check_hilfsadmin($files)) {
       
-      $ligadatei[$liga_counter]['file_date']=filemtime(PATH_TO_LMO."/".$dirliga.$files); //Datum
+      $ligadatei[$liga_counter]['file_date']=filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$files); //Datum
       $ligadatei[$liga_counter]['file_name']=$files;
   
       $ligadatei[$liga_counter]['liga_name']="";  //Liganame
@@ -129,12 +129,12 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
   <tbody>
 <? foreach($ligadatei as $liga){?>
 		<tr onMouseOver="this.className='lmoTabelleMeister';" onMouseOut="this.className=''">
-			<td class="nobr" align="left"><a href="<?=$addi.$dirliga.$liga['file_name']?>"><?=$liga['liga_name']?></a> &nbsp;</td><?
+			<td class="nobr" align="left"><a href="<?=$addi.$subdir.$liga['file_name']?>"><?=$liga['liga_name']?></a> &nbsp;</td><?
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
       <td class="nobr" align="left"><?=$liga['file_name']?> &nbsp;</td><?
   }?>
 			<td class="nobr" align="left"><?=$liga['rundenbezeichnung']." ".$liga['aktueller_spieltag'];?> &nbsp;</td>
-			<td class="nobr" align="left"><!--<?=filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name'])?>--><?=strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name']))?></td>
+			<td class="nobr" align="left"><!--<?=filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name'])?>--><?=strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></td>
 		</tr><?
 }
 if($liga_counter==0){echo "<td colspan='4'>[".$text[223]."]</td>";}?>

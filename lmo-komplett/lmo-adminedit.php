@@ -21,7 +21,7 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($file != "") {
   $ftest0 = 1;
-  $liga = substr($file, strrpos($file, "/")+1, -4);
+  $liga = substr($file, 0, -4);
    
   if ($tipp_immeralle == 0) {
     $ftest0 = 0;

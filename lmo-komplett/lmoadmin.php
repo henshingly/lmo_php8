@@ -20,7 +20,7 @@
   
 define('LMO_AUTH', 1);
 require(dirname(__FILE__).'/init.php');
-
+$subdir='';
 if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
 if(!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
 if(!isset($_SESSION["lmouserpass"])){$_SESSION["lmouserpass"]="";}
@@ -31,7 +31,7 @@ $todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:"";
 if($todo=="logout"){
   $_SESSION['lmouserok']=0;
   $_SESSION['lmouserpass']="";
-  }
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 					"http://www.w3.org/TR/html4/loose.dtd">

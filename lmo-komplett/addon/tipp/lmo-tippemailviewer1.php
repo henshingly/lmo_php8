@@ -24,7 +24,7 @@ if ($tippfile == "") {
 if (substr($tippfile, -4) != ".tip") {
   exit;
 }
-$tippdaten = array("");
+$tippdaten = array();
 $sekt = "";
 $datei = fopen($tippfile, "rb");
 if ($datei == false) {
@@ -32,7 +32,6 @@ if ($datei == false) {
 }
 while (!feof($datei)) {
   $zeile = fgets($datei, 1000);
-  $zeile = chop($zeile);
   $zeile = trim($zeile);
   if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
     $sekt = trim(substr($zeile, 1, -1));
@@ -43,7 +42,6 @@ while (!feof($datei)) {
   }
 }
 fclose($datei);
-array_shift($tippdaten);
 for($ii = 1; $ii <= count($tippdaten); $ii++) {
   $dum = explode('|', $tippdaten[$ii-1]);
   $op2 = substr($dum[0], 0, 5);

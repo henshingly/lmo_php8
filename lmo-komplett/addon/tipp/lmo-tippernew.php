@@ -226,7 +226,7 @@ if($newpage!=1){ ?>
             <td align="right"><?=" ".$text['tipp'][23]; ?></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xtippernick" size="25" maxlength="32" value="<?=$xtippernick; ?>"></td>
           </tr><?
-  if($tipp_realname!=-1){ ?>
+  if($tipp_realname!=0){ ?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?=" ".$text['tipp'][14]; ?></td>

@@ -25,11 +25,10 @@ if ($file != "") {
      
     $datei = file(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file));
     if ($datei) {
-      $stand=date("d.m.Y H:i",filemtime(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file)));
+      $stand=strftime($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file)));
       $lmtype=0;
       for($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];
-        $zeile = chop($zeile);
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));

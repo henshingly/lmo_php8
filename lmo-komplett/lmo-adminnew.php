@@ -178,7 +178,7 @@ if ($newpage == 3) {
       }
     }
   }
-  $file = $dirliga.$xfile.".l98";
+  $file = $xfile.".l98";
   require(PATH_TO_LMO."/lmo-savefile.php");
 }?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -211,17 +211,17 @@ if($newpage==0){ ?>
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?= $text[245]; ?>"><?= $text[244]; ?></acronym></td>
-            <td class="nobr"><acronym title="<?= $text[245]; ?>"><?= $dirliga; ?><input class="lmo-formular-input" type="text" name="xfile" size="28" maxlength="28" value="<?= $xfile; ?>" onChange="lmofilename()">.l98</acronym></td>
+            <td class="nobr" align="left"><acronym title="<?= $text[245]; ?>"><?= $dirliga; ?><input class="lmo-formular-input" type="text" name="xfile" size="28" maxlength="28" value="<?= $xfile; ?>" onChange="lmofilename()">.l98</acronym></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?= $text[118] ?>"><?= $text[113]; ?></acronym></td>
-            <td class="nobr"><acronym title="<?= $text[118] ?>"><input class="lmo-formular-input" type="text" name="xtitel" size="40" maxlength="60" value="<?= $xtitel; ?>" onChange="lmotitelname()"></acronym></td>
+            <td class="nobr" align="left"><acronym title="<?= $text[118] ?>"><input class="lmo-formular-input" type="text" name="xtitel" size="40" maxlength="60" value="<?= $xtitel; ?>" onChange="lmotitelname()"></acronym></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?= $text[175] ?>"><?= $text[174]; ?></acronym></td>
-            <td class="nobr"><acronym title="<?= $text[175] ?>"><select class="lmo-formular-input" name="xtype" onChange="dolmoedit()"><?= "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>"; echo "<option value=\"1\""; if($xtype==1){echo " selected";} echo ">".$text[177]."</option>"; ?></select></acronym></td>
+            <td class="nobr" align="left"><acronym title="<?= $text[175] ?>"><select class="lmo-formular-input" name="xtype" onChange="dolmoedit()"><?= "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>"; echo "<option value=\"1\""; if($xtype==1){echo " selected";} echo ">".$text[177]."</option>"; ?></select></acronym></td>
           </tr><?
 }
 if($newpage==1){
@@ -229,7 +229,7 @@ if($newpage==1){
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?= $text[272] ?>"><?= $text[271]; ?></acronym></td>
-            <td class="nobr">
+            <td class="nobr" align="left">
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="nobr" align="right">
@@ -256,7 +256,7 @@ if($newpage==1){
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?= $text[275] ?>"><?= $text[274]; ?></acronym></td>
-            <td class="nobr">
+            <td class="nobr" align="left">
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="nobr" align="right">
@@ -283,7 +283,7 @@ if($newpage==1){
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?= $text[278] ?>"><?= $text[277]; ?></acronym></td>
-            <td class="nobr">
+            <td class="nobr" align="left">
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="nobr" align="right">
@@ -311,7 +311,7 @@ if($newpage==1){
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?= $text[272] ?>"><?= $text[271]; ?></acronym></td>
-            <td class="nobr">
+            <td class="nobr" align="left">
               <select class="lmo-formular-input" name="xteams" onChange="dolmoedit()"><? if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>";} ?></select>
             </td>
           </tr>
@@ -327,7 +327,7 @@ if($newpage==2){
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right" valign="top"><acronym title="<?= $text[285] ?>"><?= $text[284]; ?></acronym></td>
-            <td class="nobr">
+            <td class="nobr" align="left">
               <input type="radio" name="xprogram" value="none"<? if($xprogram=="none"){echo " checked";} ?> onChange="dolmoedit()"><?= $text[286]; ?><br><br>
               <?= $text[287]; ?>:<br><? 
     $ftype=".l98"; 
@@ -342,7 +342,7 @@ if($newpage==2){
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?= $text[352] ?>"><?= $text[351]." ".$i; ?></acronym></td>
-            <td class="nobr">
+            <td class="nobr" align="left">
               <select class="lmo-formular-input" name="xmod<?= $i; ?>" onChange="dolmoedit()">
                 <option value="1"<?if($xmodus[$i-1]==1){echo " selected";}?>><?=$text[353]?></option>
                 <option value="2"<?if($xmodus[$i-1]==2){echo " selected";}?>><?=$text[354]?></option>
@@ -374,7 +374,7 @@ if($newpage<3){ ?>
 if($newpage==3){ ?>
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" colspan="2">&nbsp;<br><?= $text[291]; ?><br>&nbsp;</td>
+            <td class="nobr" align="left" colspan="2">&nbsp;<br><?= $text[291]; ?><br>&nbsp;</td>
           </tr>
           <tr>
             <td class="lmoFooter" colspan="3" align="left">

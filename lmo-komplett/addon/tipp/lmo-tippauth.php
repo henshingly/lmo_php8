@@ -19,6 +19,9 @@
   
   
 require(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+$xtippername=isset($_REQUEST['xtippername'])?$_REQUEST['xtippername']:'';
+$xtipperpass=isset($_REQUEST['xtipperpass'])?$_REQUEST['xtipperpass']:'';
+
 if ($action == "tipp") {
   if (!isset($_SESSION['lmotipperok'])) {
     $_SESSION['lmotipperok'] = 0;
@@ -34,12 +37,12 @@ if ($action == "tipp") {
   }
   if ($_SESSION["lmotipperok"] < 1 && $_SESSION["lmotipperok"] > -4) {
     $xtippername2 = "";
-    if (isset($xtippername) && isset($xtipperpass)) {
+    if (!empty($xtippername) && !empty($xtipperpass)) {
       $_SESSION['lmotippername'] = $xtippername;
       $_SESSION['lmotipperpass'] = $xtipperpass;
       $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
       if (($tippers = file($pswfile)) === FALSE) $tippers = array();
-        $_SESSION["lmotipperok"] = -2;
+      $_SESSION["lmotipperok"] = -2;
       foreach($tippers as $tipper) {
         if ($_SESSION["lmotipperok"] == -2) {
           $fileinfo = explode('|', trim($tipper));
@@ -174,7 +177,7 @@ if ($action == "tipp") {
                   $dummy[$u]=substr($dummy[$u],0,-4);
                   $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
                   if ($tipp_nurgesamt==0) {?>
-              <li class="lmoadminli"><a href="<? echo $addw.$dirliga.$dummy[$u].".l98"; ?>"><? echo $ftest2[$u];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}echo "</a>"; ?></li><?
+              <li class="lmoadminli"><a href="<? echo $addw.$dummy[$u].".l98"; ?>"><? echo $ftest2[$u];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}echo "</a>"; ?></li><?
                   }
                 }
               }

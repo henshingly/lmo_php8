@@ -160,20 +160,22 @@ if ($_SESSION["lmouserok"] == 2) {
       $team[$i] = $userd[5];
       $ltipp[$i] = 0;
       $verz = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
-      while ($files = readdir($verz)) {
-        if (substr($files, -5-strlen($userd[0])) == "_".$userd[0].".tip") {
-          if (filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files) > $ltipp[$i]) {
-            $ltipp[$i] = filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files);
+      if ($verz) {
+        while ($files = readdir($verz)) {
+          if (substr($files, -5-strlen($userd[0])) == "_".$userd[0].".tip") {
+            if (filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files) > $ltipp[$i]) {
+              $ltipp[$i] = filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files);
+            }
           }
         }
+        $tab0[$i]['id']=$id[$i];
+        $tab0[$i]['nick']=$nick[$i];
+        $tab0[$i]['name']=$name[$i];
+        $tab0[$i]['email']=$email[$i];
+        $tab0[$i]['team']=$team[$i];
+        $tab0[$i]['ltipp']=$ltipp[$i];
+        closedir($verz);
       }
-      $tab0[$i]['id']=$id[$i];
-      $tab0[$i]['nick']=$nick[$i];
-      $tab0[$i]['name']=$name[$i];
-      $tab0[$i]['email']=$email[$i];
-      $tab0[$i]['team']=$team[$i];
-      $tab0[$i]['ltipp']=$ltipp[$i];
-      closedir($verz);
     }
 
     
