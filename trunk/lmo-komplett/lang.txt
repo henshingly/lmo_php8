@@ -45,16 +45,16 @@
 044=zur Tabelle des nächsten Spieltags blättern
 045=zur Tabelle dieses Spieltags wechseln
 046=Hier gelangen Sie zur Homepage der Mannschaft (wird in einem neuen Fenster geöffnet)
-047=Dieses Script basiert auf meiner Windows-Software "LigaManager '98 Free". Nachdem es für Windows ja inzwischen unzählige Ligaprogramme gibt, möchte ich mit diesem PHP-Script neue Wege gehen.
-048=Der LigaManager Online ist weitestgehend kompatibel zum LigaManager '98 Free, sowohl was die Funktionen als auch die Bedienung betrifft. Einige weniger wichtige Features sind weggefallen (wie z.B. die Option der Startwerte). Dafür wurden einige Funktionen verbessert (z.B. der direkte Vergleich) und neue Features hinzugefügt (z.B. Tendenzanzeige in der Tabelle und der Kalender). Und es gibt nun endlich auch die Möglichkeit, KO-Turniere (z.B. PlayOffs, Pokale) zu verwalten.
-049=Die Berechnungen (Tabelle/Statistik) werden Spieltags-basierend durchgeführt. Deshalb wird auf vorgezogene oder nachgeholte Spiele keine Rücksicht genommen. Sie werden dem Spieltag zugerechnet, an dem sie eingetragen sind.
-050=Das Script läuft browserunabhängig, da es serverseitig arbeitet. Ihr Browser sollte aber CSS unterstützen, um eine optimale Darstellung zu gewährleisten. Wenn der Webmaster den eingebauten Newsticker nutzt, wird dieser nur bei aktiviertem JavaScript angezeigt.
+047=Dieses Script basiert ursprünglich auf der Windows-Software "LigaManager '98 Free" von Frank Hollwitz. Der <strong>Liga Manager Online</strong>, ebenfalls von Frank Hollwitz entwickelt, ist eine stark verbesserte Version dieses Programms. Da PHP-basiert, ist der LMO auf sehr vielen verschiedenen Plattformen benutzbar, die Bedienung erfolgt bequem über einen normalen Webbrowser. Durch verschiedene Erweiterungen (Addons) ist der LMO mit der Zeit immer vielseitiger geworden. Da der ursprüngliche Autor Frank Hollwitz das Skript nicht mehr weiterentwickelt, hat sich eine Gruppe von Addon-Entwicklern das Ziel gesetzt, den LMO zu verbessern und zu erweitern.
+048=Man kann mit diesem Skript sowohl <strong>normale Ligen</strong> verschiedener Sportarten, als auch <strong>Pokalwettbewerbe</strong> verwalten, weiterhin sind unter anderem ein <strong>Tippspiel</strong>, eine <strong>Spielerverwaltung</strong>, die Unterstützung für Mobile Geräte (<strong>WAP</strong>) sowie umfangreiche <strong>Ligastatistiken</strong> integriert. Somit ist der LMO <strong>die Komplettlösung</strong> für alle, die Spielergebnisse von Sportligen verwalten und öffentlich zugänglich machen wollen.
+049=Das Script läuft browserunabhängig, da es serverseitig arbeitet. Ihr Browser sollte aber CSS unterstützen, um eine optimale Darstellung zu gewährleisten. Wenn der Webmaster den eingebauten Newsticker nutzt, wird dieser nur bei aktiviertem JavaScript angezeigt.
+050=<strong>Credits</strong><dl><dt>Idee und Entwicklung</dt><dd>Frank Hollwitz</dd><dt>Tippspiel</dt><dd>Frank Albrecht</dd><dt>Spielerstatistik</dt><dd>Rene Marth, Thorsten Keller</dd><dt>Addonentwicklung und Debugging</dt><dd>Bernd Hoyer</dd><dt>Addonentwicklung</dt><dd>Bernd Feser, Georg Strey, Helmut Müller, Oilid Adsi, Harald Graf, Peter Scherb, Ronny A. Joschko, Thomas Rapp, Hans Marx, Thomas Ney</dd><dt>Übersetzungen</dt><dd>Tomás Brixí (tschechisch), Erik Scheepers (niederländisch)</dd><dt>Debugging/Verbesserungsvorschläge</dt><dd>viele Mitglieder des <a href="http://forum.hollwitz.de/">Hollwitz-Forums</a></dd></dl>
 051=Dummy
 052=Herzlich Willkommen!
-053=Bitte wählen Sie eine Liga aus:
-054=LigaManager Online 3.99alpha1
-055=&copy; 1997-2002 by Frank Hollwitz
-056=[ <a href="http://php.hollwitz.de/" target="_blank" title="Dieses und weitere Scripte können Sie auf meiner PHP-Seite downloaden">Hollwitz.PHP</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Die Ligaliste</a> | <a href="http://www.hollwitz.de/" target="_blank" title="Schauen Sie auch mal auf meiner Homepage vorbei">Hollwitz.Net(z)</a> ]
+053=Bitte wählen Sie eine Liga aus
+054=<acronym title="Liga Manager Online">LMO</acronym> 3.99alpha1
+055=&copy; 1997-2003 LMO-Group
+056=[ <a href="http://www.hollwitz.de/" target="_blank" title="Dieses und weitere Scripte können Sie auf meiner PHP-Seite downloaden">Hollwitz.Net(z)</a> | <a href="https://sourceforge.net/projects/lmo/" target="_blank" title="Die neueste Version bei Sourceforge">LMO-Projekt</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
 057=Die Statistik 1 von
 058=Die Statistik 2 von
 059=Keine 2. Mannschaft
@@ -75,7 +75,7 @@
 074=(A)
 075=Sp. o. Niederlage
 076=Sp. o. Sieg
-077=Admin-Bereich des
+077=Administration des
 078=Neu
 079=Eine neue Liga erstellen
 080=Öffnen
@@ -506,6 +506,7 @@
 505=Standardsprache
 506=Welche Sprachdatei soll geladen werden? (Sprachdateien besitzen das Format lang-[Sprachkuerzel].txt und können mit einem Texteditor selbst erstellt und geändert werden)
 507=Unbenannte Liga
+508=<= zum Archiv
 2000=Tippspiel
 2001=zur Tippspiel-&Uuml;bersicht
 2002=Team wechseln
