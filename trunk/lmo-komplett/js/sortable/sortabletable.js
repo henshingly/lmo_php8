@@ -373,11 +373,11 @@ SortableTable.prototype.removeSortType = function (sType) {
 };
 
 SortableTable.basicCompare = function compare(n1, n2) {
-	if (n1.value < n2.value)
+  if (n1.value < n2.value)
 		return -1;
 	if (n2.value < n1.value)
 		return 1;
-	return 0;
+  return 0;
 };
 
 SortableTable.idFunction = function (x) {
@@ -388,13 +388,26 @@ SortableTable.toUpperCase = function (s) {
 	return s.toUpperCase();
 };
 
+function LTrim(str) { 
+ for (var k=0; k<str.length && str.charAt(k)<=" " ; k++) ;
+ return str.substring(k,str.length);
+}
+function RTrim(str) {
+ for (var j=str.length-1; j>=0 && str.charAt(j)<=" " ; j--) ;
+ return str.substring(0,j+1);
+}
+function Trim(str) {
+ return LTrim(RTrim(str));
+}      
+
 SortableTable.toDate = function (s) {
-	var parts = s.split("-");
+	/*var parts = s.split("-");
 	var d = new Date(0);
 	d.setFullYear(parts[0]);
 	d.setDate(parts[2]);
 	d.setMonth(parts[1] - 1);
-	return d.valueOf();
+	return d.valueOf();*/
+  return Date.parse(Trim(s));
 };
 
 

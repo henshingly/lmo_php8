@@ -93,7 +93,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   }
   $addr=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;tabtype=".$tabtype."&amp;nick=".$nick."&amp;st=";
   $addt=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=&amp;nick=";
-  
+  echo $nick;
   if($minus==2){
     $dummy=" colspan=\"3\" align=\"center\"";
   } else {

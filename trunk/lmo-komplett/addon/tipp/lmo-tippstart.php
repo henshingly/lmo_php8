@@ -80,7 +80,6 @@ if ($todo == "getpass") {
 }
 $action = "tipp";
 require(PATH_TO_ADDONDIR."/tipp/lmo-tippauth.php");
-setlocale (LC_TIME, "de_DE");
 if ($_SESSION["lmotipperok"] > 0) {
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippmain.php");
 }

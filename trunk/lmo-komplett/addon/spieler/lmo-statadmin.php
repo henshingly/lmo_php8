@@ -54,8 +54,10 @@ if (isset($file) && $file!="") {
     if (isset($_REQUEST['vereinsweise_anzeigen']))                $spieler_vereinsweise_anzeigen=1;                else {if ($spieler_option=="saveconfig") $spieler_vereinsweise_anzeigen=0;}
     
 		if (isset($_REQUEST['extra_sortierspalte']))                  $spieler_extra_sortierspalte=1;                  else {if ($spieler_option=="saveconfig") $spieler_extra_sortierspalte=0;}
-		if (isset($_REQUEST['adminbereich_hilfsadmin_zulassen']))     $spieler_adminbereich_hilfsadmin_zulassen=1;     else {if ($spieler_option=="saveconfig") $spieler_adminbereich_hilfsadmin_zulassen=0;}
-		if (isset($_REQUEST['adminbereich_hilfsadmin_fuer_spalten'])) $spieler_adminbereich_hilfsadmin_fuer_spalten=1; else {if ($spieler_option=="saveconfig") $spieler_adminbereich_hilfsadmin_fuer_spalten=0;}
+		if ($_SESSION['lmouserok']==2) {
+      if (isset($_REQUEST['adminbereich_hilfsadmin_zulassen']))     $spieler_adminbereich_hilfsadmin_zulassen=1;     else {if ($spieler_option=="saveconfig") $spieler_adminbereich_hilfsadmin_zulassen=0;}
+  		if (isset($_REQUEST['adminbereich_hilfsadmin_fuer_spalten'])) $spieler_adminbereich_hilfsadmin_fuer_spalten=1; else {if ($spieler_option=="saveconfig") $spieler_adminbereich_hilfsadmin_fuer_spalten=0;}
+    }
 		if ($spieler_sort=="") $spieler_sort=intval($spieler_adminbereich_standard_sortierung);
 
 		if (file_exists($filename)) $filepointer = @fopen($filename,"r+b"); else $filepointer = @fopen($filename,"w+b");
@@ -400,9 +402,9 @@ function mark(el){
 							for ($i=0;$i<$spaltenzahl;$i++) {
                 $stat_sort=$_SERVER['PHP_SELF']."?action=admin&amp;todo=statistik&amp;sort=".$i."&amp;file=".$file."&amp;direction=";?>
 								<th colspan="2" class="nobr" align="center">
-                  <a href="<?=$stat_sort?>asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+                  <a href="<?=$stat_sort?>asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
                   <input type="text" name="spalten<?=$i?>" onChange="mark(this)" value="<?=$spalten[$i]?>" size="<?=strlen($spalten[$i]);?>">
-                  <a href="<?=$stat_sort?>desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+                  <a href="<?=$stat_sort?>desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
 								</th><?
 							}?>
 						</tr>

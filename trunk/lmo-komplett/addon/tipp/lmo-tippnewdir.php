@@ -131,15 +131,14 @@ if ($ftype != "") {
                   $i++;
                   if ($lmotipperok > 0 || $action == "admin" || $todo == "newtipper") {
                     if ($iptype == "reminder") {?>
-<tr>
-  <td class="lmost5">
-    <nobr>
-      <input type="hidden" name="liga1[]" value="<? echo $files; ?>">
-      <input type="radio" name="liganr" value="<? echo $i; ?>" <? if(($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><? echo $t0; ?>
-    </nobr>
-  </td>
-  <td class="lmost5">
-    <select class="lmo-formular-input" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<? echo $i-1; ?>].checked=true;"><?
+
+  <tr>
+    <td class="nobr">
+        <input type="hidden" name="liga1[]" value="<? echo $files; ?>">
+        <input type="radio" name="liganr" value="<? echo $i; ?>" <? if(($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><? echo $t0; ?>
+    </td>
+    <td class="nobr">
+      <select class="lmo-formular-input" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<? echo $i-1; ?>].checked=true;"><?
                       if ($liga == $files) {
                         if ($st > 0) {
                           $t1 = $st;
@@ -183,16 +182,15 @@ if ($ftype != "") {
                         }
                         echo "</option>";
                       }?>
-    </select>
-  </td>
-</tr><?
+      </select>
+    </td>
+  </tr><?
                     }
                     if($iptype=="einsicht" || $iptype=="auswert"){?>
-<tr>
-  <td class="lmost5" width="20">&nbsp;</td>
-  <td class="lmost5"><? echo $t0; ?></td>
-  <td class="lmost5" align="right">
-    <nobr>
+  <tr>
+    <td width="20">&nbsp;</td>
+    <td class="nobr"><? echo $t0; ?></td>
+    <td class="nobr" align="right">
       <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="tipp">
@@ -247,7 +245,7 @@ if ($ftype != "") {
                         }
                         echo "</option>";
                       }?>
-        </select><? 
+          </select><? 
                       echo $text['tipp'][164]; //Tipper
                       $start1=1;
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
@@ -255,7 +253,7 @@ if ($ftype != "") {
                           $start1 = $start;
                         }
                       }?> 
-        <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<? echo $start1; ?>"><? 
+          <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<? echo $start1; ?>"><? 
                       echo $text[4]; //bis
                       $verz1 = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
                       $dummy1 = array("");
@@ -272,12 +270,12 @@ if ($ftype != "") {
                           $ende1 = $ende;
                         }
                       }?> 
-        <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<? echo $ende1; ?>">
-        <input class="lmo-formular-button" type="submit" name="best" value="<? if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
-      </form>
-    </nobr>
-  </td>
-</tr><?
+          <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<? echo $ende1; ?>">
+          <input class="lmo-formular-button" type="submit" name="best" value="<? if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
+        </form>
+    </td>
+  </tr>
+<?
                     }elseif($iptype!="reminder"){
                       $checked = 0;
                       if (($todo == "newtipper" || $todo == "tippuseredit") && $xtipperligen != "") {

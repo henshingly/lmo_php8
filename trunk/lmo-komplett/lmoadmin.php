@@ -24,12 +24,14 @@
 // 
 define('LMO_AUTH', 1);
 require("init.php");
+
 if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
 if(!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
 if(!isset($_SESSION["lmouserpass"])){$_SESSION["lmouserpass"]="";}
 if(!isset($_SESSION["lmouserfile"])){$_SESSION["lmouserfile"]="";}
 
-isset($_REQUEST['todo'])?$todo=$_REQUEST['todo']:$todo="";
+$todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:"";
+
 if($todo=="logout"){
   $_SESSION['lmouserok']=0;
   $_SESSION['lmouserpass']="";
@@ -41,7 +43,7 @@ if($todo=="logout"){
 <head>
 <title>LMO Admin</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
-<script type='text/javascript'>
+  <script type='text/javascript'>
     if (window.captureEvents && document.layers) {
       document.write('<link rel=\"stylesheet\" href=\"<?=URL_TO_LMO?>/lmo-style-nc.php\" type=\"text/css\">');
     }
@@ -50,14 +52,13 @@ if($todo=="logout"){
 </head>
 <body>
 <div align="center"><?
+
 $action="admin";
 $array = array();
-setlocale (LC_TIME, "de_DE");
 require(PATH_TO_LMO."/lmo-adminauth.php");
-
 if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0){
   if (isset($file) && ($todo=="open" || $todo=="")) $todo="edit";
-  require(PATH_TO_LMO."/lmo-adminmain.php");
+  if ((isset($file) && check_hilfsadmin($file)) || !isset($file))  require(PATH_TO_LMO."/lmo-adminmain.php");
 }
 ?>
 </div>

@@ -66,54 +66,39 @@ if (($action == "tipp") && ($todo == "newligen")) {
     }
   } // end ($newpage==1)
 ?>
-<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+  <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
   <tr>
-    <td align="center" class="active"><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></td>
+    <th align="center"><?=$text['tipp'][135]; ?></th>
   </tr>
   <tr>
-    <td align="center" class="active"><?=$text['tipp'][135]; ?></td>
-  </tr>
-  <tr>
-    <td align="center"><? 
+    <td align="left"><? 
   if($newpage!=1){ ?>
       <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="newligen">
-        <input type="hidden" name="newpage" value="1">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td class="lmost5">
-              <nobr><? $ftype=".l98"; require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); ?></nobr>
-            </td>
-          </tr><? 
+        <input type="hidden" name="newpage" value="1"><? 
+  $ftype=".l98"; 
+  require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); 
     if($i!=0){ ?>
-          <tr>
-            <td class="lmost4" colspan="3" align="right">
-              <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text['tipp'][11]; ?>">
-            </td>
-          </tr><? 
+        <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text['tipp'][11]; ?>"><? 
     } ?>
-        </table> 
       </form><? 
-  }
+  }?>
+    </td>
+  </tr><?
   
   if($newpage==1){ /* Anmeldung erfolgreich */?>
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-          <td class="lmost5" align="center">  <?=$text['tipp'][20]; ?></td>
-        </tr>
-      </table><? 
+  <tr>
+    <td class="message" align="center"><img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt="">  <?=$text['tipp'][20]; ?></td>
+  </tr><? 
   }
   
   if($newpage==1 || $i==0){ /* zurück zur Übersicht */?>
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-          <td class="lmost4" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>
-        </tr>
-      </table><? 
-  }?>
-    </td>
-  </tr>
+  <tr>
+    <td class="lmoFooter" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>
+  </tr><? 
+  }?>    
 </table><? 
 } 
 $file=""; ?>

@@ -4,6 +4,9 @@ $lmo_dateipfad="/tmp/lmo-komplett/lmo";
 // Dies ist die absolute URL zum LMO-Verzeichnis (ohne abschliessenden '/'!)
 $lmo_url='http://localhost/tmp/lmo-komplett/lmo';
 
+if (isset($_GET['debug'])) {
+    @error_reporting(E_ALL);
+}
 
 if (session_id()=="") session_start();
 @ini_set("session.use_trans_sid","1");
@@ -30,4 +33,20 @@ if(isset($_REQUEST["lmouserlang"])){$_SESSION["lmouserlang"]=$_REQUEST["lmouserl
 if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
 require_once(PATH_TO_LMO."/lmo-langload.php");
 
+function check_hilfsadmin($datei) {
+  $hilfsadmin_berechtigung=FALSE;
+  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']==1){
+    $hilfsadmin_ligen = explode(',',$_SESSION['lmouserfile']);
+    if(isset($hilfsadmin_ligen)){
+      foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
+        if($hilfsadmin_liga.".l98"==basename($datei)){
+          $hilfsadmin_berechtigung=TRUE;
+        }
+      }
+    }
+  } else {
+    $hilfsadmin_berechtigung=TRUE;
+  }  
+  return $hilfsadmin_berechtigung; 
+}
 ?>

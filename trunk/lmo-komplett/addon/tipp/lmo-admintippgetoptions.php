@@ -69,6 +69,7 @@
     case 5:
       isset($_POST["xadresse"])?                              $tipp_adresse=1:                                        $tipp_adresse=0;
       isset($_POST["xrealname"])?                             $tipp_realname=1:                                       $tipp_realname=0;
+      isset($_POST["xfreischaltcode"])?                       $tipp_freischaltcode=1:                                 $tipp_freischaltcode=0;
       isset($_POST["xfreischaltung"])?                        $tipp_freischaltung=1:                                  $tipp_freischaltung=0;
       isset($_POST["xmailbeianmeldung"])?                     $tipp_mailbeianmeldung=1:                               $tipp_mailbeianmeldung=0;
     break;
@@ -81,7 +82,7 @@
          $tipp_showtendenzpro==1 || 
          ($tipp_showdurchschntipp==1 && $tipp_tippmodus==1)){ $tipp_tippeinsicht=1;}
       isset($_POST["xsttipp"])?                               $tipp_sttipp=1:                                         $tipp_sttipp=-1;
-      isset($_POST["xviewertipp"])?                           $tipp_viewertipp=1:                                     $tipp_viewertipp=0;
+      isset($_POST["xviewertipp"])?                           $tipp_viewertipp=0:                                     $tipp_viewertipp=0;
       if ($tipp_viewertipp==1) {
         isset($_POST["xviewertage"])  &&
           is_numeric($_POST["xviewertage"]) &&

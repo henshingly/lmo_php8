@@ -1,3 +1,3 @@
 admin|lmo|2|EOL
-cv|6972e9ac|1|
+test|test|1|1l_2002-03,1bl_2003-04,2bl_2003-04
 tg|0fb88650|1|1bl_2003-04,14er-liga,10er-liga,16er-liga,4er-liga

@@ -35,7 +35,6 @@ if($save==1){
   require(PATH_TO_LMO."/lmo-savecfg.php");
 }
 include_once(PATH_TO_ADDONDIR."/tipp/lmo-admintippjavascript.php");
-include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
 include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
 ?>
 
@@ -258,6 +257,11 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][286]; ?></td>
             <td align="left"><input type="checkbox" name="xrealname" onClick="dolmoedit()"<?if($tipp_realname==1){echo " checked";}?>></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><? echo $text['tipp'][299]; ?></td>
+            <td align="left"><input type="checkbox" name="xfreischaltcode" onClick="dolmoedit()"<?if($tipp_freischaltcode==1){echo " checked";}?>></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>

@@ -46,7 +46,7 @@
 045=Wenn Du noch nicht angemeldet bist:
 046=Hier kannst Du Dich für das Tippspiel
 047=Welchem Team möchtest Du angehören?
-048=in bestehendes Team eintreten:<br>in Klammern: [Tipper im Team]
+048=<acronym title="in Klammern: [Tipper im Team]">in bestehendes Team eintreten:</acronym>
 049=neues Team gründen:
 050=keinem
 051=Bitte auswählen
@@ -75,7 +75,7 @@
 074=Passwort vergessen?
 075=Hier kannst Du Dein Passwort
 076=anfordern
-077=Dein Zugangsdaten fuer das Tippspiel:
+077=Dein Zugangsdaten fuer das Tippspiel
 078=Passwort wurde an Deine Email-Adresse versand
 079=Passwortanforderung Tippspiel
 080=Passwortversand fehlgeschlagen
@@ -265,7 +265,7 @@
 264=Folgende Angaben gelten immer:
 265=Betreff:
 266=Ligen abbestellen
-267=Dadurch werden alle Deine Tipps für die gewählten Ligen gelöscht.<br> In den entsprechenden Punktestandstabellen tauchst Du erst<br> nach der nächsten Auswertung nicht mehr auf.
+267=Dadurch werden alle Deine Tipps für die <br>gewählten Ligen gelöscht. In den entsprechenden <br>Punktestandstabellen tauchst Du erst nach der<br> nächsten Auswertung nicht mehr auf.
 268=abbestellen
 269=Abbestellen erfolgreich!
 270=letzter Tipp
@@ -296,3 +296,6 @@
 295=Hallo Tipper,
 296=Tippspiel-Newsletter
 297=Hallo
+298=Hallo [nick], \n\nhier sind deine Zugangsdaten für das Tippspiel: \n\nNickname: [nick]\nPasswort: [pass]\n\nHier kannst du dich einloggen: \n[url]\n\nDort kannst du auch dein Passwort ändern.\n\nViel Spaß!
+299=Anmeldungsdaten per E-Mail versenden
+300=Das Passwort wird Ihnen per E-Mail zugestellt, stellen Sie sicher, dass die angegebene Adresse gültig ist

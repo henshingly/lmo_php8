@@ -30,7 +30,6 @@ if((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()==
   session_start();
 }
 
-setlocale(LC_TIME, "de_DE");
 $array = array();
 $ftype=".l98";
 

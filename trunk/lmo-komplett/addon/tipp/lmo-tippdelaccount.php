@@ -89,42 +89,29 @@ if (($action == "tipp") && ($todo == "delaccount")) {
   } // end ($newpage==1)
 
 ?>
-  <table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
+  <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
     <tr>
-      <td align="center" class="active"><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></td>
+      <th colspan="2" align="center"><?=$text['tipp'][6]; ?></th>
     </tr>
     <tr>
-      <td align="center" class="active"><?=$text['tipp'][6]; ?></td>
-    </tr>
-    <tr><? 
+      <td width="20">&nbsp;</td><? 
   if($newpage!=1){ ?>
-      <td align="center">
-        <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
+      <td class="nobr" align="center">
+        <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return confirm('');">
           <input type="hidden" name="action" value="tipp">
           <input type="hidden" name="todo" value="delaccount">
           <input type="hidden" name="newpage" value="1">
-          <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-            <tr>
-              <td class="lmost5" width="20">&nbsp;</td>
-              <td class="lmost5" align="right"><?=" ".$text['tipp'][69]; ?></td>
-              <td class="lmost5">
-                <input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>">
-              </td>
-            </tr>
-            <tr>
-              <td class="lmost4" colspan="3" align="right">
-                <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text[82]; ?>">
-              </td>
-            </tr>
-          </table>
+          <p><?=" ".$text['tipp'][69]; ?>: &nbsp;<input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>"></p>
+          <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text[82]; ?>">
         </form>
       </td><? 
   }
   if($newpage==1){ /* erfolgreich*/?>
-      <td class="lmost5" align="center"><?=$text['tipp'][121]; ?></td>
+      <td class="message" align="center"><img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt=""> <?=$text['tipp'][121]; ?></td>
     </tr>
     <tr>
-      <td class="lmost4" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?=$text['tipp'][141]; ?></a></td>
+      <td class="lmoFooter" colspan="2" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?=$text['tipp'][141]; ?></a></td>
     </tr><? 
   }?>
   </table><? 

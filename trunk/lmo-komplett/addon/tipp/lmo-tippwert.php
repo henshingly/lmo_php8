@@ -176,9 +176,9 @@ if ($tipp_anzseiten > 1) {
 ?> 
   <tr>
     <td align="center">
-      <table cellspacing="0" cellpadding="0" border="0">
+      <table clss="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
         <tr><?
-  echo "<td class=\"active\">".$text['tipp'][205]."&nbsp;</td>";
+  echo "<td class=\"nobr\">".$text['tipp'][205]."&nbsp;</td>";
   for($i = 0; $i < $tipp_anzseiten; $i++) {
     $von = ($i * $tipp_anzseite1)+1;
     $bis = ($i+1) * $tipp_anzseite1;
@@ -186,9 +186,9 @@ if ($tipp_anzseiten > 1) {
       $bis = $anztipper;
     }
     if ($von != $start) {
-      echo "<td ><a href=\"".$addt3.$von."\">";
+      echo "<td class='nobr'><a href=\"".$addt3.$von."\">";
     } else {
-      echo "<td class=\"active\">";
+      echo "<td class=\"nobr\">";
     }
     echo $von."-".$bis;
     if ($von != $start) {
@@ -360,7 +360,7 @@ for($x = 1; $x <= $anztipper; $x++) {
         $dumm2 = "";
       }
        
-      $dumm1 = "lmost5";
+      $dumm1 = "nobr";
       if ((($wertung != "intern" && $lax == 1) || ($wertung == "intern" && $lx == 1)) && $tipppunktegesamt[$i] > 0) {
         $dumm1 = "lmoTabelleMeister nobr";
       }
@@ -393,15 +393,14 @@ for($x = 1; $x <= $anztipper; $x++) {
       }
       if ($tabdat != "" && $stwertmodus != "nur") {
         echo "<td class=\"".$dumm1."\"";
-        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
+        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\" alt=''>";
         echo "</td>";
       } else {
         echo "<td class=\"".$dumm1."\">&nbsp;</td>";
       }
       
       if( $wertung=="einzel" || $wertung=="intern"){?>
-          <td class="<?=$dumm1; ?>">
-            <nobr><?
+          <td class="<?=$dumm1; ?>" align="left"><?
         echo $dummy;
         if ($tipp_showname == 1) {
           if ($tipp_showemail == 1) {
@@ -430,10 +429,9 @@ for($x = 1; $x <= $anztipper; $x++) {
           echo "<a href=mailto:".$tipperemail[$i].">".$tipperemail[$i]."</a>";
         }
         echo $dumm2;?>
-            </nobr>
-          </td><?
+          &nbsp;</td><?
       } else {?>
-          <td class="<?=$dumm1; ?>"><? if($wertung!="intern" && $team[$i]!=" "){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$team[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$team[$i].$dumm2; if($wertung!="intern" && $team[$i]!=" "){echo "</a>";} ?></td><?
+          <td class="<?=$dumm1; ?>" align="left"><? if($wertung!="intern" && $team[$i]!=" "){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$team[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$team[$i].$dumm2; if($wertung!="intern" && $team[$i]!=" "){echo "</a>";} ?> </td><?
       }
 
       if ($tipp_tipperimteam >= 0) {
@@ -442,12 +440,12 @@ for($x = 1; $x <= $anztipper; $x++) {
             $tipperteam[$i] = "&nbsp;";
           }?>
           
-          <td class="<?=$dumm1; ?>"><nobr><? if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$tipperteam[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$tipperteam[$i].$dumm2; if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "</a>";} ?></nobr></td><?
+          <td class="<?=$dumm1; ?>"><? if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$tipperteam[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$tipperteam[$i].$dumm2; if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "</a>";} ?> </td><?
         } else {?>
           
-          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$tipp_tipperimteam[$i].$dumm2; ?></td>
+          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$tipp_tipperimteam[$i].$dumm2; ?> &nbsp;</td>
           
-          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.number_format($tipppunktegesamt[$i]/$tipp_tipperimteam[$i],2,".",",").$dumm2; ?></td><?
+          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.number_format($tipppunktegesamt[$i]/$tipp_tipperimteam[$i],2,".",",").$dumm2; ?> </td><?
         }
       }
       echo "<td class=\"".$dumm1."\" align=\"right\">";
@@ -462,7 +460,7 @@ for($x = 1; $x <= $anztipper; $x++) {
       } else {
         echo $dumm2;
       }
-      echo "</td>";
+      echo " </td>";
        
       if ($tipp_showzus == 1) {
         if ($tipp_tippmodus == 1) {
@@ -472,7 +470,7 @@ for($x = 1; $x <= $anztipper; $x++) {
               $punkte1gesamt[$i] = "&nbsp;";
             }?>
           
-          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte1gesamt[$i].$dumm2; ?></td><? 
+          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte1gesamt[$i].$dumm2; ?> </td><? 
           }
           
           if ($tipp_rtendenzdiff > $tipp_rtendenz) {
@@ -480,7 +478,7 @@ for($x = 1; $x <= $anztipper; $x++) {
               $punkte2gesamt[$i] = "&nbsp;";
             }?>
           
-          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte2gesamt[$i].$dumm2; ?></td><? 
+          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte2gesamt[$i].$dumm2; ?> </td><? 
           } else {
             $punkte3gesamt[$i]+=$punkte2gesamt[$i];
           }
@@ -490,7 +488,7 @@ for($x = 1; $x <= $anztipper; $x++) {
               $punkte3gesamt[$i]="&nbsp;";
             }?>
           
-          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte3gesamt[$i].$dumm2; ?></td><? 
+          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte3gesamt[$i].$dumm2; ?> </td><? 
           }
           
           if($tipp_rtor>0){
@@ -498,7 +496,7 @@ for($x = 1; $x <= $anztipper; $x++) {
               $punkte4gesamt[$i]="&nbsp;";
             }?>
           
-          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte4gesamt[$i].$dumm2; ?></td><? 
+          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte4gesamt[$i].$dumm2; ?> </td><? 
           }
         } // ende if($tipp_tippmodus==1)
         
@@ -507,7 +505,7 @@ for($x = 1; $x <= $anztipper; $x++) {
             $punkte5gesamt[$i]="&nbsp;";
           }?>
           
-          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte5gesamt[$i].$dumm2; ?></td><? 
+          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte5gesamt[$i].$dumm2; ?> </td><? 
         }
         
         if($tipp_jokertipp==1){
@@ -515,7 +513,7 @@ for($x = 1; $x <= $anztipper; $x++) {
             $punkte6gesamt[$i]="&nbsp;";
           }?>
           
-          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte6gesamt[$i].$dumm2; ?></td><? 
+          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$punkte6gesamt[$i].$dumm2; ?> </td><? 
         }
       } // ende if($tipp_showzus==1)
       
@@ -524,7 +522,7 @@ for($x = 1; $x <= $anztipper; $x++) {
           $stsiege[$i]="&nbsp;";
         }?>
           
-          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$stsiege[$i].$dumm2; ?></td><? 
+          <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$stsiege[$i].$dumm2; ?> </td><? 
       }
       
       $quotegesamt[$i] = number_format($quotegesamt[$i]/100, 2, ".", ",");
@@ -554,13 +552,12 @@ for($x = 1; $x <= $anztipper; $x++) {
       } else {
         echo $dumm2;
       }
-      echo "</td>";
-      } /* ende if($wertung!="intern" || $teamintern==$tipperteam[$i])*/?>
-        </tr><?
+      echo " </td>";
+      } /* ende if($wertung!="intern" || $teamintern==$tipperteam[$i])*/
     } /* ende   if($wertung=="team" || $tippernick[$i]!="")*/
   } /* ende   if(($x>=$start && $x<=$ende) || $i==$eigpos)*/
 } /* ende for($x=1;$x<=$anztipper;$x++)*/?>
-
+        </tr>
       </table>
     </td>
   </tr><? 

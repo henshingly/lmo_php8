@@ -1,7 +1,7 @@
 <?
 //////////////////////////////////////////////////////////////////////////////
 //= LMO-VIEWER 															   =//
-//= Zur Anzeige der n„chsten X Spiele aus dem                              =//
+//= Zur Anzeige der n&bdquo;chsten X Spiele aus dem                              =//
 //= Liga-Manager Online von Frank Hollwitz                                 =//
 //= http://www.hollwitz.de												   =//
 //= Copyright: 2002 Bernd Feser                                            =//
@@ -10,31 +10,31 @@
 //= Supportforum:														   =//
 //= http://www.schohentengen.de/Interaktiv/Diskussion/index.php?showkat=3  =//
 //==========================================================================//
-//= Copyright: Das ver„ndern des Copyrights ist strikt untersagt!          =//
-//= ALLE Angabe mssen unver„ndert stehen bleiben.                         =//
+//= Copyright: Das ver&bdquo;ndern des Copyrights ist strikt untersagt!          =//
+//= ALLE Angabe m ssen unver&bdquo;ndert stehen bleiben.                         =//
 //= ----------------------------------------------						   =//
-//= Ich wrde gerne wissen, wo das Script im Einsatz                       =//
+//= Ich w rde gerne wissen, wo das Script im Einsatz                       =//
 //= ist. Also schickt mir doch bitte ne Mail wenn ihr es einsetzt und wo.  =//
 //= Vorteil: Ich schau mir das an und kann dann evtl. Verbesserungen       =//
 //= vornehmen. Eine Mail ist doch nicht zuviel verlangt oder?              =//
 //==========================================================================//
 //= Diese Datei:                                                           =//
 //= CONFIG_LMO_VIEWER.PHP                                                  =//
-//= Steuerungsdatei fr den LMO_VIEWER                                     =//
+//= Steuerungsdatei f r den LMO_VIEWER                                     =//
 //= in den Kommentaren ist aufgelistet was eingegeben werden muss          =//
 //////////////////////////////////////////////////////////////////////////////
 
-isset($_GET['stylefile'])?$design=$_GET['stylefile']:$design='lmo-style.css';          			// Design angeben
+isset($_GET['stylefile'])?$design=$_GET['stylefile']:$design='lmo-style.php';          			// Design angeben
 
 $PM="Bernd Feser";															  //*************************************************//
-$PV="V1.161";																  //  NICHT VERŽNDERN!                               //
+$PV="V1.161";																  //  NICHT VER&#381;NDERN!                               //
 $PN="LMO-Viewer";                                                             //  COPYRIGHTANGABEN!                              //
 $FO="http://www.hollwitz.de/forum/";  //  SIEHE KOPFTEXT DIESER DATEI                    //
 $DL="http://www.hollwitz.de/forum/";         //                                                 //
 $PL="bfeser@feser.de";                                                        //*************************************************//
 
 
-$design='<link rel=stylesheet type="text/css" href="'.URL_TO_LMO.'/'.$viewer_designfile.'">';
+$design='<link rel="stylesheet" type="text/css" href="'.URL_TO_LMO.'/'.$viewer_designfile.'">';
 switch($viewer_datumsformat) {
 	case 0: $dat_format="%d.%m.%Y";break;
 	case 1:	$dat_format="%d.%m.%y";break;

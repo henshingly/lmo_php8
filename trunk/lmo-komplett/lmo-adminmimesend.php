@@ -19,13 +19,13 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 session_start();
+require("init.php");
 if (!isset($_SESSION["lmouserok"]))$_SESSION["lmouserok"]==0;
-require(PATH_TO_LMO."/lmo-cfgload.php");
-require(PATH_TO_LMO."/lmo-langload.php");
-isset($_GET['action'])? $action=$_GET['action']:$action='';
-isset($_GET['todo'])  ? $todo=$_GET['todo']    :$todo='';
-isset($_GET['down'])  ? $down=$_GET['down']    :$down=0;
-isset($_GET['madr'])  ? $madr=$_GET['madr']    :$madr='';
+
+$action=isset($_GET['action'])? $_GET['action']:'';
+$todo=isset($_GET['todo'])  ? $_GET['todo']    :'';
+$down=isset($_GET['down'])  ? $_GET['down']    :0;
+$madr=isset($_GET['madr'])  ? $_GET['madr']    :'';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 					"http://www.w3.org/TR/html4/loose.dtd">
@@ -33,13 +33,14 @@ isset($_GET['madr'])  ? $madr=$_GET['madr']    :$madr='';
 <head>
 <title>LMO Admin</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
-<link rel="stylesheet" type="text/css" href="lmo-style.css">
+<link rel="stylesheet" type="text/css" href="<?=URL_TO_LMO?>/lmo-style.php">
 </head>
 <body>
+<div class="lmoMain">
 <?
 if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1) || ($_SESSION["lmouserok"] == 2))) {
   if (($down != 0) && ($madr != "")) {
-    $array = array("");
+    $array = array();
     $ftype = ".l98";
     $verz = opendir(substr($dirliga, 0, -1));
     $dummy = array("");
@@ -49,10 +50,9 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
       }
     }
     closedir($verz);
-    array_shift($dummy);
     sort($dummy);
     if ($down > 0) {
-      if ($dummy[$down-1] != "") {
+      if ($dummy[$down-1] != "" && check_hilfsadmin($dummy[$down-1])) {
         require(PATH_TO_LMO."/lmo-adminmimezip.php");
         $zipfile = new zipfile();
         $filedata = fread(fopen($dirliga.$dummy[$down-1], "rb"), filesize($dirliga.$dummy[$down-1]));
@@ -63,10 +63,10 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $mail->subject = $text[341];
         $mail->body = $text[342]."\n\n--------------------------------------------------\nSender: ".$_SERVER['REMOTE_ADDR']." (".$_SERVER['HTTP_USER_AGENT'].")\n";
         $mail->add_attachment($zipfile->file(), "lmo_".substr($dummy[$down-1], 0, -4).".zip", "application/octet-stream");
-        if ($mail->send() === TRUE) {?>
-  <p class="lmofett"><?=$text[348]?></p><?
-        }else{?>
-  <p class="lmofett"><?=$text[176]?></p>      <?
+        if ($mail->send() === TRUE) {
+          echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$text[348]."</p>";
+        }else{
+          echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text[550]."</p>";
         }?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?=$text[347]?><\/a>');</script></p><?
       }
@@ -75,8 +75,10 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         require(PATH_TO_LMO."/lmo-adminmimezip.php");
         $zipfile = new zipfile();
         for($i=0;$i<count($dummy);$i++){
-          $filedata = fread(fopen($dirliga.$dummy[$i], "rb"), filesize($dirliga.$dummy[$i]));
-          $zipfile -> add_file($filedata, $dummy[$i]);
+          if (check_hilfsadmin($dummy[$i])) {
+            $filedata = fread(fopen($dirliga.$dummy[$i], "rb"), filesize($dirliga.$dummy[$i]));
+            $zipfile -> add_file($filedata, $dummy[$i]);
+          }
         }
         $mail = new mime_mail();
         $mail->from = $aadr;
@@ -84,10 +86,10 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $mail->subject = $text[341];
         $mail->body = $text[342]."\n\n--------------------------------------------------\nSender: ".$_SERVER['REMOTE_ADDR']." (".$_SERVER['HTTP_USER_AGENT'].")\n";
         $mail->add_attachment($zipfile -> file(), "lmo_".substr($dummy[$down-1],0,-4).".zip", "application/octet-stream");
-        if ($mail->send()===TRUE){?>
-  <p class="lmofett"><?=$text[175]?></p><?
-        }else{?>
-  <p class="lmofett"><?=$text[176]?></p>      <?
+        if ($mail->send()===TRUE){
+          echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$text[348]."</p>";
+        }else{
+          echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text[550]."</p>";
         }?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?=$text[347]?><\/a>');</script></p><?
       }

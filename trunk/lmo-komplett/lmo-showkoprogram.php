@@ -114,11 +114,11 @@ if ($file != "") {
           $m2 = array($goalb[$j][$i][0], $goalb[$j][$i][1], $goalb[$j][$i][2], $goalb[$j][$i][3], $goalb[$j][$i][4], $goalb[$j][$i][5], $goalb[$j][$i][6]);
           $m = gewinn($j, $i, $modus[$j], $m1, $m2);
           if ($m == 1) {
-            echo "<td class=\"lmoTurnierSieger\" align=\"right\"><nobr>";
+            echo "<td class=\"lmoTurnierSieger nobr\" align=\"right\">";
           } elseif ($m==2) {
-            echo "<td class=\"lmoTurnierVerlierer\" align=\"right\"><nobr>";
+            echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"right\">";
           } else {
-            echo "<td align=\"right\"><nobr>";
+            echo "<td class=\"nobr\" align=\"right\">";
           }
           if ($selteam == $teama[$j][$i]) {
             echo "<strong>";
@@ -138,14 +138,14 @@ if ($file != "") {
   
                ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$j][$i]])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$teama[$j][$i]]?>"><?
           }
-          echo "</nobr></td>";?>
+          echo " </td>";?>
           <td class="lmost5" align="center" width="10">-</td><?
           if ($m == 2) {
-            echo "<td class=\"lmoTurnierSieger\"><nobr>";
+            echo "<td class=\"lmoTurnierSieger nobr\">";
           } elseif($m==1) {
-            echo "<td align='left' class=\"lmoTurnierVerlierer\"><nobr>";
+            echo "<td align='left' class=\"lmoTurnierVerlierer nobr\">";
           } else {
-            echo "<td align=\"left\"><nobr>";
+            echo "<td class=\"nobr\" align=\"left\">";
           }
           if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif")) {
               $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif");
@@ -165,7 +165,7 @@ if ($file != "") {
           if ($selteam == $teamb[$j][$i]) {
             echo "</strong>";
           }
-          echo "</nobr></td>";
+          echo " </td>";
           for($n = 0; $n < $modus[$j]; $n++) {
             if ($datm == 1) {
               if ($mterm[$j][$i][$n] > 0) {
@@ -177,16 +177,16 @@ if ($file != "") {
               }
             }
             if ($n == 0) {
-              echo "<td class=\"lmost5\" width=\"2\">&nbsp;</td>";
+              echo "<td width=\"2\">&nbsp;</td>";
             } else {
-              echo "<td class=\"lmost5\" width=\"8\">|</td>";
+              echo "<td width=\"8\">|</td>";
             }?>
-          <td class="lmost5"><?=$dumn1; ?><?=$goala[$j][$i][$n]; ?>&nbsp;:&nbsp;<?=$goalb[$j][$i][$n]; ?>&nbsp;<?=$mspez[$j][$i][$n]; ?><?=$dumn2; ?><?
+          <td class="nobr"><?=$dumn1; ?><?=$goala[$j][$i][$n]; ?>&nbsp;:&nbsp;<?=$goalb[$j][$i][$n]; ?>&nbsp;<?=$mspez[$j][$i][$n]; ?><?=$dumn2; ?><?
            /** Mannschaftsicons finden
              */
             $lmo_teamaicon="";
             $lmo_teambicon="";
-            if($urlb==1 || $mnote[$j][$i][$n]!="" || $msieg[$j][$i][$n]>0){
+            if($urlb==1 || $mnote[$j][$i][$n]!=""){
               if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif")) {
                 $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif");
                 $lmo_teamaicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$j][$i]]).".gif' {$imgdata[3]} alt=''> ";

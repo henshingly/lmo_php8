@@ -41,18 +41,18 @@
       $heute = 7;
     }
     if ($dat1['mon'] == $dat4['mon']) {
-      $stil = "lmocalat";
+      $stil = "";
       $dum6 = $dat0['mday'].".".$dat0['mon'].".".$dat0['year'];
       $dum7 = $dat4['mday'].".".$dat4['mon'].".".$dat4['year'];
       if ($dum6 == $dum7) {
         if (($heute == 6) || ($heute == 7)) {
-          $stil = "lmoWochenende lmoHeute";
+          $stil = "lmoBackMarkierung lmoFrontMarkierung";
         } else {
-          $stil = "lmoHeute";
+          $stil = "lmoBackMarkierung";
         }
       } else {
         if (($heute == 6) || ($heute == 7)) {
-          $stil = "lmoWochenende";
+          $stil = "lmoFrontMarkierung";
         } else {
           $stil = "";
         }

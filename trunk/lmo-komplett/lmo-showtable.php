@@ -106,26 +106,26 @@ for($x = 1; $x <= $anzteams; $x++) {
     $dummy = "";
     $dumm2 = "";
   }
-  $lmo_tabelle_class = "lmost5";
+  $lmo_tabelle_class = "nobr";
   if ($tabtype == 0) {
     if (($x == 1) && ($champ != 0)) {
-      $lmo_tabelle_class = "lmoTabelleMeister";
+      $lmo_tabelle_class = "lmoTabelleMeister nobr";
       $j = 2;
     }
     if (($x >= $j) && ($x < $j+$anzcl) && ($anzcl > 0)) {
-      $lmo_tabelle_class = "lmoTabelleCleague";
+      $lmo_tabelle_class = "lmoTabelleCleague nobr";
     }
     if (($x >= $j+$anzcl) && ($x < $j+$anzcl+$anzck) && ($anzck > 0)) {
-      $lmo_tabelle_class = "lmoTabelleCleaguequali";
+      $lmo_tabelle_class = "lmoTabelleCleaguequali nobr";
     }
     if (($x >= $j+$anzcl+$anzck) && ($x < $j+$anzcl+$anzck+$anzuc) && ($anzuc > 0)) {
-      $lmo_tabelle_class = "lmoTabelleUefa";
+      $lmo_tabelle_class = "lmoTabelleUefa nobr";
     }
     if (($x <= $anzteams-$anzab) && ($x > $anzteams-$anzab-$anzar) && ($anzar > 0)) {
-      $lmo_tabelle_class = "lmoTabelleRelegation";
+      $lmo_tabelle_class = "lmoTabelleRelegation nobr";
     }
     if (($x <= $anzteams) && ($x > $anzteams-$anzab) && ($anzab > 0)) {
-      $lmo_tabelle_class = "lmoTabelleAbsteiger";
+      $lmo_tabelle_class = "lmoTabelleAbsteiger nobr";
     }
     
   }?>
@@ -226,8 +226,8 @@ for($x = 1; $x <= $anzteams; $x++) {
     <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td>
     <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=$punkte[$i]?></strong></td><?
     if($minus==2){?>
-    <td class=" <?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
-    <td class=" <?=$lmo_tabelle_class?>"><strong><?=$negativ[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=$negativ[$i]?></strong></td><?
     }
   }
   if($tabonres==2){
@@ -285,7 +285,7 @@ for($x = 1; $x <= $anzteams; $x++) {
   </tr><?
 }/*for*/?>
   <tr>  
-    <td class="lmoFooter" align="center" width="100%" colspan="<?=$gesamtbreite?>"><?  
+    <td class="lmoFooter" align="center" width="100%" colspan="<?=$gesamtbreite?>">&nbsp;<?  
 
 if ($einzutoretab == 1) {
   $strs = ".l98";
