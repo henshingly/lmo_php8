@@ -68,12 +68,12 @@ if(($action=="tipp") && ($todo=="")){
   <tr><td class="lmost4"><nobr><?PHP echo $text['tipp'][145]; ?>:</nobr></td></tr>
   <tr><td class="lmost5"><nobr>
     <ul>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."newligen&amp;PHPSESSID=".$PHPSESSID."\">".$text['tipp'][5]."</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."delligen&amp;PHPSESSID=".$PHPSESSID."\">".$text['tipp'][266]."</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."daten&amp;PHPSESSID=".$PHPSESSID."\">".$text['tipp'][106];if($tipp_tipperimteam>=0){echo " / ".$text['tipp'][2];}echo "</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."pwchange&amp;PHPSESSID=".$PHPSESSID."\">".$text['tipp'][107]."</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."delaccount&amp;PHPSESSID=".$PHPSESSID."\">".$text['tipp'][6]."</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."logout&amp;PHPSESSID=".$PHPSESSID."\">".$text['tipp'][7]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href='".$adda."newligen'>".$text['tipp'][5]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href='".$adda."delligen'>".$text['tipp'][266]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href='".$adda."daten'>".$text['tipp'][106];if($tipp_tipperimteam>=0){echo " / ".$text['tipp'][2];}echo "</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href='".$adda."pwchange'>".$text['tipp'][107]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href='".$adda."delaccount'>".$text['tipp'][6]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href='".$adda."logout'>".$text['tipp'][7]."</a>"; ?></li>
     </ul>
   </nobr>
   </td>

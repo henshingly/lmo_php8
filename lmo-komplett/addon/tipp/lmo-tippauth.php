@@ -45,7 +45,8 @@ if($action=="tipp"){
               $lmotipperverein=$fileinfo[5];
               $_SESSION["lmotipperok"]=$fileinfo[2];
               if($_SESSION["lmotipperok"]==5){
-                array_shift($tipper);
+                //echo $_SESSION["lmotipperok"];
+                //array_shift($tipper);
               }
             }
           }
@@ -102,7 +103,7 @@ if($action=="tipp"){
     <td class="lmomain1" width="8">&nbsp;</td>
     <td class="lmomain1" align="right"><?
     if($tipp_regeln==1){?>
-        <a href='<?=$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
+        <a href='<?=URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
     }
     if(isset($todo) && $todo!="logout"){echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp\" title=\"".$text['tipp'][159]."\">".$text['tipp'][159]."</a>";}
     else{echo $text['tipp'][159];}
@@ -230,7 +231,7 @@ if($action=="tipp"){
     </td>
   </tr><? 
   }
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
+  //require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
 </table><?
   }
 }?>
