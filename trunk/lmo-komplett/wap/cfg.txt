@@ -1,0 +1,3 @@
+lmo_md5=0
+lmo_auth_verz=
+ftype=.l98
