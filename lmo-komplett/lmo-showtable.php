@@ -41,30 +41,7 @@ if($file!=""){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center">
-      <table cellspacing="0" cellpadding="0" border="0">
-        <tr><?
-  if ($tabtype<>3 && $tabtype<>4) {
-    for($i=1;$i<=$anzst;$i++){?>
-          <td align="right" <?
-      if(($i!=$endtab) || (($i==$endtab) && ($tabdat==""))){?>
-                            class="lmost0"><a href="<?=$addt2.$i?>" title="<?=$text[45]?>"><?=$i?></a><?
-      }else{?>
-                            class="lmost1"><?=$i?><?
-      }?>&nbsp;
-           </td><?
-      if(($anzst>49) && (($anzst%4)==0)){
-        if(($i==$anzst/4) || ($i==$anzst/2) || ($i==$anzst/4*3)){echo "</tr><tr>";}
-      }elseif(($anzst>38) && (($anzst%3)==0)){
-        if(($i==$anzst/3) || ($i==$anzst/3*2)){echo "</tr><tr>";}
-      }elseif(($anzst>29) && (($anzst%2)==0)){
-        if($i==$anzst/2){echo "</tr><tr>";}
-      }
-    }
-  }?>
-        <tr>
-      </table>
-    </td>
+    <td align="center"><? include(PATH_TO_LMO."/lmo-spieltagsmenu.php")?></td>
   </tr>
   <tr>
     <td align="center">
@@ -106,7 +83,7 @@ if($file!=""){
      <td align="center" class="lmost3">
        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
          <tr>
-           <td class="lmost4" colspan="4"><?=$tabdat?>&nbsp;</td>
+           <td class="lmost4" colspan="5"><?=$tabdat?>&nbsp;</td>
            <td class="lmost4" align="right"><?=$text[33]?></td>
            <td class="lmost4" align="right"><?=$text[34]?></td>
            <? if($hidr!=1){ ?>
@@ -143,8 +120,14 @@ if($file!=""){
         if($tabtype==0 or $tabtype==3 or $tabtype==4){echo "><img src='img/lmo-tab".$y.".gif' width='9' height='9' border='0'>";}else{echo " width=\"2\">&nbsp;";}
         echo "</td>";
       }else{
-        echo "<td class=\"".$dumm1."\">&nbsp;</td>";
+        echo "<td class=\"".$dumm1."\"></td>";
       }?>
+           <td class="<?=$dumm1?>" align="center"><?
+      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
+        $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
+             ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt=""><?
+      }
+        ?></td>
            <td class="<?=$dumm1?>"><?
       if(($teamu[$i]!="") && ($urlt==1)){echo "<a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\">";}
       echo $dummy.$teams[$i].$dumm2;
@@ -221,7 +204,7 @@ if($file!=""){
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr><? 
-      $st0=$endtab-1;if($endtab>1){echo "<td class=\"lmost2\"><a href=\"".$addt2.$st0."\" title=\"".$text[43]."\">".$text[5]."</a></td>";}
+      $st0=$endtab-1;if($endtab>1){echo "<td class=\"lmost2\" align=\"left\"><a href=\"".$addt2.$st0."\" title=\"".$text[43]."\">".$text[5]."</a></td>";}
       $st0=$endtab+1;if($endtab<$anzst){echo "<td align=\"right\" class=\"lmost2\"><a href=\"".$addt2.$st0."\" title=\"".$text[44]."\">".$text[7]."</a></td>";} ?>
         </tr>
       </table>

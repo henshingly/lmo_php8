@@ -28,32 +28,7 @@ if($file!=""){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
-<?
-  for ($i=1; $i<=$anzst; $i++) {
-    echo "<td align=\"right\" ";
-    if ($i<>$st) {
-      echo "class=\"lmost0\"><a href=\"".$addr.$i."\" title=\"".$text[9]."\">".$i."</a>";
-    } else {
-      echo "class=\"lmost1\">".$i;
-    }
-    echo "&nbsp;</td>";
-    if (($anzst>49) && (($anzst%4)==0)) {
-      if (($i==$anzst/4) || ($i==$anzst/2) || ($i==$anzst/4*3)) {
-        echo "</tr><tr>";
-      }
-    } else if (($anzst>38) && (($anzst%3)==0)) {
-      if (($i==$anzst/3) || ($i==$anzst/3*2)) {
-        echo "</tr><tr>";
-      }
-    } else if (($anzst>29) && (($anzst%2)==0)) {
-      if ($i==$anzst/2) {
-        echo "</tr><tr>";
-      }
-    }
-  }
-?>
-    <tr></table></td>
+    <td align="center"><? include(PATH_TO_LMO."/lmo-spieltagsmenu.php")?></td>
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr>
     <td class="lmost4" colspan="<? echo $breite; ?>"><? echo $st; ?>. <? echo $text[2]; ?>
