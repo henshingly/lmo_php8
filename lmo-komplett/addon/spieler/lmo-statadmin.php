@@ -45,13 +45,15 @@ if (isset($file) && $file!="") {
 		//zu speichernde Konfiguration
 		if (isset($_REQUEST['spielerbildbreite']))          { $spieler_spielerbildbreite=$_REQUEST['spielerbildbreite']; }
 		if (isset($_REQUEST['standard_sortierung']))        { $spieler_standard_sortierung=$_REQUEST['standard_sortierung']; }
+    if (isset($_REQUEST['standard_richtung']))        { $spieler_standard_richtung=$_REQUEST['standard_richtung']; }
 		if (isset($_REQUEST['adminbereich_standard_sortierung']))          { $spieler_adminbereich_standard_sortierung=$_REQUEST['adminbereich_standard_sortierung']; }
 		if (isset($_REQUEST['ligalink']))           { $spieler_ligalink=$_REQUEST['ligalink']; }
 		if (isset($_REQUEST['anzeige_pro_seite']))     { $spieler_anzeige_pro_seite=$_REQUEST['anzeige_pro_seite']; }
 		if (isset($_REQUEST['adminbereich_anzeige_pro_seite'])){ $spieler_adminbereich_anzeige_pro_seite=$_REQUEST['adminbereich_anzeige_pro_seite']; }
 
 		if (isset($_REQUEST['nullwerte_anzeigen']))  $spieler_nullwerte_anzeigen=1;  else {if ($spieler_option=="saveconfig") $spieler_nullwerte_anzeigen=0;}
-		if (isset($_REQUEST['keine_namensortierung']))    $spieler_keine_namensortierung=1;    else {if ($spieler_option=="saveconfig") $spieler_keine_namensortierung=0;}
+    if (isset($_REQUEST['pfeile_anzeigen']))  $spieler_pfeile_anzeigen=1;  else {if ($spieler_option=="saveconfig") $spieler_pfeile_anzeigen=0;}
+		if (isset($_REQUEST['extra_sortierspalte']))    $spieler_extra_sortierspalte=1;    else {if ($spieler_option=="saveconfig") $spieler_extra_sortierspalte=0;}
 		if (isset($_REQUEST['adminbereich_hilfsadmin_zulassen'])) $spieler_adminbereich_hilfsadmin_zulassen=1; else {if ($spieler_option=="saveconfig") $spieler_adminbereich_hilfsadmin_zulassen=0;}
 		if (isset($_REQUEST['adminbereich_hilfsadmin_fuer_spalten'])) $spieler_adminbereich_hilfsadmin_fuer_spalten=1; else {if ($spieler_option=="saveconfig") $spieler_adminbereich_hilfsadmin_fuer_spalten=0;}
 		if ($spieler_sort=="") $spieler_sort=intval($spieler_adminbereich_standard_sortierung);
@@ -274,26 +276,29 @@ if (isset($file) && $file!="") {
       	//if (!isset($typ[intval($spieler_sort)])) usort($data, 'cmpInt'); else {usort($data, 'cmpStr');}
       	break;
 			case "saveconfig": //Konfiguration sichern
-				if ($spieler_keine_namensortierung==1 && $spieler_standard_sortierung==0) $spieler_standard_sortierung=1;
 				$filepointer = @fopen($configfile,"w+b");
+        flock($filepointer,LOCK_EX);
 				set_file_buffer ($filepointer,0);
 				fputs($filepointer,$text['spieler'][20]."=".$spieler_spielerbildbreite."\n");
 				fputs($filepointer,$text['spieler'][21]."=".$spieler_standard_sortierung."\n");
+        fputs($filepointer,$text['spieler'][13]."=".$spieler_standard_richtung."\n");
 				fputs($filepointer,$text['spieler'][40]."=".$spieler_adminbereich_standard_sortierung."\n");
 				fputs($filepointer,$text['spieler'][22]."=".$spieler_anzeige_pro_seite."\n");
 				fputs($filepointer,$text['spieler'][42]."=".$spieler_adminbereich_anzeige_pro_seite."\n");
 				fputs($filepointer,$text['spieler'][23]."=".$spieler_nullwerte_anzeigen."\n");
-				fputs($filepointer,$text['spieler'][24]."=".$spieler_keine_namensortierung."\n");
+				fputs($filepointer,$text['spieler'][24]."=".$spieler_extra_sortierspalte."\n");
+        fputs($filepointer,$text['spieler'][49]."=".$spieler_pfeile_anzeigen."\n");
 				if ($_SESSION['lmouserok']==2) fputs($filepointer,$text['spieler'][31]."=".$spieler_adminbereich_hilfsadmin_zulassen."\n");
 				if ($_SESSION['lmouserok']==2) fputs($filepointer,$text['spieler'][46]."=".$spieler_adminbereich_hilfsadmin_fuer_spalten."\n");
 				fputs($filepointer,$text['spieler'][41]."=".$spieler_ligalink."\n");
-				fclose($filepointer);
+				flock($filepointer,LOCK_UN);
+        fclose($filepointer);
 				break;
 		}
 	?>
 
 <style type="text/css">
-input {border:1px solid;font-family:"Courier New" Courier monospace;}
+input {border:1px solid;font-family:"Courier New" monospace;}
 acronym {cursor:help;}
 </style>
 <script type="text/javascript">
@@ -535,7 +540,7 @@ function sel(x) {
 							<acronym title="<?=$text['spieler'][21]?>">
 								<select name="standard_sortierung" size="1"><?
 
-								for ($x=$spieler_keine_namensortierung;$x<$spaltenzahl;$x++) {?>
+								for ($x=0;$x<$spaltenzahl;$x++) {?>
 									<option value="<?=$x?>" <?if ($x==$spieler_standard_sortierung ) echo "selected";?>><?=$spalten[$x]?></option><?
 								}?>
 								</select>
@@ -553,21 +558,32 @@ function sel(x) {
 							</acronym>
 						</td>
 					</tr>
-					<tr>
+          <tr>
+            <td class="lmost4" rowspan="2"><nobr><?=$text['spieler'][13]?>: </nobr></td>
+            <td><input type="radio" name="standard_richtung" value="1"<?if ($spieler_standard_richtung==1) echo " checked";?>> <?=$text['spieler'][48]?></td>
+            <td class="lmost4"><nobr><?=$text['spieler'][31]?>: </nobr></td>
+						<td><?if($_SESSION['lmouserok']==2){?><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" value="<?=$spieler_adminbereich_hilfsadmin_zulassen?>" <?if ($spieler_adminbereich_hilfsadmin_zulassen==1) echo "checked";?> onClick="if (this.checked==true) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=false; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=true;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=false;}"><?}?></td>
+					</tr>
+          <tr>
+            <td><input type="radio" name="standard_richtung" value="0"<?if ($spieler_standard_richtung==0) echo " checked";?>> <?=$text['spieler'][47]?></td>
+            <td class="lmost4"><nobr><?=$text['spieler'][46]?>: </nobr></td>
+						<td><?if($_SESSION['lmouserok']==2){?><input <?if ($spieler_adminbereich_hilfsadmin_fuer_spalten!=1) echo "disabled"?> type="checkbox" name="adminbereich_hilfsadmin_fuer_spalten" value="<?=$spieler_adminbereich_hilfsadmin_fuer_spalten?>" <?if ($spieler_adminbereich_hilfsadmin_fuer_spalten==1) echo "checked";?>><?}?></td>
+          </tr>
+          <tr>
 						<td class="lmost4"><nobr><?=$text['spieler'][41]?>: </nobr></td>
 						<td><input type="text" name="ligalink" value="<?= $spieler_ligalink?>" size="<?=strlen($spieler_ligalink);?>"></td>
-						<td class="lmost4"><nobr><?=$text['spieler'][31]?>: </nobr></td>
-						<td><?if($_SESSION['lmouserok']==2){?><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" value="<?=$spieler_adminbereich_hilfsadmin_zulassen?>" <?if ($spieler_adminbereich_hilfsadmin_zulassen==1) echo "checked";?> onClick="if (this.checked==true) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=false; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=true;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=false;}"><?}?></td>
 					</tr>
 					<tr>
 						<td class="lmost4"><nobr><?=$text['spieler'][20]?>: </nobr></td>
 						<td><input type="text" name="spielerbildbreite"value="<?= $spieler_spielerbildbreite?>" size="<?=strlen($spieler_spielerbildbreite);?>"></td>
-						<td class="lmost4"><nobr><?=$text['spieler'][46]?>: </nobr></td>
-						<td><?if($_SESSION['lmouserok']==2){?><input <?if ($spieler_adminbereich_hilfsadmin_zulassen!=1) echo "disabled"?> type="checkbox" name="adminbereich_hilfsadmin_fuer_spalten" value="<?=$spieler_adminbereich_hilfsadmin_fuer_spalten?>" <?if ($spieler_adminbereich_hilfsadmin_fuer_spalten==1) echo "checked";?>><?}?></td>
-					</tr>
+				  </tr>
 					<tr>
 						<td class="lmost4"><nobr><?=$text['spieler'][24]?>: </nobr></td>
-						<td><input type="checkbox" name="keine_namensortierung" value="<?=$spieler_keine_namensortierung?>" <?if ($spieler_keine_namensortierung==1) echo "checked";?>></td>
+						<td><input type="checkbox" name="extra_sortierspalte" value="<?=$spieler_extra_sortierspalte?>" <?if ($spieler_extra_sortierspalte==1) echo "checked";?>></td>
+					</tr>
+          <tr>
+						<td class="lmost4"><nobr><?=$text['spieler'][49]?>: </nobr></td>
+						<td><input type="checkbox" name="pfeile_anzeigen" value="<?=$spieler_pfeile_anzeigen?>" <?if ($spieler_pfeile_anzeigen==1) echo "checked";?>></td>
 					</tr>
 					<tr>
 						<td class="lmost4"><nobr><?=$text['spieler'][23]?>: </nobr></td>
