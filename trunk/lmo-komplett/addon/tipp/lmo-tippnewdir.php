@@ -200,7 +200,18 @@ if ($ftype != "") {
                       }
                        
                       if ($iptype == "auswert") {
-                        echo "<option value=\"0\"";
+                        if ($t2 == $text[2]) {
+                          echo "<option value=\"0\"";
+                          if ($t1 == 0) {
+                            echo " selected";
+                          }
+                          echo ">"; // alle Spieltage
+                        
+                          echo $text['tipp'][228];
+                          echo "</option>";
+                        }
+                        //TODO - alle Runden auswerten
+                        /*echo "<option value=\"0\"";
                         if ($t1 == 0) {
                           echo " selected";
                         }
@@ -210,7 +221,7 @@ if ($ftype != "") {
                         } else {
                           echo $text['tipp'][229];
                         }
-                        echo "</option>";
+                        echo "</option>";*/
                       }
                        
                       for($y = 1; $y <= $anzst; $y++) {
