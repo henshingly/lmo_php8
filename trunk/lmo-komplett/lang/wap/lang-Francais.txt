@@ -1,0 +1,5 @@
+001=Test
+002=Les textes de cette extensions se trouve sous la variable $text[wap][xxx] 
+003=Les langues que LMO maîtrisent sont sauvegarder sous lang-[Nom de la langue].txt
+004=Exemple: lang-Francais.txt
+005=Si vous définiser LMO Francais comme langue, tous les extensions vont la prendre en considération

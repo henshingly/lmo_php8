@@ -51,9 +51,9 @@
 051=Dummy
 052=Dobrodošli!
 053=Prosim izberite si ligo:
-054=Ligaški športni rezultati online
-055=<br><a href="http://www.aaunique.com" target="_blank">AA Unique</a>
-056= 
+054=<acronym title="Liga Manager Online">LMO</acronym>4
+055=© 1997-2005 LMO-Group
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
 057=Statistika 1 od
 058=Statistika 2 od
 059=ni 2. moštva

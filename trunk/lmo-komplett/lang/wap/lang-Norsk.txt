@@ -1,0 +1,5 @@
+001=Test
+002=Tekstene til denne Addonen finnes under variablen $text[wap][xxx]
+003=Språk som LMP behersker kan også lagres under lang-[Språknavn].txt
+004=Eks: lang-English.txt
+005=Blir LMO Englisch innstilt blir dette automatisk overtatt for alle Addons

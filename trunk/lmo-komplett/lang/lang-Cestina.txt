@@ -52,9 +52,9 @@
 051=Dummy
 052=Srdeènì Vás vítáme!
 053=Prosím, vyberte ligu:</>
-054=Liga
-055=&copy 1997-2002 by F.Hollwitz
-056=[ <a href="http://khfotbal.com/" target="_blank" title="Tabulky a výsledky lig z celého svìta">Královéhradecký fotbal</a> ]
+054=<acronym title="Liga Manager Online">LMO</acronym>4
+055=© 1997-2005 LMO-Group
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
 057=Statistika 1 od
 058=Statistika 2 od
 059=Nezvoleno 2 mužstvo
