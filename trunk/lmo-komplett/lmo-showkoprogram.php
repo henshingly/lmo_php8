@@ -78,14 +78,7 @@ if ($file != "") {
     }
        ?></acronym>
           </td>          
-          <td><?
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-  
-               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>"><?
-    } else {
-      echo "&nbsp;";
-    }   ?></td>
+          <td>&nbsp;<?=getSmallImage($teams[$i]);?>&nbsp;</td>
         </tr><?
   }?>
       </table>
@@ -128,13 +121,9 @@ if ($file != "") {
           if ($selteam == $teama[$j][$i]) {
             echo "</strong>";
           }
-          if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif");
-  
-               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$j][$i]])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$teama[$j][$i]]?>"><?
-          }
+          echo "&nbsp;".getSmallImage($teams[$teama[$j][$i]]);
           if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
-            echo " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\">".$text[564]."</a>";
+            echo " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
           }
           echo " </td>";?>
           <td class="lmost5" align="center" width="10">-</td><?
@@ -145,11 +134,7 @@ if ($file != "") {
           } else {
             echo "<td class=\"nobr\" align=\"left\">";
           }
-          if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif");
-  
-               ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teamb[$j][$i]])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$teamb[$j][$i]]?>">&nbsp;<?
-          }
+          echo getSmallImage($teams[$teamb[$j][$i]])."&nbsp;";
           if ($selteam == $teamb[$j][$i]) {
             echo "<strong>";
           }
@@ -158,7 +143,7 @@ if ($file != "") {
             echo "</strong>";
           }
           if (($teamu[$teamb[$j][$i]] != "") && ($urlt == 1)) {
-            echo " <a href=\"".$teamu[$teamb[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\">".$text[564]."</a>";
+            echo " <a href=\"".$teamu[$teamb[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
           }
           echo " </td>";
           for($n = 0; $n < $modus[$j]; $n++) {
@@ -182,14 +167,8 @@ if ($file != "") {
             $lmo_teamaicon="";
             $lmo_teambicon="";
             if($urlb==1 || $mnote[$j][$i][$n]!=""){
-              if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif")) {
-                $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif");
-                $lmo_teamaicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$j][$i]]).".gif' {$imgdata[3]} alt=''> ";
-              }
-              if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif")) {
-                $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif");
-                $lmo_teambicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teamb[$j][$i]]).".gif' {$imgdata[3]} alt=''> ";
-              }
+              $lmo_teamaicon=getSmallImage($teams[$teama[$j][$i]]);
+              $lmo_teambicon=getSmallImage($teams[$teamb[$j][$i]]);
             }
             /** Spielbericht verlinken
              */
@@ -229,14 +208,7 @@ if ($file != "") {
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
   for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {?>
         <tr>
-          <td><?
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-  
-               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>"><?
-    } else {
-      echo "&nbsp;";
-    }   ?></td>
+          <td>&nbsp;<?=getSmallImage($teams[$i]);?></td>
           <td align="left">
             <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
     if($i!=$selteam){?>

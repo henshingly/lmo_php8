@@ -112,13 +112,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
       if ($teams[$i]!=$team) {?></a><?
       }?>
          </td>
-         <td align="right"><?
-      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-        $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-         ?><img title="<?=$teams[$i]?>" border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i]).".gif"?>" <?=$imgdata[3]?> alt=""><?
-      }
-      ?>
-          </td>
+         <td align="right"><?=getSmallImage($teams[$i]);?></td>
         </tr><?
     }?>
       </table>
@@ -209,20 +203,20 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
                 <img border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($data[$j1][$j2])?>.gif" <?=$imgdata[3]?> alt="<?=$text['spieler'][26]?>" title="<?=$data[$j1][$j2]?>"><?
         } ?></td><?
       } ?>
-            <td<?
+            <td <?
             echo $stat_class;
             //Vereinslinks
             if ($spalten[$j2]==$text['spieler'][25]) {
               echo " align='center'>";
               $pos=array_search($data[$j1][$j2],$teamu);
-              if (file_exists(PATH_TO_IMGDIR."/teams/small/".$data[$j1][$j2].".gif")) {?>
-              <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($data[$j1][$j2])?>.gif" alt="<?=$data[$j1][$j2]?>" title="<?=$data[$j1][$j2]?>">&nbsp;<?
-              }else  echo  "&nbsp;".str_replace(" ","&nbsp;",$data[$j1][$j2])."&nbsp;";
-              if(!empty($pos) && $teamu[$pos]!="" && $urlt==1){echo "<a href=\"".$teamu[$pos]."\" target=\"_blank\" title=\"".$text['spieler'][46]."\">".$text[564]."</a>";}
+              
+              echo getSmallImage($data[$j1][$j2],"&nbsp;".str_replace(" ","&nbsp;",$data[$j1][$j2])."&nbsp;");
+              
+              if(!empty($pos) && $teamu[$pos]!="" && $urlt==1){echo "<a href=\"".$teamu[$pos]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";}
             //Spielerlinks
             }elseif ($j2==0 && !is_null($linkspalte) && $linkspalte!==FALSE && $data[$j1][$linkspalte]!=$text['spieler'][43]){
               echo " align='left'>&nbsp;".$data[$j1][$j2];
-              echo " <a href='".$data[$j1][$linkspalte]."' title='".$text['spieler'][34]."'>".$text[564]."</a>";
+              echo " <a href='".$data[$j1][$linkspalte]."' title='".$text['spieler'][34]."'><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
             //sonst. Spalten
             }elseif ($spalten[$j2]!=$text['spieler'][32]){
               if (is_numeric($data[$j1][$j2])) {

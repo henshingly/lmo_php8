@@ -43,14 +43,7 @@ if(($file!="") && ($kurve==1)){
     }
           ?></acronym>
           </td>          
-          <td><?
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-  
-               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>">&nbsp;<?
-    } else {
-      echo "&nbsp;";
-    }   ?></td>
+          <td>&nbsp;<?=getSmallImage($teams[$i]);?>&nbsp;</td>
         </tr><?
   }?>
       </table>
@@ -94,14 +87,7 @@ if(($file!="") && ($kurve==1)){
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
   for ($i=1; $i<=$anzteams; $i++) {?>
         <tr>
-          <td><?
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-  
-               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>">&nbsp;<?
-    } else {
-      echo "&nbsp;";
-    }   ?></td>
+          <td>&nbsp;<?=getSmallImage($teams[$i]);?>&nbsp;</td>
           <td align="right">
             <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
     if($i!=$show_stat2){?>
@@ -113,7 +99,8 @@ if(($file!="") && ($kurve==1)){
           </td>          
         </tr><?
   }?>
-      </table></td>
+      </table>
+    </td>
   </tr>
 </table>
 

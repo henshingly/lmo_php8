@@ -19,35 +19,35 @@ if ($datm==1) {
 }?>
   <td>&nbsp;</td>
   <td class="nobr" align="right"><?
-if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
-  echo "<strong>";
-}
-echo $teams[$teama[$st-1][$i]];
-if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
-  echo "</strong>";
+  if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
+    echo "<strong>";
+  }
+  echo $teams[$teama[$st-1][$i]];
+  if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
+    echo "</strong>";
 }?>
   </td>
   <td align="center" width="10">-</td>
   <td class="nobr" align="left"><?
-if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
-  echo "<strong>";
-}
-echo $teams[$teamb[$st-1][$i]];
-if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
-  echo "</strong>";
-}
-  
-if ($goaltippa[$i]=="_") {
-  $goaltippa[$i]="";
-}
-if ($goaltippb[$i]=="_") {
-  $goaltippb[$i]="";
-}
-if ($goaltippa[$i]=="-1") {
-  $goaltippa[$i]="";
-}
-if ($goaltippb[$i]=="-1") {
-  $goaltippb[$i]="";
+  if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
+    echo "<strong>";
+  }
+  echo $teams[$teamb[$st-1][$i]];
+  if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
+    echo "</strong>";
+  }
+
+  if ($goaltippa[$i]=="_") {
+    $goaltippa[$i]="";
+  }
+  if ($goaltippb[$i]=="_") {
+    $goaltippb[$i]="";
+  }
+  if ($goaltippa[$i]=="-1") {
+    $goaltippa[$i]="";
+  }
+  if ($goaltippb[$i]=="-1") {
+    $goaltippb[$i]="";
 }?>
   </td>
   <td>&nbsp;</td><? 
@@ -67,7 +67,7 @@ if($tipp_showtendenzabs==1){ ?>
   }?>
   </td>
   <td>&nbsp;</td><? 
-} 
+}
 if($tipp_showtendenzpro==1){ ?>
   <td align="center" class="nobr"><? 
   if ($btip1==false) {
@@ -180,8 +180,8 @@ if ($tipp_tippmodus==1) {
 } /* ende ($tipp_tippmodus==1) */
 
 /**TENEDENZMODUS*/
-if($tipp_tippmodus==0){ 
- $tipp=-1;
+if($tipp_tippmodus==0){
+  $tipp=-1;
   if ($goaltippa[$i]=="" || $goaltippb[$i]=="") {
     $tipp=-1;
   } else if ($goaltippa[$i]>$goaltippb[$i]) {
@@ -218,99 +218,92 @@ if($spez==1){ ?>
   <td width="2">&nbsp;</td>
   <td class="nobr" align="right">
     <strong><? 
-if ($tipp_jokertipp==1 && $jksp==$i+1) {
-  $jkspfaktor=$tipp_jokertippmulti;
-} else {
-  $jkspfaktor=1;
-}
-$punktespiel=-1;
-if ($goaltippa[$i]!="" && $goaltippb[$i]!="" && $goala[$st-1][$i]!="_" && $goalb[$st-1][$i]!="_") {
-  $punktespiel=tipppunkte($goaltippa[$i], $goaltippb[$i], $goala[$st-1][$i], $goalb[$st-1][$i], $msieg[$st-1][$i], $mspez[$st-1][$i], $text[0], $text[1], $jkspfaktor, $mtipp[$st-1][$i]);
-}
-if ($punktespiel==-1) {
-  echo "-";
-} else if ($punktespiel==-2) {
-  echo $text['tipp'][230];
-  $nw=1;
-} else {
-  if ($tipp_tippmodus==1) {
-    echo $punktespiel;
-  } else {
-    if ($punktespiel>0) {
-      echo "<img src='".URL_TO_IMGDIR."/right.gif' width='12' height='12' border='0' alt='&#9786;'>";
-      if ($punktespiel>1) {
-        echo "+".($punktespiel-1);
-      }
+    if ($tipp_jokertipp==1 && $jksp==$i+1) {
+      $jkspfaktor=$tipp_jokertippmulti;
     } else {
-      echo "<img src='".URL_TO_IMGDIR."/wrong.gif' width='12' height='12' border='0' alt='&#9785;'>";
+      $jkspfaktor=1;
     }
-  }
-}
-if ($punktespiel>0) {
-  $punktespieltag+=$punktespiel;
+    $punktespiel=-1;
+    if ($goaltippa[$i]!="" && $goaltippb[$i]!="" && $goala[$st-1][$i]!="_" && $goalb[$st-1][$i]!="_") {
+      $punktespiel=tipppunkte($goaltippa[$i], $goaltippb[$i], $goala[$st-1][$i], $goalb[$st-1][$i], $msieg[$st-1][$i], $mspez[$st-1][$i], $text[0], $text[1], $jkspfaktor, $mtipp[$st-1][$i]);
+    }
+    if ($punktespiel==-1) {
+      echo "-";
+    } else if ($punktespiel==-2) {
+      echo $text['tipp'][230];
+      $nw=1;
+    } else {
+      if ($tipp_tippmodus==1) {
+        echo $punktespiel;
+      } else {
+        if ($punktespiel>0) {
+          echo "<img src='".URL_TO_IMGDIR."/right.gif' width='12' height='12' border='0' alt='&#9786;'>";
+          if ($punktespiel>1) {
+            echo "+".($punktespiel-1);
+          }
+        } else {
+          echo "<img src='".URL_TO_IMGDIR."/wrong.gif' width='12' height='12' border='0' alt='&#9785;'>";
+        }
+      }
+    }
+    if ($punktespiel>0) {
+      $punktespieltag+=$punktespiel;
 }?>
     </strong>
   </td>
   <td class="nobr" align="left"><? 
-/** Mannschaftsicons finden
+  /** Mannschaftsicons finden
  */
-$lmo_teamaicon="";
-$lmo_teambicon="";
-if($urlb==1 || $mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0){
-  if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$st-1][$i]].".gif")) {
-    $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$st-1][$i]].".gif");
-    $lmo_teamaicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$st-1][$i]]).".gif' {$imgdata[3]} alt=''> ";
+  $lmo_teamaicon="";
+  $lmo_teambicon="";
+  if($urlb==1 || $mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0){
+    $lmo_teamaicon=getSmallImage($teams[$teama[$st-1][$i]])." ";
+    $lmo_teambicon=getSmallImage($teams[$teamb[$st-1][$i]])." ";
   }
-  if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$st-1][$i]].".gif")) {
-    $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$st-1][$i]].".gif");
-    $lmo_teambicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teamb[$st-1][$i]]).".gif' {$imgdata[3]} alt=''> ";
+  /** Spielbericht verlinken */
+  if($urlb==1){
+    if($mberi[$st-1][$i]!=""){
+      $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
+      echo "<a href='".$mberi[$st-1][$i]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
+    }else{
+      echo "&nbsp;&nbsp;&nbsp;";
+    }
   }
-}
-/** Spielbericht verlinken
- */
-if($urlb==1){
-  if($mberi[$st-1][$i]!=""){
-    $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
-    echo "<a href='".$mberi[$st-1][$i]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
-  }else{
-    echo "&nbsp;&nbsp;&nbsp;";
-  }
-}
-/** Notizen anzeigen
+  /** Notizen anzeigen
  *
  */
-if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0 || $mtipp[$st-1][$i] > 0) {
-  $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
-  //Beidseitiges Ergebnis
-  if ($msieg[$st-1][$i]==3) {
-    $lmo_spielnotiz.=" / ".applyFactor($goalb[$st-1][$i],$goalfaktor).":".applyFactor($goala[$st-1][$i],$goalfaktor);
+  if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0 || $mtipp[$st-1][$i] > 0) {
+    $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
+    //Beidseitiges Ergebnis
+    if ($msieg[$st-1][$i]==3) {
+      $lmo_spielnotiz.=" / ".applyFactor($goalb[$st-1][$i],$goalfaktor).":".applyFactor($goala[$st-1][$i],$goalfaktor);
+    }
+    if ($spez==1) {
+      $lmo_spielnotiz.=" ".$mspez[$st-1][$i];
+    }
+    //Grüner Tisch: Heimteam siegt
+    if ($msieg[$st-1][$i]==1) {
+      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".$teams[$teama[$st-1][$i]]." ".$text[211];
+    }
+    //Grüner Tisch: Gastteam siegt
+    if ($msieg[$st-1][$i]==2) {
+      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);
+    }
+    //Beidseitiges Ergebnis
+    if ($msieg[$st-1][$i]==3) {
+      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($text[212]);
+    }
+    //Allgemeine Notiz
+    if ($mnote[$st-1][$i]!="") {
+      $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i];
+    }
+    if ($mtipp[$st-1][$i] == 1) {
+      $lmo_spielnotiz.="\n\n".$text['tipp'][231];
+    }
+    echo "<a href='#' onclick=\"alert('".mysql_escape_string(htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+    $lmo_spielnotiz="";
+  } else {
+    echo "&nbsp;";
   }
-  if ($spez==1) {
-    $lmo_spielnotiz.=" ".$mspez[$st-1][$i];
-  }
-  //Grüner Tisch: Heimteam siegt
-  if ($msieg[$st-1][$i]==1) {
-    $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".$teams[$teama[$st-1][$i]]." ".$text[211];
-  }
-  //Grüner Tisch: Gastteam siegt
-  if ($msieg[$st-1][$i]==2) {
-    $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);
-  }
-  //Beidseitiges Ergebnis
-  if ($msieg[$st-1][$i]==3) {
-    $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($text[212]);
-  }
-  //Allgemeine Notiz
-  if ($mnote[$st-1][$i]!="") {
-    $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i];
-  }
-  if ($mtipp[$st-1][$i] == 1) {
-    $lmo_spielnotiz.="\n\n".$text['tipp'][231];
-  }
-  echo "<a href='#' onclick=\"alert('".mysql_escape_string(htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
-  $lmo_spielnotiz="";
-} else {
-  echo "&nbsp;";
-}
 ?></td>
 </tr>

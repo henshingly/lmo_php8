@@ -43,14 +43,7 @@ if($file!=""){
       echo $teamk[$i];
     }     ?></acronym>
           </td>          
-          <td><?
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-  
-               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>">&nbsp;<?
-    } else {
-      echo "&nbsp;";
-    }   ?></td>
+          <td><?=getSmallImage($teams[$i]);?>&nbsp;</td>
         </tr><?
   }?>
       </table>
@@ -72,14 +65,11 @@ if($file!=""){
         <tr>
           <th align="right"><?=$teams[$show_stat1];?></th>
           <th align="center"><?
-      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat1].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat1].".gif");
-               ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$show_stat1])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$show_stat1]?>">&nbsp;<?
-      }
-      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat2].".gif") && $show_stat1!=$show_stat2) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat2].".gif");
-                 ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$show_stat2])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$show_stat2]?>"><?
-      }?></th><? 
+      echo getSmallImage($teams[$show_stat1],$teamk[$show_stat1])."&nbsp;";
+      if($show_stat2>0 && $show_stat1!=$show_stat2){
+        echo "&nbsp;".getSmallImage($teams[$show_stat2],$teamk[$show_stat2]);
+      }?>
+          </th><? 
       if($show_stat2>0 && $show_stat1!=$show_stat2){ ?>
           <th align="left"><?=$teams[$show_stat2];?></th><? 
       }?>
@@ -197,14 +187,7 @@ if($file!=""){
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
   for($i=1;$i<=$anzteams;$i++){?>
         <tr>
-          <td><?
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-  
-               ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>">&nbsp;<?
-    } else {
-      echo "&nbsp;";
-    }   ?></td>
+          <td><?=getSmallImage($teams[$i]);?>&nbsp;</td>
           <td align="left">
             <acronym title="<?=$text[57]." ".$teams[$i]?>"><?
     if($i!=$show_stat2){

@@ -201,27 +201,19 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     } else {
       echo "<td class=\"".$lmo_tabelle_class."\">&nbsp;</td>";
     }?>
-          <td class="<?=$lmo_tabelle_class?>" align="center"><?
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-      $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");?>
-            <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="">&nbsp;<?
-    }?>
-          </td>
+          <td class="<?=$lmo_tabelle_class?>" align="center"><?=getSmallImage($teams[$i])?> </td>
           <td class="<?=$lmo_tabelle_class; ?> nobr" align="left"> <?
     echo $dummy.$teams[$i].$dumm2;
     if (($teamu[$i]!="") && ($urlt==1)) {
-      echo " <a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\">".$text[564]."</a> ";
+      echo " <a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a> ";
     }?>
           </td>
           <td class="<?=$lmo_tabelle_class; ?>">&nbsp;</td>
           <td class="<?=$lmo_tabelle_class; ?>" align="center"><? 
     
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-        $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-        $lmo_tabellennotiz="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i]).".gif' {$imgdata[3]} alt=''>";
-      }
-      
+      $lmo_tabellennotiz=getSmallImage($teams[$i]);
+            
       /** Notizen anzeigen
        *
        * Achtung: Da beim Speichern Strafpunkte/-tore positiv sind und Bonuspunkte negativ (altes System des LMO)

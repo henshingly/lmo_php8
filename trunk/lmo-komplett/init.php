@@ -96,6 +96,21 @@ if (!function_exists('filterZero')) {
     return (!empty($a));
   }
 }
+
+if (!function_exists('getSmallImage')) {
+  function getSmallImage($team,$alternative_text='') {
+    if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
+      $team=preg_replace("/[^a-zA-Z0-9]/",'',$team);
+    }
+    if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
+      return $alternative_text;
+    } else {
+      $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$team.".gif");
+      return ("<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($team).".gif' {$imgdata[3]} alt=''> ");
+    }  
+  }
+}
+
 //Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);
 magicQuotesRemove($_POST);
