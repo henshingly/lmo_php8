@@ -19,7 +19,7 @@
 // $Id$
 //
 
-require_once(PATH_TO_LMO.'/PEAR.php');
+require_once('PEAR.php');
 
 define("IT_OK",                         1);
 define("IT_ERROR",                     -1);
