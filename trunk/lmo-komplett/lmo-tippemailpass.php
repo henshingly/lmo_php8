@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 if(isset($xtippername2)){
   $dumma = array("");
   $pswfile=$tippauthtxt;

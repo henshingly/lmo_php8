@@ -2,9 +2,9 @@
 <!--
 var msg1="";
 <?
-  for($i=0;$i<count($nlines);$i++){
+  foreach($nlines as $newsline){
 ?>
-  msg1=msg1+"<? echo $nlines[$i]; ?> +++ ";
+  msg1=msg1+"<?=$newsline?> +++ ";
 <? } ?>
   var laenge=msg1.length;
   var timerID = null;

@@ -107,8 +107,8 @@
 106=Enddatum des Spieltags (Format TT.MM.JJJJ - ggf. mit führenden Nullen)
 107=Heimmannschaft auswählen
 108=Gastmannschaft auswählen
-109=Heimtore (0 - 9999, '_' oder 'X') - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
-110=Gasttore (0 - 9999, '_' oder 'X') - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
+109=Heimtore (0 - 9999, "_" oder 'X') - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
+110=Gasttore (0 - 9999, "_" oder 'X') - Im MSIE 4+ können Sie auch die Pfeiltasten hoch/runter benutzen
 111=Spielende auswählen
 112=Notiz zum Spiel (max. 255 Zeichen, eine eventuelle Grüne-Tisch-Entscheidung braucht hier nicht nochmal erwähnt zu werden)
 113=Name der Liga
@@ -118,8 +118,8 @@
 117=Sie haben keine Änderungen vorgenommen.\nTrotzdem speichern?
 118=Der Name der Liga wird den Nutzern immer als Überschrift angezeigt (max. 60 Zeichen, z.B. '1. Bundesliga 2001/02')
 119=Es wurden hier Änderungen vorgenommen, die noch\nnicht gespeichert wurden.\n\nKlicken Sie 'Ja', um die Änderungen zu verwerfen\nund fortzufahren, oder 'Nein', um hierzubleiben,\num die Änderungen noch speichern zu können.
-120=Einstellung der Heimtore (0 - 9999, '_' oder 'X')
-121=Einstellung der Gasttore (0 - 9999, '_' oder 'X')
+120=Einstellung der Heimtore (0 - 9999, "_" oder 'X')
+121=Einstellung der Gasttore (0 - 9999, "_" oder 'X')
 122=Anstoßdatum des Spiels (Format TT.MM.JJJJ - ggf. mit führenden Nullen)
 123=AnstoßZeit des Spiels (Format HH:MM - ggf. mit führenden Nullen) - lassen Sie dieses Feld leer, wird beim Speichern automatisch die Standard-Anstoßzeit eingesetzt
 124=Mannschaft
@@ -231,9 +231,9 @@
 230=am rechten Rand (hinter den Toren)
 231=Darstellungsort der Tabelle
 232=Soll die Tabelle auf einer separaten Seite oder unterhalb der Ergebnisse dargestellt werden?
-233=auf einer separaten Seite (mit Heim- und Auswärtsbil.)
-234=unter den Ergebnissen (ohne Heim- und Auswärtsbil.)
-235=unter den Ergebnissen (mit Heim- und Auswärtsbil.)
+233=auf separater Seite (mit Heim- und Auswärtsbil.)
+234=unter Ergebnissen (ohne Heim- und Auswärtsbil.)
+235=unter Ergebnissen (mit Heim- und Auswärtsbil.)
 236=Sonstige Optionen
 237=Fieberkurven darstellen
 238=Sollen die Fieberkurven dargestellt werden? Bitte 'Nein' wählen, wenn es Probleme bei der Darstellung der Fieberkurven gibt oder Ihr Provider PHP ohne die GD-Lib (Grafikbibliothek) installiert hat.
@@ -289,7 +289,7 @@
 288=per Zufall erstellen
 289=Liga speichern
 290=Klicken Sie hier, um Ihre neue Liga zu speichern und anschließend mit der detailierten Einrichtung zu beginnen
-291=<b>Herzlichen Glückwunsch</b><br><br>Ihre neue Liga ist jetzt vorbeitet worden. Sie können nun<br>beginnen, die detailierten Einstellungen vorzunehmen.
+291=<b>Herzlichen Glückwunsch</b><br><br>Ihre neue Liga ist jetzt vorbereitet worden. Sie können nun<br>beginnen, die detailierten Einstellungen vorzunehmen.
 292==> Eingabe der Mannschaften
 293=Als erstes sollten Sie nun die Namen der Mannschaften eingeben, bevor Sie weitere Bearbeitungen vornehmen
 294=Öffnen einer Liga
@@ -507,6 +507,8 @@
 506=Welche Sprachdatei soll geladen werden? (Sprachdateien besitzen das Format lang-[Sprachkuerzel].txt und können mit einem Texteditor selbst erstellt und geändert werden)
 507=Unbenannte Liga
 508=<= zum Archiv
+509=Link zum Archiv darstellen
+510=Soll den Nutzern ein Link zum Archiv angezeigt werden?
 2000=Tippspiel
 2001=zur Tippspiel-&Uuml;bersicht
 2002=Team wechseln

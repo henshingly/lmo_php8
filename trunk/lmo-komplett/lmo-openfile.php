@@ -27,8 +27,8 @@ if(isset($file) && $file!=""){
   if(substr($file,-4)==".l98"){
     $daten=array("");
     $sekt="";
-    $stand=gmdate("d.m.Y H:i",filectime($file));
-    $datei = fopen($file,"rb");
+    $stand=gmdate("d.m.Y H:i",filectime(PATH_TO_LMO.'/'.$file));
+    $datei = fopen(PATH_TO_LMO.'/'.$file,"rb");
     while (!feof($datei)) {
       $zeile = fgets($datei,1000);
       $zeile=chop($zeile);
@@ -238,7 +238,7 @@ if(isset($file) && $file!=""){
     for($i=1;$i<=count($daten);$i++){
       $dum=split("[|]",$daten[$i-1]);
       if($nticker==1){
-        if(($dum[0]=="News") && ($dum[1]!="NC")){array_push($nlines,stripslashes($dum[2]));}
+        if(($dum[0]=="News") && ($dum[1]!="NC")){$nlines[]=stripslashes($dum[2]);print_r($nlines);}
         }
       if($dum[0]=="Teams"){$teams[$dum[1]]=stripslashes($dum[2]);}
       if($dum[0]=="Teamk"){$teamk[$dum[1]]=stripslashes($dum[2]);}
@@ -328,7 +328,6 @@ if(isset($file) && $file!=""){
         if(($op2=="Round") && ($op8=="AT")){$mterm[$op3][$op6][$op7]=$dum[2];}
         }
       }
-    if($nticker==1){array_shift($nlines);}
     if(!isset($nlines)){$nticker=0;}
     }
   }

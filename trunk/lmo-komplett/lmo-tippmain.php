@@ -22,18 +22,18 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 
 if($action=="tipp"){
-  if($file!=""){$addm=$PHP_SELF."?file=".$file."&amp;action=";}
+  if($file!=""){$addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";}
   if($_SESSION["lmotipperok"]==5){
-  if(($todo=="edit" && $file!="viewer") || $todo=="einsicht"){require("lmo-openfilest.php");}
-  elseif($todo=="tabelle"){require("lmo-openfile.php");}
-  elseif(($todo=="wert" && $all!=1) || $todo=="fieber"){require("lmo-openfilename.php");}
+  if(($todo=="edit" && $file!="viewer") || $todo=="einsicht"){require(PATH_TO_LMO."/lmo-openfilest.php");}
+  elseif($todo=="tabelle"){require(PATH_TO_LMO."/lmo-openfile.php");}
+  elseif(($todo=="wert" && $all!=1) || $todo=="fieber"){require(PATH_TO_LMO."/lmo-openfilename.php");}
   elseif($todo=="wert" && $all==1){}
   }
 $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
-$adda=$PHP_SELF."?action=tipp&amp;todo=";
+$adda=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
 $addx="lmo-tippstart.php?file=";
 //if(!isset($st)){$st=$stx;}else{$sty=$st;}
 if(!isset($newpage)){$newpage=0;}
@@ -47,13 +47,13 @@ if(!isset($tipptabelle1)){$tipptabelle1=1;}
 <!---
 <?PHP if($pfeiltipp==1){ ?>
 img0 = new Image();
-img0.src = "lmo-admin0.gif";
+img0.src = "img/lmo-admin0.gif";
 img1 = new Image();
-img1.src = "lmo-admin1.gif";
+img1.src = "img/lmo-admin1.gif";
 img2 = new Image();
-img2.src = "lmo-admin2.gif";
+img2.src = "img/lmo-admin2.gif";
 img3 = new Image();
-img3.src = "lmo-admin3.gif";
+img3.src = "img/lmo-admin3.gif";
 function lmoimg(x,y){
   document.getElementsByName("ximg"+x)[0].src = y.src;
   }
@@ -99,7 +99,7 @@ function lmotorauf(x,y,z){
     <td class="lmomain1"><nobr>
 
 <?PHP
-    if($todo!=""){echo "<a href=\"".$PHP_SELF."?action=tipp&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[2053]."\">".$text[2052]."</a>";}
+    if($todo!=""){echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[2053]."\">".$text[2052]."</a>";}
     else{echo $text[2052];}
     echo "&nbsp;&nbsp;";
     if($file=="viewer"){
@@ -160,24 +160,24 @@ function lmotorauf(x,y,z){
 if($_SESSION["lmotipperok"]==5){
   if($file!="" && $file!="viewer"){$tippfile=$dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$lmotippername.".tip";}
   
-  if($file=="viewer"){require("lmo-tippviewer.php");}
-  elseif($todo=="edit"){require("lmo-tippedit.php");}
-  elseif($todo=="einsicht"){require("lmo-tippeinsicht.php");}
-  elseif($todo=="tabelle"){require("lmo-tipptabelle.php");}
-  elseif($todo=="fieber"){require("lmo-tippfieber.php");}
-  elseif($todo=="wert"){require("lmo-tippwert.php");}
-  elseif($todo=="daten"){require("lmo-tippdaten.php");}
-  elseif($todo=="newligen"){require("lmo-tippnewligen.php");}
-  elseif($todo=="delligen"){require("lmo-tippdelligen.php");}
-  elseif($todo=="pwchange"){require("lmo-tipppwchange.php");}
-  elseif($todo=="delaccount"){require("lmo-tippdelaccount.php");}
-  elseif($todo=="info"){require("lmo-showinfo.php");}
-  else{require("lmo-tipppad.php");}
+  if($file=="viewer"){require(PATH_TO_LMO."/lmo-tippviewer.php");}
+  elseif($todo=="edit"){require(PATH_TO_LMO."/lmo-tippedit.php");}
+  elseif($todo=="einsicht"){require(PATH_TO_LMO."/lmo-tippeinsicht.php");}
+  elseif($todo=="tabelle"){require(PATH_TO_LMO."/lmo-tipptabelle.php");}
+  elseif($todo=="fieber"){require(PATH_TO_LMO."/lmo-tippfieber.php");}
+  elseif($todo=="wert"){require(PATH_TO_LMO."/lmo-tippwert.php");}
+  elseif($todo=="daten"){require(PATH_TO_LMO."/lmo-tippdaten.php");}
+  elseif($todo=="newligen"){require(PATH_TO_LMO."/lmo-tippnewligen.php");}
+  elseif($todo=="delligen"){require(PATH_TO_LMO."/lmo-tippdelligen.php");}
+  elseif($todo=="pwchange"){require(PATH_TO_LMO."/lmo-tipppwchange.php");}
+  elseif($todo=="delaccount"){require(PATH_TO_LMO."/lmo-tippdelaccount.php");}
+  elseif($todo=="info"){require(PATH_TO_LMO."/lmo-showinfo.php");}
+  else{require(PATH_TO_LMO."/lmo-tipppad.php");}
   }
 ?>
     </td>
   </tr>
-<?PHP require("lmo-tippfusszeile.php"); ?>
+<?PHP require(PATH_TO_LMO."/lmo-tippfusszeile.php"); ?>
 </table>
 
 <?PHP } ?>

@@ -18,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($action=="admin") && ($todo=="download")){
 ?>
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
@@ -26,10 +26,10 @@ if(($action=="admin") && ($todo=="download")){
   <td align="center" class="lmost1"><?PHP echo $text[345]; ?></td>
   </tr><tr>
   <td align="center" valign="top" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5">
-    <?PHP $ftype=".l98"; require("lmo-admindowndir.php"); ?>
+    <?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-admindowndir.php"); ?>
   </td></tr></table></td>
   <td align="center" valign="top" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5">
-    <?PHP $ftype=".l98"; require("lmo-adminmimedir.php"); ?>
+    <?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-adminmimedir.php"); ?>
   </td></tr></table></td>
   </tr></table>
 <?PHP

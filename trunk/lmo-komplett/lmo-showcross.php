@@ -19,8 +19,8 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if(($file!="") && ($kreuz==1)){
-  $addc=$PHP_SELF."?action=cross&amp;file=".$file."&amp;croteam=";
-  $addr=$PHP_SELF."?action=results&amp;file=".$file."&amp;st=";
+  $addc=$_SERVER['PHP_SELF']."?action=cross&amp;file=".$file."&amp;croteam=";
+  $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">

@@ -19,7 +19,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if( !defined('LMO_AUTH') ) {
-  header("Location: lmoadmin.php");
+  die ();
   exit;
 }
 ?>

@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
   if(!isset($xtippervereinalt)){$xtippervereinalt="";}
   if(!isset($xtippervereinneu)){$xtippervereinneu="";}
@@ -77,7 +77,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
         $newpage=0;
         echo "<font color=red>".$text[2071]."</font><br>";
         }
-      else{require("lmo-tippcheckteam.php");}
+      else{require(PATH_TO_LMO."/lmo-tippcheckteam.php");}
       }
     if($xtippervereinradio==2){
       $xtippervereinneu=trim($xtippervereinneu);
@@ -85,7 +85,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
         $newpage=0;
         echo "<font color=red>".$text[2072]."</font><br>";
         }
-      else{require("lmo-tippcheckteam.php");}
+      else{require(PATH_TO_LMO."/lmo-tippcheckteam.php");}
       }
     }
 
@@ -109,7 +109,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
 
     $users[$save].="|".$dummb[9]."|".$dummb[10]."|EOL";
 
-    require("lmo-tippsaveauth.php");
+    require(PATH_TO_LMO."/lmo-tippsaveauth.php");
 
     $verz=opendir($dirtipp);
     while($files=readdir($verz)){
@@ -141,7 +141,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
         closedir($verz);
         if($create==1){
           $tippfile=$dirtipp.$value."_".$nick.".tip";
-          $st=-1;require("lmo-tippsavefile.php"); // Tipp-Datei erstellen
+          $st=-1;require(PATH_TO_LMO."/lmo-tippsavefile.php"); // Tipp-Datei erstellen
           $auswertdatei = fopen($dirtipp."auswert/".$value.".aus","ab");
           flock($auswertdatei,2);
           fputs($auswertdatei,"\n[".$nick."]\n");
@@ -158,7 +158,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
   <tr><td align="center" class="lmost1"><?PHP echo $text[2106]; ?></td></tr>
   <tr><td align="center" class="lmost3">
   <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-  <form name="lmotippedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmotippedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="tippuseredit">
@@ -233,7 +233,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
       <td class="lmost5"><select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true">
       <?PHP
         echo "<option value=\"\" "; if($xtippervereinalt==""){echo "selected";} echo ">".$text[2051]."</option>";
-        require("lmo-tippnewteams.php");
+        require(PATH_TO_LMO."/lmo-tippnewteams.php");
       ?>
       </select></td>
     </tr>
@@ -249,7 +249,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" colspan="2">
-<?PHP $ftype=".l98"; require("lmo-tippnewdir.php"); ?>
+<?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-tippnewdir.php"); ?>
       </td>
     </tr>
     <tr>
@@ -267,10 +267,10 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  $adda=$PHP_SELF."?action=admin&amp;todo=tipp";
-  $addo=$PHP_SELF."?action=admin&amp;todo=tippoptions";
-  $addu=$PHP_SELF."?action=admin&amp;todo=tippuser";
-  $adde=$PHP_SELF."?action=admin&amp;todo=tippemail";
+  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tipp";
+  $addo=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions";
+  $addu=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser";
+  $adde=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippemail";
   echo "<td class=\"lmost2\" align=\"center\"><a href='$adda' onclick=\"return chklmolink(this.href);\" title=\"".$text[2063]."\">".$text[2063]."</a></td>";
   echo "<td class=\"lmost2\" align=\"center\"><a href='$adde' onclick=\"return chklmolink(this.href);\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
   echo "<td class=\"lmost2\" align=\"center\"><a href='$addu' onclick=\"return chklmolink(this.href);\" title=\"".$text[2114]."\">".$text[2114]."</a></td>";

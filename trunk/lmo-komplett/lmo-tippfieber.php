@@ -35,12 +35,12 @@ if($file!="" && $tippfieber==1){
   if(!isset($stat2)){$stat2=-1;}
   if($stat1==$stat2){$stat2=-1;}
   if(!isset($kurvenmodus)){$kurvenmodus=1;}
-  $addg=$PHP_SELF."?action=tipp&amp;todo=fieber&amp;file=".$file."&amp;stat1=";
-  require("lmo-tippcalcgraph.php");
+  $addg=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=fieber&amp;file=".$file."&amp;stat1=";
+  require(PATH_TO_LMO."/lmo-tippcalcgraph.php");
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   <input type="hidden" name="action" value="tipp">
   <input type="hidden" name="todo" value="fieber">
   <input type="hidden" name="file" value="<?PHP echo $file; ?>">

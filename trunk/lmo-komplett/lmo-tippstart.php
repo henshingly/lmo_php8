@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 
 session_register("lmotipperok","lmotippername","lmotipperpass","lmotipperverein");
 if(!isset($_SESSION["lmotipperok"])){$_SESSION["lmotipperok"]="0";}
@@ -52,12 +52,12 @@ if($todo=="getpass"){
   $_SESSION["lmotipperok"]=-5;
   }
 $action="tipp";
-require("lmo-tippauth.php");
+require(PATH_TO_LMO."/lmo-tippauth.php");
 setlocale (LC_TIME, "de_DE");
 if($_SESSION["lmotipperok"]>0){
-  require("lmo-tippmain.php");
+  require(PATH_TO_LMO."/lmo-tippmain.php");
   }
 if($_SESSION["lmotipperok"]==-4){
-  require("lmo-tippernew.php");
+  require(PATH_TO_LMO."/lmo-tippernew.php");
   }
 ?>

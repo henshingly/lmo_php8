@@ -22,7 +22,7 @@ if($file!=""){
   if(!isset($tabtype)){$tabtype=0;}
   if(($endtab>1) && ($tabtype==0 or $tabtype==3 or $tabtype==4) && ($tabdat!="")){
     $endtab--;
-    require("lmo-calctable.php");
+    require(PATH_TO_LMO."/lmo-calctable.php");
 	
     $platz1 = array("");
     $platz1 = array_pad($array,$anzteams+1,"");
@@ -30,7 +30,7 @@ if($file!=""){
     $endtab++;
     }
   
-  require("lmo-calctable.php");
+  require(PATH_TO_LMO."/lmo-calctable.php");
   
   $platz0 = array("");
   $platz0 = array_pad($array,$anzteams+1,"");
@@ -149,7 +149,7 @@ if($file!=""){
     }
   if($tabdat!=""){
     echo "<td class=\"".$dumm1."\"";
-    if($tabtype==0 or $tabtype==3 or $tabtype==4){echo "><img src=\"lmo-tab".$y.".gif\" width=\"9\" height=\"9\" border=\"0\">";}else{echo " width=\"2\">&nbsp;";}
+    if($tabtype==0 or $tabtype==3 or $tabtype==4){echo "><img src='img/lmo-tab".$y.".gif' width='9' height='9' border='0'>";}else{echo " width=\"2\">&nbsp;";}
     echo "</td>";
     }
   else{
@@ -174,7 +174,7 @@ if($file!=""){
       if($minus==2){$dum27=$dum27.":".$strafm[$i];}
       }
     if($teamn[$i]!=""){$dum27=$dum27."\\n\\n".$text[22].":\\n".$teamn[$i];}
-    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src=\"lmo-st2.gif\" width=\"16\" height=\"16\" border=\"0\"></a>";
+    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src='img/lmo-st2.gif' width=\"16\" height=\"16\" border=\"0\"></a>";
     }
   else{
     echo "&nbsp;";

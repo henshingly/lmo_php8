@@ -19,8 +19,8 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if($file!=""){
-  $adds=$PHP_SELF."?action=stats&amp;file=".$file."&amp;stat1=";
-  $addr=$PHP_SELF."?action=results&amp;file=".$file."&amp;st=";
+  $adds=$_SERVER['PHP_SELF']."?action=stats&amp;file=".$file."&amp;stat1=";
+  $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
@@ -47,7 +47,7 @@ if($file!=""){
     }
   else{
     $endtab=$anzst;
-    require("lmo-calctable.php");
+    require(PATH_TO_LMO."/lmo-calctable.php");
     $platz0 = array("");
     $platz0 = array_pad($array,$anzteams+1,"");
     for($x=0;$x<$anzteams;$x++){$platz0[intval(substr($tab0[$x],34))]=$x+1;}

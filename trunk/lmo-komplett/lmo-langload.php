@@ -26,29 +26,36 @@
 // Langdateien laden (zuerst Standarddatei, wenn vorhanden werden die alten Werte 
 // von der neuen Sprache überschrieben (So werden auch unvollständige Übersetzungen 
 // akzeptiert)
-$langfiles=array("lang.txt","lang-{$lmouserlang}.txt");
-
-$addonlang=explode(",",$diraddon);             // Addons 
-foreach($addonlang as $a) {
-  if(substr($a,-1)!='/') $a.='/';             // Slash hinzufügen falls nicht vorhanden
-  $addon_langfile=$a."lang.txt";                //Dateiname der Addonlangdatei
-  if (file_exists($addon_langfile)) $langfiles[]=$addon_langfile;        // Standardlangdatei des Addons
-  $addon_newlangfile=$a."lang-{$lmouserlang}.txt";
-  if (file_exists($addon_newlangfile)) $langfiles[]=$addon_newlangfile;  // Andere Langdatei laden
-}
 
 $text=array();
-for ($i=0;$i<count($langfiles);$i++) {
-	if ($datei = @file($langfiles[$i])) {
-		($dir=dirname($langfiles[$i]))!="."?$praefix=$dir."_":$praefix="";     // Präfix für Addon-langdateien
+$text+=read_langfile(PATH_TO_LMO."/lang.txt");
+if (isset($lmouserlang)) {
+  if (file_exists(PATH_TO_LMO."/lang-{$lmouserlang}.txt")) $text+=read_langfile(PATH_TO_LMO."/lang-{$lmouserlang}.txt");
+}
+
+//Alle lang-Dateien im Addon-Verzeichnis 
+$handle=opendir (PATH_TO_ADDON_DIR);     //Addonverzeichnis auslesen
+while (false!==($f=readdir($handle))) {
+  if (is_dir(PATH_TO_ADDON_DIR.'/'.$f) && $f!='.' && $f!='..') {   //Wenn Unterverzeichnis Lang-dateien auslesen
+    if (file_exists(PATH_TO_ADDON_DIR."/$f/lang.txt")) $text[$f]=read_langfile(PATH_TO_ADDON_DIR."/$f/lang.txt");
+    if (isset($lmouserlang)) {
+      if (file_exists(PATH_TO_ADDON_DIR."/$f/lang-{$lmouserlang}.txt")) $text[$f]+=read_langfile(PATH_TO_ADDON_DIR."/$f/lang-{$lmouserlang}.txt");
+    }
+  }
+}
+
+function read_langfile($langfile) {
+  $ret=array();
+	if (($datei=@file($langfile))!==FALSE) {
     foreach ($datei as $value) {
       $paar=explode('=',trim($value),2);
       if (isset($paar[0]) && is_numeric($paar[0])) {
         if (!isset($paar[1])) $paar[1]="";
-        ${$praefix."text"}[intval($paar[0])]=$paar[1];
+          $ret[intval($paar[0])]=$paar[1];
 	    }
-	  }
-  }
+    }
+	}
+  return $ret;
 }
 $orgpkt=$text[37];
 $orgtor=$text[38];

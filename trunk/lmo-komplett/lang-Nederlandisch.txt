@@ -107,8 +107,8 @@
 106=Einddatum van de speeldagen/ronden (formaat: DD.MM.JJJJ - dagen en maanden tweecijferig)
 107=Thuisploeg uitkiezen
 108=Uitploeg uitkiezen
-109=Thuisdoelpunten (0 - 9999, '_' zonder 'X') - &#10;Met MSIE 4+ kunt u ook de pijltjestoetsen omlaag, omhoog gebruiken
-110=Gastdoelpunten (0 - 9999, '_' zonder 'X') - &#10;Met MSIE 4+ kunt u ook de pijltjestoetsen omlaag, omhoog gebruiken
+109=Thuisdoelpunten (0 - 9999, "_" zonder "X") - &#10;Met MSIE 4+ kunt u ook de pijltjestoetsen omlaag, omhoog gebruiken
+110=Gastdoelpunten (0 - 9999, "_" zonder "X") - &#10;Met MSIE 4+ kunt u ook de pijltjestoetsen omlaag, omhoog gebruiken
 111=Einde van de wedstrijd uitkiezen
 112=Notitie per wedstrijd (max. 255 tekens, een eventuele 'Groene-tafel'-beslissing hoeft niet nogmaals vermeld te worden)
 113=Competitienaam
@@ -118,8 +118,8 @@
 117=U heeft niks veranderd.\nEr wordt dus niks opgeslagen.
 118=Competitienaam (max. 60 tekens, bijv. 'Waterpolocompetitie HerenJeugd 2002-2003')
 119=Er zijn wijzingen doorgevoerd, die nog niet opgeslagen zijn.\n\nKlik op 'Ja', om de wijzingen te annuleren\n , of 'Nee' om de wijzigingen later op te slaan.
-120=Instelling thuisdoelpunten (0 - 9999, '_' zonder 'X')
-121=Instelling uitdoelpunten (0 - 9999, '_' zonder 'X')
+120=Instelling thuisdoelpunten (0 - 9999, "_" zonder "X")
+121=Instelling uitdoelpunten (0 - 9999, "_" zonder "X")
 122=Aanvangsdatum van de wedstrijd (Formaat DD.MM.JJJJ - dagen en maanden tweecijferig)
 123=Aanvangstijd van de wedstrijd (Formaat HH:MM)
 124=Team

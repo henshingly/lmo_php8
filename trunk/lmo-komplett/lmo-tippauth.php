@@ -59,15 +59,15 @@ if($action=="tipp"){
       }
     }
   if($_SESSION["lmotipperok"]==-5){ // Passwort-Anforderung
-    require("lmo-tippemailpass.php");
+    require(PATH_TO_LMO."/lmo-tippemailpass.php");
     }
   if($_SESSION["lmotipperok"]<1 && $_SESSION["lmotipperok"]>-4){
-    $addw=$PHP_SELF."?action=tipp&amp;todo=wert&amp;file=";
-    $adda=$PHP_SELF."?action=tipp&amp;todo=";
+    $addw=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;file=";
+    $adda=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
 
-    if(($todo=="wert" && $all!=1) || $todo=="fieber" || $todo=="edit"){require("lmo-openfilename.php");}
-    elseif($todo=="einsicht"){require("lmo-openfilest.php");}
-    elseif($todo=="tabelle"){require("lmo-openfile.php");}
+    if(($todo=="wert" && $all!=1) || $todo=="fieber" || $todo=="edit"){require(PATH_TO_LMO."/lmo-openfilename.php");}
+    elseif($todo=="einsicht"){require(PATH_TO_LMO."/lmo-openfilest.php");}
+    elseif($todo=="tabelle"){require(PATH_TO_LMO."/lmo-openfile.php");}
     elseif($todo=="wert" && $all==1){}
 ?>
 
@@ -80,7 +80,7 @@ if($action=="tipp"){
     <td class="lmomain1"><nobr>
 
 <?PHP
-    if(isset($todo) && $todo!="logout"){echo "<a href=\"".$PHP_SELF."?action=tipp\" title=\"".$text[2053]."\">".$text[2052]."</a>";}
+    if(isset($todo) && $todo!="logout"){echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp\" title=\"".$text[2053]."\">".$text[2052]."</a>";}
     else{echo $text[2052];}
     echo "&nbsp;&nbsp;";
     if(isset($file) && $file!="" && $file!="viewer"){
@@ -117,7 +117,7 @@ if($action=="tipp"){
     if($regeln==1){?>
         <a href='<?=$regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text[2185]?></a>&nbsp;&nbsp;<?
       }
-    if(isset($todo) && $todo!="logout"){echo "<a href=\"".$PHP_SELF."?action=tipp\" title=\"".$text[2159]."\">".$text[2159]."</a>";}
+    if(isset($todo) && $todo!="logout"){echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp\" title=\"".$text[2159]."\">".$text[2159]."</a>";}
     else{echo $text[2159];}
     echo "&nbsp;&nbsp;";
     if($todo!="info"){echo "<a href=\"".$adda."info&amp;file=".$file."\" title=\"".$text[21]."\">".$text[20]."</a>";}else{echo $text[20];}
@@ -129,11 +129,11 @@ if($action=="tipp"){
     <td class="lmomain1" colspan="3" align="center">
 
 <?PHP 
-  if($todo=="wert"){require("lmo-tippwert.php");}
-  elseif($todo=="fieber"){require("lmo-tippfieber.php");}
-  elseif($todo=="einsicht"){require("lmo-tippeinsicht.php");}
-  elseif($todo=="tabelle"){require("lmo-tipptabelle.php");}
-  elseif($todo=="info"){require("lmo-showinfo.php");}
+  if($todo=="wert"){require(PATH_TO_LMO."/lmo-tippwert.php");}
+  elseif($todo=="fieber"){require(PATH_TO_LMO."/lmo-tippfieber.php");}
+  elseif($todo=="einsicht"){require(PATH_TO_LMO."/lmo-tippeinsicht.php");}
+  elseif($todo=="tabelle"){require(PATH_TO_LMO."/lmo-tipptabelle.php");}
+  elseif($todo=="info"){require(PATH_TO_LMO."/lmo-showinfo.php");}
   else{
 ?>
 
@@ -143,7 +143,7 @@ if($action=="tipp"){
   </td></tr>
   <tr><td align="center" class="lmost3">
   <table width="100%" class="lmostb" cellspacing="0" cellpadding="0" border="0">
-  <form name="lmotippedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmotippedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   
   <input type="hidden" name="action" value="tipp">
     <tr>
@@ -183,7 +183,7 @@ if($action=="tipp"){
     </tr>
     <tr>
       <td class="lmost5" align="right"><nobr><?PHP echo $text[2046]; ?></nobr></td>
-      <form name="lmotippedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+      <form name="lmotippedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
        <input type="hidden" name="action" value="tipp">
        <input type="hidden" name="todo" value="newtipper">
        <td class="lmost5"><acronym title="<?PHP echo $text[2011] ?>"><input class="lmoadminbut" type="submit" name="xtippersub" value="<?PHP echo $text[2011]; ?>" ></acronym></td>
@@ -196,7 +196,7 @@ if($action=="tipp"){
       <td class="lmost5" colspan="2">
       <ul>
       <?PHP
-      $ftype=".l98"; require("lmo-tippnewdir.php");
+      $ftype=".l98"; require(PATH_TO_LMO."/lmo-tippnewdir.php");
       $dummy =  split("[|]",$tt1);
       $ftest2 = split("[|]",$tt0);
       if(isset($dummy) && isset($ftest2)){
@@ -224,7 +224,7 @@ if($action=="tipp"){
       <td class="lmost4" colspan="2"><nobr><?PHP echo $text[2074]; ?></nobr></td>
     </tr>
 
-  <form name="lmotippedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmotippedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   <input type="hidden" name="action" value="tipp">
   <input type="hidden" name="todo" value="getpass">
 <?PHP if($_SESSION["lmotipperok"]==-3){ // Benutzer nicht gefunden ?> 
@@ -246,7 +246,7 @@ if($action=="tipp"){
 <?PHP } ?>
     </td>
   </tr>
-<?PHP require("lmo-tippfusszeile.php"); ?>
+<?PHP require(PATH_TO_LMO."/lmo-tippfusszeile.php"); ?>
 </table>
 
 <?PHP

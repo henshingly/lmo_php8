@@ -22,15 +22,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($_SESSION['lmouserok']==2){
-  $datei = fopen($cfgfile,"wb");
+  $datei = fopen(PATH_TO_LMO.'/'.$cfgfile,"wb");
   if ($datei) {
     echo "<font color=\"#008800\">".$text[138]."</font>";
     flock($datei,LOCK_EX);
     foreach($cfgarray as $cfgname => $cfgvalue) {
       if (is_array($cfgvalue)) {                         // Addonvariablen
-        $addon_datei = fopen($cfgname.'/cfg.txt',"wb");  //Addondatei
+        $addon_datei = fopen(PATH_TO_ADDON_DIR.'/'.$cfgname.'/cfg.txt',"wb");  //Addondatei
         if ($addon_datei) {
           flock($datei,LOCK_EX);
           foreach($cfgvalue as $addon_cfgname => $addon_cfgvalue) {

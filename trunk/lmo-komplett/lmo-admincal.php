@@ -64,7 +64,7 @@ function lmogeben(x){
 </head>
 <body>
 <?PHP
-$addi=$PHP_SELF."?abs=".$abs."&amp;feld=".$feld;
+$addi=$_SERVER['PHP_SELF']."?abs=".$abs."&amp;feld=".$feld;
 $dat = time();
 $dat0 = getdate($dat);
 $datj=$dat0['month']." ".$dat0['year'];

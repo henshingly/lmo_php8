@@ -22,8 +22,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
-require_once("lmo-tippaenderbar.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-tippaenderbar.php");
 if($message!=""){
   $dumma = array("");
   $pswfile=$tippauthtxt;
@@ -60,7 +60,7 @@ if($message!=""){
 
   elseif($emailart==1){
     $textreminder1=str_replace("\n","&#10;",$message); 
-    require("lmo-tippsavecfg.php");
+    require(PATH_TO_LMO."/lmo-tippsavecfg.php");
     $now=strtotime("now");
     $then=strtotime("+".$tage." day");
 
@@ -104,7 +104,7 @@ if($message!=""){
 
       for($lnr=0;$lnr<$anzligen;$lnr++){
         $file=$dirliga.$dateien[$lnr];
-        require("lmo-tippemailviewer.php");
+        require(PATH_TO_LMO."/lmo-tippemailviewer.php");
         }
 
       $goaltipp = array_pad(array("_"),$anzspiele+1,"_");
@@ -131,7 +131,7 @@ if($message!=""){
           for($i=0;$i<$anzspiele;$i++){
             if($i==0 || $liga[$i]!=$liga[$i-1]){
               $tippfile=$dirtipp.$liga[$i]."_".$dummb[0].".tip";
-              if(file_exists($tippfile)){require("lmo-tippemailviewer1.php");$ktipp=1;}else{$ktipp=0;}
+              if(file_exists($tippfile)){require(PATH_TO_LMO."/lmo-tippemailviewer1.php");$ktipp=1;}else{$ktipp=0;}
               }
             if($ktipp==1){
               if($goaltipp[$i]=="_"){
@@ -165,7 +165,7 @@ if($message!=""){
       }
     elseif($liga!="" && $tage>0 && $st>=0){
       $file=$dirliga.$liga;
-      if($st>0){require("lmo-openfiledat.php");}elseif($st==0){require("lmo-openfile.php");}
+      if($st>0){require(PATH_TO_LMO."/lmo-openfiledat.php");}elseif($st==0){require(PATH_TO_LMO."/lmo-openfile.php");}
   
       for($tippernr=$start-1;$tippernr<$ende;$tippernr++){
         $dummb = split("[|]",$dumma[$tippernr]);
@@ -175,12 +175,12 @@ if($message!=""){
           $spiele="";
           if(file_exists($tippfile)){
             if($st>0){
-              require("lmo-tippopenfile.php");
+              require(PATH_TO_LMO."/lmo-tippopenfile.php");
               $st0=$st-1;
               $anzst1=$st;
               }
             elseif($st==0){
-              require("lmo-tippopenfileall.php");
+              require(PATH_TO_LMO."/lmo-tippopenfileall.php");
               $st0=0;
               $anzst1=$anzst;
               }

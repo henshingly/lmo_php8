@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 
   if(!isset($newpage)){$newpage=0;}
   if(!isset($xtippernick)){$xtippernick="";}
@@ -135,7 +135,7 @@ require_once("lmo-tipptest.php");
         $newpage=0;
         echo "<font color=red>".$text[2071]."</font><br>";
         }
-      else{require("lmo-tippcheckteam.php");}
+      else{require(PATH_TO_LMO."/lmo-tippcheckteam.php");}
       }
     if($xtippervereinradio==2){
       $xtippervereinneu=trim($xtippervereinneu);
@@ -143,7 +143,7 @@ require_once("lmo-tipptest.php");
         $newpage=0;
         echo "<font color=red>".$text[2072]."</font><br>";
         }
-      else{require("lmo-tippcheckteam.php");}
+      else{require(PATH_TO_LMO."/lmo-tippcheckteam.php");}
       }
     }
 
@@ -166,7 +166,7 @@ require_once("lmo-tipptest.php");
       foreach($xtipperligen as $key => $value){
         $tippfile=$dirtipp.$value."_".$xtippernick.".tip";
         $st=-1; // keine Tipps schreiben
-        require("lmo-tippsavefile.php"); // Tipp-Datei erstellen
+        require(PATH_TO_LMO."/lmo-tippsavefile.php"); // Tipp-Datei erstellen
         $auswertdatei = fopen($dirtipp."auswert/".$value.".aus","ab");
         flock($auswertdatei,2);
         fputs($auswertdatei,"\n[".$xtippernick."]\n");
@@ -177,7 +177,7 @@ require_once("lmo-tipptest.php");
         }
       }
     $save=-1;
-    require("lmo-tippsaveauth.php");
+    require(PATH_TO_LMO."/lmo-tippsaveauth.php");
     $auswertdatei = fopen($dirtipp."auswert/gesamt.aus","ab");
     flock($auswertdatei,2);
     fputs($auswertdatei,"\n[".$xtippernick."]\n");
@@ -197,7 +197,7 @@ require_once("lmo-tipptest.php");
 <?PHP if($newpage!=1){ ?>
   <tr>
     <td class="lmomain1" colspan="3" align="center">
-  <form name="lmotippedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmotippedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   
   <input type="hidden" name="action" value="tipp">
   <input type="hidden" name="todo" value="newtipper">
@@ -269,7 +269,7 @@ require_once("lmo-tipptest.php");
       <td class="lmost5"><acronym><select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true">
       <?PHP
         echo "<option value=\"\" "; if($xtippervereinalt==""){echo "selected";} echo ">".$text[2051]."</option>";
-        require("lmo-tippnewteams.php");
+        require(PATH_TO_LMO."/lmo-tippnewteams.php");
       ?>
       </select></acronym></td>
     </tr>
@@ -285,10 +285,10 @@ require_once("lmo-tipptest.php");
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" colspan="2">
-      <?PHP $ftype=".l98"; require("lmo-tippnewdir.php"); ?></td>
+      <?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-tippnewdir.php"); ?></td>
     </tr>
     <tr>
-      <td class="lmost4" colspan="2"><a href="<?PHP echo $PHP_SELF."?action=tipp"; ?>" title="<?PHP echo $text[2110]; ?>"><?PHP echo "&lt;&lt; ".$text[2110]; ?></a></td>
+      <td class="lmost4" colspan="2"><a href="<?PHP echo $_SERVER['PHP_SELF']."?action=tipp"; ?>" title="<?PHP echo $text[2110]; ?>"><?PHP echo "&lt;&lt; ".$text[2110]; ?></a></td>
       <td class="lmost4"><acronym><input class="lmoadminbut" type="submit" name="xtippersub" value="<?PHP echo $text[2011]; ?>"></acronym></td>
     </tr>
   </table>
@@ -314,7 +314,7 @@ require_once("lmo-tipptest.php");
    <tr>
       <td class="lmost5" align="center">  <?PHP echo $text[2020]; ?></td>
       </td></tr><tr>
-      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF; ?>?action=tipp&amp;todo=logout&amp;">=> <?PHP echo $text[2021]; ?></a></td>
+      <td class="lmost4" align="right"><a href="<?PHP echo $_SERVER['PHP_SELF']; ?>?action=tipp&amp;todo=logout&amp;">=> <?PHP echo $text[2021]; ?></a></td>
     </tr>
   </table>
    </td></tr></table>

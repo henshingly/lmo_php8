@@ -28,8 +28,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require("lmo-langload.php");
-require("lmo-tippcfgload.php");
+require(PATH_TO_LMO."/lmo-langload.php");
+require(PATH_TO_LMO."/lmo-tippcfgload.php");
 ?>
 <style type="text/css">
   body { background: #fff; color: #000; font-family: sans-serif; font-size: 91%; }

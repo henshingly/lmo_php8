@@ -107,8 +107,8 @@
 106=koneèný hrací den kola  (Format TT.MM.JJJJ - ggf. mit f&uuml;hrenden Nullen)
 107=Výbìr domácích
 108=Výbìr hostù
-109=Domácí góly (0 - 9999, '_' oder 'X') - &#10;Im MSIE 4+ k&ouml;nnen Sie auch die Pfeiltasten hoch/runter benutzen
-110=Hostující góly (0 - 9999, '_' oder 'X') - &#10;Im MSIE 4+ k&ouml;nnen Sie auch die Pfeiltasten hoch/runter benutzen
+109=Domácí góly (0 - 9999, "_" oder "X") - &#10;Im MSIE 4+ k&ouml;nnen Sie auch die Pfeiltasten hoch/runter benutzen
+110=Hostující góly (0 - 9999, "_" oder "X") - &#10;Im MSIE 4+ k&ouml;nnen Sie auch die Pfeiltasten hoch/runter benutzen
 111=Zvolit konec zápasu
 112=Poznámky k zápasu (max. 255 znakù)
 113=Jméno ligy
@@ -118,8 +118,8 @@
 117=Nemáte vloženy žádne údaje.\nNebude nic uloženo.
 118=Jméno LIGY, jak bude zobrazeno v nadpisu (max. 60 znakù, napø '1. Bundesliga 2001/02')
 119=Zde bude možné udìlat zmìny, které ještì\nnejsou uloženy.\n\nKlikni 'Ano', jestli to chceš\nuložit, nebo 'Ne', k návratu,\na jinému vyplnìní.
-120=Vložení gólù domácích (0 - 9999, '_' nebo 'X')
-121=Vložení gólù hostù (0 - 9999, '_' nebo 'X')
+120=Vložení gólù domácích (0 - 9999, "_" nebo "X")
+121=Vložení gólù hostù (0 - 9999, "_" nebo "X")
 122=Hrací den zápasu (Format DD.MM.RRRR - i s nulami)
 123=Hodina zápasu (Format HH:MM - i s nulami) - toto pole mùže být prázdné a doplní se dle hlavního nastavení
 124=Mužstvo

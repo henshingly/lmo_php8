@@ -19,6 +19,9 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // Erweiterung für Archiv Funktion durch Georg Strey
+define('PATH_TO_LMO', $_SERVER['DOCUMENT_ROOT'].'/tmp/lmo-komplett/lmo');
+define('PATH_TO_ADDON_DIR', $_SERVER['DOCUMENT_ROOT'].'/tmp/lmo-komplett/lmo/addon');
+
 function getmicrotime(){
   list($usec, $sec) = explode(" ",microtime());
   return ((float)$usec + (float)$sec);
@@ -44,11 +47,11 @@ if((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()==
 setlocale(LC_TIME, "de_DE");
 $array = array();
 $ftype=".l98";
-require_once("lmo-cfgload.php");
+require_once(PATH_TO_LMO."/lmo-cfgload.php");
 if(isset($_GET["lmouserlang"])){$_SESSION["lmouserlang"]=$_GET["lmouserlang"];}
 if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
-require_once("lmo-langload.php");
-require_once("lmo-archiv.php");
+require_once(PATH_TO_LMO."/lmo-langload.php");
+require_once(PATH_TO_LMO."/lmo-archiv.php");
 
 if(!isset($_REQUEST["action"])){$_REQUEST["action"]="";$action="";}
 if(!isset($_REQUEST["file"])){$_REQUEST["file"]="";$file="";}
@@ -56,7 +59,7 @@ if(!isset($_REQUEST["archiv"])){$_REQUEST["archiv"]="";$archiv="";}
 
 if($_REQUEST["action"]=="admin"){$_REQUEST["action"]="";$action="";}
 
-include("lmo-showmain.php");
+include(PATH_TO_LMO."/lmo-showmain.php");
 /*
 if($_REQUEST["action"]==""){
   if($_REQUEST["file"]=="" || !file_exists($_REQUEST["file"])){
@@ -69,15 +72,15 @@ if($_REQUEST["action"]==""){
       AuswahlLiga();
     }
   }else{
-    require("lmo-openfile.php");
+    require(PATH_TO_LMO."/lmo-openfile.php");
     if($onrun==0){$action="results";}else{$action="table";}
-    require("lmo-showmain.php");
+    require(PATH_TO_LMO."/lmo-showmain.php");
   }
 }
 elseif ($_REQUEST["action"] == "tipp")
 {
   define('LMO_TIPPAUTH', 1);
-  require("lmo-tippstart.php");
+  require(PATH_TO_LMO."/lmo-tippstart.php");
 }
 else
 {
@@ -85,8 +88,8 @@ else
     {AuswahlLiga();}
   else
   {
-    require("lmo-openfile.php");
-    require("lmo-showmain.php");
+    require(PATH_TO_LMO."/lmo-openfile.php");
+    require(PATH_TO_LMO."/lmo-showmain.php");
   }
 }*/
 ?>

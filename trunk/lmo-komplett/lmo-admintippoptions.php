@@ -26,7 +26,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-  require_once("lmo-admintest.php");
+  require_once(PATH_TO_LMO."/lmo-admintest.php");
   
   if(!isset($save)){$save=0;}
   if($save==1){
@@ -177,11 +177,11 @@
         }
       $ligenzutippen=trim(substr($ligenzutippen,0,-1));
       }
-    require("lmo-tippsavecfg.php");
+    require(PATH_TO_LMO."/lmo-tippsavecfg.php");
     }
-  $adda=$PHP_SELF."?action=admin&amp;todo=tipp";
-  $addu=$PHP_SELF."?action=admin&amp;todo=tippuser";
-  $adde=$PHP_SELF."?action=admin&amp;todo=tippemail";
+  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tipp";
+  $addu=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser";
+  $adde=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippemail";
 ?>
 <script language="JavaScript">
 <!---
@@ -257,7 +257,7 @@ lmotest=false;
     <td class="lmost1" align="center"><?PHP echo $text[2033] ?></td>
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post" onSubmit="return chklmopass()">
+  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="tippoptions">
   <input type="hidden" name="save" value="1">
@@ -1052,7 +1052,7 @@ lmotest=false;
       <td class="lmost5" align="left" colspan="2">
 <?PHP
  echo $text[2105]."<br>";
- $ftype=".l98"; require("lmo-tippnewdir.php"); 
+ $ftype=".l98"; require(PATH_TO_LMO."/lmo-tippnewdir.php"); 
 ?></td>
  </tr>
   <tr><td class="lmost4" colspan="3" align="right">

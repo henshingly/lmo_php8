@@ -18,8 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
-$addi=$PHP_SELF."?action=admin&amp;todo=delete&amp;del=1&amp;dfile=";
+require_once(PATH_TO_LMO."/lmo-admintest.php");
+$addi=$_SERVER['PHP_SELF']."?action=admin&amp;todo=delete&amp;del=1&amp;dfile=";
 if($ftype!=""){
   $verz=opendir(substr($dirliga,0,-1));
   $dummy=array("");

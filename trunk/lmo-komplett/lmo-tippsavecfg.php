@@ -26,7 +26,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
     $datei = fopen($tippcfgfile,"wb");
 if (!$datei) {
     echo "<font color=\"#ff0000\">".$text[283]."</font>";

@@ -22,8 +22,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-  if($action=="tipp"){require_once("lmo-tipptest.php");}
-  elseif($action=="admin"){require_once("lmo-admintest.php");}
+  if($action=="tipp"){require_once(PATH_TO_LMO."/lmo-tipptest.php");}
+  elseif($action=="admin"){require_once(PATH_TO_LMO."/lmo-admintest.php");}
 
   $datei = fopen($pswfile,"wb");
   if(!$datei) {

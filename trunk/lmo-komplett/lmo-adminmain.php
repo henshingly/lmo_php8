@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 function getmicrotime(){
   list($usec, $sec) = explode(" ",microtime());
   return ((float)$usec + (float)$sec);
@@ -30,12 +30,12 @@ function getmicrotime(){
 $startzeit = getmicrotime();
 if($action=="admin"){
   $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
-  $adda=$PHP_SELF."?action=admin&amp;todo=";
+  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
   $addx="lmo-start.php?file=";
   if(!isset($st)){$sty=0;}else{$sty=$st;}
   if(!isset($newpage)){$newpage=0;}
   if(!isset($file)){$file="";}
-  include("lmo-admincheckjsscript.php");
+  include(PATH_TO_LMO."/lmo-admincheckjsscript.php");
 ?>
 <table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
   <tr>
@@ -49,7 +49,7 @@ if($action=="admin"){
       if ($lang[1]=="") $lang[1]=$text[505];?>
         <a href="<?="{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;todo={$todo}"?>" onclick="return chklmolink(this.href)" title="<?=$lang[1];?>"
         ><?
-      $lang[1]==""?$imgfile=$text[505].".gif":$imgfile=$lang[1].".gif";
+      $lang[1]==""?$imgfile='img/'.$text[505].".gif":$imgfile='img/'.$lang[1].".gif";
       if (!file_exists($imgfile)) {
         echo $lang[1];
       }else{
@@ -80,7 +80,7 @@ if($_SESSION['lmouserok']==2){
   if($todo!="download"){echo "<a href='{$adda}download' onclick='return chklmolink(this.href);' title='{$text[315]}'>{$text[314]}</a>";}else{echo $text[314];}
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
-    require("lmo-openfile.php");
+    require(PATH_TO_LMO."/lmo-openfile.php");
     if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text[3001]}'>{$text[3000]}</a>";}else{echo $text[3000];}echo "&nbsp;";  
   } 
   echo "&nbsp;";
@@ -98,7 +98,7 @@ elseif($_SESSION['lmouserok']==1){
   if($todo!="download"){echo "<a href='{$adda}download' onclick='return chklmolink(this.href);' title='{$text[315]}'>{$text[314]}</a>";}else{echo $text[314];}
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
-    require("lmo-openfile.php");
+    require(PATH_TO_LMO."/lmo-openfile.php");
     if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text[3001]}'>{$text[3000]}</a>";}else{echo $text[3000];}echo "&nbsp;";  
     } 
   }?>
@@ -113,45 +113,45 @@ elseif($_SESSION['lmouserok']==1){
   <tr>
     <td class="lmomain1" colspan="3" align="center"><?
   if($_SESSION['lmouserok']==2){
-    $addr_options=$PHP_SELF."?action=admin&amp;todo=options";
-    $addr_addons=$PHP_SELF."?action=admin&amp;todo=addons";
-    $addr_design=$PHP_SELF."?action=admin&amp;todo=design";
-    $addr_user=$PHP_SELF."?action=admin&amp;todo=user";
+    $addr_options=$_SERVER['PHP_SELF']."?action=admin&amp;todo=options";
+    $addr_addons=$_SERVER['PHP_SELF']."?action=admin&amp;todo=addons";
+    $addr_design=$_SERVER['PHP_SELF']."?action=admin&amp;todo=design";
+    $addr_user=$_SERVER['PHP_SELF']."?action=admin&amp;todo=user";
     
-    if($todo=="new"){require("lmo-adminnew.php");}
-    elseif($todo=="open"){require("lmo-adminopen.php");}
-    elseif($todo=="delete"){require("lmo-admindelete.php");}
+    if($todo=="new"){require(PATH_TO_LMO."/lmo-adminnew.php");}
+    elseif($todo=="open"){require(PATH_TO_LMO."/lmo-adminopen.php");}
+    elseif($todo=="delete"){require(PATH_TO_LMO."/lmo-admindelete.php");}
     elseif($todo=="edit"){
-      if($sty==-1){require("lmo-adminbasic.php");}
-      elseif($sty==-2){require("lmo-adminteams.php");}
-      elseif($sty==-3){require("lmo-adminanz.php");}
-      else{require("lmo-adminedit.php");}
+      if($sty==-1){require(PATH_TO_LMO."/lmo-adminbasic.php");}
+      elseif($sty==-2){require(PATH_TO_LMO."/lmo-adminteams.php");}
+      elseif($sty==-3){require(PATH_TO_LMO."/lmo-adminanz.php");}
+      else{require(PATH_TO_LMO."/lmo-adminedit.php");}
     }
-    elseif($todo=="tabs"){require("lmo-admintab.php");}
-    elseif($todo=="upload"){require("lmo-adminupload.php");}
-    elseif($todo=="download"){require("lmo-admindown.php");}
-    elseif($todo=="options"){require("lmo-adminoptions.php");}
-    elseif($todo=="user"){require("lmo-adminuser.php");}
-    elseif($todo=="addons"){require("lmo-adminaddon.php");}
-    elseif($todo=="design"){require("lmo-admindesign.php");}
-    elseif($todo=="statistik"){include("lmo-statadmin.php");}
-    elseif($todo=="tipp"){require("lmo-admintipp.php");}
-    elseif($todo=="tippemail"){require("lmo-admintippemail.php");}
-    elseif($todo=="tippuser"){require("lmo-admintippuser.php");}
-    elseif($todo=="tippuseredit"){require("lmo-admintippuseredit.php");}
-    elseif($todo=="tippoptions"){require("lmo-admintippoptions.php");}
-    elseif($todo==""){require("lmo-adminpad.php");}
+    elseif($todo=="tabs"){require(PATH_TO_LMO."/lmo-admintab.php");}
+    elseif($todo=="upload"){require(PATH_TO_LMO."/lmo-adminupload.php");}
+    elseif($todo=="download"){require(PATH_TO_LMO."/lmo-admindown.php");}
+    elseif($todo=="options"){require(PATH_TO_LMO."/lmo-adminoptions.php");}
+    elseif($todo=="user"){require(PATH_TO_LMO."/lmo-adminuser.php");}
+    elseif($todo=="addons"){require(PATH_TO_LMO."/lmo-adminaddon.php");}
+    elseif($todo=="design"){require(PATH_TO_LMO."/lmo-admindesign.php");}
+    elseif($todo=="statistik"){include(PATH_TO_LMO."/lmo-statadmin.php");}
+    elseif($todo=="tipp"){require(PATH_TO_LMO."/lmo-admintipp.php");}
+    elseif($todo=="tippemail"){require(PATH_TO_LMO."/lmo-admintippemail.php");}
+    elseif($todo=="tippuser"){require(PATH_TO_LMO."/lmo-admintippuser.php");}
+    elseif($todo=="tippuseredit"){require(PATH_TO_LMO."/lmo-admintippuseredit.php");}
+    elseif($todo=="tippoptions"){require(PATH_TO_LMO."/lmo-admintippoptions.php");}
+    elseif($todo==""){require(PATH_TO_LMO."/lmo-adminpad.php");}
   }
   elseif($_SESSION['lmouserok']==1){
-    if($todo=="open"){require("lmo-adminopen.php");}
+    if($todo=="open"){require(PATH_TO_LMO."/lmo-adminopen.php");}
     elseif($todo=="edit"){
-      if($sty==-1){require("lmo-adminbasic.php");}
-      else{require("lmo-adminedit.php");}
+      if($sty==-1){require(PATH_TO_LMO."/lmo-adminbasic.php");}
+      else{require(PATH_TO_LMO."/lmo-adminedit.php");}
     }
-    elseif($todo=="tabs"){require("lmo-admintab.php");}
-    elseif($todo=="download"){require("lmo-admindown.php");}
-    elseif($todo==""){require("lmo-adminpad.php");}
-    elseif($todo=="statistik"){include("lmo-statadmin.php");}
+    elseif($todo=="tabs"){require(PATH_TO_LMO."/lmo-admintab.php");}
+    elseif($todo=="download"){require(PATH_TO_LMO."/lmo-admindown.php");}
+    elseif($todo==""){require(PATH_TO_LMO."/lmo-adminpad.php");}
+    elseif($todo=="statistik"){include(PATH_TO_LMO."/lmo-statadmin.php");}
   }?>
     </td>
   </tr>

@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($file!=""){
   $ftest0=1;
   $liga=substr($file, strrpos($file,"/")+1,-4);
@@ -66,7 +66,7 @@ if($file!=""){
       }
     return $erg;
     }
-  require("lmo-openfile.php");
+  require(PATH_TO_LMO."/lmo-openfile.php");
   if(!isset($save)){$save=0;}
   if($save==1){
     $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
@@ -175,10 +175,10 @@ if($_SESSION['lmouserok']==2){
 
     if($ftest0==1){ // Liga darf getippt werden
       if($aktauswert==1){
-        require("lmo-tippsavewert.php");
+        require(PATH_TO_LMO."/lmo-tippsavewert.php");
         }
       if($aktauswertges==1){
-        require("lmo-tippsavewertgesamt.php");
+        require(PATH_TO_LMO."/lmo-tippsavewertgesamt.php");
         }
       }
     $stz=trim($_POST["xstx"]);
@@ -189,7 +189,7 @@ if($_SESSION['lmouserok']==2){
     $nlines=split("[\n]",$_POST["xnlines"]);
     if(count($nlines)>0){for($z=count($nlines)-1;$z>=0;$z--){$y=array_pop($nlines);if($y!=""){array_unshift($nlines,$y);}}}
     if(count($nlines)==0){$nticker=0;}
-    require("lmo-savefile.php");
+    require(PATH_TO_LMO."/lmo-savefile.php");
     $st=$stz;
     }
   if($lmtype!=0){
@@ -210,15 +210,17 @@ if($_SESSION['lmouserok']==2){
         }
       }
     }
-  $addr=$PHP_SELF."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
-  $addb=$PHP_SELF."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
+  $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
+  $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
   $breite=17;
   if($spez==1){$breite=$breite+2;}
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
+    <td align="center">
+      <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
 <?
   for($i=1;$i<=$anzst;$i++){
     if($lmtype==1){
@@ -250,19 +252,24 @@ if($_SESSION['lmouserok']==2){
       }
     }
 ?>
-    <tr></table></td>
+        <tr>
+      </table>
+    </td>
   </tr>
-  <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-
-  <form name="lmoedit" action="<?=$PHP_SELF; ?>" method="post" onSubmit="return chklmopass()">
-  
-  <input type="hidden" name="action" value="admin">
-  <input type="hidden" name="todo" value="edit">
-  <input type="hidden" name="save" value="1">
-  <input type="hidden" name="file" value="<?=$file; ?>">
-  <input type="hidden" name="st" value="<?=$st; ?>">
   <tr>
-    <td class="lmost4" colspan="<?=$breite-4; ?>"><nobr><?=$st; ?>. <?=$text[2]; ?>
+    <td align="center" class="lmost3">
+      <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
+  
+        <input type="hidden" name="action" value="admin">
+        <input type="hidden" name="todo" value="edit">
+        <input type="hidden" name="save" value="1">
+        <input type="hidden" name="file" value="<?=$file; ?>">
+        <input type="hidden" name="st" value="<?=$st; ?>">
+        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+
+  
+          <tr>
+            <td class="lmost4" colspan="<?=$breite-4; ?>"><nobr><?=$st; ?>. <?=$text[2]; ?>
 <?
   if($datum1[$st-1]!=""){
     $datum = split("[.]",$datum1[$st-1]);
@@ -280,19 +287,20 @@ if($_SESSION['lmouserok']==2){
     }
 ?>
 <? if($_SESSION['lmouserok']==2){ ?>
-  <? echo " ".$text[3]." "; ?><acronym title="<?=$text[105] ?>"><input class="lmoadminein" type="text" name="xdatum1" size="10" maxlength="10" value="<?=$datum1[$st-1]; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum1\',\'<?=$dum1; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'d1\',img5)" onMouseOut="lmoimg(\'d1\',img4)"><img src="lmo-admin4.gif" name="ximgd1" width="14" height="10" border="0"></a>');</script>
-  <? echo " ".$text[4]." "; ?><acronym title="<?=$text[106] ?>"><input class="lmoadminein" type="text" name="xdatum2" size="10" maxlength="10" value="<?=$datum2[$st-1]; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum2\',\'<?=$dum2; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'d2\',img5)" onMouseOut="lmoimg(\'d2\',img4)"><img src="lmo-admin4.gif" name="ximgd2" width="14" height="10" border="0"></a>');</script>
+  <? echo " ".$text[3]." "; ?><acronym title="<?=$text[105] ?>"><input class="lmoadminein" type="text" name="xdatum1" size="10" maxlength="10" value="<?=$datum1[$st-1]; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum1\',\'<?=$dum1; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'d1\',img5)" onMouseOut="lmoimg(\'d1\',img4)"><img src="img/lmo-admin4.gif" name="ximgd1" width="14" height="10" border="0"></a>');</script>
+  <? echo " ".$text[4]." "; ?><acronym title="<?=$text[106] ?>"><input class="lmoadminein" type="text" name="xdatum2" size="10" maxlength="10" value="<?=$datum2[$st-1]; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum2\',\'<?=$dum2; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'d2\',img5)" onMouseOut="lmoimg(\'d2\',img4)"><img src="img/lmo-admin4.gif" name="ximgd2" width="14" height="10" border="0"></a>');</script>
 <? } ?>
-    </nobr></td>
+              </nobr>
+            </td>
 <? if($lmtype==0){ ?>
-    <td class="lmost4" width="2"><nobr><acronym title="<?=$text[213] ?>"><?=$text[217]; ?></acronym></nobr></td>
+            <td class="lmost4" width="2"><nobr><acronym title="<?=$text[213] ?>"><?=$text[217]; ?></acronym></nobr></td>
 <? } ?>
-    <td class="lmost4" width="2"><nobr><acronym title="<?=$text[112] ?>"><?=$text[218]; ?></acronym></nobr></td>
-    <td class="lmost4" width="2"><nobr><acronym title="<?=$text[263] ?>"><?=$text[262]; ?></acronym></nobr></td>
+            <td class="lmost4" width="2"><nobr><acronym title="<?=$text[112] ?>"><?=$text[218]; ?></acronym></nobr></td>
+            <td class="lmost4" width="2"><nobr><acronym title="<?=$text[263] ?>"><?=$text[262]; ?></acronym></nobr></td>
 <? if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
-    <td class="lmost4" width="2"><nobr><acronym title="<?=$text[2057] ?>"><?=$text[2057]; ?></acronym></nobr></td>
+            <td class="lmost4" width="2"><nobr><acronym title="<?=$text[2057] ?>"><?=$text[2057]; ?></acronym></nobr></td>
 <? } ?>
-  </tr>
+          </tr>
 
 <?
   if($lmtype!=0){
@@ -303,7 +311,7 @@ if($_SESSION['lmouserok']==2){
   for($i=0;$i<$anzsp;$i++){
     if($lmtype==0){
 ?>
-  <tr>
+          <tr>
 <?
   if($mterm[$st-1][$i]>0){
     $dum1=strftime("%d.%m.%Y", $mterm[$st-1][$i]);
@@ -316,14 +324,14 @@ if($_SESSION['lmouserok']==2){
     $dum3="";
     }
 ?>
-    <td class="lmost5"><nobr><acronym title="<?=$text[122] ?>"><input class="lmoadminein" type="text" name="xatdat<?=$i; ?>" size="10" maxlength="10" value="<?=$dum1; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat<?=$i; ?>\',\'<?=$dum3; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>c\',img5)" onMouseOut="lmoimg(\'<?=$i; ?>c\',img4)"><img src="lmo-admin4.gif" name="ximg<?=$i; ?>c" width="14" height="10" border="0"></a>');</script></nobr></td>
-    <td class="lmost5"><acronym title="<?=$text[123] ?>"><input class="lmoadminein" type="text" name="xattim<?=$i; ?>" size="5" maxlength="5" value="<?=$dum2; ?>" onChange="dolmoedit()"></acronym></td>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr>
+           <td class="lmost5"><nobr><acronym title="<?=$text[122] ?>"><input class="lmoadminein" type="text" name="xatdat<?=$i; ?>" size="10" maxlength="10" value="<?=$dum1; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat<?=$i; ?>\',\'<?=$dum3; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>c\',img5)" onMouseOut="lmoimg(\'<?=$i; ?>c\',img4)"><img src="img/lmo-admin4.gif" name="ximg<?=$i; ?>c" width="14" height="10" border="0"></a>');</script></nobr></td>
+           <td class="lmost5"><acronym title="<?=$text[123] ?>"><input class="lmoadminein" type="text" name="xattim<?=$i; ?>" size="5" maxlength="5" value="<?=$dum2; ?>" onChange="dolmoedit()"></acronym></td>
+           <td class="lmost5" width="2">&nbsp;</td>
+           <td class="lmost5" align="right"><nobr>
 
 <? if($_SESSION['lmouserok']==2){ ?>
-<acronym title="<?=$text[107] ?>">
-<select class="lmoadminein" name="xteama<?=$i; ?>" onChange="dolmoedit()">
+             <acronym title="<?=$text[107] ?>">
+             <select class="lmoadminein" name="xteama<?=$i; ?>" onChange="dolmoedit()">
 <?
   for($y=0;$y<=$anzteams;$y++){
     echo "<option value=\"".$y."\"";
@@ -331,8 +339,8 @@ if($_SESSION['lmouserok']==2){
     echo ">".$teams[$y]."</option>";
     }
 ?>
-</select>
-</acronym>
+             </select>
+             </acronym>
 <? }else{echo $teams[$teama[$st-1][$i]];} ?>
 
     </nobr></td>
@@ -363,10 +371,10 @@ if($_SESSION['lmouserok']==2){
     </nobr></td>
     <td class="lmost5" width="2">&nbsp;</td>
     <td class="lmost5" align="right"><acronym title="<?=$text[109] ?>"><input class="lmoadminein" type="text" name="xgoala<?=$i; ?>" size="4" maxlength="4" value="<?=$goala[$st-1][$i]; ?>" onChange="lmotorgte('a','<?=$i; ?>')" onKeyDown="lmotorclk('a','<?=$i; ?>',event.keyCode)"></acronym></td>
-    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?=$i; ?>\",1);" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\"<?=$i; ?>a\",img1)" onMouseOut="lmoimg(\"<?=$i; ?>a\",img0)"><img src="lmo-admin0.gif" name="ximg<?=$i; ?>a" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?=$i; ?>\",-1);" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\"<?=$i; ?>b\",img3)" onMouseOut="lmoimg(\"<?=$i; ?>b\",img2)"><img src="lmo-admin2.gif" name="ximg<?=$i; ?>b" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
+    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?=$i; ?>\",1);" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\"<?=$i; ?>a\",img1)" onMouseOut="lmoimg(\"<?=$i; ?>a\",img0)"><img src="img/lmo-admin0.gif" name="ximg<?=$i; ?>a" width="7" height="7" border="0"></a>')</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?=$i; ?>\",-1);" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\"<?=$i; ?>b\",img3)" onMouseOut="lmoimg(\"<?=$i; ?>b\",img2)"><img src="img/lmo-admin2.gif" name="ximg<?=$i; ?>b" width="7" height="7" border="0"></a>')</script></td></tr></table></td>
     <td class="lmost5" align="center" width="8">:</td>
     <td class="lmost5" align="right"><acronym title="<?=$text[110] ?>"><input class="lmoadminein" type="text" name="xgoalb<?=$i; ?>" size="4" maxlength="4" value="<?=$goalb[$st-1][$i]; ?>" onChange="lmotorgte('b','<?=$i; ?>')" onKeyDown="lmotorclk('b','<?=$i; ?>',event.keyCode)"></acronym></td>
-    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?=$i; ?>\",1);" title="<?=$text[121]; ?>" onMouseOver="lmoimg(\"<?=$i; ?>f\",img1)" onMouseOut="lmoimg(\"<?=$i; ?>f\",img0)"><img src="lmo-admin0.gif" name="ximg<?=$i; ?>f" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?=$i; ?>\",-1);" title="<?=$text[121]; ?>" onMouseOver="lmoimg(\"<?=$i; ?>d\",img3)" onMouseOut="lmoimg(\"<?=$i; ?>d\",img2)"><img src="lmo-admin2.gif" name="ximg<?=$i; ?>d" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
+    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?=$i; ?>\",1);" title="<?=$text[121]; ?>" onMouseOver="lmoimg(\"<?=$i; ?>f\",img1)" onMouseOut="lmoimg(\"<?=$i; ?>f\",img0)"><img src="img/lmo-admin0.gif" name="ximg<?=$i; ?>f" width="7" height="7" border="0"></a>')</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?=$i; ?>\",-1);" title="<?=$text[121]; ?>" onMouseOver="lmoimg(\"<?=$i; ?>d\",img3)" onMouseOut="lmoimg(\"<?=$i; ?>d\",img2)"><img src="img/lmo-admin2.gif" name="ximg<?=$i; ?>d" width="7" height="7" border="0"></a>')</script></td></tr></table></td>
   <? if($spez==1){ ?>
     <td class="lmost5" width="2">&nbsp;</td>
     <td class="lmost5">
@@ -448,7 +456,7 @@ if($_SESSION['lmouserok']==2){
     $dum3="";
     }
 ?>
-    <td class="lmost5"><nobr><acronym title="<?=$text[122] ?>"><input class="lmoadminein" type="text" name="xatdat<?=$i.$n; ?>" size="10" maxlength="10" value="<?=$dum1; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat<?=$i.$n; ?>\',\'<?=$dum3; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'<?=$i.$n; ?>c\',img5)" onMouseOut="lmoimg('<?=$i.$n; ?>c',img4)"><img src="lmo-admin4.gif" name="ximg<?=$i.$n; ?>c" width="14" height="10" border="0"></a>');</script></nobr></td>
+    <td class="lmost5"><nobr><acronym title="<?=$text[122] ?>"><input class="lmoadminein" type="text" name="xatdat<?=$i.$n; ?>" size="10" maxlength="10" value="<?=$dum1; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat<?=$i.$n; ?>\',\'<?=$dum3; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'<?=$i.$n; ?>c\',img5)" onMouseOut="lmoimg('<?=$i.$n; ?>c',img4)"><img src="img/lmo-admin4.gif" name="ximg<?=$i.$n; ?>c" width="14" height="10" border="0"></a>');</script></nobr></td>
     <td class="lmost5"><acronym title="<?=$text[123] ?>"><input class="lmoadminein" type="text" name="xattim<?=$i.$n; ?>" size="5" maxlength="5" value="<?=$dum2; ?>" onChange="dolmoedit()"></acronym></td>
     <td class="lmost5" width="2">&nbsp;</td>
 <? if($n==0){ ?>
@@ -528,10 +536,10 @@ if($_SESSION['lmouserok']==2){
 ?>
     <td class="lmost5" width="2">&nbsp;</td>
     <td class="lmost5" align="right"><acronym title="<?=$text[109] ?>"><input class="lmoadminein" type="text" name="xgoala<?=$i.$n; ?>" size="4" maxlength="4" value="<?=$goala[$st-1][$i][$n]; ?>" onChange="lmotorgte('a','<?=$i.$n; ?>')" onKeyDown="lmotorclk('a','<?=$i.$n; ?>',event.keyCode)"></acronym></td>
-    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?=$i.$n; ?>\",1);" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\"<?=$i.$n; ?>a\",img1)" onMouseOut="lmoimg(\"<?=$i.$n; ?>a\",img0)"><img src="lmo-admin0.gif" name="ximg<?=$i.$n; ?>a" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?=$i.$n; ?>\",-1);" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\"<?=$i.$n; ?>b\",img3)" onMouseOut="lmoimg(\"<?=$i.$n; ?>b\",img2)"><img src="lmo-admin2.gif" name="ximg<?=$i.$n; ?>b" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
+    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?=$i.$n; ?>\",1);" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\"<?=$i.$n; ?>a\",img1)" onMouseOut="lmoimg(\"<?=$i.$n; ?>a\",img0)"><img src="img/lmo-admin0.gif" name="ximg<?=$i.$n; ?>a" width="7" height="7" border="0"></a>')</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"a\",\"<?=$i.$n; ?>\",-1);" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\"<?=$i.$n; ?>b\",img3)" onMouseOut="lmoimg(\"<?=$i.$n; ?>b\",img2)"><img src="img/lmo-admin2.gif" name="ximg<?=$i.$n; ?>b" width="7" height="7" border="0"></a>')</script></td></tr></table></td>
     <td class="lmost5" align="center" width="8">:</td>
     <td class="lmost5" align="right"><acronym title="<?=$text[110] ?>"><input class="lmoadminein" type="text" name="xgoalb<?=$i.$n; ?>" size="4" maxlength="4" value="<?=$goalb[$st-1][$i][$n]; ?>" onChange="lmotorgte('b','<?=$i.$n; ?>')" onKeyDown="lmotorclk('b','<?=$i.$n; ?>',event.keyCode)"></acronym></td>
-    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?=$i.$n; ?>\",1);" title="<?=$text[121]; ?>" onMouseOver="lmoimg(\"<?=$i.$n; ?>f\",img1)" onMouseOut="lmoimg(\"<?=$i.$n; ?>f\",img0)"><img src="lmo-admin0.gif" name="ximg<?=$i.$n; ?>f" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?=$i.$n; ?>\",-1);" title="<?=$text[121]; ?>" onMouseOver="lmoimg(\"<?=$i.$n; ?>d\",img3)" onMouseOut="lmoimg(\"<?=$i.$n; ?>d\",img2)"><img src="lmo-admin2.gif" name="ximg<?=$i.$n; ?>d" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
+    <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?=$i.$n; ?>\",1);" title="<?=$text[121]; ?>" onMouseOver="lmoimg(\"<?=$i.$n; ?>f\",img1)" onMouseOut="lmoimg(\"<?=$i.$n; ?>f\",img0)"><img src="img/lmo-admin0.gif" name="ximg<?=$i.$n; ?>f" width="7" height="7" border="0"></a>')</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\"b\",\"<?=$i.$n; ?>\",-1);" title="<?=$text[121]; ?>" onMouseOver="lmoimg(\"<?=$i.$n; ?>d\",img3)" onMouseOut="lmoimg(\"<?=$i.$n; ?>d\",img2)"><img src="img/lmo-admin2.gif" name="ximg<?=$i.$n; ?>d" width="7" height="7" border="0"></a>')</script></td></tr></table></td>
     <td class="lmost5" width="2">&nbsp;</td>
     <td class="lmost5">
 <acronym title="<?=$text[111] ?>">
@@ -605,9 +613,9 @@ if($_SESSION['lmouserok']==2){
   <tr><td class="lmost4" colspan="<?=$breite; ?>" align="center">
     <acronym title="<?=$text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<?=$text[103]; ?>"></acronym>
   </td></tr>
-  </form>
+  
 
-  </table></td></tr>
+  </table></form></td></tr>
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <? 

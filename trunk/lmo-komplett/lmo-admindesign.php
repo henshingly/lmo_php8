@@ -22,18 +22,18 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
   if(isset($_POST['save']) && $_POST['save']==1){
-    require("lmo-savecss.php");  
+    require(PATH_TO_LMO."/lmo-savecss.php");  
   }
-  require("lmo-cssload.php");?>
+  require(PATH_TO_LMO."/lmo-cssload.php");?>
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td class="lmost1" align="center"><?=$text[432] ?></td>
   </tr>
   <tr>
     <td align="center" class="lmost3">
-      <form name="lmoedit" action="<?=$PHP_SELF?>" method="post" onSubmit="return chklmopass()">
+      <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="design">
         <input type="hidden" name="save" value="1">

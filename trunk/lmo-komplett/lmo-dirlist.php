@@ -44,7 +44,7 @@ if($ftype!=""){
     $t1="";
     $t4="";
     $t2=$text[2];
-    $datei = fopen($dirliga.$files,"r");
+    $datei = fopen($dirliga.$files,"rb");
     while (!feof($datei)) {
       $zeile = fgets($datei,1000);
       $zeile=chop($zeile);

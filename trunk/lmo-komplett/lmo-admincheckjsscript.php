@@ -1,17 +1,17 @@
 <script type="text/javascript">
 name="lmo3";
 img0 = new Image();
-img0.src = "lmo-admin0.gif";
+img0.src = "img/lmo-admin0.gif";
 img1 = new Image();
-img1.src = "lmo-admin1.gif";
+img1.src = "img/lmo-admin1.gif";
 img2 = new Image();
-img2.src = "lmo-admin2.gif";
+img2.src = "img/lmo-admin2.gif";
 img3 = new Image();
-img3.src = "lmo-admin3.gif";
+img3.src = "img/lmo-admin3.gif";
 img4 = new Image();
-img4.src = "lmo-admin4.gif";
+img4.src = "img/lmo-admin4.gif";
 img5 = new Image();
-img5.src = "lmo-admin5.gif";
+img5.src = "img/lmo-admin5.gif";
 var lmotest=true;
 function lmoimg(x,y){
   document.getElementsByName("ximg"+x)[0].src = y.src;
@@ -42,9 +42,9 @@ function lmoanzstauf(x,z){
   var a=document.getElementsByName(x)[0].value;
   if(isNaN(a)==true){a=0;}else{a=parseInt(a);}
   if(a>116){a=116;}
-  if(a<6){a=6;}
+  if(a<1){a=1;}
   if((z==1) && (a<116)){a++;}
-  if((z==-1) && (a>6)){a--;}
+  if((z==-1) && (a>1)){a--;}
   document.getElementsByName(x)[0].value=a;
   lmotest=false;
   }
@@ -58,9 +58,9 @@ function lmoanzspauf(x,z){
   var a=document.getElementsByName(x)[0].value;
   if(isNaN(a)==true){a=0;}else{a=parseInt(a);}
   if(a>40){a=40;}
-  if(a<2){a=2;}
+  if(a<1){a=1;}
   if((z==1) && (a<40)){a++;}
-  if((z==-1) && (a>2)){a--;}
+  if((z==-1) && (a>1)){a--;}
   document.getElementsByName(x)[0].value=a;
   lmotest=false;
   }

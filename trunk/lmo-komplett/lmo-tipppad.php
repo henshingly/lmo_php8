@@ -22,10 +22,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 if(($action=="tipp") && ($todo=="")){
-  $adda=$PHP_SELF."?action=tipp&amp;todo=";
-  $addw=$PHP_SELF."?action=tipp&amp;todo=wert&amp;file=";
+  $adda=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
+  $addw=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;file=";
 ?>
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">
     <font color=black><?PHP echo $lmotippername;
@@ -36,7 +36,7 @@ if(($action=="tipp") && ($todo=="")){
 
   <tr><td class="lmost4"><nobr><?PHP echo $text[2003]; ?>:</nobr></td></tr>
 
-  <tr><td class="lmost5"><nobr><?PHP $ftype=".tip"; require("lmo-tippdir.php"); ?></td></tr>
+  <tr><td class="lmost5"><nobr><?PHP $ftype=".tip"; require(PATH_TO_LMO."/lmo-tippdir.php"); ?></td></tr>
 
   <tr><td class="lmost4"><nobr><?PHP echo $text[2004]; ?></nobr></td></tr>
   

@@ -51,8 +51,8 @@
 
   if($endtab>1 && $tabdat!="" && $stwertmodus!="nur"){
     $endtab--;
-    if($wertung=="einzel" || $wertung=="intern"){require("lmo-tippcalcwert.php");}
-    else{require("lmo-tippcalcwertteam.php");}
+    if($wertung=="einzel" || $wertung=="intern"){require(PATH_TO_LMO."/lmo-tippcalcwert.php");}
+    else{require(PATH_TO_LMO."/lmo-tippcalcwertteam.php");}
     
     if($wertung=="team"){$anztipper=$teamsanzahl;}
     $platz1 = array("");
@@ -60,8 +60,8 @@
     for($x=0;$x<$anztipper;$x++){$x3=intval(substr($tab0[$x],-7));$platz1[$x3]=$x+1;}
     $endtab++;
     }
-  if($wertung=="einzel" || $wertung=="intern"){require("lmo-tippcalcwert.php");}
-  else{require("lmo-tippcalcwertteam.php");}
+  if($wertung=="einzel" || $wertung=="intern"){require(PATH_TO_LMO."/lmo-tippcalcwert.php");}
+  else{require(PATH_TO_LMO."/lmo-tippcalcwertteam.php");}
 
   if($wertung=="team"){$anztipper=$teamsanzahl;}
   $platz0 = array("");
@@ -71,11 +71,11 @@
     $x3=intval(substr($tab0[$x],-7));
     $platz0[$x3]=$x+1;
     }
-  if($tabdat==""){$addt1=$PHP_SELF."?action=tipp&amp;todo=wert&amp;all=".$all."&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;gewicht=".$gewicht."&amp;wertung=";}else{$addt1=$PHP_SELF."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;PHPSESSID=".$PHPSESSID."&amp;file=".$file."&amp;gewicht=".$gewicht."&amp;endtab=".$endtab."&amp;wertung=";}
-  $addt2=$PHP_SELF."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;PHPSESSID=".$PHPSESSID."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;endtab=";
-  if($tabdat==""){$addt3=$PHP_SELF."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;PHPSESSID=".$PHPSESSID."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;start=";}else{$addt3=$PHP_SELF."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;PHPSESSID=".$PHPSESSID."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;endtab=".$endtab."&amp;start=";}
-  $addt4=$PHP_SELF."?action=tipp&amp;todo=wert&amp;gewicht=".$gewicht."&amp;file=".$file."&amp;endtab=".$endtab."&amp;PHPSESSID=".$PHPSESSID."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;stwertmodus=";
-  if($tabdat==""){$addt5=$PHP_SELF."?action=tipp&amp;todo=wert&amp;all=".$all."&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;gewicht=";}else{$addt5=$PHP_SELF."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;PHPSESSID=".$PHPSESSID."&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;gewicht=";}
+  if($tabdat==""){$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;all=".$all."&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;gewicht=".$gewicht."&amp;wertung=";}else{$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;PHPSESSID=".$PHPSESSID."&amp;file=".$file."&amp;gewicht=".$gewicht."&amp;endtab=".$endtab."&amp;wertung=";}
+  $addt2=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;PHPSESSID=".$PHPSESSID."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;endtab=";
+  if($tabdat==""){$addt3=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;PHPSESSID=".$PHPSESSID."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;start=";}else{$addt3=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;PHPSESSID=".$PHPSESSID."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;endtab=".$endtab."&amp;start=";}
+  $addt4=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;gewicht=".$gewicht."&amp;file=".$file."&amp;endtab=".$endtab."&amp;PHPSESSID=".$PHPSESSID."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;stwertmodus=";
+  if($tabdat==""){$addt5=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;all=".$all."&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;gewicht=";}else{$addt5=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;PHPSESSID=".$PHPSESSID."&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;gewicht=";}
 
 ?>
 
@@ -370,7 +370,7 @@ else{
     }
   if($tabdat!="" && $stwertmodus!="nur"){
     echo "<td class=\"".$dumm1."\"";
-    echo "><img src=\"lmo-tab".$y.".gif\" width=\"9\" height=\"9\" border=\"0\">";
+    echo "><img src='lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
     echo "</td>";
     }
   else{

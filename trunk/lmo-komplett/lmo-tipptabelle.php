@@ -32,22 +32,22 @@ if($file!="" && $tipptabelle1==1){
     }
   if(!isset($tabtype)){$tabtype=0;}
   if(!isset($nick)){$nick=$lmotippername;}
-  if($einsichterst==1){require_once("lmo-tippaenderbar.php");}
+  if($einsichterst==1){require_once(PATH_TO_LMO."/lmo-tippaenderbar.php");}
   if($file!=""){
     if($nick!=""){
       $m=0;
       $tippfile=$dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$nick.".tip";
-      require("lmo-tippopenfileall.php");
+      require(PATH_TO_LMO."/lmo-tippopenfileall.php");
       $anztipper=1;
       if(($endtab>1) && ($tabtype==0) && ($tabdat!="")){
         $endtab--;
-        require("lmo-tippcalctable.php");
+        require(PATH_TO_LMO."/lmo-tippcalctable.php");
         $endtab++;
         $platz1 = array("");
         $platz1 = array_pad($array,$anzteams+1,"");
         for($x=0;$x<$anzteams;$x++){$x3=intval(substr($tab0[$x],42));$platz1[$x3]=$x+1;}
         }
-      require("lmo-tippcalctable.php");
+      require(PATH_TO_LMO."/lmo-tippcalctable.php");
       }
     elseif($tipptabelle==1){ // alle Tipper
       $tabdat="";
@@ -63,8 +63,8 @@ if($file!="" && $tipptabelle1==1){
       for($m=0;$m<$anztipper;$m++){
       	$nick=substr($dummy[$m],strrpos($dummy[$m],"_")+1,-4);
       	$tippfile=$dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$nick.".tip";
-        require("lmo-tippopenfileall.php");
-        require("lmo-tippcalctable.php");
+        require(PATH_TO_LMO."/lmo-tippopenfileall.php");
+        require(PATH_TO_LMO."/lmo-tippcalctable.php");
         }
       $nick="";
       }
@@ -72,9 +72,9 @@ if($file!="" && $tipptabelle1==1){
   $platz0 = array("");
   $platz0 = array_pad($array,$anzteams+1,"");
   for($x=0;$x<$anzteams;$x++){$x3=intval(substr($tab0[$x],42));$platz0[$x3]=$x+1;}
-  if($tabdat==""){$addt1=$PHP_SELF."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;nick=".$nick."&amp;tabtype=";}else{$addt1=$PHP_SELF."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=".$endtab."&amp;PHPSESSID=".$PHPSESSID."&amp;nick=".$nick."&amp;tabtype=";}
-  $addt2=$PHP_SELF."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;tabtype=".$tabtype."&amp;nick=".$nick."&amp;endtab=";
-  $addt=$PHP_SELF."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=&amp;PHPSESSID=".$PHPSESSID."&amp;nick=";
+  if($tabdat==""){$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;nick=".$nick."&amp;tabtype=";}else{$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=".$endtab."&amp;PHPSESSID=".$PHPSESSID."&amp;nick=".$nick."&amp;tabtype=";}
+  $addt2=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;tabtype=".$tabtype."&amp;nick=".$nick."&amp;endtab=";
+  $addt=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=&amp;PHPSESSID=".$PHPSESSID."&amp;nick=";
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
@@ -203,7 +203,7 @@ if($file!="" && $tipptabelle1==1){
     }
   if($tabdat!=""){
     echo "<td class=\"".$dumm1."\"";
-    if($tabtype==0){echo "><img src=\"lmo-tab".$y.".gif\" width=\"9\" height=\"9\" border=\"0\">";}else{echo " width=\"2\">&nbsp;";}
+    if($tabtype==0){echo "><img src='lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";}else{echo " width=\"2\">&nbsp;";}
     echo "</td>";
     }
   else{
@@ -228,7 +228,7 @@ if($file!="" && $tipptabelle1==1){
       if($minus==2){$dum27=$dum27.":".$strafm[$i];}
       }
     if($teamn[$i]!=""){$dum27=$dum27."\\n\\n".$text[22].":\\n".$teamn[$i];}
-    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src=\"lmo-st2.gif\" width=\"16\" height=\"16\" border=\"0\"></a>";
+    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src='lmo-st2.gif' width=\"16\" height=\"16\" border=\"0\"></a>";
     }
   else{
     echo "&nbsp;";
@@ -300,14 +300,14 @@ if($nick!=""){
   $auswertfile=$dirtipp."auswert/vereine/".substr($file, strrpos($file,"/")+1, -4)."_".$nick.".ver"; 
   if(($endtab>1) && ($tabtype==0) && ($tabdat!="")){
     $endtab--;
-    require("lmo-tippcalcwertverein.php");
+    require(PATH_TO_LMO."/lmo-tippcalcwertverein.php");
    
     $platz1 = array("");
     $platz1 = array_pad($array,$anzteams+1,"");
     for($x=0;$x<$anzteams;$x++){$x3=intval(substr($tab0[$x],25));$platz1[$x3]=$x+1;}
     $endtab++;
     }
-  require("lmo-tippcalcwertverein.php");
+  require(PATH_TO_LMO."/lmo-tippcalcwertverein.php");
   }
 elseif($tipptabelle==1){ // alle Tipper
   $tabdat="";
@@ -323,7 +323,7 @@ elseif($tipptabelle==1){ // alle Tipper
   for($m=0;$m<$anztipper;$m++){
     $nick=substr($dummy[$m],strrpos($dummy[$m],"_")+1,-4);
     $auswertfile=$dirtipp."auswert/vereine/".substr($file,strrpos($file,"/")+1,-4)."_".$nick.".ver";
-    require("lmo-tippcalcwertverein.php");
+    require(PATH_TO_LMO."/lmo-tippcalcwertverein.php");
     }
   $nick="";
   }
@@ -388,7 +388,7 @@ for($x=0;$x<$anzteams;$x++){
     }
   if($tabdat!=""){
     echo "<td class=\"".$dumm1."\"";
-    echo "><img src=\"lmo-tab".$y.".gif\" width=\"9\" height=\"9\" border=\"0\">";
+    echo "><img src='lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
     echo "</td>";
     }
   else{

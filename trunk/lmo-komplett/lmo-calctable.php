@@ -253,7 +253,7 @@ if($file!=""){
             if(($abc==$anzteams-1) && ($x1==$x2)){$subteams=$subteams.intval(substr($tab0[$abc-$b+1],34));}else{$subteams=$subteams.intval(substr($tab0[$abc-$b],34));}
             }
           $anzcnt=0;
-          require("lmo-calctable1.php");
+          require(PATH_TO_LMO."/lmo-calctable1.php");
           if($anzcnt>0){
             for($b=1;$b<=count($tab1);$b++){
               for($f=0;$f<count($tab0);$f++){if(intval(substr($tab0[$f],34))==intval(substr($tab1[$b-1],34))){$tab0[$f]=substr($tab0[$f],0,17-strlen($b)).$b.substr($tab0[$f],17);}}

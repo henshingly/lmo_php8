@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 if(($action=="tipp") && ($todo=="daten")){
   if(!isset($xtippervereinalt)){$xtippervereinalt="";}
   if(!isset($xtippervereinneu)){$xtippervereinneu="";}
@@ -101,7 +101,7 @@ if(($action=="tipp") && ($todo=="daten")){
         $newpage=0;
         echo "<font color=red>".$text[2071]."</font><br>";
         }
-      else{require("lmo-tippcheckteam.php");}
+      else{require(PATH_TO_LMO."/lmo-tippcheckteam.php");}
       }
     if($xtippervereinradio==2){
       $xtippervereinneu=trim($xtippervereinneu);
@@ -109,7 +109,7 @@ if(($action=="tipp") && ($todo=="daten")){
         $newpage=0;
         echo "<font color=red>".$text[2072]."</font><br>";
         }
-      else{require("lmo-tippcheckteam.php");}
+      else{require(PATH_TO_LMO."/lmo-tippcheckteam.php");}
       }
     }
 
@@ -129,7 +129,7 @@ if(($action=="tipp") && ($todo=="daten")){
     if(trim($_POST["xremind"])==1){$users[$save].="1";}
     else{$users[$save].="-1";}
     $users[$save].="|EOL";
-    require("lmo-tippsaveauth.php");
+    require(PATH_TO_LMO."/lmo-tippsaveauth.php");
     } // end ($newpage==1)
 ?>
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -140,7 +140,7 @@ if(($action=="tipp") && ($todo=="daten")){
   <tr><td align="center" class="lmost3">
   <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 <?PHP if($newpage!=1){ ?>
-  <form name="lmotippedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmotippedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   
   <input type="hidden" name="action" value="tipp">
   <input type="hidden" name="todo" value="daten">
@@ -204,7 +204,7 @@ if(($action=="tipp") && ($todo=="daten")){
       <td class="lmost5"><acronym><select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true">
       <?PHP
         echo "<option value=\"\" "; if($xtippervereinalt==""){echo "selected";} echo ">".$text[2051]."</option>";
-        require("lmo-tippnewteams.php");
+        require(PATH_TO_LMO."/lmo-tippnewteams.php");
       ?>
       </select></acronym></td>
     </tr>
@@ -232,7 +232,7 @@ if(($action=="tipp") && ($todo=="daten")){
       <td class="lmost5" align="center">  <?PHP echo $text[2121]; ?></td>
    </tr>
    <tr>
-      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text[2001]; ?></a></td>
+      <td class="lmost4" align="right"><a href="<?PHP echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text[2001]; ?></a></td>
    </tr>
 <?PHP } ?>
 

@@ -18,10 +18,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($_SESSION['lmouserok']==2){
-  $css_root = fopen("lmo-style.txt","rb");
-  $css_target = fopen("lmo-style.css","wb");
+  $css_root = fopen(PATH_TO_LMO."/lmo-style.txt","rb");
+  $css_target = fopen(PATH_TO_LMO."/lmo-style.css","wb");
   if ($css_target) {
     echo "<font color=\"#008800\">".$text[138]."</font>";
     flock($css_target,LOCK_EX);
@@ -84,8 +84,8 @@ if($_SESSION['lmouserok']==2){
   clearstatcache();
   
   //NN4-Datei schreiben
-  $css_root = fopen("lmo-style-nc.txt","rb");
-  $css_target = fopen("lmo-style-nc.css","wb");
+  $css_root = fopen(PATH_TO_LMO."/lmo-style-nc.txt","rb");
+  $css_target = fopen(PATH_TO_LMO."/lmo-style-nc.css","wb");
   if ($css_target) {
     echo "<font color=\"#008800\">".$text[138]."</font>";
     flock($css_target,LOCK_EX);

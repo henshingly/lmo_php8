@@ -29,10 +29,10 @@
 
 if($file!="" && $todo=="einsicht" && $tippeinsicht==1){
   $showzus=0;
-  require_once("lmo-tippcalcpkt.php");
-  require_once("lmo-tippaenderbar.php");
+  require_once(PATH_TO_LMO."/lmo-tippcalcpkt.php");
+  require_once(PATH_TO_LMO."/lmo-tippaenderbar.php");
   if(!isset($st) || $st=="" || $st==0){$st=$stx;}
-  require("lmo-tippcalceinsicht.php");
+  require(PATH_TO_LMO."/lmo-tippcalceinsicht.php");
 
   if(!isset($anzseite)){$anzseite=20;}
   if(!isset($anztipper)){$anztipper=0;}
@@ -51,9 +51,9 @@ if($file!="" && $todo=="einsicht" && $tippeinsicht==1){
   <tr>
     <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP
-  $addr=$PHP_SELF."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;start=".$start."&amp;st=";
-  $addt=$PHP_SELF."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;endtab=&amp;nick=";
-  $addt3=$PHP_SELF."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;st=".$st."&amp;start=";
+  $addr=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;start=".$start."&amp;st=";
+  $addt=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;endtab=&amp;nick=";
+  $addt3=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;st=".$st."&amp;start=";
   
   echo "<td align=\"right\" valign=\"top\" class=\"lmost1\" colspan=\"3\" rowspan=\"4\">";
   if($lmtype==1){echo $text[370];}else{echo $text[2];}echo ":";

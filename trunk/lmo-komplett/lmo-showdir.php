@@ -28,7 +28,7 @@
       if (substr($ArchivDir,-1)!='/') $ArchivDir.='/';
       if ($_REQUEST["archiv"]!="dir") {
         $dirliga=$ArchivDir.$_REQUEST["archiv"].'/';
-        include("lmo-dirlist.php");
+        include(PATH_TO_LMO."/lmo-dirlist.php");
       }else{
         $dirs = get_dirs($ArchivDir);
         $count=0;
@@ -42,7 +42,7 @@
         }
       }
     }else{
-      include("lmo-dirlist.php");
+      include(PATH_TO_LMO."/lmo-dirlist.php");
     }?>
 
               </ul>

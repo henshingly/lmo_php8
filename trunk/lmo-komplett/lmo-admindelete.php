@@ -18,9 +18,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($action=="admin") && ($todo=="delete") && ($_SESSION['lmouserok']==2)){
-  $adda=$PHP_SELF."?action=admin&amp;todo=";
+  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
   if(!isset($del)){$del=0;}
   if($del==1){
     if(@unlink($dfile)){echo "<font color=\"#008800\">".$dfile." ".$text[297]."</font>";}else{echo "<font color=\"#ff0000\">".$dfile." ".$text[298]."</font>";}
@@ -30,7 +30,7 @@ if(($action=="admin") && ($todo=="delete") && ($_SESSION['lmouserok']==2)){
   <?PHP echo $text[295]; ?>
   </td></tr><tr><td align="center" class="lmost3">
   <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5"><nobr>
-    <?PHP $ftype=".l98"; require("lmo-admindeldir.php"); ?>
+    <?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-admindeldir.php"); ?>
   </nobr></td></tr></table>
   </td></tr></table>
 

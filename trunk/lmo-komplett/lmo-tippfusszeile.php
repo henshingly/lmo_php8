@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 if(!isset($nw)){$nw=0;}
 ?>
   <tr><td class="lmomain2" colspan="3" align="right">
@@ -75,9 +75,9 @@ if(!isset($nw)){$nw=0;}
 </tr><tr>
       <td class="lmomain1" valign="bottom">
 <?PHP
- if($file!="" && $lmtype==0 && $all!=1){echo "<a href=\"".$PHP_SELF."?file=".$file."&amp;action=table\">".$text[5]." ".$text[2099]."</a>&nbsp;&nbsp;&nbsp;<br>";}
- if($todo!="" && $todo!="logout"){echo "<a href=\"".$PHP_SELF."?action=tipp&amp;PHPSESSID=".$PHPSESSID."\">".$text[5]." ".$text[2001]."</a>&nbsp;&nbsp;&nbsp;";}
- if($todo=="" || $todo=="logout"){if($backlink==1){echo "<a href=\"".$PHP_SELF."\">".$text[391]."</a>&nbsp;&nbsp;&nbsp;";}}
+ if($file!="" && $lmtype==0 && $all!=1){echo "<a href=\"".$_SERVER['PHP_SELF']."?file=".$file."&amp;action=table\">".$text[5]." ".$text[2099]."</a>&nbsp;&nbsp;&nbsp;<br>";}
+ if($todo!="" && $todo!="logout"){echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp&amp;PHPSESSID=".$PHPSESSID."\">".$text[5]." ".$text[2001]."</a>&nbsp;&nbsp;&nbsp;";}
+ if($todo=="" || $todo=="logout"){if($backlink==1){echo "<a href=\"".$_SERVER['PHP_SELF']."\">".$text[391]."</a>&nbsp;&nbsp;&nbsp;";}}
 ?>
  </td>
     </tr></table>
