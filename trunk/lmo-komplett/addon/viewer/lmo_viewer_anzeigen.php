@@ -1,7 +1,4 @@
 <?php
-
-
-
 $liganame = "";  // Name der Lga
 $anz_mannschaften = 0;  // Anzahl teilnehmender Mannschaften
 $mannschaften = array();  // Array der teilnehmenden Mannschaften
@@ -16,9 +13,6 @@ $anz_anstoss[1] = "Anstosszeit";  // Spielbeginn (Timestamp)
 $heim_id = 2;
 $viewer_spiele = array();
 
-
-
-
 $output_liganame="";
 $output_spieltag="";
 $output_datum="";
@@ -30,10 +24,7 @@ $output_tabelle="";
 $output_spielbericht="";
 $output_notiz="";
 
-
-
 $anz_mann = count($dat);
-
 
 if (substr($filearray[3], 0, 6) == "Type=0") {
   $ko = 0;
@@ -180,7 +171,6 @@ for($spi = $i; $spi < count($filearray); $spi++) {
 
 //Liganame
 if (count($viewer_spiele)>0) $output_liganame.=$liganame;
-
 
 sort($viewer_spiele);
 $viewer_tmp1 = array(); //Doppelte Spiele filtern -Zwischenspeicher

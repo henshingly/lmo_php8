@@ -82,10 +82,10 @@ if ($action!="tipp") {
   $output_stylesheet.="
   <script type='text/javascript'>
     if (window.captureEvents && document.layers) {
-      document.write('<link rel=\"stylesheet\" href=\"".URL_TO_LMO."/lmo-style-nc.css\" type=\"text/css\">');
+      document.write('<link rel=\"stylesheet\" href=\"".URL_TO_LMO."/lmo-style-nc.php\" type=\"text/css\">');
     }
   </script>
-  <style type='text/css'>@import url('".URL_TO_LMO."/lmo-style.css');</style>";
+  <style type='text/css'>@import url('".URL_TO_LMO."/lmo-style.php');</style>";
   
   //Sprachauswahl
   if($sprachauswahl==1){

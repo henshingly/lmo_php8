@@ -1,3 +1,7 @@
+<?
+header("Content-Type: text/css");
+require("init.php");
+echo <<< STYLE
 FORM { padding: 0; margin: 0; }
 TABLE { padding: 0; margin: 0; }
   .lmomaina { background: $tababack; }
@@ -130,9 +134,6 @@ TABLE { padding: 0; margin: 0; }
     .lmocalhe a:active { background: $tabhback; color: $tabclin2; font-weight: normal; text-decoration: overline underline; }
     .lmocalhe a:hover { background: $tabhback; color: $tabclin2; font-weight: normal; text-decoration: overline underline; }
   .lmotext { background: $tabcback; color: $tabccolo; text-align: justify; font-family: $tabcfont; font-size: $tabcsize; font-weight: normal; }
-
   .lmofett { background: $tabcback; color: $tabccolo; font-family: $tabcfont; font-weight: bold; }
-
-  
-  
-  
+STYLE;
+?>
