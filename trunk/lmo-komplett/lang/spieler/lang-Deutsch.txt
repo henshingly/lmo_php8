@@ -28,7 +28,7 @@
 027=Vereinswappen
 028=Letztes Update
 029=Uhr
-030=Bestimmt die Vorbelegung der Spalte ('0' oder '__')
+030=Typ der Spalte (beachten Sie auch die Hilfedatei zum Thema Spezialspalten!)
 031=Hilfsadmin
 032=Spielerlink
 033=Die Eingabe von Spielerstatistiken ist deaktiviert. Sprechen sie mit dem Administrator über eine Aktivierung

@@ -32,7 +32,7 @@ if (file_exists($cfgfile)) {
   die("Konfigurationsdatei: $cfgfile nicht gefunden!");
   //Fehlerhandling hier rein
 }           
-            
+    
 $handle=opendir (PATH_TO_CONFIGDIR);
 while (false!==($f=readdir($handle))) {
   if (is_dir(PATH_TO_CONFIGDIR.'/'.$f) && $f!='.' && $f!='..') {

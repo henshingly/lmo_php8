@@ -28,7 +28,6 @@ if(!isset($_SESSION["lmouserfile"])){$_SESSION["lmouserfile"]="";}
 if(!isset($_SESSION["lmouserokerweitert"])){$_SESSION["lmouserokerweitert"]=0;}
 
 $todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:"";
-
 if($todo=="logout"){
   $_SESSION['lmouserok']=0;
   $_SESSION['lmouserpass']="";
@@ -43,7 +42,7 @@ if($todo=="logout"){
   <link type='text/css' rel='stylesheet' href='<?=URL_TO_LMO?>/lmo-style-nc.php'>
   <style type='text/css'>@import url('<?=URL_TO_LMO?>/lmo-style.php');</style>
 </head>
-<body bgcolor="#cccccc">
+<body>
 <div align="center"><?
 
 $action="admin";

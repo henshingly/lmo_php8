@@ -30,20 +30,16 @@ require_once(dirname(__FILE__).'/../../init.php');
 //Konfiguration laden
 require(PATH_TO_ADDONDIR.'/spieler/lmo-statloadconfig.php');
  
-$sort = isset($_GET['sort'])? $_GET['sort']:
- $spieler_standard_sortierung;
-$begin = isset($_GET['begin'])? $_GET['begin']:
- 0;
-$direction = isset($_GET['direction'])? $_GET['direction']:
- $spieler_standard_richtung;
-$team = isset($_GET['team'])? urldecode($_GET['team']):
- '';
+$sort = isset($_GET['sort'])? $_GET['sort']: $spieler_standard_sortierung;
+$begin = isset($_GET['begin'])? $_GET['begin']: 0;
+$direction = isset($_GET['direction'])? $_GET['direction']: $spieler_standard_richtung;
+$team = isset($_GET['team'])? urldecode($_GET['team']): '';
  
 if ($filepointer = @fopen($filename, "r+b")) {
   $spalten = array(); //Spaltenbezeichnung
   $data = array(); //Daten
   $typ = array(); //Spaltentyp (TRUE=String)
-  $spalten = fgetcsv($filepointer, 1000, "§"); //Zeile mit Spaltenbezeichnern
+  $spalten = fgetcsv($filepointer, 10000, "§"); //Zeile mit Spaltenbezeichnern
   $formel = FALSE;
   for ($i = 0; $i < count($spalten); $i++) {
     if (strstr($spalten[$i], "*_*-*")) {
@@ -109,9 +105,6 @@ if ($filepointer = @fopen($filename, "r+b")) {
     if (file_exists(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".gif")) {
       $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".gif");
         ?>   <img title="<?=$t?>" border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($text['spieler'][51]).".gif"?>" <?=$imgdata[3]?> alt=""><?
-    } elseif (file_exists(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".jpg")) {
-      $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".jpg");
-        ?>   <img title="<?=$t?>" border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($text['spieler'][51]).".jpg"?>" <?=$imgdata[3]?> alt=""><?
     }?>
           </td>
         </tr><?
@@ -196,7 +189,7 @@ if ($filepointer = @fopen($filename, "r+b")) {
           <tr><?
     for ($j2=0;$j2<$spaltenzahl;$j2++) {
       if ($j2==$sort){ 
-        $stat_class=' class="lmoBackMarkierung"';
+        $stat_class=' class="lmoBackMarkierung nobr"';
       } else {
         $stat_class=' class="nobr"';
       }
@@ -218,6 +211,9 @@ if ($filepointer = @fopen($filename, "r+b")) {
         if (file_exists(PATH_TO_IMGDIR."/spieler/small/".$data[$j1][$j2].".jpg")) {
           $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/small/".$data[$j1][$j2].".jpg");?>
                <img border="0" src="<?=URL_TO_IMGDIR."/spieler/small/".rawurlencode($data[$j1][$j2])?>.jpg" <?=$imgdata[3]?> alt="<?=$text['spieler'][26]?>" title="<?=$data[$j1][$j2]?>"><?
+        } elseif (file_exists(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".gif")) {
+          $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".gif");?>
+                <img border="0" src="<?=URL_TO_IMGDIR."/spieler/small/".rawurlencode($data[$j1][$j2])?>.gif" <?=$imgdata[3]?> alt="<?=$text['spieler'][26]?>" title="<?=$data[$j1][$j2]?>"><?
         } ?></td><?
       } ?>
             <td<?
@@ -225,13 +221,11 @@ if ($filepointer = @fopen($filename, "r+b")) {
             //Vereinslinks
             if ($spalten[$j2]==$text['spieler'][25]) {
               echo " align='center'>";
-              $pos=array_search($data[$j1][$j2],$teams);
-              if((!is_null($pos) || $pos) && ($teamu[$pos]!="") && ($urlt==1)){echo "<a href=\"".$teamu[$pos]."\" target=\"_blank\" title=\"".$text['spieler'][46]."\">";}
-              if (file_exists(PATH_TO_IMGDIR."/teams/small/".$data[$j1][$j2].".gif")) {
-              $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$data[$j1][$j2].".gif");?>
-              <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($data[$j1][$j2])?>.gif" <?=$imgdata[3]?> alt="<?=$data[$j1][$j2]?>" title="<?=$data[$j1][$j2]?>">&nbsp;<?
+              $pos=array_search($data[$j1][$j2],$teamu);
+              if (file_exists(PATH_TO_IMGDIR."/teams/small/".$data[$j1][$j2].".gif")) {?>
+              <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($data[$j1][$j2])?>.gif" alt="<?=$data[$j1][$j2]?>" title="<?=$data[$j1][$j2]?>">&nbsp;<?
               }else  echo  "&nbsp;".str_replace(" ","&nbsp;",$data[$j1][$j2])."&nbsp;";
-              if($pos=array_search($data[$j1][$j2],$teamu) && ($teamu[$pos]!="") && ($urlt==1)){echo "</a>";}  
+              if(!empty($pos) && $teamu[$pos]!="" && $urlt==1){echo "<a href=\"".$teamu[$pos]."\" target=\"_blank\" title=\"".$text['spieler'][46]."\">»</a>";}
             //Spielerlinks
             }elseif ($j2==0 && !is_null($linkspalte) && !$linkspalte===FALSE && $data[$j1][$linkspalte]!=$text['spieler']["843"]){
               echo " align='left'>";

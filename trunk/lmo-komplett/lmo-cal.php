@@ -86,10 +86,9 @@ if ($file != "") {
     $lmo_daterule2="%m";
   }
   
-  $lmo_stlink = array();
-  $lmo_stlink = array_pad($array, $lmo_arrays, '');
+  $lmo_stlink = array_pad(array(), $lmo_arrays, '');
   for($j = 0; $j < $anzst; $j++) {
-    $lmo_stlink_title = array_pad($array, $lmo_arrays, '');
+    $lmo_stlink_title = array_pad(array(), $lmo_arrays, '');
     
     for($i = 0; $i < $anzsp; $i++) {
       if (!empty($mterm[$j][$i]) && strftime($lmo_daterule, $mterm[$j][$i]) == $md) { //konkretes Spieldatum vorhanden

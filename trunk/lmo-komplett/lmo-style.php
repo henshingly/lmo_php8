@@ -43,7 +43,7 @@ acronym {
 .lmoMain a{ 
   background: <?=$lmo_main_background1?> repeat; 
   <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1";?>;
-  text-decoration:none;
+  text-decoration: <?=empty($lmo_main_underline1)?'none':$lmo_main_underline1;?>;
 }
 
 .lmoMain a:hover { 
@@ -80,7 +80,6 @@ acronym {
   line-height:140%;
   padding:0.1em;
   font-weight: normal; 
-  text-decoration: none; 
   background: <?=$lmo_main_background5?> repeat; 
   <?=empty($lmo_main_color5)?'':"color: $lmo_main_color5";?>; 
   border:0<?=$lmo_main_border5?>;
@@ -105,7 +104,6 @@ acronym {
   line-height:140%;
   padding:0.1em;
   font-weight: normal; 
-  text-decoration: none; 
   background: <?=$lmo_main_background7?> repeat; 
   <?=empty($lmo_main_color7)?'':"color: $lmo_main_color7";?>; 
   border:0<?=$lmo_main_border7?>;
@@ -161,7 +159,7 @@ font-size:100%;
 /** Links im Mittelbereich */
 .lmoMiddle a {  
   line-height:150%;
-  text-decoration: none; 
+  text-decoration: <?=empty($lmo_middle_underline1)?'none':$lmo_middle_underline1;?>;
   background: <?=$lmo_middle_background1?> repeat; 
   <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>; 
   font-weight: normal;
@@ -185,7 +183,6 @@ font-size:100%;
   line-height:140%;
   padding:0.1em;
   font-weight: normal; 
-  text-decoration: none; 
   background: <?=$lmo_middle_background5?> repeat; 
   <?=empty($lmo_middle_color5)?'':"color: $lmo_middle_color5";?>;
   border: 0<?=$lmo_middle_border5?>; 
@@ -226,14 +223,14 @@ font-size:100%;
 
 .lmoInner a {  
   line-height:100%;
-  text-decoration: none; 
-  background: <?=$lmo_inner_background1?> repeat; 
-  <?=empty($lmo_inner_color1)?'':"color: $lmo_inner_color1";?>; 
+  text-decoration: <?=empty($lmo_inner_underline1)?'none':$lmo_inner_underline1;?>;
+  background: <?=$lmo_inner_background3?> repeat; 
+  <?=empty($lmo_inner_color3)?'':"color: $lmo_inner_color3";?>; 
   font-weight: normal;
 }
 .lmoInner a:hover {  
-  background: <?=$lmo_inner_color1?> repeat; 
-  <?=empty($lmo_inner_background1)?'':"color: $lmo_inner_background1";?>; 
+  background: <?=$lmo_inner_color3?> repeat; 
+  <?=empty($lmo_inner_background3)?'':"color: $lmo_inner_background3";?>; 
 }
 
 .lmoInner td {
@@ -262,14 +259,10 @@ font-size:100%;
 .lmoInner caption {
   margin: 0 auto;
   padding: 0.4em; 
-  background: <?=$lmo_middle_background1?> repeat; 
-  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>; 
   font-weight: bold;
 }
 
 .lmoInner caption a{
-  background: <?=$lmo_middle_background1?> repeat; 
-  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>; 
   font-weight: normal;  
 }
 
@@ -346,7 +339,7 @@ font-size:100%;
   <?=empty($lmo_footer_fontsize1)?'':"font-size: $lmo_footer_fontsize1";?>; 
 }
 
-.lmoTabelleMeister, .lmoTabelleMeister a { 
+.lmoTabelleMeister { 
   background: <?=$lmo_tabelle_background1?> repeat; 
   <?=empty($lmo_tabelle_color1)?'':"color: $lmo_tabelle_color1";?>; 
 }
@@ -356,7 +349,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background1)?'':"color: $lmo_tabelle_background1";?>;
 }
 
-.lmoTabelleCleague, .lmoTabelleCleague a { 
+.lmoTabelleCleague { 
   background: <?=$lmo_tabelle_background2?> repeat; 
   <?=empty($lmo_tabelle_color2)?'':"color: $lmo_tabelle_color2";?>; 
 }
@@ -366,7 +359,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background2)?'':"color: $lmo_tabelle_background2";?>; 
 }
 
-.lmoTabelleCleaguequali, .lmoTabelleCleaguequali a { 
+.lmoTabelleCleaguequali { 
   background: <?=$lmo_tabelle_background3?> repeat; 
   <?=empty($lmo_tabelle_color3)?'':"color: $lmo_tabelle_color3";?>; 
 }
@@ -376,7 +369,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background3)?'':"color: $lmo_tabelle_background3";?>;
 }
 
-.lmoTabelleUefa, .lmoTabelleUefa a { 
+.lmoTabelleUefa { 
   background: <?=$lmo_tabelle_background4?> repeat; 
   <?=empty($lmo_tabelle_color4)?'':"color: $lmo_tabelle_color4";?>;
 }
@@ -386,7 +379,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background4)?'':"color: $lmo_tabelle_background4";?>;
 }
 
-.lmoTabelleRelegation, .lmoTabelleRelegation a { 
+.lmoTabelleRelegation { 
   background: <?=$lmo_tabelle_background5?> repeat; 
   <?=empty($lmo_tabelle_color5)?'':"color: $lmo_tabelle_color5";?>;
 }
@@ -396,7 +389,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background5)?'':"color: $lmo_tabelle_background5";?>;
 }
 
-.lmoTabelleAbsteiger, .lmoTabelleAbsteiger a { 
+.lmoTabelleAbsteiger { 
   background: <?=$lmo_tabelle_background6?> repeat; 
   <?=empty($lmo_tabelle_color6)?'':"color: $lmo_tabelle_color6";?>;
 }
@@ -416,7 +409,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_color8)?'':"color: $lmo_tabelle_color8";?>; 
 }
 
-.lmoTurnierSieger, .lmoTurnierSieger a { 
+.lmoTurnierSieger { 
   background: <?=$lmo_turnier_background1?> repeat; 
   <?=empty($lmo_turnier_color1)?'':"color: $lmo_turnier_color1";?>;
 }
@@ -426,7 +419,7 @@ font-size:100%;
   <?=empty($lmo_turnier_background1)?'':"color: $lmo_turnier_background1";?>; 
 }
 
-.lmoTurnierVerlierer, .lmoTurnierVerlierer a { 
+.lmoTurnierVerlierer { 
   background: <?=$lmo_turnier_background2?> repeat; 
   <?=empty($lmo_turnier_color2)?'':"color: $lmo_turnier_color2";?>;
 }
@@ -434,17 +427,6 @@ font-size:100%;
 .lmoTurnierVerlierer a:hover{ 
   background: <?=$lmo_turnier_color2?> repeat; 
   <?=empty($lmo_turnier_background2)?'':"color: $lmo_turnier_background2";?>; 
-}
-
-.lmoTabelleMeister a, 
-.lmoTabelleCleague a, 
-.lmoTabelleCleaguequali a, 
-.lmoTabelleUefa a, 
-.lmoTabelleRelegation a, 
-.lmoTabelleAbsteiger a, 
-.lmoTurnierSieger a, 
-.lmoTurnierVerlierer a {
-  text-decoration: none;
 }
 
 .lmotext { 

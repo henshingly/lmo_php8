@@ -1,10 +1,11 @@
 <?
 $filelist=array(
-  '666'=>array('lmo-auth.txt','debuglog.txt','config/cfg.txt','config/tipp/cfg.txt','config/viewer/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98'),
+  '666'=>array('lmo-auth.txt','debuglog.txt','config/cfg.txt','config/tipp/cfg.txt',/*'config/viewer/cfg.txt',*/'config/spieler/cfg.txt','config/ticker/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98'),
   '777'=>array('ligen','output','ligen/archiv','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine'),
   '644'=>array('init-parameters.php')
   );
 
+if (substr($_SERVER['DOCUMENT_ROOT'],-1)=='/') { $_SERVER['DOCUMENT_ROOT']=substr($_SERVER['DOCUMENT_ROOT'], 0, -1); }
 $step=isset($_POST['step'])?$_POST['step']:0;
 $patherror='';
 $urlerror='';
@@ -55,43 +56,51 @@ if (isset($_POST['step'])) {
     }
   }
   if ($step==4) {
-    $path=isset($_POST['path'])?$_POST['path']:$path;
-    $ftpserver= isset($_POST['ftpserver'])? $_POST['ftpserver']: '';
-    $ftpuser=   isset($_POST['ftpuser'])?   $_POST['ftpuser']:'';
-    $ftppass=   isset($_POST['ftppass'])?   $_POST['ftppass']: '';
+    $path=      isset($_POST['path'])?      $_POST['path']      : $path;
+    $ftppath=   isset($_POST['ftppath'])?   $_POST['ftppath']   : $_SERVER['DOCUMENT_ROOT'].'/'.$path;
+    $ftpserver= isset($_POST['ftpserver'])? $_POST['ftpserver'] : '';
+    $ftpuser=   isset($_POST['ftpuser'])?   $_POST['ftpuser']   : '';
+    $ftppass=   isset($_POST['ftppass'])?   $_POST['ftppass']   : '';
     
     $conn = ftp_connect($ftpserver);
     if (!$conn) {
-      $installerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> Keine Verbindung zu "'.$url.'" möglich. Korrigieren Sie die Adresse oder passen Sie die Rechte manuell an.</p>';
+      $urlerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> Keine Verbindung zu "'.$url.'" möglich. Korrigieren Sie die Adresse oder passen Sie die Rechte manuell an.</p>';
       $step=3;
     } else {
       $conn2= ftp_login($conn, $ftpuser, $ftppass);
       if (!$conn2) {
-        $installerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> Fehler beim Einloggen. Korrigieren Sie die Benutzerdaten oder passen Sie die Rechte manuell an.</p>';
+        $loginerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> Fehler beim Einloggen. Korrigieren Sie die Benutzerdaten oder passen Sie die Rechte manuell an.</p>';
         $step=3;
       }
     }
     
     if ($conn && $conn2) {
-      foreach ($filelist as $chmod=>$files) {
-        foreach ($files as $file) {
-          if (strpos($file,'*')) {
-            ftp_chdir($conn,$_SERVER['DOCUMENT_ROOT']."/".$path."/".dirname($file));
-            $ligen=ftp_nlist($conn,'');
-            foreach ($ligen as $liga) {
-              if (substr($liga,-4)==substr($file,-4)){
-                if (ftp_site($conn, "CHMOD 0$chmod $liga")) {
-                   $installerror.="<p><kbd>chmod $chmod \"$liga\"</kbd>: <img src='img/right.gif' border='0' width='12' height='12' alt='Erfolg'></p>";
-                } else {
-                   $installerror.="<p class='error'><kbd>chmod $chmod \"$liga\"</kbd>: <img src='img/wrong.gif' border='0' width='12' height='12' alt='Fehler'> - Passen Sie die Rechte manuell an.</p>";
+      echo $ftppath;
+      ftp_chdir($conn,$ftppath);
+      if (!ftp_site($conn, "CHMOD 0644 install.php")) {  //Pathtest
+        $patherror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler">Der automatisch ermittelte Pfad "'.$ftppath.'" ist inkorrekt. Geben Sie manuell den Pfad vom FTP-Hauptverzeichnis zum LMO an.</p>';
+        $step=3;
+      } else {
+        foreach ($filelist as $chmod=>$files) {
+          foreach ($files as $file) {
+            if (strpos($file,'*')) {
+              ftp_chdir($conn,$ftppath."/".dirname($file));
+              $ligen=ftp_nlist($conn,'');
+              foreach ($ligen as $liga) {
+                if (substr($liga,-4)==substr($file,-4)){
+                  if (ftp_site($conn, "CHMOD 0$chmod $liga")) {
+                     $installerror.="<p><kbd>chmod $chmod \"$liga\"</kbd>: <img src='img/right.gif' border='0' width='12' height='12' alt='Erfolg'></p>";
+                  } else {
+                     $installerror.="<p class='error'><kbd>chmod $chmod \"$liga\"</kbd>: <img src='img/wrong.gif' border='0' width='12' height='12' alt='Fehler'> - Passen Sie die Rechte manuell an.</p>";
+                  }
                 }
               }
-            }
-          } else{
-            if (ftp_site($conn, "CHMOD 0$chmod {$_SERVER['DOCUMENT_ROOT']}/$path/$file")) {
-               $installerror.="<p><kbd>chmod $chmod \"$file\"</kbd>: <img src='img/right.gif' border='0' width='12' height='12' alt='Erfolg'></p>";
-            } else {
-               $installerror.="<p class='error'><kbd>chmod $chmod \"$file\"</kbd>: <img src='img/wrong.gif' border='0' width='12' height='12' alt='Fehler'> - Passen Sie die Rechte manuell an.</p>";
+            } else{
+              if (ftp_site($conn, "CHMOD 0$chmod $ftppath/$file")) {
+                 $installerror.="<p><kbd>chmod $chmod \"$file\"</kbd>: <img src='img/right.gif' border='0' width='12' height='12' alt='Erfolg'></p>";
+              } else {
+                 $installerror.="<p class='error'><kbd>chmod $chmod \"$file\"</kbd>: <img src='img/wrong.gif' border='0' width='12' height='12' alt='Fehler'> - Passen Sie die Rechte manuell an.</p>";
+              }
             }
           }
         }
@@ -171,7 +180,7 @@ if ($step==3) {?>
   <p>
      Falls Sie dennoch auf das automatische Setzen der Schreibrechte verzichten möchten, können Sie die Rechte der 
      benötigten Dateien auch manuell über ein FTP-Programm ändern. Schauen Sie dazu in die 
-     <code><a href="lmohelp1.htm">Hilfedatei</a></code>.
+     <code><a href="lmohelp1.htm#einstieg03">Hilfedatei</a></code>.
   </p><?
   if (function_exists('ftp_connect')) {?>
   <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
@@ -184,17 +193,25 @@ if ($step==3) {?>
       <dt>Geben Sie hier Ihren Usernamen und Ihr Passwort ein.</dt>
       <dd>
       <?=$loginerror?>
-        User:<input name="ftpuser" type="text" size="25" value="<?=$ftpuser?>"> Pass:<input name="ftppass" type="password" size="25" value="">
-        <input type="hidden" name="path" value="<?=$path?>">
+        User:<input name="ftpuser" type="text" size="25" value="<?=$ftpuser?>"> Pass:<input name="ftppass" type="password" size="25" value=""><?
+    if (empty($patherror) && !isset($_POST['ftppath'])) {?>
+        <input type="hidden" name="path" value="<?=$path?>"><?
+    } else {
+    echo $patherror;?>
+        </dd>
+        <dt>Geben Sie hier den Pfad vom FTP-Hauptverzeichnis zum LMO ein.</dt><dd><input type="text" size="40" name="ftppath" value="<?=$ftppath?>"> Bsp.: <em><kbd>/htdocs/lmo</kbd></em><?
+    }?>
         <input type="hidden" name="step" value="4">
-        <input type="submit" value="Weiter">
       </dd>
+      <dt>
+        <input type="submit" value="Weiter">
+      </dt>
     </dl>
   </form><?
   } else {?>
   <p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> 
     Ihr Server unterstützt keine FTP-Funktionen. Sie müssen die Schreibrechte manuell ändern. 
-    Konsultieren Sie dazu die <code><a href="lmohelp1.htm">Hilfedatei</a></code></p><?
+    Konsultieren Sie dazu die <code><a href="lmohelp1.htm#einstieg03">Hilfedatei</a></code></p><?
   }
 }
 if ($step==4) {
@@ -204,7 +221,7 @@ if ($step==4) {
     <dd>Falls Fehler aufgetreten sind, wiederholen sie die Installation oder installieren Sie den LMO manuell, indem Sie 
     die Datei <code>init-parameters.php</code> mit einem Texteditor anpassen und die Schreibrechte mit einem FTP-Programm 
     manuell vergeben.</dd>
-    <dd><strong>Bitte löschen Sie jetzt unbedingt die Datei <code>install.php</code> vom Server.</strong></dd>
+    <dd><strong class="error">Bitte löschen Sie jetzt unbedingt die Datei <code>install.php</code> vom Server oder geben Sie der Datei chmod 000.</strong></dd>
     <dd>Der <acronym title="Liga Manager Online">LMO</acronym> ist jetzt unter der Adresse <code><a href="lmo.php">lmo.php</a></code> 
     zu erreichen, den Adminbereich finden Sie unter <code><a href="lmoadmin.php">lmoadmin.php</a></code>.</dd>
     <dt>Viel Spaß!</dt>

@@ -131,7 +131,7 @@ if (isset($file) && $file!="") {
 					fputs($filepointer,$newplayer."\n");
 					$zeile++;
 					fclose($filepointer);
-					$statstart=$zeile-$spieler_adminbereich_anzeige_pro_seite;
+					$statstart=$zeile;
 					if ($statstart<0) $statstart=0;
           @touch(PATH_TO_LMO."/".$file);
 				}else{
@@ -322,6 +322,7 @@ function sel(x) {
 function mark(el){
   el.className="lmoTabelleMeister";
 }
+
 </script>
 <table class="lmoMiddle">
   <tr>
@@ -363,9 +364,13 @@ function mark(el){
 				</tr>
 				<tr>
 					<td class="nobr" align="right">
-						<form action="<?= $_SERVER['PHP_SELF']?>" method="post">
-							<acronym title="<?=$text['spieler'][7]?>"><input type="text" name="wert"></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" + "><br>
-							<acronym title="<?=$text['spieler'][30]?>"><?=$text['spieler'][38]?>:</acronym>&nbsp;<input type="radio" name="type" value="0" checked>&nbsp;<?=$text['spieler'][52]?>&nbsp;<input type="radio" name="type" value="<?=$text['spieler'][43]?>">&nbsp;<?=$text['spieler'][53]?><input type="radio" name="type" value="F">&nbsp;<?=$text['spieler'][54]?>
+						<form action="<?= $_SERVER['PHP_SELF']?>" method="post" name="spalten">
+							<acronym title="<?=$text['spieler'][7]?>"><input type="text" name="wert"></acronym> 
+              <input class="lmo-formular-button" type="submit" value=" + "><br>
+							<acronym title="<?=$text['spieler'][30]?>"><?=$text['spieler'][38]?>:</acronym>
+              <input type="radio" name="type" value="0" checked>&nbsp;<?=$text['spieler'][52]?>
+              <input type="radio" name="type" value="<?=$text['spieler'][43]?>">&nbsp;<?=$text['spieler'][53]?>
+              <input type="radio" name="type" value="F">&nbsp;<?=$text['spieler'][54]?>
               <input type="hidden" name="option" value="addcolumn">
 							<input type="hidden" name="sort" value="<?=$spieler_sort?>">
 							<input type="hidden" name="todo" value="statistik">
@@ -373,7 +378,7 @@ function mark(el){
 						</form>
 					</td>
 					<td class="nobr" align="left" valign="top">
-						<form action="<?= $_SERVER['PHP_SELF']?>" method="post">
+						<form action="<?= $_SERVER['PHP_SELF']?>" method="post" name="spieler">
 							<acronym title="<?=$text['spieler'][8]?>"><select name="wert" size="1"><?
 								for ($x=0;$x<$spaltenzahl;$x++) {?>
 								<option value="<?=$x?>"<?if ($x==0){?> disabled<?}if ($x==1){?> selected<?}?>><?=$spalten[$x]?></option><?
