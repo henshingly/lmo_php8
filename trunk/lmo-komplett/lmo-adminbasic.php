@@ -120,11 +120,11 @@ if($file!=""){
         <tr><td align="right"<?if ($show==0) {?> class="lmost1"><?=$text[183]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text[183]; ?></a><?}?></td></tr><?
   if ($_SESSION['lmouserok']==2) {?>
         <tr><td align="right"<?if ($show==1) {?> class="lmost1"><?=$text[264];?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=1&amp;file=$file&amp;st=-1";?>"><?=$text[264];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==2) {?> class="lmost1"><?=$text[250];?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=2&amp;file=$file&amp;st=-1";?>"><?=$text[250];?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==2) {?> class="lmost1"><?=$text[250];?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=2&amp;file=$file&amp;st=-1";?>"><?=$text[250];?></a><?}?></td></tr><?
+    if ($lmtype==0){?>  
         <tr><td align="right"<?if ($show==3) {?> class="lmost1"><?=$text[178];?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=3&amp;file=$file&amp;st=-1";?>"><?=$text[178];?></a><?}?></td></tr>
         <tr><td align="right"<?if ($show==4) {?> class="lmost1"><?=$text[378]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=4&amp;file=$file&amp;st=-1";?>"><?=$text[378]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==5) {?> class="lmost1"><?=$text[198];?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=5&amp;file=$file&amp;st=-1";?>"><?=$text[198];?></a><?}?></td></tr><?
-    if ($lmtype==0){?>  
+        <tr><td align="right"<?if ($show==5) {?> class="lmost1"><?=$text[198];?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=5&amp;file=$file&amp;st=-1";?>"><?=$text[198];?></a><?}?></td></tr>
         <tr><td class="lmost4"><a href='<?="$addr-3"?>' onclick="return chklmolink(this.href);" title="<?=$text[339]?>"><?=$text[338]?></a></td></tr><?
     }
   }?>
@@ -144,7 +144,8 @@ if($file!=""){
           <tr>
             <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtitel" size="40" maxlength="60" value="<? echo $titel; ?>" onChange="dolmoedit()"></td>
             <td class="lmost5"><acronym title="<? echo $text[118] ?>"><? echo $text[113]; ?></acronym></td>
-          </tr>
+          </tr><? 
+      if($lmtype==0){ ?>
           <tr>
             <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xnamepkt" size="7" maxlength="60" value="<? if($namepkt==""){echo $text[37];}else{echo $namepkt;} ?>" onChange="dolmoedit()"></acronym></td>
             <td class="lmost5"><acronym title="<? echo $text[66] ?>"><? echo $text[65]." ".$text[37]; ?></acronym></td>
@@ -153,6 +154,7 @@ if($file!=""){
             <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xnametor" size="7" maxlength="60" value="<? if($nametor==""){echo $text[38];}else{echo $nametor;} ?>" onChange="dolmoedit()"></td>
             <td class="lmost5"><acronym title="<? echo $text[66] ?>"><? echo $text[65]." ".$text[38]; ?></acronym></td>
           </tr><?
+      }
     }?>
           <tr>
             <td class="lmost5" align="right"><acronym title="<? echo $text[190] ?>">
@@ -210,12 +212,12 @@ if($file!=""){
     if($_SESSION['lmouserok']==2){ ?>
           <tr><?
       if($lmtype==1){ ?>
-            <td class="lmost5" align="right"><input type="checkbox" class="lmoadminein" name="xklfin" onChange="dolmoedit()"<?if($klfin==1){echo " checked";}?>></td>
-            <td class="lmost5"><acronym title="<? echo $text[418] ?>"><? echo $text[417]; ?></acronym></td><? 
+            <td class="lmost5" align="right"><acronym title="<? echo $text[418] ?>"><? echo $text[417]; ?></acronym></td>
+            <td class="lmost5" align="left"><input type="checkbox" class="lmoadminein" name="xklfin" onChange="dolmoedit()"<?if($klfin==1){echo " checked";}?>></td><? 
       }
       if($lmtype==0){ ?>
             <td class="lmost5" align="right"><acronym title="<? echo $text[400] ?>"><? echo $text[399]; ?></acronym>&nbsp;</td>
-            <td class="lmost5">
+            <td class="lmost5" align="left">
               <select class="lmoadminein" name="xonrun" onChange="dolmoedit()">
                 <option value="0"<?if($onrun==0){echo " selected";}?>><?=$text[10]?></option>
                 <option value="1"<?if($onrun==1){echo " selected";}?>><?=$text[16]?></option>
@@ -224,12 +226,12 @@ if($file!=""){
       }?>
           </tr>
           <tr>
-            <td class="lmost5" align="right">&nbsp;</td>
-            <td class="lmost5" align="left">&nbsp;<input type="checkbox" class="lmoadminein" name="xdatm" onChange="dolmoedit()"<?if($datm==1){echo " checked";}?>>&nbsp;<acronym title="<? echo $text[254] ?>"><? echo $text[253]; ?></acronym></td>
+            <td class="lmost5" align="right"><acronym title="<? echo $text[254] ?>"><? echo $text[253]; ?></acronym>&nbsp;</td>
+            <td class="lmost5" align="left"><input type="checkbox" class="lmoadminein" name="xdatm" onChange="dolmoedit()"<?if($datm==1){echo " checked";}?>></td>
           </tr>
           <tr>
-            <td class="lmost5" align="right"><acronym title="<? echo $text[256] ?>"><? echo $text[257]; ?></acronym></td>
-            <td class="lmost5">
+            <td class="lmost5" align="right"><acronym title="<? echo $text[256] ?>"><? echo $text[257]; ?></acronym>&nbsp;</td>
+            <td class="lmost5" align="left">
               <select class="lmoadminein" name="xdatf" onChange="dolmoedit()"><?
       $dummf=array("%d.%m. %H:%M","%d.%m.%Y %H:%M","%a.%d.%m. %H:%M","%A, %d.%m. %H:%M","%a.%d.%m.%Y %H:%M","%A, %d.%m.%Y %H:%M");
       for($y=0;$y<count($dummf);$y++){?>
@@ -248,11 +250,11 @@ if($file!=""){
             <td class="lmost5" align="left">&nbsp;<input type="checkbox" class="lmoadminein" name="xtabelle" onChange="dolmoedit()"<?if($tabelle==1){echo " checked";}?>>&nbsp;<acronym title="<? echo $text[513] ?>"><? echo $text[16]; ?></acronym></td><?
       }
       if($lmtype==1){ ?>
-            <td class="lmost5" align="right"><acronym title="<? echo $text[512] ?>"><? echo $text[10]; ?></acronym>&nbsp;<input type="checkbox" class="lmoadminein" name="xergebnis" onChange="dolmoedit()"<?if($ergebnis==1){echo " checked";}?>></td>
+            <td class="lmost5" align="right"><acronym title="<? echo $text[512] ?>"><? echo $text[10]; ?></acronym>&nbsp;<input type="checkbox" class="lmoadminein" name="xergebnis" onChange="dolmoedit()"<?if($ergebnis==1){echo " checked";}?>>&nbsp;</td>
             <td class="lmost5"></td><?
       }
       if($lmtype==0 && $tabonres==1){ ?>
-            <td class="lmost5" align="right"><acronym title="<? echo $text[512] ?>"><? echo $text[10].'/'.$text[16]; ?></acronym>&nbsp;<input type="checkbox" class="lmoadminein" name="xergebnis" onChange="dolmoedit()"<?if($ergebnis==1){echo " checked";}?>></td>
+            <td class="lmost5" align="right"><acronym title="<? echo $text[512] ?>"><? echo $text[10].'/'.$text[16]; ?></acronym>&nbsp;<input type="checkbox" class="lmoadminein" name="xergebnis" onChange="dolmoedit()"<?if($ergebnis==1){echo " checked";}?>>&nbsp;</td>
             <td class="lmost5"></td><?
       }?>
           </tr>
@@ -276,7 +278,7 @@ if($file!=""){
           </tr><? 
     }
   }elseif ($show==3) {
-    if($_SESSION['lmouserok']==2){ ?>
+    if($_SESSION['lmouserok']==2 && $lmtype==0){ ?>
           <tr>
             <td class="lmost5" align="right"><input type="checkbox" class="lmoadminein" name="xminus" onChange="dolmoedit()"<?if($minus==2){echo " checked";}?>>&nbsp;</td>
             <td class="lmost5" align="left">&nbsp;<acronym title="<? echo $text[180] ?>"><? echo $text[179]; ?></acronym></td>

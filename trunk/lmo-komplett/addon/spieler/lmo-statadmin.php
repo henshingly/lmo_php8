@@ -131,7 +131,7 @@ if (isset($file) && $file!="") {
 					fclose($filepointer);
 					$statstart=$zeile-$spieler_adminbereich_anzeige_pro_seite;
 					if ($statstart<0) $statstart=0;
-          touch(PATH_TO_LMO."/".$file);
+          @touch(PATH_TO_LMO."/".$file);
 				}else{
 					echo $text['spieler'][4];
 				}
@@ -161,7 +161,7 @@ if (isset($file) && $file!="") {
 					}
 					$spaltenzahl=count($spalten);
 					fclose($filepointer);
-          touch(PATH_TO_LMO."/".$file);
+          @touch(PATH_TO_LMO."/".$file);
 				}
 				break;
 			case "addcolumn": //Spalte hinzufügen
@@ -203,7 +203,7 @@ if (isset($file) && $file!="") {
           }
 					$spaltenzahl++;
 					fclose($filepointer);
-          touch(PATH_TO_LMO."/".$file);
+          @touch(PATH_TO_LMO."/".$file);
 				}else{
 					echo $text['spieler'][3];
 				}
@@ -230,7 +230,7 @@ if (isset($file) && $file!="") {
 						fputs($filepointer,join("§",$data[$i])."\n");
 					}
 				  fclose($filepointer);
-          touch(PATH_TO_LMO."/".$file);
+          @touch(PATH_TO_LMO."/".$file);
 				}
 				break;
 			case "sortieren":
@@ -277,7 +277,7 @@ if (isset($file) && $file!="") {
            fputs($filepointer,join("§",$data[$i1])."\n");
         }
       	fclose($filepointer);
-        touch(PATH_TO_LMO."/".$file);
+        @touch(PATH_TO_LMO."/".$file);
       	//if (!isset($typ[intval($spieler_sort)])) usort($data, 'cmpInt'); else {usort($data, 'cmpStr');}
       	break;
 			case "saveconfig": //Konfiguration sichern

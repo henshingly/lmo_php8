@@ -18,6 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
+  require("init.php");
   $hoch=(($pgteams+1)*12)+47;
   $breit=(($pgst+1)*12)+35;
   $vergleich = imagefontwidth(3)*strlen(stripslashes($pgteam1))+3;
@@ -30,28 +31,23 @@
   $image = imagecreate($breit,$hoch);
   imageinterlace($image,1);
 
-  //Farbwerte aus css-datei lesen
-  ob_start();
-  @readfile("lmo-style.css");
-  $f=ob_get_contents();ob_end_clean();
-  
   $farbe_body=imagecolorallocate($image,255,255,255);
   $farbe_a=imagecolorallocate($image,0,0,0);  //Schrift
   $farbe_b=imagecolorallocate($image,192,192,192);  //Gitter
   $farbe_c=imagecolorallocate($image,0,0,255);  //Linie1 & Mannschaft1
   $farbe_d=imagecolorallocate($image,255,0,0);  //Linie2 & Mannschaft2
-  if(($color=get_color($f,"lmotab1"))===FALSE) $color=array(237,244,156);
+  isset($tabftab1)?$color=get_color($tabftab1): $color=array(237,244,156);
   $farbe_e=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Meister
-  if(($color=get_color($f,"lmotab2"))===FALSE) $color=array(204,205,254);
+  isset($tabftab2)?$color=get_color($tabftab2): $color=array(204,205,254);
   $farbe_f=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Champleague
-  if(($color=get_color($f,"lmotab3"))===FALSE) $color=array(166,238,237);
+  isset($tabftab3)?$color=get_color($tabftab3): $color=array(166,238,237);
   $farbe_g=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Champquali
-  if(($color=get_color($f,"lmotab4"))===FALSE) $color=array(192,255,192);
+  isset($tabftab4)?$color=get_color($tabftab4): $color=array(192,255,192);
   $farbe_h=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //UEFA
-  if(($color=get_color($f,"lmotab5"))===FALSE) $color=array(255,187,208);
-  $farbe_i=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Abstiegsrelegation
-  if(($color=get_color($f,"lmotab6"))===FALSE) $color=array(255,208,239);
-  $farbe_j=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Abstieg
+  isset($tabftab6)?$color=get_color($tabftab6): $color=array(255,187,208);
+  $farbe_i=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Abstieg
+  isset($tabftab5)?$color=get_color($tabftab5): $color=array(255,208,239);
+  $farbe_j=imagecolorallocate($image,$color[0],$color[1],$color[2]);  //Abstiegsrelegation
   imagestring($image,2,28,28+(($pgteams+1)*12), $pgtext1, $farbe_a);
   imagestringup($image,2,4,$hoch-28, $pgtext2, $farbe_a);
   for($i=1;$i<=$pgteams;$i++){
@@ -102,12 +98,11 @@
   header("Content-Type: image/png");
   imagepng($image);
   
-  function get_color(&$styledatei,$styleclass) {
-    preg_match("/$styleclass.*background:.?#(.*);/imsU",$styledatei,$match);
-    if (strlen($match[1])==3) {
-      return(array(hexdec(substr($match[1],0,1).substr($match[1],0,1)),hexdec(substr($match[1],1,1).substr($match[1],1,1)),hexdec(substr($match[1],2,1).substr($match[1],2,1))));
-    }elseif (strlen($match[1])==6) {
-      return(array(hexdec(substr($match[1],0,2)),hexdec(substr($match[1],2,2)),hexdec(substr($match[1],4,2))));
+  function get_color(&$styleclass) {
+    if (strlen($styleclass)==4) {
+      return(array(hexdec(substr($styleclass,1,1).substr($styleclass,1,1)),hexdec(substr($styleclass,2,1).substr($styleclass,2,1)),hexdec(substr($styleclass,3,1).substr($styleclass,3,1))));
+    }elseif (strlen($styleclass)==7) {
+      return(array(hexdec(substr($styleclass,1,2)),hexdec(substr($styleclass,3,2)),hexdec(substr($styleclass,5,2))));
     }
     return false;
   }

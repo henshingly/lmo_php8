@@ -37,7 +37,7 @@ if($action=="admin"){
   include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
 
 ?>
-<table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
+<table class="lmomaina" cellspacing="0" cellpadding="0" border="0" width="95%">
   <tr>
     <td class="lmomain0" colspan="2" align="center">
       <? echo "{$text[77]} {$text[54]}"; ?>

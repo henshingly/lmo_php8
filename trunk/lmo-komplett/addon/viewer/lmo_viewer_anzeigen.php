@@ -239,7 +239,9 @@ foreach ($viewer_spiele as $viewer_spiel) {
   $template_spiel->replace("Gasttore", $viewer_hervorheben_beginn.$output_gast_tore.$viewer_hervorheben_ende);
   $template_spiel->replace("Heim", $viewer_hervorheben_beginn.$output_heim.$viewer_hervorheben_ende);
   $template_spiel->replace("Gast", $viewer_hervorheben_beginn.$output_gast.$viewer_hervorheben_ende);
-  $template_spiel->replace("Spieltag", $viewer_hervorheben_beginn.$output_spieltag.$viewer_hervorheben_ende);
+  if ($viewer_spieltag_anzeigen==1) {
+    $template_spiel->replace("Spieltag", $viewer_hervorheben_beginn.$output_spieltag.$viewer_hervorheben_ende);
+  }
   if ($viewer_datum_als_spalte==0 && isset($viewer_tmp1['datum']) && $viewer_tmp1['datum']==$viewer_spiel['datum']) {
     $template_spiel->replace("Datum", "");
   }else{

@@ -53,7 +53,7 @@
 052=Herzlich Willkommen!
 053=Bitte wählen Sie eine Liga aus
 054=<acronym title="Liga Manager Online">LMO</acronym> 3.99alpha1
-055=&copy; 1997-2003 LMO-Group
+055=© 1997-2003 LMO-Group
 056=[ <a href="http://www.hollwitz.de/" target="_blank" title="Dieses und weitere Scripte können Sie auf meiner PHP-Seite downloaden">Hollwitz.Net(z)</a> | <a href="https://sourceforge.net/projects/lmo/" target="_blank" title="Die neueste Version bei Sourceforge">LMO-Projekt</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
 057=Die Statistik 1 von
 058=Die Statistik 2 von
@@ -379,11 +379,11 @@
 378=Tabellenmarkierungen
 379=Meister wird ausgespielt
 380=Geben Sie hier an, ob ein Meister in Ihrer Liga ausgespielt wird
-381=Champions-League-Teilnehmer
+381=Champions-League-Teilnehmer bzw. Aufsteiger
 382=Geben Sie hier die Anzahl der Champions-League-Teilnehmer an (außer dem Meister)
 383=Champions-League-Qualifikanten
 384=Geben Sie hier die Anzahl der Mannschaften an, die an der Champions-League-Qualifikation teilnehmen
-385=UEFA-CUP-Teilnehmer bzw. Aufsteiger
+385=UEFA-CUP-Teilnehmer
 386=Geben Sie hier die Anzahl der UEFA-Cup-Teilnehmer, Aufsteiger oder PlayOff-Teilnehmer an
 387=feststehende Absteiger
 388=Geben Sie hier die Anzahl der feststehenden Absteiger an
@@ -519,7 +519,7 @@
 518=%
 519=Sprachauswahl
 520=Sollen die Flaggen zur Sprachauswahl angezeigt werden?
-521=Abzug/Hinzufügen von Toren (negative Torangaben werden hinzugef&uuml;gt)
+521=Abzug/Hinzufügen von Toren (negative Torangaben werden hinzugefügt)
 522=Straftore
 523=Stafpunkte-/tore ab Spieltag X einrechnen
 524=ab
@@ -537,7 +537,7 @@
 4002=Rückrunde
 4003=Hinrunde
 4004=Spielfrei
-4005=ZuStatAddon v1.08 &copy; 2002 by Bernd Hoyer
+4005=ZuStatAddon v1.08 © 2002 by Bernd Hoyer
 4006=Heimsiege
 4007=Auswärtssiege
 4008=Unentschieden
