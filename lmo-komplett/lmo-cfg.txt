@@ -17,3 +17,4 @@ einzutore=1
 einzutoretab=1
 einhinrueck=1
 einzustats=1
+sprachauswahl=1
