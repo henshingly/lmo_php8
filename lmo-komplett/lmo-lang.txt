@@ -495,3 +495,4 @@
 494=Sollen zusätzliche Hin- und Rückrundentabellen angezeigt werden?
 495=Zusatzstatistiken anzeigen
 496=Sollen zusätzliche Statistiken angezeigt werden?
+497=Addon

@@ -47,6 +47,7 @@ if($HTTP_SESSION_VARS['lmouserok']==2){
     flock($datei,LOCK_UN);
     fclose($datei);
     clearstatcache();
+    require("lmo-cfgload.php");
   }else{
     echo "<font color=\"#ff0000\">".$text[283]."</font>";
   }
