@@ -72,22 +72,21 @@ if ($ser1[$stat1]>0) {
 if ($stat2>0) {
   $chg1="k.A.";
   $chg2="k.A.";
-  if (($spiele[$stat1])&&($spiele[$stat2])) {
-    $a=(100*$siege[$stat1]/$spiele[$stat1])+(100*$nieder[$stat2]/$spiele[$stat2]);
-    $b=(100*$siege[$stat2]/$spiele[$stat2])+(100*$nieder[$stat1]/$spiele[$stat1]);
-    $c=($etore[$stat1]/$spiele[$stat1])+($atore[$stat2]/$spiele[$stat2]);
-    $d=($etore[$stat2]/$spiele[$stat2])+($atore[$stat1]/$spiele[$stat1]);
+  if (!empty($spiele[$stat1])&&!empty($spiele[$stat2])) {
+    $ax=(100*$siege[$stat1]/$spiele[$stat1])+(100*$nieder[$stat2]/$spiele[$stat2]);
+    $bx=(100*$siege[$stat2]/$spiele[$stat2])+(100*$nieder[$stat1]/$spiele[$stat1]);
+    $cx=($etore[$stat1]/$spiele[$stat1])+($atore[$stat2]/$spiele[$stat2]);
+    $dx=($etore[$stat2]/$spiele[$stat2])+($atore[$stat1]/$spiele[$stat1]);
+    $ex=$ax+$bx;
+    $fx=$cx+$dx;
   }
-  
-  $e=$a+$b;
-  $f=$c+$d;
-  if (($e>0) && ($f>0)) {
-    $a=round(10000*$a/$e);
-    $b=round(10000*$b/$e);
-    $c=round(10000*$c/$f);
-    $d=round(10000*$d/$f);
-    $chg1=number_format((($a+$c)/200),2,",",".");
-    $chg2=number_format((($b+$d)/200),2,",",".");
+  if (isset($ex) && ($ex>0) && isset($fx) &&($fx>0)) {
+    $ax=round(10000*$ax/$ex);
+    $bx=round(10000*$bx/$ex);
+    $cx=round(10000*$cx/$fx);
+    $dx=round(10000*$dx/$fx);
+    $chg1=number_format((($ax+$cx)/200),2,",",".");
+    $chg2=number_format((($bx+$dx)/200),2,",",".");
   }
   $serie2="&nbsp;";
   if ($ser1[$stat2]>0) {

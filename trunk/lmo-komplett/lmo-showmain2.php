@@ -141,7 +141,7 @@ if ($action!="tipp") {
         $output_fieberkurve.="&nbsp;&nbsp;";
       }
       //Ligastatistiken
-      if($liagastats==1){
+      if($ligastats==1){
         $output_ligastatistik.=$action!="stats"?  "<a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[19]}'>{$text[18]}</a>":   $text[18];
         $output_ligastatistik.="&nbsp;&nbsp;";
       }
@@ -204,21 +204,21 @@ if ($action!="tipp") {
     $output_letzteauswertung.=$text[406].':&nbsp;'.$stand;
     
     //SaveHTML
-    ob_start();
-    if ($einsavehtml==1) { ?>
-       <table width="100%" cellspacing="0" cellpadding="0" border="0">
+    if ($einsavehtml==1) {
+      ob_start();?>
+        <table width="100%" cellspacing="0" cellpadding="0" border="0">
           <tr><? 
       if($lmtype==0 || $druck==1){include(PATH_TO_LMO."/lmo-savehtml.php");}?> 
            <td class="lmomain1" align="center"><? 
-      if($lmtype==0 && $druck==1){echo "<a href='".PATH_TO_LMO.'/'.$diroutput.basename($file)."-st.html' target='_blank' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
+      if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' target='_blank' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
             </td>  
             <td class="lmomain1" align="center"><? 
-      if($lmtype==0 && $druck==1){echo "<a href='".PATH_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' target='_blank' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
+      if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' target='_blank' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
             </td>
           </tr>
         </table><? 
+      $output_savehtml.=ob_get_contents();ob_end_clean();
     }
-    $output_savehtml.=ob_get_contents();ob_end_clean();
     
     //Ligenübersicht
     if($backlink==1){
