@@ -523,6 +523,15 @@
 522=Straftore
 523=Stafpunkte-/tore ab Spieltag X einrechnen
 524=ab
+525=Nach
+526=sortieren
+527=aufsteigend
+528=absteigend
+529=Liganame
+530=Ligadatum
+531=Dateiname
+532=Wie soll die Ligenübersicht sortiert werden
+533=Ligasortierung
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde
