@@ -149,11 +149,11 @@ if ($newpage==1) {
   $userf1="";
   
   if ($xtippervereinradio==1) {
-    $lmotipperverein=$xtippervereinalt;
+    $_SESSION['lmotipperverein']=$xtippervereinalt;
   } else if ($xtippervereinradio==2) {
-    $lmotipperverein=$xtippervereinneu;
+    $_SESSION['lmotipperverein']=$xtippervereinneu;
   } else {
-    $lmotipperverein="";
+    $_SESSION['lmotipperverein']="";
   }
   
   $zeile=$xtippernick."|".$xtipperpass."|";
@@ -165,7 +165,7 @@ if ($newpage==1) {
   if ($tipp_realname!=-1) {
     $zeile.=$xtippervorname." ".$xtippernachname;
   }
-  $zeile.="|".$xtipperemail."|".$lmotipperverein;
+  $zeile.="|".$xtipperemail."|".$_SESSION['lmotipperverein'];
   if ($tipp_adresse==1) {
     $zeile.="|$xtipperstrasse|$xtipperplz|$xtipperort";
   } else {
@@ -184,7 +184,7 @@ if ($newpage==1) {
       $auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$value.".aus","ab");
       flock($auswertdatei,2);
       fputs($auswertdatei,"\n[".$xtippernick."]\n");
-      fputs($auswertdatei,"Team=".$lmotipperverein."\n");
+      fputs($auswertdatei,"Team=".$_SESSION['lmotipperverein']."\n");
       fputs($auswertdatei,"Name=".$xtippervorname." ".$xtippernachname."\n");
       flock($auswertdatei,3);
       fclose($auswertdatei);
@@ -195,7 +195,7 @@ if ($newpage==1) {
   if ($auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus","ab")) {
     flock($auswertdatei,2);
     fputs($auswertdatei,"\n[".$xtippernick."]\n");
-    fputs($auswertdatei,"Team=".$lmotipperverein."\n");
+    fputs($auswertdatei,"Team=".$_SESSION['lmotipperverein']."\n");
     fputs($auswertdatei,"Name=".$xtippervorname." ".$xtippernachname."\n");
     flock($auswertdatei,3);
     fclose($auswertdatei);
@@ -323,7 +323,7 @@ if($newpage!=1){ ?>
  $_SESSION["lmotipperok"]=0;
 }
 if($newpage==1){ // Anmeldung erfolgreich
-  $lmotippername=$xtippernick;
+  $_SESSION['lmotippername']=$xtippernick;
   $_SESSION["lmotipperpass"]="";
   $_SESSION["lmotipperok"]=5;
 ?>

@@ -47,7 +47,7 @@ $tipp_jokertippmulti= isset($_REQUEST['tipp_jokertippmulti'])?$_REQUEST['tipp_jo
 if ($todo == "logout") {
   $_SESSION["lmotipperok"] = 0;
   $lmotipperpass = "";
-  $lmotipperverein = "";
+  $_SESSION['lmotipperverein'] = "";
 }
 if ($todo == "newtipper") {
   $_SESSION["lmotipperok"] = -4;

@@ -126,7 +126,7 @@ if (!file_exists($auswertfile)) {
         $t++;
       }
       $tippernick[$t]=$op1;
-      if ($stat1==-1 && $lmotippername==$tippernick[$t]) {
+      if ($stat1==-1 && $_SESSION['lmotippername']==$tippernick[$t]) {
         $stat1=$t;
       }
     }

@@ -69,8 +69,10 @@ if ($file!="") {
   }
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfile.php");
   
-  if (!isset($save)) {
+  if (!isset($_POST['save'])) {
     $save=0;
+  } else {
+    $save=1;
   }
   if ($save==1) {
     if ($tipp_jokertipp==1) {
@@ -215,7 +217,7 @@ if ($file!="") {
   }
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
+  <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <td align="center"><?include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
   </tr>

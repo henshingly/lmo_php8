@@ -49,8 +49,9 @@ if ($action == "tipp") {
           if ($_SESSION['lmotippername'] == $fileinfo[0]) {
             // Nick gefunden
             $_SESSION["lmotipperok"] = -1;
-            if ($lmotipperpass == $fileinfo[1]) {
+            if ($_SESSION["lmotipperpass"] == $fileinfo[1]) {
               // Passwort richtig
+              $lmotippername=$_SESSION['lmotippername'];
               $lmotipperverein = $fileinfo[5];
               $_SESSION["lmotipperok"] = $fileinfo[2];
               if ($_SESSION["lmotipperok"] == 5) {
@@ -122,7 +123,7 @@ if ($action == "tipp") {
             <td align="left"><input class="lmo-formular-input" type="text" name="xtippername" size="16" maxlength="32" value="<? echo $_SESSION['lmotippername']; ?>"></td>
           </tr><?
       // Passwort falsch 
-      if($_SESSION["lmotipperok"]==-1){ $xtippername2=$lmotippername;  ?> 
+      if($_SESSION["lmotipperok"]==-1){ $xtippername2=$_SESSION["lmotippername"];  ?> 
           <tr>
             <td class="error" align="right" colspan="3"><? echo $text['tipp'][42]; ?></td>
           </tr><? 

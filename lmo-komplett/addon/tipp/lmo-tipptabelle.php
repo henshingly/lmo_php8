@@ -30,7 +30,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     $tabtype=0;
   }
   if (!isset($nick)) {
-    $nick=$lmotippername;
+    $nick=$_SESSION['lmotippername'];
   }
   if ($tipp_einsichterst==1) {
     require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
@@ -68,7 +68,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       $anztipper=count($dummy);
       for ($m=0; $m<$anztipper; $m++) {
         $nick=substr(substr($dummy[$m],strrpos($dummy[$m],"_")+1),0,-4);
-        echo $nick;
+        //echo $nick;
         $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$liga."_".$nick.".tip";
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileall.php");
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
@@ -98,7 +98,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><? 
   if($nick!=""){ ?>
-  <caption><?if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];}?></caption><?  
+  <caption><?if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];}?></caption><?  
     $hoy1=1;
     //  if ($tabtype==3){$hoy1=($anzst/2+1);}
     if ($tabtype!=3 && $tabtype!=4) {?>
@@ -108,7 +108,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     }
   } /* ende if($nick!="") */?>
   <tr>
-    <th class="nobr" align="center"><?if($nick==$lmotippername && $nick!=""){echo $text['tipp'][173];}elseif($nick!=""){echo $text['tipp'][181]." ".$nick;}else{echo $text['tipp'][184];} ?></th>
+    <th class="nobr" align="center"><?if($nick==$_SESSION['lmotippername'] && $nick!=""){echo $text['tipp'][173];}elseif($nick!=""){echo $text['tipp'][181]." ".$nick;}else{echo $text['tipp'][184];} ?></th>
   </tr>
   <tr>
     <td align="center">
@@ -436,8 +436,8 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   </tr>
   <tr>
     <td class="lmoFooter" align="center"><? 
-  if ($nick!=$lmotippername && $lmotippername!="") {
-    echo "<a href=\"".$addt.$lmotippername."\" title=\"".$text['tipp'][173]."\">".$text['tipp'][182]."</a>";
+  if ($nick!=$_SESSION['lmotippername'] && $_SESSION['lmotippername']!="") {
+    echo "<a href=\"".$addt.$_SESSION['lmotippername']."\" title=\"".$text['tipp'][173]."\">".$text['tipp'][182]."</a>";
   }
   echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
   if ($nick!="" && $tipp_tipptabelle==1) {

@@ -126,7 +126,7 @@ if (!file_exists($auswertfile)) {
         $t++;
       }
       $tippernick[$t] = $op1;
-      if ($op1 == $lmotippername && $op1 != "") {
+      if ($op1 == $_SESSION['lmotippername'] && $op1 != "") {
         $eigpos = $t;
       }
     }

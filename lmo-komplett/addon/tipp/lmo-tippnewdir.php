@@ -119,8 +119,8 @@ if ($ftype != "") {
       }
        
       if (($action != "tipp" && $todo != "tipp") || $ftest == 1 || $tipp_immeralle == 1) {
-        if ($todo != "delligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$lmotippername.".tip") == true)) {
-          if ($todo != "newligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$lmotippername.".tip") == false)) {
+        if ($todo != "delligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$_SESSION['lmotippername'].".tip") == true)) {
+          if ($todo != "newligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$_SESSION['lmotippername'].".tip") == false)) {
             if ($todo != "newtipper" || $ftest == 1 || $tipp_immeralle == 1) {
               if ($todo != "tippemail" || $ftest == 1 || $tipp_immeralle == 1) {
                 if ($todo != "tippuseredit" || $ftest == 1 || $tipp_immeralle == 1) {
