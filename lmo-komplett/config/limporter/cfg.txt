@@ -1,4 +1,2 @@
-delimiter=#
+importDir=imports
 csvExtension=csv,txt
-colums=heim,gast,theim,tgast
-columNames=Heimmanschaft,Gastmannschaft,Tore Heim,Tore Gast

@@ -24,7 +24,7 @@ require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
 ?>
 <html>
 <head>
-<title>LIM CSV-Importer</title>
+<title>LIM HTML-Importer</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <style type="text/css">
 <!--
@@ -42,16 +42,15 @@ require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
 <body leftmargin="1" topmargin="1" class="csvtablebody">
 <?PHP
 if( isset($HTTP_GET_VARS)) {
-  	reset ($HTTP_GET_VARS);
-  	foreach ($HTTP_GET_VARS as $k=>$elem) {
-  		if(!(strpos($k,"c_",0)===false)) $showColum[]=$elem;
-//		echo "\n<BR>colums $k =".$elem;
-//		${"$k"}=$elem;
+  reset ($HTTP_GET_VARS);
+  foreach ($HTTP_GET_VARS as $k=>$elem) {
+    if(!(strpos($k,"c_",0)===false)) $showColum[]=$elem;
 	}
 }
 
 if(!isset($all)){$all=0;}
 if(!isset($hd)){$hd=0;}
+if(!isset($cdetails)){$cdetails=0;}
 if(!isset($ch)){$ch=";";}
 if(!isset($pv)){$pv="0";}
 if(!isset($dr) or ($dr < 1) ){$dr=10;}
@@ -72,26 +71,23 @@ $row = 0;
 $num = 0;
 $col = 0;
 
-
 if(isset($file) and ($pv==1)){
-	$handle = fopen ($file,"r");
-	while ($data = fgetcsv ($handle, 1000, $ch) and count($rows)<$dr+$hd+$offset) {
+	$dataArray = buildFieldArray($file,$cdetails);
+	foreach ($dataArray as $dataRow) {
 		if ($row >= $offset) {
+			$data = split("#",$dataRow);
 		   	$rows[] = $data;
-		    $num = count ($data);
+		    $num = count($data);
 			if ($num>$col) $col = $num;
 		}
+		if ($xlrow>0 and $row > ($xlrow)-2) break;
 		$row++;
 	}
-	fclose ($handle);
-
 	for ($x=0;$x < count($rows);$x++) {
         $tmp = $rows[$x];
         $rows[$x] = array_pad($tmp,$col,"");
 	}
-
 	include(PATH_TO_ADDONDIR."/limporter/lim-preview_table.php");
-
 } // isset($file)
 else {
 	echo "<BR>Limporter Preview <BR>";
