@@ -109,13 +109,13 @@ if ($action == "tipp") {
       // Benutzer nicht gefunden
       if($_SESSION["lmotipperok"]==-2){?> 
           <tr>
-            <td class="error" align="right" colspan="3"><? echo $text['tipp'][43]; ?></td>
+            <td align="right" colspan="3"><? echo getMessage($text['tipp'][43],TRUE); ?></td>
           </tr><? 
       }
       // Benutzer nicht freigeschaltet
       if(isset($xtippersub) & $_SESSION["lmotipperok"]=="" && !isset($emailbody)){?> 
           <tr>
-            <td class="error" align="right" colspan="3"><? echo $text['tipp'][148]; ?></td>
+            <td align="right" colspan="3"><? echo getMessage($text['tipp'][148],TRUE); ?></td>
           </tr><? 
       }?>
           <tr>
@@ -125,7 +125,7 @@ if ($action == "tipp") {
       // Passwort falsch 
       if($_SESSION["lmotipperok"]==-1){ $xtippername2=$_SESSION["lmotippername"];  ?> 
           <tr>
-            <td class="error" align="right" colspan="3"><? echo $text['tipp'][42]; ?></td>
+            <td align="right" colspan="3"><? echo getMessage($text['tipp'][42],TRUE); ?></td>
           </tr><? 
       }?>
           <tr>

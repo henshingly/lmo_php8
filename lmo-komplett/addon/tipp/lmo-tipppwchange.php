@@ -16,25 +16,21 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+$xtipperpass=isset($_REQUEST['xtipperpass'])?$_REQUEST['xtipperpass']:'';
+$xtipperpassneu=isset($_REQUEST['xtipperpassneu'])?$_REQUEST['xtipperpassneu']:'';
+$xtipperpassneuw=isset($_REQUEST['xtipperpassneuw'])?$_REQUEST['xtipperpassneuw']:'';
+$newpage=isset($_REQUEST['newpage'])?1:0;
+
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if (($action == "tipp") && ($todo == "pwchange")) {
-  if (!isset($xtipperpass)) {
-    $xtipperpass = "";
-  }
-  if (!isset($xtipperpassneu)) {
-    $xtipperpassneu = "";
-  }
-  if (!isset($xtipperpassneuw)) {
-    $xtipperpassneuw = "";
-  }
+
   $users = array("");
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
   $datei = fopen($pswfile, "rb");
-  while (!feof($datei)) {
+  while ($datei && !feof($datei)) {
     $zeile = fgets($datei, 1000);
-    $zeile = trim(chop($zeile));
+    $zeile = trim($zeile);
     if ($zeile != "") {
       if ($zeile != "") {
         array_push($users, $zeile);
@@ -42,6 +38,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     }
   }
   fclose($datei);
+  
   $gef = 0;
   for($i = 1; $i < count($users) && $gef == 0; $i++) {
     $dummb = explode('|', $users[$i]);
@@ -54,7 +51,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   if ($gef == 0) {
     exit;
   }
-   
+
   if ($newpage != 1) {
     if ($dummb[5] == "") {
       $xtippervereinradio = 0;
@@ -68,7 +65,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     $xtipperpass = trim($xtipperpass);
     if ($xtipperpass != $dummb[1]) {
       $newpage = 0;
-      echo "<p class='error'>".$text['tipp'][42]."</p><br>";
+      echo getMessage($text['tipp'][42],TRUE);
     }
   }
    
@@ -76,15 +73,15 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     $xtipperpassneu = trim($xtipperpassneu);
     if ($xtipperpassneu == "") {
       $newpage = 0;
-      echo "<p class='error'>".$text['tipp'][69]."</p><br>";
+      echo getMessage($text['tipp'][69],TRUE);
     } elseif(strlen($xtipperpassneu) < 3) {
       $newpage = 0;
-      echo "<p class='error'>".$text['tipp'][73]."</p><br>";
+      echo getMessage($text['tipp'][73],TRUE);
     }
     $xtipperpassneuw = trim($xtipperpassneuw);
     if ($xtipperpassneuw != $xtipperpassneu) {
       $newpage = 0;
-      echo "<p class='error'>".$text['tipp'][70]."</p><br>";
+      echo getMessage($text['tipp'][70],TRUE);
     }
   }
    
@@ -133,7 +130,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   }
   if($newpage==1){ /* erfolgreich */?>
   <tr>
-    <td class="message" align="center"><img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt=""> <?=$text['tipp'][121]; ?></td>
+    <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
   </tr>
   <tr>
     <td class="lmoFooter" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>

@@ -60,11 +60,11 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
   if (file_exists($file)) {
     $einsichtdatei = fopen($einsichtfile, "wb");
     if (!$einsichtdatei) {
-      echo "<p class='error'>".$text['tipp'][157]." ".$einsichtfile.$text[283]."</p>";
+      echo getMessage($text['tipp'][157]." ".$einsichtfile.$text[283],TRUE);
       exit;
     }
     flock($einsichtdatei, 2);
-    echo "<p class='message'>".$text['tipp'][157]." ".$liga." ".$text['tipp'][65]."</p>";
+    echo getMessage($text['tipp'][157]." ".$liga." ".$text['tipp'][65]);
      
     for($k = 0; $k < $anztipper; $k++) {
       // durchlaufe alle Tipper

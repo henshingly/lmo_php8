@@ -57,12 +57,12 @@ if ($newpage==1) {
       if (strtolower($dummb1[0])==strtolower($xtippernick)) {
         $newpage=0;
         // Nick schon vorhanden
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][24]."</p>";
+        echo getMessage($text['tipp'][24],TRUE);
       }
       if (strtolower($dummb1[4])==strtolower($xtipperemail)) {
         $newpage=0;
         // Email schon vorhanden
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][201]."</p>";
+        echo getMessage($text['tipp'][201],TRUE);
       }
     }
   }
@@ -72,56 +72,56 @@ if ($newpage==1) {
 if ($newpage==1) {
   if ($xtippernick=="") {
     $newpage=0;
-    echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][112]."</p>";
+    echo getMessage($text['tipp'][112],TRUE);
   }
   if (preg_match('/[\W|_]/',$xtippernick)!=0) {
     $newpage=0;
-    echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][109]."</p>";
+    echo getMessage($text['tipp'][109],TRUE);
   }
   if ($tipp_realname!=0) {
     if ($xtippervorname=="") {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][66]."</p>";
+      echo getMessage($text['tipp'][66],TRUE);
     }
     if ($xtippernachname=="") {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][67]."</p>";
+      echo getMessage($text['tipp'][67],TRUE);
     }
     if (strpos($xtippernachname, " ")!=false || strpos($xtippervorname, " ")>-1) {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][109]."</p>";
+      echo getMessage($text['tipp'][109],TRUE);
     }
   }
   if ($tipp_adresse==1) {
     if ($xtipperstrasse=="") {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][129]."</p>";
+      echo getMessage($text['tipp'][129],TRUE);
     }
     if ($xtipperplz=="") {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][130]."</p>";
+      echo getMessage($text['tipp'][130],TRUE);
     }
     if ($xtipperort=="") {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][131]."</p>";
+      echo getMessage($text['tipp'][131],TRUE);
     }
   }
   if ($xtipperemail=="" || strpos($xtipperemail, " ")>0 || strpos($xtipperemail, "@")<1 || $xtipperemail!= $xtipperemail2) {
     $newpage=0;
-    echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][68]."</p>";
+    echo getMessage($text['tipp'][68],TRUE);
   }
   
   if ($tipp_freischaltcode!=1) {
     if ($xtipperpass=="") {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][69]."</p>";
+      echo getMessage($text['tipp'][69],TRUE);
     } else if (strlen($xtipperpass)<3) {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][73]."</p>";
+      echo getMessage($text['tipp'][73],TRUE);
     }
     if ($xtipperpassw!=$xtipperpass) {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][70]."</p>";
+      echo getMessage($text['tipp'][70],TRUE);
     }
   } else {
     $xtipperpass=substr(md5(uniqid(rand())),0,rand(8,16));
@@ -130,7 +130,7 @@ if ($newpage==1) {
   if ($xtippervereinradio==1) {
     if ($xtippervereinalt=="") {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][71]."</p>";
+      echo getMessage($text['tipp'][71],TRUE);
     } else {
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
     }
@@ -138,7 +138,7 @@ if ($newpage==1) {
   if ($xtippervereinradio==2) {
     if ($xtippervereinneu=="") {
       $newpage=0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][72]."</p>";
+      echo getMessage($text['tipp'][72],TRUE);
     } else {
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
     }
@@ -332,7 +332,7 @@ if($newpage==1){ // Anmeldung erfolgreich
       <table width="100%" class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <caption><?=$text['tipp'][13]; ?></caption>
         <tr>
-          <td class="message" align="center"><img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt="">  <?=$text['tipp'][20]; ?></td>
+          <td align="center"><?php echo getMessage($text['tipp'][20]); ?></td>
         </tr>
         <tr>
           <td class="lmoFooter" align="right"><a href="<?=$_SERVER['PHP_SELF']; ?>?action=tipp&amp;todo=logout&amp;">« <?=$text['tipp'][21]; ?></a></td>

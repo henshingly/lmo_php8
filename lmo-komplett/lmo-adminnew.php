@@ -41,7 +41,7 @@ if ($newpage == 0) {
 }
 if ($newpage == 1) {
   if (file_exists($dirliga.$xfile.".l98")) {
-    echo "<p class='error'>".$text[280]."</p>";
+    echo getMessage($text[280],TRUE);
     $newpage = 0;
   }
 }

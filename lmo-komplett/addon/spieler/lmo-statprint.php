@@ -174,7 +174,7 @@ if ($filepointer = fopen($filename, "r+b")) {
       </table>
       <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?=$text[562]?><\/a><\/small>');</script><?
 }else{?>
-  <p class="error"><?=$text['spieler'][14]?></p><?
+  <?php echo getMessage($text['spieler'][14],TRUE);?><?
 }
 function cmpInt ($a1, $a2) {
   global $sort;

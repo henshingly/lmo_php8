@@ -30,7 +30,7 @@ if ($file != "") {
     $mspez0 = 0;
     $daten = array();
     $sekt = "";
-    if ($datei = fopen(PATH_TO_LMO.$dirliga.basename($file), "rb")) {
+    if ($datei = fopen(PATH_TO_LMO.'/'.$dirliga.basename($file), "rb")) {
       while (!feof($datei)) {
         $zeile = fgets($datei, 1000);
         $zeile = trim($zeile);

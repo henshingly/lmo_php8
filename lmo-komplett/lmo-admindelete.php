@@ -26,9 +26,9 @@ if (($action == "admin") && ($todo == "delete") && ($_SESSION['lmouserok'] == 2)
   }
   if ($del == 1) {
     if (@unlink($dfile)) {
-      echo "<p class='message'>".$dfile." ".$text[297]."</p>";
+      echo getMessage($dfile." ".$text[297]);
     } else {
-      echo "<p class='error'>".$dfile." ".$text[298]."</p>";
+      echo getMessage($dfile." ".$text[298],TRUE);
     }
   }?>
 <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">

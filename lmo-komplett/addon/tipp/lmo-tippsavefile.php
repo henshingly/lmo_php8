@@ -42,16 +42,16 @@ if ($tippfile != "") {
      
     $datei = fopen($tippfile, "wb");
     if (!$datei) {
-      echo "<p class='error'>".$text[283]."</p>";
+      echo getMessage($text[283],TRUE);
       exit;
     } elseif($todo != "newtipper" && $todo != "newligen" && $todo != "tippuseredit") {
       if (!isset($jkspanticheat)) {
         $jkspanticheat = false;
       }
       if ($jkspanticheat == false) {
-        echo "<p class='message'>".$text['tipp'][41]."<br></p>";
+        echo getMessage($text['tipp'][41]);
       } else {
-        echo "<p class='message'>".$text['tipp'][41]." ".$text['tipp'][292]."<br></p>";
+        echo getMessage($text['tipp'][41]." ".$text['tipp'][292]);
       }
     }
     flock($datei, 2);

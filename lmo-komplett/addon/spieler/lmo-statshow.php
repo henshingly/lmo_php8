@@ -281,7 +281,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
   </tr>
 </table><?
 }else{?>
-  <p class="error"><?=$text['spieler'][14]?></p><?
+  <?php echo getMessage($text['spieler'][14],TRUE);?><?
 }
 function cmpInt ($a1, $a2) {
   global $sort;

@@ -53,7 +53,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
     $xtipperpass = trim($xtipperpass);
     if ($xtipperpass != $dummb[1]) {
       $newpage = 0;
-      echo "<p class='error'>".$text['tipp'][42]."</p><br>";
+      echo getMessage($text['tipp'][42],TRUE);
     }
   }
    
@@ -104,7 +104,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
       </td><? 
   }
   if($newpage==1){ /* erfolgreich*/?>
-      <td class="message" align="center"><img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt=""> <?=$text['tipp'][121]; ?></td>
+      <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
     </tr>
     <tr>
       <td class="lmoFooter" colspan="2" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?=$text['tipp'][141]; ?></a></td>

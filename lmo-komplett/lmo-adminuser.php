@@ -83,7 +83,7 @@ if ($_SESSION['lmouserok']==2) {
       require(PATH_TO_LMO."/lmo-loadauth.php");
       $show=count($lmo_admin_data)-1;
     } else {
-      echo "<p class='error'>".$text[567]."</p>";
+      echo getMessage($text[567],TRUE);
       $show=-1;
     }
   } 

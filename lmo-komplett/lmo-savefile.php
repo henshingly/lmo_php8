@@ -33,7 +33,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
       $datei = fopen(PATH_TO_LMO.'/'.$dirliga.$file,"wb");
       
       if ($datei) {
-        echo "<p class='message'>".$text[138]."</p>";
+        echo getMessage($text[138]);
         flock($datei,LOCK_EX);
         fputs($datei,"[Options]\n");
         fputs($datei,"Title=".$text[54]."\n");
@@ -228,7 +228,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         flock($datei,LOCK_UN);
         fclose($datei);
       } else {
-        echo "<p class='error'>".$text[283]."</p>";
+        echo getMessage($text[283],TRUE);
       }
       clearstatcache();
     }

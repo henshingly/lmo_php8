@@ -259,7 +259,7 @@ function phpLinkCheck($url, $r = FALSE)
   
   $url = trim($url);
   if (!preg_match("=://=", $url)) $url = "http://$url";
-  $url = @parse_url($url);
+  $url = parse_url($url);
   if (strtolower($url["scheme"]) != "http") return FALSE;
 
   if (!isset($url["port"])) $url["port"] = 80;

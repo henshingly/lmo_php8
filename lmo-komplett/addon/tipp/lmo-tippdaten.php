@@ -79,39 +79,39 @@ if (($action == "tipp") && ($todo == "daten")) {
     if ($tipp_realname != 0) {
       if ($xtippervorname == "") {
         $newpage = 0;
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][66]."</p>";
+        echo getMessage($text['tipp'][66],TRUE);
       }
       if ($xtippernachname == "") {
         $newpage = 0;
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][67]."</p>";
+        echo getMessage($text['tipp'][67],TRUE);
       }
       if (strpos($xtippernachname, " ") != false || strpos($xtippervorname, " ") > -1) {
         $newpage = 0;
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][109]."</p>";
+        echo getMessage($text['tipp'][109],TRUE);
       }
     }
     if ($tipp_adresse == 1) {
       if ($xtipperstrasse == "") {
         $newpage = 0;
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][129]."</p>";
+        echo getMessage($text['tipp'][129],TRUE);
       }
       if ($xtipperplz == "") {
         $newpage = 0;
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][130]."</p>";
+        echo getMessage($text['tipp'][130],TRUE);
       }
       if ($xtipperort == "") {
         $newpage = 0;
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][131]."</p>";
+        echo getMessage($text['tipp'][131],TRUE);
       }
     }
     if ($xtipperemail=="" || strpos($xtipperemail, " ")>0 || strpos($xtipperemail, "@")<1 || $xtipperemail!= $xtipperemail2) {
       $newpage = 0;
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][68]."</p>";
+      echo getMessage($text['tipp'][68],TRUE);
     }
     if ($xtippervereinradio == 1) {
       if ($xtippervereinalt == "") {
         $newpage = 0;
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][71]."</p>";
+        echo getMessage($text['tipp'][71],TRUE);
       } else {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
       }
@@ -120,7 +120,7 @@ if (($action == "tipp") && ($todo == "daten")) {
       $xtippervereinneu = trim($xtippervereinneu);
       if ($xtippervereinneu == "") {
         $newpage = 0;
-        echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][72]."</p>";
+        echo getMessage($text['tipp'][72],TRUE);
       } else {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
       }
@@ -269,7 +269,7 @@ if (($action == "tipp") && ($todo == "daten")) {
             </td>
           </tr>
           <tr>
-            <td class="error" colspan="3" align="left"><?="<strong>".$text['tipp'][82]."</strong> ".$text['tipp'][137]; ?></td>
+            <td colspan="3" align="left"><?php echo getMessage("<strong>".$text['tipp'][82]."</strong> ".$text['tipp'][137],TRUE); ?></td>
           </tr>
 <?  } ?>
         </table>
@@ -278,7 +278,7 @@ if (($action == "tipp") && ($todo == "daten")) {
   </tr><?
   } else { /* Anmeldung erfolgreich */?>
   <tr>
-    <td class="message" align="center"><img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt="">  <?=$text['tipp'][121]; ?></td>
+    <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
   </tr>
   <tr>
     <td class="lmoFooter" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>

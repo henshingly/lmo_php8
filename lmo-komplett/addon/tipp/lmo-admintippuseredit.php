@@ -76,7 +76,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
 
     if(substr_count($tipp_tipperdaten[3], " ")>1){
       $newpage=0;
-      echo "<p class='error'>".$text['tipp'][109]."</p>";
+      echo getMessage($text['tipp'][109],TRUE);
     }
 
     $tipp_tipperdaten[4]=isset($_POST['xtipperemail'])?                                         trim($_POST['xtipperemail']):        "";
@@ -90,14 +90,14 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
       $xtippervereinalt=trim($xtippervereinalt);
       if($xtippervereinalt==""){
         $newpage=0;
-        echo "<p class='error'>".$text['tipp'][71]."</p>";
+        echo getMessage($text['tipp'][71],TRUE);
       }else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
     }
     if($xtippervereinradio==2){
       $xtippervereinneu=trim($xtippervereinneu);
       if($xtippervereinneu==""){
         $newpage=0;
-        echo "<p class='error'>".$text['tipp'][72]."</p>";
+        echo getMessage($text['tipp'][72],TRUE);
       }else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
     }
   }

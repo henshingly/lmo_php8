@@ -29,9 +29,9 @@ if($_SESSION['lmouserok']==2){
       if (count($lmo_admin)>1) fputs($datei,implode("|",$lmo_admin)."\n");
     }
     flock($datei,LOCK_UN);
-    echo "<p class='message'>".$text[138]."</p>";
+    echo getMessage($text[138]);
   }else{
-      echo "<p class='error'>".$text[283]."</p>";
+      echo getMessage($text[283],TRUE);
   }
 }
 ?>

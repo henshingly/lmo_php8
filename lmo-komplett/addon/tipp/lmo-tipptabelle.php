@@ -201,7 +201,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     } else {
       echo "<td class=\"".$lmo_tabelle_class."\">&nbsp;</td>";
     }?>
-          <td class="<?=$lmo_tabelle_class?>" align="center"><?=getSmallImage($teams[$i])?> </td>
+          <td class="<?=$lmo_tabelle_class?>" align="center"><?=getSmallImage($teams[$i])?>&nbsp;</td>
           <td class="<?=$lmo_tabelle_class; ?> nobr" align="left"> <?
     echo $dummy.$teams[$i].$dumm2;
     if (($teamu[$i]!="") && ($urlt==1)) {
