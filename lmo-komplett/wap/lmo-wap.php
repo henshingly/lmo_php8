@@ -11,14 +11,14 @@ Dies ist die sogenantne Userseite, die auf dem Handy per WAP
 die aktuellen Ergebnisse und Tabelle anzeigt
 */
 
-include("lmo-cfgload.php");
-$addi=$PHP_SELF."?file=";
-$home=$PHP_SELF;
+require_once("init.php");
+$_SERVER['PHP_SELF']=$_SERVER['PHP_SELF']."?wap_file=";
+$home=$_SERVER['PHP_SELF'];
 
 
 function index($dirliga)
 {
-global $addi, $home;
+global $_SERVER['PHP_SELF'], $home;
 
 echo("<card id=\"index\" title=\"Ergebnisdienst\">\n");
 echo("<p>\n");
@@ -101,7 +101,7 @@ if($ftype!=""){
 	$t0=str_replace("ß","ß",$t0);
 	
 ?>
-<small><<?php echo "a href='$addi$dirliga$files&amp;op=nav&amp;st=$t1'>".$t0."</a><br/>".date("d.m.y H:i",filemtime($dirliga.$files)).$t3."</small><br/>\n";  
+<small><<?php echo "a href='{$_SERVER['PHP_SELF']}$dirliga$files&amp;op=nav&amp;st=$t1'>".$t0."</a><br/>".date("d.m.y H:i",filemtime($dirliga.$files)).$t3."</small><br/>\n";  
  }
  if($i==0){echo "".$text[223]."";}
 }
@@ -114,7 +114,7 @@ echo("</card>\n");
 
 function navigation($file, $st)
 {
-global $addi, $home;
+global $_SERVER['PHP_SELF'], $home;
 
 echo("<card id=\"auswahl\" title=\"Auswahl\">\n");
 
@@ -124,9 +124,9 @@ require("lmo-openfile.php");
 require("lmo-langload.php");
 if($lmtype==0){
 echo("<p align='center'>\n");
-echo("<a href=\"".$addi.$file."&amp;op=day&amp;st=$st\">".$text[10]."</a><br/>\n");
-echo("<a href=\"".$addi.$file."&amp;op=table&amp;st=$st\">".$text[16]."</a><br/>\n");
-echo("<a href=\"".$addi.$file."&amp;op=help&amp;st=$st\">".$text[20]."</a>\n");
+echo("<a href=\"".$_SERVER['PHP_SELF'].$file."&amp;op=day&amp;st=$st\">".$text[10]."</a><br/>\n");
+echo("<a href=\"".$_SERVER['PHP_SELF'].$file."&amp;op=table&amp;st=$st\">".$text[16]."</a><br/>\n");
+echo("<a href=\"".$_SERVER['PHP_SELF'].$file."&amp;op=help&amp;st=$st\">".$text[20]."</a>\n");
 }
 //Ausgabe Pokal
 else{
@@ -171,7 +171,7 @@ else{
     elseif($i==$anzst-3){$j=$text[358];}
     else{$j=$i;$k=$text[366];}
     if($i<>$st){
-      echo "<a href='".$addi.$file."&amp;op=nav&amp;st=".$i."'>".$j."</a>";
+      echo "<a href='".$_SERVER['PHP_SELF'].$file."&amp;op=nav&amp;st=".$i."'>".$j."</a>";
       }
     else{
       echo $j;
@@ -265,7 +265,7 @@ echo $goalb[$st-1][$i][$n];
 echo $mspez[$st-1][$i][$n];
 echo "<br/>\n";
 }} 
-echo("<a href='".$addi.$file."&amp;op=help&amp;st=$st'>".$text[20]."</a>\n");
+echo("<a href='".$_SERVER['PHP_SELF'].$file."&amp;op=help&amp;st=$st'>".$text[20]."</a>\n");
 }
 //Ausgabe Pokal Ende
 
@@ -277,7 +277,7 @@ echo("</card>\n");
 function show_day($file, $st)
 {
 
-global $addi, $home;
+global $_SERVER['PHP_SELF'], $home;
 
 echo("<card id=\"day\" title=\"$st. Spieltag\">\n");
 
@@ -330,12 +330,12 @@ if($file!=""){?>
 }
 echo "</table><p>";
 if($st>1){
-  		echo "<a href=\"".$addi.$file."&amp;op=day&amp;st=".$st_before."\">«</a>&nbsp;\n";
+  		echo "<a href=\"".$_SERVER['PHP_SELF'].$file."&amp;op=day&amp;st=".$st_before."\">«</a>&nbsp;\n";
 	}if($st<$anzst){
-  	echo "<a href=\"".$addi.$file."&amp;op=day&amp;st=".$st_next."\">»</a>\n";
+  	echo "<a href=\"".$_SERVER['PHP_SELF'].$file."&amp;op=day&amp;st=".$st_next."\">»</a>\n";
   }
   echo "<br/>";	?>
-<br/><a href="<?=$addi.$file;?>&amp;op=table&amp;st=<?=$st?>"><?=$text[16];?></a> | <a href="<?=$addi.$file;?>&amp;op=help&amp;st=<?=$st?>"><?=$text[20];?></a><?
+<br/><a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=table&amp;st=<?=$st?>"><?=$text[16];?></a> | <a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=help&amp;st=<?=$st?>"><?=$text[20];?></a><?
 } 
 echo("<br/><a href='$home'><small>Home</small></a>");
 // Anzeige Spieltag Ende
@@ -349,7 +349,7 @@ echo("</card>\n");
 function show_table($file, $st)
 {
 
-global $addi, $home;
+global $_SERVER['PHP_SELF'], $home;
 
 echo("<card id=\"tab\" title=\"$st. Spieltag\">\n");
 echo("<p>\n");
@@ -406,7 +406,7 @@ if($lmtype==0){
 
 	}
 }?>
-<br/><a href="<?=$addi.$file;?>&amp;op=day&amp;st=<?php echo $st; ?>"><?=$text[10];?></a> | <a href="<?=$addi.$file;?>&amp;op=help&amp;st=<?php echo $st; ?>"><?=$text[20];?></a><?
+<br/><a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=day&amp;st=<?php echo $st; ?>"><?=$text[10];?></a> | <a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=help&amp;st=<?php echo $st; ?>"><?=$text[20];?></a><?
 echo("<br/><a href='$home'><small>Home</small></a>");
 
 echo("</p>\n");
@@ -415,7 +415,7 @@ echo("</card>\n");
 
 function help($file, $st)
 {
-global $addi, $home;
+global $_SERVER['PHP_SELF'], $home;
 
 echo("<card id=\"help\" title=\"Hilfe\">\n");
 echo("<p><small>");
@@ -444,7 +444,7 @@ for($j=0;$j<$anzteams;$j++){
 	echo "<b>".$teamk[$j1]."</b>=<br/>".$teams[$j1]."<br/>---<br/>\n";
 }
 echo "</small>";
-echo("<br/><a href=\"".$addi.$file."&amp;op=nav&amp;st=$st\">zurück</a>");
+echo("<br/><a href=\"".$_SERVER['PHP_SELF'].$file."&amp;op=nav&amp;st=$st\">zurück</a>");
 echo("</p>\n");
 echo("</card>\n");
 }//function help Ende
