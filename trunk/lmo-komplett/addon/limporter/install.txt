@@ -9,7 +9,7 @@ _______________________Installation: Limporter-Addon für LMO v3.99______________
 #                                                                                               #
 #################################################################################################
 
-In der lmo-tippernew.php folgende Änderungen vornehmen:
+lmo-tippernew.php:
 
 ###########
 Suche nach:
