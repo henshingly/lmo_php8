@@ -383,10 +383,10 @@ if ($file != "") {
             <th colspan="<?=$breite-13; ?>">&nbsp;</th><? 
   }
   if($lmtype==0){ ?>
-            <th class="nobr"><acronym title="<?=$text[213] ?>"><?=$text[217]; ?></acronym></th><? 
+            <th class="nobr"><acronym title="<?=$text[213] ?>"><img src="<?=URL_TO_IMGDIR;?>/paragraph.gif" width="17" height="17" alt="<?=$text[217]; ?>"></acronym></th><? 
   }?>
-            <th class="nobr"><acronym title="<?=$text[112] ?>"><?=$text[218]; ?></acronym></th>
-            <th class="nobr"><acronym title="<?=$text[263] ?>"><?=$text[262]; ?></acronym></th><? 
+            <th class="nobr"><acronym title="<?=$text[112] ?>"><img src="<?=URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?=$text[218]; ?>"></acronym></th>
+            <th class="nobr"><acronym title="<?=$text[263] ?>"><img src="<?=URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?=$text[262]; ?>"></acronym></th><? 
   if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
             <th class="nobr"><acronym title="<?=$text['tipp'][57] ?>"><?=$text['tipp'][57]; ?></acronym></th><? 
   }?>
@@ -479,16 +479,16 @@ if ($file != "") {
             </td><? 
       }?>
             <td width="2">&nbsp;</td>
-            <td>
-              <select class="lmo-formular-input" name="xmsieg<?=$i; ?>" onChange="dolmoedit()">
+            <td align="center">
+              <select id="gT<?=$i?>" class="lmo-formular-input" name="xmsieg<?=$i; ?>" onChange="dolmoedit()">
                 <option value="0"<?if($msieg[$st-1][$i]==0){echo " selected";}?>>_</option>
                 <option value="1"<?if($msieg[$st-1][$i]==1){echo " selected";}?>><?=$text[214]?></option>
                 <option value="2"<?if($msieg[$st-1][$i]==2){echo " selected";}?>><?=$text[215]?></option>
                 <option value="3"<?if($msieg[$st-1][$i]==3){echo " selected";}?>><?=$text[216]?></option>
-              </select>
+              </select><script type="text/javascript">document.getElementById('gT<?=$i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'gT<?=$i?>\').style.display=\'inline\';return false;">+</a>');</script>
             </td>
-            <td><input class="lmo-formular-input" type="text" name="xmnote<?=$i; ?>" size="16" maxlength="255" value="<?=htmlentities($mnote[$st-1][$i]); ?>" onChange="dolmoedit()"></td>
-            <td><input class="lmo-formular-input" type="text" name="xmberi<?=$i; ?>" size="16" maxlength="255" value="<?=htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"></td><? 
+            <td align="center"><input id="n<?=$i?>" class="lmo-formular-input" type="text" name="xmnote<?=$i; ?>" size="16" maxlength="255" value="<?=htmlentities($mnote[$st-1][$i]); ?>" onChange="dolmoedit()"><script type="text/javascript">document.getElementById('n<?=$i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?=$i?>\').style.display=\'inline\';return false;">+</a>');</script></td>
+            <td align="center"><input id="s<?=$i?>" class="lmo-formular-input" type="text" name="xmberi<?=$i; ?>" size="16" maxlength="255" value="<?=htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><script type="text/javascript">document.getElementById('s<?=$i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?=$i?>\').style.display=\'inline\';return false;">+</a>');</script></td><? 
       /*Tippspiel-Addon*/
       if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
             <td>
