@@ -20,7 +20,5 @@ for($j=0;$j<$anzteams;$j++){
 	$teams[$j1]=str_replace("Ü","&#xDC;",$teams[$j1]);
 	$teams[$j1]=str_replace("ß","&#xDF;",$teams[$j1]);
 	echo "<b>".$teamk[$j1]."</b>=<br/>".$teams[$j1]."<br/>---<br/>\n";
-}
-echo "</small>";
-echo("<br/><a href=\"".$addi.$file."&amp;op=nav\">zurück</a>");
-?>
+}?>
+</small><br/><a href='<?=$_SERVER['PHP_SELF']."?wap_file=$file"?>&amp;op=nav'>zurück</a>

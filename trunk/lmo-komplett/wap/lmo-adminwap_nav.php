@@ -3,9 +3,9 @@ echo("<card id=\"auswahl\" title=\"Auswahl\">\n");
 echo("<p>\n");
 
 if($lmtype==0){
-echo("<a href=\"".$addi.$file."&amp;op=day&amp;st=$st\">".$text[10]."</a><br/>\n");
-echo("<a href=\"".$addi.$file."&amp;op=table&amp;st=$st\">".$text[16]."</a><br/>\n");
-echo("<a href=\"".$addi.$file."&amp;op=help&amp;st=$st\">".$text[20]."</a>\n");
+echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=day&amp;st=$st'>".$text[10]."</a><br/>\n");
+echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=table&amp;st=$st'>".$text[16]."</a><br/>\n");
+echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=help&amp;st=$st'>".$text[20]."</a>\n");
 }
 //Ausgabe Pokal
 else{
@@ -49,7 +49,7 @@ else{
     elseif($i==$anzst-3){$j=$text[358];}
     else{$j=$i;$k=$text[366];}
     if($i<>$st){
-      echo "<a href='".$addi.$file."&amp;op=nav&amp;st=".$i."'>".$j."</a>";
+      echo "<a href='".$_SERVER['PHP_SELF']."?wap_file=$file&amp;op=nav&amp;st=".$i."'>".$j."</a>";
       }
     else{
       echo $j;
@@ -143,8 +143,8 @@ echo $goalb[$st-1][$i][$n];
 echo $mspez[$st-1][$i][$n];
 echo "<br/>\n";
 }} 
-echo("<a href='".$addi.$file."&amp;op=help&amp;st=$st'>".$text[20]."</a>\n");
+echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=help&amp;st=$st'>".$text[20]."</a>\n");
 }
 //Ausgabe Pokal Ende
-echo("<br/><small><a href=\"".$home."\">Home</a></small>\n");
 ?>
+<br/><small><a href="<?=$_SERVER['PHP_SELF']?>">Home</a></small>

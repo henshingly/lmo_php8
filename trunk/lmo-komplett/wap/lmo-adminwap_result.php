@@ -50,11 +50,11 @@ if($file!=""){?>
 }
 echo "</table><p>";
 if($st>1){
-  		echo "<a href=\"".$addi.$file."&amp;op=day&amp;st=".$st_before."\">«</a>&nbsp;\n";
+  		echo "<a href=\"".$_SERVER['PHP_SELF']."?wap_file=$file"."&amp;op=day&amp;st=".$st_before."\">«</a>&nbsp;\n";
 	}?>
   <anchor>
 	Speichern
-	<go href="<?php echo $addi.$file; ?>&amp;op=save&amp;st=<?php echo $st; ?>" method="post">
+	<go href="<?php echo $_SERVER['PHP_SELF']."?wap_file=$file"; ?>&amp;op=save&amp;st=<?php echo $st; ?>" method="post">
 		<?php
 		for($i=0;$i<$anzsp;$i++)
 		{ 
@@ -71,11 +71,11 @@ if($st>1){
 	</go> 
 </anchor><?
   if($st<$anzst){
-  	echo "<a href=\"".$addi.$file."&amp;op=day&amp;st=".$st_next."\">»</a>\n";
+  	echo "<a href=\"".$_SERVER['PHP_SELF']."?wap_file=$file&amp;op=day&amp;st=".$st_next."\">»</a>\n";
   }
   echo "<br/>";	?>
-<br/><a href="<?=$addi.$file;?>&amp;op=table&amp;st=<?php echo $st; ?>"><?=$text[16];?></a> | <a href="<?=$addi.$file;?>&amp;op=help&amp;st=<?php echo $st; ?>"><?=$text[20];?></a><?
+<br/><a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=table&amp;st=<?=$st?>"><?=$text[16];?></a> | <a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=help&amp;st=<?php echo $st; ?>"><?=$text[20];?></a><?
 } 
-echo("<br/><a href='$home'><small>Home</small></a>");
+echo("<br/><a href='{$_SERVER['PHP_SELF']}'><small>Home</small></a>");
 // Anzeige Spieltag Ende
 ?>

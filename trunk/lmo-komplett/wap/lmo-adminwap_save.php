@@ -4,7 +4,7 @@ echo("<p>\n");
 
 ########################### Abspeichern der Ergebnisse #########################################################
 
-	require_once("ini.fct");
+	require_once(PATH_TO_LMO."/ini.fct");
 	
 	$result = FALSE;
 	
@@ -15,7 +15,7 @@ echo("<p>\n");
 		if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0))
 		{ 
                          // Einlesen der Tore der Heimmannschaften
-			$Tmp = ReadIniValue($file, "Round".$st, "GA".$spielid);       
+			$Tmp = ReadIniValue(PATH_TO_LMO.'/'.$file, "Round".$st, "GA".$spielid);       
                          // wurde noch kein Ergebnis eingetragen, dann steht dort -1
 		   if ($Tmp == "-1")
 		   {
@@ -28,9 +28,9 @@ echo("<p>\n");
 				if ($heim_goal!="" && $gast_goal!="")
 				{
 					                   // darf eingetragen werden
-			      $result1 = WriteIniValue($file, "Round".$st, "GA".$spielid, $heim_goal); 
-			      $result2 = WriteIniValue($file, "Round".$st, "GB".$spielid, $gast_goal);
-			      $result3 = WriteIniValue($file, "Options", "Actual", $st);
+			      $result1 = WriteIniValue(PATH_TO_LMO.'/'.$file, "Round".$st, "GA".$spielid, $heim_goal); 
+			      $result2 = WriteIniValue(PATH_TO_LMO.'/'.$file, "Round".$st, "GB".$spielid, $gast_goal);
+			      $result3 = WriteIniValue(PATH_TO_LMO.'/'.$file, "Options", "Actual", $st);
 					$result = $result1 && $result2 && $result3;  
 				}#  Ende if (${$heimtore}!="" && ${$gasttore}!="")
 			 } # Ende if ($Tmp == "-1")
@@ -43,7 +43,7 @@ echo("<p>\n");
 		echo "Speicherung fehlgeschlagen";
 	?>
 	<br/>
-	<a href="<?php echo $addi.$file; ?>&amp;op=day">zur&#xFC;ck</a>
+	<a href="<?php echo $_SERVER['PHP_SELF']."?wap_file=$file"; ?>&amp;op=day">zur&#xFC;ck</a>
 <?php
 ################################################################################################################
 ?>

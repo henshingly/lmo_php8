@@ -14,16 +14,15 @@ echo("<card id=\"login\" title=\"Login\">\n");
 echo("<p align='center'><b>LMO-Wapadmin</b></p>\n");
 echo("<p>\n");
 ?>
-	Login: <input type="text" name="var_login" value="" emptyok="false"/>
+	Login: <input type="text" name="wap_username" value="" emptyok="false"/>
 	<br/>
-	Passwort: <input type="password" name="var_pwd" value="" emptyok="false"/>
+	Passwort: <input type="password" name="wap_userpass" value="" emptyok="false"/>
 	<br/>
 	<anchor>
 		<small>Einloggen</small>
-		<go href="<?php echo $addi; ?>" method="post">
-			<postfield name="login" value="$(var_login)"/>
-			<postfield name="pwd" value="$(var_pwd)"/>
+		<go href="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<postfield name="wap_username" value="$(wap_username)"/>
+			<postfield name="wap_userpass" value="$(wap_userpass)"/>
       <postfield name="op" value="liga"/>
-      <postfield name="check" value="1"/>
 		</go> 
 	</anchor>

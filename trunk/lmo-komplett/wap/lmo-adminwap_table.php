@@ -9,7 +9,7 @@ if($lmtype==0){
 		if ($goalb[$actual-1][$i1]=="-1") $goalb[$actual-1][$i1]="_";
 	}
 	$endtab=$anzst;
-	include("lmo-calctable.php");
+	include(PATH_TO_LMO."/lmo-calctable.php");
 	for($i1=0;$i1<$anzsp;$i1++){
 		if ($goala[$endtab-1][$i1]=="_") $goala[$endtab-1][$i1]="-1";
 		if ($goalb[$endtab-1][$i1]=="_") $goalb[$endtab-1][$i1]="-1";
@@ -53,6 +53,6 @@ if($lmtype==0){
 
 	}
 }?>
-<br/><a href="<?=$addi.$file;?>&amp;op=day&amp;st=<?php echo $st; ?>"><?=$text[10];?></a> | <a href="<?=$addi.$file;?>&amp;op=help&amp;st=<?php echo $st; ?>"><?=$text[20];?></a><?
-echo("<br/><a href='$home'><small>Home</small></a>");
+<br/><a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=day&amp;st=<?=$st?>"><?=$text[10];?></a> | <a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=help&amp;st=<?php echo $st; ?>"><?=$text[20];?></a><?
+echo("<br/><a href='{$_SERVER['PHP_SELF']}'><small>Home</small></a>");
 ?>
