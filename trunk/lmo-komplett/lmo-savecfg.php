@@ -4,6 +4,10 @@
 // Copyright (C) 1997-2002 by Frank Hollwitz
 // webmaster@hollwitz.de / http://php.hollwitz.de
 // 
+// LigaManager Online
+// Edited by: Rene Marth
+// 28.08.2003
+// 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License as
 // published by the Free Software Foundation; either version 2 of
@@ -20,24 +24,31 @@
 // 
 require_once("lmo-admintest.php");
 if($HTTP_SESSION_VARS['lmouserok']==2){
-    $datei = fopen($cfgfile,"wb");
-if (!$datei) {
-    echo "<font color=\"#ff0000\">".$text[283]."</font>";
-    exit;
-}else{
+  $datei = fopen($cfgfile,"wb");
+  if ($datei) {
     echo "<font color=\"#008800\">".$text[138]."</font>";
-}
-    flock($datei,2);
-    fputs($datei,"LeagueDir=".$dirliga."\n");
-    fputs($datei,"PktJustify=".$tabpkt."\n");
-    fputs($datei,"TabOnResults=".$tabonres."\n");
-    fputs($datei,"BackLink=".$backlink."\n");
-    fputs($datei,"CalcTime=".$calctime."\n");
-    fputs($datei,"DefaultTime=".$deftime."\n");
-    fputs($datei,"AdminMail=".$aadr."\n");
-    flock($datei,3);
+    flock($datei,LOCK_EX);
+    foreach($cfgarray as $cfgname => $cfgvalue) {
+      if (is_array($cfgvalue)) {                         // Addonvariablen
+        $addon_datei = fopen($cfgname.'/cfg.txt',"wb");  //Addondatei
+        if ($addon_datei) {
+          flock($datei,LOCK_EX);
+          foreach($cfgvalue as $addon_cfgname => $addon_cfgvalue) {
+            fwrite($addon_datei, $addon_cfgname."=".${$cfgname."_".$addon_cfgname}."\n");
+          }
+          flock($addon_datei,LOCK_UN);
+          fclose($addon_datei);
+          clearstatcache();
+        }
+      }else{                                             // Hauptkonfiguration
+        fwrite($datei, "$cfgname=${$cfgname}\n");
+      }
+    }
+    flock($datei,LOCK_UN);
     fclose($datei);
-
-  clearstatcache();
+    clearstatcache();
+  }else{
+    echo "<font color=\"#ff0000\">".$text[283]."</font>";
+  }
 }
 ?>
