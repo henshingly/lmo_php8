@@ -99,6 +99,7 @@ if (!function_exists('filterZero')) {
 
 if (!function_exists('getSmallImage')) {
   function getSmallImage($team,$alternative_text='') {
+    $team=str_replace("/","",$team);
     if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
       $team=preg_replace("/[^a-zA-Z0-9]/",'',$team);
     }
