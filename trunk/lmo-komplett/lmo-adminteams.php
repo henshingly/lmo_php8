@@ -171,6 +171,16 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
     <td class="lmost4" align="center"><?PHP echo $text[128]; ?></td>
     <td class="lmost4" width="2">&nbsp;</td>
 <?PHP } ?>
+<!-- Hack-Straftore Beginn -->
+<?PHP if($lmtype==0){ ?> 
+    <td class="lmost4" align="center"><?PHP echo $text[522]; ?></td>
+    <td class="lmost4" width="2">&nbsp;</td>
+<?PHP } ?>
+<?PHP if($lmtype==0){ ?>
+    <td class="lmost4" align="center"><?PHP echo $text[524]; ?></td>
+    <td class="lmost4" width="2">&nbsp;</td>
+<?PHP } ?>
+<!-- Hack-Straftore Ende -->	
 <?PHP if($lmtype==0){ ?>
     <td class="lmost4"><?PHP echo $text[404]; ?></td>
     <td class="lmost4" width="2">&nbsp;</td>
@@ -203,6 +213,21 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
       </acronym>
     </nobr></td>
     <td class="lmost5" width="2">&nbsp;</td>
+<!-- Hack-Straftore Beginn -->
+	<td class="lmost5" align="center"><nobr>
+	<acronym title="<?PHP echo $text[521] ?>">
+      <input class="lmoadminein" type="text" name="xtorkorrektur1<?PHP echo $i; ?>" size="4" maxlength="4" value="<?PHP echo $torkorrektur1[$i]; ?>" onChange="dolmoedit()">
+      : <input class="lmoadminein" type="text" name="xtorkorrektur2<?PHP echo $i; ?>" size="4" maxlength="4" value="<?PHP echo $torkorrektur2[$i]; ?>" onChange="dolmoedit()">
+      </acronym>
+    </nobr></td>
+    <td class="lmost5" width="2">&nbsp;</td>
+	<td class="lmost5" align="center"><nobr>
+	<acronym title="<?PHP echo $text[523] ?>">
+      <input class="lmoadminein" type="text" name="xstrafdat<?PHP echo $i; ?>" size="2" maxlength="2" value="<?PHP echo $strafdat[$i]; ?>" onChange="dolmoedit()">
+      </acronym>
+    </nobr></td>
+    <td class="lmost5" width="2">&nbsp;</td>
+<!-- Hack-Straftore Ende -->	
 <?PHP } ?>
 <?PHP if($lmtype==0){ ?>
     <td class="lmost5"><nobr>

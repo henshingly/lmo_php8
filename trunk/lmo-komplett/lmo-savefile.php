@@ -136,6 +136,9 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
             if ($minus==2) {
               fputs($datei,"SM=".$strafm[$i]."\n");
             }
+            fputs($datei,"TOR1=".$torkorrektur1[$i]."\n"); // Hack-Straftore
+        		fputs($datei,"TOR2=".$torkorrektur2[$i]."\n"); // Hack-Straftore
+        		fputs($datei,"STDA=".$strafdat[$i]."\n");      // Hack-Straftore
           }
           fputs($datei,"URL=".$teamu[$i]."\n");
           fputs($datei,"NOT=".$teamn[$i]."\n");
