@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02b
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -25,95 +25,125 @@ if($file!=""){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td valign="top" align="center"><table cellspacing="0" cellpadding="0" border="0">
-<?PHP
-  for($i=1;$i<=$anzteams;$i++){
+    <td valign="top" align="center">
+      <table cellspacing="0" cellpadding="0" border="0">
+<?
+  for ($i=1; $i<=$anzteams; $i++) {
     echo "<tr><td align=\"center\" ";
-    if($i<>$selteam){
+    if ($i<>$selteam) {
       echo "class=\"lmost0\"><a href=\"".$addp.$i."\" title=\"".$text[23]." ".$teams[$i]."\">".$teamk[$i]."</a>";
-      }
-    else{
+    } else {
       echo "class=\"lmost1\">".$teamk[$i];
-      }
-    echo "</td></tr>";
     }
+    echo "</td></tr>";
+  }
 ?>
-    </table></td>
-    <td valign="top" align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-
-<?PHP
+      </table>
+    </td>
+    <td valign="top" align="center" class="lmost3">
+      <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+<?
   if($selteam==0){
     echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text[24]."<br>&nbsp;</td></tr>";
-    }
-  else{
+  }else{
     for($j=0;$j<$anzst;$j++){
       for($i=0;$i<$anzsp;$i++){
         if(($selteam==$teama[$j][$i]) || ($selteam==$teamb[$j][$i])){
 ?>
-
-  <tr>
-    <td class="lmost5" align="right">&nbsp;<a href="<?PHP echo $addr.($j+1); ?>" title="<?PHP echo $text[25]; ?>"><?PHP echo $j+1; ?></a>&nbsp;</td>
-<?PHP if($datm==1){
-  if($mterm[$j][$i]>0){$dum1=strftime($datf, $mterm[$j][$i]);}else{$dum1="";}
+        <tr>
+          <td class="lmost5" align="right">&nbsp;<a href="<? echo $addr.($j+1); ?>" title="<? echo $text[25]; ?>"><? echo $j+1; ?></a>&nbsp;</td>
+<?        if($datm==1){
+            if($mterm[$j][$i]>0){
+              $dum1=strftime($datf, $mterm[$j][$i]);
+            }else{
+              $dum1="";
+            }
 ?>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><nobr><?PHP echo $dum1; ?></nobr></td>
-<?PHP } ?>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr>
-
-<?PHP
-  if ($selteam==$teama[$j][$i]){echo "<b>";}
-  echo $teams[$teama[$j][$i]];
-  if ($selteam==$teama[$j][$i]){echo "</b>";}
+          <td class="lmost5" width="2">&nbsp;</td>
+          <td class="lmost5"><nobr><? echo $dum1; ?></nobr></td>
+<?        } ?>
+          <td class="lmost5" width="2">&nbsp;</td>
+          <td class="lmost5" align="right">
+            <nobr>
+<?
+          if ($selteam==$teama[$j][$i]){
+            echo "<b>";
+          }
+          echo $teams[$teama[$j][$i]];
+          if ($selteam==$teama[$j][$i]){
+            echo "</b>";
+          }
 ?>
-
-    </nobr></td>
-    <td class="lmost5" align="center" width="10">-</td>
-    <td class="lmost5"><nobr>
-
-<?PHP
-  if ($selteam==$teamb[$j][$i]){echo "<b>";}
-  echo $teams[$teamb[$j][$i]];
-  if ($selteam==$teamb[$j][$i]){echo "</b>";}
+            </nobr>
+          </td>
+          <td class="lmost5" align="center" width="10">-</td>
+          <td class="lmost5">
+            <nobr>
+<?
+          if ($selteam==$teamb[$j][$i]){
+            echo "<b>";
+          }
+          echo $teams[$teamb[$j][$i]];
+          if ($selteam==$teamb[$j][$i]){
+            echo "</b>";
+          }
 ?>
-
-    </nobr></td>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5" align="right"><?PHP echo $goala[$j][$i]; ?></td>
-    <td class="lmost5" align="center" width="8">:</td>
-    <td class="lmost5"><?PHP echo $goalb[$j][$i]; ?></td>
-  <?PHP if($spez==1){ ?>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><?PHP echo $mspez[$j][$i]; ?></td>
-  <?PHP } ?>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5">
-
-<?PHP
-  if($urlb==1){
-    if($mberi[$j][$i]!=""){echo "<a href=\"".$mberi[$j][$i]."\" target=\"_blank\" title=\"".$text[270]."\"><img src='lmo-st1.gif' width=\"10\" height=\"12\" border=\"0\"></a>";}else{echo "&nbsp;";}
+            </nobr>
+          </td>
+          <td class="lmost5" width="2">&nbsp;</td>
+          <td class="lmost5" align="right"><? echo $goala[$j][$i]; ?></td>
+          <td class="lmost5" align="center" width="8">:</td>
+          <td class="lmost5"><? echo $goalb[$j][$i]; ?></td>
+<? 
+          if($spez==1){ ?>
+          <td class="lmost5" width="2">&nbsp;</td>
+          <td class="lmost5"><? echo $mspez[$j][$i]; ?></td>
+<?        }
+?>
+          <td class="lmost5" width="2">&nbsp;</td>
+          <td class="lmost5">
+            <nobr><?
+          if ($urlb==1) {
+            if ($mberi[$j][$i]!="") {
+              echo "<a href='".$mberi[$j][$i]."' target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''></a>";
+            } else {
+              echo "&nbsp;";
+            }
+          }
+          if (($mnote[$j][$i]!="") || ($msieg[$j][$i]>0)) {
+            $dummy=addslashes($teams[$teama[$j][$i]]." - ".$teams[$teamb[$j][$i]]." ".$goala[$j][$i].":".$goalb[$j][$i]);
+            if ($msieg[$j][$i]==3) {
+              $dummy=$dummy." / ".$goalb[$j][$i].":".$goala[$j][$i];
+            }
+            if ($spez==1) {
+              $dummy=$dummy." ".$mspez[$j][$i];
+            }
+            if ($msieg[$j][$i]==1) {
+              $dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teama[$j][$i]]." ".$text[211]);
+            }
+            if ($msieg[$j][$i]==2) {
+              $dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teamb[$j][$i]]." ".$text[211]);
+            }
+            if ($msieg[$j][$i]==3) {
+              $dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($text[212]);
+            }
+            if ($mnote[$j][$i]!="") {
+              $dummy=$dummy."\\n\\n".$text[22].":\\n".$mnote[$j][$i];
+            }
+            echo "<a href='#' onClick=\"alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='img/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\" alt=''></a>";
+          } else {
+            echo "&nbsp;";
+          }
+?>
+              </nobr>
+            </td>
+          </tr>
+<?      }
+      }
     }
-  if(($mnote[$j][$i]!="") || ($msieg[$j][$i]>0)){
-    $dummy=addslashes($teams[$teama[$j][$i]]." - ".$teams[$teamb[$j][$i]]." ".$goala[$j][$i].":".$goalb[$j][$i]);
-    if($msieg[$j][$i]==3){$dummy=$dummy." / ".$goalb[$j][$i].":".$goala[$j][$i];}
-    if($spez==1){$dummy=$dummy." ".$mspez[$j][$i];}
-    if($msieg[$j][$i]==1){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teama[$j][$i]]." ".$text[211]);}
-    if($msieg[$j][$i]==2){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teamb[$j][$i]]." ".$text[211]);}
-    if($msieg[$j][$i]==3){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($text[212]);}
-    if($mnote[$j][$i]!=""){$dummy=$dummy."\\n\\n".$text[22].":\\n".$mnote[$j][$i];}
-    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='img/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\"></a>";
-    }
-  else{
-    echo "&nbsp;";
-    }
-?>
-
+  }?>
+      </table>
     </td>
   </tr>
-<?PHP }}}} ?>
-
-  </table></td></tr>
-</table>
-
-<?PHP } ?>
+</table><?
+}?>
