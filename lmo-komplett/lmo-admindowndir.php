@@ -37,7 +37,7 @@ if($ftype!=""){
     if($_SESSION['lmouserok']==2){$ftest=1;}
     elseif($_SESSION['lmouserok']==1){
       $ftest=0;
-      $ftest1 = split("[,]",$_SESSION['lmouserfile']);
+      $ftest1 = explode(',',$_SESSION['lmouserfile']);
       if(isset($ftest1)){
         for($u=0;$u<count($ftest1);$u++){
           if($ftest1[$u].".l98"==$files){$ftest=1;}

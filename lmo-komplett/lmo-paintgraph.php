@@ -81,8 +81,8 @@
   if($pganz==2){
     imagestring($image,3,$breit-imagefontwidth(3)*strlen(stripslashes($pgteam2))-2,1, stripslashes($pgteam2), $farbe_d);
     }
-  $linie = split("[,]",$pgplatz1);
-  if($pganz==2){$lini2 = split("[,]",$pgplatz2);}
+  $linie = explode(',',$pgplatz1);
+  if($pganz==2){$lini2 = explode(',',$pgplatz2);}
   for($i=1;$i<$pgst;$i++){
     if($linie[$i]>0 && $linie[$i-1]>0){
       imageline($image,24+($i*12),22+($linie[$i-1]*12),24+(($i+1)*12),22+($linie[$i]*12),$farbe_c);
