@@ -19,6 +19,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 session_start();
+require("init.php");
 if(($action=="admin") && ($todo=="download") && (($_SESSION["lmouserok"]==1) || ($_SESSION["lmouserok"]==2))){
   if($down>0){
     require(PATH_TO_LMO."/lmo-cfgload.php");

@@ -76,15 +76,30 @@ while (list ($key, $val) = each ($datsort)) {
     <td class="lmost5"><?=$mspez[$st-1][$i]; ?></td><?
     }?>
     <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5">
-      <nobr><? 
+    <td class="lmost5" align="left"><nobr><? 
+    
+    /** Mannschaftsicons finden
+     */
+    $lmo_teamaicon="";
+    $lmo_teambicon="";
+    if($urlb==1 || $mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0){
+      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$st-1][$i]].".gif")) {
+        $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$st-1][$i]].".gif");
+        $lmo_teamaicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$st-1][$i]]).".gif' {$imgdata[3]} alt=''> ";
+      }
+      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$st-1][$i]].".gif")) {
+        $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$st-1][$i]].".gif");
+        $lmo_teambicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teamb[$st-1][$i]]).".gif' {$imgdata[3]} alt=''> ";
+      }
+    }
     /** Spielbericht verlinken
      */
     if($urlb==1){
       if($mberi[$st-1][$i]!=""){
-        echo "<a href='".$mberi[$st-1][$i]."'  target='_blank' title='".$text[270]."'><img src='img/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'><!--[if IE]><table><tr><td style=\"width: 25em\"><![endif]-->".nl2br($text[270])."<!--[if IE]></table><![endif]--></span></a>";
+        $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
+        echo "<a href='".$mberi[$st-1][$i]."'  target='_blank' title='".$text[270]."'><img src='img/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'><!--[if IE]><table><tr><td style=\"width: 23em\"><![endif]-->".$lmo_spielbericht.nl2br($text[270])."<!--[if IE]></td></tr></table><![endif]--></span></a>";
       }else{
-        echo "&nbsp;";
+        echo "&nbsp;&nbsp;&nbsp;";
       }
     }
     /** Notizen anzeigen
@@ -92,7 +107,8 @@ while (list ($key, $val) = each ($datsort)) {
      * Da IE kein max-width kann, Workaround lt. http://www.bestviewed.de/css/bsp/maxwidth/
      */
     if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
-      $lmo_spielnotiz="<strong>".$teams[$teama[$st-1][$i]]."</strong> - <strong>".$teams[$teamb[$st-1][$i]]."</strong> ".$goala[$st-1][$i].":".$goalb[$st-1][$i];
+ 
+      $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".$goala[$st-1][$i].":".$goalb[$st-1][$i];
       //Beidseitiges Ergebnis
       if ($msieg[$st-1][$i]==3) {
         $lmo_spielnotiz.=" / ".$goalb[$st-1][$i].":".$goala[$st-1][$i];
@@ -116,12 +132,12 @@ while (list ($key, $val) = each ($datsort)) {
       if ($mnote[$st-1][$i]!="") {
         $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i];
       }
-      echo "<a href='#' onclick=\"alert('".mysql_escape_string(strip_tags($lmo_spielnotiz))."');window.focus();return false;\"><span class='popup'><!--[if IE]><table><tr><td style=\"width: 25em\"><![endif]-->".nl2br($lmo_spielnotiz)."<!--[if IE]></table><![endif]--></span><img src='img/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+      echo "<a href='#' onclick=\"alert('".mysql_escape_string(strip_tags($lmo_spielnotiz))."');window.focus();return false;\"><span class='popup'><!--[if IE]><table><tr><td style=\"width: 23em\"><![endif]-->".nl2br($lmo_spielnotiz)."<!--[if IE]></td></tr></table><![endif]--></span><img src='img/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+      $lmo_spielnotiz="";
     } else {
       echo "&nbsp;";
     }
-    ?></nobr>
-    </td>
+    ?></nobr></td>
   </tr><? 
   }
 }

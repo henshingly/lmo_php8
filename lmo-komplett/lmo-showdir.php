@@ -21,9 +21,9 @@
 
 ?>
 <table class="lmostb" width="100%" cellspacing="0" cellpadding="0" border="0">
-   <tr>
+   <?/*<tr>
     <td class="lmost5" align="right"><?include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
-  </tr>
+  </tr>*/?>
   <tr>
     <td class="lmost5" align="left"><?
 if(isset($_REQUEST["archiv"]) && $_REQUEST["archiv"]!=""){
@@ -50,7 +50,7 @@ if(isset($_REQUEST["archiv"]) && $_REQUEST["archiv"]!=""){
 }?>
     </td>
   </tr>
-  <tr>
+  <?/*<tr>
     <td class="lmost5" align="right"><?include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
-  </tr>
+  </tr>*/?>
 </table><?

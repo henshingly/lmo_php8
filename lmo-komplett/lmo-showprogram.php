@@ -67,11 +67,11 @@ if($file!=""){
             <nobr>
 <?
           if ($selteam==$teama[$j][$i]){
-            echo "<b>";
+            echo "<strong>";
           }
           echo $teams[$teama[$j][$i]];
           if ($selteam==$teama[$j][$i]){
-            echo "</b>";
+            echo "</strong>";
           }
 ?>
             </nobr>
@@ -81,11 +81,11 @@ if($file!=""){
             <nobr>
 <?
           if ($selteam==$teamb[$j][$i]){
-            echo "<b>";
+            echo "<strong>";
           }
           echo $teams[$teamb[$j][$i]];
           if ($selteam==$teamb[$j][$i]){
-            echo "</b>";
+            echo "</strong>";
           }
 ?>
             </nobr>
@@ -102,40 +102,67 @@ if($file!=""){
 ?>
           <td class="lmost5" width="2">&nbsp;</td>
           <td class="lmost5">
-            <nobr><?
-          if ($urlb==1) {
-            if ($mberi[$j][$i]!="") {
-              echo "<a href='".$mberi[$j][$i]."' target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''></a>";
-            } else {
+            <nobr><? 
+          /** Mannschaftsicons finden
+           */
+          $lmo_teamaicon="";
+          $lmo_teambicon="";
+          if($urlb==1 || $mnote[$j][$i]!="" || $msieg[$j][$i]>0){
+            if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif")) {
+              $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif");
+              $lmo_teamaicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$j][$i]]).".gif' {$imgdata[3]} alt=''> ";
+            }
+            if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif")) {
+              $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif");
+              $lmo_teambicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teamb[$j][$i]]).".gif' {$imgdata[3]} alt=''> ";
+            }
+          }
+          
+          /** Spielbericht verlinken
+           */
+          if($urlb==1){
+            if($mberi[$j][$i]!=""){
+              $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong><br><br>";
+              echo "<a href='".$mberi[$j][$i]."'  target='_blank' title='".$text[270]."'><img src='img/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'><!--[if IE]><table><tr><td style=\"width: 23em\"><![endif]-->".$lmo_spielbericht.nl2br($text[270])."<!--[if IE]></td></tr></table><![endif]--></span></a>";
+            }else{
               echo "&nbsp;";
             }
           }
-          if (($mnote[$j][$i]!="") || ($msieg[$j][$i]>0)) {
-            $dummy=addslashes($teams[$teama[$j][$i]]." - ".$teams[$teamb[$j][$i]]." ".$goala[$j][$i].":".$goalb[$j][$i]);
+         /** Notizen anzeigen
+           *
+           * Da IE kein max-width kann, Workaround lt. http://www.bestviewed.de/css/bsp/maxwidth/
+           */
+          if ($mnote[$j][$i]!="" || $msieg[$j][$i]>0) {
+            $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong> ".$goala[$j][$i].":".$goalb[$j][$i];
+            //Beidseitiges Ergebnis
             if ($msieg[$j][$i]==3) {
-              $dummy=$dummy." / ".$goalb[$j][$i].":".$goala[$j][$i];
+              $lmo_spielnotiz.=" / ".$goalb[$j][$i].":".$goala[$j][$i];
             }
             if ($spez==1) {
-              $dummy=$dummy." ".$mspez[$j][$i];
+              $lmo_spielnotiz.=" ".$mspez[$j][$i];
             }
+            //Grüner Tisch: Heimteam siegt
             if ($msieg[$j][$i]==1) {
-              $dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teama[$j][$i]]." ".$text[211]);
+              $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".$teams[$teama[$j][$i]]." ".$text[211];
             }
+            //Grüner Tisch: Gastteam siegt
             if ($msieg[$j][$i]==2) {
-              $dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teamb[$j][$i]]." ".$text[211]);
+              $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($teams[$teamb[$j][$i]]." ".$text[211]);
             }
+            //Beidseitiges Ergebnis
             if ($msieg[$j][$i]==3) {
-              $dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($text[212]);
+              $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($text[212]);
             }
+            //Allgemeine Notiz
             if ($mnote[$j][$i]!="") {
-              $dummy=$dummy."\\n\\n".$text[22].":\\n".$mnote[$j][$i];
+              $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$j][$i];
             }
-            echo "<a href='#' onClick=\"alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='img/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\" alt=''></a>";
+            echo "<a href='#' onclick=\"alert('".mysql_escape_string(strip_tags($lmo_spielnotiz))."');window.focus();return false;\"><span class='popup'><!--[if IE]><table><tr><td style=\"width: 23em\"><![endif]-->".nl2br($lmo_spielnotiz)."<!--[if IE]></td></tr></table><![endif]--></span><img src='img/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+            $lmo_spielnotiz="";
           } else {
             echo "&nbsp;";
           }
-?>
-              </nobr>
+            ?></nobr>
             </td>
           </tr>
 <?      }
