@@ -196,7 +196,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     }
   }
    
-  $addr = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=edit&amp;file=&amp;viewermode&amp;start=";
+  $addr = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=edit&amp;file=&amp;viewermode=1&amp;start=";
   $breite = 17;
   if ($tipp_tippmodus == 1 && $tipp_pfeiltipp == 1) {
     $breite += 2;
@@ -330,7 +330,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
       }?>
           <th class="nobr" colspan="5" align="center"><?=$text['tipp'][31]; /* Ergebnis*/ ?></th>
           <th class="nobr" colspan="2" align="right"><?=$text[37]; /* PP */?></th>
-          <th colspan="1">&nbsp;</th>
+          <th>&nbsp;</th>
         </tr><?
     }
     if ($tipp_einsichterst == 2) {
@@ -342,17 +342,16 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     } else {
       $btip1 = false;
     }
-     
+    
+    $dum1 = ""; 
     if ($datm[$i] == 1) {
       if ($mterm[$i] > 0) {
         $datf = "%d.%m. %H:%M";
         $dum1 = strftime($datf, $mterm[$i]);
-      } else {
-        $dum1 = "";
-      }?>
-        <tr>
-          <td class="nobr" align="left"><?=$dum1; ?></td><? 
+      } 
     }?>
+        <tr>
+          <td class="nobr" align="left"><?=$dum1; ?></td>
           <td>&nbsp;</td>
           <td class="nobr" align="right"><?=$teama[$i];?></td>
           <td class="nobr" align="center" width="10">-</td>
@@ -656,8 +655,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td align="left" class="lmoMenu"><a href="<?=$addr.($start-$tipp_viewertage)?>" title="<?=$tipp_viewertage." ".$text['tipp'][257]?>"><?=$text[5]?></a></td>
-          <td align="right" class="lmoMenu"><a href="<?=$addr.($start+$tipp_viewertage)?>" title="<?=$tipp_viewertage." ".$text['tipp'][256]?>"><?=$text[7]?></a></td>
+          <td align="left"><a href="<?=$addr.($start-$tipp_viewertage)?>" title="<?=$tipp_viewertage." ".$text['tipp'][257]?>"><?=$text[5]?></a></td>
+          <td align="right"><a href="<?=$addr.($start+$tipp_viewertage)?>" title="<?=$tipp_viewertage." ".$text['tipp'][256]?>"><?=$text[7]?></a></td>
         </tr>
       </table>
     </td>
