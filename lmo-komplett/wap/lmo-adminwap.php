@@ -9,22 +9,15 @@ header("Pragma: no-cache");
 echo("<?xml version=\"1.0\"?>\n");
 echo("<!DOCTYPE wml PUBLIC \"-//WAPFORUM//DTD WML 1.1//EN\" \"http://www.wapforum.org/DTD/wml_1.1.xml\">\n");
 echo("<wml>\n");
-
-if (isset($_POST['wap_username'])) $_SESSION['wap_username']=$_POST['wap_username']; else $_SESSION['wap_username']="";
-if (isset($_POST['wap_userpass'])) $_SESSION['wap_userpass']=$_POST['wap_userpass']; else $_SESSION['wap_userpass']="";
-
-require_once(PATH_TO_ADDONDIR."/wap/lmo-adminwap_auth.php");
+define('LMO_AUTH','');
+require(PATH_TO_LMO."/lmo-admincheck_auth.php");
 
 $array = array();
 if (isset($_REQUEST['wap_file'])) $file=$_REQUEST['wap_file'];
 
 require_once(PATH_TO_LMO.'/lmo-openfile.php');
 
-
-
-
-
-if(isset($_SESSION['wap_userok']) && $_SESSION['wap_userok']>0) {
+if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
   if (!isset($_REQUEST['op'])) $_REQUEST['op']="";
 	switch($_REQUEST['op']) {
 	    case "exit":
