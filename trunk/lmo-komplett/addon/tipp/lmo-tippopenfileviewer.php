@@ -19,6 +19,7 @@
   
   
 if ($file != "") {
+
   $me = array("0", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
   $liga0 = substr($dateien[$liganr], 0, -4);
   $lmtype0 = 0;
@@ -29,10 +30,9 @@ if ($file != "") {
     $mspez0 = 0;
     $daten = array();
     $sekt = "";
-    if ($datei = fopen($file, "rb")) {
+    if ($datei = fopen(PATH_TO_LMO.$dirliga.basename($file), "rb")) {
       while (!feof($datei)) {
         $zeile = fgets($datei, 1000);
-        $zeile = chop($zeile);
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));

@@ -19,7 +19,14 @@
   
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
- 
+
+$action=isset($_REQUEST['action'])?$_REQUEST['action']:'';
+$todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:'';
+$file=isset($_REQUEST['file'])?$_REQUEST['file']:'';
+
+
+
+
 if ($action == "tipp") {
   if ($file != "") {
     $addm = $_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
@@ -109,7 +116,7 @@ if ($action == "tipp") {
     <td colspan="3" align="center"><?
   if ($_SESSION["lmotipperok"] == 5) {
     if ($file != "" && $viewermode != 1) {
-      $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, 0, -4)."_".$lmotippername.".tip";
+      $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, 0, -4)."_".$_SESSION['lmotippername'].".tip";
     }
     if ($viewermode == 1) {
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippviewer.php");

@@ -56,7 +56,7 @@ if (($action == "tipp") && ($todo == "daten")) {
   $xtippernick="";
   for($i = 1; $i < count($users) && $tipp_tipper_gefunden == 0; $i++) {
     $tipp_tipper_daten = explode('|', $users[$i]);
-    if ($lmotippername == $tipp_tipper_daten[0]) {
+    if ($_SESSION['lmotippername'] == $tipp_tipper_daten[0]) {
       // Nick gefunden
       $tipp_tipper_gefunden = 1;
       $xtippernick=$tipp_tipper_daten[0];
@@ -134,17 +134,17 @@ if (($action == "tipp") && ($todo == "daten")) {
    
   if ($newpage == 1) {
     if ($xtippervereinradio == 1) {
-      $lmotipperverein = $xtippervereinalt;
+      $_SESSION['lmotipperverein'] = $xtippervereinalt;
     } elseif($xtippervereinradio == 2) {
-      $lmotipperverein = $xtippervereinneu;
+      $_SESSION['lmotipperverein'] = $xtippervereinneu;
     } else {
-      $lmotipperverein = "";
+      $_SESSION['lmotipperverein'] = "";
     }
     $users[$save] = $tipp_tipper_daten[0]."|".$tipp_tipper_daten[1]."|".$tipp_tipper_daten[2]."|";
     if ($tipp_realname != -1) {
       $users[$save] = $users[$save].$xtippervorname." ".$xtippernachname;
     }
-    $users[$save] = $users[$save]."|".$xtipperemail."|".$lmotipperverein;
+    $users[$save] = $users[$save]."|".$xtipperemail."|".$_SESSION['lmotipperverein'];
     if ($tipp_adresse == 1) {
       $users[$save] .= "|".$xtipperstrasse."|".$xtipperplz."|".$xtipperort;
     } else {
@@ -172,7 +172,7 @@ if (($action == "tipp") && ($todo == "daten")) {
   } // end ($newpage==1)
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
+  <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <th align="center"><?=$text['tipp'][106];if($tipp_tipperimteam>=0){echo " / ".$text['tipp'][2];} ?></th>
   </tr><?

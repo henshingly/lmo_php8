@@ -25,7 +25,7 @@ if(($action=="tipp") && ($todo=="")){
 ?>
 
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?=$lmotippername;?><?if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?><br><?=$text['tipp'][237]; ?></caption>
+  <caption><?=$_SESSION['lmotippername'];?><?if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?><br><?=$text['tipp'][237]; ?></caption>
   <tr>
     <th align="left"><?=$text['tipp'][3]; ?>:</th>
   </tr>

@@ -39,7 +39,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
   $gef = 0;
   for($i = 1; $i < count($users) && $gef == 0; $i++) {
     $dummb = explode('|', $users[$i]);
-    if ($lmotippername == $dummb[0]) {
+    if ($_SESSION['lmotippername'] == $dummb[0]) {
       // Nick gefunden
       $gef = 1;
       $del = $i;
@@ -81,12 +81,12 @@ if (($action == "tipp") && ($todo == "delaccount")) {
      
     $_SESSION["lmotipperok"] = 0;
     $lmotipperpass = "";
-    $lmotipperverein = "";
+    $_SESSION['lmotipperverein'] = "";
   } // end ($newpage==1)
 
 ?>
   <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-    <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
+    <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
     <tr>
       <th colspan="2" align="center"><?=$text['tipp'][6]; ?></th>
     </tr>

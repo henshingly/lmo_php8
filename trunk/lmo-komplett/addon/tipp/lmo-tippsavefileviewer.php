@@ -25,9 +25,9 @@ if ($tippfile != "") {
     $daten = array("");
     if (file_exists($tippfile)) {
       $datei = fopen($tippfile, "rb");
-      while (!feof($datei)) {
+      while ($datei && !feof($datei)) {
         $zeile = fgets($datei, 1000);
-        $zeile = trim(chop($zeile));
+        $zeile = trim($zeile);
         if ($zeile != "") {
           array_push($daten, $zeile);
         }

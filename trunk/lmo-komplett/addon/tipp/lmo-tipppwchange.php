@@ -45,7 +45,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   $gef = 0;
   for($i = 1; $i < count($users) && $gef == 0; $i++) {
     $dummb = explode('|', $users[$i]);
-    if ($lmotippername == $dummb[0]) {
+    if ($_SESSION['lmotippername'] == $dummb[0]) {
       // Nick gefunden
       $gef = 1;
       $save = $i;
@@ -94,7 +94,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   } // end ($newpage==1)
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
+  <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <th align="center"><?=$text['tipp'][107]; ?></th>
   </tr><? 

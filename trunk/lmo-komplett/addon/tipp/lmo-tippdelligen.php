@@ -23,7 +23,7 @@ if (($action == "tipp") && ($todo == "delligen")) {
   if ($newpage == 1) {
     if ($xtipperligen != "") {
       foreach($xtipperligen as $key => $value) {
-        $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$lmotippername.".tip";
+        $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$_SESSION['lmotippername'].".tip";
         if (file_exists($tippfile)) {
           @unlink($tippfile); // Tipps löschen
         }
@@ -32,7 +32,7 @@ if (($action == "tipp") && ($todo == "delligen")) {
   } // end ($newpage==1)
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
+  <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <th colspan="3" align="center"><?=$text['tipp'][266]; ?></th>
   </tr>

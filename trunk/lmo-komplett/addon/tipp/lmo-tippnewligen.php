@@ -37,7 +37,7 @@ if (($action == "tipp") && ($todo == "newligen")) {
     $gef = 0;
     for($i = 1; $i < count($users) && $gef == 0; $i++) {
       $dummb = explode('|', $users[$i]);
-      if ($lmotippername == $dummb[0]) {
+      if ($_SESSION['lmotippername'] == $dummb[0]) {
         // Nick gefunden
         $gef = 1;
       }
@@ -48,12 +48,12 @@ if (($action == "tipp") && ($todo == "newligen")) {
      
     if ($xtipperligen != "") {
       foreach($xtipperligen as $key => $value) {
-        $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$lmotippername.".tip";
+        $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$_SESSION['lmotippername'].".tip";
         $st = -1;
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavefile.php"); // Tipp-Datei erstellen
         $auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$value.".aus", "ab");
         flock($auswertdatei, 2);
-        fputs($auswertdatei, "\n[".$lmotippername."]\n");
+        fputs($auswertdatei, "\n[".$_SESSION['lmotippername']."]\n");
         fputs($auswertdatei, "Team=".$dummb[5]."\n");
         fputs($auswertdatei, "Name=".$dummb[3]."\n");
         flock($auswertdatei, 3);
@@ -63,7 +63,7 @@ if (($action == "tipp") && ($todo == "newligen")) {
   } // end ($newpage==1)
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
+  <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <th align="center"><?=$text['tipp'][135]; ?></th>
   </tr>

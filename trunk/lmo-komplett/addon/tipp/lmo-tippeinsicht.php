@@ -48,7 +48,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
   }?>
 
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><? if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?></caption><? 
+  <caption><? if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];} ?></caption><? 
   if($tipp_einsichterst>=1){ ?>
   <tr>
     <td class="lmoFrontMarkierung"><?=$text['tipp'][220]." ".$text['tipp'][215+$tipp_einsichterst]; ?></td>
@@ -192,11 +192,11 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 $nw = 1;
               }
             } else {
-              if ($mtipp[$st-1][$i][$n] == 1) {
+              if ($mtipp[$st-1][$i] == 1) {
                 echo "<acronym title='".$text['tipp'][231]."'><del>";
               }
               echo applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
-              if ($mtipp[$st-1][$i][$n] == 1) {
+              if ($mtipp[$st-1][$i] == 1) {
                 echo '</del></acronym>';
                 $nw = 1;
               }
@@ -271,7 +271,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 $dummy3 = "</strong>";
               }
               if ($jkspfaktor > 1) {
-                echo "<p class='lmoFrontMarkierung'>";
+                echo "<em class='lmoFrontMarkierung'>";
               }
               if ($lmtype != 0) {
                 if ($tipp_rtor > 0 && ($punktespiel == $tipp_rtor * $jkspfaktor || $punktespiel == ($tipp_rtendenz+$tipp_rtor) * $jkspfaktor)) {
@@ -297,7 +297,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 echo $dummy1.$tippa[$k][$i].$dummy2.":".$dummy3.$tippb[$k][$i].$dummy4;
               }
               if ($jkspfaktor > 1) {
-                echo "";
+                echo "</em>";
               }
 
               if ($punktespiel >= 0) {

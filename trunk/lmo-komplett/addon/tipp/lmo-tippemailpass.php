@@ -37,7 +37,7 @@ if (isset($xtippername2)) {
     $dummb = explode('|', $dumma[$i]);
     if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != false)) {
       // User gefunden
-      $lmotippername = $dummb[0];
+      $_SESSION['lmotippername'] = $dummb[0];
       $_SESSION["lmotipperok"] = 0;
       $emailbody = "Hallo ".$dummb[0]."\n\n".$text['tipp'][77]."\n".$text['tipp'][23].": ".$dummb[0]."\n".$text[308].": ".$dummb[1];
       $header = "From:$aadr\n";

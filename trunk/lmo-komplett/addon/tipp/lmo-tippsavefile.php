@@ -30,7 +30,7 @@ if ($tippfile != "") {
     $daten = array("");
     if ($st > 0 && file_exists($tippfile)) {
       $datei = fopen($tippfile, "rb");
-      while (!feof($datei)) {
+      while ($datei && !feof($datei)) {
         $zeile = fgets($datei, 1000);
         $zeile = trim(chop($zeile));
         if ($zeile != "") {

@@ -17,11 +17,9 @@
   *
   */
   
-  
-  
-if (!isset($save)) {
-  $save=0;
-}
+$save=isset($_REQUEST['save'])?$_REQUEST['save']:0;
+$liga=isset($_REQUEST['liga'])?$_REQUEST['liga']:'';
+
 
 if ($save==2) {
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavewert.php");

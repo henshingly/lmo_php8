@@ -18,7 +18,7 @@
   */
   
   
-  $dumma = array("");
+  $dumma = array();
   $team = array("");
   $tipperteam = array("");
   $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
@@ -30,7 +30,6 @@
     }
   fclose($datei);
   $v=0; // Teamnummer
-  array_shift($dumma);
   for($i=0;$i<count($dumma);$i++){
     $dummb = explode('|',$dumma[$i]);
     if($dummb[5]!=""){
@@ -49,17 +48,17 @@
       }
     }
     
-  $tab=array("");
+  $tab=array();
   for($i=0;$i<$v;$i++){
     array_push($tab,strtolower($team[$i]).(50000000+$i));
     }
-  array_shift($tab);
   sort($tab,SORT_STRING);
   
   for($i=0;$i<$v;$i++){
-    $j=intval(substr($tab[$i],-7));
-    echo "<option value=\"".$team[$j]."\" ";
-    if($xtippervereinalt==$team[$j]){echo "selected";}
-    echo ">".$team[$j]." [".$tipperteam[$j]."]</option>";
-    }
+    $j=intval(substr($tab[$i],-7));?>
+ <option value="<?=$team[$j]?>"<?
+    if($xtippervereinalt==$team[$j]){
+      echo " selected";
+    }?>><?=$team[$j]?> [<?=$tipperteam[$j]?>]</option><?
+  }
 ?>

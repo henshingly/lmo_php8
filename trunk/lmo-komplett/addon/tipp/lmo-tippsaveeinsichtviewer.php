@@ -50,12 +50,12 @@ if ($einsichtfile != "") {
     for($l = 0; $l < count($daten); $l++) {
       if ((substr($daten[$l], 0, 1) == "[") && (substr($daten[$l], -1) == "]")) {
         $nick = substr($daten[$l], 1, -1);
-        if ($nick == $lmotippername) {
+        if ($nick == $_SESSION['lmotippername']) {
           $nick1 = $l;
           $nick2 = $l;
         }
       }
-      if ($nick != $lmotippername) {
+      if ($nick != $_SESSION['lmotippername']) {
         //////////// nur die unveränderten Tipps werden zurückgeschrieben
         fputs($datei, $daten[$l]."\n");
       } elseif($daten[$l] != "") {
@@ -110,7 +110,7 @@ if ($einsichtfile != "") {
      
     if ($nick2 == -1) {
       // keine bisherigen Tipps vom Tipper
-      fputs($datei, "[".$lmotippername."]"."\n");
+      fputs($datei, "[".$_SESSION['lmotippername']."]"."\n");
       if ($jksp[$start2] > 0) {
         fputs($datei, "@".$jksp[$start2]."@\n");
       }

@@ -23,7 +23,7 @@ if ($ftype!="") {
   $verz=opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp,0,-1));
   $dummy=array();
   while ($files=readdir($verz)) {
-    if (substr($files,-5-strlen($lmotippername))=="_".$lmotippername.$ftype) {
+    if (substr($files,-5-strlen($_SESSION['lmotippername']))=="_".$_SESSION['lmotippername'].$ftype) {
       array_push($dummy,$files);
     }
   }
@@ -36,7 +36,7 @@ if ($ftype!="") {
   $tt1="";
   echo"<ul>";
   for ($k=0; $k<count($dummy); $k++) {
-    $dummy[$k]=substr($dummy[$k],0,-5-strlen($lmotippername)).".l98";
+    $dummy[$k]=substr($dummy[$k],0,-5-strlen($_SESSION['lmotippername'])).".l98";
     $sekt="";
     $t0="";
     $t1="";
@@ -117,7 +117,7 @@ if ($ftype!="") {
       if ($ftest==1 || $tipp_immeralle==1) {
         $i++;
         if ($tipp_sttipp!=-1) {
-          $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dummy[$k],0,-4)."_".str_replace(" ","_",$lmotippername).".tip";
+          $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dummy[$k],0,-4)."_".str_replace(" ","_",$_SESSION['lmotippername']).".tip";
           echo "<li><a href='".$addi.$dummy[$k]."'>".$t0."</a>";
           if (file_exists($tippfile)) {
             echo "<br><small>".$text['tipp'][138]." ".strftime($defdateformat,filemtime($tippfile)).$t3."</small>";

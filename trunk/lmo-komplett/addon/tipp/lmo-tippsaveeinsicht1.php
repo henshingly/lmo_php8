@@ -19,7 +19,7 @@
   
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-if ($file != "" && $st > 0 && $lmotippername != "") {
+if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
   $einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".substr($file, 0, -4)."_".$st.".ein";
   //if(decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}
   if (substr($einsichtfile, -4) == ".ein") {
@@ -50,13 +50,13 @@ if ($file != "" && $st > 0 && $lmotippername != "") {
       if ((substr($daten[$i], 0, 1) == "[") && (substr($daten[$i], -1) == "]")) {
         $nick = substr($daten[$i], 1, -1);
       }
-      if ($nick != $lmotippername) {
+      if ($nick != $_SESSION['lmotippername']) {
         //////////// nur die unveränderten Tipps werden zurückgeschrieben
         fputs($datei, $daten[$i]."\n");
       }
     }
      
-    fputs($datei, "\n[".$lmotippername."]\n"); // am Ende getippte dazu schreiben
+    fputs($datei, "\n[".$_SESSION['lmotippername']."]\n"); // am Ende getippte dazu schreiben
     if ($tipp_jokertipp == 1) {
       fputs($datei, "@".$jksp."@\n");
     }

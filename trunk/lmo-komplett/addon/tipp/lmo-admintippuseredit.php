@@ -17,16 +17,31 @@
   *
   */
   
-  
+$nick=isset($_REQUEST['nick'])?$_REQUEST['nick']:'';
+
+$xtipperpass          = isset($_REQUEST['xtipperpass'])       ? $_REQUEST['xtipperpass']       : '';
+$xtippervorname       = isset($_REQUEST['xtippervorname'])    ? $_REQUEST['xtippervorname']    : '';
+$xtippernachname      = isset($_REQUEST['xtippernachname'])   ? $_REQUEST['xtippernachname']   : '';
+$xtipperstrasse       = isset($_REQUEST['xtipperstrasse'])    ? $_REQUEST['xtipperstrasse']    : '';
+$xtipperplz           = isset($_REQUEST['xtipperplz'])        ? $_REQUEST['xtipperplz']        : '';
+$xtipperort           = isset($_REQUEST['xtipperort'])        ? $_REQUEST['xtipperort']        : '';
+$xtipperemail         = isset($_REQUEST['xtipperemail'])      ? $_REQUEST['xtipperemail']      : '';
+$xfrei                = isset($_REQUEST['xfrei'])             ? $_REQUEST['xfrei']             : '';
+$xnews                = isset($_REQUEST['xnews'])             ? $_REQUEST['xnews']             : '';
+$xremind              = isset($_REQUEST['xremind'])           ? $_REQUEST['xremind']           : '';
+$xtippervereinradio   = isset($_REQUEST['xtippervereinradio'])? $_REQUEST['xtippervereinradio']: '';
+$xtippervereinalt     = isset($_REQUEST['xtippervereinalt'])  ? $_REQUEST['xtippervereinalt']  : '';
+$xtippervereinneu     = isset($_REQUEST['xtippervereinneu'])  ? $_REQUEST['xtippervereinneu']  : '';
+$xtippersub           = isset($_REQUEST['xtippersub'])        ? $_REQUEST['xtippersub']        : '';
+$xtipperligen         = isset($_REQUEST['xtipperligen'])      ? $_REQUEST['xtipperligen']      : '';
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
-  if(!isset($xtippervereinalt)){$xtippervereinalt="";}
-  if(!isset($xtippervereinneu)){$xtippervereinneu="";}
-  if(!isset($xtipperligen)){$xtipperligen="";}
+
   $users = array("");
   $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
   $datei = fopen($pswfile,"rb");
-  while (!feof($datei)) {
+  while ($datei && !feof($datei)) {
     $zeile = fgets($datei,1000);
     $zeile=trim(chop($zeile));
     if($zeile!=""){
@@ -56,8 +71,8 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
   if($newpage==1){
     $tipp_tipperdaten[0]=$nick;
     $tipp_tipperdaten[1]=trim($xtipperpass);
-    $tipp_tipperdaten[3]=isset($_POST['xtippervorname'])?   trim($_POST['xtippervorname']):      "";
-    $tipp_tipperdaten[3].=isset($_POST['xtippernachname'])? " ".trim($_POST['xtippernachname']): "";
+    $tipp_tipperdaten[3]=$xtippervorname;
+    $tipp_tipperdaten[3].=" ".$xtippernachname;
 
     if(substr_count($tipp_tipperdaten[3], " ")>1){
       $newpage=0;
@@ -136,7 +151,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
           }
         closedir($verz);
         if($create==1){
-          $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$nick.".tip";
+          //$tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$nick.".tip";
           $st=-1;require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavefile.php"); // Tipp-Datei erstellen
           $auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$value.".aus","ab");
           flock($auswertdatei,2);

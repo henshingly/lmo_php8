@@ -19,9 +19,7 @@
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if (!isset($emailart)) {
-  $emailart = -1;
-}
+
 $save               = isset($_POST['save'])               ? $_POST['save']               : 0;
 $message            = isset($_POST['message'])            ? $_POST['message']            : '';
 $betreff            = !empty($_POST['betreff'])           ? $_POST['betreff']            : $text['tipp'][0];
@@ -33,6 +31,8 @@ $adressat           = isset($_POST['adressat'])           ? $_POST['adressat']  
 $start              = isset($_POST['start'])              ? $_POST['start']              : 0;
 $ende               = isset($_POST['ende'])               ? $_POST['ende']               : 0;
 $tage               = isset($_POST['tage'])               ? $_POST['tage']               : 4;
+$liga1              = isset($_POST['liga1'])              ? $_POST['liga1']              : array();
+$st1                = isset($_POST['st1'])                ? $_POST['st1']                : array();
 
 if ($save == 1) {
   if ($emailart == 1) {

@@ -20,14 +20,15 @@
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($_POST["liga"] != "" && $_POST["st"] != "") {
+  $start=isset($_POST['start'])?$_POST['start']:0;
+  $ende=isset($_POST['ende'])?$_POST['ende']:$anztipper;
   $verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
-  $dummy = array("");
+  $dummy = array();
   while ($files = readdir($verz)) {
     if (strtolower(substr($files, -4)) == ".tip" && strtolower(substr($files, 0, strlen($liga))) == strtolower($liga)) {
       array_push($dummy, $files);
     }
   }
-  array_shift($dummy);
    
   $anztipper = count($dummy);
   $einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".$liga."_".$st.".ein";

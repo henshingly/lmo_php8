@@ -109,7 +109,7 @@ if ($tabdat == "") {
 ?>
 
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><? if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?></caption><? 
+  <caption><? if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];} ?></caption><? 
 if($tipp_tipperimteam>=0){?>
   <tr>
     <td align="center">
@@ -129,12 +129,12 @@ if($tipp_tipperimteam>=0){?>
     echo "<a href=\"".$addt1."team\" title=\"".$text['tipp'][60]."\">".$text['tipp'][62]."</a>";
   }?>
           </th><?
-  if ($lmotipperverein != "" || $wertung == "intern") {?>
+  if ($_SESSION['lmotipperverein'] != "" || $wertung == "intern") {?>
           <th class="nobr"><?
     if ($wertung == "intern") {
       echo $text['tipp'][144];
     } else {
-      echo "<a href=\"".$addt1."intern&amp;teamintern=".rawurlencode($lmotipperverein)."\" title=\"".$text['tipp'][144]."\">".$text['tipp'][144]."</a>";
+      echo "<a href=\"".$addt1."intern&amp;teamintern=".rawurlencode($_SESSION['lmotipperverein'])."\" title=\"".$text['tipp'][144]."\">".$text['tipp'][144]."</a>";
     }?>
           </th><?
   }?>
@@ -339,7 +339,7 @@ for($x = 1; $x <= $anztipper; $x++) {
         </tr><?      
       }
 
-      if ((($wertung == "einzel" || $wertung == "intern") && $lmotippername == $tippernick[$i]) || ($wertung == "team" && $lmotipperverein == $team[$i])) {
+      if ((($wertung == "einzel" || $wertung == "intern") && $_SESSION['lmotippername'] == $tippernick[$i]) || ($wertung == "team" && $_SESSION['lmotipperverein'] == $team[$i])) {
         $dummy = "<strong>";
         $dumm2 = "</strong>";
       } else {

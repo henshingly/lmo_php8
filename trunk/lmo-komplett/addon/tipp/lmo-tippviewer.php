@@ -26,7 +26,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
   $verz = opendir(substr(PATH_TO_LMO.'/'.$dirliga, 0, -1));
   $dateien = array();
   while ($files = readdir($verz)) {
-    if (file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$lmotippername.".tip")) {
+    if (file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$_SESSION['lmotippername'].".tip")) {
       $ftest = 1;
       if ($tipp_immeralle != 1) {
         $ftest = 0;
@@ -105,8 +105,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
   $then1 = strftime("%d.%m.%Y", ($then-1));
    
   for($liganr = 0; $liganr < $anzligen; $liganr++) {
-    $file = $dirliga.$dateien[$liganr];
-    $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dateien[$liganr], 0, -4)."_".$lmotippername.".tip";
+    $file = $dateien[$liganr];
+    $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dateien[$liganr], 0, -4)."_".$_SESSION['lmotippername'].".tip";
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileviewer.php");
   }
     
@@ -166,7 +166,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         }
       }
       if ($i == ($anzspiele-1) || $liga[$i] != $liga[$i+1]) {
-        $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$liga[$i]."_".$lmotippername.".tip";
+        $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$liga[$i]."_".$_SESSION['lmotippername'].".tip";
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavefileviewer.php");
         $start1 = $i+1;
       }
@@ -221,7 +221,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></h1></td>
+    <td align="center"><h1><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></h1></td>
   </tr>
   <tr>
     <td align="center"><? if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
@@ -280,7 +280,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         <tr>
           <th align="left" class="nobr" colspan="6"><? 
       if ($tipp_tippeinsicht == 1) {
-        echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$dirliga.$liga[$i].".l98&amp;st=".$spieltag[$i]."\">";
+        echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$liga[$i].".l98&amp;st=".$spieltag[$i]."\">";
       }
       if ($lmtype[$i] == 0) {
         echo $spieltag[$i].". ".$text[2];
@@ -565,12 +565,12 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         echo $punktespiel;
       } else {
         if ($punktespiel > 0) {
-          echo "<img src='right.gif' width=\"16\" height=\"16\" border=\"0\">";
+          echo "<img src='".URL_TO_IMGDIR."/right.gif' border='0' alt=''>";
           if ($punktespiel > 1) {
             echo "+".($punktespiel-1);
           }
         } else {
-          echo "<img src='wrong.gif' width=\"16\" height=\"16\" border=\"0\">";
+          echo "<img src='".URL_TO_IMGDIR."/wrong.gif' border='0' alt=''>";
         }
       }
     }    ?></strong>

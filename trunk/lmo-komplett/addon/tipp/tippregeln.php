@@ -108,16 +108,19 @@ zu abonnieren.</p>
   <dd>Nach dem Einloggen im Tippspielbereich eine abonnierte Liga zum Tippen auswählen.</dd>
   <dd>Im Ansetzungsbereich können Sie nun Ihre Tipps für die einzelnen Spieltage 
       abgeben.</dd>
-  <dd>Nach Eingabe der Tipps <strong>eines Spieltages</strong> klicken Sie auf - <strong>Tipps 
+  <dd>Nach Eingabe der Tipps <strong>eines Spieltages</strong> klicken Sie auf <strong>Tipps 
       speichern</strong></dd>
-  <dd>Sie können jetzt auf einen anderen Spieltag wechseln und weitere Tipps abgeben.</dd>
+  <dd>Sie können jetzt auf einen anderen Spieltag wechseln und weitere Tipps abgeben.</dd><?
+if ($tipp_jokertipp==1) {?>
+  <dd>Es besteht auch die Möglichkeit pro Spieltag einen <strong>Joker</strong> zu setzen. 
+      Die für diesen Spieltag gewonnen Punkte werden dann mit einem bestimmten Faktor multipliziert.</dd><?
+}?>  
   <dt>Hinweise zur Tippabgabe
   <dd>Die Tippzeit läuft für jedes Spiel einzeln ab. </dd>
   <dd>Ablauf der Tippzeit ist jeweils <? echo $tipp_tippBis;?> Minuten vor Anpfiff.</dd>
   <dd>Sollten <strong>ohne</strong> unsere Kenntnis einzelne Spiele vorgezogen werden, bitten 
-      wir das zu entschuldigen.<br>
-      Wir versuchen jedoch immer <strong>vor</strong> einem Spieltag alle veränderten Anstoßzeiten 
-      zu aktualisieren.</dd>
+      wir das zu entschuldigen. Wir versuchen jedoch immer <strong>vor</strong> einem Spieltag 
+      alle veränderten Anstoßzeiten zu aktualisieren.
   </dd>
 </dl>
 <h2>Spielwertung und Ligawertung</h2>
@@ -128,8 +131,15 @@ zu abonnieren.</p>
       <li>Ergebnis richtig: <strong><? echo $tipp_rergebnis;?> Punkte</strong></li>
       <li>nur Tendenz und Tordifferenz richtig: <strong><? echo $tipp_rtendenzdiff;?> Punkte</strong></li>
       <li>nur Tendenz richtig: <strong><? echo $tipp_rtendenz;?> Punkte</strong></li>
-      <li>nur eine Toranzahl richtig: <strong><? echo $tipp_rtor;?> Punkt</strong></li>
-    </ul>
+      <li>nur eine Toranzahl richtig: <strong><? echo $tipp_rtor;?> Punkte</strong></li><?
+if ($tipp_jokertipp==1) {?>
+      
+      <li>Jokermultiplikator: <strong><? echo $tipp_jokertippmulti;?></strong></li><?
+}?>  
+    </ul><?
+  if ($tipp_jokertipp==1) {?>
+echo '  <dd>Es besteht auch die Möglichkeit pro Spieltag einen <strong>Joker</strong> zu setzen. Die für diesen Spieltag gewonnen Punkte werden dann doppelt gewertet.</dd>';
+} ?>  
   </dd>
   <dt>Die Liga- und Spieltagswertung</dt>
   <dd>Die Gesamtligawertung erhalten Sie, wenn Sie in der Tippspiel-Übersicht eine 
