@@ -77,23 +77,26 @@ if ($action!="tipp") {
   $output_titel=$file==""?$text[53]:$titel; 
   
   //Sprachauswahl
-  $handle=opendir (PATH_TO_LMO);
-  while (false!==($f=readdir($handle))) {
-    if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
-      if ($lang[1]=="") $lang[1]=$text[505];
-      $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;archiv={$archiv}' title='{$lang[1]}'>";
-      $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
-      
-      if (!@fopen($imgfile,"rb")) {
-        $output_sprachauswahl.=$lang[1];
-      }else{
-        $c=@getimagesize($imgfile);
-        $output_sprachauswahl.="<img src='{$imgfile}' border='1' title='{$lang[1]}' {$c[3]} alt='{$lang[1]}'>";
-      }
-      $output_sprachauswahl.="</a> ";
-    } 
+  if($sprachauswahl==1){
+    $handle=opendir (PATH_TO_LMO);
+    while (false!==($f=readdir($handle))) {
+      if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
+        if ($lang[1]=="") $lang[1]=$text[505];
+        $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;archiv={$archiv}' title='{$lang[1]}'>";
+        $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
+        
+        if (!@fopen($imgfile,"rb")) {
+          $output_sprachauswahl.=$lang[1];
+        }else{
+          $c=@getimagesize($imgfile);
+          $output_sprachauswahl.="<img src='{$imgfile}' border='1' title='{$lang[1]}' {$c[3]} alt='{$lang[1]}'>";
+        }
+        $output_sprachauswahl.="</a> ";
+      } 
+    }
+    closedir($handle);
   }
-  closedir($handle);
+  
   ob_start();
   if ($file!="") {
   
@@ -106,46 +109,59 @@ if ($action!="tipp") {
   
       //Ergebnis/Tabelle
       if($tabonres==0){
-        $output_ergebnisse.=$action!='results'? "<a href='{$addm}results&amp;st={$ste}' title='{$text[11]}'>{$text[10]}</a>": $text[10];
-        $output_ergebnisse.="&nbsp;&nbsp;";
-  
-        $output_tabelle.=$action!='table'?      "<a href='{$addm}table' title='{$text[17]}'>{$text[16]}</a>":                 $text[16];
-        $output_tabelle.="&nbsp;&nbsp;";
+        if($ergebnis==1){
+          $output_ergebnisse.=$action!='results'? "<a href='{$addm}results&amp;st={$ste}' title='{$text[11]}'>{$text[10]}</a>": $text[10];
+          $output_ergebnisse.="&nbsp;&nbsp;";
+        }
+        if($tabelle==1){
+          $output_tabelle.=$action!='table'?      "<a href='{$addm}table' title='{$text[17]}'>{$text[16]}</a>":                 $text[16];
+          $output_tabelle.="&nbsp;&nbsp;";
+        }
       //Kombinierte Ansicht
       }else{
-        $output_ergebnisse.=$action!='results' && $action!='table'? "<a href='{$addm}results' title='{$text[104]}'>{$text[10]}/{$text[16]}</a>":  $text[10].'/'.$text[16];
-        $output_ergebnisse.="&nbsp;&nbsp;";
+        if($ergebnis==1){
+          $output_ergebnisse.=$action!='results' && $action!='table'? "<a href='{$addm}results' title='{$text[104]}'>{$text[10]}/{$text[16]}</a>":  $text[10].'/'.$text[16];
+          $output_ergebnisse.="&nbsp;&nbsp;";
+        }
       }
       
       //Kreuztabelle
-      $output_kreuztabelle.=$action!="cross"?   "<a href='{$addm}cross' title='{$text[15]}'>{$text[14]}</a>":                 $text[14];
-      $output_kreuztabelle.="&nbsp;&nbsp;";
-      
+      if($kreuz==1){
+        $output_kreuztabelle.=$action!="cross"?   "<a href='{$addm}cross' title='{$text[15]}'>{$text[14]}</a>":                 $text[14];
+        $output_kreuztabelle.="&nbsp;&nbsp;";
+      }
       //Spielplan
-      $output_spielplan.=$action!="program"?    "<a href='{$addm}program' title='{$text[13]}'>{$text[12]}</a>":               $text[12];
-      $output_spielplan.="&nbsp;&nbsp;";
-      
+      if($plan==1){
+        $output_spielplan.=$action!="program"?    "<a href='{$addm}program' title='{$text[13]}'>{$text[12]}</a>":               $text[12];
+        $output_spielplan.="&nbsp;&nbsp;";
+      }
       //Fieberkurve
-      $output_fieberkurve.=$action!="graph"?    "<a href='{$addm}graph&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[134]}'>{$text[133]}</a>": $text[133];
-      $output_fieberkurve.="&nbsp;&nbsp;";
-      
+      if($kurve==1){
+        $output_fieberkurve.=$action!="graph"?    "<a href='{$addm}graph&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[134]}'>{$text[133]}</a>": $text[133];
+        $output_fieberkurve.="&nbsp;&nbsp;";
+      }
       //Ligastatistiken
-      $output_ligastatistik.=$action!="stats"?  "<a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[19]}'>{$text[18]}</a>":   $text[18];
-      $output_ligastatistik.="&nbsp;&nbsp;";
-      
+      if($liagastats==1){
+        $output_ligastatistik.=$action!="stats"?  "<a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[19]}'>{$text[18]}</a>":   $text[18];
+        $output_ligastatistik.="&nbsp;&nbsp;";
+      }
     // Pokalligen
     }else{
       //Kalenderlink
-      $output_kalender.=$action!='cal'?         "<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}</a>":     $text[140];
-      $output_kalender.='&nbsp;&nbsp;';
-      
+      if($datc==1){
+        $output_kalender.=$action!='cal'?         "<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}</a>":     $text[140];
+        $output_kalender.='&nbsp;&nbsp;';
+      }
       //Ergebnisse
-      $output_ergebnisse.=$action!='results'?   "<a href='{$addm}results&amp;st={$ste}' title='{$text[11]}'>{$text[10]}</a>":  $text[10];
-      $output_ergebnisse.="&nbsp;&nbsp;";
-      
+      if($ergebnis==1){
+        $output_ergebnisse.=$action!='results'?   "<a href='{$addm}results&amp;st={$ste}' title='{$text[11]}'>{$text[10]}</a>":  $text[10];
+        $output_ergebnisse.="&nbsp;&nbsp;";
+      }
       //Spielplan
-      $output_spielplan.=$action!="program"?    "<a href='{$addm}program' title='{$text[13]}'>{$text[12]}</a>":                $text[12];
-      $output_spielplan.="&nbsp;&nbsp;";
+      if($plan==1){
+        $output_spielplan.=$action!="program"?    "<a href='{$addm}program' title='{$text[13]}'>{$text[12]}</a>":                $text[12];
+        $output_spielplan.="&nbsp;&nbsp;";
+      }
     }
     $output_info.=$action!="info"?              "<a href='{$addm}info' title='{$text[21]}'>{$text[20]}</a>":                   $text[20];
     
@@ -171,9 +187,9 @@ if ($action!="tipp") {
     //Pokal
     }else{
       switch($action) {
-        case "cal":      if ($datc==1)                    {require(PATH_TO_LMO."/lmo-showcal.php");}break;
-        case "results":  if ($ergebis==1)                 {require(PATH_TO_LMO."/lmo-showresults.php");}break;
-        case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showprogram.php");}break;
+        case "cal":      if ($datc==1)                    {require(PATH_TO_LMO."/lmo-showkocal.php");}break;
+        case "results":  if ($ergebnis==1)                 {require(PATH_TO_LMO."/lmo-showkoresults.php");}break;
+        case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showkoprogram.php");}break;
       }
   	}
     //Spieler-Addon
@@ -225,7 +241,7 @@ if ($action!="tipp") {
   }
   
   //Spieler-Addon
-   if ($file!="" && $einspieler==1) {
+   if ($file!="" && $einspieler==1 && $mittore==1) {
  	  include(PATH_TO_ADDONDIR."/spieler/lmo-statloadconfig.php");
 	  $output_spielerstatistik.=$action!="spieler"?"<a href='{$addm}spieler' title='{$text['spieler'][12]}'>{$spieler_ligalink}</a>":           $spieler_ligalink;
     $output_spielerstatistik.="&nbsp;&nbsp;";

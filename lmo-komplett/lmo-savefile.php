@@ -99,6 +99,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         fputs($datei,"urlT=".$urlt."\n");
         fputs($datei,"urlB=".$urlb."\n");
         fputs($datei,"Plan=".$plan."\n");
+        fputs($datei,"Sprachauswahl=".$sprachauswahl."\n");
         fputs($datei,"Ergebnis=".$ergebnis."\n");
         fputs($datei,"mittore=".$mittore."\n");
         fputs($datei,"favTeam=".$favteam."\n");

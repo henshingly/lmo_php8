@@ -66,15 +66,15 @@ if($file!=""){
         $kurve=isset($_POST["xkurve"])?1:0;
         $kreuz=isset($_POST["xkreuz"])?1:0;     
         $tabelle=isset($_POST["xtabelle"])?1:0;
-        $mittore=isset($_POST["xmittore"])?1:0;
         $ligastats=isset($_POST["xligastats"])?1:0;
         }
       else{
-        $klfin=trim($_POST["xklfin"]);
-        }
-      $plan=isset($_POST["xkurve"])?1:0;
-      $ergebnis=isset($_POST["xkurve"])?1:0;
-      
+        $klfin=isset($_POST["xklfin"])?1:0;
+      }
+      $sprachauswahl=isset($_POST["xsprachauswahl"])?1:0;
+      $plan=isset($_POST["xplan"])?1:0;
+      $ergebnis=isset($_POST["xergebnis"])?1:0;
+      $mittore=isset($_POST["xmittore"])?1:0;
       $dats=isset($_POST["xdats"])?1:0;
       $datm=isset($_POST["xdatm"])?1:0;
       $datf=trim($_POST["xdatf"]);
@@ -198,7 +198,7 @@ if($file!=""){
             <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xergebnis" onChange="dolmoedit()"<?if($ergebnis==1){echo " checked";}?>></td>
             <td class="lmost5" colspan="3"></td><?
           }
-          if($tabonres==1){ ?>
+          if($lmtype==0 && $tabonres==1){ ?>
             <td class="lmost5" align="right"><acronym title="<? echo $text[512] ?>"><? echo $text[10].'/'.$text[16]; ?></acronym></td>
             <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xergebnis" onChange="dolmoedit()"<?if($ergebnis==1){echo " checked";}?>></td>
             <td class="lmost5" colspan="3"></td><?
@@ -213,7 +213,6 @@ if($file!=""){
           </tr><? 
           if($lmtype==0){ ?>
           <tr>
-            
             <td class="lmost5" align="right"><acronym title="<? echo $text[468] ?>"><? echo $text[467]; ?></acronym></td>
             <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xkreuz" onChange="dolmoedit()"<?if($kreuz==1){echo " checked";}?>></td>
             <td class="lmost5">&nbsp;</td>
@@ -222,7 +221,7 @@ if($file!=""){
           </tr><?
           }?>
           <tr>
-            <td class="lmost5" align="right"><acronym title="<? echo $text[3019] ?>"><? echo $text[3018]; ?></acronym></td>
+            <td class="lmost5" align="right"><acronym title="<? echo $text['spieler'][19] ?>"><? echo $text['spieler'][18]; ?></acronym></td>
             <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xmittore" onChange="dolmoedit()"<?if($mittore==1){echo " checked";}?>></td><?
           if($lmtype==0){ ?>
             <td class="lmost5">&nbsp;</td>
@@ -231,6 +230,11 @@ if($file!=""){
           }else{?>
             <td class="lmost5" colspan="3"></td><?
           }?>
+          </tr>
+          <tr>
+            <td class="lmost5" align="right"><acronym title="<? echo $text[520] ?>"><? echo $text[519]; ?></acronym></td>
+            <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xsprachauswahl" onChange="dolmoedit()"<?if($sprachauswahl==1){echo " checked";}?>></td>
+            <td class="lmost5" colspan="3"></td>
           </tr>
           </tbody><? 
         }?>

@@ -55,6 +55,7 @@ if(isset($file) && $file!=""){
               case "urlT":     $urlt=$wert;break;
               case "urlB":     $urlb=$wert;break;
               case "Plan":     $plan=$wert;break;
+              case "Sprachauswahl":$sprachauswahl=$wert;break;
               case "Ergebnis": $ergebnis=$wert;break;
               case "mittore":  $mittore=$wert;break;
               case "favTeam":  $favteam=$wert;break;
