@@ -33,7 +33,7 @@ $xtippervereinradio   = isset($_REQUEST['xtippervereinradio'])? $_REQUEST['xtipp
 $xtippervereinalt     = isset($_REQUEST['xtippervereinalt'])  ? $_REQUEST['xtippervereinalt']  : '';
 $xtippervereinneu     = isset($_REQUEST['xtippervereinneu'])  ? $_REQUEST['xtippervereinneu']  : '';
 $xtippersub           = isset($_REQUEST['xtippersub'])        ? $_REQUEST['xtippersub']        : '';
-$xtipperligen         = isset($_REQUEST['xtipperligen'])      ? $_REQUEST['xtipperligen']      : '';
+$xtipperligen         = isset($_REQUEST['xtipperligen'])      ? $_REQUEST['xtipperligen']      : array();
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
@@ -102,7 +102,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
     }
   }
 
-  if($newpage==1){
+  if($newpage!=1){
     if($xtippervereinradio==1){$team=$xtippervereinalt;}
     elseif($xtippervereinradio==2){$team=$xtippervereinneu;}
     else{$team="";}
@@ -124,9 +124,9 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
 
     $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
     while($files=readdir($verz)){
-      if(substr($files,0,-4)==$nick && strtolower(substr($files,-4))==".tip"){
+      if(substr($files,strrpos($files,"_")+1,-4)==$nick && strtolower(substr($files,-4))==".tip"){
         $delete=1;
-        if($xtipperligen!=""){
+        if(!empty($xtipperligen)){
           foreach($xtipperligen as $key => $value){
             $tippfile=$value."_".$nick.".tip";
             if($tippfile==$files){
@@ -134,12 +134,12 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
             }
           }
         }
-        if($delete==1){@unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files);} // Abonnement beenden
+        if($delete==1){unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files);} // Abonnement beenden
       }
     }
     closedir($verz);
 
-    if($xtipperligen!=""){
+    if(!empty($xtipperligen)){
       foreach($xtipperligen as $key => $value){
         $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
         while($files=readdir($verz)){
@@ -153,8 +153,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
         closedir($verz);
         if($create==1){
           $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$nick.".tip";
-          $st=-1;
-          require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavefile.php"); // Tipp-Datei erstellen
+          $st=-1;require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavefile.php"); // Tipp-Datei erstellen
           $auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$value.".aus","ab");
           flock($auswertdatei,2);
           fputs($auswertdatei,"\n[".$nick."]\n");
