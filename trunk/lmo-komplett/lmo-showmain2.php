@@ -104,11 +104,10 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
           $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?{$_SERVER['QUERY_STRING']}&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'>";
           $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
           
-          if (!@fopen($imgfile,"rb")) {
+          if (phpLinkCheck($imgfile,TRUE)==404 || phpLinkCheck($imgfile,TRUE)==FALSE) {
             $output_sprachauswahl.=$lang[1];
           }else{
-            $c=@getimagesize($imgfile);
-            $output_sprachauswahl.="<img src='{$imgfile}' border='1' title='{$lang[1]}' {$c[3]} alt='{$lang[1]}'>";
+            $output_sprachauswahl.="<img src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'>";
           }
           $output_sprachauswahl.="</a> ";
         }
@@ -125,7 +124,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   
       //Kalenderlink
       if($datc==1){
-        $output_kalender.=$action!='cal'?         "<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}<span class='popup'>{$text[141]}</span></a>":   $text[140];
+        $output_kalender.=$action!='cal'?         "<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}</a>":   $text[140];
         $output_kalender.='&nbsp;&nbsp;';
       }
       //Ergebnis/Tabelle

@@ -1,27 +1,23 @@
 <?PHP
-// 
-// LigaManager Online 3.02
-// Copyright (C) 1997-2002 by Frank Hollwitz
-// webmaster@hollwitz.de / http://php.hollwitz.de
-// 
-// Tippspiel-AddOn 1.20
-// Copyright (C) 2002 by Frank Albrecht
-// fkalbrecht@web.de
-// 
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of
-// the License, or (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-// 
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  * 
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+  
+  
   require_once(PATH_TO_LMO."/lmo-admintest.php");
 $dummb = array("");
 $dummd = array("");
@@ -42,12 +38,11 @@ $anztipper = count($dummd);
 $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
 $auswertdatei = fopen($auswertfile, "wb");
 if (!$auswertdatei) {
-  echo "<p class='error'>".$text['tipp'][29]." ".$auswertdatei.$text[283]."</p>";
+  echo "<p class='error'>".$text['tipp'][0].': '.$text['tipp'][29]." ".$auswertdatei.$text[283]."</p>";
   exit;
 }
 flock($auswertdatei, 2);
-$addw = "lmo-start.php?action=tipp&amp;todo=wert&amp;all=1";
-echo "<p class='message'>".$text['tipp'][29]." <a target=\"_blank\" href=\"".$addw."\">Gesamt</a> ".$text['tipp'][65]."<br></p>";
+echo "<p class='message'>".$text['tipp'][0].': '.$text['tipp'][56]." ".$text['tipp'][65]."</p>";
 $tippernick = array_pad($array, $anztipper+1, "");
 if ($tipp_showname == 1) {
   $tippername = array_pad($array, $anztipper+1, "");

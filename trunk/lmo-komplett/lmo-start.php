@@ -35,9 +35,9 @@ $ftype=".l98";
 
 require_once(PATH_TO_LMO."/lmo-archiv.php");
 
-if(!isset($_REQUEST["action"])){$_REQUEST["action"]="";$action="";}
-if(!isset($_REQUEST["file"])){$_REQUEST["file"]="";$file="";}
-if(!isset($_REQUEST["archiv"])){$_REQUEST["archiv"]="";$archiv="";}
+if(!isset($_REQUEST["action"])){$_REQUEST["action"]="";$action="";}else{$action=$_REQUEST["action"];}
+if(!isset($_REQUEST["file"])){$_REQUEST["file"]="";$file="";}else{$file=$_REQUEST["file"];}
+if(!isset($_REQUEST["archiv"])){$_REQUEST["archiv"]="";$archiv="";}else{$archiv=$_REQUEST["archiv"];}
 
 if($_REQUEST["action"]=="admin"){$_REQUEST["action"]="";$action="";}
 

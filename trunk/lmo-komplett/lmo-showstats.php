@@ -1,23 +1,23 @@
 <?
-// 
-// LigaManager Online 3.02b
-// Copyright (C) 1997-2002 by Frank Hollwitz
-// webmaster@hollwitz.de / http://php.hollwitz.de
-// 
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of
-// the License, or (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-// 
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  * 
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+  
+  
 if($file!=""){
   $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
   $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
@@ -287,7 +287,7 @@ if($file!=""){
       <tr>
         <td align="right"><?=$hheimsieg1?> - </td>
         <td align="left"><?=$hgastsieg1?></td>
-        <td colspan="2" align="left"><?=applyFactor($hheimsiegtor1,$goalfaktor)?>:<?=applyFactor($hgastsiegtor1,$goalfaktor)?> (<?=$text[4014]?>.<?=$spieltagflag1?>)</td>
+        <td colspan="2" align="left"><?=applyFactor($hheimsiegtor1,$goalfaktor)?>:<?=applyFactor($hgastsiegtor1,$goalfaktor)?> (<?=$spieltagflag1?>.<?=$text[4014]?>)</td>
       </tr><?
 	    if ($counteranz>2) {
 	      $counteranz0=$counteranz-2;?>

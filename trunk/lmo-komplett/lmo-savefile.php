@@ -117,13 +117,13 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           fputs($datei,"kurve1=".$stat1."\n");
           fputs($datei,"kurve2=".$stat2."\n");
         }
-        if ($nticker==1) {
+        //if ($nticker==1) {
           fputs($datei,"\n[News]\n");
           fputs($datei,"NC=".count($nlines)."\n");
           for ($i=0; $i<count($nlines); $i++) {
             fputs($datei,"N".$i."=".$nlines[$i]."\n");
           }
-        }
+        //}
         fputs($datei,"\n[Teams]\n");
         for ($i=1; $i<=$anzteams; $i++) {
           fputs($datei,$i."=".$teams[$i]."\n");

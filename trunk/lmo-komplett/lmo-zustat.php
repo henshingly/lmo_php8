@@ -89,25 +89,27 @@ if ($_SESSION['lmouserok'] > 0) {
            
           // Abfrage Grüne-Tisch-Entscheidung-Anfang
           if ($goala[$y1-1][$i1] == "-1") $goala[$y1-1][$i1] = "_";
-          if ($msieg[$y1-1][$i1] == "1") {
-            $zusieg1 = $zusieg1+1;
-            $zuunent1 = $zuunent1-1;
-          }
-          if ($msieg[$y1-1][$i1] == "2") {
-            $zusieg2 = $zusieg2+1;
-            $zuunent1 = $zuunent1-1;
-          }
-          if ($msieg[$y1-1][$i1] == "3") {
-            $gbeide = $gbeide+1;
-            if ($goala[$y1-1][$i1] > $goalb[$y1-1][$i1]) {
-              $sptore1 = $sptore1+$goala[$y1-1][$i1];
-              $zusieg2 = $zusieg2+1;
-              $ggasttore = $ggasttore+$goala[$y1-1][$i1];
+          if (isset($msieg)) {
+            if ($msieg[$y1-1][$i1] == "1") {
+              $zusieg1 = $zusieg1+1;
+              $zuunent1 = $zuunent1-1;
             }
-            if ($goala[$y1-1][$i1] < $goalb[$y1-1][$i1]) {
-              $sptore1 = $sptore1+$goalb[$y1-1][$i1];
-              $zusieg2 = $zusieg2-1;
-              $gheimtore = $gheimtore+$goalb[$y1-1][$i1];
+            if ($msieg[$y1-1][$i1] == "2") {
+              $zusieg2 = $zusieg2+1;
+              $zuunent1 = $zuunent1-1;
+            }
+            if ($msieg[$y1-1][$i1] == "3") {
+              $gbeide = $gbeide+1;
+              if ($goala[$y1-1][$i1] > $goalb[$y1-1][$i1]) {
+                $sptore1 = $sptore1+$goala[$y1-1][$i1];
+                $zusieg2 = $zusieg2+1;
+                $ggasttore = $ggasttore+$goala[$y1-1][$i1];
+              }
+              if ($goala[$y1-1][$i1] < $goalb[$y1-1][$i1]) {
+                $sptore1 = $sptore1+$goalb[$y1-1][$i1];
+                $zusieg2 = $zusieg2-1;
+                $gheimtore = $gheimtore+$goalb[$y1-1][$i1];
+              }
             }
           }
            

@@ -55,7 +55,7 @@
 054=Punktestand
 055=Zu den Optionen des Tippspiels
 056=Gesamtwertung
-057=Tippspiel-Optionen
+057=Tippspiel
 058=auswerten
 059=die Einzelwertung anzeigen
 060=die Teamwertung anzeigen

@@ -17,7 +17,7 @@ if($hands==1){
     <td align="center"><?=$text[410]?></td><?
   }
 }
-if($_SESSION['lmouserok']==2){
+if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){
   if($st!=-2){?>
     <td align="center"><a href='<?=$addr?>-2' onClick="return chklmolink();" title="<?=$text[102]?>"><?=$text[101]?></a></td><?
   }else{?>
