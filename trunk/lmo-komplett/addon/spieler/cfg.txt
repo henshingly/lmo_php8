@@ -1,8 +1,10 @@
 spielerbildbreite=15px
 anzeige_pro_seite=10
-keine_namensortierung=0
 nullwerte_anzeigen=1
+extra_sortierspalte=1
+pfeile_anzeigen=1
 standard_sortierung=0
+standard_richtung=1
 adminbereich_anzeige_pro_seite=0
 adminbereich_standard_sortierung=0
 adminbereich_hilfsadmin_zulassen=1

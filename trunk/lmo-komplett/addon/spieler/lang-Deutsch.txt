@@ -22,7 +22,7 @@
 021=Vorsortierung User
 022=Anzeige pro Seite User
 023=Nullwerte einblenden
-024=keine Namensortierung
+024=Extra Sortierspalte
 025=Verein
 026=Spielerbild
 027=Vereinswappen
@@ -45,3 +45,6 @@
 044=User
 045=Admin
 046=Hilfsadmin (Spalten)
+047=aufsteigend
+048=absteigend
+049=Pfeile anzeigen
