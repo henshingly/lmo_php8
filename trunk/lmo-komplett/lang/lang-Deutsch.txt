@@ -567,6 +567,8 @@
 566=Sollen zusätzliche Heim- und Auswärtstabellen angezeigt werden?
 567=Fehler beim Erstellen
 568=Saisonende
+569=Datumssortierung
+570=Sollen die Spiele in der Ergebnisansicht nach Datum sortiert werden?
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde
