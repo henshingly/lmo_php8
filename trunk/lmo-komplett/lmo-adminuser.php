@@ -138,7 +138,7 @@ if($_SESSION['lmouserok']==2){
           </tr><?
       if($userd[2]==1){?>
           <tr>
-            <td class="lmost8" colspan="3"><acronym title="<?=$text[398]?>"><?=$text[397]?>: <input class="lmoadminein" type="text" name="xfiles<?=$i?>" size="40" maxlength="256" value="<?=$userg?>"></acronym></td>
+            <td class="lmost8" colspan="3"><acronym title="<?=$text[398]?>"><?=$text[397]?>: <input class="lmoadminein" type="text" name="xfiles<?=$i?>" size="40" value="<?=$userg?>"></acronym></td>
           </tr><?
       }?>
         </table>
