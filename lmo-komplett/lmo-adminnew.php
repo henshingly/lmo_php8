@@ -117,6 +117,7 @@ if ($newpage == 3) {
   $dats = "1";
   $datm = "1";
   $datf = $defdateformat;
+  $enablegamesort = '1';
   $urlt = "1";
   $urlb = "1";
   $favteam = "0";
