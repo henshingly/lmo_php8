@@ -20,14 +20,12 @@
 //
 // Erweiterung für Archiv Funktion durch Georg Strey
 
-
-  if(isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp")
-  {
-    session_start();
-  }
+if (session_id()=="") session_start();
+if(isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") {
+  session_start();
+}
 ?>
-
-<SCRIPT Language="JavaScript">
+<SCRIPT type="text/javascript">
 <!--
  NS4 = (document.layers);
  if (NS4) { document.write('<link rel="stylesheet" href="nc.css" type="text/css">'); }
@@ -37,26 +35,21 @@
 <noscript>
 <link rel="stylesheet" href="lmo-style.css" type="text/css">
 </noscript>
-
 <?php
-ob_start();
 setlocale(LC_TIME, "de_DE");
 $array = array("");
 
 require_once("lmo-cfgload.php");
+if(isset($HTTP_GET_VARS["lmouserlang"])){$HTTP_SESSION_VARS["lmouserlang"]=$HTTP_GET_VARS["lmouserlang"];}
+if(isset($HTTP_SESSION_VARS["lmouserlang"])){$lmouserlang=$HTTP_SESSION_VARS["lmouserlang"];}else{$lmouserlang=$deflang;}
 require_once("lmo-langload.php");
 require_once("lmo-archiv.php");
 require_once("lmo-showdir.php");
-
-if (file_exists("lmo-tippcfgload.php"))
-  {require_once("lmo-tippcfgload.php");}
 
 if(!isset($_REQUEST["action"])){$_REQUEST["action"]="";}
 if(!isset($_REQUEST["file"])){$_REQUEST["file"]="";}
 
 if($_REQUEST["action"]=="admin"){$_REQUEST["action"]="";}
-
-echo "<link rel=stylesheet type=\"text/css\" href=\"lmo-style.css\">";
 
 if($_REQUEST["action"]=="")
 {
@@ -94,5 +87,4 @@ else
     require("lmo-showmain.php");
   }
 }
-ob_end_flush();
 ?>

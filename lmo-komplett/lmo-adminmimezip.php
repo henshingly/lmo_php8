@@ -227,7 +227,7 @@ class mime_mail
   $this->parts[] = array (
                            "ctype" => $ctype,
                            "message" => $message,
-                           "encode" => $encode,
+                           //"encode" => $encode,
                            "name" => $name
                           );
   }
@@ -277,7 +277,7 @@ function send()
  if (!empty($this->body))
     $this->add_attachment($this->body,  "",  "text/plain");   
  $mime .=  "MIME-Version: 1.0\n".$this->build_multipart();
- mail($this->to, $this->subject,  "", $mime);
+ return mail($this->to, $this->subject,  "", $mime);
  }
 };  // end of class 
 ?>

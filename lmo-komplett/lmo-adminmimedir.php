@@ -66,12 +66,12 @@ if($ftype!=""){
         }
       fclose($datei);
       $i++;
-      if($t0==""){$j++;$t0="Unbenante Liga ".$j;}
-      echo "<li><a href=\"javascript:emllmolink('".$addi.($k+1)."','".$aadr."');\">".$t0."</a></li>";
+      if($t0==""){$j++;$t0=$text[507]." $j";}
+      echo "<li><a target='lmoelm' href='{$addi}".($k+1)."' onclick='emllmolink(this.href,\"{$aadr}\");return false;'>{$t0}</a></li>";
       }
     }
-  if($i==0){echo "<li>[".$text[223]."]</li>";}
-  elseif(($i>1) && ($lmouserok==2)){echo "<li><a href=\"javascript:emllmolink('".$addi."-1','".$aadr."');\">".$text[401]."</a></li>";}
+  if($i==0){echo "<li>[{$text[223]}]</li>";}
+  elseif(($i>1) && ($lmouserok==2)){echo "<li><a target='lmoelm' href='{$addi}-1' onclick='emllmolink(this.href,\"{$aadr}\");return false;'>{$text[401]}</a></li>";}
   echo"</ul>";
   }
 ?>

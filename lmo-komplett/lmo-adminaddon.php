@@ -36,8 +36,6 @@ require_once("lmo-admintest.php");
     $tabpkt=trim($HTTP_POST_VARS["xtabpkt"]);
     $tabonres=trim($HTTP_POST_VARS["xtabonres"]);
     
-    $deflang=trim($HTTP_POST_VARS["xdeflang"]);
-    
     $backlink=isset($HTTP_POST_VARS["xbacklink"])?1:0;
     $calctime=isset($HTTP_POST_VARS["xcalctime"])?1:0;
     $einsavehtml=isset($HTTP_POST_VARS["xeinsavehtml"])?1:0;
@@ -70,24 +68,6 @@ require_once("lmo-admintest.php");
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?=$file;?>">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td class="lmost4" colspan="3"><?=$text[504];?></td>
-          </tr>
-          <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><acronym title="<?=$text[506]?>"><?=$text[505];?></acronym></td>
-            <td class="lmost5">
-              <select class="lmoadminein" name="xdeflang" onchange="dolmoedit()"><?
-              $handle=opendir ('.');
-              while (false!==($f=readdir($handle))) {
-                if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {?>
-                <option<?if ($lang[1]==$deflang) echo " selected";?>><?if ($lang[1]=="") echo $text[505]; else echo $lang[1];?></option><?
-                } 
-              }
-              closedir($handle); 
-              ?>
-              </select></td>
-          </tr>
           <tr>
             <td class="lmost4" colspan="3"><?=$text[220];?></td>
           </tr>
@@ -195,8 +175,8 @@ require_once("lmo-admintest.php");
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td class="lmost2" align="center"><?=$text[319]?></td>
-          <td class="lmost2" align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
+          <td class="lmost2" align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
+          <td class="lmost2" align="center"><?=$text[497]?></td>
           <td class="lmost2" align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
           <td class="lmost2" align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
         </tr>

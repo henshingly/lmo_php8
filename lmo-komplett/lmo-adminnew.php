@@ -281,7 +281,7 @@ echo "<option value=\"7\"";if($xmodus[$i-1]==7){echo " selected";}echo ">".$text
 <?PHP if($newpage<3){ ?>
   <tr>
     <td class="lmost4" colspan="2">
-      <a href="javascript:siklmolink('<?PHP echo $PHP_SELF; ?>');" title="<?PHP echo $text[248]; ?>"><?PHP echo $text[247]; ?></a>
+      <a href="<?PHP echo $PHP_SELF; ?>" onclick="return siklmolink(this.href);" title="<?PHP echo $text[248]; ?>"><?PHP echo $text[247]; ?></a>
     </td>
 <?PHP if($newpage<2){ ?>
     <td class="lmost4" align="right">

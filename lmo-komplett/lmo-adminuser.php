@@ -4,6 +4,10 @@
 // Copyright (C) 1997-2002 by Frank Hollwitz
 // webmaster@hollwitz.de / http://php.hollwitz.de
 // 
+// LigaManager Online
+// Edited by: Rene Marth
+// 29.08.2003
+// 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License as
 // published by the Free Software Foundation; either version 2 of
@@ -22,8 +26,8 @@ require_once("lmo-admintest.php");
 if($HTTP_SESSION_VARS['lmouserok']==2){
   $users = array("");
   $userf = array("");
-  if(!isset($HTTP_GET_VARS['del'])){$del=0;}
-  if(!isset($HTTP_POST_VARS['save'])){$save=0;}
+  isset($HTTP_GET_VARS['del'])?$del=$HTTP_GET_VARS['del']:$del=0;
+  isset($HTTP_POST_VARS['save'])?$save=$HTTP_POST_VARS['save']:$save=0;
   $pswfile="lmo-auth.txt";
   $psw1file="lmo-access.txt";
   $datei = fopen($pswfile,"rb");

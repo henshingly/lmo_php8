@@ -55,8 +55,8 @@ if($ftype!=""){
       }
     fclose($datei);
     $i++;
-    if($t0==""){$j++;$t0="Unbenante Liga ".$j;}
-    echo "<li><a href=\"javascript:dellmolink('".$addi.$dirliga.$files."','".$t0."');\">".$t0."</a></li>";
+    if($t0==""){$j++;$t0=$text[507]." $j";}
+    echo "<li><a href='{$addi}{$dirliga}{$files}' onclick='return dellmolink(this.href,\"{$t0}\");'>{$t0}</a></li>";
     }
   if($i==0){echo "<li>[".$text[223]."]</li>";}
   echo"</ul>";

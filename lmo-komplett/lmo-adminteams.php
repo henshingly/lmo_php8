@@ -215,7 +215,7 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
     </nobr></td>
 <?PHP if($lmtype==0){ ?>
     <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><nobr><a href="javascript:dteamlmolink('<?PHP echo $addz.$i; ?>','<?PHP echo $teams[$i]; ?>');" title="<?PHP echo $text[334]; ?>"><?PHP echo $text[333]; ?></a></nobr></td>
+    <td class="lmost5"><nobr><a href='<?PHP echo $addz.$i; ?>' onclick="return dteamlmolink(this.href,'<?PHP echo $teams[$i]; ?>');" title="<?PHP echo $text[334]; ?>"><?PHP echo $text[333]; ?></a></nobr></td>
 <?PHP } ?>
   </tr>
 <?PHP } ?>
@@ -225,7 +225,7 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
     </td>
 <?PHP if($lmtype==0){ ?>
     <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><nobr><a href="javascript:ateamlmolink('<?PHP echo $addz; ?>-1');" title="<?PHP echo $text[337]; ?>"><?PHP echo $text[336]; ?></a></nobr></td>
+    <td class="lmost5"><nobr><a href='<?PHP echo $addz; ?>-1' onclick="return ateamlmolink(this.href);" title="<?PHP echo $text[337]; ?>"><?PHP echo $text[336]; ?></a></nobr></td>
 <?PHP } ?>
   </form>
 
