@@ -83,7 +83,7 @@ if ($_SESSION['lmouserok']==2) {
   $testshow=0;
   foreach($lmo_admin_data as $lmo_admin) {
     $show_admin_name=$lmo_admin[2]==2?"<em>".$lmo_admin[0]."</em>":$lmo_admin[0];?>
-         <tr><td<?if ($show==$testshow) {?> class="lmost1"><?=$show_admin_name;?><?}else{?> class="lmost0"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=user&amp;show=".$testshow;?>"><?=$show_admin_name;?></a><?}?></td></tr><?
+         <tr><td<?if ($show==$testshow) {?> class="lmost1"><?=$show_admin_name;?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=user&amp;show=".$testshow;?>"><?=$show_admin_name;?></a><?}?></td></tr><?
     $testshow++;
   }?>
        </table>

@@ -41,12 +41,15 @@ if($todo=="logout"){
 <head>
 <title>LMO Admin</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
-<link rel="stylesheet" href="lmo-style-nc.css" type="text/css">
-<style type="text/css">@import url("lmo-style.css");</style>
+<script type='text/javascript'>
+    if (window.captureEvents && document.layers) {
+      document.write('<link rel=\"stylesheet\" href=\"<?=URL_TO_LMO?>/lmo-style-nc.php\" type=\"text/css\">');
+    }
+  </script>
+  <style type='text/css'>@import url('<?=URL_TO_LMO?>/lmo-style.php');</style>
 </head>
 <body>
-<center>
-<?
+<div align="center"><?
 $action="admin";
 $array = array();
 setlocale (LC_TIME, "de_DE");
@@ -56,6 +59,6 @@ if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0){
   require(PATH_TO_LMO."/lmo-adminmain.php");
 }
 ?>
-</center>
+</div>
 </body>
 </html>

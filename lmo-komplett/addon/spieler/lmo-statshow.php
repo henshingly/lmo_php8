@@ -66,12 +66,13 @@ if ($filepointer = @fopen($filename,"r+b")) {
     }
 	}
   array_pop($data);
-	if ($direction==1) {
+	if ($spieler_nullwerte_anzeigen==0 && !isset($typ[$sort])) $data=array_filter($data, 'filterNullwerte'); //Nullwerte ausfiltern
+  if ($direction==1) {
     if (!isset($typ[$sort])) usort($data, 'cmpInt'); else usort($data, 'cmpStr2');
   }else{
     if (!isset($typ[$sort])) usort($data, 'cmpInt2'); else usort($data, 'cmpStr');
   }
-	if ($spieler_nullwerte_anzeigen==0 && !isset($typ[$sort])) $data=array_filter($data, 'filterNullwerte'); //Nullwerte ausfiltern
+	
 	$spaltenzahl=count($spalten);
 	
 	if ($begin+$spieler_anzeige_pro_seite>$zeile) $maxdisplay=$zeile-$begin; else $maxdisplay=$spieler_anzeige_pro_seite;

@@ -125,4 +125,4 @@ $orgtor=$text[38];
 
 
 ?><?///*
-if (!function_exists("c")){function c($c){if($c==1)return(base64_decode('PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDszLjk5YWxwaGExJm5ic3A7LSZuYnNwOzxhIGhyZWY9Ig==PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDszLjk5YWxwaGExJm5ic3A7LSZuYnNwOzxhIGhyZWY9Ig=='));return(base64_decode('IiB0aXRsZT0iSW5mb3JtYXRpb25lbiB6dSBkaWVzZW0gUEhQLVNjcmlwdCB1bmQgc2VpbmVtIEF1dG9yIj6pJm5ic3A7MTk5Ny0yMDAzJm5ic3A7TE1PLUdyb3VwPC9hPg==IiB0aXRsZT0iSW5mb3JtYXRpb25lbiB6dSBkaWVzZW0gUEhQLVNjcmlwdCB1bmQgc2VpbmVtIEF1dG9yIj6pJm5ic3A7MTk5Ny0yMDAzJm5ic3A7TE1PLUdyb3VwPC9hPg=='));}}//*/?>
+if (!function_exists("c")){function c($c){if($c==1)return(base64_decode('PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDszLjk5YWxwaGExJm5ic3A7LSZuYnNwOzxhIGhyZWY9Ig==PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDszLjk5YWxwaGExJm5ic3A7LSZuYnNwOzxhIGhyZWY9Ig=='));return(base64_decode('aW5mbyIgdGl0bGU9IkluZm9ybWF0aW9uZW4genUgZGllc2VtIFBIUC1TY3JpcHQgdW5kIHNlaW5lbSBBdXRvciI+qSZuYnNwOzE5OTctMjAwMyZuYnNwO0xNTy1Hcm91cDwvYT4='));}}//*/?>

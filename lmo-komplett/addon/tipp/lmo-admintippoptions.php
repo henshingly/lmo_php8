@@ -45,24 +45,24 @@ include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><? echo $text['tipp'][33] ?></td>
+    <td class="lmost1" align="center" colspan="2"><? echo $text['tipp'][33] ?></td>
   </tr>
   <tr>
     <td valign="top">
       <table cellspacing="0" cellpadding="0" border="0">
-        <tr><td align="right"<?if ($show==0) {?> class="lmost1"><?=$text['tipp'][91]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][91]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==1) {?> class="lmost1"><?=$text[220]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text[220]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==2) {?> class="lmost1"><?=$text['tipp'][32]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][32]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==3) {?> class="lmost1"><?=$text['tipp'][240]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][240]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==4) {?> class="lmost1"><?=$text['tipp'][214]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][214]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==5) {?> class="lmost1"><?=$text['tipp'][239]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][239]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==6) {?> class="lmost1"><?=$text['tipp'][246]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][246]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==7) {?> class="lmost1"><?=$text['tipp'][157]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][157]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==8) {?> class="lmost1"><?=$text['tipp'][172]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][172]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==9) {?> class="lmost1"><?=$text['tipp'][247]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][247]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==10) {?> class="lmost1"><?=$text['tipp'][274]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][274]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==11) {?> class="lmost1"><?=$text['tipp'][163]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][163]; ?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==12) {?> class="lmost1"><?=$text['tipp'][103]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][103]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==0) {?> class="lmost1"><?=$text['tipp'][91]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=0";?>"><?=$text['tipp'][91]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==1) {?> class="lmost1"><?=$text[220]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=1";?>"><?=$text[220]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==2) {?> class="lmost1"><?=$text['tipp'][32]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=2";?>"><?=$text['tipp'][32]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==3) {?> class="lmost1"><?=$text['tipp'][240]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=3";?>"><?=$text['tipp'][240]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==4) {?> class="lmost1"><?=$text['tipp'][214]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=4";?>"><?=$text['tipp'][214]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==5) {?> class="lmost1"><?=$text['tipp'][239]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=5";?>"><?=$text['tipp'][239]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==6) {?> class="lmost1"><?=$text['tipp'][246]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=6";?>"><?=$text['tipp'][246]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==7) {?> class="lmost1"><?=$text['tipp'][157]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=7";?>"><?=$text['tipp'][157]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==8) {?> class="lmost1"><?=$text['tipp'][172]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=8";?>"><?=$text['tipp'][172]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==9) {?> class="lmost1"><?=$text['tipp'][247]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=9";?>"><?=$text['tipp'][247]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==10) {?> class="lmost1"><?=$text['tipp'][274]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=10";?>"><?=$text['tipp'][274]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==11) {?> class="lmost1"><?=$text['tipp'][163]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=11";?>"><?=$text['tipp'][163]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==12) {?> class="lmost1"><?=$text['tipp'][103]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=tippoptions&amp;show=12";?>"><?=$text['tipp'][103]; ?></a><?}?></td></tr>
       </table>
     </td>
     <td align="center" valign="top" class="lmost3">

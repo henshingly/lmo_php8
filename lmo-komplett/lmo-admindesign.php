@@ -44,6 +44,7 @@ if(isset($_POST['save']) && $_POST['save']==1){
   $tabcbord=isset($_POST["xtabcbord"])?$_POST["xtabcbord"]:$tabcbord;
   $tabcfont=isset($_POST["xtabcfont"])?$_POST["xtabcfont"]:$tabcfont;
   $tabcsize=isset($_POST["xtabcsize"])?$_POST["xtabcsize"]:$tabcsize;
+  $tabdsize=isset($_POST["xtabdsize"])?$_POST["xtabdsize"]:$tabdsize;
   $tabclin1=isset($_POST["xtabclin1"])?$_POST["xtabclin1"]:$tabclin1;
   $tabclin2=isset($_POST["xtabclin2"])?$_POST["xtabclin2"]:$tabclin2;
   $tabftab1=isset($_POST["xtabftab1"])?$_POST["xtabftab1"]:$tabftab1;
@@ -60,10 +61,6 @@ if(isset($_POST['save']) && $_POST['save']==1){
   $tabftur4=isset($_POST["xtabftur4"])?$_POST["xtabftur4"]:$tabftur4;
   $tabhback=isset($_POST["xtabhback"])?$_POST["xtabhback"]:$tabhback;
   $tabwcolo=isset($_POST["xtabwcolo"])?$_POST["xtabwcolo"]:$tabwcolo;
-  $tabtback=isset($_POST["xtabtback"])?$_POST["xtabtback"]:$tabtback;
-  $tabtcolo=isset($_POST["xtabtcolo"])?$_POST["xtabtcolo"]:$tabtcolo;
-  $tabtfont=isset($_POST["xtabtfont"])?$_POST["xtabtfont"]:$tabtfont;
-  $tabtsize=isset($_POST["xtabtsize"])?$_POST["xtabtsize"]:$tabtsize;
   $tabeback=isset($_POST["xtabeback"])?$_POST["xtabeback"]:$tabeback;
   $tabecolo=isset($_POST["xtabecolo"])?$_POST["xtabecolo"]:$tabecolo;
   $tabkback=isset($_POST["xtabkback"])?$_POST["xtabkback"]:$tabkback;
@@ -77,7 +74,7 @@ if(isset($_POST['save']) && $_POST['save']==1){
     <td class="lmost1" align="center" colspan="2"><?=$text[432] ?></td>
   </tr>
   <tr>
-    <td valign="top">
+    <td valign="top" align="left">
       <table cellspacing="0" cellpadding="0" border="0">
         <tr><td align="right"<?if ($show==0) {?> class="lmost1"><?=$text[423]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=0";?>"><?=$text[423];?></a><?}?></td></tr>
         <tr><td align="right"<?if ($show==1) {?> class="lmost1"><?=$text[436]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=1";?>"><?=$text[436];?></a><?}?></td></tr>
@@ -85,9 +82,9 @@ if(isset($_POST['save']) && $_POST['save']==1){
         <tr><td align="right"<?if ($show==3) {?> class="lmost1"><?=$text[450]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=3";?>"><?=$text[450];?></a><?}?></td></tr>
         <tr><td align="right"<?if ($show==4) {?> class="lmost1"><?=$text[459]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=4";?>"><?=$text[459];?></a><?}?></td></tr>
         <tr><td align="right"<?if ($show==5) {?> class="lmost1"><?=$text[464]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=5";?>"><?=$text[464];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==6) {?> class="lmost1"><?=$text[447]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=6";?>"><?=$text[447];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==7) {?> class="lmost1"><?=$text[448]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=7";?>"><?=$text[448];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==8) {?> class="lmost1"><?=$text[449]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=8";?>"><?=$text[449];?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==7) {?> class="lmost1"><?=$text[14]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=7";?>"><?=$text[14];?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==8) {?> class="lmost1"><?=$text[448]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=8";?>"><?=$text[448];?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==9) {?> class="lmost1"><?=$text[449]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=9";?>"><?=$text[449];?></a><?}?></td></tr>
       </table>
     </td>
     <td align="left" valign="top" class="lmost3">
@@ -243,29 +240,19 @@ if ($show==0) {?>
             <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabwcolo" size="7" maxlength="7" value="<?=$tabwcolo?>" onChange="dolmoedit()"></td>
             <td class="lmost5"><acronym title="<?=$text[433] ?>"><?=$text[466]?></acronym></td>
           </tr><?
-}elseif ($show==6) {?>
+}elseif ($show==7) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabtback" size="7" maxlength="7" value="<?=$tabtback?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabtcolo" size="7" maxlength="7" value="<?=$tabtcolo?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
-          </tr>
-          <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabtfont" size="25" maxlength="50" value="<?=$tabtfont?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[429] ?>"><?=$text[428]?></acronym></td>
-          </tr>
-          <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabtsize" size="6" maxlength="6" value="<?=$tabtsize?>" onChange="dolmoedit()"></td>
+            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabdsize" size="6" maxlength="6" value="<?=$tabdsize?>" onChange="dolmoedit()"></td>
             <td class="lmost5"><acronym title="<?=$text[438] ?>"><?=$text[437]?></acronym></td>
           </tr><?
-}elseif ($show==7) {?>
+}elseif ($show==8) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabeback" size="7" maxlength="7" value="<?=$tabeback?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabecolo" size="7" maxlength="7" value="<?=$tabecolo?>" onChange="dolmoedit()"></td>
             <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
           </tr><?
-}elseif ($show==8) {?>
+}elseif ($show==9) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabkback" size="7" maxlength="7" value="<?=$tabkback?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabkcolo" size="7" maxlength="7" value="<?=$tabkcolo?>" onChange="dolmoedit()"></td>

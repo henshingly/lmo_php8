@@ -62,6 +62,7 @@ $output_savehtml="";
 $output_letzteauswertung="";
 $output_berechnungszeit="";
 $output_stylesheet="";
+$p1="";
 
 if (!defined("LMO_TEMPLATE")) define("LMO_TEMPLATE","lmo-standard.tpl.php");
 
@@ -71,7 +72,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   $template = new LBTemplate(basename($file).".tpl.php"); 
 }else{
   $template = new LBTemplate(LMO_TEMPLATE); 
-}$p0="p1";$$p0=c(1).$addm.c(0);
+}
 
 if ($action!="tipp") {
 
@@ -200,7 +201,7 @@ if ($action!="tipp") {
     }else{
       switch($action) {
         case "cal":      if ($datc==1)                    {require(PATH_TO_LMO."/lmo-showkocal.php");}break;
-        case "results":  if ($ergebnis==1)                 {require(PATH_TO_LMO."/lmo-showkoresults.php");}break;
+        case "results":  if ($ergebnis==1)                {require(PATH_TO_LMO."/lmo-showkoresults.php");}break;
         case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showkoprogram.php");}break;
       }
   	}
@@ -208,6 +209,7 @@ if ($action!="tipp") {
     if($action=="spieler")if ($mittore==1)                {require(PATH_TO_ADDONDIR."/spieler/lmo-statshow.php");}
     //Spieler-Addon
     if($action=="info")                                   {require(PATH_TO_LMO."/lmo-showinfo.php");}
+    $p0="p1";$$p0=c(1).$addm.c(0);
   }elseif ($backlink==1)                                  {require(PATH_TO_LMO."/lmo-showdir.php");}
   $output_hauptteil.=ob_get_contents();ob_end_clean();
   

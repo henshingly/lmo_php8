@@ -156,7 +156,7 @@ $file=$file2;?>
     }
   }
   if (laenge>0) {
-    document.write('<form name="marqueeform1" style="margin:0 auto;"><input style="background:#<?=$ticker_background?>;color:#<?=$ticker_color?>" class="lmotickerein" type="text" name="marquee" SIZE="<?=$ticker_breite?>" readonly></form>');
+    document.write('<form name="marqueeform1" style="margin:0 auto;"><input style="background:#<?=$ticker_background?>;color:#<?=$ticker_color?>" type="text" name="marquee" SIZE="<?=$ticker_breite?>" readonly></form>');
     document.close();
     marquee();
   }
