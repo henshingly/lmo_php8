@@ -22,19 +22,21 @@ if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
   if ($lmtype==0) {
     $fp = fopen(PATH_TO_LMO.'/'.$diroutput.basename($file).'-tab.csv',"wb"); //TabellenCSV Datei
     if ($st>0) {
+      $rounds=$a;
       $act=$st;
     } else {
       $act=$stx;
     }
     for($i1=0;$i1<$anzsp;$i1++){
-    	if (isset($goala[$act-1][$i1]) && $goala[$act-1][$i1]=="-1") $goala[$act-1][$i1]="_";
-    	if (isset($goalb[$act-1][$i1]) && $goalb[$act-1][$i1]=="-1") $goalb[$act-1][$i1]="_";
+       if (isset($goala[$act-1][$i1]) && $goala[$act-1][$i1]=="-1") $goala[$act-1][$i1]="_";
+       if (isset($goalb[$act-1][$i1]) && $goalb[$act-1][$i1]=="-1") $goalb[$act-1][$i1]="_";
     }
+    //$endtab=$act;
     $endtab=$anzst;
     include("lmo-calctable.php");
     for($i1=0;$i1<$anzsp;$i1++){
-    	if (isset($goala[$act-1][$i1]) && $goala[$act-1][$i1]=="_") $goala[$act-1][$i1]="-1";
-    	if (isset($goalb[$act-1][$i1]) && $goalb[$act-1][$i1]=="_") $goalb[$act-1][$i1]="-1";
+       if (isset($goala[$act-1][$i1]) && $goala[$act-1][$i1]=="_") $goala[$act-1][$i1]="-1";
+       if (isset($goalb[$act-1][$i1]) && $goalb[$act-1][$i1]=="_") $goalb[$act-1][$i1]="-1";
     }
     $x=0;
     $j = 1;
