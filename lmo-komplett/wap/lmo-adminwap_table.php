@@ -9,7 +9,8 @@ if($lmtype==0){
 		if ($goalb[$actual-1][$i1]=="-1") $goalb[$actual-1][$i1]="_";
 	}
 	$endtab=$anzst;
-	include(PATH_TO_LMO."/lmo-calctable.php");
+	$action="";
+  include(PATH_TO_LMO."/lmo-calctable.php");
 	for($i1=0;$i1<$anzsp;$i1++){
 		if ($goala[$endtab-1][$i1]=="_") $goala[$endtab-1][$i1]="-1";
 		if ($goalb[$endtab-1][$i1]=="_") $goalb[$endtab-1][$i1]="-1";

@@ -214,9 +214,6 @@ if($file!=""){
         
       }
     }?>
-          </td>
-        </tr>
-      </table>
     </td>
   </tr><? 
     if($tabdat!=""){ ?>

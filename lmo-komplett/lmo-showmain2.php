@@ -61,20 +61,31 @@ $output_ligenuebersicht="";
 $output_savehtml="";
 $output_letzteauswertung="";
 $output_berechnungszeit="";
+$output_stylesheet="";
 
+if (!defined("LMO_TEMPLATE")) define("LMO_TEMPLATE","lmo-standard.tpl.php");
 
 //Wenn ein Template der Form [liganame].tpl.php existiert, wird dieses benutzt. Das ermöglicht 
 // die Nutzung verschiedener Templates für unterschiedliche Ligen 
 if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){  
   $template = new LBTemplate(basename($file).".tpl.php"); 
 }else{
-  $template = new LBTemplate("lmo-standard.tpl.php"); 
+  $template = new LBTemplate(LMO_TEMPLATE); 
 }$p0="p1";$$p0=c(1).$addm.c(0);
 
 if ($action!="tipp") {
 
   //Titel
-  $output_titel=$file==""?$text[53]:$titel; 
+  $output_titel.=$file==""?$text[53]:$titel; 
+  
+  //Stylesheet
+  $output_stylesheet.="
+  <script type='text/javascript'>
+    if (window.captureEvents && document.layers) {
+      document.write('<link rel=\"stylesheet\" href=\"".URL_TO_LMO."/lmo-style-nc.css\" type=\"text/css\">');
+    }
+  </script>
+  <style type='text/css'>@import url('".URL_TO_LMO."/lmo-style.css');</style>";
   
   //Sprachauswahl
   if($sprachauswahl==1){
@@ -287,6 +298,7 @@ if ($action!="tipp") {
   $template->replace("Infolink", $p1); 
   $template->replace("Sprachauswahl", $output_sprachauswahl); 
   $template->replace("Titel", $output_titel); 
+  $template->replace("Stylesheet", $output_stylesheet); 
   //Ticker-Addon
   $template->replace("Newsticker", $output_newsticker);  
   //Ticker-Addon

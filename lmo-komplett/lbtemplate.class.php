@@ -284,6 +284,20 @@ class LBTemplate {
 		return true;
 	}
 	
+  function get($varname) {
+		$this->logger->debug("LBTemplate.get($varname)", __FILE__, __LINE__);
+		
+		if(empty($varname)) {
+			echo "Null or empty varname!";
+			return false;
+		}
+    
+    if (isset($this->content["$varname"])) {
+      return $this->content["$varname"];
+    }
+    return false;
+  }
+  
 	/** Initializes the specified position in the array content.
 	  * @param string $varname.
 	  */

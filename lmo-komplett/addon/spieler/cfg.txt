@@ -1,0 +1,9 @@
+spielerbildbreite=15px
+anzeige_pro_seite=10
+keine_namensortierung=0
+nullwerte_anzeigen=1
+standard_sortierung=0
+adminbereich_anzeige_pro_seite=0
+adminbereich_standard_sortierung=0
+adminbereich_hilfsadmin_zulassen=1
+adminbereich_hilfsadmin_fuer_spalten=1
