@@ -1,5 +1,5 @@
 <?                                                                
-$zustatdir="output/"; 			// * Pfad zu den Zusatz-Statistik-Dateien angeben *//
+$diroutput="output/"; 			// * Pfad zu den Zusatz-Statistik-Dateien angeben *//
 $einsavehtml=1;					// * 1= SaveHTML-Addon aktivieren 0= SaveHTML-Addon deaktivieren *//
 $einspieler=1;					// * 1= Spieler-Addon aktivieren 0= Spieler-Addon deaktivieren *//
 $eintippspiel=1;				// * 1= Tippspiel-Addon aktivieren 0= Tippspiel-Addon deaktivieren *//

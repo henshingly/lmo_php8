@@ -24,6 +24,7 @@
 //
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
+  $r=0;
   isset($_POST['save'])?$save=$_POST['save']:$save=0;
   if($save==1){
     // Es werden alle Addon-Konfigurationen dargestellt als Texteingabe behandelt
@@ -41,7 +42,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
   }?>
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?=$text[498]?></td>
+    <td class="lmost1" align="center"><?=$text[498]?><script type="text/javascript">document.write('</td><td class="lmost1"><a href="#" onclick="blendall2(this)"><img border="0" src="img/plus.gif" alt="+" title="Alle Sektionen einblenden" width="10" height="10"></a>');</script></td>
   </tr>
   <tr>
     <td align="center" class="lmost3">
@@ -54,7 +55,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
   foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
     if (is_array($addon_cfg)) {                      //Addon gefunden
         ?><tr>
-            <td class="lmost4" colspan="3"><?=$addon_name;?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="3"><?=$addon_name;?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object"><?
       foreach ($addon_cfg as $cfg_name => $cfg_value) {   //Alle Konfigwerte des Addon

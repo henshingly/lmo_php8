@@ -30,7 +30,7 @@ if($_SESSION['lmouserok']==2){
     flock($datei,LOCK_EX);
     foreach($cfgarray as $cfgname => $cfgvalue) {
       if (is_array($cfgvalue)) {                         // Addonvariablen
-        $addon_datei = fopen(PATH_TO_ADDON_DIR.'/'.$cfgname.'/cfg.txt',"wb");  //Addondatei
+        $addon_datei = fopen(PATH_TO_ADDONDIR.'/'.$cfgname.'/cfg.txt',"wb");  //Addondatei
         if ($addon_datei) {
           flock($datei,LOCK_EX);
           echo "<br><font color=\"#008800\">{$text[138]} ($cfgname)</font>";

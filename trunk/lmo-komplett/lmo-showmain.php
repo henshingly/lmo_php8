@@ -22,7 +22,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
-if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
+if (!isset($_REQUEST["action"])) $action='results';
+
   $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
   if($file!=""){
     require_once(PATH_TO_LMO."/lmo-openfile.php");
@@ -159,7 +160,9 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
   	}
     if($action=="info"){require(PATH_TO_LMO."/lmo-showinfo.php");}
   }else{
-    require(PATH_TO_LMO."/lmo-showdir.php");
+    
+    if($action=="tipp"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");
+    }else{require(PATH_TO_LMO."/lmo-showdir.php");}
   }?>
       </td>
     </tr><?
@@ -187,8 +190,8 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
           <tr>
             <td class="lmomain1" valign="bottom"><?            
     if ($eintippspiel==1) {
-      if($tippspiel==1 && ($immeralle==1 || strpos($ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
-        echo "<a href='{$_SERVER['PHP_SELF']}?action=tipp&amp;file={$file}'>{$text[5]} {$text[2094]}</a>&nbsp;&nbsp;&nbsp;<br>";
+      if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
+        echo "<a href='".URL_TO_ADDONDIR."/tipp/lmo-tipp.php?action=tipp&amp;file={$file}'>{$text[5]} {$text['tipp'][94]}</a>&nbsp;&nbsp;&nbsp;<br>";
       }
     }else{
       echo "&nbsp;<br>";
@@ -226,8 +229,8 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
       }
     }
     if ($eintippspiel==1) {
-      if($tippspiel==1 && ($immeralle==1 || strpos($ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
-        echo "<a href='{$_SERVER['PHP_SELF']}?action=tipp&amp;file={$file}'>{$text[5]} {$text[2094]}</a>&nbsp;&nbsp;&nbsp;";
+      if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
+        echo "<a href='".URL_TO_ADDONDIR."/tipp/lmo-tipp.php?action=tipp&amp;file={$file}'>{$text[5]} {['tipp'][94]}</a>&nbsp;&nbsp;&nbsp;";
       }
     }?>
             </td>
@@ -243,7 +246,3 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
     </tr><?
   }?> 
   </table><?
-}else{
-  define('LMO_TIPPAUTH', 1);
-  require(PATH_TO_LMO."/lmo-tippstart.php");
-}

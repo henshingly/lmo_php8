@@ -10,10 +10,10 @@ Addons:
 
   Jetzt stehen zur Verfügung:
 
-    # Die Konstanten PATH_TO_LMO, PATH_TO_ADDON_DIR, ADDON_NAME und PATH_TO_ADDON
+    # Die Konstanten PATH_TO_LMO, PATH_TO_ADDONDIR, ADDON_NAME und PATH_TO_ADDON
       Diese sind bei allen Pfadangaben zu benutzen!
       z.B. include('lmo-openfile.php'); wird zu include(PATH_TO_LMO.'/lmo-openfile.php');
-      z.B. require('lmo-addondatei.php'); wird zu require(PATH_TO_ADDON_DIR.'/lmo-addondatei.php');
+      z.B. require('lmo-addondatei.php'); wird zu require(PATH_TO_ADDONDIR.'/lmo-addondatei.php');
 
     # Alle Konfigurationsvariablen als Variablen der Form $<Addonname>_<Variablenname>
       z.B. der Wert foo=bar in der cfg-Datei des Addons brain steht als $brain_foo mit dem Wert bar zur Verfügung

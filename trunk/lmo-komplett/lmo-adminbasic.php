@@ -18,6 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($file!=""){
   require_once(PATH_TO_LMO."/lmo-openfile.php");
@@ -36,11 +37,11 @@ if($file!=""){
     if($_SESSION['lmouserok']==2){
       if($lmtype==0){
         $minus=isset($_POST["xminus"])?2:1;
-        $spez=trim($_POST["xspez"]);
-        $hidr=trim($_POST["xhidr"]);
-        $onrun=trim($_POST["xonrun"]);
-        $direkt=trim($_POST["xdirekt"]);
-        $kegel=trim($_POST["xkegel"]);
+        $spez=isset($_POST["xspez"])?1:0;
+        $hidr=isset($_POST["xhidr"])?1:0;
+        $onrun=isset($_POST["xonrun"])?1:0;
+        $direkt=isset($_POST["xdirekt"])?1:0;
+        $kegel=isset($_POST["xkegel"])?1:0;
         $hands=isset($_POST["xhands"])?1:0;
         $pns=trim($_POST["xpns"]);
         $pnu=trim($_POST["xpnu"]);
@@ -51,7 +52,7 @@ if($file!=""){
         $pps=trim($_POST["xpps"]);
         $ppu=trim($_POST["xppu"]);
         $ppn=trim($_POST["xppn"]);
-        $champ=trim($_POST["xchamp"]);
+        $champ=isset($_POST["xchamp"])?1:0;
         $anzcl=trim($_POST["xanzcl"]);
         $anzck=trim($_POST["xanzck"]);
         $anzuc=trim($_POST["xanzuc"]);
@@ -74,14 +75,14 @@ if($file!=""){
       $plan=isset($_POST["xkurve"])?1:0;
       $ergebnis=isset($_POST["xkurve"])?1:0;
       
-      $dats=trim($_POST["xdats"]);
-      $datm=trim($_POST["xdatm"]);
+      $dats=isset($_POST["xdats"])?1:0;
+      $datm=isset($_POST["xdatm"])?1:0;
       $datf=trim($_POST["xdatf"]);
-      $datc=trim($_POST["xdatc"]);
+      $datc=isset($_POST["xdatc"])?1:0;
       if(($dats==0) && ($datm==0)){$datc=0;}
-      $urlt=trim($_POST["xurlt"]);
+      $urlt=isset($_POST["xurlt"])?1:0;
     }
-    $urlb=trim($_POST["xurlb"]);
+    $urlb=isset($_POST["xurlb"])?1:0;
     require(PATH_TO_LMO."/lmo-savefile.php");
   }
   $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
@@ -189,7 +190,7 @@ if($file!=""){
             <td class="lmost5" align="right"><acronym title="<? echo $text[512] ?>"><? echo $text[10]; ?></acronym></td>
             <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xergebnis" onChange="dolmoedit()"<?if($ergebnis==1){echo " checked";}?>></td>
             <td class="lmost5">&nbsp;</td>
-            <td class="lmost5" align="right"><input type="checkbox" class="lmoadminein" name="xdatm" onChange="dolmoedit()"<?if($datm==1){echo " checked";}?>></td>
+            <td class="lmost5" align="right"><input type="checkbox" class="lmoadminein" name="xtabelle" onChange="dolmoedit()"<?if($tabelle==1){echo " checked";}?>></td>
             <td class="lmost5"><acronym title="<? echo $text[513] ?>"><? echo $text[16]; ?></acronym></td><?
           }
           if($lmtype==1){ ?>
@@ -408,7 +409,7 @@ if($file!=""){
           </tbody><?
         if ($_SESSION['lmouserok']==2 && $lmtype==0){?>  
           <tr>
-            <td class="lmost5" colspan="6"><a href='<?="$addr-3"?>' onclick="return chklmolink(this.href);" title="<?=$text[339]?>"><?=$text[338]?></a></td>
+            <td class="lmost4" colspan="6"><a href='<?="$addr-3"?>' onclick="return chklmolink(this.href);" title="<?=$text[339]?>"><?=$text[338]?></a></td>
           </tr><?
          }?>
           <tr>

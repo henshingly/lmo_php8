@@ -1,6 +1,4 @@
 <? 
-
-
 require_once(PATH_TO_LMO."/lmo-cfgload.php");
 require_once(PATH_TO_LMO."/lmo-langload.php");
 $versionticker="LMO-Ticker 1.03 ";
@@ -36,47 +34,68 @@ $link="<a href=\"http://www.salzland-info.de/\" target=\"_blank\">www.salzland.i
 <!--
 var msg1="   +++";
 <?
-if(!isset($file)){$file="";}
+if (!isset($file)) {
+  $file="";
+}
 $file2=$file;
 
-foreach ($file_array as $file){
-require_once(PATH_TO_LMO."/lmo-openfile.php");
-$hilf="";
-$hilf1="";
-if($lmtype==0){
-for($i=0;$i<$anzsp;$i++){
-if(($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ){
-if($mspez[$stx-1][$i]=="&nbsp;"){
-$mspezhilf="";}
-else {
-$mspezhilf=" ".$mspez[$stx-1][$i];}
-if($msieg[$stx-1][$i]==1){$dummy1=$text_sportgericht.":".addslashes($teams[$teama[$stx-1][$i]]." ".$text[211]);}
-else {$dummy1="";}
-if($msieg[$stx-1][$i]==2){$dummy2=$text_sportgericht.":".addslashes($teams[$teamb[$stx-1][$i]]." ".$text[211]);}
-else {$dumm2y="";}
-if($msieg[$stx-1][$i]==3){$dummy3=$text_sportgericht.":".addslashes($text_sportgericht2);}
-else {$dummy3="";}
-if($mnote[$stx-1][$i]!="" && $notzizanzeigen==1){$dummy4=" Notiz".": ".$mnote[$stx-1][$i];}
-else {$dummy4="";}
-$hilf=$hilf.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i].":".$goalb[$stx-1][$i].$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4." +++ ";
-}
-}
-}
-if($lmtype!=0){
-for($i=0;$i<$anzsp;$i++){
-for($n=0;$n<$modus[$stx-1];$n++){
-if(($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ){
-if($mspez[$stx-1][$i][$n]=="&nbsp;"){
-$mspezhilf="";}
-else {
-$mspezhilf=" ".$mspez[$stx-1][$i][$n];}
-if($mnote[$stx-1][$i][$n]!="" && $notzizanzeigen==1){$dummy4=" Notiz".": ".$mnote[$stx-1][$i][$n];}
-else {$dummy4="";}
-$hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i][$n].":".$goalb[$stx-1][$i][$n].$mspezhilf.$dummy4." +++ ";
-}
-}
-}
-}
+foreach($file_array as $file){
+  require_once(PATH_TO_LMO."/lmo-openfile.php");
+  $hilf="";
+  $hilf1="";
+  if ($lmtype==0) {
+    for ($i=0; $i<$anzsp; $i++) {
+      if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ) {
+        if ($mspez[$stx-1][$i]=="&nbsp;") {
+          $mspezhilf="";
+        } else {
+          $mspezhilf=" ".$mspez[$stx-1][$i];
+        }
+        if ($msieg[$stx-1][$i]==1) {
+          $dummy1=$text_sportgericht.":".addslashes($teams[$teama[$stx-1][$i]]." ".$text[211]);
+        } else {
+          $dummy1="";
+        }
+        if ($msieg[$stx-1][$i]==2) {
+          $dummy2=$text_sportgericht.":".addslashes($teams[$teamb[$stx-1][$i]]." ".$text[211]);
+        } else {
+          $dumm2y="";
+        }
+        if ($msieg[$stx-1][$i]==3) {
+          $dummy3=$text_sportgericht.":".addslashes($text_sportgericht2);
+        } else {
+          $dummy3="";
+        }
+        if ($mnote[$stx-1][$i]!="" && $notzizanzeigen==1) {
+          $dummy4=" Notiz".": ".$mnote[$stx-1][$i];
+        } else {
+          $dummy4="";
+        }
+        $hilf=$hilf.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i].":".$goalb[$stx-1][$i].$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4." +++ ";
+      }
+    }
+  }
+  if ($lmtype!=0) {
+    for ($i=0; $i<$anzsp; $i++) {
+      for ($n=0; $n<$modus[$stx-1]; $n++) {
+        if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ) {
+          if ($mspez[$stx-1][$i][$n]=="&nbsp;") {
+            $mspezhilf="";
+          } else {
+            $mspezhilf=" ".$mspez[$stx-1][$i][$n];
+          }
+          if ($mnote[$stx-1][$i][$n]!="" && $notzizanzeigen==1) {
+            $dummy4=" Notiz".": ".$mnote[$stx-1][$i][$n];
+          } else {
+            $dummy4="";
+          }
+          $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i][$n].":".$goalb[$stx-1][$i][$n].$mspezhilf.$dummy4." +++ ";
+        }
+      }
+    }
+  }
+  
+
 ?>
 msg1=msg1+"<? echo $stx; ?>"+"<? echo $spieltag; ?>"+"<? echo $hilf; ?>"+"<? echo $hilf1; ?>";
 <?
@@ -217,59 +236,74 @@ $file=$file2;
 <!--
 var msg1="   +++";
 <?
-if(!isset($file)){$file="";}
+if (!isset($file)) {
+  $file="";
+}
 $file2=$file;
 
-foreach ($file_array as $file){
-require_once(PATH_TO_LMO."/lmo-openfile.php");
-$hilf="";
-$hilf1="";
-
-if($lmtype==0){
-for($i=0;$i<$anzsp;$i++){
-if(($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0)){
-if($mspez[$stx-1][$i]=="&nbsp;"){
-$mspezhilf="";}
-else {
-$mspezhilf=" ".$mspez[$stx-1][$i];}
-if (($favteam==$teama[$stx-1][$i]) or ($favteam==$teamb[$stx-1][$i])) {
-if($msieg[$stx-1][$i]==1){$dummy1=$text_sportgericht.":".addslashes($teams[$teama[$stx-1][$i]]." ".$text[211]);}
-else {$dummy1="";}
-if($msieg[$stx-1][$i]==2){$dummy2=$text_sportgericht.":".addslashes($teams[$teamb[$stx-1][$i]]." ".$text[211]);}
-else {$dumm2y="";}
-if($msieg[$stx-1][$i]==3){$dummy3=$text_sportgericht.":".addslashes($text_sportgericht2);}
-else {$dummy3="";}
-if($mnote[$stx-1][$i]!="" && $notzizanzeigen==1){$dummy4=" Notiz".": ".$mnote[$stx-1][$i];}
-else {$dummy4="";}
-$hilf=$hilf.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i].":".$goalb[$stx-1][$i].$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4." +++ ";
+foreach($file_array as $file){
+  require_once(PATH_TO_LMO."/lmo-openfile.php");
+  $hilf="";
+  $hilf1="";
+  
+  if ($lmtype==0) {
+    for ($i=0; $i<$anzsp; $i++) {
+      if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0)) {
+        if ($mspez[$stx-1][$i]=="&nbsp;") {
+          $mspezhilf="";
+        } else {
+          $mspezhilf=" ".$mspez[$stx-1][$i];
+        }
+        if (($favteam==$teama[$stx-1][$i]) or($favteam==$teamb[$stx-1][$i])) {
+          if ($msieg[$stx-1][$i]==1) {
+            $dummy1=$text_sportgericht.":".addslashes($teams[$teama[$stx-1][$i]]." ".$text[211]);
+          } else {
+            $dummy1="";
+          }
+          if ($msieg[$stx-1][$i]==2) {
+            $dummy2=$text_sportgericht.":".addslashes($teams[$teamb[$stx-1][$i]]." ".$text[211]);
+          } else {
+            $dumm2y="";
+          }
+          if ($msieg[$stx-1][$i]==3) {
+            $dummy3=$text_sportgericht.":".addslashes($text_sportgericht2);
+          } else {
+            $dummy3="";
+          }
+          if ($mnote[$stx-1][$i]!="" && $notzizanzeigen==1) {
+            $dummy4=" Notiz".": ".$mnote[$stx-1][$i];
+          } else {
+            $dummy4="";
+          }
+          $hilf=$hilf.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i].":".$goalb[$stx-1][$i].$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4." +++ ";
+        }
+      }
+    }
+  }
+  if ($lmtype!=0) {
+    for ($i=0; $i<$anzsp; $i++) {
+      for ($n=0; $n<$modus[$stx-1]; $n++) {
+        if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ) {
+          if ($mspez[$stx-1][$i][$n]=="&nbsp;") {
+            $mspezhilf="";
+          } else {
+            $mspezhilf=" ".$mspez[$stx-1][$i][$n];
+          }
+          if (($favteam==$teama[$stx-1][$i]) or($favteam==$teamb[$stx-1][$i])) {
+            if ($mnote[$stx-1][$i][$n]!="" && $notzizanzeigen==1) {
+              $dummy4=" Notiz".": ".$mnote[$stx-1][$i][$n];
+            } else {
+              $dummy4="";
+            }
+            $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i][$n].":".$goalb[$stx-1][$i][$n].$mspezhilf.$dummy4." +++ ";
+          }
+        }
+      }
+    }
+  }?>
+msg1=msg1+"<? echo $stx; ?>"+"<? echo $spieltag; ?>"+"<? echo $hilf; ?>"+"<? echo $hilf1; ?>";<?
 }
-}
-}
-}
-if($lmtype!=0){
-for($i=0;$i<$anzsp;$i++){
-for($n=0;$n<$modus[$stx-1];$n++){
-if(($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ){
-if($mspez[$stx-1][$i][$n]=="&nbsp;"){
-$mspezhilf="";}
-else {
-$mspezhilf=" ".$mspez[$stx-1][$i][$n];}
-if (($favteam==$teama[$stx-1][$i]) or ($favteam==$teamb[$stx-1][$i])) {
-if($mnote[$stx-1][$i][$n]!="" && $notzizanzeigen==1){$dummy4=" Notiz".": ".$mnote[$stx-1][$i][$n];}
-else {$dummy4="";}
-$hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i][$n].":".$goalb[$stx-1][$i][$n].$mspezhilf.$dummy4." +++ ";
-}
-}
-}
-}
-}
-?>
-msg1=msg1+"<? echo $stx; ?>"+"<? echo $spieltag; ?>"+"<? echo $hilf; ?>"+"<? echo $hilf1; ?>";
-<?
-}
-$file=$file2;
-
-?>
+$file=$file2;?>
   var laenge=msg1.length;
   var timerID = null;
   var timerRunning = false;
