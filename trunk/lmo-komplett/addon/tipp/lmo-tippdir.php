@@ -45,35 +45,37 @@ if ($ftype!="") {
     $t2=$text[2];
     if (file_exists(PATH_TO_LMO."/".$dirliga.$dummy[$k])) {
       $datei = fopen(PATH_TO_LMO."/".$dirliga.$dummy[$k],"rb");
-      while (!feof($datei)) {
-        $zeile = fgets($datei,1000);
-        $zeile=trim($zeile);
-        
-        if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")) {
-          $sekt=substr($zeile,1,-1);
-        } else if ((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";") && ($sekt=="Options")) {
-          $schl=substr($zeile,0,strpos($zeile,"="));
-          $wert=substr($zeile,strpos($zeile,"=")+1);
-          if ($schl=="Name") {
-            $t0=$wert;
-          }
-          if ($schl=="Actual") {
-            $t1=$wert;
-          }
-          if ($schl=="Teams") {
-            $t4=$wert;
-          }
-          if ($schl=="Type") {
-            if ($wert=="1") {
-              $t2=$text[370];
+      if ($datei) {
+        while (!feof($datei)) {
+          $zeile = fgets($datei,1000);
+          $zeile=trim($zeile);
+          
+          if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")) {
+            $sekt=substr($zeile,1,-1);
+          } else if ((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";") && ($sekt=="Options")) {
+            $schl=substr($zeile,0,strpos($zeile,"="));
+            $wert=substr($zeile,strpos($zeile,"=")+1);
+            if ($schl=="Name") {
+              $t0=$wert;
+            }
+            if ($schl=="Actual") {
+              $t1=$wert;
+            }
+            if ($schl=="Teams") {
+              $t4=$wert;
+            }
+            if ($schl=="Type") {
+              if ($wert=="1") {
+                $t2=$text[370];
+              }
+            }
+            if (($t0!="") && ($t1!="") && ($t4!="")) {
+              break;
             }
           }
-          if (($t0!="") && ($t1!="") && ($t4!="")) {
-            break;
-          }
         }
+        fclose($datei);
       }
-      fclose($datei);
       if ($t0=="") {
         $j++;
         $t0=$text[507].$j;
@@ -116,7 +118,6 @@ if ($ftype!="") {
       if ($ftest==1 || $tipp_immeralle==1) {
         $i++;
         if ($tipp_sttipp!=-1) {
-          
           $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dummy[$k],0,-4)."_".str_replace(" ","_",$lmotippername).".tip";
           echo "<li><a href='".$addi.$dirliga.$dummy[$k]."'>".$t0;
           if (file_exists($tippfile)) {
