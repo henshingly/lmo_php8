@@ -18,7 +18,7 @@
   */
   
   
-require("init.php");
+require(dirname(__FILE__)."/init.php");
 
 $lmo_faktorhorizontal=round(21-$pgst/4);
 $lmo_faktorvertikal=round(17-$pgteams/4);

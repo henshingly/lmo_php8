@@ -1,6 +1,6 @@
 <?
 header("Content-Type: text/css");
-require("init.php");
+require(dirname(__FILE__)."/init.php");
 @include(PATH_TO_TEMPLATEDIR."/style.css");
 ?>
 

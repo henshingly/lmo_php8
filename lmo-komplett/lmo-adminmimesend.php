@@ -19,7 +19,7 @@
   
   
 session_start();
-require("init.php");
+require(dirname(__FILE__)."/init.php");
 if (!isset($_SESSION["lmouserok"]))$_SESSION["lmouserok"]==0;
 
 $action=isset($_GET['action'])? $_GET['action']:'';
