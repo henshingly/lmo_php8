@@ -62,7 +62,7 @@ if(($action=="tipp") && ($todo=="pwchange")){
     $xtipperpass=trim($xtipperpass);
     if($xtipperpass!=$dummb[1]){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][42]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][42]."</p><br>";
       }
     }
 
@@ -70,16 +70,16 @@ if(($action=="tipp") && ($todo=="pwchange")){
     $xtipperpassneu=trim($xtipperpassneu);
     if($xtipperpassneu==""){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][69]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][69]."</p><br>";
       }
     elseif(strlen($xtipperpassneu)<3){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][73]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][73]."</p><br>";
       }
     $xtipperpassneuw=trim($xtipperpassneuw);
     if($xtipperpassneuw!=$xtipperpassneu){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][70]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][70]."</p><br>";
       }
     }
 
@@ -90,7 +90,7 @@ if(($action=="tipp") && ($todo=="pwchange")){
 ?>
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></font>
+    <?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></p>
   </td></tr>
   <tr><td align="center" class="lmost1"><?PHP echo $text['tipp'][107]; ?></td></tr>
   <tr><td align="center" class="lmost3">
@@ -128,7 +128,7 @@ if(($action=="tipp") && ($todo=="pwchange")){
       <td class="lmost5" align="center"><?PHP echo $text['tipp'][121]; ?></td>
    </tr>
    <tr>
-      <td class="lmost4" align="right"><a href="<?PHP echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text['tipp'][1]; ?></a></td>
+      <td class="lmost4" align="right"><a href="<?PHP echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?PHP echo $text[5]." ".$text['tipp'][1]; ?></a></td>
    </tr>
 <?PHP } ?>
 

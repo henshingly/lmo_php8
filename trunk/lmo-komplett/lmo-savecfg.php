@@ -26,15 +26,16 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($_SESSION['lmouserok']==2){
   $datei = fopen($cfgfile,"wb");
   if ($datei) {
-    echo "<font color=\"#008800\">".$text[138]."</font>";
+    echo "<p class='message'>".$text[138]."</p>";
     flock($datei,LOCK_EX);
     foreach($cfgarray as $cfgname => $cfgvalue) {
       if (is_array($cfgvalue)) {                         // Addonvariablen
         $addon_datei = fopen(PATH_TO_CONFIGDIR.'/'.$cfgname.'/cfg.txt',"wb");  //Addondatei
         if ($addon_datei) {
           flock($datei,LOCK_EX);
-          echo "<br><font color=\"#008800\">{$text[138]} ($cfgname)</font>";
+          echo "<br><p class='message'>{$text[138]} ($cfgname)</p>";
           foreach($cfgvalue as $addon_cfgname => $addon_cfgvalue) {
+            //echo "<pre>".$addon_datei.":".$addon_cfgname."=".${$cfgname."_".$addon_cfgname}."</pre>";
             fwrite($addon_datei, $addon_cfgname."=".${$cfgname."_".$addon_cfgname}."\n");
           }
           flock($addon_datei,LOCK_UN);
@@ -49,7 +50,7 @@ if($_SESSION['lmouserok']==2){
     fclose($datei);
     clearstatcache();
   }else{
-    echo "<font color=\"#ff0000\">".$text[283]."</font>";
+    echo "<p class='error'>".$text[283]."</p>";
   }
 }
 ?>

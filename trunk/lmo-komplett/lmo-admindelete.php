@@ -23,7 +23,7 @@ if(($action=="admin") && ($todo=="delete") && ($_SESSION['lmouserok']==2)){
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
   if(!isset($del)){$del=0;}
   if($del==1){
-    if(@unlink($dfile)){echo "<font color=\"#008800\">".$dfile." ".$text[297]."</font>";}else{echo "<font color=\"#ff0000\">".$dfile." ".$text[298]."</font>";}
+    if(@unlink($dfile)){echo "<p class='message'>".$dfile." ".$text[297]."</p>";}else{echo "<p class='error'>".$dfile." ".$text[298]."</p>";}
     }
 ?>
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">

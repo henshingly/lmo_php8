@@ -20,7 +20,7 @@
 019=Anzeige der Statistiken und Prognosen
 020=Info
 021=Informationen zu diesem PHP-Script und seinem Autor
-022=NOTIZ
+022=Notiz
 023=Der Spielplan von
 024=Bitte wählen Sie jetzt eine Mannschaft aus.
 025=Klicken Sie hier, um den gesamten Spieltag zu sehen.
@@ -126,7 +126,7 @@
 125=Name der Mannschaft (max. 32 Zeichen)
 126=Kürzel der Mannschaft (max. 5 Zeichen)
 127=Mannschaftsname/-kürzel
-128=Strafpunkte
+128=Straf-/Bonuspunkte
 129=Homepage-URL
 130=URL der Homepage der Mannschaft (diese wird später immer in einem neuen Fenster geöffnet werden)
 131=Strafpunkte, die diese Mannschaft vom Verband erhalten hat
@@ -520,7 +520,7 @@
 519=Sprachauswahl
 520=Sollen die Flaggen zur Sprachauswahl angezeigt werden?
 521=Abzug/Hinzufügen von Toren (negative Torangaben werden hinzugefügt)
-522=Straftore
+522=Straf-/Bonustore
 523=Stafpunkte-/tore ab Spieltag X einrechnen
 524=ab
 525=nach

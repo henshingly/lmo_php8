@@ -57,7 +57,7 @@ if($file!=""){
         <td valign="top" align="center" class="lmost4">&nbsp;</td>
         <? if($stat2>0){ ?><td valign="top" class="lmost4"><?= $teams[$stat2]; ?></td><? } ?>
       </tr>
-<? if($stat2>0){$dummy=" align=\"center\"";}else{$dummy="";} ?>
+<? if($stat2>0){$dummy=" align='center'";}else{$dummy="align='left'";} ?>
 <?
   $serie1="&nbsp;";
 if ($ser1[$stat1]>0) {
@@ -104,65 +104,65 @@ if ($stat2>0) {
       <tr>
         <td valign="top" align="right" class="lmost5"><?= $chg1; ?>%</td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[60]; ?></td>
-        <td valign="top" class="lmost5"><?= $chg2; ?>%</td>
+        <td valign="top" align="left" class="lmost5"><?= $chg2; ?>%</td>
       </tr>
 <? } ?>
       <tr>
         <td valign="top" align="right" class="lmost5"><?= $platz0[$stat1]; ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[61]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $platz0[$stat2]; ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><?= $platz0[$stat2]; ?></td><? } ?>
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><?= $punkte[$stat1]; if($minus==2){":".$negativ[$stat1];} ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[37]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $punkte[$stat2]; if($minus==2){":".$negativ[$stat2];} ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><?= $punkte[$stat2]; if($minus==2){":".$negativ[$stat2];} ?></td><? } ?>
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><?= $spiele[$stat1]; ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[63]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $spiele[$stat2]; ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><?= $spiele[$stat2]; ?></td><? } ?>
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><? if($spiele[$stat1]){echo number_format($punkte[$stat1]/$spiele[$stat1],2,",","."); if($minus==2){":".number_format($negativ[$stat1]/$spiele[$stat1],2,",",".");}} ?></td>
 
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[37].$text[64]; ?></td>
-        <? if($stat2>0){if($spiele[$stat2]){ ?><td valign="top" class="lmost5"><? echo number_format($punkte[$stat2]/$spiele[$stat2],2,",","."); if($minus==2){":".number_format($negativ[$stat2]/$spiele[$stat2],2,",",".");}} ?></td><? } ?>
+        <? if($stat2>0){if($spiele[$stat2]){ ?><td valign="top" align="left" class="lmost5"><? echo number_format($punkte[$stat2]/$spiele[$stat2],2,",","."); if($minus==2){":".number_format($negativ[$stat2]/$spiele[$stat2],2,",",".");}} ?></td><? } ?>
 
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><?= $etore[$stat1].":".$atore[$stat1]; ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[38]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $etore[$stat2].":".$atore[$stat2]; ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><?= $etore[$stat2].":".$atore[$stat2]; ?></td><? } ?>
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><? if($spiele[$stat1]){ echo number_format($etore[$stat1]/$spiele[$stat1],2,",",".").":".number_format($atore[$stat1]/$spiele[$stat1],2,",",".");} ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[38].$text[64]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><? if($spiele[$stat2]){ echo number_format($etore[$stat2]/$spiele[$stat2],2,",",".").":".number_format($atore[$stat2]/$spiele[$stat2],2,",",".");} ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><? if($spiele[$stat2]){ echo number_format($etore[$stat2]/$spiele[$stat2],2,",",".").":".number_format($atore[$stat2]/$spiele[$stat2],2,",",".");} ?></td><? } ?>
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><? if($spiele[$stat1]){echo $siege[$stat1]." (".number_format($siege[$stat1]*100/$spiele[$stat1],2,",",".")."%)";} ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[67]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><? if($spiele[$stat2]){echo $siege[$stat2]." (".number_format($siege[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><? if($spiele[$stat2]){echo $siege[$stat2]." (".number_format($siege[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><? } ?>
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><?= $maxs0[$stat1]; ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[68]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $maxs0[$stat2]; ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><?= $maxs0[$stat2]; ?></td><? } ?>
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><? if($spiele[$stat1]){echo $nieder[$stat1]." (".number_format($nieder[$stat1]*100/$spiele[$stat1],2,",",".")."%)";} ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[69]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><? if($spiele[$stat2]){echo $nieder[$stat2]." (".number_format($nieder[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><? if($spiele[$stat2]){echo $nieder[$stat2]." (".number_format($nieder[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><? } ?>
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><?= $maxn0[$stat1]; ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[70]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $maxn0[$stat2]; ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><?= $maxn0[$stat2]; ?></td><? } ?>
       </tr>
       <tr>
         <td valign="top" align="right" class="lmost5"><?= $serie1; ?></td>
         <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[71]; ?></td>
-        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $serie2; ?></td><? } ?>
+        <? if($stat2>0){ ?><td valign="top" align="left" class="lmost5"><?= $serie2; ?></td><? } ?>
       </tr>
 <?
     }

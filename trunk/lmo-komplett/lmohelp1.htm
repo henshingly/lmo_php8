@@ -5,7 +5,7 @@
     <title>Hilfe: LigaManager Online 3.99alpha1</title>
     <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
     <style type="text/css">
-      body {font-size:96%; background-color: #ffffff; color: #000000; font-family:Verdana, sans-serif; }
+      body {max-width:50em;margin:auto;font-size:94%; background-color: #ffffff; color: #000000; font-family:Tahoma, Verdana, sans-serif; }
       li {padding: 0; margin-bottom: 3px; }
       a:hover, a:active {text-decoration: overline underline;}
       hr {background-color:black;color:white;border:0;height:0.1em;}
@@ -16,19 +16,26 @@
       table, p { margin-left: 2em; }
       .up { text-align: right; }
       li li {list-style: none; }
+      @media screen{
+        ul li {margin-left:2em;}
+        #menu {margin:1em;}
+        #menu ol {padding-left:0;}
+      }
+      #menu {float:left;background-color:#eee;}
       td, th {text-align:left;vertical-align:top;border:1px solid #000;padding:0.1em;}
       th {background-color:#ddd;color:#000;}
       table {border:1px solid #000; border-spacing:0;border-collapse:collapse;}
       var {font-family:monospace;}
-      strong {color:#009;background-color:inherit;}
-      em {font-style:normal;font-weight:bold;color:#900;background-color:inherit;}
+      strong {color:#009;background-color:transparent;}
+      em {font-style:normal;font-weight:bold;color:#900;background-color:transparent;}
       img {border:0;}
+      
     </style>
   </head>
   <body>
     <h1>Hilfe: LigaManager Online 3.99alpha1</h1>
     <address><a href="https://sourceforge.net/projects/lmo/">https://sourceforge.net/projects/lmo/</a></address>
-    <ol>
+    <ol id="menu">
       <li><h3><a href="readme.html#00">Über diese Version</a></h3>
       <li><h3><a href="readme.html#01">Einstiegsinformationen</a></h3>
         <ol>
@@ -110,10 +117,10 @@
     <ul>
       <li>Fehlerbeseitigung im Code des LMO und der Addons <strong>40%</strong>
       <li>Administration der Addons über Admin-Oberfläche des LMO <strong>100%</strong>
-      <li>Multilanguageunterstützung (mit Hilfe der Languagefiles) <strong>70%</strong>
+      <li>Multilanguageunterstützung (mit Hilfe der Languagefiles) <strong>100%</strong>
       <li>Integration weiterer Addons und Hacks sowie neuer Funktionen 
       <li>Fehlerbereinigung bei HTML- und CSS-Ausgabe <strong>30%</strong>
-      <li>unabhängig von Register-Globals-Einstellung des Servers machen <strong>70%</strong>
+      <li>unabhängig von Register-Globals-Einstellung des Servers machen <strong>60%</strong>
       <li>Migration in SQL-Umgebungen (zunächst MySQL) <strong>0%</strong>
     </ul>
     <h3><a name="01"></a>1. Einstiegsinformationen</h3>
@@ -150,7 +157,7 @@
       "#0301">Optionen</a> können und sollten Sie das dann sofort
       ändern, damit kein Unbefugter mehr Zugriff hat.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0102"></a>1.2. Systemvoraussetzungen</h4>
     <ul>
       <li>Unix- oder Windows-Server</li>
@@ -158,7 +165,7 @@
       <li>register_globals muß auf on sein</li>
       <li>empfohlen: JavaScript- und CSS-fähiger Browser</li>
     </ul>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0103"></a>1.3. Installation</h4>
     <ol>
       <li>Die <strong>lmo.zip</strong> wurde bereits von Dir entpackt. Achte
@@ -225,7 +232,7 @@
         </ul>
       </li>
     </ol>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0104"></a>1.4. Rechtliches</h4>
     <p>
       Dieses Script wird unter den Bestimmungen der <a href="http://www.gnu.org/licenses/gpl.txt">GPL</a>
@@ -243,7 +250,7 @@
       gefolgte Schäden, die durch die Verwendung dieses Programms
       entstehen könnten, ist ausgeschlossen. Es gibt keine Garantie!
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h3><a name="02"></a>2. Die Userverwaltung</h3>
     <h4><a name="0201"></a>2.1. Login/Logout</h4>
     <p>
@@ -260,7 +267,7 @@
       Adminbereich ausloggen können. Das sollten Sie der Sicherheit
       wegen auch immer am Ende einer Sitzung tun.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0202"></a>2.2. Hilfs-Admins</h4>
     <p>
       Sie betreuen auf Ihrer Homepage mehrere Ligen und haben auch
@@ -279,7 +286,7 @@
       Sie sollten diesen Hilfs-Admin sofort löschen, daß sich kein
       Unbefugter an den Ligen vergreifen kann.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0203"></a>2.3. Die Userverwaltung</h4>
     <p>
       Die Userverwaltung wird ja vergleichsweise selten gebraucht und
@@ -320,7 +327,7 @@
       Hilfs-Admin hinzugefügt, so müssen Sie ihm noch ein oder mehrere
       Ligen zuteilen.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h3><a name="03"></a>3. Globale Optionen</h3>
     <h4><a name="0301"></a>3.1. Globale Optionen</h4>
     <p>
@@ -369,7 +376,7 @@
       eMail-Versand von Ligen</a> von Belang. Sie wird als Absender
       eingesetzt und als Vorgabe für den Empfänger.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div> 
+    <p class="up">[<a href="#00">Inhalt</a>]</p> 
     <h4><a name="0302"></a>3.2. Der Designeditor</h4>
     <p>
       Wählen Sie den Menüpunkt <strong>Optionen</strong> und anschließend bei der
@@ -393,7 +400,7 @@
       vorgenommen werden. Sonst gehen die Quelltextänderungen beim
       nächsten Speichern mit dem Designeditor verloren.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h3><a name="04"></a>4. Bearbeiten einer Liga</h3>
     <h4><a name="0401"></a>4.1. Erstellen einer Liga</h4>
     <p>
@@ -449,7 +456,7 @@
       einzelnen Mannschaften herausfinden, welche Mannschaft welchem
       Eintrag zugeordnet werden muß.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0402"></a>4.2. Öffnen einer Liga</h4>
     <p>
       Wenn Sie sich in den Adminbereich <a href="#0201">eingeloggt</a>
@@ -460,7 +467,7 @@
       an. <a href="#0202">Hilfs-Admins</a> können nur die Ligen
       auswählen, die für sie freigegeben wurden.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0403"></a>4.3. Der Ergebniseditor</h4>
     <p>
       Nach dem <a href="#0402">Öffnen der Liga</a> gelangen Sie gleich
@@ -570,7 +577,7 @@
       Sortierung nun aufgehoben. Eventuell veränderte Ergebnisse hatten
       ja ihre Auswirkung auf diese Tabellen.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0404"></a>4.4. Grundeinstellungen</h4>
     <p>
       Klicken Sie im <a href="#0403">Ergebniseditor</a> auf <strong>
@@ -677,7 +684,7 @@
       Ihrer Liga an! Diese Funktion steht bei KO-Turnieren nicht zur
       Verfügung.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0405"></a>4.5. Manuelle Tabellensortierung</h4>
     <p>
       Haben Sie die <a href="#0404">Einstellung</a> <strong>Handsortierung
@@ -707,7 +714,7 @@
       daß die entsprechende Tabelle (und die Fieberkurve) Ihren
       Änderungen gemäß dargestellt wird.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0406"></a>4.6. Der Mannschaftseditor</h4>
     <p>
       Ihnen steht am unteren Rand des <a href="#0403">
@@ -740,7 +747,7 @@
       Sicherheitskopie</a> Ihrer Liga an! Bei KO-Turnieren stehen diese
       Funktionen übrigens nicht zur Verfügung.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h3><a name="05"></a>5. Dateifunktionen</h3>
     <h4><a name="0501"></a>5.1. Löschen einer Liga</h4>
     <p>
@@ -752,7 +759,7 @@
       Sie sie aber bestätigen, wird die Liga unwiderruflich gelöscht.
       Seien Sie also vorsichtig mit der Löschfunktion!
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0502"></a>5.2. Upload einer Liga</h4>
     <p>
       Wählen Sie den Menü-Befehl <strong>Upload</strong>, um eine Liga von Ihrer
@@ -769,7 +776,7 @@
       gleichen Dateinamen, wird die neue Datei nummeriert; aus <strong>
       liga.l98</strong> wird dann <strong>liga_1.l98</strong>.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0503"></a>5.3. Download/Mailen einer Liga</h4>
     <p>
       Möchten Sie eine Sicherheitskopie einer Liga anlegen, eine Liga
@@ -793,7 +800,7 @@
       eMail-Adresse, wie Sie sie bei den <a href="#0301">Optionen</a>
       eingegeben haben, wird als Absender der eMail angegeben.
     </p>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h3><a name="06"></a>6. Technisches</h3>
     <h4><a name="0601"></a>6.1. Interner Aufbau einer Ligadatei</h4>
     <p>
@@ -1230,7 +1237,7 @@
         Begegnung, auch auf 1 basierend)</td>
       </tr>
     </table>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <h4><a name="0602"></a>6.2. Interner Aufbau der CSS-Datei</h4>
     <p>
       Ich setze voraus, daß Sie, wenn Sie diesen Abschnitt lesen,
@@ -1443,7 +1450,7 @@
         <td>Buttons im Adminbereich</td>
       </tr>
     </table>
-    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <p class="up">[<a href="#00">Inhalt</a>]</p>
     <hr>
     <p>
       <a href="http://validator.w3.org/check/referer"><img

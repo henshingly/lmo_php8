@@ -29,7 +29,7 @@ DatS=1
 DatM=1
 DatF=%d.%m. %H:%M
 urlT=1
-urlB=0
+urlB=1
 Plan=1
 Sprachauswahl=1
 Ergebnis=1
@@ -85,18 +85,18 @@ kurve2=0
 18=Lübe
 
 [Team1]
-SP=0
+SP=-5
 TOR1=0
 TOR2=0
 STDA=0
 URL=
-NOT=
+NOT=dfgh
 
 [Team2]
-SP=0
-TOR1=0
-TOR2=0
-STDA=0
+SP=10
+TOR1=5
+TOR2=-5
+STDA=5
 URL=
 NOT=
 
@@ -689,10 +689,10 @@ D1=26.09.2003
 D2=29.09.2003
 TA1=1
 TB1=11
-GA1=3
+GA1=-2
 GB1=1
-NT1=
-BE1=
+NT1=hjch
+BE1=dhgj
 TI1=0
 AT1=1064754000
 TA2=3

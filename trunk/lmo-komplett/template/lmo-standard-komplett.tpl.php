@@ -25,7 +25,9 @@
       <tr>
         <td class="lmomain2" colspan="2" align="center"><!--Savehtml--></td>
       </tr>
+      <tr>
       <td class="lmomain2" colspan="2" align="left"><!--Sprachauswahl--></td>
+      </tr>
       <tr>
         <td class="lmomain2" colspan="2">
           <table width="100%" cellspacing="0" cellpadding="0" border="0">

@@ -45,14 +45,14 @@ if($tippfile!=""){
 
     $datei = fopen($tippfile,"wb");
     if (!$datei) {
-      echo "<font color=\"#ff0000\">".$text[283]."</font>";
+      echo "<p class='error'>".$text[283]."</p>";
       exit;
       }elseif($todo!="newtipper" && $todo!="newligen" && $todo!="tippuseredit"){
       	if(!isset($jkspanticheat)){$jkspanticheat=false;}
       	if($jkspanticheat==false){
-          echo "<font color=\"#008800\">".$text['tipp'][41]."<br></font>";}
+          echo "<p class='message'>".$text['tipp'][41]."<br></p>";}
         else{
-          echo "<font color=\"#008800\">".$text['tipp'][41]." ".$text['tipp'][292]."<br></font>";}
+          echo "<p class='message'>".$text['tipp'][41]." ".$text['tipp'][292]."<br></p>";}
         }
     flock($datei,2);
 

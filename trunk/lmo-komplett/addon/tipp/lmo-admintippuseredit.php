@@ -40,8 +40,8 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
   fclose($datei);
   $gef=0;
   for($i=1;$i<count($users) && $gef==0;$i++){
-    $dummb = split("[|]",$users[$i]);
-    if($nick==$dummb[0]){ // Nick gefunden
+    $tipp_tipperdaten = split("[|]",$users[$i]);
+    if($nick==$tipp_tipperdaten[0]){ // Nick gefunden
       $gef=1;
       $save=$i;
       }
@@ -49,45 +49,47 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
   if($gef==0){exit;}
   
   if($newpage!=1){
-    if($dummb[5]==""){
+    if($tipp_tipperdaten[5]==""){
       $xtippervereinradio=0;
       }
     else{
       $xtippervereinradio=1;
-      $xtippervereinalt=$dummb[5];
+      $xtippervereinalt=$tipp_tipperdaten[5];
       }
   }
   if($newpage==1){
-    $dummb[0]=$nick;
-    $dummb[1]=trim($xtipperpass);
-    $xtippervorname=trim($xtippervorname);
-    $xtippernachname=trim($xtippernachname);
-    if(strpos($xtippernachname, " ")!=false || strpos($xtippervorname, " ")>-1){
+    $tipp_tipperdaten[0]=$nick;
+    $tipp_tipperdaten[1]=trim($xtipperpass);
+    $tipp_tipperdaten[3]=isset($_POST['xtippervorname'])?   trim($_POST['xtippervorname']):      "";
+    $tipp_tipperdaten[3].=isset($_POST['xtippernachname'])? " ".trim($_POST['xtippernachname']): "";
+
+    if(substr_count($tipp_tipperdaten[3], " ")>1){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][109]."</font><br>";
-      }
-    $dummb[3]=$xtippervorname." ".$xtippernachname;
-    $dummb[4]=trim($xtipperemail);
-    $dummb[6]=trim($xtipperstrasse);
-    $dummb[7]=intval(trim($xtipperplz));
-    $dummb[8]=trim($xtipperort);
+      echo "<p class='error'>".$text['tipp'][109]."</p>";
+    }
+ 
+    $tipp_tipperdaten[4]=isset($_POST['xtipperemail'])?                                         trim($_POST['xtipperemail']):        "";
+    $tipp_tipperdaten[6]=isset($_POST['xtipperstrasse'])?                                       trim($_POST['xtipperstrasse']):      "";
+    $tipp_tipperdaten[7]=isset($_POST['xtipperplz']) && is_numeric($_POST['xtipperplz'])?       intval(trim($_POST['xtipperplz'])):  "";
+    $tipp_tipperdaten[8]=isset($_POST['xtipperort'])?                                           trim($_POST['xtipperort']):          "";
+    
+    $xtippervereinradio=isset ($_POST['xtippervereinradio'])?                                   $_POST['xtippervereinradio']:        0;
+    
     if($xtippervereinradio==1){
       $xtippervereinalt=trim($xtippervereinalt);
       if($xtippervereinalt==""){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][71]."</font><br>";
-        }
-      else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
-      }
+        echo "<p class='error'>".$text['tipp'][71]."</p>";
+      }else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
+    }
     if($xtippervereinradio==2){
       $xtippervereinneu=trim($xtippervereinneu);
       if($xtippervereinneu==""){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][72]."</font><br>";
-        }
-      else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
-      }
+        echo "<p class='error'>".$text['tipp'][72]."</p>";
+      }else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
     }
+  }
 
   if($newpage==1){
     if($xtippervereinradio==1){$team=$xtippervereinalt;}
@@ -98,16 +100,14 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
       $xtippervereinradio=1;
       $xtippervereinalt=$team;
       $xtippervereinneu="";
-      }
-    if(isset($xfrei) && $xfrei==1){$dummb[2]="5";}else{$dummb[2]="";}
-
-    $users[$save]=$dummb[0]."|".$dummb[1]."|".$dummb[2]."|".$dummb[3]."|".$dummb[4]."|";
-    $users[$save].=$team."|".$dummb[6]."|".$dummb[7]."|".$dummb[8]."|";
-
-    if(isset($xnews) && $xnews==1){$dummb[9]="1";}else{$dummb[9]="-1";}
-    if(isset($xremind) && $xremind==1){$dummb[10]="1";}else{$dummb[10]="-1";}
-
-    $users[$save].="|".$dummb[9]."|".$dummb[10]."|EOL";
+    }
+    $tipp_tipperdaten[2]=isset($xfrei) && $xfrei==1?        5:       "";
+    $tipp_tipperdaten[9]=isset($xnews) && $xnews==1?        1:       -1;
+    $tipp_tipperdaten[10]=isset($xremind) && $xremind==1?   1:       -1;
+    
+    $users[$save]=$tipp_tipperdaten[0]."|".$tipp_tipperdaten[1]."|".$tipp_tipperdaten[2]."|".$tipp_tipperdaten[3]."|".$tipp_tipperdaten[4]."|";
+    $users[$save].=$team."|".$tipp_tipperdaten[6]."|".$tipp_tipperdaten[7]."|".$tipp_tipperdaten[8]."|";
+    $users[$save].="|".$tipp_tipperdaten[9]."|".$tipp_tipperdaten[10]."|EOL";
 
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
 
@@ -145,8 +145,8 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
           $auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$value.".aus","ab");
           flock($auswertdatei,2);
           fputs($auswertdatei,"\n[".$nick."]\n");
-          fputs($auswertdatei,"Team=".$dummb[5]."\n");
-          fputs($auswertdatei,"Name=".$dummb[3]."\n");
+          fputs($auswertdatei,"Team=".$tipp_tipperdaten[5]."\n");
+          fputs($auswertdatei,"Name=".$tipp_tipperdaten[3]."\n");
           flock($auswertdatei,3);
           fclose($auswertdatei);
           }
@@ -167,46 +167,46 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"><?PHP echo " ".$text['tipp'][23]; ?></td>
-      <td class="lmost5"><?PHP echo "<b>".$dummb[0]."</b>"; ?></td>
+      <td class="lmost5"><?PHP echo "<b>".$tipp_tipperdaten[0]."</b>"; ?></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"><?PHP echo " ".$text[323]; ?></td>
-      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperpass" size="25" maxlength="100" value="<?PHP echo $dummb[1]; ?>"></td>
+      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperpass" size="25" maxlength="100" value="<?PHP echo $tipp_tipperdaten[1]; ?>"></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"><?PHP echo " ".$text['tipp'][14]; ?></td>
-      <td class="lmost5"><input class="lmoadminein" type="text" name="xtippervorname" size="25" maxlength="32" value="<?PHP echo substr($dummb[3],0,strpos($dummb[3]," ")); ?>"></td>
+      <td class="lmost5"><input class="lmoadminein" type="text" name="xtippervorname" size="25" maxlength="32" value="<?PHP echo substr($tipp_tipperdaten[3],0,strpos($tipp_tipperdaten[3]," ")); ?>"></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"><?PHP echo " ".$text['tipp'][15]; ?></td>
-      <td class="lmost5"><input class="lmoadminein" type="text" name="xtippernachname" size="25" maxlength="32" value="<?PHP echo substr($dummb[3],strpos($dummb[3]," ")+1); ?>"></td>
+      <td class="lmost5"><input class="lmoadminein" type="text" name="xtippernachname" size="25" maxlength="32" value="<?PHP echo substr($tipp_tipperdaten[3],strpos($tipp_tipperdaten[3]," ")+1); ?>"></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"><?PHP echo " ".$text['tipp'][126]; ?></td>
-      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperstrasse" size="25" maxlength="32" value="<?PHP echo $dummb[6]; ?>"></td>
+      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperstrasse" size="25" maxlength="32" value="<?PHP echo $tipp_tipperdaten[6]; ?>"></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"><?PHP echo " ".$text['tipp'][127]; ?></td>
-      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperplz" size="7" maxlength="5" value="<?PHP echo $dummb[7]; ?>"></td>
+      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperplz" size="7" maxlength="5" value="<?PHP echo $tipp_tipperdaten[7]; ?>"></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"><?PHP echo " ".$text['tipp'][128]; ?></td>
-      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperort" size="25" maxlength="32" value="<?PHP echo $dummb[8]; ?>"></td>
+      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperort" size="25" maxlength="32" value="<?PHP echo $tipp_tipperdaten[8]; ?>"></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"><?PHP echo " ".$text['tipp'][16]; ?></td>
-      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperemail" size="25" maxlength="64" value="<?PHP echo $dummb[4]; ?>"></td>
+      <td class="lmost5"><input class="lmoadminein" type="text" name="xtipperemail" size="25" maxlength="64" value="<?PHP echo $tipp_tipperdaten[4]; ?>"></td>
     </tr>
     <tr>
       <td class="lmost5" colspan="2">&nbsp;</td>
-      <td class="lmost5"><input type="checkbox" name="xfrei" value="1" <?PHP if($dummb[2]==5){echo "checked";} ?>><?PHP echo $text['tipp'][147] ?></td>
+      <td class="lmost5"><input type="checkbox" name="xfrei" value="1" <?PHP if($tipp_tipperdaten[2]==5){echo "checked";} ?>><?PHP echo $text['tipp'][147] ?></td>
     </tr>
     <tr>
       <td class="lmost4" align="left" colspan="3"><?PHP echo $text['tipp'][165]; ?></td>
@@ -215,8 +215,8 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5">&nbsp;</td>
       <td class="lmost5">
-      <input type="checkbox" name="xnews" value="1" <?PHP if($dummb[9]!=-1){echo "checked";} ?>><?PHP echo $text['tipp'][206] ?><br>
-      <input type="checkbox" name="xremind" value="1" <?PHP if($dummb[10]!=-1){echo "checked";} ?>><?PHP echo $text['tipp'][167] ?>
+      <input type="checkbox" name="xnews" value="1" <?PHP if(isset($tipp_tipperdaten[9]) && $tipp_tipperdaten[9]!=-1){echo "checked";} ?>><?PHP echo $text['tipp'][206] ?><br>
+      <input type="checkbox" name="xremind" value="1" <?PHP if(isset($tipp_tipperdaten[10]) && $tipp_tipperdaten[10]!=-1){echo "checked";} ?>><?PHP echo $text['tipp'][167] ?>
       </td>
     </tr>
 <?PHP if($tipp_tipperimteam>=0){ ?>

@@ -141,7 +141,7 @@ if($file!=""){
           if($minus==2){$dum27=$dum27.":".$strafm[$i];}
         }
         if($teamn[$i]!=""){$dum27=$dum27."\\n\\n".$text[22].":\\n".$teamn[$i];}
-        echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src='img/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\"></a>&nbsp;";
+        echo "<a href='#' onclick=\"alert('$dum27');\"><img src='img/lmo-st2.gif' width='10' height='12' border='0'><span class='popup'>{$dum27}</span></a>&nbsp;";
       }else{
         echo "&nbsp;&nbsp;";
       }?>

@@ -37,7 +37,7 @@ if(($action=="tipp") && ($todo=="delligen")){
 ?>
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></font>
+    <?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?>
   </td></tr>
   <tr><td align="center" class="lmost1"><?PHP echo $text['tipp'][266]; ?></td></tr>
   <tr><td align="center" class="lmost3">
@@ -67,7 +67,7 @@ if(($action=="tipp") && ($todo=="delligen")){
 <?PHP } ?>
 <?PHP if($newpage==1 || $i==0){ // zurück zur Übersicht ?>
    <tr>
-      <td class="lmost4" align="right"><a href="<?PHP echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text['tipp'][1]; ?></a></td>
+      <td class="lmost4" align="right"><a href="<?PHP echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?PHP echo $text[5]." ".$text['tipp'][1]; ?></a></td>
    </tr>
 <?PHP } ?>
 

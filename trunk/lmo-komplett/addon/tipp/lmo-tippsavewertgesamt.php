@@ -40,12 +40,12 @@
   $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
   $auswertdatei = fopen($auswertfile,"wb");
   if (!$auswertdatei) {
-    echo "<font color=\"#ff0000\">".$text['tipp'][29]." ".$auswertdatei.$text[283]."</font>";
+    echo "<p class='error'>".$text['tipp'][29]." ".$auswertdatei.$text[283]."</p>";
     exit;
     }
   flock($auswertdatei,2);
   $addw="lmo-start.php?action=tipp&amp;todo=wert&amp;all=1";
-  echo "<font color=\"#008800\">".$text['tipp'][29]." <a target=\"_blank\" href=\"".$addw."\">Gesamt</a> ".$text['tipp'][65]."<br></font>";
+  echo "<p class='message'>".$text['tipp'][29]." <a target=\"_blank\" href=\"".$addw."\">Gesamt</a> ".$text['tipp'][65]."<br></p>";
   $tippernick = array_pad($array,$anztipper+1,"");
   if($tipp_showname==1){$tippername = array_pad($array,$anztipper+1,"");}
   if($tipp_showemail==1){$tipperemail = array_pad($array,$anztipper+1,"");}

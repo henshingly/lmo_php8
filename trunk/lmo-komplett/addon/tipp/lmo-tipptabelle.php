@@ -96,7 +96,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?></font>
+    <?PHP if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?>
   </td></tr>
 <?PHP if($nick!=""){ ?>
   <tr>
@@ -375,7 +375,7 @@ for($x=0;$x<$anzteams;$x++){
     <td class="lmost4"<?PHP echo $dummy; ?>><b>
     <?PHP
     if($tipp_tippmodus==1){echo $text[37]."/".$text[33];}
-    else{echo $text['tipp'][123]."&#37;";}
+    else{echo $text['tipp'][123]."%";}
     ?></b></td>
    </tr>
 <?PHP

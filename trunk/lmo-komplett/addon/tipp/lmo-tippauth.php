@@ -105,7 +105,7 @@ if($action=="tipp"){
     if($tipp_regeln==1){?>
         <a href='<?=URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
     }
-    if(isset($todo) && $todo!="logout"){echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp\" title=\"".$text['tipp'][159]."\">".$text['tipp'][159]."</a>";}
+    if(isset($todo) && $todo!="logout"){echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp&amp;file=$file\" title=\"".$text['tipp'][159]."\">".$text['tipp'][159]."</a>";}
     else{echo $text['tipp'][159];}
     echo "&nbsp;&nbsp;";
     if($todo!="info"){echo "<a href=\"".$adda."info&amp;file=".$file."\" title=\"".$text[21]."\">".$text[20]."</a>";}else{echo $text[20];}

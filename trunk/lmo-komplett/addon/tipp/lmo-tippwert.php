@@ -71,17 +71,17 @@
     $x3=intval(substr($tab0[$x],-7));
     $platz0[$x3]=$x+1;
     }
-  if($tabdat==""){$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;all=".$all."&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;gewicht=".$gewicht."&amp;wertung=";}else{$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;PHPSESSID=".$PHPSESSID."&amp;file=".$file."&amp;gewicht=".$gewicht."&amp;endtab=".$endtab."&amp;wertung=";}
-  $addt2=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;PHPSESSID=".$PHPSESSID."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;endtab=";
-  if($tabdat==""){$addt3=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;PHPSESSID=".$PHPSESSID."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;start=";}else{$addt3=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;PHPSESSID=".$PHPSESSID."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;endtab=".$endtab."&amp;start=";}
-  $addt4=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;gewicht=".$gewicht."&amp;file=".$file."&amp;endtab=".$endtab."&amp;PHPSESSID=".$PHPSESSID."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;stwertmodus=";
-  if($tabdat==""){$addt5=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;all=".$all."&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;gewicht=";}else{$addt5=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;PHPSESSID=".$PHPSESSID."&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;gewicht=";}
+  if($tabdat==""){$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;all=".$all."&amp;file=".$file."&amp;gewicht=".$gewicht."&amp;wertung=";}else{$addt1=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;file=".$file."&amp;gewicht=".$gewicht."&amp;endtab=".$endtab."&amp;wertung=";}
+  $addt2=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;endtab=";
+  if($tabdat==""){$addt3=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;start=";}else{$addt3=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;gewicht=".$gewicht."&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;endtab=".$endtab."&amp;start=";}
+  $addt4=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;gewicht=".$gewicht."&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;stwertmodus=";
+  if($tabdat==""){$addt5=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;all=".$all."&amp;file=".$file."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;gewicht=";}else{$addt5=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ","%20",$teamintern)."&amp;gewicht=";}
 
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?></font>
+    <?PHP if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?>
   </td></tr>
 <?PHP if($all!=1){ ?>
   <tr>
@@ -124,7 +124,7 @@
   if($tipp_tipperimteam>=0){
 ?>
   <tr>
-    <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
+    <td align="center"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP
     echo "<td ";
     if($wertung=="einzel"){
@@ -160,7 +160,7 @@
 <?PHP }
 if($tabdat!=""){ ?>
   <tr>
-    <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
+    <td align="center"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP
     echo "<td ";
     if($stwertmodus=="nur"){
@@ -235,7 +235,7 @@ if($tabdat!=""){ ?>
 ?>
     <td class="lmost4" align="right"><?PHP echo $text['tipp'][26]; // Anzahl Tipper ?></td>
     <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" align="right"><?PHP echo $text['tipp'][26]."&Oslash;"; // Anzahl Tipper Durchschnitt ?></td>
+    <td class="lmost4" align="right"><?PHP echo $text['tipp'][26]."Ø"; // Anzahl Tipper Durchschnitt ?></td>
     <td class="lmost4" width="2">&nbsp;</td>
 <?PHP } ?>
     <td class="lmost4" <?PHP echo $dummy; ?>>
@@ -284,8 +284,8 @@ if($tabdat!=""){ ?>
     <?PHP if($gewicht!="relativ"){
     	    echo "<a href=\"".$addt5."relativ\" title=\"".$text['tipp'][150]."\">";
             }
-          if($tipp_tippmodus==1){echo $text['tipp'][123]."&Oslash;";}
-          else{echo $text['tipp'][123]."&#37;";}
+          if($tipp_tippmodus==1){echo $text['tipp'][123]."Ø";}
+          else{echo $text['tipp'][123]."%";}
            if($gewicht!="relativ"){echo "</a>";}
     ?></td>
     <td class="lmost4" width="2">&nbsp;</td>

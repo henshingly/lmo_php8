@@ -62,7 +62,7 @@
         $gef=1;
         if($tipperteam[$j]>=$tipp_tipperimteam && $tipp_tipperimteam!=0){ // max. Tipperanzahl schon erreicht
           $newpage=0;
-          echo "<font color=red>".$text['tipp'][142]."</font><br>";
+          echo "<p class='error'>".$text['tipp'][142]."</p><br>";
           }
         }
       }
@@ -70,7 +70,7 @@
       if($xtippervereinneu==$team[$j]){ // Team existiert bereits
         $gef=1;
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][143]."</font><br>";
+        echo "<p class='error'>".$text['tipp'][143]."</p><br>";
         }
       }
     }

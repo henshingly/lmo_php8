@@ -220,7 +220,7 @@ if($tipp_viewertipp==1 && $file=="viewer"){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></font>
+    <?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?>
   </td></tr>
   <tr>
     <td class="lmost4" align="center">
@@ -294,7 +294,7 @@ for($i=0;$i<$anzspiele;$i++){
 <?PHP } ?>
 <?PHP if($tipp_tippmodus==1){ ?>
 <?PHP if($tipp_showdurchschntipp==1){ ?>
-    <td class="lmost4" align="center" colspan="2"><nobr><?PHP echo "&Oslash;-".$text['tipp'][30]; // DurchschnittsTipp ?></nobr></td>
+    <td class="lmost4" align="center" colspan="2"><nobr><?PHP echo "Ø-".$text['tipp'][30]; // DurchschnittsTipp ?></nobr></td>
 <?PHP } ?>
     <td class="lmost4" align="center" colspan="<?PHP if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>"><nobr><?PHP echo $text['tipp'][209]; // Dein Tipp ?></nobr></td>
 <?PHP } ?>
@@ -505,8 +505,8 @@ if($tipp_showdurchschntipp==1){ ?>
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  echo "<td class=\"lmost2\"><a href=\"".$addr.($start-$tipp_viewertage)."&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$tipp_viewertage." ".$text['tipp'][257]."\">".$text[5]."</a></td>";
-  echo "<td align=\"right\" class=\"lmost2\"><a href=\"".$addr.($start+$tipp_viewertage)."&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$tipp_viewertage." ".$text['tipp'][256]."\">".$text[7]."</a></td>";
+  echo "<td class=\"lmost2\"><a href=\"".$addr.($start-$tipp_viewertage)."\" title=\"".$tipp_viewertage." ".$text['tipp'][257]."\">".$text[5]."</a></td>";
+  echo "<td align=\"right\" class=\"lmost2\"><a href=\"".$addr.($start+$tipp_viewertage)."\" title=\"".$tipp_viewertage." ".$text['tipp'][256]."\">".$text[7]."</a></td>";
 ?>
     </tr></table></td>
   </tr>

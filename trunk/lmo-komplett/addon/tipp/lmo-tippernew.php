@@ -52,11 +52,11 @@ require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 	$dummb1 = split("[|]",$zeile);
         if(strtolower($dummb1[0])==strtolower($xtippernick)){
           $newpage=0;   // Nick schon vorhanden
-          echo "<font color=red>".$text['tipp'][24]."</font><br>";
+          echo "<p class='error'>".$text['tipp'][24]."</p><br>";
           }
         if(strtolower($dummb1[4])==strtolower($xtipperemail)){
           $newpage=0;   // Email schon vorhanden
-          echo "<font color=red>".$text['tipp'][201]."</font><br>";
+          echo "<p class='error'>".$text['tipp'][201]."</p><br>";
           }
         }
       }
@@ -67,73 +67,73 @@ require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
     $xtippernick=trim($xtippernick);
     if($xtippernick==""){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][112]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][112]."</p><br>";
       }
     if(strpos($xtippernick, "-")>-1 || strpos($xtippernick, "_")>-1 || strpos($xtippernick, "/")>-1 || strpos($xtippernick, ".")>-1  || strpos($xtippernick, ",")>-1 || strpos($xtippernick, "\\")>-1){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][109]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][109]."</p><br>";
       }
     if($tipp_realname!=-1){
       $xtippervorname=trim($xtippervorname);
       if($xtippervorname==""){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][66]."</font><br>";
+        echo "<p class='error'>".$text['tipp'][66]."</p><br>";
         }
       $xtippernachname=trim($xtippernachname);
       if($xtippernachname==""){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][67]."</font><br>";
+        echo "<p class='error'>".$text['tipp'][67]."</p><br>";
         }
       if(strpos($xtippernachname, " ")!=false || strpos($xtippervorname, " ")>-1){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][109]."</font><br>";
+        echo "<p class='error'>".$text['tipp'][109]."</p><br>";
         }
       }
     if(strpos($xtippernick, " ")>-1){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][109]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][109]."</p><br>";
       }
     if($tipp_adresse==1){
       $xtipperstrasse=trim($xtipperstrasse);
       if($xtipperstrasse==""){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][129]."</font><br>";
+        echo "<p class='error'>".$text['tipp'][129]."</p><br>";
         }
       $xtipperplz=intval(trim($xtipperplz));
       if($xtipperplz==""){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][130]."</font><br>";
+        echo "<p class='error'>".$text['tipp'][130]."</p><br>";
         }
       $xtipperort=trim($xtipperort);
       if($xtipperort==""){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][131]."</font><br>";
+        echo "<p class='error'>".$text['tipp'][131]."</p><br>";
         }
       }
     $xtipperemail=trim($xtipperemail);
     if($xtipperemail=="" || strpos($xtipperemail, " ")>-1 || strpos($xtipperemail, "@")<1){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][68]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][68]."</p><br>";
       }
     $xtipperpass=trim($xtipperpass);
     if($xtipperpass==""){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][69]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][69]."</p><br>";
       }
     elseif(strlen($xtipperpass)<3){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][73]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][73]."</p><br>";
       }
     $xtipperpassw=trim($xtipperpassw);
     if($xtipperpassw!=$xtipperpass){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][70]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][70]."</p><br>";
       }
     if($xtippervereinradio==1){
       $xtippervereinalt=trim($xtippervereinalt);
       if($xtippervereinalt==""){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][71]."</font><br>";
+        echo "<p class='error'>".$text['tipp'][71]."</p><br>";
         }
       else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
       }
@@ -141,7 +141,7 @@ require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
       $xtippervereinneu=trim($xtippervereinneu);
       if($xtippervereinneu==""){
         $newpage=0;
-        echo "<font color=red>".$text['tipp'][72]."</font><br>";
+        echo "<p class='error'>".$text['tipp'][72]."</p><br>";
         }
       else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
       }

@@ -39,7 +39,7 @@ if($einsichtfile!=""){
 
     $datei = fopen($einsichtfile,"wb");
     if (!$datei) {
-      echo "<font color=\"#ff0000\">".$text[283]."</font>";
+      echo "<p class='error'>".$text[283]."</p>";
       exit;
       }
     flock($datei,2);

@@ -27,11 +27,11 @@
 
   $datei = fopen($pswfile,"wb");
   if(!$datei) {
-    echo "<font color=\"#ff0000\">".$text[283]."</font>";
+    echo "<p class='error'>".$text[283]."</p>";
     exit;
     }
   else{
-    echo "<font color=\"#008800\">".$text[138]."</font>";
+    echo "<p class='message'>".$text[138]."</p>";
     }
   flock($datei,2);
   for($i=1;$i<count($users);$i++){

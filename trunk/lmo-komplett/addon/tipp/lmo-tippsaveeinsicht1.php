@@ -44,10 +44,10 @@ if($file!="" && $st>0 && $lmotippername!=""){
 
     $datei = fopen($einsichtfile,"wb");
     if (!$datei) {
-      echo "<font color=\"#ff0000\">".$text[283]."</font>";
+      echo "<p class='error'>".$text[283]."</p>";
       exit;
       }else{
-        //echo "<font color=\"#008800\">".$text['tipp'][41]."<br></font>";
+        //echo "<p class='message'>".$text['tipp'][41]."<br></p>";
         }
     flock($datei,2);
 

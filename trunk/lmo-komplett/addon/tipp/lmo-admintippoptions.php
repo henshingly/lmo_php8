@@ -444,6 +444,7 @@ include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
   }?>
           <tr>
             <td class="lmost4" colspan="3" align="right">
+              <input type="hidden" name="show" value="<?=$show?>">
               <input class="lmoadminbut" type="submit" name="best" value="<? echo $text[188]; ?>">
             </td>
           </tr>
@@ -464,4 +465,3 @@ include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
     </td>
   </tr>
 </table>
-<script type="text/javascript">blendall();</script>

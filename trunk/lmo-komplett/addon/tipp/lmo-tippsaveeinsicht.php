@@ -65,12 +65,12 @@ if($_POST["liga"]!="" && $_POST["st"]!=""){
   if(file_exists($file)){
     $einsichtdatei = fopen($einsichtfile,"wb");
     if (!$einsichtdatei) {
-      echo "<font color=\"#ff0000\">".$text['tipp'][157]." ".$einsichtfile.$text[283]."</font>";
+      echo "<p class='error'>".$text['tipp'][157]." ".$einsichtfile.$text[283]."</p>";
       exit;
       }
     flock($einsichtdatei,2);
     $addw="lmo-start.php?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;st=".$st;
-    echo "<font color=\"#008800\">".$text['tipp'][157]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text['tipp'][65]."<br></font>";
+    echo "<p class='message'>".$text['tipp'][157]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text['tipp'][65]."<br></p>";
 
     for($k=0;$k<$anztipper;$k++){// durchlaufe alle Tipper
       $tippernick=substr($dummy[$k],strrpos($dummy[$k],"_")+1,-4);

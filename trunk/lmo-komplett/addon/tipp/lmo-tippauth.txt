@@ -1,2 +1,0 @@
-test|test|5|||||||1|1|EOL
-test2|test|5|||||||1|1|EOL

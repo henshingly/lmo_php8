@@ -31,10 +31,10 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
       $teamu[$i]=$_POST["xteamu".$i];
       $teamn[$i]=$_POST["xteamn".$i];
       if($lmtype==0){
-        $strafp[$i]=intval($_POST["xstrafp".$i]);
-        if($minus==2){$strafm[$i]=intval($_POST["xstrafm".$i]);}
-        $torkorrektur1[$i]=intval($HTTP_POST_VARS["xtorkorrektur1".$i]); // Hack-Straftore
-		    $torkorrektur2[$i]=intval($HTTP_POST_VARS["xtorkorrektur2".$i]); // Hack-Straftore
+        $strafp[$i]=(-1)*intval($_POST["xstrafp".$i]);
+        if($minus==2){$strafm[$i]=(-1)*intval($_POST["xstrafm".$i]);}
+        $torkorrektur1[$i]=(-1)*intval($HTTP_POST_VARS["xtorkorrektur1".$i]); // Hack-Straftore
+		    $torkorrektur2[$i]=(-1)*intval($HTTP_POST_VARS["xtorkorrektur2".$i]); // Hack-Straftore
 		    $strafdat[$i]=intval($HTTP_POST_VARS["xstrafdat".$i]); // Hack-Straftore
       }
     }
@@ -173,17 +173,17 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 <?   if($lmtype==0){ ?>
             <td class="lmost5" align="center">
               <nobr>
-                <input class="lmoadminein" type="text" name="xstrafp<? echo $i; ?>" size="2" maxlength="4" value="<? echo $strafp[$i]; ?>" onChange="dolmoedit()">
+                <input class="lmoadminein" type="text" name="xstrafp<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$strafp[$i]; ?>" onChange="dolmoedit()">
 <?     if($minus==2){ ?>
-              : <input class="lmoadminein" type="text" name="xstrafm<? echo $i; ?>" size="2" maxlength="4" value="<? echo $strafm[$i]; ?>" onChange="dolmoedit()">
+              : <input class="lmoadminein" type="text" name="xstrafm<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$strafm[$i]; ?>" onChange="dolmoedit()">
 <?     } ?>
               </nobr>&nbsp;
             </td>
 <!-- Hack-Straftore Beginn -->
   	        <td class="lmost5" align="center">
               <nobr>
-                <input class="lmoadminein" type="text" name="xtorkorrektur1<? echo $i; ?>" size="2" maxlength="4" value="<? echo $torkorrektur1[$i]; ?>" onChange="dolmoedit()">
-              : <input class="lmoadminein" type="text" name="xtorkorrektur2<? echo $i; ?>" size="2" maxlength="4" value="<? echo $torkorrektur2[$i]; ?>" onChange="dolmoedit()">
+                <input class="lmoadminein" type="text" name="xtorkorrektur1<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$torkorrektur1[$i]; ?>" onChange="dolmoedit()">
+              : <input class="lmoadminein" type="text" name="xtorkorrektur2<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$torkorrektur2[$i]; ?>" onChange="dolmoedit()">
               </nobr>&nbsp;
             </td>
   	        <td class="lmost5" align="center">
