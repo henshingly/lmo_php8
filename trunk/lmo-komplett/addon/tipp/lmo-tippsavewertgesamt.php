@@ -85,7 +85,7 @@
 
     $ftest=0;
     $ftest1="";
-    $ftest1=split("[,]",$tipp_ligenzutippen);
+    $ftest1=explode(',',$tipp_ligenzutippen);
     if(isset($ftest1)){
       for($u=0;$u<count($ftest1);$u++){
         if($ftest1[$u]==substr($dummy[$k],0,-4)){$ftest=1;}

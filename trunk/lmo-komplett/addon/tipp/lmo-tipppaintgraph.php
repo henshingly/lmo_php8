@@ -26,18 +26,18 @@
   else{$min=$max;}
 
   if($kmodus<4){
-    $linie = split("[,]",$pgplatz1);
+    $linie = explode(',',$pgplatz1);
     for($i=0;$i<count($linie)-1;$i++){if(strlen($linie[$i])>0){if($linie[$i]<$min){$min=$linie[$i];}}}
     if($pganz==2){
-      $lini2 = split("[,]",$pgplatz2);
+      $lini2 = explode(',',$pgplatz2);
       for($i=0;$i<count($lini2)-1;$i++){if(strlen($lini2[$i])>0){if($lini2[$i]<$min){$min=$lini2[$i];}}}
       }
     }
   if($kmodus>2){
-    $liniea = split("[,]",$pgplatz1a);
+    $liniea = explode(',',$pgplatz1a);
     for($i=0;$i<count($liniea)-1;$i++){if(strlen($liniea[$i])>0){if($liniea[$i]<$min){$min=$liniea[$i];}}}
     if($pganz==2){
-      $lini2a = split("[,]",$pgplatz2a);
+      $lini2a = explode(',',$pgplatz2a);
       for($i=0;$i<count($lini2a)-1;$i++){if(strlen($lini2a[$i])>0){if($lini2a[$i]<$min){$min=$lini2a[$i];}}}
       }
     }

@@ -45,7 +45,7 @@ if($ftype!=""){
     if($_SESSION['lmouserok']!=1){$ftest=1;}
     elseif($_SESSION['lmouserok']==1){
       $ftest=0;
-      $ftest1 = split("[,]",$_SESSION['lmouserfile']);
+      $ftest1 = explode(',',$_SESSION['lmouserfile']);
       if(isset($ftest1)){
         for($u=0;$u<count($ftest1);$u++){
           if($ftest1[$u].".l98"==$files){$ftest=1;}
@@ -87,7 +87,7 @@ if($ftype!=""){
       
       $ftest=0;
       $ftest1="";
-      $ftest1=split("[,]",$tipp_ligenzutippen);
+      $ftest1=explode(',',$tipp_ligenzutippen);
       if(isset($ftest1)){
         for($u=0;$u<count($ftest1);$u++){
   
@@ -193,7 +193,7 @@ if($ftype!=""){
     ?> 
     <input class="lmoadminein" type="text" name="start" size="2" maxlength="4" value="<? echo $start1; ?>">
     <? echo $text[4]; //bis
-    $verz1=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
+    $verz1=opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp,0,-1));
     $dummy1=array("");
     while($tipfiles=readdir($verz1)){
       if(strtolower(substr($tipfiles,0,strlen(substr($files,0,-4))))==strtolower(substr($files,0,-4)) && strtolower(substr($tipfiles,-4))==".tip"){array_push($dummy1,$tipfiles);}

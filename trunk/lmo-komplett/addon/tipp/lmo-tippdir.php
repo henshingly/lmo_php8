@@ -85,7 +85,7 @@ if($ftype!=""){
   
       $ftest=0;
       $ftest1="";
-      $ftest1=split("[,]",$tipp_ligenzutippen);
+      $ftest1=explode(',',$tipp_ligenzutippen);
       if(isset($ftest1)){
         for($u=0;$u<count($ftest1);$u++){
   
@@ -97,7 +97,7 @@ if($ftype!=""){
         $i++;
         if($tipp_sttipp!=-1){
           $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dummy[$k],0,-4)."_".str_replace(" ","_",$lmotippername).".tip";
-          echo "<li><a href=\"".$addi.$dirliga.$dummy[$k]."&amp;PHPSESSID=".$PHPSESSID."\">".$t0;if(file_exists($tippfile)){echo "<br><small>".$text['tipp'][138]." ".date("d.m.Y H:i",filectime($tippfile)).$t3."</small>";} echo "</a></li>";
+          echo "<li><a href=\"".$addi.$dirliga.$dummy[$k]."&amp;PHPSESSID=".$PHPSESSID."\">".$t0;if(file_exists($tippfile)){echo "<br><small>".$text['tipp'][138]." ".date("d.m.Y H:i",filemtime($tippfile)).$t3."</small>";} echo "</a></li>";
           }
         $tt1.=$dummy[$k]."|";
         $tt0.=$t0."|";
