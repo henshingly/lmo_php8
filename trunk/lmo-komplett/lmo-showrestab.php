@@ -106,7 +106,13 @@ if(isset($file) && $file!=""){
     </td>
   </tr>
 
-<?PHP for($i=0;$i<$anzsp;$i++){ if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ ?>
+<?PHP
+$datsort= $mterm[$st-1];
+asort($datsort);
+reset($datsort);
+while (list ($key, $val) = each ($datsort)) {
+$i=$key;
+if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ ?>
   <tr>
 
 <?PHP if($datm==1){

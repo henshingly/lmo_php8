@@ -55,19 +55,22 @@ if($lmtype==0){
   <h1><?=$titel?></h1>
   <table>
     <caption><?=$actual?>. Spieltag - <?=$datum1[$datumanz]?> bis <?=$datum2[$datumanz]?></caption><?
-    for($i1=0;$i1<$anzsp;$i1++){ if(($teama[$actual-1][$i1]>0) && ($teamb[$actual-1][$i1]>0)) {
+    $datsort= $mterm[$st-1];
+    asort($datsort);
+    reset($datsort);
+    while (list ($key, $val) = each ($datsort)) {
+    $i=$key;
+    if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ 
 			$heimteam=$teams[$teama[$actual-1][$i1]];
 			$gastteam=$teams[$teamb[$actual-1][$i1]];
 			$heimtore=$goala[$actual-1][$i1];
 			$gasttore=$goalb[$actual-1][$i1];
 			if ($gasttore<0) $gasttore="_";
 			if ($heimtore<0) $heimtore="_";	
-			// * Spielfrei-Hack-Beginn1	- Autor: Bernd Hoyer - eMail: info@salzland-info.de
 			if (($anzteams-($anzst/2+1))!=0){
   			$spielfreiaa[$i1]=$teama[$actual-1][$i1];
   			$spielfreibb[$i1]=$teamb[$actual-1][$i1];
 			}
-			// * Spielfrei-Hack-Ende1- Autor: Bernd Hoyer - eMail: info@salzland-info.de 	
 			if($mterm[$actual-1][$i1]>0){$dum1=strftime($datf, $mterm[$actual-1][$i1]);}else{$dum1="";} // Anstosszeit einblenden
 			?>		
 			<tr>
@@ -136,7 +139,6 @@ if($lmtype==0){
 		}?>
 	 </table>
    <p><small>Hinweis: Tabellenstand ohne vorgezogene Spiele!</small></p><?
-
     if ($actual==$anzst){?>
 		<p><strong>Saison-Ende!</strong><?
     }else{
@@ -144,21 +146,22 @@ if($lmtype==0){
     	$datumanz=$actual-1;?>
 	<table>
     <caption><?=$actual?>. Spieltag - <?=$datum1[$datumanz]?> bis <?=$datum2[$datumanz]?></caption><?
-    	for($i1=0;$i1<$anzsp;$i1++){ if(($teama[$actual-1][$i1]>0) && ($teamb[$actual-1][$i1]>0)) {
-    		
+      $datsort= $mterm[$st-1];
+      asort($datsort);
+      reset($datsort);
+      while (list ($key, $val) = each ($datsort)) {
+      $i=$key;
+      if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ 
     		$heimteam=$teams[$teama[$actual-1][$i1]];
     		$gastteam=$teams[$teamb[$actual-1][$i1]];
     		$heimtore=$goala[$actual-1][$i1];
     		$gasttore=$goalb[$actual-1][$i1];
     		if ($gasttore<0) $gasttore="_";
     		if ($heimtore<0) $heimtore="_";
-    		
-    		 // * Spielfrei-Hack-Beginn1	- Autor: Bernd Hoyer - eMail: info@salzland-info.de
     		if (($anzteams-($anzst/2+1))!=0){
       		$spielfreiaa[$i1]=$teama[$actual-1][$i1];
       		$spielfreibb[$i1]=$teamb[$actual-1][$i1];
     		}
-    		// * Spielfrei-Hack-Ende1- Autor: Bernd Hoyer - eMail: info@salzland-info.de 	
     		if($mterm[$actual-1][$i1]>0){$dum1=strftime($datf, $mterm[$actual-1][$i1]);}else{$dum1="&nbsp;";} // Anstosszeit einblenden
 		?>		
 		<tr>
@@ -187,10 +190,11 @@ if($lmtype==0){
 	</p><?
     }?>
 </body>
-</html><?}
-    fwrite($wmlfile,ob_get_contents());
-    ob_end_clean();
-		fclose($wmlfile);
-	
-}}
+</html><?
+  }
+  fwrite($wmlfile,ob_get_contents());
+  ob_end_clean();
+	fclose($wmlfile);
+}
+}
 ?>

@@ -95,7 +95,12 @@ if($file!=""){
     </td>
   </tr>
 <?PHP
-  for($i=0;$i<$anzsp;$i++){ if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){
+$datsort= $mterm[$st-1];
+asort($datsort);
+reset($datsort);
+while (list ($key, $val) = each ($datsort)) {
+$i=$key;
+if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ 
     for($n=0;$n<$modus[$st-1];$n++){
 ?>
 <?PHP if(($klfin==1) && ($st==$anzst)){ ?>

@@ -517,6 +517,8 @@
 516=ges.
 517=Ø
 518=%
+519=Sprachauswahl
+520=Sollen die Flaggen zur Sprachauswahl angezeigt werden?
 4000=Gesamt-
 4001=/Spiel
 4002=R&uuml;ckrunde
