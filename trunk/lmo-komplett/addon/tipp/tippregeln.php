@@ -1,9 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-					"http://www.w3.org/TR/html4/loose.dtd">
-<html lang="de">
-<head>
-<title>Tippspielregeln</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
 <?
 /** Liga Manager Online 4
   *
@@ -26,6 +20,12 @@
   
 require(dirname(__FILE__)."/../../init.php");
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+					"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Tippspielregeln</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
 <style type="text/css">
   body { background: #fff; color: #000; font-family: sans-serif; font-size: 91%; }
   a {font-size:91%;}
