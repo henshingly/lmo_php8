@@ -165,7 +165,7 @@
 164=Tipper
 165=Newsletter/Reminder
 166=Newsletter an Alle
-167=Tip-Reminder
+167=Tipp-Reminder
 168=Persönliche Email an:
 169=abschicken
 170=für Spiele in den nächsten
@@ -293,3 +293,6 @@
 292=Joker-Tipp darf nicht mehr geändert werden
 293=Mail an Admin bei Anmeldung
 294=anzeigen
+295=Hallo Tipper,
+296=Tippspiel-Newsletter
+297=Hallo

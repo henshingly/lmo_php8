@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -23,159 +23,194 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-
-if($action=="tipp"){
-  if($file!=""){$addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";}
-  if($_SESSION["lmotipperok"]==5){
-  if(($todo=="edit" && $file!="viewer") || $todo=="einsicht"){require(PATH_TO_LMO."/lmo-openfilest.php");}
-  elseif($todo=="tabelle"){require_once(PATH_TO_LMO."/lmo-openfile.php");}
-  elseif(($todo=="wert" && $all!=1) || $todo=="fieber"){require(PATH_TO_LMO."/lmo-openfilename.php");}
-  elseif($todo=="wert" && $all==1){}
+ 
+if ($action == "tipp") {
+  if ($file != "") {
+    $addm = $_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
   }
-$me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
-$adda=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
-//if(!isset($st)){$st=$stx;}else{$sty=$st;}
-if(!isset($newpage)){$newpage=0;}
-if(!isset($file)){$file="";}
-if(!isset($tippfile)){$tippfile="";}
-if(!isset($tipp_tipptabelle1)){$tipp_tipptabelle1=1;}
-?>
-
-<?PHP if($tipp_tippmodus==1 && $todo=="edit"){ ?>
-<script language="JavaScript">
-<!---
-<?PHP if($tipp_pfeiltipp==1){ ?>
-img0 = new Image();
-img0.src = "<?=URL_TO_IMGDIR?>/lmo-admin0.gif";
-img1 = new Image();
-img1.src = "<?=URL_TO_IMGDIR?>/lmo-admin1.gif";
-img2 = new Image();
-img2.src = "<?=URL_TO_IMGDIR?>/lmo-admin2.gif";
-img3 = new Image();
-img3.src = "<?=URL_TO_IMGDIR?>/lmo-admin3.gif";
-function lmoimg(x,y){
-  document.getElementsByName("ximg"+x)[0].src = y.src;
+  if ($_SESSION["lmotipperok"] == 5) {
+    if (($todo == "edit" && $file != "viewer") || $todo == "einsicht") {
+      require(PATH_TO_LMO."/lmo-openfilest.php");
+    } elseif($todo == "tabelle") {
+      require_once(PATH_TO_LMO."/lmo-openfile.php");
+    } elseif(($todo == "wert" && $all != 1) || $todo == "fieber") {
+      require(PATH_TO_LMO."/lmo-openfilename.php");
+    } elseif($todo == "wert" && $all == 1) {
+    }
   }
-<?PHP } ?>
-function lmotorclk(x,y,z){
-  if(document.all && !window.opera){
-    if(z==38){lmotorauf(x,y,1);}
-    if(z==40){lmotorauf(x,y,-1);}
+  $me = array("0", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+  $adda = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
+  //if(!isset($st)){$st=$stx;}else{$sty=$st;}
+  if (!isset($newpage)) {
+    $newpage = 0;
+  }
+  if (!isset($file)) {
+    $file = "";
+  }
+  if (!isset($tippfile)) {
+    $tippfile = "";
+  }
+  if (!isset($tipp_tipptabelle1)) {
+    $tipp_tipptabelle1 = 1;
+  }
+  if ($tipp_tippmodus == 1 && $todo == "edit") {?>
+<script type="text/javascript">
+<!---<?
+  if($tipp_pfeiltipp==1){ ?>
+    img0 = new Image();
+    img0.src = "<?=URL_TO_IMGDIR?>/lmo-admin0.gif";
+    img1 = new Image();
+    img1.src = "<?=URL_TO_IMGDIR?>/lmo-admin1.gif";
+    img2 = new Image();
+    img2.src = "<?=URL_TO_IMGDIR?>/lmo-admin2.gif";
+    img3 = new Image();
+    img3.src = "<?=URL_TO_IMGDIR?>/lmo-admin3.gif";
+    function lmoimg(x,y){
+      document.getElementsByName("ximg"+x)[0].src = y.src;
+    }<? 
+  }?>
+  function lmotorclk(x,y,z){
+    if(document.all && !window.opera){
+      if(z==38){lmotorauf(x,y,1);}
+      if(z==40){lmotorauf(x,y,-1);}
     }
   }
 
-function lmotorauf(x,y,z){
-  if(x=="a"){xx="b";}
-  if(x=="b"){xx="a";}
-  var a=document.getElementsByName("xtipp"+x+y)[0].value;
-  if(a==""){a="-1";}
-  if(a=="_"){a="-1";}
-  var aa=document.getElementsByName("xtipp"+xx+y)[0].value;
-  if(aa==""){aa="-1";}
-  if(aa=="_"){aa="-1";}
-  var ab=aa;
-  if(isNaN(a)==true){a=0;}else{a=parseInt(a);}
-  if((z==1) && (a<9999)){a++;}
-  if((z==-1) && (a>-1)){a--;}
-  if((a>-1) && (aa<0)){aa=0;}
-  if((a<0) && (aa>-1)){aa=-1;}
-  if(a==-1){a="";}
-  document.getElementsByName("xtipp"+x+y)[0].value=a;
-  if(ab!=aa){
-    if(aa==-1){aa="";}
-    document.getElementsByName("xtipp"+xx+y)[0].value=aa;
+  function lmotorauf(x,y,z){
+    if(x=="a"){xx="b";}
+    if(x=="b"){xx="a";}
+    var a=document.getElementsByName("xtipp"+x+y)[0].value;
+    if(a==""){a="-1";}
+    if(a=="_"){a="-1";}
+    var aa=document.getElementsByName("xtipp"+xx+y)[0].value;
+    if(aa==""){aa="-1";}
+    if(aa=="_"){aa="-1";}
+    var ab=aa;
+    if(isNaN(a)==true){a=0;}else{a=parseInt(a);}
+    if((z==1) && (a<9999)){a++;}
+    if((z==-1) && (a>-1)){a--;}
+    if((a>-1) && (aa<0)){aa=0;}
+    if((a<0) && (aa>-1)){aa=-1;}
+    if(a==-1){a="";}
+    document.getElementsByName("xtipp"+x+y)[0].value=a;
+    if(ab!=aa){
+      if(aa==-1){aa="";}
+      document.getElementsByName("xtipp"+xx+y)[0].value=aa;
     }  
   }
 // --->
-</script>
-<?PHP } ?>
-
+</script><?
+  }?>
 <table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmomain0" colspan="3" align="center"><nobr><?PHP echo $text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></nobr>
-    </td>
-  </tr><tr>
-    <td class="lmomain1"><nobr>
-
-<?PHP
-    if($todo!=""){echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp\" title=\"".$text['tipp'][53]."\">".$text['tipp'][52]."</a>";}
-    else{echo $text['tipp'][52];}
-    echo "&nbsp;&nbsp;";
-    if($file=="viewer"){
-      echo $text['tipp'][9]."&nbsp;&nbsp;";
-      }
-    elseif($file!=""){
-      if($tipp_sttipp!=-1){
-        if($todo!="edit"){echo "<a href=\"".$adda."edit&amp;file=".$file."&amp;st=".$st."\" title=\"".$text['tipp'][9]."\">".$text['tipp'][9]."</a>";}
-        else{echo $text['tipp'][9];}
-        echo "&nbsp;&nbsp;";
-        }
-      if($tipp_tippeinsicht==1){
-        if($todo!="einsicht"){echo "<a href=\"".$adda."einsicht&amp;file=".$file."&amp;st=".$st."\" title=\"".$text['tipp'][157]."\">".$text['tipp'][157]."</a>";}
-        else{echo $text['tipp'][157];}
-        echo "&nbsp;&nbsp;";
-        }
-      if($lmtype==0 && $tipp_tipptabelle1==1){
-        if($todo!="tabelle"){echo "<a href=\"".$adda."tabelle&amp;file=".$file."\" title=\"".$text['tipp'][173]."\">".$text['tipp'][172]."</a>";}
-        else{echo $text['tipp'][172];}
-        echo "&nbsp;&nbsp;";
-        }
-      if($tipp_tippfieber==1){
-        if($todo!="fieber"){echo "<a href=\"".$adda."fieber&amp;file=".$file."\" title=\"".$text[134]."\">".$text[133]."</a>";}
-        else{echo $text[133];}
-        echo "&nbsp;&nbsp;";
-        }
-      if($todo!="wert" || $all==1){echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=einzel\" title=\"".$text['tipp'][54]."\">".$text['tipp'][54]."</a>";}
-      else{echo $text['tipp'][54];}
-      echo "&nbsp;&nbsp;";
-      }
-/*
-    if($tipp_gesamt==1){
-      if($todo!="wert" || $all!=1){echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;wertung=einzel&amp;all=1\" title=\"".$text['tipp'][56]."\">".$text['tipp'][56]."</a>";}
-      else{echo $text['tipp'][56];}
-      }
-    echo "&nbsp;&nbsp;";
-*/
-?>
-    </nobr></td>
-    <td class="lmomain1" width="8">&nbsp;</td>
-    <td class="lmomain1" align="right"><nobr>
-<?PHP
-    if($tipp_regeln==1){?>
-      <a href='<?=URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
-      }
-    echo "<a href=\"".$adda."logout\">".$text[88]."</a>";
-    echo "&nbsp;&nbsp;";
-    if($todo!="info"){echo "<a href=\"".$adda."info&amp;file=".$file."\" title=\"".$text[21]."\">".$text[20]."</a>";}else{echo $text[20];}
-    echo "&nbsp;";
-?>
-      
-    </nobr></td>
-  </tr><tr>
-    <td class="lmomain1" colspan="3" align="center">
-
-<?PHP
-if($_SESSION["lmotipperok"]==5){
-  if($file!="" && $file!="viewer"){$tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$lmotippername.".tip";}
-  
-  if($file=="viewer"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippviewer.php");}
-  elseif($todo=="edit"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippedit.php");}
-  elseif($todo=="einsicht"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippeinsicht.php");}
-  elseif($todo=="tabelle"){require(PATH_TO_ADDONDIR."/tipp/lmo-tipptabelle.php");}
-  elseif($todo=="fieber"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippfieber.php");}
-  elseif($todo=="wert"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");}
-  elseif($todo=="daten"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippdaten.php");}
-  elseif($todo=="newligen"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewligen.php");}
-  elseif($todo=="delligen"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippdelligen.php");}
-  elseif($todo=="pwchange"){require(PATH_TO_ADDONDIR."/tipp/lmo-tipppwchange.php");}
-  elseif($todo=="delaccount"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippdelaccount.php");}
-  elseif($todo=="info"){require(PATH_TO_LMO."/lmo-showinfo.php");}
-  else{require(PATH_TO_ADDONDIR."/tipp/lmo-tipppad.php");}
+    <td class="lmomain0" colspan="3" align="center"><?=$text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></td>
+  </tr>
+  <tr>
+    <td class="lmomain1">
+      <nobr><?
+  if ($todo != "") {
+    echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp\" title=\"".$text['tipp'][53]."\">".$text['tipp'][52]."</a>";
+  } else {
+    echo $text['tipp'][52];
   }
-?>
+  echo "&nbsp;&nbsp;";
+  if ($file == "viewer") {
+    echo $text['tipp'][9]."&nbsp;&nbsp;";
+  } elseif($file != "") {
+    if ($tipp_sttipp != -1) {
+      if ($todo != "edit") {
+        echo "<a href=\"".$adda."edit&amp;file=".$file."&amp;st=".$st."\" title=\"".$text['tipp'][9]."\">".$text['tipp'][9]."</a>";
+      } else {
+        echo $text['tipp'][9];
+      }
+      echo "&nbsp;&nbsp;";
+    }
+    if ($tipp_tippeinsicht == 1) {
+      if ($todo != "einsicht") {
+        echo "<a href=\"".$adda."einsicht&amp;file=".$file."&amp;st=".$st."\" title=\"".$text['tipp'][157]."\">".$text['tipp'][157]."</a>";
+      } else {
+        echo $text['tipp'][157];
+      }
+      echo "&nbsp;&nbsp;";
+    }
+    if ($lmtype == 0 && $tipp_tipptabelle1 == 1) {
+      if ($todo != "tabelle") {
+        echo "<a href=\"".$adda."tabelle&amp;file=".$file."\" title=\"".$text['tipp'][173]."\">".$text['tipp'][172]."</a>";
+      } else {
+        echo $text['tipp'][172];
+      }
+      echo "&nbsp;&nbsp;";
+    }
+    if ($tipp_tippfieber == 1) {
+      if ($todo != "fieber") {
+        echo "<a href=\"".$adda."fieber&amp;file=".$file."\" title=\"".$text[134]."\">".$text[133]."</a>";
+      } else {
+        echo $text[133];
+      }
+      echo "&nbsp;&nbsp;";
+    }
+    if ($todo != "wert" || $all == 1) {
+      echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=einzel\" title=\"".$text['tipp'][54]."\">".$text['tipp'][54]."</a>";
+    } else {
+      echo $text['tipp'][54];
+    }
+    echo "&nbsp;&nbsp;";
+  }
+  /*
+  if($tipp_gesamt==1){
+    if($todo!="wert" || $all!=1){echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;wertung=einzel&amp;all=1\" title=\"".$text['tipp'][56]."\">".$text['tipp'][56]."</a>";}
+    else{echo $text['tipp'][56];}
+  }
+  echo "&nbsp;&nbsp;";
+*/?>
+      </nobr>
+    </td>
+    <td class="lmomain1" width="8">&nbsp;</td>
+    <td class="lmomain1" align="right">
+      <nobr><?
+  if($tipp_regeln==1){?>
+        <a href='<?=URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
+  }
+  echo "<a href=\"".$adda."logout\">".$text[88]."</a>";
+  echo "&nbsp;&nbsp;";
+  if ($todo != "info") {
+    echo "<a href=\"".$adda."info&amp;file=".$file."\" title=\"".$text[21]."\">".$text[20]."</a>";
+  } else {
+    echo $text[20];
+  }
+  echo "&nbsp;";?>
+      </nobr>
     </td>
   </tr>
-<?PHP require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
+  <tr>
+    <td class="lmomain1" colspan="3" align="center"><?
+  if ($_SESSION["lmotipperok"] == 5) {
+    if ($file != "" && $file != "viewer") {
+      $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, strrpos($file, "/")+1, -4)."_".$lmotippername.".tip";
+    }
+     
+    if ($file == "viewer") {
+      require(PATH_TO_ADDONDIR."/tipp/lmo-tippviewer.php");
+    }
+    switch ($todo) {
+      case "edit":       require(PATH_TO_ADDONDIR."/tipp/lmo-tippedit.php");break;
+      case "einsicht":   require(PATH_TO_ADDONDIR."/tipp/lmo-tippeinsicht.php");break;
+      case "tabelle":    require(PATH_TO_ADDONDIR."/tipp/lmo-tipptabelle.php");break;
+      case "fieber":     require(PATH_TO_ADDONDIR."/tipp/lmo-tippfieber.php");break;
+      case "wert":       require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");break;
+      case "daten":      require(PATH_TO_ADDONDIR."/tipp/lmo-tippdaten.php");break;
+      case "newligen":   require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewligen.php");break;
+      case "delligen":   require(PATH_TO_ADDONDIR."/tipp/lmo-tippdelligen.php");break;
+      case "pwchange":   require(PATH_TO_ADDONDIR."/tipp/lmo-tipppwchange.php");break;
+      case "delaccount": require(PATH_TO_ADDONDIR."/tipp/lmo-tippdelaccount.php");break;
+      case "info":       require(PATH_TO_LMO."/lmo-showinfo.php");break;
+      default:           require(PATH_TO_ADDONDIR."/tipp/lmo-tipppad.php");break;
+    }
+  }
+  ?>
+    </td>
+  </tr><? 
+  require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
 </table>
-
-<?PHP } ?>
+<?
+}?>

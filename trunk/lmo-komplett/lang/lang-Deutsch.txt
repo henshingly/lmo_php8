@@ -532,6 +532,8 @@
 531=Dateiname
 532=Wie soll die Ligenübersicht sortiert werden
 533=Ligasortierung
+534=Spielfreie Teams
+535=Sollen spielfreie Teams angezeigt werden?
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde

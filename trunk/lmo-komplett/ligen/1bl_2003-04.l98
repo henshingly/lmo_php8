@@ -1,7 +1,6 @@
 [Options]
-Title=LigaManager Online 3.02
+Title=<acronym title="Liga Manager Online">LMO</acronym> 3.99alpha1
 Name=1. Fussball-Bundesliga 2003/04
-mittore=0
 Type=0
 Teams=18
 Rounds=34
@@ -14,7 +13,7 @@ PointsForDraw=1
 PointsForLost=0
 Spez=0
 HideDraw=0
-OnRun=0
+OnRun=1
 MinusPoints=1
 Direct=0
 Champ=1
@@ -30,14 +29,20 @@ DatS=1
 DatM=1
 DatF=%d.%m. %H:%M
 urlT=1
-urlB=0
-Graph=1
-Kreuz=1
+urlB=1
+Plan=1
+Sprachauswahl=1
+Ergebnis=1
+mittore=1
 favTeam=0
 selTeam=0
+ticker=0
+Graph=1
+Kreuz=1
+Tabelle=1
+Ligastats=1
 kurve1=0
 kurve2=0
-ticker=0
 
 [Teams]
 1=FC Bayern München
@@ -81,91 +86,145 @@ ticker=0
 
 [Team1]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team2]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team3]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team4]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team5]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team6]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team7]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team8]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team9]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team10]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team11]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team12]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team13]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team14]
 SP=3
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team15]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team16]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team17]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team18]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
@@ -632,7 +691,7 @@ TA1=8
 TB1=15
 GA1=0
 GB1=1
-NT1=
+NT1=asvdfg
 BE1=
 TI1=0
 AT1=1064669400
@@ -641,7 +700,7 @@ TB2=11
 GA2=1
 GB2=0
 NT2=
-BE2=
+BE2=yxcvb
 TI2=0
 AT2=1064669400
 TA3=12
@@ -656,8 +715,8 @@ TA4=5
 TB4=4
 GA4=1
 GB4=1
-NT4=
-BE4=
+NT4=yxcvb
+BE4=yxcvb
 TI4=0
 AT4=1064763000
 TA5=13
@@ -692,10 +751,10 @@ NT8=
 BE8=
 TI8=0
 AT8=1064669400
-TA9=7
-TB9=18
-GA9=1
-GB9=1
+TA9=0
+TB9=0
+GA9=-1
+GB9=-1
 NT9=
 BE9=
 TI9=0

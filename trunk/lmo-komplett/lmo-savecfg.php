@@ -33,7 +33,7 @@ if($_SESSION['lmouserok']==2){
         $addon_datei = fopen(PATH_TO_CONFIGDIR.'/'.$cfgname.'/cfg.txt',"wb");  //Addondatei
         if ($addon_datei) {
           flock($datei,LOCK_EX);
-          echo "<br><p class='message'>{$text[138]} ($cfgname)</p>";
+          echo "<p class='message'>{$text[138]} ($cfgname)</p>";
           foreach($cfgvalue as $addon_cfgname => $addon_cfgvalue) {
             //echo "<pre>".$addon_datei.":".$addon_cfgname."=".${$cfgname."_".$addon_cfgname}."</pre>";
             fwrite($addon_datei, $addon_cfgname."=".${$cfgname."_".$addon_cfgname}."\n");

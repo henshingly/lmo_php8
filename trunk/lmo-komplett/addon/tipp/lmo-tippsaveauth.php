@@ -22,22 +22,25 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-  if($action=="tipp"){require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");}
-  elseif($action=="admin"){require_once(PATH_TO_LMO."/lmo-admintest.php");}
+  if ($action == "tipp") {
+  require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+} elseif($action == "admin") {
+  require_once(PATH_TO_LMO."/lmo-admintest.php");
+}
+ 
+$datei = fopen($pswfile, "wb");
+if (!$datei) {
+  echo "<p class='error'>".$text[283]."</p>";
+  exit;
+} else {
+  echo "<p class='message'>".$text[138]."</p>";
+}
+flock($datei, 2);
+for($i = 1; $i < count($users); $i++) {
+  fputs($datei, $users[$i]."\n");
+}
+flock($datei, 3);
+fclose($datei);
+clearstatcache();
 
-  $datei = fopen($pswfile,"wb");
-  if(!$datei) {
-    echo "<p class='error'>".$text[283]."</p>";
-    exit;
-    }
-  else{
-    echo "<p class='message'>".$text[138]."</p>";
-    }
-  flock($datei,2);
-  for($i=1;$i<count($users);$i++){
-    fputs($datei,$users[$i]."\n");
-    }
-  flock($datei,3);
-  fclose($datei);
-  clearstatcache();
 ?>

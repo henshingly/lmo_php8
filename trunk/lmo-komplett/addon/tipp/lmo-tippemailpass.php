@@ -23,39 +23,47 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-if(isset($xtippername2)){
+if (isset($xtippername2)) {
   $dumma = array("");
-  $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  $datei = fopen($pswfile,"rb");
-  while (!feof($datei)) {
-    $zeile = fgets($datei,1000);
-    $zeile=chop($zeile);
-    if($zeile!=""){array_push($dumma,$zeile);}
-    }
-  fclose($datei);
-  array_shift($dumma);
-  for($i=0;$i<count($dumma) && $_SESSION["lmotipperok"]==-5;$i++){
-    $dummb = split("[|]",$dumma[$i]);
-    if($xtippername2==$dummb[0] || ($xtippername2==$dummb[4] && strpos($dummb[4],"@")!=false)){ // User gefunden
-      $lmotippername=$dummb[0];
-      $_SESSION["lmotipperok"]=0;
-      $emailbody = "Hallo ".$dummb[0]."\n\n".$text['tipp'][77]."\n".$text['tipp'][23].": ".$dummb[0]."\n".$text[308].": ".$dummb[1]; 
-      $header="From:$aadr\n";
-//      $header .= "Reply-To: $aadr\n"; 
-//      $header .= "Bcc: $aadr\n"; 
-//      $header .= "X-Mailer: PHP/" . phpversion(). "\n";          
-//      $header .= "X-Sender-IP: $REMOTE_ADDR\n"; 
-//      $header .= "Content-Type: text/plain"; 
-      $para5="-f $aadr";
-      if(mail($dummb[4],$text['tipp'][79],$emailbody,$header,$para5)){
-        echo $text['tipp'][78]."<br>";
-        $xtippername2="";
-        }
-      else{echo $text['tipp'][80]." ".$aadr;}
+  $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
+  $datei = fopen($pswfile, "rb");
+  if ($datei) {
+    while (!feof($datei)) {
+      $zeile = fgets($datei, 1000);
+      $zeile = chop($zeile);
+      if ($zeile != "") {
+        array_push($dumma, $zeile);
       }
     }
-  if($_SESSION["lmotipperok"]==-5){$_SESSION["lmotipperok"]=-3;} // Benutzer nicht gefunden
+    fclose($datei);
   }
-  else{$_SESSION["lmotipperok"]=0;} // kein Name angegeben
-
+  array_shift($dumma);
+  for($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i++) {
+    $dummb = split("[|]", $dumma[$i]);
+    if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != false)) {
+      // User gefunden
+      $lmotippername = $dummb[0];
+      $_SESSION["lmotipperok"] = 0;
+      $emailbody = "Hallo ".$dummb[0]."\n\n".$text['tipp'][77]."\n".$text['tipp'][23].": ".$dummb[0]."\n".$text[308].": ".$dummb[1];
+      $header = "From:$aadr\n";
+      //      $header .= "Reply-To: $aadr\n";
+      //      $header .= "Bcc: $aadr\n";
+      //      $header .= "X-Mailer: PHP/" . phpversion(). "\n";
+      //      $header .= "X-Sender-IP: $REMOTE_ADDR\n";
+      //      $header .= "Content-Type: text/plain";
+      $para5 = "-f $aadr";
+      if (mail($dummb[4], $text['tipp'][79], $emailbody, $header, $para5)) {
+        echo $text['tipp'][78]."<br>";
+        $xtippername2 = "";
+      } else {
+        echo $text['tipp'][80]." ".$aadr;
+      }
+    }
+  }
+  if ($_SESSION["lmotipperok"] == -5) {
+    $_SESSION["lmotipperok"] = -3;
+  } // Benutzer nicht gefunden
+} else {
+  $_SESSION["lmotipperok"] = 0;
+} // kein Name angegeben
 ?>
