@@ -63,12 +63,12 @@ if($lmtype==0){
       $datumanz=$y1-1;?>
 	<table>
   <caption><?=$y1?>. Spieltag - <?=$datum1[$datumanz]?> bis <?=$datum2[$datumanz]?></caption><?
-      $datsort= $mterm[$st-1];
+      $datsort= $mterm[$y1-1];
       asort($datsort);
       reset($datsort);
       while (list ($key, $val) = each ($datsort)) {
-      $i=$key;
-      if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){
+      $i1=$key;
+      if(($teama[$st-1][$i1]>0) && ($teamb[$st-1][$i1]>0)){
   			$heimteam=$teams[$teama[$y1-1][$i1]];
   			$gastteam=$teams[$teamb[$y1-1][$i1]];
   			$heimtore=$goala[$y1-1][$i1];

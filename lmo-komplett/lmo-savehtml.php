@@ -56,12 +56,14 @@ if($lmtype==0){
   <table>
     <caption><?=$actual?>. Spieltag - <?=$datum1[$datumanz]?> bis <?=$datum2[$datumanz]?></caption><?
   $datsort= $mterm[$st-1];
+  //print_r($datsort);
   asort($datsort);
+  //print_r($datsort);
   reset($datsort);
   while (list ($key, $val) = each ($datsort)) {
-    $i=$key;
-    if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ 
-			$heimteam=$teams[$teama[$actual-1][$i1]];
+    $i1=$key;
+    if(($teama[$st-1][$i1]>0) && ($teamb[$st-1][$i1]>0)){ 
+      $heimteam=$teams[$teama[$actual-1][$i1]];
 			$gastteam=$teams[$teamb[$actual-1][$i1]];
 			$heimtore=$goala[$actual-1][$i1];
 			$gasttore=$goalb[$actual-1][$i1];
@@ -150,8 +152,8 @@ if($lmtype==0){
       asort($datsort);
       reset($datsort);
       while (list ($key, $val) = each ($datsort)) {
-      $i=$key;
-      if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ 
+      $i1=$key;
+      if(($teama[$st-1][$i1]>0) && ($teamb[$st-1][$i1]>0)){ 
     		$heimteam=$teams[$teama[$actual-1][$i1]];
     		$gastteam=$teams[$teamb[$actual-1][$i1]];
     		$heimtore=$goala[$actual-1][$i1];
