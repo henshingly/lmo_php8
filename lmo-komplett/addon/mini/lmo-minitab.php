@@ -95,6 +95,7 @@ if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
   for ($j=$nach_oben;$j<$m_anzteams-$nach_unten;$j++) {
     $template->setCurrentBlock("Inhalt");
     $template->setVariable(array("Platz"=>"<strong>".($j+1)."</strong>"));
+    $template->setVariable(array("TeamBild"=>getSmallImage($m_tabelle[$j][0])));
     $template->setVariable(array("TeamLang"=>$m_tabelle[$j][0]));
     $template->setVariable(array("Team"=>$m_tabelle[$j][1]));
     if ($m_tabelle[$j][3]=='') {
