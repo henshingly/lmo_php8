@@ -339,7 +339,7 @@ font-size:100%;
   <?=empty($lmo_footer_fontsize1)?'':"font-size: $lmo_footer_fontsize1;";?> 
 }
 
-.lmoTabelleMeister { 
+.lmoTabelleMeister, .lmoTabelleMeister a:link { 
   background: <?=$lmo_tabelle_background1?> repeat; 
   <?=empty($lmo_tabelle_color1)?'':"color: $lmo_tabelle_color1;";?> 
 }
@@ -349,7 +349,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background1)?'':"color: $lmo_tabelle_background1;";?>
 }
 
-.lmoTabelleCleague { 
+.lmoTabelleCleague, .lmoTabelleCleague a:link { 
   background: <?=$lmo_tabelle_background2?> repeat; 
   <?=empty($lmo_tabelle_color2)?'':"color: $lmo_tabelle_color2;";?> 
 }
@@ -359,7 +359,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background2)?'':"color: $lmo_tabelle_background2;";?> 
 }
 
-.lmoTabelleCleaguequali { 
+.lmoTabelleCleaguequali, .lmoTabelleCleaguequali a:link { 
   background: <?=$lmo_tabelle_background3?> repeat; 
   <?=empty($lmo_tabelle_color3)?'':"color: $lmo_tabelle_color3;";?> 
 }
@@ -369,7 +369,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background3)?'':"color: $lmo_tabelle_background3;";?>
 }
 
-.lmoTabelleUefa { 
+.lmoTabelleUefa, .lmoTabelleUefa a:link { 
   background: <?=$lmo_tabelle_background4?> repeat; 
   <?=empty($lmo_tabelle_color4)?'':"color: $lmo_tabelle_color4;";?>
 }
@@ -379,7 +379,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background4)?'':"color: $lmo_tabelle_background4;";?>
 }
 
-.lmoTabelleRelegation { 
+.lmoTabelleRelegation, .lmoTabelleRelegation a:link { 
   background: <?=$lmo_tabelle_background5?> repeat; 
   <?=empty($lmo_tabelle_color5)?'':"color: $lmo_tabelle_color5;";?>
 }
@@ -389,7 +389,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_background5)?'':"color: $lmo_tabelle_background5;";?>
 }
 
-.lmoTabelleAbsteiger { 
+.lmoTabelleAbsteiger, .lmoTabelleAbsteiger a:link { 
   background: <?=$lmo_tabelle_background6?> repeat; 
   <?=empty($lmo_tabelle_color6)?'':"color: $lmo_tabelle_color6;";?>
 }
@@ -409,7 +409,7 @@ font-size:100%;
   <?=empty($lmo_tabelle_color8)?'':"color: $lmo_tabelle_color8;";?> 
 }
 
-.lmoTurnierSieger { 
+.lmoTurnierSieger, .lmoTurnierSieger a:link { 
   background: <?=$lmo_turnier_background1?> repeat; 
   <?=empty($lmo_turnier_color1)?'':"color: $lmo_turnier_color1;";?>
 }
@@ -419,7 +419,7 @@ font-size:100%;
   <?=empty($lmo_turnier_background1)?'':"color: $lmo_turnier_background1;";?> 
 }
 
-.lmoTurnierVerlierer { 
+.lmoTurnierVerlierer, .lmoTurnierVerlierer a:link { 
   background: <?=$lmo_turnier_background2?> repeat; 
   <?=empty($lmo_turnier_color2)?'':"color: $lmo_turnier_color2;";?>
 }
