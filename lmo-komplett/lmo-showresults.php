@@ -57,11 +57,12 @@ while (list ($key, $val) = each ($datsort)) {
     if ($plan == "1") {
       echo "</a>";
     }
+    echo "&nbsp;".getSmallImage($teams[$teama[$st-1][$i]]);
     ?>
     </td>
     <td align="center" width="10">-</td>
     <td class="nobr" align="left"><?
-
+    echo getSmallImage($teams[$teamb[$st-1][$i]])."&nbsp;";
     if ($plan == "1") {
       echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
     }
