@@ -18,7 +18,26 @@
   */
   
   
-require(dirname(__FILE__)."/init.php");
+require(dirname(__FILE__)."/init.php");  
+
+$pgtext1=$text[135];
+$pgtext2=$text[136];
+
+$pgst=isset($_GET['pgst'])?$_GET['pgst']:1;
+$pgteams=isset($_GET['pgteams'])?$_GET['pgteams']:1;
+$pgteam1=isset($_GET['pgteam1'])?$_GET['pgteam1']:'';
+$pgteam2=isset($_GET['pgteam2'])?$_GET['pgteam2']:'';
+$pgplatz1=isset($_GET['pgplatz1'])?$_GET['pgplatz1']:1;
+$pgplatz2=isset($_GET['pgplatz2'])?$_GET['pgplatz2']:'';
+$pganz=isset($_GET['pganz'])?$_GET['pganz']:1;
+
+$pgch=isset($_GET['pgch'])?$_GET['pgch']:0;
+$pgcl=isset($_GET['pgcl'])?$_GET['pgcl']:0;
+$pgck=isset($_GET['pgck'])?$_GET['pgck']:0;
+$pguc=isset($_GET['pguc'])?$_GET['pguc']:0;
+$pgar=isset($_GET['pgar'])?$_GET['pgar']:0;
+$pgab=isset($_GET['pgab'])?$_GET['pgab']:0;
+
 
 $lmo_faktorhorizontal=round(21-$pgst/4);
 $lmo_faktorvertikal=round(17-$pgteams/4);

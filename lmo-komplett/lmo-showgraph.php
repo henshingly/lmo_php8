@@ -83,9 +83,7 @@ if(($file!="") && ($kurve==1)){
       $dummy=$dummy."&pgplatz2=";
       for($j=0;$j<$anzst;$j++){$dummy=$dummy.$platz[$show_stat2][$j].",";}
       $dummy=$dummy."0";
-      }
-    $dummy=$dummy."&pgtext1=".$text[135];
-    $dummy=$dummy."&pgtext2=".$text[136];?>
+      }?>
         <tr>
           <td><img src="<? echo $dummy; ?>" border="0" alt="<?=$text[133]?>"></td>
         </tr>

@@ -28,6 +28,7 @@ if(!isset($_SESSION["lmouserfile"])){$_SESSION["lmouserfile"]="";}
 if(!isset($_SESSION["lmouserokerweitert"])){$_SESSION["lmouserokerweitert"]=0;}
 
 $todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:"";
+$st=isset($_REQUEST['st'])?$_REQUEST['st']:NULL;
 if($todo=="logout"){
   $_SESSION['lmouserok']=0;
   $_SESSION['lmouserpass']="";
@@ -49,8 +50,9 @@ $action="admin";
 $array = array();
 require(PATH_TO_LMO."/lmo-adminauth.php");
 if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0){
-  if (isset($file) && ($todo=="open" || $todo=="")) $todo="edit";
-  if ((isset($file) && check_hilfsadmin($file)) || !isset($file))  require(PATH_TO_LMO."/lmo-adminmain.php");
+  $file=!empty($_REQUEST['file'])?$_REQUEST['file']:'';
+  if (!empty($file) && ($todo=="open" || $todo=="")) $todo="edit";
+  if ((!empty($file) && check_hilfsadmin($file)) || empty($file))  require(PATH_TO_LMO."/lmo-adminmain.php");
 }
 ?>
 </div>

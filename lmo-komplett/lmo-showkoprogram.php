@@ -21,6 +21,7 @@
 if ($file != "") {
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
+  $selteam=!empty($_GET['selteam'])?$_GET['selteam']:$selteam;
   function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
     $erg = 0;
     if ($gmod == 1) {
@@ -156,8 +157,8 @@ if ($file != "") {
           if ($selteam == $teamb[$j][$i]) {
             echo "</strong>";
           }
-          if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
-            echo " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\">".$text[564]."</a>";
+          if (($teamu[$teamb[$j][$i]] != "") && ($urlt == 1)) {
+            echo " <a href=\"".$teamu[$teamb[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\">".$text[564]."</a>";
           }
           echo " </td>";
           for($n = 0; $n < $modus[$j]; $n++) {

@@ -211,7 +211,7 @@
 210=Zusätzliche Angaben bei der Tippabgabe (Daten berechnet aus den Tippeinsicht-Dateien)
 211=in Prozent
 212=absolut
-213=Durchnittstipp
+213=Durchschnittstipp
 214=Regeltechnisches
 215=sofort
 216=nach Tippabgabeschluss

@@ -20,6 +20,8 @@
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($file != "") {
+  $save=isset($_POST['save'])?$_POST['save']:0;
+  
   $tabdat="_";
   $ftest0 = 1;
   $liga = substr($file, 0, -4);
@@ -332,9 +334,9 @@ if ($file != "") {
   }
   $addr = $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
   $addb = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
-  $breite = $lmtype==0?18:17;
+  $breite = 18-$lmtype;
   if ($spez == 1) {
-    $breite = $breite+2;
+    $breite = $breite+1+(-1)*(0-$lmtype);
   }
    
   include(PATH_TO_LMO."/lmo-adminsubnavi.php");?>

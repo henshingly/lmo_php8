@@ -21,6 +21,7 @@
 if(($file!="") && ($kreuz==1)){
   $addc=$_SERVER['PHP_SELF']."?action=cross&amp;file=".$file."&amp;croteam=";
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
+  $croteam=!empty($_GET['croteam'])?$_GET['croteam']:0;
 ?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
 <tr>
@@ -28,9 +29,6 @@ if(($file!="") && ($kreuz==1)){
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 
 <?
-  if (!isset($croteam)) {
-    $croteam = 0;
-  }
   for($i = 0; $i <= ($anzteams+1); $i++) {
     for($j = 0; $j <= ($anzteams+1); $j++) {
       $dummy = "";

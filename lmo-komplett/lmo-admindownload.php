@@ -20,7 +20,9 @@
   
 session_start();
 require(dirname(__FILE__)."/init.php");
-
+$action = isset($_GET['action'])?$_GET['action']:'';
+$todo = isset($_GET['todo'])?$_GET['todo']:'';
+$down = isset($_GET['down'])?$_GET['down']:0;
 if (($action == "admin") && ($todo == "download") && (($_SESSION["lmouserok"] == 1) || ($_SESSION["lmouserok"] == 2))) {
   if ($down > 0) {
     $ftype = ".l98";

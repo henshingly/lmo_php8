@@ -53,7 +53,7 @@ if (isset($file) && $file!="") {
     }
 		if ($spieler_sort=="") $spieler_sort=intval($spieler_adminbereich_standard_sortierung);
 
-		if (file_exists($filename)) $filepointer = @fopen($filename,"r+b"); else $filepointer = @fopen($filename,"w+b");
+		if (file_exists($filename)) $filepointer = fopen($filename,"r+b"); else $filepointer = fopen($filename,"w+b");
 		$spalten=array();
 		$data=array();
 		$spalten = fgetcsv($filepointer, 1000, "§"); //Zeile mit Spaltenbezeichnern
@@ -382,7 +382,7 @@ function mark(el){
 								for ($x=0;$x<$spaltenzahl;$x++) {?>
 								<option value="<?=$x?>"<?if ($x==0){?> disabled<?}if ($x==1){?> selected<?}?>><?=$spalten[$x]?></option><?
 								}?>
-							</select></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" - ">
+							</select></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" &minus; ">
 							<input type="hidden" name="option" value="delcolumn">
 							<input type="hidden" name="todo" value="edit">
               <input type="hidden" name="st" value="<?=$st; ?>">

@@ -458,27 +458,27 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
               <table cellspacing="0" cellpadding="0" border="0">
                 <tr>
                   <td class="nobr" align="left">&nbsp;</td>
-                  <td class="nobr" align="center"><?=$text[199];?></td>
-                  <td class="nobr" align="center"><?=$text[200];?></td>
-                  <td class="nobr" align="center"><?=$text[201];?></td>
+                  <th class="nobr" align="center">&nbsp;<acronym title="<?=$text[199];?>"><?=$text[34];?></acronym>&nbsp;</th>
+                  <th class="nobr" align="center">&nbsp;<acronym title="<?=$text[200];?>"><?=$text[35];?></acronym>&nbsp;</th>
+                  <th class="nobr" align="center">&nbsp;<acronym title="<?=$text[201];?>"><?=$text[36];?></acronym>&nbsp;</th>
                 </tr>
                 <tr>
-                  <td class="nobr" align="right"><?=$text[202];?></td>
-                  <td class="nobr" align="center"><select class="lmo-formular-input" name="xpns" onChange="dolmoedit()"><? for($y=3;$y>=0;$y--){echo "<option";if($y==$pns){echo " selected";}echo ">".$y."</option>";} ?></select></td>
-                  <td class="nobr" align="center"><select class="lmo-formular-input" name="xpnu" onChange="dolmoedit()"><? for($y=3;$y>=0;$y--){echo "<option";if($y==$pnu){echo " selected";}echo ">".$y."</option>";} ?></select></td>
-                  <td class="nobr" align="center"><select class="lmo-formular-input" name="xpnn" onChange="dolmoedit()"><? for($y=3;$y>=0;$y--){echo "<option";if($y==$pnn){echo " selected";}echo ">".$y."</option>";} ?></select></td>
+                  <td class="nobr" align="right"><?=$text[202];?>&nbsp;</td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpns" size="2" onChange="dolmoedit()" value=<?=$pns?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpnu" size="2" onChange="dolmoedit()" value=<?=$pnu?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpnn" size="2" onChange="dolmoedit()" value=<?=$pnn?>></td>
                 </tr>
                 <tr>
-                  <td class="nobr" align="right"><?=$text[203];?></td>
-                  <td class="nobr" align="center"><select class="lmo-formular-input" name="xpxs" onChange="dolmoedit()"><? for($y=3;$y>=0;$y--){echo "<option";if($y==$pxs){echo " selected";}echo ">".$y."</option>";} ?></select></td>
-                  <td class="nobr" align="center"><select class="lmo-formular-input" name="xpxu" onChange="dolmoedit()"><? for($y=3;$y>=0;$y--){echo "<option";if($y==$pxu){echo " selected";}echo ">".$y."</option>";} ?></select></td>
-                  <td class="nobr" align="center"><select class="lmo-formular-input" name="xpxn" onChange="dolmoedit()"><? for($y=3;$y>=0;$y--){echo "<option";if($y==$pxn){echo " selected";}echo ">".$y."</option>";} ?></select></td>
+                  <td class="nobr" align="right"><?=$text[203];?>&nbsp;</td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpxs" size="2" onChange="dolmoedit()" value=<?=$pxs?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpxu" size="2" onChange="dolmoedit()" value=<?=$pxu?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpxn" size="2" onChange="dolmoedit()" value=<?=$pnn?>></td>
                 </tr>
                 <tr>
-                  <td class="nobr" align="right"><?=$text[204];?></td>
-                  <td class="nobr" align="center"><select class="lmo-formular-input" name="xpps" onChange="dolmoedit()"><? for($y=3;$y>=0;$y--){echo "<option";if($y==$pps){echo " selected";}echo ">".$y."</option>";} ?></select></td>
-                  <td class="nobr" align="center"><select class="lmo-formular-input" name="xppu" onChange="dolmoedit()"><? for($y=3;$y>=0;$y--){echo "<option";if($y==$ppu){echo " selected";}echo ">".$y."</option>";} ?></select></td>
-                  <td class="nobr" align="center"><select class="lmo-formular-input" name="xppn" onChange="dolmoedit()"><? for($y=3;$y>=0;$y--){echo "<option";if($y==$ppn){echo " selected";}echo ">".$y."</option>";} ?></select></td>
+                  <td class="nobr" align="right"><?=$text[204];?>&nbsp;</td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpps" size="2" onChange="dolmoedit()" value=<?=$pps?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xppu" size="2" onChange="dolmoedit()" value=<?=$ppu?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xppn" size="2" onChange="dolmoedit()" value=<?=$ppn?>></td>
                 </tr>
               </table>
             </td>

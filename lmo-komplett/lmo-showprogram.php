@@ -21,6 +21,7 @@
 if($file!=""){
   $addp=$_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
+  $selteam=!empty($_GET['selteam'])?$_GET['selteam']:$selteam;
 ?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
