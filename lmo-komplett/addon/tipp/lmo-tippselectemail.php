@@ -22,22 +22,25 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-  require_once(PATH_TO_LMO."/lmo-admintest.php");
-  $dumma = array("");
-  $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  $datei = fopen($pswfile,"rb");
-  while (!feof($datei)) {
-    $zeile = fgets($datei,1000);
-    $zeile=chop($zeile);
-    if($zeile!=""){array_push($dumma,$zeile);}
-    }
-  fclose($datei);
-  array_shift($dumma);
+require_once(PATH_TO_LMO."/lmo-admintest.php");
+$dumma = array("");
+$pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
+$datei = fopen($pswfile, "rb");
+while (!feof($datei)) {
+  $zeile = fgets($datei, 1000);
+  $zeile = chop($zeile);
+  if ($zeile != "") {
+    array_push($dumma, $zeile);
+  }
+}
+fclose($datei);
+array_shift($dumma);
+ 
+sort($dumma, SORT_STRING);
+for($i = 0; $i < count($dumma); $i++) {
+  $dummb = split("[|]", $dumma[$i]);
+  echo "<option value=\"".$dummb[0]."\" ";
+  echo ">".$dummb[0]." (".$dummb[3]." - ".$dummb[4].")"."</option>";
+}
 
-  sort($dumma,SORT_STRING);
-  for($i=0;$i<count($dumma);$i++){
-    $dummb = split("[|]",$dumma[$i]);
-    echo "<option value=\"".$dummb[0]."\" ";
-    echo ">".$dummb[0]." (".$dummb[3]." - ".$dummb[4].")"."</option>";
-    }
 ?>

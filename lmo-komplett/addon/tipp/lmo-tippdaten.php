@@ -23,114 +23,139 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-if(($action=="tipp") && ($todo=="daten")){
-  if(!isset($xtippervereinalt)){$xtippervereinalt="";}
-  if(!isset($xtippervereinneu)){$xtippervereinneu="";}
+if (($action == "tipp") && ($todo == "daten")) {
+  if (!isset($xtippervereinalt)) {
+    $xtippervereinalt = "";
+  }
+  if (!isset($xtippervereinneu)) {
+    $xtippervereinneu = "";
+  }
   $users = array("");
-  $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  $datei = fopen($pswfile,"rb");
+  $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
+  $datei = fopen($pswfile, "rb");
   while (!feof($datei)) {
-    $zeile = fgets($datei,1000);
-    $zeile=trim(chop($zeile));
-    if($zeile!=""){
-      if($zeile!=""){array_push($users,$zeile);}
+    $zeile = fgets($datei, 1000);
+    $zeile = trim(chop($zeile));
+    if ($zeile != "") {
+      if ($zeile != "") {
+        array_push($users, $zeile);
       }
     }
+  }
   fclose($datei);
-  $gef=0;
-  for($i=1;$i<count($users) && $gef==0;$i++){
-    $dummb = split("[|]",$users[$i]);
-    if($lmotippername==$dummb[0]){ // Nick gefunden
-      $gef=1;
-      $save=$i;
+  $gef = 0;
+  for($i = 1; $i < count($users) && $gef == 0; $i++) {
+    $dummb = split("[|]", $users[$i]);
+    if ($lmotippername == $dummb[0]) {
+      // Nick gefunden
+      $gef = 1;
+      $save = $i;
     }
   }
-  if($gef==0){exit;}
-  
-  if($newpage!=1){
-    if($dummb[5]==""){
-      $xtippervereinradio=0;
-      }
-    else{
-      $xtippervereinradio=1;
-      $xtippervereinalt=$dummb[5];
-      }
+  if ($gef == 0) {
+    exit;
   }
-  if($newpage==1){
-    if($tipp_realname!=-1){
-      $xtippervorname=trim($xtippervorname);
-      if($xtippervorname==""){
-        $newpage=0;
+   
+  if ($newpage != 1) {
+    if ($dummb[5] == "") {
+      $xtippervereinradio = 0;
+    } else {
+      $xtippervereinradio = 1;
+      $xtippervereinalt = $dummb[5];
+    }
+  }
+  if ($newpage == 1) {
+    if ($tipp_realname != -1) {
+      $xtippervorname = trim($xtippervorname);
+      if ($xtippervorname == "") {
+        $newpage = 0;
         echo "<p class='error'>".$text['tipp'][66]."</p><br>";
-        }
-      $xtippernachname=trim($xtippernachname);
-      if($xtippernachname==""){
-        $newpage=0;
+      }
+      $xtippernachname = trim($xtippernachname);
+      if ($xtippernachname == "") {
+        $newpage = 0;
         echo "<p class='error'>".$text['tipp'][67]."</p><br>";
-        }
-      if(strpos($xtippernachname, " ")!=false || strpos($xtippervorname, " ")>-1){
-        $newpage=0;
+      }
+      if (strpos($xtippernachname, " ") != false || strpos($xtippervorname, " ") > -1) {
+        $newpage = 0;
         echo "<p class='error'>".$text['tipp'][109]."</p><br>";
-        }
-      }
-    if($tipp_adresse==1){
-      $xtipperstrasse=trim($xtipperstrasse);
-      if($xtipperstrasse==""){
-        $newpage=0;
-        echo "<p class='error'>".$text['tipp'][129]."</p><br>";
-        }
-      $xtipperplz=intval(trim($xtipperplz));
-      if($xtipperplz==""){
-        $newpage=0;
-        echo "<p class='error'>".$text['tipp'][130]."</p><br>";
-        }
-      $xtipperort=trim($xtipperort);
-      if($xtipperort==""){
-        $newpage=0;
-        echo "<p class='error'>".$text['tipp'][131]."</p><br>";
-        }
-      }
-    $xtipperemail=trim($xtipperemail);
-    if($xtipperemail=="" || strpos($xtipperemail, " ")>-1 || strpos($xtipperemail, "@")<1){
-      $newpage=0;
-      echo "<p class='error'>".$text['tipp'][68]."</p><br>";
-      }
-    if($xtippervereinradio==1){
-      $xtippervereinalt=trim($xtippervereinalt);
-      if($xtippervereinalt==""){
-        $newpage=0;
-        echo "<p class='error'>".$text['tipp'][71]."</p><br>";
-        }
-      else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
-      }
-    if($xtippervereinradio==2){
-      $xtippervereinneu=trim($xtippervereinneu);
-      if($xtippervereinneu==""){
-        $newpage=0;
-        echo "<p class='error'>".$text['tipp'][72]."</p><br>";
-        }
-      else{require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");}
       }
     }
-
-  if($newpage==1){
-    if($xtippervereinradio==1){ $lmotipperverein=$xtippervereinalt; }
-    elseif($xtippervereinradio==2) {$lmotipperverein=$xtippervereinneu;}
-    else {$lmotipperverein="";}
-    $users[$save]=$dummb[0]."|".$dummb[1]."|".$dummb[2]."|";
-    if($tipp_realname!=-1){$users[$save]=$users[$save].$xtippervorname." ".$xtippernachname;}
-    $users[$save]=$users[$save]."|".$xtipperemail."|".$lmotipperverein;
-    if($tipp_adresse==1){$users[$save].="|".$xtipperstrasse."|".$xtipperplz."|".$xtipperort;}
-    else{$users[$save].="|".$dummb[6]."|".$dummb[7]."|".$dummb[8];}
-    $users[$save].="|";
-    if(trim($_POST["xnews"])==1){$users[$save].="1";}
-    else{$users[$save].="-1";}
-    $users[$save].="|";
-    if(trim($_POST["xremind"])==1){$users[$save].="1";}
-    else{$users[$save].="-1";}
-    $users[$save].="|EOL";
+    if ($tipp_adresse == 1) {
+      $xtipperstrasse = trim($xtipperstrasse);
+      if ($xtipperstrasse == "") {
+        $newpage = 0;
+        echo "<p class='error'>".$text['tipp'][129]."</p><br>";
+      }
+      $xtipperplz = intval(trim($xtipperplz));
+      if ($xtipperplz == "") {
+        $newpage = 0;
+        echo "<p class='error'>".$text['tipp'][130]."</p><br>";
+      }
+      $xtipperort = trim($xtipperort);
+      if ($xtipperort == "") {
+        $newpage = 0;
+        echo "<p class='error'>".$text['tipp'][131]."</p><br>";
+      }
+    }
+    $xtipperemail = trim($xtipperemail);
+    if ($xtipperemail == "" || strpos($xtipperemail, " ") > -1 || strpos($xtipperemail, "@") < 1) {
+      $newpage = 0;
+      echo "<p class='error'>".$text['tipp'][68]."</p><br>";
+    }
+    if ($xtippervereinradio == 1) {
+      $xtippervereinalt = trim($xtippervereinalt);
+      if ($xtippervereinalt == "") {
+        $newpage = 0;
+        echo "<p class='error'>".$text['tipp'][71]."</p><br>";
+      } else {
+        require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
+      }
+    }
+    if ($xtippervereinradio == 2) {
+      $xtippervereinneu = trim($xtippervereinneu);
+      if ($xtippervereinneu == "") {
+        $newpage = 0;
+        echo "<p class='error'>".$text['tipp'][72]."</p><br>";
+      } else {
+        require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
+      }
+    }
+  }
+   
+  if ($newpage == 1) {
+    if ($xtippervereinradio == 1) {
+      $lmotipperverein = $xtippervereinalt;
+    } elseif($xtippervereinradio == 2) {
+      $lmotipperverein = $xtippervereinneu;
+    } else {
+      $lmotipperverein = "";
+    }
+    $users[$save] = $dummb[0]."|".$dummb[1]."|".$dummb[2]."|";
+    if ($tipp_realname != -1) {
+      $users[$save] = $users[$save].$xtippervorname." ".$xtippernachname;
+    }
+    $users[$save] = $users[$save]."|".$xtipperemail."|".$lmotipperverein;
+    if ($tipp_adresse == 1) {
+      $users[$save] .= "|".$xtipperstrasse."|".$xtipperplz."|".$xtipperort;
+    } else {
+      $users[$save] .= "|".$dummb[6]."|".$dummb[7]."|".$dummb[8];
+    }
+    $users[$save] .= "|";
+    if (trim($_POST["xnews"]) == 1) {
+      $users[$save] .= "1";
+    } else {
+      $users[$save] .= "-1";
+    }
+    $users[$save] .= "|";
+    if (trim($_POST["xremind"]) == 1) {
+      $users[$save] .= "1";
+    } else {
+      $users[$save] .= "-1";
+    }
+    $users[$save] .= "|EOL";
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
-    } // end ($newpage==1)
+  } // end ($newpage==1)
 ?>
 <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
@@ -245,4 +270,6 @@ if(($action=="tipp") && ($todo=="daten")){
 <?} ?>
 
 </table>
-<?} $file=""; ?>
+<?
+} 
+$file=""; ?>

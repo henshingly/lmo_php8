@@ -27,123 +27,129 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if($_POST["liga"]!="" && $_POST["st"]!=""){
-  $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
-  $dummy=array("");
-  while($files=readdir($verz)){
-    if(strtolower(substr($files,-4))==".tip" && strtolower(substr($files,0,strlen($liga)))==strtolower($liga)){
-    	array_push($dummy,$files);
-    	}
+if ($_POST["liga"] != "" && $_POST["st"] != "") {
+  $verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
+  $dummy = array("");
+  while ($files = readdir($verz)) {
+    if (strtolower(substr($files, -4)) == ".tip" && strtolower(substr($files, 0, strlen($liga))) == strtolower($liga)) {
+      array_push($dummy, $files);
     }
+  }
   array_shift($dummy);
-
-  $anztipper=count($dummy);
-  $einsichtfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".$liga."_".$st.".ein";
+   
+  $anztipper = count($dummy);
+  $einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".$liga."_".$st.".ein";
   $datenalt = array("");
-  $nick="";
-  
-  if($st>0 && file_exists($einsichtfile)){
-    $datei = fopen($einsichtfile,"rb");
+  $nick = "";
+   
+  if ($st > 0 && file_exists($einsichtfile)) {
+    $datei = fopen($einsichtfile, "rb");
     while (!feof($datei)) {
-      $zeile = fgets($datei,1000);
-      $zeile=trim(chop($zeile));
-      if($zeile!=""){
-        if((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
-          $nick=substr($zeile,1,-1);
-          if(!file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$liga."_".$nick.".tip")){$nick="";}
+      $zeile = fgets($datei, 1000);
+      $zeile = trim(chop($zeile));
+      if ($zeile != "") {
+        if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+          $nick = substr($zeile, 1, -1);
+          if (!file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$liga."_".$nick.".tip")) {
+            $nick = "";
           }
-      	
-      	if($nick!=""){
- 	  array_push($datenalt,$zeile);
-      	  }
-      	}
+        }
+         
+        if ($nick != "") {
+          array_push($datenalt, $zeile);
+        }
       }
-    fclose($datei);
     }
-
-  $file=$dirliga.$liga.".l98";
-  if(file_exists($file)){
-    $einsichtdatei = fopen($einsichtfile,"wb");
+    fclose($datei);
+  }
+   
+  $file = $dirliga.$liga.".l98";
+  if (file_exists($file)) {
+    $einsichtdatei = fopen($einsichtfile, "wb");
     if (!$einsichtdatei) {
       echo "<p class='error'>".$text['tipp'][157]." ".$einsichtfile.$text[283]."</p>";
       exit;
-      }
-    flock($einsichtdatei,2);
-    $addw="lmo-start.php?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;st=".$st;
+    }
+    flock($einsichtdatei, 2);
+    $addw = "lmo-start.php?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;st=".$st;
     echo "<p class='message'>".$text['tipp'][157]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text['tipp'][65]."<br></p>";
-
-    for($k=0;$k<$anztipper;$k++){// durchlaufe alle Tipper
-      $tippernick=substr($dummy[$k],strrpos($dummy[$k],"_")+1,-4);
-      if($k>=$start-1 && $k<=$ende-1){
-        $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k];
-        fputs($einsichtdatei,"\n[".$tippernick."]\n");
-  
-        if(!file_exists($tippfile))
-          echo $text['tipp'][17]."<br>";
-        else{
-          $datei = fopen($tippfile,"rb");
-          if($datei!=false){
-            $tippdaten=array("");
-            $sekt="";
-            $jkwert="";
+     
+    for($k = 0; $k < $anztipper; $k++) {
+      // durchlaufe alle Tipper
+      $tippernick = substr($dummy[$k], strrpos($dummy[$k], "_")+1, -4);
+      if ($k >= $start-1 && $k <= $ende-1) {
+        $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k];
+        fputs($einsichtdatei, "\n[".$tippernick."]\n");
+         
+        if (!file_exists($tippfile))
+        echo $text['tipp'][17]."<br>";
+        else
+          {
+          $datei = fopen($tippfile, "rb");
+          if ($datei != false) {
+            $tippdaten = array("");
+            $sekt = "";
+            $jkwert = "";
             while (!feof($datei)) {
-              $zeile=fgets($datei,1000);
-              $zeile=chop($zeile);
-              $zeile=trim($zeile);
-              if((substr($zeile,0,1)=="@") && (substr($zeile,-1)=="@")){
-                $jkwert=trim(substr($zeile,1,-1));
-                }
-              elseif((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
-                $sekt=trim(substr($zeile,1,-1));
-                }
-              elseif((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
-                $schl=trim(substr($zeile,0,strpos($zeile,"=")));
-                $wert=trim(substr($zeile,strpos($zeile,"=")+1));
-                array_push($tippdaten,$sekt."|".$schl."|".$wert."|".$jkwert."|EOL");
-                }
+              $zeile = fgets($datei, 1000);
+              $zeile = chop($zeile);
+              $zeile = trim($zeile);
+              if ((substr($zeile, 0, 1) == "@") && (substr($zeile, -1) == "@")) {
+                $jkwert = trim(substr($zeile, 1, -1));
+              } elseif((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+                $sekt = trim(substr($zeile, 1, -1));
+              } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+                $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
+                $wert = trim(substr($zeile, strpos($zeile, "=")+1));
+                array_push($tippdaten, $sekt."|".$schl."|".$wert."|".$jkwert."|EOL");
               }
+            }
             fclose($datei);
-            }  
+          }
           array_shift($tippdaten);
-          $jkspgrpw="";
-          for($i=1;$i<=count($tippdaten);$i++){
-            $dum=split("[|]",$tippdaten[$i-1]);
-            $op2=substr($dum[0],0,5);  // Round
-            $op3=substr($dum[0],5)-1;  // Spieltagsnummer
-            $op8=substr($dum[1],0,2);
-            $jksp=$dum[3];
-            if($st==$op3+1){
-              if($tipp_jokertipp==1 && $jkspgrpw<>$op3){
-      	        fputs($einsichtdatei,"@".$jksp."@\n");
-      	        $jkspgrpw=$op3;
-      	        }
-              if(($op2=="Round") && ($op8=="GB" || $op8=="GA")){
-                fputs($einsichtdatei,$dum[1]."=".$dum[2]."\n");
-                }
+          $jkspgrpw = "";
+          for($i = 1; $i <= count($tippdaten); $i++) {
+            $dum = split("[|]", $tippdaten[$i-1]);
+            $op2 = substr($dum[0], 0, 5);
+            // Round
+            $op3 = substr($dum[0], 5)-1;
+            // Spieltagsnummer
+            $op8 = substr($dum[1], 0, 2);
+            $jksp = $dum[3];
+            if ($st == $op3+1) {
+              if ($tipp_jokertipp == 1 && $jkspgrpw <> $op3) {
+                fputs($einsichtdatei, "@".$jksp."@\n");
+                $jkspgrpw = $op3;
+              }
+              if (($op2 == "Round") && ($op8 == "GB" || $op8 == "GA")) {
+                fputs($einsichtdatei, $dum[1]."=".$dum[2]."\n");
               }
             }
           }
-        } // ende if($k>=$start-1 && $k<=$ende-1)
-      else{
-        $nick="";
-        for($i=0;$i<count($datenalt);$i++){
+        }
+      } // ende if($k>=$start-1 && $k<=$ende-1)
+      else
+        {
+        $nick = "";
+        for($i = 0; $i < count($datenalt); $i++) {
           $zeile = $datenalt[$i];
-          if($zeile!=""){
-            if((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
-              $nick=substr($zeile,1,-1);
-              }
-            if($nick==$tippernick){
-              fputs($einsichtdatei,$datenalt[$i]."\n");
-              }
+          if ($zeile != "") {
+            if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+              $nick = substr($zeile, 1, -1);
             }
-	  } // ende for($i=0;$i<count($datenalt);$i++)
-        } // ende else
-      } // ende for($k=0;$k<$anztipper;$k++)
-    flock($einsichtdatei,3);
+            if ($nick == $tippernick) {
+              fputs($einsichtdatei, $datenalt[$i]."\n");
+            }
+          }
+        } // ende for($i=0;$i<count($datenalt);$i++)
+      } // ende else
+    } // ende for($k=0;$k<$anztipper;$k++)
+    flock($einsichtdatei, 3);
     fclose($einsichtdatei);
-    } // ende if(file_exists($file))
+  } // ende if(file_exists($file))
   closedir($verz);
-  }
+}
 clearstatcache();
-$file="";
+$file = "";
+
 ?>

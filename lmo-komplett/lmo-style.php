@@ -3,7 +3,7 @@ header("Content-Type: text/css");
 require("init.php");
 @include(PATH_TO_TEMPLATEDIR."/style.css");
 echo <<< STYLE
-a span.popup{
+a span.popup, a:link span.popup{
 	display: none;
 }
 a:hover span.popup{
@@ -21,8 +21,8 @@ a:hover span.popup{
   text-align:left;
   \-moz-border-radius: 8px;
 }
-.message{margin:0;color:#080;background-color:#transparent;}
-.error{margin:0;color:#a00;background-color:#transparent;}
+.message{margin:0;color:#080;background-color:transparent;}
+.error{margin:0;color:#a00;background-color:transparent;}
 
 FORM { padding: 0; margin: 0; }
 acronym {cursor:help;border-bottom:1px dotted $tabccolo;}

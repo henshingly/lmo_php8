@@ -179,6 +179,11 @@ if ($show==0) {?>
             <td class="lmost5"><acronym title="<?=$text[488]?>"><?=$text[487];?></acronym></td>
           </tr>
           <tr>
+            <td class="lmost5" align="right"><acronym title="<?=$text[535]?>"><?=$text[534];?></acronym></td>
+            <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xeinspielfrei" onChange="dolmoedit()"<?if($einspielfrei==1){echo " checked";}?>></td>
+            <td class="lmost5" colspan="3">&nbsp;</td>
+          </tr>
+          <tr>
             <td class="lmost5" rowspan="2" align="right"><acronym title="<?=$text[490]?>"><?=$text[489];?></acronym></td>
             <td class="lmost5" colspan="4"><input type="checkbox" class="lmoadminein" name="xeinzutoretab" onChange="dolmoedit()"<?if($einzutoretab==1){echo " checked";}?>>&nbsp;<?=$text[491]?>
           </tr>

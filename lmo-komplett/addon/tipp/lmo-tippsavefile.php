@@ -26,81 +26,111 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-if($todo=="tippuseredit"){require_once(PATH_TO_LMO."/lmo-admintest.php");}
-else{require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");}
-
-if($tippfile!=""){
+if ($todo == "tippuseredit") {
+  require_once(PATH_TO_LMO."/lmo-admintest.php");
+} else {
+  require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+}
+ 
+if ($tippfile != "") {
   //if(decoct(fileperms($tippfile))!=100777){chmod ($tippfile, 0777);}
-  if(substr($tippfile,-4)==".tip"){
+  if (substr($tippfile, -4) == ".tip") {
     $daten = array("");
-    if($st>0 && file_exists($tippfile)){
-      $datei = fopen($tippfile,"rb");
+    if ($st > 0 && file_exists($tippfile)) {
+      $datei = fopen($tippfile, "rb");
       while (!feof($datei)) {
-        $zeile = fgets($datei,1000);
-        $zeile=trim(chop($zeile));
-        if($zeile!=""){array_push($daten,$zeile);}
+        $zeile = fgets($datei, 1000);
+        $zeile = trim(chop($zeile));
+        if ($zeile != "") {
+          array_push($daten, $zeile);
         }
-      fclose($datei);
       }
-
-    $datei = fopen($tippfile,"wb");
+      fclose($datei);
+    }
+     
+    $datei = fopen($tippfile, "wb");
     if (!$datei) {
       echo "<p class='error'>".$text[283]."</p>";
       exit;
-      }elseif($todo!="newtipper" && $todo!="newligen" && $todo!="tippuseredit"){
-      	if(!isset($jkspanticheat)){$jkspanticheat=false;}
-      	if($jkspanticheat==false){
-          echo "<p class='message'>".$text['tipp'][41]."<br></p>";}
-        else{
-          echo "<p class='message'>".$text['tipp'][41]." ".$text['tipp'][292]."<br></p>";}
+    } elseif($todo != "newtipper" && $todo != "newligen" && $todo != "tippuseredit") {
+      if (!isset($jkspanticheat)) {
+        $jkspanticheat = false;
+      }
+      if ($jkspanticheat == false) {
+        echo "<p class='message'>".$text['tipp'][41]."<br></p>";
+      } else {
+        echo "<p class='message'>".$text['tipp'][41]." ".$text['tipp'][292]."<br></p>";
+      }
+    }
+    flock($datei, 2);
+     
+    $round = 0;
+    for($i = 0; $i < count($daten); $i++) {
+      if ((substr($daten[$i], 0, 1) == "[") && (substr($daten[$i], -1) == "]")) {
+        $round = substr($daten[$i], 6, -1);
+      }
+      if ($round != $st) {
+        //////////// nur die unveränderten Spieltage werden zurückgeschrieben
+        fputs($datei, $daten[$i]."\n");
+      }
+    }
+     
+    if ($st > 0) {
+      // am Ende getippten Spieltag dazu schreiben
+      fputs($datei, "\n[Round".$st."]\n");
+      if ($tipp_jokertipp == 1) {
+        fputs($datei, "@".$jksp."@\n");
+      }
+      if ($lmtype != 0) {
+        $anzsp = $anzteams;
+        for($i = 0; $i < $st; $i++) {
+          $anzsp = $anzsp/2;
         }
-    flock($datei,2);
-
-    $round=0;
-    for($i=0;$i<count($daten);$i++){
-      if((substr($daten[$i],0,1)=="[") && (substr($daten[$i],-1)=="]")){
-        $round=substr($daten[$i],6,-1);
-        }
-      if($round!=$st){ //////////// nur die unveränderten Spieltage werden zurückgeschrieben
-        fputs($datei,$daten[$i]."\n");
+        if (($klfin == 1) && ($st == $anzst)) {
+          $anzsp = $anzsp+1;
         }
       }
-
-    if($st>0){  // am Ende getippten Spieltag dazu schreiben
-      fputs($datei,"\n[Round".$st."]\n");
-      if ($tipp_jokertipp==1){
-      	fputs($datei,"@".$jksp."@\n");
-        }
-      if($lmtype!=0){
-        $anzsp=$anzteams;
-        for($i=0;$i<$st;$i++){$anzsp=$anzsp/2;}
-        if(($klfin==1) && ($st==$anzst)){$anzsp=$anzsp+1;}
-        }
-      for($j=1;$j<=$anzsp;$j++){
-        if($lmtype==0){
-          if($goaltippa[$j-1]=="_"){fputs($datei,"GA".$j."=-1\n");}
-            elseif($goaltippa[$j-1]==""){fputs($datei,"GA".$j."=-1\n");}
-            else{fputs($datei,"GA".$j."=".$goaltippa[$j-1]."\n");}
-          if($goaltippb[$j-1]=="_"){fputs($datei,"GB".$j."=-1\n");}
-            elseif($goaltippb[$j-1]==""){fputs($datei,"GB".$j."=-1\n");}
-            else{fputs($datei,"GB".$j."=".$goaltippb[$j-1]."\n");}
+      for($j = 1; $j <= $anzsp; $j++) {
+        if ($lmtype == 0) {
+          if ($goaltippa[$j-1] == "_") {
+            fputs($datei, "GA".$j."=-1\n");
+          } elseif($goaltippa[$j-1] == "") {
+            fputs($datei, "GA".$j."=-1\n");
+          } else {
+            fputs($datei, "GA".$j."=".$goaltippa[$j-1]."\n");
           }
-        else{
-          for($n=1;$n<=$modus[$st-1];$n++){
-            if($goaltippa[$j-1][$n-1]=="_"){fputs($datei,"GA".$j.$n."=-1\n");}
-              elseif($goaltippa[$j-1][$n-1]==""){fputs($datei,"GA".$j.$n."=-1\n");}
-              else{fputs($datei,"GA".$j.$n."=".$goaltippa[$j-1][$n-1]."\n");}
-            if($goaltippb[$j-1][$n-1]=="_"){fputs($datei,"GB".$j.$n."=-1\n");}
-              elseif($goaltippb[$j-1][$n-1]==""){fputs($datei,"GB".$j.$n."=-1\n");}
-              else{fputs($datei,"GB".$j.$n."=".$goaltippb[$j-1][$n-1]."\n");}
+          if ($goaltippb[$j-1] == "_") {
+            fputs($datei, "GB".$j."=-1\n");
+          } elseif($goaltippb[$j-1] == "") {
+            fputs($datei, "GB".$j."=-1\n");
+          } else {
+            fputs($datei, "GB".$j."=".$goaltippb[$j-1]."\n");
+          }
+        } else {
+          for($n = 1; $n <= $modus[$st-1]; $n++) {
+            if ($goaltippa[$j-1][$n-1] == "_") {
+              fputs($datei, "GA".$j.$n."=-1\n");
+            } elseif($goaltippa[$j-1][$n-1] == "") {
+              fputs($datei, "GA".$j.$n."=-1\n");
+            } else {
+              fputs($datei, "GA".$j.$n."=".$goaltippa[$j-1][$n-1]."\n");
+            }
+            if ($goaltippb[$j-1][$n-1] == "_") {
+              fputs($datei, "GB".$j.$n."=-1\n");
+            } elseif($goaltippb[$j-1][$n-1] == "") {
+              fputs($datei, "GB".$j.$n."=-1\n");
+            } else {
+              fputs($datei, "GB".$j.$n."=".$goaltippb[$j-1][$n-1]."\n");
             }
           }
         }
-      } // am Ende getippten Spieltag dazu schreiben
-    flock($datei,3);
+      }
+    } // am Ende getippten Spieltag dazu schreiben
+    flock($datei, 3);
     fclose($datei);
-    }
-
-  clearstatcache();
   }
+   
+  clearstatcache();
+}
+
 ?>

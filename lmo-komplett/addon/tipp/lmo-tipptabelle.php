@@ -165,7 +165,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   if($nick!=""){ ?>
   <tr>
   <td align="center">
-    <table cellspacing="0" cellpadding="0" border="0">
+    <table style="margin:auto;" cellspacing="0" cellpadding="0" border="0">
     <tr><?
   for ($i=0; $i<3; $i++) {
     echo "<td ";
@@ -419,6 +419,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     $spv=-1;
     $ppv=-1;
     for ($x=1; $x<=$anzteams; $x++) {
+      if (!isset($team)) break;
       $i=intval(substr($tab0[$x-1],25));
       if ($team[$i]==$favteam) {
         // favteam
