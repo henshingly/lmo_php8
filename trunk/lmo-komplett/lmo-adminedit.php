@@ -485,10 +485,22 @@ if ($file != "") {
                 <option value="1"<?if($msieg[$st-1][$i]==1){echo " selected";}?>><?=$text[214]?></option>
                 <option value="2"<?if($msieg[$st-1][$i]==2){echo " selected";}?>><?=$text[215]?></option>
                 <option value="3"<?if($msieg[$st-1][$i]==3){echo " selected";}?>><?=$text[216]?></option>
-              </select><script type="text/javascript">document.getElementById('gT<?=$i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'gT<?=$i?>\').style.display=\'inline\';return false;">+</a>');</script>
+              </select><?
+      if($msieg[$st-1][$i]==0) {?>
+              <script type="text/javascript">document.getElementById('gT<?=$i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'gT<?=$i?>\').style.display=\'inline\';return false;">+</a>');</script><?
+      }?>
             </td>
-            <td align="center"><input id="n<?=$i?>" class="lmo-formular-input" type="text" name="xmnote<?=$i; ?>" size="16" maxlength="255" value="<?=htmlentities($mnote[$st-1][$i]); ?>" onChange="dolmoedit()"><script type="text/javascript">document.getElementById('n<?=$i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?=$i?>\').style.display=\'inline\';return false;">+</a>');</script></td>
-            <td align="center"><input id="s<?=$i?>" class="lmo-formular-input" type="text" name="xmberi<?=$i; ?>" size="16" maxlength="255" value="<?=htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><script type="text/javascript">document.getElementById('s<?=$i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?=$i?>\').style.display=\'inline\';return false;">+</a>');</script></td><? 
+            <td align="center">
+              <input id="n<?=$i?>" class="lmo-formular-input" type="text" name="xmnote<?=$i; ?>" size="16" maxlength="255" value="<?=htmlentities($mnote[$st-1][$i]); ?>" onChange="dolmoedit()"><?
+      if (trim($mnote[$st-1][$i]) == '') {?>
+              <script type="text/javascript">document.getElementById('n<?=$i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?=$i?>\').style.display=\'inline\';return false;">+</a>');</script><?
+      }?>
+            </td>
+            <td align="center"><input id="s<?=$i?>" class="lmo-formular-input" type="text" name="xmberi<?=$i; ?>" size="16" maxlength="255" value="<?=htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><?
+      if (trim($mberi[$st-1][$i]) == '') {?>
+              <script type="text/javascript">document.getElementById('s<?=$i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?=$i?>\').style.display=\'inline\';return false;">+</a>');</script><?
+      }?>
+            </td><? 
       /*Tippspiel-Addon*/
       if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
             <td>
