@@ -6,7 +6,7 @@
 // 
 // LigaManager Online
 // Edited by: Rene Marth
-// 28.08.2003
+// 29.08.2003
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License as
@@ -26,25 +26,29 @@
 // Langdateien laden (zuerst Standarddatei, wenn vorhanden werden die alten Werte 
 // von der neuen Sprache überschrieben (So werden auch unvollständige Übersetzungen 
 // akzeptiert)
-$dumdat=array("lang.txt","lang-{$lmouserlang}.txt");
+$langfiles=array("lang.txt","lang-{$lmouserlang}.txt");
 
-$dumma = array("");
-$text=array("");
-for ($i=0;$i<count($dumdat);$i++) {
-	if ($datei = @fopen($dumdat[$i],"r")) {
-		while (!feof($datei)) {
-		  $zeile = fgets($datei,1000);
-		  $zeile=chop($zeile);
-		  if($zeile!=""){array_push($dumma,$zeile);}
-		  }
-		fclose($datei);
-		array_shift($dumma);
-		for($j=0;$j<count($dumma);$j++){
-		  $schl=intval(trim(substr($dumma[$j],0,strpos($dumma[$j],"="))));
-	  	$wert=trim(substr($dumma[$j],strpos($dumma[$j],"=")+1));
-	  	$text[$schl]=$wert;
+$addonlang=explode(",",$diraddon);             // Addons 
+foreach($addonlang as $a) {
+  if(substr($a,-1)!='/') $a.='/';             // Slash hinzufügen falls nicht vorhanden
+  $addon_langfile=$a."lang.txt";                //Dateiname der Addonlangdatei
+  if (file_exists($addon_langfile)) $langfiles[]=$addon_langfile;        // Standardlangdatei des Addons
+  $addon_newlangfile=$a."lang-{$lmouserlang}.txt";
+  if (file_exists($addon_newlangfile)) $langfiles[]=$addon_newlangfile;  // Andere Langdatei laden
+}
+
+$text=array();
+for ($i=0;$i<count($langfiles);$i++) {
+	if ($datei = @file($langfiles[$i])) {
+		($dir=dirname($langfiles[$i]))!="."?$praefix=$dir."_":$praefix="";     // Präfix für Addon-langdateien
+    foreach ($datei as $value) {
+      $paar=explode('=',trim($value),2);
+      if (isset($paar[0]) && is_numeric($paar[0])) {
+        if (!isset($paar[1])) $paar[1]="";
+        ${$praefix."text"}[intval($paar[0])]=$paar[1];
+	    }
 	  }
-	}
+  }
 }
 $orgpkt=$text[37];
 $orgtor=$text[38];
