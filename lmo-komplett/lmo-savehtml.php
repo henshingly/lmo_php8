@@ -56,9 +56,7 @@ if($lmtype==0){
   <table>
     <caption><?=$actual?>. Spieltag - <?=$datum1[$datumanz]?> bis <?=$datum2[$datumanz]?></caption><?
   $datsort= $mterm[$st-1];
-  //print_r($datsort);
   asort($datsort);
-  //print_r($datsort);
   reset($datsort);
   while (list ($key, $val) = each ($datsort)) {
     $i1=$key;
@@ -144,27 +142,26 @@ if($lmtype==0){
     if ($actual==$anzst){?>
 		<p><strong>Saison-Ende!</strong><?
     }else{
-    	$actual=$actual+1;
     	$datumanz=$actual-1;?>
 	<table>
-    <caption><?=$actual?>. Spieltag - <?=$datum1[$datumanz]?> bis <?=$datum2[$datumanz]?></caption><?
-      $datsort= $mterm[$st-1];
+    <caption><?=$actual?>. Spieltag - <?=$datum1[$actual]?> bis <?=$datum2[$actual]?></caption><?
+      $datsort= $mterm[$actual];
       asort($datsort);
       reset($datsort);
       while (list ($key, $val) = each ($datsort)) {
       $i1=$key;
-      if(($teama[$st-1][$i1]>0) && ($teamb[$st-1][$i1]>0)){ 
-    		$heimteam=$teams[$teama[$actual-1][$i1]];
-    		$gastteam=$teams[$teamb[$actual-1][$i1]];
-    		$heimtore=$goala[$actual-1][$i1];
-    		$gasttore=$goalb[$actual-1][$i1];
+      if(($teama[$st][$i1]>0) && ($teamb[$st][$i1]>0)){ 
+    		$heimteam=$teams[$teama[$actual][$i1]];
+    		$gastteam=$teams[$teamb[$actual][$i1]];
+    		$heimtore=$goala[$actual][$i1];
+    		$gasttore=$goalb[$actual][$i1];
     		if ($gasttore<0) $gasttore="_";
     		if ($heimtore<0) $heimtore="_";
     		if (($anzteams-($anzst/2+1))!=0){
-      		$spielfreiaa[$i1]=$teama[$actual-1][$i1];
-      		$spielfreibb[$i1]=$teamb[$actual-1][$i1];
+      		$spielfreiaa[$i1]=$teama[$actual][$i1];
+      		$spielfreibb[$i1]=$teamb[$actual][$i1];
     		}
-    		if($mterm[$actual-1][$i1]>0){$dum1=strftime($datf, $mterm[$actual-1][$i1]);}else{$dum1="&nbsp;";} // Anstosszeit einblenden
+    		if($mterm[$actual][$i1]>0){$dum1=strftime($datf, $mterm[$actual][$i1]);}else{$dum1="&nbsp;";} // Anstosszeit einblenden
 		?>		
 		<tr>
       <td><?=$dum1?>&nbsp;</td>
