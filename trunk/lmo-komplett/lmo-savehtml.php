@@ -141,10 +141,9 @@ if($lmtype==0){
    <p><small>Hinweis: Tabellenstand ohne vorgezogene Spiele!</small></p><?
     if ($actual==$anzst){?>
 		<p><strong>Saison-Ende!</strong><?
-    }else{
-    	$datumanz=$actual-1;?>
+    }else{?>
 	<table>
-    <caption><?=$actual?>. Spieltag - <?=$datum1[$actual]?> bis <?=$datum2[$actual]?></caption><?
+    <caption><?=$actual+1?>. Spieltag - <?=$datum1[$actual]?> bis <?=$datum2[$actual]?></caption><?
       $datsort= $mterm[$actual];
       asort($datsort);
       reset($datsort);

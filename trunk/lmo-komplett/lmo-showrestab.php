@@ -73,29 +73,7 @@ if(isset($file) && $file!=""){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
-<?PHP
-  for($i=1;$i<=$anzst;$i++){
-    echo "<td align=\"right\" ";
-    if($i<>$st){
-      echo "class=\"lmost0\"><a href=\"".$addr.$i."\" title=\"".$text[9]."\">".$i."</a>";
-      }
-    else{
-      echo "class=\"lmost1\">".$i;
-      }
-    echo "&nbsp;</td>";
-    if(($anzst>49) && (($anzst%4)==0)){
-      if(($i==$anzst/4) || ($i==$anzst/2) || ($i==$anzst/4*3)){echo "</tr><tr>";}
-      }
-    elseif(($anzst>38) && (($anzst%3)==0)){
-      if(($i==$anzst/3) || ($i==$anzst/3*2)){echo "</tr><tr>";}
-      }
-    elseif(($anzst>29) && (($anzst%2)==0)){
-      if($i==$anzst/2){echo "</tr><tr>";}
-      }
-    }
-?>
-    <tr></table></td>
+    <td align="center"><? include(PATH_TO_LMO."/lmo-spieltagsmenu.php")?></td>
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr>
     <td class="lmost4" colspan="<?PHP echo $breite; ?>"><?PHP echo $st; ?>. <?PHP echo $text[2]; ?>
@@ -254,7 +232,7 @@ if (($anzteams-($anzst/2+1))!=0){
   if($tabonres==2){
 ?>
   <tr>
-    <td class="lmost4" colspan="6">&nbsp;</td>
+    <td class="lmost4" colspan="7">&nbsp;</td>
     <td class="lmost4" colspan="<?PHP echo $breite; ?>">&nbsp;
     <td class="lmost4" width="2">&nbsp;</td>
     <td class="lmost4" colspan="<?PHP echo $breite; ?>"><?PHP echo $text[41]; ?></td>
@@ -266,7 +244,7 @@ if (($anzteams-($anzst/2+1))!=0){
 ?>
 
   <tr>
-    <td class="lmost4" colspan="6">&nbsp;</td>
+    <td class="lmost4" colspan="7">&nbsp;</td>
     <td class="lmost4" align="right"><?PHP echo $text[33]; ?></td>
     <td class="lmost4" align="right"><?PHP echo $text[34]; ?></td>
     <?PHP if($hidr!=1){ echo"<td class=\"lmost4\" align=\"right\">".$text[35]."</td>"; } ?>
@@ -333,6 +311,12 @@ if (($anzteams-($anzst/2+1))!=0){
   echo "><img src='img/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
   echo "</td>";
 ?>
+           <td class="<?=$dumm1?>" align="center"><?
+      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
+        $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
+             ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt=""><?
+      }
+        ?></td>
     <td class="<?PHP echo $dumm1; ?>"><nobr>
 <?PHP
   if(($teamu[$i]!="") && ($urlt==1)){echo "<a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\">";}

@@ -21,8 +21,8 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 $addi=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=";
 
-$_SESSION['liga_sort']=isset($_REQUEST['liga_sort'])?$_REQUEST['liga_sort']:false;
-$_SESSION['liga_sort_direction']=isset($_REQUEST['liga_sort_direction'])?$_REQUEST['liga_sort_direction']:false;
+$_SESSION['liga_sort']=isset($_REQUEST['liga_sort'])?$_REQUEST['liga_sort']:$liga_sort;
+$_SESSION['liga_sort_direction']=isset($_REQUEST['liga_sort_direction'])?$_REQUEST['liga_sort_direction']:$liga_sort_direction;
 
 $verz=opendir(substr(PATH_TO_LMO."/".$dirliga,0,-1));
 $liga_counter=0;
