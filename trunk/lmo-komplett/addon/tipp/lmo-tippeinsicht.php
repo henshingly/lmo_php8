@@ -122,7 +122,18 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
         <tr>
           <th align="right" class="nobr"><?
     if ($l >= $start && $l < $ende) {
-      echo $tippernick[$k];
+      if ($tipp_showname == 1) {
+        echo $tippername[$k];
+      }
+      if ($tipp_shownick == 1) {
+        if ($tipp_showname == 1) {
+          echo " (";
+        }
+        echo $tippernick[$k];
+        if ($tipp_showname == 1) {
+          echo ")";
+        }
+      }
     } /* Nickname links*/
     elseif($l == $ende && $anztipper > 0) {
       echo $text['tipp'][188];
@@ -172,15 +183,21 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               echo $teamk[$teama[$st-1][$i]]."<br>";
             }
             if ($lmtype != 0) {
+              if ($mtipp[$st-1][$i][$n] == 1) {
+                echo "<acronym title='".$text['tipp'][231]."'><del>";
+              }
               echo applyFactor($goala[$st-1][$i][$n],$goalfaktor).":".applyFactor($goalb[$st-1][$i][$n],$goalfaktor);
               if ($mtipp[$st-1][$i][$n] == 1) {
-                echo $text['tipp'][230];
+                echo '</del></acronym>';
                 $nw = 1;
               }
             } else {
+              if ($mtipp[$st-1][$i][$n] == 1) {
+                echo "<acronym title='".$text['tipp'][231]."'><del>";
+              }
               echo applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
-              if ($mtipp[$st-1][$i] == 1) {
-                echo $text['tipp'][230];
+              if ($mtipp[$st-1][$i][$n] == 1) {
+                echo '</del></acronym>';
                 $nw = 1;
               }
             }

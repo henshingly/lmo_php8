@@ -20,13 +20,12 @@
   
 if ($file != "") {
   if (substr($file, -4) == ".l98") {
-    $daten = array("");
+    $daten = array();
     $sekt = "";
-    $stand = date("d.m.Y H:i", filemtime($file));
-    $datei = fopen($file, "rb");
-    while (!feof($datei)) {
-      $zeile = fgets($datei, 1000);
-      $zeile = chop($zeile);
+    $stand = strftime($defdateformat, filemtime($dirliga.$file));
+    $datei = fopen($dirliga.$file, "rb");
+    while ($datei && !feof($datei)) {
+      $zeile = fgets($datei, 10000);
       $zeile = trim($zeile);
       if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $sekt = trim(substr($zeile, 1, -1));
@@ -76,7 +75,6 @@ if ($file != "") {
       }
     }
     fclose($datei);
-    array_shift($daten);
     if (!isset($titel)) {
       $titel = "No Name";
     }

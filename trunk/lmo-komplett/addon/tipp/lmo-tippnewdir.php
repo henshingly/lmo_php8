@@ -185,7 +185,7 @@ if ($ftype != "") {
                     if($iptype=="einsicht" || $iptype=="auswert"){?>
   <tr>
     <td width="20">&nbsp;</td>
-    <td class="nobr"><? echo $t0; ?></td>
+    <td class="nobr" align="left"><? echo $t0; ?></td>
     <td class="nobr" align="right">
       <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">

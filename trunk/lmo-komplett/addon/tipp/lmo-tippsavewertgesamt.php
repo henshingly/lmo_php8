@@ -25,8 +25,8 @@ $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
  
 if ($datei = fopen($pswfile, "rb")) {
   while (!feof($datei)) {
-    $zeile2 = fgets($datei, 1000);
-    $zeile2 = chop($zeile2);
+    $zeile2 = fgets($datei, 10000);
+    $zeile2 = trim($zeile2);
     if ($zeile2 != "") {
       array_push($dummd, $zeile2);
     }
@@ -64,14 +64,13 @@ for($i = 0; $i < $anztipper; $i++) {
   $tipperteam[$i] = $dummb[5];
 }
 $verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert");
-$dummy = array("");
+$dummy = array();
 while ($files = readdir($verz)) {
   if (strtolower(substr($files, -4)) == ".aus" && strtolower(substr($files, -10)) != "gesamt.aus") {
     array_push($dummy, $files);
   }
 }
 closedir($verz);
-array_shift($dummy);
  
 $anzligen = count($dummy);
 $anzligenaus = 0;
@@ -114,7 +113,7 @@ for($k = 0; $k < $anzligen; $k++) {
     $liganame[$anzligenaus] = $dummy[$k];
     $datei = fopen($auswertfile1, "rb");
     if ($datei != false) {
-      $tippdaten = array("");
+      $tippdaten = array();
       $sekt = "";
       while (!feof($datei)) {
         $zeile = fgets($datei, 1000);
@@ -130,7 +129,6 @@ for($k = 0; $k < $anzligen; $k++) {
       }
       fclose($datei);
     }
-    array_shift($tippdaten);
      
     for($i = 1; $i <= count($tippdaten); $i++) {
       $dum = explode('|', $tippdaten[$i-1]);
@@ -204,7 +202,7 @@ flock($auswertdatei, 3);
 fclose($auswertdatei);
  
 clearstatcache();
-if ($todo != "edit") {
+if (isset($todo) && $todo != "edit") {
   $file = "";
 }
 

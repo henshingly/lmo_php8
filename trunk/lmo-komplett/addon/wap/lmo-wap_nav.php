@@ -1,88 +1,81 @@
-<card id="auswahl" title="Auswahl">
-  <p>
 <?
+echo("<card id=\"auswahl\" title=\"Auswahl\">\n");
+   
 if ($lmtype == 0) {
-  echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=day&amp;st=$st'>".$text[10]."</a><br/>\n");
-  echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=table&amp;st=$st'>".$text[16]."</a><br/>\n");
-  echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=help&amp;st=$st'>".$text[20]."</a>\n");
+  echo("<p align='center'>\n");
+  echo("<a href=\"".$_SERVER['PHP_SELF'].'?wap_file='.$file."&amp;op=day&amp;st=$st\">".$text[10]."</a><br/>\n");
+  echo("<a href=\"".$_SERVER['PHP_SELF'].'?wap_file='.$file."&amp;op=table&amp;st=$st\">".$text[16]."</a><br/>\n");
+  echo("<a href=\"".$_SERVER['PHP_SELF'].'?wap_file='.$file."&amp;op=help&amp;st=$st\">".$text[20]."</a>\n");
 }
 //Ausgabe Pokal
 else
   {
+  echo("<p>\n");
   $anzsp = $anzteams;
-  for ($i = 0; $i < $st; $i++) {
+  for($i = 0; $i < $st; $i++) {
     $anzsp = $anzsp/2;
   }
   if (($klfin == 1) && ($st == $anzst)) {
     $anzsp = $anzsp+1;
   }
-  function gewinn($gst, $gsp, $gmod, $m1, $m2) {
+  function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
     $erg = 0;
     if ($gmod == 1) {
       if ($m1[0] > $m2[0]) {
         $erg = 1;
-      }
-      else if ($m1[0] < $m2[0]) {
+      } elseif($m1[0] < $m2[0]) {
         $erg = 2;
       }
-    }
-    else if ($gmod == 2) {
+    } elseif($gmod == 2) {
       if (($m1[0]+$m1[1]) > ($m2[0]+$m2[1])) {
         $erg = 1;
-      }
-      else if (($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
+      } elseif(($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
         $erg = 2;
       } else {
         if ($m2[0] > $m1[1]) {
           $erg = 1;
-        }
-        else if ($m2[0] < $m1[1]) {
+        } elseif($m2[0] < $m1[1]) {
           $erg = 2;
         }
       }
     } else {
       $erg1 = 0;
       $erg2 = 0;
-      for ($k = 0; $k < $gmod; $k++) {
+      for($k = 0; $k < $gmod; $k++) {
         if (($m1[$k] != "_") && ($m2[$k] != "_")) {
           if ($m1[$k] > $m2[$k]) {
             $erg1++;
-          }
-          else if ($m1[$k] < $m2[$k]) {
+          } elseif($m1[$k] < $m2[$k]) {
             $erg2++;
           }
         }
       }
       if ($erg1 > ($gmod/2)) {
         $erg = 1;
-      }
-      else if ($erg2 > ($gmod/2)) {
+      } elseif($erg2 > ($gmod/2)) {
         $erg = 2;
       }
     }
     return $erg;
   }
    
-  for ($i = 1; $i <= $anzst; $i++) {
+  for($i = 1; $i <= $anzst; $i++) {
      
     if ($i == $anzst) {
       $j = $text[364];
       $k = $text[365];
-    }
-    else if ($i == $anzst-1) {
+    } elseif($i == $anzst-1) {
       $j = $text[362];
-    }
-    else if ($i == $anzst-2) {
+    } elseif($i == $anzst-2) {
       $j = $text[360];
-    }
-    else if ($i == $anzst-3) {
+    } elseif($i == $anzst-3) {
       $j = $text[358];
     } else {
       $j = $i;
       $k = $text[366];
     }
     if ($i <> $st) {
-      echo "<a href='".$_SERVER['PHP_SELF']."?wap_file=$file&amp;op=nav&amp;st=".$i."'>".$j."</a>";
+      echo "<a href='".$_SERVER['PHP_SELF'].'?wap_file='.$file."&amp;op=nav&amp;st=".$i."'>".$j."</a>";
     } else {
       echo $j;
     }
@@ -90,14 +83,11 @@ else
   }
   if ($st == $anzst) {
     $j = $text[374];
-  }
-  else if ($st == $anzst-1) {
+  } elseif($st == $anzst-1) {
     $j = $text[373];
-  }
-  else if ($st == $anzst-2) {
+  } elseif($st == $anzst-2) {
     $j = $text[372];
-  }
-  else if ($st == $anzst-3) {
+  } elseif($st == $anzst-3) {
     $j = $text[371];
   } else {
     $j = $st.". ".$text[370];
@@ -114,14 +104,14 @@ else
     }
   }
   echo "<br/>\n";
-  for ($i = 0; $i < $anzsp; $i++) {
-    for ($n = 0; $n < $modus[$st-1]; $n++) {
+  for($i = 0; $i < $anzsp; $i++) {
+    for($n = 0; $n < $modus[$st-1]; $n++) {
        
       if (($klfin == 1) && ($st == $anzst)) {
         if ($i == 1) {
           echo "<br/>\n";
         }
-        echo $text[419+$i];
+         echo $text[419+$i];
       }
        
       if ($datm == 1) {
@@ -141,14 +131,12 @@ else
           if ($i == 0) {
             if ($m == 1) {
               echo "<br/>\n";
-            }
-            else if ($m == 2) {
+            } elseif($m == 2) {
               echo "<br/>\n";
             } else {
               echo "<br/>\n";
             }
-          }
-          else if ($i == 1) {
+          } elseif($i == 1) {
             if ($m == 1) {
               echo "<br/>\n";
             } else {
@@ -168,7 +156,6 @@ else
         }
         $teamname = $teamk[$teama[$st-1][$i]];
         $teamname = ($teamname);
-         
         echo $teamname;
         if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
           echo "</b>";
@@ -179,14 +166,12 @@ else
           if ($i == 0) {
             if ($m == 2) {
               echo "test3";
-            }
-            else if ($m == 1) {
+            } elseif($m == 1) {
               echo "test4";
             } else {
               echo "test5";
             }
-          }
-          else if ($i == 1) {
+          } elseif($i == 1) {
             if ($m == 2) {
               echo "test6";
             } else {
@@ -211,7 +196,7 @@ else
         }
          
       } else {
-        echo "&#160;";
+         echo "&#160;";
       }
       echo "&#160;";
       echo applyFactor($goala[$st-1][$i][$n], $goalfaktor);
@@ -222,9 +207,10 @@ else
       echo "<br/>\n";
     }
   }
-  echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=help&amp;st=$st'>".$text[20]."</a>\n");
-
-}//Ausgabe Pokal Ende
-?></p>
-  <p><small><a href="<?=$_SERVER['PHP_SELF']?>">Home</a></small></p>
-</card>
+  echo("<a href='".$_SERVER['PHP_SELF'].'?wap_file='.$file."&amp;op=help&amp;st=$st'>".$text[20]."</a>\n");
+}
+//Ausgabe Pokal Ende
+ 
+echo("<br/><small><a href=\"".$_SERVER['PHP_SELF']."\">Home</a></small>\n");
+echo("</p>\n");
+echo("</card>\n");?>

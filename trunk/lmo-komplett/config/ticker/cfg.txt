@@ -1,5 +1,5 @@
-standard_ligen=f2003.l98
-tickerart=2
+standard_ligen=
+tickerart=3
 tickertitel=0
 notizanzeigen=1
 color=fff

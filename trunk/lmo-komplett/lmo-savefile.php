@@ -35,7 +35,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           include(PATH_TO_LMO."/lmo-zustat.php");
         }
       }
-      $datei = fopen(PATH_TO_LMO."/$file","wb");
+      $datei = fopen(PATH_TO_LMO.'/'.$dirliga.$file,"wb");
       
       if ($datei) {
         echo "<p class='message'>".$text[138]."</p>";

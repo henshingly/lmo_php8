@@ -19,8 +19,6 @@
   
   
   
-//require_once(dirname(__FILE__).'/../../init.php');
-
 if (!isset($save)) {
   $save=0;
 }
@@ -54,7 +52,7 @@ require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
 if($tipp_gesamt==1){ ?>
         <tr>
           <td width="20">&nbsp;</td>
-          <td><strong><? echo $text['tipp'][56]; ?></strong></td>
+          <td align="left"><strong><? echo $text['tipp'][56]; ?></strong></td>
           <td align="right">
             <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
               <input type="hidden" name="action" value="admin">

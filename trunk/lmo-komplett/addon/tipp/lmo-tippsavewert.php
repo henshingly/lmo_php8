@@ -18,9 +18,9 @@
   */
   
   
-  require_once(PATH_TO_LMO."/lmo-admintest.php");
-if ($todo != "edit") {
-  $file = $dirliga.$liga.".l98";
+require_once(PATH_TO_LMO."/lmo-admintest.php");
+if (isset($todo) && $todo != "edit") {
+  $file = $liga.".l98";
 }
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcpkt.php");
 $dummd = array();
@@ -70,7 +70,7 @@ if (!$auswertdatei) {
 }
 flock($auswertdatei, 2);
  
-if (file_exists($file)) {
+if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
   echo "<p class='message'>".$text['tipp'][0].': '.$text['tipp'][29]." <var>".$liga."</var> ".$text['tipp'][65]."</p>";
   if ($todo != "edit") {
     if ($st != 0) {
@@ -80,7 +80,7 @@ if (file_exists($file)) {
   }
   $verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
   $dummy = array();
-  while ($files = readdir($verz)) {
+  while ($verz && $files = readdir($verz)) {
     if (strtolower(substr($files, 0, strrpos($files, "_"))) == strtolower($liga) && strtolower(substr($files, -4)) == ".tip") {
       array_push($dummy, $files);
     }
@@ -264,8 +264,9 @@ if (file_exists($file)) {
                   if (substr($datenalt[$dat], 2, strpos($datenalt[$dat], "=")-2) != $st && substr($datenalt[$dat], 0, 4) != "Team" && substr($datenalt[$dat], 0, 4) != "Name" && substr($datenalt[$dat], 0, 5) != "Email") {
                     fputs($auswertdatei, $datenalt[$dat]."\n");
                   }
-                  $dat++;
+                  //$dat++;
                 }
+                $dat++;
               }
             }
           } // ende if($st>0)
@@ -363,7 +364,7 @@ if (file_exists($file)) {
 } // ende if(file_exists($file))
  
 clearstatcache();
-if ($todo != "edit") {
+if (isset($todo) && $todo != "edit") {
   $file = "";
 }
 

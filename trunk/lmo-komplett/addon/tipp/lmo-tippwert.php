@@ -391,7 +391,7 @@ for($x = 1; $x <= $anztipper; $x++) {
         echo $dummy;
         if ($tipp_showname == 1) {
           if ($tipp_showemail == 1) {
-            echo "<a href=mailto:".$tipperemail[$i].">";
+            echo "<a href='mailto:".$tipperemail[$i]."'>";
           }
           echo $tippername[$i];
           if ($tipp_showemail == 1) {
@@ -403,7 +403,7 @@ for($x = 1; $x <= $anztipper; $x++) {
             echo " (";
           }
           if ($tipp_showname == 0 && $tipp_showemail == 1) {
-            echo "<a href=mailto:".$tipperemail[$i].">";
+            echo "<a href='mailto:".$tipperemail[$i]."'>";
           }
           echo $tippernick[$i];
           if ($tipp_showname == 0 && $tipp_showemail == 1) {
@@ -413,7 +413,7 @@ for($x = 1; $x <= $anztipper; $x++) {
             echo ")";
           }
         } elseif($tipp_showemail == 1 && $tipp_showname == 0) {
-          echo "<a href=mailto:".$tipperemail[$i].">".$tipperemail[$i]."</a>";
+          echo "<a href='mailto:".$tipperemail[$i]."'>".$tipperemail[$i]."</a>";
         }
         echo $dumm2;?>
           &nbsp;</td><?

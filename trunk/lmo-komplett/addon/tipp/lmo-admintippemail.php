@@ -43,6 +43,7 @@ if ($save == 1) {
     } else {
       $st = $st1[$liganr-1];
       $liga = $liga1[$liganr-1];
+      $viewermode = 0;
     }
   }
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippemail.php");
@@ -76,7 +77,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
     <th align="center"><h1><?=$text['tipp'][165] ?></h1></th>
   </tr>
   <tr>
-    <td align="center">
+    <td align="left">
       <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="tippemail">
@@ -85,12 +86,12 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td width="20">&nbsp;</td>
-            <td colspan="3"><input type="radio" name="emailart" value="0" <? if($emailart==0){echo "checked";} ?> onClick="changetextarea(0)"><?=$text['tipp'][166]; ?></td>
+            <td colspan="3" align="left"><input type="radio" name="emailart" value="0" <? if($emailart==0){echo "checked";} ?> onClick="changetextarea(0)"><?=$text['tipp'][166]; ?></td>
           </tr>
           <tr>
-            <td width="20">&nbsp;</td>
-            <td><input type="radio" name="emailart" value="2" <? if($emailart==2){echo "checked";} ?> onClick="changetextarea(2)"><?=$text['tipp'][168]; ?></td>
-            <td colspan="2">
+            <td>&nbsp;</td>
+            <td align="left"><input type="radio" name="emailart" value="2" <? if($emailart==2){echo "checked";} ?> onClick="changetextarea(2)"><?=$text['tipp'][168]; ?></td>
+            <td colspan="2" align="left">
               <select name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
                 <option value=""><?=$text['tipp'][51]?></option><?
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippselectemail.php");?>
@@ -98,8 +99,8 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             </td>
           </tr>
           <tr>
-            <td width="20">&nbsp;</td>
-            <td valign="top">
+            <td>&nbsp;</td>
+            <td valign="top" align="left">
               <input type="radio" name="emailart" value="1" <? if($emailart==1){echo "checked";} ?> onClick="changetextarea(1)"><?=$text['tipp'][167]; ?>
             </td>
             <td colspan="2">
@@ -109,7 +110,7 @@ $iptype="reminder";
 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
 if($i>0){?>
                 <tr>
-                  <td colspan="2">
+                  <td colspan="2" align="left">
                     <input type="radio" name="liganr" value="0" <? if($liganr==0){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><strong><?=$text['tipp'][263]?></strong>
                   </td>
                 </tr><?
@@ -128,8 +129,8 @@ if ($save == 1) {
   }
 }?>
           <tr>
-            <td colspan="2" width="20">&nbsp;</td>
-            <td>
+            <td colspan="2">&nbsp;</td>
+            <td align="left">
               <?=$text['tipp'][164];?> 
               <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<?=$start1; ?>">
               <?=$text[4];?>
@@ -147,14 +148,14 @@ if ($save == 1) {
   }
 }?>
           <tr>
-            <td width="20">&nbsp;</td>
-            <td colspan="3">
+            <td>&nbsp;</td>
+            <td colspan="3" align="left">
               <?=$text['tipp'][265];?>
               <input class="lmo-formular-input" type="text" name="betreff" id="betreff" size="20" maxlength="40" value="<?=$betreff1; ?>">
             </td>
           </tr>
           <tr>
-            <td width="20">&nbsp;</td>
+            <td>&nbsp;</td>
             <td align="left" colspan="3">
               <textarea id="message" name="message" rows="10" cols="60"><? 
                 if ($emailart == 1) {

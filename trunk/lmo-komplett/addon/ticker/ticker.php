@@ -81,10 +81,9 @@ if (!isset($file)) {
 $file2=$file;
 $ticker_array=explode(",",$ticker_ligen);
 foreach($ticker_array as $file){
-  $file=$dirliga.$file;
-  ob_start();
+  //ob_start();
   require(PATH_TO_LMO."/lmo-openfile.php");
-  ob_end_clean();
+  //ob_end_clean();
   
   $trenner=" +++ ";
   if (isset($lmtype)) {

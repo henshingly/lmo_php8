@@ -113,7 +113,7 @@
 112=Notiz zum Spiel (max. 255 Zeichen, eine eventuelle Grüne-Tisch-Entscheidung braucht hier nicht nochmal erwähnt zu werden)
 113=Name der Liga
 114=Klicken Sie hier, um Ihre Änderungen zu speichern
-115=» zur Besucheransicht
+115=zur Besucheransicht
 116=So sehen Ihre Besucher das Script (wird in einem neuen Fenster geöffnet)
 117=Sie haben keine Änderungen vorgenommen.\nTrotzdem speichern?
 118=Der Name der Liga wird den Nutzern immer als Überschrift angezeigt (max. 60 Zeichen, z.B. '1. Bundesliga 2001/02')

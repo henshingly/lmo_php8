@@ -51,6 +51,10 @@
       if($tipp_regeln==1){
         isset($_POST["xregelnlink"])?                         $tipp_regelnlink=$_POST["xregelnlink"]:                 $tipp_regelnlink="tippregeln.php";
       }
+      isset($_POST["xshownick"])?                             $tipp_shownick=$_POST["xshownick"]:                     $tipp_shownick="";
+      isset($_POST["xshowname"])?                             $tipp_showname=$_POST["xshowname"]:                     $tipp_showname="";
+      isset($_POST["xshowemail"])?                            $tipp_showemail=$_POST["xshowemail"]:                   $tipp_showemail="";
+      if($tipp_showname==0 && $tipp_showemail==0){            $tipp_shownick=1;}
       break;
     case 4:
       isset($_POST["xtippohne"])?                             $tipp_tippohne=$_POST["xtippohne"]:                     $tipp_tippohne=0;
@@ -107,10 +111,7 @@
       break;
     case 9:
       isset($_POST["xnurgesamt"])?                  $tipp_nurgesamt=1:                            $tipp_nurgesamt=0;
-      isset($_POST["xshownick"])?                             $tipp_shownick=$_POST["xshownick"]:                     $tipp_shownick="";
-      isset($_POST["xshowname"])?                             $tipp_showname=$_POST["xshowname"]:                     $tipp_showname="";
-      isset($_POST["xshowemail"])?                            $tipp_showemail=$_POST["xshowemail"]:                   $tipp_showemail="";
-      if($tipp_showname==0 && $tipp_showemail==0){            $tipp_shownick=1;}
+      
       isset($_POST["xanzseite1"])  &&
             is_numeric($_POST["xanzseite1"]) &&
             intval($_POST["xanzseite1"])>0 ?                  $tipp_anzseite1=$_POST["xanzseite1"]:                   $tipp_anzseite1=40;

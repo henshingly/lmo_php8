@@ -162,16 +162,12 @@ elseif($_SESSION['lmouserok']==1){
     
   }?>
     </td>
-  </tr><?
-  if($file!=""){?>
+  </tr>
   <tr>
-    <td class="lmoFooter" colspan="2" align="right">
-      <a href="<?=URL_TO_LMO."/lmo.php?file=".$file;?>" target="_blank" title="<?=$text[116]?>"><?=$text[115]?></a>
+    <td align="left">
+      <a href="<?=URL_TO_LMO."/lmo.php?file=".$file;?>" target="_blank" title="<?=$text[116]?>"><?=$text[5]?> <?=$text[115]?></a>
     </td>
-  </tr><?
-  }?>
-  <tr>
-    <td class="lmoFooter" colspan="2" align="right"><? echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
+    <td class="lmoFooter" align="right"><? echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
   </tr>
 </table><? 
 }?>

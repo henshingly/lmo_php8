@@ -4,26 +4,26 @@ require(dirname(__FILE__)."/init.php");
 @include(PATH_TO_TEMPLATEDIR."/style.css");
 ?>
 
-.message{
+.lmoMain .message{
   margin: 0;
   color: #080;
 }
 
-.error{
+.lmoMain .error{
   margin: 0;
   color: #a00;
 }
 
-.nobr {
+.lmoMain .nobr {
   white-space:nowrap;
 }
 
-form { 
+.lmoMain form { 
   padding: 0; 
   margin: 0; 
 }
 
-acronym {
+.lmoMain acronym {
   cursor:help;
   border-bottom:1px dotted;
 }
@@ -32,23 +32,23 @@ acronym {
 /** Außenbereich*/
 .lmoMain { 
   background: <?=$lmo_main_background1?> repeat; 
-  <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1";?>;
+  <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1;";?>
   border: 0<?=$lmo_main_border1?>; 
   margin:0.3em auto;
   padding:0.2em;
-  <?=empty($lmo_main_fontsize1)?'':"font-size: $lmo_main_fontsize1";?>;
-  <?=empty($lmo_main_fontfamily1)?'':"font-family: $lmo_main_fontfamily1";?>;
+  <?=empty($lmo_main_fontsize1)?'':"font-size: $lmo_main_fontsize1;";?>
+  <?=empty($lmo_main_fontfamily1)?'':"font-family: $lmo_main_fontfamily1;";?>
 }
 
 .lmoMain a{ 
   background: <?=$lmo_main_background1?> repeat; 
-  <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1";?>;
+  <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1;";?>
   text-decoration: <?=empty($lmo_main_underline1)?'none':$lmo_main_underline1;?>;
 }
 
 .lmoMain a:hover { 
   background: <?=$lmo_main_color1?> repeat; 
-  <?=empty($lmo_main_background1)?'':"color: $lmo_main_background1";?>;
+  <?=empty($lmo_main_background1)?'':"color: $lmo_main_background1;";?>
 }
 
 .lmoMain p { 
@@ -60,10 +60,10 @@ acronym {
   padding: 0.2em; 
   margin:0.2em;
   background: <?=$lmo_main_background2?> repeat; 
-  <?=empty($lmo_main_color2)?'':"color: $lmo_main_color2";?>; 
+  <?=empty($lmo_main_color2)?'':"color: $lmo_main_color2;";?>
   font-weight: bold;
-  <?=empty($lmo_main_fontsize2)?'':"font-size: $lmo_main_fontsize2";?>;
-  <?=empty($lmo_main_fontfamily2)?'':"font-family: $lmo_main_fontfamily2";?>; 
+  <?=empty($lmo_main_fontsize2)?'':"font-size: $lmo_main_fontsize2;";?>
+  <?=empty($lmo_main_fontfamily2)?'':"font-family: $lmo_main_fontfamily2;";?>
 }
 
 /** Außenbereich Menü */
@@ -72,7 +72,7 @@ acronym {
   font-weight: bold; 
   white-space:nowrap;
   background: <?=$lmo_main_background4?> repeat; 
-  <?=empty($lmo_main_color4)?'':"color: $lmo_main_color4";?>; 
+  <?=empty($lmo_main_color4)?'':"color: $lmo_main_color4;";?>
   border:0<?=$lmo_main_border4?>;
 }
 
@@ -81,13 +81,13 @@ acronym {
   padding:0.1em;
   font-weight: normal; 
   background: <?=$lmo_main_background5?> repeat; 
-  <?=empty($lmo_main_color5)?'':"color: $lmo_main_color5";?>; 
+  <?=empty($lmo_main_color5)?'':"color: $lmo_main_color5;";?>
   border:0<?=$lmo_main_border5?>;
 }
 
 .lmoMain .lmoMenu a:hover { 
   background: <?=$lmo_main_color5?> repeat; 
-  <?=empty($lmo_main_background5)?'':"color: $lmo_main_background5";?>; 
+  <?=empty($lmo_main_background5)?'':"color: $lmo_main_background5;";?>
 }
 
 /** Außenbereich Untermenü */
@@ -96,7 +96,7 @@ acronym {
   font-weight: bold; 
   white-space:nowrap;
   background: <?=$lmo_main_background6?> repeat; 
-  <?=empty($lmo_main_color6)?'':"color: $lmo_main_color6";?>; 
+  <?=empty($lmo_main_color6)?'':"color: $lmo_main_color6;";?>
   border:0<?=$lmo_main_border6?>;
 }
 
@@ -105,13 +105,13 @@ acronym {
   padding:0.1em;
   font-weight: normal; 
   background: <?=$lmo_main_background7?> repeat; 
-  <?=empty($lmo_main_color7)?'':"color: $lmo_main_color7";?>; 
+  <?=empty($lmo_main_color7)?'':"color: $lmo_main_color7;";?>
   border:0<?=$lmo_main_border7?>;
 }
 
 .lmoMain .lmoSubmenu a:hover { 
   background: <?=$lmo_main_color7?> repeat; 
-  <?=empty($lmo_main_background7)?'':"color: $lmo_main_background7";?>; 
+  <?=empty($lmo_main_background7)?'':"color: $lmo_main_background7;";?>
 }
 
 
@@ -122,12 +122,12 @@ acronym {
 .lmoMain .lmoFooter a, .lmoMain .lmoFooter table a { 
   text-decoration: underline; 
   background: <?=$lmo_main_background1?> repeat; 
-  <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1";?>;
+  <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1;";?>
 }
 
 .lmoMain .lmoFooter a:hover, .lmoMain .lmoFooter table a:hover { 
   background: <?=$lmo_main_color1?> repeat; 
-  <?=empty($lmo_main_background1)?'':"color: $lmo_main_background1";?>; 
+  <?=empty($lmo_main_background1)?'':"color: $lmo_main_background1;";?>
 }
 
 /** Ende Außenbereich */
@@ -135,9 +135,9 @@ acronym {
 /** Mittelbereich */
 .lmoMiddle { 
   background: <?=$lmo_middle_background1?> repeat; 
-  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>;
+  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1;";?>
   font-weight: bold;
-  <?=empty($lmo_middle_fontsize1)?'':"font-size: $lmo_middle_fontsize1";?>;
+  <?=empty($lmo_middle_fontsize1)?'':"font-size: $lmo_middle_fontsize1;";?>
   border: 0<?=$lmo_middle_border1?>; 
   margin:0.5em auto 1.5em auto;
   padding: 0.2em;
@@ -149,9 +149,9 @@ font-size:100%;
 /** Überschrift im Mittelbereich */
 .lmoMiddle h1{ 
   background: <?=$lmo_middle_background2?> repeat; 
-  <?=empty($lmo_middle_color2)?'':"color: $lmo_middle_color2";?>;
+  <?=empty($lmo_middle_color2)?'':"color: $lmo_middle_color2;";?>
   font-weight: bold;
-  <?=empty($lmo_middle_fontsize2)?'':"font-size: $lmo_middle_fontsize2";?>;
+  <?=empty($lmo_middle_fontsize2)?'':"font-size: $lmo_middle_fontsize2;";?>
   margin:0.1em;
   padding:0.1em;
 }
@@ -161,13 +161,13 @@ font-size:100%;
   line-height:150%;
   text-decoration: <?=empty($lmo_middle_underline1)?'none':$lmo_middle_underline1;?>;
   background: <?=$lmo_middle_background1?> repeat; 
-  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>; 
+  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1;";?>
   font-weight: normal;
 }
 
 .lmoMiddle a:hover { 
   background: <?=$lmo_middle_color1?> repeat; 
-  <?=empty($lmo_middle_background1)?'':"color: $lmo_middle_background1";?>; 
+  <?=empty($lmo_middle_background1)?'':"color: $lmo_middle_background1;";?> 
 }
 
 .lmoMiddle .lmoMenu {
@@ -175,7 +175,7 @@ font-size:100%;
   font-weight: bold; 
   white-space:nowrap;
   background: <?=$lmo_middle_background4?> repeat; 
-  <?=empty($lmo_middle_color4)?'':"color: $lmo_middle_color4";?>;
+  <?=empty($lmo_middle_color4)?'':"color: $lmo_middle_color4;";?>
   border: 0<?=$lmo_middle_border4?>;
 }
 
@@ -184,31 +184,31 @@ font-size:100%;
   padding:0.1em;
   font-weight: normal; 
   background: <?=$lmo_middle_background5?> repeat; 
-  <?=empty($lmo_middle_color5)?'':"color: $lmo_middle_color5";?>;
+  <?=empty($lmo_middle_color5)?'':"color: $lmo_middle_color5;";?>
   border: 0<?=$lmo_middle_border5?>; 
 }
 
 .lmoMiddle .lmoMenu a:hover {
   background: <?=$lmo_middle_color5?> repeat; 
-  <?=empty($lmo_middle_background5)?'':"color: $lmo_middle_background5";?>;
+  <?=empty($lmo_middle_background5)?'':"color: $lmo_middle_background5;";?>
 }
 
 .lmoMiddle .lmoSubmenu {
   background: <?=$lmo_middle_background6?> repeat; 
-  <?=empty($lmo_middle_color6)?'':"color: $lmo_middle_color6";?>;
+  <?=empty($lmo_middle_color6)?'':"color: $lmo_middle_color6;";?>
   border: 0<?=$lmo_middle_border6?>;
 }
 
 .lmoMiddle .lmoSubmenu a {
   padding:0;
   background: <?=$lmo_middle_background7?> repeat; 
-  <?=empty($lmo_middle_color7)?'':"color: $lmo_middle_color7";?>;
+  <?=empty($lmo_middle_color7)?'':"color: $lmo_middle_color7;";?>
   border: 0<?=$lmo_middle_border7?>; 
 }
 
 .lmoMiddle .lmoSubmenu a:hover {
   background: <?=$lmo_middle_color7?> repeat; 
-  <?=empty($lmo_middle_background7)?'':"color: $lmo_middle_background7";?>;
+  <?=empty($lmo_middle_background7)?'':"color: $lmo_middle_background7;";?>
 }
 
 /** Innerer Bereich */
@@ -216,8 +216,8 @@ font-size:100%;
   margin-left:auto;margin-right:auto;
   padding: 0.2em; 
   background: <?=$lmo_inner_background1?> repeat; 
-  <?=empty($lmo_inner_color1)?'':"color: $lmo_inner_color1";?>;
-  <?=empty($lmo_inner_fontsize1)?'':"font-size: $lmo_inner_fontsize1";?>;
+  <?=empty($lmo_inner_color1)?'':"color: $lmo_inner_color1;";?>
+  <?=empty($lmo_inner_fontsize1)?'':"font-size: $lmo_inner_fontsize1;";?>
   border: 0<?=$lmo_inner_border1?>; 
 }
 
@@ -225,12 +225,12 @@ font-size:100%;
   line-height:100%;
   text-decoration: <?=empty($lmo_inner_underline1)?'none':$lmo_inner_underline1;?>;
   background: <?=$lmo_inner_background3?> repeat; 
-  <?=empty($lmo_inner_color3)?'':"color: $lmo_inner_color3";?>; 
+  <?=empty($lmo_inner_color3)?'':"color: $lmo_inner_color3;";?>
   font-weight: normal;
 }
 .lmoInner a:hover {  
-  background: <?=$lmo_inner_color3?> repeat; 
-  <?=empty($lmo_inner_background3)?'':"color: $lmo_inner_background3";?>; 
+  <?=empty($lmo_inner_color3)?'':"background: $lmo_inner_color3;";?>
+  <?=empty($lmo_inner_background3)?'':"color: $lmo_inner_background3;";?>
 }
 
 .lmoInner td {
@@ -243,17 +243,17 @@ font-size:100%;
 .lmoInner th {
   padding: 0.2em; 
   background: <?=$lmo_inner_background2?> repeat; 
-  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2";?>; 
+  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2;";?> 
 }
 
 .lmoInner th a {
   background: <?=$lmo_inner_background2?> repeat; 
-  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2";?>; 
+  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2;";?> 
 }
 
 .lmoInner th a:hover {
   background: <?=$lmo_inner_color2?> repeat; 
-  <?=empty($lmo_inner_background2)?'':"color: $lmo_inner_background2";?>; 
+  <?=empty($lmo_inner_background2)?'':"color: $lmo_inner_background2;";?> 
 }
 
 .lmoInner caption {
@@ -269,23 +269,23 @@ font-size:100%;
 .lmoInner .lmoFooter, .lmoInner .lmoFooter table {
   
   background: <?=$lmo_inner_background2?> repeat; 
-  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2";?>; 
+  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2;";?>
 }
 
 .lmoInner .lmoFooter a, .lmoInner .lmoFooter table a { 
   line-height:150%;
   text-decoration: underline; 
   background: <?=$lmo_inner_background2?> repeat; 
-  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2";?>;
+  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2;";?>
 }
 
 .lmoInner .lmoFooter a:hover, .lmoInner .lmoFooter table a:hover { 
   background: <?=$lmo_inner_color2?> repeat; 
-  <?=empty($lmo_inner_background2)?'':"color: $lmo_inner_background2";?>; 
+  <?=empty($lmo_inner_background2)?'':"color: $lmo_inner_background2;";?> 
 }
 
 .lmoKreuz table {
-  <?=empty($lmo_kreuz_fontsize1)?'':"font-size: $lmo_kreuz_fontsize1";?>;
+  <?=empty($lmo_kreuz_fontsize1)?'':"font-size: $lmo_kreuz_fontsize1;";?>
 }
 
 .lmoKreuz table, 
@@ -324,7 +324,7 @@ font-size:100%;
 }
 
 .lmoFrontMarkierung { 
-  <?=empty($lmo_kreuzkal_color1)?'':"color: $lmo_kreuzkal_color1";?>; 
+  <?=empty($lmo_kreuzkal_color1)?'':"color: $lmo_kreuzkal_color1;";?> 
   font-weight: bold; 
 }
 
@@ -336,97 +336,97 @@ font-size:100%;
 /** Fusszeilen */
 .lmoMain .lmoFooter { 
   padding: 0;
-  <?=empty($lmo_footer_fontsize1)?'':"font-size: $lmo_footer_fontsize1";?>; 
+  <?=empty($lmo_footer_fontsize1)?'':"font-size: $lmo_footer_fontsize1;";?> 
 }
 
 .lmoTabelleMeister { 
   background: <?=$lmo_tabelle_background1?> repeat; 
-  <?=empty($lmo_tabelle_color1)?'':"color: $lmo_tabelle_color1";?>; 
+  <?=empty($lmo_tabelle_color1)?'':"color: $lmo_tabelle_color1;";?> 
 }
 
 .lmoTabelleMeister a:hover { 
   background: <?=$lmo_tabelle_color1?> repeat; 
-  <?=empty($lmo_tabelle_background1)?'':"color: $lmo_tabelle_background1";?>;
+  <?=empty($lmo_tabelle_background1)?'':"color: $lmo_tabelle_background1;";?>
 }
 
 .lmoTabelleCleague { 
   background: <?=$lmo_tabelle_background2?> repeat; 
-  <?=empty($lmo_tabelle_color2)?'':"color: $lmo_tabelle_color2";?>; 
+  <?=empty($lmo_tabelle_color2)?'':"color: $lmo_tabelle_color2;";?> 
 }
 
 .lmoTabelleCleague a:hover {
   background: <?=$lmo_tabelle_color2?> repeat; 
-  <?=empty($lmo_tabelle_background2)?'':"color: $lmo_tabelle_background2";?>; 
+  <?=empty($lmo_tabelle_background2)?'':"color: $lmo_tabelle_background2;";?> 
 }
 
 .lmoTabelleCleaguequali { 
   background: <?=$lmo_tabelle_background3?> repeat; 
-  <?=empty($lmo_tabelle_color3)?'':"color: $lmo_tabelle_color3";?>; 
+  <?=empty($lmo_tabelle_color3)?'':"color: $lmo_tabelle_color3;";?> 
 }
 
 .lmoTabelleCleaguequali a:hover { 
   background: <?=$lmo_tabelle_color3?> repeat; 
-  <?=empty($lmo_tabelle_background3)?'':"color: $lmo_tabelle_background3";?>;
+  <?=empty($lmo_tabelle_background3)?'':"color: $lmo_tabelle_background3;";?>
 }
 
 .lmoTabelleUefa { 
   background: <?=$lmo_tabelle_background4?> repeat; 
-  <?=empty($lmo_tabelle_color4)?'':"color: $lmo_tabelle_color4";?>;
+  <?=empty($lmo_tabelle_color4)?'':"color: $lmo_tabelle_color4;";?>
 }
 
 .lmoTabelleUefa a:hover { 
   background: <?=$lmo_tabelle_color4?> repeat; 
-  <?=empty($lmo_tabelle_background4)?'':"color: $lmo_tabelle_background4";?>;
+  <?=empty($lmo_tabelle_background4)?'':"color: $lmo_tabelle_background4;";?>
 }
 
 .lmoTabelleRelegation { 
   background: <?=$lmo_tabelle_background5?> repeat; 
-  <?=empty($lmo_tabelle_color5)?'':"color: $lmo_tabelle_color5";?>;
+  <?=empty($lmo_tabelle_color5)?'':"color: $lmo_tabelle_color5;";?>
 }
 
 .lmoTabelleRelegation a:hover { 
   background: <?=$lmo_tabelle_color5?> repeat; 
-  <?=empty($lmo_tabelle_background5)?'':"color: $lmo_tabelle_background5";?>;
+  <?=empty($lmo_tabelle_background5)?'':"color: $lmo_tabelle_background5;";?>
 }
 
 .lmoTabelleAbsteiger { 
   background: <?=$lmo_tabelle_background6?> repeat; 
-  <?=empty($lmo_tabelle_color6)?'':"color: $lmo_tabelle_color6";?>;
+  <?=empty($lmo_tabelle_color6)?'':"color: $lmo_tabelle_color6;";?>
 }
 
 .lmoTabelleAbsteiger a:hover { 
   background: <?=$lmo_tabelle_color6?> repeat; 
-  <?=empty($lmo_tabelle_background6)?'':"color: $lmo_tabelle_background6";?>;
+  <?=empty($lmo_tabelle_background6)?'':"color: $lmo_tabelle_background6;";?>
 }
 
 .lmoTabelleHeimbilanz { 
   background: <?=$lmo_tabelle_background7?> repeat; 
-  <?=empty($lmo_tabelle_color7)?'':"color: $lmo_tabelle_color7";?>;
+  <?=empty($lmo_tabelle_color7)?'':"color: $lmo_tabelle_color7;";?>
 }
 
 .lmoTabelleGastbilanz { 
   background: <?=$lmo_tabelle_background8?> repeat; 
-  <?=empty($lmo_tabelle_color8)?'':"color: $lmo_tabelle_color8";?>; 
+  <?=empty($lmo_tabelle_color8)?'':"color: $lmo_tabelle_color8;";?> 
 }
 
 .lmoTurnierSieger { 
   background: <?=$lmo_turnier_background1?> repeat; 
-  <?=empty($lmo_turnier_color1)?'':"color: $lmo_turnier_color1";?>;
+  <?=empty($lmo_turnier_color1)?'':"color: $lmo_turnier_color1;";?>
 }
 
 .lmoTurnierSieger a:hover{ 
   background: <?=$lmo_turnier_color1?> repeat; 
-  <?=empty($lmo_turnier_background1)?'':"color: $lmo_turnier_background1";?>; 
+  <?=empty($lmo_turnier_background1)?'':"color: $lmo_turnier_background1;";?> 
 }
 
 .lmoTurnierVerlierer { 
   background: <?=$lmo_turnier_background2?> repeat; 
-  <?=empty($lmo_turnier_color2)?'':"color: $lmo_turnier_color2";?>;
+  <?=empty($lmo_turnier_color2)?'':"color: $lmo_turnier_color2;";?>
 }
 
 .lmoTurnierVerlierer a:hover{ 
   background: <?=$lmo_turnier_color2?> repeat; 
-  <?=empty($lmo_turnier_background2)?'':"color: $lmo_turnier_background2";?>; 
+  <?=empty($lmo_turnier_background2)?'':"color: $lmo_turnier_background2;";?>
 }
 
 .lmotext { 
@@ -438,13 +438,13 @@ font-size:100%;
 
 .lmo-formular-input { 
   background: <?=$lmo_formular_background1?> repeat; 
-  <?=empty($lmo_formular_color1)?'':"color: $lmo_formular_color1";?>; 
+  <?=empty($lmo_formular_color1)?'':"color: $lmo_formular_color1;";?>
   border: <?=$lmo_formular_border1?>; 
 }
 
 .lmo-formular-button { 
   background: <?=$lmo_formular_background2?> repeat; 
-  <?=empty($lmo_formular_color2)?'':"color: $lmo_formular_color2";?>; 
+  <?=empty($lmo_formular_color2)?'':"color: $lmo_formular_color2;";?> 
   border: <?=$lmo_formular_border2?>; 
   font-weight: bold; 
   width:     auto;
@@ -462,6 +462,7 @@ span.colorpicker {
 	height:					11px;
   background-position:	center center;
   background-repeat:		no-repeat;
+  background-color: transparent;
 	margin:					0 2px;
   display:inline;
   cursor:crosshair;
@@ -512,8 +513,8 @@ a:hover span.popup{
 	font-size:80%;
   position: absolute;
   background: <?=$lmo_middle_background1?> repeat; 
-  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>;
-  border: <?=$lmo_middle_border1?>;
+  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1;";?>
+  <?=empty($lmo_middle_border1)?'':"border: $lmo_middle_border1;";?>
   width: 15em;
 	margin: 1.5em 0 0 -4em;  
   padding: 0.2em;

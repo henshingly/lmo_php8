@@ -42,8 +42,7 @@ if ($ftype != "") {
     $t4 = "0";
     $datei = fopen($dirliga.$files, "rb");
     while (!feof($datei)) {
-      $zeile = fgets($datei, 1000);
-      $zeile = chop($zeile);
+      $zeile = fgets($datei, 5000);
       $zeile = trim($zeile);
       if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $sekt = substr($zeile, 1, -1);
@@ -65,6 +64,9 @@ if ($ftype != "") {
         if ($schl == "Type") {
           $t4 = $wert;
         }
+      }
+      if (!empty($t0) && !empty($t1) && !empty($t2) && !empty($t3) && !empty($t4)) {
+        break;
       }
     }
     fclose($datei);
