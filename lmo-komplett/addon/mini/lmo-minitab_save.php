@@ -33,7 +33,7 @@ if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
     }
     //$endtab=$act;
     $endtab=$anzst;
-    include("lmo-calctable.php");
+    include(PATH_TO_LMO."/lmo-calctable.php");
     for($i1=0;$i1<$anzsp;$i1++){
        if (isset($goala[$act-1][$i1]) && $goala[$act-1][$i1]=="_") $goala[$act-1][$i1]="-1";
        if (isset($goalb[$act-1][$i1]) && $goalb[$act-1][$i1]=="_") $goalb[$act-1][$i1]="-1";
