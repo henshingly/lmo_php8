@@ -42,13 +42,13 @@ if($lmtype==0){
   <title><?=$titel?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
   <style type="text/css">
-   body {background:#fff; color:#000; font: sans-serif 10pt;}
-   caption, p, h1 {margin: 3pt auto; text-align:center;}
-   table {border:1pt solid #000;margin: 20pt auto 2pt;}
-   td {padding: 0;}
-   th {border-bottom: 1px solid #000;}
-   h1 {font:12pt bold;}
-   caption {font-weight:bolder;}
+    body {background:#fff; color:#000; font: sans-serif 10pt;}
+    caption, p, h1 {margin: 3pt auto; text-align:center;}
+    table {border:1pt solid #000;margin: 20pt auto 2pt;}
+    td {padding: 0;}
+    th {border-bottom: 1px solid #000;}
+    h1 {font:12pt bold;}
+    caption {font-weight:bolder;}
   </style>
 </head>
 <body>
