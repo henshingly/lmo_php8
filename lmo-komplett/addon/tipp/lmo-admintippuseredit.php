@@ -80,7 +80,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
   } else {
     //New User
 
-    $tipp_tipperdaten=array_pad(array(),11,'');
+    $tipp_tipperdaten=array_pad(array(),10,'');
     $save = count($users);
     $tipp_tipperdaten[2]='5';
     $tipp_tipperdaten[9]='1';
@@ -151,7 +151,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
     $tipp_tipperdaten[10]=$xremind;
 
     $users[$save]=$tipp_tipperdaten[0]."|".$tipp_tipperdaten[1]."|".$tipp_tipperdaten[2]."|".$tipp_tipperdaten[3]."|".$tipp_tipperdaten[4]."|";
-    $users[$save].=$team."|".$tipp_tipperdaten[6]."|".$tipp_tipperdaten[7]."|".$tipp_tipperdaten[8]."|";
+    $users[$save].=$team."|".$tipp_tipperdaten[6]."|".$tipp_tipperdaten[7]."|".$tipp_tipperdaten[8];
     $users[$save].="|".$tipp_tipperdaten[9]."|".$tipp_tipperdaten[10]."|EOL";
 
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
@@ -289,13 +289,13 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
             <tr>
               <td>&nbsp;</td>
               <td align="left">
-                <input type="checkbox" name="xnews" value="1" <? if(isset($tipp_tipperdaten[9]) && $tipp_tipperdaten[9]!=-1){echo "checked";} ?>><?= $text['tipp'][206] ?>
+                <input type="checkbox" name="xnews" <? if(isset($tipp_tipperdaten[9]) && $tipp_tipperdaten[9]!=-1){echo "checked";} ?>><?= $text['tipp'][206] ?>
               </td>
             </tr>
             <tr>
               <td>&nbsp;</td>
               <td align="left">
-                <input type="checkbox" name="xremind" value="1" <? if(isset($tipp_tipperdaten[10]) && $tipp_tipperdaten[10]!=-1){echo "checked";} ?>><?= $text['tipp'][167] ?>
+                <input type="checkbox" name="xremind" <? if(isset($tipp_tipperdaten[10]) && $tipp_tipperdaten[10]!=-1){echo "checked";} ?>><?= $text['tipp'][167] ?>
               </td>
             </tr>
 <? if($tipp_tipperimteam>=0){ ?>
