@@ -23,7 +23,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-if(($HTTP_SESSION_VARS['lmouserok']==2)||($HTTP_SESSION_VARS['lmouserok']==1)){
+if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
 if($file!=""){
   if(substr($file,-4)==".l98"){
     if($einsavehtml==1){

@@ -19,7 +19,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-if($HTTP_SESSION_VARS['lmouserok']==2){
+if($_SESSION['lmouserok']==2){
     $datei = fopen($pswfile,"wb");
 if (!$datei) {
     echo "<font color=\"#ff0000\">".$text[283]."</font>";

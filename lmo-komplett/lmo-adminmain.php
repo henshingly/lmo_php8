@@ -39,13 +39,32 @@ if($action=="admin"){
 ?>
 <table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmomain0" colspan="3" align="center">
+    <td class="lmomain0" colspan="2" align="center">
       <? echo "{$text[77]} {$text[54]}"; ?>
+    </td>
+    <td class="lmomain2" align="right"><?
+  $handle=opendir ('.');
+  while (false!==($f=readdir($handle))) {
+    if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
+      if ($lang[1]=="") $lang[1]=$text[505];?>
+        <a href="<?="{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;todo={$todo}"?>" onclick="return chklmolink(this.href)" title="<?=$lang[1];?>"
+        ><?
+      $lang[1]==""?$imgfile=$text[505].".gif":$imgfile=$lang[1].".gif";
+      if (!file_exists($imgfile)) {
+        echo $lang[1];
+      }else{
+        $c=@getimagesize($imgfile);
+        echo "<img src='{$imgfile}' border='1' title='{$lang[1]}' {$c[3]} alt='{$lang[1]}'>";
+      }
+      ?></a><?
+    } 
+  }
+  closedir($handle);?>
     </td>
   </tr>
   <tr>
     <td class="lmomain1"><?
-if($lmouserok==2){
+if($_SESSION['lmouserok']==2){
   if($todo!="new"){echo "<a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink(this.href);' title='{$text[79]}'>{$text[78]}</a>";}else{echo $text[78];}
   echo "&nbsp;";
   if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink(this.href);' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
@@ -69,7 +88,7 @@ if($lmouserok==2){
   echo "&nbsp;";
   if(($todo!="tipp") && ($todo!="tippemail") && ($todo!="tippuser") && ($todo!="tippuseredit") && ($todo!="tippoptions")){echo "<a href='{$adda}tipp' onclick='return chklmolink(this.href);' title='{$text[2057]}'>{$text[2000]}</a>";}else{echo $text[2000];}
   }
-elseif($lmouserok==1){
+elseif($_SESSION['lmouserok']==1){
   if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink(this.href);' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
   echo "&nbsp;";
   if($file!=""){
@@ -88,12 +107,12 @@ elseif($lmouserok==1){
     <td class="lmomain1" align="right"><?
   echo "<a href='{$adda}logout' onclick='return chklmolink(this.href);' title='{$text[89]}'>{$text[88]}</a>";
   echo "&nbsp;";
-  if($lmouserok==2){echo "<a href='lmohelp1.htm' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}else{echo "<a href='lmohelp2.htm' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}?>
+  if($_SESSION['lmouserok']==2){echo "<a href='lmohelp1.htm' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}else{echo "<a href='lmohelp2.htm' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}?>
      </td>
   </tr>
   <tr>
     <td class="lmomain1" colspan="3" align="center"><?
-  if($lmouserok==2){
+  if($_SESSION['lmouserok']==2){
     $addr_options=$PHP_SELF."?action=admin&amp;todo=options";
     $addr_addons=$PHP_SELF."?action=admin&amp;todo=addons";
     $addr_design=$PHP_SELF."?action=admin&amp;todo=design";
@@ -123,7 +142,7 @@ elseif($lmouserok==1){
     elseif($todo=="tippoptions"){require("lmo-admintippoptions.php");}
     elseif($todo==""){require("lmo-adminpad.php");}
   }
-  elseif($lmouserok==1){
+  elseif($_SESSION['lmouserok']==1){
     if($todo=="open"){require("lmo-adminopen.php");}
     elseif($todo=="edit"){
       if($sty==-1){require("lmo-adminbasic.php");}

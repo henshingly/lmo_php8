@@ -20,12 +20,12 @@
 // 
 require_once("lmo-admintest.php");
 if($action=="admin"){
-  if(!isset($lmousername)){$lmousername="";}
-  if(!isset($lmouserpass)){$lmouserpass="";}
-  if(!isset($HTTP_SESSION_VARS['lmouserok']) || $HTTP_SESSION_VARS['lmouserok']==0){
-    if(isset($HTTP_POST_VARS["xusername"])){
-      $lmousername=$HTTP_POST_VARS["xusername"];
-      $lmouserpass=$HTTP_POST_VARS["xuserpass"];
+  if(!isset($_SESSION['lmousername'])){$_SESSION['lmousername']="";}
+  if(!isset($_SESSION['lmouserpass'])){$_SESSION['lmouserpass']="";}
+  if(!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok']==0){
+    if(isset($_POST["xusername"])){
+      $_SESSION['lmousername']=$_POST["xusername"];
+      $_SESSION['lmouserpass']=$_POST["xuserpass"];
       $dumma = array("");
       $pswfile="lmo-auth.txt";
       $psw1file="lmo-access.txt";
@@ -39,29 +39,29 @@ if($action=="admin"){
       array_shift($dumma);
       for($i=0;$i<count($dumma);$i++){
         $dummb = split("[|]",$dumma[$i]);
-        if(($lmousername==$dummb[0]) && ($lmouserpass==$dummb[1])){
-          $HTTP_SESSION_VARS['lmouserok']=$dummb[2];
-          if($HTTP_SESSION_VARS['lmouserok']==1){
+        if(($_SESSION['lmousername']==$dummb[0]) && ($_SESSION['lmouserpass']==$dummb[1])){
+          $_SESSION['lmouserok']=$dummb[2];
+          if($_SESSION['lmouserok']==1){
             $datei = fopen($psw1file,"rb");
             while (!feof($datei)) {
               $zeile = fgets($datei,1000);
               $zeile=chop($zeile);
               if($zeile!=""){
                 $dummb1 = split("[|]",$zeile);
-                if($lmousername==$dummb1[0]){$lmouserfile=$dummb1[1];}
+                if($_SESSION['lmousername']==$dummb1[0]){$_SESSION['lmouserfile']=$dummb1[1];}
                 }
               }
             fclose($datei);
             array_shift($dumma);
             }
-          elseif($HTTP_SESSION_VARS['lmouserok']==2){
-            $lmouserfile="";
+          elseif($_SESSION['lmouserok']==2){
+            $_SESSION['lmouserfile']="";
             }
           }
         }
       }
     }
-  if(!isset($HTTP_SESSION_VARS['lmouserok']) || $HTTP_SESSION_VARS['lmouserok']==0){
+  if(!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok']==0){
 ?>
 
 <table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
@@ -81,11 +81,11 @@ if($action=="admin"){
   <table width="100%" class="lmostb" cellspacing="0" cellpadding="0" border="0">
     <tr>
       <td class="lmost5" align="right"><acronym title="<?PHP echo $text[307] ?>"><?PHP echo " ".$text[306]; ?></acronym></td>
-      <td class="lmost5"><acronym title="<?PHP echo $text[307] ?>"><input class="lmoadminein" type="text" name="xusername" size="16" maxlength="32" value="<?PHP echo $lmousername; ?>"></acronym></a>
+      <td class="lmost5"><acronym title="<?PHP echo $text[307] ?>"><input class="lmoadminein" type="text" name="xusername" size="16" maxlength="32" value="<?PHP echo $_SESSION['lmousername']; ?>"></acronym></a>
     </tr>
     <tr>
       <td class="lmost5" align="right"><acronym title="<?PHP echo $text[309] ?>"><?PHP echo " ".$text[308]; ?></acronym></td>
-      <td class="lmost5"><acronym title="<?PHP echo $text[309] ?>"><input class="lmoadminein" type="password" name="xuserpass" size="16" maxlength="32" value="<?PHP echo $lmouserpass; ?>"></acronym></a>
+      <td class="lmost5"><acronym title="<?PHP echo $text[309] ?>"><input class="lmoadminein" type="password" name="xuserpass" size="16" maxlength="32" value="<?PHP echo $_SESSION['lmouserpass']; ?>"></acronym></a>
     </tr>
     <tr>
       <td class="lmost5">&nbsp;</td>

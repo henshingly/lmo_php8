@@ -23,16 +23,16 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 define('LMO_AUTH', 1);
-$lmouserok=0;
 session_start();
-if(isset($HTTP_SESSION_VARS["lmouserok"])){$lmouserok=$HTTP_SESSION_VARS["lmouserok"];}
-if(isset($HTTP_SESSION_VARS["lmousername"])){$lmousername=$HTTP_SESSION_VARS["lmousername"];}
-if(isset($HTTP_SESSION_VARS["lmouserpass"])){$lmouserpass=$HTTP_SESSION_VARS["lmouserpass"];}
-if(isset($HTTP_SESSION_VARS["lmouserfile"])){$lmouserfile=$HTTP_SESSION_VARS["lmouserfile"];}
+if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
+if(!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
+if(!isset($_SESSION["lmouserpass"])){$_SESSION["lmouserpass"]="";}
+if(!isset($_SESSION["lmouserfile"])){$_SESSION["lmouserfile"]="";}
+if(isset($_GET["lmouserlang"])){$_SESSION["lmouserlang"]=$_GET["lmouserlang"];}
 isset($_REQUEST['todo'])?$todo=$_REQUEST['todo']:$todo="";
 if($todo=="logout"){
-  $lmouserok="0";
-  $lmouserpass="";
+  $_SESSION['lmouserok']=0;
+  $_SESSION['lmouserpass']="";
   }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -41,7 +41,15 @@ if($todo=="logout"){
 <head>
 <title>LMO Admin</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
-<link rel=stylesheet type="text/css" href="lmo-style.css">
+<script type="text/javascript">
+<!--
+ if (document.layers && window.captureEvents) { document.write('<link rel="stylesheet" href="lmo-style-nc.css" type="text/css">'); }
+  else { document.write('<link rel="stylesheet" href="lmo-style.css" type="text/css">'); }
+//-->
+</script>
+<noscript>
+<link rel="stylesheet" href="lmo-style.css" type="text/css">
+</noscript>
 </head>
 <body>
 <center>
@@ -50,15 +58,16 @@ $action="admin";
 $array = array();
 setlocale (LC_TIME, "de_DE");
 require("lmo-cfgload.php");
-require("lmo-adminauth.php");
-if (isset($HTTP_POST_VARS["xdeflang"]) && $deflang!=trim($HTTP_POST_VARS["xdeflang"])) {
-  $HTTP_SESSION_VARS['lmouserlang']=trim($HTTP_POST_VARS["xdeflang"]);
+
+if (isset($_POST["xdeflang"]) && $deflang!=trim($_POST["xdeflang"])) {
+  $_SESSION['lmouserlang']=trim($_POST["xdeflang"]);
 }
-if(isset($HTTP_SESSION_VARS["lmouserlang"])){$lmouserlang=$HTTP_SESSION_VARS["lmouserlang"];}else{$lmouserlang=$deflang;}
+if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
 require("lmo-langload.php");
 require("lmo-adminauth.php");
-if($lmouserok>0){
-  require_once("lmo-adminmain.php");
+
+if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0){
+  require("lmo-adminmain.php");
 }
 ?>
 </center>

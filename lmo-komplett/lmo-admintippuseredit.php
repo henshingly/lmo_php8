@@ -271,10 +271,10 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
   $addo=$PHP_SELF."?action=admin&amp;todo=tippoptions";
   $addu=$PHP_SELF."?action=admin&amp;todo=tippuser";
   $adde=$PHP_SELF."?action=admin&amp;todo=tippemail";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adda."');\" title=\"".$text[2063]."\">".$text[2063]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adde."');\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addu."');\" title=\"".$text[2114]."\">".$text[2114]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addo."');\" title=\"".$text[2055]."\">".$text[86]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$adda' onclick=\"return chklmolink(this.href);\" title=\"".$text[2063]."\">".$text[2063]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$adde' onclick=\"return chklmolink(this.href);\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$addu' onclick=\"return chklmolink(this.href);\" title=\"".$text[2114]."\">".$text[2114]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href='$addo' onclick=\"return chklmolink(this.href);\" title=\"".$text[2055]."\">".$text[86]."</a></td>";
 ?>
     </tr></table></td>
   </tr>

@@ -295,13 +295,13 @@ require_once("lmo-tipptest.php");
    </td></tr></table>
   </form>
 <?PHP
-  $HTTP_SESSION_VARS["lmotipperok"]=0;
+  $_SESSION["lmotipperok"]=0;
   }
 ?>
 <?PHP if($newpage==1){ // Anmeldung erfolgreich
   $lmotippername=$xtippernick;
-  $HTTP_SESSION_VARS["lmotipperpass"]="";
-  $HTTP_SESSION_VARS["lmotipperok"]=5;
+  $_SESSION["lmotipperpass"]="";
+  $_SESSION["lmotipperok"]=5;
 ?>
   <tr>
     <td class="lmomain1" colspan="3" align="center">

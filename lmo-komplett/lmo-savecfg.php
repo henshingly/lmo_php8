@@ -23,7 +23,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-if($HTTP_SESSION_VARS['lmouserok']==2){
+if($_SESSION['lmouserok']==2){
   $datei = fopen($cfgfile,"wb");
   if ($datei) {
     echo "<font color=\"#008800\">".$text[138]."</font>";

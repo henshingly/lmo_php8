@@ -41,7 +41,7 @@ if(($file!="") && ($action!="")){
   while (false!==($f=readdir($handle))) {
     if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
       if ($lang[1]=="") $lang[1]=$text[505];?>
-        <a href="<?="{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}"?>" title="<?=$lang[1];?>"
+        <a href="<?="{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;todo={$todo}"?>" title="<?=$lang[1];?>"
         ><?
       $lang[1]==""?$imgfile=$text[505].".gif":$imgfile=$lang[1].".gif";
       if (!file_exists($imgfile)) {
@@ -186,7 +186,7 @@ if(($file!="") && ($action!="")){
   if($calctime==1){
     echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
   } 
-  echo "{$text[54]} - {$text[55]}<br>{$text[4005]}";?>
+  echo "{$text[54]} - <a href='{$addm}info' title='{$text[21]}'>{$text[55]}</a>";?>
           </td>
         </tr>
 	    </table>

@@ -27,7 +27,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-if($HTTP_POST_VARS["liga"]!="" && $HTTP_POST_VARS["st"]!=""){
+if($_POST["liga"]!="" && $_POST["st"]!=""){
   $verz=opendir($dirtipp);
   $dummy=array("");
   while($files=readdir($verz)){

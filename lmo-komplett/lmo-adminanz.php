@@ -19,7 +19,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
+if(($file!="") && ($_SESSION['lmouserok']==2)){
   require("lmo-openfile.php");
   if($save==1){
     for($i=0;$i<$anzst;$i++){
@@ -48,8 +48,8 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
         $mspez[$i][$j]="_";
         }
       }
-    $anzst=trim($HTTP_POST_VARS["xanzst"]);
-    $anzsp=trim($HTTP_POST_VARS["xanzsp"]);
+    $anzst=trim($_POST["xanzst"]);
+    $anzsp=trim($_POST["xanzsp"]);
     if($stx>$anzst){$stx=$anzst;}
     require("lmo-savefile.php");
     }
@@ -63,7 +63,7 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
   for($i=1;$i<=$anzst;$i++){
     echo "<td align=\"right\" ";
     if($i<>$st){
-      echo "class=\"lmost0\"><a href=\"javascript:chklmolink('".$addr.$i."');\" title=\"".$text[9]."\">".$i."</a>";
+      echo "class=\"lmost0\"><a href='$addr.$i' onclick='return chklmolink(this.href)' title=\"".$text[9]."\">".$i."</a>";
       }
     else{
       echo "class=\"lmost1\">".$i;
@@ -100,7 +100,7 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[275] ?>"><?PHP echo $text[274]; ?></acronym></nobr></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[275] ?>"><table cellpadding="0" cellspacing="0" border="0"><tr>
       <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xanzst" size="3" maxlength="3" value="34" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
-      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="javascript:lmoanzstauf('xanzst',1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg('sa',img1)" onMouseOut="lmoimg('sa',img0)"><img src="lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"></a></td></tr><tr><td><a href="javascript:lmoanzstauf('xanzst',-1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg('sb',img3)" onMouseOut="lmoimg('sb',img2)"><img src="lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"></a></td></tr></table></td>
+      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\"xanzst\",1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\"sa\",img1)" onMouseOut="lmoimg('sa',img0)"><img src="lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\"xanzst\",-1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\"sb\",img3)" onMouseOut="lmoimg('sb',img2)"><img src="lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
     </tr></table></acronym></td>
   </tr>
   <tr>
@@ -108,7 +108,7 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[278] ?>"><?PHP echo $text[277]; ?></acronym></nobr></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[278] ?>"><table cellpadding="0" cellspacing="0" border="0"><tr>
       <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xanzsp" size="2" maxlength="2" value="9" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
-      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="javascript:lmoanzspauf('xanzsp',1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg('pa',img1)" onMouseOut="lmoimg('pa',img0)"><img src="lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"></a></td></tr><tr><td><a href="javascript:lmoanzspauf('xanzsp',-1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg('pb',img3)" onMouseOut="lmoimg('pb',img2)"><img src="lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"></a></td></tr></table></td>
+      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\"xanzsp\",1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\"pa\",img1)" onMouseOut="lmoimg(\"pa\",img0)"><img src="lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\"xanzsp\",-1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\"pb\",img3)" onMouseOut="lmoimg(\"pb\",img2)"><img src="lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
     </tr></table></acronym></td>
   </tr>
   <tr>
@@ -123,9 +123,9 @@ if(($file!="") && ($HTTP_SESSION_VARS['lmouserok']==2)){
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  if($st!=-1){echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addr."-1');\" title=\"".$text[100]."\">".$text[99]."</a></td>";}
+  if($st!=-1){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-1' onclick=\"return chklmolink(this.href);\" title=\"".$text[100]."\">".$text[99]."</a></td>";}
     else{echo "<td class=\"lmost1\" align=\"center\">".$text[99]."</td>";}
-  if($st!=-2){echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addr."-2');\" title=\"".$text[102]."\">".$text[101]."</a></td>";}
+  if($st!=-2){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-2' \onclick=\"return chklmolink(this.href);\" title=\"".$text[102]."\">".$text[101]."</a></td>";}
     else{echo "<td class=\"lmost1\" align=\"center\">".$text[101]."</td>";}
 ?>
     </tr></table></td>

@@ -137,7 +137,7 @@ require_once("lmo-admintest.php");
           }
         }
       else{
-        $modus[$i-1]=$HTTP_POST_VARS["xmod".$i];
+        $modus[$i-1]=$_POST["xmod".$i];
         $anzsp=$anzsp/2;
         for($j=1;$j<=$anzsp;$j++){
           $teama[$i-1][$j-1]="0";
@@ -211,7 +211,7 @@ require_once("lmo-admintest.php");
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[272] ?>"><?PHP echo $text[271]; ?></acronym></nobr></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[272] ?>"><table cellpadding="0" cellspacing="0" border="0"><tr>
       <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xteams" size="2" maxlength="2" value="18" onChange="lmoteamauf('xteams',0)" onKeyDown="lmoteamclk('xteams',event.keyCode)"></td>
-      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="javascript:lmoteamauf('xteams',1);" title="<?PHP echo $text[273]; ?>" onMouseOver="lmoimg('ta',img1)" onMouseOut="lmoimg('ta',img0)"><img src="lmo-admin0.gif" name="ximgta" width="7" height="7" border="0"></a></td></tr><tr><td><a href="javascript:lmoteamauf('xteams',-1);" title="<?PHP echo $text[273]; ?>" onMouseOver="lmoimg('tb',img3)" onMouseOut="lmoimg('tb',img2)"><img src="lmo-admin2.gif" name="ximgtb" width="7" height="7" border="0"></a></td></tr></table></td>
+      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\"xteams\",1);" title="<?PHP echo $text[273]; ?>" onMouseOver="lmoimg(\"ta\",img1)" onMouseOut="lmoimg(\"ta\",img0)"><img src="lmo-admin0.gif" name="ximgta" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\"xteams\",-1);" title="<?PHP echo $text[273]; ?>" onMouseOver="lmoimg(\"tb\",img3)" onMouseOut="lmoimg(\"tb\",img2)"><img src="lmo-admin2.gif" name="ximgtb" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
     </tr></table></acronym></td>
   </tr>
   <tr>
@@ -219,7 +219,7 @@ require_once("lmo-admintest.php");
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[275] ?>"><?PHP echo $text[274]; ?></acronym></nobr></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[275] ?>"><table cellpadding="0" cellspacing="0" border="0"><tr>
       <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xanzst" size="3" maxlength="3" value="34" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
-      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="javascript:lmoanzstauf('xanzst',1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg('sa',img1)" onMouseOut="lmoimg('sa',img0)"><img src="lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"></a></td></tr><tr><td><a href="javascript:lmoanzstauf('xanzst',-1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg('sb',img3)" onMouseOut="lmoimg('sb',img2)"><img src="lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"></a></td></tr></table></td>
+      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\"xanzst\",1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\"sa\",img1)" onMouseOut="lmoimg(\"sa\",img0)"><img src="lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\"xanzst\",-1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\"sb\",img3)" onMouseOut="lmoimg(\"sb\",img2)"><img src="lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
     </tr></table></acronym></td>
   </tr>
   <tr>
@@ -227,7 +227,7 @@ require_once("lmo-admintest.php");
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[278] ?>"><?PHP echo $text[277]; ?></acronym></nobr></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[278] ?>"><table cellpadding="0" cellspacing="0" border="0"><tr>
       <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xanzsp" size="2" maxlength="2" value="9" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
-      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="javascript:lmoanzspauf('xanzsp',1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg('pa',img1)" onMouseOut="lmoimg('pa',img0)"><img src="lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"></a></td></tr><tr><td><a href="javascript:lmoanzspauf('xanzsp',-1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg('pb',img3)" onMouseOut="lmoimg('pb',img2)"><img src="lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"></a></td></tr></table></td>
+      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\"xanzsp\",1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\"pa\",img1)" onMouseOut="lmoimg(\"pa\",img0)"><img src="lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\"xanzsp\",-1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\"pb\",img3)" onMouseOut="lmoimg(\"pb\",img2)"><img src="lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
     </tr></table></acronym></td>
   </tr>
 <?PHP }else{ ?>

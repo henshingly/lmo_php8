@@ -24,14 +24,14 @@
 //
 
 require_once("lmo-admintest.php");
-  isset($HTTP_POST_VARS['save'])?$save=$HTTP_POST_VARS['save']:$save=0;
+  isset($_POST['save'])?$save=$_POST['save']:$save=0;
   if($save==1){
     // Es werden alle Addon-Konfigurationen dargestellt als Texteingabe behandelt
     // und anschliessend abgespeichert - Es erfolgen keine Prüfungen auf Variablentyp und -wert
     foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
       if (is_array($addon_cfg)) {                 //Addon gefunden
         foreach ($addon_cfg as $cfg_name => $cfg_value) {
-          ${$addon_name."_".$cfg_name}=trim($HTTP_POST_VARS["x$cfg_name"]);    //Alle Post-vars mit x davor werden abgefragt und als Variable mit Präfix gespeichert
+          ${$addon_name."_".$cfg_name}=trim($_POST["x$cfg_name"]);    //Alle Post-vars mit x davor werden abgefragt und als Variable mit Präfix gespeichert
         }
       }
     }

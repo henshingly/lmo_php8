@@ -23,11 +23,11 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-if($HTTP_SESSION_VARS['lmouserok']==2){
+if($_SESSION['lmouserok']==2){
   $users = array("");
   $userf = array("");
-  isset($HTTP_GET_VARS['del'])?$del=$HTTP_GET_VARS['del']:$del=0;
-  isset($HTTP_POST_VARS['save'])?$save=$HTTP_POST_VARS['save']:$save=0;
+  isset($_GET['del'])?$del=$_GET['del']:$del=0;
+  isset($_POST['save'])?$save=$_POST['save']:$save=0;
   $pswfile="lmo-auth.txt";
   $psw1file="lmo-access.txt";
   $datei = fopen($pswfile,"rb");
@@ -50,9 +50,9 @@ if($HTTP_SESSION_VARS['lmouserok']==2){
   fclose($datei);
   $userf1="";
   if($save>0){
-    $users[$save]=trim($HTTP_POST_VARS["xname".$save])."|".trim($HTTP_POST_VARS["xpass".$save])."|".trim($HTTP_POST_VARS["xzugr".$save])."|EOL";
-    if(trim($HTTP_POST_VARS["xzugr".$save])==1){
-      $userh1=split("[,]",trim($HTTP_POST_VARS["xfiles".$save]));
+    $users[$save]=trim($_POST["xname".$save])."|".trim($_POST["xpass".$save])."|".trim($_POST["xzugr".$save])."|EOL";
+    if(trim($_POST["xzugr".$save])==1){
+      $userh1=split("[,]",trim($_POST["xfiles".$save]));
       $userh="";
       if(count($userh1)>0){
         for($u=0;$u<count($userh1);$u++){
@@ -69,14 +69,14 @@ if($HTTP_SESSION_VARS['lmouserok']==2){
             }
           }
         }
-      $userf1=trim($HTTP_POST_VARS["oldu"])."|".$userh."|".trim($HTTP_POST_VARS["xname".$save])."|EOL";
+      $userf1=trim($_POST["oldu"])."|".$userh."|".trim($_POST["xname".$save])."|EOL";
       }
     require("lmo-saveauth.php");
     }
   elseif($save==-1){
-    array_push($users,trim($HTTP_POST_VARS["xnamex"])."|".trim($HTTP_POST_VARS["xpassx"])."|".trim($HTTP_POST_VARS["xzugrx"])."|EOL");
-    if(trim($HTTP_POST_VARS["xzugrx"])==1){
-      $userf1=trim($HTTP_POST_VARS["xnamex"])."||EOL";
+    array_push($users,trim($_POST["xnamex"])."|".trim($_POST["xpassx"])."|".trim($_POST["xzugrx"])."|EOL");
+    if(trim($_POST["xzugrx"])==1){
+      $userf1=trim($_POST["xnamex"])."||EOL";
       }
     require("lmo-saveauth.php");
     }

@@ -18,8 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-$lmouserok=0;
 session_start();
+if (!isset($_SESSION["lmouserok"]))$_SESSION["lmouserok"]==0;
 require("lmo-cfgload.php");
 require("lmo-langload.php");
 isset($_GET['action'])? $action=$_GET['action']:$action='';
@@ -37,7 +37,7 @@ isset($_GET['madr'])  ? $madr=$_GET['madr']    :$madr='';
 </head>
 <body>
 <?
-if(($action=="admin") && ($todo=="email") && (($HTTP_SESSION_VARS["lmouserok"]==1) || ($HTTP_SESSION_VARS["lmouserok"]==2))){
+if(($action=="admin") && ($todo=="email") && (($_SESSION["lmouserok"]==1) || ($_SESSION["lmouserok"]==2))){
   if(($down!=0) && ($madr!="")){
     $array = array("");
     $ftype=".l98";

@@ -25,7 +25,7 @@
  *   
  */
 $zustatoutput='';
-if(($HTTP_SESSION_VARS['lmouserok']==2)||($HTTP_SESSION_VARS['lmouserok']==1)){
+if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
 if($lmtype==0){	
 
 	$zustatfile= @fopen($zustatdir.basename($file).".php","w+");

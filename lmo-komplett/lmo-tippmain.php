@@ -23,9 +23,10 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-tipptest.php");
+
 if($action=="tipp"){
   if($file!=""){$addm=$PHP_SELF."?file=".$file."&amp;action=";}
-  if($HTTP_SESSION_VARS["lmotipperok"]==5){
+  if($_SESSION["lmotipperok"]==5){
   if(($todo=="edit" && $file!="viewer") || $todo=="einsicht"){require("lmo-openfilest.php");}
   elseif($todo=="tabelle"){require("lmo-openfile.php");}
   elseif(($todo=="wert" && $all!=1) || $todo=="fieber"){require("lmo-openfilename.php");}
@@ -156,7 +157,7 @@ function lmotorauf(x,y,z){
     <td class="lmomain1" colspan="3" align="center">
 
 <?PHP
-if($HTTP_SESSION_VARS["lmotipperok"]==5){
+if($_SESSION["lmotipperok"]==5){
   if($file!="" && $file!="viewer"){$tippfile=$dirtipp.substr($file,strrpos($file,"/")+1,-4)."_".$lmotippername.".tip";}
   
   if($file=="viewer"){require("lmo-tippviewer.php");}

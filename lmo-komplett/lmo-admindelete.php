@@ -19,7 +19,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once("lmo-admintest.php");
-if(($action=="admin") && ($todo=="delete") && ($HTTP_SESSION_VARS['lmouserok']==2)){
+if(($action=="admin") && ($todo=="delete") && ($_SESSION['lmouserok']==2)){
   $adda=$PHP_SELF."?action=admin&amp;todo=";
   if(!isset($del)){$del=0;}
   if($del==1){
