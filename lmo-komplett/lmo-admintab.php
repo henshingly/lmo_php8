@@ -20,12 +20,13 @@
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($file!=""){
+  
   require_once(PATH_TO_LMO."/lmo-openfile.php");
   $breite=16;
   if($hidr!=1){$breite=$breite-1;}
   if($minus==2){$dummy=" colspan=\"3\" align=\"center\"";$breite=$breite+2;}else{$dummy=" align=\"right\"";}
   $endtab=$st;
-  $tabdat=" ";
+  $tabdat="";
   require(PATH_TO_LMO."/lmo-calctable.php");
   $platz0 = array("");
   $platz0 = array_pad($array,$anzteams+1,"");
@@ -177,22 +178,7 @@ if($file!=""){
 
   </table></td></tr>
   <tr>
-    <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
-<?PHP 
-  $st0=$st-1;
-  if($st>1){echo "<td class=\"lmost2\"><a href='$addr$st0' onclick=\"return chklmolink(this.href);\" title=\"".$text[6]."\">".$text[5]."</a></td>";}
-  if($st!=-1){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-1' onclick=\"return chklmolink(this.href);\" title=\"".$text[100]."\">".$text[99]."</a></td>";}
-    else{echo "<td class=\"lmost1\" align=\"center\">".$text[99]."</td>";}
-  if($hands==1){if($todo!="edit"){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr$st' onclick=\"return chklmolink(this.href);\" title=\"".$text[411]."\">".$text[412]."</a></td>";}
-    else{echo "<td class=\"lmost1\" align=\"center\">".$text[412]."</td>";}}
-if($_SESSION['lmouserok']==2){
-  if($st!=-2){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-2' onclick=\"return chklmolink(this.href);\" title=\"".$text[102]."\">".$text[101]."</a></td>";}
-    else{echo "<td class=\"lmost1\" align=\"center\">".$text[101]."</td>";}
-  }
-  $st0=$st+1;
-  if($st<$anzst){echo "<td align=\"right\" class=\"lmost2\"><a href='$addr$st0' onclick=\"return chklmolink(this.href);\" title=\"".$text[8]."\">".$text[7]."</a></td>";}
-?>
-    </tr></table></td>
+    <td><? include(PATH_TO_LMO."/lmo-adminnaviunten.php"); ?></td>
   </tr>
 </table>
 

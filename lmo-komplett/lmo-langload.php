@@ -28,18 +28,18 @@
 // akzeptiert)
 
 $text=array();
-read_langfile($text,PATH_TO_LMO."/lang-{$deflang}.txt");
+read_langfile($text,PATH_TO_LANGDIR."/lang-{$deflang}.txt");
 if (isset($lmouserlang)) {
-  if (file_exists(PATH_TO_LMO."/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LMO."/lang-{$lmouserlang}.txt");
+  if (file_exists(PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt");
 }
 
 //Alle lang-Dateien im Addon-Verzeichnis 
-$handle=opendir (PATH_TO_ADDONDIR);
+$handle=opendir (PATH_TO_LANGDIR);
 while (false!==($f=readdir($handle))) {
-  if (is_dir(PATH_TO_ADDONDIR.'/'.$f) && $f!='.' && $f!='..') {  //Wenn Unterverzeichnis Lang-dateien auslesen
-    if (file_exists(PATH_TO_ADDONDIR."/$f/lang-{$deflang}.txt")) read_langfile($text,PATH_TO_ADDONDIR."/$f/lang-{$deflang}.txt",$f);
+  if (is_dir(PATH_TO_LANGDIR.'/'.$f) && $f!='.' && $f!='..') {  //Wenn Unterverzeichnis Lang-dateien auslesen
+    if (file_exists(PATH_TO_LANGDIR."/$f/lang-{$deflang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/$f/lang-{$deflang}.txt",$f);
     if (isset($lmouserlang)) {
-      if (file_exists(PATH_TO_ADDONDIR."/$f/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_ADDONDIR."/$f/lang-{$lmouserlang}.txt",$f);
+      if (file_exists(PATH_TO_LANGDIR."/$f/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/$f/lang-{$lmouserlang}.txt",$f);
     }
   }
 }

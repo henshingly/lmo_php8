@@ -33,7 +33,7 @@ if($action=="admin"){
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
   if(!isset($st)){$sty=0;}else{$sty=$st;}
   if(!isset($newpage)){$newpage=0;}
-  if(!isset($file)){$file="";}
+  $file=isset($_REQUEST['file'])?$_REQUEST['file']:"";
   include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
 
 ?>

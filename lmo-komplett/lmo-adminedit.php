@@ -617,22 +617,7 @@ if($_SESSION['lmouserok']==2){
 
   </table></form></td></tr>
   <tr>
-    <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
-<? 
-  $st0=$st-1;
-  if($st>1){echo "<td class=\"lmost2\"><a href='$addr$st0' onclick='return chklmolink(this.href)' title=\"".$text[6]."\">".$text[5]."</a></td>";}
-  if($st!=-1){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-1' onclick='return chklmolink(this.href)' title=\"".$text[100]."\">".$text[99]."</a></td>";}
-    else{echo "<td class=\"lmost1\" align=\"center\">".$text[99]."</td>";}
-  if($hands==1){if($todo!="tabs"){echo "<td class=\"lmost2\" align=\"center\"><a href='$addb.$stx' onclick='return chklmolink(this.href)' title=\"".$text[409]."\">".$text[410]."</a></td>";}
-    else{echo "<td class=\"lmost1\" align=\"center\">".$text[410]."</td>";}}
-if($_SESSION['lmouserok']==2){
-  if($st!=-2){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-2' onclick='return chklmolink(this.href)' title=\"".$text[102]."\">".$text[101]."</a></td>";}
-    else{echo "<td class=\"lmost1\" align=\"center\">".$text[101]."</td>";}
-  }
-  $st0=$st+1;
-  if($st<$anzst){echo "<td align=\"right\" class=\"lmost2\"><a href='$addr$st0' onclick='return chklmolink(this.href)' title=\"".$text[8]."\">".$text[7]."</a></td>";}
-?>
-    </tr></table></td>
+    <td><? include(PATH_TO_LMO."/lmo-adminnaviunten.php"); ?></td>
   </tr>
 </table>
 

@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02b
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -125,7 +125,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         }
       }
     }
-  if($lmtype==0){$breite=7;}else{$breite=5;}
+  if($lmtype==0){$breite=4;}else{$breite=2;}
   $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
   $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
   $addz=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=-2&amp;team=";
@@ -133,145 +133,105 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
-<?PHP
-  for($i=1;$i<=$anzst;$i++){
-    echo "<td align=\"right\" ";
-    if($i<>$st){
-      echo "class=\"lmost0\"><a href='$addr$i' onclick=\"return chklmolink(this.href);\" title=\"".$text[9]."\">".$i."</a>";
-      }
-    else{
-      echo "class=\"lmost1\">".$i;
-      }
-    echo "&nbsp;</td>";
-    if(($anzst>49) && (($anzst%4)==0)){
-      if(($i==$anzst/4) || ($i==$anzst/2) || ($i==$anzst/4*3)){echo "</tr><tr>";}
-      }
-    elseif(($anzst>38) && (($anzst%3)==0)){
-      if(($i==$anzst/3) || ($i==$anzst/3*2)){echo "</tr><tr>";}
-      }
-    elseif(($anzst>29) && (($anzst%2)==0)){
-      if($i==$anzst/2){echo "</tr><tr>";}
-      }
-    }
-?>
-    <tr></table></td>
-  </tr>
-  <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-
-  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
-  
-  <input type="hidden" name="action" value="admin">
-  <input type="hidden" name="todo" value="edit">
-  <input type="hidden" name="save" value="1">
-  <input type="hidden" name="file" value="<?PHP echo $file; ?>">
-  <input type="hidden" name="st" value="<?PHP echo $st; ?>">
-
-  <tr>
-    <td class="lmost4"><?PHP echo $text[127]; ?></td>
-    <td class="lmost4" width="2">&nbsp;</td>
-<?PHP if($lmtype==0){ ?>
-    <td class="lmost4" align="center"><?PHP echo $text[128]; ?></td>
-    <td class="lmost4" width="2">&nbsp;</td>
-<?PHP } ?>
+    <td align="center" class="lmost3">
+      <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
+        <input type="hidden" name="action" value="admin">
+        <input type="hidden" name="todo" value="edit">
+        <input type="hidden" name="save" value="1">
+        <input type="hidden" name="file" value="<? echo $file; ?>">
+        <input type="hidden" name="st" value="<? echo $st; ?>">
+        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="lmost4"><acronym title="<? echo $text[125].", ".$text[126] ?>"><? echo $text[127]; ?></acronym>&nbsp;</td>
+<? if($lmtype==0){ ?>
+            <td class="lmost4" align="center"><acronym title="<? echo $text[131] ?>"><? echo $text[128]; ?></acronym>&nbsp;</td>
+<? } ?>
 <!-- Hack-Straftore Beginn -->
-<?PHP if($lmtype==0){ ?> 
-    <td class="lmost4" align="center"><?PHP echo $text[522]; ?></td>
-    <td class="lmost4" width="2">&nbsp;</td>
-<?PHP } ?>
-<?PHP if($lmtype==0){ ?>
-    <td class="lmost4" align="center"><?PHP echo $text[524]; ?></td>
-    <td class="lmost4" width="2">&nbsp;</td>
-<?PHP } ?>
+<? if($lmtype==0){ ?> 
+            <td class="lmost4" align="center"><acronym title="<? echo $text[521] ?>"><? echo $text[522]; ?></acronym>&nbsp;</td>
+<? } ?>
+<? if($lmtype==0){ ?>
+            <td class="lmost4" align="center"><acronym title="<? echo $text[523] ?>"><? echo $text[524]; ?></acronym>&nbsp;</td>
+<? } ?>
 <!-- Hack-Straftore Ende -->	
-<?PHP if($lmtype==0){ ?>
-    <td class="lmost4"><?PHP echo $text[404]; ?></td>
-    <td class="lmost4" width="2">&nbsp;</td>
-<?PHP } ?>
-    <td class="lmost4"><?PHP echo $text[129]; ?></td>
-<?PHP if($lmtype==0){ ?>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><nobr>
-<?PHP
-  if($team!=""){echo "<a href='$addr-3' onclick=\"return chklmolink(this.href);\" title=\"".$text[339]."\">".$text[338]."</a>";}
-    else{echo "&nbsp;";}
-?>
-    </nobr></td>
-<?PHP } ?>
-  </tr>
-<?PHP for($i=1;$i<=$anzteams;$i++){ ?>
-  <tr>
-    <td class="lmost5"><nobr>
-      <acronym title="<?PHP echo $text[125] ?>"><input class="lmoadminein" type="text" name="xteams<?PHP echo $i; ?>" size="32" maxlength="32" value="<?PHP echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()"></acronym>
-      <acronym title="<?PHP echo $text[126] ?>"><input class="lmoadminein" type="text" name="xteamk<?PHP echo $i; ?>" size="5" maxlength="5" value="<?PHP echo $teamk[$i]; ?>" onChange="dolmoedit()"></acronym>
-    </nobr></td>
-    <td class="lmost5" width="2">&nbsp;</td>
-<?PHP if($lmtype==0){ ?>
-    <td class="lmost5" align="center"><nobr>
-      <acronym title="<?PHP echo $text[131] ?>">
-      <input class="lmoadminein" type="text" name="xstrafp<?PHP echo $i; ?>" size="4" maxlength="4" value="<?PHP echo $strafp[$i]; ?>" onChange="dolmoedit()">
-<?PHP if($minus==2){ ?>
-      : <input class="lmoadminein" type="text" name="xstrafm<?PHP echo $i; ?>" size="4" maxlength="4" value="<?PHP echo $strafm[$i]; ?>" onChange="dolmoedit()">
-<?PHP } ?>
-      </acronym>
-    </nobr></td>
-    <td class="lmost5" width="2">&nbsp;</td>
+<? if($lmtype==0){ ?>
+            <td class="lmost4"><acronym title="<? echo $text[405] ?>"><? echo $text[404]; ?></acronym>&nbsp;</td>
+<? } ?>
+            <td class="lmost4"><acronym title="<? echo $text[130] ?>"><? echo $text[129]; ?></acronym></td>
+          </tr>
+<? for($i=1;$i<=$anzteams;$i++){ ?>
+          <tr>
+            <td class="lmost5">
+              <nobr>
+                <input class="lmoadminein" type="text" name="xteams<? echo $i; ?>" size="32" maxlength="32" value="<? echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()">
+                <input class="lmoadminein" type="text" name="xteamk<? echo $i; ?>" size="5" maxlength="5" value="<? echo $teamk[$i]; ?>" onChange="dolmoedit()">
+              </nobr>&nbsp;
+            </td>
+<?   if($lmtype==0){ ?>
+            <td class="lmost5" align="center">
+              <nobr>
+                <input class="lmoadminein" type="text" name="xstrafp<? echo $i; ?>" size="2" maxlength="4" value="<? echo $strafp[$i]; ?>" onChange="dolmoedit()">
+<?     if($minus==2){ ?>
+              : <input class="lmoadminein" type="text" name="xstrafm<? echo $i; ?>" size="2" maxlength="4" value="<? echo $strafm[$i]; ?>" onChange="dolmoedit()">
+<?     } ?>
+              </nobr>&nbsp;
+            </td>
 <!-- Hack-Straftore Beginn -->
-	<td class="lmost5" align="center"><nobr>
-	<acronym title="<?PHP echo $text[521] ?>">
-      <input class="lmoadminein" type="text" name="xtorkorrektur1<?PHP echo $i; ?>" size="4" maxlength="4" value="<?PHP echo $torkorrektur1[$i]; ?>" onChange="dolmoedit()">
-      : <input class="lmoadminein" type="text" name="xtorkorrektur2<?PHP echo $i; ?>" size="4" maxlength="4" value="<?PHP echo $torkorrektur2[$i]; ?>" onChange="dolmoedit()">
-      </acronym>
-    </nobr></td>
-    <td class="lmost5" width="2">&nbsp;</td>
-	<td class="lmost5" align="center"><nobr>
-	<acronym title="<?PHP echo $text[523] ?>">
-      <input class="lmoadminein" type="text" name="xstrafdat<?PHP echo $i; ?>" size="2" maxlength="2" value="<?PHP echo $strafdat[$i]; ?>" onChange="dolmoedit()">
-      </acronym>
-    </nobr></td>
-    <td class="lmost5" width="2">&nbsp;</td>
+  	        <td class="lmost5" align="center">
+              <nobr>
+                <input class="lmoadminein" type="text" name="xtorkorrektur1<? echo $i; ?>" size="2" maxlength="4" value="<? echo $torkorrektur1[$i]; ?>" onChange="dolmoedit()">
+              : <input class="lmoadminein" type="text" name="xtorkorrektur2<? echo $i; ?>" size="2" maxlength="4" value="<? echo $torkorrektur2[$i]; ?>" onChange="dolmoedit()">
+              </nobr>&nbsp;
+            </td>
+  	        <td class="lmost5" align="center">
+              <nobr>
+                <input class="lmoadminein" type="text" name="xstrafdat<? echo $i; ?>" size="2" maxlength="2" value="<? echo $strafdat[$i]; ?>" onChange="dolmoedit()">
+              </nobr>&nbsp;
+            </td>
 <!-- Hack-Straftore Ende -->	
-<?PHP } ?>
-<?PHP if($lmtype==0){ ?>
-    <td class="lmost5"><nobr>
-      <acronym title="<?PHP echo $text[405] ?>"><input class="lmoadminein" type="text" name="xteamn<?PHP echo $i; ?>" size="30" maxlength="255" value="<?PHP echo $teamn[$i]; ?>" onChange="dolmoedit()"></acronym>
-    </nobr></td>
-    <td class="lmost5" width="2">&nbsp;</td>
-<?PHP } ?>
-    <td class="lmost5"><nobr>
-      <acronym title="<?PHP echo $text[130] ?>"><input class="lmoadminein" type="text" name="xteamu<?PHP echo $i; ?>" size="30" maxlength="128" value="<?PHP echo $teamu[$i]; ?>" onChange="dolmoedit()"></acronym>
-    </nobr></td>
-<?PHP if($lmtype==0){ ?>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><nobr><a href='<?PHP echo $addz.$i; ?>' onclick="return dteamlmolink(this.href,'<?PHP echo $teams[$i]; ?>');" title="<?PHP echo $text[334]; ?>"><?PHP echo $text[333]; ?></a></nobr></td>
-<?PHP } ?>
-  </tr>
-<?PHP } ?>
-  <tr>
-    <td class="lmost4" colspan="<?PHP echo $breite; ?>" align="right">
-      <acronym title="<?PHP echo $text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<?PHP echo $text[132]; ?>"></acronym>
+<?   } ?>
+<?   if($lmtype==0){ ?>
+            <td class="lmost5">            
+              <input class="lmoadminein" type="text" name="xteamn<? echo $i; ?>" size="30" maxlength="255" value="<? echo $teamn[$i]; ?>" onChange="dolmoedit()">
+            </td>
+<?   } ?>
+            <td class="lmost5">
+              <input class="lmoadminein" type="text" name="xteamu<? echo $i; ?>" size="30" maxlength="128" value="<? echo $teamu[$i]; ?>" onChange="dolmoedit()">
+            </td>
+<?   if($lmtype==0){ ?>
+            <td class="lmost5">
+              <a href='<? echo $addz.$i; ?>' onclick="return dteamlmolink(this.href,'<? echo $teams[$i]; ?>');" title="<? echo $text[334]; ?>">
+                <img src="<?=URL_TO_IMGDIR."/delete.gif"?>" width="11" height="13" alt="<?$text[333];?>" border="0">
+              </a>
+            </td>
+<?   } ?>
+          </tr>
+<? } ?>
+          <tr>
+            <td class="lmost4" colspan="<? echo $breite; ?>" align="right">
+              <acronym title="<? echo $text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<? echo $text[132]; ?>"></acronym>
+            </td>
+<? if($lmtype==0){ ?>
+            <td class="lmost5">
+              <a href='<? echo $addz; ?>-1' onclick="return ateamlmolink(this.href);" title="<? echo $text[337]; ?>"><? echo $text[336]; ?></a>
+            </td>
+<? } ?>
+          </tr>
+        </table>
+      </form>
     </td>
-<?PHP if($lmtype==0){ ?>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><nobr><a href='<?PHP echo $addz; ?>-1' onclick="return ateamlmolink(this.href);" title="<?PHP echo $text[337]; ?>"><?PHP echo $text[336]; ?></a></nobr></td>
-<?PHP } ?>
-  </form>
-
-  </table></td></tr>
-
-  <tr>
-    <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
-<?PHP 
-  if($st!=-1){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-1' onclick=\"return chklmolink(this.href);\" title=\"".$text[100]."\">".$text[99]."</a></td>";}
-    else{echo "<td class=\"lmost1\" align=\"center\">".$text[99]."</td>";}
-  if($hands==1){if($todo!="tabs"){echo "<td class=\"lmost2\" align=\"center\"><a href='$addb$stx' onclick=\"return chklmolink(this.href);\" title=\"".$text[409]."\">".$text[410]."</a></td>";}
-    else{echo "<td class=\"lmost1\" align=\"center\">".$text[410]."</td>";}}
-  if($st!=-2){echo "<td class=\"lmost2\" align=\"center\"><a href='$addr-2' onclick=\"return chklmolink(this.href);\" title=\"".$text[102]."\">".$text[101]."</a></td>";}
-    else{echo "<td class=\"lmost1\" align=\"center\">".$text[101]."</td>";}
-?>
-    </tr></table></td>
   </tr>
-
+<? if($lmtype==0){ 
+     if($team!=""){?>
+  <tr>
+    <td class="lmost5">
+      <a href="<?=$addr?>-3" onclick="return chklmolink(this.href);" title="<?=$text[339]?>"><?=$text[338]?></a>
+    </td>
+  </tr>
+<?   }
+   } ?>
+  <tr>
+    <td><? include(PATH_TO_LMO."/lmo-adminnaviunten.php"); ?></td>
+  </tr>
 </table>
-
-<?PHP } ?>
+<?}?>
