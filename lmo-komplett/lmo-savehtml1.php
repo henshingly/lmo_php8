@@ -71,14 +71,14 @@ if($lmtype==0){
       if(($teama[$st-1][$i1]>0) && ($teamb[$st-1][$i1]>0)){
   			$heimteam=$teams[$teama[$y1-1][$i1]];
   			$gastteam=$teams[$teamb[$y1-1][$i1]];
-  			$heimtore=$goala[$y1-1][$i1];
-  			$gasttore=$goalb[$y1-1][$i1];
+  			$heimtore=($goala[$y1-1][$i1]/$goalfaktor);
+  			$gasttore=($goalb[$y1-1][$i1]/$goalfaktor);
   			if ($gasttore<0) $gasttore="_";
   			if ($heimtore<0) $heimtore="_";
   			// * Spielfrei-Hack-Beginn1	- Autor: Bernd Hoyer - eMail: info@salzland-info.de
   			if (($anzteams-($anzst/2+1))!=0){
-  			$spielfreiaa[$i1]=$teama[$y1-1][$i1];
-  			$spielfreibb[$i1]=$teamb[$y1-1][$i1];
+    			$spielfreiaa[$i1]=$teama[$y1-1][$i1];
+    			$spielfreibb[$i1]=$teamb[$y1-1][$i1];
   			}
   			// * Spielfrei-Hack-Ende1- Autor: Bernd Hoyer - eMail: info@salzland-info.de
   			if($mterm[$y1-1][$i1]>0){$dum1=strftime($datf, $mterm[$y1-1][$i1]);}else{$dum1="";} // Anstosszeit einblenden
@@ -133,12 +133,12 @@ if($lmtype==0){
 			$platz=$i1+1;
 			$i4=(int)substr($table1[$i1],35,7);
 			$teamname=$teams[$i4];
-			$pluspunkte=$punkte[$i4];
-			$minuspunkte=$negativ[$i4];
-			$kegelnholz=$dtore[$i4];
-			$plustore=$etore[$i4];
-			$minustore=$atore[$i4];
-			$torverhaeltnis=$dtore[$i4];
+			$pluspunkte=($punkte[$i4]/$pointsfaktor);
+			$minuspunkte=($negativ[$i4]/$pointsfaktor);
+			$kegelnholz=($dtore[$i4]/$goalfaktor);
+			$plustore=($etore[$i4]/$goalfaktor);
+			$minustore=($atore[$i4]/$goalfaktor);
+			$torverhaeltnis=($dtore[$i4]/$goalfaktor);
 			$spieleteam=$spiele[$i4];?>
 						
 		<tr>

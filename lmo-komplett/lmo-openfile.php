@@ -43,24 +43,26 @@ if(isset($file) && $file!="" && check_hilfsadmin($file)){
           $wert=trim($conf[1]);
           if($sekt=="Options"){
             switch ($schl) {
-              case "Title":    $lmvers=$wert;break;
-              case "Name":     $titel=stripslashes($wert);break;
-              case "Type":     $lmtype=stripslashes($wert);break;
-              case "Teams":    $anzteams=$wert;break;
-              case "Actual":   if(!isset($st))$st=$wert;$stx=$wert;break;
-              case "DatC":     $datc=$wert;break;
-              case "DatS":     $dats=$wert;break;
-              case "DatM":     $datm=$wert;break;
-              case "DatF":     $datf=$wert;break;
-              case "urlT":     $urlt=$wert;break;
-              case "urlB":     $urlb=$wert;break;
-              case "Plan":     $plan=$wert;break;
+              case "Title":        $lmvers=$wert;break;
+              case "Name":         $titel=stripslashes($wert);break;
+              case "Type":         $lmtype=stripslashes($wert);break;
+              case "Teams":        $anzteams=$wert;break;
+              case "Actual":       if(!isset($st))$st=$wert;$stx=$wert;break;
+              case "DatC":         $datc=$wert;break;
+              case "DatS":         $dats=$wert;break;
+              case "DatM":         $datm=$wert;break;
+              case "DatF":         $datf=$wert;break;
+              case "urlT":         $urlt=$wert;break;
+              case "urlB":         $urlb=$wert;break;
+              case "Plan":         $plan=$wert;break;
               case "Sprachauswahl":$sprachauswahl=$wert;break;
-              case "Ergebnis": $ergebnis=$wert;break;
-              case "mittore":  $mittore=$wert;break;
-              case "favTeam":  $favteam=$wert;break;
-              case "selTeam":  if(!isset($selteam))$selteam=$wert;break;
-              case "ticker":   $nticker=$wert;break;
+              case "Ergebnis":     $ergebnis=$wert;break;
+              case "mittore":      $mittore=$wert;break;
+              case "favTeam":      $favteam=$wert;break;
+              case "selTeam":      if(!isset($selteam))$selteam=$wert;break;
+              case "ticker":       $nticker=$wert;break;
+              case "goalfaktor":   $goalfaktor=$wert;break;
+              case "pointsfaktor":   $pointsfaktor=$wert;break;
             }
             if($lmtype==0){
               switch ($schl) {
@@ -126,6 +128,8 @@ if(isset($file) && $file!="" && check_hilfsadmin($file)){
       if(!isset($datf)){                       $datf="%d.%m. %H:%M";}
       if(!isset($urlt)){                       $urlt=1;}
       if(!isset($urlb)){                       $urlb=0;}
+      if(!isset($goalfaktor)){                 $goalfaktor=1;}
+      if(!isset($pointsfaktor)){               $pointsfaktor=1;}
       if($lmtype==0){
         if(!isset($kurve)){                    $kurve=1;}
         if(!isset($kreuz)){                    $kreuz=1;}

@@ -180,13 +180,13 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               echo $teamk[$teama[$st-1][$i]]."<br>";
             }
             if ($lmtype != 0) {
-              echo $goala[$st-1][$i][$n].":".$goalb[$st-1][$i][$n];
+              echo ($goala[$st-1][$i][$n]/$goalfaktor).":".($goalb[$st-1][$i][$n]/$goalfaktor);
               if ($mtipp[$st-1][$i][$n] == 1) {
                 echo $text['tipp'][230];
                 $nw = 1;
               }
             } else {
-              echo $goala[$st-1][$i].":".$goalb[$st-1][$i];
+              echo ($goala[$st-1][$i]/$goalfaktor).":".($goalb[$st-1][$i]/$goalfaktor);
               if ($mtipp[$st-1][$i] == 1) {
                 echo $text['tipp'][230];
                 $nw = 1;

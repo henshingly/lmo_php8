@@ -181,7 +181,7 @@ if ($file != "") {
             } else {
               echo "<td width=\"8\">|</td>";
             }?>
-          <td class="nobr"><?=$dumn1; ?><?=$goala[$j][$i][$n]; ?>&nbsp;:&nbsp;<?=$goalb[$j][$i][$n]; ?>&nbsp;<?=$mspez[$j][$i][$n]; ?><?=$dumn2; ?><?
+          <td class="nobr"><?=$dumn1; ?><?=($goala[$j][$i][$n]/$goalfaktor); ?>&nbsp;:&nbsp;<?=($goalb[$j][$i][$n]/$goalfaktor); ?>&nbsp;<?=$mspez[$j][$i][$n]; ?><?=$dumn2; ?><?
            /** Mannschaftsicons finden
              */
             $lmo_teamaicon="";
@@ -212,7 +212,7 @@ if ($file != "") {
              */
             if ($mnote[$j][$i][$n]!="") {
          
-              $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong> ".$goala[$j][$i][$n].":".$goalb[$j][$i][$n];
+              $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong> ".($goala[$j][$i][$n]/$goalfaktor).":".($goalb[$j][$i][$n]/$goalfaktor);
               //Allgemeine Notiz
               
               $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$j][$i][$n];

@@ -276,9 +276,9 @@ if($n==0){
 }
 else{ echo "&nbsp;";}
 echo "&nbsp;";
-echo $goala[$st-1][$i][$n];
+echo ($goala[$st-1][$i][$n]/$goalfaktor);
 echo "&nbsp;-&nbsp;";
-echo $goalb[$st-1][$i][$n]; 
+echo ($goalb[$st-1][$i][$n]/$goalfaktor); 
 
 echo $mspez[$st-1][$i][$n];
 echo "<br/>\n";
@@ -325,8 +325,8 @@ if($file!=""){?>
     $teamname= ($teamname);
   	echo $teamname;
     if (($favteam>0) && ($favteam==$teamb[$st-1][$i])){echo "</b>";}
-    $heim_tore=$goala[$st-1][$i];
-  	$gast_tore=$goalb[$st-1][$i];
+    $heim_tore=($goala[$st-1][$i]/$goalfaktor);
+  	$gast_tore=($goalb[$st-1][$i]/$goalfaktor);
     
     echo "</td><td>".$heim_tore.":".$gast_tore;
     echo "</td></tr>";

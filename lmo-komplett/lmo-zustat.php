@@ -282,47 +282,47 @@ if ($_SESSION['lmouserok'] > 0) {
       		
     		
 		// Ausgabe der Daten - Anfang
-		$zustatoutput.='$gzutore='.$gzutore.';'; 								// Gesamttore der Saison
-		$zustatoutput.='$gdstore='.$gdstore.';'; 								// Gesamt-Durchschnitt Tore pro Spiel
+		$zustatoutput.='$gzutore='.($gzutore/$goalfaktor).';'; 								// Gesamttore der Saison
+		$zustatoutput.='$gdstore='.($gdstore/$goalfaktor).';'; 								// Gesamt-Durchschnitt Tore pro Spiel
 		$zustatoutput.='$gzusieg1='.$gzusieg1.';'; 							// Gesamtheimsiege
 		$zustatoutput.='$gzusieg2='.$gzusieg2.';'; 							// Gesamtauswärtssiege
 		$zustatoutput.='$gzuunent='.$gzuunent.';'; 							// Gesamtunenetschieden
 		$zustatoutput.='$gbeide='.$gbeide.';'; 								// Gesamt beidseitiges Ergebnis
-		$zustatoutput.='$gheimtore='.$gheimtore.';'; 							// Gesamt-Heimtore
-		$zustatoutput.='$ggasttore='.$ggasttore.';'; 							// Gesamt-Auswärtstore
-		$zustatoutput.='$dsheimtore='.$dsheimtore.';'; 						// Gesamt-Durchschnitt Tore pro Heimspiel
-		$zustatoutput.='$dsgasttore='.$dsgasttore.';'; 						// Gesamt-Durchschnitt Tore pro Auswärtsspiel
+		$zustatoutput.='$gheimtore='.($gheimtore/$goalfaktor).';'; 							// Gesamt-Heimtore
+		$zustatoutput.='$ggasttore='.($ggasttore/$goalfaktor).';'; 							// Gesamt-Auswärtstore
+		$zustatoutput.='$dsheimtore='.($dsheimtore/$goalfaktor).';'; 						// Gesamt-Durchschnitt Tore pro Heimspiel
+		$zustatoutput.='$dsgasttore='.($dsgasttore/$goalfaktor).';'; 						// Gesamt-Durchschnitt Tore pro Auswärtsspiel
 		$zustatoutput.='$hheimsieg="'.$hheimsieg.'";';		// Heimmannschaft1 - höchster Heimsieg
 		$zustatoutput.='$hgastsieg="'.$hgastsieg.'";';		// Gastmannschaft1 - höchster Heimsieg
-		$zustatoutput.='$hheimsiegtor="'.$hheimsiegtor.'";';						// Tore Heimmannschaft1
-		$zustatoutput.='$hgastsiegtor="'.$hgastsiegtor.'";';						// Tore Gastmannschaft1
+		$zustatoutput.='$hheimsiegtor="'.($hheimsiegtor/$goalfaktor).'";';						// Tore Heimmannschaft1
+		$zustatoutput.='$hgastsiegtor="'.($hgastsiegtor/$goalfaktor).'";';						// Tore Gastmannschaft1
 		$zustatoutput.='$spieltagflag='.$spieltagflag.';';						// Spieltag des Sieges Paarung1
 		$zustatoutput.='$hheimsieg1="'.$hheimsieg1.'";';	// Heimmannschaft2 - höchster Heimsieg
 		$zustatoutput.='$hgastsieg1="'.$hgastsieg1.'";';	// Gastmannschaft2 - höchster Heimsieg
-		$zustatoutput.='$hheimsiegtor1="'.$hheimsiegtor1.'";';					// Tore Heimmannschaft2
-		$zustatoutput.='$hgastsiegtor1="'.$hgastsiegtor1.'";';					// Tore Gastmannschaft2
+		$zustatoutput.='$hheimsiegtor1="'.($hheimsiegtor1/$goalfaktor).'";';					// Tore Heimmannschaft2
+		$zustatoutput.='$hgastsiegtor1="'.($hgastsiegtor1/$goalfaktor).'";';					// Tore Gastmannschaft2
 		$zustatoutput.='$spieltagflag1='.$spieltagflag1.';';					// Spieltag des Sieges Paarung2
 		$zustatoutput.='$counteranz='.$counteranz.';';							// Anzahl höchster Heimsiege
 		$zustatoutput.='$aheimsieg="'.$aheimsieg.'";';		// Heimmannschaft1 - höchster Auswärtssieg
 		$zustatoutput.='$agastsieg="'.$agastsieg.'";';		// Gastmannschaft1 - höchster Auswärtssieg
-		$zustatoutput.='$aheimsiegtor="'.$aheimsiegtor.'";';						// Tore Heimmannschaft1
-		$zustatoutput.='$agastsiegtor="'.$agastsiegtor.'";';						// Tore Gastmannschaft1
+		$zustatoutput.='$aheimsiegtor="'.($aheimsiegtor/$goalfaktor).'";';						// Tore Heimmannschaft1
+		$zustatoutput.='$agastsiegtor="'.($agastsiegtor/$goalfaktor).'";';						// Tore Gastmannschaft1
 		$zustatoutput.='$spieltagflag2='.$spieltagflag2.';';					// Spieltag des Sieges Paarung1
 		$zustatoutput.='$aheimsieg1="'.$aheimsieg1.'";';	// Heimmannschaft2 - höchster Auswärtssieg
 		$zustatoutput.='$agastsieg1="'.$agastsieg1.'";';	// Gastmannschaft2 - höchster Auswärtssieg
-		$zustatoutput.='$aheimsiegtor1="'.$aheimsiegtor1.'";';					// Tore Heimmannschaft2
-		$zustatoutput.='$agastsiegtor1="'.$agastsiegtor1.'";';					// Tore Gastmannschaft2
+		$zustatoutput.='$aheimsiegtor1="'.($aheimsiegtor1/$goalfaktor).'";';					// Tore Heimmannschaft2
+		$zustatoutput.='$agastsiegtor1="'.($agastsiegtor1/$goalfaktor).'";';					// Tore Gastmannschaft2
 		$zustatoutput.='$spieltagflag3='.$spieltagflag3.';';					// Spieltag des Sieges Paarung2
 		$zustatoutput.='$counteranz1='.$counteranz1.';';						// Anzahl höchster Auswärtssiege
 		$zustatoutput.='$htorreichm1="'.$htorreichm1.'";'; 	// Heimmannschaft1 - Torreichstes Spiel1
 		$zustatoutput.='$htorreichm2="'.$htorreichm2.'";'; 	// Gastmannschaft1 - Torreichstes Spiel1
-		$zustatoutput.='$htorreicht1="'.$htorreicht1.'";';						// Tore Heimmannschaft1
-		$zustatoutput.='$htorreicht2="'.$htorreicht2.'";';						// Tore Gastmannschaft1
+		$zustatoutput.='$htorreicht1="'.($htorreicht1/$goalfaktor).'";';						// Tore Heimmannschaft1
+		$zustatoutput.='$htorreicht2="'.($htorreicht2/$goalfaktor).'";';						// Tore Gastmannschaft1
 		$zustatoutput.='$spieltagflag4='.$spieltagflag4.';';					// Spieltag des Sieges Paarung1
 		$zustatoutput.='$htorreichm3="'.$htorreichm3.'";'; 	// Heimmannschaft2 - Torreichstes Spiel2
 		$zustatoutput.='$htorreichm4="'.$htorreichm4.'";'; 	// Gastmannschaft2 - Torreichstes Spiel2
-		$zustatoutput.='$htorreicht3="'.$htorreicht3.'";';						// Tore Heimmannschaft2
-		$zustatoutput.='$htorreicht4="'.$htorreicht4.'";';						// Tore Gastmannschaft2
+		$zustatoutput.='$htorreicht3="'.($htorreicht3/$goalfaktor).'";';						// Tore Heimmannschaft2
+		$zustatoutput.='$htorreicht4="'.($htorreicht4/$goalfaktor).'";';						// Tore Gastmannschaft2
 		$zustatoutput.='$spieltagflag5='.$spieltagflag5.';';					// Spieltag des Sieges Paarung2
 		$zustatoutput.='$counteranz5='.$counteranz5.';';						// Anzahl höchster Treffer
 		$zustatoutput.='?>';

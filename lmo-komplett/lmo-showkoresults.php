@@ -116,7 +116,7 @@ if ($file != "") {
       for($n = 0; $n < $modus[$st-1]; $n++) {
         if(($klfin==1) && ($st==$anzst)){ ?>
         <tr>
-          <th colspan="<?=$breite; ?>"><nobr><? if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></nobr></th>
+          <th class="nobr" colspan="<?=$breite; ?>"><? if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></th>
         </tr><? 
         }?>
         <tr><? 
@@ -126,9 +126,9 @@ if ($file != "") {
           } else {
             $dum1="";
           }?>
-          <td class="lmost5"><nobr><?=$dum1; ?></nobr></td><? 
+          <td class="nobr"><nobr><?=$dum1; ?></nobr></td><? 
         }?>
-          <td class="lmost5" width="2">&nbsp;</td><?
+          <td class="nobr" width="2">&nbsp;</td><?
         if ($n == 0) {
           $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
           $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
@@ -155,13 +155,13 @@ if ($file != "") {
                ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$st-1][$i]])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$teama[$st-1][$i]]?>"><?
           }
           echo "</td>";?>
-          <td class="lmost5" align="center" width="10">-</td><?
+          <td class="nobr" align="center" width="10">-</td><?
           if ($m == 2) {
-            echo "<td align='left' class=\"lmoTurnierSieger\"><nobr>";
+            echo "<td align='left' class=\"lmoTurnierSieger nobr\">";
           } elseif($m==1) {
-            echo "<td align='left' class=\"lmoTurnierVerlierer\"><nobr>";
+            echo "<td align='left' class=\"lmoTurnierVerlierer nobr\">";
           } else {
-            echo "<td align=\"left\"><nobr>";
+            echo "<td align=\"left\" class='nobr'>";
           }
           if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$st-1][$i]].".gif")) {
               $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$st-1][$i]].".gif");
@@ -176,18 +176,18 @@ if ($file != "") {
           if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
             echo "</strong>";
           }
-          echo "</a></nobr></td>";
+          echo "</a></td>";
         } else { ?>
-          <td class="lmost5" colspan="3">&nbsp;</td><? 
+          <td class="nobr" colspan="3">&nbsp;</td><? 
         }?>
-          <td class="lmost5" width="2">&nbsp;</td>
-          <td class="lmost5" align="right"><?=$goala[$st-1][$i][$n]; ?></td>
-          <td class="lmost5" align="center" width="8">:</td>
-          <td class="lmost5"><?=$goalb[$st-1][$i][$n]; ?></td>
-          <td class="lmost5" width="2">&nbsp;</td>
-          <td class="lmost5"><?=$mspez[$st-1][$i][$n]; ?></td>
-          <td class="lmost5" width="2">&nbsp;</td>
-          <td class="lmost5"><nobr><?
+          <td class="nobr" width="2">&nbsp;</td>
+          <td class="nobr" align="right"><?=($goala[$st-1][$i][$n]/$goalfaktor); ?></td>
+          <td class="nobr" align="center" width="8">:</td>
+          <td class="nobr" align="left"><?=($goalb[$st-1][$i][$n];/$goalfaktor);?></td>
+          <td class="nobr" width="2">&nbsp;</td>
+          <td class="nobr"><?=$mspez[$st-1][$i][$n]; ?></td>
+          <td class="nobr" width="2">&nbsp;</td>
+          <td class="nobr"><?
         /** Mannschaftsicons finden
          */
         $lmo_teamaicon="";
@@ -228,12 +228,12 @@ if ($file != "") {
         } else {
           echo "&nbsp;";
         }?>
-          </nobr></td>
+          </td>
         </tr><? 
       }
       if(($modus[$st-1]>1) && ($i<$anzsp-1)){ ?>
         <tr>
-          <td class="lmost5" colspan="<?=$breite; ?>">&nbsp;</td>
+          <td class="nobr" colspan="<?=$breite; ?>">&nbsp;</td>
         </tr><? 
       }
     }
@@ -248,11 +248,11 @@ if ($file != "") {
         <tr><?  
   $st0 = $st-1;
   if ($st > 1) {?>
-          <td class="lmoMenu" align='left'><a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a></td><?
+          <td align='left'><a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a></td><?
   }
   $st0 = $st+1;
   if ($st < $anzst) {?>
-          <td align="right" class="lmoMenu"><a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[7]?></a></td><?
+          <td align="right" ><a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[7]?></a></td><?
   }?>
         </tr>
       </table>

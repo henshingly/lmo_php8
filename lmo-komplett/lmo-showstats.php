@@ -19,11 +19,11 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if($file!=""){
-  $stat1=isset($_GET['stat1'])?$_GET['stat1']:0;
-  $stat2=isset($_GET['stat2'])?$_GET['stat2']:0;
-  if ($stat1==0 && $stat2!=0) {
-    $stat1=$stat2;
-    $stat2=0;
+  $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
+  $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
+  if ($show_stat1==0 && $show_stat2!=0) {
+    $show_stat1=$show_stat2;
+    $show_stat2=0;
   }
   $adds=$_SERVER['PHP_SELF']."?action=stats&amp;file=".$file."&amp;stat1=";
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
@@ -37,8 +37,8 @@ if($file!=""){
         <tr>
           <td align="right">
             <acronym title="<?=$text[57]." ".$teams[$i]?>"><?
-    if($i!=$stat1 && $i<>$stat2){?>
-            <a href="<?=$adds.$i?>&amp;stat2=<?=$stat2?>"><?=$teamk[$i]?></a><?
+    if($i!=$show_stat1 && $i<>$show_stat2){?>
+            <a href="<?=$adds.$i?>&amp;stat2=<?=$show_stat2?>"><?=$teamk[$i]?></a><?
     } else {
       echo $teamk[$i];
     }     ?></acronym>
@@ -57,7 +57,7 @@ if($file!=""){
     </td>
     <td valign="top" align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
-  if($stat1==0){?>
+  if($show_stat1==0){?>
         <tr>
           <td align="center">&nbsp;<br><?=$text[24]?><br>&nbsp;</td>
         </tr><?
@@ -70,42 +70,42 @@ if($file!=""){
       $platz0[intval(substr($tab0[$x], 34))] = $x+1;
     }?>
         <tr>
-          <th align="right"><?=$teams[$stat1];?></th>
+          <th align="right"><?=$teams[$show_stat1];?></th>
           <th align="center"><?
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$stat1].".gif") && file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$stat2].".gif")) {   
-      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$stat1].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$stat1].".gif");
-               ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$stat1])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$stat1]?>"><?
+    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat1].".gif") && file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat2].".gif")) {   
+      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat1].".gif")) {
+              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat1].".gif");
+               ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$show_stat1])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$show_stat1]?>"><?
       }
       echo "&nbsp;:&nbsp;";
-      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$stat2].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$stat2].".gif");
-                 ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$stat2])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$stat2]?>"><?
+      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat2].".gif")) {
+              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$show_stat2].".gif");
+                 ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$show_stat2])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$show_stat2]?>"><?
       }
     } ?></th><? 
-      if($stat2>0){ ?>
-          <th align="left"><?=$teams[$stat2];?></th><? 
+      if($show_stat2>0){ ?>
+          <th align="left"><?=$teams[$show_stat2];?></th><? 
       }?>
         </tr>
 <?
   $serie1="&nbsp;";
-  if ($ser1[$stat1]>0) {
-    $serie1=$ser1[$stat1]." ".$text[474]."<br>".$ser2[$stat1]." ".$text[75];
-  } elseif ($ser3[$stat1]>0) {
-    $serie1=$ser3[$stat1]." ".$text[475]."<br>".$ser4[$stat1]." ".$text[76];
-  } elseif ($ser2[$stat1]>=$ser4[$stat1]) {
-    $serie1=$ser2[$stat1]." ".$text[75];
+  if ($ser1[$show_stat1]>0) {
+    $serie1=$ser1[$show_stat1]." ".$text[474]."<br>".$ser2[$show_stat1]." ".$text[75];
+  } elseif ($ser3[$show_stat1]>0) {
+    $serie1=$ser3[$show_stat1]." ".$text[475]."<br>".$ser4[$show_stat1]." ".$text[76];
+  } elseif ($ser2[$show_stat1]>=$ser4[$show_stat1]) {
+    $serie1=$ser2[$show_stat1]." ".$text[75];
   } else {
-    $serie1=$ser4[$stat1]." ".$text[76];
+    $serie1=$ser4[$show_stat1]." ".$text[76];
   }
-  if ($stat2>0) {
+  if ($show_stat2>0) {
     $chg1="k.A.";
     $chg2="k.A.";
-    if (!empty($spiele[$stat1])&&!empty($spiele[$stat2])) {
-      $ax=(100*$siege[$stat1]/$spiele[$stat1])+(100*$nieder[$stat2]/$spiele[$stat2]);
-      $bx=(100*$siege[$stat2]/$spiele[$stat2])+(100*$nieder[$stat1]/$spiele[$stat1]);
-      $cx=($etore[$stat1]/$spiele[$stat1])+($atore[$stat2]/$spiele[$stat2]);
-      $dx=($etore[$stat2]/$spiele[$stat2])+($atore[$stat1]/$spiele[$stat1]);
+    if (!empty($spiele[$show_stat1])&&!empty($spiele[$show_stat2])) {
+      $ax=(100*$siege[$show_stat1]/$spiele[$show_stat1])+(100*$nieder[$show_stat2]/$spiele[$show_stat2]);
+      $bx=(100*$siege[$show_stat2]/$spiele[$show_stat2])+(100*$nieder[$show_stat1]/$spiele[$show_stat1]);
+      $cx=($etore[$show_stat1]/$spiele[$show_stat1])+($atore[$show_stat2]/$spiele[$show_stat2]);
+      $dx=($etore[$show_stat2]/$spiele[$show_stat2])+($atore[$show_stat1]/$spiele[$show_stat1]);
       $ex=$ax+$bx;
       $fx=$cx+$dx;
     }
@@ -118,14 +118,14 @@ if($file!=""){
       $chg2=number_format((($bx+$dx)/200),2,",",".");
     }
     $serie2="&nbsp;";
-    if ($ser1[$stat2]>0) {
-      $serie2=$ser1[$stat2]." ".$text[474]."<br>".$ser2[$stat2]." ".$text[75];
-    } else if ($ser3[$stat2]>0) {
-      $serie2=$ser3[$stat2]." ".$text[475]."<br>".$ser4[$stat2]." ".$text[76];
-    } else if ($ser2[$stat2]>=$ser4[$stat2]) {
-      $serie2=$ser2[$stat2]." ".$text[75];
+    if ($ser1[$show_stat2]>0) {
+      $serie2=$ser1[$show_stat2]." ".$text[474]."<br>".$ser2[$show_stat2]." ".$text[75];
+    } else if ($ser3[$show_stat2]>0) {
+      $serie2=$ser3[$show_stat2]." ".$text[475]."<br>".$ser4[$show_stat2]." ".$text[76];
+    } else if ($ser2[$show_stat2]>=$ser4[$show_stat2]) {
+      $serie2=$ser2[$show_stat2]." ".$text[75];
     } else {
-      $serie2=$ser4[$stat2]." ".$text[76];
+      $serie2=$ser4[$show_stat2]." ".$text[76];
     }
   
 
@@ -137,59 +137,59 @@ if($file!=""){
         </tr>
 <? } ?>
         <tr>
-          <td align="right"><?=$platz0[$stat1];?></td>
+          <td align="right"><?=$platz0[$show_stat1];?></td>
           <th><?=$text[61];?></th>
-          <? if($stat2>0){ ?><td align="left"><?=$platz0[$stat2];?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><?=$platz0[$show_stat2];?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><?=$punkte[$stat1]; if($minus==2){":".$negativ[$stat1];} ?></td>
+          <td align="right"><?=$punkte[$show_stat1]; if($minus==2){":".$negativ[$show_stat1];} ?></td>
           <th><?= $text[37]; ?></th>
-          <? if($stat2>0){ ?><td align="left"><?=$punkte[$stat2]; if($minus==2){":".$negativ[$stat2];} ?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><?=$punkte[$show_stat2]; if($minus==2){":".$negativ[$show_stat2];} ?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><?=$spiele[$stat1];?></td>
+          <td align="right"><?=$spiele[$show_stat1];?></td>
           <th><?= $text[63]; ?></th>
-          <? if($stat2>0){ ?><td align="left"><?=$spiele[$stat2];?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><?=$spiele[$show_stat2];?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><? if($spiele[$stat1]){echo number_format($punkte[$stat1]/$spiele[$stat1],2,",","."); if($minus==2){":".number_format($negativ[$stat1]/$spiele[$stat1],2,",",".");}} ?></td>
+          <td align="right"><? if($spiele[$show_stat1]){echo number_format($punkte[$show_stat1]/$spiele[$show_stat1],2); if($minus==2){":".number_format($negativ[$show_stat1]/$spiele[$show_stat1],2);}} ?></td>
           <th><?= $text[37].$text[64]; ?></th>
-          <? if($stat2>0){if($spiele[$stat2]){ ?><td align="left"><? echo number_format($punkte[$stat2]/$spiele[$stat2],2,",","."); if($minus==2){":".number_format($negativ[$stat2]/$spiele[$stat2],2,",",".");}} ?></td><? } ?>
+          <? if($show_stat2>0){if($spiele[$show_stat2]){ ?><td align="left"><? echo number_format($punkte[$show_stat2]/$spiele[$show_stat2],2); if($minus==2){":".number_format($negativ[$show_stat2]/$spiele[$show_stat2],2);}} ?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><?= $etore[$stat1].":".$atore[$stat1]; ?></td>
+          <td align="right"><?= ($etore[$show_stat1]/$goalfaktor).":".($atore[$show_stat1]/$goalfaktor); ?></td>
           <th><?= $text[38]; ?></th>
-          <? if($stat2>0){ ?><td align="left"><?= $etore[$stat2].":".$atore[$stat2]; ?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><?= ($etore[$show_stat2]/$goalfaktor).":".($atore[$show_stat2]/$goalfaktor); ?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><? if($spiele[$stat1]){ echo number_format($etore[$stat1]/$spiele[$stat1],2,",",".").":".number_format($atore[$stat1]/$spiele[$stat1],2,",",".");} ?></td>
+          <td align="right"><? if($spiele[$show_stat1]){ echo number_format(($etore[$show_stat1]/$goalfaktor)/$spiele[$show_stat1],2).":".number_format(($atore[$show_stat1]/$goalfaktor)/$spiele[$show_stat1],2);} ?></td>
           <th><?= $text[38].$text[64]; ?></th>
-          <? if($stat2>0){ ?><td align="left"><? if($spiele[$stat2]){ echo number_format($etore[$stat2]/$spiele[$stat2],2,",",".").":".number_format($atore[$stat2]/$spiele[$stat2],2,",",".");} ?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><? if($spiele[$show_stat2]){ echo number_format(($etore[$show_stat2]/$goalfaktor)/$spiele[$show_stat2],2).":".number_format(($atore[$show_stat2]/$goalfaktor)/$spiele[$show_stat2],2);} ?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><? if($spiele[$stat1]){echo $siege[$stat1]." (".number_format($siege[$stat1]*100/$spiele[$stat1],2,",",".")."%)";} ?></td>
+          <td align="right"><? if($spiele[$show_stat1]){echo $siege[$show_stat1]." (".number_format($siege[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></td>
           <th><?= $text[67]; ?></th>
-          <? if($stat2>0){ ?><td align="left"><? if($spiele[$stat2]){echo $siege[$stat2]." (".number_format($siege[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><? if($spiele[$show_stat2]){echo $siege[$show_stat2]." (".number_format($siege[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><?= $maxs0[$stat1]; ?></td>
+          <td align="right"><?= $maxs0[$show_stat1]; ?></td>
           <th valign="top"><?= $text[68]; ?></th>
-          <? if($stat2>0){ ?><td align="left"><?= $maxs0[$stat2]; ?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><?= $maxs0[$show_stat2]; ?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><? if($spiele[$stat1]){echo $nieder[$stat1]." (".number_format($nieder[$stat1]*100/$spiele[$stat1],2,",",".")."%)";} ?></td>
+          <td align="right"><? if($spiele[$show_stat1]){echo $nieder[$show_stat1]." (".number_format($nieder[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></td>
           <th><?= $text[69]; ?></th>
-          <? if($stat2>0){ ?><td align="left"><? if($spiele[$stat2]){echo $nieder[$stat2]." (".number_format($nieder[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><? if($spiele[$show_stat2]){echo $nieder[$show_stat2]." (".number_format($nieder[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><?= $maxn0[$stat1]; ?></td>
+          <td align="right"><?= $maxn0[$show_stat1]; ?></td>
           <th valign="top"><?= $text[70]; ?></th>
-          <? if($stat2>0){ ?><td align="left"><?= $maxn0[$stat2]; ?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><?= $maxn0[$show_stat2]; ?></td><? } ?>
         </tr>
         <tr>
           <td align="right"><?= $serie1; ?></td>
           <th valign="top"><?= $text[71]; ?></th>
-          <? if($stat2>0){ ?><td align="left"><?= $serie2; ?></td><? } ?>
+          <? if($show_stat2>0){ ?><td align="left"><?= $serie2; ?></td><? } ?>
         </tr>
 <?
     }
@@ -210,8 +210,8 @@ if($file!=""){
     }   ?></td>
           <td align="left">
             <acronym title="<?=$text[57]." ".$teams[$i]?>"><?
-    if($i!=$stat1 && $i!=$stat2){
-               ?><a href="<?=$adds.$stat1?>&amp;stat2=<?=$i?>"><?=$teamk[$i]?></a><?
+    if($i!=$show_stat1 && $i!=$show_stat2){
+               ?><a href="<?=$adds.$show_stat1?>&amp;stat2=<?=$i?>"><?=$teamk[$i]?></a><?
     } else {
       echo $teamk[$i];
     }
@@ -247,18 +247,17 @@ if($file!=""){
         <td align="right"> <?=$text[4006]?> </td>
         <td align="center"> <?=$text[4008]?> </td>
         <td align="left"> <?=$text[4007]?> </td>
-        
       </tr>
       <tr>
-        <td align="right"> <?=$ggesamt=$gzusieg1+$gzusieg2+$gzuunent+$gbeide;?></td>
-        <td align="right"> <?=$gzusieg1?><?if ($ggesamt>0) {$v=round($gzusieg1/$ggesamt*100);echo " ($v%)";}?> </td>
-        <td align="center"> <?=$gzuunent?><?if ($ggesamt>0) {$v=round($gzuunent/$ggesamt*100);echo " ($v%)";}?> </td>
-        <td align="left"> <?=$gzusieg2?><?if ($ggesamt>0) {$v=round($gzusieg2/$ggesamt*100);echo " ($v%)";}?> </td>
+        <td align="right"> <strong><?=$ggesamt=$gzusieg1+$gzusieg2+$gzuunent+$gbeide;?></strong></td>
+        <td align="right"> <strong><?=$gzusieg1?></strong><?if ($ggesamt>0) {$v=round($gzusieg1/$ggesamt*100);echo " ($v%)";}?> </td>
+        <td align="center"> <strong><?=$gzuunent?></strong><?if ($ggesamt>0) {$v=round($gzuunent/$ggesamt*100);echo " ($v%)";}?> </td>
+        <td align="left"> <strong><?=$gzusieg2?></strong><?if ($ggesamt>0) {$v=round($gzusieg2/$ggesamt*100);echo " ($v%)";}?> </td>
       </tr><?
     if ($gbeide>0) {?>
       <tr>
         <td align="right" colspan="2"><?=$text[4012]?></td>
-        <td colspan="2" align="center"><?=$gbeide?><?if ($ggesamt>0) {$v=round($gbeide/$ggesamt*100);echo " ($v%)";}?></td>
+        <td colspan="2" align="center"><strong><?=$gbeide?></strong><?if ($ggesamt>0) {$v=round($gbeide/$ggesamt*100);echo " ($v%)";}?></td>
       </tr><?
     }?>
       <tr>
@@ -271,16 +270,10 @@ if($file!=""){
         <td align="left"> <?=$text[4011]?> </td>
       </tr>
       <tr>
-        <td align="right"> <?=$gzutore?> </td>
-        <td align="right"> <?=$gheimtore?><?if ($gdstore>0) {$v=round($dsheimtore/$gdstore*100);echo " ($v%)";}?> </td>
+        <td align="right"> <strong><?=$gzutore?></strong> (<?=$text[517]?><?=$gdstore?>) </td>
+        <td align="right"> <strong><?=$gheimtore?></strong><?if ($gdstore>0) {$v=round($dsheimtore/$gdstore*100);echo " ($v% ".$text[517].$dsheimtore.")";}?> </td>
         <td>&nbsp;</td>
-        <td align="left"> <?=$ggasttore?><?if ($gdstore>0) {echo " (".(100-$v)."%)";}?> </td>
-      </tr>
-      <tr>
-        <td align="right"><?=$text[517]?> <?=$gdstore?> </td>
-        <td align="right"><?=$text[517]?> <?=$dsheimtore?> </td>
-        <td>&nbsp;</td>
-        <td align="left"><?=$text[517]?> <?=$dsgasttore?> </td>
+        <td align="left"> <strong><?=$ggasttore?></strong><?if ($gdstore>0) {echo " (".(100-$v)."% ".$text[517].$dsgasttore.")";}?> </td>
       </tr>
       <tr>
         <th colspan="4" align="center"><?=$text[4013]?></th>

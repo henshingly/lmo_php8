@@ -30,16 +30,18 @@ if($file!=""){
         if($_SESSION['lmouserok']==2){
           $titel=isset($_POST["xtitel"])?trim($_POST["xtitel"]):$titel;
           if($titel==""){$titel="No Name";}
-          $namepkt=isset($_POST["xnamepkt"])?trim($_POST["xnamepkt"]):$namepkt;
-          if($namepkt==$orgpkt){$namepkt="";}
-          $nametor=isset($_POST["xnametor"])?trim($_POST["xnametor"]):$nametor;
-          if($nametor==$orgtor){$nametor="";}
+          $goalfaktor=isset($_POST["xgoalfaktor"]) && is_numeric($_POST["xgoalfaktor"])?$_POST["xgoalfaktor"]:$goalfaktor;
+          $pointsfaktor=isset($_POST["xpointsfaktor"]) && is_numeric($_POST["xpointsfaktor"])?$_POST["xpointsfaktor"]:$pointsfaktor;
         }
         $favteam=isset($_POST["xfavteam"])?trim($_POST["xfavteam"]):$favteam;
         $selteam=isset($_POST["xselteam"])?trim($_POST["xselteam"]):$selteam;
         if($lmtype==0){
           $stat1=isset($_POST["xstat1"])?trim($_POST["xstat1"]):$stat1;
           $stat2=isset($_POST["xstat2"])?trim($_POST["xstat2"]):$stat2;
+          $namepkt=isset($_POST["xnamepkt"])?trim($_POST["xnamepkt"]):$namepkt;
+          if($namepkt==$orgpkt){$namepkt="";}
+          $nametor=isset($_POST["xnametor"])?trim($_POST["xnametor"]):$nametor;
+          if($nametor==$orgtor){$nametor="";}
         }
         break;
       case 1:
@@ -158,7 +160,29 @@ include(PATH_TO_LMO."/lmo-adminnaviunten.php");
             <td class="nobr" align="right"><input class="lmo-formular-input" type="text" name="xnametor" size="7" maxlength="60" value="<? if($nametor==""){echo $text[38];}else{echo $nametor;} ?>" onChange="dolmoedit()"></td>
             <td class="nobr" align="left"><acronym title="<? echo $text[66] ?>"><? echo $text[65]." ".$text[38]; ?></acronym></td>
           </tr><?
-      }
+      }?>
+          <tr>
+            <td class="nobr" align="right">
+              <select class="lmo-formular-input" name="xpointsfaktor" size="1" onChange="dolmoedit()">
+                <option value="1"<?if ($pointsfaktor==1) echo " selected";?>><?=$text[553]?></option>
+                <option value="10"<?if ($pointsfaktor==10) echo " selected";?>><?=$text[554]?></option>
+                <option value="100"<?if ($pointsfaktor==100) echo " selected";?>><?=$text[555]?></option>
+                <option value="1000"<?if ($pointsfaktor==1000) echo " selected";?>><?=$text[556]?></option>
+              </select>
+            </td>
+            <td class="nobr" align="left"><acronym title="<? echo $text[558] ?>"><? echo $text[557]; ?> <? echo $text[37]; ?></acronym></td>
+          </tr>
+          <tr>
+            <td class="nobr" align="right">
+              <select class="lmo-formular-input" name="xgoalfaktor" size="1" onChange="dolmoedit()">
+                <option value="1"<?if ($goalfaktor==1) echo " selected";?>><?=$text[553]?></option>
+                <option value="10"<?if ($goalfaktor==10) echo " selected";?>><?=$text[554]?></option>
+                <option value="100"<?if ($goalfaktor==100) echo " selected";?>><?=$text[555]?></option>
+                <option value="1000"<?if ($goalfaktor==1000) echo " selected";?>><?=$text[556]?></option>
+              </select>
+            </td>
+            <td class="nobr" align="left"><acronym title="<? echo $text[558] ?>"><? echo $text[557]; ?> <? echo $text[38]; ?></acronym></td>
+          </tr><?
     }?>
           <tr>
             <td class="nobr" align="right">

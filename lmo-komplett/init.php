@@ -1,17 +1,22 @@
 <?
 // Dies ist der Dateipfad zum LMO-Verzeichnis ausgehend von deinem HTML-Stammverzeichnis (ohne abschliessenden '/'!)
-$lmo_dateipfad="/tmp/lmo-komplett/lmo";
-// Dies ist die absolute URL zum LMO-Verzeichnis (ohne abschliessenden '/'!)
-$lmo_url='http://localhost/tmp/lmo-komplett/lmo';
+$lmo_dateipfad=$_SERVER['DOCUMENT_ROOT'].dirname($_SERVER['PHP_SELF']);
+//$lmo_dateipfad="/tmp/lmo-komplett/lmo";
 
-if (isset($_GET['debug'])) {
+// Dies ist die absolute URL zum LMO-Verzeichnis (ohne abschliessenden '/'!)
+$lmo_url='http://'.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
+//$lmo_url='http://localhost/tmp/lmo-komplett/lmo';
+
+if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
+    $_SESSION['debug']=TRUE;
     @error_reporting(E_ALL);
+    @ini_set('display_errors','1');
 }
 
 if (session_id()=="") session_start();
 @ini_set("session.use_trans_sid","1");
 @ini_set("arg_separator.output","&amp;");
-if (!defined('PATH_TO_LMO'))        define('PATH_TO_LMO',         $_SERVER['DOCUMENT_ROOT'].$lmo_dateipfad);
+if (!defined('PATH_TO_LMO'))        define('PATH_TO_LMO',         $lmo_dateipfad);
 if (!defined('PATH_TO_ADDONDIR'))   define('PATH_TO_ADDONDIR',    PATH_TO_LMO.'/addon');
 if (!defined('PATH_TO_TEMPLATEDIR'))define('PATH_TO_TEMPLATEDIR', PATH_TO_LMO.'/template');
 if (!defined('PATH_TO_IMGDIR'))     define('PATH_TO_IMGDIR',      PATH_TO_LMO.'/img');
@@ -33,20 +38,22 @@ if(isset($_REQUEST["lmouserlang"])){$_SESSION["lmouserlang"]=$_REQUEST["lmouserl
 if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
 require_once(PATH_TO_LMO."/lmo-langload.php");
 
-function check_hilfsadmin($datei) {
-  $hilfsadmin_berechtigung=FALSE;
-  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']==1){
-    $hilfsadmin_ligen = explode(',',$_SESSION['lmouserfile']);
-    if(isset($hilfsadmin_ligen)){
-      foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
-        if($hilfsadmin_liga.".l98"==basename($datei)){
-          $hilfsadmin_berechtigung=TRUE;
+if (!function_exists('check_hilfsadmin')) {
+  function check_hilfsadmin($datei) {
+    $hilfsadmin_berechtigung=FALSE;
+    if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']==1){
+      $hilfsadmin_ligen = explode(',',$_SESSION['lmouserfile']);
+      if(isset($hilfsadmin_ligen)){
+        foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
+          if($hilfsadmin_liga.".l98"==basename($datei)){
+            $hilfsadmin_berechtigung=TRUE;
+          }
         }
       }
-    }
-  } else {
-    $hilfsadmin_berechtigung=TRUE;
-  }  
-  return $hilfsadmin_berechtigung; 
+    } else {
+      $hilfsadmin_berechtigung=TRUE;
+    }  
+    return $hilfsadmin_berechtigung; 
+  }
 }
 ?>

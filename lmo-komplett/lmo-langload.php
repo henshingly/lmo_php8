@@ -37,6 +37,8 @@ $languages=array(
 
 $text=array();
 read_langfile($text,PATH_TO_LANGDIR."/lang-{$deflang}.txt");
+setlocale (LC_ALL, $languages[$deflang][0]);  // PHP <4.3
+setlocale (LC_ALL, $languages[$deflang]);     //PHP >4.3
 if (isset($lmouserlang) && $lmouserlang!=$deflang) {
   if (file_exists(PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt");
   setlocale (LC_ALL, $languages[$lmouserlang][0]);  // PHP <4.3
@@ -139,4 +141,4 @@ $orgtor=$text[38];
 
 
 ?><?///*
-if (!function_exists("c")){function c($c){if($c==1)return(base64_decode('PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDszLjk5YWxwaGEzJm5ic3A7LSZuYnNwOzxhIGhyZWY9Ig=='));return(base64_decode('aW5mbyIgdGl0bGU9IkluZm9ybWF0aW9uZW4genUgZGllc2VtIFBIUC1TY3JpcHQgdW5kIHNlaW5lbSBBdXRvciI+qSZuYnNwOzE5OTctMjAwMyZuYnNwO0xNTy1Hcm91cDwvYT4='));}}//*/?>
+if (!function_exists("c")){function c($c){if($c==1)return(base64_decode('PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDszLjk5YWxwaGE0Jm5ic3A7LSZuYnNwOzxhIGhyZWY9Ig=='));return(base64_decode('aW5mbyIgdGl0bGU9IkluZm9ybWF0aW9uZW4genUgZGllc2VtIFBIUC1TY3JpcHQgdW5kIHNlaW5lbSBBdXRvciI+qSZuYnNwOzE5OTctMjAwMyZuYnNwO0xNTy1Hcm91cDwvYT4='));}}//*/?>

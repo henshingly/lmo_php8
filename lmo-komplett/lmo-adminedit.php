@@ -340,7 +340,7 @@ if ($file != "") {
         <input type="hidden" name="st" value="<?=$st; ?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <th class="nobr" align="left" colspan="<?=$breite-4; ?>"><?
+            <th class="nobr" align="left" colspan="<?=$breite-10; ?>"><?
   echo $st.". ".$text[2];
   if ($datum1[$st-1] != "") {
     $datum = split("[.]", $datum1[$st-1]);
@@ -355,10 +355,15 @@ if ($file != "") {
     $dum2 = "";
   }
   if($_SESSION['lmouserok']==2){ ?> 
-             <acronym title="<?=$text[105] ?>"> <?=$text[3]?></acronym> <input class="lmo-formular-input" type="text" name="xdatum1" size="10" maxlength="10" value="<?=$datum1[$st-1]; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum1\',\'<?=$dum1; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'d1\',img5)" onMouseOut="lmoimg(\'d1\',img4)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin4.gif" name="ximgd1" width="12" height="11" border="0"></a>');</script>
-             <acronym title="<?=$text[106] ?>"> <?=$text[4]?></acronym> <input class="lmo-formular-input" type="text" name="xdatum2" size="10" maxlength="10" value="<?=$datum2[$st-1]; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum2\',\'<?=$dum2; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'d2\',img5)" onMouseOut="lmoimg(\'d2\',img4)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin4.gif" name="ximgd2" width="12" height="11" border="0"></a>');</script><? 
+              <acronym title="<?=$text[105] ?>"> <?=$text[3]?></acronym> <input class="lmo-formular-input" type="text" name="xdatum1" size="10" maxlength="10" value="<?=$datum1[$st-1]; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum1\',\'<?=$dum1; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'d1\',img5)" onMouseOut="lmoimg(\'d1\',img4)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin4.gif" name="ximgd1" width="12" height="11" border="0"></a>');</script>
+              <acronym title="<?=$text[106] ?>"> <?=$text[4]?></acronym> <input class="lmo-formular-input" type="text" name="xdatum2" size="10" maxlength="10" value="<?=$datum2[$st-1]; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum2\',\'<?=$dum2; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'d2\',img5)" onMouseOut="lmoimg(\'d2\',img4)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin4.gif" name="ximgd2" width="12" height="11" border="0"></a>');</script><? 
   }?>
-            </th><? 
+            </th><?
+  if ($goalfaktor!=1) {?>
+            <th class="nobr" colspan="<?=$breite-11; ?>">(<?=$text[553+log10($goalfaktor)]?>)</th><?
+  } else {?>
+            <th colspan="<?=$breite-11; ?>">&nbsp;</th><? 
+  }
   if($lmtype==0){ ?>
             <th class="nobr"><acronym title="<?=$text[213] ?>"><?=$text[217]; ?></acronym></th><? 
   }?>

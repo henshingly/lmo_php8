@@ -20,11 +20,11 @@
 // 
 if(($file!="") && ($kurve==1)){
   $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
-  $stat1=isset($_GET['stat1'])?$_GET['stat1']:0;
-  $stat2=isset($_GET['stat2'])?$_GET['stat2']:0;
-  if ($stat1==0 && $stat2!=0 || $stat1==$stat2) {
-    $stat1=$stat2;
-    $stat2=0;
+  $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
+  $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
+  if ($show_stat1==0 && $show_stat2!=0 || $show_stat1==$show_stat2) {
+    $show_stat1=$show_stat2;
+    $show_stat2=0;
   }
 ?>
 
@@ -36,7 +36,7 @@ if(($file!="") && ($kurve==1)){
         <tr>
           <td align="right">
             <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
-    if($i!=$stat1){?>
+    if($i!=$show_stat1){?>
             <a href="<?=$addp.$i?>" ><?=$teamk[$i]?></a><?
     } else {
       echo $teamk[$i];
@@ -57,7 +57,7 @@ if(($file!="") && ($kurve==1)){
     </td>
     <td valign="top" align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
-  if($stat1==0){?>
+  if($show_stat1==0){?>
         <tr>
           <td align="center">&nbsp;<br><?=$text[24]?><br>&nbsp;</td>
         </tr><?
@@ -65,9 +65,9 @@ if(($file!="") && ($kurve==1)){
     $tabtype=0;
     require(PATH_TO_LMO."/lmo-calcgraph.php");
     $dummy=URL_TO_LMO."/lmo-paintgraph.php?pganz=";
-    if($stat2>0){$dummy=$dummy."2";}else{$dummy=$dummy."1";}
-    $dummy=$dummy."&pgteam1=".rawurlencode($teams[$stat1]);
-    if($stat2>0){$dummy=$dummy."&pgteam2=".rawurlencode($teams[$stat2]);}
+    if($show_stat2>0){$dummy=$dummy."2";}else{$dummy=$dummy."1";}
+    $dummy=$dummy."&pgteam1=".rawurlencode($teams[$show_stat1]);
+    if($show_stat2>0){$dummy=$dummy."&pgteam2=".rawurlencode($teams[$show_stat2]);}
     $dummy=$dummy."&pgteams=".$anzteams;
     $dummy=$dummy."&pgst=".$anzst;
     $dummy=$dummy."&pgch=".$champ;
@@ -77,11 +77,11 @@ if(($file!="") && ($kurve==1)){
     $dummy=$dummy."&pgar=".$anzar;
     $dummy=$dummy."&pgab=".$anzab;
     $dummy=$dummy."&pgplatz1=";
-    for($j=0;$j<$anzst;$j++){$dummy=$dummy.$platz[$stat1][$j].",";}
+    for($j=0;$j<$anzst;$j++){$dummy=$dummy.$platz[$show_stat1][$j].",";}
     $dummy=$dummy."0";
-    if($stat2>0){
+    if($show_stat2>0){
       $dummy=$dummy."&pgplatz2=";
-      for($j=0;$j<$anzst;$j++){$dummy=$dummy.$platz[$stat2][$j].",";}
+      for($j=0;$j<$anzst;$j++){$dummy=$dummy.$platz[$show_stat2][$j].",";}
       $dummy=$dummy."0";
       }
     $dummy=$dummy."&pgtext1=".$text[135];
@@ -106,8 +106,8 @@ if(($file!="") && ($kurve==1)){
     }   ?></td>
           <td align="right">
             <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
-    if($i!=$stat2){?>
-            <a href="<?=$addp.$stat1."&amp;stat2=".$i?>" ><?=$teamk[$i]?></a><?
+    if($i!=$show_stat2){?>
+            <a href="<?=$addp.$show_stat1."&amp;stat2=".$i?>" ><?=$teamk[$i]?></a><?
     } else {
       echo $teamk[$i];
     }

@@ -1,12 +1,13 @@
 [Options]
-Title=LigaManager Online 3.02b
+Title=<acronym title="Liga Manager Online">LMO</acronym> 3.99&alpha;3
 Name=1. Fussball-Bundesliga 2003/04
-mittore=0
 Type=0
 Teams=18
+goalfaktor=10
+pointsfaktor=10
 Rounds=34
 Matches=9
-Actual=21
+Actual=1
 Kegel=0
 HandS=0
 PointsForWin=3
@@ -23,21 +24,27 @@ CK=0
 UC=2
 AR=0
 AB=3
-namePkt=Pkt.
-nameTor=Tore
+namePkt=
+nameTor=
 DatC=1
 DatS=1
 DatM=1
 DatF=%d.%m. %H:%M
 urlT=1
 urlB=0
+Plan=1
+Sprachauswahl=1
+Ergebnis=1
+mittore=0
+favTeam=1
+selTeam=1
+ticker=0
 Graph=1
 Kreuz=1
-favTeam=0
-selTeam=0
-kurve1=0
-kurve2=0
-ticker=0
+Tabelle=1
+Ligastats=1
+kurve1=1
+kurve2=2
 
 [Teams]
 1=FC Bayern München
@@ -81,91 +88,145 @@ ticker=0
 
 [Team1]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team2]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team3]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team4]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team5]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team6]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team7]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team8]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team9]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team10]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team11]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team12]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team13]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team14]
 SP=3
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team15]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team16]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team17]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team18]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 

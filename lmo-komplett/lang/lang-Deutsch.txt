@@ -52,7 +52,7 @@
 051=Dummy
 052=Herzlich Willkommen!
 053=Bitte wählen Sie eine Liga aus
-054=<acronym title="Liga Manager Online">LMO</acronym> 3.99&alpha;3
+054=<acronym title="Liga Manager Online">LMO</acronym> 3.99&alpha;4
 055=© 1997-2003 LMO-Group
 056=[ <a href="http://www.hollwitz.de/" target="_blank" title="Dieses und weitere Scripte können Sie auf meiner PHP-Seite downloaden">Hollwitz.Net(z)</a> | <a href="https://sourceforge.net/projects/lmo/" target="_blank" title="Die neueste Version bei Sourceforge">LMO-Projekt</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
 057=Die Statistik 1 von
@@ -551,6 +551,12 @@
 550=Versand nicht erfolgreich
 551=Playdown ermöglichen
 552=Kann der Verlierer eine Runde weiterkommen?
+553=Keine
+554=Zehntel
+555=Hundertstel
+556=Tausendstel
+557=Kommastellen
+558=Sind Kommastellen benötigt? (Werden nur bei der Ausgabe berücksichtigt!)
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde
