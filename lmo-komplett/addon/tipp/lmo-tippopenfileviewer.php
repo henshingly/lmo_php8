@@ -29,8 +29,7 @@ if ($file != "") {
     $mspez0 = 0;
     $daten = array();
     $sekt = "";
-    $datei = fopen($file, "rb");
-    if ($datei) {
+    if ($datei = fopen($file, "rb")) {
       while (!feof($datei)) {
         $zeile = fgets($datei, 1000);
         $zeile = chop($zeile);
@@ -120,7 +119,7 @@ if ($file != "") {
       $datm = 0;
     }
     for($i = 1; $i <= count($daten); $i++) {
-      $dum = split("[|]", $daten[$i-1]);
+      $dum = explode('|', $daten[$i-1]);
       if ($dum[0] == "Teams") {
         $teams[$dum[1]] = stripslashes($dum[2]);
       }
@@ -279,7 +278,7 @@ if ($file != "") {
             array_push($tipp_jokertippaktiv, "0");
             $anzspiele++;
             for($j = 1; $j <= count($tippdaten); $j++) {
-              $dum1 = split("[|]", $tippdaten[$j-1]);
+              $dum1 = explode('|', $tippdaten[$j-1]);
               $op8 = substr($dum1[1], 0, 2);
               if ($op8 == "GA") {
                 $tippa0 = $dum1[2];
@@ -301,8 +300,8 @@ if ($file != "") {
                   if ($tippb0 == "-1") {
                     $tippb0 = "_";
                   }
-                  $tippa[$anzspiele] = $tippa0;
-                  $tippb[$anzspiele] = $tippb0;
+                  $tippa[$anzspiele-1] = $tippa0;
+                  $tippb[$anzspiele-1] = $tippb0;
                   if ($tipp_jokertipp == 1) {
                     if ($dum1[3] == $spiel0t) {
                       $jksp[$anzspiele-1] = $spiel0t;
@@ -312,7 +311,7 @@ if ($file != "") {
                      
                     if ($dum1[3] > 0) {
                       for($k = $rb; $k <= count($daten); $k++) {
-                        $dum2 = split("[|]", $daten[$k-1]);
+                        $dum2 = explode('|', $daten[$k-1]);
                         $op8 = substr($dum2[1], 0, 2);
                         if ($op8 == "AT") {
                           $spiel0 = substr($dum2[1], 2);
@@ -335,5 +334,4 @@ if ($file != "") {
   }
 }
 clearstatcache();
-
 ?>

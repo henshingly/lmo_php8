@@ -19,7 +19,7 @@
   
   
 if (($file != "") && ($subteams != "")) {
-  $subteam = split("[.]", $subteams);
+  $subteam = explode('.', $subteams);
   $spiele1 = array_pad($array, $anzteams+1, "");
   $siege1 = array_pad($array, $anzteams+1, "");
   $unent1 = array_pad($array, $anzteams+1, "");

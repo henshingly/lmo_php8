@@ -539,7 +539,7 @@
 538=Fußzeilen
 539=Hauptmenü
 540=Untermenü
-541=Links
+541=Link
 542=Strafe
 543=Bonus
 544=Abbrechen

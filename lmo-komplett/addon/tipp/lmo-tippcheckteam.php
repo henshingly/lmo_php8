@@ -36,7 +36,7 @@ array_shift($dumma);
 $tipperteam = array_pad($array, count($dumma)+1, "");
  
 for($i = 0; $i < count($dumma); $i++) {
-  $dummb1 = split("[|]", $dumma[$i]);
+  $dummb1 = explode('|', $dumma[$i]);
   if ($dummb1[5] != "") {
     $gef = 0;
     for($j = 0; $j < $v && $gef == 0; $j++) {

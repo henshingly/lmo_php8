@@ -23,254 +23,124 @@ if ($file != "") {
   $addr = $_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
   $me = array("0", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
   $mb = strftime("%m%Y", strtotime("now"));
-  if (isset($cal)) {
+  $cal=isset($_GET['cal'])?$_GET['cal']:null;
+  function filterZero($a) {
+    return (!empty($a));
+  }
+  
+  //Anzeigezeitraum festlegen
+  if (isset($cal)) {  //Zeitraum vorgegeben
     if (strlen($cal) > 4) {
-      $dum1 = strtotime("1 ".$me[intval(substr($cal, 0, 2))]." ".substr($cal, 2)." -1 month");
-      $dum2 = strtotime("1 ".$me[intval(substr($cal, 0, 2))]." ".substr($cal, 2));
-      $dum3 = strtotime("1 ".$me[intval(substr($cal, 0, 2))]." ".substr($cal, 2)." +1 month");
+      $lmo_month_prev = strtotime("1 ".$me[intval(substr($cal, 0, 2))]." ".substr($cal, 2)." -1 month");
+      $lmo_month_this = strtotime("1 ".$me[intval(substr($cal, 0, 2))]." ".substr($cal, 2));
+      $lmo_month_next = strtotime("1 ".$me[intval(substr($cal, 0, 2))]." ".substr($cal, 2)." +1 month");
     } else {
-      $dum1 = strtotime("1 ".$me[1]." ".substr($cal, 2)." -1 year");
-      $dum2 = strtotime("1 ".$me[1]." ".substr($cal, 2));
-      $dum3 = strtotime("1 ".$me[1]." ".substr($cal, 2)." +1 year");
+      $lmo_month_prev = strtotime("1 ".$me[1]." ".substr($cal, 2)." -1 year");
+      $lmo_month_this = strtotime("1 ".$me[1]." ".substr($cal, 2));
+      $lmo_month_next = strtotime("1 ".$me[1]." ".substr($cal, 2)." +1 year");
     }
   } else {
-    if ($datum1[$st-1] != "") {
-      $datum = split("[.]", $datum1[$st-1]);
-      $dum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." -1 month");
-      $dum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-      $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." +1 month");
-    } elseif($datum2[$st-1] != "") {
-      $datum = split("[.]", $datum2[$st-1]);
-      $dum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." -1 month");
-      $dum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-      $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." +1 month");
+    $lmo_termine = array();
+    $lmo_termine=array_filter($mterm[$st-1],"filterZero");  //Nullwerte filtern
+    if (!empty($lmo_termine)) {
+      $datum = explode('.', strftime("%d.%m.%Y",min($lmo_termine)));
+      $lmo_month_prev = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." -1 month");
+      $lmo_month_this = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
+      $lmo_month_next = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." +1 month");
     } else {
-      $dum0 = array("");
-      for($i = 0; $i < $anzsp; $i++) {
-        if ($mterm[$st-1][$i] > 0) {
-          array_push($dum0, $mterm[$st-1][$i]);
-        }
-      }
-      if (count($dum0) > 1) {
-        array_shift($dum0);
-        array_sort($dum0);
-        $datum = split("[.]", $dum0[0]);
-        $dum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." -1 month");
-        $dum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-        $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." +1 month");
-      } else {
-        $dum1 = strtotime("-1 month");
-        $dum2 = strtotime("now");
-        $dum3 = strtotime("+1 month");
-      }
+      $lmo_month_prev = strtotime("-1 month");
+      $lmo_month_this = strtotime("now");
+      $lmo_month_next = strtotime("+1 month");
     }
   }
-  if ($dum2 != -1) {
+  
+  
+  //Datenformate generieren
+  if ($lmo_month_this != -1) {
     if (!isset($cal)) {
-      $cal = strftime("%m%Y", $dum2);
+      $cal = strftime("%m%Y", $lmo_month_this);
     }
-    if (strlen($cal) > 4) {
-      $ma = strftime("%m%Y", $dum1);
-      $mc = strftime("%m%Y", $dum3);
-      $md = strftime("%B %Y", $dum2);
-      $ml = strftime("%Y", $dum2);
-      $mj = " ".$me[intval(strftime("%m", $dum2))]." ".strftime("%Y", $dum2);
+    if (strlen($cal) > 4) {  //Monatsanzeige
+      $ma = strftime("%m%Y", $lmo_month_prev);
+      $mc = strftime("%m%Y", $lmo_month_next);
+      $md = strftime("%B %Y", $lmo_month_this);
+      $ml = strftime("%Y", $lmo_month_this);
+      $mj = " ".$me[intval(strftime("%m", $lmo_month_this))]." ".strftime("%Y", $lmo_month_this);
       $dat1 = getdate(strtotime("1".$mj));
       $erster = $dat1['wday'];
+    } else {  //Jahresanzeige
+      $ma = strftime("%Y", $lmo_month_prev);
+      $mc = strftime("%Y", $lmo_month_next);
+      $md = strftime("%Y", $lmo_month_this);
+      $mj = " ".strftime("%Y", $lmo_month_this);
+    }
+  }
+
+  if (strlen($cal) > 4) {   //Monatsanzeige
+    $lmo_arrays=32;
+    $lmo_daterule="%B %Y";
+    $lmo_daterule2="%d";
+  } else {                  //Jahresanzeige
+    $lmo_arrays=13;
+    $lmo_daterule="%Y";
+    $lmo_daterule2="%m";
+  }
+  
+  $lmo_stlink = array();
+  $lmo_stlink = array_pad($array, $lmo_arrays, '');
+  for($j = 0; $j < $anzst; $j++) {
+    $lmo_stlink_title = array_pad($array, $lmo_arrays, '');
+    
+    for($i = 0; $i < $anzsp; $i++) {
+      if (!empty($mterm[$j][$i]) && strftime($lmo_daterule, $mterm[$j][$i]) == $md) { //konkretes Spieldatum vorhanden
+        $a = intval(strftime($lmo_daterule2, $mterm[$j][$i]));
+        if (($teama[$j][$i] != 0) && ($teamb[$j][$i] != 0)) {
+          if (!empty($lmo_stlink_title[$a])) {
+            $lmo_stlink_title[$a] = $lmo_stlink_title[$a].", &#10;";
+          } else {
+            $lmo_stlink_title[$a] = ($j+1).". ".$text[2].": &#10;";
+          }
+          $lmo_stlink_title[$a] = $lmo_stlink_title[$a].$teams[$teama[$j][$i]]." - ".$teams[$teamb[$j][$i]];
+        }
+      }
+    }
+    
+    //Spieltagsdatum
+    if (!empty($datum1[$j])) {
+      $datum = explode('.', $datum1[$j]);
+      $lmo_stdatum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
     } else {
-      $ma = strftime("%Y", $dum1);
-      $mc = strftime("%Y", $dum3);
-      $md = strftime("%Y", $dum2);
-      $mj = " ".strftime("%Y", $dum2);
+      $lmo_stdatum1 = '';
     }
-  }
-  if (strlen($cal) > 4) {
-    $dum0 = array("");
-    $dum1 = array("");
-    $dum2 = array("");
-    $dum0 = array_pad($array, 32, "");
-    $dum1 = array_pad($array, 32, "");
-    $dum2 = array_pad($array, 32, "");
-    for($j = 0; $j < $anzst; $j++) {
-      if (isset($datum1[$j]) && $datum1[$j] != "") {
-        $datum = split("[.]", $datum1[$j]);
-        $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-        $datum = split("[.]", $datum2[$j]);
-        $dum4 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-        for($i = 0; $i < $anzsp; $i++) {
-          if ($mterm[$j][$i] > 0) {
-            if (strftime("%B %Y", $mterm[$j][$i]) == $md) {
-              $a = intval(strftime("%d", $mterm[$j][$i]));
-              if (($teama[$j][$i] != 0) && ($teamb[$j][$i] != 0)) {
-                if ($dum0[$a] != "") {
-                  $dum0[$a] = $dum0[$a].", &#10;";
-                } else {
-                  $dum0[$a] = ($j+1).". ".$text[2].": &#10;";
-                }
-                $dum0[$a] = $dum0[$a].$teams[$teama[$j][$i]]." - ".$teams[$teamb[$j][$i]];
-              }
-            }
-          }
-        }
-         
-        if ($dum3 < 0) {
-          $dum3 = $dum4;
-        }
-        if ($dum4 < 0) {
-          $dum4 = $dum3;
-        }
-        if ($dum3 > 0) {
-          if ((strftime("%B %Y", $dum3) == $md) && (strftime("%B %Y", $dum4) == $md)) {
-            for($a = intval(strftime("%d", $dum3)); $a <= intval(strftime("%d", $dum4)); $a++) {
-              $c = split("[|]", $dum1[$a]);
-              array_unshift($c, "0");
-              if (array_search(($j+1), $c) == 0) {
-                if ($dum1[$a] != "") {
-                  $dum1[$a] = $dum1[$a]."|";
-                }
-                $dum1[$a] = $dum1[$a].($j+1);
-                if ($dum2[$a] != "") {
-                  $dum2[$a] = $dum2[$a]."<br>";
-                }
-                if ($dum0[$a] == "") {
-                  $dum0[$a] = ($j+1).". ".$text[2]." &#10;(".$text[155].")";
-                }
-                $dum2[$a] = $dum2[$a]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".$dum0[$a]."\">".($j+1).". ".$text[145]."</a>";
-              }
-            }
-          } elseif(strftime("%B %Y", $dum3) == $md) {
-            $a = intval(strftime("%d", $dum3));
-            $c = split("[|]", $dum1[$a]);
-            array_unshift($c, "0");
-            if (array_search(($j+1), $c) == 0) {
-              if ($dum1[$a] != "") {
-                $dum1[$a] = $dum1[$a]."|";
-              }
-              $dum1[$a] = $dum1[$a].($j+1);
-              if ($dum2[$a] != "") {
-                $dum2[$a] = $dum2[$a]."<br>";
-              }
-              $dum2[$a] = $dum2[$a]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".$dum0[$a]."\">".($j+1).". ".$text[145]."</a>";
-            }
-          } elseif(strftime("%B %Y", $dum4) == $md) {
-            $a = intval(strftime("%d", $dum4));
-            $c = split("[|]", $dum1[$a]);
-            array_unshift($c, "0");
-            if (array_search(($j+1), $c) == 0) {
-              if ($dum1[$a] != "") {
-                $dum1[$a] = $dum1[$a]."|";
-              }
-              $dum1[$a] = $dum1[$a].($j+1);
-              if ($dum2[$a] != "") {
-                $dum2[$a] = $dum2[$a]."<br>";
-              }
-              $dum2[$a] = $dum2[$a]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".$dum0[$a]."\">".($j+1).". ".$text[145]."</a>";
-            }
-          }
-        }
-        for($i = 0; $i < $anzsp; $i++) {
-          if ($mterm[$j][$i] > 0) {
-            if (strftime("%B %Y", $mterm[$j][$i]) == $md) {
-              $a = intval(strftime("%d", $mterm[$j][$i]));
-              $c = split("[|]", $dum1[$a]);
-              array_unshift($c, "0");
-              if (array_search(($j+1), $c) == 0) {
-                if ($dum1[$a] != "") {
-                  $dum1[$a] = $dum1[$a]."|";
-                }
-                $dum1[$a] = $dum1[$a].($j+1);
-                if ($dum2[$a] != "") {
-                  $dum2[$a] = $dum2[$a]."<br>";
-                }
-                $dum2[$a] = $dum2[$a]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".$dum0[$a]."\">".($j+1).". ".$text[145]."</a>";
-              }
-            }
-          }
+    if (!empty($datum2[$j])) {
+      $datum = explode('.', $datum2[$j]);
+      $lmo_stdatum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
+    } else {
+      $lmo_stdatum2 = '';
+    }
+    
+    $z=array_filter($lmo_stlink_title,"filterZero");      
+    if (!empty($lmo_stdatum1) && empty($z) && strftime($lmo_daterule, $lmo_stdatum1) == $md) {  //Nur Von... vorhanden
+      $a = intval(strftime($lmo_daterule2, $lmo_stdatum1));
+      $lmo_stlink_title[$a] = ($j+1).". ".$text[2]." &#10;(".$text[155].")";
+      if (!empty($lmo_stdatum2) && $lmo_stdatum2>$lmo_stdatum1) { //Von ... bis ... vorhanden
+        for($k = $a; $k <= intval(strftime($lmo_daterule2, $lmo_stdatum2)); $k++) {
+          $lmo_stlink_title[$k] = ($j+1).". ".$text[2]." &#10;(".$text[155].")";
         }
       }
     }
-  } else {
-    $dum1 = array("");
-    $dum2 = array("");
-    $dum1 = array_pad($array, 13, "");
-    $dum2 = array_pad($array, 13, "");
-    for($j = 0; $j < $anzst; $j++) {
-      $datum = split("[.]", $datum1[$j]);
-      $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-      $datum = split("[.]", $datum2[$j]);
-      $dum4 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-      if ($dum3 < 0) {
-        $dum3 = $dum4;
-      }
-      if ($dum4 < 0) {
-        $dum4 = $dum3;
-      }
-      if ($dum3 > 0) {
-        if ((strftime("%Y", $dum3) == $md) && (strftime("%Y", $dum4) == $md)) {
-          for($a = intval(strftime("%m", $dum3)); $a <= intval(strftime("%m", $dum4)); $a++) {
-            $c = split("[|]", $dum1[$a]);
-            array_unshift($c, "0");
-            if (array_search(($j+1), $c) == 0) {
-              if ($dum1[$a] != "") {
-                $dum1[$a] = $dum1[$a]."|";
-              }
-              $dum1[$a] = $dum1[$a].($j+1);
-              if ($dum2[$a] != "") {
-                $dum2[$a] = $dum2[$a]."<br>";
-              }
-              $dum2[$a] = $dum2[$a]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".($j+1).". ".$text[2]."\">".($j+1).". ".$text[145]."</a>";
-            }
-          }
-        } elseif(strftime("%Y", $dum3) == $md) {
-          $a = intval(strftime("%m", $dum3));
-          $c = split("[|]", $dum1[$a]);
-          array_unshift($c, "0");
-          if (array_search(($j+1), $c) == 0) {
-            if ($dum1[$a] != "") {
-              $dum1[$a] = $dum1[$a]."|";
-            }
-            $dum1[$a] = $dum1[$a].($j+1);
-            if ($dum2[$a] != "") {
-              $dum2[$a] = $dum2[$a]."<br>";
-            }
-            $dum2[$a] = $dum2[$a]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".($j+1).". ".$text[2]."\">".($j+1).". ".$text[145]."</a>";
-          }
-        } elseif(strftime("%Y", $dum4) == $md) {
-          $a = intval(strftime("%m", $dum4));
-          $c = split("[|]", $dum1[$a]);
-          array_unshift($c, "0");
-          if (array_search(($j+1), $c) == 0) {
-            if ($dum1[$a] != "") {
-              $dum1[$a] = $dum1[$a]."|";
-            }
-            $dum1[$a] = $dum1[$a].($j+1);
-            if ($dum2[$a] != "") {
-              $dum2[$a] = $dum2[$a]."<br>";
-            }
-            $dum2[$a] = $dum2[$a]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".($j+1).". ".$text[2]."\">".($j+1).". ".$text[145]."</a>";
-          }
-        }
-      }
-      for($i = 0; $i < $anzsp; $i++) {
-        if ($mterm[$j][$i] > 0) {
-          if (strftime("%Y", $mterm[$j][$i]) == $md) {
-            $a = intval(strftime("%m", $mterm[$j][$i]));
-            $c = split("[|]", $dum1[$a]);
-            array_unshift($c, "0");
-            if (array_search(($j+1), $c) == 0) {
-              if ($dum1[$a] != "") {
-                $dum1[$a] = $dum1[$a]."|";
-              }
-              $dum1[$a] = $dum1[$a].($j+1);
-              if ($dum2[$a] != "") {
-                $dum2[$a] = $dum2[$a]."<br>";
-              }
-              $dum2[$a] = $dum2[$a]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".($j+1).". ".$text[2]."\">".($j+1).". ".$text[145]."</a>";
-            }
-          }
-        }
+    if (!empty($lmo_stdatum2) && empty($z) && strftime($lmo_daterule, $lmo_stdatum2) == $md) {  //Nur ...Bis vorhanden
+      $a = intval(strftime($lmo_daterule2, $lmo_stdatum2));
+      $lmo_stlink_title[$a] = ($j+1).". ".$text[2]." &#10;(".$text[155].")";
+    }
+    
+    //Links generieren
+    for($i = 0; $i < count($lmo_stlink_title); $i++) {
+      if (!empty($lmo_stlink_title[$i])) { 
+        $lmo_stlink[$i] = $lmo_stlink[$i]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".$lmo_stlink_title[$i]."\">".($j+1).". ".$text[145]."</a><br>";;
       }
     }
-  }
+    
+  } //for $anzst
   include(PATH_TO_LMO."/lmo-showcal.php");
 }?>

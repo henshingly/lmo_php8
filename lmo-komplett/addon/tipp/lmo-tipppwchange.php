@@ -44,7 +44,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   fclose($datei);
   $gef = 0;
   for($i = 1; $i < count($users) && $gef == 0; $i++) {
-    $dummb = split("[|]", $users[$i]);
+    $dummb = explode('|', $users[$i]);
     if ($lmotippername == $dummb[0]) {
       // Nick gefunden
       $gef = 1;

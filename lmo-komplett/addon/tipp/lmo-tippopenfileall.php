@@ -72,7 +72,7 @@ if ($lmtype == 0) {
  
  
 for($i = 1; $i <= count($tippdaten); $i++) {
-  $dum = split("[|]", $tippdaten[$i-1]);
+  $dum = explode('|', $tippdaten[$i-1]);
   $op2 = substr($dum[0], 0, 5);
   $op3 = substr($dum[0], 5)-1;
   $op4 = substr($dum[1], 2)-1;

@@ -143,7 +143,7 @@ if ($file != "") {
     }
     $teams[0] = "___";
     for($i = 1; $i <= count($daten); $i++) {
-      $dum = split("[|]", $daten[$i-1]);
+      $dum = explode('|', $daten[$i-1]);
       if ($dum[0] == "Teams") {
         $teams[$dum[1]] = stripslashes($dum[2]);
       }

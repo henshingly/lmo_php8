@@ -35,12 +35,12 @@ if ($file != "") {
     }
   } else {
     if ($datum1[$st-1] != "") {
-      $datum = split("[.]", $datum1[$st-1]);
+      $datum = explode('.', $datum1[$st-1]);
       $dum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." -1 month");
       $dum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
       $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." +1 month");
     } elseif($datum2[$st-1] != "") {
-      $datum = split("[.]", $datum2[$st-1]);
+      $datum = explode('.', $datum2[$st-1]);
       $dum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." -1 month");
       $dum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
       $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." +1 month");
@@ -55,8 +55,8 @@ if ($file != "") {
       }
       if (count($dum0) > 1) {
         array_shift($dum0);
-        array_sort($dum0);
-        $datum = split("[.]", $dum0[0]);
+        sort($dum0);
+        $datum = explode('.', $dum0[0]);
         $dum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." -1 month");
         $dum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
         $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." +1 month");
@@ -111,9 +111,9 @@ if ($file != "") {
         $text1 = ($j+1).". ".$text[370];
         $text2 = ($j+1).". ".$text[376];
       }
-      $datum = split("[.]", $datum1[$j]);
+      $datum = explode('.', $datum1[$j]);
       $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-      $datum = split("[.]", $datum2[$j]);
+      $datum = explode('.', $datum2[$j]);
       $dum4 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
       for($i = 0; $i < $anzsp; $i++) {
         for($n = 0; $n < $modus[$j]; $n++) {
@@ -144,7 +144,7 @@ if ($file != "") {
       if ($dum3 > 0) {
         if ((strftime("%B %Y", $dum3) == $md) && (strftime("%B %Y", $dum4) == $md)) {
           for($a = intval(strftime("%d", $dum3)); $a <= intval(strftime("%d", $dum4)); $a++) {
-            $c = split("[|]", $dum1[$a]);
+            $c = explode('|', $dum1[$a]);
             array_unshift($c, "0");
             if (array_search(($j+1), $c) == 0) {
               if ($dum1[$a] != "") {
@@ -162,7 +162,7 @@ if ($file != "") {
           }
         } elseif(strftime("%B %Y", $dum3) == $md) {
           $a = intval(strftime("%d", $dum3));
-          $c = split("[|]", $dum1[$a]);
+          $c = explode('|', $dum1[$a]);
           array_unshift($c, "0");
           if (array_search(($j+1), $c) == 0) {
             if ($dum1[$a] != "") {
@@ -176,7 +176,7 @@ if ($file != "") {
           }
         } elseif(strftime("%B %Y", $dum4) == $md) {
           $a = intval(strftime("%d", $dum4));
-          $c = split("[|]", $dum1[$a]);
+          $c = explode('|', $dum1[$a]);
           array_unshift($c, "0");
           if (array_search(($j+1), $c) == 0) {
             if ($dum1[$a] != "") {
@@ -195,7 +195,7 @@ if ($file != "") {
           if ($mterm[$j][$i][$n] > 0) {
             if (strftime("%B %Y", $mterm[$j][$i][$n]) == $md) {
               $a = intval(strftime("%d", $mterm[$j][$i][$n]));
-              $c = split("[|]", $dum1[$a]);
+              $c = explode('|', $dum1[$a]);
               array_unshift($c, "0");
               if (array_search(($j+1), $c) == 0) {
                 if ($dum1[$a] != "") {
@@ -235,9 +235,9 @@ if ($file != "") {
         $text1 = ($j+1).". ".$text[370];
         $text2 = ($j+1).". ".$text[376];
       }
-      $datum = split("[.]", $datum1[$j]);
+      $datum = explode('.', $datum1[$j]);
       $dum3 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-      $datum = split("[.]", $datum2[$j]);
+      $datum = explode('.', $datum2[$j]);
       $dum4 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
       if ($dum3 < 0) {
         $dum3 = $dum4;
@@ -248,7 +248,7 @@ if ($file != "") {
       if ($dum3 > 0) {
         if ((strftime("%Y", $dum3) == $md) && (strftime("%Y", $dum4) == $md)) {
           for($a = intval(strftime("%m", $dum3)); $a <= intval(strftime("%m", $dum4)); $a++) {
-            $c = split("[|]", $dum1[$a]);
+            $c = explode('|', $dum1[$a]);
             array_unshift($c, "0");
             if (array_search(($j+1), $c) == 0) {
               if ($dum1[$a] != "") {
@@ -263,7 +263,7 @@ if ($file != "") {
           }
         } elseif(strftime("%Y", $dum3) == $md) {
           $a = intval(strftime("%m", $dum3));
-          $c = split("[|]", $dum1[$a]);
+          $c = explode('|', $dum1[$a]);
           array_unshift($c, "0");
           if (array_search(($j+1), $c) == 0) {
             if ($dum1[$a] != "") {
@@ -277,7 +277,7 @@ if ($file != "") {
           }
         } elseif(strftime("%Y", $dum4) == $md) {
           $a = intval(strftime("%m", $dum4));
-          $c = split("[|]", $dum1[$a]);
+          $c = explode('|', $dum1[$a]);
           array_unshift($c, "0");
           if (array_search(($j+1), $c) == 0) {
             if ($dum1[$a] != "") {
@@ -296,7 +296,7 @@ if ($file != "") {
           if ($mterm[$j][$i][$n] > 0) {
             if (strftime("%Y", $mterm[$j][$i][$n]) == $md) {
               $a = intval(strftime("%m", $mterm[$j][$i][$n]));
-              $c = split("[|]", $dum1[$a]);
+              $c = explode('|', $dum1[$a]);
               array_unshift($c, "0");
               if (array_search(($j+1), $c) == 0) {
                 if ($dum1[$a] != "") {

@@ -20,19 +20,19 @@
   
   require_once(PATH_TO_LMO."/lmo-admintest.php");
 $dummb = array("");
-$dummd = array("");
+$dummd = array();
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
  
-$datei = fopen($pswfile, "rb");
-while (!feof($datei)) {
-  $zeile2 = fgets($datei, 1000);
-  $zeile2 = chop($zeile2);
-  if ($zeile2 != "") {
-    array_push($dummd, $zeile2);
+if ($datei = fopen($pswfile, "rb")) {
+  while (!feof($datei)) {
+    $zeile2 = fgets($datei, 1000);
+    $zeile2 = chop($zeile2);
+    if ($zeile2 != "") {
+      array_push($dummd, $zeile2);
+    }
   }
+  fclose($datei);
 }
-fclose($datei);
-array_shift($dummd);
 $anztipper = count($dummd);
  
 $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
@@ -53,7 +53,7 @@ if ($tipp_showemail == 1) {
 $tipperteam = array_pad($array, $anztipper+1, "");
  
 for($i = 0; $i < $anztipper; $i++) {
-  $dummb = split("[|]", $dummd[$i]);
+  $dummb = explode('|', $dummd[$i]);
   $tippernick[$i] = $dummb[0];
   if ($tipp_showname == 1) {
     $tippername[$i] = $dummb[3];
@@ -133,7 +133,7 @@ for($k = 0; $k < $anzligen; $k++) {
     array_shift($tippdaten);
      
     for($i = 1; $i <= count($tippdaten); $i++) {
-      $dum = split("[|]", $tippdaten[$i-1]);
+      $dum = explode('|', $tippdaten[$i-1]);
       $op1 = $dum[0];
       // Nick
       $op3 = substr($dum[1], 2)-1;

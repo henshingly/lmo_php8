@@ -43,7 +43,7 @@ if($todo=="logout"){
   <link type='text/css' rel='stylesheet' href='<?=URL_TO_LMO?>/lmo-style-nc.php'>
   <style type='text/css'>@import url('<?=URL_TO_LMO?>/lmo-style.php');</style>
 </head>
-<body>
+<body bgcolor="#cccccc">
 <div align="center"><?
 
 $action="admin";

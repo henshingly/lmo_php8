@@ -46,7 +46,7 @@ if($save==1){
     <td align="center"><a href="<?=$addr_user?>" onclick="return chklmolink();" title="<?=$text[318]?>"><?=$text[317]?></a></td>
   </tr>
 </table>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="100%">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center" colspan="2"><h1><?=$text[498]?></h1></td>
   </tr>

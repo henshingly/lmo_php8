@@ -40,7 +40,7 @@ if(($xprogram!="") && ($xprogram!="none") && ($xprogram!="random")){
     fclose($datei);
     array_shift($daten);
     for($i=1;$i<=count($daten);$i++){
-      $dum=split("[|]",$daten[$i-1]);
+      $dum=explode('|',$daten[$i-1]);
       if((substr($dum[0],0,5)=="Round") && (substr($dum[1],0,2)=="TA")){$yteama[substr($dum[0],5)-1][substr($dum[1],2)-1]=$dum[2];}
       if((substr($dum[0],0,5)=="Round") && (substr($dum[1],0,2)=="TB")){$yteamb[substr($dum[0],5)-1][substr($dum[1],2)-1]=$dum[2];}
       }

@@ -100,7 +100,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
           array_shift($tippdaten);
           $jkspgrpw = "";
           for($i = 1; $i <= count($tippdaten); $i++) {
-            $dum = split("[|]", $tippdaten[$i-1]);
+            $dum = explode('|', $tippdaten[$i-1]);
             $op2 = substr($dum[0], 0, 5);
             // Round
             $op3 = substr($dum[0], 5)-1;

@@ -35,7 +35,7 @@ if(($file!="") && ($kurve==1)){
   for ($i=1; $i<=$anzteams; $i++) {?>
         <tr>
           <td align="right">
-            <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
+            <acronym title="<?=$text[134]." ".$teams[$i]?>"><?
     if($i!=$show_stat1){?>
             <a href="<?=$addp.$i?>" ><?=$teamk[$i]?></a><?
     } else {

@@ -32,7 +32,7 @@
   $v=0; // Teamnummer
   array_shift($dumma);
   for($i=0;$i<count($dumma);$i++){
-    $dummb = split("[|]",$dumma[$i]);
+    $dummb = explode('|',$dumma[$i]);
     if($dummb[5]!=""){
       $gef=0;
       for($j=0;$j<$v && $gef==0;$j++){

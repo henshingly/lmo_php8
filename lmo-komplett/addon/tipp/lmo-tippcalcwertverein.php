@@ -57,7 +57,7 @@ if(file_exists($auswertfile)){
   }
 
   for($i=1;$i<=count($tippdaten);$i++){
-    $dum=split("[|]",$tippdaten[$i-1]);
+    $dum=explode('|',$tippdaten[$i-1]);
     $op1=$dum[0];               // Nick
     $op3=substr($dum[1],2)-1;   // Spieltagsnummer
     $op4=substr($dum[1],0,2);   // TP

@@ -1,4 +1,4 @@
-<table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoSubmenu" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td class="nobr" align="left"><?
   if ($todo != "") {
@@ -60,7 +60,7 @@
     <td width="8">&nbsp;</td>
     <td class="nobr" align="right"><?
   if($tipp_regeln==1){?>
-        <a href='<?=URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
+        <a href='<?=URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,this.target);return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
   }
   echo "<a href=\"".$adda."logout\">".$text[88]."</a>";
   echo "&nbsp;";?>

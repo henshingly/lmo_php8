@@ -88,7 +88,7 @@ if ($file != "") {
     if ($_SESSION["lmouserok"] == 2) {
       $datum1[$st-1] = isset($_POST["xdatum1"])?trim($_POST["xdatum1"]):'';
       if ($datum1[$st-1] != "") {
-        $datum = split("[.]", $datum1[$st-1]);
+        $datum = explode('.', $datum1[$st-1]);
         $dummy = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
         if ($dummy > -1) {
           $datum1[$st-1] = strftime("%d.%m.%Y", $dummy);
@@ -98,7 +98,7 @@ if ($file != "") {
       }
       $datum2[$st-1] = isset($_POST["xdatum2"])?trim($_POST["xdatum2"]):'';
       if ($datum2[$st-1] != "") {
-        $datum = split("[.]", $datum2[$st-1]);
+        $datum = explode('.', $datum2[$st-1]);
         $dummy = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
         if ($dummy > -1) {
           $datum2[$st-1] = strftime("%d.%m.%Y", $dummy);
@@ -131,14 +131,16 @@ if ($file != "") {
           if ($dum2 == "") {
             $dum2 = $deftime;
           }
-          $datu1 = split("[.]", $dum1);
-          $datu2 = split("[:]", $dum2);
+          $datu1 = explode('.', $dum1);
+          $datu2 = explode(':', $dum2);
           $dummy = strtotime($datu1[0]." ".$me[intval($datu1[1])]." ".$datu1[2]." ".$datu2[0].":".$datu2[1]);
           if ($dummy > -1) {
             $mterm[$st-1][$i] = $dummy;
           } else {
             $mterm[$st-1][$i] = "";
           }
+        } else {
+          $mterm[$st-1][$i] = "";
         }
       } else {
         for($n = 0; $n < $modus[$st-1]; $n++) {
@@ -148,8 +150,8 @@ if ($file != "") {
             if ($dum2 == "") {
               $dum2 = $deftime;
             }
-            $datu1 = split("[.]", $dum1);
-            $datu2 = split("[:]", $dum2);
+            $datu1 = explode('.', $dum1);
+            $datu2 = explode(':', $dum2);
             $dummy = strtotime($datu1[0]." ".$me[intval($datu1[1])]." ".$datu1[2]." ".$datu2[0].":".$datu2[1]);
             $mterm[$st-1][$i][$n] = $dummy > -1 ? $dummy : '';
           }
@@ -246,6 +248,23 @@ if ($file != "") {
         }
       }
     }
+    
+    /*Spieltagsdatum (falls nicht angegeben) aus Spieldaten extrahieren*/
+    
+    function filterZero($a) {
+      return (!empty($a));
+    }
+    
+    $lmo_spieltermine=array_filter($mterm[$st-1],"filterZero");
+    if (!empty($lmo_spieltermine)) {
+      if (empty($datum1[$st-1])) {
+        $datum1[$st-1] = strftime("%d.%m.%Y", min($lmo_spieltermine));
+      }
+      if (empty($datum2[$st-1])) {
+        $datum2[$st-1] = strftime("%d.%m.%Y", max($lmo_spieltermine));
+      }
+    }
+
     // Tippspiel-Addon
     if ($ftest0 == 1) {
       // Liga darf getippt werden
@@ -266,7 +285,7 @@ if ($file != "") {
     $stz = $st;
     $st = $stx;
     $nticker = trim($_POST["xnticker"]);
-    $nlines = split("[\n]", $_POST["xnlines"]);
+    $nlines = explode("\n", $_POST["xnlines"]);
     if (count($nlines) > 0) {
       for($z = count($nlines)-1; $z >= 0; $z--) {
         $y = array_pop($nlines);
@@ -331,13 +350,13 @@ if ($file != "") {
             <th class="nobr" align="left" colspan="<?=$breite-10; ?>"><?
   echo $st.". ".$text[2];
   if ($datum1[$st-1] != "") {
-    $datum = split("[.]", $datum1[$st-1]);
+    $datum = explode('.', $datum1[$st-1]);
     $dum1 = $me[intval($datum[1])]." ".$datum[2];
   } else {
     $dum1 = "";
   }
   if ($datum2[$st-1] != "") {
-    $datum = split("[.]", $datum2[$st-1]);
+    $datum = explode('.', $datum2[$st-1]);
     $dum2 = $me[intval($datum[1])]." ".$datum[2];
   } else {
     $dum2 = "";

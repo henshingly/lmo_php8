@@ -38,7 +38,7 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
       echo "<p class='error'>".$text[304]."</p>";
     }
   }?>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><h1><?=$text[299];?></h1></td>
   </tr>
@@ -47,17 +47,17 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
       <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost5" align="center"><acronym title="<?=$text[302] ?>"><?=$text[300]; ?>:</acronym></td>
+            <td align="center"><acronym title="<?=$text[302] ?>"><?=$text[300]; ?>:</acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" align="center">              
+            <td align="center">              
               <input type="hidden" name="action" value="admin">
               <input type="hidden" name="todo" value="upload">
               <input type="hidden" name="upl" value="1">
               <input type="file" name="userfile">
             </td>
           </tr>
-          <tr><td class="lmost5" align="center"><input type="submit" value="<?=$text[301]; ?>"></td></tr>
+          <tr><td align="center"><input type="submit" value="<?=$text[301]; ?>"></td></tr>
         </table>
       </form>
     </td>

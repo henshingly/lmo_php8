@@ -116,7 +116,7 @@ if (!file_exists($auswertfile)) {
     $endtab=$anzst;
   }
   for ($i=1; $i<=count($tippdaten); $i++) {
-    $dum=split("[|]",$tippdaten[$i-1]);
+    $dum=explode('|',$tippdaten[$i-1]);
     $op1=$dum[0];
     // Nick
     $op3=substr($dum[1],2)-1;

@@ -22,25 +22,18 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
 if (!isset($emailart)) {
   $emailart = -1;
 }
-if (!isset($save)) {
-  $save = 0;
-}
-if (!isset($message)) {
-  $message = "";
-}
-if (!isset($betreff) || $betreff == "") {
-  $betreff = $text['tipp'][0];
-}
-if (!isset($betreff1)) {
-  $betreff1 = "";
-}
-if (!isset($tipp_textreminder1)) {
-  $tipp_textreminder1 = "";
-}
-if (!isset($liganr)) {
-  $liganr = -1;
-}
- 
+$save               = isset($_POST['save'])               ? $_POST['save']               : 0;
+$message            = isset($_POST['message'])            ? $_POST['message']            : '';
+$betreff            = !empty($_POST['betreff'])           ? $_POST['betreff']            : $text['tipp'][0];
+$betreff1           = isset($_POST['betreff1'])           ? $_POST['betreff1']           : '';
+$tipp_textreminder1 = isset($_POST['tipp_textreminder1']) ? $_POST['tipp_textreminder1'] : 0;
+$liganr             = isset($_POST['liganr'])             ? $_POST['liganr']             : -1;
+$emailart           = isset($_POST['emailart'])           ? $_POST['emailart']           : -1;
+$adressat           = isset($_POST['adressat'])           ? $_POST['adressat']           : '';
+$start              = isset($_POST['start'])              ? $_POST['start']              : 0;
+$ende               = isset($_POST['ende'])               ? $_POST['ende']               : 0;
+$tage               = isset($_POST['tage'])               ? $_POST['tage']               : 4;
+
 if ($save == 1) {
   if ($emailart == 1) {
     if ($liganr == 0) {
@@ -141,7 +134,7 @@ if ($save == 1) {
               <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<?=$start1; ?>">
               <?=$text[4];?>
               <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?=$ende1; ?>">
-              <?=$text['tipp'][170]; if(!isset($tage)){$tage=4;}?>
+              <?=$text['tipp'][170];?>
               <input class="lmo-formular-input" type="text" name="tage" size="2" maxlength="2" value="<?=$tage; ?>" onFocus="emailart[2].checked=true;changetextarea(1);"><?=" ".$text['tipp'][171];?>
             </td>
           </tr>          
