@@ -16,10 +16,10 @@
   </tr>
   <td class="lmomain2" colspan="3" align="left"><!--Sprachauswahl--></td>
   <tr>
-    <td class="lmomain2" colspan="3" align="right">
+    <td class="lmomain2" colspan="3">
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td class="lmomain1" valign="bottom"><!--Archiv--><!--Ligenuebersicht--></td>
+          <td class="lmomain1" valign="bottom" align="left"><!--Archiv--><!--Ligenuebersicht--></td>
           <td class="lmomain2" align="right"><!--LetzteAuswertung--><br><!--Berechnungszeit--><br><!--Infolink--></td>
         </tr>
 	    </table>

@@ -1,8 +1,8 @@
 dirliga=ligen/
 ArchivDir=ligen/archiv/
 diroutput=output/
-tabpkt=0
-tabonres=0
+tabpkt=1
+tabonres=1
 backlink=1
 archivlink=1
 calctime=1
