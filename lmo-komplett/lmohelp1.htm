@@ -174,9 +174,16 @@
       Deinen Besuchern aufgerufen werden soll. Bitte verlinke
       ausschlieﬂlich diese Datei entsprechend in Deiner
       Navigation.</li>
+      <li><em>Jetzt musst du die Datei <code>init.php</code> mit einem 
+      normalen Texteditor bearbeiten und dort die benˆtigten Pfade eintragen.</em>
+      Dies sind zum Ersten die <acronym title="Die Adresse, die man im Browser 
+      sehen kann, bei lokalen Installationen beginnt diese mit localhost bzw. 
+      127.0.01">URL</acronym> und zum Anderen der <acronym title="Der Weg von 
+      deinem HTML-Stammverzeichnis zum LMO">Pfad</acronym> zum LMO-Verzeichnis, 
+      falls du diese Angeben nicht weiﬂt, frage bitte deine Provider.</li>
       <li>Die <strong>lmo.php</strong> kann ohne Einschr‰nkungen komplett an
       Deine Homepage angepaﬂt werden. Wichtig dabei ist nur, daﬂ die
-      Zeile <code>&lt;?PHP require(PATH_TO_LMO."/lmo-start.php"); ?&gt;</code> 
+      Zeile <code>&lt;?PHP require("lmo-start.php"); ?&gt;</code> 
       im Quelltext erhalten bleibt; und zwar exakt an der Stelle, an
       der die Ligen sp‰ter angezeigt werden sollen. Wenn Du vorher
       der PHP-Variablen <strong>file</strong> einen Dateinamen einer Liga
