@@ -51,16 +51,13 @@
       isset($_POST["xtippohne"])?                             $tipp_tippohne=$_POST["xtippohne"]:                     $tipp_tippohne=0;
       
       isset($_POST["xtippbis"])  &&
-        is_numeric($_POST["xtippbis"]) &&
-        intval($_POST["xtippbis"])>0 ?                        $tipp_tippBis=$_POST["xtippbis"]:                       $tipp_tippBis=0;
+        is_numeric($_POST["xtippbis"])?                       $tipp_tippBis=$_POST["xtippbis"]:                       $tipp_tippBis=0;
       
       isset($_POST["xtipperteam"])  &&
-        is_numeric($_POST["xtipperteam"]) &&
-        intval($_POST["xtipperteam"])>0 ?                     $tipp_tipperimteam=$_POST["xtipperteam"]:               $tipp_tipperimteam=-1;
+        is_numeric($_POST["xtipperteam"])?                    $tipp_tipperimteam=$_POST["xtipperteam"]:               $tipp_tipperimteam=0;
       
       isset($_POST["ximvorraus"])  &&
-        is_numeric($_POST["ximvorraus"]) &&
-        intval($_POST["ximvorraus"])>0 ?                      $tipp_imvorraus=$_POST["ximvorraus"]:                   $tipp_imvorraus=0;  
+        is_numeric($_POST["ximvorraus"])?                     $tipp_imvorraus=$_POST["ximvorraus"]:                   $tipp_imvorraus=-1;  
       
       isset($_POST["xjokertipp"])?                            $tipp_jokertipp=1:                                      $tipp_jokertipp=0;
       if($tipp_jokertipp==1){

@@ -23,17 +23,16 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if($file!="" && $tipp_tippfieber==1){
-  if(!isset($save)){$save=0;}
+  $save=isset($_POST['save'])?1:0;
   if($save==1){
-    $stat1=trim($_POST["xstat1"]);
-    $stat2=trim($_POST["xstat2"]);
+    $fieber_stat1=trim($_POST["xstat1"]);
+    $fieber_stat2=trim($_POST["xstat2"]);
     $kurvenmodus=trim($_POST["xkurvenmodus"]);
-    }
-  
+  }
   if(!isset($eigpos)){$eigpos=0;}
-  if(!isset($stat1)){$stat1=-1;}
-  if(!isset($stat2)){$stat2=-1;}
-  if($stat1==$stat2){$stat2=-1;}
+  if(!isset($fieber_stat1)){$fieber_stat1=-1;}
+  if(!isset($fieber_stat2)){$fieber_stat2=-1;}
+  if($fieber_stat1==$fieber_stat2){$fieber_stat2=-1;}
   if(!isset($kurvenmodus)){$kurvenmodus=1;}
   $addg=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=fieber&amp;file=".$file."&amp;stat1=";
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcgraph.php");
@@ -59,19 +58,19 @@ if($file!="" && $tipp_tippfieber==1){
     array_push($tab,strtolower($tippernick[$i]).(50000000+$i));
     }
   sort($tab,SORT_STRING);?>
-          <option value="-1"<?if($stat1==-1){echo " selected";}?>>___</option><?
+          <option value="-1"<?if($fieber_stat1==-1){echo " selected";}?>>___</option><?
   for($i=0;$i<$anztipper;$i++){
     $j=intval(substr($tab[$i],-7));?>
-          <option value="<?=$j?>"<?if($stat1==$j){echo " selected";}?>><?=$tippernick[$j]?></option><?
+          <option value="<?=$j?>"<?if($fieber_stat1==$j){echo " selected";}?>><?=$tippernick[$j]?></option><?
     }?>
         </select>
       </td>
       <td>
         <select name="xstat2">
-          <option value="-1"<?if($stat2==-1){echo " selected";}?>>___</option><?
+          <option value="-1"<?if($fieber_stat2==-1){echo " selected";}?>>___</option><?
   for($i=0;$i<$anztipper;$i++){
     $j=intval(substr($tab[$i],-7));?>
-          <option value="<?=$j?>"<?if($stat2==$j){echo " selected";}?>><?=$tippernick[$j]?></option><?
+          <option value="<?=$j?>"<?if($fieber_stat2==$j){echo " selected";}?>><?=$tippernick[$j]?></option><?
     }?>
         </select>
       </td>
@@ -91,46 +90,46 @@ if($file!="" && $tipp_tippfieber==1){
     <tr>
       <td colspan="4" align="center" class="lmost3">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><?
-    if ($stat1<0 && $stat2>=0) {
-      $stat1=$stat2;
-      $stat2=-1;
+    if ($fieber_stat1<0 && $fieber_stat2>=0) {
+      $fieber_stat1=$fieber_stat2;
+      $fieber_stat2=-1;
     }
-    if ($stat1<0) {
+    if ($fieber_stat1<0) {
       echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text['tipp'][284]."<br>&nbsp;</td></tr>";
     } else {
       $dummy=URL_TO_ADDONDIR."/tipp/lmo-tipppaintgraph.php?pganz=";
-      if ($stat2>=0) {
+      if ($fieber_stat2>=0) {
         $dummy=$dummy."2";
       } else {
         $dummy=$dummy."1";
       }
-      $dummy=$dummy."&pgteam1=".htmlentities($tippernick[$stat1]);
-      if ($stat2>=0) {
-        $dummy=$dummy."&pgteam2=".htmlentities($tippernick[$stat2]);
+      $dummy=$dummy."&pgteam1=".htmlentities($tippernick[$fieber_stat1]);
+      if ($fieber_stat2>=0) {
+        $dummy=$dummy."&pgteam2=".htmlentities($tippernick[$fieber_stat2]);
       }
       if ($kurvenmodus==1) {
-        if ($stat2>=0) {
-          $max=max(max($tipppunkte[$stat1]),max($tipppunkte[$stat2]));
+        if ($fieber_stat2>=0) {
+          $max=max(max($tipppunkte[$fieber_stat1]),max($tipppunkte[$fieber_stat2]));
         } else {
-          $max=max($tipppunkte[$stat1]);
+          $max=max($tipppunkte[$fieber_stat1]);
         }
       } else if ($kurvenmodus==2) {
-        if ($stat2>=0) {
-          $max=max(max($platz[$stat1]),max($platz[$stat2]));
+        if ($fieber_stat2>=0) {
+          $max=max(max($platz[$fieber_stat1]),max($platz[$fieber_stat2]));
         } else {
-          $max=max($platz[$stat1]);
+          $max=max($platz[$fieber_stat1]);
         }
       } else if ($kurvenmodus==3) {
-        if ($stat2>=0) {
-          $max=max(max($platz[$stat1]),max($platz[$stat2]),max($platz1[$stat1]),max($platz1[$stat2]));
+        if ($fieber_stat2>=0) {
+          $max=max(max($platz[$fieber_stat1]),max($platz[$fieber_stat2]),max($platz1[$fieber_stat1]),max($platz1[$fieber_stat2]));
         } else {
-          $max=max(max($platz[$stat1]),max($platz1[$stat1]));
+          $max=max(max($platz[$fieber_stat1]),max($platz1[$fieber_stat1]));
         }
       } else if ($kurvenmodus==4) {
-        if ($stat2>=0) {
-          $max=max(max($platz1[$stat1]),max($platz1[$stat2]));
+        if ($fieber_stat2>=0) {
+          $max=max(max($platz1[$fieber_stat1]),max($platz1[$fieber_stat2]));
         } else {
-          $max=max($platz1[$stat1]);
+          $max=max($platz1[$fieber_stat1]);
         }
       }
       $dummy=$dummy."&max=".$max;
@@ -139,11 +138,11 @@ if($file!="" && $tipp_tippfieber==1){
         $dummy=$dummy."&pgplatz1=";
         if ($kurvenmodus==1) {
           for ($j=0; $j<$anzst; $j++) {
-            $dummy.=$tipppunkte[$stat1][$j].",";
+            $dummy.=$tipppunkte[$fieber_stat1][$j].",";
           }
         } else {
           for ($j=0; $j<$anzst; $j++) {
-            $dummy.=$platz[$stat1][$j].",";
+            $dummy.=$platz[$fieber_stat1][$j].",";
           }
         }
         $dummy.="0";
@@ -151,20 +150,20 @@ if($file!="" && $tipp_tippfieber==1){
       if ($kurvenmodus>2) {
         $dummy=$dummy."&pgplatz1a=";
         for ($j=0; $j<$anzst; $j++) {
-          $dummy.=$platz1[$stat1][$j].",";
+          $dummy.=$platz1[$fieber_stat1][$j].",";
         }
         $dummy.="0";
       }
-      if ($stat2>=0) {
+      if ($fieber_stat2>=0) {
         if ($kurvenmodus<4) {
           $dummy=$dummy."&pgplatz2=";
           if ($kurvenmodus==1) {
             for ($j=0; $j<$anzst; $j++) {
-              $dummy.=$tipppunkte[$stat2][$j].",";
+              $dummy.=$tipppunkte[$fieber_stat2][$j].",";
             }
           } else {
             for ($j=0; $j<$anzst; $j++) {
-              $dummy.=$platz[$stat2][$j].",";
+              $dummy.=$platz[$fieber_stat2][$j].",";
             }
           }
           $dummy.="0";
@@ -172,7 +171,7 @@ if($file!="" && $tipp_tippfieber==1){
         if ($kurvenmodus>2) {
           $dummy=$dummy."&pgplatz2a=";
           for ($j=0; $j<$anzst; $j++) {
-            $dummy.=$platz1[$stat2][$j].",";
+            $dummy.=$platz1[$fieber_stat2][$j].",";
           }
           $dummy.="0";
         }
