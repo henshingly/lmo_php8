@@ -123,7 +123,7 @@ if ($tabdat == "") {
 }
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><? if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?></caption><? 
 if($tipp_tipperimteam>=0){?>
   <tr>
@@ -361,13 +361,13 @@ for($x = 1; $x <= $anztipper; $x++) {
        
       $dumm1 = "lmost5";
       if ((($wertung != "intern" && $lax == 1) || ($wertung == "intern" && $lx == 1)) && $tipppunktegesamt[$i] > 0) {
-        $dumm1 = "lmoTabelleMeister";
+        $dumm1 = "lmoTabelleMeister nobr";
       }
       if ((($wertung != "intern" && $lax == 2) || ($wertung == "intern" && $lx == 2)) && $tipppunktegesamt[$i] > 0) {
-        $dumm1 = "lmoTabelleCleague";
+        $dumm1 = "lmoTabelleCleague nobr";
       }
       if ((($wertung != "intern" && $lax == 3) || ($wertung == "intern" && $lx == 3)) && $tipppunktegesamt[$i] > 0) {
-        $dumm1 = "lmoTabelleCleaguequali";
+        $dumm1 = "lmoTabelleCleaguequali nobr";
       }
        
       if ($wertung == "team" || $tippernick[$i] != "") {?>
@@ -392,7 +392,7 @@ for($x = 1; $x <= $anztipper; $x++) {
       }
       if ($tabdat != "" && $stwertmodus != "nur") {
         echo "<td class=\"".$dumm1."\"";
-        echo "><img src='lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
+        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
         echo "</td>";
       } else {
         echo "<td class=\"".$dumm1."\">&nbsp;</td>";

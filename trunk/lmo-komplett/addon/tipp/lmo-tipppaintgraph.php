@@ -22,6 +22,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
+
+require_once(dirname(__FILE__).'/../../init.php');
+
 if ($max < 1) {
   $max = 10;
   $min = 1;
@@ -125,23 +128,39 @@ if ($khoch < 1) {
 $hoch = (($max-$min+1) * $khoch+12)+47;
 $breit = (($pgst+1) * 12)+35;
 $image = imagecreate($breit, $hoch);
-imageinterlace($image, 1);
-$farbe_body = imagecolorallocate($image, 255, 255, 255);
-$farbe_a = imagecolorallocate($image, 0, 0, 0);
-$farbe_b = imagecolorallocate($image, 192, 192, 192);
+
+$color = isset($lmo_inner_background1)?get_color($lmo_inner_background1):array(255, 255, 255);
+$farbe_body = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Hintergrund
+
+$luminanz=0.3*$color[0] + 0.59*$color[1] + 0.11*$color[2];
+$color = $luminanz > 127?array(($color[0]+190-$luminanz),($color[1]+190-$luminanz),($color[2]+190-$luminanz)):array(($color[0]+127-$luminanz),($color[1]+127-$luminanz),($color[2]+127-$luminanz));
+
+$farbe_b = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Gitter
+
+$color = isset($lmo_inner_color1)?get_color($lmo_inner_color1):array(0, 0, 0);
+$farbe_a = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Schrift
+
+
 $farbe_c = imagecolorallocate($image, 0, 0, 255); // blau
 $farbe_c1 = imagecolorallocate($image, 0, 0, 128);
 $farbe_d = imagecolorallocate($image, 255, 0, 0); // rot
 $farbe_d1 = imagecolorallocate($image, 128, 0, 0);
+
+
 if ($kmodus > 1) {
-  $farbe_e = imagecolorallocate($image, 234, 237, 13);
-  //Gold
-  $farbe_f = imagecolorallocate($image, 223, 215, 215); //Silber
-  $farbe_g = imagecolorallocate($image, 218, 173, 66);
-  //Bronze
+  $color = isset($lmo_tabelle_background1)?get_color($lmo_tabelle_background1):array(237, 244, 156);
+  $farbe_e = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Meister
+  
+  $color = isset($lmo_tabelle_background2)?get_color($lmo_tabelle_background2):array(204, 205, 254);
+  $farbe_f = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Champleague
+  
+  $color = isset($lmo_tabelle_background3)?get_color($lmo_tabelle_background3):array(166, 238, 237);
+  $farbe_g = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Champquali
 }
+
 imagestring($image, 2, 28, 28+(($max-$min+1) * $khoch+12), $pgtext1, $farbe_a);
 imagestringup($image, 2, 4, $hoch-28, $pgtext2, $farbe_a);
+
 for($i = $min; $i <= $max; $i++) {
   $j = strval($i);
   if ($kmodus == 1) {
@@ -232,5 +251,14 @@ for($i = 1; $i < $pgst; $i++) {
 }
 header("Content-Type: image/png");
 imagepng($image);
+
+function get_color(&$styleclass) {
+  if (strlen($styleclass) == 4) {
+    return(array(hexdec(substr($styleclass, 1, 1).substr($styleclass, 1, 1)), hexdec(substr($styleclass, 2, 1).substr($styleclass, 2, 1)), hexdec(substr($styleclass, 3, 1).substr($styleclass, 3, 1))));
+  } elseif (strlen($styleclass) == 7) {
+    return(array(hexdec(substr($styleclass, 1, 2)), hexdec(substr($styleclass, 3, 2)), hexdec(substr($styleclass, 5, 2))));
+  }
+  return false;
+}
 
 ?>

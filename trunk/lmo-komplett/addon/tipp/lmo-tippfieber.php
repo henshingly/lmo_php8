@@ -43,12 +43,12 @@ if($file!="" && $tipp_tippfieber==1){
   <input type="hidden" name="todo" value="fieber">
   <input type="hidden" name="file" value="<?=$file; ?>">
   <input type="hidden" name="save" value="1">
-  <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+  <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
     <tr>
-      <td class="active"><? echo $text['tipp'][164]." 1";?></td>
-      <td class="active"><? echo $text['tipp'][164]." 2";?></td>
-      <td class="active"><? echo $text['tipp'][283];?></td>
-      <td></td>
+      <th align="left"><? echo $text['tipp'][164]." 1";?></td>
+      <th align="left"><? echo $text['tipp'][164]." 2";?></td>
+      <th align="left"><? echo $text['tipp'][283];?></td>
+      <th&nbsp;></th>
     </tr>
     <tr>
       <td>

@@ -169,7 +169,7 @@ else
     $tab = array_pad($array, $endtab, "");
     $a = 0;
     for($i = 0; $i < $endtab && isset($tipppunkte[$a][$i]); $i++) {
-      $tab[$i] = array("");
+      $tab[$i] = array();
       for($a = 0; $a < $anztipper; $a++) {
         $tt = 50000000+$tipppunkte[$a][$i];
         for($k = 1; $k <= 3; $k++) {
@@ -201,7 +201,6 @@ else
         $tt .= (50000000+$a);
         array_push($tab[$i], $tt);
       }
-      array_shift($tab[$i]);
       rsort($tab[$i], SORT_STRING);
       $laeng = strlen($tab[$i][0]);
       for($a = 0; $a < $anztipper; $a++) {
@@ -212,7 +211,7 @@ else
         $stsiege[$x]++;
         $poswechs = 1;
         for($k = 0; $k <= $laeng-24; $k += 8) {
-          if (intval(substr($tab[$i][$a], $k+1, 7)) != intval(substr($tab[$i][$a+1], $k+1, 7))) {
+          if (!isset($tab[$i][$a+1]) || intval(substr($tab[$i][$a], $k+1, 7)) != intval(substr($tab[$i][$a+1], $k+1, 7))) {
             break;
           }
           if ($k == $laeng-24) {

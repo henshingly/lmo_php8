@@ -214,7 +214,7 @@ else
         $stsiege[$x]++;
         $poswechs = 1;
         for($k = 0; $k <= $laeng-24; $k += 8) {
-          if (intval(substr($tab[$i][$a], $k+1, 7)) != intval(substr($tab[$i][$a+1], $k+1, 7))) {
+          if (!isset($tab[$i][$a+1]) || intval(substr($tab[$i][$a], $k+1, 7)) != intval(substr($tab[$i][$a+1], $k+1, 7))) {
             break;
           }
           if ($k == $laeng-24) {
