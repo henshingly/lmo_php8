@@ -20,71 +20,106 @@
 //
 $addi=$_SERVER["PHP_SELF"]."?file=";
 
+$_SESSION['liga_sort']=isset($_REQUEST['liga_sort'])?$_REQUEST['liga_sort']:$liga_sort;
+$_SESSION['liga_sort_direction']=isset($_REQUEST['liga_sort_direction'])?$_REQUEST['liga_sort_direction']:$liga_sort_direction;
 
-if($ftype!=""){
-  $verz=opendir(substr(PATH_TO_LMO."/".$dirliga,0,-1));
-  $dummy=array();
-  $r=0;
-  while($files=readdir($verz)){
-    if(strtolower(substr($files,-4))==".l98"){
-      $dummy2['"'.(filemtime(PATH_TO_LMO."/".$dirliga.$files)+$r).'"']=$files;
-      $r++;
-    }
-  }
-  closedir($verz);
-  krsort($dummy2);
-  foreach ($dummy2 as $d) $dummy[]=$d;
-  $i=0;
-  $j=0;
+$verz=opendir(substr(PATH_TO_LMO."/".$dirliga,0,-1));
+$liga_counter=0;
+$unbenannte_liga_counter=0;
+while($files=readdir($verz)){
+  if(strtolower(substr($files,-4))==".l98"){
+    
+    $ligadatei[$liga_counter]['file_date']=filemtime(PATH_TO_LMO."/".$dirliga.$files); //Datum 
+    $ligadatei[$liga_counter]['file_name']=$files;
 
-//  echo"<ul>";
+    $ligadatei[$liga_counter]['liga_name']="";  //Liganame
+    $ligadatei[$liga_counter]['aktueller_spieltag']="";  //Aktueller Spieltag
+    $ligadatei[$liga_counter]['anz_teams']="";  //Anzahl der Mannschaften
+    $ligadatei[$liga_counter]['rundenbezeichnung']=$text[2];  //Spieltag oder Pokalrunde
 
-  for($k=0;$k<count($dummy);$k++){
-    $files=$dummy[$k];
     $sekt="";
-    $t0="";
-    $t1="";
-    $t4="";
-    $t2=$text[2];
-    $datei = fopen($dirliga.$files,"rb");
-    while (!feof($datei)) {
-      $zeile = fgets($datei,1000);
-      $zeile=chop($zeile);
-      $zeile=trim($zeile);
-      if((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
-        $sekt=substr($zeile,1,-1);
-        }
-      elseif((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";") && ($sekt=="Options")){
-        $schl=substr($zeile,0,strpos($zeile,"="));
-        $wert=substr($zeile,strpos($zeile,"=")+1);
-        if($schl=="Name"){$t0=$wert;}
-        if($schl=="Actual"){$t1=$wert;}
-        if($schl=="Teams"){$t4=$wert;}
-        if($schl=="Type"){
-          if($wert=="1"){$t2=$text[370];}
+    $datei = fopen(PATH_TO_LMO."/".$dirliga.$files,"rb");
+    if ($datei) {
+      while (!feof($datei)) {
+        $zeile = fgets($datei,1000);
+        $zeile=trim($zeile);
+        if((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){  //Sektion
+          $sekt=substr($zeile,1,-1);
+        }elseif((strpos($zeile,"=")!==false) && (substr($zeile,0,1)!=";") && ($sekt=="Options")){  //Wert
+          $option=explode("=",$zeile,2);
+          $option_name=$option[0];
+          $option_wert=isset($option[1])?$option[1]:'';
+          if($option_name=="Name"){$ligadatei[$liga_counter]['liga_name']=$option_wert;}
+          if($option_name=="Actual"){$ligadatei[$liga_counter]['aktueller_spieltag']=$option_wert;}
+          if($option_name=="Teams"){$ligadatei[$liga_counter]['anz_teams']=$option_wert;}
+          if($option_name=="Type"){
+            if($option_wert=="1"){$ligadatei[$liga_counter]['rundenbezeichnung']=$text[370];}
           }
-        if(($t0!="") && ($t1!="") && ($t4!=""))break;
+          //Alle benötigten Werte gefunden -> Abbruch
+          if($ligadatei[$liga_counter]['liga_name']!="" && 
+             $ligadatei[$liga_counter]['aktueller_spieltag']!="" && 
+             $ligadatei[$liga_counter]['anz_teams']!='')break;
         }
       }
-    fclose($datei);
-    $i++;
-    if($t0==""){$j++;$t0="Unbenannte Liga ".$j;}
-    if($t1!=""){
-      if($t2==$text[2]){
-        $t3=" / ".$t1.". ".$t2;
-        }
-      else{
-        $t5=strlen(decbin($t4-1));
-        if($t1==$t5-1){$t3=" / ".$text[373];}
-        elseif($t1==$t5-2){$t3=" / ".$text[372];}
-        elseif($t1==$t5-3){$t3=" / ".$text[371];}
-        elseif($t1==$t5-4){$t3=" / ".$text[370];}
-        else{$t3=" / ".$t1.". ".$t2;}
-        }
+      fclose($datei);
+      if($ligadatei[$liga_counter]['liga_name']==""){
+        $unbenannte_liga_counter++;
+        $ligadatei[$liga_counter]['liga_name']=$text[507]." ".$unbenannte_liga_counter;
       }
-    else{$t3="";}
-    echo "<li><a href=\"".$addi.$dirliga.$files."\">".$t0."<br><small>".gmdate("d.m.Y H:i",filemtime($dirliga.$files)).$t3."</small></a></li>";
+      if($ligadatei[$liga_counter]['aktueller_spieltag']!=""){
+        if($ligadatei[$liga_counter]['rundenbezeichnung']!=$text[2]){  //Pokal
+          $t5=strlen(decbin($ligadatei[$liga_counter]['anz_teams']));
+          switch ($ligadatei[$liga_counter]['aktueller_spieltag']) {
+            case ($t5-1):
+              $ligadatei[$liga_counter]['rundenbezeichnung']=$text[374];
+              $ligadatei[$liga_counter]['aktueller_spieltag']='';
+              break;
+            case ($t5-2):
+              $ligadatei[$liga_counter]['rundenbezeichnung']=$text[373];
+              $ligadatei[$liga_counter]['aktueller_spieltag']='';
+              break;
+            case ($t5-3):
+              $ligadatei[$liga_counter]['rundenbezeichnung']=$text[372];
+              $ligadatei[$liga_counter]['aktueller_spieltag']='';
+              break;
+            case ($t5-4):
+              $ligadatei[$liga_counter]['rundenbezeichnung']=$text[371];
+              $ligadatei[$liga_counter]['aktueller_spieltag']='';
+              break;
+          } 
+        }
+      }else{
+        $ligadatei[$liga_counter]['rundenbezeichnung']="";
+      }
+      $liga_counter++;
     }
-  if($i==0){echo "<li>[".$text[223]."]</li>";}
   }
+}
+closedir($verz);
+
+usort($ligadatei,'cmp');
+if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=='desc') $ligadatei=array_reverse($ligadatei);?>
+
+<ul><?
+foreach($ligadatei as $liga){?>
+<li>
+  <a href="<?=$addi.$dirliga.$liga['file_name']?>"><?=$liga['liga_name']?></a><br>
+  <small><?=date("d.m.Y H:i",filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name']))." / ".$liga['rundenbezeichnung']." ".$liga['aktueller_spieltag']?></small>
+</li><?
+}
+if($liga_counter==0){echo "<li>[".$text[223]."]</li>";}?>
+</ul><?
+
+function cmp ($a1, $a2) {
+  $sort=(isset($_SESSION['liga_sort']) && isset($a1[$_SESSION['liga_sort']]) && isset($a1[$_SESSION['liga_sort']]))?$_SESSION['liga_sort']:'liga_name';
+  if (is_numeric($a1[$sort]) && is_numeric($a2[$sort])) {  //Numerischer Vergleich
+    if ($a2[$sort]==$a1[$sort]) return 0;
+    return ($a1[$sort]>$a2[$sort]) ? 1 : -1;
+  }else{ //Stringvergleich
+    $a1[$sort]=strtr($a1[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+  	$a2[$sort]=strtr($a2[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+  	return  strnatcasecmp($a1[$sort],$a2[$sort]);
+  }
+}
+
 ?>

@@ -35,7 +35,7 @@ if($file!=""){
     $ste=$endtab;
   }
   if ($action=="") {
-    if($onrun==0){
+    if(!isset($onrun) || $onrun==0){
       $action="results";
     }else{
       $action="table";

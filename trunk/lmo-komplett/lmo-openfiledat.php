@@ -26,7 +26,7 @@ if($file!=""){
   if(substr($file,-4)==".l98"){
     $daten=array("");
     $sekt="";
-    $stand=gmdate("d.m.Y H:i",filemtime($file));
+    $stand=date("d.m.Y H:i",filemtime($file));
     $datei = fopen($file,"rb");
     while (!feof($datei)) {
       $zeile = fgets($datei,1000);

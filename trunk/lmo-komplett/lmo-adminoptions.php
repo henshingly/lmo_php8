@@ -38,12 +38,14 @@ if($save==1){
       $deflang=trim($_POST["xdeflang"]);
       
       //Zeitformat kontrollieren
-      $deftime=trim($_POST["xdeftime"]);
-      if($deftime==""){$deftime="15:30";}
+      $deftime=isset($_POST["xdeftime"])?$_POST["xdeftime"]:"15:30";
       $datum_tmp = explode(':',$deftime);
       $deftime=strftime("%H:%M", mktime($datum_tmp[0],$datum_tmp[1]));
       
-      $aadr=trim($_POST["xadr"]);
+      $aadr=isset($_POST["xadr"])?$_POST["xadr"]:'';
+      
+      $liga_sort=isset($_POST["xliga_sort"])?$_POST["xliga_sort"]:'liga_name';
+      $liga_sort_direction=isset($_POST["xliga_sort_direction"])?$_POST["xliga_sort_direction"]:'asc';
       
       break;
     case 1:
@@ -112,6 +114,20 @@ if ($show==0) {?>
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[344]?>"><?=$text[343];?></acronym></td>
             <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xadr" size="40" maxlength="128" value="<?=$aadr;?>" onChange="dolmoedit()"></td>
+          </tr>
+          <tr>
+            <td class="lmost5" align="right" rowspan="2"><acronym title="<?=$text[532]?>"><?=$text[533];?></acronym></td>
+            <td class="lmost5" colspan="2" rowspan="2">
+              <select class="lmoadminein" name="xliga_sort" onChange="dolmoedit()">
+                <option value="liga_name"<?if ($liga_sort=="liga_name") echo " selected";?>><?=$text[529]?></option>
+                <option value="file_date"<?if ($liga_sort=="file_date") echo " selected";?>><?=$text[530]?></option>
+                <option value="file_name"<?if ($liga_sort=="file_name") echo " selected";?>><?=$text[531]?></option>
+              </select>
+            </td>
+            <td class="lmost5" colspan="2"><input type="radio" name="xliga_sort_direction" onClick="dolmoedit()" value="asc"<?if ($liga_sort_direction=="asc") echo " checked";?>> <?=$text[527]?></td>
+          </tr>
+          <tr>
+            <td class="lmost5" colspan="2"><input type="radio" name="xliga_sort_direction" onClick="dolmoedit()" value="desc"<?if ($liga_sort_direction=="desc") echo " checked";?>><?=$text[528]?></td>
           </tr><?
 }elseif ($show==1) {?>          
           <tr>

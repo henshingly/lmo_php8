@@ -27,7 +27,7 @@ if(isset($file) && $file!=""){
   if(substr($file,-4)==".l98"){
     $daten=array();
     $sekt="";
-    $stand=gmdate("d.m.Y H:i",filemtime(PATH_TO_LMO.'/'.$file));
+    $stand=date("d.m.Y H:i",filemtime(PATH_TO_LMO.'/'.$file));
     $datei = @file(PATH_TO_LMO.'/'.$file);
     if ($datei) {
       $lmtype=0;

@@ -22,14 +22,38 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($action=="admin") && ($todo=="open")){
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
 ?>
-  <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">
-  <?PHP echo $text[294]; ?>
-  </td></tr><tr><td align="center" class="lmost3">
-  <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5"><nobr>
-    <?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-admindir.php"); ?>
-  </nobr></td></tr></table>
-  </td></tr></table>
-
-<?PHP
-  }
-?>
+<table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center" class="lmost1"><?=$text[294]?></td>
+  </tr>
+  <tr>
+    <td align="center" class="lmost3">
+      <table class="lmostb" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="lmost5" align="right">
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=liga_name&amp;liga_sort_direction=asc" title="<?=$text[525].' '.$text[529].' '.$text[527].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" width="7" height="7" border="0" alt="asc"></a>
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=liga_name&amp;liga_sort_direction=desc" title="<?=$text[525].' '.$text[529].' '.$text[528].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" width="7" height="7" border="0" alt="desc"></a> |
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=file_name&amp;liga_sort_direction=asc" title="<?=$text[525].' '.$text[531].' '.$text[527].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin1.gif" width="7" height="7" border="0" alt="asc"></a>
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=file_name&amp;liga_sort_direction=desc" title="<?=$text[525].' '.$text[531].' '.$text[528].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin3.gif" width="7" height="7" border="0" alt="desc"></a> |
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=file_date&amp;liga_sort_direction=asc" title="<?=$text[525].' '.$text[530].' '.$text[527].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin7.gif" width="7" height="7" border="0" alt="asc"></a>
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=file_date&amp;liga_sort_direction=desc" title="<?=$text[525].' '.$text[530].' '.$text[528].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin6.gif" width="7" height="7" border="0" alt="desc"></a>      
+          </td>
+        </tr>
+        <tr>
+          <td class="lmost5"><? require(PATH_TO_LMO."/lmo-admindir.php"); ?></td>
+        </tr>
+        <tr>
+          <td class="lmost5" align="right">
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=liga_name&amp;liga_sort_direction=asc" title="<?=$text[525].' '.$text[529].' '.$text[527].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" width="7" height="7" border="0" alt="asc"></a>
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=liga_name&amp;liga_sort_direction=desc" title="<?=$text[525].' '.$text[529].' '.$text[528].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" width="7" height="7" border="0" alt="desc"></a> |
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=file_name&amp;liga_sort_direction=asc" title="<?=$text[525].' '.$text[531].' '.$text[527].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin1.gif" width="7" height="7" border="0" alt="asc"></a>
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=file_name&amp;liga_sort_direction=desc" title="<?=$text[525].' '.$text[531].' '.$text[528].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin3.gif" width="7" height="7" border="0" alt="desc"></a> |
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=file_date&amp;liga_sort_direction=asc" title="<?=$text[525].' '.$text[530].' '.$text[527].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin7.gif" width="7" height="7" border="0" alt="asc"></a>
+            <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=open&amp;liga_sort=file_date&amp;liga_sort_direction=desc" title="<?=$text[525].' '.$text[530].' '.$text[528].' '.$text[526]?>"><img src="<?=URL_TO_IMGDIR?>/lmo-admin6.gif" width="7" height="7" border="0" alt="desc"></a>      
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table><?
+}?>
