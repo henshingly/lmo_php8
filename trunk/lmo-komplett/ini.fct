@@ -1,0 +1,998 @@
+<?php
+
+/*
+
+$Id$
+
+
+Copyright information:
+author:      Tom Gries
+date:        2000/07/01 (initial release)
+email:       tom@xsurf.net
+name:	     myIniFunctions
+version:     v1.11 - 2002/08/31
+
+The newest version is available at http://sourceforge.net/projects/myinifunctions/
+or http://www.myinifunctions.de/.
+
+
+
+LICENCE
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+----------------------------------------------------------------------------------------
+
+*/
+
+
+
+
+// ----------------------------------------------------------------------------------------
+// Global Constants
+// ----------------------------------------------------------------------------------------
+
+// If you have longer lines change the value (in bytes) so it fits your requirements.
+define("_LineLength_", "16384");
+
+// If you have a different remark symbol in your INI file change it.
+define("_REMARK_", ";");
+
+// If you ar not authorized to write to the global temp directory create a own one
+// in your space and change the path to your temp directory.
+define("_TempDir_", "/tmp");
+
+// If you need an other file type (end of line) you can change it. Linefeeds for
+// different OS are:
+//     Linux:   chr(10) or "\n"
+//     Windows: chr(13).chr(10) or "\r\n"
+//     MAC:     chr(13) or "\r"
+define("_LINEFEED_", "\r\n");
+
+// If you use different - not INI like - section limiter and value delimiter
+// you can change the values. This should not be neccesary.
+define("_SectionStart_", "[");
+define("_SectionStop_", "]");
+define("_ValueDelimiter_", "=");
+
+// If you prefer an other prefix for temporary files change the value. This
+// should not be neccesary.
+define("_TempPrefix_", "~db-ini_");
+
+// Do NOT change anything here!
+define("_READ_", "rb");
+define("_WRITE_", "wb");
+define("_APPEND_", "a+b");
+
+
+
+###########################################################################################
+#
+#                       M A I N    F U N C T I O N S
+#
+###########################################################################################
+
+// ----------------------------------------------------------------------------------------
+function ReadIniSections($inifile, $sort = FALSE) {
+// ----------------------------------------------------------------------------------------
+//
+// This function returns the sections of an Ini-File as an array if exists. To check the
+// existence call this function with an if-statemant like if(count(ReadIniSections("file"))).
+// If no sections were found or $inifile does not exist count(ReadIniSections("file"))
+// returns '0' which is the same as FALSE. If sort is set to TRUE the array will be sorted
+// alphabeticaly. The default is FALSE.
+//
+// Whitespaces will be stripped and are allowed. To mark a line as a comment, the first non
+// whitespace character must be a _REMARK_.
+
+
+  $i = 0;
+
+  if (is_file($inifile)) {
+    $file = fopen($inifile, _READ_);
+
+    while (!feof($file)) {
+        $line = fgets($file, _LineLength_);
+
+        $start = strpos(trim($line), _SectionStart_) + 1;
+        $stop = strrpos(trim($line), _SectionStop_) - 1;
+
+        if (IsSection($line)) {
+          $line = substr(trim($line), $start, $stop);
+          $ReadIniSections[$i] = trim($line);
+          $i++;
+        } // if IsSection()
+
+    } // while !feof()
+
+    fclose($file);
+
+    if (isset($ReadIniSections)) {
+      if($sort) {
+        sort($ReadIniSections, SORT_STRING);
+      }
+      return $ReadIniSections;
+    } else {
+      return(FALSE);
+    }
+
+  } else {
+
+    return(FALSE);
+
+  } // if is_file()
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function ReadIniItems($inifile, $section, $sort = FALSE) {
+// ----------------------------------------------------------------------------------------
+//
+// This function returns the item names of a given section of an Ini-File as an array if
+// exists. To check the existence call this function with an if-statemant like
+// if(count(ReadIniItems("file", "section"))). If no items were found or $inifile does not
+// exist count(ReadIniItems("file", "section")) returns '0' which is the same as FALSE.
+// If sort is set to TRUE the array will be sortet alphabeticaly. The default is FALSE.
+//
+// Whitespaces will be stripped and are allowed. To mark a line as a comment, the first non
+// whitespace character must be a _REMARK_.
+
+
+  $i = 0;
+
+  if (is_file($inifile)) {
+    $file = fopen($inifile, _READ_);
+    $gotit = FALSE;
+
+    while (!feof($file)) {
+      if ($gotit) {
+        break;
+      } else {
+        $line = fgets($file, _LineLength_);
+
+        if (IsSection($line)) {
+
+          if (IsSelectedSection($line, $section)) {
+
+            $gotit = TRUE;
+            $itemline = trim(fgets($file, _LineLength_));
+
+            while (strlen($itemline) > 1 && !IsSection($itemline)) {
+              $stop = strpos($itemline, _ValueDelimiter_);
+
+              if (substr($itemline, 0, 1) != _REMARK_) {
+                $ReadIniItems[$i] = substr($itemline, 0, $stop);
+                $i++;
+              } // remarks
+
+              $itemline = trim(fgets($file, _LineLength_));
+
+            } // while !IsSection
+
+          } // if $line == $section
+
+        } // if IsSection()
+
+      } // if $gotit
+
+    } // while !feof()
+
+    fclose($file);
+
+    if (isset($ReadIniItems)) {
+      if($sort) {
+        sort($ReadIniItems, SORT_STRING);
+      }
+      return $ReadIniItems;
+    } else {
+      return(FALSE);
+    }
+
+  } else {
+
+    return(FALSE);
+
+  } // if is_file()
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function ReadIniValue($inifile, $section, $item) {
+// ----------------------------------------------------------------------------------------
+//
+// This function returns the value of a given item and section of an Ini-File as a string
+// if exists. If $item or $inifile does not exist it returns an empty string. Call this
+// function with an if-statemant like if(strlen(ReadIniValue("file", "section", "item")) > 1).
+// To identify an empty item the item must include a '=', e. g. 'MyItem='. Items without
+// a '=' are not identified as an item.
+//
+// Whitespaces will be stripped and are allowed. They are allowed also before and after the '='.
+// To mark a line as a comment, the first non whitespace character must be a _REMARK_.
+
+
+  if (is_file($inifile)) {
+    $file = fopen($inifile, _READ_);
+    $gotit = FALSE;
+
+    while (!feof($file)) {
+      if ($gotit) {
+        break;
+      } else {
+        $line = fgets($file, _LineLength_);
+
+        if (IsSection($line)) {
+
+          if (IsSelectedSection($line, $section)) {
+
+            $gotit = TRUE;
+            $itemline = trim(fgets($file, _LineLength_));
+
+            while (strlen($itemline) > 1 && !IsSection($itemline)) {
+              $stop = strpos($itemline, _ValueDelimiter_);
+
+              if (substr($itemline, 0, 1) != _REMARK_) {
+
+                if (strcasecmp(trim(substr($itemline, 0, $stop)), $item) == 0) {
+                  $itemvalue = trim(substr($itemline, $stop + 1));
+                }
+
+              } // remarks
+
+              $itemline = trim(fgets($file, _LineLength_));
+
+            } // while !IsSection
+
+          } // if IsSelectedSection()
+
+        } // if IsSection()
+
+      } // if $gotit
+
+    } // while !feof()
+
+    fclose($file);
+
+    if (isset($itemvalue)) {
+      return $itemvalue;
+    } else {
+      return(FALSE);
+    }
+
+  } else {
+
+    return(FALSE);
+
+  } // if is_file()
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function WriteIniValue($inifile, $section, $item, $value) {
+// ----------------------------------------------------------------------------------------
+//
+// This function writes a value to an Ini-File. If the Ini-File does not exist it
+// will be created. Returns TRUE if succesfull else FALSE. Call this function with
+// an if-statemant like if(WriteIniValue("file", "section", "item", "value")).
+
+
+  $writing = FALSE;
+  $ini_exists = FALSE;
+  $section_exists = FALSE;
+  $item_exists = FALSE;
+  $ini_sec = ReadIniSections($inifile);
+  $ini_item = ReadIniItems($inifile, $section);
+
+
+  if (dirname($inifile) != $inifile) {
+    if (!is_dir(dirname($inifile))) {
+      return($writing);
+      exit;
+    }
+  }
+
+  if ($ini_sec) {
+    $ini_exists = TRUE;
+    for ($i = 0; $i < count($ini_sec); $i++) {
+      if (strtolower($section) == strtolower($ini_sec[$i])) {
+        $section_exists = TRUE;
+      }
+    }
+    if (count($ini_item) > 0) {
+      for ($i = 0; $i < count($ini_item); $i++) {
+        if (strtolower($item) == strtolower($ini_item[$i])) {
+          $item_exists = TRUE;
+        }
+      }
+    }
+  }
+
+  if ($ini_exists && !$section_exists) {
+    $file = fopen($inifile, _APPEND_);
+    fputs($file, _SectionStart_ . $section . _SectionStop_ . _LINEFEED_);
+    fputs($file, $item . _ValueDelimiter_ . $value . _LINEFEED_);
+    fputs($file, _LINEFEED_);
+    fclose($file);
+    $writing = TRUE;
+    CleanIni($inifile);
+  }
+
+  if ($ini_exists && $section_exists) {
+
+    $tempfile = tempnam(_TempDir_, _TempPrefix_);
+
+    $file = fopen($inifile, _READ_);
+    $helpfile = fopen($tempfile, _WRITE_);
+    while (!feof($file)) {
+      $line = fgets($file, _LineLength_);
+      while (!IsSelectedSection($line, $section)) {
+        fputs($helpfile, $line);
+        $line = fgets($file, _LineLength_);
+      }
+      fputs($helpfile, $line);
+      if (!$item_exists) {
+        fputs($helpfile, $item . _ValueDelimiter_ . $value . _LINEFEED_);
+        while (!feof($file)) {
+          $line = fgets($file, _LineLength_);
+          fputs($helpfile, $line);
+        }
+      } else {
+        $line = fgets($file, _LineLength_);
+        $stop = strpos($line, _ValueDelimiter_);
+        while (strcasecmp(strtolower(trim(substr($line, 0, $stop))), strtolower($item)) != 0) {
+          fputs($helpfile, $line);
+          $line = fgets($file, _LineLength_);
+          $stop = strpos($line, _ValueDelimiter_);
+        }
+        fputs($helpfile, $item . _ValueDelimiter_ . $value . _LINEFEED_);
+        while (!feof($file)) {
+          $line = fgets($file, _LineLength_);
+          fputs($helpfile, $line);
+        }
+      }
+    }
+  fclose($file);
+  fclose($helpfile);
+  $writing = copy($tempfile, $inifile);
+  unlink($tempfile);
+  CleanIni($inifile);
+  }
+
+  if (!$ini_exists) {
+    $file = fopen($inifile, _WRITE_);
+    fputs($file, _SectionStart_ . $section . _SectionStop_ . _LINEFEED_);
+    fputs($file, $item . _ValueDelimiter_ . $value . _LINEFEED_);
+    fputs($file, _LINEFEED_);
+    fclose($file);
+    $writing = TRUE;
+    CleanIni($inifile);
+  }
+
+  return($writing);
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function DeleteIniItem($inifile, $section, $item) {
+// ----------------------------------------------------------------------------------------
+//
+// This function deletes an item from an Ini-File. Returns TRUE if succesfull
+// else FALSE. Call this function with an if-statemant like
+// if(DeleteIniItem("file", "section", "item")).
+
+
+  $writing = FALSE;
+  $ini_exists = flase;
+  $section_exists = FALSE;
+  $item_exists = FALSE;
+  $ini_sec = ReadIniSections($inifile);
+  $ini_item = ReadIniItems($inifile, $section);
+
+
+  if ($ini_sec) {
+    $ini_exists = TRUE;
+    for ($i = 0; $i < count($ini_sec); $i++) {
+      if (strtolower($section) == strtolower($ini_sec[$i])) {
+        $section_exists = TRUE;
+      }
+    }
+    if (count($ini_item) > 0) {
+      for ($i = 0; $i < count($ini_item); $i++) {
+        if (strtolower($item) == strtolower($ini_item[$i])) {
+          $item_exists = TRUE;
+        }
+      }
+    }
+  }
+
+  if ($ini_exists && $section_exists && $item_exists) {
+    
+    $tempfile = tempnam(_TempDir_, _TempPrefix_);
+
+    $file = fopen($inifile, _READ_);
+    $helpfile = fopen($tempfile, _WRITE_);
+    while (!feof($file)) {
+      $line = fgets($file, _LineLength_);
+      while (!IsSelectedSection($line, $section)) {
+        fputs($helpfile, $line);
+        $line = fgets($file, _LineLength_);
+      }
+      fputs($helpfile, $line);
+      $line = fgets($file, _LineLength_);
+      $stop = strpos($line, _ValueDelimiter_);
+      while (strcasecmp(strtolower(trim(substr($line, 0, $stop))), strtolower($item)) != 0) {
+        fputs($helpfile, $line);
+        $line = fgets($file, _LineLength_);
+        $stop = strpos($line, _ValueDelimiter_);
+      }
+      while (!feof($file)) {
+        $line = fgets($file, _LineLength_);
+        fputs($helpfile, $line);
+      }
+    }
+  fclose($file);
+  fclose($helpfile);
+  $writing = copy($tempfile, $inifile);
+  unlink($tempfile);
+  CleanIni($inifile);
+  }
+
+  return($writing);
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function DeleteIniSection($inifile, $section, $recursive = FALSE, $DeleteIfEmpty = TRUE) {
+// ----------------------------------------------------------------------------------------
+//
+// This function deletes a section from an Ini-File. If $recursive=FALSE (default),
+// the section will only deleted if there are no items in the section. If it is
+// the last section of an Ini-File the Ini-File will be deletet to. Returns TRUE
+// if succesfull else FALSE. Call this function with an if-statemant like
+// if(DeleteIniSection("file", "section")).
+
+
+  $writing = FALSE;
+  $ini_exists = FALSE;
+  $section_exists = FALSE;
+  $ini_sec = ReadIniSections($inifile);
+
+  if ($ini_sec) {
+    $ini_exists = TRUE;
+    for ($i = 0; $i < count($ini_sec); $i++) {
+      if (strtolower($section) == strtolower($ini_sec[$i])) {
+        $section_exists = TRUE;
+      }
+    }
+  }
+
+  if ($recursive) {
+    $ini_item = ReadIniItems($inifile, $section);
+    for ($i = 0; $i < count($ini_item); $i++) {
+      DeleteIniItem($inifile, $section, $ini_item[$i]);
+    }
+  }
+
+  if ($ini_exists && $section_exists) {
+    $items = ReadIniItems($inifile, $section);
+
+    if (!$items) {
+    
+      $tempfile = tempnam(_TempDir_, _TempPrefix_);
+
+      $file = fopen($inifile, _READ_);
+      $helpfile = fopen($tempfile, _WRITE_);
+      while (!feof($file)) {
+        $line = fgets($file, _LineLength_);
+        while (!IsSelectedSection($line, $section)) {
+          fputs($helpfile, $line);
+          $line = fgets($file, _LineLength_);
+        }
+        while (!feof($file)) {
+          $line = fgets($file, _LineLength_);
+          fputs($helpfile, $line);
+        }
+      }
+      fclose($file);
+      fclose($helpfile);
+      $writing = copy($tempfile, $inifile);
+      unlink($tempfile);
+      CleanIni($inifile);
+    
+      if (count($ini_sec) == 0 && $DeleteIfEmpty = TRUE) {
+        unlink($inifile);
+      }
+    }
+  }
+
+  return($writing);
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function RenameIniSection($inifile, $OldSectionName, $NewSectionName) {
+// ----------------------------------------------------------------------------------------
+//
+// This function renames a section from an Ini-File. Returns TRUE
+// if succesfull else FALSE. Call this function with an if-statemant like
+// if(RenameIniSection("file", "OldSection", "NewSection")).
+
+
+  $writing = FALSE;
+  $ini_exists = FALSE;
+  $old_section_exists = FALSE;
+  $new_section_exists = FALSE;
+  $ini_sec = ReadIniSections($inifile);
+
+  if ($ini_sec) {
+    $ini_exists = TRUE;
+    for ($i = 0; $i < count($ini_sec); $i++) {
+      if (strtolower($OldSectionName) == strtolower($ini_sec[$i])) {
+        $old_section_exists = TRUE;
+      }
+      if (strtolower($NewSectionName) == strtolower($ini_sec[$i])) {
+        $new_section_exists = TRUE;
+      }
+    }
+  }
+
+  if ($ini_exists && $old_section_exists && !$new_section_exists) {
+    
+    $tempfile = tempnam(_TempDir_, _TempPrefix_);
+
+    $file = fopen($inifile, _READ_);
+    $helpfile = fopen($tempfile, _WRITE_);
+    while (!feof($file)) {
+      $line = fgets($file, _LineLength_);
+      while (!IsSelectedSection($line, $OldSectionName)) {
+        fputs($helpfile, $line);
+        $line = fgets($file, _LineLength_);
+      }
+      fputs($helpfile, _SectionStart_ . $NewSectionName  ._SectionStop_ . _LINEFEED_);
+      while (!feof($file)) {
+        $line = fgets($file, _LineLength_);
+        fputs($helpfile, $line);
+      }
+    }
+    fclose($file);
+    fclose($helpfile);
+    $writing = copy($tempfile, $inifile);
+    unlink($tempfile);
+    
+  }
+
+  return($writing);
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function MoveSection($inifile, $section, $direction = "down", $upperOffset = 0, $lowerOffset = 0) {
+// ----------------------------------------------------------------------------------------
+//
+// This function moves a complete section one position up or down depending on direction
+// (default is "down"). Offset is need to check if a section is the first oder last
+// section (see below). This function Returns TRUE if it is succesfull else FALSE. Call
+// this function with an if-statemant like if(MoveSection("file", "section")).
+
+
+  $direction = strtolower($direction);
+  if (!$direction == "up") {
+      $direction = "down";
+  }
+  if ($direction == "up" && IsFirstSection($inifile, $section, $upperOffset)) {
+    return(FALSE);
+  }
+  if ($direction == "down" && IsLastSection($inifile, $section, 0)) {
+    return(FALSE);
+  }
+
+
+  $writing = FALSE;
+  $ini_exists = FALSE;
+  $section_exists = FALSE;
+  $ini_sec = ReadIniSections($inifile);
+
+  if ($ini_sec) {
+    $ini_exists = TRUE;
+    for ($i = 0; $i < count($ini_sec); $i++) {
+      if (strtolower($section) == strtolower($ini_sec[$i])) {
+        $section_exists = TRUE;
+      }
+    }
+  }
+
+  if ($ini_exists && $section_exists) {
+    
+    $tempfile = tempnam(_TempDir_, _TempPrefix_);
+
+    $file = fopen($inifile, _READ_);
+    $helpfile = fopen($tempfile, _WRITE_);
+    $line = fgets($file, _LineLength_);
+    while (!feof($file)) {
+      if (!IsSection($line)) {
+        fputs($helpfile, $line);
+        $line = fgets($file, _LineLength_);
+      } else {
+        $LastSection = $line;               // write section to array
+        $arSection = array();
+        $arSection[] = $LastSection;
+        $line = fgets($file, _LineLength_);
+        while (!IsSection($line)) {
+          $arSection[] = $line;
+          $line = fgets($file, _LineLength_);
+        }
+      } // !IsSection
+        
+
+      if (!IsSelectedSection($LastSection, $section) && !IsSelectedSection($line, $section)) {
+
+        for ($i = 0; $i <count($arSection); $i++) { // write array to file
+          fputs($helpfile, $arSection[$i]);
+        }
+
+      } else {
+      
+        if ((IsSelectedSection($LastSection, $section) && $direction == "down")  ||
+            (IsSelectedSection($line, $section) && $direction == "up")) {
+      
+          fputs($helpfile, $line);          // write section to file
+          $line = fgets($file, _LineLength_);
+          while (!IsSection($line) && !feof($file)) {
+            fputs($helpfile, $line);
+            $line = fgets($file, _LineLength_);
+          }
+        
+          for ($i = 0; $i <count($arSection); $i++) {   // write array to file
+            fputs($helpfile, $arSection[$i]);
+          }
+        
+          while (!feof($file)) {            // write rest of file
+            fputs($helpfile, $line);
+            $line = fgets($file, _LineLength_);
+          }
+        }  // selection in array or at pointer
+
+
+        if ((IsSelectedSection($LastSection, $section) && $direction == "up")  ||
+            (IsSelectedSection($line, $section) && $direction == "down")) {
+      
+          for ($i = 0; $i <count($arSection); $i++) {   // write array to file
+            fputs($helpfile, $arSection[$i]);
+          }
+        
+          $LastSection = $line;             // write section to array
+          $arSection = array();
+          $arSection[] = $LastSection;
+          $line = fgets($file, _LineLength_);
+          while (!IsSection($line)) {
+            $arSection[] = $line;
+            $line = fgets($file, _LineLength_);
+          }
+
+          fputs($helpfile, $line);          // write section to file
+          $line = fgets($file, _LineLength_);
+          while (!IsSection($line) && !feof($file)) {
+            fputs($helpfile, $line);
+            $line = fgets($file, _LineLength_);
+          }
+        
+          for ($i = 0; $i <count($arSection); $i++) {   // write array to file
+            fputs($helpfile, $arSection[$i]);
+          }
+        
+          while (!feof($file)) {            // write rest of file
+            fputs($helpfile, $line);
+            $line = fgets($file, _LineLength_);
+          }
+        }  // selection in array or at pointer
+
+      }  // selection not in array or at pointer
+        
+      
+    } // while !eof
+    fclose($file);
+    fclose($helpfile);
+    $writing = copy($tempfile, $inifile);
+    unlink($tempfile);
+    
+  }  // if exist
+
+  return($writing);
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function MoveItem($inifile, $section, $item, $direction = "down") {
+// ----------------------------------------------------------------------------------------
+//
+// This function moves an item one position up or down depending on direction (default is
+// "down"). This function Returns TRUE if it is succesfull else FALSE. Call this function
+// with an if-statemant like if(MoveItem("file", "section", "item")).
+
+
+  $direction = strtolower($direction);
+  if (!$direction == "up") {
+      $direction = "down";
+  }
+
+
+  $writing = FALSE;
+  $is_limes = FALSE;
+
+  $ar_items = ReadIniItems($inifile, $section);
+
+  for($j = 0; $j < count($ar_items); $j++) {
+    $ar_item_values[$j] = array("item" => $ar_items[$j], "value" => ReadIniValue($inifile, $section, $ar_items[$j]));
+    if(DeleteIniItem($inifile, $section, $ar_items[$j])) {
+	  $writing = TRUE;
+	} else {
+	  $writing = FALSE;
+	}
+  }
+
+  for($i = 0; $i < count($ar_items); $i++) {
+  $key = $ar_item_values[$i]['item'];
+  $val = $ar_item_values[$i]['value'];
+	if($item == $key) {
+	  $old_index = $i;
+	  $old_item = $key;
+	  $old_val = $val;
+      if($direction == "up") {
+	    if($i == 0) {
+		  array_shift($ar_item_values);
+		  array_push($ar_item_values, array('item' => $old_item, 'value' => $old_val));
+          $is_limes = TRUE;
+		  break;
+  	    } else {
+	      $new_index = $i - 1;
+	    }
+	  } else {
+	    if($i == count($ar_items) - 1) {
+		  array_pop($ar_item_values);
+		  array_unshift($ar_item_values, array('item' => $old_item, 'value' => $old_val));
+          $is_limes = TRUE;
+		  break;
+	    } else {
+	      $new_index = $i + 1;
+	    }
+	  }
+	break;
+	}
+  }
+	
+	if(!$is_limes) {
+      $new_item = $ar_item_values[$new_index]['item'];
+	  $new_val = $ar_item_values[$new_index]['value'];
+	  
+	  $ar_item_values[$new_index]['item'] = $old_item;
+	  $ar_item_values[$new_index]['value'] = $old_val;
+	  $ar_item_values[$old_index]['item'] = $new_item;
+	  $ar_item_values[$old_index]['value'] = $new_val;
+	}
+
+  for($i = count($ar_items) - 1; $i >= 0; $i--) {
+    if(WriteIniValue($inifile, $section, $ar_item_values[$i]['item'], $ar_item_values[$i]['value'])) {
+	  $writing = TRUE;
+	} else {
+	  $writing = FALSE;
+	}
+  }
+
+
+    return($writing);
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+
+
+
+###########################################################################################
+#
+#                       H E L P E R    F U N C T I O N S
+#
+###########################################################################################
+
+// ----------------------------------------------------------------------------------------
+function CleanIni($inifile) {
+// ----------------------------------------------------------------------------------------
+//
+// This function removes multiple newlines.
+//
+// If $inifile does not exist CleanIni($inifile) returns '0' which is the same as FALSE.
+
+
+  $writing = FALSE;
+  $counter = 0;
+  $tempfile = tempnam(_TempDir_, _TempPrefix_);
+
+  if (is_file($inifile)) {
+    $file = fopen($inifile, _READ_);
+    $helpfile = fopen($tempfile, _WRITE_);
+    while (!feof($file)) {
+      $line = fgets($file, _LineLength_);
+	  if(ord($line) == 10 || ord($line) == 13) {
+	    if($counter == 0) {
+	      $counter .= 1;
+		  fputs($helpfile, $line);
+		} else {
+	      $counter = $counter++;
+		}
+      } else {
+	      $counter = 0;
+		  fputs($helpfile, $line);
+	  }
+    }
+	fclose($file);
+	fclose($helpfile);
+    $writing = copy($tempfile, $inifile);
+    unlink($tempfile);
+  }
+
+  return($writing);
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function IsSection($line) {
+// ----------------------------------------------------------------------------------------
+//
+// This function checks if a string is a 'section' in an Ini-File. The credentials
+// are: it must start with _SectionStart_ and it must end with _SectionStop_.
+//
+// Whitespaces will be stripped and are allowed. To mark a line as a comment, the first non
+// whitespace character must be a _REMARK_.
+
+
+  if (substr(trim($line), 0, 1) == _REMARK_) {
+    return(FALSE);
+  }
+  
+  $start = strpos(trim($line), _SectionStart_);
+  $stop = strrpos(trim($line), _SectionStop_);
+
+  if ($start == 0 && $stop == strlen(trim($line)) - 1) {
+    return(TRUE);
+  } else {
+    return(FALSE);
+  }
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function IsSelectedSection($line, $section) {
+// ----------------------------------------------------------------------------------------
+//
+// This function checks if a section is the section searched for in an Ini-File.
+//
+// Whitespaces will be stripped and are allowed. To mark a line as a comment, the first non
+// whitespace character must be a _REMARK_.
+
+
+  $line = trim($line);
+  $start = strpos($line, _SectionStart_);
+  $stop = strrpos($line, _SectionStop_);
+  
+  if (strcasecmp(strtolower(substr($line, $start + 1, $stop - 1)), strtolower("$section")) == 0) {
+    return(TRUE);
+  } else {
+    return(FALSE);
+  }
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function IsFirstSection($inifile, $section, $offset=0) {
+// ----------------------------------------------------------------------------------------
+//
+// This function checks if a section is the first section in an ini-file.
+// Offset is the section from the beginning to compare. Returns TRUE if
+// the section is the first section (depending on offset), else FALSE.
+
+
+  $arSection = ReadIniSections($inifile);
+  
+  if ($arSection[$offset] == $section) {
+    return(TRUE);
+  } else {
+    return(FALSE);
+  }
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function IsLastSection($inifile, $section, $offset=0) {
+// ----------------------------------------------------------------------------------------
+//
+// This function checks if a section is the last section in an ini-file.
+// Offset is the section from the end to compare. Returns TRUE if the
+// section is the last section (depending on offset), else FALSE.
+
+
+  $arSection = ReadIniSections($inifile);
+  if ($offset < 0) {
+    $offset = $offset * (-1);
+  }
+  $offset = count($arSection) - $offset - 1;
+  
+  if ($arSection[$offset] == $section) {
+    return(TRUE);
+  } else {
+    return(FALSE);
+  }
+
+}
+// ----------------------------------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------------------------------
+function SectionExist($inifile, $section) {
+// ----------------------------------------------------------------------------------------
+//
+// This function checks if a section exist. Returns TRUE if the
+// section exist, else FALSE.
+
+
+  $arSection = ReadIniSections($inifile);
+  $user_found = FALSE;
+  
+  for($i = 0; $i < count($arSection); $i++) {
+    if(strtolower($arSection[$i]) == strtolower($section)) {
+	  $user_found = TRUE;
+	}
+  }
+
+  return $user_found;
+}
+// ----------------------------------------------------------------------------------------
+
+
+?>

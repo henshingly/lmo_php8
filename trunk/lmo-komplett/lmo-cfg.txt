@@ -1,0 +1,7 @@
+LeagueDir=ligen/
+PktJustify=1
+TabOnResults=1
+BackLink=1
+CalcTime=0
+DefaultTime=15:30
+AdminMail=deine@email.de

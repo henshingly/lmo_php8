@@ -1,0 +1,1464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="de">
+  <head>
+    <title>Hilfe: LigaManager Online 3.99alpha1</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <style type="text/css">
+      body {font-size:96%; background-color: #ffffff; color: #000000; font-family:Verdana, sans-serif; }
+      li {padding: 0; margin-bottom: 3px; }
+      a:hover, a:active {text-decoration: overline underline;}
+      hr {background-color:black;color:white;border:0;height:0.1em;}
+      h1 {text-align:center; font-size:120%;font-weight: bold;}
+      h2 { font-size: 110%;font-weight: bold;}
+      h3 { font-size: 105%;font-weight: bold;margin-bottom:0.2em;}
+      h4 { font-weight: bold;margin-left:2em;margin-bottom:0.1em;}
+      table, p { margin-left: 2em; }
+      .up { text-align: right; }
+      li li {list-style: none; }
+      td, th {text-align:left;vertical-align:top;border:1px solid #000;padding:0.1em;}
+      th {background-color:#ddd;color:#000;}
+      table {border:1px solid #000; border-spacing:0;border-collapse:collapse;}
+      var {font-family:monospace;}
+      strong {color:#009;background-color:inherit;}
+      em {font-style:normal;font-weight:bold;color:#900;background-color:inherit;}
+      img {border:0;}
+    </style>
+  </head>
+  <body>
+    <h1>Hilfe: LigaManager Online 3.99alpha1</h1>
+    <address><a href="https://sourceforge.net/projects/lmo/">https://sourceforge.net/projects/lmo/</a></address>
+    <ol>
+      <li><h3><a href="readme.html#00">Über diese Version</a></h3>
+      <li><h3><a href="readme.html#01">Einstiegsinformationen</a></h3>
+        <ol>
+          <li><a href="readme.html#0101">Einleitung</a></li>
+          <li><a href="readme.html#0102">Systemvoraussetzungen</a></li>
+          <li><a href="readme.html#0103">Installation</a></li>
+          <li><a href="readme.html#0104">Rechtliches</a></li>
+        </ol>
+      </li>
+      <li><h3><a href="readme.html#02">Die Userverwaltung</a></h3>
+        <ol>
+          <li><a href="readme.html#0201">Login/Logout</a></li>
+          <li><a href="readme.html#0202">Hilfs-Admins</a></li>
+          <li><a href="readme.html#0203">Die Userverwaltung</a></li>
+        </ol>
+      </li>
+      <li><h3><a href="readme.html#03">Globale Optionen</a></h3>
+        <ol>
+          <li><a href="readme.html#0301">Globale Optionen</a></li>
+          <li><a href="readme.html#0302">Der Designeditor</a></li>
+        </ol>
+      </li>
+      <li><h3><a href="readme.html#04">Bearbeiten einer Liga</a></h3>
+        <ol>
+          <li><a href="readme.html#0401">Erstellen einer Liga</a></li>
+          <li><a href="readme.html#0402">Öffnen einer Liga</a></li>
+          <li><a href="readme.html#0403">Der Ergebniseditor</a></li>
+          <li><a href="readme.html#0404">Grundeinstellungen</a></li>
+          <li><a href="readme.html#0405">Manuelle Tabellensortierung</a></li>
+          <li><a href="readme.html#0406">Der Mannschaftseditor</a></li>
+        </ol>
+      </li>
+      <li><h3><a href="readme.html#05">Dateifunktionen</a></h3>
+        <ol>
+          <li><a href="readme.html#0501">Löschen einer Liga</a></li>
+          <li><a href="readme.html#0502">Upload einer Liga</a></li>
+          <li><a href="readme.html#0503">Download/Mailen einer Liga</a></li>
+        </ol>
+      </li>
+      <li><h3><a href="readme.html#06">Technisches</a></h3>
+        <ol>
+          <li><a href="readme.html#0601">Interner Aufbau einer Ligadatei</a></li>
+          <li><a href="readme.html#0602">Interner Aufbau der CSS-Datei</a></li>
+        </ol>
+      </li>
+    </ol>
+    <h3><a name="00"></a>0. Über diese Version</h3>
+    <p>
+      Der ursprüngliche Autor Frank Hollwitz entwickelt sein Skript LMO im Moment 
+      nicht weiter. Da der LMO unter der <acronym title="General Public Licence">GPL</acronym> 
+      steht, hat sich ein Team gefunden um die Entwicklung des LMO voranzutreiben. Das 
+      Projekt LMO hat eine Heimat unter der Open-Source-Community 
+      <a href="https://sourceforge.net/projects/lmo/"><strong>SourceForge</strong></a> 
+      gefunden, dort wird die weitere Entwicklung zu sehen sein.</p>
+    <p>Für Entwickler und Tester 
+      sind nach wie vor das <a href="http://www.hollwitz.de/forum/"><strong>Hollwitz.de-Supportforum</strong></a> 
+      und das <a href="http://www.hollwitz.de/lm-board/"><strong>LMO-Entwicklerforum</strong></a> (dort wird auch die 
+      Weiterentwicklung der Desktopvariante <acronym title="Liga Manager Desktop">LMD</acronym> 
+      diskutiert) die ersten Adressen.
+    </p>
+    <p>
+      Als ersten Anfang der Weiterentwicklung (die Version alpha1) sind einige der wichtigsten Addons 
+      für die Version 3.02b des LMO integriert worden. Diese sind:</p>
+    <ul>
+      <li><em>Tippspiel-Addon</em> von Frank Albrecht (v1.21)
+      <li><em>Spielerstatistik-Addon</em> von Rene Marth (v1.1)
+      <li><em>LMO-Ticker-Addon</em> von Bernd Hoyer (v1.03)
+      <li><em>ZuStat-Addon</em> von Bernd Hoyer (v1.08)
+      <li><em>LMO-Viewer-Addon</em> von Bernd Feser (v1.161)
+      <li><em>LMO-Archiv-Addon</em> von Georg Stey
+      <li><em>Wap-Addon</em> von "bastard" (v1.1)
+      <li><em>Verschiedene Hacks</em> von Bernd Hoyer
+    </ul>
+    <p>
+      Zusätzlich wurden einige der offensichtlichsten Bugs entfernt, diese Version soll als Grundlage 
+      für weitere Entwicklungen dienen. Geplant sind zunächst (in Reihenfolge der Wichtigkeit):
+    </p>
+    <ul>
+      <li>Fehlerbeseitigung im Code des LMO und der Addons
+      <li>Administration der Addons über Admin-Oberfläche des LMO
+      <li>Multilanguageunterstützung (mit Hilfe der Languagefiles)
+      <li>Integration weiterer Addons und Hacks sowie neuer Funktionen
+      <li>Fehlerbereinigung bei HTML- und CSS-Ausgabe
+      <li>unabhängig von Register-Globals-Einstellung des Servers machen
+      <li>Migration in SQL-Umgebungen (zunächst MySQL)
+    </ul>
+    <h3><a name="01"></a>1. Einstiegsinformationen</h3>
+    <h4><a name="0101"></a>1.1. Einleitung</h4>
+    <p>
+      Herzlich Willkommen zum LigaManager Online. Mit diesem Script
+      können Sie Ihren Besuchern einen Ergebnisdienst über Ihre
+      Lieblingsligen anbieten. Die gesamte Verwaltung der Ligen läuft
+      dabei direkt auf dem Server ab; Sie tragen nur noch die
+      Ergebnisse ein und Ihre Besucher erhalten sofort die aktuellen
+      Tabellen, Statistiken usw. - Keine Fremdsoftware, keine
+      zeitraubenden Exporte und Uploads mehr!
+    </p>
+    <p>
+      Es ist ratsam, wenn Sie sich ein Bookmark/Favoriten in Ihrem
+      Browser für den Adminbereich (<strong>.../lmoadmin.php</strong>)
+      einrichten, damit Sie immer schnell darauf zugreifen können. Im
+      User-Bereich ist aus Sicherheitsgründen kein Link auf den
+      Adminbereich vorhanden (damit niemand auf dumme Gedanken kommt).
+    </p>
+    <p>
+      Beachten Sie bitte auch, daß es zum Korrekten Bearbeiten Ihrer
+      Ligen erforderlich ist, daß Ihr Browser JavaScript unterstützt
+      und sie das auch aktiviert haben. Die beste Wahl für den
+      Adminbereich des LMO ist momentan noch der Internet Explorer ab 5.5, da dieser
+      Browser alle eingebauten JavaScript-Funktionen unterstützt. 
+      Zukünftige Versionen werden kein Javascript mehr voraussetzen.
+    </p>
+    <p>
+      Die Besucher sollten das Script nur über die Datei <strong>lmo.php</strong>
+      starten. JavaScript benötigen die Besucher eigentlich nur, wenn
+      Sie den <a href="#0403">eingebauten Newsticker</a> benutzen; aber
+      selbst dann nicht zwingend, denn der Ticker wird ohne JavaScript
+      einfach nicht angezeigt. Zu jedem Link erhalten Ihre Besucher
+      einen Tooltip, so daß Sie keine weiteren Erklärungen zur
+      Benutzung des Scripts geben müssen.
+    </p>
+    <p>
+      Der Adminbereich ist, wie schon erwähnt, über <strong>lmoadmin.php</strong>
+      erreichbar. <em>Beim ersten Start melden Sie sich mit dem Namen
+      <kbd>admin</kbd> und dem Passwort <kbd>lmo</kbd> an.</em> Unter <a href=
+      "#0301">Optionen</a> können und sollten Sie das dann sofort
+      ändern, damit kein Unbefugter mehr Zugriff hat.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0102"></a>1.2. Systemvoraussetzungen</h4>
+    <ul>
+      <li>Unix- oder Windows-Server</li>
+      <li><em>PHP 4.1</em> (oder höher)
+      <li>register_globals muß auf on sein</li>
+      <li>JavaScript- und CSS-fähiger Browser</li>
+    </ul>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0103"></a>1.3. Installation</h4>
+    <ol>
+      <li>Die <strong>lmo.zip</strong> wurde bereits von Dir entpackt. Achte
+      darauf, daß die Verzeichnisstruktur beim Entpacken beibehalten
+      wurde.</li>
+      <li>Die Dateien des Verzeichnisses <strong>lmo</strong> kommen in das
+      Verzeichnis, in dem sich Deine anderen Homepage-Seiten befinden
+      oder am besten sogar in ein eigenes Verzeichnis.</li>
+      <li>Das Verzeichnis <strong>ligen</strong> ist sozusagen das
+      Arbeitsverzeichnis des Scripts und sollte auch unterhalb des
+      Scriptverzeichnisses bleiben.</li>
+      <li><strong>lmo.php</strong> ist die Hauptseite dieses Scripts, die von
+      Deinen Besuchern aufgerufen werden soll. Bitte verlinke
+      ausschließlich diese Datei entsprechend in Deiner
+      Navigation.</li>
+      <li>Die <strong>lmo.php</strong> kann ohne Einschränkungen komplett an
+      Deine Homepage angepaßt werden. Wichtig dabei ist nur, daß die
+      Zeile <code>&lt;?PHP require("lmo-start.php"); ?&gt;</code> 
+      im Quelltext erhalten bleibt; und zwar exakt an der Stelle, an
+      der die Ligen später angezeigt werden sollen. Wenn Du vorher
+      der PHP-Variablen <strong>file</strong> einen Dateinamen einer Liga
+      übergibst (z.B. <kbd>$file="ligen/1l_2001-02.l98"</kbd>), wird diese Liga
+      beim Aufruf immer gleich geladen, ansonsten wird beim Aufruf
+      eine Übersicht aller vorhandenen Ligen gezeigt. Die anderen 
+      Dateien des Scriptverzeichnisses brauchen und
+      sollten nicht verändert werden!</li>
+      <li>
+        Achte beim Hochladen der Dateien auf folgendes: 
+        <ul>
+          <li>Folgende Dateien müssen im <em>Textmodus</em> übertragen werden:
+            <ul>
+              <li>.htaccess</li>
+              <li>lmo-cfg.txt</li>
+              <li>lmo-lang.txt</li>
+              <li>lmo-auth.txt</li>
+              <li>lmo-access.txt</li>
+              <li>lmo-style.css</li>
+              <li>lmo-style.txt</li>
+              <li>lmo-tippcfg.txt</li>
+              <li>lmo-tipplang.txt</li>
+              <li>lmo-tippauth.txt</li>
+            </ul>
+          </li>
+          <li>Folgende <em>Zugriffsrechte (chmod)</em> müssen gesetzt werden:
+            <p><em>Dateien:</em></p>
+            <ul>
+              <li>666 - <code>lmo-cfg.txt</code></li>
+              <li>666 - <code>lmo-style.css</code></li>
+              <li>600 - <code>lmo-auth.txt</code> (oder 666, wenn das mit 600 nicht klappt)</li>
+              <li>600 - <code>lmo-access.txt</code> (oder 666, wenn das mit 600 nicht klappt)</li>
+              <li>666 - <code>lmo-tippcfg.txt</code></li>
+              <li>600 - <code>lmo-tippauth.txt</code> (oder 666, wenn das mit 600 nicht klappt)</li>
+              <li>666 - alle Ligen im <strong>ligen</strong>-Verzeichnis und im Unterverzeichnis <strong>archiv</strong></li>
+              <li>666 - alle Dateien in den Verzeichnissen <strong>output</strong>, <strong>stats</strong> und <strong>tipps</strong> (sofern vorhanden)</li>
+            </ul>
+            <p><em>Verzeichnisse:</em>
+            <ul>
+              <li>777 - das <strong>ligen</strong>-Verzeichnis und dessen Unterverzeichnis <strong>archiv</strong></li>
+              <li>777 - das <strong>output</strong>-Verzeichnis</li>
+              <li>777 - das <strong>stats</strong>-Verzeichnis</li>
+              <li>777 - das <strong>tipps</strong>-Verzeichnis und dessen Unterverzeichnisse <strong>einsicht</strong>, <strong>auswert</strong> und <strong>vereine</strong></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0104"></a>1.4. Rechtliches</h4>
+    <p>
+      Dieses Script wird unter den Bestimmungen der <a href="http://www.gnu.org/licenses/gpl.txt">GPL</a>
+      (<a href="http://www.gnu.de/gpl-ger.html">deutsche Übersetzung</a>) herausgegeben. Im
+      Klartext heißt das, Sie dürfen das Script nutzen, weitergeben und
+      sogar verändern; Garantie wird von keiner Seite gewährt.
+      <em>Bitte beachte, dass Copyrighthinweise auf jeden Fall erhalten 
+      bleiben müssen, es ist also nicht erlaubt, diese zu entfernen oder zu
+      ändern.</em>
+    </p>
+    <p>
+      Obwohl diese Software sorgfältig entwickelt wurde, kann für die
+      Verwendungsfähigkeit und Fehlerfreiheit keine Haftung übernommen
+      werden. Jede Haftung für direkte, indirekte, verursachte oder
+      gefolgte Schäden, die durch die Verwendung dieses Programms
+      entstehen könnten, ist ausgeschlossen. Es gibt keine Garantie!
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h3><a name="02"></a>2. Die Userverwaltung</h3>
+    <h4><a name="0201"></a>2.1. Login/Logout</h4>
+    <p>
+      Wenn Sie den Adminbereich betreten, sehen Sie erstmal eine
+      Eingabemaske, mit der Sie sich beim System anmelden müssen. Nach
+      der Installation ist zuerstmal der Nutzername <kbd>admin</kbd> und
+      das Passwort <kbd>lmo</kbd> eingestellt. Das sollten Sie aber
+      schnellstmöglich ändern, um Unbefugten den Zutritt zu Ihrem
+      Adminbereich zu verwehren.
+    </p>
+    <p>
+      Wenn Sie eingeloggt sind, haben Sie rechts oben im Menü immer
+      auch einen Befehl <strong>Logout</strong>, mit dem Sie sich aus dem
+      Adminbereich ausloggen können. Das sollten Sie der Sicherheit
+      wegen auch immer am Ende einer Sitzung tun.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0202"></a>2.2. Hilfs-Admins</h4>
+    <p>
+      Sie betreuen auf Ihrer Homepage mehrere Ligen und haben auch
+      Helfer, die immer die aktuellen Ergebnisse für Sie
+      zusammentragen? Dann wird es Sie freuen, zu erfahren, daß Sie
+      auch spezielle Accounts für Ihre Helfer einrichen können. Diese
+      'Hilfs-Admins' können dann ihre Ergebnisse eintragen, haben aber
+      keinen Zugang zu den empfindlicheren Einstellungen Ihrer Liga
+      oder zu den Optionen des Scripts. Mehr dazu unter <a href="#0203">
+      Punkt 2.3.</a>.
+    </p>
+    <p>
+      Als Beispiel ist bereits ein Hilfs-Admin angelegt, dessen
+      Nutzername <kbd>helfer</kbd> ist. Sein Passwort ist <kbd>lmo</kbd> und
+      die beiden hier beigefügten Ligen sind für ihn freigeschaltet.
+      Sie sollten diesen Hilfs-Admin sofort löschen, daß sich kein
+      Unbefugter an den Ligen vergreifen kann.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0203"></a>2.3. Die Userverwaltung</h4>
+    <p>
+      Die Userverwaltung wird ja vergleichsweise selten gebraucht und
+      ist daher nicht direkt erreichbar. Wählen Sie den Menüpunkt <strong>
+      Optionen</strong> und anschließend bei der Auswahl am unteren Rand <strong>
+      Userverwaltung</strong>.
+    </p>
+    <p>
+      Zuerst haben Sie alle eingerichteten Admins und <a href="#0202">
+      Hilfs-Admins</a> aufgelistet. Wollen Sie Änderungen vornehmen,
+      ändern Sie einfach die gewünschten Angaben und klicken Sie danach
+      auf den entsprechenden <strong>Speichern</strong>-Button. Wollen Sie einen
+      Account löschen, klicken Sie einfach auf den entsprechenden <strong>
+      Löschen</strong>-Button. Achtung, das ist nicht mehr rückgängig zu
+      machen!
+    </p>
+    <p>
+      Bei den Hilfs-Admins gibt es noch ein zusätzliches Feld <strong>
+      Freigegebene Ligen</strong>. Hier geben Sie die Namen der Ligen ein,
+      die dieser Hilfs-Admin bearbeiten darf. Ist dieses feld leer,
+      darf der Hilfs-Admin noch gar nichts. Tragen Sie hier die Namen
+      der Ligen bitte ohne Pfad und ohne Namenserweiterung ein, also
+      nur z.B. <kbd>1l_2001-02</kbd> anstatt <kbd>ligen/1l_2001-02.l98</kbd>.
+      Möchten Sie einem Hilfs-Admin mehrere Ligen zuteilen, geben Sie
+      die Namen durch Komma getrennt ein, also z.B. <kbd>
+      1l_2001-02,dp_2001-02</kbd>. Ihre Eingaben in diesem Feld werden
+      nur übernommen, wenn die Ligen, die sie angeben, bereits im
+      Ligenverzeichnis vorhanden sind.
+    </p>
+    <p>
+      Wollen Sie einen Neuen Admin oder Hilfs-Admin hinzufügen? Dann
+      ist der Bereich <strong>Neuen Admin hinzufügen</strong> wichtig. Hier
+      stehen schon Vorgaben in den Feldern, die Sie natürlich auch
+      ändern können, vevor Sie den neuen Admin-Account anlegen. Das
+      Passwort ist ein Zufallspasswort, das Sie ruhigen Gewissens
+      übernehmen können. Wenn alles korrekt eingegeben wurde, klicken
+      Sie auf den untersten <strong>Speichern</strong>-Button. Haben Sie einen
+      Hilfs-Admin hinzugefügt, so müssen Sie ihm noch ein oder mehrere
+      Ligen zuteilen.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h3><a name="03"></a>3. Globale Optionen</h3>
+    <h4><a name="0301"></a>3.1. Globale Optionen</h4>
+    <p>
+      Mit einem Klick auf den Menübefehl <strong>Optionen</strong> öffnet sich
+      der Optionsbildschirm. Hier werden die globalen Scriptoptionen
+      festgelegt. <a href="#0202">Hilfs-Admins</a> haben hier keinen
+      Zutritt.
+    </p>
+    <p>
+      Unter <strong>Pfade</strong> geben Sie den Pfad zum Ligen-Verzeichnis an.
+      Diese Angabe braucht im Normalfall aber nicht geändert werden.
+      Achten Sie aber bitte darauf, daß diese Angabe mit einem <kbd>/</kbd>
+      (Schrägstrich) enden muß. Es ist empfehlenswert, wenn diese
+      Angabe relativ zum Scriptpfad vorgenommen wird.
+    </p>
+    <p>
+      Unter <strong>Tabellenoptionen</strong> legen Sie fest, wo die <strong>
+      Punkte</strong>-Spalte in der Tabelle dargestellt wird und wo die
+      Tabelle selbst dargestellt wird.
+    </p>
+    <p>
+      Bei <strong>Sonstige Optionen</strong> legen Sie zuerst fest, ob die
+      Besucher einen Link bekommen, mit dem sie bei einer geöffneten
+      Liga zur Ligenübersicht zurückkehren können. Eventuell möchten
+      Sie ja darauf verzichten, weil das bereits durch Ihre
+      Homepagenavigation abgedeckt ist.
+    </p>
+    <p>
+      Die Option <strong>Berechnungsdauer darstellen</strong> ist eigentlich nur
+      für Debug-Zwecke gedacht. Aber falls Sie das möchten, können Sie
+      hiermit Ihren Besuchern zeigen, wie lange der Server an der
+      angezeigten Übersicht gerechnet hat. Im Adminbereich wird die
+      Berechnungsdauer immer angezeigt, egal was Sie hier einstellen.
+    </p>
+    <p>
+      Die <strong>Standard-Anstoßzeit</strong> will Ihnen etwas Arbeit abnehmen.
+      Geben Sie hier die Uhrzeit ein, wann die meisten Spiele in Ihren
+      Ligen beginnen. Bei allen diesen Spielen brauchen Sie dann nur
+      noch ein <a href="#0403">Anpfiffdatum</a> einzugeben und diese
+      Zeit wird automatisch übernommen. Das sollte Ihnen bzw. Ihren
+      Hilfs-Admins etwas Arbeit abnehmen. Achten Sie bitte auf die Form
+      HH:MM (2-stellige Stunde und 2-stellige Minute durch : getrennt).
+    </p>
+    <p>
+      Die <strong>e-Mail des Webmasters</strong> ist nur beim <a href="#0503">
+      eMail-Versand von Ligen</a> von Belang. Sie wird als Absender
+      eingesetzt und als Vorgabe für den Empfänger.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div> 
+    <h4><a name="0302"></a>3.2. Der Designeditor</h4>
+    <p>
+      Wählen Sie den Menüpunkt <strong>Optionen</strong> und anschließend bei der
+      Auswahl am unteren Rand <strong>Designeditor</strong>, um diesen zu
+      erreichen.
+    </p>
+    <p>
+      Der Designeditor liefert Ihnen die wichtigsten
+      Einstellungsmöglichkeiten für die Farben und Schriften, die das
+      Script zur Darstellung verwendet. Diese Einstellungen werden in
+      der Datei <strong>lmo-style.css</strong> gespeichert von wo aus das Script
+      sie direkt nutzt. Spielen Sie ein wenig mit den Einstellungen
+      herum, um die bestmögliche Anpassung des Designs an ihre Homepage
+      zu erhalten.
+    </p>
+    <p>
+      Beim Speichern greift das Script auf die Datei <strong>
+      lmo-style.txt</strong> zu und nutzt diese als Vorlage. Tiefergehende
+      Änderungen des Designs, die erfahrene Admins im Quelltext der <strong>
+      lmo-style.css</strong> vornehmen, sollten auch in dieser Datei
+      vorgenommen werden. Sonst gehen die Quelltextänderungen beim
+      nächsten Speichern mit dem Designeditor verloren.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h3><a name="04"></a>4. Bearbeiten einer Liga</h3>
+    <h4><a name="0401"></a>4.1. Erstellen einer Liga</h4>
+    <p>
+      Klicken Sie im Menü auf <strong>Neu</strong>, um eine neue Liga zu
+      erstellen. Der Erstellungsprozeß umfaßt 4 Schritte
+    </p>
+    <p>
+      Zuerst legen Sie den <strong>Dateinamen</strong> der Liga fest. Verzichten
+      Sie dabei auf den Pfad und die Namenserweiterung, diese sind
+      bereits vorgegeben. Achten Sie darauf, daß Ihre Eingabe max. 28
+      Zeichen lang sein darf. Geben Sie der Liga nun einen
+      aussagekräftigen <strong>Namen</strong>. Dieser Titel erscheint in den
+      Auflistungen Ihrer Ligen und als Überschrift im Besucher-Bereich.
+      Neben dem Titel selbst und ggf. regionale Angaben sollte hier
+      auch die Saison erwähnt werden, z.B. <kbd>1. Kreisklasse Hinterwelt
+      2001/02</kbd>. Legen Sie nun noch fest, ob Sie eine <strong>Liga</strong>
+      (mit Punkten, Tabelle usw.) oder ein <strong>KO-Turnier</strong> (PlayOff,
+      Turnier o.ä.) anlegen. Klicken Sie auf <strong>Weiter</strong>, um
+      fortzufahren.
+    </p>
+    <p>
+      Als Nächstes legen Sie die <strong>Anzahl der Mannschaften</strong> fest.
+      Erstellen Sie eine Liga, legen Sie bitte auch die <strong>Anzahl der
+      Spieltage</strong> und die <strong>Anzahl der Spiele pro Spieltag</strong> fest.
+      Bei KO-Turnieren ist das nicht notwendig, da diese Einstellungen
+      hier schon durch die Anzahl der Mannschaften bestimmt wird.
+      Klicken Sie auf <strong>Weiter</strong>, um fortzufahren.
+    </p>
+    <p>
+      Der 3. Schritt ist bei Ligen die <strong>Spielplanerstellung</strong>. <strong>
+      Spielpläne aus anderen Ligen übernehmen</strong> funktioniert nur bei
+      Ligen, die die gleichen Anzahlen an Mannschaften, Spielen und
+      Spieltagen hat. Der <strong>zufällige Spielplan</strong> entspricht dem aus
+      dem LM98Free bekannten System; er kann nur dann erstellt werden,
+      wenn es sich um eine 'normale' Liga handelt, in der jedes Team 1
+      Hin- und 1 Rückspiel gegen jeden Gegner hat (wie in der
+      Fußball-Bundesliga). Sie können aber auch ganz auf die
+      Spielplanerstellung verzichten.
+    </p>
+    <p>
+      Bei KO-Turnieren legen Sie im 3. Schritt der Erstellung fest,
+      welchen <strong>Spielmodus</strong> die einzelnen Runden Ihres Turniers
+      haben sollen. Klicken Sie auf <strong>Weiter</strong>, um zum letzten
+      Schritt zu gelangen.
+    </p>
+    <p>
+      Die <strong>Liga wurde gespeichert</strong> und Sie sollten als Nächstes
+      die <a href="#0406">Mannschaften</a> bearbeiten. Erstmal sind die
+      Mannschaften nur durchnummeriert und Sie können nun die Namen und
+      alles weitere frei festlegen. Bei neuen Ligen, deren Spielpläne
+      Sie aus anderen Ligen übernommen haben, sollten Sie vorher einen
+      Blick in den Besucherbereich werfen und anhand der Spielpläne der
+      einzelnen Mannschaften herausfinden, welche Mannschaft welchem
+      Eintrag zugeordnet werden muß.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0402"></a>4.2. Öffnen einer Liga</h4>
+    <p>
+      Wenn Sie sich in den Adminbereich <a href="#0201">eingeloggt</a>
+      haben, erhalten Sie einen Übersicht, in der auch alle verfügbaren
+      Ligen aufgelistet sind. Sonst klicken Sie einfach im Menü auf <strong>
+      Öffnen</strong>, um eine Auflistung der Ligen zu erhalten. Wählen Sie
+      hier die Liga aus, die Sie bearbeiten möchten und klicken Sie sie
+      an. <a href="#0202">Hilfs-Admins</a> können nur die Ligen
+      auswählen, die für sie freigegeben wurden.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0403"></a>4.3. Der Ergebniseditor</h4>
+    <p>
+      Nach dem <a href="#0402">Öffnen der Liga</a> gelangen Sie gleich
+      automatisch in den Ergebniseditor und der aktuelle Spieltag wird
+      dargestellt. In der Auswahl unterhalb des Menüs können Sie auch
+      einen anderen Spieltag zum Bearbeiten auswählen.
+    </p>
+    <p>
+      Ganz oben können Sie das <strong>Start- und Enddatum</strong> des Spieltags
+      festlegen. Achten Sie unbedingt darauf, das das Datum in der Form
+      TT.MM.JJJJ (2stelliger Tag, 2stelliger Monat und 4stelliges Jahr
+      durch Punkte getrennt) eingegeben werden muß. Neben den
+      Datumsfeldern ist jeweils ein Button angebracht, der einen
+      PopUp-Kalender öffnet, wo Sie durch Anklicken einfach ein Datum
+      auswählen können (das funktioniert leider nicht in Netscape).
+      Diese Datumswerte werden den Besuchern nur dann angezeigt, wenn
+      die <a href="#0404">Einstellung</a> <strong>Spieltagsdatum</strong>
+      aktiviert.
+    </p>
+    <p>
+      Jedem Spiel kann auch ein <strong>Anstoßtermin</strong> zugeordnet werden.
+      Beachten Sie auch hier die Form TT.MM.JJJJ für das Datum. Und
+      auch hier gibt es einen Button für den PopUp-Kalender. Wenn Sie
+      ein Datum und keine Zeit eingeben, wird automatisch die <a href=
+      "#0301">Standard-Anstoßzeit</a> übernommen. Geben Sie eine Zeit
+      ein, achten Sie bitte auf die Form HH:MM (2stellige Stund und
+      2stellige Minute durch : getrennt).
+    </p>
+    <p>
+      Die <strong>Mannschaften</strong> wählen Sie einfach durch Klicks auf die
+      Comboboxen aus. Wenn Sie ein KO-Turnier bearbeiten, werden hier
+      auch nur die für diese Runde qualifizierten Mannschaften
+      aufgelistet.
+    </p>
+    <p>
+      Bei der <strong>Ergebniseingabe</strong> haben Sie mehrere Möglichkeiten.
+      Am einfachsten ist es, Sie klicken ganz einfach auf die kleinen
+      Pfeilbuttons neben den Ergebnisfeldern. Wenn Sie sich mit dem
+      Textcursor in einem Ergebnisfeld befinden, können sie auch mit
+      den Pfeiltasten hoch und runter das Ergebnis ändern (geht leider
+      nur im Internet Explorer) oder Sie tippen die Zahl ganz normal
+      ein.
+    </p>
+    <p>
+      Falls Ihre Liga ein <a href="#0404">offenesSpielende</a> hat oder
+      ein KO-Turnier ist, geben Sie als Nächstes an, wann das Spiel
+      endete: Normal (_), nach Verlängerung/Over time (n.V.) oder Im
+      11-Meter-/Penalty-Schießen (i.E.).
+    </p>
+    <p>
+      Das Feld <strong>Grüne-Tisch-Entsch.</strong> wird normalerweise nicht
+      benötigt. Aber es gibt immer wieder Sportgerichtsentscheidungen,
+      die Spielergebnisse auf den Kopf stellen. Unabhängig vom
+      eingegebenen Ergebnis kann hier eine Siegentscheidung eingestellt
+      werden. Die Tore werden dann für die Tabelle gezählt, wie
+      eingegeben, die Punkte aber richten sich dann nach dieser
+      Einstellung. In der Regel sieht das dann so aus, daß das
+      Sportgericht sagt: 0:0 Tore und Team X gewinnt. Die Auswahl <strong>
+      beidseitiges Erg.</strong> stellt nochmal einen Sonderfall dar, wenn
+      das Sportgericht beispielsweise entscheidet, daß das Spiel für
+      jede der beiden Mannschaften mit 2:0 Toren entschieden wird. In
+      dem Fall würde für beide Teams auch jeweils ein 2:0 gewertet
+      werden.
+    </p>
+    <p>
+      Im nächsten Feld können Sie eine <strong>Notiz</strong> zum Spiel eingeben.
+      Eine eventuelle Sportgerichtsentscheidung braucht hier nicht
+      nochmal erwähnt zu werden, denn diese wird automatisch als Notiz
+      eingefügt.
+    </p>
+    <p>
+      Zuletzt haben Sie noch die Möglichkeit, eine <strong>URL zum
+      Spielbericht</strong> einzufügen, falls sie das möchten. Diese URL
+      wird aber nur dann dargestellt werden, wenn die <a href="#0404">
+      Einstellung</a> <strong>Spielberichte verlinken</strong> aktiviert ist.
+    </p>
+    <p>
+      Unterhalb der Spiele haben Sie noch <strong>spieltags-unabhängige
+      Einstellungen</strong>, die Sie hier gleich mit bearbeiten können.
+    </p>
+    <p>
+      Bei <strong>Aktueller Spieltag</strong> braucht nur dann was verstellt zu
+      werden, wenn der Spieltag, den Sie hier bearbeiten, nicht als
+      aktueller Spieltag merkiert werden soll. Das kann z.B. der Fall
+      sein, wenn Sie ein verlegtes Spiel bearbeiten oder ein älteres
+      Ergebnis korrigieren müssen. Wählen Sie dann hier den Spieltag
+      aus, der als aktueller Spieltag gelten soll. Sonst lassen Sie
+      dieses Feld bitte unverändert.
+    </p>
+    <p>
+      Jetzt haben Sie noch die Möglichkeit, den <strong>Newsticker</strong> zu
+      aktivieren und die entsprechenden Meldungen einzugeben. Bitte
+      beachten Sie: immer eine Meldung pro Zeile und keine Leerzeilen
+      lassen.
+    </p>
+    <p>
+      Klicken Sie nun auf <strong>Spieltag und Ticker speichern</strong>, um Ihre
+      Änderungen abzuspeichern. Bitte beachten Sie, daß Ihre Änderungen
+      sofort nach dem Speichern von den Besuchern Ihrer Homepage
+      gesehen werden können. Gehen Sie also unbedingt sorgfältig vor!
+    </p>
+    <p>
+      Haben Sie die <a href="#0405">Manuelle Tabellensortierung</a>
+      aktiviert, beachten Sie bitte folgendes, bevor Sie einen Spieltag
+      speichern: Falls bereits die Tabelle dieses oder eines der
+      folgenden Spieltage manuell nachsortiert waren, ist diese
+      Sortierung nun aufgehoben. Eventuell veränderte Ergebnisse hatten
+      ja ihre Auswirkung auf diese Tabellen.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0404"></a>4.4. Grundeinstellungen</h4>
+    <p>
+      Klicken Sie im <a href="#0403">Ergebniseditor</a> auf <strong>
+      Grundeinstellungen</strong>. Hier legen Sie die Einstellungen der Liga
+      fest. Bei KO-Turnieren werden natürlich nur Einstellungen
+      angezeigt, die hier auch von Bedeutung sind.
+    </p>
+    <p>
+      Unter <strong>Grundwerte</strong> legen Sie den namen Ihrer Liga fest.
+      Dieser Name erscheint in den Auflistungen Ihrer Ligen und als
+      Überschrift im Besucher-Bereich. Neben dem Titel selbst und ggf.
+      regionale Angaben sollte hier auch die Saison erwähnt werden,
+      z.B. <kbd>1. Kreisklasse Hinterwelt 2001/02</kbd>.
+    </p>
+    <p>
+      Unter <strong>Verlinkungen</strong> legen Sie fest, ob die <a href="#0406">
+      Mannschaftshomepages</a> (erscheinen in der Tabelle) und die <a
+      href="#0403">Spielberichte</a> (erscheinen in den Ergebnissen und
+      Spielplänen) verlinkt werden sollen.
+    </p>
+    <p>
+      Bei <strong>Anzeigen/Darstellung</strong> legen Sie fest, was sie Ihren
+      Besuchern alles anbieten wollen bzw. können. Die Einstellung <strong>
+      Spiel um Platz 3</strong> steht nur bei KO-Turnieren zur Verfügung;
+      hier legen Sie fest, ob ein kleines Finale stattfindet. Mit <strong>
+      Startanzeige</strong> legen Sie fest, was Ihre Besuchern beim Laden
+      einer Liga zuerst zu sehen bekommen. Als Nächstes legen Sie fest,
+      ob <a href="#0403">Spieltagsdatum und Anstoßtermine</a> angezeigt
+      werden sollen. Wenn keines von beiden aktiviert ist, werden Ihre
+      Besucher auch keinen Kalender zu sehen bekommen. Ansonsten können
+      Sie den <strong>Kalender</strong> aber auch separat deaktivieren. Wenn Sie
+      die Anstoßtermine aktiviert haben, sollten Sie auch noch
+      festlegen, in welchem <strong>Format die Anstoßtermine</strong> dargestellt
+      werden sollen.
+    </p>
+    <p>
+      Die <strong>Kreuztabelle</strong> und die <strong>Fieberkurve</strong> können auch
+      deaktiviert werden. Bei der Fieberkurve kann das aus technischer
+      Sicht notwendig sein, wenn Ihr Provider die GDLib (eine
+      Programmbibliothek, mit der PHP selbstständig Grafiken erstellen
+      kann) nicht installiert hat. Die Kreuztabelle möchten Sie
+      eventuell dann deaktivieren, wenn es in Ihrer Liga keine
+      Rückspiele gibt (z.B. in den Gruppenspielen der Fußball-WM).
+    </p>
+    <p>
+      Jetzt legen Sie die <strong>Standardmannschaften</strong> fest. Ihre <strong>
+      Lieblingsmannschaft</strong> wird den Besuchern in der
+      Ergebnisübersicht und der Tabelle fett dargestellt. Die anderen
+      Auswahlmöglichkeiten stellen die Standardmannscxhaften dar, die
+      beim Aufruf des <strong>Spielplans</strong>, der <strong>Fieberkurve</strong> und der
+      <strong>Statistik</strong> zuerst ausgewählt sind. Wenn die
+      Lieblingsmannschaft und die erste Mannschaft bei
+      Fieberkurve/Statistik die gleiche ist, wird dort als zweite
+      Mannschaft beim <a href="#0403">Ergebnisupdate</a> immer der
+      Gegner Ihrer Lieblingsmannschaft am darauffolgenden Spieltag
+      ausgewählt.
+    </p>
+    <p>
+      Als Nächstes wählen Sie alternative <strong>Begrifflichkeiten</strong> für
+      <strong>Pkt.</strong> und <strong>Tore</strong>, falls das bei Ihrer Liga
+      erforderlich ist.
+    </p>
+    <p>
+      Das <strong>Spielsystem</strong> beinhaltet alle Einstellungen, die den
+      Modus der Liga betreffen. <strong>Minus-Punkte</strong> kennen wir aus
+      2-Punkt-Ligen, bei 3-Punkt-Ligen gibts diese nicht mehr. <strong>
+      Spielende offen</strong> muß nur aktiviert werden, wenn bei einem
+      Remis eine Verlängerung bzw. Over time und ggf. sogar ein
+      11-Meter- bzw. Penalty-Schießen folgt. Die <strong>Tabellenspalte
+      'Unentschieden'</strong> braucht nur dann verborgen werden, wenn es
+      generell keinen Unentschieden in Ihrer Liga gibt. <strong>Direkter
+      Vergleich</strong> bedeutet, daß bei Punktgleichheit der direkte
+      Vergleich der punktgleichen Mannschaften untereinander
+      berücksichtigt wird. <strong>Erzielte Tore zählen vor Tordiff.</strong> muß
+      nur aktiviert werden, wenn in Ihrer Liga die erzielten Tore in
+      der Tabelle schwerer wiegen, als die Tordifferenz, was eher
+      selten der Fall ist. Die <strong>Handsortierung der Tabelle
+      ermöglichen</strong> sollten Sie wirklich nur im Ausnahmefall; nur
+      dann, wenn es beispielsweise Sonderegelungen gibt, die diese
+      Software nicht berücksichtigt. Sie haben dann die Möglichkeit,
+      die <a href="#0405">Tabellensortierung per Hand zu
+      korrigieren</a>.
+    </p>
+    <p>
+      Bei den <strong>Tabellenmarkierungen</strong> legen Sie fest, ob und welche
+      Einträge Ihrer Tabelle (und der Fieberkurve) hervorgehoben werden
+      sollen.
+    </p>
+    <p>
+      Als Letztes legen Sie noch das <strong>Punktsystem</strong> fest, also
+      wofür es wieviele Punkte gibt. Bei aktivierten Minuspunkten
+      sollten Sie beachten, daß Siegpunkte immer auch negative
+      Niederlagenpunkte sind und umgekehrt; Bei Remis werden die
+      entsprechenden Punkte zu den positiven und zu den negativen
+      Punkten gezählt.
+    </p>
+    <p>
+      Links neben dem <strong>Änderungen-speichern</strong>-Button gibt es einen
+      Link <strong>Spieltags- und Spiel-Anzahl</strong>. Normalerweise brauchen
+      Sie diese Funktion nicht. Aber sollte es aus einem Grund nötig
+      sein, die Anzahl der Spieltage oder die Anzahl der Spiele pro
+      Spieltag zu verändern, können Sie das hier tun. Legen Sie sich
+      aber vorher besser <a href="#0503">eine Sicherheitskopie</a>
+      Ihrer Liga an! Diese Funktion steht bei KO-Turnieren nicht zur
+      Verfügung.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0405"></a>4.5. Manuelle Tabellensortierung</h4>
+    <p>
+      Haben Sie die <a href="#0404">Einstellung</a> <strong>Handsortierung
+      der Tabelle ermöglichen</strong> aktiviert, steht Ihnen am unteren
+      Rand des <a href="#0403">
+      Ergebniseditors</a>/Einstellungsbildschirms die Auswahl <strong>
+      Tabelle</strong> zur Verfügung. Klicken Sie darauf, um die Tabelle zu
+      prüfen und gegebenenfalls eine manuelle Korrektur vorzunehmen.
+    </p>
+    <p>
+      Sie können auch hier unterhalb des Menüs den Spieltag auswählen,
+      dessen Tabelle Sie prüfen und ggf. korrigieren wollen. Sie
+      bekommen die Tabelle so angezeigt und sortiert, wie es die
+      Software ermittelt hat. Wenn Sie diese Tabelle für korrekt
+      halten, brauchen Sie nichts weiter zu tun.
+    </p>
+    <p>
+      Ansonsten müssen Sie Korrekturen vornehmen, indem Sie den
+      Mannschaften neue Platzierungen zuweisen. Dabei darf natürlich
+      keine Platzierung doppelt vergeben werden (normalerweise
+      verhindert eine JavaScript-Funktion das).
+    </p>
+    <p>
+      Haben Sie den Mannschaften nun den richtigen Tabellenplatz
+      zugewiesen, klicken Sie auf <strong>manuelle Tabelle speichern</strong>.
+      Bei einen Blick in den Besucherbereich des LMO werden Sie sehen,
+      daß die entsprechende Tabelle (und die Fieberkurve) Ihren
+      Änderungen gemäß dargestellt wird.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0406"></a>4.6. Der Mannschaftseditor</h4>
+    <p>
+      Ihnen steht am unteren Rand des <a href="#0403">
+      Ergebniseditors</a>/<a href="#0404">Einstellungsbildschirms</a>
+      die Auswahl <strong>Mannschaften</strong> zur Verfügung. Klicken Sie
+      darauf, um die Mannschaften Ihrer Liga zu bearbeiten.
+    </p>
+    <p>
+      Sie haben max. 32 Zeichen für den <strong>Mannschaftsnamen</strong> zur
+      Verfügung; aus max. 5 Zeichen darf das <strong>Kürzel</strong> bestehen.
+    </p>
+    <p>
+      Daneben werden Strafpunkte eingetragen, falls der Verband welche
+      verhängt).
+    </p>
+    <p>
+      Falls Sie die Homepage der Mannschaften linken wollen, können Sie
+      die entsprechenden URL in der nächsten Spalte eintragen. Diese
+      Links werden in der tabelle angezeigt; aber nur, wenn die <a
+      href="#0404">Einstellung</a> <strong>Mannschafts-Homepages
+      verlinken</strong> aktiviert ist.
+    </p>
+    <p>
+      In der letzten Spalte gibt es nun noch Links, mit denen eine <strong>
+      Mannschaft aus der Liga zurückgezogen</strong> werden kann. Und rechts
+      neben dem Button <strong>Mannschaften speichern</strong> gibt es auch einen
+      Link, über den eine <strong>neue Mannschaft nachträglich zur Liga
+      hinzugefügt</strong> werden kann. Legen Sie sich aber vor der Nutzung
+      dieser Funktionen besser <a href="#0503">eine
+      Sicherheitskopie</a> Ihrer Liga an! Bei KO-Turnieren stehen diese
+      Funktionen übrigens nicht zur Verfügung.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h3><a name="05"></a>5. Dateifunktionen</h3>
+    <h4><a name="0501"></a>5.1. Löschen einer Liga</h4>
+    <p>
+      Ist eine Liga veraltet oder wollen Sie sie durch eine <a href=
+      "#0502">Sicherheitskopie ersetzen</a>, wählen Sie im Menü den
+      Befehl <strong>Löschen</strong>. Klicken Sie in der Ligenauflistung einfach
+      die zu löschende Liga an. Es erfolgt eine Sicherheitsabfrage, so
+      daß Sie einen falschen Klick nochmal zurücknehmen können. Wenn
+      Sie sie aber bestätigen, wird die Liga unwiderruflich gelöscht.
+      Seien Sie also vorsichtig mit der Löschfunktion!
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0502"></a>5.2. Upload einer Liga</h4>
+    <p>
+      Wählen Sie den Menü-Befehl <strong>Upload</strong>, um eine Liga von Ihrer
+      lokalen Festplatte auf Ihren Server direkt in Ihr
+      Ligenverzeichnis zu übertragen. Klicken Sie auf <strong>
+      Durschsuchen...</strong>, um die Liga auf Ihrer Festplatte
+      auszuwählen. Wählen Sie bitte nur <strong>LM98Free/LMO-Ligen
+      (*.L98)</strong> aus! Mit einem Klick auf <strong>Upload starten</strong>
+      beginnt die Übertragung (bitte nur einmal anklicken!).
+    </p>
+    <p>
+      Bereits auf dem Server befindliche Ligen werden miit dieser
+      Funktion nicht überschrieben. Gibt es bereits eine Liga mit dem
+      gleichen Dateinamen, wird die neue Datei nummeriert; aus <strong>
+      liga.l98</strong> wird dann <strong>liga_1.l98</strong>.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0503"></a>5.3. Download/Mailen einer Liga</h4>
+    <p>
+      Möchten Sie eine Sicherheitskopie einer Liga anlegen, eine Liga
+      offline weiterbearbeiten oder sie an einen Bekanten schicken,
+      wählen Sie aus dem Menü den Befehl <strong>Download</strong>.
+    </p>
+    <p>
+      Der Downloadbildschirm enthält die Auflistung aller Ligen
+      zweimal. Im linken Bereich klicken Sie auf eine Liga, um sie <strong>
+      auf Ihre lokale Festplatte runterzuladen</strong>. Klicken Sie auf <strong>
+      Alle Ligen auf einmal downloaden</strong>, stellt Ihnen das Script
+      eine ZIP-Datei zusammen, in der es alle aufgelisteten Ligen
+      archiviert, und bietet Ihnen dann dieses Archiv zum Download an.
+    </p>
+    <p>
+      Im rechten Bereich klicken Sie die Ligen an, um sie per eMail zu
+      versenden. Bei einem Klick öffnet sich zuerst ein Eingabefenster,
+      in dem Sie die eMail-Adresse des Empfängers eingeben können.
+      Jetzt wird die gewählte Liga bzw. alle Ligen zuerst in eine
+      ZIP-Datei gepackt, die dann per eMail versandt wird. Ihre
+      eMail-Adresse, wie Sie sie bei den <a href="#0301">Optionen</a>
+      eingegeben haben, wird als Absender der eMail angegeben.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h3><a name="06"></a>6. Technisches</h3>
+    <h4><a name="0601"></a>6.1. Interner Aufbau einer Ligadatei</h4>
+    <p>
+      Grundsätzlich ist eine Ligadatei nichts anderes als die unter
+      Windows bekannten INI-Dateien. In der folgenden Tabelle erhalten
+      Sie einen Überblick über die Abschnitte, Werte und Variablen der
+      Ligadatei.
+    </p>
+    <table border="1">
+      <tr>
+        <th>Abschnitt</th>
+        <th>Variable</th>
+        <th>Wert/Erklärung</th>
+      </tr>
+      <tr>
+        <th rowspan="45">Options</th>
+        <td>Title</td>
+        <td>LigaManager-Variante und -Version, mit der
+        die Liga erstellt wurde</td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>Name der Liga</td>
+      </tr>
+      <tr>
+        <td>Type</td>
+        <td>Art der Liga:<br>
+        0 = Liga (Voreinstellung)<br>
+        1 = KO-Turnier</td>
+      </tr>
+      <tr>
+        <td>Teams</td>
+        <td>Anzahl der Mannschaften</td>
+      </tr>
+      <tr>
+        <td>Rounds</td>
+        <td>Anzahl der Spieltage (nur bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>Matches</td>
+        <td>Spiele pro Spieltag (nur bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>Actual</td>
+        <td>aktueller Spieltag</td>
+      </tr>
+      <tr>
+        <td>Kegel</td>
+        <td>Wiegen die erzielten Tore mehr als die
+        Tordiff.? (nur bei Ligen)<br>
+        0 = nein (Voreinstellung)<br>
+        1 = ja</td>
+      </tr>
+      <tr>
+        <td>HandS</td>
+        <td>Kann die Tabelle manuell nachsortiert
+        werden? (nur bei Ligen)<br>
+        0 = nein (Voreinstellung)<br>
+        1 = ja</td>
+      </tr>
+      <tr>
+        <td>PointsForWin</td>
+        <td>Punkte, die für einen Sieg vergeben werden
+        (nur bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>PointsForDraw</td>
+        <td>Punkte, die für ein Unentschieden vergeben
+        werden (nur bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>PointsForLost</td>
+        <td>Punkte, die für eine Niederlage vergeben
+        werden (nur bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>Spez</td>
+        <td>Ist das Spielende offen?<br>
+        0 = nein (Voreinstellung bei Ligen)<br>
+        1 = ja (bei KO-Turnieren ist nur diese Einstellung
+        möglich)</td>
+      </tr>
+      <tr>
+        <td>HideDraw</td>
+        <td>Wird die Tabellenspalte 'Unentschieden'
+        benötigt? (nur bei Ligen)<br>
+        0 = ja (Voreinstellung)<br>
+        1=nein</td>
+      </tr>
+      <tr>
+        <td>OnRun</td>
+        <td>Was wird beim Laden im Besucherbereich
+        aufgerufen? (nur bei Ligen)<br>
+        0 = Ergebnisse (Voreinstellung)<br>
+        1 = Tabelle</td>
+      </tr>
+      <tr>
+        <td>XtraS</td>
+        <td>Punkte, die für einen Sieg nach Verlängerung
+        vergeben werden (nur bei Ligen und nur, wenn Spez=1)</td>
+      </tr>
+      <tr>
+        <td>XtraU</td>
+        <td>Punkte, die für ein Unentschieden nach
+        Verlängerung vergeben werden (nur bei Ligen und nur, wenn
+        Spez=1)</td>
+      </tr>
+      <tr>
+        <td>XtraV</td>
+        <td>Punkte, die für eine Niederlage nach
+        Verlängerung vergeben werden (nur bei Ligen und nur, wenn
+        Spez=1)</td>
+      </tr>
+      <tr>
+        <td>SpezS</td>
+        <td>Punkte, die für einen Sieg nach
+        11-Meter-Schießen vergeben werden (nur bei Ligen und nur,
+        wenn Spez=1)</td>
+      </tr>
+      <tr>
+        <td>SpezU</td>
+        <td>Punkte, die für ein Unentschieden nach
+        11-Meter-Schießen vergeben werden (nur bei Ligen und nur,
+        wenn Spez=1)</td>
+      </tr>
+      <tr>
+        <td>SpezV</td>
+        <td>Punkte, die für eine Niederlage nach
+        11-Meter-Schießen vergeben werden (nur bei Ligen und nur,
+        wenn Spez=1)</td>
+      </tr>
+      <tr>          
+        <td>MinusPoints</td>
+        <td>Werden Minuspunkte dargestellt? (nur bei
+        Ligen)<br>
+        1 = nein (Voreinstellung)<br>
+        2 = ja</td>
+      </tr>
+      <tr>
+        <td>Direct</td>
+        <td>Wird bei Punktgleichheit der direkte
+        Vergleich berücksichtigt? (nur bei Ligen)<br>
+        0 = nein (Voreinstellung)<br>
+        1 = ja</td>
+      </tr>
+      <tr>
+        <td>Champ</td>
+        <td>Wird ein Meister ausgespielt? (nur bei
+        Ligen)<br>
+        0 = nein<br>
+        1 = ja (Voreinstellung)</td>
+      </tr>
+      <tr>
+        <td>CL</td>
+        <td>Anzahl der Champions-League-Teilnehmer (nur
+        bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>CK</td>
+        <td>Anzahl der Champions-League-Qualifikanten
+        (nur bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>UC</td>
+        <td>Anzahl der Aufsteiger bzw.
+        UEFA-Cup-Teilnehmer (nur bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>AR</td>
+        <td>Anzahl der Abstiegs-Relegations-Teilnehmer
+        (nur bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>AB</td>
+        <td>Anzahl der feststehenden Absteiger (nur bei
+        Ligen)</td>
+      </tr>
+      <tr>
+        <td>namePkt</td>
+        <td>Alternativer Ausdruck für 'Pkt.' (nur bei
+        Ligen)</td>
+      </tr>
+      <tr>
+        <td>nameTor</td>
+        <td>Alternativer Ausdruck für 'Tore' (nur bei
+        Ligen)</td>
+      </tr>
+      <tr>
+        <td>KlFin</td>
+        <td>Wird ein kleines Finale ausgespielt? (nur
+        bei KO-Turnieren)<br>
+        0 = nein (Voreinstellung)<br>
+        1 = ja</td>
+      </tr>
+      <tr>
+        <td>DatC</td>
+        <td>Soll der Kalender angezeigt werden?<br>
+        0 = nein (wird automatisch gewählt, wenn DatS=0 und
+        DatM=0)<br>
+        1 = ja (Voreinstellung)</td>
+      </tr>
+      <tr>
+        <td>DatS</td>
+        <td>Sollen Start- und Enddatum der Spieltage
+        angezeigt werden?<br>
+        0 = nein<br>
+        1 = ja (Voreinstellung)</td>
+      </tr>
+      <tr>
+        <td>DatM</td>
+        <td>Sollen die Anstoßtermine der Spiele
+        angezeigt werden?<br>
+        0 = nein (Voreinstellung)<br>
+        1 = ja</td>
+      </tr>
+      <tr>
+        <td>DatF</td>
+        <td>Format der Anstoßtermine (als
+        Unix-Timeformat-String; nutzlos, wenn DatM=0)</td>
+      </tr>
+      <tr>
+        <td>urlT</td>
+        <td>Sollen Mannschafts-Homepages verlinkt
+        werden?<br>
+        0 = nein<br>
+        1 = ja (Voreinstellung)</td>
+      </tr>
+      <tr>
+        <td>urlB</td>
+        <td>Sollen Spielberichte verlinkt werden?<br>
+        0 = nein (Voreinstellung)<br>
+        1 = ja</td>
+      </tr>
+      <tr>
+        <td>Graph</td>
+        <td>Sollen die Fieberkurven zugänglich sein?
+        (nur bei Ligen)<br>
+        0 = nein<br>
+        1 = ja (Voreinstellung)</td>
+      </tr>
+      <tr>
+        <td>Kreuz</td>
+        <td>Soll die Kreuztabelle zugänglich sein? (nur
+        bei Ligen)<br>
+        0 = nein<br>
+        1 = ja (Voreinstellung)</td>
+      </tr>
+      <tr>
+        <td>favTeam</td>
+        <td>Index der Lieblingsmannschaft (nur bei
+        Ligen)<br>
+        0 = keine Lieblingsmannschaft</td>
+      </tr>
+      <tr>
+        <td>selTeam</td>
+        <td>Index der Standardmannschaft bei den
+        Spielplänen (nur bei Ligen)<br>
+        0 = keine Auswahl</td>
+      </tr>
+      <tr>
+        <td>kurve1</td>
+        <td>Index der 1. Standardmannschaft bei
+        Fieberkurve/Statistik (nur bei Ligen)<br>
+        0 = keine Auswahl</td>
+      </tr>
+      <tr>
+        <td>kurve2</td>
+        <td>Index der 2. Standardmannschaft bei
+        Fieberkurve/Statistik (nur bei Ligen)<br>
+        0 = keine Auswahl</td>
+      </tr>
+      <tr>
+        <td>ticker</td>
+        <td>Soll der Newsticker eingeblendet werden?<br>
+        0 = nein (Voreinstellung)<br>
+        1 = ja</td>
+      </tr>
+      <tr>
+        <th rowspan="3">News</th>
+        <th colspan="2">Dieser gesamte Abschnitt ist nur von Belang,
+        wenn ticker=1</th>
+      </tr>
+      <tr>
+        <td>NC</td>
+        <td>Anzahl der Tickermeldungen</td>
+      </tr>
+      <tr>
+        <td>N<var>x</var></td>
+        <td>Tickermeldung Nr. <var>x</var> (beginnend mit
+        0)</td>
+      </tr>
+      <tr>
+        <th>Teams</th>
+        <td><var>x</var></td>
+        <td>Namen der Mannschaften (durchnummeriert mit
+        <var>x</var>, beginnend mit 1)</td>
+      </tr>
+      <tr>
+        <th>Teamk</th>
+        <td><var>x</var></td>
+        <td>Kürzel der Mannschaften (durchnummeriert mit
+        <var>x</var>, beginnend mit 1)</td>
+      </tr>
+      <tr>
+        <th rowspan="5">Team<var>x</var></th>
+        <th colspan="2">Abschnitte für weitergehende
+        Mannschaftsinfos (durchnummeriert mit <var>x</var>, beginnend
+        mit 1)</th>
+      </tr>
+      <tr>
+        <td>SP</td>
+        <td>Strafpunkte (nur bei Ligen)</td>
+      </tr>
+      <tr>
+        <td>SM</td>
+        <td>negativer teil der Strafpunkte (nur bei
+        Ligen und wenn MinusPoints=2)</td>
+      </tr>
+      <tr>
+        <td>URL</td>
+        <td>URL der Mannschaftshomepage</td>
+      </tr>
+      <tr>
+        <td>NOT</td>
+        <td>Notiz zur Mannschaft (wird nur in der
+        Tabelle angezeigt</td>
+      </tr>
+      <tr>
+        <th rowspan="14">Round<var>x</var></th>
+        <th colspan="2">Abschnitte für Spielpaarungen, -ergebnisse
+        und weitere Infos (durchnummeriert mit <var>x</var>, beginnend
+        mit 1)</th>
+      </tr>
+      <tr>
+        <td>HS</td>
+        <td>Sortierreihenfolge der Tabelle dieses
+        Spieltags<br>
+        0 = keine Handsortierung<br>
+        Ansonsten ist das eine Reihe von 2stelligen Ziffern (die
+        jeweils den Tabellenplatz der Mannschaft wiedergibt, die mit
+        der automatischen Sortierung an der entsprechenden Stelle
+        sein würde).</td>
+      </tr>
+      <tr>
+        <td>D1</td>
+        <td>Startdatum des Spieltags (Format:
+        TT.MM.JJJJ)</td>
+      </tr>
+      <tr>
+        <td>D2</td>
+        <td>Enddatum des Spieltags (Format:
+        TT.MM.JJJJ)</td>
+      </tr>
+      <tr>
+        <td>MO</td>
+        <td>Spielmodus dieser Runde, also wieviele
+        Spiele diese Begegnung umfaßt (nur bei KO-Turnieren)<br>
+        1 = ein Spiel (Voreinstellung)<br>
+        2 = Hin- und Rückspiel<br>
+        3 = Best Of 3<br>
+        5 = Best Of 5<br>
+        7 = Best Of 7</td>
+      </tr>
+      <tr>
+        <td>TA<var>y</var></td>
+        <td>Index der Heimmannschaft des Spiels <var>y</var>
+        (<var>y</var> basiert auf 1)</td>
+      </tr>
+      <tr>
+        <td>TB<var>y</var></td>
+        <td>Index der Gastmannschaft des Spiels <var>y</var>
+        (<var>y</var> basiert auf 1)</td>
+      </tr>
+      <tr>
+        <td>GA<var>y</var><var>z</var></td>
+        <td>Tore der Heimmannschaft des Spiels <var>y</var>
+        (<var>y</var> basiert auf 1; nur bei KO-Turnieren wird <var>z</var>
+        mit angegeben, als Nr. des Spiels dieser Begegnung, auch auf
+        1 basierend)<br>
+        -1 = es liegt noch kein Ergebnis vor<br>
+        -2 = Spielwertung 0:0 Tore, Heimmannschaft bekommt Sieg
+        zugesprochen</td>
+      </tr>
+      <tr>
+        <td>GB<var>y</var><var>z</var></td>
+        <td>Tore der Gastmannschaft des Spiels <var>y</var>
+        (<var>y</var> basiert auf 1; nur bei KO-Turnieren wird <var>z</var>
+        mit angegeben, als Nr. des Spiels dieser Begegnung, auch auf
+        1 basierend)<br>
+        -1 = es liegt noch kein Ergebnis vor<br>
+        -2 = Spielwertung 0:0 Tore, Gastmannschaft bekommt Sieg
+        zugesprochen</td>
+      </tr>
+      <tr>
+        <td>ET<var>y</var></td>
+        <td>Beidseitiges Ergebnis bei Spiel <var>y</var>,
+        d.H. das Ergebnis gilt als Sportgerichtsentscheidung
+        gleichwohl für beide Mannschaften (nur bei Ligen; <var>y</var>
+        basiert auf 1)<br>
+        0 = nein (Voreinstellung)<br>
+        3 = ja<br>
+        (Wenn der Wert 0 ist, wird diese Einstellung gar nicht erst
+        eingetragen.)</td>
+      </tr>
+      <tr>
+        <td>SP<var>y</var><var>z</var></td>
+        <td>Wann endete das Spiel <var>y</var>? (bei Ligen
+        nur, wenn Spez=1; <var>y</var> basiert auf 1; nur bei
+        KO-Turnieren wird <var>z</var> mit angegeben, als Nr. des Spiels
+        dieser Begegnung, auch auf 1 basierend)<br>
+        0 = reguläres Ende<br>
+        2 = Verlängerung<br>
+        1 = 11-Meter-Schießen</td>
+      </tr>
+      <tr>
+        <td>NT<var>y</var><var>z</var></td>
+        <td>Notiz zum Spiel <var>y</var> (<var>y</var> basiert
+        auf 1; nur bei KO-Turnieren wird <var>z</var> mit angegeben, als
+        Nr. des Spiels dieser Begegnung, auch auf 1 basierend)</td>
+      </tr>
+      <tr>
+        <td>BE<var>y</var><var>z</var></td>
+        <td>URL des Spielberichts zum Spiel <var>y</var>
+        (<var>y</var> basiert auf 1; nur bei KO-Turnieren wird <var>z</var>
+        mit angegeben, als Nr. des Spiels dieser Begegnung, auch auf
+        1 basierend)</td>
+      </tr>
+      <tr>
+        <td>AT<var>y</var><var>z</var></td>
+        <td>Anpfifftermin des Spiels <var>y</var> (liegt als
+        UNIX-Timestamp vor, also die vergangenen Sekunden seit dem
+        01.01.1970 0:00; <var>y</var> basiert auf 1; nur bei KO-Turnieren
+        wird <var>z</var> mit angegeben, als Nr. des Spiels dieser
+        Begegnung, auch auf 1 basierend)</td>
+      </tr>
+    </table>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0602"></a>6.2. Interner Aufbau der CSS-Datei</h4>
+    <p>
+      Ich setze voraus, daß Sie, wenn Sie diesen Abschnitt lesen,
+      bereits Erfahrungen mit CSS-Anweisungen deren Umgang damit. So
+      erkläre ich Ihnen hier nur noch kurz, welcher Abschnitt wofür
+      verantwortlich ist.
+    </p>
+    <p>
+      Bitte lesen Sie sich zuerst den Hilfe-Abschnitt zum <a href=
+      "#0302">Designeditor</a> durch, damit Sie wissen, was Sie alles
+      beachten müssen, wenn Sie die CSS-Anweisungen manuell anpassen
+      möchten.
+    </p>
+    <table border="1">
+      <tr>
+        <th>Abschnitt</th>
+        <th>Erklärung</th>
+      </tr>
+      <tr>
+        <td>lmomaina</td>
+        <td>Äußerer Rahmen</td>
+      </tr>
+      <tr>
+        <td>lmosta</td>
+        <td>Mittlerer Rahmen</td>
+      </tr>
+      <tr>
+        <td>lmostb</td>
+        <td>Innerer Rahmen</td>
+      </tr>
+      <tr>
+        <td>lmomain0</td>
+        <td>Titel der Liga</td>
+      </tr>
+      <tr>
+        <td>lmomain1</td>
+        <td>Menüeinträge</td>
+      </tr>
+      <tr>
+        <td>lmomain2</td>
+        <td>Copyright-Hinweis, Update-Datum und
+        Berechnungsdauer</td>
+      </tr>
+      <tr>
+        <td>lmost0</td>
+        <td>Auswahlen im oberen mittleren Rahmen
+        (Spieltage usw.)</td>
+      </tr>
+      <tr>
+        <td>lmost0a</td>
+        <td>Monatsauswahl im Kalender</td>
+      </tr>
+      <tr>
+        <td>lmost1</td>
+        <td>Gewähler Eintrag bei Auswahlen im oberen und
+        unteren mittleren Rahmen</td>
+      </tr>
+      <tr>
+        <td>lmost2</td>
+        <td>Auswahlen im unteren mittleren Rahmen
+        (Spieltage usw.)</td>
+      </tr>
+      <tr>
+        <td>lmost3</td>
+        <td>Text im mittleren Rahmen</td>
+      </tr>
+      <tr>
+        <td>lmost4</td>
+        <td>größere Überschriften im inneren Rahmen</td>
+      </tr>
+      <tr>
+        <td>lmost5</td>
+        <td>Text im inneren Rahmen</td>
+      </tr>
+      <tr>
+        <td>lmost7</td>
+        <td>Hervorhebung von Gewinnern bei
+        KO-Turnieren</td>
+      </tr>
+      <tr>
+        <td>lmost8</td>
+        <td>kleinere Überschriften im inneren
+        Rahmen</td>
+      </tr>
+      <tr>
+        <td>lmost9a</td>
+        <td>Hervorhebung des Siegers eines KO-Turniers
+        (Gold)</td>
+      </tr>
+      <tr>
+        <td>lmost9b</td>
+        <td>Hervorhebung des Zweiten eines KO-Turniers
+        (Silber)</td>
+      </tr>
+      <tr>
+        <td>lmost9c</td>
+        <td>Hervorhebung des Dritten eines KO-Turniers
+        (Bronze)</td>
+      </tr>
+      <tr>
+        <td>lmotab1</td>
+        <td>Hervorhebung des Meisters in der
+        Tabelle</td>
+      </tr>
+      <tr>
+        <td>lmotab2</td>
+        <td>Hervorhebung der Champions-League-Teilnehmer
+        in der Tabelle</td>
+      </tr>
+      <tr>
+        <td>lmotab3</td>
+        <td>Hervorhebung der
+        Champions-League-Qualifikanten in der Tabelle</td>
+      </tr>
+      <tr>
+        <td>lmotab4</td>
+        <td>Hervorhebung der Aufsteiger bzw.
+        UEFA-Cup-Teilnehmer in der Tabelle</td>
+      </tr>
+      <tr>
+        <td>lmotab5</td>
+        <td>Hervorhebung der feststehenden Absteiger in
+        der Tabelle</td>
+      </tr>
+      <tr>
+        <td>lmotab6</td>
+        <td>Hervorhebung Heimbilanz, wenn die Tabelle
+        unterhalb der Ergebnisse angezeigt wird</td>
+      </tr>
+      <tr>
+        <td>lmotab7</td>
+        <td>Hervorhebung Auswärtsbilanz, wenn die
+        Tabelle unterhalb der Ergebnisse angezeigt wird</td>
+      </tr>
+      <tr>
+        <td>lmotab8</td>
+        <td>Hervorhebung der
+        Abstiegs-Relegations-teilnehmer in der Tabelle</td>
+      </tr>
+      <tr>
+        <td>lmocross1</td>
+        <td>Hervorhebung einer markierten Mannschaft in
+        der Kreuztabelle</td>
+      </tr>
+      <tr>
+        <td>lmocross2</td>
+        <td>Mannschaftsnamen und -kürzel in der
+        Kreuztabelle</td>
+      </tr>
+      <tr>
+        <td>lmocross4</td>
+        <td>Leerfelder in der Kreuztabelle (wo gleiche
+        Mannschaften sich kreuzen)</td>
+      </tr>
+      <tr>
+        <td>lmocross5</td>
+        <td>Ergebnisse in der Kreuztabelle</td>
+      </tr>
+      <tr>
+        <td>lmocross6</td>
+        <td>Hervorhebungen der Ergebnisse einer
+        markierten Mannschaft in der Kreuztabelle</td>
+      </tr>
+      <tr>
+        <td>lmocalni</td>
+        <td>Leerfelder im Kalender</td>
+      </tr>
+      <tr>
+        <td>lmocalat</td>
+        <td>normale Tage im Kalender</td>
+      </tr>
+      <tr>
+        <td>lmocalht</td>
+        <td>heutiger Tag im Kalender (wenn es ein
+        Arbeitstag ist)</td>
+      </tr>
+      <tr>
+        <td>lmocalwe</td>
+        <td>Wochenenden im Kalender</td>
+      </tr>
+      <tr>
+        <td>lmocalhe</td>
+        <td>heutiger Tag im Kalender (wenn es am
+        Wochenende ist)</td>
+      </tr>
+      <tr>
+        <td>lmotext</td>
+        <td>Text im Info-Dialog</td>
+      </tr>
+      <tr>
+        <td>lmofett</td>
+        <td>Sendebestätigung beim eMailversand im
+        Adminbereich</td>
+      </tr>
+      <tr>
+        <td>lmoadminli</td>
+        <td>Auflistung des Menübildschirms direkt nach
+        dem Einloggen im Adminbereich</td>
+      </tr>
+      <tr>
+        <td>lmotickerein</td>
+        <td>Newsticker</td>
+      </tr>
+      <tr>
+        <td>lmoadminein</td>
+        <td>Eingabefelder im Adminbereich</td>
+      </tr>
+      <tr>
+        <td>lmoadminbut</td>
+        <td>Buttons im Adminbereich</td>
+      </tr>
+    </table>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <hr>
+    <p>
+      <a href="http://validator.w3.org/check/referer"><img
+          src="http://www.w3.org/Icons/valid-html401"
+          alt="Valid HTML 4.01!" height="31" width="88"></a>
+      <a href="http://jigsaw.w3.org/css-validator"><img 
+          src="http://jigsaw.w3.org/css-validator/images/vcss.gif" 
+	        alt="Valid CSS!" height="31" width="88"></a>
+    </p>
+  </body>
+</html>

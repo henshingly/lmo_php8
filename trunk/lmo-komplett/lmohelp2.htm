@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="de">
+  <head>
+    <title>Hilfe: LigaManager Online 3.99alpha1</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <style type="text/css">
+      body {font-size:96%; background-color: #ffffff; color: #000000; font-family:Verdana, sans-serif; }
+      li {padding: 0; margin-bottom: 3px; }
+      a:hover, a:active {text-decoration: overline underline;}
+      hr {background-color:black;color:white;border:0;height:0.1em;}
+      h1 {text-align:center; font-size:120%;font-weight: bold;}
+      h2 { font-size: 110%;font-weight: bold;}
+      h3 { font-size: 105%;font-weight: bold;margin-bottom:0.2em;}
+      h4 { font-weight: bold;margin-left:2em;margin-bottom:0.1em;}
+      table, p { margin-left: 2em; }
+      .up { text-align: right; }
+      li li {list-style: none; }
+      td, th {text-align:left;vertical-align:top;border:1px solid #000;padding:0.1em;}
+      th {background-color:#ddd;color:#000;}
+      table {border:1px solid #000; border-spacing:0;border-collapse:collapse;}
+      var {font-family:monospace;}
+      strong {color:#009;background-color:inherit;}
+      em {font-style:normal;font-weight:bold;color:#900;background-color:inherit;}
+      img {border:0;}
+    </style>
+  </head>
+  <body>
+    <h1>Hilfe: LigaManager Online 3.99alpha1</h1>
+    <address><a href="https://sourceforge.net/projects/lmo/">https://sourceforge.net/projects/lmo/</a></address>
+    <ol>
+      <li><a href="readme.html#0402">Öffnen einer Liga</a></li>
+      <li><a href="readme.html#0403">Der Ergebniseditor</a></li>
+      <li><a href="readme.html#0404">Grundeinstellungen</a></li>
+      <li><a href="readme.html#0405">Manuelle Tabellensortierung</a></li>
+      <li><a href="readme.html#0503">Download/Mailen einer Liga</a></li>    
+    </ol>
+    <h4><a name="0402"></a>1. Öffnen einer Liga</h4>
+    <p>
+      Wenn Sie sich in den Adminbereich <a href="#0201">eingeloggt</a>
+      haben, erhalten Sie einen Übersicht, in der auch alle verfügbaren
+      Ligen aufgelistet sind. Sonst klicken Sie einfach im Menü auf <strong>
+      Öffnen</strong>, um eine Auflistung der Ligen zu erhalten. Wählen Sie
+      hier die Liga aus, die Sie bearbeiten möchten und klicken Sie sie
+      an. <a href="#0202">Hilfs-Admins</a> können nur die Ligen
+      auswählen, die für sie freigegeben wurden.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0403"></a>2. Der Ergebniseditor</h4>
+    <p>
+      Nach dem <a href="#0402">Öffnen der Liga</a> gelangen Sie gleich
+      automatisch in den Ergebniseditor und der aktuelle Spieltag wird
+      dargestellt. In der Auswahl unterhalb des Menüs können Sie auch
+      einen anderen Spieltag zum Bearbeiten auswählen.
+    </p>
+    <p>
+      Ganz oben können Sie das <strong>Start- und Enddatum</strong> des Spieltags
+      festlegen. Achten Sie unbedingt darauf, das das Datum in der Form
+      TT.MM.JJJJ (2stelliger Tag, 2stelliger Monat und 4stelliges Jahr
+      durch Punkte getrennt) eingegeben werden muß. Neben den
+      Datumsfeldern ist jeweils ein Button angebracht, der einen
+      PopUp-Kalender öffnet, wo Sie durch Anklicken einfach ein Datum
+      auswählen können (das funktioniert leider nicht in Netscape).
+      Diese Datumswerte werden den Besuchern nur dann angezeigt, wenn
+      die <a href="#0404">Einstellung</a> <strong>Spieltagsdatum</strong>
+      aktiviert.
+    </p>
+    <p>
+      Jedem Spiel kann auch ein <strong>Anstoßtermin</strong> zugeordnet werden.
+      Beachten Sie auch hier die Form TT.MM.JJJJ für das Datum. Und
+      auch hier gibt es einen Button für den PopUp-Kalender. Wenn Sie
+      ein Datum und keine Zeit eingeben, wird automatisch die <a href=
+      "#0301">Standard-Anstoßzeit</a> übernommen. Geben Sie eine Zeit
+      ein, achten Sie bitte auf die Form HH:MM (2stellige Stund und
+      2stellige Minute durch : getrennt).
+    </p>
+    <p>
+      Die <strong>Mannschaften</strong> wählen Sie einfach durch Klicks auf die
+      Comboboxen aus. Wenn Sie ein KO-Turnier bearbeiten, werden hier
+      auch nur die für diese Runde qualifizierten Mannschaften
+      aufgelistet.
+    </p>
+    <p>
+      Bei der <strong>Ergebniseingabe</strong> haben Sie mehrere Möglichkeiten.
+      Am einfachsten ist es, Sie klicken ganz einfach auf die kleinen
+      Pfeilbuttons neben den Ergebnisfeldern. Wenn Sie sich mit dem
+      Textcursor in einem Ergebnisfeld befinden, können sie auch mit
+      den Pfeiltasten hoch und runter das Ergebnis ändern (geht leider
+      nur im Internet Explorer) oder Sie tippen die Zahl ganz normal
+      ein.
+    </p>
+    <p>
+      Falls Ihre Liga ein <a href="#0404">offenesSpielende</a> hat oder
+      ein KO-Turnier ist, geben Sie als Nächstes an, wann das Spiel
+      endete: Normal (_), nach Verlängerung/Over time (n.V.) oder Im
+      11-Meter-/Penalty-Schießen (i.E.).
+    </p>
+    <p>
+      Das Feld <strong>Grüne-Tisch-Entsch.</strong> wird normalerweise nicht
+      benötigt. Aber es gibt immer wieder Sportgerichtsentscheidungen,
+      die Spielergebnisse auf den Kopf stellen. Unabhängig vom
+      eingegebenen Ergebnis kann hier eine Siegentscheidung eingestellt
+      werden. Die Tore werden dann für die Tabelle gezählt, wie
+      eingegeben, die Punkte aber richten sich dann nach dieser
+      Einstellung. In der Regel sieht das dann so aus, daß das
+      Sportgericht sagt: 0:0 Tore und Team X gewinnt. Die Auswahl <strong>
+      beidseitiges Erg.</strong> stellt nochmal einen Sonderfall dar, wenn
+      das Sportgericht beispielsweise entscheidet, daß das Spiel für
+      jede der beiden Mannschaften mit 2:0 Toren entschieden wird. In
+      dem Fall würde für beide Teams auch jeweils ein 2:0 gewertet
+      werden.
+    </p>
+    <p>
+      Im nächsten Feld können Sie eine <strong>Notiz</strong> zum Spiel eingeben.
+      Eine eventuelle Sportgerichtsentscheidung braucht hier nicht
+      nochmal erwähnt zu werden, denn diese wird automatisch als Notiz
+      eingefügt.
+    </p>
+    <p>
+      Zuletzt haben Sie noch die Möglichkeit, eine <strong>URL zum
+      Spielbericht</strong> einzufügen, falls sie das möchten. Diese URL
+      wird aber nur dann dargestellt werden, wenn die <a href="#0404">
+      Einstellung</a> <strong>Spielberichte verlinken</strong> aktiviert ist.
+    </p>
+    <p>
+      Unterhalb der Spiele haben Sie noch <strong>spieltags-unabhängige
+      Einstellungen</strong>, die Sie hier gleich mit bearbeiten können.
+    </p>
+    <p>
+      Bei <strong>Aktueller Spieltag</strong> braucht nur dann was verstellt zu
+      werden, wenn der Spieltag, den Sie hier bearbeiten, nicht als
+      aktueller Spieltag merkiert werden soll. Das kann z.B. der Fall
+      sein, wenn Sie ein verlegtes Spiel bearbeiten oder ein älteres
+      Ergebnis korrigieren müssen. Wählen Sie dann hier den Spieltag
+      aus, der als aktueller Spieltag gelten soll. Sonst lassen Sie
+      dieses Feld bitte unverändert.
+    </p>
+    <p>
+      Jetzt haben Sie noch die Möglichkeit, den <strong>Newsticker</strong> zu
+      aktivieren und die entsprechenden Meldungen einzugeben. Bitte
+      beachten Sie: immer eine Meldung pro Zeile und keine Leerzeilen
+      lassen.
+    </p>
+    <p>
+      Klicken Sie nun auf <strong>Spieltag und Ticker speichern</strong>, um Ihre
+      Änderungen abzuspeichern. Bitte beachten Sie, daß Ihre Änderungen
+      sofort nach dem Speichern von den Besuchern Ihrer Homepage
+      gesehen werden können. Gehen Sie also unbedingt sorgfältig vor!
+    </p>
+    <p>
+      Haben Sie die <a href="#0405">Manuelle Tabellensortierung</a>
+      aktiviert, beachten Sie bitte folgendes, bevor Sie einen Spieltag
+      speichern: Falls bereits die Tabelle dieses oder eines der
+      folgenden Spieltage manuell nachsortiert waren, ist diese
+      Sortierung nun aufgehoben. Eventuell veränderte Ergebnisse hatten
+      ja ihre Auswirkung auf diese Tabellen.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0404"></a>3. Grundeinstellungen</h4>
+    <p>
+      Klicken Sie im <a href="#0403">Ergebniseditor</a> auf <strong>
+      Grundeinstellungen</strong>. Hier legen Sie die Einstellungen der Liga
+      fest. Bei KO-Turnieren werden natürlich nur Einstellungen
+      angezeigt, die hier auch von Bedeutung sind.
+    </p>
+    <p>
+      Unter <strong>Grundwerte</strong> legen Sie den namen Ihrer Liga fest.
+      Dieser Name erscheint in den Auflistungen Ihrer Ligen und als
+      Überschrift im Besucher-Bereich. Neben dem Titel selbst und ggf.
+      regionale Angaben sollte hier auch die Saison erwähnt werden,
+      z.B. <kbd>1. Kreisklasse Hinterwelt 2001/02</kbd>.
+    </p>
+    <p>
+      Unter <strong>Verlinkungen</strong> legen Sie fest, ob die <a href="#0406">
+      Mannschaftshomepages</a> (erscheinen in der Tabelle) und die <a
+      href="#0403">Spielberichte</a> (erscheinen in den Ergebnissen und
+      Spielplänen) verlinkt werden sollen.
+    </p>
+    <p>
+      Bei <strong>Anzeigen/Darstellung</strong> legen Sie fest, was sie Ihren
+      Besuchern alles anbieten wollen bzw. können. Die Einstellung <strong>
+      Spiel um Platz 3</strong> steht nur bei KO-Turnieren zur Verfügung;
+      hier legen Sie fest, ob ein kleines Finale stattfindet. Mit <strong>
+      Startanzeige</strong> legen Sie fest, was Ihre Besuchern beim Laden
+      einer Liga zuerst zu sehen bekommen. Als Nächstes legen Sie fest,
+      ob <a href="#0403">Spieltagsdatum und Anstoßtermine</a> angezeigt
+      werden sollen. Wenn keines von beiden aktiviert ist, werden Ihre
+      Besucher auch keinen Kalender zu sehen bekommen. Ansonsten können
+      Sie den <strong>Kalender</strong> aber auch separat deaktivieren. Wenn Sie
+      die Anstoßtermine aktiviert haben, sollten Sie auch noch
+      festlegen, in welchem <strong>Format die Anstoßtermine</strong> dargestellt
+      werden sollen.
+    </p>
+    <p>
+      Die <strong>Kreuztabelle</strong> und die <strong>Fieberkurve</strong> können auch
+      deaktiviert werden. Bei der Fieberkurve kann das aus technischer
+      Sicht notwendig sein, wenn Ihr Provider die GDLib (eine
+      Programmbibliothek, mit der PHP selbstständig Grafiken erstellen
+      kann) nicht installiert hat. Die Kreuztabelle möchten Sie
+      eventuell dann deaktivieren, wenn es in Ihrer Liga keine
+      Rückspiele gibt (z.B. in den Gruppenspielen der Fußball-WM).
+    </p>
+    <p>
+      Jetzt legen Sie die <strong>Standardmannschaften</strong> fest. Ihre <strong>
+      Lieblingsmannschaft</strong> wird den Besuchern in der
+      Ergebnisübersicht und der Tabelle fett dargestellt. Die anderen
+      Auswahlmöglichkeiten stellen die Standardmannscxhaften dar, die
+      beim Aufruf des <strong>Spielplans</strong>, der <strong>Fieberkurve</strong> und der
+      <strong>Statistik</strong> zuerst ausgewählt sind. Wenn die
+      Lieblingsmannschaft und die erste Mannschaft bei
+      Fieberkurve/Statistik die gleiche ist, wird dort als zweite
+      Mannschaft beim <a href="#0403">Ergebnisupdate</a> immer der
+      Gegner Ihrer Lieblingsmannschaft am darauffolgenden Spieltag
+      ausgewählt.
+    </p>
+    <p>
+      Als Nächstes wählen Sie alternative <strong>Begrifflichkeiten</strong> für
+      <strong>Pkt.</strong> und <strong>Tore</strong>, falls das bei Ihrer Liga
+      erforderlich ist.
+    </p>
+    <p>
+      Das <strong>Spielsystem</strong> beinhaltet alle Einstellungen, die den
+      Modus der Liga betreffen. <strong>Minus-Punkte</strong> kennen wir aus
+      2-Punkt-Ligen, bei 3-Punkt-Ligen gibts diese nicht mehr. <strong>
+      Spielende offen</strong> muß nur aktiviert werden, wenn bei einem
+      Remis eine Verlängerung bzw. Over time und ggf. sogar ein
+      11-Meter- bzw. Penalty-Schießen folgt. Die <strong>Tabellenspalte
+      'Unentschieden'</strong> braucht nur dann verborgen werden, wenn es
+      generell keinen Unentschieden in Ihrer Liga gibt. <strong>Direkter
+      Vergleich</strong> bedeutet, daß bei Punktgleichheit der direkte
+      Vergleich der punktgleichen Mannschaften untereinander
+      berücksichtigt wird. <strong>Erzielte Tore zählen vor Tordiff.</strong> muß
+      nur aktiviert werden, wenn in Ihrer Liga die erzielten Tore in
+      der Tabelle schwerer wiegen, als die Tordifferenz, was eher
+      selten der Fall ist. Die <strong>Handsortierung der Tabelle
+      ermöglichen</strong> sollten Sie wirklich nur im Ausnahmefall; nur
+      dann, wenn es beispielsweise Sonderegelungen gibt, die diese
+      Software nicht berücksichtigt. Sie haben dann die Möglichkeit,
+      die <a href="#0405">Tabellensortierung per Hand zu
+      korrigieren</a>.
+    </p>
+    <p>
+      Bei den <strong>Tabellenmarkierungen</strong> legen Sie fest, ob und welche
+      Einträge Ihrer Tabelle (und der Fieberkurve) hervorgehoben werden
+      sollen.
+    </p>
+    <p>
+      Als Letztes legen Sie noch das <strong>Punktsystem</strong> fest, also
+      wofür es wieviele Punkte gibt. Bei aktivierten Minuspunkten
+      sollten Sie beachten, daß Siegpunkte immer auch negative
+      Niederlagenpunkte sind und umgekehrt; Bei Remis werden die
+      entsprechenden Punkte zu den positiven und zu den negativen
+      Punkten gezählt.
+    </p>
+    <p>
+      Links neben dem <strong>Änderungen-speichern</strong>-Button gibt es einen
+      Link <strong>Spieltags- und Spiel-Anzahl</strong>. Normalerweise brauchen
+      Sie diese Funktion nicht. Aber sollte es aus einem Grund nötig
+      sein, die Anzahl der Spieltage oder die Anzahl der Spiele pro
+      Spieltag zu verändern, können Sie das hier tun. Legen Sie sich
+      aber vorher besser <a href="#0503">eine Sicherheitskopie</a>
+      Ihrer Liga an! Diese Funktion steht bei KO-Turnieren nicht zur
+      Verfügung.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0405"></a>4. Manuelle Tabellensortierung</h4>
+    <p>
+      Haben Sie die <a href="#0404">Einstellung</a> <strong>Handsortierung
+      der Tabelle ermöglichen</strong> aktiviert, steht Ihnen am unteren
+      Rand des <a href="#0403">
+      Ergebniseditors</a>/Einstellungsbildschirms die Auswahl <strong>
+      Tabelle</strong> zur Verfügung. Klicken Sie darauf, um die Tabelle zu
+      prüfen und gegebenenfalls eine manuelle Korrektur vorzunehmen.
+    </p>
+    <p>
+      Sie können auch hier unterhalb des Menüs den Spieltag auswählen,
+      dessen Tabelle Sie prüfen und ggf. korrigieren wollen. Sie
+      bekommen die Tabelle so angezeigt und sortiert, wie es die
+      Software ermittelt hat. Wenn Sie diese Tabelle für korrekt
+      halten, brauchen Sie nichts weiter zu tun.
+    </p>
+    <p>
+      Ansonsten müssen Sie Korrekturen vornehmen, indem Sie den
+      Mannschaften neue Platzierungen zuweisen. Dabei darf natürlich
+      keine Platzierung doppelt vergeben werden (normalerweise
+      verhindert eine JavaScript-Funktion das).
+    </p>
+    <p>
+      Haben Sie den Mannschaften nun den richtigen Tabellenplatz
+      zugewiesen, klicken Sie auf <strong>manuelle Tabelle speichern</strong>.
+      Bei einen Blick in den Besucherbereich des LMO werden Sie sehen,
+      daß die entsprechende Tabelle (und die Fieberkurve) Ihren
+      Änderungen gemäß dargestellt wird.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <h4><a name="0503"></a>5. Download/Mailen einer Liga</h4>
+    <p>
+      Möchten Sie eine Sicherheitskopie einer Liga anlegen, eine Liga
+      offline weiterbearbeiten oder sie an einen Bekanten schicken,
+      wählen Sie aus dem Menü den Befehl <strong>Download</strong>.
+    </p>
+    <p>
+      Der Downloadbildschirm enthält die Auflistung aller Ligen
+      zweimal. Im linken Bereich klicken Sie auf eine Liga, um sie <strong>
+      auf Ihre lokale Festplatte runterzuladen</strong>. Klicken Sie auf <strong>
+      Alle Ligen auf einmal downloaden</strong>, stellt Ihnen das Script
+      eine ZIP-Datei zusammen, in der es alle aufgelisteten Ligen
+      archiviert, und bietet Ihnen dann dieses Archiv zum Download an.
+    </p>
+    <p>
+      Im rechten Bereich klicken Sie die Ligen an, um sie per eMail zu
+      versenden. Bei einem Klick öffnet sich zuerst ein Eingabefenster,
+      in dem Sie die eMail-Adresse des Empfängers eingeben können.
+      Jetzt wird die gewählte Liga bzw. alle Ligen zuerst in eine
+      ZIP-Datei gepackt, die dann per eMail versandt wird. Ihre
+      eMail-Adresse, wie Sie sie bei den <a href="#0301">Optionen</a>
+      eingegeben haben, wird als Absender der eMail angegeben.
+    </p>
+    <div class="up">[<a href="#00">Inhalt</a>]</div>
+    <hr>
+    <p>
+      <a href="http://validator.w3.org/check/referer"><img
+          src="http://www.w3.org/Icons/valid-html401"
+          alt="Valid HTML 4.01!" height="31" width="88"></a>
+      <a href="http://jigsaw.w3.org/css-validator"><img 
+          src="http://jigsaw.w3.org/css-validator/images/vcss.gif" 
+	        alt="Valid CSS!" height="31" width="88"></a>
+    </p>
+  </body>
+</html>
