@@ -1,0 +1,6 @@
+delimiter=#
+formatKeys="TORE HEIM (xx : __)#TORE GAST (__ : xx)#führ.Sondz. entf. (- xx)#Datum#Zeit (hh:mm)"
+formatValues="/(\d+):/#/:(\d+)/#/\W*(.*)/#/(\d{1,2}\W{1}\d{1,2}\W{1}\d{2,4})/#/(\d{1,2}:\d{1,2})/"
+csvExtension=csv,txt
+colums=heim,gast,theim,tgast
+columNames=Heimmanschaft,Gastmannschaft,Tore Heim,Tore Gast
