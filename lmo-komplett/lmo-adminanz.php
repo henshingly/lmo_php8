@@ -75,7 +75,7 @@ if($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1
             <th class="nobr" align="left" colspan="4"><?=$text[340]; ?></th>
           </tr>
           <tr>
-            <td class="nobr" align="center" colspan="4"><?php echo getMessage($text[561]; ,TRUE);?></td>
+            <td class="nobr" align="center" colspan="4"><?php echo getMessage($text[561],TRUE);?></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
