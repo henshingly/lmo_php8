@@ -19,7 +19,7 @@ $zustatoutput='';
 if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
 if($lmtype==0){	
 
-	$zustatfile= @fopen($diroutput.basename($file).".php","w+");
+	$zustatfile= fopen($diroutput.basename($file).".php","w+");
 	$vari1="<?PHP";
 	$zustatoutput.="$vari1\n";
 	$gzutore=0;

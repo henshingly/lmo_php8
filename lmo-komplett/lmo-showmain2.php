@@ -104,9 +104,10 @@ if ($action!="tipp") {
     if($lmtype==0){
   
       //Kalenderlink
-      $output_kalender.=$action!='cal'?         "<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}</a>":   $text[140];
-      $output_kalender.='&nbsp;&nbsp;';
-  
+      if($datc==1){
+        $output_kalender.=$action!='cal'?         "<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}</a>":   $text[140];
+        $output_kalender.='&nbsp;&nbsp;';
+      }
       //Ergebnis/Tabelle
       if($tabonres==0){
         if($ergebnis==1){
@@ -253,7 +254,6 @@ if ($action!="tipp") {
   if($file!="" && $nticker==1){ 
     ob_start();
     $tickerligen=basename($file);
-    $tickerart=1;
     include(PATH_TO_ADDONDIR."/ticker/ticker.php");    
     $output_newsticker.=ob_get_contents();ob_end_clean();
   }

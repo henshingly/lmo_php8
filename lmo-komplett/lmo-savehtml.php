@@ -55,10 +55,10 @@ if($lmtype==0){
   <h1><?=$titel?></h1>
   <table>
     <caption><?=$actual?>. Spieltag - <?=$datum1[$datumanz]?> bis <?=$datum2[$datumanz]?></caption><?
-    $datsort= $mterm[$st-1];
-    asort($datsort);
-    reset($datsort);
-    while (list ($key, $val) = each ($datsort)) {
+  $datsort= $mterm[$st-1];
+  asort($datsort);
+  reset($datsort);
+  while (list ($key, $val) = each ($datsort)) {
     $i=$key;
     if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ 
 			$heimteam=$teams[$teama[$actual-1][$i1]];
