@@ -16,7 +16,7 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
+
 $nick=isset($_REQUEST['nick'])?$_REQUEST['nick']:'';
 
 $xtipperpass          = isset($_REQUEST['xtipperpass'])       ? $_REQUEST['xtipperpass']       : '';
@@ -46,27 +46,27 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
     $zeile=trim(chop($zeile));
     if($zeile!=""){
       if($zeile!=""){array_push($users,$zeile);}
-      }
     }
+  }
   fclose($datei);
   $gef=0;
   for($i=1;$i<count($users) && $gef==0;$i++){
     $tipp_tipperdaten = explode('|',$users[$i]);
     if($nick==$tipp_tipperdaten[0]){ // Nick gefunden
-      $gef=1;
-      $save=$i;
-      }
+    $gef=1;
+    $save=$i;
     }
+  }
   if($gef==0){exit;}
-  
+
   if($newpage!=1){
     if($tipp_tipperdaten[5]==""){
       $xtippervereinradio=0;
-      }
+    }
     else{
       $xtippervereinradio=1;
       $xtippervereinalt=$tipp_tipperdaten[5];
-      }
+    }
   }
   if($newpage==1){
     $tipp_tipperdaten[0]=$nick;
@@ -78,14 +78,14 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
       $newpage=0;
       echo "<p class='error'>".$text['tipp'][109]."</p>";
     }
- 
+
     $tipp_tipperdaten[4]=isset($_POST['xtipperemail'])?                                         trim($_POST['xtipperemail']):        "";
     $tipp_tipperdaten[6]=isset($_POST['xtipperstrasse'])?                                       trim($_POST['xtipperstrasse']):      "";
     $tipp_tipperdaten[7]=isset($_POST['xtipperplz']) && is_numeric($_POST['xtipperplz'])?       intval(trim($_POST['xtipperplz'])):  "";
     $tipp_tipperdaten[8]=isset($_POST['xtipperort'])?                                           trim($_POST['xtipperort']):          "";
-    
+
     $xtippervereinradio=isset ($_POST['xtippervereinradio'])?                                   $_POST['xtippervereinradio']:        0;
-    
+
     if($xtippervereinradio==1){
       $xtippervereinalt=trim($xtippervereinalt);
       if($xtippervereinalt==""){
@@ -106,7 +106,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
     if($xtippervereinradio==1){$team=$xtippervereinalt;}
     elseif($xtippervereinradio==2){$team=$xtippervereinneu;}
     else{$team="";}
-    
+
     if($xtippervereinradio>0){
       $xtippervereinradio=1;
       $xtippervereinalt=$team;
@@ -115,7 +115,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
     $tipp_tipperdaten[2]=isset($xfrei) && $xfrei==1?        5:       "";
     $tipp_tipperdaten[9]=isset($xnews) && $xnews==1?        1:       -1;
     $tipp_tipperdaten[10]=isset($xremind) && $xremind==1?   1:       -1;
-    
+
     $users[$save]=$tipp_tipperdaten[0]."|".$tipp_tipperdaten[1]."|".$tipp_tipperdaten[2]."|".$tipp_tipperdaten[3]."|".$tipp_tipperdaten[4]."|";
     $users[$save].=$team."|".$tipp_tipperdaten[6]."|".$tipp_tipperdaten[7]."|".$tipp_tipperdaten[8]."|";
     $users[$save].="|".$tipp_tipperdaten[9]."|".$tipp_tipperdaten[10]."|EOL";
@@ -131,12 +131,12 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
             $tippfile=$value."_".$nick.".tip";
             if($tippfile==$files){
               $delete=0;
-              }
             }
           }
+        }
         if($delete==1){@unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files);} // Abonnement beenden
-      	}
       }
+    }
     closedir($verz);
 
     if($xtipperligen!=""){
@@ -144,15 +144,17 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
         $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
         while($files=readdir($verz)){
           $create=1;
-          if(substr($files,0,-4)==$nick && substr($files,0,strrpos($files,"_"))==$value && strtolower(substr($files,-4))==".tip"){
+          //if(substr($files,0,-4)==$nick && substr($files,0,strrpos($files,"_"))==$value && strtolower(substr($files,-4))==".tip"){
+          if(substr($files,strrpos($files,"_")+1,-4)==$nick && substr($files,0,strrpos($files,"_"))==$value && strtolower(substr($files,-4))==".tip"){
             $create=0; // bereits abonniert
             break;
-            }
           }
+        }
         closedir($verz);
         if($create==1){
-          //$tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$nick.".tip";
-          $st=-1;require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavefile.php"); // Tipp-Datei erstellen
+          $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$nick.".tip";
+          $st=-1;
+          require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavefile.php"); // Tipp-Datei erstellen
           $auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$value.".aus","ab");
           flock($auswertdatei,2);
           fputs($auswertdatei,"\n[".$nick."]\n");
@@ -160,12 +162,12 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
           fputs($auswertdatei,"Name=".$tipp_tipperdaten[3]."\n");
           flock($auswertdatei,3);
           fclose($auswertdatei);
-          }
         }
       }
-    }  // end ($newpage==1)
+    }
+  }  // end ($newpage==1)
 
-    include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
+  include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
 ?>
 
   <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -242,7 +244,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
               <td align="left"><input type="radio" name="xtippervereinradio" value="1" id="1" <? if($xtippervereinradio==1){echo "checked";} ?>><?= $text['tipp'][48]; ?></td>
               <td align="left">
                 <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true"><?
-                  echo "<option value=\"\" "; if($xtippervereinalt==""){echo "selected";} echo ">".$text['tipp'][51]."</option>";
+                echo "<option value=\"\" "; if($xtippervereinalt==""){echo "selected";} echo ">".$text['tipp'][51]."</option>";
                   require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewteams.php");?>
                 </select>
               </td>
@@ -257,7 +259,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
             </tr>
             <tr>
               <td class="lmost5" ><? 
-                $ftype=".l98"; 
+              $ftype=".l98";
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");?>
               </td>
             </tr>
@@ -275,5 +277,5 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
       </td>
     </tr>
   </table><?
-} 
+}
 $file="";?>

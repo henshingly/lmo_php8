@@ -99,9 +99,9 @@ if ($file != "") {
               if (($goala[$j][$i]-$goalb[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] > $maxs1[$a]))) {
                 $maxs1[$a] = $goala[$j][$i];
                 $maxs2[$a] = $goalb[$j][$i];
-                $maxs0[$a] = $goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                $maxs0[$a] = applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
               } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] == $maxs1[$a])) {
-                $maxs0[$a] = $maxs0[$a]."<br>".$goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
               }
             } elseif ($msieg[$j][$i] == 2) {
               $nieder[$a] = $nieder[$a]+1;
@@ -116,9 +116,9 @@ if ($file != "") {
               if (($goala[$j][$i]-$goalb[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] < $maxn1[$a]))) {
                 $maxn1[$a] = $goala[$j][$i];
                 $maxn2[$a] = $goalb[$j][$i];
-                $maxn0[$a] = $goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                $maxn0[$a] = applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
               } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] == $maxn1[$a])) {
-                $maxn0[$a] = $maxn0[$a]."<br>".$goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
               }
             } elseif ($msieg[$j][$i] == 0) {
               if ($goala[$j][$i] > $goalb[$j][$i]) {
@@ -134,9 +134,9 @@ if ($file != "") {
                 if (($goala[$j][$i]-$goalb[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] > $maxs1[$a]))) {
                   $maxs1[$a] = $goala[$j][$i];
                   $maxs2[$a] = $goalb[$j][$i];
-                  $maxs0[$a] = $goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                  $maxs0[$a] = applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
                 } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] == $maxs1[$a])) {
-                  $maxs0[$a] = $maxs0[$a]."<br>".$goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                  $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
                 }
               } elseif ($goala[$j][$i] < $goalb[$j][$i]) {
                 $nieder[$a] = $nieder[$a]+1;
@@ -151,9 +151,9 @@ if ($file != "") {
                 if (($goala[$j][$i]-$goalb[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] < $maxn1[$a]))) {
                   $maxn1[$a] = $goala[$j][$i];
                   $maxn2[$a] = $goalb[$j][$i];
-                  $maxn0[$a] = $goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                  $maxn0[$a] = applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
                 } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] == $maxn1[$a])) {
-                  $maxn0[$a] = $maxn0[$a]."<br>".$goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                  $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
                 }
               } elseif ($goala[$j][$i] == $goalb[$j][$i]) {
                 $unent[$a] = $unent[$a]+1;
@@ -184,9 +184,9 @@ if ($file != "") {
               if (($goalb[$j][$i]-$goala[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] > $maxs1[$a]))) {
                 $maxs1[$a] = $goalb[$j][$i];
                 $maxs2[$a] = $goala[$j][$i];
-                $maxs0[$a] = $goalb[$j][$i].":".$goala[$j][$i]." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+                $maxs0[$a] = applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
               } elseif ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] == $maxs1[$a])) {
-                $maxs0[$a] = $maxs0[$a]."<br>".$goalb[$j][$i].":".$goala[$j][$i]." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+                $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
               }
             } elseif ($msieg[$j][$i] == 1) {
               $nieder[$a] = $nieder[$a]+1;

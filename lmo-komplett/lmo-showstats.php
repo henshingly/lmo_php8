@@ -139,9 +139,9 @@ if($file!=""){
           <? if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?=$platz0[$show_stat2];?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><?=$punkte[$show_stat1]; if($minus==2){":".$negativ[$show_stat1];} ?></td>
+          <td align="right"><?=applyFactor($punkte[$show_stat1],$pointsfaktor); if($minus==2){":".applyFactor($negativ[$show_stat1],$pointsfaktor);} ?></td>
           <th><?= $text[37]; ?></th>
-          <? if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?=$punkte[$show_stat2]; if($minus==2){":".$negativ[$show_stat2];} ?></td><? } ?>
+          <? if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?=applyFactor($punkte[$show_stat2],$pointsfaktor); if($minus==2){":".applyFactor($negativ[$show_stat2],$pointsfaktor);} ?></td><? } ?>
         </tr>
         <tr>
           <td align="right"><?=$spiele[$show_stat1];?></td>
@@ -149,9 +149,9 @@ if($file!=""){
           <? if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?=$spiele[$show_stat2];?></td><? } ?>
         </tr>
         <tr>
-          <td align="right"><? if($spiele[$show_stat1]){echo number_format($punkte[$show_stat1]/$spiele[$show_stat1],2); if($minus==2){":".number_format($negativ[$show_stat1]/$spiele[$show_stat1],2);}} ?></td>
+          <td align="right"><? if($spiele[$show_stat1]){echo applyFactor(number_format($punkte[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor);}} ?></td>
           <th><?= $text[37].$text[64]; ?></th>
-          <? if($show_stat2>0 && $show_stat1!=$show_stat2){if($spiele[$show_stat2]){ ?><td align="left"><? echo number_format($punkte[$show_stat2]/$spiele[$show_stat2],2); if($minus==2){":".number_format($negativ[$show_stat2]/$spiele[$show_stat2],2);}} ?></td><? } ?>
+          <? if($show_stat2>0 && $show_stat1!=$show_stat2){if($spiele[$show_stat2]){ ?><td align="left"><? echo applyFactor(number_format($punkte[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor);}} ?></td><? } ?>
         </tr>
         <tr>
           <td align="right"><?= applyFactor($etore[$show_stat1],$goalfaktor).":".applyFactor($atore[$show_stat1],$goalfaktor); ?></td>
@@ -171,7 +171,7 @@ if($file!=""){
         <tr>
           <td align="right"><?= $maxs0[$show_stat1]; ?></td>
           <th valign="top"><?= $text[68]; ?></th>
-          <? if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?= $maxs0[$show_stat2]; ?></td><? } ?>
+          <? if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?= $maxs0[$show_stat2] ?></td><? } ?>
         </tr>
         <tr>
           <td align="right"><? if($spiele[$show_stat1]){echo $nieder[$show_stat1]." (".number_format($nieder[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></td>
@@ -267,10 +267,10 @@ if($file!=""){
         <td align="left"> <?=$text[4011]?> </td>
       </tr>
       <tr>
-        <td align="right"> <strong><?=$gzutore?></strong> (<?=$text[517]?><?=applyFactor($gdstore,$goalfaktor)?>) </td>
-        <td align="right"> <strong><?=$gheimtore?></strong><?if ($gdstore>0) {$v=round($dsheimtore/$gdstore*100);echo " ($v% ".$text[517].applyFactor($dsheimtore,$goalfaktor).")";}?> </td>
+        <td align="right"> <strong><?=applyFactor($gzutore,$goalfaktor);?></strong> (<?=$text[517]?><?=applyFactor($gdstore,$goalfaktor)?>) </td>
+        <td align="right"> <strong><?=applyFactor($gheimtore,$goalfaktor);?></strong><?if ($gdstore>0) {$v=round($dsheimtore/$gdstore*100);echo " ($v% ".$text[517].applyFactor($dsheimtore,$goalfaktor).")";}?> </td>
         <td>&nbsp;</td>
-        <td align="left"> <strong><?=$ggasttore?></strong><?if ($gdstore>0) {echo " (".(100-$v)."% ".$text[517].applyFactor($dsgasttore,$goalfaktor).")";}?> </td>
+        <td align="left"> <strong><?=applyFactor($ggasttore,$goalfaktor);?></strong><?if ($gdstore>0) {echo " (".(100-$v)."% ".$text[517].applyFactor($dsgasttore,$goalfaktor).")";}?> </td>
       </tr><?
     if ($hheimsiegtor>0) {?>
       <tr>
