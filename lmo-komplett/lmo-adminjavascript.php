@@ -15,7 +15,7 @@ img5 = new Image();
 img5.src = "<?=URL_TO_IMGDIR?>/lmo-admin5.gif";
 var lmotest=true;
 
-function lmoimg(x,y){
+function lmoimg (x,y){
   document.getElementsByName("ximg"+x)[0].src = y.src;
   }
 function lmotorclk(x,y,z){

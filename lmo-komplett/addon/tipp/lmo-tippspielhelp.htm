@@ -1,0 +1,176 @@
+<html>
+<head>
+<style type="text/css">
+<!--
+a:link {text-decoration: none; color: #0000ff;}
+a:visited {text-decoration: none; color: #8800ff;}
+a:active {text-decoration: overline underline; color: #ff0088;}
+a:hover {text-decoration: overline underline; color: #ff0088;}
+LI { padding: 0px 0px 0px 0px; margin-bottom: 3px; }
+body, td { background: #ffffff; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 9pt; }
+.t1 { margin-top: 10px; margin-bottom: 4px; font-size: 11pt; font-weight: bold; text-align: left; }
+.t3 { margin-left: 40px; margin-bottom: 4px; font-size: 9pt; font-weight: normal; text-align: justify; }
+.t4 { margin-bottom: 4px; font-size: 10pt; font-weight: normal; text-align: right; }
+//-->
+</style>
+<title>Hilfe: LigaManager Online 3.02</title>
+</head>
+<body>
+<center>
+<h3>Hilfe: Tippspiel-AddOn 1.20<font size="2"><br>
+</font>&copy;  2002 by Frank Albrecht<br>
+<font size="2">[ Support über
+<a href="mailto:fkalbrecht@web.de?subject=LMO-Tippspiel-AddOn">eMail</a> oder
+<a href="http://forum.hollwitz.de/index.php?mode=viewforum&forum_id=14">
+Hollwitz.Forum</a> ]</font></h3>
+<h3><font size="2">für LigaManager Online 3.02b</font><br>
+<font size="2">&copy; 1997-2002 by Frank Hollwitz<br>[ <a href="mailto:webmaster@hollwitz.de">eMail</a> | <a href="http://php.hollwitz.de/" target="_blank">Hollwitz.PHP</a> | <a href="http://www.hollwitz.de/" target="_blank">Hollwitz.Net(z)</a> ]</font></h3>
+</center>
+<p>Mit dem Tippspiel-Addon ist es möglich, auf seiner Homepage mit 
+LigaManager-Ligen eine Tipprunde zu veranstalten. Es kann zwischen Ergebnis- und 
+Tendenzmodus gewählt werden.</p>
+<p>Vorraussetzung für den Einsatz dieses Tippspiel-AddOns ist eine vorhandene 
+Installation des LigaManager Online 3.02b.</p>
+<h3>Installation:</h3>
+<p>Die Dateien der lmotippspiel.zip müssen unter Beibehaltung der Ordnerstruktur 
+in das lmo-Verzeichnis entpackt werden.</p>
+<p><font size="2">Dabei werden fol</font>gende Dateien überschrieben:<font size="2"><br>
+lmo.php, lmoadmin.php, lmo-adminedit.php,  lmo-adminmain.php, lmo-adminpad</font>.php, lmo-langload.php, 
+lmo-showdir.php, lmo-showmain.php, lmo-start.php, lmo-savefile.php.<br>
+Wer also in diesen Dateien Änderungen vorgenommen hat, sollte vorher
+Sicherungskopien anle<font size="2">gen.</font></p>
+<script Language="JavaScript">
+<!--
+ NS4 = (document.layers);
+ if (NS4) { document.write('<link rel="stylesheet" href="nc.css" type="text/css">'); }
+  else { document.write('<link rel="stylesheet" href="lmo-style.css" type="text/css">'); }
+//-->
+</script>
+<noscript>
+<link rel="stylesheet" href="lmo-style.css" type="text/css">
+</noscript>
+<p>Es ist wichtig, dass am Anfang der lmo.php, oder von wo auch immer die 
+lmo-start.php aufgerufen wird, folgende Zeile steht:</p>
+<p><font face="Courier">&lt;?PHP if($action==&quot;tipp&quot;){session_start();}?&gt;</font></p>
+<p>Dabei wird, falls eine Seite aus dem Tippspiel-Bereich angefordert&nbsp; 
+wird, eine Session gestartet.</p>
+<p>Achte beim Hochladen der Dateien auf folgendes: </p>
+<ul>
+  <li>Folgende Dateien müssen im <b>Textmodus</b> übertragen werden:
+  <ul>
+    <li>PATH_TO_LMO."/lmo-cfgload.php".txt </li>
+    <li>lmo-tipplang.txt </li>
+    <li>lmo-tippauth.txt</li>
+  </ul>
+  </li>
+  <li>Folgende <b>Zugriffsrechte (chmod)</b> müssen gesetzt werden:
+  <ul>
+    <li>777 - PATH_TO_LMO."/lmo-cfgload.php".txt </li>
+    <li>600 - das tipps-Verzeichnis</li>
+    <li>600 - lmo-tippauth.txt </li>
+  </ul>
+  </li>
+</ul>
+<p>Wer seine Dateien <span class="norm">mit den Zugriffsrechten 600 in einem 
+extra Verzeichnis speichert, kann den Pfad der &quot;</span>lmo-tippauth.txt<span class="norm">&quot; 
+in der &quot;PATH_TO_LMO."/lmo-cfgload.php"load.php&quot; anpassen. </span></p>
+<p><span class="norm">Wer nach dem chmod 600 Probleme beim Abspeichern der Tipps 
+hat (Schreibrechte), der muss das tipps-Verzeichnis mit chmod 777 versehen und 
+es mit htaccess schützen.</span></p>
+<p>Das Tippspiel-AddOn beinhaltet das CSS für Netscape 4 und dessen Einbindung 
+(von <font face="helvetica,arial,sans-serif">rudi).<br>
+Der eingebaute Joker-Hack ist von Ufuk Altinkaynak (horizont).</font></p>
+<p>Innerhalb des Verzeichnis &quot;tipps&quot; müssen folgende Unterverzeichnisse 
+verhanden sein:<br>
+einsicht/<br>
+auswert/<br>
+auswert/vereine/</p>
+<p>Im Verzeichnis &quot;tipps&quot; werden alle Tipps gespeichert, 
+im Verzeichnis &quot;tipps/auswert&quot; 
+alle Tippauswertungen, im Verzeichnis &quot;tipps/ensicht&quot; 
+alle Tippeinsichten.<br>
+Die Tipp-Dateien haben das Schema &quot;<i>liga</i>_<i>nickname</i>.tip&quot;, die 
+Auswertungs-Dateien werden nach dem Schema &quot;<i>liga</i>.aus&quot; erstellt. Die Datei 
+&quot;gesamt.aus&quot; beinhaltet die Gesamtwertung.</p>
+<h4>Administration:</h4>
+<p>Das Tippspiel wird über den Administrations-Bereich des LMO verwaltet. 
+Über den neuen Menüpunkt &quot;Tippspiel&quot; kann dort auf die Tippauswertung, 
+Tipp-Userverwaltung und Tippoptionen zugegriffen werden, allerdings nur von 
+einem Admin mit Voll-Zugriff. </p>
+<h4>Tippabgabezeit:</h4>
+<p>Um die Tippabgabe zu ermöglichen, muss für jeden Spieltag einer Liga 
+<b>mindestens ein Spieltagsdatum</b> angegeben sein. Die Tippabgabe ist dann bis 
+zum Vortag, 24 Uhr möglich. Ist für ein Spiel ein Anstoßtermin eingegeben, dann 
+ist die Tippabgabe für dieses Spiel bis zu einem einstellbaren Zeitpunkt vor dem 
+Anstoß möglich.</p>
+<p>Die Tippabgabezeit richtet sich dabei nach der Serverzeit. <span class="norm">
+Bevor man das Tippspiel öffentlich in betrieb setzt sollte man diese zeit 
+kontrollieren, entweder indem man auf das letzte Auswertungsdatum schaut oder
+<br>
+&lt;?php<br>
+$jetzt = date(&quot;H:i:s m.d.y&quot;);<br>
+echo (&quot;$jetzt&quot;);<br>
+?&gt;<br>
+durchlaufen lässt und schnell auf die Uhr schaut!! (Dank an thire2 für diesen 
+Hinweis)</span></p>
+<font SIZE="2">
+<h4>Update:</h4>
+<p>Durch das Tippspiel-AddOn keine bekannten anderen Addons oder Hacks überschrieben.<br>
+Bei einem Update werden bereits abgegebene Tipps  weiterverarbeitet.</p>
+<p><b>Wer das Tippspiel bereits in Betrieb hat, sollte aber darauf achten, dass 
+die lmo-tippauth.txt nicht überschrieben wird, da sonst alle Anmeldedaten 
+verloren gehen.</b></p>
+</font>
+<h4><span class="thsmall">Navigation in Frames:</span></h4>
+<p>Wenn der LMO in ein Frameset eingebunden ist, und nachdem man ins Tippspiel 
+eingeloggt war/ist, im Navigationsframe einen weiteren Link öffnet, der 
+eigentlich in den Frame mit dem LMO zielt, öffnet sich unschönerweise ein neues 
+Fenster.<span class="norm"> Das liegt daran, dass das Tippspiel, sobald man eingeloggt ist, für 
+seinen Frame 
+einen eigenen Namen vergibt. </span></p>
+<p><b>Lösung 1 (mit JavaScript):</b><span class="norm"><br>
+Es kann hier
+nicht herkömmlich mit Link und 'target' gearbeitet werden. Man muss den Frame 
+mittels 'Nummer' über JavaScript ansteuern. <br>
+Ersetze im Navigationsframe den Link auf das Tippspiel durch den folgenden:<br>
+<font face="Courier">&lt;a href=&quot;javascript:loadURL('lmo/lmo.php?action=tipp')&quot;&gt;zum 
+Tippspiel&lt;/a&gt;
+</font>(Der Link beinhaltet kein 'target'!)<br>
+<br>
+Auch alle anderen Links im Navigationsframe müssen ebenfalls nach diesem Schema 
+aufgebaut werden.<br>
+<br>
+In der selben Datei (mit den Links) kommt dann zwischen &lt;HEAD&gt; und <br>
+&lt;/HEAD&gt; noch folgender Script-Block:<br>
+<br>
+<font face="Courier">&lt;SCRIPT&gt;<br>
+function loadURL(destination){<br>
+parent.frames[2].location.href = destination;<br>
+};<br>
+&lt;/SCRIPT&gt;<br>
+<br>
+</font>(Möglicherweise muss die '2' durch '3' oder '1', je nach Ziel-Frame 
+ersetzt werden)</span></p>
+<p><b><span class="norm">Lösung 2 (ohne JavaScript):</span></b><span class="norm"><br>
+Bei allen Links vom Navigationsframe zum LMO nicht direkt auf die lmo.php 
+verweisen, sondern auf eine Datei (ich nenn sie mal lmoframe.php), die noch mal 
+ein Unterframe erstellt. Erst in diesen Unterframe wird der LMO geladen. z.B. 
+der Link zum Tippspiel sieht dann so aus: lmoframe.php?action=tipp<br>
+<br>
+So schaut die lmoframe.php aus:<code><br>
+&lt;?PHP $qs=getenv(&quot;QUERY_STRING&quot;); ?&gt;<br>
+&lt;FRAMESET ROWS=&quot;*&quot;&gt;<br>
+&lt;FRAME SRC=&quot;lmo.php?&lt;?PHP echo $qs; ?&gt;&quot; Name=&quot;lmo&quot; MARGINWIDTH=0 MARGINHEIGHT=0 
+NORESIZE FRAMEBORDER=&quot;No&quot; BORDER=0&gt;<br>
+&lt;/FRAMESET&gt;<br>
+</code><br>
+So wird, wenn man im Tippspiel eingeloggt ist, der Framename &quot;lmo&quot; geändert. Die 
+Links vom Navigationsframe können also problemlos als target den Framenamen 
+haben, in der die lmoframe.php geladen ist.<br>
+&nbsp;</span></p>
+<h4>Rechtliches:<br>
+<span style="font-size: 9pt; font-weight: 400">Keine Garantie auf Lauffähigkeit 
+und Fehlerfreiheit! Keine Haftung!<br>
+Benutzung auf eigene Gefahr!</span></h4>
+</body>
+</html>

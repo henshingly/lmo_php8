@@ -22,8 +22,8 @@ CK=0
 UC=0
 AR=0
 AB=1
-namePkt=
-nameTor=
+namePkt=Pkt.
+nameTor=Tore
 DatC=1
 DatS=1
 DatM=1
@@ -35,13 +35,16 @@ Ergebnis=1
 mittore=1
 favTeam=0
 selTeam=0
-ticker=0
+ticker=1
 Graph=1
 Kreuz=1
 Tabelle=1
 Ligastats=1
 kurve1=0
 kurve2=0
+
+[News]
+NC=0
 
 [Teams]
 1=Mannschaft 1

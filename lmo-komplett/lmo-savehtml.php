@@ -33,8 +33,8 @@ $datumanz=$actual-1;
 if($lmtype==0){
 	isset($tab0) ? $table1=$tab0 : $table1=$tab1;
   if (isset($table1)) {
-    ob_start();
-    $wmlfile= @fopen($diroutput.basename($file)."-st.html","wb");?>
+    $wmlfile= fopen($diroutput.basename($file)."-st.html","wb");
+    ob_start();?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 					"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="de">

@@ -33,7 +33,7 @@
   //Farbwerte aus css-datei lesen
   ob_start();
   @readfile("lmo-style.css");
-  $f=ob_get_clean();
+  $f=ob_get_contents();ob_end_clean();
   
   $farbe_body=imagecolorallocate($image,255,255,255);
   $farbe_a=imagecolorallocate($image,0,0,0);  //Schrift
