@@ -2,7 +2,7 @@
 echo("<card id=\"index\" title=\"Ligenauswahl\">\n");
 echo("<p>\n");
 
-if (isset($_SESSION['wap_userok']) && $_SESSION['wap_userok']>0) {
+if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
   if($wap_ftype!=""){
     $verz=opendir(PATH_TO_LMO.'/'.substr($dirliga,0,-1));
     $dummy=array();$dummy2=array();
@@ -21,10 +21,10 @@ if (isset($_SESSION['wap_userok']) && $_SESSION['wap_userok']>0) {
     for($k=0;$k<count($dummy);$k++){
       $files=$dummy[$k];
   	 #############
-  	 if($_SESSION['wap_userok']==2){$ftest=1;}
-     elseif($_SESSION['wap_userok']==1){
+  	 if($_SESSION['lmouserok']==2){$ftest=1;}
+     elseif($_SESSION['lmouserok']==1){
        $ftest=0;
-       $user_files=explode(",",$_SESSION['wap_userfile']);
+       $user_files=explode(",",$_SESSION['lmouserfile']);
        foreach ($user_files as $user_file) {
          if (trim($user_file).$wap_ftype==$files) $ftest=1;
      	 }
