@@ -7,7 +7,7 @@
     echo $text['tipp'][52];
   }
   echo "&nbsp;&nbsp;";
-  if ($file == "viewer") {
+  if ($viewermode == 1) {
     echo $text['tipp'][9]."&nbsp;&nbsp;";
   } elseif($file != "") {
     if ($tipp_sttipp != -1) {

@@ -232,9 +232,7 @@ if ($ftype != "") {
                           } elseif($y == $t5-2) {
                             echo $text[372];
                           } elseif($y == $t5-3) {
-                            echo $text[371];
-                          } elseif($y == $t5-4) {
-                            echo $text[370];
+                            echo $text[371];                          
                           } else {
                             echo $y.". ".$t2;
                           }

@@ -30,22 +30,22 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
   if ($save == 1) {
     for($i = 1; $i <= $anzteams; $i++) {
       if ($_POST["xteams".$i] != "") {
-        $teams[$i] = $_POST["xteams".$i];
+        $teams[$i] = isset($_POST["xteams".$i])?$_POST["xteams".$i]:'';
       }
-      $teamk[$i] = $_POST["xteamk".$i];
+      $teamk[$i] = isset($_POST["xteamk".$i])?$_POST["xteamk".$i]:'';
       if ($teamk[$i] == "") {
         $teamk[$i] = substr($teams[$i], 0, 5);
       }
-      $teamu[$i] = $_POST["xteamu".$i];
-      $teamn[$i] = $_POST["xteamn".$i];
+      $teamu[$i] = isset($_POST["xteamu".$i])?$_POST["xteamu".$i]:'';
+      $teamn[$i] = isset($_POST["xteamn".$i])?$_POST["xteamn".$i]:'';
       if ($lmtype == 0) {
         $strafp[$i] = (-1) * intval($_POST["xstrafp".$i]);
         if ($minus == 2) {
           $strafm[$i] = (-1) * intval($_POST["xstrafm".$i]);
         }
-        $torkorrektur1[$i] = (-1) * intval($HTTP_POST_VARS["xtorkorrektur1".$i]); // Hack-Straftore
-        $torkorrektur2[$i] = (-1) * intval($HTTP_POST_VARS["xtorkorrektur2".$i]); // Hack-Straftore
-        $strafdat[$i] = intval($HTTP_POST_VARS["xstrafdat".$i]); // Hack-Straftore
+        $torkorrektur1[$i] = (-1) * intval($_POST["xtorkorrektur1".$i]); // Hack-Straftore
+        $torkorrektur2[$i] = (-1) * intval($_POST["xtorkorrektur2".$i]); // Hack-Straftore
+        $strafdat[$i] = intval($_POST["xstrafdat".$i]); // Hack-Straftore
       }
     }
     require(PATH_TO_LMO."/lmo-savefile.php");

@@ -88,7 +88,7 @@ if ($wertung == "einzel" || $wertung == "intern") {
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcwertteam.php");
 }
  
-if ($wertung == "team") {
+if ($wertung == "team" && isset($teamsanzahl)) {
   $anztipper = $teamsanzahl;
 }
 $platz0 = array("");
@@ -167,6 +167,8 @@ if ($wertung == "intern") {
 }
 if ($tipp_anzseite1 > 0) {
   $tipp_anzseiten = $anztipper/$tipp_anzseite1;
+} else {
+  $tipp_anzseiten = 0;
 }
 if ($tipp_anzseiten > 1) {
 ?> 

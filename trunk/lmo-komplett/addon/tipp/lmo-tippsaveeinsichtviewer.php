@@ -25,14 +25,16 @@ if ($einsichtfile != "") {
     $daten = array("");
     if (file_exists($einsichtfile)) {
       $datei = fopen($einsichtfile, "rb");
-      while (!feof($datei)) {
-        $zeile = fgets($datei, 1000);
-        $zeile = trim(chop($zeile));
-        if ($zeile != "") {
-          array_push($daten, $zeile);
+      if ($datei){
+        while (!feof($datei)) {
+          $zeile = fgets($datei, 1000);
+          $zeile = trim(chop($zeile));
+          if ($zeile != "") {
+            array_push($daten, $zeile);
+          }
         }
+        fclose($datei);
       }
-      fclose($datei);
     }
      
     $datei = fopen($einsichtfile, "wb");

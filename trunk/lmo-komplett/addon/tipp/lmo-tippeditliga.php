@@ -216,7 +216,7 @@ if($spez==1){ ?>
   <td class="lmoBackMarkierung"><?=$mspez[$st-1][$i]; ?></td><? 
 } ?>
   <td width="2">&nbsp;</td>
-  <td class="nobr" align="left">
+  <td class="nobr" align="right">
     <strong><? 
 if ($tipp_jokertipp==1 && $jksp==$i+1) {
   $jkspfaktor=$tipp_jokertippmulti;
@@ -280,7 +280,7 @@ if($urlb==1){
  *
  * Da IE kein max-width kann, Workaround lt. http://www.bestviewed.de/css/bsp/maxwidth/
  */
-if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
+if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0 || $mtipp[$st-1][$i] > 0) {
   $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
   //Beidseitiges Ergebnis
   if ($msieg[$st-1][$i]==3) {
@@ -304,6 +304,9 @@ if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
   //Allgemeine Notiz
   if ($mnote[$st-1][$i]!="") {
     $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i];
+  }
+  if ($mtipp[$st-1][$i] == 1) {
+    $lmo_spielnotiz.="\n\n".$text['tipp'][231];
   }
   echo "<a href='#' onclick=\"alert('".mysql_escape_string(strip_tags($lmo_spielnotiz))."');window.focus();return false;\"><span class='popup'><!--[if IE]><table><tr><td style=\"width: 23em\"><![endif]-->".nl2br($lmo_spielnotiz)."<!--[if IE]></td></tr></table><![endif]--></span><img src='img/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
   $lmo_spielnotiz="";
