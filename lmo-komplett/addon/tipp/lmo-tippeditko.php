@@ -286,14 +286,8 @@ for($n=0;$n<$modus[$st-1];$n++){
   $lmo_teamaicon="";
   $lmo_teambicon="";
   if($urlb==1 || $mnote[$st-1][$i][$n]!=""){
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$st-1][$i]].".gif")) {
-      $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$st-1][$i]].".gif");
-      $lmo_teamaicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$st-1][$i]]).".gif' {$imgdata[3]} alt=''> ";
-    }
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$st-1][$i]].".gif")) {
-      $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$st-1][$i]].".gif");
-      $lmo_teambicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teamb[$st-1][$i]]).".gif' {$imgdata[3]} alt=''> ";
-    }
+    $lmo_teamaicon=getSmallImage($teams[$teama[$st-1][$i]])." ";
+    $lmo_teambicon=getSmallImage($teams[$teamb[$st-1][$i]])." ";
   }
   /** Spielbericht verlinken
    */

@@ -43,7 +43,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
     $array = array();
     $ftype = ".l98";
     $verz = opendir(substr($dirliga, 0, -1));
-    $dummy = array("");
+    $dummy = array();
     while ($files = readdir($verz)) {
       if (strtolower(substr($files, -4)) == $ftype) {
         array_push($dummy, $files);

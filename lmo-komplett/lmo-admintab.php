@@ -143,10 +143,7 @@ if ($file != "") {
             <td>&nbsp;</td>
             <td><? 
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-        $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-        $lmo_tabellennotiz="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i]).".gif' {$imgdata[3]} alt=''>";
-      }
+      $lmo_tabellennotiz=getSmallImage($teams[$i]);
       
       /** Notizen anzeigen
        *

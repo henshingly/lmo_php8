@@ -39,14 +39,7 @@ if($file!=""){
     }
           ?></acronym>
           </td>          
-          <td><?
-    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
-              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
-  
-               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>">&nbsp;<?
-    } else {
-      echo "&nbsp;";
-    }   ?></td>
+          <td>&nbsp;<?=getSmallImage($teams[$i]);?></td>
         </tr><?
   }?>
       </table>
@@ -109,14 +102,8 @@ if($file!=""){
           $lmo_teamaicon="";
           $lmo_teambicon="";
           if($urlb==1 || $mnote[$j][$i]!="" || $msieg[$j][$i]>0){
-            if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif")) {
-              $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif");
-              $lmo_teamaicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$j][$i]]).".gif' {$imgdata[3]} alt=''> ";
-            }
-            if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif")) {
-              $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teamb[$j][$i]].".gif");
-              $lmo_teambicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teamb[$j][$i]]).".gif' {$imgdata[3]} alt=''> ";
-            }
+            $lmo_teamaicon=getSmallImage($teams[$teama[$j][$i]]);
+            $lmo_teambicon=getSmallImage($teams[$teamb[$j][$i]]);
           }
           
           /** Spielbericht verlinken

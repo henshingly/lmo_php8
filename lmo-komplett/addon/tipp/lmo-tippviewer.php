@@ -581,14 +581,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         $lmo_teamaicon="";
         $lmo_teambicon="";
         if($urlb[$i]==1 || $mnote[$i]!="" || $msieg[$i]>0){
-          if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teama[$i].".gif")) {
-            $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teama[$i].".gif");
-            $lmo_teamaicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teama[$i]).".gif' {$imgdata[3]} alt=''> ";
-          }
-          if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teamb[$i].".gif")) {
-            $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teamb[$i].".gif");
-            $lmo_teambicon="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teamb[$i]).".gif' {$imgdata[3]} alt=''> ";
-          }
+          $lmo_teamaicon=getSmallImage($teama[$i])." ";
+          $lmo_teambicon=getSmallImage($teamb[$i])." ";
         }
         /** Spielbericht verlinken
          */
