@@ -139,12 +139,16 @@ elseif($_SESSION['lmouserok']==1){
     elseif($todo=="addons"){require(PATH_TO_LMO."/lmo-adminaddon.php");}
     elseif($todo=="design"){require(PATH_TO_LMO."/lmo-admindesign.php");}
     elseif($todo=="statistik"){include(PATH_TO_ADDONDIR."/spieler/lmo-statadmin.php");}
+    /*Tippspiel-Addon*/
     elseif($todo=="tipp"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintipp.php");}
     elseif($todo=="tippemail"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippemail.php");}
     elseif($todo=="tippuser"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippuser.php");}
     elseif($todo=="tippuseredit"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippuseredit.php");}
     elseif($todo=="tippoptions"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippoptions.php");}
-    elseif($todo=="vieweroptions"){require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");}
+    /*Tippspiel-Addon*/
+    /*Viewer-Addon*/
+    //elseif($todo=="vieweroptions"){require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");}
+    /*Viewer-Addon*/
     elseif($todo==""){require(PATH_TO_LMO."/lmo-adminpad.php");}
   }
   elseif($_SESSION['lmouserok']==1){
