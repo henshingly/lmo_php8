@@ -133,6 +133,9 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
+    <td align="center" class="lmomain0"><?=$titel?></td>
+  </tr>
+  <tr>
     <td align="center" class="lmost3">
       <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">

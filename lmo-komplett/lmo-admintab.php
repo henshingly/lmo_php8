@@ -58,6 +58,9 @@ if($file!=""){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
+  <tr>
+    <td align="center" class="lmomain0"><?=$titel?></td>
+  </tr>
     <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP
   for($i=1;$i<=$anzst;$i++){

@@ -22,16 +22,18 @@ $addi=$_SERVER["PHP_SELF"]."?file=";
 
 
 if($ftype!=""){
-  $verz=opendir(substr($dirliga,0,-1));
-  $dummy=array("");
-
+  $verz=opendir(substr(PATH_TO_LMO."/".$dirliga,0,-1));
+  $dummy=array();
+  $r=0;
   while($files=readdir($verz)){
-    if(strtolower(substr($files,-4))==$ftype)
-      {array_push($dummy,$files); }
+    if(strtolower(substr($files,-4))==".l98"){
+      $dummy2['"'.(filemtime(PATH_TO_LMO."/".$dirliga.$files)+$r).'"']=$files;
+      $r++;
     }
+  }
   closedir($verz);
-  array_shift($dummy);
-  sort($dummy);
+  krsort($dummy2);
+  foreach ($dummy2 as $d) $dummy[]=$d;
   $i=0;
   $j=0;
 
@@ -81,7 +83,7 @@ if($ftype!=""){
         }
       }
     else{$t3="";}
-    echo "<li><a href=\"".$addi.$dirliga.$files."\">".$t0."<br><small>".gmdate("d.m.Y H:i",filectime($dirliga.$files)).$t3."</small></a></li>";
+    echo "<li><a href=\"".$addi.$dirliga.$files."\">".$t0."<br><small>".gmdate("d.m.Y H:i",filemtime($dirliga.$files)).$t3."</small></a></li>";
     }
   if($i==0){echo "<li>[".$text[223]."]</li>";}
   }
