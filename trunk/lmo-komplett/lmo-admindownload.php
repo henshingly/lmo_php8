@@ -19,7 +19,7 @@
   
   
 session_start();
-require("init.php");
+require(dirname(__FILE__)."/init.php");
 
 if (($action == "admin") && ($todo == "download") && (($_SESSION["lmouserok"] == 1) || ($_SESSION["lmouserok"] == 2))) {
   if ($down > 0) {
