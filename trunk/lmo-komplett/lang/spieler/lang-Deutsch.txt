@@ -5,9 +5,9 @@
 004=Bitte Spielernamen eingeben
 005=Spalten verwalten
 006=Spieler verwalten
-007=Spalte hinzufügen, im Verzeichnis 'stats/pic/' kann ein gif-Bild gleichen Namens abgelegt werden. Wenn der Spaltenname 'Verein' lautet, wird die Vereinsunterstützung aktiviert
+007=Spalte hinzufügen - Bitte beachten Sie die Hinweise in der Hilfe für die erweiterten Funktionen
 008=Spalte löschen
-009=Spieler hinzufügen, im Verzeichnis 'stats/pic/' kann ein jpg-Bild gleichen Namens abgelegt werden
+009=Spieler hinzufügen - Bitte beachten Sie die Hinweise in der Hilfe für die erweiterten Funktionen
 010=Spieler löschen
 011=Spieler
 012=Anzeige der Spielerstatistiken
@@ -20,7 +20,7 @@
 019=Soll Spielerstatistik mit eingeblendet werden?
 020=Spielerbildbreite
 021=Vorsortierung User
-022=Anzeige pro Seite User
+022=Anzeige pro Seite
 023=Nullwerte einblenden
 024=Extra Sortierspalte
 025=Verein
@@ -41,7 +41,7 @@
 040=Vorsortierung Admin
 041=Linkbezeichnung
 042=Anzeige pro Seite Admin
-043=__
+043=___
 044=User
 045=Admin
 046=Hilfsadmin (Spalten)
@@ -54,3 +54,5 @@
 053=Text
 054=Formel
 055=Fehler
+056=Ansicht ausdrucken
+057=Gesamtansicht ausdrucken

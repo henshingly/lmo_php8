@@ -1,11 +1,11 @@
 Addons:
 
 - Ein Verzeichnis = Ein Addon
-- Wenn benötigt eine Konfigurationsdatei cfg.txt (Format wie lmo-cfg.txt im LMO-Verzeichnis)
-- Wenn benötigt eine Datei lang-[LMO-Sprache].txt erstellen
+- Wenn benötigt eine Konfigurationsdatei /config/[Addonname]/cfg.txt (Format wie cfg.txt im in /config)
+- Wenn benötigt eine Datei /lang/[Addonname]/lang-[LMO-Sprache].txt erstellen
 - An den Anfang der Startdatei(en) des Addons diese Zeile einfügen
   
-  require_once(dirname(__FILE__).'/../../init.php');
+  require(dirname(__FILE__).'/../../init.php');
 
   Jetzt stehen zur Verfügung:
 

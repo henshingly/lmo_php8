@@ -23,18 +23,13 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
   if ($file!="") {
     if (substr($file,-4)==".l98") {
       if ($einsavehtml==1) {
-        if (file_exists("lmo-savehtml.php")) {
-          include(PATH_TO_LMO."/lmo-savehtml.php");
-        }
-        if (file_exists("lmo-savehtml1.php")) {
-          include(PATH_TO_LMO."/lmo-savehtml1.php");
-        }
+        include(PATH_TO_LMO."/lmo-savehtml.php");
+        include(PATH_TO_LMO."/lmo-savehtml1.php");
       }
       if ($einzutore==1 || $einzutoretab==1 || $einzustats==1) {
-        if (file_exists("lmo-zustat.php")) {
-          include(PATH_TO_LMO."/lmo-zustat.php");
-        }
+        include(PATH_TO_LMO."/lmo-zustat.php");
       }
+      
       $datei = fopen(PATH_TO_LMO.'/'.$dirliga.$file,"wb");
       
       if ($datei) {
@@ -57,6 +52,9 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           fputs($datei,"Actual=".$stx."\n");
         }
         if ($lmtype==0) {
+          /*Minitabellen-CSV generieren*/
+          include(PATH_TO_ADDONDIR."/mini/lmo-minitab_save.php");
+          /*Minitabellen-CSV generieren*/
           fputs($datei,"Kegel=".$kegel."\n");
           fputs($datei,"HandS=".$hands."\n");
           fputs($datei,"PointsForWin=".$pns."\n");
@@ -87,6 +85,8 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           if (isset($nametor)) {
             fputs($datei,"nameTor=".$nametor."\n");
           }
+          fputs($datei,"tableHinRueck=".$einhinrueck."\n");
+          fputs($datei,"tableHeimAusw=".$einheimausw."\n");
         } else {
           fputs($datei,"KlFin=".$klfin."\n");
           fputs($datei,"playdown=".$playdown."\n");
@@ -98,7 +98,6 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         fputs($datei,"urlT=".$urlt."\n");
         fputs($datei,"urlB=".$urlb."\n");
         fputs($datei,"Plan=".$plan."\n");
-        fputs($datei,"Sprachauswahl=".$sprachauswahl."\n");
         fputs($datei,"Ergebnis=".$ergebnis."\n");
         fputs($datei,"mittore=".$mittore."\n");
         fputs($datei,"favTeam=".$favteam."\n");

@@ -24,9 +24,6 @@ if ($file != "") {
   $me = array("0", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
   $mb = strftime("%m%Y", strtotime("now"));
   $cal=isset($_GET['cal'])?$_GET['cal']:null;
-  function filterZero($a) {
-    return (!empty($a));
-  }
   
   //Anzeigezeitraum festlegen
   if (isset($cal)) {  //Zeitraum vorgegeben

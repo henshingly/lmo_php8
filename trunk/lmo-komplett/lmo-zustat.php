@@ -20,8 +20,8 @@
   
 $zustatoutput = '';
 if ($_SESSION['lmouserok'] > 0) {
-  if ($lmtype == 0) {
-    $zustatfile = fopen($diroutput.basename($file).".php", "wb+");
+  if ($lmtype == 0 && $zustatfile = fopen(PATH_TO_LMO.'/'.$diroutput.basename($file).".php", "wb+")) {
+        
     $zustatoutput .= '<? ';
     $gzutore = 0;
     $gzuanzsp = 0;

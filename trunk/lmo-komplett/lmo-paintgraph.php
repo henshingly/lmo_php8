@@ -46,9 +46,11 @@ $farbe_b = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Gitte
 $color = isset($lmo_inner_color1)?get_color($lmo_inner_color1):array(0, 0, 0);
 $farbe_a = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Schrift
 
+$color = isset($lmo_fieber_color1)?get_color($lmo_fieber_color1):array(0, 0, 255);
+$farbe_c = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Linie1 & Mannschaft1
 
-$farbe_c = imagecolorallocate($image, 0, 0, 255);  //Linie1 & Mannschaft1
-$farbe_d = imagecolorallocate($image, 255, 0, 0);  //Linie2 & Mannschaft2
+$color = isset($lmo_fieber_color2)?get_color($lmo_fieber_color2):array(255, 0, 0);
+$farbe_d = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Linie2 & Mannschaft2
 
 $color = isset($lmo_tabelle_background1)?get_color($lmo_tabelle_background1):array(237, 244, 156);
 $farbe_e = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Meister

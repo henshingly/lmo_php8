@@ -29,10 +29,10 @@ if ($all == 1) {
 } else {
   $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, 0, -4).".aus";
 }
-if (!file_exists($auswertfile))
-echo $text['tipp'][17]."<br>";
-else
-  {
+if (!file_exists($auswertfile)) {
+  echo "<p class='error'>".$text['tipp'][17]."</p>";
+  $anztipper = 0;
+} else {
   $datei = fopen($auswertfile, "rb");
   $anztipper = 0;
   $eigpos = -1;

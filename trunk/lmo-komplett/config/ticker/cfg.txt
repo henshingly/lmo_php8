@@ -1,5 +1,5 @@
 standard_ligen=
-tickerart=3
+tickerart=1
 tickertitel=0
 notizanzeigen=1
 color=fff

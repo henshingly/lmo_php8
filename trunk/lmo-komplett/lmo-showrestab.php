@@ -17,16 +17,19 @@
   *
   */
   
-  
+
 if (isset($file) && $file != "") {
   $tabtype=isset($_GET['tabtype'])?$_GET['tabtype']:0;
   $newtabtype=0;
-  $endtab = $st;
+  if(!empty($_GET['st'])) { $endtab = $st;}
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=$action&amp;file=".$file."&amp;st=";
   $breite = 10;
   if ($spez == 1) {
     $breite = $breite+2;
+  }
+  if (in_array(3,$msieg[$st-1])) {
+    $breite = $breite+4;
   }
   if ($datm == 1) {
     $breite = $breite+1;
@@ -84,11 +87,11 @@ if (isset($file) && $file != "") {
     $platz0[intval(substr($tab0[$x], 34))] = $x+1;
   }
   if ($tabdat == "") {
-    $addt1 = $_SERVER['PHP_SELF']."?action=$action&amp;file=".$file."&amp;tabtype=";
+    $addt1 = $_SERVER['PHP_SELF']."?action=$action&amp;file=".$file."&amp;endtab=".$endtab."&amp;st=".$st."&amp;tabtype=";
   } else {
-    $addt1 = $_SERVER['PHP_SELF']."?action=$action&amp;file=".$file."&amp;endtab=".$endtab."&amp;tabtype=";
+    $addt1 = $_SERVER['PHP_SELF']."?action=$action&amp;file=".$file."&amp;endtab=".$endtab."&amp;st=".$st."&amp;&amp;tabtype=";
   }
-  $addt2 = $_SERVER['PHP_SELF']."?action=$action&amp;file=".$file."&amp;tabtype=".$tabtype."&amp;endtab=";
+  $addt2 = $_SERVER['PHP_SELF']."?action=$action&amp;file=".$file."&amp;tabtype=".$tabtype."&amp;st=".$st."&amp;&amp;endtab=";
 
 ?>
 

@@ -17,20 +17,22 @@ if($tabonres==2){
 
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><?
-if($tabtype!="0"){?><a href="<?=$addt1."0"?>" title="<?=$text[27]?>"><?=$text[40]?></a><?}else{echo $text[40];}?>&nbsp;<?
-if($tabonres!=2){
-  if($tabtype!="1"){?><a href="<?=$addt1."1"?>" title="<?=$text[28]?>"><?=$text[41]?></a><?}else{echo $text[41];}?>&nbsp;<?
-  if($tabtype!="2"){?><a href="<?=$addt1."2"?>" title="<?=$text[29]?>"><?=$text[42]?></a><?}else{echo $text[42];}?>&nbsp;<?
-}
-if ($einhinrueck==1) {
-  if($tabtype!="4"){?><a href="<?=$addt1."4"?>" title="<?=$text[4003]?>"><?=$text[4003]?></a><?}else{echo $text[4003];}?>&nbsp;<?
-  if($tabtype!="3"){?><a href="<?=$addt1."3"?>" title="<?=$text[4002]?>"><?=$text[4002]?></a><?}else{echo $text[4002];}
+if ($einhinrueck==1 || $einheimausw==1) {
+  if($tabtype!=0){?><a href="<?=$addt1."0"?>" title="<?=$text[27]?>"><?=$text[40]?></a><?}else{echo $text[40];}?>&nbsp;<?
+  if($tabonres!=2 && $einheimausw==1){
+    if($tabtype!=1){?><a href="<?=$addt1."1"?>" title="<?=$text[28]?>"><?=$text[41]?></a><?}else{echo $text[41];}?>&nbsp;<?
+    if($tabtype!=2){?><a href="<?=$addt1."2"?>" title="<?=$text[29]?>"><?=$text[42]?></a><?}else{echo $text[42];}?>&nbsp;<?
+  }
+  if ($einhinrueck==1) {
+    if($tabtype!=4){?><a href="<?=$addt1."4"?>" title="<?=$text[4003]?>"><?=$text[4003]?></a><?}else{echo $text[4003];}?>&nbsp;<?
+    if($tabtype!=3){?><a href="<?=$addt1."3"?>" title="<?=$text[4002]?>"><?=$text[4002]?></a><?}else{echo $text[4002];}
+  }
 }?>
   </caption><?
 /*Inklusive Heim & Auswärts*/
 if($tabonres==2){?>
   <tr>
-    <th align="left" colspan="7"><?=$st.". ".$text[2];?>&nbsp;</th>
+    <th align="left" colspan="7"><?=$tabdat;?>&nbsp;</th>
     <th colspan="<?=$breite; ?>">&nbsp;</th>
     <th width="2">&nbsp;</th>
     <th align="left" colspan="<?=$breite; ?>"><?=$text[41]; ?></th>
@@ -39,7 +41,7 @@ if($tabonres==2){?>
   </tr><? 
 }?>
   <tr>
-    <th align="left" colspan="7"><?if($tabonres!=2){echo $st.". ".$text[2];}?>&nbsp;</th>
+    <th align="left" colspan="7"><?if($tabonres!=2){echo $tabdat;}?>&nbsp;</th>
     <th align="right"><?=$text[33]; ?></th>
     <th align="right"><?=$text[34]; ?></th><?  
 if($hidr!=1){?>
@@ -147,10 +149,10 @@ for($x = 1; $x <= $anzteams; $x++) {
       <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt=""><?
   }?>
     </td>
-    <td class="<?=$lmo_tabelle_class; ?> nobr" align="left"><? 
+    <td class="<?=$lmo_tabelle_class; ?>" align="left"><? 
   echo $dummy.$teams[$i].$dumm2;
   if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        <a href="<?=$teamu[$i]?>" target="_blank" title="<?=$text[46]?>">»</a><?
+        <a href="<?=$teamu[$i]?>" target="_blank" title="<?=$text[46]?>"><?=$text[564]?></a><?
   }?>
   
     </td>
@@ -290,18 +292,13 @@ for($x = 1; $x <= $anzteams; $x++) {
   </tr><?
 }/*for*/?>
   <tr>  
-    <td class="lmoFooter" align="center" width="100%" colspan="<?=$gesamtbreite?>">&nbsp;<?  
+    <td class="lmoFooter" align="center" colspan="<?=$gesamtbreite?>">&nbsp;<?  
 if ($einzutoretab == 1) {
-  $strs = ".l98";
-  $stre = ".l98.php";
-  $str = basename($file);
-  $file16 = str_replace($strs, $stre, $str);
-  $temp11 = basename($diroutput);
-  if (file_exists("$temp11/$file16")) {
-    require("$temp11/$file16");
-     
+  $zustat_file = str_replace(".l98", ".l98.php",  basename($file));
+  $zustat_dir = basename($diroutput);
+  if (file_exists(PATH_TO_LMO.'/'.$zustat_dir."/".$zustat_file)) {
+    require(PATH_TO_LMO.'/'.$zustat_dir."/".$zustat_file);
     echo $text[4000].$text[38].": ".applyFactor($gzutore,$goalfaktor)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[4001].": ".applyFactor($gdstore,$goalfaktor);
-     
   }
 }?>
     </td>

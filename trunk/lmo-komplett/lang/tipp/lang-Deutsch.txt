@@ -102,7 +102,7 @@
 101=keine Teambildung ermöglichen
 102=unbegrenzt
 103=Tippbare Ligen
-104=<b>immer alle</b> sich im Ligenverzeichnis befindlichen
+104=<strong>immer alle</strong> sich im Ligenverzeichnis befindlichen
 105=Wenn Du nicht "immer alle" gewählt hast, wähle bitte nachfolgende aus.<br>Nur die gewählten Ligen gehen dann auch in die Gesamwertung mit ein.
 106=Daten ändern
 107=Passwort ändern

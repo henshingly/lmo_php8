@@ -1,23 +1,23 @@
 <?
 /** Liga Manager Online 4
-  *
-  * http://lmo.sourceforge.net/
-  *
-  * This program is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU General Public License as
-  * published by the Free Software Foundation; either version 2 of
-  * the License, or (at your option) any later version.
-  * 
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-  * General Public License for more details.
-  *
-  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
-  *
-  */
-  
-  
+*
+* http://lmo.sourceforge.net/
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License as
+* published by the Free Software Foundation; either version 2 of
+* the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* General Public License for more details.
+*
+* REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+*
+*/
+ 
+ 
 if ($file != "") {
   if (!isset($tabtype)) {
     $tabtype = 0;
@@ -44,23 +44,23 @@ if ($file != "") {
   $ser2 = array_pad($array, $anzteams+1, "0");
   $ser3 = array_pad($array, $anzteams+1, "0");
   $ser4 = array_pad($array, $anzteams+1, "0");
-  
-  $tab0 = array("");
+   
+  $tab0 = array();
   $stt = 0;
   $hoy = 0;
   for ($a = 1; $a <= $anzteams; $a++) {
-    if ($tabtype == 3 || $newtabtype==3) {
+    if ($tabtype == 3 || $newtabtype == 3) {
       $hoy = ($anzst/2);
     }
-    if ($tabtype == 4 || $newtabtype==4) {
+    if ($tabtype == 4 || $newtabtype == 4) {
       $endtab = ($anzst/2);
     }
     for ($j = $hoy; $j < $endtab; $j++) {
       for ($i = 0; $i < $anzsp; $i++) {
-        if ($tabtype == 3 || $newtabtype==3) {
+        if ($tabtype == 3 || $newtabtype == 3) {
           $hoy = ($anzst/2);
         }
-        if ($tabtype == 4 || $newtabtype==4) {
+        if ($tabtype == 4 || $newtabtype == 4) {
           $endtab = ($anzst/2);
         }
         if (($goala[$j][$i] != "_") && ($goalb[$j][$i] != "_") && ((($tabtype == 0 or $tabtype == 3 or $tabtype == 4) && (($a == $teama[$j][$i]) || ($a == $teamb[$j][$i]))) || (($tabtype == 1) && ($a == $teama[$j][$i])) || (($tabtype == 2) && ($a == $teamb[$j][$i])))) {
@@ -82,7 +82,7 @@ if ($file != "") {
               $p0n = $ppn;
             }
           }
-          $spiele[$a] = $spiele[$a]+1;
+          $spiele[$a]++;
           if (($a == $teama[$j][$i]) || (($a == $teamb[$j][$i]) && ($msieg[$j][$i] == 3))) {
             $etore[$a] = $etore[$a]+$goala[$j][$i];
             $atore[$a] = $atore[$a]+$goalb[$j][$i];
@@ -100,12 +100,10 @@ if ($file != "") {
                 $maxs1[$a] = $goala[$j][$i];
                 $maxs2[$a] = $goalb[$j][$i];
                 $maxs0[$a] = $goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
-              }
-              else if ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] == $maxs1[$a])) {
+              } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] == $maxs1[$a])) {
                 $maxs0[$a] = $maxs0[$a]."<br>".$goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
               }
-            }
-            else if ($msieg[$j][$i] == 2) {
+            } elseif ($msieg[$j][$i] == 2) {
               $nieder[$a] = $nieder[$a]+1;
               $punkte[$a] = $punkte[$a]+$p0n;
               if ($minus == 2) {
@@ -119,12 +117,10 @@ if ($file != "") {
                 $maxn1[$a] = $goala[$j][$i];
                 $maxn2[$a] = $goalb[$j][$i];
                 $maxn0[$a] = $goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
-              }
-              else if ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] == $maxn1[$a])) {
+              } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] == $maxn1[$a])) {
                 $maxn0[$a] = $maxn0[$a]."<br>".$goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
               }
-            }
-            else if ($msieg[$j][$i] == 0) {
+            } elseif ($msieg[$j][$i] == 0) {
               if ($goala[$j][$i] > $goalb[$j][$i]) {
                 $siege[$a] = $siege[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0s;
@@ -139,12 +135,10 @@ if ($file != "") {
                   $maxs1[$a] = $goala[$j][$i];
                   $maxs2[$a] = $goalb[$j][$i];
                   $maxs0[$a] = $goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
-                }
-                else if ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] == $maxs1[$a])) {
+                } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] == $maxs1[$a])) {
                   $maxs0[$a] = $maxs0[$a]."<br>".$goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
                 }
-              }
-              else if ($goala[$j][$i] < $goalb[$j][$i]) {
+              } elseif ($goala[$j][$i] < $goalb[$j][$i]) {
                 $nieder[$a] = $nieder[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0n;
                 if ($minus == 2) {
@@ -158,12 +152,10 @@ if ($file != "") {
                   $maxn1[$a] = $goala[$j][$i];
                   $maxn2[$a] = $goalb[$j][$i];
                   $maxn0[$a] = $goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
-                }
-                else if ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] == $maxn1[$a])) {
+                } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] == $maxn1[$a])) {
                   $maxn0[$a] = $maxn0[$a]."<br>".$goala[$j][$i].":".$goalb[$j][$i]." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
                 }
-              }
-              else if ($goala[$j][$i] == $goalb[$j][$i]) {
+              } elseif ($goala[$j][$i] == $goalb[$j][$i]) {
                 $unent[$a] = $unent[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0u;
                 if ($minus == 2) {
@@ -193,12 +185,10 @@ if ($file != "") {
                 $maxs1[$a] = $goalb[$j][$i];
                 $maxs2[$a] = $goala[$j][$i];
                 $maxs0[$a] = $goalb[$j][$i].":".$goala[$j][$i]." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
-              }
-              else if ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] == $maxs1[$a])) {
+              } elseif ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] == $maxs1[$a])) {
                 $maxs0[$a] = $maxs0[$a]."<br>".$goalb[$j][$i].":".$goala[$j][$i]." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
               }
-            }
-            else if ($msieg[$j][$i] == 1) {
+            } elseif ($msieg[$j][$i] == 1) {
               $nieder[$a] = $nieder[$a]+1;
               $punkte[$a] = $punkte[$a]+$p0n;
               if ($minus == 2) {
@@ -211,13 +201,11 @@ if ($file != "") {
               if (($goalb[$j][$i]-$goala[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] < $maxn1[$a]))) {
                 $maxn1[$a] = $goalb[$j][$i];
                 $maxn2[$a] = $goala[$j][$i];
-                $maxn0[$a] = applyFactor($goalb[$j][$i],$goalfaktor).":".applyFactor($goala[$j][$i],$goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+                $maxn0[$a] = applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+              } elseif ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] == $maxn1[$a])) {
+                $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
               }
-              else if ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] == $maxn1[$a])) {
-                $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goalb[$j][$i],$goalfaktor).":".applyFactor($goala[$j][$i],$goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
-              }
-            }
-            else if ($msieg[$j][$i] == 0) {
+            } elseif ($msieg[$j][$i] == 0) {
               if ($goala[$j][$i] < $goalb[$j][$i]) {
                 $siege[$a] = $siege[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0s;
@@ -231,13 +219,11 @@ if ($file != "") {
                 if (($goalb[$j][$i]-$goala[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] > $maxs1[$a]))) {
                   $maxs1[$a] = $goalb[$j][$i];
                   $maxs2[$a] = $goala[$j][$i];
-                  $maxs0[$a] = applyFactor($goalb[$j][$i],$goalfaktor).":".applyFactor($goala[$j][$i],$goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+                  $maxs0[$a] = applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+                } elseif ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] == $maxs1[$a])) {
+                  $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
                 }
-                else if ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] == $maxs1[$a])) {
-                  $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($goalb[$j][$i],$goalfaktor).":".applyFactor($goala[$j][$i],$goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
-                }
-              }
-              else if ($goala[$j][$i] > $goalb[$j][$i]) {
+              } elseif ($goala[$j][$i] > $goalb[$j][$i]) {
                 $nieder[$a] = $nieder[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0n;
                 if ($minus == 2) {
@@ -250,13 +236,11 @@ if ($file != "") {
                 if (($goalb[$j][$i]-$goala[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] < $maxn1[$a]))) {
                   $maxn1[$a] = $goalb[$j][$i];
                   $maxn2[$a] = $goala[$j][$i];
-                  $maxn0[$a] = applyFactor($goalb[$j][$i],$goalfaktor).":".applyFactor($goala[$j][$i],$goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+                  $maxn0[$a] = applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+                } elseif ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] == $maxn1[$a])) {
+                  $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
                 }
-                else if ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] == $maxn1[$a])) {
-                  $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goalb[$j][$i],$goalfaktor).":".applyFactor($goala[$j][$i],$goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
-                }
-              }
-              else if ($goala[$j][$i] == $goalb[$j][$i]) {
+              } elseif ($goala[$j][$i] == $goalb[$j][$i]) {
                 $unent[$a] = $unent[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0u;
                 if ($minus == 2) {
@@ -291,7 +275,6 @@ if ($file != "") {
       array_push($tab0, (50000000+$punkte[$a]).(50000000-$negativ[$a]).(50000000+$etore[$a]).(50000000+$dtore[$a]).(50000000+$a));
     }
   }
-  array_shift($tab0);
   rsort($tab0, SORT_STRING);
   if ($direkt == 1) {
     $cba = 1;
@@ -334,8 +317,8 @@ if ($file != "") {
   if ($action == "admin") {
     $tab2 = $tab0;
   }
-  if ($hands == 1) {
-    if (!isset($tabdat) || $tabdat == "" || $action == "admin") {
+  if ($hands == 1 && $tabtype==0) {
+    if (empty($tabdat) || $action == "admin") {
       $handb = $stx-1;
     } else {
       $handb = $endtab-1;
@@ -349,9 +332,9 @@ if ($file != "") {
         $tab0[$ih] = $handd.substr($tab0[$ih], 2);
       }
       sort($tab0, SORT_STRING);
-      
+       
     }
   }
+  //print_r($tab0);
 }
-
 ?>

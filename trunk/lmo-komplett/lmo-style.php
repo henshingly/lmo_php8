@@ -314,7 +314,7 @@ font-size:100%;
   background: <?=$lmo_kreuzkal_background1?> repeat; 
 }
 
-.lmoBackMarkierung a { 
+.lmoKreuz .lmoBackMarkierung a { 
   display:block;
   height:100%;
   line-height:190%;

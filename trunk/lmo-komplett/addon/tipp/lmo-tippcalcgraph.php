@@ -18,7 +18,7 @@
   */
   
   
-$auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, strrpos($file,"/")+1, -4).".aus";
+$auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, 0, -4).".aus";
 if (!file_exists($auswertfile)) {
   echo $text['tipp'][17]."<br>";
 } else {
@@ -26,11 +26,10 @@ if (!file_exists($auswertfile)) {
   $anztipper=0;
   
   if ($datei!=false) {
-    $tippdaten=array("");
+    $tippdaten=array();
     $sekt="";
     while (!feof($datei)) {
       $zeile = fgets($datei,1000);
-      $zeile=chop($zeile);
       $zeile=trim($zeile);
       if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")) {
         $sekt=trim(substr($zeile,1,-1));
@@ -43,7 +42,6 @@ if (!file_exists($auswertfile)) {
     }
     fclose($datei);
   }
-  array_shift($tippdaten);
   
   $tippernick = array_pad($array,$anztipper+1,"");
   

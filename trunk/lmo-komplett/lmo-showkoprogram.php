@@ -65,7 +65,7 @@ if ($file != "") {
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td valign="top" align="center">
-      <table cellspacing="0" cellpadding="0" border="0"><?
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
   for($i = 1; $i <= floor($anzteams/2); $i++) {?>
         <tr>
           <td align="right">
@@ -123,13 +123,7 @@ if ($file != "") {
           if ($selteam == $teama[$j][$i]) {
             echo "<strong>";
           }
-          if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
-            echo "<a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\">";
-          }
           echo $teams[$teama[$j][$i]];
-          if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
-            echo "</a>";
-          }
           if ($selteam == $teama[$j][$i]) {
             echo "</strong>";
           }
@@ -137,6 +131,9 @@ if ($file != "") {
               $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$teama[$j][$i]].".gif");
   
                ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$teama[$j][$i]])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$teama[$j][$i]]?>"><?
+          }
+          if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
+            echo " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\">".$text[564]."</a>";
           }
           echo " </td>";?>
           <td class="lmost5" align="center" width="10">-</td><?
@@ -155,15 +152,12 @@ if ($file != "") {
           if ($selteam == $teamb[$j][$i]) {
             echo "<strong>";
           }
-          if (($teamu[$teamb[$j][$i]] != "") && ($urlt == 1)) {
-            echo "<a href=\"".$teamu[$teamb[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\">";
-          }
           echo $teams[$teamb[$j][$i]];
-          if (($teamu[$teamb[$j][$i]] != "") && ($urlt == 1)) {
-            echo "</a>";
-          }
           if ($selteam == $teamb[$j][$i]) {
             echo "</strong>";
+          }
+          if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
+            echo " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\">".$text[564]."</a>";
           }
           echo " </td>";
           for($n = 0; $n < $modus[$j]; $n++) {
@@ -181,7 +175,7 @@ if ($file != "") {
             } else {
               echo "<td width=\"8\">|</td>";
             }?>
-          <td class="nobr"><?=$dumn1; ?><?=applyFactor($goala[$j][$i][$n],$goalfaktor); ?>&nbsp;:&nbsp;<?=applyFactor($goalb[$j][$i][$n],$goalfaktor); ?>&nbsp;<?=$mspez[$j][$i][$n]; ?><?=$dumn2; ?><?
+          <td class="nobr"><?=$dumn1;?><?=applyFactor($goala[$j][$i][$n],$goalfaktor); ?>&nbsp;:&nbsp;<?=applyFactor($goalb[$j][$i][$n],$goalfaktor); ?><?=$mspez[$j][$i][$n]; ?><?=$dumn2; ?><?
            /** Mannschaftsicons finden
              */
             $lmo_teamaicon="";
@@ -201,7 +195,7 @@ if ($file != "") {
             if($urlb==1){
               if($mberi[$j][$i][$n]!=""){
                 $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong><br><br>";
-                echo "<a href='".$mberi[$j][$i][$n]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
+                echo " <a href='".$mberi[$j][$i][$n]."'  target='_blank'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a> ";
               }else{
                 echo "&nbsp;&nbsp;&nbsp;";
               }
@@ -231,7 +225,7 @@ if ($file != "") {
       </table>
     </td>
     <td valign="top" align="center">
-      <table cellspacing="0" cellpadding="0" border="0"><?
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
   for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {?>
         <tr>
           <td><?

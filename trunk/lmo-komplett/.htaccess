@@ -1,14 +1,32 @@
-<FilesMatch "\.(txt|aus|tip|ein|stat|cfg|l98|csv)$">
+# Kommentieren Sie im unteren Bereich aus, falls ihr Server diesen Befehl nicht unterstützt
+# ACHTUNG: IN DIESEM FALL MÜSSEN SIE AUF ANDEREM WEG SICHERSTELLEN, DASS NIEMAND VOM 
+# BROWSER AUS ZUGRIFF AUF DIE DATEIEN ERHÄLT!
+#
+# If you experience problems with following commands you have to comment them out
+# ATTENTION: IN THIS CASE YOU HAVE TO PROTECT THE FILES AGAINST ACCESS BY WEB BROWSERS!
+#
+#
+  <FilesMatch "\.(txt|aus|tip|ein|stat|cfg|l98|csv)$">
 	deny from all
-</FilesMatch>
-<Files gpl.txt>
+  </FilesMatch>
+  <Files gpl.txt>
 	allow from all
-</Files>
+  </Files>
 
-# Entfernen Sie im unteren Bereich die Kommenatrzeichen (#), falls Sie Probleme mit Sessions haben
+# Kommentieren Sie im unteren Bereich aus, falls ihr Server diesen Befehl nicht unterstützt
+#
+# If you experience problems with following commands you have to comment them out
+#
+  DirectoryIndex index.php
+
+
+# Entfernen Sie im unteren Bereich die Kommentarzeichen (#), falls Sie Probleme mit Sessions haben
 # ACHTUNG: NICHT ALLE SERVER ERLAUBEN DIESE BEFEHLE!
 #
-#<IfModule mod_php4.c>
-#	php_flag session.use_trans_sid 1
-#	php_value arg_separator.output &amp;
-#</IfModule>
+# If you got problems with lost sessions remove follwing comments
+# ATTENTION: THIS COMMANDS ARE NOT SUPPORTED BY ALL SERVERS!
+#
+#  <IfModule mod_php4.c>
+#	  php_flag session.use_trans_sid 1
+#	  php_value arg_separator.output &amp;
+#  </IfModule>

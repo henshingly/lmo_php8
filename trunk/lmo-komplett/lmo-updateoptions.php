@@ -17,9 +17,18 @@
   *
   */
   
-  
-$qs=getenv("QUERY_STRING");
+ 
+/*Zusatzoptionen ab beta3*/
+if (!isset($lmo_fieber_color1)) {
+  $cfgarray['lmo_fieber_color1']='#00f';
+  $lmo_fieber_color1='#00f';
+}
+if (!isset($lmo_fieber_color2)) {
+  $cfgarray['lmo_fieber_color2']='#f00';
+  $lmo_fieber_color2='#f00';
+}
+if (isset($cfgarray['einhinrueck'])) {
+  unset($cfgarray['einhinrueck']);
+}
+/*Zusatzoptionen ab beta3*/
 ?>
-<FRAMESET ROWS="*">	
-<FRAME SRC="lmo.php?<? echo $qs; ?>" Name="lmo" MARGINWIDTH=0 MARGINHEIGHT=0 NORESIZE FRAMEBORDER="No" BORDER=0>
-</FRAMESET>

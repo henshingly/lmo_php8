@@ -22,15 +22,19 @@ flush();
 $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
 if($file!=""){
   require_once(PATH_TO_LMO."/lmo-openfile.php");
-  if(!isset($endtab)){
+  if(empty($_GET['endtab'])){
     $endtab=$anzst;
     $ste=$st;
     $tabdat="";
   }else{
+    $endtab=$_GET['endtab'];
     $tabdat=$endtab.". ".$text[2];
     $ste=$endtab;
   }
-  if (!isset($_REQUEST['action']) || $_REQUEST['action']=="") {
+  if(!empty($_GET['st'])){
+    $tabdat=$st.". ".$text[2];
+  }
+  if (empty($_REQUEST['action'])) {
     if(!isset($onrun) || $onrun==0 || $tabelle==0){
       $action="results";
     }elseif ($tabelle!=0){
@@ -63,10 +67,11 @@ if (!defined("LMO_TEMPLATE")) define("LMO_TEMPLATE","lmo-standard.tpl.php");
 
 //Wenn ein Template der Form [liganame].tpl.php existiert, wird dieses benutzt. Das ermöglicht 
 // die Nutzung verschiedener Templates für unterschiedliche Ligen 
+$template = new HTML_Template_IT( PATH_TO_TEMPLATEDIR );
 if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){  
-  $template = new LBTemplate(basename($file).".tpl.php"); 
+  $template->loadTemplatefile(basename($file).".tpl.php"); 
 }else{
-  $template = new LBTemplate(LMO_TEMPLATE); 
+  $template->loadTemplatefile(LMO_TEMPLATE); 
 }
 
 //if ($action!="tipp") {
@@ -86,7 +91,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   
   //Sprachauswahl
   
-  if ($einsprachwahl==1 && $sprachauswahl==1){
+  if ($einsprachwahl==1){
     $handle=opendir (PATH_TO_LANGDIR);
     while (false!==($f=readdir($handle))) {
       if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
@@ -212,12 +217,15 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
       ob_start();?>
         <table width="100%" cellspacing="0" cellpadding="0" border="0">
           <tr><? 
-      /*if($lmtype==0 || $druck==1){include(PATH_TO_LMO."/lmo-savehtml.php");}*/?> 
+      if($lmtype==0 && $druck==1){
+        include(PATH_TO_LMO."/lmo-savehtml.php");
+        include(PATH_TO_LMO."/lmo-savehtml1.php");
+      }?> 
            <td align="center"><? 
-      if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' target='_blank' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
+      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-st.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
             </td>  
             <td align="center"><? 
-      if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' target='_blank' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
+      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-sp.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
             </td>
           </tr>
         </table><? 
@@ -227,7 +235,12 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   
   //Ligenübersicht
   if($backlink==1 && ($file!="" || $action=="tipp")){
-    $output_ligenuebersicht.="<a href='{$_SERVER['PHP_SELF']}' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
+    if (basename($file)==$file) {
+      $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF']."' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
+    } else {
+      $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF'].'?subdir='.dirname($file)."/' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
+    }
+    
   }
   
   //Berechnungszeit
@@ -263,33 +276,31 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   d($template->toString());
   //Tippspiel-Addon
   
+ 
   //Template ausgeben
-  $template->replace("Ligenuebersicht", $output_ligenuebersicht);  
-  $template->replace("Berechnungszeit", $output_berechnungszeit);  
-  $template->replace("LetzteAuswertung", $output_letzteauswertung);  
-  $template->replace("Savehtml", $output_savehtml); 
-  $template->replace("Hauptteil", $output_hauptteil);  
-  $template->replace("Tabelle", $output_tabelle); 
-  $template->replace("Kreuztabelle", $output_kreuztabelle); 
-  $template->replace("Fieberkurve", $output_fieberkurve); 
-  $template->replace("Spielerstatistik", $output_spielerstatistik); 
-  $template->replace("Ligastatistik", $output_ligastatistik); 
-  $template->replace("Kalender", $output_kalender); 
-  $template->replace("Ergebnisse", $output_ergebnisse); 
-  $template->replace("Spielplan", $output_spielplan); 
-  $template->replace("Info", $output_info); 
-  $template->replace("Infolink", $p1); 
-  $template->replace("Sprachauswahl", $output_sprachauswahl); 
-  $template->replace("Titel", $output_titel); 
-  $template->replace("Stylesheet", $output_stylesheet); 
+  $template->setVariable("Ligenuebersicht", $output_ligenuebersicht);  
+  $template->setVariable("Berechnungszeit", $output_berechnungszeit);  
+  $template->setVariable("LetzteAuswertung", $output_letzteauswertung);  
+  $template->setVariable("Savehtml", $output_savehtml); 
+  $template->setVariable("Hauptteil", $output_hauptteil);  
+  $template->setVariable("Tabelle", $output_tabelle); 
+  $template->setVariable("Kreuztabelle", $output_kreuztabelle); 
+  $template->setVariable("Fieberkurve", $output_fieberkurve); 
+  $template->setVariable("Spielerstatistik", $output_spielerstatistik); 
+  $template->setVariable("Ligastatistik", $output_ligastatistik); 
+  $template->setVariable("Kalender", $output_kalender); 
+  $template->setVariable("Ergebnisse", $output_ergebnisse); 
+  $template->setVariable("Spielplan", $output_spielplan); 
+  $template->setVariable("Info", $output_info); 
+  $template->setVariable("Infolink", $p1); 
+  $template->setVariable("Sprachauswahl", $output_sprachauswahl); 
+  $template->setVariable("Titel", $output_titel); 
+  $template->setVariable("Stylesheet", $output_stylesheet); 
   //Ticker-Addon
-  $template->replace("Newsticker", $output_newsticker);  
+  $template->setVariable("Newsticker", $output_newsticker);  
   //Ticker-Addon
   //Tippspiel-Addon
-  $template->replace("Tippspiel", $output_tippspiel);  
-  //Tippspiel-Addon
+  $template->setVariable("Tippspiel", $output_tippspiel);  
   $template->show();
-
-    
   //}else {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");d($template->toString());}
 ?>

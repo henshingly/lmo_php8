@@ -23,7 +23,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
   require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcpkt.php");
   require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
    
-  $verz = opendir(substr($dirliga, 0, -1));
+  $verz = opendir(substr(PATH_TO_LMO.'/'.$dirliga, 0, -1));
   $dateien = array();
   while ($files = readdir($verz)) {
     if (file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$lmotippername.".tip")) {

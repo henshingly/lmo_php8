@@ -19,28 +19,34 @@
   
   
 if (($file!="") && ($subteams!="")) {
+  if (!isset($tabtype)) {
+    $tabtype = 0;
+  }
+  if (!isset($newtabtype)) {
+    $newtabtype = 0;
+  }
   $subteam = explode('.',$subteams);
-  $spiele1 = array_pad($array,$anzteams+1,"");
-  $siege1 = array_pad($array,$anzteams+1,"");
-  $unent1 = array_pad($array,$anzteams+1,"");
-  $nieder1 = array_pad($array,$anzteams+1,"");
-  $punkte1 = array_pad($array,$anzteams+1,"");
-  $negativ1 = array_pad($array,$anzteams+1,"");
-  $etore1 = array_pad($array,$anzteams+1,"");
-  $atore1 = array_pad($array,$anzteams+1,"");
-  $dtore1 = array_pad($array,$anzteams+1,"");
+  $spiele1 = array_pad($array,$anzteams+1,"0");
+  $siege1 = array_pad($array,$anzteams+1,"0");
+  $unent1 = array_pad($array,$anzteams+1,"0");
+  $nieder1 = array_pad($array,$anzteams+1,"0");
+  $punkte1 = array_pad($array,$anzteams+1,"0");
+  $negativ1 = array_pad($array,$anzteams+1,"0");
+  $etore1 = array_pad($array,$anzteams+1,"0");
+  $atore1 = array_pad($array,$anzteams+1,"0");
+  $dtore1 = array_pad($array,$anzteams+1,"0");
   $mcalc = array_pad($array,116,"");
   $hoy=0;
   for ($i=0; $i<116; $i++) {
     $mcalc[$i] = array_pad($array,40,"0");
   }
-  $tab1 = array("");
+  $tab1 = array();
   for ($a=1; $a<=$anzteams; $a++) {
-    if ($tabtype==3) {
-      $hoy=($anzst/2);
+    if ($tabtype == 3 || $newtabtype == 3) {
+      $hoy = ($anzst/2);
     }
-    if ($tabtype==4) {
-      $endtab=($anzst/2);
+    if ($tabtype == 4 || $newtabtype == 4) {
+      $endtab = ($anzst/2);
     }
     for ($j=$hoy; $j<$endtab; $j++) {
       for ($i=0; $i<$anzsp; $i++) {
@@ -70,7 +76,7 @@ if (($file!="") && ($subteams!="")) {
               $p0n=$ppn;
             }
           }
-          $spiele1[$a]=$spiele1[$a]+1;
+          $spiele1[$a]++;
           if (($a==$teama[$j][$i]) || (($a==$teamb[$j][$i]) && ($msieg[$j][$i]==3))) {
             $etore1[$a]=$etore1[$a]+$goala[$j][$i];
             $atore1[$a]=$atore1[$a]+$goalb[$j][$i];
@@ -159,7 +165,6 @@ if (($file!="") && ($subteams!="")) {
       }
     }
   }
-  array_shift($tab1);
   sort($tab1,SORT_STRING);
 }
 ?>

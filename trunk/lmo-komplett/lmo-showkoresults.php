@@ -207,7 +207,7 @@ if ($file != "") {
         if($urlb==1){
           if($mberi[$st-1][$i][$n]!=""){
             $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
-            echo "<a href='".$mberi[$st-1][$i][$n]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
+            echo " <a href='".$mberi[$st-1][$i][$n]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
           }else{
             echo "&nbsp;&nbsp;&nbsp;";
           }
@@ -222,7 +222,7 @@ if ($file != "") {
           
           $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i][$n];
           
-          echo "<a href='#' onclick=\"alert('".mysql_escape_string(htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+          echo " <a href='#' onclick=\"alert('".mysql_escape_string(htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
           $lmo_spielnotiz="";
         } else {
           echo "&nbsp;";
@@ -230,7 +230,7 @@ if ($file != "") {
           </td>
         </tr><? 
       }
-      if(($modus[$st-1]>1) && ($i<$anzsp-1)){ ?>
+      if(($modus[$st-1]>1) && ($i<=$anzsp-1)){ ?>
         <tr>
           <td class="nobr" colspan="<?=$breite; ?>">&nbsp;</td>
         </tr><? 
@@ -245,14 +245,14 @@ if ($file != "") {
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr><?  
-  $st0 = $st-1;
-  if ($st > 1) {?>
-          <td align='left'><a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a></td><?
-  }
-  $st0 = $st+1;
-  if ($st < $anzst) {?>
-          <td align="right" ><a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[7]?></a></td><?
-  }?>
+   $st0 = $st-1;
+   if ($st > 1) {?>
+          <td align="left">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?> <?=$text[6]?></a>&nbsp;</td><?
+   }
+   $st0 = $st+1;
+   if ($st < $anzst) {?>
+          <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[8]?> <?=$text[7]?></a>&nbsp;</td><?
+   }?>
         </tr>
       </table>
     </td>

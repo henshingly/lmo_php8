@@ -24,7 +24,7 @@
         isset($_POST["xrtor"])  &&
           is_numeric($_POST["xrtor"]) &&
           intval($_POST["xrtor"])>0 ?                         $tipp_rtor=$_POST["xrtor"]:                             $tipp_rtor=0;
-        isset($_POST["xrtendenztor"])?                        $tipp_rtendenztor==$_POST["xrtendenztor"]:              $tipp_rtendenztor=0;
+        isset($_POST["xrtendenztor"])?                        $tipp_rtendenztor=$_POST["xrtendenztor"]:               $tipp_rtendenztor=0;
         isset($_POST["xrtendenzremis"])?                      $tipp_rtendenzremis=$_POST["xrtendenzremis"]:           $tipp_rtendenzremis=0;
       }
       

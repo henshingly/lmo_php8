@@ -23,7 +23,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 //Datei auslesen
-$filename=array_pop(explode("/",$file));
+$filename=basename($file);
 $configfile=PATH_TO_ADDONDIR."/spieler/stats/".substr($filename,0,strlen($filename)-4).".cfg";
 $filename=PATH_TO_ADDONDIR."/spieler/stats/".substr($filename,0,strlen($filename)-4).".stat";
 $spieler_ligalink=$text['spieler'][18];

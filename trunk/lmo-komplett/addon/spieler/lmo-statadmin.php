@@ -17,7 +17,6 @@
   *
   */
   
-  
 
 require_once(dirname(__FILE__).'/../../init.php');
 
@@ -296,6 +295,9 @@ if (isset($file) && $file!="") {
         fclose($filepointer);
 				break;
 		}
+    $addr = $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
+    $addb = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
+    include(PATH_TO_LMO."/lmo-adminsubnavi.php");
 	?>
 
 <script type="text/javascript">
@@ -334,7 +336,8 @@ function mark(el){
 							<acronym title="<?=$text['spieler'][9]?>"><input type="text" name="wert"></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" + ">
 							<input type="hidden" name="option" value="addplayer">
 							<input type="hidden" name="sort" value="<?=$spieler_sort?>">
-							<input type="hidden" name="todo" value="statistik">
+							<input type="hidden" name="todo" value="edit">
+              <input type="hidden" name="st" value="<?=$st; ?>">
 							<input type="hidden" name="file" value="<?=$file?>">
 						</form>
 					</td>
@@ -347,7 +350,8 @@ function mark(el){
 							</select></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" - ">
 							<input type="hidden" name="option" value="delplayer">
 							<input type="hidden" name="sort" value="<?=$spieler_sort?>">
-							<input type="hidden" name="todo" value="statistik">
+							<input type="hidden" name="todo" value="edit">
+              <input type="hidden" name="st" value="<?=$st; ?>">
 							<input type="hidden" name="file" value="<?=$file?>">
 						</form>
 					</td>
@@ -367,7 +371,8 @@ function mark(el){
               <input type="radio" name="type" value="F">&nbsp;<?=$text['spieler'][54]?>
               <input type="hidden" name="option" value="addcolumn">
 							<input type="hidden" name="sort" value="<?=$spieler_sort?>">
-							<input type="hidden" name="todo" value="statistik">
+							<input type="hidden" name="todo" value="edit">
+              <input type="hidden" name="st" value="<?=$st; ?>">
 							<input type="hidden" name="file" value="<?=$file?>">
 						</form>
 					</td>
@@ -379,7 +384,8 @@ function mark(el){
 								}?>
 							</select></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" - ">
 							<input type="hidden" name="option" value="delcolumn">
-							<input type="hidden" name="todo" value="statistik">
+							<input type="hidden" name="todo" value="edit">
+              <input type="hidden" name="st" value="<?=$st; ?>">
 							<input type="hidden" name="sort" value="<?=$spieler_sort?>">
 							<input type="hidden" name="file" value="<?=$file?>">
 						</form>
@@ -427,7 +433,8 @@ function mark(el){
 						<tr>
 							<td align="right" colspan="<?=$spaltenzahl*2?>">
 								<input type="hidden" name="option" value="statupdate">
-								<input type="hidden" name="todo" value="statistik">
+								<input type="hidden" name="todo" value="edit">
+                <input type="hidden" name="st" value="<?=$st; ?>">
 								<input type="hidden" name="sort" value="<?=$spieler_sort?>">
 								<input type="hidden" name="file" value="<?=$file?>">
 								<input class="lmo-formular-button" type="submit" value="Statistik updaten">
@@ -488,7 +495,8 @@ function mark(el){
 		<td>
 			<form action="<?= $_SERVER['PHP_SELF']?>" method="post" name="form1">
 				<input type="hidden" name="option" value="saveconfig">
-				<input type="hidden" name="todo" value="statistik">
+				<input type="hidden" name="todo" value="edit">
+        <input type="hidden" name="st" value="<?=$st; ?>">
 				<input type="hidden" name="file" value="<?=$file?>">
 				<table class="lmoInner">
 					<tr>
@@ -529,14 +537,18 @@ function mark(el){
   						}?>
   						</select>
 						</td>
-						<td align="left" class="nobr"><?=$text['spieler'][31]?>: </td>
-						<td align="left"><?if($_SESSION['lmouserok']==2){?><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" onChange="mark(this)" value="<?=$spieler_adminbereich_hilfsadmin_zulassen?>" <?if ($spieler_adminbereich_hilfsadmin_zulassen==1) echo "checked";?> onClick="if (this.checked==true) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=false; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=true;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=false;}"><?}?></td>
+						<?if($_SESSION['lmouserok']==2){?>
+            <td align="left" class="nobr"><?=$text['spieler'][31]?>: </td>
+						<td align="left"><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" onChange="mark(this)" value="<?=$spieler_adminbereich_hilfsadmin_zulassen?>" <?if ($spieler_adminbereich_hilfsadmin_zulassen==1) echo "checked";?> onClick="if (this.checked==true) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=false; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=true;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=false;}"></td>
+            <?}?>
 					</tr>
           <tr>
             <td align="left" class="nobr" rowspan="2"><?=$text['spieler'][13]?>: </td>
             <td align="left" class="nobr" colspan="2"><input type="radio" name="standard_richtung" onClick="mark(this)" value="1"<?if ($spieler_standard_richtung==1) echo " checked";?>> <?=$text['spieler'][48]?></td>
+            <?if($_SESSION['lmouserok']==2){?>
             <td align="left" class="nobr"><?=$text['spieler'][46]?>: </td>
-						<td align="left"><?if($_SESSION['lmouserok']==2){?><input <?if ($spieler_adminbereich_hilfsadmin_fuer_spalten!=1) echo "disabled"?> type="checkbox" onChange="mark(this)" name="adminbereich_hilfsadmin_fuer_spalten" value="<?=$spieler_adminbereich_hilfsadmin_fuer_spalten?>" <?if ($spieler_adminbereich_hilfsadmin_fuer_spalten==1) echo "checked";?>><?}?></td>
+						<td align="left"><input <?if ($spieler_adminbereich_hilfsadmin_fuer_spalten!=1) echo "disabled"?> type="checkbox" onChange="mark(this)" name="adminbereich_hilfsadmin_fuer_spalten" value="<?=$spieler_adminbereich_hilfsadmin_fuer_spalten?>" <?if ($spieler_adminbereich_hilfsadmin_fuer_spalten==1) echo "checked";?>></td>
+            <?}?>
           </tr>
           <tr>
             <td align="left" colspan="2" class="nobr"><input type="radio" name="standard_richtung" onClick="mark(this)" value="0"<?if ($spieler_standard_richtung==0) echo " checked";?>> <?=$text['spieler'][47]?></td>

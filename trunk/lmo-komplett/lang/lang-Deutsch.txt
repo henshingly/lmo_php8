@@ -13,7 +13,7 @@
 012=Spielpläne
 013=Anzeige des Spielplans einer bestimmten Mannschaft
 014=Kreuztabelle
-015=Anzeige aler Ergebnisse auf einen Blick
+015=Anzeige aller Ergebnisse auf einen Blick
 016=Tabelle
 017=Anzeige der Tabellen und Bilanzen
 018=Ligastatistik
@@ -52,7 +52,7 @@
 051=Dummy
 052=Herzlich Willkommen!
 053=Bitte wählen Sie eine Liga aus
-054=<acronym title="Liga Manager Online">LMO</acronym> 4.0&beta;2
+054=<acronym title="Liga Manager Online">LMO</acronym> 4.0&beta;3
 055=© 1997-2004 LMO-Group
 056=[ <a href="http://www.hollwitz.de/" target="_blank" title="Dieses und weitere Scripte können Sie auf meiner PHP-Seite downloaden">Hollwitz.Net(z)</a> | <a href="http://lmo.sourceforge.net/" target="_blank" title="Die neueste Version bei Sourceforge">LMO-Projekt</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
 057=Die Statistik 1 von
@@ -475,9 +475,9 @@
 474=Sieg(e)
 475=Niederlage(n)
 476=Rückrundentabelle
-477=Aktuellen Spieltag drucken
+477=Zeigt eine Druckansicht des aktuellen Spieltags an
 478=Aktuellen Spieltag drucken
-479=Ligaspielplan drucken
+479=Zeigt eine Druckansicht des kompletten Spielplan an
 480=Ligaspielplan drucken
 481=Hier kommen die Pfade der zusätzlichen Addons rein, mehrere Addons durch ',' trennen. (mit '/' am Ende, z.B. 'wap/', kann ein absoluter oder relativer Systempfad sein, dieses Verzeichnis muß volle Schreibrechte besitzen)
 482=Addonverzeichnisse
@@ -562,6 +562,11 @@
 561=Achtung! Diese Einstellungen können eine <br>bestehende Liga unbrauchbar machen. <br>Bitte benutzen Sie diese Optionen nur, <br>wenn Sie wirklich sicher sind.<br>
 562=zurück
 563=Links unterstreichen
+564=&#8599;
+565=Heim-/Auswärtstabellen
+566=Sollen zusätzliche Heim- und Auswärtstabellen angezeigt werden?
+567=Fehler beim Erstellen
+568=Saisonende
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde

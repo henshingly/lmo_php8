@@ -104,6 +104,8 @@ if ($newpage == 3) {
     $anzuc = "3";
     $anzar = "0";
     $anzab = "3";
+    $einhinrueck = "1";
+    $einheimausw = "1";
   } else {
     $klfin = "0";
     $playdown = "0";

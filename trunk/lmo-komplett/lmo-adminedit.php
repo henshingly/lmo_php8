@@ -20,6 +20,7 @@
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($file != "") {
+  $tabdat="_";
   $ftest0 = 1;
   $liga = substr($file, 0, -4);
    
@@ -250,12 +251,20 @@ if ($file != "") {
     }
     
     /*Spieltagsdatum (falls nicht angegeben) aus Spieldaten extrahieren*/
-    
-    function filterZero($a) {
-      return (!empty($a));
+
+    function array_values_recursive($ary) {
+      $lst = array();
+      foreach( array_keys($ary) as $k ){
+        $v = $ary[$k];
+        if (is_scalar($v)) {
+           $lst[] = $v;
+        } elseif (is_array($v)) {
+           $lst = array_merge( $lst, array_values_recursive($v));
+        }
+      }
+      return $lst;
     }
-    
-    $lmo_spieltermine=array_filter($mterm[$st-1],"filterZero");
+    $lmo_spieltermine=array_filter(array_values_recursive($mterm[$st-1]),"filterZero");
     if (!empty($lmo_spieltermine)) {
       if (empty($datum1[$st-1])) {
         $datum1[$st-1] = strftime("%d.%m.%Y", min($lmo_spieltermine));

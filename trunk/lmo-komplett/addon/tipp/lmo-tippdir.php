@@ -118,11 +118,11 @@ if ($ftype!="") {
         $i++;
         if ($tipp_sttipp!=-1) {
           $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dummy[$k],0,-4)."_".str_replace(" ","_",$lmotippername).".tip";
-          echo "<li><a href='".$addi.$dummy[$k]."'>".$t0;
+          echo "<li><a href='".$addi.$dummy[$k]."'>".$t0."</a>";
           if (file_exists($tippfile)) {
             echo "<br><small>".$text['tipp'][138]." ".strftime($defdateformat,filemtime($tippfile)).$t3."</small>";
           }
-          echo "</a></li>";
+          echo "</li>";
         }
         $tt1.=$dummy[$k]."|";
         $tt0.=$t0."|";

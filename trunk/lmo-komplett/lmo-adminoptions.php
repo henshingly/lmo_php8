@@ -1,27 +1,23 @@
 <?
-// 
-// LigaManager Online 3.02b
-// Copyright (C) 1997-2002 by Frank Hollwitz
-// webmaster@hollwitz.de / http://php.hollwitz.de
-// 
-// LigaManager Online
-// Edited by: Rene Marth
-// 29.08.2003
-// 
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of
-// the License, or (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-//
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  * 
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+  
+  
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 isset($_POST['save'])?$save=$_POST['save']:$save=0;
@@ -43,7 +39,7 @@ if($save==1){
       $datum_tmp = explode(':',$deftime);
       $deftime=strftime("%H:%M", mktime($datum_tmp[0],$datum_tmp[1]));
       
-      if (isset($_POST["xdefdateselect"]) && $_POST["xdefdateselect"]==1) {
+      if (!empty($_POST["xdefdateselect"])) {
         $defdateformat=isset($_POST["xdefdateformat"])?$_POST["xdefdateformat"]:$defdateformat;
       } else {
         $defdateformat=isset($_POST["xdefdateformat2"])?$_POST["xdefdateformat2"]:$defdateformat;
@@ -55,8 +51,8 @@ if($save==1){
       
       break;
     case 1:
-      $tabpkt=trim($_POST["xtabpkt"]);
-      $tabonres=trim($_POST["xtabonres"]);
+      $tabpkt=isset($_POST["xtabpkt"])?trim($_POST["xtabpkt"]):$tabpkt;
+      $tabonres=isset($_POST["xtabonres"])?trim($_POST["xtabonres"]):$tabonres;
       break;
     case 2:
       $backlink=isset($_POST["xbacklink"])?1:0;
@@ -69,7 +65,7 @@ if($save==1){
       $einspielfrei=isset($_POST["xeinspielfrei"])?1:0;
       $einzutore=isset($_POST["xeinzutore"])?1:0;
       $einzutoretab=isset($_POST["xeinzutoretab"])?1:0;
-      $einhinrueck=isset($_POST["xeinhinrueck"])?1:0;
+      ///$einhinrueck=isset($_POST["xeinhinrueck"])?1:0;
       $einzustats=isset($_POST["xeinzustats"])?1:0;
       break;
   }
@@ -218,28 +214,28 @@ if ($show==0) {?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?=$text[473]?>"><?=$text[472];?></acronym></td>
             <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xcalctime" onChange="dolmoedit()"<?if($calctime==1){echo " checked";}?>></td>
-            <td class="nobr">&nbsp;</td>
+            <td>&nbsp;</td>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xeinsavehtml" onChange="dolmoedit()"<?if($einsavehtml==1){echo " checked";}?>></td>
             <td class="nobr"><acronym title="<?=$text[484]?>"><?=$text[483];?></acronym></td>
           </tr>
           <tr>
-            <td class="nobr" align="right"><acronym title="<?=$text[494]?>"><?=$text[493];?></acronym></td>
-            <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xeinhinrueck" onChange="dolmoedit()"<?if($einhinrueck==1){echo " checked";}?>></td>
-            <td class="nobr">&nbsp;</td>
+            <?/*<td class="nobr" align="right"><acronym title="<?=$text[494]?>"><?=$text[493];?></acronym></td>
+            <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xeinhinrueck" onChange="dolmoedit()"<?if($einhinrueck==1){echo " checked";}?>></td>*/?>
+            <td class="nobr" align="right"><acronym title="<?=$text[486]?>"><?=$text[485];?></acronym></td>
+            <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xeinspieler" onChange="dolmoedit()"<?if($einspieler==1){echo " checked";}?>></td>
+            <td>&nbsp;</td>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xeinzustats" onChange="dolmoedit()"<?if($einzustats==1){echo " checked";}?>></td>
             <td class="nobr"><acronym title="<?=$text[496]?>"><?=$text[495];?></acronym></td>
           </tr>
           <tr>
-            <td class="nobr" align="right"><acronym title="<?=$text[486]?>"><?=$text[485];?></acronym></td>
-            <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xeinspieler" onChange="dolmoedit()"<?if($einspieler==1){echo " checked";}?>></td>
-            <td class="nobr">&nbsp;</td>
+            <td class="nobr" align="right"><acronym title="<?=$text[535]?>"><?=$text[534];?></acronym></td>
+            <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xeinspielfrei" onChange="dolmoedit()"<?if($einspielfrei==1){echo " checked";}?>></td>
+            <td>&nbsp;</td>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xeintippspiel" onChange="dolmoedit()"<?if($eintippspiel==1){echo " checked";}?>></td>
             <td class="nobr"><acronym title="<?=$text[488]?>"><?=$text[487];?></acronym></td>
           </tr>
           <tr>
-            <td class="nobr" align="right"><acronym title="<?=$text[535]?>"><?=$text[534];?></acronym></td>
-            <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xeinspielfrei" onChange="dolmoedit()"<?if($einspielfrei==1){echo " checked";}?>></td>
-            <td class="nobr">&nbsp;</td>
+            <td colspan="3">&nbsp;</td>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xeinsprachwahl" onChange="dolmoedit()"<?if($einsprachwahl==1){echo " checked";}?>></td>
             <td class="nobr"><acronym title="<? echo $text[520] ?>"><? echo $text[519]; ?></acronym></td>
           </tr>
