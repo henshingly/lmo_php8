@@ -105,6 +105,9 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
         if ($lang[1]!=$lmouserlang) {
           $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
           $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?".htmlentities($_SERVER['QUERY_STRING'])."&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'></a> ";
+        } else {
+          $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".selected.gif";
+          $output_sprachauswahl.="<img title='{$lang[1]}' src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'> ";
         }
       } 
     }
