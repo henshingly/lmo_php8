@@ -185,7 +185,7 @@ if ($_SESSION["lmouserok"] == 2) {
     for($x = 0; $x < $anztipper-1; $x++) {?>
         <tr>
           <td align="right"><?=$tab0[$x]['id']; ?></td>
-          <td align="left"><a href="mailto:<?=$tab0[$x]['email']; ?>"><?=$tab0[$x]['nick']; ?></a></td>
+          <td align="left"><?if ($tab0[$x]['email']!=""){?><a href="mailto:<?=$tab0[$x]['email']; ?>"><?=$tab0[$x]['nick']; ?></a><?}else{echo $tab0[$x]['nick'];}?></td>
           <td align="left"><?=$tab0[$x]['name']; ?></td>
           <td align="left"><?=$tab0[$x]['team']; ?></td>
           <td align="left"><? if($tab0[$x]['ltipp']>0){echo date("d.m.Y H:i",$tab0[$x]['ltipp']);} ?></td>    

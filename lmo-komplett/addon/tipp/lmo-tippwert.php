@@ -575,23 +575,23 @@ if($tipp_anzseiten>1){ ?>
       </table>
     </td>
   </tr><? 
-} // ende if($tipp_anzseiten>1)
+} // ende if($tipp_anzseiten>1) ?>
+</table><?
 if($tabdat!=""){ ?>
   <tr>
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr><?
   $st0 = $endtab-1;
-  if ($endtab > 1) {
-    echo "<td align='left'><a href=\"".$addr.$st0."\" title=\"".$text[43]."\">".$text[5]."</a></td>";
+  if ($endtab > 1) {?>
+          <td align="left"><a href="<?=$addr.$st0?>" title="<?=$text[43]?>"><?=$text[5]?> <?=$text[6]?></a></td><?
   }
   $st0 = $endtab+1;
-  if ($endtab < $anzst) {
-    echo "<td align=\"right\"><a href=\"".$addr.$st0."\" title=\"".$text[44]."\">".$text[7]."</a></td>";
+  if ($endtab < $anzst) {?>
+          <td align="right"><a href="<?=$addr.$st0?>" title="<?=$text[44]?>"><?=$text[8]?> <?=$text[7]?></a></td><?
   }?>
         </tr>
       </table>
     </td>
   </tr><? 
 }?>
-</table>

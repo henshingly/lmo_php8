@@ -24,7 +24,7 @@
         $k=$text[9];
       }
       echo "<td align='center'>";
-      if ($i<>$st) {
+      if ($i!=$st || empty($tabdat)) {
         if (isset($todo) && $todo=="tabs") {
          echo "<a href='".$addb.$i."' title='".$k."'>".$j."</a>";
        } else {

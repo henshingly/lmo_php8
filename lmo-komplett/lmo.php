@@ -4,4 +4,4 @@ if (basename($_SERVER['PHP_SELF'])==basename(__FILE__)) {
 } else { //includet
   define("LMO_TEMPLATE","lmo-standard.tpl.php");
 }
-require("lmo-start.php");?>
+require(dirname(__FILE__)."/lmo-start.php");?>

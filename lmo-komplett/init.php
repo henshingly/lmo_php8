@@ -26,7 +26,7 @@ if (!defined('URL_TO_LANGDIR'))     define('URL_TO_LANGDIR',      URL_TO_LMO.'/l
 if (!defined('URL_TO_CONFIGDIR'))   define('URL_TO_CONFIGDIR',    URL_TO_LMO.'/config');
 if (!defined('URL_TO_JSDIR'))       define('URL_TO_JSDIR',        URL_TO_LMO.'/js');
 
-require_once(PATH_TO_LMO."/lbtemplate.class.php");
+require_once(PATH_TO_LMO."/IT.php"); 
 require_once(PATH_TO_LMO."/lmo-cfgload.php");
 if(isset($_REQUEST["lmouserlang"])){$_SESSION["lmouserlang"]=$_REQUEST["lmouserlang"];}
 if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
@@ -52,7 +52,7 @@ if (!function_exists('check_hilfsadmin')) {
 }
 if (!function_exists('applyFactor')) {
   function applyFactor ($value, $factor) {
-    if (is_numeric($value)) {
+    if (is_numeric($value) && $value!=0) {
       return ($value/$factor);
     }
     return $value;
@@ -91,8 +91,11 @@ if (!function_exists('get_dir')) {
     return $ret;
   }
 }
-
-
+if (!function_exists('filterZero')) {
+  function filterZero($a) {
+    return (!empty($a));
+  }
+}
 //Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);
 magicQuotesRemove($_POST);

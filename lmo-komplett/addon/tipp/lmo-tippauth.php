@@ -177,14 +177,14 @@ if ($action == "tipp") {
                   $dummy[$u]=substr($dummy[$u],0,-4);
                   $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
                   if ($tipp_nurgesamt==0) {?>
-              <li class="lmoadminli"><a href="<? echo $addw.$dummy[$u].".l98"; ?>"><? echo $ftest2[$u];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}echo "</a>"; ?></li><?
+              <li class="lmoadminli"><a href="<? echo $addw.$dummy[$u].".l98"; ?>"><?=$ftest2[$u];?></a><?if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?
                   }
                 }
               }
             }
             if($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
               $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";?>
-              <li class="lmoadminli"><a href="<? echo $addw."&amp;all=1" ?>"><strong><? echo $text['tipp'][25];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?> </strong></a></li><?
+              <li class="lmoadminli"><a href="<? echo $addw."&amp;all=1" ?>"><strong><? echo $text['tipp'][25];?></strong></a><?if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?
             }
             $auswertfile="";?>
             </ul>

@@ -132,9 +132,13 @@
         border : 0;
       }
         code {
+        display:block;
         background-color : #eee;
         padding : 0.3em;
         font-size : 95%;
+        margin-left:3em;
+        margin-right:3em;
+        border:1px solid #666;
       }
     </style>
     <!--[if IE]>
@@ -197,6 +201,13 @@
           <li><a href="#ticker02">Einbindung</a></li>
         </ol>
       </li>
+      <li><h2><a href="#minitabs">Minitabellen</a></h2>
+        <ol>
+          <li><a href="#minitabs01">Steuerparameter</a></li>
+          <li><a href="#minitabs02">Einbindung</a></li>
+          <li><a href="#minitabs03">Templates</a></li>
+        </ol>
+      </li>
       <li><h2><a href="#viewer">Viewer</a></h2></li>
       <li><h2><a href="#spieler">Spielerstatistik</a></h2>
         <ol>
@@ -218,7 +229,7 @@
         </ol>
       </li>-->
     </ol>
-    <h2><a name="ueber"></a>1. Über diese Version</h2>
+    <h2><a name="ueber"></a>Über diese Version</h2>
     <p>
       Der ursprüngliche Autor Frank Hollwitz entwickelt sein Skript LMO im Moment 
       nicht weiter. Da der LMO unter der <acronym title="General Public Licence">GPL</acronym> 
@@ -249,8 +260,8 @@
       Zusätzlich wurden einige der offensichtlichsten Bugs entfernt und viele Addons stark geändert 
       bzw. erweitert. 
     </p>
-    <h2><a name="einstieg"></a>2. Einstiegsinformationen</h2>
-    <h3><a name="einstieg01"></a>2.1. Einleitung</h3>
+    <h2><a name="einstieg"></a>Einstiegsinformationen</h2>
+    <h3><a name="einstieg01"></a>1. Einleitung</h3>
     <p>
       Herzlich Willkommen zum <em>neuen</em> Liga Manager Online. Mit diesem Skript
       können Sie Ihren Besuchern einen Ergebnisdienst über Ihre
@@ -282,14 +293,14 @@
       ändern, damit kein Unbefugter mehr Zugriff hat.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="einstieg02"></a>2.2. Systemvoraussetzungen</h3>
+    <h3><a name="einstieg02"></a>2. Systemvoraussetzungen</h3>
     <ul>
       <li>Unix- oder Windows-Server</li>
       <li><em>PHP 4.1</em> (oder höher)
       <li>empfohlen: JavaScript- und CSS-fähiger Browser</li>
     </ul>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="einstieg03"></a>2.3. Installation</h3>
+    <h3><a name="einstieg03"></a>3. Installation</h3>
     <ol>
       <li>
         Das <strong>ZIP-Archiv</strong> wurde bereits von Ihnen entpackt. Achten Sie
@@ -334,7 +345,7 @@
       </li>
     </ol>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="einstieg04"></a>2.4. Login/Logout</h3>
+    <h3><a name="einstieg04"></a>4. Login/Logout</h3>
     <p>
       Wenn Sie den Adminbereich betreten, sehen Sie zuerst eine
       Eingabemaske, mit der Sie sich beim System anmelden müssen. Nach
@@ -350,7 +361,7 @@
       wegen auch immer am Ende einer Sitzung tun.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="einstieg05"></a>2.5. Rechtliches</h3>
+    <h3><a name="einstieg05"></a>5. Rechtliches</h3>
     <p>
       Dieses Skript wird unter den Bestimmungen der 
       <a href="http://www.gnu.org/licenses/gpl.txt">GPL</a>
@@ -370,8 +381,8 @@
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
     
-    <h2><a name="optionen"></a>3. Globale Optionen</h2>
-    <h3><a name="optionen01"></a>3.1. Globale Optionen</h3>
+    <h2><a name="optionen"></a>Globale Optionen</h2>
+    <h3><a name="optionen01"></a>1. Globale Optionen</h3>
     <p>
       Mit einem Klick auf den Menübefehl <strong>Optionen</strong> gelangen Sie
       in den Optionsbereich. Hier werden die globalen Skriptoptionen
@@ -400,7 +411,7 @@
       </dd>
     </dl>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p> 
-    <h3><a name="optionen02"></a>3.2. Die Addonverwaltung</h3>
+    <h3><a name="optionen02"></a>2. Die Addonverwaltung</h3>
     <p>Dieser Teil der Optionen dient zum Steuern der Addons, welche den 
       LMO um zusätzliche Funktionen erweitern.
     </p>
@@ -415,7 +426,7 @@
       unsinnige Angaben können den LMO im schlimmsten Fall unbrauchbar machen!
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p> 
-    <h3><a name="optionen03"></a>3.3. Der Designeditor</h3>
+    <h3><a name="optionen03"></a>3. Der Designeditor</h3>
     <p>
       Der Designeditor liefert Ihnen die wichtigsten
       Einstellungsmöglichkeiten für die Farben und Schriften, die das
@@ -429,7 +440,7 @@
       gemachten CSS-Styles werden automatisch vom LMO übernommen.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="optionen04"></a>3.4 Die Userverwaltung</h3>
+    <h3><a name="optionen04"></a>4 Die Userverwaltung</h3>
     <p>
       Die Userverwaltung wird ja vergleichsweise selten gebraucht und
       ist daher nicht direkt erreichbar. Wählen Sie den Menüpunkt <strong>
@@ -483,7 +494,7 @@
       <li>Er hat keinen Zugriff auf globale Optionen des LMO</li>
     </ul>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="optionen05"></a>3.5. Das Ligenarchiv</h3>
+    <h3><a name="optionen05"></a>5. Das Ligenarchiv</h3>
     <p>
       Falls Sie abgelaufene Ligen weiterhin anbieten möchten, ohne dass die 
       Ligenauswahl zu lang wird, können Sie diese Ligen auch im integrierten 
@@ -505,8 +516,8 @@
       Besucher nun die darin befindlichen Ligen ganz normal auswählen.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h2><a name="liga"></a>4. Bearbeiten einer Liga</h2>
-    <h3><a name="liga01"></a>4.1. Erstellen einer Liga</h3>
+    <h2><a name="liga"></a>Bearbeiten einer Liga</h2>
+    <h3><a name="liga01"></a>1. Erstellen einer Liga</h3>
     <p>
       Klicken Sie im Menü auf <strong>Neu</strong>, um eine neue Liga zu
       erstellen. Der Erstellungsprozeß umfaßt 4 Schritte:
@@ -561,7 +572,7 @@
       Eintrag zugeordnet werden muß.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="liga02"></a>4.2. Öffnen einer Liga</h3>
+    <h3><a name="liga02"></a>2. Öffnen einer Liga</h3>
     <p>
       Wenn Sie sich in den Adminbereich <a href="#einstieg04">eingeloggt</a>
       haben, erhalten Sie einen Übersicht, in der auch alle verfügbaren
@@ -572,7 +583,7 @@
       auswählen, die für sie freigegeben wurden.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="liga03"></a>4.3. Der Ergebniseditor</h3>
+    <h3><a name="liga03"></a>3. Der Ergebniseditor</h3>
     <p>
       Nach dem <a href="#liga02">Öffnen der Liga</a> gelangen Sie gleich
       automatisch in den Ergebniseditor und der aktuelle Spieltag wird
@@ -691,7 +702,7 @@
       ja ihre Auswirkung auf diese Tabellen.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="liga04"></a>4.4. Grundeinstellungen</h3>
+    <h3><a name="liga04"></a>4. Grundeinstellungen</h3>
     <p>
       Hier legen Sie die Einstellungen der Liga
       fest. Bei KO-Turnieren werden natürlich nur Einstellungen
@@ -798,7 +809,7 @@
       </dd>
     </dl>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="liga05"></a>4.5. Manuelle Tabellensortierung</h3>
+    <h3><a name="liga05"></a>5. Manuelle Tabellensortierung</h3>
     <p>
       Haben Sie die <a href="#liga04">Einstellung</a> <strong>Handsortierung
       der Tabelle ermöglichen</strong> aktiviert, steht Ihnen am unteren
@@ -828,7 +839,7 @@
       Änderungen gemäß dargestellt wird.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="liga06"></a>4.6. Der Mannschaftseditor</h3>
+    <h3><a name="liga06"></a>6. Der Mannschaftseditor</h3>
     <p>
       Hier können Sie die <strong>Mannschaftsnamen</strong> eingeben und
       ändern, das <strong>Kürzel</strong> darf aus max. 5 Zeichen bestehen.
@@ -856,8 +867,8 @@
       Funktionen nicht zur Verfügung.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h2><a name="datei"></a>5. Dateifunktionen</h2>
-    <h3><a name="datei01"></a>5.1. Löschen einer Liga</h3>
+    <h2><a name="datei"></a>Dateifunktionen</h2>
+    <h3><a name="datei01"></a>1. Löschen einer Liga</h3>
     <p>
       Ist eine Liga veraltet oder wollen Sie sie durch eine <a href=
       "#datei02">Sicherheitskopie ersetzen</a>, wählen Sie im Menü den
@@ -868,7 +879,7 @@
       Seien Sie also vorsichtig mit der Löschfunktion!
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="datei02"></a>5.2. Upload einer Liga</h3>
+    <h3><a name="datei02"></a>2. Upload einer Liga</h3>
     <p>
       Wählen Sie den Menü-Befehl <strong>Upload</strong>, um eine Liga von Ihrer
       lokalen Festplatte auf Ihren Server direkt in Ihr
@@ -885,7 +896,7 @@
       liga.l98</strong> wird dann <strong>liga_1.l98</strong>.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="datei03"></a>5.3. Download/Mailen einer Liga</h3>
+    <h3><a name="datei03"></a>3. Download/Mailen einer Liga</h3>
     <p>
       Möchten Sie eine Sicherheitskopie einer Liga anlegen, eine Liga
       offline weiterbearbeiten oder sie an einen Bekanten schicken,
@@ -909,12 +920,12 @@
       eingegeben haben, wird als Absender der E-Mail angegeben.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h2><a name="tippspiel"></a>6. Tippspiel</h2>
+    <h2><a name="tippspiel"></a>Tippspiel</h2>
     <p>
       Im LMO 4 ist ein umfangreiches umd sehr flexibles Tippspiel integriert. Es basiert 
       auf dem Tippspieladdon für den LMO 3 von Frank Albrecht.
     </p>
-    <h3><a name="tippspiel01"></a>6.1. Auswertung</h3>
+    <h3><a name="tippspiel01"></a>1. Auswertung</h3>
     <p>Hier werden die tippbaren Ligen ausgewertet, das heißt jedem Tipper werden seine 
       erreichten Punkten gutgeschrieben. Es kann jede Liga und jeder Spieltag einzeln 
       gewertet werden, es ist aber auch möglich alle Spieltage einer bestimmten Liga 
@@ -927,7 +938,7 @@
       den <a href="#tippspiel04">Optionen</a> auch erst, nachdem der Spieltag abgelaufen ist.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="tippspiel02"></a>6.2. Newsletter/Reminder</h3>
+    <h3><a name="tippspiel02"></a>2. Newsletter/Reminder</h3>
     <p>Hier haben Sie die Möglichkeit, Ihren Tippern verschiedene Nachrichten zukommen zu 
       lassen, einen <strong>Newsletter an alle Tipper</strong>, <strong>persönliche 
       Mails</strong> an Mitspieler und einen <strong>Tippreminder</strong>, der die Tipper
@@ -948,7 +959,7 @@
       </dd>
     </dl>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="tippspiel03"></a>6.3. Userverwaltung</h3> 
+    <h3><a name="tippspiel03"></a>3. Userverwaltung</h3> 
     <p>Hier verwalten Sie die Teilnehmer des Tippspiels, sie können selbst <strong>neue Tipper
       anlegen</strong>, <strong>Tipper editieren</strong> und <strong>Tipper löschen</strong>.
       Für jeden Tipper sind alle wichtigen Details änderbar:
@@ -965,7 +976,7 @@
       <dd>Welche Ligen kann der Tipper tippen?</dd>
     </dl>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="tippspiel04"></a>6.4. Optionen</h3> 
+    <h3><a name="tippspiel04"></a>4. Optionen</h3> 
     <p>Die ist der umfangreichste und wichtigste Punkt des Tippspiels. Sie sollten die Optionen 
       vor dem Start des Tippspiels einmal komplett einstellen und während des Tippspieles nicht 
       mehr wesentlich verändern.
@@ -1058,7 +1069,7 @@
       </dd>
     </dl>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h2><a name="ticker"></a>7. Newsticker</h2>
+    <h2><a name="ticker"></a>Newsticker</h2>
     <p>In den LMO ist ein flexibler Newsticker integriert, der über Ergebnisse und 
       Notizen in einem Platz sparenden Laufband informiert. Im 
       <a href="#liga03">Ergebniseditor</a> lässt sich der Ticker für jede Liga separat 
@@ -1067,7 +1078,7 @@
       ihrer Homepage zu setzen und er lässt sich zusätzlich konfigurieren, 
       so dass zum Beispiel auch mehrere Ligen in einem Ticker angezeigt werden können.
     </p>
-    <h3><a name="ticker01"></a>7.1 Steuerparameter</h3>
+    <h3><a name="ticker01"></a>1. Steuerparameter</h3>
     <p>Mit den folgenden Parametern steuern Sie den Newsticker. In der 
       <a href="#optionen02">Addonverwaltung</a> lassen sich die Standardwerte des 
       Tickers ändern. Diese werden zum Einen für die Ticker über den Ligen verwendet und 
@@ -1095,7 +1106,7 @@
       <dd>Geschwindigkeit des Ticker</dd>
     </dl>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="ticker02"></a>7.2 Einbindung</h3>
+    <h3><a name="ticker02"></a>2. Einbindung</h3>
     <p>Es gibt prinzipiell zwei Arten, mit der Sie den Newsticker in seine Seiten einbinden können.
       Die erstere Methode ist dabei zu bevorzugen, die zweite Variante ist eigentlich nur für 
       Server gedacht, die keine PHP-Unterstützung bieten (der LMO läuft dann auf einem externen 
@@ -1131,9 +1142,118 @@
       von IFrames. Der erste Steuerparameter wird mit <var>?</var> abgetrennt, die restlichen mit <var>&amp;amp;</var>.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h2><a name="viewer"></a>8. Viewer</h2>
+    <h2><a name="minitabs"></a>Minitabellen</h2>
+    <p>Der LMO bietet auch die Möglichkeit, Tabellen oder Ausschnitte von Tabellen auf externe Seiten zu verlagern.
+      Damit können Sie zum Beispiel auf ihrer Startseite eine platzsparende Version der aktuellen Tabelle 
+      veröffentlichen. Sie können in diese Tabellen verschiedene, für Sie relevante Details einbinden, mittels 
+      einfacher <a href="#minitabs03">Templates</a> können Sie auch das Aussehen beliebig anpassen.
+    </p>
+    <h3><a name="minitabs01"></a>1. Steuerparameter</h3>
+    <p>Ähnlich wie beim Ticker gibt es auch bei den Minitabellen verschiedene Steuerparameter, mit dem sich 
+      das Verhalten der Tabellen ändern lässt.
+    </p>
+    <dl>
+      <dt><var>mini_liga</var></dt>
+      <dd>Der Dateiname der Liga, deren Tabelle dargestellt werden soll (mit Endung .l98)</dd>
+      <dt><var>mini_platz</var></dt>
+      <dd>Um welchen Platz herum soll der Tabellenausschnitt angeordnet werden? Geben Sie hier 
+        nichts an, wenn Sie ihre Lieblingsmannschaft als Zentrum möchten.</dd>
+      <dt><var>mini_ueber</var></dt>
+      <dd>Wieviele Mannschaften über der ausgewählten Mannschaft sollen dargestellt werden?</dd>
+      <dt><var>mini_unter</var></dt>
+      <dd>Wieviele Mannschaften unter der ausgewählten Mannschaft sollen dargestellt werden?</dd>
+      <dt><var>mini_template</var></dt>
+      <dd>Geben Sie hier den Namen des gewünschten Minitabellen-Templates an (ohne Dateiendung). 
+        Bei keiner Angabe wird das Template <var>standard</var> benutzt.</dd>
+    </dl>
+    <p class="up">[<a href="#ueber">Inhalt</a>]</p>
+    <h3><a name="minitabs02"></a>2. Einbindung</h3>
+    <p>Es gibt prinzipiell zwei Arten, mit der Sie die Minitabellen in seine Seiten einbinden können.
+      Die erstere Methode ist dabei zu bevorzugen, die zweite Variante ist eigentlich nur für 
+      Server gedacht, die keine PHP-Unterstützung bieten (der LMO läuft dann auf einem externen 
+      Server) oder wenn Sie eine Datei mit der Endung .html benutzen. (Diese werden üblicherweise 
+      nicht von PHP geparst)
+    </p>
+    <h4>Einbinden per include</h4>
+    <p>Hierbei werden die Parameter direkt als PHP-Variablen festgelegt. Sie notieren also 
+      <em>innerhalb eines PHP-Blocks</em> (ggfls. mit &lt;?php öffnen) die benötigten Parameter
+      hintereinander wie im folgenden Beispiel:
+    </p>
+    <p><code>$mini_liga="liga1.l98";<br>
+    $mini_ueber=3; //3 Mannschaften über dem Lieblingsteam<br>
+    $mini_unter=2; //2 Mannschaften unter dem Lieblingsteam<br>
+    $mini_template="all"; //Benutze das Template "all.tpl.php"</code></p>
+    <p>Beachten Sie das <var>$</var> vor dem Parameter, die Anführungszeichen um einige 
+      Werte und das schließende Semikolon. Sie brauchen nicht immer alle Parameter angeben, 
+      lediglich der Name der Liga ist notwendig. Danach binden Sie den Ticker über die folgende 
+      Anweisung ein:
+    </p>
+    <p><code>include("<strong>PfadZumLMO</strong>/addon/mini/lmo-minitab.php");</code></p>
+    <p><strong>PfadZumLMO</strong> bezeichnet dabei den absoluten oder relativen Pfad zum LMO-Verzeichnis.</p>
+    <h4>Einbinden per IFrame</h4>
+    <p>Diese Art der Einbindung sollte nur verwendet werden, wenn obige Variante aus irgendwelchen 
+      Gründen nicht funktioniert. IFrames können nicht von allen Browsern dargestellt werden und 
+      auch aus Ergonomiegründen spricht einiges gegen ihre Verwendung. Die Parameter werden in diesem 
+      Falle nicht vorher definiert, sie sind vielmehr Teil der aufzurufenden Source-URL des eingebetteten 
+      Frames. Aus folgendem Beispiel erschließt sich die Verwendung, es hat die gleichen Parameter wie das 
+      include-Beispiel.
+    </p>
+    <p><code>&lt;iframe src="<strong>URLZumLMO</strong>/addon/mini/lmo-minitab.php?mini_liga=liga1.l98&amp;amp;mini_ueber=3&amp;amp;mini_unter=2&amp;amp;mini_template=all"
+      frameborder="0" marginwidth="0" marginheight="0" width="<strong>Breite</strong>" 
+      height="<strong>Höhe</strong>" scrolling="no"&gt;&lt;/iframe&gt;</code>
+    </p>
+    <p><strong>URLZumLMO</strong> bezeichnet dabei die WWW-Adresse des LMO, mit <strong>Breite</strong> 
+      und/oder <strong>Höhe</strong> müssen Sie (leider) experimentieren, eine der vielen Nachteile 
+      von IFrames. Der erste Steuerparameter wird mit <var>?</var> abgetrennt, die restlichen mit <var>&amp;amp;</var>.
+    </p>
+    <p class="up">[<a href="#ueber">Inhalt</a>]</p>
+    <h3><a name="minitabs02"></a>3. Templates</h3>
+    <p>Ähnlich wie beim LMO können Sie auch die Minitabellen in Struktur und Design beliebig ändern.
+      Die benötigten Templates finden Sie im Unterverzeichnis <strong>mini</strong> des 
+      Templateverzeichnis <strong>template</strong>. Das Template <strong>standard.tpl.php</strong>
+      wird benutzt, wenn kein entsprechender Steuerparameter übergeben wurde. Sie können beliebig viele 
+      unterschiedliche Templates (mit der Dateiendung .tpl.php) anlegen und per Steuerparameter 
+      aufrufen. Folgende Angaben sind möglich und werden automatisch ersetzt:
+    </p>
+    <dl>
+      <dt>&lt;!--Link--&gt;</dt>
+      <dd>Der Link zur kompletten Tabelle des LMO</dd>
+      <dt>&lt;!-- BEGIN Inhalt --&gt;</dt>
+      <dd>Der Beginn des Abschnittes, welcher so oft dargestellt wird, wie Mannschaften ausgegeben werden. 
+        <strong>Beachten Sie die Leerzeichen vor BEGIN und nach Inhalt!</strong></dd>
+      <dt>&lt;!-- END Inhalt --&gt;</dt>
+      <dd>Der Ende des Abschnittes, welcher so oft dargestellt wird, wie Mannschaften ausgegeben werden. 
+        <strong>Beachten Sie die Leerzeichen vor END und nach Inhalt!</strong></dd>
+      <dt>&lt;!--Style--&gt;</dt>
+      <dd>Hiermit aktivieren Sie die Hervorhebung der Platzierungen, es werden je nach Ligaeinstellung also 
+        Meister, Absteiger etc. markiert</dd>
+      <dt>&lt;!--Team--&gt;</dt>
+      <dd>Die Kurzbezeichnung der Mannschaft</dd>
+      <dt>&lt;!--TeamLang--&gt;</dt>
+      <dd>Die vollständige Bezeichnung der Mannschaft</dd>
+      <dt>&lt;!--Spiele--&gt;</dt>
+      <dd>Anzahl der Spiele</dd>
+      <dt>&lt;!--Punkte--&gt;</dt>
+      <dd>Punkte, bei aktivierten Negativpunkten in der Form <strong>+P:-P</strong></dd>
+      <dt>&lt;!--PlusTore--&gt;</dt>
+      <dd>Geschossene Tore</dd>
+      <dt>&lt;!--MinusTore--&gt;</dt>
+      <dd>Gegentore</dd>
+      <dt>&lt;!--Tordifferenz--&gt;</dt>
+      <dd>Tordifferenz</dd>
+      <dt>&lt;!--Siege--&gt;</dt>
+      <dd>Anzahl der Siege</dd>
+      <dt>&lt;!--Unentschieden--&gt;</dt>
+      <dd>Anzahl der Unentschieden</dd>
+      <dt>&lt;!--Niederlagen--&gt;</dt>
+      <dd>Anzahl der Niederlagen</dd>
+    </dl>
+    <p>Passen Sie den HTML-Code beliebig an, achten Sie aber auf korrektes HTML/CSS um Darstellungsprobleme zu vermeiden. 
+      Im Template <strong>all.tpl.php</strong> sind alle möglichen Angaben zu Anschauungszwecken angegeben.
+    <p class="up">[<a href="#ueber">Inhalt</a>]</p>
+    <h2><a name="viewer"></a>Viewer</h2>
     <p>Der Viewer ist z. Zt. noch nicht fertiggestellt</p>
-    <h2><a name="spieler"></a>9. Spielerstatistik</h2>
+    <h2><a name="spieler"></a>Spielerstatistik</h2>
     <p>
       Dieses Addon stattet den Liga-Manager-Online mit der Möglichkeit aus, die Statistiken einzelner 
       Spieler einzugeben und zu verwalten. Die flexible Konfiguration macht den Einsatz in vielen 
@@ -1176,19 +1296,21 @@
       </dd>
     </dl>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="spieler01"></a>9.1 Konfiguration</h3>
+    <h3><a name="spieler01"></a>1. Konfiguration</h3>
     <h4>User</h4>
     <dl>
       <dt>Anzeige pro Seite User</dt>
       <dd>Die Anzahl der angezeigten Ergebnisse, 0 bedeutet ohne Begrenzung</dd>
       <dt>Vorsortierung User</dt>
       <dd>Spalte, nach der als erstes sortiert wird</dd>
-      <dt>Spielerbildbreite</dt>
-      <dd>Breite der Spielerbilder</dd>
-      <dt>keine Namensortierung</dt>
-      <dd>unterbindet das Sortieren nach Namen</dd>
+      <dt>Sortierung</dt>
+      <dd>In welcher Reihenfolge soll die Vorsortierung erfolgen?</dd>
+      <dt>Extra Sortierspalte</dt>
+      <dd>Zeigt eine Sortierspalte an, ansonsten geschieht die Sortierung über die Tabellenköpfe</dd>
+      <dt>Vereinsweise anzeigen</dt>
+      <dd>ermöglicht die Aufteilung nach Vereinen</dd>
       <dt>Nullwerte einblenden</dt>
-      <dd>blendet auch 0 ein, Zeichenketten werden immer eingeblendet</dd>
+      <dd>Blendet auch Nullwerte ein, Zeichenketten werden immer eingeblendet</dd>
     </dl>
     <h4>Admin</h4>
     <dl>
@@ -1200,10 +1322,10 @@
       <dd>erlaubt den Hilfsadmins den Zugriff auf die Spaltenerstellung</dd>
     </dl>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h2><a name="wap"></a>10. WAP</h2>
+    <h2><a name="wap"></a>WAP</h2>
     <p></p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h2><a name="anpassung"></a>11. Anpassung des LMO</h2>
+    <h2><a name="anpassung"></a>Anpassung des LMO</h2>
     <p>
       Um den Liga Manager Online optimal in ihre Homepage zu integrieren, steht Ihnen, neben
       dem <a href="#optionen03">Designeditor</a> und nutzerdefinierten Zusatzstylesheets 
@@ -1212,7 +1334,7 @@
       der Anordnung der LMO-Elemente. Sie haben sogar die Möglichkeit, verschiedene Templates 
       für ein und den selben LMO zu benutzen.
     </p>
-    <h3><a name="anpassung02"></a>11.1 Eigene CSS-Definitionen</h3>
+    <h3><a name="anpassung01"></a>1. Eigene CSS-Definitionen</h3>
     <p>
       Wenn Ihnen die Einstellungen des <a href="#optionen03">Designeditors</a> nicht ausreichen 
       sollten oder Sie zusätzliche Stylesheetdefinitionen für ihr Template benötigen, können 
@@ -1223,7 +1345,7 @@
       <a href="http://jigsaw.w3.org/css-validator/">http://jigsaw.w3.org/css-validator/</a>
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="anpassung02"></a>11.2 Templates</h3>
+    <h3><a name="anpassung02"></a>2. Templates</h3>
     <p>
       Ein Template ist im wesentlichen nur eine einfache HTML-Datei, im Falle des LMO wird diese 
       Datei durch bestimmte HTML-Kommentare <kbd>&lt;-- ... --&gt;</kbd> ergänzt. Diese Kommentare 
@@ -1291,7 +1413,7 @@
       <strong>Einbindung über include</strong> nötig ist.
     </p>
     <p class="up">[<a href="#ueber">Inhalt</a>]</p>
-    <h3><a name="anpassung03"></a>11.3 Einbinden des LMO</h3>
+    <h3><a name="anpassung03"></a>3. Einbinden des LMO</h3>
     <p>
       Es gibt zwei grundsätzliche Arten, auf den LMO zuzugreifen. Sie können ihn aus anderen 
       Teilen der Homepage mittels include einbinden oder Sie rufen ihn direkt auf.

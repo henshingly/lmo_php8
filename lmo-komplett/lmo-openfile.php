@@ -51,7 +51,6 @@ if(!empty($file) && check_hilfsadmin($file)){
               case "urlT":         $urlt=$wert;break;
               case "urlB":         $urlb=$wert;break;
               case "Plan":         $plan=$wert;break;
-              case "Sprachauswahl":$sprachauswahl=$wert;break;
               case "Ergebnis":     $ergebnis=$wert;break;
               case "mittore":      $mittore=$wert;break;
               case "favTeam":      $favteam=$wert;break;
@@ -92,6 +91,8 @@ if(!empty($file) && check_hilfsadmin($file)){
                 case "AB":                $anzab=$wert;break;
                 case "namePkt":           $namepkt=$wert;break;
                 case "nameTor":           $nametor=$wert;break;
+                case "tableHinRueck":     $einhinrueck=$wert;break;
+                case "tableHeimAusw":     $einheimausw=$wert;break;
                 case "kurve1":            if(!isset($stat1))$stat1=$wert;break;
                 case "kurve2":            if(!isset($stat2))$stat2=$wert;break;
               }
@@ -150,8 +151,8 @@ if(!empty($file) && check_hilfsadmin($file)){
         if(!isset($ppn)){                      $ppn=0;}
         if(!isset($champ)){                    $champ=1;}
         if(!isset($anzcl)){                    $anzcl=1;}
-        if(!isset($anzck)){                    $anzck=0;}
-        if(!isset($anzuc)){                    $anzuc=3;}
+        if(!isset($anzck)){                    $anzck=2;}
+        if(!isset($anzuc)){                    $anzuc=2;}
         if(!isset($anzar)){                    $anzar=0;}
         if(!isset($anzab)){                    $anzab=3;}
         if(!isset($namepkt)){                  $namepkt="";}
@@ -160,10 +161,12 @@ if(!empty($file) && check_hilfsadmin($file)){
         else{                                  $namepkt=$text[37];}
         if($nametor!=""){                      $text[38]=$nametor;}
         else{                                  $nametor=$text[38];}
+        if(!isset($einhinrueck)){              $einhinrueck=1;}
+        if(!isset($einheimausw)){              $einheimausw=1;}
       }else{
         if(!isset($anzteams)){                 $anzteams=16;}
         if(!isset($klfin)){                    $klfin=0;}
-        if(!isset($playdown) || $playdown==""){                 $playdown=0;}
+        if(empty($playdown)){                  $playdown=0;}
         $anzsp=floor($anzteams/2);
         $anzst=strlen(decbin($anzteams-1));
         $spez=1;

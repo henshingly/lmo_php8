@@ -57,19 +57,19 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       // alle Tipper
       $tabdat="";
       $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
-      $dummy=array("");
-      $liga=substr($file, strrpos($file,"/")+1, -4);
+      $dummy=array();
+      $liga=substr($file, 0, -4);
       while ($files=readdir($verz)) {
         if (strtolower(substr($files,0,strrpos($files,"_")))==strtolower($liga) && strtolower(substr($files,-4))==".tip") {
           array_push($dummy,$files);
         }
       }
       closedir($verz);
-      array_shift($dummy);
       $anztipper=count($dummy);
       for ($m=0; $m<$anztipper; $m++) {
-        $nick=substr($dummy[$m],0,-4);
-        $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file,0,-4)."_".$nick.".tip";
+        $nick=substr(substr($dummy[$m],strrpos($dummy[$m],"_")+1),0,-4);
+        echo $nick;
+        $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$liga."_".$nick.".tip";
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileall.php");
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
       }
@@ -193,7 +193,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     if ($tabdat!="") {
       echo "<td class=\"".$lmo_tabelle_class."\"";
       if ($tabtype==0) {
-        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
+        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\" alt=''>";
       } else {
         echo " width=\"2\">&nbsp;";
       }
@@ -201,20 +201,20 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     } else {
       echo "<td class=\"".$lmo_tabelle_class."\">&nbsp;</td>";
     }?>
-      <td class="<?=$lmo_tabelle_class?>" align="center"><?
+          <td class="<?=$lmo_tabelle_class?>" align="center"><?
     if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
       $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");?>
-        <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="">&nbsp;<?
+            <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="">&nbsp;<?
     }?>
-      </td>
-      <td class="<?=$lmo_tabelle_class; ?> nobr" align="left"> <?
+          </td>
+          <td class="<?=$lmo_tabelle_class; ?> nobr" align="left"> <?
     echo $dummy.$teams[$i].$dumm2;
     if (($teamu[$i]!="") && ($urlt==1)) {
-      echo " <a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\">&#8599;</a> ";
+      echo " <a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\">".$text[564]."</a> ";
     }?>
-      </td>
-      <td class="<?=$lmo_tabelle_class; ?>">&nbsp;</td>
-      <td class="<?=$lmo_tabelle_class; ?>" align="center"><? 
+          </td>
+          <td class="<?=$lmo_tabelle_class; ?>">&nbsp;</td>
+          <td class="<?=$lmo_tabelle_class; ?>" align="center"><? 
     
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
       if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
@@ -260,14 +260,14 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     } else {
       echo "&nbsp;";
     }?>
-      </td>
-      <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$spiele[$i].$dumm2; ?> &nbsp;</td>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$siege[$i].$dumm2; ?> &nbsp;</td><? 
+          </td>
+          <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$spiele[$i].$dumm2; ?> &nbsp;</td>
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$siege[$i].$dumm2; ?> &nbsp;</td><? 
     if($hidr!=1){ ?>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$unent[$i].$dumm2; ?> &nbsp;</td><? 
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$unent[$i].$dumm2; ?> &nbsp;</td><? 
     }?>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$nieder[$i].$dumm2; ?> &nbsp;</td><?
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$nieder[$i].$dumm2; ?> &nbsp;</td><?
     if ($tabpkt==0) {
       echo "<td class=\"".$lmo_tabelle_class."\" width=\"2\">&nbsp;</td><td class=\"".$lmo_tabelle_class."\" align=\"right\">".applyFactor($punkte[$i],$pointsfaktor)."</td>";
       if ($minus==2) {
@@ -276,11 +276,11 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       }
     }
     if ($tipp_tippmodus==1) {?>
-      <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($etore[$i],$goalfaktor).$dumm2; ?></td>
-      <td class="<?=$lmo_tabelle_class; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
-      <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.applyFactor($atore[$i],$goalfaktor).$dumm2; ?></td>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td><?
+          <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($etore[$i],$goalfaktor).$dumm2; ?></td>
+          <td class="<?=$lmo_tabelle_class; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
+          <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.applyFactor($atore[$i],$goalfaktor).$dumm2; ?></td>
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td><?
     }
     if ($tabpkt==1) {
       echo "<td class=\"".$lmo_tabelle_class."\" width=\"2\">&nbsp;</td><td class=\"".$lmo_tabelle_class."\" align=\"right\">".applyFactor($punkte[$i],$pointsfaktor)."</td>";
@@ -289,22 +289,22 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       echo "<td class=\"".$lmo_tabelle_class."\">".applyFactor($negativ[$i],$pointsfaktor)."</td>";
       }
     }?>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"><strong><?=$dummy.number_format($quote[$i]/100,2,".",",").$dumm2; ?></strong></td>
-    </tr><? 
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"><strong><?=$dummy.number_format($quote[$i]/100,2,".",",").$dumm2; ?></strong></td>
+        </tr><? 
     }?>
-    </table>
-  </td>
+      </table>
+    </td>
   </tr>
-  <?
+</table>
+<?
   }
   if($tabdat!=""){ ?>
-  <tr>
-    <td>
+
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr><?  
    $st0 = $st-1;
    if ($st > 1) {?>
-          <td align='left'>&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?> <?=$text[6]?></a>&nbsp;</td><?
+          <td align="left">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?> <?=$text[6]?></a>&nbsp;</td><?
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>
@@ -312,20 +312,19 @@ if ($file!="" && $tipp_tipptabelle1==1) {
    }?>
         </tr>
       </table>
-    </td>
-  </tr><? 
-  }?><? 
-    if($tipp_wertverein==1 && $tabtype==0){ ?>
+
+<? 
+  }
+  if($tipp_wertverein==1 && $tabtype==0){ ?>
+<p>&nbsp;</p>
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-  <th align="center"><?=$text['tipp'][261]; ?></td>
+    <th align="center"><?=$text['tipp'][261]; ?></th>
   </tr><?
       $st=$endtab;
       if ($nick!="") {
         $m=0;
-        $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/vereine/".substr($file, strrpos($file,"/")+1, -4)."_".$nick.".ver";
+        $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/vereine/".substr($file, 0, -4)."_".$nick.".ver";
         if (($endtab>1) && ($tabtype==0) && ($tabdat!="")) {
           $endtab--;
           require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcwertverein.php");
@@ -342,18 +341,17 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       } elseif ($tipp_tipptabelle==1) {      // alle Tipper
         $tabdat="";
         $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/vereine/");
-        $dummy=array("");
-        $liga=substr($file, strrpos($file,"/")+1, -4);
+        $dummy=array();
+        $liga=substr($file, 0, -4);
         while ($files=readdir($verz)) {
           if (strtolower(substr($files,0,strrpos($files,"_")))==strtolower($liga) && strtolower(substr($files,-4))==".ver") {
             array_push($dummy,$files);
           }
         }
         closedir($verz);
-        array_shift($dummy);
         $anztipper=count($dummy);
         for ($m=0; $m<$anztipper; $m++) {
-          $nick=substr($dummy[$m],0,-4);
+          $nick=substr(substr($dummy[$m],strrpos($dummy[$m],"_")+1),0,-4);
           $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/vereine/".substr($file,0,-4)."_".$nick.".ver";
           require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcwertverein.php");
         }
@@ -373,10 +371,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     <td align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <th colspan="3"><?
-    $dummy=" align=\"right\"";
-    echo $tabdat;?>
-          </th>
+          <th colspan="3"><?$dummy=" align=\"right\"";echo $tabdat;?></th>
           <th width="2">&nbsp;</th>
           <th class="nobr" <?=$dummy; ?>><?=$text[33]; /* Spiele getippt*/ ?></th>
           <th width="2">&nbsp;</th>
@@ -411,7 +406,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       }
       if ($tabdat!="") {
         echo "<td class=\"".$lmo_tabelle_class."\"";
-        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">&nbsp;";
+        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\" alt=''>&nbsp;";
         echo "</td>";
       } else {
         echo "<td class=\"".$lmo_tabelle_class."\">&nbsp;</td>";
@@ -447,8 +442,8 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
   if ($nick!="" && $tipp_tipptabelle==1) {
     echo "<a href=\"".$addt."\" title=\"".$text['tipp'][184]."\">".$text['tipp'][183]."</a>";
-  }?>
+  }
+} ?>
     </td>
   </tr>
-</table><?
-} ?>
+</table>

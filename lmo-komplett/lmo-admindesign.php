@@ -1,27 +1,23 @@
 <?
-//
-// LigaManager Online 3.02b
-// Copyright (C) 1997-2002 by Frank Hollwitz
-// webmaster@hollwitz.de / http://php.hollwitz.de
-//
-// LigaManager Online
-// Edited by: Rene Marth
-// 29.08.2003
-//
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of
-// the License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-// General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-//
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  * 
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+  
+  
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 isset($_REQUEST['show'])?$show=$_REQUEST['show']:$show=0;
 if(isset($_POST['save']) && $_POST['save']==1){
@@ -114,6 +110,9 @@ if ($show==0) {
 }elseif ($show==5) { 
   $lmo_kreuz_fontsize1=     isset($_POST["xlmo_kreuz_fontsize1"])?     $_POST["xlmo_kreuz_fontsize1"]:     $lmo_kreuz_fontsize1;
   $lmo_kreuzkal_background2=isset($_POST["xlmo_kreuzkal_background2"])?$_POST["xlmo_kreuzkal_background2"]:$lmo_kreuzkal_background2;
+  
+  $lmo_fieber_color1=       isset($_POST["xlmo_fieber_color1"])?       $_POST["xlmo_fieber_color1"]:       $lmo_fieber_color1;
+  $lmo_fieber_color2=       isset($_POST["xlmo_fieber_color2"])?       $_POST["xlmo_fieber_color2"]:       $lmo_fieber_color2;
   
   $lmo_footer_fontsize1=    isset($_POST["xlmo_footer_fontsize1"])?    $_POST["xlmo_footer_fontsize1"]:    $lmo_footer_fontsize1;
   $lmo_kreuzkal_background1=isset($_POST["xlmo_kreuzkal_background1"])?$_POST["xlmo_kreuzkal_background1"]:$lmo_kreuzkal_background1;
@@ -526,6 +525,21 @@ if ($show==0) {?>
               <input class="lmo-formular-input" type="text" name="xlmo_kreuzkal_background2" id="lmo_kreuzkal_background2input" size="7" maxlength="7" value="<?=$lmo_kreuzkal_background2?>" onChange="dolmoedit();relateColor('lmo_kreuzkal_background2', this.value);"><script type="text/javascript">makePicker('lmo_kreuzkal_background2');</script>
             </td>
             <td><?=$text[463]?>: <acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[133]?></th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_fieber_color1" id="lmo_fieber_color1input" size="7" maxlength="7" value="<?=$lmo_fieber_color1?>" onChange="dolmoedit();relateColor('lmo_fieber_color1', this.value);"><script type="text/javascript">makePicker('lmo_fieber_color1');</script></td>
+            <td><acronym title="<?=$text[433] ?>"><?=$text[124]?> 1</acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_fieber_color2" id="lmo_fieber_color2input" size="7" maxlength="7" value="<?=$lmo_fieber_color2?>" onChange="dolmoedit();relateColor('lmo_fieber_color2', this.value);"><script type="text/javascript">makePicker('lmo_fieber_color2');</script>
+            </td>
+            <td><acronym title="<?=$text[433] ?>"><?=$text[124]?> 2</acronym></td>
           </tr>
           <tr>
             <th colspan="3"><?=$text[464]?></th>

@@ -12,10 +12,12 @@ if($dats==1){
 }?>
     </th>
   </tr><?
-   
-$datsort = $mterm[$st-1];
-asort($datsort);
-reset($datsort);
+
+if(filterZero($mterm[$st-1])) { // Wenn Spieltermine angegeben, dann nach Datum sortieren
+  $datsort = $mterm[$st-1];
+  asort($datsort);
+  reset($datsort);
+}
 $spielfreia=array();
 $spielfreib=array();
 while (list ($key, $val) = each ($datsort)) {
@@ -72,9 +74,15 @@ while (list ($key, $val) = each ($datsort)) {
     <td align="right"><?=applyFactor($goala[$st-1][$i],$goalfaktor); ?></td>
     <td align="center" width="8">:</td>
     <td align="left"><?=applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td><?  
-    if($spez==1){ ?>
+    if($spez==1) {?>
     <td width="2">&nbsp;</td>
     <td><?=$mspez[$st-1][$i]; ?></td><?
+    }
+    if ($msieg[$st-1][$i]==3){ ?>
+    <td width="2">/</td>
+    <td align="right"><?=applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td>
+    <td align="center" width="8">:</td>
+    <td align="left"><?=applyFactor($goala[$st-1][$i],$goalfaktor); ?></td><?  
     }?>
     <td width="2">&nbsp;</td>
     <td class="nobr" align="left"><? 
@@ -98,7 +106,7 @@ while (list ($key, $val) = each ($datsort)) {
     if($urlb==1){
       if($mberi[$st-1][$i]!=""){
         $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> &ndash; ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
-        echo "<a href='".$mberi[$st-1][$i]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
+        echo " <a href='".$mberi[$st-1][$i]."'  target='_blank'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
       }else{
         echo "&nbsp;&nbsp;&nbsp;";
       }
@@ -132,7 +140,7 @@ while (list ($key, $val) = each ($datsort)) {
       if ($mnote[$st-1][$i]!="") {
         $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i];
       }
-      echo "<a href='#' onclick=\"alert('".mysql_escape_string(htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+      echo " <a href='#' onclick=\"alert('".mysql_escape_string(htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
       $lmo_spielnotiz="";
     } else {
       echo "&nbsp;";
@@ -145,17 +153,11 @@ while (list ($key, $val) = each ($datsort)) {
 if ($einzutore == 1) {?>
   <tr>  
     <td class="lmoFooter" align="center" width="100%" colspan="<?=$breite; ?>">&nbsp;<?
-
-  $strs = ".l98";
-  $stre = ".l98.php";
-  $str = basename($file);
-  $file16 = str_replace($strs, $stre, $str);
-  $temp11 = basename($diroutput);
-  if (file_exists("$temp11/$file16")) {
-    require("$temp11/$file16");
-     
+  $zustat_file = str_replace(".l98", ".l98.php",  basename($file));
+  $zustat_dir = basename($diroutput);
+  if (file_exists(PATH_TO_LMO.'/'.$zustat_dir."/".$zustat_file)) {
+    require(PATH_TO_LMO.'/'.$zustat_dir."/".$zustat_file);
     echo $text[38].": ".applyFactor($zutore[$st],$goalfaktor)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38].$text[4001].": ".applyFactor($dstore[$st],$goalfaktor);
-     
   }?>
     </td>
   </tr><?
@@ -168,8 +170,7 @@ if ($einspielfrei == 1) {?>
     $spielfreic = array_merge($spielfreia, $spielfreib);
     $hoy5 = 1;
     for ($hoy8 = 1; $hoy8 < $anzteams+1; $hoy8++) {
-      if (in_array($hoy8, $spielfreic)) {
-      } else {
+      if (!in_array($hoy8, $spielfreic)) {
         if ($hoy5 == 1) {
           echo $text[4004].": ";
         }

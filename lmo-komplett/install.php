@@ -1,11 +1,10 @@
 <?
 $filelist=array(
-  '666'=>array('lmo-auth.txt','debuglog.txt','config/cfg.txt','config/tipp/cfg.txt',/*'config/viewer/cfg.txt',*/'config/spieler/cfg.txt','config/ticker/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98'),
+  '666'=>array('lmo-auth.txt','config/cfg.txt','config/tipp/cfg.txt',/*'config/viewer/cfg.txt',*/'config/spieler/cfg.txt','config/ticker/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98'),
   '777'=>array('ligen','output','ligen/archiv','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine'),
   '644'=>array('init-parameters.php')
   );
-
-if (substr($_SERVER['DOCUMENT_ROOT'],-1)=='/') { $_SERVER['DOCUMENT_ROOT']=substr($_SERVER['DOCUMENT_ROOT'], 0, -1); }
+error_reporting(E_ERROR | E_PARSE);
 $step=isset($_POST['step'])?$_POST['step']:0;
 $patherror='';
 $urlerror='';
@@ -13,8 +12,8 @@ $installerror='';
 $loginerror='';
 $ftpserver='';
 $ftpuser='';
-$path=dirname($_SERVER['SCRIPT_NAME']);
-$url='http://'.$_SERVER['HTTP_HOST'].$path;
+$path=str_replace('\\','/',dirname(__FILE__));
+$url='http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']);
 if (isset($_POST['step'])) {
   if ($step==1) {
     
@@ -26,8 +25,8 @@ if (isset($_POST['step'])) {
     $url= substr($url,-1)=='/'? substr($url, 0, -1): $url;
       
     //Test
-    if (!file_exists($_SERVER['DOCUMENT_ROOT'].$path."/init-parameters.php")) {
-      $patherror='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> Pfad "'.$path.'" ist inkorrekt</p>';
+    if (!file_exists(dirname(__FILE__)."/init-parameters.php")) {
+      $patherror='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> Pfad "'.dirname(__FILE__).'" ist inkorrekt</p>';
     }
     if (function_exists('fsockopen') && phpLinkCheck($url."/init-parameters.php",TRUE)==404 || phpLinkCheck($url."/init-parameters.php",TRUE)==FALSE) {
       $urlerror='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> URL "'.$url.'" ist inkorrekt</p>';
@@ -39,8 +38,8 @@ if (isset($_POST['step'])) {
   
   if ($step==2) {
 
-    $filename = $_SERVER['DOCUMENT_ROOT'].$path."/init-parameters.php";
-    $somecontent='<? $lmo_dateipfad=\''.$_SERVER['DOCUMENT_ROOT'].$path."'; //Dateipfad zum LMO\n".'$lmo_url=\''.$url.'\'; //abolute URL zum LMO?>';
+    $filename = dirname(__FILE__)."/init-parameters.php";
+    $somecontent='<? $lmo_dateipfad=\''.dirname(__FILE__)."'; //Dateipfad zum LMO\n".'$lmo_url=\''.$url.'\'; //abolute URL zum LMO?>';
     // Sichergehen, dass die Datei existiert und beschreibbar ist
     if (is_writable($filename)) {
       if (!$handle = fopen($filename, "wb")) {
@@ -57,7 +56,7 @@ if (isset($_POST['step'])) {
   }
   if ($step==4) {
     $path=      isset($_POST['path'])?      $_POST['path']      : $path;
-    $ftppath=   isset($_POST['ftppath'])?   $_POST['ftppath']   : $_SERVER['DOCUMENT_ROOT'].'/'.$path;
+    $ftppath=   isset($_POST['ftppath'])?   $_POST['ftppath']   : $path;
     $ftpserver= isset($_POST['ftpserver'])? $_POST['ftpserver'] : '';
     $ftpuser=   isset($_POST['ftpuser'])?   $_POST['ftpuser']   : '';
     $ftppass=   isset($_POST['ftppass'])?   $_POST['ftppass']   : '';
@@ -122,6 +121,7 @@ if (isset($_POST['step'])) {
         dd       {  margin: 0.5em 3em;}
         dt       {  padding:0.1em 1em;line-height:135%;font-weight:bold;background-color:#00f;color:#fcfcff;}
         dl       {  border:1px solid #00f;}
+        strong   {  color:#fa6;}
         h1, h2   {  font-family:"Trebuchet MS", Georgia, sans-serif;}
         h1       {  font-size:135%;text-align:center;}
         h2       {  font-size:115%;}
@@ -141,15 +141,15 @@ if ($step<2) {
   <h2>1. Pfade</h2>
   <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
     <dl>
-      <dt>Geben Sie hier den Pfad zum LMO, <strong>ausgehend von Ihrem HTML-Stammverzeichnis</strong> an. </dt>
+      <dt>Geben Sie hier den <strong>kompletten Pfad</strong> zum LMO an.</dt>
       <dd>
       <?=$patherror?>
-        <input name="path" type="text" size="50" value="<?=$path?>"> Bsp.: <em><kbd>/lmo</kbd></em>
+        <input name="path" type="text" size="55" value="<?=$path?>"> Bsp.: <em><kbd>/home/www/htdocs/lmo</kbd></em>
       </dd>
       <dt>Geben Sie hier die absolute URL zum LMO an.</dt>
       <dd>
       <?=$urlerror?>
-        <input name="url" type="text" size="50" value="<?=$url?>"> Bsp.: <em><kbd>http://www.beispiel.de/lmo</kbd></em>
+        <input name="url" type="text" size="55" value="<?=$url?>"> Bsp.: <em><kbd>http://www.beispiel.de/lmo</kbd></em>
       </dd>
       <dt>
         <input type="hidden" name="step" value="1">
@@ -198,7 +198,7 @@ if ($step==3) {?>
     } else {
     echo $patherror;?>
         </dd>
-        <dt>Geben Sie hier den Pfad vom FTP-Hauptverzeichnis zum LMO ein.</dt><dd><input type="text" size="40" name="ftppath" value="<?=$ftppath?>"> Bsp.: <em><kbd>/htdocs/lmo</kbd></em><?
+        <dt>Geben Sie hier den <strong>FTP-Pfad</strong> zum LMO ein.</dt><dd><input type="text" size="40" name="ftppath" value="<?=$ftppath?>"> Bsp.: <em><kbd>/htdocs/lmo</kbd></em><?
     }?>
         <input type="hidden" name="step" value="4">
       </dd>

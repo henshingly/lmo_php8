@@ -221,14 +221,14 @@ if ($file!="") {
   </tr>
   <tr>
     <td align="center">
-    <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
-      <input type="hidden" name="action" value="tipp">
-      <input type="hidden" name="todo" value="edit">
-      <input type="hidden" name="save" value="1">
-      <input type="hidden" name="file" value="<?=$file; ?>">
-      <input type="hidden" name="st" value="<?=$st; ?>">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-        <tr><?
+      <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
+        <input type="hidden" name="action" value="tipp">
+        <input type="hidden" name="todo" value="edit">
+        <input type="hidden" name="save" value="1">
+        <input type="hidden" name="file" value="<?=$file; ?>">
+        <input type="hidden" name="st" value="<?=$st; ?>">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+          <tr><?
   if ($datum1[$st-1]!="") {
     $datum = explode('.',$datum1[$st-1]);
     $dum1=$me[intval($datum[1])]." ".$datum[2];
@@ -254,7 +254,7 @@ if ($file!="") {
       $j=$st.". ".$text[370];
     }
   }?>
-          <th class="nobr" align="left" colspan="<?=$datm+5; ?>"><?
+            <th class="nobr" align="left" colspan="<?=$datm+5; ?>"><?
   if ($lmtype==0) {
     echo $st.". ".$text[2];
   } else {
@@ -268,54 +268,47 @@ if ($file!="") {
       echo " ".$text[4]." ".$datum2[$st-1];
     }
   }?>
-          </th><? 
+            </th><? 
   if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
-          <th class="nobr" align="center" colspan="<? if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
+            <th class="nobr" align="center" colspan="<? if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
             <?=$text['tipp'][188]; /* Tipptendenz absolut */?>
-          </th>
+            </th>
 <?}
   
 /**ERGEBNISMODUS*/
   if($tipp_tippmodus==1){  
     if($tipp_showdurchschntipp==1){ ?>
-          <th class="nobr" align="center" colspan="2">
+            <th class="nobr" align="center" colspan="2">
             <?="Ø-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
-          </th><?  
+            </th><?  
     } ?>
-          <th class="nobr" align="center" colspan="<? if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
-            <acronym title="<?=$text['tipp'][241].":".$text['tipp'][242] ?>"><?=$text['tipp'][209]; /* Dein Tipp */?></acronym><br><?
+            <th class="nobr" align="center" colspan="<? if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
+              <acronym title="<?=$text['tipp'][241].":".$text['tipp'][242] ?>"><?=$text['tipp'][209]; /* Dein Tipp */?></acronym><br><?
     if ($goalfaktor!=1) {
       echo "(".$text[553+log10($goalfaktor)].")";
     }?>
-            
-          </th><?
+            </th><?
   }
   
 /**TENDENZMODUS*/
   if($tipp_tippmodus==0){ ?>
-          <th class="nobr" align="center"><acronym title="<?=$text['tipp'][95] ?>">1</acronym></th><?  
+            <th class="nobr" align="center"><acronym title="<?=$text['tipp'][95] ?>">1</acronym></th><?  
     if($hidr==0){ ?>
-          <th class="nobr" align="center"><acronym title="<?=$text['tipp'][96] ?>">0</acronym></th><?  
+            <th class="nobr" align="center"><acronym title="<?=$text['tipp'][96] ?>">0</acronym></th><?  
     }?>
-          <th class="nobr" align="center"><acronym title="<?=$text['tipp'][97] ?>">2</acronym></th><?
+            <th class="nobr" align="center"><acronym title="<?=$text['tipp'][97] ?>">2</acronym></th><?
   }
 /**BEIDE*/
   if ($tipp_jokertipp==1){ ?>
-          <th class="nobr" align="center">
-            <acronym title="<?=$text['tipp'][290] ?>"><?=$text['tipp'][289]; ?></acronym>
-          </th><?
+            <th class="nobr" align="center"><acronym title="<?=$text['tipp'][290] ?>"><?=$text['tipp'][289]; ?></acronym></th><?
   } ?>
-          <th class="nobr" colspan="3" align="center">
-            <?=$text['tipp'][31]; /* Ergebnis */?>
-          </th><?
+            <th class="nobr" colspan="3" align="center"><?=$text['tipp'][31]; /* Ergebnis */?></th><?
   if($spez==1){?>
-          <th colspan="2">&nbsp;</th><?
+            <th colspan="2">&nbsp;</th><?
   }?>
-          <th class="nobr" colspan="2" align="right">
-            <?=$text[37]; /* PP */?>
-          </th>
-          <th>&nbsp;</th>
-        </tr><?
+            <th class="nobr" colspan="2" align="right"><?=$text[37]; /* PP */?></th>
+            <th>&nbsp;</th>
+          </tr><?
   if ($lmtype!=0) {
     
     $anzsp=$anzteams;
@@ -360,8 +353,8 @@ if ($file!="") {
       }
     }
   }?>
-        <tr>
-          <td colspan="<?=$datm*2+10-$hidr; ?>" align="right"><? 
+          <tr>
+            <td colspan="<?=$datm*2+10-$hidr; ?>" align="right"><? 
   if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
     echo $text['tipp'][177];
   } 
@@ -370,8 +363,8 @@ if ($file!="") {
   }else{
     echo "&nbsp;";
   }?>
-          </td>
-          <td class="lmoFrontMarkierung" colspan="<?=$breite-$datm-9; ?>" align="right"><?
+            </td>
+            <td class="lmoFrontMarkierung" colspan="<?=$breite-$datm-9; ?>" align="right"><?
   echo $text[37]." ";
   if($lmtype==0){
    echo $text[2];
@@ -379,30 +372,26 @@ if ($file!="") {
    echo $j;
   }
   echo ": ".$punktespieltag;?>
-          </td>
-        </tr>
-        <tr>
-          <td class="lmoFooter" colspan="<?=$breite; ?>" align="center"><? if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
-        </tr>
-      </table>
-    </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="lmoFooter" colspan="<?=$breite; ?>" align="center"><? if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
+          </tr>
+        </table>
+      </form>
     </td>
   </tr>
-  <tr>
-    <td>
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr><?  
+</table>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tr><?  
    $st0 = $st-1;
    if ($st > 1) {?>
-          <td align='left'>&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a>&nbsp;</td><?
+    <td align='left'>&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?> <?=$text[6]?></a>&nbsp;</td><?
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>
-          <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[7]?></a>&nbsp;</td><?
+    <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[8]?> <?=$text[7]?></a>&nbsp;</td><?
    }?>
-        </tr>
-      </table>
-    </td>
   </tr>
 </table><? 
 } ?>
