@@ -43,7 +43,6 @@ if (isset($file) && $file!="") {
 	//Adminkontrolle
 	if ($_SESSION['lmouserok']==2 || ($_SESSION['lmouserok']==1 && $spieler_adminbereich_hilfsadmin_zulassen==1)) {
 		//zu speichernde Konfiguration
-		if (isset($_REQUEST['spielerbildbreite']))                { $spieler_spielerbildbreite=$_REQUEST['spielerbildbreite']; }
 		if (isset($_REQUEST['standard_sortierung']))              { $spieler_standard_sortierung=$_REQUEST['standard_sortierung']; }
     if (isset($_REQUEST['standard_richtung']))                { $spieler_standard_richtung=$_REQUEST['standard_richtung']; }
 		if (isset($_REQUEST['adminbereich_standard_sortierung'])) { $spieler_adminbereich_standard_sortierung=$_REQUEST['adminbereich_standard_sortierung']; }
@@ -132,6 +131,7 @@ if (isset($file) && $file!="") {
 					fclose($filepointer);
 					$statstart=$zeile-$spieler_adminbereich_anzeige_pro_seite;
 					if ($statstart<0) $statstart=0;
+          touch(PATH_TO_LMO."/".$file);
 				}else{
 					echo $text['spieler'][4];
 				}
@@ -161,6 +161,7 @@ if (isset($file) && $file!="") {
 					}
 					$spaltenzahl=count($spalten);
 					fclose($filepointer);
+          touch(PATH_TO_LMO."/".$file);
 				}
 				break;
 			case "addcolumn": //Spalte hinzufügen
@@ -202,6 +203,7 @@ if (isset($file) && $file!="") {
           }
 					$spaltenzahl++;
 					fclose($filepointer);
+          touch(PATH_TO_LMO."/".$file);
 				}else{
 					echo $text['spieler'][3];
 				}
@@ -227,7 +229,8 @@ if (isset($file) && $file!="") {
           for($i=0;$i<$zeile;$i++) {
 						fputs($filepointer,join("§",$data[$i])."\n");
 					}
-				fclose($filepointer);
+				  fclose($filepointer);
+          touch(PATH_TO_LMO."/".$file);
 				}
 				break;
 			case "sortieren":
@@ -274,13 +277,13 @@ if (isset($file) && $file!="") {
            fputs($filepointer,join("§",$data[$i1])."\n");
         }
       	fclose($filepointer);
+        touch(PATH_TO_LMO."/".$file);
       	//if (!isset($typ[intval($spieler_sort)])) usort($data, 'cmpInt'); else {usort($data, 'cmpStr');}
       	break;
 			case "saveconfig": //Konfiguration sichern
 				$filepointer = @fopen($configfile,"w+b");
         flock($filepointer,LOCK_EX);
 				set_file_buffer ($filepointer,0);
-				fputs($filepointer,$text['spieler'][20]."=".$spieler_spielerbildbreite."\n");
 				fputs($filepointer,$text['spieler'][21]."=".$spieler_standard_sortierung."\n");
         fputs($filepointer,$text['spieler'][13]."=".$spieler_standard_richtung."\n");
 				fputs($filepointer,$text['spieler'][40]."=".$spieler_adminbereich_standard_sortierung."\n");
@@ -576,17 +579,15 @@ function sel(x) {
 						<td><input type="text" name="ligalink" value="<?= $spieler_ligalink?>" size="<?=strlen($spieler_ligalink);?>"></td>
 					</tr>
 					<tr>
-						<td class="lmost4"><nobr><?=$text['spieler'][20]?>: </nobr></td>
-						<td><input type="text" name="spielerbildbreite"value="<?= $spieler_spielerbildbreite?>" size="<?=strlen($spieler_spielerbildbreite);?>"></td>
-				  </tr>
-					<tr>
 						<td class="lmost4"><nobr><?=$text['spieler'][24]?>: </nobr></td>
 						<td><input type="checkbox" name="extra_sortierspalte" value="<?=$spieler_extra_sortierspalte?>" <?if ($spieler_extra_sortierspalte==1) echo "checked";?>></td>
-					</tr>
+					</tr><?
+   if (array_search($text['spieler'][25],$spalten)>0) {?>
           <tr>
 						<td class="lmost4"><nobr><?=$text['spieler'][50]?>: </nobr></td>
 						<td><input type="checkbox" name="vereinsweise_anzeigen" value="<?=$spieler_vereinsweise_anzeigen?>" <?if ($spieler_vereinsweise_anzeigen==1) echo "checked";?>></td>
-					</tr>
+					</tr><?
+   }?>
           <tr>
 						<td class="lmost4"><nobr><?=$text['spieler'][49]?>: </nobr></td>
 						<td><input type="checkbox" name="pfeile_anzeigen" value="<?=$spieler_pfeile_anzeigen?>" <?if ($spieler_pfeile_anzeigen==1) echo "checked";?>></td>

@@ -523,10 +523,10 @@
 522=Straftore
 523=Stafpunkte-/tore ab Spieltag X einrechnen
 524=ab
-525=Nach
+525=nach
 526=sortieren
-527=aufsteigend
-528=absteigend
+527=Aufsteigend
+528=Absteigend
 529=Liganame
 530=Ligadatum
 531=Dateiname

@@ -101,7 +101,7 @@
 100=maximale Anzahl Tipper je Team
 101=keine Teambildung erm&ouml;glichen
 102=unbegrenzt
-103=Welche Ligen sollen getippt werden k&ouml;nnen?
+103=Tippbare Ligen
 104=<b>immer alle</b> sich im Ligenverzeichnis befindlichen
 105=Wenn Du nicht "immer alle" gew&auml;hlt hast, w&auml;hle bitte nachfolgende aus.<br>Nur die gew&auml;hlten Ligen gehen dann auch in die Gesamwertung mit ein.
 106=Daten &auml;ndern
@@ -161,7 +161,7 @@
 160=Ver&ouml;ffentlichungszeitpunkt der Tipps
 161=Aktualisierung der Tippeinsichten bei Tippabgabe
 162=Hervorhebung richtiger Tipps in der Tippeinsicht
-163=Was soll bei der Ergebniseingabe zusätzlich ausgewertet werden?
+163=Zusätzliche Auswertungen
 164=Tipper
 165=Newsletter/Reminder
 166=Newsletter an Alle

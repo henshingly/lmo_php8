@@ -1,4 +1,3 @@
-spielerbildbreite=15px
 anzeige_pro_seite=10
 nullwerte_anzeigen=1
 extra_sortierspalte=1

@@ -31,7 +31,6 @@ if ($config=@file($configfile)) {
 	for ($i=0;$i<count($config);$i++){
 		$row=explode("=",$config[$i],2);
 		switch ($row[0]) {
-			case $text['spieler'][20]:$spieler_spielerbildbreite=$row[1];break;
 			case $text['spieler'][21]:$spieler_standard_sortierung=(int)$row[1];break;
       case $text['spieler'][13]:$spieler_standard_richtung=(int)$row[1];break;
       case $text['spieler'][49]:$spieler_pfeile_anzeigen=(int)$row[1];break;
