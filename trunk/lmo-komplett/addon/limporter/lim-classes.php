@@ -1,6 +1,6 @@
 <?PHP
 //
-// Limporter Class Library Version 0.1
+// Limporter Class Library Version 1.5 (01/2004)
 // Copyright (C) 2003 by Tim Schumacher
 // timme@uni.de /
 //
@@ -19,34 +19,218 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 
-class Colum {
-
-	function Colum($name,$colNr,$format) {
-		$this->name = $name;
-		$this->colNr = $colNr;
-		$this->format = $format;
-	}
-}
-
-class Format {
-
-	function Format($name,$expr) {
-		$this->name = $name;
-		$this->expr = $expr;
-	}
-}
 
 
+//
+// Class team
+//
+// Limporter Class Library
+// Copyright (C) 2003 by Tim Schumacher
+// timme@uni.de /
 
 class team {
+	var $name;
+	var $kurz;
+	var $nr;
+	var $keyValues;
 
-	function team($name,$kurz,$nr) {
+	function team($name="",$kurz="",$nr="") {
 		$this->name = $name;
 		$this->kurz = $kurz;
 		$this->nr = $nr;
+		$this->keyValues = array("SP"=>0,"SM"=>0,"TOR1"=>0,"TOR2"=>0,"STDA"=>0,"URL"=>"","NOT"=>"");
 	}
 
-}
+	function addKeyValue ($new_key,$new_value) {
+		$this->keyValues[$new_key]=$new_value;
+	}
+
+	function valueForKey($new_key) {
+		return $this->keyValues[$new_key];
+	}
+} // class team
+
+
+//
+// Class partie
+//
+// Limporter Class Library
+// Copyright (C) 2003 by Tim Schumacher
+// timme@uni.de /
+
+class partie {
+	var $n_SpNr,$zeit,$notiz,$heim,$gast,$hTore,$gTore,$hPunkte,$gPunkte;
+
+
+	function partie($n_spNr,$n_time,$n_notiz,&$n_heim,&$n_gast,$n_htore,$n_gtore,$n_hpunkte,$n_gpunkte) {
+		$this->spNr = $n_spNr;
+		$this->zeit = $n_time;
+		$this->notiz = $n_notiz;
+		$this->heim = &$n_heim;
+		$this->gast = &$n_gast;
+		$this->hTore = $n_htore;
+		$this->gTore = $n_gtore;
+		$this->hPunkte = $n_hpunkte;
+		$this->gPunkte = $n_gpunkte;
+	}
+
+	function datumString() {
+		$datum = "";
+		if ($this->zeit!='')
+			$datum = date("d.m.Y",$this->zeit);
+		return $datum;
+	}
+
+	function zeitString() {
+		$zeit = "";
+		if ($this->zeit!='')
+			$zeit = date("H:i",$this->zeit);
+		return $zeit;
+	}
+
+	function showDetails() {
+		echo $this->heim->name." - ".$this->gast->name;
+		echo " Anpfiff: ".$this->zeitString()."Uhr";
+		echo " Ergebnis:".$this->hTore." - ".$this->gTore."\n";
+	}
+
+	function showDetailsHTML() {
+		echo "<BR>".$this->heim->name." - ".$this->gast->name;
+		echo " Anpfiff: ".$this->zeitString()."Uhr";
+		echo " Ergebnis:".$this->hTore." - ".$this->gTore;
+	}
+
+} // class partie
+
+//
+// Class spieltag
+//
+// Limporter Class Library
+// Copyright (C) 2003 by Tim Schumacher
+// timme@uni.de /
+
+class spieltag {
+
+	var $nr;
+	var $von;
+	var $bis;
+	var $partien;
+
+	function spieltag($new_nr,$new_von,$new_bis,$partien=array()) {
+		$this->nr = $new_nr;
+		$this->von = $new_von;
+		$this->bis = $new_bis;
+		$this->partien = $partien;
+	}
+
+	function &partieForNumber($number) {
+		$result = null;
+		if(isset($number) and $nNumber > 0 and $number <= $this->partienCount())
+			$result = $this->partien[$number-1];
+		return $result;
+	}
+
+	function &partieForTeams($heimNr,$gastNr) {
+		$count = $this->partienCount();
+//		echo "<BR>partieForTeams $heimNr,$gastNr";
+		$i = -1;
+		$found=-1;
+		$selectedTag = null;
+		while (($i<$count) and ($found<>0)):
+			$i++;
+			if (isset($this->partien[$i]) and ($this->partien[$i]->heim->nr = $heimNr) and ($this->partien[$i]->gast->nr = $gastNr))
+				$found = 0;
+
+		endwhile;
+		if ($found==0) return $this->partien[$i];
+		else return null;
+	}
+
+	function removePartie(&$rmvPartie) {
+    $result = False;
+    reset($this->partien);
+    $partienArray = $this->partien;
+    $index = 0;
+    foreach ($this->partien as $aPartie) {
+      if ($rmvPartie == $aPartie) {
+        unset($partienArray[$index]);
+				$partienArray=array_values($partienArray); // Index neu erstellen
+				$result = True;
+				break;
+      }
+      else {
+      	next($partienArray);
+      	$index++;
+      }
+    }
+    if(isset($partienArray)) {
+    	$this->partien = &$partienArray;
+    }
+		else
+			$this->partien = null;
+
+	return $result;
+	}
+
+
+	function partienCount() {
+		return count($this->partien);
+	}
+
+	function addPartie(&$neuePartie) {
+		$this->partien[] = $neuePartie; // &$ Das muss so sein
+	}
+
+	function showDetails() {
+		echo "\n".$this->nr.". Spieltag (".$this->vonBisString().")\n";
+		foreach ($this->partien as $partie) {
+			echo $partie->showDetails()."\n";
+		}
+	}
+
+	function showDetailsHTML() {
+		echo "<BR>".$this->nr.". Spieltag (".$this->vonBisString().")";
+		foreach ($this->partien as $partie) {
+			echo "<BR>".$partie->showDetailsHTML();
+		}
+	}
+
+	function vonBisString() {
+		$von = "";
+		$bis = "";
+		if ($this->von!='')
+			$von = date("d.m.Y",$this->von);
+		if ($this->bis!='')
+			$bis = date("d.m.Y",$this->bis);
+
+		if ($von!="" and $bis!="")
+			return $von." bis ".$bis;
+		return $von.$bis;
+	}
+
+	function vonString() {
+		$von = "";
+		if ($this->von!='')
+			$von = date("d.m.Y",$this->von);
+		return $von;
+	}
+
+	function bisString() {
+		$bis = '';
+		if ($this->bis!='')
+			$bis = date("d.m.Y",$this->bis);
+		return $bis;
+
+	}
+
+} // END class spieltag
+
+//
+// Class liga
+//
+// Limporter Class Library
+// Copyright (C) 2003 by Tim Schumacher
+// timme@uni.de /
 
 class liga {
 	var $count;
@@ -55,39 +239,23 @@ class liga {
 	var $kurz;
 	var $aktSpTag;
 	var $partien;
+	var $spieltage;
+	var $fileName;
 
- 	function liga($name,$kurz) {
+ 	function liga($name="",$kurz="") {
 		$this->name = $name;
 		$this->kurz = $kurz;
-//		$this->teams = &$teams;
-//		$this->partien = &$partien;
+		$this->spieltage = array();
+		$this->partien = array();
+		$this->teams = array();
 	}
 
 	function teamCount() {
-
 		return count($this->teams);
 	}
 
 	function addTeam(&$neuesTeam) {
-		$this->teams[] = &$neuesTeam;
-	}
-
-	function addSpieltag(&$neuerSpieltag) {
-		$this->spieltage[] = &$neuerSpieltag;
-	}
-
-	function spielTageCount() {
-
-		return count($this->spieltage);
-	}
-
-	function addPartie(&$neuePartie) {
-		$this->partien[] = &$neuePartie;
-	}
-
-	function partienCount() {
-
-		return count($this->partien);
+		$this->teams[] = $neuesTeam; // Das muss so sein
 	}
 
 	function &teamForName($teamName) {
@@ -100,7 +268,14 @@ class liga {
 			$found = strcmp($this->teams[$i]->name,$teamName);
 		endwhile;
 		if ($found==0) return $this->teams[$i];
-		return nil;
+		else return null;
+	}
+
+	function &teamForNumber($teamNumber) {
+		$result = null;
+		if(isset($teamNumber) and $teamNumber > 0 and $teamNumber <= $this->teamCount())
+			$result = $this->teams[$teamNumber-1];
+		return $result;
 	}
 
 	function teamNames() {
@@ -111,102 +286,313 @@ class liga {
 		return $teamArray;
 	}
 
-	function showSpielplan() {
-
-		echo "<BR>Liga = $this->name";
-		foreach ($this->partien as $partie) {
-			echo "<BR>".$partie->datumString()." ".$partie->heim->name ." - ".$partie->gast->name . " ";
-		}
-		echo "<BR>";
-	}
-
-	function showSpieltage() {
-
-		echo "<BR>SPIELTAGE Liga = $this->name";
-		foreach ($this->spieltage as $tag) {
-			echo "<BR>".$tag->nr.".Spieltag  ".$tag->vonBisString()."  Anzahlspiele: ".$tag->partienCount();
-			foreach ( $tag->partien as $partie) {
-				echo "<BR> HEIM: ".$partie->heim->name."  GAST: ".$partie->gast->name." Zeit:$partie->zeit Uhr  Spielort:".$partie->ort;
-				echo "<BR>".$partie->hTore." - ".$partie->gTore." Pkt:".$partie->hPunkte." - ".$partie->gPunkte;
-			}
-		}
-	}
-
-} // End Class Liga
-
-
-class partie {
-	var $n_SpNr,$datum,$zeit,$ort,$heim,$gast,$hTore,$gTore,$hPunkte,$gPunkte;
-
-
-	function partie($n_spNr,$n_datum,$n_zeit,$n_ort,&$n_heim,&$n_gast,$n_htore,$n_gtore,$n_hpunkte,$n_gpunkte) {
-		$this->spNr = $n_spNr;
-		$this->datum = $n_datum;
-		$this->zeit = $n_zeit;
-		$this->ort = $n_ort;
-		$this->heim = &$n_heim;
-		$this->gast = &$n_gast;
-		$n_htore > 0 ? $this->hTore = $n_htore : $this->hTore = -1;
-		$n_gtore > 0 ? $this->gTore = $n_gtore : $this->gTore = -1;
-		$this->hPunkte = $n_hpunkte;
-		$this->gPunkte = $n_gpunkte;
-	}
-
-	function datumString() {
-		return date("d.m.Y",$this->datum);
-	}
-
-	function timeString() {
-		return date("H:i",$this->zeit);
-	}
-
-}
-
-class spieltag {
-
-	var $nr;
-	var $von;
-	var $bis;
-	var $partien;
-
-	function spieltag($new_nr,$new_von,$new_bis) {
-		$this->nr = $new_nr;
-		$this->von = $new_von;
-		$this->bis = $new_bis;
-
-	}
-
 	function partienCount() {
-
 		return count($this->partien);
 	}
 
 	function addPartie(&$neuePartie) {
-		$this->partien[] = &$neuePartie;
+		$this->partien[] = $neuePartie;
 	}
 
-	function showPartien() {
-		echo "<BR>Partien am Spieltag = $this->nr";
-		foreach ($this->partien as $partie) {
-			echo "<BR>".$partie->heim->name." - ".$partie->gast->name." Spielort:".$partie->ort;
-			echo "<BR>".$partie->hTore." - ".$partie->gTore." Spielort:".$partie->ort;
+	function &partieForNumber($number) {
+		$result = null;
+		if(isset($number) and $nNumber > 0 and $number <= $this->partienCount())
+			$result = $this->partien[$number-1];
+		return $result;
+	}
+
+  function &partieForTeams(&$heim,&$gast) {
+	$result = Null;
+	foreach ($this->partien as $aPartie) {
+		if (($aPartie->heim == $heim ) and ($aPartie->gast == $gast)) {
+      $result = $aPartie;
+      break;
 		}
-		echo "<BR>";
+	}
+	return $result;
 	}
 
-	function vonBisString() {
-		return date("d.m.Y",$this->von)." - ".date("d.m.Y",$this->bis);
+
+	function addSpieltag(&$neuerSpieltag) {
+		$this->spieltage[] = $neuerSpieltag;
 	}
 
-	function vonString() {
-		return date("d.m.Y",$this->von);
+	function spieltageCount() {
+		return count($this->spieltage);
 	}
 
-	function bisString() {
-		return date("d.m.Y",$this->bis);
+	function &SpieltagForNumber($spTagNr) {
+		$count = $this->spielTageCount();
+		$i = -1;
+		$found=-1;
+		$selectedTag = null;
+		while (($i<$count) and ($found<>0)):
+			$i++;
+			if (isset($this->spieltage[$i]))
+				$found = strcmp($this->spieltage[$i]->nr,$spTagNr);
+
+		endwhile;
+		if ($found==0) return $this->spieltage[$i];
+		else return null;
 	}
 
-}
+	function showPartienHTML() {
+		echo "<BR>Liga = $this->name";
+		foreach ($this->partien as $partie) {
+			$partie->showDetailsHTML();
+		}
+	}
+
+
+	function showDetails() {
+		echo "LigaName = $this->name\n";
+		foreach ($this->spieltage as $spTag) {
+			$spTag->showDetails();
+		}
+	}
+
+	function showDetailsHTML() {
+		echo "<BR>Liga = $this->name";
+		foreach ($this->spieltage as $spTag) {
+			$spTag->showDetailsHTML();
+		}
+	}
+
+
+
+	function loadFile($fileName="") {
+    $sekt="";
+		$status = False;
+		if($fileName != "") {
+      $stand=date("d.m.Y H:i",filemtime($fileName));
+      $datei = fopen($fileName,"rb");
+
+      while (!feof($datei)) {
+        $zeile = fgets($datei,1000);
+        $zeile = chop($zeile);
+        $zeile = trim($zeile);
+        if((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
+          $sekt=trim(substr($zeile,1,-1));
+          }
+        elseif((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
+          $schl = trim(substr($zeile,0,strpos($zeile,"=")));
+          $wert = trim(substr($zeile,strpos($zeile,"=")+1));
+          $iniData[$sekt][$schl] = $wert;
+        }
+      }
+      fclose($datei);
+
+
+      $tCounter = 1;
+      foreach($iniData["Teams"] as $key=>$value) {
+        if(isset($iniData["Team".$tCounter]) and $iniData["Team".$tCounter]!="" ) {
+          $teamName = $value;
+          $teamKurz = $iniData["Teamk"][$key];
+          $team = new team($teamName,$teamKurz,$key);
+          $teamDetails = $iniData["Team".$tCounter];
+          foreach ($teamDetails as $detailsKey=>$detailsValue) {
+            if(isset($detailsKey) and $detailsKey!="") {
+              $team->addKeyValue($detailsKey,$detailsValue);
+            }
+          }
+          $this->addTeam($team);
+          $tCounter++;
+        }
+      }
+      // Partien einlesen
+      $rCounter = 1;
+      while (isset($iniData["Round".$rCounter]) and $iniData["Round".$rCounter]!="" ) {
+
+        $pCounter = 1;
+        $roundSektion = "Round".$rCounter;
+        $startDateString = getIniData("D1".$pCounter,$iniData[$roundSektion]);//$iniData[$roundSektion]["D1"];
+        $endDateString = getIniData("D2".$pCounter,$iniData[$roundSektion]);//$iniData[$roundSektion]["D2"];
+        $startDate = preg_split("/\./",$startDateString);
+        $endDate = preg_split("/\./",$endDateString);
+        if (count($startDate) <> 3 or checkDate($startDate[1],$startDate[0],$startDate[2])==FALSE)
+          $startTime=null;
+        else
+        	$startTime=mktime(0,0,0,(int)$startDate[1],(int)$startDate[0],(int)$startDate[2]);
+
+        if (count($endDate) <> 3 or checkDate($endDate[1],$endDate[0],$endDate[2])==FALSE)
+          $endTime=null;
+				else
+          $endTime= mktime(0,0,0,(int)$endDate[1],(int)$endDate[0],(int)$endDate[2]);
+
+        $spieltag = new spieltag($rCounter,$startTime,$endTime);
+
+        while (isset($iniData[$roundSektion]["TA".$pCounter]) and $iniData[$roundSektion]["TA".$pCounter]!="" ) {
+          $heim =  getIniData("TA".$pCounter,$iniData[$roundSektion]);//$iniData[$roundSektion]["TA".$pCounter];
+          $gast =  getIniData("TB".$pCounter,$iniData[$roundSektion]);//  $iniData[$roundSektion]["TB".$pCounter];
+          $heimTeam = &$this->teamForNumber($heim);
+          $gastTeam = &$this->teamForNumber($gast);
+          $theim =  getIniData("GA".$pCounter,$iniData[$roundSektion]);//  $iniData[$roundSektion]["GA".$pCounter];
+          $tgast =  getIniData("GB".$pCounter,$iniData[$roundSektion]);//  $iniData[$roundSektion]["GB".$pCounter];
+          $notiz =  getIniData("NT".$pCounter,$iniData[$roundSektion]);//  $iniData[$roundSektion]["NT".$pCounter];
+					$zeit =   getIniData("AT".$pCounter,$iniData[$roundSektion]);//$iniData[$roundSektion]["AT".$pCounter];;
+/*
+          $heim =  $iniData[$roundSektion]["TA".$pCounter];
+          $gast =  $iniData[$roundSektion]["TB".$pCounter];
+          $heimTeam = &$this->teamForNumber($heim);
+          $gastTeam = &$this->teamForNumber($gast);
+          $theim =  $iniData[$roundSektion]["GA".$pCounter];
+          $tgast =  $iniData[$roundSektion]["GB".$pCounter];
+          $notiz =  $iniData[$roundSektion]["NT".$pCounter];
+					$zeit = $iniData[$roundSektion]["AT".$pCounter];;
+      //    $be =     $ini->getIniFile($roundSektion,"BE".$pCounter,"");
+      //    $ti =     $ini->getIniFile($roundSektion,"TI".$pCounter,"");
+*/
+          if (isset($heimTeam) and isset($gastTeam)) {
+//					  echo "<BR>Partie zu Spieltag $spieltag->nr hinzugefügt";
+            $partie =new partie($pCounter,$zeit,$notiz,&$heimTeam,&$gastTeam,$theim,$tgast,"","") ;
+						$this->addPartie($partie);  // Partien werden zusätzlich zu der Liga hinzugefügt
+            $spieltag->addPartie($partie);
+          }
+//          else echo "kein Team gefunden";
+          $pCounter++;
+
+        }
+				$this->addSpieltag($spieltag);
+        $rCounter++;
+      }
+
+  		// Options einlesen erst zum schluss um teams,rounds zu setzen
+
+      $optionDetails = $iniData["Options"];
+      $options = new optionsSektion($this,$optionDetails);
+
+			// Liganame setzen
+      if(isset( $optionDetails["Name"]) and $optionDetails["Name"]!="") {
+      	if ($this->name == "")
+        	$this->name = $optionDetails["Name"];
+        else
+        	$optionDetails["Name"]=$this->name;
+ 			}
+      foreach ($optionDetails as $detailsKey=>$detailsValue) {
+        if(isset($detailsKey) and $detailsKey!="") {
+          $options->keyValue[$detailsKey]=$detailsValue;
+        }
+      }
+      $this->options=&$options;
+      $status= True;
+  	}
+
+  return $status;
+	}
+
+	function writeFile($fileName="",$message=0,$deleteEmptyRounds=0) {
+  	$datei = fopen($fileName,"w");
+		if (!$datei) {
+    	echo "<font color=\"#ff0000\">Kann File zum Schreiben nicht öffnen (Schreibrechte?) CLASS liga function writeFile()</font>";
+    	exit;
+		}else if ($datei and $message==1){
+   		echo "<font color=\"#008800\">Writing File $fileName (".$datei.")</font>";
+		}
+    flock($datei,2);
+
+    // Key "Matches" bestimmen
+    foreach ($this->spieltage as $spieltag) {
+      if ($spieltag->partienCount() > $this->options->keyValues['Matches'])
+        $this->options->setKeyValue['Matches'] = $spieltag->partienCount();
+    }
+
+		fputs($datei,"[Options]\n");
+		foreach($this->options->keyValues as $key=>$value) {
+			fputs($datei,"$key=$value\n");
+		}
+		fputs($datei,"\n[Teams]\n");
+		foreach($this->teams as $team) {
+			fputs($datei,$team->nr."=".$team->name."\n");
+		}
+		fputs($datei,"\n[Teamk]\n");
+		foreach($this->teams as $team) {
+			fputs($datei,$team->nr."=".$team->kurz."\n");
+		}
+		foreach($this->teams as $team) {
+			fputs($datei,"\n[Team".$team->nr."]\n");
+			foreach ($team->keyValues as $key=>$value) {
+				fputs($datei,"$key=$value\n");
+			}
+		}
+		$roundCount = 0;
+	  foreach($this->spieltage as $spieltag) {
+	  	if ($spieltag->partienCount() > 0 or $deleteEmptyRounds==1) {
+        $roundCount++;
+        fputs($datei,"\n[Round".$roundCount."]\n");
+        fputs($datei,"D1=".$spieltag->vonString()."\n");
+        fputs($datei,"D2=".$spieltag->bisString()."\n");
+        $x=1;
+//        echo"<BR>".$roundCount.".Spieltag (".$spieltag->partienCount().") Partien gespeichert";
+        foreach ($spieltag->partien as $partie) {
+          fputs($datei,"TA".$x."=".$partie->heim->nr."\n");
+          fputs($datei,"TB".$x."=".$partie->gast->nr."\n");
+          fputs($datei,"GA".$x."=".$partie->hTore."\n");
+          fputs($datei,"GB".$x."=".$partie->gTore."\n");
+          fputs($datei,"AT".$x."=".$partie->zeit."\n");
+          fputs($datei,"NT".$x."=".$partie->notiz."\n");
+          $x++;
+        }
+
+			}
+//    	$roundCount++;
+    }
+		flock($datei,3);
+    fclose($datei);
+	}
+
+  // Nur fuer die Onlinedemo Ligafile wird im Textfeld angezeigt
+	function fileContent() {
+    // Key "Matches" bestimmen
+    foreach ($this->spieltage as $spieltag) {
+      if ($spieltag->partienCount() > $this->options->keyValues['Matches'])
+        $this->options->setKeyValue['Matches'] = $spieltag->partienCount();
+    }
+
+		echo"[Options]\n";
+		foreach($this->options->keyValues as $key=>$value) {
+			echo"$key=$value\n";
+		}
+		echo"\n[Teams]\n";
+		foreach($this->teams as $team) {
+			echo$team->nr."=".$team->name."\n";
+		}
+		echo"\n[Teamk]\n";
+		foreach($this->teams as $team) {
+			echo$team->nr."=".$team->kurz."\n";
+		}
+		foreach($this->teams as $team) {
+			echo"\n[Team".$team->nr."]\n";
+			foreach ($team->keyValues as $key=>$value) {
+				echo"$key=$value\n";
+			}
+		}
+		$roundCount = 1;
+	  foreach($this->spieltage as $spieltag) {
+			echo"\n[Round".$roundCount."]\n";
+			echo"D1=".$spieltag->vonString()."\n";
+			echo"D2=".$spieltag->bisString()."\n";
+	    $x=1;
+	    foreach ($spieltag->partien as $partie) {
+				echo"TA".$x."=".$partie->heim->nr."\n";
+				echo"TB".$x."=".$partie->gast->nr."\n";
+				echo"GA".$x."=".$partie->hTore."\n";
+				echo"GB".$x."=".$partie->gTore."\n";
+				echo"AT".$x."=".$partie->zeit."\n";
+				echo"NT".$x."=".$partie->notiz."\n";
+    		$x++;
+    	}
+    	$roundCount++;
+    }
+	}
+
+} // End Class Liga
+
+//
+// Class sektion
+//
+// Limporter Class Library
+// Copyright (C) 2003 by Tim Schumacher
+// timme@uni.de /
 
 class sektion {
 	var $keyValues;
@@ -229,8 +615,8 @@ class sektion {
 		$this->keyValues[$new_key]=$new_value;
 	}
 
-	function valueForKey($new_key) {
-		return $this->keyValues[$new_key];
+	function valueForKey($key) {
+		return $this->keyValues[$key];
 	}
 
 	function HTMLoutput() {
@@ -241,61 +627,70 @@ class sektion {
 	}
 }
 
+//
+// Class optionsSektion extends sektion
+//
+// Limporter Class Library
+// Copyright (C) 2003 by Tim Schumacher
+// timme@uni.de /
 
 class optionsSektion extends sektion {
 	var $aLiga;
-	var $keyValues = array (
-            "Title"=>"LigaMaker Version 0.1",
-            "Name"=>"Liganame",
-            "Type"=>0,
-            "Teams"=>0,
-            "vonTab"=>0,
-            "bisTab"=>0,
-            "Rounds"=>0,
-            "Matches"=>0,
-            "Actual"=>0,
-            "Kegel"=>0,
-            "HandS"=>0,
-            "PointsForWin"=>2,
-            "PointsForDraw"=>1,
-            "PointsForLost"=>0,
-            "Spez"=>0,
-            "HideDraw"=>0,
-            "OnRun"=>0,
-            "MinusPoints"=>2,
-            "Direct"=>0,
-            "Champ"=>1,
-            "CL"=>0,
-            "CK"=>0,
-            "UC"=>0,
-            "AR"=>0,
-            "AB"=>2,
-            "namePkt"=>"Pkt.",
-            "nameTor"=>"Tore",
-            "DatC"=>1,
-            "DatS"=>1,
-            "DatM"=>1,
-            "DatF"=>"%a.%d.%m. %H:%M",
-            "urlT"=>1,
-            "urlB"=>0,
-            "Graph"=>1,
-            "Kreuz"=>1,
-            "favTeam"=>0,
-            "selTeam"=>0,
-            "kurve1"=>0,
-            "kurve2"=>0,
-            "ticker"=>0,
-            "dataSource"=>"Limporter ImportAddOn for LMO",
-            "dataSourceUrl"=>"");
+	var $keyValues =  array (
+        "Title"=>"Limporter LMO Addon",
+        "Name"=>"Liga Name",
+        "Type"=>0,
+        "Teams"=>0,
+        "vonTab"=>0,
+        "bisTab"=>0,
+        "Rounds"=>0,
+        "Matches"=>0,
+        "Actual"=>0,
+        "Kegel"=>0,
+        "HandS"=>0,
+        "PointsForWin"=>2,
+        "PointsForDraw"=>1,
+        "PointsForLost"=>0,
+        "Spez"=>0,
+        "HideDraw"=>0,
+        "OnRun"=>0,
+        "MinusPoints"=>2,
+        "Direct"=>0,
+        "Champ"=>1,
+        "CL"=>0,
+        "CK"=>0,
+        "UC"=>0,
+        "AR"=>0,
+        "AB"=>2,
+        "namePkt"=>"Pkt.",
+        "nameTor"=>"Tore",
+        "DatC"=>1,
+        "DatS"=>1,
+        "DatM"=>1,
+        "DatF"=>"%a.%d.%m. %H:%M",
+        "urlT"=>1,
+        "urlB"=>0,
+        "Graph"=>1,
+        "Kreuz"=>1,
+        "favTeam"=>0,
+        "selTeam"=>0,
+        "kurve1"=>0,
+        "kurve2"=>0,
+        "ticker"=>0);
 
 
-	function optionsSektion($aLiga) {
+	function optionsSektion($aLiga="",$optionDetails="") {
 		$this->name = "Options";
+		if ($optionDetails <> "") {
+            foreach ($optionDetails as $key=>$values) {
+                $this->keyValues[$key] = $values;
+            }
+		}
 		if(get_class($aLiga)=="liga") { // Wenn eine Liga angegeben wird, werden entsprechende Keys gleich initialisiert
-			$this->keyValues['Name'] = $aLiga->name;
+			if(isset($aLiga->name) and $aLiga->name != "") $this->keyValues['Name'] = $aLiga->name;
+			if(isset($aLiga->aktSpTag) and $aLiga->aktSpTag != "") $this->keyValues['Actual'] = $aLiga->aktSpTag;
 			$this->keyValues['Teams'] = $aLiga->teamCount();
 			$this->keyValues['Rounds'] = $aLiga->spieltageCount();
-			$this->keyValues['Actual'] = $aLiga->aktSpTag;
 			// Key "Matches" bestimmen
 			foreach ($aLiga->spieltage as $spieltag) {
 				if ($spieltag->partienCount() > $this->keyValues['Matches'])
@@ -303,153 +698,9 @@ class optionsSektion extends sektion {
 			}
 		}
 	}
-}
 
-class ligafile {
-
-	var $liga;
-	var $file;
-	var $sektionen;
-
-	function ligafile($new_file,$new_liga,$new_optionsSektion) {
-		$this->file = $new_file;
-
-		if(get_class($new_liga)=="liga"){
-			$this->liga = $new_liga;
-			$this->buildFileContent($new_optionsSektion);
-		}
-		else echo"<BR><B>WARNUNG: class ligafile()</B> in <B>function ligafile() </B>Es wurde keine Liga Objekt angegeben<BR>";
-	}
-
-	function buildFileContent ($optionsSektion) {
-
-		if(get_class($optionsSektion)!="optionssektion") {
-			$optionsSektion = new optionsSektion($this->liga);
-		}
-		$teamSektion = new sektion("Teams");
-		$teamKurzSektion = new sektion("Teamk");
-		$this->addSektion($optionsSektion);
-		$this->addSektion($teamSektion);
-		$this->addSektion($teamKurzSektion);
-
-		foreach($this->liga->teams as $team) {
-			$teamSektion->addKeyValue($team->nr,$team->name);
-			$teamKurzSektion->addKeyValue($team->nr,$team->kurz);
-			$teamDetailsSektion = & new sektion("Team".($team->nr));
-            $teamDetailsSektion->addKeyValue("Sp",0);
-            $teamDetailsSektion->addKeyValue("URL","");
-            $teamDetailsSektion->addKeyValue("NOT","");
-			$this->addSektion($teamDetailsSektion);
-		}
-
-        foreach($this->liga->spieltage as $spieltag) {
-            $roundSektion = & new sektion("Round".($spieltag->nr));
-            $roundSektion->addKeyValue("D1",$spieltag->vonString());
-            $roundSektion->addKeyValue("D2",$spieltag->bisString());
-            $x=1;
-            foreach ($spieltag->partien as $partie) {
-                $roundSektion->addKeyValue("TA".(string)$x,$partie->heim->nr);
-                $roundSektion->addKeyValue("TB".(string)$x,$partie->gast->nr);
-                $roundSektion->addKeyValue("GA".(string)$x,$partie->hTore);
-                $roundSektion->addKeyValue("GB".(string)$x,$partie->gTore);
-                $roundSektion->addKeyValue("AT".(string)$x,$partie->zeit);
-                $roundSektion->addKeyValue("NT".(string)$x,$partie->ort);
-
-                $x++;
-            }
-			$this->addSektion($roundSektion);
-        }
-	}
-
-	function addSektion (&$new_sektion) {
-		$this->sektionen[] = &$new_sektion;
-	}
-
-	function &sektionForName($sektionName) {
-		$count = Count($this->sektionen);
-		$i = -1;
-		$found=-1;
-		$selectedSektion = null;
-		while (($i<$count) and ($found<>0)):
-			$i++;
-			$found = strcmp($this->sektionen[$i]->name,$sektionName);
-		endwhile;
-		if ($found==0) return $this->sektionen[$i];
-		return nil;
-	}
-
-	function fileContentHTML() {
-		foreach ($this->sektionen as $sektion) $sektion->HTMLoutput();
-	}
+} // End CLASS Options
 
 
-	function jsLigaTree() {
-		echo "[";
-		echo "['".$this->liga->name."',null,";
-		$optSektion = $this->sektionForName("Options");
-		echo "['Optionen',null,";
-		foreach ($optSektion->keyValues as $key=>$value) {
-			echo "['".$key." = ".$value."',null],";
-		}
-		echo"],";
-		echo "['Mannschaften',null,";
-		foreach ($this->liga->teams as $team) {
-			echo "['".addslashes($team->name)."',null,";
-			echo "['Kurzbez: ".addslashes($team->kurz)."',null],";
-			echo"],";
-		}
-		echo"],";
-		echo "['Spielplan',null,";
-		foreach ($this->liga->spieltage as $spieltag) {
-			echo "['".$spieltag->nr.". Spieltag vom ".$spieltag->vonBisString()."',null,";
-            foreach ($spieltag->partien as $partie) {
-                echo "['".addslashes($partie->heim->name)." vs. ".addslashes($partie->gast->name)."',null,";
-                echo "['Datum: ".$partie->datumString()." ".$partie->timeString()." Uhr',null],";
-                if($partie->hTore > -1 ) echo "['Ergebnis: ".$partie->hTore." : ".$partie->gTore."',null],";
-                if(isset($partie->notiz)) echo "['Notiz: ".addslashes($partie->notiz)."',null],";
-                echo"],";
-            }
-			echo"],";
-		}
-		echo"],";
-
-		echo"],";
-		echo"]";
-		echo"\n"; // Der muß sein !!
-	}
-
-
-	function fileContent() {
-		foreach ($this->sektionen as $sektion) {
-			echo $sektion->sektionName()."\n";
-			foreach ($sektion->keyValues as $key=>$value) {
-				echo $key."=".$value."\n";
-			}
-		}
-	}
-
-	function writeFile() {
-//		echo "<BR>FILE=".$this->file;
-   		$datei = fopen($this->file,"w");
-		if (!$datei) {
-    		echo "<font color=\"#ff0000\">No Filename found</font>";
-    	exit;
-		}else{
-   			 echo "<font color=\"#008800\">Writing File ".$datei."</font>";
-		}
-    	flock($datei,2);
-
-		foreach ($this->sektionen as $sektion) {
-			fputs($datei,$sektion->sektionName()."\n");
-			foreach ($sektion->keyValues as $key=>$value) {
-				fputs($datei,"$key=$value\n");
-			}
-		}
-
-		flock($datei,3);
-    	fclose($datei);
-	}
-
-} // End class ligafile
 
 ?>

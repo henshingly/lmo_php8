@@ -23,9 +23,19 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
   require_once(dirname(__FILE__).'/../../init.php');
-  require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
-  require_once(PATH_TO_ADDONDIR."/limporter/lim-classes.php");
+  require_once(PATH_TO_ADDONDIR.'/limporter/lim_ini.php');
+  require_once(PATH_TO_ADDONDIR.'/limporter/lim-functions.php');
+  require_once(PATH_TO_ADDONDIR.'/limporter/lim-classes.php');
+  require_once(PATH_TO_ADDONDIR.'/limporter/classes/ini/cIniFileReader.inc');
 
+/*
+	if (isset($HTTP_POST_VARS)) {
+		reset ($HTTP_POST_VARS);
+   	foreach ($HTTP_POST_VARS as $k=>$v) {
+	 		echo "<BR>$k = $v";
+		}
+	}
+*/
   if(isset($vorschau)){
   	$imppage--;  // Vorschaubutton wurde gedrückt
   	$pv=1;
@@ -35,8 +45,10 @@
   if(!isset($xtitel)){$xtitel="";}
   if(!isset($xtype)){$xtype="";}
   if(!isset($ximporturl)){$ximporturl="";}
+  if(!isset($ximportFile)){$ximportFile="";}
   if(!isset($ximporttype)){$ximporttype=0;}
   if(!isset($xprogram)){$xprogram=0;}
+  if(!isset($xparserFile)){$xparserFile="";}
   if($imppage==0){
     if($xfile==""){$xfile="import";}
     if($xtitel==""){$xtitel="Liga Titel";}
@@ -45,80 +57,155 @@
     if(file_exists($dirliga.$xfile.".l98")){
       echo "<font color=\"#ff0000\">".$text[280]."</font>";
       $imppage=0;
-      }
-
     }
+ 	}
   if($imppage==2){
 
+    if(!isset($cols)){
+    	$cols = $lim_colums;
+	 	}
 
-    if($xtype==0){
-      if($xprogram==""){$xprogram="none";}
+		if(isset($xparserFile) and $xparserFile<>'') {
+			$ini = new IniFileReader(PATH_TO_ADDONDIR."/limporter/".$limporter_importDir."/".$xparserFile);
+			$header = $ini->getIniFile('LIMPORTER','ISHEADER',0);
+			$xdetailsCheck = $ini->getIniFile('LIMPORTER','DETAILS',0);
+			$xoffset = $ini->getIniFile('LIMPORTER','FIRSTROW',1) + $header;
+			$xlrow = $ini->getIniFile('LIMPORTER','LASTROW','');
+
+			foreach (array_keys($cols) as $key) {
+				$cols[$key][0] = $ini->getIniFile('LIMPORTER',$key.'_COLUMN',-1);
+				$cols[$key][1] = $ini->getIniFile('LIMPORTER',$key.'_FORMAT',0);
+			}
+			$xparserFile = '';
+		}
+
+    // Aus Performacegründen wird eine lokale Kopie der Importquelle erstellt
+
+    $fileContent = getFileContent($ximporturl);
+    if ($ximporttype == 0) $fileName="importsrc.htm";
+    else $fileName="importsrc.csv";
+
+    if ($fileContent == "") {
+      echo "<font color=\"#ff0000\">Seite konnte nicht gefunden werden</font>";
+      $imppage=1;
+    }
+    else {
+      $file = fopen(PATH_TO_ADDONDIR."/limporter/".$limporter_importDir."/".$fileName,'w+');
+      if ($file) {
+        if(fwrite($file,$fileContent)) {
+          $ximportFile = $fileName;
+        }
+        else {
+          echo "<font color=\"#ff0000\">Kann temporäre Datei nicht erstellen.<BR>Schreibrechte in ".$limporter_importDir." prüfen!</font>";
+          $imppage=1;
+        }
+        fclose($file);
       }
-    else{
-      $xanzst=strlen(decbin($xteams-1));
-      $xmodus = array_pad($array,7,"1");
+      else {
+          echo "<font color=\"#ff0000\">Kann temporäre Datei nicht öffnen.<BR>Schreibrechte in ".$limporter_importDir." prüfen!</font>";
+        $imppage=1;
       }
     }
+  }
   if($imppage==3){ // import and Save
 
+  	if(!isset($xdetailsCheck)){$xdetailsCheck=0;}
+  	if(!isset($header)){$header=0;}
   	if(!isset($xoffset) or $xoffset<1){$xoffset=1;}
-	$offset = $xoffset - 1;
-	// HTML Import
-	if ($ximporttype == 0) {
-        $file=$dirliga.$xfile.".l98";
-        $row = 0;
-        $array = array();
-        $num = 0;
-        $col = 0;
-        $dataArray = buildFieldArray($ximporturl);
-        foreach ($dataArray as $dataRow) {
-            if ($row >= $offset) {
-                $data = split("#",$dataRow);
-                $array[] = $data;
-                $num = count($data);
-                if ($num>$col) $col = $num;
-            }
-            if ($xlrow>0 and $row > ($xlrow-2)) break;
-            $row++;
-        }
-        for ($x=0;$x < count($array);$x++) {
-            $tmp = $array[$x];
-            $array[$x] = array_pad($tmp,$col,"");
-        }
-        $liga = new liga($xtitel,"kurz");
-		$fValues = $limporter_formatValues;
-		$fDelimiter = $limporter_delimiter;
-		buildLigaFromCSVArray($liga,$array,$header,$cols,$fValues,$fDelimiter);
-        $myOptions = new optionsSektion($liga);
-        $myOptions->setKeyValue("dataSource","HTML-Import");
-        $lFile = new ligafile($file,$liga,$myOptions);
-        $lFile->writeFile();
+    $offset = $xoffset - 1;
+    $src = PATH_TO_ADDONDIR."/limporter/".$limporter_importDir."/".$ximportFile;
+    // HTML Import
+    $file=$dirliga.$xfile.".l98";
+    $limFile =  PATH_TO_ADDONDIR."/limporter/".$limporter_importDir."/".$xfile.".lim";
+    if ($ximporttype == 0) {
+      $row = 0;
+      $array = array();
+      $num = 0;
+      $col = 0;
+      $dataArray = buildFieldArray($src,$xdetailsCheck);//$ximportFile
+      foreach ($dataArray as $dataRow) {
+      	if ($row >= $offset) {
+          $data = split("#",$dataRow);
+          $array[] = $data;
+          $num = count($data);
+          if ($num>$col) $col = $num;
+  			}
+        if ($xlrow>0 and $row > ($xlrow-2)) break;
+        $row++;
+      }
+      for ($x=0;$x < count($array);$x++) {
+        $tmp = $array[$x];
+        $array[$x] = array_pad($tmp,$col,"");
+      }
+      $liga = new liga($xtitel,"kurz");
+      buildLigaFromDataArray($liga,$array,$header,$cols,$lim_format_exp);
+      // Importparameter speichern
+      $limSettings = new Sektion('LIMPORTER');
+      $limSettings->setKeyValue("VERSION",LIM_VERSION);
+      $limSettings->setKeyValue("TITLE",$liga->name);
+      $limSettings->setKeyValue("IMPORTTYP","HTML");
+      $limSettings->setKeyValue("URL",$ximporturl);
+      $limSettings->setKeyValue("DETAILS",$xdetailsCheck);
+      $limSettings->setKeyValue("FIRSTROW",$offset);
+      $limSettings->setKeyValue("LASTROW",$xlrow);
+      $limSettings->setKeyValue("ISHEADER",$header);
 
-	}
-	// CSV Import
-	else if ($ximporttype == 1) {
-        $file=$dirliga.$xfile.".l98";
-        $array =  buildCSVArray($ximporturl,$csvchar,$offset);
-        $liga = new liga($xtitel,"kurz");
-		$fValues = $limporter_formatValues;
-		$fDelimiter = $limporter_delimiter;
-		buildLigaFromCSVArray($liga,$array,$header,$cols,$fValues,$fDelimiter);
-        $myOptions = new optionsSektion($liga);
-        $myOptions->setKeyValue("dataSource","CSV-Import");
-        $lFile = new ligafile($file,$liga,$myOptions);
-        $lFile->writeFile();
-	}
+      foreach($cols as $colum=>$value) {
+      	$limSettings->setKeyValue($colum."_COLUMN",$value[0]);
+        $limSettings->setKeyValue($colum."_FORMAT",$value[1]);
+      }
+  		writeLimSettings($limFile,$limSettings);
+      $myOptions = new optionsSektion($liga);
+      $liga->options=&$myOptions;
+      $liga->writeFile($file);
+    }
+    // CSV Import
+    else if ($ximporttype == 1) {
+      $array =  buildCSVArray($src,$csvchar,$offset);//$ximportFile
+      $liga = new liga($xtitel,"kurz");
+      buildLigaFromDataArray($liga,$array,$header,$cols,$lim_format_exp);
+
+  		// Importparameter speichern
+  		$limSettings = new Sektion('LIMPORTER');
+      $limSettings->setKeyValue("VERSION",LIM_VERSION);
+      $limSettings->setKeyValue("TITLE",$liga->name);
+      $limSettings->setKeyValue("IMPORTTYP","CSV");
+      $limSettings->setKeyValue("URL",$ximporturl);
+      $limSettings->setKeyValue("DETAILS",$xdetailsCheck);
+      $limSettings->setKeyValue("FIRSTROW",$offset);
+      $limSettings->setKeyValue("LASTROW",$xlrow);
+      $limSettings->setKeyValue("ISHEADER",$header);
+
+      foreach($cols as $colum=>$value) {
+      	$limSettings->setKeyValue($colum."_COLUMN",$value[0]);
+        $limSettings->setKeyValue($colum."_FORMAT",$value[1]);
+      }
+  		writeLimSettings($limFile,$limSettings);
+
+      $myOptions = new optionsSektion($liga);
+      $liga->options=&$myOptions;
+      $liga->writeFile($file);
+    }
   } // end if($imppage==3)
 ?>
 
+<?PHP include(PATH_TO_ADDONDIR."/limporter/lim-javascript.php");?>
+
+
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="active" align="center"><?PHP echo "Neue Liga importieren";/* $text[243];*/ ?></td>
+    <td align="center"><h1><?PHP echo "Neue Liga importieren";/* $text[243];*/ ?></h1></td>
   </tr>
-  <tr><td align="center"><table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+  <tr><td align="center" class="lmost3">
+
+<?PHP if($imppage<1){ ?>
+  <form onSubmit="return checkHinweis();" name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+<?PHP }
+	else if ($imppage<3){ ?>
+  <form  onSubmit="return checkSettings();" name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+<?PHP }	?>
 
 <?PHP if($imppage<3){ ?>
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="import">
   <input type="hidden" name="imppage" value="<?PHP echo ($imppage+1); ?>">
@@ -129,18 +216,44 @@
 <?PHP } ?>
 <?PHP if($imppage>1){ ?>
   <input type="hidden" name="ximporturl" value="<?PHP echo $ximporturl; ?>">
-  <input type="hidden" name="xanzst" value="<?PHP echo $xanzst; ?>">
-  <input type="hidden" name="xanzsp" value="<?PHP echo $xanzsp; ?>">
+  <input type="hidden" name="ximportFile" value="<?PHP echo $ximportFile; ?>">
 <?PHP }} ?>
+  <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td class="lmost4" colspan="3"><nobr><?PHP echo $text[246]." ".($imppage+1)." ".$text[259]." 4"; ?></nobr></td>
   </tr>
 
 <?PHP if($imppage==0){ ?>
+
+  <tr>
+    <td class="lmost5" width="20">&nbsp;</td>
+    <td class="lmost5" colspan=2 align="left"><B>Bitte beachten Sie folgende Hinweise:</B>
+	  	<table class="lmoInner" cellspacing="3" cellpadding="0" border="0">
+	  		<tr>
+    			<td class="lmost5" width=350>
+    			 <div>Die Verwendung dieses Addons ist ausschließlich für den privaten Gebrauch gestattet. Ligen, die mit diesem Modul erstellt worden sind, dürfen <strong>nicht</strong> für kommerzielle Zwecke jeglicher Form verwendet werden !</div>
+    			Die Inhalte der importierten Dokumente sind möglicherweise urheberrechtlich geschützt. Bitte vergewissern Sie sich, ob die Verwendung der Daten für den privaten Gebrauch gestattet ist. Dieses Modul wurde nur für Schulungszwecken entwickelt, der Autor lehnt jegliche Haftung bei Missbrauch ab.
+		    	</td>
+		    </tr>
+		  </table>
+  </tr>
+  <tr>
+    <td class="lmost5" width="20">&nbsp;</td>
+    <td class="lmost5" colspan="2" align="left"><input class="lmo-formular-input" type="checkbox" name="hw"> Nutzungsbedingungen akzeptieren</td>
+  </tr>
+  <tr>
+    <td class="lmost5" width="20">&nbsp;</td>
+    <td class="lmost5">&nbsp;</td>
+    <td class="lmost5" align="left">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="lmost5" width="20">&nbsp;</td>
+    <td class="lmost5" colspan="2"><nobr><?PHP echo "Allgemeine Ligainformationen" ?></nobr></td>
+  </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[245]; ?>"><?PHP echo $text[244]; ?></acronym></nobr></td>
-    <td class="lmost5"><nobr><acronym title="<?PHP echo $text[245]; ?>"><?PHP echo $dirliga; ?><input class="lmo-formular-input" type="text" name="xfile" size="28" maxlength="28" value="<?PHP echo $xfile; ?>" onChange="lmofilename()">.l98</acronym></nobr></td>
+    <td class="lmost5" align="left"><nobr><acronym title="<?PHP echo $text[245]; ?>"><?PHP echo $dirliga; ?><input class="lmo-formular-input" type="text" name="xfile" size="28" maxlength="28" value="<?PHP echo $xfile; ?>" onChange="lmofilename()">.l98</acronym></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
@@ -155,38 +268,32 @@ echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$
       ?>
      </select></acronym></td>
   </tr>
-  <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo "Datenformat der Importquelle" ?></nobr></td>
-  </tr>
 
 <?PHP
 	include(PATH_TO_ADDONDIR."/limporter/lim-typ_select.php");
  }
 
   if($imppage==1){
- 	include(PATH_TO_ADDONDIR."/limporter/lim-file_select.php");
+ 		include(PATH_TO_ADDONDIR."/limporter/lim-file_select.php");
 ?>
     <tr>
     <td class="lmost5" colspan="3"><nobr>&nbsp;</nobr></td>
   </tr>
 <?PHP
-
 }
-
   if($imppage==2){
-
   	if ($ximporttype == 0) {
-
-		include(PATH_TO_ADDONDIR."/limporter/lim-sis_settings.php");
-
-	} // csv Import
-
-	else if ($ximporttype == 1) {
-	 	include(PATH_TO_ADDONDIR."/limporter/lim-csv_settings.php");
-	}
-
+			include(PATH_TO_ADDONDIR."/limporter/lim-htm_settings.php");
+		} // csv Import
+		else if ($ximporttype == 1) {
+	 		include(PATH_TO_ADDONDIR."/limporter/lim-csv_settings.php");
+		}
   }
 ?>
+  <tr>
+    <td class="lmost5" colspan="3" align="center"><?PHP echo LIM_VERSIONS ; ?></td>
+  </tr>
+
 <?PHP if($imppage<3){ ?>
   <tr>
     <td class="lmost4" colspan="2">
@@ -199,7 +306,7 @@ echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$
     </td>
 <?PHP }else{ ?>
     <td class="lmost4" align="right">
-      <acronym title="<?PHP echo $text[290]; ?>"><input class="lmo-formular-button" type="submit" name="best" value="<?PHP echo $text[289]; ?>"></acronym>
+      <acronym title="<?PHP echo $text[290]; ?>"><input onClick="nextButtonClicked=1;"  class="lmo-formular-button" type="submit" name="best" value="<?PHP echo $text[289]; ?>"></acronym>
     </td>
 <?PHP } ?>
   </tr>
@@ -219,5 +326,7 @@ echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$
   </tr>
 <?PHP } ?>
 
-  </table></td></tr>
+  </table>
+  </td>
+  </tr>
 </table>
