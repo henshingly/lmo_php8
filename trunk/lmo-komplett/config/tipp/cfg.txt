@@ -15,6 +15,7 @@ mailbeianmeldung=0
 entscheidungnv=1
 entscheidungie=1
 einsichterst=0
+nurgesamt=1
 wertverein=1
 aktauswert=1
 aktauswertges=1

@@ -164,7 +164,7 @@ if ($_SESSION['lmouserok']==2) {
             <td align="center"><acronym title="<?=$text[327]?>"><input class="lmo-formular-button" type="submit" value="<?=$text[329]?>"></acronym></th><?
       if ($testshow!=0){?>      
             <td align="right">
-              <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?=$show?>" onclick="return confirm('<?=$text[499]?>');"><img border="0" width="11" heigth="13" src="img/delete.gif" alt="<?=$text[330]?>" title="<?=$text[328]?>"></a>
+              <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?=$show?>" onclick="return confirm('<?=$text[499]?>');"><img border="0" width="11" heigth="13" src="<?=URL_TO_IMGDIR?>/delete.gif" alt="<?=$text[330]?>" title="<?=$text[328]?>"></a>
             </td><?
       }?>
           </tr><? 

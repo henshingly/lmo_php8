@@ -25,7 +25,7 @@
       }
       echo "<td align='center'>";
       if ($i<>$st) {
-        if ($todo=="tabs") {
+        if (isset($todo) && $todo=="tabs") {
          echo "<a href='".$addb.$i."' title='".$k."'>".$j."</a>";
        } else {
          echo "<a href='".$addr.$i."' title='".$k."'>".$j."</a>";

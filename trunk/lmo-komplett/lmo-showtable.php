@@ -196,7 +196,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     if ($teamn[$i]!="") {
       $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong> ".$teamn[$i];
     }?>
-      <a href='#' onclick="alert('<?=mysql_escape_string(strip_tags($lmo_tabellennotiz))?>');window.focus();return false;"><img src='<?=URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt=''><span class='popup'><!--[if IE]><table><tr><td style=\"width: 25em\"><![endif]--><?=nl2br($lmo_tabellennotiz)?><!--[if IE]></td></tr></table><![endif]--></span></a><?
+      <a href='#' onclick="alert('<?=mysql_escape_string(htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?=URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt=''><span class='popup'><!--[if IE]><table><tr><td style="width: 25em"><![endif]--><?=nl2br($lmo_tabellennotiz)?><!--[if IE]></td></tr></table><![endif]--></span></a><?
     $lmo_tabellennotiz="";
   } else {
     echo "&nbsp;";

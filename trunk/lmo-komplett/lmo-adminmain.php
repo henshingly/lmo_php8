@@ -82,9 +82,9 @@ if($_SESSION['lmouserok']==2){
   if(($todo!="options") && ($todo!="addons") && ($todo!="user") && ($todo!="design")){echo "<a href='{$adda}options' onclick='return chklmolink();' title='{$text[87]}'>{$text[86]}</a>";}else{echo $text[86];}
   echo "&nbsp;";
   if(($todo!="tipp") && ($todo!="tippemail") && ($todo!="tippuser") && ($todo!="tippuseredit") && ($todo!="tippoptions")){echo "<a href='{$adda}tipp' onclick='return chklmolink();' title='{$text['tipp'][57]}'>{$text['tipp'][0]}</a>";}else{echo $text['tipp'][0];}
-  echo "&nbsp;";
+  /*echo "&nbsp;";
   if(($todo!="vieweroptions")){echo "<a href='{$adda}vieweroptions' onclick='return chklmolink();' title='{$text['viewer'][21]}'>{$text['viewer'][20]}</a>";}else{echo $text['viewer'][20];}
-  }
+  */}
 elseif($_SESSION['lmouserok']==1){
   if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
   echo "&nbsp;";
@@ -120,7 +120,7 @@ elseif($_SESSION['lmouserok']==1){
     $tipp_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions";
     /*Tippspiel-Addon*/
     /*Viewer-Addon*/
-    $viewer_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=vieweroptions";
+    //$viewer_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=vieweroptions";
     /*Viewer-Addon*/
     if($todo=="new"){require(PATH_TO_LMO."/lmo-adminnew.php");}
     elseif($todo=="open"){require(PATH_TO_LMO."/lmo-adminopen.php");}
