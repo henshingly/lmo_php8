@@ -1,0 +1,141 @@
+FORM { padding: 0px 0px 0px 0px; margin: 0px; }
+TABLE { padding: 0px 0px 0px 0px; margin: 0px; }
+  .lmomaina { background: #ddffdd; border: 1px solid #008800; }
+  .lmosta { background: #ffffdd; border: 1px solid #008800; }
+  .lmostb {  background: #ffffff; border: 1px solid #008800; }
+TD {}
+  .lmomain0 { padding: 1px; background: #ddffdd; color: #880000; font-family: Arial, Helvetica, Sans-Serif; font-size: 11pt; font-weight: bold; }
+  .lmomain1 { padding: 1px; background: #ddffdd; color: #008800; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+    .lmomain1 a:link { background: #ddffdd; color: #008800; font-weight: normal; text-decoration: none; }
+    .lmomain1 a:visited { background: #ddffdd; color: #008800; font-weight: normal; text-decoration: none; }
+    .lmomain1 a:active { background: #008800; color: #ddffdd; font-weight: normal; text-decoration: none; }
+    .lmomain1 a:hover { background: #008800; color: #ddffdd; font-weight: normal; text-decoration: none; }
+  .lmomain2 { padding: 1px; background: #ddffdd; color: #008800; font-family: Arial, Helvetica, Sans-Serif; font-size: 7pt; font-weight: normal; }
+  .lmost0 { background: #ffffdd; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmost0 a:link { background: #ffffdd; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost0 a:visited { background: #ffffdd; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost0 a:active { background: #0000ff; color: #ffffdd; font-weight: normal; text-decoration: none; }
+    .lmost0 a:hover { background: #0000ff; color: #ffffdd; font-weight: normal; text-decoration: none; }
+  .lmost0a { padding: 1px; background: #ffffdd; color: #0000ff; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+    .lmost0a a:link { background: #ffffdd; color: #0000ff; font-weight: bold; text-decoration: none; }
+    .lmost0a a:visited { background: #ffffdd; color: #0000ff; font-weight: bold; text-decoration: none; }
+    .lmost0a a:active { background: #0000ff; color: #ffffdd; font-weight: bold; text-decoration: none; }
+    .lmost0a a:hover { background: #0000ff; color: #ffffdd; font-weight: bold; text-decoration: none; }
+  .lmost1 { padding: 1px; background: #ffffdd; color: #0000ff; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+  .lmost2 { background: #ffffdd; color: #0000ff; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmost2 a:link { background: #ffffdd; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost2 a:visited { background: #ffffdd; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost2 a:active { background: #0000ff; color: #ffffdd; font-weight: normal; text-decoration: none; }
+    .lmost2 a:hover { background: #0000ff; color: #ffffdd; font-weight: normal; text-decoration: none; }
+  .lmost3 { padding: 1px; background: #ffffdd; }
+  .lmost4 { padding: 1px; background: #eeeeee; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+    .lmost4 a:link { background: #eeeeee; color: #000000; font-weight: bold; text-decoration: none; }
+    .lmost4 a:visited { background: #eeeeee; color: #000000; font-weight: bold; text-decoration: none; }
+    .lmost4 a:active { background: #eeeeee; color: #000000; font-weight: bold; text-decoration: overline underline; }
+    .lmost4 a:hover { background: #eeeeee; color: #000000; font-weight: bold; text-decoration: overline underline; }
+  .lmost5 { background: #ffffff; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmost5 a:link { background: #ffffff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost5 a:visited { background: #ffffff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost5 a:active { background: #ffffff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmost5 a:hover { background: #ffffff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmost7 { padding: 1px; background: #ddeeff; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmost7 a:link { background: #ddeeff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost7 a:visited { background: #ddeeff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost7 a:active { background: #ddeeff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmost7 a:hover { background: #ddeeff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmost8 { padding: 1px; background: #ffffff; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+  .lmost9a { padding: 1px; background: #EAED0D; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmost9a a:link { background: #EAED0D; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost9a a:visited { background: #EAED0D; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost9a a:active { background: #EAED0D; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmost9a a:hover { background: #EAED0D; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmost9b { padding: 1px; background: #DFD7D7; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmost9b a:link { background: #DFD7D7; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost9b a:visited { background: #DFD7D7; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost9b a:active { background: #DFD7D7; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmost9b a:hover { background: #DFD7D7; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmost9c { padding: 1px; background: #DAAD42; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmost9c a:link { background: #DAAD42; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost9c a:visited { background: #DAAD42; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmost9c a:active { background: #DAAD42; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmost9c a:hover { background: #DAAD42; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmotab1 { background: #EDF49C; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmotab1 a:link { background: #EDF49C; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab1 a:visited { background: #EDF49C; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab1 a:active { background: #EDF49C; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmotab1 a:hover { background: #EDF49C; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmotab2 { background: #CCCDFE; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmotab2 a:link { background: #CCCDFE; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab2 a:visited { background: #CCCDFE; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab2 a:active { background: #CCCDFE; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmotab2 a:hover { background: #CCCDFE; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmotab3 { background: #A6EEED; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmotab3 a:link { background: #A6EEED; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab3 a:visited { background: #A6EEED; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab3 a:active { background: #A6EEED; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmotab3 a:hover { background: #A6EEED; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmotab4 { background: #C0FFC0; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmotab4 a:link { background: #C0FFC0; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab4 a:visited { background: #C0FFC0; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab4 a:active { background: #C0FFC0; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmotab4 a:hover { background: #C0FFC0; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmotab5 { background: #FFBBD0; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmotab5 a:link { background: #FFBBD0; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab5 a:visited { background: #FFBBD0; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab5 a:active { background: #FFBBD0; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmotab5 a:hover { background: #FFBBD0; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmotab8 { padding: 1px; background: #FFD0E0; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+    .lmotab8 a:link { background: #FFD0E0; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab8 a:visited { background: #FFD0E0; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmotab8 a:active { background: #FFD0E0; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmotab8 a:hover { background: #FFD0E0; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmotab6 { padding: 1px; background: #FDD597; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+  .lmotab7 { padding: 1px; background: #97FDDA; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+  .lmocross1 { padding: 1px; background: #ffffdd; color: #0000ff; font-family: Arial, Helvetica, Sans-Serif; font-size: 8pt; font-weight: bold; }
+  .lmocross2 { padding: 1px; background: #ffffdd; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 8pt; font-weight: normal; }
+    .lmocross2 a:link { background: #ffffdd; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocross2 a:visited { background: #ffffdd; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocross2 a:active { background: #0000ff; color: #ffffdd; font-weight: normal; text-decoration: none; }
+    .lmocross2 a:hover { background: #0000ff; color: #ffffdd; font-weight: normal; text-decoration: none; }
+  .lmocross4 { padding: 1px; background: #eeeeee; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 8pt; font-weight: bold; }
+  .lmocross5 { padding: 1px; background: #ffffff; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 8pt; font-weight: normal; }
+    .lmocross5 a:link { background: #ffffff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocross5 a:visited { background: #ffffff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocross5 a:active { background: #ffffff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmocross5 a:hover { background: #ffffff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmocross6 { padding: 1px; background: #ddeeff; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 8pt; font-weight: normal; }
+    .lmocross6 a:link { background: #ddeeff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocross6 a:visited { background: #ddeeff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocross6 a:active { background: #ddeeff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmocross6 a:hover { background: #ddeeff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmocalni { padding: 1px; background: #eeeeee; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+  .lmocalat { border: 1px solid #eeeeee; padding: 1px; background: #ffffff; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+    .lmocalat a:link { background: #ffffff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocalat a:visited { background: #ffffff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocalat a:active { background: #ffffff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmocalat a:hover { background: #ffffff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmocalht { border: 1px solid #eeeeee; padding: 1px; background: #ddddff; color: #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+    .lmocalht a:link { background: #ddddff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocalht a:visited { background: #ddddff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocalht a:active { background: #ddddff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmocalht a:hover { background: #ddddff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmocalwe { border: 1px solid #eeeeee; padding: 1px; background: #ffffff; color: #dd0000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+    .lmocalwe a:link { background: #ffffff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocalwe a:visited { background: #ffffff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocalwe a:active { background: #ffffff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmocalwe a:hover { background: #ffffff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmocalhe { border: 1px solid #eeeeee; padding: 1px; background: #ddddff; color: #dd0000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+    .lmocalhe a:link { background: #ddddff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocalhe a:visited { background: #ddddff; color: #0000ff; font-weight: normal; text-decoration: none; }
+    .lmocalhe a:active { background: #ddddff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+    .lmocalhe a:hover { background: #ddddff; color: #ff0080; font-weight: normal; text-decoration: overline underline; }
+  .lmotext { padding: 6px; background: #ffffff; color: #000000; text-align: justify; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: normal; }
+DIV,SPAN {}
+  .lmofett { background: #ffffff; color: #000000; text-align: justify; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+LI {}
+  .lmoadminli { padding-bottom: 4px; }
+INPUT { }
+  .lmotickerein { background: #008800; color: #ffffff; border: 1px solid #008800; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+  .lmoadminein { background: #fdfdfd; color: #000000; border: 1px solid #000000; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; }
+  .lmoadminbut { background: #bbffbb; color: #008800; border-left: 1px solid #008800; border-top: 1px solid #008800; border-right: 2px solid #008800; border-bottom: 2px solid #008800; font-family: Arial, Helvetica, Sans-Serif; font-size: 10pt; font-weight: bold; }
+
