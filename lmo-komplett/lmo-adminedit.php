@@ -520,10 +520,12 @@ if ($file != "") {
             <td class="nobr"><input title="<?=$text[122] ?>" class="lmo-formular-input" type="text" name="xatdat<?=$i.$n; ?>" size="10" maxlength="10" value="<?=$dum1; ?>" onChange="dolmoedit()"><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat<?=$i.$n; ?>\',\'<?=$dum3; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'<?=$i.$n; ?>c\',img5)" onMouseOut="lmoimg(\'<?=$i.$n; ?>c\',img4)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin4.gif" name="ximg<?=$i.$n; ?>c" width="12" height="11" border="0"></a>');</script></td>
             <td><input title="<?=$text[123] ?>" class="lmo-formular-input" type="text" name="xattim<?=$i.$n; ?>" size="5" maxlength="5" value="<?=$dum2; ?>" onChange="dolmoedit()"></td>
             <td width="2">&nbsp;</td><? 
-        if($n==0){ ?>
+
+          if($n==0){ ?>
             <td class="nobr" align="right"><? 
-          if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
+          if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
               <select class="lmo-formular-input" name="xteama<?=$i; ?>" onChange="dolmoedit()" title="<?=$text[107] ?>"><?
+            
             if (($klfin == 1) && ($st == $anzst) && ($i == 1)) {
               echo "<option value=\"0\"";
               if ($teama[$st-1][$i] == 0) {
@@ -531,7 +533,7 @@ if ($file != "") {
               }
               echo ">".$teams[0]."</option>";
               for($y = 1; $y <= $anzteams; $y++) {
-                if ($playdown==0 && $teamt[$y] == 2) {
+                if (($playdown==0 && $teamt[$y] == 2) || $playdown==1) {
                   echo "<option value=\"".$y."\"";
                   if ($y == $teama[$st-1][$i]) {
                     echo " selected";
@@ -541,7 +543,7 @@ if ($file != "") {
               }
             } else {
               for($y = 0; $y <= $anzteams; $y++) {
-                if ($playdown==0 && $teamt[$y] == 0) {
+                if (($playdown==0 && $teamt[$y] == 0) || $playdown==1) {
                   echo "<option value=\"".$y."\"";
                   if ($y == $teama[$st-1][$i]) {
                     echo " selected";
@@ -557,7 +559,7 @@ if ($file != "") {
             </td>
             <td align="center" width="10">-</td>
             <td class="nobr"><? 
-          if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
+          if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
               <select class="lmo-formular-input" name="xteamb<?=$i; ?>" onChange="dolmoedit()" title="<?=$text[108] ?>"><?
             if (($klfin == 1) && ($st == $anzst) && ($i == 1)) {
               echo "<option value=\"0\"";
@@ -566,7 +568,7 @@ if ($file != "") {
               }
               echo ">".$teams[0]."</option>";
               for($y = 1; $y <= $anzteams; $y++) {
-                if ($playdown==0 && $teamt[$y] == 2) {
+                if (($playdown==0 && $teamt[$y] == 2) || $playdown==1) {
                   echo "<option value=\"".$y."\"";
                   if ($y == $teamb[$st-1][$i]) {
                     echo " selected";
@@ -576,7 +578,7 @@ if ($file != "") {
               }
             } else {
               for($y = 0; $y <= $anzteams; $y++) {
-                if ($playdown==0 && $teamt[$y] == 0) {
+                if (($playdown==0 && $teamt[$y] == 0) || $playdown==1) {
                   echo "<option value=\"".$y."\"";
                   if ($y == $teamb[$st-1][$i]) {
                     echo " selected";
