@@ -44,6 +44,9 @@ if($save==1){
 </table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
+    <td align="center" colspan="2" class="error"><?=$text[571]?></td>
+  </tr>
+  <tr>
     <td align="center" colspan="2"><h1><?=$text[498]?></h1></td>
   </tr>
   <tr>
