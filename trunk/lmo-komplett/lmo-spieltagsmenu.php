@@ -25,7 +25,11 @@
       }
       echo "<td align='center'>";
       if ($i<>$st) {
-        echo "<a href='".$addr.$i."' title='".$k."'>".$j."</a>";
+        if ($todo=="tabs") {
+         echo "<a href='".$addb.$i."' title='".$k."'>".$j."</a>";
+       } else {
+         echo "<a href='".$addr.$i."' title='".$k."'>".$j."</a>";
+       }
       } else {
         echo $j;
       }
