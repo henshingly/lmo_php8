@@ -57,6 +57,13 @@ if ($_SESSION['lmouserok']==2) {
         }
       }  //Ende Hilfsadmin
       $lmo_admin_data[$save][3]=implode(',',$lmo_helfer_ligen_neu); //Ligen hinzufügen
+      //Erweiterter Hilfsadmin
+      if (trim($_POST["xadmin_rang".$save])==1 && isset($_POST["xadmin_erweitert".$save])) {
+        $lmo_admin_data[$save][4]="1";
+      } else {
+        $lmo_admin_data[$save][4]="0";
+      }
+      
     }
     $main_admin=array_shift($lmo_admin_data);
     usort($lmo_admin_data,"sort_admin");
@@ -127,10 +134,14 @@ if ($_SESSION['lmouserok']==2) {
           </tr>
           <tr>
             <td align="right" rowspan="2"><?=$text[324]?></td>
-            <td align="left" colspan="2"><input class="lmo-formular-input" type="radio" name="xadmin_rang<?=$show?>" value="2" <?if ($lmo_admin[2]==2) echo " checked";?>><?=$text[326]?></td>
+            <td align="left" colspan="2"><input onClick="document.lmoedit<?=$show?>.xadmin_erweitert<?=$show?>.disabled=true" class="lmo-formular-input" type="radio" name="xadmin_rang<?=$show?>" value="2" <?if ($lmo_admin[2]==2) echo " checked";?>><?=$text[326]?></td>
           </tr>
           <tr>
-            <td align="left" colspan="2"><input class="lmo-formular-input" type="radio" name="xadmin_rang<?=$show?>" value="1" <?if ($lmo_admin[2]==1) echo " checked";?>><?=$text[325]?></td>
+            <td align="left" colspan="2"><input onClick="document.lmoedit<?=$show?>.xadmin_erweitert<?=$show?>.disabled=false" class="lmo-formular-input" type="radio" name="xadmin_rang<?=$show?>" value="1" <?if ($lmo_admin[2]==1) echo " checked";?>><?=$text[325]?></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="left"><input class="lmo-formular-input" type="checkbox" name="xadmin_erweitert<?=$show?>" <?if (isset($lmo_admin[4]) && $lmo_admin[4]==1) echo " checked";?> <?if ($lmo_admin[2]==2) echo " disabled";?>><acronym title="<?=$text[560]?>"><?=$text[559]?></acronym></td>
           </tr><?
       if($lmo_admin[2]==1){?>
           <tr>
@@ -138,11 +149,12 @@ if ($_SESSION['lmouserok']==2) {
           </tr><?
         $helfer_ligen=explode(',',$lmo_admin_data[$testshow][3]);
         $handle=opendir(PATH_TO_LMO.'/'.$dirliga);
-        while ($lig=readdir($handle)) {
-          if (substr($lig,-4)==".l98") {
-            $ligenname=substr($lig,0,-4);?>
+        while ($file=readdir($handle)) {
+          require(PATH_TO_LMO."/lmo-openfilename.php");
+          if (substr($file,-4)==".l98") {
+            $ligenname=substr($file,0,-4);?>
           <tr>
-            <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?=$show?>[]" value="<?=$ligenname?>"<?if (in_array($ligenname,$helfer_ligen)) echo " checked"?>><?= $ligenname?></td>
+            <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?=$show?>[]" value="<?=$ligenname?>"<?if (in_array($ligenname,$helfer_ligen)) echo " checked"?>><?= $titel?></td>
           </tr><?
           }
         }

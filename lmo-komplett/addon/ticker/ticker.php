@@ -1,4 +1,23 @@
 <? 
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  * 
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+
+
 require_once(dirname(__FILE__).'/../../init.php');
 
 // Durch Get bestimmter Parameter (für IFRAME)
@@ -22,7 +41,7 @@ $ticker_breite=         isset($tickerbreite)?         $breite:         $ticker_b
 $ticker_geschwindigkeit=isset($tickergeschwindigkeit)?$geschwindigkeit:$ticker_geschwindigkeit;
 
 $ticker_text="";
-$versionticker="LMO-Ticker 1.03 ";
+$versionticker="LMO-Ticker 2.0 ";
 $array = array();  
 $msieg=0;
 $mnote="";
@@ -39,12 +58,21 @@ if (basename($_SERVER['PHP_SELF'])=="ticker.php") {?>
 <head>
 <title><?=$versionticker?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+<style type="text/css">
+  @media screen{
+  body {background:transparent;}
+  body,div,p,marquee {margin:0 auto;padding:0;text-align:center;}
+  }
+  @media print{
+  body {display:none;}
+  }
+</style>
 </head>
 <body><?
 }?>
   <div align="center"><?
 if ($ticker_tickertitel==1) { ?>
-    <p style="padding:0;margin:0 auto;"><?=$text['ticker'][0]?></p><? 
+    <p><?=$text['ticker'][0]?></p><? 
 }?>
     <script type="text/javascript"><?
 if (!isset($file)) {
@@ -131,6 +159,7 @@ foreach($ticker_array as $file){
     $ticker_text.=" +++ $titel ($stx{$text['ticker'][1]}): $hilf $hilf1";
   }
 } //foreach
+$ticker_formnumber="ticker".time();
 $file=$file2;?>
   var msg1="<?=$ticker_text?>";
   var laenge=msg1.length;
@@ -141,7 +170,7 @@ $file=$file2;?>
     var i,k,msg=msg1;
     k=(<?=$ticker_breite?>/msg.length)+1;
     for(i=0;i<=k;i++) msg+=""+msg;
-    document.marqueeform1.marquee.value=msg.substring(position,position+120);
+    document.<?=$ticker_formnumber?>.marquee.value=msg.substring(position,position+120);
     if(position++==laenge) position=0;
     id=setTimeout("marquee()",1000/<?=$ticker_geschwindigkeit+0.1?>);
     }
@@ -156,13 +185,17 @@ $file=$file2;?>
     }
   }
   if (laenge>0) {
-    document.write('<form name="marqueeform1" style="margin:0 auto;"><input style="background:#<?=$ticker_background?>;color:#<?=$ticker_color?>" type="text" name="marquee" SIZE="<?=$ticker_breite?>" readonly><\/form>');
-    document.close();
+    if (document.layers) {  //Bug in NN4 -> Keine Styles erlaubt
+      document.write('<form name="<?=$ticker_formnumber?>"><input type="text" name="marquee" SIZE="<?=$ticker_breite?>" readonly><\/form>');
+    }else{
+      document.write('<form name="<?=$ticker_formnumber?>" style="margin:0 auto;"><input style="background:#<?=$ticker_background?>;color:#<?=$ticker_color?>;border:1px solid #<?=$ticker_color?>;" type="text" name="marquee" SIZE="<?=$ticker_breite?>" readonly><\/form>');
+    }
     marquee();
   }
     </script>
+
     <noscript>
-    <marquee style='background:#<?=$ticker_background?>;color:#<?=$ticker_color?>;width:<?=$ticker_breite?>ex'><?=$ticker_text?></marquee>
+    <marquee style='background:#<?=$ticker_background?>;color:#<?=$ticker_color?>;width:<?=$ticker_breite?>ex;border:1px solid #<?=$ticker_color?>;'><?=$ticker_text?></marquee>
     </noscript>
   </div><?
 //Falls IFRAME - komplettes HTML-Dokument

@@ -470,16 +470,6 @@ acronym {
 .lmotext { 
   text-align: justify; 
 }
-/*
-.lmofett { 
-  background: <?=$lmo_inner_background1?>; 
-  color: <?=$lmo_inner_color1?>; 
-  text-align: justify; 
-  font-family: <?=$lmo_inner_fontfamily1?>; 
-  font-size:85%; 
-  font-weight: bold; 
-}
-*/
 .lmoMain li { 
   padding-bottom: 0.5em; 
 }

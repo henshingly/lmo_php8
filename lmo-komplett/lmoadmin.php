@@ -29,6 +29,7 @@ if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
 if(!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
 if(!isset($_SESSION["lmouserpass"])){$_SESSION["lmouserpass"]="";}
 if(!isset($_SESSION["lmouserfile"])){$_SESSION["lmouserfile"]="";}
+if(!isset($_SESSION["lmouserokerweitert"])){$_SESSION["lmouserokerweitert"]=0;}
 
 $todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:"";
 

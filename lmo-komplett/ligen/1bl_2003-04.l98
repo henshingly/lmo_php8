@@ -35,16 +35,20 @@ urlB=0
 Plan=1
 Sprachauswahl=1
 Ergebnis=1
-mittore=0
+mittore=1
 favTeam=1
 selTeam=1
 ticker=0
 Graph=1
 Kreuz=1
-Tabelle=1
+Tabelle=0
 Ligastats=1
 kurve1=1
 kurve2=11
+
+[News]
+NC=1
+N0=bn,mbnm,
 
 [Teams]
 1=FC Bayern München
@@ -237,7 +241,7 @@ TA1=8
 TB1=9
 GA1=3
 GB1=2
-NT1=
+NT1=Hallo ' Test '
 BE1=
 TI1=0
 AT1=1059831000
@@ -245,7 +249,7 @@ TA2=14
 TB2=10
 GA2=0
 GB2=1
-NT2=
+NT2="Test"'TEst'
 BE2=
 TI2=0
 AT2=1059831000

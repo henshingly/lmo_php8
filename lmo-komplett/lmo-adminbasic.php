@@ -1,23 +1,23 @@
 <?
-// 
-// LigaManager Online 3.02b
-// Copyright (C) 1997-2002 by Frank Hollwitz
-// webmaster@hollwitz.de / http://php.hollwitz.de
-// 
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of
-// the License, or (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-// 
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  * 
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+  
+  
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($file!=""){
@@ -27,7 +27,7 @@ if($file!=""){
   if($save==1){
     switch ($show) {
       case 0:
-        if($_SESSION['lmouserok']==2){
+        if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){
           $titel=isset($_POST["xtitel"])?trim($_POST["xtitel"]):$titel;
           if($titel==""){$titel="No Name";}
           $goalfaktor=isset($_POST["xgoalfaktor"]) && is_numeric($_POST["xgoalfaktor"])?$_POST["xgoalfaktor"]:$goalfaktor;
@@ -45,13 +45,13 @@ if($file!=""){
         }
         break;
       case 1:
-        if($_SESSION['lmouserok']==2){
+        if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){
           $urlt=isset($_POST["xurlt"])?1:0;
           $urlb=isset($_POST["xurlb"])?1:0;
         }
         break;
       case 2:
-        if($_SESSION['lmouserok']==2){
+        if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){
           $datm=isset($_POST["xdatm"])?1:0;
           $datf=isset($_POST["xdatf"])?$_POST["xdatf"]:$defdateformat;
           $datf=isset($_POST["xdatf2"]) && $datf!=$_POST["xdatf2"]?$_POST["xdatf2"]:$datf;
@@ -75,7 +75,7 @@ if($file!=""){
         }
         break;
       case 3:
-        if($_SESSION['lmouserok']==2 && $lmtype==0){
+        if(($_SESSION['lmouserok']==2  || $_SESSION['lmouserokerweitert']==1) && $lmtype==0){
           $minus=isset($_POST["xminus"])?2:1;
           $spez=isset($_POST["xspez"])?1:0;
           $hidr=isset($_POST["xhidr"])?1:0;
@@ -85,7 +85,7 @@ if($file!=""){
         }
         break;
       case 4:
-        if($_SESSION['lmouserok']==2 && $lmtype==0){
+        if(($_SESSION['lmouserok']==2  || $_SESSION['lmouserokerweitert']==1) && $lmtype==0){
           $champ=isset($_POST["xchamp"])?1:0;
           $anzcl=isset($_POST["xanzcl"])?trim($_POST["xanzcl"]):$anzcl;
           $anzck=isset($_POST["xanzck"])?trim($_POST["xanzck"]):$anzck;
@@ -95,7 +95,7 @@ if($file!=""){
         }
         break;
       case 5:
-        if($_SESSION['lmouserok']==2 && $lmtype==0){
+        if(($_SESSION['lmouserok']==2  || $_SESSION['lmouserokerweitert']==1) && $lmtype==0){
           $pns=isset($_POST["xpns"])?trim($_POST["xpns"]):$pns;
           $pnu=isset($_POST["xpnu"])?trim($_POST["xpnu"]):$pnu;
           $pnn=isset($_POST["xpnn"])?trim($_POST["xpnn"]):$pnn;
@@ -124,7 +124,7 @@ include(PATH_TO_LMO."/lmo-adminnaviunten.php");
     <td valign="top">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
         <tr><td align="right"><?if ($show==0) {echo $text[183];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text[183]; ?></a><?}?></td></tr><?
-  if ($_SESSION['lmouserok']==2) {?>
+  if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1) {?>
         <tr><td align="right"><?if ($show==1) {echo $text[264];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=1&amp;file=$file&amp;st=-1";?>"><?=$text[264];?></a><?}?></td></tr>
         <tr><td align="right"><?if ($show==2) {echo $text[250];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=2&amp;file=$file&amp;st=-1";?>"><?=$text[250];?></a><?}?></td></tr><?
     if ($lmtype==0){?>  
@@ -146,7 +146,7 @@ include(PATH_TO_LMO."/lmo-adminnaviunten.php");
         <input type="hidden" name="st" value="<? echo $st; ?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
   if ($show==0) {
-    if($_SESSION['lmouserok']==2){ ?>
+    if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
           <tr>
             <td class="nobr" align="right"><input class="lmo-formular-input" type="text" name="xtitel" size="40" maxlength="60" value="<? echo $titel; ?>" onChange="dolmoedit()"></td>
             <td class="nobr" align="left"><acronym title="<? echo $text[118] ?>"><? echo $text[113]; ?></acronym></td>
@@ -226,7 +226,7 @@ include(PATH_TO_LMO."/lmo-adminnaviunten.php");
           </tr><? 
     }
   }elseif ($show==1) {
-    if($_SESSION['lmouserok']==2){ ?>
+    if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
           <tr>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xurlt" onChange="dolmoedit()"<?if($urlt==1){echo " checked";}?>></td>
             <td class="nobr" align="left"><acronym title="<? echo $text[268] ?>"><? echo $text[267]; ?></acronym></td>
@@ -237,7 +237,7 @@ include(PATH_TO_LMO."/lmo-adminnaviunten.php");
           </tr><? 
     }
   }elseif ($show==2) {
-    if($_SESSION['lmouserok']==2){ 
+    if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ 
       if($lmtype==1){ ?>
           <tr>
             <td class="nobr" align="right"><acronym title="<? echo $text[418] ?>"><? echo $text[417]; ?></acronym></td>
@@ -341,7 +341,7 @@ include(PATH_TO_LMO."/lmo-adminnaviunten.php");
           </tr><? 
     }
   }elseif ($show==3) {
-    if($_SESSION['lmouserok']==2 && $lmtype==0){ ?>
+    if(($_SESSION['lmouserok']==2  || $_SESSION['lmouserokerweitert']==1) && $lmtype==0){ ?>
           <tr>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xminus" onChange="dolmoedit()"<?if($minus==2){echo " checked";}?>>&nbsp;</td>
             <td class="nobr" align="left">&nbsp;<acronym title="<? echo $text[180] ?>"><? echo $text[179]; ?></acronym></td>
@@ -368,7 +368,7 @@ include(PATH_TO_LMO."/lmo-adminnaviunten.php");
           </tr><? 
     }
   }elseif ($show==4) {
-    if($_SESSION['lmouserok']==2){ ?>
+    if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
           <tr>
             <td class="nobr" align="right">&nbsp;<input type="checkbox" class="lmo-formular-input" name="xchamp" onChange="dolmoedit()"<?if($champ==1){echo " checked";}?>>&nbsp;</td>
             <td class="lmoTabelleMeister" align="left">&nbsp;<acronym title="<? echo $text[380] ?>"><? echo $text[379]; ?></acronym></td>
@@ -424,7 +424,7 @@ include(PATH_TO_LMO."/lmo-adminnaviunten.php");
           </tr><? 
     }
   }elseif ($show==5) {
-    if($_SESSION['lmouserok']==2){ ?>
+    if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
           <tr>
             <td class="nobr" colspan="2" align="left">
               <table cellspacing="0" cellpadding="0" border="0">

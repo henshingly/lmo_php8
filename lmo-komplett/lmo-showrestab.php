@@ -1,23 +1,23 @@
 <? 
-// 
-// LigaManager Online 3.02b
-// Copyright (C) 1997-2002 by Frank Hollwitz
-// webmaster@hollwitz.de / http://php.hollwitz.de
-// 
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of
-// the License, or (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-// 
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  * 
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+  
+  
 if (isset($file) && $file != "") {
   $tabtype=isset($_GET['tabtype'])?$_GET['tabtype']:0;
   $newtabtype=0;
@@ -113,11 +113,11 @@ if (isset($file) && $file != "") {
         <tr><?  
    $st0 = $st-1;
    if ($st > 1) {?>
-          <td align="left">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a>&nbsp;</td><?
+          <td align="left">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?> <?=$text[6]?></a>&nbsp;</td><?
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>
-          <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[7]?></a>&nbsp;</td><?
+          <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[8]?> <?=$text[7]?></a>&nbsp;</td><?
    }?>
         </tr>
       </table>

@@ -1,10 +1,13 @@
 [Options]
-Title=<acronym title="Liga Manager Online">LMO</acronym> 3.99alpha1
+Title=<acronym title="Liga Manager Online">LMO</acronym> 3.99&alpha;4
 Name=DFB-Pokal 2001/2002
 Type=1
 Teams=64
+goalfaktor=1
+pointsfaktor=1
 Actual=6
 KlFin=0
+playdown=0
 DatC=1
 DatS=1
 DatM=1
@@ -950,12 +953,12 @@ AT21=1015443000
 D1=11.05.2002
 D2=11.05.2002
 MO=1
-TA1=30
-TB1=28
+TA1=28
+TB1=30
 GA11=2
 GB11=4
 SP11=2
-NT11=fdgh
+NT11=fdgh "'
 BE11=sfgh
 TI11=
-AT11=1021131000
+AT11=1020612600

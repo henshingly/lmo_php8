@@ -1,5 +1,43 @@
 <FilesMatch *.txt>
-order deny,allow
-deny from all
-allow from localhost
+	order deny,allow
+	deny from all
+	allow from localhost
+</FilesMatch>
+<FilesMatch *.aus>
+	order deny,allow
+	deny from all
+	allow from localhost
+</FilesMatch>
+<FilesMatch *.tip>
+	order deny,allow
+	deny from all
+	allow from localhost
+</FilesMatch>
+<FilesMatch *.ein>
+	order deny,allow
+	deny from all
+	allow from localhost
+</FilesMatch>
+<FilesMatch *stat>
+	order deny,allow
+	deny from all
+	allow from localhost
+</FilesMatch>
+<FilesMatch *.cfg>
+	order deny,allow
+	deny from all
+	allow from localhost
+</FilesMatch>
+<FilesMatch *.l98>
+	order deny,allow
+	deny from all
+	allow from localhost
+</FilesMatch>
+<FilesMatch *.csv>
+	order deny,allow
+	deny from all
+	allow from localhost
+</FilesMatch>
+<FilesMatch gpl.txt>
+	allow from all
 </FilesMatch>

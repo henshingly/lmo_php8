@@ -78,8 +78,7 @@ if (!$auswertdatei) {
 flock($auswertdatei, 2);
  
 if (file_exists($file)) {
-  $addw = "lmo-start.php?action=tipp&amp;todo=wert&amp;file=".$file;
-  echo "<p class='message'>".$text['tipp'][29]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text['tipp'][65]."<br></p>";
+  echo "<p class='message'>".$text['tipp'][0].': '.$text['tipp'][29]." <var>".$liga."</var> ".$text['tipp'][65]."</p>";
   if ($todo != "edit") {
     if ($st != 0) {
       $lmo_only_st=true;
