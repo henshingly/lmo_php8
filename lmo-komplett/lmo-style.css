@@ -1,7 +1,7 @@
 FORM { padding: 0px 0px 0px 0px; margin: 0px; }
 acronym {cursor:help;border-bottom:1px dotted #000;}
 TABLE { padding: 0px 0px 0px 0px; margin: 0px; }
-  .lmomaina { background: #e0e8ff; border: 1px solid #000; }
+  .lmomaina { background: #e0e8ff; border: 1px solid #000;  margin:auto;}
   .lmosta { background: #fff; border: 1px solid #000; }
   .lmostb {  background: #fff; border: 1px solid #000; }
 TD {}
@@ -34,7 +34,7 @@ TD {}
     .lmost4 a:visited { background: #e0e8ff; color: #000; font-weight: bold; text-decoration: none; }
     .lmost4 a:active { background: #e0e8ff; color: #000; font-weight: bold; text-decoration: overline underline; }
     .lmost4 a:hover { background: #e0e8ff; color: #000; font-weight: bold; text-decoration: overline underline; }
-  .lmost5 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+  .lmost5 { padding: 2px; line-height:125%; background: #fff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
     .lmost5 a:link { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
     .lmost5 a:visited { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
     .lmost5 a:active { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }

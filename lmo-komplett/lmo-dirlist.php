@@ -21,12 +21,12 @@
 $addi=$_SERVER["PHP_SELF"]."?file=";
 
 
-if($GLOBALS["ftype"]!=""){
-  $verz=opendir(substr($GLOBALS["dirliga"],0,-1));
+if($ftype!=""){
+  $verz=opendir(substr($dirliga,0,-1));
   $dummy=array("");
 
   while($files=readdir($verz)){
-    if(strtolower(substr($files,-4))==$GLOBALS["ftype"])
+    if(strtolower(substr($files,-4))==$ftype)
       {array_push($dummy,$files); }
     }
   closedir($verz);
@@ -43,8 +43,8 @@ if($GLOBALS["ftype"]!=""){
     $t0="";
     $t1="";
     $t4="";
-    $t2=$GLOBALS["text"][2];
-    $datei = fopen($GLOBALS["dirliga"].$files,"r");
+    $t2=$text[2];
+    $datei = fopen($dirliga.$files,"r");
     while (!feof($datei)) {
       $zeile = fgets($datei,1000);
       $zeile=chop($zeile);
@@ -59,7 +59,7 @@ if($GLOBALS["ftype"]!=""){
         if($schl=="Actual"){$t1=$wert;}
         if($schl=="Teams"){$t4=$wert;}
         if($schl=="Type"){
-          if($wert=="1"){$t2=$GLOBALS["text"][370];}
+          if($wert=="1"){$t2=$text[370];}
           }
         if(($t0!="") && ($t1!="") && ($t4!=""))break;
         }
@@ -68,21 +68,21 @@ if($GLOBALS["ftype"]!=""){
     $i++;
     if($t0==""){$j++;$t0="Unbenannte Liga ".$j;}
     if($t1!=""){
-      if($t2==$GLOBALS["text"][2]){
+      if($t2==$text[2]){
         $t3=" / ".$t1.". ".$t2;
         }
       else{
         $t5=strlen(decbin($t4-1));
-        if($t1==$t5-1){$t3=" / ".$GLOBALS["text"][373];}
-        elseif($t1==$t5-2){$t3=" / ".$GLOBALS["text"][372];}
-        elseif($t1==$t5-3){$t3=" / ".$GLOBALS["text"][371];}
-        elseif($t1==$t5-4){$t3=" / ".$GLOBALS["text"][370];}
+        if($t1==$t5-1){$t3=" / ".$text[373];}
+        elseif($t1==$t5-2){$t3=" / ".$text[372];}
+        elseif($t1==$t5-3){$t3=" / ".$text[371];}
+        elseif($t1==$t5-4){$t3=" / ".$text[370];}
         else{$t3=" / ".$t1.". ".$t2;}
         }
       }
     else{$t3="";}
-    echo "<li><a href=\"".$addi.$GLOBALS["dirliga"].$files."\">".$t0."<br><small>".gmdate("d.m.Y H:i",filectime($GLOBALS["dirliga"].$files)).$t3."</small></a></li>";
+    echo "<li><a href=\"".$addi.$dirliga.$files."\">".$t0."<br><small>".gmdate("d.m.Y H:i",filectime($dirliga.$files)).$t3."</small></a></li>";
     }
-  if($i==0){echo "<li>[".$GLOBALS["text"][223]."]</li>";}
+  if($i==0){echo "<li>[".$text[223]."]</li>";}
   }
 ?>

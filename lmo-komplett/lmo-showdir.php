@@ -19,11 +19,33 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 
-function AuswahlLiga()
-{
-  include("Rahmen1.html");
-  $GLOBALS["ftype"] = ".l98"; require("lmo-dirlist.php");
-  include("Rahmen2.html");
-}
-
 ?>
+        <table class="lmostb" width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="lmost5">
+              <ul><?
+    if(isset($_REQUEST["archiv"]) && $_REQUEST["archiv"]!=""){
+      if (substr($ArchivDir,-1)!='/') $ArchivDir.='/';
+      if ($_REQUEST["archiv"]!="dir") {
+        $dirliga=$ArchivDir.$_REQUEST["archiv"].'/';
+        include("lmo-dirlist.php");
+      }else{
+        $dirs = get_dirs($ArchivDir);
+        $count=0;
+        foreach($dirs as $dir) {
+          $count++;
+          $output=@implode("",file("{$ArchivDir}{$dir}/dir-descr.txt"));?>
+                  <li><a href="<?=$_SERVER['PHP_SELF']?>?archiv=<?=$dir?>"><?$output==""?print($dir):print($output);?></a></li><?
+        }
+        if ($count==0) {?>
+                  <li><?=$text[223]?></li><?
+        }
+      }
+    }else{
+      include("lmo-dirlist.php");
+    }?>
+
+              </ul>
+            </td>
+          </tr>
+        </table><?
