@@ -34,8 +34,6 @@
 ##################################################################
 
 
-
-
  Was sind myIniFunctions
 -------------------------
 
@@ -111,8 +109,6 @@
   </html>
   ------------------------------------------
 
-
-
 ----------------------
  Die Haupt-Funktionen
 ----------------------
@@ -141,8 +137,6 @@
   gleichen Verzeichnis aus und schreibt sie in der Reihenfolge wie sie
   in der INI-Datei vorkommen in den Array $MyArray und gibt diesen aus.
 
-
-
   ReadIniItems(string filename, string sectionname[, boolean sort])
   =================================================================
 
@@ -166,8 +160,6 @@
   "my.ini", die sich in dem physischen Verzeichnis "/home/databases" befindet und
   schreibt diese alphabetisch sortiert in den Array $MyArray und gibt diesen aus.
 
-
-
   ReadIniValue(string filename, string sectionname, string itemname)
   ==================================================================
 
@@ -182,8 +174,6 @@
 
   Dieses Beispiel liest aus der Section "Meine Section" den Wert des Items "Feld 1"
   aus und schreibt diesen Wert in die Variable $MyFiels und gibt diesen aus.
-
-
 
   WriteIniValue(string filename, string sectionname, string itemname, string value)
   =================================================================================
@@ -208,8 +198,6 @@
   dem Item "Feld 1" den Wert aus $MyText zu. Das if-Statement ist hier nicht unbedingt
   erforderlich, aber zur Prüfung, ob überhaupt etwas geschrieben wurde, nützlich.
 
-
-
   DeleteIniItem(string filename, string sectionname, string itemname)
   ===================================================================
 
@@ -228,8 +216,6 @@
   Dieses Beispiel löscht aus der INI-Datei "my.ini" unter der Section "Meine Section"
   das Item "Feld 1". Auch hier ist das if-Statement nicht erforderlich, aber zur
   Prüfung nützlich.
-
-
 
   DeleteIniSection(string filename, string sectionname[, boolean recursive[, boolean DeleteIfEmpty])
   ==================================================================================================
@@ -253,8 +239,6 @@
   Section wird auch gelöscht, wenn noch Items in der Section vorhanden sind. Eine
   Prüfung, ob das Löschen erfolgreich war, findet in diesem Beispiel nicht statt.
 
-
-
   RenameIniSection(string filename, string old_sectionname, string new_sectionname)
   =================================================================================
 
@@ -271,8 +255,6 @@
   Dieses Beispiel benennt die Section "Meine Section" aus der INI-Datei "my.ini" in
   "Andere Section" um. Eine Prüfung, ob das Umbenennen erfolgreich war, findet in
   diesem Beispiel nicht statt.
-
-
 
   MoveSection(string filename, string sectionname[, string direction[, int UpperOffset[, int LowerOfset]]])
   =========================================================================================================
@@ -305,8 +287,6 @@
   berücksichtigt. Das bedeutet mit anderen Worten, das "section" in der physischen INI-Datei
   nie auf die erste Stelle rücken kann.
 
-
-
   MoveItem(string filename, string sectionname, string itemname[, string direction])
   ==================================================================================
 
@@ -334,8 +314,6 @@
   Dieses Beispiel verschiebt das Item "datum" der Section "1023" aus der Datei "myIni.ini"
   eine Position nach oben.
 
-
-
   CleanIni(string filename)
   =========================
 
@@ -351,8 +329,6 @@
 
   Dieses Beispiel ersetzt mehrfach vorkommende Leerzeilen in der Datei "my.ini" durch
   eine einzelne Leerzeile.
-
-
 
 ---------------------
  Allgemeine Hinweise
@@ -401,8 +377,6 @@
   Zu beachten ist hierbei, daß durch urlencode() der Text bzw. die Zeile länger wird. 
   Unter normalen Umständen sollte die vorgegebene Zeichenanzahl reichen.
 
-
-
 ----------
  Download
 ----------
@@ -427,8 +401,6 @@
   myIniFunctions nutzen den Sourceforge Tracker als Todo Liste:
   
     http://sourceforge.net/tracker/?atid=452655&group_id=48305&func=browse
-
-
 
 [TOM] <tom@xsurf.net>
 

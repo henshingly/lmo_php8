@@ -101,48 +101,6 @@ $orgtor=$text[38];
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///*
   if (!function_exists("c")){function c($c){if($c==1)return(base64_decode("PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDs0LjBSQzEmbmJzcDstJm5ic3A7PGEgaHJlZj0i"));return(base64_decode("aW5mbyIgdGl0bGU9IkluZm9ybWF0aW9uZW4genUgZGllc2VtIFBIUC1TY3JpcHQgdW5kIHNlaW5lbiBBdXRvcmVuIj6pJm5ic3A7MTk5Ny0yMDA1Jm5ic3A7TE1PLUdyb3VwPC9hPg=="));}}
   if (!function_exists("d")){function d($c){if(strpos(htmlentities($c),htmlentities(base64_decode("PCEtLUluZm9saW5rLS0+")))>0){false;}else{ eval(base64_decode("ZWNobyAnPGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDs0LjBSQzEmbmJzcDstJm5ic3A7PGEgaHJlZj0iaHR0cDovL2xtby5zb3VyY2Vmb3JnZS5uZXQvaW5mbyIgdGl0bGU9IkluZm9ybWF0aW9uZW4genUgZGllc2VtIFBIUC1TY3JpcHQgdW5kIHNlaW5lbiBBdXRvcmVuIj6pJm5ic3A7MTk5Ny0yMDA1Jm5ic3A7TE1PLUdyb3VwPC9hPic7"));}}}//*/?>

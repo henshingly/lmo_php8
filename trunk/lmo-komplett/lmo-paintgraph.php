@@ -89,8 +89,6 @@ $farbe_i = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Absti
 $color = isset($lmo_tabelle_background5)?get_color($lmo_tabelle_background5):array(255, 208, 239);
 $farbe_j = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Abstiegsrelegation
 
-
-
 imagestring($image, 2, 28, 28+(($pgteams+1) * $lmo_faktorvertikal), $pgtext1, $farbe_a);  //untere Beschriftung (SPIELTAGE)
 imagestringup($image, 2, 4, $hoch-28, $pgtext2, $farbe_a);                                //seitliche Beschriftung (PLATZIERUNG)
 
