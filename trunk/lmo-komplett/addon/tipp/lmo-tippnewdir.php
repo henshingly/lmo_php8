@@ -250,14 +250,12 @@ if ($ftype != "") {
           <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<? echo $start1; ?>"><? 
                       echo $text[4]; //bis
                       $verz1 = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
-                      $dummy1 = array("");
-                      while ($tipfiles = readdir($verz1)) {
+                       while ($tipfiles = readdir($verz1)) {
                         if (strtolower(substr($tipfiles, 0, strlen(substr($files, 0, -4)))) == strtolower(substr($files, 0, -4)) && strtolower(substr($tipfiles, -4)) == ".tip") {
                           array_push($dummy1, $tipfiles);
                         }
                       }
                       closedir($verz1);
-                      array_shift($dummy1);
                       $ende1 = count($dummy1);
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
                         if (isset($ende)) {

@@ -55,9 +55,8 @@ if ($file != "") {
       }
       $xa = $xa.$i;
       $xb = $xb.sprintf("%02s",trim($_POST["xplatz".$i]));
-      
       if ($i == trim($_POST["xplatz".$i])) {
-        echo $xc++;
+        $xc++;
       }
     }
     if ($xc == $anzteams) {
@@ -65,10 +64,9 @@ if ($file != "") {
     } else {
       $handp[$st-1] = $xb;
     }
-    //echo $xb;
     require(PATH_TO_LMO."/lmo-savefile.php");
   }
-  
+  echo $todo;
   $handt = array_pad($array, $anzteams+2, "");
   for($i = 0; $i < $anzteams; $i++) {
     if ($handp[$st-1] != 0) {
@@ -84,7 +82,7 @@ if ($file != "") {
     $breite = $breite+2;
   }
   
-  include(PATH_TO_LMO."/lmo-adminnaviunten.php");?>
+  include(PATH_TO_LMO."/lmo-adminsubnavi.php");?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
