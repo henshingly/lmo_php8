@@ -44,10 +44,12 @@ if(($action=="tipp") && ($todo=="")){
     for($u=0;$u<count($dummy);$u++){
       if($dummy[$u]!="" && $ftest2[$u]!=""){
         $dummy[$u]=substr($dummy[$u],0,-4);
-        $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";?>
+        $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
+        if ($tipp_nurgesamt==0) {?>
         <li>
           <a href="<?=$addw.$dirliga.$dummy[$u].".l98"; ?>"><?=$ftest2[$u];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}echo "</a>"; ?>
         </li><?
+        }
       }
     }
   }

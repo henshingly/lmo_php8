@@ -112,14 +112,17 @@ acronym {
   font-size: <?=$lmo_main_fontsize3?>; 
   font-weight: normal;
 }
+.lmoMain .lmoFooter table {
+  font-size:100%;
+}
 
-.lmoMain .lmoFooter a { 
+.lmoMain .lmoFooter a, .lmoMain .lmoFooter table a { 
   text-decoration: underline; 
   background: <?=$lmo_main_background1?>; 
   color: <?=$lmo_main_color1?>;
 }
 
-.lmoMain .lmoFooter a:hover { 
+.lmoMain .lmoFooter a:hover, .lmoMain .lmoFooter table a:hover { 
   background: <?=$lmo_main_color1?>; 
   color: <?=$lmo_main_background1?>; 
 }
@@ -136,7 +139,9 @@ acronym {
   margin:0.5em auto 1.5em auto;
   font-weight: bold;
 }
-
+.lmoMiddle table{
+font-size:100%;
+}
 /** Überschrift im Mittelbereich */
 .lmoMiddle h1{ 
   background: <?=$lmo_middle_background2?>; 
@@ -262,20 +267,20 @@ acronym {
   font-weight: normal;  
 }
 
-.lmoInner .lmoFooter {
+.lmoInner .lmoFooter, .lmoInner .lmoFooter table {
   
   background-color: <?=$lmo_inner_background2?>; 
   color: <?=$lmo_inner_color2?>; 
 }
 
-.lmoInner .lmoFooter a { 
+.lmoInner .lmoFooter a, .lmoInner .lmoFooter table a { 
   line-height:150%;
   text-decoration: underline; 
   background: <?=$lmo_inner_background2?>; 
   color: <?=$lmo_inner_color2?>;
 }
 
-.lmoInner .lmoFooter a:hover { 
+.lmoInner .lmoFooter a:hover, .lmoInner .lmoFooter table a:hover { 
   background: <?=$lmo_inner_color2?>; 
   color: <?=$lmo_inner_background2?>; 
 }
@@ -329,15 +334,9 @@ acronym {
   border:0;
 }
 
-.lmoTabelleMeister { 
+.lmoTabelleMeister, .lmoTabelleMeister a { 
   background: <?=$lmo_tabelle_background1?>; 
   color: <?=$lmo_tabelle_color1?>; 
-}
-
-.lmoTabelleMeister a {
-  background: <?=$lmo_tabelle_background1?>;
-  color: <?=$lmo_tabelle_color1?>; 
-  text-decoration: none;
 }
 
 .lmoTabelleMeister a:hover { 
@@ -345,15 +344,9 @@ acronym {
   color: <?=$lmo_tabelle_background1?>;
 }
 
-.lmoTabelleCleague { 
+.lmoTabelleCleague, .lmoTabelleCleague a { 
   background: <?=$lmo_tabelle_background2?>; 
   color: <?=$lmo_tabelle_color2?>; 
-}
-
-.lmoTabelleCleague a {
-  background: <?=$lmo_tabelle_background2?>; 
-  color: <?=$lmo_tabelle_color2?>; 
-  text-decoration: none;
 }
 
 .lmoTabelleCleague a:hover {
@@ -361,15 +354,9 @@ acronym {
   color: <?=$lmo_tabelle_background2?>; 
 }
 
-.lmoTabelleCleaguequali { 
+.lmoTabelleCleaguequali, .lmoTabelleCleaguequali a { 
   background: <?=$lmo_tabelle_background3?>; 
   color: <?=$lmo_tabelle_color3?>; 
-}
-
-.lmoTabelleCleaguequali a { 
-  background: <?=$lmo_tabelle_background3?>; 
-  color: <?=$lmo_tabelle_color3?>;
-  text-decoration: none;
 }
 
 .lmoTabelleCleaguequali a:hover { 
@@ -377,15 +364,9 @@ acronym {
   color: <?=$lmo_tabelle_background3?>;
 }
 
-.lmoTabelleUefa { 
+.lmoTabelleUefa, .lmoTabelleUefa a { 
   background: <?=$lmo_tabelle_background4?>; 
   color: <?=$lmo_tabelle_color4?>;
-}
-
-.lmoTabelleUefa a { 
-  background: <?=$lmo_tabelle_background4?>; 
-  color: <?=$lmo_tabelle_color4?>;
-  text-decoration: none; 
 }
 
 .lmoTabelleUefa a:hover { 
@@ -393,15 +374,9 @@ acronym {
   color: <?=$lmo_tabelle_background4?>;
 }
 
-.lmoTabelleRelegation { 
+.lmoTabelleRelegation, .lmoTabelleRelegation a { 
   background: <?=$lmo_tabelle_background5?>; 
   color: <?=$lmo_tabelle_color5?>;
-}
-
-.lmoTabelleRelegation a { 
-  background: <?=$lmo_tabelle_background5?>; 
-  color: <?=$lmo_tabelle_color5?>;
-  text-decoration: none; 
 }
 
 .lmoTabelleRelegation a:hover { 
@@ -409,15 +384,9 @@ acronym {
   color: <?=$lmo_tabelle_background5?>;
 }
 
-.lmoTabelleAbsteiger { 
+.lmoTabelleAbsteiger, .lmoTabelleAbsteiger a { 
   background: <?=$lmo_tabelle_background6?>; 
   color: <?=$lmo_tabelle_color6?>;
-}
-
-.lmoTabelleAbsteiger a { 
-  background: <?=$lmo_tabelle_background6?>; 
-  color: <?=$lmo_tabelle_color6?>;
-  text-decoration: none; 
 }
 
 .lmoTabelleAbsteiger a:hover { 
@@ -435,15 +404,9 @@ acronym {
   color: <?=$lmo_tabelle_color8?>; 
 }
 
-.lmoTurnierSieger { 
+.lmoTurnierSieger, .lmoTurnierSieger a { 
   background: <?=$lmo_turnier_background1?>; 
   color: <?=$lmo_turnier_color1?>;
-}
-
-.lmoTurnierSieger a { 
-  background: <?=$lmo_turnier_background1?>; 
-  color: <?=$lmo_turnier_color1?>;
-  text-decoration: none;
 }
 
 .lmoTurnierSieger a:hover{ 
@@ -451,20 +414,25 @@ acronym {
   color: <?=$lmo_turnier_background1?>; 
 }
 
-.lmoTurnierVerlierer { 
+.lmoTurnierVerlierer, .lmoTurnierVerlierer a { 
   background: <?=$lmo_turnier_background2?>; 
   color: <?=$lmo_turnier_color2?>;
-}
-
-.lmoTurnierVerlierer a { 
-  background: <?=$lmo_turnier_background2?>; 
-  color: <?=$lmo_turnier_color2?>;
-  text-decoration: none;
 }
 
 .lmoTurnierVerlierer a:hover{ 
   background: <?=$lmo_turnier_color2?>; 
   color: <?=$lmo_turnier_background2?>; 
+}
+
+.lmoTabelleMeister a, 
+.lmoTabelleCleague a, 
+.lmoTabelleCleaguequali a, 
+.lmoTabelleUefa a, 
+.lmoTabelleRelegation a, 
+.lmoTabelleAbsteiger a, 
+.lmoTurnierSieger a, 
+.lmoTurnierVerlierer a {
+  text-decoration: none;
 }
 
 .lmotext { 
@@ -491,11 +459,26 @@ acronym {
 
 }
 
-
-a.colorpicker {
+.colorpicker {
   border: 1px solid #000; 
   font-size:15px; 
   text-decoration: none;
+  width:					11px;
+	height:					11px;
+  background-position:	center center;
+  background-repeat:		no-repeat;
+	margin:					0 2px;
+  display:inline;
+}
+
+.colorpicker.nocolor {
+  background:url("<?=URL_TO_IMGDIR?>/transparent.gif");
+  /*background-color:red;*/
+}
+.colorpicker.invalid {
+  background:url("<?=URL_TO_IMGDIR?>/attention.gif") 50% 50% no-repeat;
+  /*background-color:green;*/
+  border: 0; 
 }
 
 a.colorpicker table {
@@ -509,15 +492,15 @@ a.colorpicker table {
 	background-position:	center center;
 	background-repeat:		no-repeat;
 	margin:					0 2px;
+  display:inline;
 }
 
 .sort-arrow.descending {
-	background-image:		url("img/downsimple.png");
-
+	background-image:		url("<?=URL_TO_IMGDIR?>/downsimple.png");
 }
 
 .sort-arrow.ascending {
-	background-image:		url("img/upsimple.png");
+  background-image:		url("<?=URL_TO_IMGDIR?>/upsimple.png");
 }
 a span.popup, a:link span.popup{
 	display: none;

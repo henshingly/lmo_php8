@@ -105,8 +105,11 @@ SortableTable.prototype.initHeader = function (oSortTypes) {
 	var img, c;
 	for (var i = 0; i < l; i++) {
 		c = cells[i];
-		img = this.document.createElement("IMG");
-		img.src = "img/blank.png";
+		img = this.document.createElement("pre");
+    myText = document.createTextNode("  ");
+		img.appendChild(myText);
+    img.className = "sort-arrow";
+    //for (i in img.style) alert(i+" "+img.style[i])
 		c.style.cursor="n-resize";
     c.appendChild(img);
 		if (oSortTypes[i] != null) {

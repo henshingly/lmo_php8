@@ -7,7 +7,7 @@ goalfaktor=10
 pointsfaktor=10
 Rounds=34
 Matches=9
-Actual=34
+Actual=1
 Kegel=0
 HandS=1
 PointsForWin=3
@@ -2776,7 +2776,7 @@ TI9=
 AT9=0
 
 [Round34]
-HS=030201040506070809101112131415161718
+HS=0
 D1=04.06.2004
 D2=04.06.2004
 TA1=9

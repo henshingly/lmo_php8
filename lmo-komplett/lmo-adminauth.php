@@ -40,24 +40,22 @@ if($action=="admin"){
             <td align="center">
               <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
                 <tr>
-                  <td align="right">
-<acronym title="<?=$text[307] ?>"><?=" ".$text[306]; ?></acronym></td>
-                  <td align="left"><acronym title="<?=$text[307] ?>"><input class="lmo-formular-input" type="text" name="xusername" size="16" maxlength="32" value="<?=$_SESSION['lmousername']; ?>"></acronym></a>
+                  <td align="right"><acronym title="<?=$text[307] ?>"><?=" ".$text[306]; ?></acronym></td>
+                  <td align="left"><input class="lmo-formular-input" type="text" name="xusername" size="16" maxlength="32" value="<?=$_SESSION['lmousername']; ?>"></a>
                 </tr>
                 <tr>
-                  <td align="right">
-<acronym title="<?=$text[309] ?>"><?=" ".$text[308]; ?></acronym></td>
-                  <td align="left"><acronym title="<?=$text[309] ?>"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value="<?=$_SESSION['lmouserpass']; ?>"></acronym></a>
+                  <td align="right"><acronym title="<?=$text[309] ?>"><?=" ".$text[308]; ?></acronym></td>
+                  <td align="left"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value="<?=$_SESSION['lmouserpass']; ?>"></a>
                 </tr>
                 <tr>
                   <td align="left">&nbsp;</td>
-                  <td align="left"><acronym title="<?=$text[311] ?>"><input class="lmo-formular-button" type="submit" name="xusersub" value="<?=$text[310]; ?>"></acronym></td>
+                  <td align="left"><input title="<?=$text[311] ?>" class="lmo-formular-button" type="submit" name="xusersub" value="<?=$text[310]; ?>"></td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
-            <td align="center" class="lmoMenu"><a href="lmo.php" title="<?=$text[470]; ?>"><?=$text[469]; ?></a></td>
+            <td align="center" class="lmoMenu"><a href="<?=URL_TO_LMO?>/lmo.php" title="<?=$text[470]; ?>"><?=$text[469]; ?></a></td>
           </tr>
         </table>
       </form>

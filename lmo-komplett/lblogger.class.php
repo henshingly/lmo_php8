@@ -71,7 +71,7 @@ class LBLogger {
 		if(!empty($configpath))
 			$this->configpath = $configpath;
 		else
-			$this->configpath = dirname(__FILE__)."/main.conf.php";
+			$this->configpath = dirname(__FILE__)."/lblogger.conf.php";
 			
 		$this->name = $name;
 		$this->initialize();
@@ -670,7 +670,7 @@ class LBLogger {
 		$size = sizeof($this->settings["mailrecipients"]);
 		
 		$message = $this->settings["mailmessage"]."\r\n".$line;
-		$message = $message."\r\n \r\n---\r\nNOTE: You have received this email, because you are listed in the LBLogger System as recipient. If you wont receive automatic messages in future, remove your email adress from 'main.conf.php'.";
+		$message = $message."\r\n \r\n---\r\nNOTE: You have received this email, because you are listed in the LBLogger System as recipient. If you wont receive automatic messages in future, remove your email adress from 'lblogger.conf.php'.";
 		
 		for($a=0; $a<$size; $a++) {
 			mail($this->settings["mailrecipients"][$a], "System message: $level", $message, "From: LBLogger");

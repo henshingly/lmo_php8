@@ -79,84 +79,87 @@ if (!isset($file)) {
   $file="";
 }
 $file2=$file;
-
 $ticker_array=explode(",",$ticker_ligen);
 foreach($ticker_array as $file){
   $file=$dirliga.$file;
-
+  ob_start();
   require(PATH_TO_LMO."/lmo-openfile.php");
-
-  if ($ticker_tickerart==2){
-    $hilf="";
-    $trenner=" +++ ";
-    
-    if (isset($nlines)) {
-      for($i=0;$i<count($nlines);$i++){
-        $hilf.=$nlines[$i].$trenner;
-      }
-    }else{
-      $hilf.=$text['ticker'][4].$trenner;
-    }
-    $ticker_text.=$hilf;
-  }else{ 
-    $hilf="";
-    $hilf1="";
-    if ($lmtype==0) {
-      for ($i=0; $i<$anzsp; $i++) {
-        if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ) {
-
-          if ($mspez[$stx-1][$i]=="&nbsp;") {
-            $mspezhilf="";
-          } else {
-            $mspezhilf=" ".$mspez[$stx-1][$i];
-          }
-          if ($favteam==$teama[$stx-1][$i] || $favteam==$teamb[$stx-1][$i] || $ticker_tickerart==1) {
-            if ($msieg[$stx-1][$i]==1) {
-              $dummy1=$text['ticker'][2].":".addslashes($teams[$teama[$stx-1][$i]]." ".$text[211]);
-            } else {
-              $dummy1="";
-            }
-            if ($msieg[$stx-1][$i]==2) {
-              $dummy2=$text['ticker'][2].":".addslashes($teams[$teamb[$stx-1][$i]]." ".$text[211]);
-            } else {
-              $dumm2y="";
-            }
-            if ($msieg[$stx-1][$i]==3) {
-              $dummy3=$text['ticker'][2].":".addslashes($text['ticker'][3]);
-            } else {
-              $dummy3="";
-            }
-            if ($mnote[$stx-1][$i]!="" && $ticker_notizanzeigen==1) {
-              $dummy4=" Notiz".": ".$mnote[$stx-1][$i];
-            } else {
-              $dummy4="";
-            }
-            $hilf=$hilf.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".applyFactor($goala[$stx-1][$i],$goalfaktor).":".applyFactor($goalb[$stx-1][$i],$goalfaktor).$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4." +++ ";
-          }
+  ob_end_clean();
+  
+  $trenner=" +++ ";
+  if (isset($lmtype)) {
+    if ($ticker_tickerart==2){
+      $hilf="";
+      if (isset($nlines)) {
+        for($i=0;$i<count($nlines);$i++){
+          $hilf.=$nlines[$i].$trenner;
         }
-      }  //for
-    }else{
-      for ($i=0; $i<$anzsp; $i++) {
-        for ($n=0; $n<$modus[$stx-1]; $n++) {
+      }else{
+        $hilf.=$text['ticker'][4].$trenner;
+      }
+      $ticker_text.=$hilf;
+    }else{ 
+      $hilf="";
+      $hilf1="";
+      if ($lmtype==0) {
+        for ($i=0; $i<$anzsp; $i++) {
           if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ) {
-            if ($mspez[$stx-1][$i][$n]=="&nbsp;") {
+  
+            if ($mspez[$stx-1][$i]=="&nbsp;") {
               $mspezhilf="";
             } else {
-              $mspezhilf=" ".$mspez[$stx-1][$i][$n];
+              $mspezhilf=" ".$mspez[$stx-1][$i];
             }
             if ($favteam==$teama[$stx-1][$i] || $favteam==$teamb[$stx-1][$i] || $ticker_tickerart==1) {
-              if ($mnote[$stx-1][$i][$n]!="" && $notizanzeigen==1) {
-                $dummy4=" Notiz".": ".$mnote[$stx-1][$i][$n];
+              if ($msieg[$stx-1][$i]==1) {
+                $dummy1=$text['ticker'][2].":".addslashes($teams[$teama[$stx-1][$i]]." ".$text[211]);
+              } else {
+                $dummy1="";
+              }
+              if ($msieg[$stx-1][$i]==2) {
+                $dummy2=$text['ticker'][2].":".addslashes($teams[$teamb[$stx-1][$i]]." ".$text[211]);
+              } else {
+                $dumm2y="";
+              }
+              if ($msieg[$stx-1][$i]==3) {
+                $dummy3=$text['ticker'][2].":".addslashes($text['ticker'][3]);
+              } else {
+                $dummy3="";
+              }
+              if ($mnote[$stx-1][$i]!="" && $ticker_notizanzeigen==1) {
+                $dummy4=" Notiz".": ".$mnote[$stx-1][$i];
               } else {
                 $dummy4="";
               }
-              $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".applyFactor($goala[$stx-1][$i][$n],$goalfaktor).":".applyFactor($goalb[$stx-1][$i][$n],$goalfaktor).$mspezhilf.$dummy4." +++ ";
+              $hilf=$hilf.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".applyFactor($goala[$stx-1][$i],$goalfaktor).":".applyFactor($goalb[$stx-1][$i],$goalfaktor).$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4." +++ ";
+            }
+          }
+        }  //for
+      }else{
+        for ($i=0; $i<$anzsp; $i++) {
+          for ($n=0; $n<$modus[$stx-1]; $n++) {
+            if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ) {
+              if ($mspez[$stx-1][$i][$n]=="&nbsp;") {
+                $mspezhilf="";
+              } else {
+                $mspezhilf=" ".$mspez[$stx-1][$i][$n];
+              }
+              if ($favteam==$teama[$stx-1][$i] || $favteam==$teamb[$stx-1][$i] || $ticker_tickerart==1) {
+                if ($mnote[$stx-1][$i][$n]!="" && $notizanzeigen==1) {
+                  $dummy4=" Notiz".": ".$mnote[$stx-1][$i][$n];
+                } else {
+                  $dummy4="";
+                }
+                $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".applyFactor($goala[$stx-1][$i][$n],$goalfaktor).":".applyFactor($goalb[$stx-1][$i][$n],$goalfaktor).$mspezhilf.$dummy4." +++ ";
+              }
             }
           }
         }
       }
+      $ticker_text.=" +++ $titel ($stx{$text['ticker'][1]}): $hilf $hilf1";
     }
-    $ticker_text.=" +++ $titel ($stx{$text['ticker'][1]}): $hilf $hilf1";
+  } else {
+    $ticker_text=$text[224].$trenner;
   }
 } //foreach
 $ticker_formnumber="ticker".time();

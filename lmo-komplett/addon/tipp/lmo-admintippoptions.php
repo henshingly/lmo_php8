@@ -151,17 +151,17 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][172]; ?></td>
-            <td align="left"><input type="checkbox" name="xtipptabelle1" onClick="dolmoedit()"<?if($tipp_tippeinsicht==1){echo " checked";}?>></td>
+            <td align="left"><input type="checkbox" name="xtipptabelle1" onClick="dolmoedit()"<?if($tipp_tipptabelle1==1){echo " checked";}?>></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text[133]; ?></td>
-            <td align="left"><input type="checkbox" name="xtippfieber" onClick="dolmoedit()"<?if($tipp_tippeinsicht==1){echo " checked";}?>></td>
+            <td align="left"><input type="checkbox" name="xtippfieber" onClick="dolmoedit()"<?if($tipp_tippfieber==1){echo " checked";}?>></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][56]; ?></td>
-            <td align="left"><input type="checkbox" name="xgesamt" onClick="dolmoedit()"<?if($tipp_tippeinsicht==1){echo " checked";}?>></select>
+            <td align="left"><input type="checkbox" name="xgesamt" onClick="dolmoedit()"<?if($tipp_gesamt==1){echo " checked";}?>></select>
             </td>
           </tr>
           <tr>
@@ -309,11 +309,6 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
   }elseif ($show==7) {?>
           <tr>
             <td width="20">&nbsp;</td>
-            <td align="right"><? echo $text['tipp'][302]; ?></td>
-            <td align="left"><input type="checkbox" name="xnurgesamteinsicht" onClick="dolmoedit()"<?if($tipp_nurgesamteinsicht==1){echo " checked";}?>></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][160]; ?></td>
             <td align="left">
               <select name="xeinsichterst" onChange="dolmoedit()">
@@ -340,6 +335,11 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td align="left"><input type="checkbox" name="xwertverein" onClick="dolmoedit()"<?if($tipp_wertverein==1){echo " checked";}?>></td>
           </tr><? 
   }elseif ($show==9) {?>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><? echo $text['tipp'][302]; ?></td>
+            <td align="left"><input type="checkbox" name="xnurgesamt" onClick="dolmoedit()"<?if($tipp_nurgesamt==1){echo " checked";}?><? if($tipp_gesamt==0){echo " disabled";}?>></td>
+          </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][200]; ?></td>

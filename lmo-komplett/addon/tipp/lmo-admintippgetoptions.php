@@ -41,7 +41,12 @@
       isset($_POST["xtippeinsicht"])?                         $tipp_tippeinsicht=1:                                   $tipp_tippeinsicht=0;
       isset($_POST["xtipptabelle1"])?                         $tipp_tipptabelle1=1:                                   $tipp_tipptabelle1=0;
       isset($_POST["xtippfieber"])?                           $tipp_tippfieber=1:                                     $tipp_tippfieber=0;
-      isset($_POST["xgesamt"])?                               $tipp_gesamt=1:                                         $tipp_gesamt=0;
+      if (isset($_POST["xgesamt"])) {
+        $tipp_gesamt=1;
+      } else {
+        $tipp_gesamt=0;
+        $tipp_nurgesamt=0;
+      }
       isset($_POST["xregeln"])?                               $tipp_regeln=1:                                         $tipp_regeln=0;
       if($tipp_regeln==1){
         isset($_POST["xregelnlink"])?                         $tipp_regelnlink=$_POST["xregelnlink"]:                 $tipp_regelnlink="tippregeln.php";
@@ -91,7 +96,6 @@
       isset($_POST["xakteinsicht"])?                          $tipp_akteinsicht=1:                                    $tipp_akteinsicht=0;
       break;
     case 7:
-      isset($_POST["xnurgesamteinsicht"])?                    $tipp_nurgesamteinsicht=1:                              $tipp_nurgesamteinsicht=0;
       isset($_POST["xeinsichterst"])?                         $tipp_einsichterst=$_POST["xeinsichterst"]:             $tipp_einsichterst=0;
       isset($_POST["xanzseite"])  &&
         is_numeric($_POST["xanzseite"]) &&
@@ -102,6 +106,7 @@
       isset($_POST["xwertverein"])?                           $tipp_wertverein=1:                                     $tipp_wertverein=0;
       break;
     case 9:
+      isset($_POST["xnurgesamt"])?                  $tipp_nurgesamt=1:                            $tipp_nurgesamt=0;
       isset($_POST["xshownick"])?                             $tipp_shownick=$_POST["xshownick"]:                     $tipp_shownick="";
       isset($_POST["xshowname"])?                             $tipp_showname=$_POST["xshowname"]:                     $tipp_showname="";
       isset($_POST["xshowemail"])?                            $tipp_showemail=$_POST["xshowemail"]:                   $tipp_showemail="";
