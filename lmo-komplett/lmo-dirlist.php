@@ -27,6 +27,7 @@ $_SESSION['liga_sort_direction']=isset($_REQUEST['liga_sort_direction'])?$_REQUE
 $verz=opendir(substr(PATH_TO_LMO."/".$dirliga,0,-1));
 $liga_counter=0;
 $unbenannte_liga_counter=0;
+$ligadatei=array();
 while($files=readdir($verz)){
   if(strtolower(substr($files,-4))==".l98"){
     $sekt="";
