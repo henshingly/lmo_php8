@@ -180,7 +180,7 @@ if ($filepointer = @fopen($filename,"r+b")) {
 		</td>
 	</tr>
 	<tr>
-		<td class="uhrzeit" colspan="<?=$spaltenzahl+1?>"><?=$text['spieler'][28]?>: <?= date("d.m.Y H:i", filemtime($filename)); ?> <?=$text['spieler'][29]?><br><?=$text['spieler'][35]?></td>
+		<td class="uhrzeit" colspan="<?=$spaltenzahl+1?>"><?=$text['spieler'][28]?>: <?= date("d.m.Y H:i", filemtime($filename)); ?> <?=$text['spieler'][29]?></td>
 	</tr>
 </table>
 <?

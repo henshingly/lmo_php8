@@ -30,7 +30,7 @@
 require_once(dirname(__FILE__).'/../../init.php');
 require_once(PATH_TO_ADDONDIR."/viewer/lmo_viewer_func.php");
 $template=isset($_GET['template'])?$_GET['template']:"";
-$template_hauptteil=file_exists(PATH_TO_TEMPLATEDIR.'/viewer/'.$template."-haupt.tpl.php")?new LBTemplate('viewer/'.$template."-haupt.tpl.php"):new LBTemplate("viewer/standard-haupt.tpl.php");$p0="p1";$$p0=c(1).$addm.c(0);
+$template_hauptteil=file_exists(PATH_TO_TEMPLATEDIR.'/viewer/'.$template."-haupt.tpl.php")?new LBTemplate('viewer/'.$template."-haupt.tpl.php"):new LBTemplate("viewer/standard-haupt.tpl.php");
 
 $akt_date_ts = time();  // Aktuelle Zeit im Unix-Zeitstempel-Format (UZF)
 $date_anfang_ts = zeitberechnung("1", -$viewer_tage_minus);  // Anzeige ab wann?
