@@ -309,6 +309,11 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
   }elseif ($show==7) {?>
           <tr>
             <td width="20">&nbsp;</td>
+            <td align="right"><? echo $text['tipp'][302]; ?></td>
+            <td align="left"><input type="checkbox" name="xnurgesamteinsicht" onClick="dolmoedit()"<?if($tipp_nurgesamteinsicht==1){echo " checked";}?>></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][160]; ?></td>
             <td align="left">
               <select name="xeinsichterst" onChange="dolmoedit()">
