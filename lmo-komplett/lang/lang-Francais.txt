@@ -52,9 +52,9 @@
 051=Dummy
 052=Beinvenue!
 053=Choisiez votre liegue s&apos;il-vous-plaît:
-054=LigaManager Online 3.02b
-055=&copy 1997-2002 by Frank Hollwitz
-056=[ <a href="http://php.hollwitz.de/" target="_blank" title="Dieses und weitere Scripte können Sie auf meiner PHP-Seite downloaden">Hollwitz.PHP</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Die Ligaliste</a> | <a href="http://www.hollwitz.de/" target="_blank" title="Schauen Sie auch mal auf meiner Homepage vorbei">Hollwitz.Net(z)</a> ]
+054=<acronym title="Liga Manager Online">LMO</acronym>4
+055=© 1997-2005 LMO-Group
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
 057=la statistique 1 de
 058=la statistique 2 de
 059=pas une équipe
