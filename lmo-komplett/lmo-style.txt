@@ -1,4 +1,5 @@
 FORM { padding: 0px 0px 0px 0px; margin: 0px; }
+acronym {cursor:help;border-bottom:1px dotted inherit;}
 TABLE { padding: 0px 0px 0px 0px; margin: 0px; }
   .lmomaina { background: $tababack; border: $tababord; }
   .lmosta { background: $tabbback; border: $tabbbord; }
