@@ -31,7 +31,7 @@ if (($action == "admin") && ($todo == "delete") && ($_SESSION['lmouserok'] == 2)
       echo "<p class='error'>".$dfile." ".$text[298]."</p>";
     }
   }?>
-<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><h1><?=$text[295]; ?></h1></td>
   </tr>

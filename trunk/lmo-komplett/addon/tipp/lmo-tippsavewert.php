@@ -117,7 +117,7 @@ if (file_exists($file)) {
         $gef = 0;
         for($g = 0; $g < count($dummd) && $gef == 0; $g++) {
           //Tipper tippt diese Liga
-          $dumme = split("[|]", $dummd[$g]);
+          $dumme = explode('|', $dummd[$g]);
           if ($tippernick1 == $dumme[0]) {
             fputs($auswertdatei, "\n[".$dumme[0]."]\n");
             fputs($auswertdatei, "Team=".$dumme[5]."\n");

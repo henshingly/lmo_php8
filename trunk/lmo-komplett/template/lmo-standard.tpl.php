@@ -12,17 +12,17 @@
     <td colspan="2" align="center"><!--Hauptteil--></td>
   </tr>
   <tr>
-    <td class="lmoFooter" colspan="2" align="center"><!--Savehtml--></td>
+    <td colspan="2" align="center"><!--Savehtml--></td>
   </tr>
   <tr>
   <td class="lmoFooter" colspan="2" align="left"><!--Sprachauswahl--></td>
   </tr>
   <tr>
-    <td class="lmoFooter" colspan="2">
+    <td colspan="2">
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td valign="bottom" align="left"><!--Ligenuebersicht--></td>
-          <td valign="bottom" align="right"><!--LetzteAuswertung--><br><!--Berechnungszeit--><br><!--Infolink--></td>
+          <td class="lmoFooter" valign="bottom" align="right"><!--LetzteAuswertung--><br><!--Berechnungszeit--><!--Infolink--></td>
         </tr>
 	    </table>
     </td>

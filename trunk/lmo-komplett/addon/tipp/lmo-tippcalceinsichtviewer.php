@@ -43,7 +43,7 @@ if (file_exists($einsichtfile)) {
   array_shift($tippdaten);
    
   for($l = 1; $l <= count($tippdaten); $l++) {
-    $dum = split("[|]", $tippdaten[$l-1]);
+    $dum = explode('|', $tippdaten[$l-1]);
     $op4 = substr($dum[1], 0, 2);
     if ($op4 == "GA") {
       $tippa0 = $dum[2];

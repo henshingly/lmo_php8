@@ -55,7 +55,7 @@ if (($action == "tipp") && ($todo == "daten")) {
   $tipp_tipper_gefunden = 0;
   $xtippernick="";
   for($i = 1; $i < count($users) && $tipp_tipper_gefunden == 0; $i++) {
-    $tipp_tipper_daten = split("[|]", $users[$i]);
+    $tipp_tipper_daten = explode('|', $users[$i]);
     if ($lmotippername == $tipp_tipper_daten[0]) {
       // Nick gefunden
       $tipp_tipper_gefunden = 1;

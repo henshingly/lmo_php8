@@ -27,9 +27,9 @@ for($n=0;$n<$modus[$st-1];$n++){
     } else {
       $dum1="";
     }?>
-    <td class="nobr"><?=$dum1; ?></td><? 
+    <td class="nobr" align="left"><?=$dum1; ?></td><? 
   }?>
-    <td width="2">&nbsp;</td><? 
+    <td>&nbsp;</td><? 
   if ($n==0) {
     $m1=array($goala[$st-1][$i][0],$goala[$st-1][$i][1],$goala[$st-1][$i][2],$goala[$st-1][$i][3],$goala[$st-1][$i][4],$goala[$st-1][$i][5],$goala[$st-1][$i][6]);
     $m2=array($goalb[$st-1][$i][0],$goalb[$st-1][$i][1],$goalb[$st-1][$i][2],$goalb[$st-1][$i][3],$goalb[$st-1][$i][4],$goalb[$st-1][$i][5],$goalb[$st-1][$i][6]);
@@ -53,11 +53,11 @@ for($n=0;$n<$modus[$st-1];$n++){
     echo '</td>';?>
     <td align="center" width="10">-</td><?
     if ($m==1) {
-      echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"right\">";
+      echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"left\">";
     } else if ($m==2) {
-      echo "<td class=\"lmoTurnierSieger nobr\" align=\"right\">";
+      echo "<td class=\"lmoTurnierSieger nobr\" align=\"left\">";
     } else {
-      echo "<td class=\"nobr\" align=\"right\">";
+      echo "<td class=\"nobr\" align=\"left\">";
     }
     if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
       echo "<strong>";
@@ -82,7 +82,7 @@ for($n=0;$n<$modus[$st-1];$n++){
   if ($goaltippb[$i][$n]=="-1") {
     $goaltippb[$i][$n]="";
   }?>
-    <td width="2">&nbsp;</td><?
+    <td>&nbsp;</td><?
   if($tipp_showtendenzabs==1){ ?>
     <td align="center" class="nobr"><? 
     if ($btip1==false) {
@@ -279,7 +279,7 @@ for($n=0;$n<$modus[$st-1];$n++){
   }?>
       </strong>
     </td>
-    <td width="2">&nbsp;</td>
+    <td>&nbsp;</td>
     <td><?
   /** Mannschaftsicons finden
    */

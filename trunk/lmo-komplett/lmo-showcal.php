@@ -66,8 +66,8 @@
         echo "<tr>";
       }
       echo "<td align='left' height=\"50\" valign=\"top\" class=\"".$stil."\">".$i;
-      if ($dum2[$i] != "") {
-        echo "<br>".$dum2[$i];
+      if (!empty($lmo_stlink[$i])) {
+        echo "<br>".$lmo_stlink[$i];
       }
       echo "</td>";
       if ($heute == 7) {
@@ -76,12 +76,14 @@
       $j = $heute;
     }
   }
+  //print_r($dum2);
   if ($j != 7) {
     for ($i = 0; $i < 7-$j; $i++) {
       echo "<td class=\"lmoLeer\">&nbsp;</td>";
     }
     echo "</tr>";
   }
+  
 } else {
 
 ?>
@@ -114,7 +116,7 @@
     echo "<a href=\"".$addk.$k.$i.$md."\" title=\"".$text[172]."\">".$text[159+$i]."</a></th>";
     
 
-    $lmo_output_buffer[$i]=$dum2[$i]."<br>";
+    $lmo_output_buffer[$i]=$lmo_stlink[$i]."<br>";
   
     echo "</td>";
     if (($i == 6) || ($i == 12)) {

@@ -41,11 +41,11 @@ if($action=="admin"){
               <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
                 <tr>
                   <td align="right"><acronym title="<?=$text[307] ?>"><?=" ".$text[306]; ?></acronym></td>
-                  <td align="left"><input class="lmo-formular-input" type="text" name="xusername" size="16" maxlength="32" value="<?=$_SESSION['lmousername']; ?>"></a>
+                  <td align="left"><input class="lmo-formular-input" type="text" name="xusername" size="16" maxlength="32" value="<?=$_SESSION['lmousername']; ?>"></td>
                 </tr>
                 <tr>
                   <td align="right"><acronym title="<?=$text[309] ?>"><?=" ".$text[308]; ?></acronym></td>
-                  <td align="left"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value="<?=$_SESSION['lmouserpass']; ?>"></a>
+                  <td align="left"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value="<?=$_SESSION['lmouserpass']; ?>"></td>
                 </tr>
                 <tr>
                   <td align="left">&nbsp;</td>

@@ -1,5 +1,5 @@
 [Options]
-Title=<acronym title="Liga Manager Online">LMO</acronym> 4.0&beta;1
+Title=<acronym title="Liga Manager Online">LMO</acronym> 4.0&beta;2
 Name=1. Fussball-Bundesliga (2003/2004)
 Type=0
 Teams=18
@@ -236,8 +236,8 @@ NOT=
 
 [Round1]
 HS=0
-D1=01.08.2003
-D2=03.08.2003
+D1=01.08.2002
+D2=03.09.2003
 TA1=8
 TB1=9
 GA1=3
@@ -277,7 +277,7 @@ GB5=2
 NT5=
 BE5=http://kicker.de/content/spielplan/spielbericht.asp?folder=3200&object=635066&liga=1&saison=2003/04&spieltag=1&spielpaarung=635066&turnier=&bvc_atab=4
 TI5=0
-AT5=1059924600
+AT5=1062603000
 TA6=15
 TB6=16
 GA6=4
@@ -293,7 +293,7 @@ GB7=1
 NT7=
 BE7=http://kicker.de/content/spielplan/spielbericht.asp?folder=3200&object=635068&liga=1&saison=2003/04&spieltag=1&spielpaarung=635068&turnier=&bvc_atab=4
 TI7=0
-AT7=1059762600
+AT7=1028226600
 TA8=4
 TB8=11
 GA8=0
@@ -301,7 +301,7 @@ GB8=3
 NT8=
 BE8=http://kicker.de/content/spielplan/spielbericht.asp?folder=3200&object=635069&liga=1&saison=2003/04&spieltag=1&spielpaarung=635069&turnier=&bvc_atab=4
 TI8=0
-AT8=1059831000
+AT8=1060263000
 TA9=7
 TB9=3
 GA9=2

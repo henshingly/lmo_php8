@@ -31,13 +31,24 @@ acronym {
 
 /** Auﬂenbereich*/
 .lmoMain { 
-  background: <?=$lmo_main_background1?>; 
-  color: <?=$lmo_main_color1?>;
+  background: <?=$lmo_main_background1?> repeat; 
+  <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1";?>;
   border: 0<?=$lmo_main_border1?>; 
   margin:0.3em auto;
   padding:0.2em;
-  font-size: <?=$lmo_main_fontsize1?>;
-  font-family: <?=$lmo_main_fontfamily1?>;
+  <?=empty($lmo_main_fontsize1)?'':"font-size: $lmo_main_fontsize1";?>;
+  <?=empty($lmo_main_fontfamily1)?'':"font-family: $lmo_main_fontfamily1";?>;
+}
+
+.lmoMain a{ 
+  background: <?=$lmo_main_background1?> repeat; 
+  <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1";?>;
+  text-decoration:none;
+}
+
+.lmoMain a:hover { 
+  background: <?=$lmo_main_color1?> repeat; 
+  <?=empty($lmo_main_background1)?'':"color: $lmo_main_background1";?>;
 }
 
 .lmoMain p { 
@@ -48,10 +59,11 @@ acronym {
 .lmoMain h1 { 
   padding: 0.2em; 
   margin:0.2em;
-  background: <?=$lmo_main_background2?>; 
-  color: <?=$lmo_main_color2?>; 
-  font-size: <?=$lmo_main_fontsize2?>; 
-  font-family: <?=$lmo_main_fontfamily2?>;
+  background: <?=$lmo_main_background2?> repeat; 
+  <?=empty($lmo_main_color2)?'':"color: $lmo_main_color2";?>; 
+  font-weight: bold;
+  <?=empty($lmo_main_fontsize2)?'':"font-size: $lmo_main_fontsize2";?>;
+  <?=empty($lmo_main_fontfamily2)?'':"font-family: $lmo_main_fontfamily2";?>; 
 }
 
 /** Auﬂenbereich Men¸ */
@@ -59,8 +71,8 @@ acronym {
   padding: 0.2em;
   font-weight: bold; 
   white-space:nowrap;
-  background: <?=$lmo_main_background4?>; 
-  color: <?=$lmo_main_color4?>; 
+  background: <?=$lmo_main_background4?> repeat; 
+  <?=empty($lmo_main_color4)?'':"color: $lmo_main_color4";?>; 
   border:0<?=$lmo_main_border4?>;
 }
 
@@ -69,14 +81,14 @@ acronym {
   padding:0.1em;
   font-weight: normal; 
   text-decoration: none; 
-  background: <?=$lmo_main_background5?>; 
-  color: <?=$lmo_main_color5?>; 
+  background: <?=$lmo_main_background5?> repeat; 
+  <?=empty($lmo_main_color5)?'':"color: $lmo_main_color5";?>; 
   border:0<?=$lmo_main_border5?>;
 }
 
 .lmoMain .lmoMenu a:hover { 
-  background: <?=$lmo_main_color5?>; 
-  color: <?=$lmo_main_background5?>; 
+  background: <?=$lmo_main_color5?> repeat; 
+  <?=empty($lmo_main_background5)?'':"color: $lmo_main_background5";?>; 
 }
 
 /** Auﬂenbereich Untermen¸ */
@@ -84,8 +96,8 @@ acronym {
   padding: 0.2em;
   font-weight: bold; 
   white-space:nowrap;
-  background: <?=$lmo_main_background6?>; 
-  color: <?=$lmo_main_color6?>; 
+  background: <?=$lmo_main_background6?> repeat; 
+  <?=empty($lmo_main_color6)?'':"color: $lmo_main_color6";?>; 
   border:0<?=$lmo_main_border6?>;
 }
 
@@ -94,57 +106,54 @@ acronym {
   padding:0.1em;
   font-weight: normal; 
   text-decoration: none; 
-  background: <?=$lmo_main_background7?>; 
-  color: <?=$lmo_main_color7?>; 
+  background: <?=$lmo_main_background7?> repeat; 
+  <?=empty($lmo_main_color7)?'':"color: $lmo_main_color7";?>; 
   border:0<?=$lmo_main_border7?>;
 }
 
 .lmoMain .lmoSubmenu a:hover { 
-  background: <?=$lmo_main_color7?>; 
-  color: <?=$lmo_main_background7?>; 
+  background: <?=$lmo_main_color7?> repeat; 
+  <?=empty($lmo_main_background7)?'':"color: $lmo_main_background7";?>; 
 }
 
-/** Auﬂenbereich Fusszeilen */
-.lmoMain .lmoFooter { 
-  padding: 0;
-  font-size: <?=$lmo_main_fontsize3?>; 
-  font-weight: normal;
-}
+
 .lmoMain .lmoFooter table {
   font-size:100%;
 }
 
 .lmoMain .lmoFooter a, .lmoMain .lmoFooter table a { 
   text-decoration: underline; 
-  background: <?=$lmo_main_background1?>; 
-  color: <?=$lmo_main_color1?>;
+  background: <?=$lmo_main_background1?> repeat; 
+  <?=empty($lmo_main_color1)?'':"color: $lmo_main_color1";?>;
 }
 
 .lmoMain .lmoFooter a:hover, .lmoMain .lmoFooter table a:hover { 
-  background: <?=$lmo_main_color1?>; 
-  color: <?=$lmo_main_background1?>; 
+  background: <?=$lmo_main_color1?> repeat; 
+  <?=empty($lmo_main_background1)?'':"color: $lmo_main_background1";?>; 
 }
 
 /** Ende Auﬂenbereich */
 
 /** Mittelbereich */
 .lmoMiddle { 
-  padding: 0.2em; 
-  background: <?=$lmo_middle_background1?>; 
-  color: <?=$lmo_middle_color1?>;
-  font-size: <?=$lmo_middle_fontsize1?>;
+  background: <?=$lmo_middle_background1?> repeat; 
+  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>;
+  font-weight: bold;
+  <?=empty($lmo_middle_fontsize1)?'':"font-size: $lmo_middle_fontsize1";?>;
   border: 0<?=$lmo_middle_border1?>; 
   margin:0.5em auto 1.5em auto;
-  font-weight: bold;
+  padding: 0.2em;
 }
 .lmoMiddle table{
 font-size:100%;
 }
+
 /** ‹berschrift im Mittelbereich */
 .lmoMiddle h1{ 
-  background: <?=$lmo_middle_background2?>; 
-  color: <?=$lmo_middle_color2?>;
-  font-size:<?=$lmo_middle_fontsize2?>;
+  background: <?=$lmo_middle_background2?> repeat; 
+  <?=empty($lmo_middle_color2)?'':"color: $lmo_middle_color2";?>;
+  font-weight: bold;
+  <?=empty($lmo_middle_fontsize2)?'':"font-size: $lmo_middle_fontsize2";?>;
   margin:0.1em;
   padding:0.1em;
 }
@@ -153,22 +162,22 @@ font-size:100%;
 .lmoMiddle a {  
   line-height:150%;
   text-decoration: none; 
-  background: <?=$lmo_middle_background1?>; 
-  color: <?=$lmo_middle_color1?>; 
+  background: <?=$lmo_middle_background1?> repeat; 
+  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>; 
   font-weight: normal;
 }
 
 .lmoMiddle a:hover { 
-  background: <?=$lmo_middle_color1?>; 
-  color: <?=$lmo_middle_background1?>; 
+  background: <?=$lmo_middle_color1?> repeat; 
+  <?=empty($lmo_middle_background1)?'':"color: $lmo_middle_background1";?>; 
 }
 
 .lmoMiddle .lmoMenu {
   padding: 0.2em;
   font-weight: bold; 
   white-space:nowrap;
-  background: <?=$lmo_middle_background4?>; 
-  color: <?=$lmo_middle_color4?>;
+  background: <?=$lmo_middle_background4?> repeat; 
+  <?=empty($lmo_middle_color4)?'':"color: $lmo_middle_color4";?>;
   border: 0<?=$lmo_middle_border4?>;
 }
 
@@ -177,55 +186,54 @@ font-size:100%;
   padding:0.1em;
   font-weight: normal; 
   text-decoration: none; 
-  background: <?=$lmo_middle_background5?>; 
-  color: <?=$lmo_middle_color5?>;
+  background: <?=$lmo_middle_background5?> repeat; 
+  <?=empty($lmo_middle_color5)?'':"color: $lmo_middle_color5";?>;
   border: 0<?=$lmo_middle_border5?>; 
 }
 
 .lmoMiddle .lmoMenu a:hover {
-  background: <?=$lmo_middle_color5?>; 
-  color: <?=$lmo_middle_background5?>;
+  background: <?=$lmo_middle_color5?> repeat; 
+  <?=empty($lmo_middle_background5)?'':"color: $lmo_middle_background5";?>;
 }
 
 .lmoMiddle .lmoSubmenu {
-  background: <?=$lmo_middle_background6?>; 
-  color: <?=$lmo_middle_color6?>;
+  background: <?=$lmo_middle_background6?> repeat; 
+  <?=empty($lmo_middle_color6)?'':"color: $lmo_middle_color6";?>;
   border: 0<?=$lmo_middle_border6?>;
 }
 
 .lmoMiddle .lmoSubmenu a {
   padding:0;
-  background: <?=$lmo_middle_background7?>; 
-  color: <?=$lmo_middle_color7?>;
+  background: <?=$lmo_middle_background7?> repeat; 
+  <?=empty($lmo_middle_color7)?'':"color: $lmo_middle_color7";?>;
   border: 0<?=$lmo_middle_border7?>; 
 }
 
 .lmoMiddle .lmoSubmenu a:hover {
-  background: <?=$lmo_middle_color7?>; 
-  color: <?=$lmo_middle_background7?>;
+  background: <?=$lmo_middle_color7?> repeat; 
+  <?=empty($lmo_middle_background7)?'':"color: $lmo_middle_background7";?>;
 }
 
 /** Innerer Bereich */
 .lmoInner {
   margin-left:auto;margin-right:auto;
   padding: 0.2em; 
-  background: <?=$lmo_inner_background1?>; 
-  color: <?=$lmo_inner_color1?>;
-  font-size: <?=$lmo_inner_fontsize1?>;
+  background: <?=$lmo_inner_background1?> repeat; 
+  <?=empty($lmo_inner_color1)?'':"color: $lmo_inner_color1";?>;
+  <?=empty($lmo_inner_fontsize1)?'':"font-size: $lmo_inner_fontsize1";?>;
   border: 0<?=$lmo_inner_border1?>; 
-  font-weight: normal;
 }
 
 .lmoInner a {  
   line-height:100%;
   text-decoration: none; 
-  background: <?=$lmo_inner_background1?>; 
-  color: <?=$lmo_inner_color1?>; 
+  background: <?=$lmo_inner_background1?> repeat; 
+  <?=empty($lmo_inner_color1)?'':"color: $lmo_inner_color1";?>; 
   font-weight: normal;
 }
 .lmoInner a:hover {  
-  background: <?=$lmo_inner_color1?>; 
-  color: <?=$lmo_inner_background1?>; 
+  background: <?=$lmo_inner_color1?> repeat; 
+  <?=empty($lmo_inner_background1)?'':"color: $lmo_inner_background1";?>; 
 }
 
 .lmoInner td {
@@ -237,54 +245,54 @@ font-size:100%;
 
 .lmoInner th {
   padding: 0.2em; 
-  background-color: <?=$lmo_inner_background2?>; 
-  color: <?=$lmo_inner_color2?>; 
+  background: <?=$lmo_inner_background2?> repeat; 
+  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2";?>; 
 }
 
 .lmoInner th a {
-  background-color: <?=$lmo_inner_background2?>; 
-  color: <?=$lmo_inner_color2?>; 
+  background: <?=$lmo_inner_background2?> repeat; 
+  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2";?>; 
 }
 
 .lmoInner th a:hover {
-  background-color: <?=$lmo_inner_color2?>; 
-  color: <?=$lmo_inner_background2?>; 
+  background: <?=$lmo_inner_color2?> repeat; 
+  <?=empty($lmo_inner_background2)?'':"color: $lmo_inner_background2";?>; 
 }
 
 .lmoInner caption {
   margin: 0 auto;
   padding: 0.4em; 
-  background-color: <?=$lmo_middle_background1?>; 
-  color: <?=$lmo_middle_color1?>; 
+  background: <?=$lmo_middle_background1?> repeat; 
+  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>; 
   font-weight: bold;
 }
 
 .lmoInner caption a{
-  background-color: <?=$lmo_middle_background1?>; 
-  color: <?=$lmo_middle_color1?>; 
+  background: <?=$lmo_middle_background1?> repeat; 
+  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>; 
   font-weight: normal;  
 }
 
 .lmoInner .lmoFooter, .lmoInner .lmoFooter table {
   
-  background-color: <?=$lmo_inner_background2?>; 
-  color: <?=$lmo_inner_color2?>; 
+  background: <?=$lmo_inner_background2?> repeat; 
+  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2";?>; 
 }
 
 .lmoInner .lmoFooter a, .lmoInner .lmoFooter table a { 
   line-height:150%;
   text-decoration: underline; 
-  background: <?=$lmo_inner_background2?>; 
-  color: <?=$lmo_inner_color2?>;
+  background: <?=$lmo_inner_background2?> repeat; 
+  <?=empty($lmo_inner_color2)?'':"color: $lmo_inner_color2";?>;
 }
 
 .lmoInner .lmoFooter a:hover, .lmoInner .lmoFooter table a:hover { 
-  background: <?=$lmo_inner_color2?>; 
-  color: <?=$lmo_inner_background2?>; 
+  background: <?=$lmo_inner_color2?> repeat; 
+  <?=empty($lmo_inner_background2)?'':"color: $lmo_inner_background2";?>; 
 }
 
 .lmoKreuz table {
-  font-size: <?=$lmo_kreuz_fontsize1?>;
+  <?=empty($lmo_kreuz_fontsize1)?'':"font-size: $lmo_kreuz_fontsize1";?>;
 }
 
 .lmoKreuz table, 
@@ -310,7 +318,7 @@ font-size:100%;
 }
 
 .lmoBackMarkierung {
-  background: <?=$lmo_kreuzkal_background1?>; 
+  background: <?=$lmo_kreuzkal_background1?> repeat; 
 }
 
 .lmoBackMarkierung a { 
@@ -318,108 +326,114 @@ font-size:100%;
   height:100%;
   line-height:190%;
   padding:0;
-  background: <?=$lmo_kreuzkal_background1?>; 
+  background: <?=$lmo_kreuzkal_background1?> repeat; 
   font-weight: bold; 
 }
 
 .lmoFrontMarkierung { 
-  color: <?=$lmo_kreuzkal_color1?>; 
+  <?=empty($lmo_kreuzkal_color1)?'':"color: $lmo_kreuzkal_color1";?>; 
   font-weight: bold; 
 }
 
 .lmoLeer {
-  background-color: <?=$lmo_kreuzkal_background2?>;
+  background: <?=$lmo_kreuzkal_background2?> repeat;
   border:0;
 }
 
+/** Fusszeilen */
+.lmoMain .lmoFooter { 
+  padding: 0;
+  <?=empty($lmo_footer_fontsize1)?'':"font-size: $lmo_footer_fontsize1";?>; 
+}
+
 .lmoTabelleMeister, .lmoTabelleMeister a { 
-  background: <?=$lmo_tabelle_background1?>; 
-  color: <?=$lmo_tabelle_color1?>; 
+  background: <?=$lmo_tabelle_background1?> repeat; 
+  <?=empty($lmo_tabelle_color1)?'':"color: $lmo_tabelle_color1";?>; 
 }
 
 .lmoTabelleMeister a:hover { 
-  background: <?=$lmo_tabelle_color1?>; 
-  color: <?=$lmo_tabelle_background1?>;
+  background: <?=$lmo_tabelle_color1?> repeat; 
+  <?=empty($lmo_tabelle_background1)?'':"color: $lmo_tabelle_background1";?>;
 }
 
 .lmoTabelleCleague, .lmoTabelleCleague a { 
-  background: <?=$lmo_tabelle_background2?>; 
-  color: <?=$lmo_tabelle_color2?>; 
+  background: <?=$lmo_tabelle_background2?> repeat; 
+  <?=empty($lmo_tabelle_color2)?'':"color: $lmo_tabelle_color2";?>; 
 }
 
 .lmoTabelleCleague a:hover {
-  background: <?=$lmo_tabelle_color2?>; 
-  color: <?=$lmo_tabelle_background2?>; 
+  background: <?=$lmo_tabelle_color2?> repeat; 
+  <?=empty($lmo_tabelle_background2)?'':"color: $lmo_tabelle_background2";?>; 
 }
 
 .lmoTabelleCleaguequali, .lmoTabelleCleaguequali a { 
-  background: <?=$lmo_tabelle_background3?>; 
-  color: <?=$lmo_tabelle_color3?>; 
+  background: <?=$lmo_tabelle_background3?> repeat; 
+  <?=empty($lmo_tabelle_color3)?'':"color: $lmo_tabelle_color3";?>; 
 }
 
 .lmoTabelleCleaguequali a:hover { 
-  background: <?=$lmo_tabelle_color3?>; 
-  color: <?=$lmo_tabelle_background3?>;
+  background: <?=$lmo_tabelle_color3?> repeat; 
+  <?=empty($lmo_tabelle_background3)?'':"color: $lmo_tabelle_background3";?>;
 }
 
 .lmoTabelleUefa, .lmoTabelleUefa a { 
-  background: <?=$lmo_tabelle_background4?>; 
-  color: <?=$lmo_tabelle_color4?>;
+  background: <?=$lmo_tabelle_background4?> repeat; 
+  <?=empty($lmo_tabelle_color4)?'':"color: $lmo_tabelle_color4";?>;
 }
 
 .lmoTabelleUefa a:hover { 
-  background: <?=$lmo_tabelle_color4?>; 
-  color: <?=$lmo_tabelle_background4?>;
+  background: <?=$lmo_tabelle_color4?> repeat; 
+  <?=empty($lmo_tabelle_background4)?'':"color: $lmo_tabelle_background4";?>;
 }
 
 .lmoTabelleRelegation, .lmoTabelleRelegation a { 
-  background: <?=$lmo_tabelle_background5?>; 
-  color: <?=$lmo_tabelle_color5?>;
+  background: <?=$lmo_tabelle_background5?> repeat; 
+  <?=empty($lmo_tabelle_color5)?'':"color: $lmo_tabelle_color5";?>;
 }
 
 .lmoTabelleRelegation a:hover { 
-  background: <?=$lmo_tabelle_color5?>; 
-  color: <?=$lmo_tabelle_background5?>;
+  background: <?=$lmo_tabelle_color5?> repeat; 
+  <?=empty($lmo_tabelle_background5)?'':"color: $lmo_tabelle_background5";?>;
 }
 
 .lmoTabelleAbsteiger, .lmoTabelleAbsteiger a { 
-  background: <?=$lmo_tabelle_background6?>; 
-  color: <?=$lmo_tabelle_color6?>;
+  background: <?=$lmo_tabelle_background6?> repeat; 
+  <?=empty($lmo_tabelle_color6)?'':"color: $lmo_tabelle_color6";?>;
 }
 
 .lmoTabelleAbsteiger a:hover { 
-  background: <?=$lmo_tabelle_color6?>; 
-  color: <?=$lmo_tabelle_background6?>;
+  background: <?=$lmo_tabelle_color6?> repeat; 
+  <?=empty($lmo_tabelle_background6)?'':"color: $lmo_tabelle_background6";?>;
 }
 
 .lmoTabelleHeimbilanz { 
-  background: <?=$lmo_tabelle_background7?>; 
-  color: <?=$lmo_tabelle_color7?>;
+  background: <?=$lmo_tabelle_background7?> repeat; 
+  <?=empty($lmo_tabelle_color7)?'':"color: $lmo_tabelle_color7";?>;
 }
 
 .lmoTabelleGastbilanz { 
-  background: <?=$lmo_tabelle_background8?>; 
-  color: <?=$lmo_tabelle_color8?>; 
+  background: <?=$lmo_tabelle_background8?> repeat; 
+  <?=empty($lmo_tabelle_color8)?'':"color: $lmo_tabelle_color8";?>; 
 }
 
 .lmoTurnierSieger, .lmoTurnierSieger a { 
-  background: <?=$lmo_turnier_background1?>; 
-  color: <?=$lmo_turnier_color1?>;
+  background: <?=$lmo_turnier_background1?> repeat; 
+  <?=empty($lmo_turnier_color1)?'':"color: $lmo_turnier_color1";?>;
 }
 
 .lmoTurnierSieger a:hover{ 
-  background: <?=$lmo_turnier_color1?>; 
-  color: <?=$lmo_turnier_background1?>; 
+  background: <?=$lmo_turnier_color1?> repeat; 
+  <?=empty($lmo_turnier_background1)?'':"color: $lmo_turnier_background1";?>; 
 }
 
 .lmoTurnierVerlierer, .lmoTurnierVerlierer a { 
-  background: <?=$lmo_turnier_background2?>; 
-  color: <?=$lmo_turnier_color2?>;
+  background: <?=$lmo_turnier_background2?> repeat; 
+  <?=empty($lmo_turnier_color2)?'':"color: $lmo_turnier_color2";?>;
 }
 
 .lmoTurnierVerlierer a:hover{ 
-  background: <?=$lmo_turnier_color2?>; 
-  color: <?=$lmo_turnier_background2?>; 
+  background: <?=$lmo_turnier_color2?> repeat; 
+  <?=empty($lmo_turnier_background2)?'':"color: $lmo_turnier_background2";?>; 
 }
 
 .lmoTabelleMeister a, 
@@ -441,14 +455,14 @@ font-size:100%;
 }
 
 .lmo-formular-input { 
-  background: <?=$lmo_formular_background1?>; 
-  color: <?=$lmo_formular_color1?>; 
+  background: <?=$lmo_formular_background1?> repeat; 
+  <?=empty($lmo_formular_color1)?'':"color: $lmo_formular_color1";?>; 
   border: <?=$lmo_formular_border1?>; 
 }
 
 .lmo-formular-button { 
-  background: <?=$lmo_formular_background2?>; 
-  color: <?=$lmo_formular_color2?>; 
+  background: <?=$lmo_formular_background2?> repeat; 
+  <?=empty($lmo_formular_color2)?'':"color: $lmo_formular_color2";?>; 
   border: <?=$lmo_formular_border2?>; 
   font-weight: bold; 
   width:     auto;
@@ -515,8 +529,8 @@ a:hover span.popup{
   display: inline;
 	font-size:80%;
   position: absolute;
-  background-color: <?=$lmo_middle_background1?>; 
-  color: <?=$lmo_middle_color1?>;
+  background: <?=$lmo_middle_background1?> repeat; 
+  <?=empty($lmo_middle_color1)?'':"color: $lmo_middle_color1";?>;
   border: <?=$lmo_middle_border1?>;
   width: 15em;
 	margin: 1.5em 0 0 -4em;  

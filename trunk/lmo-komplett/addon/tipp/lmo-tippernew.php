@@ -22,7 +22,7 @@ require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 
 
 isset($_POST['newpage'])?                $newpage=trim($_POST['newpage']):                      $newpage=0;
-isset($_POST['xtippernick'])?            $xtippernick=trim($_POST['xtippernick']):              $xtippernick="";
+isset($_REQUEST['xtippernick'])?         $xtippernick=trim($_REQUEST['xtippernick']):           $xtippernick="";
 isset($_POST['xtippervorname'])?         $xtippervorname=trim($_POST['xtippervorname']):        $xtippervorname="";
 isset($_POST['xtippernachname'])?        $xtippernachname=trim($_POST['xtippernachname']):      $xtippernachname="";
 isset($_POST['xtipperemail'])?           $xtipperemail=trim($_POST['xtipperemail']):            $xtipperemail="";
@@ -32,7 +32,7 @@ isset($_POST['xtipperort'])?             $xtipperort=trim($_POST['xtipperort']):
 isset($_POST['xtippervereinradio'])?     $xtippervereinradio=trim($_POST['xtippervereinradio']):$xtippervereinradio=0;
 isset($_POST['xtippervereinalt'])?       $xtippervereinalt=trim($_POST['xtippervereinalt']):    $xtippervereinalt="";
 isset($_POST['xtippervereinneu'])?       $xtippervereinneu=trim($_POST['xtippervereinneu']):    $xtippervereinneu="";
-isset($_POST['xtipperpass'])?            $xtipperpass=trim($_POST['xtipperpass']):              $xtipperpass="";
+isset($_REQUEST['xtipperpass'])?         $xtipperpass=trim($_REQUEST['xtipperpass']):           $xtipperpass="";
 isset($_POST['xtipperpassw'])?           $xtipperpassw=trim($_POST['xtipperpassw']):            $xtipperpassw="";
 isset($_POST['xtipperligen'])?           $xtipperligen=$_POST['xtipperligen']:                  $xtipperligen="";
 if ($tipp_freischaltcode==1) {
@@ -53,7 +53,7 @@ if ($newpage==1) {
       if ($zeile!="") {
         array_push($users,$zeile);
       }
-      $dummb1 = split("[|]",$zeile);
+      $dummb1 = explode('|',$zeile);
       if (strtolower($dummb1[0])==strtolower($xtippernick)) {
         $newpage=0;
         // Nick schon vorhanden
@@ -192,16 +192,20 @@ if ($newpage==1) {
   }
   $save=-1;
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
-  $auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus","ab");
-  flock($auswertdatei,2);
-  fputs($auswertdatei,"\n[".$xtippernick."]\n");
-  fputs($auswertdatei,"Team=".$lmotipperverein."\n");
-  fputs($auswertdatei,"Name=".$xtippervorname." ".$xtippernachname."\n");
-  flock($auswertdatei,3);
-  fclose($auswertdatei);
+  if ($auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus","ab")) {
+    flock($auswertdatei,2);
+    fputs($auswertdatei,"\n[".$xtippernick."]\n");
+    fputs($auswertdatei,"Team=".$lmotipperverein."\n");
+    fputs($auswertdatei,"Name=".$xtippervorname." ".$xtippernachname."\n");
+    flock($auswertdatei,3);
+    fclose($auswertdatei);
+  }
   /**Freischaltcode versenden*/
   if ($tipp_freischaltcode==1) {
     include(PATH_TO_ADDONDIR."/tipp/lmo-admintippfreischaltung.php");
+  }
+  if ($tipp_mailbeianmeldung==1) {
+    include(PATH_TO_ADDONDIR."/tipp/lmo-admintippbenachrichtigung.php");
   }
 }
 // end ($newpage==1)

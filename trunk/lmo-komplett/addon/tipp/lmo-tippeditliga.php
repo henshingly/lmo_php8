@@ -15,9 +15,9 @@ if ($datm==1) {
   } else {
     $dum1="";
   }?>
-  <td class="nobr"><?=$dum1; ?></td><? 
+  <td class="nobr" align="left"><?=$dum1; ?></td><? 
 }?>
-  <td width="2">&nbsp;</td>
+  <td>&nbsp;</td>
   <td class="nobr" align="right"><?
 if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
   echo "<strong>";
@@ -28,7 +28,7 @@ if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
 }?>
   </td>
   <td align="center" width="10">-</td>
-  <td class="nobr"><?
+  <td class="nobr" align="left"><?
 if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
   echo "<strong>";
 }
@@ -172,7 +172,7 @@ if ($tipp_tippmodus==1) {
   </td><? 
     }
   }else{ ?>
-  <td><?=$goaltippb[$i]; ?></td><? 
+  <td align="left"><?=$goaltippb[$i]; ?></td><? 
     if($tipp_pfeiltipp==1){ ?>
   <td>&nbsp;</td><? 
     }
@@ -212,8 +212,8 @@ if ($tipp_jokertipp==1){ ?>
   <td class="lmoBackMarkierung" align="center">:</td>
   <td class="lmoBackMarkierung" align="left"><?=applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td><? 
 if($spez==1){ ?>
-  <td class="lmoBackMarkierung" width="2">&nbsp;</td>
-  <td class="lmoBackMarkierung"><?=$mspez[$st-1][$i]; ?></td><? 
+  <td class="lmoBackMarkierung">&nbsp;</td>
+  <td class="lmoBackMarkierung" align="left"><?=$mspez[$st-1][$i]; ?></td><? 
 } ?>
   <td width="2">&nbsp;</td>
   <td class="nobr" align="right">

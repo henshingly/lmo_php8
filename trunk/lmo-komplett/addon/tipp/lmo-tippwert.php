@@ -17,7 +17,7 @@
   *
   */
   
-  
+//$endtab        = isset($_REQUEST['endtab'])        ? $_REQUEST['endtab']                : ''; 
 if ($endtab == 0) {
   if (isset($anzst)) {
     $endtab = $anzst;
@@ -26,7 +26,7 @@ if ($endtab == 0) {
 } else {
   $tabdat = $endtab.". ".$text[2];
 }
- 
+$all        = isset($_REQUEST['all'])        ? $_REQUEST['all']                : '';
 //  if($stwertmodus=="bis" ){$endtab=$anzst;}
 if ($all == 1) {
   $endtab = 0;
@@ -35,30 +35,19 @@ if ($all == 1) {
 } else {
   $st = $endtab;
 }
-if (!isset($wertung)) {
-  $wertung = "einzel";
-}
-if (!isset($gewicht)) {
-  $gewicht = "absolut";
-}
-if (!isset($stwertmodus)) {
-  $stwertmodus = "bis";
-}
+$wertung        = isset($_REQUEST['wertung'])        ? $_REQUEST['wertung']                : 'einzel';
+$gewicht        = isset($_REQUEST['gewicht'])        ? $_REQUEST['gewicht']                : 'absolut';
+$stwertmodus    = isset($_REQUEST['stwertmodus'])    ? $_REQUEST['stwertmodus']            : 'bis';
+$tipp_anzseite1 = isset($_REQUEST['tipp_anzseite1']) ? intval($_REQUEST['tipp_anzseite1']) : 30;
+$von            = isset($_REQUEST['von'])            ? intval($_REQUEST['von'])            : 1;
+$start          = isset($_REQUEST['start'])          ? intval($_REQUEST['start'])          : 1;
+$eigpos         = isset($_REQUEST['eigpos'])         ? intval($_REQUEST['eigpos'])         : 1;
+$wertung = isset($_REQUEST['wertung']) ? $_REQUEST['wertung'] : "einzel";
+
 if (($tabdat != "" && $stwertmodus == "nur") || $all == 1) {
   $tipp_showstsiege = 0;
 }
-if (!isset($tipp_anzseite1)) {
-  $tipp_anzseite1 = 30;
-}
-if (!isset($von)) {
-  $von = 1;
-}
-if (!isset($start)) {
-  $start = 1;
-}
-if (!isset($eigpos)) {
-  $eigpos = 1;
-}
+
 if ($tipp_anzseite1 < 1) {
   $tipp_anzseite1 = 30;
 }

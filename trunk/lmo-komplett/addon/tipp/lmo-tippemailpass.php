@@ -20,7 +20,7 @@
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if (isset($xtippername2)) {
-  $dumma = array("");
+  $dumma = array();
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
   $datei = fopen($pswfile, "rb");
   if ($datei) {
@@ -33,9 +33,8 @@ if (isset($xtippername2)) {
     }
     fclose($datei);
   }
-  array_shift($dumma);
   for($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i++) {
-    $dummb = split("[|]", $dumma[$i]);
+    $dummb = explode('|', $dumma[$i]);
     if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != false)) {
       // User gefunden
       $lmotippername = $dummb[0];
@@ -47,12 +46,21 @@ if (isset($xtippername2)) {
       //      $header .= "X-Mailer: PHP/" . phpversion(). "\n";
       //      $header .= "X-Sender-IP: $REMOTE_ADDR\n";
       //      $header .= "Content-Type: text/plain";
-      $para5 = "-f $aadr";
-      if (mail($dummb[4], $text['tipp'][79], $emailbody, $header, $para5)) {
-        echo $text['tipp'][78]."<br>";
-        $xtippername2 = "";
+      if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
+        $para5 = "-f $aadr";
+        if (mail($dummb[4], $text['tipp'][79], $emailbody, $header, $para5)) {
+          echo $text['tipp'][78]."<br>";
+          $xtippername2 = "";
+        } else {
+          echo $text['tipp'][80]." ".$aadr;
+        }
       } else {
-        echo $text['tipp'][80]." ".$aadr;
+        if (mail($dummb[4], $text['tipp'][79], $emailbody, $header)) {
+          echo $text['tipp'][78]."<br>";
+          $xtippername2 = "";
+        } else {
+          echo $text['tipp'][80]." ".$aadr;
+        }
       }
     }
   }

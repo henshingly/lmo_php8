@@ -109,6 +109,9 @@ if ($filepointer = @fopen($filename, "r+b")) {
     if (file_exists(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".gif")) {
       $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".gif");
         ?>   <img title="<?=$t?>" border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($text['spieler'][51]).".gif"?>" <?=$imgdata[3]?> alt=""><?
+    } elseif (file_exists(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".jpg")) {
+      $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".jpg");
+        ?>   <img title="<?=$t?>" border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($text['spieler'][51]).".jpg"?>" <?=$imgdata[3]?> alt=""><?
     }?>
           </td>
         </tr><?

@@ -417,10 +417,10 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       } else {
         echo "<td class=\"".$lmo_tabelle_class."\">&nbsp;</td>";
       }?>
-          <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.$teams[$team[$i]].$dumm2; ?></td>
-          <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+          <td class="<?=$lmo_tabelle_class; ?>" align="left"><?=$dummy.$teams[$team[$i]].$dumm2; ?></td>
+          <td class="<?=$lmo_tabelle_class; ?>">&nbsp;</td>
           <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$spielegetippt[$i].$dumm2;?></td>
-          <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+          <td class="<?=$lmo_tabelle_class; ?>">&nbsp;</td>
           <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$tipppunktegesamt[$i].$dumm2;?></td><?
       $quote=0;
       if($spielegetippt[$i]!=0){

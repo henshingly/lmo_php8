@@ -44,7 +44,7 @@ if ($_SESSION["lmouserok"] == 2) {
   } elseif($del != "") {
     $gef = 0;
     for($i = 1; $i < count($users) && $gef == 0; $i++) {
-      $dummb = split("[|]", $users[$i]);
+      $dummb = explode('|', $users[$i]);
       if ($del == $dummb[0]) {
         // Nick gefunden
         $gef = 1;
@@ -52,7 +52,7 @@ if ($_SESSION["lmouserok"] == 2) {
       }
     }
     if ($gef == 1) {
-      $userf3 = split("[|]", $users[$del]);
+      $userf3 = explode('|', $users[$del]);
       $verz = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
       $dummy = array();
       while ($files = readdir($verz)) {
@@ -151,7 +151,7 @@ if ($_SESSION["lmouserok"] == 2) {
     $team = array_pad($array, $anztipper, "");
     $ltipp = array_pad($array, $anztipper, "");
     for($i = 1; $i < $anztipper; $i++) {
-      $userd = split("[|]", $users[$i]);
+      $userd = explode('|', $users[$i]);
       $id[$i] = $i;
       $nick[$i] = $userd[0];
       $pass[$i] = $userd[1];
@@ -188,7 +188,7 @@ if ($_SESSION["lmouserok"] == 2) {
           <td align="left"><?=$tab0[$x]['team']; ?></td>
           <td align="left"><? if($tab0[$x]['ltipp']>0){echo date("d.m.Y H:i",$tab0[$x]['ltipp']);} ?></td>    
           <td align="left"><a href='<?=$added.$tab0[$x]['nick']?>' onClick="return chklmolink();"><?=$text['tipp'][98]?></a></td>
-          <td align="left"><a href='<?=$addd.$tab0[$x]['nick']?>' onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/delete.gif" border="0" width="11" height="13" alt="<?=$text[82]?>"></a></td><?
+          <td align="left"><a href='<?=$addd.$tab0[$x]['nick']?>' onClick="return confirm('<?=$text[499]?>');"><img src="<?=URL_TO_IMGDIR?>/delete.gif" border="0" width="11" height="13" alt="<?=$text[82]?>"></a></td><?
     }?>
         </tr><?
   } ?>

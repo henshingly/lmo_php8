@@ -34,8 +34,8 @@ if ($message != "") {
     }
     fclose($datei);
   }
-  $subject = $_POST["betreff"];
-  $header = "From:$aadrn";
+  $subject = $betreff;
+  $header = "From: ".$text['tipp'][0]." <".$aadr.">";
   $para5 = "-f $aadr";
   $anzemail = 0;
   $anztipper = count($dumma);
@@ -48,13 +48,13 @@ if ($message != "") {
    
   if ($emailart == 0) {
     for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
-      $dummb = split("[|]", $dumma[$tippernr]);
+      $dummb = explode('|', $dumma[$tippernr]);
       if ($dummb[9] != -1) {
         $textmessage = $message;
         $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
         $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
         $textmessage = str_replace("[name]", $dummb[3], $textmessage);
-        if (@ini_get('safe_mode')=="0") {
+        if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
           $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
         } else {
           $sent=mail($dummb[4], $subject, $textmessage, $header);
@@ -71,14 +71,14 @@ if ($message != "") {
    
    
   elseif($emailart == 1) {
-    $tipp_textreminder1 = str_replace("n", "&#10;", $message);
-    require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavecfg.php");
+    $tipp_textreminder1 = str_replace(array("\r\n","\n","\r"), array("&#10;","&#10;","&#10;") , $message);
+    require(PATH_TO_LMO."/lmo-savecfg.php");
     $now = strtotime("now");
     $then = strtotime("+".$tage." day");
      
     if ($viewermode == 1) {
       $verz = opendir(substr($dirliga, 0, -1));
-      $dateien = array("");
+      $dateien = array();
       while ($files = readdir($verz)) {
         $ftest = 1;
         if ($tipp_immeralle != 1) {
@@ -98,7 +98,6 @@ if ($message != "") {
         }
       }
       closedir($verz);
-      array_shift($dateien);
       sort($dateien);
        
       $anzligen = count($dateien);
@@ -126,7 +125,7 @@ if ($message != "") {
       $goaltipp = array_pad(array("_"), $anzspiele+1, "_");
        
       for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
-        $dummb = split("[|]", $dumma[$tippernr]);
+        $dummb = explode('|', $dumma[$tippernr]);
         if ($dummb[10] != -1 && $dummb[4] != "") {
           for($i = 0; $i < $anzspiele; $i++) {
             $goaltipp[$i] = "_";
@@ -148,11 +147,11 @@ if ($message != "") {
             if ($ktipp == 1) {
               if ($goaltipp[$i] == "_") {
                 if ($lliga != $liga[$i]) {
-                  $spiele = $spiele."n".$titel[$i].":n";
+                  $spiele = $spiele."\n".$titel[$i].":\n";
                 }
                 if ($lspieltag != $spieltag[$i] || $lliga != $liga[$i]) {
                   if ($lmtype[$i] == 0) {
-                    $spiele = $spiele.$spieltag[$i].".".$text[2].":n";
+                    $spiele = $spiele.$spieltag[$i].".".$text[2].":\n";
                   } else {
                     if ($spieltag[$i] == $anzst[$i]) {
                       $j = $text[374];
@@ -165,10 +164,10 @@ if ($message != "") {
                     } else {
                       $j = $spieltag[$i].". ".$text[370];
                     }
-                    $spiele = $spiele.$j.":n";
+                    $spiele = $spiele.$j.":\n";
                   }
                 }
-                $spiele = $spiele.$text['tipp'][87]." ".$zeit[$i].": ".$teama[$i]." - ".$teamb[$i]."n";
+                $spiele = $spiele.$teama[$i]." - ".$teamb[$i]." (".$text['tipp'][87]." ".$zeit[$i].")\n";
                 $lliga = $liga[$i];
                 $lspieltag = $spieltag[$i];
               }
@@ -179,7 +178,7 @@ if ($message != "") {
             $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
             $textmessage = str_replace("[name]", $dummb[3], $textmessage);
             $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-            if (@ini_get('safe_mode')=="0") {
+            if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
               $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
             } else {
               $sent=mail($dummb[4], $subject, $textmessage, $header);
@@ -201,7 +200,7 @@ if ($message != "") {
       }
        
       for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
-        $dummb = split("[|]", $dumma[$tippernr]);
+        $dummb = explode('|', $dumma[$tippernr]);
         if ($dummb[10] != -1 && $dummb[4] != "") {
           $textmessage = $message;
           $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, strrpos($file, "/")+1, -4)."_".$dummb[0].".tip";
@@ -223,7 +222,7 @@ if ($message != "") {
                     $zeit = zeit($mterm[$st0][$dd], $datum1[$st0], $datum2[$st0]);
                     if ($now < $zeit && $then > $zeit) {
                       if ((($st == 0 && $goaltippa[$st0][$dd] == "_") || ($st > 0 && $goaltippa[$dd] == "_")) && $teama[$st0][$dd] > 0) {
-                        $spiele = $spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text['tipp'][87]." ".strftime("%A, %d.%m.%Y %R", $zeit).")n";
+                        $spiele = $spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text['tipp'][87]." ".strftime("%A, %d.%m.%Y %R", $zeit).")\n";
                       }
                     }
                   }
@@ -233,7 +232,7 @@ if ($message != "") {
                       $zeit = zeit($mterm[$st0][$dd][$ddd], $datum1[$st0], $datum2[$st0]);
                       if ($now < $zeit && $then > $zeit) {
                         if ((($st == 0 && $goaltippa[$st0][$dd][$ddd] == "_") || ($st > 0 && $goaltippa[$dd][$ddd] == "_")) && $teama[$st0][$dd] > 0) {
-                          $spiele = $spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text['tipp'][87]." ".strftime("%A, %d.%m.%Y %R", $zeit).")n";
+                          $spiele = $spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text['tipp'][87]." ".strftime("%A, %d.%m.%Y %R", $zeit).")\n";
                         }
                       }
                     }
@@ -247,7 +246,7 @@ if ($message != "") {
               $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
               $textmessage = str_replace("[name]", $dummb[3], $textmessage);
               $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-              if (@ini_get('safe_mode')=="0") {
+              if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
                 $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
               } else {
                 $sent=mail($dummb[4], $subject, $textmessage, $header);
@@ -266,14 +265,14 @@ if ($message != "") {
   } // ende if($emailart==1)
    
   elseif($emailart == 2 && $adressat != "") {
-    $dummb = split("[|]", $dumma[0]);
+    $dummb = explode('|', $dumma[0]);
     for($i = 0; $i < $anztipper && $adressat != $dummb[0]; $i++) {
-      $dummb = split("[|]", $dumma[$i]);
+      $dummb = explode('|', $dumma[$i]);
     }
     $message = str_replace("[nick]", $dummb[0], $message);
     $message = str_replace("[pass]", $dummb[1], $message);
     $message = str_replace("[name]", $dummb[3], $message);
-    if (@ini_get('safe_mode')=="0") {
+    if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
       $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
     } else {
       $sent=mail($dummb[4], $subject, $textmessage, $header);

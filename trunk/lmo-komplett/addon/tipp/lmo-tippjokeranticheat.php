@@ -58,7 +58,7 @@ while (!feof($datei)) {
 fclose($datei);
 array_shift($tippdaten);
 for($ia = 1; $ia <= count($tippdaten); $ia++) {
-  $dum = split("[|]", $tippdaten[$ia-1]);
+  $dum = explode('|', $tippdaten[$ia-1]);
   $op3 = substr($dum[0], 5)-1;
   if ($op3 == $st-1) {
     $jkspanti = $dum[3];

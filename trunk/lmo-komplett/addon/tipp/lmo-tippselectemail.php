@@ -19,22 +19,22 @@
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-$dumma = array("");
+$dumma = array();
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-$datei = fopen($pswfile, "rb");
-while (!feof($datei)) {
-  $zeile = fgets($datei, 1000);
-  $zeile = chop($zeile);
-  if ($zeile != "") {
-    array_push($dumma, $zeile);
+if ($datei = fopen($pswfile, "rb")) {
+  while (!feof($datei)) {
+    $zeile = fgets($datei, 1000);
+    $zeile = chop($zeile);
+    if ($zeile != "") {
+      array_push($dumma, $zeile);
+    }
   }
+  fclose($datei);
 }
-fclose($datei);
-array_shift($dumma);
  
 sort($dumma, SORT_STRING);
 for($i = 0; $i < count($dumma); $i++) {
-  $dummb = split("[|]", $dumma[$i]);
+  $dummb = explode("|", $dumma[$i]);
   echo "<option value=\"".$dummb[0]."\" ";
   echo ">".$dummb[0]." (".$dummb[3]." - ".$dummb[4].")"."</option>";
 }

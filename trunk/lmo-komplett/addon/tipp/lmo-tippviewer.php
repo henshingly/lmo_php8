@@ -78,8 +78,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
   $mterm = array();
   $tippa = array();
   $tippb = array();
-  $jksp = array("");
-  $tipp_jokertippaktiv = array("0");
+  $jksp = array();
+  $tipp_jokertippaktiv = array();
    
   $anzspiele = 0;
    
@@ -253,13 +253,13 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     }
     if ($i == 0 || $liga[$i] != $liga[$i-1] || $spieltag[$i] != $spieltag[$i-1]) {
       if ($datum1[$i] != "") {
-        $datum = split("[.]", $datum1[$i]);
+        $datum = explode('.', $datum1[$i]);
         $dum1 = $me[intval($datum[1])]." ".$datum[2];
       } else {
         $dum1 = "";
       }
       if ($datum2[$i] != "") {
-        $datum = split("[.]", $datum2[$i]);
+        $datum = explode('.', $datum2[$i]);
         $dum2 = $me[intval($datum[1])]." ".$datum[2];
       } else {
         $dum2 = "";
@@ -346,7 +346,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     $dum1 = ""; 
     if ($datm[$i] == 1) {
       if ($mterm[$i] > 0) {
-        $datf = "%d.%m. %H:%M";
+        $datf = $defdateformat;
         $dum1 = strftime($datf, $mterm[$i]);
       } 
     }?>

@@ -255,7 +255,7 @@ if ($show==0) {?>
 }?>          
           <tr>
             <td class="nobr" colspan="6" align="center">
-              <acronym title="<?=$text[114]?>"><input class="lmo-formular-button" type="submit" name="best" value="<?=$text[188];?>"></acronym>
+              <input title="<?=$text[114]?>" class="lmo-formular-button" type="submit" name="best" value="<?=$text[188];?>">
             </td>
           </tr>
         </table>

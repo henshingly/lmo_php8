@@ -45,7 +45,7 @@ while (!feof($datei)) {
 fclose($datei);
 array_shift($tippdaten);
 for($ii = 1; $ii <= count($tippdaten); $ii++) {
-  $dum = split("[|]", $tippdaten[$ii-1]);
+  $dum = explode('|', $tippdaten[$ii-1]);
   $op2 = substr($dum[0], 0, 5);
   $op8 = substr($dum[1], 0, 2);
   if (($op2 == "Round") && ($op8 == "GA")) {

@@ -38,8 +38,8 @@ if(($action=="tipp") && ($todo=="")){
   <tr>
     <td class="nobr" align="left">
       <ul><?
-  $dummy =  split("[|]",$tt1);
-  $ftest2 = split("[|]",$tt0);
+  $dummy =  explode('|',$tt1);
+  $ftest2 = explode('|',$tt0);
   if(isset($dummy) && isset($ftest2)){
     for($u=0;$u<count($dummy);$u++){
       if($dummy[$u]!="" && $ftest2[$u]!=""){

@@ -38,7 +38,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
   fclose($datei);
   $gef = 0;
   for($i = 1; $i < count($users) && $gef == 0; $i++) {
-    $dummb = split("[|]", $users[$i]);
+    $dummb = explode('|', $users[$i]);
     if ($lmotippername == $dummb[0]) {
       // Nick gefunden
       $gef = 1;
@@ -58,7 +58,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
   }
    
   if ($newpage == 1) {
-    $userf3 = split("[|]", $users[$del]);
+    $userf3 = explode('|', $users[$del]);
     $verz = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
     $dummy = array("");
     while ($files = readdir($verz)) {

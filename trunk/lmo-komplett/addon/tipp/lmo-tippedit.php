@@ -230,13 +230,13 @@ if ($file!="") {
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr><?
   if ($datum1[$st-1]!="") {
-    $datum = split("[.]",$datum1[$st-1]);
+    $datum = explode('.',$datum1[$st-1]);
     $dum1=$me[intval($datum[1])]." ".$datum[2];
   } else {
     $dum1="";
   }
   if ($datum2[$st-1]!="") {
-    $datum = split("[.]",$datum2[$st-1]);
+    $datum = explode('.',$datum2[$st-1]);
     $dum2=$me[intval($datum[1])]." ".$datum[2];
   } else {
     $dum2="";
@@ -309,7 +309,7 @@ if ($file!="") {
             <?=$text['tipp'][31]; /* Ergebnis */?>
           </th><?
   if($spez==1){?>
-          <th class="nobr" colspan="2">&nbsp;</th><?
+          <th colspan="2">&nbsp;</th><?
   }?>
           <th class="nobr" colspan="2" align="right">
             <?=$text[37]; /* PP */?>

@@ -36,7 +36,7 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
   fclose($datei);
   $gef=0;
   for($i=1;$i<count($users) && $gef==0;$i++){
-    $tipp_tipperdaten = split("[|]",$users[$i]);
+    $tipp_tipperdaten = explode('|',$users[$i]);
     if($nick==$tipp_tipperdaten[0]){ // Nick gefunden
       $gef=1;
       $save=$i;
@@ -247,7 +247,8 @@ if($action=="admin" && $todo=="tippuseredit" && $nick!=""){
               </td>
             </tr>
             <tr>
-              <td colspan="2" align="right">
+              <td align="left"><a href='<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;tipper_sort=".$tipper_sort."&amp;del=".$tipp_tipperdaten[0];?>' onClick="return confirm('<?=$text[499]?>');"><img src="<?=URL_TO_IMGDIR?>/delete.gif" border="0" width="11" height="13" alt="<?=$text[82]?>"></a></td>
+              <td align="right">
                 <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?= $text[329]; ?>">
               </td>
             </tr>

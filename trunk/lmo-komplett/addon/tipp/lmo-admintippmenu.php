@@ -1,4 +1,4 @@
-<table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoSubmenu" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><?
 if ($todo!='tipp') {?>
