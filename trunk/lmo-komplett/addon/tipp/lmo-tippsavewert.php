@@ -27,17 +27,7 @@ $dummd = array();
 $dumme = array("");
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
  
-$datei = fopen($pswfile, "rb");
-if ($datei) {
-  while (!feof($datei)) {
-    $zeile2 = fgets($datei, 1000);
-    $zeile2 = chop($zeile2);
-    if ($zeile2 != "") {
-      array_push($dummd, $zeile2);
-    }
-  }
-  fclose($datei);
-}
+$dummd = file($pswfile);
  
 $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$liga.".aus";
 $datenalt = array("");

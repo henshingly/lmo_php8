@@ -1,2 +1,0 @@
-importDir=imports
-csvExtension=csv,txt

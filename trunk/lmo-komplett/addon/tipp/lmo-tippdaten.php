@@ -21,17 +21,20 @@
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if (($action == "tipp") && ($todo == "daten")) {
   
-  isset($_POST['newpage'])?                $newpage=trim($_POST['newpage']):                      $newpage=0;
-  isset($_POST['xtippervorname'])?         $xtippervorname=trim($_POST['xtippervorname']):        $xtippervorname="";
-  isset($_POST['xtippernachname'])?        $xtippernachname=trim($_POST['xtippernachname']):      $xtippernachname="";
-  isset($_POST['xtipperemail'])?           $xtipperemail=trim($_POST['xtipperemail']):            $xtipperemail="";
-  isset($_POST['xtipperstrasse'])?         $xtipperstrasse=trim($_POST['xtipperstrasse']):        $xtipperstrasse="";
-  isset($_POST['xtipperplz'])?             $xtipperplz=trim($_POST['xtipperplz']):                $xtipperplz="";
-  isset($_POST['xtipperort'])?             $xtipperort=trim($_POST['xtipperort']):                $xtipperort="";
-  isset($_POST['xtippervereinradio'])?     $xtippervereinradio=trim($_POST['xtippervereinradio']):$xtippervereinradio=0;
-  isset($_POST['xtippervereinalt'])?       $xtippervereinalt=trim($_POST['xtippervereinalt']):    $xtippervereinalt="";
-  isset($_POST['xtippervereinneu'])?       $xtippervereinneu=trim($_POST['xtippervereinneu']):    $xtippervereinneu="";
-  isset($_POST['xtipperligen'])?           $xtipperligen=$_POST['xtipperligen']:                  $xtipperligen="";
+  $newpage            = isset($_POST['newpage'])            ? trim($_POST['newpage'])            : 0;
+  $xtippervorname     = isset($_POST['xtippervorname'])     ? trim($_POST['xtippervorname'])     : "";
+  $xtippernachname    = isset($_POST['xtippernachname'])    ? trim($_POST['xtippernachname'])    : "";
+  $xtipperemail       = isset($_POST['xtipperemail'])       ? trim($_POST['xtipperemail'])       : "";
+  $xtipperstrasse     = isset($_POST['xtipperstrasse'])     ? trim($_POST['xtipperstrasse'])     : "";
+  $xtipperplz         = isset($_POST['xtipperplz'])         ? trim($_POST['xtipperplz'])         : "";
+  $xtipperort         = isset($_POST['xtipperort'])         ? trim($_POST['xtipperort'])         : "";
+  $xtippervereinradio = isset($_POST['xtippervereinradio']) ? trim($_POST['xtippervereinradio']) : 0;
+  $xtippervereinalt   = isset($_POST['xtippervereinalt'])   ? trim($_POST['xtippervereinalt'])   : "";
+  $xtippervereinneu   = isset($_POST['xtippervereinneu'])   ? trim($_POST['xtippervereinneu'])   : "";
+  $xtipperligen       = isset($_POST['xtipperligen'])       ? $_POST['xtipperligen']             : array();
+  $xnews              = isset($_POST['xnews'])              ? '1'                                : '-1';
+  $xremind            = isset($_POST['xremind'])            ? '1'                                : '-1';
+
   if ($tipp_freischaltcode==1) {
     isset($_POST['xtipperemail2'])?        $xtipperemail2=trim($_POST['xtipperemail2']):          $xtipperemail2="";
   } else {
@@ -40,18 +43,10 @@ if (($action == "tipp") && ($todo == "daten")) {
   
   $users = array("");
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  if ($datei = fopen($pswfile, "rb")) {
-    while (!feof($datei)) {
-      $zeile = fgets($datei, 1000);
-      $zeile = trim(chop($zeile));
-      if ($zeile != "") {
-        if ($zeile != "") {
-          array_push($users, $zeile);
-        }
-      }
-    }
-    fclose($datei);
-  }
+  
+  $users = file($pswfile);
+  array_unshift($users,'');
+  
   $tipp_tipper_gefunden = 0;
   $xtippernick="";
   for($i = 1; $i < count($users) && $tipp_tipper_gefunden == 0; $i++) {
@@ -151,13 +146,13 @@ if (($action == "tipp") && ($todo == "daten")) {
       $users[$save] .= "|".$tipp_tipper_daten[6]."|".$tipp_tipper_daten[7]."|".$tipp_tipper_daten[8];
     }
     $users[$save] .= "|";
-    if (trim($_POST["xnews"]) == 1) {
+    if ($xnews == 1) {
       $users[$save] .= "1";
     } else {
       $users[$save] .= "-1";
     }
     $users[$save] .= "|";
-    if (trim($_POST["xremind"]) == 1) {
+    if ($xremind == 1) {
       $users[$save] .= "1";
     } else {
       $users[$save] .= "-1";

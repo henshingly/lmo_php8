@@ -24,16 +24,9 @@ require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
 if ($message != "") {
   $dumma = array();
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  if ($datei = fopen($pswfile, "rb")) {
-    while (!feof($datei)) {
-      $zeile = fgets($datei, 1000);
-      $zeile = chop($zeile);
-      if ($zeile != "") {
-        array_push($dumma, $zeile);
-      }
-    }
-    fclose($datei);
-  }
+
+  $dumma = file($pswfile);
+  
   $subject = $betreff;
   $header = "From: ".$text['tipp'][0]." <".$aadr.">";
   $para5 = "-f $aadr";

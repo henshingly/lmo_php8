@@ -22,7 +22,7 @@ $dumma = array("");
 $team = array("");
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
 $datei = fopen($pswfile, "rb");
-while (!feof($datei)) {
+while ($datei && !feof($datei)) {
   $zeile = fgets($datei, 1000);
   $zeile = chop($zeile);
   if ($zeile != "") {

@@ -97,7 +97,7 @@ if ($action == "tipp") {
     if(ab!=aa){
       if(aa==-1){aa="";}
       document.getElementsByName("xtipp"+xx+y)[0].value=aa;
-    }  
+    } 
   }
 </script><?
   }

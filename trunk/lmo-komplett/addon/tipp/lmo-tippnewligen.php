@@ -23,17 +23,10 @@ if (($action == "tipp") && ($todo == "newligen")) {
   if ($newpage == 1) {
     $users = array("");
     $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-    $datei = fopen($pswfile, "rb");
-    while (!feof($datei)) {
-      $zeile = fgets($datei, 1000);
-      $zeile = trim(chop($zeile));
-      if ($zeile != "") {
-        if ($zeile != "") {
-          array_push($users, $zeile);
-        }
-      }
-    }
-    fclose($datei);
+    
+    $users = file($pswfile);
+    array_unshift($users,'');
+    
     $gef = 0;
     for($i = 1; $i < count($users) && $gef == 0; $i++) {
       $dummb = explode('|', $users[$i]);

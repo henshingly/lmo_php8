@@ -302,3 +302,4 @@
 301=Achtung! Damit deaktivieren Sie die Möglichkeit, Tipps abzugeben!
 302=Nur Gesamtpunktestand anzeigen
 303=Ein neuer Tipper hat sich für das Tippspiel angemeldet: \n\nNickname: [nick]
+304=Lassen Sie das Feld leer für keine Änderung des Passworts
