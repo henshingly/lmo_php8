@@ -152,7 +152,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     <td class="<?=$lmo_tabelle_class; ?>" align="left"><? 
   echo $dummy.$teams[$i].$dumm2;
   if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        <a href="<?=$teamu[$i]?>" target="_blank" title="<?=$text[46]?>"><?=$text[564]?></a><?
+        <a href="<?=$teamu[$i]?>" target="_blank" title="<?=$text[46]?>"><img border="0" width="11" src="<?=URL_TO_IMGDIR."/url.png";?>" alt="<?=$text[564]?>"></a><?
   }?>
   
     </td>
