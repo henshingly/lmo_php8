@@ -173,10 +173,10 @@ for($x = 1; $x <= $anzteams; $x++) {
     if ($strafp[$i]!=0 || $strafm[$i]!=0) {
       $lmo_tabellennotiz.="\n\n<strong>".$text[128].":</strong> ";
       //Punkte
-      $lmo_tabellennotiz.=$strafp[$i]<0?"+".(((-1)*$strafp[$i])/$pointsfaktor):(((-1)*$strafp[$i])/$pointsfaktor);
+      $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*applyFactor($strafp[$i],$pointsfaktor)):((-1)*applyFactor($strafp[$i],$pointsfaktor));
       //Minuspunkte
       if ($minus==2) {
-        $lmo_tabellennotiz.=":".$strafm[$i]<0?"+".((-1)*($strafm[$i])/$pointsfaktor):((-1)*($strafm[$i])/$pointsfaktor);
+        $lmo_tabellennotiz.=":".$strafm[$i]<0?"+".((-1)*applyFactor($strafm[$i],$pointsfaktor)):((-1)*applyFactor($strafm[$i],$pointsfaktor));
       }
       //Ab ST
       if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
@@ -185,9 +185,9 @@ for($x = 1; $x <= $anzteams; $x++) {
     if ($torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
       $lmo_tabellennotiz.="\n<strong>".$text[522].":</strong> ";
       //Tore
-      $lmo_tabellennotiz.=($torkorrektur1[$i]<0?"+".(((-1)*$torkorrektur1[$i])/$goalfaktor).":":(((-1)*$torkorrektur1[$i].":"))/$goalfaktor);
+      $lmo_tabellennotiz.=$torkorrektur1[$i]<0?"+".((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":":((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":";
       //Gegentore
-      $lmo_tabellennotiz.=($torkorrektur2[$i]<0?"+".(((-1)*$torkorrektur2[$i])/$goalfaktor):((-1)*($torkorrektur2[$i]))/$goalfaktor);
+      $lmo_tabellennotiz.=$torkorrektur2[$i]<0?"+".((-1)*applyFactor($torkorrektur2[$i],$goalfaktor)):((-1)*applyFactor($torkorrektur2[$i],$goalfaktor));
       //Ab ST
       if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
     }
@@ -210,24 +210,24 @@ for($x = 1; $x <= $anzteams; $x++) {
     <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$nieder[$i].$dumm2; ?></td><? 
   if ($tabpkt == 0) {?>
     <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td>
-    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=($punkte[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?
     if ($minus == 2) {?>
     <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$lmo_tabelle_class?>"><strong><?=($negativ[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?
     }
   }?>
       
     <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
-    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.($etore[$i]/$goalfaktor).$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($etore[$i],$goalfaktor).$dumm2; ?></td>
     <td class="<?=$lmo_tabelle_class; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
-    <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.($atore[$i]/$goalfaktor).$dumm2; ?></td>
-    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.($dtore[$i]/$goalfaktor).$dumm2; ?></td><? 
+    <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.applyFactor($atore[$i],$goalfaktor).$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td><? 
   if($tabpkt==1){?>
     <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td>
-    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=($punkte[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?
     if($minus==2){?>
     <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$lmo_tabelle_class?>"><strong><?=($negativ[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?
     }
   }
   if($tabonres==2){
@@ -239,23 +239,23 @@ for($x = 1; $x <= $anzteams; $x++) {
     <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$hnieder[$i].$dumm2; ?></td><? 
     if($tabpkt==0){?>
     <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td>
-    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=($hpunkte[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=applyFactor($hpunkte[$i],$pointsfaktor)?></strong></td><?
       if($minus==2){?>
     <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$lmo_tabelle_class?>"><strong><?=($hnegativ[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=applyFactor($hnegativ[$i],$pointsfaktor)?></strong></td><?
       }
     }?>
     <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
-    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.($hetore[$i]/$goalfaktor).$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($hetore[$i],$goalfaktor).$dumm2; ?></td>
     <td class="<?=$lmo_tabelle_class; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
-    <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.($hatore[$i]/$goalfaktor).$dumm2; ?></td>
-    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.($hdtore[$i]/$goalfaktor).$dumm2; ?></td><? 
+    <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.applyFactor($hatore[$i],$goalfaktor).$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($hdtore[$i],$goalfaktor).$dumm2; ?></td><? 
     if($tabpkt==1){?>
     <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td>
-    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=($hpunkte[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=applyFactor($hpunkte[$i],$pointsfaktor)?></strong></td><?
       if($minus==2){?>
     <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$lmo_tabelle_class?>"><strong><?=($hnegativ[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=applyFactor($hnegativ[$i],$pointsfaktor)?></strong></td><?
       }
     }
     $lmo_tabelle_class="lmoTabelleGastbilanz";?>
@@ -266,23 +266,23 @@ for($x = 1; $x <= $anzteams; $x++) {
     <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$anieder[$i].$dumm2; ?></td><? 
     if($tabpkt==0){?>
     <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td>
-    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=($apunkte[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=applyFactor($apunkte[$i],$pointsfaktor)?></strong></td><?
       if($minus==2){?>
     <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$lmo_tabelle_class?>"><strong><?=($anegativ[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=applyFactor($anegativ[$i],$pointsfaktor)?></strong></td><?
       }
     }?>
     <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
-    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.($aetore[$i]/$goalfaktor).$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($aetore[$i],$goalfaktor).$dumm2; ?></td>
     <td class="<?=$lmo_tabelle_class; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
-    <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.($aatore[$i]/$goalfaktor).$dumm2; ?></td>
-    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.($adtore[$i]/$goalfaktor).$dumm2; ?></td><? 
+    <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.applyFactor($aatore[$i],$goalfaktor).$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.applyFactor($adtore[$i],$goalfaktor).$dumm2; ?></td><? 
     if($tabpkt==1){?>
     <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td>
-    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=($apunkte[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=applyFactor($apunkte[$i],$pointsfaktor)?></strong></td><?
       if($minus==2){?>
     <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$lmo_tabelle_class?>"><strong><?=($anegativ[$i]/$pointsfaktor)?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=applyFactor($anegativ[$i],$pointsfaktor)?></strong></td><?
       }
     }
   }  /*tabonres==2*/?>
@@ -299,7 +299,7 @@ if ($einzutoretab == 1) {
   if (file_exists("$temp11/$file16")) {
     require("$temp11/$file16");
      
-    echo $text[4000].$text[38].": ".$gzutore."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[4001].": ".$gdstore;
+    echo $text[4000].$text[38].": ".applyFactor($gzutore,$goalfaktor)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[4001].": ".applyFactor($gdstore,$goalfaktor);
      
   }
 }?>

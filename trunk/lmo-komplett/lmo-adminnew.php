@@ -109,6 +109,7 @@ if ($newpage == 3) {
     $anzab = "3";
   } else {
     $klfin = "0";
+    $playdown = "0";
   }
   $hands = "0";
   $ergebnis = "1";
@@ -122,6 +123,8 @@ if ($newpage == 3) {
   $favteam = "0";
   $selteam = "0";
   $mittore = "1";
+  $goalfaktor = "1";
+  $pointsfaktor = "1";
   if ($xtype == 0) {
     $stat1 = "0";
     $stat2 = "0";

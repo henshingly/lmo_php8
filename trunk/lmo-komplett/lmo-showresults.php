@@ -69,9 +69,9 @@ while (list ($key, $val) = each ($datsort)) {
       ?>
     </td>
     <td width="2">&nbsp;</td>
-    <td align="right"><?=($goala[$st-1][$i]/$goalfaktor); ?></td>
+    <td align="right"><?=applyFactor($goala[$st-1][$i],$goalfaktor); ?></td>
     <td align="center" width="8">:</td>
-    <td align="left"><?=($goalb[$st-1][$i]/$goalfaktor); ?></td><?  
+    <td align="left"><?=applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td><?  
     if($spez==1){ ?>
     <td width="2">&nbsp;</td>
     <td><?=$mspez[$st-1][$i]; ?></td><?
@@ -109,10 +109,10 @@ while (list ($key, $val) = each ($datsort)) {
      */
     if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
  
-      $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".($goala[$st-1][$i]/$goalfaktor).":".($goalb[$st-1][$i]/$goalfaktor);
+      $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
       //Beidseitiges Ergebnis
       if ($msieg[$st-1][$i]==3) {
-        $lmo_spielnotiz.=" / ".($goalb[$st-1][$i]/$goalfaktor).":".($goala[$st-1][$i]/$goalfaktor);
+        $lmo_spielnotiz.=" / ".applyFactor($goalb[$st-1][$i],$goalfaktor).":".applyFactor($goala[$st-1][$i],$goalfaktor);
       }
       if ($spez==1) {
         $lmo_spielnotiz.=" ".$mspez[$st-1][$i];
@@ -155,7 +155,7 @@ if ($einzutore == 1) {?>
   if (file_exists("$temp11/$file16")) {
     require("$temp11/$file16");
      
-    echo $text[38].": ".($zutore[$st]/$goalfaktor)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38].$text[4001].": ".($dstore[$st]/$goalfaktor);
+    echo $text[38].": ".applyFactor($zutore[$st],$goalfaktor)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38].$text[4001].": ".applyFactor($dstore[$st],$goalfaktor);
      
   }?>
     </td>

@@ -9,6 +9,7 @@ if($save==1){
   require(PATH_TO_ADDONDIR."/viewer/lmo-adminviewersavecfg.php");
 }
 
+//Config.ini-File auslesen*/
 if ($config!='') {
   $viewer_config=parse_ini_file(PATH_TO_CONFIGDIR."/viewer/".$config."-cfg.txt");
   extract($viewer_config,EXTR_PREFIX_ALL,'viewer');
@@ -31,7 +32,7 @@ $add=$_SERVER['PHP_SELF']."?action=admin&amp;todo=vieweroptions&amp;config=$conf
         <tr><td align="right"><?if ($show==$i) {echo ${"viewer_liga$i"} ?><?}else{?><a onclick="return chklmolink()" href="<?=$add.$i;?>"><?=${"viewer_liga$i"}?></a><?}?></td></tr><?
       $i++;
   }?>
-        <tr><td align="right"><?if ($show==$i+1) {echo $text['viewer'][29]; ?><?}else{?><a onclick="return chklmolink()" href="<?=$add.($i+1)?>"><?=$text['viewer'][29]; ?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==$i+1) {echo $text['viewer'][29]; ?><?}else{?><a onclick="return chklmolink()" href="<?=$add?>-1"><?=$text['viewer'][29]; ?></a><?}?></td></tr>
       </table>
     </td>
     <td align="center" valign="top">

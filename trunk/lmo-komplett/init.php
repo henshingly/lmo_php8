@@ -1,11 +1,12 @@
 <?
-// Dies ist der Dateipfad zum LMO-Verzeichnis ausgehend von deinem HTML-Stammverzeichnis (ohne abschliessenden '/'!)
-$lmo_dateipfad=$_SERVER['DOCUMENT_ROOT'].dirname($_SERVER['PHP_SELF']);
-//$lmo_dateipfad="/tmp/lmo-komplett/lmo";
+/** Hier bitte das Verzeichnis des LMO angeben. (ohne abschliessenden '/'!)*/
+$lmo_verzeichnis='/tmp/LMO-Komplett/lmo';
 
-// Dies ist die absolute URL zum LMO-Verzeichnis (ohne abschliessenden '/'!)
-$lmo_url='http://'.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']);
-//$lmo_url='http://localhost/tmp/lmo-komplett/lmo';
+
+/** Ab hier nichts ändern*/
+
+$lmo_dateipfad=$_SERVER['DOCUMENT_ROOT'].$lmo_verzeichnis;
+$lmo_url='http://'.$_SERVER['HTTP_HOST'].$lmo_verzeichnis;
 
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
     $_SESSION['debug']=TRUE;
@@ -54,6 +55,14 @@ if (!function_exists('check_hilfsadmin')) {
       $hilfsadmin_berechtigung=TRUE;
     }  
     return $hilfsadmin_berechtigung; 
+  }
+}
+if (!function_exists('applyFactor')) {
+  function applyFactor ($value, $factor) {
+    if (is_numeric($value)) {
+      return ($value/$factor);
+    }
+    return $value;
   }
 }
 ?>

@@ -181,9 +181,9 @@ if ($file != "") {
           <td class="nobr" colspan="3">&nbsp;</td><? 
         }?>
           <td class="nobr" width="2">&nbsp;</td>
-          <td class="nobr" align="right"><?=($goala[$st-1][$i][$n]/$goalfaktor); ?></td>
+          <td class="nobr" align="right"><?=applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?></td>
           <td class="nobr" align="center" width="8">:</td>
-          <td class="nobr" align="left"><?=($goalb[$st-1][$i][$n];/$goalfaktor);?></td>
+          <td class="nobr" align="left"><?=applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?></td>
           <td class="nobr" width="2">&nbsp;</td>
           <td class="nobr"><?=$mspez[$st-1][$i][$n]; ?></td>
           <td class="nobr" width="2">&nbsp;</td>

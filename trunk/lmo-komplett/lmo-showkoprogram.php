@@ -66,7 +66,7 @@ if ($file != "") {
   <tr>
     <td valign="top" align="center">
       <table cellspacing="0" cellpadding="0" border="0"><?
-  for($i = 1; $i <= ceil($anzteams/2); $i++) {?>
+  for($i = 1; $i <= floor($anzteams/2); $i++) {?>
         <tr>
           <td align="right">
             <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
@@ -181,7 +181,7 @@ if ($file != "") {
             } else {
               echo "<td width=\"8\">|</td>";
             }?>
-          <td class="nobr"><?=$dumn1; ?><?=($goala[$j][$i][$n]/$goalfaktor); ?>&nbsp;:&nbsp;<?=($goalb[$j][$i][$n]/$goalfaktor); ?>&nbsp;<?=$mspez[$j][$i][$n]; ?><?=$dumn2; ?><?
+          <td class="nobr"><?=$dumn1; ?><?=applyFactor($goala[$j][$i][$n],$goalfaktor); ?>&nbsp;:&nbsp;<?=applyFactor($goalb[$j][$i][$n],$goalfaktor); ?>&nbsp;<?=$mspez[$j][$i][$n]; ?><?=$dumn2; ?><?
            /** Mannschaftsicons finden
              */
             $lmo_teamaicon="";
@@ -212,7 +212,7 @@ if ($file != "") {
              */
             if ($mnote[$j][$i][$n]!="") {
          
-              $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong> ".($goala[$j][$i][$n]/$goalfaktor).":".($goalb[$j][$i][$n]/$goalfaktor);
+              $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong> ".applyFactor($goala[$j][$i][$n],$goalfaktor).":".applyFactor($goalb[$j][$i][$n],$goalfaktor);
               //Allgemeine Notiz
               
               $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$j][$i][$n];
@@ -233,7 +233,7 @@ if ($file != "") {
     </td>
     <td valign="top" align="center">
       <table cellspacing="0" cellpadding="0" border="0"><?
-  for($i = ceil($anzteams/2); $i <= $anzteams; $i++) {?>
+  for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {?>
         <tr>
           <td><?
     if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {

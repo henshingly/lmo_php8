@@ -35,7 +35,7 @@ if($save==1){
       $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
       if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergänzen falls nicht vorhanden
       
-      $deflang=isset($_POST["xdeflang"])?trim($_POST["xdeflang"]):'Deutsch';
+      $deflang=isset($_POST["xdeflang"])?trim($_POST["xdeflang"]):$deflang;
       
       //Zeitformat kontrollieren
       $deftime=isset($_POST["xdeftime"])?$_POST["xdeftime"]:"15:30";
@@ -107,7 +107,7 @@ if ($show==0) {?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?=$text[506]?>"><?=$text[505];?></acronym></td>
             <td class="nobr" colspan="4">
-              <select class="lmo-formular-input" name="xdeflang" onchange="dolmoedit()" disabled><?
+              <select class="lmo-formular-input" name="xdeflang" onchange="dolmoedit()"><?
               $handle=opendir (PATH_TO_LANGDIR);
               while (false!==($f=readdir($handle))) {
                 if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {?>

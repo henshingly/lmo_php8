@@ -30,7 +30,8 @@ if ($action == "tipp") {
   }
   if ($_SESSION["lmotipperok"] == 5) {
     if (($todo == "edit" && $file != "viewer") || $todo == "einsicht") {
-      require(PATH_TO_LMO."/lmo-openfilest.php");
+      $lmo_only_st=true;
+      require(PATH_TO_LMO."/lmo-openfile.php");
     } elseif($todo == "tabelle") {
       require_once(PATH_TO_LMO."/lmo-openfile.php");
     } elseif(($todo == "wert" && $all != 1) || $todo == "fieber") {

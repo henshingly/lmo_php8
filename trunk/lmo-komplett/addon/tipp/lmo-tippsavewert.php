@@ -81,11 +81,10 @@ if (file_exists($file)) {
   $addw = "lmo-start.php?action=tipp&amp;todo=wert&amp;file=".$file;
   echo "<p class='message'>".$text['tipp'][29]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text['tipp'][65]."<br></p>";
   if ($todo != "edit") {
-    if ($st == 0) {
-      require(PATH_TO_LMO."/lmo-openfile.php");
-    } else {
-      require(PATH_TO_LMO."/lmo-openfilest.php");
+    if ($st != 0) {
+      $lmo_only_st=true;
     }
+      require(PATH_TO_LMO."/lmo-openfile.php");
   }
   $verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
   $dummy = array("");
