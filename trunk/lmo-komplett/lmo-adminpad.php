@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -24,31 +24,36 @@
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($action=="admin") && ($todo=="")){
-  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
-?>
-  <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">
-  <?PHP echo $text[92]; ?>
-  </td></tr><tr><td align="center" class="lmost3">
-  <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5"><nobr>
-    <ul>
-<?PHP if($_SESSION["lmouserok"]==2){ ?>
-      <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."new&amp;".SID."\">".$text[93]."</a>"; ?></li>
-<?PHP } ?>
-      <li class="lmoadminli"><?PHP echo $text[94]; ?>:<?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-admindir.php"); ?></li>
-<?PHP if($_SESSION['lmouserok']==2){ ?>
-      <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."delete&amp;".SID."\">".$text[95]."</a>"; ?></li>
-      <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."upload&amp;".SID."\">".$text[96]."</a>"; ?></li>
-<?PHP } ?>
-      <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."download&amp;".SID."\">".$text[349]."</a>"; ?></li>
-<?PHP if($_SESSION['lmouserok']==2){ ?>
-      <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."options&amp;".SID."\">".$text[97]."</a>"; ?></li>
-      <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."tipp&amp;".SID."\">".$text['tipp'][115]."</a>"; ?></li>
-<?PHP } ?>
-      <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."logout&amp;".SID."\">".$text[98]."</a>"; ?></li>
-    </ul>
-  </nobr></td></tr></table>
-  </td></tr></table>
-
-<?PHP
-  }
-?>
+  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";?>
+<table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center" class="lmost1"><?=$text[92];?></td>
+  </tr>
+  <tr>
+    <td align="center" class="lmost3">
+      <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="lmost5">
+            <ul><? 
+  if($_SESSION["lmouserok"]==2){ ?>
+              <li class="lmoadminli"><?="<a href='".$adda."new'>".$text[93]."</a>";?></li><?
+  }?>
+              <li class="lmoadminli"><?=$text[94];?>:<? $ftype=".l98"; require(PATH_TO_LMO."/lmo-admindir.php");?></li><? 
+  if($_SESSION['lmouserok']==2){ ?>
+              <li class="lmoadminli"><?="<a href='".$adda."delete'>".$text[95]."</a>"; ?></li>
+              <li class="lmoadminli"><?="<a href='".$adda."upload'>".$text[96]."</a>"; ?></li><? 
+  }?>
+              <li class="lmoadminli"><?="<a href='".$adda."download'>".$text[349]."</a>"; ?></li><? 
+  if($_SESSION['lmouserok']==2){ ?>
+              <li class="lmoadminli"><?="<a href='".$adda."options'>".$text[97]."</a>"; ?></li>
+              <li class="lmoadminli"><?="<a href='".$adda."tipp'>".$text['tipp'][115]."</a>"; ?></li><? 
+  }?>
+              <li class="lmoadminli"><?="<a href='".$adda."logout'>".$text[98]."</a>"; ?></li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table><?
+}?>
