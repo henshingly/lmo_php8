@@ -52,14 +52,14 @@ define("_REMARK_", ";");
 
 // If you ar not authorized to write to the global temp directory create a own one
 // in your space and change the path to your temp directory.
-define("_TempDir_", "/tmp");
+define("_TempDir_", PATH_TO_LMO."/output");
 
 // If you need an other file type (end of line) you can change it. Linefeeds for
 // different OS are:
 //     Linux:   chr(10) or "\n"
 //     Windows: chr(13).chr(10) or "\r\n"
 //     MAC:     chr(13) or "\r"
-define("_LINEFEED_", "\r\n");
+define("_LINEFEED_", "\n");
 
 // If you use different - not INI like - section limiter and value delimiter
 // you can change the values. This should not be neccesary.
