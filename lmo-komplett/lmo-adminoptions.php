@@ -91,7 +91,7 @@ if ($show==0) {?>
             <td class="lmost5" align="right"><acronym title="<?=$text[506]?>"><?=$text[505];?></acronym></td>
             <td class="lmost5" colspan="4">
               <select class="lmoadminein" name="xdeflang" onchange="dolmoedit()"><?
-              $handle=opendir ('.');
+              $handle=opendir (PATH_TO_LANGDIR);
               while (false!==($f=readdir($handle))) {
                 if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {?>
                 <option<?if ($lang[1]==$deflang) echo " selected";?>><?=$lang[1];?></option><?
