@@ -244,7 +244,7 @@ for($n=0;$n<$modus[$st-1];$n++){
     <td class="lmoBackMarkierung" align="left"><?=$goalb[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="left"><?=$mspez[$st-1][$i][$n]; ?></td>
     <td width="2">&nbsp;</td>
-    <td class="nobr" align="left">
+    <td class="nobr" align="right">
       <strong><? 
   if ($tipp_jokertipp==1 && $jksp==($i+1).($n+1)) {
     $jkspfaktor=$tipp_jokertippmulti;
@@ -309,13 +309,16 @@ for($n=0;$n<$modus[$st-1];$n++){
    *
    * Da IE kein max-width kann, Workaround lt. http://www.bestviewed.de/css/bsp/maxwidth/
    */
-  if ($mnote[$st-1][$i][$n]!="") {
+  if ($mnote[$st-1][$i][$n]!="" || $mtipp[$st-1][$i][$n] > 0) {
 
     $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".$goala[$st-1][$i][$n].":".$goalb[$st-1][$i][$n];
     //Allgemeine Notiz
     
     $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i][$n];
     
+    if ($mtipp[$st-1][$i][$n] == 1) {
+      $lmo_spielnotiz.="\n\n".$text['tipp'][231];
+    }
     echo "<a href='#' onclick=\"alert('".mysql_escape_string(strip_tags($lmo_spielnotiz))."');window.focus();return false;\"><span class='popup'><!--[if IE]><table><tr><td style=\"width: 23em\"><![endif]-->".nl2br($lmo_spielnotiz)."<!--[if IE]></td></tr></table><![endif]--></span><img src='img/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
     $lmo_spielnotiz="";
   } else {

@@ -26,51 +26,59 @@ if ($file != "") {
     exit;
   }
   if (substr($file, -4) == ".l98") {
-    $daten = array("");
+    $mspez0 = 0;
+    $daten = array();
     $sekt = "";
     $datei = fopen($file, "rb");
-    while (!feof($datei)) {
-      $zeile = fgets($datei, 1000);
-      $zeile = chop($zeile);
-      $zeile = trim($zeile);
-      if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
-        $sekt = trim(substr($zeile, 1, -1));
-      } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
-        $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
-        $wert = trim(substr($zeile, strpos($zeile, "=")+1));
-        if ($sekt == "Options") {
-          if ($schl == "Name") {
-            $titel0 = stripslashes($wert);
-          }
-          if ($schl == "Type") {
-            $lmtype0 = stripslashes($wert);
-          }
-          if ($schl == "Teams") {
-            $anzteams = $wert;
-          }
-          if ($lmtype0 == 0) {
-            if ($schl == "HideDraw") {
-              $hidr0 = $wert;
+    if ($datei) {
+      while (!feof($datei)) {
+        $zeile = fgets($datei, 1000);
+        $zeile = chop($zeile);
+        $zeile = trim($zeile);
+        if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+          $sekt = trim(substr($zeile, 1, -1));
+        } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+          $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
+          $wert = trim(substr($zeile, strpos($zeile, "=")+1));
+          if ($sekt == "Options") {
+            if ($schl == "Name") {
+              $titel0 = stripslashes($wert);
+            }
+            if ($schl == "goalfaktor") {
+              $goalfaktor0 = $wert;
+            }
+            if ($schl == "urlB") {
+              $urlb0 = $wert;
+            }
+            if ($schl == "Type") {
+              $lmtype0 = stripslashes($wert);
+            }
+            if ($schl == "Teams") {
+              $anzteams = $wert;
+            }
+            if ($lmtype0 == 0) {
+              if ($schl == "HideDraw") {
+                $hidr0 = $wert;
+              }
+            }
+            if ($schl == "DatS") {
+              $dats0 = $wert;
+            }
+            if ($schl == "DatM") {
+              $datm0 = $wert;
+            }
+            if ($schl == "favTeam") {
+              $favteam = $wert;
             }
           }
-          if ($schl == "DatS") {
-            $dats0 = $wert;
-          }
-          if ($schl == "DatM") {
-            $datm0 = $wert;
-          }
-          if ($schl == "favTeam") {
-            $favteam = $wert;
-          }
+          array_push($daten, $sekt."|".$schl."|".$wert."|EOL");
         }
-        array_push($daten, $sekt."|".$schl."|".$wert."|EOL");
       }
+      fclose($datei);
     }
-    fclose($datei);
-    array_shift($daten);
     clearstatcache();
      
-    $tippdaten = array("");
+    $tippdaten = array();
     $sekt = "";
     $jkwert = "";
     $datei = fopen($tippfile, "rb");
@@ -92,7 +100,6 @@ if ($file != "") {
       }
     }
     fclose($datei);
-    array_shift($tippdaten);
      
     if (!isset($favteam)) {
       $favteam = 0;
@@ -166,6 +173,8 @@ if ($file != "") {
           $msieg0 = 3;
         } elseif($op8 == "NT") {
           $mnote0 = addslashes($dum[2]);
+        } elseif($op8 == "BE") {
+          $mberi0 = addslashes($dum[2]);
         } elseif($op8 == "TI") {
           $mtipp0 = $dum[2];
         } elseif($op8 == "AT" && $teama0 > 0) {
@@ -208,14 +217,16 @@ if ($file != "") {
             array_push($datum1, $datum10);
             array_push($datum2, $datum20);
             array_push($spiel, $spiel0);
+            array_push($urlb, $urlb0);
+            array_push($goalfaktor, $goalfaktor0);
             if ($favteam == $teama0) {
-              $teama0 = "<b>".$teams[$teama0]."</b>";
+              $teama0 = "<strong>".$teams[$teama0]."</strong>";
             } else {
               $teama0 = $teams[$teama0];
             }
             array_push($teama, $teama0);
             if ($favteam == $teamb0) {
-              $teamb0 = "<b>".$teams[$teamb0]."</b>";
+              $teamb0 = "<strong>".$teams[$teamb0]."</strong>";
             } else {
               $teamb0 = $teams[$teamb0];
             }
@@ -258,6 +269,7 @@ if ($file != "") {
             }
             array_push($mtipp, $mtipp0);
             array_push($mnote, $mnote0);
+            array_push($mberi, $mberi0);
             array_push($msieg, $msieg0);
             $msieg0 = 0;
             array_push($mterm, $mterm0);

@@ -33,36 +33,17 @@ if (!isset($_SESSION["lmouserfile"])) {
   $_SESSION["lmouserfile"] = "";
 }
  
-if (!isset($todo)) {
-  $todo = "";
-}
-if (!isset($liga)) {
-  $liga = "";
-}
-if (!isset($file)) {
-  $file = "";
-}
-if (!isset($wert)) {
-  $wert = "";
-}
-if (!isset($all)) {
-  $all = "";
-}
-if ($all == "yes") {
-  $all = 1;
-}
-if (!isset($teamintern)) {
-  $teamintern = "";
-}
-if (!isset($endtab)) {
-  $endtab = 0;
-}
-if (!isset($tipp_tippeinsicht)) {
-  $tipp_tippeinsicht = 1;
-}
-if (!isset($tipp_jokertippmulti)) {
-  $tipp_jokertippmulti = 2;
-}
+$todo=                isset($_REQUEST['todo'])               ?$_REQUEST['todo']                :'';
+$liga=                isset($_REQUEST['liga'])               ?$_REQUEST['liga']                :'';
+$file=                isset($_REQUEST['file'])               ?$_REQUEST['file']                :'';
+$wert=                isset($_REQUEST['wert'])               ?$_REQUEST['wert']                :'';
+$all=                 isset($_REQUEST['all'])                ?($_REQUEST['all']=="yes"?1:'')   :'';
+$viewermode=          isset($_REQUEST['viewermode'])         ?1                                :0;
+$teamintern=          isset($_REQUEST['teamintern'])         ?$_REQUEST['teamintern']          :'';
+$endtab=              isset($_REQUEST['endtab'])             ?$_REQUEST['endtab']              :0;
+$tipp_tippeinsicht=   isset($_REQUEST['tipp_tippeinsicht'])  ?$_REQUEST['tipp_tippeinsicht']   :1;
+$tipp_jokertippmulti= isset($_REQUEST['tipp_jokertippmulti'])?$_REQUEST['tipp_jokertippmulti'] :2;
+
 if ($todo == "logout") {
   $_SESSION["lmotipperok"] = 0;
   $lmotipperpass = "";

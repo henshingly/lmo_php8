@@ -134,7 +134,7 @@ if ($ftype!="") {
     echo "<li>[".$text['tipp'][22]."]</li>";
   } else {
     if ($tipp_viewertipp==1) {
-      echo "<li><a href='".$addi."viewer'><b>".$text['tipp'][252]." ".$tipp_viewertage." ".$text['tipp'][171]."</b></a></li>";
+      echo "<li><a href='".$addi."&amp;viewermode'><strong>".$text['tipp'][252]." ".$tipp_viewertage." ".$text['tipp'][171]."</strong></a></li>";
     }
   }
   echo"</ul>";

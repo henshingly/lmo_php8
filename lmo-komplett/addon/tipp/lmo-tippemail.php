@@ -76,7 +76,7 @@ if ($message != "") {
     $now = strtotime("now");
     $then = strtotime("+".$tage." day");
      
-    if ($liga == "viewer") {
+    if ($viewermode == 1) {
       $verz = opendir(substr($dirliga, 0, -1));
       $dateien = array("");
       while ($files = readdir($verz)) {

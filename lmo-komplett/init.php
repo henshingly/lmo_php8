@@ -1,5 +1,5 @@
 <?
-require('init-parameters.php');
+require(dirname(__FILE__).'/init-parameters.php');
 
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
     $_SESSION['debug']=TRUE;

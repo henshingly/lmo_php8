@@ -45,7 +45,8 @@ if ($save == 1) {
   if ($emailart == 1) {
     if ($liganr == 0) {
       $st = 0;
-      $liga = "viewer";
+      $file='';
+      $viewermode = 1;
     } else {
       $st = $st1[$liganr-1];
       $liga = $liga1[$liganr-1];

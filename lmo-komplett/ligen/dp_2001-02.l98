@@ -22,6 +22,9 @@ favTeam=10
 selTeam=39
 ticker=0
 
+[News]
+NC=0
+
 [Teams]
 1=SV Babelsberg 03
 2=Hertha BSC Berlin

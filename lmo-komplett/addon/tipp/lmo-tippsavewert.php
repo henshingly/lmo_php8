@@ -1,50 +1,43 @@
 <?PHP
-// 
-// LigaManager Online 3.02
-// Copyright (C) 1997-2002 by Frank Hollwitz
-// webmaster@hollwitz.de / http://php.hollwitz.de
-// 
-// Tippspiel-AddOn 1.20
-// Copyright (C) 2002 by Frank Albrecht
-// fkalbrecht@web.de
-// 
-// Jocker-Hack 001
-// Copyright (C) 2002 by Ufuk Altinkaynak
-// ufuk.a@arcor.de
-// 
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of
-// the License, or (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-// 
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  * 
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+  
+  
   require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($todo != "edit") {
   $file = $dirliga.$liga.".l98";
 }
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcpkt.php");
-$dummd = array("");
+$dummd = array();
 $dumme = array("");
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
  
 $datei = fopen($pswfile, "rb");
-while (!feof($datei)) {
-  $zeile2 = fgets($datei, 1000);
-  $zeile2 = chop($zeile2);
-  if ($zeile2 != "") {
-    array_push($dummd, $zeile2);
+if ($datei) {
+  while (!feof($datei)) {
+    $zeile2 = fgets($datei, 1000);
+    $zeile2 = chop($zeile2);
+    if ($zeile2 != "") {
+      array_push($dummd, $zeile2);
+    }
   }
+  fclose($datei);
 }
-fclose($datei);
-array_shift($dummd);
  
 $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$liga.".aus";
 $datenalt = array("");
@@ -86,14 +79,13 @@ if (file_exists($file)) {
       require(PATH_TO_LMO."/lmo-openfile.php");
   }
   $verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
-  $dummy = array("");
+  $dummy = array();
   while ($files = readdir($verz)) {
     if (strtolower(substr($files, 0, strrpos($files, "_"))) == strtolower($liga) && strtolower(substr($files, -4)) == ".tip") {
       array_push($dummy, $files);
     }
   }
   closedir($verz);
-  array_shift($dummy);
    
   $anztipperliga = count($dummy);
    
@@ -198,6 +190,9 @@ if (file_exists($file)) {
                   }
                 }
               } else {
+                if ($st==0) {
+                  $modus[$st-1]=0;
+                }
                 for($n = 0; $n < $modus[$st-1]; $n++) {
                   if ($tipp_jokertipp == 1 && (($st == 0 && $jksp[$st0] == ($i+1).($n+1)) || $jksp == ($i+1).($n+1))) {
                     $jkspfaktor = $tipp_jokertippmulti;
@@ -281,63 +276,67 @@ if (file_exists($file)) {
              
             if ($st > 0 && file_exists($tipp_wertvereinfile)) {
               $datei = fopen($tipp_wertvereinfile, "rb");
-              while (!feof($datei)) {
-                $zeile = fgets($datei, 1000);
-                $zeile = trim(chop($zeile));
-                if ($zeile != "") {
-                  if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
-                    $verein = substr($zeile, 1, -1);
-                  }
-                  if ($verein != "") {
-                    array_push($datenalt1, $zeile);
-                  }
-                }
-              }
-              fclose($datei);
-            }
-            $tipp_wertvereindatei = fopen($tipp_wertvereinfile, "wb");
-            flock($tipp_wertvereindatei, 2);
-             
-            for($i = 1; $i <= $anzteams; $i++) {
-              fputs($tipp_wertvereindatei, "[".$i."]"."\n");
-              $anzst1 = $anzst;
-              for($j = 1; $j <= $anzst1; $j++) {
-                if ($st > 0) {
-                  $j = $st;
-                  $anzst1 = $st;
-                  $dat = 0;
-                  //if(!isset($dat)){$dat=0;}
-                  //if($dat>=count($datenalt1)){$dat=0;}
-                  while ($datenalt1[$dat] != "[".$i."]" && $dat < (count($datenalt1)-1)) {
-                    $dat++;
-                  }
-                  $verein = substr($datenalt1[$dat], 1, -1);
-                  if ($verein == $i) {
-                    $dat++;
-                    while ($dat < count($datenalt1) && $verein == $i) {
-                      if ((substr($datenalt1[$dat], 0, 1) == "[") && (substr($datenalt1[$dat], -1) == "]")) {
-                        $verein = substr($datenalt1[$dat], 1, -1);
-                      } else {
-                        if (substr($datenalt1[$dat], 2, strpos($datenalt1[$dat], "=")-2) != $st) {
-                          fputs($tipp_wertvereindatei, $datenalt1[$dat]."\n");
-                        }
-                        $dat++;
-                      }
+              if ($datei){
+                while (!feof($datei)) {
+                  $zeile = fgets($datei, 1000);
+                  $zeile = trim(chop($zeile));
+                  if ($zeile != "") {
+                    if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+                      $verein = substr($zeile, 1, -1);
+                    }
+                    if ($verein != "") {
+                      array_push($datenalt1, $zeile);
                     }
                   }
                 }
-                if ($vpunkte[$i][$j] > 0) {
-                  fputs($tipp_wertvereindatei, "TP".$j."=".$vpunkte[$i][$j]."\n");
-                  $vpunkte[$i][$j] = 0;
-                }
-                if ($vspiele[$i][$j] > 0) {
-                  fputs($tipp_wertvereindatei, "SG".$j."=".$vspiele[$i][$j]."\n");
-                  $vspiele[$i][$j] = 0;
-                }
+                fclose($datei);
               }
             }
-            flock($tipp_wertvereindatei, 3);
-            fclose($tipp_wertvereindatei);
+            $tipp_wertvereindatei = fopen($tipp_wertvereinfile, "wb");
+            if ($tipp_wertvereindatei) {
+              flock($tipp_wertvereindatei, 2);
+               
+              for($i = 1; $i <= $anzteams; $i++) {
+                fputs($tipp_wertvereindatei, "[".$i."]"."\n");
+                $anzst1 = $anzst;
+                for($j = 1; $j <= $anzst1; $j++) {
+                  if ($st > 0) {
+                    $j = $st;
+                    $anzst1 = $st;
+                    $dat = 0;
+                    //if(!isset($dat)){$dat=0;}
+                    //if($dat>=count($datenalt1)){$dat=0;}
+                    while ($datenalt1[$dat] != "[".$i."]" && $dat < (count($datenalt1)-1)) {
+                      $dat++;
+                    }
+                    $verein = substr($datenalt1[$dat], 1, -1);
+                    if ($verein == $i) {
+                      $dat++;
+                      while ($dat < count($datenalt1) && $verein == $i) {
+                        if ((substr($datenalt1[$dat], 0, 1) == "[") && (substr($datenalt1[$dat], -1) == "]")) {
+                          $verein = substr($datenalt1[$dat], 1, -1);
+                        } else {
+                          if (substr($datenalt1[$dat], 2, strpos($datenalt1[$dat], "=")-2) != $st) {
+                            fputs($tipp_wertvereindatei, $datenalt1[$dat]."\n");
+                          }
+                          $dat++;
+                        }
+                      }
+                    }
+                  }
+                  if ($vpunkte[$i][$j] > 0) {
+                    fputs($tipp_wertvereindatei, "TP".$j."=".$vpunkte[$i][$j]."\n");
+                    $vpunkte[$i][$j] = 0;
+                  }
+                  if ($vspiele[$i][$j] > 0) {
+                    fputs($tipp_wertvereindatei, "SG".$j."=".$vspiele[$i][$j]."\n");
+                    $vspiele[$i][$j] = 0;
+                  }
+                }
+              }
+              flock($tipp_wertvereindatei, 3);
+              fclose($tipp_wertvereindatei);
+            }
           }
         } // ende if($gef==1)
       } // ende if(file_exists($tippfile))
