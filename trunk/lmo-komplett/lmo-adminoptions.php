@@ -28,7 +28,7 @@ isset($_POST['save'])?$save=$_POST['save']:$save=0;
   $r=0;
 if($save==1){
   
-  $diraddon=trim($_POST["xdiraddon"]);
+  //$diraddon=trim($_POST["xdiraddon"]);
   $dirliga=trim($_POST["xdirliga"]);
   if($dirliga==""){$dirliga="./";}
   $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
@@ -74,7 +74,7 @@ if($save==1){
         <input type="hidden" name="file" value="<?=$file;?>">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost4" colspan="5"><?=$text[504];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="5"><?=$text[99];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>
@@ -84,25 +84,24 @@ if($save==1){
               $handle=opendir ('.');
               while (false!==($f=readdir($handle))) {
                 if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {?>
-                <option<?if ($lang[1]==$deflang) echo " selected";?>><?if ($lang[1]=="") echo $text[505]; else echo $lang[1];?></option><?
+                <option<?if ($lang[1]==$deflang) echo " selected";?>><?=$lang[1];?></option><?
                 } 
               }
               closedir($handle); 
               ?>
               </select></td>
           </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="5"><?=$text[220];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[222]?>"><?=$text[221];?></acronym></td>
             <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xdirliga" size="20" maxlength="80" value="<?=$dirliga;?>" onChange="dolmoedit()"></td>
           </tr>
           <tr>
-            <td class="lmost5" align="right"><acronym title="<?=$text[481]?>"><?=$text[482];?></acronym></td>
-            <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xdiraddon" size="30" maxlength="80" value="<?=$diraddon;?>" onChange="dolmoedit()"></td>
+            <td class="lmost5" align="right"><acronym title="<?=$text[240]?>"><?=$text[239];?></acronym></td>
+            <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xdeftime" size="5" maxlength="5" value="<?=$deftime;?>" onChange="dolmoedit()"></td>
+          </tr>
+          <tr>
+            <td class="lmost5" align="right"><acronym title="<?=$text[344]?>"><?=$text[343];?></acronym></td>
+            <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xadr" size="40" maxlength="128" value="<?=$aadr;?>" onChange="dolmoedit()"></td>
           </tr>
           </tbody>
           <tr>
@@ -130,7 +129,7 @@ if($save==1){
           </tr>
           </tbody>
           <tr>
-            <td class="lmost4" colspan="5"><?=$text[236];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+            <td class="lmost4" colspan="5"><?=$text[250];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
           <tbody class="blend_object">
           <tr>
@@ -162,20 +161,15 @@ if($save==1){
             <td class="lmost5"><acronym title="<?=$text[488]?>"><?=$text[487];?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" align="right"><acronym title="<?=$text[490]?>"><?=$text[489];?></acronym></td>
+            <td class="lmost5" rowspan="2" align="right"><acronym title="<?=$text[490]?>"><?=$text[489];?></acronym></td>
+            <td class="lmost5" colspan="4"><input type="checkbox" class="lmoadminein" name="xeinzutoretab" onChange="dolmoedit()"<?if($einzutoretab==1){echo " checked";}?>>&nbsp;<?=$text[491]?>
+          </tr>
+          <tr>
             <td class="lmost5" colspan="4">
-              <?=$text[491]?>: <input type="checkbox" class="lmoadminein" name="xeinzutoretab" onChange="dolmoedit()"<?if($einzutoretab==1){echo " checked";}?>>
-              <?=$text[492]?>: <input type="checkbox" class="lmoadminein" name="xeinzutore" onChange="dolmoedit()"<?if($einzutore==1){echo " checked";}?>>
+              <input type="checkbox" class="lmoadminein" name="xeinzutore" onChange="dolmoedit()"<?if($einzutore==1){echo " checked";}?>>&nbsp;<?=$text[492]?>
             </td>
           </tr>
-          <tr>
-            <td class="lmost5" align="right"><acronym title="<?=$text[240]?>"><?=$text[239];?></acronym></td>
-            <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xdeftime" size="5" maxlength="5" value="<?=$deftime;?>" onChange="dolmoedit()"></td>
-          </tr>
-          <tr>
-            <td class="lmost5" align="right"><acronym title="<?=$text[344]?>"><?=$text[343];?></acronym></td>
-            <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xadr" size="40" maxlength="128" value="<?=$aadr;?>" onChange="dolmoedit()"></td>
-          </tr>
+          
           </tbody>
           <tr>
             <td class="lmost5" colspan="6" align="center">

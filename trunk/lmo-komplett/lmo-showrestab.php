@@ -157,11 +157,9 @@ if(isset($file) && $file!=""){
     <td class="lmost5"><?PHP echo $mspez[$st-1][$i]; ?></td>
   <?PHP } ?>
     <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5">
-
-<?PHP
+    <td class="lmost5"><?PHP
   if($urlb==1){
-    if($mberi[$st-1][$i]!=""){echo "<a href=\"".$mberi[$st-1][$i]."\" target=\"_blank\" title=\"".$text[270]."\"><img src='img/lmo-st1.gif' width=\"16\" height=\"16\" border=\"0\"></a>";}else{echo "&nbsp;";}
+    if($mberi[$st-1][$i]!=""){echo "<a href=\"".$mberi[$st-1][$i]."\" target=\"_blank\" title=\"".$text[270]."\"><img src='img/lmo-st1.gif' width=\"10\" height=\"12\" border=\"0\"></a>";}else{echo "&nbsp;";}
     }
   if(($mnote[$st-1][$i]!="") || ($msieg[$st-1][$i]>0)){
     $dummy=addslashes($teams[$teama[$st-1][$i]]." - ".$teams[$teamb[$st-1][$i]]." ".$goala[$st-1][$i].":".$goalb[$st-1][$i]);
@@ -171,14 +169,12 @@ if(isset($file) && $file!=""){
     if($msieg[$st-1][$i]==2){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);}
     if($msieg[$st-1][$i]==3){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($text[212]);}
     if($mnote[$st-1][$i]!=""){$dummy=$dummy."\\n\\n".$text[22].":\\n".$mnote[$st-1][$i];}
-    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='img/lmo-st2.gif' width=\"16\" height=\"16\" border=\"0\"></a>";
+    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='img/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\"></a>";
     }
   else{
     echo "&nbsp;";
     }
-?>
-
-    </td>
+  ?></td>
   </tr>
   
   
@@ -349,7 +345,7 @@ if (($anzteams-($anzst/2+1))!=0){
       if($minus==2){$dum27=$dum27.":".$strafm[$i];}
       }
     if($teamn[$i]!=""){$dum27=$dum27."\\n\\n".$text[22].":\\n".$teamn[$i];}
-    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src='img/lmo-st2.gif' width=\"16\" height=\"16\" border=\"0\"></a>";
+    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src='img/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\"></a>";
     }
   else{
     echo "&nbsp;";
@@ -454,7 +450,7 @@ if (($anzteams-($anzst/2+1))!=0){
 <tr>  
 <td class="lmomain2" align="center">
 <?PHP 
-echo $einzutoretab;
+
 if ($einzutoretab==1) {
 $strs=".l98";
 $stre=".l98.php";

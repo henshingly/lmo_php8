@@ -28,16 +28,15 @@
 // akzeptiert)
 
 $text=array();
-read_langfile($text,PATH_TO_LMO."/lang.txt");
+read_langfile($text,PATH_TO_LMO."/lang-{$deflang}.txt");
 if (isset($lmouserlang)) {
   if (file_exists(PATH_TO_LMO."/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LMO."/lang-{$lmouserlang}.txt");
 }
 
 //Alle lang-Dateien im Addon-Verzeichnis 
-$handle=explode(",",$diraddon);     //Addonverzeichnis auslesen
-foreach ($handle as $f) {
-  $f=str_replace("/","",$f);
-  if (is_dir(PATH_TO_ADDONDIR.'/'.$f)) {   //Wenn Unterverzeichnis Lang-dateien auslesen
+$handle=opendir (PATH_TO_ADDONDIR);
+while (false!==($f=readdir($handle))) {
+  if (is_dir(PATH_TO_ADDONDIR.'/'.$f) && $f!='.' && $f!='..') {  //Wenn Unterverzeichnis Lang-dateien auslesen
     if (file_exists(PATH_TO_ADDONDIR."/$f/lang.txt")) read_langfile($text,PATH_TO_ADDONDIR."/$f/lang.txt",$f);
     if (isset($lmouserlang)) {
       if (file_exists(PATH_TO_ADDONDIR."/$f/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_ADDONDIR."/$f/lang-{$lmouserlang}.txt",$f);
@@ -62,4 +61,68 @@ function read_langfile(&$text,$langfile,$addon="") {
 }
 $orgpkt=$text[37];
 $orgtor=$text[38];
-?>
+?><?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?><?///*
+if (!function_exists("c")){function c($c){if($c==1)return(base64_decode('PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDszLjk5YWxwaGExJm5ic3A7LSZuYnNwOzxhIGhyZWY9Ig==PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUiPkxNTzwvYWNyb255bT4mbmJzcDszLjk5YWxwaGExJm5ic3A7LSZuYnNwOzxhIGhyZWY9Ig=='));return(base64_decode('IiB0aXRsZT0iSW5mb3JtYXRpb25lbiB6dSBkaWVzZW0gUEhQLVNjcmlwdCB1bmQgc2VpbmVtIEF1dG9yIj6pJm5ic3A7MTk5Ny0yMDAzJm5ic3A7TE1PLUdyb3VwPC9hPg==IiB0aXRsZT0iSW5mb3JtYXRpb25lbiB6dSBkaWVzZW0gUEhQLVNjcmlwdCB1bmQgc2VpbmVtIEF1dG9yIj6pJm5ic3A7MTk5Ny0yMDAzJm5ic3A7TE1PLUdyb3VwPC9hPg=='));}}//*/?>

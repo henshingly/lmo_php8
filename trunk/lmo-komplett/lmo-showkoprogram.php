@@ -122,12 +122,12 @@ if($file!=""){
     <td class="lmost5"><?PHP echo $dumn1; ?><?PHP echo $goala[$j][$i][$n]; ?>&nbsp;:&nbsp;<?PHP echo $goalb[$j][$i][$n]; ?>&nbsp;<?PHP echo $mspez[$j][$i][$n]; ?><?PHP echo $dumn2; ?>
 <?PHP
   if($urlb==1){
-    if($mberi[$j][$i][$n]!=""){echo "<a href=\"".$mberi[$j][$i][$n]."\" target=\"_blank\" title=\"".$text[270]."\"><img src='lmo-st1.gif' width=\"16\" height=\"16\" border=\"0\"></a>";}else{echo "&nbsp;";}
+    if($mberi[$j][$i][$n]!=""){echo "<a href=\"".$mberi[$j][$i][$n]."\" target=\"_blank\" title=\"".$text[270]."\"><img src='lmo-st1.gif' width=\"10\" height=\"12\" border=\"0\"></a>";}else{echo "&nbsp;";}
     }
   if($mnote[$j][$i][$n]!=""){
     $dummy=addslashes($teams[$teama[$j][$i][$n]]." - ".$teams[$teamb[$j][$i][$n]]." ".$goala[$j][$i][$n].":".$goalb[$j][$i][$n])." ".$mspez[$j][$i][$n];
     if($mnote[$j][$i][$n]!=""){$dummy=$dummy."\\n\\n".$text[22].":\\n".$mnote[$j][$i][$n];}
-    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='lmo-st2.gif' width=\"16\" height=\"16\" border=\"0\"></a>";
+    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='img/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\"></a>";
     }
   else{
     echo "&nbsp;";

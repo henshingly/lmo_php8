@@ -1,5 +1,5 @@
 [Options]
-Title=<acronym title="Liga Manager Online">LMO</acronym> 3.99alpha1
+Title=<acronym title='Liga Manager Online'>LMO</acronym> 3.99alpha1
 Name=1. Fussball-Bundesliga 2003/04
 Type=0
 Teams=18
@@ -22,8 +22,8 @@ CK=1
 UC=2
 AR=1
 AB=3
-namePkt=
-nameTor=
+namePkt=Pkt.
+nameTor=Tore
 DatC=1
 DatS=1
 DatM=1
@@ -35,13 +35,17 @@ Ergebnis=1
 mittore=1
 favTeam=0
 selTeam=0
-ticker=0
+ticker=1
 Graph=1
 Kreuz=1
 Tabelle=1
 Ligastats=1
 kurve1=0
 kurve2=0
+
+[News]
+NC=1
+N0=fdghsghsgh
 
 [Teams]
 1=FC Bayern München

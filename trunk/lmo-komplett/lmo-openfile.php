@@ -28,11 +28,11 @@ if(isset($file) && $file!=""){
     $daten=array();
     $sekt="";
     $stand=gmdate("d.m.Y H:i",filectime(PATH_TO_LMO.'/'.$file));
-    $datei = fopen(PATH_TO_LMO.'/'.$file,"rb");
+    $datei = @file(PATH_TO_LMO.'/'.$file);
     if ($datei) {
       $lmtype=0;
-      while (!feof($datei)) {
-        $zeile = fgets($datei,1000);
+      for($tt=0;$tt<count($datei);$tt++) {
+        $zeile=&$datei[$tt];
         $zeile=chop($zeile);
         $zeile=trim($zeile);
         if((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
@@ -103,7 +103,7 @@ if(isset($file) && $file!=""){
           $daten[]="$sekt|$schl|$wert|EOL";
         }
       }
-      fclose($datei);
+
       if(!isset($st)){                         $st=1;}
       if(!isset($stx)){                        $stx=1;}
       if(!isset($ergebnis)){                   $ergebnis=1;}
@@ -242,7 +242,7 @@ if(isset($file) && $file!=""){
       for($i=1;$i<=count($daten);$i++){
         $dum=split("[|]",$daten[$i-1]);
         if($nticker==1){
-          if(($dum[0]=="News") && ($dum[1]!="NC")){$nlines[]=stripslashes($dum[2]);print_r($nlines);}
+          if(($dum[0]=="News") && ($dum[1]!="NC")){$nlines[]=stripslashes($dum[2]);}
         }
         if($dum[0]=="Teams"){$teams[$dum[1]]=stripslashes($dum[2]);}
         if($dum[0]=="Teamk"){$teamk[$dum[1]]=stripslashes($dum[2]);}
@@ -331,9 +331,7 @@ if(isset($file) && $file!=""){
           if(($op2=="Round") && ($op8=="AT")){$mterm[$op3][$op6][$op7]=$dum[2];}
         }
       }
-      if(!isset($nlines)){$nticker=0;}
     }
   }
 }
-
 ?>

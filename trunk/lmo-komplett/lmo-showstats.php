@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02b
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -26,7 +26,7 @@ if($file!=""){
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td valign="top" align="center"><table cellspacing="0" cellpadding="0" border="0">
-<?PHP
+<?
   for($i=1;$i<=$anzteams;$i++){
     echo "<tr><td align=\"center\" ";
     if($i<>$stat1){
@@ -41,7 +41,7 @@ if($file!=""){
     </table></td>
     <td valign="top" align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 
-<?PHP
+<?
   if($stat1==0){
     echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text[24]."<br>&nbsp;</td></tr>";
     }
@@ -53,12 +53,12 @@ if($file!=""){
     for($x=0;$x<$anzteams;$x++){$platz0[intval(substr($tab0[$x],34))]=$x+1;}
 ?>
       <tr>
-        <td valign="top" align="right" class="lmost4"><?PHP echo $teams[$stat1]; ?></td>
+        <td valign="top" align="right" class="lmost4"><?= $teams[$stat1]; ?></td>
         <td valign="top" align="center" class="lmost4">&nbsp;</td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost4"><?PHP echo $teams[$stat2]; ?></td><?PHP } ?>
+        <? if($stat2>0){ ?><td valign="top" class="lmost4"><?= $teams[$stat2]; ?></td><? } ?>
       </tr>
-<?PHP if($stat2>0){$dummy=" align=\"center\"";}else{$dummy="";} ?>
-<?PHP
+<? if($stat2>0){$dummy=" align=\"center\"";}else{$dummy="";} ?>
+<?
   $serie1="&nbsp;";
 if ($ser1[$stat1]>0) {
   $serie1=$ser1[$stat1]." ".$text[474]."<br>".$ser2[$stat1]." ".$text[75];
@@ -103,74 +103,74 @@ if ($stat2>0) {
 
 ?>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP echo $chg1; ?>%</td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[60]; ?></td>
-        <td valign="top" class="lmost5"><?PHP echo $chg2; ?>%</td>
+        <td valign="top" align="right" class="lmost5"><?= $chg1; ?>%</td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[60]; ?></td>
+        <td valign="top" class="lmost5"><?= $chg2; ?>%</td>
       </tr>
-<?PHP } ?>
+<? } ?>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP echo $platz0[$stat1]; ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[61]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP echo $platz0[$stat2]; ?></td><?PHP } ?>
-      </tr>
-      <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP echo $punkte[$stat1]; if($minus==2){":".$negativ[$stat1];} ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[37]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP echo $punkte[$stat2]; if($minus==2){":".$negativ[$stat2];} ?></td><?PHP } ?>
+        <td valign="top" align="right" class="lmost5"><?= $platz0[$stat1]; ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[61]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $platz0[$stat2]; ?></td><? } ?>
       </tr>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP echo $spiele[$stat1]; ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[63]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP echo $spiele[$stat2]; ?></td><?PHP } ?>
+        <td valign="top" align="right" class="lmost5"><?= $punkte[$stat1]; if($minus==2){":".$negativ[$stat1];} ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[37]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $punkte[$stat2]; if($minus==2){":".$negativ[$stat2];} ?></td><? } ?>
       </tr>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP if($spiele[$stat1]){echo number_format($punkte[$stat1]/$spiele[$stat1],2,",","."); if($minus==2){":".number_format($negativ[$stat1]/$spiele[$stat1],2,",",".");}} ?></td>
+        <td valign="top" align="right" class="lmost5"><?= $spiele[$stat1]; ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[63]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $spiele[$stat2]; ?></td><? } ?>
+      </tr>
+      <tr>
+        <td valign="top" align="right" class="lmost5"><? if($spiele[$stat1]){echo number_format($punkte[$stat1]/$spiele[$stat1],2,",","."); if($minus==2){":".number_format($negativ[$stat1]/$spiele[$stat1],2,",",".");}} ?></td>
 
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[37].$text[64]; ?></td>
-        <?PHP if($stat2>0){if($spiele[$stat2]){ ?><td valign="top" class="lmost5"><?PHP echo number_format($punkte[$stat2]/$spiele[$stat2],2,",","."); if($minus==2){":".number_format($negativ[$stat2]/$spiele[$stat2],2,",",".");}} ?></td><?PHP } ?>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[37].$text[64]; ?></td>
+        <? if($stat2>0){if($spiele[$stat2]){ ?><td valign="top" class="lmost5"><? echo number_format($punkte[$stat2]/$spiele[$stat2],2,",","."); if($minus==2){":".number_format($negativ[$stat2]/$spiele[$stat2],2,",",".");}} ?></td><? } ?>
 
       </tr>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP echo $etore[$stat1].":".$atore[$stat1]; ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[38]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP echo $etore[$stat2].":".$atore[$stat2]; ?></td><?PHP } ?>
+        <td valign="top" align="right" class="lmost5"><?= $etore[$stat1].":".$atore[$stat1]; ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[38]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $etore[$stat2].":".$atore[$stat2]; ?></td><? } ?>
       </tr>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP if($spiele[$stat1]){ echo number_format($etore[$stat1]/$spiele[$stat1],2,",",".").":".number_format($atore[$stat1]/$spiele[$stat1],2,",",".");} ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[38].$text[64]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP if($spiele[$stat2]){ echo number_format($etore[$stat2]/$spiele[$stat2],2,",",".").":".number_format($atore[$stat2]/$spiele[$stat2],2,",",".");} ?></td><?PHP } ?>
+        <td valign="top" align="right" class="lmost5"><? if($spiele[$stat1]){ echo number_format($etore[$stat1]/$spiele[$stat1],2,",",".").":".number_format($atore[$stat1]/$spiele[$stat1],2,",",".");} ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[38].$text[64]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><? if($spiele[$stat2]){ echo number_format($etore[$stat2]/$spiele[$stat2],2,",",".").":".number_format($atore[$stat2]/$spiele[$stat2],2,",",".");} ?></td><? } ?>
       </tr>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP if($spiele[$stat1]){echo $siege[$stat1]." (".number_format($siege[$stat1]*100/$spiele[$stat1],2,",",".")."%)";} ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[67]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP if($spiele[$stat2]){echo $siege[$stat2]." (".number_format($siege[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><?PHP } ?>
+        <td valign="top" align="right" class="lmost5"><? if($spiele[$stat1]){echo $siege[$stat1]." (".number_format($siege[$stat1]*100/$spiele[$stat1],2,",",".")."%)";} ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[67]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><? if($spiele[$stat2]){echo $siege[$stat2]." (".number_format($siege[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><? } ?>
       </tr>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP echo $maxs0[$stat1]; ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[68]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP echo $maxs0[$stat2]; ?></td><?PHP } ?>
+        <td valign="top" align="right" class="lmost5"><?= $maxs0[$stat1]; ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[68]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $maxs0[$stat2]; ?></td><? } ?>
       </tr>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP if($spiele[$stat1]){echo $nieder[$stat1]." (".number_format($nieder[$stat1]*100/$spiele[$stat1],2,",",".")."%)";} ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[69]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP if($spiele[$stat2]){echo $nieder[$stat2]." (".number_format($nieder[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><?PHP } ?>
+        <td valign="top" align="right" class="lmost5"><? if($spiele[$stat1]){echo $nieder[$stat1]." (".number_format($nieder[$stat1]*100/$spiele[$stat1],2,",",".")."%)";} ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[69]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><? if($spiele[$stat2]){echo $nieder[$stat2]." (".number_format($nieder[$stat2]*100/$spiele[$stat2],2,",",".")."%)";} ?></td><? } ?>
       </tr>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP echo $maxn0[$stat1]; ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[70]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP echo $maxn0[$stat2]; ?></td><?PHP } ?>
+        <td valign="top" align="right" class="lmost5"><?= $maxn0[$stat1]; ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[70]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $maxn0[$stat2]; ?></td><? } ?>
       </tr>
       <tr>
-        <td valign="top" align="right" class="lmost5"><?PHP echo $serie1; ?></td>
-        <td valign="top" class="lmost4"<?PHP echo $dummy; ?>><?PHP echo $text[71]; ?></td>
-        <?PHP if($stat2>0){ ?><td valign="top" class="lmost5"><?PHP echo $serie2; ?></td><?PHP } ?>
+        <td valign="top" align="right" class="lmost5"><?= $serie1; ?></td>
+        <td valign="top" class="lmost4"<?= $dummy; ?>><?= $text[71]; ?></td>
+        <? if($stat2>0){ ?><td valign="top" class="lmost5"><?= $serie2; ?></td><? } ?>
       </tr>
-<?PHP
+<?
     }
 ?>
     </table></td>
     <td valign="top" align="center"><table cellspacing="0" cellpadding="0" border="0">
-<?PHP
+<?
   for($j=0;$j<=$anzteams;$j++){
     $i=$j+1;
     if($i>$anzteams){$i=0;}
@@ -191,13 +191,13 @@ if ($stat2>0) {
 </table>
 <?
 if ($einzustats==1) {  
-$strs=".l98";
-$stre=".l98.php";
-$str=basename($file);
-$file16=str_replace($strs,$stre,$str);
-$temp11=basename($diroutput);
-if (file_exists("$temp11/$file16")){
-require(PATH_TO_LMO."/$temp11/$file16");?>
+  $strs=".l98";
+  $stre=".l98.php";
+  $str=basename($file);
+  $file16=str_replace($strs,$stre,$str);
+  $temp11=basename($diroutput);
+  if (file_exists("$temp11/$file16")){
+    require(PATH_TO_LMO."/$temp11/$file16");?>
 <table>
 <tr>
     <td class="lmost1" align="center"><?=$text[4009]?></td>
@@ -228,12 +228,12 @@ require(PATH_TO_LMO."/$temp11/$file16");?>
       </table>
     </td>
   </tr><?
-  if ($gbeide>0) {?>
+    if ($gbeide>0) {?>
   <tr>
     <td class="lmost4" align="right"><?=$text[4012]?></td>
     <td class="lmost5" colspan="2" align="center"><?=$gbeide?><?if ($ggesamt>0) {$v=round($gbeide/$ggesamt*100);echo " ($v%)";}?></td>
   </tr><?
-  }?>
+    }?>
   <tr>
     <td colspan="5">&nbsp;</td>
   </tr>
@@ -272,7 +272,7 @@ require(PATH_TO_LMO."/$temp11/$file16");?>
     <td class="lmost5" align="left"><?=$hgastsieg?></td>
     <td class="lmost5" align="left"><?=$hheimsiegtor?>:<?=$hgastsiegtor?> (<?=$spieltagflag?>.<?=$text[4014]?>)</td>
   </tr><?
-if ($hheimsiegtor1>0) {?>
+    if ($hheimsiegtor1>0) {?>
   <tr>
     <td class="lmost4"></td>
     <td class="lmost5" align="right"><?=$hheimsieg1?></td>
@@ -280,14 +280,14 @@ if ($hheimsiegtor1>0) {?>
     <td class="lmost5" align="left"><?=$hgastsieg1?></td>
     <td class="lmost5" align="left"><?=$hheimsiegtor1?>:<?=$hgastsiegtor1?> (<?=$text[4014]?>.<?=$spieltagflag1?>)</td>
   </tr><?
-	if ($counteranz>2) {
-	$counteranz0=$counteranz-2;?>
+	    if ($counteranz>2) {
+	      $counteranz0=$counteranz-2;?>
 	<tr>
     <td class="lmost4"></td>
     <td class="lmost5" colspan="4" align="right"><small><?=$text[4015]?> <?=$counteranz0?> <?=$text[4016]?></small></td>
   </tr><?
-	}
-}?>
+	    }
+    }?>
   <tr>
     <td colspan="5">&nbsp;</td>
   </tr>
@@ -298,7 +298,7 @@ if ($hheimsiegtor1>0) {?>
     <td class="lmost5" align="left"><?=$agastsieg?></td>
     <td class="lmost5" align="left"><?=$aheimsiegtor?>:<?=$agastsiegtor?> (<?=$spieltagflag2?>.<?=$text[4014]?>)</td>
   </tr>  <?
-if ($agastsiegtor1>0) {?>
+    if ($agastsiegtor1>0) {?>
   <tr>
     <td class="lmost4"></td>
     <td class="lmost5" align="right"><?=$aheimsieg1?></td>
@@ -306,14 +306,14 @@ if ($agastsiegtor1>0) {?>
     <td class="lmost5" align="left"><?=$agastsieg1?></td>
     <td class="lmost5" align="left"><?=$aheimsiegtor1?>:<?=$agastsiegtor1?>  (<?=$spieltagflag3?>.<?=$text[4014]?>)</td>
   </tr><?
-	if ($counteranz1>2) {
-	$counteranz4=$counteranz1-2;?>
+	    if ($counteranz1>2) {
+	      $counteranz4=$counteranz1-2;?>
   <tr> 
     <td class="lmost4"></td>
     <td class="lmost5" colspan="4" align="right"><small><?=$text[4015]?> <?=$counteranz4?> <?=$text[4016]?></small></td>
   </tr><?
-	}
-}?>
+	    }
+    }?>
   <tr>
     <td colspan="5">&nbsp;</td>
   </tr>
@@ -324,7 +324,7 @@ if ($agastsiegtor1>0) {?>
       <td class="lmost5" align="left"><?=$htorreichm2?></td>
       <td class="lmost5" align="left"><?=$htorreicht1?>:<?=$htorreicht2?>  (<?=$spieltagflag4?>.<?=$text[4014]?>)</td>
     </tr><?
-if ($spieltagflag5<>0) {?>
+    if ($spieltagflag5<>0) {?>
     <tr>
       <td class="lmost4"></td>
       <td class="lmost5" align="right"><?=$htorreichm3?></td>
@@ -332,25 +332,23 @@ if ($spieltagflag5<>0) {?>
       <td class="lmost5" align="left"><?=$htorreichm4?></td>
       <td class="lmost5" align="left"><?=$htorreicht3?>:<?=$htorreicht4?>  (<?=$spieltagflag5?>.<?=$text[4014]?>)</td>
     </tr><?
-	if ($counteranz5>2) {
-	$counteranz6=$counteranz5-2;?>
+	    if ($counteranz5>2) {
+	      $counteranz6=$counteranz5-2;?>
 	  <tr>
        <td class="lmost4">  </td>
        <td class="lmost5" colspan="4" align="right"><small><?=$text[4015]?> <?=$counteranz6?> <?=$text[4019]?></small></td>
      </tr><?
-	}
-}?>
+    	}
+    }?>
     <tr>
       <td colspan="5">&nbsp;</td>
     </tr>
-  </table><?
-}
-} ?>
-     
- </td>
+  </table>
+  </td>
 </tr>
-</table>
-<!-- * LMO-Zustat-Addon-ENDE	- Autor: Bernd Hoyer - eMail: info@salzland-info.de -->
-
-
-<?PHP } ?>
+</table><?
+  } //if (file_exists)
+} //if (zustats)
+?>
+ 
+<? } ?>

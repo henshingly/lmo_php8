@@ -15,15 +15,6 @@
  * 
  */
 
-		// Konfigurations-Datei laden
-/*
- * Ab hier bitte nichts mehr ändern!
- *
- */
-/*
- * Zustat-Datei ausgeben: Die Datei ist im Ligenverzeichnis und hat den Namen der l98-Datei plus ".php"
- *   
- */
 $zustatoutput='';
 if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
 if($lmtype==0){	

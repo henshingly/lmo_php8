@@ -13,7 +13,7 @@ echo("<wml>\n");*/
 if (isset($_POST['wap_username'])) $_SESSION['wap_username']=$_POST['wap_username']; else $_SESSION['wap_username']="";
 if (isset($_POST['wap_userpass'])) $_SESSION['wap_userpass']=$_POST['wap_userpass']; else $_SESSION['wap_userpass']="";
 
-require_once(PATH_TO_ADDON."/lmo-adminwap_auth.php");
+require_once(PATH_TO_ADDONDIR."/wap/lmo-adminwap_auth.php");
 
 $array = array();
 if (isset($_REQUEST['wap_file'])) $file=$_REQUEST['wap_file'];
@@ -31,29 +31,29 @@ if(isset($_SESSION['wap_userok']) && $_SESSION['wap_userok']>0) {
         $_SESSION=array();
         session_destroy();
         setcookie(session_name(),"","0","/");
-        include (PATH_TO_ADDON."/lmo-adminwap_login.php");
+        include (PATH_TO_ADDONDIR."/wap/lmo-adminwap_login.php");
 		    break;
 		  case "nav":
-		    include (PATH_TO_ADDON."/lmo-adminwap_nav.php");
+		    include (PATH_TO_ADDONDIR."/wap/lmo-adminwap_nav.php");
 		    break;
 		  case "day":
-		    include (PATH_TO_ADDON."/lmo-adminwap_result.php");
+		    include (PATH_TO_ADDONDIR."/wap/lmo-adminwap_result.php");
 		    break;
 			case "table":
-		    include (PATH_TO_ADDON."/lmo-adminwap_table.php");
+		    include (PATH_TO_ADDONDIR."/wap/lmo-adminwap_table.php");
 		    break;
 			case "help":
-		    include (PATH_TO_ADDON."/lmo-adminwap_help.php");
+		    include (PATH_TO_ADDONDIR."/wap/lmo-adminwap_help.php");
 		    break;
 			case "save":
-		    include (PATH_TO_ADDON."/lmo-adminwap_save.php");
+		    include (PATH_TO_ADDONDIR."/wap/lmo-adminwap_save.php");
 		    break;
 		  default:
-		    include (PATH_TO_ADDON."/lmo-adminwap_liga.php");
+		    include (PATH_TO_ADDONDIR."/wap/lmo-adminwap_liga.php");
 		    break;
 	} # Ende switch($op)
 }else { # Ende	if(check_auth($login, $pwd, basename($file)))
-	require(PATH_TO_ADDON."/lmo-adminwap_login.php");
+	require(PATH_TO_ADDONDIR."/wap/lmo-adminwap_login.php");
 }
 echo("</p>\n");
 echo("</card>\n");

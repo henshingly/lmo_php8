@@ -19,13 +19,12 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // Erweiterung für Archiv Funktion durch Georg Strey
-require("init.php");
 function getmicrotime(){
   list($usec, $sec) = explode(" ",microtime());
   return ((float)$usec + (float)$sec);
 }
-
 $startzeit = getmicrotime();
+require("init.php");
 
 if((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()=="") {
   session_start();
