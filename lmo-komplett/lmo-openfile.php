@@ -179,6 +179,9 @@ if(isset($file) && $file!=""){
       if($lmtype==0){
         $strafp = array_pad(array("0"),116,"0");
         $strafm = array_pad(array("0"),116,"0");
+        $torkorrektur1 = array_pad(array("0"),116,"0"); // Hack-Straftore
+    	  $torkorrektur2 = array_pad(array("0"),116,"0"); // Hack-Straftore
+    	  $strafdat      = array_pad(array("0"),116,"0"); // Hack-Straftore
         $handp = array_pad(array("0"),116,"0");
         $datum1 = array_pad($array,116,"");
         $datum2 = array_pad($array,116,"");
@@ -259,6 +262,9 @@ if(isset($file) && $file!=""){
         if($lmtype==0){
           if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="SP")){$strafp[$op5]=$dum[2];}
           if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="SM")){$strafm[$op5]=$dum[2];}
+          if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="TOR1")){$torkorrektur1[$op5]=$dum[2];} // Hack-Straftore
+		      if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="TOR2")){$torkorrektur2[$op5]=$dum[2];} // Hack-Straftore
+          if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="STDA")){$strafdat[$op5]=$dum[2];}      // Hack-Straftore
         }
         if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="URL")){$teamu[$op5]=$dum[2];}
         if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="NOT")){$teamn[$op5]=$dum[2];}
