@@ -28,8 +28,8 @@ if ($file!="") {
         echo "</b>";
       }
       
-      $heim_tore=$goala[$st-1][$i];
-      $gast_tore=$goalb[$st-1][$i];
+      $heim_tore=($goala[$st-1][$i]/$goalfaktor);
+      $gast_tore=($goalb[$st-1][$i]/$goalfaktor);
       
       if ($heim_tore=="_" && $gast_tore=="_") {
         $heim_tore='';

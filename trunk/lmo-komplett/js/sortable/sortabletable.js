@@ -292,9 +292,13 @@ SortableTable.getInnerText = function (oNode) {
 			case 1: //ELEMENT_NODE
 				s += SortableTable.getInnerText(cs[i]);
 				break;
-			case 3:	//TEXT_NODE
+			case 8:	//HTML_COMMENT_NODE
 				s += cs[i].nodeValue;
 				break;
+      case 3:	//TEXT_NODE
+				s += cs[i].nodeValue;
+				break;
+      
 		}
 	}
 	return s;

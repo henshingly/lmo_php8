@@ -1,7 +1,6 @@
 Addons:
 
 - Ein Verzeichnis = Ein Addon
-- die Datei init.php in das Addon-Verzeichnis kopieren
 - Wenn benötigt eine Konfigurationsdatei cfg.txt (Format wie lmo-cfg.txt im LMO-Verzeichnis)
 - Wenn benötigt eine Datei lang.txt und zusätzlich auch lang-[LMO-Sprache].txt erstellen
 - An den Anfang der Startdatei(en) des Addons diese Zeile einfügen

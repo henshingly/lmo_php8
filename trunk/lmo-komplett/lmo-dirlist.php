@@ -132,7 +132,7 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
       <td class="nobr" align="left"><?=$liga['file_name']?> &nbsp;</td><?
   }?>
 			<td class="nobr" align="left"><?=$liga['rundenbezeichnung']." ".$liga['aktueller_spieltag'];?> &nbsp;</td>
-			<td class="nobr" align="left"><?=strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name']))?></td>
+			<td class="nobr" align="left"><!--<?=filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name'])?>--><?=strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name']))?></td>
 		</tr><?
 }
 if($liga_counter==0){echo "<td colspan='4'>[".$text[223]."]</td>";}?>
@@ -143,10 +143,10 @@ if($liga_counter==0){echo "<td colspan='4'>[".$text[223]."]</td>";}?>
   var ligaTable = new SortableTable(document.getElementById("ligaliste"),<?
 if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
   $sortprojection=array('liga_name'=>0,'file_name'=>1,'file_date'=>3,'asc'=>0,'desc'=>1);?>
-                  ["CaseInsensitiveString","CaseInsensitiveString","RoundSort", "Date"]);<?
+                  ["CaseInsensitiveString","CaseInsensitiveString","RoundSort", "timeStamp"]);<?
 } else {
   $sortprojection=array('liga_name'=>0,'file_name'=>1,'file_date'=>2,'asc'=>0,'desc'=>1);?>
-                  ["CaseInsensitiveString","RoundSort", "Date"]);<?
+                  ["CaseInsensitiveString","RoundSort", "timeStamp"]);<?
 }
 
 if (isset($_SESSION['liga_sort']) && isset($_SESSION['liga_sort_direction'])) {

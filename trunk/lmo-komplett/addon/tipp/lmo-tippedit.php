@@ -291,7 +291,11 @@ if ($file!="") {
           </th><?  
     } ?>
           <th class="nobr" align="center" colspan="<? if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
-            <acronym title="<?=$text['tipp'][241].":".$text['tipp'][242] ?>"><?=$text['tipp'][209]; /* Dein Tipp */?></acronym>
+            <acronym title="<?=$text['tipp'][241].":".$text['tipp'][242] ?>"><?=$text['tipp'][209]; /* Dein Tipp */?></acronym><br><?
+    if ($goalfaktor!=1) {
+      echo "(".$text[553+log10($goalfaktor)].")";
+    }?>
+            
           </th><?
   }
   

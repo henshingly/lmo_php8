@@ -68,12 +68,6 @@ require_once(PATH_TO_LMO."/lmo-openfile.php");
 if($_SESSION['lmouserok']==2){
   if($todo!="new"){echo "<a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink();' title='{$text[79]}'>{$text[78]}</a>";}else{echo $text[78];}
   echo "&nbsp;";
-  
-/* Importfunktion Anfang
-  if($todo!="import"){echo "<a href='{$adda}import&amp;imppage=".$newpage."' onclick='return chklmolink();' title=\""."Eine neue Liga aus einem Spielplan importieren"."\">"."Import"."</a>";}else{echo "Import";}
-  echo "&nbsp;";
-// Importfunktion Ende*/
-  
   if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
   echo "&nbsp;";
   if($todo!="delete"){echo "<a href='{$adda}delete' onclick='return chklmolink();' title='{$text[83]}'>{$text[82]}</a>";}else{echo $text[82];}
@@ -93,8 +87,8 @@ if($_SESSION['lmouserok']==2){
   if(($todo!="options") && ($todo!="addons") && ($todo!="user") && ($todo!="design")){echo "<a href='{$adda}options' onclick='return chklmolink();' title='{$text[87]}'>{$text[86]}</a>";}else{echo $text[86];}
   echo "&nbsp;";
   if(($todo!="tipp") && ($todo!="tippemail") && ($todo!="tippuser") && ($todo!="tippuseredit") && ($todo!="tippoptions")){echo "<a href='{$adda}tipp' onclick='return chklmolink();' title='{$text['tipp'][57]}'>{$text['tipp'][0]}</a>";}else{echo $text['tipp'][0];}
-  echo "&nbsp;";
-  if(($todo!="vieweroptions")){echo "<a href='{$adda}vieweroptions' onclick='return chklmolink();' title='{$text['viewer'][21]}'>{$text['viewer'][20]}</a>";}else{echo $text['viewer'][20];}
+  //echo "&nbsp;";
+  //if(($todo!="vieweroptions")){echo "<a href='{$adda}vieweroptions' onclick='return chklmolink();' title='{$text['viewer'][21]}'>{$text['viewer'][20]}</a>";}else{echo $text['viewer'][20];}
   }
 elseif($_SESSION['lmouserok']==1){
   if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
@@ -157,11 +151,6 @@ elseif($_SESSION['lmouserok']==1){
     elseif($todo=="tippoptions"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippoptions.php");}
     elseif($todo=="vieweroptions"){require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");}
     elseif($todo==""){require(PATH_TO_LMO."/lmo-adminpad.php");}
-    
-// Importer Start
-  	elseif($todo=="import"){require(PATH_TO_ADDONDIR."/limporter/lmo-adminimport.php");}
-// Importer Ende
-    
   }
   elseif($_SESSION['lmouserok']==1){
     if($todo=="open"){require(PATH_TO_LMO."/lmo-adminopen.php");}

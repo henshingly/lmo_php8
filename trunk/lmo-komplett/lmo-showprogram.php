@@ -92,9 +92,9 @@ if($file!=""){
           }
 ?>        </td>
           <td width="2">&nbsp;</td>
-          <td align="right"><? echo $goala[$j][$i]; ?></td>
+          <td align="right"><? echo ($goala[$j][$i]/$goalfaktor); ?></td>
           <td align="center" width="8">:</td>
-          <td align="left"><? echo $goalb[$j][$i]; ?></td>
+          <td align="left"><? echo ($goalb[$j][$i]/$goalfaktor); ?></td>
 <? 
           if($spez==1){ ?>
           <td width="2">&nbsp;</td>
@@ -133,10 +133,10 @@ if($file!=""){
            * Da IE kein max-width kann, Workaround lt. http://www.bestviewed.de/css/bsp/maxwidth/
            */
           if ($mnote[$j][$i]!="" || $msieg[$j][$i]>0) {
-            $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong> ".$goala[$j][$i].":".$goalb[$j][$i];
+            $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong> ".($goala[$j][$i]/$goalfaktor).":".($goalb[$j][$i]/$goalfaktor);
             //Beidseitiges Ergebnis
             if ($msieg[$j][$i]==3) {
-              $lmo_spielnotiz.=" / ".$goalb[$j][$i].":".$goala[$j][$i];
+              $lmo_spielnotiz.=" / ".($goalb[$j][$i]/$goalfaktor).":".($goala[$j][$i]/$goalfaktor);
             }
             if ($spez==1) {
               $lmo_spielnotiz.=" ".$mspez[$j][$i];

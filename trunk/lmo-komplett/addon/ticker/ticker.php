@@ -103,7 +103,7 @@ foreach($ticker_array as $file){
             } else {
               $dummy4="";
             }
-            $hilf=$hilf.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i].":".$goalb[$stx-1][$i].$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4." +++ ";
+            $hilf=$hilf.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".($goala[$stx-1][$i]/$goalfaktor).":".($goalb[$stx-1][$i]/$goalfaktor).$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4." +++ ";
           }
         }
       }  //for
@@ -122,7 +122,7 @@ foreach($ticker_array as $file){
               } else {
                 $dummy4="";
               }
-              $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goala[$stx-1][$i][$n].":".$goalb[$stx-1][$i][$n].$mspezhilf.$dummy4." +++ ";
+              $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".($goala[$stx-1][$i][$n]/$goalfaktor).":".($goalb[$stx-1][$i][$n]/$goalfaktor).$mspezhilf.$dummy4." +++ ";
             }
           }
         }
