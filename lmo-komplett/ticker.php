@@ -1,14 +1,8 @@
-<?PHP 
-/**
- * LMO-Ticker V1.03 für den LMO 3.02b
- * Stand: 13.06.2003
- * Copyright (C) 2003 by Bernd Hoyer, basierend auf dem LMO3.02b von Frank Hollwitz
- * info@salzland.info.de / http://www.salzland-info.de
- * Verbesserungen, Bugs etc. bitte nur in das Forum unter www.hollwitz.net
- * Es gelten die gleichen Softwarenutzungsrechte wie beim LMO (Free Software entsprechend General Public License [GNU])
- */
+<? 
 
-require_once("lmo-langload.php");
+
+require_once(PATH_TO_LMO."/lmo-cfgload.php");
+require_once(PATH_TO_LMO."/lmo-langload.php");
 $versionticker="LMO-Ticker 1.03 ";
 $array = array("");  
 $msieg=0;
@@ -20,7 +14,7 @@ $dummy4="";
 $link="<a href=\"http://www.salzland-info.de/\" target=\"_blank\">www.salzland.info.de </a>";
 ?>
 
-<?PHP if ($tickerart==1) { ?>
+<? if ($tickerart==1) { ?>
 <script type="text/javascript">
 <!--
  NS4 = (document.layers);
@@ -33,20 +27,20 @@ $link="<a href=\"http://www.salzland-info.de/\" target=\"_blank\">www.salzland.i
 </noscript>
 
 <table cellspacing="0" cellpadding="0" border="0" align="center">
-<?PHP if ($tickertitel==1) { ?>
+<? if ($tickertitel==1) { ?>
 <tr>
-<td class="lmomain1" align="center"><nobr><?PHP echo $titelticker ?> </nobr></td>
+<td class="lmomain1" align="center"><nobr><? echo $titelticker ?> </nobr></td>
 </tr>
-<?PHP }?>
+<? }?>
 <script language="JavaScript">
 <!--
 var msg1="   +++";
-<?PHP
+<?
 if(!isset($file)){$file="";}
 $file2=$file;
 
 foreach ($file_array as $file){
-require("lmo-openfile.php");
+require(PATH_TO_LMO."/lmo-openfile.php");
 $hilf="";
 $hilf1="";
 if($lmtype==0){
@@ -84,8 +78,8 @@ $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goa
 }
 }
 ?>
-msg1=msg1+"<?PHP echo $stx; ?>"+"<?PHP echo $spieltag; ?>"+"<?PHP echo $hilf; ?>"+"<?PHP echo $hilf1; ?>";
-<?PHP
+msg1=msg1+"<? echo $stx; ?>"+"<? echo $spieltag; ?>"+"<? echo $hilf; ?>"+"<? echo $hilf1; ?>";
+<?
 }
 $file=$file2;
 
@@ -112,18 +106,20 @@ $file=$file2;
       pause=0;
     }
   }
-  document.write("<tr><td class=\"lmomain1\" colspan=\"3\" align=\"center\"><nobr><FORM NAME=\"marqueeform\"><INPUT class=\"lmotickerein\" TYPE=\"TEXT\" NAME=\"marquee\" SIZE=\"60\" readonly></FORM></nobr></td></tr>");
-  document.close();
-  marquee();
+  if (laenge>0) {
+    document.write("<tr><td class=\"lmomain1\" colspan=\"3\" align=\"center\"><nobr><FORM NAME=\"marqueeform\"><INPUT class=\"lmotickerein\" TYPE=\"TEXT\" NAME=\"marquee\" SIZE=\"60\" readonly></FORM></nobr></td></tr>");
+    document.close();
+    marquee();
+  }
 -->
 </script>
 <tr>
-<td class="lmomain2" align="center"><nobr><?PHP require("lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
+<td class="lmomain2" align="center"><nobr><? require(PATH_TO_LMO."/lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
 </tr>
 </table>
-<?PHP }?>
+<? }?>
 
-<?PHP if ($tickerart==2) {?>
+<? if ($tickerart==2) {?>
 <SCRIPT Language="JavaScript">
 <!--
  NS4 = (document.layers);
@@ -136,21 +132,21 @@ $file=$file2;
 </noscript>
 
 <table cellspacing="0" cellpadding="0" border="0" align="center">
-<?PHP if ($tickertitel==1) { ?>
+<? if ($tickertitel==1) { ?>
 <tr>
-<td class="lmomain1" align="center"><nobr><?PHP echo $titelticker ?> </nobr></td>
+<td class="lmomain1" align="center"><nobr><? echo $titelticker ?> </nobr></td>
 </tr>
-<?PHP }?>
+<? }?>
 
 <script language="JavaScript">
 <!--
 var msg1="   +++";
-<?PHP
+<?
 if(!isset($file)){$file="";}
 $file2=$file;
 
 foreach ($file_array as $file){
-require("lmo-openfile.php");
+require(PATH_TO_LMO."/lmo-openfile.php");
 $hilf="";
 $trenner=" +++ ";
 
@@ -158,9 +154,9 @@ $trenner=" +++ ";
   $hilf=$hilf.$nlines[$i].$trenner;
   
   }	?>
-  msg1=msg1+"<?PHP echo $hilf; ?>";
+  msg1=msg1+"<? echo $hilf; ?>";
 
-<?PHP
+<?
 }
 $file=$file2;
 
@@ -195,11 +191,11 @@ $file=$file2;
 
 
 <tr>
-<td class="lmomain2" align="center"><nobr><?PHP echo $versionticker."&copy 2003 by ".$link ?> </nobr></td></tr>
+<td class="lmomain2" align="center"><nobr><? echo $versionticker."&copy 2003 by ".$link ?> </nobr></td></tr>
 </table>
-<?PHP } ?>
+<? } ?>
 
-<?PHP if ($tickerart==3) { ?>
+<? if ($tickerart==3) { ?>
 <SCRIPT Language="JavaScript">
 <!--
  NS4 = (document.layers);
@@ -212,20 +208,20 @@ $file=$file2;
 </noscript>
 
 <table cellspacing="0" cellpadding="0" border="0" align="center">
-<?PHP if ($tickertitel==1) { ?>
+<? if ($tickertitel==1) { ?>
 <tr>
-<td class="lmomain1" align="center"><nobr><?PHP echo $titelticker ?> </nobr></td>
+<td class="lmomain1" align="center"><nobr><? echo $titelticker ?> </nobr></td>
 </tr>
-<?PHP }?>
+<? }?>
 <script language="JavaScript">
 <!--
 var msg1="   +++";
-<?PHP
+<?
 if(!isset($file)){$file="";}
 $file2=$file;
 
 foreach ($file_array as $file){
-require("lmo-openfile.php");
+require(PATH_TO_LMO."/lmo-openfile.php");
 $hilf="";
 $hilf1="";
 
@@ -268,8 +264,8 @@ $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".$goa
 }
 }
 ?>
-msg1=msg1+"<?PHP echo $stx; ?>"+"<?PHP echo $spieltag; ?>"+"<?PHP echo $hilf; ?>"+"<?PHP echo $hilf1; ?>";
-<?PHP
+msg1=msg1+"<? echo $stx; ?>"+"<? echo $spieltag; ?>"+"<? echo $hilf; ?>"+"<? echo $hilf1; ?>";
+<?
 }
 $file=$file2;
 
@@ -302,7 +298,7 @@ $file=$file2;
 -->
 </script>
 <tr>
-<td class="lmomain2" align="center"><nobr><?PHP require("lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
+<td class="lmomain2" align="center"><nobr><? require(PATH_TO_LMO."/lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
 </tr>
 </table>
-<?PHP }?>
+<? }?>

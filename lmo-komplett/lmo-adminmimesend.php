@@ -20,8 +20,8 @@
 // 
 session_start();
 if (!isset($_SESSION["lmouserok"]))$_SESSION["lmouserok"]==0;
-require("lmo-cfgload.php");
-require("lmo-langload.php");
+require(PATH_TO_LMO."/lmo-cfgload.php");
+require(PATH_TO_LMO."/lmo-langload.php");
 isset($_GET['action'])? $action=$_GET['action']:$action='';
 isset($_GET['todo'])  ? $todo=$_GET['todo']    :$todo='';
 isset($_GET['down'])  ? $down=$_GET['down']    :$down=0;
@@ -51,7 +51,7 @@ if(($action=="admin") && ($todo=="email") && (($_SESSION["lmouserok"]==1) || ($_
     sort($dummy);
     if($down>0){
       if($dummy[$down-1]!=""){
-        require("lmo-adminmimezip.php");
+        require(PATH_TO_LMO."/lmo-adminmimezip.php");
         $zipfile = new zipfile();
         $filedata = fread(fopen($dirliga.$dummy[$down-1], "rb"), filesize($dirliga.$dummy[$down-1]));   
         $zipfile -> add_file($filedata, $dummy[$down-1]);   
@@ -70,7 +70,7 @@ if(($action=="admin") && ($todo=="email") && (($_SESSION["lmouserok"]==1) || ($_
       }
     }elseif($down==-1){
       if(count($dummy)>0){
-        require("lmo-adminmimezip.php");
+        require(PATH_TO_LMO."/lmo-adminmimezip.php");
         $zipfile = new zipfile();
         for($i=0;$i<count($dummy);$i++){
           $filedata = fread(fopen($dirliga.$dummy[$i], "rb"), filesize($dirliga.$dummy[$i]));

@@ -18,9 +18,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($file!="") && ($_SESSION['lmouserok']==2)){
-  require("lmo-openfile.php");
+  require(PATH_TO_LMO."/lmo-openfile.php");
   if(!isset($team)){$team="";}
   if(!isset($save)){$save=0;}
   if($save==1){
@@ -35,7 +35,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         if($minus==2){$strafm[$i]=intval($_POST["xstrafm".$i]);}
         }
       }
-    require("lmo-savefile.php");
+    require(PATH_TO_LMO."/lmo-savefile.php");
     }
   elseif($team!=""){
     if($team>1){
@@ -106,7 +106,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         $strafp[$anzteams]=0;
         if($minus==2){$strafm[$anzteams]=0;}
         $anzteams--;
-        require("lmo-savefile.php");
+        require(PATH_TO_LMO."/lmo-savefile.php");
         }
       }
     elseif($team==-1){
@@ -118,14 +118,14 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         $teamn[$anzteams]="";
         $strafp[$anzteams]=0;
         if($minus==2){$strafm[$anzteams]=0;}
-        require("lmo-savefile.php");
+        require(PATH_TO_LMO."/lmo-savefile.php");
         }
       }
     }
   if($lmtype==0){$breite=7;}else{$breite=5;}
-  $addr=$PHP_SELF."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
-  $addb=$PHP_SELF."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
-  $addz=$PHP_SELF."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=-2&amp;team=";
+  $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
+  $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
+  $addz=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=-2&amp;team=";
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
@@ -156,7 +156,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post" onSubmit="return chklmopass()">
+  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
   
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="edit">

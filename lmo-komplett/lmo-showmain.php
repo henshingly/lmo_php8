@@ -23,9 +23,9 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
-  $addm=$PHP_SELF."?file=".$file."&amp;action=";
+  $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
   if($file!=""){
-    require("lmo-openfile.php");
+    require(PATH_TO_LMO."/lmo-openfile.php");
     if(!isset($endtab)){
       $endtab=$anzst;
       $ste=$st;
@@ -53,7 +53,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
       if ($lang[1]=="") $lang[1]=$text[505];?>
           <a href="<?="{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;archiv={$archiv}"?>" title="<?=$lang[1];?>"
           ><?
-      $lang[1]==""?$imgfile=$text[505].".gif":$imgfile=$lang[1].".gif";
+      $lang[1]==""?$imgfile='img/'.$text[505].".gif":$imgfile='img/'.$lang[1].".gif";
       if (!file_exists($imgfile)) {
         echo $lang[1];
       }else{
@@ -65,10 +65,12 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
   }
   closedir($handle);?>
       </td>
-    </tr><? 
-  if($file!="" && $nticker==1){ ?>
+    </tr><pre><? 
+  if($file!="" && $nticker==1){ 
+    //print_r(get_defined_vars());;
+    ?>
     <tr>
-      <td class="lmomain1" colspan="3" align="center"><?include("lmo-newsticker.php");?></td>
+      <td class="lmomain1" colspan="3" align="center"><?include(PATH_TO_LMO."/lmo-newsticker.php");?></td>
     </tr><? 
   }
   if ($file!="") {?>  
@@ -103,7 +105,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
       }
       if($action!="stats"){echo "<a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[19]}'>{$text[18]}</a>";}else{echo $text[18];}
       if ($einspieler==1) {
-  	    include("lmo-statloadconfig.php");
+  	    include(PATH_TO_LMO."/lmo-statloadconfig.php");
   	    echo "&nbsp;&nbsp;";
   	    if($action!="spieler" && $mittore==1) {echo "<a href='{$addm}spieler' title='{$text[3012]}'>{$ligalink}</a>";}else{if($mittore==1)echo $ligalink;}
   	  }
@@ -129,35 +131,35 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
   if ($file!="") {
     $druck=0;
     if($lmtype==0){
-      if($action=="cal"){if($datc==1){require("lmo-showcal.php");}}
+      if($action=="cal"){if($datc==1){require(PATH_TO_LMO."/lmo-showcal.php");}}
       if($tabonres==0){
-        if($action=="results"){require("lmo-showresults.php");if(file_exists("lmo-savehtml.php")){$druck=1;}}
-        if($action=="table"){require("lmo-showtable.php");}
+        if($action=="results"){require(PATH_TO_LMO."/lmo-showresults.php");if(file_exists("lmo-savehtml.php")){$druck=1;}}
+        if($action=="table"){require(PATH_TO_LMO."/lmo-showtable.php");}
       }else{
-        if($action=="results"){require("lmo-showrestab.php");}
+        if($action=="results"){require(PATH_TO_LMO."/lmo-showrestab.php");}
       }
       if($kreuz==1){
-        if($action=="cross"){require("lmo-showcross.php");}
+        if($action=="cross"){require(PATH_TO_LMO."/lmo-showcross.php");}
       }
-      if($action=="program"){require("lmo-showprogram.php");}
+      if($action=="program"){require(PATH_TO_LMO."/lmo-showprogram.php");}
       if($kurve==1){
-        if($action=="graph"){require("lmo-showgraph.php");}
+        if($action=="graph"){require(PATH_TO_LMO."/lmo-showgraph.php");}
       }
-      if($action=="stats"){require("lmo-showstats.php");}
+      if($action=="stats"){require(PATH_TO_LMO."/lmo-showstats.php");}
       if ($einspieler==1) {
-  	   if($action=="spieler" && $mittore==1){require("lmo-statshow.php");}
+  	   if($action=="spieler" && $mittore==1){require(PATH_TO_LMO."/lmo-statshow.php");}
       }
     }else{
-      if($action=="cal"){if($datc==1){require("lmo-showkocal.php");}}
-      if($action=="results"){require("lmo-showkoresults.php");}
-      if($action=="program"){require("lmo-showkoprogram.php");}
+      if($action=="cal"){if($datc==1){require(PATH_TO_LMO."/lmo-showkocal.php");}}
+      if($action=="results"){require(PATH_TO_LMO."/lmo-showkoresults.php");}
+      if($action=="program"){require(PATH_TO_LMO."/lmo-showkoprogram.php");}
       if ($einspieler==1) {
-  	    if($action=="spieler" && $mittore==1){require("lmo-statshow.php");}
+  	    if($action=="spieler" && $mittore==1){require(PATH_TO_LMO."/lmo-statshow.php");}
       }
   	}
-    if($action=="info"){require("lmo-showinfo.php");}
+    if($action=="info"){require(PATH_TO_LMO."/lmo-showinfo.php");}
   }else{
-    require("lmo-showdir.php");
+    require(PATH_TO_LMO."/lmo-showdir.php");
   }?>
       </td>
     </tr><?
@@ -167,7 +169,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
     if ($einsavehtml==1) { ?>
   	    <table width="100%" cellspacing="0" cellpadding="0" border="0">
           <tr><? 
-      if($lmtype==0 || $druck==1){include("lmo-savehtml.php");}?> 
+      if($lmtype==0 || $druck==1){include(PATH_TO_LMO."/lmo-savehtml.php");}?> 
   	        <td class="lmomain1" align="center"><? 
       if($lmtype==0 and $druck==1){echo "<a href='$diroutput".basename($file)."-st.html' target='_blank' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
             </td>  
@@ -215,11 +217,13 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
         <table width="100%" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td class="lmomain1" valign="bottom"><?
-    if (isset($archiv)){
-      echo "<a href=\"".$_SERVER["PHP_SELF"]."\">{$text[391]}</a><br>";
-    }
-    if (!isset($archiv) || $archiv!=""){
-      echo "<a href=\"".$_SERVER["PHP_SELF"]."?archiv=dir\">{$text[508]}</a><br>";
+    if($archivlink==1){
+      if (isset($archiv)){
+        echo "<a href=\"".$_SERVER["PHP_SELF"]."\">{$text[391]}</a><br>";
+      }
+      if (!isset($archiv) || $archiv!="dir"){
+        echo "<a href=\"".$_SERVER["PHP_SELF"]."?archiv=dir\">{$text[508]}</a><br>";
+      }
     }
     if ($eintippspiel==1) {
       if($tippspiel==1 && ($immeralle==1 || strpos($ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
@@ -241,5 +245,5 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
   </table><?
 }else{
   define('LMO_TIPPAUTH', 1);
-  require("lmo-tippstart.php");
+  require(PATH_TO_LMO."/lmo-tippstart.php");
 }

@@ -22,17 +22,17 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-  require_once("lmo-admintest.php");
+  require_once(PATH_TO_LMO."/lmo-admintest.php");
   
   if(!isset($save)){$save=0;}
 
-  if($save==2){require("lmo-tippsavewert.php");}
-  if($save==4){require("lmo-tippsavewertgesamt.php");}
-  if($save==3){require("lmo-tippsaveeinsicht.php");}
+  if($save==2){require(PATH_TO_LMO."/lmo-tippsavewert.php");}
+  if($save==4){require(PATH_TO_LMO."/lmo-tippsavewertgesamt.php");}
+  if($save==3){require(PATH_TO_LMO."/lmo-tippsaveeinsicht.php");}
   
-  $addu=$PHP_SELF."?action=admin&amp;todo=tippuser";
-  $adde=$PHP_SELF."?action=admin&amp;todo=tippemail";
-  $addo=$PHP_SELF."?action=admin&amp;todo=tippoptions";
+  $addu=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser";
+  $adde=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippemail";
+  $addo=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions";
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
@@ -43,13 +43,13 @@
   <tr>
     <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2064]; ?></nobr></td>
   </tr>
- <?PHP $ftype=".l98"; $iptype="auswert"; require("lmo-tippnewdir.php"); ?>
+ <?PHP $ftype=".l98"; $iptype="auswert"; require(PATH_TO_LMO."/lmo-tippnewdir.php"); ?>
 <?PHP if($gesamt==1){ ?>
   <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5"><strong><?PHP echo $text[2056]; ?></strong></td>
    <td class="lmost5" align="right">
-    <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+    <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
     <input type="hidden" name="action" value="admin">
     <input type="hidden" name="todo" value="tipp">
     <input type="hidden" name="save" value="4">
@@ -62,7 +62,7 @@
   <tr>
     <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2155]; ?></nobr></td>
   </tr>
- <?PHP $ftype=".l98"; $iptype="einsicht"; require("lmo-tippnewdir.php"); ?>
+ <?PHP $ftype=".l98"; $iptype="einsicht"; require(PATH_TO_LMO."/lmo-tippnewdir.php"); ?>
   </table></td>
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>

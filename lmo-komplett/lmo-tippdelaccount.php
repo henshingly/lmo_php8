@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 if(($action=="tipp") && ($todo=="delaccount")){
   if(!isset($xtipperpass)){$xtipperpass="";}
   $users = array("");
@@ -72,7 +72,7 @@ if(($action=="tipp") && ($todo=="delaccount")){
       $users[$i-1]=$users[$i];
       }
     array_pop($users); // die letzte Zeile abgeschnitten
-    require("lmo-tippsaveauth.php");
+    require(PATH_TO_LMO."/lmo-tippsaveauth.php");
     
     $_SESSION["lmotipperok"]=0;
     $lmotipperpass="";
@@ -87,7 +87,7 @@ if(($action=="tipp") && ($todo=="delaccount")){
   <tr><td align="center" class="lmost3">
   <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 <?PHP if($newpage!=1){ ?>
-  <form name="lmotippedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmotippedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   
   <input type="hidden" name="action" value="tipp">
   <input type="hidden" name="todo" value="delaccount">
@@ -109,7 +109,7 @@ if(($action=="tipp") && ($todo=="delaccount")){
       <td class="lmost5" align="center"><?PHP echo $text[2121]; ?></td>
    </tr>
    <tr>
-      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF."?action=tipp&amp"; ?>">=> <?PHP echo $text[2141]; ?></a></td>
+      <td class="lmost4" align="right"><a href="<?PHP echo $_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?PHP echo $text[2141]; ?></a></td>
    </tr>
 <?PHP } ?>
 

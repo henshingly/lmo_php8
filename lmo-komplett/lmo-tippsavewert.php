@@ -26,9 +26,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-  require_once("lmo-admintest.php");
+  require_once(PATH_TO_LMO."/lmo-admintest.php");
   if($todo!="edit"){$file=$dirliga.$liga.".l98";}
-  require_once("lmo-tippcalcpkt.php");
+  require_once(PATH_TO_LMO."/lmo-tippcalcpkt.php");
   $dummd = array("");
   $dumme = array("");
   $pswfile=$tippauthtxt;
@@ -72,8 +72,8 @@
     $addw="lmo-start.php?action=tipp&amp;todo=wert&amp;file=".$file;
     echo "<font color=\"#008800\">".$text[2029]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text[2065]."<br></font>";
     if($todo!="edit"){
-      if($st==0){require("lmo-openfile.php");}
-      else{require("lmo-openfilest.php");}
+      if($st==0){require(PATH_TO_LMO."/lmo-openfile.php");}
+      else{require(PATH_TO_LMO."/lmo-openfilest.php");}
       }
     $verz=opendir($dirtipp);
     $dummy=array("");
@@ -115,8 +115,8 @@
               }
             }
           if($gef==1){
-            if($st==0){require("lmo-tippopenfileall.php");}
-            else{require("lmo-tippopenfile.php");}
+            if($st==0){require(PATH_TO_LMO."/lmo-tippopenfileall.php");}
+            else{require(PATH_TO_LMO."/lmo-tippopenfile.php");}
 
             $st1=$st;
             for($st0=0;$st0<$anzst;$st0++){

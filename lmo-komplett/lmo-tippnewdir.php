@@ -149,7 +149,7 @@ if($ftype!=""){
 <?PHP echo $t0; ?>
 </td>
 <td class="lmost5" align="right">
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="tipp">
   <input type="hidden" name="save" value="<?PHP if($iptype=="einsicht"){echo "3";}else{echo "2";} ?>">

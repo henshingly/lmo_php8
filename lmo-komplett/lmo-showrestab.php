@@ -21,14 +21,14 @@
 if(isset($file) && $file!=""){
   if(!isset($tabtype) || $tabtype==""){$tabtype=0;}
   $endtab=$st;
-  $addp=$PHP_SELF."?action=program&amp;file=".$file."&amp;selteam=";
-  $addr=$PHP_SELF."?action=results&amp;file=".$file."&amp;st=";
+  $addp=$_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
+  $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
   $breite=10;
   if($spez==1){$breite=$breite+2;}
   if($datm==1){$breite=$breite+1;}
   if($endtab>1){
     $endtab--;
-    require("lmo-calctable.php");
+    require(PATH_TO_LMO."/lmo-calctable.php");
     $platz1 = array("");
     $platz1 = array_pad($array,$anzteams+1,"");
     for($x=0;$x<$anzteams;$x++){$platz1[intval(substr($tab0[$x],34))]=$x+1;}
@@ -36,7 +36,7 @@ if(isset($file) && $file!=""){
     }
   if($tabonres==2){
     $tabtype=1;
-    require("lmo-calctable.php");
+    require(PATH_TO_LMO."/lmo-calctable.php");
     $hplatz = array("");
     $hplatz = array_pad($array,$anzteams+1,"");
     for($x=0;$x<$anzteams;$x++){$hplatz[intval(substr($tab0[$x],34))]=$x+1;}
@@ -50,7 +50,7 @@ if(isset($file) && $file!=""){
     $hatore=$atore;
     $hdtore=$dtore;
     $tabtype=2;
-    require("lmo-calctable.php");
+    require(PATH_TO_LMO."/lmo-calctable.php");
     $aplatz = array("");
     $aplatz = array_pad($array,$anzteams+1,"");
     for($x=0;$x<$anzteams;$x++){$aplatz[intval(substr($tab0[$x],34))]=$x+1;}
@@ -65,7 +65,7 @@ if(isset($file) && $file!=""){
     $adtore=$dtore;
     $tabtype=0;
     }
-  require("lmo-calctable.php");
+  require(PATH_TO_LMO."/lmo-calctable.php");
   $platz0 = array("");
   $platz0 = array_pad($array,$anzteams+1,"");
   for($x=0;$x<$anzteams;$x++){$platz0[intval(substr($tab0[$x],34))]=$x+1;}
@@ -161,7 +161,7 @@ if(isset($file) && $file!=""){
 
 <?PHP
   if($urlb==1){
-    if($mberi[$st-1][$i]!=""){echo "<a href=\"".$mberi[$st-1][$i]."\" target=\"_blank\" title=\"".$text[270]."\"><img src=\"lmo-st1.gif\" width=\"16\" height=\"16\" border=\"0\"></a>";}else{echo "&nbsp;";}
+    if($mberi[$st-1][$i]!=""){echo "<a href=\"".$mberi[$st-1][$i]."\" target=\"_blank\" title=\"".$text[270]."\"><img src='img/lmo-st1.gif' width=\"16\" height=\"16\" border=\"0\"></a>";}else{echo "&nbsp;";}
     }
   if(($mnote[$st-1][$i]!="") || ($msieg[$st-1][$i]>0)){
     $dummy=addslashes($teams[$teama[$st-1][$i]]." - ".$teams[$teamb[$st-1][$i]]." ".$goala[$st-1][$i].":".$goalb[$st-1][$i]);
@@ -171,7 +171,7 @@ if(isset($file) && $file!=""){
     if($msieg[$st-1][$i]==2){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);}
     if($msieg[$st-1][$i]==3){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($text[212]);}
     if($mnote[$st-1][$i]!=""){$dummy=$dummy."\\n\\n".$text[22].":\\n".$mnote[$st-1][$i];}
-    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src=\"lmo-st2.gif\" width=\"16\" height=\"16\" border=\"0\"></a>";
+    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='img/lmo-st2.gif' width=\"16\" height=\"16\" border=\"0\"></a>";
     }
   else{
     echo "&nbsp;";
@@ -328,7 +328,7 @@ if (($anzteams-($anzst/2+1))!=0){
     elseif($platz0[$i]>$platz1[$i]){$y=2;}
     }
   echo "<td class=\"".$dumm1."\"";
-  echo "><img src=\"lmo-tab".$y.".gif\" width=\"9\" height=\"9\" border=\"0\">";
+  echo "><img src='img/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
   echo "</td>";
 ?>
     <td class="<?PHP echo $dumm1; ?>"><nobr>
@@ -349,7 +349,7 @@ if (($anzteams-($anzst/2+1))!=0){
       if($minus==2){$dum27=$dum27.":".$strafm[$i];}
       }
     if($teamn[$i]!=""){$dum27=$dum27."\\n\\n".$text[22].":\\n".$teamn[$i];}
-    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src=\"lmo-st2.gif\" width=\"16\" height=\"16\" border=\"0\"></a>";
+    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src='img/lmo-st2.gif' width=\"16\" height=\"16\" border=\"0\"></a>";
     }
   else{
     echo "&nbsp;";

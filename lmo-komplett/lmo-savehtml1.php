@@ -6,7 +6,7 @@
  *
  * folgende Zeile hinzugefügt werden:
  *
- *  include("lmo-savehtml1.php");	
+ *  include(PATH_TO_LMO."/lmo-savehtml1.php");	
  *
  * 
  * Autor: Bernd Hoyer, basierend auf dem LMO3.02
@@ -16,7 +16,7 @@
 
 
 if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
-ob_start();
+
 if($st>0){$actual=$anzst;}else{$actual=$stx;}
 if($lmtype==0){
 	for($i1=0;$i1<$anzsp;$i1++){
@@ -24,7 +24,7 @@ if($lmtype==0){
 		if ($goalb[$actual-1][$i1]=="-1") $goalb[$actual-1][$i1]="_";
 	}
 	$endtab=$actual;
-	include("lmo-calctable.php");
+	include(PATH_TO_LMO."/lmo-calctable.php");
 	for($i1=0;$i1<$anzsp;$i1++){
 		if ($goala[$endtab-1][$i1]=="_") $goala[$endtab-1][$i1]="-1";
 		if ($goalb[$endtab-1][$i1]=="_") $goalb[$endtab-1][$i1]="-1";
@@ -33,6 +33,7 @@ if($lmtype==0){
 if($lmtype==0){
 	isset($tab0) ? $table1=$tab0 : $table1=$tab1;
 	if (isset($table1)) {
+		ob_start();
 		$wmlfile= fopen($diroutput.basename($file)."-sp.html","wb");?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 					"http://www.w3.org/TR/html4/loose.dtd">
@@ -155,10 +156,10 @@ if($lmtype==0){
 		}?>
   </table>
 </body>
-</html><?
+</html><?}
     fwrite($wmlfile,ob_get_contents());
     ob_end_clean();
 		fclose($wmlfile);
-	}
+	
 }}
 ?>

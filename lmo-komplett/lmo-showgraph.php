@@ -19,7 +19,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if(($file!="") && ($kurve==1)){
-  $addg=$PHP_SELF."?action=graph&amp;file=".$file."&amp;stat1=";
+  $addg=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
@@ -46,7 +46,7 @@ if(($file!="") && ($kurve==1)){
     }
   else{
     $tabtype=0;
-    require("lmo-calcgraph.php");
+    require(PATH_TO_LMO."/lmo-calcgraph.php");
     $dummy="lmo-paintgraph.php?pganz=";
     if($stat2>0){$dummy=$dummy."2";}else{$dummy=$dummy."1";}
     $dummy=$dummy."&amp;pgteam1=".htmlentities($teams[$stat1]);

@@ -23,20 +23,22 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
   isset($_POST['save'])?$save=$_POST['save']:$save=0;
   if($save==1){
     // Es werden alle Addon-Konfigurationen dargestellt als Texteingabe behandelt
     // und anschliessend abgespeichert - Es erfolgen keine Prüfungen auf Variablentyp und -wert
     foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
+      echo "$$$$$$$$";
       if (is_array($addon_cfg)) {                 //Addon gefunden
+        
         foreach ($addon_cfg as $cfg_name => $cfg_value) {
           ${$addon_name."_".$cfg_name}=trim($_POST["x$cfg_name"]);    //Alle Post-vars mit x davor werden abgefragt und als Variable mit Präfix gespeichert
         }
       }
     }
-    require("lmo-savecfg.php");
-    require("lmo-cfgload.php");
+    require(PATH_TO_LMO."/lmo-savecfg.php");
+    require(PATH_TO_LMO."/lmo-cfgload.php");
   }?>
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>

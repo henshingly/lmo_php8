@@ -18,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($action=="admin"){
   if(!isset($_SESSION['lmousername'])){$_SESSION['lmousername']="";}
   if(!isset($_SESSION['lmouserpass'])){$_SESSION['lmouserpass']="";}
@@ -26,41 +26,30 @@ if($action=="admin"){
     if(isset($_POST["xusername"])){
       $_SESSION['lmousername']=$_POST["xusername"];
       $_SESSION['lmouserpass']=$_POST["xuserpass"];
-      $dumma = array("");
-      $pswfile="lmo-auth.txt";
-      $psw1file="lmo-access.txt";
-      $datei = fopen($pswfile,"rb");
-      while (!feof($datei)) {
-        $zeile = fgets($datei,1000);
-        $zeile=chop($zeile);
-        if($zeile!=""){array_push($dumma,$zeile);}
-        }
-      fclose($datei);
-      array_shift($dumma);
-      for($i=0;$i<count($dumma);$i++){
-        $dummb = split("[|]",$dumma[$i]);
-        if(($_SESSION['lmousername']==$dummb[0]) && ($_SESSION['lmouserpass']==$dummb[1])){
-          $_SESSION['lmouserok']=$dummb[2];
+      $pswfile=PATH_TO_LMO."/lmo-auth.txt";
+      $psw1file=PATH_TO_LMO."/lmo-access.txt";
+      if (($admins=@file($pswfile))===FALSE) $admins = array();
+     
+      foreach($admins as $admin){
+        $admin_files = explode('|',trim($admin));
+        if(($_SESSION['lmousername']==$admin_files[0]) && ($_SESSION['lmouserpass']==$admin_files[1])){
+          $_SESSION['lmouserok']=$admin_files[2];
           if($_SESSION['lmouserok']==1){
-            $datei = fopen($psw1file,"rb");
-            while (!feof($datei)) {
-              $zeile = fgets($datei,1000);
-              $zeile=chop($zeile);
-              if($zeile!=""){
-                $dummb1 = split("[|]",$zeile);
-                if($_SESSION['lmousername']==$dummb1[0]){$_SESSION['lmouserfile']=$dummb1[1];}
+            if ($datei=fopen($psw1file,"rb")) {
+              while ($dateien=fgetcsv($datei,1000,'|')) {
+                if(count($dateien)>0){
+                  if($_SESSION['lmousername']==$dateien[0]){$_SESSION['lmouserfile']=$dateien[1];}
                 }
               }
-            fclose($datei);
-            array_shift($dumma);
+              fclose($datei);
             }
-          elseif($_SESSION['lmouserok']==2){
+          }elseif($_SESSION['lmouserok']==2){
             $_SESSION['lmouserfile']="";
-            }
           }
         }
       }
     }
+  }
   if(!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok']==0){
 ?>
 
@@ -72,7 +61,7 @@ if($action=="admin"){
   </tr><tr>
     <td class="lmomain1" colspan="3" align="center">
 
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   
   <input type="hidden" name="action" value="admin">
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">

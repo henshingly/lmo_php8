@@ -22,16 +22,16 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
 if($file!=""){
   if(substr($file,-4)==".l98"){
     if($einsavehtml==1){
-      if(file_exists("lmo-savehtml.php")){include("lmo-savehtml.php");}
-      if(file_exists("lmo-savehtml1.php")){include("lmo-savehtml1.php");}
+      if(file_exists("lmo-savehtml.php")){include(PATH_TO_LMO."/lmo-savehtml.php");}
+      if(file_exists("lmo-savehtml1.php")){include(PATH_TO_LMO."/lmo-savehtml1.php");}
       }
     if($einzutore==1 || $einzutoretab==1 || $einzustats==1){
-      if(file_exists("lmo-zustat.php")){include("lmo-zustat.php");}
+      if(file_exists("lmo-zustat.php")){include(PATH_TO_LMO."/lmo-zustat.php");}
       }
     $datei = fopen($file,"wb");
 if (!$datei) {

@@ -26,7 +26,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 if($file!="" && $st>0 && $lmotippername!=""){
   $einsichtfile=$dirtipp."einsicht/".substr($file, strrpos($file,"/")+1, -4)."_".$st.".ein"; 
   //if(decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}

@@ -30,7 +30,7 @@ $picDir= "stats/pic/"; 	//Verz. für Spielerfotos und Spaltengraphiken
 if (session_name()=="PHPSESSID") define("SID",""); //falls keine Session gestartet war setze SID
 
 //Konfiguration laden
-require('lmo-statloadconfig.php');
+require(PATH_TO_LMO.'lmo-statloadconfig.php');
 
 if (isset($_REQUEST['sort'])) {	$sort=$_REQUEST['sort'];  } else $sort=$defaultsort;
 if (isset($_REQUEST['begin'])){	$begin=$_REQUEST['begin'];}	else $begin=0;
@@ -83,7 +83,7 @@ if ($filepointer = @fopen($filename,"r+b")) {
 					if ($i==$sort){
 						echo $spalten[$i];
 					}else{?>
-						<a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;".SID;?>"><?=$spalten[$i]?></a><?
+						<a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;".SID;?>"><?=$spalten[$i]?></a><?
 					}?>
 					</td>
 				</tr><?
@@ -99,7 +99,7 @@ if ($filepointer = @fopen($filename,"r+b")) {
 						for ($i=0;$i<$spaltenzahl;$i++) {?>
 							<th class="lmost0"><?
 							if (($i!=0) || ($nonamesort==0)) {?>
-								<a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;".SID;?>" title="<?="$text[3036] $spalten[$i] $text[3037]"?>"><?
+								<a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;".SID;?>" title="<?="$text[3036] $spalten[$i] $text[3037]"?>"><?
 							}
 							if (file_exists($picDir.$spalten[$i].".gif"))echo "<acronym title='$text[3036] $spalten[$i] $text[3037]'><img border='0' src='".$picDir.rawurlencode($spalten[$i]).".gif' alt='".$spalten[$i]."'></acronym>";
 							elseif ($spalten[$i]!=$text["832"]) echo $spalten[$i];
@@ -117,14 +117,14 @@ if ($filepointer = @fopen($filename,"r+b")) {
 							if ($begin==0){
 								?>«&nbsp;<?=$text[3016]?><?
 							}elseif (($newbegin=$begin-$displayperpage)>=0) {
-								?><a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>">&laquo;&nbsp;<?=$text[3016]?></a><?
+								?><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>">&laquo;&nbsp;<?=$text[3016]?></a><?
 							}else{
-								?><a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;".SID;?>">«&nbsp;<?=$text[3016]?></a><?
+								?><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;".SID;?>">«&nbsp;<?=$text[3016]?></a><?
 							}
 							$newbegin=0;
-							?>&nbsp;|&nbsp;<a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>"><?=$text[3017]?>&nbsp;<?=$displayperpage?></a>&nbsp;|&nbsp;<?
+							?>&nbsp;|&nbsp;<a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>"><?=$text[3017]?>&nbsp;<?=$displayperpage?></a>&nbsp;|&nbsp;<?
 							if (($newbegin=$begin+$maxdisplay)<$zeile) {
-								?><a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>"><?=$text[3015]?>&nbsp;&raquo;</a><?
+								?><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>"><?=$text[3015]?>&nbsp;&raquo;</a><?
 							}else{
 								?><?=$text[3015]?>&nbsp;»<?
 							}

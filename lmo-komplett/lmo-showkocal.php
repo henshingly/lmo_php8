@@ -19,8 +19,8 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if($file!=""){
-  $addk=$PHP_SELF."?action=cal&amp;file=".$file."&amp;cal=";
-  $addr=$PHP_SELF."?action=results&amp;file=".$file."&amp;st=";
+  $addk=$_SERVER['PHP_SELF']."?action=cal&amp;file=".$file."&amp;cal=";
+  $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
   $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
   $mb=strftime("%m%Y",strtotime("now"));
   if(isset($cal)){

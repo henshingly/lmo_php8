@@ -18,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
   if(!isset($xfile)){$xfile="";}
   if(!isset($xtitel)){$xtitel="";}
   if(!isset($xtype)){$xtype="";}
@@ -53,10 +53,10 @@ require_once("lmo-admintest.php");
           $yteamb[$i]=array_pad($array,$xanzsp,"");
           }
         if($xprogram=="random"){
-          require("lmo-adminrndprogram.php");
+          require(PATH_TO_LMO."/lmo-adminrndprogram.php");
           }
         else{
-          require("lmo-adminopenprogram.php");
+          require(PATH_TO_LMO."/lmo-adminopenprogram.php");
           }
         }
       }
@@ -154,7 +154,7 @@ require_once("lmo-admintest.php");
         }
       }
     $file=$dirliga.$xfile.".l98";
-    require("lmo-savefile.php");
+    require(PATH_TO_LMO."/lmo-savefile.php");
     }
 ?>
 
@@ -165,7 +165,7 @@ require_once("lmo-admintest.php");
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 
 <?PHP if($newpage<3){ ?>
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="new">
@@ -211,7 +211,7 @@ require_once("lmo-admintest.php");
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[272] ?>"><?PHP echo $text[271]; ?></acronym></nobr></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[272] ?>"><table cellpadding="0" cellspacing="0" border="0"><tr>
       <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xteams" size="2" maxlength="2" value="18" onChange="lmoteamauf('xteams',0)" onKeyDown="lmoteamclk('xteams',event.keyCode)"></td>
-      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\"xteams\",1);" title="<?PHP echo $text[273]; ?>" onMouseOver="lmoimg(\"ta\",img1)" onMouseOut="lmoimg(\"ta\",img0)"><img src="lmo-admin0.gif" name="ximgta" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\"xteams\",-1);" title="<?PHP echo $text[273]; ?>" onMouseOver="lmoimg(\"tb\",img3)" onMouseOut="lmoimg(\"tb\",img2)"><img src="lmo-admin2.gif" name="ximgtb" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
+      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\"xteams\",1);" title="<?PHP echo $text[273]; ?>" onMouseOver="lmoimg(\"ta\",img1)" onMouseOut="lmoimg(\"ta\",img0)"><img src="img/lmo-admin0.gif" name="ximgta" width="7" height="7" border="0"></a>')</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\"xteams\",-1);" title="<?PHP echo $text[273]; ?>" onMouseOver="lmoimg(\"tb\",img3)" onMouseOut="lmoimg(\"tb\",img2)"><img src="img/lmo-admin2.gif" name="ximgtb" width="7" height="7" border="0"></a>')</script></td></tr></table></td>
     </tr></table></acronym></td>
   </tr>
   <tr>
@@ -219,7 +219,7 @@ require_once("lmo-admintest.php");
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[275] ?>"><?PHP echo $text[274]; ?></acronym></nobr></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[275] ?>"><table cellpadding="0" cellspacing="0" border="0"><tr>
       <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xanzst" size="3" maxlength="3" value="34" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
-      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\"xanzst\",1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\"sa\",img1)" onMouseOut="lmoimg(\"sa\",img0)"><img src="lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\"xanzst\",-1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\"sb\",img3)" onMouseOut="lmoimg(\"sb\",img2)"><img src="lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
+      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\"xanzst\",1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\"sa\",img1)" onMouseOut="lmoimg(\"sa\",img0)"><img src="img/lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"></a>')</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\"xanzst\",-1);" title="<?PHP echo $text[276]; ?>" onMouseOver="lmoimg(\"sb\",img3)" onMouseOut="lmoimg(\"sb\",img2)"><img src="img/lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"></a>')</script></td></tr></table></td>
     </tr></table></acronym></td>
   </tr>
   <tr>
@@ -227,7 +227,7 @@ require_once("lmo-admintest.php");
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[278] ?>"><?PHP echo $text[277]; ?></acronym></nobr></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[278] ?>"><table cellpadding="0" cellspacing="0" border="0"><tr>
       <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xanzsp" size="2" maxlength="2" value="9" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
-      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\"xanzsp\",1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\"pa\",img1)" onMouseOut="lmoimg(\"pa\",img0)"><img src="lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"></a>'</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\"xanzsp\",-1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\"pb\",img3)" onMouseOut="lmoimg(\"pb\",img2)"><img src="lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"></a>'</script></td></tr></table></td>
+      <td class="lmost5" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\"xanzsp\",1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\"pa\",img1)" onMouseOut="lmoimg(\"pa\",img0)"><img src="img/lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"></a>')</script></td></tr><tr><td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\"xanzsp\",-1);" title="<?PHP echo $text[279]; ?>" onMouseOver="lmoimg(\"pb\",img3)" onMouseOut="lmoimg(\"pb\",img2)"><img src="img/lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"></a>')</script></td></tr></table></td>
     </tr></table></acronym></td>
   </tr>
 <?PHP }else{ ?>
@@ -254,7 +254,7 @@ require_once("lmo-admintest.php");
     <td class="lmost5" align="right" valign="top"><nobr><acronym title="<?PHP echo $text[285] ?>"><?PHP echo $text[284]; ?></acronym></nobr></td>
     <td class="lmost5"><nobr><acronym title="<?PHP echo $text[285] ?>">
       <input type="radio" name="xprogram" value="none"<?PHP if($xprogram=="none"){echo " checked";} ?> onChange="dolmoedit()"><?PHP echo $text[286]; ?><br><br>
-      <?PHP echo $text[287]; ?>:<br><?PHP $ftype=".l98"; require("lmo-adminnewdir.php"); ?><br>
+      <?PHP echo $text[287]; ?>:<br><?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-adminnewdir.php"); ?><br>
       <?PHP if(($xanzsp==floor($xteams/2)) && ($xanzst==floor($xteams*($xteams-1)/$xanzsp))){ ?><input type="radio" name="xprogram" value="random"<?PHP if($xprogram=="random"){echo " checked";} ?> onChange="dolmoedit()"><?PHP echo $text[288]; ?><?PHP } ?>
     </acronym></nobr></td>
   </tr>
@@ -281,7 +281,7 @@ echo "<option value=\"7\"";if($xmodus[$i-1]==7){echo " selected";}echo ">".$text
 <?PHP if($newpage<3){ ?>
   <tr>
     <td class="lmost4" colspan="2">
-      <a href="<?PHP echo $PHP_SELF; ?>" onclick="return siklmolink(this.href);" title="<?PHP echo $text[248]; ?>"><?PHP echo $text[247]; ?></a>
+      <a href="<?PHP echo $_SERVER['PHP_SELF']; ?>" onclick="return siklmolink(this.href);" title="<?PHP echo $text[248]; ?>"><?PHP echo $text[247]; ?></a>
     </td>
 <?PHP if($newpage<2){ ?>
     <td class="lmost4" align="right">
@@ -303,7 +303,7 @@ echo "<option value=\"7\"";if($xmodus[$i-1]==7){echo " selected";}echo ">".$text
   </tr>
   <tr>
     <td class="lmost4" colspan="3" align="right"><nobr>
-          <a href="<?PHP echo $PHP_SELF."?action=admin&amp;todo=edit&amp;st=-2&amp;file=".$file; ?>" title="<?PHP echo $text[293]; ?>"><?PHP echo $text[292]; ?></a>
+          <a href="<?PHP echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;st=-2&amp;file=".$file; ?>" title="<?PHP echo $text[293]; ?>"><?PHP echo $text[292]; ?></a>
     </nobr></td>
   </tr>
 <?PHP } ?>

@@ -38,7 +38,7 @@ if (isset($file) && $file!="") {
 
 	//Konfiguration auslesen
 
-	require("lmo-statloadconfig.php");
+	require(PATH_TO_LMO."/lmo-statloadconfig.php");
 
 	//Adminkontrolle
 	if ($_SESSION['lmouserok']==2 || ($_SESSION['lmouserok']==1 && $allowauxadmin==1)) {

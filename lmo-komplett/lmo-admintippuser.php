@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($_SESSION["lmouserok"]==2){
   $users = array("");
   if(!isset($del)){$del="";}
@@ -37,7 +37,7 @@ if($_SESSION["lmouserok"]==2){
   fclose($datei);
   if($save==-1){ /// neuen User speichern
     array_push($users,trim($_POST["xnickx"])."|".trim($_POST["xpassx"])."|5|||||||1|1|EOL");
-    require("lmo-tippsaveauth.php");
+    require(PATH_TO_LMO."/lmo-tippsaveauth.php");
     }
   elseif($del!=""){
     $gef=0;
@@ -66,12 +66,12 @@ if($_SESSION["lmouserok"]==2){
         $users[$i-1]=$users[$i];
         }
       array_pop($users); // die letzte Zeile abgeschnitten
-      require("lmo-tippsaveauth.php");
+      require(PATH_TO_LMO."/lmo-tippsaveauth.php");
       }
     }
-  $adda=$PHP_SELF."?action=admin&amp;todo=tipp";
-  $addo=$PHP_SELF."?action=admin&amp;todo=tippoptions";
-  $adde=$PHP_SELF."?action=admin&amp;todo=tippemail";
+  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tipp";
+  $addo=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions";
+  $adde=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippemail";
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
@@ -84,9 +84,9 @@ if($_SESSION["lmouserok"]==2){
  if(count($users)>1){
    if(!isset($sort)){$sort="id";}
 
-   $adds=$PHP_SELF."?action=admin&amp;todo=tippuser&amp;sort=";
-   $added=$PHP_SELF."?action=admin&amp;todo=tippuseredit&amp;nick=";
-   $addd=$PHP_SELF."?action=admin&amp;todo=tippuser&amp;sort=".$sort."&amp;del=";
+   $adds=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;sort=";
+   $added=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuseredit&amp;nick=";
+   $addd=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;sort=".$sort."&amp;del=";
 ?>
   <tr>
     <td class="lmost4" align="right"><nobr>
@@ -191,14 +191,14 @@ if($_SESSION["lmouserok"]==2){
   <tr>
     <td class="lmost4" colspan="8"><nobr><?PHP echo $text[2136]; ?></nobr></td>
   </tr>
-  <form name="lmoeditx" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmoeditx" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="tippuser">
   <input type="hidden" name="save" value="-1">
   <tr>
     <td class="lmost5" align="right"><?PHP if(!isset($anztipper)){$anztipper=1;}echo $anztipper; ?></td>
     <td class="lmost5"><input class="lmoadminein" type="text" name="xnickx" size="10" maxlength="32" value="NeuerNick"></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xpassx" size="10" maxlength="32" value="<?PHP require("lmo-adminuserpass.php") ?>"></td>
+    <td class="lmost5"><input class="lmoadminein" type="text" name="xpassx" size="10" maxlength="32" value="<?PHP require(PATH_TO_LMO."/lmo-adminuserpass.php") ?>"></td>
     <td class="lmost5"><acronym title="<?PHP echo $text[327] ?>"><input class="lmoadminbut" type="submit" name="bestx" value="<?PHP echo $text[329]; ?>"></acronym></td>
   </tr>
   </form>

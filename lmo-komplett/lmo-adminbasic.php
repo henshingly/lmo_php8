@@ -18,9 +18,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($file!=""){
-  require("lmo-openfile.php");
+  require(PATH_TO_LMO."/lmo-openfile.php");
   if(!isset($save)){$save=0;}
   if($save==1){
 if($_SESSION['lmouserok']==2){
@@ -75,10 +75,10 @@ if($_SESSION['lmouserok']==2){
     $urlt=trim($_POST["xurlt"]);
   }
     $urlb=trim($_POST["xurlb"]);
-    require("lmo-savefile.php");
+    require(PATH_TO_LMO."/lmo-savefile.php");
     }
-  $addr=$PHP_SELF."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
-  $addb=$PHP_SELF."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
+  $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
+  $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
@@ -109,7 +109,7 @@ if($_SESSION['lmouserok']==2){
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post" onSubmit="return chklmopass()">
+  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
   
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="edit">

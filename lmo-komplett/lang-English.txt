@@ -107,8 +107,8 @@
 106=last date of the matchday (format dd.mm.yyyy - if necessary with leading '0's)
 107=select hometeam
 108=select awayteam
-109=homegoals (0 - 9999, '_' or 'X') - &#10;With MSIE 4+ you can also use the arrows for up and down
-110=awaygoals (0 - 9999, '_' or 'X') - &#10;With MSIE 4+ you can also use the arrows for up and down
+109=homegoals (0 - 9999, "_" or "X") - &#10;With MSIE 4+ you can also use the arrows for up and down
+110=awaygoals (0 - 9999, "_" or "X") - &#10;With MSIE 4+ you can also use the arrows for up and down
 111=select the ending of the match
 112=Note for the match (max. 255 characters, a 'green table' decission needn't be named here as well)
 113=Name of the league
@@ -118,8 +118,8 @@
 117=You didn't change anything.\nThere is nothing to save.
 118=The name of the league will be always visible to visitors as a heading (max. 60 characters, e.g. '1. Bundesliga 2002/03' or 'Premier League 2002/03')
 119=There have been changes that\nhaven't been saved yet.\n\nClick on 'Yes' to withdraw the changes\nand continue or 'No' in order to stay here\nto be able to save the changes.
-120=Adjustment of the homegoals (0 - 9999, '_' or 'X')
-121=Adjustment of awaygoals (0 - 9999, '_' or 'X')
+120=Adjustment of the homegoals (0 - 9999, "_" or "X")
+121=Adjustment of awaygoals (0 - 9999, "_" or "X")
 122=Kickoff date of the match (format dd.mm.yyyy - if necessary with leading '0's)
 123=Kickoff time of the match (format hh:mm - if necessary with leading '0's) - if you leave this blank, the standard kickoff-time will be set when saving
 124=Team

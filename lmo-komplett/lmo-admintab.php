@@ -18,19 +18,19 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($file!=""){
-  require("lmo-openfile.php");
+  require(PATH_TO_LMO."/lmo-openfile.php");
   $breite=16;
   if($hidr!=1){$breite=$breite-1;}
   if($minus==2){$dummy=" colspan=\"3\" align=\"center\"";$breite=$breite+2;}else{$dummy=" align=\"right\"";}
   $endtab=$st;
   $tabdat=" ";
-  require("lmo-calctable.php");
+  require(PATH_TO_LMO."/lmo-calctable.php");
   $platz0 = array("");
   $platz0 = array_pad($array,$anzteams+1,"");
   for($x=0;$x<$anzteams;$x++){$x3=intval(substr($tab2[$x],34));$platz0[$x3]=$x+1;}
-  $addt2=$PHP_SELF."?action=table&amp;file=".$file."&amp;tabtype=".$tabtype."&amp;endtab=";
+  $addt2=$_SERVER['PHP_SELF']."?action=table&amp;file=".$file."&amp;tabtype=".$tabtype."&amp;endtab=";
   if(!isset($save)){$save=0;}
   if($save==1){
     $xa="";
@@ -43,14 +43,14 @@ if($file!=""){
       if($i==trim($_POST["xplatz".$i])){$xc++;}
       }
     if($xc==$anzteams){$handp[$st-1]=0;}else{$handp[$st-1]=$xb;}
-    require("lmo-savefile.php");
+    require(PATH_TO_LMO."/lmo-savefile.php");
     }
   $handt=array_pad($array,$anzteams+2,"");
   for($i=0;$i<$anzteams;$i++){
     if($handp[$st-1]!=0){$handt[$i+1]=intval(substr($handp[$st-1],$i*2,2));}else{$handt[$i+1]=$i+1;}
     }
-  $addr=$PHP_SELF."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
-  $addb=$PHP_SELF."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
+  $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
+  $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
   $breite=16;
   if($spez==1){$breite=$breite+2;}
 ?>
@@ -83,7 +83,7 @@ if($file!=""){
     <tr></table></td>
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post" onSubmit="return chklmopas2(<?PHP echo $anzteams; ?>)">
+  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopas2(<?PHP echo $anzteams; ?>)">
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="tabs">
   <input type="hidden" name="save" value="1">
@@ -131,7 +131,7 @@ if($file!=""){
       if($minus==2){$dum27=$dum27.":".$strafm[$i];}
       }
     if($teamn[$i]!=""){$dum27=$dum27."\\n\\n".$text[22].":\\n".$teamn[$i];}
-    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src=\"lmo-st2.gif\" width=\"16\" height=\"16\" border=\"0\"></a>";
+    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src='lmo-st2.gif' width=\"16\" height=\"16\" border=\"0\"></a>";
     }
   else{
     echo "&nbsp;";

@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-tipptest.php");
+require_once(PATH_TO_LMO."/lmo-tipptest.php");
 if(($action=="tipp") && ($todo=="newligen")){
   if($newpage==1){
     $users = array("");
@@ -48,7 +48,7 @@ if(($action=="tipp") && ($todo=="newligen")){
     if($xtipperligen!=""){
       foreach($xtipperligen as $key => $value){
         $tippfile=$dirtipp.$value."_".$lmotippername.".tip";
-        $st=-1;require("lmo-tippsavefile.php"); // Tipp-Datei erstellen
+        $st=-1;require(PATH_TO_LMO."/lmo-tippsavefile.php"); // Tipp-Datei erstellen
         $auswertdatei = fopen($dirtipp."auswert/".$value.".aus","ab");
         flock($auswertdatei,2);
         fputs($auswertdatei,"\n[".$lmotippername."]\n");
@@ -68,12 +68,12 @@ if(($action=="tipp") && ($todo=="newligen")){
   <tr><td align="center" class="lmost3">
   <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5"><nobr>
 <?PHP if($newpage!=1){ ?>
-  <form name="lmotippedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmotippedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   
   <input type="hidden" name="action" value="tipp">
   <input type="hidden" name="todo" value="newligen">
   <input type="hidden" name="newpage" value="1">
-    <?PHP $ftype=".l98"; require("lmo-tippnewdir.php"); ?>
+    <?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-tippnewdir.php"); ?>
   </nobr></td></tr>
     <tr>
       <td class="lmost4" colspan="3" align="right">
@@ -91,7 +91,7 @@ if(($action=="tipp") && ($todo=="newligen")){
 <?PHP } ?>
 <?PHP if($newpage==1 || $i==0){ // zurück zur Übersicht ?>
    <tr>
-      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text[2001]; ?></a></td>
+      <td class="lmost4" align="right"><a href="<?PHP echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text[2001]; ?></a></td>
    </tr>
 <?PHP } ?>
 

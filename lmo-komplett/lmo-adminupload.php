@@ -18,9 +18,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)){
-  $adda=$PHP_SELF."?action=admin&amp;todo=";
+  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
   if(!isset($upl)){$upl=0;}
   if(($upl==1) && ($userfile!="")){
     $i=0;
@@ -37,7 +37,7 @@ if(($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)){
   </td></tr><tr><td align="center" class="lmost3">
   <table width="100%" class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5" align="center">
   <acronym title="<?PHP echo $text[302] ?>"><nobr>
-<FORM ENCTYPE="multipart/form-data" ACTION="<?PHP echo $PHP_SELF; ?>" METHOD="post">
+<FORM ENCTYPE="multipart/form-data" ACTION="<?PHP echo $_SERVER['PHP_SELF']; ?>" METHOD="post">
 
 <input type="hidden" name="action" value="admin">
 <input type="hidden" name="todo" value="upload">

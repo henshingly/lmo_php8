@@ -150,7 +150,7 @@ if($file!=""){
             }
           $anzcnt=0;
           if($def>0){
-            require("lmo-calctable1.php");
+            require(PATH_TO_LMO."/lmo-calctable1.php");
             if($anzcnt>0){
               for($b=1;$b<=count($tab1);$b++){
                 for($f=0;$f<count($taba[$jyz]);$f++){$x3=intval(substr($taba[$jyz][$f],34));$x4=intval(substr($tab1[$b-1],34));if($x3==$x4){$taba[$jyz][$f]=substr($taba[$jyz][$f],0,17-strlen($b)).$b.substr($taba[$jyz][$f],17);}}

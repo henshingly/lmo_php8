@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(!isset($emailart)){$emailart=-1;}
 if(!isset($save)){$save=0;}
 if(!isset($message)){$message="";}
@@ -42,12 +42,12 @@ if($save==1){
       $liga=$liga1[$liganr-1];
       }
     }
-  require("lmo-tippemail.php");
+  require(PATH_TO_LMO."/lmo-tippemail.php");
   }
 
-  $adda=$PHP_SELF."?action=admin&amp;todo=tipp";
-  $addu=$PHP_SELF."?action=admin&amp;todo=tippuser";
-  $addo=$PHP_SELF."?action=admin&amp;todo=tippoptions";
+  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tipp";
+  $addu=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser";
+  $addo=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions";
 ?>
 <script language="JavaScript">
 <!---
@@ -73,7 +73,7 @@ function changetextarea(x){
     <td class="lmost1" align="center"><?PHP echo $text[2165] ?></td>
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-  <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="tippemail">
   <input type="hidden" name="save" value="1">
@@ -89,7 +89,7 @@ function changetextarea(x){
     <select name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
       <?PHP
         echo "<option value=\"\" "; echo ">".$text[2051]."</option>";
-        require("lmo-tippselectemail.php");
+        require(PATH_TO_LMO."/lmo-tippselectemail.php");
       ?>
     </select>
     </td>
@@ -99,7 +99,7 @@ function changetextarea(x){
     <td class="lmost5" valign="top"><acronym><input type="radio" name="emailart" value="1" id="1" <?PHP if($emailart==1){echo "checked";} ?> onClick="changetextarea(1)"><label for="1"><?PHP echo $text[2167]; ?></label></acronym></td>
     <td class="lmost5" colspan="2"><table cellspacing="0" cellpadding="0" border="0">
       <?PHP
-        $ftype=".l98";$iptype="reminder";require("lmo-tippnewdir.php");
+        $ftype=".l98";$iptype="reminder";require(PATH_TO_LMO."/lmo-tippnewdir.php");
         if($i>0){
       ?>
               <tr><td class="lmost5" colspan="2">

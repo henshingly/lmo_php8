@@ -22,9 +22,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($action=="admin") && ($todo=="")){
-  $adda=$PHP_SELF."?action=admin&amp;todo=";
+  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
 ?>
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">
   <?PHP echo $text[92]; ?>
@@ -34,7 +34,7 @@ if(($action=="admin") && ($todo=="")){
 <?PHP if($_SESSION["lmouserok"]==2){ ?>
       <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."new&amp;".SID."\">".$text[93]."</a>"; ?></li>
 <?PHP } ?>
-      <li class="lmoadminli"><?PHP echo $text[94]; ?>:<?PHP $ftype=".l98"; require("lmo-admindir.php"); ?></li>
+      <li class="lmoadminli"><?PHP echo $text[94]; ?>:<?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-admindir.php"); ?></li>
 <?PHP if($_SESSION['lmouserok']==2){ ?>
       <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."delete&amp;".SID."\">".$text[95]."</a>"; ?></li>
       <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."upload&amp;".SID."\">".$text[96]."</a>"; ?></li>

@@ -23,6 +23,8 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 define('LMO_AUTH', 1);
+define('PATH_TO_LMO', $_SERVER['DOCUMENT_ROOT'].'/tmp/lmo-komplett/lmo');
+define('PATH_TO_ADDON_DIR', $_SERVER['DOCUMENT_ROOT'].'/tmp/lmo-komplett/lmo/addon');
 session_start();
 if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
 if(!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
@@ -57,17 +59,17 @@ if($todo=="logout"){
 $action="admin";
 $array = array();
 setlocale (LC_TIME, "de_DE");
-require("lmo-cfgload.php");
+require(PATH_TO_LMO."/lmo-cfgload.php");
 
 if (isset($_POST["xdeflang"]) && $deflang!=trim($_POST["xdeflang"])) {
   $_SESSION['lmouserlang']=trim($_POST["xdeflang"]);
 }
 if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
-require("lmo-langload.php");
-require("lmo-adminauth.php");
+require(PATH_TO_LMO."/lmo-langload.php");
+require(PATH_TO_LMO."/lmo-adminauth.php");
 
 if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0){
-  require("lmo-adminmain.php");
+  require(PATH_TO_LMO."/lmo-adminmain.php");
 }
 ?>
 </center>

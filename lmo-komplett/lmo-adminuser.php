@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("lmo-admintest.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($_SESSION['lmouserok']==2){
   $users = array("");
   $userf = array("");
@@ -71,14 +71,14 @@ if($_SESSION['lmouserok']==2){
         }
       $userf1=trim($_POST["oldu"])."|".$userh."|".trim($_POST["xname".$save])."|EOL";
       }
-    require("lmo-saveauth.php");
+    require(PATH_TO_LMO."/lmo-saveauth.php");
     }
   elseif($save==-1){
     array_push($users,trim($_POST["xnamex"])."|".trim($_POST["xpassx"])."|".trim($_POST["xzugrx"])."|EOL");
     if(trim($_POST["xzugrx"])==1){
       $userf1=trim($_POST["xnamex"])."||EOL";
       }
-    require("lmo-saveauth.php");
+    require(PATH_TO_LMO."/lmo-saveauth.php");
     }
   elseif($del>0){
     for($i=$del+1;$i<count($users);$i++){
@@ -87,7 +87,7 @@ if($_SESSION['lmouserok']==2){
     $userf2=array_pop($users);
     $userf3=split("[|]",$userf2);
     $userf1=$userf3[0];
-    require("lmo-saveauth.php");
+    require(PATH_TO_LMO."/lmo-saveauth.php");
     }
 ?>
 
@@ -108,7 +108,7 @@ if($_SESSION['lmouserok']==2){
       }?>
   <tr>
     <td align="center" class="lmost3">
-      <form name="lmoedit<?=$i?>" action="<?=$PHP_SELF?>" method="post">
+      <form name="lmoedit<?=$i?>" action="<?=$_SERVER['PHP_SELF']?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="user">
         <input type="hidden" name="save" value="<?=$i?>">
@@ -133,7 +133,7 @@ if($_SESSION['lmouserok']==2){
             </td>
             <td class="lmost5"><acronym title="<?=$text[327]?>"><input class="lmoadminbut" type="submit" name="best<?=$i?>" value="<?=$text[329]?>"></acronym></td>
             <td>
-              <a href="<?=$PHP_SELF?>?action=admin&amp;todo=user&amp;del=<?=$i?>" onclick="return confirm('<?=$text[499]?>');"><img border="0" width="11" heigth="13" src="delete.gif" alt="<?=$text[330]?>" title="<?=$text[328]?>"></a>
+              <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?=$i?>" onclick="return confirm('<?=$text[499]?>');"><img border="0" width="11" heigth="13" src="img/delete.gif" alt="<?=$text[330]?>" title="<?=$text[328]?>"></a>
             </td>
           </tr><?
       if($userd[2]==1){?>
@@ -158,14 +158,14 @@ if($_SESSION['lmouserok']==2){
   </tr>
   <tr>
     <td>
-      <form name="lmoeditx" action="<?=$PHP_SELF?>" method="post">
+      <form name="lmoeditx" action="<?=$_SERVER['PHP_SELF']?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="user">
         <input type="hidden" name="save" value="-1">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xnamex" size="16" maxlength="32" value="NeuerUser"></td>
-            <td class="lmost5"><input class="lmoadminein" type="text" name="xpassx" size="16" maxlength="32" value="<? require("lmo-adminuserpass.php")?>"></td>
+            <td class="lmost5"><input class="lmoadminein" type="text" name="xpassx" size="16" maxlength="32" value="<? require(PATH_TO_LMO."/lmo-adminuserpass.php")?>"></td>
             <td class="lmost5">
               <select class="lmoadminein" name="xzugrx">
                 <option value="1" selected><?=$text[325]?></option>

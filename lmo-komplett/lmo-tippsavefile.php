@@ -26,8 +26,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-if($todo=="tippuseredit"){require_once("lmo-admintest.php");}
-else{require_once("lmo-tipptest.php");}
+if($todo=="tippuseredit"){require_once(PATH_TO_LMO."/lmo-admintest.php");}
+else{require_once(PATH_TO_LMO."/lmo-tipptest.php");}
 
 if($tippfile!=""){
   //if(decoct(fileperms($tippfile))!=100777){chmod ($tippfile, 0777);}

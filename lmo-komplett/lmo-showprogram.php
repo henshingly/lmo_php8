@@ -19,8 +19,8 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if($file!=""){
-  $addp=$PHP_SELF."?action=program&amp;file=".$file."&amp;selteam=";
-  $addr=$PHP_SELF."?action=results&amp;file=".$file."&amp;st=";
+  $addp=$_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
+  $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
 ?>
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
@@ -92,7 +92,7 @@ if($file!=""){
 
 <?PHP
   if($urlb==1){
-    if($mberi[$j][$i]!=""){echo "<a href=\"".$mberi[$j][$i]."\" target=\"_blank\" title=\"".$text[270]."\"><img src=\"lmo-st1.gif\" width=\"16\" height=\"16\" border=\"0\"></a>";}else{echo "&nbsp;";}
+    if($mberi[$j][$i]!=""){echo "<a href=\"".$mberi[$j][$i]."\" target=\"_blank\" title=\"".$text[270]."\"><img src='lmo-st1.gif' width=\"16\" height=\"16\" border=\"0\"></a>";}else{echo "&nbsp;";}
     }
   if(($mnote[$j][$i]!="") || ($msieg[$j][$i]>0)){
     $dummy=addslashes($teams[$teama[$j][$i]]." - ".$teams[$teamb[$j][$i]]." ".$goala[$j][$i].":".$goalb[$j][$i]);
@@ -102,7 +102,7 @@ if($file!=""){
     if($msieg[$j][$i]==2){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teamb[$j][$i]]." ".$text[211]);}
     if($msieg[$j][$i]==3){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($text[212]);}
     if($mnote[$j][$i]!=""){$dummy=$dummy."\\n\\n".$text[22].":\\n".$mnote[$j][$i];}
-    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src=\"lmo-st2.gif\" width=\"16\" height=\"16\" border=\"0\"></a>";
+    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='lmo-st2.gif' width=\"16\" height=\"16\" border=\"0\"></a>";
     }
   else{
     echo "&nbsp;";

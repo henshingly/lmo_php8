@@ -21,7 +21,7 @@
 session_start();
 if(($action=="admin") && ($todo=="download") && (($_SESSION["lmouserok"]==1) || ($_SESSION["lmouserok"]==2))){
   if($down>0){
-    require("lmo-cfgload.php");
+    require(PATH_TO_LMO."/lmo-cfgload.php");
     $ftype=".l98";
     $verz=opendir(substr($dirliga,0,-1));
     $dummy=array("");
@@ -38,8 +38,8 @@ if(($action=="admin") && ($todo=="download") && (($_SESSION["lmouserok"]==1) || 
       }
     }
   elseif($down==-1){
-    require("lmo-cfgload.php");
-    require("lmo-adminmimezip.php");
+    require(PATH_TO_LMO."/lmo-cfgload.php");
+    require(PATH_TO_LMO."/lmo-adminmimezip.php");
     $ftype=".l98";
     $verz=opendir(substr($dirliga,0,-1));
     $dummy=array("");

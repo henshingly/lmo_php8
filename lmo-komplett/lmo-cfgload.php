@@ -22,24 +22,29 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-$cfgfile="lmo-cfg.txt";                       // Hauptkonfigurationsdatei
-
+$cfgfile=PATH_TO_LMO.'/lmo-cfg.txt';                       // Konfigurationsdatei
+if (!isset($cfgarray))$cfgarray=array();
 if (file_exists($cfgfile)) {
-  $cfgarray=parse_ini_file($cfgfile);         // in Array lesen
+  $main_cfgarray=parse_ini_file($cfgfile);         // in Array lesen
+  $cfgarray+=$main_cfgarray;
   extract ($cfgarray);                        // Variablen erstellen
 }else{
+  die("Konfigurationsdatei: $cfgfile nicht gefunden!");
   //Fehlerhandling hier rein
 }           
-
-$addoncfg=explode(",",$diraddon);             // Addons 
-foreach($addoncfg as $a) {
-  if(substr($a,-1)!='/') $a.='/';             // Slash hinzufügen falls nicht vorhanden
-  $addon_cfgfile=$a."cfg.txt";                //Dateiname der Addonkonfiguration
-  if (file_exists($addon_cfgfile)) {
-    $addon_cfgarray=parse_ini_file($addon_cfgfile);                  // in Array lesen
-    $cfgarray[str_replace('/','',$a)]=$addon_cfgarray;               // Addon-Konfiguration ins Configarray aufnehmen
-    extract($addon_cfgarray,EXTR_PREFIX_ALL,str_replace('/','',$a)); //Addonvariablen bekommen Präfix der art addonname_variablenname
-  }
+            
+$handle=opendir (PATH_TO_ADDON_DIR);
+while (false!==($f=readdir($handle))) {
+  if (is_dir(PATH_TO_ADDON_DIR.'/'.$f) && $f!='.' && $f!='..') {
+    $addon_cfgfile=PATH_TO_ADDON_DIR."/$f/cfg.txt";                       // Konfigurationsdatei
+    if (file_exists($cfgfile)) {
+      $addon_cfgarray=parse_ini_file($addon_cfgfile);         // in Array lesen
+      $cfgarray[$f]=$addon_cfgarray;
+      extract($addon_cfgarray,EXTR_PREFIX_ALL,$f);                        // Variablen erstellen
+    }
+  } 
 }
+closedir($handle); 
+              
 //print_r($cfgarray);        
 ?>

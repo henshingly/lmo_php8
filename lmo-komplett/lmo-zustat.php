@@ -7,7 +7,7 @@
  *
  * folgende Zeile hinzugefügt werden:
  *
- *  include("lmo-zustat.php");	
+ *  include(PATH_TO_LMO."/lmo-zustat.php");	
  *
  * 
  * Autor: Bernd Hoyer, basierend auf dem LMO3.02b
