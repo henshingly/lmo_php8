@@ -31,7 +31,6 @@ $startzeit = getmicrotime();
 if($action=="admin"){
   $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
-  $addx="lmo-start.php?file=";
   if(!isset($st)){$sty=0;}else{$sty=$st;}
   if(!isset($newpage)){$newpage=0;}
   if(!isset($file)){$file="";}
@@ -159,7 +158,7 @@ elseif($_SESSION['lmouserok']==1){
   </tr>
   <tr>
     <td class="lmomain1" colspan="3" align="right"><? 
-  if($file!=""){echo "<a href='{$addx}{$file}' target='_blank' title='{$text[116]}'>{$text[115]}</a>";} ?>
+  if($file!=""){echo "<a href='".URL_TO_LMO."/lmo.php?file={$file}' target='_blank' title='{$text[116]}'>{$text[115]}</a>";} ?>
     </td>
   </tr>
   <tr>
