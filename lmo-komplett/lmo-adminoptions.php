@@ -72,7 +72,7 @@ if($save==1){
         <input type="hidden" name="file" value="<?=$file;?>">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost4" colspan="5"><?=$text[504];?></td>
+            <td class="lmost4" colspan="6"><?=$text[504];?></td>
           </tr>
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[506]?>"><?=$text[505];?></acronym></td>
@@ -89,18 +89,14 @@ if($save==1){
               </select></td>
           </tr>
           <tr>
-            <td class="lmost4" colspan="5"><?=$text[220];?></td>
+            <td class="lmost4" colspan="6"><?=$text[220];?></td>
           </tr>
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[222]?>"><?=$text[221];?></acronym></td>
             <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xdirliga" size="20" maxlength="80" value="<?=$dirliga;?>" onChange="dolmoedit()"></td>
           </tr>
           <tr>
-            <td class="lmost5" align="right"><acronym title="<?=$text[481]?>"><?=$text[482];?></acronym></td>
-            <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xdiraddon" size="40" maxlength="200" value="<?=$diraddon;?>" onChange="dolmoedit()"></td>
-          </tr>
-          <tr>
-            <td class="lmost4" colspan="5"><?=$text[226];?></td>
+            <td class="lmost4" colspan="6"><?=$text[226];?></td>
           </tr>
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[228]?>"><?=$text[227];?></acronym></td>
@@ -122,8 +118,9 @@ if($save==1){
             </td>
           </tr>
           <tr>
-            <td class="lmost4" colspan="6"><?=$text[236];?></td>
+            <td class="lmost4" colspan="5"><?=$text[236];?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" align="right"><acronym title="<?=$text[390]?>"><?=$text[389];?></acronym></td>
             <td class="lmost5"><input type="checkbox" class="lmoadminein" name="xbacklink" onChange="dolmoedit()"<?if($backlink==1){echo " checked";}?>></td>
@@ -167,8 +164,9 @@ if($save==1){
             <td class="lmost5" align="right"><acronym title="<?=$text[344]?>"><?=$text[343];?></acronym></td>
             <td class="lmost5" colspan="4"><input class="lmoadminein" type="text" name="xadr" size="40" maxlength="128" value="<?=$aadr;?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="5" align="right">
+            <td class="lmost5" colspan="6" align="center">
               <acronym title="<?=$text[114]?>"><input class="lmoadminbut" type="submit" name="best" value="<?=$text[188];?>"></acronym>
             </td>
           </tr>
@@ -180,7 +178,7 @@ if($save==1){
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td class="lmost2" align="center"><?=$text[319]?></td>
+          <td class="lmost1" align="center"><?=$text[319]?></td>
           <td class="lmost2" align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
           <td class="lmost2" align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
           <td class="lmost2" align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
@@ -189,3 +187,4 @@ if($save==1){
     </td>
   </tr>
 </table>
+<script type="text/javascript">blendall();</script>

@@ -25,7 +25,7 @@
 if (isset($_REQUEST["action"]) && $_REQUEST["action"] != "tipp") {
   $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
   if($file!=""){
-    require(PATH_TO_LMO."/lmo-openfile.php");
+    require_once(PATH_TO_LMO."/lmo-openfile.php");
     if(!isset($endtab)){
       $endtab=$anzst;
       $ste=$st;

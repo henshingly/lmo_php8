@@ -26,7 +26,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
 function getmicrotime(){
   list($usec, $sec) = explode(" ",microtime());
   return ((float)$usec + (float)$sec);
-  }
+}
 $startzeit = getmicrotime();
 if($action=="admin"){
   $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
@@ -35,7 +35,8 @@ if($action=="admin"){
   if(!isset($st)){$sty=0;}else{$sty=$st;}
   if(!isset($newpage)){$newpage=0;}
   if(!isset($file)){$file="";}
-  include(PATH_TO_LMO."/lmo-admincheckjsscript.php");
+  include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
+
 ?>
 <table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
   <tr>
@@ -64,6 +65,7 @@ if($action=="admin"){
   </tr>
   <tr>
     <td class="lmomain1"><?
+require_once(PATH_TO_LMO."/lmo-openfile.php");
 if($_SESSION['lmouserok']==2){
   if($todo!="new"){echo "<a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink(this.href);' title='{$text[79]}'>{$text[78]}</a>";}else{echo $text[78];}
   echo "&nbsp;";
@@ -80,7 +82,6 @@ if($_SESSION['lmouserok']==2){
   if($todo!="download"){echo "<a href='{$adda}download' onclick='return chklmolink(this.href);' title='{$text[315]}'>{$text[314]}</a>";}else{echo $text[314];}
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
-    require(PATH_TO_LMO."/lmo-openfile.php");
     if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text[3001]}'>{$text[3000]}</a>";}else{echo $text[3000];}echo "&nbsp;";  
   } 
   echo "&nbsp;";
@@ -98,7 +99,7 @@ elseif($_SESSION['lmouserok']==1){
   if($todo!="download"){echo "<a href='{$adda}download' onclick='return chklmolink(this.href);' title='{$text[315]}'>{$text[314]}</a>";}else{echo $text[314];}
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
-    require(PATH_TO_LMO."/lmo-openfile.php");
+    require_once(PATH_TO_LMO."/lmo-openfile.php");
     if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text[3001]}'>{$text[3000]}</a>";}else{echo $text[3000];}echo "&nbsp;";  
     } 
   }?>

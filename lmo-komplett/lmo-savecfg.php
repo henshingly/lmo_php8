@@ -24,7 +24,7 @@
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($_SESSION['lmouserok']==2){
-  $datei = fopen(PATH_TO_LMO.'/'.$cfgfile,"wb");
+  $datei = fopen($cfgfile,"wb");
   if ($datei) {
     echo "<font color=\"#008800\">".$text[138]."</font>";
     flock($datei,LOCK_EX);
@@ -33,6 +33,7 @@ if($_SESSION['lmouserok']==2){
         $addon_datei = fopen(PATH_TO_ADDON_DIR.'/'.$cfgname.'/cfg.txt',"wb");  //Addondatei
         if ($addon_datei) {
           flock($datei,LOCK_EX);
+          echo "<br><font color=\"#008800\">{$text[138]} ($cfgname)</font>";
           foreach($cfgvalue as $addon_cfgname => $addon_cfgvalue) {
             fwrite($addon_datei, $addon_cfgname."=".${$cfgname."_".$addon_cfgname}."\n");
           }

@@ -20,7 +20,7 @@
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($file!=""){
-  require(PATH_TO_LMO."/lmo-openfile.php");
+  require_once(PATH_TO_LMO."/lmo-openfile.php");
   $breite=16;
   if($hidr!=1){$breite=$breite-1;}
   if($minus==2){$dummy=" colspan=\"3\" align=\"center\"";$breite=$breite+2;}else{$dummy=" align=\"right\"";}

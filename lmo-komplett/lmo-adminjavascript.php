@@ -1,4 +1,5 @@
 <script type="text/javascript">
+
 name="lmo3";
 img0 = new Image();
 img0.src = "img/lmo-admin0.gif";
@@ -16,6 +17,8 @@ var lmotest=true;
 function lmoimg(x,y){
   document.getElementsByName("ximg"+x)[0].src = y.src;
   }
+
+
 function lmotorclk(x,y,z){
   if(document.all && !window.opera){
     if(z==38){lmotorauf(x,y,1);}
@@ -207,5 +210,36 @@ function opencal(feld,startdat){
   lmowin = window.open(lmocal,"lmocalpop","width=180,height=200,resizable=yes,dependent=yes");
   lmotest=false;
   return false;
+}
+
+function blend(it) {
+  if (it.parentNode.parentNode.parentNode.nextSibling.style.display=="none") {  //einblenden
+    if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==1) // richtiges Objekt (IE)
+      if (document.all) it.parentNode.parentNode.parentNode.nextSibling.style.display="inline";
+      else it.parentNode.parentNode.parentNode.nextSibling.style.display="table-row-group";
+    else if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==3) {       //Leerzeichen ist Textobjekt (Moz), dann nächsten Knoten
+      it.parentNode.parentNode.parentNode.nextSibling.nextSibling.style.display="table-row-group";//table-row-group"; 
+    }
+    it.lastChild.src="img/minus.gif";
+    it.lastChild.alt="-";
+    it.lastChild.title="Sektion ausblenden"; 
+  }else{  //ausblenden 
+    if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==1) // richtiges Objekt
+      it.parentNode.parentNode.parentNode.nextSibling.style.display="none";
+    else if (it.parentNode.parentNode.parentNode.nextSibling.nodeType==3)
+      it.parentNode.parentNode.parentNode.nextSibling.nextSibling.style.display="none"; //Leerzeichen ist Textobjekt bei Mozilla, dann nächsten Knoten
+    it.lastChild.src="img/plus.gif";
+    it.lastChild.alt="+";
+    it.lastChild.title="Sektion einblenden";
+    
   }
+}
+function blendall() {
+  minus=new Image(); minus.src="img/minus.gif";
+  x=document.getElementsByTagName("tbody");
+  for (i=0;i<x.length;i++) {
+    
+    if (x[i].className=="blend_object") {x[i].style.display="none";}
+  }
+}
 </script>

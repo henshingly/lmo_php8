@@ -185,7 +185,7 @@ if($_SESSION['lmouserok']==2){
           <td class="lmost2" align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
           <td class="lmost2" align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
           <td class="lmost2" align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
-          <td class="lmost2" align="center"><?=$text[317]?></td>
+          <td class="lmost1" align="center"><?=$text[317]?></td>
         </tr>
       </table>
     </td>

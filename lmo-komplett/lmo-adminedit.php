@@ -66,7 +66,7 @@ if($file!=""){
       }
     return $erg;
     }
-  require(PATH_TO_LMO."/lmo-openfile.php");
+  require_once(PATH_TO_LMO."/lmo-openfile.php");
   if(!isset($save)){$save=0;}
   if($save==1){
     $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
@@ -456,7 +456,7 @@ if($_SESSION['lmouserok']==2){
     $dum3="";
     }
 ?>
-    <td class="lmost5"><nobr><acronym title="<?=$text[122] ?>"><input class="lmoadminein" type="text" name="xatdat<?=$i.$n; ?>" size="10" maxlength="10" value="<?=$dum1; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat<?=$i.$n; ?>\',\'<?=$dum3; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'<?=$i.$n; ?>c\',img5)" onMouseOut="lmoimg('<?=$i.$n; ?>c',img4)"><img src="img/lmo-admin4.gif" name="ximg<?=$i.$n; ?>c" width="14" height="10" border="0"></a>');</script></nobr></td>
+    <td class="lmost5"><nobr><acronym title="<?=$text[122] ?>"><input class="lmoadminein" type="text" name="xatdat<?=$i.$n; ?>" size="10" maxlength="10" value="<?=$dum1; ?>" onChange="dolmoedit()"></acronym><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat<?=$i.$n; ?>\',\'<?=$dum3; ?>\')" title="<?=$text[139]; ?>" onMouseOver="lmoimg(\'<?=$i.$n; ?>c\',img5)" onMouseOut="lmoimg(\'<?=$i.$n; ?>c\',img4)"><img src="img/lmo-admin4.gif" name="ximg<?=$i.$n; ?>c" width="14" height="10" border="0"></a>');</script></nobr></td>
     <td class="lmost5"><acronym title="<?=$text[123] ?>"><input class="lmoadminein" type="text" name="xattim<?=$i.$n; ?>" size="5" maxlength="5" value="<?=$dum2; ?>" onChange="dolmoedit()"></acronym></td>
     <td class="lmost5" width="2">&nbsp;</td>
 <? if($n==0){ ?>

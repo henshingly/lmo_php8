@@ -39,8 +39,9 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
         <input type="hidden" name="save" value="1">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[423]?></td>
+            <td class="lmost4" colspan="3"><?=$text[423]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
@@ -66,9 +67,11 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
             <td class="lmost5" align="right"><acronym title="<?=$text[440] ?>"><?=$text[439]?></acronym></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabacoti" size="7" maxlength="7" value="<?=$stylearr["TD.lmomain0"]["color"]?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[436]?></td>
+            <td class="lmost4" colspan="3"><?=$text[436]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
@@ -89,9 +92,11 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
             <td class="lmost5" align="right"><acronym title="<?=$text[438] ?>"><?=$text[437]?></acronym></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabbsize" size="6" maxlength="6" value="<?=$stylearr["TD.lmost1"]["font-size"]?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[441]?></td>
+            <td class="lmost4" colspan="3"><?=$text[441]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[443] ?>"><?=$text[503]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
@@ -117,9 +122,11 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
             <td class="lmost5" align="right"><acronym title="<?=$text[445] ?>"><?=$text[444]?></acronym></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabclin1" size="7" maxlength="7" value="<?=$stylearr["TD.lmost5 a:link"]["color"]?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabclin2" size="7" maxlength="7" value="<?=$stylearr["TD.lmost5 a:hover"]["color"]?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[450]?></td>
+            <td class="lmost4" colspan="3"><?=$text[450]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[451]?></acronym></td>
@@ -160,9 +167,11 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[458]?></acronym></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabftab8" size="7" maxlength="7" value="<?=$stylearr["TD.lmotab7"]["background"]?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[459]?></td>
+            <td class="lmost4" colspan="3"><?=$text[459]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[460]?></acronym></td>
@@ -183,9 +192,11 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[463]?></acronym></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabftur4" size="7" maxlength="7" value="<?=$stylearr["TD.lmost9c"]["background"]?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[464]?></td>
+            <td class="lmost4" colspan="3"><?=$text[464]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[465]?></acronym></td>
@@ -196,9 +207,11 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
             <td class="lmost5" align="right"><acronym title="<?=$text[433] ?>"><?=$text[466]?></acronym></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabwcolo" size="7" maxlength="7" value="<?=$stylearr["TD.lmocalwe"]["color"]?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[447]?></td>
+            <td class="lmost4" colspan="3"><?=$text[447]?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
           </tr>
+          <tbody class="blend_object">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
@@ -214,8 +227,9 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
             <td class="lmost5" align="right"><acronym title="<?=$text[438] ?>"><?=$text[437]?></acronym></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabtsize" size="6" maxlength="6" value="<?=$stylearr["INPUT.lmotickerein"]["font-size"]?>" onChange="dolmoedit()"></td>
           </tr>
+          </tbody>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[448]?></td>
+            <td class="lmost4" colspan="4"><?=$text[448]?></td>
           </tr>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
@@ -223,7 +237,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabeback" size="7" maxlength="7" value="<?=$stylearr["INPUT.lmoadminein"]["background"]?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabecolo" size="7" maxlength="7" value="<?=$stylearr["INPUT.lmoadminein"]["color"]?>" onChange="dolmoedit()"></td>
           </tr>
           <tr>
-            <td class="lmost4" colspan="3"><?=$text[449]?></td>
+            <td class="lmost4" colspan="4"><?=$text[449]?></td>
           </tr>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
@@ -231,7 +245,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
             <td class="lmost5"><input class="lmoadminein" type="text" name="xtabkback" size="7" maxlength="7" value="<?=$stylearr["INPUT.lmoadminbut"]["background"]?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabkcolo" size="7" maxlength="7" value="<?=$stylearr["INPUT.lmoadminbut"]["color"]?>" onChange="dolmoedit()"></td>
           </tr>
           <tr>
-            <td class="lmost4" colspan="3" align="right">
+            <td class="lmost5" colspan="3" align="center">
               <acronym title="<?=$text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<?=$text[188]?>"></acronym>
             </td>
           </tr>
@@ -245,10 +259,11 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
         <tr>
           <td class="lmost2" align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
           <td class="lmost2" align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
-          <td class="lmost2" align="center"><?=$text[421]?></td>
+          <td class="lmost1" align="center"><?=$text[421]?></td>
           <td class="lmost2" align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
         </tr>
       </table>
     </td>
   </tr>
 </table>
+<script type="text/javascript">blendall();</script>

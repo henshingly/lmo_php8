@@ -72,7 +72,7 @@ if($_REQUEST["action"]==""){
       AuswahlLiga();
     }
   }else{
-    require(PATH_TO_LMO."/lmo-openfile.php");
+    require_once(PATH_TO_LMO."/lmo-openfile.php");
     if($onrun==0){$action="results";}else{$action="table";}
     require(PATH_TO_LMO."/lmo-showmain.php");
   }
@@ -88,7 +88,7 @@ else
     {AuswahlLiga();}
   else
   {
-    require(PATH_TO_LMO."/lmo-openfile.php");
+    require_once(PATH_TO_LMO."/lmo-openfile.php");
     require(PATH_TO_LMO."/lmo-showmain.php");
   }
 }*/

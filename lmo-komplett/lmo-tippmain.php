@@ -28,7 +28,7 @@ if($action=="tipp"){
   if($file!=""){$addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";}
   if($_SESSION["lmotipperok"]==5){
   if(($todo=="edit" && $file!="viewer") || $todo=="einsicht"){require(PATH_TO_LMO."/lmo-openfilest.php");}
-  elseif($todo=="tabelle"){require(PATH_TO_LMO."/lmo-openfile.php");}
+  elseif($todo=="tabelle"){require_once(PATH_TO_LMO."/lmo-openfile.php");}
   elseif(($todo=="wert" && $all!=1) || $todo=="fieber"){require(PATH_TO_LMO."/lmo-openfilename.php");}
   elseif($todo=="wert" && $all==1){}
   }

@@ -29,7 +29,6 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
     // Es werden alle Addon-Konfigurationen dargestellt als Texteingabe behandelt
     // und anschliessend abgespeichert - Es erfolgen keine Prüfungen auf Variablentyp und -wert
     foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
-      echo "$$$$$$$$";
       if (is_array($addon_cfg)) {                 //Addon gefunden
         
         foreach ($addon_cfg as $cfg_name => $cfg_value) {
@@ -55,19 +54,20 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
   foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
     if (is_array($addon_cfg)) {                      //Addon gefunden
         ?><tr>
-            <td class="lmost4" colspan="3"><?=$addon_name;?></td>
-          </tr><?
+            <td class="lmost4" colspan="3"><?=$addon_name;?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="img/plus.gif" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
+          </tr>
+          <tbody class="blend_object"><?
       foreach ($addon_cfg as $cfg_name => $cfg_value) {   //Alle Konfigwerte des Addon
         ?><tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><?=$cfg_name?></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="x<?=$cfg_name?>" size="30" value="<?=$cfg_value;?>" onChange="dolmoedit()"></td>
           </tr><?
-      }
+      }?> </tbody><?
     }
   }?>
           <tr>
-            <td class="lmost4" colspan="3" align="right">
+            <td class="lmost5" colspan="3" align="center">
               <acronym title="<?=$text[114]?>"><input class="lmoadminbut" type="submit" name="best" value="<?=$text[188];?>"></acronym>
             </td>
           </tr>
@@ -80,7 +80,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmost2" align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
-          <td class="lmost2" align="center"><?=$text[497]?></td>
+          <td class="lmost1" align="center"><?=$text[497]?></td>
           <td class="lmost2" align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
           <td class="lmost2" align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
         </tr>
@@ -88,3 +88,4 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
     </td>
   </tr>
 </table>
+<script type="text/javascript">blendall();</script>

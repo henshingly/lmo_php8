@@ -20,7 +20,7 @@
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($file!="") && ($_SESSION['lmouserok']==2)){
-  require(PATH_TO_LMO."/lmo-openfile.php");
+  require_once(PATH_TO_LMO."/lmo-openfile.php");
   if(isset ($save) && $save==1){
     for($i=0;$i<$anzst;$i++){
       for($j=$anzsp;$j<40;$j++){
