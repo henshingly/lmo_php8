@@ -249,6 +249,7 @@ if ($ftype != "") {
                       }?> 
           <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<? echo $start1; ?>"><? 
                       echo $text[4]; //bis
+                      $dummy1=array();
                       $verz1 = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
                        while ($tipfiles = readdir($verz1)) {
                         if (strtolower(substr($tipfiles, 0, strlen(substr($files, 0, -4)))) == strtolower(substr($files, 0, -4)) && strtolower(substr($tipfiles, -4)) == ".tip") {
