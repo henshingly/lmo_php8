@@ -22,13 +22,9 @@
   $team = array("");
   $tipperteam = array("");
   $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  $datei = fopen($pswfile,"rb");
-  while (!feof($datei)) {
-    $zeile = fgets($datei,1000);
-    $zeile=chop($zeile);
-    if($zeile!=""){array_push($dumma,$zeile);}
-    }
-  fclose($datei);
+  
+  $dumma = file($pswfile);
+  
   $v=0; // Teamnummer
   for($i=0;$i<count($dumma);$i++){
     $dummb = explode('|',$dumma[$i]);

@@ -22,17 +22,9 @@ require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if (isset($xtippername2)) {
   $dumma = array();
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  $datei = fopen($pswfile, "rb");
-  if ($datei) {
-    while (!feof($datei)) {
-      $zeile = fgets($datei, 1000);
-      $zeile = chop($zeile);
-      if ($zeile != "") {
-        array_push($dumma, $zeile);
-      }
-    }
-    fclose($datei);
-  }
+  
+  $dumma = file($pswfile);
+  
   for($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i++) {
     $dummb = explode('|', $dumma[$i]);
     if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != false)) {

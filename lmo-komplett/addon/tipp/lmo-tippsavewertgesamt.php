@@ -23,16 +23,8 @@ $dummb = array("");
 $dummd = array();
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
  
-if ($datei = fopen($pswfile, "rb")) {
-  while (!feof($datei)) {
-    $zeile2 = fgets($datei, 10000);
-    $zeile2 = trim($zeile2);
-    if ($zeile2 != "") {
-      array_push($dummd, $zeile2);
-    }
-  }
-  fclose($datei);
-}
+$dummd = file($pswfile);
+
 $anztipper = count($dummd);
  
 $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";

@@ -21,16 +21,8 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 $dumma = array();
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-if ($datei = fopen($pswfile, "rb")) {
-  while (!feof($datei)) {
-    $zeile = fgets($datei, 1000);
-    $zeile = chop($zeile);
-    if ($zeile != "") {
-      array_push($dumma, $zeile);
-    }
-  }
-  fclose($datei);
-}
+
+$dumma = file($pswfile);
  
 sort($dumma, SORT_STRING);
 for($i = 0; $i < count($dumma); $i++) {

@@ -22,8 +22,8 @@ if ($ftype != "") {
   if (!isset($iptype)) {
     $iptype = "";
   }
-  if (!isset($lmotipperok)) {
-    $lmotipperok = 0;
+  if (!isset($_SESSION['lmotipperok'])) {
+    $_SESSION['lmotipperok'] = 0;
   }
   if (!isset($liga)) {
     $liga = "";
@@ -70,7 +70,6 @@ if ($ftype != "") {
       $datei = fopen(PATH_TO_LMO.'/'.$dirliga.$files, "rb");
       while (!feof($datei)) {
         $zeile = fgets($datei, 1000);
-        $zeile = chop($zeile);
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = substr($zeile, 1, -1);
@@ -125,7 +124,7 @@ if ($ftype != "") {
               if ($todo != "tippemail" || $ftest == 1 || $tipp_immeralle == 1) {
                 if ($todo != "tippuseredit" || $ftest == 1 || $tipp_immeralle == 1) {
                   $i++;
-                  if ($lmotipperok > 0 || $action == "admin" || $todo == "newtipper") {
+                  if ($_SESSION['lmotipperok'] > 0 || $action == "admin" || $todo == "newtipper") {
                     if ($iptype == "reminder") {?>
 
   <tr>
