@@ -136,7 +136,7 @@ if($file!="" && $tipptabelle1==1){
     }
   echo "<td ";
   $i=$i+1;
-  include("lmo-zustat-config.php");
+
   if($i<>$tabtype && $einhinrueck==1){
   echo "class=\"lmost0\"><a href=\"".$addt1.$i."\" title=\"".$text[490]."\">".$text[490]."</a>";
   	}
@@ -455,4 +455,3 @@ if($tabdat!=""){ ?>
   </tr>
 </table>
 <?PHP } ?>
-

@@ -15,7 +15,7 @@
  * 
  */
 
-require("lmo-zustat-config.php");		// Konfigurations-Datei laden
+		// Konfigurations-Datei laden
 /*
  * Ab hier bitte nichts mehr ändern!
  *

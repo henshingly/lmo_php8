@@ -182,7 +182,6 @@ $d=($etore[$stat2]/$spiele[$stat2])+($atore[$stat1]/$spiele[$stat1]);
 <table class="lmostc" width="100%" cellspacing="0" cellpadding="0" border="0">
 
 <?PHP
-require("lmo-zustat-config.php");
 if ($einzustats==1) {  
 $strs=".l98";
 $stre=".l98.php";
