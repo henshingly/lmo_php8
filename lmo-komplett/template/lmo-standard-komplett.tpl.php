@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <!--Stylesheet-->
 </head>
-<body bgcolor="#cccccc">
+<body>
   <p><small>Hier steht Deine Homepage, Navigation oder was auch immer Du willst. Diese kannst Du über 
     die Dateien im Verzeichnis <code>/template</code> anpassen. (s. Hilfedatei)</small></p>
   <div align="center">

@@ -561,6 +561,7 @@
 560=Gibt dem Hilfsadministrator erweiterte Rechte
 561=Achtung! Diese Einstellungen können eine <br>bestehende Liga unbrauchbar machen. <br>Bitte benutzen Sie diese Optionen nur, <br>wenn Sie wirklich sicher sind.<br>
 562=zurück
+563=Links unterstreichen
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde

@@ -27,118 +27,139 @@ require(dirname(__FILE__)."/../../init.php");
 <title>Tippspielregeln</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
 <style type="text/css">
-  body { background: #fff; color: #000; font-family: sans-serif; font-size: 91%; }
-  a {font-size:91%;}
-  a:active {text-decoration: overline underline;}
-  a:hover {text-decoration: overline underline;}
-  h1 { color:#ddf; Background:#006;margin: 10px auto 4px auto; font-size: 115%; font-weight: bold; text-align: center; }
-  h2 { font-size: 105%; font-weight: bold; color:#009;}
-  h3 { margin-bottom: 4px; font-size: 100%; font-weight: bold; }
-  ul {list-style-type:none;}
-  ul ul {list-style-type:disc;}
-  ul#rechtliches {color:#900;}
-  strong{color:#060;}
+  body {
+        max-width : 55em;
+        margin : 0.3em auto;
+        font-size : 90%;
+        background-color : #fff;
+        color : #000;
+        font-family : Tahoma, Verdana, sans-serif;
+        padding : 0 0.5em;
+        border : 1px solid #000;
+      }
+  dt , dd , li {
+        padding : 0;
+        margin-bottom : 0.4em;
+        font-size : 99%;
+      }
+  a {
+        text-decoration : underline;
+      }
+  a:hover , a:active {
+        text-decoration : underline overline;
+      }
+  h1 , h2 {
+        font-family : "Trebuchet MS", Georgia, sans-serif;
+      }
+  h1 {
+        text-align : center;
+        font-size : 140%;
+        font-weight : bold;
+        margin : 0;
+        margin-top : 1em;
+      }
+  h2 {
+        font-size : 115%;
+        margin-bottom : 0.2em;
+        background-color : #00f;
+        color : #fcfcff;
+        padding-left : 0.3em;
+      }
+  p , dl {
+        margin-left : 2em;
+      }
+  strong {
+        color : #009;
+      }
+  dt , em {
+        font-style : normal;
+        font-weight : bold;
+        color : #900;
+      }
 </style>
 </head>
 <body>
-<script type="text/javascript">document.write('<a href="#" onclick="self.close();">Fenster schließen</a>')</script>
+<script type="text/javascript">document.write('<a href="#" onclick="self.close();">Fenster schließen<\/a>')</script>
 <h1>Anleitung für das Tippspiel</h1>
 <p>Nach der  Anmeldung zum Tippspiel hat der Tipper die Möglichkeit, eine <strong>oder</strong> mehrere Tippspiele 
 zu abonnieren.</p>
-<ol>
-  <li><h2>Verfahren zum Abonnieren und Spielen einzelner Ligen</h2>
+<h2>Verfahren zum Abonnieren und Spielen einzelner Ligen</h2>
+<dl>
+  <dt>Anmelden und Verwalten</dt>
+  <dd>Im Login-Bereich auf "<strong>anmelden</strong>" klicken .</dd>
+  <dd>Alle Anmeldedaten eintragen und auswählen, welche Liga Sie abonnieren möchten.<br>
+      <strong>Hinweis</strong>: Weitere Ligen können Sie jederzeit nach der Erstanmeldung unter 
+      Ihrem Usernamen nachträglich abonnieren!</dd>
+  <dd>Nach der Anmeldung sind Sie eingeloggt bzw. Sie können sich jetzt jederzeit 
+      mit Ihrem Nickname einloggen.</dd>
+  <dd>Im User-Bereich des Tippspiels können Sie:
     <ul>
-      <li><h3>Anmelden und Verwalten</h3>
-        <ol>
-          <li>Im Login-Bereich auf "<strong>anmelden</strong>" klicken .</li>
-          <li>Alle Anmeldedaten eintragen und auswählen, welche Liga Sie abonnieren möchten.<br>
-            <strong>Hinweis</strong>: Weitere Ligen können Sie jederzeit nach der Erstanmeldung unter 
-            Ihrem Usernamen nachträglich abonnieren!</li>
-          <li>Nach der Anmeldung sind Sie eingeloggt bzw. Sie können sich jetzt jederzeit 
-            mit Ihrem Nickname einloggen.</li>
-          <li>Im User-Bereich des Tippspiels können Sie:
-            <ul>
-              <li>Eine abonnierte <strong>Liga tippen</strong></li>
-              <li><strong>Punktstände anschauen</strong></li>
-              <li><strong>Ihre Daten ändern</strong></li>
-              <li><strong>andere bzw. neue Ligen in Ihren Tippschein aufnehmen </strong></li>
-              <li><strong>Passwort ändern </strong></li>
-              <li><strong>Tipp-Account löschen</strong> (<strong>Achtung</strong>: Alle abonnierten Tippspiele 
-              Ihres Nicknames werden gelöscht!)</li>
-              <li><strong>Aus dem Tippspiel ausloggen </strong></li>
-            </ul>
-          </li>
-        </ol>
-      </li>
-      <li><h3>Liga tippen</h3>
-        <ol>
-          <li>Nach dem Einloggen im Tippspielbereich eine abonnierte Liga zum Tippen auswählen.</li>
-          <li>Im Ansetzungsbereich können Sie nun Ihre Tipps für die einzelnen Spieltage 
-          abgeben.</li>
-          <li>Nach Eingabe der Tipps <strong>eines Spieltages</strong> klicken Sie auf - <strong>Tipps 
-          speichern</strong><br>
-          Sie können jetzt auf einen anderen Spieltag wechseln und weitere Tipps abgeben.</li>
-        </ol>
-      </li>
-      <li><h3>Hinweise zur Tippabgabe:</h3>
-        <ul>
-          <li>Die Tippzeit läuft für jedes Spiel einzeln ab. </li>
-          <li>Ablauf der Tippzeit ist jeweils <? echo $tipp_tippBis;?> Minuten vor Anpfiff.</li>
-          <li>Sollten <strong>ohne</strong> unsere Kenntnis einzelne Spiele vorgezogen werden, bitten 
-          wir das zu entschuldigen.<br>
-          Wir versuchen jedoch immer <strong>vor</strong> einem Spieltag alle veränderten Anstoßzeiten 
-          zu aktualisieren.</li>
-        </ul>
-      </li>
+      <li>Eine abonnierte <strong>Liga tippen</strong></li>
+      <li><strong>Punktstände anschauen</strong></li>
+      <li><strong>Ihre Daten ändern</strong></li>
+      <li><strong>andere bzw. neue Ligen in Ihren Tippschein aufnehmen </strong></li>
+      <li><strong>Passwort ändern </strong></li>
+      <li><strong>Tipp-Account löschen</strong> (<strong>Achtung</strong>: Alle abonnierten Tippspiele 
+          Ihres Nicknames werden gelöscht!)</li>
+      <li><strong>Aus dem Tippspiel ausloggen </strong></li>
     </ul>
-  </li>
-  <li><h2>Spielwertung und Ligawertung</h2>
+  </dd>
+  <dt>Liga tippen</dt>
+  <dd>Nach dem Einloggen im Tippspielbereich eine abonnierte Liga zum Tippen auswählen.</dd>
+  <dd>Im Ansetzungsbereich können Sie nun Ihre Tipps für die einzelnen Spieltage 
+      abgeben.</dd>
+  <dd>Nach Eingabe der Tipps <strong>eines Spieltages</strong> klicken Sie auf - <strong>Tipps 
+      speichern</strong></dd>
+  <dd>Sie können jetzt auf einen anderen Spieltag wechseln und weitere Tipps abgeben.</dd>
+  <dt>Hinweise zur Tippabgabe
+  <dd>Die Tippzeit läuft für jedes Spiel einzeln ab. </dd>
+  <dd>Ablauf der Tippzeit ist jeweils <? echo $tipp_tippBis;?> Minuten vor Anpfiff.</dd>
+  <dd>Sollten <strong>ohne</strong> unsere Kenntnis einzelne Spiele vorgezogen werden, bitten 
+      wir das zu entschuldigen.<br>
+      Wir versuchen jedoch immer <strong>vor</strong> einem Spieltag alle veränderten Anstoßzeiten 
+      zu aktualisieren.</dd>
+  </dd>
+</dl>
+<h2>Spielwertung und Ligawertung</h2>
+<dl>
+  <dt>Die Spielwertung (Punktverteilung)</dt>
+  <dd>
     <ul>
-      <li><h3>Die Spielwertung (Punktverteilung)</h3>
-        <ul>
-          <li>Ergebnis richtig: <strong><? echo $tipp_rergebnis;?> Punkte</strong></li>
-          <li>nur Tendenz und Tordifferenz richtig: <strong><? echo $tipp_rtendenzdiff;?> Punkte</strong></li>
-          <li>nur Tendenz richtig: <strong><? echo $tipp_rtendenz;?> Punkte</strong></li>
-          <li>nur eine Toranzahl richtig: <strong><? echo $tipp_rtor;?> Punkt</strong></li>
-        </ul>
-      </li>
-      <li><h3>Die Liga- und Spieltagswertung</h3>
-        <ul>
-          <li>Die Gesamtligawertung erhalten Sie, wenn Sie in der Tippspiel-Übersicht eine 
-          abonnierte Liga unter dem Punkt: <strong>Punktestände anschauen</strong> auswählen.</li>
-          <li>Sie erreichen die Gesamtligawertung auch, wenn Sie im Tippbereich auf - <strong>
-          Ligawertung</strong> wechseln</li>
-          <li>Die erzielten Punkte Ihrer <strong>einzelnen</strong> Spiele können Sie einsehen, wenn 
-          Sie im Tippbereich einer Liga einen <strong>absolvierten Spieltag</strong> aufrufen.</li>
-          <li><strong>Gesamtsieger</strong> ist, wer nach einer Spielsaison die meisten Punkte auf 
-          seinem Spielkonto verbuchen kann.</li>
-          <li>Zusätzlich können unter <strong>Tippeinsicht</strong> die Tipps der Mitspieler eingesehen 
-          werden</li>
-          <li>Die <strong>Tipp-Tabelle</strong> ist eine Zusatzanzeige, also eine Tabelle erzeugt 
-          nach Ihren abgegebenen Tipps</li>
-        </ul>
-      </li>
-      <li><h3>Hinweise zum Zeitpunkt der Tippauswertung</h3>
-        <ul>
-          <li>Die technische Auswertung der Spieltipps erfolgt in der Regel nach jedem absolvierten 
-          Spieltag.</li>
-          <li>Bitte beachten Sie, dass sich aus organisatorischen Gründen die Tippauswertung auch 
-          einmal um <strong>1 bis 2 Tage</strong> verzögern kann.</li>
-        </ul>
-      </li>
+      <li>Ergebnis richtig: <strong><? echo $tipp_rergebnis;?> Punkte</strong></li>
+      <li>nur Tendenz und Tordifferenz richtig: <strong><? echo $tipp_rtendenzdiff;?> Punkte</strong></li>
+      <li>nur Tendenz richtig: <strong><? echo $tipp_rtendenz;?> Punkte</strong></li>
+      <li>nur eine Toranzahl richtig: <strong><? echo $tipp_rtor;?> Punkt</strong></li>
     </ul>
-  </li>
-  <li><h3>Haftungsausschluß</h3>  
-    <ul id="rechtliches">
-      <li>Für etwaige Übertragungsfehler und sonstige technische Schwierigkeiten ist der 
-      Veranstalter in keiner Weise verantwortlich zu machen.</li>
-      <li>Mit der Anmeldung zum Spiel akzeptieren Sie die Bedingungen. Dieses Spiel dient 
+  </dd>
+  <dt>Die Liga- und Spieltagswertung</dt>
+  <dd>Die Gesamtligawertung erhalten Sie, wenn Sie in der Tippspiel-Übersicht eine 
+      abonnierte Liga unter dem Punkt: <strong>Punktestände anschauen</strong> auswählen.</dd>
+  <dd>Sie erreichen die Gesamtligawertung auch, wenn Sie im Tippbereich auf - <strong>
+      Ligawertung</strong> wechseln</dd>
+  <dd>Die erzielten Punkte Ihrer <strong>einzelnen</strong> Spiele können Sie einsehen, wenn 
+      Sie im Tippbereich einer Liga einen <strong>absolvierten Spieltag</strong> aufrufen.</dd>
+  <dd><strong>Gesamtsieger</strong> ist, wer nach einer Spielsaison die meisten Punkte auf 
+      seinem Spielkonto verbuchen kann.</dd>
+  <dd>Zusätzlich können unter <strong>Tippeinsicht</strong> die Tipps der Mitspieler eingesehen 
+      werden</dd>
+  <dd>Die <strong>Tipp-Tabelle</strong> ist eine Zusatzanzeige, also eine Tabelle erzeugt 
+      nach Ihren abgegebenen Tipps</dd>
+  
+  <dt>Hinweise zum Zeitpunkt der Tippauswertung</dt>
+  <dd>Die technische Auswertung der Spieltipps erfolgt in der Regel nach jedem absolvierten 
+      Spieltag.</dd>
+  <dd>Bitte beachten Sie, dass sich aus organisatorischen Gründen die Tippauswertung auch 
+      einmal um <strong>1 bis 2 Tage</strong> verzögern kann.</dd>
+</dl>
+<h2>Haftungsausschluß</h2>  
+<dl>
+  <dd>Für etwaige Übertragungsfehler und sonstige technische Schwierigkeiten ist der 
+      Veranstalter in keiner Weise verantwortlich zu machen.</dd>
+  <dd>Mit der Anmeldung zum Spiel akzeptieren Sie die Bedingungen. Dieses Spiel dient 
       dem reinen Unterhaltungszweck. Wer hackt, verfälscht, oder sich
-      mehrmals unter verschiedenen Namen anmeldet, wird mit Spielsperre bestraft.</li>
-      <li><strong>Der Rechtsweg ist ausgeschlossen.</strong></li>
-    </ul>  
-  </li>
-</ol>
-<script type="text/javascript">document.write('<a href="#" onclick="self.close();">Fenster schließen</a>')</script>
+      mehrmals unter verschiedenen Namen anmeldet, wird mit Spielsperre bestraft.</dd>
+  <dd><strong>Der Rechtsweg ist ausgeschlossen.</strong></dd>
+</dl>
+<script type="text/javascript">document.write('<a href="#" onclick="self.close();">Fenster schließen<\/a>')</script>
 </body>
 </html>
