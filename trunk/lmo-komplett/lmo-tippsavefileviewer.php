@@ -41,7 +41,7 @@ if($tippfile!=""){
     if (!$datei) {
       echo "<font color=\"#ff0000\">".$text[283]."</font>";
       exit;
-      }elseif($start1==0){echo "<font color=\"#008800\">".$text[541]."<br></font>";}
+      }elseif($start1==0){echo "<font color=\"#008800\">".$text[2041]."<br></font>";}
     flock($datei,2);
 
     $stsave=array_pad($array,116,"0");

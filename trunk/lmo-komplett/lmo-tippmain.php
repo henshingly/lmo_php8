@@ -92,32 +92,32 @@ function lmotorauf(x,y,z){
 
 <table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmomain0" colspan="3" align="center"><nobr><?PHP echo $text[500]." ";if(isset($titel)){echo $titel;} ?></nobr>
+    <td class="lmomain0" colspan="3" align="center"><nobr><?PHP echo $text[2000]." ";if(isset($titel)){echo $titel;} ?></nobr>
     </td>
   </tr><tr>
     <td class="lmomain1"><nobr>
 
 <?PHP
-    if($todo!=""){echo "<a href=\"".$PHP_SELF."?action=tipp&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[553]."\">".$text[552]."</a>";}
-    else{echo $text[552];}
+    if($todo!=""){echo "<a href=\"".$PHP_SELF."?action=tipp&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[2053]."\">".$text[2052]."</a>";}
+    else{echo $text[2052];}
     echo "&nbsp;&nbsp;";
     if($file=="viewer"){
-      echo $text[509]."&nbsp;&nbsp;";
+      echo $text[2009]."&nbsp;&nbsp;";
       }
     elseif($file!=""){
       if($sttipp!=-1){
-        if($todo!="edit"){echo "<a href=\"".$adda."edit&amp;file=".$file."&amp;st=".$st."&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[509]."\">".$text[509]."</a>";}
-        else{echo $text[509];}
+        if($todo!="edit"){echo "<a href=\"".$adda."edit&amp;file=".$file."&amp;st=".$st."&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[2009]."\">".$text[2009]."</a>";}
+        else{echo $text[2009];}
         echo "&nbsp;&nbsp;";
         }
       if($tippeinsicht==1){
-        if($todo!="einsicht"){echo "<a href=\"".$adda."einsicht&amp;file=".$file."&amp;st=".$st."&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[657]."\">".$text[657]."</a>";}
-        else{echo $text[657];}
+        if($todo!="einsicht"){echo "<a href=\"".$adda."einsicht&amp;file=".$file."&amp;st=".$st."&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[2157]."\">".$text[2157]."</a>";}
+        else{echo $text[2157];}
         echo "&nbsp;&nbsp;";
         }
       if($lmtype==0 && $tipptabelle1==1){
-        if($todo!="tabelle"){echo "<a href=\"".$adda."tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[673]."\">".$text[672]."</a>";}
-        else{echo $text[672];}
+        if($todo!="tabelle"){echo "<a href=\"".$adda."tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[2173]."\">".$text[2172]."</a>";}
+        else{echo $text[2172];}
         echo "&nbsp;&nbsp;";
         }
       if($tippfieber==1){
@@ -125,14 +125,14 @@ function lmotorauf(x,y,z){
         else{echo $text[133];}
         echo "&nbsp;&nbsp;";
         }
-      if($todo!="wert" || $all==1){echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=einzel&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[554]."\">".$text[554]."</a>";}
-      else{echo $text[554];}
+      if($todo!="wert" || $all==1){echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=einzel&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[2054]."\">".$text[2054]."</a>";}
+      else{echo $text[2054];}
       echo "&nbsp;&nbsp;";
       }
 /*
     if($gesamt==1){
-      if($todo!="wert" || $all!=1){echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;wertung=einzel&amp;all=1&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[556]."\">".$text[556]."</a>";}
-      else{echo $text[556];}
+      if($todo!="wert" || $all!=1){echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;wertung=einzel&amp;all=1&amp;PHPSESSID=".$PHPSESSID."\" title=\"".$text[2056]."\">".$text[2056]."</a>";}
+      else{echo $text[2056];}
       }
     echo "&nbsp;&nbsp;";
 */
@@ -142,7 +142,7 @@ function lmotorauf(x,y,z){
     <td class="lmomain1" align="right"><nobr>
 <?PHP
     if($regeln==1){
-      echo "<a href=\"".$regelnlink."\">".$text[685]."</a>";
+      echo "<a href=\"".$regelnlink."\">".$text[2185]."</a>";
       echo "&nbsp;&nbsp;";
       }
     echo "<a href=\"".$adda."logout\">".$text[88]."</a>";

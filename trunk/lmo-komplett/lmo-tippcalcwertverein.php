@@ -23,7 +23,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if(!file_exists($auswertfile))
-  echo $text[517]."<br>";
+  echo $text[2017]."<br>";
 else{
   $datei = fopen($auswertfile,"rb");
   $anzteams=0;

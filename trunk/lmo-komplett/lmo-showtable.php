@@ -87,10 +87,10 @@ if($file!=""){
   $i=$i+1;
   $addt1=$PHP_SELF."?action=table&amp;file=".$file."&amp;tabtype=";
   if($i<>$tabtype){
-  echo "class=\"lmost0\"><a href=\"".$addt1.$i."\" title=\"".$text[1503]."\">".$text[1503]."</a>";
+  echo "class=\"lmost0\"><a href=\"".$addt1.$i."\" title=\"".$text[4003]."\">".$text[4003]."</a>";
   	}
   else{
-      echo "class=\"lmost1\">".$text[1503];
+      echo "class=\"lmost1\">".$text[4003];
   	}	
   echo "&nbsp;</td>";
   
@@ -98,10 +98,10 @@ if($file!=""){
   $i=$i-1;
   $addt1=$PHP_SELF."?action=table&amp;file=".$file."&amp;tabtype=";
   if($i<>$tabtype){
-  echo "class=\"lmost0\"><a href=\"".$addt1.$i."\" title=\"".$text[1502]."\">".$text[1502]."</a>";
+  echo "class=\"lmost0\"><a href=\"".$addt1.$i."\" title=\"".$text[4002]."\">".$text[4002]."</a>";
   	}
   else{
-      echo "class=\"lmost1\">".$text[1502];
+      echo "class=\"lmost1\">".$text[4002];
   	}
   echo "&nbsp;</td>";
   }
@@ -230,13 +230,13 @@ if (file_exists("$temp11/$file16")){
 require("$temp11/$file16");
 
 	if ($tabtype==0 && $endtab==$anzst) {
-	echo $text[1500].$text[38].": ".$gzutore."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[1501].": ".$gdstore;
+	echo $text[4000].$text[38].": ".$gzutore."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[4001].": ".$gdstore;
 	}
 	if ($tabtype==1 && $endtab==$anzst) {
-	echo $text[1510].$text[38].": ".$gheimtore."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[1501].": ".$dsheimtore;
+	echo $text[4010].$text[38].": ".$gheimtore."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[4001].": ".$dsheimtore;
 	}
 	if ($tabtype==2 && $endtab==$anzst) {
-	echo $text[1511].$text[38].": ".$ggasttore."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[1501].": ".$dsgasttore;
+	echo $text[4011].$text[38].": ".$ggasttore."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38]."&nbsp;".$text[4001].": ".$dsgasttore;
 	}
 
 } 

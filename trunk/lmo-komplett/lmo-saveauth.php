@@ -59,7 +59,7 @@ if (!$datei) {
         }
       elseif($del>0){
         $u1 = split("[|]",$userf[$i]);
-        if(u1!=$userf1){fputs($datei,$userf[$i]."\n");}
+        if($u1!=$userf1){fputs($datei,$userf[$i]."\n");}
         }
       else{
         fputs($datei,$userf[$i]."\n");

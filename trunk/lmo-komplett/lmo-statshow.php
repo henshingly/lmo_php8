@@ -75,7 +75,7 @@ if ($filepointer = @fopen($filename,"r+b")) {
 		<td valign="top" class="lmost0" align="center">
 			<table>
 				<tr>
-					<td class="lmost5"><?=$text[813]?></td>
+					<td class="lmost5"><?=$text[3013]?></td>
 				</tr><?
 				for ($i=$nonamesort;$i<$spaltenzahl;$i++) {?>
 				<tr>
@@ -99,9 +99,9 @@ if ($filepointer = @fopen($filename,"r+b")) {
 						for ($i=0;$i<$spaltenzahl;$i++) {?>
 							<th class="lmost0"><?
 							if (($i!=0) || ($nonamesort==0)) {?>
-								<a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;".SID;?>" title="<?="$text[836] $spalten[$i] $text[837]"?>"><?
+								<a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;".SID;?>" title="<?="$text[3036] $spalten[$i] $text[3037]"?>"><?
 							}
-							if (file_exists($picDir.$spalten[$i].".gif"))echo "<acronym title='$text[836] $spalten[$i] $text[837]'><img border='0' src='".$picDir.rawurlencode($spalten[$i]).".gif' alt='".$spalten[$i]."'></acronym>";
+							if (file_exists($picDir.$spalten[$i].".gif"))echo "<acronym title='$text[3036] $spalten[$i] $text[3037]'><img border='0' src='".$picDir.rawurlencode($spalten[$i]).".gif' alt='".$spalten[$i]."'></acronym>";
 							elseif ($spalten[$i]!=$text["832"]) echo $spalten[$i];
 							if (($i!=0) || ($nonamesort==0)) {?>
 								</a><?
@@ -115,18 +115,18 @@ if ($filepointer = @fopen($filename,"r+b")) {
 						<th class="lmost0" colspan="<?=$spaltenzahl+2?>"><?
 						if ($displayperpage>0) {
 							if ($begin==0){
-								?>«&nbsp;<?=$text[816]?><?
+								?>«&nbsp;<?=$text[3016]?><?
 							}elseif (($newbegin=$begin-$displayperpage)>=0) {
-								?><a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>">&laquo;&nbsp;<?=$text[816]?></a><?
+								?><a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>">&laquo;&nbsp;<?=$text[3016]?></a><?
 							}else{
-								?><a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;".SID;?>">«&nbsp;<?=$text[816]?></a><?
+								?><a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;".SID;?>">«&nbsp;<?=$text[3016]?></a><?
 							}
 							$newbegin=0;
-							?>&nbsp;|&nbsp;<a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>"><?=$text[817]?>&nbsp;<?=$displayperpage?></a>&nbsp;|&nbsp;<?
+							?>&nbsp;|&nbsp;<a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>"><?=$text[3017]?>&nbsp;<?=$displayperpage?></a>&nbsp;|&nbsp;<?
 							if (($newbegin=$begin+$maxdisplay)<$zeile) {
-								?><a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>"><?=$text[815]?>&nbsp;&raquo;</a><?
+								?><a href="<?=$PHP_SELF."?file=$file&amp;action=$action&amp;begin=$newbegin&amp;sort=$sort&amp;".SID;?>"><?=$text[3015]?>&nbsp;&raquo;</a><?
 							}else{
-								?><?=$text[815]?>&nbsp;»<?
+								?><?=$text[3015]?>&nbsp;»<?
 							}
 						}?>
 						</th>
@@ -151,22 +151,22 @@ if ($filepointer = @fopen($filename,"r+b")) {
 						</td>
 						<td class="lmost5"><?
 							if (file_exists($picDir.$data[$j1][$j2].".jpg")) {?>
-							<img border="0" src="<?=$picDir.rawurlencode($data[$j1][$j2])?>.jpg" width="<?=$picswidth?>" alt="<?=$text[826]?>" title="<?=$data[$j1][$j2]?>"><?
+							<img border="0" src="<?=$picDir.rawurlencode($data[$j1][$j2])?>.jpg" width="<?=$picswidth?>" alt="<?=$text[3026]?>" title="<?=$data[$j1][$j2]?>"><?
 							}else{?>&nbsp;<?}?>
 						</td>
 						<td class="lmost<?if ($j2==$sort) echo "4"; else echo"5"; ?>"><?
 						}
 						//Vereinslinks
-						if ($spalten[$j2]==$text[825]) {
+						if ($spalten[$j2]==$text[3025]) {
 							$pos=array_search($data[$j1][$j2],$teams);
 							if((!is_null($pos) || $pos) && ($teamu[$pos]!="") && ($urlt==1)){echo "<a href=\"".$teamu[$pos]."\" target=\"_blank\" title=\"".$text[46]."\">";}
 							if (file_exists($picDir.$data[$j1][$j2].".jpg")) {?>
-							<img border="0" src="<?=$picDir.rawurlencode($data[$j1][$j2])?>.jpg" width="<?=$picswidth?>" alt="<?=$text[827]?>" title="<?=$data[$j1][$j2]?>">&nbsp;<?
+							<img border="0" src="<?=$picDir.rawurlencode($data[$j1][$j2])?>.jpg" width="<?=$picswidth?>" alt="<?=$text[3027]?>" title="<?=$data[$j1][$j2]?>">&nbsp;<?
 							}else	echo  "&nbsp;".str_replace(" ","&nbsp;",$data[$j1][$j2])."&nbsp;";
 							if($pos=array_search($data[$j1][$j2],$teamu) && ($teamu[$pos]!="") && ($urlt==1)){echo "</a>";}	
 						//Spielerlinks
 						}elseif ($j2==0 && !is_null($linkspalte) && !$linkspalte===FALSE && $data[$j1][$linkspalte]!=$text["843"]){
-							echo "&nbsp;<a href='".$data[$j1][$linkspalte]."' title='$text[834]'>".str_replace(" ","&nbsp;",$data[$j1][$j2])."</a>&nbsp;";
+							echo "&nbsp;<a href='".$data[$j1][$linkspalte]."' title='$text[3034]'>".str_replace(" ","&nbsp;",$data[$j1][$j2])."</a>&nbsp;";
 						//sonst. Spalten
 						}elseif ($spalten[$j2]!=$text["832"]){
 							echo  "&nbsp;".str_replace(" ","&nbsp;",$data[$j1][$j2])."&nbsp;";
@@ -180,12 +180,12 @@ if ($filepointer = @fopen($filename,"r+b")) {
 		</td>
 	</tr>
 	<tr>
-		<td class="uhrzeit" colspan="<?=$spaltenzahl+1?>"><?=$text[828]?>: <?= date("d.m.Y H:i", filemtime($filename)); ?> <?=$text[829]?><br><?=$text[835]?></td>
+		<td class="uhrzeit" colspan="<?=$spaltenzahl+1?>"><?=$text[3028]?>: <?= date("d.m.Y H:i", filemtime($filename)); ?> <?=$text[3029]?><br><?=$text[3035]?></td>
 	</tr>
 </table>
 <?
 }else{?>
-	<div class="Message"><?=$text[814]?></div><?
+	<div class="Message"><?=$text[3014]?></div><?
 }
 function cmpInt ($a1, $a2) {
 	global $sort;

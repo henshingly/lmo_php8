@@ -62,7 +62,7 @@ if(($action=="tipp") && ($todo=="pwchange")){
     $xtipperpass=trim($xtipperpass);
     if($xtipperpass!=$dummb[1]){
       $newpage=0;
-      echo "<font color=red>".$text[542]."</font><br>";
+      echo "<font color=red>".$text[2042]."</font><br>";
       }
     }
 
@@ -70,16 +70,16 @@ if(($action=="tipp") && ($todo=="pwchange")){
     $xtipperpassneu=trim($xtipperpassneu);
     if($xtipperpassneu==""){
       $newpage=0;
-      echo "<font color=red>".$text[569]."</font><br>";
+      echo "<font color=red>".$text[2069]."</font><br>";
       }
     elseif(strlen($xtipperpassneu)<3){
       $newpage=0;
-      echo "<font color=red>".$text[573]."</font><br>";
+      echo "<font color=red>".$text[2073]."</font><br>";
       }
     $xtipperpassneuw=trim($xtipperpassneuw);
     if($xtipperpassneuw!=$xtipperpassneu){
       $newpage=0;
-      echo "<font color=red>".$text[570]."</font><br>";
+      echo "<font color=red>".$text[2070]."</font><br>";
       }
     }
 
@@ -92,7 +92,7 @@ if(($action=="tipp") && ($todo=="pwchange")){
   <tr><td align="center" class="lmost1">
     <font color=black><?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></font>
   </td></tr>
-  <tr><td align="center" class="lmost1"><?PHP echo $text[607]; ?></td></tr>
+  <tr><td align="center" class="lmost1"><?PHP echo $text[2107]; ?></td></tr>
   <tr><td align="center" class="lmost3">
   <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 <?PHP if($newpage!=1){ ?>
@@ -103,17 +103,17 @@ if(($action=="tipp") && ($todo=="pwchange")){
   <input type="hidden" name="newpage" value="1">
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right"><acronym><?PHP echo " ".$text[640]; ?></acronym></td>
+      <td class="lmost5" align="right"><acronym><?PHP echo " ".$text[2140]; ?></acronym></td>
       <td class="lmost5"><acronym><input class="lmoadminein" type="password" name="xtipperpass" size="16" maxlength="32" value="<?PHP echo $xtipperpass; ?>"></acronym></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right"><acronym><?PHP echo " ".$text[639]; ?></acronym></td>
+      <td class="lmost5" align="right"><acronym><?PHP echo " ".$text[2139]; ?></acronym></td>
       <td class="lmost5"><acronym><input class="lmoadminein" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?PHP echo $xtipperpassneu; ?>"></acronym></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right"><acronym><?PHP echo " ".$text[639]." ".$text[519]; ?></acronym></td>
+      <td class="lmost5" align="right"><acronym><?PHP echo " ".$text[2139]." ".$text[2019]; ?></acronym></td>
       <td class="lmost5"><acronym><input class="lmoadminein" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?PHP echo $xtipperpassneuw; ?>"></acronym></td>
     </tr>
     <tr>
@@ -125,10 +125,10 @@ if(($action=="tipp") && ($todo=="pwchange")){
 <?PHP } ?>
 <?PHP if($newpage==1){ // erfolgreich ?>
    <tr>
-      <td class="lmost5" align="center"><?PHP echo $text[621]; ?></td>
+      <td class="lmost5" align="center"><?PHP echo $text[2121]; ?></td>
    </tr>
    <tr>
-      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text[501]; ?></a></td>
+      <td class="lmost4" align="right"><a href="<?PHP echo $PHP_SELF."?action=tipp&amp;todo=&amp;PHPSESSID=".$PHPSESSID ?>"><?PHP echo $text[5]." ".$text[2001]; ?></a></td>
    </tr>
 <?PHP } ?>
 

@@ -29,29 +29,29 @@ if(!isset($nw)){$nw=0;}
     <table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
       <td class="lmomain2" valign="top"><nobr>
         <?PHP if($todo=="wert"){?>
-          <?PHP echo "<strong>".$text[589].":</strong><br>"; /// Zeichenerklaerung ?>
+          <?PHP echo "<strong>".$text[2089].":</strong><br>"; /// Zeichenerklaerung ?>
             <?PHP if($wertung=="team"){?>
-              <?PHP echo $text[619].": ".$text[620]."&nbsp;&nbsp;&nbsp;<br>"; // AT ?>
-              <?PHP echo $text[619]."&Oslash;: ".$text[708]."&nbsp;&nbsp;&nbsp;<br>"; // AT ?>
+              <?PHP echo $text[2119].": ".$text[2120]."&nbsp;&nbsp;&nbsp;<br>"; // AT ?>
+              <?PHP echo $text[2119]."&Oslash;: ".$text[2208]."&nbsp;&nbsp;&nbsp;<br>"; // AT ?>
             <?PHP } ?>
-          <?PHP echo $text[623].": ".$text[617]."&nbsp;&nbsp;&nbsp;<br>"; // SG ?>
-          <?PHP if($showstsiege==1){echo $text[590].": ".$text[771]."&nbsp;&nbsp;&nbsp;<br>";} // GS  ?>
-          <?PHP echo $text[623];if($tippmodus==1){echo "&Oslash;: ".$text[624];}else{echo "&#37;: ".$text[625];} echo "&nbsp;&nbsp;&nbsp;<br>"; ?>
-          <?PHP if($tippmodus==1){echo $text[37].": ".$text[616];}else{echo $text[622].": ".$text[618];}echo "&nbsp;&nbsp;&nbsp;<br>"; // PP ?>
+          <?PHP echo $text[2123].": ".$text[2117]."&nbsp;&nbsp;&nbsp;<br>"; // SG ?>
+          <?PHP if($showstsiege==1){echo $text[2090].": ".$text[2271]."&nbsp;&nbsp;&nbsp;<br>";} // GS  ?>
+          <?PHP echo $text[2123];if($tippmodus==1){echo "&Oslash;: ".$text[2124];}else{echo "&#37;: ".$text[2125];} echo "&nbsp;&nbsp;&nbsp;<br>"; ?>
+          <?PHP if($tippmodus==1){echo $text[37].": ".$text[2116];}else{echo $text[2122].": ".$text[2118];}echo "&nbsp;&nbsp;&nbsp;<br>"; // PP ?>
         <?PHP } ?>
         <?PHP if($todo=="wert" || $todo=="edit" || $todo=="einsicht"){?>
          <?PHP if($tippmodus==1){?>
-          <?PHP echo "<strong>".$text[608].":</strong><br>"; // Punkteverteilung ?>
-          <?PHP if($rergebnis>0){echo $text[721].": ".$text[534].": ".$rergebnis." ".$text[538]."&nbsp;&nbsp;&nbsp;<br>";} ?>
-          <?PHP if($rtendenzdiff>$rtendenz){echo $text[722].": ".$text[535].": ".$rtendenzdiff." ".$text[538]."&nbsp;&nbsp;&nbsp;<br>";} ?>
-          <?PHP if($rtendenz>0){echo $text[723].": ".$text[536].": ".$rtendenz." ".$text[538]."&nbsp;&nbsp;&nbsp;<br>";} ?>
-          <?PHP if($rtor>0){echo $text[724].": ".$text[537].": ".$rtor." ".$text[538]."&nbsp;&nbsp;&nbsp;<br>";} ?>
+          <?PHP echo "<strong>".$text[2108].":</strong><br>"; // Punkteverteilung ?>
+          <?PHP if($rergebnis>0){echo $text[2221].": ".$text[2034].": ".$rergebnis." ".$text[2038]."&nbsp;&nbsp;&nbsp;<br>";} ?>
+          <?PHP if($rtendenzdiff>$rtendenz){echo $text[2222].": ".$text[2035].": ".$rtendenzdiff." ".$text[2038]."&nbsp;&nbsp;&nbsp;<br>";} ?>
+          <?PHP if($rtendenz>0){echo $text[2223].": ".$text[2036].": ".$rtendenz." ".$text[2038]."&nbsp;&nbsp;&nbsp;<br>";} ?>
+          <?PHP if($rtor>0){echo $text[2224].": ".$text[2037].": ".$rtor." ".$text[2038]."&nbsp;&nbsp;&nbsp;<br>";} ?>
          <?PHP } ?>
-         <?PHP if($rremis>0){echo $text[725].": ".$text[692].": ".$rremis." ".$text[538]."&nbsp;&nbsp;&nbsp;<br>";} ?>
-         <?PHP if($jokertipp==1 && $todo=="einsicht"){echo "<font color=red>".$text[787]."</font>: ".$text[902]."&nbsp;&nbsp;&nbsp;<br>";} ?>
-         <?PHP if($jokertipp==1 && $todo=="wert"){echo $text[726].": ".$text[727]."&nbsp;&nbsp;&nbsp;<br>";} ?>
-         <?PHP if($jokertipp==1 && $todo=="edit"){echo $text[904].": ".$jokertippmulti."&nbsp;&nbsp;&nbsp;<br>";} ?>
-         <?PHP if($nw==1){echo $text[730]." ".$text[731]."&nbsp;&nbsp;&nbsp;<br>";} ?>
+         <?PHP if($rremis>0){echo $text[2225].": ".$text[2192].": ".$rremis." ".$text[2038]."&nbsp;&nbsp;&nbsp;<br>";} ?>
+         <?PHP if($jokertipp==1 && $todo=="einsicht"){echo "<font color=red>".$text[2287]."</font>: ".$text[2289]."&nbsp;&nbsp;&nbsp;<br>";} ?>
+         <?PHP if($jokertipp==1 && $todo=="wert"){echo $text[2226].": ".$text[2227]."&nbsp;&nbsp;&nbsp;<br>";} ?>
+         <?PHP if($jokertipp==1 && $todo=="edit"){echo $text[2291].": ".$jokertippmulti."&nbsp;&nbsp;&nbsp;<br>";} ?>
+         <?PHP if($nw==1){echo $text[2230]." ".$text[2231]."&nbsp;&nbsp;&nbsp;<br>";} ?>
         <?PHP } ?>
      </nobr></td>
       <td class="lmomain2" align="right" valign="bottom" rowspan="2"><nobr>
@@ -61,22 +61,22 @@ if(!isset($nw)){$nw=0;}
               if($auswertfile==""){$auswertfile=$einsichtfile;}
               if($auswertfile!="" && file_exists($auswertfile)){
         	$auswertstand=date("d.m.Y H:i",filectime($auswertfile)); // Stand der *.aus-Datei
-                echo $text[583].": ".$auswertstand."<br>";
+                echo $text[2083].": ".$auswertstand."<br>";
                 } ?>
         <?PHP if($tippfile!="" && $all!=1 && ($todo!="tabelle" || $nick!="") && file_exists($tippfile)){
         	$tippstand=date("d.m.Y H:i",filectime($tippfile)); // Stand der *_user.tip-Datei
-                echo $text[586].": ".$tippstand."<br>";
+                echo $text[2086].": ".$tippstand."<br>";
                 } ?>
         <?PHP if($file!="" && $all!=1 && isset($stand) && $stand!=""){echo $text[406].": ".$stand."<br>";} // Stand der *.l98-Datei ?>
         <?PHP if($calctime==1){echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";} ?>
         <?PHP echo $text[54]; ?> - <?PHP echo $text[55]; ?><br>
-        <?PHP echo $text[584]; ?> - <?PHP echo $text[585]; ?>
+        <?PHP echo $text[2084]; ?> - <?PHP echo $text[2085]; ?>
       </nobr></td>
 </tr><tr>
       <td class="lmomain1" valign="bottom">
 <?PHP
- if($file!="" && $lmtype==0 && $all!=1){echo "<a href=\"".$PHP_SELF."?file=".$file."&amp;action=table\">".$text[5]." ".$text[599]."</a>&nbsp;&nbsp;&nbsp;<br>";}
- if($todo!="" && $todo!="logout"){echo "<a href=\"".$PHP_SELF."?action=tipp&amp;PHPSESSID=".$PHPSESSID."\">".$text[5]." ".$text[501]."</a>&nbsp;&nbsp;&nbsp;";}
+ if($file!="" && $lmtype==0 && $all!=1){echo "<a href=\"".$PHP_SELF."?file=".$file."&amp;action=table\">".$text[5]." ".$text[2099]."</a>&nbsp;&nbsp;&nbsp;<br>";}
+ if($todo!="" && $todo!="logout"){echo "<a href=\"".$PHP_SELF."?action=tipp&amp;PHPSESSID=".$PHPSESSID."\">".$text[5]." ".$text[2001]."</a>&nbsp;&nbsp;&nbsp;";}
  if($todo=="" || $todo=="logout"){if($backlink==1){echo "<a href=\"".$PHP_SELF."\">".$text[391]."</a>&nbsp;&nbsp;&nbsp;";}}
 ?>
  </td>

@@ -173,9 +173,10 @@ require_once("lmo-admintest.php");
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td class="lmost1" align="center"><?=$text[319]?></td>
-          <td class="lmost2" align="center"><a href="<?=$addf?>" onclick="return chklmolink('<?=$addf?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
-          <td class="lmost2" align="center"><a href="<?=$addu?>" onclick="return chklmolink('<?=$addu?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
+          <td class="lmost2" align="center"><?=$text[319]?></td>
+          <td class="lmost2" align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
+          <td class="lmost2" align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
+          <td class="lmost2" align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
         </tr>
       </table>
     </td>

@@ -254,7 +254,7 @@ lmotest=false;
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?PHP echo $text[533] ?></td>
+    <td class="lmost1" align="center"><?PHP echo $text[2033] ?></td>
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
   <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post" onSubmit="return chklmopass()">
@@ -262,90 +262,90 @@ lmotest=false;
   <input type="hidden" name="todo" value="tippoptions">
   <input type="hidden" name="save" value="1">
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[591]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2091]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[591]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2091]; ?></nobr></td>
     <td class="lmost5">
       <select name="xtippmodus" onChange="moduschange()">
       <?PHP
         echo "<option value=\"1\"";
           if($tippmodus==1){echo " selected";}
-          echo ">".$text[592]."</option>";
+          echo ">".$text[2092]."</option>";
         echo "<option value=\"0\"";
           if($tippmodus==0){echo " selected";}
-          echo ">".$text[593]."</option>";
+          echo ">".$text[2093]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[532]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2032]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[534]; ?></nobr></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xrergebnis" size="10" maxlength="5" value="<?PHP echo $rergebnis; ?>" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[538]; ?></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2034]; ?></nobr></td>
+    <td class="lmost5"><input class="lmoadminein" type="text" name="xrergebnis" size="10" maxlength="5" value="<?PHP echo $rergebnis; ?>" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[2038]; ?></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[535]; ?></nobr></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xrtendenzdiff" size="10" maxlength="5" value="<?PHP echo $rtendenzdiff; ?>" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[538]; ?></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2035]; ?></nobr></td>
+    <td class="lmost5"><input class="lmoadminein" type="text" name="xrtendenzdiff" size="10" maxlength="5" value="<?PHP echo $rtendenzdiff; ?>" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[2038]; ?></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[536]; ?></nobr></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xrtendenz" size="10" maxlength="5" value="<?PHP echo $rtendenz; ?>" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[538]; ?></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2036]; ?></nobr></td>
+    <td class="lmost5"><input class="lmoadminein" type="text" name="xrtendenz" size="10" maxlength="5" value="<?PHP echo $rtendenz; ?>" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[2038]; ?></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[537]; ?></nobr></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xrtor" size="10" maxlength="5" value="<?PHP echo $rtor; ?>" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[538]; ?></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2037]; ?></nobr></td>
+    <td class="lmost5"><input class="lmoadminein" type="text" name="xrtor" size="10" maxlength="5" value="<?PHP echo $rtor; ?>" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[2038]; ?></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[689]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2189]; ?></nobr></td>
     <td class="lmost5">
       <select name="xrtendenztor" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";}?>>
       <?PHP
         echo "<option value=\"1\"";
           if($rtendenztor==1){echo " selected";}
-          echo ">".$text[690]."</option>";
+          echo ">".$text[2190]."</option>";
         echo "<option value=\"0\"";
           if($rtendenztor==0){echo " selected";}
-          echo ">".$text[691]."</option>";
+          echo ">".$text[2191]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[693]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2193]; ?></nobr></td>
     <td class="lmost5">
       <select name="xrtendenzremis" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";}?>>
       <?PHP
         echo "<option value=\"1\"";
           if($rtendenzremis==1){echo " selected";}
-          echo ">".$text[694]."</option>";
+          echo ">".$text[2194]."</option>";
         echo "<option value=\"0\"";
           if($rtendenzremis==0){echo " selected";}
-          echo ">".$text[695]."</option>";
+          echo ">".$text[2195]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[692]; ?></nobr></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xrremis" size="10" maxlength="5" value="<?PHP echo $rremis; ?>" onChange="dolmoedit()">&nbsp;<?PHP echo $text[538]; ?></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2192]; ?></nobr></td>
+    <td class="lmost5"><input class="lmoadminein" type="text" name="xrremis" size="10" maxlength="5" value="<?PHP echo $rremis; ?>" onChange="dolmoedit()">&nbsp;<?PHP echo $text[2038]; ?></td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[740]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2240]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[657]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2157]; ?></nobr></td>
     <td class="lmost5">
       <select name="xtippeinsicht" onChange="dolmoedit()">
       <?PHP
@@ -361,7 +361,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[672]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2172]; ?></nobr></td>
     <td class="lmost5">
       <select name="xtipptabelle1" onChange="dolmoedit()">
       <?PHP
@@ -393,7 +393,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[556]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2056]; ?></nobr></td>
     <td class="lmost5">
       <select name="xgesamt" onChange="dolmoedit()">
       <?PHP
@@ -408,38 +408,38 @@ lmotest=false;
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[714]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2214]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[587]; ?></nobr></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xtippbis" size="10" maxlength="5" value="<?PHP echo $tippbis; ?>" onChange="dolmoedit()"><nobr><?PHP echo " ".$text[588]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2087]; ?></nobr></td>
+    <td class="lmost5"><input class="lmoadminein" type="text" name="xtippbis" size="10" maxlength="5" value="<?PHP echo $tippbis; ?>" onChange="dolmoedit()"><nobr><?PHP echo " ".$text[2088]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[748]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2248]; ?></nobr></td>
     <td class="lmost5">
       <select name="xtippohne" onChange="dolmoedit()">
       <?PHP
         echo "<option value=\"1\"";
           if($tippohne==1){echo " selected";}
-          echo ">".$text[749]."</option>";
+          echo ">".$text[2249]."</option>";
         echo "<option value=\"0\"";
           if($tippohne==0){echo " selected";}
-          echo ">".$text[750]."</option>";
+          echo ">".$text[2250]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[600]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2100]; ?></nobr></td>
     <td class="lmost5">
       <select name="xtipperteam" onChange="dolmoedit()">
       <?PHP
         echo "<option value=\"-1\"";
           if($tipperimteam==-1){echo " selected";}
-          echo ">".$text[601]."</option>";
+          echo ">".$text[2101]."</option>";
         echo "<option value=\"2\"";
           if($tipperimteam==2){echo " selected";}
           echo ">2</option>";
@@ -466,14 +466,14 @@ lmotest=false;
           echo ">100</option>";
         echo "<option value=\"0\"";
           if($tipperimteam==0){echo " selected";}
-          echo ">".$text[602]."</option>";
+          echo ">".$text[2102]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[654]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2154]; ?></nobr></td>
     <td class="lmost5">
       <select name="ximvorraus" onChange="dolmoedit()">
       <?PHP
@@ -497,14 +497,14 @@ lmotest=false;
           echo ">5</option>";
         echo "<option value=\"-1\"";
           if($imvorraus==-1){echo " selected";}
-          echo ">".$text[602]."</option>";
+          echo ">".$text[2102]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[652]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2152]; ?></nobr></td>
     <td class="lmost5">
       <select name="xentscheidungnv" onChange="dolmoedit()">
       <?PHP
@@ -520,7 +520,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[653]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2153]; ?></nobr></td>
     <td class="lmost5">
       <select name="xentscheidungie" onChange="dolmoedit()">
       <?PHP
@@ -536,29 +536,29 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[696]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2196]; ?></nobr></td>
     <td class="lmost5">
       <select name="xgtpunkte" onChange="dolmoedit()">
       <?PHP
         echo "<option value=\"0\"";
           if($gtpunkte==0){echo " selected";}
-          echo ">".$text[697]."</option>";
+          echo ">".$text[2197]."</option>";
         echo "<option value=\"1\"";
           if($gtpunkte==1){echo " selected";}
-          echo ">".$text[698]."</option>";
+          echo ">".$text[2198]."</option>";
         echo "<option value=\"2\"";
           if($gtpunkte==2){echo " selected";}
-          echo ">".$text[699]."</option>";
+          echo ">".$text[2199]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[902]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2289]; ?></nobr></td>
   </tr>
 <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[901]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2288]; ?></nobr></td>
     <td class="lmost5">
       <select name="xjokertipp" onChange="jokerchange()">
       <?PHP
@@ -574,7 +574,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[904]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2291]; ?></nobr></td>
     <td class="lmost5">
       <select name="xjokertippmulti" onChange="dolmoedit()"<?PHP if($jokertipp==0){echo " disabled";}?>>      
       <?PHP
@@ -599,15 +599,15 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[539]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2039]; ?></nobr></td>
     <td class="lmost5"><input class="lmoadminein" type="text" name="xdirtipp" size="40" maxlength="80" value="<?PHP echo $dirtipp; ?>" onChange="dolmoedit()"></td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[738]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2238]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[540]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2040]; ?></nobr></td>
     <td class="lmost5">
       <select name="xtippspiel" onChange="dolmoedit()">
       <?PHP
@@ -623,7 +623,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[687]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2187]; ?></nobr></td>
     <td class="lmost5">
       <select name="xregeln" onChange="regelnchange()">
       <?PHP
@@ -639,15 +639,15 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[686]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2186]; ?></nobr></td>
     <td class="lmost5"><input class="lmoadminein" type="text" name="xregelnlink" size="30" maxlength="256" value="<?PHP echo $regelnlink; ?>" onChange="dolmoedit()"<?PHP if($regeln==0){echo " disabled";}?>></td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[739]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2239]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[632]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2132]; ?></nobr></td>
     <td class="lmost5">
       <select name="xadresse" onChange="dolmoedit()">
       <?PHP
@@ -663,7 +663,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[786]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2286]; ?></nobr></td>
     <td class="lmost5">
       <select name="xrealname" onChange="dolmoedit()">
       <?PHP
@@ -679,7 +679,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[646]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2146]; ?></nobr></td>
     <td class="lmost5">
       <select name="xfreischaltung" onChange="dolmoedit()">
       <?PHP
@@ -694,11 +694,11 @@ lmotest=false;
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[746]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2246]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[745]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2245]; ?></nobr></td>
     <td class="lmost5">
       <select name="xpfeiltipp" onChange="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";}?>>
       <?PHP
@@ -714,7 +714,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[759]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2259]; ?></nobr></td>
     <td class="lmost5">
       <select name="xsttipp" onChange="dolmoedit()">
       <?PHP
@@ -730,7 +730,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[753]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2253]; ?></nobr></td>
     <td class="lmost5">
       <select name="xviewertipp" onChange="viewerchange()">
       <?PHP
@@ -746,12 +746,12 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[754]; ?></nobr></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xviewertage" size="5" maxlength="2" value="<?PHP echo $viewertage; ?>" onChange="dolmoedit()"<?PHP if($viewertipp==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[671]; ?></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2254]; ?></nobr></td>
+    <td class="lmost5"><input class="lmoadminein" type="text" name="xviewertage" size="5" maxlength="2" value="<?PHP echo $viewertage; ?>" onChange="dolmoedit()"<?PHP if($viewertipp==0){echo " disabled";} ?>>&nbsp;<?PHP echo $text[2171]; ?></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[661]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2161]; ?></nobr></td>
     <td class="lmost5">
       <select name="xakteinsicht" onChange="dolmoedit()">
       <?PHP
@@ -766,49 +766,49 @@ lmotest=false;
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[710]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2210]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
     <td class="lmost5" colspan="2"><nobr>
-    <input type="checkbox" name="xshowtendenzabs" value="1" <?PHP if($showtendenzabs==1){echo "checked";} ?> onClick="dolmoedit()"><?PHP echo $text[688]." ".$text[712]; ?>
-    <input type="checkbox" name="xshowtendenzpro" value="1" <?PHP if($showtendenzpro==1){echo "checked";} ?> onClick="dolmoedit()"><?PHP echo $text[688]." ".$text[711]; ?>
-    <input type="checkbox" name="xshowdurchschntipp" value="1" <?PHP if($showdurchschntipp==1){echo "checked";} ?> onClick="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>><?PHP echo $text[713]; ?>
+    <input type="checkbox" name="xshowtendenzabs" value="1" <?PHP if($showtendenzabs==1){echo "checked";} ?> onClick="dolmoedit()"><?PHP echo $text[2188]." ".$text[2212]; ?>
+    <input type="checkbox" name="xshowtendenzpro" value="1" <?PHP if($showtendenzpro==1){echo "checked";} ?> onClick="dolmoedit()"><?PHP echo $text[2188]." ".$text[2211]; ?>
+    <input type="checkbox" name="xshowdurchschntipp" value="1" <?PHP if($showdurchschntipp==1){echo "checked";} ?> onClick="dolmoedit()"<?PHP if($tippmodus==0){echo " disabled";} ?>><?PHP echo $text[2213]; ?>
     </nobr></td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[657]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2157]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[660]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2160]; ?></nobr></td>
     <td class="lmost5">
       <select name="xeinsichterst" onChange="dolmoedit()">
       <?PHP
         echo "<option value=\"0\"";
           if($einsichterst==0){echo " selected";}
-          echo ">".$text[715]."</option>";
+          echo ">".$text[2215]."</option>";
         echo "<option value=\"1\"";
           if($einsichterst==1){echo " selected";}
-          echo ">".$text[716]."</option>";
+          echo ">".$text[2216]."</option>";
         echo "<option value=\"2\"";
           if($einsichterst==2){echo " selected";}
-          echo ">".$text[717]."</option>";
+          echo ">".$text[2217]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[704]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2204]; ?></nobr></td>
     <td class="lmost5"><input class="lmoadminein" type="text" name="xanzseite" size="10" maxlength="5" value="<?PHP echo $anzseite; ?>" onChange="dolmoedit()"></td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[672]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2172]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[683]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2183]; ?></nobr></td>
     <td class="lmost5">
       <select name="xtipptabelle" onChange="dolmoedit()">
       <?PHP
@@ -824,7 +824,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[760]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2260]; ?></nobr></td>
     <td class="lmost5">
       <select name="xwertverein" onChange="dolmoedit()">
       <?PHP
@@ -835,29 +835,29 @@ lmotest=false;
           if($wertverein==0){echo " selected";}
           echo ">".$text[182]."</option>";
       ?>
-      </select><?PHP echo $text[782]; ?>
+      </select><?PHP echo $text[2282]; ?>
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[747]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2247]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[700]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2200]; ?></nobr></td>
     <td class="lmost5"><nobr>
-    <input type="checkbox" name="xshownick" value="1" <?PHP if($shownick==1){echo "checked";} ?> onClick="dolmoedit()"><?PHP echo $text[523]; ?>
-    <input type="checkbox" name="xshowname" value="1" <?PHP if($showname==1){echo "checked";} ?> onClick="dolmoedit()"><?PHP echo $text[634]; ?>
+    <input type="checkbox" name="xshownick" value="1" <?PHP if($shownick==1){echo "checked";} ?> onClick="dolmoedit()"><?PHP echo $text[2023]; ?>
+    <input type="checkbox" name="xshowname" value="1" <?PHP if($showname==1){echo "checked";} ?> onClick="dolmoedit()"><?PHP echo $text[2134]; ?>
     <input type="checkbox" name="xshowemail" value="1" <?PHP if($showemail==1){echo "checked";} ?> onClick="dolmoedit()"><?PHP echo "E-mail"; ?>
     </nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[704]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2204]; ?></nobr></td>
     <td class="lmost5"><input class="lmoadminein" type="text" name="xanzseite1" size="10" maxlength="5" value="<?PHP echo $anzseite1; ?>" onChange="dolmoedit()"></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[751]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2251]; ?></nobr></td>
     <td class="lmost5">
       <select name="xshowzus" onChange="dolmoedit()">
       <?PHP
@@ -868,12 +868,12 @@ lmotest=false;
           if($showzus==0){echo " selected";}
           echo ">".$text[182]."</option>";
       ?>
-      </select><?PHP echo $text[782]; ?>
+      </select><?PHP echo $text[2282]; ?>
     </td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[772]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2272]; ?></nobr></td>
     <td class="lmost5">
       <select name="xshowstsiege" onChange="dolmoedit()">
       <?PHP
@@ -888,116 +888,116 @@ lmotest=false;
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[774]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2274]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[775]." 1"; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2275]." 1"; ?></nobr></td>
     <td class="lmost5">
       <select name="xkrit1" onChange="dolmoedit()">
       <?PHP
         echo "<option value=\"-1\"";
           if($krit1==-1){echo " selected";}
-          echo ">".$text[781]."</option>";
+          echo ">".$text[2281]."</option>";
         echo "<option value=\"0\"";
           if($krit1==0){echo " selected";}
-          echo ">".$text[776]."</option>";
+          echo ">".$text[2276]."</option>";
         echo "<option value=\"1\"";
           if($krit1==1){echo " selected";}
-          echo ">".$text[777]."</option>";
+          echo ">".$text[2277]."</option>";
         echo "<option value=\"2\"";
           if($krit1==2){echo " selected";}
-          echo ">".$text[778]."</option>";
+          echo ">".$text[2278]."</option>";
         echo "<option value=\"3\"";
           if($krit1==3){echo " selected";}
-          echo ">".$text[779]."</option>";
+          echo ">".$text[2279]."</option>";
         echo "<option value=\"4\"";
           if($krit1==4){echo " selected";}
-          echo ">".$text[780]."</option>";
+          echo ">".$text[2280]."</option>";
         echo "<option value=\"5\"";
           if($krit1==5){echo " selected";}
-          echo ">".$text[727]."</option>";
+          echo ">".$text[2227]."</option>";
         echo "<option value=\"6\"";
           if($krit1==6){echo " selected";}
-          echo ">".$text[771]."</option>";
+          echo ">".$text[2271]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[775]." 2"; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2275]." 2"; ?></nobr></td>
     <td class="lmost5">
       <select name="xkrit2" onChange="dolmoedit()">
       <?PHP
         echo "<option value=\"-1\"";
           if($krit2==-1){echo " selected";}
-          echo ">".$text[781]."</option>";
+          echo ">".$text[2281]."</option>";
         echo "<option value=\"0\"";
           if($krit2==0){echo " selected";}
-          echo ">".$text[776]."</option>";
+          echo ">".$text[2276]."</option>";
         echo "<option value=\"1\"";
           if($krit2==1){echo " selected";}
-          echo ">".$text[777]."</option>";
+          echo ">".$text[2277]."</option>";
         echo "<option value=\"2\"";
           if($krit2==2){echo " selected";}
-          echo ">".$text[778]."</option>";
+          echo ">".$text[2278]."</option>";
         echo "<option value=\"3\"";
           if($krit2==3){echo " selected";}
-          echo ">".$text[779]."</option>";
+          echo ">".$text[2279]."</option>";
         echo "<option value=\"4\"";
           if($krit2==4){echo " selected";}
-          echo ">".$text[780]."</option>";
+          echo ">".$text[2280]."</option>";
         echo "<option value=\"5\"";
           if($krit2==5){echo " selected";}
-          echo ">".$text[727]."</option>";
+          echo ">".$text[2227]."</option>";
         echo "<option value=\"6\"";
           if($krit2==6){echo " selected";}
-          echo ">".$text[771]."</option>";
+          echo ">".$text[2271]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[775]." 3"; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2275]." 3"; ?></nobr></td>
     <td class="lmost5">
       <select name="xkrit3" onChange="dolmoedit()">
       <?PHP
         echo "<option value=\"-1\"";
           if($krit3==-1){echo " selected";}
-          echo ">".$text[781]."</option>";
+          echo ">".$text[2281]."</option>";
         echo "<option value=\"0\"";
           if($krit3==0){echo " selected";}
-          echo ">".$text[776]."</option>";
+          echo ">".$text[2276]."</option>";
         echo "<option value=\"1\"";
           if($krit3==1){echo " selected";}
-          echo ">".$text[777]."</option>";
+          echo ">".$text[2277]."</option>";
         echo "<option value=\"2\"";
           if($krit3==2){echo " selected";}
-          echo ">".$text[778]."</option>";
+          echo ">".$text[2278]."</option>";
         echo "<option value=\"3\"";
           if($krit3==3){echo " selected";}
-          echo ">".$text[779]."</option>";
+          echo ">".$text[2279]."</option>";
         echo "<option value=\"4\"";
           if($krit3==4){echo " selected";}
-          echo ">".$text[780]."</option>";
+          echo ">".$text[2280]."</option>";
         echo "<option value=\"5\"";
           if($krit3==5){echo " selected";}
-          echo ">".$text[727]."</option>";
+          echo ">".$text[2227]."</option>";
         echo "<option value=\"6\"";
           if($krit3==6){echo " selected";}
-          echo ">".$text[771]."</option>";
+          echo ">".$text[2271]."</option>";
       ?>
       </select>
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[663]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2163]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[581]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2081]; ?></nobr></td>
     <td class="lmost5">
       <select name="xaktauswert" onChange="dolmoedit()">
       <?PHP
@@ -1013,7 +1013,7 @@ lmotest=false;
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[680]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2180]; ?></nobr></td>
     <td class="lmost5">
       <select name="xaktauswertges" onChange="dolmoedit()">
       <?PHP
@@ -1028,11 +1028,11 @@ lmotest=false;
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[603]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2103]; ?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><?PHP echo $text[604]; ?></nobr></td>
+    <td class="lmost5" align="right"><nobr><?PHP echo $text[2104]; ?></nobr></td>
     <td class="lmost5">
       <select name="ximmeralle" onChange="immerallechange()">
       <?PHP
@@ -1051,7 +1051,7 @@ lmotest=false;
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="left" colspan="2">
 <?PHP
- echo $text[605]."<br>";
+ echo $text[2105]."<br>";
  $ftype=".l98"; require("lmo-tippnewdir.php"); 
 ?></td>
  </tr>
@@ -1063,9 +1063,9 @@ lmotest=false;
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adda."');\" title=\"".$text[563]."\">".$text[563]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adde."');\" title=\"".$text[665]."\">".$text[665]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addu."');\" title=\"".$text[614]."\">".$text[614]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adda."');\" title=\"".$text[2063]."\">".$text[2063]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adde."');\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addu."');\" title=\"".$text[2114]."\">".$text[2114]."</a></td>";
   echo "<td class=\"lmost1\" align=\"center\">".$text[86]."</td>";
 ?>
     </tr></table></td>

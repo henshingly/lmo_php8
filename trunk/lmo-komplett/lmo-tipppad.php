@@ -30,15 +30,15 @@ if(($action=="tipp") && ($todo=="")){
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">
     <font color=black><?PHP echo $lmotippername;
     if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></font><br>
-  <?PHP echo $text[737]; ?>
+  <?PHP echo $text[2237]; ?>
   </td></tr><tr><td align="center" class="lmost3">
   <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
 
-  <tr><td class="lmost4"><nobr><?PHP echo $text[503]; ?>:</nobr></td></tr>
+  <tr><td class="lmost4"><nobr><?PHP echo $text[2003]; ?>:</nobr></td></tr>
 
   <tr><td class="lmost5"><nobr><?PHP $ftype=".tip"; require("lmo-tippdir.php"); ?></td></tr>
 
-  <tr><td class="lmost4"><nobr><?PHP echo $text[504]; ?></nobr></td></tr>
+  <tr><td class="lmost4"><nobr><?PHP echo $text[2004]; ?></nobr></td></tr>
   
   <tr><td class="lmost5"><nobr>
       <ul>
@@ -51,7 +51,7 @@ if(($action=="tipp") && ($todo=="")){
             $dummy[$u]=substr($dummy[$u],0,-4);
             $auswertfile=$dirtipp."auswert/".$dummy[$u].".aus";
       ?>
-      <li class="lmoadminli"><a href="<?PHP echo $addw.$dirliga.$dummy[$u].".l98&amp;PHPSESSID=".$PHPSESSID; ?>"><?PHP echo $ftest2[$u];if(file_exists($auswertfile)){echo "<br><small>".$text[583].": ".date("d.m.Y H:i",filectime($auswertfile))."</small>";}echo "</a>"; ?></li>
+      <li class="lmoadminli"><a href="<?PHP echo $addw.$dirliga.$dummy[$u].".l98&amp;PHPSESSID=".$PHPSESSID; ?>"><?PHP echo $ftest2[$u];if(file_exists($auswertfile)){echo "<br><small>".$text[2083].": ".date("d.m.Y H:i",filectime($auswertfile))."</small>";}echo "</a>"; ?></li>
       <?PHP
             }
           }
@@ -59,21 +59,21 @@ if(($action=="tipp") && ($todo=="")){
       if($gesamt==1 && $u>2){
         $auswertfile=$dirtipp."auswert/gesamt.aus";
 ?>
-        <li class="lmoadminli"><a href="<?PHP echo $addw."&amp;all=1&amp;PHPSESSID=".$PHPSESSID; ?>"><strong><?PHP echo $text[525];if(file_exists($auswertfile)){echo "<br><small>".$text[583].": ".date("d.m.Y H:i",filectime($auswertfile))."</small>";} ?> <strong></a></li>
+        <li class="lmoadminli"><a href="<?PHP echo $addw."&amp;all=1&amp;PHPSESSID=".$PHPSESSID; ?>"><strong><?PHP echo $text[2025];if(file_exists($auswertfile)){echo "<br><small>".$text[2083].": ".date("d.m.Y H:i",filectime($auswertfile))."</small>";} ?> <strong></a></li>
 <?PHP   }
         $auswertfile="";
 ?>
       </ul>
   </td></tr>
-  <tr><td class="lmost4"><nobr><?PHP echo $text[645]; ?>:</nobr></td></tr>
+  <tr><td class="lmost4"><nobr><?PHP echo $text[2145]; ?>:</nobr></td></tr>
   <tr><td class="lmost5"><nobr>
     <ul>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."newligen&amp;PHPSESSID=".$PHPSESSID."\">".$text[505]."</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."delligen&amp;PHPSESSID=".$PHPSESSID."\">".$text[766]."</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."daten&amp;PHPSESSID=".$PHPSESSID."\">".$text[606];if($tipperimteam>=0){echo " / ".$text[502];}echo "</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."pwchange&amp;PHPSESSID=".$PHPSESSID."\">".$text[607]."</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."delaccount&amp;PHPSESSID=".$PHPSESSID."\">".$text[506]."</a>"; ?></li>
-    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."logout&amp;PHPSESSID=".$PHPSESSID."\">".$text[507]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."newligen&amp;PHPSESSID=".$PHPSESSID."\">".$text[2005]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."delligen&amp;PHPSESSID=".$PHPSESSID."\">".$text[2266]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."daten&amp;PHPSESSID=".$PHPSESSID."\">".$text[2106];if($tipperimteam>=0){echo " / ".$text[2002];}echo "</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."pwchange&amp;PHPSESSID=".$PHPSESSID."\">".$text[2107]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."delaccount&amp;PHPSESSID=".$PHPSESSID."\">".$text[2006]."</a>"; ?></li>
+    <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."logout&amp;PHPSESSID=".$PHPSESSID."\">".$text[2007]."</a>"; ?></li>
     </ul>
   </nobr>
   </td>

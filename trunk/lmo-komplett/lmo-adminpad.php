@@ -42,7 +42,7 @@ if(($action=="admin") && ($todo=="")){
       <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."download&amp;".SID."\">".$text[349]."</a>"; ?></li>
 <?PHP if($lmouserok==2){ ?>
       <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."options&amp;".SID."\">".$text[97]."</a>"; ?></li>
-      <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."tipp&amp;".SID."\">".$text[615]."</a>"; ?></li>
+      <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."tipp&amp;".SID."\">".$text[2115]."</a>"; ?></li>
 <?PHP } ?>
       <li class="lmoadminli"><?PHP echo "<a href=\"".$adda."logout&amp;".SID."\">".$text[98]."</a>"; ?></li>
     </ul>

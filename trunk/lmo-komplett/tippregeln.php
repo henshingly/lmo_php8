@@ -51,7 +51,7 @@ body, td { background: #ffffff; color: #000000; font-family: Arial, Helvetica, S
 </PRE>
 <h3>Spielregeln - Tippspiel<font SIZE="2"><br>
 <font SIZE="2">für <?PHP echo $text[54];?></font><font SIZE="2"> <?PHP echo $text[55];?><br>
-<font SIZE="2">inkl. <?PHP echo $text[584]." ".$text[585];?></font><br>
+<font SIZE="2">inkl. <?PHP echo $text[2084]." ".$text[2085];?></font><br>
 <font SIZE="1">Spielregeln by <a href="http://www.salzland-info.de/" target="_blank">Salzland-info.de</a></font><br>
 </font></h3>
 </center>

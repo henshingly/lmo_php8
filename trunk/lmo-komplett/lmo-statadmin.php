@@ -27,7 +27,7 @@
 
 makeCompat(); //_POST, _GET, etc. für alte PHP Versionen verfügbar machen
 
-if (isset($_REQUEST["ligalink"])) {	$ligalink=$_REQUEST["ligalink"];  } else $ligalink=$text[811];
+if (isset($_REQUEST["ligalink"])) {	$ligalink=$_REQUEST["ligalink"];  } else $ligalink=$text[3011];
 if (isset($_REQUEST["sort"]))     { $sort=$_REQUEST["sort"];          } else $sort="";
 if (isset($_REQUEST["statstart"])){ $statstart=$_REQUEST["statstart"];} else $statstart=0;
 if (isset($_REQUEST["option"]))   {	$option = $_REQUEST["option"];    } else $option="";
@@ -63,7 +63,7 @@ if (isset($file) && $file!="") {
 		$typ=array(); //Spaltentyp (TRUE=String)
 		$zeile=0;
 		if (is_null($spalten[0])) {	//Datei war leer
-			$spalten[0]=$text[802];		//Name der ersten Spalte
+			$spalten[0]=$text[3002];		//Name der ersten Spalte
 	    set_file_buffer ($filepointer,0);
 			fwrite($filepointer,$spalten[0]."\n");	//Erste Zeile/Spalte in Datei schreiben
 		}
@@ -113,14 +113,14 @@ if (isset($file) && $file!="") {
 					$data[$zeile][0]=$wert;
 					for($i=1;$i<$spaltenzahl;$i++) {
 						if ($zeile==0) {
-							if ($spalten[$i]==$text[825] || $spalten[$i]==$text[832]) {$data[0][$i]=$text[843];$newplayer.="§".$text[843];}else{$data[0][$i]="0";$newplayer.="§0";}
+							if ($spalten[$i]==$text[3025] || $spalten[$i]==$text[3032]) {$data[0][$i]=$text[3043];$newplayer.="§".$text[3043];}else{$data[0][$i]="0";$newplayer.="§0";}
 						}else{
 							if (is_numeric($data[$zeile-1][$i])) {
 								$data[$zeile][$i]="0";
 								$newplayer.="§0";
 							}else{
-								$data[$zeile][$i]=$text[843];
-								$newplayer.="§".$text[843];
+								$data[$zeile][$i]=$text[3043];
+								$newplayer.="§".$text[3043];
 							}
 						}
 					}
@@ -130,7 +130,7 @@ if (isset($file) && $file!="") {
 					$statstart=$zeile-$displayperpageadmin;
 					if ($statstart<0) $statstart=0;
 				}else{
-					echo "$text[804]";
+					echo "$text[3004]";
 				}
 				break;
 			case "delplayer":
@@ -164,8 +164,8 @@ if (isset($file) && $file!="") {
 				if ($wert!="") {
 					if (isset($_REQUEST['type'])) $val=$_REQUEST['type'];
 					else $val="0";
-					if ($wert==$text[825]) $val=$text["843"];
-					if ($wert==$text[832]) $val=$text["843"];
+					if ($wert==$text[3025]) $val=$text["843"];
+					if ($wert==$text[3032]) $val=$text["843"];
 					$filepointer = @fopen($filename,"w+b");
 					set_file_buffer ($filepointer,0);
 					$spalten[$spaltenzahl]=$wert;
@@ -196,7 +196,7 @@ if (isset($file) && $file!="") {
 					$spaltenzahl++;
 					fclose($filepointer);
 				}else{
-					echo "$text[803]";
+					echo "$text[3003]";
 				}
 				break;
 			case "delcolumn":
@@ -273,16 +273,16 @@ if (isset($file) && $file!="") {
 				if ($nonamesort==1 && $defaultsort==0) $defaultsort=1;
 				$filepointer = @fopen($configfile,"w+b");
 				set_file_buffer ($filepointer,0);
-				fputs($filepointer,$text[820]."=".$picswidth."\n");
-				fputs($filepointer,$text[821]."=".$defaultsort."\n");
-				fputs($filepointer,$text[840]."=".$adminsort."\n");
-				fputs($filepointer,$text[822]."=".$displayperpage."\n");
-				fputs($filepointer,$text[842]."=".$displayperpageadmin."\n");
-				fputs($filepointer,$text[823]."=".$displayzeros."\n");
-				fputs($filepointer,$text[824]."=".$nonamesort."\n");
-				if ($lmouserok==2) fputs($filepointer,$text[831]."=".$allowauxadmin."\n");
-				if ($lmouserok==2) fputs($filepointer,$text[846]."=".$allowauxadmins."\n");
-				fputs($filepointer,$text[841]."=".$ligalink."\n");
+				fputs($filepointer,$text[3020]."=".$picswidth."\n");
+				fputs($filepointer,$text[3021]."=".$defaultsort."\n");
+				fputs($filepointer,$text[3040]."=".$adminsort."\n");
+				fputs($filepointer,$text[3022]."=".$displayperpage."\n");
+				fputs($filepointer,$text[3042]."=".$displayperpageadmin."\n");
+				fputs($filepointer,$text[3023]."=".$displayzeros."\n");
+				fputs($filepointer,$text[3024]."=".$nonamesort."\n");
+				if ($lmouserok==2) fputs($filepointer,$text[3031]."=".$allowauxadmin."\n");
+				if ($lmouserok==2) fputs($filepointer,$text[3046]."=".$allowauxadmins."\n");
+				fputs($filepointer,$text[3041]."=".$ligalink."\n");
 				fclose($filepointer);
 				break;
 		}
@@ -307,18 +307,18 @@ function sel(x) {
 </script>
 <table class="lmomosta">
 	<tr>
-		<td align="center" class="lmost1"><?=$text[800]?></td>
+		<td align="center" class="lmost1"><?=$text[3000]?></td>
 	</tr>
 	<tr>
 		<td>
 			<table class="lmostb">
 				<tr>
-					<td class="lmost4" colspan="2"><?=$text[806]?></td>
+					<td class="lmost4" colspan="2"><?=$text[3006]?></td>
 				</tr>
 				<tr>
 					<td class="lmost5" width="50%" align="center"><nobr>
 						<form action="<?= $_SERVER['PHP_SELF']."?".SID;?>" method="post">
-							<acronym title="<?=$text[809]?>"><input type="text" name="wert">&nbsp;<input class="lmoadminbut" type="submit" value=" + "></acronym>
+							<acronym title="<?=$text[3009]?>"><input type="text" name="wert">&nbsp;<input class="lmoadminbut" type="submit" value=" + "></acronym>
 							<input type="hidden" name="option" value="addplayer">
 							<input type="hidden" name="sort" value="<?=$sort?>">
 							<input type="hidden" name="todo" value="statistik">
@@ -327,7 +327,7 @@ function sel(x) {
 					</td>
 					<td class="lmost5" width="50%" align="center"><nobr>
 						<form action="<?= $_SERVER['PHP_SELF']."?".SID;?>" method="post">
-							<acronym title="<?=$text[810]?>"><select name="wert" size="1"><?
+							<acronym title="<?=$text[3010]?>"><select name="wert" size="1"><?
 								for ($x=0;$x<$zeile;$x++) {?>
 								<option value="<?=$x?>"><?=$data[$x][0]?></option><?
 								}?>
@@ -344,13 +344,13 @@ function sel(x) {
 				</tr><?
 				if ($lmouserok==2 || ($lmouserok==1 && $allowauxadmin==1 && $allowauxadmins==1)) {?>
 				<tr>
-					<td class="lmost4" colspan="2"><?=$text[805]?></td>
+					<td class="lmost4" colspan="2"><?=$text[3005]?></td>
 				</tr>
 				<tr>
 					<td class="lmost5" width="50%" align="center">
 						<form action="<?= $_SERVER['PHP_SELF']."?".SID;?>" method="post">
-							<acronym title="<?=$text[807]?>"><input type="text" name="wert">&nbsp;<input class="lmoadminbut"type="submit" value=" + "></acronym><br>
-							<acronym title="<?=$text[830]?>">Typ:&nbsp;<input type="radio" name="type" value="0" checked>&nbsp;Zahlen&nbsp;<input type="radio" name="type" value="<?=$text["843"]?>">&nbsp;Text<input type="radio" name="type" value="F">&nbsp;Formel
+							<acronym title="<?=$text[3007]?>"><input type="text" name="wert">&nbsp;<input class="lmoadminbut"type="submit" value=" + "></acronym><br>
+							<acronym title="<?=$text[3030]?>">Typ:&nbsp;<input type="radio" name="type" value="0" checked>&nbsp;Zahlen&nbsp;<input type="radio" name="type" value="<?=$text["843"]?>">&nbsp;Text<input type="radio" name="type" value="F">&nbsp;Formel
 </acronym>
 							<input type="hidden" name="option" value="addcolumn">
 							<input type="hidden" name="sort" value="<?=$sort?>">
@@ -360,7 +360,7 @@ function sel(x) {
 					</td>
 					<td class="lmost5" width="50%" align="center">
 						<form action="<?= $_SERVER['PHP_SELF']."?".SID;?>" method="post">
-							<acronym title="<?=$text[808]?>"><select name="wert" size="1"><?
+							<acronym title="<?=$text[3008]?>"><select name="wert" size="1"><?
 								for ($x=0;$x<$spaltenzahl;$x++) {?>
 								<option value="<?=$x?>"<?if ($x==0){?> disabled<?}if ($x==1){?> selected<?}?>><?=$spalten[$x]?></option><?
 								}?>
@@ -377,7 +377,7 @@ function sel(x) {
 		</td>
 	</tr>
 	<tr>
-		<td align="center" class="lmost1"><nobr><?=$text[801]?></nobr></td>
+		<td align="center" class="lmost1"><nobr><?=$text[3001]?></nobr></td>
 	</tr>
 	<tr>
 	<tr>
@@ -475,7 +475,7 @@ function sel(x) {
 								</nobr>
 							</td><?
 						}else{
-							if ($spalten[$j2]==$text[825]) {?>
+							if ($spalten[$j2]==$text[3025]) {?>
 							<td class="lmostb">
 								<nobr>
 									<select name="data<?=$j1."|".$j2?>" size="1"><?
@@ -502,7 +502,7 @@ function sel(x) {
 		</td>
 	</tr>
 	<tr>
-		<td align="center" class="lmost1"><nobr><?=$text[839]?></nobr></td>
+		<td align="center" class="lmost1"><nobr><?=$text[3039]?></nobr></td>
 	</tr>
 	<tr>
 		<td>
@@ -515,7 +515,7 @@ function sel(x) {
 						<th colspan="2"><?=$text["844"]?></th><th colspan="2" rowspan="2"><?=$text["845"]?></th>
 					</tr>
 					<tr>
-						<td class="lmost4"><nobr><?=$text[822]?>: </nobr></td>
+						<td class="lmost4"><nobr><?=$text[3022]?>: </nobr></td>
 						<td><nobr>
 							<input type="button" value="-" onClick="change('-','displayperpage')">
 							<input type="text" name="displayperpage"value="<?= $displayperpage?>" size="<?=strlen($displayperpage);?>">
@@ -526,9 +526,9 @@ function sel(x) {
 						</td>
 					</tr>
 					<tr>
-						<td class="lmost4"><nobr><?=$text[821]?>: </nobr></td>
+						<td class="lmost4"><nobr><?=$text[3021]?>: </nobr></td>
 						<td>
-							<acronym title="<?=$text[821]?>">
+							<acronym title="<?=$text[3021]?>">
 								<select name="defaultsort" size="1"><?
 
 								for ($x=$nonamesort;$x<$spaltenzahl;$x++) {?>
@@ -537,9 +537,9 @@ function sel(x) {
 								</select>
 							</acronym>
 						</td>
-						<td class="lmost4"><nobr><?=$text[840]?>: </nobr></td>
+						<td class="lmost4"><nobr><?=$text[3040]?>: </nobr></td>
 						<td>
-							<acronym title="<?=$text[840]?>">
+							<acronym title="<?=$text[3040]?>">
 								<select name="adminsort" size="1"><?
 
 								for ($x=0;$x<$spaltenzahl;$x++) {?>
@@ -550,23 +550,23 @@ function sel(x) {
 						</td>
 					</tr>
 					<tr>
-						<td class="lmost4"><nobr><?=$text[841]?>: </nobr></td>
+						<td class="lmost4"><nobr><?=$text[3041]?>: </nobr></td>
 						<td><input type="text" name="ligalink" value="<?= $ligalink?>" size="<?=strlen($ligalink);?>"></td>
-						<td class="lmost4"><nobr><?=$text[831]?>: </nobr></td>
+						<td class="lmost4"><nobr><?=$text[3031]?>: </nobr></td>
 						<td><?if($lmouserok==2){?><input type="checkbox" name="allowauxadmin" value="<?=$allowauxadmin?>" <?if ($allowauxadmin==1) echo "checked";?> onClick="if (this.checked==true) document.form1.allowauxadmins.disabled=false; else {document.form1.allowauxadmins.disabled=true;document.form1.allowauxadmins.checked=false;}"><?}?></td>
 					</tr>
 					<tr>
-						<td class="lmost4"><nobr><?=$text[820]?>: </nobr></td>
+						<td class="lmost4"><nobr><?=$text[3020]?>: </nobr></td>
 						<td><input type="text" name="picswidth"value="<?= $picswidth?>" size="<?=strlen($picswidth);?>"></td>
-						<td class="lmost4"><nobr><?=$text[846]?>: </nobr></td>
+						<td class="lmost4"><nobr><?=$text[3046]?>: </nobr></td>
 						<td><?if($lmouserok==2){?><input <?if ($allowauxadmin!=1) echo "disabled"?> type="checkbox" name="allowauxadmins" value="<?=$allowauxadmins?>" <?if ($allowauxadmins==1) echo "checked";?>><?}?></td>
 					</tr>
 					<tr>
-						<td class="lmost4"><nobr><?=$text[824]?>: </nobr></td>
+						<td class="lmost4"><nobr><?=$text[3024]?>: </nobr></td>
 						<td><input type="checkbox" name="nonamesort" value="<?=$nonamesort?>" <?if ($nonamesort==1) echo "checked";?>></td>
 					</tr>
 					<tr>
-						<td class="lmost4"><nobr><?=$text[823]?>: </nobr></td>
+						<td class="lmost4"><nobr><?=$text[3023]?>: </nobr></td>
 						<td><input type="checkbox" name="displayzeros" value="<?=$displayzeros?>" <?if ($displayzeros==1) echo "checked";?>></td>
 					</tr>
 					<tr>
@@ -585,7 +585,7 @@ function sel(x) {
 </table>
 <?
 	}else{
-		echo $text[833];
+		echo $text[3033];
 	}//Hilfsadmin
 }//Datei existiert
 

@@ -64,13 +64,13 @@
 
   $auswertdatei = fopen($auswertfile,"wb");
   if (!$auswertdatei) {
-    echo "<font color=\"#ff0000\">".$text[529]." ".$auswertdatei.$text[283]."</font>";
+    echo "<font color=\"#ff0000\">".$text[2029]." ".$auswertdatei.$text[283]."</font>";
     exit;
     }
   flock($auswertdatei,2);
   if(file_exists($file)){
     $addw="lmo-start.php?action=tipp&amp;todo=wert&amp;file=".$file;
-    echo "<font color=\"#008800\">".$text[529]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text[565]."<br></font>";
+    echo "<font color=\"#008800\">".$text[2029]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text[2065]."<br></font>";
     if($todo!="edit"){
       if($st==0){require("lmo-openfile.php");}
       else{require("lmo-openfilest.php");}

@@ -37,7 +37,7 @@ if($action=="admin"){
   if(!isset($file)){$file="";}
 ?>
 
-<script language="JavaScript">
+<script type="text/javascript">
 <!---
 name="lmo3";
 img0 = new Image();
@@ -290,12 +290,12 @@ if($lmouserok==2){
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
     require("lmo-openfile.php");
-    if($todo!="statistik"){echo "<a href=\"javascript:chklmolink('".$adda."statistik&amp;file=$file');\" title=\"".$text[801]."\">".$text[800]."</a>";}else{echo $text[800];}echo "&nbsp;";  
+    if($todo!="statistik"){echo "<a href=\"javascript:chklmolink('".$adda."statistik&amp;file=$file');\" title=\"".$text[3001]."\">".$text[3000]."</a>";}else{echo $text[3000];}echo "&nbsp;";  
   } 
   echo "&nbsp;";
   if(($todo!="options") && ($todo!="user") && ($todo!="design")){echo "<a href=\"javascript:chklmolink('".$adda."options');\" title=\"".$text[87]."\">".$text[86]."</a>";}else{echo $text[86];}
   echo "&nbsp;";
-  if(($todo!="tipp") && ($todo!="tippemail") && ($todo!="tippuser") && ($todo!="tippuseredit") && ($todo!="tippoptions")){echo "<a href=\"javascript:chklmolink('".$adda."tipp');\" title=\"".$text[557]."\">".$text[500]."</a>";}else{echo $text[500];}
+  if(($todo!="tipp") && ($todo!="tippemail") && ($todo!="tippuser") && ($todo!="tippuseredit") && ($todo!="tippoptions")){echo "<a href=\"javascript:chklmolink('".$adda."tipp');\" title=\"".$text[2057]."\">".$text[2000]."</a>";}else{echo $text[2000];}
   }
 elseif($lmouserok==1){
   if($todo!="open"){echo "<a href=\"javascript:chklmolink('".$adda."open');\" title=\"".$text[81]."\">".$text[80]."</a>";}else{echo $text[80];}
@@ -308,7 +308,7 @@ elseif($lmouserok==1){
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
     require("lmo-openfile.php");
-    if($todo!="statistik"){echo "<a href=\"javascript:chklmolink('".$adda."statistik&amp;file=$file');\" title=\"".$text[801]."\">".$text[800]."</a>";}else{echo $text[800];}echo "&nbsp;";  
+    if($todo!="statistik"){echo "<a href=\"javascript:chklmolink('".$adda."statistik&amp;file=$file');\" title=\"".$text[3001]."\">".$text[3000]."</a>";}else{echo $text[3000];}echo "&nbsp;";  
     } 
   }
 ?>
@@ -329,6 +329,11 @@ elseif($lmouserok==1){
 
 <?PHP
 if($lmouserok==2){
+  $addr_options=$PHP_SELF."?action=admin&amp;todo=options";
+  $addr_addons=$PHP_SELF."?action=admin&amp;todo=addons";
+  $addr_design=$PHP_SELF."?action=admin&amp;todo=design";
+  $addr_user=$PHP_SELF."?action=admin&amp;todo=user";
+  
   if($todo=="new"){require("lmo-adminnew.php");}
   elseif($todo=="open"){require("lmo-adminopen.php");}
   elseif($todo=="delete"){require("lmo-admindelete.php");}

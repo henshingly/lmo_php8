@@ -23,8 +23,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 
-//Hier alle *lang.txt-Dateien eintragen
-$dumdat=array("lmo-lang.txt","lmo-tipplang.txt","lmo-statlang.txt","lmo-zustatlang.txt");
+$dumdat=array("lmo-lang.txt");
 
 $dumma = array("");
 $text=array("");

@@ -50,9 +50,9 @@ if($tippfile!=""){
       }elseif($todo!="newtipper" && $todo!="newligen" && $todo!="tippuseredit"){
       	if(!isset($jkspanticheat)){$jkspanticheat=false;}
       	if($jkspanticheat==false){
-          echo "<font color=\"#008800\">".$text[541]."<br></font>";}
+          echo "<font color=\"#008800\">".$text[2041]."<br></font>";}
         else{
-          echo "<font color=\"#008800\">".$text[541]." ".$text[905]."<br></font>";}
+          echo "<font color=\"#008800\">".$text[2041]." ".$text[2292]."<br></font>";}
         }
     flock($datei,2);
 

@@ -37,41 +37,41 @@
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?PHP echo $text[563] ?></td>
+    <td class="lmost1" align="center"><?PHP echo $text[2063] ?></td>
   </tr>
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[564]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2064]; ?></nobr></td>
   </tr>
  <?PHP $ftype=".l98"; $iptype="auswert"; require("lmo-tippnewdir.php"); ?>
 <?PHP if($gesamt==1){ ?>
   <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5"><strong><?PHP echo $text[556]; ?></strong></td>
+      <td class="lmost5"><strong><?PHP echo $text[2056]; ?></strong></td>
    <td class="lmost5" align="right">
     <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
     <input type="hidden" name="action" value="admin">
     <input type="hidden" name="todo" value="tipp">
     <input type="hidden" name="save" value="4">
-    <input class="lmoadminbut" type="submit" name="best" value="<?PHP echo $text[736]; ?>">
+    <input class="lmoadminbut" type="submit" name="best" value="<?PHP echo $text[2236]; ?>">
     </form>
       </td>
      </tr>
 <?PHP } ?>
 
   <tr>
-    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[655]; ?></nobr></td>
+    <td class="lmost4" colspan="3"><nobr><?PHP echo $text[2155]; ?></nobr></td>
   </tr>
  <?PHP $ftype=".l98"; $iptype="einsicht"; require("lmo-tippnewdir.php"); ?>
   </table></td>
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP 
-  echo "<td class=\"lmost1\" align=\"center\">".$text[563]."</td>";
+  echo "<td class=\"lmost1\" align=\"center\">".$text[2063]."</td>";
 if($lmouserok==2){
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adde."');\" title=\"".$text[665]."\">".$text[665]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addu."');\" title=\"".$text[614]."\">".$text[614]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addo."');\" title=\"".$text[555]."\">".$text[86]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$adde."');\" title=\"".$text[2165]."\">".$text[2165]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addu."');\" title=\"".$text[2114]."\">".$text[2114]."</a></td>";
+  echo "<td class=\"lmost2\" align=\"center\"><a href=\"javascript:chklmolink('".$addo."');\" title=\"".$text[2055]."\">".$text[86]."</a></td>";
   }
 ?>
     </tr></table></td>

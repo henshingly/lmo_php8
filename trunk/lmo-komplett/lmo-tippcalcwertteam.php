@@ -30,7 +30,7 @@ else{
   $auswertfile=$dirtipp."auswert/".substr($file, strrpos($file,"/")+1, -4).".aus"; 
   }
 if(!file_exists($auswertfile))
-  echo $text[517]."<br>";
+  echo $text[2017]."<br>";
 else{
   $datei = fopen($auswertfile,"rb");
   $teamsanzahl=0; // Teamnummer
