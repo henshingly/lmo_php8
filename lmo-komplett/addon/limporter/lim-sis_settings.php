@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Class Library Version 0.1
 // Copyright (C) 2003 by Tim Schumacher
@@ -76,18 +76,21 @@ if(isset($ximporturl)){
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right">&nbsp;Datenquelle: </td>
-	  <td class="lmost5" align="left"><a href='<?PHP echo $ximporturl;?>' target="_blank">Quelle zeigen</a></td>
+      <td align="right">
+&nbsp;Datenquelle: </td>
+	  <td class="lmost5" align="left"><a href='<? echo $ximporturl;?>' target="_blank">Quelle zeigen</a></td>
   	</tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right">Spielplandaten&nbsp;</td>
-      <td class="lmost5" align="left">Import von Zeile&nbsp;<input class="lmo-formular-input" type="text" name="xoffset" size="3" maxlength="3" value=<?PHP echo $xoffset; ?>>&nbsp;-&nbsp;<input class="lmo-formular-input" type="text" name="xlrow" size="3" maxlength="3" value=<?PHP echo $xlrow; ?>>&nbsp;</td>
+      <td align="right">
+Spielplandaten&nbsp;</td>
+      <td class="lmost5" align="left">Import von Zeile&nbsp;<input class="lmo-formular-input" type="text" name="xoffset" size="3" maxlength="3" value=<? echo $xoffset; ?>>&nbsp;-&nbsp;<input class="lmo-formular-input" type="text" name="xlrow" size="3" maxlength="3" value=<? echo $xlrow; ?>>&nbsp;</td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right"></td>
-      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="header" <?PHP if($header==1){echo " checked";} ?> value="1">&nbsp;1.&nbsp;Datenzeile&nbsp;enth&auml;lt&nbsp;Spaltentitel</td>
+      <td align="right">
+</td>
+      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="header" <? if($header==1){echo " checked";} ?> value="1">&nbsp;1.&nbsp;Datenzeile&nbsp;enth&auml;lt&nbsp;Spaltentitel</td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
@@ -99,7 +102,7 @@ if(isset($ximporturl)){
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">* Heimmannschaft&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[HEIM][]",$cols['HEIM'][0],$rows[0],$header);
  		formatSelection("cols[HEIM][]",$cols['HEIM'][1],$limporter_formatKeys,$limporter_formatValues,$limporter_delimiter);
  		?>
@@ -109,7 +112,7 @@ if(isset($ximporturl)){
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">* Gastmannschaft&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[GAST][]",$cols['GAST'][0],$rows[0],$header);
  		formatSelection("cols[GAST][]",$cols['GAST'][1],$limporter_formatKeys,$limporter_formatValues,$limporter_delimiter);
  		?>
@@ -119,7 +122,7 @@ if(isset($ximporturl)){
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">* Spieldatum&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[DATUM][]",$cols['DATUM'][0],$rows[0],$header);
  		formatSelection("cols[DATUM][]",$cols['DATUM'][1],$limporter_formatKeys,$limporter_formatValues,$limporter_delimiter);
  		?>
@@ -129,7 +132,7 @@ if(isset($ximporturl)){
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Anpfiffzeit&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[ZEIT][]",$cols['ZEIT'][0],$rows[0],$header);
  		formatSelection("cols[ZEIT][]",$cols['ZEIT'][1],$limporter_formatKeys,$limporter_formatValues,$limporter_delimiter);
  		?>
@@ -139,7 +142,7 @@ if(isset($ximporturl)){
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Tore Heim&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[THEIM][]",$cols['THEIM'][0],$rows[0],$header);
  		formatSelection("cols[THEIM][]",$cols['THEIM'][1],$limporter_formatKeys,$limporter_formatValues,$limporter_delimiter);
  		?>
@@ -149,7 +152,7 @@ if(isset($ximporturl)){
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Tore Gast&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[TGAST][]",$cols['TGAST'][0],$rows[0],$header);
  		formatSelection("cols[TGAST][]",$cols['TGAST'][1],$limporter_formatKeys,$limporter_formatValues,$limporter_delimiter);
 		?>
@@ -160,7 +163,7 @@ if(isset($ximporturl)){
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Spielnummer&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[NR][]",$cols['NR'][0],$rows[0],$header);
  		formatSelection("cols[NR][]",$cols['NR'][1],$limporter_formatKeys,$limporter_formatValues,$limporter_delimiter);
 		?>
@@ -170,7 +173,7 @@ if(isset($ximporturl)){
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Notiz&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[NOTIZ][]",$cols['NOTIZ'][0],$rows[0],$header);
  		formatSelection("cols[NOTIZ][]",$cols['NOTIZ'][1],$limporter_formatKeys,$limporter_formatValues,$limporter_delimiter);
 		?>
@@ -183,11 +186,11 @@ if(isset($ximporturl)){
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td align="left" colspan=2 class="lmost5"><input class="lmo-formular-button" type="submit" name="vorschau" value="Vorschau">&nbsp;&nbsp;nicht verwendete Spalten ausblenden&nbsp;<input class="lmo-formular-input" type="checkbox" name="showall" <?PHP if($showall==1){echo " checked";} ?> value="1">
+      <td align="left" colspan=2 class="lmost5"><input class="lmo-formular-button" type="submit" name="vorschau" value="Vorschau">&nbsp;&nbsp;nicht verwendete Spalten ausblenden&nbsp;<input class="lmo-formular-input" type="checkbox" name="showall" <? if($showall==1){echo " checked";} ?> value="1">
     </tr>
     <tr>
       <td colspan=3 class="lmost5">
-<?PHP
+<?
 $prev="addon/limporter/lim-sis_preview.php?file=".$ximporturl."&pv=".$pv."&hd=".$header."&ch=".$csvchar."&all=".$showall."&dr=".$datarows;
 $prev = $prev."&xoffset=".$xoffset."&xlrow=".$xlrow."&c_nr=".$cols['NR'][0]."&c_h=".$cols['HEIM'][0]."&c_g=".$cols['GAST'][0]."&c_th=".$cols['THEIM'][0];
 $prev = $prev."&c_tg=".$cols['TGAST'][0]."&c_d=".$cols['DATUM'][0]."&c_z=".$cols['ZEIT'][0]."&c_n=".$cols['NOTIZ'][0];

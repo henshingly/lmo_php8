@@ -97,7 +97,7 @@ if ($action == "tipp") {
       <form name="lmotippedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">  
         <input type="hidden" name="file" value="<?=$file?>">  
-        <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <caption><? echo $text['tipp'][158]; ?></caption>
           <tr>
             <th colspan="2"><? echo $text['tipp'][44]; ?></th>
@@ -129,7 +129,8 @@ if ($action == "tipp") {
             <td align="left"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<? echo $_SESSION['lmotipperpass']; ?>"></td>
           </tr>
           <tr>
-            <td class="lmost5">&nbsp;</td>
+            <td>&nbsp</td>
+&nbsp;</td>
             <td align="left"><input class="lmo-formular-button" title="<? echo $text[311] ?>" type="submit" name="xtippersub" value="<? echo $text['tipp'][12]; ?>"></td>
           </tr>
         </table>
@@ -138,7 +139,7 @@ if ($action == "tipp") {
   </tr>
   <tr>
     <td>
-      <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <th colspan="3"><? echo $text['tipp'][45]; ?></td>
         </tr>
@@ -157,7 +158,7 @@ if ($action == "tipp") {
   </tr>
   <tr>
     <td>
-      <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <th colspan="3"><? echo $text['tipp'][4]; ?></td>
         </tr>
@@ -193,7 +194,7 @@ if ($action == "tipp") {
       <form name="lmotippedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="getpass">
-        <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <th colspan="3"><? echo $text['tipp'][74]; ?></td>
           </tr><?  

@@ -24,7 +24,7 @@ if(($action=="tipp") && ($todo=="")){
   $addw=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;file=";
 ?>
 
-<table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><?=$lmotippername;?><?if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?><br><?=$text['tipp'][237]; ?></caption>
   <tr>
     <th align="left"><?=$text['tipp'][3]; ?>:</th>

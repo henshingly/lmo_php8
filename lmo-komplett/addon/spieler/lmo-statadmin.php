@@ -329,7 +329,7 @@ function mark(el){
 	</tr>
 	<tr>
 		<td>
-			<table class="lmoInner" width="100%">
+			<table class="lmoInner">
 				<tr>
 					<th align="left" colspan="2"><?=$text['spieler'][6]?></th>
 				</tr>

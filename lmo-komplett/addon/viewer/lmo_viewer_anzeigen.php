@@ -1,4 +1,4 @@
-<?php
+<?
 $liganame = "";  // Name der Lga
 $anz_mannschaften = 0;  // Anzahl teilnehmender Mannschaften
 $mannschaften = array();  // Array der teilnehmenden Mannschaften

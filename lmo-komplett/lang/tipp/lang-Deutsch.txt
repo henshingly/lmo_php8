@@ -251,13 +251,13 @@
 250=Erstes Spieltagsdatum, 0 Uhr
 251=Anzeige Punktezusammensetzung
 252=Alle Spiele in den nächsten
-253=Tippabgabe à la LMO-Viewer zulassen
-254=Tippabgabe à la LMO-Viewer für Spiele in den nächsten
+253=Datumsweise Tippabgabe zulassen
+254=...für Spiele in den nächsten
 255=[ <a href="http://www.vfb-forchheim.de/handball" target="_blank" title="Schau auch mal auf meiner Homepage vorbei">VfB Forchheim - Handball</a> ]
 256=Tage vorblättern
 257=Tage zurückblättern
 258=Alle Spiele vom
-259=Spieltagsweise Tippabgabe zulassen
+259=Ligenweise Tippabgabe zulassen
 260=Tipp-Tabelle nach eingebrachten Punkten
 261=eingebrachte Tipp-Punkte bei Beteiligung der jeweiligen Mannschaft
 262=keine Spiele in diesem Zeitraum
@@ -299,3 +299,4 @@
 298=Hallo [nick], \n\nhier sind deine Zugangsdaten für das Tippspiel: \n\nNickname: [nick]\nPasswort: [pass]\n\nHier kannst du dich einloggen: \n[url]\n\nDort kannst du auch dein Passwort ändern.\n\nViel Spaß!
 299=Anmeldungsdaten per E-Mail versenden
 300=Das Passwort wird Ihnen per E-Mail zugestellt, stellen Sie sicher, dass die angegebene Adresse gültig ist
+301=Achtung! Damit deaktivieren Sie die Möglichkeit, Tipps abzugeben!

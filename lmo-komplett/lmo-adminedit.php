@@ -309,7 +309,7 @@ if ($file != "") {
     $breite = $breite+2;
   }
    
-  include(PATH_TO_LMO."/lmo-adminnaviunten.php");?>
+  include(PATH_TO_LMO."/lmo-adminsubnavi.php");?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>

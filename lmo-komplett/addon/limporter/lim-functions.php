@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Functions Version 0.1
 // Copyright (C) 2003 by Tim Schumacher

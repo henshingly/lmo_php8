@@ -1,4 +1,4 @@
-<?PHP
+<?
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -168,9 +168,7 @@ if(isset($file) && $file!="" && check_hilfsadmin($file)){
         $anzst=strlen(decbin($anzteams-1));
         $spez=1;
         $hands=0;
-        
       }
-      
       $teams = array_pad($array,$anzteams+2,"");
       $teamk = array_pad($array,$anzteams+2,"");
       $teamu = array_pad($array,$anzteams+2,"");
@@ -245,12 +243,13 @@ if(isset($file) && $file!="" && check_hilfsadmin($file)){
         }
       }
       $teams[0]="___";
-      $teamk[0]="___";
+      $teamk[0]="___";//$a=mictime();
       for($i=1;$i<=count($daten);$i++){
-        $dum=split("[|]",$daten[$i-1]);
+        $dum=explode("|",$daten[$i-1]);
         //if($nticker==1){
           if(($dum[0]=="News") && ($dum[1]!="NC")){$nlines[]=stripslashes($dum[2]);}
         //}
+        
         if($dum[0]=="Teams"){$teams[$dum[1]]=stripslashes($dum[2]);}
         if($dum[0]=="Teamk"){$teamk[$dum[1]]=stripslashes($dum[2]);}
         $op1=substr($dum[0],0,4);
@@ -261,89 +260,114 @@ if(isset($file) && $file!="" && check_hilfsadmin($file)){
         $op6=substr($dum[1],2,-1)-1;
         $op7=substr($dum[1],-1)-1;
         $op8=substr($dum[1],0,2);
-        for($j=0;$j<$anzteams;$j++){if($teamk[$j]==""){$teamk[$j]=substr($teams[$j],0,5);}}
-        if($lmtype==0){
-          if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="SP")){$strafp[$op5]=$dum[2];}
-          if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="SM")){$strafm[$op5]=$dum[2];}
-          if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="TOR1")){$torkorrektur1[$op5]=$dum[2];} // Hack-Straftore
-		      if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="TOR2")){$torkorrektur2[$op5]=$dum[2];} // Hack-Straftore
-          if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="STDA")){$strafdat[$op5]=$dum[2];}      // Hack-Straftore
-        }
-        if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="URL")){$teamu[$op5]=$dum[2];}
-        if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="NOT")){$teamn[$op5]=$dum[2];}
         
-        if(!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ ////////////////////////////////////////////////// nur der benötigte Spieltag wird eingelesen
-          if(($op2=="Round") && ($dum[1]=="HS")){$handp[$op3]=$dum[2];}
-          if(!isset($handp[$op3])){$handp[$op3]="0";}
-          if(($op2=="Round") && ($dum[1]=="D1")){$datum1[$op3]=$dum[2];}
-          if(isset($datum1[$op3])){
-            if($datum1[$op3]!=""){
-              $dummy=strtotime(substr($datum1[$op3],0,2)." ".$me[intval(substr($datum1[$op3],3,2))]." ".substr($datum1[$op3],6,4));
-              if($dummy>-1){$datum1[$op3]=strftime("%d.%m.%Y",$dummy);}else{$datum1[$op3]="";}
-            }
-          }
-          if(($op2=="Round") && ($dum[1]=="D2")){$datum2[$op3]=$dum[2];}
-          if(isset($datum2[$op3])){
-            if($datum2[$op3]!=""){
-              $dummy=strtotime(substr($datum2[$op3],0,2)." ".$me[intval(substr($datum2[$op3],3,2))]." ".substr($datum2[$op3],6,4));
-              if($dummy>-1){$datum2[$op3]=strftime("%d.%m.%Y",$dummy);}else{$datum2[$op3]="";}
-            }
-          }
-          if($lmtype!=0){
-            if(($op2=="Round") && ($dum[1]=="MO")){$modus[$op3]=$dum[2];}
-          }
-          if(($op2=="Round") && ($op8=="TA")){$teama[$op3][$op4]=$dum[2];}
-          if(($op2=="Round") && ($op8=="TB")){$teamb[$op3][$op4]=$dum[2];}
+        if($op1=="Team" && $dum[0]!="Teams" && $dum[0]!="Teamk") {
           if($lmtype==0){
-            if(($op2=="Round") && ($op8=="GA")){
-              $goala[$op3][$op4]=$dum[2];
-              if($goala[$op3][$op4]==""){$goala[$op3][$op4]=-1;}
-              if($goala[$op3][$op4]=="-1"){$goala[$op3][$op4]="_";}
-              if($goala[$op3][$op4]=="-2"){$msieg[$op3][$op4]=1;$goala[$op3][$op4]="0";}
+            switch ($dum[1]) {
+              case "SP":$strafp[$op5]=$dum[2];break;
+              case "SM":$strafm[$op5]=$dum[2];break;
+              case "TOR1":$torkorrektur1[$op5]=$dum[2];break; // Hack-Straftore
+              case "TOR2":$torkorrektur2[$op5]=$dum[2];break; // Hack-Straftore
+              case "STDA":$strafdat[$op5]=$dum[2];break;      // Hack-Straftore
             }
-            if(($op2=="Round") && ($op8=="GB")){
-              $goalb[$op3][$op4]=$dum[2];
-              if($goalb[$op3][$op4]==""){$goalb[$op3][$op4]=-1;}
-              if($goalb[$op3][$op4]=="-1"){$goalb[$op3][$op4]="_";}
-              if($goalb[$op3][$op4]=="-2"){$msieg[$op3][$op4]=2;$goalb[$op3][$op4]="0";}
+          }
+          if($dum[1]=="URL"){$teamu[$op5]=$dum[2];}
+          if($dum[1]=="NOT"){$teamn[$op5]=$dum[2];}
+        }
+        
+        if(!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
+          
+          if($op2=="Round") {
+            switch($dum[1]) {
+              case "HS":$handp[$op3]=$dum[2];break;
+              case "D1":$datum1[$op3]=$dum[2];break;
+              case "D2":$datum2[$op3]=$dum[2];break;
             }
-            if($spez==1){
-              if(($op2=="Round") && ($op8=="SP")){
-                $mspez[$op3][$op4]=$dum[2];
-                if($mspez[$op3][$op4]==0){$mspez[$op3][$op4]="&nbsp;";}
-                if($mspez[$op3][$op4]==2){$mspez[$op3][$op4]=$text[0];}
-                if($mspez[$op3][$op4]==1){$mspez[$op3][$op4]=$text[1];}
+            switch ($op8) {
+              case "TA":$teama[$op3][$op4]=$dum[2];break;
+              case "TB":$teamb[$op3][$op4]=$dum[2];break;
+            }
+            if($lmtype==0) {
+              switch ($op8) {
+                case "GA":
+                  $goala[$op3][$op4]=$dum[2];
+                  if($goala[$op3][$op4]==""){$goala[$op3][$op4]=-1;}
+                  elseif($goala[$op3][$op4]=="-1"){$goala[$op3][$op4]="_";}
+                  elseif($goala[$op3][$op4]=="-2"){$msieg[$op3][$op4]=1;$goala[$op3][$op4]="0";}
+                  break;
+                case "GB":
+                  $goalb[$op3][$op4]=$dum[2];
+                  if($goalb[$op3][$op4]==""){$goalb[$op3][$op4]=-1;}
+                  elseif($goalb[$op3][$op4]=="-1"){$goalb[$op3][$op4]="_";}
+                  elseif($goalb[$op3][$op4]=="-2"){$msieg[$op3][$op4]=2;$goalb[$op3][$op4]="0";}
+                  break;
+                case "SP":
+                  if($spez==1){
+                    $mspez[$op3][$op4]=$dum[2];
+                    if($mspez[$op3][$op4]==0){$mspez[$op3][$op4]="&nbsp;";}
+                    elseif($mspez[$op3][$op4]==2){$mspez[$op3][$op4]=$text[0];}
+                    elseif($mspez[$op3][$op4]==1){$mspez[$op3][$op4]=$text[1];}
+                  }
+                  break;
+                case "ET":
+                  if ($dum[2]==3){$msieg[$op3][$op4]=3;}
+                  break;
+                case "NT":$mnote[$op3][$op4]=$dum[2];break;
+                case "BE":$mberi[$op3][$op4]=$dum[2];break;
+                case "TI":$mtipp[$op3][$op4]=$dum[2];break;
+                case "AT":$mterm[$op3][$op4]=$dum[2];break;
+              }
+            } else {
+              if($dum[1]=="MO"){$modus[$op3]=$dum[2];}
+              switch ($op8) {
+                case "GA":
+                  $goala[$op3][$op6][$op7]=$dum[2];
+                  if($goala[$op3][$op6][$op7]==""){$goala[$op3][$op6][$op7]=-1;}
+                  elseif($goala[$op3][$op6][$op7]=="-1"){$goala[$op3][$op6][$op7]="_";}
+                  break;
+                case "GB": 
+                  $goalb[$op3][$op6][$op7]=$dum[2];
+                  if($goalb[$op3][$op6][$op7]==""){$goalb[$op3][$op6][$op7]=-1;}
+                  elseif($goalb[$op3][$op6][$op7]=="-1"){$goalb[$op3][$op6][$op7]="_";}
+                  break;
+                case "SP":
+                  $mspez[$op3][$op6][$op7]=$dum[2];
+                  if($mspez[$op3][$op6][$op7]==0){$mspez[$op3][$op6][$op7]="&nbsp;";}
+                  elseif($mspez[$op3][$op6][$op7]==2){$mspez[$op3][$op6][$op7]=$text[0];}
+                  elseif($mspez[$op3][$op6][$op7]==1){$mspez[$op3][$op6][$op7]=$text[1];}
+                  break;
+                case "NT":$mnote[$op3][$op6][$op7]=$dum[2];break;
+                case "BE":$mberi[$op3][$op6][$op7]=$dum[2];break;
+                case "TI":$mtipp[$op3][$op6][$op7]=$dum[2];break;
+                case "AT":$mterm[$op3][$op6][$op7]=$dum[2];break;
               }
             }
-            if(($op2=="Round") && ($op8=="ET") && ($dum[2]==3)){$msieg[$op3][$op4]=3;}
-            if(($op2=="Round") && ($op8=="NT")){$mnote[$op3][$op4]=$dum[2];}
-            if(($op2=="Round") && ($op8=="BE")){$mberi[$op3][$op4]=$dum[2];}
-            if(($op2=="Round") && ($op8=="TI")){$mtipp[$op3][$op4]=$dum[2];}
-            if(($op2=="Round") && ($op8=="AT")){$mterm[$op3][$op4]=$dum[2];}
-          }else{
-            if(($op2=="Round") && ($op8=="GA")){
-              $goala[$op3][$op6][$op7]=$dum[2];
-              if($goala[$op3][$op6][$op7]==""){$goala[$op3][$op6][$op7]=-1;}
-              if($goala[$op3][$op6][$op7]=="-1"){$goala[$op3][$op6][$op7]="_";}
-            }
-            if(($op2=="Round") && ($op8=="GB")){
-              $goalb[$op3][$op6][$op7]=$dum[2];
-              if($goalb[$op3][$op6][$op7]==""){$goalb[$op3][$op6][$op7]=-1;}
-              if($goalb[$op3][$op6][$op7]=="-1"){$goalb[$op3][$op6][$op7]="_";}
-            }
-            if(($op2=="Round") && ($op8=="SP")){
-              $mspez[$op3][$op6][$op7]=$dum[2];
-              if($mspez[$op3][$op6][$op7]==0){$mspez[$op3][$op6][$op7]="&nbsp;";}
-              if($mspez[$op3][$op6][$op7]==2){$mspez[$op3][$op6][$op7]=$text[0];}
-              if($mspez[$op3][$op6][$op7]==1){$mspez[$op3][$op6][$op7]=$text[1];}
-            }
-            if(($op2=="Round") && ($op8=="NT")){$mnote[$op3][$op6][$op7]=$dum[2];}
-            if(($op2=="Round") && ($op8=="BE")){$mberi[$op3][$op6][$op7]=$dum[2];}
-            if(($op2=="Round") && ($op8=="TI")){$mtipp[$op3][$op6][$op7]=$dum[2];}
-            if(($op2=="Round") && ($op8=="AT")){$mterm[$op3][$op6][$op7]=$dum[2];}
           }
+          if(!isset($handp[$op3])){$handp[$op3]="0";}
         }
       }
+      if(!empty($datum1[$op3])){
+        $dat=explode(".",$datum1[$op3]);
+        if (checkdate($dat[1],$dat[0],$dat[2])) {
+          $datum1[$op3]=strftime("%d.%m.%Y",mktime(0,0,0,$dat[1],$dat[0],$dat[2]));
+        } else {
+          $datum1[$op3]="";
+        }
+        /*$dummy=strtotime(substr($datum1[$op3],0,2)." ".$me[intval(substr($datum1[$op3],3,2))]." ".substr($datum1[$op3],6,4));
+        if($dummy>-1){$datum1[$op3]=strftime("%d.%m.%Y",$dummy);}else{$datum1[$op3]="";}*/
+      }
+      if(!empty($datum2[$op3])){
+        $dat=explode(".",$datum2[$op3]);
+        if (checkdate($dat[1],$dat[0],$dat[2])) {
+          $datum2[$op3]=strftime("%d.%m.%Y",mktime(0,0,0,$dat[1],$dat[0],$dat[2]));
+        } else {
+          $datum2[$op3]="";
+        }
+        /*$dummy=strtotime(substr($datum2[$op3],0,2)." ".$me[intval(substr($datum2[$op3],3,2))]." ".substr($datum2[$op3],6,4));
+        if($dummy>-1){$datum2[$op3]=strftime("%d.%m.%Y",$dummy);}else{$datum2[$op3]="";}*/
+      }
+      for($j=0;$j<$anzteams;$j++){if($teamk[$j]==""){$teamk[$j]=substr($teams[$j],0,5);}}
+      //echo "<br>".((mictime()-$a)*1000)." µS ".$dum[1]; 
     } else {
       die('<p class="error">'.$text[224].'</p>');
     }

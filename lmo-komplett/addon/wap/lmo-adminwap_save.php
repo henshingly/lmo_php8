@@ -31,5 +31,5 @@ if($result) {
   echo "Speicherung fehlgeschlagen";
 }?>
 	</p>
-	<p><a href="<?php echo $_SERVER['PHP_SELF']."?wap_file=$file"; ?>&amp;op=day">zurück</a></p>
+	<p><a href="<? echo $_SERVER['PHP_SELF']."?wap_file=$file"; ?>&amp;op=day">zurück</a></p>
 </card>

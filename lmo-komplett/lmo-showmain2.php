@@ -212,7 +212,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
     $p0="p1";$$p0=c(1).$addm.c(0);
   }elseif ($backlink==1 && $action!="tipp")                 {require(PATH_TO_LMO."/lmo-showdir.php");}
 
-  if($action=="tipp") {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");}
+  if($action=="tipp" && $eintippspiel==1) {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");}
   $output_hauptteil.=ob_get_contents();ob_end_clean();
 
   if ($file!="") { 
@@ -278,7 +278,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   //Tippspiel-Addon
   $output_tippspiel="";
   if ($eintippspiel==1) {
-  if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
+    if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
       $output_tippspiel.=$action!="tipp"?       "<a href='{$addm}tipp' title='{$text['tipp'][0]}'>{$text['tipp'][0]}</a>&nbsp;&nbsp;":$text['tipp'][0]."&nbsp;&nbsp;";
     }
   }

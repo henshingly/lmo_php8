@@ -82,7 +82,7 @@
          $tipp_showtendenzpro==1 || 
          ($tipp_showdurchschntipp==1 && $tipp_tippmodus==1)){ $tipp_tippeinsicht=1;}
       isset($_POST["xsttipp"])?                               $tipp_sttipp=1:                                         $tipp_sttipp=-1;
-      isset($_POST["xviewertipp"])?                           $tipp_viewertipp=0:                                     $tipp_viewertipp=0;
+      isset($_POST["xviewertipp"])?                           $tipp_viewertipp=1:                                     $tipp_viewertipp=0;
       if ($tipp_viewertipp==1) {
         isset($_POST["xviewertage"])  &&
           is_numeric($_POST["xviewertage"]) &&

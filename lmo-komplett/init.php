@@ -8,7 +8,6 @@ if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
 }
 
 if (session_id()=="") session_start();
-@ini_set("session.use_trans_sid","1");
 @ini_set("arg_separator.output","&amp;");
 if (!defined('PATH_TO_LMO'))        define('PATH_TO_LMO',         $lmo_dateipfad);
 if (!defined('PATH_TO_ADDONDIR'))   define('PATH_TO_ADDONDIR',    PATH_TO_LMO.'/addon');
@@ -25,8 +24,6 @@ if (!defined('URL_TO_IMGDIR'))      define('URL_TO_IMGDIR',       URL_TO_LMO.'/i
 if (!defined('URL_TO_LANGDIR'))     define('URL_TO_LANGDIR',      URL_TO_LMO.'/lang');
 if (!defined('URL_TO_CONFIGDIR'))   define('URL_TO_CONFIGDIR',    URL_TO_LMO.'/config');
 if (!defined('URL_TO_JSDIR'))       define('URL_TO_JSDIR',        URL_TO_LMO.'/js');
-
-
 
 require_once(PATH_TO_LMO."/lbtemplate.class.php");
 require_once(PATH_TO_LMO."/lmo-cfgload.php");
@@ -132,7 +129,12 @@ if (!function_exists('magicQuotesRemove')) {
      }
   }
 }
-
+if (!function_exists('magicQuotesRemove')) {
+  function mictime() {
+     list($usec, $sec) = explode(" ",microtime());
+     return ((float)$usec + (float)$sec);
+  }
+}
 //Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);
 magicQuotesRemove($_POST);

@@ -40,8 +40,8 @@ $text=array();
 read_langfile($text,PATH_TO_LANGDIR."/lang-Deutsch.txt"); //Temporär, bis Übersetzungen fertig sind
 
 read_langfile($text,PATH_TO_LANGDIR."/lang-{$deflang}.txt");
-setlocale (LC_TIME, $languages[$deflang][0]);  // PHP <4.3
-setlocale (LC_TIME, $languages[$deflang]);     //PHP >4.3
+@setlocale (LC_TIME, $languages[$deflang][0]);  // PHP <4.3
+@setlocale (LC_TIME, $languages[$deflang]);     //PHP >4.3
 if (isset($lmouserlang) && $lmouserlang!=$deflang) {
   if (file_exists(PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt");
   setlocale (LC_TIME, $languages[$lmouserlang][0]);  // PHP <4.3

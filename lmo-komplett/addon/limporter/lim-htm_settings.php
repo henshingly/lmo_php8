@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Version 1.0
 // Copyright (C) 2003 by Tim Schumacher
@@ -66,23 +66,26 @@ if(isset($ximporturl)){
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right">&nbsp;</td>
-      <td class="lmost5" align="left">Import von Zeile&nbsp;<input class="lmo-formular-input" type="text" name="xoffset" size="3" maxlength="3" value=<?PHP echo $xoffset; ?>>&nbsp;-&nbsp;<input class="lmo-formular-input" type="text" name="xlrow" size="3" maxlength="3" value=<?PHP echo $xlrow; ?>>&nbsp;<a href='<?PHP echo $ximporturl;?>' target="_blank">Quelle zeigen</a></td>
+      <td align="right">
+&nbsp;</td>
+      <td class="lmost5" align="left">Import von Zeile&nbsp;<input class="lmo-formular-input" type="text" name="xoffset" size="3" maxlength="3" value=<? echo $xoffset; ?>>&nbsp;-&nbsp;<input class="lmo-formular-input" type="text" name="xlrow" size="3" maxlength="3" value=<? echo $xlrow; ?>>&nbsp;<a href='<? echo $ximporturl;?>' target="_blank">Quelle zeigen</a></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right"></td>
-      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="header" <?PHP if($header==1){echo " checked";} ?> value="1">&nbsp;1.&nbsp;Datenzeile&nbsp;enth&auml;lt&nbsp;Spaltentitel</td>
+      <td align="right">
+</td>
+      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="header" <? if($header==1){echo " checked";} ?> value="1">&nbsp;1.&nbsp;Datenzeile&nbsp;enth&auml;lt&nbsp;Spaltentitel</td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class="lmost5" align="right"></td>
-      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="xdetailsCheck" <?PHP if($xdetailsCheck==1){echo " checked";} ?> value="1">&nbsp;auf mögliche Folgezeile prüfen (z.B. SIS-Handball)</td>
+      <td align="right">
+</td>
+      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="xdetailsCheck" <? if($xdetailsCheck==1){echo " checked";} ?> value="1">&nbsp;auf mögliche Folgezeile prüfen (z.B. SIS-Handball)</td>
     </tr>
     <tr>
       <td class="lmost5" colspan="3">&nbsp;</td>
     </tr>
-<?PHP include(PATH_TO_ADDONDIR."/limporter/lim-colums_select.php");?>
+<? include(PATH_TO_ADDONDIR."/limporter/lim-colums_select.php");?>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5"></td>
@@ -90,11 +93,11 @@ if(isset($ximporturl)){
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td align="left" colspan=2 class="lmost5"><input class="lmo-formular-button" type="submit" name="vorschau" value="Vorschau">&nbsp;&nbsp;nicht verwendete Spalten ausblenden&nbsp;<input class="lmo-formular-input" type="checkbox" name="showall" <?PHP if($showall==1){echo " checked";} ?> value="1">
+      <td align="left" colspan=2 class="lmost5"><input class="lmo-formular-button" type="submit" name="vorschau" value="Vorschau">&nbsp;&nbsp;nicht verwendete Spalten ausblenden&nbsp;<input class="lmo-formular-input" type="checkbox" name="showall" <? if($showall==1){echo " checked";} ?> value="1">
     </tr>
     <tr>
       <td colspan=3 class="lmost5">
-<?PHP
+<?
 $prev="addon/limporter/lim-htm_preview.php?file=".$limporter_importDir."/".$fileName."&pv=".$pv."&hd=".$header."&cdetails=".$xdetailsCheck."&ch=".$csvchar."&all=".$showall."&dr=".$datarows;
 $prev = $prev."&xoffset=".$xoffset."&xlrow=".$xlrow."&c_nr=".$cols['NR'][0]."&c_h=".$cols['HEIM'][0]."&c_g=".$cols['GAST'][0]."&c_th=".$cols['THEIM'][0];
 $prev = $prev."&c_tg=".$cols['TGAST'][0]."&c_d=".$cols['DATUM'][0]."&c_z=".$cols['ZEIT'][0]."&c_n=".$cols['NOTIZ'][0];

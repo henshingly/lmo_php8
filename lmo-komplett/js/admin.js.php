@@ -144,19 +144,20 @@ function dolmoedi2(a,s){
         s4=0;
         for(var j=1;j<=a;j++){
           s4=s4+j;
-          if(s!="xplatz"+j){s3=s3+eval(document.getElementsByName("xplatz"+j)[0].value);}
+          if(s!="xplatz"+j){
+            s3=s3+eval(document.getElementsByName("xplatz"+j)[0].value);
           }
-        document.getElementsByName("xplatz"+i)[0].selectedIndex=parseInt(s4-s3-1);
         }
+        document.getElementsByName("xplatz"+i)[0].selectedIndex=parseInt(s4-s3-1);
       }
     }
-  lmotest=false;
   }
+  lmotest=false;
+}
 function chklmopas2(a){
   var r=true;
   if(lmotest == true){
-    alert("<? echo $text[117] ?>");
-    r=false;
+    r=confirm("<? echo $text[117] ?>");
     }
   if(lmotest == false){
     var s3=false;

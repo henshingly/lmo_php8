@@ -1,4 +1,4 @@
-<?php
+<?
 // LMO-Archiv Addon zum LigaManager Online
 // Copyright(C)2003 Georg Strey
 //

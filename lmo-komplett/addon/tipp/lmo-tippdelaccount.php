@@ -85,7 +85,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
   } // end ($newpage==1)
 
 ?>
-  <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+  <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
     <caption><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></caption>
     <tr>
       <th colspan="2" align="center"><?=$text['tipp'][6]; ?></th>

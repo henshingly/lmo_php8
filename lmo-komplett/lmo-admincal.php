@@ -1,4 +1,4 @@
-<?PHP
+<?
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -63,7 +63,7 @@ function lmogeben(x){
 </script>
 </head>
 <body>
-<?PHP
+<?
 $addi=$_SERVER['PHP_SELF']."?abs=".$abs."&amp;feld=".$feld;
 $dat = time();
 $dat0 = getdate($dat);

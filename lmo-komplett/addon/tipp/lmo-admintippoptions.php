@@ -289,12 +289,12 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][259]; ?></td>
-            <td align="left"><input type="checkbox" name="xsttipp" onClick="dolmoedit();"<?if($tipp_sttipp==1){echo " checked";}?>></td>
+            <td align="left"><input type="checkbox" name="xsttipp" onClick="viewerchange();"<?if($tipp_sttipp==1){echo " checked";}?>></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][253]; ?></td>
-            <td align="left"><input type="checkbox" name="xviewertipp" onClick="viewerchange()"<?if($tipp_viewertipp==1){echo " checked";}?>></td>
+            <td align="left"><input type="checkbox" name="xviewertipp" onClick="viewerchange();"<?if($tipp_viewertipp==1){echo " checked";}?>></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>

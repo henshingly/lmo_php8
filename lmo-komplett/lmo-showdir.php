@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // LigaManager Online 3.02
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -22,7 +22,8 @@
 ?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
    <?/*<tr>
-    <td class="lmost5" align="right"><?include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
+    <td align="right">
+<?include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
   </tr>*/?>
   <tr>
     <td class="lmost5" align="left"><?
@@ -51,6 +52,7 @@ if(isset($_REQUEST["archiv"]) && $_REQUEST["archiv"]!=""){
     </td>
   </tr>
   <?/*<tr>
-    <td class="lmost5" align="right"><?include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
+    <td align="right">
+<?include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
   </tr>*/?>
 </table><?

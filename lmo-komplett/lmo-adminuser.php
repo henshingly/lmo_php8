@@ -186,7 +186,7 @@ if ($_SESSION['lmouserok']==2) {
         <input type="hidden" name="todo" value="user">
         <input type="hidden" name="save" value="-1">
         <input type="hidden" name="show" value="<?=$show+1?>">
-        <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td align="right"><input class="lmo-formular-input" type="text" name="xadmin_name" size="16" maxlength="32" value="NeuerUser"></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xadmin_pass" size="16" maxlength="32" value="<?=substr(md5(uniqid(rand())),0,rand(8,16));?>"></td>

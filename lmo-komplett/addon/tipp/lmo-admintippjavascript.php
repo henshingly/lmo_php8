@@ -59,10 +59,12 @@ function viewerchange(){
 lmotest=false;
   if(document.getElementsByName("xviewertipp")[0].checked==1){
     document.getElementsByName("xviewertage")[0].disabled=false;   
-    }
-  else{
+  } else {
     document.getElementsByName("xviewertage")[0].disabled=true;    
-    }
-  }	  
+  }
+  if(document.getElementsByName("xsttipp")[0].checked==0 && document.getElementsByName("xviewertipp")[0].checked==0){
+      alert('<?=$text['tipp'][301]?>');
+  }
+}	  
 // --->
 </script>

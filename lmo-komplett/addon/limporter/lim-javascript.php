@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter Addon for LigaManager Online
 // Copyright (C) 2003 by Tim Schumacher

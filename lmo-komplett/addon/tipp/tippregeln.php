@@ -4,7 +4,7 @@
 <head>
 <title>Tippspielregeln</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
-<?PHP
+<?
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -83,7 +83,7 @@ zu abonnieren.</p>
       <li><h3>Hinweise zur Tippabgabe:</h3>
         <ul>
           <li>Die Tippzeit läuft für jedes Spiel einzeln ab. </li>
-          <li>Ablauf der Tippzeit ist jeweils <?PHP echo $tipp_tippBis;?> Minuten vor Anpfiff.</li>
+          <li>Ablauf der Tippzeit ist jeweils <? echo $tipp_tippBis;?> Minuten vor Anpfiff.</li>
           <li>Sollten <strong>ohne</strong> unsere Kenntnis einzelne Spiele vorgezogen werden, bitten 
           wir das zu entschuldigen.<br>
           Wir versuchen jedoch immer <strong>vor</strong> einem Spieltag alle veränderten Anstoßzeiten 
@@ -96,10 +96,10 @@ zu abonnieren.</p>
     <ul>
       <li><h3>Die Spielwertung (Punktverteilung)</h3>
         <ul>
-          <li>Ergebnis richtig: <strong><?PHP echo $tipp_rergebnis;?> Punkte</strong></li>
-          <li>nur Tendenz und Tordifferenz richtig: <strong><?PHP echo $tipp_rtendenzdiff;?> Punkte</strong></li>
-          <li>nur Tendenz richtig: <strong><?PHP echo $tipp_rtendenz;?> Punkte</strong></li>
-          <li>nur eine Toranzahl richtig: <strong><?PHP echo $tipp_rtor;?> Punkt</strong></li>
+          <li>Ergebnis richtig: <strong><? echo $tipp_rergebnis;?> Punkte</strong></li>
+          <li>nur Tendenz und Tordifferenz richtig: <strong><? echo $tipp_rtendenzdiff;?> Punkte</strong></li>
+          <li>nur Tendenz richtig: <strong><? echo $tipp_rtendenz;?> Punkte</strong></li>
+          <li>nur eine Toranzahl richtig: <strong><? echo $tipp_rtor;?> Punkt</strong></li>
         </ul>
       </li>
       <li><h3>Die Liga- und Spieltagswertung</h3>

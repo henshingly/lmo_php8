@@ -1,4 +1,4 @@
-<?PHP
+<?
 //
 // Limporter
 // Copyright (C) 2003 by Tim Schumacher
@@ -23,7 +23,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">* Heimmannschaft&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[HEIM][0]",$cols['HEIM'][0],$rows[0],$header);
  		formatSelection("cols[HEIM][1]",$cols['HEIM'][1],$lim_format_exp);
  		?>
@@ -33,7 +33,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">* Gastmannschaft&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[GAST][0]",$cols['GAST'][0],$rows[0],$header);
  		formatSelection("cols[GAST][1]",$cols['GAST'][1],$lim_format_exp);
  		?>
@@ -43,7 +43,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Spielnummer&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[NR][0]",$cols['NR'][0],$rows[0],$header);
  		formatSelection("cols[NR][1]",$cols['NR'][1],$lim_format_exp);
 		?>
@@ -53,7 +53,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Spieldatum&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[DATUM][0]",$cols['DATUM'][0],$rows[0],$header);
  		formatSelection("cols[DATUM][1]",$cols['DATUM'][1],$lim_format_exp);
  		?>
@@ -63,7 +63,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Anpfiffzeit&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[ZEIT][0]",$cols['ZEIT'][0],$rows[0],$header);
  		formatSelection("cols[ZEIT][1]",$cols['ZEIT'][1],$lim_format_exp);
  		?>
@@ -73,7 +73,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Tore Heim&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[THEIM][0]",$cols['THEIM'][0],$rows[0],$header);
  		formatSelection("cols[THEIM][1]",$cols['THEIM'][1],$lim_format_exp);
  		?>
@@ -83,7 +83,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Tore Gast&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[TGAST][0]",$cols['TGAST'][0],$rows[0],$header);
  		formatSelection("cols[TGAST][1]",$cols['TGAST'][1],$lim_format_exp);
 		?>
@@ -93,7 +93,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Punkte Heim&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[PHEIM][0]",$cols['PHEIM'][0],$rows[0],$header);
  		formatSelection("cols[PHEIM][1]",$cols['PHEIM'][1],$lim_format_exp);
  		?>
@@ -103,7 +103,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Punkte Gast&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[PGAST][0]",$cols['PGAST'][0],$rows[0],$header);
  		formatSelection("cols[PGAST][1]",$cols['PGAST'][1],$lim_format_exp);
 		?>
@@ -113,7 +113,7 @@
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="right" class ="lmost5">Notiz&nbsp;</td>
       <td class ="lmost5" align="left">
-		<?PHP
+		<?
  		colSelection("cols[NOTIZ][0]",$cols['NOTIZ'][0],$rows[0],$header);
  		formatSelection("cols[NOTIZ][1]",$cols['NOTIZ'][1],$lim_format_exp);
 		?>

@@ -1,4 +1,4 @@
-<?PHP
+<?
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -21,5 +21,5 @@
 $qs=getenv("QUERY_STRING");
 ?>
 <FRAMESET ROWS="*">	
-<FRAME SRC="lmo.php?<?PHP echo $qs; ?>" Name="lmo" MARGINWIDTH=0 MARGINHEIGHT=0 NORESIZE FRAMEBORDER="No" BORDER=0>
+<FRAME SRC="lmo.php?<? echo $qs; ?>" Name="lmo" MARGINWIDTH=0 MARGINHEIGHT=0 NORESIZE FRAMEBORDER="No" BORDER=0>
 </FRAMESET>

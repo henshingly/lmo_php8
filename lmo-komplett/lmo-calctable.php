@@ -1,4 +1,4 @@
-<?PHP
+<?
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -335,8 +335,8 @@ if ($file != "") {
     $tab2 = $tab0;
   }
   if ($hands == 1) {
-    if (!isset($tabdat) || ($tabdat == "") || ($action == "admin")) {
-      $handb = $stt-1;
+    if (!isset($tabdat) || $tabdat == "" || $action == "admin") {
+      $handb = $stx-1;
     } else {
       $handb = $endtab-1;
     }
@@ -349,6 +349,7 @@ if ($file != "") {
         $tab0[$ih] = $handd.substr($tab0[$ih], 2);
       }
       sort($tab0, SORT_STRING);
+      
     }
   }
 }

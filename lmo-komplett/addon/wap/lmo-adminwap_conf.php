@@ -1,4 +1,4 @@
-<?php
+<?
 // Ist der MD5-Hack aktiv?
 // Voreinstellung ist ja!
 // Ist wird sehr empfohlen, diesen Hack zu installieren, da ansonsten das Passwort im Klartext übermittelt wird.
