@@ -35,11 +35,7 @@ if($file!=""){
     $tabdat=$st.". ".$text[2];
   }
   if (empty($_REQUEST['action'])) {
-    if(!isset($onrun) || $onrun==0 || $tabelle==0){
-      $action="results";
-    }elseif ($tabelle!=0){
-      $action="table";
-    }
+    $action = $onrun;
   }
 }
 

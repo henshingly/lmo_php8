@@ -266,8 +266,13 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             <td class="nobr" align="right"><acronym title="<?=$text[400];?>"><?=$text[399];?></acronym>&nbsp;</td>
             <td class="nobr" align="left">
               <select class="lmo-formular-input" name="xonrun" onChange="dolmoedit()">
-                <option value="0"<?if($onrun==0){echo " selected";}?>><?=$text[10]?></option>
-                <option value="1"<?if($onrun==1){echo " selected";}?>><?=$text[16]?></option>
+                <option value="0"<?if ($ergebnis == '0')  {echo " disabled";}elseif($onrun==0){echo " selected";}?>><?=$text[10]?></option>
+                <option value="1"<?if ($tabelle == '0')   {echo " disabled";}elseif($onrun==1){echo " selected";}?>><?=$text[16]?></option>
+                <option value="2"<?if ($plan == '0')      {echo " disabled";}elseif($onrun==2){echo " selected";}?>><?=$text[12]?></option>
+                <option value="3"<?if ($kreuz == '0')     {echo " disabled";}elseif($onrun==3){echo " selected";}?>><?=$text[14]?></option>
+                <option value="4"<?if ($ligastats == '0') {echo " disabled";}elseif($onrun==4){echo " selected";}?>><?=$text[18]?></option>
+                <option value="5"<?if ($dats == '0')      {echo " disabled";}elseif($onrun==5){echo " selected";}?>><?=$text[140]?></option>
+                <option value="6"<?if ($mittore == '0')   {echo " disabled";}elseif($onrun==6){echo " selected";}?>><?=$text[485]?></option>
               </select>
             </td>
           </tr><? 
