@@ -25,7 +25,7 @@ if(isset($file) && $file!="" && check_hilfsadmin($file)){
     $sekt="";
     $datei = @file(PATH_TO_LMO.'/'.$file);
     if ($datei) {
-      $stand=date("d.m.Y H:i",filemtime(PATH_TO_LMO.'/'.$file));
+      $stand=strftime($defdateformat,filemtime(PATH_TO_LMO.'/'.$file));
       $lmtype=0;
       for($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];

@@ -62,6 +62,7 @@ if($save==1){
       $archivlink=isset($_POST["xarchivlink"])?1:0;
       $calctime=isset($_POST["xcalctime"])?1:0;
       $einsavehtml=isset($_POST["xeinsavehtml"])?1:0;
+      $einsprachwahl=isset($_POST["xeinsprachwahl"])?1:0;
       $einspieler=isset($_POST["xeinspieler"])?1:0;
       $eintippspiel=isset($_POST["xeintippspiel"])?1:0;
       $einspielfrei=isset($_POST["xeinspielfrei"])?1:0;
@@ -237,7 +238,9 @@ if ($show==0) {?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?=$text[535]?>"><?=$text[534];?></acronym></td>
             <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xeinspielfrei" onChange="dolmoedit()"<?if($einspielfrei==1){echo " checked";}?>></td>
-            <td class="nobr" colspan="3">&nbsp;</td>
+            <td class="nobr">&nbsp;</td>
+            <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xeinsprachwahl" onChange="dolmoedit()"<?if($einsprachwahl==1){echo " checked";}?>></td>
+            <td class="nobr"><acronym title="<? echo $text[520] ?>"><? echo $text[519]; ?></acronym></td>
           </tr>
           <tr>
             <td class="nobr" rowspan="2" align="right"><acronym title="<?=$text[490]?>"><?=$text[489];?></acronym></td>

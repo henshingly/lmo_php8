@@ -30,31 +30,27 @@ if($action=="admin"){
   if(!isset($st)){$sty=0;}else{$sty=$st;}
   if(!isset($newpage)){$newpage=0;}
   $file=isset($_REQUEST['file'])?$_REQUEST['file']:"";
-
+  
+  if (@file_exists(PATH_TO_LMO."/install.php") && @is_readable(PATH_TO_LMO."/install.php")) echo "<p class='error'>Delete install.php or set its chmod to 000!</p>";  
 ?>
 <script type="text/javascript" src="<?=URL_TO_LMO?>/js/admin.js.php"></script>
 <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><h1><?=$text[77]." ".$text[54];?></h1></td>
     <td class="lmoFooter" align="right"><?
-  $handle=opendir (PATH_TO_LANGDIR);
+  if ($einsprachwahl==1){
+    $handle=opendir (PATH_TO_LANGDIR);
     while (false!==($f=readdir($handle))) {
       if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
         if ($lang[1]=="") $lang[1]=$text[505];
         if ($lang[1]!=$lmouserlang) {
-          echo "<a href='{$_SERVER['PHP_SELF']}?{$_SERVER['QUERY_STRING']}&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'>";
           $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
-          
-          if (phpLinkCheck($imgfile,TRUE)==404 || phpLinkCheck($imgfile,TRUE)==FALSE) {
-            echo $lang[1];
-          }else{
-            echo "<img src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'>";
-          }
-          echo "</a> ";
+          echo "<a href='{$_SERVER['PHP_SELF']}?".htmlentities($_SERVER['QUERY_STRING'])."&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'></a> ";
         }
       } 
     }
-    closedir($handle);?>
+    closedir($handle);
+  }?>
     </td>
   </tr>
   <tr>

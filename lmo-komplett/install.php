@@ -28,7 +28,7 @@ if (isset($_POST['step'])) {
     if (!file_exists($_SERVER['DOCUMENT_ROOT'].$path."/init-parameters.php")) {
       $patherror='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> Pfad "'.$path.'" ist inkorrekt</p>';
     }
-    if (phpLinkCheck($url."/init-parameters.php",TRUE)==404 || phpLinkCheck($url."/init-parameters.php",TRUE)==FALSE) {
+    if (function_exists('fsockopen') && phpLinkCheck($url."/init-parameters.php",TRUE)==404 || phpLinkCheck($url."/init-parameters.php",TRUE)==FALSE) {
       $urlerror='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> URL "'.$url.'" ist inkorrekt</p>';
     }
     if ($urlerror=='' && $patherror=='') {
@@ -149,8 +149,9 @@ if ($step<2) {
       </dt>
     </dl>
   </form>
-<?}}
-  if ($step==2) {?>
+<?}
+}
+if ($step==2) {?>
   <h2>2. Speichern der Konfiguration</h2>
   <?=$installerror;?>
   <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
@@ -161,31 +162,19 @@ if ($step<2) {
       </dt>
     </dl>
   </form><?
-  }
-  if ($step==3) {?>
+}
+if ($step==3) {?>
   <h2>3. Setzen der Schreibrechte</h2>
   <p>Um die passenden Schreibrechte zu setzen, ist ein Zugang per FTP notwendig. Dazu müssen Sie die Logindaten für Ihren 
-     FTP-Zugang angeben. Die Daten werden vom LMO nicht gespeichert oder in irgendeiner anderen Weise weiterverwendet. 
-     Falls Sie dennoch auf das automatische Setzen der Schreibrechte verzichten möchten, können Sie die Rechte der in 
-     der LMO-Readme benannten Dateien auch manuell über ein FTP-Programm ändern. Falls Sie dies möchten, ist die 
-     automatische Installation an dieser Stelle für Sie beendet.</p><?
-   }
-   if ($step==4) {
-     echo $installerror;?>
-   <dl>
-     <dt>Der Liga Manager Online 4 ist installiert worden!</dt>
-     <dd>Falls Fehler aufgetreten sind, wiederholen sie die Installation oder installieren Sie den LMO manuell, indem Sie 
-      die Datei <code>init-parameters.php</code> mit einem Texteditor anpassen und die Schreibrechte mit einem FTP-Programm 
-      manuell vergeben.</dd>
-     <dd><strong>Bitte löschen Sie jetzt unbedingt die Datei <code>install.php</code> vom Server.</strong></dd>
-     <dd>Der <acronym title="Liga Manager Online">LMO</acronym> ist jetzt unter der Adresse <code><a href="lmo.php">lmo.php</a></code> zu erreichen, den Adminbereich finden Sie unter 
-      <code><a href="lmoadmin.php">lmoadmin.php</a></code>.</dd>
-     <dt>Viel Spaß!</dt>
-   </dl>
-     <?
-   }
-   if ($step==3) {?>
-   <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+     FTP-Zugang angeben. Die Daten werden vom LMO nicht gespeichert oder in irgendeiner anderen Weise weiterverwendet.
+  </p>
+  <p>
+     Falls Sie dennoch auf das automatische Setzen der Schreibrechte verzichten möchten, können Sie die Rechte der 
+     benötigten Dateien auch manuell über ein FTP-Programm ändern. Schauen Sie dazu in die 
+     <code><a href="lmohelp1.htm">Hilfedatei</a></code>.
+  </p><?
+  if (function_exists('ftp_connect')) {?>
+  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
     <dl>
       <dt>Geben sie hier die Adresse ihres FTP-Servers ein.</dt>
       <dd>
@@ -196,26 +185,43 @@ if ($step<2) {
       <dd>
       <?=$loginerror?>
         User:<input name="ftpuser" type="text" size="25" value="<?=$ftpuser?>"> Pass:<input name="ftppass" type="password" size="25" value="">
-      </dd>
-      <dt>
         <input type="hidden" name="path" value="<?=$path?>">
         <input type="hidden" name="step" value="4">
         <input type="submit" value="Weiter">
-      </dt>
+      </dd>
     </dl>
   </form><?
-  }?>
+  } else {?>
+  <p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="Fehler"> 
+    Ihr Server unterstützt keine FTP-Funktionen. Sie müssen die Schreibrechte manuell ändern. 
+    Konsultieren Sie dazu die <code><a href="lmohelp1.htm">Hilfedatei</a></code></p><?
+  }
+}
+if ($step==4) {
+  echo $installerror;?>
+  <dl>
+    <dt>Der Liga Manager Online 4 ist installiert worden!</dt>
+    <dd>Falls Fehler aufgetreten sind, wiederholen sie die Installation oder installieren Sie den LMO manuell, indem Sie 
+    die Datei <code>init-parameters.php</code> mit einem Texteditor anpassen und die Schreibrechte mit einem FTP-Programm 
+    manuell vergeben.</dd>
+    <dd><strong>Bitte löschen Sie jetzt unbedingt die Datei <code>install.php</code> vom Server.</strong></dd>
+    <dd>Der <acronym title="Liga Manager Online">LMO</acronym> ist jetzt unter der Adresse <code><a href="lmo.php">lmo.php</a></code> 
+    zu erreichen, den Adminbereich finden Sie unter <code><a href="lmoadmin.php">lmoadmin.php</a></code>.</dd>
+    <dt>Viel Spaß!</dt>
+  </dl>
+     <?
+}?>
+
   <p class="foot">
- <a href="http://validator.w3.org/check/referer"><img
-          src="http://www.w3.org/Icons/valid-html401"
-          alt="Valid HTML 4.01!" height="31" width="88"></a> 
- <a href=" http://jigsaw.w3.org/css-validator/check/referer">
-  <img width="88" height="31"
+    <a href="http://validator.w3.org/check/referer"><img
+        src="http://www.w3.org/Icons/valid-html401"
+        alt="Valid HTML 4.01!" height="31" width="88"></a> 
+    <a href=" http://jigsaw.w3.org/css-validator/check/referer">
+      <img width="88" height="31"
        src="http://jigsaw.w3.org/css-validator/images/vcss" 
        alt="Valid CSS!">
- </a>
- © René Marth/<a href="http://lmo.sourceforge.net/">LMO Group</a>
-</p>    
+    </a> © René Marth/<a href="http://lmo.sourceforge.net/">LMO Group</a>
+  </p>    
   </body>
 </html>
 
@@ -234,7 +240,7 @@ function phpLinkCheck($url, $r = FALSE)
    *  Date:    2001-04-14
    *  Version: 0.1 (currently requires PHP4)
    */
-
+  
   $url = trim($url);
   if (!preg_match("=://=", $url)) $url = "http://$url";
   $url = @parse_url($url);

@@ -82,30 +82,19 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   
   //Stylesheet
   $output_stylesheet.="
-  <script type='text/javascript'>
-    if (window.captureEvents && document.layers) {
-      document.write('<link rel=\"stylesheet\" href=\"".URL_TO_LMO."/lmo-style-nc.php\" type=\"text/css\">');
-    }
-  </script>
+  <link type='text/css' rel='stylesheet' href='".URL_TO_LMO."/lmo-style-nc.php'>
   <style type='text/css'>@import url('".URL_TO_LMO."/lmo-style.php');</style>";
   
   //Sprachauswahl
   
-  if($sprachauswahl==1){
+  if ($einsprachwahl==1 && $sprachauswahl==1){
     $handle=opendir (PATH_TO_LANGDIR);
     while (false!==($f=readdir($handle))) {
       if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
         if ($lang[1]=="") $lang[1]=$text[505];
         if ($lang[1]!=$lmouserlang) {
-          $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?".htmlentities($_SERVER['QUERY_STRING'])."&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'>";
           $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
-          
-          if (phpLinkCheck($imgfile,TRUE)==404 || phpLinkCheck($imgfile,TRUE)==FALSE) {
-            $output_sprachauswahl.=$lang[1];
-          }else{
-            $output_sprachauswahl.="<img src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'>";
-          }
-          $output_sprachauswahl.="</a> ";
+          $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?".htmlentities($_SERVER['QUERY_STRING'])."&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'></a> ";
         }
       } 
     }
@@ -312,7 +301,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   $template->replace("Tippspiel", $output_tippspiel);  
   //Tippspiel-Addon
   $template->show();
-    
+
     
   //}else {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");d($template->toString());}
 ?>

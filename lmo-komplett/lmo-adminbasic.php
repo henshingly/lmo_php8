@@ -304,8 +304,12 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             </td>
           </tr>
           <tr>
-            <td class="nobr" align="right"><acronym title="<? echo $text[252] ?>"><? echo $text[251]; ?></acronym>&nbsp;<input type="checkbox" class="lmo-formular-input" name="xdats" onChange="dolmoedit()"<?if($dats==1){echo " checked";}?>>&nbsp;</td>
-            <td class="nobr" align="left">&nbsp;<input type="checkbox" class="lmo-formular-input" name="xsprachauswahl" onChange="dolmoedit()"<?if($sprachauswahl==1){echo " checked";}?>>&nbsp;<acronym title="<? echo $text[520] ?>"><? echo $text[519]; ?></acronym></td>
+            <td class="nobr" align="right"><acronym title="<? echo $text[252] ?>"><? echo $text[251]; ?></acronym>&nbsp;<input type="checkbox" class="lmo-formular-input" name="xdats" onChange="dolmoedit()"<?if($dats==1){echo " checked";}?>>&nbsp;</td><?
+      if($einsprachwahl==1) {?>
+            <td class="nobr" align="left">&nbsp;<input type="checkbox" class="lmo-formular-input" name="xsprachauswahl" onChange="dolmoedit()"<?if($sprachauswahl==1){echo " checked";}?>>&nbsp;<acronym title="<? echo $text[520] ?>"><? echo $text[519]; ?></acronym></td><?
+      } else {?>
+            <td>&nbsp;</td><?
+      }?>
           </tr>
           <tr><?
       if($lmtype==0 && $tabonres==0){ ?>
