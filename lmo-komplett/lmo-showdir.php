@@ -26,28 +26,39 @@
 <?include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
   </tr>*/?>
   <tr>
-    <td class="lmost5" align="left"><?
-if(isset($_REQUEST["archiv"]) && $_REQUEST["archiv"]!=""){
-  if (substr($ArchivDir,-1)!='/') $ArchivDir.='/';
-  if ($_REQUEST["archiv"]!="dir") {
-    $dirliga=$ArchivDir.$_REQUEST["archiv"].'/';
-    include(PATH_TO_LMO."/lmo-dirlist.php");
-  }else{?>
-      <ul><?
-    $dirs = get_dirs($ArchivDir);
-    $count=0;
-    foreach($dirs as $dir) {
-      $count++;
-      $output=@implode("",file("{$ArchivDir}{$dir}/dir-descr.txt"));?>
-        <li><a href="<?=$_SERVER['PHP_SELF']?>?archiv=<?=$dir?>"><?$output==""?print($dir):print($output);?></a></li><?
+    <td align="left"><?
+include(PATH_TO_LMO."/lmo-dirlist.php");?>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="left"><?
+if ($archivlink==1) {
+  $dirs = get_dir($dirliga);
+  if (substr($dirliga,-1)!='/') $dirliga.='/';
+  $output='';
+  foreach($dirs as $dir) {
+    $descr=@implode("",file($dirliga.$dir."/dir-descr.txt"));
+    $output.=  "<tr><td><a href='".$_SERVER['PHP_SELF']."?dirliga=".$dirliga.$dir."/'>".$dir."</a></td>";
+    if ($descr!="") {
+      $output.= "<td><small>".htmlentities($descr)."</small></td>";
     }
-    if ($count==0) {?>
-        <li><?=$text[223]?></li><?
-    }?>
-      </ul><?
+    $output.="</tr>";
   }
-}else{
-  include(PATH_TO_LMO."/lmo-dirlist.php");
+  
+  if ($output!='') {?>
+      <table class='lmoInner' cellspacing="0" width="99%">
+        <tr>
+          <th colspan="2"><?=$text[509];?></th>
+        </tr>
+        <?=$output?>
+      </table><?
+  }
+  if (substr_count($dirliga,'/')>1) {?>
+      <p><a href="<?=$_SERVER['PHP_SELF']?>?dirliga=<?=dirname($dirliga).'/'?>"><?=$text[5];?> <?=$text[562];?></a></p><?
+  }
 }?>
     </td>
   </tr>

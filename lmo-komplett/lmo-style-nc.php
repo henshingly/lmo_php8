@@ -19,6 +19,9 @@ require(dirname(__FILE__)."/init.php");
   font-size: <?=$lmo_main_fontsize1?>;
   font-family: <?=$lmo_main_fontfamily1?>;
 }
+.lmoMain p { 
+  margin:0;
+}
 
 /** Auﬂenbereich ‹berschrift*/
 .lmoMain h1 { 
@@ -291,20 +294,8 @@ require(dirname(__FILE__)."/init.php");
 .lmotext { 
   text-align: justify; 
 }
-/*
-.lmofett { 
-  background-color: <?=$lmo_inner_background1?>; 
-  color: <?=$lmo_inner_color1?>; 
-  text-align: justify; 
-  font-family: <?=$lmo_inner_fontfamily1?>; 
-  font-size:85%; 
-  font-weight: bold; 
-}
-*/
-.lmoMain li { 
-}
 
-a.colorpicker {
+.colorpicker {
   display:none;
 }
 

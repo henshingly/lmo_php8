@@ -52,7 +52,6 @@ $output_ligastatistik="";
 $output_spielerstatistik="";
 $output_info="";
 $output_hauptteil="";
-$output_archiv="";
 $output_ligenuebersicht="";
 $output_savehtml="";
 $output_letzteauswertung="";
@@ -224,16 +223,6 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
         </table><? 
       $output_savehtml.=ob_get_contents();ob_end_clean();
     }
-  } else {
-    if($archivlink==1){
-      if (isset($archiv) && $archiv!=""){
-        $output_archiv.="<a href=\"".$_SERVER["PHP_SELF"]."\">{$text[391]}</a><br>";
-      }
-      if (!isset($archiv) || $archiv!="dir"){
-        $output_archiv.="<a href=\"".$_SERVER["PHP_SELF"]."?archiv=dir\">{$text[508]}</a><br>";
-      }
-      
-    }
   }
   
   //Ligenübersicht
@@ -278,7 +267,6 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   $template->replace("Ligenuebersicht", $output_ligenuebersicht);  
   $template->replace("Berechnungszeit", $output_berechnungszeit);  
   $template->replace("LetzteAuswertung", $output_letzteauswertung);  
-  $template->replace("Archiv", $output_archiv);  
   $template->replace("Savehtml", $output_savehtml); 
   $template->replace("Hauptteil", $output_hauptteil);  
   $template->replace("Tabelle", $output_tabelle); 

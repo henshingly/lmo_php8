@@ -163,24 +163,23 @@ function relateColor(id, color) {
   if (color.substr(0,1)!='#') { color="#" + color;}
 
   if ((color.search(/^#[0-9|a-f|A-F]{3}$/) == -1) && (color.search(/^#[0-9|a-f|A-F]{6}$/) == -1)) {
-    if (window.opera || document.all) link.style.background = nocolor;
+    link.style.backgroundColor = nocolor;
     if (color=="#") {
       link.className = 'colorpicker nocolor';
-      ///link.style.background = 'url(img/transparent.gif)';
-      //alert(link.style.backgroundImage);
+      
       link.title="No Color";
     } else{
-      //link.style.background = 'url(lmo/img/attention.gif) 50% 50% no-repeat';
+      
       link.title="No valid Color!";
       link.className = 'colorpicker invalid';
-      //alert(link.currentStyle);
+      
       
     }
     color = nocolor;
     //for (i in link.currentStyle) {if (link.currentStyle[i]!='') alert(i+" "+link.currentStyle[i]);}
   }else{
     link.className = 'colorpicker';
-    link.style.background = color;
+    link.style.backgroundColor = color;
     link.title = color;
   }
   
@@ -208,7 +207,7 @@ function getAbsoluteOffsetLeft(obj) {
 }
 function makePicker(id){
   if (document.createElement) { 
-    document.write('&nbsp;<a href="#" onClick="pickColor(\''+id+'\');return false;" id="'+id+'" class="colorpicker">&nbsp;&nbsp;&nbsp;</a>');
+    document.write('&nbsp;<span onClick="pickColor(\''+id+'\');return false;" id="'+id+'" class="colorpicker">&nbsp;&nbsp;&nbsp;</span>');
     relateColor(id, getObj(id+'input').value);
   }
 }

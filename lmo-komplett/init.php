@@ -70,6 +70,28 @@ if (!function_exists('magicQuotesRemove')) {
      }
   }
 }
+
+if (!function_exists('get_dir')) {
+  function get_dir($verz) {
+    $ret = array();
+    if (substr($verz,-1)!='/') $verz.='/';
+  
+    $handle = opendir(PATH_TO_LMO."/".$verz);
+    if ($handle) {
+      while ($file = readdir ($handle)) {
+        if ($file != "." && $file != "..") {
+          if (is_dir($verz.$file)) {
+            $ret[] = $file;
+          }
+        }
+      }
+      closedir($handle);
+    }
+    return $ret;
+  }
+}
+
+
 //Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);
 magicQuotesRemove($_POST);
