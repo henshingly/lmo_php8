@@ -17,7 +17,12 @@
 //
 // $Id$
 
-require_once "PEAR.php";
+if (file_exists('PEAR.php')) {
+  require_once('PEAR.php');
+} else {
+  require_once(PATH_TO_LMO.'/lmo-PEAR.php');
+}
+
 
 /**
 * IT[X] Error class
