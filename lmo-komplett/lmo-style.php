@@ -1,3 +1,7 @@
+<?
+header("Content-Type: text/css");
+require("init.php");
+echo <<<STYLE
 FORM { padding: 0; margin: 0; }
 acronym {cursor:help;border-bottom:1px dotted $tabccolo;}
 TABLE { padding: 0; margin: 0; }
@@ -139,3 +143,5 @@ INPUT { }
   .lmotickerein { background: $tabtback; color: $tabtcolo; border: 1px solid $tabtback; font-family: $tabtfont; font-size: $tabtsize; font-weight: bold; }
   .lmoadminein { background: $tabeback; color: $tabecolo; border: 1px solid $tabecolo; font-family: $tabcfont; font-size: $tabcsize; }
   .lmoadminbut { background: $tabkback; color: $tabkcolo; border-left: 1px solid $tabkcolo; border-top: 1px solid $tabkcolo; border-right: 2px solid $tabkcolo; border-bottom: 2px solid $tabkcolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: bold; }
+STYLE;
+?>

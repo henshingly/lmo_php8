@@ -34,9 +34,9 @@ $template_hauptteil=file_exists(PATH_TO_TEMPLATEDIR.'/viewer/'.$template."-haupt
 
 $akt_date_ts = time();  // Aktuelle Zeit im Unix-Zeitstempel-Format (UZF)
 $date_anfang_ts = zeitberechnung("1", -$viewer_tage_minus);  // Anzeige ab wann?
-$date_ende_ts = zeitberechnung("1", $viewer_tage_plus);  // Anzeige bis wann?
+$date_ende_ts = zeitberechnung("2", $viewer_tage_plus);  // Anzeige bis wann?
 $akt_heute = zeitberechnung("1", "0");
-$akt_morgen = zeitberechnung("1", "1");
+$akt_morgen = zeitberechnung("2", "1");
 
 //Überschrift
 $output_ueberschrift=$text['viewer'][4]." ".date(" d.m.Y",$date_anfang_ts)." - ".date("d.m.Y",$date_ende_ts);

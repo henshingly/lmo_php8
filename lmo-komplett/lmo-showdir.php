@@ -34,7 +34,7 @@
     </td>
   </tr>
   <tr>
-    <td class="lmost5"><?
+    <td class="lmost5" align="left"><?
 if(isset($_REQUEST["archiv"]) && $_REQUEST["archiv"]!=""){
   if (substr($ArchivDir,-1)!='/') $ArchivDir.='/';
   if ($_REQUEST["archiv"]!="dir") {

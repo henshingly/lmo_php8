@@ -42,7 +42,7 @@ if(($action=="admin") && ($todo=="open")){
           </td>
         </tr>
         <tr>
-          <td class="lmost5"><? require(PATH_TO_LMO."/lmo-admindir.php"); ?></td>
+          <td class="lmost5" align="left"><? require(PATH_TO_LMO."/lmo-admindir.php"); ?></td>
         </tr>
         <tr>
           <td class="lmost5" align="right">
