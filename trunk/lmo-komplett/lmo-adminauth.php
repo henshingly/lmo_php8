@@ -24,51 +24,51 @@ if($action=="admin"){
   if(!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok']==0){
 ?>
 
-<table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmomain0" colspan="3" align="center"><nobr>
-      <?PHP echo $text[77]." ".$text[54]; ?>
-    </nobr></td>
-  </tr><tr>
-    <td class="lmomain1" colspan="3" align="center">
-
-  <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
-  
-  <input type="hidden" name="action" value="admin">
-  <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">
-  <?PHP echo $text[305]; ?>
-  </td></tr><tr><td align="center" class="lmost3">
-  <table width="100%" class="lmostb" cellspacing="0" cellpadding="0" border="0">
-    <tr>
-      <td class="lmost5" align="right"><acronym title="<?PHP echo $text[307] ?>"><?PHP echo " ".$text[306]; ?></acronym></td>
-      <td class="lmost5"><acronym title="<?PHP echo $text[307] ?>"><input class="lmoadminein" type="text" name="xusername" size="16" maxlength="32" value="<?PHP echo $_SESSION['lmousername']; ?>"></acronym></a>
-    </tr>
-    <tr>
-      <td class="lmost5" align="right"><acronym title="<?PHP echo $text[309] ?>"><?PHP echo " ".$text[308]; ?></acronym></td>
-      <td class="lmost5"><acronym title="<?PHP echo $text[309] ?>"><input class="lmoadminein" type="password" name="xuserpass" size="16" maxlength="32" value="<?PHP echo $_SESSION['lmouserpass']; ?>"></acronym></a>
-    </tr>
-    <tr>
-      <td class="lmost5">&nbsp;</td>
-      <td class="lmost5"><acronym title="<?PHP echo $text[311] ?>"><input class="lmoadminbut" type="submit" name="xusersub" value="<?PHP echo $text[310]; ?>"></acronym></td>
-    </tr>
-  </table>
-  </td></tr><tr><td align="center" class="lmost2">
-  <a href="lmo.php" title="<?PHP echo $text[470]; ?>"><?PHP echo $text[469]; ?></a>
-  </td></tr></table>
-  </form>
-
-    </td>
-  </tr><tr>
-    <td class="lmomain1" colspan="3" align="center"><nobr>&nbsp;<br>
-      <?PHP echo $text[54]."<br>Copyright ".$text[55]; ?><br>
-      LigaManager Online comes with ABSOLUTELY NO WARRANTY.<br>
-      This is free software, and you are welcome to redistribute<br>
-      it under certain conditions. Read <a href="gpl.txt" target="_blank" title="GPL - Gnu General Public License">this</a> for details.<br>
-    </nobr></td>
+    <td colspan="3" align="center"><h1><?=$text[77]." ".$text[54]; ?></h1></td>
   </tr>
-</table>
-
-<?PHP
-    }
+  <tr>
+    <td colspan="3" align="center">
+      <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
+        <input type="hidden" name="action" value="admin">
+        <table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td align="center"><h1><?=$text[305]; ?></h1></td>
+          </tr>
+          <tr>
+            <td align="center">
+              <table width="100%" class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td class="lmost5" align="right"><acronym title="<?=$text[307] ?>"><?=" ".$text[306]; ?></acronym></td>
+                  <td class="lmost5"><acronym title="<?=$text[307] ?>"><input class="lmo-formular-input" type="text" name="xusername" size="16" maxlength="32" value="<?=$_SESSION['lmousername']; ?>"></acronym></a>
+                </tr>
+                <tr>
+                  <td class="lmost5" align="right"><acronym title="<?=$text[309] ?>"><?=" ".$text[308]; ?></acronym></td>
+                  <td class="lmost5"><acronym title="<?=$text[309] ?>"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value="<?=$_SESSION['lmouserpass']; ?>"></acronym></a>
+                </tr>
+                <tr>
+                  <td class="lmost5">&nbsp;</td>
+                  <td class="lmost5"><acronym title="<?=$text[311] ?>"><input class="lmo-formular-button" type="submit" name="xusersub" value="<?=$text[310]; ?>"></acronym></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" class="lmoMenu"><a href="lmo.php" title="<?=$text[470]; ?>"><?=$text[469]; ?></a></td>
+          </tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td class="lmoFooter" colspan="3" align="center">
+      <p><?=$text[54]."<br>Copyright ".$text[55]; ?></p>
+      <p>LigaManager Online comes with ABSOLUTELY NO WARRANTY.</p>
+      <p> This is free software, and you are welcome to redistribute it under certain conditions.</p>
+      <p>Read <a href="<?=PATH_TO_LMO?>/gpl.txt" target="_blank" title="GPL - Gnu General Public License">this</a> for details.</p>
+    </td>
+  </tr>
+</table><?
   }
-?>
+}?>

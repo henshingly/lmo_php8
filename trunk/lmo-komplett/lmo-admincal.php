@@ -77,7 +77,7 @@ $dat2 = getdate(strtotime($dat5." -1 month"));
 $datr=$dat2['month']." ".$dat2['year'];
 $dat3 = getdate(strtotime($dat5." +1 month"));
 $datv=$dat3['month']." ".$dat3['year'];
-$mn=array("0","Januar","Februar","M&auml;rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember");
+$mn=array("0","Januar","Februar","M‰rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember");
 $erster=$dat1['wday'];?>
 <table class="caltab">
   <tr>
@@ -86,7 +86,7 @@ $erster=$dat1['wday'];?>
         <tr>
           <td align="left"><a href="<?=$addi?>&amp;calshow=<?=$datr?>" title="zum vorigen Monat">&nbsp;&lt;&nbsp;</a></td>
           <td align="center" class="caltz"><?=$mn[$dat1['mon']]." ".$dat1['year'];?></td>
-          <td align="right"><a href="<?=$addi?>" title="zum aktuellen Monat">&nbsp;#&nbsp;</a><a href="<?=$addi?>"&amp;calshow="<?=$datv?>" title="zum n&auml;chsten Monat">&nbsp;&gt;&nbsp;</a></td>
+          <td align="right"><a href="<?=$addi?>" title="zum aktuellen Monat">&nbsp;#&nbsp;</a><a href="<?=$addi?>&amp;calshow=<?=$datv?>" title="zum n‰chsten Monat">&nbsp;&gt;&nbsp;</a></td>
         </tr>
       </table>
     </td>
@@ -103,50 +103,48 @@ $erster=$dat1['wday'];?>
           <td align="center" class="calwt">Sa</td>
           <td align="center" class="calwt">So</td>
         </tr><?
-if($erster!=1){
-  if($erster==0){$erster=7;}?>
+if($erster==0){$erster=7;}?>
         <tr><?
-  for($i=0;$i<$erster-1;$i++){?>
+for($i=0;$i<$erster-1;$i++){?>
           <td class="calat">&nbsp;</td><?
-  }
-  for($i=1;$i<=31;$i++){
-    $dat4 = getdate(strtotime($i." ".$dath));
-    $heute=$dat4['wday'];
-    if($heute==0){$heute=7;}
-    if($dat1['mon']==$dat4['mon']){
-      $stil="calat";
-      $dum1=$dat0['mday'].".".$dat0['mon'].".".$dat0['year'];
-      $dum2=$dat4['mday'].".".$dat4['mon'].".".$dat4['year'];
-      if($dum1==$dum2){
-        if(($heute==6) || ($heute==7)){$stil="calhe";}else{$stil="calht";}
-        }
-        else{
-        if(($heute==6) || ($heute==7)){$stil="calwe";}else{$stil="calat";}
+}
+for($i=1;$i<=31;$i++){
+  $dat4 = getdate(strtotime($i." ".$dath));
+  $heute=$dat4['wday'];
+  if($heute==0){$heute=7;}
+  if($dat1['mon']==$dat4['mon']){
+    $stil="calat";
+    $dum1=$dat0['mday'].".".$dat0['mon'].".".$dat0['year'];
+    $dum2=$dat4['mday'].".".$dat4['mon'].".".$dat4['year'];
+    if($dum1==$dum2){
+      if(($heute==6) || ($heute==7)){$stil="calhe";}else{$stil="calht";}
       }
-      if ($i<=9){$k="0";}else{$k="";}
-      if($heute==1){?>
+      else{
+      if(($heute==6) || ($heute==7)){$stil="calwe";}else{$stil="calat";}
+    }
+    if ($i<=9){$k="0";}else{$k="";}
+    if($heute==1){?>
           <tr><?
-      }?>
+    }?>
             <td align="center" class="<?=$stil?>"><a href="#" onclick='lmogeben("<?=strftime("%d.%m.%Y",strtotime($i." ".$dath))?>")' title="Datum ¸bernehmen"><?="$k$i"?></a></td><?
-      if($heute==7){?>
+    if($heute==7){?>
           </tr><?
-        $j=$heute;
-      }
+      $j=$heute;
     }
   }
 }
-    if ($j!=7){
-      for ($i=0;$i<7-$j;$i++){?>
+if ($j!=7){
+  for ($i=0;$i<7-$j;$i++){?>
             <td class="calat">&nbsp;</td><?
-      }?>
+  }?>
           </tr><?
-    }?>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td align="right"><a href="#" onclick="self.close()" title="Kalender schlieﬂen, ohne ein Datum zu ¸bernehmen">[schlieﬂen]</a></td>
-    </tr>
-  </table>
+}?>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="right"><a href="#" onclick="self.close()" title="Kalender schlieﬂen, ohne ein Datum zu ¸bernehmen">[schlieﬂen]</a></td>
+  </tr>
+</table>

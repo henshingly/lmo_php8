@@ -37,31 +37,33 @@ isset($_GET['madr'])  ? $madr=$_GET['madr']    :$madr='';
 </head>
 <body>
 <?
-if(($action=="admin") && ($todo=="email") && (($_SESSION["lmouserok"]==1) || ($_SESSION["lmouserok"]==2))){
-  if(($down!=0) && ($madr!="")){
+if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1) || ($_SESSION["lmouserok"] == 2))) {
+  if (($down != 0) && ($madr != "")) {
     $array = array("");
-    $ftype=".l98";
-    $verz=opendir(substr($dirliga,0,-1));
-    $dummy=array("");
-    while($files=readdir($verz)){
-      if(strtolower(substr($files,-4))==$ftype){array_push($dummy,$files);}
+    $ftype = ".l98";
+    $verz = opendir(substr($dirliga, 0, -1));
+    $dummy = array("");
+    while ($files = readdir($verz)) {
+      if (strtolower(substr($files, -4)) == $ftype) {
+        array_push($dummy, $files);
+      }
     }
     closedir($verz);
     array_shift($dummy);
     sort($dummy);
-    if($down>0){
-      if($dummy[$down-1]!=""){
+    if ($down > 0) {
+      if ($dummy[$down-1] != "") {
         require(PATH_TO_LMO."/lmo-adminmimezip.php");
         $zipfile = new zipfile();
-        $filedata = fread(fopen($dirliga.$dummy[$down-1], "rb"), filesize($dirliga.$dummy[$down-1]));   
-        $zipfile -> add_file($filedata, $dummy[$down-1]);   
+        $filedata = fread(fopen($dirliga.$dummy[$down-1], "rb"), filesize($dirliga.$dummy[$down-1]));
+        $zipfile->add_file($filedata, $dummy[$down-1]);
         $mail = new mime_mail();
         $mail->from = $aadr;
         $mail->to = $madr;
         $mail->subject = $text[341];
-        $mail->body = $text[342]."\n\n--------------------------------------------------\nSender: ".$REMOTE_ADDR." (".$HTTP_USER_AGENT.")\n";
-        $mail->add_attachment($zipfile -> file(), "lmo_".substr($dummy[$down-1],0,-4).".zip", "application/octet-stream");
-        if ($mail->send()===TRUE){?>
+        $mail->body = $text[342]."\n\n--------------------------------------------------\nSender: ".$_SERVER['REMOTE_ADDR']." (".$_SERVER['HTTP_USER_AGENT'].")\n";
+        $mail->add_attachment($zipfile->file(), "lmo_".substr($dummy[$down-1], 0, -4).".zip", "application/octet-stream");
+        if ($mail->send() === TRUE) {?>
   <p class="lmofett"><?=$text[348]?></p><?
         }else{?>
   <p class="lmofett"><?=$text[176]?></p>      <?
@@ -92,7 +94,7 @@ if(($action=="admin") && ($todo=="email") && (($_SESSION["lmouserok"]==1) || ($_
     }
   }else{?>
   <form action="<?=$_SERVER['PHP_SELF']?>">
-    <label>Mailadresse: <input name="madr" type="text" class="lmoadminein" size="25" maxlength="128"></label>
+    <label>Mailadresse: <input name="madr" type="text" class="lmo-formular-input" size="25" maxlength="128"></label>
     <input type="hidden" name="action" value="admin">
     <input type="hidden" name="todo" value="email">
     <input type="hidden" name="down" value="<?=$down?>">

@@ -25,22 +25,22 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($action=="admin") && ($todo=="")){
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";?>
-<table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center" class="lmost1"><?=$text[92];?></td>
+    <td align="center"><h1><?=$text[92];?></h1></td>
   </tr>
   <tr>
-    <td align="center" class="lmost3">
-      <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+    <td align="center">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td class="lmost5">
+          <td class="lmost5" align="left">
             <ul><? 
   if($_SESSION["lmouserok"]==2){ ?>
-              <li class="lmoadminli"><?="<a href='".$adda."new'>".$text[93]."</a>";?></li><?
+              <li ><?="<a href='".$adda."new'>".$text[93]."</a>";?></li><?
   }?>
-              <li class="lmoadminli"><?=$text[94];?>:<? $ftype=".l98"; require(PATH_TO_LMO."/lmo-admindir.php");?></li><? 
+              <li ><?=$text[94];?>:<? $ftype=".l98"; require(PATH_TO_LMO."/lmo-dirlist.php");?></li><? 
   if($_SESSION['lmouserok']==2){ ?>
-              <li class="lmoadminli"><?="<a href='".$adda."delete'>".$text[95]."</a>"; ?></li>
+              <li><?="<a href='".$adda."delete'>".$text[95]."</a>"; ?></li>
               <li class="lmoadminli"><?="<a href='".$adda."upload'>".$text[96]."</a>"; ?></li><? 
   }?>
               <li class="lmoadminli"><?="<a href='".$adda."download'>".$text[349]."</a>"; ?></li><? 

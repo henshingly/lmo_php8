@@ -54,8 +54,7 @@ if ($action == "tipp") {
     $tipp_tipptabelle1 = 1;
   }
   if ($tipp_tippmodus == 1 && $todo == "edit") {?>
-<script type="text/javascript">
-<!---<?
+<script type="text/javascript"><?
   if($tipp_pfeiltipp==1){ ?>
     img0 = new Image();
     img0.src = "<?=URL_TO_IMGDIR?>/lmo-admin0.gif";
@@ -98,92 +97,19 @@ if ($action == "tipp") {
       document.getElementsByName("xtipp"+xx+y)[0].value=aa;
     }  
   }
-// --->
 </script><?
-  }?>
-<table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
+  }
+  include(PATH_TO_ADDONDIR."/tipp/lmo-tippmenu.php");
+  ?>
+
+
+  
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmomain0" colspan="3" align="center"><?=$text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></td>
+    <td colspan="3" align="center"><h1><?=$text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></h1></td>
   </tr>
   <tr>
-    <td class="lmomain1">
-      <nobr><?
-  if ($todo != "") {
-    echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp\" title=\"".$text['tipp'][53]."\">".$text['tipp'][52]."</a>";
-  } else {
-    echo $text['tipp'][52];
-  }
-  echo "&nbsp;&nbsp;";
-  if ($file == "viewer") {
-    echo $text['tipp'][9]."&nbsp;&nbsp;";
-  } elseif($file != "") {
-    if ($tipp_sttipp != -1) {
-      if ($todo != "edit") {
-        echo "<a href=\"".$adda."edit&amp;file=".$file."&amp;st=".$st."\" title=\"".$text['tipp'][9]."\">".$text['tipp'][9]."</a>";
-      } else {
-        echo $text['tipp'][9];
-      }
-      echo "&nbsp;&nbsp;";
-    }
-    if ($tipp_tippeinsicht == 1) {
-      if ($todo != "einsicht") {
-        echo "<a href=\"".$adda."einsicht&amp;file=".$file."&amp;st=".$st."\" title=\"".$text['tipp'][157]."\">".$text['tipp'][157]."</a>";
-      } else {
-        echo $text['tipp'][157];
-      }
-      echo "&nbsp;&nbsp;";
-    }
-    if ($lmtype == 0 && $tipp_tipptabelle1 == 1) {
-      if ($todo != "tabelle") {
-        echo "<a href=\"".$adda."tabelle&amp;file=".$file."\" title=\"".$text['tipp'][173]."\">".$text['tipp'][172]."</a>";
-      } else {
-        echo $text['tipp'][172];
-      }
-      echo "&nbsp;&nbsp;";
-    }
-    if ($tipp_tippfieber == 1) {
-      if ($todo != "fieber") {
-        echo "<a href=\"".$adda."fieber&amp;file=".$file."\" title=\"".$text[134]."\">".$text[133]."</a>";
-      } else {
-        echo $text[133];
-      }
-      echo "&nbsp;&nbsp;";
-    }
-    if ($todo != "wert" || $all == 1) {
-      echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=einzel\" title=\"".$text['tipp'][54]."\">".$text['tipp'][54]."</a>";
-    } else {
-      echo $text['tipp'][54];
-    }
-    echo "&nbsp;&nbsp;";
-  }
-  /*
-  if($tipp_gesamt==1){
-    if($todo!="wert" || $all!=1){echo "<a href=\"".$adda."wert&amp;file=".$file."&amp;wertung=einzel&amp;all=1\" title=\"".$text['tipp'][56]."\">".$text['tipp'][56]."</a>";}
-    else{echo $text['tipp'][56];}
-  }
-  echo "&nbsp;&nbsp;";
-*/?>
-      </nobr>
-    </td>
-    <td class="lmomain1" width="8">&nbsp;</td>
-    <td class="lmomain1" align="right">
-      <nobr><?
-  if($tipp_regeln==1){?>
-        <a href='<?=URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,"regeln","resizable=yes");return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
-  }
-  echo "<a href=\"".$adda."logout\">".$text[88]."</a>";
-  echo "&nbsp;&nbsp;";
-  if ($todo != "info") {
-    echo "<a href=\"".$adda."info&amp;file=".$file."\" title=\"".$text[21]."\">".$text[20]."</a>";
-  } else {
-    echo $text[20];
-  }
-  echo "&nbsp;";?>
-      </nobr>
-    </td>
-  </tr>
-  <tr>
-    <td class="lmomain1" colspan="3" align="center"><?
+    <td colspan="3" align="center"><?
   if ($_SESSION["lmotipperok"] == 5) {
     if ($file != "" && $file != "viewer") {
       $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, strrpos($file, "/")+1, -4)."_".$lmotippername.".tip";
@@ -210,7 +136,7 @@ if ($action == "tipp") {
   ?>
     </td>
   </tr><? 
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
+ // require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
 </table>
 <?
 }?>

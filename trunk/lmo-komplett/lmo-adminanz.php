@@ -57,16 +57,16 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
 ?>
 
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center" class="lmost3">
+    <td align="center">
       <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?PHP echo $file; ?>">
         <input type="hidden" name="st" value="<?PHP echo $st; ?>">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td class="lmost4" colspan="3"><?PHP echo $text[340]; ?></td>
           </tr>
@@ -76,7 +76,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
             <td class="lmost5">
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xanzst" size="3" maxlength="3" value="<?=$anzst?>" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
+                  <td class="lmost5" align="right"><input class="lmo-formular-input" type="text" name="xanzst" size="3" maxlength="3" value="<?=$anzst?>" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
                   <td class="lmost5" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -97,7 +97,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
             <td class="lmost5">
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xanzsp" size="2" maxlength="2" value="<?=$anzsp?>" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
+                  <td class="lmost5" align="right"><input class="lmo-formular-input" type="text" name="xanzsp" size="2" maxlength="2" value="<?=$anzsp?>" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
                   <td class="lmost5" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -114,7 +114,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
           </tr>
           <tr>
             <td class="lmost4" colspan="3" align="right">
-              <acronym title="<?PHP echo $text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<?PHP echo $text[188]; ?>"></acronym>
+              <acronym title="<?PHP echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="best" value="<?PHP echo $text[188]; ?>"></acronym>
             </td>
           </tr>
         </table>

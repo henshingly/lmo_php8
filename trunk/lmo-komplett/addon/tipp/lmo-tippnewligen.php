@@ -66,21 +66,21 @@ if (($action == "tipp") && ($todo == "newligen")) {
     }
   } // end ($newpage==1)
 ?>
-<table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center" class="lmost1"><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></td>
+    <td align="center" class="active"><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></td>
   </tr>
   <tr>
-    <td align="center" class="lmost1"><?=$text['tipp'][135]; ?></td>
+    <td align="center" class="active"><?=$text['tipp'][135]; ?></td>
   </tr>
   <tr>
-    <td align="center" class="lmost3"><? 
+    <td align="center"><? 
   if($newpage!=1){ ?>
       <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="newligen">
         <input type="hidden" name="newpage" value="1">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td class="lmost5">
               <nobr><? $ftype=".l98"; require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); ?></nobr>
@@ -89,7 +89,7 @@ if (($action == "tipp") && ($todo == "newligen")) {
     if($i!=0){ ?>
           <tr>
             <td class="lmost4" colspan="3" align="right">
-              <input class="lmoadminbut" type="submit" name="xtippersub" value="<?=$text['tipp'][11]; ?>">
+              <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text['tipp'][11]; ?>">
             </td>
           </tr><? 
     } ?>
@@ -98,7 +98,7 @@ if (($action == "tipp") && ($todo == "newligen")) {
   }
   
   if($newpage==1){ /* Anmeldung erfolgreich */?>
-      <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmost5" align="center">  <?=$text['tipp'][20]; ?></td>
         </tr>
@@ -106,7 +106,7 @@ if (($action == "tipp") && ($todo == "newligen")) {
   }
   
   if($newpage==1 || $i==0){ /* zurück zur Übersicht */?>
-      <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmost4" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>
         </tr>

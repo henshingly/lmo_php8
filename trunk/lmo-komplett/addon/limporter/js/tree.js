@@ -1,6 +1,6 @@
 // Title: Tigra Tree
 // Description: See the demo at url
-// URL: http://www.softcomplex.com/products/tigra_menu_tree/
+// URL: http://www.softcomplex.com/products/tigra_lmoMenu_tree/
 // Version: 1.1
 // Date: 11-12-2002 (mm-dd-yyyy)
 // Contact: feedback@softcomplex.com (specify product title in the subject)

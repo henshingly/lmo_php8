@@ -157,54 +157,54 @@ if (($action == "tipp") && ($todo == "daten")) {
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
   } // end ($newpage==1)
 ?>
-<table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center" class="lmost1">
+    <td align="center" class="active">
       <?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?>
     </td>
   </tr>
-  <tr><td align="center" class="lmost1"><?=$text['tipp'][106];if($tipp_tipperimteam>=0){echo " / ".$text['tipp'][2];} ?></td></tr>
+  <tr><td align="center" class="active"><?=$text['tipp'][106];if($tipp_tipperimteam>=0){echo " / ".$text['tipp'][2];} ?></td></tr>
   <tr>
-    <td align="center" class="lmost3">
+    <td align="center">
       <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="daten">
         <input type="hidden" name="newpage" value="1">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 <?if($newpage!=1){ 
     if($tipp_realname!=-1){ ?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym><?=" ".$text['tipp'][14]; ?></acronym></td>
-            <td class="lmost5"><acronym><input class="lmoadminein" type="text" name="xtippervorname" size="25" maxlength="32" value="<?=substr($dummb[3],0,strpos($dummb[3]," ")); ?>"></acronym></td>
+            <td class="lmost5"><acronym><input class="lmo-formular-input" type="text" name="xtippervorname" size="25" maxlength="32" value="<?=substr($dummb[3],0,strpos($dummb[3]," ")); ?>"></acronym></td>
           </tr>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym><?=" ".$text['tipp'][15]; ?></acronym></td>
-            <td class="lmost5"><acronym><input class="lmoadminein" type="text" name="xtippernachname" size="25" maxlength="32" value="<?=substr($dummb[3],strpos($dummb[3]," ")+1); ?>"></acronym></td>
+            <td class="lmost5"><acronym><input class="lmo-formular-input" type="text" name="xtippernachname" size="25" maxlength="32" value="<?=substr($dummb[3],strpos($dummb[3]," ")+1); ?>"></acronym></td>
           </tr>
 <?   }
      if($tipp_adresse==1){ ?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym><?=" ".$text['tipp'][126]; ?></acronym></td>
-            <td class="lmost5"><acronym><input class="lmoadminein" type="text" name="xtipperstrasse" size="25" maxlength="32" value="<?=$dummb[6]; ?>"></acronym></td>
+            <td class="lmost5"><acronym><input class="lmo-formular-input" type="text" name="xtipperstrasse" size="25" maxlength="32" value="<?=$dummb[6]; ?>"></acronym></td>
           </tr>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym><?=" ".$text['tipp'][127]; ?></acronym></td>
-            <td class="lmost5"><acronym><input class="lmoadminein" type="text" name="xtipperplz" size="7" maxlength="5" value="<?=$dummb[7]; ?>"></acronym></td>
+            <td class="lmost5"><acronym><input class="lmo-formular-input" type="text" name="xtipperplz" size="7" maxlength="5" value="<?=$dummb[7]; ?>"></acronym></td>
           </tr>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym><?=" ".$text['tipp'][128]; ?></acronym></td>
-            <td class="lmost5"><acronym><input class="lmoadminein" type="text" name="xtipperort" size="25" maxlength="32" value="<?=$dummb[8]; ?>"></acronym></td>
+            <td class="lmost5"><acronym><input class="lmo-formular-input" type="text" name="xtipperort" size="25" maxlength="32" value="<?=$dummb[8]; ?>"></acronym></td>
           </tr>
 <?   } ?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><acronym><?=" ".$text['tipp'][16]; ?></acronym></td>
-            <td class="lmost5"><acronym><input class="lmoadminein" type="text" name="xtipperemail" size="25" maxlength="64" value="<?=$dummb[4]; ?>"></acronym></td>
+            <td class="lmost5"><acronym><input class="lmo-formular-input" type="text" name="xtipperemail" size="25" maxlength="64" value="<?=$dummb[4]; ?>"></acronym></td>
           </tr>
           <tr>
             <td class="lmost4" align="left" colspan="3"><?=$text['tipp'][207]; ?></td>
@@ -240,13 +240,13 @@ if (($action == "tipp") && ($todo == "daten")) {
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5"><input type="radio" name="xtippervereinradio" value="2" <?if($xtippervereinradio==2){echo "checked";} ?>><?=$text['tipp'][49]; ?></td>
-            <td class="lmost5"><input class="lmoadminein" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?=$xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></td>
+            <td class="lmost5"><input class="lmo-formular-input" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?=$xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></td>
           </tr>
 <?}?>
 <?if($gef==1){ ?>
           <tr>
             <td class="lmost4" colspan="3" align="right">
-              <input class="lmoadminbut" type="submit" name="xtippersub" value="<?=$text[329]; ?>">
+              <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text[329]; ?>">
             </td>
           </tr>
           <tr>

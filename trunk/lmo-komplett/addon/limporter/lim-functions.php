@@ -21,7 +21,7 @@
 
 function colSelection($elementName,$elementValue,&$rows,$header) {
 	if (!isset($elementValue)) {$elementValue=-1;}
-	echo "<select class=\"lmoadminein\" name=\"".$elementName."\">\n";
+	echo "<select class=\"lmo-formular-input\" name=\"".$elementName."\">\n";
 	echo "<option value=-1";
 	if($elementValue==-1){echo " selected";}
 	echo ">ignorieren</option>\n";
@@ -45,7 +45,7 @@ function formatSelection($elementName,$elementValue,$keyString,$valueString,$del
 		echo "<input type=\"hidden\" name=\"".$elementName."\" value=0>\n";
 	}
 	else {
-		echo "<select class=\"lmoadminein\" name=\"".$elementName."\">\n";
+		echo "<select class=\"lmo-formular-input\" name=\"".$elementName."\">\n";
 			echo "<option value=0";if($elementValue==0){echo " selected";}echo ">gesamter Zelleninhalt</option>\n";
 		for ($x=1;$x<=count($keys);$x++) {
 			echo "<option value=$x";if($elementValue==$x){echo " selected";}echo ">".$keys[$x-1]."</option>\n";

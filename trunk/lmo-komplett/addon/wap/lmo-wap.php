@@ -103,7 +103,7 @@ function index($dirliga,$begin,$wap_anzahl_ligen_pro_seite)
     fclose($datei);
     }
     $i++;
-    if($t0==""){$j++;$t0="Unbenannte Liga ".$j;}
+    if($t0==""){$j++;$t0=$text[507].$j;}
     if($t1!=""){
       if($t2==$text[2]){
         $t3=" / ".$t1.".".$text[145];

@@ -34,29 +34,38 @@ if ($breit < $vergleich) {
 }
 $image = imagecreate($breit, $hoch);
 imageinterlace($image, 0);
- 
-$farbe_body = imagecolorallocate($image, 255, 255, 255);
-$farbe_a = imagecolorallocate($image, 0, 0, 0);  //Schrift
-$farbe_b = imagecolorallocate($image, 192, 192, 192);  //Gitter
+
+$color = isset($lmo_inner_background1)?get_color($lmo_inner_background1):array(255, 255, 255);
+$farbe_body = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Hintergrund
+
+$luminanz=0.3*$color[0] + 0.59*$color[1] + 0.11*$color[2];
+$color = $luminanz > 127?array(($color[0]+190-$luminanz),($color[1]+190-$luminanz),($color[2]+190-$luminanz)):array(($color[0]+127-$luminanz),($color[1]+127-$luminanz),($color[2]+127-$luminanz));
+
+$farbe_b = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Gitter
+
+$color = isset($lmo_inner_color1)?get_color($lmo_inner_color1):array(0, 0, 0);
+$farbe_a = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Schrift
+
+
 $farbe_c = imagecolorallocate($image, 0, 0, 255);  //Linie1 & Mannschaft1
 $farbe_d = imagecolorallocate($image, 255, 0, 0);  //Linie2 & Mannschaft2
-isset($tabftab1)?$color = get_color($tabftab1):
- $color = array(237, 244, 156);
+
+$color = isset($lmo_tabelle_background1)?get_color($lmo_tabelle_background1):array(237, 244, 156);
 $farbe_e = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Meister
-isset($tabftab2)?$color = get_color($tabftab2):
- $color = array(204, 205, 254);
+
+$color = isset($lmo_tabelle_background2)?get_color($lmo_tabelle_background2):array(204, 205, 254);
 $farbe_f = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Champleague
-isset($tabftab3)?$color = get_color($tabftab3):
- $color = array(166, 238, 237);
+
+$color = isset($lmo_tabelle_background3)?get_color($lmo_tabelle_background3):array(166, 238, 237);
 $farbe_g = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Champquali
-isset($tabftab4)?$color = get_color($tabftab4):
- $color = array(192, 255, 192);
+
+$color = isset($lmo_tabelle_background4)?get_color($lmo_tabelle_background4):array(192, 255, 192);
 $farbe_h = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //UEFA
-isset($tabftab6)?$color = get_color($tabftab6):
- $color = array(255, 187, 208);
+
+$color = isset($lmo_tabelle_background6)?get_color($lmo_tabelle_background6):array(255, 187, 208);
 $farbe_i = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Abstieg
-isset($tabftab5)?$color = get_color($tabftab5):
- $color = array(255, 208, 239);
+
+$color = isset($lmo_tabelle_background5)?get_color($lmo_tabelle_background5):array(255, 208, 239);
 $farbe_j = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Abstiegsrelegation
 
 
@@ -126,9 +135,10 @@ for($i = 1; $i <= $pgteams; $i++) {
     }
   }
 }
-imagestring($image, 3, 3, 1, stripslashes($pgteam1), $farbe_c);  //Mannschaftsname1
+
+imagestring($image, 3, 3, 1, rawurldecode(stripslashes($pgteam1)), $farbe_c);  //Mannschaftsname1
 if ($pganz == 2) {
-  imagestring($image, 3, $breit-imagefontwidth(3) * strlen(stripslashes($pgteam2))-2, 1, stripslashes($pgteam2), $farbe_d); //Mannschaftsname2
+  imagestring($image, 3, $breit-imagefontwidth(3) * strlen(stripslashes($pgteam2))-2, 1, rawurldecode(stripslashes($pgteam2)), $farbe_d); //Mannschaftsname2
 }
 $linie = explode(',', $pgplatz1);
 if ($pganz == 2) {

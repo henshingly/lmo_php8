@@ -65,7 +65,7 @@ if(isset($ximporturl)){
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class ="lmost1" colspan=2 align="left">CSV - Importeinstellungen</td>
+      <td class ="active" colspan=2 align="left">CSV - Importeinstellungen</td>
     </tr>
     <tr>
     <td class="lmost5" colspan="3">&nbsp;So sieht der zu importierende Spielplan aus: <a href='<?PHP echo $ximporturl;?>' target="_blank">URL zeigen</a></td>
@@ -78,17 +78,17 @@ if(isset($ximporturl)){
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right">CSV-Trennzeichen&nbsp;</td>
-      <td class="lmost5" align="left"><input class="lmoadminein" type="text" name="csvchar" size="2" maxlength="1" value=<?PHP echo $csvchar; ?>>&nbsp;</td>
+      <td class="lmost5" align="left"><input class="lmo-formular-input" type="text" name="csvchar" size="2" maxlength="1" value=<?PHP echo $csvchar; ?>>&nbsp;</td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right">Spielplandaten&nbsp;</td>
-      <td class="lmost5" align="left">beginnen ab Zeile&nbsp;<input class="lmoadminein" type="text" name="xoffset" size="2" maxlength="1" value=<?PHP echo $xoffset; ?>>&nbsp;</td>
+      <td class="lmost5" align="left">beginnen ab Zeile&nbsp;<input class="lmo-formular-input" type="text" name="xoffset" size="2" maxlength="1" value=<?PHP echo $xoffset; ?>>&nbsp;</td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right">1. Datenzeile enth&auml;lt&nbsp;</td>
-      <td class="lmost5" align="left">Spaltentitel&nbsp;<input class="lmoadminein" type="checkbox" name="header" <?PHP if($header==1){echo " checked";} ?> value="1"></td>
+      <td class="lmost5" align="left">Spaltentitel&nbsp;<input class="lmo-formular-input" type="checkbox" name="header" <?PHP if($header==1){echo " checked";} ?> value="1"></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
@@ -184,15 +184,15 @@ if(isset($ximporturl)){
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td align="left" colspan=2 class="lmost5"><input class="lmoadminbut" type="submit" name="vorschau" value="CSV-Vorschau">&nbsp;
+      <td align="left" colspan=2 class="lmost5"><input class="lmo-formular-button" type="submit" name="vorschau" value="CSV-Vorschau">&nbsp;
         Vorschau mit
-        <input class="lmoadminein" type="text" name="datarows" size="3" maxlength="3" value=<?PHP echo $datarows; ?>>
+        <input class="lmo-formular-input" type="text" name="datarows" size="3" maxlength="3" value=<?PHP echo $datarows; ?>>
         Zeilen.</td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td align="left" class ="lmost5" colspan=2>
-      <input class="lmoadminein" type="checkbox" name="showall" <?PHP if($showall==1){echo " checked";} ?> value="1">&nbsp;nicht verwendete Spalten
+      <input class="lmo-formular-input" type="checkbox" name="showall" <?PHP if($showall==1){echo " checked";} ?> value="1">&nbsp;nicht verwendete Spalten
         ausblenden&nbsp;</td>
     </tr>
     <tr>

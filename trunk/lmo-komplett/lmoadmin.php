@@ -23,7 +23,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 define('LMO_AUTH', 1);
-require_once("init.php");
+require("init.php");
 if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
 if(!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
 if(!isset($_SESSION["lmouserpass"])){$_SESSION["lmouserpass"]="";}
@@ -56,6 +56,7 @@ setlocale (LC_TIME, "de_DE");
 require(PATH_TO_LMO."/lmo-adminauth.php");
 
 if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0){
+  if (isset($file) && ($todo=="open" || $todo=="")) $todo="edit";
   require(PATH_TO_LMO."/lmo-adminmain.php");
 }
 ?>

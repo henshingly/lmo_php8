@@ -43,11 +43,11 @@ if($file!="" && $tipp_tippfieber==1){
   <input type="hidden" name="todo" value="fieber">
   <input type="hidden" name="file" value="<?=$file; ?>">
   <input type="hidden" name="save" value="1">
-  <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+  <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
     <tr>
-      <td class="lmost1"><? echo $text['tipp'][164]." 1";?></td>
-      <td class="lmost1"><? echo $text['tipp'][164]." 2";?></td>
-      <td class="lmost1"><? echo $text['tipp'][283];?></td>
+      <td class="active"><? echo $text['tipp'][164]." 1";?></td>
+      <td class="active"><? echo $text['tipp'][164]." 2";?></td>
+      <td class="active"><? echo $text['tipp'][283];?></td>
       <td></td>
     </tr>
     <tr>
@@ -88,8 +88,8 @@ if($file!="" && $tipp_tippfieber==1){
     </tr><?
   if (isset($tippernick) && count($tippernick)>1) {?>
     <tr>
-      <td colspan="4" align="center" class="lmost3">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><?
+      <td colspan="4" align="center">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
     if ($fieber_stat1<0 && $fieber_stat2>=0) {
       $fieber_stat1=$fieber_stat2;
       $fieber_stat2=-1;

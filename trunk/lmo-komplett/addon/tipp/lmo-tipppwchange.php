@@ -97,46 +97,46 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
   } // end ($newpage==1)
 ?>
-<table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center" class="lmost1"><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></td>
+    <td align="center" class="active"><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></td>
   </tr>
   <tr>
-    <td align="center" class="lmost1"><?=$text['tipp'][107]; ?></td>
+    <td align="center" class="active"><?=$text['tipp'][107]; ?></td>
   </tr>
   <tr>
-    <td align="center" class="lmost3"><? 
+    <td align="center"><? 
   if($newpage!=1){ ?>
       <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="pwchange">
         <input type="hidden" name="newpage" value="1">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><?=" ".$text['tipp'][140]; ?></td>
-            <td class="lmost5"><input class="lmoadminein" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>"></td>
+            <td class="lmost5"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>"></td>
           </tr>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><?=" ".$text['tipp'][139]; ?></td>
-            <td class="lmost5"><input class="lmoadminein" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?=$xtipperpassneu; ?>"></td>
+            <td class="lmost5"><input class="lmo-formular-input" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?=$xtipperpassneu; ?>"></td>
           </tr>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><?=" ".$text['tipp'][139]." ".$text['tipp'][19]; ?></td>
-            <td class="lmost5"><input class="lmoadminein" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?=$xtipperpassneuw; ?>"></td>
+            <td class="lmost5"><input class="lmo-formular-input" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?=$xtipperpassneuw; ?>"></td>
           </tr>
           <tr>
             <td class="lmost4" colspan="3" align="right">
-              <input class="lmoadminbut" type="submit" name="xtippersub" value="<?=$text[329]; ?>">
+              <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text[329]; ?>">
             </td>
           </tr>
         </table>
       </form><? 
   }
   if($newpage==1){ /* erfolgreich */?>
-      <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmost5" align="center"><?=$text['tipp'][121]; ?></td>
         </tr>

@@ -1,8 +1,8 @@
 /*
 	the format of the tree definition file is simple,
-	you can find specification in the Tigra Menu documentation at:
+	you can find specification in the Tigra lmoMenu documentation at:
 
-	http://www.softcomplex.com/products/tigra_menu/docs/items.html
+	http://www.softcomplex.com/products/tigra_lmoMenu/docs/items.html
 */
 
 var TREE_ITEMS1 = [

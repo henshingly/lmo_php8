@@ -90,7 +90,7 @@
       isset($_POST["xakteinsicht"])?                          $tipp_akteinsicht=1:                                    $tipp_akteinsicht=0;
       break;
     case 7:
-      isset($_POST["xeinsichterst"])?                         $tipp_einsichterst=1:                                   $tipp_einsichterst=0;
+      isset($_POST["xeinsichterst"])?                         $tipp_einsichterst=$_POST["xeinsichterst"]:             $tipp_einsichterst=0;
       isset($_POST["xanzseite"])  &&
         is_numeric($_POST["xanzseite"]) &&
         intval($_POST["xanzseite"])>0 ?                       $tipp_anzseite=$_POST["xanzseite"]:                     $tipp_anzseite=40;

@@ -38,30 +38,38 @@ if($save==1){
   require(PATH_TO_LMO."/lmo-savecfg.php");
   require(PATH_TO_LMO."/lmo-cfgload.php");
 }?>
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0" width="100%">
+<table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center" colspan="2"><?=$text[498]?></td>
+    <td align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
+    <td align="center"><?=$text[497]?></td>
+    <td align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
+    <td align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
+  </tr>
+</table>
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tr>
+    <td align="center" colspan="2"><h1><?=$text[498]?></h1></td>
   </tr>
   <tr>
     <td valign="top">
-      <table cellspacing="0" cellpadding="0" border="0"><?
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
 $testshow=0;
 foreach($cfgarray as $addon_name => $addon_cfg) {
   if (is_array($addon_cfg)) {?>
-        <tr><td align="right"<?if ($show==$testshow) {?> class="lmost1"><?=$addon_name;?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=addons&amp;show=".$testshow;?>"><?=$addon_name;?></a><?}?></td></tr><?
+        <tr><td align="right"<?if ($show==$testshow) {?> class="active"><?=$addon_name;?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=addons&amp;show=".$testshow;?>"><?=$addon_name;?></a><?}?></td></tr><?
     $testshow++;
   }
 }?>
       </table>
     </td>
-    <td align="left" valign="top" class="lmost3">
+    <td align="left" valign="top">
       <form name="lmoedit" action="<?=$_SERVER['PHP_SELF'];?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="addons">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?=$file;?>">
         <input type="hidden" name="show" value="<?=$show;?>">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><?
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
 $testshow=0;
 foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
   if (is_array($addon_cfg)) {
@@ -70,7 +78,7 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
         ?><tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><?=$cfg_name?></td>
-            <td class="lmost5"><input class="lmoadminein" type="text" name="x<?=$cfg_name?>" size="30" value="<?=$cfg_value;?>" onChange="dolmoedit()"></td>
+            <td class="lmost5"><input class="lmo-formular-input" type="text" name="x<?=$cfg_name?>" size="30" value="<?=$cfg_value;?>" onChange="dolmoedit()"></td>
           </tr><?
       }
     }
@@ -79,23 +87,11 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
 }?>
           <tr>
             <td class="lmost5" colspan="3" align="center">
-              <acronym title="<?=$text[114]?>"><input class="lmoadminbut" type="submit" name="best" value="<?=$text[188];?>"></acronym>
+              <input title="<?=$text[114]?>" class="lmo-formular-button" type="submit" name="best" value="<?=$text[188];?>">
             </td>
           </tr>
         </table
       </form>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-          <td class="lmost2" align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
-          <td class="lmost1" align="center"><?=$text[497]?></td>
-          <td class="lmost2" align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
-          <td class="lmost2" align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
-        </tr>
-      </table>
     </td>
   </tr>
 </table>

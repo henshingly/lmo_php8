@@ -12,112 +12,86 @@ if($tabonres==2){
   $gesamtbreite=3*$breite+11;
 }else{
   $gesamtbreite=$breite+11;
-}
-?>
-
-<table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center" colspan="<?=$gesamtbreite?>">
-      <table>
-        <tr><?
-for($i=0;$i<3;$i++){?>
-          <td <?
-  if($i<>$tabtype){?>
-            class="lmost0"><a href="<?=$addt1.$i?>" title="<?=$text[27+$i]?>"><?=$text[40+$i]?></a><?
-  }else{?>
-            class="lmost1"><?=$text[40+$i]?><?
-  }?>&nbsp;
-          </td><?
-}
-if ($einhinrueck==1) {?>
-          <td <?
-  $i++;
-  if($i<>$tabtype){?>
-             class="lmost0"><a href="<?=$_SERVER['PHP_SELF']."?action=table&amp;file=".$file."&amp;tabtype=".$i?>" title="<?=$text[4003]?>"><?=$text[4003]?></a><?
-  }else{?>
-             class="lmost1"><?=$text[4003]?><?
-  }?>&nbsp;
-          </td>
-          <td <?
-  $i--;
-  if($i<>$tabtype){?>
-                 class="lmost0"><a href="<?=$_SERVER['PHP_SELF']."?action=table&amp;file=".$file."&amp;tabtype=".$i?>" title="<?=$text[4002]?>"><?=$text[4002]?></a><?
-  }else{?>
-                 class="lmost1"><?=$text[4002]?><?
-  }?>&nbsp;
-          </td><?
 }?>
-        </tr>
-      </table>
-    </td>
-  </tr><?
 
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+  <caption><?
+if($tabtype!="0"){?><a href="<?=$addt1."0"?>" title="<?=$text[27]?>"><?=$text[40]?></a><?}else{echo $text[40];}?>&nbsp;<?
+if($tabonres!=2){
+  if($tabtype!="1"){?><a href="<?=$addt1."1"?>" title="<?=$text[28]?>"><?=$text[41]?></a><?}else{echo $text[41];}?>&nbsp;<?
+  if($tabtype!="2"){?><a href="<?=$addt1."2"?>" title="<?=$text[29]?>"><?=$text[42]?></a><?}else{echo $text[42];}?>&nbsp;<?
+}
+if ($einhinrueck==1) {
+  if($tabtype!="4"){?><a href="<?=$addt1."4"?>" title="<?=$text[4003]?>"><?=$text[4003]?></a><?}else{echo $text[4003];}?>&nbsp;<?
+  if($tabtype!="3"){?><a href="<?=$addt1."3"?>" title="<?=$text[4002]?>"><?=$text[4002]?></a><?}else{echo $text[4002];}
+}?>
+  </caption><?
 /*Inklusive Heim & Auswärts*/
 if($tabonres==2){?>
   <tr>
-    <td class="lmost4" colspan="7"><?=$st.". ".$text[2];?>&nbsp;</td>
-    <td class="lmost4" colspan="<?=$breite; ?>">&nbsp;</td>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="<?=$breite; ?>"><?=$text[41]; ?></td>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="<?=$breite; ?>"><?=$text[42]; ?></td>
+    <th align="left" colspan="7"><?=$st.". ".$text[2];?>&nbsp;</th>
+    <th colspan="<?=$breite; ?>">&nbsp;</th>
+    <th width="2">&nbsp;</th>
+    <th align="left" colspan="<?=$breite; ?>"><?=$text[41]; ?></th>
+    <th width="2">&nbsp;</th>
+    <th align="left" colspan="<?=$breite; ?>"><?=$text[42]; ?></th>
   </tr><? 
 }?>
   <tr>
-    <td class="lmost4" colspan="7"><?if($tabonres!=2){echo $st.". ".$text[2];}?>&nbsp;</td>
-    <td class="lmost4" align="right"><?=$text[33]; ?></td>
-    <td class="lmost4" align="right"><?=$text[34]; ?></td><?  
+    <th align="left" colspan="7"><?if($tabonres!=2){echo $st.". ".$text[2];}?>&nbsp;</th>
+    <th align="right"><?=$text[33]; ?></th>
+    <th align="right"><?=$text[34]; ?></th><?  
 if($hidr!=1){?>
-    <td class="lmost4" align="right"><?=$text[35]; ?></td><?
+    <th align="right"><?=$text[35]; ?></th><?
 }?>
-    <td class="lmost4" align="right"><?=$text[36]; ?></td><?  
+    <th align="right"><?=$text[36]; ?></th><?  
 if($tabpkt==0){?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" <?=$dummy?>><?=$text[37]?></td><? 
+    <th width="2">&nbsp;</th>
+    <th <?=$dummy?>><?=$text[37]?></th><? 
 }?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="3" align="center"><?=$text[38]; ?></td>
-    <td class="lmost4" align="right"><?=$text[39]; ?></td><?
+    <th width="2">&nbsp;</th>
+    <th colspan="3" align="center"><?=$text[38]; ?></th>
+    <th align="right"><?=$text[39]; ?></th><?
 if($tabpkt==1){?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" <?=$dummy?>><?=$text[37]?></td><? 
+    <th width="2">&nbsp;</th>
+    <th <?=$dummy?>><?=$text[37]?></th><? 
 }
 if($tabonres==2){?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" align="right"><?=$text[33]; ?></td>
-    <td class="lmost4" align="right"><?=$text[34]; ?></td><?
+    <th width="2">&nbsp;</th>
+    <th align="right"><?=$text[33]; ?></th>
+    <th align="right"><?=$text[34]; ?></th><?
   if($hidr!=1){?>
-    <td class="lmost4" align="right"><?=$text[35]?></td><? 
+    <th align="right"><?=$text[35]?></th><? 
   } ?>
-    <td class="lmost4" align="right"><?=$text[36]; ?></td><?  
+    <th align="right"><?=$text[36]; ?></th><?  
   if($tabpkt==0){?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" <?=$dummy?>><?=$text[37]?></td><? 
+    <th width="2">&nbsp;</th>
+    <th <?=$dummy?>><?=$text[37]?></th><? 
   } ?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="3" align="center"><?=$text[38]; ?></td>
-    <td class="lmost4" align="right"><?=$text[39]; ?></td><?  
+    <th width="2">&nbsp;</th>
+    <th colspan="3" align="center"><?=$text[38]; ?></th>
+    <th align="right"><?=$text[39]; ?></th><?  
   if($tabpkt==1){?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" <?=$dummy?>><?=$text[37]?></td><? 
+    <th width="2">&nbsp;</th>
+    <th <?=$dummy?>><?=$text[37]?></th><? 
   }?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" align="right"><?=$text[33]; ?></td>
-    <td class="lmost4" align="right"><?=$text[34]; ?></td><?  
+    <th width="2">&nbsp;</th>
+    <th align="right"><?=$text[33]; ?></th>
+    <th align="right"><?=$text[34]; ?></th><?  
   if($hidr!=1){?>
-    <td class="lmost4" align="right"><?=$text[35]?></td><? 
+    <th align="right"><?=$text[35]?></th><? 
   }?>
-    <td class="lmost4" align="right"><?=$text[36]; ?></td><?  
+    <th align="right"><?=$text[36]; ?></th><?  
   if($tabpkt==0){?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" <?=$dummy?>><?=$text[37]?></td><? 
+    <th width="2">&nbsp;</th>
+    <th<?=$dummy?>><?=$text[37]?></th><? 
   }?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="3" align="center"><?=$text[38]; ?></td>
-    <td class="lmost4" align="right"><?=$text[39]; ?></td><?  
+    <th width="2">&nbsp;</th>
+    <th colspan="3" align="center"><?=$text[38]; ?></th>
+    <th align="right"><?=$text[39]; ?></th><?  
   if($tabpkt==1){?>
-    <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" <?=$dummy?>><?=$text[37]?></td><? 
+    <th width="2">&nbsp;</th>
+    <th <?=$dummy?>><?=$text[37]?></th><? 
   }
 }?>
   </tr><?
@@ -132,30 +106,31 @@ for($x = 1; $x <= $anzteams; $x++) {
     $dummy = "";
     $dumm2 = "";
   }
-  $dumm1 = "lmost5";
+  $lmo_tabelle_class = "lmost5";
   if ($tabtype == 0) {
     if (($x == 1) && ($champ != 0)) {
-      $dumm1 = "lmotab1";
+      $lmo_tabelle_class = "lmoTabelleMeister";
       $j = 2;
     }
     if (($x >= $j) && ($x < $j+$anzcl) && ($anzcl > 0)) {
-      $dumm1 = "lmotab2";
+      $lmo_tabelle_class = "lmoTabelleCleague";
     }
     if (($x >= $j+$anzcl) && ($x < $j+$anzcl+$anzck) && ($anzck > 0)) {
-      $dumm1 = "lmotab3";
+      $lmo_tabelle_class = "lmoTabelleCleaguequali";
     }
     if (($x >= $j+$anzcl+$anzck) && ($x < $j+$anzcl+$anzck+$anzuc) && ($anzuc > 0)) {
-      $dumm1 = "lmotab4";
-    }
-    if (($x <= $anzteams) && ($x > $anzteams-$anzab) && ($anzab > 0)) {
-      $dumm1 = "lmotab5";
+      $lmo_tabelle_class = "lmoTabelleUefa";
     }
     if (($x <= $anzteams-$anzab) && ($x > $anzteams-$anzab-$anzar) && ($anzar > 0)) {
-      $dumm1 = "lmotab8";
+      $lmo_tabelle_class = "lmoTabelleRelegation";
     }
+    if (($x <= $anzteams) && ($x > $anzteams-$anzab) && ($anzab > 0)) {
+      $lmo_tabelle_class = "lmoTabelleAbsteiger";
+    }
+    
   }?>
   <tr>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$x.$dumm2; ?></td><? 
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$x.$dumm2; ?></td><? 
   $y = 0;
   if ($endtab > 1) {
     if ($platz0[$i] < $platz1[$i]) {
@@ -164,26 +139,22 @@ for($x = 1; $x <= $anzteams; $x++) {
       $y = 2;
     }
   }?>
-    <td class="<?=$dumm1?>"><img src='<?=URL_TO_IMGDIR."/lmo-tab".$y.".gif";?>' width="9" height="9" border="0" alt=''></td>
-    <td class="<?=$dumm1?>" align="center"><?
+    <td class="<?=$lmo_tabelle_class?>"><img src='<?=URL_TO_IMGDIR."/lmo-tab".$y.".gif";?>' width="9" height="9" border="0" alt=''></td>
+    <td class="<?=$lmo_tabelle_class?>" align="center"><?
   if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
     $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");?>
       <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt=""><?
   }?>
     </td>
-    <td class="<?=$dumm1; ?>" align="left">
-      <nobr><? 
-  if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        <a href="<?=$teamu[$i]?>" target="_blank" title="<?=$text[46]?>"><?
-  }
+    <td class="<?=$lmo_tabelle_class; ?> nobr" align="left"><? 
   echo $dummy.$teams[$i].$dumm2;
   if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        </a><?
+        <a href="<?=$teamu[$i]?>" target="_blank" title="<?=$text[46]?>">»</a><?
   }?>
-      </nobr>
+  
     </td>
-    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?=$dumm1; ?>"><? 
+    <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+    <td class="<?=$lmo_tabelle_class; ?>"><? 
     
   if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
     if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
@@ -230,91 +201,91 @@ for($x = 1; $x <= $anzteams; $x++) {
     echo "&nbsp;";
   }?>
     </td>
-    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$spiele[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$siege[$i].$dumm2; ?></td><?
+    <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$spiele[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$siege[$i].$dumm2; ?></td><?
   if($hidr!=1){ ?>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$unent[$i].$dumm2; ?></td><? 
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$unent[$i].$dumm2; ?></td><? 
   } ?>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$nieder[$i].$dumm2; ?></td><? 
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$nieder[$i].$dumm2; ?></td><? 
   if ($tabpkt == 0) {?>
-    <td class="<?=$dumm1?>" width="2">&nbsp;</td>
-    <td class="<?=$dumm1?>" align="right"><strong><?=$punkte[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td>
+    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=$punkte[$i]?></strong></td><?
     if ($minus == 2) {?>
-    <td class="<?=$dumm1?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$dumm1?>"><strong><?=$negativ[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=$negativ[$i]?></strong></td><?
     }
   }?>
       
-    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$etore[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>"><?=$dummy.$atore[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$dtore[$i].$dumm2; ?></td><? 
+    <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$etore[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.$atore[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$dtore[$i].$dumm2; ?></td><? 
   if($tabpkt==1){?>
-    <td class="<?=$dumm1?>" width="2">&nbsp;</td>
-    <td class="<?=$dumm1?>" align="right"><strong><?=$punkte[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td>
+    <td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=$punkte[$i]?></strong></td><?
     if($minus==2){?>
-    <td class=" <?=$dumm1?>" align="center" width="4"><strong>:</strong></td>
-    <td class=" <?=$dumm1?>"><strong><?=$negativ[$i]?></strong></td><?
+    <td class=" <?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
+    <td class=" <?=$lmo_tabelle_class?>"><strong><?=$negativ[$i]?></strong></td><?
     }
   }
   if($tabonres==2){
-    $dumm1="lmotab6";?>
-    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hspiele[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hsiege[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hunent[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hnieder[$i].$dumm2; ?></td><? 
+    $lmo_tabelle_class="lmoTabelleHeimbilanz";?>
+    <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$hspiele[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$hsiege[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$hunent[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$hnieder[$i].$dumm2; ?></td><? 
     if($tabpkt==0){?>
-    <td class="<?=$dumm1?>" width="2">&nbsp;</td><td class="<?=$dumm1?>" align="right"><strong><?=$hpunkte[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td><td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=$hpunkte[$i]?></strong></td><?
       if($minus==2){?>
-    <td class="<?=$dumm1?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$dumm1?>"><strong><?=$hnegativ[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=$hnegativ[$i]?></strong></td><?
       }
     }?>
-    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hetore[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>"><?=$dummy.$hatore[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hdtore[$i].$dumm2; ?></td><? 
+    <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$hetore[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.$hatore[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$hdtore[$i].$dumm2; ?></td><? 
     if($tabpkt==1){?>
-    <td class="<?=$dumm1?>" width="2">&nbsp;</td><td class="<?=$dumm1?>" align="right"><strong><?=$hpunkte[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td><td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=$hpunkte[$i]?></strong></td><?
       if($minus==2){?>
-    <td class="<?=$dumm1?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$dumm1?>"><strong><?=$hnegativ[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=$hnegativ[$i]?></strong></td><?
       }
     }
-    $dumm1="lmotab7";?>
-    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$aspiele[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$asiege[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$aunent[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$anieder[$i].$dumm2; ?></td><? 
+    $lmo_tabelle_class="lmoTabelleGastbilanz";?>
+    <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$aspiele[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$asiege[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$aunent[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$anieder[$i].$dumm2; ?></td><? 
     if($tabpkt==0){?>
-    <td class="<?=$dumm1?>" width="2">&nbsp;</td><td class="<?=$dumm1?>" align="right"><strong><?=$apunkte[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td><td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=$apunkte[$i]?></strong></td><?
       if($minus==2){?>
-    <td class="<?=$dumm1?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$dumm1?>"><strong><?=$anegativ[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=$anegativ[$i]?></strong></td><?
       }
     }?>
-    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$aetore[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>"><?=$dummy.$aatore[$i].$dumm2; ?></td>
-    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$adtore[$i].$dumm2; ?></td><? 
+    <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$aetore[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>"><?=$dummy.$aatore[$i].$dumm2; ?></td>
+    <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$adtore[$i].$dumm2; ?></td><? 
     if($tabpkt==1){?>
-    <td class="<?=$dumm1?>" width="2">&nbsp;</td><td class="<?=$dumm1?>" align="right"><strong><?=$apunkte[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" width="2">&nbsp;</td><td class="<?=$lmo_tabelle_class?>" align="right"><strong><?=$apunkte[$i]?></strong></td><?
       if($minus==2){?>
-    <td class="<?=$dumm1?>" align="center" width="4"><strong>:</strong></td>
-    <td class="<?=$dumm1?>"><strong><?=$anegativ[$i]?></strong></td><?
+    <td class="<?=$lmo_tabelle_class?>" align="center" width="4"><strong>:</strong></td>
+    <td class="<?=$lmo_tabelle_class?>"><strong><?=$anegativ[$i]?></strong></td><?
       }
     }
   }  /*tabonres==2*/?>
   </tr><?
 }/*for*/?>
   <tr>  
-    <td class="lmomain2" align="center" width="100%" colspan="<?=$gesamtbreite?>"><?  
+    <td class="lmoFooter" align="center" width="100%" colspan="<?=$gesamtbreite?>"><?  
 
 if ($einzutoretab == 1) {
   $strs = ".l98";

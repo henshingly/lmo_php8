@@ -33,10 +33,10 @@
 032=Spielerlink
 033=Die Eingabe von Spielerstatistiken ist deaktiviert. Sprechen sie mit dem Administrator über eine Aktivierung
 034=Zur Seite des Spielers
-035=SpielerAddon v1.1 &copy; R. Marth/T. Keller
+035=SpielerAddon v1.1 © R. Marth/T. Keller
 036=Nach
 037=sortieren
-038=
+038=Typ
 039=Konfiguration
 040=Vorsortierung Admin
 041=Linkbezeichnung
@@ -50,3 +50,7 @@
 049=Pfeile anzeigen
 050=Vereinsweise anzeigen
 051=Alle
+052=Zahlen
+053=Text
+054=Formel
+055=Fehler

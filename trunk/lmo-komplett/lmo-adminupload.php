@@ -38,14 +38,14 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
       echo "<p class='error'>".$text[304]."</p>";
     }
   }?>
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center" class="lmost1"><?=$text[299];?></td>
+    <td align="center"><h1><?=$text[299];?></h1></td>
   </tr>
   <tr>
-    <td align="center" class="lmost3">
+    <td align="center">
       <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
-        <table width="100%" class="lmostb" cellspacing="0" cellpadding="0" border="0">
+        <table width="100%" class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td class="lmost5" align="center"><acronym title="<?=$text[302] ?>"><?=$text[300]; ?>:</acronym></td>
           </tr>

@@ -19,19 +19,34 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if(($action=="admin") && ($todo=="download")){
-?>
-  <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
-  <td align="center" class="lmost1"><?PHP echo $text[316]; ?></td>
-  <td align="center" class="lmost1"><?PHP echo $text[345]; ?></td>
-  </tr><tr>
-  <td align="center" valign="top" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5">
-    <?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-admindowndir.php"); ?>
-  </td></tr></table></td>
-  <td align="center" valign="top" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5">
-    <?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-adminmimedir.php"); ?>
-  </td></tr></table></td>
-  </tr></table>
-<?PHP
-  }
-?>
+if(($action=="admin") && ($todo=="download")){?>
+
+<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <th align="center"><h1><?=$text[316];?></h1></th>
+    <th align="center"><h1><?=$text[345];?></h1></th>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="nobr" align="left"><?
+  $ftype=".l98"; 
+  require(PATH_TO_LMO."/lmo-admindowndir.php"); ?>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td align="center" valign="top">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="nobr" align="left"><? 
+  $ftype=".l98"; 
+  require(PATH_TO_LMO."/lmo-adminmimedir.php"); ?>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table><?
+}?>

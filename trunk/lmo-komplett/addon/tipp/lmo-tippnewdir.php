@@ -104,7 +104,7 @@ if ($ftype != "") {
       fclose($datei);
       if ($t0 == "") {
         $j++;
-        $t0 = "Unbenannte Liga ".$j;
+        $t0 = $text[507].$j;
       }
       if ($t2 == $text[370]) {
         $anzst = strlen(decbin($t4-1));
@@ -139,7 +139,7 @@ if ($ftype != "") {
     </nobr>
   </td>
   <td class="lmost5">
-    <select class="lmoadminein" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<? echo $i-1; ?>].checked=true;"><?
+    <select class="lmo-formular-input" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<? echo $i-1; ?>].checked=true;"><?
                       if ($liga == $files) {
                         if ($st > 0) {
                           $t1 = $st;
@@ -198,7 +198,7 @@ if ($ftype != "") {
         <input type="hidden" name="todo" value="tipp">
         <input type="hidden" name="save" value="<? if($iptype=="einsicht"){echo "3";}else{echo "2";} ?>">
         <input type="hidden" name="liga" value="<? echo substr($files,0,-4); ?>">
-        <select class="lmoadminein" name="st"><?
+        <select class="lmo-formular-input" name="st"><?
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
                         if ($st >= 0) {
                           $t1 = $st;
@@ -255,7 +255,7 @@ if ($ftype != "") {
                           $start1 = $start;
                         }
                       }?> 
-        <input class="lmoadminein" type="text" name="start" size="2" maxlength="4" value="<? echo $start1; ?>"><? 
+        <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<? echo $start1; ?>"><? 
                       echo $text[4]; //bis
                       $verz1 = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
                       $dummy1 = array("");
@@ -272,8 +272,8 @@ if ($ftype != "") {
                           $ende1 = $ende;
                         }
                       }?> 
-        <input class="lmoadminein" type="text" name="ende" size="2" maxlength="4" value="<? echo $ende1; ?>">
-        <input class="lmoadminbut" type="submit" name="best" value="<? if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
+        <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<? echo $ende1; ?>">
+        <input class="lmo-formular-button" type="submit" name="best" value="<? if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
       </form>
     </nobr>
   </td>

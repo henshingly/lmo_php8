@@ -89,31 +89,31 @@ if (($action == "tipp") && ($todo == "delaccount")) {
   } // end ($newpage==1)
 
 ?>
-  <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
+  <table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
     <tr>
-      <td align="center" class="lmost1"><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></td>
+      <td align="center" class="active"><?=$lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></td>
     </tr>
     <tr>
-      <td align="center" class="lmost1"><?=$text['tipp'][6]; ?></td>
+      <td align="center" class="active"><?=$text['tipp'][6]; ?></td>
     </tr>
     <tr><? 
   if($newpage!=1){ ?>
-      <td align="center" class="lmost3">
+      <td align="center">
         <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
           <input type="hidden" name="action" value="tipp">
           <input type="hidden" name="todo" value="delaccount">
           <input type="hidden" name="newpage" value="1">
-          <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+          <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
             <tr>
               <td class="lmost5" width="20">&nbsp;</td>
               <td class="lmost5" align="right"><?=" ".$text['tipp'][69]; ?></td>
               <td class="lmost5">
-                <input class="lmoadminein" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>">
+                <input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>">
               </td>
             </tr>
             <tr>
               <td class="lmost4" colspan="3" align="right">
-                <input class="lmoadminbut" type="submit" name="xtippersub" value="<?=$text[82]; ?>">
+                <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text[82]; ?>">
               </td>
             </tr>
           </table>

@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -23,196 +23,219 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if($_SESSION["lmouserok"]==2){
+if ($_SESSION["lmouserok"] == 2) {
   $users = array("");
-  if(!isset($del)){$del="";}
-  if(!isset($save)){$save=0;}
-  $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  $datei = fopen($pswfile,"rb");
+  if (!isset($del)) {
+    $del = "";
+  }
+  if (!isset($save)) {
+    $save = 0;
+  }
+  $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
+  $datei = fopen($pswfile, "rb");
   while (!feof($datei)) {
-    $zeile = fgets($datei,1000);
-    $zeile=trim(chop($zeile));
-    if($zeile!=""){array_push($users,$zeile);}
+    $zeile = fgets($datei, 1000);
+    $zeile = trim(chop($zeile));
+    if ($zeile != "") {
+      array_push($users, $zeile);
     }
+  }
   fclose($datei);
-  if($save==-1){ /// neuen User speichern
-    array_push($users,trim($_POST["xnickx"])."|".trim($_POST["xpassx"])."|5|||||||1|1|EOL");
+  if ($save == -1) {
+    /// neuen User speichern
+    array_push($users, trim($_POST["xnickx"])."|".trim($_POST["xpassx"])."|5|||||||1|1|EOL");
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
+  } elseif($del != "") {
+    $gef = 0;
+    for($i = 1; $i < count($users) && $gef == 0; $i++) {
+      $dummb = split("[|]", $users[$i]);
+      if ($del == $dummb[0]) {
+        // Nick gefunden
+        $gef = 1;
+        $del = $i;
+      }
     }
-  elseif($del!=""){
-    $gef=0;
-    for($i=1;$i<count($users) && $gef==0;$i++){
-      $dummb = split("[|]",$users[$i]);
-      if($del==$dummb[0]){ // Nick gefunden
-        $gef=1;
-        $del=$i;
+    if ($gef == 1) {
+      $userf3 = split("[|]", $users[$del]);
+      $verz = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
+      $dummy = array();
+      while ($files = readdir($verz)) {
+        if (substr($files, -4-strlen($userf3[0])) == $userf3[0].".tip") {
+          array_push($dummy, $files);
         }
       }
-    if($gef==1){
-      $userf3=split("[|]",$users[$del]);
-      $verz=opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp,0,-1));
-      $dummy=array("");
-      while($files=readdir($verz)){
-        if(substr($files,-4-strlen($userf3[0]))==$userf3[0].".tip"){array_push($dummy,$files);}
-        }
       closedir($verz);
-      array_shift($dummy);
-      $anztippfiles=count($dummy);
-      for($k=0;$k<$anztippfiles;$k++){
+      $anztippfiles = count($dummy);
+      for($k = 0; $k < $anztippfiles; $k++) {
         @unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k]); // Tipps löschen
-        }
-  
-      for($i=$del+1;$i<count($users);$i++){
-        $users[$i-1]=$users[$i];
-        }
+      }
+       
+      for($i = $del+1; $i < count($users); $i++) {
+        $users[$i-1] = $users[$i];
+      }
       array_pop($users); // die letzte Zeile abgeschnitten
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
-      }
     }
-  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tipp";
-  $addo=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions";
-  $adde=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippemail";
-?>
-
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+  }
+  include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
+  ?>
+  
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?PHP echo $text['tipp'][114] ?></td>
+    <td align="center"><h1><?=$text['tipp'][114] ?></h1></td>
   </tr>
-  <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-
-<?PHP
- if(count($users)>1){
-   if(!isset($sort)){$sort="id";}
-
-   $adds=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;sort=";
-   $added=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuseredit&amp;nick=";
-   $addd=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;sort=".$sort."&amp;del=";
-?>
   <tr>
-    <td class="lmost4" align="right"><nobr>
-<?PHP
- if($sort!="id"){echo "<a href='{$adds}id' onclick=\"return chklmolink(this.href);\">";}
-   echo "ID"; // ID
- if($sort!="id"){echo "</a>";}
-?></nobr></td>
-    <td class="lmost4"><nobr>
-<?PHP
- if($sort!="nick"){echo "<a href='{$adds}nick' onclick=\"return chklmolink(this.href);\">";}
-   echo $text['tipp'][23]; // Nickname
- if($sort!="nick"){echo "</a>";}
-?></nobr></td>
-    <td class="lmost4"><nobr>
-<?PHP
- if($sort!="pass"){echo "<a href='{$adds}pass' onclick=\"return chklmolink(this.href);\">";}
-   echo $text[323]; // passwort
- if($sort!="pass"){echo "</a>";}
-?></nobr></td>
-    <td class="lmost4"><nobr>
-<?PHP
- if($sort!="name"){echo "<a href='{$adds}name' onclick=\"return chklmolink(this.href);\">";}
-   echo $text['tipp'][134]; // Name
- if($sort!="name"){echo "</a>";}
-?></nobr></td>
-    <td class="lmost4"><nobr>
-<?PHP
- if($sort!="team"){echo "<a href='{$adds}team' onclick=\"return chklmolink(this.href);\">";}
-   echo $text['tipp'][27]; // Team
- if($sort!="team"){echo "</a>";}
-?></nobr></td>
-    <td class="lmost4"><nobr>
-<?PHP
- if($sort!="ltipp"){echo "<a href='{$adds}ltipp' onclick=\"return chklmolink(this.href);\">";}
-   echo $text['tipp'][270]; // letzter Tipp
- if($sort!="ltipp"){echo "</a>";}
-?></nobr></td>
-    <td class="lmost4">&nbsp;</td>
-    <td class="lmost4">&nbsp;</td>
-  </tr>
-
-<?PHP
-  $anztipper=count($users);
-  $id=array_pad($array,$anztipper,"");
-  $nick=array_pad($array,$anztipper,"");
-  $pass=array_pad($array,$anztipper,"");
-  $name=array_pad($array,$anztipper,"");
-  $email=array_pad($array,$anztipper,"");
-  $team=array_pad($array,$anztipper,"");
-  $ltipp=array_pad($array,$anztipper,"");
-  for($i=1;$i<$anztipper;$i++){
-    $userd = split("[|]",$users[$i]);
-    $id[$i]=$i;
-    $nick[$i]=$userd[0];
-    $pass[$i]=$userd[1];
-    $name[$i]=substr($userd[3],strpos($userd[3]," ")+1).", ".substr($userd[3],0,strpos($userd[3]," "));
-    $email[$i]=$userd[4];
-    $team[$i]=$userd[5];
-    $ltipp[$i]=0;
-    $verz=opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp,0,-1));
-    while($files=readdir($verz)){
-      if(substr($files,-5-strlen($userd[0]))=="_".$userd[0].".tip"){
-      	if(filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files)>$ltipp[$i]){
-      	  $ltipp[$i]=filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files);
-      	  }
-      	}
+    <td align="center">
+      <script type="text/javascript" src="<?=URL_TO_LMO?>/js/sortable/sortabletable.js"></script>
+      <script type="text/javascript" src="<?=URL_TO_LMO?>/js/sortable/limSortFunctions.js"></script>
+      <table id="tipper" class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+	<?
+  if (count($users) > 1) {
+    $tipper_sort_direction=isset($_GET['tipper_sort_direction'])?$_GET['tipper_sort_direction']:"asc";
+    if (!isset($_GET['tipper_sort'])) {
+      $tipper_sort = "id";
+    }
+     
+    $adds = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;tipper_sort=";
+    $added = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuseredit&amp;nick=";
+    $addd = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;tipper_sort=".$tipper_sort."&amp;del=";?>
+      <thead>  
+        <tr>
+          <th class="nobr" align="right">
+            <script type="text/javascript">document.write('ID');</script>
+            <noscript>
+              <a href="<?=$adds?>id&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              ID
+              <a href="<?=$adds?>id&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+            </noscript>
+          </th>
+          <th align="left" class="nobr">
+            <script type="text/javascript">document.write('<?=$text['tipp'][23]?>');</script>
+            <noscript>
+              <a href="<?=$adds?>nick&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              <?=$text['tipp'][23]?>
+              <a href="<?=$adds?>nick&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+            </noscript>
+          </th>
+          <th align="left" class="nobr">
+            <script type="text/javascript">document.write('<?=$text['tipp'][134]?>');</script>
+            <noscript>
+              <a href="<?=$adds?>name&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              <?=$text['tipp'][134]?>
+              <a href="<?=$adds;?>name&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+            </noscript>
+          </th>
+          <th align="left" class="nobr">
+            <script type="text/javascript">document.write('<?=$text['tipp'][27]?>');</script>
+            <noscript>
+              <a href="<?=$adds?>team&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              <?=$text['tipp'][27]?>
+              <a href="<?=$adds;?>team&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+            </noscript>
+          </th>
+          <th align="left" class="nobr">
+            <script type="text/javascript">document.write('<?=$text['tipp'][270]?>');</script>
+            <noscript>
+              <a href="<?=$adds?>ltipp&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
+              <?=$text['tipp'][270]?>
+              <a href="<?=$adds;?>ltipp&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+            </noscript>
+          </th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead><?
+    $tab0 = array();
+    $anztipper = count($users);
+    $id = array_pad($array, $anztipper, "");
+    $nick = array_pad($array, $anztipper, "");
+    $pass = array_pad($array, $anztipper, "");
+    $name = array_pad($array, $anztipper, "");
+    $email = array_pad($array, $anztipper, "");
+    $team = array_pad($array, $anztipper, "");
+    $ltipp = array_pad($array, $anztipper, "");
+    for($i = 1; $i < $anztipper; $i++) {
+      $userd = split("[|]", $users[$i]);
+      $id[$i] = $i;
+      $nick[$i] = $userd[0];
+      $pass[$i] = $userd[1];
+      $name[$i] = substr($userd[3], strpos($userd[3], " ")+1).", ".substr($userd[3], 0, strpos($userd[3], " "));
+      $email[$i] = $userd[4];
+      $team[$i] = $userd[5];
+      $ltipp[$i] = 0;
+      $verz = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
+      while ($files = readdir($verz)) {
+        if (substr($files, -5-strlen($userd[0])) == "_".$userd[0].".tip") {
+          if (filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files) > $ltipp[$i]) {
+            $ltipp[$i] = filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files);
+          }
+        }
       }
-    closedir($verz);
+      $tab0[$i]['id']=$id[$i];
+      $tab0[$i]['nick']=$nick[$i];
+      $tab0[$i]['name']=$name[$i];
+      $tab0[$i]['email']=$email[$i];
+      $tab0[$i]['team']=$team[$i];
+      $tab0[$i]['ltipp']=$ltipp[$i];
+      closedir($verz);
     }
 
-  $tab0 = array("");
-  for($a=1;$a<$anztipper;$a++){
-    if($sort=="id"){array_push($tab0,(50000000+$id[$a]).(50000000+$a));}
-    elseif($sort=="nick"){array_push($tab0,strtolower($nick[$a]).(50000000+$a));}
-    elseif($sort=="pass"){array_push($tab0,strtolower($pass[$a]).(50000000+$a));}
-    elseif($sort=="name"){array_push($tab0,strtolower($name[$a]).(50000000+$a));}
-    elseif($sort=="email"){array_push($tab0,strtolower($email[$a]).(50000000+$a));}
-    elseif($sort=="team"){array_push($tab0,strtolower($team[$a]).(50000000+$a));}
-    elseif($sort=="ltipp"){array_push($tab0,$ltipp[$a].(50000000+$a));}
-    }
-  array_shift($tab0);
-  sort($tab0,SORT_STRING);
-
-
-  for($x=1;$x<$anztipper;$x++){
-    $i=intval(substr($tab0[$x-1],-7));
-?>
-  <tr>
-    <td class="lmost5" align="right"><?PHP echo $id[$i]; ?></td>
-    <td class="lmost5"><a href="mailto:<?PHP echo $email[$i]; ?>"><?PHP echo $nick[$i]; ?></a></td>
-    <td class="lmost5"><?PHP echo $pass[$i]; ?></td>
-    <td class="lmost5"><?PHP echo $name[$i]; ?></td>
-    <td class="lmost5"><?PHP echo $team[$i]; ?></td>
-    <td class="lmost5"><?PHP if($ltipp[$i]>0){echo date("d.m.Y H:i",$ltipp[$i]);} ?></td>
-<?PHP    
-    echo "<td class=\"lmost5\"><a href='{$added}{$nick[$i]}' onclick=\"return chklmolink(this.href);\">".$text['tipp'][98]."</a></td>";
-    echo "<td class=\"lmost5\"><a href='{$addd}{$nick[$i]}' onclick=\"return chklmolink(this.href);\">".$text[82]."</a></td>";
-    }
+    
+    usort($tab0, 'cmp');
+    if($tipper_sort_direction=='desc') $tab0=array_reverse($tab0);?> 
+        <tbody><?
+    for($x = 0; $x < $anztipper-1; $x++) {?>
+        <tr>
+          <td align="right"><?=$tab0[$x]['id']; ?></td>
+          <td align="left"><a href="mailto:<?=$tab0[$x]['email']; ?>"><?=$tab0[$x]['nick']; ?></a></td>
+          <td align="left"><?=$tab0[$x]['name']; ?></td>
+          <td align="left"><?=$tab0[$x]['team']; ?></td>
+          <td align="left"><? if($tab0[$x]['ltipp']>0){echo date("d.m.Y H:i",$tab0[$x]['ltipp']);} ?></td>    
+          <td align="left"><a href='<?=$added.$tab0[$x]['nick']?>' onClick="return chklmolink(this.href);"><?=$text['tipp'][98]?></a></td>
+          <td align="left"><a href='<?=$addd.$tab0[$x]['nick']?>' onClick="return chklmolink(this.href);"><img src="<?=URL_TO_IMGDIR?>/delete.gif" border="0" width="11" height="13" alt="<?=$text[82]?>"></a></td><?
+    }?>
+        </tr><?
   } ?>
-
-  <tr>
-    <td class="lmost4" colspan="8"><nobr><?PHP echo $text['tipp'][136]; ?></nobr></td>
+        </tbody>
+      </table>
+      <script type="text/javascript">
+          var tipperTable = new SortableTable(document.getElementById("tipper"),["Number","CaseInsensitiveString","CaseInsensitiveString","CaseInsensitiveString", "GermanDateTime","None","None"]);
+          tipperTable.sort(0);
+       </script>
+    </td>
   </tr>
-  <form name="lmoeditx" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
-  <input type="hidden" name="action" value="admin">
-  <input type="hidden" name="todo" value="tippuser">
-  <input type="hidden" name="save" value="-1">
   <tr>
-    <td class="lmost5" align="right"><?PHP if(!isset($anztipper)){$anztipper=1;}echo $anztipper; ?></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xnickx" size="10" maxlength="32" value="NeuerNick"></td>
-    <td class="lmost5"><input class="lmoadminein" type="text" name="xpassx" size="10" maxlength="32" value="<?PHP require(PATH_TO_LMO."/lmo-adminuserpass.php") ?>"></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[327] ?>"><input class="lmoadminbut" type="submit" name="bestx" value="<?PHP echo $text[329]; ?>"></acronym></td>
+    <td align="center">
+      <form name="lmoeditx" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
+        <input type="hidden" name="action" value="admin">
+        <input type="hidden" name="todo" value="tippuser">
+        <input type="hidden" name="save" value="-1">
+        <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0"
+          <tr>
+            <th class="nobr" align="left" colspan="7"><?=$text['tipp'][136]; ?></th>
+          </tr>
+          <tr>
+            <td align="right"><? if(!isset($anztipper)){$anztipper=1;}echo $anztipper; ?></td>
+            <td><input class="lmo-formular-input" type="text" name="xnickx" size="10" maxlength="32" value="NeuerNick"></td>
+            <td><input class="lmo-formular-input" type="text" name="xpassx" size="10" maxlength="32" value="<? require(PATH_TO_LMO."/lmo-adminuserpass.php") ?>"></td>
+            <td><input class="lmo-formular-button" type="submit" name="bestx" value="<?=$text[329]; ?>" title="<?=$text[327] ?>"></td>
+          </tr>
+        </table>
+      </form>
+    </td>
   </tr>
-  </form>
+</table><? 
+}
+function cmp ($a1, $a2) {
+  global $tipper_sort;
+  if (is_numeric($a1[$tipper_sort]) && is_numeric($a2[$tipper_sort])) {  //Numerischer Vergleich
+    if ($a2[$tipper_sort]==$a1[$tipper_sort]) return 0;
+    return ($a1[$tipper_sort]>$a2[$tipper_sort]) ? 1 : -1;
+  }else{ //Stringvergleich
+    $a1[$tipper_sort]=strtr($a1[$tipper_sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+  	$a2[$tipper_sort]=strtr($a2[$tipper_sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+  	return  strnatcasecmp($a1[$tipper_sort],$a2[$tipper_sort]);
+  }
+}
 
-  </table></td></tr>
-  <tr>
-    <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
-<?PHP 
-  echo "<td class=\"lmost2\" align=\"center\"><a href='$adda' onclick=\"return chklmolink(this.href);\" title=\"".$text['tipp'][63]."\">".$text['tipp'][63]."</a></td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href='$adde' onclick=\"return chklmolink(this.href);\" title=\"".$text['tipp'][165]."\">".$text['tipp'][165]."</a></td>";
-  echo "<td class=\"lmost1\" align=\"center\">".$text['tipp'][114]."</td>";
-  echo "<td class=\"lmost2\" align=\"center\"><a href='$addo' onclick=\"return chklmolink(this.href);\" title=\"".$text['tipp'][55]."\">".$text[86]."</a></td>";
 ?>
-    </tr></table></td>
-  </tr>
-</table>
-<?PHP } ?>

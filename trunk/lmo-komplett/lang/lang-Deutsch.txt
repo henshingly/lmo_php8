@@ -3,9 +3,9 @@
 002=Spieltag
 003=vom
 004=bis
-005=<=
+005=«
 006=zum vorigen Spieltag blättern
-007==>
+007=»
 008=zum nächsten Spieltag blättern
 009=auf diesen Spieltag wechseln
 010=Ergebnisse
@@ -52,7 +52,7 @@
 051=Dummy
 052=Herzlich Willkommen!
 053=Bitte wählen Sie eine Liga aus
-054=<acronym title="Liga Manager Online">LMO</acronym> 3.99alpha1
+054=<acronym title="Liga Manager Online">LMO</acronym> 3.99&alpha;3
 055=© 1997-2003 LMO-Group
 056=[ <a href="http://www.hollwitz.de/" target="_blank" title="Dieses und weitere Scripte können Sie auf meiner PHP-Seite downloaden">Hollwitz.Net(z)</a> | <a href="https://sourceforge.net/projects/lmo/" target="_blank" title="Die neueste Version bei Sourceforge">LMO-Projekt</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
 057=Die Statistik 1 von
@@ -68,7 +68,7 @@
 067=Siege
 068=Höchster Sieg
 069=Niederlagen
-070=Höchste Niederl.
+070=Höchste Niederlage
 071=Aktuelle Serie
 072=g.
 073=(H)
@@ -383,20 +383,20 @@
 382=Geben Sie hier die Anzahl der Champions-League-Teilnehmer an (außer dem Meister)
 383=Champions-League-Qualifikanten
 384=Geben Sie hier die Anzahl der Mannschaften an, die an der Champions-League-Qualifikation teilnehmen
-385=UEFA-CUP-Teilnehmer
+385=UEFA-Cup-Teilnehmer
 386=Geben Sie hier die Anzahl der UEFA-Cup-Teilnehmer, Aufsteiger oder PlayOff-Teilnehmer an
 387=feststehende Absteiger
 388=Geben Sie hier die Anzahl der feststehenden Absteiger an
 389=Ligaauswahl
 390=Soll den Nutzern ein Link zur Ligaauswahl angezeigt werden?
-391=<= zur Ligenübersicht
+391=« zur Ligenübersicht
 392=Hier können Sie sich eine andere Liga laden
 393=Relegation zum Abstieg
 394=Geben Sie hier die Anzahl der Teilnehmer der Abstiegsrelegation an
 395=erzielte Tore zählen vor Tordifferenz
 396=Zählen die erzielten Tore bei Punktgleichheit mehr als die Tordifferenz (z.B. beim Kegeln)?
 397=Freigegebene Ligen
-398=Geben Sie hier die Namen der Ligen ein, die dieser Hilfs-Admin bearbeiten darf (bitte mit Komma getrennt und ohne Pfad und Namenserweiterung, also z.B. 1l_2001-02,dp_2001-02). Die angegebenen Ligen müssen bereits auf dem Server existieren!
+398=Geben Sie hier die Namen der Ligen an, die dieser Hilfs-Admin bearbeiten darf
 399=Startanzeige
 400=Was soll beim Aufruf einer Liga zuerst angezeigt werden?
 401=Alle Ligen auf einmal versenden
@@ -421,34 +421,34 @@
 420=kleines Finale (um Platz 3):
 421=Designeditor
 422=Design der Ausgabe festlegen (Schriften, Farben usw.)
-423=Äußerer Rahmen (das Menü)
+423=Äußerer Rahmen
 424=Hintergrund
 425=Legen Sie hier die Hintergrundfarbe fest (z.B. #ffffff)
 426=Randoptionen
 427=Legen Sie hier die Optionen für die Umrandung fest (Stärke, Art und Farbe)
 428=Schriftart
 429=Legen Sie hier die Schriftart fest (Achtung: nicht jede Schriftart ist auf jedem System vorhanden)
-430=Schriftgrößen:
+430=Schriftgröße 
 431=Legen Sie hier die Schriftgröße für normalen Text fest
 432=Festlegen des Ausgabedesigns
 433=Legen Sie hier die Vordergrundfarbe fest (z.B. #ffffff)
 434=Legen Sie hier die Schriftgröße für den Titel der Liga fest
 435=Legen Sie hier die Schriftgröße für die Fußinfos (Updatedatum, Copyrightinfo) fest
-436=Mittlerer Rahmen (der Auswahlbereich)
+436=Mittlerer Rahmen
 437=Schriftgröße
 438=Legen Sie hier die Schriftgröße fest
 439=Schriftfarbe Titel
 440=Legen Sie hier die Vordergrundfarbe für den Titel der Liga fest (z.B. #ffffff)
-441=Innerer Rahmen (die Hauptausgabefläche)
-442=Vordergrund
-443=Legen Sie hier die Hintergrundfarbe für Hervorhebungen fest (z.B. #ffffff)
+441=Innerer Rahmen
+442=Schriftfarbe
+443=Hervorhebungen sind z.B. die Tabellenköpfe
 444=Linkfarben
 445=Legen Sie hier die Schriftfarbe für Links fest
 446=Legen Sie hier die Schriftfarbe für aktive Links fest
 447=Newsticker
-448=Eingabefelder (Admin-Bereich)
-449=Buttons (Admin-Bereich)
-450=Hintergrundfarben für die Tabelle
+448=Eingabefelder
+449=Buttons
+450=Tabelle
 451=Meister
 452=Champions-League-Teilnehmer
 453=Champions-League-Qualifikanten
@@ -457,12 +457,12 @@
 456=feststehende Absteiger
 457=Heimtabelle (nur für unterhalb der Ergebnisse)
 458=Auswärtstabelle (nur für unterhalb der Ergebnisse)
-459=Hintergrundfarben für den Turnierbereich
+459=Turnierbereich
 460=Sieger eines Spiels
-461=Turniersieger (nur bei aktiviertem kleinem Finale)
-462=Turnierzweiter (nur bei aktiviertem kleinem Finale)
-463=Turnierdritter (nur bei aktiviertem kleinem Finale)
-464=Farben für den Kalender
+461=Verlierer eines Spiels
+462=Formulare
+463=Leere Zellen
+464=Kalender
 465=Markierung heutiger Tag
 466=Schriftfarbe Wochenende
 467=Kreuztabelle
@@ -506,7 +506,7 @@
 505=Standardsprache
 506=Welche Sprachdatei soll geladen werden? (Sprachdateien besitzen das Format lang-[Sprache].txt und können mit einem Texteditor selbst erstellt und geändert werden)
 507=Unbenannte Liga
-508=<= zum Archiv
+508=« zum Archiv
 509=Archiv
 510=Soll den Nutzern ein Link zum Archiv angezeigt werden?
 511=Sollen die Spielpläne dargestellt werden?
@@ -534,6 +534,12 @@
 533=Ligasortierung
 534=Spielfreie Teams
 535=Sollen spielfreie Teams angezeigt werden?
+536=Rahmen
+537=Überschrift
+538=Fußzeilen
+539=Hauptmenü
+540=Untermenü
+541=Links
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde

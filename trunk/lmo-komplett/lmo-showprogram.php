@@ -23,35 +23,44 @@ if($file!=""){
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
 ?>
 
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td valign="top" align="center">
-      <table cellspacing="0" cellpadding="0" border="0">
-<?
-  for ($i=1; $i<=$anzteams; $i++) {
-    echo "<tr><td align=\"center\" ";
-    if ($i<>$selteam) {
-      echo "class=\"lmost0\"><a href=\"".$addp.$i."\" title=\"".$text[23]." ".$teams[$i]."\">".$teamk[$i]."</a>";
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
+  for ($i=1; $i<=$anzteams; $i++) {?>
+        <tr>
+          <td align="right">
+            <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
+    if($i!=$selteam){?>
+            <a href="<?=$addp.$i?>" ><?=$teamk[$i]?></a><?
     } else {
-      echo "class=\"lmost1\">".$teamk[$i];
+      echo $teamk[$i];
     }
-    echo "</td></tr>";
-  }
-?>
+          ?></acronym>
+          </td>          
+          <td><?
+    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
+              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
+  
+               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>">&nbsp;<?
+    } else {
+      echo "&nbsp;";
+    }   ?></td>
+        </tr><?
+  }?>
       </table>
     </td>
-    <td valign="top" align="center" class="lmost3">
-      <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-<?
-  if($selteam==0){
+    <td valign="top" align="center">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
+  if ($selteam == 0) {
     echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text[24]."<br>&nbsp;</td></tr>";
-  }else{
+  } else {
     for($j=0;$j<$anzst;$j++){
       for($i=0;$i<$anzsp;$i++){
         if(($selteam==$teama[$j][$i]) || ($selteam==$teamb[$j][$i])){
 ?>
         <tr>
-          <td class="lmost5" align="right">&nbsp;<a href="<? echo $addr.($j+1); ?>" title="<? echo $text[25]; ?>"><? echo $j+1; ?></a>&nbsp;</td>
+          <th align="right">&nbsp;<a href="<? echo $addr.($j+1); ?>" title="<? echo $text[25]; ?>"><? echo $j+1; ?></a>&nbsp;</th>
 <?        if($datm==1){
             if($mterm[$j][$i]>0){
               $dum1=strftime($datf, $mterm[$j][$i]);
@@ -59,13 +68,11 @@ if($file!=""){
               $dum1="";
             }
 ?>
-          <td class="lmost5" width="2">&nbsp;</td>
-          <td class="lmost5"><nobr><? echo $dum1; ?></nobr></td>
+          <td width="2">&nbsp;</td>
+          <td class="nobr"><? echo $dum1; ?></td>
 <?        } ?>
-          <td class="lmost5" width="2">&nbsp;</td>
-          <td class="lmost5" align="right">
-            <nobr>
-<?
+          <td width="2">&nbsp;</td>
+          <td class="nobr" align="right"><?
           if ($selteam==$teama[$j][$i]){
             echo "<strong>";
           }
@@ -73,13 +80,9 @@ if($file!=""){
           if ($selteam==$teama[$j][$i]){
             echo "</strong>";
           }
-?>
-            </nobr>
-          </td>
-          <td class="lmost5" align="center" width="10">-</td>
-          <td class="lmost5">
-            <nobr>
-<?
+?>        </td>
+          <td align="center" width="10">-</td>
+          <td class="nobr"><?
           if ($selteam==$teamb[$j][$i]){
             echo "<strong>";
           }
@@ -87,22 +90,19 @@ if($file!=""){
           if ($selteam==$teamb[$j][$i]){
             echo "</strong>";
           }
-?>
-            </nobr>
-          </td>
-          <td class="lmost5" width="2">&nbsp;</td>
-          <td class="lmost5" align="right"><? echo $goala[$j][$i]; ?></td>
-          <td class="lmost5" align="center" width="8">:</td>
-          <td class="lmost5"><? echo $goalb[$j][$i]; ?></td>
+?>        </td>
+          <td width="2">&nbsp;</td>
+          <td align="right"><? echo $goala[$j][$i]; ?></td>
+          <td align="center" width="8">:</td>
+          <td align="left"><? echo $goalb[$j][$i]; ?></td>
 <? 
           if($spez==1){ ?>
-          <td class="lmost5" width="2">&nbsp;</td>
-          <td class="lmost5"><? echo $mspez[$j][$i]; ?></td>
+          <td width="2">&nbsp;</td>
+          <td align="left"><? echo $mspez[$j][$i]; ?></td>
 <?        }
 ?>
-          <td class="lmost5" width="2">&nbsp;</td>
-          <td class="lmost5">
-            <nobr><? 
+          <td width="2">&nbsp;</td>
+          <td class="nobr"><? 
           /** Mannschaftsicons finden
            */
           $lmo_teamaicon="";
@@ -162,8 +162,7 @@ if($file!=""){
           } else {
             echo "&nbsp;";
           }
-            ?></nobr>
-            </td>
+          ?></td>
           </tr>
 <?      }
       }

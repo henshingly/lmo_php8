@@ -19,21 +19,33 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if(($action=="admin") && ($todo=="delete") && ($_SESSION['lmouserok']==2)){
-  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
-  if(!isset($del)){$del=0;}
-  if($del==1){
-    if(@unlink($dfile)){echo "<p class='message'>".$dfile." ".$text[297]."</p>";}else{echo "<p class='error'>".$dfile." ".$text[298]."</p>";}
-    }
-?>
-  <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">
-  <?PHP echo $text[295]; ?>
-  </td></tr><tr><td align="center" class="lmost3">
-  <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5"><nobr>
-    <?PHP $ftype=".l98"; require(PATH_TO_LMO."/lmo-admindeldir.php"); ?>
-  </nobr></td></tr></table>
-  </td></tr></table>
-
-<?PHP
+if (($action == "admin") && ($todo == "delete") && ($_SESSION['lmouserok'] == 2)) {
+  $adda = $_SERVER['PHP_SELF']."?action=admin&amp;todo=";
+  if (!isset($del)) {
+    $del = 0;
   }
-?>
+  if ($del == 1) {
+    if (@unlink($dfile)) {
+      echo "<p class='message'>".$dfile." ".$text[297]."</p>";
+    } else {
+      echo "<p class='error'>".$dfile." ".$text[298]."</p>";
+    }
+  }?>
+<table class="lmoMiddle" width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center"><h1><?=$text[295]; ?></h1></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="lmost5"><nobr><? 
+  $ftype=".l98"; 
+  require(PATH_TO_LMO."/lmo-admindeldir.php"); ?>
+          </nobr></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table><?
+}?>

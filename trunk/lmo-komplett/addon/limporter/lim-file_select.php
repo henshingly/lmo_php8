@@ -43,5 +43,5 @@ foreach ($files as $aFile) {
     <td class="lmost5" width="20">&nbsp;</td>
     <td class="lmost5" align="right"><nobr><acronym title="oder hier die URL angeben, von der Sie den Spielplan importieren wollen.">
     <?PHP echo "Pfad zum Spielplan";/*$text[113];*/ ?></acronym></nobr></td>
-    <td class="lmost5" align="left"><acronym title="Geben Sie hier die URL an, von der Sie den Spielplan importieren wollen. z.B. http://www.url.de/spielplaene/03/kkl/plan.htm"><input class="lmoadminein" type="text" name="ximporturl" size="40" maxlength="160" value="<?PHP echo $ximporturl; ?>"></acronym></td>
+    <td class="lmost5" align="left"><acronym title="Geben Sie hier die URL an, von der Sie den Spielplan importieren wollen. z.B. http://www.url.de/spielplaene/03/kkl/plan.htm"><input class="lmo-formular-input" type="text" name="ximporturl" size="40" maxlength="160" value="<?PHP echo $ximporturl; ?>"></acronym></td>
   </tr>

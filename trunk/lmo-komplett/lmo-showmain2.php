@@ -34,10 +34,10 @@ if($file!=""){
     $tabdat=$endtab.". ".$text[2];
     $ste=$endtab;
   }
-  if ($action=="") {
+  if (!isset($_REQUEST['action']) || $_REQUEST['action']=="") {
     if(!isset($onrun) || $onrun==0 || $tabelle==0){
       $action="results";
-    }elseif ($ergebnis==0){
+    }elseif ($tabelle!=0){
       $action="table";
     }
   }
@@ -77,7 +77,12 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
 //if ($action!="tipp") {
 
   //Titel
-  if ($action!="tipp") {$output_titel.=$file==""?$text[53]:$titel; }
+  if ($file!="") {
+    $output_titel.=$titel;
+  } else {
+    $output_titel.=$action=="tipp"?$text['tipp'][0]:$text[53];
+  }
+  
   
   //Stylesheet
   $output_stylesheet.="
@@ -111,10 +116,10 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
     }
     closedir($handle);
   }
-  
+
   ob_start();
   if ($file!="") {
-  
+
     //Für normale Ligen
     if($lmtype==0){
   
@@ -182,63 +187,61 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
     $output_info.=$action!="info"?              "<a href='{$addm}info' title='{$text[21]}'>{$text[20]}</a>":                   $text[20];
     
     $druck=0;
-    if($lmtype==0){
-      //Normal
-      switch($action) {
-        case "cal":      if($datc==1)                     {require(PATH_TO_LMO."/lmo-showcal.php");}break;
-        case "results":  if ($ergebnis==1)                {$druck=1;require(PATH_TO_LMO."/lmo-showrestab.php");}break;
-        case "table":    if ($tabelle==1)                 {$druck=1;require(PATH_TO_LMO."/lmo-showrestab.php");}break;
-        case "cross":    if ($kreuz==1)                   {require(PATH_TO_LMO."/lmo-showcross.php");}break;
-        case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showprogram.php");}break;
-        case "graph":    if ($kurve==1)                   {require(PATH_TO_LMO."/lmo-showgraph.php");}break;
-        case "stats":    if ($ligastats==1)               {require(PATH_TO_LMO."/lmo-showstats.php");}break;
-        case "":         /*Auswahlseite*/break;
-      }
-    //Pokal
-    }else{
-      switch($action) {
-        case "cal":      if ($datc==1)                    {require(PATH_TO_LMO."/lmo-showkocal.php");}break;
-        case "results":  if ($ergebnis==1)                {require(PATH_TO_LMO."/lmo-showkoresults.php");}break;
-        case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showkoprogram.php");}break;
-      }
-  	}
-    //Spieler-Addon
-    if($action=="spieler"){if ($mittore==1)                {require(PATH_TO_ADDONDIR."/spieler/lmo-statshow.php");}}
-    //Spieler-Addon
-    
-	if($action=="info")                                   {require(PATH_TO_LMO."/lmo-showinfo.php");}
+
+    if ($action!="tipp") {
+      if($lmtype==0){
+        //Normal
+        switch($action) {
+          case "cal":      if($datc==1)                     {require(PATH_TO_LMO."/lmo-cal.php");}break;
+          case "results":  if ($ergebnis==1)                {$druck=1;require(PATH_TO_LMO."/lmo-showrestab.php");}break;
+          case "table":    if ($tabelle==1)                 {$druck=1;require(PATH_TO_LMO."/lmo-showrestab.php");}break;
+          case "cross":    if ($kreuz==1)                   {require(PATH_TO_LMO."/lmo-showcross.php");}break;
+          case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showprogram.php");}break;
+          case "graph":    if ($kurve==1)                   {require(PATH_TO_LMO."/lmo-showgraph.php");}break;
+          case "stats":    if ($ligastats==1)               {require(PATH_TO_LMO."/lmo-showstats.php");}break;
+          case "":         /*Auswahlseite*/break;
+        }
+      //Pokal
+      }else{
+        switch($action) {
+          case "cal":      if ($datc==1)                    {require(PATH_TO_LMO."/lmo-kocal.php");}break;
+          case "results":  if ($ergebnis==1)                {require(PATH_TO_LMO."/lmo-showkoresults.php");}break;
+          case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showkoprogram.php");}break;
+        }
+    	}
+      //Spieler-Addon
+      if($action=="spieler"){if ($mittore==1)               {require(PATH_TO_ADDONDIR."/spieler/lmo-statshow.php");}}
+      //Spieler-Addon
+    }    
+  	if($action=="info")                                     {require(PATH_TO_LMO."/lmo-showinfo.php");}
     $p0="p1";$$p0=c(1).$addm.c(0);
-  }elseif ($backlink==1 && $action!="tipp")                                  {require(PATH_TO_LMO."/lmo-showdir.php");}
+  }elseif ($backlink==1 && $action!="tipp")                 {require(PATH_TO_LMO."/lmo-showdir.php");}
+  
   if($action=="tipp") {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");}
   $output_hauptteil.=ob_get_contents();ob_end_clean();
   
-  if ($action!="tipp") {
+  
     if ($file!="") { 
       //Letzte Auswertung
       $output_letzteauswertung.=$text[406].':&nbsp;'.$stand;
-      
+   
       //SaveHTML
       if ($einsavehtml==1) {
         ob_start();?>
           <table width="100%" cellspacing="0" cellpadding="0" border="0">
             <tr><? 
-        if($lmtype==0 || $druck==1){include(PATH_TO_LMO."/lmo-savehtml.php");}?> 
-             <td class="lmomain1" align="center"><? 
+        /*if($lmtype==0 || $druck==1){include(PATH_TO_LMO."/lmo-savehtml.php");}*/?> 
+             <td align="center"><? 
         if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' target='_blank' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
               </td>  
-              <td class="lmomain1" align="center"><? 
+              <td align="center"><? 
         if($lmtype==0 && $druck==1){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' target='_blank' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
               </td>
             </tr>
           </table><? 
         $output_savehtml.=ob_get_contents();ob_end_clean();
       }
-      
-      //Ligenübersicht
-      if($backlink==1){
-        $output_ligenuebersicht.="<a href='{$_SERVER['PHP_SELF']}' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
-      }
-    }else{
+    } else {
       if($archivlink==1){
         if (isset($archiv) && $archiv!=""){
           $output_archiv.="<a href=\"".$_SERVER["PHP_SELF"]."\">{$text[391]}</a><br>";
@@ -249,11 +252,17 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
         
       }
     }
+    
+    //Ligenübersicht
+    if($backlink==1 && ($file!="" || $action=="tipp")){
+      $output_ligenuebersicht.="<a href='{$_SERVER['PHP_SELF']}' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
+    }
+    
     //Berechnungszeit
     if($calctime==1){
        $output_berechnungszeit.=$text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
     }
-  }
+
   
   
   //Spieler-Addon

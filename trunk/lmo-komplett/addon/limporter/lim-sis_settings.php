@@ -72,7 +72,7 @@ if(isset($ximporturl)){
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class ="lmost1" colspan=2 align="left">HTML - Importeinstellungen</td>
+      <td class ="active" colspan=2 align="left">HTML - Importeinstellungen</td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
@@ -82,12 +82,12 @@ if(isset($ximporturl)){
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right">Spielplandaten&nbsp;</td>
-      <td class="lmost5" align="left">Import von Zeile&nbsp;<input class="lmoadminein" type="text" name="xoffset" size="3" maxlength="3" value=<?PHP echo $xoffset; ?>>&nbsp;-&nbsp;<input class="lmoadminein" type="text" name="xlrow" size="3" maxlength="3" value=<?PHP echo $xlrow; ?>>&nbsp;</td>
+      <td class="lmost5" align="left">Import von Zeile&nbsp;<input class="lmo-formular-input" type="text" name="xoffset" size="3" maxlength="3" value=<?PHP echo $xoffset; ?>>&nbsp;-&nbsp;<input class="lmo-formular-input" type="text" name="xlrow" size="3" maxlength="3" value=<?PHP echo $xlrow; ?>>&nbsp;</td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"></td>
-      <td class="lmost5" align="left"><input class="lmoadminein" type="checkbox" name="header" <?PHP if($header==1){echo " checked";} ?> value="1">&nbsp;1.&nbsp;Datenzeile&nbsp;enth&auml;lt&nbsp;Spaltentitel</td>
+      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="header" <?PHP if($header==1){echo " checked";} ?> value="1">&nbsp;1.&nbsp;Datenzeile&nbsp;enth&auml;lt&nbsp;Spaltentitel</td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
@@ -183,7 +183,7 @@ if(isset($ximporturl)){
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td align="left" colspan=2 class="lmost5"><input class="lmoadminbut" type="submit" name="vorschau" value="Vorschau">&nbsp;&nbsp;nicht verwendete Spalten ausblenden&nbsp;<input class="lmoadminein" type="checkbox" name="showall" <?PHP if($showall==1){echo " checked";} ?> value="1">
+      <td align="left" colspan=2 class="lmost5"><input class="lmo-formular-button" type="submit" name="vorschau" value="Vorschau">&nbsp;&nbsp;nicht verwendete Spalten ausblenden&nbsp;<input class="lmo-formular-input" type="checkbox" name="showall" <?PHP if($showall==1){echo " checked";} ?> value="1">
     </tr>
     <tr>
       <td colspan=3 class="lmost5">

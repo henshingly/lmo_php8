@@ -55,92 +55,29 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
     $tipp_anzseite = 20;
   }?>
 
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+  <caption><? if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?></caption><? 
+  if($tipp_einsichterst>=1){ ?>
   <tr>
-    <td align="center" class="lmost1"><? if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?></td>
-  </tr><? 
-  if($tipp_einsichterst==1){ ?>
-  <tr>
-    <td class="lmost4" align="center"><?=$text['tipp'][220]." ".$text['tipp'][216]; ?></td>
-  </tr><? 
-  }
-  if($tipp_einsichterst==2){ ?>
-  <tr>
-    <td class="lmost4" align="center"><?=$text['tipp'][220]." ".$text['tipp'][217]; ?></td>
+    <td class="lmoFrontMarkierung"><?=$text['tipp'][220]." ".$text['tipp'][215+$tipp_einsichterst]; ?></td>
   </tr><? 
   }?>
   <tr>
-    <td align="center">
-      <table style="margin:auto;" cellspacing="0" cellpadding="0" border="0">
-        <tr><?
+    <td align="center"><?
   $addr = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;start=".$start."&amp;st=";
   $addt = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=&amp;nick=";
   $addt3 = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;st=".$st."&amp;start=";
-   
-  echo "<td align=\"right\" valign=\"top\" class=\"lmost1\" colspan=\"3\" rowspan=\"4\">";
-  if ($lmtype == 1) {
-    echo $text[370];
-  } else {
-    echo $text[2];
-  }
-  echo ":";
-  echo "&nbsp;</td>";
-  for($i = 1; $i <= $anzst; $i++) {
-    if ($lmtype == 1) {
-      if ($i == $anzst) {
-        $j = $text[364];
-        $k = $text[365];
-      } elseif($i == $anzst-1) {
-        $j = $text[362];
-        $k = $text[363];
-      } elseif($i == $anzst-2) {
-        $j = $text[360];
-        $k = $text[361];
-      } elseif($i == $anzst-3) {
-        $j = $text[358];
-        $k = $text[359];
-      } else {
-        $j = $i;
-        $k = $text[366];
-      }
-    } else {
-      $j = $i;
-      $k = $text[9];
-    }
-     
-     
-    echo "<td align=\"right\" ";
-    if ($i <> $st) {
-      echo "class=\"lmost0\"><a href=\"".$addr.$i."\" title=\"".$k."\">".$j."</a>";
-    } else {
-      echo "class=\"lmost1\">".$j;
-    }
-    echo "&nbsp;</td>";
-    if (($anzst > 49) && (($anzst%4) == 0)) {
-      if (($i == $anzst/4) || ($i == $anzst/2) || ($i == $anzst/4 * 3)) {
-        echo "</tr><tr>";
-      }
-    } elseif(($anzst > 38) && (($anzst%3) == 0)) {
-      if (($i == $anzst/3) || ($i == $anzst/3 * 2)) {
-        echo "</tr><tr>";
-      }
-    } elseif(($anzst > 25) && (($anzst%2) == 0)) {
-      if ($i == $anzst/2) {
-        echo "</tr><tr>";
-      }
-    }
-  }?>
-        </tr>
-      </table>
+   include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?>
+        
     </td>
   </tr><? 
   $tipp_anzseiten=$anztipper/$tipp_anzseite;
   if($tipp_anzseiten>1){?> 
   <tr>
     <td align="center">
-      <table style="margin:auto;" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
         <tr><?
-    echo "<td align=\"right\" valign=\"top\" class=\"lmost1\" rowspan=\"".(floor($tipp_anzseiten/10)+1)."\">".$text['tipp'][164]."&nbsp;</td>";
+    echo "<td align=\"right\" valign=\"top\" rowspan=\"".(floor($tipp_anzseiten/10)+1)."\">".$text['tipp'][164]."&nbsp;</td>";
     for($i = 0; $i < $tipp_anzseiten; $i++) {
       $von = $i * $tipp_anzseite;
       $bis = ($i+1) * $tipp_anzseite-1;
@@ -148,9 +85,9 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
         $bis = $anztipper-1;
       }
       if ($von != $start) {
-        echo "<td class=\"lmost0\"><nobr><a href=\"".$addt3.$von."\">";
+        echo "<td class='nobr' align='center'><a href=\"".$addt3.$von."\">";
       } else {
-        echo "<td class=\"lmost1\"><nobr>";
+        echo "<td align='center' class=\"nobr\">";
       }
       $k1 = strtolower(substr($tippernick[intval(substr($tab0[$von], -6))], 0, 3));
       $k2 = strtolower(substr($tippernick[intval(substr($tab0[$bis], -6))], 0, 3));
@@ -158,7 +95,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
       if ($von != $start) {
         echo "</a>";
       }
-      echo "&nbsp;</nobr></td>";
+      echo "&nbsp;</td>";
       if (($i+1)%10 == 0) {
         echo "</tr><tr>";
       }
@@ -169,8 +106,8 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
   </tr><? 
   } /* ende if($tipp_anzseiten>1) */?>
   <tr>
-    <td align="center" class="lmost3">
-      <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><? 
+    <td class="lmoKreuz" align="center">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><? 
   $tab1 = array("");
   $nw = 0;
   $ende = $start+$tipp_anzseite;
@@ -191,17 +128,17 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
       $anzmodus = $modus[$st-1];
     }?>
         <tr>
-          <td align="right" class="lmocross4"><?
+          <th align="right" class="nobr"><?
     if ($l >= $start && $l < $ende) {
-      echo "<nobr>".$tippernick[$k]."</nobr>";
+      echo $tippernick[$k];
     } /* Nickname links*/
     elseif($l == $ende && $anztipper > 0) {
-      echo "<nobr>".$text['tipp'][188]."</nobr>";
+      echo $text['tipp'][188];
     } /* Tipptendenz*/
     elseif($l == ($ende+1) && $anztipper > 0 && $tipp_tippmodus == 1) {
-      echo "<nobr>"."Ø-".$text['tipp'][30]."</nobr>";
+      echo "Ø-".$text['tipp'][30];
     } /* Durchschnittstipp */?>
-          </td><?
+          </th><?
     $punktetipper = 0;
     for($i = 0; $i < $anzsp; $i++) {
       if ($teama[$st-1][$i] > 0 && $teamb[$st-1][$i] > 0) {
@@ -238,8 +175,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
             }
           }
           if ($l == ($start-1) || $l == ($ende+2)) {?>
-            <td align="center" valign="center" class="lmocross4">
-              <nobr><? 
+          <th align="center" valign="center" class="nobr"><? 
             if ($n == 0) {
               echo $teamk[$teama[$st-1][$i]]."<br>";
             }
@@ -258,12 +194,11 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
             }
             if ($n == 0) {
               echo "<br>".$teamk[$teamb[$st-1][$i]];
-            }?>
-              </nobr>
-            </td><?
+            }?>              
+          </th><?
           } elseif($l<$ende) {
             if(($lmtype==0 && $btip[$i]==true) || ($lmtype!=0 && $btip[$i][$n]==true)){ ?>
-            <td align="center" class="lmocross5"><?
+          <td align="center" class="nobr"><?
             }else{
             if ($lmtype != 0) {
               if ($tippa[$k][$i][$n] == -1) {
@@ -311,44 +246,43 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
             if ($tipp_tippmodus == 1) {
               // Ergebnis-Tippmodus
               if ($punktespiel > $tipp_rtor * $jkspfaktor) {?>
-            <td align="center" class="lmost7"><?
+          <td align="center" class="lmoBackMarkierung nobr"><?
               } else{ ?>
-            <td align="center" class="lmocross5"><?
+          <td align="center" class="nobr"><?
               }
-              echo "<nobr>";
               $dummy1 = "";
               $dummy2 = "";
               $dummy3 = "";
               $dummy4 = "";
               if ($punktespiel == $tipp_rergebnis * $jkspfaktor || $punktespiel == ($tipp_rergebnis+$tipp_rremis) * $jkspfaktor) {
-                $dummy1 = "<b>";
-                $dummy4 = "</b>";
+                $dummy1 = "<strong>";
+                $dummy4 = "</strong>";
               } elseif($punktespiel == $tipp_rtendenzdiff * $jkspfaktor || $punktespiel == ($tipp_rtendenzdiff+$tipp_rremis) * $jkspfaktor) {
-                $dummy2 = "<b>";
-                $dummy3 = "</b>";
+                $dummy2 = "<strong>";
+                $dummy3 = "</strong>";
               }
               if ($jkspfaktor > 1) {
-                echo "<p class='error'>";
+                echo "<p class='lmoFrontMarkierung'>";
               }
               if ($lmtype != 0) {
                 if ($tipp_rtor > 0 && ($punktespiel == $tipp_rtor * $jkspfaktor || $punktespiel == ($tipp_rtendenz+$tipp_rtor) * $jkspfaktor)) {
                   if ($goala[$st-1][$i][$n] == $tippa[$k][$i][$n]) {
-                    $dummy1 = "<b>";
-                    $dummy2 = "</b>";
+                    $dummy1 = "<strong>";
+                    $dummy2 = "</strong>";
                   } elseif($goalb[$st-1][$i][$n] == $tippb[$k][$i][$n]) {
-                    $dummy3 = "<b>";
-                    $dummy4 = "</b>";
+                    $dummy3 = "<strong>";
+                    $dummy4 = "</strong>";
                   }
                 }
                 echo $dummy1.$tippa[$k][$i][$n].$dummy2.":".$dummy3.$tippb[$k][$i][$n].$dummy4;
               } else {
                 if ($tipp_rtor > 0 && ($punktespiel == $tipp_rtor * $jkspfaktor || $punktespiel == ($tipp_rtendenz+$tipp_rtor) * $jkspfaktor)) {
                   if ($goala[$st-1][$i] == $tippa[$k][$i]) {
-                    $dummy1 = "<b>";
-                    $dummy2 = "</b>";
+                    $dummy1 = "<strong>";
+                    $dummy2 = "</strong>";
                   } elseif($goalb[$st-1][$i] == $tippb[$k][$i]) {
-                    $dummy3 = "<b>";
-                    $dummy4 = "</b>";
+                    $dummy3 = "<strong>";
+                    $dummy4 = "</strong>";
                   }
                 }
                 echo $dummy1.$tippa[$k][$i].$dummy2.":".$dummy3.$tippb[$k][$i].$dummy4;
@@ -356,22 +290,22 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               if ($jkspfaktor > 1) {
                 echo "";
               }
-              echo " <small>";
+
               if ($punktespiel >= 0) {
-                echo $punktespiel;
+                echo " <small>".$punktespiel."</small>";
               } else {
                 echo "&nbsp;";
               }
-              echo "</small></nobr>";
-              } else {
+              
+            } else {
                 // Tendenz-Modus
                 if ($punktespiel > 0) {?>
-            <td align="center" class="lmost7"><?
+          <td align="center" class="lmoBackMarkierung nobr"><?
                 } else {?>
-            <td align="center" class="lmocross5"><?
+          <td align="center" class="nobr"><?
                 }
                 if ($jkspfaktor > 1) {
-                  echo "<p class='error'>";
+                  echo "<p class='lmoFrontMarkierung'>";
                 }
                 if ($lmtype != 0) {
                   if ($tippa[$k][$i][$n] == "_" || $tippb[$k][$i][$n] == "_") {
@@ -402,10 +336,9 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 $punktetipper += $punktespiel;
               }
             }?>
-            </td><?
+          </td><?
           } elseif($l==$ende){?>
-            <td align="center" class="lmocross4">
-              <nobr><? 
+          <td align="center" class="lmoLeer nobr"><? 
             if($anztipper>0){
               if($lmtype==0 && $btip[$i]==false){
                 echo $tendenz1[$i]."-".$tendenz0[$i]."-".$tendenz2[$i];
@@ -413,11 +346,9 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 echo $tendenz1[$i][$n]."-".$tendenz0[$i][$n]."-".$tendenz2[$i][$n];
               }
             }?>
-              </nobr>
-            </td><?
+          </td><?
           } elseif($l==($ende+1)){?>
-            <td align="center" class="lmocross4">
-              <nobr><? 
+          <td align="center" class="lmoLeer nobr"><strong><? 
             if ($anztipper > 0 && $tipp_tippmodus == 1) {
               if ($lmtype == 0 && $btip[$i] == false) {
                 if ($anzgetippt[$i] > 0) {
@@ -439,29 +370,39 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 }
               }
             }?>
-              </nobr>
-            </td><?
+          </strong></td><?
           }
         } // ende for($n=0;$n<$anzmodus;$n++)
       }
-    } /* ende for($i=0;$i<$anzsp;$i++) */?>
-            <td class="lmocross4">
-              <nobr><? if($l>=$start && $l<$ende){echo "= ".$punktetipper." ".$text[37];} ?></nobr>
-            </td>
-            <td class="lmocross4">
-              <nobr><? if($tipp_tipptabelle1==1 && $l>=$start && $l<$ende && $lmtype==0){echo "<a href=\"".$addt.htmlentities($tippernick[$k])."\" title=\"".$text['tipp'][181]." ".$tippernick[$k]."\">".$text['tipp'][172]."</a>"; } ?></nobr>
-            </td>
-          </tr><?
+    } /* ende for($i=0;$i<$anzsp;$i++) */
+    
+    if($l>=$start && $l<$ende){?>
+          <td class="lmoFrontMarkierung" align="right"><?=$punktetipper?></td>
+          <td class="nobr" align="left">&nbsp; <? 
+      if($tipp_tipptabelle1==1 && $l>=$start && $l<$ende && $lmtype==0){?>
+            <a href="<?=$addt.rawurlencode($tippernick[$k])?>" title="<?=$text['tipp'][181]." ".$tippernick[$k]?>"><img src="<?=URL_TO_IMGDIR?>/tabelle.gif" border="0" width="10" height="12" alt="<?=$text['tipp'][172]?>"></a><?
+      }?>
+          </td><?
+    } elseif ($l==$start-1) {?>
+          <th valign="bottom"><?=$text[37];?></th>
+          <th>&nbsp;</th><?
+    } elseif ($l==$ende+2) {?>
+          <th valign="top"><?=$text[37];?></th>
+          <th>&nbsp;</th><?
+    } else {?>
+          <td class="lmoLeer" colspan="2">&nbsp;</td><?
+    }?>
+        </tr><?
   } /* ende for($l=$start-1;$l<=$ende;$l++) */?>
-        </table>
-      </td>
-    </tr><? 
+      </table>
+    </td>
+  </tr><? 
   if($tipp_anzseiten>1 && $tipp_anzseiten<11){?> 
-    <tr>
-      <td align="center">
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tr><?
-    echo "<td align=\"right\" valign=\"top\" class=\"lmost1\" rowspan=\"".(floor($tipp_anzseiten/10)+1)."\">".$text['tipp'][164]."&nbsp;</td>";
+  <tr>
+    <td align="center">
+      <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
+        <tr><?
+    echo "<td align=\"right\" valign=\"top\" rowspan=\"".(floor($tipp_anzseiten/10)+1)."\">".$text['tipp'][164]."&nbsp;</td>";
     for($i = 0; $i < $tipp_anzseiten; $i++) {
       $von = $i * $tipp_anzseite;
       $bis = ($i+1) * $tipp_anzseite-1;
@@ -469,9 +410,9 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
         $bis = $anztipper-1;
       }
       if ($von != $start) {
-        echo "<td class=\"lmost0\"><nobr><a href=\"".$addt3.$von."\">";
+        echo "<td class='nobr'><a href=\"".$addt3.$von."\">";
       } else {
-        echo "<td class=\"lmost1\"><nobr>";
+        echo "<td class=\"nobr\">";
       }
       $k1 = strtolower(substr($tippernick[intval(substr($tab0[$von], -6))], 0, 3));
       $k2 = strtolower(substr($tippernick[intval(substr($tab0[$bis], -6))], 0, 3));
@@ -479,7 +420,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
       if ($von != $start) {
         echo "</a>";
       }
-      echo "&nbsp;</nobr></td>";
+      echo "&nbsp;</td>";
       if (($i+1)%10 == 0) {
         echo "</tr><tr>";
       }
