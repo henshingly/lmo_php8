@@ -276,7 +276,7 @@ if(isset($file) && $file!="" && check_hilfsadmin($file)){
         if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="URL")){$teamu[$op5]=$dum[2];}
         if(($op1=="Team") && ($dum[0]!="Teams") && ($dum[0]!="Teamk") && ($dum[1]=="NOT")){$teamn[$op5]=$dum[2];}
         
-        if(!isset($lmo_only_st)){ ////////////////////////////////////////////////// nur der benötigte Spieltag wird eingelesen
+        if(!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ ////////////////////////////////////////////////// nur der benötigte Spieltag wird eingelesen
           if(($op2=="Round") && ($dum[1]=="HS")){$handp[$op3]=$dum[2];}
           if(!isset($handp[$op3])){$handp[$op3]="0";}
           if(($op2=="Round") && ($dum[1]=="D1")){$datum1[$op3]=$dum[2];}
