@@ -62,11 +62,11 @@ if ($message != "") {
         if ($sent) {
           $anzemail++;
         } else {
-          echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][176].'</p>';
+          echo getMessage($text['tipp'][176],TRUE);
         }
       }
     }
-    echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$anzemail." ".$text['tipp'][175]."</p>";
+    echo getMessage($anzemail." ".$text['tipp'][175]);
   }
    
    
@@ -186,7 +186,7 @@ if ($message != "") {
             if ($sent) {
               $anzemail++;
             } else {
-              echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][176]."</p>";
+              echo getMessage($text['tipp'][176],TRUE);
             }
           }
         }
@@ -254,14 +254,14 @@ if ($message != "") {
               if ($sent) {
                 $anzemail++;
               } else {
-                echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][176]."</p>";
+                echo getMessage($text['tipp'][176],TRUE);
               }
             }
           }
         } // ende if($dummb[10]!=-1)
       } // ende for($tippernr=0;$tippernr<$anztipper;$tippernr++)
     }
-    echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$anzemail." ".$text['tipp'][175]."</p>";
+    echo getMessage($anzemail." ".$text['tipp'][175]);
   } // ende if($emailart==1)
    
   elseif($emailart == 2 && $adressat != "") {
@@ -279,9 +279,9 @@ if ($message != "") {
       $sent=mail($dummb[4], $subject, $textmessage, $header);
     }
     if ($sent) {
-      echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> 1 '.$text['tipp'][175]."</p>";
+      echo getMessage('1 '.$text['tipp'][175]);
     } else {
-      echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text['tipp'][176]."</p>";
+      echo getMessage($text['tipp'][176],TRUE);
     }
   }
 }

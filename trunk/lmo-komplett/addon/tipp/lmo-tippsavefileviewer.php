@@ -37,10 +37,10 @@ if ($tippfile != "") {
      
     $datei = fopen($tippfile, "wb");
     if (!$datei) {
-      echo "<p class='error'>".$text[283]."</p>";
+      echo getMessage($text[283],TRUE);
       exit;
     } elseif($start1 == 0) {
-      echo "<p class='message'>".$text['tipp'][41]."<br></p>";
+      echo getMessage($text['tipp'][41]);
     }
     flock($datei, 2);
      

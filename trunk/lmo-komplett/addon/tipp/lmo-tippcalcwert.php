@@ -30,7 +30,7 @@ if ($all == 1) {
   $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, 0, -4).".aus";
 }
 if (!file_exists($auswertfile)) {
-  echo "<p class='error'>".$text['tipp'][17]."</p>";
+  echo getMessage($text['tipp'][17],TRUE);
   $anztipper = 0;
 } else {
   $datei = fopen($auswertfile, "rb");

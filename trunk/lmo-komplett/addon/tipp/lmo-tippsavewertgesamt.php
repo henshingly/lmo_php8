@@ -38,11 +38,11 @@ $anztipper = count($dummd);
 $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
 $auswertdatei = fopen($auswertfile, "wb");
 if (!$auswertdatei) {
-  echo "<p class='error'>".$text['tipp'][0].': '.$text['tipp'][29]." ".$auswertdatei.$text[283]."</p>";
+  echo getMessage($text['tipp'][0].': '.$text['tipp'][29]." ".$auswertdatei.$text[283],TRUE);
   exit;
 }
 flock($auswertdatei, 2);
-echo "<p class='message'>".$text['tipp'][0].': '.$text['tipp'][56]." ".$text['tipp'][65]."</p>";
+echo getMessage($text['tipp'][0].': '.$text['tipp'][56]." ".$text['tipp'][65]);
 $tippernick = array_pad($array, $anztipper+1, "");
 if ($tipp_showname == 1) {
   $tippername = array_pad($array, $anztipper+1, "");

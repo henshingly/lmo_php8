@@ -86,7 +86,7 @@ if (($action == "tipp") && ($todo == "newligen")) {
   
   if($newpage==1){ /* Anmeldung erfolgreich */?>
   <tr>
-    <td class="message" align="center"><img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt="">  <?=$text['tipp'][20]; ?></td>
+    <td align="center"><?php echo getMessage($text['tipp'][20]); ?></td>
   </tr><? 
   }
   

@@ -29,7 +29,7 @@ if ($datei) {
   }
   fclose($datei);
 }else{
-  echo "<p class='error'>".$text[283]."</p>";
+  echo getMessage($text[283],TRUE);
   exit;
 }
 

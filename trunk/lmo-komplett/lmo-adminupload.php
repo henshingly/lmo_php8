@@ -33,9 +33,9 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
       }
     }
     if (move_uploaded_file($userfile,$ufile)) {
-      echo "<p class='message'>".$text[303].":<br>".$ufile."</p>";
+      echo getMessage($text[303].":<br>".$ufile);
     } else {
-      echo "<p class='error'>".$text[304]."</p>";
+      echo getMessage($text[304],TRUE);
     }
   }?>
 <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">

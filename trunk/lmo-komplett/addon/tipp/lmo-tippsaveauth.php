@@ -16,26 +16,26 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
-  if ($action == "tipp") {
+
+
+if ($action == "tipp") {
   require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 } elseif($action == "admin") {
   require_once(PATH_TO_LMO."/lmo-admintest.php");
 }
- 
+
 $datei = fopen($pswfile, "wb");
 if (!$datei) {
-  echo "<p class='error'>".$text[283]."</p>";
+  echo getMessage($text[283],TRUE);
   exit;
 } else {
-  echo "<p class='message'>".$text[138]."</p>";
+  echo getMessage($text[138]);
 }
-flock($datei, 2);
+flock($datei, LOCK_EX);
 for($i = 1; $i < count($users); $i++) {
   fputs($datei, $users[$i]."\n");
 }
-flock($datei, 3);
+flock($datei, LOCK_UN);
 fclose($datei);
 clearstatcache();
 

@@ -242,7 +242,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
   if($anzspiele==0){?>
         <tr>
-          <td align="center" class="error" colspan="<?=$breite; ?>"><?=$text['tipp'][262]; ?></td>
+          <td align="center" colspan="<?=$breite; ?>"><?php echo getMessage($text['tipp'][262],TRUE); ?></td>
         </tr><?
   }
   for($i=0;$i<$anzspiele;$i++){

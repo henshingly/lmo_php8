@@ -374,7 +374,7 @@ if(!empty($file) && check_hilfsadmin($file)){
       for($j=0;$j<$anzteams;$j++){if($teamk[$j]==""){$teamk[$j]=substr($teams[$j],0,5);}}
       //echo "<br>".((mictime()-$a)*1000)." µS ".$dum[1]; 
     } else {
-      echo('<p class="error">'.$text[224].'</p>');
+      echo getMessage($text[224],TRUE);
     }
   }
 }

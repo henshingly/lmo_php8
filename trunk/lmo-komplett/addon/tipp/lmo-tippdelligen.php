@@ -50,14 +50,14 @@ if (($action == "tipp") && ($todo == "delligen")) {
         <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text['tipp'][268]; ?>"><?
     }?>
       </form>
-      <p class="error"><strong><?=$text['tipp'][82]?></strong> <?=$text['tipp'][267];?></p><? 
+      <?php echo getMessage('<strong>'.$text['tipp'][82].'</strong> '.$text['tipp'][267],TRUE); 
   }?>
     </td>
     <td width="20">&nbsp;</td>
   </tr><?
   if($newpage==1){ /* Abbestellen erfolgreich */?>
   <tr>
-    <td colspan="3" class="message" align="center"><img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt="">  <?=$text['tipp'][269]; ?></td>
+    <td colspan="3" align="center"><?php echo getMessage($text['tipp'][269]); ?></td>
   </tr><? 
   }
   if($newpage==1 || $i==0){ /* zurück zur Übersicht */?>

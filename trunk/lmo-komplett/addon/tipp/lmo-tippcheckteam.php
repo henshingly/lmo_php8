@@ -62,7 +62,7 @@ for($j = 0; $j < $v && $gef == 0; $j++) {
       if ($tipperteam[$j] >= $tipp_tipperimteam && $tipp_tipperimteam != 0) {
         // max. Tipperanzahl schon erreicht
         $newpage = 0;
-        echo "<p class='error'>".$text['tipp'][142]."</p><br>";
+        echo getMessage($text['tipp'][142],TRUE);
       }
     }
   }
@@ -71,7 +71,7 @@ for($j = 0; $j < $v && $gef == 0; $j++) {
       // Team existiert bereits
       $gef = 1;
       $newpage = 0;
-      echo "<p class='error'>".$text['tipp'][143]."</p><br>";
+      echo getMessage($text['tipp'][143],TRUE);
     }
   }
 }

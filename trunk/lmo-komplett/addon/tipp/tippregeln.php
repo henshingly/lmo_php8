@@ -138,7 +138,7 @@ if ($tipp_jokertipp==1) {?>
 }?>  
     </ul><?
   if ($tipp_jokertipp==1) {?>
-echo '  <dd>Es besteht auch die Möglichkeit pro Spieltag einen <strong>Joker</strong> zu setzen. Die für diesen Spieltag gewonnen Punkte werden dann doppelt gewertet.</dd>';
+     <dd>Es besteht auch die Möglichkeit pro Spieltag einen <strong>Joker</strong> zu setzen. Die für diesen Spieltag gewonnen Punkte werden dann doppelt gewertet.</dd><?
 } ?>  
   </dd>
   <dt>Die Liga- und Spieltagswertung</dt>

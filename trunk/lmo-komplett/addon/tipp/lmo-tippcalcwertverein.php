@@ -88,6 +88,6 @@ if(file_exists($auswertfile)){
     rsort($tab0,SORT_STRING);
   }
 }else{?>
-  <p class="error"><?=$text['tipp'][17]?></p><?
+  <?php echo getMessage($text['tipp'][17],TRUE);?><?
 }
 ?>

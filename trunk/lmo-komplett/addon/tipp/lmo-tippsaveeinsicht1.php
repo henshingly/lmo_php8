@@ -38,10 +38,10 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
      
     $datei = fopen($einsichtfile, "wb");
     if (!$datei) {
-      echo "<p class='error'>".$text[283]."</p>";
+      echo getMessage($text[283],TRUE);
       exit;
     } else {
-      //echo "<p class='message'>".$text['tipp'][41]."<br></p>";
+      //echo getMessage($text['tipp'][41]);
     }
     flock($datei, 2);
      

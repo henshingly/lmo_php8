@@ -64,9 +64,9 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $mail->body = $text[342]."\n\n--------------------------------------------------\nSender: ".$_SERVER['REMOTE_ADDR']." (".$_SERVER['HTTP_USER_AGENT'].")\n";
         $mail->add_attachment($zipfile->file(), "lmo_".substr($dummy[$down-1], 0, -4).".zip", "application/octet-stream");
         if ($mail->send() === TRUE) {
-          echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$text[348]."</p>";
+          echo getMessage($text[348]);
         }else{
-          echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text[550]."</p>";
+          echo getMessage($text[550],TRUE);
         }?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?=$text[347]?><\/a>');</script></p><?
       }
@@ -87,9 +87,9 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $mail->body = $text[342]."\n\n--------------------------------------------------\nSender: ".$_SERVER['REMOTE_ADDR']." (".$_SERVER['HTTP_USER_AGENT'].")\n";
         $mail->add_attachment($zipfile -> file(), "lmo_".substr($dummy[$down-1],0,-4).".zip", "application/octet-stream");
         if ($mail->send()===TRUE){
-          echo '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$text[348]."</p>";
+          echo getMessage($text[348]);
         }else{
-          echo '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$text[550]."</p>";
+          echo getMessage($text[550],TRUE);
         }?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?=$text[347]?><\/a>');</script></p><?
       }

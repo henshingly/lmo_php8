@@ -39,7 +39,7 @@ if ($einsichtfile != "") {
      
     $datei = fopen($einsichtfile, "wb");
     if (!$datei) {
-      echo "<p class='error'>".$text[283]."</p>";
+      echo getMessage($text[283],TRUE);
       exit;
     }
     flock($datei, 2);
