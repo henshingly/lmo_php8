@@ -23,163 +23,151 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if($_SESSION['lmouserok']==2){
-  $users = array("");
-  $userf = array("");
-  isset($_GET['del'])?$del=$_GET['del']:$del=0;
-  isset($_POST['save'])?$save=$_POST['save']:$save=0;
-  $pswfile="lmo-auth.txt";
-  $psw1file="lmo-access.txt";
-  $datei = fopen($pswfile,"rb");
-  while (!feof($datei)) {
-    $zeile = fgets($datei,1000);
-    $zeile=trim(chop($zeile));
-    if($zeile!=""){
-      if($zeile!=""){array_push($users,$zeile);}
-      }
-    }
-  fclose($datei);
-  $datei = fopen($psw1file,"rb");
-  while (!feof($datei)) {
-    $zeile = fgets($datei,1000);
-    $zeile=trim(chop($zeile));
-    if($zeile!=""){
-      if($zeile!=""){array_push($userf,$zeile);}
-      }
-    }
-  fclose($datei);
-  $userf1="";
-  if($save>0){
-    $users[$save]=trim($_POST["xname".$save])."|".trim($_POST["xpass".$save])."|".trim($_POST["xzugr".$save])."|EOL";
-    if(trim($_POST["xzugr".$save])==1){
-      $userh1=split("[,]",trim($_POST["xfiles".$save]));
-      $userh="";
-      if(count($userh1)>0){
-        for($u=0;$u<count($userh1);$u++){
-          $l=strlen($userh1[$u])-4;
-          if(substr($userh1[$u],-4)==".l98"){$userh1[$u]=substr($userh1[$u],0,$l);}
-          while(strrchr($userh1[$u],"/")!=false){
-            $userh1[$u]=strrchr($userh1[$u],"/");
-            $l=strlen($userh1[$u])-1;
-            $userh1[$u]=substr($userh1[$u],1,$l);
+if ($_SESSION['lmouserok']==2) {
+  
+  
+  
+  isset($_GET['del'])?$del=$_GET['del']:$del=-1;
+  isset($_POST['save'])?$save=$_POST['save']:$save=-2;
+  isset($_REQUEST['show'])?$show=$_REQUEST['show']:$show=-1;
+  
+  require(PATH_TO_LMO."/lmo-loadauth.php");
+ 
+  if ($save>=0) {
+    if(isset($_POST["xadmin_name".$save]) && isset($_POST["xadmin_pass".$save]) && isset($_POST["xadmin_rang".$save])) {
+      $lmo_admin_data[$save]=array(trim($_POST["xadmin_name".$save]),trim($_POST["xadmin_pass".$save]),trim($_POST["xadmin_rang".$save]));
+      $lmo_helfer_ligen_neu=array();
+      if (trim($_POST["xadmin_rang".$save])==1) {  //Hilfsadmin -> Ligen herausfinden
+        $lmo_helfer_ligen=isset($_POST["xhelfer_ligen".$save]) && count($_POST["xhelfer_ligen".$save])>0?$_POST["xhelfer_ligen".$save]:array();
+        if (count($lmo_helfer_ligen)>0) {  
+          for ($u=0; $u<count($lmo_helfer_ligen); $u++) {  //Alle Ligen durchgehen
+            $l=strlen($lmo_helfer_ligen[$u])-4;
+            if (substr($lmo_helfer_ligen[$u],-4)==".l98") {
+              $lmo_helfer_ligen[$u]=substr($lmo_helfer_ligen[$u],0,$l);  //l98-Endung entfernen
             }
-          if(file_exists($dirliga.$userh1[$u].".l98")==true){
-            if($userh!=""){$userh=$userh.",";}
-            $userh=$userh.$userh1[$u];
+            while (strrchr($lmo_helfer_ligen[$u],"/")!==false) {
+              $lmo_helfer_ligen[$u]=strrchr($lmo_helfer_ligen[$u],"/");
+              $l=strlen($lmo_helfer_ligen[$u])-1;
+              $lmo_helfer_ligen[$u]=substr($lmo_helfer_ligen[$u],1,$l);
+            }
+            if (file_exists($dirliga.$lmo_helfer_ligen[$u].".l98")===true) {  //Datei existiert
+              $lmo_helfer_ligen_neu[]=$lmo_helfer_ligen[$u];
             }
           }
         }
-      $userf1=trim($_POST["oldu"])."|".$userh."|".trim($_POST["xname".$save])."|EOL";
-      }
-    require(PATH_TO_LMO."/lmo-saveauth.php");
+      }  //Ende Hilfsadmin
+      $lmo_admin_data[$save][3]=implode(',',$lmo_helfer_ligen_neu); //Ligen hinzufügen
     }
-  elseif($save==-1){
-    array_push($users,trim($_POST["xnamex"])."|".trim($_POST["xpassx"])."|".trim($_POST["xzugrx"])."|EOL");
-    if(trim($_POST["xzugrx"])==1){
-      $userf1=trim($_POST["xnamex"])."||EOL";
-      }
+    $main_admin=array_shift($lmo_admin_data);
+    usort($lmo_admin_data,"sort_admin");
+    array_unshift($lmo_admin_data,$main_admin);
     require(PATH_TO_LMO."/lmo-saveauth.php");
-    }
-  elseif($del>0){
-    for($i=$del+1;$i<count($users);$i++){
-      $users[$i-1]=$users[$i];
-      }
-    $userf2=array_pop($users);
-    $userf3=split("[|]",$userf2);
-    $userf1=$userf3[0];
+    require(PATH_TO_LMO."/lmo-loadauth.php");
+  }elseif ($del>=0) {  //User löschen
+    $lmo_admin_data[$del]='';
     require(PATH_TO_LMO."/lmo-saveauth.php");
-    }
+    require(PATH_TO_LMO."/lmo-loadauth.php");
+  }elseif ($save==-1) {  //Neuen User anlegen
+    $lmo_admin_data[]=array(trim($_POST["xadmin_name"]),trim($_POST["xadmin_pass"]),1,'');  //Neue User sind zunächst immer Hilfsadmins ohne Ligen
+    require(PATH_TO_LMO."/lmo-saveauth.php");
+    require(PATH_TO_LMO."/lmo-loadauth.php");
+  } 
 ?>
-
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?=$text[321]?></td>
-  </tr><? 
-  if(count($users)>1){
-    for($i=1;$i<count($users);$i++){
-      $userd = split("[|]",$users[$i]);
-      $userg="";
-      
-      if($userd[2]==1){
-        for($j=1;$j<count($userf);$j++){
-          $usere = split("[|]",$userf[$j]);
-          if($userd[0]==$usere[0]){$userg=$usere[1];}
-        }
-      }?>
+    <td class="lmost1" align="center" colspan="2"><?=$text[321]?></td>
+  </tr>
   <tr>
-    <td align="center" class="lmost3">
-      <form name="lmoedit<?=$i?>" action="<?=$_SERVER['PHP_SELF']?>" method="post">
+    <td valign="top">
+      <table cellspacing="0" cellpadding="0" border="0"><?
+  $testshow=0;
+  foreach($lmo_admin_data as $lmo_admin) {
+    $show_admin_name=$lmo_admin[2]==2?"<em>".$lmo_admin[0]."</em>":$lmo_admin[0];?>
+         <tr><td<?if ($show==$testshow) {?> class="lmost1"><?=$show_admin_name;?><?}else{?> class="lmost0"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=user&amp;show=".$testshow;?>"><?=$show_admin_name;?></a><?}?></td></tr><?
+    $testshow++;
+  }?>
+       </table>
+    </td>
+    <td align="center" valign="top" class="lmost3">
+      <form name="lmoedit<?=$show?>" action="<?=$_SERVER['PHP_SELF']?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="user">
-        <input type="hidden" name="save" value="<?=$i?>">
-        <input type="hidden" name="oldu" value="<?=$userd[0]?>">
+        <input type="hidden" name="save" value="<?=$show?>">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><?
-      if ($i==1) {?>
+  $testshow=0;
+  foreach($lmo_admin_data as $lmo_admin) {
+    if ($show==-1) {?>
+          <tr>
+            <td class="lmost4"><?$testshow==0?print($text[318]):print("&nbsp;")?></td>
+          </tr><?
+    }
+    if ($show==$testshow) {?> 
           <tr>
             <td class="lmost4"><?=$text[322]?></td>
+            <td class="lmost5" colspan="2"><input class="lmoadminein" type="text" name="xadmin_name<?=$testshow?>" size="16" maxlength="32" value="<?=$lmo_admin[0]?>"></td>
+          </tr>
+          <tr>
             <td class="lmost4"><?=$text[323]?></td>
-            <td class="lmost4"><?=$text[324]?></td>
-            <td colspan="2"class="lmost4">&nbsp;</td>
-          </tr><?
-      }?>    
+            <td class="lmost5" colspan="2"><input class="lmoadminein" type="text" name="xadmin_pass<?=$show?>" size="16" maxlength="32" value="<?=$lmo_admin[1]?>"></td>
+          </tr>
           <tr>
-            <td class="lmost5"><input class="lmoadminein" type="text" name="xname<?=$i?>" size="16" maxlength="32" value="<?=$userd[0]?>"></td>
-            <td class="lmost5"><input class="lmoadminein" type="text" name="xpass<?=$i?>" size="16" maxlength="32" value="<?=$userd[1]?>"></td>
-            <td class="lmost5">
-              <select class="lmoadminein" name="xzugr<?=$i?>">
-                <option value="1"<?if($userd[2]==1){echo " selected";}?>><?=$text[325]?></option>
-                <option value="2"<?if($userd[2]==2){echo " selected";}?>><?=$text[326]?></option>
-              </select>
-            </td>
-            <td class="lmost5"><acronym title="<?=$text[327]?>"><input class="lmoadminbut" type="submit" name="best<?=$i?>" value="<?=$text[329]?>"></acronym></td>
-            <td>
-              <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?=$i?>" onclick="return confirm('<?=$text[499]?>');"><img border="0" width="11" heigth="13" src="img/delete.gif" alt="<?=$text[330]?>" title="<?=$text[328]?>"></a>
-            </td>
-          </tr><?
-      if($userd[2]==1){?>
+            <td class="lmost4" rowspan="2"><?=$text[324]?></td>
+            <td class="lmost5" colspan="2"><input class="lmoadminein" type="radio" name="xadmin_rang<?=$show?>" value="2" <?if ($lmo_admin[2]==2) echo " checked";?>><?=$text[326]?></td>
+          </tr>
           <tr>
-            <td class="lmost8" colspan="3"><acronym title="<?=$text[398]?>"><?=$text[397]?>: <input class="lmoadminein" type="text" name="xfiles<?=$i?>" size="40" value="<?=$userg?>"></acronym></td>
+            <td class="lmost5" colspan="2"><input class="lmoadminein" type="radio" name="xadmin_rang<?=$show?>" value="1" <?if ($lmo_admin[2]==1) echo " checked";?>><?=$text[325]?></td>
           </tr><?
+      if($lmo_admin[2]==1){?>
+          <tr>
+            <td class="lmost4" colspan="3"><acronym title="<?=$text[398]?>"><?=$text[397]?></acronym></td>
+          </tr><?
+        $helfer_ligen=explode(',',$lmo_admin_data[$testshow][3]);
+        $handle=opendir(PATH_TO_LMO.'/'.$dirliga);
+        while ($lig=readdir($handle)) {
+          if (substr($lig,-4)==".l98") {
+            $ligenname=substr($lig,0,-4);?>
+          <tr>
+            <td class="lmost5" colspan="3"><input class="lmoadminein" type="checkbox" name="xhelfer_ligen<?=$show?>[]" size="50" value="<?=$ligenname?>"<?if (in_array($ligenname,$helfer_ligen)) echo " checked"?>><?= $ligenname?></td>
+          </tr><?
+          }
+        }
       }?>
+          <tr>
+            <td class="lmost5" colspan="2" align="right"><acronym title="<?=$text[327]?>"><input class="lmoadminbut" type="submit" value="<?=$text[329]?>"></acronym></td>
+            <td class="lmost5" align="right">
+              <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?=$show?>" onclick="return confirm('<?=$text[499]?>');"><img border="0" width="11" heigth="13" src="img/delete.gif" alt="<?=$text[330]?>" title="<?=$text[328]?>"></a>
+            </td>
+          </tr><? 
+    }//if $show=$testshow
+    $testshow++;
+  }//foreach
+  ?>
         </table>
       </form>
     </td>
-  </tr><? 
-      if($i==count($users)-1){?>
-  <tr>
-    <td class="lmost5" colspan="4">&nbsp;</td>
-  </tr><?     
-      }//if
-    }//for
-  }//if
-  ?>
-  <tr>
-    <td class="lmost4" colspan="4"><?=$text[331]?></td>
   </tr>
   <tr>
-    <td>
+    <td class="lmost4" colspan="4" colspan="2"><?=$text[331]?></td>
+  </tr>
+  <tr>
+    <td colspan="2">
       <form name="lmoeditx" action="<?=$_SERVER['PHP_SELF']?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="user">
         <input type="hidden" name="save" value="-1">
+        <input type="hidden" name="show" value="<?=$show+1?>">
         <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost5"><input class="lmoadminein" type="text" name="xnamex" size="16" maxlength="32" value="NeuerUser"></td>
-            <td class="lmost5"><input class="lmoadminein" type="text" name="xpassx" size="16" maxlength="32" value="<? require(PATH_TO_LMO."/lmo-adminuserpass.php")?>"></td>
-            <td class="lmost5">
-              <select class="lmoadminein" name="xzugrx">
-                <option value="1" selected><?=$text[325]?></option>
-                <option value="2"><?=$text[326]?></option>
-              </select>
-            </td>
-            <td class="lmost5"><acronym title="<?=$text[327]?>"><input class="lmoadminbut" type="submit" name="bestx" value="<?=$text[329]?>"></acronym></td>
+            <td class="lmost5"><input class="lmoadminein" type="text" name="xadmin_name" size="16" maxlength="32" value="NeuerUser"></td>
+            <td class="lmost5"><input class="lmoadminein" type="text" name="xadmin_pass" size="16" maxlength="32" value="<?=substr(md5(uniqid(rand())),0,rand(8,16));?>"></td>
+            <td class="lmost5"><acronym title="<?=$text[327]?>"><input class="lmoadminbut" type="submit" value="<?=$text[329]?>"></acronym></td>
           </tr>
         </table>
       </form>
     </td>
   </tr>
   <tr>
-    <td>
+    <td colspan="2">
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmost2" align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
@@ -190,5 +178,10 @@ if($_SESSION['lmouserok']==2){
       </table>
     </td>
   </tr>
-</table>
-<? }?>
+</table><?
+}
+
+//Sortierfunktion für die Admins
+  function sort_admin ($admin_a, $admin_b) {
+    return strnatcasecmp($admin_a[0], $admin_b[0]);
+  }?>

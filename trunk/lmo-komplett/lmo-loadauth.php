@@ -19,19 +19,18 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if($_SESSION['lmouserok']==2){
-  $lmo_auth_file=PATH_TO_LMO."/lmo-auth.txt";
-  
-  $datei = fopen($lmo_auth_file,"wb");
-  if ($datei) {
-    flock($datei,LOCK_EX);
-    foreach($lmo_admin_data as $lmo_admin) {
-      if (count($lmo_admin)>1) fputs($datei,implode("|",$lmo_admin)."\n");
-    }
-    flock($datei,LOCK_UN);
-    echo "<font color=\"#008800\">".$text[138]."</font>";
-  }else{
-      echo "<font color=\"#ff0000\">".$text[283]."</font>";
+
+$lmo_auth_file=PATH_TO_LMO."/lmo-auth.txt";
+$lmo_admin_data = array();
+$datei = fopen($lmo_auth_file,"rb");
+if ($datei) {
+  while ($data=fgetcsv($datei,10000,'|')) {
+    if (count($data)>1) $lmo_admin_data[]=$data;   //[0]=Name, [1]=Passwort, [2]=Rang, [3]=Ligen
   }
+  fclose($datei);
+}else{
+  echo "<font color=\"#ff0000\">".$text[283]."</font>";
+  exit;
 }
+
 ?>
