@@ -33,7 +33,7 @@ if (!$datei) {
 }
 flock($datei, LOCK_EX);
 for($i = 1; $i < count($users); $i++) {
-  fputs($datei, $users[$i]."\n");
+  fputs($datei, trim($users[$i])."\n");
 }
 flock($datei, LOCK_UN);
 fclose($datei);

@@ -15,7 +15,7 @@ if($_SESSION['lmouserok']==2){
   }?> 
     </td>
     <td align="center"><?
-  if ($todo!='tippuser') {?>
+  if ($todo!='tippuser' && $todo!='tippuseredit') {?>
       <a href='<?=$tipp_addr_user?>' onClick="return chklmolink();" title="<?=$text['tipp'][114]?>"><?=$text['tipp'][114]?></a><?
   } else {
     echo $text['tipp'][114];

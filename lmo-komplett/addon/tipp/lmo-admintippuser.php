@@ -18,30 +18,18 @@
   */
   
   
+$tipper_sort=	isset($_REQUEST['tipper_sort'])	? $_REQUEST['tipper_sort'] : '';
+$del=	        isset($_REQUEST['del'])	        ? $_REQUEST['del']         : '';
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($_SESSION["lmouserok"] == 2) {
-  $users = array("");
-  if (!isset($del)) {
-    $del = "";
-  }
-  if (!isset($save)) {
-    $save = 0;
-  }
+
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  $datei = fopen($pswfile, "rb");
-  while (!feof($datei)) {
-    $zeile = fgets($datei, 1000);
-    $zeile = trim(chop($zeile));
-    if ($zeile != "") {
-      array_push($users, $zeile);
-    }
-  }
-  fclose($datei);
-  if ($save == -1) {
-    /// neuen User speichern
-    array_push($users, trim($_POST["xnickx"])."|".trim($_POST["xpassx"])."|5|||||||1|1|EOL");
-    require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
-  } elseif($del != "") {
+  
+  $users = file($pswfile);
+  array_unshift($users,'');
+
+  if($del != "") {
     $gef = 0;
     for($i = 1; $i < count($users) && $gef == 0; $i++) {
       $dummb = explode('|', $users[$i]);
@@ -97,11 +85,12 @@ if ($_SESSION["lmouserok"] == 2) {
     $addd = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;tipper_sort=".$tipper_sort."&amp;del=";?>
       <thead>  
         <tr>
+          <th class="nobr" align="right"></th>
           <th class="nobr" align="right">
-            <script type="text/javascript">document.write('ID');</script>
+            <script type="text/javascript">document.write('#');</script>
             <noscript>
               <a href="<?=$adds?>id&amp;tipper_sort_direction=asc" title="<?=$text[527].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
-              ID
+              #
               <a href="<?=$adds?>id&amp;tipper_sort_direction=desc" title="<?=$text[528].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?=URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
             </noscript>
           </th>
@@ -150,15 +139,17 @@ if ($_SESSION["lmouserok"] == 2) {
     $email = array_pad($array, $anztipper, "");
     $team = array_pad($array, $anztipper, "");
     $ltipp = array_pad($array, $anztipper, "");
+    $freig = array_pad($array, $anztipper, "");
     for($i = 1; $i < $anztipper; $i++) {
       $userd = explode('|', $users[$i]);
       $id[$i] = $i;
       $nick[$i] = $userd[0];
       $pass[$i] = $userd[1];
-      $name[$i] = substr($userd[3], strpos($userd[3], " ")+1).", ".substr($userd[3], 0, strpos($userd[3], " "));
+      $name[$i] = substr($userd[3], strpos($userd[3], " ")+1)." ".substr($userd[3], 0, strpos($userd[3], " "));
       $email[$i] = $userd[4];
       $team[$i] = $userd[5];
       $ltipp[$i] = 0;
+      $freig[$i] = $userd[2];
       $verz = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
       if ($verz) {
         while ($files = readdir($verz)) {
@@ -174,6 +165,7 @@ if ($_SESSION["lmouserok"] == 2) {
         $tab0[$i]['email']=$email[$i];
         $tab0[$i]['team']=$team[$i];
         $tab0[$i]['ltipp']=$ltipp[$i];
+        $tab0[$i]['freig']=$freig[$i];
         closedir($verz);
       }
     }
@@ -184,8 +176,19 @@ if ($_SESSION["lmouserok"] == 2) {
         <tbody><?
     for($x = 0; $x < $anztipper-1; $x++) {?>
         <tr>
+          <td align="left"><?
+      if ($tab0[$x]['freig']!="5"){?>
+            <img src="<?=URL_TO_IMGDIR?>/wrong.gif" border="0" width="12" height="12" alt="+"><?
+      } else {?>
+            <img src="<?=URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt="-"><?
+      }?> </td>
           <td align="right"><?=$tab0[$x]['id']; ?></td>
-          <td align="left"><?if ($tab0[$x]['email']!=""){?><a href="mailto:<?=$tab0[$x]['email']; ?>"><?=$tab0[$x]['nick']; ?></a><?}else{echo $tab0[$x]['nick'];}?></td>
+          <td align="left"><?
+      if ($tab0[$x]['email']!=""){?>
+            <a href="mailto:<?=$tab0[$x]['email']; ?>"><?=$tab0[$x]['nick']; ?></a><?
+      } else {
+        echo $tab0[$x]['nick'];
+      }?> </td>
           <td align="left"><?=$tab0[$x]['name']; ?></td>
           <td align="left"><?=$tab0[$x]['team']; ?></td>
           <td align="left"><? if($tab0[$x]['ltipp']>0){echo date("d.m.Y H:i",$tab0[$x]['ltipp']);} ?></td>    
@@ -197,30 +200,15 @@ if ($_SESSION["lmouserok"] == 2) {
         </tbody>
       </table>
       <script type="text/javascript">
-          var tipperTable = new SortableTable(document.getElementById("tipper"),["Number","CaseInsensitiveString","CaseInsensitiveString","CaseInsensitiveString", "GermanDateTime","None","None"]);
-          tipperTable.sort(0);
+          var tipperTable = new SortableTable(document.getElementById("tipper"),["None","Number","CaseInsensitiveString","CaseInsensitiveString","CaseInsensitiveString", "GermanDateTime","None","None"]);
+          tipperTable.sort(1);
        </script>
     </td>
   </tr>
   <tr>
-    <td align="center">
-      <form name="lmoeditx" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
-        <input type="hidden" name="action" value="admin">
-        <input type="hidden" name="todo" value="tippuser">
-        <input type="hidden" name="save" value="-1">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"
-          <tr>
-            <th class="nobr" align="left" colspan="7"><?=$text['tipp'][136]; ?></th>
-          </tr>
-          <tr>
-            <td align="right"><? if(!isset($anztipper)){$anztipper=1;}echo $anztipper; ?></td>
-            <td><input class="lmo-formular-input" type="text" name="xnickx" size="10" maxlength="32" value="NeuerNick"></td>
-            <td><input class="lmo-formular-input" type="text" name="xpassx" size="10" maxlength="32" value="<? require(PATH_TO_LMO."/lmo-adminuserpass.php") ?>"></td>
-            <td><input class="lmo-formular-button" type="submit" name="bestx" value="<?=$text[329]; ?>" title="<?=$text[327] ?>"></td>
-          </tr>
-        </table>
-      </form>
-    </td>
+    <th class="lmoMenu" align="center">
+      <a href="<?=$_SERVER['PHP_SELF']; ?>?action=admin&amp;todo=tippuseredit&amp;save=-1"><?=$text['tipp'][136]; ?></a></th>
+    </th>
   </tr>
 </table><? 
 }
