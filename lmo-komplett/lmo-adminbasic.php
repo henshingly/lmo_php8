@@ -270,9 +270,10 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
                 <option value="1"<?if ($tabelle == '0')   {echo " disabled";}elseif($onrun==1){echo " selected";}?>><?=$text[16]?></option>
                 <option value="2"<?if ($plan == '0')      {echo " disabled";}elseif($onrun==2){echo " selected";}?>><?=$text[12]?></option>
                 <option value="3"<?if ($kreuz == '0')     {echo " disabled";}elseif($onrun==3){echo " selected";}?>><?=$text[14]?></option>
-                <option value="4"<?if ($ligastats == '0') {echo " disabled";}elseif($onrun==4){echo " selected";}?>><?=$text[18]?></option>
-                <option value="5"<?if ($dats == '0')      {echo " disabled";}elseif($onrun==5){echo " selected";}?>><?=$text[140]?></option>
-                <option value="6"<?if ($mittore == '0')   {echo " disabled";}elseif($onrun==6){echo " selected";}?>><?=$text[485]?></option>
+                <option value="4"<?if ($kurve == '0')     {echo " disabled";}elseif($onrun==4){echo " selected";}?>><?=$text[133]?></option>
+                <option value="5"<?if ($ligastats == '0') {echo " disabled";}elseif($onrun==5){echo " selected";}?>><?=$text[18]?></option>
+                <option value="6"<?if ($dats == '0')      {echo " disabled";}elseif($onrun==6){echo " selected";}?>><?=$text[140]?></option>
+                <option value="7"<?if ($mittore == '0')   {echo " disabled";}elseif($onrun==7){echo " selected";}?>><?=$text[485]?></option>
               </select>
             </td>
           </tr><? 
