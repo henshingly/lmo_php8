@@ -55,7 +55,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
     $tipp_anzseite = 20;
   }?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><? if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?></caption><? 
   if($tipp_einsichterst>=1){ ?>
   <tr>

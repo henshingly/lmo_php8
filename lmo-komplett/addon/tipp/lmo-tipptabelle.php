@@ -114,11 +114,11 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   } /* ende if($nick!="") */?>
   <tr>
     <th class="nobr" align="center"><?if($nick==$lmotippername && $nick!=""){echo $text['tipp'][173];}elseif($nick!=""){echo $text['tipp'][181]." ".$nick;}else{echo $text['tipp'][184];} ?></th>
-  </tr><? 
-  if($nick!=""){ ?>
+  </tr>
   <tr>
     <td align="center">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><? 
+  if($nick!=""){ ?>
         <caption><?
     if($tabtype!="0"){?><a href="<?=$addt1."0"?>" title="<?=$text[27]?>"><?=$text[40]?></a><?}else{echo $text[40];}?>&nbsp;<?
     if($tabtype!="1"){?><a href="<?=$addt1."1"?>" title="<?=$text[28]?>"><?=$text[41]?></a><?}else{echo $text[41];}?>&nbsp;<?
@@ -130,28 +130,28 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         </caption><? 
   } /* ende if($nick!="")*/?>
         <tr>
-          <th align="left" colspan="6"> <?=$tabdat; ?> </th>
+          <th align="left" colspan="6"> <?=$tabdat; ?> &nbsp;</th>
           <th width="2">&nbsp;</th>
-          <th align="right"> <?=$text[33]; ?> </th>
-          <th align="right"> <?=$text[34]; ?> </th><? 
+          <th class="nobr" align="right"> <?=$text[33]; ?> &nbsp;</th>
+          <th class="nobr" align="right"> <?=$text[34]; ?> &nbsp;</th><? 
    if($hidr!=1){?>
-          <th align="right"> <?=$text[35];?> </th><?
+          <th class="nobr" align="right"> <?=$text[35];?> &nbsp;</th><?
    }?>
-          <th align="right"> <?=$text[36]; ?> </th><? 
+          <th class="nobr" align="right"> <?=$text[36]; ?> &nbsp;</th><? 
    if($tabpkt==0){?>
           <th width="2">&nbsp;</th>
-          <th <?=$dummy?>> <?=$text[37]?> </th><?
+          <th class="nobr" <?=$dummy?>> <?=$text[37]?> &nbsp;</th><?
    }
    if($tipp_tippmodus==1){ ?>
           <th width="2">&nbsp;</th>
-          <th colspan="3" align="center"> <?=$text[38]; ?> </th>
-          <th align="right"> <?=$text[39]; ?> </th><? 
+          <th class="nobr" colspan="3" align="center"> <?=$text[38]; ?> </th>
+          <th class="nobr" align="right"> <?=$text[39]; ?> </th><? 
    }
    if($tabpkt==1){ ?>
-          <th width="2">&nbsp;</th>
-          <th <?=$dummy?>><?=$text[37]?> </th><?
+          <th class="nobr" width="2">&nbsp;</th>
+          <th class="nobr" <?=$dummy?>><?=$text[37]?> </th><?
    }?>
-          <th align="right"><?=$text[37]."/".$text[33]; ?></th>
+          <th class="nobr" align="right"><?=$text[37]."/".$text[33]; ?></th>
         </tr><?
   $j=1;
   for ($x=1; $x<=$anzteams; $x++) {
@@ -163,26 +163,26 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       $dummy="";
       $dumm2="";
     }
-    $lmo_tabelle_class="lmost5";
+    $lmo_tabelle_class="nobr";
     if ($tabtype==0) {
       if (($x==1) && ($champ!=0)) {
-        $lmo_tabelle_class="lmoTabelleMeister";
+        $lmo_tabelle_class="lmoTabelleMeister nobr";
         $j=2;
       }
       if (($x>=$j) && ($x<$j+$anzcl) && ($anzcl>0)) {
-        $lmo_tabelle_class="lmoTabelleCleague";
+        $lmo_tabelle_class="lmoTabelleCleague nobr";
       }
       if (($x>=$j+$anzcl) && ($x<$j+$anzcl+$anzck) && ($anzck>0)) {
-        $lmo_tabelle_class="lmoTabelleCleaguequali";
+        $lmo_tabelle_class="lmoTabelleCleaguequali nobr";
       }
       if (($x>=$j+$anzcl+$anzck) && ($x<$j+$anzcl+$anzck+$anzuc) && ($anzuc>0)) {
-        $lmo_tabelle_class="lmoTabelleUefa";
+        $lmo_tabelle_class="lmoTabelleUefa nobr";
       }
       if (($x<=$anzteams) && ($x>$anzteams-$anzab) && ($anzab>0)) {
-        $lmo_tabelle_class="lmoTabelleAbsteiger";
+        $lmo_tabelle_class="lmoTabelleAbsteiger nobr";
       }
       if (($x<=$anzteams-$anzab) && ($x>$anzteams-$anzab-$anzar) && ($anzar>0)) {
-        $lmo_tabelle_class="lmoTabelleRelegation";
+        $lmo_tabelle_class="lmoTabelleRelegation nobr";
       }
     }?>
         <tr>
@@ -209,7 +209,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       <td class="<?=$lmo_tabelle_class?>" align="center"><?
     if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
       $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");?>
-        <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt=""><?
+        <img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="">&nbsp;<?
     }?>
       </td>
       <td class="<?=$lmo_tabelle_class; ?> nobr"> <?
@@ -219,29 +219,60 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     }?>
       </td>
       <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
-      <td class="<?=$lmo_tabelle_class; ?>"> <?
-    if (($teamn[$i]!="") || (($strafp[$i]!=0) || ($strafm[$i]!=0))) {
-    $dum27=addslashes($teams[$i]);
-    if (($strafp[$i]!=0) || ($strafm[$i]!=0)) {
-      $dum27=$dum27."\\n\\n".$text[128].": ".$strafp[$i];
-      if ($minus==2) {
-      $dum27=$dum27.":".$strafm[$i];
+      <td class="<?=$lmo_tabelle_class; ?>"><? 
+    
+    if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
+      if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
+        $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
+        $lmo_tabellennotiz="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i]).".gif' {$imgdata[3]} alt=''>";
       }
-    }
-    if ($teamn[$i]!="") {
-      $dum27=$dum27."\\n\\n".$text[22].":\\n".$teamn[$i];
-    }
-    echo "<a href='' onClick=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\" alt=''></a>";
+      
+      /** Notizen anzeigen
+       *
+       * Achtung: Da beim Speichern Strafpunkte/-tore positiv sind und Bonuspunkte negativ (altes System des LMO)
+       * muss mit -1 multipliziert werden, um die Punkte/Tore richtig anzuzeigen
+       */
+      
+      $lmo_tabellennotiz.=" <strong>".$teams[$i]."</strong>";
+      //Straf-/Bonuspunkte
+      if ($strafp[$i]!=0 || $strafm[$i]!=0) {
+        $lmo_tabellennotiz.="\n\n<strong>".$text[128].":</strong> ";
+        //Punkte
+        $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*$strafp[$i]):((-1)*$strafp[$i]);
+        //Minuspunkte
+        if ($minus==2) {
+          $lmo_tabellennotiz.=":".$strafm[$i]<0?"+".((-1)*$strafm[$i]):((-1)*$strafm[$i]);
+        }
+        //Ab ST
+        if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
+      }
+      //Straf-/Bonustore
+      if ($torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
+        $lmo_tabellennotiz.="\n<strong>".$text[522].":</strong> ";
+        //Tore
+        $lmo_tabellennotiz.=$torkorrektur1[$i]<0?"+".((-1)*$torkorrektur1[$i]).":":((-1)*$torkorrektur1[$i].":");
+        //Gegentore
+        $lmo_tabellennotiz.=$torkorrektur2[$i]<0?"+".((-1)*$torkorrektur2[$i]):((-1)*$torkorrektur2[$i]);
+        //Ab ST
+        if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
+      }
+      //Teamnotizen
+      if ($teamn[$i]!="") {
+        $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong> ".$teamn[$i];
+      }?>
+        <a href='#' onclick="alert('<?=mysql_escape_string(strip_tags($lmo_tabellennotiz))?>');window.focus();return false;"><img src='<?=URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt=''><span class='popup'><!--[if IE]><table><tr><td style=\"width: 25em\"><![endif]--><?=nl2br($lmo_tabellennotiz)?><!--[if IE]></td></tr></table><![endif]--></span></a><?
+      $lmo_tabellennotiz="";
     } else {
-    echo "&nbsp;";}?>
+      echo "&nbsp;";
+    }?>
       </td>
       <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$spiele[$i].$dumm2; ?></td>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$siege[$i].$dumm2; ?></td><? 
+      <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$spiele[$i].$dumm2; ?> &nbsp;</td>
+      <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$siege[$i].$dumm2; ?> &nbsp;</td><? 
     if($hidr!=1){ ?>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$unent[$i].$dumm2; ?></td><? 
+      <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$unent[$i].$dumm2; ?> &nbsp;</td><? 
     }?>
-      <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$nieder[$i].$dumm2; ?></td><?
+      <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$nieder[$i].$dumm2; ?> &nbsp;</td><?
     if ($tabpkt==0) {
       echo "<td class=\"".$lmo_tabelle_class."\" width=\"2\">&nbsp;</td><td class=\"".$lmo_tabelle_class."\" align=\"right\">".$punkte[$i]."</td>";
       if ($minus==2) {
@@ -268,13 +299,33 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     }?>
     </table>
   </td>
+  </tr>
+  <?
+  }
+  if($tabdat!=""){ ?>
+  <tr>
+    <td>
+      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tr><?  
+   $st0 = $st-1;
+   if ($st > 1) {?>
+          <td align='left'>&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a>&nbsp;</td><?
+   }
+   $st0 = $st+1;
+   if ($st < $anzst) {?>
+          <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[7]?></a>&nbsp;</td><?
+   }?>
+        </tr>
+      </table>
+    </td>
   </tr><? 
+  }?><? 
     if($tipp_wertverein==1 && $tabtype==0){ ?>
   <tr>
-  <td><?="&nbsp;" ?></td>
+    <td>&nbsp;</td>
   </tr>
   <tr>
-  <td class="lmost4" align="center"><?=$text['tipp'][261]; ?></td>
+  <th align="center"><?=$text['tipp'][261]; ?></td>
   </tr><?
       $st=$endtab;
       if ($nick!="") {
@@ -327,16 +378,16 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     <td align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td class="lmost4" colspan="3"><?
+          <th colspan="3"><?
     $dummy=" align=\"right\"";
     echo $tabdat;?>
-          </td>
-          <td class="lmost4" width="2">&nbsp;</td>
-          <td class="lmost4"<?=$dummy; ?>><?=$text[33]; /* Spiele getippt*/ ?></td>
-          <td class="lmost4" width="2">&nbsp;</td>
-          <td class="lmost4"<?=$dummy; ?>><?if($tipp_tippmodus==1){echo $text[37];}else{echo $text['tipp'][122];}?></td>
-          <td class="lmost4" width="2">&nbsp;</td>
-          <td class="lmost4"<?=$dummy; ?>><strong><?if($tipp_tippmodus==1){echo $text[37]."/".$text[33];}else{echo $text['tipp'][123]."%";}?></strong></td>
+          </th>
+          <th width="2">&nbsp;</th>
+          <th class="nobr" <?=$dummy; ?>><?=$text[33]; /* Spiele getippt*/ ?></th>
+          <th width="2">&nbsp;</th>
+          <th class="nobr" <?=$dummy; ?>><?if($tipp_tippmodus==1){echo $text[37];}else{echo $text['tipp'][122];}?></th>
+          <th width="2">&nbsp;</th>
+          <th class="nobr" <?=$dummy; ?>><strong><?if($tipp_tippmodus==1){echo $text[37]."/".$text[33];}else{echo $text['tipp'][123]."%";}?></strong></th>
         </tr><?
     $j=1;
     $spv=-1;
@@ -352,9 +403,9 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         $dummy="";
         $dumm2="";
       }
-      $lmo_tabelle_class="lmost5";?>
+      $lmo_tabelle_class="nobr";?>
         <tr>
-          <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$x.$dumm2;?></td><?
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$x.$dumm2;?>&nbsp;</td><?
       $y=0;
       if (($endtab>1) && ($tabdat!="") && $tipppunktegesamt[intval(substr($tab0[0],25))]>0) {
         if ($platz0[$i]<$platz1[$i]) {
@@ -365,7 +416,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       }
       if ($tabdat!="") {
         echo "<td class=\"".$lmo_tabelle_class."\"";
-        echo "><img src='lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
+        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">&nbsp;";
         echo "</td>";
       } else {
         echo "<td class=\"".$lmo_tabelle_class."\">&nbsp;</td>";
@@ -392,28 +443,9 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     } /* ende for($x=1;$x<=$anzteams;$x++)*/?>
       </table>
     </td>
-  </tr><?
-  }
-  if($tabdat!=""){ ?>
+  </tr>
   <tr>
-    <td>
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr><? 
-    $st0=$endtab-1;
-    if ($endtab>1) {
-      echo "<td class=\"lmoMenu\"><a href=\"".$addr.$st0."\" title=\"".$text[43]."\">".$text[5]."</a></td>";
-    }
-    $st0=$endtab+1;
-    if ($endtab<$anzst) {
-      echo "<td align=\"right\" class=\"lmoMenu\"><a href=\"".$addr.$st0."\" title=\"".$text[44]."\">".$text[7]."</a></td>";
-    }?>  
-        </tr>
-      </table>
-    </td>
-  </tr><? 
-  }?>
-  <tr>
-    <td class="lmocross4" align="center"><? 
+    <td class="lmoFooter" align="center"><? 
   if ($nick!=$lmotippername && $lmotippername!="") {
     echo "<a href=\"".$addt.$lmotippername."\" title=\"".$text['tipp'][173]."\">".$text['tipp'][182]."</a>";
   }
