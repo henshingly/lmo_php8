@@ -43,35 +43,32 @@ if((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()==
 <?php
 setlocale(LC_TIME, "de_DE");
 $array = array();
-
+$ftype=".l98";
 require_once("lmo-cfgload.php");
 if(isset($_GET["lmouserlang"])){$_SESSION["lmouserlang"]=$_GET["lmouserlang"];}
 if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
 require_once("lmo-langload.php");
 require_once("lmo-archiv.php");
-require_once("lmo-showdir.php");
 
-if(!isset($_REQUEST["action"])){$_REQUEST["action"]="";}
-if(!isset($_REQUEST["file"])){$_REQUEST["file"]="";}
+if(!isset($_REQUEST["action"])){$_REQUEST["action"]="";$action="";}
+if(!isset($_REQUEST["file"])){$_REQUEST["file"]="";$file="";}
+if(!isset($_REQUEST["archiv"])){$_REQUEST["archiv"]="";$archiv="";}
 
-if($_REQUEST["action"]=="admin"){$_REQUEST["action"]="";}
+if($_REQUEST["action"]=="admin"){$_REQUEST["action"]="";$action="";}
 
-if($_REQUEST["action"]=="")
-{
-  if($_REQUEST["file"]=="")
-  {
-    if(isset($_REQUEST["archiv"]))
-    {
-      if($_REQUEST["archiv"]=="dir")
-        {AuswahlArchiv();}
-      else
+include("lmo-showmain.php");
+/*
+if($_REQUEST["action"]==""){
+  if($_REQUEST["file"]=="" || !file_exists($_REQUEST["file"])){
+    if(isset($_REQUEST["archiv"])){
+      if($_REQUEST["archiv"]=="dir"){
+        AuswahlArchiv();
+      }else
         {WechselLigaVerzeichnis();}
+    }else{
+      AuswahlLiga();
     }
-    else
-      {AuswahlLiga();}
-  }
-  else
-  {
+  }else{
     require("lmo-openfile.php");
     if($onrun==0){$action="results";}else{$action="table";}
     require("lmo-showmain.php");
@@ -84,12 +81,12 @@ elseif ($_REQUEST["action"] == "tipp")
 }
 else
 {
-  if(!isset($file) || $file=="")
+  if(!isset($_REQUEST["file"]) || $_REQUEST["file"]=="")
     {AuswahlLiga();}
   else
   {
     require("lmo-openfile.php");
     require("lmo-showmain.php");
   }
-}
+}*/
 ?>

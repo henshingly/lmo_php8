@@ -28,8 +28,10 @@ var msg1="";
       pause=0;
     }
   }
-  document.write("<form name='marqueeform'><input class='lmotickerein' type='text' name='marquee' size='52' readonly></form>");
-  document.close();
-  marquee();
+  if (laenge>0) {
+    document.write('<form name="marqueeform"><input class="lmotickerein" type="text" name="marquee" size="52" readonly></form>');
+    document.close();
+    marquee();
+  }
 -->
 </script>

@@ -31,7 +31,7 @@ $GLOBALS["ArchivDir"] .= preg_match("=/?=", $ArchivDir) ? "" : "/";
 // Diese Funktion ermittelt die Unterverzeichn.  //
 // des Verzeichnis $verz                         //
 //===============================================//
-function LiesVerzeichnisse($verz)
+function get_dirs($verz)
 {
   $ret = array();  // Rückgabe initialisieren
                    // Sicher gehen, dass der Slash da ist
@@ -102,7 +102,7 @@ function AuswahlArchiv()
 // Diese Funktion wechselt das Liga verzeichnis  //
 // zu einem angegebenen Archiv Verzeichnis       //
 //===============================================//
-function WechselLigaVerzeichnis()
+function chg_work_dir()
 {
                    // Parameter enthält Archiv Verzeichnis
   $arbDir = $GLOBALS["ArchivDir"].$_REQUEST["archiv"];
