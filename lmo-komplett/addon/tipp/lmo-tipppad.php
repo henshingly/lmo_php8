@@ -51,7 +51,7 @@ if(($action=="tipp") && ($todo=="")){
             $dummy[$u]=substr($dummy[$u],0,-4);
             $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
       ?>
-      <li class="lmoadminli"><a href="<?PHP echo $addw.$dirliga.$dummy[$u].".l98&amp;PHPSESSID=".$PHPSESSID; ?>"><?PHP echo $ftest2[$u];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filectime($auswertfile))."</small>";}echo "</a>"; ?></li>
+      <li class="lmoadminli"><a href="<?PHP echo $addw.$dirliga.$dummy[$u].".l98&amp;PHPSESSID=".$PHPSESSID; ?>"><?PHP echo $ftest2[$u];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}echo "</a>"; ?></li>
       <?PHP
             }
           }
@@ -59,7 +59,7 @@ if(($action=="tipp") && ($todo=="")){
       if($tipp_gesamt==1 && $u>2){
         $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
 ?>
-        <li class="lmoadminli"><a href="<?PHP echo $addw."&amp;all=1&amp;PHPSESSID=".$PHPSESSID; ?>"><strong><?PHP echo $text['tipp'][25];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filectime($auswertfile))."</small>";} ?> <strong></a></li>
+        <li class="lmoadminli"><a href="<?PHP echo $addw."&amp;all=1&amp;PHPSESSID=".$PHPSESSID; ?>"><strong><?PHP echo $text['tipp'][25];if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";} ?> <strong></a></li>
 <?PHP   }
         $auswertfile="";
 ?>

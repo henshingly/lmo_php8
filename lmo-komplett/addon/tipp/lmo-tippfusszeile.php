@@ -62,11 +62,11 @@ if(!isset($nw)){$nw=0;}
               if(!isset($einsichtfile)){$einsichtfile="";}
               if($auswertfile==""){$auswertfile=$einsichtfile;}
               if($auswertfile!="" && file_exists($auswertfile)){
-        	$auswertstand=date("d.m.Y H:i",filectime($auswertfile)); // Stand der *.aus-Datei
+        	$auswertstand=date("d.m.Y H:i",filemtime($auswertfile)); // Stand der *.aus-Datei
                 echo $text['tipp'][83].": ".$auswertstand."<br>";
                 } ?>
         <? if($tippfile!="" && $all!=1 && ($todo!="tabelle" || $nick!="") && file_exists($tippfile)){
-        	$tippstand=date("d.m.Y H:i",filectime($tippfile)); // Stand der *_user.tip-Datei
+        	$tippstand=date("d.m.Y H:i",filemtime($tippfile)); // Stand der *_user.tip-Datei
                 echo $text['tipp'][86].": ".$tippstand."<br>";
                 } ?>
         <? if($file!="" && $all!=1 && isset($stand) && $stand!=""){echo $text[406].": ".$stand."<br>";} // Stand der *.l98-Datei ?>

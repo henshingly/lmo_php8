@@ -150,7 +150,7 @@ if($_SESSION["lmouserok"]==2){
     $verz=opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp,0,-1));
     while($files=readdir($verz)){
       if(substr($files,-5-strlen($userd[0]))=="_".$userd[0].".tip"){
-      	if(filectime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files)>$ltipp[$i]){
+      	if(filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files)>$ltipp[$i]){
       	  $ltipp[$i]=filemtime(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files);
       	  }
       	}

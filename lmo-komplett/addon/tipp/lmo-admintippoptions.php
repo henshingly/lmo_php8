@@ -26,38 +26,52 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-  $r=0;
-  require_once(PATH_TO_LMO."/lmo-admintest.php");
-  
-  if(!isset($save)){$save=0;}
-  if($save==1){
-    require(PATH_TO_ADDONDIR."/tipp/lmo-admintippgetoptions.php");
-    require(PATH_TO_LMO."/lmo-savecfg.php");
-  }
-  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tipp";
-  $addu=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser";
-  $adde=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippemail";
 
-  include_once(PATH_TO_ADDONDIR."/tipp/lmo-admintippjavascript.php");
-  include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
+require_once(PATH_TO_LMO."/lmo-admintest.php");
+$show=isset($_REQUEST['show'])?$_REQUEST['show']:0;
+$save=isset($_POST['save'])?$_POST['save']:0;
+if($save==1){
+  require(PATH_TO_ADDONDIR."/tipp/lmo-admintippgetoptions.php");
+  require(PATH_TO_LMO."/lmo-savecfg.php");
+}
+$adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tipp";
+$addu=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser";
+$adde=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippemail";
+
+include_once(PATH_TO_ADDONDIR."/tipp/lmo-admintippjavascript.php");
+include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
 ?>
 
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><? echo $text['tipp'][33] ?><script type="text/javascript">document.write('</td><td class="lmost1"><a href="#" onclick="blendall2(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" alt="+" title="Alle Sektionen einblenden" width="10" height="10"></a>');</script></td>
+    <td class="lmost1" align="center"><? echo $text['tipp'][33] ?></td>
   </tr>
   <tr>
-    <td align="center" class="lmost3">
+    <td valign="top">
+      <table cellspacing="0" cellpadding="0" border="0">
+        <tr><td align="right"<?if ($show==0) {?> class="lmost1"><?=$text['tipp'][91]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][91]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==1) {?> class="lmost1"><?=$text[220]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text[220]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==2) {?> class="lmost1"><?=$text['tipp'][32]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][32]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==3) {?> class="lmost1"><?=$text['tipp'][240]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][240]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==4) {?> class="lmost1"><?=$text['tipp'][214]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][214]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==5) {?> class="lmost1"><?=$text['tipp'][239]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][239]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==6) {?> class="lmost1"><?=$text['tipp'][246]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][246]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==7) {?> class="lmost1"><?=$text['tipp'][157]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][157]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==8) {?> class="lmost1"><?=$text['tipp'][172]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][172]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==9) {?> class="lmost1"><?=$text['tipp'][247]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][247]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==10) {?> class="lmost1"><?=$text['tipp'][274]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][274]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==11) {?> class="lmost1"><?=$text['tipp'][163]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][163]; ?></a><?}?></td></tr>
+        <tr><td align="right"<?if ($show==12) {?> class="lmost1"><?=$text['tipp'][103]; ?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text['tipp'][103]; ?></a><?}?></td></tr>
+      </table>
+    </td>
+    <td align="center" valign="top" class="lmost3">
       <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="tippoptions">
         <input type="hidden" name="save" value="1">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][91]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+        <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><?
+  if ($show==0) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][91]; ?></td>
@@ -67,22 +81,14 @@
                 <option value="0"<?if($tipp_tippmodus==0){echo " selected";}?>><?=$text['tipp'][93]?></option>
               </select>
             </td>
-          </tr>
-          </tbody>  
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text[220]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==1) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][39]; ?></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xdirtipp" size="20" maxlength="80" value="<? echo $tipp_dirtipp; ?>" onChange="dolmoedit()"></td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][32]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==2) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][34]; ?></td>
@@ -148,12 +154,8 @@
                 <option value="2"<?if($tipp_gtpunkte==2){echo " selected";}?>><?=$text['tipp'][199]?></option>
               </select>
             </td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][240]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==3) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][157]; ?></td>
@@ -184,12 +186,8 @@
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][186]; ?></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xregelnlink" size="30" maxlength="256" value="<? echo $tipp_regelnlink; ?>" onChange="dolmoedit()"<? if($tipp_regeln==0){echo " disabled";}?>></td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][214]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==4) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][87]; ?></td>
@@ -253,12 +251,8 @@
                 <option value="2.5"<?if($tipp_jokertippmulti=="2.5"){echo " selected";}?>>2.5</option>
                 <option value="3"<?if($tipp_jokertippmulti=="3"){echo " selected";}?>>3</option>
             </td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][239]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==5) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][132]; ?></td>
@@ -278,12 +272,8 @@
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][293]; ?></td>
             <td class="lmost5"><input type="checkbox" name="xmailbeianmeldung" onClick="dolmoedit()"<?if($tipp_mailbeianmeldung==1){echo " checked";}?>></td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][246]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==6) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][245]." ".$text['tipp'][294]; ?></td>
@@ -323,12 +313,8 @@
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][161]; ?></td>
             <td class="lmost5"><input type="checkbox" name="xakteinsicht" onClick="dolmoedit()"<?if($tipp_akteinsicht==1){echo " checked";}?>></td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][157]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==7) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][160]; ?></td>
@@ -344,12 +330,8 @@
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][204]; ?></td>
             <td class="lmost5"><input class="lmoadminein" type="text" name="xanzseite" size="5" maxlength="5" value="<? echo $tipp_anzseite; ?>" onChange="dolmoedit()"></td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][172]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==8) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][183]; ?></td>
@@ -359,12 +341,8 @@
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][260]; ?></td>
             <td class="lmost5"><input type="checkbox" name="xwertverein" onClick="dolmoedit()"<?if($tipp_wertverein==1){echo " checked";}?>></td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][247]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==9) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][200]; ?></td>
@@ -388,12 +366,8 @@
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][272]; ?></td>
             <td class="lmost5"><input type="checkbox" name="xshowstsiege" onClick="dolmoedit()"<?if($tipp_showstsiege==1){echo " checked";}?>></td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][274]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==10) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][275]." 1"; ?></td>
@@ -441,12 +415,8 @@
                 <option value="6"<?if($tipp_krit3==6){echo " selected";}?>><?=$text['tipp'][271]?></option>
               </select>
             </td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][163]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==11) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][81]; ?></td>
@@ -456,12 +426,8 @@
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][180]; ?></td>
             <td class="lmost5"><input type="checkbox" name="xaktauswertges" onClick="dolmoedit()"<?if($tipp_aktauswertges==1){echo " checked";}?>></td>
-          </tr>
-          </tbody>
-          <tr>
-            <td class="lmost4" colspan="3"><? echo $text['tipp'][103]; ?><script type="text/javascript">document.write('</td><td class="lmost4"><a href="#" onclick="blend(this)"><img border="0" src="<?=URL_TO_IMGDIR?>/plus.gif" name="blendimg<?=$r++?>" alt="+" title="Sektion einblenden" width="10" height="10"></a>');</script></td>
-          </tr>
-          <tbody class="blend_object">
+          </tr><? 
+  }elseif ($show==12) {?>
           <tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td class="lmost5" align="right"><? echo $text['tipp'][104]; ?></td>
@@ -474,8 +440,8 @@
                 $ftype=".l98"; 
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");?>
             </td>
-          </tr>
-          </tbody>
+          </tr><? 
+  }?>
           <tr>
             <td class="lmost4" colspan="3" align="right">
               <input class="lmoadminbut" type="submit" name="best" value="<? echo $text[188]; ?>">
@@ -486,7 +452,7 @@
     </td>
   </tr>
   <tr>
-    <td>
+    <td colspan="2">
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmost2" align="center"><a href='<?=$adda?>' onclick="return chklmolink(this.href);" title="<?=$text['tipp'][63]?>"><?=$text['tipp'][63]?></a></td>
