@@ -25,8 +25,6 @@ $todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:'';
 $file=isset($_REQUEST['file'])?$_REQUEST['file']:'';
 
 
-
-
 if ($action == "tipp") {
   if ($file != "") {
     $addm = $_SERVER['PHP_SELF']."?file=".$file."&amp;action=";

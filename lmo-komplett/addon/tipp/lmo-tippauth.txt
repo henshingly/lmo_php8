@@ -1,4 +1,4 @@
 NeuerNick|vs702iaxtqkg4fjo|5|||||||1|1|EOL
 NeuerNick|zw98euhgb3pq7doc|5|||||||1|1|EOL
 joker|lmo|5| |a@b.def|teamAlpha|||||1|1|EOL
-test|test|5| |test@test.de|||||1|1|EOL
+test|test2|5| |test@test.de||||||1|EOL

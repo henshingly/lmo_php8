@@ -43,8 +43,6 @@ function applyFactor ($value, $factor) {
   return $value;
 }
 
-
-
 function magicQuotesRemove(&$array) {
   if(!get_magic_quotes_gpc())
   return;
@@ -55,8 +53,6 @@ function magicQuotesRemove(&$array) {
     $array[$key] = stripslashes($elem);
   }
 }
-
-
 
 function get_dir($verz) {
   $ret = array();
@@ -76,13 +72,9 @@ function get_dir($verz) {
   return $ret;
 }
 
-
-
 function filterZero($a) {
   return (!empty($a));
 }
-
-
 
 function getSmallImage($team,$alternative_text='') {
   $team=str_replace("/","",$team);
