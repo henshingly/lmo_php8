@@ -19,13 +19,18 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 // Erweiterung für Archiv Funktion durch Georg Strey
+function getmicrotime(){
+  list($usec, $sec) = explode(" ",microtime());
+  return ((float)$usec + (float)$sec);
+}
 
-if (session_id()=="") session_start();
-if(isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") {
+$startzeit = getmicrotime();
+
+if((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()=="") {
   session_start();
 }
 ?>
-<SCRIPT type="text/javascript">
+<script type="text/javascript">
 <!--
  NS4 = (document.layers);
  if (NS4) { document.write('<link rel="stylesheet" href="nc.css" type="text/css">'); }
@@ -37,7 +42,7 @@ if(isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") {
 </noscript>
 <?php
 setlocale(LC_TIME, "de_DE");
-$array = array("");
+$array = array();
 
 require_once("lmo-cfgload.php");
 if(isset($HTTP_GET_VARS["lmouserlang"])){$HTTP_SESSION_VARS["lmouserlang"]=$HTTP_GET_VARS["lmouserlang"];}

@@ -22,7 +22,7 @@
       </tr>
     <tr>
       <td class="lmomain2" align="right"><nobr>
-        <?PHP if($GLOBALS["calctime"]==1){echo $GLOBALS["text"][471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";} ?>
+        <?PHP if($GLOBALS["calctime"]==1){echo $GLOBALS["text"][471].": ".number_format((getmicrotime()-$GLOBALS["startzeit"]),4,".",",")." sek.<br>";} ?>
         <?PHP echo $GLOBALS["text"][54]; ?> - <?PHP echo $GLOBALS["text"][55]; ?></nobr>
         </td>
       </tr>
