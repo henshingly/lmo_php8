@@ -283,17 +283,17 @@ if ($file!="") {
               $subteams=$subteams.".";
             }
             if (($abc==$anzteams-1) && ($x1==$x2)) {
-              $subteams=$subteams.intval(substr($tab0[$abc-$b+1],34));
+              $subteams=$subteams.intval(substr($tab0[$abc-$b+1],-7));
             } else {
-              $subteams=$subteams.intval(substr($tab0[$abc-$b],34));
+              $subteams=$subteams.intval(substr($tab0[$abc-$b],-7));
             }
           }
           $anzcnt=0;
           require(PATH_TO_LMO."/lmo-calctable1.php");
           if ($anzcnt>0) {
             for ($b=1; $b<=count($tab1); $b++) {
-              for ($f=0; $f<count($tab0); $f++) {
-                if (intval(substr($tab0[$f],34))==intval(substr($tab1[$b-1],34))) {
+              for($f=0; $f<count($tab0); $f++){
+                if(intval(substr($tab0[$f],-7))==intval(substr($tab1[$b-1],-7))){
                   $tab0[$f]=substr($tab0[$f],0,17-strlen($b)).$b.substr($tab0[$f],17);
                 }
               }
@@ -305,7 +305,7 @@ if ($file!="") {
     }
     rsort($tab0,SORT_STRING);
   }
-  if ($action="admin") {
+  if ($action=="admin") {
     $tab2=$tab0;
   }
   if ($hands==1) {

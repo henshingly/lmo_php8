@@ -24,35 +24,23 @@
 // 
 //Datei auslesen
 $filename=array_pop(explode("/",$file));
-$configfile="stats/".substr($filename,0,strlen($filename)-4).".cfg";
-$filename="stats/".substr($filename,0,strlen($filename)-4).".stat";
-
-//Standard
-	$picswidth="15px"; 			//Größe der Spielerfotos
-	$displayperpage=10;     //Anzahl der pro Seite ausgegebenen Ergebnisse
-	$displayperpageadmin=0;     //Anzahl der pro Seite ausgegebenen Ergebnisse
-	$nonamesort=0;			    //Blendet Möglichkeit aus, nach Namen zu sortieren
-	$displayzeros=1; 				//1=Nullwerte einblenden; 0=Nullwerte filtern
-	$defaultsort=0;					//Spaltennummer, nach der als Erstes im Userbereich sortiert wird (von links nach rechts, Beginn bei 0)
-	$adminsort=0;						//Spaltennummer, nach der als Erstes im Adminbereich sortiert wird (von links nach rechts, Beginn bei 0)
-	$allowauxadmin=1;				//Erlaubt den Hilfsadmins Zugriff auf die Statistik
-	$allowauxadmins=1;				//Erlaubt den Hilfsadmins Zugriff auf Erstellen von Spalten
-	$ligalink=$text[3011];					//Text des Spielerlinks
-	
+$configfile=PATH_TO_ADDONDIR."/spieler/stats/".substr($filename,0,strlen($filename)-4).".cfg";
+$filename=PATH_TO_ADDONDIR."/spieler/stats/".substr($filename,0,strlen($filename)-4).".stat";
+$spieler_ligalink=$text['spieler'][18];
 if ($config=@file($configfile)) {
 	for ($i=0;$i<count($config);$i++){
 		$row=explode("=",$config[$i],2);
 		switch ($row[0]) {
-			case $text[3020]:$picswidth=$row[1];break;
-			case $text[3021]:$defaultsort=(int)$row[1];break;
-			case $text[3022]:$displayperpage=(int)$row[1];break;
-			case $text[3042]:$displayperpageadmin=(int)$row[1];break;
-			case $text[3023]:$displayzeros=(int)$row[1];break;
-			case $text[3024]:$nonamesort=(int)$row[1];break;
-			case $text[3031]:$allowauxadmin=(int)$row[1];break;
-			case $text[3046]:$allowauxadmins=(int)$row[1];break;
-			case $text[3040]:$adminsort=$row[1];break;
-			case $text[3041]:$ligalink=$row[1];break;
+			case $text['spieler'][20]:$spieler_spielerbildbreite=$row[1];break;
+			case $text['spieler'][21]:$spieler_standard_sortierung=(int)$row[1];break;
+			case $text['spieler'][22]:$spieler_anzeige_pro_seite=(int)$row[1];break;
+			case $text['spieler'][42]:$spieler_adminbereich_anzeige_pro_seite=(int)$row[1];break;
+			case $text['spieler'][23]:$spieler_nullwerte_anzeigen=(int)$row[1];break;
+			case $text['spieler'][24]:$spieler_keine_namensortierung=(int)$row[1];break;
+			case $text['spieler'][31]:$spieler_adminbereich_hilfsadmin_zulassen=(int)$row[1];break;
+			case $text['spieler'][46]:$spieler_adminbereich_hilfsadmin_fuer_spalten=(int)$row[1];break;
+			case $text['spieler'][40]:$spieler_adminbereich_standard_sortierung=$row[1];break;
+			case $text['spieler'][41]:$spieler_ligalink=$row[1];break;
 		}
 	}
 }

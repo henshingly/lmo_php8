@@ -135,8 +135,8 @@ if($message!=""){
               }
             if($ktipp==1){
               if($goaltipp[$i]=="_"){
-                if($lspieltag!=$spieltag[$i] && $lliga!=$liga[$i]){$spiele=$spiele."\n".$titel[$i].":\n";}
-                if($lspieltag!=$spieltag[$i]){
+                if($lliga!=$liga[$i]){$spiele=$spiele."\n".$titel[$i].":\n";}
+                if($lspieltag!=$spieltag[$i] || $lliga!=$liga[$i]){
                   if($lmtype[$i]==0){$spiele=$spiele.$spieltag[$i].".".$text[2].":\n";}
                   else{
                     if($spieltag[$i]==$anzst[$i]){$j=$text[374];}

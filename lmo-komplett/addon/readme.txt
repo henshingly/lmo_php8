@@ -4,9 +4,9 @@ Addons:
 - die Datei init.php in das Addon-Verzeichnis kopieren
 - Wenn benötigt eine Konfigurationsdatei cfg.txt (Format wie lmo-cfg.txt im LMO-Verzeichnis)
 - Wenn benötigt eine Datei lang.txt und zusätzlich auch lang-[LMO-Sprache].txt erstellen
-- An den Anfang der Startdatei(en) des Addons die Zeile einfügen
+- An den Anfang der Startdatei(en) des Addons diese Zeile einfügen
   
-  require_once('init.php');
+  require_once(dirname(__FILE__).'/../../init.php');
 
   Jetzt stehen zur Verfügung:
 
@@ -23,6 +23,6 @@ Addons:
 
     # Die globalen Konfigurationsvariablen des LMO aus der lmo-cfg.txt
 
-    # Die globale Sprache des LMO geladen (das $text[xxx]-Array]
+    # Die globale Sprache des LMO (das $text[xxx]-Array]
 
 - Das Ändern der Konfigurationsvariablen geschieht im Adminbereich des LMO
