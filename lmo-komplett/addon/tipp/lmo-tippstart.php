@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-require_once("../init.php");
+require_once($_SERVER['DOCUMENT_ROOT'].'/tmp/lmo-komplett/lmo/addon/init.php');
 define('LMO_TIPPAUTH',1);
 if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
 if(!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
