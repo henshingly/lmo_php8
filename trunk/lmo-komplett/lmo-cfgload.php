@@ -22,7 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-$cfgfile=PATH_TO_LMO.'/lmo-cfg.txt';                       // Konfigurationsdatei
+$cfgfile=PATH_TO_CONFIGDIR.'/cfg.txt';                       // Konfigurationsdatei
 if (!isset($cfgarray))$cfgarray=array();
 if (file_exists($cfgfile)) {
   $main_cfgarray=parse_ini_file($cfgfile);         // in Array lesen
@@ -33,15 +33,14 @@ if (file_exists($cfgfile)) {
   //Fehlerhandling hier rein
 }           
             
-$handle=opendir (PATH_TO_ADDONDIR);
+$handle=opendir (PATH_TO_CONFIGDIR);
 while (false!==($f=readdir($handle))) {
-
-  if (is_dir(PATH_TO_ADDONDIR.'/'.$f) && $f!='.' && $f!='..') {
-    $addon_cfgfile=PATH_TO_ADDONDIR."/$f/cfg.txt";                       // Konfigurationsdatei
+  if (is_dir(PATH_TO_CONFIGDIR.'/'.$f) && $f!='.' && $f!='..') {
+    $addon_cfgfile=PATH_TO_CONFIGDIR."/$f/cfg.txt";                       // Konfigurationsdatei
     if (file_exists($addon_cfgfile)) {
       $addon_cfgarray=parse_ini_file($addon_cfgfile);         // in Array lesen
       $cfgarray[$f]=$addon_cfgarray;
-      extract($addon_cfgarray,EXTR_PREFIX_ALL,$f);                        // Variablen erstellen
+      extract($addon_cfgarray,EXTR_PREFIX_ALL,$f);                        // Variablen (mit Prefix) erstellen
     }
   } 
 }

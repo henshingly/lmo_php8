@@ -251,7 +251,7 @@ if ($file!="") {
           }
         }
       }
-    }
+    }  
     if($endtab>=$strafdat[$a] && ($tabtype==0 or ($tabtype==3 && $strafdat[$a]>($hoy=($anzst/2))) or ($tabtype==4 && $strafdat[$a]<=($endtab=($anzst/2))))){ // Hack-Straftore
 	    $etore[$a]=$etore[$a]-$torkorrektur1[$a]; // Hack-Straftore
 	    $atore[$a]=$atore[$a]-$torkorrektur2[$a]; // Hack-Straftore
@@ -313,7 +313,7 @@ if ($file!="") {
     $tab2=$tab0;
   }
   if ($hands==1) {
-    if (($tabdat=="") || ($action=="admin")) {
+    if (!isset($tabdat) || ($tabdat=="") || ($action=="admin")) {
       $handb=$stt-1;
     } else {
       $handb=$endtab-1;

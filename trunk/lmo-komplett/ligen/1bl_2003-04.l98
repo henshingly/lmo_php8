@@ -1,13 +1,13 @@
 [Options]
 Title=<acronym title="Liga Manager Online">LMO</acronym> 3.99alpha1
-Name=1. Fussball-Bundesliga 2003/04
+Name=1. Bundesliga 2003/04
 Type=0
-Teams=18
+Teams=17
 Rounds=34
 Matches=9
-Actual=1
+Actual=2
 Kegel=0
-HandS=0
+HandS=1
 PointsForWin=3
 PointsForDraw=1
 PointsForLost=0
@@ -29,7 +29,7 @@ DatS=1
 DatM=1
 DatF=%d.%m. %H:%M
 urlT=1
-urlB=0
+urlB=1
 Plan=1
 Sprachauswahl=1
 Ergebnis=1
@@ -66,7 +66,6 @@ N0=fdghsghsgh
 15=Bayer 04 Leverkusen
 16=SC Freiburg
 17=1.FC Köln
-18=Eintracht Frankfurt
 
 [Teamk]
 1=FC B
@@ -86,12 +85,11 @@ N0=fdghsghsgh
 15=Bayer
 16=Freib
 17=Köln
-18=Frank
 
 [Team1]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -99,7 +97,7 @@ NOT=
 [Team2]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -107,7 +105,7 @@ NOT=
 [Team3]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -115,7 +113,7 @@ NOT=
 [Team4]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -123,7 +121,7 @@ NOT=
 [Team5]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -131,7 +129,7 @@ NOT=
 [Team6]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -139,7 +137,7 @@ NOT=
 [Team7]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -147,7 +145,7 @@ NOT=
 [Team8]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -155,7 +153,7 @@ NOT=
 [Team9]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -163,7 +161,7 @@ NOT=
 [Team10]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -171,7 +169,7 @@ NOT=
 [Team11]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -179,7 +177,7 @@ NOT=
 [Team12]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -187,7 +185,7 @@ NOT=
 [Team13]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -195,7 +193,7 @@ NOT=
 [Team14]
 SP=3
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -203,7 +201,7 @@ NOT=
 [Team15]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -211,7 +209,7 @@ NOT=
 [Team16]
 SP=0
 TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
@@ -219,20 +217,13 @@ NOT=
 [Team17]
 SP=0
 TOR1=0
-TOR2=
-STDA=0
-URL=
-NOT=
-
-[Team18]
-SP=0
-TOR1=0
-TOR2=
+TOR2=0
 STDA=0
 URL=
 NOT=
 
 [Round1]
+HS=0
 D1=01.08.2003
 D2=03.08.2003
 TA1=8
@@ -309,6 +300,7 @@ TI9=0
 AT9=1059831000
 
 [Round2]
+HS=0
 D1=09.08.2003
 D2=10.08.2003
 TA1=11
@@ -385,6 +377,7 @@ TI9=0
 AT9=1060435800
 
 [Round3]
+HS=0
 D1=16.08.2003
 D2=17.08.2003
 TA1=8
@@ -461,6 +454,7 @@ TI9=0
 AT9=1061134200
 
 [Round4]
+HS=0
 D1=23.08.2003
 D2=24.08.2003
 TA1=11
@@ -537,6 +531,7 @@ TI9=0
 AT9=1061645400
 
 [Round5]
+HS=0
 D1=13.09.2003
 D2=14.09.2003
 TA1=8
@@ -613,6 +608,7 @@ TI9=
 AT9=0
 
 [Round6]
+HS=0
 D1=20.09.2003
 D2=21.09.2003
 TA1=11
@@ -689,6 +685,7 @@ TI9=
 AT9=0
 
 [Round7]
+HS=0
 D1=27.09.2003
 D2=28.09.2003
 TA1=8
@@ -765,6 +762,7 @@ TI9=
 AT9=0
 
 [Round8]
+HS=0
 D1=04.10.2003
 D2=05.10.2003
 TA1=11
@@ -841,6 +839,7 @@ TI9=
 AT9=0
 
 [Round9]
+HS=0
 D1=18.10.2003
 D2=19.10.2003
 TA1=8
@@ -917,6 +916,7 @@ TI9=
 AT9=0
 
 [Round10]
+HS=0
 D1=25.10.2003
 D2=26.10.2003
 TA1=11
@@ -993,6 +993,7 @@ TI9=
 AT9=0
 
 [Round11]
+HS=0
 D1=01.11.2003
 D2=02.11.2003
 TA1=8
@@ -1069,6 +1070,7 @@ TI9=
 AT9=0
 
 [Round12]
+HS=0
 D1=08.11.2003
 D2=09.11.2003
 TA1=11
@@ -1145,6 +1147,7 @@ TI9=
 AT9=0
 
 [Round13]
+HS=0
 D1=22.11.2003
 D2=23.11.2003
 TA1=8
@@ -1221,6 +1224,7 @@ TI9=
 AT9=0
 
 [Round14]
+HS=0
 D1=29.11.2003
 D2=30.11.2003
 TA1=11
@@ -1297,6 +1301,7 @@ TI9=
 AT9=0
 
 [Round15]
+HS=0
 D1=06.12.2003
 D2=07.12.2003
 TA1=8
@@ -1373,6 +1378,7 @@ TI9=
 AT9=0
 
 [Round16]
+HS=0
 D1=13.12.2003
 D2=14.12.2003
 TA1=8
@@ -1449,6 +1455,7 @@ TI9=
 AT9=0
 
 [Round17]
+HS=0
 D1=16.12.2003
 D2=17.12.2003
 TA1=11
@@ -1525,6 +1532,7 @@ TI9=
 AT9=0
 
 [Round18]
+HS=0
 D1=31.01.2004
 D2=01.02.2004
 TA1=9
@@ -1601,6 +1609,7 @@ TI9=
 AT9=0
 
 [Round19]
+HS=0
 D1=
 D2=
 TA1=1
@@ -1677,6 +1686,7 @@ TI9=
 AT9=0
 
 [Round20]
+HS=0
 D1=
 D2=
 TA1=4
@@ -1753,6 +1763,7 @@ TI9=
 AT9=0
 
 [Round21]
+HS=0
 D1=
 D2=
 TA1=13
@@ -1829,6 +1840,7 @@ TI9=
 AT9=0
 
 [Round22]
+HS=0
 D1=
 D2=
 TA1=1
@@ -1905,6 +1917,7 @@ TI9=
 AT9=0
 
 [Round23]
+HS=0
 D1=
 D2=
 TA1=12
@@ -1981,6 +1994,7 @@ TI9=
 AT9=0
 
 [Round24]
+HS=0
 D1=
 D2=
 TA1=15
@@ -2057,6 +2071,7 @@ TI9=
 AT9=0
 
 [Round25]
+HS=0
 D1=
 D2=
 TA1=7
@@ -2133,6 +2148,7 @@ TI9=
 AT9=0
 
 [Round26]
+HS=0
 D1=
 D2=
 TA1=13
@@ -2209,6 +2225,7 @@ TI9=
 AT9=0
 
 [Round27]
+HS=0
 D1=
 D2=
 TA1=10
@@ -2285,6 +2302,7 @@ TI9=
 AT9=0
 
 [Round28]
+HS=0
 D1=
 D2=
 TA1=5
@@ -2361,6 +2379,7 @@ TI9=
 AT9=0
 
 [Round29]
+HS=0
 D1=
 D2=
 TA1=6
@@ -2437,6 +2456,7 @@ TI9=
 AT9=0
 
 [Round30]
+HS=0
 D1=
 D2=
 TA1=12
@@ -2513,6 +2533,7 @@ TI9=
 AT9=0
 
 [Round31]
+HS=0
 D1=
 D2=
 TA1=16
@@ -2589,6 +2610,7 @@ TI9=
 AT9=0
 
 [Round32]
+HS=0
 D1=
 D2=
 TA1=14
@@ -2665,6 +2687,7 @@ TI9=
 AT9=0
 
 [Round33]
+HS=0
 D1=
 D2=
 TA1=11
@@ -2741,6 +2764,7 @@ TI9=
 AT9=0
 
 [Round34]
+HS=0
 D1=
 D2=
 TA1=9
