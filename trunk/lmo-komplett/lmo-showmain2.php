@@ -113,7 +113,7 @@ if ($action!="tipp") {
         $output_tabelle.="&nbsp;&nbsp;";
       //Kombinierte Ansicht
       }else{
-        $output_ergebnisse.=$action!='results'? "<a href='{$addm}results' title='{$text[104]}'>{$text[10]}/{$text[16]}</a>":  $text[10].'/'.$text[16];
+        $output_ergebnisse.=$action!='results' && $action!='table'? "<a href='{$addm}results' title='{$text[104]}'>{$text[10]}/{$text[16]}</a>":  $text[10].'/'.$text[16];
         $output_ergebnisse.="&nbsp;&nbsp;";
       }
       
@@ -133,12 +133,6 @@ if ($action!="tipp") {
       $output_ligastatistik.=$action!="stats"?  "<a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[19]}'>{$text[18]}</a>":   $text[18];
       $output_ligastatistik.="&nbsp;&nbsp;";
       
-      //Spielerstatistiken
-      if ($einspieler==1) {
-    	  include(PATH_TO_LMO."/lmo-statloadconfig.php");
-   	    $output_spielerstatistik.=$action!="spieler"?"<a href='{$addm}spieler' title='{$text[3012]}'>{$ligalink}</a>":           $ligalink;
-        $output_spielerstatistik.="&nbsp;&nbsp;";
-    	}
     // Pokalligen
     }else{
       //Kalenderlink
@@ -173,7 +167,6 @@ if ($action!="tipp") {
         case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showprogram.php");}break;
         case "graph":    if ($kurve==1)                   {require(PATH_TO_LMO."/lmo-showgraph.php");}break;
         case "stats":    if ($ligastats==1)               {require(PATH_TO_LMO."/lmo-showstats.php");}break;
-        case "spieler":  if ($mittore==1)                 {require(PATH_TO_LMO."/lmo-statshow.php");}break;
       }
     //Pokal
     }else{
@@ -181,9 +174,11 @@ if ($action!="tipp") {
         case "cal":      if ($datc==1)                    {require(PATH_TO_LMO."/lmo-showcal.php");}break;
         case "results":  if ($ergebis==1)                 {require(PATH_TO_LMO."/lmo-showresults.php");}break;
         case "program":  if ($plan==1)                    {require(PATH_TO_LMO."/lmo-showprogram.php");}break;
-        case "spieler":  if ($mittore==1)                 {require(PATH_TO_LMO."/lmo-statshow.php");}break;
       }
   	}
+    //Spieler-Addon
+    if($action=="spieler")if ($mittore==1)                {require(PATH_TO_ADDONDIR."/spieler/lmo-statshow.php");}
+    //Spieler-Addon
     if($action=="info")                                   {require(PATH_TO_LMO."/lmo-showinfo.php");}
   }elseif ($backlink==1)                                  {require(PATH_TO_LMO."/lmo-showdir.php");}
   $output_hauptteil.=ob_get_contents();ob_end_clean();
@@ -229,11 +224,18 @@ if ($action!="tipp") {
      $output_berechnungszeit.=$text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
   }
   
+  //Spieler-Addon
+   if ($file!="" && $einspieler==1) {
+ 	  include(PATH_TO_ADDONDIR."/spieler/lmo-statloadconfig.php");
+	  $output_spielerstatistik.=$action!="spieler"?"<a href='{$addm}spieler' title='{$text['spieler'][12]}'>{$spieler_ligalink}</a>":           $spieler_ligalink;
+    $output_spielerstatistik.="&nbsp;&nbsp;";
+  }
+  //Spieler-Addon
+  
   //Ticker-Addon
   $output_newsticker="";
   if($file!="" && $nticker==1){ 
     ob_start();
-    $ticker_path=PATH_TO_ADDONDIR."/ticker/";
     $tickerligen=basename($file);
     $tickerart=1;
     include(PATH_TO_ADDONDIR."/ticker/ticker.php");    

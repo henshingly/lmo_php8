@@ -121,10 +121,14 @@ if(($file!="") && ($subteams!="")){
     $dtore1[$a]=$etore1[$a]-$atore1[$a];
     for($c=0;$c<count($subteam);$c++){
       if($subteam[$c]==$a){
-        if($kegel==0){array_push($tab1,(50000000+$punkte1[$a]).(50000000-$negativ1[$a]).(50000000+$dtore1[$a]).(50000000+$etore1[$a]).(50000000+$a));}else{array_push($tab1,(50000000+$punkte1[$a]).(50000000-$negativ1[$a]).(50000000+$etore1[$a]).(50000000+$dtore1[$a]).(50000000+$a));}
+        if($kegel==0){ 
+          array_push($tab1,(50000000+$punkte1[$a]).(50000000-$negativ1[$a]).(50000000+$dtore1[$a]).(50000000+$etore1[$a]).(50000000+$c).(50000000+$a));
+        }else{
+          array_push($tab1,(50000000+$punkte1[$a]).(50000000-$negativ1[$a]).(50000000+$etore1[$a]).(50000000+$dtore1[$a]).(50000000+$c).(50000000+$a));
         }
       }
     }
+  }
   array_shift($tab1);
   sort($tab1,SORT_STRING);
   }

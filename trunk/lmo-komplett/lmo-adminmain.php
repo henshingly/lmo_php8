@@ -82,7 +82,7 @@ if($_SESSION['lmouserok']==2){
   if($todo!="download"){echo "<a href='{$adda}download' onclick='return chklmolink(this.href);' title='{$text[315]}'>{$text[314]}</a>";}else{echo $text[314];}
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
-    if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text[3001]}'>{$text[3000]}</a>";}else{echo $text[3000];}echo "&nbsp;";  
+    if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text['spieler'][1]}'>{$text['spieler'][18]}</a>";}else{echo $text['spieler'][18];}echo "&nbsp;";  
   } 
   echo "&nbsp;";
   if(($todo!="options") && ($todo!="user") && ($todo!="design")){echo "<a href='{$adda}options' onclick='return chklmolink(this.href);' title='{$text[87]}'>{$text[86]}</a>";}else{echo $text[86];}
@@ -100,7 +100,7 @@ elseif($_SESSION['lmouserok']==1){
   if($file!="" && $einspieler==1){
     echo "&nbsp;";
     require_once(PATH_TO_LMO."/lmo-openfile.php");
-    if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text[3001]}'>{$text[3000]}</a>";}else{echo $text[3000];}echo "&nbsp;";  
+    if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text['spieler'][1]}'>{$text['spieler'][18]}</a>";}else{echo $text['spieler'][18];}echo "&nbsp;";  
     } 
   }?>
     </td>
@@ -135,7 +135,7 @@ elseif($_SESSION['lmouserok']==1){
     elseif($todo=="user"){require(PATH_TO_LMO."/lmo-adminuser.php");}
     elseif($todo=="addons"){require(PATH_TO_LMO."/lmo-adminaddon.php");}
     elseif($todo=="design"){require(PATH_TO_LMO."/lmo-admindesign.php");}
-    elseif($todo=="statistik"){include(PATH_TO_LMO."/lmo-statadmin.php");}
+    elseif($todo=="statistik"){include(PATH_TO_ADDONDIR."/spieler/lmo-statadmin.php");}
     elseif($todo=="tipp"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintipp.php");}
     elseif($todo=="tippemail"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippemail.php");}
     elseif($todo=="tippuser"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippuser.php");}
@@ -152,7 +152,7 @@ elseif($_SESSION['lmouserok']==1){
     elseif($todo=="tabs"){require(PATH_TO_LMO."/lmo-admintab.php");}
     elseif($todo=="download"){require(PATH_TO_LMO."/lmo-admindown.php");}
     elseif($todo==""){require(PATH_TO_LMO."/lmo-adminpad.php");}
-    elseif($todo=="statistik"){include(PATH_TO_LMO."/lmo-statadmin.php");}
+    elseif($todo=="statistik"){include(PATH_TO_ADDONDIR."/spieler/lmo-statadmin.php");}
     
   }?>
     </td>

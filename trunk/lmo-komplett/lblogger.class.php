@@ -71,7 +71,7 @@ class LBLogger {
 		if(!empty($configpath))
 			$this->configpath = $configpath;
 		else
-			$this->configpath = dirname(__FILE__)."/configs/main.conf.php";
+			$this->configpath = dirname(__FILE__)."/main.conf.php";
 			
 		$this->name = $name;
 		$this->initialize();

@@ -1,7 +1,5 @@
 <? 
-//Übergebener Pfad zum Addon, wird nur bei include/require benötigt
-$ticker_path= isset($ticker_path)?$ticker_path:"";
-require_once($ticker_path."../init.php");
+require_once(dirname(__FILE__).'/../../init.php');
 
 // Durch Get bestimmter Parameter (für IFRAME)
 $ticker_tickerart=      isset($_GET['tickerart'])?            urldecode($_GET['tickerart']):      $ticker_tickerart;  

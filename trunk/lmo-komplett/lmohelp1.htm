@@ -99,26 +99,27 @@
       <li><em>ZuStat-Addon</em> von Bernd Hoyer (v1.08)
       <li><em>LMO-Viewer-Addon</em> von Bernd Feser (v1.161)
       <li><em>LMO-Archiv-Addon</em> von Georg Stey
-      <li><em>Wap-Addon</em> von "bastard" (v1.1)
+      <li><em>Wap-Addon</em> von Oilid Adsi (v1.1)
       <li><em>Verschiedene Hacks</em> von Bernd Hoyer
     </ul>
     <p>
-      Zusätzlich wurden einige der offensichtlichsten Bugs entfernt, diese Version soll als Grundlage 
+      Zusätzlich wurden einige der offensichtlichsten Bugs entfernt und viele Addons stark geändert 
+      bzw. erweitert. Diese Komplettversion soll als Grundlage 
       für weitere Entwicklungen dienen. Geplant sind zunächst (in Reihenfolge der Wichtigkeit):
     </p>
     <ul>
-      <li>Fehlerbeseitigung im Code des LMO und der Addons
-      <li>Administration der Addons über Admin-Oberfläche des LMO
-      <li>Multilanguageunterstützung (mit Hilfe der Languagefiles)
-      <li>Integration weiterer Addons und Hacks sowie neuer Funktionen
-      <li>Fehlerbereinigung bei HTML- und CSS-Ausgabe
-      <li>unabhängig von Register-Globals-Einstellung des Servers machen
-      <li>Migration in SQL-Umgebungen (zunächst MySQL)
+      <li>Fehlerbeseitigung im Code des LMO und der Addons <strong>40%</strong>
+      <li>Administration der Addons über Admin-Oberfläche des LMO <strong>100%</strong>
+      <li>Multilanguageunterstützung (mit Hilfe der Languagefiles) <strong>70%</strong>
+      <li>Integration weiterer Addons und Hacks sowie neuer Funktionen 
+      <li>Fehlerbereinigung bei HTML- und CSS-Ausgabe <strong>30%</strong>
+      <li>unabhängig von Register-Globals-Einstellung des Servers machen <strong>70%</strong>
+      <li>Migration in SQL-Umgebungen (zunächst MySQL) <strong>0%</strong>
     </ul>
     <h3><a name="01"></a>1. Einstiegsinformationen</h3>
     <h4><a name="0101"></a>1.1. Einleitung</h4>
     <p>
-      Herzlich Willkommen zum LigaManager Online. Mit diesem Script
+      Herzlich Willkommen zum <em>neuen</em> Liga Manager Online. Mit diesem Script
       können Sie Ihren Besuchern einen Ergebnisdienst über Ihre
       Lieblingsligen anbieten. Die gesamte Verwaltung der Ligen läuft
       dabei direkt auf dem Server ab; Sie tragen nur noch die
@@ -134,19 +135,11 @@
       Adminbereich vorhanden (damit niemand auf dumme Gedanken kommt).
     </p>
     <p>
-      Beachten Sie bitte auch, daß es zum Korrekten Bearbeiten Ihrer
-      Ligen erforderlich ist, daß Ihr Browser JavaScript unterstützt
-      und sie das auch aktiviert haben. Die beste Wahl für den
-      Adminbereich des LMO ist momentan noch der Internet Explorer ab 5.5, da dieser
-      Browser alle eingebauten JavaScript-Funktionen unterstützt. 
-      Zukünftige Versionen werden kein Javascript mehr voraussetzen.
-    </p>
-    <p>
       Die Besucher sollten das Script nur über die Datei <strong>lmo.php</strong>
       starten. JavaScript benötigen die Besucher eigentlich nur, wenn
       Sie den <a href="#0403">eingebauten Newsticker</a> benutzen; aber
-      selbst dann nicht zwingend, denn der Ticker wird ohne JavaScript
-      einfach nicht angezeigt. Zu jedem Link erhalten Ihre Besucher
+      selbst dann nicht zwingend, denn der Ticker wird auch ohne JavaScript
+      angezeigt. Zu jedem Link erhalten Ihre Besucher
       einen Tooltip, so daß Sie keine weiteren Erklärungen zur
       Benutzung des Scripts geben müssen.
     </p>
@@ -163,7 +156,7 @@
       <li>Unix- oder Windows-Server</li>
       <li><em>PHP 4.1</em> (oder höher)
       <li>register_globals muß auf on sein</li>
-      <li>JavaScript- und CSS-fähiger Browser</li>
+      <li>empfohlen: JavaScript- und CSS-fähiger Browser</li>
     </ul>
     <div class="up">[<a href="#00">Inhalt</a>]</div>
     <h4><a name="0103"></a>1.3. Installation</h4>
@@ -198,15 +191,8 @@
           <li>Folgende Dateien müssen im <em>Textmodus</em> übertragen werden:
             <ul>
               <li>.htaccess</li>
-              <li>lmo-cfg.txt</li>
-              <li>lmo-lang.txt</li>
-              <li>lmo-auth.txt</li>
-              <li>lmo-access.txt</li>
-              <li>lmo-style.css</li>
-              <li>lmo-style.txt</li>
-              <li>lmo-tippcfg.txt</li>
-              <li>lmo-tipplang.txt</li>
-              <li>lmo-tippauth.txt</li>
+              <li>alle *.txt-Dateien</li>
+              <li>alle *.css-Dateien</li>
             </ul>
           </li>
           <li>Folgende <em>Zugriffsrechte (chmod)</em> müssen gesetzt werden:
@@ -237,7 +223,7 @@
     <p>
       Dieses Script wird unter den Bestimmungen der <a href="http://www.gnu.org/licenses/gpl.txt">GPL</a>
       (<a href="http://www.gnu.de/gpl-ger.html">deutsche Übersetzung</a>) herausgegeben. Im
-      Klartext heißt das, Sie dürfen das Script nutzen, weitergeben und
+      Klartext heißt das, du darfst das Script nutzen, weitergeben und
       sogar verändern; Garantie wird von keiner Seite gewährt.
       <em>Bitte beachte, dass Copyrighthinweise auf jeden Fall erhalten 
       bleiben müssen, es ist also nicht erlaubt, diese zu entfernen oder zu
