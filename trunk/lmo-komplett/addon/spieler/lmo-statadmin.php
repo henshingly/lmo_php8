@@ -649,8 +649,9 @@ function formel_berechnen ($formel,$formel_str,$spalten){
           $formel_str[$i]=str_replace(strtoupper($value),"\$data[\$j][$key]",$formel_str[$i]);
         }
       }
-      $help_str=strtr($help_str,"+-*/0123456789.","               ");
-      if (strlen(chop($help_str))==0){
+      $help_str=strtr($help_str,'+-*/0123456789.(),','                  ');
+      echo (chop($help_str));
+      if (strlen(trim($help_str))==0 || trim($help_str)=='MAX' || trim($help_str)=='MIN'){
         $formel_str[$i] = "\$help2=round(".$formel_str[$i].",2);";
       }else{
         $formel_str[$i] = "\$help2=\"Formel so nicht erlaubt\";";
