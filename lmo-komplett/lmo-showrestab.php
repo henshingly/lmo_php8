@@ -19,9 +19,8 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if (isset($file) && $file != "") {
-  if (!isset($tabtype) || $tabtype == "") {
-    $tabtype = 0;
-  }
+  $tabtype=isset($_GET['tabtype'])?$_GET['tabtype']:0;
+  $newtabtype=0;
   $endtab = $st;
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=$action&amp;file=".$file."&amp;st=";
@@ -43,6 +42,7 @@ if (isset($file) && $file != "") {
     $endtab++;
   }
   if ($tabonres == 2) {
+    $newtabtype = $tabtype;
     $tabtype = 1;
     require(PATH_TO_LMO."/lmo-calctable.php");
     $hplatz = array("");
@@ -75,7 +75,7 @@ if (isset($file) && $file != "") {
     $aetore = $etore;
     $aatore = $atore;
     $adtore = $dtore;
-    $tabtype = 0;
+    $tabtype=$newtabtype;
   }
   require(PATH_TO_LMO."/lmo-calctable.php");
   $platz0 = array("");
@@ -92,7 +92,7 @@ if (isset($file) && $file != "") {
 
 ?>
 
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0"><?
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0"><?
 
   /** Spieltagsauswahl*/?>
   <tr>
@@ -102,7 +102,7 @@ if (isset($file) && $file != "") {
   /** Ergebnisse*/
   if ($tabonres >= 1 || $action=="results") {?>
   <tr>
-    <td align="center" class="lmost3"><? include(PATH_TO_LMO."/lmo-showresults.php")?></td>
+    <td align="center"><? include(PATH_TO_LMO."/lmo-showresults.php")?></td>
   </tr><?
   }
   
@@ -113,11 +113,11 @@ if (isset($file) && $file != "") {
         <tr><?  
    $st0 = $st-1;
    if ($st > 1) {?>
-          <td class="lmost2" align='left'><a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a></td><?
+          <td align='left'>&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?></a>&nbsp;</td><?
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>
-          <td align="right" class="lmost2"><a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[7]?></a></td><?
+          <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[7]?></a>&nbsp;</td><?
    }?>
         </tr>
       </table>
@@ -127,7 +127,7 @@ if (isset($file) && $file != "") {
   /** Tabelle*/
   if ($tabonres >= 1 || $action=="table") {?>
   <tr>
-    <td align="center" class="lmost3"><? include(PATH_TO_LMO."/lmo-showtable.php")?></td>
+    <td align="center"><? include(PATH_TO_LMO."/lmo-showtable.php")?></td>
   </tr><?
   }?>
 

@@ -33,7 +33,7 @@ if(($action=="admin") && ($todo=="download") && (($_SESSION["lmouserok"]==1) || 
     array_shift($dummy);
     sort($dummy);
     if($dummy[$down-1]!=""){
-      header("Content-Type: text/lmo3");
+      header("Content-Type: text/x-lmo3");
       header("Content-Disposition: attachment; filename=\"".$dummy[$down-1]."\"");
       readfile(sprintf("%s/%s", $dirliga, $dummy[$down-1]));
       }
@@ -56,7 +56,7 @@ if(($action=="admin") && ($todo=="download") && (($_SESSION["lmouserok"]==1) || 
         $filedata = fread(fopen($dirliga.$dummy[$i], "rb"), filesize($dirliga.$dummy[$i]));
         $zipfile -> add_file($filedata, $dummy[$i]);
         }
-      header("Content-Type: text/lmo3");
+      header("Content-Type: text/x-lmo3");
       header("Content-Disposition: attachment; filename=\"ligen.zip\"");
       echo $zipfile -> file();
       }

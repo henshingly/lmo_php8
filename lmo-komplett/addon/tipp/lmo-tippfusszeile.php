@@ -28,10 +28,10 @@ if(!isset($nw)){
 }
 ?>
   <tr>
-    <td class="lmomain2" colspan="3"  align="left">
+    <td class="lmoFooter" colspan="3"  align="left">
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td class="lmomain2" valign="top"><? 
+          <td valign="top"><? 
   if ($todo == "wert") {
     echo "<strong>".$text['tipp'][89].":</strong><br>"; /// Zeichenerklaerung
     if ($wertung == "team") {
@@ -89,7 +89,7 @@ if(!isset($nw)){
     }
   }?>
           </td>
-          <td class="lmomain2" align="right" valign="bottom" rowspan="2"><? if(!isset($auswertfile)){$auswertfile="";}
+          <td align="right" valign="bottom" rowspan="2"><? if(!isset($auswertfile)){$auswertfile="";}
   if (!isset($tippfile)) {
     $tippfile = "";
   }
@@ -118,7 +118,7 @@ if(!isset($nw)){
           </td>
         </tr>
         <tr>
-          <td class="lmomain1" valign="bottom"><?
+          <td valign="bottom"><?
   if ($file != "" && $lmtype == 0 && $all != 1) {
     echo "<a href=\"".$_SERVER['PHP_SELF']."?file=".$file."&amp;action=table\">".$text[5]." ".$text['tipp'][99]."</a>&nbsp;&nbsp;&nbsp;<br>";
   }

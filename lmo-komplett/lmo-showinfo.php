@@ -23,11 +23,27 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 ?>
-      <table class="lmosta" width="80%" cellspacing="0" cellpadding="0" border="0">
-        <tr><td align="center" class="lmost1"><?PHP echo $text[54]; ?></td></tr>
-        <tr><td align="center" class="lmost0"><?PHP echo $text[55]; ?><br><?PHP echo $text[56]; ?></td></tr>
-        <tr><td align="center" class="lmost3"><table class="lmostb" width="80%" cellspacing="0" cellpadding="0" border="0">
-        <tr><td class="lmotext"><?PHP echo $text[47]; ?><br><br><?PHP echo $text[48]; ?><br><br><?PHP echo $text[49]; ?><br><br><?PHP echo $text[50]; ?></td></tr>
+<table class="lmoMiddle" width="80%" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center"><h1><?=$text[54]; ?></h1></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <p><?=$text[55]; ?></p>
+      <p><?=$text[56]; ?></p>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="lmoInner" width="80%" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="lmotext">
+            <p><?=$text[47]; ?></p>
+            <p><?=$text[48]; ?></p>
+            <p><?=$text[49]; ?></p>
+            <p><?=$text[50]; ?></p>
+          </td>
+        </tr>
       </table>
     </td>
   </tr>

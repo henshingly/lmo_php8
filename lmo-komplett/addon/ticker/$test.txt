@@ -157,7 +157,7 @@ $file=$file2;?>
 <table cellspacing="0" cellpadding="0" border="0" align="center">
 <? if ($tickertitel==1) { ?>
 <tr>
-<td class="lmomain1" align="center"><nobr><? echo $titelticker ?> </nobr></td>
+<td class="lmoMenu" align="center"><nobr><? echo $titelticker ?> </nobr></td>
 </tr>
 <? }?>
 
@@ -206,7 +206,7 @@ $file=$file2;
       pause=0;
     }
   }
-  document.write("<tr><td class=\"lmomain1\" colspan=\"3\" align=\"center\"><nobr><FORM NAME=\"marqueeform\"><INPUT class=\"lmotickerein\" TYPE=\"TEXT\" NAME=\"marquee\" SIZE=\"60\" readonly></FORM></nobr></td></tr>");
+  document.write("<tr><td class=\"lmoMenu\" colspan=\"3\" align=\"center\"><nobr><FORM NAME=\"marqueeform\"><INPUT class=\"lmotickerein\" TYPE=\"TEXT\" NAME=\"marquee\" SIZE=\"60\" readonly></FORM></nobr></td></tr>");
   document.close();
   marquee();
 -->
@@ -214,7 +214,7 @@ $file=$file2;
 
 
 <tr>
-<td class="lmomain2" align="center"><nobr><? echo $versionticker."&copy 2003 by ".$link ?> </nobr></td></tr>
+<td class="lmoFooter" align="center"><nobr><? echo $versionticker."&copy 2003 by ".$link ?> </nobr></td></tr>
 </table>
 <? } ?>
 
@@ -233,7 +233,7 @@ $file=$file2;
 <table cellspacing="0" cellpadding="0" border="0" align="center">
 <? if ($tickertitel==1) { ?>
 <tr>
-<td class="lmomain1" align="center"><nobr><? echo $titelticker ?> </nobr></td>
+<td class="lmoMenu" align="center"><nobr><? echo $titelticker ?> </nobr></td>
 </tr>
 <? }?>
 <script language="JavaScript">
@@ -330,13 +330,13 @@ $file=$file2;?>
       pause=0;
     }
   }
-  document.write("<tr><td class=\"lmomain1\" colspan=\"3\" align=\"center\"><nobr><FORM NAME=\"marqueeform\"><INPUT class=\"lmotickerein\" TYPE=\"TEXT\" NAME=\"marquee\" SIZE=\"60\" readonly></FORM></nobr></td></tr>");
+  document.write("<tr><td class=\"lmoMenu\" colspan=\"3\" align=\"center\"><nobr><FORM NAME=\"marqueeform\"><INPUT class=\"lmotickerein\" TYPE=\"TEXT\" NAME=\"marquee\" SIZE=\"60\" readonly></FORM></nobr></td></tr>");
   document.close();
   marquee();
 -->
 </script>
 <tr>
-<td class="lmomain2" align="center"><nobr><? require_once(PATH_TO_LMO."/lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
+<td class="lmoFooter" align="center"><nobr><? require_once(PATH_TO_LMO."/lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
 </tr>
 </table>
 <? }?>

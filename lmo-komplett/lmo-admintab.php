@@ -56,10 +56,10 @@ if($file!=""){
   if($spez==1){$breite=$breite+2;}
 ?>
 
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
   <tr>
-    <td align="center" class="lmomain0"><?=$titel?></td>
+    <td align="center"><h1><?=$titel?></h1></td>
   </tr>
     <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP
@@ -67,10 +67,10 @@ if($file!=""){
     $j=$i;$k=$text[413];
     echo "<td align=\"right\" ";
     if($i<>$st){
-      echo "class=\"lmost0\"><a href='$addb$i' onclick=\"return chklmolink(this.href);\" title=\"".$k."\">".$j."</a>";
+      echo "><a href='$addb$i' onclick=\"return chklmolink(this.href);\" title=\"".$k."\">".$j."</a>";
       }
     else{
-      echo "class=\"lmost1\">".$j;
+      echo "class=\"active\">".$j;
       }
     echo "&nbsp;</td>";
     if(($anzst>49) && (($anzst%4)==0)){
@@ -86,7 +86,7 @@ if($file!=""){
 ?>
     <tr></table></td>
   </tr>
-  <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+  <tr><td align="center"><table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <form name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopas2(<?PHP echo $anzteams; ?>)">
   <input type="hidden" name="action" value="admin">
   <input type="hidden" name="todo" value="tabs">
@@ -115,7 +115,7 @@ if($file!=""){
     $dumm1="lmost5";
 ?>
   <tr>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><acronym title="<?PHP echo $text[414] ?>"><select class="lmoadminein" name="xplatz<?PHP echo $x; ?>" onChange="dolmoedi2(<?PHP echo $anzteams; ?>,'xplatz<?PHP echo $x; ?>')">
+    <td class="<?PHP echo $dumm1; ?>" align="right"><acronym title="<?PHP echo $text[414] ?>"><select class="lmo-formular-input" name="xplatz<?PHP echo $x; ?>" onChange="dolmoedi2(<?PHP echo $anzteams; ?>,'xplatz<?PHP echo $x; ?>')">
 <?PHP
   for($y=1;$y<=$anzteams;$y++){
     echo "<option value=\"".$y."\"";
@@ -175,7 +175,7 @@ if($file!=""){
   </tr>
 <?PHP } ?>
   <tr><td class="lmost4" colspan="<?PHP echo $breite; ?>" align="center">
-    <acronym title="<?PHP echo $text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<?PHP echo $text[415]; ?>"></acronym>
+    <acronym title="<?PHP echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="best" value="<?PHP echo $text[415]; ?>"></acronym>
   </td></tr>
   </form>
 

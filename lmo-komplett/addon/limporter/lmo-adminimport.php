@@ -111,11 +111,11 @@
   } // end if($imppage==3)
 ?>
 
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?PHP echo "Neue Liga importieren";/* $text[243];*/ ?></td>
+    <td class="active" align="center"><?PHP echo "Neue Liga importieren";/* $text[243];*/ ?></td>
   </tr>
-  <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+  <tr><td align="center"><table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 
 <?PHP if($imppage<3){ ?>
   <form name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
@@ -140,17 +140,17 @@
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[245]; ?>"><?PHP echo $text[244]; ?></acronym></nobr></td>
-    <td class="lmost5"><nobr><acronym title="<?PHP echo $text[245]; ?>"><?PHP echo $dirliga; ?><input class="lmoadminein" type="text" name="xfile" size="28" maxlength="28" value="<?PHP echo $xfile; ?>" onChange="lmofilename()">.l98</acronym></nobr></td>
+    <td class="lmost5"><nobr><acronym title="<?PHP echo $text[245]; ?>"><?PHP echo $dirliga; ?><input class="lmo-formular-input" type="text" name="xfile" size="28" maxlength="28" value="<?PHP echo $xfile; ?>" onChange="lmofilename()">.l98</acronym></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[118] ?>"><?PHP echo $text[113]; ?></acronym></nobr></td>
-    <td class="lmost5"><acronym title="<?PHP echo $text[118] ?>"><input class="lmoadminein" type="text" name="xtitel" size="40" maxlength="60" value="<?PHP echo $xtitel; ?>" onChange="lmotitelname()"></acronym></td>
+    <td class="lmost5"><acronym title="<?PHP echo $text[118] ?>"><input class="lmo-formular-input" type="text" name="xtitel" size="40" maxlength="60" value="<?PHP echo $xtitel; ?>" onChange="lmotitelname()"></acronym></td>
   </tr>
     <tr>
     <td class="lmost5" width="20">&nbsp;</td>
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[175] ?>"><?PHP echo $text[174]; ?></acronym></nobr></td>
-    <td class="lmost5" align="left"><acronym title="<?PHP echo $text[175] ?>"><select class="lmoadminein" name="xtype" onChange="alert('Sorry, KO Turniere werden z.Zt. noch nicht unterstützt.');this.form.xtype.value=0;dolmoedit()"><?PHP echo "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>";
+    <td class="lmost5" align="left"><acronym title="<?PHP echo $text[175] ?>"><select class="lmo-formular-input" name="xtype" onChange="alert('Sorry, KO Turniere werden z.Zt. noch nicht unterstützt.');this.form.xtype.value=0;dolmoedit()"><?PHP echo "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>";
 echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$text[177]."</option>";
       ?>
      </select></acronym></td>
@@ -195,11 +195,11 @@ echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$
     </td>
 <?PHP if($imppage<2){ ?>
     <td class="lmost4" align="right">
-      <acronym title="<?PHP echo $text[261]; ?>"><input class="lmoadminbut" type="submit" name="best" value="<?PHP echo $text[260]; ?>"></acronym>
+      <acronym title="<?PHP echo $text[261]; ?>"><input class="lmo-formular-button" type="submit" name="best" value="<?PHP echo $text[260]; ?>"></acronym>
     </td>
 <?PHP }else{ ?>
     <td class="lmost4" align="right">
-      <acronym title="<?PHP echo $text[290]; ?>"><input class="lmoadminbut" type="submit" name="best" value="<?PHP echo $text[289]; ?>"></acronym>
+      <acronym title="<?PHP echo $text[290]; ?>"><input class="lmo-formular-button" type="submit" name="best" value="<?PHP echo $text[289]; ?>"></acronym>
     </td>
 <?PHP } ?>
   </tr>

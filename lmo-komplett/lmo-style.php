@@ -2,8 +2,510 @@
 header("Content-Type: text/css");
 require("init.php");
 @include(PATH_TO_TEMPLATEDIR."/style.css");
-echo <<< STYLE
+?>
 
+.message{
+  margin: 0;
+  color: #080;
+  background-color:transparent;
+}
+
+.error{
+  margin: 0;
+  color: #a00;
+  background-color:transparent;
+}
+
+.nobr {
+  white-space:nowrap;
+}
+
+form { 
+  padding: 0; 
+  margin: 0; 
+}
+
+acronym {
+  cursor:help;
+  border-bottom:1px dotted;
+}
+
+
+/** Auﬂenbereich*/
+.lmoMain { 
+  background: <?=$lmo_main_background1?>; 
+  color: <?=$lmo_main_color1?>;
+  border: 0<?=$lmo_main_border1?>; 
+  margin:0.3em auto;
+  padding:0.2em;
+  font-size: <?=$lmo_main_fontsize1?>;
+  font-family: <?=$lmo_main_fontfamily1?>;
+}
+
+.lmoMain p { 
+  margin:0;
+}
+
+/** Auﬂenbereich ‹berschrift*/
+.lmoMain h1 { 
+  padding: 0.2em; 
+  margin:0.2em;
+  background: <?=$lmo_main_background2?>; 
+  color: <?=$lmo_main_color2?>; 
+  font-size: <?=$lmo_main_fontsize2?>; 
+  font-family: <?=$lmo_main_fontfamily2?>;
+}
+
+/** Auﬂenbereich Men¸ */
+.lmoMain .lmoMenu { 
+  padding: 0.2em;
+  font-weight: bold; 
+  white-space:nowrap;
+  background: <?=$lmo_main_background4?>; 
+  color: <?=$lmo_main_color4?>; 
+  border:0<?=$lmo_main_border4?>;
+}
+
+.lmoMain .lmoMenu a { 
+  line-height:140%;
+  padding:0.1em;
+  font-weight: normal; 
+  text-decoration: none; 
+  background: <?=$lmo_main_background5?>; 
+  color: <?=$lmo_main_color5?>; 
+  border:0<?=$lmo_main_border5?>;
+}
+
+.lmoMain .lmoMenu a:hover { 
+  background: <?=$lmo_main_color5?>; 
+  color: <?=$lmo_main_background5?>; 
+}
+
+/** Auﬂenbereich Untermen¸ */
+.lmoMain .lmoSubmenu { 
+  padding: 0.2em;
+  font-weight: bold; 
+  white-space:nowrap;
+  background: <?=$lmo_main_background6?>; 
+  color: <?=$lmo_main_color6?>; 
+  border:0<?=$lmo_main_border6?>;
+}
+
+.lmoMain .lmoSubmenu a { 
+  line-height:140%;
+  padding:0.1em;
+  font-weight: normal; 
+  text-decoration: none; 
+  background: <?=$lmo_main_background7?>; 
+  color: <?=$lmo_main_color7?>; 
+  border:0<?=$lmo_main_border7?>;
+}
+
+.lmoMain .lmoSubmenu a:hover { 
+  background: <?=$lmo_main_color7?>; 
+  color: <?=$lmo_main_background7?>; 
+}
+
+/** Auﬂenbereich Fusszeilen */
+.lmoMain .lmoFooter { 
+  padding: 0;
+  font-size: <?=$lmo_main_fontsize3?>; 
+  font-weight: normal;
+}
+
+.lmoMain .lmoFooter a { 
+  text-decoration: underline; 
+  background: <?=$lmo_main_background1?>; 
+  color: <?=$lmo_main_color1?>;
+}
+
+.lmoMain .lmoFooter a:hover { 
+  background: <?=$lmo_main_color1?>; 
+  color: <?=$lmo_main_background1?>; 
+}
+
+/** Ende Auﬂenbereich */
+
+/** Mittelbereich */
+.lmoMiddle { 
+  padding: 0.2em; 
+  background: <?=$lmo_middle_background1?>; 
+  color: <?=$lmo_middle_color1?>;
+  font-size: <?=$lmo_middle_fontsize1?>;
+  border: 0<?=$lmo_middle_border1?>; 
+  margin:0.5em auto 1.5em auto;
+  font-weight: bold;
+}
+
+/** ‹berschrift im Mittelbereich */
+.lmoMiddle h1{ 
+  background: <?=$lmo_middle_background2?>; 
+  color: <?=$lmo_middle_color2?>;
+  font-size:<?=$lmo_middle_fontsize2?>;
+  margin:0.1em;
+  padding:0.1em;
+}
+
+/** Links im Mittelbereich */
+.lmoMiddle a {  
+  line-height:150%;
+  text-decoration: none; 
+  background: <?=$lmo_middle_background1?>; 
+  color: <?=$lmo_middle_color1?>; 
+  font-weight: normal;
+}
+
+.lmoMiddle a:hover { 
+  background: <?=$lmo_middle_color1?>; 
+  color: <?=$lmo_middle_background1?>; 
+}
+
+.lmoMiddle .lmoMenu {
+  padding: 0.2em;
+  font-weight: bold; 
+  white-space:nowrap;
+  background: <?=$lmo_middle_background4?>; 
+  color: <?=$lmo_middle_color4?>;
+  border: 0<?=$lmo_middle_border4?>;
+}
+
+.lmoMiddle .lmoMenu a {
+  line-height:140%;
+  padding:0.1em;
+  font-weight: normal; 
+  text-decoration: none; 
+  background: <?=$lmo_middle_background5?>; 
+  color: <?=$lmo_middle_color5?>;
+  border: 0<?=$lmo_middle_border5?>; 
+}
+
+.lmoMiddle .lmoMenu a:hover {
+  background: <?=$lmo_middle_color5?>; 
+  color: <?=$lmo_middle_background5?>;
+}
+
+.lmoMiddle .lmoSubmenu {
+  background: <?=$lmo_middle_background6?>; 
+  color: <?=$lmo_middle_color6?>;
+  border: 0<?=$lmo_middle_border6?>; 
+}
+
+.lmoMiddle .lmoSubmenu a {
+  background: <?=$lmo_middle_background7?>; 
+  color: <?=$lmo_middle_color7?>;
+  border: 0<?=$lmo_middle_border7?>; 
+}
+
+.lmoMiddle .lmoSubmenu a:hover {
+  background: <?=$lmo_middle_color7?>; 
+  color: <?=$lmo_middle_background7?>;
+}
+
+/** Innerer Bereich */
+.lmoInner {
+  padding: 0.2em; 
+  background: <?=$lmo_inner_background1?>; 
+  color: <?=$lmo_inner_color1?>;
+  font-size: <?=$lmo_inner_fontsize1?>;
+  border: 0<?=$lmo_inner_border1?>; 
+  font-weight: normal;
+}
+
+.lmoInner a {  
+  line-height:80%;
+  text-decoration: none; 
+  background: <?=$lmo_inner_background1?>; 
+  color: <?=$lmo_inner_color1?>; 
+  font-weight: normal;
+}
+
+.lmoInner td {
+  padding: 0.2em; 
+}
+.lmoInner td td{
+  padding: 0; 
+}
+
+.lmoInner th {
+  padding: 0.2em; 
+  background-color: <?=$lmo_inner_background2?>; 
+  color: <?=$lmo_inner_color2?>; 
+}
+
+.lmoInner th a {
+  background-color: <?=$lmo_inner_background2?>; 
+  color: <?=$lmo_inner_color2?>; 
+}
+
+.lmoInner th a:hover {
+  background-color: <?=$lmo_inner_color2?>; 
+  color: <?=$lmo_inner_background2?>; 
+}
+
+.lmoInner caption {
+  margin: 0 auto;
+  padding: 0.4em; 
+  background-color: <?=$lmo_middle_background1?>; 
+  color: <?=$lmo_middle_color1?>; 
+  font-weight: bold;
+}
+
+.lmoInner caption a{
+  background-color: <?=$lmo_middle_background1?>; 
+  color: <?=$lmo_middle_color1?>; 
+  font-weight: normal;  
+}
+
+.lmoInner .lmoFooter {
+  
+  background-color: <?=$lmo_inner_background2?>; 
+  color: <?=$lmo_inner_color2?>; 
+}
+
+.lmoInner .lmoFooter a { 
+  line-height:150%;
+  text-decoration: underline; 
+  background: <?=$lmo_inner_background2?>; 
+  color: <?=$lmo_inner_color2?>;
+}
+
+.lmoInner .lmoFooter a:hover { 
+  background: <?=$lmo_inner_color2?>; 
+  color: <?=$lmo_inner_background2?>; 
+}
+
+.lmoKreuz table {
+  font-size: <?=$lmo_kreuz_fontsize1?>;
+}
+
+.lmoKreuz table, 
+.lmoKalender table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+.lmoKreuz td,
+.lmoKreuz th,
+.lmoKalender td,
+.lmoKalender th {
+  white-space:nowrap;
+  border:1px solid <?=$lmo_kreuzkal_background2?>;
+}
+.lmoKreuz td ,
+.lmoKalender td {
+  padding:0;
+}
+
+.lmoKreuz small {
+  border:1px solid;
+}
+
+.lmoBackMarkierung {
+  background: <?=$lmo_kreuzkal_background1?>; 
+}
+
+.lmoBackMarkierung a { 
+  display:block;
+  height:100%;
+  line-height:190%;
+  padding:0;
+  background: <?=$lmo_kreuzkal_background1?>; 
+  font-weight: bold; 
+}
+
+.lmoFrontMarkierung { 
+  color: <?=$lmo_kreuzkal_color1?>; 
+  font-weight: bold; 
+}
+
+.lmoLeer {
+  background-color: <?=$lmo_kreuzkal_background2?>;
+  border:0;
+}
+
+.lmoTabelleMeister { 
+  background: <?=$lmo_tabelle_background1?>; 
+  color: <?=$lmo_tabelle_color1?>; 
+}
+
+.lmoTabelleMeister a {
+  background: <?=$lmo_tabelle_background1?>;
+  color: <?=$lmo_tabelle_color1?>; 
+  text-decoration: none;
+}
+
+.lmoTabelleMeister a:hover { 
+  background: <?=$lmo_tabelle_color1?>; 
+  color: <?=$lmo_tabelle_background1?>;
+}
+
+.lmoTabelleCleague { 
+  background: <?=$lmo_tabelle_background2?>; 
+  color: <?=$lmo_tabelle_color2?>; 
+}
+
+.lmoTabelleCleague a {
+  background: <?=$lmo_tabelle_background2?>; 
+  color: <?=$lmo_tabelle_color2?>; 
+  text-decoration: none;
+}
+
+.lmoTabelleCleague a:hover {
+  background: <?=$lmo_tabelle_color2?>; 
+  color: <?=$lmo_tabelle_background2?>; 
+}
+
+.lmoTabelleCleaguequali { 
+  background: <?=$lmo_tabelle_background3?>; 
+  color: <?=$lmo_tabelle_color3?>; 
+}
+
+.lmoTabelleCleaguequali a { 
+  background: <?=$lmo_tabelle_background3?>; 
+  color: <?=$lmo_tabelle_color3?>;
+  text-decoration: none;
+}
+
+.lmoTabelleCleaguequali a:hover { 
+  background: <?=$lmo_tabelle_color3?>; 
+  color: <?=$lmo_tabelle_background3?>;
+}
+
+.lmoTabelleUefa { 
+  background: <?=$lmo_tabelle_background4?>; 
+  color: <?=$lmo_tabelle_color4?>;
+}
+
+.lmoTabelleUefa a { 
+  background: <?=$lmo_tabelle_background4?>; 
+  color: <?=$lmo_tabelle_color4?>;
+  text-decoration: none; 
+}
+
+.lmoTabelleUefa a:hover { 
+  background: <?=$lmo_tabelle_color4?>; 
+  color: <?=$lmo_tabelle_background4?>;
+}
+
+.lmoTabelleRelegation { 
+  background: <?=$lmo_tabelle_background5?>; 
+  color: <?=$lmo_tabelle_color5?>;
+}
+
+.lmoTabelleRelegation a { 
+  background: <?=$lmo_tabelle_background5?>; 
+  color: <?=$lmo_tabelle_color5?>;
+  text-decoration: none; 
+}
+
+.lmoTabelleRelegation a:hover { 
+  background: <?=$lmo_tabelle_color5?>; 
+  color: <?=$lmo_tabelle_background5?>;
+}
+
+.lmoTabelleAbsteiger { 
+  background: <?=$lmo_tabelle_background6?>; 
+  color: <?=$lmo_tabelle_color6?>;
+}
+
+.lmoTabelleAbsteiger a { 
+  background: <?=$lmo_tabelle_background6?>; 
+  color: <?=$lmo_tabelle_color6?>;
+  text-decoration: none; 
+}
+
+.lmoTabelleAbsteiger a:hover { 
+  background: <?=$lmo_tabelle_color6?>; 
+  color: <?=$lmo_tabelle_background6?>;
+}
+
+.lmoTabelleHeimbilanz { 
+  background: <?=$lmo_tabelle_background7?>; 
+  color: <?=$lmo_tabelle_color7?>;
+}
+
+.lmoTabelleGastbilanz { 
+  background: <?=$lmo_tabelle_background8?>; 
+  color: <?=$lmo_tabelle_color8?>; 
+}
+
+.lmoTurnierSieger { 
+  background: <?=$lmo_turnier_background1?>; 
+  color: <?=$lmo_turnier_color1?>;
+}
+
+.lmoTurnierSieger a { 
+  background: <?=$lmo_turnier_background1?>; 
+  color: <?=$lmo_turnier_color1?>;
+  text-decoration: none;
+}
+
+.lmoTurnierSieger a:hover{ 
+  background: <?=$lmo_turnier_color1?>; 
+  color: <?=$lmo_turnier_background1?>; 
+}
+
+.lmoTurnierVerlierer { 
+  background: <?=$lmo_turnier_background2?>; 
+  color: <?=$lmo_turnier_color2?>;
+}
+
+.lmoTurnierVerlierer a { 
+  background: <?=$lmo_turnier_background2?>; 
+  color: <?=$lmo_turnier_color2?>;
+  text-decoration: none;
+}
+
+.lmoTurnierVerlierer a:hover{ 
+  background: <?=$lmo_turnier_color2?>; 
+  color: <?=$lmo_turnier_background2?>; 
+}
+
+.lmotext { 
+  text-align: justify; 
+}
+/*
+.lmofett { 
+  background: <?=$lmo_inner_background1?>; 
+  color: <?=$lmo_inner_color1?>; 
+  text-align: justify; 
+  font-family: <?=$lmo_inner_fontfamily1?>; 
+  font-size:85%; 
+  font-weight: bold; 
+}
+*/
+.lmoMain li { 
+  padding-bottom: 0.5em; 
+}
+
+.lmo-formular-input { 
+  background: <?=$lmo_formular_background1?>; 
+  color: <?=$lmo_formular_color1?>; 
+  border: <?=$lmo_formular_border1?>; 
+}
+
+.lmo-formular-button { 
+  background: <?=$lmo_formular_background2?>; 
+  color: <?=$lmo_formular_color2?>; 
+  border: <?=$lmo_formular_border2?>; 
+  font-weight: bold; 
+  width:     auto;
+  overflow:  visible;
+  padding:   0 0.3em;
+
+}
+
+
+a.colorpicker {
+  border: 1px solid #000; 
+  font-size:15px; 
+  text-decoration: none;
+}
+
+a.colorpicker table {
+  background:#fff;
+  color:#000;
+}
 
 .sort-arrow {
 	width:					11px;
@@ -28,9 +530,9 @@ a:hover span.popup{
   display: inline;
 	font-size:80%;
   position: absolute;
-  background-color: $tabbback; 
-  color: $tabbcolo;
-  border: $tabbbord;
+  background-color: <?=$lmo_middle_background1?>; 
+  color: <?=$lmo_middle_color1?>;
+  border: <?=$lmo_middle_border1?>;
   max-width: 15em;
 	margin: 1.5em 0 0 -4em;  
   padding: 0.2em;
@@ -38,151 +540,6 @@ a:hover span.popup{
   white-space:normal;
   text-decoration:none !important;
   text-align:left;
-  \-moz-border-radius: 8px;
 }
-.message{margin:0;color:#080;background-color:transparent;}
-.error{margin:0;color:#a00;background-color:transparent;}
-.nobr {white-space:nowrap;}
-FORM { padding: 0; margin: 0; }
-acronym {cursor:help;border-bottom:1px dotted $tabccolo;}
-TABLE { padding: 0; margin: 0; }
-.lmomaina { background: $tababack; border: $tababord; margin:auto;font-size:90%;font-family:sans-serif;}
-.lmosta { background: $tabbback; border: $tabbbord; margin:auto; white-space:normal;}
-.lmostb {  background: $tabcback; border: $tabcbord; margin:auto; }
 
-.lmomain0 { padding: 2px; background: $tababack; color: $tabacoti; font-family: $tabafont; font-size: $tabatite; font-weight: bold; }
-  
-.lmomain1 { padding: 2px; font-weight: bold; font-size: $tabasize; white-space:nowrap}
-.lmomain1, .lmomain1 a { background: $tababack; color: $tabacolo; font-family: $tabafont; }
-  .lmomain1 a:link, .lmomain1 a:visited { font-weight: normal; text-decoration: none; }
-  .lmomain1 a:hover, .lmomain1 a:active { background: $tabacolo; color: $tababack; font-weight: normal; text-decoration: none; border:0;}
-
-.lmomain2 { padding: 2px; background: $tababack; color: $tabacolo; font-family: $tabafont; font-size: $tabaupda; font-weight: normal; }
-
-.lmost0, lmost0a { padding: 2px; font-weight: normal;font-size: $tabbsize; }
-.lmost0, .lmost0 a, .lmost0a, .lmost0a a {  background: $tabbback; color: $tabccolo; font-family: $tabbfont; }
-  .lmost0 a:link, .lmost0 a:visited, .lmost0a a:link, .lmost0a a:visited { text-decoration: none; }
-  .lmost0 a:hover, .lmost0 a:active, .lmost0a a:hover, .lmost0a a:active { background: $tabbcolo; color: $tabbback; text-decoration: none; border:0;}
-
-.lmost1 { padding: 2px; background: $tabbback; color: $tabbcolo; font-family: $tabbfont; font-size: $tabbsize; font-weight: bold; }
-
-.lmost2 { padding: 2px; font-weight: normal;font-size: $tabbsize;}
-.lmost2, .lmost2 a { background: $tabbback; color: $tabbcolo; font-family: $tabbfont;  }
-  .lmost2 a:link, .lmost2 a:visited { text-decoration: none; }
-  .lmost2 a:hover, .lmost2 a:active { background: $tabbcolo; color: $tabbback; text-decoration: none; border:0;}
-
-.lmost3 { padding: 2px; background: $tabbback; color: $tabbcolo;}
-
-.lmost4 { padding: 2px; font-weight: bold; font-size: $tabcsize;background-color: $tabcgrey; color: $tabccolo; font-family: $tabcfont;}
-.lmost4 a { background-color: $tabcgrey; color: $tabccolo; }
-  .lmost4 a:link, .lmost4 a:visited { text-decoration: none; background-color: $tabcgrey; color: $tabccolo;}
-  .lmost4 a:hover, .lmost4 a:active { text-decoration: underline; border:0; background-color $tabcgrey; color: $tabccolo;}
-
-.lmost5 { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmost5, .lmost5 a { background: $tabcback; color: $tabccolo; font-family: $tabcfont; }
-  .lmost5 a:link {  background: $tabcback; color: $tabclin1; text-decoration: none; }
-  .lmost5 a:hover, .lmost5 a:active {  background: $tabcback; color: $tabclin2; text-decoration: underline;}
-
-.lmost7 { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmost7, .lmost7 a { background: $tabftur1; color: $tabccolo; font-family: $tabcfont; }
-  .lmost7 a:link, .lmost7 a:visited { background: $tabftur1; color: $tabclin1; text-decoration: none; }
-  .lmost7 a:hover, .lmost7 a:active { background: $tabftur1; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmost8 { padding: 2px; background: $tabcback; color: $tabccolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: bold; }
-
-.lmost9a { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmost9a, .lmost9a a { background: $tabftur2; color: $tabccolo; font-family: $tabcfont; }
-  .lmost9a a:link, .lmost9a a:visited { background: $tabftur2; color: $tabclin1; text-decoration: none; }
-  .lmost9a a:hover, .lmost9a a:active { background: $tabftur2; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmost9b { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmost9b, .lmost9b a { background: $tabftur3; color: $tabccolo; font-family: $tabcfont; }
-  .lmost9b a:link, .lmost9b a:visited { background: $tabftur3; color: $tabclin1; text-decoration: none; }
-  .lmost9b a:hover, .lmost9b a:active { background: $tabftur3; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmost9c { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmost9c, .lmost9c a { background: $tabftur4; color: $tabccolo; font-family: $tabcfont; }
-  .lmost9c a:link, .lmost9c a:visited { background: $tabftur4; color: $tabclin1; text-decoration: none; }
-  .lmost9c a:hover, .lmost9c a:active { background: $tabftur4; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmotab1 { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmotab1, .lmotab1 a { background: $tabftab1; color: $tabccolo; font-family: $tabcfont; }
-  .lmotab1 a:link, .lmotab1 a:visited { background: $tabftab1; color: $tabclin1; text-decoration: none; }
-  .lmotab1 a:hover, .lmotab1 a:active { background: $tabftab1; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmotab2 { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmotab2, .lmotab2 a { background: $tabftab2; color: $tabccolo; font-family: $tabcfont; }
-  .lmotab2 a:link, .lmotab2 a:visited { background: $tabftab2; color: $tabclin1; text-decoration: none; }
-  .lmotab2 a:hover, .lmotab2 a:active { background: $tabftab2; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmotab3 { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmotab3, .lmotab3 a { background: $tabftab3; color: $tabccolo; font-family: $tabcfont; }
-  .lmotab3 a:link, .lmotab3 a:visited { background: $tabftab3; color: $tabclin1; text-decoration: none; }
-  .lmotab3 a:hover, .lmotab3 a:active { background: $tabftab3; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmotab4 { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmotab4, .lmotab4 a { background: $tabftab4; color: $tabccolo; font-family: $tabcfont; }
-  .lmotab4 a:link, .lmotab4 a:visited { background: $tabftab4; color: $tabclin1; text-decoration: none; }
-  .lmotab4 a:hover, .lmotab4 a:active { background: $tabftab4; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmotab5 { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmotab5, .lmotab5 a { background: $tabftab6; color: $tabccolo; font-family: $tabcfont; }
-  .lmotab5 a:link, .lmotab5 a:visited { background: $tabftab6; color: $tabclin1; text-decoration: none; }
-  .lmotab5 a:hover, .lmotab5 a:active { background: $tabftab6; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmotab8 { padding: 2px; font-weight: normal; font-size: $tabcsize;}
-.lmotab8, .lmotab8 a { background: $tabftab5; color: $tabccolo; font-family: $tabcfont; }
-  .lmotab8 a:link, .lmotab8 a:visited { background: $tabftab5; color: $tabclin1; text-decoration: none; }
-  .lmotab8 a:hover, .lmotab8 a:active { background: $tabftab5; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmotab6 { padding: 2px; background: $tabftab7; color: $tabccolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: normal; }
-
-.lmotab7 { padding: 2px; background: $tabftab8; color: $tabccolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: normal; }
-
-.lmocross1 { padding: 1px; background: $tabbback; color: $tabbcolo; font-family: $tabcfont; font-size: $tabdsize; font-weight: bold; }
-
-.lmocross2{ padding: 1px; font-weight: normal; font-size: $tabdsize;}
-.lmocross2, .lmocross2 a { background: $tabbback; color: $tabccolo; font-family: $tabcfont; }
-  .lmocross2 a:link, .lmocross2 a:visited { text-decoration: none; }
-  .lmocross2 a:hover, .lmocross2 a:active { background: $tabbcolo; color: $tabbback; font-weight: normal; text-decoration: none; border:0;}
-
-.lmocross4 { padding: 1px; background: $tabcgrey; color: $tabccolo; font-family: $tabcfont; font-size: $tabdsize; font-weight: bold; }
-
-.lmocross5 { padding: 1px; font-weight: normal; font-size: $tabdsize;}
-.lmocross5, .lmocross5 a { background: $tabcback; color: $tabccolo; font-family: $tabcfont; }
-  .lmocross5 a:link, .lmocross5 a:visited { background: $tabcback; color: $tabclin1; text-decoration: none; }
-  .lmocross5 a:hover, .lmocross5 a:active { background: $tabcback; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmocross6 { padding: 1px; font-weight: normal; font-size: $tabdsize;}
-.lmocross6, .lmocross6 a { background: $tabftur1; color: $tabccolo; font-family: $tabcfont; }
-  .lmocross6 a:link, .lmocross6 a:visited { background: $tabftur1; color: $tabclin1; text-decoration: none; }
-  .lmocross6 a:hover, .lmocross6 a:active { background: $tabftur1; color: $tabclin2; text-decoration: underline; border:0;}
-
-.lmocalni { padding: 2px; background: $tabcgrey; color: $tabccolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: bold; }
-
-.lmocalat { padding: 2px; border: 1px solid $tabcgrey;  background: $tabcback; color: $tabccolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: bold; }
-  .lmocalat a:link, .lmocalat a:visited { background: $tabcback; color: $tabclin1; font-weight: normal; text-decoration: none; }
-  .lmocalat a:hover, .lmocalat a:active { background: $tabcback; color: $tabclin2; font-weight: normal; text-decoration: underline; border:0;}
-
-.lmocalht { padding: 2px; border: 1px solid $tabcgrey;  background: $tabhback; color: $tabccolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: bold; }
-  .lmocalht a:link, .lmocalht a:visited { background: $tabhback; color: $tabclin1; font-weight: normal; text-decoration: none; }
-  .lmocalht a:hover, .lmocalht a:active { background: $tabhback; color: $tabclin2; font-weight: normal; text-decoration: underline; border:0;}
-
-.lmocalwe { padding: 2px; border: 1px solid $tabcgrey;  background: $tabcback; color: $tabwcolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: bold; }
-  .lmocalwe a:link, .lmocalwe a:visited { background: $tabcback; color: $tabclin1; font-weight: normal; text-decoration: none; }
-  .lmocalwe a:hover, .lmocalwe a:active { background: $tabcback; color: $tabclin2; font-weight: normal; text-decoration: underline; border:0;}
-
-.lmocalhe { padding: 2px; border: 1px solid $tabcgrey;  background: $tabhback; color: $tabwcolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: bold; }
-  .lmocalhe a:link, .lmocalhe a:visited  { background: $tabhback; color: $tabclin1; font-weight: normal; text-decoration: none; }
-  .lmocalhe a:hover, .lmocalhe a:active { background: $tabhback; color: $tabclin2; font-weight: normal; text-decoration: underline; border:0;}
-
-.lmotext { padding: 6px; background: $tabcback; color: $tabccolo; text-align: justify; font-family: $tabcfont; font-size: $tabcsize; font-weight: normal; }
-
-.lmofett { background: $tabcback; color: $tabccolo; text-align: justify; font-family: $tabcfont; font-size:85%; font-weight: bold; }
-
-.lmoadminli { padding-bottom: 4px; }
-
-.lmoadminein { background: $tabeback; color: $tabecolo; border: 1px solid $tabecolo; font-family: $tabcfont; font-size: $tabcsize; }
-.lmoadminbut { background: $tabkback; color: $tabkcolo; border-left: 1px solid $tabkcolo; border-top: 1px solid $tabkcolo; border-right: 2px solid $tabkcolo; border-bottom: 2px solid $tabkcolo; font-family: $tabcfont; font-size: $tabcsize; font-weight: bold; }
-STYLE;
-?>
+a:hover span.popup{\-moz-border-radius: 8px;}

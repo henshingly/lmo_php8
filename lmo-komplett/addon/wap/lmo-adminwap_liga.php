@@ -86,7 +86,7 @@ if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
       $i++;
       if ($t0=="") {
         $j++;
-        $t0="Unbenannte Liga ".$j;
+        $t0=$text[507].$j;
       }
       if ($t1!="") {
         if ($t2==$text[2]) {

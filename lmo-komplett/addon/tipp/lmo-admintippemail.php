@@ -77,28 +77,30 @@ function changetextarea(x){
   }
 }
 </script>
+<?
+include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
+?>
 
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center"><?=$text['tipp'][165] ?></td>
+    <th align="center"><h1><?=$text['tipp'][165] ?></h1></th>
   </tr>
   <tr>
-    <td align="center" class="lmost3">
+    <td align="center">
       <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="tippemail">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="textreminder1" value="<? if($tipp_textreminder1==""){$tipp_textreminder1=$text['tipp'][174];}echo $tipp_textreminder1; ?>">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-  
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" colspan="3"><input type="radio" name="emailart" value="0" <? if($emailart==0){echo "checked";} ?> onClick="changetextarea(0)"><?=$text['tipp'][166]; ?></td>
+            <td width="20">&nbsp;</td>
+            <td colspan="3"><input type="radio" name="emailart" value="0" <? if($emailart==0){echo "checked";} ?> onClick="changetextarea(0)"><?=$text['tipp'][166]; ?></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5"><input type="radio" name="emailart" value="2" <? if($emailart==2){echo "checked";} ?> onClick="changetextarea(2)"><?=$text['tipp'][168]; ?></td>
-            <td class="lmost5" colspan="2">
+            <td width="20">&nbsp;</td>
+            <td><input type="radio" name="emailart" value="2" <? if($emailart==2){echo "checked";} ?> onClick="changetextarea(2)"><?=$text['tipp'][168]; ?></td>
+            <td colspan="2">
               <select name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
                 <option value=""><?=$text['tipp'][51]?></option><?
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippselectemail.php");?>
@@ -106,18 +108,18 @@ function changetextarea(x){
             </td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" valign="top">
+            <td width="20">&nbsp;</td>
+            <td valign="top">
               <input type="radio" name="emailart" value="1" <? if($emailart==1){echo "checked";} ?> onClick="changetextarea(1)"><?=$text['tipp'][167]; ?>
             </td>
-            <td class="lmost5" colspan="2">
+            <td colspan="2">
               <table cellspacing="0" cellpadding="0" border="0"><?
 $ftype=".l98";
 $iptype="reminder";
 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
 if($i>0){?>
                 <tr>
-                  <td class="lmost5" colspan="2">
+                  <td colspan="2">
                     <input type="radio" name="liganr" value="0" <? if($liganr==0){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><strong><?=$text['tipp'][263]?></strong>
                   </td>
                 </tr><?
@@ -136,18 +138,18 @@ if ($save == 1) {
   }
 }?>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" colspan="2">
+            <td colspan="2" width="20">&nbsp;</td>
+            <td>
               <?=$text['tipp'][164];?> 
-              <input class="lmoadminein" type="text" name="start" size="2" maxlength="4" value="<?=$start1; ?>">
+              <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<?=$start1; ?>">
               <?=$text[4];?>
-              <input class="lmoadminein" type="text" name="ende" size="2" maxlength="4" value="<?=$ende1; ?>">
+              <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?=$ende1; ?>">
               <?=$text['tipp'][170]; if(!isset($tage)){$tage=4;}?>
-              <input class="lmoadminein" type="text" name="tage" size="2" maxlength="2" value="<?=$tage; ?>" onFocus="emailart[2].checked=true;changetextarea(1);"><?=" ".$text['tipp'][171];?>
+              <input class="lmo-formular-input" type="text" name="tage" size="2" maxlength="2" value="<?=$tage; ?>" onFocus="emailart[2].checked=true;changetextarea(1);"><?=" ".$text['tipp'][171];?>
             </td>
           </tr>          
           <tr>
-            <td class="lmost5" colspan="4"><hr></td>
+            <th colspan="4">&nbsp;</th>
           </tr><?
 if ($save == 1) {
   if (isset($betreff)) {
@@ -155,15 +157,15 @@ if ($save == 1) {
   }
 }?>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" colspan="3">
+            <td width="20">&nbsp;</td>
+            <td colspan="3">
               <?=$text['tipp'][265];?>
-              <input class="lmoadminein" type="text" name="betreff" id="betreff" size="20" maxlength="40" value="<?=$betreff1; ?>">
+              <input class="lmo-formular-input" type="text" name="betreff" id="betreff" size="20" maxlength="40" value="<?=$betreff1; ?>">
             </td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" colspan="3">
+            <td width="20">&nbsp;</td>
+            <td align="left" colspan="3">
               <textarea id="message" name="message" rows="10" cols="60"><? 
                 if ($emailart == 1) {
                   echo $tipp_textreminder1;
@@ -176,29 +178,16 @@ if ($save == 1) {
             </td>
           </tr>
           <tr>
-            <td class="lmost5" colspan="4" align="right"><input class="lmoadminbut" type="submit" name="best" value="<?=$text['tipp'][169]; ?>"></td>
+            <td colspan="4" align="right"><input class="lmo-formular-button" type="submit" name="best" value="<?=$text['tipp'][169]; ?>"></td>
           </tr>
           <tr>
-            <td class="lmost4" width="20">&nbsp;</td>
-            <td class="lmost4" colspan="1" valign="top" align="right"><?=$text['tipp'][178]; ?></td>
-            <td class="lmost4" colspan="2"><?=$text['tipp'][179]; ?></td>
+            <td class="lmoFooter" width="20">&nbsp;</td>
+            <td class="lmoFooter" valign="top" align="right"><?=$text['tipp'][178]; ?></td>
+            <td class="lmoFooter" colspan="2" align="left"><?=$text['tipp'][179]; ?></td>
             </td>
           </tr>
         </table>
       </form>
-    </td>
-  <tr>
-    <td>
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-          <td class="lmost2" align="center"><a href='<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippemail"?>' onClick="return chklmolink(this.href);" title="<?=$text['tipp'][63]?>"><?=$text['tipp'][63]?></a></td><?
-if($_SESSION['lmouserok']==2){?>
-          <td class="lmost1" align="center"><?=$text['tipp'][165]?></td>
-          <td class="lmost2" align="center"><a href='<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser"?>' onClick="return chklmolink(this.href);" title="<?=$text['tipp'][114]?>"><?=$text['tipp'][114]?></a></td>
-          <td class="lmost2" align="center"><a href='<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions"?>' onClick="return chklmolink(this.href);" title="<?=$text['tipp'][55]?>"><?=$text[86]?></a></td><?
-}?>
-        </tr>
-      </table>
     </td>
   </tr>
 </table>

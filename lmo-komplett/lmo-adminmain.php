@@ -37,18 +37,16 @@ if($action=="admin"){
   include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
 
 ?>
-<table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmomain0" colspan="2" align="center">
-      <? echo "{$text[77]} {$text[54]}"; ?>
-    </td>
-    <td class="lmomain2" align="right"><?
+    <td align="center"><h1><?=$text[77]." ".$text[54];?></h1></td>
+    <td class="lmoFooter" align="right"><?
   $handle=opendir (PATH_TO_LANGDIR);
     while (false!==($f=readdir($handle))) {
       if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
         if ($lang[1]=="") $lang[1]=$text[505];
         if ($lang[1]!=$lmouserlang) {
-          echo "<a href='{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}' title='{$lang[1]}'>";
+          echo "<a href='{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;todo={$todo}&amp;file={$file}' title='{$lang[1]}'>";
           $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
           
           if (!@fopen($imgfile,"rb")) {
@@ -65,7 +63,7 @@ if($action=="admin"){
     </td>
   </tr>
   <tr>
-    <td class="lmomain1"><?
+    <td class="lmoMenu" align="left"><?
 require_once(PATH_TO_LMO."/lmo-openfile.php");
 if($_SESSION['lmouserok']==2){
   if($todo!="new"){echo "<a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink(this.href);' title='{$text[79]}'>{$text[78]}</a>";}else{echo $text[78];}
@@ -92,9 +90,9 @@ if($_SESSION['lmouserok']==2){
     if($todo!="statistik"){echo "<a href='{$adda}statistik&amp;file={$file}' onclick='return chklmolink(this.href);' title='{$text['spieler'][1]}'>{$text['spieler'][18]}</a>";}else{echo $text['spieler'][18];}echo "&nbsp;";  
   } 
   echo "&nbsp;";
-  if(($todo!="options") && ($todo!="user") && ($todo!="design")){echo "<a href='{$adda}options' onclick='return chklmolink(this.href);' title='{$text[87]}'>{$text[86]}</a>";}else{echo $text[86];}
+  if(($todo!="options") && ($todo!="addons") && ($todo!="user") && ($todo!="design")){echo "<a href='{$adda}options' onclick='return chklmolink(this.href);' title='{$text[87]}'>{$text[86]}</a>";}else{echo $text[86];}
   echo "&nbsp;";
-  if(($todo!="tipp") && ($todo!="tippemail") && ($todo!="tippuser") && ($todo!="tippuseredit") && ($todo!="tippoptions")){echo "<a href='{$adda}?action=admin&amp;todo=tipp' onclick='return chklmolink(this.href);' title='{$text['tipp'][57]}'>{$text['tipp'][0]}</a>";}else{echo $text['tipp'][0];}
+  if(($todo!="tipp") && ($todo!="tippemail") && ($todo!="tippuser") && ($todo!="tippuseredit") && ($todo!="tippoptions")){echo "<a href='{$adda}tipp' onclick='return chklmolink(this.href);' title='{$text['tipp'][57]}'>{$text['tipp'][0]}</a>";}else{echo $text['tipp'][0];}
   }
 elseif($_SESSION['lmouserok']==1){
   if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink(this.href);' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
@@ -111,21 +109,25 @@ elseif($_SESSION['lmouserok']==1){
     } 
   }?>
     </td>
-    <td class="lmomain1" width="8">&nbsp;</td>
-    <td class="lmomain1" align="right"><?
+    <td class="lmoMenu" align="right"><?
   echo "<a href='{$adda}logout' onclick='return chklmolink(this.href);' title='{$text[89]}'>{$text[88]}</a>";
   echo "&nbsp;";
   if($_SESSION['lmouserok']==2){echo "<a href='lmohelp1.htm' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}else{echo "<a href='lmohelp2.htm' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}?>
      </td>
   </tr>
   <tr>
-    <td class="lmomain1" colspan="3" align="center"><?
+    <td colspan="2" align="center"><?
   if($_SESSION['lmouserok']==2){
     $addr_options=$_SERVER['PHP_SELF']."?action=admin&amp;todo=options";
     $addr_addons=$_SERVER['PHP_SELF']."?action=admin&amp;todo=addons";
     $addr_design=$_SERVER['PHP_SELF']."?action=admin&amp;todo=design";
     $addr_user=$_SERVER['PHP_SELF']."?action=admin&amp;todo=user";
-    
+    /*Tippspiel-Addon*/
+    $tipp_addr_auswertung = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tipp";
+    $tipp_addr_email = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippemail";
+    $tipp_addr_user=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser";
+    $tipp_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions";
+    /*Tippspiel-Addon*/
     if($todo=="new"){require(PATH_TO_LMO."/lmo-adminnew.php");}
     elseif($todo=="open"){require(PATH_TO_LMO."/lmo-adminopen.php");}
     elseif($todo=="delete"){require(PATH_TO_LMO."/lmo-admindelete.php");}
@@ -168,14 +170,16 @@ elseif($_SESSION['lmouserok']==1){
     
   }?>
     </td>
-  </tr>
+  </tr><?
+  if($file!=""){?>
   <tr>
-    <td class="lmomain1" colspan="3" align="right"><? 
-  if($file!=""){echo "<a href='".URL_TO_LMO."/lmo.php?file={$file}' target='_blank' title='{$text[116]}'>{$text[115]}</a>";} ?>
+    <td class="lmoFooter" colspan="2" align="right">
+      <a href="<?=URL_TO_LMO."/lmo.php?file=".$file;?>" target="_blank" title="<?=$text[116]?>"><?=$text[115]?></a>
     </td>
-  </tr>
+  </tr><?
+  }?>
   <tr>
-    <td class="lmomain2" colspan="3" align="right"><? echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
+    <td class="lmoFooter" colspan="2" align="right"><? echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
   </tr>
 </table><? 
 }?>

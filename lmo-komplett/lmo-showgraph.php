@@ -19,78 +19,103 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 if(($file!="") && ($kurve==1)){
-  $addg=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
+  $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
+  $stat1=isset($_GET['stat1'])?$_GET['stat1']:0;
+  $stat2=isset($_GET['stat2'])?$_GET['stat2']:0;
+  if ($stat1==0 && $stat2!=0 || $stat1==$stat2) {
+    $stat1=$stat2;
+    $stat2=0;
+  }
 ?>
 
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td valign="top" align="center"><table cellspacing="0" cellpadding="0" border="0">
-<?PHP
-  for($i=1;$i<=$anzteams;$i++){
-    echo "<tr><td align=\"center\" ";
-    if($i<>$stat1){
-      echo "class=\"lmost0\"><a href=\"".$addg.$i."&amp;stat2=".$stat2."\" title=\"".$text[57]." ".$teams[$i]."\">".$teamk[$i]."</a>";
-      }
-    else{
-      echo "class=\"lmost1\">".$teamk[$i];
-      }
-    echo "</td></tr>";
+    <td valign="top" align="center">
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
+  for ($i=1; $i<=$anzteams; $i++) {?>
+        <tr>
+          <td align="right">
+            <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
+    if($i!=$stat1){?>
+            <a href="<?=$addp.$i?>" ><?=$teamk[$i]?></a><?
+    } else {
+      echo $teamk[$i];
     }
-?>
-    </table></td>
-    <td valign="top" align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-
-<?PHP
-  if($stat1==0){
-    echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text[24]."<br>&nbsp;</td></tr>";
-    }
-  else{
+          ?></acronym>
+          </td>          
+          <td><?
+    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
+              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
+  
+               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>">&nbsp;<?
+    } else {
+      echo "&nbsp;";
+    }   ?></td>
+        </tr><?
+  }?>
+      </table>
+    </td>
+    <td valign="top" align="center">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
+  if($stat1==0){?>
+        <tr>
+          <td align="center">&nbsp;<br><?=$text[24]?><br>&nbsp;</td>
+        </tr><?
+  } else {
     $tabtype=0;
     require(PATH_TO_LMO."/lmo-calcgraph.php");
-    $dummy="lmo-paintgraph.php?pganz=";
+    $dummy=URL_TO_LMO."/lmo-paintgraph.php?pganz=";
     if($stat2>0){$dummy=$dummy."2";}else{$dummy=$dummy."1";}
-    $dummy=$dummy."&amp;pgteam1=".htmlentities($teams[$stat1]);
-    if($stat2>0){$dummy=$dummy."&amp;pgteam2=".htmlentities($teams[$stat2]);}
-    $dummy=$dummy."&amp;pgteams=".$anzteams;
-    $dummy=$dummy."&amp;pgst=".$anzst;
-    $dummy=$dummy."&amp;pgch=".$champ;
-    $dummy=$dummy."&amp;pgcl=".$anzcl;
-    $dummy=$dummy."&amp;pgck=".$anzck;
-    $dummy=$dummy."&amp;pguc=".$anzuc;
-    $dummy=$dummy."&amp;pgar=".$anzar;
-    $dummy=$dummy."&amp;pgab=".$anzab;
-    $dummy=$dummy."&amp;pgplatz1=";
+    $dummy=$dummy."&pgteam1=".rawurlencode($teams[$stat1]);
+    if($stat2>0){$dummy=$dummy."&pgteam2=".rawurlencode($teams[$stat2]);}
+    $dummy=$dummy."&pgteams=".$anzteams;
+    $dummy=$dummy."&pgst=".$anzst;
+    $dummy=$dummy."&pgch=".$champ;
+    $dummy=$dummy."&pgcl=".$anzcl;
+    $dummy=$dummy."&pgck=".$anzck;
+    $dummy=$dummy."&pguc=".$anzuc;
+    $dummy=$dummy."&pgar=".$anzar;
+    $dummy=$dummy."&pgab=".$anzab;
+    $dummy=$dummy."&pgplatz1=";
     for($j=0;$j<$anzst;$j++){$dummy=$dummy.$platz[$stat1][$j].",";}
     $dummy=$dummy."0";
     if($stat2>0){
-      $dummy=$dummy."&amp;pgplatz2=";
+      $dummy=$dummy."&pgplatz2=";
       for($j=0;$j<$anzst;$j++){$dummy=$dummy.$platz[$stat2][$j].",";}
       $dummy=$dummy."0";
       }
-    $dummy=$dummy."&amp;pgtext1=".$text[135];
-    $dummy=$dummy."&amp;pgtext2=".$text[136];
-?>
-<tr><td class="lmost5" colspan="3"><img src="<?PHP echo $dummy; ?>" border="0"></td></tr>
+    $dummy=$dummy."&pgtext1=".$text[135];
+    $dummy=$dummy."&pgtext2=".$text[136];?>
+        <tr>
+          <td><img src="<?PHP echo $dummy; ?>" border="0" alt="<?=$text[133]?>"></td>
+        </tr>
 <?PHP } ?>
 
   </table></td>
-    <td valign="top" align="center"><table cellspacing="0" cellpadding="0" border="0">
-<?PHP
-  for($j=0;$j<=$anzteams;$j++){
-    $i=$j+1;
-    if($i>$anzteams){$i=0;}
-    if($i==0){$dummy=$text[59];}else{$dummy=$text[58]." ".$teams[$i];}
-    echo "<tr><td align=\"center\" ";
-    if($i<>$stat2){
-      echo "class=\"lmost0\"><a href=\"".$addg.$stat1."&amp;stat2=".$i."\" title=\"".$dummy."\">".$teamk[$i]."</a>";
-      }
-    else{
-      echo "class=\"lmost1\">".$teamk[$i];
-      }
-    echo "</td></tr>";
+    <td valign="top" align="center">
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
+  for ($i=1; $i<=$anzteams; $i++) {?>
+        <tr>
+          <td><?
+    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
+              $imgdata = getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
+  
+               ?>&nbsp;<img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt="<?=$teamk[$i]?>">&nbsp;<?
+    } else {
+      echo "&nbsp;";
+    }   ?></td>
+          <td align="right">
+            <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
+    if($i!=$stat2){?>
+            <a href="<?=$addp.$stat1."&amp;stat2=".$i?>" ><?=$teamk[$i]?></a><?
+    } else {
+      echo $teamk[$i];
     }
-?>
-    </table></td>
+          ?></acronym>
+          </td>          
+        </tr><?
+  }?>
+      </table></td>
   </tr>
 </table>
 

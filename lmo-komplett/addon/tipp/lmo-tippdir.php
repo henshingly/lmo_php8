@@ -80,7 +80,7 @@ if ($ftype!="") {
       fclose($datei);
       if ($t0=="") {
         $j++;
-        $t0="Unbenannte Liga ".$j;
+        $t0=$text[507].$j;
       }
       if ($t1!="") {
         if ($t2==$text[2]) {

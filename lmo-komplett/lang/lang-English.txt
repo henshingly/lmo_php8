@@ -246,7 +246,7 @@
 245=Enter a file name for your league without path and filetype-ending (max. 28 characters, e.g. '1bl_2002-03')
 246=Step
 247=Cancel the creation of a new league
-248=By clicking here, you will cancel the creation of a new league and return to the main menu
+248=By clicking here, you will cancel the creation of a new league and return to the main lmoMenu
 249=Do you really want to cancel the creation of a new league?\nEverything you entered so far will be lost.
 250=View/display
 251=Game day date
@@ -421,7 +421,7 @@
 420="Small final" (for 3rd place):
 421=Design editor
 422=Set the design for the pages (fonts, colours etc.)
-423=Outer frame (the menu)
+423=Outer frame (the lmoMenu)
 424=Colours: background, foreground
 425=Set the background colour (e.g. #ffffff)
 426=Frame options

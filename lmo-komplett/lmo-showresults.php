@@ -1,6 +1,6 @@
-<table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost4" colspan="<?=$breite; ?>"><?
+    <th colspan="<?=$breite; ?>" align="left"><?
 echo $st.". ".$text[2];
 if($dats==1){ 
   if($datum1[$st-1]!=""){
@@ -10,7 +10,7 @@ if($dats==1){
     echo " ".$text[4]." ".$datum2[$st-1];
   }
 }?>
-    </td>
+    </th>
   </tr><?
    
 $datsort = $mterm[$st-1];
@@ -26,7 +26,7 @@ while (list ($key, $val) = each ($datsort)) {
       } else {
         $dum1 = "";
       }?>
-    <td class="lmost5"><nobr><?=$dum1; ?></nobr></td><?  
+    <td class="nobr"><?=$dum1; ?></td><?  
     }
 
     /* Spielfrei-Hack-Beginn1*/
@@ -36,9 +36,8 @@ while (list ($key, $val) = each ($datsort)) {
   	//}
     /* Spielfrei-Hack-Ende1*/ ?>
 
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5" align="right">
-      <nobr><?
+    <td width="2">&nbsp;</td>
+    <td class="nobr" align="right"><?
  
     echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
     if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
@@ -50,10 +49,10 @@ while (list ($key, $val) = each ($datsort)) {
     }
     echo "</a>";
 
-    ?></nobr>
+    ?>
     </td>
-    <td class="lmost5" align="center" width="10">-</td>
-    <td class="lmost5" align="left"><nobr><?
+    <td align="center" width="10">-</td>
+    <td class="nobr" align="left"><?
 
     echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
     if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
@@ -65,18 +64,18 @@ while (list ($key, $val) = each ($datsort)) {
     }
     echo "</a>";
 
-      ?></nobr>
+      ?>
     </td>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5" align="right"><?=$goala[$st-1][$i]; ?></td>
-    <td class="lmost5" align="center" width="8">:</td>
-    <td class="lmost5" align="left"><?=$goalb[$st-1][$i]; ?></td><?  
+    <td width="2">&nbsp;</td>
+    <td align="right"><?=$goala[$st-1][$i]; ?></td>
+    <td align="center" width="8">:</td>
+    <td align="left"><?=$goalb[$st-1][$i]; ?></td><?  
     if($spez==1){ ?>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><?=$mspez[$st-1][$i]; ?></td><?
+    <td width="2">&nbsp;</td>
+    <td><?=$mspez[$st-1][$i]; ?></td><?
     }?>
-    <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5" align="left"><nobr><? 
+    <td width="2">&nbsp;</td>
+    <td class="nobr" align="left"><? 
     
     /** Mannschaftsicons finden
      */
@@ -137,14 +136,14 @@ while (list ($key, $val) = each ($datsort)) {
     } else {
       echo "&nbsp;";
     }
-    ?></nobr></td>
+    ?></td>
   </tr><? 
   }
 }
 
 if ($einzutore == 1) {?>
   <tr>  
-    <td class="lmomain2" align="center" width="100%" colspan="<?=$breite; ?>"><?
+    <td class="lmoFooter" align="center" width="100%" colspan="<?=$breite; ?>"><?
 
   $strs = ".l98";
   $stre = ".l98.php";
@@ -163,7 +162,7 @@ if ($einzutore == 1) {?>
   
 if ($einspielfrei == 1) {?>
   <tr>  
-    <td class="lmost2" align="center" width="100%" colspan="<?=$breite; ?>"><?
+    <td align="center" width="100%" colspan="<?=$breite; ?>"><?
   //if (($anzteams-($anzst/2+1)) == 0) {
     $spielfreic = array_merge($spielfreia, $spielfreib);
     $hoy5 = 1;

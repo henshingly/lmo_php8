@@ -25,259 +25,565 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 isset($_REQUEST['show'])?$show=$_REQUEST['show']:$show=0;
 if(isset($_POST['save']) && $_POST['save']==1){
-  $tababack=isset($_POST["xtababack"])?$_POST["xtababack"]:$tababack;
-  $tabacolo=isset($_POST["xtabacolo"])?$_POST["xtabacolo"]:$tabacolo;
-  $tababord=isset($_POST["xtababord"])?$_POST["xtababord"]:$tababord;
-  $tabafont=isset($_POST["xtabafont"])?$_POST["xtabafont"]:$tabafont;
-  $tabasize=isset($_POST["xtabasize"])?$_POST["xtabasize"]:$tabasize;
-  $tabatite=isset($_POST["xtabatite"])?$_POST["xtabatite"]:$tabatite;
-  $tabaupda=isset($_POST["xtabaupda"])?$_POST["xtabaupda"]:$tabaupda;
-  $tabacoti=isset($_POST["xtabacoti"])?$_POST["xtabacoti"]:$tabacoti;
-  $tabbback=isset($_POST["xtabbback"])?$_POST["xtabbback"]:$tabbback;
-  $tabbcolo=isset($_POST["xtabbcolo"])?$_POST["xtabbcolo"]:$tabbcolo;
-  $tabbbord=isset($_POST["xtabbbord"])?$_POST["xtabbbord"]:$tabbbord;
-  $tabbfont=isset($_POST["xtabbfont"])?$_POST["xtabbfont"]:$tabbfont;
-  $tabbsize=isset($_POST["xtabbsize"])?$_POST["xtabbsize"]:$tabbsize;
-  $tabcback=isset($_POST["xtabcback"])?$_POST["xtabcback"]:$tabcback;
-  $tabcgrey=isset($_POST["xtabcgrey"])?$_POST["xtabcgrey"]:$tabcgrey;
-  $tabccolo=isset($_POST["xtabccolo"])?$_POST["xtabccolo"]:$tabccolo;
-  $tabcbord=isset($_POST["xtabcbord"])?$_POST["xtabcbord"]:$tabcbord;
-  $tabcfont=isset($_POST["xtabcfont"])?$_POST["xtabcfont"]:$tabcfont;
-  $tabcsize=isset($_POST["xtabcsize"])?$_POST["xtabcsize"]:$tabcsize;
-  $tabdsize=isset($_POST["xtabdsize"])?$_POST["xtabdsize"]:$tabdsize;
-  $tabclin1=isset($_POST["xtabclin1"])?$_POST["xtabclin1"]:$tabclin1;
-  $tabclin2=isset($_POST["xtabclin2"])?$_POST["xtabclin2"]:$tabclin2;
-  $tabftab1=isset($_POST["xtabftab1"])?$_POST["xtabftab1"]:$tabftab1;
-  $tabftab2=isset($_POST["xtabftab2"])?$_POST["xtabftab2"]:$tabftab2;
-  $tabftab3=isset($_POST["xtabftab3"])?$_POST["xtabftab3"]:$tabftab3;
-  $tabftab4=isset($_POST["xtabftab4"])?$_POST["xtabftab4"]:$tabftab4;
-  $tabftab5=isset($_POST["xtabftab5"])?$_POST["xtabftab5"]:$tabftab5;
-  $tabftab6=isset($_POST["xtabftab6"])?$_POST["xtabftab6"]:$tabftab6;
-  $tabftab7=isset($_POST["xtabftab7"])?$_POST["xtabftab7"]:$tabftab7;
-  $tabftab8=isset($_POST["xtabftab8"])?$_POST["xtabftab8"]:$tabftab8;
-  $tabftur1=isset($_POST["xtabftur1"])?$_POST["xtabftur1"]:$tabftur1;
-  $tabftur2=isset($_POST["xtabftur2"])?$_POST["xtabftur2"]:$tabftur2;
-  $tabftur3=isset($_POST["xtabftur3"])?$_POST["xtabftur3"]:$tabftur3;
-  $tabftur4=isset($_POST["xtabftur4"])?$_POST["xtabftur4"]:$tabftur4;
-  $tabhback=isset($_POST["xtabhback"])?$_POST["xtabhback"]:$tabhback;
-  $tabwcolo=isset($_POST["xtabwcolo"])?$_POST["xtabwcolo"]:$tabwcolo;
-  $tabeback=isset($_POST["xtabeback"])?$_POST["xtabeback"]:$tabeback;
-  $tabecolo=isset($_POST["xtabecolo"])?$_POST["xtabecolo"]:$tabecolo;
-  $tabkback=isset($_POST["xtabkback"])?$_POST["xtabkback"]:$tabkback;
-  $tabkcolo=isset($_POST["xtabkcolo"])?$_POST["xtabkcolo"]:$tabkcolo;
+  
+  $lmo_main_background1=isset($_POST["xlmo_main_background1"])?$_POST["xlmo_main_background1"]:$lmo_main_background1;
+  $lmo_main_background2=isset($_POST["xlmo_main_background2"])?$_POST["xlmo_main_background2"]:$lmo_main_background2;
+  $lmo_main_background4=isset($_POST["xlmo_main_background4"])?$_POST["xlmo_main_background4"]:$lmo_main_background4;
+  $lmo_main_background5=isset($_POST["xlmo_main_background5"])?$_POST["xlmo_main_background5"]:$lmo_main_background5;
+  $lmo_main_background6=isset($_POST["xlmo_main_background6"])?$_POST["xlmo_main_background6"]:$lmo_main_background6;
+  $lmo_main_background7=isset($_POST["xlmo_main_background7"])?$_POST["xlmo_main_background7"]:$lmo_main_background7;
+  
+  $lmo_main_color1=isset($_POST["xlmo_main_color1"])?$_POST["xlmo_main_color1"]:$lmo_main_color1;
+  $lmo_main_color2=isset($_POST["xlmo_main_color2"])?$_POST["xlmo_main_color2"]:$lmo_main_color2;
+  $lmo_main_color4=isset($_POST["xlmo_main_color4"])?$_POST["xlmo_main_color4"]:$lmo_main_color4;
+  $lmo_main_color5=isset($_POST["xlmo_main_color5"])?$_POST["xlmo_main_color5"]:$lmo_main_color5;
+  $lmo_main_color6=isset($_POST["xlmo_main_color6"])?$_POST["xlmo_main_color6"]:$lmo_main_color6;
+  $lmo_main_color7=isset($_POST["xlmo_main_color7"])?$_POST["xlmo_main_color7"]:$lmo_main_color7;
+  
+  $lmo_main_border1=isset($_POST["xlmo_main_border1"])?$_POST["xlmo_main_border1"]:$lmo_main_border1;
+  $lmo_main_border4=isset($_POST["xlmo_main_border4"])?$_POST["xlmo_main_border4"]:$lmo_main_border4;
+  $lmo_main_border5=isset($_POST["xlmo_main_border5"])?$_POST["xlmo_main_border5"]:$lmo_main_border5;
+  $lmo_main_border6=isset($_POST["xlmo_main_border6"])?$_POST["xlmo_main_border6"]:$lmo_main_border6;
+  $lmo_main_border7=isset($_POST["xlmo_main_border7"])?$_POST["xlmo_main_border7"]:$lmo_main_border7;
+  
+  $lmo_main_fontfamily1=isset($_POST["xlmo_main_fontfamily1"])?$_POST["xlmo_main_fontfamily1"]:$lmo_main_fontfamily1;
+  $lmo_main_fontfamily2=isset($_POST["xlmo_main_fontfamily2"])?$_POST["xlmo_main_fontfamily2"]:$lmo_main_fontfamily2;
+  
+  $lmo_main_fontsize1=isset($_POST["xlmo_main_fontsize1"])?$_POST["xlmo_main_fontsize1"]:$lmo_main_fontsize1;
+  $lmo_main_fontsize2=isset($_POST["xlmo_main_fontsize2"])?$_POST["xlmo_main_fontsize2"]:$lmo_main_fontsize2;
+  $lmo_main_fontsize3=isset($_POST["xlmo_main_fontsize3"])?$_POST["xlmo_main_fontsize3"]:$lmo_main_fontsize3;
+  
+  $lmo_middle_background1=isset($_POST["xlmo_middle_background1"])?$_POST["xlmo_middle_background1"]:$lmo_middle_background1;
+  $lmo_middle_background2=isset($_POST["xlmo_middle_background2"])?$_POST["xlmo_middle_background2"]:$lmo_middle_background2;
+  $lmo_middle_background4=isset($_POST["xlmo_middle_background4"])?$_POST["xlmo_middle_background4"]:$lmo_middle_background4;
+  $lmo_middle_background5=isset($_POST["xlmo_middle_background5"])?$_POST["xlmo_middle_background5"]:$lmo_middle_background5;
+  $lmo_middle_background6=isset($_POST["xlmo_middle_background6"])?$_POST["xlmo_middle_background6"]:$lmo_middle_background6;
+  $lmo_middle_background7=isset($_POST["xlmo_middle_background7"])?$_POST["xlmo_middle_background7"]:$lmo_middle_background7;
+  
+  $lmo_middle_color1=isset($_POST["xlmo_middle_color1"])?$_POST["xlmo_middle_color1"]:$lmo_middle_color1;
+  $lmo_middle_color2=isset($_POST["xlmo_middle_color2"])?$_POST["xlmo_middle_color2"]:$lmo_middle_color2;
+  $lmo_middle_color4=isset($_POST["xlmo_middle_color4"])?$_POST["xlmo_middle_color4"]:$lmo_middle_color4;
+  $lmo_middle_color5=isset($_POST["xlmo_middle_color5"])?$_POST["xlmo_middle_color5"]:$lmo_middle_color5;
+  $lmo_middle_color6=isset($_POST["xlmo_middle_color6"])?$_POST["xlmo_middle_color6"]:$lmo_middle_color6;
+  $lmo_middle_color7=isset($_POST["xlmo_middle_color7"])?$_POST["xlmo_middle_color7"]:$lmo_middle_color7;
+  
+  $lmo_middle_border1=isset($_POST["xlmo_middle_border1"])?$_POST["xlmo_middle_border1"]:$lmo_middle_border1;
+  $lmo_middle_border4=isset($_POST["xlmo_middle_border4"])?$_POST["xlmo_middle_border4"]:$lmo_middle_border4;
+  $lmo_middle_border5=isset($_POST["xlmo_middle_border5"])?$_POST["xlmo_middle_border5"]:$lmo_middle_border5;
+  $lmo_middle_border6=isset($_POST["xlmo_middle_border6"])?$_POST["xlmo_middle_border6"]:$lmo_middle_border6;
+  $lmo_middle_border7=isset($_POST["xlmo_middle_border7"])?$_POST["xlmo_middle_border7"]:$lmo_middle_border7;
+  
+  $lmo_middle_fontfamily1=isset($_POST["xlmo_middle_fontfamily1"])?$_POST["xlmo_middle_fontfamily1"]:$lmo_middle_fontfamily1;
+  $lmo_middle_fontfamily2=isset($_POST["xlmo_middle_fontfamily2"])?$_POST["xlmo_middle_fontfamily2"]:$lmo_middle_fontfamily2;
+  
+  $lmo_middle_fontsize1=isset($_POST["xlmo_middle_fontsize1"])?$_POST["xlmo_middle_fontsize1"]:$lmo_middle_fontsize1;
+  $lmo_middle_fontsize2=isset($_POST["xlmo_middle_fontsize2"])?$_POST["xlmo_middle_fontsize2"]:$lmo_middle_fontsize2;
+  $lmo_middle_fontsize3=isset($_POST["xlmo_middle_fontsize3"])?$_POST["xlmo_middle_fontsize3"]:$lmo_middle_fontsize3;
+  
+  $lmo_inner_background1=isset($_POST["xlmo_inner_background1"])?$_POST["xlmo_inner_background1"]:$lmo_inner_background1;
+  $lmo_inner_background2=isset($_POST["xlmo_inner_background2"])?$_POST["xlmo_inner_background2"]:$lmo_inner_background2;
+  $lmo_inner_color1=isset($_POST["xlmo_inner_color1"])?$_POST["xlmo_inner_color1"]:$lmo_inner_color1;
+  $lmo_inner_color2=isset($_POST["xlmo_inner_color2"])?$_POST["xlmo_inner_color2"]:$lmo_inner_color2;
+  
+  $lmo_inner_border1=isset($_POST["xlmo_inner_border1"])?$_POST["xlmo_inner_border1"]:$lmo_inner_border1;
+  $lmo_inner_fontfamily1=isset($_POST["xlmo_inner_fontfamily1"])?$_POST["xlmo_inner_fontfamily1"]:$lmo_inner_fontfamily1;
+  $lmo_inner_fontsize1=isset($_POST["xlmo_inner_fontsize1"])?$_POST["xlmo_inner_fontsize1"]:$lmo_inner_fontsize1;
+  
+  $lmo_kreuz_fontsize1=isset($_POST["xlmo_kreuz_fontsize1"])?$_POST["xlmo_kreuz_fontsize1"]:$lmo_kreuz_fontsize1;
+  $lmo_kreuzkal_background2=isset($_POST["xlmo_kreuzkal_background2"])?$_POST["xlmo_kreuzkal_background2"]:$lmo_kreuzkal_background2;
+  
+  $lmo_tabelle_background1=isset($_POST["xlmo_tabelle_background1"])?$_POST["xlmo_tabelle_background1"]:$lmo_tabelle_background1;
+  $lmo_tabelle_background2=isset($_POST["xlmo_tabelle_background2"])?$_POST["xlmo_tabelle_background2"]:$lmo_tabelle_background2;
+  $lmo_tabelle_background3=isset($_POST["xlmo_tabelle_background3"])?$_POST["xlmo_tabelle_background3"]:$lmo_tabelle_background3;
+  $lmo_tabelle_background4=isset($_POST["xlmo_tabelle_background4"])?$_POST["xlmo_tabelle_background4"]:$lmo_tabelle_background4;
+  $lmo_tabelle_background5=isset($_POST["xlmo_tabelle_background5"])?$_POST["xlmo_tabelle_background5"]:$lmo_tabelle_background5;
+  $lmo_tabelle_background6=isset($_POST["xlmo_tabelle_background6"])?$_POST["xlmo_tabelle_background6"]:$lmo_tabelle_background6;
+  $lmo_tabelle_background7=isset($_POST["xlmo_tabelle_background7"])?$_POST["xlmo_tabelle_background7"]:$lmo_tabelle_background7;
+  $lmo_tabelle_background8=isset($_POST["xlmo_tabelle_background8"])?$_POST["xlmo_tabelle_background8"]:$lmo_tabelle_background8;
+  $lmo_tabelle_color1=isset($_POST["xlmo_tabelle_color1"])?$_POST["xlmo_tabelle_color1"]:$lmo_tabelle_color1;
+  $lmo_tabelle_color2=isset($_POST["xlmo_tabelle_color2"])?$_POST["xlmo_tabelle_color2"]:$lmo_tabelle_color2;
+  $lmo_tabelle_color3=isset($_POST["xlmo_tabelle_color3"])?$_POST["xlmo_tabelle_color3"]:$lmo_tabelle_color3;
+  $lmo_tabelle_color4=isset($_POST["xlmo_tabelle_color4"])?$_POST["xlmo_tabelle_color4"]:$lmo_tabelle_color4;
+  $lmo_tabelle_color5=isset($_POST["xlmo_tabelle_color5"])?$_POST["xlmo_tabelle_color5"]:$lmo_tabelle_color5;
+  $lmo_tabelle_color6=isset($_POST["xlmo_tabelle_color6"])?$_POST["xlmo_tabelle_color6"]:$lmo_tabelle_color6;
+  $lmo_tabelle_color7=isset($_POST["xlmo_tabelle_color7"])?$_POST["xlmo_tabelle_color7"]:$lmo_tabelle_color7;
+  $lmo_tabelle_color8=isset($_POST["xlmo_tabelle_color8"])?$_POST["xlmo_tabelle_color8"]:$lmo_tabelle_color8;
+  
+  $lmo_turnier_background1=isset($_POST["xlmo_turnier_background1"])?$_POST["xlmo_turnier_background1"]:$lmo_turnier_background1;
+  $lmo_turnier_background2=isset($_POST["xlmo_turnier_background2"])?$_POST["xlmo_turnier_background2"]:$lmo_turnier_background2;
+  $lmo_turnier_color1=isset($_POST["xlmo_turnier_color1"])?$_POST["xlmo_turnier_color1"]:$lmo_turnier_color1;
+  $lmo_turnier_color2=isset($_POST["xlmo_turnier_color2"])?$_POST["xlmo_turnier_color2"]:$lmo_turnier_color2;
+  
+  $lmo_kreuzkal_background1=isset($_POST["xlmo_kreuzkal_background1"])?$_POST["xlmo_kreuzkal_background1"]:$lmo_kreuzkal_background1;
+  $lmo_kreuzkal_color1=isset($_POST["xlmo_kreuzkal_color1"])?$_POST["xlmo_kreuzkal_color1"]:$lmo_kreuzkal_color1;
+  
+  $lmo_formular_background1=isset($_POST["xlmo_formular_background1"])?$_POST["xlmo_formular_background1"]:$lmo_formular_background1;
+  $lmo_formular_background2=isset($_POST["xlmo_formular_background2"])?$_POST["xlmo_formular_background2"]:$lmo_formular_background2;
+  $lmo_formular_color1=isset($_POST["xlmo_formular_color1"])?$_POST["xlmo_formular_color1"]:$lmo_formular_color1;
+  $lmo_formular_color2=isset($_POST["xlmo_formular_color2"])?$_POST["xlmo_formular_color2"]:$lmo_formular_color2;
+  $lmo_formular_border1=isset($_POST["xlmo_formular_border1"])?$_POST["xlmo_formular_border1"]:$lmo_formular_border1;
+  $lmo_formular_border2=isset($_POST["xlmo_formular_border2"])?$_POST["xlmo_formular_border2"]:$lmo_formular_border2;
+  
   require(PATH_TO_LMO."/lmo-savecfg.php");
 }
 
 ?>
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<script src="<?=URL_TO_JSDIR?>/colorpicker.js" type="text/javascript"></script>
+<table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center" colspan="2"><?=$text[432] ?></td>
+    <td align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
+    <td align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
+    <td class="active" align="center"><?=$text[421]?></td>
+    <td align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
+  </tr>
+</table>
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center" colspan="2"><h1><?=$text[432] ?></h1></td>
   </tr>
   <tr>
     <td valign="top" align="left">
-      <table cellspacing="0" cellpadding="0" border="0">
-        <tr><td align="right"<?if ($show==0) {?> class="lmost1"><?=$text[423]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=0";?>"><?=$text[423];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==1) {?> class="lmost1"><?=$text[436]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=1";?>"><?=$text[436];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==2) {?> class="lmost1"><?=$text[441]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=2";?>"><?=$text[441];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==3) {?> class="lmost1"><?=$text[450]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=3";?>"><?=$text[450];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==4) {?> class="lmost1"><?=$text[459]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=4";?>"><?=$text[459];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==5) {?> class="lmost1"><?=$text[464]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=5";?>"><?=$text[464];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==7) {?> class="lmost1"><?=$text[14]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=7";?>"><?=$text[14];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==8) {?> class="lmost1"><?=$text[448]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=8";?>"><?=$text[448];?></a><?}?></td></tr>
-        <tr><td align="right"<?if ($show==9) {?> class="lmost1"><?=$text[449]?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=design&amp;show=9";?>"><?=$text[449];?></a><?}?></td></tr>
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
+        <tr><td align="right"><?if ($show==0) {echo $text[423]?><?}else{?><a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=0";?>"><?=$text[423];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==1) {echo $text[436]?><?}else{?><a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=1";?>"><?=$text[436];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==2) {echo $text[441]?><?}else{?><a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=2";?>"><?=$text[441];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==3) {echo $text[450]?><?}else{?><a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=3";?>"><?=$text[450];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==4) {echo $text[459]?><?}else{?><a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=4";?>"><?=$text[459];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==5) {echo $text[14]."/".$text[464]?><?}else{?><a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=5";?>"><?=$text[14]."/".$text[464];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==6) {echo $text[462]?><?}else{?><a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=6";?>"><?=$text[462];?></a><?}?></td></tr>
       </table>
     </td>
-    <td align="left" valign="top" class="lmost3">
+    <td align="left" valign="top">
       <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="design">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="show" value="<?=$show?>">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><?
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
 if ($show==0) {?>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtababack" size="7" maxlength="7" value="<?=$tababack?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabacolo" size="7" maxlength="7" value="<?=$tabacolo?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+            <th colspan="3"><?=$text[536] ?></th>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtababord" size="25" maxlength="25" value="<?=$tababord?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_main_background1" id="lmo_main_background1input" size="7" maxlength="7" value="<?=$lmo_main_background1?>" onChange="dolmoedit();relateColor('lmo_main_background1', this.value);"><script type="text/javascript">makePicker('lmo_main_background1');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_main_color1" id="lmo_main_color1input" size="7" maxlength="7" value="<?=$lmo_main_color1?>" onChange="dolmoedit();relateColor('lmo_main_color1', this.value);"><script type="text/javascript">makePicker('lmo_main_color1');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabafont" size="25" maxlength="50" value="<?=$tabafont?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[429] ?>"><?=$text[428]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_border1" size="25" maxlength="25" value="<?=$lmo_main_border1?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabasize" size="6" maxlength="6" value="<?=$tabasize?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabatite" size="6" maxlength="6" value="<?=$tabatite?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabaupda" size="6" maxlength="6" value="<?=$tabaupda?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><?=$text[430]?>&nbsp;<acronym title="<?=$text[431] ?>"><?=$text[500]?></acronym>,&nbsp;<acronym title="<?=$text[434] ?>"><?=$text[501]?></acronym>,&nbsp;<acronym title="<?=$text[435] ?>"><?=$text[502]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_fontfamily1" size="25" maxlength="50" value="<?=$lmo_main_fontfamily1?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[429] ?>"><?=$text[428]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabacoti" size="7" maxlength="7" value="<?=$tabacoti?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[440] ?>"><?=$text[439]?></acronym></td>
-          </tr><?
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_fontsize1" size="6" maxlength="6" value="<?=$lmo_main_fontsize1?>" onChange="dolmoedit()"></td>
+            <td><?=$text[430]?></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[537] ?></th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_main_background2" id="lmo_main_background2input" size="7" maxlength="7" value="<?=$lmo_main_background2?>" onChange="dolmoedit();relateColor('lmo_main_background2', this.value);"><script type="text/javascript">makePicker('lmo_main_background2');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_main_color2" id="lmo_main_color2input" size="7" maxlength="7" value="<?=$lmo_main_color2?>" onChange="dolmoedit();relateColor('lmo_main_color2', this.value);"><script type="text/javascript">makePicker('lmo_main_color2');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_fontfamily2" size="25" maxlength="50" value="<?=$lmo_main_fontfamily2?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[429] ?>"><?=$text[428]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_fontsize2" size="6" maxlength="6" value="<?=$lmo_main_fontsize2?>" onChange="dolmoedit()"></td>
+            <td><?=$text[430]?></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[538] ?></th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_fontsize3" size="6" maxlength="6" value="<?=$lmo_main_fontsize3?>" onChange="dolmoedit()"></td>
+            <td><?=$text[430]?></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[539] ?> (<?=$text[536]?>)</th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_main_background4" id="lmo_main_background4input" size="7" maxlength="7" value="<?=$lmo_main_background4?>" onChange="dolmoedit();relateColor('lmo_main_background4', this.value);"><script type="text/javascript">makePicker('lmo_main_background4');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_main_color4" id="lmo_main_color4input" size="7" maxlength="7" value="<?=$lmo_main_color4?>" onChange="dolmoedit();relateColor('lmo_main_color4', this.value);"><script type="text/javascript">makePicker('lmo_main_color4');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_border4" size="25" maxlength="25" value="<?=$lmo_main_border4?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[539] ?> (<?=$text[541]?>)</th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_main_background5" id="lmo_main_background5input" size="7" maxlength="7" value="<?=$lmo_main_background5?>" onChange="dolmoedit();relateColor('lmo_main_background5', this.value);"><script type="text/javascript">makePicker('lmo_main_background5');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_main_color5" id="lmo_main_color5input" size="7" maxlength="7" value="<?=$lmo_main_color5?>" onChange="dolmoedit();relateColor('lmo_main_color5', this.value);"><script type="text/javascript">makePicker('lmo_main_color5');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_border5" size="25" maxlength="25" value="<?=$lmo_main_border5?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[540]?> (<?=$text[536]?>)</th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_main_background6" id="lmo_main_background6input" size="7" maxlength="7" value="<?=$lmo_main_background6?>" onChange="dolmoedit();relateColor('lmo_main_background6', this.value);"><script type="text/javascript">makePicker('lmo_main_background6');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_main_color6" id="lmo_main_color6input" size="7" maxlength="7" value="<?=$lmo_main_color6?>" onChange="dolmoedit();relateColor('lmo_main_color6', this.value);"><script type="text/javascript">makePicker('lmo_main_color6');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_border6" size="25" maxlength="25" value="<?=$lmo_main_border6?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[540]?> (<?=$text[541]?>)</th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_main_background7" id="lmo_main_background7input" size="7" maxlength="7" value="<?=$lmo_main_background7?>" onChange="dolmoedit();relateColor('lmo_main_background7', this.value);"><script type="text/javascript">makePicker('lmo_main_background7');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_main_color7" id="lmo_main_color7input" size="7" maxlength="7" value="<?=$lmo_main_color7?>" onChange="dolmoedit();relateColor('lmo_main_color7', this.value);"><script type="text/javascript">makePicker('lmo_main_color7');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_main_border7" size="25" maxlength="25" value="<?=$lmo_main_border7?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+          </tr>
+          <?
 }elseif ($show==1) {?>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabbback" size="7" maxlength="7" value="<?=$tabbback?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabbcolo" size="7" maxlength="7" value="<?=$tabbcolo?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+            <th colspan="3"><?=$text[536] ?></th>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabbbord" size="25" maxlength="25" value="<?=$tabbbord?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_background1" id="lmo_middle_background1input" size="7" maxlength="7" value="<?=$lmo_middle_background1?>" onChange="dolmoedit();relateColor('lmo_middle_background1', this.value);"><script type="text/javascript">makePicker('lmo_middle_background1');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_color1" id="lmo_middle_color1input" size="7" maxlength="7" value="<?=$lmo_middle_color1?>" onChange="dolmoedit();relateColor('lmo_middle_color1', this.value);"><script type="text/javascript">makePicker('lmo_middle_color1');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabbfont" size="25" maxlength="50" value="<?=$tabbfont?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[429] ?>"><?=$text[428]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_border1" size="25" maxlength="25" value="<?=$lmo_middle_border1?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabbsize" size="6" maxlength="6" value="<?=$tabbsize?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[438] ?>"><?=$text[437]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_fontfamily1" size="25" maxlength="50" value="<?=$lmo_middle_fontfamily1?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[429] ?>"><?=$text[428]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_fontsize1" size="6" maxlength="6" value="<?=$lmo_middle_fontsize1?>" onChange="dolmoedit()"></td>
+            <td><?=$text[430]?></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[537] ?></th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_background2" id="lmo_middle_background2input" size="7" maxlength="7" value="<?=$lmo_middle_background2?>" onChange="dolmoedit();relateColor('lmo_middle_background2', this.value);"><script type="text/javascript">makePicker('lmo_middle_background2');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_color2" id="lmo_middle_color2input" size="7" maxlength="7" value="<?=$lmo_middle_color2?>" onChange="dolmoedit();relateColor('lmo_middle_color2', this.value);"><script type="text/javascript">makePicker('lmo_middle_color2');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_fontfamily2" size="25" maxlength="50" value="<?=$lmo_middle_fontfamily2?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[429] ?>"><?=$text[428]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_fontsize2" size="6" maxlength="6" value="<?=$lmo_middle_fontsize2?>" onChange="dolmoedit()"></td>
+            <td><?=$text[430]?></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[538] ?></th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_fontsize3" size="6" maxlength="6" value="<?=$lmo_middle_fontsize3?>" onChange="dolmoedit()"></td>
+            <td><?=$text[430]?></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[539] ?> (<?=$text[536]?>)</th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_background4" id="lmo_middle_background4input" size="7" maxlength="7" value="<?=$lmo_middle_background4?>" onChange="dolmoedit();relateColor('lmo_middle_background4', this.value);"><script type="text/javascript">makePicker('lmo_middle_background4');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_color4" id="lmo_middle_color4input" size="7" maxlength="7" value="<?=$lmo_middle_color4?>" onChange="dolmoedit();relateColor('lmo_middle_color4', this.value);"><script type="text/javascript">makePicker('lmo_middle_color4');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_border4" size="25" maxlength="25" value="<?=$lmo_middle_border4?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[539] ?> (<?=$text[541]?>)</th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_background5" id="lmo_middle_background5input" size="7" maxlength="7" value="<?=$lmo_middle_background5?>" onChange="dolmoedit();relateColor('lmo_middle_background5', this.value);"><script type="text/javascript">makePicker('lmo_middle_background5');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_color5" id="lmo_middle_color5input" size="7" maxlength="7" value="<?=$lmo_middle_color5?>" onChange="dolmoedit();relateColor('lmo_middle_color5', this.value);"><script type="text/javascript">makePicker('lmo_middle_color5');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_border5" size="25" maxlength="25" value="<?=$lmo_middle_border5?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[540]?> (<?=$text[536]?>)</th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_background6" id="lmo_middle_background6input" size="7" maxlength="7" value="<?=$lmo_middle_background6?>" onChange="dolmoedit();relateColor('lmo_middle_background6', this.value);"><script type="text/javascript">makePicker('lmo_middle_background6');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_color6" id="lmo_middle_color6input" size="7" maxlength="7" value="<?=$lmo_middle_color6?>" onChange="dolmoedit();relateColor('lmo_middle_color6', this.value);"><script type="text/javascript">makePicker('lmo_middle_color6');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_border6" size="25" maxlength="25" value="<?=$lmo_middle_border6?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+          </tr>
+          <tr>
+            <th colspan="3"><?=$text[540]?> (<?=$text[541]?>)</th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_background7" id="lmo_middle_background7input" size="7" maxlength="7" value="<?=$lmo_middle_background7?>" onChange="dolmoedit();relateColor('lmo_middle_background7', this.value);"><script type="text/javascript">makePicker('lmo_middle_background7');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_middle_color7" id="lmo_middle_color7input" size="7" maxlength="7" value="<?=$lmo_middle_color7?>" onChange="dolmoedit();relateColor('lmo_middle_color7', this.value);"><script type="text/javascript">makePicker('lmo_middle_color7');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_middle_border7" size="25" maxlength="25" value="<?=$lmo_middle_border7?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
           </tr><?
 }elseif ($show==2) {?>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabcback" size="7" maxlength="7" value="<?=$tabcback?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabcgrey" size="7" maxlength="7" value="<?=$tabcgrey?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabccolo" size="7" maxlength="7" value="<?=$tabccolo?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[443] ?>"><?=$text[503]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_inner_background1" id="lmo_inner_background1input" size="7" maxlength="7" value="<?=$lmo_inner_background1?>" onChange="dolmoedit();relateColor('lmo_inner_background1', this.value);"><script type="text/javascript">makePicker('lmo_inner_background1');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_inner_color1" id="lmo_inner_color1input" size="7" maxlength="7" value="<?=$lmo_inner_color1?>" onChange="dolmoedit();relateColor('lmo_inner_color1', this.value);"><script type="text/javascript">makePicker('lmo_inner_color1');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabcbord" size="25" maxlength="25" value="<?=$tabcbord?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_inner_background2" id="lmo_inner_background2input" size="7" maxlength="7" value="<?=$lmo_inner_background2?>" onChange="dolmoedit();relateColor('lmo_inner_background2', this.value);"><script type="text/javascript">makePicker('lmo_inner_background2');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_inner_color2" id="lmo_inner_color2input" size="7" maxlength="7" value="<?=$lmo_inner_color2?>" onChange="dolmoedit();relateColor('lmo_inner_color2', this.value);"><script type="text/javascript">makePicker('lmo_inner_color2');</script>
+            </td>
+            <td>&nbsp;<acronym title="<?=$text[443] ?>"><?=$text[503]?></acronym>: <acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabcfont" size="25" maxlength="50" value="<?=$tabcfont?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[429] ?>"><?=$text[428]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_inner_border1" size="25" maxlength="25" value="<?=$lmo_inner_border1?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabcsize" size="6" maxlength="6" value="<?=$tabcsize?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[438] ?>"><?=$text[437]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_inner_fontfamily1" size="25" maxlength="50" value="<?=$lmo_inner_fontfamily1?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[429] ?>"><?=$text[428]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabclin1" size="7" maxlength="7" value="<?=$tabclin1?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabclin2" size="7" maxlength="7" value="<?=$tabclin2?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[445] ?>"><?=$text[444]?></acronym></td>
-          </tr><?
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_inner_fontsize1" size="6" maxlength="6" value="<?=$lmo_inner_fontsize1?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[438] ?>"><?=$text[437]?></acronym></td>
+          </tr>
+          <?
 }elseif ($show==3) {?>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftab1" size="7" maxlength="7" value="<?=$tabftab1?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[451]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_background1" id="lmo_tabelle_background1input" size="7" maxlength="7" value="<?=$lmo_tabelle_background1?>" onChange="dolmoedit();relateColor('lmo_tabelle_background1', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_background1');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_color1" id="lmo_tabelle_color1input" size="7" maxlength="7" value="<?=$lmo_tabelle_color1?>" onChange="dolmoedit();relateColor('lmo_tabelle_color1', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_color1');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[451]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftab2" size="7" maxlength="7" value="<?=$tabftab2?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[452]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_background2" id="lmo_tabelle_background2input" size="7" maxlength="7" value="<?=$lmo_tabelle_background2?>" onChange="dolmoedit();relateColor('lmo_tabelle_background2', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_background2');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_color2" id="lmo_tabelle_color2input" size="7" maxlength="7" value="<?=$lmo_tabelle_color2?>" onChange="dolmoedit();relateColor('lmo_tabelle_color2', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_color2');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[452]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftab3" size="7" maxlength="7" value="<?=$tabftab3?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[453]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_background3" id="lmo_tabelle_background3input" size="7" maxlength="7" value="<?=$lmo_tabelle_background3?>" onChange="dolmoedit();relateColor('lmo_tabelle_background3', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_background3');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_color3" id="lmo_tabelle_color3input" size="7" maxlength="7" value="<?=$lmo_tabelle_color3?>" onChange="dolmoedit();relateColor('lmo_tabelle_color3', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_color3');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[453]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftab4" size="7" maxlength="7" value="<?=$tabftab4?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[454]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_background4" id="lmo_tabelle_background4input" size="7" maxlength="7" value="<?=$lmo_tabelle_background4?>" onChange="dolmoedit();relateColor('lmo_tabelle_background4', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_background4');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_color4" id="lmo_tabelle_color4input" size="7" maxlength="7" value="<?=$lmo_tabelle_color4?>" onChange="dolmoedit();relateColor('lmo_tabelle_color4', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_color4');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[454]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftab5" size="7" maxlength="7" value="<?=$tabftab5?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[455]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_background5" id="lmo_tabelle_background5input" size="7" maxlength="7" value="<?=$lmo_tabelle_background5?>" onChange="dolmoedit();relateColor('lmo_tabelle_background5', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_background5');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_color5" id="lmo_tabelle_color5input" size="7" maxlength="7" value="<?=$lmo_tabelle_color5?>" onChange="dolmoedit();relateColor('lmo_tabelle_color5', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_color5');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[455]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftab6" size="7" maxlength="7" value="<?=$tabftab6?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[456]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_background6" id="lmo_tabelle_background6input" size="7" maxlength="7" value="<?=$lmo_tabelle_background6?>" onChange="dolmoedit();relateColor('lmo_tabelle_background6', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_background6');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_color6" id="lmo_tabelle_color6input" size="7" maxlength="7" value="<?=$lmo_tabelle_color6?>" onChange="dolmoedit();relateColor('lmo_tabelle_color6', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_color6');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[456]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftab7" size="7" maxlength="7" value="<?=$tabftab7?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[457]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_background7" id="lmo_tabelle_background7input" size="7" maxlength="7" value="<?=$lmo_tabelle_background7?>" onChange="dolmoedit();relateColor('lmo_tabelle_background7', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_background7');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_color7" id="lmo_tabelle_color7input" size="7" maxlength="7" value="<?=$lmo_tabelle_color7?>" onChange="dolmoedit();relateColor('lmo_tabelle_color7', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_color7');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[457]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftab8" size="7" maxlength="7" value="<?=$tabftab8?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[458]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_background8" id="lmo_tabelle_background8input" size="7" maxlength="7" value="<?=$lmo_tabelle_background8?>" onChange="dolmoedit();relateColor('lmo_tabelle_background8', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_background8');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_tabelle_color8" id="lmo_tabelle_color8input" size="7" maxlength="7" value="<?=$lmo_tabelle_color8?>" onChange="dolmoedit();relateColor('lmo_tabelle_color8', this.value);"><script type="text/javascript">makePicker('lmo_tabelle_color8');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[458]?></acronym></td>
           </tr><?
 }elseif ($show==4) {?>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftur1" size="7" maxlength="7" value="<?=$tabftur1?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[460]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_turnier_background1" id="lmo_turnier_background1input" size="7" maxlength="7" value="<?=$lmo_turnier_background1?>" onChange="dolmoedit();relateColor('lmo_turnier_background1', this.value);"><script type="text/javascript">makePicker('lmo_turnier_background1');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_turnier_color1" id="lmo_turnier_color1input" size="7" maxlength="7" value="<?=$lmo_turnier_color1?>" onChange="dolmoedit();relateColor('lmo_turnier_color1', this.value);"><script type="text/javascript">makePicker('lmo_turnier_color1');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[460]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftur2" size="7" maxlength="7" value="<?=$tabftur2?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[461]?></acronym></td>
-          </tr>
-          <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftur3" size="7" maxlength="7" value="<?=$tabftur3?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[462]?></acronym></td>
-          </tr>
-          <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabftur4" size="7" maxlength="7" value="<?=$tabftur4?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[463]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_turnier_background2" id="lmo_turnier_background2input" size="7" maxlength="7" value="<?=$lmo_turnier_background2?>" onChange="dolmoedit();relateColor('lmo_turnier_background2', this.value);"><script type="text/javascript">makePicker('lmo_turnier_background2');</script>
+              <input class="lmo-formular-input" type="text" name="xlmo_turnier_color2" id="lmo_turnier_color2input" size="7" maxlength="7" value="<?=$lmo_turnier_color2?>" onChange="dolmoedit();relateColor('lmo_turnier_color2', this.value);"><script type="text/javascript">makePicker('lmo_turnier_color2');</script>
+            </td>
+            <td><acronym title="<?=$text[425] ?>"><?=$text[461]?></acronym></td>
           </tr><?
 }elseif ($show==5) {?>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabhback" size="7" maxlength="7" value="<?=$tabhback?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[465]?></acronym></td>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_kreuzkal_background1" id="lmo_kreuzkal_background1input" size="7" maxlength="7" value="<?=$lmo_kreuzkal_background1?>" onChange="dolmoedit();relateColor('lmo_kreuzkal_background1', this.value);"><script type="text/javascript">makePicker('lmo_kreuzkal_background1');</script></td>
+            <td><?=$text[503]?>: <acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym></td>
           </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabwcolo" size="7" maxlength="7" value="<?=$tabwcolo?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[433] ?>"><?=$text[466]?></acronym></td>
-          </tr><?
-}elseif ($show==7) {?>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_kreuzkal_background2" id="lmo_kreuzkal_background2input" size="7" maxlength="7" value="<?=$lmo_kreuzkal_background2?>" onChange="dolmoedit();relateColor('lmo_kreuzkal_background2', this.value);"><script type="text/javascript">makePicker('lmo_kreuzkal_background2');</script>
+            </td>
+            <td><?=$text[463]?>: <acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym></td>
+          </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabdsize" size="6" maxlength="6" value="<?=$tabdsize?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[438] ?>"><?=$text[437]?></acronym></td>
-          </tr><?
-}elseif ($show==8) {?>
+            <th colspan="3"><?=$text[464]?></th>
+          </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabeback" size="7" maxlength="7" value="<?=$tabeback?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabecolo" size="7" maxlength="7" value="<?=$tabecolo?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
-          </tr><?
-}elseif ($show==9) {?>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_kreuzkal_color1" id="lmo_kreuzkal_color1input" size="7" maxlength="7" value="<?=$lmo_kreuzkal_color1?>" onChange="dolmoedit();relateColor('lmo_kreuzkal_color1', this.value);"><script type="text/javascript">makePicker('lmo_kreuzkal_color1');</script></td>
+            <td><acronym title="<?=$text[433] ?>"><?=$text[466]?></acronym></td>
+          </tr>
           <tr>
-            <td class="lmost5" width="20">&nbsp;</td>
-            <td class="lmost5" align="right"><input class="lmoadminein" type="text" name="xtabkback" size="7" maxlength="7" value="<?=$tabkback?>" onChange="dolmoedit()">&nbsp;<input class="lmoadminein" type="text" name="xtabkcolo" size="7" maxlength="7" value="<?=$tabkcolo?>" onChange="dolmoedit()"></td>
-            <td class="lmost5"><acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+            <th colspan="3"><?=$text[14]?></th>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_kreuz_fontsize1" size="6" maxlength="6" value="<?=$lmo_kreuz_fontsize1?>" onChange="dolmoedit()"></td>
+            <td><acronym title="<?=$text[438] ?>"><?=$text[437]?></acronym></td>
+          </tr><?
+}elseif ($show==6) {?>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_formular_background1" id="lmo_formular_background1input" size="7" maxlength="7" value="<?=$lmo_formular_background1?>" onChange="dolmoedit();relateColor('lmo_formular_background1', this.value);"><script type="text/javascript">makePicker('lmo_formular_background1');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_formular_color1" id="lmo_formular_color1input" size="7" maxlength="7" value="<?=$lmo_formular_color1?>" onChange="dolmoedit();relateColor('lmo_formular_color1', this.value);"><script type="text/javascript">makePicker('lmo_formular_color1');</script>
+            </td>
+            <td><?=$text[448]?>: <acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_formular_border1" size="25" maxlength="25" value="<?=$lmo_formular_border1?>" onChange="dolmoedit();">
+            </td>
+            <td><?=$text[448]?>: <acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td class="nobr" align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_formular_background2" id="lmo_formular_background2input" size="7" maxlength="7" value="<?=$lmo_formular_background2?>" onChange="dolmoedit();relateColor('lmo_formular_background2', this.value);"><script type="text/javascript">makePicker('lmo_formular_background2');</script>&nbsp;
+              <input class="lmo-formular-input" type="text" name="xlmo_formular_color2" id="lmo_formular_color2input" size="7" maxlength="7" value="<?=$lmo_formular_color2?>" onChange="dolmoedit();relateColor('lmo_formular_color2', this.value);"><script type="text/javascript">makePicker('lmo_formular_color2');</script>
+            </td>
+            <td><?=$text[449]?>: <acronym title="<?=$text[425] ?>"><?=$text[424]?></acronym>,&nbsp;<acronym title="<?=$text[433] ?>"><?=$text[442]?></acronym></td>
+          </tr>
+          <tr>
+            <td width="20">&nbsp;</td>
+            <td align="right">
+              <input class="lmo-formular-input" type="text" name="xlmo_formular_border2" size="25" maxlength="25" value="<?=$lmo_formular_border2?>" onChange="dolmoedit();">
+            </td>
+            <td><?=$text[449]?>: <acronym title="<?=$text[427] ?>"><?=$text[426]?></acronym></td>
           </tr><?
 }?>
           <tr>
-            <td class="lmost5" colspan="3" align="center">
-              <acronym title="<?=$text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<?=$text[188]?>"></acronym>
+            <td colspan="3" align="center">
+              <input title="<?=$text[114] ?>" class="lmo-formular-button" type="submit" name="best" value="<?=$text[188]?>">
             </td>
           </tr>
         </table>
       </form>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-          <td class="lmost2" align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
-          <td class="lmost2" align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
-          <td class="lmost1" align="center"><?=$text[421]?></td>
-          <td class="lmost2" align="center"><a href="<?=$addr_user?>" onclick="return chklmolink('<?=$addr_user?>');" title="<?=$text[318]?>"><?=$text[317]?></a></td>
-        </tr>
-      </table>
     </td>
   </tr>
 </table>

@@ -18,7 +18,7 @@
   </tr>
   <tr>
     <td class="lmost5" colspan="3"><nobr>&nbsp;
-    <textarea name="fileContent" class="lmoadminein" cols="60" rows="10" wrap="OFF"><?PHP echo $lFile->fileContent(); ?></textarea>
+    <textarea name="fileContent" class="lmo-formular-input" cols="60" rows="10" wrap="OFF"><?PHP echo $lFile->fileContent(); ?></textarea>
     <br>&nbsp;</nobr>
     </td>
   </tr>

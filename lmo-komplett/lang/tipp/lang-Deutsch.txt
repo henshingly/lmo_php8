@@ -200,8 +200,8 @@
 199=nicht werten
 200=Sichtbare User-Daten:
 201=Es ist bereits ein Mitspieler mit dieser Email-Adresse angemeldet
-202=Nur-diesen-Spieltag-Wertung
-203=Alle-Spieltage-bis-Spieltag-Wertung
+202=Spieltagswertung
+203=Gesamtwertung (bis Spieltag)
 204=Anzeige Tippspieler pro Seite
 205=Platz
 206=Newsletter

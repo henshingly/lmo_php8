@@ -111,15 +111,13 @@ closedir($verz);
 usort($ligadatei,'cmp');
 if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=='desc') $ligadatei=array_reverse($ligadatei);?>
 
-<ul><?
+<dl><?
 foreach($ligadatei as $liga){?>
-<li>
-  <a href="<?=$addi.$dirliga.$liga['file_name']?>"><?=$liga['liga_name']?></a><br>
-  <small><?=date("d.m.Y H:i",filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name']))." / ".$liga['rundenbezeichnung']." ".$liga['aktueller_spieltag']?></small>
-</li><?
+  <dt><a href="<?=$addi.$dirliga.$liga['file_name']?>"><?=$liga['liga_name']?></a></dt>
+  <dd><small><?=date("d.m.Y H:i",filemtime(PATH_TO_LMO."/".$dirliga.$liga['file_name']))." / ".$liga['rundenbezeichnung']." ".$liga['aktueller_spieltag']?></small></dd><?
 }
 if($liga_counter==0){echo "<li>[".$text[223]."]</li>";}?>
-</ul><?
+</dl><?
 
 function cmp ($a1, $a2) {
   $sort=(isset($_SESSION['liga_sort']) && isset($a1[$_SESSION['liga_sort']]) && isset($a1[$_SESSION['liga_sort']]))?$_SESSION['liga_sort']:'liga_name';

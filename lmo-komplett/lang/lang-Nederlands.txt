@@ -421,7 +421,7 @@
 420=Troostfinale (om plaats 3):
 421=Designeditor
 422=Design van de weergave vastleggen (lettertype, kleuren etc.)
-423=Buitenste rand (het menu)
+423=Buitenste rand (het lmoMenu)
 424=Kleur: achtergrond, voorgrond
 425=Achtergrondkleur vastleggen (Bijv. #ffffff)
 426=Randopties

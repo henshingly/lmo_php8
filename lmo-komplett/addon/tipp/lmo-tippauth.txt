@@ -1,1 +1,3 @@
-admin|lmo|5| |||||||1|1|EOL
+admin|lmo|5| ||team1|||||1|1|EOL
+NeuerNick|vs702iaxtqkg4fjo|5|||||||1|1|EOL
+NeuerNick|zw98euhgb3pq7doc|5|||||||1|1|EOL

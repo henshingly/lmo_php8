@@ -420,7 +420,7 @@
 420=Mali finale (za 3. mesto):
 421=Urejevalec izgleda
 422=Nastavi izgled (design) prikaza (pisave, barve itd.)
-423=Zunanji okvir (menu)
+423=Zunanji okvir (lmoMenu)
 424=Barve: background, foreground
 425=Tukaj nastavi barvo backgrounda (npr. #ffffff)
 426=Okviri-možnosti

@@ -73,53 +73,68 @@ if ($_SESSION['lmouserok']==2) {
     require(PATH_TO_LMO."/lmo-loadauth.php");
   } 
 ?>
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="lmost1" align="center" colspan="2"><?=$text[321]?></td>
+    <td align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
+    <td align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
+    <td align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
+    <td align="center"><?=$text[317]?></td>
+  </tr>
+</table>
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center" colspan="2"><h1><?=$text[321]?></h1></td>
   </tr>
   <tr>
     <td valign="top">
-      <table cellspacing="0" cellpadding="0" border="0"><?
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
   $testshow=0;
   foreach($lmo_admin_data as $lmo_admin) {
     $show_admin_name=$lmo_admin[2]==2?"<em>".$lmo_admin[0]."</em>":$lmo_admin[0];?>
-         <tr><td<?if ($show==$testshow) {?> class="lmost1"><?=$show_admin_name;?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=user&amp;show=".$testshow;?>"><?=$show_admin_name;?></a><?}?></td></tr><?
+         <tr>
+           <td align="right"><?
+    if ($show==$testshow) {
+      echo $show_admin_name;
+    } else {?>
+             <a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=user&amp;show=".$testshow;?>"><?=$show_admin_name;?></a><?
+    }    ?></td>
+         </tr><?
     $testshow++;
   }?>
        </table>
     </td>
-    <td align="center" valign="top" class="lmost3">
+    <td align="center" valign="top">
       <form name="lmoedit<?=$show?>" action="<?=$_SERVER['PHP_SELF']?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="user">
         <input type="hidden" name="save" value="<?=$show?>">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0"><?
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
   $testshow=0;
   foreach($lmo_admin_data as $lmo_admin) {
-    if ($show==-1) {?>
+    if ($show==-1 && $testshow==0) {?>
           <tr>
-            <td class="lmost4"><?$testshow==0?print($text[318]):print("&nbsp;")?></td>
+            <td align="center">&nbsp;<br><?=$text[318]?><br>&nbsp;</td>
           </tr><?
     }
     if ($show==$testshow) {?> 
           <tr>
-            <td class="lmost4"><?=$text[322]?></td>
-            <td class="lmost5" colspan="2"><input class="lmoadminein" type="text" name="xadmin_name<?=$testshow?>" size="16" maxlength="32" value="<?=$lmo_admin[0]?>"></td>
+            <td align="right"><?=$text[322]?></td>
+            <td align="left" colspan="2"><input class="lmo-formular-input" type="text" name="xadmin_name<?=$testshow?>" size="16" maxlength="32" value="<?=$lmo_admin[0]?>"></td>
           </tr>
           <tr>
-            <td class="lmost4"><?=$text[323]?></td>
-            <td class="lmost5" colspan="2"><input class="lmoadminein" type="text" name="xadmin_pass<?=$show?>" size="16" maxlength="32" value="<?=$lmo_admin[1]?>"></td>
+            <td align="right"><?=$text[323]?></td>
+            <td align="left" colspan="2"><input class="lmo-formular-input" type="text" name="xadmin_pass<?=$show?>" size="16" maxlength="32" value="<?=$lmo_admin[1]?>"></td>
           </tr>
           <tr>
-            <td class="lmost4" rowspan="2"><?=$text[324]?></td>
-            <td class="lmost5" colspan="2"><input class="lmoadminein" type="radio" name="xadmin_rang<?=$show?>" value="2" <?if ($lmo_admin[2]==2) echo " checked";?>><?=$text[326]?></td>
+            <td align="right" rowspan="2"><?=$text[324]?></td>
+            <td align="left" colspan="2"><input class="lmo-formular-input" type="radio" name="xadmin_rang<?=$show?>" value="2" <?if ($lmo_admin[2]==2) echo " checked";?>><?=$text[326]?></td>
           </tr>
           <tr>
-            <td class="lmost5" colspan="2"><input class="lmoadminein" type="radio" name="xadmin_rang<?=$show?>" value="1" <?if ($lmo_admin[2]==1) echo " checked";?>><?=$text[325]?></td>
+            <td align="left" colspan="2"><input class="lmo-formular-input" type="radio" name="xadmin_rang<?=$show?>" value="1" <?if ($lmo_admin[2]==1) echo " checked";?>><?=$text[325]?></td>
           </tr><?
       if($lmo_admin[2]==1){?>
           <tr>
-            <td class="lmost4" colspan="3"><acronym title="<?=$text[398]?>"><?=$text[397]?></acronym></td>
+            <th colspan="3"><acronym title="<?=$text[398]?>"><?=$text[397]?></acronym></th>
           </tr><?
         $helfer_ligen=explode(',',$lmo_admin_data[$testshow][3]);
         $handle=opendir(PATH_TO_LMO.'/'.$dirliga);
@@ -127,16 +142,19 @@ if ($_SESSION['lmouserok']==2) {
           if (substr($lig,-4)==".l98") {
             $ligenname=substr($lig,0,-4);?>
           <tr>
-            <td class="lmost5" colspan="3"><input class="lmoadminein" type="checkbox" name="xhelfer_ligen<?=$show?>[]" size="50" value="<?=$ligenname?>"<?if (in_array($ligenname,$helfer_ligen)) echo " checked"?>><?= $ligenname?></td>
+            <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?=$show?>[]" value="<?=$ligenname?>"<?if (in_array($ligenname,$helfer_ligen)) echo " checked"?>><?= $ligenname?></td>
           </tr><?
           }
         }
       }?>
           <tr>
-            <td class="lmost5" colspan="2" align="right"><acronym title="<?=$text[327]?>"><input class="lmoadminbut" type="submit" value="<?=$text[329]?>"></acronym></td>
-            <td class="lmost5" align="right">
+            <td>&nbsp;</td>
+            <td align="center"><acronym title="<?=$text[327]?>"><input class="lmo-formular-button" type="submit" value="<?=$text[329]?>"></acronym></th><?
+      if ($testshow!=0){?>      
+            <td align="right">
               <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?=$show?>" onclick="return confirm('<?=$text[499]?>');"><img border="0" width="11" heigth="13" src="img/delete.gif" alt="<?=$text[330]?>" title="<?=$text[328]?>"></a>
-            </td>
+            </td><?
+      }?>
           </tr><? 
     }//if $show=$testshow
     $testshow++;
@@ -147,35 +165,23 @@ if ($_SESSION['lmouserok']==2) {
     </td>
   </tr>
   <tr>
-    <td class="lmost4" colspan="4" colspan="2"><?=$text[331]?></td>
+    <th colspan="2"><h1><?=$text[331]?></h1></th>
   </tr>
   <tr>
-    <td colspan="2">
+    <td align="center" colspan="2">
       <form name="lmoeditx" action="<?=$_SERVER['PHP_SELF']?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="user">
         <input type="hidden" name="save" value="-1">
         <input type="hidden" name="show" value="<?=$show+1?>">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" width="100%" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td class="lmost5"><input class="lmoadminein" type="text" name="xadmin_name" size="16" maxlength="32" value="NeuerUser"></td>
-            <td class="lmost5"><input class="lmoadminein" type="text" name="xadmin_pass" size="16" maxlength="32" value="<?=substr(md5(uniqid(rand())),0,rand(8,16));?>"></td>
-            <td class="lmost5"><acronym title="<?=$text[327]?>"><input class="lmoadminbut" type="submit" value="<?=$text[329]?>"></acronym></td>
+            <td align="right"><input class="lmo-formular-input" type="text" name="xadmin_name" size="16" maxlength="32" value="NeuerUser"></td>
+            <td align="left"><input class="lmo-formular-input" type="text" name="xadmin_pass" size="16" maxlength="32" value="<?=substr(md5(uniqid(rand())),0,rand(8,16));?>"></td>
+            <td align="right"><input class="lmo-formular-button" type="submit" value="<?=$text[329]?>" title="<?=$text[327]?>"></td>
           </tr>
         </table>
       </form>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-          <td class="lmost2" align="center"><a href="<?=$addr_options?>" onclick="return chklmolink('<?=$addr_options?>');" title="<?=$text[320]?>"><?=$text[319]?></a></td>
-          <td class="lmost2" align="center"><a href="<?=$addr_addons?>" onclick="return chklmolink('<?=$addr_addons?>');" title="<?=$text[498]?>"><?=$text[497]?></a></td>
-          <td class="lmost2" align="center"><a href="<?=$addr_design?>" onclick="return chklmolink('<?=$addr_design?>');" title="<?=$text[422]?>"><?=$text[421]?></a></td>
-          <td class="lmost1" align="center"><?=$text[317]?></td>
-        </tr>
-      </table>
     </td>
   </tr>
 </table><?

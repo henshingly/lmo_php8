@@ -129,21 +129,23 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
   $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
   $addz=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=-2&amp;team=";
+
+  include(PATH_TO_LMO."/lmo-adminnaviunten.php");
 ?>
 
-<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center" class="lmomain0"><?=$titel?></td>
+    <td align="center"><h1><?=$titel?></h1></td>
   </tr>
   <tr>
-    <td align="center" class="lmost3">
+    <td align="center">
       <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<? echo $file; ?>">
         <input type="hidden" name="st" value="<? echo $st; ?>">
-        <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td class="lmost4"><acronym title="<? echo $text[125].", ".$text[126] ?>"><? echo $text[127]; ?></acronym>&nbsp;</td>
 <? if($lmtype==0){ ?>
@@ -166,40 +168,40 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
           <tr>
             <td class="lmost5">
               <nobr>
-                <input class="lmoadminein" type="text" name="xteams<? echo $i; ?>" size="32" maxlength="32" value="<? echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()">
-                <input class="lmoadminein" type="text" name="xteamk<? echo $i; ?>" size="5" maxlength="5" value="<? echo $teamk[$i]; ?>" onChange="dolmoedit()">
+                <input class="lmo-formular-input" type="text" name="xteams<? echo $i; ?>" size="32" maxlength="32" value="<? echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()">
+                <input class="lmo-formular-input" type="text" name="xteamk<? echo $i; ?>" size="5" maxlength="5" value="<? echo $teamk[$i]; ?>" onChange="dolmoedit()">
               </nobr>&nbsp;
             </td>
 <?   if($lmtype==0){ ?>
             <td class="lmost5" align="center">
               <nobr>
-                <input class="lmoadminein" type="text" name="xstrafp<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$strafp[$i]; ?>" onChange="dolmoedit()">
+                <input class="lmo-formular-input" type="text" name="xstrafp<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$strafp[$i]; ?>" onChange="dolmoedit()">
 <?     if($minus==2){ ?>
-              : <input class="lmoadminein" type="text" name="xstrafm<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$strafm[$i]; ?>" onChange="dolmoedit()">
+              : <input class="lmo-formular-input" type="text" name="xstrafm<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$strafm[$i]; ?>" onChange="dolmoedit()">
 <?     } ?>
               </nobr>&nbsp;
             </td>
 <!-- Hack-Straftore Beginn -->
   	        <td class="lmost5" align="center">
               <nobr>
-                <input class="lmoadminein" type="text" name="xtorkorrektur1<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$torkorrektur1[$i]; ?>" onChange="dolmoedit()">
-              : <input class="lmoadminein" type="text" name="xtorkorrektur2<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$torkorrektur2[$i]; ?>" onChange="dolmoedit()">
+                <input class="lmo-formular-input" type="text" name="xtorkorrektur1<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$torkorrektur1[$i]; ?>" onChange="dolmoedit()">
+              : <input class="lmo-formular-input" type="text" name="xtorkorrektur2<? echo $i; ?>" size="2" maxlength="4" value="<? echo (-1)*$torkorrektur2[$i]; ?>" onChange="dolmoedit()">
               </nobr>&nbsp;
             </td>
   	        <td class="lmost5" align="center">
               <nobr>
-                <input class="lmoadminein" type="text" name="xstrafdat<? echo $i; ?>" size="2" maxlength="2" value="<? echo $strafdat[$i]; ?>" onChange="dolmoedit()">
+                <input class="lmo-formular-input" type="text" name="xstrafdat<? echo $i; ?>" size="2" maxlength="2" value="<? echo $strafdat[$i]; ?>" onChange="dolmoedit()">
               </nobr>&nbsp;
             </td>
 <!-- Hack-Straftore Ende -->	
 <?   } ?>
 <?   if($lmtype==0){ ?>
             <td class="lmost5">            
-              <input class="lmoadminein" type="text" name="xteamn<? echo $i; ?>" size="30" maxlength="255" value="<? echo $teamn[$i]; ?>" onChange="dolmoedit()">
+              <input class="lmo-formular-input" type="text" name="xteamn<? echo $i; ?>" size="30" maxlength="255" value="<? echo $teamn[$i]; ?>" onChange="dolmoedit()">
             </td>
 <?   } ?>
             <td class="lmost5">
-              <input class="lmoadminein" type="text" name="xteamu<? echo $i; ?>" size="30" maxlength="128" value="<? echo $teamu[$i]; ?>" onChange="dolmoedit()">
+              <input class="lmo-formular-input" type="text" name="xteamu<? echo $i; ?>" size="30" maxlength="128" value="<? echo $teamu[$i]; ?>" onChange="dolmoedit()">
             </td>
 <?   if($lmtype==0){ ?>
             <td class="lmost5">
@@ -212,7 +214,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 <? } ?>
           <tr>
             <td class="lmost4" colspan="<? echo $breite; ?>" align="right">
-              <acronym title="<? echo $text[114] ?>"><input class="lmoadminbut" type="submit" name="best" value="<? echo $text[132]; ?>"></acronym>
+              <acronym title="<? echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="best" value="<? echo $text[132]; ?>"></acronym>
             </td>
 <? if($lmtype==0){ ?>
             <td class="lmost5">
@@ -233,8 +235,5 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   </tr>
 <?   }
    } ?>
-  <tr>
-    <td><? include(PATH_TO_LMO."/lmo-adminnaviunten.php"); ?></td>
-  </tr>
 </table>
 <?}?>

@@ -37,6 +37,6 @@ $date_ende_ts=$akt_date_ts+(60*60*24*$viewer_tage_plus);       // Anzeige bis wa
 echo $design;
 ?>
 <div align="center"><center>
-<table><tr><th colspan='9' class='lmomain0'>Spiele vom
+<table><tr><th colspan='9' class=''>Spiele vom
 <?
  echo date(" d.m.Y",$date_anfang_ts)." - ".date("d.m.Y",$date_ende_ts) ?></th></tr>

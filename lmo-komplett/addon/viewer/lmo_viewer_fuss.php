@@ -24,7 +24,7 @@
 //= an den Ausgaben kann ge„ndert werden. An HTML und PHP Befehlen NICHT!  =//
 //////////////////////////////////////////////////////////////////////////////
 ?>
-<tr><td  class=lmomain2 colspan="9" align=center >
+<tr><td  class=lmoFooter colspan="9" align=center >
 <?
 echo "<a href=".$FO."><style=\"font-size: 2px\">".$PN.$PV."</a> &copy; 2002 <a href=mailto:".$PL.">".$PM."</a></font>";
 ?>
