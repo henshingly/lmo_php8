@@ -1,4 +1,5 @@
 FORM { padding: 0px 0px 0px 0px; margin: 0px; }
+acronym {cursor:help;}
 TABLE { padding: 0px 0px 0px 0px; margin: 0px; }
   .lmomaina { background: #e0e8ff; border: 1px solid #000; }
   .lmosta { background: #fff; border: 1px solid #000; }
@@ -135,6 +136,6 @@ DIV,SPAN {}
 LI {}
   .lmoadminli { padding-bottom: 4px; }
 INPUT { }
-  .lmotickerein { background: #009; color: #eef; border: 1px solid #009; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+  .lmotickerein { background: #009; color: #eef; border: 1px solid #009; font-family: sans-serif ; font-size: 96%; font-weight: bold; }
   .lmoadminein { background: #eee; color: #000; border: 1px solid #000; font-family: sans-serif; font-size: 96%; }
   .lmoadminbut { background: #c0c8ff; color: #006; border-left: 1px solid #006; border-top: 1px solid #006; border-right: 2px solid #006; border-bottom: 2px solid #006; font-family: sans-serif; font-size: 96%; font-weight: bold; }
