@@ -37,7 +37,7 @@ if (isset($lmouserlang)) {
 $handle=opendir (PATH_TO_ADDONDIR);
 while (false!==($f=readdir($handle))) {
   if (is_dir(PATH_TO_ADDONDIR.'/'.$f) && $f!='.' && $f!='..') {  //Wenn Unterverzeichnis Lang-dateien auslesen
-    if (file_exists(PATH_TO_ADDONDIR."/$f/lang.txt")) read_langfile($text,PATH_TO_ADDONDIR."/$f/lang.txt",$f);
+    if (file_exists(PATH_TO_ADDONDIR."/$f/lang-{$deflang}.txt")) read_langfile($text,PATH_TO_ADDONDIR."/$f/lang-{$deflang}.txt",$f);
     if (isset($lmouserlang)) {
       if (file_exists(PATH_TO_ADDONDIR."/$f/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_ADDONDIR."/$f/lang-{$lmouserlang}.txt",$f);
     }

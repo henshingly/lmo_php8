@@ -1,0 +1,8 @@
+000=Spieltag
+001=ST
+002=Spielbericht anzeigen
+003=Spielbericht in neuem Fenster anzeigen
+004=Spiele vom
+005=Uhr
+006=Tabelle/Begegnungen anzeigen
+007=Tabelle/Begegnungen in neuem Fenster anzeigen
