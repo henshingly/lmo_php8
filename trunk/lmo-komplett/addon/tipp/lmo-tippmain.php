@@ -46,13 +46,13 @@ if(!isset($tipp_tipptabelle1)){$tipp_tipptabelle1=1;}
 <!---
 <?PHP if($tipp_pfeiltipp==1){ ?>
 img0 = new Image();
-img0.src = "<?=URL_TO_IMGDIR?>/img/lmo-admin0.gif";
+img0.src = "<?=URL_TO_IMGDIR?>/lmo-admin0.gif";
 img1 = new Image();
-img1.src = "<?=URL_TO_IMGDIR?>/img/lmo-admin1.gif";
+img1.src = "<?=URL_TO_IMGDIR?>/lmo-admin1.gif";
 img2 = new Image();
-img2.src = "<?=URL_TO_IMGDIR?>/img/lmo-admin2.gif";
+img2.src = "<?=URL_TO_IMGDIR?>/lmo-admin2.gif";
 img3 = new Image();
-img3.src = "<?=URL_TO_IMGDIR?>/img/lmo-admin3.gif";
+img3.src = "<?=URL_TO_IMGDIR?>/lmo-admin3.gif";
 function lmoimg(x,y){
   document.getElementsByName("ximg"+x)[0].src = y.src;
   }

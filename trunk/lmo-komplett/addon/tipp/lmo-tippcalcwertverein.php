@@ -22,12 +22,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
-if(!file_exists($auswertfile))
-  echo $text['tipp'][17]."<br>";
-else{
+if(file_exists($auswertfile)){
   $datei = fopen($auswertfile,"rb");
   $anzteams=0;
-  
+
   if($datei!=false){
     $tippdaten=array("");
     $sekt="";
@@ -39,26 +37,28 @@ else{
         $sekt=trim(substr($zeile,1,-1));
         array_push($tippdaten,$sekt."|||EOL");
         $anzteams++;
-        }
-      elseif((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
+      }elseif((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
         $schl=trim(substr($zeile,0,strpos($zeile,"=")));
         $wert=trim(substr($zeile,strpos($zeile,"=")+1));
         array_push($tippdaten,$sekt."|".$schl."|".$wert."|EOL");
-        }
       }
+    }
     fclose($datei);
-    }  
+  }  
   array_shift($tippdaten);
-  
+
   if($m==0){
     $team = array_pad($array,$anzteams+1,"0");
     $spielegetippt = array_pad($array,$anzteams+1,"0");
     $tipppunktegesamt = array_pad($array,$anzteams+1,"0");
   
-    for($i=1;$i<=$anzteams;$i++){$team[$i]=$i;}
-    
-    if($endtab<1){$endtab=$anzst;}
+    for($i=1;$i<=$anzteams;$i++){
+      $team[$i]=$i;
     }
+    if($endtab<1){
+      $endtab=$anzst;
+    }
+  }
 
   for($i=1;$i<=count($tippdaten);$i++){
     $dum=split("[|]",$tippdaten[$i-1]);
@@ -68,9 +68,9 @@ else{
     if($op3<$endtab){
       if($op4=="SG"){$spielegetippt[$op1]+=$dum[2];}
       elseif($op4=="TP"){$tipppunktegesamt[$op1]+=$dum[2];}
-      }
     }
- 
+  }
+
   if($m==($anztipper-1)){
     $tab0 = array("");
     for($a=1;$a<=$anzteams;$a++){
@@ -80,16 +80,18 @@ else{
       if($spielegetippt[$a]!=0){
         if($tipp_tippmodus==1){
           $quote=number_format($tipppunktegesamt[$a]/$spielegetippt[$a],2,".",",");
-          }
+        }
         if($tipp_tippmodus==0){
           $quote=number_format($tipppunktegesamt[$a]/$spielegetippt[$a]*100,2,".",",");
-          }
-        $quote*=100;
         }
-      array_push($tab0,(50000000+$quote).(50000000+$tipppunktegesamt[$a]).(50000000-$a).(50000000+$a));
+        $quote*=100;
       }
+      array_push($tab0,(50000000+$quote).(50000000+$tipppunktegesamt[$a]).(50000000-$a).(50000000+$a));
+    }
     array_shift($tab0);
     rsort($tab0,SORT_STRING);
-    }
   }
+}else{?>
+  <p class="error"><?=$text['tipp'][17]?></p><?
+}
 ?>
