@@ -37,7 +37,7 @@ $filename="stats/".substr($filename,0,strlen($filename)-4).".stat";
 	$adminsort=0;						//Spaltennummer, nach der als Erstes im Adminbereich sortiert wird (von links nach rechts, Beginn bei 0)
 	$allowauxadmin=1;				//Erlaubt den Hilfsadmins Zugriff auf die Statistik
 	$allowauxadmins=1;				//Erlaubt den Hilfsadmins Zugriff auf Erstellen von Spalten
-	$ligalink=$text["811"];					//Text des Spielerlinks
+	$ligalink=$text[3011];					//Text des Spielerlinks
 	
 if ($config=@file($configfile)) {
 	for ($i=0;$i<count($config);$i++){

@@ -18,9 +18,17 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
+
+isset($_GET['abs'])?$abs=$_GET['abs']:$abs="";
+isset($_GET['feld'])?$feld=$_GET['feld']:$feld="";
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+					"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>LMO Admin</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
 <style type="text/css">
-<!--
 a.callink:link { color:#000000; background-color:#E0E0E0; font-family: arial,helvetica,sans-serif; font-size: 11px; font-weight: bold; text-decoration:none; }
 a.callink:visited { color:#000000; background-color:#E0E0E0; font-family: arial,helvetica,sans-serif; font-size: 11px; font-weight: bold; text-decoration:none; }
 a.callink:active { color:#ffffff; background-color:#4488ff; font-family: arial,helvetica,sans-serif; font-size: 11px; font-weight: bold; text-decoration:none; }
@@ -54,26 +62,24 @@ td.calwe a:hover { color:#E0E0E0; background-color:#FF0000; font-family: arial,h
 table.caltab { width:160px; border:1px solid grey; background-color:#E0E0E0; padding:2px; margin:0px; }
 table.caltab1 { border:0px; padding:0px; margin:0px; }
 table.caltab2 { border:0px; padding:0px; margin:0px; }
-//-->
 </style>
-
-
-<script language="JavaScript">
-<!---
-opener.<?PHP echo $abs; ?>.<?PHP echo $feld; ?>.select();
+<script type="text/javascript">
+<!--
+opener.document.forms.<?=$abs; ?>.<?=$feld; ?>.select();
 function lmogeben(x){
-  opener.<?PHP echo $abs; ?>.<?PHP echo $feld; ?>.value=x;
+  opener.document.forms.<?=$abs; ?>.<?=$feld; ?>.value=x;
   self.close();
   }
-// --->
+// -->
 </script>
-
+</head>
+<body>
 <?PHP
 $addi=$PHP_SELF."?abs=".$abs."&amp;feld=".$feld;
 $dat = time();
 $dat0 = getdate($dat);
 $datj=$dat0['month']." ".$dat0['year'];
-if($calshow==""){$calshow=$dat0['month']." ".$dat0['year'];}
+if(!isset($_GET['calshow']) || $_GET['calshow']==""){$calshow=$dat0['month']." ".$dat0['year'];}
 $dath=$calshow;
 $calshow="";
 $dat5="1 ".$dath;

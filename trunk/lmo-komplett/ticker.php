@@ -8,20 +8,7 @@
  * Es gelten die gleichen Softwarenutzungsrechte wie beim LMO (Free Software entsprechend General Public License [GNU])
  */
 
-// Start Einstellbereich
-// ini_set("error_reporting",E_ALL);
-$titelticker="Alle Ergebnisse des letzten Spieltages Liga 1, Liga 2"; //Titel des Tickers festlegen
-$spieltag=" .Spieltag: "; // Wort vor der Ergebnisausgabe
-$file_array=array("ligen/liga1.l98","ligen/liga2.l98", "ligen/liga3.l98"); // Auswahl der anzuzeigenden Ligen
-$tickerart=1; // Tickerart: 1=Ergebnisticker, 2=Tickertext vom LMO, 3=Ergebnisse nur Favoritenteams
-$tickertitel=1; // Tickertitel einblenden: 1=ja, 2=nein
-$notzizanzeigen=1; // Notiz zum Spiel mit anzeigen: 1=ja, 2=nein
-$text_sportgericht="-Entscheid durch Sportgericht"; // Text für Sportgerichtsentscheidung
-$text_sportgericht2="Das Ergebnis zählt für beide Mannschaften gleichermaßen aus Sicht der Heimmannschaft."; // Text beidseitiges Ergebnis
-// Ende Einstellbereich
-
-
-require("lmo-langload.php");
+require_once("lmo-langload.php");
 $versionticker="LMO-Ticker 1.03 ";
 $array = array("");  
 $msieg=0;
@@ -34,7 +21,7 @@ $link="<a href=\"http://www.salzland-info.de/\" target=\"_blank\">www.salzland.i
 ?>
 
 <?PHP if ($tickerart==1) { ?>
-<SCRIPT Language="JavaScript">
+<script type="text/javascript">
 <!--
  NS4 = (document.layers);
  if (NS4) { document.write('<link rel="stylesheet" href="nc.css" type="text/css">'); }

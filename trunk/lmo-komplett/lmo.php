@@ -1,6 +1,6 @@
 <?PHP
-if(!isset($action)){$action="";}
-if($action=="tipp"){session_start();}
+isset($_REQUEST['action'])?$action=$_REQUEST['action']:$action="";
+session_start();
 ?>
 
 Hier steht Deine Homepage, Navigation oder was auch immer Du willst.

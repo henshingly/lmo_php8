@@ -4,9 +4,9 @@
 // Copyright (C) 1997-2002 by Frank Hollwitz
 // webmaster@hollwitz.de / http://php.hollwitz.de
 // 
-// Spielerstatistik-Addon 1.0
-// Copyright (C) 2002 by Rene Marth
-// marth@tsvschlieben.de / http://www.tsvschlieben.de
+// LigaManager Online
+// Edited by: Rene Marth
+// 28.08.2003
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License as
@@ -23,7 +23,10 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 
-$dumdat=array("lmo-lang.txt");
+// Langdateien laden (zuerst Standarddatei, wenn vorhanden werden die alten Werte 
+// von der neuen Sprache überschrieben (So werden auch unvollständige Übersetzungen 
+// akzeptiert)
+$dumdat=array("lang.txt","lang-{$lmouserlang}.txt");
 
 $dumma = array("");
 $text=array("");

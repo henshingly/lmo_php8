@@ -199,7 +199,7 @@ $strs=".l98";
 $stre=".l98.php";
 $str=basename($file);
 $file16=str_replace($strs,$stre,$str);
-$temp11=basename($zustatdir);
+$temp11=basename($diroutput);
 if (file_exists("$temp11/$file16")){
 require("$temp11/$file16");
 
@@ -454,12 +454,13 @@ if (($anzteams-($anzst/2+1))!=0){
 <tr>  
 <td class="lmomain2" align="center">
 <?PHP 
+echo $einzutoretab;
 if ($einzutoretab==1) {
 $strs=".l98";
 $stre=".l98.php";
 $str=basename($file);
 $file16=str_replace($strs,$stre,$str);
-$temp11=basename($zustatdir);
+$temp11=basename($diroutput);
 if (file_exists("$temp11/$file16")){
 require("$temp11/$file16");
 

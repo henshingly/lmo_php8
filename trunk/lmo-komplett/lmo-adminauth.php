@@ -22,7 +22,7 @@ require_once("lmo-admintest.php");
 if($action=="admin"){
   if(!isset($lmousername)){$lmousername="";}
   if(!isset($lmouserpass)){$lmouserpass="";}
-  if($HTTP_SESSION_VARS['lmouserok']==0){
+  if(!isset($HTTP_SESSION_VARS['lmouserok']) || $HTTP_SESSION_VARS['lmouserok']==0){
     if(isset($HTTP_POST_VARS["xusername"])){
       $lmousername=$HTTP_POST_VARS["xusername"];
       $lmouserpass=$HTTP_POST_VARS["xuserpass"];
@@ -61,7 +61,7 @@ if($action=="admin"){
         }
       }
     }
-  if($HTTP_SESSION_VARS['lmouserok']==0){
+  if(!isset($HTTP_SESSION_VARS['lmouserok']) || $HTTP_SESSION_VARS['lmouserok']==0){
 ?>
 
 <table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
