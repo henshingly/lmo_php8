@@ -71,8 +71,8 @@ if($lmtype==0){
       if(($teama[$st-1][$i1]>0) && ($teamb[$st-1][$i1]>0)){
   			$heimteam=$teams[$teama[$y1-1][$i1]];
   			$gastteam=$teams[$teamb[$y1-1][$i1]];
-  			$heimtore=($goala[$y1-1][$i1]/$goalfaktor);
-  			$gasttore=($goalb[$y1-1][$i1]/$goalfaktor);
+  			$heimtore=applyFactor($goala[$y1-1][$i1],$goalfaktor);
+  			$gasttore=applyFactor($goalb[$y1-1][$i1],$goalfaktor);
   			if ($gasttore<0) $gasttore="_";
   			if ($heimtore<0) $heimtore="_";
   			// * Spielfrei-Hack-Beginn1	- Autor: Bernd Hoyer - eMail: info@salzland-info.de
@@ -133,12 +133,12 @@ if($lmtype==0){
 			$platz=$i1+1;
 			$i4=(int)substr($table1[$i1],35,7);
 			$teamname=$teams[$i4];
-			$pluspunkte=($punkte[$i4]/$pointsfaktor);
-			$minuspunkte=($negativ[$i4]/$pointsfaktor);
-			$kegelnholz=($dtore[$i4]/$goalfaktor);
-			$plustore=($etore[$i4]/$goalfaktor);
-			$minustore=($atore[$i4]/$goalfaktor);
-			$torverhaeltnis=($dtore[$i4]/$goalfaktor);
+			$pluspunkte=applyFactor($punkte[$i4],$pointsfaktor);
+			$minuspunkte=applyFactor($negativ[$i4],$pointsfaktor);
+			$kegelnholz=applyFactor($dtore[$i4],$goalfaktor);
+			$plustore=applyFactor($etore[$i4],$goalfaktor);
+			$minustore=applyFactor($atore[$i4],$goalfaktor);
+			$torverhaeltnis=applyFactor($dtore[$i4],$goalfaktor);
 			$spieleteam=$spiele[$i4];?>
 						
 		<tr>

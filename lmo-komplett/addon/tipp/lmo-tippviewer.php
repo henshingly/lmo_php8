@@ -555,9 +555,9 @@ if ($tipp_viewertipp == 1 && $file == "viewer") {
             </acronym>
           </td><? 
     }?>                                                                                                                   
-          <td class="lmost7" align="right"><?=($goala[$i]/$goalfaktor); ?></td>
+          <td class="lmost7" align="right"><?=applyFactor($goala[$i],$goalfaktor); ?></td>
           <td class="lmost7" width="2">:</td>
-          <td class="lmost7" align="left"><?=($goalb[$i]/$goalfaktor); ?></td>
+          <td class="lmost7" align="left"><?=applyFactor($goalb[$i],$goalfaktor); ?></td>
           <td class="lmost7" width="2">&nbsp;</td>
           <td class="lmost7"><?=$mspez[$i]; ?></td>
           <td class="lmost5" width="2">&nbsp;</td>
@@ -595,9 +595,9 @@ if ($tipp_viewertipp == 1 && $file == "viewer") {
           </td>
           <td class="lmost5"><?
     if (($mnote[$i] != "") || ($msieg[$i] > 0) || ($mtipp[$i] > 0)) {
-      $dummy = addslashes($teama[$i]." - ".$teamb[$i]." ".($goala[$i]/$goalfaktor).":".($goalb[$i]/$goalfaktor));
+      $dummy = addslashes($teama[$i]." - ".$teamb[$i]." ".applyFactor($goala[$i],$goalfaktor).":".applyFactor($goalb[$i],$goalfaktor));
       if ($msieg[$i] == 3) {
-        $dummy .= " / ".($goalb[$i]/$goalfaktor).":".($goala[$i]/$goalfaktor);
+        $dummy .= " / ".applyFactor($goalb[$i],$goalfaktor).":".applyFactor($goala[$i],$goalfaktor);
       }
       $dummy .= " ".$mspez[$i];
       if ($msieg[$i] == 1) {

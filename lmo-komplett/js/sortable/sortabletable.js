@@ -276,10 +276,9 @@ SortableTable.prototype.getRowValue = function (oRow, sType, nColumn) {
 
 	var s;
 	var c = oRow.cells[nColumn];
-	if (typeof c.innerText != "undefined")
-		s = c.innerText;
-	else
-		s = SortableTable.getInnerText(c);
+  s = SortableTable.getInnerText(c);
+  var cs = c.childNodes;
+	var l = cs.length;
 	return this.getValueFromString(s, sType);
 };
 
@@ -292,16 +291,17 @@ SortableTable.getInnerText = function (oNode) {
 			case 1: //ELEMENT_NODE
 				s += SortableTable.getInnerText(cs[i]);
 				break;
-			case 8:	//HTML_COMMENT_NODE
+			case 3:	//TEXT_NODE
 				s += cs[i].nodeValue;
+        return s;
 				break;
-      case 3:	//TEXT_NODE
+      case 8:	//HTML_COMMENT_NODE
 				s += cs[i].nodeValue;
-				break;
-      
+        return s;
+        break;
 		}
 	}
-	return s;
+  return s;
 };
 
 SortableTable.prototype.getValueFromString = function (sText, sType) {
@@ -375,8 +375,9 @@ SortableTable.prototype.addSortType = function (sType, fGetValueFromString, fCom
 SortableTable.prototype.removeSortType = function (sType) {
 	delete this._sortTypeInfo[sType];
 };
-
+r=0;
 SortableTable.basicCompare = function compare(n1, n2) {
+  //if (r<5) {alert(n1.value);r++;}
   if (n1.value < n2.value)
 		return -1;
 	if (n2.value < n1.value)

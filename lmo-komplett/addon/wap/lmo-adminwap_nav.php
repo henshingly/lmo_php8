@@ -198,9 +198,9 @@ else{
         echo "&nbsp;";
       }
       echo "&nbsp;";
-      echo ($goala[$st-1][$i][$n]/$goalfaktor);
+      echo applyFactor($goala[$st-1][$i][$n],$goalfaktor);
       echo "&nbsp;-&nbsp;";
-      echo ($goalb[$st-1][$i][$n]/$goalfaktor);
+      echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);
       
       echo $mspez[$st-1][$i][$n];
       echo "<br/>\n";

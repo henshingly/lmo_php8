@@ -93,7 +93,7 @@ if ($file != "") {
     $dum0 = array_pad($array, 32, "");
     $dum1 = array_pad($array, 32, "");
     $dum2 = array_pad($array, 32, "");
-    for($j = 0; $j < $anzst; $j++) {
+    for($j = 0; $j < $anzst && isset($datum[0]); $j++) {
       $anzsp = $anzteams/2;
       if ($j == $anzst-1) {
         $text2 = $text[364];

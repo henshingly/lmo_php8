@@ -284,8 +284,7 @@ if ($filepointer = @fopen($filename, "r+b")) {
     </td><?
   }?>
   </tr>
-</table>
-<? print_r($typ);
+</table><?
 }else{?>
   <p class="error"><?=$text['spieler'][14]?></p><?
 }

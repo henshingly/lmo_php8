@@ -118,7 +118,7 @@ if(($file!="") && ($kreuz==1)){
                 echo $lmo_kreuz_shorttime;
               } else {
                 if ($goala[$b][$a]!="_") echo "<strong>";
-                echo ($goala[$b][$a]/$goalfaktor).":".($goalb[$b][$a]/$goalfaktor);
+                echo applyFactor($goala[$b][$a],$goalfaktor).":".applyFactor($goalb[$b][$a],$goalfaktor);
                 if ($goala[$b][$a]!="_") echo "</strong>";
               }
               if ($spez == 1) {

@@ -23,28 +23,38 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-if($action=="tipp"){
-  if(!isset($_SESSION['lmotipperok'])){$_SESSION['lmotipperok']=0;}
-  if(!isset($_SESSION['lmotippername'])){$_SESSION['lmotippername']="";}
-  if(!isset($_SESSION['lmotipperpass'])){$_SESSION['lmotipperpass']="";}
-  if(!isset($_SESSION['lmotipperverein'])){$_SESSION['lmotipperverein']="";}
-  if($_SESSION["lmotipperok"]<1 && $_SESSION["lmotipperok"]>-4){
-    $xtippername2="";
-    if(isset($xtippername) && isset($xtipperpass)){
-      $_SESSION['lmotippername']=$xtippername;
-      $_SESSION['lmotipperpass']=$xtipperpass;
-      $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-      if (($tippers=file($pswfile))===FALSE) $tippers = array();
-      $_SESSION["lmotipperok"]=-2;
-      foreach($tippers as $tipper){
-        if ($_SESSION["lmotipperok"]==-2) {
-          $fileinfo = explode('|',trim($tipper));
-          if($_SESSION['lmotippername']==$fileinfo[0]){ // Nick gefunden
-            $_SESSION["lmotipperok"]=-1;
-            if($lmotipperpass==$fileinfo[1]){ // Passwort richtig
-              $lmotipperverein=$fileinfo[5];
-              $_SESSION["lmotipperok"]=$fileinfo[2];
-              if($_SESSION["lmotipperok"]==5){
+if ($action == "tipp") {
+  if (!isset($_SESSION['lmotipperok'])) {
+    $_SESSION['lmotipperok'] = 0;
+  }
+  if (!isset($_SESSION['lmotippername'])) {
+    $_SESSION['lmotippername'] = "";
+  }
+  if (!isset($_SESSION['lmotipperpass'])) {
+    $_SESSION['lmotipperpass'] = "";
+  }
+  if (!isset($_SESSION['lmotipperverein'])) {
+    $_SESSION['lmotipperverein'] = "";
+  }
+  if ($_SESSION["lmotipperok"] < 1 && $_SESSION["lmotipperok"] > -4) {
+    $xtippername2 = "";
+    if (isset($xtippername) && isset($xtipperpass)) {
+      $_SESSION['lmotippername'] = $xtippername;
+      $_SESSION['lmotipperpass'] = $xtipperpass;
+      $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
+      if (($tippers = file($pswfile)) === FALSE) $tippers = array();
+        $_SESSION["lmotipperok"] = -2;
+      foreach($tippers as $tipper) {
+        if ($_SESSION["lmotipperok"] == -2) {
+          $fileinfo = explode('|', trim($tipper));
+          if ($_SESSION['lmotippername'] == $fileinfo[0]) {
+            // Nick gefunden
+            $_SESSION["lmotipperok"] = -1;
+            if ($lmotipperpass == $fileinfo[1]) {
+              // Passwort richtig
+              $lmotipperverein = $fileinfo[5];
+              $_SESSION["lmotipperok"] = $fileinfo[2];
+              if ($_SESSION["lmotipperok"] == 5) {
                 //echo $_SESSION["lmotipperok"];
                 //array_shift($tipper);
               }
@@ -54,19 +64,26 @@ if($action=="tipp"){
       }
     }
   }
-  if($_SESSION["lmotipperok"]==-5){ // Passwort-Anforderung
+  if ($_SESSION["lmotipperok"] == -5) {
+    // Passwort-Anforderung
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippemailpass.php");
   }
-  if($_SESSION["lmotipperok"]<1 && $_SESSION["lmotipperok"]>-4){
-    $addw=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;file=";
-    $adda=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
-
-    if(($todo=="wert" && $all!=1) || $todo=="fieber" || $todo=="edit"){require(PATH_TO_LMO."/lmo-openfilename.php");}
-    elseif($todo=="einsicht"){require(PATH_TO_LMO."/lmo-openfilest.php");}
-    elseif($todo=="tabelle"){require_once(PATH_TO_LMO."/lmo-openfile.php");}
-    elseif($todo=="wert" && $all==1){}
-
-include(PATH_TO_ADDONDIR."/tipp/lmo-tippmenu.php");?>
+  if ($_SESSION["lmotipperok"] < 1 && $_SESSION["lmotipperok"] > -4) {
+    $addw = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;file=";
+    $adda = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
+     
+    if (($todo == "wert" && $all != 1) || $todo == "fieber" || $todo == "edit") {
+      require(PATH_TO_LMO."/lmo-openfilename.php");
+    } elseif($todo == "einsicht") {
+      $lmo_only_st=true;
+      require(PATH_TO_LMO."/lmo-openfile.php");
+    } elseif($todo == "tabelle") {
+      require_once(PATH_TO_LMO."/lmo-openfile.php");
+    } elseif($todo == "wert" && $all == 1) {
+    }
+     
+    include(PATH_TO_ADDONDIR."/tipp/lmo-tippmenu.php");
+?>
  
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>

@@ -116,7 +116,7 @@ if ($tipp_tippmodus==1) {
         } else {
           $nachkomma=0;
         }
-        echo number_format((($toregesa[$i]/$goalfaktor)/$anzgetippt[$i]),$nachkomma,".",",").":".number_format((($toregesb[$i]/$goalfaktor)/$anzgetippt[$i]),$nachkomma,".",",");
+        echo number_format((applyFactor($toregesa[$i],$goalfaktor)/$anzgetippt[$i]),$nachkomma,".",",").":".number_format((applyFactor($toregesb[$i],$goalfaktor)/$anzgetippt[$i]),$nachkomma,".",",");
       } else {
         echo "&nbsp;";
       }
@@ -208,9 +208,9 @@ if($tipp_tippmodus==0){
 if ($tipp_jokertipp==1){ ?>
   <td align="center"><input type="radio" name="xjokerspiel" value="<?=$i+1; ?>" <? if($jksp==$i+1){echo " checked";} if ($btip[$i]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><? 
 } ?>                                                                                                                   
-  <td class="lmoBackMarkierung" align="right"><?=($goala[$st-1][$i]/$goalfaktor); ?></td>
+  <td class="lmoBackMarkierung" align="right"><?=applyFactor($goala[$st-1][$i],$goalfaktor); ?></td>
   <td class="lmoBackMarkierung" align="center">:</td>
-  <td class="lmoBackMarkierung" align="left"><?=($goalb[$st-1][$i]/$goalfaktor); ?></td><? 
+  <td class="lmoBackMarkierung" align="left"><?=applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td><? 
 if($spez==1){ ?>
   <td class="lmoBackMarkierung" width="2">&nbsp;</td>
   <td class="lmoBackMarkierung"><?=$mspez[$st-1][$i]; ?></td><? 
@@ -281,10 +281,10 @@ if($urlb==1){
  * Da IE kein max-width kann, Workaround lt. http://www.bestviewed.de/css/bsp/maxwidth/
  */
 if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
-  $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".($goala[$st-1][$i]/$goalfaktor).":".($goalb[$st-1][$i]/$goalfaktor);
+  $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
   //Beidseitiges Ergebnis
   if ($msieg[$st-1][$i]==3) {
-    $lmo_spielnotiz.=" / ".($goalb[$st-1][$i]/$goalfaktor).":".($goala[$st-1][$i]/$goalfaktor);
+    $lmo_spielnotiz.=" / ".applyFactor($goalb[$st-1][$i],$goalfaktor).":".applyFactor($goala[$st-1][$i],$goalfaktor);
   }
   if ($spez==1) {
     $lmo_spielnotiz.=" ".$mspez[$st-1][$i];

@@ -145,14 +145,14 @@ if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
   $sortprojection=array('liga_name'=>0,'file_name'=>1,'file_date'=>3,'asc'=>0,'desc'=>1);?>
                   ["CaseInsensitiveString","CaseInsensitiveString","RoundSort", "timeStamp"]);<?
 } else {
-  $sortprojection=array('liga_name'=>0,'file_name'=>1,'file_date'=>2,'asc'=>0,'desc'=>1);?>
+  $sortprojection=array('liga_name'=>0,'file_name'=>-1,'file_date'=>2,'asc'=>0,'desc'=>1);?>
                   ["CaseInsensitiveString","RoundSort", "timeStamp"]);<?
 }
 
 if (isset($_SESSION['liga_sort']) && isset($_SESSION['liga_sort_direction'])) {
-  echo "ligaTable.sort(".$sortprojection[$_SESSION['liga_sort']].",".$sortprojection[$_SESSION['liga_sort_direction']].");";
+  if ($sortprojection[$_SESSION['liga_sort']]>=0)echo "ligaTable.sort(".$sortprojection[$_SESSION['liga_sort']].",".$sortprojection[$_SESSION['liga_sort_direction']].");";
 } else {
-  echo "ligaTable.sort(".$sortprojection[$lmo_liga_sort].",".$sortprojection[$lmo_liga_sort_direction].");";
+  if ($sortprojection[$lmo_liga_sort]>=0) echo "ligaTable.sort(".$sortprojection[$lmo_liga_sort].",".$sortprojection[$lmo_liga_sort_direction].");";
 }?>
 </script>
 

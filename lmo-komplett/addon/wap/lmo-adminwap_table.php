@@ -31,8 +31,8 @@ if($lmtype==0){
 			$teamname=($teamname);
 			$pluspunkte=$punkte[$i4];
 			$minuspunkte=$negativ[$i4];
-			$kegelnholz=($dtore[$i4]/$goalfaktor);
-			$torverhaeltnis=($dtore[$i4]/$goalfaktor);
+			$kegelnholz=applyFactor($dtore[$i4],$goalfaktor);
+			$torverhaeltnis=applyFactor($dtore[$i4],$goalfaktor);
 			
 			
 			$wmloutput.="<tr><td>$platz.&nbsp;</td><td>$teamname&nbsp;</td><td>$pluspunkte";
