@@ -35,6 +35,7 @@ if ($config=@file($configfile)) {
 			case $text['spieler'][21]:$spieler_standard_sortierung=(int)$row[1];break;
       case $text['spieler'][13]:$spieler_standard_richtung=(int)$row[1];break;
       case $text['spieler'][49]:$spieler_pfeile_anzeigen=(int)$row[1];break;
+      case $text['spieler'][50]:$spieler_vereinsweise_anzeigen=(int)$row[1];break;
 			case $text['spieler'][22]:$spieler_anzeige_pro_seite=(int)$row[1];break;
 			case $text['spieler'][42]:$spieler_adminbereich_anzeige_pro_seite=(int)$row[1];break;
 			case $text['spieler'][23]:$spieler_nullwerte_anzeigen=(int)$row[1];break;

@@ -48,3 +48,5 @@
 047=aufsteigend
 048=absteigend
 049=Pfeile anzeigen
+050=Vereinsweise anzeigen
+051=Alle

@@ -43,18 +43,19 @@ if (isset($file) && $file!="") {
 	//Adminkontrolle
 	if ($_SESSION['lmouserok']==2 || ($_SESSION['lmouserok']==1 && $spieler_adminbereich_hilfsadmin_zulassen==1)) {
 		//zu speichernde Konfiguration
-		if (isset($_REQUEST['spielerbildbreite']))          { $spieler_spielerbildbreite=$_REQUEST['spielerbildbreite']; }
-		if (isset($_REQUEST['standard_sortierung']))        { $spieler_standard_sortierung=$_REQUEST['standard_sortierung']; }
-    if (isset($_REQUEST['standard_richtung']))        { $spieler_standard_richtung=$_REQUEST['standard_richtung']; }
-		if (isset($_REQUEST['adminbereich_standard_sortierung']))          { $spieler_adminbereich_standard_sortierung=$_REQUEST['adminbereich_standard_sortierung']; }
-		if (isset($_REQUEST['ligalink']))           { $spieler_ligalink=$_REQUEST['ligalink']; }
-		if (isset($_REQUEST['anzeige_pro_seite']))     { $spieler_anzeige_pro_seite=$_REQUEST['anzeige_pro_seite']; }
-		if (isset($_REQUEST['adminbereich_anzeige_pro_seite'])){ $spieler_adminbereich_anzeige_pro_seite=$_REQUEST['adminbereich_anzeige_pro_seite']; }
+		if (isset($_REQUEST['spielerbildbreite']))                { $spieler_spielerbildbreite=$_REQUEST['spielerbildbreite']; }
+		if (isset($_REQUEST['standard_sortierung']))              { $spieler_standard_sortierung=$_REQUEST['standard_sortierung']; }
+    if (isset($_REQUEST['standard_richtung']))                { $spieler_standard_richtung=$_REQUEST['standard_richtung']; }
+		if (isset($_REQUEST['adminbereich_standard_sortierung'])) { $spieler_adminbereich_standard_sortierung=$_REQUEST['adminbereich_standard_sortierung']; }
+		if (isset($_REQUEST['ligalink']))                         { $spieler_ligalink=$_REQUEST['ligalink']; }
+		if (isset($_REQUEST['anzeige_pro_seite']))                { $spieler_anzeige_pro_seite=$_REQUEST['anzeige_pro_seite']; }
+		if (isset($_REQUEST['adminbereich_anzeige_pro_seite']))   { $spieler_adminbereich_anzeige_pro_seite=$_REQUEST['adminbereich_anzeige_pro_seite']; }
 
-		if (isset($_REQUEST['nullwerte_anzeigen']))  $spieler_nullwerte_anzeigen=1;  else {if ($spieler_option=="saveconfig") $spieler_nullwerte_anzeigen=0;}
-    if (isset($_REQUEST['pfeile_anzeigen']))  $spieler_pfeile_anzeigen=1;  else {if ($spieler_option=="saveconfig") $spieler_pfeile_anzeigen=0;}
-		if (isset($_REQUEST['extra_sortierspalte']))    $spieler_extra_sortierspalte=1;    else {if ($spieler_option=="saveconfig") $spieler_extra_sortierspalte=0;}
-		if (isset($_REQUEST['adminbereich_hilfsadmin_zulassen'])) $spieler_adminbereich_hilfsadmin_zulassen=1; else {if ($spieler_option=="saveconfig") $spieler_adminbereich_hilfsadmin_zulassen=0;}
+		if (isset($_REQUEST['nullwerte_anzeigen']))                   $spieler_nullwerte_anzeigen=1;                   else {if ($spieler_option=="saveconfig") $spieler_nullwerte_anzeigen=0;}
+    if (isset($_REQUEST['vereinsweise_anzeigen']))                $spieler_vereinsweise_anzeigen=1;                else {if ($spieler_option=="saveconfig") $spieler_vereinsweise_anzeigen=0;}
+    if (isset($_REQUEST['pfeile_anzeigen']))                      $spieler_pfeile_anzeigen=1;                      else {if ($spieler_option=="saveconfig") $spieler_pfeile_anzeigen=0;}
+		if (isset($_REQUEST['extra_sortierspalte']))                  $spieler_extra_sortierspalte=1;                  else {if ($spieler_option=="saveconfig") $spieler_extra_sortierspalte=0;}
+		if (isset($_REQUEST['adminbereich_hilfsadmin_zulassen']))     $spieler_adminbereich_hilfsadmin_zulassen=1;     else {if ($spieler_option=="saveconfig") $spieler_adminbereich_hilfsadmin_zulassen=0;}
 		if (isset($_REQUEST['adminbereich_hilfsadmin_fuer_spalten'])) $spieler_adminbereich_hilfsadmin_fuer_spalten=1; else {if ($spieler_option=="saveconfig") $spieler_adminbereich_hilfsadmin_fuer_spalten=0;}
 		if ($spieler_sort=="") $spieler_sort=intval($spieler_adminbereich_standard_sortierung);
 
@@ -288,6 +289,7 @@ if (isset($file) && $file!="") {
 				fputs($filepointer,$text['spieler'][23]."=".$spieler_nullwerte_anzeigen."\n");
 				fputs($filepointer,$text['spieler'][24]."=".$spieler_extra_sortierspalte."\n");
         fputs($filepointer,$text['spieler'][49]."=".$spieler_pfeile_anzeigen."\n");
+        fputs($filepointer,$text['spieler'][50]."=".$spieler_vereinsweise_anzeigen."\n");
 				if ($_SESSION['lmouserok']==2) fputs($filepointer,$text['spieler'][31]."=".$spieler_adminbereich_hilfsadmin_zulassen."\n");
 				if ($_SESSION['lmouserok']==2) fputs($filepointer,$text['spieler'][46]."=".$spieler_adminbereich_hilfsadmin_fuer_spalten."\n");
 				fputs($filepointer,$text['spieler'][41]."=".$spieler_ligalink."\n");
@@ -580,6 +582,10 @@ function sel(x) {
 					<tr>
 						<td class="lmost4"><nobr><?=$text['spieler'][24]?>: </nobr></td>
 						<td><input type="checkbox" name="extra_sortierspalte" value="<?=$spieler_extra_sortierspalte?>" <?if ($spieler_extra_sortierspalte==1) echo "checked";?>></td>
+					</tr>
+          <tr>
+						<td class="lmost4"><nobr><?=$text['spieler'][50]?>: </nobr></td>
+						<td><input type="checkbox" name="vereinsweise_anzeigen" value="<?=$spieler_vereinsweise_anzeigen?>" <?if ($spieler_vereinsweise_anzeigen==1) echo "checked";?>></td>
 					</tr>
           <tr>
 						<td class="lmost4"><nobr><?=$text['spieler'][49]?>: </nobr></td>

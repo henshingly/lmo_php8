@@ -26,14 +26,14 @@
 // 
 
 require_once(dirname(__FILE__).'/../../init.php');
-$picDir= URL_TO_IMGDIR.'/spieler/'; 	//Verz. für Spielerfotos und Spaltengraphiken
 
 //Konfiguration laden
 require(PATH_TO_ADDONDIR.'/spieler/lmo-statloadconfig.php');
 
-if (isset($_REQUEST['sort'])) {	$sort=$_REQUEST['sort'];  } else $sort=$spieler_standard_sortierung;
-if (isset($_REQUEST['begin'])){	$begin=$_REQUEST['begin'];}	else $begin=0;
-if (isset($_REQUEST['direction'])){	$direction=$_REQUEST['direction'];}	else $direction=$spieler_standard_richtung;
+$sort=      isset($_GET['sort'])?       $_GET['sort']:      $spieler_standard_sortierung;
+$begin=     isset($_GET['begin'])?      $_GET['begin']:     0;
+$direction= isset($_GET['direction'])?  $_GET['direction']: $spieler_standard_richtung;
+$team=      isset($_GET['team'])?       urldecode($_GET['team']):      '';
 
 if ($filepointer = @fopen($filename,"r+b")) {
 	$spalten=array(); //Spaltenbezeichnung
@@ -46,6 +46,9 @@ if ($filepointer = @fopen($filename,"r+b")) {
       $formel = TRUE;
       $spalten[$i]=substr($spalten[$i],0,strlen($spalten[$i])-5);
     }
+    if ($spalten[$i]==$text['spieler'][25]) {
+      $vereinsspalte=$i;
+    }
   }
   if ($formel) fgetcsv($filepointer, 1000, "§"); //Zeile mit Formeln
 
@@ -53,16 +56,20 @@ if ($filepointer = @fopen($filename,"r+b")) {
 	
 	$zeile=0;
 	while ($data[$zeile] = fgetcsv ($filepointer, 10000, "§")) {
-		for($i=0;$i<count($data[$zeile]);$i++) {
-			if (!is_numeric($data[$zeile][$i])) $typ[$i]=TRUE;
-		}
-		$zeile++;
+		if ((isset($data[$zeile][$vereinsspalte]) && $spieler_vereinsweise_anzeigen==1 && $team==$data[$zeile][$vereinsspalte]) || $team=='') {
+      for($i=0;$i<count($data[$zeile]);$i++) {
+  			  if (!is_numeric($data[$zeile][$i])) $typ[$i]=TRUE;
+  		}
+  		$zeile++;
+    }else{
+      array_pop($data);
+    }
 	}
-	array_pop($data);
+  array_pop($data);
 	if ($direction==1) {
-    if (!isset($typ[$sort])) usort($data, 'cmpInt'); else usort($data, 'cmpStr');
+    if (!isset($typ[$sort])) usort($data, 'cmpInt'); else usort($data, 'cmpStr2');
   }else{
-    if (!isset($typ[$sort])) usort($data, 'cmpInt2'); else usort($data, 'cmpStr2');
+    if (!isset($typ[$sort])) usort($data, 'cmpInt2'); else usort($data, 'cmpStr');
   }
 	if ($spieler_nullwerte_anzeigen==0 && !isset($typ[$sort])) $data=array_filter($data, 'filterNullwerte'); //Nullwerte ausfiltern
 	$spaltenzahl=count($spalten);
@@ -76,20 +83,25 @@ if ($filepointer = @fopen($filename,"r+b")) {
 </style>
 <table class="lmosta">
 	<tr><?
-  if ($spieler_extra_sortierspalte==1) {?>
+  if ($spieler_vereinsweise_anzeigen==1) {?>
 		<td valign="top" class="lmost0" align="center">
 			<table>
 				<tr>
-					<td class="lmost4"><?=$text['spieler'][13]?></td>
+					<td class="lmost4"><?=$text['spieler'][25]?></td>
+				</tr>
+        <tr>
+					<td class="lmost<?if ($team=='') {echo "4";}else{echo "0";}?>"><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;direction=$direction";?>"><?
+      if (file_exists(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".gif")) {?><img title="<?=$t?>" border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($text['spieler'][51]).".gif"?>" alt=""><?}
+      else{echo $text['spieler'][51];}
+      ?></a></nobr>
+					</td>
 				</tr><?
-	  for ($i=0;$i<$spaltenzahl;$i++) {?>
+    for($i=0;$i<count($teams)-1;$i++) {?>
 				<tr>
-					<td class="lmost<?if ($sort==$i) {echo "4";}else{echo "0";}?>"><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=$begin&amp;sort=$i&amp;direction=1";?>"><nobr><?
-      if (file_exists(PATH_TO_IMGDIR."/lmo-admin2.gif")) {?><img title="<?=$text['spieler'][48]?>" border="0" src="<?=URL_TO_IMGDIR."/lmo-admin2.gif"?>" alt=""><?}
-      else{?>&or;<?}
-      ?></a>&nbsp;<?=$spalten[$i]?>&nbsp;<a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=$begin&amp;sort=$i&amp;direction=0";?>"><?
-      if (file_exists(PATH_TO_IMGDIR."/lmo-admin0.gif")) {?><img title="<?=$text['spieler'][47]?>" border="0" src="<?=URL_TO_IMGDIR."/lmo-admin0.gif"?>" alt=""><?}
-      else{?>&and;<?}?></a></nobr>
+					<td class="lmost<?if ($teams[$i]==$team) {echo "4";}else{echo "0";}?>"><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;direction=$direction&amp;team=".$teams[$i];?>"><?
+      if (file_exists(PATH_TO_IMGDIR."/spieler/".$teams[$i].".gif")) {?><img title="<?=$teams[$i]?>" border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($teams[$i]).".gif"?>" alt=""><?}
+      else{echo $teamk[$i];}
+      ?></a></nobr>
 					</td>
 				</tr><?
     }?>
@@ -103,26 +115,33 @@ if ($filepointer = @fopen($filename,"r+b")) {
 						<th></th><th></th><?
 						for ($i=0;$i<$spaltenzahl;$i++) {?>
 							<th class="lmost4"><nobr><?
-              if ($spieler_pfeile_anzeigen==1) {
-  							if ($spalten[$i]!=$text['spieler'][32]) {?><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=1";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48]." ".$text['spieler'][37]?>"><?}
-                if (file_exists(PATH_TO_IMGDIR."/lmo-admin2.gif")) {?><img title="<?=$text['spieler'][48]?>" border="0" src="<?=URL_TO_IMGDIR."/lmo-admin2.gif"?>" alt=""><?}
-                elseif ($spalten[$i]!=$text['spieler'][32]){?>&or;<?}?></a><?
+              if ($spieler_extra_sortierspalte==0) {
+                if ($spieler_pfeile_anzeigen==1) {
+    							if ($spalten[$i]!=$text['spieler'][32]) {?><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=1&amp;team=$team";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48]." ".$text['spieler'][37]?>"><?}
+                  if (file_exists(PATH_TO_IMGDIR."/lmo-admin2.gif")) {?><img title="<?=$text['spieler'][48]?>" border="0" src="<?=URL_TO_IMGDIR."/lmo-admin2.gif"?>" alt=""><?}
+                  elseif ($spalten[$i]!=$text['spieler'][32]){?>&or;<?}?></a><?
+                  if ($spalten[$i]!=$text['spieler'][32]) {
+                    if (file_exists(PATH_TO_IMGDIR."/spieler/".$spalten[$i].".gif"))echo "&nbsp;<acronym title='".$spalten[$i]."'><img border='0' src='".URL_TO_IMGDIR."/spieler/".rawurlencode($spalten[$i]).".gif' alt='".$spalten[$i]."'></acronym>&nbsp;";
+    							  else echo "&nbsp;".$spalten[$i]."&nbsp;";
+                  }
+                  if ($spalten[$i]!=$text['spieler'][32]) {?><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=0&amp;team=$team";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][47]." ".$text['spieler'][37]?>"><?}
+                  if (file_exists(PATH_TO_IMGDIR."/lmo-admin0.gif")) {?><img title="<?=$text['spieler'][47]?>" border="0" src="<?=URL_TO_IMGDIR."/lmo-admin0.gif"?>" alt=""><?}
+                  elseif ($spalten[$i]!=$text['spieler'][32] ){?>&and;<?}
+                  ?></a><?
+                }else{
+                  if ($sort==$i) {$direction=$direction ^ 1;}
+                  if ($sort==$i-1) {$direction=$direction ^ 1;}?>
+  								<a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=$direction&amp;team=$team";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48-$direction]." ".$text['spieler'][37]?>"><?
+    							if (file_exists(PATH_TO_IMGDIR."/spieler/".$spalten[$i].".gif"))echo "<acronym title='".$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48-$direction]." ".$text['spieler'][37]."'><img border='0' src='".URL_TO_IMGDIR."/spieler/".rawurlencode($spalten[$i]).".gif' alt='".$spalten[$i]."'></acronym>";
+    							elseif ($spalten[$i]!=$text['spieler'][32]) echo $spalten[$i];?>
+  								</a>
+  							</th><?
+                }
+              }else{
                 if ($spalten[$i]!=$text['spieler'][32]) {
                   if (file_exists(PATH_TO_IMGDIR."/spieler/".$spalten[$i].".gif"))echo "&nbsp;<acronym title='".$spalten[$i]."'><img border='0' src='".URL_TO_IMGDIR."/spieler/".rawurlencode($spalten[$i]).".gif' alt='".$spalten[$i]."'></acronym>&nbsp;";
-  							  else echo "&nbsp;".$spalten[$i]."&nbsp;";
+    					    else echo $spalten[$i];
                 }
-                if ($spalten[$i]!=$text['spieler'][32]) {?><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=0";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][47]." ".$text['spieler'][37]?>"><?}
-                if (file_exists(PATH_TO_IMGDIR."/lmo-admin0.gif")) {?><img title="<?=$text['spieler'][47]?>" border="0" src="<?=URL_TO_IMGDIR."/lmo-admin0.gif"?>" alt=""><?}
-                elseif ($spalten[$i]!=$text['spieler'][32] ){?>&and;<?}
-                ?></a><?
-              }else{
-                if ($sort==$i) {$direction=$direction ^ 1;}
-                if ($sort==$i-1) {$direction=$direction ^ 1;}?>
-								<a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=$direction";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48-$direction]." ".$text['spieler'][37]?>"><?
-  							if (file_exists(PATH_TO_IMGDIR."/spieler/".$spalten[$i].".gif"))echo "<acronym title='".$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48-$direction]." ".$text['spieler'][37]."'><img border='0' src='".URL_TO_IMGDIR."/spieler/".rawurlencode($spalten[$i]).".gif' alt='".$spalten[$i]."'></acronym>";
-  							elseif ($spalten[$i]!=$text['spieler'][32]) echo $spalten[$i];?>
-								</a>
-							</th><?
               }?>
               </nobr></th><?
 						}?>
@@ -158,21 +177,20 @@ if ($filepointer = @fopen($filename,"r+b")) {
 						if ($j2>0){?> align="center"><?
 						}else{?> ><?
 							if (!isset($data[$j1-1][$sort]) || $data[$j1][$sort] !== $data[$j1-1][$sort] && $j1!=$begin) echo ($j1+1).". ";
-							if ($j1>0 && $j1==$begin) {
-								for ($x=$begin-1; $x>0; $x--){
+							
+              if ($j1>0 && $j1==$begin) {
+								for ($x=$begin-1; $x>=0; $x--){
 									if ($data[$x][$sort]!=$data[$j1][$sort]) {
 										echo ($x+2).". ";
 										break;
-									}else{
-                    echo ($x).". ";
-										break;
-                  }
+									}
+                  if ($x==0) echo "1. ";
 								}
 							}?>
 						</td>
 						<td class="lmost5"><?
-							if (file_exists($picDir.$data[$j1][$j2].".jpg")) {?>
-							<img border="0" src="<?=$picDir.rawurlencode($data[$j1][$j2])?>.jpg" width="<?=$spielerbildbreite?>" alt="<?=$text['spieler'][26]?>" title="<?=$data[$j1][$j2]?>"><?
+							if (file_exists(PATH_TO_IMGDIR."/spieler/".$data[$j1][$j2].".jpg")) {?>
+							<img border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($data[$j1][$j2])?>.jpg" width="<?=$spielerbildbreite?>" alt="<?=$text['spieler'][26]?>" title="<?=$data[$j1][$j2]?>"><?
 							}else{?>&nbsp;<?}?>
 						</td>
 						<td class="lmost<?if ($j2==$sort) echo "4"; else echo"5"; ?>"><?
@@ -181,8 +199,8 @@ if ($filepointer = @fopen($filename,"r+b")) {
 						if ($spalten[$j2]==$text['spieler'][25]) {
 							$pos=array_search($data[$j1][$j2],$teams);
 							if((!is_null($pos) || $pos) && ($teamu[$pos]!="") && ($urlt==1)){echo "<a href=\"".$teamu[$pos]."\" target=\"_blank\" title=\"".$text['spieler'][46]."\">";}
-							if (file_exists($picDir.$data[$j1][$j2].".jpg")) {?>
-							<img border="0" src="<?=$picDir.rawurlencode($data[$j1][$j2])?>.jpg" width="<?=$spielerbildbreite?>" alt="<?=$text['spieler'][27]?>" title="<?=$data[$j1][$j2]?>">&nbsp;<?
+							if (file_exists(PATH_TO_IMGDIR."/spieler/".$data[$j1][$j2].".gif")) {?>
+							<img border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($data[$j1][$j2])?>.gif" width="<?=$spielerbildbreite?>" alt="<?=$text['spieler'][27]?>" title="<?=$data[$j1][$j2]?>">&nbsp;<?
 							}else	echo  "&nbsp;".str_replace(" ","&nbsp;",$data[$j1][$j2])."&nbsp;";
 							if($pos=array_search($data[$j1][$j2],$teamu) && ($teamu[$pos]!="") && ($urlt==1)){echo "</a>";}	
 						//Spielerlinks
@@ -198,7 +216,27 @@ if ($filepointer = @fopen($filename,"r+b")) {
 				}?>
 				</tbody>
 			</table>
-		</td>
+		</td><?
+  if ($spieler_extra_sortierspalte==1) {?>
+		<td valign="top" class="lmost0" align="center">
+			<table>
+				<tr>
+					<td class="lmost4"><?=$text['spieler'][13]?></td>
+				</tr><?
+	  for ($i=0;$i<$spaltenzahl;$i++) {?>
+				<tr>
+					<td class="lmost<?if ($sort==$i) {echo "4";}else{echo "0";}?>"><nobr><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=$begin&amp;sort=$i&amp;direction=1";?>"><?
+      if (file_exists(PATH_TO_IMGDIR."/lmo-admin2.gif")) {?><img title="<?=$text['spieler'][48]?>" border="0" src="<?=URL_TO_IMGDIR."/lmo-admin2.gif"?>" alt=""><?}
+      else{?>&or;<?}
+      ?></a>&nbsp;<?=$spalten[$i]?>&nbsp;<a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=$begin&amp;sort=$i&amp;direction=0";?>"><?
+      if (file_exists(PATH_TO_IMGDIR."/lmo-admin0.gif")) {?><img title="<?=$text['spieler'][47]?>" border="0" src="<?=URL_TO_IMGDIR."/lmo-admin0.gif"?>" alt=""><?}
+      else{?>&and;<?}?></a></nobr>
+					</td>
+				</tr><?
+    }?>
+			</table>
+		</td><?
+  }?>
 	</tr>
 	<tr>
 		<td class="uhrzeit" colspan="<?=$spaltenzahl+1?>"><?=$text['spieler'][28]?>: <?= date("d.m.Y H:i", filemtime($filename)); ?> <?=$text['spieler'][29]?></td>
@@ -218,8 +256,6 @@ function cmpStr ($a2, $a1) {
 	$a1[$sort]=strtr($a1[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
 	$a2[$sort]=strtr($a2[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
 	$c = strnatcasecmp($a2[$sort],$a1[$sort]);
-  if (!$c)
-    $c = strnatcasecmp($a1[$sort],$a2[$sort]);
   return $c;
 }
 function cmpInt2 ($a1, $a2) {
@@ -232,9 +268,7 @@ function cmpStr2 ($a2, $a1) {
 	$a1[$sort]=strtr($a1[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
 	$a2[$sort]=strtr($a2[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
 	$c = strnatcasecmp($a2[$sort],$a1[$sort]);
-  if (!$c)
-    $c = strnatcasecmp($a1[$sort],$a2[$sort]);
-  return !$c;
+  return -1*$c;
 }
 function filterNullwerte ($a) {
 	global $sort,$zeile;
