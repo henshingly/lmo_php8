@@ -12,31 +12,62 @@ die aktuellen Ergebnisse und Tabelle anzeigt
 */
 
 require_once(dirname(__FILE__).'/../../init.php');
-$_SERVER['PHP_SELF']=$_SERVER['PHP_SELF']."?wap_file=";
-$home=$_SERVER['PHP_SELF'];
+$_SERVER['PHP_SELF'].="?wap_file=";
+if (!isset($_REQUEST['st'])) $_REQUEST['st']="1";
+if (!isset($_REQUEST['op'])) $_REQUEST['op']="";
+header("Content-type: text/vnd.wap.wml");                // Sag dem Browser, dass jetzt WML kommt
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Ein Datum der Vergangenheit um nicht gecached zu werden
+header("Last-Modified: " . gmdate("D, d M Y H:i:s"). " GMT"); 
+header("Cache-Control: no-cache, must-revalidate"); 
+header("Pragma: no-cache"); 
+echo("<?xml version=\"1.0\"?>\n");
+echo("<!DOCTYPE wml PUBLIC \"-//WAPFORUM//DTD WML 1.1//EN\" \"http://www.wapforum.org/DTD/wml_1.1.xml\">\n");
+echo("<wml>\n");
+switch($_REQUEST['op']) {
+
+    case "nav":
+    navigation($wap_file, $_REQUEST['st']);
+    break;
+    
+    case "day":
+    show_day($wap_file, $_REQUEST['st']);
+    break;
+    
+	case "table":
+    show_table($wap_file, $_REQUEST['st']);
+    break;
+	
+	case "help":
+    help($wap_file, $_REQUEST['st']);
+    break;
+	
+  default:
+    index($dirliga);
+    break;
+
+}
 
 
 function index($dirliga)
 {
-global $_SERVER['PHP_SELF'], $home;
-
+global $text;
 echo("<card id=\"index\" title=\"Ergebnisdienst\">\n");
 echo("<p>\n");
 
 $array = array("");
-require("lmo-langload.php");
 
-//echo "Home: ".$home;
+
+//echo "Home: ".$_SERVER['PHP_SELF'];
 //require("./lmo_sms/lmo_sms.php");
 //Ligenliste laden
 $ftype=".l98";
 if($ftype!=""){
-  $verz=opendir(substr($dirliga,0,-1));
+  $verz=opendir(substr(PATH_TO_LMO."/".$dirliga,0,-1));
   $dummy=array();$dummy2=array();
   $r=0;
   while($files=readdir($verz)){
     if(strtolower(substr($files,-4))==$ftype){
-      $dummy2['"'.(filemtime($dirliga.$files)+$r).'"']=$files;
+      $dummy2['"'.(filemtime(PATH_TO_LMO."/".$dirliga.$files)+$r).'"']=$files;
       $r++;
     }
   }
@@ -52,7 +83,8 @@ if($ftype!=""){
     $t1="";
     $t4="";
     $t2=$text[2];
-    $datei = fopen($dirliga.$files,"r");
+    $datei = fopen(PATH_TO_LMO."/".$dirliga.$files,"r");
+    if ($datei){
     while (!feof($datei)) {
       $zeile = fgets($datei,1000);
       $zeile=chop($zeile);
@@ -73,6 +105,7 @@ if($ftype!=""){
         }
       }
     fclose($datei);
+    }
     $i++;
     if($t0==""){$j++;$t0="Unbenannte Liga ".$j;}
     if($t1!=""){
@@ -92,16 +125,11 @@ if($ftype!=""){
     else{$t3="";}
 	//Ligenliste laden Ende
 	
-	$t0=str_replace("ä","ä",$t0);
-	$t0=str_replace("Ä","Ä",$t0);
-	$t0=str_replace("ö","ö",$t0);
-	$t0=str_replace("Ö","Ö",$t0);
-	$t0=str_replace("ü","ü",$t0);
-	$t0=str_replace("Ü","Ü",$t0);
-	$t0=str_replace("ß","ß",$t0);
+	$t0=convert2utf ($t0);
+	
 	
 ?>
-<small><<?php echo "a href='{$_SERVER['PHP_SELF']}$dirliga$files&amp;op=nav&amp;st=$t1'>".$t0."</a><br/>".date("d.m.y H:i",filemtime($dirliga.$files)).$t3."</small><br/>\n";  
+<small><<?php echo "a href='".$_SERVER['PHP_SELF'].$dirliga.$files."&amp;op=nav&amp;st=$t1'>".$t0."</a><br/>".date("d.m.y H:i",filemtime(PATH_TO_LMO."/".$dirliga.$files)).$t3."</small><br/>\n";  
  }
  if($i==0){echo "".$text[223]."";}
 }
@@ -114,14 +142,13 @@ echo("</card>\n");
 
 function navigation($file, $st)
 {
-global $_SERVER['PHP_SELF'], $home;
-
+global $text;
 echo("<card id=\"auswahl\" title=\"Auswahl\">\n");
 
 
 $array = array("");
-require("lmo-openfile.php");
-require("lmo-langload.php");
+require(PATH_TO_LMO."/lmo-openfile.php");
+
 if($lmtype==0){
 echo("<p align='center'>\n");
 echo("<a href=\"".$_SERVER['PHP_SELF'].$file."&amp;op=day&amp;st=$st\">".$text[10]."</a><br/>\n");
@@ -221,13 +248,7 @@ if($n==0){
 
   if(($favteam>0) && ($favteam==$teama[$st-1][$i])){echo "<b>";}
   $teamname=$teamk[$teama[$st-1][$i]];
-  $teamname=str_replace("ä","ä",$teamname);
-	$teamname=str_replace("Ä","Ä",$teamname);
-	$teamname=str_replace("ö","ö",$teamname);
-	$teamname=str_replace("Ö","Ö",$teamname);
-	$teamname=str_replace("ü","ü",$teamname);
-	$teamname=str_replace("Ü","Ü",$teamname);
-	$teamname=str_replace("ß","ß",$teamname);
+  $teamname=convert2utf ($teamname);
 	echo $teamname;
   if(($favteam>0) && ($favteam==$teama[$st-1][$i])){echo "</b>";}
 
@@ -245,13 +266,7 @@ if($n==0){
     }
   if (($favteam>0) && ($favteam==$teamb[$st-1][$i])){echo "<b>";}
   $teamname=$teamk[$teamb[$st-1][$i]];
-  $teamname=str_replace("ä","ä",$teamname);
-	$teamname=str_replace("Ä","Ä",$teamname);
-	$teamname=str_replace("ö","ö",$teamname);
-	$teamname=str_replace("Ö","Ö",$teamname);
-	$teamname=str_replace("ü","ü",$teamname);
-	$teamname=str_replace("Ü","Ü",$teamname);
-	$teamname=str_replace("ß","ß",$teamname);
+  $teamname=convert2utf ($teamname);
 	echo $teamname;
   if (($favteam>0) && ($favteam==$teamb[$st-1][$i])){echo "</b>";}
 
@@ -269,23 +284,21 @@ echo("<a href='".$_SERVER['PHP_SELF'].$file."&amp;op=help&amp;st=$st'>".$text[20
 }
 //Ausgabe Pokal Ende
 
-echo("<br/><small><a href=\"".$home."\">Home</a></small>\n");
+echo("<br/><small><a href=\"".$_SERVER['PHP_SELF']."\">Home</a></small>\n");
 echo("</p>\n");
 echo("</card>\n");
 } //function navigation Ende
 
 function show_day($file, $st)
 {
-
-global $_SERVER['PHP_SELF'], $home;
-
+global $text;
 echo("<card id=\"day\" title=\"$st. Spieltag\">\n");
 
 
 $array = array("");
 
-require("lmo-langload.php");
-require("lmo-openfile.php");
+
+require(PATH_TO_LMO."/lmo-openfile.php");
 
 //Anzeige Spieltag
 //Anzeige Spieltag
@@ -298,13 +311,7 @@ if($file!=""){?>
     echo "<tr><td>";
     if(($favteam>0) && ($favteam==$teama[$st-1][$i])){echo "<b>";}
     $teamname=$teamk[$teama[$st-1][$i]];
-    $teamname=str_replace("ä","ä",$teamname);
-  	$teamname=str_replace("Ä","Ä",$teamname);
-  	$teamname=str_replace("ö","ö",$teamname);
-  	$teamname=str_replace("Ö","Ö",$teamname);
-  	$teamname=str_replace("ü","ü",$teamname);
-  	$teamname=str_replace("Ü","Ü",$teamname);
-  	$teamname=str_replace("ß","ß",$teamname);
+    $teamname=convert2utf ($teamname);
   	echo $teamname;
     if(($favteam>0) && ($favteam==$teama[$st-1][$i])){echo "</b>";}
   
@@ -312,13 +319,7 @@ if($file!=""){?>
   
     if (($favteam>0) && ($favteam==$teamb[$st-1][$i])){echo "<b>";}
     $teamname=$teamk[$teamb[$st-1][$i]];
-    $teamname=str_replace("ä","ä",$teamname);
-  	$teamname=str_replace("Ä","Ä",$teamname);
-  	$teamname=str_replace("ö","ö",$teamname);
-  	$teamname=str_replace("Ö","Ö",$teamname);
-  	$teamname=str_replace("ü","ü",$teamname);
-  	$teamname=str_replace("Ü","Ü",$teamname);
-  	$teamname=str_replace("ß","ß",$teamname);
+    $teamname=convert2utf ($teamname);
   	echo $teamname;
     if (($favteam>0) && ($favteam==$teamb[$st-1][$i])){echo "</b>";}
     $heim_tore=$goala[$st-1][$i];
@@ -337,7 +338,7 @@ if($st>1){
   echo "<br/>";	?>
 <br/><a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=table&amp;st=<?=$st?>"><?=$text[16];?></a> | <a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=help&amp;st=<?=$st?>"><?=$text[20];?></a><?
 } 
-echo("<br/><a href='$home'><small>Home</small></a>");
+echo("<br/><a href='".$_SERVER['PHP_SELF']."'><small>Home</small></a>");
 // Anzeige Spieltag Ende
 
 echo("</p>\n");
@@ -348,14 +349,12 @@ echo("</card>\n");
 
 function show_table($file, $st)
 {
-
-global $_SERVER['PHP_SELF'], $home;
-
+global $text;
 echo("<card id=\"tab\" title=\"$st. Spieltag\">\n");
 echo("<p>\n");
 $array = array("");
-require("lmo-langload.php");
-require("lmo-openfile.php");
+
+require(PATH_TO_LMO."/lmo-openfile.php");
 
 if($st>0){$actual=$st;}else{$actual=$stx;}
 if($lmtype==0){
@@ -364,7 +363,8 @@ if($lmtype==0){
 		if ($goalb[$actual-1][$i1]=="-1") $goalb[$actual-1][$i1]="_";
 	}
 	$endtab=$anzst;
-	include("lmo-calctable.php");
+	$action="";
+  require(PATH_TO_LMO."/lmo-calctable.php");
 	for($i1=0;$i1<$anzsp;$i1++){
 		if ($goala[$endtab-1][$i1]=="_") $goala[$endtab-1][$i1]="-1";
 		if ($goalb[$endtab-1][$i1]=="_") $goalb[$endtab-1][$i1]="-1";
@@ -381,13 +381,7 @@ if($lmtype==0){
 			$platz=$i1+1;
 			$i4=(int)substr($table1[$i1],35,6);
 			$teamname=$teamk[$i4];
-			$teamname=str_replace("ä","ä",$teamname);
-			$teamname=str_replace("Ä","Ä",$teamname);
-			$teamname=str_replace("ö","ö",$teamname);
-			$teamname=str_replace("Ö","Ö",$teamname);
-			$teamname=str_replace("ü","ü",$teamname);
-			$teamname=str_replace("Ü","Ü",$teamname);
-			$teamname=str_replace("ß","ß",$teamname);
+			$teamname=convert2utf ($teamname);
 			$pluspunkte=$punkte[$i4];
 			$minuspunkte=$negativ[$i4];
 			$kegelnholz=$dtore[$i4];
@@ -407,7 +401,7 @@ if($lmtype==0){
 	}
 }?>
 <br/><a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=day&amp;st=<?php echo $st; ?>"><?=$text[10];?></a> | <a href="<?=$_SERVER['PHP_SELF'].$file;?>&amp;op=help&amp;st=<?php echo $st; ?>"><?=$text[20];?></a><?
-echo("<br/><a href='$home'><small>Home</small></a>");
+echo("<br/><a href='".$_SERVER['PHP_SELF']."'><small>Home</small></a>");
 
 echo("</p>\n");
 echo("</card>\n");
@@ -415,32 +409,18 @@ echo("</card>\n");
 
 function help($file, $st)
 {
-global $_SERVER['PHP_SELF'], $home;
-
+global $text;
 echo("<card id=\"help\" title=\"Hilfe\">\n");
 echo("<p><small>");
 
 $array = array("");
-require("lmo-openfile.php");
-require("lmo-langload.php");
+require(PATH_TO_LMO."/lmo-openfile.php");
+
 
 for($j=0;$j<$anzteams;$j++){
 	$j1=$j+1;
-  $teamk[$j1]=str_replace("ä","&#xE4;",$teamk[$j1]);
-	$teamk[$j1]=str_replace("Ä","&#xC4;",$teamk[$j1]);
-	$teamk[$j1]=str_replace("ö","&#xF6;",$teamk[$j1]);
-	$teamk[$j1]=str_replace("Ö","&#xD6;",$teamk[$j1]);
-	$teamk[$j1]=str_replace("ü","&#xFC;",$teamk[$j1]);
-	$teamk[$j1]=str_replace("Ü","&#xDC;",$teamk[$j1]);
-	$teamk[$j1]=str_replace("ß","&#xDF;",$teamk[$j1]);
-	
-	$teams[$j1]=str_replace("ä","&#xE4;",$teams[$j1]);
-	$teams[$j1]=str_replace("Ä","&#xC4;",$teams[$j1]);
-	$teams[$j1]=str_replace("ö","&#xF6;",$teams[$j1]);
-	$teams[$j1]=str_replace("Ö","&#xD6;",$teams[$j1]);
-	$teams[$j1]=str_replace("ü","&#xFC;",$teams[$j1]);
-	$teams[$j1]=str_replace("Ü","&#xDC;",$teams[$j1]);
-	$teams[$j1]=str_replace("ß","&#xDF;",$teams[$j1]);
+  $teamk[$j1]=convert2utf ($teamk[$j1]);
+	$teams[$j1]=convert2utf ($teams[$j1]);
 	echo "<b>".$teamk[$j1]."</b>=<br/>".$teams[$j1]."<br/>---<br/>\n";
 }
 echo "</small>";
@@ -450,38 +430,16 @@ echo("</card>\n");
 }//function help Ende
 
 
-if (!isset($_REQUEST['st'])) $_REQUEST['st']="1";
-if (!isset($_REQUEST['op'])) $_REQUEST['op']="";
-header("Content-type: text/vnd.wap.wml");                // Sag dem Browser, dass jetzt WML kommt
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Ein Datum der Vergangenheit um nicht gecached zu werden
-header("Last-Modified: " . gmdate("D, d M Y H:i:s"). " GMT"); 
-header("Cache-Control: no-cache, must-revalidate"); 
-header("Pragma: no-cache"); 
-echo("<?xml version=\"1.0\"?>\n");
-echo("<!DOCTYPE wml PUBLIC \"-//WAPFORUM//DTD WML 1.1//EN\" \"http://www.wapforum.org/DTD/wml_1.1.xml\">\n");
-echo("<wml>\n");
-switch($_REQUEST['op']) {
 
-    case "nav":
-    navigation($file, $_REQUEST['st']);
-    break;
-    
-    case "day":
-    show_day($file, $_REQUEST['st']);
-    break;
-    
-	case "table":
-    show_table($file, $_REQUEST['st']);
-    break;
-	
-	case "help":
-    help($file, $_REQUEST['st']);
-    break;
-	
-    default:
-    index($dirliga);
-    break;
-
-}
 echo("</wml>\n");
-?>
+
+function convert2utf($str) {
+  $str=str_replace("ä","&#xE4;",$str);
+			$str=str_replace("Ä","&#xC4;",$str);
+			$str=str_replace("ö","&#xF6;",$str);
+			$str=str_replace("Ö","&#xD6;",$str);
+			$str=str_replace("ü","&#xFC;",$str);
+			$str=str_replace("Ü","&#xDC;",$str);
+			$str=str_replace("ß","&#xDF;",$str);
+  return $str;
+}

@@ -179,7 +179,7 @@ for($spi = $i; $spi < count($filearray); $spi++) {
 
 
 //Liganame
-$output_liganame=$liganame;
+if (count($viewer_spiele)>0) $output_liganame.=$liganame;
 
 
 sort($viewer_spiele);
