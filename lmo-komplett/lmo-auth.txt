@@ -1,0 +1,2 @@
+admin|lmo|2|EOL
+helfer|lmo|1|EOL

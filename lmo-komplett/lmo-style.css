@@ -1,0 +1,140 @@
+FORM { padding: 0px 0px 0px 0px; margin: 0px; }
+TABLE { padding: 0px 0px 0px 0px; margin: 0px; }
+  .lmomaina { background: #e0e8ff; border: 1px solid #000; }
+  .lmosta { background: #fff; border: 1px solid #000; }
+  .lmostb {  background: #fff; border: 1px solid #000; }
+TD {}
+  .lmomain0 { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 105%; font-weight: bold; }
+  .lmomain1 { padding: 2px; background: #e0e8ff; color: #009; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+    .lmomain1 a:link { background: #e0e8ff; color: #009; font-weight: normal; text-decoration: none; }
+    .lmomain1 a:visited { background: #e0e8ff; color: #009; font-weight: normal; text-decoration: none; }
+    .lmomain1 a:active { background: #009; color: #e0e8ff; font-weight: normal; text-decoration: none; }
+    .lmomain1 a:hover { background: #009; color: #e0e8ff; font-weight: normal; text-decoration: none; }
+  .lmomain2 { padding: 2px; background: #e0e8ff; color: #009; font-family: sans-serif; font-size: 80%; font-weight: normal; }
+  .lmost0 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmost0 a:link { background: #fff; color: #000; font-weight: normal; text-decoration: none; }
+    .lmost0 a:visited { background: #fff; color: #000; font-weight: normal; text-decoration: none; }
+    .lmost0 a:active { background: #000; color: #fff; font-weight: normal; text-decoration: none; }
+    .lmost0 a:hover { background: #000; color: #fff; font-weight: normal; text-decoration: none; }
+  .lmost0a { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+    .lmost0a a:link { background: #fff; color: #000; font-weight: bold; text-decoration: none; }
+    .lmost0a a:visited { background: #fff; color: #000; font-weight: bold; text-decoration: none; }
+    .lmost0a a:active { background: #000; color: #fff; font-weight: bold; text-decoration: none; }
+    .lmost0a a:hover { background: #000; color: #fff; font-weight: bold; text-decoration: none; }
+  .lmost1 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+  .lmost2 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmost2 a:link { background: #fff; color: #000; font-weight: normal; text-decoration: none; }
+    .lmost2 a:visited { background: #fff; color: #000; font-weight: normal; text-decoration: none; }
+    .lmost2 a:active { background: #000; color: #fff; font-weight: normal; text-decoration: none; }
+    .lmost2 a:hover { background: #000; color: #fff; font-weight: normal; text-decoration: none; }
+  .lmost3 { padding: 2px; background: #fff; }
+  .lmost4 { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+    .lmost4 a:link { background: #e0e8ff; color: #000; font-weight: bold; text-decoration: none; }
+    .lmost4 a:visited { background: #e0e8ff; color: #000; font-weight: bold; text-decoration: none; }
+    .lmost4 a:active { background: #e0e8ff; color: #000; font-weight: bold; text-decoration: overline underline; }
+    .lmost4 a:hover { background: #e0e8ff; color: #000; font-weight: bold; text-decoration: overline underline; }
+  .lmost5 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmost5 a:link { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost5 a:visited { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost5 a:active { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmost5 a:hover { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmost7 { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmost7 a:link { background: #e0e8ff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost7 a:visited { background: #e0e8ff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost7 a:active { background: #e0e8ff; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmost7 a:hover { background: #e0e8ff; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmost8 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+  .lmost9a { padding: 2px; background: #0c0; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmost9a a:link { background: #0c0; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost9a a:visited { background: #0c0; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost9a a:active { background: #0c0; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmost9a a:hover { background: #0c0; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmost9b { padding: 2px; background: #5d5; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmost9b a:link { background: #5d5; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost9b a:visited { background: #5d5; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost9b a:active { background: #5d5; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmost9b a:hover { background: #5d5; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmost9c { padding: 2px; background: #9e9; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmost9c a:link { background: #9e9; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost9c a:visited { background: #9e9; color: #006; font-weight: normal; text-decoration: none; }
+    .lmost9c a:active { background: #9e9; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmost9c a:hover { background: #9e9; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmotab1 { padding: 2px; background: #0c0; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmotab1 a:link { background: #0c0; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab1 a:visited { background: #0c0; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab1 a:active { background: #0c0; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmotab1 a:hover { background: #0c0; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmotab2 { padding: 2px; background: #5d5; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmotab2 a:link { background: #5d5; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab2 a:visited { background: #5d5; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab2 a:active { background: #5d5; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmotab2 a:hover { background: #5d5; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmotab3 { padding: 2px; background: #9e9; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmotab3 a:link { background: #9e9; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab3 a:visited { background: #9e9; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab3 a:active { background: #9e9; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmotab3 a:hover { background: #9e9; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmotab4 { padding: 2px; background: #cfc; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmotab4 a:link { background: #cfc; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab4 a:visited { background: #cfc; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab4 a:active { background: #cfc; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmotab4 a:hover { background: #cfc; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmotab5 { padding: 2px; background: #e66; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmotab5 a:link { background: #e66; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab5 a:visited { background: #e66; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab5 a:active { background: #e66; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmotab5 a:hover { background: #e66; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmotab8 { padding: 2px; background: #fcc; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+    .lmotab8 a:link { background: #fcc; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab8 a:visited { background: #fcc; color: #006; font-weight: normal; text-decoration: none; }
+    .lmotab8 a:active { background: #fcc; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmotab8 a:hover { background: #fcc; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmotab6 { padding: 2px; background: #efe; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+  .lmotab7 { padding: 2px; background: #fee; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+  .lmocross1 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: bold; }
+  .lmocross2 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: normal; }
+    .lmocross2 a:link { background: #fff; color: #000; font-weight: normal; text-decoration: none; }
+    .lmocross2 a:visited { background: #fff; color: #000; font-weight: normal; text-decoration: none; }
+    .lmocross2 a:active { background: #000; color: #fff; font-weight: normal; text-decoration: none; }
+    .lmocross2 a:hover { background: #000; color: #fff; font-weight: normal; text-decoration: none; }
+  .lmocross4 { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: bold; }
+  .lmocross5 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: normal; }
+    .lmocross5 a:link { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocross5 a:visited { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocross5 a:active { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmocross5 a:hover { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmocross6 { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: normal; }
+    .lmocross6 a:link { background: #e0e8ff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocross6 a:visited { background: #e0e8ff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocross6 a:active { background: #e0e8ff; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmocross6 a:hover { background: #e0e8ff; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmocalni { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+  .lmocalat { border: 1px solid #e0e8ff; padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+    .lmocalat a:link { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocalat a:visited { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocalat a:active { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmocalat a:hover { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmocalht { border: 1px solid #e0e8ff; padding: 2px; background: #ddf; color: #000; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+    .lmocalht a:link { background: #ddf; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocalht a:visited { background: #ddf; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocalht a:active { background: #ddf; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmocalht a:hover { background: #ddf; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmocalwe { border: 1px solid #e0e8ff; padding: 2px; background: #fff; color: #d00; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+    .lmocalwe a:link { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocalwe a:visited { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocalwe a:active { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmocalwe a:hover { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmocalhe { border: 1px solid #e0e8ff; padding: 2px; background: #ddf; color: #d00; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+    .lmocalhe a:link { background: #ddf; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocalhe a:visited { background: #ddf; color: #006; font-weight: normal; text-decoration: none; }
+    .lmocalhe a:active { background: #ddf; color: #900; font-weight: normal; text-decoration: overline underline; }
+    .lmocalhe a:hover { background: #ddf; color: #900; font-weight: normal; text-decoration: overline underline; }
+  .lmotext { padding: 6px; background: #fff; color: #000; text-align: justify; font-family: sans-serif; font-size: 96%; font-weight: normal; }
+DIV,SPAN {}
+  .lmofett { background: #fff; color: #000; text-align: justify; font-family: sans-serif; font-size: 10pt; font-weight: bold; }
+LI {}
+  .lmoadminli { padding-bottom: 4px; }
+INPUT { }
+  .lmotickerein { background: #009; color: #eef; border: 1px solid #009; font-family: sans-serif; font-size: 96%; font-weight: bold; }
+  .lmoadminein { background: #eee; color: #000; border: 1px solid #000; font-family: sans-serif; font-size: 96%; }
+  .lmoadminbut { background: #c0c8ff; color: #006; border-left: 1px solid #006; border-top: 1px solid #006; border-right: 2px solid #006; border-bottom: 2px solid #006; font-family: sans-serif; font-size: 96%; font-weight: bold; }

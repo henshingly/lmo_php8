@@ -1,0 +1,29 @@
+
+                      </ul>
+                    </nobr>
+                    </td>
+                  </tr>
+                </table>
+              <?PHP
+                if (isset($GLOBALS["archiv"]))
+                  {echo "</td></tr><tr><td align=\"center\" class=\"lmost0\"> <a href=\"".$_SERVER["PHP_SELF"]."\">AKTUELL</a>";}
+                else
+                  {echo "</td></tr><tr><td align=\"center\" class=\"lmost0\"> <a href=\"".$_SERVER["PHP_SELF"]."?archiv=dir\">ARCHIV</a>";}
+                if($GLOBALS["tippspiel"]==1)
+                {
+                  $link = $_SERVER["PHP_SELF"]."?action=tipp";
+                  {echo "<br><a href=\"".$link."\">".$GLOBALS["text"][594]."</a><br>";}
+                }
+              ?>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    <tr>
+      <td class="lmomain2" align="right"><nobr>
+        <?PHP if($GLOBALS["calctime"]==1){echo $GLOBALS["text"][471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";} ?>
+        <?PHP echo $GLOBALS["text"][54]; ?> - <?PHP echo $GLOBALS["text"][55]; ?></nobr>
+        </td>
+      </tr>
+    </table>
