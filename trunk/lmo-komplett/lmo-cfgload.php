@@ -35,9 +35,10 @@ if (file_exists($cfgfile)) {
             
 $handle=opendir (PATH_TO_ADDON_DIR);
 while (false!==($f=readdir($handle))) {
+
   if (is_dir(PATH_TO_ADDON_DIR.'/'.$f) && $f!='.' && $f!='..') {
     $addon_cfgfile=PATH_TO_ADDON_DIR."/$f/cfg.txt";                       // Konfigurationsdatei
-    if (file_exists($cfgfile)) {
+    if (file_exists($addon_cfgfile)) {
       $addon_cfgarray=parse_ini_file($addon_cfgfile);         // in Array lesen
       $cfgarray[$f]=$addon_cfgarray;
       extract($addon_cfgarray,EXTR_PREFIX_ALL,$f);                        // Variablen erstellen

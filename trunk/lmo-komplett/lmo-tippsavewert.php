@@ -72,7 +72,7 @@
     $addw="lmo-start.php?action=tipp&amp;todo=wert&amp;file=".$file;
     echo "<font color=\"#008800\">".$text[2029]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text[2065]."<br></font>";
     if($todo!="edit"){
-      if($st==0){require(PATH_TO_LMO."/lmo-openfile.php");}
+      if($st==0){require_once(PATH_TO_LMO."/lmo-openfile.php");}
       else{require(PATH_TO_LMO."/lmo-openfilest.php");}
       }
     $verz=opendir($dirtipp);

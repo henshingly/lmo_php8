@@ -67,7 +67,7 @@ if($action=="tipp"){
 
     if(($todo=="wert" && $all!=1) || $todo=="fieber" || $todo=="edit"){require(PATH_TO_LMO."/lmo-openfilename.php");}
     elseif($todo=="einsicht"){require(PATH_TO_LMO."/lmo-openfilest.php");}
-    elseif($todo=="tabelle"){require(PATH_TO_LMO."/lmo-openfile.php");}
+    elseif($todo=="tabelle"){require_once(PATH_TO_LMO."/lmo-openfile.php");}
     elseif($todo=="wert" && $all==1){}
 ?>
 

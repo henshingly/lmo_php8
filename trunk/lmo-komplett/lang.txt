@@ -16,7 +16,7 @@
 015=Anzeige aler Ergebnisse auf einen Blick
 016=Tabelle
 017=Anzeige der Tabellen und Bilanzen
-018=Statistiken
+018=Ligastatistik
 019=Anzeige der Statistiken und Prognosen
 020=Info
 021=Informationen zu diesem PHP-Script und seinem Autor
@@ -235,7 +235,7 @@
 234=unter Ergebnissen (ohne Heim- und Auswärtsbil.)
 235=unter Ergebnissen (mit Heim- und Auswärtsbil.)
 236=Sonstige Optionen
-237=Fieberkurven darstellen
+237=Fieberkurven
 238=Sollen die Fieberkurven dargestellt werden? Bitte 'Nein' wählen, wenn es Probleme bei der Darstellung der Fieberkurven gibt oder Ihr Provider PHP ohne die GD-Lib (Grafikbibliothek) installiert hat.
 239=Standard-Anstoßzeit
 240=Wenn Sie bei den Spielen nur ein Anstoßdatum und keine -zeit eingeben, wird diese Zeit automatisch übernommen, das spart Ihnen dann gewaltig Eingabearbeit (Format HH:MM - ggf. mit führenden Nullen).
@@ -465,7 +465,7 @@
 464=Farben für den Kalender
 465=Markierung heutiger Tag
 466=Schriftfarbe Wochenende
-467=Kreuztabelle darstellen
+467=Kreuztabelle
 468=Soll die Kreuztabelle dargestellt werden?
 469=Wechsel in den User-Bereich
 470=Hier wechseln Sie in den Userbereich des LMO, dorthin wo Ihre Besucher auch landen
@@ -509,6 +509,10 @@
 508=<= zum Archiv
 509=Link zum Archiv darstellen
 510=Soll den Nutzern ein Link zum Archiv angezeigt werden?
+511=Sollen die Spielpläne dargestellt werden?
+512=Soll die Ergebnisübersicht dargestellt werden?
+513=Sollen die Tabellen dargestellt werden?
+514=Soll die Ligastatistik dargestellt werden?
 2000=Tippspiel
 2001=zur Tippspiel-&Uuml;bersicht
 2002=Team wechseln
@@ -820,7 +824,7 @@
 3015=weiter
 3016=zurück
 3017=Top
-3018=Spielerstatistik einblenden
+3018=Spielerstatistik
 3019=Soll Spielerstatistik mit eingeblendet werden?
 3020=Spielerbildbreite
 3021=Vorsortierung User

@@ -43,15 +43,8 @@ if($todo=="logout"){
 <head>
 <title>LMO Admin</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
-<script type="text/javascript">
-<!--
- if (document.layers && window.captureEvents) { document.write('<link rel="stylesheet" href="lmo-style-nc.css" type="text/css">'); }
-  else { document.write('<link rel="stylesheet" href="lmo-style.css" type="text/css">'); }
-//-->
-</script>
-<noscript>
-<link rel="stylesheet" href="lmo-style.css" type="text/css">
-</noscript>
+<link rel="stylesheet" href="lmo-style-nc.css" type="text/css">
+<style type="text/css">@import url("lmo-style.css");</style>
 </head>
 <body>
 <center>

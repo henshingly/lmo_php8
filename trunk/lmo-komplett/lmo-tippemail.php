@@ -165,7 +165,7 @@ if($message!=""){
       }
     elseif($liga!="" && $tage>0 && $st>=0){
       $file=$dirliga.$liga;
-      if($st>0){require(PATH_TO_LMO."/lmo-openfiledat.php");}elseif($st==0){require(PATH_TO_LMO."/lmo-openfile.php");}
+      if($st>0){require(PATH_TO_LMO."/lmo-openfiledat.php");}elseif($st==0){require_once(PATH_TO_LMO."/lmo-openfile.php");}
   
       for($tippernr=$start-1;$tippernr<$ende;$tippernr++){
         $dummb = split("[|]",$dumma[$tippernr]);

@@ -1,7 +1,7 @@
-FORM { padding: 0px 0px 0px 0px; margin: 0px; }
+FORM { padding: 0; margin: 0; }
 acronym {cursor:help;border-bottom:1px dotted #000;}
-TABLE { padding: 0px 0px 0px 0px; margin: 0px; }
-  .lmomaina { background: #e0e8ff; border: 1px solid #000;  margin:auto;}
+TABLE { padding: 0; margin: 0; }
+  .lmomaina { background: #e0e8ff; border: 1px solid #000; margin:auto;}
   .lmosta { background: #fff; border: 1px solid #000; }
   .lmostb {  background: #fff; border: 1px solid #000; }
 TD {}
@@ -92,19 +92,19 @@ TD {}
     .lmotab8 a:hover { background: #fcc; color: #900; font-weight: normal; text-decoration: overline underline; }
   .lmotab6 { padding: 2px; background: #efe; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
   .lmotab7 { padding: 2px; background: #fee; color: #000; font-family: sans-serif; font-size: 96%; font-weight: normal; }
-  .lmocross1 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: bold; }
-  .lmocross2 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: normal; }
+  .lmocross1 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 75%; font-weight: bold; }
+  .lmocross2 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 75%; font-weight: normal; }
     .lmocross2 a:link { background: #fff; color: #000; font-weight: normal; text-decoration: none; }
     .lmocross2 a:visited { background: #fff; color: #000; font-weight: normal; text-decoration: none; }
     .lmocross2 a:active { background: #000; color: #fff; font-weight: normal; text-decoration: none; }
     .lmocross2 a:hover { background: #000; color: #fff; font-weight: normal; text-decoration: none; }
-  .lmocross4 { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: bold; }
-  .lmocross5 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: normal; }
+  .lmocross4 { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 75%; font-weight: bold; }
+  .lmocross5 { padding: 2px; background: #fff; color: #000; font-family: sans-serif; font-size: 75%; font-weight: normal; }
     .lmocross5 a:link { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
     .lmocross5 a:visited { background: #fff; color: #006; font-weight: normal; text-decoration: none; }
     .lmocross5 a:active { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
     .lmocross5 a:hover { background: #fff; color: #900; font-weight: normal; text-decoration: overline underline; }
-  .lmocross6 { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 8pt; font-weight: normal; }
+  .lmocross6 { padding: 2px; background: #e0e8ff; color: #000; font-family: sans-serif; font-size: 75%; font-weight: normal; }
     .lmocross6 a:link { background: #e0e8ff; color: #006; font-weight: normal; text-decoration: none; }
     .lmocross6 a:visited { background: #e0e8ff; color: #006; font-weight: normal; text-decoration: none; }
     .lmocross6 a:active { background: #e0e8ff; color: #900; font-weight: normal; text-decoration: overline underline; }
@@ -132,10 +132,10 @@ TD {}
     .lmocalhe a:hover { background: #ddf; color: #900; font-weight: normal; text-decoration: overline underline; }
   .lmotext { padding: 6px; background: #fff; color: #000; text-align: justify; font-family: sans-serif; font-size: 96%; font-weight: normal; }
 DIV,SPAN {}
-  .lmofett { background: #fff; color: #000; text-align: justify; font-family: sans-serif; font-size: 10pt; font-weight: bold; }
+  .lmofett { background: #fff; color: #000; text-align: justify; font-family: sans-serif; font-size:85%; font-weight: bold; }
 LI {}
   .lmoadminli { padding-bottom: 4px; }
 INPUT { }
-  .lmotickerein { background: #009; color: #eef; border: 1px solid #009; font-family: sans-serif; font-size: 96% ; font-weight: bold; }
+  .lmotickerein { background: #009; color: #eef; border: 1px solid #009; font-family: sans-serif; font-size: 96%; font-weight: bold; }
   .lmoadminein { background: #eee; color: #000; border: 1px solid #000; font-family: sans-serif; font-size: 96%; }
   .lmoadminbut { background: #c0c8ff; color: #006; border-left: 1px solid #006; border-top: 1px solid #006; border-right: 2px solid #006; border-bottom: 2px solid #006; font-family: sans-serif; font-size: 96%; font-weight: bold; }

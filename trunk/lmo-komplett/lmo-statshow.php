@@ -26,11 +26,11 @@
 // 
 
 makeCompat(); //_POST, _GET, etc. für alte PHP Versionen verfügbar machen
-$picDir= "stats/pic/"; 	//Verz. für Spielerfotos und Spaltengraphiken
+$picDir= PATH_TO_LMO.'/stats/pic/'; 	//Verz. für Spielerfotos und Spaltengraphiken
 if (session_name()=="PHPSESSID") define("SID",""); //falls keine Session gestartet war setze SID
 
 //Konfiguration laden
-require(PATH_TO_LMO.'lmo-statloadconfig.php');
+require(PATH_TO_LMO.'/lmo-statloadconfig.php');
 
 if (isset($_REQUEST['sort'])) {	$sort=$_REQUEST['sort'];  } else $sort=$defaultsort;
 if (isset($_REQUEST['begin'])){	$begin=$_REQUEST['begin'];}	else $begin=0;

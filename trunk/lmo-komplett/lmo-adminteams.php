@@ -20,7 +20,7 @@
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($file!="") && ($_SESSION['lmouserok']==2)){
-  require(PATH_TO_LMO."/lmo-openfile.php");
+  require_once(PATH_TO_LMO."/lmo-openfile.php");
   if(!isset($team)){$team="";}
   if(!isset($save)){$save=0;}
   if($save==1){

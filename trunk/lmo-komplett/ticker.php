@@ -40,7 +40,7 @@ if(!isset($file)){$file="";}
 $file2=$file;
 
 foreach ($file_array as $file){
-require(PATH_TO_LMO."/lmo-openfile.php");
+require_once(PATH_TO_LMO."/lmo-openfile.php");
 $hilf="";
 $hilf1="";
 if($lmtype==0){
@@ -114,7 +114,7 @@ $file=$file2;
 -->
 </script>
 <tr>
-<td class="lmomain2" align="center"><nobr><? require(PATH_TO_LMO."/lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
+<td class="lmomain2" align="center"><nobr><? require_once(PATH_TO_LMO."/lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
 </tr>
 </table>
 <? }?>
@@ -146,7 +146,7 @@ if(!isset($file)){$file="";}
 $file2=$file;
 
 foreach ($file_array as $file){
-require(PATH_TO_LMO."/lmo-openfile.php");
+require_once(PATH_TO_LMO."/lmo-openfile.php");
 $hilf="";
 $trenner=" +++ ";
 
@@ -221,7 +221,7 @@ if(!isset($file)){$file="";}
 $file2=$file;
 
 foreach ($file_array as $file){
-require(PATH_TO_LMO."/lmo-openfile.php");
+require_once(PATH_TO_LMO."/lmo-openfile.php");
 $hilf="";
 $hilf1="";
 
@@ -298,7 +298,7 @@ $file=$file2;
 -->
 </script>
 <tr>
-<td class="lmomain2" align="center"><nobr><? require(PATH_TO_LMO."/lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
+<td class="lmomain2" align="center"><nobr><? require_once(PATH_TO_LMO."/lmo-openfile.php"); echo $versionticker."&copy 2003 by ".$link ?></nobr></td>
 </tr>
 </table>
 <? }?>

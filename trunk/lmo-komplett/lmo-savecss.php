@@ -23,7 +23,7 @@ if($_SESSION['lmouserok']==2){
   $css_root = fopen(PATH_TO_LMO."/lmo-style.txt","rb");
   $css_target = fopen(PATH_TO_LMO."/lmo-style.css","wb");
   if ($css_target) {
-    echo "<font color=\"#008800\">".$text[138]."</font>";
+    echo "<font color=\"#008800\">".$text[138]."</font></br>";
     flock($css_target,LOCK_EX);
   while (!feof($css_root)) {
     $zeile = fgets($css_root,1000);
