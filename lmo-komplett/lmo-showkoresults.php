@@ -134,11 +134,11 @@ if ($file != "") {
           $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
           $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
           if ($m == 1) {
-            echo "<td class=\"lmoTurnierSieger nobr\" align=\"right\">";
+            echo "<td class=\"lmoTurnierSieger nobr\" align='right'>";
           } elseif ($m==2) {
-            echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"right\">";
+            echo "<td class=\"lmoTurnierVerlierer nobr\" align='right'>";
           } else {
-            echo "<td class='nobr' align=\"right\">";
+            echo "<td class='nobr' align='right'>";
           }
           if ($plan==1) {
             echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
@@ -153,7 +153,7 @@ if ($file != "") {
           if ($plan==1) {
             echo "</a>";
           }
-          echo "&nbsp;".getSmallImage($teams[$teama[$st-1][$i]]);
+          echo "&nbsp;".getSmallImage($teams[$teama[$st-1][$i]])."&nbsp;";
           echo "</td>";?>
           <td class="nobr" align="center" width="10">-</td><?
           if ($m == 2) {
@@ -161,9 +161,9 @@ if ($file != "") {
           } elseif($m==1) {
             echo "<td align='left' class=\"lmoTurnierVerlierer nobr\">";
           } else {
-            echo "<td align=\"left\" class='nobr'>";
+            echo "<td align='left' class='nobr'>";
           }
-          echo getSmallImage($teams[$teamb[$st-1][$i]])."&nbsp;";
+          echo "&nbsp;".getSmallImage($teams[$teamb[$st-1][$i]])."&nbsp;";
           if ($plan==1) {
             echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
           }

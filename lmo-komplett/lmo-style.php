@@ -1,7 +1,6 @@
 <?
 header("Content-Type: text/css");
 require(dirname(__FILE__)."/init.php");
-@include(PATH_TO_TEMPLATEDIR."/style.css");
 ?>
 
 .lmoMain .message{
@@ -428,6 +427,9 @@ font-size:100%;
   background: <?=$lmo_turnier_color2?> repeat; 
   <?=empty($lmo_turnier_background2)?'':"color: $lmo_turnier_background2;";?>
 }
+.lmoMain img[alt]{ 
+  vertical-align:bottom;
+}
 
 .lmotext { 
   text-align: justify; 
@@ -529,3 +531,5 @@ a:hover>span.popup {
   max-width:15em;
   \-moz-border-radius: 8px;
 }
+
+<?@include(PATH_TO_TEMPLATEDIR."/style.css");?>

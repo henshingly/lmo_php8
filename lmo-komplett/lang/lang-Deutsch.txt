@@ -569,6 +569,7 @@
 568=Saisonende
 569=Datumssortierung
 570=Sollen die Spiele in der Ergebnisansicht nach Datum sortiert werden?
+571=Achtung! Bitte benutzen Sie diese Optionen nur, <br>wenn das Addon keine eigene Konfigurationsoberfläche bestitzt!
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde
