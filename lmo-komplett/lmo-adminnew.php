@@ -30,7 +30,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
     }
   if($newpage==1){
     if(file_exists($dirliga.$xfile.".l98")){
-      echo "<font color=\"#ff0000\">".$text[280]."</font>";
+      echo "<p class='error'>".$text[280]."</p>";
       $newpage=0;
       }
     }

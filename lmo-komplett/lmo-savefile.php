@@ -42,7 +42,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
       $datei = fopen(PATH_TO_LMO."/$file","wb");
       
       if ($datei) {
-        echo "<font color=\"#008800\">".$text[138]."</font>";
+        echo "<p class='message'>".$text[138]."</p>";
         flock($datei,LOCK_EX);
         fputs($datei,"[Options]\n");
         fputs($datei,"Title=".$text[54]."\n");
@@ -227,7 +227,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         flock($datei,LOCK_UN);
         fclose($datei);
       } else {
-        echo "<font color=\"#ff0000\">".$text[283]."</font>";
+        echo "<p class='error'>".$text[283]."</p>";
       }
       clearstatcache();
     }

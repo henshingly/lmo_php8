@@ -50,7 +50,7 @@ if(($action=="tipp") && ($todo=="delaccount")){
     $xtipperpass=trim($xtipperpass);
     if($xtipperpass!=$dummb[1]){
       $newpage=0;
-      echo "<font color=red>".$text['tipp'][42]."</font><br>";
+      echo "<p class='error'>".$text['tipp'][42]."</p><br>";
       }
     }
 
@@ -81,7 +81,7 @@ if(($action=="tipp") && ($todo=="delaccount")){
 ?>
   <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></font>
+    <?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></p>
   </td></tr>
   <tr><td align="center" class="lmost1"><?PHP echo $text['tipp'][6]; ?></td></tr>
   <tr><td align="center" class="lmost3">

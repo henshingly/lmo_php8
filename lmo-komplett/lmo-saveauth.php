@@ -29,9 +29,9 @@ if($_SESSION['lmouserok']==2){
       if (count($lmo_admin)>1) fputs($datei,implode("|",$lmo_admin)."\n");
     }
     flock($datei,LOCK_UN);
-    echo "<font color=\"#008800\">".$text[138]."</font>";
+    echo "<p class='message'>".$text[138]."</p>";
   }else{
-      echo "<font color=\"#ff0000\">".$text[283]."</font>";
+      echo "<p class='error'>".$text[283]."</p>";
   }
 }
 ?>

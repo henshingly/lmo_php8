@@ -64,17 +64,18 @@
 
   $auswertdatei = fopen($auswertfile,"wb");
   if (!$auswertdatei) {
-    echo "<font color=\"#ff0000\">".$text['tipp'][29]." ".$auswertdatei.$text[283]."</font>";
+    echo "<p class='error'>".$text['tipp'][29]." ".$auswertdatei.$text[283]."</p>";
     exit;
     }
   flock($auswertdatei,2);
+  
   if(file_exists($file)){
     $addw="lmo-start.php?action=tipp&amp;todo=wert&amp;file=".$file;
-    echo "<font color=\"#008800\">".$text['tipp'][29]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text['tipp'][65]."<br></font>";
+    echo "<p class='message'>".$text['tipp'][29]." <a target=\"_blank\" href=\"".$addw."\">".$liga."</a> ".$text['tipp'][65]."<br></p>";
     if($todo!="edit"){
-      if($st==0){require_once(PATH_TO_LMO."/lmo-openfile.php");}
+      if($st==0){require(PATH_TO_LMO."/lmo-openfile.php");}
       else{require(PATH_TO_LMO."/lmo-openfilest.php");}
-      }
+    }
     $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
     $dummy=array("");
     while($files=readdir($verz)){

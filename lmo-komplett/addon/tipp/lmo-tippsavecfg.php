@@ -29,10 +29,10 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
     $datei = fopen(PATH_TO_ADDONDIR."/tipp/cfg.txt","wb");
 if (!$datei) {
-    echo "<font color=\"#ff0000\">".$text[283]."</font>";
+    echo "<p class='error'>".$text[283]."</p>";
     exit;
 }elseif($todo!="tippemail"){
-    echo "<font color=\"#008800\">".$text[138]."</font>";
+    echo "<p class='message'>".$text[138]."</p>";
 }
     flock($datei,2);
     fputs($datei,"TippDir=".PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."\n");

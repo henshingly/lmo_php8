@@ -1,4 +1,4 @@
-<?PHP
+<?
 // 
 // LigaManager Online 3.02b
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -19,38 +19,48 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 // 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if(($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)){
+if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
-  if(!isset($upl)){$upl=0;}
-  if(($upl==1) && ($userfile!="")){
+  if (isset($_POST['upl']) && isset($_FILES['userfile'])) {
     $i=0;
     $ufile=$dirliga.$userfile_name;
-    while(file_exists($ufile)){
+    while (file_exists($ufile)) {
       $i++;
-      if($i>0){$ufile=$dirliga.$userfile_name."_".$i;}else{$ufile=$dirliga.$userfile_name;}
+      if ($i>0) {
+        $ufile=$dirliga.$i."_".$userfile_name;
+      } else {
+        $ufile=$dirliga.$userfile_name;
       }
-    if(move_uploaded_file($userfile,$ufile)){echo "<font color=\"#008800\">".$text[303].":<br>".$ufile."</font>";}else{echo "<font color=\"#ff0000\">".$text[304]."</font>";}
     }
-?>
-  <table class="lmosta" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="center" class="lmost1">
-  <?PHP echo $text[299]; ?>
-  </td></tr><tr><td align="center" class="lmost3">
-  <table width="100%" class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr><td class="lmost5" align="center">
-  <acronym title="<?PHP echo $text[302] ?>"><nobr>
-<FORM ENCTYPE="multipart/form-data" ACTION="<?PHP echo $_SERVER['PHP_SELF']; ?>" METHOD="post">
-
-<input type="hidden" name="action" value="admin">
-<input type="hidden" name="todo" value="upload">
-<input type="hidden" name="upl" value="1">
-<INPUT TYPE="hidden" name="MAX_FILE_SIZE" value="32000">
-<?PHP echo $text[300]; ?>:<br>
-<INPUT NAME="userfile" TYPE="file"><br>
-<INPUT TYPE="submit" VALUE="<?PHP echo $text[301]; ?>">
-</FORM>
-  </acronym></nobr>
-  </td></tr></table>
-  </td></tr></table>
-
-<?PHP
-  }
-?>
+    if (move_uploaded_file($userfile,$ufile)) {
+      echo "<p class='message'>".$text[303].":<br>".$ufile."</p>";
+    } else {
+      echo "<p class='error'>".$text[304]."</p>";
+    }
+  }?>
+<table class="lmosta" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center" class="lmost1"><?=$text[299];?></td>
+  </tr>
+  <tr>
+    <td align="center" class="lmost3">
+      <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
+        <table width="100%" class="lmostb" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="lmost5" align="center"><acronym title="<?=$text[302] ?>"><?=$text[300]; ?>:</acronym></td>
+          </tr>
+          <tr>
+            <td class="lmost5" align="center">              
+              <input type="hidden" name="action" value="admin">
+              <input type="hidden" name="todo" value="upload">
+              <input type="hidden" name="upl" value="1">
+              <input type="file" name="userfile">
+            </td>
+          </tr>
+          <tr><td class="lmost5" align="center"><input type="submit" value="<?=$text[301]; ?>"></td></tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table><?
+}?>

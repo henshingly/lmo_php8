@@ -1,4 +1,4 @@
-<?PHP
+<? 
 // 
 // LigaManager Online 3.02b
 // Copyright (C) 1997-2002 by Frank Hollwitz
@@ -75,16 +75,20 @@ if(isset($file) && $file!=""){
   <tr>
     <td align="center"><? include(PATH_TO_LMO."/lmo-spieltagsmenu.php")?></td>
   </tr>
-  <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0"><tr>
-    <td class="lmost4" colspan="<?PHP echo $breite; ?>"><?PHP echo $st; ?>. <?PHP echo $text[2]; ?>
-<?PHP if($dats==1){ ?>
-  <?PHP if($datum1[$st-1]!=""){echo " ".$text[3]." ".$datum1[$st-1];} ?>
-  <?PHP if($datum2[$st-1]!=""){echo " ".$text[4]." ".$datum2[$st-1];} ?>
-<?PHP } ?>
-    </td>
-  </tr>
+  <tr>
+    <td align="center" class="lmost3">
+      <table class="lmostb" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+    
+          <td class="lmost4" colspan="<?=$breite; ?>"><?=$st; ?>. <?=$text[2]; ?>
+<?  if($dats==1){ ?>
+  <?  if($datum1[$st-1]!=""){echo " ".$text[3]." ".$datum1[$st-1];} ?>
+  <?  if($datum2[$st-1]!=""){echo " ".$text[4]." ".$datum2[$st-1];} ?>
+<?  } ?>
+          </td>
+        </tr>
 
-<?PHP
+<? 
 $datsort= $mterm[$st-1];
 asort($datsort);
 reset($datsort);
@@ -93,11 +97,11 @@ $i=$key;
 if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ ?>
   <tr>
 
-<?PHP if($datm==1){
+<?  if($datm==1){
   if($mterm[$st-1][$i]>0){$dum1=strftime($datf, $mterm[$st-1][$i]);}else{$dum1="";}
 ?>
-    <td class="lmost5"><nobr><?PHP echo $dum1; ?></nobr></td>
-<?PHP }
+    <td class="lmost5"><nobr><?=$dum1; ?></nobr></td>
+<?  }
 
 // * Spielfrei-Hack-Beginn1	- Autor: Bernd Hoyer - eMail: info@salzland-info.de
 	if (($anzteams-($anzst/2+1))!=0){
@@ -111,7 +115,7 @@ if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ ?>
     <td class="lmost5" width="2">&nbsp;</td>
     <td class="lmost5" align="right"><nobr>
 
-<?PHP
+<? 
   echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
   if (($favteam>0) && ($favteam==$teama[$st-1][$i])){echo "<b>";}
   echo $teams[$teama[$st-1][$i]];
@@ -123,7 +127,7 @@ if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ ?>
     <td class="lmost5" align="center" width="10">-</td>
     <td class="lmost5" align="left"><nobr>
 
-<?PHP
+<? 
   echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
   if (($favteam>0) && ($favteam==$teamb[$st-1][$i])){echo "<b>";}
   echo $teams[$teamb[$st-1][$i]];
@@ -133,36 +137,62 @@ if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ ?>
 
     </nobr></td>
     <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5" align="right"><?PHP echo $goala[$st-1][$i]; ?></td>
+    <td class="lmost5" align="right"><?=$goala[$st-1][$i]; ?></td>
     <td class="lmost5" align="center" width="8">:</td>
-    <td class="lmost5" align="left"><?PHP echo $goalb[$st-1][$i]; ?></td>
-  <?PHP if($spez==1){ ?>
+    <td class="lmost5" align="left"><?=$goalb[$st-1][$i]; ?></td>
+  <?  if($spez==1){ ?>
     <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><?PHP echo $mspez[$st-1][$i]; ?></td>
-  <?PHP } ?>
+    <td class="lmost5"><?=$mspez[$st-1][$i]; ?></td>
+  <?  } ?>
     <td class="lmost5" width="2">&nbsp;</td>
-    <td class="lmost5"><?PHP
+    <td class="lmost5"><? 
+  /** Spielbericht verlinken
+   */
   if($urlb==1){
-    if($mberi[$st-1][$i]!=""){echo "<a href=\"".$mberi[$st-1][$i]."\" target=\"_blank\" title=\"".$text[270]."\"><img src='img/lmo-st1.gif' width=\"10\" height=\"12\" border=\"0\"></a>";}else{echo "&nbsp;";}
+    if($mberi[$st-1][$i]!=""){
+      echo "<a href='".$mberi[$st-1][$i]."'  target='_blank' title='".$text[270]."'><img src='img/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'><!--[if IE]><table><tr><td style=\"width: 25em\"><![endif]-->".nl2br($text[270])."<!--[if IE]></table><![endif]--></span></a>";
+    }else{
+      echo "&nbsp;";
     }
-  if(($mnote[$st-1][$i]!="") || ($msieg[$st-1][$i]>0)){
-    $dummy=addslashes($teams[$teama[$st-1][$i]]." - ".$teams[$teamb[$st-1][$i]]." ".$goala[$st-1][$i].":".$goalb[$st-1][$i]);
-    if($msieg[$st-1][$i]==3){$dummy=$dummy." / ".$goalb[$st-1][$i].":".$goala[$st-1][$i];}
-    if($spez==1){$dummy=$dummy." ".$mspez[$st-1][$i];}
-    if($msieg[$st-1][$i]==1){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teama[$st-1][$i]]." ".$text[211]);}
-    if($msieg[$st-1][$i]==2){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);}
-    if($msieg[$st-1][$i]==3){$dummy=$dummy."\\n\\n".$text[219].":\\n".addslashes($text[212]);}
-    if($mnote[$st-1][$i]!=""){$dummy=$dummy."\\n\\n".$text[22].":\\n".$mnote[$st-1][$i];}
-    echo "<a href=\"javascript:alert('".$dummy."');\" title=\"".str_replace("\\n","&#10;",$dummy)."\"><img src='img/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\"></a>";
+  }
+  /** Notizen anzeigen
+   *
+   * Da IE kein max-width kann, Workaround lt. http://www.bestviewed.de/css/bsp/maxwidth/
+   */
+  if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
+    $lmo_spielnotiz="<strong>".$teams[$teama[$st-1][$i]]."</strong> - <strong>".$teams[$teamb[$st-1][$i]]."</strong> ".$goala[$st-1][$i].":".$goalb[$st-1][$i];
+    //Beidseitiges Ergebnis
+    if ($msieg[$st-1][$i]==3) {
+      $lmo_spielnotiz.=" / ".$goalb[$st-1][$i].":".$goala[$st-1][$i];
     }
-  else{
+    if ($spez==1) {
+      $lmo_spielnotiz.=" ".$mspez[$st-1][$i];
+    }
+    //Grüner Tisch: Heimteam siegt
+    if ($msieg[$st-1][$i]==1) {
+      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".$teams[$teama[$st-1][$i]]." ".$text[211];
+    }
+    //Grüner Tisch: Gastteam siegt
+    if ($msieg[$st-1][$i]==2) {
+      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);
+    }
+    //Beidseitiges Ergebnis
+    if ($msieg[$st-1][$i]==3) {
+      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($text[212]);
+    }
+    //Allgemeine Notiz
+    if ($mnote[$st-1][$i]!="") {
+      $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i];
+    }
+    echo "<a href='#' onclick=\"alert('".mysql_escape_string(strip_tags($lmo_spielnotiz))."');window.focus();return false;\"><span class='popup'><!--[if IE]><table><tr><td style=\"width: 25em\"><![endif]-->".nl2br($lmo_spielnotiz)."<!--[if IE]></table><![endif]--></span><img src='img/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+  } else {
     echo "&nbsp;";
-    }
+  }
   ?></td>
   </tr>
   
   
-<?PHP
+<? 
   }}
   if($minus==2){$dummy=" colspan=\"3\" align=\"center\"";}else{$dummy=" align=\"right\"";}
   $breite=11;
@@ -173,7 +203,7 @@ if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){ ?>
 <!-- * LMO-Zustat-Addon-Beginn	- Autor: Bernd Hoyer - eMail: info@salzland-info.de  -->
 <tr>  
 <td class="lmomain2" align="center">
-<?PHP
+<? 
 if ($einzutore==1) { 
 $strs=".l98";
 $stre=".l98.php";
@@ -194,7 +224,7 @@ echo $text[4000].$text[38].": ".$zutore[$st]."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs
 <tr>  
 <td class="lmost2" align="center">
 
-<?PHP } 
+<?  } 
 if ($einspielfrei==1) { 
 if (($anzteams-($anzst/2+1))!=0){
 	$spielfreic=array_merge($spielfreia,$spielfreib);
@@ -220,71 +250,71 @@ if (($anzteams-($anzst/2+1))!=0){
 <!-- * Spielfrei-Hack-Ende2 - Autor: Bernd Hoyer - eMail: info@salzland-info.de-->  
   <tr>
     <td><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
-<?PHP $st0=$st-1;if($st>1){echo "<td class=\"lmost2\" align='left'><a href=\"".$addr.$st0."\" title=\"".$text[6]."\">".$text[5]."</a></td>";} ?>
-<?PHP $st0=$st+1;if($st<$anzst){echo "<td align=\"right\" class=\"lmost2\"><a href=\"".$addr.$st0."\" title=\"".$text[8]."\">".$text[7]."</a></td>";} ?>
+<?  $st0=$st-1;if($st>1){echo "<td class=\"lmost2\" align='left'><a href=\"".$addr.$st0."\" title=\"".$text[6]."\">".$text[5]."</a></td>";} ?>
+<?  $st0=$st+1;if($st<$anzst){echo "<td align=\"right\" class=\"lmost2\"><a href=\"".$addr.$st0."\" title=\"".$text[8]."\">".$text[7]."</a></td>";} ?>
     </tr></table></td>
   </tr>
 
 
 
   <tr><td align="center" class="lmost3"><table class="lmostb" cellspacing="0" cellpadding="0" border="0">
-<?PHP
+<? 
   if($tabonres==2){
 ?>
   <tr>
     <td class="lmost4" colspan="7">&nbsp;</td>
-    <td class="lmost4" colspan="<?PHP echo $breite; ?>">&nbsp;
+    <td class="lmost4" colspan="<?=$breite; ?>">&nbsp;
     <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="<?PHP echo $breite; ?>"><?PHP echo $text[41]; ?></td>
+    <td class="lmost4" colspan="<?=$breite; ?>"><?=$text[41]; ?></td>
     <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="<?PHP echo $breite; ?>"><?PHP echo $text[42]; ?></td>
+    <td class="lmost4" colspan="<?=$breite; ?>"><?=$text[42]; ?></td>
   </tr>
-<?PHP
+<? 
     }
 ?>
 
   <tr>
     <td class="lmost4" colspan="7">&nbsp;</td>
-    <td class="lmost4" align="right"><?PHP echo $text[33]; ?></td>
-    <td class="lmost4" align="right"><?PHP echo $text[34]; ?></td>
-    <?PHP if($hidr!=1){ echo"<td class=\"lmost4\" align=\"right\">".$text[35]."</td>"; } ?>
-    <td class="lmost4" align="right"><?PHP echo $text[36]; ?></td>
-    <?PHP if($tabpkt==0){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
+    <td class="lmost4" align="right"><?=$text[33]; ?></td>
+    <td class="lmost4" align="right"><?=$text[34]; ?></td>
+    <?  if($hidr!=1){ echo"<td class=\"lmost4\" align=\"right\">".$text[35]."</td>"; } ?>
+    <td class="lmost4" align="right"><?=$text[36]; ?></td>
+    <?  if($tabpkt==0){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
     <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="3" align="center"><?PHP echo $text[38]; ?></td>
-    <td class="lmost4" align="right"><?PHP echo $text[39]; ?></td>
-    <?PHP if($tabpkt==1){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
-<?PHP
+    <td class="lmost4" colspan="3" align="center"><?=$text[38]; ?></td>
+    <td class="lmost4" align="right"><?=$text[39]; ?></td>
+    <?  if($tabpkt==1){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
+<? 
   if($tabonres==2){
 ?>
     <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" align="right"><?PHP echo $text[33]; ?></td>
-    <td class="lmost4" align="right"><?PHP echo $text[34]; ?></td>
-    <?PHP if($hidr!=1){ echo"<td class=\"lmost4\" align=\"right\">".$text[35]."</td>"; } ?>
-    <td class="lmost4" align="right"><?PHP echo $text[36]; ?></td>
-    <?PHP if($tabpkt==0){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
+    <td class="lmost4" align="right"><?=$text[33]; ?></td>
+    <td class="lmost4" align="right"><?=$text[34]; ?></td>
+    <?  if($hidr!=1){ echo"<td class=\"lmost4\" align=\"right\">".$text[35]."</td>"; } ?>
+    <td class="lmost4" align="right"><?=$text[36]; ?></td>
+    <?  if($tabpkt==0){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
     <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="3" align="center"><?PHP echo $text[38]; ?></td>
-    <td class="lmost4" align="right"><?PHP echo $text[39]; ?></td>
-    <?PHP if($tabpkt==1){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
+    <td class="lmost4" colspan="3" align="center"><?=$text[38]; ?></td>
+    <td class="lmost4" align="right"><?=$text[39]; ?></td>
+    <?  if($tabpkt==1){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
     <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" align="right"><?PHP echo $text[33]; ?></td>
-    <td class="lmost4" align="right"><?PHP echo $text[34]; ?></td>
-    <?PHP if($hidr!=1){ echo"<td class=\"lmost4\" align=\"right\">".$text[35]."</td>"; } ?>
-    <td class="lmost4" align="right"><?PHP echo $text[36]; ?></td>
-    <?PHP if($tabpkt==0){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
+    <td class="lmost4" align="right"><?=$text[33]; ?></td>
+    <td class="lmost4" align="right"><?=$text[34]; ?></td>
+    <?  if($hidr!=1){ echo"<td class=\"lmost4\" align=\"right\">".$text[35]."</td>"; } ?>
+    <td class="lmost4" align="right"><?=$text[36]; ?></td>
+    <?  if($tabpkt==0){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
     <td class="lmost4" width="2">&nbsp;</td>
-    <td class="lmost4" colspan="3" align="center"><?PHP echo $text[38]; ?></td>
-    <td class="lmost4" align="right"><?PHP echo $text[39]; ?></td>
-    <?PHP if($tabpkt==1){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
-<?PHP
+    <td class="lmost4" colspan="3" align="center"><?=$text[38]; ?></td>
+    <td class="lmost4" align="right"><?=$text[39]; ?></td>
+    <?  if($tabpkt==1){ echo"<td class=\"lmost4\" width=\"2\">&nbsp;</td><td class=\"lmost4\"".$dummy.">".$text[37]."</td>"; } ?>
+<? 
     }
 ?>
   
   
   </tr>
 
-<?PHP
+<? 
   $j=1;
   for($x=1;$x<=$anzteams;$x++){
     $i=intval(substr($tab0[$x-1],34));
@@ -300,15 +330,15 @@ if (($anzteams-($anzst/2+1))!=0){
       }
 ?>
   <tr>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$x.$dumm2; ?></td>
-<?PHP
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$x.$dumm2; ?></td>
+<? 
   $y=0;
   if($endtab>1){
     if($platz0[$i]<$platz1[$i]){$y=1;}
     elseif($platz0[$i]>$platz1[$i]){$y=2;}
     }
   echo "<td class=\"".$dumm1."\"";
-  echo "><img src='img/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\">";
+  echo "><img src='img/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\" alt=''>";
   echo "</td>";
 ?>
            <td class="<?=$dumm1?>" align="center"><?
@@ -317,39 +347,68 @@ if (($anzteams-($anzst/2+1))!=0){
              ?><img border="0" src="<?=URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i])?>.gif" <?=$imgdata[3]?> alt=""><?
       }
         ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="left"><nobr>
-<?PHP
+    <td class="<?=$dumm1; ?>" align="left"><nobr>
+<? 
   if(($teamu[$i]!="") && ($urlt==1)){echo "<a href=\"".$teamu[$i]."\" target=\"_blank\" title=\"".$text[46]."\">";}
   echo $dummy.$teams[$i].$dumm2;
   if(($teamu[$i]!="") && ($urlt==1)){echo "</a>";}
 ?>
     </nobr></td>
-    <td class="<?PHP echo $dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?PHP echo $dumm1; ?>">
+    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
+    <td class="<?=$dumm1; ?>">
 
-<?PHP
-  if(($teamn[$i]!="") || (($strafp[$i]!=0) || ($strafm[$i]!=0))){
-    $dum27=addslashes($teams[$i]);
-    if(($strafp[$i]!=0) || ($strafm[$i]!=0)){
-      $dum27=$dum27."\\n\\n".$text[128].": ".$strafp[$i];
-      if($minus==2){$dum27=$dum27.":".$strafm[$i];}
+<? 
+  /** Notizen anzeigen
+   *
+   * Achtung: Da beim Speichern Strafpunkte/-tore positiv sind und Bonuspunkte negativ (altes System des LMO)
+   * muss mit -1 multipliziert werden, um die Punkte/Tore richtig anzuzeigen
+   */
+  if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
+    if (file_exists(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif")) {
+      $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$teams[$i].".gif");
+      $lmo_tabellennotiz="<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($teams[$i]).".gif' {$imgdata[3]} alt=''>";
+    }
+    $lmo_tabellennotiz.=" <strong>".$teams[$i]."</strong>";
+    //Straf-/Bonuspunkte
+    if ($strafp[$i]!=0 || $strafm[$i]!=0) {
+      $lmo_tabellennotiz.="\n\n<strong>".$text[128].":</strong> ";
+      //Punkte
+      $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*$strafp[$i]):((-1)*$strafp[$i]);
+      //Minuspunkte
+      if ($minus==2) {
+        $lmo_tabellennotiz.=":".$strafm[$i]<0?"+".((-1)*$strafm[$i]):((-1)*$strafm[$i]);
       }
-    if($teamn[$i]!=""){$dum27=$dum27."\\n\\n".$text[22].":\\n".$teamn[$i];}
-    echo "<a href=\"javascript:alert('".$dum27."');\" title=\"".str_replace("\\n","&#10;",$dum27)."\"><img src='img/lmo-st2.gif' width=\"10\" height=\"12\" border=\"0\"></a>";
+      //Ab ST
+      if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
     }
-  else{
+    //Straf-/Bonustore
+    if ($torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
+      $lmo_tabellennotiz.="\n<strong>".$text[522].":</strong> ";
+      //Tore
+      $lmo_tabellennotiz.=$torkorrektur1[$i]<0?"+".((-1)*$torkorrektur1[$i]).":":((-1)*$torkorrektur1[$i].":");
+      //Gegentore
+      $lmo_tabellennotiz.=$torkorrektur2[$i]<0?"+".((-1)*$torkorrektur2[$i]):((-1)*$torkorrektur2[$i]);
+      //Ab ST
+      if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
+    }
+    //Teamnotizen
+    if ($teamn[$i]!="") {
+      $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong> ".$teamn[$i];
+    }
+    echo "<a href='#' onclick=\"alert('".mysql_escape_string(strip_tags($lmo_tabellennotiz))."');window.focus();return false;\"><img src='img/lmo-st2.gif' width='10' height='12' border='0' alt=''><span class='popup'><!--[if IE]><table><tr><td style=\"width: 25em\"><![endif]-->".nl2br($lmo_tabellennotiz)."<!--[if IE]></table><![endif]--></span></a>";
+  } else {
     echo "&nbsp;";
-    }
+  }
 ?>
     </td>
-    <td class="<?PHP echo $dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$spiele[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$siege[$i].$dumm2; ?></td>
-<?PHP if($hidr!=1){ ?>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$unent[$i].$dumm2; ?></td>
-<?PHP } ?>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$nieder[$i].$dumm2; ?></td>
-<?PHP
+    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$spiele[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$siege[$i].$dumm2; ?></td>
+<?  if($hidr!=1){ ?>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$unent[$i].$dumm2; ?></td>
+<?  } ?>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$nieder[$i].$dumm2; ?></td>
+<? 
     if($tabpkt==0){
       echo "<td class=\"".$dumm1."\" width=\"2\">&nbsp;</td><td class=\"".$dumm1."\" align=\"right\"><b>".$punkte[$i]."</b></td>";
       if($minus==2){
@@ -358,12 +417,12 @@ if (($anzteams-($anzst/2+1))!=0){
         }
       }
 ?>
-    <td class="<?PHP echo $dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$etore[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="center" width="4"><?PHP echo $dummy; ?>:<?PHP echo $dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>"><?PHP echo $dummy.$atore[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$dtore[$i].$dumm2; ?></td>
-<?PHP
+    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$etore[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>"><?=$dummy.$atore[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$dtore[$i].$dumm2; ?></td>
+<? 
     if($tabpkt==1){
       echo "<td class=\"".$dumm1."\" width=\"2\">&nbsp;</td><td class=\"".$dumm1."\" align=\"right\"><b>".$punkte[$i]."</b></td>";
       if($minus==2){
@@ -374,12 +433,12 @@ if (($anzteams-($anzst/2+1))!=0){
     if($tabonres==2){
     $dumm1="lmotab6";
 ?>
-    <td class="<?PHP echo $dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$hspiele[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$hsiege[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$hunent[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$hnieder[$i].$dumm2; ?></td>
-<?PHP
+    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hspiele[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hsiege[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hunent[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hnieder[$i].$dumm2; ?></td>
+<? 
     if($tabpkt==0){
       echo "<td class=\"".$dumm1."\" width=\"2\">&nbsp;</td><td class=\"".$dumm1."\" align=\"right\"><b>".$hpunkte[$i]."</b></td>";
       if($minus==2){
@@ -388,12 +447,12 @@ if (($anzteams-($anzst/2+1))!=0){
         }
       }
 ?>
-    <td class="<?PHP echo $dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$hetore[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="center" width="4"><?PHP echo $dummy; ?>:<?PHP echo $dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>"><?PHP echo $dummy.$hatore[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$hdtore[$i].$dumm2; ?></td>
-<?PHP
+    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hetore[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>"><?=$dummy.$hatore[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$hdtore[$i].$dumm2; ?></td>
+<? 
     if($tabpkt==1){
       echo "<td class=\"".$dumm1."\" width=\"2\">&nbsp;</td><td class=\"".$dumm1."\" align=\"right\"><b>".$hpunkte[$i]."</b></td>";
       if($minus==2){
@@ -403,12 +462,12 @@ if (($anzteams-($anzst/2+1))!=0){
       }
     $dumm1="lmotab7";
 ?>
-    <td class="<?PHP echo $dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$aspiele[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$asiege[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$aunent[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$anieder[$i].$dumm2; ?></td>
-<?PHP
+    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$aspiele[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$asiege[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$aunent[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$anieder[$i].$dumm2; ?></td>
+<? 
     if($tabpkt==0){
       echo "<td class=\"".$dumm1."\" width=\"2\">&nbsp;</td><td class=\"".$dumm1."\" align=\"right\"><b>".$apunkte[$i]."</b></td>";
       if($minus==2){
@@ -417,12 +476,12 @@ if (($anzteams-($anzst/2+1))!=0){
         }
       }
 ?>
-    <td class="<?PHP echo $dumm1; ?>" width="2">&nbsp;</td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$aetore[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="center" width="4"><?PHP echo $dummy; ?>:<?PHP echo $dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>"><?PHP echo $dummy.$aatore[$i].$dumm2; ?></td>
-    <td class="<?PHP echo $dumm1; ?>" align="right"><?PHP echo $dummy.$adtore[$i].$dumm2; ?></td>
-<?PHP
+    <td class="<?=$dumm1; ?>" width="2">&nbsp;</td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$aetore[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>"><?=$dummy.$aatore[$i].$dumm2; ?></td>
+    <td class="<?=$dumm1; ?>" align="right"><?=$dummy.$adtore[$i].$dumm2; ?></td>
+<? 
     if($tabpkt==1){
       echo "<td class=\"".$dumm1."\" width=\"2\">&nbsp;</td><td class=\"".$dumm1."\" align=\"right\"><b>".$apunkte[$i]."</b></td>";
       if($minus==2){
@@ -433,13 +492,13 @@ if (($anzteams-($anzst/2+1))!=0){
 	  }
 ?>
   </tr>
-<?PHP } ?>
+<?  } ?>
 </table>
 
 <!-- * LMO-Zustat-Addon-Beginn	- Autor: Bernd Hoyer - eMail: info@salzland-info.de  -->
 <tr>  
 <td class="lmomain2" align="center">
-<?PHP 
+<?  
 
 if ($einzutoretab==1) {
 $strs=".l98";
@@ -458,6 +517,4 @@ echo $text[4000].$text[38].": ".$gzutore."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".
 </tr>
 <!-- * LMO-Zustat-Addon-ENDE	- Autor: Bernd Hoyer - eMail: info@salzland-info.de -->
 
-</td></tr>
-  
 </table>

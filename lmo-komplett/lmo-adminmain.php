@@ -37,29 +37,31 @@ if($action=="admin"){
   include_once(PATH_TO_LMO."/lmo-adminjavascript.php");
 
 ?>
-<table class="lmomaina" cellspacing="0" cellpadding="0" border="0" width="95%">
+<table class="lmomaina" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td class="lmomain0" colspan="2" align="center">
       <? echo "{$text[77]} {$text[54]}"; ?>
     </td>
     <td class="lmomain2" align="right"><?
-  $handle=opendir ('.');
-  while (false!==($f=readdir($handle))) {
-    if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
-      if ($lang[1]=="") $lang[1]=$text[505];?>
-        <a href="<?="{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;todo={$todo}"?>" onclick="return chklmolink(this.href)" title="<?=$lang[1];?>"
-        ><?
-      $lang[1]==""?$imgfile='img/'.$text[505].".gif":$imgfile='img/'.$lang[1].".gif";
-      if (!file_exists($imgfile)) {
-        echo $lang[1];
-      }else{
-        $c=@getimagesize($imgfile);
-        echo "<img src='{$imgfile}' border='1' title='{$lang[1]}' {$c[3]} alt='{$lang[1]}'>";
-      }
-      ?></a><?
-    } 
-  }
-  closedir($handle);?>
+  $handle=opendir (PATH_TO_LANGDIR);
+    while (false!==($f=readdir($handle))) {
+      if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
+        if ($lang[1]=="") $lang[1]=$text[505];
+        if ($lang[1]!=$lmouserlang) {
+          echo "<a href='{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}' title='{$lang[1]}'>";
+          $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
+          
+          if (!@fopen($imgfile,"rb")) {
+            echo $lang[1];
+          }else{
+            $c=@getimagesize($imgfile);
+            echo "<img src='{$imgfile}' border='1' title='{$lang[1]}' {$c[3]} alt='{$lang[1]}'>";
+          }
+          echo "</a> ";
+        }
+      } 
+    }
+    closedir($handle);?>
     </td>
   </tr>
   <tr>
@@ -68,6 +70,12 @@ require_once(PATH_TO_LMO."/lmo-openfile.php");
 if($_SESSION['lmouserok']==2){
   if($todo!="new"){echo "<a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink(this.href);' title='{$text[79]}'>{$text[78]}</a>";}else{echo $text[78];}
   echo "&nbsp;";
+  
+// Importfunktion Anfang
+  if($todo!="import"){echo "<a href='{$adda}import&amp;imppage=".$newpage."' onclick='return chklmolink(this.href);' title=\""."Eine neue Liga aus einem Spielplan importieren"."\">"."Import"."</a>";}else{echo "Import";}
+  echo "&nbsp;";
+// Importfunktion Ende
+  
   if($todo!="open"){echo "<a href='{$adda}open' onclick='return chklmolink(this.href);' title='{$text[81]}'>{$text[80]}</a>";}else{echo $text[80];}
   echo "&nbsp;";
   if($todo!="delete"){echo "<a href='{$adda}delete' onclick='return chklmolink(this.href);' title='{$text[83]}'>{$text[82]}</a>";}else{echo $text[82];}
@@ -141,6 +149,11 @@ elseif($_SESSION['lmouserok']==1){
     elseif($todo=="tippuseredit"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippuseredit.php");}
     elseif($todo=="tippoptions"){require(PATH_TO_ADDONDIR."/tipp/lmo-admintippoptions.php");}
     elseif($todo==""){require(PATH_TO_LMO."/lmo-adminpad.php");}
+    
+// Importer Start
+  	elseif($todo=="import"){require(PATH_TO_ADDONDIR."/limporter/lmo-adminimport.php");}
+// Importer Ende
+    
   }
   elseif($_SESSION['lmouserok']==1){
     if($todo=="open"){require(PATH_TO_LMO."/lmo-adminopen.php");}

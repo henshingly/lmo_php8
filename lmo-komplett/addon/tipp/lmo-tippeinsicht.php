@@ -44,16 +44,16 @@ if($file!="" && $todo=="einsicht" && $tipp_tippeinsicht==1){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?></font>
+    <?PHP if($_SESSION["lmotipperok"]==5){echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;}}else{echo $text['tipp'][158];} ?>
   </td></tr>
 <?PHP if($tipp_einsichterst==1){ ?><tr><td class="lmost4" align="center"><?PHP echo $text['tipp'][220]." ".$text['tipp'][216]; ?></td></tr><?PHP } ?>
 <?PHP if($tipp_einsichterst==2){ ?><tr><td class="lmost4" align="center"><?PHP echo $text['tipp'][220]." ".$text['tipp'][217]; ?></td></tr><?PHP } ?>
   <tr>
     <td align="center"><table cellspacing="0" cellpadding="0" border="0"><tr>
 <?PHP
-  $addr=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;start=".$start."&amp;st=";
-  $addt=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;endtab=&amp;nick=";
-  $addt3=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;PHPSESSID=".$PHPSESSID."&amp;st=".$st."&amp;start=";
+  $addr=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;start=".$start."&amp;st=";
+  $addt=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=tabelle&amp;file=".$file."&amp;endtab=&amp;nick=";
+  $addt3=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=einsicht&amp;file=".$file."&amp;st=".$st."&amp;start=";
   
   echo "<td align=\"right\" valign=\"top\" class=\"lmost1\" colspan=\"3\" rowspan=\"4\">";
   if($lmtype==1){echo $text[370];}else{echo $text[2];}echo ":";
@@ -130,7 +130,7 @@ for($l=$start-1;$l<=($ende+2);$l++){
   <?PHP
   if($l>=$start && $l<$ende){echo "<nobr>".$tippernick[$k]."</nobr>"; } // Nickname links
   elseif($l==$ende && $anztipper>0){echo "<nobr>".$text['tipp'][188]."</nobr>"; } // Tipptendenz 
-  elseif($l==($ende+1) && $anztipper>0 && $tipp_tippmodus==1){echo "<nobr>"."&Oslash;-".$text['tipp'][30]."</nobr>"; } // Durchschnittstipp ?>
+  elseif($l==($ende+1) && $anztipper>0 && $tipp_tippmodus==1){echo "<nobr>"."Ø-".$text['tipp'][30]."</nobr>"; } // Durchschnittstipp ?>
   </td>
   <?PHP
   $punktetipper=0;
@@ -223,7 +223,7 @@ for($l=$start-1;$l<=($ende+2);$l++){
               $dummy1="";$dummy2="";$dummy3="";$dummy4="";
               if($punktespiel==$tipp_rergebnis*$jkspfaktor || $punktespiel==($tipp_rergebnis+$tipp_rremis)*$jkspfaktor){$dummy1="<b>";$dummy4="</b>";}
               elseif($punktespiel==$tipp_rtendenzdiff*$jkspfaktor || $punktespiel==($tipp_rtendenzdiff+$tipp_rremis)*$jkspfaktor){$dummy2="<b>";$dummy3="</b>";}
-              if($jkspfaktor>1){echo "<font color=red>";}
+              if($jkspfaktor>1){echo "<p class='error'>";}
               if($lmtype!=0){ 
                 if($tipp_rtor>0 && ($punktespiel==$tipp_rtor*$jkspfaktor || $punktespiel==($tipp_rtendenz+$tipp_rtor)*$jkspfaktor)){
                   if($goala[$st-1][$i][$n]==$tippa[$k][$i][$n]){$dummy1="<b>";$dummy2="</b>";}
@@ -238,7 +238,7 @@ for($l=$start-1;$l<=($ende+2);$l++){
                   }
                 echo $dummy1.$tippa[$k][$i].$dummy2.":".$dummy3.$tippb[$k][$i].$dummy4;
                 }
-              if($jkspfaktor>1){echo "</font>";}
+              if($jkspfaktor>1){echo "";}
               echo " <small>";
               if($punktespiel>=0){echo $punktespiel;}else{echo "&nbsp;";}
               echo "</small></nobr>";
@@ -252,7 +252,7 @@ for($l=$start-1;$l<=($ende+2);$l++){
                 <td align="center" class="lmocross5">
                 <?PHP
                 }
-              if($jkspfaktor>1){echo "<font color=red>";}
+              if($jkspfaktor>1){echo "<p class='error'>";}
               if($lmtype!=0){ 
                 if($tippa[$k][$i][$n]=="_" || $tippb[$k][$i][$n]=="_"){echo "_";}
                 elseif($tippa[$k][$i][$n]==$tippb[$k][$i][$n]){echo "0";}
@@ -265,7 +265,7 @@ for($l=$start-1;$l<=($ende+2);$l++){
                 elseif($tippa[$k][$i]>$tippb[$k][$i]){echo "1";}
                 elseif($tippa[$k][$i]<$tippb[$k][$i]){echo "2";}
                 }
-              if($jkspfaktor>1){echo "</font>";}
+              if($jkspfaktor>1){echo "";}
               } 
             if($punktespiel>0){$punktetipper+=$punktespiel;}
             } ?>

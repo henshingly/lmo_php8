@@ -39,9 +39,9 @@ if($tippfile!=""){
 
     $datei = fopen($tippfile,"wb");
     if (!$datei) {
-      echo "<font color=\"#ff0000\">".$text[283]."</font>";
+      echo "<p class='error'>".$text[283]."</p>";
       exit;
-      }elseif($start1==0){echo "<font color=\"#008800\">".$text['tipp'][41]."<br></font>";}
+      }elseif($start1==0){echo "<p class='message'>".$text['tipp'][41]."<br></p>";}
     flock($datei,2);
 
     $stsave=array_pad($array,116,"0");

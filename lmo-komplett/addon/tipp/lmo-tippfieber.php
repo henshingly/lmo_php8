@@ -37,12 +37,12 @@ if($file!="" && $tipp_tippfieber==1){
   if(!isset($kurvenmodus)){$kurvenmodus=1;}
   $addg=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=fieber&amp;file=".$file."&amp;stat1=";
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcgraph.php");
-  echo $anztipper;
+  //echo $anztipper;
 ?>
 <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
   <input type="hidden" name="action" value="tipp">
   <input type="hidden" name="todo" value="fieber">
-  <input type="hidden" name="file" value="<? echo $file; ?>">
+  <input type="hidden" name="file" value="<?=$file; ?>">
   <input type="hidden" name="save" value="1">
   <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
     <tr>
@@ -71,7 +71,7 @@ if($file!="" && $tipp_tippfieber==1){
           <option value="-1"<?if($stat2==-1){echo " selected";}?>>___</option><?
   for($i=0;$i<$anztipper;$i++){
     $j=intval(substr($tab[$i],-7));?>
-          <option value="$j"<?if($stat2==$j){echo " selected";}?>><?=$tippernick[$j]?></option><?
+          <option value="<?=$j?>"<?if($stat2==$j){echo " selected";}?>><?=$tippernick[$j]?></option><?
     }?>
         </select>
       </td>
@@ -80,7 +80,7 @@ if($file!="" && $tipp_tippfieber==1){
           <option value="1"<?if($kurvenmodus==1){echo " selected";}?>><?=$text['tipp'][235]?></option>
           <option value="2"<?if($kurvenmodus==2){echo " selected";}?>><?=$text['tipp'][232]?></option>
           <option value="3"<?if($kurvenmodus==3){echo " selected";}?>><?=$text['tipp'][234]?></option>
-          <option value="4"<?if($kurvenmodus==4){echo " selected";}?>><?=$text['tipp'][232]?></option>
+          <option value="4"<?if($kurvenmodus==4){echo " selected";}?>><?=$text['tipp'][233]?></option>
         </select>
       </td>
       <td>
@@ -98,15 +98,15 @@ if($file!="" && $tipp_tippfieber==1){
     if ($stat1<0) {
       echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text['tipp'][284]."<br>&nbsp;</td></tr>";
     } else {
-      $dummy="lmo-tipppaintgraph.php?pganz=";
+      $dummy=URL_TO_ADDONDIR."/tipp/lmo-tipppaintgraph.php?pganz=";
       if ($stat2>=0) {
         $dummy=$dummy."2";
       } else {
         $dummy=$dummy."1";
       }
-      $dummy=$dummy."&amp;pgteam1=".htmlentities($tippernick[$stat1]);
+      $dummy=$dummy."&pgteam1=".htmlentities($tippernick[$stat1]);
       if ($stat2>=0) {
-        $dummy=$dummy."&amp;pgteam2=".htmlentities($tippernick[$stat2]);
+        $dummy=$dummy."&pgteam2=".htmlentities($tippernick[$stat2]);
       }
       if ($kurvenmodus==1) {
         if ($stat2>=0) {
@@ -133,10 +133,10 @@ if($file!="" && $tipp_tippfieber==1){
           $max=max($platz1[$stat1]);
         }
       }
-      $dummy=$dummy."&amp;max=".$max;
-      $dummy=$dummy."&amp;pgst=".$anzst;
+      $dummy=$dummy."&max=".$max;
+      $dummy=$dummy."&pgst=".$anzst;
       if ($kurvenmodus<4) {
-        $dummy=$dummy."&amp;pgplatz1=";
+        $dummy=$dummy."&pgplatz1=";
         if ($kurvenmodus==1) {
           for ($j=0; $j<$anzst; $j++) {
             $dummy.=$tipppunkte[$stat1][$j].",";
@@ -149,7 +149,7 @@ if($file!="" && $tipp_tippfieber==1){
         $dummy.="0";
       }
       if ($kurvenmodus>2) {
-        $dummy=$dummy."&amp;pgplatz1a=";
+        $dummy=$dummy."&pgplatz1a=";
         for ($j=0; $j<$anzst; $j++) {
           $dummy.=$platz1[$stat1][$j].",";
         }
@@ -157,7 +157,7 @@ if($file!="" && $tipp_tippfieber==1){
       }
       if ($stat2>=0) {
         if ($kurvenmodus<4) {
-          $dummy=$dummy."&amp;pgplatz2=";
+          $dummy=$dummy."&pgplatz2=";
           if ($kurvenmodus==1) {
             for ($j=0; $j<$anzst; $j++) {
               $dummy.=$tipppunkte[$stat2][$j].",";
@@ -170,22 +170,22 @@ if($file!="" && $tipp_tippfieber==1){
           $dummy.="0";
         }
         if ($kurvenmodus>2) {
-          $dummy=$dummy."&amp;pgplatz2a=";
+          $dummy=$dummy."&pgplatz2a=";
           for ($j=0; $j<$anzst; $j++) {
             $dummy.=$platz1[$stat2][$j].",";
           }
           $dummy.="0";
         }
       }
-      $dummy=$dummy."&amp;kmodus=".$kurvenmodus;
-      $dummy=$dummy."&amp;pgtext1=".$text[135];
+      $dummy=$dummy."&kmodus=".$kurvenmodus;
+      $dummy=$dummy."&pgtext1=".$text[135];
       //SPIELTAGE
       if ($kurvenmodus==1) {
-        $dummy=$dummy."&amp;pgtext2=".strtoupper($text['tipp'][38]);
+        $dummy=$dummy."&pgtext2=".strtoupper($text['tipp'][38]);
       }
       // PUNKTE
       else{
-        $dummy=$dummy."&amp;pgtext2=".$text[136];
+        $dummy=$dummy."&pgtext2=".$text[136];
       }
       //PLATZIERUNG
       ?>

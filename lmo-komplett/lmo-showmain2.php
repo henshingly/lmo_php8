@@ -89,21 +89,24 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   <style type='text/css'>@import url('".URL_TO_LMO."/lmo-style.php');</style>";
   
   //Sprachauswahl
+  
   if($sprachauswahl==1){
-    $handle=opendir (PATH_TO_LMO);
+    $handle=opendir (PATH_TO_LANGDIR);
     while (false!==($f=readdir($handle))) {
       if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
         if ($lang[1]=="") $lang[1]=$text[505];
-        $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;archiv={$archiv}' title='{$lang[1]}'>";
-        $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
-        
-        if (!@fopen($imgfile,"rb")) {
-          $output_sprachauswahl.=$lang[1];
-        }else{
-          $c=@getimagesize($imgfile);
-          $output_sprachauswahl.="<img src='{$imgfile}' border='1' title='{$lang[1]}' {$c[3]} alt='{$lang[1]}'>";
+        if ($lang[1]!=$lmouserlang) {
+          $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?lmouserlang={$lang[1]}&amp;action={$action}&amp;file={$file}&amp;archiv={$archiv}' title='{$lang[1]}'>";
+          $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
+          
+          if (!@fopen($imgfile,"rb")) {
+            $output_sprachauswahl.=$lang[1];
+          }else{
+            $c=@getimagesize($imgfile);
+            $output_sprachauswahl.="<img src='{$imgfile}' border='1' title='{$lang[1]}' {$c[3]} alt='{$lang[1]}'>";
+          }
+          $output_sprachauswahl.="</a> ";
         }
-        $output_sprachauswahl.="</a> ";
       } 
     }
     closedir($handle);
@@ -117,7 +120,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   
       //Kalenderlink
       if($datc==1){
-        $output_kalender.=$action!='cal'?         "<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}</a>":   $text[140];
+        $output_kalender.=$action!='cal'?         "<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}<span class='popup'>{$text[141]}</span></a>":   $text[140];
         $output_kalender.='&nbsp;&nbsp;';
       }
       //Ergebnis/Tabelle
@@ -212,7 +215,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
 	if($action=="info")                                   {require(PATH_TO_LMO."/lmo-showinfo.php");}
     $p0="p1";$$p0=c(1).$addm.c(0);
   }elseif ($backlink==1 && $action!="tipp")                                  {require(PATH_TO_LMO."/lmo-showdir.php");}
-  if($action=="tipp") require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");
+  if($action=="tipp") {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");}
   $output_hauptteil.=ob_get_contents();ob_end_clean();
   
   if ($action!="tipp") {
@@ -280,7 +283,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   $output_tippspiel="";
   if ($eintippspiel==1) {
 	if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr($file,strrpos($file,"//")+1,-4))>-1)){
-      $output_tippspiel.="<a href='{$_SERVER['PHP_SELF']}?action=tipp&amp;file={$file}'>{$text['tipp'][0]}</a>&nbsp;&nbsp;";
+      $output_tippspiel.=$action!="tipp"?       "<a href='{$addm}tipp' title='{$text['tipp'][0]}'>{$text['tipp'][0]}</a>&nbsp;&nbsp;":$text['tipp'][0]."&nbsp;&nbsp;";
     }
   }
   d($template->toString());

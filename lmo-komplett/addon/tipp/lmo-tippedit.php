@@ -177,7 +177,7 @@ if($file!=""){
 
 <table class="lmosta" cellspacing="0" cellpadding="0" border="0">
   <tr><td align="center" class="lmost1">
-    <font color=black><?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?></font>
+    <?PHP echo $lmotippername;if($lmotipperverein!=""){echo " - ".$lmotipperverein;} ?>
   </td></tr>
   <tr>
     <td class="lmost4" align="center">

@@ -29,7 +29,7 @@ if ($datei) {
   }
   fclose($datei);
 }else{
-  echo "<font color=\"#ff0000\">".$text[283]."</font>";
+  echo "<p class='error'>".$text[283]."</p>";
   exit;
 }
 
