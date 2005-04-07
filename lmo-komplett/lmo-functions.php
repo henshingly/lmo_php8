@@ -62,7 +62,7 @@ function get_dir($verz) {
   if ($handle) {
     while ($file = readdir ($handle)) {
       if ($file != "." && $file != "..") {
-        if (is_dir($verz.$file)) {
+        if (is_dir(PATH_TO_LMO."/".$verz.$file)) {
           $ret[] = $file;
         }
       }
