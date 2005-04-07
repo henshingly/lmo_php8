@@ -3,7 +3,8 @@
   <!-- BEGIN Inhalt -->
   <tr style="<!--Style-->">
     <td align="right"><!--Platz--></td>
-    <td><!--TeamBild-->&nbsp;<acronym title="<!--TeamLang-->"><!--Team--></acronym></td>
+    <td align="center"><!--TeamBild--></td>
+    <td><acronym title="<!--TeamLang-->"><!--Team--></acronym></td>
     <td align="right"><!--Punkte--></td>
     <td align="right"><!--Tordifferenz--></td>
   </tr>
