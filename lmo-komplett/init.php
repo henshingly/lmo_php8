@@ -18,14 +18,14 @@
   */
 
 require(dirname(__FILE__).'/init-parameters.php');
-
+if (session_id()=="") session_start();
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
     $_SESSION['debug']=TRUE;
     @error_reporting(E_ALL);
     @ini_set('display_errors','1');
 }
+$_SERVER['QUERY_STRING']=isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'';
 
-if (session_id()=="") session_start();
 @ini_set("session.use_trans_sid","1");
 @ini_set("arg_separator.output","&amp;");
 //Workaround for register_globals TODO: fix that!!!
