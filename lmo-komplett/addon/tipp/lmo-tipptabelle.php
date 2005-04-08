@@ -434,8 +434,8 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
   if ($nick!="" && $tipp_tipptabelle==1) {
     echo "<a href=\"".$addt."\" title=\"".$text['tipp'][184]."\">".$text['tipp'][183]."</a>";
-  }
-} ?>
+  }?>
     </td>
   </tr>
-</table>
+</table><?
+}?>
