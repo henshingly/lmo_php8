@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class spieltag</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> spieltag</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Spieltag</p>
+<p class="description"><p>Repräsentiert einen Spieltag  <br />Eine Liga hat mehrere Spieltage.  <br />An einem Spieltag finden mehrere Partien statt.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_classes_php.html">/classes.php</a> (line <span class="field"><a href="..//__filesource/fsource_classLib__classes.php.html#a358">358</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+								<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">string</span>
+					<a href="#$bis" title="details" class="var-name">$bis</a>
+				</div>
+								<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">integer</span>
+					<a href="#$nr" title="details" class="var-name">$nr</a>
+				</div>
+								<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">array</span>
+					<a href="#$partien" title="details" class="var-name">$partien</a>
+				</div>
+								<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">string</span>
+					<a href="#$von" title="details" class="var-name">$von</a>
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+								
+				<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">spieltag</span>
+										<a href="#spieltag" title="details" class="method-name">spieltag</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$new_nr</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$new_von</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$new_bis</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$partien</span> = <span class="var-default">array()</span>])
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#addPartie" title="details" class="method-name">addPartie</a>
+											(<span class="var-type">Object</span>&nbsp;<span class="var-name">&$neuePartie</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#bisString" title="details" class="method-name">bisString</a>
+										()
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object Die</span>
+										<a href="#partieForNumber" title="details" class="method-name">&amp;partieForNumber</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$number</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object Die</span>
+										<a href="#partieForTeamNames" title="details" class="method-name">&amp;partieForTeamNames</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$heimName</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$gastName</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">object Die</span>
+										<a href="#partieForTeams" title="details" class="method-name">&amp;partieForTeams</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$heimNr</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$gastNr</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">integer</span>
+										<a href="#partienCount" title="details" class="method-name">partienCount</a>
+										()
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#removePartie" title="details" class="method-name">removePartie</a>
+											(<span class="var-type">objekt</span>&nbsp;<span class="var-name">&$rmvPartie</span>)
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/PrivateMethod.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#showDetails" title="details" class="method-name">showDetails</a>
+										()
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/PrivateMethod.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#showDetailsHTML" title="details" class="method-name">showDetailsHTML</a>
+										()
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#vonBisString" title="details" class="method-name">vonBisString</a>
+										()
+									</div>
+								
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#vonString" title="details" class="method-name">vonString</a>
+										()
+									</div>
+							</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$bis" id="$bis"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$bis</span>
+						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a377">377</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">bisDatum als string,</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$nr" id="$nr"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$nr</span>
+						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a365">365</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Spieltagsnummer,</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$partien" id="$partien"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$partien</span>
+						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a383">383</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Partien des Spieltages,</p>
+	<ul class="tags">
+				<li><span class="field">var:</span> of spieltag objects</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$von" id="$von"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$von</span>
+						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a371">371</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">vonDatum als string,</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodspieltag" id="spieltag"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor spieltag</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a385">385</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">spieltag</span>
+		<span class="method-name">
+			spieltag
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$new_nr</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$new_von</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$new_bis</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$partien</span> = <span class="var-default">array()</span>])
+			</div>
+	
+		
+		
+	</div>
+<a name="methodaddPartie" id="addPartie"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">addPartie</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a498">498</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Fügt Partie zum Spieltage hinzu</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addPartie
+		</span>
+					(<span class="var-type">Object</span>&nbsp;<span class="var-name">&$neuePartie</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">Object</span>
+				<span class="var-name">&$neuePartie</span><span class="var-description">: die Partie</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodbisString" id="bisString"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">bisString</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a567">567</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt das bisDatum, an dem der Spieltag ausgetragen wird</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			bisString
+		</span>
+				()
+			</div>
+	
+		
+		
+	</div>
+<a name="methodpartieForNumber" id="partieForNumber"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">partieForNumber</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a399">399</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt Partie der angegebener Nummer zurück</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Partie</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object Die</span>
+		<span class="method-name">
+			&amp;partieForNumber
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$number</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$number</span><span class="var-description">: Partienummer</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodpartieForTeamNames" id="partieForTeamNames"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">partieForTeamNames</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a436">436</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt Partie der angegebener Teamnamen zurück</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Partie</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object Die</span>
+		<span class="method-name">
+			&amp;partieForTeamNames
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$heimName</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$gastName</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$heimName</span><span class="var-description">: Heimmannschaftsname string Gastmannschaftsname</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodpartieForTeams" id="partieForTeams"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">partieForTeams</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a414">414</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt Partie der angegebener Teamnummern zurück</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Partie</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object Die</span>
+		<span class="method-name">
+			&amp;partieForTeams
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$heimNr</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$gastNr</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$heimNr</span><span class="var-description">: Heimmannschaftsnummer integer Gastmannschaftsnummer</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodpartienCount" id="partienCount"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">partienCount</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a488">488</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Anzahl der Partien des Spieltages</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Partieanzahl</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			partienCount
+		</span>
+				()
+			</div>
+	
+		
+		
+	</div>
+<a name="methodremovePartie" id="removePartie"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">removePartie</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a455">455</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Löscht Partie</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Partie wurde gelöscht TRUE / FALSE</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			removePartie
+		</span>
+					(<span class="var-type">objekt</span>&nbsp;<span class="var-name">&$rmvPartie</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">objekt</span>
+				<span class="var-name">&$rmvPartie</span><span class="var-description">: Partie</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodshowDetails" id="showDetails"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/PrivateMethod.png" />
+		<span class="method-title">showDetails</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a507">507</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Debugfunktion.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			showDetails
+		</span>
+				()
+			</div>
+	
+		
+		
+	</div>
+<a name="methodshowDetailsHTML" id="showDetailsHTML"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/PrivateMethod.png" />
+		<span class="method-title">showDetailsHTML</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a519">519</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Debugfunktion.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			showDetailsHTML
+		</span>
+				()
+			</div>
+	
+		
+		
+	</div>
+<a name="methodvonBisString" id="vonBisString"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">vonBisString</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a535">535</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt den Zeitrahmen aus, an dem der Spieltag ausgetragen wird</p>
+<p class="description"><p>Sind das vonDatum und das bisDatum gesetzt wird zB. 10.10.2003 - 19.10.2003 zurückgegeben  <br /> Ist eines der beiden nicht gesetzt, wird nur das Datum zurückgeben ohne Verbinder  <br /> zB. ist das vonDatum nicht gesetzt wird nur das bisDatum ausgegeben 19.10.2003 ohne Bindestrich</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			vonBisString
+		</span>
+				()
+			</div>
+	
+		
+		
+	</div>
+<a name="methodvonString" id="vonString"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">vonString</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a554">554</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt das vonDatum, an dem der Spieltag ausgetragen wird</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			vonString
+		</span>
+				()
+			</div>
+	
+		
+		
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sat,  9 Apr 2005 19:45:48 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</div></body>
+</html>

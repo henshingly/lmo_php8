@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title></title>
+			<link rel="stylesheet" href="media/stylesheet.css" />
+											</head>
+		<body>
+						
+<div align="center"><h1>classlib_install.txt</h1></div>
+<pre>
+################################################################
+# Installation: classlib Addon f&uuml;r LMO 4
+#
+################################################################
+#
+# classlib Addon for LigaManager Online
+# Copyright (C) 2004 by Tim Schumacher
+# webobjects@gmx.net /
+#
+# Die Classlib erweitert Deine LMO Installation um einige Klassen, die von
+# meinen Addons ben&ouml;tigt werden.
+# Dazu geh&ouml;ren z.B. das Limporter ADDON, mit dem du automatisch neue Liga aus
+# vollst&auml;ndigen Saisonspielpl&auml;nen erstellen kannst, wenn Du diese als CSV Datei
+# oder HTML Dokument zur Verf&uuml;gung hast.
+#
+# Ein weiteres ADDON w&auml;re das PDF-Addon , mit dem Du von deinen Ligen (.l98)
+# Spielpl&auml;nen im PDF - Format erstellen kannst.
+#
+# Systemvoraussetzungen:
+# LMO 4.0 (mindestens Version 4 Beta 3)
+# Installierte GD Library f&uuml;r den Einsatz von phpThumb
+#
+#################################################################
+
+  1.
+  Du hast das Archiv entpackt. Gut so!!
+
+  2.
+  Den Inhalt (tats&auml;chlich nur den Inhalt) des Ordners lmo_root kopierst Du in das Hauptverzeichnis
+  deiner LMO Installation ( z.B. &lt;irgendeinPfad&gt;/lmo ).
+
+  Die Meldung, das der Ordner &quot;addon&quot; bereits existiert best&auml;tigst Du mit OK.
+  Genauso verf&auml;hrst Du mit dem Ordner &quot;config&quot; bzw &quot;lang&quot;. (falls vorhanden)
+  (Keine Sorge, die Ordner werden nicht &uuml;berschrieben,
+  sondern lediglich um jeweils ein Unterverzeichnis erweitert.)
+
+  3.
+  Jetzt sollte jeweils ein neues /classlib Verzeichnis in den Verzeichnissen &quot;/addon&quot;
+  sowie &quot;/config&quot; Deiner LMO Installation auftauchen.
+
+  4.
+  Du hast nun deine LMO Installation um die Klassenbibliothek erweitert und kannst
+  die Addons installieren, die diese ben&ouml;tigen.
+
+  5.
+  Wenn Du ein eigenes Addon entwickelst und die classlib einbinden m&ouml;chtest, steht dir
+  die Bibliothek durch Einbinden der folgenden Datei zur Verf&uuml;gung:
+  require_once(PATH_TO_ADDONDIR.&quot;/classlib/ini.php&quot;);
+
+  Jetzt kannst Du direkt auf die Klassen zugreifen. Die externen Klassen im Verzeichnis Classes
+  (zur Zeit ini , pdp sowie phpThumb) stehen dir ebenfalls zur verf&uuml;gung.
+</pre>
+	<p class="notes" id="credit">
+		Documentation generated on Sat,  9 Apr 2005 19:45:39 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</body>
+</html>

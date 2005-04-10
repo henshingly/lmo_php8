@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs for page functions.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/functions.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">LMO Class Library Version (01/2004)</p>
+	<ul class="tags">
+				<li><span class="field">filesource:</span> <a href="..//__filesource/fsource_classLib__functions.php.html">Source Code for this file</a></li>
+				<li><span class="field">author:</span> Tim Schumacher &lt;<a href="mailto:webobjects@gmx.net">webobjects@gmx.net</a>&gt;</li>
+			</ul>
+		
+			</div>
+</div>
+		
+
+	
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="functionconst_array" id="functionconst_array"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">const_array</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a27">27</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			const_array
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$constant</span>)
+			</div>
+
+		
+	
+</div>
+<a name="functionfindTeamName" id="functionfindTeamName"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">findTeamName</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a242">242</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			findTeamName
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">&$teamNamesArray</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$search</span>)
+			</div>
+
+		
+	
+</div>
+<a name="functiongamesSorted" id="functiongamesSorted"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">gamesSorted</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a97">97</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt ein multidim Array zurück, das die sortierten partien enthält,</p>
+<p class="description"><p><br />Aufbau array[0..n](  <br />			'date'  [timestamp des Spieldatums]  <br /> 		'spTag'  [integer],  <br />			'spieltag' [Object spieltag]  <br />  		'partie' [Object partie] )  <br />  Beispiel:<br />  $sortedGames = gamesSorted ($liga,false);<br />  echo &quot;&amp;gth;pre&gt;&quot;;<br />  print_r($sortedGames);<br />  echo &quot;&amp;gth;/pre&gt;&quot;;<br /></p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">Array</span>
+		<span class="method-name">
+			&amp;gamesSorted
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$liga</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$roundSort</span> = <span class="var-default">true</span>])
+			</div>
+
+		
+	
+</div>
+<a name="functiongamesSortedForTeam" id="functiongamesSortedForTeam"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">gamesSortedForTeam</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a137">137</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt ein multidim Array zurück, das die sortierten partien einer bestimmten mannschaft enthält,</p>
+<p class="description"><p><br />Aufbau array[0..n](  <br />			'spieltag' [Object spieltag]  <br />  		'partie' [Object partie] )  <br />  Beispiel:<br />  $sortedGames = gamesSorted ($liga,false);<br />  echo &quot;&amp;gth;pre&gt;&quot;;<br />  print_r($sortedGames);<br />  echo &quot;&amp;gth;/pre&gt;&quot;;<br /></p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">Array</span>
+		<span class="method-name">
+			&amp;gamesSortedForTeam
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$liga</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$team</span> = <span class="var-default">null</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$roundSort</span> = <span class="var-default">true</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$sortDir</span> = <span class="var-default">SORT_ASC</span>])
+			</div>
+
+		
+	
+</div>
+<a name="functiongetIniData" id="functiongetIniData"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">getIniData</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a172">172</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getIniData
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">&$array</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$defaultV</span> = <span class="var-default">""</span>])
+			</div>
+
+		
+	
+</div>
+<a name="functionin_string" id="functionin_string"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">in_string</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a214">214</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			in_string
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$needle</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$haystack</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$insensitive</span> = <span class="var-default">0</span>])
+			</div>
+
+		
+	
+</div>
+<a name="functionnewStyle" id="functionnewStyle"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">newStyle</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a181">181</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			newStyle
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$url</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$cssURL</span>)
+			</div>
+
+		
+	
+</div>
+<a name="functionreadLigaDir" id="functionreadLigaDir"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">readLigaDir</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a222">222</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			readLigaDir
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$dirName</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">&$dataArray</span>)
+			</div>
+
+		
+	
+</div>
+<a name="functionsisURL" id="functionsisURL"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">sisURL</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a194">194</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			sisURL
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$url</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$alt</span> = <span class="var-default">'view1'</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$neu</span> = <span class="var-default">'view2'</span>])
+			</div>
+
+		
+	
+</div>
+<a name="functionstrafen" id="functionstrafen"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">strafen</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a50">50</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Strafen</p>
+<p class="description"><p>Wird von calcTable verwende</p><p><br />SP Straf-/Bonuspunkte links  <br />SM Straf-/Bonuspunkte rechts (nur wenn es Minuspunkte gibt)  <br />TOR1 Straf-/Bonustore links  <br />TOR2 Straf-/Bonustore rechts  <br />STDA ab wann zählt Strafe/Bonus</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Tim Schumacher &lt;<a href="mailto:webobjects@gmx.net">webobjects@gmx.net</a>&gt;</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			strafen
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">&$team</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$spTag</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$minusPkte</span>)
+			</div>
+
+		
+	
+</div>
+<a name="functionstrAfterChar" id="functionstrAfterChar"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">strAfterChar</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a210">210</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			strAfterChar
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$char</span>)
+			</div>
+
+		
+	
+</div>
+<a name="functionstrBeforChar" id="functionstrBeforChar"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">strBeforChar</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__functions.php.html#a203">203</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			strBeforChar
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$char</span>)
+			</div>
+
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sat,  9 Apr 2005 19:45:49 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</div></body>
+</html>

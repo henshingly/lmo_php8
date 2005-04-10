@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>File Source for functions.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+											</head>
+		<body>
+						
+<h1>Source for file functions.php</h1>
+<p>Documentation is available at <a href="../classLib/_functions_php.html">functions.php</a></p>
+<div class="src-code">
+<pre><ol><li><a name="a1"></a><span class="src-php">&lt;?PHP</span></li>
+<li><a name="a2"></a><span class="src-comm">//</span></li>
+<li><a name="a3"></a><span class="src-doc">/**</span></li>
+<li><a name="a4"></a><span class="src-doc"> * LMO Class Library Version (01/2004)</span></li>
+<li><a name="a5"></a><span class="src-doc"> *</span></li>
+<li><a name="a6"></a><span class="src-doc">// This program is free software; you can redistribute it and/or</span></li>
+<li><a name="a7"></a><span class="src-doc">// modify it under the terms of the GNU General Public License as</span></li>
+<li><a name="a8"></a><span class="src-doc">// published by the Free Software Foundation; either version 2 of</span></li>
+<li><a name="a9"></a><span class="src-doc">// the License, or (at your option) any later version.</span></li>
+<li><a name="a10"></a><span class="src-doc">//</span></li>
+<li><a name="a11"></a><span class="src-doc">// This program is distributed in the hope that it will be useful,</span></li>
+<li><a name="a12"></a><span class="src-doc">// but WITHOUT ANY WARRANTY; without even the implied warranty of</span></li>
+<li><a name="a13"></a><span class="src-doc">// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></li>
+<li><a name="a14"></a><span class="src-doc">// General Public License for more details.</span></li>
+<li><a name="a15"></a><span class="src-doc">//</span></li>
+<li><a name="a16"></a><span class="src-doc">// You should have received a copy of the GNU General Public License</span></li>
+<li><a name="a17"></a><span class="src-doc">// along with this program; if not, write to the Free Software</span></li>
+<li><a name="a18"></a><span class="src-doc">// Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</span></li>
+<li><a name="a19"></a><span class="src-doc">//</span></li>
+<li><a name="a20"></a><span class="src-doc"> *</span></li>
+<li><a name="a21"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">    Tim Schumacher &lt;webobjects@gmx.net&gt;</span></li>
+<li><a name="a22"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc"> classLib</span></li>
+<li><a name="a23"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> privat</span></li>
+<li><a name="a24"></a><span class="src-doc"> */</span></li>
+<li><a name="a25"></a>&nbsp;</li>
+<li><a name="a26"></a>&nbsp;</li>
+<li><a name="a27"></a><span class="src-key">function </span><a href="../classLib/_functions_php.html#functionconst_array">const_array</a><span class="src-sym">(</span><span class="src-var">$constant</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a28"></a>  <span class="src-var">$array </span>= <a href="http://www.php.net/explode">explode</a><span class="src-sym">(</span><span class="src-str">&quot;,&quot;</span><span class="src-sym">,</span><span class="src-var">$constant</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a29"></a>  <span class="src-key">return </span><span class="src-var">$array</span><span class="src-sym">;</span></li>
+<li><a name="a30"></a><span class="src-sym">}</span><span class="src-sym">;</span></li>
+<li><a name="a31"></a>&nbsp;</li>
+<li><a name="a32"></a>&nbsp;</li>
+<li><a name="a33"></a>&nbsp;</li>
+<li><a name="a34"></a><span class="src-doc">/**</span></li>
+<li><a name="a35"></a><span class="src-doc"> * Strafen</span></li>
+<li><a name="a36"></a><span class="src-doc"> *</span></li>
+<li><a name="a37"></a><span class="src-doc"> * Wird von calcTable verwende</span></li>
+<li><a name="a38"></a><span class="src-doc"> *</span></li>
+<li><a name="a39"></a><span class="src-doc"> * &lt;BR&gt;SP Straf-/Bonuspunkte links</span></li>
+<li><a name="a40"></a><span class="src-doc"> * &lt;BR&gt;SM Straf-/Bonuspunkte rechts (nur wenn es Minuspunkte gibt)</span></li>
+<li><a name="a41"></a><span class="src-doc"> * &lt;BR&gt;TOR1 Straf-/Bonustore links</span></li>
+<li><a name="a42"></a><span class="src-doc"> * &lt;BR&gt;TOR2 Straf-/Bonustore rechts</span></li>
+<li><a name="a43"></a><span class="src-doc"> * &lt;BR&gt;STDA ab wann zählt Strafe/Bonus</span></li>
+<li><a name="a44"></a><span class="src-doc"> *</span></li>
+<li><a name="a45"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">    Tim Schumacher &lt;webobjects@gmx.net&gt;</span></li>
+<li><a name="a46"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc"> classLib</span></li>
+<li><a name="a47"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> privat</span></li>
+<li><a name="a48"></a><span class="src-doc">*/</span></li>
+<li><a name="a49"></a>&nbsp;</li>
+<li><a name="a50"></a>  <span class="src-key">function </span><a href="../classLib/_functions_php.html#functionstrafen">strafen</a><span class="src-sym">(</span><span class="src-sym">&amp;</span><span class="src-var">$team</span><span class="src-sym">,</span><span class="src-var">$spTag</span><span class="src-sym">,</span><span class="src-var">$minusPkte</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a51"></a>    <span class="src-var">$stda </span>= isset<span class="src-sym">(</span><span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;STDA&quot;</span><span class="src-sym">]</span><span class="src-sym">)</span></li>
+<li><a name="a52"></a>                            ? <span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;STDA&quot;</span><span class="src-sym">]</span></li>
+<li><a name="a53"></a>                            : <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a54"></a>                            </li>
+<li><a name="a55"></a>    <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$stda</span>==<span class="src-var">$spTag  </span><span class="src-key">or </span><span class="src-sym">(</span><span class="src-var">$stda</span>==<span class="src-num">0 </span><span class="src-key">and </span><span class="src-var">$spTag</span>==<span class="src-num">1</span><span class="src-sym">)) </span><span class="src-sym">{</span></li>
+<li><a name="a56"></a>         <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$minusPkte</span>==<span class="src-id">FALSE</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a57"></a>            <span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;pPkt&quot;</span><span class="src-sym">] </span>+= isset<span class="src-sym">(</span><span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;SP&quot;</span><span class="src-sym">]</span><span class="src-sym">) </span>?</li>
+<li><a name="a58"></a>                -<span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;SP&quot;</span><span class="src-sym">] </span>: <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a59"></a>                        <span class="src-comm">// 1.2.05 neu von platik BEGIN</span></li>
+<li><a name="a60"></a>                        <span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;mPkt&quot;</span><span class="src-sym">] </span>+= isset<span class="src-sym">(</span><span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;SM&quot;</span><span class="src-sym">]</span><span class="src-sym">) </span>?</li>
+<li><a name="a61"></a>                -<span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;SM&quot;</span><span class="src-sym">] </span>: <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a62"></a>                        <span class="src-comm">// 1.2.05 neu von platik END</span></li>
+<li><a name="a63"></a>            <span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;pTor&quot;</span><span class="src-sym">] </span>+= isset<span class="src-sym">(</span><span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;TOR1&quot;</span><span class="src-sym">]</span><span class="src-sym">) </span>?</li>
+<li><a name="a64"></a>                -<span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;TOR1&quot;</span><span class="src-sym">] </span>: <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a65"></a>            <span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;mTor&quot;</span><span class="src-sym">] </span>+= isset<span class="src-sym">(</span><span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;TOR2&quot;</span><span class="src-sym">]</span><span class="src-sym">) </span>?</li>
+<li><a name="a66"></a>                <a href="http://www.php.net/abs">abs</a><span class="src-sym">(</span><span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;TOR2&quot;</span><span class="src-sym">]</span><span class="src-sym">) </span>: <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a67"></a>        <span class="src-sym">}</span></li>
+<li><a name="a68"></a>        <span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a69"></a>            <span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;mPkt&quot;</span><span class="src-sym">] </span>+= isset<span class="src-sym">(</span><span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;SM&quot;</span><span class="src-sym">]</span><span class="src-sym">) </span>?</li>
+<li><a name="a70"></a>                <span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;SM&quot;</span><span class="src-sym">] </span>: <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a71"></a>            <span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;mTor&quot;</span><span class="src-sym">] </span>+= isset<span class="src-sym">(</span><span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;TOR2&quot;</span><span class="src-sym">]</span><span class="src-sym">) </span>?</li>
+<li><a name="a72"></a>                <span class="src-var">$team</span><span class="src-sym">[</span><span class="src-str">&quot;team&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">&quot;TOR2&quot;</span><span class="src-sym">] </span>: <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a73"></a>        <span class="src-sym">}</span></li>
+<li><a name="a74"></a>&nbsp;</li>
+<li><a name="a75"></a>    <span class="src-sym">}</span></li>
+<li><a name="a76"></a>  <span class="src-sym">}</span></li>
+<li><a name="a77"></a>&nbsp;</li>
+<li><a name="a78"></a>&nbsp;</li>
+<li><a name="a79"></a><span class="src-doc">/**</span></li>
+<li><a name="a80"></a><span class="src-doc"> * Gibt ein multidim Array zurück, das die sortierten partien enthält,</span></li>
+<li><a name="a81"></a><span class="src-doc"> * &lt;BR&gt;Aufbau array[0..n](</span></li>
+<li><a name="a82"></a><span class="src-doc"> * &lt;BR&gt;            'date'  [timestamp des Spieldatums]</span></li>
+<li><a name="a83"></a><span class="src-doc"> * &lt;BR&gt;         'spTag'  [integer],</span></li>
+<li><a name="a84"></a><span class="src-doc"> * &lt;BR&gt;            'spieltag' [Object spieltag]</span></li>
+<li><a name="a85"></a><span class="src-doc"> * &lt;BR&gt;          'partie' [Object partie] )</span></li>
+<li><a name="a86"></a><span class="src-doc"> * &lt;BR&gt;</span></li>
+<li><a name="a87"></a><span class="src-doc"> * Beispiel:&lt;BR&gt;</span></li>
+<li><a name="a88"></a><span class="src-doc"> * $sortedGames = gamesSorted ($liga,false);&lt;BR&gt;</span></li>
+<li><a name="a89"></a><span class="src-doc"> * echo &quot;&amp;gth;pre&gt;&quot;;&lt;BR&gt;</span></li>
+<li><a name="a90"></a><span class="src-doc"> * print_r($sortedGames);&lt;BR&gt;</span></li>
+<li><a name="a91"></a><span class="src-doc"> * echo &quot;&amp;gth;/pre&gt;&quot;;&lt;BR&gt;</span></li>
+<li><a name="a92"></a><span class="src-doc"> *</span></li>
+<li><a name="a93"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a94"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">Array </span></li>
+<li><a name="a95"></a><span class="src-doc">*/</span></li>
+<li><a name="a96"></a>&nbsp;</li>
+<li><a name="a97"></a><span class="src-key">function </span><span class="src-sym">&amp;</span><a href="../classLib/_functions_php.html#functiongamesSorted">gamesSorted</a> <span class="src-sym">(</span><span class="src-var">$liga</span><span class="src-sym">,</span><span class="src-var">$roundSort</span>=<span class="src-id">true</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a98"></a>    <span class="src-var">$games </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a99"></a>    <span class="src-key">foreach </span><span class="src-sym">(</span><span class="src-var">$liga</span><span class="src-sym">-&gt;</span><span class="src-id">spieltage </span><span class="src-key">as </span><span class="src-var">$spieltag</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a100"></a>        <span class="src-key">foreach </span><span class="src-sym">(</span><span class="src-var">$spieltag</span><span class="src-sym">-&gt;</span><span class="src-id">partien </span><span class="src-key">as </span><span class="src-var">$partie</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a101"></a>                <span class="src-var">$sort_1</span><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">zeit</span><span class="src-sym">;</span></li>
+<li><a name="a102"></a>                <span class="src-var">$sort_2</span><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-var">$spieltag</span><span class="src-sym">-&gt;</span><span class="src-id">nr</span><span class="src-sym">;</span></li>
+<li><a name="a103"></a>              <span class="src-var">$games</span><span class="src-sym">[</span><span class="src-sym">]</span>= <span class="src-key">array</span><span class="src-sym">(</span></li>
+<li><a name="a104"></a>               <span class="src-str">'date' </span>=&gt; <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">zeit</span><span class="src-sym">,</span></li>
+<li><a name="a105"></a>               <span class="src-str">'spTag' </span>=&gt; <span class="src-var">$spieltag</span><span class="src-sym">-&gt;</span><span class="src-id">nr</span><span class="src-sym">,</span></li>
+<li><a name="a106"></a>              <span class="src-str">'spieltag' </span>=&gt; <span class="src-var">$spieltag</span><span class="src-sym">,</span></li>
+<li><a name="a107"></a>            <span class="src-str">'partie' </span>=&gt; <span class="src-var">$partie</span><span class="src-sym">,</span></li>
+<li><a name="a108"></a>               <span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a109"></a>        <span class="src-sym">}</span></li>
+<li><a name="a110"></a>    <span class="src-sym">}</span></li>
+<li><a name="a111"></a>    <span class="src-key">if</span><span class="src-sym">(</span><span class="src-var">$roundSort</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a112"></a>      <a href="http://www.php.net/array_multisort">array_multisort</a><span class="src-sym">(</span><span class="src-var">$sort_2</span><span class="src-sym">, </span><span class="src-id">SORT_ASC</span><span class="src-sym">,</span></li>
+<li><a name="a113"></a>                  <span class="src-var">$sort_1</span><span class="src-sym">, </span><span class="src-id">SORT_ASC</span><span class="src-sym">,</span><span class="src-var">$games</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a114"></a>    <span class="src-sym">}</span></li>
+<li><a name="a115"></a>    <span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a116"></a>      <a href="http://www.php.net/array_multisort">array_multisort</a><span class="src-sym">(</span><span class="src-var">$sort_1</span><span class="src-sym">,</span><span class="src-id">SORT_ASC</span><span class="src-sym">,</span><span class="src-var">$games</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a117"></a>  <span class="src-sym">}</span></li>
+<li><a name="a118"></a>    <span class="src-key">return </span><span class="src-var">$games</span><span class="src-sym">;</span></li>
+<li><a name="a119"></a><span class="src-sym">}</span></li>
+<li><a name="a120"></a>&nbsp;</li>
+<li><a name="a121"></a><span class="src-doc">/**</span></li>
+<li><a name="a122"></a><span class="src-doc"> * Gibt ein multidim Array zurück, das die sortierten partien einer bestimmten mannschaft enthält,</span></li>
+<li><a name="a123"></a><span class="src-doc"> * &lt;BR&gt;Aufbau array[0..n](</span></li>
+<li><a name="a124"></a><span class="src-doc"> * &lt;BR&gt;            'spieltag' [Object spieltag]</span></li>
+<li><a name="a125"></a><span class="src-doc"> * &lt;BR&gt;          'partie' [Object partie] )</span></li>
+<li><a name="a126"></a><span class="src-doc"> * &lt;BR&gt;</span></li>
+<li><a name="a127"></a><span class="src-doc"> * Beispiel:&lt;BR&gt;</span></li>
+<li><a name="a128"></a><span class="src-doc"> * $sortedGames = gamesSorted ($liga,false);&lt;BR&gt;</span></li>
+<li><a name="a129"></a><span class="src-doc"> * echo &quot;&amp;gth;pre&gt;&quot;;&lt;BR&gt;</span></li>
+<li><a name="a130"></a><span class="src-doc"> * print_r($sortedGames);&lt;BR&gt;</span></li>
+<li><a name="a131"></a><span class="src-doc"> * echo &quot;&amp;gth;/pre&gt;&quot;;&lt;BR&gt;</span></li>
+<li><a name="a132"></a><span class="src-doc"> *</span></li>
+<li><a name="a133"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a134"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">Array </span></li>
+<li><a name="a135"></a><span class="src-doc">*/</span></li>
+<li><a name="a136"></a>&nbsp;</li>
+<li><a name="a137"></a><span class="src-key">function </span><span class="src-sym">&amp;</span><a href="../classLib/_functions_php.html#functiongamesSortedForTeam">gamesSortedForTeam</a> <span class="src-sym">(</span><span class="src-var">$liga</span><span class="src-sym">,</span><span class="src-var">$team</span>=<span class="src-id">null</span><span class="src-sym">,</span><span class="src-var">$roundSort</span>=<span class="src-id">true</span><span class="src-sym">, </span><span class="src-var">$sortDir </span>= <span class="src-id">SORT_ASC</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a138"></a>    <span class="src-key">if</span><span class="src-sym">(</span><span class="src-sym">!</span><a href="http://www.php.net/is_object">is_object</a><span class="src-sym">(</span><span class="src-var">$team</span><span class="src-sym">)) </span><span class="src-sym">{  </span><span class="src-comm">// Wurde nix angegeben wird das fav. Team verwendet</span></li>
+<li><a name="a139"></a>        <span class="src-var">$team </span>= <span class="src-var">$liga</span><span class="src-sym">-&gt;</span><span class="src-id">teamForNumber</span><span class="src-sym">(</span><span class="src-var">$liga</span><span class="src-sym">-&gt;</span><span class="src-id">options</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">'favTeam'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a140"></a>  <span class="src-sym">}</span></li>
+<li><a name="a141"></a>&nbsp;</li>
+<li><a name="a142"></a>    <span class="src-var">$games </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a143"></a>    <span class="src-key">foreach </span><span class="src-sym">(</span><span class="src-var">$liga</span><span class="src-sym">-&gt;</span><span class="src-id">spieltage </span><span class="src-key">as </span><span class="src-var">$spieltag</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a144"></a>        <span class="src-key">foreach </span><span class="src-sym">(</span><span class="src-var">$spieltag</span><span class="src-sym">-&gt;</span><span class="src-id">partien </span><span class="src-key">as </span><span class="src-var">$partie</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a145"></a>            <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">heim </span>== <span class="src-var">$team </span><span class="src-key">or </span><span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">gast </span>== <span class="src-var">$team</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a146"></a><span class="src-comm">//              echo &quot;&lt;br&gt;&quot;.$partie-&gt;datumString().&quot; &quot;.$partie-&gt;heim-&gt;name.&quot; vs &quot;.$partie-&gt;gast-&gt;name;</span></li>
+<li><a name="a147"></a>          <span class="src-var">$sort_1</span><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">zeit</span><span class="src-sym">;</span></li>
+<li><a name="a148"></a>          <span class="src-var">$sort_2</span><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-var">$spieltag</span><span class="src-sym">-&gt;</span><span class="src-id">nr</span><span class="src-sym">;</span></li>
+<li><a name="a149"></a>          <span class="src-var">$games</span><span class="src-sym">[</span><span class="src-sym">]</span>= <span class="src-key">array</span><span class="src-sym">(</span></li>
+<li><a name="a150"></a>            <span class="src-str">'date' </span>=&gt; <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">zeit</span><span class="src-sym">,</span></li>
+<li><a name="a151"></a>            <span class="src-str">'spTag' </span>=&gt; <span class="src-var">$spieltag</span><span class="src-sym">-&gt;</span><span class="src-id">nr</span><span class="src-sym">,</span></li>
+<li><a name="a152"></a>            <span class="src-str">'spieltag' </span>=&gt; <span class="src-var">$spieltag</span><span class="src-sym">,</span></li>
+<li><a name="a153"></a>            <span class="src-str">'partie' </span>=&gt; <span class="src-var">$partie</span><span class="src-sym">,</span></li>
+<li><a name="a154"></a>            <span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a155"></a>         <span class="src-sym">}</span></li>
+<li><a name="a156"></a>        <span class="src-sym">}</span></li>
+<li><a name="a157"></a>    <span class="src-sym">}</span></li>
+<li><a name="a158"></a>    <span class="src-key">if</span><span class="src-sym">(</span><span class="src-var">$roundSort</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a159"></a>      <a href="http://www.php.net/array_multisort">array_multisort</a><span class="src-sym">(</span><span class="src-var">$sort_2</span><span class="src-sym">, </span><span class="src-var">$sortDir</span><span class="src-sym">,</span></li>
+<li><a name="a160"></a>                  <span class="src-var">$sort_1</span><span class="src-sym">, </span><span class="src-var">$sortDir</span><span class="src-sym">,</span><span class="src-var">$games</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a161"></a>    <span class="src-sym">}</span></li>
+<li><a name="a162"></a>    <span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a163"></a>      <a href="http://www.php.net/array_multisort">array_multisort</a><span class="src-sym">(</span><span class="src-var">$sort_1</span><span class="src-sym">,</span><span class="src-var">$sortDir</span><span class="src-sym">,</span><span class="src-var">$games</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a164"></a>  <span class="src-sym">}</span></li>
+<li><a name="a165"></a>    unset<span class="src-sym">(</span><span class="src-var">$games</span><span class="src-sym">[</span><span class="src-str">'date'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">; </span><span class="src-comm">// wurde nur zum sortieren benötigt</span></li>
+<li><a name="a166"></a>    unset<span class="src-sym">(</span><span class="src-var">$games</span><span class="src-sym">[</span><span class="src-str">'spTag'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span><span class="src-comm">// wurde nur zum sortieren benötigt</span></li>
+<li><a name="a167"></a>    <span class="src-key">return </span><span class="src-var">$games</span><span class="src-sym">;</span></li>
+<li><a name="a168"></a><span class="src-sym">}</span></li>
+<li><a name="a169"></a>&nbsp;</li>
+<li><a name="a170"></a>&nbsp;</li>
+<li><a name="a171"></a><span class="src-comm">// Wird noch von der Function loadFile der Class Liga benoetigt</span></li>
+<li><a name="a172"></a><span class="src-key">function </span><a href="../classLib/_functions_php.html#functiongetIniData">getIniData</a><span class="src-sym">(</span><span class="src-var">$key</span><span class="src-sym">,</span><span class="src-sym">&amp;</span><span class="src-var">$array</span><span class="src-sym">,</span><span class="src-var">$defaultV</span>=<span class="src-str">&quot;&quot;</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a173"></a>  <span class="src-key">if</span><span class="src-sym">(</span><a href="http://www.php.net/array_key_exists">array_key_exists</a><span class="src-sym">(</span><span class="src-var">$key</span><span class="src-sym">,</span><span class="src-var">$array</span><span class="src-sym">))</span></li>
+<li><a name="a174"></a>    <span class="src-var">$result </span>= <span class="src-var">$array</span><span class="src-sym">[</span><span class="src-var">$key</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a175"></a>  <span class="src-key">else</span></li>
+<li><a name="a176"></a>    <span class="src-var">$result </span>= <span class="src-var">$defaultV</span><span class="src-sym">;</span></li>
+<li><a name="a177"></a><span class="src-key">return </span><span class="src-var">$result</span><span class="src-sym">;</span></li>
+<li><a name="a178"></a><span class="src-sym">}</span></li>
+<li><a name="a179"></a>&nbsp;</li>
+<li><a name="a180"></a>&nbsp;</li>
+<li><a name="a181"></a><span class="src-key">function </span><a href="../classLib/_functions_php.html#functionnewStyle">newStyle</a><span class="src-sym">(</span><span class="src-var">$url</span><span class="src-sym">,</span><span class="src-var">$cssURL</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a182"></a>        <span class="src-var">$found </span>= <a href="http://www.php.net/preg_match">preg_match</a><span class="src-sym">(</span><span class="src-str">&quot;/style=/i&quot;</span><span class="src-sym">,</span><span class="src-var">$url</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a183"></a>        <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$found</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a184"></a>      <span class="src-var">$pattern </span>= <span class="src-str">&quot;/style=(.*)/i&quot;</span><span class="src-sym">; </span><span class="src-comm">// /style=.*(&amp;?|$)/isU</span></li>
+<li><a name="a185"></a>      <span class="src-var">$cssURL </span>= <span class="src-str">&quot;style=&quot;</span>.<span class="src-var">$cssURL</span><span class="src-sym">;</span></li>
+<li><a name="a186"></a>      <span class="src-var">$url </span>= <a href="http://www.php.net/preg_replace">preg_replace</a><span class="src-sym">(</span><span class="src-var">$pattern</span><span class="src-sym">, </span><span class="src-var">$cssURL</span><span class="src-sym">, </span><span class="src-var">$url</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a187"></a>        <span class="src-sym">}</span></li>
+<li><a name="a188"></a>        <span class="src-key">else</span></li>
+<li><a name="a189"></a>            <span class="src-var">$url </span>.= <span class="src-str">&quot;&amp;style=&quot;</span>.<span class="src-var">$cssURL</span><span class="src-sym">;</span></li>
+<li><a name="a190"></a>&nbsp;</li>
+<li><a name="a191"></a><span class="src-key">return </span><span class="src-var">$url</span><span class="src-sym">;</span></li>
+<li><a name="a192"></a><span class="src-sym">}</span></li>
+<li><a name="a193"></a>&nbsp;</li>
+<li><a name="a194"></a><span class="src-key">function </span><a href="../classLib/_functions_php.html#functionsisURL">sisURL</a><span class="src-sym">(</span><span class="src-var">$url</span><span class="src-sym">,</span><span class="src-var">$alt</span>=<span class="src-str">'view1'</span><span class="src-sym">,</span><span class="src-var">$neu</span>=<span class="src-str">'view2'</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a195"></a>        <span class="src-var">$alt </span>= <span class="src-str">&quot;</span><span class="src-str">/<span class="src-var">$alt</span>/<span class="src-id">isU</span></span><span class="src-str">&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a196"></a>        <span class="src-var">$url </span>= <a href="http://www.php.net/preg_replace">preg_replace</a><span class="src-sym">(</span><span class="src-var">$alt</span><span class="src-sym">, </span><span class="src-var">$neu</span><span class="src-sym">, </span><span class="src-var">$url</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a197"></a><span class="src-key">return </span><span class="src-var">$url</span><span class="src-sym">;</span></li>
+<li><a name="a198"></a><span class="src-sym">}</span></li>
+<li><a name="a199"></a>&nbsp;</li>
+<li><a name="a200"></a><span class="src-comm">// get the text before the last occurence of the character</span></li>
+<li><a name="a201"></a><span class="src-comm">// example: strBeforChar(&quot;fussballbl2004.l98&quot;,&quot;.&quot;) returns &quot;fussballbl2004&quot;</span></li>
+<li><a name="a202"></a>&nbsp;</li>
+<li><a name="a201"></a>&nbsp;</li>
+<li><a name="a202"></a>&nbsp;</li>
+<li><a name="a203"></a><span class="src-key">function </span><a href="../classLib/_functions_php.html#functionstrBeforChar">strBeforChar</a><span class="src-sym">(</span><span class="src-var">$str</span><span class="src-sym">,</span><span class="src-var">$char</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a204"></a> <span class="src-key">return </span><a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$str</span><span class="src-sym">,</span><span class="src-num">0</span><span class="src-sym">,</span><a href="http://www.php.net/strrpos">strrpos</a><span class="src-sym">(</span><span class="src-var">$str</span><span class="src-sym">, </span><span class="src-var">$char</span><span class="src-sym">))</span><span class="src-sym">;</span></li>
+<li><a name="a205"></a><span class="src-sym">}</span></li>
+<li><a name="a206"></a>&nbsp;</li>
+<li><a name="a207"></a><span class="src-comm">// get the text behind the last occurence of the character</span></li>
+<li><a name="a208"></a><span class="src-comm">// example: strBeforChar(&quot;fussballbl2004.l98&quot;,&quot;.&quot;) returns &quot;l98&quot;</span></li>
+<li><a name="a209"></a>&nbsp;</li>
+<li><a name="a208"></a>&nbsp;</li>
+<li><a name="a209"></a>&nbsp;</li>
+<li><a name="a210"></a><span class="src-key">function </span><a href="../classLib/_functions_php.html#functionstrAfterChar">strAfterChar</a><span class="src-sym">(</span><span class="src-var">$str</span><span class="src-sym">,</span><span class="src-var">$char</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a211"></a> <span class="src-key">return </span><a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$str</span><span class="src-sym">,</span><a href="http://www.php.net/strrpos">strrpos</a><span class="src-sym">(</span><span class="src-var">$str</span><span class="src-sym">, </span><span class="src-var">$char</span><span class="src-sym">)</span>+<span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a212"></a><span class="src-sym">}</span></li>
+<li><a name="a213"></a>&nbsp;</li>
+<li><a name="a214"></a><span class="src-key">function </span><a href="../classLib/_functions_php.html#functionin_string">in_string</a><span class="src-sym">(</span><span class="src-var">$needle</span><span class="src-sym">, </span><span class="src-var">$haystack</span><span class="src-sym">, </span><span class="src-var">$insensitive </span>= <span class="src-num">0</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a215"></a>   <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$insensitive</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a216"></a>       <span class="src-key">return </span><span class="src-sym">(</span><span class="src-id">false </span>!== <a href="http://www.php.net/stristr">stristr</a><span class="src-sym">(</span><span class="src-var">$haystack</span><span class="src-sym">, </span><span class="src-var">$needle</span><span class="src-sym">)) </span>? <span class="src-id">true </span>: <span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a217"></a>   <span class="src-sym">} </span><span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a218"></a>       <span class="src-key">return </span><span class="src-sym">(</span><span class="src-id">false </span>!== <a href="http://www.php.net/strpos">strpos</a><span class="src-sym">(</span><span class="src-var">$haystack</span><span class="src-sym">, </span><span class="src-var">$needle</span><span class="src-sym">))  </span>? <span class="src-id">true </span>: <span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a219"></a>   <span class="src-sym">}</span></li>
+<li><a name="a220"></a><span class="src-sym">}</span></li>
+<li><a name="a221"></a>&nbsp;</li>
+<li><a name="a222"></a><span class="src-key">function </span><a href="../classLib/_functions_php.html#functionreadLigaDir">readLigaDir</a><span class="src-sym">(</span><span class="src-var">$dirName</span><span class="src-sym">,</span><span class="src-sym">&amp;</span><span class="src-var">$dataArray</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a223"></a>    <span class="src-var">$exists </span>= <a href="http://www.php.net/file_exists">file_exists</a><span class="src-sym">(</span><span class="src-var">$dirName</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a224"></a>    <span class="src-key">if</span><span class="src-sym">(</span><span class="src-var">$exists</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a225"></a>    <span class="src-var">$dir </span>= <a href="http://www.php.net/dir">dir</a><span class="src-sym">(</span><span class="src-var">$dirName</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a226"></a>    <span class="src-key">while</span><span class="src-sym">(</span><span class="src-var">$data</span>=<span class="src-var">$dir</span><span class="src-sym">-&gt;</span><span class="src-id">read</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">{</span></li>
+<li><a name="a227"></a>      <span class="src-var">$ext </span>= <a href="http://www.php.net/strtolower">strtolower</a><span class="src-sym">( </span><a href="../classLib/_functions_php.html#functionstrAfterChar">strAfterChar</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">,</span><span class="src-str">&quot;.&quot;</span><span class="src-sym">))</span><span class="src-sym">;</span></li>
+<li><a name="a228"></a>      <span class="src-key">if</span><span class="src-sym">( </span><span class="src-var">$ext </span>== <span class="src-str">'l98'  </span><span class="src-sym">)</span><span class="src-sym">{</span></li>
+<li><a name="a229"></a>        <span class="src-var">$name </span>= <a href="http://www.php.net/trim">trim</a><span class="src-sym">(</span><a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">,</span><span class="src-num">0</span><span class="src-sym">,</span><a href="http://www.php.net/strrpos">strrpos</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">, </span><span class="src-var">$ext</span><span class="src-sym">)</span>-<span class="src-num">1</span><span class="src-sym">))</span><span class="src-sym">;</span></li>
+<li><a name="a230"></a>        <span class="src-var">$dataArray</span><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-key">array</span><span class="src-sym">(</span></li>
+<li><a name="a231"></a>            <span class="src-str">'path'</span>=&gt;<span class="src-var">$dir</span><span class="src-sym">-&gt;</span><span class="src-id">path</span><span class="src-sym">,</span></li>
+<li><a name="a232"></a>            <span class="src-str">'src'</span>=&gt;<span class="src-var">$data</span><span class="src-sym">,</span></li>
+<li><a name="a233"></a>            <span class="src-str">'fileName'</span>=&gt;<span class="src-var">$name</span><span class="src-sym">,</span></li>
+<li><a name="a234"></a>            <span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a235"></a>      <span class="src-sym">}</span></li>
+<li><a name="a236"></a>    <span class="src-sym">}</span></li>
+<li><a name="a237"></a>    <span class="src-var">$dir</span><span class="src-sym">-&gt;</span><span class="src-id">close</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a238"></a>    <span class="src-sym">}</span></li>
+<li><a name="a239"></a>    <span class="src-key">return </span><span class="src-var">$exists</span><span class="src-sym">;</span></li>
+<li><a name="a240"></a><span class="src-sym">}</span></li>
+<li><a name="a241"></a>&nbsp;</li>
+<li><a name="a242"></a><span class="src-key">function </span><a href="../classLib/_functions_php.html#functionfindTeamName">findTeamName</a><span class="src-sym">(</span><span class="src-sym">&amp;</span><span class="src-var">$teamNamesArray</span><span class="src-sym">,</span><span class="src-var">$search</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a243"></a>&nbsp;</li>
+<li><a name="a244"></a>    <span class="src-var">$results </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a245"></a>    <span class="src-var">$expr </span>= <span class="src-str">&quot;/\s+|\d+|\W/i&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a246"></a>    <span class="src-key">if </span><span class="src-sym">(</span><a href="http://www.php.net/is_array">is_array</a><span class="src-sym">(</span><span class="src-var">$teamNamesArray</span><span class="src-sym">) ) </span><span class="src-sym">{</span></li>
+<li><a name="a247"></a>    <span class="src-var">$match </span>= <a href="http://www.php.net/strtolower">strtolower</a><span class="src-sym">(</span><a href="http://www.php.net/preg_replace">preg_replace</a><span class="src-sym">(</span><span class="src-var">$expr</span><span class="src-sym">,</span><span class="src-str">&quot;&quot;</span><span class="src-sym">,</span><span class="src-var">$search</span><span class="src-sym">))</span><span class="src-sym">;</span></li>
+<li><a name="a248"></a>    <span class="src-key">foreach</span><span class="src-sym">(</span><span class="src-var">$teamNamesArray </span><span class="src-key">as </span><span class="src-var">$teamName</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a249"></a>        <span class="src-var">$match_with </span>= <a href="http://www.php.net/strtolower">strtolower</a><span class="src-sym">(</span><a href="http://www.php.net/preg_replace">preg_replace</a><span class="src-sym">(</span><span class="src-var">$expr</span><span class="src-sym">,</span><span class="src-str">&quot;&quot;</span><span class="src-sym">,</span><span class="src-var">$teamName</span><span class="src-sym">))</span><span class="src-sym">;</span></li>
+<li><a name="a250"></a>      <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$match_with </span>== <span class="src-var">$match</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a251"></a>          <span class="src-var">$results</span><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-var">$teamName</span><span class="src-sym">;</span></li>
+<li><a name="a252"></a>        <span class="src-key">break</span><span class="src-sym">;</span></li>
+<li><a name="a253"></a>      <span class="src-sym">}</span></li>
+<li><a name="a254"></a>    <span class="src-sym">}</span></li>
+<li><a name="a255"></a>  <span class="src-sym">}</span></li>
+<li><a name="a256"></a>    <span class="src-key">return </span><span class="src-var">$results</span><span class="src-sym">;</span></li>
+<li><a name="a257"></a><span class="src-sym">}</span></li>
+<li><a name="a258"></a>&nbsp;</li>
+<li><a name="a259"></a><span class="src-php">?&gt;</span></li>
+</ol></pre>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Sat,  9 Apr 2005 19:45:50 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</body>
+</html>

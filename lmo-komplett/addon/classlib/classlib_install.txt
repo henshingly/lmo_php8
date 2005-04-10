@@ -1,0 +1,51 @@
+################################################################
+# Installation: classlib Addon für LMO 4
+#
+################################################################
+#
+# classlib Addon for LigaManager Online
+# Copyright (C) 2004 by Tim Schumacher
+# webobjects@gmx.net /
+#
+# Die Classlib erweitert Deine LMO Installation um einige Klassen, die von
+# meinen Addons benötigt werden.
+# Dazu gehören z.B. das Limporter ADDON, mit dem du automatisch neue Liga aus
+# vollständigen Saisonspielplänen erstellen kannst, wenn Du diese als CSV Datei
+# oder HTML Dokument zur Verfügung hast.
+#
+# Ein weiteres ADDON wäre das PDF-Addon , mit dem Du von deinen Ligen (.l98)
+# Spielplänen im PDF - Format erstellen kannst.
+#
+# Systemvoraussetzungen:
+# LMO 4.0 (mindestens Version 4 Beta 3)
+# Installierte GD Library für den Einsatz von phpThumb
+#
+#################################################################
+
+  1.
+  Du hast das Archiv entpackt. Gut so!!
+
+  2.
+  Den Inhalt (tatsächlich nur den Inhalt) des Ordners lmo_root kopierst Du in das Hauptverzeichnis
+  deiner LMO Installation ( z.B. <irgendeinPfad>/lmo ).
+
+  Die Meldung, das der Ordner "addon" bereits existiert bestätigst Du mit OK.
+  Genauso verfährst Du mit dem Ordner "config" bzw "lang". (falls vorhanden)
+  (Keine Sorge, die Ordner werden nicht überschrieben,
+  sondern lediglich um jeweils ein Unterverzeichnis erweitert.)
+
+  3.
+  Jetzt sollte jeweils ein neues /classlib Verzeichnis in den Verzeichnissen "/addon"
+  sowie "/config" Deiner LMO Installation auftauchen.
+
+  4.
+  Du hast nun deine LMO Installation um die Klassenbibliothek erweitert und kannst
+  die Addons installieren, die diese benötigen.
+
+  5.
+  Wenn Du ein eigenes Addon entwickelst und die classlib einbinden möchtest, steht dir
+  die Bibliothek durch Einbinden der folgenden Datei zur Verfügung:
+  require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
+
+  Jetzt kannst Du direkt auf die Klassen zugreifen. Die externen Klassen im Verzeichnis Classes
+  (zur Zeit ini , pdp sowie phpThumb) stehen dir ebenfalls zur verfügung.

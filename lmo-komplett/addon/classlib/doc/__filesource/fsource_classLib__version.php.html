@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>File Source for version.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+											</head>
+		<body>
+						
+<h1>Source for file version.php</h1>
+<p>Documentation is available at <a href="../classLib/_version_php.html">version.php</a></p>
+<div class="src-code">
+<pre><ol><li><a name="a1"></a><span class="src-php">&lt;?php</span></li>
+<li><a name="a2"></a><span class="src-inc">require_once</span><span class="src-sym">(</span><span class="src-id">dirname</span><span class="src-sym">(</span>__FILE__<span class="src-sym">)</span>.<span class="src-str">'/../../init.php'</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a3"></a><span class="src-inc">require_once</span><span class="src-sym">(</span><span class="src-str">&quot;ini.php&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a4"></a><span class="src-var">$Path </span>= <span class="src-id">PATH_TO_ADDONDIR</span><span class="src-sym">;</span></li>
+<li><a name="a5"></a><span class="src-php">?&gt;</span></li>
+<li><a name="a6"></a>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;</li>
+<li><a name="a7"></a>&lt;HTML&gt;</li>
+<li><a name="a8"></a>&lt;HEAD&gt;</li>
+<li><a name="a9"></a>&lt;Title&gt;Version&lt;/Title&gt;</li>
+<li><a name="a10"></a>&lt;/HEAD&gt;</li>
+<li><a name="a11"></a>&lt;BODY&gt;</li>
+<li><a name="a12"></a>&lt;p align='center' style='font-family:Verdana,arial,helvetica;font-size:10pt'&gt;</li>
+<li><a name="a13"></a>&lt;table border= '0' cellspacing='0' align='center'&gt;</li>
+<li><a name="a14"></a>&lt;tr&gt;</li>
+<li><a name="a15"></a>&lt;td style='font-size=10pt;background-color=#EEEEEE;border-right-style:solid;border-left-style:solid;border-top-style:solid;border-bottom-style:solid;border-width:1px;border-color:#000000'; align='center'&gt;&lt;B&gt;Version Control&lt;/B&gt;&lt;small&gt;&lt;BR&gt;</li>
+<li><a name="a16"></a><span class="src-php">&lt;?PHP </span>echo <span class="src-id"><a href="../classLib/_ini_php.html#defineCLASSLIB_VERSlON">CLASSLIB_VERSlON</a></span><span class="src-sym">;</span><span class="src-php">?&gt;</span>&lt;/small&gt;&lt;/td&gt;</li>
+<li><a name="a17"></a>&lt;/td&gt;</li>
+<li><a name="a18"></a>&lt;/tR&gt;</li>
+<li><a name="a19"></a>&lt;tr&gt;</li>
+<li><a name="a20"></a>&lt;td style='font-size=10pt;background-color=#FFFFFF;border-left-style:solid;border-right-style:solid;border-width:1px;border-color:#000000'; align='left'&gt;</li>
+<li><a name="a21"></a>&lt;table border= '0' cellspacing='0' align='center'&gt;</li>
+<li><a name="a22"></a>&lt;tr&gt;</li>
+<li><a name="a23"></a>  &lt;td colspan=4 style='font-size=10pt;background-color=#FFFFFF;border-bottom-style:solid;border-width:1px;border-color:#000000'&gt;&amp;nbsp;&lt;b&gt;Settings&lt;/b&gt;&lt;/td&gt;</li>
+<li><a name="a24"></a>&lt;/tr&gt;</li>
+<li><a name="a25"></a>&lt;tr&gt;</li>
+<li><a name="a26"></a>  &lt;td width='30'&gt;&amp;nbsp&lt;/td&gt;</li>
+<li><a name="a27"></a>  &lt;td width='200'&gt;Installed Version&lt;/td&gt;</li>
+<li><a name="a28"></a>  &lt;td width='30'&gt;=&lt;/td&gt;</li>
+<li><a name="a29"></a>  &lt;td width='300'&gt;<span class="src-php">&lt;?PHP </span>echo <span class="src-id"><a href="../classLib/_ini_php.html#defineCLASSLIB_VERSION">CLASSLIB_VERSION</a></span><span class="src-sym">;</span><span class="src-php">?&gt;</span>&lt;/td&gt;</li>
+<li><a name="a30"></a>&lt;/tr&gt;</li>
+<li><a name="a31"></a>&lt;tr&gt;</li>
+<li><a name="a32"></a>  &lt;td&gt;&amp;nbsp&lt;/td&gt;</li>
+<li><a name="a33"></a>  &lt;td&gt;Installed in&lt;/td&gt;</li>
+<li><a name="a34"></a>  &lt;td&gt;=&lt;/td&gt;</li>
+<li><a name="a35"></a>  &lt;td&gt;&lt;small&gt;<span class="src-php">&lt;?PHP </span>echo <span class="src-var">$Path</span><span class="src-sym">;</span><span class="src-php">?&gt;</span>&lt;/small&gt;&lt;/td&gt;</li>
+<li><a name="a36"></a>&lt;/tr&gt;</li>
+<li><a name="a37"></a>&lt;tr&gt;</li>
+<li><a name="a38"></a>  &lt;td&gt;&amp;nbsp&lt;/td&gt;</li>
+<li><a name="a39"></a>  &lt;td&gt;&amp;nbsp&lt;/td&gt;</li>
+<li><a name="a40"></a>  &lt;td&gt;&amp;nbsp&lt;/td&gt;</li>
+<li><a name="a41"></a>  &lt;td&gt;&amp;nbsp&lt;/td&gt;</li>
+<li><a name="a42"></a>&lt;/tr&gt;</li>
+<li><a name="a43"></a>&lt;tr&gt;</li>
+<li><a name="a44"></a>  &lt;td colspan=4 style='font-size=10pt;background-color=#FFFFFF;border-bottom-style:solid;border-width:1px;border-color:#000000'&gt;&amp;nbsp;&lt;/td&gt;</li>
+<li><a name="a45"></a>&lt;/tr&gt;</li>
+<li><a name="a46"></a>&lt;/table&gt;</li>
+<li><a name="a47"></a>&lt;/BODY&gt;</li>
+<li><a name="a48"></a>&lt;/HTML&gt;</li>
+</ol></pre>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Sat,  9 Apr 2005 19:45:51 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</body>
+</html>
