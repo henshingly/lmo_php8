@@ -3,5 +3,6 @@
 002=Letztes Saisonspiel
 003=Spielpaarung
 004=Spiele gegeneinander:
-005=Error: Liga not found!
-006=Warning: Archivfolder not found
+005=Fehler: Liga nicht gefunden!
+006=Warnung: Archivordner nicht gefunden
+007=Vorheriges Spiel

@@ -1,1 +1,8 @@
-000=
+000=[<acronym title='lmo-mininext for LMO &copy; Tim Schumacher/LMO-Group CLASSLIB_VERSION'>&copy;</acronym>]
+001=Next match
+002=Last match
+003=Match
+004=Matches against:
+005=Error: League not found!
+006=Warning: archive folder not found
+007=Previous match
