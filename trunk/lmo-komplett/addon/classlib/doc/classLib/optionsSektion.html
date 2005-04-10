@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class optionsSektion</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> optionsSektion</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">OptionSektion</p>
+<p class="description"><p>Sektionen eines LigFiles in dem die Optionen angegeben sind [Options]</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_classes_php.html">/classes.php</a> (line <span class="field"><a href="..//__filesource/fsource_classLib__classes.php.html#a629">629</a></span>)
+		</p>
+		
+				
+		<pre><a href="../classLib/sektion.html">sektion</a>
+   |
+   --optionsSektion</pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+								<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">array</span>
+					<a href="#$aLiga" title="details" class="var-name">$aLiga</a>
+				</div>
+								<div class="var-title">
+					<img src="../media/images/PrivateVariable.png" alt=" " />
+					<span class="var-type">array</span>
+					<a href="#$keyValues" title="details" class="var-name">$keyValues</a>
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+								
+				<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">optionsSektion</span>
+										<a href="#optionsSektion" title="details" class="method-name">optionsSektion</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$aLiga</span> = <span class="var-default">""</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$optionDetails</span> = <span class="var-default">""</span>])
+									</div>
+							</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$aLiga" id="$aLiga"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$aLiga</span>
+						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a634">634</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Nummer der Liga,</p>
+	<ul class="tags">
+				<li><span class="field">var:</span> Liga objekt</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$keyValues" id="$keyValues"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/PrivateVariable.png" />
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$keyValues</span>
+			 = <span class="var-default">array (
+<br />        &quot;Title&quot;=&gt;&quot;Limporter LMO Addon&quot;,
+<br />        &quot;Name&quot;=&gt;&quot;Liga Name&quot;,
+<br />        &quot;Type&quot;=&gt;0,
+<br />        &quot;Teams&quot;=&gt;0,
+<br />        &quot;vonTab&quot;=&gt;0,
+<br />        &quot;bisTab&quot;=&gt;0,
+<br />        &quot;Rounds&quot;=&gt;0,
+<br />        &quot;Matches&quot;=&gt;0,
+<br />        &quot;Actual&quot;=&gt;0,
+<br />        &quot;Kegel&quot;=&gt;0,
+<br />        &quot;HandS&quot;=&gt;0,
+<br />        &quot;PointsForWin&quot;=&gt;2,
+<br />        &quot;PointsForDraw&quot;=&gt;1,
+<br />        &quot;PointsForLost&quot;=&gt;0,
+<br />        &quot;Spez&quot;=&gt;0,
+<br />        &quot;HideDraw&quot;=&gt;0,
+<br />        &quot;OnRun&quot;=&gt;0,
+<br />        &quot;MinusPoints&quot;=&gt;2,
+<br />        &quot;Direct&quot;=&gt;0,
+<br />        &quot;Champ&quot;=&gt;1,
+<br />        &quot;CL&quot;=&gt;0,
+<br />        &quot;CK&quot;=&gt;0,
+<br />        &quot;UC&quot;=&gt;0,
+<br />        &quot;AR&quot;=&gt;0,
+<br />        &quot;AB&quot;=&gt;2,
+<br />        &quot;namePkt&quot;=&gt;&quot;Pkt.&quot;,
+<br />        &quot;nameTor&quot;=&gt;&quot;Tore&quot;,
+<br />        &quot;DatC&quot;=&gt;1,
+<br />        &quot;DatS&quot;=&gt;1,
+<br />        &quot;DatM&quot;=&gt;1,
+<br />        &quot;DatF&quot;=&gt;&quot;%a.%d.%m. %H:%M&quot;,
+<br />        &quot;urlT&quot;=&gt;1,
+<br />        &quot;urlB&quot;=&gt;0,
+<br />        &quot;Graph&quot;=&gt;1,
+<br />        &quot;Kreuz&quot;=&gt;1,
+<br />        &quot;favTeam&quot;=&gt;0,
+<br />        &quot;selTeam&quot;=&gt;0,
+<br />        &quot;kurve1&quot;=&gt;0,
+<br />        &quot;kurve2&quot;=&gt;0,
+<br />        &quot;ticker&quot;=&gt;0,
+<br />        &quot;stats&quot;=&gt;0,		// Neu ab 2.5
+<br />        )</span>			(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a640">640</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Mit diesen Optionen wird ein neus Ligafile erzeugt</p>
+	<ul class="tags">
+				<li><span class="field">var:</span> of predefined keyValues</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../classLib/sektion.html#var$keyValues">sektion::$keyValues</a></dt>
+					</dl>
+		
+		
+
+</div>
+
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../classLib/sektion.html">sektion</a></span></p>
+					<blockquote>
+													<img src="../media/images/Variable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../classLib/sektion.html#var$name">sektion::$name</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodoptionsSektion" id="optionsSektion"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor optionsSektion</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a685">685</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">optionsSektion</span>
+		<span class="method-name">
+			optionsSektion
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$aLiga</span> = <span class="var-default">""</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$optionDetails</span> = <span class="var-default">""</span>])
+			</div>
+	
+		
+		
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../classLib/sektion.html">sektion</a></span></p>
+					<blockquote>
+													<img src="../media/images/Constructor.png" alt=" "/>
+							<span class="method-name"><a href="../classLib/sektion.html#methodsektion">sektion::sektion()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../classLib/sektion.html#methodaddKeyValue">sektion::addKeyValue()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../classLib/sektion.html#methodHTMLoutput">sektion::HTMLoutput()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../classLib/sektion.html#methodsektionName">sektion::sektionName()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../classLib/sektion.html#methodsetKeyValue">sektion::setKeyValue()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../classLib/sektion.html#methodvalueForKey">sektion::valueForKey()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Sat,  9 Apr 2005 19:45:47 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</div></body>
+</html>
