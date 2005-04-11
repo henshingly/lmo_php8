@@ -18,10 +18,9 @@
   */
   
   
-if (!isset($all)) {
+if (!isset($_GET['all'])) {
   $all = 0;
-}
-if ($all == "yes" && $all != 0) {
+} else {
   $all = 1;
 }
 if ($all == 1) {
@@ -221,7 +220,7 @@ if (!file_exists($auswertfile)) {
   }
    
    
-  $tab0 = array("");
+  $tab0 = array();
   for($a = 0; $a < $anztipper; $a++) {
     $spielegetipptgesamt[$a] = array_sum($spielegetippt[$a]);
     $tipppunktegesamt[$a] = array_sum($tipppunkte[$a]);
@@ -292,7 +291,6 @@ if (!file_exists($auswertfile)) {
     $tt .= ((50000000-$a).(50000000+$a));
     array_push($tab0, $tt);
   }
-  array_shift($tab0);
   rsort($tab0, SORT_STRING);
 }
 

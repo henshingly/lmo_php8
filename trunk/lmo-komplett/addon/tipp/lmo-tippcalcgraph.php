@@ -20,7 +20,7 @@
   
 $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, 0, -4).".aus";
 if (!file_exists($auswertfile)) {
-  echo $text['tipp'][17]."<br>";
+  echo getMessage($text['tipp'][17],TRUE);
 } else {
   $datei = fopen($auswertfile,"rb");
   $anztipper=0;

@@ -18,18 +18,19 @@
   */
   
   
-if (!isset($all)) {
+if (!isset($_GET['all'])) {
   $all = 0;
+} else {
+  $all = 1; 
 }
 if ($all == 1) {
   $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
 } else {
   $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, 0, -4).".aus";
 }
-if (!file_exists($auswertfile))
-echo $text['tipp'][17]."<br>";
-else
-  {
+if (!file_exists($auswertfile)) {
+  echo getMessage($text['tipp'][17],TRUE);
+} else {
   $datei = fopen($auswertfile, "rb");
   $teamsanzahl = 0; // Teamnummer
   $anzst1 = $anzst;

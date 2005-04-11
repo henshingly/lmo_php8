@@ -33,7 +33,7 @@ if (!$auswertdatei) {
   echo getMessage($text['tipp'][0].': '.$text['tipp'][29]." ".$auswertdatei.$text[283],TRUE);
   exit;
 }
-flock($auswertdatei, 2);
+flock($auswertdatei, LOCK_EX);
 echo getMessage($text['tipp'][0].': '.$text['tipp'][56]." ".$text['tipp'][65]);
 $tippernick = array_pad($array, $anztipper+1, "");
 if ($tipp_showname == 1) {
@@ -99,7 +99,7 @@ for($k = 0; $k < $anzligen; $k++) {
   if ($ftest == 0 && $tipp_immeralle == 0) {
     // Liga darf nicht in Gesamtwertung einfliessen
   } elseif(!file_exists($auswertfile1))
-  echo $text['tipp'][17]."<br>";
+  echo getMessage($text['tipp'][17],TRUE);
   else
     {
     $liganame[$anzligenaus] = $dummy[$k];
@@ -109,11 +109,10 @@ for($k = 0; $k < $anzligen; $k++) {
       $sekt = "";
       while (!feof($datei)) {
         $zeile = fgets($datei, 1000);
-        $zeile = chop($zeile);
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));
-        } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+        } elseif((strpos($zeile, "=") !== false) && (substr($zeile, 0, 1) != ";")) {
           $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
           $wert = trim(substr($zeile, strpos($zeile, "=")+1));
           array_push($tippdaten, $sekt."|".$schl."|".$wert."|EOL");
@@ -190,7 +189,7 @@ for($j = 0; $j < $anztipper; $j++) {
     }
   }
 }
-flock($auswertdatei, 3);
+flock($auswertdatei, LOCK_UN);
 fclose($auswertdatei);
  
 clearstatcache();
