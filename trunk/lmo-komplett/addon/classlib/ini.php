@@ -64,9 +64,9 @@ require_once(PATH_TO_ADDONDIR."/classlib/classes/ini/cIniFileReader.inc");
 // class pdf
 require_once(PATH_TO_ADDONDIR."/classlib/classes/pdf/class.ezpdf.php");
 // classes for image manipulation
-//if (file_exists(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php") ){
+if (file_exists(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php") ){
 	require_once(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php");
-//}
+}
 if (!defined('CLASSLIB_VERSION_NR')) define('CLASSLIB_VERSION_NR','2.7');
 if (!defined('CLASSLIB_VERSION')) define('CLASSLIB_VERSION',' (classlib&nbsp;'.CLASSLIB_VERSION_NR.')');
 if (!defined('CLASSLIB_IMG_TYPES')) define('CLASSLIB_IMG_TYPES',$classlib_img_types);
