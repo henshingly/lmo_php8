@@ -164,7 +164,7 @@ if ($tipp_anzseiten > 1) {
 ?> 
   <tr>
     <td align="center">
-      <table clss="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
         <tr><?
   echo "<td class=\"nobr\">".$text['tipp'][205]."&nbsp;</td>";
   for($i = 0; $i < $tipp_anzseiten; $i++) {
@@ -551,9 +551,9 @@ for($x = 1; $x <= $anztipper; $x++) {
 if($tipp_anzseiten>1){ ?> 
   <tr>
     <td align="center">
-      <table cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
         <tr><?
-  echo "<td class=\"active\">".$text['tipp'][205]."&nbsp;</td>";
+  echo "<td class=\"nobr\">".$text['tipp'][205]."&nbsp;</td>";
   for($i = 0; $i < $tipp_anzseiten; $i++) {
     $von = ($i * $tipp_anzseite1)+1;
     $bis = ($i+1) * $tipp_anzseite1;
@@ -561,9 +561,9 @@ if($tipp_anzseiten>1){ ?>
       $bis = $anztipper;
     }
     if ($von != $start) {
-      echo "<td ><a href=\"".$addt3.$von."\">";
+      echo "<td class='nobr'><a href=\"".$addt3.$von."\">";
     } else {
-      echo "<td class=\"active\">";
+      echo "<td class=\"nobr\">";
     }
     echo $von."-".$bis;
     if ($von != $start) {
