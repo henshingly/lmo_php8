@@ -74,7 +74,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
         fputs($einsichtdatei, "\n[".$tippernick."]\n");
          
         if (!file_exists($tippfile))
-        echo $text['tipp'][17]."<br>";
+        echo getMessage($text['tipp'][17],TRUE);
         else
           {
           $datei = fopen($tippfile, "rb");

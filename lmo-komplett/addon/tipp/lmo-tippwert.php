@@ -191,9 +191,9 @@ if ($tipp_anzseiten > 1) {
 } /* ende if($tipp_anzseiten>1) */?>
   <tr>
     <td align="center">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
+if($all==0){ ?>
         <caption class="nobr"><?
-//if($tabdat!=""){ 
   if ($stwertmodus == "nur") {
     echo $text['tipp'][202];
   } else {
@@ -204,8 +204,9 @@ if ($tipp_anzseiten > 1) {
     echo $text['tipp'][203];
   } else {
     echo "<a href=\"".$addt4."bis\" title=\"".$text['tipp'][203]."\">".$text['tipp'][203]."</a>";
-  }
-//}?>     </caption>
+  }?>
+</caption><?
+}?>
         <tr>
           <th class="nobr" colspan="3"> <?
 if (isset($lmtype) && $lmtype == 1 && $tabdat != "") {

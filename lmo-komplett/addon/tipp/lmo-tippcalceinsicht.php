@@ -30,7 +30,7 @@ if ($lmtype != 0) {
 
 $einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".substr($file, 0, -4)."_".$st.".ein";
 if (!file_exists($einsichtfile)) {
-  echo $text['tipp'][17]."<br>";
+  echo getMessage($text['tipp'][17],TRUE);
 } else {
   $datei = fopen($einsichtfile, "rb");
   $anztipper = 0;
