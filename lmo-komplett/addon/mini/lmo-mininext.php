@@ -20,8 +20,8 @@
   *  Copyright (C) 2005 by Tim Schumacher/LMO-Group
   * timme@webobjekts.de / admin@liga-manager-online.de
   * 
-  *  Version 2.0
-  *  systemvoraussetzung: classlib ab 2.6 sp1
+  *  Version 2.0.2
+  *  systemvoraussetzung: LMO ab RC1/classlib ab 2.6 sp1
   *
   * History:
   * 1.0: initial Release
@@ -33,6 +33,7 @@
   * 2.0: korrekte Anzeige Auswärts-/Heimpartien
   *      zusätzlicher Block "Vorheriges Spiel"
   * 2.0.1 Datumsformat wieder gekürzt
+  * 2.0.2 Bug beim include (Mannschaften wurden nicht erkannt) beseitigt
   *      
   *
   * Dieses Script zeigt die kommende Partie einer Mannschaft in einem kleinen 
@@ -105,8 +106,8 @@ if (strpos($archivFolder,'../')!==false) {
   exit();
 }
 
-$a = isset($_GET['a'])?$_GET['a']:null; // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
-$b = isset($_GET['b'])?$_GET['b']:null; // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
+$a = isset($_GET['a'])?$_GET['a']:isset($a)?$a:NULL; // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
+$b = isset($_GET['b'])?$_GET['b']:isset($a)?$a:NULL; // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
 $unGreedy = true; //inv. Gierigkeit: findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. false/true
 $barWidth = 120; // Breite des farbigen Balken
 
