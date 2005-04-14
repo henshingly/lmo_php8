@@ -62,20 +62,21 @@ $lmo_cache_options = array (
 $lmo_cache = new Cache_Lite_Output($lmo_cache_options);
 
 //Start Caching if cache miss/Output if cached
+
 $lmo_cache_miss=false;  //Initialize cache miss value
 $lmo_site_id = md5($_SERVER['QUERY_STRING']);  // Make an id for caching
-if (!$lmo_cache->start($lmo_site_id)) {
-  $lmo_cache_miss=true;
-  require_once(PATH_TO_LMO."/IT.php"); 
-  if(isset($_REQUEST["lmouserlang"])){$_SESSION["lmouserlang"]=$_REQUEST["lmouserlang"];}
-  if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
-  require_once(PATH_TO_LMO."/lmo-langload.php");
-  
-  require_once(PATH_TO_LMO."/lmo-functions.php");
-  
-  //Remove Magic Quotes if necessary
-  magicQuotesRemove($_GET);
-  magicQuotesRemove($_POST);
-  magicQuotesRemove($_COOKIE);
-} 
+
+
+require_once(PATH_TO_LMO."/IT.php"); 
+if(isset($_REQUEST["lmouserlang"])){$_SESSION["lmouserlang"]=$_REQUEST["lmouserlang"];}
+if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
+require_once(PATH_TO_LMO."/lmo-langload.php");
+
+require_once(PATH_TO_LMO."/lmo-functions.php");
+
+//Remove Magic Quotes if necessary
+magicQuotesRemove($_GET);
+magicQuotesRemove($_POST);
+magicQuotesRemove($_COOKIE);
+ 
 ?>
