@@ -18,7 +18,7 @@
   */
   
   
-if ($lmo_cache_miss) {
+if (!$lmo_cache->start($lmo_site_id)) {
   $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
   if($file!=""){
     require_once(PATH_TO_LMO."/lmo-openfile.php");
