@@ -148,6 +148,8 @@ if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
   $template->setVariable("Link", URL_TO_LMO.'/?action=table&amp;file='.$m_liga); 
   //$template->parse();
   $template->show();
+} else {
+  echo getMessage($text['mini'][5]." ".$mini_liga,TRUE);
 }
   
 //Falls IFRAME - komplettes HTML-Dokument
