@@ -18,70 +18,70 @@
   */
   
   
-flush();
-$addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
-if($file!=""){
-  require_once(PATH_TO_LMO."/lmo-openfile.php");
-  if(empty($_GET['endtab'])){
-    $endtab=$anzst;
-    $ste=$st;
-    $tabdat="";
-  }else{
-    $endtab=$_GET['endtab'];
-    $tabdat=$endtab.". ".$text[2];
-    $ste=$endtab;
-  }
-  if(!empty($_GET['st'])){
-    $tabdat=$st.". ".$text[2];
-  }
-  if (empty($_REQUEST['action'])) {
-    if (!isset($onrun)) $onrun='0';
-    switch ($onrun) {
-      case '0': $action='results';break;
-      case '1': $action='table';break;
-      case '2': $action='program';break;
-      case '3': $action='cross';break;
-      case '4': $action='graph';break;
-      case '5': $action='stats';break;
-      case '6': $action='cal';break;
-      case '7': $action='spieler';break;
+if ($lmo_cache_miss) {
+  $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
+  if($file!=""){
+    require_once(PATH_TO_LMO."/lmo-openfile.php");
+    if(empty($_GET['endtab'])){
+      $endtab=$anzst;
+      $ste=$st;
+      $tabdat="";
+    }else{
+      $endtab=$_GET['endtab'];
+      $tabdat=$endtab.". ".$text[2];
+      $ste=$endtab;
+    }
+    if(!empty($_GET['st'])){
+      $tabdat=$st.". ".$text[2];
+    }
+    if (empty($_REQUEST['action'])) {
+      if (!isset($onrun)) $onrun='0';
+      switch ($onrun) {
+        case '0': $action='results';break;
+        case '1': $action='table';break;
+        case '2': $action='program';break;
+        case '3': $action='cross';break;
+        case '4': $action='graph';break;
+        case '5': $action='stats';break;
+        case '6': $action='cal';break;
+        case '7': $action='spieler';break;
+      }
     }
   }
-}
-
-//Alle Teile für die Startansicht
-$output_titel="";
-$output_sprachauswahl="";
-$output_kalender="";
-$output_ergebnisse="";
-$output_tabelle="";
-$output_spielplan="";
-$output_kreuztabelle="";
-$output_fieberkurve="";
-$output_ligastatistik="";
-$output_spielerstatistik="";
-$output_info="";
-$output_hauptteil="";
-$output_ligenuebersicht="";
-$output_savehtml="";
-$output_letzteauswertung="";
-$output_berechnungszeit="";
-$output_stylesheet="";
-$p1="";
-
-if (!defined("LMO_TEMPLATE")) define("LMO_TEMPLATE","lmo-standard.tpl.php");
-
-//Wenn ein Template der Form [liganame].tpl.php existiert, wird dieses benutzt. Das ermöglicht 
-// die Nutzung verschiedener Templates für unterschiedliche Ligen 
-$template = new HTML_Template_IT( PATH_TO_TEMPLATEDIR );
-if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){  
-  $template->loadTemplatefile(basename($file).".tpl.php"); 
-}else{
-  $template->loadTemplatefile(LMO_TEMPLATE); 
-}
-
-//if ($action!="tipp") {
-
+  
+  //Alle Teile für die Startansicht
+  $output_titel="";
+  $output_sprachauswahl="";
+  $output_kalender="";
+  $output_ergebnisse="";
+  $output_tabelle="";
+  $output_spielplan="";
+  $output_kreuztabelle="";
+  $output_fieberkurve="";
+  $output_ligastatistik="";
+  $output_spielerstatistik="";
+  $output_info="";
+  $output_hauptteil="";
+  $output_ligenuebersicht="";
+  $output_savehtml="";
+  $output_letzteauswertung="";
+  $output_berechnungszeit="";
+  $output_stylesheet="";
+  $p1="";
+  
+  if (!defined("LMO_TEMPLATE")) define("LMO_TEMPLATE","lmo-standard.tpl.php");
+  
+  //Wenn ein Template der Form [liganame].tpl.php existiert, wird dieses benutzt. Das ermöglicht 
+  // die Nutzung verschiedener Templates für unterschiedliche Ligen 
+  $template = new HTML_Template_IT( PATH_TO_TEMPLATEDIR );
+  if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){  
+    $template->loadTemplatefile(basename($file).".tpl.php"); 
+  }else{
+    $template->loadTemplatefile(LMO_TEMPLATE); 
+  }
+  
+  //if ($action!="tipp") {
+  
   //Titel
   if ($file!="") {
     $output_titel.=$titel;
@@ -311,5 +311,12 @@ if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   //Tippspiel-Addon
   $template->setVariable("Tippspiel", $output_tippspiel);  
   $template->show();
-  //}else {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");d($template->toString());}
+    //}else {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");d($template->toString());}
+    
+  //write to cache
+  $lmo_cache->end();
+} else {
+  //Result was cached!
+  if ($_SESSION['debug']===TRUE) echo "real time due caching: ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
+}
 ?>
