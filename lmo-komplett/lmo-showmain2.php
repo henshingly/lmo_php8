@@ -317,6 +317,6 @@ if ($lmo_cache_miss) {
   $lmo_cache->end();
 } else {
   //Result was cached!
-  if ($_SESSION['debug']===TRUE) echo "real time due caching: ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
+  if (isset($_SESSION['debug'])) echo "real time due caching: ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
 }
 ?>
