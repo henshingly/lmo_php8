@@ -76,6 +76,14 @@ function filterZero($a) {
   return (!empty($a));
 }
 
+
+/**
+ * Returns HTML imgage code for a small team icon
+ *
+ * @param        string     $team       Long name of the team
+ * @param        string     $alternative_text      If image not found return this instead
+ * @return       string     HTML image-Code for the small team icon
+ */
 function getSmallImage($team,$alternative_text='') {
   $team=str_replace("/","",$team);
   if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
@@ -89,6 +97,13 @@ function getSmallImage($team,$alternative_text='') {
   }
 }
 
+/**
+ * Returns a formatted (error) Message
+ *
+ * @param        string     $message       Message to return
+ * @param        bool       $error         Default FALSE, Is this an error message?
+ * @return       string     Formatted (error) message
+ */
 function getMessage($message,$error=FALSE) {
   if ($error) {
     return '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$message.'</p>';
@@ -96,5 +111,28 @@ function getMessage($message,$error=FALSE) {
     return '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$message.'</p>';
   }
 }
+
+/**
+ * Check if a file exists in the include path
+ *
+ * @version      1.2.0
+ * @author       Aidan Lister <aidan@php.net>
+ * @param        string     $file       Name of the file to look for
+ * @return       bool       TRUE if the file exists, FALSE if it does not
+ */
+function file_exists_incpath ($file) {
+  $paths = explode(PATH_SEPARATOR, get_include_path());
+  foreach ($paths as $path) {
+    // Formulate the absolute path
+    $fullpath = $path . DIRECTORY_SEPARATOR . $file;
+  
+    // Check it
+    if (file_exists($fullpath)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 
 ?>

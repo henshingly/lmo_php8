@@ -50,7 +50,7 @@ if (!defined('URL_TO_LANGDIR'))     define('URL_TO_LANGDIR',      URL_TO_LMO.'/l
 if (!defined('URL_TO_CONFIGDIR'))   define('URL_TO_CONFIGDIR',    URL_TO_LMO.'/config');
 if (!defined('URL_TO_JSDIR'))       define('URL_TO_JSDIR',        URL_TO_LMO.'/js');
 
-
+//Configuration
 require_once(PATH_TO_LMO."/lmo-cfgload.php");
 
 //Cache Options
@@ -60,19 +60,19 @@ $lmo_cache_options = array (
 );
 
 $lmo_cache = new Cache_Lite_Output($lmo_cache_options);
-
-//Start Caching if cache miss/Output if cached
-
-$lmo_cache_miss=false;  //Initialize cache miss value
-$lmo_site_id = md5($_SERVER['QUERY_STRING']);  // Make an id for caching
+$lmo_site_id = $_SERVER['QUERY_STRING'];  // Make an id for caching
 
 
-require_once(PATH_TO_LMO."/IT.php"); 
+//Language
 if(isset($_REQUEST["lmouserlang"])){$_SESSION["lmouserlang"]=$_REQUEST["lmouserlang"];}
 if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
 require_once(PATH_TO_LMO."/lmo-langload.php");
 
+//Functions
 require_once(PATH_TO_LMO."/lmo-functions.php");
+
+//Template System
+require_once(PATH_TO_LMO."/IT.php"); 
 
 //Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);
