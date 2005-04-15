@@ -483,7 +483,11 @@ class Cache_Lite
     */
     function raiseError($msg, $code)
     {
-        include_once('PEAR.php');
+        if (file_exists_incpath('PEAR.php')) {
+          include_once('PEAR.php');
+        } else {
+        	include_once(PATH_TO_LMO.'/lmo-PEAR.php');
+        }
         PEAR::raiseError($msg, $code, $this->_pearErrorMode);
     }
     
