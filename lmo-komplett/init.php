@@ -18,9 +18,6 @@
   */
 
 
-//Caching
-require_once('lmo-LiteOutput.php');
-
 require(dirname(__FILE__).'/init-parameters.php');
 if (session_id()=="") session_start();
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
@@ -52,7 +49,8 @@ if (!defined('URL_TO_JSDIR'))       define('URL_TO_JSDIR',        URL_TO_LMO.'/j
 
 //Configuration
 require_once(PATH_TO_LMO."/lmo-cfgload.php");
-
+//Caching
+require_once(PATH_TO_LMO.'/lmo-LiteOutput.php');
 //Cache Options
 $lmo_cache_options = array ( 
   'cacheDir' => PATH_TO_LMO."/".$diroutput,
