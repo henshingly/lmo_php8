@@ -121,6 +121,11 @@ function getMessage($message,$error=FALSE) {
  * @return       bool       TRUE if the file exists, FALSE if it does not
  */
 function file_exists_incpath ($file) {
+  
+  if (!function_exists('get_include_path')) {
+    return false;
+  }
+  
   $paths = explode(PATH_SEPARATOR, get_include_path());
   foreach ($paths as $path) {
     // Formulate the absolute path
