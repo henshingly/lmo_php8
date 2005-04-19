@@ -22,11 +22,6 @@
 //Workaround for register_globals TODO: fix that!!!
 @import_request_variables('gpc');
 
-//Remove Magic Quotes if necessary
-magicQuotesRemove($_GET);
-magicQuotesRemove($_POST);
-magicQuotesRemove($_COOKIE);
-
 if (session_id()=="") session_start();
 require(dirname(__FILE__).'/init-parameters.php');
 
@@ -68,6 +63,9 @@ require_once(PATH_TO_LMO."/lmo-functions.php");
 //Template System
 require_once(PATH_TO_LMO."/IT.php"); 
 
-
+//Remove Magic Quotes if necessary
+magicQuotesRemove($_GET);
+magicQuotesRemove($_POST);
+magicQuotesRemove($_COOKIE);
  
 ?>
