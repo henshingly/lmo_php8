@@ -74,6 +74,10 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
       }
       $nick="";
+      //Keine Tipper 
+      if ($m == 0) {
+        echo getMessage($text['tipp'][17],TRUE);
+      }
     }
   }
   $platz0 = array("");

@@ -17,9 +17,19 @@
   *
   */
 
+@ini_set("session.use_trans_sid","1");
+@ini_set("arg_separator.output","&amp;");
+//Workaround for register_globals TODO: fix that!!!
+@import_request_variables('gpc');
 
-require(dirname(__FILE__).'/init-parameters.php');
+//Remove Magic Quotes if necessary
+magicQuotesRemove($_GET);
+magicQuotesRemove($_POST);
+magicQuotesRemove($_COOKIE);
+
 if (session_id()=="") session_start();
+require(dirname(__FILE__).'/init-parameters.php');
+
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
     $_SESSION['debug']=TRUE;
     @error_reporting(E_ALL);
@@ -27,10 +37,7 @@ if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
 }
 $_SERVER['QUERY_STRING']=isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'';
 
-@ini_set("session.use_trans_sid","1");
-@ini_set("arg_separator.output","&amp;");
-//Workaround for register_globals TODO: fix that!!!
-@import_request_variables('gpc');
+//Path-Contants
 if (!defined('PATH_TO_LMO'))        define('PATH_TO_LMO',         $lmo_dateipfad);
 if (!defined('PATH_TO_ADDONDIR'))   define('PATH_TO_ADDONDIR',    PATH_TO_LMO.'/addon');
 if (!defined('PATH_TO_TEMPLATEDIR'))define('PATH_TO_TEMPLATEDIR', PATH_TO_LMO.'/template');
@@ -49,17 +56,6 @@ if (!defined('URL_TO_JSDIR'))       define('URL_TO_JSDIR',        URL_TO_LMO.'/j
 
 //Configuration
 require_once(PATH_TO_LMO."/lmo-cfgload.php");
-//Caching
-require_once(PATH_TO_LMO.'/lmo-LiteOutput.php');
-//Cache Options
-$lmo_cache_options = array ( 
-  'cacheDir' => PATH_TO_LMO."/".$diroutput,
-  'lifeTime' => 200
-);
-
-$lmo_cache = new Cache_Lite_Output($lmo_cache_options);
-$lmo_site_id = $_SERVER['QUERY_STRING'];  // Make an id for caching
-
 
 //Language
 if(isset($_REQUEST["lmouserlang"])){$_SESSION["lmouserlang"]=$_REQUEST["lmouserlang"];}
@@ -72,9 +68,6 @@ require_once(PATH_TO_LMO."/lmo-functions.php");
 //Template System
 require_once(PATH_TO_LMO."/IT.php"); 
 
-//Remove Magic Quotes if necessary
-magicQuotesRemove($_GET);
-magicQuotesRemove($_POST);
-magicQuotesRemove($_COOKIE);
+
  
 ?>

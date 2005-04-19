@@ -17,8 +17,19 @@
   *
   */
   
+/*
+//Caching
+require_once(PATH_TO_LMO.'/lmo-LiteOutput.php');
+//Cache Options
+$lmo_cache_options = array ( 
+  'cacheDir' => PATH_TO_LMO."/".$diroutput,
+  'lifeTime' => 200
+);
+
+$lmo_cache = new Cache_Lite_Output($lmo_cache_options);
+$lmo_site_id = $_SERVER['QUERY_STRING'];  // Make an id for caching
   
-if (!$lmo_cache->start($lmo_site_id)) {
+if (!$lmo_cache->start($lmo_site_id)) {*/
   $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
   if($file!=""){
     require_once(PATH_TO_LMO."/lmo-openfile.php");
@@ -315,8 +326,8 @@ if (!$lmo_cache->start($lmo_site_id)) {
     
   //write to cache
   $lmo_cache->end();
-} else {
+/*} else {
   //Result was cached!
   if (isset($_SESSION['debug'])) echo "real time due caching: ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
-}
+}*/
 ?>
