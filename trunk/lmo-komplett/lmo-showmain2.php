@@ -325,8 +325,8 @@ if (!$lmo_cache->start($lmo_site_id)) {*/
     //}else {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");d($template->toString());}
     
   //write to cache
-  $lmo_cache->end();
-/*} else {
+  /*$lmo_cache->end();
+} else {
   //Result was cached!
   if (isset($_SESSION['debug'])) echo "real time due caching: ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
 }*/
