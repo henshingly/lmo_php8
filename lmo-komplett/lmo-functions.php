@@ -139,5 +139,23 @@ function file_exists_incpath ($file) {
   return false;
 }
 
-
+function getLangSelector() {
+  $output_sprachauswahl ='';
+  
+  $handle=opendir (PATH_TO_LANGDIR);
+  while (false!==($f=readdir($handle))) {
+    if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
+      if ($lang[1]=="") return '';
+      if ($lang[1]!=$_SESSION['lmouserlang']) {
+        $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
+        $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?".htmlentities(preg_replace("/&?lmouserlang=.+?\b/","",$_SERVER['QUERY_STRING']))."&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'></a> ";
+      } else {
+        $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".selected.gif";
+        $output_sprachauswahl.="<img title='{$lang[1]}' src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'> ";
+      }
+    }
+  }
+  closedir($handle);
+  return $output_sprachauswahl;
+}
 ?>
