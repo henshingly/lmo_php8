@@ -36,22 +36,7 @@ if($action=="admin"){
 <script type="text/javascript" src="<?=URL_TO_LMO?>/js/admin.js.php"></script>
 <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?=$text[77]." ".$text[54];?></h1></td>
-    <td class="lmoFooter" align="right"><?
-  if ($einsprachwahl==1){
-    $handle=opendir (PATH_TO_LANGDIR);
-    while (false!==($f=readdir($handle))) {
-      if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
-        if ($lang[1]=="") $lang[1]=$text[505];
-        if ($lang[1]!=$lmouserlang) {
-          $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".gif";
-          echo "<a href='{$_SERVER['PHP_SELF']}?".htmlentities($_SERVER['QUERY_STRING'])."&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'></a> ";
-        }
-      } 
-    }
-    closedir($handle);
-  }?>
-    </td>
+    <td colspan='2' align="center"><h1><?=$text[77]." ".$text[54];?></h1></td>
   </tr>
   <tr>
     <td class="lmoMenu" align="left"><?
@@ -248,6 +233,13 @@ if ($_SESSION['lmouserok'] == 2) {
   }
 ?>
 
+    </td>
+  </tr>
+  <tr>
+    <td colspan='2' class="lmoFooter" align="left"><?
+  if ($einsprachwahl==1){
+    echo getLangSelector();
+  }?>
     </td>
   </tr>
   <tr>
