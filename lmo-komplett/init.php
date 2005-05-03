@@ -19,8 +19,6 @@
 
 @ini_set("session.use_trans_sid","1");
 @ini_set("arg_separator.output","&amp;");
-//Workaround for register_globals TODO: fix that!!!
-@import_request_variables('gpc');
 
 if (session_id()=="") session_start();
 require(dirname(__FILE__).'/init-parameters.php');
@@ -53,8 +51,20 @@ if (!defined('URL_TO_JSDIR'))       define('URL_TO_JSDIR',        URL_TO_LMO.'/j
 require_once(PATH_TO_LMO."/lmo-cfgload.php");
 
 //Language
-if(isset($_REQUEST["lmouserlang"])){$_SESSION["lmouserlang"]=$_REQUEST["lmouserlang"];}
-if(isset($_SESSION["lmouserlang"])){$lmouserlang=$_SESSION["lmouserlang"];}else{$lmouserlang=$deflang;}
+if(isset($_GET["lmouserlang"])){
+  $_SESSION["lmouserlang"]=$_GET["lmouserlang"];
+}
+if(isset($_POST["lmouserlang"])){
+  $_SESSION["lmouserlang"]=$_POST["lmouserlang"];
+}
+if(isset($_SESSION["lmouserlang"])){
+  $lmouserlang=$_SESSION["lmouserlang"];
+} else {
+  $lmouserlang=$deflang;
+  $_SESSION["lmouserlang"] = $deflang;
+}
+
+
 require_once(PATH_TO_LMO."/lmo-langload.php");
 
 //Functions
@@ -67,5 +77,8 @@ require_once(PATH_TO_LMO."/IT.php");
 magicQuotesRemove($_GET);
 magicQuotesRemove($_POST);
 magicQuotesRemove($_COOKIE);
- 
+//Workaround for register_globals TODO: fix that!!!
+@extract($_GET);
+@extract($_POST);
+@extract($_COOKIE);
 ?>
