@@ -89,7 +89,7 @@ if(($file!="") && ($kurve==1)){
         <tr>
           <td>&nbsp;<?=getSmallImage($teams[$i]);?>&nbsp;</td>
           <td align="right">
-            <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
+            <acronym title="<?=$text[134]." ".$teams[$i]?>"><?
     if($i!=$show_stat2){?>
             <a href="<?=$addp.$show_stat1."&amp;stat2=".$i?>" ><?=$teamk[$i]?></a><?
     } else {
