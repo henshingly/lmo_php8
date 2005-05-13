@@ -22,6 +22,8 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
 if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
   if (isset($_POST['upl']) && isset($_FILES['userfile'])) {
+    $tempfilename = $_FILES['userfile']['tmp_name'];
+    $namefilename = $_FILES['userfile']['name']; 
     $i=0;
     $ufile=$dirliga.$userfile_name;
     while (file_exists($ufile)) {
