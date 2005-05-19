@@ -1,0 +1,9 @@
+//.csvtable {  border: #CCCCCC; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+.csvtablebody { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000; border: #000000 solid; background-color: #CCCCCC; border-width: 1px 1px 1px 1px; line-height: 12px}
+.csvtable { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000; border: #000000 solid; background-color: #CCCCCC; border-width: 0px 1px 1px 0px; line-height: 12px}
+.csvtableheader { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000; border: 1px #000000 solid; background-color: #999999; border-width: 0px 1px 1px 0px; line-height: 12px}
+.csvtableheaderrow { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #999999; border: 1px #000000 solid; background-color: #CCCCCC; border-width: 0px 1px 1px 0px; line-height: 12px}
+.headerText { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #FFFF00}
+.formelement {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; color: #FFFF00; background-color: #999999}
+.textfeld { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; color: #000000; background-color: #CCCCCC}
+

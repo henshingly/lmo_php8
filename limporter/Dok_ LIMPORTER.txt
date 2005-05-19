@@ -1,0 +1,81 @@
+/*
+
+ LIMPORTER KURZDOKUMENTATION
+ 
+ Vielen Dank an Nobbi
+
+*/
+
+Dieses Addon stattet den Liga-Manager-Online mit der Möglichkeit aus, 
+die Daten kompletter Ligen aus einer csv Datei oder von einer html Seite zu importieren, 
+bzw. die Ergebnisse oder Termine einer bestehenden Liga upzudaten.
+
+1. Optionen
+
+importDir
+Im importDir werden die Einstellungen, welche beim Importieren einer Liga festgelegt wurden, 
+gespeichert und können so wieder verwendet werden.
+
+csvExtension
+Die csvExtension legt die erlaubten Dateiendungen für den Import aus Textdateien fest.
+
+
+2. Import
+Klicken Sie im Menü auf Import, um eine neue Liga zu erstellen. Der Import erfolgt in 4 Schritten. 
+Sie haben in jedem Schritt die Möglichkeit den Import abzubrechen.
+
+Schritt 1
+Sie sehen die Nutzungsbedingungen, welche Sie akzeptieren müssen bevor ein Import durchgeführt werden kann. 
+Zuerst legen Sie den Dateinamen der Liga fest. Verzichten Sie dabei auf den Pfad und die Namenserweiterung, 
+diese sind bereits vorgegeben. Achten Sie darauf, dass Ihre Eingabe max. 28 Zeichen lang sein darf. 
+Geben Sie der Liga nun einen aussagekräftigen Namen. Dieser Titel erscheint in den Auflistungen 
+Ihrer Ligen und als Überschrift im Besucherbereich. 
+Legen Sie nun noch fest, ob Sie eine Liga oder ein KO-Turnier anlegen wollen. 
+Als Datenformat wählen Sie das Format ihrer Importquelle (CSV, HTML) aus. 
+Klicken Sie auf Weiter, um fortzufahren.
+
+Schritt 2
+Als Nächstes wählen Sie die lokale Datei aus. In diesem Dropdownfeld werden ihnen alle Dateien 
+mit der ausgewählten Dateiendung angezeigt, welche sich in Ihrem Ligenverzeichnis befinden. 
+Bei der Auswahl wird automatisch der Pfad zum Spielplan ermittelt und eingetragen. 
+Befindet sich die Importdatei nicht in Ihrem Ligenverzeichnis können Sie als Alternative den Pfad 
+zum Spielplan auch manuell eingeben. Falls Sie bereits Ligen importiert haben können Sie 
+die automatisch gespeicherten Feldzuordnungen unter folgende Parameterdatei (*.lim) verwenden auswählen. 
+Klicken Sie auf Weiter, um fortzufahren.
+
+Schritt 3
+In diesem Schritt legen Sie fest welche Zeilen ihrer Importdatei gelesen werden sollen, 
+ob die Importdatei Spaltentitel enthält und welches Trennzeichen in der Importdatei verwendet wurde. 
+Außerdem erfolgt in diesem Schritt über Dropdownfelder die Zuordnung der Felder ihrer Importdatei
+zu den Felder der Ligadatei. Die mit * gekennzeichneten Felder sind hierbei Mussfelder. 
+Über den Button Vorschau erhalten Sie eine Übersicht der Werte gemäß ihrer Feldzuordnung. 
+Dabei können Sie nicht verwendete Spalten ausblenden. 
+
+Hinweis: Wenn Sie dem Feld Spieltag ein Feld ihrer Importdatei zuordnen, werden die Spieltag 
+nicht aus dem Spieltagsdatum ermittelt sondern aus diesem Feldwert festgelegt.
+
+Klicken Sie auf Liga speichern, um fortzufahren.
+
+Schritt 4
+Nun wird ihnen der Inhalt der erzeugten Ligadatei angezeigt und die Daten können manuell angepasst werden. 
+Beachten Sie, dass keinerlei Prüfung der manuellen Eingaben statt findet - falsche oder 
+unsinnige Angaben können die Liga im schlimmsten Fall unbrauchbar machen! 
+Klicken Sie auf Ligaoptionen bearbeiten, um fortzufahren. Sie befinden sich nun in den 
+Grunddaten ihrer Liga können die Daten wie gewohnt bearbeiten.
+
+
+3. Bearbeiten einer Liga
+
+Spieltage anpassen
+Falls Sie im Schritt 3 kein Feld für den Spieltag festgelegt haben, werden die Spieltag 
+aus dem Spieltagsdatum ermittelt. Im Menüpunkt Spieltage können Sie diese Ermittlung überprüfen 
+und gegebenenfalls anpassen.
+
+Aktualisieren
+Über Aktualisieren haben Sie die Möglichkeit Daten ihrer Liga anzupassen. 
+Dabei durchlaufen Sie die 4 Schritte des Imports, wobei bestimmte Daten bereits fest eingestellt sind.
+
+Tipp: 
+Sie können die, aus ihren vorherigen Importen bzw. Aktualisierungen gespeicherten, Feldzuordnungen wieder verwenden. 
+Wenn Sie z.B. eine Parameterdatei für Ergebnisupdates und eine Parameterdatei für Terminupdates haben,
+können Sie diese erneut verwenden.
