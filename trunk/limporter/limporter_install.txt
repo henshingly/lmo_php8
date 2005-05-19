@@ -1,0 +1,147 @@
+#################################################################################################
+#_______________________Installation: Limporter-Addon für LMO 4______________________________
+#
+#################################################################################################
+#
+# Limporter Addon for LigaManager Online
+# Copyright (C) 2003 by Tim Schumacher
+# webobjects@gmx.net /
+#
+# Systemvoraussetzungen:
+# LMO 4.0 (mindestens Version 4 Beta 3)
+# ClassLib Addon für LMO (BITTE BEACHTEN)
+#
+#################################################################################################
+
+  1.
+  Du hast das Archiv entpackt. Gut so!!
+
+  2.
+  Den Inhalt (tatsächlich nur den Inhalt) des Ordners lmo_root kopierst Du in das Hauptverzeichnis
+  deiner LMO Installation ( z.B. <irgendeinPfad>/lmo ).
+
+  Die Meldung, das der Ordner "addon" bereits existiert bestätigst Du mit OK.
+  Genauso verfährst Du mit dem Ordner "config" und "lang".
+  (Keine Sorge, die Ordner werden nicht überschrieben,
+  sondern lediglich um jeweils ein Unterverzeichnis erweitert.)
+
+  Jetzt sollte jeweils ein neues /limporter Verzeichnis in den Verzeichnissen "/addon"
+  sowie "/config" und "/lang" Deiner LMO Installation auftauchen.
+
+  3.
+  Zum Schluss müssen noch Verzeichnisrechte mittels CHMOD eingestellt werden:
+  Das Verzeichnis /imports in <LMO>/addon/limporter setzt du auf -777
+  Alle Dateien in dem Verzeichnis <LMO>/addon/limporter/imports setzt
+  du auf -666 (Sofern welche vorhanden sind)
+  Die Datei cfg.txt im Verzeichnis <LMO>/config/limporter setzt du auf -666
+
+  4.
+  Da Du den Limporter aber in der LMO-Adminumgebung aufrufst, musst Du noch zwei
+  LMO Dateien anpassen (lmo-adminmain.php sowie lmo-adminsubnavi.php).
+  Dazu verfahre wie unten beschrieben.
+
+  5.
+  Wenn Du die Anpassungen durchgeführt hast, kannst du den LMO-Adminbereich aufrufen.
+  In dem Hauptmenü sollte jetzt neben dem Menüpunkt NEU der Menüpunkt IMPORT hinzugekommen
+  sein, über den Du den Importer aufrufen kannst.
+  Wenn nicht kontrolliere die Datei lmo-adminmain.php ob die Änderungen tatsächlich vorhanden
+  sind. Ist die ini.php im Verzeichnis /lmo/addon/limporter/ vorhanden?
+
+  Viel Spass beim Limportieren
+  Timme
+
+#################################################################################################
+#                                                                                               #
+#    Folgende Anpassungen sind an deiner LMO - Installation vorzunehmen !!                      #
+#                                                                                               #
+#                             Welche Dateien werden benötigt?                                   #
+#                                 - lmo-adminmain.php                                           #
+#                                 - lmo-adminnaviunten.php                                      #
+#                                                                                               #
+#               Nicht vergessen vorher ein Backup der Dateien zu machen!!!!                     #
+#                                                                                               #
+#                                                                                               #
+#################################################################################################
+
+lmo-adminmain.php:
+
+###########
+Suche nach:
+###########
+
+echo $text[78];
+
+############################
+Nach diesen Zeilen im Code
+    echo $text[78];
+  }
+  echo "&nbsp;";
+
+folgendes einfügen:
+############################
+
+  // LIMPORTER ADDON BEGIN
+  include(PATH_TO_ADDONDIR.'/limporter/lmo-adminmain.inc.php');
+  // LIMPORTER ADDON END
+
+
+###########
+Suche nach:
+###########
+
+      } elseif($sty == -3) {
+        require(PATH_TO_LMO."/lmo-adminanz.php");
+      }
+
+############################
+Danach diese Zeile einfügen:
+############################
+
+    // LIMPORTER ADDON BEGIN
+      elseif($sty==-9){require(PATH_TO_ADDONDIR."/limporter/lim-adminupdate.php");}
+      elseif($sty==-10){require(PATH_TO_ADDONDIR."/limporter/lim-adminrounds.php");}
+    // LIMPORTER ADDON END
+
+###########
+Suche nach:
+###########
+
+    elseif($todo == "") {
+      require(PATH_TO_LMO."/lmo-adminpad.php");
+    }
+
+################################################################
+Danach diese Zeile einfügen:
+
+Bitte beachten:
+die in alten Limporter Versionen( < 1.3 alpha 3) enthaltene
+Datei lmo-adminimport.php wurde in lim-adminimport.php geändert !!
+#################################################################
+
+// LIMPORTER ADDON BEGIN
+   elseif($todo=="import"){require(PATH_TO_ADDONDIR."/limporter/lim-adminimport.php");}
+// LIMPORTER ADDON END
+
+
+#################################################################################################
+
+lmo-adminsubnavi.php:
+
+
+###########
+Suche nach:
+###########
+
+<td align="center"><?=$text[412]?></td>
+
+############################
+Nach folgendem Code
+}else{?>
+    <td align="center"><?=$text[412]?></td><?
+}
+diese Zeile einfügen:
+############################
+
+// LIMPORTER ADDON BEGIN
+include(PATH_TO_ADDONDIR.'/limporter/lmo-adminsubnavi.inc.php');
+// LIMPORTER ADDON END
