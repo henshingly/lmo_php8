@@ -53,7 +53,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 
   $liga1 = new liga();
   if ($liga1->loadFile(PATH_TO_LMO."/".$dirliga.$file)==false)
-    echo "fehler beim Laden des LigaFiles";
+    echo $text['limporter'][99];
 
    if (isset($HTTP_POST_VARS)) {
    reset ($HTTP_POST_VARS);
@@ -79,7 +79,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
           $liga1->spieltage=array_values($liga1->spieltage); // Index neu erstellen
           $liga1->spieltage[$alteSpielTagNr-1] = $aSpielTag;
           $liga1->spieltage=array_values($liga1->spieltage); // Index neu erstellen
-          $meldung = "Partie ".$aPartie->heim->name." - ".$aPartie->gast->name." vom $alteSpielTagNr. zum $neueSpielTagNr. Spieltag verschoben.<BR>";
+          $meldung = $text['limporter'][100]." ".$aPartie->heim->name." - ".$aPartie->gast->name." ".$text['limporter'][101]." $alteSpielTagNr. ".$text['limporter'][102]." $neueSpielTagNr. ".$text['limporter'][103].".<BR>";
           $rowMarker[] = $heimNr.'-'.$gastNr;
         }
       }
@@ -98,7 +98,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         <tr>
           <th width=15 class="nobr">&nbsp;</th>
           <th colspan=6 class="nobr" align='left'>
-            <strong><?=$spTag->nr.". Spieltag&nbsp;&nbsp;".$spTag->vonBisString()."</strong> / ".$spTag->partienCount()." Partien" ; ?>
+            <strong><?=$spTag->nr.". ".$text['limporter'][65]."&nbsp;&nbsp;".$spTag->vonBisString()."</strong> / ".$spTag->partienCount()." ".$text['limporter'][104] ; ?>
           </th>
           <th colspan=3 class="nobr" align='right'><a href="#top">up</a>&nbsp;/&nbsp;<a href="#bottom">down</a></th>
         </tr>
@@ -142,7 +142,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
       for ($sp = 1;$sp <= $liga->spieltageCount();$sp++) {
         echo "<option value=$sp";
         if($spTag->nr==$sp){echo " selected";}
-        echo ">".$sp.".Spieltag</option>";
+        echo ">".$sp.". ".$text['limporter'][65]."</option>";
       }
       echo "</select>"
 ?>
@@ -161,7 +161,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
           <td class="lmost5">&nbsp;</td>
           <td class="lmost5">&nbsp;</td>
           <td class="lmost5"><?=$team->name; ?></td>
-          <td class="lmost5" align='right' colspan=3>Spielfrei</td>
+          <td class="lmost5" align='right' colspan=3><?PHP echo $text['limporter'][105]; ?></td>
         </tr>
 <?php
       } // if
@@ -180,7 +180,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 
         <tr>
             <th colspan=10 align="middle"><a name="bottom">&nbsp;</a>
-              <acronym title="<? echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<? echo "&Auml;nderungen speichern"; ?>"></acronym>
+              <acronym title="<? echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<? echo $text['limporter'][106]; ?>"></acronym>
             </th>
           </tr>
         </table>

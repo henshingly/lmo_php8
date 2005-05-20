@@ -22,24 +22,24 @@
 ?>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" colspan="2"><nobr><?PHP echo "Datenformat der Importquelle" ?></nobr></td>
+    <td class="lmost5" colspan="2"><nobr><?PHP echo $text['limporter'][30]; ?></nobr></td>
   </tr>
 
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo "Geben Sie hier das Datenformat der Importquelle an. (z.B. HTML Tabelle für eine .php / .asp Internetseite)" ?>"><?PHP echo "Datenformat"; ?></acronym></nobr></td>
-    <td class="lmost5" align="left"><acronym title="<?PHP echo "Geben Sie hier das Datenformat der Importquelle an. (z.B. HTML Tabelle für eine .php / .asp Internetseite)" ?>">
+    <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text['limporter'][31] ?>"><?PHP echo $text['limporter'][32]; ?></acronym></nobr></td>
+    <td class="lmost5" align="left"><acronym title="<?PHP echo $text['limporter'][31] ?>">
     <select class="lmo-formular-input" name="ximporttype" onChange="dolmoedit()">
     <?PHP 
     	echo "<option value=\"0\""; 
     	if($ximporttype==0){echo " selected";} 
-    	echo ">"."HTML - Tabelle (Internetseite)"."</option>"; 
+    	echo ">".$text['limporter'][33]."</option>"; 
     	echo "<option value=\"1\""; 
     	if($ximporttype==1){echo " selected";} 
-    	echo ">"."CSV - Datei (Trennzeichen separiert)"."</option>";
+    	echo ">".$text['limporter'][34]."</option>";
     	echo "<option value=\"2\""; 
     	if($ximporttype==2){echo " selected";} 
-    	echo ">"."Spielplan von fussball.de"."</option>";
+    	echo ">".$text['limporter'][35]."</option>";
     ?>
     	</select></acronym></td>
   </tr>

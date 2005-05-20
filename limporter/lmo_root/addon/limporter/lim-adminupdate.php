@@ -44,8 +44,14 @@
 		$xparserFile = ereg_replace('\.l98','.lim',$file);
 //		echo "<br>lim=".$xparserFile;
 		$ini = new IniFileReader(PATH_TO_ADDONDIR."/limporter/".$limporter_importDir."/".$xparserFile);
-    $ximporturl = $ini->getIniFile('LIMPORTER','URL',"");
-    $ximporttype = $ini->getIniFile('LIMPORTER','IMPORTTYP',"");
+        $ximporturl = $ini->getIniFile('LIMPORTER','URL',"");
+        // $ximporttype lesen
+        if ($ini->getIniFile('LIMPORTER','IMPORTTYP','')=='CSV')
+      	  $ximporttype = 1;
+        else if ($ini->getIniFile('LIMPORTER','IMPORTTYP','')=='HTML')
+          $ximporttype = 0;
+        else if ($ini->getIniFile('LIMPORTER','IMPORTTYP','')=='DFB')
+      	  $ximporttype = 2;
 //  	echo "<br>Update für $file durchgeführt (<a href=\"$ximporturl\" target=\"_blank\">Url</a>)";
   }
 
@@ -80,7 +86,7 @@
     if($hw<>1) {
         $hw = 0;
         $imppage=0;
-        echo "<font color=\"#ff0000\">Sie m&uuml;ssen die Nutzungsbedingungen akzeptieren um fortzufahren !</font>";
+        echo "<font color=\"#ff0000\">".$text['limporter'][3]."</font>";
       }
    }
   if($imppage==2 or (isset($_POST['easyupdate']) and $imppage == 3) ) {
@@ -111,13 +117,13 @@
       echo "<font color=\"#ff0000\">".$text['limporter'][4]."</font>";
       $imppage=1;
     }
-    elseif ($xcheckurl == 1 and $ximporttype == 0 and $frameRefs = getLinks ($fileContent) ) {
-      echo "<table border=0><tr><td align='left' colspan=2><font color=\"#ff0000\"><STRONG>FEHLER:</STRONG> Die angegebene URL der Quelle verweisst auf ein Frameset und kann daher so nicht verwendet werden!</font></td></tr>";
+    elseif ($xcheckurl == '1' and ($ximporttype == 0 or $ximporttype == 2) and $frameRefs = getLinks ($fileContent) ) { // FrameCheck
+      echo "<table border=0><tr><td align='left' colspan=2><font color=\"#ff0000\"><STRONG>".$text['limporter'][23]."</STRONG> ".$text['limporter'][24]."</font></td></tr>";
       echo "<tr><td align='left' colspan=2>";
-      echo "<font color=\"#ff0000\">Versuchen Sie einen direkten Link zu den Spielplandaten anhand der gefundenen Links im Frameset zu ermitteln.</font></td></tr>";
+      echo "<font color=\"#ff0000\">".$text['limporter'][25]."</font></td></tr>";
 			$c=1;
 			foreach ($frameRefs as $link) {
-      	echo "<tr><td align=left><font color=\"#ff0000\">$c.Link=</font></td><td align=left><font color=\"#ff0000\">$link</font></td></tr>";
+      	echo "<tr><td align=left><font color=\"#ff0000\">$c.".$text['limporter'][26]."=</font></td><td align=left><font color=\"#ff0000\">$link</font></td></tr>";
 			$c++;
 			}
       echo "</table>";
@@ -178,11 +184,11 @@
       }
       $limSettings->setKeyValue("IMPORTTYP","HTML");
     }
-    else  if ($ximporttype == 2) {     // DFB Import
+    if ($ximporttype == 2) { // DFB Import
       $num = 0;
       $col = 0;
       $row = 0;
-      $dataArray = buildFieldArrayDFB($src,$xdetailsCheck);//$ximportFile
+      $dataArray = buildFieldArrayDFB($src,$xdetailsCheck, 'update');//$ximportFile
       foreach ($dataArray as $dataRow) {
         if ($row >= $offset) {
           $data = split("#",$dataRow);
@@ -197,7 +203,7 @@
         $tmp = $array[$x];
         $array[$x] = array_pad($tmp,$col,"");
       }
-      $limSettings->setKeyValue("IMPORTTYP","HTML");
+      $limSettings->setKeyValue("IMPORTTYP","DFB");
     }
 
     else if ($ximporttype == 1) { // CSV Import
@@ -206,12 +212,12 @@
     }
   buildLigaFromDataArray($liga,$array,$header,$cols,$lim_format_exp);
   if ($upDateLiga->loadFile(PATH_TO_LMO."/".$dirliga.$file)==FALSE) {
-    echo "<font color=\"#ff0000\">Fehler beim Laden der Liga ($file)</font>";
+    echo "<font color=\"#ff0000\">".$text['limporter'][106]." ($file)</font>";
     $imppage--;
   }
   else {
     if (!copy(PATH_TO_LMO."/".$dirliga.$file, PATH_TO_LMO."/".$dirliga.$file.".bak")) {
-       echo "Backup konnte nicht erstellt werden $file...\n";
+       echo $text['limporter'][107]." $file...\n";
     }
 
     for ($sp=0;$sp < count($upDateLiga->spieltage);$sp++) {
@@ -242,7 +248,7 @@
           if ($upDateGTore <> $partie->gTore) {
               $upDateLiga->spieltage[$sp]->partien[$p]->gTore = $partie->gTore;
           }
-          $txt = "<td>&nbsp;".$upDateLiga->spieltage[$sp]->nr.".Spieltag&nbsp;</td>";
+          $txt = "<td>&nbsp;".$upDateLiga->spieltage[$sp]->nr.". ".$text['limporter'][65]."&nbsp;</td>";
           $txt .= "<td>&nbsp;";
           $txt .= $upDateLiga->spieltage[$sp]->partien[$p]->heim->name."&nbsp;</td>";
           $txt .= "<td>&nbsp;";
@@ -255,7 +261,7 @@
         if (isset($partie) and $partie->zeit<> '' and ($upDateZeit <> $partie->zeit) ){  // Spieldatum
           $upDateFound = 1;
           $upDateLiga->spieltage[$sp]->partien[$p]->zeit = $partie->zeit;
-          $txt = "<td>&nbsp;".$upDateLiga->spieltage[$sp]->nr.".Spieltag&nbsp;</td>";
+          $txt = "<td>&nbsp;".$upDateLiga->spieltage[$sp]->nr.". ".$text['limporter'][65]."&nbsp;</td>";
           $txt .= "<td>&nbsp;";
           $txt .= $upDateLiga->spieltage[$sp]->partien[$p]->heim->name."&nbsp;</td>";
           $txt .= "<td>&nbsp;";
@@ -268,7 +274,7 @@
         if (isset($partie) and $partie->notiz <> '' and ($upDateNotiz <> $partie->notiz) ){  // Spielnotiz and $upDateNotiz <> ''
           $upDateFound = 1;
           $upDateLiga->spieltage[$sp]->partien[$p]->notiz = $partie->notiz;
-          $txt = "<td>&nbsp;".$upDateLiga->spieltage[$sp]->nr.".Spieltag&nbsp;</td>";
+          $txt = "<td>&nbsp;".$upDateLiga->spieltage[$sp]->nr.". ".$text['limporter'][65]."&nbsp;</td>";
           $txt .= "<td>&nbsp;";
           $txt .= $upDateLiga->spieltage[$sp]->partien[$p]->heim->name."&nbsp;</td>";
           $txt .= "<td>&nbsp;";
@@ -340,7 +346,7 @@ if($imppage<3){ ?>
 <?PHP if($imppage==0){ ?>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" colspan=2 align="left"><B>Bitte beachten Sie folgende Hinweise:</B>
+    <td class="lmost5" colspan=2 align="left"><B><?php echo $text['limporter'][108]; ?></B>
       <table class="lmoInner" cellspacing="3" cellpadding="0" border="0">
         <tr>
           <td class="lmost5" width=350><?=$text['limporter'][8]?>
@@ -351,7 +357,7 @@ if($imppage<3){ ?>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
     <td class="lmost5" colspan="2" align="left">
-      <input class="lmo-formular-input" type="checkbox" name="hw" <?PHP if($hw==1) {echo " checked";} ?> value='1'> Nutzungsbedingungen akzeptieren</td>
+      <input class="lmo-formular-input" type="checkbox" name="hw" <?PHP if($hw==1) {echo " checked";} ?> value='1'> <?php echo $text['limporter'][9]; ?></td>
   </tr>
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
@@ -426,7 +432,7 @@ else{ ?>
   include(PATH_TO_ADDONDIR."/limporter/lim-updateresult.php");?>
   <tr>
     <td class="lmost4" colspan="3" align="right"><nobr>
-          <a href="<?PHP echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file; ?>" title="<?PHP echo $text[293]; ?>"><?PHP echo "Liga Optionen bearbeiten"; ?></a>
+          <a href="<?PHP echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file; ?>" title="<?PHP echo $text[293]; ?>"><?PHP echo $text['limporter'][109]; ?></a>
     </nobr></td>
   </tr>
 <?PHP } ?>

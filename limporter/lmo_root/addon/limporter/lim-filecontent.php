@@ -1,5 +1,5 @@
   <tr>
-    <td class="lmost4" colspan="3"><nobr>&nbsp;Inhalt der erzeugten Ligadatei</nobr></td>
+    <td class="lmost4" colspan="3"><nobr>&nbsp;<?PHP echo $text['limporter'][91];?></nobr></td>
   </tr>
   <tr>
     <td class="lmost5" colspan="3"><nobr>&nbsp;

@@ -38,7 +38,7 @@
           if($all==1){$spTitel=".";}
           else {
             if ($hd==1 and $rows[0][$i]!="") {$spTitel=$rows[0][$i];}
-            else {$spTitel="Spalte&nbsp;".($i+1);} // Für die Anzeige fangen wir bei 1 an
+            else {$spTitel=$text['limporter'][62]."&nbsp;".($i+1);} // Für die Anzeige fangen wir bei 1 an
           }
         }
         echo $spTitel;
@@ -63,13 +63,13 @@
                 		if ($colum[1]>0 ) { // formatierung muss vorgenommen werden
                   		$myRegEx = $regExpArray[$colum[1]-1];
                       if(preg_match($myRegEx,$value,$results)) {
-                        $ergebnis.=" <acronym title='(".($y+$offset).",".$colum[2].") Format: ";
+                        $ergebnis.=" <acronym title='(".($y+$offset).",".$colum[2].") ".$text['limporter'][63]." ";
                         $ergebnis.=$regExpNameArray[$x]." Regexp=$myRegEx'>".$results[1]."</acronym>";
                   		}
                     }
                     else {
                       $ergebnis.=" <acronym title='(".($y+$offset).",".$colum[2];
-                      $ergebnis.=") Format: gesamter Zelleninhalt'>".$value."</acronym>";
+                      $ergebnis.=") ".$text['limporter'][64]."'>".$value."</acronym>";
                       }
                     echo "<nobr><B>".$ergebnis."</B></nobr>";
                    }
