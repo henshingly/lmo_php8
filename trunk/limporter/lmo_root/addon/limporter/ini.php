@@ -31,15 +31,17 @@
 // 1.3 beta2 bugfix 3 unicodes werden jetzt erkannt, beim update wird eine warnung ausgegeben
 //					 falls Mannschaftsnamen nicht erkannt wurden
 //
-// 1.4  		 Spielnummer hinzugefügt, anhand der die Spieltage erstellt werden können
+// 1.4		 Spielnummer hinzugefügt, anhand der die Spieltage erstellt werden können
 //					 Partien pro Spieltag = (int) Teamanzahl / 2
 //
-// 1.5  		 Ein Ligaupdate lässt sich jetzt auch ohne Aufruf der Schritte 2-3 durchführen
-//					 
+// 1.5		 Ein Ligaupdate lässt sich jetzt auch ohne Aufruf der Schritte 2-3 durchführen
+//
+// 1.6		 fussball.de-Erweiterung in den Limporter integriert,
+//			 Sprachausgabe in die lang.txt ausgelagert						 
 
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
-if (!defined('VERSION')) define('VERSION','1.5');
+if (!defined('VERSION')) define('VERSION','1.6');
 
 // ARRAY mit reguläre Ausdruecken, um nur bestimmte Teile aus einer Zelle zu extrahieren.
 // Dieses kann GERNE erweitert werden. Bitte posted getestete Expressions im Forum ,
@@ -57,11 +59,11 @@ if (!defined('VERSION')) define('VERSION','1.5');
 
 if (!isset($lim_format_exp)) {
   $lim_format_exp = array (
-    'TORE HEIM (xx : __)'    => '/(\d+):/',
-    'TORE GAST (__ : xx)'    => '/:(\d+)/',
-    'führ.Sondz. entf. (- xx)'  => '/\W*(.*)/',
-    'Datum (tt.mm.jjjj)'    => '/(\d{1,2}\W{1}\d{1,2}\W{1}\d{2,4})/',
-    'Zeit  (hh:mm)'        => '/(\d{1,2}:\d{1,2})/'
+    $text['limporter'][79].' (xx : __)'    => '/(\d+):/',
+    $text['limporter'][80].' (__ : xx)'    => '/:(\d+)/',
+    $text['limporter'][81].' (- xx)'  => '/\W*(.*)/',
+    $text['limporter'][82]    => '/(\d{1,2}\W{1}\d{1,2}\W{1}\d{2,4})/',
+    $text['limporter'][83]    => '/(\d{1,2}:\d{1,2})/'
 //    'Nur Zahlen'    => ,
     );
 };
@@ -115,17 +117,17 @@ if (!isset($lim_ligaOptions)) {
 // Limporter Colums
 if (!isset($lim_colums)) {
   $lim_colums = array (
-    'HEIM'=>    array(-1,-1,'Heim'),// Text der in der Preview angezeigt wird
-    'GAST'=>    array(-1,-1,'Gast'),
-    'THEIM'=>   array(-1,-1,'Tore Heim'),
-    'TGAST'=>   array(-1,-1,'Tore Gast'),
-    'PHEIM'=>   array(-1,-1,'Pkt. Heim'),
-    'PGAST'=>   array(-1,-1,'Pkt. Gast'),
-    'DATUM'=>   array(-1,-1,'Datum'),
-    'ZEIT'=>    array(-1,-1,'Zeit'),
-    'NR'=>      array(-1,-1,'Spieltag'),
-    'SPNR'=>    array(-1,-1,'SpielNr.'),
-    'NOTIZ'=>   array(-1,-1,'Notiz')
+    'HEIM'=>    array(-1,-1,$text['limporter'][84]),// Text der in der Preview angezeigt wird
+    'GAST'=>    array(-1,-1,$text['limporter'][85]),
+    'THEIM'=>   array(-1,-1,$text['limporter'][71]),
+    'TGAST'=>   array(-1,-1,$text['limporter'][72]),
+    'PHEIM'=>   array(-1,-1,$text['limporter'][86]),
+    'PGAST'=>   array(-1,-1,$text['limporter'][87]),
+    'DATUM'=>   array(-1,-1,$text['limporter'][88]),
+    'ZEIT'=>    array(-1,-1,$text['limporter'][89]),
+    'NR'=>      array(-1,-1,$text['limporter'][65]),
+    'SPNR'=>    array(-1,-1,$text['limporter'][90]),
+    'NOTIZ'=>   array(-1,-1,$text['limporter'][75])
     );
 };
 
@@ -248,5 +250,5 @@ if (!isset($lim_colums)) {
 
 
 
-if (!defined('VERSlON')) define('VERSlON',"Limporter ".VERSION." Addon for LMO 4<BR>Copyright &#169; 03/04 <a href=\"mailto:webobjects@gmx.net?subject=Limporter Version ".VERSION."\" title=\"Send mail\">Tim Schumacher</a>");
+if (!defined('VERSlON')) define('VERSlON',"Limporter ".VERSION." Addon for LMO 4<BR>Copyright &#169; 03-05 <a href=\"mailto:webobjects@gmx.net?subject=Limporter Version ".VERSION."\" title=\"Send mail\">Tim Schumacher</a>");
 ?>

@@ -48,8 +48,8 @@
   if(!isset($xparserFile)){$xparserFile="";}
   if($imppage==0){
   if(!isset($hw)) {$hw=0;}
-    if($xfile==""){$xfile="import";}
-    if($xtitel==""){$xtitel="Liga Titel";}
+    if($xfile==""){$xfile=$text['limporter'][28];}
+    if($xtitel==""){$xtitel=$text['limporter'][29];}
     }
   if($imppage==1){
   	if($xcheckurl=="") $xcheckurl = 1;
@@ -91,13 +91,13 @@
       echo "<font color=\"#ff0000\">".$text['limporter'][4]."</font>";
       $imppage=1;
     }
-    elseif ($xcheckurl == '1' and $ximporttype == 0 and $frameRefs = getLinks ($fileContent) ) { // FrameCheck
-      echo "<table border=0><tr><td align='left' colspan=2><font color=\"#ff0000\"><STRONG>FEHLER:</STRONG> Die angegebene URL der Quelle verweisst auf ein Frameset und kann daher so nicht verwendet werden!</font></td></tr>";
+    elseif ($xcheckurl == '1' and ($ximporttype == 0 or $ximporttype == 2) and $frameRefs = getLinks ($fileContent) ) { // FrameCheck
+      echo "<table border=0><tr><td align='left' colspan=2><font color=\"#ff0000\"><STRONG>".$text['limporter'][23]."</STRONG> ".$text['limporter'][24]."</font></td></tr>";
       echo "<tr><td align='left' colspan=2>";
-      echo "<font color=\"#ff0000\">Versuchen Sie einen direkten Link zu den Spielplandaten anhand der gefundenen Links im Frameset zu ermitteln.</font></td></tr>";
+      echo "<font color=\"#ff0000\">".$text['limporter'][25]."</font></td></tr>";
 			$c=1;
 			foreach ($frameRefs as $link) {
-      	echo "<tr><td align=left><font color=\"#ff0000\">$c.Link=</font></td><td align=left><font color=\"#ff0000\">$link</font></td></tr>";
+      	echo "<tr><td align=left><font color=\"#ff0000\">$c.".$text['limporter'][26]."=</font></td><td align=left><font color=\"#ff0000\">$link</font></td></tr>";
 			$c++;
 			}
       echo "</table>";
@@ -110,7 +110,8 @@
           $ximportFile = $fileName;
         }
         else {
-          echo "<font color=\"#ff0000\">".$text['limporter'][5].$limporter_importDir."</font>";
+          
+ "<font color=\"#ff0000\">".$text['limporter'][5].$limporter_importDir."</font>";
           $imppage=1;
         }
         fclose($file);
@@ -178,7 +179,7 @@
       $array = array();
       $num = 0;
       $col = 0;
-      $dataArray = buildFieldArrayDFB($src,$xdetailsCheck);//$ximportFile
+      $dataArray = buildFieldArrayDFB($src,$xdetailsCheck, 'import');
       foreach ($dataArray as $dataRow) {
         if ($row >= $offset) {
           $data = split("#",$dataRow);
@@ -197,9 +198,9 @@
       buildLigaFromDataArray($liga,$array,$header,$cols,$lim_format_exp);
       // Importparameter speichern
       $limSettings = new Sektion('LIMPORTER');
-      $limSettings->setKeyValue("VERSION",VERSION);
+      $limSettings->setKeyValue("VERSION","1.5");
       $limSettings->setKeyValue("TITLE",$liga->name);
-      $limSettings->setKeyValue("IMPORTTYP","HTML");
+      $limSettings->setKeyValue("IMPORTTYP","DFB");
       $limSettings->setKeyValue("URL",$ximporturl);
       $limSettings->setKeyValue("DETAILS",$xdetailsCheck);
       $limSettings->setKeyValue("FIRSTROW",$offset);
@@ -251,7 +252,7 @@
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?PHP echo $text['limporter'][7];?></h1></td>
+    <td align="center"><h1><?PHP echo $text['limporter'][7]; ?></h1></td>
   </tr>
   <tr><td align="center" class="lmost3">
 
@@ -320,7 +321,7 @@
     <tr>
     <td class="lmost5" width="20">&nbsp;</td>
     <td class="lmost5" align="right"><nobr><acronym title="<?PHP echo $text[175] ?>"><?PHP echo $text[174]; ?></acronym></nobr></td>
-    <td class="lmost5" align="left"><acronym title="<?PHP echo $text[175] ?>"><select class="lmo-formular-input" name="xtype" onChange="alert('Sorry, KO Turniere werden z.Zt. noch nicht unterstützt.');this.form.xtype.value=0;dolmoedit()"><?PHP echo "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>";
+    <td class="lmost5" align="left"><acronym title="<?PHP echo $text[175] ?>"><select class="lmo-formular-input" name="xtype" onChange="alert('<?php echo $text['limporter'][27]; ?>');this.form.xtype.value=0;dolmoedit()"><?PHP echo "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>";
 echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$text[177]."</option>";
       ?>
      </select></acronym></td>

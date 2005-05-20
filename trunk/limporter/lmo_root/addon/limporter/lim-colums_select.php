@@ -23,14 +23,14 @@
 	<td colspan=3>
 	<table border=0>
     <tr>
-      <td align="right" class ="lmost5">Spieltag&nbsp;</td>
+      <td align="right" class ="lmost5"><?PHP echo $text['limporter'][65] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
 			<?PHP colSelection("cols[NR][0]",$cols['NR'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
       <?PHP formatSelection("cols[NR][1]",$cols['NR'][1],$lim_format_exp); ?>
       </td>
       <td class="lmost5" width="5">&nbsp;</td>
-      <td align="right" class ="lmost5">Spielnummer&nbsp;</td>
+      <td align="right" class ="lmost5"><?PHP echo $text['limporter'][66] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
       <?PHP colSelection("cols[SPNR][0]",$cols['SPNR'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
@@ -38,14 +38,14 @@
       </td>
     </tr>
     <tr>
-      <td align="right" class ="lmost5">Spieldatum&nbsp;</td>
+      <td align="right" class ="lmost5"><?PHP echo $text['limporter'][67] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
 			<?PHP colSelection("cols[DATUM][0]",$cols['DATUM'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
 			<?PHP formatSelection("cols[DATUM][1]",$cols['DATUM'][1],$lim_format_exp);?>
       </td>
       <td class="lmost5" width="5">&nbsp;</td>
-      <td align="right" class ="lmost5">Anpfiffzeit&nbsp;</td>
+      <td align="right" class ="lmost5"><?PHP echo $text['limporter'][68] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
 			<?PHP colSelection("cols[ZEIT][0]",$cols['ZEIT'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
@@ -53,13 +53,13 @@
       </td>
     </tr>
     <tr>
-      <td align="right" class ="lmost5">* Heimmannschaft&nbsp;</td>
+      <td align="right" class ="lmost5">* <?PHP echo $text['limporter'][69] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
 			<?PHP colSelection("cols[HEIM][0]",$cols['HEIM'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
 			<?PHP formatSelection("cols[HEIM][1]",$cols['HEIM'][1],$lim_format_exp);?>
       </td><td class="lmost5" width="5">&nbsp;</td>
-      <td align="right" class ="lmost5">* Gastmannschaft&nbsp;</td>
+      <td align="right" class ="lmost5">* <?PHP echo $text['limporter'][70] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
 			<?PHP colSelection("cols[GAST][0]",$cols['GAST'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
@@ -67,14 +67,14 @@
       </td>
     </tr>
     <tr>
-      <td align="right" class ="lmost5">Tore Heim&nbsp;</td>
+      <td align="right" class ="lmost5"><?PHP echo $text['limporter'][71] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
 			<?PHP colSelection("cols[THEIM][0]",$cols['THEIM'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
 			<?PHP formatSelection("cols[THEIM][1]",$cols['THEIM'][1],$lim_format_exp);?>
       </td>
       <td class="lmost5" width="5">&nbsp;</td>
-      <td align="right" class ="lmost5">Tore Gast&nbsp;</td>
+      <td align="right" class ="lmost5"><?PHP echo $text['limporter'][72] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
       <?PHP colSelection("cols[TGAST][0]",$cols['TGAST'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
@@ -82,14 +82,14 @@
       </td>
     </tr>
     <tr>
-      <td align="right" class ="lmost5">Punkte Heim&nbsp;</td>
+      <td align="right" class ="lmost5"><?PHP echo $text['limporter'][73] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
 			<?PHP colSelection("cols[PHEIM][0]",$cols['PHEIM'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
 			<?PHP formatSelection("cols[PHEIM][1]",$cols['PHEIM'][1],$lim_format_exp);?>
       </td>
       <td class="lmost5" width="5">&nbsp;</td>
-      <td align="right" class ="lmost5">Punkte Gast&nbsp;</td>
+      <td align="right" class ="lmost5"><?PHP echo $text['limporter'][74] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
 			<?PHP colSelection("cols[PGAST][0]",$cols['PGAST'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">
@@ -97,7 +97,7 @@
       </td>
     </tr>
     <tr>
-      <td align="right" class ="lmost5">Notiz&nbsp;</td>
+      <td align="right" class ="lmost5"><?PHP echo $text['limporter'][75] ?>&nbsp;</td>
       <td class ="lmost5" align="left">
 			<?PHP colSelection("cols[NOTIZ][0]",$cols['NOTIZ'][0],$rows[0],$header);?>
 			</td><td class ="lmost5" align="left">

@@ -43,7 +43,7 @@ function checkHinweis () {
  if (obj){
     if (!obj.checked) {
 			r = false;
-			alert ('Sie müssen zunächst die Nutzungsbedingungen akzeptieren bevor Sie fortfahren können!');
+			alert ('<?php echo $text['limporter'][3]; ?>');
  		}
  }
 return r;

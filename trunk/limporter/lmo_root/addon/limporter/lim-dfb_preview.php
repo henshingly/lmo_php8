@@ -25,7 +25,7 @@ require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
 ?>
 <html>
 <head>
-<title>LIM HTML-Importer</title>
+<title>LIM fussball.de-Importer</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <?php 
 echo "<link rel='stylesheet' type='text/css' href='".URL_TO_ADDONDIR."/limporter/css/lim.css'>";
@@ -68,7 +68,7 @@ $num = 0;
 $col = 0;
 
 if(isset($file) and ($pv==1)){
-	$dataArray = buildFieldArrayDFB($file,$cdetails);
+	$dataArray = buildFieldArrayDFB($file,$cdetails,'update');
 	foreach ($dataArray as $dataRow) {
 		if ($row >= $offset) {
 			$data = split("#",$dataRow);

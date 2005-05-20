@@ -30,16 +30,16 @@ if(!isset($datarows) or ($datarows < 1) ){$datarows=10;}
 if(isset($ximporturl)){
 	$imporUrlLink = $ximporturl;
 	$urlArray = parse_url ( $imporUrlLink);
-//	$imporUrlLink =isset($urlArray["host"])?$ximporturl:URL_TO_LMO."/".$dirliga; 
+//	$imporUrlLink =isset($urlArray["host"])?$ximporturl:URL_TO_LMO."/".$dirliga;
 	if (isset($urlArray["host"])) {
 		$imporUrlLink = $ximporturl;
-		} 
+		}
 	else {
 		$urlArray = explode($dirliga,$ximporturl);
 		$imporUrlLink = URL_TO_LMO."/".$dirliga.$urlArray[1];
 	}
 	$row = 0;
-	$dataArray = buildFieldArrayDFB($ximporturl,$xdetailsCheck);
+	$dataArray = buildFieldArrayDFB($ximporturl,$xdetailsCheck, 'update');
 	$rows = array();
 	$num = 0;
 	$col = 0;
@@ -62,32 +62,32 @@ if(isset($ximporturl)){
 ?>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td class ="lmost5" colspan=2 align="left">HTML - Importeinstellungen</td>
+      <td class ="lmost5" colspan=2 align="left"><?PHP echo $text['limporter'][60]; ?></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right">&nbsp;</td>
-      <td class="lmost5" align="left">Import von Zeile&nbsp;<input class="lmo-formular-input" type="text" name="xoffset" size="3" maxlength="3" value=<?PHP echo $xoffset; ?>>&nbsp;-&nbsp;<input class="lmo-formular-input" type="text" name="xlrow" size="3" maxlength="3" value=<?PHP echo $xlrow; ?>>&nbsp;<a href='<?PHP echo $imporUrlLink;?>' target="_blank">Quelle zeigen</a></td>
+      <td class="lmost5" align="left"><?PHP echo $text['limporter'][51]; ?>&nbsp;<input class="lmo-formular-input" type="text" name="xoffset" size="3" maxlength="3" value=<?PHP echo $xoffset; ?>>&nbsp;-&nbsp;<input class="lmo-formular-input" type="text" name="xlrow" size="3" maxlength="3" value=<?PHP echo $xlrow; ?>>&nbsp;<a href='<?PHP echo $imporUrlLink;?>' target="_blank"><?PHP echo $text['limporter'][52] ?></a></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"></td>
-      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="header" <?PHP if($header==1){echo " checked";} ?> value="1">&nbsp;1.&nbsp;Datenzeile&nbsp;enth&auml;lt&nbsp;Spaltentitel</td>
+      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="header" <?PHP if($header==1){echo " checked";} ?> value="1">&nbsp;<?PHP echo $text['limporter'][53]; ?></td>
     </tr>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
       <td class="lmost5" align="right"></td>
-      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="xdetailsCheck" <?PHP if($xdetailsCheck==1){echo " checked";} ?> value="1">&nbsp;auf mögliche Folgezeile prüfen (z.B. SIS-Handball)</td>
+      <td class="lmost5" align="left"><input class="lmo-formular-input" type="checkbox" name="xdetailsCheck" <?PHP if($xdetailsCheck==1){echo " checked";} ?> value="1">&nbsp;<?PHP echo $text['limporter'][54]; ?></td>
     </tr>
 		<?PHP include(PATH_TO_ADDONDIR."/limporter/lim-colums_select.php");?>
     <tr>
       <td class="lmost5" width="20">&nbsp;</td>
-      <td align="left" colspan=2 class="lmost5"><input class="lmo-formular-button" type="submit" name="vorschau" value="Vorschau">&nbsp;&nbsp;nicht verwendete Spalten ausblenden&nbsp;<input class="lmo-formular-input" type="checkbox" name="showall" <?PHP if($showall==1){echo " checked";} ?> value="1">
+      <td align="left" colspan=2 class="lmost5"><input class="lmo-formular-button" type="submit" name="vorschau" value="<?PHP echo $text['limporter'][57]; ?>">&nbsp;&nbsp;<?PHP echo $text['limporter'][55]; ?>&nbsp;<input class="lmo-formular-input" type="checkbox" name="showall" <?PHP if($showall==1){echo " checked";} ?> value="1">
     </tr>
     <tr>
       <td colspan=3 class="lmost5">
 <?PHP
-$prev="addon/limporter/lim-htm_preview.php?file="
+$prev="addon/limporter/lim-dfb_preview.php?file="
 		.$limporter_importDir."/".$fileName
 		."&pv=".$pv."&hd=".$header."&cdetails=".$xdetailsCheck."&ch=".$csvchar
 		."&all=".$showall."&dr=".$datarows;
