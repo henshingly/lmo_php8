@@ -107,7 +107,7 @@ if (strpos($archivFolder,'../')!==false) {
 }
 
 $a = isset($_GET['a'])?$_GET['a']:isset($a)?$a:NULL; // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
-$b = isset($_GET['b'])?$_GET['b']:isset($a)?$a:NULL; // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
+$b = isset($_GET['b'])?$_GET['b']:isset($b)?$b:NULL; // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
 $unGreedy = true; //inv. Gierigkeit: findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. false/true
 $barWidth = 120; // Breite des farbigen Balken
 
