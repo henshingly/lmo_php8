@@ -19,7 +19,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
 
-include 'lim-dfb_functions.php'; //Die Funktionen für den fussball.de-Import sind ausgelagert
+include (PATH_TO_ADDONDIR.'/limporter/lim-dfb_functions.php'); //Die Funktionen für den fussball.de-Import sind ausgelagert
 
 function left ($str, $howManyCharsFromLeft)
 {
