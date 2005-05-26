@@ -1,0 +1,5 @@
+000=Resultatene fra siste serierunde
+001=.Serierunde
+002=-Avgjørelse fra forbundet
+003=Resultatet teller likt for begge lagene med henhold til hjemmelaget.
+004=For tiden ingen meldinger
