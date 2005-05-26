@@ -1,0 +1,5 @@
+000=All Resulst from the Last Matchday
+001=.Matchday
+002=-Administrative Decision
+003=Results Count the same for both Teams(Home Team's View).
+004=At this Time, there are no Messages

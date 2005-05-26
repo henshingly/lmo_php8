@@ -1,0 +1,5 @@
+001=Test
+002=The Text of this Addon can be reached under the Variable $text[wap][xxx]
+003=Languages, that the LMO knows, can also be saved under lang-[Language Name].txt
+004=Example: lang-English.txt
+005=If LMO is set for English, the Language will also be automatically used for the AddOns
