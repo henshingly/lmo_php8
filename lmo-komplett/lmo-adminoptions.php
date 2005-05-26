@@ -88,9 +88,9 @@ if($save==1){
   <tr>
     <td valign="top">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
-        <tr><td align="right"><?if ($show==0) {echo $text[99];?><?}else{?> <a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=options&amp;show=0";?>"><?=$text[99];?></a><?}?></td></tr>
-        <tr><td align="right"><?if ($show==1) {echo $text[226];?><?}else{?> <a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=options&amp;show=1";?>"><?=$text[226];?></a><?}?></td></tr>
-        <tr><td align="right"><?if ($show==2) {echo $text[250];?><?}else{?> <a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=options&amp;show=2";?>"><?=$text[250];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==0) {echo $text[99];?><?}else{?> <a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=0";?>"><?=$text[99];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==1) {echo $text[226];?><?}else{?> <a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=1";?>"><?=$text[226];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==2) {echo $text[250];?><?}else{?> <a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=2";?>"><?=$text[250];?></a><?}?></td></tr>
       </table>
     </td>
     <td align="left" valign="top">

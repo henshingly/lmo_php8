@@ -206,7 +206,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
       </tr>
       <tr>
         <td align="center">
-          <a href='<?=$_SERVER['PHP_SELF']?>?action=admin&todo=tippuser'><?=$text[5]." ".$text['tipp'][111]." ".$text['tipp'][53]?></a>
+          <a href='<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=tippuser'><?=$text[5]." ".$text['tipp'][111]." ".$text['tipp'][53]?></a>
         </td>
       </tr>
     </table><?

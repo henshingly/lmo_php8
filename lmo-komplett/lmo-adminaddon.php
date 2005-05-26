@@ -55,7 +55,7 @@ if($save==1){
 $testshow=0;
 foreach($cfgarray as $addon_name => $addon_cfg) {
   if (is_array($addon_cfg)) {?>
-        <tr><td align="right"<?if ($show==$testshow) {?> class="active"><?=$addon_name;?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=addons&amp;show=".$testshow;?>"><?=$addon_name;?></a><?}?></td></tr><?
+        <tr><td align="right"<?if ($show==$testshow) {?> class="active"><?=$addon_name;?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=addons&amp;show=".$testshow;?>"><?=$addon_name;?></a><?}?></td></tr><?
     $testshow++;
   }
 }?>
