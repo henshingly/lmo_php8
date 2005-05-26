@@ -151,7 +151,7 @@ function getLangSelector() {
         $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?".htmlentities(preg_replace("/&?lmouserlang=.+?\b/","",$_SERVER['QUERY_STRING']))."&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'></a> ";
       } else {
         $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".selected.gif";
-        $output_sprachauswahl.="<img title='{$lang[1]}' src='{$imgfile}' border='1' title='{$lang[1]}' alt='{$lang[1]}'> ";
+        $output_sprachauswahl.="<img title='{$lang[1]}' src='{$imgfile}' border='1' alt='{$lang[1]}'> ";
       }
     }
   }

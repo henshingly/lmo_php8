@@ -132,14 +132,14 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
   <tr>
     <td valign="top">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
-        <tr><td align="right"><?if ($show==0) {echo $text[183];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text[183];?></a><?}?></td></tr><?
+        <tr><td align="right"><?if ($show==0) {echo $text[183];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text[183];?></a><?}?></td></tr><?
   if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1) {?>
-        <tr><td align="right"><?if ($show==1) {echo $text[264];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=1&amp;file=$file&amp;st=-1";?>"><?=$text[264];?></a><?}?></td></tr>
-        <tr><td align="right"><?if ($show==2) {echo $text[250];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=2&amp;file=$file&amp;st=-1";?>"><?=$text[250];?></a><?}?></td></tr><?
+        <tr><td align="right"><?if ($show==1) {echo $text[264];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=1&amp;file=$file&amp;st=-1";?>"><?=$text[264];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==2) {echo $text[250];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=2&amp;file=$file&amp;st=-1";?>"><?=$text[250];?></a><?}?></td></tr><?
     if ($lmtype==0){?>  
-        <tr><td align="right"><?if ($show==3) {echo $text[178];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=3&amp;file=$file&amp;st=-1";?>"><?=$text[178];?></a><?}?></td></tr>
-        <tr><td align="right"><?if ($show==4) {echo $text[40];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=4&amp;file=$file&amp;st=-1";?>"><?=$text[40];?></a><?}?></td></tr>
-        <tr><td align="right"><?if ($show==5) {echo $text[198];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&todo=edit&amp;show=5&amp;file=$file&amp;st=-1";?>"><?=$text[198];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==3) {echo $text[178];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=3&amp;file=$file&amp;st=-1";?>"><?=$text[178];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==4) {echo $text[40];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=4&amp;file=$file&amp;st=-1";?>"><?=$text[40];?></a><?}?></td></tr>
+        <tr><td align="right"><?if ($show==5) {echo $text[198];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=5&amp;file=$file&amp;st=-1";?>"><?=$text[198];?></a><?}?></td></tr>
         <tr><td align="right"><a href='<?="$addr-3"?>' onclick="return chklmolink();" title="<?=$text[339]?>"><?=$text[338]?></a></td></tr><?
     }
   }?>
@@ -162,7 +162,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           </tr><? 
       if($lmtype==0){ ?>
           <tr>
-            <td class="nobr" align="right"><input class="lmo-formular-input" type="text" name="xnamepkt" size="7" maxlength="60" value="<? if($namepkt==""){echo $text[37];}else{echo $namepkt;} ?>" onChange="dolmoedit()"></acronym></td>
+            <td class="nobr" align="right"><input class="lmo-formular-input" type="text" name="xnamepkt" size="7" maxlength="60" value="<? if($namepkt==""){echo $text[37];}else{echo $namepkt;} ?>" onChange="dolmoedit()"></td>
             <td class="nobr" align="left"><acronym title="<?=$text[66];?>"><?=$text[65]." ".$text[37];?></acronym></td>
           </tr>
           <tr>
@@ -459,7 +459,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
       }?>
               </select>&nbsp;
             </td>
-            <td class="lmoTabelleAbsteiger" align="left">&nbsp;<acronym title="<?=$text[388];?>"><acronym title="<?=$text[388];?>"><?=$text[387];?></acronym></td>
+            <td class="lmoTabelleAbsteiger" align="left">&nbsp;<acronym title="<?=$text[388];?>"><?=$text[387];?></acronym></td>
           </tr><? 
     }
   }elseif ($show==5) {

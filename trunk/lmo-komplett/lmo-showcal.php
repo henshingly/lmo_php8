@@ -15,13 +15,13 @@
     <td class="lmoKalender" align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <th width="60" align="center"><?=$text[147]; ?></td>
-          <th width="60" align="center"><?=$text[148]; ?></td>
-          <th width="60" align="center"><?=$text[149]; ?></td>
-          <th width="60" align="center"><?=$text[150]; ?></td>
-          <th width="60" align="center"><?=$text[151]; ?></td>
-          <th width="60" align="center"><?=$text[152]; ?></td>
-          <th width="60" align="center"><?=$text[153]; ?></td>
+          <th width="60" align="center"><?=$text[147]; ?></th>
+          <th width="60" align="center"><?=$text[148]; ?></th>
+          <th width="60" align="center"><?=$text[149]; ?></th>
+          <th width="60" align="center"><?=$text[150]; ?></th>
+          <th width="60" align="center"><?=$text[151]; ?></th>
+          <th width="60" align="center"><?=$text[152]; ?></th>
+          <th width="60" align="center"><?=$text[153]; ?></th>
         </tr>
 <?
   $dat0 = getdate(time());

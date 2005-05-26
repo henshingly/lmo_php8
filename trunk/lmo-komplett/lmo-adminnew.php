@@ -208,7 +208,7 @@ if($newpage<3){ ?>
 }?>
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <th class="nobr" align="left" colspan="3"><?= $text[246]." ".($newpage+1)." ".$text[259]." 4"; ?></td>
+            <th class="nobr" align="left" colspan="3"><?= $text[246]." ".($newpage+1)." ".$text[259]." 4"; ?></th>
           </tr><? 
 if($newpage==0){ ?>
           <tr>
@@ -242,12 +242,12 @@ if($newpage==1){
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\'xteams\',1);" title="<?= $text[273]; ?>" onMouseOver="lmoimg(\'ta\',img1)" onMouseOut="lmoimg(\'ta\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgta" width="7" height="7" border="0"></a>')</script>
+                          <script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\'xteams\',1);" title="<?= $text[273]; ?>" onMouseOver="lmoimg(\'ta\',img1)" onMouseOut="lmoimg(\'ta\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgta" width="7" height="7" border="0"><\/a>')</script>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\'xteams\',-1);" title="<?= $text[273]; ?>" onMouseOver="lmoimg(\'tb\',img3)" onMouseOut="lmoimg(\'tb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgtb" width="7" height="7" border="0"></a>')</script>
+                          <script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\'xteams\',-1);" title="<?= $text[273]; ?>" onMouseOver="lmoimg(\'tb\',img3)" onMouseOut="lmoimg(\'tb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgtb" width="7" height="7" border="0"><\/a>')</script>
                         </td>
                       </tr>
                     </table>
@@ -269,12 +269,12 @@ if($newpage==1){
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',1);" title="<?= $text[276]; ?>" onMouseOver="lmoimg(\'sa\',img1)" onMouseOut="lmoimg(\'sa\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"></a>')</script>
+                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',1);" title="<?= $text[276]; ?>" onMouseOver="lmoimg(\'sa\',img1)" onMouseOut="lmoimg(\'sa\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"><\/a>')</script>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',-1);" title="<?= $text[276]; ?>" onMouseOver="lmoimg(\'sb\',img3)" onMouseOut="lmoimg(\'sb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"></a>')</script>
+                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',-1);" title="<?= $text[276]; ?>" onMouseOver="lmoimg(\'sb\',img3)" onMouseOut="lmoimg(\'sb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"><\/a>')</script>
                         </td>
                       </tr>
                     </table>
@@ -296,12 +296,12 @@ if($newpage==1){
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',1);" title="<?= $text[279]; ?>" onMouseOver="lmoimg(\'pa\',img1)" onMouseOut="lmoimg(\'pa\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"></a>')</script>
+                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',1);" title="<?= $text[279]; ?>" onMouseOver="lmoimg(\'pa\',img1)" onMouseOut="lmoimg(\'pa\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"><\/a>')</script>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',-1);" title="<?= $text[279]; ?>" onMouseOver="lmoimg(\'pb\',img3)" onMouseOut="lmoimg(\'pb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"></a>')</script>
+                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',-1);" title="<?= $text[279]; ?>" onMouseOver="lmoimg(\'pb\',img3)" onMouseOut="lmoimg(\'pb\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"><\/a>')</script>
                         </td>
                       </tr>
                     </table>

@@ -120,7 +120,7 @@ if($file!=""){
         <tr>
           <td align="right"><?= $chg1; ?>%</td>
           <th align="center"><?= $text[60]; ?></th>
-          <td valign="left" align="left"><?= $chg2; ?>%</td>
+          <td align="left"><?= $chg2; ?>%</td>
         </tr>
 <? } ?>
         <tr>
@@ -215,114 +215,113 @@ if($file!=""){
   <tr>
     <td align="center" colspan="5"><h1><?=$text[4009]?></h1></td>
   </tr>
-<tr>
-<tr>
-  <td align="center">
-    <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-      <tr>
-        <th colspan="4" align="center"><?=$text[63]?> </th>
-      </tr>
-      <tr>
-        <td align="right"> <?=$text[516]?> </td>
-        <td align="right"> <?=$text[4006]?> </td>
-        <td align="center"> <?=$text[4008]?> </td>
-        <td align="left"> <?=$text[4007]?> </td>
-      </tr>
-      <tr>
-        <td align="right"> <strong><?=$ggesamt=$gzusieg1+$gzusieg2+$gzuunent+$gbeide;?></strong></td>
-        <td align="right"> <strong><?=$gzusieg1?></strong><?if ($ggesamt>0) {$v=round($gzusieg1/$ggesamt*100);echo " ($v%)";}?> </td>
-        <td align="center"> <strong><?=$gzuunent?></strong><?if ($ggesamt>0) {$v=round($gzuunent/$ggesamt*100);echo " ($v%)";}?> </td>
-        <td align="left"> <strong><?=$gzusieg2?></strong><?if ($ggesamt>0) {$v=round($gzusieg2/$ggesamt*100);echo " ($v%)";}?> </td>
-      </tr><?
+  <tr>
+    <td align="center">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <th colspan="4" align="center"><?=$text[63]?> </th>
+        </tr>
+        <tr>
+          <td align="right"> <?=$text[516]?> </td>
+          <td align="right"> <?=$text[4006]?> </td>
+          <td align="center"> <?=$text[4008]?> </td>
+          <td align="left"> <?=$text[4007]?> </td>
+        </tr>
+        <tr>
+          <td align="right"> <strong><?=$ggesamt=$gzusieg1+$gzusieg2+$gzuunent+$gbeide;?></strong></td>
+          <td align="right"> <strong><?=$gzusieg1?></strong><?if ($ggesamt>0) {$v=round($gzusieg1/$ggesamt*100);echo " ($v%)";}?> </td>
+          <td align="center"> <strong><?=$gzuunent?></strong><?if ($ggesamt>0) {$v=round($gzuunent/$ggesamt*100);echo " ($v%)";}?> </td>
+          <td align="left"> <strong><?=$gzusieg2?></strong><?if ($ggesamt>0) {$v=round($gzusieg2/$ggesamt*100);echo " ($v%)";}?> </td>
+        </tr><?
     if ($gbeide>0) {?>
-      <tr>
-        <td align="right" colspan="2"><?=$text[4012]?></td>
-        <td colspan="2" align="center"><strong><?=$gbeide?></strong><?if ($ggesamt>0) {$v=round($gbeide/$ggesamt*100);echo " ($v%)";}?></td>
-      </tr><?
+        <tr>
+          <td align="right" colspan="2"><?=$text[4012]?></td>
+          <td colspan="2" align="center"><strong><?=$gbeide?></strong><?if ($ggesamt>0) {$v=round($gbeide/$ggesamt*100);echo " ($v%)";}?></td>
+        </tr><?
     }?>
-      <tr>
-        <th colspan="4" align="center"><?=$text[38]?> </th>
-      </tr>
-      <tr>
-        <td align="right"> <?=$text[516]?> </td>
-        <td align="right"> <?=$text[4010]?> </td>
-        <td>&nbsp;</td>
-        <td align="left"> <?=$text[4011]?> </td>
-      </tr>
-      <tr>
-        <td align="right"> <strong><?=applyFactor($gzutore,$goalfaktor);?></strong> (<?=$text[517]?><?=applyFactor($gdstore,$goalfaktor)?>) </td>
-        <td align="right"> <strong><?=applyFactor($gheimtore,$goalfaktor);?></strong><?if ($gdstore>0) {$v=round($dsheimtore/$gdstore*100);echo " ($v% ".$text[517].applyFactor($dsheimtore,$goalfaktor).")";}?> </td>
-        <td>&nbsp;</td>
-        <td align="left"> <strong><?=applyFactor($ggasttore,$goalfaktor);?></strong><?if ($gdstore>0) {echo " (".(100-$v)."% ".$text[517].applyFactor($dsgasttore,$goalfaktor).")";}?> </td>
-      </tr><?
+        <tr>
+          <th colspan="4" align="center"><?=$text[38]?> </th>
+        </tr>
+        <tr>
+          <td align="right"> <?=$text[516]?> </td>
+          <td align="right"> <?=$text[4010]?> </td>
+          <td>&nbsp;</td>
+          <td align="left"> <?=$text[4011]?> </td>
+        </tr>
+        <tr>
+          <td align="right"> <strong><?=applyFactor($gzutore,$goalfaktor);?></strong> (<?=$text[517]?><?=applyFactor($gdstore,$goalfaktor)?>) </td>
+          <td align="right"> <strong><?=applyFactor($gheimtore,$goalfaktor);?></strong><?if ($gdstore>0) {$v=round($dsheimtore/$gdstore*100);echo " ($v% ".$text[517].applyFactor($dsheimtore,$goalfaktor).")";}?> </td>
+          <td>&nbsp;</td>
+          <td align="left"> <strong><?=applyFactor($ggasttore,$goalfaktor);?></strong><?if ($gdstore>0) {echo " (".(100-$v)."% ".$text[517].applyFactor($dsgasttore,$goalfaktor).")";}?> </td>
+        </tr><?
     if ($hheimsiegtor>0) {?>
-      <tr>
-        <th colspan="4" align="center"><?=$text[4013]?></th>
-      </tr><tr>
-        <td align="right"><?=$hheimsieg?> - </td>
-        <td align="left"><?=$hgastsieg?></td>
-        <td colspan="2" align="left"><?=applyFactor($hheimsiegtor,$goalfaktor)?>:<?=applyFactor($hgastsiegtor,$goalfaktor)?> (<?=$spieltagflag?>.<?=$text[4014]?>)</td>
-      </tr><?
+        <tr>
+          <th colspan="4" align="center"><?=$text[4013]?></th>
+        </tr><tr>
+          <td align="right"><?=$hheimsieg?> - </td>
+          <td align="left"><?=$hgastsieg?></td>
+          <td colspan="2" align="left"><?=applyFactor($hheimsiegtor,$goalfaktor)?>:<?=applyFactor($hgastsiegtor,$goalfaktor)?> (<?=$spieltagflag?>.<?=$text[4014]?>)</td>
+        </tr><?
       if ($hheimsiegtor1>0) {?>
-      <tr>
-        <td align="right"><?=$hheimsieg1?> - </td>
-        <td align="left"><?=$hgastsieg1?></td>
-        <td colspan="2" align="left"><?=applyFactor($hheimsiegtor1,$goalfaktor)?>:<?=applyFactor($hgastsiegtor1,$goalfaktor)?> (<?=$spieltagflag1?>.<?=$text[4014]?>)</td>
-      </tr><?
+        <tr>
+          <td align="right"><?=$hheimsieg1?> - </td>
+          <td align="left"><?=$hgastsieg1?></td>
+          <td colspan="2" align="left"><?=applyFactor($hheimsiegtor1,$goalfaktor)?>:<?=applyFactor($hgastsiegtor1,$goalfaktor)?> (<?=$spieltagflag1?>.<?=$text[4014]?>)</td>
+        </tr><?
   	    if ($counteranz>2) {
   	      $counteranz0=$counteranz-2;?>
-    	<tr>
-        <td>&nbsp;</td>
-        <td colspan="3" align="right"><small><?=$text[4015]?> <?=$counteranz0?> <?=$text[4016]?></small></td>
-      </tr><?
+      	<tr>
+          <td>&nbsp;</td>
+          <td colspan="3" align="right"><small><?=$text[4015]?> <?=$counteranz0?> <?=$text[4016]?></small></td>
+        </tr><?
   	    }
       }
     }
     if ($agastsiegtor>0) {?>
-      <tr>
-        <th colspan="4" align="center"><?=$text[4017]?></th>
-      </tr>
-      <tr>
-        <td align="right"><?=$aheimsieg?> - </td>
-        <td align="left"><?=$agastsieg?></td>
-        <td colspan="2" align="left"><?=applyFactor($aheimsiegtor,$goalfaktor)?>:<?=applyFactor($agastsiegtor,$goalfaktor)?> (<?=$spieltagflag2?>.<?=$text[4014]?>)</td>
-      </tr>  <?
+        <tr>
+          <th colspan="4" align="center"><?=$text[4017]?></th>
+        </tr>
+        <tr>
+          <td align="right"><?=$aheimsieg?> - </td>
+          <td align="left"><?=$agastsieg?></td>
+          <td colspan="2" align="left"><?=applyFactor($aheimsiegtor,$goalfaktor)?>:<?=applyFactor($agastsiegtor,$goalfaktor)?> (<?=$spieltagflag2?>.<?=$text[4014]?>)</td>
+        </tr>  <?
       if ($agastsiegtor1>0) {?>
-      <tr>
-        <td align="right"><?=$aheimsieg1?> - </td>
-        <td align="left"><?=$agastsieg1?></td>
-        <td colspan="2" align="left"><?=applyFactor($aheimsiegtor1,$goalfaktor)?>:<?=applyFactor($agastsiegtor1,$goalfaktor)?>  (<?=$spieltagflag3?>.<?=$text[4014]?>)</td>
-      </tr><?
+        <tr>
+          <td align="right"><?=$aheimsieg1?> - </td>
+          <td align="left"><?=$agastsieg1?></td>
+          <td colspan="2" align="left"><?=applyFactor($aheimsiegtor1,$goalfaktor)?>:<?=applyFactor($agastsiegtor1,$goalfaktor)?>  (<?=$spieltagflag3?>.<?=$text[4014]?>)</td>
+        </tr><?
   	    if ($counteranz1>2) {
   	      $counteranz4=$counteranz1-2;?>
-      <tr> 
-        <td>&nbsp;</td>
-        <td colspan="3" align="right"><small><?=$text[4015]?> <?=$counteranz4?> <?=$text[4016]?></small></td>
-      </tr><?
+        <tr> 
+          <td>&nbsp;</td>
+          <td colspan="3" align="right"><small><?=$text[4015]?> <?=$counteranz4?> <?=$text[4016]?></small></td>
+        </tr><?
   	    }
       }
     }
     if ($spieltagflag4>0) {?>
-      <tr>
-        <th colspan="4" align="center"><?=$text[4018]?>  <?=$text[38]?></th>
-      </tr>
-      <tr>
-        <td align="right"><?=$htorreichm1?> - </td>
-        <td align="left"><?=$htorreichm2?></td>
-        <td colspan="2" align="left"><?=applyFactor($htorreicht1,$goalfaktor)?>:<?=applyFactor($htorreicht2,$goalfaktor)?>  (<?=$spieltagflag4?>.<?=$text[4014]?>)</td>
-      </tr><?
+        <tr>
+          <th colspan="4" align="center"><?=$text[4018]?>  <?=$text[38]?></th>
+        </tr>
+        <tr>
+          <td align="right"><?=$htorreichm1?> - </td>
+          <td align="left"><?=$htorreichm2?></td>
+          <td colspan="2" align="left"><?=applyFactor($htorreicht1,$goalfaktor)?>:<?=applyFactor($htorreicht2,$goalfaktor)?>  (<?=$spieltagflag4?>.<?=$text[4014]?>)</td>
+        </tr><?
       if ($spieltagflag5>0) {?>
-      <tr>
-        <td align="right"><?=$htorreichm3?> - </td>
-        <td align="left"><?=$htorreichm4?></td>
-        <td colspan="2" align="left"><?=applyFactor($htorreicht3,$goalfaktor)?>:<?=applyFactor($htorreicht4,$goalfaktor)?>  (<?=$spieltagflag5?>.<?=$text[4014]?>)</td>
-      </tr><?
+        <tr>
+          <td align="right"><?=$htorreichm3?> - </td>
+          <td align="left"><?=$htorreichm4?></td>
+          <td colspan="2" align="left"><?=applyFactor($htorreicht3,$goalfaktor)?>:<?=applyFactor($htorreicht4,$goalfaktor)?>  (<?=$spieltagflag5?>.<?=$text[4014]?>)</td>
+        </tr><?
   	    if ($counteranz5>2) {
   	      $counteranz6=$counteranz5-2;?>
-  	  <tr>
-         <td>&nbsp;</td>
-         <td colspan="3" align="right"><small><?=$text[4015]?> <?=$counteranz6?> <?=$text[4019]?></small></td>
-       </tr><?
+    	  <tr>
+           <td>&nbsp;</td>
+           <td colspan="3" align="right"><small><?=$text[4015]?> <?=$counteranz6?> <?=$text[4019]?></small></td>
+         </tr><?
       	}
       }
     }?>

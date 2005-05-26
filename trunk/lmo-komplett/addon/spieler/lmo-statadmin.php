@@ -458,10 +458,10 @@ function mark(el){
               <td align="left">
   							<table cellpadding="0" cellspacing="0">
                   <tr>
-                    <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'+\',\'data<?=$j1?>|<?=$j2?>\');" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>a\',img1)" onMouseOut="lmoimg(\'<?=$i; ?>a\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?=$i; ?>a" width="7" height="7" border="0"></a>')</script></td>
+                    <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'+\',\'data<?=$j1?>|<?=$j2?>\');" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>a\',img1)" onMouseOut="lmoimg(\'<?=$i; ?>a\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?=$i; ?>a" width="7" height="7" border="0"><\/a>')</script></td>
                   </tr>
                   <tr>
-                    <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'-\',\'data<?=$j1?>|<?=$j2?>\');" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>b\',img3)" onMouseOut="lmoimg(\'<?=$i; ?>b\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?=$i; ?>b" width="7" height="7" border="0"></a>')</script></td>
+                    <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'-\',\'data<?=$j1?>|<?=$j2?>\');" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>b\',img3)" onMouseOut="lmoimg(\'<?=$i; ?>b\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?=$i; ?>b" width="7" height="7" border="0"><\/a>')</script></td>
                   </tr>
                 </table>
 							</td><?
@@ -511,10 +511,10 @@ function mark(el){
             <td align="left">
 							<table cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'+\',\'anzeige_pro_seite\');" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>a\',img1)" onMouseOut="lmoimg(\'<?=$i; ?>a\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?=$i; ?>a" width="7" height="7" border="0"></a>')</script></td>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'+\',\'anzeige_pro_seite\');" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>a\',img1)" onMouseOut="lmoimg(\'<?=$i; ?>a\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?=$i; ?>a" width="7" height="7" border="0"><\/a>')</script></td>
                 </tr>
                 <tr>
-                  <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'-\',\'anzeige_pro_seite\');" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>b\',img3)" onMouseOut="lmoimg(\'<?=$i; ?>b\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?=$i; ?>b" width="7" height="7" border="0"></a>')</script></td>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'-\',\'anzeige_pro_seite\');" title="<?=$text[120]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>b\',img3)" onMouseOut="lmoimg(\'<?=$i; ?>b\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?=$i; ?>b" width="7" height="7" border="0"><\/a>')</script></td>
                 </tr>
               </table>
 					  </td>
