@@ -65,9 +65,9 @@ if($file!=""){
         <tr>
           <th align="right"><?=$teams[$show_stat1];?></th>
           <th align="center"><?
-      echo getSmallImage($teams[$show_stat1],$teamk[$show_stat1])."&nbsp;";
+      echo getSmallImage($teams[$show_stat1])."&nbsp;";
       if($show_stat2>0 && $show_stat1!=$show_stat2){
-        echo "&nbsp;".getSmallImage($teams[$show_stat2],$teamk[$show_stat2]);
+        echo "&nbsp;".getSmallImage($teams[$show_stat2]);
       }?>
           </th><? 
       if($show_stat2>0 && $show_stat1!=$show_stat2){ ?>
