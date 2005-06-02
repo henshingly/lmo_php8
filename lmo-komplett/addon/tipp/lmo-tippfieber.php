@@ -41,9 +41,9 @@ if($file!="" && $tipp_tippfieber==1){
   <input type="hidden" name="save" value="1">
   <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
     <tr>
-      <th align="left"><? echo $text['tipp'][164]." 1";?></td>
-      <th align="left"><? echo $text['tipp'][164]." 2";?></td>
-      <th align="left"><? echo $text['tipp'][283];?></td>
+      <th align="left"><? echo $text['tipp'][164]." 1";?></th>
+      <th align="left"><? echo $text['tipp'][164]." 2";?></th>
+      <th align="left"><? echo $text['tipp'][283];?></th>
       <th>&nbsp;</th>
     </tr>
     <tr>
