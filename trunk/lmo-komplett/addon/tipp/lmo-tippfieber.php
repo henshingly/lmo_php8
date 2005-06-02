@@ -44,7 +44,7 @@ if($file!="" && $tipp_tippfieber==1){
       <th align="left"><? echo $text['tipp'][164]." 1";?></td>
       <th align="left"><? echo $text['tipp'][164]." 2";?></td>
       <th align="left"><? echo $text['tipp'][283];?></td>
-      <th&nbsp;></th>
+      <th>&nbsp;</th>
     </tr>
     <tr>
       <td>
@@ -91,7 +91,7 @@ if($file!="" && $tipp_tippfieber==1){
       $fieber_stat2=-1;
     }
     if ($fieber_stat1<0) {
-      echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text['tipp'][284]."<br>&nbsp;</td></tr>";
+      echo "<tr><th><h2>".$text['tipp'][284]."</h2></th></tr>";
     } else {
       $dummy=URL_TO_ADDONDIR."/tipp/lmo-tipppaintgraph.php?pganz=";
       if ($fieber_stat2>=0) {
@@ -99,9 +99,9 @@ if($file!="" && $tipp_tippfieber==1){
       } else {
         $dummy=$dummy."1";
       }
-      $dummy=$dummy."&pgteam1=".htmlentities($tippernick[$fieber_stat1]);
+      $dummy=$dummy."&amp;pgteam1=".htmlentities($tippernick[$fieber_stat1]);
       if ($fieber_stat2>=0) {
-        $dummy=$dummy."&pgteam2=".htmlentities($tippernick[$fieber_stat2]);
+        $dummy=$dummy."&amp;pgteam2=".htmlentities($tippernick[$fieber_stat2]);
       }
       if ($kurvenmodus==1) {
         if ($fieber_stat2>=0) {
@@ -128,10 +128,10 @@ if($file!="" && $tipp_tippfieber==1){
           $max=max($platz1[$fieber_stat1]);
         }
       }
-      $dummy=$dummy."&max=".$max;
-      $dummy=$dummy."&pgst=".$anzst;
+      $dummy=$dummy."&amp;max=".$max;
+      $dummy=$dummy."&amp;pgst=".$anzst;
       if ($kurvenmodus<4) {
-        $dummy=$dummy."&pgplatz1=";
+        $dummy=$dummy."&amp;pgplatz1=";
         if ($kurvenmodus==1) {
           for ($j=0; $j<$anzst; $j++) {
             $dummy.=$tipppunkte[$fieber_stat1][$j].",";
@@ -144,7 +144,7 @@ if($file!="" && $tipp_tippfieber==1){
         $dummy.="0";
       }
       if ($kurvenmodus>2) {
-        $dummy=$dummy."&pgplatz1a=";
+        $dummy=$dummy."&amp;pgplatz1a=";
         for ($j=0; $j<$anzst; $j++) {
           $dummy.=$platz1[$fieber_stat1][$j].",";
         }
@@ -152,7 +152,7 @@ if($file!="" && $tipp_tippfieber==1){
       }
       if ($fieber_stat2>=0) {
         if ($kurvenmodus<4) {
-          $dummy=$dummy."&pgplatz2=";
+          $dummy=$dummy."&amp;pgplatz2=";
           if ($kurvenmodus==1) {
             for ($j=0; $j<$anzst; $j++) {
               $dummy.=$tipppunkte[$fieber_stat2][$j].",";
@@ -165,26 +165,26 @@ if($file!="" && $tipp_tippfieber==1){
           $dummy.="0";
         }
         if ($kurvenmodus>2) {
-          $dummy=$dummy."&pgplatz2a=";
+          $dummy=$dummy."&amp;pgplatz2a=";
           for ($j=0; $j<$anzst; $j++) {
             $dummy.=$platz1[$fieber_stat2][$j].",";
           }
           $dummy.="0";
         }
       }
-      $dummy=$dummy."&kmodus=".$kurvenmodus;
-      $dummy=$dummy."&pgtext1=".$text[135];
+      $dummy=$dummy."&amp;kmodus=".$kurvenmodus;
+      $dummy=$dummy."&amp;pgtext1=".$text[135];
       //SPIELTAGE
       if ($kurvenmodus==1) {
-        $dummy=$dummy."&pgtext2=".strtoupper($text['tipp'][38]);
+        $dummy=$dummy."&amp;pgtext2=".strtoupper($text['tipp'][38]);
       }
       // PUNKTE
       else{
-        $dummy=$dummy."&pgtext2=".$text[136];
+        $dummy=$dummy."&amp;pgtext2=".$text[136];
       }
       //PLATZIERUNG
       ?>
-          <tr><td class="lmost5" colspan="3"><img src="<? echo $dummy; ?>" border="0"></td></tr><? 
+          <tr><td align="center" colspan="3"><img src="<? echo $dummy; ?>" border="0"></td></tr><? 
     }?>
         </table>
       </td>
