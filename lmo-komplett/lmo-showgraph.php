@@ -52,33 +52,33 @@ if(($file!="") && ($kurve==1)){
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
   if($show_stat1==0){?>
         <tr>
-          <td align="center">&nbsp;<br><?=$text[24]?><br>&nbsp;</td>
+          <th><h2><?=$text[24]?></h2></th>
         </tr><?
   } else {
     $tabtype=0;
     require(PATH_TO_LMO."/lmo-calcgraph.php");
     $dummy=URL_TO_LMO."/lmo-paintgraph.php?pganz=";
     if($show_stat2>0){$dummy=$dummy."2";}else{$dummy=$dummy."1";}
-    $dummy=$dummy."&pgteam1=".rawurlencode($teams[$show_stat1]);
+    $dummy=$dummy."&amp;pgteam1=".rawurlencode($teams[$show_stat1]);
     if($show_stat2>0){$dummy=$dummy."&pgteam2=".rawurlencode($teams[$show_stat2]);}
-    $dummy=$dummy."&pgteams=".$anzteams;
-    $dummy=$dummy."&pgst=".$anzst;
-    $dummy=$dummy."&pgch=".$champ;
-    $dummy=$dummy."&pgcl=".$anzcl;
-    $dummy=$dummy."&pgck=".$anzck;
-    $dummy=$dummy."&pguc=".$anzuc;
-    $dummy=$dummy."&pgar=".$anzar;
-    $dummy=$dummy."&pgab=".$anzab;
-    $dummy=$dummy."&pgplatz1=";
+    $dummy=$dummy."&amp;pgteams=".$anzteams;
+    $dummy=$dummy."&amp;pgst=".$anzst;
+    $dummy=$dummy."&amp;pgch=".$champ;
+    $dummy=$dummy."&amp;pgcl=".$anzcl;
+    $dummy=$dummy."&amp;pgck=".$anzck;
+    $dummy=$dummy."&amp;pguc=".$anzuc;
+    $dummy=$dummy."&amp;pgar=".$anzar;
+    $dummy=$dummy."&amp;pgab=".$anzab;
+    $dummy=$dummy."&amp;pgplatz1=";
     for($j=0;$j<$anzst;$j++){$dummy=$dummy.$platz[$show_stat1][$j].",";}
     $dummy=$dummy."0";
     if($show_stat2>0){
-      $dummy=$dummy."&pgplatz2=";
+      $dummy=$dummy."&amp;pgplatz2=";
       for($j=0;$j<$anzst;$j++){$dummy=$dummy.$platz[$show_stat2][$j].",";}
       $dummy=$dummy."0";
       }?>
         <tr>
-          <td><img src="<? echo $dummy; ?>" border="0" alt="<?=$text[133]?>"></td>
+          <td align="center"><img src="<? echo $dummy; ?>" border="0" alt="<?=$text[133]?>"></td>
         </tr>
 <? } ?>
 
