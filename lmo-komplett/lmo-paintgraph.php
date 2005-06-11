@@ -125,32 +125,32 @@ for($i = 1; $i <= $pgteams; $i++) {
   if (($i == 1) && ($pgch != 0)) {
     $j = 2;
     for($k = 1; $k <= $pgst; $k++) {
-      imagefill($image, 20+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_e);
+      imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_e);
     }
   }
   if (($i >= $j) && ($i < $j+$pgcl) && ($pgcl > 0)) {
     for($k = 1; $k <= $pgst; $k++) {
-      imagefill($image, 20+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_f);
+      imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_f);
     }
   }
   if (($i >= $j+$pgcl) && ($i < $j+$pgcl+$pgck) && ($pgck > 0)) {
     for($k = 1; $k <= $pgst; $k++) {
-      imagefill($image, 20+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_g);
+      imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_g);
     }
   }
   if (($i >= $j+$pgcl+$pgck) && ($i < $j+$pgcl+$pgck+$pguc) && ($pguc > 0)) {
     for($k = 1; $k <= $pgst; $k++) {
-      imagefill($image, 20+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_h);
+      imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_h);
     }
   }
   if (($i <= $pgteams) && ($i > $pgteams-$pgab) && ($pgab > 0)) {
     for($k = 1; $k <= $pgst; $k++) {
-      imagefill($image, 20+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_i);
+      imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_i);
     }
   }
   if (($i <= $pgteams-$pgab) && ($i > $pgteams-$pgab-$pgar) && ($pgar > 0)) {
     for($k = 1; $k <= $pgst; $k++) {
-      imagefill($image, 20+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_j);
+      imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_j);
     }
   }
 }
