@@ -26,7 +26,7 @@ if ($endtab == 0) {
 } else {
   $tabdat = $endtab.". ".$text[2];
 }
-$all        = isset($_REQUEST['all'])        ? $_REQUEST['all']                : '';
+$all        = isset($_REQUEST['all'])        ? $_REQUEST['all']                : 0;
 //  if($stwertmodus=="bis" ){$endtab=$anzst;}
 if ($all == 1) {
   $endtab = 0;
@@ -51,7 +51,7 @@ if (($tabdat != "" && $stwertmodus == "nur") || $all == 1) {
 if ($tipp_anzseite1 < 1) {
   $tipp_anzseite1 = 40;
 }
- 
+
 if ($endtab > 1 && $tabdat != "" && $stwertmodus != "nur") {
   $endtab--;
   if ($wertung == "einzel" || $wertung == "intern") {
@@ -59,7 +59,6 @@ if ($endtab > 1 && $tabdat != "" && $stwertmodus != "nur") {
   } else {
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcwertteam.php");
   }
-   
   if ($wertung == "team") {
     $anztipper = $teamsanzahl;
   }
@@ -89,6 +88,7 @@ for($x = 0; $x < $anztipper; $x++) {
   $x3 = intval(substr($tab0[$x], -7));
   $platz0[$x3] = $x+1;
 }
+
 if ($tabdat == "") {
   $addt1 = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;all=".$all."&amp;file=".$file."&amp;gewicht=".$gewicht."&amp;wertung=";
 } else {
@@ -143,11 +143,11 @@ if($tipp_tipperimteam>=0){?>
     </td>
   </tr><? 
 }
-if($all!=1){ ?>
+//if($all!=1){ ?>
   <tr>
     <td align="center"><?include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
   </tr><? 
-} //if($all!=1)
+//} //if($all!=1)
 
 $dummy = " align=\"right\"";
 

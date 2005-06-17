@@ -18,7 +18,7 @@
   */
   
   
-if (!isset($_GET['all'])) {
+if (empty($all)) {
   $all = 0;
 } else {
   $all = 1; 
@@ -34,13 +34,12 @@ if (!file_exists($auswertfile)) {
   $datei = fopen($auswertfile, "rb");
   $teamsanzahl = 0; // Teamnummer
   $anzst1 = $anzst;
-  $team = array("");
+  $team = array();
   if ($datei != false) {
     $tippdaten = array("");
     $sekt = "";
     while (!feof($datei)) {
       $zeile = fgets($datei, 1000);
-      $zeile = chop($zeile);
       $zeile = trim($zeile);
       if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $sekt = trim(substr($zeile, 1, -1));
@@ -69,7 +68,6 @@ if (!file_exists($auswertfile)) {
     }
     fclose($datei);
   }
-  array_shift($tippdaten);
    
   $dumma = array("");
   $tipp_tipperimteam = array_pad($array, $teamsanzahl+1, "0");

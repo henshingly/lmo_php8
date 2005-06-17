@@ -18,7 +18,7 @@
   */
   
   
-if (!isset($_GET['all'])) {
+if (empty($all)) {
   $all = 0;
 } else {
   $all = 1;

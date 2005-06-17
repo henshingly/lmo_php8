@@ -79,12 +79,11 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
           {
           $datei = fopen($tippfile, "rb");
           if ($datei != false) {
-            $tippdaten = array("");
+            $tippdaten = array();
             $sekt = "";
             $jkwert = "";
             while (!feof($datei)) {
               $zeile = fgets($datei, 1000);
-              $zeile = chop($zeile);
               $zeile = trim($zeile);
               if ((substr($zeile, 0, 1) == "@") && (substr($zeile, -1) == "@")) {
                 $jkwert = trim(substr($zeile, 1, -1));
@@ -98,18 +97,16 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
             }
             fclose($datei);
           }
-          array_shift($tippdaten);
-          $jkspgrpw = "";
+
+          $jkspgrpw = 0;
           for($i = 1; $i <= count($tippdaten); $i++) {
             $dum = explode('|', $tippdaten[$i-1]);
-            $op2 = substr($dum[0], 0, 5);
-            // Round
-            $op3 = substr($dum[0], 5)-1;
-            // Spieltagsnummer
+            $op2 = substr($dum[0], 0, 5);            // Round
+            $op3 = substr($dum[0], 5);            // Spieltagsnummer
             $op8 = substr($dum[1], 0, 2);
             $jksp = $dum[3];
-            if ($st == $op3+1) {
-              if ($tipp_jokertipp == 1 && $jkspgrpw <> $op3) {
+            if ($st == $op3) {
+              if ($tipp_jokertipp == 1 && $jkspgrpw != $op3) {
                 fputs($einsichtdatei, "@".$jksp."@\n");
                 $jkspgrpw = $op3;
               }
