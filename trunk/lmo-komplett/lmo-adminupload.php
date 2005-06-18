@@ -25,16 +25,14 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
     $tempfilename = $_FILES['userfile']['tmp_name'];
     $namefilename = $_FILES['userfile']['name']; 
     $i=0;
-    $ufile=$dirliga.$userfile_name;
+    $ufile=$dirliga.$namefilename;
     while (file_exists($ufile)) {
       $i++;
       if ($i>0) {
-        $ufile=$dirliga.$i."_".$userfile_name;
-      } else {
-        $ufile=$dirliga.$userfile_name;
-      }
+        $ufile=$dirliga.$i."_".$namefilename;
+      } 
     }
-    if (move_uploaded_file($userfile,$ufile)) {
+    if (move_uploaded_file($tempfilename,$ufile)) {
       echo getMessage($text[303].":<br>".$ufile);
     } else {
       echo getMessage($text[304],TRUE);
