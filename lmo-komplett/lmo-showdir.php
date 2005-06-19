@@ -59,7 +59,7 @@ if ($archivlink==1) {
         <?=$output?>
       </table><?
   }
-  if (strpos($subdir,'/')) {?>
+  if (strpos($subdir,'/')!==FALSE) {?>
       <p><a href="<?=$_SERVER['PHP_SELF']?>?subdir=<?=dirname($subdir).'/'?>"><?=$text[5];?> <?=$text[562];?></a></p><?
   }
 }?>
