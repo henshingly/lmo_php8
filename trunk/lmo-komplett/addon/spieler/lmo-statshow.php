@@ -78,8 +78,6 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
     $begin = 0;
   }
 ?>
-<script type="text/javascript" src="<?=URL_TO_LMO?>/js/sortable/sortabletable.js"></script>
-<script type="text/javascript" src="<?=URL_TO_LMO?>/js/sortable/limSortFunctions.js"></script>
 <table class="lmoMiddle">
   <tr><?
   if ($spieler_vereinsweise_anzeigen==1) {?>
@@ -128,11 +126,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
     if ($spalten[$i]!=$text['spieler'][32]){?>
             <th class="nobr" align="center"><?
       if ($spieler_extra_sortierspalte==0) {
-        if ($spieler_anzeige_pro_seite==0) {?><noscript><?}?>
-              <a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=1&amp;team=$team";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48]." ".$text['spieler'][37]?>">
-              <img title="<?=$text['spieler'][48]?>" border="0" src="<?=URL_TO_IMGDIR."/downsimple.png"?>" width="8" height="7" alt="&or;">
-              </a><?
-        if ($spieler_anzeige_pro_seite==0) {?></noscript><?}
+              ?><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=1&amp;team=$team";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48]." ".$text['spieler'][37]?>"><img title="<?=$text['spieler'][48]?>" border="0" src="<?=URL_TO_IMGDIR."/downsimple.png"?>" width="8" height="7" alt="&or;"></a><?
       }
       if (file_exists(PATH_TO_IMGDIR."/spieler/".$spalten[$i].".gif")) {
         echo "&nbsp;<acronym title='".$spalten[$i]."'><img border='0' src='".URL_TO_IMGDIR."/spieler/".rawurlencode($spalten[$i]).".gif' alt='".$spalten[$i]."'></acronym>&nbsp;";
@@ -140,11 +134,8 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
         echo "&nbsp;".$spalten[$i]."&nbsp;";
       }
       if ($spieler_extra_sortierspalte==0) {
-        if ($spieler_anzeige_pro_seite==0) {?><noscript><?}?>
-                 <a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=0&amp;team=$team";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][47]." ".$text['spieler'][37]?>">
-                 <img title="<?=$text['spieler'][47]?>" border="0" src="<?=URL_TO_IMGDIR."/upsimple.png"?>"  width="8" height="7"  alt="&and;">
-                 </a><?
-        if ($spieler_anzeige_pro_seite==0) {?></noscript><?}
+               ?><a href="<?=$_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=0&amp;team=$team";?>" title="<?=$text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][47]." ".$text['spieler'][37]?>"><img title="<?=$text['spieler'][47]?>" border="0" src="<?=URL_TO_IMGDIR."/upsimple.png"?>"  width="8" height="7"  alt="&and;"></a><?
+
       }?>
             </th><?
     }
@@ -230,20 +221,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
           </tr><?
   }?>
         </tbody>
-      </table><?
-  if ($spieler_anzeige_pro_seite==0) {?>
-      <script type="text/javascript">
-        var statsTable = new SortableTable(document.getElementById("stats"),["Number","None"<?
-      for ($i=0;$i<$spaltenzahl;$i++) {
-        if (!isset($typ[$i])){  
-          echo ",\"Number\"";
-        }else{
-          echo ",\"CaseInsensitiveString\"";
-        }
-      }?>]);
-        statsTable.sort(0);
-      </script><?
-  }?>
+      </table>
     </td><?
   if ($spieler_extra_sortierspalte==1) {?>
     <td valign="top" align="center">
