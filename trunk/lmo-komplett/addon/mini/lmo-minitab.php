@@ -143,6 +143,14 @@ if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
       $style.="font-weight:bolder;";
       $template->setVariable(array("Style"=>$style));
     }
+    /*
+    if ($j%2==0) {
+      $style.="background-color:#ccc;";
+      $template->setVariable(array("Style"=>$style));
+    } else {
+      $style.="background-color:#fff;";
+      $template->setVariable(array("Style"=>$style));
+    }*/
     $template->parseCurrentBlock();
   }
   $template->setVariable("Link", URL_TO_LMO.'/?action=table&amp;file='.$m_liga); 

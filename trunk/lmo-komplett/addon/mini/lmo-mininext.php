@@ -108,7 +108,7 @@ if (strpos($archivFolder,'../')!==false) {
 
 $a = isset($_GET['a'])?$_GET['a']:isset($a)?$a:NULL; // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
 $b = isset($_GET['b'])?$_GET['b']:isset($b)?$b:NULL; // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
-$unGreedy = true; //inv. Gierigkeit: findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. false/true
+$unGreedy = true; //unscharfe Suche: findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. false/true
 $barWidth = 120; // Breite des farbigen Balken
 
 $template_folder = PATH_TO_TEMPLATEDIR;		// Templatepath
@@ -218,22 +218,21 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
     $archivSortDummy = array();
     // Partien der aktuellen Liga ermitteln
 
-    if(!is_null($spiel = $liga->partieForTeams($team_a,$team_b)) && ($spiel->hTore != -1 && $spiel->gTore != -1)  ) {
-      $archivSortDummy[] = $spiel->zeit;
-      $archivPaarungen[] = array('time'=>$spiel->zeit,
-      'where'=>'h', // homegame Flag
-      'partie'=>$spiel,
-      'match'=>NULL,
-      );
+    $spiele = $liga->allPartieForTeams($team_a,$team_b);
+    foreach($spiele as $spiel) {
+      if($spiel->hTore != -1 && $spiel->gTore != -1) {
+        $archivSortDummy[] = $spiel->zeit;
+        $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'h', 'partie'=>$spiel, 'match'=>NULL);
+      }
     }
-    if(!is_null($spiel = $liga->partieForTeams($team_b,$team_a)) && ($spiel->hTore != -1 && $spiel->gTore != -1) ) {
-      $archivSortDummy[] = $spiel->zeit;
-      $archivPaarungen[] = array('time'=>$spiel->zeit,
-      'where'=>'a', // away Flag
-      'partie'=>$spiel,
-      'match'=>NULL,
-      );
+    $spiele = $liga->allPartieForTeams($team_b,$team_a);
+    foreach($spiele as $spiel) {
+      if($spiel->hTore != -1 && $spiel->gTore != -1) {
+        $archivSortDummy[] = $spiel->zeit;
+        $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'a', 'partie'=>$spiel, 'match'=>NULL);
+      }
     }
+    
 
     // Archivfolder lesen
 
@@ -259,20 +258,12 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
           $spiel = $newLiga->partieForTeams($newTeam_a,$newTeam_b);
           if ($spiel->hTore != -1 && $spiel->gTore != -1) {
             $archivSortDummy[] = $spiel->zeit;
-            $archivPaarungen[] = array('time'=>$spiel->zeit,
-            'where'=>'h',
-            'partie'=>$spiel,
-            'match'=>$match,
-            ); // Heimspiel Flag
+            $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'h', 'partie'=>$spiel, 'match'=>$match); // Heimspiel Flag
           }
           $spiel = $newLiga->partieForTeams($newTeam_b,$newTeam_a);
           if ($spiel->hTore != -1 && $spiel->gTore != -1) {
             $archivSortDummy[] = $spiel->zeit;
-            $archivPaarungen[] = array('time'=>$spiel->zeit,
-            'where'=>'a',
-            'partie'=>$spiel,
-            'match'=>$match,
-            ); // Auswärts Flag
+            $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'a', 'partie'=>$spiel, 'match'=>$match); // Auswärts Flag
           }
         }
       }
