@@ -893,6 +893,20 @@ class liga {
   }
 
 /**
+ * Gibt ein Array von Referenzen auf die Partieobjekte zurück, an denen die Mannschaften
+ * aufeinandertreffen
+*/
+  function &allPartieForTeams(&$heim,&$gast) {
+    $result = array();
+    foreach ($this->partien as $aPartie) {
+      if (($aPartie->heim == $heim ) and ($aPartie->gast == $gast)) {
+        $result[] = $aPartie;
+      }
+    }
+    return $result;
+  }
+  
+/**
  * Gibt die Referenz auf das Partieobjekt zurück, an der die Mannschaften
  * mit den anzugebenen Namen aufeinandertreffen
 */
