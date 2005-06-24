@@ -894,12 +894,13 @@ class liga {
 
 /**
  * Gibt ein Array von Referenzen auf die Partieobjekte zurück, an denen die Mannschaften
- * aufeinandertreffen
+ * aufeinandertreffen - wenn der dritte Parameter both gesetzt ist, werden Partien
+ * a vs b UND b vs a zurückgegeben
 */
-  function &allPartieForTeams(&$heim,&$gast) {
+  function &allPartieForTeams(&$heim,&$gast,$both=FALSE) {
     $result = array();
     foreach ($this->partien as $aPartie) {
-      if (($aPartie->heim == $heim ) and ($aPartie->gast == $gast)) {
+      if ( ($aPartie->heim == $heim && $aPartie->gast == $gast) || ($both && $aPartie->heim == $gast && $aPartie->gast == $heim)) {
         $result[] = $aPartie;
       }
     }

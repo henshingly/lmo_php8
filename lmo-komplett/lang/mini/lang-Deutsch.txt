@@ -6,3 +6,4 @@
 005=Fehler: Liga nicht gefunden!
 006=Warnung: Archivordner nicht gefunden
 007=Vorheriges Spiel
+008=Keine Mannschaft ausgewählt!

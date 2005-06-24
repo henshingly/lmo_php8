@@ -21,7 +21,7 @@
   * timme@webobjekts.de / joker@liga-manager-online.de
   * 
   *  Version 2.0.2
-  *  systemvoraussetzung: LMO ab RC1/classlib ab 2.6 sp1
+  *  systemvoraussetzung: LMO ab RC1/classlib ab 2.7
   *
   * History:
   * 1.0: initial Release
@@ -34,6 +34,10 @@
   *      zusätzlicher Block "Vorheriges Spiel"
   * 2.0.1 Datumsformat wieder gekürzt
   * 2.0.2 Bug beim include (Mannschaften wurden nicht erkannt) beseitigt
+  * 2.1.0 Konfigurationsdatei für Konfigurationsparameter (änderbar im Adminbereich)
+  *       Template jetzt auch änderbar (über GET oder vorher definiert)
+  *       Archivdurchsuchung abschaltbar
+  *       Doppelrunden (also mehr als 1 Hin-/Rückrunde) werden erkannt
   *      
   *
   * Dieses Script zeigt die kommende Partie einer Mannschaft in einem kleinen 
@@ -44,6 +48,16 @@
   * nach bereits vorhandenen Begegnungen der Mannschaften gesucht und absteigend 
   * sortiert nach Datum angezeigt.
   * 
+  * Konfigurationsparamter (in der Addonverwaltung)
+  *
+  * mininext_withArchiv: Archivordner durchsuchen
+  *
+  * mininext_unGreedy: unscharfe Suche - findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. false/true
+  *
+  * mininext_barWidth: Breite des farbigen Balken
+  *
+  * mininext_standardTemplate: Standardtemplate, wenn keins übergeben wurde
+  *
   * URL-Parameter:
   * 
   *   file: Dateiname der Liga
@@ -59,6 +73,7 @@
   *           Parameter ist für die Anzeige der nächsten Partie nicht erforderlich, 
   *           da die nächste Partie automatisch ermittelt wird. Wer aber eine 
   *           spezielle Paarung angezeigt haben möchte kann hier b angeben.
+  *   mininext_template: Template, dass benutzt werden soll
   * 
   * 
   * Beispiel: 1.Bundesliga Fussball 2004 / 2005
@@ -95,6 +110,13 @@
 require(dirname(__FILE__).'/../../init.php');
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 
+$mininext_standardTemplate = PATH_TO_TEMPLATEDIR.'/mini/'.$cfgarray['mini']['mininext_standardTemplate'];		// Templatefile
+//aus Sicherheitsgründen werden .. gegen . ausgetauscht - somit sind nur templates innerhalb des Templatepfads möglich
+$mininext_template = isset($_GET['mininext_template'])?str_replace('..','.',PATH_TO_TEMPLATEDIR.'/mini/'.$_GET['mininext_template']):isset($mininext_template)?str_replace('..','.',PATH_TO_TEMPLATEDIR.'/mini/'.$mininext_template):$mininext_standardTemplate;
+$mininext_withArchiv = $cfgarray['mini']['mininext_withArchiv'];
+$mininext_unGreedy = $cfgarray['mini']['mininext_unGreedy'];
+$mininext_barWidth = $cfgarray['mini']['mininext_barWidth'];
+
 $file = isset($_GET['file'])?$_GET['file']:isset($file)?$file:NULL;
 $archivFolder = isset($_GET['folder'])?$_GET['folder']:isset($folder)?$folder:basename($ArchivDir);// Default
 
@@ -108,11 +130,7 @@ if (strpos($archivFolder,'../')!==false) {
 
 $a = isset($_GET['a'])?$_GET['a']:isset($a)?$a:NULL; // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
 $b = isset($_GET['b'])?$_GET['b']:isset($b)?$b:NULL; // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
-$unGreedy = true; //unscharfe Suche: findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. false/true
-$barWidth = 120; // Breite des farbigen Balken
 
-$template_folder = PATH_TO_TEMPLATEDIR;		// Templatepath
-$template_file = '/mini/mininext.tpl.php';		// Templatefile
 
 //Falls IFRAME - komplettes HTML-Dokument
 if (basename($_SERVER['PHP_SELF'])=="lmo-mininext.php") {?>
@@ -130,7 +148,7 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-mininext.php") {?>
 }
 
 $template = new HTML_Template_IT($template_folder); // verzeichnis
-$template->loadTemplatefile($template_file);
+$template->loadTemplatefile($mininext_template);
 $team_a = NULL;
 $team_b = NULL;
 $partie = NULL;
@@ -139,8 +157,9 @@ $liga = new liga();
 if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
   if (!is_null($a)) {
     $team_a = $liga->teamForNumber($a);
-  } else {
-    $team_a = $liga->teamForNumber($liga->options->keyValues['favTeam']);
+  } elseif (is_null($team_a = $liga->teamForNumber($liga->options->keyValues['favTeam']))) {
+    echo getMessage($text['mini'][8],TRUE);
+    exit;
   }
 
   if (is_null( $team_b = $liga->teamForNumber($b)) ) {
@@ -158,13 +177,13 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
       $lastPartie = $game['partie'];
     }
     if (!isset($partie) ) { // Keine weitere Partie gefunden, daher letzte Partie anzeigen (Saison beendet)
-    $partie = $lastPartie;
-    unset($lastPartie);
-    $showLastGame = FALSE;
-    $template->setVariable("gameTxt",$text['mini'][2]);
+      $partie = $lastPartie;
+      unset($lastPartie);
+      $showLastGame = FALSE;
+      $template->setVariable("gameTxt",$text['mini'][2]);
+    } else {
+      $showLastGame = TRUE;
     }
-    else
-    $showLastGame = TRUE;
 
     if($partie->heim == $team_a) {
       $team_b = $partie->gast;
@@ -173,10 +192,9 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
       $team_b = $partie->heim;
     }
 
-  }
-  else { // a und b wurden angegeben also ergebnis dieser Partie anzeigen
-  $partie = $liga->partieForTeams($team_a,$team_b);
-  $template->setVariable("gameTxt",$text['mini'][3]);
+  } else { // a und b wurden angegeben also ergebnis dieser Partie anzeigen
+    $partie = $liga->partieForTeams($team_a,$team_b);
+    $template->setVariable("gameTxt",$text['mini'][3]);
   }
 
   if (isset($partie) ) {
@@ -193,7 +211,7 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
 
     $template->setVariable("homeName",$partie->heim->name);
     $template->setVariable("guestName",$partie->gast->name);
-    
+
     //Vorherige Partie
     if (isset($lastPartie)) {
       $template->setCurrentBlock("previous");
@@ -203,10 +221,10 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
       $template->setVariable("previous_imgHomeBig",HTML_bigTeamIcon($file,$lastPartie->heim,"alt=''"));
       $template->setVariable("previous_imgGuestSmall",HTML_smallTeamIcon($file,$lastPartie->gast,"alt=''"));
       $template->setVariable("previous_imgGuestBig",HTML_bigTeamIcon($file,$lastPartie->gast,"alt=''"));
-  
+
       $template->setVariable("previous_homeName",$lastPartie->heim->name);
       $template->setVariable("previous_guestName",$lastPartie->gast->name);
-      
+
       $template->setVariable("previous_hTore",$lastPartie->hToreString());
       $template->setVariable("previous_gTore",$lastPartie->gToreString());
       $template->setVariable("previous_gameTxt",$text['mini'][7]);
@@ -218,26 +236,23 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
     $archivSortDummy = array();
     // Partien der aktuellen Liga ermitteln
 
-    $spiele = $liga->allPartieForTeams($team_a,$team_b);
+    $spiele = $liga->allPartieForTeams($team_a,$team_b,TRUE);
     foreach($spiele as $spiel) {
       if($spiel->hTore != -1 && $spiel->gTore != -1) {
         $archivSortDummy[] = $spiel->zeit;
-        $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'h', 'partie'=>$spiel, 'match'=>NULL);
+        if ($spiel->heim == $team_a) {
+          $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'h', 'partie'=>$spiel, 'match'=>NULL);
+        } else {
+          $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'a', 'partie'=>$spiel, 'match'=>NULL);
+        }
       }
     }
-    $spiele = $liga->allPartieForTeams($team_b,$team_a);
-    foreach($spiele as $spiel) {
-      if($spiel->hTore != -1 && $spiel->gTore != -1) {
-        $archivSortDummy[] = $spiel->zeit;
-        $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'a', 'partie'=>$spiel, 'match'=>NULL);
-      }
-    }
-    
 
     // Archivfolder lesen
 
-    if (readLigaDir(PATH_TO_LMO.'/'.$dirliga.$archivFolder,&$dataArray) == FALSE )
-    echo getMessage($text['mini'][6]." ".PATH_TO_LMO.'/'.$dirliga.$archivFolder,TRUE);
+    if ($withArchiv && readLigaDir(PATH_TO_LMO.'/'.$dirliga.$archivFolder,&$dataArray) == FALSE ) {
+      echo getMessage($text['mini'][6]." ".PATH_TO_LMO.'/'.$dirliga.$archivFolder,TRUE);
+    }
 
     foreach ($dataArray as $ligaFile) {
       $newLiga = new liga();
@@ -245,7 +260,7 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
 
         $teamNames = $newLiga->teamNames();
         $newTeam_a = $newLiga->teamForName($team_a->name);
-        $seachNames = $unGreedy == TRUE ? findTeamName($teamNames,$team_b->name):NULL; // ungreedy Searching
+        $seachNames = $mininext_unGreedy == TRUE ? findTeamName($teamNames,$team_b->name):NULL; // ungreedy Searching
         if (isset($seachNames) && count($seachNames) == 1 ) {
           $newTeam_b = $newLiga->teamForName($seachNames[0]);// ungreedy Searching war erfolgreich
           $match = $seachNames[0];
@@ -255,16 +270,18 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
           $match = NULL;
         }
         if (!is_null($newTeam_a) && !is_null($newTeam_b) ){
-          $spiel = $newLiga->partieForTeams($newTeam_a,$newTeam_b);
-          if ($spiel->hTore != -1 && $spiel->gTore != -1) {
-            $archivSortDummy[] = $spiel->zeit;
-            $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'h', 'partie'=>$spiel, 'match'=>$match); // Heimspiel Flag
+          $spiele = $newLiga->allPartieForTeams($newTeam_a,$newTeam_b,TRUE);
+          foreach($spiele as $spiel) {
+            if($spiel->hTore != -1 && $spiel->gTore != -1) {
+              $archivSortDummy[] = $spiel->zeit;
+              if ($spiel->heim == $newTeam_a) {
+                $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'h', 'partie'=>$spiel, 'match'=>NULL);
+              } else {
+                $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'a', 'partie'=>$spiel, 'match'=>NULL);
+              }
+            }
           }
-          $spiel = $newLiga->partieForTeams($newTeam_b,$newTeam_a);
-          if ($spiel->hTore != -1 && $spiel->gTore != -1) {
-            $archivSortDummy[] = $spiel->zeit;
-            $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'a', 'partie'=>$spiel, 'match'=>$match); // Auswärts Flag
-          }
+
         }
       }
       unset($newLiga);
@@ -319,9 +336,9 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
       $template->parseCurrentBlock();
     }
 
-    $w = intval( $barWidth * $winCount / ($spAnzahl+.1) );
-    $d = intval( $barWidth * $drawCount / ($spAnzahl+.1) );
-    $l = intval( $barWidth * $lostCount / ($spAnzahl+.1) );
+    $w = intval( $mininext_barWidth * $winCount / ($spAnzahl+.1) );
+    $d = intval( $mininext_barWidth * $drawCount / ($spAnzahl+.1) );
+    $l = intval( $mininext_barWidth * $lostCount / ($spAnzahl+.1) );
 
     $template->setCurrentBlock("main");
     $template->setVariable("matchesTxt",$text['mini'][4]);
