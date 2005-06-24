@@ -16,9 +16,9 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   *
-  * lmo-nextgame Block for LigaManager Online
+  * lmo-mininext for LigaManager Online
   *  Copyright (C) 2005 by Tim Schumacher/LMO-Group
-  * timme@webobjekts.de / admin@liga-manager-online.de
+  * timme@webobjekts.de / joker@liga-manager-online.de
   * 
   *  Version 2.0.2
   *  systemvoraussetzung: LMO ab RC1/classlib ab 2.6 sp1
@@ -68,7 +68,7 @@
   *   folder=archiv/dbl
   * 
   *   Einbindung über IFrame:
-  *     <iframe src="<url_to_lmo>/addon/mini/lmo-mininext.php?file=1bundesliga2004.l98&folder=archiv/dbl"><url_to_lmo>/lmo-nextgame_block.php?file=1bundesliga2004.l98&folder=archiv/dbl</iframe>
+  *     <iframe src="<url_to_lmo>/addon/mini/lmo-mininext.php?file=1bundesliga2004.l98&folder=archiv/dbl"><url_to_lmo>/addon/mini/lmo-mininext.php?file=1bundesliga2004.l98&folder=archiv/dbl</iframe>
   *     (die Parameter a und b bei Bedarf mit &amp;a=<integer>&amp;b=<integer> anhängen
   * 
   *   Einbindung über include:
