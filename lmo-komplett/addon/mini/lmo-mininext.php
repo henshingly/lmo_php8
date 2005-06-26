@@ -110,9 +110,10 @@
 require(dirname(__FILE__).'/../../init.php');
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 
-$mininext_standardTemplate = PATH_TO_TEMPLATEDIR.'/mini/'.$cfgarray['mini']['mininext_standardTemplate'];		// Templatefile
+$template_folder = PATH_TO_TEMPLATEDIR.'/mini/';
+$mininext_standardTemplate = $cfgarray['mini']['mininext_standardTemplate'];		// Templatefile
 //aus Sicherheitsgründen werden .. gegen . ausgetauscht - somit sind nur templates innerhalb des Templatepfads möglich
-$mininext_template = isset($_GET['mininext_template'])?str_replace('..','.',PATH_TO_TEMPLATEDIR.'/mini/'.$_GET['mininext_template']):isset($mininext_template)?str_replace('..','.',PATH_TO_TEMPLATEDIR.'/mini/'.$mininext_template):$mininext_standardTemplate;
+$mininext_template = isset($_GET['mininext_template'])?str_replace('..','.',$_GET['mininext_template']):isset($mininext_template)?str_replace('..','.',$mininext_template):$mininext_standardTemplate;
 
 //Nicht dokumentierte Steuerparameter für Fortgeschrittene
 $mininext_withArchiv = isset($_GET['mininext_withArchiv'])
