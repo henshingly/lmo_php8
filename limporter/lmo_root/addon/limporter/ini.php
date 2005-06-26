@@ -41,7 +41,7 @@
 
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
-if (!defined('VERSION')) define('VERSION','1.6');
+if (!defined('VERSION')) define('VERSION','1.6ß1');
 
 // ARRAY mit reguläre Ausdruecken, um nur bestimmte Teile aus einer Zelle zu extrahieren.
 // Dieses kann GERNE erweitert werden. Bitte posted getestete Expressions im Forum ,
