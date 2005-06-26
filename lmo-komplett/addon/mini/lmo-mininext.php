@@ -50,11 +50,11 @@
   * 
   * Konfigurationsparamter (in der Addonverwaltung)
   *
-  * mininext_withArchiv: Archivordner durchsuchen
+  * mininext_withArchiv: Archivordner durchsuchen 1/0
   *
-  * mininext_unGreedy: unscharfe Suche - findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. false/true
+  * mininext_unGreedy: unscharfe Suche - findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. 1/0
   *
-  * mininext_barWidth: Breite des farbigen Balken
+  * mininext_barWidth: Breite des farbigen Balken in Pixeln
   *
   * mininext_standardTemplate: Standardtemplate, wenn keins übergeben wurde
   *
@@ -113,9 +113,26 @@ require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 $mininext_standardTemplate = PATH_TO_TEMPLATEDIR.'/mini/'.$cfgarray['mini']['mininext_standardTemplate'];		// Templatefile
 //aus Sicherheitsgründen werden .. gegen . ausgetauscht - somit sind nur templates innerhalb des Templatepfads möglich
 $mininext_template = isset($_GET['mininext_template'])?str_replace('..','.',PATH_TO_TEMPLATEDIR.'/mini/'.$_GET['mininext_template']):isset($mininext_template)?str_replace('..','.',PATH_TO_TEMPLATEDIR.'/mini/'.$mininext_template):$mininext_standardTemplate;
-$mininext_withArchiv = $cfgarray['mini']['mininext_withArchiv'];
-$mininext_unGreedy = $cfgarray['mini']['mininext_unGreedy'];
-$mininext_barWidth = $cfgarray['mini']['mininext_barWidth'];
+
+//Nicht dokumentierte Steuerparameter für Fortgeschrittene
+$mininext_withArchiv = isset($_GET['mininext_withArchiv'])
+                            ? ($_GET['mininext_withArchiv']=='1'?1:0)
+                            : ( isset($mininext_withArchiv) 
+                                ? ($mininext_withArchiv=='1'?1:0)
+                                : $cfgarray['mini']['mininext_withArchiv']
+                              );
+$mininext_unGreedy = isset($_GET['mininext_unGreedy'])
+                     ? ($_GET['mininext_unGreedy']=='1'?1:0)
+                     : ( isset($mininext_unGreedy)
+                         ? ($mininext_withArchiv=='1'?1:0)
+                         :  $cfgarray['mini']['mininext_unGreedy']
+                       );
+$mininext_barWidth = isset($_GET['mininext_barWidth']) && is_numeric($_GET['mininext_barWidth'])
+                     ? $_GET['mininext_barWidth']
+                     : ( isset($mininext_barWidth) && is_numeric($mininext_barWidth)
+                         ? $mininext_barWidth
+                         : $cfgarray['mini']['mininext_barWidth']
+                       );
 
 $file = isset($_GET['file'])?$_GET['file']:isset($file)?$file:NULL;
 $archivFolder = isset($_GET['folder'])?$_GET['folder']:isset($folder)?$folder:basename($ArchivDir);// Default
@@ -260,7 +277,7 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
 
         $teamNames = $newLiga->teamNames();
         $newTeam_a = $newLiga->teamForName($team_a->name);
-        $seachNames = $mininext_unGreedy == TRUE ? findTeamName($teamNames,$team_b->name):NULL; // ungreedy Searching
+        $seachNames = $mininext_unGreedy == 1 ? findTeamName($teamNames,$team_b->name):NULL; // ungreedy Searching
         if (isset($seachNames) && count($seachNames) == 1 ) {
           $newTeam_b = $newLiga->teamForName($seachNames[0]);// ungreedy Searching war erfolgreich
           $match = $seachNames[0];
