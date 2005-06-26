@@ -256,7 +256,6 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
 
     foreach ($dataArray as $ligaFile) {
       $newLiga = new liga();
-      echo $ligaFile['src'];
       if($newLiga->loadFile($ligaFile['path'].$ligaFile['src'] ) == TRUE) {
 
         $teamNames = $newLiga->teamNames();
