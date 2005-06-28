@@ -117,7 +117,7 @@
 116=Your visitors will see the script like this(opens in new window)
 117=You have made no changes.\nSave anyway?
 118=Users will always see the name of the League as a Title (max. 60 Characters)
-119=You have made changes that have \nnot been saved.\n\nClick "Yes", if you do not wish to save the changes\nand continue, or "No" to stay here \nin order to save your changes
+119=You have made changes that have \nnot been saved.\n\nClick 'Yes', if you do not wish to save the changes\nand continue, or 'No' to stay here \nin order to save your changes
 120=Settings for Home Goals (0 - 9999, _ or X)
 121=Settings for Guest Goals ((0 - 9999, _ or X)
 122=Starting Date of Match (Format DD.MM.YYYY - if needed, with leading zeroes)
