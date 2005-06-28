@@ -144,7 +144,7 @@ if ($action == "tipp") {
     <td>
       <table class="lmoInner" width="99%">
         <tr>
-          <th colspan="3"><? echo $text['tipp'][45]; ?></td>
+          <th colspan="3"><? echo $text['tipp'][45]; ?></th>
         </tr>
         <tr>
           <td align="right" colspan="2"><? echo $text['tipp'][46]; ?></td>
@@ -163,7 +163,7 @@ if ($action == "tipp") {
     <td>
       <table class="lmoInner" width="99%">
         <tr>
-          <th colspan="3"><? echo $text['tipp'][4]; ?></td>
+          <th colspan="3"><? echo $text['tipp'][4]; ?></th>
         </tr>
         <tr>
           <td colspan="3" align="left">
@@ -201,7 +201,7 @@ if ($action == "tipp") {
         <input type="hidden" name="todo" value="getpass">
         <table class="lmoInner" width="99%">
           <tr>
-            <th colspan="3"><? echo $text['tipp'][74]; ?></td>
+            <th colspan="3"><? echo $text['tipp'][74]; ?></th>
           </tr><?  
             // Benutzer nicht gefunden
             if($_SESSION["lmotipperok"]==-3){ ?> 
@@ -220,7 +220,6 @@ if ($action == "tipp") {
         </table>
       </form>
     </td>
-  </tr>
   </tr><? 
   }
   //require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
