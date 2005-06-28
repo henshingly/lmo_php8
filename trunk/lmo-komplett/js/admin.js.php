@@ -210,3 +210,12 @@ function opencal(feld,startdat){
   lmotest=false;
   return false;
 }
+
+function fillAll(elm) {
+  for (var i = 0; i < elm.form.elements.length; i++) {
+    if (elm.form.elements[i].name.indexOf(elm.name.substr(0,5)) >=0 ) {
+      elm.form.elements[i].value = elm.value;
+    }
+  }
+
+}
