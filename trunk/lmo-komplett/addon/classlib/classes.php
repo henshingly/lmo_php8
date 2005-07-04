@@ -298,25 +298,29 @@ class partie {
 
 
 /**
-* Gibt das SpielDatum als formatierten String zurück. ("d.m.Y")
+* Gibt das SpielDatum als formatierten String zurück. "d.m.Y" = Standard
 *
 * @access public
+* @param string leer Ausgabe, falls kein Datum vorhanden
+* @param string format Datumsformat in date()-Notation Standard = d.m.Y
 * @return string
 */
-function datumString($leer='') {
-        $str = ($this->zeit<1)?$leer:date("d.m.Y",$this->zeit);
+function datumString($leer='',$format="d.m.Y") {
+        $str = ($this->zeit<1)?$leer:date($format,$this->zeit);
     return $str;
   }
 
 /**
-* Gibt die Anwurfzeit als formatierten String zurück ("Stunden:Minuten").
+* Gibt die Anwurfzeit als formatierten String zurück "Stunden:Minuten" = Standard
 *
 * @access public
+* @param string leer Ausgabe, falls keine Zeit vorhanden
+* @param string format Zeitformat in date()-Notation Standard = H:i
 * @return string
 */
 
-   function zeitString($leer='') {
-        $str = ($this->zeit<1)?$leer:date("H:i",$this->zeit);
+   function zeitString($leer='',$format="H:i") {
+        $str = ($this->zeit<1)?$leer:date($format,$this->zeit);
     return $str;
   }
 
