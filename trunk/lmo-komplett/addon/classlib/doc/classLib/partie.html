@@ -2,94 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
-			<!-- template designed by Marco Von Ballmoos  -->
+			<!-- template designed by Marco Von Ballmoos -->
 			<title>Docs For Class partie</title>
 			<link rel="stylesheet" href="../media/stylesheet.css" />
-						<script src="../media/lib/classTree.js"></script>
-												<script language="javascript" type="text/javascript">
-				var imgPlus = new Image();
-				var imgMinus = new Image();
-				imgPlus.src = "../media/images/plus.png";
-				imgMinus.src = "../media/images/minus.png";
-				
-				function showNode(Node){
-							switch(navigator.family){
-								case 'nn4':
-									// Nav 4.x code fork...
-							var oTable = document.layers["span" + Node];
-							var oImg = document.layers["img" + Node];
-									break;
-								case 'ie4':
-									// IE 4/5 code fork...
-							var oTable = document.all["span" + Node];
-							var oImg = document.all["img" + Node];
-									break;
-								case 'gecko':
-									// Standards Compliant code fork...
-							var oTable = document.getElementById("span" + Node);
-							var oImg = document.getElementById("img" + Node);
-									break;
-							}
-					oImg.src = imgMinus.src;
-					oTable.style.display = "block";
-				}
-				
-				function hideNode(Node){
-							switch(navigator.family){
-								case 'nn4':
-									// Nav 4.x code fork...
-							var oTable = document.layers["span" + Node];
-							var oImg = document.layers["img" + Node];
-									break;
-								case 'ie4':
-									// IE 4/5 code fork...
-							var oTable = document.all["span" + Node];
-							var oImg = document.all["img" + Node];
-									break;
-								case 'gecko':
-									// Standards Compliant code fork...
-							var oTable = document.getElementById("span" + Node);
-							var oImg = document.getElementById("img" + Node);
-									break;
-							}
-					oImg.src = imgPlus.src;
-					oTable.style.display = "none";
-				}
-				
-				function nodeIsVisible(Node){
-							switch(navigator.family){
-								case 'nn4':
-									// Nav 4.x code fork...
-							var oTable = document.layers["span" + Node];
-									break;
-								case 'ie4':
-									// IE 4/5 code fork...
-							var oTable = document.all["span" + Node];
-									break;
-								case 'gecko':
-									// Standards Compliant code fork...
-							var oTable = document.getElementById("span" + Node);
-									break;
-							}
-					return (oTable && oTable.style.display == "block");
-				}
-				
-				function toggleNodeVisibility(Node){
-					if (nodeIsVisible(Node)){
-						hideNode(Node);
-					}else{
-						showNode(Node);
-					}
-				}
-			</script>
-					</head>
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
 		<body>
 			<div class="page-body">			
-
-<h2 class="class-name"><img src="../media/images/Class_logo.png"
-														alt=" Class"
-														title=" Class"
-														style="vertical-align: middle"> partie</h2>
+<h2 class="class-name">Class partie</h2>
 
 <a name="sec-description"></a>
 <div class="info-box">
@@ -105,7 +25,7 @@
 <p class="short-description">Partie</p>
 <p class="description"><p>Partie, die in einer Liga gespielt wird</p></p>
 		<p class="notes">
-			Located in <a class="field" href="_classes_php.html">/classes.php</a> (line <span class="field"><a href="..//__filesource/fsource_classLib__classes.php.html#a135">135</a></span>)
+			Located in <a class="field" href="_partie_class_php.html">/partie.class.php</a> (line <span class="field">10</span>)
 		</p>
 		
 				
@@ -129,57 +49,46 @@
 		<div class="info-box-body">
 			<div class="var-summary">
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">array</span>
 					<a href="#$gast" title="details" class="var-name">$gast</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/PrivateVariable.png" alt=" " />
 					<span class="var-type">integer</span>
 					<a href="#$gPunkte" title="details" class="var-name">$gPunkte</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">integer</span>
 					<a href="#$gTore" title="details" class="var-name">$gTore</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">array</span>
 					<a href="#$heim" title="details" class="var-name">$heim</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/PrivateVariable.png" alt=" " />
 					<span class="var-type">integer</span>
 					<a href="#$hPunkte" title="details" class="var-name">$hPunkte</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">integer</span>
 					<a href="#$hTore" title="details" class="var-name">$hTore</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">string</span>
 					<a href="#$notiz" title="details" class="var-name">$notiz</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">string</span>
 					<a href="#$reportUrl" title="details" class="var-name">$reportUrl</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">integer</span>
 					<a href="#$spielEnde" title="details" class="var-name">$spielEnde</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">integer</span>
 					<a href="#$spNr" title="details" class="var-name">$spNr</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">date</span>
 					<a href="#$zeit" title="details" class="var-name">$zeit</a>
 				</div>
@@ -201,59 +110,57 @@
 			<div class="method-summary">
 								
 				<div class="method-definition">
-					<img src="../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">partie</span>
 										<a href="#partie" title="details" class="method-name">partie</a>
 											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$n_spNr</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$n_time</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$n_notiz</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">&$n_heim</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">&$n_gast</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$n_htore</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$n_gtore</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$n_hpunkte</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$n_gpunkte</span>)
 									</div>
 								
 				<div class="method-definition">
-					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
 										<a href="#datumString" title="details" class="method-name">datumString</a>
-											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">''</span>])
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">''</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$format</span> = <span class="var-default">"d.m.Y"</span>])
 									</div>
 								
 				<div class="method-definition">
-					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
 										<a href="#gToreString" title="details" class="method-name">gToreString</a>
 											([<span class="var-type">string</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">"_"</span>])
 									</div>
 								
 				<div class="method-definition">
-					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
 										<a href="#hToreString" title="details" class="method-name">hToreString</a>
 											([<span class="var-type">string</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">"_"</span>])
 									</div>
 								
 				<div class="method-definition">
-					<img src="../media/images/PrivateMethod.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#showDetails" title="details" class="method-name">showDetails</a>
 										()
 									</div>
 								
 				<div class="method-definition">
-					<img src="../media/images/PrivateMethod.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#showDetailsHTML" title="details" class="method-name">showDetailsHTML</a>
 										()
 									</div>
 								
 				<div class="method-definition">
-					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#spielEndeString" title="details" class="method-name">spielEndeString</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">&$text</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">""</span>])
+									</div>
+								
+				<div class="method-definition">
 											<span class="method-result">integer</span>
 										<a href="#valuateGame" title="details" class="method-name">valuateGame</a>
 										()
 									</div>
 								
 				<div class="method-definition">
-					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
 										<a href="#zeitString" title="details" class="method-name">zeitString</a>
-											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">''</span>])
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">''</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$format</span> = <span class="var-default">"H:i"</span>])
 									</div>
 							</div>
 		</div>
@@ -273,14 +180,13 @@
 					</div>
 		<div class="info-box-body">
 			<a name="var$gast" id="$gast"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">array</span>
 			<span class="var-name">$gast</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a166">166</a></span>)
+						(line <span class="line-number">41</span>)
 		</span>
 	</div>
 
@@ -297,14 +203,13 @@
 
 </div>
 <a name="var$gPunkte" id="$gPunkte"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
-		<img src="../media/images/PrivateVariable.png" />
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$gPunkte</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a190">190</a></span>)
+						(line <span class="line-number">65</span>)
 		</span>
 	</div>
 
@@ -320,14 +225,13 @@
 
 </div>
 <a name="var$gTore" id="$gTore"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$gTore</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a178">178</a></span>)
+						(line <span class="line-number">53</span>)
 		</span>
 	</div>
 
@@ -343,14 +247,13 @@
 
 </div>
 <a name="var$heim" id="$heim"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">array</span>
 			<span class="var-name">$heim</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a160">160</a></span>)
+						(line <span class="line-number">35</span>)
 		</span>
 	</div>
 
@@ -367,14 +270,13 @@
 
 </div>
 <a name="var$hPunkte" id="$hPunkte"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
-		<img src="../media/images/PrivateVariable.png" />
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$hPunkte</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a184">184</a></span>)
+						(line <span class="line-number">59</span>)
 		</span>
 	</div>
 
@@ -390,14 +292,13 @@
 
 </div>
 <a name="var$hTore" id="$hTore"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$hTore</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a172">172</a></span>)
+						(line <span class="line-number">47</span>)
 		</span>
 	</div>
 
@@ -413,14 +314,13 @@
 
 </div>
 <a name="var$notiz" id="$notiz"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$notiz</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a154">154</a></span>)
+						(line <span class="line-number">29</span>)
 		</span>
 	</div>
 
@@ -436,14 +336,13 @@
 
 </div>
 <a name="var$reportUrl" id="$reportUrl"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$reportUrl</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a197">197</a></span>)
+						(line <span class="line-number">72</span>)
 		</span>
 	</div>
 
@@ -459,14 +358,13 @@
 
 </div>
 <a name="var$spielEnde" id="$spielEnde"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$spielEnde</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a208">208</a></span>)
+						(line <span class="line-number">83</span>)
 		</span>
 	</div>
 
@@ -483,14 +381,13 @@
 
 </div>
 <a name="var$spNr" id="$spNr"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$spNr</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a141">141</a></span>)
+						(line <span class="line-number">16</span>)
 		</span>
 	</div>
 
@@ -506,14 +403,13 @@
 
 </div>
 <a name="var$zeit" id="$zeit"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">date</span>
 			<span class="var-name">$zeit</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a148">148</a></span>)
+						(line <span class="line-number">23</span>)
 		</span>
 	</div>
 
@@ -528,7 +424,6 @@
 		
 
 </div>
-
 						
 		</div>
 	</div>
@@ -545,11 +440,10 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="methodpartie" id="partie"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<img src="../media/images/Constructor.png" />
-		<span class="method-title">Constructor partie</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a210">210</a></span>)
+		<span class="method-title">Constructor partie</span> (line <span class="line-number">85</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -566,15 +460,14 @@
 		
 	</div>
 <a name="methoddatumString" id="datumString"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<img src="../media/images/Method.png" />
-		<span class="method-title">datumString</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a306">306</a></span>)
+		<span class="method-title">datumString</span> (line <span class="line-number">182</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Gibt das SpielDatum als formatierten String zurück. (&quot;d.m.Y&quot;)</p>
+<p class="short-description">Gibt das SpielDatum als formatierten String zurück. &quot;d.m.Y&quot; = Standard</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -584,18 +477,25 @@
 		<span class="method-name">
 			datumString
 		</span>
-					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">''</span>])
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">''</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$format</span> = <span class="var-default">"d.m.Y"</span>])
 			</div>
 	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$leer</span><span class="var-description">: leer Ausgabe, falls kein Datum vorhanden</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$format</span><span class="var-description">: format Datumsformat in date()-Notation Standard = d.m.Y</span>			</li>
+				</ul>
 		
 		
 	</div>
 <a name="methodgToreString" id="gToreString"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<img src="../media/images/Method.png" />
-		<span class="method-title">gToreString</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a255">255</a></span>)
+		<span class="method-title">gToreString</span> (line <span class="line-number">130</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -622,11 +522,10 @@
 		
 	</div>
 <a name="methodhToreString" id="hToreString"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<img src="../media/images/Method.png" />
-		<span class="method-title">hToreString</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a237">237</a></span>)
+		<span class="method-title">hToreString</span> (line <span class="line-number">112</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -653,11 +552,10 @@
 		
 	</div>
 <a name="methodshowDetails" id="showDetails"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<img src="../media/images/PrivateMethod.png" />
-		<span class="method-title">showDetails</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a328">328</a></span>)
+		<span class="method-title">showDetails</span> (line <span class="line-number">229</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -678,11 +576,10 @@
 		
 	</div>
 <a name="methodshowDetailsHTML" id="showDetailsHTML"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<img src="../media/images/PrivateMethod.png" />
-		<span class="method-title">showDetailsHTML</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a339">339</a></span>)
+		<span class="method-title">showDetailsHTML</span> (line <span class="line-number">240</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -702,12 +599,43 @@
 		
 		
 	</div>
+<a name="methodspielEndeString" id="spielEndeString"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">spielEndeString</span> (line <span class="line-number">210</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt das Ergebnis aus, unter Zusatz von Verlängerung und 11/7-Meterschießen falls nötig</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			spielEndeString
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">&$text</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">""</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">&$text</span><span class="var-description">: text Referenz auf Sprachvariablen</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$leer</span><span class="var-description">: leer Ausgabe, falls keine n.V./i.E vorhanden</span>			</li>
+				</ul>
+		
+		
+	</div>
 <a name="methodvaluateGame" id="valuateGame"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<img src="../media/images/Method.png" />
-		<span class="method-title">valuateGame</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a276">276</a></span>)
+		<span class="method-title">valuateGame</span> (line <span class="line-number">150</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -732,12 +660,11 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<img src="../media/images/Method.png" />
-		<span class="method-title">zeitString</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a318">318</a></span>)
+		<span class="method-title">zeitString</span> (line <span class="line-number">196</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Gibt die Anwurfzeit als formatierten String zurück (&quot;Stunden:Minuten&quot;).</p>
+<p class="short-description">Gibt die Anfangszeit als formatierten String zurück &quot;Stunden:Minuten&quot; = Standard</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -747,9 +674,17 @@
 		<span class="method-name">
 			zeitString
 		</span>
-					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">''</span>])
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$leer</span> = <span class="var-default">''</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$format</span> = <span class="var-default">"H:i"</span>])
 			</div>
 	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$leer</span><span class="var-description">: leer Ausgabe, falls keine Zeit vorhanden</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$format</span><span class="var-description">: format Zeitformat in date()-Notation Standard = H:i</span>			</li>
+				</ul>
 		
 		
 	</div>
@@ -757,9 +692,9 @@
 		</div>
 	</div>
 
-	
+
 	<p class="notes" id="credit">
-		Documentation generated on Sat,  9 Apr 2005 19:45:47 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+		Documentation generated on Sat,  9 Jul 2005 17:36:01 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
 	</p>
 	</div></body>
 </html>

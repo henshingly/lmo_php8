@@ -2,94 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
-			<!-- template designed by Marco Von Ballmoos  -->
+			<!-- template designed by Marco Von Ballmoos -->
 			<title>Docs For Class team</title>
 			<link rel="stylesheet" href="../media/stylesheet.css" />
-						<script src="../media/lib/classTree.js"></script>
-												<script language="javascript" type="text/javascript">
-				var imgPlus = new Image();
-				var imgMinus = new Image();
-				imgPlus.src = "../media/images/plus.png";
-				imgMinus.src = "../media/images/minus.png";
-				
-				function showNode(Node){
-							switch(navigator.family){
-								case 'nn4':
-									// Nav 4.x code fork...
-							var oTable = document.layers["span" + Node];
-							var oImg = document.layers["img" + Node];
-									break;
-								case 'ie4':
-									// IE 4/5 code fork...
-							var oTable = document.all["span" + Node];
-							var oImg = document.all["img" + Node];
-									break;
-								case 'gecko':
-									// Standards Compliant code fork...
-							var oTable = document.getElementById("span" + Node);
-							var oImg = document.getElementById("img" + Node);
-									break;
-							}
-					oImg.src = imgMinus.src;
-					oTable.style.display = "block";
-				}
-				
-				function hideNode(Node){
-							switch(navigator.family){
-								case 'nn4':
-									// Nav 4.x code fork...
-							var oTable = document.layers["span" + Node];
-							var oImg = document.layers["img" + Node];
-									break;
-								case 'ie4':
-									// IE 4/5 code fork...
-							var oTable = document.all["span" + Node];
-							var oImg = document.all["img" + Node];
-									break;
-								case 'gecko':
-									// Standards Compliant code fork...
-							var oTable = document.getElementById("span" + Node);
-							var oImg = document.getElementById("img" + Node);
-									break;
-							}
-					oImg.src = imgPlus.src;
-					oTable.style.display = "none";
-				}
-				
-				function nodeIsVisible(Node){
-							switch(navigator.family){
-								case 'nn4':
-									// Nav 4.x code fork...
-							var oTable = document.layers["span" + Node];
-									break;
-								case 'ie4':
-									// IE 4/5 code fork...
-							var oTable = document.all["span" + Node];
-									break;
-								case 'gecko':
-									// Standards Compliant code fork...
-							var oTable = document.getElementById("span" + Node);
-									break;
-							}
-					return (oTable && oTable.style.display == "block");
-				}
-				
-				function toggleNodeVisibility(Node){
-					if (nodeIsVisible(Node)){
-						hideNode(Node);
-					}else{
-						showNode(Node);
-					}
-				}
-			</script>
-					</head>
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
 		<body>
 			<div class="page-body">			
-
-<h2 class="class-name"><img src="../media/images/Class_logo.png"
-														alt=" Class"
-														title=" Class"
-														style="vertical-align: middle"> team</h2>
+<h2 class="class-name">Class team</h2>
 
 <a name="sec-description"></a>
 <div class="info-box">
@@ -105,7 +25,7 @@
 <p class="short-description">Team</p>
 <p class="description"><p>Mannschaft (Team), die an einer Liga teilnimmt</p></p>
 		<p class="notes">
-			Located in <a class="field" href="_classes_php.html">/classes.php</a> (line <span class="field"><a href="..//__filesource/fsource_classLib__classes.php.html#a64">64</a></span>)
+			Located in <a class="field" href="_team_class_php.html">/team.class.php</a> (line <span class="field">10</span>)
 		</p>
 		
 				
@@ -129,27 +49,22 @@
 		<div class="info-box-body">
 			<div class="var-summary">
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">array</span>
 					<a href="#$keyValues" title="details" class="var-name">$keyValues</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">string</span>
 					<a href="#$kurz" title="details" class="var-name">$kurz</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">string</span>
 					<a href="#$mittel" title="details" class="var-name">$mittel</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">string</span>
 					<a href="#$name" title="details" class="var-name">$name</a>
 				</div>
 								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">integer</span>
 					<a href="#$nr" title="details" class="var-name">$nr</a>
 				</div>
@@ -171,21 +86,18 @@
 			<div class="method-summary">
 								
 				<div class="method-definition">
-					<img src="../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">team</span>
 										<a href="#team" title="details" class="method-name">team</a>
 											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$name</span> = <span class="var-default">""</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$kurz</span> = <span class="var-default">""</span>], [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$nr</span> = <span class="var-default">""</span>])
 									</div>
 								
 				<div class="method-definition">
-					<img src="../media/images/PrivateMethod.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#addKeyValue" title="details" class="method-name">addKeyValue</a>
 											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$new_key</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$new_value</span>)
 									</div>
 								
 				<div class="method-definition">
-					<img src="../media/images/PrivateMethod.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#valueForKey" title="details" class="method-name">valueForKey</a>
 											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$new_key</span>)
@@ -211,11 +123,10 @@
 <div class="evenrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">array</span>
 			<span class="var-name">$keyValues</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a98">98</a></span>)
+						(line <span class="line-number">44</span>)
 		</span>
 	</div>
 
@@ -232,11 +143,10 @@
 <div class="oddrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$kurz</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a76">76</a></span>)
+						(line <span class="line-number">22</span>)
 		</span>
 	</div>
 
@@ -252,11 +162,10 @@
 <div class="evenrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$mittel</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a82">82</a></span>)
+						(line <span class="line-number">28</span>)
 		</span>
 	</div>
 
@@ -272,11 +181,10 @@
 <div class="oddrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$name</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a70">70</a></span>)
+						(line <span class="line-number">16</span>)
 		</span>
 	</div>
 
@@ -292,11 +200,10 @@
 <div class="evenrow">
 
 	<div class="var-header">
-		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$nr</span>
-						(line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a88">88</a></span>)
+						(line <span class="line-number">34</span>)
 		</span>
 	</div>
 
@@ -308,7 +215,6 @@
 		
 
 </div>
-
 						
 		</div>
 	</div>
@@ -328,8 +234,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<img src="../media/images/Constructor.png" />
-		<span class="method-title">Constructor team</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a100">100</a></span>)
+		<span class="method-title">Constructor team</span> (line <span class="line-number">46</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -349,8 +254,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<img src="../media/images/PrivateMethod.png" />
-		<span class="method-title">addKeyValue</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a113">113</a></span>)
+		<span class="method-title">addKeyValue</span> (line <span class="line-number">59</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -374,8 +278,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<img src="../media/images/PrivateMethod.png" />
-		<span class="method-title">valueForKey</span> (line <span class="line-number"><a href="..//__filesource/fsource_classLib__classes.php.html#a121">121</a></span>)
+		<span class="method-title">valueForKey</span> (line <span class="line-number">67</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -399,9 +302,9 @@
 		</div>
 	</div>
 
-	
+
 	<p class="notes" id="credit">
-		Documentation generated on Sat,  9 Apr 2005 19:45:48 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+		Documentation generated on Sat,  9 Jul 2005 17:36:03 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
 	</p>
 	</div></body>
 </html>
