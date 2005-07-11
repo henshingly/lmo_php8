@@ -45,7 +45,8 @@ if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
       $tabledata=explode('|',chunk_split($y,8,"|"));
       
       fwrite($fp,$teams[$tabledata[4]-50000000].'|');                              //TeamLongName
-      fwrite($fp,$teamk[$tabledata[4]-50000000].'|');                              //TeamShortName
+      fwrite($fp,$teamm[$tabledata[4]-50000000].'|');                              //TeamShortName
+      fwrite($fp,$teamk[$tabledata[4]-50000000].'|');                              //TeamAbbrevation
       fwrite($fp,applyFactor($punkte[$tabledata[4]-50000000],$pointsfaktor).'|');  //Points+
       if ($minus == 2) {
         fwrite($fp,applyFactor($negativ[$tabledata[4]-50000000],$pointsfaktor));   //Points-

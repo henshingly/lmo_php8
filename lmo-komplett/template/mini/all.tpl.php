@@ -3,7 +3,7 @@
   <!-- BEGIN Inhalt -->
   <tr style="<!--Style-->">
     <td align="right"><!--Platz--></td>
-    <td><!--TeamBild-->&nbsp;<acronym title="<!--TeamLang-->"><!--Team--></acronym></td>
+    <td><!--TeamBild-->&nbsp;<acronym title="<!--TeamLang--> (<--Team-->)"><!--TeamMittel--></acronym></td>
     <td align="right"><!--Spiele--></td>
     <td align="right"><!--Punkte--></td>
     <td><!--PlusTore-->:<!--MinusTore--></td>
