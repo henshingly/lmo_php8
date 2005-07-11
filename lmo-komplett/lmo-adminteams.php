@@ -30,14 +30,24 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
   if ($save == 1) {
     for($i = 1; $i <= $anzteams; $i++) {
       if ($_POST["xteams".$i] != "") {
-        $teams[$i] = isset($_POST["xteams".$i])?$_POST["xteams".$i]:'';
+        $teams[$i] = isset($_POST["xteams".$i])?trim($_POST["xteams".$i]):'';
       }
-      $teamk[$i] = isset($_POST["xteamk".$i])?$_POST["xteamk".$i]:'';
+      $teamm[$i] = isset($_POST["xteamm".$i])?($_POST["xteamm".$i]):'';
+      if ($teamm[$i] == "") {
+        //search longest name part an take this as middle name
+        $parts = preg_split("/\W/",$teams[$i]);
+        foreach ($parts as $part) {
+          if (strlen($part) >= strlen($teamm[$i])) {
+            $teamm[$i] = trim(substr($part, 0, 12));
+          }
+        }
+      }
+      $teamk[$i] = isset($_POST["xteamk".$i])?trim($_POST["xteamk".$i]):'';
       if ($teamk[$i] == "") {
-        $teamk[$i] = substr($teams[$i], 0, 5);
+        $teamk[$i] = trim(substr($teamm[$i], 0, 5));
       }
-      $teamu[$i] = isset($_POST["xteamu".$i])?$_POST["xteamu".$i]:'';
-      $teamn[$i] = isset($_POST["xteamn".$i])?$_POST["xteamn".$i]:'';
+      $teamu[$i] = isset($_POST["xteamu".$i])?trim($_POST["xteamu".$i]):'';
+      $teamn[$i] = isset($_POST["xteamn".$i])?trim($_POST["xteamn".$i]):'';
       if ($lmtype == 0) {
         $strafp[$i] = (-1) * intval($_POST["xstrafp".$i]);
         if ($minus == 2) {
@@ -128,6 +138,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
         }
         for($i = $team+1; $i <= $anzteams; $i++) {
           $teams[$i-1] = $teams[$i];
+          $teamm[$i-1] = $teamm[$i];
           $teamk[$i-1] = $teamk[$i];
           $teamu[$i-1] = $teamu[$i];
           $teamn[$i-1] = $teamn[$i];
@@ -137,6 +148,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
           }
         }
         $teams[$anzteams] = "";
+        $teamm[$anzteams] = "";
         $teamk[$anzteams] = "";
         $teamu[$anzteams] = "";
         $teamn[$anzteams] = "";
@@ -151,7 +163,8 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
       if ($anzteams < 40) {
         $anzteams++;
         $teams[$anzteams] = "Neue Mannschaft";
-        $teamk[$anzteams] = "Mneu";
+        $teamm[$anzteams] = "";
+        $teamk[$anzteams] = "";
         $teamu[$anzteams] = "";
         $teamn[$anzteams] = "";
         $strafp[$anzteams] = 0;
@@ -187,7 +200,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
         <input type="hidden" name="st" value="<? echo $st; ?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <th class="nobr" align="left"><acronym title="<? echo $text[125].", ".$text[126] ?>"><? echo $text[127]; ?></acronym>&nbsp;</th>
+            <th class="nobr" align="left"><acronym title="<? echo $text[125].", ".$text[572].", ".$text[126]?>"><? echo $text[127]; ?></acronym>&nbsp;</th>
 <? if($lmtype==0){ ?>
             <th class="nobr" colspan="2" align="center"><acronym title="<? echo $text[131] ?>"><? echo $text[542]."/".$text[543]; ?></acronym>&nbsp;</th>
             <th class="nobr" align="center"><acronym title="<? echo $text[523] ?>"><? echo $text[524]; ?></acronym>&nbsp;</th>
@@ -203,7 +216,8 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
             <td class="nobr">
               
                 <input class="lmo-formular-input" type="text" name="xteams<? echo $i; ?>" size="32" maxlength="64" value="<? echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()">
-                <input class="lmo-formular-input" type="text" name="xteamk<? echo $i; ?>" size="5" maxlength="5" value="<? echo $teamk[$i]; ?>" onChange="dolmoedit()">
+                <input class="lmo-formular-input" type="text" name="xteamm<? echo $i; ?>" size="12" maxlength="12" value="<? echo htmlspecialchars($teamm[$i]); ?>" onChange="dolmoedit()">
+                <input class="lmo-formular-input" type="text" name="xteamk<? echo $i; ?>" size="5" maxlength="5" value="<? echo htmlspecialchars($teamk[$i]); ?>" onChange="dolmoedit()">
               &nbsp;
             </td>
 <?   if($lmtype==0){ ?>

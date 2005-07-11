@@ -126,6 +126,10 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         for ($i=1; $i<=$anzteams; $i++) {
           fputs($datei,$i."=".$teams[$i]."\n");
         }
+        fputs($datei,"\n[Teamm]\n");
+        for ($i=1; $i<=$anzteams; $i++) {
+          fputs($datei,$i."=".$teamm[$i]."\n");
+        }
         fputs($datei,"\n[Teamk]\n");
         for ($i=1; $i<=$anzteams; $i++) {
           fputs($datei,$i."=".$teamk[$i]."\n");
