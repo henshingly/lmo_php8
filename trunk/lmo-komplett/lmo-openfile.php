@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 if(!empty($file) && check_hilfsadmin($file)){
   $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
   if(substr($file,-4)==".l98"){
@@ -30,7 +30,6 @@ if(!empty($file) && check_hilfsadmin($file)){
       $lmtype=0;
       for($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];
-        $zeile=chop($zeile);
         $zeile=trim($zeile);
         if((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
           $sekt=trim(substr($zeile,1,-1));
@@ -176,6 +175,7 @@ if(!empty($file) && check_hilfsadmin($file)){
         $hands=0;
       }
       $teams = array_pad($array,$anzteams+2,"");
+      $teamm = array_pad($array,$anzteams+2,"");
       $teamk = array_pad($array,$anzteams+2,"");
       $teamu = array_pad($array,$anzteams+2,"");
       $teamn = array_pad($array,$anzteams+2,"");
@@ -187,8 +187,8 @@ if(!empty($file) && check_hilfsadmin($file)){
         $strafp = array_pad(array("0"),116,"0");
         $strafm = array_pad(array("0"),116,"0");
         $torkorrektur1 = array_pad(array("0"),116,"0"); // Hack-Straftore
-    	  $torkorrektur2 = array_pad(array("0"),116,"0"); // Hack-Straftore
-    	  $strafdat      = array_pad(array("0"),116,"0"); // Hack-Straftore
+        $torkorrektur2 = array_pad(array("0"),116,"0"); // Hack-Straftore
+        $strafdat      = array_pad(array("0"),116,"0"); // Hack-Straftore
         $handp = array_pad(array("0"),116,"0");
         $datum1 = array_pad($array,116,"");
         $datum2 = array_pad($array,116,"");
@@ -249,14 +249,16 @@ if(!empty($file) && check_hilfsadmin($file)){
         }
       }
       $teams[0]="___";
+      $teamm[0]="___";
       $teamk[0]="___";//$a=mictime();
       for($i=1;$i<=count($daten);$i++){
         $dum=explode("|",$daten[$i-1]);
         //if($nticker==1){
-          if(($dum[0]=="News") && ($dum[1]!="NC")){$nlines[]=stripslashes($dum[2]);}
+        if(($dum[0]=="News") && ($dum[1]!="NC")){$nlines[]=stripslashes($dum[2]);}
         //}
-        
+
         if($dum[0]=="Teams"){$teams[$dum[1]]=stripslashes($dum[2]);}
+        if($dum[0]=="Teamm"){$teamm[$dum[1]]=stripslashes($dum[2]);}
         if($dum[0]=="Teamk"){$teamk[$dum[1]]=stripslashes($dum[2]);}
         $op1=substr($dum[0],0,4);
         $op2=substr($dum[0],0,5);
@@ -266,8 +268,8 @@ if(!empty($file) && check_hilfsadmin($file)){
         $op6=substr($dum[1],2,-1)-1;
         $op7=substr($dum[1],-1)-1;
         $op8=substr($dum[1],0,2);
-        
-        if($op1=="Team" && $dum[0]!="Teams" && $dum[0]!="Teamk") {
+
+        if($op1=="Team" && $dum[0]!="Teams" && $dum[0]!="Teamk" && $dum[0]!="Teamm") {
           if($lmtype==0){
             switch ($dum[1]) {
               case "SP":$strafp[$op5]=$dum[2];break;
@@ -280,76 +282,76 @@ if(!empty($file) && check_hilfsadmin($file)){
           if($dum[1]=="URL"){$teamu[$op5]=$dum[2];}
           if($dum[1]=="NOT"){$teamn[$op5]=$dum[2];}
         }
-        
+
         if(!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
-          
-          if($op2=="Round") {
-            switch($dum[1]) {
-              case "HS":$handp[$op3]=$dum[2];break;
-              case "D1":$datum1[$op3]=$dum[2];break;
-              case "D2":$datum2[$op3]=$dum[2];break;
-            }
+
+        if($op2=="Round") {
+          switch($dum[1]) {
+            case "HS":$handp[$op3]=$dum[2];break;
+            case "D1":$datum1[$op3]=$dum[2];break;
+            case "D2":$datum2[$op3]=$dum[2];break;
+          }
+          switch ($op8) {
+            case "TA":$teama[$op3][$op4]=$dum[2];break;
+            case "TB":$teamb[$op3][$op4]=$dum[2];break;
+          }
+          if($lmtype==0) {
             switch ($op8) {
-              case "TA":$teama[$op3][$op4]=$dum[2];break;
-              case "TB":$teamb[$op3][$op4]=$dum[2];break;
+              case "GA":
+              $goala[$op3][$op4]=$dum[2];
+              if($goala[$op3][$op4]==""){$goala[$op3][$op4]=-1;}
+              elseif($goala[$op3][$op4]=="-1"){$goala[$op3][$op4]="_";}
+              elseif($goala[$op3][$op4]=="-2"){$msieg[$op3][$op4]=1;$goala[$op3][$op4]="0";}
+              break;
+              case "GB":
+              $goalb[$op3][$op4]=$dum[2];
+              if($goalb[$op3][$op4]==""){$goalb[$op3][$op4]=-1;}
+              elseif($goalb[$op3][$op4]=="-1"){$goalb[$op3][$op4]="_";}
+              elseif($goalb[$op3][$op4]=="-2"){$msieg[$op3][$op4]=2;$goalb[$op3][$op4]="0";}
+              break;
+              case "SP":
+              if($spez==1){
+                $mspez[$op3][$op4]=$dum[2];
+                if($mspez[$op3][$op4]==0){$mspez[$op3][$op4]="&nbsp;";}
+                elseif($mspez[$op3][$op4]==2){$mspez[$op3][$op4]=$text[0];}
+                elseif($mspez[$op3][$op4]==1){$mspez[$op3][$op4]=$text[1];}
+              }
+              break;
+              case "ET":
+              if ($dum[2]==3){$msieg[$op3][$op4]=3;}
+              break;
+              case "NT":$mnote[$op3][$op4]=$dum[2];break;
+              case "BE":$mberi[$op3][$op4]=$dum[2];break;
+              case "TI":$mtipp[$op3][$op4]=$dum[2];break;
+              case "AT":$mterm[$op3][$op4]=$dum[2];break;
             }
-            if($lmtype==0) {
-              switch ($op8) {
-                case "GA":
-                  $goala[$op3][$op4]=$dum[2];
-                  if($goala[$op3][$op4]==""){$goala[$op3][$op4]=-1;}
-                  elseif($goala[$op3][$op4]=="-1"){$goala[$op3][$op4]="_";}
-                  elseif($goala[$op3][$op4]=="-2"){$msieg[$op3][$op4]=1;$goala[$op3][$op4]="0";}
-                  break;
-                case "GB":
-                  $goalb[$op3][$op4]=$dum[2];
-                  if($goalb[$op3][$op4]==""){$goalb[$op3][$op4]=-1;}
-                  elseif($goalb[$op3][$op4]=="-1"){$goalb[$op3][$op4]="_";}
-                  elseif($goalb[$op3][$op4]=="-2"){$msieg[$op3][$op4]=2;$goalb[$op3][$op4]="0";}
-                  break;
-                case "SP":
-                  if($spez==1){
-                    $mspez[$op3][$op4]=$dum[2];
-                    if($mspez[$op3][$op4]==0){$mspez[$op3][$op4]="&nbsp;";}
-                    elseif($mspez[$op3][$op4]==2){$mspez[$op3][$op4]=$text[0];}
-                    elseif($mspez[$op3][$op4]==1){$mspez[$op3][$op4]=$text[1];}
-                  }
-                  break;
-                case "ET":
-                  if ($dum[2]==3){$msieg[$op3][$op4]=3;}
-                  break;
-                case "NT":$mnote[$op3][$op4]=$dum[2];break;
-                case "BE":$mberi[$op3][$op4]=$dum[2];break;
-                case "TI":$mtipp[$op3][$op4]=$dum[2];break;
-                case "AT":$mterm[$op3][$op4]=$dum[2];break;
-              }
-            } else {
-              if($dum[1]=="MO"){$modus[$op3]=$dum[2];}
-              switch ($op8) {
-                case "GA":
-                  $goala[$op3][$op6][$op7]=$dum[2];
-                  if($goala[$op3][$op6][$op7]==""){$goala[$op3][$op6][$op7]=-1;}
-                  elseif($goala[$op3][$op6][$op7]=="-1"){$goala[$op3][$op6][$op7]="_";}
-                  break;
-                case "GB": 
-                  $goalb[$op3][$op6][$op7]=$dum[2];
-                  if($goalb[$op3][$op6][$op7]==""){$goalb[$op3][$op6][$op7]=-1;}
-                  elseif($goalb[$op3][$op6][$op7]=="-1"){$goalb[$op3][$op6][$op7]="_";}
-                  break;
-                case "SP":
-                  $mspez[$op3][$op6][$op7]=$dum[2];
-                  if($mspez[$op3][$op6][$op7]==0){$mspez[$op3][$op6][$op7]="&nbsp;";}
-                  elseif($mspez[$op3][$op6][$op7]==2){$mspez[$op3][$op6][$op7]=$text[0];}
-                  elseif($mspez[$op3][$op6][$op7]==1){$mspez[$op3][$op6][$op7]=$text[1];}
-                  break;
-                case "NT":$mnote[$op3][$op6][$op7]=$dum[2];break;
-                case "BE":$mberi[$op3][$op6][$op7]=$dum[2];break;
-                case "TI":$mtipp[$op3][$op6][$op7]=$dum[2];break;
-                case "AT":$mterm[$op3][$op6][$op7]=$dum[2];break;
-              }
+          } else {
+            if($dum[1]=="MO"){$modus[$op3]=$dum[2];}
+            switch ($op8) {
+              case "GA":
+              $goala[$op3][$op6][$op7]=$dum[2];
+              if($goala[$op3][$op6][$op7]==""){$goala[$op3][$op6][$op7]=-1;}
+              elseif($goala[$op3][$op6][$op7]=="-1"){$goala[$op3][$op6][$op7]="_";}
+              break;
+              case "GB":
+              $goalb[$op3][$op6][$op7]=$dum[2];
+              if($goalb[$op3][$op6][$op7]==""){$goalb[$op3][$op6][$op7]=-1;}
+              elseif($goalb[$op3][$op6][$op7]=="-1"){$goalb[$op3][$op6][$op7]="_";}
+              break;
+              case "SP":
+              $mspez[$op3][$op6][$op7]=$dum[2];
+              if($mspez[$op3][$op6][$op7]==0){$mspez[$op3][$op6][$op7]="&nbsp;";}
+              elseif($mspez[$op3][$op6][$op7]==2){$mspez[$op3][$op6][$op7]=$text[0];}
+              elseif($mspez[$op3][$op6][$op7]==1){$mspez[$op3][$op6][$op7]=$text[1];}
+              break;
+              case "NT":$mnote[$op3][$op6][$op7]=$dum[2];break;
+              case "BE":$mberi[$op3][$op6][$op7]=$dum[2];break;
+              case "TI":$mtipp[$op3][$op6][$op7]=$dum[2];break;
+              case "AT":$mterm[$op3][$op6][$op7]=$dum[2];break;
             }
           }
-          if(!isset($handp[$op3])){$handp[$op3]="0";}
+        }
+        if(!isset($handp[$op3])){$handp[$op3]="0";}
         }
       }
       if(!empty($datum1[$op3])){
@@ -372,8 +374,21 @@ if(!empty($file) && check_hilfsadmin($file)){
         /*$dummy=strtotime(substr($datum2[$op3],0,2)." ".$me[intval(substr($datum2[$op3],3,2))]." ".substr($datum2[$op3],6,4));
         if($dummy>-1){$datum2[$op3]=strftime("%d.%m.%Y",$dummy);}else{$datum2[$op3]="";}*/
       }
-      for($j=0;$j<$anzteams;$j++){if($teamk[$j]==""){$teamk[$j]=substr($teams[$j],0,5);}}
-      //echo "<br>".((mictime()-$a)*1000)." µS ".$dum[1]; 
+      for($j=0;$j<=$anzteams;$j++){
+        if($teamm[$j]==""){
+          //search longest name part an take this as middle name
+          $parts = preg_split("/\W/",$teams[$j]);
+          foreach ($parts as $part) {
+            if (strlen($part) >= strlen($teamm[$j]) ) {
+              $teamm[$j] = trim(substr($part, 0, 12));
+            }
+          }
+        }
+        if($teamk[$j]==""){
+          $teamk[$j] = trim(substr($teams[$j],0,5));
+        }
+      }
+      //echo "<br>".((mictime()-$a)*1000)." µS ".$dum[1];
     } else {
       echo getMessage($text[224],TRUE);
     }

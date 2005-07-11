@@ -45,16 +45,16 @@
 044=Show table for next Matchday
 045=Show table from this Matchday
 046=Go to the Teams Homepage (opens in a new window)
-047=This Script is originally based on the Windows Software "LigaManager 98 Free" from Frank Hollwitz. The <strong>Liga Manager Online</strong>, also developed by Frank Hollwitz, is a greatly improved version of the Program. Since it is based on PHP, the LMO works with many OS and is comfortably managed with a normal Web-browser. With many different 3rd Party Addons, the LMO has become more flexible. Since the original author, Frank Hollwitz, has stopped improving the script, a group of Add-on developers have decided to work together with the goal of improving and and updating the script.
+047=This Script is originally based on the Windows Software 'LigaManager 98 Free' from Frank Hollwitz. The <strong>Liga Manager Online</strong>, also developed by Frank Hollwitz, is a greatly improved version of the Program. Since it is based on PHP, the LMO works with many OS and is comfortably managed with a normal Web-browser. With many different 3rd Party Addons, the LMO has become more flexible. Since the original author, Frank Hollwitz, has stopped improving the script, a group of Add-on developers have decided to work together with the goal of improving and and updating the script.
 048=With this script it is possible to mánage <strong>Normal Leagues</strong> of different Sports, and also<strong>Tournaments</strong>. In addition there is also a <strong>Prediction Game</strong> a <strong>Players Management/Statistics</strong>, the support for mobile devices(cellular phones)<strong>WAP</strong> and a large <strong>League Statistics</strong> included. All this makes the LMO the <strong>Complete Solution</strong> for everyone who manages Sport Leagues and wants to make them publicly viewable.
-049=Since this script is server based, it does not depend on a Web-browser. The Web-browser should however work with CSS for best results. When the Webmaster uses the added "News-ticker, it will only be shown when JavaScript is aktivated.
-050=<strong>Credits</strong><dl><dt>Idea and Developing</dt><dd>Frank Hollwitz</dd><dt>Prediction Game</dt><dd>Frank Albrecht</dd><dt>Player Statistics</dt><dd>Rene Marth and Thorsten Keller</dd><dt>Add-On Developing and Debugging</dt><dd>Bernd Hoyer</dd><dt>Add-On Developing</dt><dd>Bernd Feser, Georg Strey, Helmut Müller, Oilid Adsi, Harald Graf, Peter Scherb, Ronny A. Joschko, Thomas Rapp, Hans Marx, Thomas Ney</dd><dt>Translations</dt><dd>Tomás Brixí (Tschekei), Erik Scheepers (Holland)</dd><dt>Debugging/ Improvements/ Ideas</dt><dd> many members of the <a href="http://forum.hollwitz.de/">Hollwitz-Forums</a></dd></dl>
+049=Since this script is server based, it does not depend on a Web-browser. The Web-browser should however work with CSS for best results. When the Webmaster uses the added News-ticker, it will only be shown when JavaScript is aktivated.
+050=<strong>Credits</strong><dl><dt>Idea and Developing</dt><dd>Frank Hollwitz</dd><dt>Prediction Game</dt><dd>Frank Albrecht</dd><dt>Player Statistics</dt><dd>Rene Marth and Thorsten Keller</dd><dt>Add-On Developing and Debugging</dt><dd>Bernd Hoyer</dd><dt>Add-On Developing</dt><dd>Bernd Feser, Georg Strey, Helmut Müller, Oilid Adsi, Harald Graf, Peter Scherb, Ronny A. Joschko, Thomas Rapp, Hans Marx, Thomas Ney</dd><dt>Translations</dt><dd>Tomás Brixí (Tschekei), Erik Scheepers (Holland)</dd><dt>Debugging/ Improvements/ Ideas</dt><dd> many members of the <a href='http://liga-manager-online.de/phpbb2'>LMO forum</a></dd></dl>
 051=Dummy
 052=Welcome!
 053=Please choose a League
-054=<acronym title="Liga Manager Online">LMO</acronym> 4.0&beta;1
-055=© 1997-2004 LMO-Group
-056=[ <a href="http://www.hollwitz.de/" target="_blank" title="You can download this and other scripts from my PHP Website">Hollwitz.Net(z)</a> | <a href="http://lmo.sourceforge.net/" target="_blank" title="The Newest Version at Sourceforge">LMO-Projekt</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Here you can find more Leagues for your LMO">Ligaliste</a> ]
+054=<acronym title='Liga Manager Online'>LMO</acronym> 4.0
+055=© 1997-2005 LMO-Group
+056=[ <a href='http://lmo.sourceforge.net/' target='_blank' title='The Newest Version at Sourceforge'>LMO-Project</a> | <a href='http://ligaliste.hollwitz.de/' target='_blank' title='Here you can find more Leagues for your LMO'>League list</a> ]
 057=Statistic 1 from
 058=Statistic 2 from
 059=No 2nd Team
@@ -123,9 +123,9 @@
 122=Starting Date of Match (Format DD.MM.YYYY - if needed, with leading zeroes)
 123=Starting Time of Match (Format DD.MM.YYYY - if needed, with leading zeroes) Leave empty to use the Standard Starting Time
 124=Team
-125=Team Name (max. 32 Characters)
-126=Abeviation of the Team Name (max. 5 Characters)
-127=Team Name/-Abreviation
+125=Team Name (max. 64 chars)
+126=Abbrevation of the Team Name (max. 5 chars)
+127=Team name (long, short, abbrevation)
 128=Penalty-/Bonus Points
 129=Homepage URL
 130=URL of the Teams Homepage (later this will always be opened in a new window)
@@ -220,13 +220,13 @@
 219=Round Table Decision
 220=Path
 221=League Directory
-222=Put the Path to the League here (with a "/" at the end, for example "Leagues/")
+222=Put the Path to the League here (with a '/' at the end, for example 'Leagues/')
 223=No Files Found
 224=No Suitable Leagues Found
 225=Global Options for the Script
 226=Table Options
 227=Position for the Points Column
-228=Where in the Table should the column "Points" be shown?
+228=Where in the Table should the column 'Points' be shown?
 229=In the middle (between Matches and Goals
 230=On the right (behind the goals)
 231=Placement of the Table
@@ -236,11 +236,11 @@
 235=Under the Results (with Home and Away Tables)
 236=Other Options
 237=Charts
-238=Should the Charts be shown? Please choose "No" when there are problems displayinf the Charts, or when your Provider has PHP without GD-Lib (Graphic Library) installed.
+238=Should the Charts be shown? Please choose 'No' when there are problems displayinf the Charts, or when your Provider has PHP without GD-Lib (Graphic Library) installed.
 239=Standard-Anstoßzeit//Standard Starting Time
-240=If you only enter a Date by your Matches and do not enter a "Time", this Time will automatically entered, saving you the work (Format DD.MM.YYYY - if needed, with leading zeroes)
-241=Tabellenspalte 'Unentschieden' verbergen//Hide the Column "Draw"
-242=Soll die Spalte 'Unentschieden' in der Tabelle verborgen werden?//Should the Column "Draw" be hidden in the Table?
+240=If you only enter a Date by your Matches and do not enter a 'Time', this Time will automatically entered, saving you the work (Format DD.MM.YYYY - if needed, with leading zeroes)
+241=Tabellenspalte 'Unentschieden' verbergen//Hide the Column 'Draw'
+242=Soll die Spalte 'Unentschieden' in der Tabelle verborgen werden?//Should the Column 'Draw' be hidden in the Table?
 243=Neue Liga erstellen//Create a New League
 244=Dateiname//Data Name
 245=Enter the Data Name where your new League schould be saved. Without path (max. 28 characters)
@@ -479,7 +479,7 @@
 478=Print Actual Matchday
 479=Print Match Schedule
 480=Print Match Schedule
-481=Here you can enter the paths to extra add-ons, separate the addons with "," (with '/' at the end, z.B. 'wap/')
+481=Here you can enter the paths to extra add-ons, separate the addons with ',' (with '/' at the end, z.B. 'wap/')
 482=Add On Directory
 483=Printer View
 484=Should a Printer friendly view be created?
@@ -515,7 +515,7 @@
 514=Should the League Statistics be shown?
 515=abs.
 516=tot.
-517=0
+517=Ø
 518=%
 519=Language Selection
 520=Should Flags be shown by Language Selection
@@ -560,6 +560,17 @@
 559=Extra Rights
 560=Give the Help Admin Extra Rights
 561=Warning! These settings could cause a League to be unusable<br>Only use these Options if you are sure of what you are doing<br>
+562=zurück
+563=Links unterstreichen
+564=&#8599;
+565=Heim-/Auswärtstabellen
+566=Sollen zusätzliche Heim- und Auswärtstabellen angezeigt werden?
+567=Fehler beim Erstellen
+568=Saisonende
+569=Datumssortierung
+570=Sollen die Spiele in der Ergebnisansicht nach Datum sortiert werden?
+571=Achtung! Bitte benutzen Sie diese Optionen nur, <br>wenn das Addon keine eigene Konfigurationsoberfläche bestitzt!
+572=Short name of the team (max. 12 chars)
 4000=Total-
 4001=/Match
 4002=2nd Season Half
@@ -579,4 +590,4 @@
 4016=Matches with the same results
 4017=Highest Away Win(s)
 4018=The Most
-4019=Matches with same number of 
+4019=Matches with same number of

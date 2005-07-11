@@ -45,16 +45,16 @@
 044=zur Tabelle des nächsten Spieltags blättern
 045=zur Tabelle dieses Spieltags wechseln
 046=Hier gelangen Sie zur Homepage der Mannschaft (wird in einem neuen Fenster geöffnet)
-047=Dieses Script basiert ursprünglich auf der Windows-Software "LigaManager '98 Free" von Frank Hollwitz. Der <strong>Liga Manager Online</strong>, ebenfalls von Frank Hollwitz entwickelt, ist eine stark verbesserte Version dieses Programms. Da PHP-basiert, ist der LMO auf sehr vielen verschiedenen Plattformen benutzbar, die Bedienung erfolgt bequem über einen normalen Webbrowser. Durch verschiedene Erweiterungen (Addons) ist der LMO mit der Zeit immer vielseitiger geworden. Da der ursprüngliche Autor Frank Hollwitz das Skript nicht mehr weiterentwickelt, hat sich eine Gruppe von Addon-Entwicklern das Ziel gesetzt, den LMO zu verbessern und zu erweitern.
-048=Man kann mit diesem Skript sowohl <strong>normale Ligen</strong> verschiedener Sportarten, als auch <strong>Pokalwettbewerbe</strong> verwalten, weiterhin sind unter anderem ein <strong>Tippspiel</strong>, eine <strong>Spielerverwaltung</strong>, die Unterstützung für Mobile Geräte (<strong>WAP</strong>) sowie umfangreiche <strong>Ligastatistiken</strong> integriert. Somit ist der LMO <strong>die Komplettlösung</strong> für alle, die Spielergebnisse von Sportligen verwalten und öffentlich zugänglich machen wollen.
-049=Das Script läuft browserunabhängig, da es serverseitig arbeitet. Ihr Browser sollte aber CSS unterstützen, um eine optimale Darstellung zu gewährleisten. Wenn der Webmaster den eingebauten Newsticker nutzt, wird dieser nur bei aktiviertem JavaScript angezeigt.
-050=<strong>Credits</strong><dl><dt>Idee und Entwicklung</dt><dd>Frank Hollwitz</dd><dt>Tippspiel</dt><dd>Frank Albrecht</dd><dt>Spielerstatistik</dt><dd>Rene Marth, Thorsten Keller</dd><dt>Addonentwicklung und Debugging</dt><dd>Bernd Hoyer</dd><dt>Addonentwicklung</dt><dd>Bernd Feser, Georg Strey, Helmut Müller, Oilid Adsi, Harald Graf, Peter Scherb, Ronny A. Joschko, Thomas Rapp, Hans Marx, Thomas Ney</dd><dt>Übersetzungen</dt><dd>Tomás Brixí (tschechisch), Erik Scheepers (niederländisch)</dd><dt>Debugging/Verbesserungsvorschläge</dt><dd>viele Mitglieder des <a href="http://forum.hollwitz.de/">Hollwitz-Forums</a></dd></dl>
+047=Dieses Script basiert ursprünglich auf der Windows-Software "LigaManager '98 Free" von Frank Hollwitz. Der <strong>Liga Manager Online</strong> ist eine stark verbesserte Version dieses Programms. Da PHP-basiert, ist der LMO auf sehr vielen verschiedenen Plattformen benutzbar, die Bedienung erfolgt bequem über einen normalen Webbrowser. Durch verschiedene Erweiterungen (Addons) ist der LMO mit der Zeit immer vielseitiger geworden.
+048=Man kann mit diesem Skript sowohl <strong>normale Ligen</strong> verschiedener Sportarten, als auch <strong>Pokalwettbewerbe</strong> verwalten. Eine große Anzahl verschiedener Addons machen den LMO zur <strong>Komplettlösung</strong> für alle, die Spielergebnisse von Sportligen verwalten und öffentlich zugänglich machen wollen.
+049=Dieses Script steht unter der GPL, es kann also frei benutzt und geändert werden. <strong>Das Entfernen oder Ändern von Copyrightnotizen ist jedoch nicht erlaubt!</strong>
+050=<br><small><strong>LMO 3</strong> by Frank Hollwitz<br><strong>LMO 4</strong> by Rene Marth/LMO-Group</small>
 051=Dummy
 052=Herzlich Willkommen!
 053=Bitte wählen Sie eine Liga aus
-054=<acronym title="Liga Manager Online">LMO</acronym>4
-055=© 1997-2004 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Besuchen Sie unsere Homepage">LMO-Projekt</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
+054=Liga Manager Online 4
+055=© 1997-2005 LMO-Group
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Besuchen Sie unsere Homepage">Homepage</a> | <a href="http://www.liga-manager-online.de/phpBB2/" target="_blank" title="Hilfe zum LMO und seinen Addons">Support-Forum</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
 057=Die Statistik 1 von
 058=Die Statistik 2 von
 059=Keine 2. Mannschaft
@@ -123,9 +123,9 @@
 122=Anstoßdatum des Spiels (Format TT.MM.JJJJ - ggf. mit führenden Nullen)
 123=AnstoßZeit des Spiels (Format HH:MM - ggf. mit führenden Nullen) - lassen Sie dieses Feld leer, wird beim Speichern automatisch die Standard-Anstoßzeit eingesetzt
 124=Mannschaft
-125=Name der Mannschaft (max. 32 Zeichen)
+125=Name der Mannschaft (max. 64 Zeichen)
 126=Kürzel der Mannschaft (max. 5 Zeichen)
-127=Mannschaftsname/-kürzel
+127=Mannschaftsname (lang, mittel, kurz)
 128=Straf-/Bonuspunkte
 129=Homepage-URL
 130=URL der Homepage der Mannschaft (diese wird später immer in einem neuen Fenster geöffnet werden)
@@ -570,6 +570,7 @@
 569=Datumssortierung
 570=Sollen die Spiele in der Ergebnisansicht nach Datum sortiert werden?
 571=Achtung! Bitte benutzen Sie diese Optionen nur, <br>wenn das Addon keine eigene Konfigurationsoberfläche bestitzt!
+572=Mittellanger Name der Mannschaft (max. 12 Zeichen)
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde
