@@ -100,7 +100,7 @@ if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
     $template->setVariable(array("TeamLang"=>$m_tabelle[$j][0]));
     $template->setVariable(array("TeamMittel"=>$m_tabelle[$j][1]));
     $template->setVariable(array("Team"=>$m_tabelle[$j][2]));
-    if ($m_tabelle[$j][3]=='') {
+    if ($m_tabelle[$j][4]=='') {
       $template->setVariable(array("Punkte"=>$m_tabelle[$j][3]));
     } else {
       $template->setVariable(array("Punkte"=>$m_tabelle[$j][3].':'.$m_tabelle[$j][4]));
