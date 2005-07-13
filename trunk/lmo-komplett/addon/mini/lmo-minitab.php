@@ -68,7 +68,7 @@ if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
   
   for ($i=0;$i<$m_anzteams;$i++) {
     if (empty($m_platz)) {
-      if (strpos($m_tabelle[$i][10],"F")!==FALSE) {
+      if (strpos($m_tabelle[$i][11],"F")!==FALSE) {
         break;
       }  
     } else {
