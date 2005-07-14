@@ -48,15 +48,16 @@
   * nach bereits vorhandenen Begegnungen der Mannschaften gesucht und absteigend 
   * sortiert nach Datum angezeigt.
   * 
-  * Konfigurationsparamter (in der Addonverwaltung)
+  * Konfigurationsparameter (in der Addonverwaltung)
   *
-  * mininext_withArchiv: Archivordner durchsuchen 1/0
+  *   mininext_withArchiv: Archivordner durchsuchen 1/0
   *
-  * mininext_unGreedy: unscharfe Suche - findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. 1/0
+  *   mininext_unGreedy: unscharfe Suche - findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. 1/0
   *
-  * mininext_barWidth: Breite des farbigen Balken in Pixeln
+  *   mininext_barWidth: Breite des farbigen Balken in Pixeln
   *
-  * mininext_standardTemplate: Standardtemplate, wenn keins übergeben wurde
+  *   mininext_standardTemplate: Standardtemplate, wenn keins übergeben wurde
+  *
   *
   * URL-Parameter:
   * 
@@ -111,28 +112,46 @@ require(dirname(__FILE__).'/../../init.php');
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 
 $template_folder = PATH_TO_TEMPLATEDIR.'/mini/';
-$mininext_standardTemplate = $cfgarray['mini']['mininext_standardTemplate'];		// Templatefile
-//aus Sicherheitsgründen werden .. gegen . ausgetauscht - somit sind nur templates innerhalb des Templatepfads möglich
-$mininext_template = isset($_GET['mininext_template'])?str_replace('..','.',$_GET['mininext_template']):isset($mininext_template)?str_replace('..','.',$mininext_template):$mininext_standardTemplate;
+
+$mininext_standardTemplate = isset($cfgarray['mini']['mininext_standardTemplate'])?$cfgarray['mini']['mininext_standardTemplate']:"mininext.tpl.php";		// Templatefile
+//aus Sicherheitsgründen werden .. gelöscht - somit sind nur templates innerhalb des Templatepfads möglich
+$mininext_template = isset($_GET['mininext_template'])
+                     ? str_replace('..','',$_GET['mininext_template'])
+                     : (isset($mininext_template)
+                        ? str_replace('..','',$mininext_template)
+                        : $mininext_standardTemplate
+                       );
+
+//4-stufiges Fallback für diese Variablen
+//1.GET-Parameter->2.Variable vorhanden (include)->3.Configwert->4. Standardwert
 
 //Nicht dokumentierte Steuerparameter für Fortgeschrittene
 $mininext_withArchiv = isset($_GET['mininext_withArchiv'])
                             ? ($_GET['mininext_withArchiv']=='1'?1:0)
                             : ( isset($mininext_withArchiv) 
                                 ? ($mininext_withArchiv=='1'?1:0)
-                                : $cfgarray['mini']['mininext_withArchiv']
+                                : (isset($cfgarray['mini']['mininext_withArchiv'])
+                                   ? $cfgarray['mini']['mininext_withArchiv']
+                                   : 1
+                                  )
                               );
 $mininext_unGreedy = isset($_GET['mininext_unGreedy'])
                      ? ($_GET['mininext_unGreedy']=='1'?1:0)
                      : ( isset($mininext_unGreedy)
                          ? ($mininext_withArchiv=='1'?1:0)
-                         :  $cfgarray['mini']['mininext_unGreedy']
+                         :  (isset($cfgarray['mini']['mininext_unGreedy'])
+                             ? $cfgarray['mini']['mininext_unGreedy']
+                             : 1
+                            )
                        );
 $mininext_barWidth = isset($_GET['mininext_barWidth']) && is_numeric($_GET['mininext_barWidth'])
                      ? $_GET['mininext_barWidth']
                      : ( isset($mininext_barWidth) && is_numeric($mininext_barWidth)
                          ? $mininext_barWidth
-                         : $cfgarray['mini']['mininext_barWidth']
+                         : (isset($cfgarray['mini']['mininext_barWidth'])
+                             ? $cfgarray['mini']['mininext_barWidth']
+                             : 120
+                            )
                        );
 
 $file = isset($_GET['file'])?$_GET['file']:isset($file)?$file:NULL;
