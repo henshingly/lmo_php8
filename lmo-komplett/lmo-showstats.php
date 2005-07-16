@@ -209,7 +209,7 @@ if($file!=""){
     $str = basename($file);
     $file16 = str_replace($strs, $stre, $str);
     $temp11 = basename($diroutput);
-    if (file_exists("$temp11/$file16")) {
+    if (file_exists(PATH_TO_LMO."/$temp11/$file16")) {
       require(PATH_TO_LMO."/$temp11/$file16");?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
