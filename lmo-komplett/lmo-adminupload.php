@@ -37,6 +37,7 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
     } else {
       echo getMessage($text[304],TRUE);
     }
+    @chmod($ufile,0644);
   }?>
 <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
