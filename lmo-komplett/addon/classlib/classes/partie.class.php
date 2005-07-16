@@ -199,7 +199,7 @@ class partie {
   }
 
   /**
-  * Gibt das Ergebnis aus, unter Zusatz von Verlängerung und 11/7-Meterschießen falls nötig
+  * Gibt für eine Partie aus, ob Verlängerung oder 11/7-Meterschießen
   *
   * @access public
   * @param array text Referenz auf Sprachvariablen
