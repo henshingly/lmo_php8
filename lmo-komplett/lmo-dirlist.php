@@ -128,7 +128,7 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
   </thead>
   <tbody>
 <? foreach($ligadatei as $liga){?>
-		<tr onMouseOver="this.className='lmoTabelleMeister';" onMouseOut="this.className=''">
+		<tr onMouseOver="this.className='lmoBackMarkierung';" onMouseOut="this.className=''">
 			<td class="nobr" align="left"><a href="<?=$addi.$subdir.$liga['file_name']?>"><?=$liga['liga_name']?></a></td><?
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
       <td class="nobr" align="left"><?=$liga['file_name']?> &nbsp;</td><?
