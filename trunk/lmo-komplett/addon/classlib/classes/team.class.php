@@ -46,7 +46,7 @@ class team {
   function team($name="",$kurz="",$nr="") {
     $this->name = $name;
     $this->kurz = $kurz;
-//    $this->mittel = null; Wird noch nicht verwendet da MittellangeNamen noch nicht zu standard gehören
+    $this->mittel = null; 
     $this->nr = $nr;
     $this->keyValues = array("SP"=>0,"SM"=>0,"TOR1"=>0,"TOR2"=>0,"STDA"=>0,"URL"=>"","NOT"=>"");
   }
