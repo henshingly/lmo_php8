@@ -31,7 +31,7 @@ $lmo_site_id = $_SERVER['QUERY_STRING'];  // Make an id for caching
 if (!$lmo_cache->start($lmo_site_id)) {*/
 $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
 if($file!=""){
-  require_once(PATH_TO_LMO."/lmo-openfile.php");
+  require(PATH_TO_LMO."/lmo-openfile.php");
   if(empty($_GET['endtab'])){
     $endtab=$anzst;
     $ste=$st;
@@ -208,7 +208,7 @@ if ($file!="") {
     //Spieler-Addon
   }
   if($action=="info")                                     {require(PATH_TO_LMO."/lmo-showinfo.php");}
-  $p0="p1";$$p0=c(1).$addm.c(0);
+  $p0="p1";$$p0=c(1).c(0);
 }elseif ($backlink==1 && $action!="tipp")                 {require(PATH_TO_LMO."/lmo-showdir.php");}
 
 if($action=="tipp" && $eintippspiel==1) {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");}
