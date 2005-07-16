@@ -24,9 +24,9 @@ if (session_id()=="") session_start();
 require(dirname(__FILE__).'/init-parameters.php');
 
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
-    $_SESSION['debug']=TRUE;
-    @error_reporting(E_ALL);
-    @ini_set('display_errors','1');
+  $_SESSION['debug']=TRUE;
+  @error_reporting(E_ALL);
+  @ini_set('display_errors','1');
 }
 $_SERVER['QUERY_STRING']=isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'';
 
@@ -48,7 +48,7 @@ if (!defined('URL_TO_CONFIGDIR'))   define('URL_TO_CONFIGDIR',    URL_TO_LMO.'/c
 if (!defined('URL_TO_JSDIR'))       define('URL_TO_JSDIR',        URL_TO_LMO.'/js');
 
 //Configuration
-require_once(PATH_TO_LMO."/lmo-cfgload.php");
+require(PATH_TO_LMO."/lmo-cfgload.php");
 
 //Language
 if(isset($_GET["lmouserlang"])){
@@ -65,20 +65,21 @@ if(isset($_SESSION["lmouserlang"])){
 }
 
 
-require_once(PATH_TO_LMO."/lmo-langload.php");
+require(PATH_TO_LMO."/lmo-langload.php");
 
 //Functions
 require_once(PATH_TO_LMO."/lmo-functions.php");
 
 //Template System
-require_once(PATH_TO_LMO."/IT.php"); 
+require_once(PATH_TO_LMO."/IT.php");
 
 //Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);
 magicQuotesRemove($_POST);
 magicQuotesRemove($_COOKIE);
 //Workaround for register_globals TODO: fix that!!!
-@extract($_GET);
-@extract($_POST);
-@extract($_COOKIE);
-?>
+if (!function_exists('ini_get') || !ini_get("register_globals")) {
+  @extract($_GET);
+  @extract($_POST);
+  @extract($_COOKIE);
+}?>
