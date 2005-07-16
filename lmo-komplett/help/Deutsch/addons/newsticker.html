@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<title>Addons Newsticker</title>
+  <meta name="generator" content="Der Dirigent 01.00.01 / www.der-dirigent.de">
+  <meta name="author" content="der dirigent">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="../../media/lmo.css" type="text/css">
+
+<div id="container">
+    <div id="header">
+      <a href="http://www.liga-manager-online.de/"><img src=
+      "../../media/logo_lmo.gif" alt="Liga Manager Online" width="492" height=
+      "48" border="0"></a>
+    </div>
+
+    <div id="back">
+       
+    </div>
+
+    <div id="urhere">
+       
+    </div>
+
+    <div id="navi">
+      <ul>
+        <li id="flags"> 
+      </ul>
+
+      <div class="navigation">
+        <ul>
+          <li><a class="folder" href="../index.html">Hilfe</a>
+
+          <li>
+            <a class="active" href="index.html">Addons</a>
+
+            <ul>
+              <li><a class="page" href="tippspiel.html">Tippspiel</a>
+
+              <li><a class="active" href="newsticker.html">Newsticker</a>
+
+              <li><a class="page" href="minitabellen.html">Minitabellen</a>
+
+              <li><a class="page" href=
+              "spielerstatistik.html">Spielerstatistik</a>
+
+              <li><a class="page" href="teamvergleich.html">Teamvergleich</a>
+
+              <li><a class="page" href="viewer.html">Viewer</a>
+
+              <li><a class="page" href="teamplan.html">Teamplan</a>
+            </ul>
+          </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <a name="top" id="top"></a>
+
+      <h1>Newsticker</h1>
+
+      <ol>
+        <li><a href="#param">Steuerparameter</a>
+
+        <li><a href="#insert">Einbindung</a>
+      </ol><img src="../../media/ticker01.png" alt="Useransicht" width="316"
+      height="15" align="right">
+
+      <p>In den LMO ist ein flexibler Newsticker integriert, der &amp;#252;ber
+      Ergebnisse und Notizen in einem Platz sparenden Laufband informiert. Im
+      <a href="../hilfe/bearbeiten_einer_liga.html#3">Ergebniseditor</a>
+      l&amp;#228;sst sich der Ticker f&amp;#252;r jede Liga separat an- oder
+      abschalten. Der Ticker ist dann im Userbereich &amp;#252;ber der
+      jeweiligen Liga zu sehen. Sie haben aber auch die M&amp;#246;glichkeit,
+      ihn an beliebige Stellen ihrer Homepage zu setzen und er l&amp;#228;sst
+      sich zus&amp;#228;tzlich konfigurieren, so dass zum Beispiel auch mehrere
+      Ligen in einem Ticker angezeigt werden k&amp;#246;nnen.
+
+      <h3><a name="param" id="param"></a>Steuerparameter</h3>
+
+      <p>Mit den folgenden Parametern steuern Sie den Newsticker. In der
+      <a href="../hilfe/optionen.html#2">Addonverwaltung</a> lassen sich die
+      Standardwerte des Tickers &amp;#228;ndern. Diese werden zum Einen
+      f&amp;#252;r die Ticker &amp;#252;ber den Ligen verwendet und zum Anderen
+      wird so ein Ticker aussehen, welcher keinen der Steuerparameter
+      &amp;#252;bergeben bekommt.
+
+      <dl>
+        <dt><var>tickerart</var>
+
+        <dd>1 = Ergebnisticker
+
+        <dd>2 = Tickertext des LMO
+
+        <dd>3 = Ergebnisticker, nur Favoritenteam
+
+        <dt><var>tickerligen</var>
+
+        <dd>Dateinamen (mit .l98-Endung) der Ligen, mehrere Ligen durch Komma
+        trennen
+
+        <dt><var>tickertitel</var>
+
+        <dd>1 = Ticker&amp;#252;berschrift wird angezeigt
+
+        <dt><var>tickernotizen</var>
+
+        <dd>1 = Die Spielnotizen werden mit angezeigt
+
+        <dt><var>tickercolor</var>
+
+        <dd>Farbangabe f&amp;#252;r die Schrift (CSS-Style)
+
+        <dt><var>tickerbackground</var>
+
+        <dd>Farbangabe f&amp;#252;r den Hintergrund (CSS-Style)
+
+        <dt><var>tickerbreite</var>
+
+        <dd>Breite des Tickers (in Buchstabenanzahl)
+
+        <dt><var>tickergeschwindigkeit</var>
+
+        <dd>Geschwindigkeit des Ticker
+      </dl><a href="#top">[nach oben]</a>
+
+      <h3><a name="insert" id="insert"></a> Einbindung</h3>
+
+      <p>Es gibt prinzipiell zwei Arten, mit der Sie den Newsticker in seine
+      Seiten einbinden können. Die erstere Methode ist dabei zu bevorzugen, die
+      zweite Variante ist eigentlich nur für Server gedacht, die keine
+      PHP-Unterstützung bieten (der LMO läuft dann auf einem externen Server)
+      oder wenn Sie eine Datei mit der Endung .html benutzen. (Diese werden
+      üblicherweise nicht von PHP geparst)
+
+      <h4>Einbinden per include</h4>
+
+      <p>Hierbei werden die Parameter direkt als PHP-Variablen festgelegt. Sie
+      notieren also <em>innerhalb eines PHP-Blocks</em> (ggfls. mit &lt;?php
+      öffnen) die benötigten Parameter hintereinander wie im folgenden
+      Beispiel:
+
+      <p><code>$tickerart="1";<br>
+      $tickerligen="liga1.l98,liga2.l98";</code>
+
+      <p>Beachten Sie das <var>$</var> vor dem Parameter, die Anführungszeichen
+      um die Werte und das schließende Semikolon. Sie brauchen nur die
+      Parameter angeben, die sich von den Standardeinstellungen unterscheiden.
+      Danach binden Sie den Ticker über die folgende Anweisung ein:
+
+      <p>
+      <code>include("<strong>PfadZumLMO</strong>/addon/ticker/ticker.php");</code>
+
+      <p><strong>PfadZumLMO</strong> bezeichnet dabei den absoluten oder
+      relativen Pfad zum LMO-Verzeichnis.
+
+      <p class="attention">Benutzen Sie auf keine Fall eine URL - also
+      <kbd>include("http://www.../ticker.php");</kbd> - damit werden die
+      Minitabellen nicht funktionieren! Geben Sie immer einen
+      <strong>Dateipfad</strong> an.
+
+      <h4>Einbinden per IFrame</h4>
+
+      <p>Diese Art der Einbindung sollte nur verwendet werden, wenn obige
+      Variante aus irgendwelchen Gründen nicht funktioniert. IFrames können
+      nicht von allen Browsern dargestellt werden und auch aus Ergonomiegründen
+      spricht einiges gegen ihre Verwendung. Die Parameter werden in diesem
+      Falle nicht vorher definiert, sie sind vielmehr Teil der aufzurufenden
+      Source-URL des eingebetteten Frames. Aus folgendem Beispiel erschließt
+      sich die Verwendung:
+
+      <p><code>&lt;iframe
+      src&amp;#61;"<strong>URLZumLMO</strong>/addon/ticker/ticker.php?tickerart=1&amp;amp;tickerligen=liga1.l98,liga2.l98"
+      frameborder="0" marginwidth="0" marginheight="0"
+      width="<strong>Breite</strong>" height="<strong>Höhe</strong>"
+      scrolling="no"&gt;&lt;/iframe&gt;</code>
+
+      <p><strong>URLZumLMO</strong> bezeichnet dabei die WWW-Adresse des LMO,
+      mit <strong>Breite</strong> und/oder <strong>Höhe</strong> müssen Sie
+      (leider) experimentieren, eine der vielen Nachteile von IFrames. Der
+      erste Steuerparameter wird mit <var>?</var> abgetrennt, die restlichen
+      mit <var>&amp;amp;</var>.
+    </div>
+
+    <dl id="footer">
+      <dt>© Liga Manager Online 2004/05
+    </dl>
+  </div>
+

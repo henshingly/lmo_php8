@@ -1,0 +1,60 @@
+#footer dd a:link {color:white; text-decoration: none; }
+a:link {color: navy; text-decoration: underline;}
+#footer dd a:visited {color:white; text-decoration: none; }
+a:visited {color: #33a; text-decoration: underline;}
+#urhere a:visited {color: #eee; text-decoration: none;}
+#footer dd a:hover {color:white; text-decoration: none; }
+#navi ul ul li a:hover {background: url(navpfeil_submenu.gif) no-repeat 3px;}
+#navi ul li a:hover {background: url(navpfeil_menu.gif) no-repeat 3px;}
+#urhere a:hover {text-decoration: underline;}
+#footer {clear: both; padding: 2px; margin-top: 5px; background-color: navy; font-size:90%;font-weight:bolder;}
+#navi img {border:1px solid navy; }
+#navi {float: left; width: 20%; margin: 0; margin-right: 5px; padding: 0px; background-color: #E0E8FF; list-style-type: none; clear: both; margin-bottom: 0.5em;}
+#content {padding: 0; margin-left:23%; margin-right:1%; margin-top:0.5em;}
+#footer dd {color:white; background: navy; padding-right:5%; display: inline;}
+#footer dt {white-space:nowrap; display:inline; color: navy; background: #E0E8FF; margin:0; padding: 0.1em 1em; margin-left: -1px; }
+h2 {font-size:115%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy;}
+h1 {font-size:140%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy; line-height: 30px;background:url(header_bg.png) repeat-y 0 0;padding-left:1em;border-left:2px solid navy;margin-top: 1em;border-bottom:1px solid navy;}
+body {font-size:12px; font-family:Helvetica, Arial, sans-serif; margin:auto; padding:0; max-width:1000px; min-width:50em; color:black;background:white;}
+#container {width:90%; \width: 90%; w\idth: 90%; margin: 0px; margin-left: auto; margin-right: auto; padding: 0px; }
+#header {padding: 5px; background-color: #E0E8FF; border-top:20px solid navy; margin:0;}
+ul li#flags a {display:inline; padding-left:10px;}
+ul li#flags {font-weight:normal; background: #E0E8FF ! important; padding-left:10px; padding-top: 3px;}
+#navi ul li {font-weight:bold; background:navy; margin:0; border-bottom:1px solid white; }
+#navi ul ul li {font-weight: normal; background: #E0E8FF; list-style: none; }
+#navi a {display:block; width:100%; padding-left:15px; text-decoration:none; padding-top:2px; padding-bottom:2px; }
+#navi ul li a {color:#EEEEEE; text-decoration:none;}
+#navi ul ul li a {color:navy; text-decoration:none;}
+#navi ul {margin:0; list-style:none; padding:0; }
+#back {float: left; padding: 5px 2% 5px 2%; margin: 0; border: 0; background: navy; width: 18%; color: White;}
+#urhere {float: left; padding: 5px 2% 5px 2%; margin: 0px; border: 0px; background: navy; width: 74%; color: White;}
+#urhere a {color: White; text-decoration: none; font-size: 12px; padding:5px;}
+#back a {color: #eee; text-decoration: none; padding:5px 0 5px 15px; background: navy url(navpfeil_back.gif) no-repeat 3px; font-variant: small-caps;}
+.news_intro {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; background-color: navy; padding: 3px;color:#FFFFFF;}
+.news_ueberschrift {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bolder; color: navy; padding: 3px; background-color: #E0E8FF;}
+.news_teaser {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; margin-top: 0px; margin-bottom: 0px;}
+dt {font-weight: bold; margin-top:0.5em; margin-bottom:0.3em;}
+#navi ul ul ul li {font-weight: normal; background: #F0EFFF; list-style: none; padding-left: 10px;}
+.active {font-weight: bold;background: url(navpfeil_submenu.gif) no-repeat 3px;}
+.text_ueberschrift {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bolder; color: navy; padding: 3px; background-color: #E0E8FF;margin-top:-10px;}
+#content img {border:0;}
+acronym {cursor:help; border-bottom:1px dotted;}
+caption {font-weight: bold; font-size: 110%;}
+#paypal dl {margin:0.3em auto;}
+.news_entry {border:1px solid navy; margin-bottom:1em;}
+.error {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bolder; color: red; padding: 3px;}
+.no_error {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bolder; color: green; padding: 3px;}
+#news caption {text-align:right;margin:0;}
+#paypal {margin:0.5em 0 0;border:1px solid navy;background:white;padding:0.2em; text-align:center;font-size:12px;font-family:"Arial Narrow", sans-serif;}
+#paypal dt {background:navy;color:#def;padding:0.2em;}
+#paypal dd {background-color:#eee;text-align:left;margin:0;}
+#container > #content {background: url(background.png) no-repeat 0 !important;}
+h3 {font-size:105%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy;}
+code {display:block; background-color : #eee; padding : 0.3em; font-size : 95%; margin-left:3em; margin-right:3em; border:1px solid #666;}
+h4 {font-weight:bold;margin:0.5em 0 1em 1em; color:navy; font-size:100%;}
+strong {color:#800;}
+.advanced {border:1px solid #aca;background:#e0ffe7;padding:0.4em;-moz-border-radius:8px;}
+.advanced:before {content: url(advanced.gif);}
+.attention {border:1px solid #d99;background:#ffe7e0;padding:0.4em;-moz-border-radius:8px;}
+.attention:before {content: url(attention.gif);}
+.classlib:before {content: url(classlib.gif);}
