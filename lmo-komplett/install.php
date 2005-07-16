@@ -193,7 +193,7 @@ if ($step==3) {
   $url= substr($url,-1)=='/'? substr($url, 0, -1): $url;
 
   $filename = $path."/init-parameters.php";
-  $somecontent='<? \n\t$lmo_dateipfad=\''.$path."'; //Dateipfad zum LMO\n\t".'$lmo_url=\''.$url.'\'; //abolute URL zum LMO\n?>';
+  $somecontent="<? \n\t\$lmo_dateipfad='".$path."'; //Dateipfad zum LMO\n\t\$lmo_url='".$url."'; //abolute URL zum LMO\n?>";
   // Sichergehen, dass die Datei existiert und beschreibbar ist
   if (is_writable($filename)) {
     if (!$handle = fopen($filename, "wb")) {
