@@ -76,7 +76,7 @@
 075=Hier kannst Du Dein Passwort
 076=anfordern
 077=Deine Zugangsdaten fuer das Tippspiel
-078=Passwort wurde an Deine Email-Adresse versand
+078=Passwort wurde an Deine Email-Adresse versandt
 079=Passwortanforderung Tippspiel
 080=Passwortversand fehlgeschlagen
 081=Auswertung der Tipps
@@ -173,8 +173,8 @@
 172=Tipp-Tabelle
 173=so würde die Tabelle mit Deinen Tipps aussehen
 174=Hallo [name]&#10;&#10;Diese Mail ist eine Erinnerung an Deine Tippabgabe.&#10;Bisher haben wir leider noch keine Tippabgabe von Dir für folgende Spielpaarungen:&#10;&#10;[spiele]
-175=Emails wurden versand
-176=Email wurde nicht versand<br>
+175=Emails wurden versandt
+176=Email wurde nicht versandt<br>
 177=Dieser Spieltag kann noch nicht getippt werden
 178=Platzhalter:
 179=[nick] Nickname<br>[pass] Passwort<br>[name] Name<br>[spiele] Auflistung der noch zu tippenden Spiele (nur Tip-Reminder)
