@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<title>Addons Spielerstatistik</title>
+  <meta name="generator" content="Der Dirigent 01.00.01 / www.der-dirigent.de">
+  <meta name="author" content="der dirigent">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="../../media/lmo.css" type="text/css">
+
+<div id="container">
+    <div id="header">
+      <a href="http://www.liga-manager-online.de/"><img src=
+      "../../media/logo_lmo.gif" alt="Liga Manager Online" width="492" height=
+      "48" border="0"></a>
+    </div>
+
+    <div id="back">
+       
+    </div>
+
+    <div id="urhere">
+       
+    </div>
+
+    <div id="navi">
+      <ul>
+        <li id="flags"> 
+      </ul>
+
+      <div class="navigation">
+        <ul>
+          <li><a class="folder" href="../index.html">Hilfe</a>
+
+          <li>
+            <a class="active" href="index.html">Addons</a>
+
+            <ul>
+              <li><a class="page" href="tippspiel.html">Tippspiel</a>
+
+              <li><a class="page" href="newsticker.html">Newsticker</a>
+
+              <li><a class="page" href="minitabellen.html">Minitabellen</a>
+
+              <li><a class="active" href=
+              "spielerstatistik.html">Spielerstatistik</a>
+
+              <li><a class="page" href="teamvergleich.html">Teamvergleich</a>
+
+              <li><a class="page" href="viewer.html">Viewer</a>
+
+              <li><a class="page" href="teamplan.html">Teamplan</a>
+            </ul>
+          </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>Spielerstatistik</h1>
+
+      <ol type="1">
+        <li><a href="#1">Konfiguration</a>
+      </ol><img src="../../media/spielerstatistik01.png" alt="Useransicht"
+      width="273" height="263" align="right">
+
+      <p>Dieses Addon stattet den Liga-Manager-Online mit der
+      M&amp;#246;glichkeit aus, die Statistiken einzelner Spieler einzugeben
+      und zu verwalten. Die flexible Konfiguration macht den Einsatz in vielen
+      verschiedenen Sportarten m&amp;#246;glich.
+
+      <p>Sie k&amp;#246;nnen drei Arten von Spalten anlegen.
+      <strong>Text</strong>, <strong>Zahlen</strong> und
+      <strong>Formeln</strong>. Zur Zeit ist eine sp&amp;#228;tere
+      &amp;#196;nderung der Spaltenreihenfolge leider nicht m&amp;#246;glich,
+      deshalb sollten Sie diese vorher gut &amp;#252;berlegen. Weiterhin
+      k&amp;#246;nen Sie die Namen der Spieler eingeben, die fertige
+      Aufstellung erscheint dann darunter, dort k&amp;#246;nnen Sie zu jedem
+      Spieler die passenden Werte eintragen und speichern. In den Formelspalten
+      k&amp;#246;nnen Sie die wichtigsten Grundrechenarten mit den als Zahlen
+      deklarierten Spalten betreiben. (Bsp: Durchschnittstore etc.)
+
+      <dl>
+        <dt>Einbinden von Spielerfotos
+
+        <dd>Wenn Spielerfotos eingebunden werden sollen, m&amp;#252;ssen diese
+        im Verzeichnis <strong>img/spieler/</strong> als <strong>JPEG</strong>-
+        oder <strong>GIF</strong>-Bild unter dem jeweiligen Spielernamen
+        abgespeichert werden. Beachten Sie die Gr&amp;#246;&amp;#223;e der
+        Bilder, die nicht zu gro&amp;#223; sein sollten.
+
+        <dt>Einbinden von Spielerlinks
+
+        <dd>Wenn einzelne Spieler mit einem Link versehen werden sollen, legt
+        man im Adminbereich eine Spalte "<strong>Spielerlink</strong>" (bzw.
+        dessen &amp;#196;quvalent aus der <kbd>lang/lmo-[Sprache].txt</kbd>)
+        an. F&amp;#252;r jeden Spieler kann ein Link angegeben werden, falls
+        nichts angegeben wird, wird auch nicht verlinkt.
+
+        <dt>Einbinden von Spaltengrafiken
+
+        <dd>Auch f&amp;#252;r Spalten&amp;#252;berschriften kann man eigene
+        Icons definieren, daf&amp;#252;r einfach im
+        <strong>img/spieler/</strong>-Verzeichnis ein <strong>GIF</strong>
+        -Bild mit dem Spaltennamen abspeichern. Beispiele sind schon im
+        Verzeichnis enthalten.
+
+        <dt>Einbinden von Statistiken mehrerer Vereine und den passenden
+        Vereinsemblemen
+
+        <dd class="advanced">Falls man als Spalten&amp;#252;berschrift
+        "<strong>Verein</strong>" (bzw. dessen &amp;#196;quvalent aus der
+        <kbd>lmo-[Sprache].txt</kbd>) eingibt, wird f&amp;#252;r diese Spalte
+        die Unterst&amp;#252;tzung f&amp;#252;r Vereinsnamen aktiviert. Dazu
+        geh&amp;#246;rt bequeme Auswahl aus einer Drop-Down-Liste, Einbindung
+        von Vereinswappen (falls vorhanden) und Unterst&amp;#252;tzung der
+        Verlinkung zu den Vereinshomepages.
+      </dl>
+
+      <h2>1. Konfiguration</h2>
+
+      <h4><a name="1">User</a></h4>
+
+      <dl>
+        <dt>Anzeige pro Seite User
+
+        <dd>Die Anzahl der angezeigten Ergebnisse, 0 bedeutet ohne Begrenzung
+
+        <dt>Vorsortierung User
+
+        <dd>Spalte, nach der als erstes sortiert wird
+
+        <dt>Sortierung
+
+        <dd>In welcher Reihenfolge soll die Vorsortierung erfolgen?
+
+        <dt>Extra Sortierspalte
+
+        <dd>Zeigt eine Sortierspalte an, ansonsten geschieht die Sortierung
+        &amp;#252;ber die Tabellenk&amp;#246;pfe
+
+        <dt>Vereinsweise anzeigen
+
+        <dd>erm&amp;#246;glicht die Aufteilung nach Vereinen
+
+        <dt>Nullwerte einblenden
+
+        <dd>Blendet auch Nullwerte ein, Zeichenketten werden immer eingeblendet
+      </dl>
+
+      <h4>Admin</h4>
+
+      <dl>
+        <dt>Vorsortierung Admin
+
+        <dd>Spalte, nach der als erstes sortiert wird
+
+        <dt>Hilfsadmin
+
+        <dd>erlaubt den Hilfsadmins den Zugriff
+
+        <dt>Hilfsadmin (Spalten)
+
+        <dd>erlaubt den Hilfsadmins den Zugriff auf die Spaltenerstellung
+      </dl><a href="#top">[nach oben]</a>
+    </div>
+
+    <dl id="footer">
+      <dt>© Liga Manager Online 2004/05
+    </dl>
+  </div>
+
