@@ -1,7 +1,6 @@
 <?
 header("Content-Type: text/css");
 require(dirname(__FILE__)."/init.php");
-@include(PATH_TO_TEMPLATEDIR."/style.css");
 ?>
 
 .message{
@@ -313,3 +312,5 @@ require(dirname(__FILE__)."/init.php");
 a span.popup, a:link span.popup{
 	display: none;
 }
+<?
+@include(PATH_TO_TEMPLATEDIR."/style.css");?>

@@ -133,6 +133,7 @@ if ($newpage == 3) {
   for($i = 1; $i <= $anzteams; $i++) {
     $teams[$i] = $text[281]." ".$i;
     $teamk[$i] = $text[282].$i;
+    $teamm[$i] = '';
     if ($lmtype == 0) {
       $strafp[$i] = "0";
       $strafdat[$i] = "0";
