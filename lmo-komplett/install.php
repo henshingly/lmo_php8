@@ -22,7 +22,7 @@ $lmouserlang=isset($_GET['lmouserlang'])?$_GET['lmouserlang']:'DE';
 
 $filelist=array(
   '777'=>array('ligen','output','ligen/archiv','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
-  '666'=>array('config/cfg.txt','lmo-auth.txt','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98',"init-parameters.php")
+  '666'=>array('config/cfg.txt','lmo-auth.txt','config/classlib/cfg.txt','/config/mini/cfg.txt','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98',"init-parameters.php")
 );
 $lang=array(
     'DE'=>array(
