@@ -287,7 +287,7 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
 
     // Archivfolder lesen
 
-    if ($mininext_withArchiv==1 && readLigaDir(PATH_TO_LMO.'/'.$dirliga.$archivFolder,&$dataArray) == FALSE ) {
+    if ($mininext_withArchiv==1 && readLigaDir(PATH_TO_LMO.'/'.$dirliga.$archivFolder,$dataArray) == FALSE ) {
       echo getMessage($text['mini'][6]." ".PATH_TO_LMO.'/'.$dirliga.$archivFolder,TRUE);
     }
 
