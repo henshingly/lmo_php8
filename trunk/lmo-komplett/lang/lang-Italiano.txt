@@ -48,13 +48,13 @@
 047=Questo Script é basato sull'originario programma per Windows "LigaManager '98 Free" di Frank Hollwitz. Il <strong>Liga Manager Online</strong>, altrettanto sviluppato da Frank Hollwitz, é una versione migliorata del programma base. Dato che é basato su PHP, il LMO puó essere utilizzato su diverse piattaforme, l'uso avviene comodamente tramite un normale Webbrowser. Pian piano, attraverso diversi ampliamenti (Addons), il LMO é diventato sempre piú vasto nelle sue funzioni. Dato che l'autore originario Frank Hollwitz non ha piú continuato lo sviluppo di questo Script, un nuovo gruppo di sviluppatori si ha dato l'obiettivo di ampliare e migliorare il LMO.
 048=Con questo Script si possono gestire non solo dei <strong>normali campionati</strong> di diversi generi sportivi, ma anche <strong>competizioni come la coppa italia ecc..</strong>. Inoltre sono integrati un <strong>Gioco pronostici</strong>, un <strong>Gestore calciatori</strong>, il favoreggiamento per cellulari (<strong>WAP</strong>) é vaste <strong>Statistiche per campionati</strong>. A questo punto il LMO é <strong>la soluzione completa</strong> per tutti quelli che vorrebbero gestire dei risultati di campionati per poi publicarli e renderli accessibili a tutti.
 049=Lo Script funziona indipentemente dal Browser che si usa, perché lavora direttamente sul server. Per garantire un giusto funzionamento, il suo Browser dovrebbe sostenere il CSS. Se il Webmaster dovrebbe utilizzare il Newsticker, questo sará visibile solo con JavaScript attivato.
-050=<strong>Credits</strong><dl><dt>Idea e realizzazione</dt><dd>Frank Hollwitz</dd><dt>Gioco pronostici</dt><dd>Frank Albrecht</dd><dt>Statistiche calciatori</dt><dd>Rene Marth, Thorsten Keller</dd><dt>Debugging e sviluppo ampliamenti</dt><dd>Bernd Hoyer</dd><dt>Sviluppo ampliamenti</dt><dd>Bernd Feser, Georg Strey, Helmut Müller, Oilid Adsi, Harald Graf, Peter Scherb, Ronny A. Joschko, Thomas Rapp, Hans Marx, Thomas Ney</dd><dt>Traduzione italiana</dt><dd> Angelo Guarini (angelo@liga-manager-online.de)</dd><dt>Debugging/Proposte miglioramenti</dt><dd>molti soci del <a href="http://forum.hollwitz.de/">Hollwitz-Forums</a></dd></dl>
+050=<br><small><strong>LMO 3</strong> by Frank Hollwitz<br><strong>LMO 4</strong> by Rene Marth/LMO-Group</small>
 051=Dummy
 052=Cordiale benvenuto!
 053=Prego, seleziona un campionato
-054=<acronym title="Liga Manager Online">LMO</acronym>4
-055=© 1997-2004 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visitate il nostro sito">Progetto-LMO</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Qui troverete altri campionati per il vostro LigaManager">Lista campionati</a> ]
+054=Liga Manager Online 4
+055=© 1997-2005 LMO-Group
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visitate il nostro sito">Progetto-LMO</a> | <a href="http://www.liga-manager-online.de/phpBB2/" target="_blank" title="Forum di supporto per LMO e Addons">Foro de apoyo</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Qui troverete altri campionati per il vostro LigaManager">Lista campionati</a> ]
 057=La statistica 1 di
 058=La statistica 2 di
 059=Nessuna 2. squadra

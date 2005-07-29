@@ -3,9 +3,9 @@
 002=Forduló
 003=kezdete
 004=vége
-005=<<
+005=«
 006=Ugorj az elõzõ fordulóra
-007=>>
+007=»
 008=Ugorj az következõ fordulóra
 009=Ugorj erre a fordulóra
 010=Eredmények
@@ -48,13 +48,13 @@
 047=Ez a szkriptet eredetileg a &quot;LigaManager '98 Free&quot; for Windows nevû program mintájára kezdték fejleszteni. A <strong>League Manager Online</strong>, melyet szintén Frank Hollwitz fejleszt, ezen alkalmazás továbbfejlesztett verziója. Mivel teljes egészében PHP-ben írodott, az LMO-t sok különbözõ környezetben használhatják, könnyedén konfigurálható és használható bármely böngészõvel. Sok kiterjesztésével ("Addons"), az LMO nagyon rugalmassá vált. Mióta az eredeti programozó, Frank Hollwitz felhagyott ezen szoftver fejlesztésével, fejlesztõk egy csoportja csatlakozott, hogy fejlessze és újabb funkciókkal bõvítse az LMO-t a jövõben is.
 048=Ez a szkript képes kezelni <strong>szokásos bajnokságokat</strong> különbözõ sportokban, ill. <strong>playoff-okat és kupákat</strong>, van benne <strong>tippelés</strong>, <strong>játékos statisztika</strong>, mobiltelefonnal is elérhetõ (<strong>WAP</strong>) és széleskörû <strong>bajnokság statisztikát</strong> biztosít. Ezenfelül az LMO <strong>megoldást</strong> kínál mindenkinek, aki eredményeket akar adminisztrálni és publikálni szinte bármilyen sportágban.
 049=Ez a szkript független a böngészõ típusától, mert a szerver oldalon fut. Bár ahhoz, hogy az oldalak teljesen hibamentesen jelenjenek meg, a böngészõjének támogatnia kell a CSS-t. Ha a beépített hírjelzõt is használni szeretné, be kell kapcsolnia a JavaScript-et.
-050=<strong>Készítõk</strong><dl><dt>Ötlet és fejlesztés</dt><dd>Frank Hollwitz</dd><dt>Tippelés</dt><dd>Frank Albrecht</dd><dt>Játékos statisztika</dt><dd>Rene Marth, Thorsten Keller</dd><dt>Kiegészítések és hibakeresés</dt><dd>Bernd Hoyer</dd><dt>Kiegészítések</dt><dd>Bernd Feser, Georg Strey, Helmut Müller, Oilid Adsi, Harald Graf, Peter Scherb, Ronny A. Joschko, Thomas Rapp, Hans Marx, Thomas Ney</dd><dt>Fordítások</dt><dd>Tomás Brixí (cseh), Erik Scheepers (holland)</dd><dt>Hibakeresés/Javaslatok</dt><dd>A <a href="http://forum.hollwitz.de/">Hollwitz-Forum</a> tagjai</dd></dl>
+050=<br><small><strong>LMO 3</strong> by Frank Hollwitz<br><strong>LMO 4</strong> by Rene Marth/LMO-Group</small>
 051=Statiszta
 052=Üdvözöljük!
 053=Kérem válasszon ki egy bajnokságot:
-054<acronym title="League Manager Online">LMO</acronym>4
+054=Liga Manager Online 4
 055=© 1997-2005 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://www.liga-manager-online.de/phpBB2/" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
 057=1.Statisztika
 058=2.Statisztika
 059=Nincs másik csapat
