@@ -48,13 +48,13 @@
 047=Dette skriptet er opprinnelig basert på Windowsprogrammet "LigaManager '98 Free" av Frank Hollwitz. <strong>Liga Manager Online</strong>, også utviklet av Frank Hollwitz, er en kraftig forbedret versjon av dette programmet. Siden det er php basert kan det brukes på alle plattformer, og redigering gjøres komfortabelt med din egen browser. Gjennom flere forskjellige utvidelser (Addons) er LMO med tiden blitt mer omfattende. Siden den opprinnelige forfatteren Frank Hollwitz ikke videreutvikler skriptet lengere, har en gruppe av Addon-utviklerne satt seg målet å videreutvikle og forbedre LMO ytterligere.<br><br>
 048=Man kan med dette skriptet forvalte både <strong>normale ligaer</strong> i forskjellige sportstyper, og <strong>cupturneringer</strong>. Videre er blant annet et <strong>Tippespill</strong>, en <strong>Spillerforvaltning</strong>, støtte for mobil apparater (<strong>WAP</strong>) såvel som omfattende <strong>ligastatistikk</strong> integrert. Dermed er LMO <strong>komplettløsningen</strong> for alle som  som vil forvalte og offentligjøre sportsresultater.<br><br>
 049=Skriptet er browseruavhengig siden det kjøres på serveren. Browseren bør dog støtte CSS for å få en optimal fremvisnig og ytelse. Hvis webmaster har aktivert Newstickeren blir denne bare vist hvis javascript er aktivert.<br><br>
-050=<strong>Credits</strong><dl><dt>Ide og utvikling </dt><dd>Frank Hollwitz</dd><dt>Tippespill</dt><dd>Frank Albrecht</dd><dt>Spillerstatistikk</dt><dd>Rene Marth, Thorsten Keller</dd><dt>Addonutvikling og debugging</dt><dd>Bernd Hoyer</dd><dt>Addonutvikling</dt><dd>Bernd Feser, Georg Strey, Helmut Müller, Oilid Adsi, Harald Graf, Peter Scherb, Ronny A. Joschko, Thomas Rapp, Hans Marx, Thomas Ney</dd><dt>Oversetninger</dt><dd>Tomás Brixí (tjekkisk), Erik Scheepers (nederlandsk), Trygve Aspelien (norsk)</dd><dt>Debugging/Forbedringsforslag</dt><dd>mange medlemmer av <a href="http://forum.hollwitz.de/">Hollwitz-Forumet</a></dd></dl></p>
+050=<br><small><strong>LMO 3</strong> by Frank Hollwitz<br><strong>LMO 4</strong> by Rene Marth/LMO-Group</small>
 051=Dummy
 052=Velkommen!
 053=Vennligst velg en liga
-054=<acronym title="Liga Manager Online">LMO</acronym>4
+054=Liga Manager Online 4
 055=© 1997-2005 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Prosjekt</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Her finnes flere ligaer for LMO">Ligaliste</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://www.liga-manager-online.de/phpBB2/" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
 057=Statistikk 1 fra
 058=Statistikk 2 fra
 059=inget 2. lag

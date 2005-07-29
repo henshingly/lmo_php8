@@ -3,9 +3,9 @@
 002=Jornada
 003=de
 004=a
-005=<<
+005=«
 006=Jornada anterior
-007=>>
+007=»
 008=Próxima jornada
 009=Ir para esta jornada
 010=Resultados
@@ -38,7 +38,7 @@
 037=Pts.
 038=Golos
 039=+/-
-040=Classificação 
+040=Classificação
 041=Casa
 042=Fora
 043=Ver classificações da jornada anterior
@@ -48,13 +48,13 @@
 047=Este script é baseado no Software "LigaManager '98 Free" von Frank Hollwitz. A <strong>Liga Manager Online</strong>, foi desenvolvida igualmente por Frank Hollwitz, tornando-se numa versão fortemente melhorada. Baseado na linguagem PHP, a LMO pode ser usado em diferentes plataformas e gerido por um simples webmaster. Com pequenos programas associados (add-on) o programa tornou-se cada vez mais versátil e poderoso. Desde a altura em que o autor Frank Hollwitz deixou de desenvolver a LMO, um grupo de entusiastas juntou-se com o objectivo de melhorar cada vez mais o software.
 048=Pode utilizar a LMO para diferentes tipos de desporto e competições. Além disso pode consultar a LMO através do telemóvel (se configurado), bem como muitas estatísticas. Assim, a LMO é o software ideal para publicar on-line resultados e estatísticas das competições que desejar.
 049=Este script funciona em vários browsers. O browser terá que suportar CSS, de modo a garantir a funcionalidade do script. Se o webmaster utilizar as notas, estas só funcionarão se o javascript estiver activo.
-050=<dl><strong>Créditos</strong><dl><dt><i>Ideia e desenvolvimento</i></dt><dd>Frank Hollwitz</dd><dt><i>Tapping play</i></dt><dd>Frank Albrecht</dd><dt><i>Estatísticas dos jogadores</i></dt><dd>Rene Marth, Thorsten Keller</dd><dt><i>Desenvolvimento de progs. (Addon) e Testes</i></dt><dd>Bernd Hoyer</dd><dt><i>Desenvolvimento de progrs. (Addon)</i></dt><dd>Bernd Feser, Georg Strey, Helmut Müller, Oilid Adsi, Harald Graf, Peter Scherb, Ronny A. Joschko, Thomas Rapp, Hans Marx, Thomas Ney</dd><dt><i>Traduções</i></dt><dd>Tomás Brixí (Checo), Erik Scheepers (Holandês), Marcel Bucksch (Inglês), Ricardo Passos (Português)</dd><dt><i>Testes/Melhoramentos e sugestões</i></dt><dd>Muitos membros de <a href="http://forum.hollwitz.de/">Hollwitz-Forums</a></dd></dl>
+050=<br><small><strong>LMO 3</strong> by Frank Hollwitz<br><strong>LMO 4</strong> by Rene Marth/LMO-Group</small>
 051=Vazio
 052=Bem vindo(a)!
 053=Por favor seleccione um campeonato ou taça:
 054=<acronym title="Sistema de resultados">LMO</acronym>
 055=© 1997-2005 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/dedi/projekt01/index.php" target="_blank" title="Visite a nossa Homepage">Projecto-LMO</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Aqui poderá encontrar mais campeonatos">Lista de campeonatos Hollwitz</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visite a nossa Homepage">Projecto-LMO</a> | <a href="http://www.liga-manager-online.de/phpBB2/" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> |  <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Aqui poderá encontrar mais campeonatos">Lista de campeonatos Hollwitz</a> ]
 057=Estatísticas para
 058=Estatísticas para
 059=Não há 2ª equipa
@@ -115,9 +115,9 @@
 114=Clique aqui para gravar as alterações
 115=>> Ver como utilizador
 116=Obrigado aos nossos visitantes por visitarem a página do script (O site irá abrir numa nova janela)
-117=Você não gravou nada.\nQuer gravar na mesma?
+117=Você não gravou nada.nQuer gravar na mesma?
 118=O nome do campeonato ficará visível para todos os utilizadores (max. 60 caracteres, ex. 'Superliga 2002/03' or 'Liga de Honra 2002/03')
-119=There have been changes that\nhaven't been saved yet.\n\nClick 'Yes' to withdraw the changes\nand continue or 'No' to stay here\nand save the changes.
+119=There have been changes thatnhaven't been saved yet.nnClick 'Yes' to withdraw the changesnand continue or 'No' to stay herenand save the changes.
 120=Ajustamento dos golos da equipa visitada (0 - 9999, _ ou X)
 121=Ajustamento dos golos da equipa visitada (0 - 9999, _ ou X)
 122=Data do jogo (formato dd.mm.aaaa - insira os '0's se necessário)
@@ -247,7 +247,7 @@
 246=Step
 247=Cancelar a criação de um novo campeonato
 248=By clicking here, you will cancel the creation of a new league and return to the main lmoMenu
-249=Do you really want to cancel the creation of a new league?\nEverything you entered so far will be lost.
+249=Do you really want to cancel the creation of a new league?nEverything you entered so far will be lost.
 250=Ver/Mostrar
 251=Dia do jogo
 252=Do you want the first and last dates of the game day to be displayed?
@@ -275,7 +275,7 @@
 274=Número jornadas
 275=Escreva o número de jornadas (6 - 116)
 276=Número de jornadas (6 - 116)
-277=Número de jogos por jornada 
+277=Número de jogos por jornada
 278=Escreva o número de jogos por dia (2 - 40)
 279=Número de jogos por jornada (2 - 40)
 280=Escolha um nome diferente para o ficheiroy<br>porque o que escolheu já existe.
@@ -294,7 +294,7 @@
 293=Primiero, devererá escrever o nome das equipas antes de continuar com mais alterações
 294=Abrir campeonato
 295=Apagar campeonato
-296=Tem a certeza que quer apagar este campeonato?\n(No undo-function!)
+296=Tem a certeza que quer apagar este campeonato?n(No undo-function!)
 297=Apagado com sucesso
 298=Não pode ser apagado
 299=Upload um ficheiro
@@ -330,7 +330,7 @@
 329=Gravar
 330=Apagar
 331=Adicionar novo administrador
-332=Do you really want to withdraw this team\nfrom the league?\n(Não é possível voltar atrás!)
+332=Do you really want to withdraw this teamnfrom the league?n(Não é possível voltar atrás!)
 333=Withdraw team
 334=Withdraw this team from the league
 335=Deseja adicionar uma noca equipa no campeonato?
@@ -408,13 +408,13 @@
 407=Permitir ordenação da classificação manualmente
 408=Deseja ordenar a classificação manualmente se houver algo diferente? (Activar esta opção se for mesmo necessário!)
 409=Here you can check the standings again and resort it if necessary
-410=Classificação 
+410=Classificação
 411=Voltar para os resultados
 412=Resultados
 413=Ver classificação para esta jornada
 414=What rank do you want to put this team on?
 415=Gravar manualmente a classificação ordenada
-416=There mustn't be more than one team on a league postition\nNot saved yet.
+416=There mustn't be more than one team on a league postitionnNot saved yet.
 417=Jogo para o 3º lugar
 418=Will there be a "small final" (match for 3rd place)?
 419=Final (para o Título):
@@ -570,7 +570,8 @@
 569=Variedade da data <i>Date assortment</i>
 570=Sollen die Spiele in der Ergebnisansicht nach Datum sortiert werden?
 571=Achtung! Bitte benutzen Sie diese Optionen nur, <br>wenn das Addon keine eigene Konfigurationsoberfläche bestitzt!
-4000=Total- 
+572=Mittellanger Name der Mannschaft (max. 12 Zeichen)
+4000=Total-
 4001=/ jogo
 4002=2ª volta
 4003=1ª volta
