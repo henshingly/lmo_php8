@@ -43,10 +43,10 @@ class team {
 */
   var $keyValues;
 
-  function team($name="",$kurz="",$nr="") {
+  function team($name="",$kurz="",$nr="",$mittel="") {
     $this->name = $name;
     $this->kurz = $kurz;
-    $this->mittel = null; 
+    $this->mittel = $mittel; 
     $this->nr = $nr;
     $this->keyValues = array("SP"=>0,"SM"=>0,"TOR1"=>0,"TOR2"=>0,"STDA"=>0,"URL"=>"","NOT"=>"");
   }
