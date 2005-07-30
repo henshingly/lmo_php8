@@ -179,7 +179,7 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-mininext.php") {?>
 <title>lmo-nextgame</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
 <style type="text/css">
-  html,body {margin:0;padding:0;background:#FFFFFF;}
+  html,body {margin:0;padding:0;background:transparent;}
 </style>
 </head>
 <body><?
