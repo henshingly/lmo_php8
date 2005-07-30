@@ -38,6 +38,7 @@
   *       Template jetzt auch änderbar (über GET oder vorher definiert)
   *       Archivdurchsuchung abschaltbar
   *       Doppelrunden (also mehr als 1 Hin-/Rückrunde) werden erkannt
+  * 2.1.1 Mittel- und Kurznamen der Teams als Templatevariablen
   *      
   *
   * Dieses Script zeigt die kommende Partie einer Mannschaft in einem kleinen 
@@ -248,6 +249,10 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
 
     $template->setVariable("homeName",$partie->heim->name);
     $template->setVariable("guestName",$partie->gast->name);
+    $template->setVariable("homeNameMiddle",$partie->heim->mittel);
+    $template->setVariable("guestNameMiddle",$partie->gast->mittel);
+    $template->setVariable("homeNameShort",$partie->heim->kurz);
+    $template->setVariable("guestNameShort",$partie->gast->kurz);
 
     //Vorherige Partie
     if (isset($lastPartie)) {
@@ -261,6 +266,10 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
 
       $template->setVariable("previous_homeName",$lastPartie->heim->name);
       $template->setVariable("previous_guestName",$lastPartie->gast->name);
+      $template->setVariable("previous_homeNameMiddle",$partie->heim->mittel);
+      $template->setVariable("previous_guestNameMiddle",$partie->gast->mittel);
+      $template->setVariable("previous_homeNameShort",$partie->heim->kurz);
+      $template->setVariable("previous_guestNameShort",$partie->gast->kurz);
 
       $template->setVariable("previous_hTore",$lastPartie->hToreString());
       $template->setVariable("previous_gTore",$lastPartie->gToreString());
