@@ -96,7 +96,7 @@ function HTML_image($src,$htmlParameter="") { // ACHTUNG: $src IST DER PFAD NICH
 
   if (!file_exists($src)) {
     //Apache2-Fallback
-    $src=dirname($src)."/".preg_replace("/[^a-zA-Z0-9]/",'',basename($src));
+    $src=dirname($src)."/".preg_replace("/[^a-zA-Z0-9\.]/",'',basename($src));
   }
   if (file_exists($src)) {
     $img_size = @getimagesize($src);
