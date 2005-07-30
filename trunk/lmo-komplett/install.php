@@ -18,7 +18,14 @@
   */
 
 session_start();
-$lmouserlang=isset($_GET['lmouserlang'])?$_GET['lmouserlang']:'DE';
+if (!isset($_SESSION['ftpserver'])) {
+  $_SESSION['ftpserver'] ='';
+}
+if (!isset($_SESSION['ftpuser'])) {
+  $_SESSION['ftpuser'] ='';
+}
+$_SESSION['userlang']=isset($_GET['userlang'])?$_GET['userlang']:(isset($_SESSION['userlang'])?$_SESSION['userlang']:'DE');
+$userlang = $_SESSION['userlang'];
 
 $filelist=array(
   '777'=>array('ligen','output','ligen/archiv','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
@@ -61,8 +68,8 @@ $lang=array(
       'STEP3_PATH_WRONG'=>'Der Pfad ist nicht korrekt!',
       'STEP3_URL'=>'Geben Sie hier die absolute URL zum LMO an',
       'STEP3_URL_CORRECT'=>' Wenn Sie hier ein Bild sehen, ist die URL richtig!',
-      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Konnte Datei init-parameters.php nicht öffnen!  Bitte setzen Sie die Rechte auf chmod 666 und aktualisieren Sie diese Seite ([F5]), um den Vorgang zu wiederholen.',
-      'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Vergewissern Sie sich vor der Installation, dass die Datei <code>init-parameters.php</code> die Rechte 666 besitzt. Bitte setzen Sie die Rechte auf chmod 666 und aktualisieren Sie diese Seite, um den Vorgang zu wiederholen.',
+      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Konnte Datei init-parameters.php nicht öffnen! Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
+      'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Konnte die Konfiguration nicht speichern.Vergewissern Sie sich, dass die Datei <code>init-parameters.php</code> die Rechte 666 besitzt. Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
       'STEP3_SUCCESS_INI_FILE'=>'Die Konfiguration wurde erfolgreich gespeichert',
       
       
@@ -77,6 +84,60 @@ $lang=array(
       'STEP4_TEXT5'=>'Eine ausführliche Benutzeranleitung <a href="http://www.liga-manager-online.de/dedi/projekt01/de/homepage/lmo4/hilfe/">für den LMO</a> 
       und <a href="http://www.liga-manager-online.de/dedi/projekt01/de/homepage/lmo4/addons/">seinen Addons</a> finden Sie auf der Homepage des LMO.',
       'STEP4_TEXT6'=>'Viel Spaß!',
+      
+      
+      
+      
+      
+    ),
+    'EN'=>array(
+      'HEADER'=>'Installation of Liga Manager Online 4',
+      'PROCEED'=>'Proceed',
+      'SUCCESS'=>'Success',
+      'ERROR'=>'Error',
+      'CHECK_AGAIN'=>'Test again',
+      'ERROR_WRONG_PATH'=>'Incorrect path!',
+      'ERROR_CONFIRM'=>'There are still errors left! Proceed?',
+      
+      'STEP0'=>'FTP login data',
+      'STEP0_DESCRIPTION'=>'To install the LMO automaticly you must insert your FTP login data.
+        The data will not saved nor published. If you want to install manually use 
+         <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">this link</a>.',
+      'STEP0_FTP_SERVER'=>'FTP server address',
+      'STEP0_FTP_SERVER_EXAMPLE'=>'e.g.: <em><kbd>ftp.example.com</kbd></em>',
+      'STEP0_FTP_LOGIN'=>'Insert your username and password',
+      'STEP0_FTP_NO_CONNECTION'=>'Can not establish connection to "'.$_SESSION['ftpserver'].'". Please correct the address of server or <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">install manually</a>',
+      'STEP0_FTP_NO_LOGIN'=>'Login error. Please correct your user data or <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">install manually</a>',
+      
+      'STEP1'=>'Select LMO folder',
+      'STEP1_SELECT_FTP_DIR'=>'Please select your LMO folder',
+      
+      'STEP2'=>'CHMOD files',
+      'STEP2_MANUAL'=>'Please chmod these file with your FTP tool and press <a href="#" onclick="location.reload();return false;">[Reload]</a> for
+         a check. <a href="'.$_SERVER['PHP_SELF'].'">back to automatic installation</a>',
+      
+      'STEP3'=>'Create configuration file',
+      'STEP3_PATH'=>'Please insert the <strong>absolute path</strong> to LMO',
+      'STEP3_PATH_EXAMPLE'=>'e.g.: <em><kbd>/home/www/htdocs/lmo</kbd></em>',
+      'STEP3_PATH_CORRECT'=>'Path seems to be correct!',
+      'STEP3_PATH_WRONG'=>'Path seems to be incorrect!',
+      'STEP3_URL'=>'Please insert the <strong>absolute URL</strong> to LMO',
+      'STEP3_URL_EXAMPLE'=>'e.g.: http://www.exapmle.com/lmo',
+      'STEP3_URL_CORRECT'=>' If you can see a picture in front of this message then the URL is correct!',
+      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Could not open init-parameters.php! Please chmod the file with 666 and <a href="#" onclick="location.reload();return false;">[Reload]</a> this page to repeat the check.',
+      'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Could not save configuration! Please make sure that the file <code>init-parameters.php</code> has the correct chmod of 666. Please chmod the file with 666 and <a href="#" onclick="location.reload();return false;">[Reload]</a> this page to repeat the check.',
+      'STEP3_SUCCESS_INI_FILE'=>'Configuration successfully saved',
+      
+      
+      'STEP4'=>'Installation successful',
+      'STEP4_TEXT1'=>'Liga Manager Online 4 is successfully installed!',
+      'STEP4_TEXT2'=>'If you experienced errors repeat the installation or install manually. To install manually edit the file 
+    <code>init-parameters.php</code> with an common text editor and chmod the files with your FTP tool.',
+      'STEP4_TEXT3'=>'Please delete the file <code>install.php</code> or chmod it to 000.',
+      'STEP4_TEXT4'=>'<acronym title="Liga Manager Online">LMO</acronym> is now available under <code><a href="lmo.php">lmo.php</a></code>. 
+    The administration area is available under <code><a href="lmoadmin.php">lmoadmin.php</a></code> (standart login is <kbd>admin</kbd>/<kbd>lmo</kbd>).',
+      'STEP4_TEXT5'=>'Please consult the <a href="http://www.liga-manager-online.de/dedi/projekt01/en">manual on our Website</a> for help.',
+      'STEP4_TEXT6'=>'Have fun!',
       
       
       
@@ -128,18 +189,18 @@ $url='http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']);
 if ($step==1) {
   //FTP-Daten testen
 
-  $_SESSION['ftpserver']= isset($_POST['ftpserver'])? trim($_POST['ftpserver']):(isset($_SESSION['ftpserver'])?$_SESSION['ftpserver']:'');
-  $_SESSION['ftpuser'] =   isset($_POST['ftpuser'])?   trim($_POST['ftpuser']):(isset($_SESSION['ftpuser'])?$_SESSION['ftpuser']:'');
-  $_SESSION['ftppass'] =   isset($_POST['ftppass'])?   trim($_POST['ftppass']):(isset($_SESSION['ftppass'])?$_SESSION['ftppass']:'');
+  $_SESSION['ftpserver']= isset($_POST['ftpserver'])? trim($_POST['ftpserver']):(!empty($_SESSION['ftpserver'])?$_SESSION['ftpserver']:'');
+  $_SESSION['ftpuser'] =   isset($_POST['ftpuser'])?   trim($_POST['ftpuser']):(!empty($_SESSION['ftpuser'])?$_SESSION['ftpuser']:'');
+  $_SESSION['ftppass'] =   isset($_POST['ftppass'])?   trim($_POST['ftppass']):(!empty($_SESSION['ftppass'])?$_SESSION['ftppass']:'');
 
   $conn = ftp_connect($_SESSION['ftpserver']);
   if (!$conn) {
-    $urlerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$lmouserlang]['ERROR'].'"> '.$lang[$lmouserlang]['STEP0_FTP_NO_CONNECTION'].'</p>';
+    $urlerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP0_FTP_NO_CONNECTION'].'</p>';
     $step=0;
   } else {
     $conn2= ftp_login($conn, $_SESSION['ftpuser'], $_SESSION['ftppass']);
     if (!$conn2) {
-      $loginerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$lmouserlang]['ERROR'].'"> '.$lang[$lmouserlang]['STEP0_FTP_NO_LOGIN'].'</p>';
+      $loginerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP0_FTP_NO_LOGIN'].'</p>';
       $step=0;
     }
   }
@@ -157,7 +218,7 @@ if ($step==1) {
       ftp_chdir($conn, "$base/".$ftpdir);
       if (ftp_size($conn, "install.php") == -1) {
         //Pathtest
-        $patherror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$lmouserlang]['ERROR'].'"> "'.$ftpdir.'": '.$lang[$lmouserlang]['ERROR_WRONG_PATH'].'</p>';
+        $patherror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> "'.$ftpdir.'": '.$lang[$userlang]['ERROR_WRONG_PATH'].'</p>';
         $filelist = array();
         $step=1;
       } else {
@@ -197,23 +258,23 @@ if ($step==3) {
   // Sichergehen, dass die Datei existiert und beschreibbar ist
   if (is_writable($filename)) {
     if (!$handle = fopen($filename, "wb")) {
-      $installerror.= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$lmouserlang]['ERROR'].'"> '.$lang[$lmouserlang]['STEP3_ERROR_INI_FILE_NOT_OPENABLE'].'</p>';
+      $installerror.= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_OPENABLE'].'</p>';
     }
     if (!fwrite($handle, $somecontent)) {
-      $installerror.= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$lmouserlang]['ERROR'].'"> '.$lang[$lmouserlang]['STEP3_ERROR_INI_FILE_NOT_WRITEABLE'].'</p>';
+      $installerror.= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_WRITEABLE'].'</p>';
     }
-    $installerror.='<p><em><img src="img/right.gif" border="0" width="12" height="12" alt="'.$lang[$lmouserlang]['SUCCESS'].'"> '.$lang[$lmouserlang]['STEP3_SUCCESS_INI_FILE'].'</em></p>';
+    $installerror.='<p><em><img src="img/right.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['SUCCESS'].'"> '.$lang[$userlang]['STEP3_SUCCESS_INI_FILE'].'</em></p>';
     fclose($handle);
   } else {
-    $installerror.= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$lmouserlang]['ERROR'].'"> '.$lang[$lmouserlang]['STEP3_ERROR_INI_FILE_NOT_WRITEABLE'].'</p>';
+    $installerror.= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_WRITEABLE'].'</p>';
   }
 }
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="<?=$lmouserlang?>">
+<html lang="<?=$userlang?>">
   <head>
-    <title><?=$lang[$lmouserlang]['HEADER'];?></title>
+    <title><?=$lang[$userlang]['HEADER'];?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
     <style type="text/css">
       @media all {
@@ -242,37 +303,37 @@ if ($step==3) {
     </style>
   </head>
   <body>
-  <h1><?=$lang[$lmouserlang]['HEADER'];?></h1><?
+  <h1><?=$lang[$userlang]['HEADER'];?></h1><?
   
 echo $patherror;
 if ($step==0) {?>
   <?
    if (!$_SESSION['man'] && function_exists('ftp_connect')) {
   ?>
-  <h2><?=$lang[$lmouserlang]['STEP0']?></h2>
+  <h2><?=$lang[$userlang]['STEP0']?></h2>
   <table width="90%">
     <tr>
       <td>
-         <?=$lang[$lmouserlang]['STEP0_DESCRIPTION']?>
+         <?=$lang[$userlang]['STEP0_DESCRIPTION']?>
       </td>
     </tr>
     <tr>
       <td align="center">
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
           <dl>
-            <dt><?=$lang[$lmouserlang]['STEP0_FTP_SERVER']?></dt>
+            <dt><?=$lang[$userlang]['STEP0_FTP_SERVER']?></dt>
             <dd>
             <?=$urlerror?>
-              <input name="ftpserver" type="text" size="50" value="<?=$_SESSION['ftpserver']?>"> <?=$lang[$lmouserlang]['STEP0_FTP_SERVER_EXAMPLE']?>
+              <input name="ftpserver" type="text" size="50" value="<?=$_SESSION['ftpserver']?>"> <?=$lang[$userlang]['STEP0_FTP_SERVER_EXAMPLE']?>
             </dd>
-            <dt><?=$lang[$lmouserlang]['STEP0_FTP_LOGIN']?></dt>
+            <dt><?=$lang[$userlang]['STEP0_FTP_LOGIN']?></dt>
             <dd>
             <?=$loginerror?>
               User:<input name="ftpuser" type="text" size="25" value="<?=$_SESSION['ftpuser']?>"> Pass:<input name="ftppass" type="password" size="25" value="">
               <input type="hidden" name="step" value="1">
             </dd>
             <dt>
-              <input type="submit" value="<?=$lang[$lmouserlang]['PROCEED']?>">
+              <input type="submit" value="<?=$lang[$userlang]['PROCEED']?>">
             </dt>
           </dl>
         </form>
@@ -286,13 +347,13 @@ if ($step==0) {?>
 }    
 
 if ($step == 1) {?>
-  <h2><?=$lang[$lmouserlang]['STEP1']?></h2>
+  <h2><?=$lang[$userlang]['STEP1']?></h2>
   <table width="90%">
     <tr>
       <td>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
           <dl>
-            <dt><?=$lang[$lmouserlang]['STEP1_SELECT_FTP_DIR']?></dt>
+            <dt><?=$lang[$userlang]['STEP1_SELECT_FTP_DIR']?></dt>
         <?
   foreach ($filelist as $ftpdir) {
     echo "<dd><input type='radio' value='$ftpdir' name='ftpdir'> <a href='$PHP_SELF?step=1&amp;view=$ftpdir'>$ftpdir</a></dd>";
@@ -303,7 +364,7 @@ if ($step == 1) {?>
 
             <dt>
               <input type="hidden" name="step" value="1">
-              <input type="submit" value="<?=$lang[$lmouserlang]['PROCEED']?>">
+              <input type="submit" value="<?=$lang[$userlang]['PROCEED']?>">
             </dt>
           </dl>
         </form>
@@ -318,12 +379,12 @@ if ($step==2) {
      
 
      //Manuell?>
-  <h2><?=$lang[$lmouserlang]['STEP2']?></h2>
+  <h2><?=$lang[$userlang]['STEP2']?></h2>
   <table width="90%"><?
    if ($_SESSION['man']) {?>
     <tr>
       <td>
-        <?=$lang[$lmouserlang]['STEP2_MANUAL']?>   
+        <?=$lang[$userlang]['STEP2_MANUAL']?>   
       </td>
     </tr><?
    }?>
@@ -341,9 +402,9 @@ if ($step==2) {
         while (false !== ($file2 = readdir($handle))) {
           if ($file2 != "." && $file2 != ".." && !is_dir(dirname($file)."/$file2")) {
             if (is_writable(dirname($file)."/$file2")) {
-              echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$lmouserlang]['SUCCESS']."'> ".dirname($file)."/$file2"." <small>($chmod)</small><dd>";
+              echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> ".dirname($file)."/$file2"." <small>($chmod)</small><dd>";
             } else {
-              echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$lmouserlang]['ERROR']."'> ".dirname($file)."/$file2"." <small>($chmod)</small><dd>";
+              echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> ".dirname($file)."/$file2"." <small>($chmod)</small><dd>";
               $error++;
             }
           }
@@ -351,9 +412,9 @@ if ($step==2) {
         }
       } else{
         if (is_writable($file)) {
-          echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$lmouserlang]['SUCCESS']."'> $file <small>($chmod)</small>";
+          echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> $file <small>($chmod)</small>";
         } else {
-          echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$lmouserlang]['ERROR']."'> $file <small>($chmod)</small>";
+          echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> $file <small>($chmod)</small>";
           $error++;
         }
       }
@@ -364,14 +425,14 @@ if ($step==2) {
           </dd>
           <dt>
             <input type="hidden" name="step" value="3">  
-            <input type="submit" value="<?=$lang[$lmouserlang]['PROCEED']?>">
+            <input type="submit" value="<?=$lang[$userlang]['PROCEED']?>">
           </dt>
         </dl>
       </form>
         <script type="text/javascript">
         function check() {
           if (<?=$error?> > 0) {
-            return confirm("<?=$lang[$lmouserlang]['ERROR_CONFIRM']?>");
+            return confirm("<?=$lang[$userlang]['ERROR_CONFIRM']?>");
           }
           return true;
         }
@@ -383,48 +444,48 @@ if ($step==2) {
 
 
 if ($step==3) {?>
-  <h2><?=$lang[$lmouserlang]['STEP3']?></h2>
+  <h2><?=$lang[$userlang]['STEP3']?></h2>
   <table width="90%">
     <tr>
       <td>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
           <dl>
-            <dt><?=$lang[$lmouserlang]['STEP3_PATH']?></dt>
+            <dt><?=$lang[$userlang]['STEP3_PATH']?></dt>
             <dd>
             <?=$patherror?>
               <a href="#" onclick="document.getElementsByName('path')[0].value='<?=str_replace('\\','/',dirname(__FILE__))?>';return false;"><em>[Auto]</em></a> 
               <input name="path" type="text" size="55" value="<?=$path?>"> 
-              <?=$lang[$lmouserlang]['STEP3_PATH_EXAMPLE']?>
+              <?=$lang[$userlang]['STEP3_PATH_EXAMPLE']?>
             </dd>
             <dd><?
               if (file_exists($path."/init-parameters.php")) {
-                echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$lmouserlang]['SUCCESS']."'> ".$lang[$lmouserlang]['STEP3_PATH_CORRECT'];
+                echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> ".$lang[$userlang]['STEP3_PATH_CORRECT'];
               } else {
-                echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$lmouserlang]['ERROR']."'> ".$lang[$lmouserlang]['STEP3_PATH_WRONG'];
+                echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> ".$lang[$userlang]['STEP3_PATH_WRONG'];
                 $error=1;
               }?>
             </dd>
-            <dt><?=$lang[$lmouserlang]['STEP3_URL']?></dt>
+            <dt><?=$lang[$userlang]['STEP3_URL']?></dt>
             <dd>
             <?=$urlerror?>
               <a href="#" onclick="document.getElementsByName('url')[0].value='<?=addslashes('http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']))?>';return false;"><em>[Auto]</em></a> 
               <input name="url" type="text" size="55" value="<?=$url?>"> 
-              Bsp.: <em><kbd>http://www.beispiel.de/lmo</kbd></em>
+              Bsp.: <em><kbd><?=$lang[$userlang]['STEP3_URL_EXAMPLE'];?></kbd></em>
             </dd>
             <dd><?
-              echo "<img src='$url/img/right.gif' border='0' width='12' height='12' alt='".$lang[$lmouserlang]['ERROR']."'> ".$lang[$lmouserlang]['STEP3_URL_CORRECT'];
+              echo "<img src='$url/img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> ".$lang[$userlang]['STEP3_URL_CORRECT'];
               ?>
             </dd>
             <dt>
               <input type="hidden" name="step" value="4">
-              <input type="submit" name="check" value="<?=$lang[$lmouserlang]['CHECK_AGAIN']?>">
-              <input type="submit" value="<?=$lang[$lmouserlang]['PROCEED']?>">
+              <input type="submit" name="check" value="<?=$lang[$userlang]['CHECK_AGAIN']?>">
+              <input type="submit" value="<?=$lang[$userlang]['PROCEED']?>">
             </dt>
           </dl>
           <script type="text/javascript">
             function check() {
               if (<?=$error?> > 0) {
-                return confirm("<?=$lang[$lmouserlang]['ERROR_CONFIRM']?>");
+                return confirm("<?=$lang[$userlang]['ERROR_CONFIRM']?>");
               }
               return true;
             }
@@ -436,24 +497,41 @@ if ($step==3) {?>
 }
 
 if ($step==4) {?>
-  <h2><?=$lang[$lmouserlang]['STEP4']?></h2>
+  <h2><?=$lang[$userlang]['STEP4']?></h2>
   <dl>
-    <dt><?=$lang[$lmouserlang]['STEP4_TEXT1']?></dt>
-    <dd><?=$lang[$lmouserlang]['STEP4_TEXT2']?></dd>
-    <dd class="error"><?=$lang[$lmouserlang]['STEP4_TEXT3']?></dd>
-    <dd><?=$lang[$lmouserlang]['STEP4_TEXT4']?></dd>
-    <dd class="error"><?=$lang[$lmouserlang]['STEP4_TEXT5']?></dd>
-    <dt><?=$lang[$lmouserlang]['STEP4_TEXT6']?></dt>
+    <dt><?=$lang[$userlang]['STEP4_TEXT1']?></dt>
+    <dd><?=$lang[$userlang]['STEP4_TEXT2']?></dd>
+    <dd class="error"><?=$lang[$userlang]['STEP4_TEXT3']?></dd>
+    <dd><?=$lang[$userlang]['STEP4_TEXT4']?></dd>
+    <dd class="error"><?=$lang[$userlang]['STEP4_TEXT5']?></dd>
+    <dt><?=$lang[$userlang]['STEP4_TEXT6']?></dt>
   </dl><?
 }?>
 
   <div class="foot">
-     <div class="w3cbutton3">
+  
+  <div class="w3cbutton3">
     <a href="http://validator.w3.org/check/referer"><span class="w3c">W3C</span>
     <span class="spec">HTML 4.01</span></a></div>
     <div class="w3cbutton3">
     <a href=" http://jigsaw.w3.org/css-validator/check/referer"><span class="w3c">W3C</span>
     <span class="spec">CSS 2.1</span></a></div>
+    <?if ($step==0) {?>
+    <div class="w3cbutton3">
+    <a href="install.php?userlang=FR"><img src="img/Francais.gif" alt="FR" width="16"></a>
+    </div>
+    <div class="w3cbutton3">
+    <a href="install.php?userlang=EN"><img src="img/English.gif" alt="EN" width="16"></a>
+    </div>
+    <div class="w3cbutton3">
+    <a href="install.php?userlang=DE"><img src="img/Deutsch.gif" alt="DE" width="16"></a>
+    </div>
+    <?} else {?>
+    <div class="w3cbutton3">
+    <a href="install.php"><span class="w3c">RE</span>
+    <span class="spec">START</span></a></div>
+    
+    <?}?>
      © René Marth/<a href="http://liga-manager-online.de/">LMO Group</a>
   </div>    
   </body>
