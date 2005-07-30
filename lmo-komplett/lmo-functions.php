@@ -122,7 +122,8 @@ function getMessage($message,$error=FALSE) {
  */
 function file_exists_incpath ($file) {
   
-  if (!function_exists('get_include_path')) {
+  //DOESN'T WORK!
+  /*if (!function_exists('get_include_path') || !function_exists('ini_get') || ini_get("safe_mode") != "0") {
     return false;
   }
   
@@ -135,7 +136,7 @@ function file_exists_incpath ($file) {
     if (file_exists($fullpath)) {
       return true;
     }
-  }
+  }*/
   return false;
 }
 
