@@ -44,9 +44,8 @@ if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
       $x++;
       $tabledata=explode('|',chunk_split($y,8,"|"));
       
-      fwrite($fp,$teams[$tabledata[4]-50000000].'|');                              //TeamLongName
-      fwrite($fp,$teamm[$tabledata[4]-50000000].'|');                              //TeamShortName
-      fwrite($fp,$teamk[$tabledata[4]-50000000].'|');                              //TeamAbbrevation
+      fwrite($fp,$teams[$tabledata[4]-50000000].'|');                              //TeamLongName    (langer Name)
+      fwrite($fp,$teamk[$tabledata[4]-50000000].'|');                              //TeamAbbrevation (kurzer Name)
       fwrite($fp,applyFactor($punkte[$tabledata[4]-50000000],$pointsfaktor).'|');  //Points+
       if ($minus == 2) {
         fwrite($fp,applyFactor($negativ[$tabledata[4]-50000000],$pointsfaktor));   //Points-
@@ -80,6 +79,7 @@ if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
       if (($x <= $anzteams) && ($x > $anzteams-$anzab) && ($anzab > 0)) {
         fwrite($fp,"A");
       }
+      fwrite($fp,'|'.$teamm[$tabledata[4]-50000000]);                              //TeamShortName (Mittellanger Name)
       fwrite($fp,"\n");
     }
     fclose($fp);
