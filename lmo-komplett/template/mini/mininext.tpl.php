@@ -52,7 +52,7 @@
           <td align="center">
             <ul>
         <!-- BEGIN matches -->
-        <li class="<!--class-->"><!--date--> <!--time--> <!--hTore-->:<!--gTore--> (<!--where-->)<acronym title="<!--matchingName-->">*</acronym></li>
+        <li class="<!--class-->"><!--date--> <!--time--> <!--hTore-->:<!--gTore--> (<!--where-->) <small><!--matchingName--></small></li>
         <!-- END matches -->
            </ul>
          </td>
