@@ -388,7 +388,7 @@ class liga {
         if(isset($iniData["Team".$tCounter]) and $iniData["Team".$tCounter]!="" ) {
           $teamName = $value;
           $teamKurz = $iniData["Teamk"][$key];
-          $teamMittel = $isset($iniData['Teamm'][$key])?$iniData['Teamm'][$key]:'';
+          $teamMittel = isset($iniData['Teamm'][$key])?$iniData['Teamm'][$key]:'';
           $team = new team($teamName,$teamKurz,$key,$teamMittel);
           $teamDetails = $iniData["Team".$tCounter];
           foreach ($teamDetails as $detailsKey=>$detailsValue) {
