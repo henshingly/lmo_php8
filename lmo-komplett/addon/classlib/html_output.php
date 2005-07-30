@@ -21,6 +21,7 @@
  * @author  Tim Schumacher <webobjects@gmx.net>
  * @package classLib
  * @access 	public
+ * @version $Id$
  */
 
 function HTML_smallTeamIcon($ligaFile,$team,$htmlParameter="") {
@@ -47,7 +48,7 @@ function HTML_smallTeamIcon($ligaFile,$team,$htmlParameter="") {
 	// Wird zukünftig warscheinlich entfallen
   if (!$generated ) {
     foreach( const_array( CLASSLIB_IMG_TYPES ) as $extension) {
-			$img_path = PATH_TO_IMGDIR."/teams/small/".$team->name; // PATH TO IMG (ohne extension)
+			$img_path = PATH_TO_IMGDIR."/teams/small/".strtr($team->name,"/",""); // PATH TO IMG (ohne extension), Teamnamen ohne /
       if ($generated = HTML_image($img_path.$extension,$htmlParameter) ) {
         break;
       }
@@ -81,7 +82,7 @@ function HTML_bigTeamIcon($ligaFile,$team,$htmlParameter="") {
 
   if (!$generated ) {
     foreach( const_array( CLASSLIB_IMG_TYPES ) as $extension) {
-			$img_path = PATH_TO_IMGDIR."/teams/big/".$team->name;// PATH TO IMG (ohne extension)
+			$img_path = PATH_TO_IMGDIR."/teams/big/".strtr($team->name,"/","");// PATH TO IMG (ohne extension), Teamnamen ohne /
       if ($generated = HTML_image($img_path.$extension,$htmlParameter) ) {
         break;
       }
@@ -93,6 +94,10 @@ function HTML_bigTeamIcon($ligaFile,$team,$htmlParameter="") {
 function HTML_image($src,$htmlParameter="") { // ACHTUNG: $src IST DER PFAD NICHT DIE URL
 	$html = "";
 
+  if (!file_exists($src)) {
+    //Apache2-Fallback
+    $src=dirname($src)."/".preg_replace("/[^a-zA-Z0-9]/",'',basename($src));
+  }
   if (file_exists($src)) {
     $img_size = @getimagesize($src);
     $fullUrl = str_replace(PATH_TO_LMO,URL_TO_LMO,$src);
