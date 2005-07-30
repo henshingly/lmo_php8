@@ -37,7 +37,7 @@ if ($st >= 0 && file_exists($auswertfile)) {
   $datei = fopen($auswertfile, "rb");
   while (!feof($datei)) {
     $zeile = fgets($datei, 1000);
-    $zeile = trim(chop($zeile));
+    $zeile = trim($zeile);
     if ($zeile != "") {
       if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $nick = substr($zeile, 1, -1);

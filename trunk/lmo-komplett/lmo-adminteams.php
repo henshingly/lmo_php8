@@ -35,7 +35,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
       $teamm[$i] = isset($_POST["xteamm".$i])?($_POST["xteamm".$i]):'';
       if ($teamm[$i] == "") {
         //search longest name part an take this as middle name
-        $parts = preg_split("/\W/",$teams[$i]);
+        $parts = preg_split("%[ |/]%",$teams[$i]);
         foreach ($parts as $part) {
           if (strlen($part) >= strlen($teamm[$i])) {
             $teamm[$i] = trim(substr($part, 0, 12));
