@@ -113,7 +113,7 @@
 112=Notitie per wedstrijd (max. 255 tekens, een eventuele 'Groene-tafel'-beslissing hoeft niet nogmaals vermeld te worden)
 113=Competitienaam
 114=Klik hier om de veranderingen op te slaan
-115==&gt; naar bezoekersaangezicht
+115=naar bezoekersaangezicht
 116=Zo wordt het script weergegeven aan de gebruiker (opent in een nieuw venster)
 117=U heeft niks veranderd.\nEr wordt dus niks opgeslagen.
 118=Competitienaam (max. 60 tekens, bijv. 'Waterpolocompetitie HerenJeugd 2002-2003')
@@ -290,7 +290,7 @@
 289=Competitie opslaan
 290=Klik hier om u nieuwe competitie op te slaan en verder details in te vullen
 291=<b>Gefeliciteerd</b><br><br>Uw nieuwe competitie is opgeslagen. U kunt nu de details invullen.
-292==&gt; Teamopgaven
+292=» Teamopgaven
 293=Als eerste moet u de verenigingsnamen invullen voordat u verder kunt.
 294=Competitie openen
 295=Competitie verwijderen
