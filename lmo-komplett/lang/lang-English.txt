@@ -113,7 +113,7 @@
 112=Match Notes(max. 255 characters, round table decisions should not be noted)
 113=Name of the League
 114=Click here to save your changes
-115==> Go to the Users Area
+115=Go to the Users Area
 116=Your visitors will see the script like this(opens in new window)
 117=You have made no changes.\nSave anyway?
 118=Users will always see the name of the League as a Title (max. 60 Characters)
@@ -290,7 +290,7 @@
 289=Save League
 290=Click here to save your League and continue with detailed settings
 291=<b>Congratulations</b><br><br>Your new League has been created. Now you can<br> start with the detailed settings.
-292==> Eingabe der Mannschaften//==>Enter the Teams
+292=» Enter the Teams
 293=First you should enter the names all Teams before you start with the other settings
 294=Open a League
 295=Delete a League

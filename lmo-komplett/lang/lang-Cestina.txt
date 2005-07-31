@@ -113,7 +113,7 @@
 112=Poznámky k zápasu (max. 255 znakù)
 113=Jméno ligy
 114=Kliknìte zde k uložení
-115==&gt; Náhled
+115=Náhled
 116=Co bude vidìt návštìvník vašich stránek
 117=Nemáte vloženy žádne údaje.\nNebude nic uloženo.
 118=Jméno LIGY, jak bude zobrazeno v nadpisu (max. 60 znakù, napø '1. Bundesliga 2001/02')
@@ -290,7 +290,7 @@
 289=Uložit LIGU
 290=Kliknìte pro uložení LIGY a pro další podrobná nastavení
 291=<b>Blahopøejeme</b><br><br>Vaše nová LIGA je nyní pøipravena. Teï musíte<br>zaèít zadávat další detaily LIGY.
-292==&gt; Zadání mužstev
+292=» Zadání mužstev
 293=Als erstes sollten Sie nun die Namen der Mannschaften eingeben, bevor Sie weitere Bearbeitungen vornehmen
 294=Otevøít ligu
 295=Smazat ligu

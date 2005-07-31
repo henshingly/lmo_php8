@@ -113,7 +113,7 @@
 112=Notas para o jogo (max. 255 caracteres, a 'decisão de classificações' não é necessária ser nomeada aqui)
 113=Nome do campeonato
 114=Clique aqui para gravar as alterações
-115=>> Ver como utilizador
+115=Ver como utilizador
 116=Obrigado aos nossos visitantes por visitarem a página do script (O site irá abrir numa nova janela)
 117=Você não gravou nada.nQuer gravar na mesma?
 118=O nome do campeonato ficará visível para todos os utilizadores (max. 60 caracteres, ex. 'Superliga 2002/03' or 'Liga de Honra 2002/03')
@@ -290,7 +290,7 @@
 289=Gravar campeonato
 290=Clique aqui para gravar o novo campeonato e continuar com as definições detalhadas
 291=<b>Parabéns!</b><br><br>O seu campeonato foi criado. Pode continuar<br>com as definições.
-292=>> Inserir as equipas
+292=» Inserir as equipas
 293=Primiero, devererá escrever o nome das equipas antes de continuar com mais alterações
 294=Abrir campeonato
 295=Apagar campeonato

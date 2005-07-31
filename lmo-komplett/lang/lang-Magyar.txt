@@ -113,7 +113,7 @@
 112=Feljegyzések a meccshez (max. 255 karakter, fegyelmi bizottsági döntéseket nem szükséges itt feltüntetni)
 113=A bajnokság elnevezése
 114=Klikkeljen ide a változások elmentéséhez!
-115=<< Ugorj a felhasználói nézetre!
+115=Ugorj a felhasználói nézetre!
 116=Így fogják látni a szkriptet a látogatók (Az oldal egy új ablakban nyílik meg)
 117=Nem változtatott semmin.\nMégis menteni kíván?
 118=A bajnokság neve fejlécként végig látható lesz (max. 60 karakter, pl. '1. osztály 2002/03' vagy 'Premier League 2002/03')
@@ -290,7 +290,7 @@
 289=Elmenti a bajnokságot
 290=Klikkeljen ide az új bajnokság elmentéséhez és a további beállítások megadásához
 291=<b>Gratulálunk!</b><br><br>Elkészült az új bajnokság. Most folytathatja<br>a további beállításokat.
-292=>> Csapatok megadása
+292=» Csapatok megadása
 293=Kérem adja meg a csapatneveket, mielõtt folytatja a további szerkesztést
 294=Megnyit egy bajnokságot
 295=Töröl egy bajnokságot

@@ -113,7 +113,7 @@
 112=Opomba o tekmi (max. 255 znakov, eventuelne odloèitve za 'zeleno' mizo ni potrebno tukaj ponovno imenovati)
 113=Ime lige
 114=Klikni tukaj za shranitev sprememb
-115==&gt; pojdi na pogled s strani obiskovalca
+115=pojdi na pogled s strani obiskovalca
 116=Tako bodo obiskovalci videli skripto (odprto bo v novem oknu)
 117=Nièesar nisi spremenil,nzato ni nièesar za shranjevanje.
 118=Ime lige bo vselej vidno obiskovalcem kot heading (max. 60 znakov, n.pr. '1. SNL liga 2002/03')
@@ -290,7 +290,7 @@
 289=shrani ligo
 290=Klikni tukaj za shranitev nove lige in nadaljevanje za vpis podrobnih nastavitev
 291=<b>Èestitam!</b><br><br>Tvoja nova liga je pripravljena. Sedaj lahko nadaljuješ<br>s podrobnimi nastavitvami.
-292==&gt; Vpiši ekipe
+292=» Vpiši ekipe
 293=Najprej moraš vpisati imena moštev, nato pa lahko nadaljuješ z urejanjem
 294=Odpri ligo
 295=Izbriši ligo

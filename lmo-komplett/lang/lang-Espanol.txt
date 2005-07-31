@@ -113,7 +113,7 @@
 112=Nota del partido (max. 255 caracteres, las decisiónes de ('green standings') no tienen por que ser nombradas aqui)
 113=Nombre de la liga
 114=Click aqui para guardar los cambios
-115==&gt; Ir a la vista de usuario
+115=Ir a la vista de usuario
 116=Asi es como tus visitantes verán el script (Se abrirá una nueva ventana)
 117=No has cambiado nada.n¿Guardar de todas formas?
 118=El nombre de la liga sera siempre visible para los usuarios como una cabecera (max. 60 caracteres, ej. '1. Bundesliga 2002/03' o 'Premier League 2002/03')
