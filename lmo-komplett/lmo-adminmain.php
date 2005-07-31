@@ -96,9 +96,12 @@ if ($_SESSION['lmouserok'] == 2) {
   }
   /*Tippspiel-Addon*/
   /*Viewer-Addon*/
-  /*echo "&nbsp;";
-  if (($todo!="vieweroptions")){echo "<a href='{$adda}vieweroptions' onclick='return chklmolink();' title='{$text['viewer'][21]}'>{$text['viewer'][20]}</a>";}else{echo $text['viewer'][20];}
-  */
+  echo "&nbsp;";
+  if (($todo!="vieweroptions")){
+    echo "<a href='{$adda}vieweroptions' onclick='return chklmolink();' title='{$text['viewer'][21]}'>{$text['viewer'][20]}</a>";
+  } else {
+    echo $text['viewer'][20];
+  }
   /*Viewer-Addon*/
   } elseif($_SESSION['lmouserok'] == 1) {
     if ($todo != "open") {
@@ -144,7 +147,7 @@ if ($_SESSION['lmouserok'] == 2) {
     $tipp_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions";
     /*Tippspiel-Addon*/
     /*Viewer-Addon*/
-    //$viewer_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=vieweroptions";
+    $viewer_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=vieweroptions";
     /*Viewer-Addon*/
     if ($todo == "new") {
       require(PATH_TO_LMO."/lmo-adminnew.php");
@@ -198,7 +201,9 @@ if ($_SESSION['lmouserok'] == 2) {
     }
     /*Tippspiel-Addon*/
     /*Viewer-Addon*/
-    //elseif($todo=="vieweroptions"){require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");}
+    elseif($todo=="vieweroptions"){
+      require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");
+    }
     /*Viewer-Addon*/
     elseif($todo == "") {
       require(PATH_TO_LMO."/lmo-adminpad.php");
