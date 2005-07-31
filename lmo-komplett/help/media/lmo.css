@@ -13,7 +13,7 @@ a:visited {color: #33a; text-decoration: underline;}
 #content {padding: 0; margin-left:23%; margin-right:1%; margin-top:0.5em;}
 #footer dd {color:white; background: navy; padding-right:5%; display: inline;}
 #footer dt {white-space:nowrap; display:inline; color: navy; background: #E0E8FF; margin:0; padding: 0.1em 1em; margin-left: -1px; }
-h2 {font-size:115%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy;}
+h2 {font-size:115%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy;border-bottom:1px solid navy;}
 h1 {font-size:140%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy; line-height: 30px;background:url(header_bg.png) repeat-y 0 0;padding-left:1em;border-left:2px solid navy;margin-top: 1em;border-bottom:1px solid navy;}
 body {font-size:12px; font-family:Helvetica, Arial, sans-serif; margin:auto; padding:0; max-width:1000px; min-width:50em; color:black;background:white;}
 #container {width:90%; \width: 90%; w\idth: 90%; margin: 0px; margin-left: auto; margin-right: auto; padding: 0px; }
@@ -49,9 +49,9 @@ caption {font-weight: bold; font-size: 110%;}
 #paypal dt {background:navy;color:#def;padding:0.2em;}
 #paypal dd {background-color:#eee;text-align:left;margin:0;}
 #container > #content {background: url(background.png) no-repeat 0 !important;}
-h3 {font-size:105%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy;}
+h3 {font-size:105%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy; border-bottom:1px solid navy;}
 code {display:block; background-color : #eee; padding : 0.3em; font-size : 95%; margin-left:3em; margin-right:3em; border:1px solid #666;}
-h4 {font-weight:bold;margin:0.5em 0 1em 1em; color:navy; font-size:100%;}
+h4 {font-weight:bold;margin:0.5em 0 1em 1em; color:white; background:navy;font-size:100%;padding-left:1em;}
 strong {color:#800;}
 .advanced {border:1px solid #aca;background:#e0ffe7;padding:0.4em;-moz-border-radius:8px;}
 .advanced:before {content: url(advanced.gif);}
