@@ -258,7 +258,7 @@
 257=Formaat van de aanvangstijd
 258=In welk formaat moeten de data en tijden weergegeven worden?
 259=van
-260=Verder =&gt;
+260=Verder »
 261=Klik hier om met de volgende stap verder te gaan
 262=URL verslag
 263=Voer hier de URL van de vereniging in
