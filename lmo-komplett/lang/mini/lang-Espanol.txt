@@ -1,0 +1,14 @@
+000=[<acronym title='lmo-mininext for LMO &copy; Tim Schumacher/LMO-Group CLASSLIB_VERSION'>&copy;</acronym>]
+001=Próxímo partido
+002=Última jornada
+003=Partido
+004=Últimos encuentros de ambos:
+005=Error: No se han encontrado la liga!
+006=Atención: No se han encontrado el directorio "archivos"
+007=Último partido
+008=Ningún equipo seleccionado!
+009=G
+010=E
+011=P
+012=v
+013=l
