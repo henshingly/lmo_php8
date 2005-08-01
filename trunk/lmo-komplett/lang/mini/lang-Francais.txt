@@ -7,3 +7,8 @@
 006=Attention: Répertoire "Archive" n'a pas été trouvée
 007=Match précédent
 008=Aucune équipe sélectionnée!
+009=G
+010=N
+011=P
+012=e
+013=d
