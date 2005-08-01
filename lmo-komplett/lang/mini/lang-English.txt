@@ -7,3 +7,8 @@
 006=Warning: archive folder not found
 007=Previous match
 008=No team selected!
+009=W
+010=D
+011=L
+012=a
+013=h

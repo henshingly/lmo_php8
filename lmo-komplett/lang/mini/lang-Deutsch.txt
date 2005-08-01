@@ -7,3 +7,8 @@
 006=Warnung: Archivordner nicht gefunden
 007=Vorheriges Spiel
 008=Keine Mannschaft ausgewählt!
+009=S
+010=U
+011=N
+012=a
+013=h
