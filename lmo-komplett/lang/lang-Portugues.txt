@@ -258,7 +258,7 @@
 257=Formato da hora de jogo
 258=In which format do ypu want the kickoff dates to be displayed?
 259=of
-260=Continuar >>
+260=Continuar »
 261=Click here to take the data over and proceed to the next step
 262=URL to the game report
 263=Enter the link to the game report here, if you wish to offer that. (Please enter a complete URL. The site will be opened in a new browser window)
@@ -389,7 +389,7 @@
 388=Enter the number of teams that will definitively have to relegate
 389=Lista das competições
 390=Do you want the users to be able to see a link to the league overview?
-391=<< Ver lista das competições
+391=« Ver lista das competições
 392=Here you can load a different league
 393=Relegation match for relegation
 394=Enter the number of teams that will have to play additional relegation matches
@@ -506,7 +506,7 @@
 505=Língua Standard
 506=Que língua deseja carregar? (O ficheiro da língua está no formato lang-[language].txt e pode ser alterado ou criado num editor de texto)
 507=Campeonato sem nome
-508=<< Ver arquivo
+508=« Ver arquivo
 509=Arquivo
 510=Deseja ver um link para o arquivo?
 511=Deseja ver o calendário?

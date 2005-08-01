@@ -258,7 +258,7 @@
 257=Format datuma zaèetka tekme
 258=V kakšnem formatu naj bo prikazan datum zaèetka tekme?
 259=od
-260=nadaljuj =&gt;
+260=nadaljuj »
 261=Klikni tukaj za shranitev podatkov in nadaljevanje na naslednji korak
 262=URL poroèila s tekme
 263=Vpiši povezavo do strani, kjer se nahaja poroèilo s tekme, seveda, èe to želiš ponuditi. (prosim, vpišite popoln URL, ki bo ob kliku odprt v novem oknu)
@@ -389,7 +389,7 @@
 388=Vpiši število moštev, ki imajo sodelovanje zagarantirano
 389=Pokaži povezavo na skupen pregled vseh lig
 390=Ali bodo uporabniki videli povezavo na prvo stran vseh lig?
-391=&lt;= na pregled vseh lig
+391=« na pregled vseh lig
 392=Tukaj si lahko naložite drugo ligo
 393=Predkvalifikacije za uvrstitev
 394=Vpiši število moštev, ki bodo morala odigrati predkvalifikacije

@@ -258,7 +258,7 @@
 257=Kezdési idõpontok formátuma
 258=Milyen formában akarja megjeleníteni a kezdési idõpontokat?
 259=.
-260=Tovább >>
+260=Tovább »
 261=Klikkekljen ide az adatok felvételéhez és a továbblépéshez
 262=Link a meccs jegyzõkönyvéhez
 263=Adjon meg itt egy linket a meccs-jegyzõkönyvhöz, ha fel akarja kínálni azt. (Kérem a teljes URL adja meg. Az oldal egy új böngészõ ablakban fog megnyílni)
@@ -389,7 +389,7 @@
 388=Adja meg a biztosan kiesõ csapatok számát
 389=Bajnokság választó
 390=Láthassák a felhasználók a bajnokság választóra mutató linket?
-391=<< Bajnokság választó megtekintése
+391=« Bajnokság választó megtekintése
 392=Itt tölthet be egy másik bajnokságot
 393=Selejtezõ meccsek száma
 394=Adja meg a selejtezõmeccset vívó csapatok számát
@@ -506,7 +506,7 @@
 505=Alapértelmezett nyelv
 506=Melyik nyelv fájl töltodjön be? (A nyelv fájlok lang-[nyelv].txt elnevezésuek és bármely szövegszerkesztovel létrehozhatók ill. szerkeszthetok)
 507=Névnélküli bajnokság
-508=<< Archívum megtekintése
+508=« Archívum megtekintése
 509=Archívum
 510=Kíván megjeleníteni a felhasználóknak egy archívumra mutató linket?
 511=Kívánja megjeleníteni a menetrendet?

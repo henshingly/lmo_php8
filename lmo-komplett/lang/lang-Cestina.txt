@@ -258,7 +258,7 @@
 257=Formát data a èasu
 258=V jakém fotmátu to chcete zobrazit?
 259=ze
-260=Další =&gt;
+260=Další »
 261=Kliknìte zde pro další krok
 262=URL zápasu
 263=Tragen Sie hier den Link zum Spielbericht ein, falls Sie das anbieten m&ouml;chten. (bitte eine komplette URL, die wird dann &uuml;brigens immer in einem neuen Fenster ge&ouml;ffnet)
@@ -389,7 +389,7 @@
 388=Poèet sestupujících mužstev
 389=Link zur Ligen&uuml;bersicht darstellen
 390=Soll den Nutzern ein Link zur Ligen&uuml;bersicht angezeigt werden?
-391=&lt;= k výbìru ligy
+391=« k výbìru ligy
 392=Zde mùžeš vybrat jinou ligu
 393=Baráž o záchranu
 394=Kolik mužstev bude hrát baráž o záchranu 
