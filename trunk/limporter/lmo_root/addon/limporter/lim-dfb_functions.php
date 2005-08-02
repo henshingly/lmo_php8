@@ -15,7 +15,6 @@
  * @param string $mode Wenn 'update', dann werden keine Warnungen ausgegeben
  * @return array Array zur Weiterverarbeitung im Limporter
  * @author Lars Dürkop
- * @version 0.94 für Limporter 1.5
  */
 
 function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
@@ -38,7 +37,8 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
     $linkZumSpieltag[$i+1] = "http://fussball.sport1.de".$temp[0];
     $spieltagBesucht[$i+1] = FALSE;
   }
-
+  unset($urlContent);
+  
   function buildFieldArrayRekursion($url, $rowCount, $newRowCheck, $rows, &$mannschaften, &$linkZumSpieltag, &$spieltagBesucht, &$spieltagHatSpiele, $durchlauf, $anzAufrufSelberSpieltag, $fehlerhafteURLs) {
 	global $text;
     $urlContent = getFileContent($url);
@@ -157,7 +157,11 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
           }
       }
     }
-
+    
+    //urlContent wird nicht mehr gebraucht und wird zur Speicherreduzierung frei gegeben
+    unset($urlContent);
+    unset($content);    
+      
     if ($neue_url != "") { //solange letzter Spieltag noch nicht erreicht
       $rows = buildFieldArrayRekursion($neue_url, $rowCount, $newRowCheck, $rows, $mannschaften, $linkZumSpieltag, $spieltagBesucht, $spieltagHatSpiele, TRUE, $anzAufrufSelberSpieltag, $fehlerhafteURLs); //nächsten Spieltag aufrufen
     }
