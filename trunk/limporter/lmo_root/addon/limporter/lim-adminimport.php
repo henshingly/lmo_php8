@@ -353,6 +353,11 @@ echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$
 ?>
   <tr>
     <td class="lmost5" colspan="3" align="center"><?PHP echo VERSlON ; ?></td>
+  <?php if ($ximporttype == 2) {?>
+  </tr>
+  <tr>  
+    <td class="lmost5" colspan="3" align="center"><?PHP echo VERSlON2 ; ?></td>	
+  <?php } ?>
   </tr>
 
 <?PHP if($imppage<3){ ?>
