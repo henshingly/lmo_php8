@@ -36,12 +36,14 @@
 //
 // 1.5		 Ein Ligaupdate lässt sich jetzt auch ohne Aufruf der Schritte 2-3 durchführen
 //
-// 1.6		 fussball.de-Erweiterung in den Limporter integriert,
-//			 Sprachausgabe in die lang.txt ausgelagert						 
+// 1.6ß1	 fussball.de-Erweiterung in den Limporter integriert,
+//		 Sprachausgabe in die lang.txt ausgelagert
+// 1.6ß2	 Reduzierung des Speicherplatzbedarfs beim fussball.de-Import,
+//		 reguläre Ausdrücke hinzugefügt für den Fall, dass Heim- und Gastmannschaft in einer Zelle stehen						 
 
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
-if (!defined('VERSION')) define('VERSION','1.6ß1');
+if (!defined('VERSION')) define('VERSION','1.6ß2');
 
 // ARRAY mit reguläre Ausdruecken, um nur bestimmte Teile aus einer Zelle zu extrahieren.
 // Dieses kann GERNE erweitert werden. Bitte posted getestete Expressions im Forum ,
@@ -63,7 +65,9 @@ if (!isset($lim_format_exp)) {
     $text['limporter'][80].' (__ : xx)'    => '/:(\d+)/',
     $text['limporter'][81].' (- xx)'  => '/\W*(.*)/',
     $text['limporter'][82]    => '/(\d{1,2}\W{1}\d{1,2}\W{1}\d{2,4})/',
-    $text['limporter'][83]    => '/(\d{1,2}:\d{1,2})/'
+    $text['limporter'][83]    => '/(\d{1,2}:\d{1,2})/',
+    $text['limporter'][69].' (xxx - ___)' => '/^(.+)( -)/',
+    $text['limporter'][70].' (___ - xxx)' => '/- (.+)$/'
 //    'Nur Zahlen'    => ,
     );
 };
@@ -251,4 +255,5 @@ if (!isset($lim_colums)) {
 
 
 if (!defined('VERSlON')) define('VERSlON',"Limporter ".VERSION." Addon for LMO 4<BR>Copyright &#169; 03-05 <a href=\"mailto:webobjects@gmx.net?subject=Limporter Version ".VERSION."\" title=\"Send mail\">Tim Schumacher</a>");
+if (!defined('VERSlON2')) define('VERSlON2',"Fussball.de-Erweiterung<BR>Copyright &#169; 05 Lars Dürkop");
 ?>
