@@ -404,6 +404,12 @@ if($imppage<3){ ?>
   <tr>
     <td class="lmost5" colspan="3" align="center"><?PHP echo VERSlON ; ?></td>
   </tr>
+  <?php if ($ximporttype == 2) {?>
+  </tr>
+  <tr>  
+    <td class="lmost5" colspan="3" align="center"><?PHP echo VERSlON2 ; ?></td>	
+  <?php } ?>
+  </tr>  
 <?php
   if($imppage<3){ ?>
   <tr>
