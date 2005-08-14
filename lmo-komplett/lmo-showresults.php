@@ -176,11 +176,25 @@ if ($einspielfrei == 1) {?>
         if ($hoy5 == 1) {
           echo $text[4004].": ";
         }
-        $hoy5++;?>
-        &nbsp;<a href="<?=$addp.$hoy8?>" title="<?=$text[269]?>"><?=$teams[$hoy8]?></a>&nbsp;&nbsp;<?
+        $hoy5++;
+
+     if ($plan == "1") {
+      echo "<a href=\"".$addp.$hoy8."\" title=\"".$text[269]."\">";
+    }
+     if (($favteam > 0) && ($favteam == $hoy8)) {
+      echo "<strong>";
+    }
+    echo $teams[$hoy8];
+     if (($favteam > 0) && ($favteam == $hoy8)) {
+      echo "</strong>";
+    }
+    if ($plan == "1") {
+      echo "</a>";
+    }
+      
+    echo "&nbsp;".getSmallImage($teams[$hoy8]);
       }
     }
-  //}
   ?></td> 
   </tr><?
 }?>
