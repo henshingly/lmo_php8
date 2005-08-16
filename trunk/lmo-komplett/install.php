@@ -28,7 +28,7 @@ $_SESSION['userlang']=isset($_GET['userlang'])?$_GET['userlang']:(isset($_SESSIO
 $userlang = $_SESSION['userlang'];
 
 $filelist=array(
-  '777'=>array('ligen','output','ligen/archiv','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
+  '777'=>array('ligen','output','ligen/archiv','config/viewer','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
   '666'=>array('config/cfg.txt','lmo-auth.txt','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98',"init-parameters.php")
 );
 $lang=array(
