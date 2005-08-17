@@ -29,7 +29,7 @@ $userlang = $_SESSION['userlang'];
 
 $filelist=array(
   '777'=>array('ligen','output','ligen/archiv','config/viewer','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
-  '666'=>array('config/cfg.txt','lmo-auth.txt','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98',"init-parameters.php")
+  '666'=>array('config/cfg.txt','lmo-auth.txt','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98',"init-parameters.php")
 );
 $lang=array(
     'DE'=>array(
@@ -308,7 +308,7 @@ if ($step==3) {
 echo $patherror;
 if ($step==0) {?>
   <?
-   if (!$_SESSION['man'] && function_exists('ftp_connect')) {
+   if (!$_SESSION['man']) {
   ?>
   <h2><?=$lang[$userlang]['STEP0']?></h2>
   <table width="90%">
@@ -316,7 +316,8 @@ if ($step==0) {?>
       <td>
          <?=$lang[$userlang]['STEP0_DESCRIPTION']?>
       </td>
-    </tr>
+    </tr><?
+      if (function_exists('ftp_connect')) {?>
     <tr>
       <td align="center">
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
@@ -338,11 +339,22 @@ if ($step==0) {?>
           </dl>
         </form>
       </td>
+    </tr><?
+      } else {?>
+    <tr>
+      <td align="center">
+        <dl>
+          <dt><a href="<?=$_SERVER['PHP_SELF']."?step=2&amp;man=1"?>><?=$lang[$userlang]['STEP2']?></a></dt>
+        </dl>
+      </td>
     </tr>
+      <?
+      }
+      ?>
   </table><?
 
     } else {
-     $step=3;
+     $step=2;
     }
 }    
 
