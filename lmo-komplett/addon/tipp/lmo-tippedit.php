@@ -85,20 +85,20 @@ if ($file!="") {
         if ($btip==true) {
           if ($tipp_tippmodus==1) {
             $goaltippa[$i]=trim($_POST["xtippa".$i]);
-            if ($goaltippa[$i]=="" || $goaltippa[$i]<0) {
+            $goaltippb[$i]=trim($_POST["xtippb".$i]);
+            
+            if ($goaltippa[$i]=="" || $goaltippa[$i]<0 || $goaltippa[$i]=="_") {
               $goaltippa[$i]=-1;
-            } else if ($goaltippa[$i]=="_") {
-              $goaltippa[$i]=-1;
+              $goaltippb[$i]=-1;
             } else {
               $goaltippa[$i]=intval(trim($goaltippa[$i]));
               if ($goaltippa[$i]=="") {
                 $goaltippa[$i]="0";
               }
             }
-            $goaltippb[$i]=trim($_POST["xtippb".$i]);
-            if ($goaltippb[$i]=="" || $goaltippb[$i]<0) {
-              $goaltippb[$i]=-1;
-            } else if ($goaltippb[$i]=="_") {
+            
+            if ($goaltippb[$i]=="" || $goaltippb[$i]<0 || $goaltippb[$i]=="_") {
+              $goaltippa[$i]=-1;
               $goaltippb[$i]=-1;
             } else {
               $goaltippb[$i]=intval(trim($goaltippb[$i]));
@@ -132,20 +132,19 @@ if ($file!="") {
           if ($btip==true) {
             if ($tipp_tippmodus==1) {
               $goaltippa[$i][$n]=trim($_POST["xtippa".$i.$n]);
-              if ($goaltippa[$i][$n]=="" || $goaltippa[$i][$n]<0) {
+              $goaltippb[$i][$n]=trim($_POST["xtippb".$i.$n]);
+              
+              if ($goaltippa[$i][$n]=="" || $goaltippa[$i][$n]<0 || $goaltippa[$i][$n]=="_") {
                 $goaltippa[$i][$n]=-1;
-              } else if ($goaltippa[$i][$n]=="_") {
-                $goaltippa[$i][$n]=-1;
+                $goaltippb[$i][$n]=-1;
               } else {
                 $goaltippa[$i][$n]=intval(trim($goaltippa[$i][$n]));
                 if ($goaltippa[$i][$n]=="") {
                   $goaltippa[$i][$n]="0";
                 }
               }
-              $goaltippb[$i][$n]=trim($_POST["xtippb".$i.$n]);
-              if ($goaltippb[$i][$n]=="" || $goaltippb[$i][$n]<0) {
-                $goaltippb[$i][$n]=-1;
-              } else if ($goaltippb[$i][$n]=="_") {
+              if ($goaltippb[$i][$n]=="" || $goaltippb[$i][$n]<0 || $goaltippb[$i][$n]=="_") {
+                $goaltippa[$i][$n]=-1;
                 $goaltippb[$i][$n]=-1;
               } else {
                 $goaltippb[$i][$n]=intval(trim($goaltippb[$i][$n]));
