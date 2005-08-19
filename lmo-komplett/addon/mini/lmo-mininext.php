@@ -239,7 +239,7 @@ if ($file && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file) == TRUE) {
 
     $template->setVariable("gameDate",$partie->datumString());
     $template->setVariable("gameTime",$partie->zeitString());
-    $template->setVariable("ligaDatum","Stand: ".$liga->ligaDatumAsString("%x"));
+    $template->setVariable("ligaDatum",$text['mini'][14].": ".$liga->ligaDatumAsString("%x"));
     //
     $template->setVariable("copy",str_replace('CLASSLIB_VERSION',CLASSLIB_VERSION,$text['mini'][0]));
     $template->setVariable("imgHomeSmall",HTML_smallTeamIcon($file,$partie->heim," alt=''"));
