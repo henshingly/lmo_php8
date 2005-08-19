@@ -39,7 +39,9 @@
 // 1.6ß1	 fussball.de-Erweiterung in den Limporter integriert,
 //		 Sprachausgabe in die lang.txt ausgelagert
 // 1.6ß2	 Reduzierung des Speicherplatzbedarfs beim fussball.de-Import,
-//		 reguläre Ausdrücke hinzugefügt für den Fall, dass Heim- und Gastmannschaft in einer Zelle stehen						 
+//		 reguläre Ausdrücke hinzugefügt für den Fall, dass Heim- und Gastmannschaft in einer Zelle stehen
+// 1.6ß2 bugfix	 Wenn ein Benutzer in der fussball.de-Import-URL mehr Spieltage angibt als wirklich existieren,
+//		 kommt es nicht mehr zur Endlosschleife.
 
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");

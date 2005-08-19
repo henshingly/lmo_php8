@@ -170,6 +170,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 	  if ($i === FALSE){
 	  }
 	  else {
+	  	$spieltagBesucht[$i] = TRUE; //Falls der Benutzer mehr Spieltage angibt als existieren, werden die überzähligen Spieltage oben nicht als besucht markiert und es würde ohne die Zeile zur Endlosschleife kommen.
 	  	$neue_url = $linkZumSpieltag[$i];
 	  	$rows = buildFieldArrayRekursion($neue_url, $rowCount, $newRowCheck, $rows, $mannschaften, $linkZumSpieltag, $spieltagBesucht, $spieltagHatSpiele, FALSE, 0, array()); //nächsten Spieltag aufrufen
 	  }
