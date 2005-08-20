@@ -139,8 +139,53 @@ $lang=array(
       'STEP4_TEXT5'=>'Please consult the <a href="http://www.liga-manager-online.de/dedi/projekt01/en">manual on our Website</a> for help.',
       'STEP4_TEXT6'=>'Have fun!',
       
-      
-      
+     ),
+    'FR'=>array( 
+      'HEADER'=>'Installation du Liga Manager Online 4',
+      'PROCEED'=>'Continuer',
+      'SUCCESS'=>'Succès',
+      'ERROR'=>'Erreur',
+      'CHECK_AGAIN'=>'Vérifier de nouveau',
+      'ERROR_WRONG_PATH'=>'Le chemin n\'est pas correct!',
+      'ERROR_CONFIRM'=>'Il y a encore des erreurs! Désirez-vous quand même continuer?',
+
+      'STEP0'=>'Données d\'accès FTP',
+      'STEP0_DESCRIPTION'=>'Pour pouvoir installer le LMO automatiquement, un accès FTP est nécessaire.
+         Pour cela vous devez entrer les données d\'accès de votre serveur FTP. Ces informations ne seront pas sauvegarder ou utiliser pour d\'autres fins dans le LMO.
+         Si vous voulez installer manuellement les paramètres vous pouvez le faire
+         <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">ici pour continuer avec l\'installation manuelle.</a>',
+      'STEP0_FTP_SERVER'=>'Veuillez donner l\'adresse de votre serveur FTP',
+      'STEP0_FTP_SERVER_EXAMPLE'=>'Ex.: <em><kbd>ftp.exemple.fr</kbd></em>',
+      'STEP0_FTP_LOGIN'=>'Veuillez entrer votre identifiant et votre mot de passe',
+      'STEP0_FTP_NO_CONNECTION'=>'Aucune connection sur "'.$_SESSION['ftpserver'].'" possible. Veuillez corriger l\'adresse ou bien <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">installez-le manuellement</a>',
+      'STEP0_FTP_NO_LOGIN'=>'Erreur de connection. Veuillez corriger l\'identifiant ou <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">installez-le manuellement</a>',
+
+      'STEP1'=>'Choissisez le répertoire du LMO',
+      'STEP1_SELECT_FTP_DIR'=>'Veuillez choissir le répertoire du LMO',
+
+      'STEP2'=>'Définir les droits d\'accès des fichiers',
+      'STEP2_MANUAL'=>'Veuillez placer les droits d\'accès requéris des fichiers avec votre programme FTP et veuillez ensuite actualiser cette page avec un <a href="#" onclick="location.reload();return false;">[Rafraîchir]</a>, pour vérifier , que tout les droits ont été placé correctement. <a href="'.$_SERVER['PHP_SELF'].'">retourner à l\'installation automatique</a>',
+
+      'STEP3'=>'Création du fichier de configuration',
+      'STEP3_PATH'=>'Veuillez entrer ici le <strong>chemin complet</strong> pour accèder au LMO',
+      'STEP3_PATH_EXAMPLE'=>'Ex.: <em><kbd>/home/www/htdocs/lmo</kbd></em>',
+      'STEP3_PATH_CORRECT'=>'Le chemin est correct!',
+      'STEP3_PATH_WRONG'=>'Le chemin est incorrect!',
+      'STEP3_URL'=>'Veuillez entrer ici l\'adresse URL pour accèder au LMO',
+      'STEP3_URL_CORRECT'=>' Si vous voyez une image, l\'adresse URL est correcte!',
+      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Impossible d\'ouvrir le fichier init-parameters.php!  Veuillez définir les droits d\'accès sur chmod 666 et actualisez cette page ([F5]), pour répeter cette étape.',
+      'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Veuillez vérifier avant l\'installation que le fichier <code>init-parameters.php</code> a bien les droits d\'accès 666. Veuillez définir les droits d\'accès sur chmod 666 et actualisez cette page, pour répeter cette étape.',
+      'STEP3_SUCCESS_INI_FILE'=>'La configuration a été sauvegardé avec succès',
+
+
+      'STEP4'=>'L\'installation a été couronné de succès',
+      'STEP4_TEXT1'=>'Le Liga Manager Online 4 a été installé!',
+      'STEP4_TEXT2'=>'Si des erreurs apparaissent, veuillez répéter l\'installation ou bien installer le LMO manuellement en adaptant le fichier <code>init-parameters.php</code> avec un éditeur de texte et donner les droits d\'accès manuellement avec un programme FTP.',
+      'STEP4_TEXT3'=>'Veuillez supprimer à tout prix le fichier <code>install.php</code> de votre serveur ou bien lui donner les droits d\accès chmod 000.',
+      'STEP4_TEXT4'=>'Le <acronym title="Liga Manager Online">LMO</acronym> est maintenant accessible sous l\'adresse <code><a href="lmo.php">lmo.php</a></code>, le secteur d\'administration sera accessible sous l\'adresse <code><a href="lmoadmin.php">lmoadmin.php</a></code> (L\'indentifiant par défaut est <kbd>admin</kbd>/<kbd>lmo</kbd>).',
+      'STEP4_TEXT5'=>'Vous trouverez une description d\'utlisation <a href="http://www.liga-manager-online.de/dedi/projekt01/de/homepage/lmo4/hilfe/">pour le LMO</a>
+      et <a href="http://www.liga-manager-online.de/dedi/projekt01/fr/homepage/lmo4/addons/">ses extensions</a> sur le site web du LMO.',
+      'STEP4_TEXT6'=>'Bon courage!',
       
       
     )
@@ -294,7 +339,7 @@ if ($step==3) {
         .error   {  border:1px solid #d99;background:#ffe7e0;padding:0.4em;-moz-border-radius:8px;}
         .foot    {  text-align:left;margin-top:1em;font-size:85%;}
         .w3cbutton3 {  float:right; margin:0.5em;  border: 1px solid #999;  font-family: helvetica,arial,sans-serif;  font-size: 70%;  font-weight: bold;}
-        .w3cbutton3 a {  display: block;  width: 100%;}
+        .w3cbutton3 a {  display: block;  /*width: 100%;*/}
         .w3cbutton3 a:link,
         .w3cbutton3 a:visited,
         .w3cbutton3 a:hover {   background-color: #fc6;  color: #000;  text-decoration: none;}
