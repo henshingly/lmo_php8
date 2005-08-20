@@ -179,7 +179,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 
 
         <tr>
-            <th colspan=10 align="middle"><a name="bottom">&nbsp;</a>
+            <th colspan=10 align="middle"><a name="bottom"></a>
               <acronym title="<? echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<? echo $text[188]; ?>"></acronym>
             </th>
           </tr>
