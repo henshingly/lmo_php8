@@ -179,7 +179,7 @@ $mini_cache_counter = 0; //counter for cache hits
 $mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'/$mini_'.$multi.'_count.txt',"rb");
 $mini_cache_counter = intval(trim(fgets($mini_cache_counter_file)));
 fclose($mini_cache_counter_file);
-echo $mini_cache_counter."§§".$mini_cache_refresh;
+
 if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
   //not cached or cache limit reached -> generate new view
   
