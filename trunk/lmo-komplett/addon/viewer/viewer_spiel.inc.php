@@ -15,10 +15,11 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
   
 foreach ($fav_team[$i] as $akt_team) {
-  if ($multi_cfgarray['modus'] == 1) {
+  if (isset($multi_cfgarray['modus']) && $multi_cfgarray['modus'] == 1) {
     $spieltag = $mySpieltag->nr;
   }
   $mhp_link_s=$mgp_link_s=$mhp_link_e=$mgp_link_e="";
@@ -52,7 +53,7 @@ foreach ($fav_team[$i] as $akt_team) {
     $mgp_link_s="";
     $mgp_link_e="";
     //HP verlinken
-    if ($multi_cfgarray['mannschaftshomepages_verlinken']==1) {
+    if (isset($multi_cfgarray['mannschaftshomepages_verlinken']) && $multi_cfgarray['mannschaftshomepages_verlinken']==1) {
       if ($myPartie->heim->keyValues["URL"] != "") {
         $mhp_link_s='<a href="'.$myPartie->heim->keyValues["URL"].'" target="_blank">';
         $mhp_link_e='</a>';
@@ -64,7 +65,7 @@ foreach ($fav_team[$i] as $akt_team) {
     }//Ende HP verlinken
     
     //Favteam hervorheben
-    if ($multi_cfgarray['favteam_highlight']==1) {
+    if (isset($multi_cfgarray['favteam_highlight']) && $multi_cfgarray['favteam_highlight']==1) {
       if ($myPartie->heim->nr == $akt_liga->options->keyValues['favTeam']) {
         $mhp_link_s='<strong>'.$mhp_link_s;
         $mhp_link_e.='</strong>';
