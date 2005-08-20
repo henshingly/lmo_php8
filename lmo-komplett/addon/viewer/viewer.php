@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
 
 require(dirname(__FILE__).'/../../init.php');
@@ -27,7 +28,6 @@ $viewer_cache_counter = intval(trim(fgets($viewer_cache_counter_file)));
 fclose($viewer_cache_counter_file);
 
   
-  $cfgfile=PATH_TO_CONFIGDIR.'/viewer/cfg.txt';                       // Konfigurationsdatei
   if (!isset($cfgarray))$cfgarray=array();
   
   $multi1=PATH_TO_CONFIGDIR.'/viewer/'.$multi.'.view';                    // cfg Datei einlesen (Globale Viewer-Optionen)
@@ -61,7 +61,9 @@ if ($viewer_cache_counter==0 || $viewer_cache_counter > $multi_cfgarray['cache_r
   $template = new HTML_Template_IT( PATH_TO_TEMPLATEDIR.'/viewer' );        // Template Object
   $template->loadTemplatefile($template_file.'.tpl.php');                   // Template laden
   
-  $template->setVariable("Titelzeile",$multi_cfgarray['titelzeile']);
+  if (isset($multi_cfgarray['titelzeile'])) {
+    $template->setVariable("Titelzeile",$multi_cfgarray['titelzeile']);
+  }
   
   if ($multi_cfgarray['modus']==2) {
     include(PATH_TO_ADDONDIR."/viewer/viewer_spieltag.php");
