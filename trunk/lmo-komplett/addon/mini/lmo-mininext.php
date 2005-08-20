@@ -15,98 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  *
-  * lmo-mininext for LigaManager Online
-  *  Copyright (C) 2005 by Tim Schumacher/LMO-Group
-  * timme@webobjekts.de / joker@liga-manager-online.de
-  * 
-  *  Version 2.0.2
-  *  systemvoraussetzung: LMO ab RC1/classlib ab 2.7
-  *
-  * History:
-  * 1.0: initial Release
-  * 1.1: Multilanguagefähig
-  *      ins mini*-Addon eingefügt
-  *      Bugfixes
-  *      Template entrümpelt
-  *      Anzeige der Greedy-Ergebnisse überarbeitet
-  * 2.0: korrekte Anzeige Auswärts-/Heimpartien
-  *      zusätzlicher Block "Vorheriges Spiel"
-  * 2.0.1 Datumsformat wieder gekürzt
-  * 2.0.2 Bug beim include (Mannschaften wurden nicht erkannt) beseitigt
-  * 2.1.0 Konfigurationsdatei für Konfigurationsparameter (änderbar im Adminbereich)
-  *       Template jetzt auch änderbar (über GET oder vorher definiert)
-  *       Archivdurchsuchung abschaltbar
-  *       Doppelrunden (also mehr als 1 Hin-/Rückrunde) werden erkannt
-  * 2.1.1 Mittel- und Kurznamen der Teams als Templatevariablen
-  *      
-  *
-  * Dieses Script zeigt die kommende Partie einer Mannschaft in einem kleinen 
-  * Block an, der relativ einfach in jede bestehende Seite eingebunden werden 
-  * kann. Als Vorlage diente die Lösung auf www.hsg-nordhorn.de (Oben rechts 
-  * auf der Startseite).
-  * Neben der Anzeige der kommenden Partie, wird im anzugebenen Archivordner 
-  * nach bereits vorhandenen Begegnungen der Mannschaften gesucht und absteigend 
-  * sortiert nach Datum angezeigt.
-  * 
-  * Konfigurationsparameter (in der Addonverwaltung)
-  *
-  *   $mini_withArchiv: Archivordner durchsuchen 1/0
-  *
-  *   $mini_unGreedy: unscharfe Suche - findet z.B. auch THW KIEL 6 wenn team_b = THW KIEL 3 ist. 1/0
-  *
-  *   $mini_barWidth: Breite des farbigen Balken in Pixeln
-  *
-  *   $mini_standardTemplate: Standardtemplate, wenn keins übergeben wurde
-  *
-  *
-  * URL-Parameter:
-  * 
-  *   file: Dateiname der Liga
-  * 
-  *   folder: Archivordner, der durchsucht werden soll. Es ist sinvoll, die 
-  *           alten Ligadateien nicht direkt in den Archivordner abzulegen, 
-  *           sondern jeweils für jede Liga einen eigenen unterordner im 
-  *           Archivverzeichnis anzulegen.
-  *   a:      Nummer der Mannschaft A, für die der Block erstellt werden 
-  *           soll. Dieser Parameter ist nur dann erforderlich, wenn im 
-  *           LigaFile keine Lieblingsmannschaft angegeben wurde.
-  *   b:      Nummer des Gegners von a: bzw der Lieblingsmannschaft. Dieser 
-  *           Parameter ist für die Anzeige der nächsten Partie nicht erforderlich, 
-  *           da die nächste Partie automatisch ermittelt wird. Wer aber eine 
-  *           spezielle Paarung angezeigt haben möchte kann hier b angeben.
-  *   $mini_template: Template, dass benutzt werden soll
-  * 
-  * 
-  * Beispiel: 1.Bundesliga Fussball 2004 / 2005
-  *   file = 1bundesliga2004.l98
-  *      die alten Ligafiles der 1. Bundesliga befinden sich im ordner 
-  *      <lmo_root>/ligen/archiv/dbl also 
-  *   folder=archiv/dbl
-  * 
-  *   Einbindung über IFrame:
-  *     <iframe src="<url_to_lmo>/addon/mini/lmo-mininext.php?file=1bundesliga2004.l98&folder=archiv/dbl"><url_to_lmo>/addon/mini/lmo-mininext.php?file=1bundesliga2004.l98&folder=archiv/dbl</iframe>
-  *     (die Parameter a und b bei Bedarf mit &amp;a=<integer>&amp;b=<integer> anhängen
-  * 
-  *   Einbindung über include:
-  *     $file = "1bundesliga2004.l98";
-  *     $folder = "archiv/dbl";
-  *     (auch hier bei Bedarf a und/oder b angeben: $a = <integer>;$b = <integer>; )
-  *     include ("<pfad_zum_lmo>/addon/mini/lmo-mininext.php");
-  * 
-  * Installation:
-  * lmo-mininext.php ins Verzeichnis <lmo_root>/addon/mini/ kopieren.
-  * mininext.tpl.php ins Verzeichnis <lmo_root>/template/mini/ kopieren
-  * *lang.txt-dateien ins Verzeichnis <lmo_root>/lang/mini/ kopieren
-  * 
-  * 
-  * Hinweis:
-  * Es ist nicht gestattet den Hinweis auf den Autor zu entfernen!
-  * Eigene Templates müssen den Hinweis auf Autor des Scripts enthalten.
-  *
-  * bekannte Probleme:
-  * Sind die Spielzeiten der Partien nicht angegeben, erfolgt die Ausgabe der 
-  * Archivpartien unsortiert.
+  * $Id$
   */
 
 require(dirname(__FILE__).'/../../init.php');
@@ -176,7 +85,7 @@ $multi = md5($file.$archivFolder.$mini_template.$a.$b);
 
 // Load the cache-counter-file for viewers simple cache mechanism
 $mini_cache_counter = 0; //counter for cache hits
-$mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'/$mini_'.$multi.'_count.txt',"rb");
+$mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'_count.txt',"ab");
 $mini_cache_counter = intval(trim(fgets($mini_cache_counter_file)));
 fclose($mini_cache_counter_file);
 
@@ -415,12 +324,12 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
     $mini_output = $template->get();
   
     //save cache file
-    if ($mini_cache_file = fopen(PATH_TO_LMO.'/'.$diroutput.'/$mini_'.$multi.'.txt',"wb")) {
+    if ($mini_cache_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'.txt',"wb")) {
      fwrite($mini_cache_file,$mini_output);
      fclose($mini_cache_file);
     }
     //reset cache counter
-    $mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'/$mini_'.$multi.'_count.txt',"wb");
+    $mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'_count.txt',"wb");
     fwrite($mini_cache_counter_file,"1");
     fclose($mini_cache_counter_file);
     
@@ -435,13 +344,13 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
   }
 } else {
   //get cache
-  if ($mini_cache_file = fopen(PATH_TO_LMO.'/'.$diroutput.'/$mini_'.$multi.'.txt',"rb")) {
+  if ($mini_cache_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'.txt',"rb")) {
    fpassthru($mini_cache_file);
    fclose($mini_cache_file);
   }
   //increment cache counter
   
-  $mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'/$mini_'.$multi.'_count.txt',"wb");
+  $mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'_count.txt',"wb");
   fwrite($mini_cache_counter_file,++$mini_cache_counter);
   fclose($mini_cache_counter_file);
 }?>
