@@ -207,7 +207,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
             //Spielerlinks
             }elseif ($j2==0 && !is_null($linkspalte) && $linkspalte!==FALSE && $data[$j1][$linkspalte]!=$text['spieler'][43]){
               echo " align='left'>&nbsp;".$data[$j1][$j2];
-              echo " <a href='".$data[$j1][$linkspalte]."' title='".$text['spieler'][34]."'><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
+              echo " <a href='".$data[$j1][$linkspalte]."' title='".$text['spieler'][34]."'><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."'></a>";
             //sonst. Spalten
             }elseif ($spalten[$j2]!=$text['spieler'][32]){
               if (is_numeric($data[$j1][$j2])) {
