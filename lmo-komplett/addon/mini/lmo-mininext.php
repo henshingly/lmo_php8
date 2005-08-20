@@ -84,8 +84,12 @@ $mini_cache_refresh = isset($mini_cache_refresh)?$mini_cache_refresh:0;
 $multi = md5($file.$archivFolder.$mini_template.$a.$b);
 
 // Load the cache-counter-file for viewers simple cache mechanism
+$mini_cache_counter_filename = PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'_count.txt';
 $mini_cache_counter = 0; //counter for cache hits
-$mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'_count.txt',"ab");
+if (!file_exists($mini_cache_counter_filename)) {
+  touch($mini_cache_counter_filename);
+}
+$mini_cache_counter_file = fopen($mini_cache_counter_filename,"rb");
 $mini_cache_counter = intval(trim(fgets($mini_cache_counter_file)));
 fclose($mini_cache_counter_file);
 
