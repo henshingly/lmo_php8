@@ -48,7 +48,7 @@ function HTML_smallTeamIcon($ligaFile,$team,$htmlParameter="") {
 	// Wird zukünftig warscheinlich entfallen
   if (!$generated ) {
     foreach( const_array( CLASSLIB_IMG_TYPES ) as $extension) {
-			$img_path = PATH_TO_IMGDIR."/teams/small/".strtr($team->name,"/",""); // PATH TO IMG (ohne extension), Teamnamen ohne /
+			$img_path = PATH_TO_IMGDIR."/teams/small/".strtr($team->name,array("/"=>"")); // PATH TO IMG (ohne extension), Teamnamen ohne /
       if ($generated = HTML_image($img_path.$extension,$htmlParameter) ) {
         break;
       }
@@ -82,7 +82,7 @@ function HTML_bigTeamIcon($ligaFile,$team,$htmlParameter="") {
 
   if (!$generated ) {
     foreach( const_array( CLASSLIB_IMG_TYPES ) as $extension) {
-			$img_path = PATH_TO_IMGDIR."/teams/big/".strtr($team->name,"/","");// PATH TO IMG (ohne extension), Teamnamen ohne /
+			$img_path = PATH_TO_IMGDIR."/teams/big/".strtr($team->name,array("/"=>""));// PATH TO IMG (ohne extension), Teamnamen ohne /
       if ($generated = HTML_image($img_path.$extension,$htmlParameter) ) {
         break;
       }
