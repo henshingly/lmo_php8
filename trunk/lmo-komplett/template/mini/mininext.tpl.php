@@ -17,7 +17,7 @@
       <table width="100%">
         <caption><!--gameTxt--></caption>
         <tr>
-         <th><!--gameDate--> <!--gameTime--><th>
+         <th><!--gameDate--> <!--gameTime--></th>
         </tr>
         <tr>
           <td align="center"><!--homeName--></td>
@@ -65,7 +65,7 @@
       <table width="100%">
         <caption><!--previous_gameTxt--></caption>
         <tr>
-         <th><!--previous_gameDate--> <!--previous_gameTime--><th>
+         <th><!--previous_gameDate--> <!--previous_gameTime--></th>
         </tr>
         <tr>
           <td align="center"><!--previous_imgHomeSmall--></td>
