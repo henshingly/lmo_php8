@@ -112,34 +112,6 @@ function getMessage($message,$error=FALSE) {
   }
 }
 
-/**
- * Check if a file exists in the include path
- *
- * @version      1.2.0
- * @author       Aidan Lister <aidan@php.net>
- * @param        string     $file       Name of the file to look for
- * @return       bool       TRUE if the file exists, FALSE if it does not
- */
-function file_exists_incpath ($file) {
-  
-  //DOESN'T WORK!
-  /*if (!function_exists('get_include_path') || !function_exists('ini_get') || ini_get("safe_mode") != "0") {
-    return false;
-  }
-  
-  $paths = explode(PATH_SEPARATOR, get_include_path());
-  foreach ($paths as $path) {
-    // Formulate the absolute path
-    $fullpath = $path . DIRECTORY_SEPARATOR . $file;
-  
-    // Check it
-    if (file_exists($fullpath)) {
-      return true;
-    }
-  }*/
-  return false;
-}
-
 function getLangSelector() {
   $output_sprachauswahl ='';
   
@@ -159,4 +131,31 @@ function getLangSelector() {
   closedir($handle);
   return $output_sprachauswahl;
 }
+
+/**
+ * Replace function is_a()
+ *
+ * @category    PHP
+ * @package     PHP_Compat
+ * @link        http://php.net/function.is_a
+ * @author      Aidan Lister <aidan@php.net>
+ * @version     $Revision$
+ * @since       PHP 4.2.0
+ * @require     PHP 4.0.0 (user_error) (is_subclass_of)
+ */
+if (!function_exists('is_a')) {
+    function is_a($object, $class)
+    {
+        if (!is_object($object)) {
+            return false;
+        }
+
+        if (get_class($object) == strtolower($class)) {
+            return true;
+        } else {
+            return is_subclass_of($object, $class);
+        }
+    }
+}
+
 ?>

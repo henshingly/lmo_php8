@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
 
 @ini_set("session.use_trans_sid","1");
@@ -71,7 +72,7 @@ require(PATH_TO_LMO."/lmo-langload.php");
 require_once(PATH_TO_LMO."/lmo-functions.php");
 
 //Template System
-require_once(PATH_TO_LMO."/IT.php");
+require_once(PATH_TO_LMO."/pear/IT.php");
 
 //Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);

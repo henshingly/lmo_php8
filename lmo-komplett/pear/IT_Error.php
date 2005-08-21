@@ -17,11 +17,8 @@
 //
 // $Id$
 
-if (file_exists('PEAR.php')) {
-  require_once('PEAR.php');
-} else {
-  require_once(PATH_TO_LMO.'/lmo-PEAR.php');
-}
+//jokerlmo: Changed include path
+require_once(PATH_TO_LMO.'/pear/PEAR.php');
 
 
 /**
