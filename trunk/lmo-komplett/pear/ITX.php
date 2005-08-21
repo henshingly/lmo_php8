@@ -19,8 +19,9 @@
 // $Id$
 //
 
-require_once('HTML/Template/IT.php');
-require_once 'HTML/Template/IT_Error.php';
+//jokerlmo: Changed include path
+require_once(PATH_TO_LMO.'/pear/IT.php');
+require_once(PATH_TO_LMO.'/pear/IT_Error.php');
 
 /**
 * Integrated Template Extension - ITX
@@ -824,7 +825,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
             print $message;
         }
 
-        if ($this->haltOnError) {
+        if ($this->haltOnWarning) {
             die($message);
         }
     } // end func warning

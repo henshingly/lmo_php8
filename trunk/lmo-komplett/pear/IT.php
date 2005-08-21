@@ -19,11 +19,8 @@
 // $Id$
 //
 
-if (file_exists_incpath('PEAR.php')) {
-  require_once('PEAR.php');
-} else {
-  require_once(PATH_TO_LMO.'/lmo-PEAR.php');
-}
+//jokerlmo: Changed inlude path
+require_once(PATH_TO_LMO.'/pear/PEAR.php');
 
 define("IT_OK",                         1);
 define("IT_ERROR",                     -1);
@@ -430,6 +427,7 @@ class HTML_Template_IT {
                 return $error;
             }
         }
+        return IT_OK;
     }
 
     /**
@@ -744,7 +742,7 @@ class HTML_Template_IT {
      * @see          LoadTemplatefile(), $template
      * @access       public
      */
-    function setTemplate( $template, $removeUnknownVariables = false,
+    function setTemplate( $template, $removeUnknownVariables = true,
                           $removeEmptyBlocks = true
     ) {
 
@@ -784,14 +782,14 @@ class HTML_Template_IT {
      *           $removeEmptyBlocks
      */
     function loadTemplatefile( $filename,
-                               $removeUnknownVariables = false,
+                               $removeUnknownVariables = true,
                                $removeEmptyBlocks = true ) {
 
         $template = "";
         if (!$this->flagCacheTemplatefile ||
             $this->lastTemplatefile != $filename
         ){
-            $template = $this->getfile($filename);
+            $template = $this->getFile($filename);
         }
         $this->lastTemplatefile = $filename;
 
@@ -1008,7 +1006,7 @@ class HTML_Template_IT {
                 IT_BLOCK_NOT_FOUND          => 'Cannot find this block',
                 IT_BLOCK_DUPLICATE          => 'The name of a block must be'.
                                                ' uniquewithin a template.'.
-                                               ' Found "$blockname" twice.'.
+                                               ' Found "' . $blockname . '" twice.'.
                                                'Unpredictable results '.
                                                'may appear.',
                 IT_UNKNOWN_OPTION           => 'Unknown option'

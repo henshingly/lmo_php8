@@ -18,7 +18,7 @@
   */
 /*
 //Caching
-require_once(PATH_TO_LMO.'/lmo-LiteOutput.php');
+require_once(PATH_TO_LMO.'/pear/LiteOutput.php');
 //Cache Options
 $lmo_cache_options = array (
 'cacheDir' => PATH_TO_LMO."/".$diroutput,
@@ -308,7 +308,6 @@ $template->setVariable("Newsticker", $output_newsticker);
 //Tippspiel-Addon
 $template->setVariable("Tippspiel", $output_tippspiel);
 $template->show();
-//}else {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");d($template->toString());}
 
 //write to cache
 /*$lmo_cache->end();
