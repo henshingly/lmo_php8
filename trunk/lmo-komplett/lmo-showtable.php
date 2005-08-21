@@ -1,4 +1,22 @@
-<? 
+<?php
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  * 
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  * $Id$
+  */
 if ($minus == 2) {
   $dummy = " colspan=\"3\" align=\"center\"";
 } else {
@@ -135,7 +153,7 @@ for($x = 1; $x <= $anzteams; $x++) {
   <tr>
     <td class="<?=$lmo_tabelle_class; ?>" align="right"><?=$dummy.$x.$dumm2; ?></td><? 
   $y = 0;
-  if ($endtab > 1) {
+  if ($endtab > 1 && isset($platz0[$i])) {
     if ($platz0[$i] < $platz1[$i]) {
       $y = 1;
     } elseif($platz0[$i] > $platz1[$i]) {
