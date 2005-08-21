@@ -213,9 +213,9 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
         if($spiel->hTore != -1 && $spiel->gTore != -1) {
           $archivSortDummy[] = $spiel->zeit;
           if ($spiel->heim == $team_a) {
-            $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'h', 'partie'=>$spiel, 'match'=>NULL);
+            $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][13], 'partie'=>$spiel, 'match'=>NULL);
           } else {
-            $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'a', 'partie'=>$spiel, 'match'=>NULL);
+            $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][12], 'partie'=>$spiel, 'match'=>NULL);
           }
         }
       }
@@ -247,9 +247,9 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
               if($spiel->hTore != -1 && $spiel->gTore != -1) {
                 $archivSortDummy[] = $spiel->zeit;
                 if ($spiel->heim == $newTeam_a) {
-                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'h', 'partie'=>$spiel, 'match'=>NULL);
+                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][13], 'partie'=>$spiel, 'match'=>NULL);
                 } else {
-                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>'a', 'partie'=>$spiel, 'match'=>NULL);
+                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][12], 'partie'=>$spiel, 'match'=>NULL);
                 }
               }
             }
@@ -321,9 +321,9 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
       $template->setVariable("winWidth", $w );
       $template->setVariable("drawWidth", $d );
       $template->setVariable("lostWidth",$l );
-      $template->setVariable("winTxt","S");
-      $template->setVariable("drawTxt","U");
-      $template->setVariable("lostTxt","N");
+      $template->setVariable("winTxt",$text['mini'][9]);
+      $template->setVariable("drawTxt",$text['mini'][10]);
+      $template->setVariable("lostTxt",$text['mini'][11]);
     }
     $mini_output = $template->get();
   
