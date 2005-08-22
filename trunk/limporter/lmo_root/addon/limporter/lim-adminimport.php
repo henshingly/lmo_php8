@@ -286,10 +286,10 @@
 
   <tr>
     <td class="lmost5" width="20">&nbsp;</td>
-    <td class="lmost5" colspan=2 align="left"><B><?=$text['limporter'][16]?></B>
+    <td class="lmost5" colspan="2" align="left"><B><?=$text['limporter'][16]?></B>
       <table class="lmoInner" cellspacing="3" cellpadding="0" border="0">
         <tr>
-          <td class="lmost5" width=350><?=$text['limporter'][8]?>
+          <td class="lmost5" width="350"><?=$text['limporter'][8]?>
           </td>
         </tr>
       </table>
@@ -335,7 +335,7 @@ echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$
      include(PATH_TO_ADDONDIR."/limporter/lim-file_select.php");
 ?>
     <tr>
-    <td class="lmost5" colspan="3"><nobr>&nbsp;</nobr></td>
+    <td class="lmost5" colspan="3">&nbsp;</td>
   </tr>
 <?PHP
 }

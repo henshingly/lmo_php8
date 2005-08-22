@@ -116,3 +116,4 @@
 116=. Spieltag sind keine Spiele zugeordnet. Bitte die entsprechenden Spiele per Hand verschieben und anschließend Mannschaft 'Dummy-Spiel' löschen.
 117=Hinweis: Zu
 118=Spiel(en) konnte kein Spieltag gefunden werden. Diese wurden dem 1. Spieltag zugeordnet.
+119=Sie haben nicht alle Pflichtfelder zugeordnet.\nBitte geben Sie eine Spaltenzuordnung für folgende Attribute an

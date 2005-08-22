@@ -18,6 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
+// $Id$
 
   require_once(dirname(__FILE__).'/../../init.php');
   require_once(PATH_TO_ADDONDIR.'/limporter/ini.php');
