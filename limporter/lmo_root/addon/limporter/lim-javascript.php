@@ -22,11 +22,11 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
-
+// $Id$
 
 ?>
-<script language="JavaScript" type="text/JavaScript">
-<!--
+<script type="text/javascript">
+
 var nextButtonClicked = 0;
 
 function findElement(n, d) {
@@ -59,23 +59,21 @@ function checkSettings () {
      if (obj1){
         if (obj1.value == -1) {
                 r = false;
-                err = err+'\nHeimmanschaft';
+                err = err+'\n<?php echo $text['limporter'][69]; ?>';
         }
      }
      if (obj2){
         if (obj2.value == -1) {
                 r = false;
-                err = err+'\nGastmannschaft';
+                err = err+'\n<?php echo $text['limporter'][70]; ?>';
         }
      }
      if (r==false) {
-        alert('Sie haben nicht alle Pflichtfelder zugeordnet.\nBitte geben Sie eine Spaltenzuordnung für folgende Attribute an:\n'+err);
+        alert('<?php echo $text['limporter'][119]; ?>:\n'+err);
         }
  }
 nextButtonClicked=0;
 return r;
 }
 
-
-//-->
 </script>

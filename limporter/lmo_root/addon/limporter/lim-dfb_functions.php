@@ -15,6 +15,7 @@
  * @param string $mode Wenn 'update', dann werden keine Warnungen ausgegeben
  * @return array Array zur Weiterverarbeitung im Limporter
  * @author Lars Dürkop
+ * @version $Id$
  */
 
 function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {

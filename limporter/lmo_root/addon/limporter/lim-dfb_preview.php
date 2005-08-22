@@ -18,6 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
+// $Id$
 
 require_once(dirname(__FILE__).'/../../init.php');
 require_once(PATH_TO_ADDONDIR.'/limporter/ini.php');
@@ -33,10 +34,10 @@ echo "<link rel='stylesheet' type='text/css' href='".URL_TO_ADDONDIR."/limporter
 </head>
 <body leftmargin="1" topmargin="1" class="csvtablebody">
 <?PHP
-if( isset($HTTP_GET_VARS)) {
-  reset ($HTTP_GET_VARS);
+if( isset($_GET)) {
+  reset ($_GET);
   $colums=$lim_colums;//array();
-  foreach ($HTTP_GET_VARS as $k=>$elem) {
+  foreach ($_GET as $k=>$elem) {
     if(!(strpos($k,"c_",0)===false)) {
       $showColum[]=$elem;
       $key = substr($k,2);
@@ -71,7 +72,7 @@ if(isset($file) and ($pv==1)){
 	$dataArray = buildFieldArrayDFB($file,$cdetails,'update');
 	foreach ($dataArray as $dataRow) {
 		if ($row >= $offset) {
-			$data = split("#",$dataRow);
+			$data = explode("#",$dataRow);
 		   	$rows[] = $data;
 		    $num = count($data);
 			if ($num>$col) $col = $num;

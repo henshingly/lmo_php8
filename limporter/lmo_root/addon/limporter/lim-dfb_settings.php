@@ -18,6 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //
+// $Id$
 
 if(!isset($header)){$header="0";}
 if(!isset($xdetailsCheck)){$xdetailsCheck=0;}
@@ -85,13 +86,13 @@ if(isset($ximporturl)){
       <td align="left" colspan=2 class="lmost5"><input class="lmo-formular-button" type="submit" name="vorschau" value="<?PHP echo $text['limporter'][57]; ?>">&nbsp;&nbsp;<?PHP echo $text['limporter'][55]; ?>&nbsp;<input class="lmo-formular-input" type="checkbox" name="showall" <?PHP if($showall==1){echo " checked";} ?> value="1">
     </tr>
     <tr>
-      <td colspan=3 class="lmost5">
+      <td colspan="3" class="lmost5">
 <?PHP
-$prev="addon/limporter/lim-dfb_preview.php?file="
+$prev=PATH_TO_ADDONDIR."/limporter/lim-dfb_preview.php?file="
 		.$limporter_importDir."/".$fileName
-		."&pv=".$pv."&hd=".$header."&cdetails=".$xdetailsCheck."&ch=".$csvchar
-		."&all=".$showall."&dr=".$datarows;
-$prev = $prev."&xoffset=".$xoffset."&xlrow=".$xlrow.settingsLink($cols);
+		."&amp;pv=".$pv."&amp;hd=".$header."&amp;cdetails=".$xdetailsCheck."&amp;ch=".$csvchar
+		."&amp;all=".$showall."&amp;dr=".$datarows
+    ."&amp;xoffset=".$xoffset."&amp;xlrow=".$xlrow.settingsLink($cols);
 echo "<iframe src=\"".$prev."\" width=\"750\" height=\"250\"></iframe>";
 ?>
       </td>
