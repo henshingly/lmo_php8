@@ -44,7 +44,7 @@ if($file!=""){
   if(!empty($_GET['st'])){
     $tabdat=$st.". ".$text[2];
   }
-  if (empty($_REQUEST['action'])) {
+  if (empty($_REQUEST['action']) && !isset($action)) {
     if (!isset($onrun)) $onrun='0';
     switch ($onrun) {
       case '0': $action='results';break;
