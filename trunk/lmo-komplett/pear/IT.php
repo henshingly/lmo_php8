@@ -194,7 +194,7 @@ class HTML_Template_IT {
      * @var      boolean
      * @access   public
      */
-    var $removeUnknownVariables = true;
+    var $removeUnknownVariables = false;
 
     /**
      * Controls the handling of empty blocks, default is remove.
