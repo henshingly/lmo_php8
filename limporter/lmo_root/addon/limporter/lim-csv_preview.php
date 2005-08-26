@@ -40,7 +40,7 @@ if( isset($HTTP_GET_VARS)) {
     if(!(strpos($k,"c_",0)===false)) {
       $showColum[]=$elem;
       $key = substr($k,2);
-      $values=split('_',$elem);
+      $values=explode('_',$elem);
       $colums[$key][0] = $values[0];
       $colums[$key][1] = $values[1];
       $formats[] = null;
