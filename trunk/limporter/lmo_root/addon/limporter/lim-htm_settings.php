@@ -87,7 +87,7 @@ if(isset($ximporturl)){
     <tr>
       <td colspan=3 class="lmost5">
 <?PHP
-$prev=PATH_TO_ADDONDIR."/limporter/lim-htm_preview.php?file="
+$prev=URL_TO_ADDONDIR."/limporter/lim-htm_preview.php?file="
 		.$limporter_importDir."/".$fileName
 		."&amp;pv=".$pv."&amp;hd=".$header."&amp;cdetails=".$xdetailsCheck."&amp;ch=".$csvchar
 		."&amp;all=".$showall."&amp;dr=".$datarows;
