@@ -87,11 +87,11 @@ if(isset($ximporturl)){
     <tr>
       <td colspan=3 class="lmost5">
 <?PHP
-$prev="addon/limporter/lim-htm_preview.php?file="
+$prev=PATH_TO_ADDONDIR."/limporter/lim-htm_preview.php?file="
 		.$limporter_importDir."/".$fileName
-		."&pv=".$pv."&hd=".$header."&cdetails=".$xdetailsCheck."&ch=".$csvchar
-		."&all=".$showall."&dr=".$datarows;
-$prev = $prev."&xoffset=".$xoffset."&xlrow=".$xlrow.settingsLink($cols);
+		."&amp;pv=".$pv."&amp;hd=".$header."&amp;cdetails=".$xdetailsCheck."&amp;ch=".$csvchar
+		."&amp;all=".$showall."&amp;dr=".$datarows;
+$prev = $prev."&amp;xoffset=".$xoffset."&amp;xlrow=".$xlrow.settingsLink($cols);
 echo "<iframe src=\"".$prev."\" width=\"750\" height=\"250\"></iframe>";
 ?>
       </td>
