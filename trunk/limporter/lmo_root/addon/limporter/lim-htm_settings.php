@@ -45,7 +45,7 @@ if(isset($ximporturl)){
 	$col = 0;
 	foreach ($dataArray as $dataRow) {
 		if ($row >= $offset) {
-			$data = split("#",$dataRow);
+			$data = explode("#",$dataRow);
 		   	$rows[] = $data;
 		    $num = count($data);
 			if ($num>$col) $col = $num;

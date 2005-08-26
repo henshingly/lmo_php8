@@ -170,7 +170,7 @@
       $dataArray = buildFieldArray($src,$xdetailsCheck);//$ximportFile
       foreach ($dataArray as $dataRow) {
         if ($row >= $offset) {
-          $data = split("#",$dataRow);
+          $data = explode("#",$dataRow);
           $array[] = $data;
           $num = count($data);
           if ($num>$col) $col = $num;
@@ -191,7 +191,7 @@
       $dataArray = buildFieldArrayDFB($src,$xdetailsCheck, 'update');//$ximportFile
       foreach ($dataArray as $dataRow) {
         if ($row >= $offset) {
-          $data = split("#",$dataRow);
+          $data = explode("#",$dataRow);
           $array[] = $data;
           $num = count($data);
           if ($num>$col) $col = $num;

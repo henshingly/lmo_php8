@@ -59,7 +59,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
    reset ($HTTP_POST_VARS);
    $changesFound = False;
    foreach ($HTTP_POST_VARS as $k=>$v) {
-      $array = split('_',$k);
+      $array = explode('_',$k);
       if (isset($array) and count($array)==4 and ($array[0] == 'sp') and ($array[1] != $v)) {
         $alteSpielTagNr = $array[1];
         $neueSpielTagNr = $v;

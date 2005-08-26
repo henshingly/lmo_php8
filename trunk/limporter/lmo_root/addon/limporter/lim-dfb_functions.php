@@ -20,7 +20,7 @@
 
 function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
   global $text;
-   
+
   function skipRow($rowContent) {
     $result = TRUE;
     if($rowContent=="") $result = TRUE;
@@ -42,6 +42,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
   
   function buildFieldArrayRekursion($url, $rowCount, $newRowCheck, $rows, &$mannschaften, &$linkZumSpieltag, &$spieltagBesucht, &$spieltagHatSpiele, $durchlauf, $anzAufrufSelberSpieltag, $fehlerhafteURLs) {
 	global $text;
+    global $detailsRowCheck;
     $urlContent = getFileContent($url);
 
     //Spieltags-Nr. suchen, bei Spieltagen mit nur verlegten Spielen gibt es keine
@@ -116,7 +117,11 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
          if ($pos) $content=substr($content,$pos+1);
          $content = trim(extractText($content));
 
-        if (preg_match("/\d\d\.\d\d\.\d\d\d\d/",$content,$ergebnis)) $spieldatum  = $ergebnis[0]; //sucht das spieldatum
+        if (preg_match("/\d\d\.\d\d\.\d\d\d\d/",$content,$ergebnis)) {
+          $spieldatum  = $ergebnis[0]; //sucht das spieldatum
+        } else {
+          $spieldatum  = '';
+        }
 
         if (preg_match("/\d+:\d+/",$content,$ergebnis)) $content  = $ergebnis[0]; //löscht das * hinter dem ergebnis
 
@@ -124,10 +129,10 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
         // Ok neue Zeile gefunden, jetzt schauen ob es eine Folgezeile
         // oder eine neue Partie ist
 
-         if ($trEnd!=FALSE and ($detailsRowCheck == 0 or isDetailsRow($content,$newRowCheck)==FALSE or $rowCount < 1)) {
+         if ($trEnd!=FALSE && ($detailsRowCheck == 0 || isDetailsRow($content,$newRowCheck)==FALSE || $rowCount < 1)) {
              // Wenn die aktuelle Zeile komplett leer ist,dh nur # enthält,
              // dann wird sie mit neuen Daten überschrieben
-             if ($rowCount < 0 or skipRow($rows[$rowCount])==FALSE) {
+             if ($rowCount < 0 || skipRow($rows[$rowCount])==FALSE) {
              //Mannschaften zählen
              $zeile = split('#', $rows[$rowCount]);
              if (!in_array($zeile[3], $mannschaften)) //wenn mannschaftsname noch nicht vorgekommen ist
@@ -153,7 +158,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 
         //entsprechend des gefundenen colspan zusätzliche zellen einfügen
           for ($z=1;$z<$colspanCount;$z++) {
-            if ($content!="" and $rowCount == 0 ) $rows[$rowCount].="#".$content.$z; // Nur in der erste Zeile
+            if ($content!="" && $rowCount == 0 ) $rows[$rowCount].="#".$content.$z; // Nur in der erste Zeile
             else $rows[$rowCount].="#";
           }
       }
@@ -198,23 +203,23 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
   for ($i=0; $i<count($rows); $i++) {
     $zeile = split('#', $rows[$i]);
     $zeile[0] = preg_replace("/^0{1,2}/",'',$zeile[0]);  //führende Spieltags-Nullen entfernen
-    if (($zeile[2]!='?&?!') && ($spieltageExplizitGesetzt[$zeile[0]] <> TRUE)) { //letztere Bedingung, damit Spiele, die an zwei Spieltagen angesetzt sind (auch sowas gibts...), beim zweiten Mal übersprungen werden 
+    if (($zeile[2]!='?&?!') && (!isset($spieltageExplizitGesetzt[$zeile[0]]) || $spieltageExplizitGesetzt[$zeile[0]] !== TRUE)) { //letztere Bedingung, damit Spiele, die an zwei Spieltagen angesetzt sind (auch sowas gibts...), beim zweiten Mal übersprungen werden 
       $spielnr = $zeile[0];
       $spieltagnr = $zeile[2];
       $spieltage[$spielnr] = $spieltagnr;
       $spieltageExplizitGesetzt[$spielnr] = TRUE; //Soll heißen, dass der Spieltag aus fussball.de ausgelesen wurde und somit korrekt ist
       //Spielnr./Tag-Zuordnung für die vorhergehenden Spielnr. ebenfalls eintragen, falls noch nicht geschehen. Für Spiele ohne Spieltag wird dieser also 'geraten' 
-      for ($k=$spielnr-1; (($k>$spielnr-($anz_mannschaften/2)) and ($k>=0)); $k--) {
+      for ($k=$spielnr-1; (($k>$spielnr-($anz_mannschaften/2)) && ($k>=0)); $k--) {
            //echo "k: $k\n"; echo "ceil($k / ($anz_mannschaften / 2)\n";
            //echo "ceil($spielnr / ($anz_mannschaften / 2)\n";
-         if ((ceil($k / ($anz_mannschaften / 2)) == ceil($spielnr / ($anz_mannschaften / 2))) and ($spieltageExplizitGesetzt[$k]<>TRUE)) {
+         if ((ceil($k / ($anz_mannschaften / 2)) == ceil($spielnr / ($anz_mannschaften / 2))) && (!isset($spieltageExplizitGesetzt[$k]) || $spieltageExplizitGesetzt[$k]!==TRUE)) {
             $spieltage[$k] = $spieltage[$spielnr];
             $spieltageExplizitGesetzt[$k] = FALSE;
          }
       }
       //Für die nachfolgenden Spiele ebenfalls
-      for ($k=$spielnr+1; (($k < $spielnr+($anz_mannschaften/2)) and ($k<=count($rows))); $k++) {
-         if ((ceil($k / ($anz_mannschaften / 2)) == ceil($spielnr / ($anz_mannschaften / 2))) and ($spieltageExplizitGesetzt[$k]<>TRUE)) {
+      for ($k=$spielnr+1; (($k < $spielnr+($anz_mannschaften/2)) && ($k<=count($rows))); $k++) {
+         if ((ceil($k / ($anz_mannschaften / 2)) == ceil($spielnr / ($anz_mannschaften / 2))) && (!isset($spieltageExplizitGesetzt[$k]) || $spieltageExplizitGesetzt[$k]!==TRUE)) {
             $spieltage[$k] = $spieltage[$spielnr];
             $spieltageExplizitGesetzt[$k] = FALSE;
          }
@@ -230,7 +235,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
   for ($i=0; $i<count($rows); $i++) {
     $zeile = split('#', $rows[$i]);
     $zeile[0] = preg_replace("/^0{1,2}/",'',$zeile[0]);  //führende Spieltags-Nullen entfernen
-    if (($zeile[6]=='') && ($zeile[3]<>'SPIELFREI') && ($zeile[4]<>'SPIELFREI') && ($zeile[3]<>'9999999999999999') && ($zeile[4]<>'9999999999999999') && ($spielnrEingefuegt[$zeile[0]]<>TRUE)) { //zeile[6]!='', wenn Spiel ein Verlegungsdatum eingetragen hat
+    if (($zeile[6]=='') && ($zeile[3]<>'SPIELFREI') && ($zeile[4]<>'SPIELFREI') && ($zeile[3]<>'9999999999999999') && ($zeile[4]<>'9999999999999999') && (!isset($spielnrEingefuegt[$zeile[0]]))) { //zeile[6]!='', wenn Spiel ein Verlegungsdatum eingetragen hat
       if ($zeile[2]=='?&?!') { //bei Spielen mit unbekannter Spieltagszuordnung
          $zeile[2]=$spieltage[$zeile[0]];
          if ($zeile[2]=='') { //Kein Spieltag gefunden

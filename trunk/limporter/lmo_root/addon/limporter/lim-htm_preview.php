@@ -40,7 +40,7 @@ if( isset($HTTP_GET_VARS)) {
     if(!(strpos($k,"c_",0)===false)) {
       $showColum[]=$elem;
       $key = substr($k,2);
-      $values=split('_',$elem);
+      $values=explode('_',$elem);
       $colums[$key][0] = $values[0];
       $colums[$key][1] = $values[1];
       $formats[] = null;
@@ -71,7 +71,7 @@ if(isset($file) and ($pv==1)){
 	$dataArray = buildFieldArray($file,$cdetails);
 	foreach ($dataArray as $dataRow) {
 		if ($row >= $offset) {
-			$data = split("#",$dataRow);
+			$data = explode("#",$dataRow);
 		   	$rows[] = $data;
 		    $num = count($data);
 			if ($num>$col) $col = $num;

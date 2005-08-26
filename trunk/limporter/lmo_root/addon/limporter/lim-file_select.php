@@ -1,7 +1,7 @@
 <?PHP
 $folder=dir(PATH_TO_LMO."/".$dirliga);
 $files = array();
-if ($ximporttype==1) $extensions =split(",",$limporter_csvExtension);
+if ($ximporttype==1) $extensions =explode(",",$limporter_csvExtension);
 else if (($ximporttype==0) || ($ximporttype==2)) $extensions = array("htm","html");
 while($data=$folder->read()){
   if( in_array(strtolower(substr($data,-3)),$extensions) or in_array(strtolower(substr($data,-4)),$extensions) ){
