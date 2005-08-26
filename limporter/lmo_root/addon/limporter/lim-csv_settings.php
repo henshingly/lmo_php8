@@ -83,11 +83,11 @@ if(isset($ximporturl)){
     <tr>
       <td colspan=3 class="lmost5">
 <?PHP
-$prev="addon/limporter/lim-csv_preview.php?file="
+$prev=PATH_TO_ADDONDIR."/limporter/lim-csv_preview.php?file="
 		.$limporter_importDir."/".$fileName
-		."&pv=".$pv."&hd=".$header."&ch=".$csvchar
-		."&all=".$showall;//."&dr=".$datarows;
-$prev = $prev."&xoffset=".$xoffset."&xlrow=".$xlrow.settingsLink($cols);
+		."&amp;pv=".$pv."&amp;hd=".$header."&amp;ch=".$csvchar
+		."&amp;all=".$showall;//."&amp;dr=".$datarows;
+$prev = $prev."&amp;xoffset=".$xoffset."&amp;xlrow=".$xlrow.settingsLink($cols);
 /*
 $prev="addon/limporter/lim-csv_preview.php?file=".$limporter_importDir."/".$fileName."&pv=".$pv."&hd=".$header."&ch=".$csvchar."&all=".$showall;
 $prev = $prev."&dr=".$datarows."&xoffset=".$xoffset."&xlrow=".$xlrow."&c_nr=".$cols['NR'][0]."&c_h=".$cols['HEIM'][0]."&c_g=".$cols['GAST'][0]."&c_th=".$cols['THEIM'][0];
