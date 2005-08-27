@@ -93,7 +93,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
     } else $neue_url='';
 	//echo $neue_url."<br>\n";
     $arr = preg_split("/<\/t[d|h]/si",$urlContent);
-
+    $spieldatum = '';
     for ($i=0; $i<count($arr); $i++){
       $content = stristr($arr[$i],"<td");
       $trEnd = stristr($arr[$i],"<tr");
@@ -119,9 +119,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 
         if (preg_match("/\d\d\.\d\d\.\d\d\d\d/",$content,$ergebnis)) {
           $spieldatum  = $ergebnis[0]; //sucht das spieldatum
-        } else {
-          $spieldatum  = '';
-        }
+        } 
 
         if (preg_match("/\d+:\d+/",$content,$ergebnis)) $content  = $ergebnis[0]; //löscht das * hinter dem ergebnis
 
