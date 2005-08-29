@@ -44,12 +44,6 @@ if($file!=""){
           if($nametor==$orgtor){$nametor="";}
         }
         break;
-      case 1:
-        if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){
-          $urlt=isset($_POST["xurlt"])?1:0;
-          $urlb=isset($_POST["xurlb"])?1:0;
-        }
-        break;
       case 2:
         if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){
           $enablegamesort=isset($_POST["xenablegamesort"])?1:0;
@@ -79,6 +73,9 @@ if($file!=""){
             $klfin=isset($_POST["xklfin"])?1:0;
             $playdown=isset($_POST["xplaydown"])?1:0;
           }
+          
+          $urlt=isset($_POST["xurlt"])?1:0;
+          $urlb=isset($_POST["xurlb"])?1:0;
         }
         break;
       case 3:
@@ -89,6 +86,16 @@ if($file!=""){
           $direkt=isset($_POST["xdirekt"])?1:0;
           $kegel=isset($_POST["xkegel"])?1:0;
           $hands=isset($_POST["xhands"])?1:0;
+          
+          $pns=isset($_POST["xpns"])?trim($_POST["xpns"]):$pns;
+          $pnu=isset($_POST["xpnu"])?trim($_POST["xpnu"]):$pnu;
+          $pnn=isset($_POST["xpnn"])?trim($_POST["xpnn"]):$pnn;
+          $pxs=isset($_POST["xpxs"])?trim($_POST["xpxs"]):$pxs;
+          $pxu=isset($_POST["xpxu"])?trim($_POST["xpxu"]):$pxu;
+          $pxn=isset($_POST["xpxn"])?trim($_POST["xpxn"]):$pxn;
+          $pps=isset($_POST["xpps"])?trim($_POST["xpps"]):$pps;
+          $ppu=isset($_POST["xppu"])?trim($_POST["xppu"]):$ppu;
+          $ppn=isset($_POST["xppn"])?trim($_POST["xppn"]):$ppn;
         }
         break;
       case 4:
@@ -103,19 +110,7 @@ if($file!=""){
           $anzab=isset($_POST["xanzab"])?trim($_POST["xanzab"]):$anzab;
         }
         break;
-      case 5:
-        if(($_SESSION['lmouserok']==2  || $_SESSION['lmouserokerweitert']==1) && $lmtype==0){
-          $pns=isset($_POST["xpns"])?trim($_POST["xpns"]):$pns;
-          $pnu=isset($_POST["xpnu"])?trim($_POST["xpnu"]):$pnu;
-          $pnn=isset($_POST["xpnn"])?trim($_POST["xpnn"]):$pnn;
-          $pxs=isset($_POST["xpxs"])?trim($_POST["xpxs"]):$pxs;
-          $pxu=isset($_POST["xpxu"])?trim($_POST["xpxu"]):$pxu;
-          $pxn=isset($_POST["xpxn"])?trim($_POST["xpxn"]):$pxn;
-          $pps=isset($_POST["xpps"])?trim($_POST["xpps"]):$pps;
-          $ppu=isset($_POST["xppu"])?trim($_POST["xppu"]):$ppu;
-          $ppn=isset($_POST["xppn"])?trim($_POST["xppn"]):$ppn;
-        }
-        break;
+      
     }
     require(PATH_TO_LMO."/lmo-savefile.php");
   }
@@ -134,12 +129,10 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
         <tr><td align="right"><?if ($show==0) {echo $text[183];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?=$text[183];?></a><?}?></td></tr><?
   if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1) {?>
-        <tr><td align="right"><?if ($show==1) {echo $text[264];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=1&amp;file=$file&amp;st=-1";?>"><?=$text[264];?></a><?}?></td></tr>
         <tr><td align="right"><?if ($show==2) {echo $text[250];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=2&amp;file=$file&amp;st=-1";?>"><?=$text[250];?></a><?}?></td></tr><?
     if ($lmtype==0){?>  
         <tr><td align="right"><?if ($show==3) {echo $text[178];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=3&amp;file=$file&amp;st=-1";?>"><?=$text[178];?></a><?}?></td></tr>
         <tr><td align="right"><?if ($show==4) {echo $text[40];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=4&amp;file=$file&amp;st=-1";?>"><?=$text[40];?></a><?}?></td></tr>
-        <tr><td align="right"><?if ($show==5) {echo $text[198];}else{?><a onclick="return chklmolink();" href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=5&amp;file=$file&amp;st=-1";?>"><?=$text[198];?></a><?}?></td></tr>
         <tr><td align="right"><a href='<?="$addr-3"?>' onclick="return chklmolink();" title="<?=$text[339]?>"><?=$text[338]?></a></td></tr><?
     }
   }?>
@@ -234,17 +227,6 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             
           </tr><? 
     }
-  }elseif ($show==1) {
-    if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
-          <tr>
-            <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xurlt" onChange="dolmoedit()"<?if($urlt==1){echo " checked";}?>></td>
-            <td class="nobr" align="left"><acronym title="<?=$text[268];?>"><?=$text[267];?></acronym></td>
-          </tr>
-          <tr>
-            <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xurlb" onChange="dolmoedit()"<?if($urlb==1){echo " checked";}?>></td>
-            <td class="nobr" align="left"><acronym title="<?=$text[266];?>"><?=$text[265];?></acronym></td>
-          </tr><? 
-    }
   }elseif ($show==2) {
     if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
           <tr>
@@ -287,7 +269,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             <td class="nobr" align="left">
               <input type="radio" name="xdatfselect" value="1" checked>
               <select class="lmo-formular-input" name="xdatf" onChange="dolmoedit();document.getElementsByName('xdatfselect')[0].checked=true;"><?
-      $dummf=array("%d.%m. %H:%M","%d.%m.%Y %H:%M","%a.%d.%m. %H:%M","%A, %d.%m. %H:%M","%a.%d.%m.%Y %H:%M","%A, %d.%m.%Y %H:%M");?>
+      $dummf=array("%d.%m. %H:%M","%d.%m.%Y %H:%M","%a. %d.%m. %H:%M","%A, %d.%m. %H:%M","%a. %d.%m.%Y %H:%M","%A, %d.%m.%Y %H:%M");?>
                 <option value="">__</option><?
       for($y=0;$y<count($dummf);$y++){?>
                 <option value="<?=$dummf[$y]?>"<?if($datf==$dummf[$y]){echo " selected";}?>><?=strftime($dummf[$y])?></option><?
@@ -363,6 +345,17 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
       }else{?>
             <td></td><?
       }?>
+          </tr>
+          <tr>
+            <th align="left" colspan="2"><?=$text[264];?></th>
+          </tr>
+          <tr>
+            <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xurlt" onChange="dolmoedit()"<?if($urlt==1){echo " checked";}?>></td>
+            <td class="nobr" align="left"><acronym title="<?=$text[268];?>"><?=$text[267];?></acronym></td>
+          </tr>
+          <tr>
+            <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xurlb" onChange="dolmoedit()"<?if($urlb==1){echo " checked";}?>></td>
+            <td class="nobr" align="left"><acronym title="<?=$text[266];?>"><?=$text[265];?></acronym></td>
           </tr><? 
     }
   }elseif ($show==3) {
@@ -390,6 +383,39 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xhands" onChange="dolmoedit()"<?if($hands==1){echo " checked";}?>>&nbsp;</td>
             <td class="nobr" align="left">&nbsp;<acronym title="<?=$text[408];?>"><?=$text[407];?></acronym></td>
+          </tr>
+          <tr>
+            <th align="left" colspan="2"><?=$text[198];?></th>
+          </tr>
+          <tr>
+            <td class="nobr" colspan="2" align="left">
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td class="nobr" align="left">&nbsp;</td>
+                  <th class="nobr" align="center">&nbsp;<acronym title="<?=$text[199];?>"><?=$text[34];?></acronym>&nbsp;</th>
+                  <th class="nobr" align="center">&nbsp;<acronym title="<?=$text[200];?>"><?=$text[35];?></acronym>&nbsp;</th>
+                  <th class="nobr" align="center">&nbsp;<acronym title="<?=$text[201];?>"><?=$text[36];?></acronym>&nbsp;</th>
+                </tr>
+                <tr>
+                  <td class="nobr" align="right"><?=$text[202];?>&nbsp;</td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpns" size="2" onChange="dolmoedit()" value=<?=$pns?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpnu" size="2" onChange="dolmoedit()" value=<?=$pnu?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpnn" size="2" onChange="dolmoedit()" value=<?=$pnn?>></td>
+                </tr>
+                <tr>
+                  <td class="nobr" align="right"><?=$text[203];?>&nbsp;</td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpxs" size="2" onChange="dolmoedit()" value=<?=$pxs?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpxu" size="2" onChange="dolmoedit()" value=<?=$pxu?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpxn" size="2" onChange="dolmoedit()" value=<?=$pxn?>></td>
+                </tr>
+                <tr>
+                  <td class="nobr" align="right"><?=$text[204];?>&nbsp;</td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpps" size="2" onChange="dolmoedit()" value=<?=$pps?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xppu" size="2" onChange="dolmoedit()" value=<?=$ppu?>></td>
+                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xppn" size="2" onChange="dolmoedit()" value=<?=$ppn?>></td>
+                </tr>
+              </table>
+            </td>
           </tr><? 
     }
   }elseif ($show==4) {
@@ -460,39 +486,6 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
               </select>&nbsp;
             </td>
             <td class="lmoTabelleAbsteiger" align="left">&nbsp;<acronym title="<?=$text[388];?>"><?=$text[387];?></acronym></td>
-          </tr><? 
-    }
-  }elseif ($show==5) {
-    if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
-          <tr>
-            <td class="nobr" colspan="2" align="left">
-              <table cellspacing="0" cellpadding="0" border="0">
-                <tr>
-                  <td class="nobr" align="left">&nbsp;</td>
-                  <th class="nobr" align="center">&nbsp;<acronym title="<?=$text[199];?>"><?=$text[34];?></acronym>&nbsp;</th>
-                  <th class="nobr" align="center">&nbsp;<acronym title="<?=$text[200];?>"><?=$text[35];?></acronym>&nbsp;</th>
-                  <th class="nobr" align="center">&nbsp;<acronym title="<?=$text[201];?>"><?=$text[36];?></acronym>&nbsp;</th>
-                </tr>
-                <tr>
-                  <td class="nobr" align="right"><?=$text[202];?>&nbsp;</td>
-                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpns" size="2" onChange="dolmoedit()" value=<?=$pns?>></td>
-                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpnu" size="2" onChange="dolmoedit()" value=<?=$pnu?>></td>
-                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpnn" size="2" onChange="dolmoedit()" value=<?=$pnn?>></td>
-                </tr>
-                <tr>
-                  <td class="nobr" align="right"><?=$text[203];?>&nbsp;</td>
-                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpxs" size="2" onChange="dolmoedit()" value=<?=$pxs?>></td>
-                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpxu" size="2" onChange="dolmoedit()" value=<?=$pxu?>></td>
-                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpxn" size="2" onChange="dolmoedit()" value=<?=$pnn?>></td>
-                </tr>
-                <tr>
-                  <td class="nobr" align="right"><?=$text[204];?>&nbsp;</td>
-                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xpps" size="2" onChange="dolmoedit()" value=<?=$pps?>></td>
-                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xppu" size="2" onChange="dolmoedit()" value=<?=$ppu?>></td>
-                  <td class="nobr" align="center"><input class="lmo-formular-input" name="xppn" size="2" onChange="dolmoedit()" value=<?=$ppn?>></td>
-                </tr>
-              </table>
-            </td>
           </tr><? 
     }
   }?>
