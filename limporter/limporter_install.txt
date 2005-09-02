@@ -56,7 +56,7 @@
 #                                                                                               #
 #                             Welche Dateien werden benötigt?                                   #
 #                                 - lmo-adminmain.php                                           #
-#                                 - lmo-adminnaviunten.php                                      #
+#                                 - lmo-adminsubnavi.php                                      #
 #                                                                                               #
 #               Nicht vergessen vorher ein Backup der Dateien zu machen!!!!                     #
 #                                                                                               #
