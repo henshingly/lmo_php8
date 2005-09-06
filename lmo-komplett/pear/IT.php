@@ -782,7 +782,7 @@ class HTML_Template_IT {
      *           $removeEmptyBlocks
      */
     function loadTemplatefile( $filename,
-                               $removeUnknownVariables = true,
+                               $removeUnknownVariables = false,
                                $removeEmptyBlocks = true ) {
 
         $template = "";
