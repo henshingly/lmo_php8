@@ -139,10 +139,10 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
              if (!in_array($zeile[4], $mannschaften)) //Auswärts muss auch überprüft werden. "Spielfrei" ist z.B. eine reine Auswärtsmannschaft
                if ($mannschaften[0]=='') $mannschaften[0]=$zeile[4];
                else array_push($mannschaften, $zeile[4]);
-             if ($durchlauf == FALSE) {
+             /*if ($durchlauf == FALSE) {
                $zeile[6] = '00:00'; //Beim Extra-Aufruf des Spieltages wird ein Verlegungs-Datum eingetragen, damit das Spiel am Ende nicht doppelt berücksichtigt wird  
                $rows[$rowCount] = implode("#", $zeile);
-             }
+             }*/
              $rowCount++;
             }
             $rows[$rowCount]=$content."#$spieldatum#$spieltagsnr";
