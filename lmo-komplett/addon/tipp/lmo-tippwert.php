@@ -391,11 +391,11 @@ for($x = 1; $x <= $anztipper; $x++) {
           <td class="<?=$dumm1; ?>" align="left">&nbsp;<?
         echo $dummy;
         if ($tipp_showname == 1) {
-          if ($tipp_showemail == 1) {
+          if ($tipp_showemail == 1 && !empty($tipperemail[$i])) {
             echo "<a href='mailto:".$tipperemail[$i]."'>";
           }
           echo $tippername[$i];
-          if ($tipp_showemail == 1) {
+          if ($tipp_showemail == 1 && !empty($tipperemail[$i])) {
             echo "</a>";
           }
         }
