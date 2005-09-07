@@ -41,8 +41,12 @@ $all=                 isset($_REQUEST['all'])                ?($_REQUEST['all']=
 $viewermode=          isset($_REQUEST['viewermode'])         ?1                                :0;
 $teamintern=          isset($_REQUEST['teamintern'])         ?$_REQUEST['teamintern']          :'';
 $endtab=              isset($_REQUEST['endtab'])             ?$_REQUEST['endtab']              :0;
-$tipp_tippeinsicht=   isset($_REQUEST['tipp_tippeinsicht'])  ?$_REQUEST['tipp_tippeinsicht']   :1;
-$tipp_jokertippmulti= isset($_REQUEST['tipp_jokertippmulti'])?$_REQUEST['tipp_jokertippmulti'] :2;
+if (!isset($tipp_tippeinsicht)) {
+  $tipp_tippeinsicht=   isset($_REQUEST['tipp_tippeinsicht'])  ?$_REQUEST['tipp_tippeinsicht']   :1;
+}
+if (!isset($tipp_jokertippmulti)) {
+  $tipp_jokertippmulti= isset($_REQUEST['tipp_jokertippmulti'])?$_REQUEST['tipp_jokertippmulti'] :2;
+}
 
 if ($todo == "logout") {
   $_SESSION["lmotipperok"] = 0;
