@@ -33,15 +33,15 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
   preg_match("/<OPTION VALUE=\"null\">.+OPTION> /", $urlContent,$ergebnis);
   preg_match_all("/<OPTION .{0,9}VALUE=\"\/dbc.{40,70}OPTION>/", $ergebnis[0], $ergebnis);
   for ($i=0; $i<count($ergebnis[0]); $i++) {
-  	//Link extrahieren
-  	preg_match("/\/.*,\d{1,3}/", $ergebnis[0][$i], $temp);
+    //Link extrahieren
+    preg_match("/\/.*,\d{1,3}/", $ergebnis[0][$i], $temp);
     $linkZumSpieltag[$i+1] = "http://fussball.sport1.de".$temp[0];
     $spieltagBesucht[$i+1] = FALSE;
   }
   unset($urlContent);
   
-  function buildFieldArrayRekursion($url, $rowCount, $newRowCheck, $rows, &$mannschaften, &$linkZumSpieltag, &$spieltagBesucht, &$spieltagHatSpiele, $durchlauf, $anzAufrufSelberSpieltag, $fehlerhafteURLs) {
-	global $text;
+  function buildFieldArrayRekursion($url, $rowCount, $newRowCheck, $rows, &$mannschaften, &$linkZumSpieltag, &$spieltagBesucht, &$spieltagHatSpiele, $durchlauf, $anzAufrufSelberSpieltag, $fehlerhafteURLs, $mode) {
+    global $text;
     global $detailsRowCheck;
     $urlContent = getFileContent($url);
 
@@ -58,17 +58,17 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
     if (($durchlauf == TRUE) && ($anzAufrufSelberSpieltag < 4)) { //entweder ist das Script schon beim expliziten Spieltagsaufruf oder es wurde 4mal hintereinander derselbe Spieltag aufgerufen (passiert bei Saisonende oder bei Fehler beim 'nächster'-Durchlauf)
       if (preg_match("/dbc.{60,100}n.chster/", $urlContent, $ergebnis)) { //'nächster'-Link extrahieren
         preg_match("/dbc.+,1/", $ergebnis[0], $neue_url_temp);
-		$neue_url="http://fussball.sport1.de/".$neue_url_temp[0];
+	$neue_url="http://fussball.sport1.de/".$neue_url_temp[0];
 		
-		//Bestimmt das Datum aus der neuen URL
-		$temp = explode('/', $neue_url_temp[0]);
+	//Bestimmt das Datum aus der neuen URL
+	$temp = explode('/', $neue_url_temp[0]);
         $temp2 = explode(',', $temp[10]);
         $neue_url_datum = $temp2[2];
         //echo "$neue_url_datum<br>";
         $neue_url_datum = mktime(0,0,0,$neue_url_datum[4].$neue_url_datum[5],$neue_url_datum[6].$neue_url_datum[7],$neue_url_datum[0].$neue_url_datum[1].$neue_url_datum[2].$neue_url_datum[3]);
         
-		//Bestimmt das Datum aus der alten URL
-		preg_match("/dbc.+,1/", $url, $neue_url_temp);
+	//Bestimmt das Datum aus der alten URL
+	preg_match("/dbc.+,1/", $url, $neue_url_temp);
         $temp = explode('/', $neue_url_temp[0]);
         $temp2 = explode(',', $temp[10]);
         $alte_url_datum = $temp2[2];
@@ -91,7 +91,9 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
          exit;
       }
     } else $neue_url='';
-	//echo $neue_url."<br>\n";
+    //Für Debug-Zwecke diese beiden Zeilen wieder entkommentieren:
+    //echo $neue_url."<br>\n";
+    //echo memory_get_usage() . "\n";	
     $arr = preg_split("/<\/t[d|h]/si",$urlContent);
     $spieldatum = '';
     for ($i=0; $i<count($arr); $i++){
@@ -121,7 +123,14 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
           $spieldatum  = $ergebnis[0]; //sucht das spieldatum
         } 
 
-        if (preg_match("/\d+:\d+/",$content,$ergebnis)) $content  = $ergebnis[0]; //löscht das * hinter dem ergebnis
+        if (preg_match("/(\d+:\d+)( ([a-zA-Z])){0,1}/",$content,$ergebnis)) { // filtert die Ergebnis-Zelle
+          $content  = $ergebnis[1]; //das Ergebnis ohne Zusätze
+	  if ($ergebnis[3] == 't' || $ergebnis[3] == 'T') { //$ergebnis[3] beinhaltet den Ergebnis-Zusatz (* oder u,v,w,...)
+	    $zeile = split('#', $rows[$rowCount]);
+	    $rows[$rowCount] = '';  //Falls das Spiel ein Testspiel ist, lösche die aktuelle Zeile
+            if ($mode<>"update") echo "<font>".$text['limporter'][111]." ".$zeile[3]." - ".$zeile[4]." ".$text['limporter'][119]."<br>\n";	
+	  }
+	}
 
 
         // Ok neue Zeile gefunden, jetzt schauen ob es eine Folgezeile
@@ -167,7 +176,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
     unset($content);    
       
     if ($neue_url != "") { //solange letzter Spieltag noch nicht erreicht
-      $rows = buildFieldArrayRekursion($neue_url, $rowCount, $newRowCheck, $rows, $mannschaften, $linkZumSpieltag, $spieltagBesucht, $spieltagHatSpiele, TRUE, $anzAufrufSelberSpieltag, $fehlerhafteURLs); //nächsten Spieltag aufrufen
+      $rows = buildFieldArrayRekursion($neue_url, $rowCount, $newRowCheck, $rows, $mannschaften, $linkZumSpieltag, $spieltagBesucht, $spieltagHatSpiele, TRUE, $anzAufrufSelberSpieltag, $fehlerhafteURLs, $mode); //nächsten Spieltag aufrufen
     }
     else { //letzter Spieltag erreicht. Nun noch nachschauen, ob auch alle Spieltage besucht worden. (Sind zwei Spieltage nur 2 Tage voneinander entfernt, werden sie beim 'nächster'-Durchlauf von fussball.de zusammengefasst)
 	  $i = array_search(FALSE, $spieltagBesucht);
@@ -176,7 +185,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 	  else {
 	  	$spieltagBesucht[$i] = TRUE; //Falls der Benutzer mehr Spieltage angibt als existieren, werden die überzähligen Spieltage oben nicht als besucht markiert und es würde ohne die Zeile zur Endlosschleife kommen.
 	  	$neue_url = $linkZumSpieltag[$i];
-	  	$rows = buildFieldArrayRekursion($neue_url, $rowCount, $newRowCheck, $rows, $mannschaften, $linkZumSpieltag, $spieltagBesucht, $spieltagHatSpiele, FALSE, 0, array()); //nächsten Spieltag aufrufen
+	  	$rows = buildFieldArrayRekursion($neue_url, $rowCount, $newRowCheck, $rows, $mannschaften, $linkZumSpieltag, $spieltagBesucht, $spieltagHatSpiele, FALSE, 0, array(), $mode); //nächsten Spieltag aufrufen
 	  }
     }
     return $rows;
@@ -184,7 +193,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 
   $mannschaften = array();
   $spieltagHatSpiele = array();
-  $rows = buildFieldArrayRekursion($url, -1, "", array(), $mannschaften, $linkZumSpieltag, $spieltagBesucht, $spieltagHatSpiele, TRUE, 0, array());
+  $rows = buildFieldArrayRekursion($url, -1, "", array(), $mannschaften, $linkZumSpieltag, $spieltagBesucht, $spieltagHatSpiele, TRUE, 0, array(), $mode);
   array_pop($rows); //Aus einem mir nicht ganz klaren Grund enthält der letzte Key des Arrays "Datenmüll". Der wird hiermit gelöscht.
   
   //Zumindest der letzte Spieltag wird mehrfach beim Einlesen aufgerufen. Daher die mehrfachen Einträge entfernen

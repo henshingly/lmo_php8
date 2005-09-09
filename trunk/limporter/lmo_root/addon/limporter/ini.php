@@ -42,6 +42,7 @@
 //		 reguläre Ausdrücke hinzugefügt für den Fall, dass Heim- und Gastmannschaft in einer Zelle stehen
 // 1.6ß2 bugfix	 Wenn ein Benutzer in der fussball.de-Import-URL mehr Spieltage angibt als wirklich existieren,
 //		 kommt es nicht mehr zur Endlosschleife.
+// 1.6ß2 bugfix	 Wenn Spiele in fussball.de als Testspiele deklariert sind, werden sie nicht mehr importiert
 
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
