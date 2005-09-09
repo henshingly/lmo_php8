@@ -117,3 +117,4 @@
 117=Hinweis: Zu
 118=Spiel(en) konnte kein Spieltag gefunden werden. Diese wurden dem 1. Spieltag zugeordnet.
 119=Sie haben nicht alle Pflichtfelder zugeordnet.\nBitte geben Sie eine Spaltenzuordnung für folgende Attribute an
+120=ist als Testspiel deklariert und wurde deshalb ignoriert.

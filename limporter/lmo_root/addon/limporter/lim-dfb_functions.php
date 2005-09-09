@@ -128,7 +128,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 	  if ($ergebnis[3] == 't' || $ergebnis[3] == 'T') { //$ergebnis[3] beinhaltet den Ergebnis-Zusatz (* oder u,v,w,...)
 	    $zeile = split('#', $rows[$rowCount]);
 	    $rows[$rowCount] = '';  //Falls das Spiel ein Testspiel ist, lösche die aktuelle Zeile
-            if ($mode<>"update") echo "<font>".$text['limporter'][111]." ".$zeile[3]." - ".$zeile[4]." ".$text['limporter'][119]."<br>\n";	
+            if ($mode<>"update") echo "<font>".$text['limporter'][111]." ".$zeile[3]." - ".$zeile[4]." ".$text['limporter'][120]."<br>\n";	
 	  }
 	}
 
