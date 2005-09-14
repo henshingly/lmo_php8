@@ -43,10 +43,11 @@
 // 1.6ß2 bugfix	 Wenn ein Benutzer in der fussball.de-Import-URL mehr Spieltage angibt als wirklich existieren,
 //		 kommt es nicht mehr zur Endlosschleife.
 // 1.6ß2 bugfix	 Wenn Spiele in fussball.de als Testspiele deklariert sind, werden sie nicht mehr importiert
+// 1.6ß3         Import an neue Linkstruktur von fussball.de angepasst
 
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
-if (!defined('VERSION')) define('VERSION','1.6ß2');
+if (!defined('VERSION')) define('VERSION','1.6ß3');
 
 // ARRAY mit reguläre Ausdruecken, um nur bestimmte Teile aus einer Zelle zu extrahieren.
 // Dieses kann GERNE erweitert werden. Bitte posted getestete Expressions im Forum ,
