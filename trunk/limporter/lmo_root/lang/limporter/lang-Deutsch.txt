@@ -35,7 +35,7 @@
 035=Spielplan von fussball.de
 036=Spielplan Datenquelle wählen
 037=Wählen Sie eine lokale Datei aus dem LMO Ligen Verzeichnis aus,<BR>oder geben Sie den vollständigen URL-Pfad des Spielplans an.
-038=Der URL-Pfad muss ein Link zum ersten Spieltag der Liga sein.<BR>(Z.B. 1. Spieltag auswählen, rechte Maustaste auf 'vorheriger' und 'Verknüpfung kopieren')
+038=Der URL-Pfad muss ein Link zum ersten Spieltag der Liga sein.<BR>(Internet Explorer: Rechtsklick im Bereich der Begegnungen => Eigenschaften => URL kopieren.)<BR>(Firefox: Rechtsklick im Bereich der Begegnungen => Aktueller Frame => Frame-Informationen anzeigen => URL kopieren.)
 039=Wählen hier die Datei aus, von der Sie den Spielplan importieren wollen.
 040=lokale Datei auswählen
 041=Bitte Datei w&auml;hlen
