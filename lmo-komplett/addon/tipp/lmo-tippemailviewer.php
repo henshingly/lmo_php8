@@ -82,9 +82,11 @@ if ($file != "") {
           $teama0 = $dum[2];
         } elseif($op8 == "TB") {
           $teamb0 = $dum[2];
+	    } elseif($op8 == "TI") {
+          $tipp = $dum[2];           
         } elseif($op8 == "AT") {
           $zeit0 = zeit($dum[2], $datum10, $datum20);
-          if ($zeit0 > $now && $zeit0 < $then && $teama0 > 0) {
+          if ($zeit0 > $now && $zeit0 < $then && $teama0 > 0 && $tipp <> 1) {
             $spiel0 = substr($dum[1], 2);
             if ($lmtype0 == 0) {
               $modus0 = 1;
