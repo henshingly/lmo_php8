@@ -44,8 +44,15 @@
 //		 kommt es nicht mehr zur Endlosschleife.
 // 1.6ß2 bugfix	 Wenn Spiele in fussball.de als Testspiele deklariert sind, werden sie nicht mehr importiert
 // 1.6ß3         Import an neue Linkstruktur von fussball.de angepasst
+// 1.6ß3 bugfix  Import funktioniert jetzt mit beiden Varianten der Spieltagsverlinkung
+// 1.6ß3 bugfix  Warnmeldung bei nicht installierter Classlib
 
-require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
+if (file_exists(PATH_TO_ADDONDIR."/classlib/ini.php")) {
+  require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
+} else {
+  echo "<font color=\"red\">".$text['limporter'][121]."</font>";
+  exit;
+}
 require_once(PATH_TO_ADDONDIR."/limporter/lim-functions.php");
 if (!defined('VERSION')) define('VERSION','1.6ß3');
 
