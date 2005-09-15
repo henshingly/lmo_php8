@@ -118,3 +118,4 @@
 118=Spiel(en) konnte kein Spieltag gefunden werden. Diese wurden dem 1. Spieltag zugeordnet.
 119=Sie haben nicht alle Pflichtfelder zugeordnet.\nBitte geben Sie eine Spaltenzuordnung für folgende Attribute an
 120=ist als Testspiel deklariert und wurde deshalb ignoriert.
+121=Fehler! Die Classlib konnte nicht gefunden werden. Bitte aus dem <a href="http://www.liga-manager-online.de/phpBB2/index.php">Addonarchiv</a> des LMO die neueste Version herunterladen und installieren!
