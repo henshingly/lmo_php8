@@ -124,19 +124,25 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
           $spieldatum  = $ergebnis[0]; //sucht das spieldatum
         } 
 
-        if (preg_match("/(\d+:\d+)( ([a-zA-Z])){0,1}/",$content,$ergebnis)) { // filtert die Ergebnis-Zelle
-          $content  = $ergebnis[1]; //das Ergebnis ohne Zusätze
-	  if ($ergebnis[3] == 't' || $ergebnis[3] == 'T') { //$ergebnis[3] beinhaltet den Ergebnis-Zusatz (* oder u,v,w,...)
+        if (preg_match("/(\d+:\d+)(( |\&nbsp;)([a-zA-Z])){0,1}/",$content,$ergebnis)) { // filtert die Ergebnis-Zelle
+          $contentTemp  = $ergebnis[1]; //das Ergebnis ohne Zusätze
+	  if ($ergebnis[4] == 't' || $ergebnis[4] == 'T') { //$ergebnis[3] beinhaltet den Ergebnis-Zusatz (* oder u,v,w,...)
 	    $zeile = split('#', $rows[$rowCount]);
 	    $rows[$rowCount] = '';  //Falls das Spiel ein Testspiel ist, lösche die aktuelle Zeile
-            if ($mode<>"update") echo "<font>".$text['limporter'][111]." ".$zeile[3]." - ".$zeile[4]." ".$text['limporter'][120]."<br>\n";	
-	  }
+            if ($mode<>"update") echo "<font>".$text['limporter'][111]." ".$zeile[3]." - ".$zeile[4]." ".$text['limporter'][120]."<br>\n";
+          }
+	  if ($ergebnis[4] == 'u' || $ergebnis[4] == 'U' ||
+	      $ergebnis[4] == 'v' || $ergebnis[4] == 'V' ||
+	      $ergebnis[4] == 'w' || $ergebnis[4] == 'W') {  //Könnte sein, dass in diesen Fällen hinter dem Ergebnis eine andere Spielwertung steht
+	        if (preg_match("/(\d+:\d+)(( |\&nbsp;)([a-zA-Z]))( |\&nbsp;)(\d+:\d+)/",$content,$ergebnis)) {
+	          $contentTemp = $ergebnis[6];  //Übernehme das 2. Ergebnis	
+	        }
+	  }  
+	$content = $contentTemp;
 	}
-
 
         // Ok neue Zeile gefunden, jetzt schauen ob es eine Folgezeile
         // oder eine neue Partie ist
-
          if ($trEnd!=FALSE && ($detailsRowCheck == 0 || isDetailsRow($content,$newRowCheck)==FALSE || $rowCount < 1)) {
              // Wenn die aktuelle Zeile komplett leer ist,dh nur # enthält,
              // dann wird sie mit neuen Daten überschrieben

@@ -46,6 +46,7 @@
 // 1.6ß3         Import an neue Linkstruktur von fussball.de angepasst
 // 1.6ß3 bugfix  Import funktioniert jetzt mit beiden Varianten der Spieltagsverlinkung
 // 1.6ß3 bugfix  Warnmeldung bei nicht installierter Classlib
+// 1.6ß3 bugfix  Nachträgliche Spielwertungen werden berücksichtigt
 
 if (file_exists(PATH_TO_ADDONDIR."/classlib/ini.php")) {
   require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
