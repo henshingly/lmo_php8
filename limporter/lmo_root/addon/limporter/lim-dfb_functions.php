@@ -56,11 +56,14 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 
     //Link auf den nächsten Spieltag suchen
     if (($durchlauf == TRUE) && ($anzAufrufSelberSpieltag < 4)) { //entweder ist das Script schon beim expliziten Spieltagsaufruf oder es wurde 4mal hintereinander derselbe Spieltag aufgerufen (passiert bei Saisonende oder bei Fehler beim 'nächster'-Durchlauf)
-      if (preg_match("/dbc.{60,100}n.chster/", $urlContent, $ergebnis) == 1 ||
-          preg_match("/dbc.{30,45}\/beg\/[0-9]+,[0-9]+,[0-9]+,1'/", $urlContent, $ergebnis) == 1) { //'nächster'-Link extrahieren. Dabei beide Varianten ausprobieren, die fussball.de bereits genutzt hat.
-        preg_match("/dbc.+,1/", $ergebnis[0], $neue_url_temp);
+      if (//preg_match("/dbc.{60,100}n.chster/", $urlContent, $ergebnis) == 1 ||
+          //preg_match("/dbc.{30,45}\/beg\/[0-9]+,[0-9]+,[0-9]+,1'/", $urlContent, $ergebnis) == 1)
+          preg_match("/[0-9]{1,2}\/.{20,45}\/beg\/[0-9]+,[0-9]+,[0-9]+,1'/", $urlContent, $ergebnis) == 1) { //'nächster'-Link extrahieren. Dabei beide Varianten ausprobieren, die fussball.de bereits genutzt hat.
+        //preg_match("/dbc.+,1/", $ergebnis[0], $neue_url_temp);
+        preg_match("/[0-9]{1,2}\/.{20,45}\/beg\/[0-9]+,[0-9]+,[0-9]+,1/", $ergebnis[0], $ergebnis);
+	$neue_url_temp = array();
+	$neue_url_temp[0]="dbc/".$ergebnis[0];
 	$neue_url="http://fussball.sport1.de/".$neue_url_temp[0];
-		
 	//Bestimmt das Datum aus der neuen URL
 	$temp = explode('/', $neue_url_temp[0]);
         $temp2 = explode(',', $temp[10]);
@@ -93,8 +96,8 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
       }
     } else $neue_url='';
     //Für Debug-Zwecke diese beiden Zeilen wieder entkommentieren:
-    //echo $neue_url."<br>\n";
-    //echo memory_get_usage() . "\n";	
+    echo $neue_url."<br>\n";
+    echo memory_get_usage() . "\n";	
     $arr = preg_split("/<\/t[d|h]/si",$urlContent);
     $spieldatum = '';
     for ($i=0; $i<count($arr); $i++){
@@ -143,6 +146,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 
         // Ok neue Zeile gefunden, jetzt schauen ob es eine Folgezeile
         // oder eine neue Partie ist
+
          if ($trEnd!=FALSE && ($detailsRowCheck == 0 || isDetailsRow($content,$newRowCheck)==FALSE || $rowCount < 1)) {
              // Wenn die aktuelle Zeile komplett leer ist,dh nur # enthält,
              // dann wird sie mit neuen Daten überschrieben
