@@ -96,8 +96,8 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
       }
     } else $neue_url='';
     //Für Debug-Zwecke diese beiden Zeilen wieder entkommentieren:
-    echo $neue_url."<br>\n";
-    echo memory_get_usage() . "\n";	
+    //echo $neue_url."<br>\n";
+    //echo memory_get_usage() . "\n";	
     $arr = preg_split("/<\/t[d|h]/si",$urlContent);
     $spieldatum = '';
     for ($i=0; $i<count($arr); $i++){
