@@ -94,7 +94,7 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
    * 1. Abschnitt: Paarung des Spielers auf dem festen Sitzplatz
    */
   $spielerNrGegenueberFesterPlatz = $spieltag;
-  if (festerPlatzIsHome) {
+  if ($festerPlatzIsHome) {
     // Hinrunde
     $plan[$spieltag][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
     // Rueckrunde
