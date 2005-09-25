@@ -277,22 +277,22 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
           $template->setVariable("matchingName","<acronym title='".$paarung['match']."'>*</acronym>");
         }
         $valuate = $paarung['partie']->valuateGame();
-        if ($paarung['where']=='h' && $valuate == 1) {
+        if ($paarung['where']==$text['mini'][13] && $valuate == 1) {
           $template->setVariable("class","win");
           $template->setVariable("hTore",$paarung['partie']->hToreString());
           $template->setVariable("gTore",$paarung['partie']->gToreString());
           $winCount++;
-        } elseif ($paarung['where']=='a' && $valuate == 2) {
+        } elseif ($paarung['where']==$text['mini'][12] && $valuate == 2) {
           $template->setVariable("class","win");
           $template->setVariable("hTore",$paarung['partie']->gToreString());
           $template->setVariable("gTore",$paarung['partie']->hToreString());
           $winCount++;
-        } elseif ($paarung['where']=='h' && $valuate == 2) {
+        } elseif ($paarung['where']==$text['mini'][13] && $valuate == 2) {
           $template->setVariable("class","lost");
           $template->setVariable("hTore",$paarung['partie']->hToreString());
           $template->setVariable("gTore",$paarung['partie']->gToreString());
           $lostCount++;
-        } elseif ($paarung['where']=='a' && $valuate == 1) {
+        } elseif ($paarung['where']==$text['mini'][12] && $valuate == 1) {
           $template->setVariable("class","lost");
           $template->setVariable("hTore",$paarung['partie']->gToreString());
           $template->setVariable("gTore",$paarung['partie']->hToreString());
