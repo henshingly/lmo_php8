@@ -1,6 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
   <title>Addons Minitabellen</title>
@@ -10,217 +9,143 @@
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <link rel="stylesheet" href="../../media/lmo.css" type="text/css">
 </head>
-
 <body>
   <div id="container">
     <div id="header">
       <a href="http://www.liga-manager-online.de/"><img src="../../media/logo_lmo.gif" alt="Liga Manager Online" width="492" height="48"
       border="0"></a>
     </div>
-
     <div id="back"></div>
-
     <div id="urhere"></div>
-
     <div id="navi">
       <ul>
         <li id="flags"></li>
       </ul>
-
       <div class="navigation">
         <ul>
           <li><a class="folder" href="../index.html">Hilfe</a></li>
-
           <li>
             <a class="active" href="index.html">Addons</a>
-
             <ul>
               <li><a class="page" href="tippspiel.html">Tippspiel</a></li>
-
               <li><a class="page" href="newsticker.html">Newsticker</a></li>
-
               <li><a class="active" href="minitabellen.html">Minitabellen</a></li>
-
+               <li><a class="page" href="mininext.html">Mininext</a></li>
               <li><a class="page" href="spielerstatistik.html">Spielerstatistik</a></li>
-
               <li><a class="page" href="teamvergleich.html">Teamvergleich</a></li>
-
               <li><a class="page" href="viewer.html">Viewer</a></li>
-
               <li><a class="page" href="teamplan.html">Teamplan</a></li>
+              <li><a class="page" href="pdf_spielplan.html">PDF Spielplan</a></li>
+              <li><a class="page" href="top_tipper.html">Top Tipper</a></li>
+              <li><a class="page" href="limporter.html">Limporter</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
-
     <div id="content">
       <a name="top" id="top"></a>
-
       <h1>Minitabellen</h1>
-
       <ol type="1">
         <li><a href="#1">Steuerparameter</a></li>
-
         <li><a href="#2">Einbindung</a></li>
-
         <li><a href="#3">Templates</a></li>
       </ol><a name="1"></a> <img src="../../media/minitabs01.png" alt="Useransicht" width="157" height="348" align="right">
-
       <p>Der LMO bietet auch die M&#246;glichkeit, Tabellen oder Ausschnitte von Tabellen auf externe Seiten zu verlagern. Damit
       k&#246;nnen Sie zum Beispiel auf ihrer Startseite eine platzsparende Version der aktuellen Tabelle ver&#246;ffentlichen. Sie
       k&#246;nnen in diese Tabellen verschiedene, f&#252;r Sie relevante Details einbinden, mittels einfacher <a href="#3">Templates</a>
       k&#246;nnen Sie auch das Aussehen beliebig anpassen.</p>
-
       <h3><a name="minitabs01" id="minitabs01"></a>1. Steuerparameter</h3>
-
       <p>&#196;hnlich wie beim Ticker gibt es auch bei den Minitabellen verschiedene Steuerparameter, mit dem sich das Verhalten der
       Tabellen &#228;ndern l&#228;sst.</p>
-
       <dl>
         <dt><var>mini_liga</var></dt>
-
         <dd>Der Dateiname der Liga, deren Tabelle dargestellt werden soll (mit Endung .l98)</dd>
-
         <dt><var>mini_platz</var></dt>
-
         <dd>Um welchen Platz herum soll der Tabellenausschnitt angeordnet werden? Geben Sie hier nichts an, wenn Sie ihre
         Lieblingsmannschaft als Zentrum m&#246;chten.</dd>
-
         <dt><var>mini_ueber</var></dt>
-
         <dd>Wieviele Mannschaften &#252;ber der ausgew&#228;hlten Mannschaft sollen dargestellt werden?</dd>
-
         <dt><var>mini_unter</var></dt>
-
         <dd>Wieviele Mannschaften unter der ausgew&#228;hlten Mannschaft sollen dargestellt werden?</dd>
-
         <dt><var>mini_template</var></dt>
-
         <dd>Geben Sie hier den Namen des gew&#252;nschten Minitabellen-Templates an (ohne Dateiendung). Bei keiner Angabe wird das Template
         <var>standard</var> benutzt.</dd>
       </dl><a href="#top">[nach oben]</a>
-
       <h3><a name="2"></a>2. Einbindung</h3>
-
       <p>Es gibt prinzipiell zwei Arten, mit der Sie die Minitabellen in seine Seiten einbinden können. Die erstere Methode ist dabei zu
       bevorzugen, die zweite Variante ist eigentlich nur für Server gedacht, die keine PHP-Unterstützung bieten (der LMO läuft dann auf
       einem externen Server) oder wenn Sie eine Datei mit der Endung .html benutzen. (Diese werden üblicherweise nicht von PHP geparst)</p>
-
       <h4>Einbinden per include</h4>
-
       <p>Hierbei werden die Parameter direkt als PHP-Variablen festgelegt. Sie notieren also <em>innerhalb eines PHP-Blocks</em> (ggfls.
       mit &lt;?php öffnen) die benötigten Parameter hintereinander wie im folgenden Beispiel:</p>
-
       <p><code>$mini_liga="liga1.l98";<br>
       $mini_ueber=3; //3 Mannschaften über dem Lieblingsteam<br>
       $mini_unter=2; //2 Mannschaften unter dem Lieblingsteam<br>
       $mini_template="all"; //Benutze das Template "all.tpl.php"</code></p>
-
       <p>Beachten Sie das <var>$</var> vor dem Parameter, die Anführungszeichen um einige Werte und das schließende Semikolon. Sie brauchen
       nicht immer alle Parameter angeben, lediglich der Name der Liga ist notwendig. Danach binden Sie den Ticker über die folgende
       Anweisung ein:</p>
-
       <p><code>include("<strong>PfadZumLMO</strong>/addon/mini/lmo-minitab.php");</code></p>
-
       <p><strong>PfadZumLMO</strong> bezeichnet dabei den absoluten oder relativen Pfad zum LMO-Verzeichnis.</p>
-
       <p class="attention">Benutzen Sie auf keine Fall eine URL - also <kbd>include("http://www.../minitab.php");</kbd> - damit werden die
       Minitabellen nicht funktionieren! Geben Sie immer einen <strong>Dateipfad</strong> an.</p>
-
       <h4>Einbinden per IFrame</h4>
-
       <p>Diese Art der Einbindung sollte nur verwendet werden, wenn obige Variante aus irgendwelchen Gründen nicht funktioniert. IFrames
       können nicht von allen Browsern dargestellt werden und auch aus Ergonomiegründen spricht einiges gegen ihre Verwendung. Die Parameter
       werden in diesem Falle nicht vorher definiert, sie sind vielmehr Teil der aufzurufenden Source-URL des eingebetteten Frames. Aus
       folgendem Beispiel erschließt sich die Verwendung, es hat die gleichen Parameter wie das include-Beispiel.</p>
-
       <p><code>&lt;iframe
       src&#61;"<strong>URLZumLMO</strong>/addon/mini/lmo-minitab.php?mini_liga=liga1.l98&amp;amp;mini_ueber=3&amp;amp;mini_unter=2&amp;amp;mini_template=all"
       frameborder="0" marginwidth="0" marginheight="0" width="<strong>Breite</strong>" height="<strong>Höhe</strong>"
       scrolling="no"&gt;&lt;/iframe&gt;</code></p>
-
       <p><strong>URLZumLMO</strong> bezeichnet dabei die WWW-Adresse des LMO, mit <strong>Breite</strong> und/oder <strong>Höhe</strong>
       müssen Sie (leider) experimentieren, eine der vielen Nachteile von IFrames. Der erste Steuerparameter wird mit <var>?</var>
       abgetrennt, die restlichen mit <var>&amp;amp;</var>.</p><a href="#top">[nach oben]</a>
-
       <h3><a name="3"></a>3. Templates</h3>
-
       <p>Ähnlich wie beim LMO können Sie auch die Minitabellen in Struktur und Design beliebig ändern. Die benötigten Templates finden Sie
       im Unterverzeichnis <strong>mini</strong> des Templateverzeichnis <strong>template</strong>. Das Template
       <strong>standard.tpl.php</strong> wird benutzt, wenn kein entsprechender Steuerparameter übergeben wurde. Sie können beliebig viele
       unterschiedliche Templates (mit der Dateiendung .tpl.php) anlegen und per Steuerparameter aufrufen. Folgende Angaben sind möglich und
       werden automatisch ersetzt:</p>
-
       <dl>
         <dt>&lt;!--Link--&gt;</dt>
-
         <dd>Der Link zur kompletten Tabelle des LMO</dd>
-
         <dt>&lt;!-- BEGIN Inhalt --&gt;</dt>
-
         <dd>Der Beginn des Abschnittes, welcher so oft dargestellt wird, wie Mannschaften ausgegeben werden. <strong>Beachten Sie die
         Leerzeichen vor BEGIN und nach Inhalt!</strong></dd>
-
         <dt>&lt;!-- END Inhalt --&gt;</dt>
-
         <dd>Der Ende des Abschnittes, welcher so oft dargestellt wird, wie Mannschaften ausgegeben werden. <strong>Beachten Sie die
         Leerzeichen vor END und nach Inhalt!</strong></dd>
-
         <dt>&lt;!--Style--&gt;</dt>
-
         <dd>Hiermit aktivieren Sie die Hervorhebung der Platzierungen, es werden je nach Ligaeinstellung also Meister, Absteiger etc.
         markiert</dd>
-
         <dt>&lt;!--Team--&gt;</dt>
-
         <dd>Die Kurzbezeichnung der Mannschaft</dd>
-
         <dt>&lt;!--TeamLang--&gt;</dt>
-
         <dd>Die vollständige Bezeichnung der Mannschaft</dd>
-
         <dt>&lt;!--TeamBild--&gt;</dt>
-
         <dd>Falls vorhanden, wird das Teamicon dargestellt</dd>
-
         <dt>&lt;!--Spiele--&gt;</dt>
-
         <dd>Anzahl der Spiele</dd>
-
         <dt>&lt;!--Punkte--&gt;</dt>
-
         <dd>Punkte, bei aktivierten Negativpunkten in der Form <strong>+P:-P</strong></dd>
-
         <dt>&lt;!--PlusTore--&gt;</dt>
-
         <dd>Geschossene Tore</dd>
-
         <dt>&lt;!--MinusTore--&gt;</dt>
-
         <dd>Gegentore</dd>
-
         <dt>&lt;!--Tordifferenz--&gt;</dt>
-
         <dd>Tordifferenz</dd>
-
         <dt>&lt;!--Siege--&gt;</dt>
-
         <dd>Anzahl der Siege</dd>
-
         <dt>&lt;!--Unentschieden--&gt;</dt>
-
         <dd>Anzahl der Unentschieden</dd>
-
         <dt>&lt;!--Niederlagen--&gt;</dt>
-
         <dd>Anzahl der Niederlagen</dd>
       </dl>
-
       <p>Passen Sie den HTML-Code beliebig an, achten Sie aber auf korrektes HTML/CSS um Darstellungsprobleme zu vermeiden. Im Template
       <strong>all.tpl.php</strong> sind alle möglichen Angaben zu Anschauungszwecken angegeben.</p><a href="#top">[nach oben]</a>
     </div>
-
     <dl id="footer">
       <dt>© Liga Manager Online 2004/05</dt>
     </dl>
