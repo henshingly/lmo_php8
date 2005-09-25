@@ -1,6 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
   <title>Addons Mininext</title>
@@ -10,63 +9,49 @@
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <link rel="stylesheet" href="../../media/lmo.css" type="text/css">
 </head>
-
 <body>
   <div id="container">
     <div id="header">
       <a href="http://www.liga-manager-online.de/"><img src="../../media/logo_lmo.gif" alt="Liga Manager Online" width="492" height="48"
       border="0"></a>
     </div>
-
     <div id="back"></div>
-
     <div id="urhere"></div>
-
     <div id="navi">
       <ul>
         <li id="flags"></li>
       </ul>
-
       <div class="navigation">
         <ul>
           <li><a class="folder" href="../index.html">Hilfe</a></li>
-
           <li>
             <a class="active" href="index.html">Addons</a>
-
             <ul>
               <li><a class="page" href="tippspiel.html">Tippspiel</a></li>
-
               <li><a class="page" href="newsticker.html">Newsticker</a></li>
-
               <li><a class="page" href="minitabellen.html">Minitabellen</a></li>
               
                <li><a class="active" href="mininext.html">Mininext</a></li>
-
               <li><a class="page" href="spielerstatistik.html">Spielerstatistik</a></li>
-
               <li><a class="page" href="teamvergleich.html">Teamvergleich</a></li>
-
               <li><a class="page" href="viewer.html">Viewer</a></li>
-
               <li><a class="page" href="teamplan.html">Teamplan</a></li>
+              <li><a class="page" href="pdf_spielplan.html">PDF Spielplan</a></li>
+              <li><a class="page" href="top_tipper.html">Top Tipper</a></li>
+              <li><a class="page" href="limporter.html">Limporter</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
-
     <div id="content">
       <a name="top" id="top"></a>
-
       <h1>Mininext</h1>
-
 <ol>
    <li><a href="#config">Konfiguration</a></li>
    <li><a href="#include">Einbindung</a></li>
-
    <li><a href="#template">Templates</a></li>
-    <li><a href="#include">History</a></li>
+    <li><a href="#history">History</a></li>
 </ol><p><img src="../../media/mininext.png" alt="Mininext Screenshot" width="134" height="399" align="right">
   Dieses Script zeigt die kommende Partie einer Mannschaft in einem kleinen 
   Block an, der relativ einfach in jede bestehende Seite eingebunden werden 
@@ -79,7 +64,6 @@
       <a name="config"> </a>Konfiguration
     </h3>
     <p>
-
       Das Mininext-Addon lässt sich über die Addonverwaltung des LMO konfigurieren, zusätzlich kann man für jede
       einzelne Ansicht weitere Parameter übergeben um die Anzeige zu steuern.
     </p>
@@ -90,7 +74,6 @@
     <dl>
       <dt>
         <var>mininext_withArchiv</var>
-
       </dt>
       <dd>
         Schaltet die Archivdurchsuchung an/aus
@@ -101,7 +84,6 @@
       <dd>
         Schaltet die unscharfe Suche an/aus - damit können ähnlich lautende Mannschaftsnamen zusammengefasst werden
       </dd>
-
       <dt>
         <var>mininext_barWidth</var>
       </dt>
@@ -110,7 +92,6 @@
       </dd>
       <dt>
         <var>mininext_standardTemplate</var>
-
       </dt>
       <dd>
         Standardtemplate, wenn keins übergeben wurde
@@ -121,7 +102,6 @@
       Per URL-Parameter (bei Einbindung mit IFrame) oder durch include-Paramter (bei Einbindung über include) lässt sich die
      individuelle Anzeige des Addons steuern. Folgende Werte werden ausgewertet:
     <dl>
-
       <dt>
         <var>file</var>
       </dt>
@@ -130,7 +110,6 @@
       </dd>
        <dt>
         <var>folder</var>
-
       </dt>
       <dd>
         Archivordner, der durchsucht werden soll. Es ist sinvoll, die 
@@ -146,7 +125,6 @@
         soll. Dieser Parameter ist nur dann erforderlich, wenn im 
         LigaFile keine Lieblingsmannschaft angegeben wurde.
       </dd>
-
       <dt>
         <var>b</var>
       </dt>
@@ -158,7 +136,6 @@
       </dd>
        <dt>
         <var>mininext_template</var>
-
       </dt>
       <dd>
        Template, dass benutzt werden soll. Bei keiner Angabe wird automatisch das Standardtemplate benutzt.
@@ -172,7 +149,6 @@
       nicht von PHP geparst)
     </p>
     <h4>Einbinden per include</h4>
-
     <p>Hierbei werden die Parameter direkt als PHP-Variablen festgelegt. Sie notieren also 
       <em>innerhalb eines PHP-Blocks</em> (ggfls. mit &lt;?php öffnen) die benötigten Parameter
       hintereinander wie im folgenden Beispiel:
@@ -184,13 +160,11 @@
       lediglich der Name der Liga ist notwendig. <strong>Danach</strong> binden Sie das Mininext-Addon über die folgende 
       Anweisung ein:
     </p>
-
     <p><code>include("<strong>PfadZumLMO</strong>/addon/mini/lmo-mininext.php");</code></p>
     <p><strong>PfadZumLMO</strong> bezeichnet dabei den absoluten oder relativen Pfad zum LMO-Verzeichnis.</p>
     <p class="attention">
         Benutzen Sie auf keine Fall eine URL - also <kbd>include("http://www.../lmo-mininext.php");</kbd> - damit werden 
         die Minitabellen nicht funktionieren! Geben Sie immer einen <strong>Dateipfad</strong> an.</p>
-
     <p class="attention">
         Falls Sie keine Sessions in Ihrer Seite benutzen, müssen sie die Zeile <code>&lt;? session_start(); ?></code> in die
         allererste Zeile Ihrer Seite einfügen!</p>
@@ -205,13 +179,11 @@
     <p><code>&lt;iframe src&#61;"<strong>URLZumLMO</strong>/addon/mini/lmo-mininext.php?file=liga1.l98&amp;amp;folder=archiv/Erste_Mannschaft"
       frameborder="0" marginwidth="0" marginheight="0" width="<strong>Breite</strong>" 
       height="<strong>Höhe</strong>" scrolling="no"&gt;&lt;/iframe&gt;</code>
-
     </p>
     <p><strong>URLZumLMO</strong> bezeichnet dabei die WWW-Adresse des LMO, mit <strong>Breite</strong> 
       und/oder <strong>Höhe</strong> müssen Sie (leider) experimentieren, eine der vielen Nachteile 
       von IFrames. Der erste Steuerparameter wird mit <var>?</var> abgetrennt, die restlichen mit <var>&amp;amp;</var>.
     </p>
-
       <a href="#top">[nach oben]</a><h3><a name="template"></a>Templates</h3>
     <p>Ähnlich wie beim LMO können Sie auch das Mininext-Addon in Struktur und Design beliebig ändern.
       Die benötigten Templates finden Sie im Unterverzeichnis <strong>mini</strong> des 
@@ -221,42 +193,36 @@
       aufrufen. Folgende Angaben sind möglich und werden automatisch ersetzt:
     </p>
     <h4>Das kommende Spiel</h4>
-
     <dl>
       <dt>&lt;!--gameTxt--&gt;</dt>
       <dd>Die Überschrift</dd>
       <dt>&lt;!--gameDate--&gt;</dt>
       <dd>Datum des kommenden Spiels</dd>
       <dt>&lt;!--gameTime--&gt;</dt>
-
       <dd>Zeit des kommenden Spiels</dd>
       <dt>&lt;!--homeName--&gt;</dt>
       <dd>Name des Heimteams</dd>
       <dt>&lt;!--homeNameMiddle--&gt;</dt>
       <dd>Mittellanger Name des Heimteams</dd>
       <dt>&lt;!--homeNameShort--&gt;</dt>
-
       <dd>Kurzname des Heimteams</dd>
       <dt>&lt;!--imgHomeBig--&gt;</dt>
       <dd>Großes Icon des Heimteams</dd>
       <dt>&lt;!--imgHomeSmall--&gt;</dt>
       <dd>Kleines Icon des Heimteams</dd>
       <dt>&lt;!--guestName--&gt;</dt>
-
       <dd>Name des Gastteams</dd>
       <dt>&lt;!--guestNameMiddle--&gt;</dt>
       <dd>Mittellanger Name des Gastteams</dd>
       <dt>&lt;!--guestNameShort--&gt;</dt>
       <dd>Kurzname des Gastteams</dd>
       <dt>&lt;!--imgGuestBig--&gt;</dt>
-
       <dd>Großes Icon des Gastteams</dd>
       <dt>&lt;!--imgGuestSmall--&gt;</dt>
       <dd>Kleines Icon des Gastteams</dd>
       <dt>&lt;!--gameNote--&gt;</dt>
       <dd>Spielnotiz</dd>
       <dt>&lt;!--ligaDatum--&gt;</dt>
-
       <dd>Datum der letzen Änderung in der Liga</dd>
       <dt><strong>&lt;!--copy--&gt;</strong></dt>
       <dd class="attention">
@@ -264,18 +230,15 @@
           nicht erlaubt, diesen Hinweis zu ändern oder zu entfernen!</strong></dd>
     </dl>
     <h4>Bisherige Spiele der Mannschaften</h4>
-
     <dl>
       <dt><strong>Folgende Teile sind außerhalb &lt;!-- BEGIN/END matches --&gt; erlaubt</strong></dt>
       <dt>&lt;!--matchesText--&gt;</dt>
       <dd>Überschrift für bisherige Spiele</dd>
       <dt>&lt;!--winCount--&gt; &lt;!--drawCount--&gt; &lt;!--lostCount--&gt;</dt>
-
       <dd>Anzahl Siege Heimteam, Unentschieden, Siege Gastteam</dd>
       <dt>&lt;!--winTxt--&gt; &lt;!--drawTxt--&gt; &lt;!--lostTxt--&gt;</dt>
       <dd>Text für Siege Heimteam, Unentschieden, Siege Gastteam (z.B. s, u, n oder h, u, g)</dd>
       <dt>&lt;!--winWidth--&gt; &lt;!--drawWidth--&gt; &lt;!--lostWidth--&gt;</dt>
-
       <dd>Breite des Balken für Siege Heimteam, Unentschieden, Siege Gastteam</dd> 
        
       <dt>&lt;!-- BEGIN matches --&gt;</dt>
@@ -285,14 +248,12 @@
       <dd>Der Ende des Abschnittes für alle vorherigen Partien der Teams gegeneinander
         <strong>Beachten Sie die Leerzeichen vor END und nach matches!</strong></dd>
       <dt><strong>Folgende Teile sind nur innerhalb &lt;!-- BEGIN/END matches --&gt; erlaubt</strong></dt>
-
       <dt>&lt;!--class--&gt;</dt>
       <dd>Hervorhebung der Partien in Farben</dd>
       <dt>&lt;!--date--&gt;</dt>
       <dd>Datum der Partie</dd>
       <dt>&lt;!--time--&gt;</dt>
       <dd>Zeit der Partie</dd>
-
       
       <dt>&lt;!--hTore--&gt;</dt>
       <dd>Heimtore</dd>
@@ -300,7 +261,6 @@
       <dd>Gasttore</dd>
       <dt>&lt;!--where--&gt;</dt>
       <dd>Heimspiel oder Auswärtsspiel</dd>
-
       <dt>&lt;!--matchingName--&gt;</dt>
       <dd>Falls unscharfe Suche aktiviert und Team gefunden, wird hier der Teamname angezeigt</dd>
     </dl>
@@ -308,35 +268,30 @@
     <dl>
       <dt>&lt;!--previous_gameTxt--&gt;</dt>
       <dd>Die Überschrift</dd>
-
       <dt>&lt;!--previous_gameDate--&gt;</dt>
       <dd>Datum des vorherigen Spiels</dd>
       <dt>&lt;!--previous_gameTime--&gt;</dt>
       <dd>Zeit des vorherigen Spiels</dd>
       <dt>&lt;!--previous_homeName--&gt;</dt>
       <dd>Name des Heimteams</dd>
-
       <dt>&lt;!--previous_homeNameMiddle--&gt;</dt>
       <dd>Mittellanger Name des Heimteams</dd>
       <dt>&lt;!--previous_homeNameShort--&gt;</dt>
       <dd>Kurzname des Heimteams</dd>
       <dt>&lt;!--previous_imgHomeBig--&gt;</dt>
       <dd>Großes Icon des Heimteams</dd>
-
       <dt>&lt;!--previous_imgHomeSmall--&gt;</dt>
       <dd>Kleines Icon des Heimteams</dd>
       <dt>&lt;!--previous_guestName--&gt;</dt>
       <dd>Name des Gastteams</dd>
       <dt>&lt;!--previous_guestNameMiddle--&gt;</dt>
       <dd>Mittellanger Name des Gastteams</dd>
-
       <dt>&lt;!--previous_guestNameShort--&gt;</dt>
       <dd>Kurzname des Gastteams</dd>
       <dt>&lt;!--previous_imgGuestBig--&gt;</dt>
       <dd>Großes Icon des Gastteams</dd>
       <dt>&lt;!--previous_imgGuestSmall--&gt;</dt>
       <dd>Kleines Icon des Gastteams</dd>
-
     </dl>
     <p>Passen Sie den HTML-Code beliebig an, achten Sie aber auf korrektes HTML/CSS um Darstellungsprobleme zu vermeiden.</p>
     <a href="#top">[nach oben]</a>
@@ -344,14 +299,12 @@
    <dl>
       <dt>1.0</dt> 
 <dd>initial Release als nextGameBlock</dd>
-
 <dt> 1.1</dt> 
 <dd>Multilanguagefähig</dd>
 <dd>  ins mini*-Addon eingefügt, mininext-Addon</dd>
 <dd>  Bugfixes</dd>
 <dd>  Template entrümpelt</dd>
 <dd> Anzeige der Greedy-Ergebnisse überarbeitet</dd>
-
 <dt> 2.0</dt> 
 <dd>korrekte Anzeige Auswärts-/Heimpartien</dd>
 <dd>     zusätzlicher Block "Vorheriges Spiel"</dd>
@@ -359,18 +312,15 @@
 <dd>Datumsformat wieder gekürzt</dd>
 <dt> 2.0.2</dt> 
 <dd>Bug beim include (Mannschaften wurden nicht erkannt) beseitigt</dd>
-
 <dt> 2.1.0</dt> 
 <dd>Konfigurationsdatei für Konfigurationsparameter (änderbar im Adminbereich)</dd>
 <dd>  Template jetzt auch änderbar (über GET oder vorher definiert)</dd>
 <dd>  Archivdurchsuchung abschaltbar</dd>
 <dd> Doppelrunden (also mehr als 1 Hin-/Rückrunde) werden erkannt</dd>
 <dt> 2.1.1</dt> 
-
 <dd>Mittel- und Kurznamen der Teams als Templatevariablen</dd>
       </dl>
       <a href="#top">[nach oben]</a>
-
     <dl id="footer">
       <dt>© Liga Manager Online 2004/05</dt>
     </dl>

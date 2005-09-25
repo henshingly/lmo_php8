@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Addons TopTipper</title>
+  <meta name="generator" content="Der Dirigent 01.00.01 / www.der-dirigent.de">
+  <meta name="author" content="Hofmann Torsten">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="../../media/lmo.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <a href="http://www.liga-manager-online.de/"><img src="../../media/logo_lmo.gif" alt="Liga Manager Online" width="492" height="48"
+      border="0"></a>
+    </div>
+    <div id="back"></div>
+    <div id="urhere"></div>
+    <div id="navi">
+      <ul>
+        <li id="flags"></li>
+      </ul>
+      <div class="navigation">
+        <ul>
+          <li><a class="folder" href="../index.html">Hilfe</a></li>
+          <li>
+            <a class="active" href="index.html">Addons</a>
+            <ul>
+              <li><a class="page" href="tippspiel.html">Tippspiel</a></li>
+              <li><a class="page" href="newsticker.html">Newsticker</a></li>
+              <li><a class="page" href="minitabellen.html">Minitabellen</a></li>
+              <li><a class="page" href="mininext.html">Mininext</a></li>
+              <li><a class="page" href="spielerstatistik.html">Spielerstatistik</a></li>
+              <li><a class="page" href="teamvergleich.html">Teamvergleich</a></li>
+              <li><a class="page" href="viewer.html">Viewer</a></li>
+              <li><a class="page" href="teamplan.html">Teamplan</a></li>
+              <li><a class="page" href="pdf_spielplan.html">PDF Spielplan</a></li>
+              <li><a class="active" href="top_tipper.html">Top Tipper</a></li>
+              <li><a class="page" href="limporter.html">Limporter</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="content">
+      <a name="top" id="top"></a>
+      <h1>TopTipper</h1><img src="../../media/toptipper.png" alt="TopTipper-Ansicht" align="right">
+      <ol>
+        <li><a href="#system">Systemvoraussetzung</a></li>
+        
+        
+        
+        <li><a href="#erklaerung">Zur Erklärung der Dateien</a></li>
+        <li><a href="#download">Download</a></li>
+      </ol>
+      <p>Das Addon TopTipper gibt Ihnen eine Anzeige des Tabellenstandes im Tippspiel.
+      <h3><a name="system" id="system">Systemvoraussetzung</a></h3>
+      <ul>
+        <li>Lauffähiger LMO 4 ab Beta 3 mit Tippspiel<br>
+      </ul><a href="#top">[nach oben]</a>
+      <h3><a name="erklaerung" id="erklaerung">Zur Erklärung der Dateien</a></h3>
+      <ul>
+        <p>Der Inhalt des Downloads besteht aus 4 Dateien.</p>
+        
+        
+        <dl>
+        <dt><var>toptipper.php</var></dt>
+        <dd>befindet sich im Ordner 'addon/tipp/'.</dd>
+        <dt><var>kal.tip</var></dt>
+        <dd>befindet sich im Ordner 'config/tipp/'.<br>
+            Ist für die Konfiguration und kann beliebig umbenannt werden. Hauptsache die Dateiendung <strong>*.tipp</strong>
+            bleibt bestehen und der neue Name wird auch beim einbinden berücksichtigt.<br><br>
+            Der Inhalt der Datei besteht aus<br>
+            [config]<br>
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>modus=1</td>
+                <td><strong>// Modus auf 1 lassen kann man vielleicht noch mal gebrauchen</strong></td>
+              </tr>
+              <tr>
+                <td>anzahl_tipper=10</td>
+                <td><strong>// Anzahl der Tipper in der Anzeige</strong></td>
+              </tr>
+              <tr>
+                <td>all=0</td>
+                <td><strong>// 0 oder 1, 0 zeigt das file, 1 gesamt</strong></td>
+              </tr>
+              <tr>
+                <td>file=erg_dfb.l98</td>
+                <td><strong>// eure Liga</strong></td>
+              </tr>
+              <tr>
+                <td>template=standard&nbsp;&nbsp;&nbsp;</td>
+                <td><strong>// Template Name ohne die Endung *.tpl.php</strong></td>
+              </tr>
+            </table></dd>
+        <dt><var>standard.tpl.php</var></dt>
+        <dd>befindet sich im Ordner 'template/tipp/'.<br>
+        Das Template kann beliebig erstellt werden. Verfügbare Platzhalter sind derzeit:
+        <dl>
+        <dt><var><p>&lt;!--Link--&gt;</var></dt>
+        <dd>Der Link zum Tippspiel<dd>
+        <dt><var><p>&lt;!--Lmo--&gt;</var></dt>
+        <dd>Der Link zum LMO<dd>
+        <dt><var><p>&lt;!--Platz--&gt;</var></dt>
+        <dd>Die Platzierung der Tipper<dd>
+        <dt><var><p>&lt;!--Name--&gt;</var></dt>
+        <dd>Der Name der Tipper<dd>
+        <dt><var><p>&lt;!--Punkte--&gt;</var></dt>
+        <dd>Die Punkte der Tipper<dd></dd></dl>
+        <dt><var>tipp.php</var></dt>
+        <dd>befindet sich direkt im Root_Verzeichniss Ihres LMO's.</dd>
+        <dd>Dient zum Einbinden des ganzen Scriptes (Inhalt anpassen)</dd><br><br>
+        <dd>Beispiel:</dd>
+        
+        
+        <dd>&lt;?php</dd>
+        <dd>$multi="kal";&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>// in diesem Fall wird die von euch angepasste Datei <var>kal.tip</var> eingebunden.</strong></dd>
+        <dd>require(dirname(__FILE__).'/init.php');</dd>
+        <dd>include(PATH_TO_ADDONDIR."/tipp/toptipper.php");</dd></dd>
+        <dd>?&gt;</dd>
+        </dl>
+      </ul><a href="#top">[nach oben]</a>
+      <h3><a name="download" id="download">Download</a></h3>
+      <ul>
+        <li><a href="http://www.liga-manager-online.de/phpBB2/viewtopic.php?t=3240" target="_blank">TopTipper</a></li>
+      </ul>
+      <p class="attention">Eine ausführliche Installationsanleitung ist der jeweiligen Version beigefügt.</p><a href="#top">[nach oben]</a>
+    </div>
+    <dl id="footer">
+      <dt>© Liga Manager Online 2004/05</dt>
+    </dl>
+  </div>
+</body>
+</html>
