@@ -22,7 +22,7 @@
 // akzeptiert)
 
 $languages=array(
-    'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german'),
+    'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.ISO8859-1'),
     'Cestina'=>array('cs_CS'),
     'Francais'=>array('fr_FR'),
     'English'=>array('en_EN','en_US'),
