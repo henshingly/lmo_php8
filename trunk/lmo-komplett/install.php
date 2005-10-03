@@ -252,6 +252,7 @@ if ($step==1) {
 
   if ($conn && $conn2) {
     $_SESSION['ftpdir'] =   isset($_POST['ftpdir'])?   trim(str_replace(".",'',$_POST['ftpdir']))   : '';
+    $ftpdir = $_SESSION['ftpdir'];
     if(empty($_POST['ftpdir'])) {
       //Pfad aussuchen
       $_SESSION['view'] =   isset($_GET['view'])?   trim(str_replace(".",'',$_GET['view']))   : '';
