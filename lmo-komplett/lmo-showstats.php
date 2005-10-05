@@ -244,9 +244,9 @@ if($file!=""){
         </tr>
         <tr>
           <td align="right"> <?=$text[516]?> </td>
-          <td align="right"> <?=$text[4010]?> </td>
+          <td align="right"> <?=$text[41]."-".$text[38]?> </td>
           <td>&nbsp;</td>
-          <td align="left"> <?=$text[4011]?> </td>
+          <td align="left"> <?=$text[42]."-".$text[38]?> </td>
         </tr>
         <tr>
           <td align="right"> <strong><?=applyFactor($gzutore,$goalfaktor);?></strong> (<?=$text[517]?><?=applyFactor($gdstore,$goalfaktor)?>) </td>
