@@ -23,10 +23,10 @@ require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 
 $template_folder = PATH_TO_TEMPLATEDIR.'/mini/';
 
-$mini_standardTemplate = isset($cfgarray['mini']['$mini_standardTemplate'])?$cfgarray['mini']['$mini_standardTemplate']:"mininext.tpl.php";		// Templatefile
+$mini_standardTemplate = isset($cfgarray['mini']['standardTemplate'])?$cfgarray['mini']['standardTemplate']:"mininext.tpl.php";		// Templatefile
 //aus Sicherheitsgründen werden .. gelöscht - somit sind nur templates innerhalb des Templatepfads möglich
-$mini_template = isset($_GET['$mini_template'])
-                     ? str_replace('..','',$_GET['$mini_template'])
+$mini_template = isset($_GET['mini_template'])
+                     ? str_replace('..','',$_GET['mini_template'])
                      : (isset($mini_template)
                         ? str_replace('..','',$mini_template)
                         : $mini_standardTemplate
@@ -36,30 +36,30 @@ $mini_template = isset($_GET['$mini_template'])
 //1.GET-Parameter->2.Variable vorhanden (include)->3.Configwert->4. Standardwert
 
 //Nicht dokumentierte Steuerparameter für Fortgeschrittene
-$mini_withArchiv = isset($_GET['$mini_withArchiv'])
-                            ? ($_GET['$mini_withArchiv']=='1'?1:0)
+$mini_withArchiv = isset($_GET['mini_withArchiv'])
+                            ? ($_GET['mini_withArchiv']=='1'?1:0)
                             : ( isset($mini_withArchiv) 
                                 ? ($mini_withArchiv=='1'?1:0)
-                                : (isset($cfgarray['mini']['$mini_withArchiv'])
-                                   ? $cfgarray['mini']['$mini_withArchiv']
+                                : (isset($cfgarray['mini']['withArchiv'])
+                                   ? $cfgarray['mini']['withArchiv']
                                    : 1
                                   )
                               );
-$mini_unGreedy = isset($_GET['$mini_unGreedy'])
-                     ? ($_GET['$mini_unGreedy']=='1'?1:0)
+$mini_unGreedy = isset($_GET['mini_unGreedy'])
+                     ? ($_GET['mini_unGreedy']=='1'?1:0)
                      : ( isset($mini_unGreedy)
                          ? ($mini_withArchiv=='1'?1:0)
-                         :  (isset($cfgarray['mini']['$mini_unGreedy'])
-                             ? $cfgarray['mini']['$mini_unGreedy']
+                         :  (isset($cfgarray['mini']['unGreedy'])
+                             ? $cfgarray['mini']['unGreedy']
                              : 1
                             )
                        );
-$mini_barWidth = isset($_GET['$mini_barWidth']) && is_numeric($_GET['$mini_barWidth'])
-                     ? $_GET['$mini_barWidth']
+$mini_barWidth = isset($_GET['mini_barWidth']) && is_numeric($_GET['mini_barWidth'])
+                     ? $_GET['mini_barWidth']
                      : ( isset($mini_barWidth) && is_numeric($mini_barWidth)
                          ? $mini_barWidth
-                         : (isset($cfgarray['mini']['$mini_barWidth'])
-                             ? $cfgarray['mini']['$mini_barWidth']
+                         : (isset($cfgarray['mini']['barWidth'])
+                             ? $cfgarray['mini']['barWidth']
                              : 120
                             )
                        );
