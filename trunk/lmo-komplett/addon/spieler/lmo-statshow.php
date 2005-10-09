@@ -100,7 +100,8 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
           </td>
         </tr><?
     //VEreinsspalte
-    for($i=0;$i<count($teams)-1;$i++) {?>
+    for($i=0;$i<count($teams)-1;$i++) {
+    $teams[$i] = stripslashes($teams[$i]);?>
         <tr>
           <td align="right" class="nobr"><?
       if ($teams[$i]!=$team) {?>
@@ -166,6 +167,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
   for ($j1=$begin;$j1<$begin+$maxdisplay;$j1++) {?>
           <tr><?
     for ($j2=0;$j2<$spaltenzahl;$j2++) {
+      $data[$j1][$j2] = stripslashes($data[$j1][$j2]);
       if ($j2==$sort){ 
         $stat_class=' class="lmoBackMarkierung nobr"';
       } else {
