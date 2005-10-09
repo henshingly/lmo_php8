@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
   
 
@@ -345,9 +346,9 @@ function mark(el){
 						<form action="<?= $_SERVER['PHP_SELF']?>" method="post">
 							<acronym title="<?=$text['spieler'][10]?>"><select name="wert" size="1"><?
 								for ($x=0;$x<$zeile;$x++) {?>
-								<option value="<?=$x?>"><?=$data[$x][0]?></option><?
+								<option value="<?=$x?>"><?=htmlentities(stripslashes($data[$x][0]),ENT_COMPAT);?></option><?
 								}?>
-							</select></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" - ">
+							</select></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" &minus; ">
 							<input type="hidden" name="option" value="delplayer">
 							<input type="hidden" name="sort" value="<?=$spieler_sort?>">
 							<input type="hidden" name="todo" value="edit">
@@ -380,7 +381,7 @@ function mark(el){
 						<form action="<?= $_SERVER['PHP_SELF']?>" method="post" name="spieler">
 							<acronym title="<?=$text['spieler'][8]?>"><select name="wert" size="1"><?
 								for ($x=0;$x<$spaltenzahl;$x++) {?>
-								<option value="<?=$x?>"<?if ($x==0){?> disabled<?}if ($x==1){?> selected<?}?>><?=$spalten[$x]?></option><?
+								<option value="<?=$x?>"<?if ($x==0){?> disabled<?}if ($x==1){?> selected<?}?>><?=htmlentities(stripslashes($spalten[$x]),ENT_COMPAT);?></option><?
 								}?>
 							</select></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" &minus; ">
 							<input type="hidden" name="option" value="delcolumn">
@@ -447,13 +448,14 @@ function mark(el){
 				for ($j1=$statstart;$j1<$display;$j1++) {?>
 				     <tr><?
 					for ($j2=0;$j2<$spaltenzahl;$j2++) {
+            $data[$j1][$j2]=htmlentities(stripslashes($data[$j1][$j2]),ENT_COMPAT);
             if (isset($formel[$j2]) && $formel[$j2]==1){?>
     			    <td colspan="2" align="center">
-                <input type="text" name="data<?=$j1."|".$j2?>" value="<?= $data[$j1][$j2]?>" size="<?=strlen($data[$j1][$j2]);?>" disabled>
+                <input type="text" name="data<?=$j1."|".$j2?>" value="<?=$data[$j1][$j2]?>" size="<?=strlen($data[$j1][$j2]);?>" disabled>
               </td><?
             }elseif (is_numeric($data[$j1][$j2])){?>
 							<td align="right">
-                <input type="text" onChange="mark(this)" onClick="this.select()" name="data<?=$j1."|".$j2?>" value="<?= $data[$j1][$j2]?>" size="<?=strlen($data[$j1][$j2]);?>">
+                <input type="text" name="data<?=$j1."|".$j2?>" value="<?= $data[$j1][$j2]?>" size="<?=strlen($data[$j1][$j2]);?>">
               </td>
               <td align="left">
   							<table cellpadding="0" cellspacing="0">
@@ -476,7 +478,7 @@ function mark(el){
 							</td><?
 							}else{?>
 							<td colspan="2" align="left">
-								<input type="text" onChange="mark(this)" onClick="this.select()" name="data<?=$j1."|".$j2?>"value="<?= $data[$j1][$j2]?>" size="<?=strlen($data[$j1][$j2]);?>">
+								<input type="text" name="data<?=$j1."|".$j2?>"value="<?= $data[$j1][$j2]?>" size="<?=strlen($data[$j1][$j2]);?>">
 							</td><?
 							}
 						}
