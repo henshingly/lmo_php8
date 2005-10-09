@@ -211,9 +211,9 @@ class partie {
     if ($this->spielEnde == 0) {
       $str = $leer;
     } elseif ($this->spielEnde == 1) {
-      $str = "(".$text[1].")";
+      $str = $text[1];
     } elseif ($this->spielEnde == 2) {
-      $str = "(".$text[0].")";
+      $str = $text[0];
     } else {
       $str = $this->spielEnde;
     }
