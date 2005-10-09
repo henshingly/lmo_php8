@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 $xfile=isset($_POST['xfile'])?$_POST['xfile']:"";
 $xtitel=isset($_POST['xtitel'])?$_POST['xtitel']:"";
@@ -190,27 +190,27 @@ if ($newpage == 3) {
     <td align="center"><h1><?= $text[243]; ?></h1></td>
   </tr>
   <tr>
-    <td align="center"><? 
+    <td align="center"><?
 if($newpage<3){ ?>
       <form name="lmoedit" action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="new">
-        <input type="hidden" name="newpage" value="<?=($newpage+1); ?>"><? 
+        <input type="hidden" name="newpage" value="<?=($newpage+1); ?>"><?
   if($newpage>0){ ?>
         <input type="hidden" name="xfile" value="<?= $xfile; ?>">
         <input type="hidden" name="xtitel" value="<?= $xtitel; ?>">
-        <input type="hidden" name="xtype" value="<?= $xtype; ?>"><? 
+        <input type="hidden" name="xtype" value="<?= $xtype; ?>"><?
   }
   if($newpage>1){ ?>
         <input type="hidden" name="xteams" value="<?= $xteams; ?>">
         <input type="hidden" name="xanzst" value="<?= $xanzst; ?>">
-        <input type="hidden" name="xanzsp" value="<?= $xanzsp; ?>"><? 
+        <input type="hidden" name="xanzsp" value="<?= $xanzsp; ?>"><?
   }
 }?>
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <th class="nobr" align="left" colspan="3"><?= $text[246]." ".($newpage+1)." ".$text[259]." 4"; ?></th>
-          </tr><? 
+          </tr><?
 if($newpage==0){ ?>
           <tr>
             <td width="20">&nbsp;</td>
@@ -310,7 +310,7 @@ if($newpage==1){
                 </tr>
               </table>
             </td>
-          </tr><? 
+          </tr><?
   }else{ ?>
           <tr>
             <td width="20">&nbsp;</td>
@@ -323,7 +323,7 @@ if($newpage==1){
             <td width="20">&nbsp;</td>
             <td class="nobr">&nbsp;</td>
             <td class="nobr"><?= $text[350] ?></td>
-          </tr><? 
+          </tr><?
   }
 }
 if($newpage==2){
@@ -333,12 +333,23 @@ if($newpage==2){
             <td class="nobr" align="right" valign="top"><acronym title="<?= $text[285] ?>"><?= $text[284]; ?></acronym></td>
             <td class="nobr" align="left">
               <input type="radio" name="xprogram" value="none"<? if($xprogram=="none"){echo " checked";} ?> onChange="dolmoedit()"><?= $text[286]; ?><br><br>
-              <?= $text[287]; ?>:<br><? 
-    $ftype=".l98"; 
-    require(PATH_TO_LMO."/lmo-adminnewdir.php"); ?><br><? 
-    if(($xanzsp==floor($xteams/2)) && ($xanzst==floor($xteams*($xteams-1)/$xanzsp))){ ?>
-              <input type="radio" name="xprogram" value="random"<? if($xprogram=="random"){echo " checked";} ?> onChange="dolmoedit()"><?= $text[288]; 
-    }?>
+              <?= $text[287]; ?>:<br><?
+    $ftype=".l98";
+    require(PATH_TO_LMO."/lmo-adminnewdir.php"); ?><br><?
+    
+    // Änderungen s.janke@tu-bs.de - Beginn
+    if ($xteams>=4) {
+      $soll_anzsp = floor($xteams/2);
+      $soll_anzst = floor($xteams*($xteams-1)/$soll_anzsp);
+      // Prüfe: 1. Stimmt die Anzahl der Spiele pro Spieltag?
+      //             2. Ist die Spieltaganzahl gleich Hin- und Rückrunde oder nur Hinrunde?
+      if(($xanzsp==$soll_anzsp) && (($xanzst==$soll_anzst) || ($xanzst==$soll_anzst/2))){ ?>
+              <input type="radio" name="xprogram" value="random"<? if($xprogram=="random"){echo " checked";} ?> onChange="dolmoedit()"><?= $text[288];
+      }
+    }
+    // Änderungen s.janke@tu-bs.de - Ende
+    
+    ?>
             </td>
           </tr><?
   } else {
@@ -355,7 +366,7 @@ if($newpage==2){
                 <option value="7"<?if($xmodus[$i-1]==7){echo " selected";}?>><?=$text[357]?></option>
               </select>
             </td>
-          </tr><? 
+          </tr><?
     }
   }
 }
@@ -363,15 +374,15 @@ if($newpage<3){ ?>
           <tr>
             <td class="lmoFooter" align="left" colspan="2">
               <a href="<?= $_SERVER['PHP_SELF']; ?>" onclick="return siklmolink(this.href);" title="<?= $text[248]; ?>"><?= $text[247]; ?></a>
-            </td><? 
+            </td><?
   if($newpage<2){ ?>
             <td align="right">
               <input title="<?= $text[261]; ?>" class="lmo-formular-button" type="submit" name="best" value="<?= $text[260]; ?>">
-            </td><? 
+            </td><?
   } else {?>
             <td align="right">
               <input title="<?= $text[290]; ?>" class="lmo-formular-button" type="submit" name="best" value="<?= $text[289]; ?>">
-            </td><? 
+            </td><?
   }?>
           </tr><?
 }
@@ -384,7 +395,7 @@ if($newpage==3){ ?>
             <td class="lmoFooter" colspan="3" align="left">
               <a href="<?= $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;st=-2&amp;file=".$file; ?>" title="<?= $text[293]; ?>"><?= $text[292]; ?></a>
             </td>
-          </tr><? 
+          </tr><?
 } ?>
         </table>
       </form>
