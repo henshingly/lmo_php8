@@ -72,10 +72,10 @@ if($file!="" && $tipp_tippfieber==1){
       </td>
       <td>
         <select name="xkurvenmodus">
+          <option value="4"<?if($kurvenmodus==4){echo " selected";}?>><?=$text['tipp'][233]?></option>
           <option value="1"<?if($kurvenmodus==1){echo " selected";}?>><?=$text['tipp'][235]?></option>
           <option value="2"<?if($kurvenmodus==2){echo " selected";}?>><?=$text['tipp'][232]?></option>
           <option value="3"<?if($kurvenmodus==3){echo " selected";}?>><?=$text['tipp'][234]?></option>
-          <option value="4"<?if($kurvenmodus==4){echo " selected";}?>><?=$text['tipp'][233]?></option>
         </select>
       </td>
       <td>
