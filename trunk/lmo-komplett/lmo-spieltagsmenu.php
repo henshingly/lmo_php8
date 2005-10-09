@@ -24,12 +24,17 @@
         $k=$text[9];
       }
       echo "<td align='center'>";
+
       if ($i!=$st || empty($tabdat)) {
         if (isset($todo) && $todo=="tabs") {
-         echo "<a href='".$addb.$i."' title='".$k."'>".$j."</a>";
-       } else {
-         echo "<a href='".$addr.$i."' title='".$k."'>".$j."</a>";
-       }
+          echo "<a href='".$addb.$i."' title='".$k."'>".$j."</a>";
+        } else {
+          if($i == $st) {
+            echo "$j";
+          } else {
+            echo "<a href='".$addr.$i."' title='".$k."'>".$j."</a>";
+          }
+        }
       } else {
         echo $j;
       }
