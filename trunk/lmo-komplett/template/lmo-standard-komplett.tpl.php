@@ -7,8 +7,6 @@
 <!--Stylesheet-->
 </head>
 <body>
-  <p><small>Hier steht Deine Homepage, Navigation oder was auch immer Du willst. Diese kannst Du über 
-    die Dateien im Verzeichnis <code>/template</code> anpassen. (s. Hilfedatei)</small></p>
   <div align="center">
     <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
       <tr>
@@ -41,7 +39,5 @@
       </tr>
     </table>
   </div>
-  <p><small>Hier steht Deine Homepage, Navigation oder was auch immer Du willst. Diese kannst Du über 
-    die Dateien im Verzeichnis <code>/template</code> anpassen. (s. Hilfedatei)</small></p>
 </body>
 </html>
