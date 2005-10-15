@@ -68,20 +68,24 @@
 
       <h3><a name="1">1. Einleitung</a></h3>
 
-      <p>Herzlich Willkommen zum <em>neuen</em> Liga Manager Online. Mit diesem Skript k&#246;nnen Sie Ihren Besuchern einen Ergebnisdienst
+      <p>
+      Herzlich Willkommen zum <em>neuen</em> Liga Manager Online. Mit diesem Skript k&#246;nnen Sie Ihren Besuchern einen Ergebnisdienst
       &#252;ber Ihre Lieblingsligen anbieten. Die gesamte Verwaltung der Ligen l&#228;uft dabei direkt auf dem Server ab; Sie tragen nur
       noch die Ergebnisse ein und Ihre Besucher erhalten sofort die aktuellen Tabellen, Statistiken usw. - Keine Fremdsoftware, keine
       zeitraubenden Exporte und Uploads mehr!</p>
 
-      <p>Es ist ratsam, wenn Sie sich ein Bookmark/Favoriten in Ihrem Browser f&#252;r den Adminbereich (<strong>.../lmoadmin.php</strong>)
+      <p>
+      Es ist ratsam, wenn Sie sich ein Bookmark/Favoriten in Ihrem Browser f&#252;r den Adminbereich (<strong>.../lmoadmin.php</strong>)
       einrichten, damit Sie immer schnell darauf zugreifen k&#246;nnen. Im User-Bereich ist aus Sicherheitsgr&#252;nden kein Link auf den
       Adminbereich vorhanden (damit niemand auf dumme Gedanken kommt).</p>
 
-      <p>Die Besucher k&#246;nnen das Skript &#252;ber die Datei <strong>lmo.php</strong> starten. Wie man den LMO an seine eigene Homepage
+      <p>
+      Die Besucher k&#246;nnen das Skript &#252;ber die Datei <strong>lmo.php</strong> starten. Wie man den LMO an seine eigene Homepage
       anpasst, steht im Abschnitt <a href="anpassung_des_lmo.html#anpassung">Anpassung des LMO</a>. Zu jedem Link erhalten Ihre Besucher
       einen Tooltip, so da&#223; Sie keine weiteren Erkl&#228;rungen zur Benutzung des Skripts geben m&#252;ssen.</p>
 
-      <p class="attention">Der Adminbereich ist, &#252;ber <strong>lmoadmin.php</strong> erreichbar. Beim ersten Start melden Sie sich mit
+      <p class="attention">
+      Der Adminbereich ist, &#252;ber <strong>lmoadmin.php</strong> erreichbar. Beim ersten Start melden Sie sich mit
       dem Namen <kbd>admin</kbd> und dem Passwort <kbd>lmo</kbd> (Mit L wie Ludwig!) an. Unter <a href="optionen.html#4">Optionen</a>
       k&#246;nnen und sollten Sie das dann sofort &#228;ndern, damit kein Unbefugter mehr Zugriff hat.</p><a href="#top">[nach oben]</a>
 
@@ -101,11 +105,8 @@
         <li>Das <strong>ZIP-Archiv</strong> wurde bereits von Ihnen entpackt. Achten Sie darauf, dass die Verzeichnisstruktur beim
         Entpacken beibehalten wird.</li>
 
-        <li>Falls Sie den LMO auf einem Linuxserver installieren, &#228;ndern Sie die Zugriffsrechte der Datei
-        <strong>init-parameters.php</strong> auf <em>666</em> - wie das geht, verr&#228;t die Bedienungsanleitung Ihres FTP-Programms.</li>
-
-        <li>Danach rufen Sie das Installationsskript <strong>install.php</strong>, welches sich im Verzeichnis <strong>lmo</strong>
-        befindet und folgen den Anweisungen.</li>
+        <li>Rufen Sie nun den LMO auf, indem Sie die Adresse zum LMO in Ihren Browser eingeben. <strong>Die Installation startet automatisch
+           und sorgt für alle Vorraussetzungen, die der Betrieb des LMO erfordert.</strong></li>
 
         <li>Im Normalfall ist der LMO nun korrekt installiert. Sollte jedoch ein Fehler aufgetreten sein oder Sie k&#246;nnen aus anderen
         Gr&#252;nden die Installation nicht abschlie&#223;en, m&#252;ssen Sie die folgenden Schritte manuell nachvollziehen:
@@ -113,10 +114,21 @@
           <h4>Manuelle Installation</h4>
 
           <ul class="advanced">
-            <li><em>&#196;ndern Sie die Datei <strong>init-parameters.php</strong> mit einem normalen Texteditor und tragen Sie dort die
-            ben&#246;tigten Pfade ein.</em> Dies sind zum Ersten die <acronym title=
-            "Die Adresse, die man im Browser sehen kann, bei lokalen Installationen beginnt diese mit localhost bzw. 127.0.0.1">URL</acronym>
-            und zum Anderen der <acronym title="Der Weg vom Stammverzeichnis zum LMO - ">Pfad</acronym> zum LMO-Verzeichnis, falls Sie
+            <li><strong>Achtung: Diese Schritte sind nur notwendig, wenn die normale Installation nicht funktioniert!</strong></li>
+            
+            <li>Löschen Sie die Datei <strong>config/install.php</strong> und kopieren Sie danach den Inhalt 
+              des Ordners <strong>install</strong> über Ihr LMO-Verzeichnis</strong>
+            
+            <li>&#196;ndern Sie die Datei <strong>config/init-parameters.php</strong> mit einem normalen Texteditor und tragen Sie dort die
+            ben&#246;tigten Pfade ein. Falls die Datei noch nicht existiert, legen Sie diese mit einem normalen Texteditor an. </li>
+            
+            <li>Die Datei sollte so aussehen: <code>&lt?php<br>
+  &nbsp;&nbsp;$lmo_dateipfad='<strong>/absoluter/pfad/zum/lmo</strong>'; //Dateipfad zum LMO<br>
+	&nbsp;&nbsp;$lmo_url='<strong>http://www.adresse.ihres/lmo</strong>'; //abolute URL zum LMO<br>
+?&gt;</code>
+            Ersetzen Sie die beiden markierten Werte mit <strong><acronym title="Der Weg vom Stammverzeichnis zum LMO - ">dem Dateipfad</acronym></strong> zum LMO-Verzeichnis
+            und mit <strong><acronym title=
+            "Die Adresse, die man im Browser sehen kann, bei lokalen Installationen beginnt diese mit localhost bzw. 127.0.0.1">der Webadresse zum LMO</acronym></strong>. Falls Sie
             diese Angaben nicht wissen, fragen Sie bitte Ihren Provider.</li>
 
             <li>Nun &#228;ndern Sie bei folgenden Datei die Zugriffsrechte (chmod):
@@ -124,52 +136,58 @@
               <dl>
                 <dt>Verzeichnisse:</dt>
 
-                <dd>777 - das Verzeichnis <strong>ligen</strong> und dessen Unterverzeichnis <strong>archiv</strong></dd>
+                <dd>777 - das Verzeichnis <strong>ligen</strong> und <strong>alle Unterverzeichnisse</strong></dd>
 
                 <dd>777 - das Verzeichnis <strong>output</strong></dd>
+                
+                <dd>777 - das Verzeichnis <strong>config</strong> und dessen Unterverzeichnis <strong>config/viewer</strong></dd>
 
                 <dd>777 - das Verzeichnis <strong>addon/spieler/stats</strong></dd>
-
-                <dd>777 - das Verzeichnis <strong>addon/tipp/tipps</strong> und dessen Unterverzeichnisse <strong>einsicht</strong>,
-                <strong>auswert</strong> und <strong>vereine</strong></dd>
+                
+                <dd>777 - das Verzeichnis <strong>addon/tipp/tipps</strong> und <strong>alle Unterverzeichnisse</strong></dd>
 
                 <dt>Dateien:</dt>
 
-                <dd>666 - <strong>lmo-auth.txt</strong></dd>
+                <dd>666 - <strong>config/lmo-auth.php</strong></dd>
 
                 <dd>666 - <strong>addon/tipp/lmo-tippauth.txt</strong></dd>
 
-                <dd>666 - Alle Dateien <strong>cfg.txt</strong> im Verzeichnis <strong>config</strong> und dessen Unterverzeichnissen</dd>
+                <dd>666 - Alle Dateien <strong>cfg.txt</strong> im Verzeichnis <strong>config</strong> und dessen <strong>Unterverzeichnissen</strong></dd>
 
-                <dd>666 - alle Ligen im <strong>ligen</strong>-Verzeichnis und im Unterverzeichnis <strong>archiv</strong></dd>
+                <dd>666 - alle Ligen im <strong>ligen</strong>-Verzeichnis und in dessen <strong>Unterverzeichnissen</strong></dd>
 
                 <dd>666 - alle Dateien in den Verzeichnissen <strong>output</strong> , <strong>addon/spieler/stats</strong> und
                 <strong>tipp/tipps</strong> (sofern vorhanden)</dd>
               </dl>
             </li>
+            <li>Damit ist der Liga Manager Online installiert!</li>
           </ul>
         </li>
       </ol><a href="#top">[nach oben]</a>
 
       <h3><a name="4">4. Login/Logout</a></h3>
 
-      <p>Wenn Sie den Adminbereich betreten, sehen Sie zuerst eine Eingabemaske, mit der Sie sich beim System anmelden m&#252;ssen. Nach
+      <p>
+      Wenn Sie den Adminbereich betreten, sehen Sie zuerst eine Eingabemaske, mit der Sie sich beim System anmelden m&#252;ssen. Nach
       der Installation ist der voreingestellte der Nutzername <kbd>admin</kbd> und das Passwort <kbd>lmo</kbd> (kleines L, kleines M,
       kleines O) eingestellt. Das sollten Sie aber schnellstm&#246;glich &#228;ndern, um Unbefugten den Zutritt zu Ihrem Adminbereich zu
       verwehren.</p>
 
-      <p>Wenn Sie eingeloggt sind, haben Sie rechts oben im Men&#252; immer auch einen Befehl <strong>Logout</strong>, mit dem Sie sich aus
+      <p>
+      Wenn Sie eingeloggt sind, haben Sie rechts oben im Men&#252; immer auch einen Befehl <strong>Logout</strong>, mit dem Sie sich aus
       dem Adminbereich ausloggen k&#246;nnen. Das sollten Sie der Sicherheit wegen auch immer am Ende einer Sitzung tun.</p><a href=
       "#top">[nach oben]</a>
 
       <h3><a name="5">5. Rechtliches</a></h3>
 
-      <p class="attention">Dieses Skript wird unter den Bestimmungen der <a href="http://www.gnu.org/licenses/gpl.txt">GPL</a> (<a href=
+      <p class="attention">
+      Dieses Skript wird unter den Bestimmungen der <a href="http://www.gnu.org/licenses/gpl.txt">GPL</a> (<a href=
       "http://www.gnu.de/gpl-ger.html">deutsche &#220;bersetzung</a> ) herausgegeben. Das hei&#223;t, Sie d&#252;rfen das Skript nutzen,
       weitergeben und sogar ver&#228;ndern; Garantie wird von keiner Seite gew&#228;hrt. <strong>Bitte beachten Sie, dass Copyrighthinweise
       auf jeden Fall erhalten bleiben m&#252;ssen, es ist also nicht erlaubt, diese zu entfernen oder zu &#228;ndern.</strong></p>
 
-      <p>Obwohl diese Software sorgf&#228;ltig entwickelt wurde, kann f&#252;r die Verwendungsf&#228;higkeit und Fehlerfreiheit keine
+      <p>
+      Obwohl diese Software sorgf&#228;ltig entwickelt wurde, kann f&#252;r die Verwendungsf&#228;higkeit und Fehlerfreiheit keine
       Haftung &#252;bernommen werden. Jede Haftung f&#252;r direkte, indirekte, verursachte oder gefolgte Sch&#228;den, die durch die
       Verwendung dieses Programms entstehen k&#246;nnten, ist ausgeschlossen. Es gibt keine Garantie!</p><a href="#top">[nach oben]</a>
     </div>

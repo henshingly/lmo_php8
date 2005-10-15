@@ -58,3 +58,5 @@ strong {color:#800;}
 .attention {border:1px solid #d99;background:#ffe7e0;padding:0.4em;-moz-border-radius:8px;}
 .attention:before {content: url(attention.gif);}
 .classlib:before {content: url(classlib.gif);}
+ul.advanced {list-style-type:none;}
+ul.advanced li {margin:0.5em;}
