@@ -22,7 +22,7 @@
 @ini_set("arg_separator.output","&amp;");
 
 if (session_id()=="") session_start();
-require(dirname(__FILE__).'/init-parameters.php');
+require(dirname(__FILE__).'/config/init-parameters.php');
 
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
   $_SESSION['debug']=TRUE;
@@ -47,6 +47,12 @@ if (!defined('URL_TO_IMGDIR'))      define('URL_TO_IMGDIR',       URL_TO_LMO.'/i
 if (!defined('URL_TO_LANGDIR'))     define('URL_TO_LANGDIR',      URL_TO_LMO.'/lang');
 if (!defined('URL_TO_CONFIGDIR'))   define('URL_TO_CONFIGDIR',    URL_TO_LMO.'/config');
 if (!defined('URL_TO_JSDIR'))       define('URL_TO_JSDIR',        URL_TO_LMO.'/js');
+
+//Check Path
+if (!file_exists(PATH_TO_LMO."/init.php")) {
+  echo "Invalid Path to LMO: '".PATH_TO_LMO."' - please reinstall or correct manually.";
+  exit();
+}
 
 //Configuration
 require(PATH_TO_LMO."/lmo-cfgload.php");

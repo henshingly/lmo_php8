@@ -31,7 +31,7 @@ if($action=="admin"){
   if(!isset($newpage)){$newpage=0;}
   $file=isset($_REQUEST['file'])?$_REQUEST['file']:"";
   
-  if (@file_exists(PATH_TO_LMO."/install.php") && @is_readable(PATH_TO_LMO."/install.php")) echo getMessage('Delete install.php or set its chmod to 000!',TRUE);
+  if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo getMessage('Delete install folder or set its chmod to 000!',TRUE);
 ?>
 <script type="text/javascript" src="<?=URL_TO_LMO?>/js/admin.js.php"></script>
 <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
