@@ -19,7 +19,7 @@
 // $Id$
 //
 
-//jokerlmo: Changed inlude path
+//jokerlmo: Changed include path
 require_once(PATH_TO_LMO.'/pear/PEAR.php');
 
 define("IT_OK",                         1);
@@ -997,6 +997,7 @@ class HTML_Template_IT {
      */
     function errorMessage($value)
     {
+        global $blockname;
         static $errorMessages;
         if (!isset($errorMessages)) {
             $errorMessages = array(
