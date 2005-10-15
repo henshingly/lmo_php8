@@ -1,5 +1,0 @@
-withArchiv=1
-unGreedy=1
-barWidth=120
-standardTemplate=mininext.tpl.php
-cache_refresh=0
