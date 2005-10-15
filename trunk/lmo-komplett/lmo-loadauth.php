@@ -15,12 +15,13 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $id$
   */
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 
-$lmo_auth_file=PATH_TO_LMO."/lmo-auth.txt";
+$lmo_auth_file=PATH_TO_CONFIGDIR."/lmo-auth.php";
 $lmo_admin_data = array();
 $datei = fopen($lmo_auth_file,"rb");
 if ($datei) {

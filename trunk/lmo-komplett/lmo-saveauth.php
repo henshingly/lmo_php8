@@ -15,16 +15,18 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($_SESSION['lmouserok']==2){
-  $lmo_auth_file=PATH_TO_LMO."/lmo-auth.txt";
+  $lmo_auth_file=PATH_TO_CONFIGDIR."/lmo-auth.php";
   
   $datei = fopen($lmo_auth_file,"wb");
   if ($datei) {
     flock($datei,LOCK_EX);
+    fwrite($datei,"<?php exit(); ?>\n");
     foreach($lmo_admin_data as $lmo_admin) {
       if (count($lmo_admin)>1) fputs($datei,implode("|",$lmo_admin)."\n");
     }

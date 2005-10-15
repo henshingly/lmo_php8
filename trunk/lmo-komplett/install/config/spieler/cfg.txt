@@ -1,0 +1,9 @@
+anzeige_pro_seite=10
+nullwerte_anzeigen=1
+extra_sortierspalte=1
+vereinsweise_anzeigen=0
+standard_sortierung=0
+standard_richtung=1
+adminbereich_standard_sortierung=0
+adminbereich_hilfsadmin_zulassen=1
+adminbereich_hilfsadmin_fuer_spalten=1
