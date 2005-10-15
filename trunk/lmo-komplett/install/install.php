@@ -29,7 +29,7 @@ $_SESSION['userlang']=isset($_GET['userlang'])?$_GET['userlang']:(isset($_SESSIO
 $userlang = $_SESSION['userlang'];
 
 $filelist=array(
-  '777'=>array('ligen','output','config','ligen/archiv','config/viewer','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
+  '777'=>array('ligen','output','config','ligen/dfb','config/viewer','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
   '666'=>array('config/cfg.txt','config/lmo-auth.php','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98')
 );
 $lang=array(
@@ -275,10 +275,10 @@ if ($lmo_install_step==1) {
      
       $base = ftp_pwd($conn)  ;
       ftp_chdir($conn, "$base/".$ftpdir);
-      if (ftp_size($conn, "install.php") == -1) {
+      if (ftp_size($conn, "init.php") == -1) {
         //Pathtest
         $patherror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> "'.$ftpdir.'": '.$lang[$userlang]['ERROR_WRONG_PATH'].'</p>';
-        $filelist = array();
+        $filelist = array('..');
         $lmo_install_step=1;
       } else {
         foreach ($filelist as $chmod=>$files) {
