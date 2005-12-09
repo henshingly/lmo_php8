@@ -1,0 +1,5 @@
+000=Todo el resultado desde el último día de juego
+001=.Día de juego
+002=-Decisión Administrativa
+003=Cuenta de Resultados igual para ambos equipos (Vista de Equipo Local).
+004=En este momento, no hay mensajes
