@@ -318,8 +318,8 @@ function getFileContent($filename, $use_include_path = 0) {
 
   //3 Möglichkeiten: 1. cURL, 2. fopen, 3. fsockopen
   //first we test if cURL is installed
-  if (function_exists(curl_version()) and $host!='') {
-//    echo getMessage('reading Filecontent via curl($filename)',FALSE);
+  if (function_exists("curl_version") && $host!='') {
+    echo getMessage('reading Filecontent via curl($filename)',FALSE);
     $curl_info = @curl_version();
     //now test if http is supported
     if (count($curl_info)>0 && is_int(array_search('http',$curl_info['protocols']))) {
@@ -340,7 +340,7 @@ function getFileContent($filename, $use_include_path = 0) {
       
     }
   //no cURL - now we try url_wrapper 
-  } elseif ($host=='') { //ini_get("allow_url_fopen") == 1 or 
+  } elseif (ini_get("allow_url_fopen") == 1 && $host!='') { //ini_get("allow_url_fopen") == 1 or 
     // function file_get_contents gibts erst ab PHP V. 4.3.0
     // wenns die also nicht gibt, bauen wir die selber
     if (!function_exists("file_get_contents")) {
@@ -355,7 +355,7 @@ function getFileContent($filename, $use_include_path = 0) {
         return $data;
       }
     }
-//    echo getMessage('reading Filecontent via fopen('.$filename.')',FALSE);
+    echo getMessage('reading Filecontent via fopen('.$filename.')',FALSE);
     $ret = file_get_contents($filename);
   //last one - sockets :(
   } else {
@@ -374,22 +374,22 @@ function getFileContent($filename, $use_include_path = 0) {
       $path .= "?".$url_parsed["query"];
     }
 
-//    echo getMessage("reading Filecontent via fsockopen()<br><strong>Host:</strong> $host  <strong>Port:</strong> $port<br><strong>Path:</strong> $path",FALSE);
+    echo getMessage("reading Filecontent via fsockopen()<br><strong>Host:</strong> $host  <strong>Port:</strong> $port<br><strong>Path:</strong> $path",FALSE);
 	
     $out = "GET $path HTTP/1.0\r\nHost: $host\r\n\r\n";
-
-	if ($host != '') {
-		$fp = fsockopen($host, $port, $errno, $errstr, 30);
-		//write to socket
-		fwrite($fp, $out);
-		//read from socket
-		while (!feof($fp)) {
-		  $ret .= fgets($fp, 128);
-		}
-		fclose($fp);
-	} else     
-		echo getMessage('No Host found('.$host.')',TRUE);
-
+  
+  	if ($host != '') {
+  		$fp = fsockopen($host, $port, $errno, $errstr, 30);
+  		//write to socket
+  		fwrite($fp, $out);
+  		//read from socket
+  		while (!feof($fp)) {
+  		  $ret .= fgets($fp, 128);
+  		}
+  		fclose($fp);
+  	} else {    
+  		echo getMessage('No Host found ('.$host.')',TRUE);
+  	}
   }
   return $ret;
 }
