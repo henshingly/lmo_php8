@@ -68,7 +68,11 @@ $addi=$_SERVER['PHP_SELF']."?abs=".$abs."&amp;feld=".$feld;
 $dat = time();
 $dat0 = getdate($dat);
 $datj=$dat0['month']." ".$dat0['year'];
-if(!isset($_GET['calshow']) || $_GET['calshow']==""){$calshow=$dat0['month']." ".$dat0['year'];}
+if(!isset($_GET['calshow']) || $_GET['calshow']=="") {
+   $calshow=$dat0['month']." ".$dat0['year'];
+} else {
+  $calshow = $_GET['calshow'];
+}
 $dath=$calshow;
 $calshow="";
 $dat5="1 ".$dath;
