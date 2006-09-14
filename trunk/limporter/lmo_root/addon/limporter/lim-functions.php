@@ -320,9 +320,9 @@ function getFileContent($filename, $use_include_path = 0) {
   //first we test if cURL is installed
   if (function_exists("curl_version") && $host!='') {
     echo getMessage('reading Filecontent via curl($filename)',FALSE);
-    $curl_info = @curl_version();
+    $curl_info = curl_version();
     //now test if http is supported
-    if (count($curl_info)>0 && is_int(array_search('http',$curl_info['protocols']))) {
+//    if (count($curl_info)>0 && is_int(array_search('http',$curl_info['protocols']))) {
       //let's start
       // create a new curl resource
       $ch = curl_init();
@@ -338,9 +338,10 @@ function getFileContent($filename, $use_include_path = 0) {
       // close curl resource, and free up system resources
       curl_close($ch);
       
-    }
+ //   }
+ 
   //no cURL - now we try url_wrapper 
-  } elseif (ini_get("allow_url_fopen") == 1 && $host!='') { //ini_get("allow_url_fopen") == 1 or 
+  } elseif (@ini_get("allow_url_fopen") == 1 && $host!='') { 
     // function file_get_contents gibts erst ab PHP V. 4.3.0
     // wenns die also nicht gibt, bauen wir die selber
     if (!function_exists("file_get_contents")) {
