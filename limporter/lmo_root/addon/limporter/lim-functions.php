@@ -309,21 +309,89 @@ function extractText($content) {
 
 
 function getFileContent($filename, $use_include_path = 0) {
-  // function file_get_contents gibts erst ab PHP V. 4.3.0
-  // wenns die also nicht gibt, bauen wir die selber
-  if (!function_exists("file_get_contents")) {
+  
+  $ret = '';
+  $url_parsed = parse_url($filename);
+  $host = $url_parsed["host"];
+  $path = $url_parsed["path"];
+  $port = $url_parsed["port"];
 
-    function file_get_contents($filename, $use_include_path = 0) {
-      $data = ""; // just to be safe. Dunno, if this is really needed
-      $file = @fopen($filename, "rb", $use_include_path);
-      if ($file) {
-        while (!feof($file)) $data .= fread($file, 1024);
-        fclose($file);
-      }
-      return $data;
+  //3 Möglichkeiten: 1. cURL, 2. fopen, 3. fsockopen
+  //first we test if cURL is installed
+  if (function_exists(curl_version()) and $host!='') {
+//    echo getMessage('reading Filecontent via curl($filename)',FALSE);
+    $curl_info = @curl_version();
+    //now test if http is supported
+    if (count($curl_info)>0 && is_int(array_search('http',$curl_info['protocols']))) {
+      //let's start
+      // create a new curl resource
+      $ch = curl_init();
+      
+      // set URL and other appropriate options
+      curl_setopt($ch, CURLOPT_URL, $filename);
+      curl_setopt($ch, CURLOPT_HEADER, FALSE);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      
+      // grab URL and 
+      $ret = curl_exec($ch);
+      
+      // close curl resource, and free up system resources
+      curl_close($ch);
+      
     }
+  //no cURL - now we try url_wrapper 
+  } elseif ($host=='') { //ini_get("allow_url_fopen") == 1 or 
+    // function file_get_contents gibts erst ab PHP V. 4.3.0
+    // wenns die also nicht gibt, bauen wir die selber
+    if (!function_exists("file_get_contents")) {
+  
+      function file_get_contents($filename, $use_include_path = 0) {
+        $data = ""; // just to be safe. Dunno, if this is really needed
+        $file = @fopen($filename, "rb", $use_include_path);
+        if ($file) {
+          while (!feof($file)) $data .= fread($file, 1024);
+          fclose($file);
+        }
+        return $data;
+      }
+    }
+//    echo getMessage('reading Filecontent via fopen('.$filename.')',FALSE);
+    $ret = file_get_contents($filename);
+  //last one - sockets :(
+  } else {
+    
+    if ($port==0) {
+      $port = 80;
+    }
+
+    //if url is http://example.com without final "/"
+    //I was getting a 400 error
+    if (empty($path)) {
+      $path="/";
+    }
+    
+    if ($url_parsed["query"] != "") {
+      $path .= "?".$url_parsed["query"];
+    }
+
+//    echo getMessage("reading Filecontent via fsockopen()<br><strong>Host:</strong> $host  <strong>Port:</strong> $port<br><strong>Path:</strong> $path",FALSE);
+	
+    $out = "GET $path HTTP/1.0\r\nHost: $host\r\n\r\n";
+
+	if ($host != '') {
+		$fp = fsockopen($host, $port, $errno, $errstr, 30);
+		//write to socket
+		fwrite($fp, $out);
+		//read from socket
+		while (!feof($fp)) {
+		  $ret .= fgets($fp, 128);
+		}
+		fclose($fp);
+	} else     
+		echo getMessage('No Host found('.$host.')',TRUE);
+
   }
-  return file_get_contents($filename);
+  return $ret;
 }
 
 function buildFieldArray($url,$detailsRowCheck = 0) {
