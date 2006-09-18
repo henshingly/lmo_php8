@@ -1,0 +1,15 @@
+000=[<acronym title='lmo-mininext for LMO &copy; Tim Schumacher/LMO-Group CLASSLIB_VERSION'>&copy;</acronym>]
+001=Volgende wedstrijd
+002=Laatste wedstrijd
+003=Wedstrijd
+004=Wedstrijd tegen:
+005=Fout: League niet gevonden!
+006=Opgelet: archief folder niet gevonden
+007=Vorige wedstrijd
+008=Geen team geselecteerd!
+009=S
+010=U
+011=N
+012=a
+013=h
+014=Stand

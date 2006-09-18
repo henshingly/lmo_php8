@@ -1,0 +1,5 @@
+000=Alle resultaten van de laatste speeldag
+001=speeldag
+002=-Beslissing van het sportcomité
+003=De resultaten gelden voor beide ploegen.
+004=Geen nieuws op dit moment
