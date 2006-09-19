@@ -341,7 +341,8 @@ function getFileContent($filename, $use_include_path = 0) {
  //   }
  
   //no cURL - now we try url_wrapper 
-  } elseif (@ini_get("allow_url_fopen") == 1 && $host!='') { 
+  //also try fopen if we have a path instead of an URL
+  } elseif ($host=='' || @ini_get("allow_url_fopen") == 1) { 
     // function file_get_contents gibts erst ab PHP V. 4.3.0
     // wenns die also nicht gibt, bauen wir die selber
     if (!function_exists("file_get_contents")) {
@@ -379,18 +380,15 @@ function getFileContent($filename, $use_include_path = 0) {
 	
     $out = "GET $path HTTP/1.0\r\nHost: $host\r\n\r\n";
   
-  	if ($host != '') {
-  		$fp = fsockopen($host, $port, $errno, $errstr, 30);
-  		//write to socket
-  		fwrite($fp, $out);
-  		//read from socket
-  		while (!feof($fp)) {
-  		  $ret .= fgets($fp, 128);
-  		}
-  		fclose($fp);
-  	} else {    
-  		echo getMessage('No Host found ('.$host.')',TRUE);
-  	}
+  	
+		$fp = fsockopen($host, $port, $errno, $errstr, 30);
+		//write to socket
+		fwrite($fp, $out);
+		//read from socket
+		while (!feof($fp)) {
+		  $ret .= fgets($fp, 128);
+		}
+		fclose($fp);
   }
   return $ret;
 }
