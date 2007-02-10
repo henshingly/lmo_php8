@@ -69,7 +69,7 @@ $num = 0;
 $col = 0;
 
 if(isset($file) and ($pv==1)){
-	$dataArray = buildFieldArrayDFB($file,$cdetails,'update');
+	$dataArray = buildFieldArrayDFB($file,$cdetails,'import');
 	foreach ($dataArray as $dataRow) {
 		if ($row >= $offset) {
 			$data = explode("#",$dataRow);

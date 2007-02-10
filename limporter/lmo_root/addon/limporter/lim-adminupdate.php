@@ -110,7 +110,7 @@
 
     // Aus Performacegründen wird eine lokale Kopie der Importquelle erstellt
 
-    $fileContent = getFileContent($ximporturl);
+    $fileContent = $ximporturl.getFileContent($ximporturl); //die aufgerufene URL muss für den fussball.de-Import mit gesichert werden
     if (($ximporttype == 0) || ($ximporttype == 2)) $tmpSourceName="importsrc.htm"; else $tmpSourceName="importsrc.csv";
 
     if ($fileContent == "") {
@@ -271,7 +271,8 @@
           $txt .= $upDateLiga->spieltage[$sp]->partien[$p]-> zeitString()."&nbsp;</td>";
           $partieArray[] = "<tr>".$txt."</tr>";
         }
-        if (isset($partie) and $partie->notiz <> '' and ($upDateNotiz <> $partie->notiz) ){  // Spielnotiz and $upDateNotiz <> ''
+        $notizAlt = $upDateLiga->spieltage[$sp]->partien[$p]->notiz;
+        if (isset($partie) and ($partie->notiz <> '' or ($ximporttype == 2 and ($notizAlt == $text['limporter'][112] or $notizAlt == $text['limporter'][113] or $notizAlt == $text['limporter'][114] or $notizAlt == $text['limporter'][115]))) and ($upDateNotiz <> $partie->notiz) ){  // Spielnotiz. Damit bestehende Notizen erhalten bleiben, nicht updaten, wenn neue Notiz leer ist. Ausnahme bei den Sonderereignissen beim fussball.de-Update.
           $upDateFound = 1;
           $upDateLiga->spieltage[$sp]->partien[$p]->notiz = $partie->notiz;
           $txt = "<td>&nbsp;".$upDateLiga->spieltage[$sp]->nr.". ".$text['limporter'][65]."&nbsp;</td>";
