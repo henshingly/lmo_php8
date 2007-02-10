@@ -309,7 +309,7 @@ function extractText($content) {
 
 
 function getFileContent($filename, $use_include_path = 0) {
-  
+
   $ret = '';
   $url_parsed = parse_url($filename);
   $host = $url_parsed["host"];
@@ -326,27 +326,27 @@ function getFileContent($filename, $use_include_path = 0) {
       //let's start
       // create a new curl resource
       $ch = curl_init();
-      
+
       // set URL and other appropriate options
       curl_setopt($ch, CURLOPT_URL, $filename);
       curl_setopt($ch, CURLOPT_HEADER, FALSE);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-      
-      // grab URL and 
+
+      // grab URL and
       $ret = curl_exec($ch);
-      
+
       // close curl resource, and free up system resources
       curl_close($ch);
-      
+
  //   }
- 
-  //no cURL - now we try url_wrapper 
+
+  //no cURL - now we try url_wrapper
   //also try fopen if we have a path instead of an URL
-  } elseif ($host=='' || @ini_get("allow_url_fopen") == 1) { 
+  } elseif ($host=='' || @ini_get("allow_url_fopen") == 1) {
     // function file_get_contents gibts erst ab PHP V. 4.3.0
     // wenns die also nicht gibt, bauen wir die selber
     if (!function_exists("file_get_contents")) {
-  
+
       function file_get_contents($filename, $use_include_path = 0) {
         $data = ""; // just to be safe. Dunno, if this is really needed
         $file = @fopen($filename, "rb", $use_include_path);
@@ -357,11 +357,11 @@ function getFileContent($filename, $use_include_path = 0) {
         return $data;
       }
     }
-    echo getMessage('reading Filecontent via fopen('.$filename.')',FALSE);
+    //echo getMessage('reading Filecontent via fopen('.$filename.')',FALSE);
     $ret = file_get_contents($filename);
   //last one - sockets :(
   } else {
-    
+
     if ($port==0) {
       $port = 80;
     }
@@ -371,16 +371,16 @@ function getFileContent($filename, $use_include_path = 0) {
     if (empty($path)) {
       $path="/";
     }
-    
+
     if ($url_parsed["query"] != "") {
       $path .= "?".$url_parsed["query"];
     }
 
-    echo getMessage("reading Filecontent via fsockopen()<br><strong>Host:</strong> $host  <strong>Port:</strong> $port<br><strong>Path:</strong> $path",FALSE);
-	
+    //echo getMessage("reading Filecontent via fsockopen()<br><strong>Host:</strong> $host  <strong>Port:</strong> $port<br><strong>Path:</strong> $path",FALSE);
+
     $out = "GET $path HTTP/1.0\r\nHost: $host\r\n\r\n";
-  
-  	
+
+
 		$fp = fsockopen($host, $port, $errno, $errstr, 30);
 		//write to socket
 		fwrite($fp, $out);
@@ -696,8 +696,8 @@ function buildLigaFromDataArray(&$liga,&$array,$header,&$cols,&$formatArray) {
     $lastDate = $spieldatum;
     $i++;
   endwhile;
-  
-  if ($autoRounds==FALSE) ksort($liga->spieltage); //Spieltage müssen sortiert sein. Es könnte aber in der Quelle z.B. der 30. auf den 15. Spieltag folgen. 
+
+  if ($autoRounds==FALSE) ksort($liga->spieltage); //Spieltage müssen sortiert sein. Es könnte aber in der Quelle z.B. der 30. auf den 15. Spieltag folgen.
 
 // Das muss noch verbessert werden, sonst wird bei einem vorgezogenen Spiel bereits der
 // aktuelle Spieltag verändert
