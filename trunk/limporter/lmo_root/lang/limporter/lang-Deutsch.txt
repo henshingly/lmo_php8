@@ -35,7 +35,7 @@
 035=Spielplan von fussball.de
 036=Spielplan Datenquelle wählen
 037=Wählen Sie eine lokale Datei aus dem LMO Ligen Verzeichnis aus,<BR>oder geben Sie den vollständigen URL-Pfad des Spielplans an.
-038=Der URL-Pfad muss ein Link zum ersten Spieltag der Liga sein.<BR>(Internet Explorer: Rechtsklick im Bereich der Begegnungen => Eigenschaften => URL kopieren.)<BR>(Firefox: Rechtsklick im Bereich der Begegnungen => Aktueller Frame => Frame-Informationen anzeigen => URL kopieren.)
+038=Der URL-Pfad muss ein Link zu einem beliebigen Spieltag der Liga sein.<BR>(Begegnungen der gew&uuml;nschten Liga aufrufen, mindestens einmal den Spieltag wechseln und URL aus der Adress-Zeile des Browsers kopieren.)
 039=Wählen hier die Datei aus, von der Sie den Spielplan importieren wollen.
 040=lokale Datei auswählen
 041=Bitte Datei w&auml;hlen
@@ -107,15 +107,13 @@
 107=Backup konnte nicht erstellt werden
 108=Bitte beachten Sie folgende Hinweise:
 109=Liga-Optionen bearbeiten
-110=Konnte Link zum nächsten Spieltag nicht finden. Korrekte URL angegeben?<br>Aufgerufene URL:
-111=Hinweis: Die Partie
-112=ist gleichzeitig am
-113=und
-114=. Spieltag angesetzt. Sie wurde dem Ersteren zugeordnet.
-115=Hinweis: Dem
-116=. Spieltag sind keine Spiele zugeordnet. Bitte die entsprechenden Spiele per Hand verschieben und anschließend Mannschaft 'Dummy-Spiel' löschen.
+110=Konnte Link zum n&auml;chsten Spieltag nicht finden. Korrekte URL angegeben?<br>Aufgerufene URL:
+111=Die Liga enth&auml;lt keinen Staffelspielplan, daher kein Import m&ouml;glich.
+112=Spielausfall
+113=Annullierung
+114=Spielabsetzung
+115=Spielabbruch
 117=Hinweis: Zu
 118=Spiel(en) konnte kein Spieltag gefunden werden. Diese wurden dem 1. Spieltag zugeordnet.
 119=Sie haben nicht alle Pflichtfelder zugeordnet.\nBitte geben Sie eine Spaltenzuordnung für folgende Attribute an
-120=ist als Testspiel deklariert und wurde deshalb ignoriert.
-121=Fehler! Die Classlib konnte nicht gefunden werden. Bitte aus dem <a href="http://www.liga-manager-online.de/phpBB2/index.php">Addonarchiv</a> des LMO die neueste Version herunterladen und installieren!
+121=Fehler! Die Classlib konnte nicht gefunden werden. Bitte aus dem <a href="http://www.liga-manager-online.de/lmo-forum/viewforum.php?f=18">Addonarchiv</a> des LMO die neueste Version herunterladen und installieren!

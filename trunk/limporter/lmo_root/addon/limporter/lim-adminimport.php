@@ -84,7 +84,7 @@
     }
 
     // Aus Performacegründen wird eine lokale Kopie der Importquelle erstellt
-    $fileContent = getFileContent($ximporturl);
+    $fileContent = $ximporturl.getFileContent($ximporturl);  //die aufgerufene URL muss für den fussball.de-Import mit gesichert werden
     if (($ximporttype == 0) || ($ximporttype == 2)) $fileName="importsrc.htm";
     else $fileName="importsrc.csv";
     if ($fileContent == "") {
