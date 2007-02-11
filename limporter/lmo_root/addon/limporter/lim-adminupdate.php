@@ -272,7 +272,7 @@
           $partieArray[] = "<tr>".$txt."</tr>";
         }
         $notizAlt = $upDateLiga->spieltage[$sp]->partien[$p]->notiz;
-        if (isset($partie) and ($partie->notiz <> '' or ($ximporttype == 2 and ($notizAlt == $text['limporter'][112] or $notizAlt == $text['limporter'][113] or $notizAlt == $text['limporter'][114] or $notizAlt == $text['limporter'][115]))) and ($upDateNotiz <> $partie->notiz) ){  // Spielnotiz. Damit bestehende Notizen erhalten bleiben, nicht updaten, wenn neue Notiz leer ist. Ausnahme bei den Sonderereignissen beim fussball.de-Update.
+        if (isset($partie) and ($partie->notiz <> '' or ($ximporttype == 2 and ($notizAlt == $text['limporter'][112] or $notizAlt == $text['limporter'][113] or $notizAlt == $text['limporter'][114] or $notizAlt == $text['limporter'][115] or $notizAlt == $text['limporter'][122] or $notizAlt == $text['limporter'][123] or $notizAlt == $text['limporter'][124]))) and ($upDateNotiz <> $partie->notiz) ){  // Spielnotiz. Damit bestehende Notizen erhalten bleiben, nicht updaten, wenn neue Notiz leer ist. Ausnahme bei den Sonderereignissen beim fussball.de-Update.
           $upDateFound = 1;
           $upDateLiga->spieltage[$sp]->partien[$p]->notiz = $partie->notiz;
           $txt = "<td>&nbsp;".$upDateLiga->spieltage[$sp]->nr.". ".$text['limporter'][65]."&nbsp;</td>";
