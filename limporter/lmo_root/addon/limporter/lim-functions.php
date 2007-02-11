@@ -319,7 +319,7 @@ function getFileContent($filename, $use_include_path = 0) {
   //3 Möglichkeiten: 1. cURL, 2. fopen, 3. fsockopen
   //first we test if cURL is installed
   if (function_exists("curl_version") && $host!='') {
-    echo getMessage('reading Filecontent via curl($filename)',FALSE);
+    //echo getMessage('reading Filecontent via curl($filename)',FALSE);
     $curl_info = curl_version();
     //now test if http is supported
 //    if (count($curl_info)>0 && is_int(array_search('http',$curl_info['protocols']))) {
