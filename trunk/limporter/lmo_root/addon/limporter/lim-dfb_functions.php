@@ -113,7 +113,7 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 				}
 				//Entferne mehrfache Leerzeichen aus den Mannschaftsnamen
 				$ergebnis[2] = preg_replace(array("/\. /","/ +/","%/ %","%- %"), array("."," ","/","-"), $ergebnis[2]);
-        $ergebnis[3] = preg_replace(array("/\. /","/ +/","%/ %","%- %"), array("."," ","/","-"), $ergebnis[3]);
+        		$ergebnis[3] = preg_replace(array("/\. /","/ +/","%/ %","%- %"), array("."," ","/","-"), $ergebnis[3]);
 				//Suche besondere Ereignisse
 				//Wenn hier Änderungen vorgenommen werden, bitte auch das Update des Notiz-Feldes in der lim-adminupdate.php anpassen
 				if ($ergebnis[6] == 'Ausf.')
@@ -125,7 +125,17 @@ function buildFieldArrayDFB($url,$detailsRowCheck = 0, $mode) {
 				elseif ($ergebnis[6] == 'Abbr.')
 					$notiz = $text['limporter'][115];
 				else
-					$notiz = ' ';
+					$notiz = '';
+				if (preg_match("/\d+:\d+ (.)/", $ergebnis[6], $temp)) {
+					if ($temp[1] == 'w' || $temp[1] == 'W')
+						$notiz = $text['limporter'][122];
+					elseif ($temp[1] == 'v' || $temp[1] == 'V')
+						$notiz = $text['limporter'][123];
+					elseif ($temp[1] == 'u' || $temp[1] == 'U')
+						$notiz = $text['limporter'][124];
+					else
+						$notiz = '';												
+				}
 				//Baue Array für die Weiterverarbeitung im Limporter
 				$begegnung = utf8_decode($spieltag[$ergebnis[1]] . "#" . $datum . "#" . $ergebnis[1] . "#" . $ergebnis[2] . "#" . $ergebnis[3] . "#" . $ergebnis[4] . "#". $notiz . "#" . $ergebnis[6]);
 				array_push($rows, $begegnung);
