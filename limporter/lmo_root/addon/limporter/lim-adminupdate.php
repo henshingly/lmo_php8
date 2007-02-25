@@ -320,10 +320,10 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
   </tr>
   <tr><td align="center" class="lmost3">
 <?PHP if($imppage<1){ ?>
-  <form onSubmit="return checkHinweis();" name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form onSubmit="return checkHinweis();" name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
 <?PHP }
   else if ($imppage<3){ ?>
-  <form  onSubmit="return checkSettings();" name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form  onSubmit="return checkSettings();" name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
 <?PHP }
 
 if($imppage<3){ ?>
@@ -407,10 +407,10 @@ if($imppage<3){ ?>
   </tr>
   <?php if ($ximporttype == 2) {?>
   </tr>
-  <tr>  
-    <td class="lmost5" colspan="3" align="center"><?PHP echo VERSlON2 ; ?></td>	
+  <tr>
+    <td class="lmost5" colspan="3" align="center"><?PHP echo VERSlON2 ; ?></td>
   <?php } ?>
-  </tr>  
+  </tr>
 <?php
   if($imppage<3){ ?>
   <tr>
