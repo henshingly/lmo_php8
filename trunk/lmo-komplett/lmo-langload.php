@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
 
 // Langdateien laden (zuerst Standarddatei, wenn vorhanden werden die alten Werte
