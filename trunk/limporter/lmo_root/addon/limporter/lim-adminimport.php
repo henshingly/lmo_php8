@@ -110,7 +110,7 @@
           $ximportFile = $fileName;
         }
         else {
-          
+
  "<font color=\"#ff0000\">".$text['limporter'][5].$limporter_importDir."</font>";
           $imppage=1;
         }
@@ -257,10 +257,10 @@
   <tr><td align="center" class="lmost3">
 
 <?PHP if($imppage<1){ ?>
-  <form onSubmit="return checkHinweis();" name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form onSubmit="return checkHinweis();" name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
 <?PHP }
   else if ($imppage<3){ ?>
-  <form  onSubmit="return checkSettings();" name="lmoedit" action="<?PHP echo $PHP_SELF; ?>" method="post">
+  <form  onSubmit="return checkSettings();" name="lmoedit" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
 <?PHP }  ?>
 
 <?PHP if($imppage<3){ ?>
@@ -355,8 +355,8 @@ echo "<option value=\"1\""; if($xtype==1){$xtype=0;echo " selected";} echo ">".$
     <td class="lmost5" colspan="3" align="center"><?PHP echo VERSlON ; ?></td>
   <?php if ($ximporttype == 2) {?>
   </tr>
-  <tr>  
-    <td class="lmost5" colspan="3" align="center"><?PHP echo VERSlON2 ; ?></td>	
+  <tr>
+    <td class="lmost5" colspan="3" align="center"><?PHP echo VERSlON2 ; ?></td>
   <?php } ?>
   </tr>
 
