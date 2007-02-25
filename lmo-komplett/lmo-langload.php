@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -17,8 +17,8 @@
   *
   */
 
-// Langdateien laden (zuerst Standarddatei, wenn vorhanden werden die alten Werte 
-// von der neuen Sprache überschrieben (So werden auch unvollständige Übersetzungen 
+// Langdateien laden (zuerst Standarddatei, wenn vorhanden werden die alten Werte
+// von der neuen Sprache überschrieben (So werden auch unvollständige Übersetzungen
 // akzeptiert)
 
 $languages=array(
@@ -33,6 +33,7 @@ $languages=array(
     'Norsk'=>array('no_NO'),
     'Italiano'=>array('it_IT'),
     'Polski'=>array('pl_PL'),
+    'Portugues'=>array('pl_PT'),
     'Türkce'=>array('tr_TR')
     );
 
@@ -70,7 +71,7 @@ if (isset($lmouserlang) && $lmouserlang!=$deflang) {
 setlocale (LC_NUMERIC, 'en_EN');  // Wichtig: Für Arithmetik immer englische Trennzeichen
 
 
-//Alle lang-Dateien im Addon-Verzeichnis 
+//Alle lang-Dateien im Addon-Verzeichnis
 $handle=opendir (PATH_TO_LANGDIR);
 while (false!==($f=readdir($handle))) {
   if (is_dir(PATH_TO_LANGDIR.'/'.$f) && $f!='.' && $f!='..') {  //Wenn Unterverzeichnis Lang-dateien auslesen

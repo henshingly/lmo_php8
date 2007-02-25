@@ -104,8 +104,8 @@
       <ol>
         <li class='attention'>
           <strong>Update des LMO:</strong> Beim Update des LMO 4.0 von älteren LMO4-Versionen (beta/RC1) werden keine Konfigurationsdateien überschrieben,
-            Sie können die Dateien über Ihre vorhandenen Datein kopieren. Führen Sie danach unbedingt die Installation neu aus, indem Sie 
-            den LMO aufrufen. Es empfiehlt sich bei Live-Systemen den LMO für den Zeitpunkt der Installation kurz zu sperren. (z.B. über htaccess). 
+            Sie können die Dateien über Ihre vorhandenen Datein kopieren. Führen Sie danach unbedingt die Installation neu aus, indem Sie
+            den LMO aufrufen. Es empfiehlt sich bei Live-Systemen den LMO für den Zeitpunkt der Installation kurz zu sperren. (z.B. über htaccess).
             Eventuell installierte zusätzliche Addons werden nicht erkannt, diese sind also nach dem Update erneut zu installieren</li>
         <li>Das <strong>ZIP-Archiv</strong> wurde bereits von Ihnen entpackt. Achten Sie darauf, dass die Verzeichnisstruktur beim
         Entpacken beibehalten wird.</li>
@@ -120,13 +120,13 @@
 
           <ul class="advanced">
             <li><strong>Achtung: Diese Schritte sind nur notwendig, wenn die normale Installation nicht funktioniert!</strong></li>
-            
-            <li>Löschen Sie die Datei <strong>install/install.php</strong> und kopieren Sie danach den Inhalt 
-              des Ordners <strong>install</strong> über Ihr LMO-Verzeichnis</strong>
-            
+
+            <li>Löschen Sie die Datei <strong>install/install.php</strong> und <strong>kopieren Sie danach den Inhalt
+              des Ordners install über Ihr LMO-Verzeichnis</strong></li>
+
             <li>&#196;ndern Sie die Datei <strong>config/init-parameters.php</strong> mit einem normalen Texteditor und tragen Sie dort die
             ben&#246;tigten Pfade ein. Falls die Datei noch nicht existiert, legen Sie diese mit einem normalen Texteditor an. </li>
-            
+
             <li>Die Datei sollte so aussehen: <code>&lt?php<br>
   &nbsp;&nbsp;$lmo_dateipfad='<strong>/absoluter/pfad/zum/lmo</strong>'; //Dateipfad zum LMO<br>
 	&nbsp;&nbsp;$lmo_url='<strong>http://www.adresse.ihres/lmo</strong>'; //abolute URL zum LMO<br>
@@ -144,11 +144,11 @@
                 <dd>777 - das Verzeichnis <strong>ligen</strong> und <strong>alle Unterverzeichnisse</strong></dd>
 
                 <dd>777 - das Verzeichnis <strong>output</strong></dd>
-                
+
                 <dd>777 - das Verzeichnis <strong>config</strong> und dessen Unterverzeichnis <strong>config/viewer</strong></dd>
 
                 <dd>777 - das Verzeichnis <strong>addon/spieler/stats</strong></dd>
-                
+
                 <dd>777 - das Verzeichnis <strong>addon/tipp/tipps</strong> und <strong>alle Unterverzeichnisse</strong></dd>
 
                 <dt>Dateien:</dt>
