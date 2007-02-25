@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -41,27 +41,27 @@ $lang=array(
       'CHECK_AGAIN'=>'Neu prüfen',
       'ERROR_WRONG_PATH'=>'Der Pfad ist nicht korrekt!',
       'ERROR_CONFIRM'=>'Es sind noch Fehler vorhanden! Trotzdem fortfahren?',
-      
+
       'STEP0'=>'FTP-Zugangsdaten',
-      'STEP0_DESCRIPTION'=>'Um den LMO vollautomatisch zu installieren, ist ein Zugang per FTP notwendig. 
-         Dazu müssen Sie die Logindaten für Ihren FTP-Zugang angeben. Die Daten werden vom LMO 
-         nicht gespeichert oder in irgendeiner anderen Weise weiterverwendet. Falls Sie 
-         manuell installieren möchten gelangen Sie 
+      'STEP0_DESCRIPTION'=>'Um den LMO vollautomatisch zu installieren, ist ein Zugang per FTP notwendig.
+         Dazu müssen Sie die Logindaten für Ihren FTP-Zugang angeben. Die Daten werden vom LMO
+         nicht gespeichert oder in irgendeiner anderen Weise weiterverwendet. Falls Sie
+         manuell installieren möchten gelangen Sie
          <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">hier zur manuellen Installation.</a>',
       'STEP0_FTP_SERVER'=>'Geben sie hier die Adresse ihres FTP-Servers ein',
       'STEP0_FTP_SERVER_EXAMPLE'=>'Bsp.: <em><kbd>ftp.beispiel.de</kbd></em>',
       'STEP0_FTP_LOGIN'=>'Geben Sie hier Ihren Usernamen und Ihr Passwort ein',
       'STEP0_FTP_NO_CONNECTION'=>'Keine Verbindung zu "'.$_SESSION['ftpserver'].'" möglich. Korrigieren Sie die Adresse oder <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installieren Sie manuell</a>',
       'STEP0_FTP_NO_LOGIN'=>'Fehler beim Einloggen. Korrigieren Sie die Benutzerdaten oder <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installieren Sie manuell</a>',
-      
+
       'STEP1'=>'LMO-Verzeichnis auswählen',
       'STEP1_SELECT_FTP_DIR'=>'Wählen Sie das LMO Verzeichnis aus',
-      
+
       'STEP2'=>'Dateirechte setzen',
-      'STEP2_MANUAL'=>'Setzen sie die benötigten Rechte über ihr FTP-Programm und aktualisieren Sie diese 
-         Seite <a href="#" onclick="location.reload();return false;">[Reload]</a>, um 
+      'STEP2_MANUAL'=>'Setzen sie die benötigten Rechte über ihr FTP-Programm und aktualisieren Sie diese
+         Seite <a href="#" onclick="location.reload();return false;">[Reload]</a>, um
          zu überprüfen, ob alle Rechte richtig gesetzt sind. <a href="'.$_SERVER['PHP_SELF'].'">zurück zur automatischen Installation</a>',
-      
+
       'STEP3'=>'Konfigurationsdatei erstellen',
       'STEP3_PATH'=>'Geben Sie hier den <strong>kompletten Pfad</strong> zum LMO an',
       'STEP3_PATH_EXAMPLE'=>'Bsp.: <em><kbd>/home/www/htdocs/lmo</kbd></em>',
@@ -73,24 +73,24 @@ $lang=array(
       'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Konnte Datei <code>config/init-parameters.php</code> nicht öffnen! Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
       'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Konnte die Konfiguration nicht speichern. Vergewissern Sie sich, dass die Datei <code>config/init-parameters.php</code> die Rechte 666 besitzt. Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
       'STEP3_SUCCESS_INI_FILE'=>'Die Konfiguration wurde erfolgreich gespeichert',
-      
-      
+
+
       'STEP4'=>'Installation erfolgreich',
       'STEP4_TEXT1'=>'Der Liga Manager Online 4 ist installiert worden!',
-      'STEP4_TEXT2'=>'Falls Fehler aufgetreten sind, wiederholen sie die Installation oder installieren Sie den LMO manuell, indem Sie 
-    die Datei <code>config/init-parameters.php</code> mit einem Texteditor anpassen und die Schreibrechte mit einem FTP-Programm 
+      'STEP4_TEXT2'=>'Falls Fehler aufgetreten sind, wiederholen sie die Installation oder installieren Sie den LMO manuell, indem Sie
+    die Datei <code>config/init-parameters.php</code> mit einem Texteditor anpassen und die Schreibrechte mit einem FTP-Programm
     manuell vergeben.',
       'STEP4_TEXT3'=>'Bitte löschen Sie jetzt unbedingt den Ordner <code>install</code> vom Server oder geben Sie dem Ordner chmod 000.',
       'STEP4_TEXT4'=>'<ul class="attention"><li><strong>Link zum <acronym title="Liga Manager Online">LMO</acronym>:</strong> <a href="%s">%s</a></li>
                       <li><strong>Link zum Adminbereich:</strong> <a href="%s">%s</a> <small>(Standardlogin ist <kbd>admin</kbd> / <kbd>lmo</kbd>)</small></li></ul>',
-      'STEP4_TEXT5'=>'Eine ausführliche Benutzeranleitung <a href="http://www.liga-manager-online.de/dedi/projekt01/de/homepage/lmo4/hilfe/">für den LMO</a> 
+      'STEP4_TEXT5'=>'Eine ausführliche Benutzeranleitung <a href="http://www.liga-manager-online.de/dedi/projekt01/de/homepage/lmo4/hilfe/">für den LMO</a>
       und <a href="http://www.liga-manager-online.de/dedi/projekt01/de/homepage/lmo4/addons/">seinen Addons</a> finden Sie auf der Homepage des LMO.',
       'STEP4_TEXT6'=>'Viel Spaß!',
-      
-      
-      
-      
-      
+
+
+
+
+
     ),
     'EN'=>array(
       'HEADER'=>'Installation of Liga Manager Online 4',
@@ -100,24 +100,24 @@ $lang=array(
       'CHECK_AGAIN'=>'Test again',
       'ERROR_WRONG_PATH'=>'Incorrect path!',
       'ERROR_CONFIRM'=>'There are still errors left! Proceed?',
-      
+
       'STEP0'=>'FTP login data',
       'STEP0_DESCRIPTION'=>'To install the LMO automaticly you must insert your FTP login data.
-        The data will not saved nor published. If you want to install manually use 
+        The data will not saved nor published. If you want to install manually use
          <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">this link</a>.',
       'STEP0_FTP_SERVER'=>'FTP server address',
       'STEP0_FTP_SERVER_EXAMPLE'=>'e.g.: <em><kbd>ftp.example.com</kbd></em>',
       'STEP0_FTP_LOGIN'=>'Insert your username and password',
       'STEP0_FTP_NO_CONNECTION'=>'Can not establish connection to "'.$_SESSION['ftpserver'].'". Please correct the address of server or <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">install manually</a>',
       'STEP0_FTP_NO_LOGIN'=>'Login error. Please correct your user data or <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">install manually</a>',
-      
+
       'STEP1'=>'Select LMO folder',
       'STEP1_SELECT_FTP_DIR'=>'Please select your LMO folder',
-      
+
       'STEP2'=>'CHMOD files',
       'STEP2_MANUAL'=>'Please chmod these file with your FTP tool and press <a href="#" onclick="location.reload();return false;">[Reload]</a> for
          a check. <a href="'.$_SERVER['PHP_SELF'].'">back to automatic installation</a>',
-      
+
       'STEP3'=>'Create configuration file',
       'STEP3_PATH'=>'Please insert the <strong>absolute path</strong> to LMO',
       'STEP3_PATH_EXAMPLE'=>'e.g.: <em><kbd>/home/www/htdocs/lmo</kbd></em>',
@@ -129,20 +129,20 @@ $lang=array(
       'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Could not open <code>config/init-parameters.php</code>! Please chmod the file with 666 and <a href="#" onclick="location.reload();return false;">[Reload]</a> this page to repeat the check.',
       'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Could not save configuration! Please make sure that the file <code>config/init-parameters.php</code> has the correct chmod of 666. Please chmod the file with 666 and <a href="#" onclick="location.reload();return false;">[Reload]</a> this page to repeat the check.',
       'STEP3_SUCCESS_INI_FILE'=>'Configuration successfully saved',
-      
-      
+
+
       'STEP4'=>'Installation successful',
       'STEP4_TEXT1'=>'Liga Manager Online 4 is successfully installed!',
-      'STEP4_TEXT2'=>'If you experienced errors repeat the installation or install manually. To install manually edit the file 
+      'STEP4_TEXT2'=>'If you experienced errors repeat the installation or install manually. To install manually edit the file
     <code>config/init-parameters.php</code> with an common text editor and chmod the files with your FTP tool.',
       'STEP4_TEXT3'=>'Please delete the folder <code>install</code> or chmod it to 000.',
       'STEP4_TEXT4'=>'<br><strong>Link to <acronym title="Liga Manager Online">LMO</acronym>:</strong> <a href="%s">%s</a><br>
                       <strong>Link to admin area:</strong> <a href="%s">%s</a> <small>(Login is <kbd>admin</kbd> / <kbd>lmo</kbd>)</small><br><br>',
       'STEP4_TEXT5'=>'Please consult the <a href="http://www.liga-manager-online.de/dedi/projekt01/en">manual on our Website</a> for help.',
       'STEP4_TEXT6'=>'Have fun!',
-      
+
      ),
-    'FR'=>array( 
+    'FR'=>array(
       'HEADER'=>'Installation du Liga Manager Online 4',
       'PROCEED'=>'Continuer',
       'SUCCESS'=>'Succès',
@@ -189,10 +189,10 @@ $lang=array(
       'STEP4_TEXT5'=>'Vous trouverez une description d\'utlisation <a href="http://www.liga-manager-online.de/dedi/projekt01/de/homepage/lmo4/hilfe/">pour le LMO</a>
       et <a href="http://www.liga-manager-online.de/dedi/projekt01/fr/homepage/lmo4/addons/">ses extensions</a> sur le site web du LMO.',
       'STEP4_TEXT6'=>'Bon courage!',
-      
-      
+
+
     )
-    
+
 );
 
 
@@ -272,7 +272,7 @@ if ($lmo_install_step==1) {
       $filelist = filecollect($conn,$_SESSION['view']);
     } else {
       //Pfad ausgesucht -> Rechte setzen
-     
+
       $base = ftp_pwd($conn)  ;
       ftp_chdir($conn, "$base/".$ftpdir);
       if (ftp_size($conn, "init.php") == -1) {
@@ -292,7 +292,7 @@ if ($lmo_install_step==1) {
                 }
               }
             } else {
-              
+
               //Handle config files
               if (strpos($file,"cfg.txt")!==FALSE || strpos($file,"auth")!==FALSE) {
                 if (!file_exists($lmo_dir."/".$file)) {
@@ -328,9 +328,9 @@ if ($lmo_install_step==1) {
                     foreach ($cfg_old as $merged_key=>$merged_value) {
                       fwrite($mergedfile,$merged_key."=".$merged_value."\n");
                     }
-                  } 
+                  }
                 }
-              } 
+              }
               ftp_site($conn, "CHMOD 0$chmod $base/".$ftpdir."/".$file);
             }
           }
@@ -398,7 +398,7 @@ if ($lmo_install_step==3) {
         .w3cbutton3 a:visited,
         .w3cbutton3 a:hover {   background-color: #fc6;  color: #000;  text-decoration: none;}
         .w3cbutton3 span.w3c {  padding: 0 0.4em;  background-color: #fff;  color: #0c479d;}
-        
+
         /*CSS3-values for Gecko and Opera*/
         dl, .error {-moz-border-radius:8px;border-radius:8px;}
       }
@@ -406,7 +406,7 @@ if ($lmo_install_step==3) {
   </head>
   <body>
   <h1><?=$lang[$userlang]['HEADER'];?></h1><?
-  
+
 echo $patherror;
 if ($lmo_install_step==0) {?>
   <?
@@ -458,7 +458,7 @@ if ($lmo_install_step==0) {?>
     } else {
      $lmo_install_step=2;
     }
-}    
+}
 
 if ($lmo_install_step == 1) {?>
   <h2><?=$lang[$userlang]['STEP1']?></h2>
@@ -470,7 +470,7 @@ if ($lmo_install_step == 1) {?>
             <dt><?=$lang[$userlang]['STEP1_SELECT_FTP_DIR']?></dt>
         <?
   foreach ($filelist as $ftpdir) {
-    echo "<dd><input type='radio' value='$ftpdir' name='ftpdir'> <a href='$PHP_SELF?lmo_install_step=1&amp;view=$ftpdir'>$ftpdir</a></dd>";
+    echo "<dd><input type='radio' value='$ftpdir' name='ftpdir'> <a href='".$_SERVER['PHP_SELF']."?lmo_install_step=1&amp;view=$ftpdir'>$ftpdir</a></dd>";
   }
   if ($_SESSION['view'] != '') {
     echo "<dd>&nbsp; &nbsp;<a href='".$_SERVER['PHP_SELF']."?lmo_install_step=1&amp;view=".dirname($view)."'>..</a></dd>";
@@ -485,12 +485,12 @@ if ($lmo_install_step == 1) {?>
       </td>
     </tr>
   </table>
-    
+
     <?
 }
 
 if ($lmo_install_step==2) {
-     
+
 
      //Manuell?>
   <h2><?=$lang[$userlang]['STEP2']?></h2>
@@ -498,7 +498,7 @@ if ($lmo_install_step==2) {
    if ($_SESSION['man']) {?>
     <tr>
       <td>
-        <?=$lang[$userlang]['STEP2_MANUAL']?>   
+        <?=$lang[$userlang]['STEP2_MANUAL']?>
       </td>
     </tr><?
    }?>
@@ -522,7 +522,7 @@ if ($lmo_install_step==2) {
               $error++;
             }
           }
-  
+
         }
       } else{
         if (is_writable($lmo_dir."/".$file)) {
@@ -532,13 +532,13 @@ if ($lmo_install_step==2) {
           $error++;
         }
       }
-  
-  
+
+
     }
-  }?>     
+  }?>
           </dd>
           <dt>
-            <input type="hidden" name="lmo_install_step" value="3">  
+            <input type="hidden" name="lmo_install_step" value="3">
             <input type="submit" value="<?=$lang[$userlang]['PROCEED']?>">
           </dt>
         </dl>
@@ -550,7 +550,7 @@ if ($lmo_install_step==2) {
           }
           return true;
         }
-        </script>  
+        </script>
     </td>
    </tr>
   </table><?
@@ -567,7 +567,7 @@ if ($lmo_install_step==3) {?>
             <dt><?=$lang[$userlang]['STEP3_PATH']?></dt>
             <dd>
             <?=$patherror?>
-              <a href="#" onclick="document.getElementsByName('path')[0].value='<?=$path;?>';return false;"><em>[Auto]</em></a> 
+              <a href="#" onclick="document.getElementsByName('path')[0].value='<?=$path;?>';return false;"><em>[Auto]</em></a>
               <input name="path" type="text" size="55" value="<?=$path?>"> <?=$lang[$userlang]['STEP3_PATH_EXAMPLE']?>
             </dd>
             <dd><?
@@ -581,7 +581,7 @@ if ($lmo_install_step==3) {?>
             <dt><?=$lang[$userlang]['STEP3_URL']?></dt>
             <dd>
             <?=$urlerror?>
-              <a href="#" onclick="document.getElementsByName('url')[0].value='<?=addslashes($url)?>';return false;"><em>[Auto]</em></a> 
+              <a href="#" onclick="document.getElementsByName('url')[0].value='<?=addslashes($url)?>';return false;"><em>[Auto]</em></a>
               <input name="url" type="text" size="55" value="<?=$url?>"> <?=$lang[$userlang]['STEP3_URL_EXAMPLE'];?>
             </dd>
             <dd><?
@@ -601,7 +601,7 @@ if ($lmo_install_step==3) {?>
               }
               return true;
             }
-          </script>  
+          </script>
         </form>
       <td>
     <tr>
@@ -621,7 +621,7 @@ if ($lmo_install_step==4) {?>
 }?>
 
   <div class="foot">
-  
+
   <div class="w3cbutton3">
     <a href="http://validator.w3.org/check/referer"><span class="w3c">W3C</span>
     <span class="spec">HTML 4.01</span></a></div>
@@ -642,10 +642,10 @@ if ($lmo_install_step==4) {?>
     <div class="w3cbutton3">
     <a href="install.php"><span class="w3c">RE</span>
     <span class="spec">START</span></a></div>
-    
+
     <?}?>
      © René Marth/<a href="http://liga-manager-online.de/">LMO Group</a>
-  </div>    
+  </div>
   </body>
 </html>
 
@@ -653,7 +653,7 @@ if ($lmo_install_step==4) {?>
 
 function filecollect($cid,$dir='.') {
   static $flist=array();
-  
+
   if ($files = ftp_nlist($cid,"./".$dir)){
     foreach ($files as $file) {
       if (ftp_size($cid, $file) == "-1")
