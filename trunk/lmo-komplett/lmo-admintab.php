@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,12 +15,13 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
-  
-  
+
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($file != "") {
-   
+
   require_once(PATH_TO_LMO."/lmo-openfile.php");
   $breite = 16;
   if ($hidr != 1) {
@@ -66,7 +67,7 @@ if ($file != "") {
     }
     require(PATH_TO_LMO."/lmo-savefile.php");
   }
-  
+
   $handt = array_pad($array, $anzteams+2, "");
   for($i = 0; $i < $anzteams; $i++) {
     if ($handp[$st-1] != 0) {
@@ -103,18 +104,18 @@ if ($file != "") {
             <th align="left" colspan="4"><?=$st.". ".$text[2];?></th>
             <th align="left" width="2">&nbsp;</th>
             <th align="right"><?=$text[33];?></th>
-            <th align="right"><?=$text[34];?></th><? 
+            <th align="right"><?=$text[34];?></th><?
   if($hidr!=1){ ?>
             <th align="right"><?=$text[35];?></th><?
   }?>
-            <th align="right"><?=$text[36];?></th><? 
+            <th align="right"><?=$text[36];?></th><?
   if($tabpkt==0){ ?>
             <th>&nbsp;</th>
             <th <?=$dummy?>><?=$text[37]?></th><?
   }?>
             <th align="left" width="2">&nbsp;</th>
             <th align="left" colspan="3" align="center"><?=$text[38];?></th>
-            <th align="right"><?=$text[39];?></th><? 
+            <th align="right"><?=$text[39];?></th><?
   if($tabpkt==1){ ?>
             <th>&nbsp;</th>
             <th <?=$dummy?>><?=$text[37]?></th><?
@@ -141,16 +142,16 @@ if ($file != "") {
             </td>
             <td class="nobr"><?=$dummy.$teams[$i].$dumm2;?></td>
             <td>&nbsp;</td>
-            <td><? 
+            <td><?
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
       $lmo_tabellennotiz=getSmallImage($teams[$i]);
-      
+
       /** Notizen anzeigen
        *
        * Achtung: Da beim Speichern Strafpunkte/-tore positiv sind und Bonuspunkte negativ (altes System des LMO)
        * muss mit -1 multipliziert werden, um die Punkte/Tore richtig anzuzeigen
        */
-      
+
       $lmo_tabellennotiz.=" <strong>".$teams[$i]."</strong>";
       //Straf-/Bonuspunkte
       if ($strafp[$i]!=0 || $strafm[$i]!=0) {
@@ -159,7 +160,7 @@ if ($file != "") {
         $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*applyFactor($strafp[$i],$pointsfaktor)):((-1)*applyFactor($strafp[$i],$pointsfaktor));
         //Minuspunkte
         if ($minus==2) {
-          $lmo_tabellennotiz.=":".$strafm[$i]<0?"+".((-1)*applyFactor($strafm[$i],$pointsfaktor)):((-1)*applyFactor($strafm[$i],$pointsfaktor));
+          $lmo_tabellennotiz.=":".($strafm[$i]<0?"+".((-1)*applyFactor($strafm[$i],$pointsfaktor)):((-1)*applyFactor($strafm[$i],$pointsfaktor)));
         }
         //Ab ST
         if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
@@ -186,9 +187,9 @@ if ($file != "") {
             </td>
             <td>&nbsp;</td>
             <td align="right"><?=$dummy.$spiele[$i].$dumm2;?></td>
-            <td align="right"><?=$dummy.$siege[$i].$dumm2;?></td><? 
+            <td align="right"><?=$dummy.$siege[$i].$dumm2;?></td><?
     if($hidr!=1){ ?>
-            <td align="right"><?=$dummy.$unent[$i].$dumm2;?></td><? 
+            <td align="right"><?=$dummy.$unent[$i].$dumm2;?></td><?
     }?>
             <td align="right"><?=$dummy.$nieder[$i].$dumm2;?></td><?
     if ($tabpkt == 0) {?>
@@ -203,7 +204,7 @@ if ($file != "") {
             <td align="right"><?=$dummy.applyFactor($etore[$i],$goalfaktor).$dumm2; ?></td>
             <td align="center" width="4"><?=$dummy; ?>:<?=$dumm2; ?></td>
             <td><?=$dummy.applyFactor($atore[$i],$goalfaktor).$dumm2; ?></td>
-            <td align="right"><?=$dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td><? 
+            <td align="right"><?=$dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td><?
     if($tabpkt==1){?>
             <td width="2">&nbsp;</td>
             <td align="right"><strong><?=applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?
@@ -212,7 +213,7 @@ if ($file != "") {
             <td><strong><?=applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?
       }
     }?>
-          </tr><? 
+          </tr><?
   }?>
           <tr>
             <th align="right" colspan="<?=$breite;?>" align="center">
@@ -223,5 +224,5 @@ if ($file != "") {
       </form>
     </td>
   </tr>
-</table><? 
+</table><?
 }?>
