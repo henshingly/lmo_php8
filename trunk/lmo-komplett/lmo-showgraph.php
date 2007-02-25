@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 if(($file!="") && ($kurve==1)){
   $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
   $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
@@ -42,7 +42,7 @@ if(($file!="") && ($kurve==1)){
       echo $teamk[$i];
     }
           ?></acronym>
-          </td>          
+          </td>
           <td>&nbsp;<?=getSmallImage($teams[$i]);?>&nbsp;</td>
         </tr><?
   }?>
@@ -52,7 +52,7 @@ if(($file!="") && ($kurve==1)){
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
   if($show_stat1==0){?>
         <tr>
-          <th><h2><?=$text[24]?></h2></th>
+          <td>&nbsp;<br><?=$text[24]?><br>&nbsp;</td>
         </tr><?
   } else {
     $tabtype=0;
@@ -96,7 +96,7 @@ if(($file!="") && ($kurve==1)){
       echo $teamk[$i];
     }
           ?></acronym>
-          </td>          
+          </td>
         </tr><?
   }?>
       </table>
