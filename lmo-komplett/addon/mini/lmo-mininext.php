@@ -112,6 +112,7 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
   }
   
   $template = new HTML_Template_IT($template_folder); // verzeichnis
+  //$tpl = new LMO_HTML_Template_IT($tpl_folder); // verzeichnis
   $template->loadTemplatefile($mini_template);
   $team_a = NULL;
   $team_b = NULL;
@@ -166,7 +167,17 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
       $template->setVariable("gameDate",$partie->datumString());
       $template->setVariable("gameTime",$partie->zeitString());
       $template->setVariable("ligaDatum",$text['mini'][14].": ".$liga->ligaDatumAsString("%x"));
-      //
+       
+       $now = time();
+       $gameDateTime = $partie->zeit;
+       $days = floor(($gameDateTime-$now)/86400);
+       $rest = ($gameDateTime-$now) - ($days*86400);
+       $hours = floor($rest/3600);
+       $rest = $rest - ($hours*3600);
+       $minutes = floor($rest/60);
+       $rest = $rest - ($minutes*60);
+      $template->setVariable("countDown",$text['mini'][15].": ".$days.", ".$text['mini'][16].": ".$hours.", ".$text['mini'][17].": ".$minutes); 
+
       $template->setVariable("copy",str_replace('CLASSLIB_VERSION',CLASSLIB_VERSION,$text['mini'][0]));
       $template->setVariable("imgHomeSmall",HTML_smallTeamIcon($file,$partie->heim," alt=''"));
       $template->setVariable("imgHomeBig",HTML_bigTeamIcon($file,$partie->heim,"alt=''"));
@@ -247,9 +258,9 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
               if($spiel->hTore != -1 && $spiel->gTore != -1) {
                 $archivSortDummy[] = $spiel->zeit;
                 if ($spiel->heim == $newTeam_a) {
-                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][13], 'partie'=>$spiel, 'match'=>NULL);
+                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][13], 'partie'=>$spiel, 'match'=>$match);
                 } else {
-                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][12], 'partie'=>$spiel, 'match'=>NULL);
+                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][12], 'partie'=>$spiel, 'match'=>$match);
                 }
               }
             }
