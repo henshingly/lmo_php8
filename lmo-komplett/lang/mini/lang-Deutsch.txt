@@ -13,3 +13,6 @@
 012=a
 013=h
 014=Stand
+015=Tage
+016=Stunden
+017=Minuten 
