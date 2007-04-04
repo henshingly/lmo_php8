@@ -79,7 +79,9 @@ if(($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)){
       if (($x <= $anzteams) && ($x > $anzteams-$anzab) && ($anzab > 0)) {
         fwrite($fp,"A");
       }
-      fwrite($fp,'|'.$teamm[$tabledata[4]-50000000]);                              //TeamShortName (Mittellanger Name)
+
+      fwrite($fp,'|'.$teamn[$tabledata[4]-50000000]);                              //TeamShortName (Mittellanger Name)
+      fwrite($fp,'|'.$teamm[$tabledata[4]-50000000]); 
       fwrite($fp,"\n");
     }
     fclose($fp);

@@ -49,9 +49,9 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 }
 
 /**Format of CSV-File:
-  *       0     |      1            |   2   |   3   |  4   |  5   |  6  | 7 | 8  |  9 |    10    |     11
-  * TeamLongName|TeamnameAbbrevation|Points+|Points-|Goals+|Goals-|Games|Win|Draw|Loss|Marking   |TeamShortName
-  *  Teamname   |  Kurzname         |Pkt.+  | Pkt.- |Tore+ | Tore-|Sp.  | + | o  | -  |Markierung| Mittelname  
+  *       0     |      1            |   2   |   3   |  4   |  5   |  6  | 7 | 8  |  9 |    10    |  11       |     12
+  * TeamLongName|TeamnameAbbrevation|Points+|Points-|Goals+|Goals-|Games|Win|Draw|Loss|Marking   |           |TeamShortName
+  *  Teamname   |  Kurzname         |Pkt.+  | Pkt.- |Tore+ | Tore-|Sp.  | + | o  | -  |Markierung| TeamNotiz | Mittelname  
   */
 if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
   $template = new HTML_Template_IT( PATH_TO_TEMPLATEDIR.'/mini' );
@@ -98,7 +98,8 @@ if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
     $template->setVariable(array("Platz"=>"<strong>".($j+1)."</strong>"));
     $template->setVariable(array("TeamBild"=>getSmallImage($m_tabelle[$j][0])));
     $template->setVariable(array("TeamLang"=>$m_tabelle[$j][0]));
-    $template->setVariable(array("TeamMittel"=>(isset($m_tabelle[$j][11])?$m_tabelle[$j][11]:'')));
+    $template->setVariable(array("TeamMittel"=>(isset($m_tabelle[$j][12])?$m_tabelle[$j][12]:'')));
+    $template->setVariable(array("Teamnotiz"=>$m_tabelle[$j][11]));
     $template->setVariable(array("Team"=>$m_tabelle[$j][1]));
     if ($m_tabelle[$j][3]=='') {
       $template->setVariable(array("Punkte"=>$m_tabelle[$j][2]));
