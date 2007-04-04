@@ -242,7 +242,7 @@ function readLigaDir($dirName,&$dataArray) {
 function findTeamName(&$teamNamesArray,$search) {
 
 	$results = array();
-	$expr = "/\s+|\d+|\W/i";
+	$expr = "/\s+[IXVivx]*[0-9]*\s*$|\s+\(.*\)$/i";
 	if (is_array($teamNamesArray) ) {
     $match = strtolower(preg_replace($expr,"",$search));
     foreach($teamNamesArray as $teamName) {
