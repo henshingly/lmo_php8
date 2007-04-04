@@ -377,7 +377,7 @@ if(!empty($file) && check_hilfsadmin($file)){
       for($j=0;$j<=$anzteams;$j++){
         if($teamm[$j]==""){
           //search longest name part an take this as middle name
-          $parts = preg_split("%[ |/]%",$teams[$i]);
+          $parts = preg_split("%[ |/]%",$teams[$j]);
           foreach ($parts as $part) {
             if (strlen($part) >= strlen($teamm[$j]) ) {
               $teamm[$j] = trim(substr($part, 0, 12));
