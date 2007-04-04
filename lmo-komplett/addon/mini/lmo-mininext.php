@@ -203,10 +203,10 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
   
         $template->setVariable("previous_homeName",$lastPartie->heim->name);
         $template->setVariable("previous_guestName",$lastPartie->gast->name);
-        $template->setVariable("previous_homeNameMiddle",$partie->heim->mittel);
-        $template->setVariable("previous_guestNameMiddle",$partie->gast->mittel);
-        $template->setVariable("previous_homeNameShort",$partie->heim->kurz);
-        $template->setVariable("previous_guestNameShort",$partie->gast->kurz);
+        $template->setVariable("previous_homeNameMiddle",$lastPartie->heim->mittel);
+        $template->setVariable("previous_guestNameMiddle",$lastPartie->gast->mittel);
+        $template->setVariable("previous_homeNameShort",$lastPartie->heim->kurz);
+        $template->setVariable("previous_guestNameShort",$lastPartie->gast->kurz);
   
         $template->setVariable("previous_hTore",$lastPartie->hToreString());
         $template->setVariable("previous_gTore",$lastPartie->gToreString());
