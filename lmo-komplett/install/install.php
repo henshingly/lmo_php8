@@ -58,7 +58,8 @@ $lang=array(
       'STEP1_SELECT_FTP_DIR'=>'Wählen Sie das LMO Verzeichnis aus',
 
       'STEP2'=>'Dateirechte setzen',
-      'STEP2_MANUAL'=>'Setzen sie die benötigten Rechte über ihr FTP-Programm und aktualisieren Sie diese
+      'STEP2_MANUAL'=>'<strong>Kopieren Sie den Inhalt des Ordners <code>install</code> mit einem FTP-Programm über Ihr LMO-Verzeichnis.</strong>
+         Setzen sie danach die benötigten Rechte über ihr FTP-Programm und aktualisieren Sie diese
          Seite <a href="#" onclick="location.reload();return false;">[Reload]</a>, um
          zu überprüfen, ob alle Rechte richtig gesetzt sind. <a href="'.$_SERVER['PHP_SELF'].'">zurück zur automatischen Installation</a>',
 
@@ -115,7 +116,8 @@ $lang=array(
       'STEP1_SELECT_FTP_DIR'=>'Please select your LMO folder',
 
       'STEP2'=>'CHMOD files',
-      'STEP2_MANUAL'=>'Please chmod these file with your FTP tool and press <a href="#" onclick="location.reload();return false;">[Reload]</a> for
+      'STEP2_MANUAL'=>'<strong>Copy the content of folder <code>install</code> into the directory of LMO.</strong>
+         Please chmod these file with your FTP tool and press <a href="#" onclick="location.reload();return false;">[Reload]</a> for
          a check. <a href="'.$_SERVER['PHP_SELF'].'">back to automatic installation</a>',
 
       'STEP3'=>'Create configuration file',
