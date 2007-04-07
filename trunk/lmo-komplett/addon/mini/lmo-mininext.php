@@ -15,6 +15,8 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * Version 2.1.2 
+  *
   * $Id$
   */
 
@@ -108,7 +110,7 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
     html,body {margin:0;padding:0;background:transparent;}
   </style>
   </head>
-  <body><?
+  <body><?php
   }
   
   $template = new HTML_Template_IT($template_folder); // verzeichnis
@@ -355,7 +357,7 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
   //Falls IFRAME - komplettes HTML-Dokument
   if (basename($_SERVER['PHP_SELF'])=="lmo-mininext.php") {?>
   </body>
-  </html><?
+  </html><?php
   }
 } else {
   //get cache
