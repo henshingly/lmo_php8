@@ -320,11 +320,12 @@ if($newpage!=1){ ?>
     </td>
   </tr>
 <?
+//$_SESSION["lmotipperok"] = 0; 
 }
 if($newpage==1){ // Anmeldung erfolgreich
   $_SESSION['lmotippername']=$xtippernick;
   $_SESSION["lmotipperpass"]="";
-  $_SESSION["lmotipperok"]=0;
+  $_SESSION["lmotipperok"]=5;
 ?>
   <tr>
     <td align="center">
@@ -340,5 +341,6 @@ if($newpage==1){ // Anmeldung erfolgreich
     </td>
   </tr><?
 } 
+$_SESSION["lmotipperok"] = 0; 
 clearstatcache();?>
 </table>
