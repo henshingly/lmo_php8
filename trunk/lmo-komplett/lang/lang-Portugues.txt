@@ -53,7 +53,7 @@
 052=Bem vindo(a)!
 053=Por favor seleccione um campeonato ou taça:
 054=<acronym title="Sistema de resultados">LMO</acronym>
-055=© 1997-2005 LMO-Group
+055=© 1997-2007 LMO-Group
 056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visite a nossa Homepage">Projecto-LMO</a> | <a href="http://www.liga-manager-online.de/phpBB2/" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> |  <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Aqui poderá encontrar mais campeonatos">Lista de campeonatos Hollwitz</a> ]
 057=Estatísticas para
 058=Estatísticas para

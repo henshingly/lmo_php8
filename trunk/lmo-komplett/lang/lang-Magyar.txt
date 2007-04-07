@@ -53,7 +53,7 @@
 052=Üdvözöljük!
 053=Kérem válasszon ki egy bajnokságot:
 054=Liga Manager Online 4
-055=© 1997-2005 LMO-Group
+055=© 1997-2007 LMO-Group
 056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://www.liga-manager-online.de/phpBB2/" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
 057=1.Statisztika
 058=2.Statisztika
