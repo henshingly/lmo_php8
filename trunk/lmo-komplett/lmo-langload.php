@@ -33,7 +33,7 @@ $languages=array(
     'Espanol'=>array('es_ES'),
     'Norsk'=>array('no_NO'),
     'Italiano'=>array('it_IT'),
-    'Portugues'=>array('pl_PT'),
+    'Portugues'=>array('pt_BR'),
     'Türkce'=>array('tr_TR')
     );
 
