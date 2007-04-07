@@ -54,7 +54,7 @@
 053=Vennligst velg en liga
 054=Liga Manager Online 4
 055=© 1997-2007 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://www.liga-manager-online.de/phpBB2/" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://www.liga-manager-online.de/lmo-forum/" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> | <a href="http://www.ligaliste.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
 057=Statistikk 1 fra
 058=Statistikk 2 fra
 059=inget 2. lag

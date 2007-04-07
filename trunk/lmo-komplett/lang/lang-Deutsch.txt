@@ -54,7 +54,7 @@
 053=Bitte wählen Sie eine Liga aus
 054=Liga Manager Online 4
 055=© 1997-2007 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Besuchen Sie unsere Homepage">Homepage</a> | <a href="http://www.liga-manager-online.de/phpBB2/" target="_blank" title="Hilfe zum LMO und seinen Addons">Support-Forum</a> | <a href="http://ligaliste.hollwitz.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Besuchen Sie unsere Homepage">Homepage</a> | <a href="http://www.liga-manager-online.de/lmo-forum/" target="_blank" title="Hilfe zum LMO und seinen Addons">Support-Forum</a> | <a href="http://www.ligaliste.de/" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
 057=Die Statistik 1 von
 058=Die Statistik 2 von
 059=Keine 2. Mannschaft
