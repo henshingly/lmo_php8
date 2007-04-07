@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
 /*
 //Caching
@@ -267,7 +268,7 @@ if ($file!="" && $einspieler==1 && $mittore==1) {
 $output_newsticker="";
 if($file!="" && $nticker==1){
   ob_start();
-  $tickerligen=basename($file);
+  $tickerligen=$file;
   include(PATH_TO_ADDONDIR."/ticker/ticker.php");
   $output_newsticker.=ob_get_contents();ob_end_clean();
 }
