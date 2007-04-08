@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
 
 
@@ -61,12 +62,12 @@ for($i = 0; $i <= ($anzteams+1); $i++) {
     }
     if ($j == $anzteams+1 && $i > 0 && $i <= $anzteams || $i == $anzteams+1 && $j > 0 && $j <= $anzteams) {
       echo "<acronym title='".$teams[$j]."'>";
-      echo getSmallImage($teams[$j],$teamk[$j]);
+      echo HTML_smallTeamIcon($file,$teams[$j]," alt='.$teamk[$j].'");
       echo "</acronym>";
     }
     if ($j == $anzteams+1 && $i > 0 && $i <= $anzteams) {
       echo "<acronym title='".$teams[$i]."'>";
-      echo getSmallImage($teams[$i],$teamk[$i]);
+      echo HTML_smallTeamIcon($file,$teams[$i]," alt='.$teamk[$i].'");
       echo "</acronym>";
     }
 

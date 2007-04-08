@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
   
   
@@ -43,7 +44,7 @@ if($file!=""){
       echo $teamk[$i];
     }     ?></acronym>
           </td>          
-          <td><?=getSmallImage($teams[$i]);?>&nbsp;</td>
+          <td><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
         </tr><?
   }?>
       </table>
@@ -65,9 +66,9 @@ if($file!=""){
         <tr>
           <th align="right"><?=$teams[$show_stat1];?></th>
           <th align="center"><?
-      echo getSmallImage($teams[$show_stat1])."&nbsp;";
+      echo HTML_smallTeamIcon($file,$teams[$show_stat1]," alt=''")."&nbsp;";
       if($show_stat2>0 && $show_stat1!=$show_stat2){
-        echo "&nbsp;".getSmallImage($teams[$show_stat2]);
+        echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$show_stat2]," alt=''");
       }?>
           </th><? 
       if($show_stat2>0 && $show_stat1!=$show_stat2){ ?>
@@ -187,7 +188,7 @@ if($file!=""){
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
   for($i=1;$i<=$anzteams;$i++){?>
         <tr>
-          <td><?=getSmallImage($teams[$i]);?>&nbsp;</td>
+          <td><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
           <td align="left">
             <acronym title="<?=$text[57]." ".$teams[$i]?>"><?
     if($i!=$show_stat2){

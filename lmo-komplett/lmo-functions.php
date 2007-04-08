@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,8 +15,8 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
-
 
 function check_hilfsadmin($datei) {
   $hilfsadmin_berechtigung=FALSE;
@@ -84,6 +84,7 @@ function filterZero($a) {
  * @param        string     $alternative_text      If image not found return this instead
  * @return       string     HTML image-Code for the small team icon
  */
+//Umstellung Classlib kann später mal weg
 function getSmallImage($team,$alternative_text='') {
   $team=str_replace("/","",$team);
   if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
