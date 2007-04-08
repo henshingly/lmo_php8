@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
   
   
@@ -205,7 +206,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     } else {
       echo "<td class=\"".$lmo_tabelle_class."\">&nbsp;</td>";
     }?>
-          <td class="<?=$lmo_tabelle_class?>" align="center"><?=getSmallImage($teams[$i])?>&nbsp;</td>
+          <td class="<?=$lmo_tabelle_class?>" align="center"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
           <td class="<?=$lmo_tabelle_class; ?> nobr" align="left"> <?
     echo $dummy.$teams[$i].$dumm2;
     if (($teamu[$i]!="") && ($urlt==1)) {
@@ -216,7 +217,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
           <td class="<?=$lmo_tabelle_class; ?>" align="center"><? 
     
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-      $lmo_tabellennotiz=getSmallImage($teams[$i]);
+      $lmo_tabellennotiz=HTML_smallTeamIcon($file,$teams[$i]," alt=''");          
             
       /** Notizen anzeigen
        *
