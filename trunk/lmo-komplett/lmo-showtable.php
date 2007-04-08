@@ -17,6 +17,7 @@
   *
   * $Id$
   */
+  
 if ($minus == 2) {
   $dummy = " colspan=\"3\" align=\"center\"";
 } else {
@@ -161,7 +162,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     }
   }?>
     <td class="<?=$lmo_tabelle_class?>"><img src='<?=URL_TO_IMGDIR."/lmo-tab".$y.".gif";?>' width="9" height="9" border="0" alt=''></td>
-    <td class="<?=$lmo_tabelle_class?>" align="center"><?=getSmallImage($teams[$i]);?></td>
+    <td class="<?=$lmo_tabelle_class?>" align="center"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
     <td class="<?=$lmo_tabelle_class; ?>" align="left"><?
   echo $dummy.$teams[$i].$dumm2;
   if (($teamu[$i] != "") && ($urlt == 1)) {?>
@@ -173,7 +174,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     <td class="<?=$lmo_tabelle_class; ?>"><?
 
   if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-    $lmo_tabellennotiz=getSmallImage($teams[$i]);
+    $lmo_tabellennotiz=HTML_smallTeamIcon($file,$teams[$i]," alt=''");
 
     /** Notizen anzeigen
      *

@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
   
   
@@ -153,7 +154,7 @@ if ($file != "") {
           if ($plan==1) {
             echo "</a>";
           }
-          echo "&nbsp;".getSmallImage($teams[$teama[$st-1][$i]])."&nbsp;";
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
           echo "</td>";?>
           <td class="nobr" align="center" width="10">-</td><?
           if ($m == 2) {
@@ -163,7 +164,7 @@ if ($file != "") {
           } else {
             echo "<td align='left' class='nobr'>";
           }
-          echo "&nbsp;".getSmallImage($teams[$teamb[$st-1][$i]])."&nbsp;";
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
           if ($plan==1) {
             echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
           }
@@ -194,8 +195,8 @@ if ($file != "") {
         $lmo_teamaicon="";
         $lmo_teambicon="";
         if($urlb==1 || $mnote[$st-1][$i][$n]!=""){
-          $lmo_teamaicon=getSmallImage($teams[$teama[$st-1][$i]]);
-          $lmo_teambicon=getSmallImage($teams[$teamb[$st-1][$i]]);
+          $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");
+          $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''");
         }
         /** Spielbericht verlinken
          */

@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
 
 
@@ -35,15 +36,17 @@ if(($file!="") && ($kurve==1)){
   for ($i=1; $i<=$anzteams; $i++) {?>
         <tr>
           <td align="right">
-            <acronym title="<?=$text[134]." ".$teams[$i]?>"><?
+            <acronym title="<?=$text[134]." ".$teams[$i]?>">
+            	<?php
     if($i!=$show_stat1){?>
-            <a href="<?=$addp.$i?>" ><?=$teamk[$i]?></a><?
+            <a href="<?=$addp.$i?>" ><?=$teamk[$i]?></a>
+            <?php
     } else {
       echo $teamk[$i];
     }
           ?></acronym>
           </td>
-          <td>&nbsp;<?=getSmallImage($teams[$i]);?>&nbsp;</td>
+          <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
         </tr><?
   }?>
       </table>
@@ -87,7 +90,7 @@ if(($file!="") && ($kurve==1)){
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
   for ($i=1; $i<=$anzteams; $i++) {?>
         <tr>
-          <td>&nbsp;<?=getSmallImage($teams[$i]);?>&nbsp;</td>
+          <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
           <td align="right">
             <acronym title="<?=$text[134]." ".$teams[$i]?>"><?
     if($i!=$show_stat2){?>

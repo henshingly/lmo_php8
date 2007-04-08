@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
   
   
@@ -70,15 +71,17 @@ if ($file != "") {
   for($i = 1; $i <= floor($anzteams/2); $i++) {?>
         <tr>
           <td align="right">
-            <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
+            <acronym title="<?=$text[23]." ".$teams[$i]?>">
+            	<?php
     if($i!=$selteam){?>
-            <a href="<?=$addp.$i?>" ><?=$teamk[$i]?></a><?
+            <a href="<?=$addp.$i?>" ><?=$teamk[$i]?></a>
+            <?php
     } else {
       echo $teamk[$i];
     }
        ?></acronym>
           </td>          
-          <td>&nbsp;<?=getSmallImage($teams[$i]);?>&nbsp;</td>
+          <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
         </tr><?
   }?>
       </table>
@@ -121,7 +124,7 @@ if ($file != "") {
           if ($selteam == $teama[$j][$i]) {
             echo "</strong>";
           }
-          echo "&nbsp;".getSmallImage($teams[$teama[$j][$i]]);
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt=''");
           if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
             echo " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
           }
@@ -134,7 +137,7 @@ if ($file != "") {
           } else {
             echo "<td class=\"nobr\" align=\"left\">";
           }
-          echo getSmallImage($teams[$teamb[$j][$i]])."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]," alt=''")."&nbsp;";
           if ($selteam == $teamb[$j][$i]) {
             echo "<strong>";
           }
@@ -167,8 +170,8 @@ if ($file != "") {
             $lmo_teamaicon="";
             $lmo_teambicon="";
             if($urlb==1 || $mnote[$j][$i][$n]!=""){
-              $lmo_teamaicon=getSmallImage($teams[$teama[$j][$i]]);
-              $lmo_teambicon=getSmallImage($teams[$teamb[$j][$i]]);
+              $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt=''");
+              $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt=''");
             }
             /** Spielbericht verlinken
              */
@@ -208,11 +211,13 @@ if ($file != "") {
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
   for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {?>
         <tr>
-          <td>&nbsp;<?=getSmallImage($teams[$i]);?></td>
+          <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
           <td align="left">
-            <acronym title="<?=$text[23]." ".$teams[$i]?>"><?
+            <acronym title="<?=$text[23]." ".$teams[$i]?>">
+            	<?php
     if($i!=$selteam){?>
-            <a href="<?=$addp.$i?>"><?=$teamk[$i]?></a><?
+            <a href="<?=$addp.$i?>"><?=$teamk[$i]?></a>
+            <?php
     } else {
       echo $teamk[$i];
     }
