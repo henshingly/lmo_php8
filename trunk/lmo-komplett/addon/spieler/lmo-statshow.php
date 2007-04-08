@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
   
   
@@ -111,7 +112,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
       if ($teams[$i]!=$team) {?></a><?
       }?>
          </td>
-         <td align="right"><?=getSmallImage($teams[$i]);?></td>
+         <td align="right"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
         </tr><?
     }?>
       </table>

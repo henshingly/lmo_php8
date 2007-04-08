@@ -1,3 +1,23 @@
+<?php
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  * $Id$
+  */
+  ?>
 <tr><?
 if ($tipp_einsichterst==2) {
   if ($goala[$st-1][$i]!="_" && $goalb[$st-1][$i]!="_") {
@@ -257,8 +277,8 @@ if($spez==1){ ?>
   $lmo_teamaicon="";
   $lmo_teambicon="";
   if($urlb==1 || $mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0){
-    $lmo_teamaicon=getSmallImage($teams[$teama[$st-1][$i]])." ";
-    $lmo_teambicon=getSmallImage($teams[$teamb[$st-1][$i]])." ";
+    $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")." ";
+    $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")." ";
   }
   /** Spielbericht verlinken */
   if($urlb==1){
