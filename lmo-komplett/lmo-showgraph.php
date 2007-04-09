@@ -32,14 +32,14 @@ if(($file!="") && ($kurve==1)){
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td valign="top" align="center">
-      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php
   for ($i=1; $i<=$anzteams; $i++) {?>
         <tr>
           <td align="right">
-            <acronym title="<?=$text[134]." ".$teams[$i]?>">
+            <acronym title="<?php echo $text[134]." ".$teams[$i]?>">
             	<?php
     if($i!=$show_stat1){?>
-            <a href="<?=$addp.$i?>" ><?=$teamk[$i]?></a>
+            <a href="<?php echo $addp.$i?>" ><?php echo $teamk[$i]?></a>
             <?php
     } else {
       echo $teamk[$i];
@@ -47,23 +47,23 @@ if(($file!="") && ($kurve==1)){
           ?></acronym>
           </td>
           <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
-        </tr><?
+        </tr><?php
   }?>
       </table>
     </td>
     <td valign="top" align="center">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
   if($show_stat1==0){?>
         <tr>
-          <td>&nbsp;<br><?=$text[24]?><br>&nbsp;</td>
-        </tr><?
+          <td>&nbsp;<br /><?php echo $text[24]?><br />&nbsp;</td>
+        </tr><?php
   } else {
     $tabtype=0;
     require(PATH_TO_LMO."/lmo-calcgraph.php");
     $dummy=URL_TO_LMO."/lmo-paintgraph.php?pganz=";
     if($show_stat2>0){$dummy=$dummy."2";}else{$dummy=$dummy."1";}
     $dummy=$dummy."&amp;pgteam1=".rawurlencode($teams[$show_stat1]);
-    if($show_stat2>0){$dummy=$dummy."&pgteam2=".rawurlencode($teams[$show_stat2]);}
+    if($show_stat2>0){$dummy=$dummy."&amp;pgteam2=".rawurlencode($teams[$show_stat2]);}
     $dummy=$dummy."&amp;pgteams=".$anzteams;
     $dummy=$dummy."&amp;pgst=".$anzst;
     $dummy=$dummy."&amp;pgch=".$champ;
@@ -81,30 +81,30 @@ if(($file!="") && ($kurve==1)){
       $dummy=$dummy."0";
       }?>
         <tr>
-          <td align="center"><img src="<? echo $dummy; ?>" border="0" alt="<?=$text[133]?>"></td>
+          <td align="center"><img src="<? echo $dummy; ?>" border="0" alt="<?=$text[133]?>" /></td>
         </tr>
-<? } ?>
+<?php } ?>
 
   </table></td>
     <td valign="top" align="center">
-      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php
   for ($i=1; $i<=$anzteams; $i++) {?>
         <tr>
           <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
           <td align="right">
-            <acronym title="<?=$text[134]." ".$teams[$i]?>"><?
+            <acronym title="<?php echo $text[134]." ".$teams[$i]?>"><?php
     if($i!=$show_stat2){?>
-            <a href="<?=$addp.$show_stat1."&amp;stat2=".$i?>" ><?=$teamk[$i]?></a><?
+            <a href="<?php echo $addp.$show_stat1."&amp;stat2=".$i?>" ><?php echo $teamk[$i]?></a><?php
     } else {
       echo $teamk[$i];
     }
           ?></acronym>
           </td>
-        </tr><?
+        </tr><?php
   }?>
       </table>
     </td>
   </tr>
 </table>
 
-<? } ?>
+<?php } ?>
