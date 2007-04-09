@@ -591,3 +591,10 @@
 4017=Höchste(r) Auswärtssieg(e)
 4018=Die meisten
 4019=Spiele mit gleicher Anzahl
+4020=Restprogramm
+4021=Bewertung der Restprogramme
+4022=&sum; Pkt.verh&auml;ltnis Gegner
+4023=Tendenz
+4024=gleich
+4025=leichter
+4026=schwerer
