@@ -91,13 +91,26 @@ function HTML_bigTeamIcon($ligaFile,$team,$html="",$alternative_text="") {
 	return $imgHTML;
 }
 /**
- * Returns HTML image code for a liga icon
+ * Returns HTML image code for a big liga icon
  */
-function HTML_LigaIcon($ligaFile,$html="",$alternative_text="") {
-	$liganame = substr($ligaFile, 0, -4);
-	$subFolder = "/liga/";
+function HTML_bigLigaIcon($ligaFile,$html="",$alternative_text="") {
+	$fileName = strBeforChar(basename($ligaFile),'.');
+	$subFolder = "/liga/big/";
      foreach( const_array( CLASSLIB_IMG_TYPES ) as $extension) {
-      if ($imgHTML = findImage($liganame,$subFolder,$extension,$html,$alternative_text) ) {
+      if ($imgHTML = findImage($fileName,$subFolder,$extension,$html,$alternative_text) ) {
+      	break;  
+			}
+		}
+	return $imgHTML;
+}
+/**
+ * Returns HTML image code for a small liga icon
+ */
+function HTML_smallLigaIcon($ligaFile,$html="",$alternative_text="") {
+	$fileName = strBeforChar(basename($ligaFile),'.');
+	$subFolder = "/liga/small/";
+     foreach( const_array( CLASSLIB_IMG_TYPES ) as $extension) {
+      if ($imgHTML = findImage($fileName,$subFolder,$extension,$html,$alternative_text) ) {
       	break;  
 			}
 		}
