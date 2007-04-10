@@ -137,7 +137,7 @@ if ($file != "") {
           } else {
             echo "<td class=\"nobr\" align=\"left\">";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]," alt=''")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt=''")."&nbsp;";
           if ($selteam == $teamb[$j][$i]) {
             echo "<strong>";
           }
