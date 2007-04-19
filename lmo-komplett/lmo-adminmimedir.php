@@ -19,7 +19,7 @@
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-$addi = "lmo-adminmimesend.php?action=admin&amp;todo=email&amp;down=";
+$addi = URL_TO_LMO."/lmo-adminmimesend.php?action=admin&amp;todo=email&amp;down=";
 if ($ftype != "") {
   $verz = opendir(substr($dirliga, 0, -1));
   $dummy = array("");

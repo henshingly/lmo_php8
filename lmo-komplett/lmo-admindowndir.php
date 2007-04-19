@@ -19,7 +19,7 @@
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-$addi = "lmo-admindownload.php?action=admin&amp;todo=download&amp;down=";
+$addi = URL_TO_LMO."/lmo-admindownload.php?action=admin&amp;todo=download&amp;down=";
 if ($ftype != "") {
   $verz = opendir(substr($dirliga, 0, -1));
   $dummy = array("");
