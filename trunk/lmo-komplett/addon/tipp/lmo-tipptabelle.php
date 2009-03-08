@@ -17,8 +17,8 @@
   *
   * $Id$
   */
-  
-  
+
+
 if ($file!="" && $tipp_tipptabelle1==1) {
   $endtab = $st;
   if ($endtab==0) {
@@ -75,7 +75,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
       }
       $nick="";
-      //Keine Tipper 
+      //Keine Tipper
       if ($m == 0) {
         echo getMessage($text['tipp'][17],TRUE);
       }
@@ -99,17 +99,17 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   } else {
     $dummy=" align=\"right\"";
   }
-  
+
 ?>
-<table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><? 
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
   if($nick!=""){ ?>
-  <caption><?if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];}?></caption><?  
+  <caption><?if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];}?></caption><?
     $hoy1=1;
     //  if ($tabtype==3){$hoy1=($anzst/2+1);}
     if ($tabtype!=3 && $tabtype!=4) {?>
   <tr>
     <td align="center"><?include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
-  </tr><? 
+  </tr><?
     }
   } /* ende if($nick!="") */?>
   <tr>
@@ -117,7 +117,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   </tr>
   <tr>
     <td align="center">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><? 
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
   if($nick!=""){ ?>
         <caption><?
     if($tabtype!="0"){?><a href="<?=$addt1."0"?>" title="<?=$text[27]?>"><?=$text[40]?></a><?}else{echo $text[40];}?>&nbsp;<?
@@ -127,17 +127,17 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       if($tabtype!="4"){?><a href="<?=$addt1."4"?>" title="<?=$text[4003]?>"><?=$text[4003]?></a><?}else{echo $text[4003];}?>&nbsp;<?
       if($tabtype!="3"){?><a href="<?=$addt1."3"?>" title="<?=$text[4002]?>"><?=$text[4002]?></a><?}else{echo $text[4002];}
     }?>
-        </caption><? 
+        </caption><?
   } /* ende if($nick!="")*/?>
         <tr>
           <th align="left" colspan="6"> <?=$tabdat; ?> &nbsp;</th>
           <th>&nbsp;</th>
           <th class="nobr" align="right"> <?=$text[33]; ?> &nbsp;</th>
-          <th class="nobr" align="right"> <?=$text[34]; ?> &nbsp;</th><? 
+          <th class="nobr" align="right"> <?=$text[34]; ?> &nbsp;</th><?
    if($hidr!=1){?>
           <th class="nobr" align="right"> <?=$text[35];?> &nbsp;</th><?
    }?>
-          <th class="nobr" align="right"> <?=$text[36]; ?> &nbsp;</th><? 
+          <th class="nobr" align="right"> <?=$text[36]; ?> &nbsp;</th><?
    if($tabpkt==0){?>
           <th>&nbsp;</th>
           <th class="nobr" <?=$dummy?>> <?=$text[37]?> &nbsp;</th><?
@@ -145,7 +145,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
    if($tipp_tippmodus==1){ ?>
           <th>&nbsp;</th>
           <th class="nobr" colspan="3" align="center"> <?=$text[38]; ?> </th>
-          <th class="nobr" align="right"> <?=$text[39]; ?> </th><? 
+          <th class="nobr" align="right"> <?=$text[39]; ?> </th><?
    }
    if($tabpkt==1){ ?>
           <th>&nbsp;</th>
@@ -214,17 +214,17 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     }?>
           </td>
           <td class="<?=$lmo_tabelle_class; ?>">&nbsp;</td>
-          <td class="<?=$lmo_tabelle_class; ?>" align="center"><? 
-    
+          <td class="<?=$lmo_tabelle_class; ?>" align="center"><?
+
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
       $lmo_tabellennotiz=HTML_smallTeamIcon($file,$teams[$i]," alt=''");          
-            
+
       /** Notizen anzeigen
        *
        * Achtung: Da beim Speichern Strafpunkte/-tore positiv sind und Bonuspunkte negativ (altes System des LMO)
        * muss mit -1 multipliziert werden, um die Punkte/Tore richtig anzuzeigen
        */
-      
+
       $lmo_tabellennotiz.=" <strong>".$teams[$i]."</strong>";
       //Straf-/Bonuspunkte
       if ($strafp[$i]!=0 || $strafm[$i]!=0) {
@@ -233,7 +233,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*applyFactor($strafp[$i],$pointsfaktor)):((-1)*applyFactor($strafp[$i],$pointsfaktor));
         //Minuspunkte
         if ($minus==2) {
-          $lmo_tabellennotiz.=":".$strafm[$i]<0?"+".((-1)*applyFactor($strafm[$i],$pointsfaktor)):((-1)*applyFactor($strafm[$i],$pointsfaktor));
+          $lmo_tabellennotiz.=":".($strafm[$i]<0?"+".((-1)*applyFactor($strafm[$i],$pointsfaktor)):((-1)*applyFactor($strafm[$i],$pointsfaktor)));
         }
         //Ab ST
         if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
@@ -260,9 +260,9 @@ if ($file!="" && $tipp_tipptabelle1==1) {
           </td>
           <td class="<?=$lmo_tabelle_class; ?>" width="2">&nbsp;</td>
           <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$spiele[$i].$dumm2; ?> &nbsp;</td>
-          <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$siege[$i].$dumm2; ?> &nbsp;</td><? 
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$siege[$i].$dumm2; ?> &nbsp;</td><?
     if($hidr!=1){ ?>
-          <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$unent[$i].$dumm2; ?> &nbsp;</td><? 
+          <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$unent[$i].$dumm2; ?> &nbsp;</td><?
     }?>
           <td class="<?=$lmo_tabelle_class; ?>" align="right"> <?=$dummy.$nieder[$i].$dumm2; ?> &nbsp;</td><?
     if ($tabpkt==0) {
@@ -287,7 +287,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       }
     }?>
           <td class="<?=$lmo_tabelle_class; ?>" align="right"><strong><?=$dummy.number_format($quote[$i]/100,2,".",",").$dumm2; ?></strong></td>
-        </tr><? 
+        </tr><?
     }?>
       </table>
     </td>
@@ -298,7 +298,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   if($tabdat!=""){ ?>
 
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr><?  
+        <tr><?
    $st0 = $st-1;
    if ($st > 1) {?>
           <td align="left">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?> <?=$text[6]?></a>&nbsp;</td><?
@@ -310,7 +310,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         </tr>
       </table>
 
-<? 
+<?
   }
   if($tipp_wertverein==1 && $tabtype==0){ ?>
 <p>&nbsp;</p>
@@ -325,7 +325,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         if (($endtab>1) && ($tabtype==0) && ($tabdat!="")) {
           $endtab--;
           require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcwertverein.php");
-          
+
           $platz1 = array("");
           $platz1 = array_pad($array,$anzteams+1,"");
           for ($x=0; $x<$anzteams; $x++) {
@@ -354,7 +354,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         }
         $nick="";
       }
-      
+
       $platz0 = array("");
       if (!isset($anzteams)) {
         $anzteams=0;
@@ -432,7 +432,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     </td>
   </tr>
   <tr>
-    <td class="lmoFooter" align="center"><? 
+    <td class="lmoFooter" align="center"><?
   if ($nick!=$_SESSION['lmotippername'] && $_SESSION['lmotippername']!="") {
     echo "<a href=\"".$addt.$_SESSION['lmotippername']."\" title=\"".$text['tipp'][173]."\">".$text['tipp'][182]."</a>";
   }
