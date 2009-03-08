@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-   
+
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
   if ($file!="") {
@@ -29,9 +29,9 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
       if ($einzutore==1 || $einzutoretab==1 || $einzustats==1) {
         include(PATH_TO_LMO."/lmo-zustat.php");
       }
-      
+
       $datei = fopen(PATH_TO_LMO.'/'.$dirliga.$file,"wb");
-      
+
       if ($datei) {
         echo getMessage($text[138]);
         flock($datei,LOCK_EX);
@@ -104,7 +104,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         fputs($datei,"favTeam=".$favteam."\n");
         fputs($datei,"selTeam=".$selteam."\n");
         fputs($datei,"ticker=".$nticker."\n");
-        
+
         if ($lmtype==0) {
           fputs($datei,"Graph=".$kurve."\n");
           fputs($datei,"Kreuz=".$kreuz."\n");
@@ -230,6 +230,9 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           }
         }
         flock($datei,LOCK_UN);
+        if (file_exists(PATH_TO_LMO.'/'.$diroutput.'/viewer_'.substr($file,0,-4).'_count.txt')) {
+          unlink(PATH_TO_LMO.'/'.$diroutput.'/viewer_'.substr($file,0,-4).'_count.txt');
+        }
         fclose($datei);
       } else {
         echo getMessage($text[283],TRUE);
@@ -237,6 +240,6 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
       clearstatcache();
     }
   }
-}  
+}
 
 ?>
