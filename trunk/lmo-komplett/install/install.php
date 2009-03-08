@@ -32,8 +32,8 @@ $_SESSION['userlang']=isset($_GET['userlang'])?$_GET['userlang']:(isset($_SESSIO
 $userlang = $_SESSION['userlang'];
 
 $filelist=array(
-  '777'=>array('ligen','output','config','ligen/dfb','config/viewer','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
-  '666'=>array('config/cfg.txt','config/lmo-auth.php','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98')
+  0777=>array('ligen','output','config','ligen/dfb','config/viewer','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
+  0666=>array('config/cfg.txt','config/lmo-auth.php','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98')
 );
 $lang=array(
     'DE'=>array(
@@ -252,7 +252,7 @@ if (strpos(dirname($_SERVER['SCRIPT_NAME']),"/install")!==FALSE) {
 if ($lmo_install_step==1) {
   //FTP-Daten testen
 
-  $ftp = new ftp(TRUE);
+  $ftp = new ftp();
   $_SESSION['ftpserver']= isset($_POST['ftpserver'])? trim($_POST['ftpserver']):(!empty($_SESSION['ftpserver'])?$_SESSION['ftpserver']:'');
   $_SESSION['ftpuser'] =   isset($_POST['ftpuser'])?   trim($_POST['ftpuser']):(!empty($_SESSION['ftpuser'])?$_SESSION['ftpuser']:'');
   $_SESSION['ftppass'] =   isset($_POST['ftppass'])?   trim($_POST['ftppass']):(!empty($_SESSION['ftppass'])?$_SESSION['ftppass']:'');
@@ -291,7 +291,6 @@ if ($lmo_install_step==1) {
           foreach ($files as $file) {
             if (strpos($file,'*')) {
               $ligen=$ftp->nlist($file);
-              print_r($ligen);
               foreach ($ligen as $liga) {
                 if (substr($liga,-4)==substr($file,-4)){
                   $ftp->chmod($liga,$chmod);
