@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -79,7 +79,7 @@ require_once(PATH_TO_LMO."/lmo-functions.php");
 //Übergang Classlib
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 //Template System
-require_once(PATH_TO_LMO."/pear/IT.php");
+require_once(PATH_TO_LMO."/includes/IT.php");
 
 //Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);

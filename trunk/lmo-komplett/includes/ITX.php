@@ -20,8 +20,8 @@
 //
 
 //jokerlmo: Changed include path
-require_once(PATH_TO_LMO.'/pear/IT.php');
-require_once(PATH_TO_LMO.'/pear/IT_Error.php');
+require_once(PATH_TO_LMO.'/includes/IT.php');
+require_once(PATH_TO_LMO.'/includes/IT_Error.php');
 
 /**
 * Integrated Template Extension - ITX
