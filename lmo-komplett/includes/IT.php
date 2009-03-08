@@ -20,7 +20,7 @@
 //
 
 //jokerlmo: Changed include path
-require_once(PATH_TO_LMO.'/pear/PEAR.php');
+require_once(PATH_TO_LMO.'/includes/PEAR.php');
 
 define("IT_OK",                         1);
 define("IT_ERROR",                     -1);
@@ -1021,11 +1021,11 @@ class HTML_Template_IT {
         return isset($errorMessages[$value]) ?
                 $errorMessages[$value] : $errorMessages[IT_ERROR];
     }
-    
+
     /**
      * Gets the Template as string
      *
-     * 
+     *
      *
      * @access   public
      */

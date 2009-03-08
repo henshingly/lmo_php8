@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -19,7 +19,7 @@
   */
 /*
 //Caching
-require_once(PATH_TO_LMO.'/pear/LiteOutput.php');
+require_once(PATH_TO_LMO.'/includes/LiteOutput.php');
 //Cache Options
 $lmo_cache_options = array (
 'cacheDir' => PATH_TO_LMO."/".$diroutput,
@@ -223,19 +223,19 @@ if ($file!="") {
   if ($einsavehtml==1) {
       ob_start();?>
         <table width="100%" cellspacing="0" cellpadding="0" border="0">
-          <tr><? 
+          <tr><?
           if($lmtype==0 && $druck==1){
             include(PATH_TO_LMO."/lmo-savehtml.php");
             include(PATH_TO_LMO."/lmo-savehtml1.php");
-      }?> 
-           <td align="center"><? 
+      }?>
+           <td align="center"><?
       if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-st.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
-            </td>  
-            <td align="center"><? 
+            </td>
+            <td align="center"><?
       if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-sp.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
             </td>
           </tr>
-        </table><? 
+        </table><?
         $output_savehtml.=ob_get_contents();ob_end_clean();
   }
 }
