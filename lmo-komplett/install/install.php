@@ -19,6 +19,9 @@
   */
 
 session_start();
+
+require_once("includes/ftp_class.php");
+
 if (!isset($_SESSION['ftpserver'])) {
   $_SESSION['ftpserver'] ='';
 }
@@ -249,48 +252,49 @@ if (strpos(dirname($_SERVER['SCRIPT_NAME']),"/install")!==FALSE) {
 if ($lmo_install_step==1) {
   //FTP-Daten testen
 
+  $ftp = new ftp(TRUE);
   $_SESSION['ftpserver']= isset($_POST['ftpserver'])? trim($_POST['ftpserver']):(!empty($_SESSION['ftpserver'])?$_SESSION['ftpserver']:'');
   $_SESSION['ftpuser'] =   isset($_POST['ftpuser'])?   trim($_POST['ftpuser']):(!empty($_SESSION['ftpuser'])?$_SESSION['ftpuser']:'');
   $_SESSION['ftppass'] =   isset($_POST['ftppass'])?   trim($_POST['ftppass']):(!empty($_SESSION['ftppass'])?$_SESSION['ftppass']:'');
 
-  $conn = ftp_connect($_SESSION['ftpserver']);
-  if (!$conn) {
+  if(!$ftp->SetServer($_SESSION['ftpserver']) || !$ftp->connect()) {
     $urlerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP0_FTP_NO_CONNECTION'].'</p>';
     $lmo_install_step=0;
   } else {
-    $conn2= ftp_login($conn, $_SESSION['ftpuser'], $_SESSION['ftppass']);
-    if (!$conn2) {
+    if (!$ftp->login($_SESSION['ftpuser'], $_SESSION['ftppass'])) {
+      $ftp->quit();
       $loginerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP0_FTP_NO_LOGIN'].'</p>';
       $lmo_install_step=0;
     }
   }
 
-  if ($conn && $conn2) {
+  if ( $lmo_install_step != 0) {
     $_SESSION['ftpdir'] =   isset($_POST['ftpdir'])?   trim(str_replace("../",'',$_POST['ftpdir']))   : '';
     $ftpdir = $_SESSION['ftpdir'];
     if(empty($_POST['ftpdir'])) {
       //Pfad aussuchen
+
       $_SESSION['view'] =   isset($_GET['view'])?   trim(str_replace("../",'',$_GET['view']))   : '';
-      $filelist = filecollect($conn,$_SESSION['view']);
+      $filelist = filecollect($ftp,$_SESSION['view']);
     } else {
       //Pfad ausgesucht -> Rechte setzen
 
-      $base = ftp_pwd($conn)  ;
-      ftp_chdir($conn, "$base/".$ftpdir);
-      if (ftp_size($conn, "init.php") == -1) {
+      $ftp->chdir($ftpdir);
+      if (!$ftp->is_exists("init.php")) {
         //Pathtest
+        $ftp->cdup();
         $patherror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> "'.$ftpdir.'": '.$lang[$userlang]['ERROR_WRONG_PATH'].'</p>';
-        $filelist = array('..');
+        $filelist = filecollect($ftp,$_SESSION['view']);
         $lmo_install_step=1;
       } else {
         foreach ($filelist as $chmod=>$files) {
           foreach ($files as $file) {
             if (strpos($file,'*')) {
-              ftp_chdir($conn,"$base/".$ftpdir."/".dirname($file));
-              $ligen=ftp_nlist($conn,'');
+              $ligen=$ftp->nlist($file);
+              print_r($ligen);
               foreach ($ligen as $liga) {
                 if (substr($liga,-4)==substr($file,-4)){
-                  ftp_site($conn, "CHMOD 0$chmod $liga");
+                  $ftp->chmod($liga,$chmod);
                 }
               }
             } else {
@@ -309,8 +313,8 @@ if ($lmo_install_step==1) {
                     fclose($auth_file);
                   }
                   // Copy install/cfg.txt  if cfg.txt not exists
-                  ftp_put ($conn, "$base/$ftpdir/$file" ,dirname(__FILE__)."/".$file, FTP_ASCII);
-                  ftp_site($conn, "CHMOD 0$chmod $base/".$ftpdir."/".$file);
+                  $ftp->put (dirname(__FILE__)."/".$file, $file);
+                  $ftp->chmod($file,$chmod);
                 } else {
                   if (strpos($file,"cfg.txt")!==FALSE) {
                     //Merge config files
@@ -324,7 +328,7 @@ if ($lmo_install_step==1) {
                       }
                     }
                     //make cfg.txt writable
-                    ftp_site($conn, "CHMOD 0$chmod $base/".$ftpdir."/".$file);
+                    $ftp->chmod($file,$chmod);
                     //write merged configuration
                     $mergedfile = fopen($lmo_dir."/".$file,"wb");
                     foreach ($cfg_old as $merged_key=>$merged_value) {
@@ -333,14 +337,15 @@ if ($lmo_install_step==1) {
                   }
                 }
               }
-              ftp_site($conn, "CHMOD 0$chmod $base/".$ftpdir."/".$file);
+              $ftp->chmod($file,$chmod);
+
             }
           }
         }
         $lmo_install_step=2;
       }
     }
-    ftp_close($conn);
+    $ftp->quit();
   }
 }
 
@@ -420,8 +425,7 @@ if ($lmo_install_step==0) {?>
       <td>
          <?=$lang[$userlang]['STEP0_DESCRIPTION']?>
       </td>
-    </tr><?
-      if (function_exists('ftp_connect')) {?>
+    </tr>
     <tr>
       <td align="center">
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
@@ -429,7 +433,7 @@ if ($lmo_install_step==0) {?>
             <dt><?=$lang[$userlang]['STEP0_FTP_SERVER']?></dt>
             <dd>
             <?=$urlerror?>
-              <input name="ftpserver" type="text" size="50" value="<?=$_SESSION['ftpserver']?>"> <?=$lang[$userlang]['STEP0_FTP_SERVER_EXAMPLE']?>
+              <input name="ftpserver" type="text" size="50" value="<?=isset($_SESSION['ftpserver'])?$_SESSION['ftpserver']:$_SERVER['SERVER_NAME'];?>"> <?=$lang[$userlang]['STEP0_FTP_SERVER_EXAMPLE']?>
             </dd>
             <dt><?=$lang[$userlang]['STEP0_FTP_LOGIN']?></dt>
             <dd>
@@ -443,18 +447,7 @@ if ($lmo_install_step==0) {?>
           </dl>
         </form>
       </td>
-    </tr><?
-      } else {?>
-    <tr>
-      <td align="center">
-        <dl>
-          <dt><a href="<?=$_SERVER['PHP_SELF']."?lmo_install_step=2&amp;man=1"?>><?=$lang[$userlang]['STEP2']?></a></dt>
-        </dl>
-      </td>
     </tr>
-      <?
-      }
-      ?>
   </table><?
 
     } else {
@@ -471,12 +464,15 @@ if ($lmo_install_step == 1) {?>
           <dl>
             <dt><?=$lang[$userlang]['STEP1_SELECT_FTP_DIR']?></dt>
         <?
-  foreach ($filelist as $ftpdir) {
-    echo "<dd><input type='radio' value='$ftpdir' name='ftpdir'> <a href='".$_SERVER['PHP_SELF']."?lmo_install_step=1&amp;view=$ftpdir'>$ftpdir</a></dd>";
-  }
   if ($_SESSION['view'] != '') {
-    echo "<dd>&nbsp; &nbsp;<a href='".$_SERVER['PHP_SELF']."?lmo_install_step=1&amp;view=".dirname($view)."'>..</a></dd>";
-  }?>
+    echo "<dd>&nbsp;<a href='".$_SERVER['PHP_SELF']."?lmo_install_step=1&amp;view=".dirname($_SESSION['view'])."'>..</a></dd>";
+  }
+  if (!empty($filelist)) {
+    foreach ($filelist as $ftpdir) {
+      echo "<dd><input type='radio' value='$ftpdir' name='ftpdir'> <a href='".$_SERVER['PHP_SELF']."?lmo_install_step=1&amp;view=$ftpdir'>".basename($ftpdir)."</a></dd>";
+    }
+  }
+?>
 
             <dt>
               <input type="hidden" name="lmo_install_step" value="1">
@@ -632,17 +628,17 @@ if ($lmo_install_step==4) {?>
     <span class="spec">CSS 2.1</span></a></div>
     <?if ($lmo_install_step==0) {?>
     <div class="w3cbutton3">
-    <a href="install.php?userlang=FR"><img src="img/Francais.gif" alt="FR" width="16"></a>
+    <a href="<?=$_SERVER['PHP_SELF'];?>?userlang=FR"><img src="img/Francais.gif" alt="FR" width="16"></a>
     </div>
     <div class="w3cbutton3">
-    <a href="install.php?userlang=EN"><img src="img/English.gif" alt="EN" width="16"></a>
+    <a href="<?=$_SERVER['PHP_SELF'];?>?userlang=EN"><img src="img/English.gif" alt="EN" width="16"></a>
     </div>
     <div class="w3cbutton3">
-    <a href="install.php?userlang=DE"><img src="img/Deutsch.gif" alt="DE" width="16"></a>
+    <a href="<?=$_SERVER['PHP_SELF'];?>?userlang=DE"><img src="img/Deutsch.gif" alt="DE" width="16"></a>
     </div>
     <?} else {?>
     <div class="w3cbutton3">
-    <a href="install.php"><span class="w3c">RE</span>
+    <a href="<?=$_SERVER['PHP_SELF'];?>"><span class="w3c">RE</span>
     <span class="spec">START</span></a></div>
 
     <?}?>
@@ -653,8 +649,22 @@ if ($lmo_install_step==4) {?>
 
 <?
 
-function filecollect($cid,$dir='.') {
-  static $flist=array();
+function filecollect($ftp,$dir='.') {
+
+  $ftp->chdir($dir);
+  $list=$ftp->rawlist(".", "-lA");
+  if($list===false) echo "LIST FAILS!";
+  else {
+    foreach($list as $k=>$v) {
+      $entry = $ftp->parselisting($v);
+      if ($entry['type'] == 'd') {
+        $return[]=$dir."/".$entry['name'];
+      }
+    }
+
+  }
+  return $return;
+  /*static $flist=array();
 
   if ($files = ftp_nlist($cid,"./".$dir)){
     foreach ($files as $file) {
@@ -662,7 +672,7 @@ function filecollect($cid,$dir='.') {
       $flist[] = str_replace('./','',$file);
     }
   }
-  return $flist;
+  return $flist;*/
 }
 
 ?>
