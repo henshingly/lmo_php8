@@ -26,7 +26,6 @@
 # If you got problems with lost sessions remove follwing comments
 # ATTENTION: THIS COMMANDS ARE NOT SUPPORTED BY ALL SERVERS!
 #
-#  <IfModule mod_php4.c>
-#	  php_flag session.use_trans_sid 1
-#	  php_value arg_separator.output &amp;
-#  </IfModule>
+# php_flag session.use_trans_sid 1
+# php_value arg_separator.output &amp;
+#
