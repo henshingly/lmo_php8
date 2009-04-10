@@ -17,8 +17,8 @@
   *
   * $Id$
   */
-  
-  
+
+
 if($file!=""){
   $addp=$_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
@@ -39,7 +39,7 @@ if($file!=""){
       echo $teamk[$i];
     }
           ?></acronym>
-          </td>          
+          </td>
           <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
         </tr><?php
   }?>
@@ -63,10 +63,10 @@ if($file!=""){
               $dum1="";
             }
 ?>
-          <td style="width:2;">&nbsp;</td>
+          <td style="width:2px;">&nbsp;</td>
           <td class="nobr"><?php echo $dum1; ?></td>
 <?php        } ?>
-          <td style="width:2;">&nbsp;</td>
+          <td style="width:2px;">&nbsp;</td>
           <td class="nobr" align="right"><?php
           if ($selteam==$teama[$j][$i]){
             echo "<strong>";
@@ -77,7 +77,7 @@ if($file!=""){
           }
             echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt=''");
 ?>        </td>
-          <td align="center" style="width:10;">-</td>
+          <td align="center" style="width:10px;">-</td>
           <td class="nobr" align="left"><?php
            echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt=''")."&nbsp;";
           if ($selteam==$teamb[$j][$i]){
@@ -88,18 +88,18 @@ if($file!=""){
             echo "</strong>";
           }
 ?>        </td>
-          <td style="width:2;">&nbsp;</td>
+          <td style="width:2px;">&nbsp;</td>
           <td align="right"><?php echo applyFactor($goala[$j][$i],$goalfaktor); ?></td>
-          <td align="center" style="width:8;">:</td>
+          <td align="center" style="width:8px;">:</td>
           <td align="left"><?php echo applyFactor($goalb[$j][$i],$goalfaktor); ?></td>
-<?php 
+<?php
           if($spez==1){ ?>
-          <td style="width:2;">&nbsp;</td>
+          <td style="width:2px;">&nbsp;</td>
           <td align="left"><?php echo $mspez[$j][$i]; ?></td>
 <?php        }
 ?>
-          <td style="width:2;">&nbsp;</td>
-          <td class="nobr"><?php 
+          <td style="width:2px;">&nbsp;</td>
+          <td class="nobr"><?php
 /** Mannschaftsicons finden */
           $lmo_teamaicon="";
           $lmo_teambicon="";
@@ -107,7 +107,7 @@ if($file!=""){
             $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt=''");
             $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt=''");
           }
-          
+
 /** Spielbericht verlinken */
           if($urlb==1){
             if($mberi[$j][$i]!=""){
