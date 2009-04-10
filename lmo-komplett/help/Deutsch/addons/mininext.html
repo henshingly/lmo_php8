@@ -30,7 +30,7 @@
               <li><a class="page" href="tippspiel.html">Tippspiel</a></li>
               <li><a class="page" href="newsticker.html">Newsticker</a></li>
               <li><a class="page" href="minitabellen.html">Minitabellen</a></li>
-              
+
                <li><a class="active" href="mininext.html">Mininext</a></li>
               <li><a class="page" href="spielerstatistik.html">Spielerstatistik</a></li>
               <li><a class="page" href="viewer.html">Viewer</a></li>
@@ -56,11 +56,11 @@
    <li><a href="#template">Templates</a></li>
     <li><a href="#history">History</a></li>
 </ol><p><img src="../../media/mininext.png" alt="Mininext Screenshot" width="134" height="399" align="right">
-  Dieses Script zeigt die kommende Partie einer Mannschaft in einem kleinen 
-  Block an, der relativ einfach in jede bestehende Seite eingebunden werden 
-  kann. 
-  Neben der Anzeige der kommenden Partie, wird im anzugebenen Archivordner 
-  nach bereits vorhandenen Begegnungen der Mannschaften gesucht und absteigend 
+  Dieses Script zeigt die kommende Partie einer Mannschaft in einem kleinen
+  Block an, der relativ einfach in jede bestehende Seite eingebunden werden
+  kann.
+  Neben der Anzeige der kommenden Partie, wird im anzugebenen Archivordner
+  nach bereits vorhandenen Begegnungen der Mannschaften gesucht und absteigend
   sortiert nach Datum angezeigt.
 </p>
 <h3>
@@ -72,7 +72,7 @@
     </p>
     <h4>Addonverwaltung</h4>
     <p>
-      Die Konfiguration lässt sich in der Addonverwaltung des LMO vornehmen, klicken sie dazu auf den Punkt 
+      Die Konfiguration lässt sich in der Addonverwaltung des LMO vornehmen, klicken sie dazu auf den Punkt
       <strong>mini</strong>. Folgende grundlegende Parameter lassen sich steuern:
     <dl>
       <dt>
@@ -115,26 +115,26 @@
         <var>folder</var>
       </dt>
       <dd>
-        Archivordner, der durchsucht werden soll. Es ist sinvoll, die 
-        alten Ligadateien nicht direkt in den Archivordner abzulegen, 
-        sondern jeweils für jede Liga einen eigenen unterordner im 
+        Archivordner, der durchsucht werden soll. Es ist sinvoll, die
+        alten Ligadateien nicht direkt in den Archivordner abzulegen,
+        sondern jeweils für jede Liga einen eigenen unterordner im
         Archivverzeichnis anzulegen.
       </dd>
       <dt>
         <var>a</var>
       </dt>
       <dd>
-        Nummer der Mannschaft A, für die der Block erstellt werden 
-        soll. Dieser Parameter ist nur dann erforderlich, wenn im 
+        Nummer der Mannschaft A, für die der Block erstellt werden
+        soll. Dieser Parameter ist nur dann erforderlich, wenn im
         LigaFile keine Lieblingsmannschaft angegeben wurde.
       </dd>
       <dt>
         <var>b</var>
       </dt>
       <dd>
-       Nummer des Gegners von a: bzw der Lieblingsmannschaft. Dieser 
-        Parameter ist für die Anzeige der nächsten Partie nicht erforderlich, 
-        da die nächste Partie automatisch ermittelt wird. Wer aber eine 
+       Nummer des Gegners von a: bzw der Lieblingsmannschaft. Dieser
+        Parameter ist für die Anzeige der nächsten Partie nicht erforderlich,
+        da die nächste Partie automatisch ermittelt wird. Wer aber eine
         spezielle Paarung angezeigt haben möchte kann hier b angeben.
       </dd>
        <dt>
@@ -146,53 +146,53 @@
    </dl>
       <a href="#top">[nach oben]</a><h3><a name="include"></a>2. Einbindung</h3>
     <p>Es gibt prinzipiell zwei Arten, mit der Sie das Mininext-Addon in seine Seiten einbinden können.
-      Die erstere Methode ist dabei zu bevorzugen, die zweite Variante ist eigentlich nur für 
-      Server gedacht, die keine PHP-Unterstützung bieten (der LMO läuft dann auf einem externen 
-      Server) oder wenn Sie eine Datei mit der Endung .html benutzen. (Diese werden üblicherweise 
+      Die erstere Methode ist dabei zu bevorzugen, die zweite Variante ist eigentlich nur für
+      Server gedacht, die keine PHP-Unterstützung bieten (der LMO läuft dann auf einem externen
+      Server) oder wenn Sie eine Datei mit der Endung .html benutzen. (Diese werden üblicherweise
       nicht von PHP geparst)
     </p>
     <h4>Einbinden per include</h4>
-    <p>Hierbei werden die Parameter direkt als PHP-Variablen festgelegt. Sie notieren also 
+    <p>Hierbei werden die Parameter direkt als PHP-Variablen festgelegt. Sie notieren also
       <em>innerhalb eines PHP-Blocks</em> (ggfls. mit &lt;?php öffnen) die benötigten Parameter
       hintereinander wie im folgenden Beispiel:
     </p>
     <p><code>$file="liga1.l98";<br>
     $folder="archiv/Erste_Mannschaft";<br></code></p>
-    <p>Beachten Sie das <var>$</var> vor dem Parameter, die Anführungszeichen um einige 
-      Werte und das schließende Semikolon. Sie brauchen nicht immer alle Parameter angeben, 
-      lediglich der Name der Liga ist notwendig. <strong>Danach</strong> binden Sie das Mininext-Addon über die folgende 
+    <p>Beachten Sie das <var>$</var> vor dem Parameter, die Anführungszeichen um einige
+      Werte und das schließende Semikolon. Sie brauchen nicht immer alle Parameter angeben,
+      lediglich der Name der Liga ist notwendig. <strong>Danach</strong> binden Sie das Mininext-Addon über die folgende
       Anweisung ein:
     </p>
     <p><code>include("<strong>PfadZumLMO</strong>/addon/mini/lmo-mininext.php");</code></p>
     <p><strong>PfadZumLMO</strong> bezeichnet dabei den absoluten oder relativen Pfad zum LMO-Verzeichnis.</p>
     <p class="attention">
-        Benutzen Sie auf keine Fall eine URL - also <kbd>include("http://www.../lmo-mininext.php");</kbd> - damit werden 
+        Benutzen Sie auf keine Fall eine URL - also <kbd>include("http://www.../lmo-mininext.php");</kbd> - damit werden
         die Minitabellen nicht funktionieren! Geben Sie immer einen <strong>Dateipfad</strong> an.</p>
     <p class="attention">
         Falls Sie keine Sessions in Ihrer Seite benutzen, müssen sie die Zeile <code>&lt;? session_start(); ?></code> in die
         allererste Zeile Ihrer Seite einfügen!</p>
     <h4>Einbinden per IFrame</h4>
-    <p>Diese Art der Einbindung sollte nur verwendet werden, wenn obige Variante aus irgendwelchen 
-      Gründen nicht funktioniert. IFrames können nicht von allen Browsern dargestellt werden und 
-      auch aus Ergonomiegründen spricht einiges gegen ihre Verwendung. Die Parameter werden in diesem 
-      Falle nicht vorher definiert, sie sind vielmehr Teil der aufzurufenden Source-URL des eingebetteten 
-      Frames. Aus folgendem Beispiel erschließt sich die Verwendung, es hat die gleichen Parameter wie das 
+    <p>Diese Art der Einbindung sollte nur verwendet werden, wenn obige Variante aus irgendwelchen
+      Gründen nicht funktioniert. IFrames können nicht von allen Browsern dargestellt werden und
+      auch aus Ergonomiegründen spricht einiges gegen ihre Verwendung. Die Parameter werden in diesem
+      Falle nicht vorher definiert, sie sind vielmehr Teil der aufzurufenden Source-URL des eingebetteten
+      Frames. Aus folgendem Beispiel erschließt sich die Verwendung, es hat die gleichen Parameter wie das
       include-Beispiel.
     </p>
     <p><code>&lt;iframe src&#61;"<strong>URLZumLMO</strong>/addon/mini/lmo-mininext.php?file=liga1.l98&amp;amp;folder=archiv/Erste_Mannschaft"
-      frameborder="0" marginwidth="0" marginheight="0" width="<strong>Breite</strong>" 
+      frameborder="0" marginwidth="0" marginheight="0" width="<strong>Breite</strong>"
       height="<strong>Höhe</strong>" scrolling="no"&gt;&lt;/iframe&gt;</code>
     </p>
-    <p><strong>URLZumLMO</strong> bezeichnet dabei die WWW-Adresse des LMO, mit <strong>Breite</strong> 
-      und/oder <strong>Höhe</strong> müssen Sie (leider) experimentieren, eine der vielen Nachteile 
+    <p><strong>URLZumLMO</strong> bezeichnet dabei die WWW-Adresse des LMO, mit <strong>Breite</strong>
+      und/oder <strong>Höhe</strong> müssen Sie (leider) experimentieren, eine der vielen Nachteile
       von IFrames. Der erste Steuerparameter wird mit <var>?</var> abgetrennt, die restlichen mit <var>&amp;amp;</var>.
     </p>
       <a href="#top">[nach oben]</a><h3><a name="template"></a>Templates</h3>
     <p>Ähnlich wie beim LMO können Sie auch das Mininext-Addon in Struktur und Design beliebig ändern.
-      Die benötigten Templates finden Sie im Unterverzeichnis <strong>mini</strong> des 
+      Die benötigten Templates finden Sie im Unterverzeichnis <strong>mini</strong> des
       Templateverzeichnis <strong>template</strong>. Das Template <strong>mininext.tpl.php</strong>
-      wird standardmäßig benutzt, diese Einstellung können Sie in der Addonverwaltung ändern. Sie können beliebig viele 
-      unterschiedliche Templates (mit der Dateiendung .tpl.php) anlegen und per Steuerparameter 
+      wird standardmäßig benutzt, diese Einstellung können Sie in der Addonverwaltung ändern. Sie können beliebig viele
+      unterschiedliche Templates (mit der Dateiendung .tpl.php) anlegen und per Steuerparameter
       aufrufen. Folgende Angaben sind möglich und werden automatisch ersetzt:
     </p>
     <h4>Das kommende Spiel</h4>
@@ -231,7 +231,7 @@
       <dd>Datum der letzen Änderung in der Liga</dd>
       <dt><strong>&lt;!--copy--&gt;</strong></dt>
       <dd class="attention">
-          Der kleine Copyrighthinweis mit Versionsinformationen. <strong>Es ist 
+          Der kleine Copyrighthinweis mit Versionsinformationen. <strong>Es ist
           nicht erlaubt, diesen Hinweis zu ändern oder zu entfernen!</strong></dd>
     </dl>
     <h4>Bisherige Spiele der Mannschaften</h4>
@@ -244,8 +244,8 @@
       <dt>&lt;!--winTxt--&gt; &lt;!--drawTxt--&gt; &lt;!--lostTxt--&gt;</dt>
       <dd>Text für Siege Heimteam, Unentschieden, Siege Gastteam (z.B. s, u, n oder h, u, g)</dd>
       <dt>&lt;!--winWidth--&gt; &lt;!--drawWidth--&gt; &lt;!--lostWidth--&gt;</dt>
-      <dd>Breite des Balken für Siege Heimteam, Unentschieden, Siege Gastteam</dd> 
-       
+      <dd>Breite des Balken für Siege Heimteam, Unentschieden, Siege Gastteam</dd>
+
       <dt>&lt;!-- BEGIN matches --&gt;</dt>
       <dd>Der Beginn des Abschnittes für alle vorherigen Partien der Teams gegeneinander
         <strong>Beachten Sie die Leerzeichen vor BEGIN und nach matches!</strong></dd>
@@ -259,7 +259,7 @@
       <dd>Datum der Partie</dd>
       <dt>&lt;!--time--&gt;</dt>
       <dd>Zeit der Partie</dd>
-      
+
       <dt>&lt;!--hTore--&gt;</dt>
       <dd>Heimtore</dd>
       <dt>&lt;!--gTore--&gt;</dt>
@@ -302,29 +302,29 @@
     <a href="#top">[nach oben]</a>
   <h3><a name="history"></a>History</h3>
    <dl>
-      <dt>1.0</dt> 
+      <dt>1.0</dt>
 <dd>initial Release als nextGameBlock</dd>
-<dt> 1.1</dt> 
+<dt> 1.1</dt>
 <dd>Multilanguagefähig</dd>
 <dd>  ins mini*-Addon eingefügt, mininext-Addon</dd>
 <dd>  Bugfixes</dd>
 <dd>  Template entrümpelt</dd>
 <dd> Anzeige der Greedy-Ergebnisse überarbeitet</dd>
-<dt> 2.0</dt> 
+<dt> 2.0</dt>
 <dd>korrekte Anzeige Auswärts-/Heimpartien</dd>
 <dd>     zusätzlicher Block "Vorheriges Spiel"</dd>
-<dt> 2.0.1</dt> 
+<dt> 2.0.1</dt>
 <dd>Datumsformat wieder gekürzt</dd>
-<dt> 2.0.2</dt> 
+<dt> 2.0.2</dt>
 <dd>Bug beim include (Mannschaften wurden nicht erkannt) beseitigt</dd>
-<dt> 2.1.0</dt> 
+<dt> 2.1.0</dt>
 <dd>Konfigurationsdatei für Konfigurationsparameter (änderbar im Adminbereich)</dd>
 <dd>  Template jetzt auch änderbar (über GET oder vorher definiert)</dd>
 <dd>  Archivdurchsuchung abschaltbar</dd>
 <dd> Doppelrunden (also mehr als 1 Hin-/Rückrunde) werden erkannt</dd>
-<dt> 2.1.1</dt> 
+<dt> 2.1.1</dt>
 <dd>Mittel- und Kurznamen der Teams als Templatevariablen</dd>
-<dt> 2.1.2</dt> 
+<dt> 2.1.2</dt>
 <dd>UnGreedy überarbeitet</dd>
 <dd>Bug beseitigt</dd>
 <dd>CountDown zur nächsten Partie</dd>
@@ -332,7 +332,7 @@
       <a href="#top">[nach oben]</a>
       </div>
     <dl id="footer">
-      <dt>© Liga Manager Online 2004/05</dt>
+      <dt>© Liga Manager Online 2004/09</dt>
     </dl>
   </div>
 </body>
