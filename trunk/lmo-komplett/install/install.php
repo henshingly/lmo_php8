@@ -505,7 +505,7 @@ if ($lmo_install_step==2) {
           <dl><?
   $error=0;
   foreach ($filelist as $chmod=>$files) {
-    echo "<dt>chmod $chmod</dt>";
+    echo "<dt>chmod ".decoct($chmod)."</dt>";
     foreach ($files as $file) {
       echo "<dd>";
       if (strpos($file,'*')) {
@@ -513,9 +513,9 @@ if ($lmo_install_step==2) {
         while (false !== ($file2 = readdir($handle))) {
           if ($file2 != "." && $file2 != ".." && !is_dir($lmo_dir."/".dirname($file)."/$file2")) {
             if (is_writable($lmo_dir."/".dirname($file)."/$file2")) {
-              echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> ".dirname($file)."/$file2"." <small>($chmod)</small><dd>";
+              echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> ".dirname($file)."/$file2"." <small>(".decoct($chmod).")</small><dd>";
             } else {
-              echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> ".dirname($file)."/$file2"." <small>($chmod)</small><dd>";
+              echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> ".dirname($file)."/$file2"." <small>(".decoct($chmod).")</small><dd>";
               $error++;
             }
           }
@@ -523,9 +523,9 @@ if ($lmo_install_step==2) {
         }
       } else{
         if (is_writable($lmo_dir."/".$file)) {
-          echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> $file <small>($chmod)</small>";
+          echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> $file <small>(".decoct($chmod).")</small>";
         } else {
-          echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> $file <small>($chmod)</small>";
+          echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> $file <small>(".decoct($chmod).")</small>";
           $error++;
         }
       }
