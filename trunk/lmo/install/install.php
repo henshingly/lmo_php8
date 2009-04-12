@@ -20,7 +20,18 @@
 
 session_start();
 
-require_once("includes/ftp_class.php");
+if (is_readable('includes/FTP.php')) {
+  if (!function_exists("ftp_connect")) {
+    require_once 'includes/Socket.php';
+  }
+  require_once 'includes/FTP.php';
+} else {
+  if (!function_exists("ftp_connect")) {
+    require_once '../includes/Socket.php';
+  }
+  require_once '../includes/FTP.php';
+}
+
 
 if (!isset($_SESSION['ftpserver'])) {
   $_SESSION['ftpserver'] ='';
@@ -32,8 +43,8 @@ $_SESSION['userlang']=isset($_GET['userlang'])?$_GET['userlang']:(isset($_SESSIO
 $userlang = $_SESSION['userlang'];
 
 $filelist=array(
-  0777=>array('ligen','output','config','ligen/dfb','config/viewer','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
-  0666=>array('config/cfg.txt','config/lmo-auth.php','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98')
+  777=>array('ligen','output','config','ligen/dfb','config/viewer','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
+  666=>array('config/cfg.txt','config/lmo-auth.php','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98')
 );
 $lang=array(
     'DE'=>array(
@@ -252,17 +263,17 @@ if (strpos(dirname($_SERVER['SCRIPT_NAME']),"/install")!==FALSE) {
 if ($lmo_install_step==1) {
   //FTP-Daten testen
 
-  $ftp = new ftp();
+  $ftp = new Net_FTP();
   $_SESSION['ftpserver']= isset($_POST['ftpserver'])? trim($_POST['ftpserver']):(!empty($_SESSION['ftpserver'])?$_SESSION['ftpserver']:'');
   $_SESSION['ftpuser'] =   isset($_POST['ftpuser'])?   trim($_POST['ftpuser']):(!empty($_SESSION['ftpuser'])?$_SESSION['ftpuser']:'');
   $_SESSION['ftppass'] =   isset($_POST['ftppass'])?   trim($_POST['ftppass']):(!empty($_SESSION['ftppass'])?$_SESSION['ftppass']:'');
 
-  if(!$ftp->SetServer($_SESSION['ftpserver']) || !$ftp->connect()) {
+  if($ftp->connect($_SESSION['ftpserver'], 21) !== TRUE) {
     $urlerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP0_FTP_NO_CONNECTION'].'</p>';
     $lmo_install_step=0;
   } else {
-    if (!$ftp->login($_SESSION['ftpuser'], $_SESSION['ftppass'])) {
-      $ftp->quit();
+    if ($ftp->login($_SESSION['ftpuser'], $_SESSION['ftppass']) !== TRUE) {
+      $ftp->disconnect();
       $loginerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP0_FTP_NO_LOGIN'].'</p>';
       $lmo_install_step=0;
     }
@@ -279,10 +290,10 @@ if ($lmo_install_step==1) {
     } else {
       //Pfad ausgesucht -> Rechte setzen
 
-      $ftp->chdir($ftpdir);
-      if (!$ftp->is_exists("init.php")) {
+      $ftp->cd($ftpdir);
+      if (PEAR::isError($ftp->size("init.php"))) {
         //Pathtest
-        $ftp->cdup();
+        $ftp->cd('..');
         $patherror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> "'.$ftpdir.'": '.$lang[$userlang]['ERROR_WRONG_PATH'].'</p>';
         $filelist = filecollect($ftp,$_SESSION['view']);
         $lmo_install_step=1;
@@ -290,9 +301,9 @@ if ($lmo_install_step==1) {
         foreach ($filelist as $chmod=>$files) {
           foreach ($files as $file) {
             if (strpos($file,'*')) {
-              $ligen=$ftp->nlist($file);
+              $ligen=$ftp->ls(".", NET_FTP_FILES_ONLY);
               foreach ($ligen as $liga) {
-                if (substr($liga,-4)==substr($file,-4)){
+                if (substr($liga['name'],-4)==substr($file,-4)){
                   $ftp->chmod($liga,$chmod);
                 }
               }
@@ -312,7 +323,7 @@ if ($lmo_install_step==1) {
                     fclose($auth_file);
                   }
                   // Copy install/cfg.txt  if cfg.txt not exists
-                  $ftp->put (dirname(__FILE__)."/".$file, $file);
+                  $ftp->put(dirname(__FILE__)."/".$file, $file);
                   $ftp->chmod($file,$chmod);
                 } else {
                   if (strpos($file,"cfg.txt")!==FALSE) {
@@ -344,7 +355,7 @@ if ($lmo_install_step==1) {
         $lmo_install_step=2;
       }
     }
-    $ftp->quit();
+    $ftp->disconnect();
   }
 }
 
@@ -505,7 +516,7 @@ if ($lmo_install_step==2) {
           <dl><?
   $error=0;
   foreach ($filelist as $chmod=>$files) {
-    echo "<dt>chmod ".decoct($chmod)."</dt>";
+    echo "<dt>chmod ".($chmod)."</dt>";
     foreach ($files as $file) {
       echo "<dd>";
       if (strpos($file,'*')) {
@@ -513,9 +524,9 @@ if ($lmo_install_step==2) {
         while (false !== ($file2 = readdir($handle))) {
           if ($file2 != "." && $file2 != ".." && !is_dir($lmo_dir."/".dirname($file)."/$file2")) {
             if (is_writable($lmo_dir."/".dirname($file)."/$file2")) {
-              echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> ".dirname($file)."/$file2"." <small>(".decoct($chmod).")</small><dd>";
+              echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> ".dirname($file)."/$file2"." <small>(".($chmod).")</small><dd>";
             } else {
-              echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> ".dirname($file)."/$file2"." <small>(".decoct($chmod).")</small><dd>";
+              echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> ".dirname($file)."/$file2"." <small>(".($chmod).")</small><dd>";
               $error++;
             }
           }
@@ -523,9 +534,9 @@ if ($lmo_install_step==2) {
         }
       } else{
         if (is_writable($lmo_dir."/".$file)) {
-          echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> $file <small>(".decoct($chmod).")</small>";
+          echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> $file <small>(".($chmod).")</small>";
         } else {
-          echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> $file <small>(".decoct($chmod).")</small>";
+          echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> $file <small>(".($chmod).")</small>";
           $error++;
         }
       }
@@ -648,30 +659,17 @@ if ($lmo_install_step==4) {?>
 
 <?
 
-function filecollect($ftp,$dir='.') {
-
-  $ftp->chdir($dir);
-  $list=$ftp->rawlist(".", "-lA");
+function filecollect(&$ftp,$dir='.') {
+  $ftp->cd($dir);
+  $list=$ftp->ls(".", NET_FTP_DIRS_ONLY);
   if($list===false) echo "LIST FAILS!";
   else {
-    foreach($list as $k=>$v) {
-      $entry = $ftp->parselisting($v);
-      if ($entry['type'] == 'd') {
+    foreach($list as $entry) {
+      if ($entry['name'] != '.' && $entry['name'] != '..') {
         $return[]=$dir."/".$entry['name'];
       }
     }
-
   }
   return $return;
-  /*static $flist=array();
 
-  if ($files = ftp_nlist($cid,"./".$dir)){
-    foreach ($files as $file) {
-      if (ftp_size($cid, $file) == "-1")
-      $flist[] = str_replace('./','',$file);
-    }
-  }
-  return $flist;*/
 }
-
-?>
