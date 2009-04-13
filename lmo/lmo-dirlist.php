@@ -17,8 +17,8 @@
   *
   * $Id$
   */
-  
-  
+
+
 $todo=isset($_GET['todo']) && $_GET['todo']!="" ?$_GET['todo']:isset($_GET['file']) && $_GET['file']!=""?'edit':'';
 $addi=$_SERVER["PHP_SELF"]."?todo=".$todo."&amp;file=";
 
@@ -34,10 +34,10 @@ while($files=readdir($verz)){
     $sekt="";
     $datei = fopen(PATH_TO_LMO."/".$dirliga.$subdir.$files,"rb");
     if ($datei && check_hilfsadmin($files)) {
-      
+
       $ligadatei[$liga_counter]['file_date']=filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$files); //Datum
       $ligadatei[$liga_counter]['file_name']=$files;
-  
+
       $ligadatei[$liga_counter]['liga_name']="";  //Liganame
       $ligadatei[$liga_counter]['aktueller_spieltag']="";  //Aktueller Spieltag
       $ligadatei[$liga_counter]['anz_teams']="";  //Anzahl der Mannschaften
@@ -94,7 +94,7 @@ while($files=readdir($verz)){
         $ligadatei[$liga_counter]['rundenbezeichnung']="";
       }
       $liga_counter++;
-    } 
+    }
   }
 }
 closedir($verz);
@@ -107,7 +107,6 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
 <table id="ligaliste" class="lmoInner" cellspacing="0" width="99%">
   <thead>
 		<tr>
-			<th class="nobr" align="left" > &nbsp;</th>
 			<th class="nobr" align="left" title="<?php echo $text[525].' '.$text[529].' '.$text[526]?>">
         <noscript><a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=liga_name&amp;liga_sort_direction=asc" title="<?php echo $text[527].' '.$text[525].' '.$text[529].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="8" height="7" border="0" alt="&and;"></a> <?php echo $text[529]?> <a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=liga_name&amp;liga_sort_direction=desc" title="<?php echo $text[528].' '.$text[525].' '.$text[529].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/downsimple.png" width="8" height="7" border="0" alt="&or;"></a></noscript>
         <script type="text/javascript">document.write('<?php echo $text[529]?>');</script>
@@ -131,8 +130,7 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
   <tbody>
 <?php foreach($ligadatei as $liga){?>
 		<tr onMouseOver="this.className='lmoBackMarkierung';" onMouseOut="this.className=''">
-			<td class="nobr" align="left"><?php echo	HTML_smallLigaIcon($liga['file_name'],"alt=''","");?></td>
-			<td class="nobr" align="left"><a href="<?php echo $addi.$subdir.$liga['file_name']?>"><?php echo $liga['liga_name']?></a></td>
+			<td class="nobr" align="left"><?php echo	HTML_smallLigaIcon($liga['file_name'],"alt=''","");?>&nbsp;<a href="<?php echo $addi.$subdir.$liga['file_name']?>"><?php echo $liga['liga_name']?></a></td>
 			<?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
       <td class="nobr" align="left"><?php echo $liga['file_name']?> &nbsp;</td><?php
