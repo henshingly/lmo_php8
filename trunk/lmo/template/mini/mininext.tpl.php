@@ -23,7 +23,7 @@
           <td align="center"><!--homeName--></td>
         </tr>
         <tr>
-          <td align="center"><!--imgHomeBig-->&nbsp;<span class="result">&nbsp;<!--homeTore-->:<!--guestTore-->&nbsp;</span>&nbsp;<!--imgGuestBig--></td>
+          <td align="center"><!--imgHomeBig-->&nbsp;<span class="result"><!--homeTore-->&nbsp;:&nbsp;<!--guestTore--></span>&nbsp;<!--imgGuestBig--></td>
         </tr>
         <tr>
           <td align="center"><!--guestName--></td>
