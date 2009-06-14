@@ -23,7 +23,7 @@
           <td align="center"><!--homeName--></td>
         </tr>
         <tr>
-          <td align="center"><!--imgHomeBig-->&nbsp;-&nbsp;<!--imgGuestBig--></td>
+          <td align="center"><!--imgHomeBig-->&nbsp;<span class="result">&nbsp;<!--homeTore-->:<!--guestTore-->&nbsp;</span>&nbsp;<!--imgGuestBig--></td>
         </tr>
         <tr>
           <td align="center"><!--guestName--></td>
@@ -38,7 +38,7 @@
           <td align="center"><!--winCount--> / <!--drawCount--> / <!--lostCount--> (<!--winTxt-->/<!--drawTxt-->/<!--lostTxt-->)</td>
         </tr>
         <tr>
-          <th>  
+          <th>
             <table align="center" border="0" cellpadding="0" cellspacing="0">
              	<tr>
                 <th bgcolor="#009900" height="7" width="<!--winWidth-->"></th>
