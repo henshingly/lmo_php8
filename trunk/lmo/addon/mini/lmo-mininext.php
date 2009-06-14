@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,7 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  * Version 2.1.2 
+  * Version 2.1.2
   *
   * $Id$
   */
@@ -40,7 +40,7 @@ $mini_template = isset($_GET['mini_template'])
 //Nicht dokumentierte Steuerparameter für Fortgeschrittene
 $mini_withArchiv = isset($_GET['mini_withArchiv'])
                             ? ($_GET['mini_withArchiv']=='1'?1:0)
-                            : ( isset($mini_withArchiv) 
+                            : ( isset($mini_withArchiv)
                                 ? ($mini_withArchiv=='1'?1:0)
                                 : (isset($cfgarray['mini']['withArchiv'])
                                    ? $cfgarray['mini']['withArchiv']
@@ -97,7 +97,7 @@ fclose($mini_cache_counter_file);
 
 if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
   //not cached or cache limit reached -> generate new view
-  
+
   //Falls IFRAME - komplettes HTML-Dokument
   if (basename($_SERVER['PHP_SELF'])=="lmo-mininext.php") {?>
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -112,7 +112,7 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
   </head>
   <body><?php
   }
-  
+
   $template = new HTML_Template_IT($template_folder); // verzeichnis
   //$tpl = new LMO_HTML_Template_IT($tpl_folder); // verzeichnis
   $template->loadTemplatefile($mini_template);
@@ -128,7 +128,7 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
       echo getMessage($text['mini'][8],TRUE);
       exit;
     }
-  
+
     if (is_null( $team_b = $liga->teamForNumber($b)) ) {
       // Wir ermitteln den nächsten gegner von a wenn b nicht angegeben ist
       $sortedGames = gamesSortedForTeam ($liga,$team_a,false); // Nur nach der Zeit sortieren unabh. vom spieltag
@@ -151,25 +151,25 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
       } else {
         $showLastGame = TRUE;
       }
-  
+
       if($partie->heim == $team_a) {
         $team_b = $partie->gast;
       }
       else {
         $team_b = $partie->heim;
       }
-  
+
     } else { // a und b wurden angegeben also ergebnis dieser Partie anzeigen
       $partie = $liga->partieForTeams($team_a,$team_b);
       $template->setVariable("gameTxt",$text['mini'][3]);
     }
-  
+
     if (isset($partie) ) {
-  
+
       $template->setVariable("gameDate",$partie->datumString());
       $template->setVariable("gameTime",$partie->zeitString());
       $template->setVariable("ligaDatum",$text['mini'][14].": ".$liga->ligaDatumAsString("%x"));
-       
+
        $now = time();
        $gameDateTime = $partie->zeit;
        $days = floor(($gameDateTime-$now)/86400);
@@ -178,21 +178,26 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
        $rest = $rest - ($hours*3600);
        $minutes = floor($rest/60);
        $rest = $rest - ($minutes*60);
-      $template->setVariable("countDown",$text['mini'][15].": ".$days.", ".$text['mini'][16].": ".$hours.", ".$text['mini'][17].": ".$minutes); 
+      $template->setVariable("countDown",$text['mini'][15].": ".$days.", ".$text['mini'][16].": ".$hours.", ".$text['mini'][17].": ".$minutes);
 
       $template->setVariable("copy",str_replace('CLASSLIB_VERSION',CLASSLIB_VERSION,$text['mini'][0]));
       $template->setVariable("imgHomeSmall",HTML_smallTeamIcon($file,$partie->heim->name," alt=''"));
       $template->setVariable("imgHomeBig",HTML_bigTeamIcon($file,$partie->heim->name,"alt=''"));
       $template->setVariable("imgGuestSmall",HTML_smallTeamIcon($file,$partie->gast->name,"alt=''"));
       $template->setVariable("imgGuestBig",HTML_bigTeamIcon($file,$partie->gast->name,"alt=''"));
-  
+
       $template->setVariable("homeName",$partie->heim->name);
       $template->setVariable("guestName",$partie->gast->name);
       $template->setVariable("homeNameMiddle",$partie->heim->mittel);
       $template->setVariable("guestNameMiddle",$partie->gast->mittel);
       $template->setVariable("homeNameShort",$partie->heim->kurz);
       $template->setVariable("guestNameShort",$partie->gast->kurz);
-  
+
+      if (!$showLastGame) {
+        $template->setVariable("homeTore",$partie->hToreString());
+        $template->setVariable("guestTore",$partie->gToreString());
+      }
+
       //Vorherige Partie
       if (isset($lastPartie)) {
         $template->setCurrentBlock("previous");
@@ -202,25 +207,25 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
         $template->setVariable("previous_imgHomeBig",HTML_bigTeamIcon($file,$lastPartie->heim->name,"alt=''"));
         $template->setVariable("previous_imgGuestSmall",HTML_smallTeamIcon($file,$lastPartie->gast->name,"alt=''"));
         $template->setVariable("previous_imgGuestBig",HTML_bigTeamIcon($file,$lastPartie->gast->name,"alt=''"));
-  
+
         $template->setVariable("previous_homeName",$lastPartie->heim->name);
         $template->setVariable("previous_guestName",$lastPartie->gast->name);
         $template->setVariable("previous_homeNameMiddle",$lastPartie->heim->mittel);
         $template->setVariable("previous_guestNameMiddle",$lastPartie->gast->mittel);
         $template->setVariable("previous_homeNameShort",$lastPartie->heim->kurz);
         $template->setVariable("previous_guestNameShort",$lastPartie->gast->kurz);
-  
+
         $template->setVariable("previous_hTore",$lastPartie->hToreString());
         $template->setVariable("previous_gTore",$lastPartie->gToreString());
         $template->setVariable("previous_gameTxt",$text['mini'][7]);
         $template->parseCurrentBlock();
       }
-  
+
       $dataArray = array();
       $archivPaarungen = array();
       $archivSortDummy = array();
       // Partien der aktuellen Liga ermitteln
-  
+
       $spiele = $liga->allPartieForTeams($team_a,$team_b,TRUE);
       foreach($spiele as $spiel) {
         if($spiel->hTore != -1 && $spiel->gTore != -1) {
@@ -232,17 +237,17 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
           }
         }
       }
-  
+
       // Archivfolder lesen
-  
+
       if ($mini_withArchiv==1 && readLigaDir(PATH_TO_LMO.'/'.$dirliga.$archivFolder,$dataArray) == FALSE ) {
         echo getMessage($text['mini'][6]." ".PATH_TO_LMO.'/'.$dirliga.$archivFolder,TRUE);
       }
-  
+
       foreach ($dataArray as $ligaFile) {
         $newLiga = new liga();
         if($newLiga->loadFile($ligaFile['path'].$ligaFile['src'] ) == TRUE) {
-  
+
           $teamNames = $newLiga->teamNames();
           $newTeam_a = $newLiga->teamForName($team_a->name);
           $seachNames = $mini_unGreedy == 1 ? findTeamName($teamNames,$team_b->name):NULL; // ungreedy Searching
@@ -266,20 +271,20 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
                 }
               }
             }
-  
+
           }
         }
         unset($newLiga);
         //        if (count($archivPaarungen) > 10) break; // max Anzahl von Archivbegegnungen
       }
       array_multisort($archivSortDummy,SORT_DESC,$archivPaarungen);
-  
+
       $spAnzahl = count($archivPaarungen);
-  
+
       $template->setCurrentBlock("matches"); // innerer Block mit den Partien
-  
+
       $lostCount = $drawCount = $winCount = 0;
-  
+
       foreach ($archivPaarungen as $paarung) {
         $template->setVariable("date",$paarung['partie']->datumString());
         $template->setVariable("hTore",$paarung['partie']->hToreString());
@@ -320,11 +325,11 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
         }
         $template->parseCurrentBlock();
       }
-  
+
       $w = intval( $mini_barWidth * $winCount / ($spAnzahl+.1) );
       $d = intval( $mini_barWidth * $drawCount / ($spAnzahl+.1) );
       $l = intval( $mini_barWidth * $lostCount / ($spAnzahl+.1) );
-  
+
       $template->setCurrentBlock("main");
       $template->setVariable("matchesTxt",$text['mini'][4]);
       $template->setVariable("winCount",$winCount);
@@ -339,7 +344,7 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
       $template->setVariable("lostTxt",$text['mini'][11]);
     }
     $mini_output = $template->get();
-  
+
     //save cache file
     if ($mini_cache_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'.txt',"wb")) {
      fwrite($mini_cache_file,$mini_output);
@@ -349,9 +354,9 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
     $mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'_count.txt',"wb");
     fwrite($mini_cache_counter_file,"1");
     fclose($mini_cache_counter_file);
-    
+
     echo $mini_output;
-  
+
   } // if file
   else echo getMessage($text['mini'][5],TRUE);
   //Falls IFRAME - komplettes HTML-Dokument
@@ -366,7 +371,7 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
    fclose($mini_cache_file);
   }
   //increment cache counter
-  
+
   $mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'_count.txt',"wb");
   fwrite($mini_cache_counter_file,++$mini_cache_counter);
   fclose($mini_cache_counter_file);
