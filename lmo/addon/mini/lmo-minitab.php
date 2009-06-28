@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -20,18 +20,18 @@
 require_once(dirname(__FILE__).'/../../init.php');
 
 // Durch Get bestimmter Parameter (für IFRAME)
-$m_liga=       isset($_GET['mini_liga'])?             urldecode($_GET['mini_liga']):       ''; 
-$m_ueber=      isset($_GET['mini_ueber'])?            urldecode($_GET['mini_ueber']):      2;  
-$m_unter=      isset($_GET['mini_unter'])?            urldecode($_GET['mini_unter']):      2; 
-$m_template=   isset($_GET['mini_template'])?         urldecode($_GET['mini_template']):   "standard"; 
-$m_platz=      !empty($_GET['mini_platz'])?           urldecode($_GET['mini_platz']):      NULL; 
+$m_liga=       isset($_GET['mini_liga'])?             urldecode($_GET['mini_liga']):       '';
+$m_ueber=      isset($_GET['mini_ueber'])?            urldecode($_GET['mini_ueber']):      2;
+$m_unter=      isset($_GET['mini_unter'])?            urldecode($_GET['mini_unter']):      2;
+$m_template=   isset($_GET['mini_template'])?         urldecode($_GET['mini_template']):   "standard";
+$m_platz=      !empty($_GET['mini_platz'])?           urldecode($_GET['mini_platz']):      NULL;
 
 // Direkt bestimmte Parameter (für include/require)
-$m_liga=       isset($mini_liga)?             $mini_liga:       $m_liga;  
-$m_ueber=      isset($mini_ueber)?            $mini_ueber:      $m_ueber;  
-$m_unter=      isset($mini_unter)?            $mini_unter:      $m_unter; 
-$m_template=   isset($mini_template)?         $mini_template:   $m_template; 
-$m_platz=      isset($mini_platz)?            $mini_platz:      $m_platz; 
+$m_liga=       isset($mini_liga)?             $mini_liga:       $m_liga;
+$m_ueber=      isset($mini_ueber)?            $mini_ueber:      $m_ueber;
+$m_unter=      isset($mini_unter)?            $mini_unter:      $m_unter;
+$m_template=   isset($mini_template)?         $mini_template:   $m_template;
+$m_platz=      isset($mini_platz)?            $mini_platz:      $m_platz;
 
 //Falls IFRAME - komplettes HTML-Dokument
 if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
@@ -51,31 +51,31 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 /**Format of CSV-File:
   *       0     |      1            |   2   |   3   |  4   |  5   |  6  | 7 | 8  |  9 |    10    |  11       |     12
   * TeamLongName|TeamnameAbbrevation|Points+|Points-|Goals+|Goals-|Games|Win|Draw|Loss|Marking   |           |TeamShortName
-  *  Teamname   |  Kurzname         |Pkt.+  | Pkt.- |Tore+ | Tore-|Sp.  | + | o  | -  |Markierung| TeamNotiz | Mittelname  
+  *  Teamname   |  Kurzname         |Pkt.+  | Pkt.- |Tore+ | Tore-|Sp.  | + | o  | -  |Markierung| TeamNotiz | Mittelname
   */
-if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
+if (file_exists(PATH_TO_LMO.'/'.$diroutput.basename($m_liga).'-tab.csv')) {
   $template = new HTML_Template_IT( PATH_TO_TEMPLATEDIR.'/mini' );
-  $template->loadTemplatefile($m_template.".tpl.php"); 
-  
+  $template->loadTemplatefile($m_template.".tpl.php");
+
   $m_tabelle=array();
 
-  $handle = fopen (PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv',"rb");              
-  while ( ($data = fgetcsv ($handle, 1000, "|")) !== FALSE ) { 
+  $handle = fopen (PATH_TO_LMO.'/'.$diroutput.basename($m_liga).'-tab.csv',"rb");
+  while ( ($data = fgetcsv ($handle, 1000, "|")) !== FALSE ) {
     $m_tabelle[]=$data;
   }
   fclose($handle);
   $m_anzteams=count($m_tabelle);
-  
+
   for ($i=0;$i<$m_anzteams;$i++) {
     if (empty($m_platz)) {
       if (strpos($m_tabelle[$i][10],"F")!==FALSE) {
         break;
-      }  
+      }
     } else {
       $i=$m_platz-1;
       break;
     }
-  }  
+  }
   $nach_unten=$m_anzteams-$i-1-$m_unter;
   $nach_oben=$i-$m_ueber;
 
@@ -84,7 +84,7 @@ if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
     $nach_oben=$nach_oben-(-1)*$nach_unten;
     $nach_unten=0;
   }
-  
+
   if ($nach_oben<0) {
     $nach_unten=$nach_unten-(-1)*$nach_oben;
     if ($nach_unten<0) {
@@ -156,13 +156,13 @@ if (file_exists(PATH_TO_LMO.'/'.$diroutput.$m_liga.'-tab.csv')) {
     }*/
     $template->parseCurrentBlock();
   }
-  $template->setVariable("Link", URL_TO_LMO.'/?action=table&amp;file='.$m_liga); 
+  $template->setVariable("Link", URL_TO_LMO.'/?action=table&amp;file='.$m_liga);
   //$template->parse();
   $template->show();
 } else {
   echo getMessage($text['mini'][5]." ".$mini_liga,TRUE);
 }
-  
+
 //Falls IFRAME - komplettes HTML-Dokument
 if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 </body>
