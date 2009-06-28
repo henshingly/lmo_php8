@@ -50,7 +50,7 @@ if ($_SESSION['lmouserok'] == 2) {
   }
   echo "&nbsp;";
   if ($todo != "open") {
-    echo "<a href='{$adda}open&amp;subdir='.$subdir.' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";
+    echo "<a href='{$adda}open&amp;subdir=".$subdir."' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";
   } else {
     echo $text[80];
   }
