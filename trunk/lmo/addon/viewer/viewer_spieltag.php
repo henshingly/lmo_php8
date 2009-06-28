@@ -47,6 +47,15 @@ for($i=1; $i<=$anzahl_ligen; $i++) {
 
     $template->setVariable("Anfangsspieltag",$start);                     												//Ausgabe Spieltag
     $template->setVariable("Endespieltag",$ende);                      														//Ausgabe Spieltag
+    
+        //all teams
+    if ($all_teams) {
+      $team_count= count($akt_liga->teams);
+      for($x=0;$x<$team_count;$x++) {
+        $fav_team[$i][] = $x;
+      }
+    }
+    
     for ($spieltag=$start; $spieltag<=$ende; $spieltag++) {
       $akt_spieltag=$akt_liga->spieltagForNumber($spieltag);
       $template->setCurrentBlock("Inhalt");  																									//Ausgabe Inhalt Beginn
