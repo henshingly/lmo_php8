@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 function getmicrotime(){
   list($usec, $sec) = explode(" ",microtime());
@@ -30,7 +30,8 @@ if($action=="admin"){
   if(!isset($st)){$sty=0;}else{$sty=$st;}
   if(!isset($newpage)){$newpage=0;}
   $file=isset($_REQUEST['file'])?$_REQUEST['file']:"";
-  
+  $subdir=isset($_REQUEST["subdir"])?$_REQUEST["subdir"]:dirname($file)."/";
+
   if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo getMessage('Delete install folder or set its chmod to 000!',TRUE);
 ?>
 <script type="text/javascript" src="<?=URL_TO_LMO?>/js/admin.js.php"></script>
@@ -49,7 +50,7 @@ if ($_SESSION['lmouserok'] == 2) {
   }
   echo "&nbsp;";
   if ($todo != "open") {
-    echo "<a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";
+    echo "<a href='{$adda}open&amp;subdir='.$subdir.' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";
   } else {
     echo $text[80];
   }
@@ -123,7 +124,7 @@ if ($_SESSION['lmouserok'] == 2) {
     } else {
       echo $text[314];
     }
-     
+
   }
 ?>
     </td>
@@ -253,5 +254,5 @@ if ($_SESSION['lmouserok'] == 2) {
     </td>
     <td class="lmoFooter" align="right"><? echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
   </tr>
-</table><? 
+</table><?
 }?>
