@@ -28,6 +28,15 @@ for($i=1; $i<=$anzahl_ligen; $i++) {
     $template->setCurrentBlock("Liga");                                   // Äusserer Block für die Liga
     $template->setVariable("Anfangsdatum",date($multi_cfgarray['datumsformat'],zeitberechnung("2",-$multi_cfgarray['anzahl_tage_minus'])));  // Relevante Daten setzen
     $template->setVariable("Enddatum",date($multi_cfgarray['datumsformat'],zeitberechnung("2",$multi_cfgarray['anzahl_tage_plus'])));  // Relevante Daten setzen
+    
+    //all teams
+    if ($all_teams) {
+      $team_count= count($akt_liga->teams);
+      for($x=0;$x<$team_count;$x++) {
+        $fav_team[$i][] = $x;
+      }
+    }
+    
     // Sortiert nach Datum Tim's
     $sortedGames = gamesSorted($akt_liga,false);
     foreach ($sortedGames as $game) {
