@@ -50,7 +50,7 @@ $mini_withArchiv = isset($_GET['mini_withArchiv'])
 $mini_unGreedy = isset($_GET['mini_unGreedy'])
                      ? ($_GET['mini_unGreedy']=='1'?1:0)
                      : ( isset($mini_unGreedy)
-                         ? ($mini_withArchiv=='1'?1:0)
+                         ? ($mini_unGreedy=='1'?1:0)
                          :  (isset($cfgarray['mini']['unGreedy'])
                              ? $cfgarray['mini']['unGreedy']
                              : 1
