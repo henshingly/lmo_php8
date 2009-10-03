@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -17,14 +17,14 @@
   *
   * $Id$
   */
-  
+
 foreach ($fav_team[$i] as $akt_team) {
   if (isset($multi_cfgarray['modus']) && $multi_cfgarray['modus'] == 1) {
     $spieltag = $mySpieltag->nr;
   }
   $mhp_link_s=$mgp_link_s=$mhp_link_e=$mgp_link_e="";
   if (($akt_team == $myPartie->heim->nr) || ($akt_team == $myPartie->gast->nr)) {
-    
+
     //Anfang Relevante Daten
     $template->setVariable("Liganame",$akt_liga->name);
     $template->setVariable("Spieltag",$multi_cfgarray['spieltagtext']." ".$spieltag);
@@ -36,18 +36,18 @@ foreach ($fav_team[$i] as $akt_team) {
     $template->setVariable("ToreHeim",$myPartie->hToreString($multi_cfgarray['tordummy']));
     $template->setVariable("ToreGast",$myPartie->hToreString($multi_cfgarray['tordummy']));
     //Ende Relevante Daten
-    
+
     //Neu TeamIcons Heim fuer Bild alt /Anpassung Apache2
     $Heim=$myPartie->heim->name;
     $Gast=$myPartie->gast->name;
-    $template->setVariable("Iconheim",getSmallImage($Heim));
-    $template->setVariable("Icongast",getSmallImage($Gast));
-    $template->setVariable("IconBigheim",getBigImage($Heim));
-    $template->setVariable("IconBiggast",getBigImage($Gast));
-    $template->setVariable("IconBigheimalt",getBigImage($Heim,"TeamIcon $Heim"));
-    $template->setVariable("IconBiggastalt",getBigImage($Gast,"TeamIcon $Gast"));
+    $template->setVariable("Iconheim",HTML_smallTeamIcon($file,$Heim," alt=''"));
+    $template->setVariable("Icongast",HTML_smallTeamIcon($file,$Gast," alt=''"));
+    $template->setVariable("IconBigheim",HTML_bigTeamIcon($file,$Heim," alt=''"));
+    $template->setVariable("IconBiggast",HTML_bigTeamIcon($file,$Gast," alt=''"));
+    $template->setVariable("IconBigheimalt",HTML_bigTeamIcon($file,$Heim," alt='TeamIcon $Heim'"));
+    $template->setVariable("IconBiggastalt",HTML_bigTeamIcon($file,$Gast," alt='TeamIcon $Gast'"));
     //Ende TeamIcons
-    
+
     $mhp_link_s="";
     $mhp_link_e="";
     $mgp_link_s="";
@@ -63,7 +63,7 @@ foreach ($fav_team[$i] as $akt_team) {
         $mgp_link_e='</a>';
       }
     }//Ende HP verlinken
-    
+
     //Favteam hervorheben
     if (isset($multi_cfgarray['favteam_highlight']) && $multi_cfgarray['favteam_highlight']==1) {
       if ($myPartie->heim->nr == $akt_liga->options->keyValues['favTeam']) {
@@ -75,7 +75,7 @@ foreach ($fav_team[$i] as $akt_team) {
         $mgp_link_e.='</strong>';
       }
     }//Ende Favteam hervorheben
-    
+
     //Trotz Konfigwert auch andere Variablen zur Verfügung stellen
     $template->setVariable("HeimKurz",$myPartie->heim->kurz);
     $template->setVariable("GastKurz",$myPartie->gast->kurz);
@@ -94,14 +94,14 @@ foreach ($fav_team[$i] as $akt_team) {
       $template->setVariable("Heim",$mhp_link_s.$myPartie->heim->name.$mhp_link_e);
       $template->setVariable("Gast",$mgp_link_s.$myPartie->gast->name.$mgp_link_e);
     }	//Ende Mannschaftsnamen
-    
+
     //Anfang Notitz
     if (trim($myPartie->notiz)!="") {
       $icon=URL_TO_IMGDIR."/viewer/".$multi_cfgarray['notizsymbol'];
       $ntext='<a href="#" title="'.$myPartie->notiz.'" onclick="alert(\''.$text[22].': '.$myPartie->notiz.'\');window.focus();return false;"><img src="'.$icon.'" border="0" alt=""></a>';
       $template->setVariable("Notiz",$ntext);
     }//Ende Notiz
-    
+
     //Anfang Tabelle verlinken
     $table_link=URL_TO_LMO.'/lmo.php?file='.$fav_liga[$i]."&amp;action=table&amp;st=".$spieltag;
     if ($multi_cfgarray['tabelle_verlinken']=='1' ) {
@@ -111,7 +111,7 @@ foreach ($fav_team[$i] as $akt_team) {
     }
     $template->setVariable("Tabellenlink",$tlink);
     //Ende Tabelle
-    
+
     //Anfang Spielbericht
     $SpBer_link=$myPartie->reportUrl;
     if ($SpBer_link != "") {
@@ -122,7 +122,7 @@ foreach ($fav_team[$i] as $akt_team) {
       }
       $template->setVariable("Spielbericht", $tlink);
     }//Ende Spielbericht
-    
+
     //Anfang Spiele Heute hervorheben
     if ($multi_cfgarray['heute_highlight']==1) {
       if ($myPartie->zeit > zeitberechnung("2",-1) && $myPartie->zeit < zeitberechnung("2",0))  {
@@ -131,7 +131,7 @@ foreach ($fav_team[$i] as $akt_team) {
         $template->setvariable("Zeilenklasse","vRow");
       }
     }		//Ende Sp.
-    
+
   }
 }
 $template->parseCurrentBlock();
