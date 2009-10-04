@@ -190,7 +190,7 @@ define('NET_FTP_ERR_MDTM_FAILED', -10);
  * Error code to indicate that a date returned by the server was misformated
  * A date string returned by your server seems to be missformated and could not be
  * parsed. Check that the server is configured correctly. If you're sure, please
- * send an email to the auhtor with a dumped output of 
+ * send an email to the auhtor with a dumped output of
  * $ftp->ls('./', NET_FTP_RAWLIST); to get the date format supported.
  *
  * @since 1.3
@@ -553,7 +553,7 @@ class Net_FTP extends PEAR
      * @since   1.3
      */
     var $_timeout = 90;
-        
+
     /**
      * Saves file-extensions for ascii- and binary-mode
      *
@@ -581,7 +581,7 @@ class Net_FTP extends PEAR
      * @since   1.3
      */
     var $_ls_match = null;
-    
+
     /**
      * matcher
      * Stores the matcher for the current connection
@@ -591,9 +591,9 @@ class Net_FTP extends PEAR
      * @since   1.3
      */
     var $_matcher = null;
-    
+
     /**
-     * Holds all Net_FTP_Observer objects 
+     * Holds all Net_FTP_Observer objects
      * that wish to be notified of new messages.
      *
      * @var     array
@@ -609,7 +609,7 @@ class Net_FTP extends PEAR
      * and the $port will be left at 21. You have to set the $host manualy before
      * trying to connect or with the connect() method.
      *
-     * @param string $host    (optional) The hostname 
+     * @param string $host    (optional) The hostname
      * @param int    $port    (optional) The port
      * @param int    $timeout (optional) Sets the standard timeout
      *
@@ -629,11 +629,11 @@ class Net_FTP extends PEAR
         $this->_timeout                     = $timeout;
         $this->_file_extensions[FTP_ASCII]  = array();
         $this->_file_extensions[FTP_BINARY] = array();
-        
+
         $this->_ls_match = array(
             'unix'    => array(
-                'pattern' => '/(?:(d)|.)([rwxts-]{9})\s+(\w+)\s+([\w\d-()?.]+)\s+'.
-                             '([\w\d-()?.]+)\s+(\w+)\s+(\S+\s+\S+\s+\S+)\s+(.+)/',
+                'pattern' => '/(?:(d)|.)([rwxts-]{9})\s+(\w+)\s+([\w\d\-\(\)\?\.\@]+)\s+'.
+                             '([\w\d\-\(\)\?\.\@]+)\s+(\w+)\s+(\S+\s+\S+\s+\S+)\s+(.+)/',
                 'map'     => array(
                     'is_dir'        => 1,
                     'rights'        => 2,
@@ -707,10 +707,10 @@ class Net_FTP extends PEAR
 
     /**
      * This logs you into the ftp-server. You are free to specify username and
-     * password in this method. If you specify it, the values will be taken into 
+     * password in this method. If you specify it, the values will be taken into
      * the corresponding attributes, if do not specify, the attributes are taken.
      *
-     * @param string $username (optional) The username to use 
+     * @param string $username (optional) The username to use
      * @param string $password (optional) The password to use
      *
      * @access public
@@ -977,7 +977,7 @@ class Net_FTP extends PEAR
                 if ($dir_entry['name'] == '.' || $dir_entry['name'] == '..') {
                     continue;
                 }
-                
+
                 $remote_path_new = $remote_path.$dir_entry["name"]."/";
 
                 // Chmod the directory we're about to enter
@@ -1029,7 +1029,7 @@ class Net_FTP extends PEAR
      * @return bool $res True on success, otherwise PEAR::Error
      * @see NET_FTP_ERR_RENAME_FAILED
      */
-    function rename ($remote_from, $remote_to) 
+    function rename ($remote_from, $remote_to)
     {
         $res = @ftp_rename($this->_handle, $remote_from, $remote_to);
         if (!$res) {
@@ -1051,7 +1051,7 @@ class Net_FTP extends PEAR
     function _makeDirPermissions($permissions)
     {
         $permissions = (string)$permissions;
-        
+
         // going through (user, group, world)
         for ($i = 0; $i < strlen($permissions); $i++) {
             // Read permission is set but execute not yet
@@ -1073,7 +1073,7 @@ class Net_FTP extends PEAR
      * $format is specified, a preformated timestring.
      *
      * @param string $file   The file to check
-     * @param string $format (optional) The format to give the date back 
+     * @param string $format (optional) The format to give the date back
      *                       if not set, it will return a Unix timestamp
      *
      * @access public
@@ -1162,7 +1162,7 @@ class Net_FTP extends PEAR
      * Files:<br>
      *           ["name"]        =>  string The name of the file<br>
      *           ["size"]        =>  int Size in bytes<br>
-     *           ["rights"]      =>  string The rights of the file (in style 
+     *           ["rights"]      =>  string The rights of the file (in style
      *                               "rwxr-xr-x")<br>
      *           ["user"]        =>  string The owner of the file<br>
      *           ["group"]       =>  string The group-owner of the file<br>
@@ -1553,11 +1553,11 @@ class Net_FTP extends PEAR
         } else {
             $ext = substr($filename, $pos + 1);
         }
-        
+
         if (isset($this->_file_extensions[$ext])) {
             return $this->_file_extensions[$ext];
         }
-        
+
         return $this->_mode;
     }
 
@@ -1692,7 +1692,7 @@ class Net_FTP extends PEAR
      * @return bool True on success, otherwise PEAR::Error
      * @see NET_FTP_ERR_TIMEOUTLESSZERO, NET_FTP_ERR_SETTIMEOUT_FAILED
      */
-    function setTimeout ( $timeout = 0 ) 
+    function setTimeout ( $timeout = 0 )
     {
         if (!is_int($timeout) || ($timeout < 0)) {
             return PEAR::raiseError('Timeout '.$timeout.
@@ -1710,7 +1710,7 @@ class Net_FTP extends PEAR
                                     NET_FTP_ERR_SETTIMEOUT_FAILED);
         }
         return true;
-    }        
+    }
 
     /**
      * Adds an extension to a mode-directory
@@ -1736,7 +1736,7 @@ class Net_FTP extends PEAR
     }
 
     /**
-     * This function removes an extension from the mode-directories 
+     * This function removes an extension from the mode-directories
      * (described above).
      *
      * @param string $ext The extension to remove
@@ -1753,9 +1753,9 @@ class Net_FTP extends PEAR
 
     /**
      * This get's both (ascii- and binary-mode-directories) from the given file.
-     * Beware, if you read a file into the mode-directory, all former set values 
+     * Beware, if you read a file into the mode-directory, all former set values
      * will be unset!
-     * 
+     *
      * Example file contents:
      * [ASCII]
      * asc = 0
@@ -1776,32 +1776,32 @@ class Net_FTP extends PEAR
             return $this->raiseError("Extensions-file '$filename' does not exist",
                                      NET_FTP_ERR_EXTFILENOTEXIST);
         }
-        
+
         if (!is_readable($filename)) {
             return $this->raiseError("Extensions-file '$filename' is not readable",
                                      NET_FTP_ERR_EXTFILEREAD_FAILED);
         }
-        
+
         $exts = @parse_ini_file($filename, true);
         if (!is_array($exts)) {
             return $this->raiseError("Extensions-file '$filename' could not be".
                 "loaded", NET_FTP_ERR_EXTFILELOAD_FAILED);
         }
-        
+
         $this->_file_extensions = array();
-        
+
         if (isset($exts['ASCII'])) {
             foreach ($exts['ASCII'] as $ext => $bogus) {
                 $this->_file_extensions[$ext] = FTP_ASCII;
             }
         }
-        
+
         if (isset($exts['BINARY'])) {
             foreach ($exts['BINARY'] as $ext => $bogus) {
                 $this->_file_extensions[$ext] = FTP_BINARY;
             }
         }
-        
+
         return true;
     }
 
@@ -1894,13 +1894,13 @@ class Net_FTP extends PEAR
     function getTimeout()
     {
         return ftp_get_option($this->_handle, FTP_TIMEOUT_SEC);
-    }    
+    }
 
     /**
-     * Adds a Net_FTP_Observer instance to the list of observers 
+     * Adds a Net_FTP_Observer instance to the list of observers
      * that are listening for messages emitted by this Net_FTP instance.
      *
-     * @param object &$observer The Net_FTP_Observer instance to attach 
+     * @param object &$observer The Net_FTP_Observer instance to attach
      *                         as a listener.
      *
      * @return boolean True if the observer is successfully attached.
@@ -1920,7 +1920,7 @@ class Net_FTP extends PEAR
     /**
      * Removes a Net_FTP_Observer instance from the list of observers.
      *
-     * @param object $observer The Net_FTP_Observer instance to detach 
+     * @param object $observer The Net_FTP_Observer instance to detach
      *                         from the list of listeners.
      *
      * @return boolean True if the observer is successfully detached.
@@ -1940,13 +1940,13 @@ class Net_FTP extends PEAR
 
     /**
      * Informs each registered observer instance that a new message has been
-     * sent.                                                                
-     *                                                                      
+     * sent.
+     *
      * @param mixed $event A hash describing the net event.
-     *  
-     * @access private                                                     
-     * @since 1.3      
-     * @return void                                                   
+     *
+     * @access private
+     * @since 1.3
+     * @return void
      */
     function _announce($event)
     {
@@ -2014,7 +2014,7 @@ class Net_FTP extends PEAR
             $file = $actual_dir.$file;
         }
         $res = @ftp_delete($this->_handle, $file);
-        
+
         if (!$res) {
             return $this->raiseError("Could not delete file '$file'.",
                                      NET_FTP_ERR_DELETEFILE_FAILED);
@@ -2172,14 +2172,14 @@ class Net_FTP extends PEAR
             return PEAR::raiseError('Could not get raw directory listing.',
                                     NET_FTP_ERR_RAWDIRLIST_FAILED);
         }
-        
+
         foreach ($dir_list AS $k=>$v) {
             if (strncmp($v, 'total: ', 7) == 0 && preg_match('/total: \d+/', $v)) {
                 unset($dir_list[$k]);
                 break; // usually there is just one line like this
             }
         }
-        
+
         // Handle empty directories
         if (count($dir_list) == 0) {
             return array('dirs' => $dirs_list, 'files' => $files_list);
@@ -2190,7 +2190,7 @@ class Net_FTP extends PEAR
         if (count($dirs_list) == 1 && $dirs_list[0] == 'total 0') {
             return array('dirs' => array(), 'files' => $files_list);
         }
-        
+
         if (!isset($this->_matcher) || PEAR::isError($this->_matcher)) {
             $this->_matcher = $this->_determineOSMatch($dir_list);
             if (PEAR::isError($this->_matcher)) {
