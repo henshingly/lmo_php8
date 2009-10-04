@@ -460,17 +460,17 @@ if ($_SESSION['lmouserok'] > 0) {
     // Anzahl gleicher gewonnener Spiele und torreichstes Spiel- Ende
 
     //Serienauswertung
-    $akt_gewonnen = 0; $team_akt_gewonnen = '';
-    $akt_ungeschlagen = 0; $team_akt_ungeschlagen = '';
-    $akt_unentschieden = 0; $team_akt_unentschieden = '';
-    $akt_sieglos = 0; $team_akt_sieglos = '';
-    $akt_verloren = 0; $team_akt_verloren = '';
+    $akt_gewonnen = 0; $team_akt_gewonnen = array();
+    $akt_ungeschlagen = 0; $team_akt_ungeschlagen = array();
+    $akt_unentschieden = 0; $team_akt_unentschieden = array();
+    $akt_sieglos = 0; $team_akt_sieglos = array();
+    $akt_verloren = 0; $team_akt_verloren = array();
 
-    $max_gewonnen = 0; $team_max_gewonnen = '';
-    $max_ungeschlagen = 0; $team_max_ungeschlagen = '';
-    $max_unentschieden = 0; $team_max_unentschieden = '';
-    $max_sieglos = 0; $team_max_sieglos = '';
-    $max_verloren = 0; $team_max_verloren = '';
+    $max_gewonnen = 0; $team_max_gewonnen = array();
+    $max_ungeschlagen = 0; $team_max_ungeschlagen = array();
+    $max_unentschieden = 0; $team_max_unentschieden = array();
+    $max_sieglos = 0; $team_max_sieglos = array();
+    $max_verloren = 0; $team_max_verloren = array();
 
     foreach ($serie as $team=>$team_serien) {
     	if ($team_serien['gewonnen']>$akt_gewonnen) {
