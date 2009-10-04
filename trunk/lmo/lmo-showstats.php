@@ -17,8 +17,8 @@
   *
   * $Id$
   */
-  
-  
+
+
 if($file!=""){
   $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
   $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
@@ -43,7 +43,7 @@ if($file!=""){
     } else {
       echo $teamk[$i];
     }     ?></acronym>
-          </td>          
+          </td>
           <td><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
         </tr><?php
   }?>
@@ -72,7 +72,7 @@ if($file!=""){
       }?>
           </th><?php
       if($show_stat2>0 && $show_stat1!=$show_stat2){ ?>
-          <th align="left"><?php echo $teams[$show_stat2];?></th><?php 
+          <th align="left"><?php echo $teams[$show_stat2];?></th><?php
       }?>
         </tr>
 <?php
@@ -115,7 +115,7 @@ if($file!=""){
     } else {
       $serie2=$ser4[$show_stat2]." ".$text[76];
     }
-  
+
 
 ?>
         <tr>
@@ -193,7 +193,7 @@ if ($file && (!isset($liga) || !is_object($liga) || $liga->fileName != $file)) {
 	$liga = new liga();
 	$ligaLoaded = $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file);
 }
- 
+
 if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
 	$table = $liga->calcTable($liga->spieltageCount());
 	$team_a = new team();
@@ -204,7 +204,7 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
 	$rstPrgPlus_b = 0;
 	$faktor = $liga->teamCount();
 	$sortedGames_a = array();
-	$sortedGames_b = array();	  
+	$sortedGames_b = array();
 	$sortedGames_a = gamesSortedForTeam ($liga,$team_a,false);
 	echo "<!-- OUTPUT Restprogramm START-->";
 	echo "<tr><td align=\"right\" valign=\"top\">";
@@ -213,7 +213,7 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
 		$pos = 1;
 		if ( $result == -1 ) {
 			// aktuelle Tabellenposition ermitteln
-			if ($game_a['partie']->heim == $team_a) 
+			if ($game_a['partie']->heim == $team_a)
 				$gegner_a = &$game_a['partie']->gast;
 			else
 				$gegner_a = &$game_a['partie']->heim;
@@ -224,8 +224,8 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
 			}
 			$rstPrgPlus_a += $position["pPkt"];
 			$rstPrgMinus_a += $position["mPkt"];
-			
-			if ($game_a['partie']->heim == $team_a) 
+
+			if ($game_a['partie']->heim == $team_a)
 				echo $text[73]."&nbsp;".$gegner_a->name;
 			else
 				echo $text[74]."&nbsp;".$gegner_a->name;
@@ -246,20 +246,20 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
 			$pos = 1;
 			if ( $result == -1) {
 				// aktuelle Tabellenposition ermitteln
-				if ($game_b['partie']->heim == $team_b) 
+				if ($game_b['partie']->heim == $team_b)
 					$gegner_b = &$game_b['partie']->gast;
 				else
 					$gegner_b = &$game_b['partie']->heim;
-	
+
 				foreach ( $table as $position ) {
 					if ($position['team'] == $gegner_b) break;
 					$pos ++;
 				}
 				$rstPrgPlus_b += $position["pPkt"];
 				$rstPrgMinus_b += $position["mPkt"];
-	
+
 				echo "(".$pos.".)&nbsp;";
-				if ($game_b['partie']->heim == $team_b) 
+				if ($game_b['partie']->heim == $team_b)
 					echo $gegner_b->name."&nbsp;".$text[73];
 				else
 					echo $gegner_b->name."&nbsp;".$text[74];
@@ -279,19 +279,19 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
 		else {
 			$text_a = $text_b = $text[4024];
 		}
-		
+
 	}
 	echo "</td></tr>";
-	
+
 	if (isset($team_b) and is_object($team_b) ) {
-		echo "<tr><th colspan=\"3\">$text[4021]</th></tr>";	
+		echo "<tr><th colspan=\"3\">$text[4021]</th></tr>";
 		echo "<tr><td align=\"right\">";
 		echo $rstPrgPlus_a.":".$rstPrgMinus_a." (".($rstPrg_a>0?"+".$rstPrg_a:$rstPrg_a).")";
 		echo "</td><th valign=\"top\">$text[4022]</th>";
 		echo "<td align=\"left\">";
 		echo $rstPrgPlus_b.":".$rstPrgMinus_b." (".($rstPrg_b>0?"+".$rstPrg_b:$rstPrg_b).")";
 		echo "</td></tr>";
-		echo "<tr><td align=\"right\">".$text_a."</td><th valign=\"top\">$text[4023]</th><td align=\"left\">".$text_b."</td></tr>";	
+		echo "<tr><td align=\"right\">".$text_a."</td><th valign=\"top\">$text[4023]</th><td align=\"left\">".$text_b."</td></tr>";
 	}
 	echo "<!-- OUTPUT Restprogramm ENDE-->";
  } // loadFile
@@ -411,7 +411,7 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
         </tr><?php
   	    if ($counteranz1>2) {
   	      $counteranz4=$counteranz1-2;?>
-        <tr> 
+        <tr>
           <td>&nbsp;</td>
           <td colspan="3" align="right"><small><?php echo $text[4015]?><?php echo $counteranz4?><?php echo $text[4016]?></small></td>
         </tr><?php
@@ -441,6 +441,57 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
          </tr><?php
       	}
       }
+    }
+    if (isset($akt_gewonnen)) {?>
+        <tr>
+          <th colspan="4" align="center"><?php echo $text[574]?></th>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <table width="100%" cellpadding="3" cellspacing="0">
+              <tr>
+                <th>&nbsp;</th>
+                <th colspan="2"><?php echo $text[580]?></th>
+                <th colspan="2"><?php echo $text[581]?></th>
+              </tr>
+              <tr>
+                <th><?php echo $text[575]?></th>
+                <td align="right" class="lmoTabelleMeister"><strong><?php echo $akt_gewonnen?></strong>&nbsp;</td>
+                <td class="lmoTabelleMeister"><?php echo nl2br($team_akt_gewonnen)?></td>
+                <td align="right" class="lmoTabelleMeister"><strong><?php echo $max_gewonnen?></strong>&nbsp;</td>
+                <td class="lmoTabelleMeister"><?php echo nl2br($team_max_gewonnen)?></td>
+              </tr>
+              <tr>
+                <th><?php echo $text[576]?></th>
+                <td align="right" class="lmoTabelleUefa"><strong><?php echo $akt_ungeschlagen?></strong>&nbsp;</td>
+                <td class="lmoTabelleUefa"><?php echo nl2br($team_akt_ungeschlagen)?></td>
+                <td align="right" class="lmoTabelleUefa"><strong><?php echo $max_ungeschlagen?></strong>&nbsp;</td>
+                <td class="lmoTabelleUefa"><?php echo nl2br($team_max_ungeschlagen)?></td>
+              </tr>
+              <tr>
+                <th><?php echo $text[577]?></th>
+                <td align="right"><strong><?php echo $akt_unentschieden?></strong>&nbsp;</td>
+                <td><?php echo nl2br($team_akt_unentschieden)?></td>
+                <td align="right"><strong><?php echo $max_unentschieden?></strong>&nbsp;</td>
+                <td><?php echo nl2br($team_max_unentschieden)?></td>
+              </tr>
+              <tr>
+                <th><?php echo $text[578]?></th>
+                <td align="right" class="lmoTabelleRelegation"><strong><?php echo $akt_sieglos?></strong>&nbsp;</td>
+                <td class="lmoTabelleRelegation"><?php echo nl2br($team_akt_sieglos)?></td>
+                <td align="right" class="lmoTabelleRelegation"><strong><?php echo $max_sieglos?></strong>&nbsp;</td>
+                <td class="lmoTabelleRelegation"><?php echo nl2br($team_max_sieglos)?></td>
+              </tr>
+              <tr>
+                <th><?php echo $text[579]?></th>
+                <td align="right" class="lmoTabelleAbsteiger"><strong><?php echo $akt_verloren?></strong>&nbsp;</td>
+                <td class="lmoTabelleAbsteiger"><?php echo nl2br($team_akt_verloren)?></td>
+                <td align="right" class="lmoTabelleAbsteiger"><strong><?php echo $max_verloren?></strong>&nbsp;</td>
+                <td class="lmoTabelleAbsteiger"><?php echo nl2br($team_max_verloren)?></td>
+              </tr>
+            </table>
+          </td>
+        </tr><?
     }?>
       </table>
     </td>
