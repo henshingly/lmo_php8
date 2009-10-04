@@ -163,6 +163,8 @@ if ($_SESSION['lmouserok'] == 2) {
         require(PATH_TO_LMO."/lmo-adminteams.php");
       } elseif($sty == -3) {
         require(PATH_TO_LMO."/lmo-adminanz.php");
+      } elseif($sty==-10){
+        require(PATH_TO_LMO."/lmo-adminrounds.php");
       }
       /*Spielerstatistik-Addon*/
       elseif($sty == -4 && $einspieler == 1) {
@@ -219,6 +221,8 @@ if ($_SESSION['lmouserok'] == 2) {
         require(PATH_TO_LMO."/lmo-adminteams.php");
       } elseif($sty == -3 && $_SESSION['lmouserokerweitert'] == 1) {
         require(PATH_TO_LMO."/lmo-adminanz.php");
+      } elseif($sty==-10){
+        require(PATH_TO_LMO."/lmo-adminrounds.php");
       }
       /*Spielerstatistik-Addon*/
       elseif($sty == -4 && $einspieler == 1) {
