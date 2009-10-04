@@ -257,12 +257,12 @@ if ($_SESSION['lmouserok'] > 0) {
               }
             } else {
               $serie[$gastteam]['sieglos'] = 0;
-              $serie[$gastteam]['max_sieglos']['count'] = !isset($serie[$gastteam]['max_sieglos']['count'])?0:$serie[$gastteam]['max_sieglos']['count'];
-              if (isset($serie[$gastteam]['sieglos']) && $serie[$gastteam]['sieglos']>=$serie[$gastteam]['max_sieglos']['count']) {
-                //neues maximum setzen
-                $serie[$gastteam]['max_sieglos']['count'] = $serie[$gastteam]['sieglos'];
-                $serie[$gastteam]['max_sieglos']['st'] = $y1-($serie[$gastteam]['max_sieglos']['count']-1)."-".$y1;
-              }
+            }
+            $serie[$gastteam]['max_sieglos']['count'] = !isset($serie[$gastteam]['max_sieglos']['count'])?0:$serie[$gastteam]['max_sieglos']['count'];
+            if (isset($serie[$gastteam]['sieglos']) && $serie[$gastteam]['sieglos']>=$serie[$gastteam]['max_sieglos']['count']) {
+              //neues maximum setzen
+              $serie[$gastteam]['max_sieglos']['count'] = $serie[$gastteam]['sieglos'];
+              $serie[$gastteam]['max_sieglos']['st'] = $y1-($serie[$gastteam]['max_sieglos']['count']-1)."-".$y1;
             }
             //Serien verloren
             if ($serien_array[$heimteam][$y1-1]<0) {
