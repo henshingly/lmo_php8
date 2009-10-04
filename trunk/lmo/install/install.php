@@ -248,7 +248,51 @@ $lang=array(
       'STEP4_TEXT6'=>'Bon courage!',
 
 
-    )
+    ),
+  'ES'=>array(
+      'HEADER'=>'Installación de Liga Manager Online 4',
+      'PROCEED'=>'Proceder',
+      'SUCCESS'=>'Exitoso',
+      'ERROR'=>'Error',
+      'CHECK_AGAIN'=>'Intenta otra vez',
+      'ERROR_WRONG_PATH'=>'Directorio incorrecto!',
+      'ERROR_CONFIRM'=>'Aun hay errores! Continuar?',
+
+      'STEP0'=>'Datos de conexión FTP',
+      'STEP0_DESCRIPTION'=>'Para instalar LMO automaticamente debe insertar sus datos de la conexión FTP. Datos no guardados ni publicados. Si desea instalar manualmente use <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">este link</a>.',
+      'STEP0_FTP_SERVER'=>'Dirección servidor FTP',
+      'STEP0_FTP_SERVER_EXAMPLE'=>'ej.: <em><kbd>ftp.ejemplo.com</kbd></em>',
+      'STEP0_FTP_LOGIN'=>'Ingrese su nombre de usuario y contraseña',
+      'STEP0_FTP_NO_CONNECTION'=>'No se puede establecer conección a "'.$_SESSION['ftpserver'].'". Por favor corrija la dirección del servidor o <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">instale manualmente</a>',
+      'STEP0_FTP_NO_LOGIN'=>'Error en conección. Por favor corrija los datos de usuario o <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">instale manualmente</a>',
+
+      'STEP1'=>'Seleccione la carpeta de LMO',
+      'STEP1_SELECT_FTP_DIR'=>'Seleccione por favor su carpeta de LMO',
+
+      'STEP2'=>'Archivos CHMOD',
+      'STEP2_MANUAL'=>'Por favor dele permisos chmod a estos archivos con su herramienta FTP y presione <a href="#" onclick="location.reload();return false;">[Recargar]</a> para un chequeo. <a href="'.$_SERVER['PHP_SELF'].'">volver a la instalación automática</a>',
+
+      'STEP3'=>'Cree el archivo de configuración',
+      'STEP3_PATH'=>'Por favor ingrese el <strong>directorio absoluto</strong> a LMO',
+      'STEP3_PATH_EXAMPLE'=>'ej.: <em><kbd>/home/www/htdocs/lmo</kbd></em>',
+      'STEP3_PATH_CORRECT'=>'El directorio parece ser correcto!',
+      'STEP3_PATH_WRONG'=>'El directorio parece ser incorrecto!',
+      'STEP3_URL'=>'Por favor ingrese la <strong>URL absoluta</strong> a LMO',
+      'STEP3_URL_EXAMPLE'=>'ej.: http://www.ejemplo.com/lmo',
+      'STEP3_URL_CORRECT'=>' Si usted puede ver una imagen delante de este mensaje entonces la URL es correcta!',
+      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'No se puede abrir init-parameters.php! Por favor cambie los permisos del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta página para repetir el chequeo.',
+      'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'No se puede guardar la configuración! Por favor aseguresé que el archivo <code>init-parameters.php</code> tiene permisos chmod de 666. Por favor cambie los permisos chmod del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta página para repetir el chequeo.',
+      'STEP3_SUCCESS_INI_FILE'=>'Configuración guardada con éxito',
+
+
+      'STEP4'=>'Instalación exitosa',
+      'STEP4_TEXT1'=>'Liga Manager Online 4 instalada exitosamente!',
+      'STEP4_TEXT2'=>'Si usted experimenta errores repita la instalación o instale manualmente. Para instalar manualmente edite el archivo <code>init-parameters.php</code> con un editor de textos común y cambie los permisos chmod de los archivos con su herramienta FTP.',
+      'STEP4_TEXT3'=>'Por favor elimine el archivo <code>install.php</code> o cambie los permisos chmod a 000.',
+      'STEP4_TEXT4'=>'<acronym title="Liga Manager Online">LMO</acronym> ahora está disponible en <code><a href="lmo.php">lmo.php</a></code>. El área de la administración está disponible en <code><a href="lmoadmin.php">lmoadmin.php</a></code> (la conexión estándar es <kbd>admin</kbd>/<kbd>lmo</kbd>).',
+      'STEP4_TEXT5'=>'Por favor consulte el <a href="http://www.liga-manager-online.de/">manual en nuestro sitio web</a> para obtener ayuda.',
+      'STEP4_TEXT6'=>'Disfrútalo!',
+  )
 
 );
 
@@ -684,6 +728,9 @@ if ($lmo_install_step==4) {?>
     </div>
     <div class="w3cbutton3">
     <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=EN"><img src="img/English.gif" alt="EN" width="16"></a>
+    </div>
+    <div class="w3cbutton3">
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=ES"><img src="img/Espanol.gif" alt="ES" width="16"></a>
     </div>
     <div class="w3cbutton3">
     <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=DE"><img src="img/Deutsch.gif" alt="DE" width="16"></a>
