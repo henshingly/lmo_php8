@@ -115,7 +115,7 @@ function getMessage($message,$error=FALSE) {
 
 function getLangSelector() {
   $output_sprachauswahl ='';
-  
+
   $handle=opendir (PATH_TO_LANGDIR);
   while (false!==($f=readdir($handle))) {
     if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
@@ -130,6 +130,9 @@ function getLangSelector() {
     }
   }
   closedir($handle);
+  if ($_SESSION['lmouserok']=='2') {
+    $output_sprachauswahl .= "&nbsp<a href='".URL_TO_LMO."/lang/translate.php'> » ".$GLOBALS['text'][573]."</a>";
+  }
   return $output_sprachauswahl;
 }
 
