@@ -1,6 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
   <title>Hilfe Einstiegsinformationen</title>
@@ -9,98 +8,70 @@
 <script type="text/javascript">
 </script>
 </head>
-
 <body>
   <div id="container">
     <div id="header">
-      <a href="http://www.liga-manager-online.de/"><img src="../media/logo_lmo.gif" alt="Liga Manager Online" width="492" height="48"
-      border="0"></a>
+      <div id="banner">
+        <a href="http://www.liga-manager-online.de/"><img src="../media/trans.gif" alt="" width="100%" height="160"></a>
+      </div>
+      <div id="back"></div>
+      <div id="urhere"></div>
     </div>
-
-    <div id="back"></div>
-
-    <div id="urhere"></div>
-
     <div id="navi">
       <ul>
         <li id="flags"></li>
       </ul>
-
       <div class="navigation">
         <ul>
           <li>
             <a class="active" href="index.html">Hilfe</a>
-
             <ul>
               <li><a class="active" href="einstiegsinformationen.html">Einstiegsinformationen</a></li>
-
               <li><a class="page" href="optionen.html">Optionen</a></li>
-
               <li><a class="page" href="bearbeiten_einer_liga.html">Bearbeiten einer Liga</a></li>
-
               <li><a class="page" href="dateifunktionen.html">Dateifunktionen</a></li>
-
               <li><a class="page" href="anpassung_des_lmo.html">Anpassung des LMO</a></li>
             </ul>
           </li>
-
           <li><a class="folder" href="addons/index.html">Addons</a></li>
         </ul>
       </div>
     </div>
-
     <div id="content">
       <a name="top" id="top"></a>
-
       <h1>Einstiegsinformationen</h1>
-
       <ol type="1">
         <li><a href="#1">Einleitung</a></li>
-
         <li><a href="#2">Systemvoraussetzungen</a></li>
-
         <li><a href="#3">Installation</a></li>
-
         <li><a href="#4">Login/Logout</a></li>
-
         <li><a href="#5">Rechtliches</a></li>
       </ol>
-
       <h3><a name="1">1. Einleitung</a></h3>
-
       <p>
       Herzlich Willkommen zum <em>neuen</em> Liga Manager Online. Mit diesem Skript k&#246;nnen Sie Ihren Besuchern einen Ergebnisdienst
       &#252;ber Ihre Lieblingsligen anbieten. Die gesamte Verwaltung der Ligen l&#228;uft dabei direkt auf dem Server ab; Sie tragen nur
       noch die Ergebnisse ein und Ihre Besucher erhalten sofort die aktuellen Tabellen, Statistiken usw. - Keine Fremdsoftware, keine
       zeitraubenden Exporte und Uploads mehr!</p>
-
       <p>
       Es ist ratsam, wenn Sie sich ein Bookmark/Favoriten in Ihrem Browser f&#252;r den Adminbereich (<strong>.../lmoadmin.php</strong>)
       einrichten, damit Sie immer schnell darauf zugreifen k&#246;nnen. Im User-Bereich ist aus Sicherheitsgr&#252;nden kein Link auf den
       Adminbereich vorhanden (damit niemand auf dumme Gedanken kommt).</p>
-
       <p>
       Die Besucher k&#246;nnen das Skript &#252;ber die Datei <strong>lmo.php</strong> starten. Wie man den LMO an seine eigene Homepage
       anpasst, steht im Abschnitt <a href="anpassung_des_lmo.html#anpassung">Anpassung des LMO</a>. Zu jedem Link erhalten Ihre Besucher
       einen Tooltip, so da&#223; Sie keine weiteren Erkl&#228;rungen zur Benutzung des Skripts geben m&#252;ssen.</p>
-
       <p class="attention">
       Der Adminbereich ist, &#252;ber <strong>lmoadmin.php</strong> erreichbar. Beim ersten Start melden Sie sich mit
       dem Namen <kbd>admin</kbd> und dem Passwort <kbd>lmo</kbd> (Mit L wie Ludwig!) an. Unter <a href="optionen.html#4">Optionen</a>
       k&#246;nnen und sollten Sie das dann sofort &#228;ndern, damit kein Unbefugter mehr Zugriff hat.</p><a href="#top">[nach oben]</a>
-
       <h3><a name="2">2. Systemvoraussetzungen</a></h3>
-
       <ul>
         <li>Unix- oder Windows-Webserver (empfohlen: Apache)</li>
-
         <li><em>PHP 4.1</em> (oder h&#246;her)</li>
-
         <li>empfohlen: JavaScript- und CSS-f&#228;higer Browser</li>
       </ul><a href="#top">[nach oben]</a>
-
       <h3><a name="3">3. Installation</a></h3>
-
       <ol>
         <li class='attention'>
           <strong>Update des LMO:</strong> Beim Update des LMO 4.0 von älteren LMO4-Versionen (beta/RC1) werden keine Konfigurationsdateien überschrieben,
@@ -109,24 +80,17 @@
             Eventuell installierte zusätzliche Addons werden nicht erkannt, diese sind also nach dem Update erneut zu installieren</li>
         <li>Das <strong>ZIP-Archiv</strong> wurde bereits von Ihnen entpackt. Achten Sie darauf, dass die Verzeichnisstruktur beim
         Entpacken beibehalten wird.</li>
-
         <li>Rufen Sie nun den LMO auf, indem Sie die Adresse zum LMO in Ihren Browser eingeben. <strong>Die Installation startet automatisch
            und sorgt für alle Vorraussetzungen, die der Betrieb des LMO erfordert.</strong></li>
-
         <li>Im Normalfall ist der LMO nun korrekt installiert. Sollte jedoch ein Fehler aufgetreten sein oder Sie k&#246;nnen aus anderen
         Gr&#252;nden die Installation nicht abschlie&#223;en, m&#252;ssen Sie die folgenden Schritte manuell nachvollziehen:
-
           <h4>Manuelle Installation</h4>
-
           <ul class="advanced">
             <li><strong>Achtung: Diese Schritte sind nur notwendig, wenn die normale Installation nicht funktioniert!</strong></li>
-
             <li>Löschen Sie die Datei <strong>install/install.php</strong> und <strong>kopieren Sie danach den Inhalt
-              des Ordners install über Ihr LMO-Verzeichnis</strong></li>
-
+              des Ordners install über Ihr LMO-Verzeichnis</strong><br><img width="100%" src="../media/manual_copy.png" alt=""></li>
             <li>&#196;ndern Sie die Datei <strong>config/init-parameters.php</strong> mit einem normalen Texteditor und tragen Sie dort die
             ben&#246;tigten Pfade ein. Falls die Datei noch nicht existiert, legen Sie diese mit einem normalen Texteditor an. </li>
-
             <li>Die Datei sollte so aussehen: <code>&lt?php<br>
   &nbsp;&nbsp;$lmo_dateipfad='<strong>/absoluter/pfad/zum/lmo</strong>'; //Dateipfad zum LMO<br>
 	&nbsp;&nbsp;$lmo_url='<strong>http://www.adresse.ihres/lmo</strong>'; //abolute URL zum LMO<br>
@@ -135,70 +99,50 @@
             und mit <strong><acronym title=
             "Die Adresse, die man im Browser sehen kann, bei lokalen Installationen beginnt diese mit localhost bzw. 127.0.0.1">der Webadresse zum LMO</acronym></strong>. Falls Sie
             diese Angaben nicht wissen, fragen Sie bitte Ihren Provider.</li>
-
             <li>Nun &#228;ndern Sie bei folgenden Datei die Zugriffsrechte (chmod):
-
               <dl>
                 <dt>Verzeichnisse:</dt>
-
                 <dd>777 - das Verzeichnis <strong>ligen</strong> und <strong>alle Unterverzeichnisse</strong></dd>
-
                 <dd>777 - das Verzeichnis <strong>output</strong></dd>
-
                 <dd>777 - das Verzeichnis <strong>config</strong> und dessen Unterverzeichnis <strong>config/viewer</strong></dd>
-
                 <dd>777 - das Verzeichnis <strong>addon/spieler/stats</strong></dd>
-
                 <dd>777 - das Verzeichnis <strong>addon/tipp/tipps</strong> und <strong>alle Unterverzeichnisse</strong></dd>
-
                 <dt>Dateien:</dt>
-
                 <dd>666 - <strong>config/lmo-auth.php</strong></dd>
-
                 <dd>666 - <strong>addon/tipp/lmo-tippauth.txt</strong></dd>
-
                 <dd>666 - Alle Dateien <strong>cfg.txt</strong> im Verzeichnis <strong>config</strong> und dessen <strong>Unterverzeichnissen</strong></dd>
-
                 <dd>666 - alle Ligen im <strong>ligen</strong>-Verzeichnis und in dessen <strong>Unterverzeichnissen</strong></dd>
-
                 <dd>666 - alle Dateien in den Verzeichnissen <strong>output</strong> , <strong>addon/spieler/stats</strong> und
                 <strong>tipp/tipps</strong> (sofern vorhanden)</dd>
               </dl>
-            </li>
+              <br><img width="70%" src="../media/manual_chmod.png" alt=""></li>
             <li>Damit ist der Liga Manager Online installiert!</li>
           </ul>
         </li>
       </ol><a href="#top">[nach oben]</a>
-
       <h3><a name="4">4. Login/Logout</a></h3>
-
       <p>
       Wenn Sie den Adminbereich betreten, sehen Sie zuerst eine Eingabemaske, mit der Sie sich beim System anmelden m&#252;ssen. Nach
       der Installation ist der voreingestellte der Nutzername <kbd>admin</kbd> und das Passwort <kbd>lmo</kbd> (kleines L, kleines M,
       kleines O) eingestellt. Das sollten Sie aber schnellstm&#246;glich &#228;ndern, um Unbefugten den Zutritt zu Ihrem Adminbereich zu
       verwehren.</p>
-
       <p>
       Wenn Sie eingeloggt sind, haben Sie rechts oben im Men&#252; immer auch einen Befehl <strong>Logout</strong>, mit dem Sie sich aus
       dem Adminbereich ausloggen k&#246;nnen. Das sollten Sie der Sicherheit wegen auch immer am Ende einer Sitzung tun.</p><a href=
       "#top">[nach oben]</a>
-
       <h3><a name="5">5. Rechtliches</a></h3>
-
       <p class="attention">
       Dieses Skript wird unter den Bestimmungen der <a href="http://www.gnu.org/licenses/gpl.txt">GPL</a> (<a href=
       "http://www.gnu.de/gpl-ger.html">deutsche &#220;bersetzung</a> ) herausgegeben. Das hei&#223;t, Sie d&#252;rfen das Skript nutzen,
       weitergeben und sogar ver&#228;ndern; Garantie wird von keiner Seite gew&#228;hrt. <strong>Bitte beachten Sie, dass Copyrighthinweise
       auf jeden Fall erhalten bleiben m&#252;ssen, es ist also nicht erlaubt, diese zu entfernen oder zu &#228;ndern.</strong></p>
-
       <p>
       Obwohl diese Software sorgf&#228;ltig entwickelt wurde, kann f&#252;r die Verwendungsf&#228;higkeit und Fehlerfreiheit keine
       Haftung &#252;bernommen werden. Jede Haftung f&#252;r direkte, indirekte, verursachte oder gefolgte Sch&#228;den, die durch die
       Verwendung dieses Programms entstehen k&#246;nnten, ist ausgeschlossen. Es gibt keine Garantie!</p><a href="#top">[nach oben]</a>
     </div>
-
     <dl id="footer">
-      <dt>© Liga Manager Online 2004/09</dt>
+      <dt>&copy;&nbsp;2004-2009&nbsp;-&nbsp;<a href="http://liga-manager-online.de">Liga Manager Online</a></dt>
     </dl>
   </div>
 </body>

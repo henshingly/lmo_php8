@@ -1,6 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
   <title>Hilfe Anpassung des LMO</title>
@@ -9,266 +8,174 @@
 <script type="text/javascript">
 </script>
 </head>
-
 <body>
   <div id="container">
     <div id="header">
-      <a href="http://www.liga-manager-online.de/"><img src="../media/logo_lmo.gif" alt="Liga Manager Online" width="492" height="48"
-      border="0"></a>
+      <div id="banner">
+        <a href="http://www.liga-manager-online.de/"><img src="../media/trans.gif" alt="" width="100%" height="160"></a>
+      </div>
+      <div id="back"></div>
+      <div id="urhere"></div>
     </div>
-
-    <div id="back"></div>
-
-    <div id="urhere"></div>
-
     <div id="navi">
       <ul>
         <li id="flags"></li>
       </ul>
-
       <div class="navigation">
         <ul>
           <li>
             <a class="active" href="index.html">Hilfe</a>
-
             <ul>
               <li><a class="page" href="einstiegsinformationen.html">Einstiegsinformationen</a></li>
-
               <li><a class="page" href="optionen.html">Optionen</a></li>
-
               <li><a class="page" href="bearbeiten_einer_liga.html">Bearbeiten einer Liga</a></li>
-
               <li><a class="page" href="dateifunktionen.html">Dateifunktionen</a></li>
-
               <li><a class="active" href="anpassung_des_lmo.html">Anpassung des LMO</a></li>
             </ul>
           </li>
-
           <li><a class="folder" href="addons/index.html">Addons</a></li>
         </ul>
       </div>
     </div>
-
     <div id="content">
       <a name="top" id="top"></a>
-
       <h1>Anpassung des LMO</h1>
-
       <ol>
         <li><a href="#0">Teamicons</a></li>
-
         <li><a href="#1">Eigene CSS-Definitionen</a></li>
-
         <li><a href="#2">Templates</a></li>
-
         <li><a href="#3">Einbinden des LMO in vorhandene Homepages</a></li>
       </ol>
-
       <h3><a name="0">1. Teamicons</a></h3>
-
       <p>Sie haben die Möglichkeit, das Aussehen des LMO mit kleinen Vereinswappen aufzuwerten. Die Einbindung ist denkbar einfach denn der
       Ligamanager findet die Dateien automatisch. Das Verzeichnis, in die Sie die Icons dazu kopieren müssen, heisst
       <strong>img/teams/small/</strong>. Die Dateien müssen den gleichen Namen haben, wie die Mannschaft (auch Punkte oder Leerzeichen!),
       das einzige Zeichen, was nicht erlaubt ist, ist "<strong>/</strong>". Lassen Sie dies beim Dateinamen einfach weg.</p>
-
       <p class="attention">Benutzer des Apache2 müssen <strong>alle</strong> Sonderzeichen aus den Dateinamen entfernen. Erlaubt sind hier
       nur Buchstaben und Zahlen.</p>
-
       <p>Im Ordner <strong>img/teams</strong> existiert auch noch ein Unterverzeichnis <strong>big/</strong>. Manche Addons benutzen dieses
       Verzeichnis um vergrößerte Darstellungen der Icons anzuzeigen. Falls Sie also eines dieser Addons benutzen, kopieren Sie größere
       Versionen Ihrer Icons in dieses Verzeichnis.</p><a href="#top">[nach oben]</a>
-
       <p>Um den Liga Manager Online optimal in ihre Homepage zu integrieren, steht Ihnen, neben dem <a href=
       "optionen.html#3">Designeditor</a> und nutzerdefinierten Zusatzstylesheets auch ein einfach zu handhabendes Templatesystem zur
       Verfügung. Dieses ermöglicht Ihnen sowohl eine nahtlose Verbindung mit Ihrer bestehenden Homepage als auch Änderungen an der
       Anordnung der LMO-Elemente. Sie haben sogar die Möglichkeit, verschiedene Templates für ein und den selben LMO zu benutzen.</p>
-
       <h3><a name="1"></a>2. Eigene CSS-Definitionen</h3>
-
       <p class="advanced">Wenn Ihnen die Einstellungen des <a href="optionen.html#3">Designeditors</a> nicht ausreichen sollten oder Sie
       zusätzliche Stylesheetdefinitionen für ihr Template benötigen, können Sie im LMO ganz simpel eine zusätzliche CSS-Datei erstellen,
       die dann automatisch geladen und mit verwendet wird. Diese Datei hat den Namen <strong>style.css</strong> und befindet sich im
       Verzeichnis <strong>templates</strong>. Editieren Sie diese mit einem Texteditor und prüfen Sie bei Bedarf die Richtigkeit Ihrer
       Änderungen beim W3C-CSS-Validator unter <a href=
       "http://jigsaw.w3.org/css-validator/">http://jigsaw.w3.org/css-validator/</a></p><a href="#top">[nach oben]</a>
-
       <h3><a name="2"></a>3. Templates</h3>
-
       <p>Ein Template ist im wesentlichen nur eine einfache HTML-Datei, im Falle des LMO wird diese Datei durch bestimmte HTML-Kommentare
       <kbd>&lt;-- ... --&gt;</kbd> ergänzt. Diese Kommentare werden vom LMO durch seinen eigenen erzeugten Quellcode ausgetauscht. So
       können Sie allein durch die unterschiedliche Lage der Kommentare bestimmen, an welcher Stelle das entsprechende Codesegment des LMO
       auftauchen soll. Ebenso können Sie Teile des LMO dadurch einfach ausblenden, um zum Beispiel die Navigation irgend woanders hin zu
       verlagern. Folgende Kommentare sind möglich:</p>
-
       <dl>
         <dt>&lt;!--Titel--&gt;</dt>
-
         <dd>Der Titeltext des LMO</dd>
-
         <dt>&lt;!--Stylesheet--&gt;</dt>
-
         <dd>Das Stylesheet</dd>
-
         <dt>&lt;!--Newsticker--&gt;</dt>
-
         <dd>Der integrierte Newsticker</dd>
-
         <dt>&lt;!--Kalender--&gt;</dt>
-
         <dd>Der Navigationslink zum Kalender</dd>
-
         <dt>&lt;!--Ergebnisse--&gt;</dt>
-
         <dd>Der Navigationslink zu den Ergebnissen</dd>
-
         <dt>&lt;!--Tabelle--&gt;</dt>
-
         <dd>Der Navigationslink zur Tabelle</dd>
-
         <dt>&lt;!--Spielplan--&gt;</dt>
-
         <dd>Der Navigationslink zum Spielplan</dd>
-
         <dt>&lt;!--Kreuztabelle--&gt;</dt>
-
         <dd>Der Navigationslink zur Kreuztabelle</dd>
-
         <dt>&lt;!--Fieberkurve--&gt;</dt>
-
         <dd>Der Navigationslink zur Fieberkurve</dd>
-
         <dt>&lt;!--Ligastatistik--&gt;</dt>
-
         <dd>Der Navigationslink zur Ligastatistik</dd>
-
         <dt>&lt;!--Spielerstatistik--&gt;</dt>
-
         <dd>Der Navigationslink zur Spielerstatistik</dd>
-
         <dt>&lt;!--Tippspiel--&gt;</dt>
-
         <dd>Der Navigationslink zum Tippspiel</dd>
-
         <dt>&lt;!--Info--&gt;</dt>
-
         <dd>Der Navigationslink zur Infoseite - diesen bitte nicht entfernen</dd>
-
         <dt>&lt;!--Hauptteil--&gt;</dt>
-
         <dd>Der Hauptteil des LMO</dd>
-
         <dt>&lt;!--Savehtml--&gt;</dt>
-
         <dd>Die Links für die Druckversionen unter Ergebnissen bzw. Tabelle</dd>
-
         <dt>&lt;!--Sprachauswahl--&gt;</dt>
-
         <dd>Die Sprachauswahl</dd>
-
         <dt>&lt;!--Ligenuebersicht--&gt;</dt>
-
         <dd>Der Link zur Ligenübersicht</dd>
-
         <dt>&lt;!--LetzteAuswertung--&gt;</dt>
-
         <dd>Das Datum der letzten Auswertung der gewählten Liga</dd>
-
         <dt>&lt;!--Berechnungszeit--&gt;</dt>
-
         <dd>Die Berechnungszeit</dd>
-
         <dt>&lt;!--Infolink--&gt;</dt>
-
         <dd>Der Copyrighthinweis - <strong>dieser darf nicht entfernt werden, siehe Rechtliches</strong></dd>
       </dl>
-
       <p>Sie können die Templates beliebig ändern und anpassen, achten Sie jedoch darauf, dass korrektes HTML erzeugt wird. Ob dies der
       Fall ist, können Sie relativ einfach mittels des W3C-HTML-Validator auf <a href=
       "http://validator.w3.org/">http://validator.w3.org/</a> testen. Nur so ist eine korrekte Anzeige auf den allermeisten Browsersystemen
       gewährleistet.</p>
-
       <p class="attention">Je nach Art der Einbindung nutzen Sie zwei verschiedene Grundarten von Templates. Zum einen die kompletten
       HTML-Seiten-Templates für den <strong>direkten Aufruf</strong> und zum anderen die Templates, welche nur den HTML-Teil enthalten,
       welcher zur <strong>Einbindung über include</strong> nötig ist. Das Prinzip ist in <a href="#3">Punkt 4</a> erläutert.</p><a href=
       "#top">[nach oben]</a>
-
       <h3><a name="3"></a>4. Einbinden des LMO in vorhandene Homepages</h3>
-
       <p>Es gibt zwei grundsätzliche Arten, auf den LMO zuzugreifen. Sie können ihn aus anderen Teilen der Homepage mittels include
       einbinden oder Sie rufen ihn direkt auf.</p>
-
       <h4>Direkter Aufruf</h4>
-
       <p>Dazu rufen Sie den LMO über <strong>lmo.php</strong> auf. In dieser Datei legen Sie auch fest, welches Template Sie verwenden
       möchten. Standardmäßig ist dies <strong>lmo-standard-komplett.tpl.php</strong>. Komplett bedeutet in diesem Falle, dass dieses
       Template ein komplettes HTML-Dokument sein muss.</p>
-
       <p class="attention">Der Direkte Aufruf ist auch die Art der Einbindung, die Sie benötigen, wenn sie den LMO in einem
       <strong>IFrame</strong> aufrufen möchten/müssen. Folgender Code ruft den LMO in einem IFrame auf: <code>&lt;iframe
       src&#61;"<strong>URLZumLMO</strong>/lmo.php" frameborder="0" marginwidth="0" marginheight="0" width="<strong>Breite</strong>"
       height="<strong>Höhe</strong>" scrolling="no"&gt;&lt;/iframe&gt;</code> <strong>URLZumLMO</strong> bezeichnet dabei die WWW-Adresse
       des LMO, mit <strong>Breite</strong> und/oder <strong>Höhe</strong> müssen Sie (leider) experimentieren, eine der vielen Nachteile
       von IFrames.</p>
-
       <p>Indem sie die benötigten Varaiablen an die URL hängen, können sie den LMO dazu bringen gleich einen bestimmten Startbildschirm
       darzustellen. z.B. <code>lmo.php?file=[liga].l98</code> für den direkten Start mit einer Liga.</p>
-
       <p class="advanced">Falls Sie verschiedene Templates benutzen möchten, kopieren Sie die <strong>lmo.php</strong>, benennen sie
       beliebig um (Bsp: <strong>lmoneu.php</strong>) und ändern Sie in der Datei den Aufruf des Templates. Danach können Sie Ihren "neuen"
       LMO unter dem neu gewählten Namen (Hier: <strong>lmoneu.php</strong>) erreichen.</p>
-
       <h4>Include</h4>
-
       <p>Diese Variante ist sicher die bequemere, da Sie damit den LMO aus ihren bestehenden Seiten einfach per
       <code>include("<strong>PfadZumLMO</strong>/lmo.php");</code> aufrufen können. <em>Es gibt in diesem Falle jedoch einige sehr wichtige
       Dinge, die Sie dazu beachten müssen.</em></p>
-
       <dl class="attention">
         <dt><strong>PfadZumLMO</strong> ist ein Dateipfad und kein URL</dt>
-
         <dd>Konstrukte wie <code>include("<strong>http://www.MeineSeite.de/lmo</strong>/lmo.php");</code> werden nicht funktionieren!</dd>
-
         <dt>Sie können auch beim include eine Liga angeben, die statt der Ligenübersicht gleich geöffnet wird</dt>
-
         <dd>Geben sie dazu vor dem include ein: <code>$file="<strong>NameDerLiga</strong>.l98";</code></dd>
-
         <dt>Das geladene Template ist standardmäßig die Datei <strong>lmo-standard.tpl.php</strong> (ohne -komplett)</dt>
-
         <dd>
           Dies ist <em>keine</em> vollständige HTML-Datei, die restlichen HTML-Teile müssen in diesem Falle von ihrer bestehenden Homepage
           kommen. Um den LMO richtig nutzen zu können müssen Sie Ergänzungen in ihrem bestehenden <kbd>&lt;head&gt;</kbd>-Bereich
           vornehmen.
-
           <dl>
             <dt>In die allererste Zeile muss folgener Code:</dt>
-
             <dd><code>&lt;?php if (session_id()=="") session_start(); ?&gt;</code></dd>
-
             <dt>Falls Sie noch keinen DOCTYPE in ihrem HTML angegeben haben, wird empfohlen, diesen zu ergänzen. Dazu setzen Sie folgende
             Zeile unmittelbar <strong>vor</strong> <kbd>&lt;html&gt;</kbd>:</dt>
-
             <dd><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
             "http://www.w3.org/TR/html4/loose.dtd"&gt;</code></dd>
-
             <dt>Falls Sie noch keinen Zeichensatz in ihrem HTML angegeben haben, wird empfohlen, diesen zu ergänzen. Dazu setzen Sie
             folgende Zeile unmittelbar <strong>nach</strong> <kbd>&lt;head&gt;</kbd>:</dt>
-
             <dd><code>&lt;meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"&gt;</code></dd>
-
             <dt>Ergänzen Sie den <kbd>&lt;head&gt;</kbd> um folgende Zeilen, um das LMO-Stylesheet einzubinden:</dt>
-
             <dd><code>&lt;link type="text/css" rel="stylesheet" href&#61;"<strong>PfadZumLMO</strong>/lmo-style-nc.php"&gt;<br>
             &lt;style type='text/css'&gt;@import url&#40;'<strong>PfadZumLMO</strong>/lmo-style.php');&lt;/style&gt;</code></dd>
           </dl>
         </dd>
       </dl>
-
       <p class="advanced">Natürlich können Sie auch mit dieser Methode ebenso mehrere unterschiedliche Templates verwenden, dazu gehen Sie
       exakt nach der oben genannten Methode vor.</p><a href="#top">[nach oben]</a>
     </div>
-
     <dl id="footer">
-      <dt>© Liga Manager Online 2004/09</dt>
+      <dt>&copy;&nbsp;2004-2009&nbsp;-&nbsp;<a href="http://liga-manager-online.de">Liga Manager Online</a></dt>
     </dl>
   </div>
 </body>

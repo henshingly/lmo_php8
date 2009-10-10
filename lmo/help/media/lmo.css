@@ -1,62 +1,69 @@
-#footer dd a:link {color:white; text-decoration: none; }
-a:link {color: navy; text-decoration: underline;}
-#footer dd a:visited {color:white; text-decoration: none; }
-a:visited {color: #33a; text-decoration: underline;}
-#urhere a:visited {color: #eee; text-decoration: none;}
-#footer dd a:hover {color:white; text-decoration: none; }
-#navi ul ul li a:hover {background: url(navpfeil_submenu.gif) no-repeat 3px;}
-#navi ul li a:hover {background: url(navpfeil_menu.gif) no-repeat 3px;}
-#urhere a:hover {text-decoration: underline;}
-#footer {clear: both; padding: 2px; margin-top: 5px; background-color: navy; font-size:90%;font-weight:bolder;}
-#navi img {border:1px solid navy; }
-#navi {float: left; width: 20%; margin: 0; margin-right: 5px; padding: 0px; background-color: #E0E8FF; list-style-type: none; clear: both; margin-bottom: 0.5em;}
-#content {padding: 0; margin-left:23%; margin-right:1%; margin-top:0.5em;}
-#footer dd {color:white; background: navy; padding-right:5%; display: inline;}
-#footer dt {white-space:nowrap; display:inline; color: navy; background: #E0E8FF; margin:0; padding: 0.1em 1em; margin-left: -1px; }
-h2 {font-size:115%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy;border-bottom:1px solid navy;}
-h1 {font-size:140%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy; line-height: 30px;background:url(header_bg.png) repeat-y 0 0;padding-left:1em;border-left:2px solid navy;margin-top: 1em;border-bottom:1px solid navy;}
-body {font-size:12px; font-family:Helvetica, Arial, sans-serif; margin:auto; padding:0; max-width:1000px; min-width:50em; color:black;background:white;}
-#container {width:90%; \width: 90%; w\idth: 90%; margin: 0px; margin-left: auto; margin-right: auto; padding: 0px; }
-#header {padding: 5px; background-color: #E0E8FF; border-top:20px solid navy; margin:0;}
-ul li#flags a {display:inline; padding-left:10px;}
-ul li#flags {font-weight:normal; background: #E0E8FF ! important; padding-left:10px; padding-top: 3px;}
-#navi ul li {font-weight:bold; background:navy; margin:0; border-bottom:1px solid white; }
-#navi ul ul li {font-weight: normal; background: #E0E8FF; list-style: none; }
-#navi a {display:block; width:100%; padding-left:15px; text-decoration:none; padding-top:2px; padding-bottom:2px; }
-#navi ul li a {color:#EEEEEE; text-decoration:none;}
-#navi ul ul li a {color:navy; text-decoration:none;}
+body {font:15px/110% "Segoe UI", "Lucida Grande", Tahoma, Helvetica, Arial, sans-serif; margin:0 auto; padding:0; max-width:1000px; min-width:50em; color:black; background:white; }
+#header {margin-bottom:0.5em;padding-bottom:32px;-moz-box-shadow: 0 0 6px #888;-webkit-box-shadow: 0 0 6px #888; -moz-border-radius-bottomleft:8px;-webkit-border-bottom-left-radius:8px;
+-moz-border-radius-bottomright:8px;-webkit-border-bottom-right-radius:8px;}
+#header img {display:block;border:0; width:100%;height:160px;}
+#banner {padding: 0; background: #fff url(../media/header.png) 0 0 no-repeat; margin:0; height:160px;}
+#container {width:93%; \width: 93%; w\idth: 93%; margin: 0px; margin-left: auto; margin-right: auto; padding: 0px; }
+a:link {color: #0266AE; text-decoration: underline; }
+#urhere a:visited {color: #eee; text-decoration: none; }
+a:visited {color: #33a; text-decoration: underline; }
+ol li {margin-bottom: 0.5em; }
+.classlib:before {content: url(../media/classlib.gif); }
+.attention:before {content: url(../media/attention.gif); }
+.attention {border:1px solid #d99; background:#ffe7e0; padding:0.4em; -moz-border-radius:8px; -webkit-border-radius:8px; -moz-box-shadow: 0 0 6px #888;-webkit-box-shadow: 0 0 6px #888;}
+.advanced:before {content: url(../media/advanced.gif); }
+.advanced {border:1px solid #aca; background:#e0ffe7; padding:0.4em; -moz-border-radius:8px; -webkit-border-radius:8px;-moz-box-shadow: 0 0 6px #888;-webkit-box-shadow: 0 0 6px #888;}
+strong {color:#800; }
+code {display:block; background-color: #eee; padding: 0.3em; font-size: 95%; margin-left:3em; margin-right:3em; border:1px solid #666; }
+h1 {font:bolder 180% "Trebuchet MS", Helvetica, Arial, sans-serif ; color:#0266AE; line-height: 50px; background:url(../media/h1.png) no-repeat 0 0; padding-left:60px; margin-top: 0.5em; text-shadow: 0.15em 0.15em 0.2em #D7E6FF;}
+h2 {font-size:115%; font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:#0266AE; border-bottom:1px solid #0266AE; }
+h3 {font-size:105%; font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:#0266AE; border-bottom:1px solid #0266AE; }
+h4 {font-weight:bold; margin:0.5em 0 1em 1em; color:white; background:#0266AE; font-size:100%; padding-left:1em; }
+#container > #content {background: url(../media/background.png) no-repeat 0 !important; }
+#paypal dd {background-color:#eee; text-align:left; margin:0; }
+#paypal dt {background:#0266AE; color:#def; padding:0.2em; }
+#paypal {margin:1.5em 0 0; border:1px solid #0266AE; background:white; padding:0.2em; text-align:center; font-size:90%; font-family:"Arial Narrow", sans-serif; -moz-border-radius:8px; -webkit-border-radius:8px;-moz-box-shadow: 0 0 6px #888;-webkit-box-shadow: 0 0 6px #888;}
+#news caption {text-align:right; margin:0; }
+.no_error {font-weight: bolder; color: green; padding: 3px; }
+.error {font-weight: bolder; color: red; padding: 3px; }
+#paypal dl {margin:0.3em auto; }
+caption {font-weight: bold; font-size: 110%; }
+acronym {cursor:help; border-bottom:1px dotted; }
+#content img {border:0; }
+/* {font-size: 105%; font-weight: bolder; color: #0266AE; padding: 2px 5px; background-color: #D7E6FF; margin-top:-10px; }*/
+.active {font-weight: bold; background: url(../media/navpfeil_submenu.gif) no-repeat 3px; }
+dt {font-weight: bold; margin-top:0.5em; margin-bottom:0.3em; }
+.news {border: 1px solid #0266AE; padding: 2px; background-color: #fff;  -moz-box-shadow: 0 0 6px #888;-webkit-box-shadow: 0 0 6px #888;}
+.news p {margin:0 0 1px 0;}
+.news_entry {border:1px solid #0266AE; margin-bottom:1em; background-color: #fff; -moz-box-shadow: 0 0 6px #888;-webkit-box-shadow: 0 0 6px #888;}
+.news_teaser {margin-top: 0px; margin-bottom: 0px; }
+.news_teaser  img {margin:3px 10px;}
+.text_ueberschrift, .news_ueberschrift {font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; font-size: 110%; font-weight: bolder; color: #0266AE; padding: 5px; background-color: #D7E6FF;}
+.text_ueberschrift a, .news_ueberschrift a {text-decoration:none;}
+.text_ueberschrift a:hover, .news_ueberschrift a:hover, .news_teaser a:hover {text-shadow: 0 0 0.2em #0266AE;text-decoration:underline;}
+.news_intro , .author { font-weight: normal; font-size:95%; background-color: #0266AE; padding: 3px; color:#FFFFFF; }
+#back {width: 21%; height:32px;-moz-border-radius-bottomleft:8px;-webkit-border-bottom-left-radius:8px;}
+#urhere {width: 75%; height:32px;-moz-border-radius-bottomright:8px;-webkit-border-bottom-right-radius:8px;}
+#back , #urhere{font-size:17px;line-height:32px;float: left; padding:0 1%; margin: 0; border: 0; background: #0266AE; color: #fff; }
+#back a {color: #eee; text-decoration: none; padding:0 0 0 15px; background: #0266AE url(../media/navpfeil_back.gif) no-repeat 3px; font-variant: small-caps; }
+#urhere a{color: #fff; text-decoration: none; padding:0 5px; background-color:#0266AE; font-weight:bold;}
+#urhere a:hover, #footer a:hover {text-decoration: underline;text-shadow: 0 0 0.2em #D7E6FF;}
+#navi {float: left; width: 23%; margin: 0 5px 1.5em 0; padding: 0; background-color: #fff; list-style-type: none; clear: both;}
 #navi ul {margin:0; list-style:none; padding:0; }
-#back {float: left; padding: 5px 2% 5px 2%; margin: 0; border: 0; background: navy; width: 18%; color: White;}
-#urhere {float: left; padding: 5px 2% 5px 2%; margin: 0px; border: 0px; background: navy; width: 74%; color: White;}
-#urhere a {color: White; text-decoration: none; font-size: 12px; padding:5px;}
-#back a {color: #eee; text-decoration: none; padding:5px 0 5px 15px; background: navy url(navpfeil_back.gif) no-repeat 3px; font-variant: small-caps;}
-.news_intro {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; background-color: navy; padding: 3px;color:#FFFFFF;}
-.news_ueberschrift {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bolder; color: navy; padding: 3px; background-color: #E0E8FF;}
-.news_teaser {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; margin-top: 0px; margin-bottom: 0px;}
-dt {font-weight: bold; margin-top:0.5em; margin-bottom:0.3em;}
-#navi ul ul ul li {font-weight: normal; background: #F0EFFF; list-style: none; padding-left: 10px;}
-.active {font-weight: bold;background: url(navpfeil_submenu.gif) no-repeat 3px;}
-.text_ueberschrift {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bolder; color: navy; padding: 3px; background-color: #E0E8FF;margin-top:-10px;}
-#content img {border:0;}
-acronym {cursor:help; border-bottom:1px dotted;}
-caption {font-weight: bold; font-size: 110%;}
-#paypal dl {margin:0.3em auto;}
-.news_entry {border:1px solid navy; margin-bottom:1em;}
-.error {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bolder; color: red; padding: 3px;}
-.no_error {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bolder; color: green; padding: 3px;}
-#news caption {text-align:right;margin:0;}
-#paypal {margin:0.5em 0 0;border:1px solid navy;background:white;padding:0.2em; text-align:center;font-size:12px;font-family:"Arial Narrow", sans-serif;}
-#paypal dt {background:navy;color:#def;padding:0.2em;}
-#paypal dd {background-color:#eee;text-align:left;margin:0;}
-#container > #content {background: url(background.png) no-repeat 0 !important;}
-h3 {font-size:105%;font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:navy; border-bottom:1px solid navy;}
-code {display:block; background-color : #eee; padding : 0.3em; font-size : 95%; margin-left:3em; margin-right:3em; border:1px solid #666;}
-h4 {font-weight:bold;margin:0.5em 0 1em 1em; color:white; background:navy;font-size:100%;padding-left:1em;}
-strong {color:#800;}
-.advanced {border:1px solid #aca;background:#e0ffe7;padding:0.4em;-moz-border-radius:8px;}
-.advanced:before {content: url(advanced.gif);}
-.attention {border:1px solid #d99;background:#ffe7e0;padding:0.4em;-moz-border-radius:8px;}
-.attention:before {content: url(attention.gif);}
-.classlib:before {content: url(classlib.gif);}
-ul.advanced {list-style-type:none;}
-ul.advanced li {margin:0.5em;}
+#navi a {display:block; width:100%; padding:0.2em 0 0.2em 12px; text-decoration:none; }
+#navi ul li {font-weight:bold; background:#fff; margin:0; border-bottom:1px solid #0266AE; padding:0;}
+#navi ul li a {color:#0266AE; text-decoration:none;}
+#navi ul li a:hover {background: #0266AE url(../media/navpfeil_menu.gif) no-repeat 3px; color:#fff;text-shadow: 0 0 0.2em #D7E6FF;text-decoration: underline;}
+#navi ul ul li {font-weight: normal; list-style: none; font-size:90%; border-top:1px solid #D7E6FF;border-bottom:0;padding-left: 18px;}
+#navi ul ul li a {color:#0266AE; text-decoration:none; }
+#navi ul ul ul li {list-style: none;padding-left: 23px; }
+#navi ul ul ul li a {}
+ul li#flags {font-weight:normal; background: #fff ! important; padding:0.4em 0 0.4em 1em; }
+ul li#flags a {display:inline; padding-left:10px; }
+ul li#flags a:hover {background:#fff;}
+#footer {clear: both; padding: 0.5em; margin-top: 10px; margin-bottom:0; color:#fff; background-color: #0266AE; font-size:90%; border:1px solid #0266AE; -moz-border-radius-topleft:8px;-webkit-border-top-left-radius:8px;-moz-border-radius-topright:8px;-webkit-border-top-right-radius:8px;-moz-box-shadow: 0 -1px 1px #888;-webkit-box-shadow: 0 -1px 1px #888;  }
+#footer dt {white-space:nowrap; display:inline; margin:0;font-weight:normal;}
+#footer dd {padding-right:5%; display: inline; font-weight:normal;}
+#footer a {color:white; text-decoration: none; font-weight:bolder;}
+#content {padding: 0; margin-left:26%; margin-right:1%; margin-top:0.5em; }
+#navi img {border:1px solid #0266AE; }

@@ -12,11 +12,12 @@
 <body>
   <div id="container">
     <div id="header">
-      <a href="http://www.liga-manager-online.de/"><img src="../../media/logo_lmo.gif" alt="Liga Manager Online" width="492" height="48"
-      border="0"></a>
+      <div id="banner">
+        <a href="http://www.liga-manager-online.de/"><img src="../../media/trans.gif" alt="" width="100%" height="160"></a>
+      </div>
+      <div id="back"></div>
+      <div id="urhere"></div>
     </div>
-    <div id="back"></div>
-    <div id="urhere"></div>
     <div id="navi">
       <ul>
         <li id="flags"></li>
@@ -53,7 +54,6 @@
    <li><a href="#config">Konfiguration</a></li>
    <li><a href="#include">Einbindung</a></li>
    <li><a href="#template">Templates</a></li>
-    <li><a href="#history">History</a></li>
 </ol><p><img src="../../media/mininext.png" alt="Mininext Screenshot" width="134" height="399" align="right">
   Dieses Script zeigt die kommende Partie einer Mannschaft in einem kleinen
   Block an, der relativ einfach in jede bestehende Seite eingebunden werden
@@ -210,6 +210,8 @@
       <dd>Mittellanger Name des Heimteams</dd>
       <dt>&lt;!--homeNameShort--&gt;</dt>
       <dd>Kurzname des Heimteams</dd>
+      <dt>&lt;!--homeTore--&gt;</dt>
+      <dd>Tore des Heimteams (ab LMO 4.0.2)</dd>
       <dt>&lt;!--imgHomeBig--&gt;</dt>
       <dd>Großes Icon des Heimteams</dd>
       <dt>&lt;!--imgHomeSmall--&gt;</dt>
@@ -220,6 +222,8 @@
       <dd>Mittellanger Name des Gastteams</dd>
       <dt>&lt;!--guestNameShort--&gt;</dt>
       <dd>Kurzname des Gastteams</dd>
+      <dt>&lt;!--guestTore--&gt;</dt>
+      <dd>Tore des Gastteams (ab LMO 4.0.2)</dd>
       <dt>&lt;!--imgGuestBig--&gt;</dt>
       <dd>Großes Icon des Gastteams</dd>
       <dt>&lt;!--imgGuestSmall--&gt;</dt>
@@ -299,39 +303,9 @@
     </dl>
     <p>Passen Sie den HTML-Code beliebig an, achten Sie aber auf korrektes HTML/CSS um Darstellungsprobleme zu vermeiden.</p>
     <a href="#top">[nach oben]</a>
-  <h3><a name="history"></a>History</h3>
-   <dl>
-      <dt>1.0</dt>
-<dd>initial Release als nextGameBlock</dd>
-<dt> 1.1</dt>
-<dd>Multilanguagefähig</dd>
-<dd>  ins mini*-Addon eingefügt, mininext-Addon</dd>
-<dd>  Bugfixes</dd>
-<dd>  Template entrümpelt</dd>
-<dd> Anzeige der Greedy-Ergebnisse überarbeitet</dd>
-<dt> 2.0</dt>
-<dd>korrekte Anzeige Auswärts-/Heimpartien</dd>
-<dd>     zusätzlicher Block "Vorheriges Spiel"</dd>
-<dt> 2.0.1</dt>
-<dd>Datumsformat wieder gekürzt</dd>
-<dt> 2.0.2</dt>
-<dd>Bug beim include (Mannschaften wurden nicht erkannt) beseitigt</dd>
-<dt> 2.1.0</dt>
-<dd>Konfigurationsdatei für Konfigurationsparameter (änderbar im Adminbereich)</dd>
-<dd>  Template jetzt auch änderbar (über GET oder vorher definiert)</dd>
-<dd>  Archivdurchsuchung abschaltbar</dd>
-<dd> Doppelrunden (also mehr als 1 Hin-/Rückrunde) werden erkannt</dd>
-<dt> 2.1.1</dt>
-<dd>Mittel- und Kurznamen der Teams als Templatevariablen</dd>
-<dt> 2.1.2</dt>
-<dd>UnGreedy überarbeitet</dd>
-<dd>Bug beseitigt</dd>
-<dd>CountDown zur nächsten Partie</dd>
-      </dl>
-      <a href="#top">[nach oben]</a>
-      </div>
+    </div>
     <dl id="footer">
-      <dt>© Liga Manager Online 2004/09</dt>
+      <dt>&copy;&nbsp;2004-2009&nbsp;-&nbsp;<a href="http://liga-manager-online.de">Liga Manager Online</a></dt>
     </dl>
   </div>
 </body>
