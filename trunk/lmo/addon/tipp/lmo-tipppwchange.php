@@ -94,8 +94,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <th align="center"><?=$text['tipp'][107]; ?></th>
-  </tr><? 
-  if($newpage!=1){ ?>
+  </tr><?php  if($newpage!=1){ ?>
   <tr>
     <td align="center">
       <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
@@ -126,16 +125,13 @@ if (($action == "tipp") && ($todo == "pwchange")) {
         </table>
       </form>
     </td>
-  </tr><? 
-  }
+  </tr><?php  }
   if($newpage==1){ /* erfolgreich */?>
   <tr>
     <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
   </tr>
   <tr>
     <td class="lmoFooter" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>
-  </tr><? 
-  }?>
-</table><? 
-} 
+  </tr><?php  }?>
+</table><?php} 
 $file=""; ?>

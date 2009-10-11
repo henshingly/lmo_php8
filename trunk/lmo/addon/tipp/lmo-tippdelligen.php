@@ -38,8 +38,7 @@ if (($action == "tipp") && ($todo == "delligen")) {
   </tr>
   <tr>
     <td width="20">&nbsp;</td>
-    <td align="left"><? 
-  if($newpage!=1){?>
+    <td align="left"><?php  if($newpage!=1){?>
       <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="delligen">
@@ -58,14 +57,11 @@ if (($action == "tipp") && ($todo == "delligen")) {
   if($newpage==1){ /* Abbestellen erfolgreich */?>
   <tr>
     <td colspan="3" align="center"><?php echo getMessage($text['tipp'][269]); ?></td>
-  </tr><? 
-  }
+  </tr><?php  }
   if($newpage==1 || $i==0){ /* zurück zur Übersicht */?>
   <tr>
     <td colspan="3" class="lmoFooter" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>
-  </tr><? 
-   } ?>
-</table><? 
-} 
+  </tr><?php   } ?>
+</table><?php} 
 $file=""; 
 ?>

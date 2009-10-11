@@ -175,8 +175,7 @@ if ($_SESSION['lmouserok']==2) {
               <a href="<?=$_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?=$show?>" onclick="return confirm('<?=$text[499]?>');"><img border="0" width="11" heigth="13" src="<?=URL_TO_IMGDIR?>/delete.gif" alt="<?=$text[330]?>" title="<?=$text[328]?>"></a>
             </td><?
       }?>
-          </tr><? 
-    }//if $show=$testshow
+          </tr><?php    }//if $show=$testshow
     $testshow++;
   }//foreach
   ?>

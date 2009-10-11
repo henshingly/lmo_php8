@@ -42,8 +42,7 @@ if (isset($file) && $file!="") {
 		if (isset($_REQUEST['adminbereich_standard_sortierung'])) { $spieler_adminbereich_standard_sortierung=$_REQUEST['adminbereich_standard_sortierung']; }
 		if (isset($_REQUEST['ligalink']))                         { $spieler_ligalink=$_REQUEST['ligalink']; }
 		if (isset($_REQUEST['anzeige_pro_seite']))                { $spieler_anzeige_pro_seite=$_REQUEST['anzeige_pro_seite']; }
-		
-
+	  
 		if (isset($_REQUEST['nullwerte_anzeigen']))                   $spieler_nullwerte_anzeigen=1;                   else {if ($spieler_option=="saveconfig") $spieler_nullwerte_anzeigen=0;}
     if (isset($_REQUEST['vereinsweise_anzeigen']))                $spieler_vereinsweise_anzeigen=1;                else {if ($spieler_option=="saveconfig") $spieler_vereinsweise_anzeigen=0;}
     
@@ -65,8 +64,7 @@ if (isset($file) && $file!="") {
 	    set_file_buffer ($filepointer,0);
 			fwrite($filepointer,$spalten[0]."\n");	//Erste Zeile/Spalte in Datei schreiben
 		}
-	
-	// Wenn in einer Spalte ne Formel steht, wurde an den Namen *_*-* angehängt
+  	// Wenn in einer Spalte ne Formel steht, wurde an den Namen *_*-* angehängt
     $formel_ges=0;
     $speicher_spalten=$spalten;
     $formel=array();
@@ -284,8 +282,7 @@ if (isset($file) && $file!="") {
         fputs($filepointer,$text['spieler'][13]."=".$spieler_standard_richtung."\n");
 				fputs($filepointer,$text['spieler'][40]."=".$spieler_adminbereich_standard_sortierung."\n");
 				fputs($filepointer,$text['spieler'][22]."=".$spieler_anzeige_pro_seite."\n");
-				
-				fputs($filepointer,$text['spieler'][23]."=".$spieler_nullwerte_anzeigen."\n");
+			  				fputs($filepointer,$text['spieler'][23]."=".$spieler_nullwerte_anzeigen."\n");
 				fputs($filepointer,$text['spieler'][24]."=".$spieler_extra_sortierspalte."\n");
         
         fputs($filepointer,$text['spieler'][50]."=".$spieler_vereinsweise_anzeigen."\n");
@@ -430,8 +427,7 @@ function mark(el){
                   </th><?
                 }?>
               </tr>
-            <?}?>						
-						<tr>
+            <?}?>					  						<tr>
 							<td align="right" colspan="<?=$spaltenzahl*2?>">
 								<input type="hidden" name="option" value="statupdate">
 								<input type="hidden" name="todo" value="edit">

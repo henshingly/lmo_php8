@@ -91,8 +91,7 @@ if ($action == "tipp") {
   </tr>
 
   <tr>
-    <td colspan="3" align="center"><? 
-    if($todo=="wert"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");}
+    <td colspan="3" align="center"><?php    if($todo=="wert"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");}
     elseif($todo=="fieber"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippfieber.php");}
     elseif($todo=="einsicht"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippeinsicht.php");}
     elseif($todo=="tabelle"){require(PATH_TO_ADDONDIR."/tipp/lmo-tipptabelle.php");}
@@ -105,19 +104,16 @@ if ($action == "tipp") {
           <caption><? echo $text['tipp'][158]; ?></caption>
           <tr>
             <th colspan="2"><? echo $text['tipp'][44]; ?></th>
-          </tr><? 
-      // Benutzer nicht gefunden
+          </tr><?php      // Benutzer nicht gefunden
       if($_SESSION["lmotipperok"]==-2){?> 
           <tr>
             <td align="right" colspan="3"><? echo getMessage($text['tipp'][43],TRUE); ?></td>
-          </tr><? 
-      }
+          </tr><?php      }
       // Benutzer nicht freigeschaltet
       if(isset($xtippersub) & $_SESSION["lmotipperok"]=="" && !isset($emailbody)){?> 
           <tr>
             <td align="right" colspan="3"><? echo getMessage($text['tipp'][148],TRUE); ?></td>
-          </tr><? 
-      }?>
+          </tr><?php      }?>
           <tr>
             <td align="right"><acronym title="<? echo $text[307] ?>"><? echo " ".$text['tipp'][23]; ?></acronym></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xtippername" size="16" maxlength="32" value="<? echo $_SESSION['lmotippername']; ?>"></td>
@@ -126,8 +122,7 @@ if ($action == "tipp") {
       if($_SESSION["lmotipperok"]==-1){ $xtippername2=$_SESSION["lmotippername"];  ?> 
           <tr>
             <td align="right" colspan="3"><? echo getMessage($text['tipp'][42],TRUE); ?></td>
-          </tr><? 
-      }?>
+          </tr><?php      }?>
           <tr>
             <td align="right"><acronym title="<? echo $text[309] ?>"><? echo " ".$text[308]; ?></acronym></td>
             <td align="left"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<? echo $_SESSION['lmotipperpass']; ?>"></td>
@@ -207,8 +202,7 @@ if ($action == "tipp") {
             if($_SESSION["lmotipperok"]==-3){ ?> 
           <tr>
             <td align="right" colspan="3"><? echo $text['tipp'][43]; ?></td>
-          </tr><? 
-            }?>
+          </tr><?php            }?>
           <tr>
             <td align="right"><acronym title="<? echo $text[307] ?>"><? echo " ".$text['tipp'][23]." ".$text['tipp'][218]." ".$text['tipp'][219]; ?></acronym></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xtippername2" size="16" maxlength="32" value="<? echo $xtippername2; ?>"></td>
@@ -220,8 +214,7 @@ if ($action == "tipp") {
         </table>
       </form>
     </td>
-  </tr><? 
-  }
+  </tr><?php  }
   //require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
 </table><?
   }

@@ -269,13 +269,11 @@ if ($file!="") {
       echo " ".$text[4]." ".$datum2[$st-1];
     }
   }?>
-            </th><? 
-  if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
+            </th><?php  if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
             <th class="nobr" align="center" colspan="<? if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
             <?=$text['tipp'][188]; /* Tipptendenz absolut */?>
             </th>
-<?}
-  
+<?php  
 /**ERGEBNISMODUS*/
   if($tipp_tippmodus==1){  
     if($tipp_showdurchschntipp==1){ ?>
@@ -355,13 +353,11 @@ if ($file!="") {
     }
   }?>
           <tr>
-            <td colspan="<?=$datm*2+10-$hidr; ?>" align="right"><? 
-  if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
+            <td colspan="<?=$datm*2+10-$hidr; ?>" align="right"><?php  if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
     echo $text['tipp'][177];
   } 
   if($savebutton==1){ ?>
-              <input class="lmo-formular-button" type="submit" title="<?=$text[114] ?>" name="best" value="<?=$text['tipp'][8]; ?>"<? if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><? 
-  }else{
+              <input class="lmo-formular-button" type="submit" title="<?=$text[114] ?>" name="best" value="<?=$text['tipp'][8]; ?>"<? if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  }else{
     echo "&nbsp;";
   }?>
             </td>
@@ -394,5 +390,4 @@ if ($file!="") {
     <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[8]?> <?=$text[7]?></a>&nbsp;</td><?
    }?>
   </tr>
-</table><? 
-} ?>
+</table><?php} ?>

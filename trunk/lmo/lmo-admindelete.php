@@ -39,8 +39,7 @@ if (($action == "admin") && ($todo == "delete") && ($_SESSION['lmouserok'] == 2)
     <td align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td class="nobr" align="left"><? 
-  $ftype=".l98"; 
+          <td class="nobr" align="left"><?php  $ftype=".l98"; 
   require(PATH_TO_LMO."/lmo-admindeldir.php"); ?>
           </nobr></td>
         </tr>

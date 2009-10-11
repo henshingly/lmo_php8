@@ -27,8 +27,7 @@ for($n=0;$n<$modus[$st-1];$n++){
     }
     echo $text[419+$i]; ?>
     </th>
-  </tr><? 
-  }?>
+  </tr><?php  }?>
   <tr><?
   if ($tipp_einsichterst==2) {
     if ($goala[$st-1][$i][$n]!="_" && $goalb[$st-1][$i][$n]!="_") {
@@ -46,10 +45,8 @@ for($n=0;$n<$modus[$st-1];$n++){
     } else {
       $dum1="";
     }?>
-    <td class="nobr" align="left"><?=$dum1; ?></td><? 
-  }?>
-    <td>&nbsp;</td><? 
-  if ($n==0) {
+    <td class="nobr" align="left"><?=$dum1; ?></td><?php  }?>
+    <td>&nbsp;</td><?php  if ($n==0) {
     $m1=array($goala[$st-1][$i][0],$goala[$st-1][$i][1],$goala[$st-1][$i][2],$goala[$st-1][$i][3],$goala[$st-1][$i][4],$goala[$st-1][$i][5],$goala[$st-1][$i][6]);
     $m2=array($goalb[$st-1][$i][0],$goalb[$st-1][$i][1],$goalb[$st-1][$i][2],$goalb[$st-1][$i][3],$goalb[$st-1][$i][4],$goalb[$st-1][$i][5],$goalb[$st-1][$i][6]);
     $m=gewinn($i,$modus[$st-1],$m1,$m2);
@@ -103,8 +100,7 @@ for($n=0;$n<$modus[$st-1];$n++){
   }?>
     <td>&nbsp;</td><?
   if($tipp_showtendenzabs==1){ ?>
-    <td align="center" class="nobr"><? 
-    if ($btip1==false) {
+    <td align="center" class="nobr"><?php    if ($btip1==false) {
       if (!isset($tendenz1[$i][$n])) {
         $tendenz1[$i][$n]=0;
       }
@@ -117,11 +113,9 @@ for($n=0;$n<$modus[$st-1];$n++){
       echo $tendenz1[$i][$n]."-".$tendenz0[$i][$n]."-".$tendenz2[$i][$n];
     }?>
     </td>
-    <td>&nbsp;</td><? 
-  }
+    <td>&nbsp;</td><?php  }
   if($tipp_showtendenzpro==1){ ?>
-    <td align="center" class="nobr"><? 
-    if ($btip1==false) {
+    <td align="center" class="nobr"><?php    if ($btip1==false) {
       if (!isset($anzgetippt[$i][$n])) {
         $anzgetippt[$i][$n]=0;
       }
@@ -141,8 +135,7 @@ for($n=0;$n<$modus[$st-1];$n++){
       }
     }?>
     </td>
-    <td>&nbsp;</td><? 
-  }
+    <td>&nbsp;</td><?php  }
   if($btip[$i][$n]==true){
     $savebutton=1;
   }
@@ -150,8 +143,7 @@ for($n=0;$n<$modus[$st-1];$n++){
 /**ERGEBNISMODUS*/
   if($tipp_tippmodus==1){
     if($tipp_showdurchschntipp==1){?>
-      <td align="center" class="nobr"><? 
-      if ($btip1==false) {
+      <td align="center" class="nobr"><?php      if ($btip1==false) {
         if (!isset($anzgetippt[$i][$n])) {
           $anzgetippt[$i][$n]=0;
         }
@@ -173,13 +165,11 @@ for($n=0;$n<$modus[$st-1];$n++){
         }
       }?>
     </td>
-    <td>&nbsp;</td><? 
-    }
+    <td>&nbsp;</td><?php    }
     if($btip[$i][$n]==true){ ?>
     <td align="right">
       <input class="lmo-formular-input" type="text" name="xtippa<?=$i.$n; ?>" size="4" maxlength="4" value="<?=$goaltippa[$i][$n]; ?>" onKeyDown="lmotorclk('a','<?=$i.$n; ?>',event.keyCode)">
-    </td><? 
-      if($tipp_pfeiltipp==1){ ?>
+    </td><?php      if($tipp_pfeiltipp==1){ ?>
     <td align="center">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -193,20 +183,15 @@ for($n=0;$n<$modus[$st-1];$n++){
           </td>
         </tr>
       </table>
-    </td><? 
-      }
+    </td><?php      }
     }else{
       if($tipp_pfeiltipp==1){ ?>
-    <td>&nbsp;</td><? 
-      }?>
-    <td align="right"><?=$goaltippa[$i][$n]; ?></td><? 
-    } ?>
-    <td>:</td><? 
-    if($btip[$i][$n]==true){ ?>
+    <td>&nbsp;</td><?php      }?>
+    <td align="right"><?=$goaltippa[$i][$n]; ?></td><?php    } ?>
+    <td>:</td><?php    if($btip[$i][$n]==true){ ?>
     <td align="right">
       <input class="lmo-formular-input" type="text" name="xtippb<?=$i.$n; ?>" size="4" maxlength="4" value="<?=$goaltippb[$i][$n]; ?>" onKeyDown="lmotorclk('b','<?=$i.$n; ?>',event.keyCode)">
-    </td><? 
-      if($tipp_pfeiltipp==1){ ?>
+    </td><?php      if($tipp_pfeiltipp==1){ ?>
     <td align="center">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -220,13 +205,10 @@ for($n=0;$n<$modus[$st-1];$n++){
           </td>
         </tr>
       </table>
-    </td><? 
-      }
+    </td><?php      }
     }else{?>
-    <td align="left"><?=$goaltippb[$i][$n]; ?></td><? 
-      if($tipp_pfeiltipp==1){ ?>
-    <td>&nbsp;</td><? 
-      }
+    <td align="left"><?=$goaltippb[$i][$n]; ?></td><?php      if($tipp_pfeiltipp==1){ ?>
+    <td>&nbsp;</td><?php      }
     }
   } /* ende $tipp_tippmodus==1 */
 
@@ -243,29 +225,24 @@ for($n=0;$n<$modus[$st-1];$n++){
     }?>
     <td align="right">
       <input type="radio" name="xtipp<?=$i.$n; ?>" value="1" <? if($tipp==1){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
-    </td><? 
-    if($hidr==0){ ?>
+    </td><?php    if($hidr==0){ ?>
     <td align="center">
       <input type="radio" name="xtipp<?=$i.$n; ?>" value="3" <? if($tipp==0){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
-    </td><? 
-    }?>
+    </td><?php    }?>
     <td align="right">
       <input type="radio" name="xtipp<?=$i.$n; ?>" value="2" <? if($tipp==2){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
-    </td><? 
-  } /* ende ($tipp_tippmodus==0) */
+    </td><?php  } /* ende ($tipp_tippmodus==0) */
 
 /**BEIDE*/
   if ($tipp_jokertipp==1){ ?>
-    <td align="center"><input type="radio" name="xjokerspiel" value="<?=($i+1).($n+1); ?>" <? if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><? 
-  }?>                                                                                                                   
+    <td align="center"><input type="radio" name="xjokerspiel" value="<?=($i+1).($n+1); ?>" <? if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>                                                                                                                   
     <td class="lmoBackMarkierung" align="right"><?=$goala[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="center">:</td>
     <td class="lmoBackMarkierung" align="left"><?=$goalb[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="left"><?=$mspez[$st-1][$i][$n]; ?></td>
     <td width="2">&nbsp;</td>
     <td class="nobr" align="right">
-      <strong><? 
-  if ($tipp_jokertipp==1 && $jksp==($i+1).($n+1)) {
+      <strong><?php  if ($tipp_jokertipp==1 && $jksp==($i+1).($n+1)) {
     $jkspfaktor=$tipp_jokertippmulti;
   } else {
     $jkspfaktor=1;
@@ -337,10 +314,8 @@ for($n=0;$n<$modus[$st-1];$n++){
     echo "&nbsp;";
   }?>
     </td>
-  </tr><? 
-}
+  </tr><?php}
 if(($modus[$st-1]>1) && ($i<$anzsp-1)){ ?>
   <tr>
     <td colspan="<?=$breite; ?>">&nbsp;</td>
-  </tr><? 
-}
+  </tr><?php}

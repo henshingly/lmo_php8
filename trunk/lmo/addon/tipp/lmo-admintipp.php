@@ -43,8 +43,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <th align="left" colspan="3"><? echo $text['tipp'][64]; ?></td>
-        </tr><? 
-$ftype=".l98"; 
+        </tr><?php$ftype=".l98"; 
 $iptype="auswert"; 
 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
 if($tipp_gesamt==1){ ?>
@@ -59,13 +58,11 @@ if($tipp_gesamt==1){ ?>
               <input class="lmo-formular-button" type="submit" name="best" value="<? echo $text['tipp'][236]; ?>">
             </form>
           </td>
-        </tr><? 
-}?>
+        </tr><?php}?>
 
         <tr>
           <th align="left" colspan="3"><? echo $text['tipp'][155]; ?></td>
-        </tr><? 
-$ftype=".l98"; 
+        </tr><?php$ftype=".l98"; 
 $iptype="einsicht"; 
 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); ?>
       </table>

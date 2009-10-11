@@ -1,5 +1,4 @@
-<? 
-/** Liga Manager Online 4
+<?php/** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
   *
@@ -72,8 +71,7 @@ if (basename($_SERVER['PHP_SELF'])=="ticker.php") {?>
 }?>
   <div align="center"><?
 if ($ticker_tickertitel==1) { ?>
-    <p><?=$text['ticker'][0]?></p><? 
-}?>
+    <p><?=$text['ticker'][0]?></p><?php}?>
     <script type="text/javascript"><?
 if (!isset($file)) {
   $file="";

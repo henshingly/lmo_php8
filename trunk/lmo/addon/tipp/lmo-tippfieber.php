@@ -184,12 +184,10 @@ if($file!="" && $tipp_tippfieber==1){
       }
       //PLATZIERUNG
       ?>
-          <tr><td align="center" colspan="3"><img src="<? echo $dummy; ?>" border="0"></td></tr><? 
-    }?>
+          <tr><td align="center" colspan="3"><img src="<? echo $dummy; ?>" border="0"></td></tr><?php    }?>
         </table>
       </td>
     </tr><?
   }?>
   </table>
-</form><? 
-}?>
+</form><?php}?>

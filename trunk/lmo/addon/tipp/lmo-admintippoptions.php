@@ -68,14 +68,12 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="0"<?if($tipp_tippmodus==0){echo " selected";}?>><?=$text['tipp'][93]?></option>
               </select>
             </td>
-          </tr><? 
-  }elseif ($show==1) {?>
+          </tr><?php  }elseif ($show==1) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][39]; ?></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xdirtipp" size="20" maxlength="80" value="<? echo $tipp_dirtipp; ?>" onChange="dolmoedit()"></td>
-          </tr><? 
-  }elseif ($show==2) {?>
+          </tr><?php  }elseif ($show==2) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][34]; ?></td>
@@ -141,8 +139,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="2"<?if($tipp_gtpunkte==2){echo " selected";}?>><?=$text['tipp'][199]?></option>
               </select>
             </td>
-          </tr><? 
-  }elseif ($show==3) {?>
+          </tr><?php  }elseif ($show==3) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][157]; ?></td>
@@ -182,8 +179,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <input type="checkbox" name="xshowname" value="1" <? if($tipp_showname==1){echo "checked";} ?> onClick="dolmoedit()"><? echo $text['tipp'][134]; ?>
             <input type="checkbox" name="xshowemail" value="1" <? if($tipp_showemail==1){echo "checked";} ?> onClick="dolmoedit()"><? echo $text['tipp'][219]; ?>
             </td>
-          </tr><? 
-  }elseif ($show==4) {?>
+          </tr><?php  }elseif ($show==4) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][87]; ?></td>
@@ -247,8 +243,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="2.5"<?if($tipp_jokertippmulti=="2.5"){echo " selected";}?>>2.5</option>
                 <option value="3"<?if($tipp_jokertippmulti=="3"){echo " selected";}?>>3</option>
             </td>
-          </tr><? 
-  }elseif ($show==5) {?>
+          </tr><?php  }elseif ($show==5) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][132]; ?></td>
@@ -273,8 +268,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][293]; ?></td>
             <td align="left"><input type="checkbox" name="xmailbeianmeldung" onClick="dolmoedit()"<?if($tipp_mailbeianmeldung==1){echo " checked";}?>></td>
-          </tr><? 
-  }elseif ($show==6) {?>
+          </tr><?php  }elseif ($show==6) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][245]." ".$text['tipp'][294]; ?></td>
@@ -314,8 +308,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][161]; ?></td>
             <td align="left"><input type="checkbox" name="xakteinsicht" onClick="dolmoedit()"<?if($tipp_akteinsicht==1){echo " checked";}?>></td>
-          </tr><? 
-  }elseif ($show==7) {?>
+          </tr><?php  }elseif ($show==7) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][160]; ?></td>
@@ -331,8 +324,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][204]; ?></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xanzseite" size="5" maxlength="5" value="<? echo $tipp_anzseite; ?>" onChange="dolmoedit()"></td>
-          </tr><? 
-  }elseif ($show==8) {?>
+          </tr><?php  }elseif ($show==8) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][183]; ?></td>
@@ -342,8 +334,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][260]; ?></td>
             <td align="left"><input type="checkbox" name="xwertverein" onClick="dolmoedit()"<?if($tipp_wertverein==1){echo " checked";}?>></td>
-          </tr><? 
-  }elseif ($show==9) {?>
+          </tr><?php  }elseif ($show==9) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][302]; ?></td>
@@ -363,8 +354,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][272]; ?></td>
             <td align="left"><input type="checkbox" name="xshowstsiege" onClick="dolmoedit()"<?if($tipp_showstsiege==1){echo " checked";}?>></td>
-          </tr><? 
-  }elseif ($show==10) {?>
+          </tr><?php  }elseif ($show==10) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][275]." 1"; ?></td>
@@ -412,8 +402,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="6"<?if($tipp_krit3==6){echo " selected";}?>><?=$text['tipp'][271]?></option>
               </select>
             </td>
-          </tr><? 
-  }elseif ($show==11) {?>
+          </tr><?php  }elseif ($show==11) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][81]; ?></td>
@@ -423,8 +412,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][180]; ?></td>
             <td align="left"><input type="checkbox" name="xaktauswertges" onClick="dolmoedit()"<?if($tipp_aktauswertges==1){echo " checked";}?>></td>
-          </tr><? 
-  }elseif ($show==12) {?>
+          </tr><?php  }elseif ($show==12) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><? echo $text['tipp'][104]; ?></td>
@@ -441,8 +429,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 $ftype=".l98"; 
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");?>
             </td>
-          </tr><? 
-  }?>
+          </tr><?php  }?>
           <tr>
             <td class="lmost4" colspan="3" align="right">
               <input type="hidden" name="show" value="<?=$show?>">

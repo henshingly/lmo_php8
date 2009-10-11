@@ -152,8 +152,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right"><input class="lmo-formular-input" type="text" name="xtitel" size="40" maxlength="60" value="<?=$titel; ?>" onChange="dolmoedit()"></td>
             <td class="nobr" align="left"><acronym title="<?=$text[118];?>"><?=$text[113];?></acronym></td>
-          </tr><? 
-      if($lmtype==0){ ?>
+          </tr><?php      if($lmtype==0){ ?>
           <tr>
             <td class="nobr" align="right"><input class="lmo-formular-input" type="text" name="xnamepkt" size="7" maxlength="60" value="<? if($namepkt==""){echo $text[37];}else{echo $namepkt;} ?>" onChange="dolmoedit()"></td>
             <td class="nobr" align="left"><acronym title="<?=$text[66];?>"><?=$text[65]." ".$text[37];?></acronym></td>
@@ -205,8 +204,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
               </select>
             </td>
             <td class="nobr" align="left"><acronym title="<?=$text[195];?>"><?=$text[194];?></acronym></td>
-          </tr><? 
-    if($lmtype==0){ ?>
+          </tr><?php    if($lmtype==0){ ?>
           <tr>
             <td class="nobr" align="right">
               <select class="lmo-formular-input" name="xstat1" onChange="dolmoedit()"><?
@@ -225,8 +223,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
               </select>
             </td>
             
-          </tr><? 
-    }
+          </tr><?php    }
   }elseif ($show==2) {
     if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
           <tr>
@@ -241,8 +238,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right"><acronym title="<?=$text[552];?>"><?=$text[551];?></acronym></td>
             <td class="nobr" align="left"><input type="checkbox" class="lmo-formular-input" name="xplaydown" onChange="dolmoedit()"<?if($playdown==1){echo " checked";}?>></td>
-          </tr><? 
-      }
+          </tr><?php      }
       if($lmtype==0){ ?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?=$text[400];?>"><?=$text[399];?></acronym>&nbsp;</td>
@@ -258,8 +254,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
                 <option value="7"<?if ($mittore == '0')   {echo " disabled";}elseif($onrun==7){echo " selected";}?>><?=$text[485]?></option>
               </select>
             </td>
-          </tr><? 
-      }?> 
+          </tr><?php      }?> 
           <tr>
             <td class="nobr" align="right"><acronym title="<?=$text[254];?>"><?=$text[253];?></acronym>&nbsp;</td>
             <td class="nobr" align="left"><input type="checkbox" class="lmo-formular-input" name="xdatm" onChange="dolmoedit()"<?if($datm==1){echo " checked";}?>></td>
@@ -327,8 +322,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right"><acronym title="<?=$text[256];?>"><?=$text[255];?></acronym>&nbsp;<input type="checkbox" class="lmo-formular-input" name="xdatc" onChange="dolmoedit()"<?if($datc==1){echo " checked";}?>>&nbsp;</td>
             <td class="nobr" align="left">&nbsp;<input type="checkbox" class="lmo-formular-input" name="xplan" onChange="dolmoedit()"<?if($plan==1){echo " checked";}?>>&nbsp;<acronym title="<?=$text[511];?>"><?=$text[12];?></acronym></td>
-          </tr><? 
-      if($lmtype==0){ ?>
+          </tr><?php      if($lmtype==0){ ?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?=$text[468];?>"><?=$text[467];?></acronym>&nbsp;<input type="checkbox" class="lmo-formular-input" name="xkreuz" onChange="dolmoedit()"<?if($kreuz==1){echo " checked";}?>>&nbsp;</td>
             <td class="nobr" align="left">&nbsp;<input type="checkbox" class="lmo-formular-input" name="xkurve" onChange="dolmoedit()"<?if($kurve==1){echo " checked";}?>>&nbsp;<acronym title="<?=$text[238];?>"><?=$text[237];?></acronym></td>
@@ -356,8 +350,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xurlb" onChange="dolmoedit()"<?if($urlb==1){echo " checked";}?>></td>
             <td class="nobr" align="left"><acronym title="<?=$text[266];?>"><?=$text[265];?></acronym></td>
-          </tr><? 
-    }
+          </tr><?php    }
   }elseif ($show==3) {
     if(($_SESSION['lmouserok']==2  || $_SESSION['lmouserokerweitert']==1) && $lmtype==0){ ?>
           <tr>
@@ -416,8 +409,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
                 </tr>
               </table>
             </td>
-          </tr><? 
-    }
+          </tr><?php    }
   }elseif ($show==4) {
     if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
           <tr>
@@ -486,8 +478,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
               </select>&nbsp;
             </td>
             <td class="lmoTabelleAbsteiger" align="left">&nbsp;<acronym title="<?=$text[388];?>"><?=$text[387];?></acronym></td>
-          </tr><? 
-    }
+          </tr><?php    }
   }?>
           <tr>
             <td class="nobr" align="center" colspan="2" width="100%">

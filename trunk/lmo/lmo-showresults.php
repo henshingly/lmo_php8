@@ -114,8 +114,7 @@ while (list ($key, $val) = each ($datsort)) {
     <td align="left"><?=applyFactor($goala[$st-1][$i],$goalfaktor); ?></td><?  
     }?>
     <td width="2">&nbsp;</td>
-    <td class="nobr" align="left"><? 
-    
+    <td class="nobr" align="left"><?php    
     /** Mannschaftsicons finden
      */
     $lmo_teamaicon="";
@@ -169,8 +168,7 @@ while (list ($key, $val) = each ($datsort)) {
       echo "&nbsp;";
     }
     ?></td>
-  </tr><? 
-  }
+  </tr><?php  }
 }
 
 if ($einzutore == 1) {?>

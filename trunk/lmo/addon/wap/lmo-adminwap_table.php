@@ -18,13 +18,10 @@ if($lmtype==0){
 if($lmtype==0){
 	isset($tab0) ? $table1=$tab0 : $table1=$tab1;
 	if (isset($table1)) {
-		
-		
-		$datumanz=$actual;
+	  	  		$datumanz=$actual;
 		echo $datumanz.".&#160;".$text[2];
 		$wmloutput="<table title=\"tabelle\" columns=\"4\" align=\"LLCR\">\n<tr><td><b>Pl.</b></td><td><b>Team</b></td><td><b>P+</b></td><td><b>+/-</b></td></tr>\n";
-		
-		for ($i1=0;$i1<$anzteams;$i1++){
+	  		for ($i1=0;$i1<$anzteams;$i1++){
 			$platz=$i1+1;
 			$i4=(int)substr($table1[$i1],35,6);
 			$teamname=$teamk[$i4];
@@ -33,17 +30,13 @@ if($lmtype==0){
 			$minuspunkte=$negativ[$i4];
 			$kegelnholz=applyFactor($dtore[$i4],$goalfaktor);
 			$torverhaeltnis=applyFactor($dtore[$i4],$goalfaktor);
-			
-			
-			$wmloutput.="<tr><td>$platz.&#160;</td><td>$teamname&#160;</td><td>$pluspunkte";
+		  		  			$wmloutput.="<tr><td>$platz.&#160;</td><td>$teamname&#160;</td><td>$pluspunkte";
 			if ($torverhaeltnis>0) $torverhaeltnis = "+".$torverhaeltnis;
 			$wmloutput.="</td><td>$torverhaeltnis</td>";
-			
-			$wmloutput.="</tr>\n";
+		  			$wmloutput.="</tr>\n";
 		}
 		$wmloutput.="</table>\n";
-		
-		echo $wmloutput;
+	  		echo $wmloutput;
 
 	}
 }?>
