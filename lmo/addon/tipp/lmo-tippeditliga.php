@@ -35,8 +35,7 @@ if ($datm==1) {
   } else {
     $dum1="";
   }?>
-  <td class="nobr" align="left"><?=$dum1; ?></td><? 
-}?>
+  <td class="nobr" align="left"><?=$dum1; ?></td><?php}?>
   <td>&nbsp;</td>
   <td class="nobr" align="right"><?
   if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
@@ -70,10 +69,8 @@ if ($datm==1) {
     $goaltippb[$i]="";
 }?>
   </td>
-  <td>&nbsp;</td><? 
-if($tipp_showtendenzabs==1){ ?>
-  <td align="center" class="nobr"><? 
-  if ($btip1==false) {
+  <td>&nbsp;</td><?phpif($tipp_showtendenzabs==1){ ?>
+  <td align="center" class="nobr"><?php  if ($btip1==false) {
     if (!isset($tendenz1[$i])) {
       $tendenz1[$i]=0;
     }
@@ -86,11 +83,9 @@ if($tipp_showtendenzabs==1){ ?>
     echo $tendenz1[$i]."-".$tendenz0[$i]."-".$tendenz2[$i];
   }?>
   </td>
-  <td>&nbsp;</td><? 
-}
+  <td>&nbsp;</td><?php}
 if($tipp_showtendenzpro==1){ ?>
-  <td align="center" class="nobr"><? 
-  if ($btip1==false) {
+  <td align="center" class="nobr"><?php  if ($btip1==false) {
     if (!isset($anzgetippt[$i])) {
       $anzgetippt[$i]=0;
     }
@@ -110,8 +105,7 @@ if($tipp_showtendenzpro==1){ ?>
     }
   }?>
   </td>
-  <td>&nbsp;</td><? 
-}
+  <td>&nbsp;</td><?php}
 if ($btip[$i]==true) {
   $savebutton=1;
 }
@@ -119,8 +113,7 @@ if ($btip[$i]==true) {
 /**ERGEBNISMODUS*/
 if ($tipp_tippmodus==1) {
   if ($tipp_showdurchschntipp==1) {?>
-    <td align="center" class="nobr"><? 
-    if ($btip1==false) {
+    <td align="center" class="nobr"><?php    if ($btip1==false) {
       if (!isset($anzgetippt[$i])) {
         $anzgetippt[$i]=0;
       }
@@ -142,13 +135,11 @@ if ($tipp_tippmodus==1) {
       }
     }?>
   </td>
-  <td>&nbsp;</td><? 
-  }
+  <td>&nbsp;</td><?php  }
   if($btip[$i]==true){ ?>
   <td align="right">
     <input class="lmo-formular-input" type="text" name="xtippa<?=$i; ?>" size="2" maxlength="4" value="<?=$goaltippa[$i]; ?>" onKeyDown="lmotorclk('a','<?=$i; ?>',event.keyCode)">
-  </td><? 
-    if($tipp_pfeiltipp==1){ ?>
+  </td><?php    if($tipp_pfeiltipp==1){ ?>
   <td align="center">
     <table cellpadding="0" cellspacing="0" border="0">
       <tr>
@@ -162,20 +153,15 @@ if ($tipp_tippmodus==1) {
         </td>
       </tr>
     </table>
-  </td><? 
-    }
+  </td><?php    }
   }else{
     if($tipp_pfeiltipp==1){ ?>
-  <td>&nbsp;</td><? 
-    }?>
-  <td align="right"><?=$goaltippa[$i]; ?></td><? 
-  }?>
-  <td align="center">:</td><? 
-  if($btip[$i]==true){ ?>
+  <td>&nbsp;</td><?php    }?>
+  <td align="right"><?=$goaltippa[$i]; ?></td><?php  }?>
+  <td align="center">:</td><?php  if($btip[$i]==true){ ?>
   <td align="right">
     <input class="lmo-formular-input" type="text" name="xtippb<?=$i; ?>" size="2" maxlength="4" value="<?=$goaltippb[$i]; ?>" onKeyDown="lmotorclk('b','<?=$i; ?>',event.keyCode)">
-  </td><? 
-    if($tipp_pfeiltipp==1){ ?>
+  </td><?php    if($tipp_pfeiltipp==1){ ?>
   <td align="center">
     <table cellpadding="0" cellspacing="0" border="0">
       <tr>
@@ -189,13 +175,10 @@ if ($tipp_tippmodus==1) {
         </td>
       </tr>
     </table>
-  </td><? 
-    }
+  </td><?php    }
   }else{ ?>
-  <td align="left"><?=$goaltippb[$i]; ?></td><? 
-    if($tipp_pfeiltipp==1){ ?>
-  <td>&nbsp;</td><? 
-    }
+  <td align="left"><?=$goaltippb[$i]; ?></td><?php    if($tipp_pfeiltipp==1){ ?>
+  <td>&nbsp;</td><?php    }
   }
 } /* ende ($tipp_tippmodus==1) */
 
@@ -213,32 +196,25 @@ if($tipp_tippmodus==0){
   }?>
   <td align="center">
     <input type="radio" name="xtipp<?=$i; ?>" value="1" <? if($tipp==1){echo " checked";} if($btip[$i]==false){echo " disabled";} ?>>
-  </td><? 
-  if($hidr==0){ ?>
+  </td><?php  if($hidr==0){ ?>
   <td align="center">
     <input type="radio" name="xtipp<?=$i; ?>" value="3" <? if($tipp==0){echo " checked";} if($btip[$i]==false){echo " disabled";} ?>>
-  </td><? 
-  }?>
+  </td><?php  }?>
   <td align="center">
     <input type="radio" name="xtipp<?=$i; ?>" value="2" <? if($tipp==2){echo " checked";} if($btip[$i]==false){echo " disabled";} ?>>
-  </td><? 
-} /* ende ($tipp_tippmodus==0) */
+  </td><?php} /* ende ($tipp_tippmodus==0) */
 
 /**BEIDE*/
 if ($tipp_jokertipp==1){ ?>
-  <td align="center"><input type="radio" name="xjokerspiel" value="<?=$i+1; ?>" <? if($jksp==$i+1){echo " checked";} if ($btip[$i]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><? 
-} ?>                                                                                                                   
+  <td align="center"><input type="radio" name="xjokerspiel" value="<?=$i+1; ?>" <? if($jksp==$i+1){echo " checked";} if ($btip[$i]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php} ?>                                                                                                                   
   <td class="lmoBackMarkierung" align="right"><?=applyFactor($goala[$st-1][$i],$goalfaktor); ?></td>
   <td class="lmoBackMarkierung" align="center">:</td>
-  <td class="lmoBackMarkierung" align="left"><?=applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td><? 
-if($spez==1){ ?>
+  <td class="lmoBackMarkierung" align="left"><?=applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td><?phpif($spez==1){ ?>
   <td class="lmoBackMarkierung">&nbsp;</td>
-  <td class="lmoBackMarkierung" align="left"><?=$mspez[$st-1][$i]; ?></td><? 
-} ?>
+  <td class="lmoBackMarkierung" align="left"><?=$mspez[$st-1][$i]; ?></td><?php} ?>
   <td width="2">&nbsp;</td>
   <td class="nobr" align="right">
-    <strong><? 
-    if ($tipp_jokertipp==1 && $jksp==$i+1) {
+    <strong><?php    if ($tipp_jokertipp==1 && $jksp==$i+1) {
       $jkspfaktor=$tipp_jokertippmulti;
     } else {
       $jkspfaktor=1;
@@ -271,8 +247,7 @@ if($spez==1){ ?>
 }?>
     </strong>
   </td>
-  <td class="nobr" align="left"><? 
-  /** Mannschaftsicons finden
+  <td class="nobr" align="left"><?php  /** Mannschaftsicons finden
  */
   $lmo_teamaicon="";
   $lmo_teambicon="";

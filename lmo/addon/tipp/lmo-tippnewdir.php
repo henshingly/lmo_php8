@@ -249,16 +249,14 @@ if ($ftype != "") {
                         }
                         echo "</option>";
                       }?>
-          </select><? 
-                      echo $text['tipp'][164]; //Tipper
+          </select><?php                      echo $text['tipp'][164]; //Tipper
                       $start1=1;
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
                         if (isset($start)) {
                           $start1 = $start;
                         }
                       }?> 
-          <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<? echo $start1; ?>"><? 
-                      echo $text[4]; //bis
+          <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<? echo $start1; ?>"><?php                      echo $text[4]; //bis
                       $dummy1=array();
                       $verz1 = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
                        while ($tipfiles = readdir($verz1)) {

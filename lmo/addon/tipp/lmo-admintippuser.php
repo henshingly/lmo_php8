@@ -210,8 +210,7 @@ if ($_SESSION["lmouserok"] == 2) {
       <a href="<?=$_SERVER['PHP_SELF']; ?>?action=admin&amp;todo=tippuseredit&amp;save=-1"><?=$text['tipp'][136]; ?></a></th>
     </th>
   </tr>
-</table><? 
-}
+</table><?php}
 function cmp ($a1, $a2) {
   global $tipper_sort;
   if (is_numeric($a1[$tipper_sort]) && is_numeric($a2[$tipper_sort])) {  //Numerischer Vergleich

@@ -96,8 +96,7 @@ if ($file != "") {
   } else {
     $j = $st.". ".$text[370];
   }?>
-          <th colspan="<?=$breite; ?>" align="left"><? 
-  echo $j;
+          <th colspan="<?=$breite; ?>" align="left"><?php  echo $j;
   if ($dats == 1) {
     if ($datum1[$st-1] != "") {
       echo " ".$text[3]." ".$datum1[$st-1];
@@ -118,17 +117,14 @@ if ($file != "") {
         if(($klfin==1) && ($st==$anzst)){ ?>
         <tr>
           <th class="nobr" colspan="<?=$breite; ?>"><? if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></th>
-        </tr><? 
-        }?>
-        <tr><? 
-        if($datm==1){
+        </tr><?php        }?>
+        <tr><?php        if($datm==1){
           if($mterm[$st-1][$i][$n]>0){
             $dum1=strftime($datf, $mterm[$st-1][$i][$n]);
           } else {
             $dum1="";
           }?>
-          <td class="nobr"><?=$dum1; ?></td><? 
-        }?>
+          <td class="nobr"><?=$dum1; ?></td><?php        }?>
           <td class="nobr" width="2">&nbsp;</td><?
         if ($n == 0) {
           $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
@@ -180,8 +176,7 @@ if ($file != "") {
           }?>
           </td><?
         } else { ?>
-          <td class="nobr" colspan="3">&nbsp;</td><? 
-        }?>
+          <td class="nobr" colspan="3">&nbsp;</td><?php        }?>
           <td class="nobr" width="2">&nbsp;</td>
           <td class="nobr" align="right"><?=applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?></td>
           <td class="nobr" align="center" width="8">:</td>
@@ -224,13 +219,11 @@ if ($file != "") {
           echo "&nbsp;";
         }?>
           </td>
-        </tr><? 
-      }
+        </tr><?php      }
       if(($modus[$st-1]>1) && ($i<=$anzsp-1)){ ?>
         <tr>
           <td class="nobr" colspan="<?=$breite; ?>">&nbsp;</td>
-        </tr><? 
-      }
+        </tr><?php      }
     }
   }?>
 
@@ -253,5 +246,4 @@ if ($file != "") {
       </table>
     </td>
   </tr>
-</table><? 
-} ?>
+</table><?php} ?>

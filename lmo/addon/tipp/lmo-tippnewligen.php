@@ -61,33 +61,26 @@ if (($action == "tipp") && ($todo == "newligen")) {
     <th align="center"><?=$text['tipp'][135]; ?></th>
   </tr>
   <tr>
-    <td align="left"><? 
-  if($newpage!=1){ ?>
+    <td align="left"><?php  if($newpage!=1){ ?>
       <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="newligen">
-        <input type="hidden" name="newpage" value="1"><? 
-  $ftype=".l98"; 
+        <input type="hidden" name="newpage" value="1"><?php  $ftype=".l98"; 
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); 
     if($i!=0){ ?>
-        <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text['tipp'][11]; ?>"><? 
-    } ?>
-      </form><? 
-  }?>
+        <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text['tipp'][11]; ?>"><?php    } ?>
+      </form><?php  }?>
     </td>
   </tr><?
   
   if($newpage==1){ /* Anmeldung erfolgreich */?>
   <tr>
     <td align="center"><?php echo getMessage($text['tipp'][20]); ?></td>
-  </tr><? 
-  }
+  </tr><?php  }
   
   if($newpage==1 || $i==0){ /* zurück zur Übersicht */?>
   <tr>
     <td class="lmoFooter" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>
-  </tr><? 
-  }?>    
-</table><? 
-} 
+  </tr><?php  }?>    
+</table><?php} 
 $file=""; ?>

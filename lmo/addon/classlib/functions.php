@@ -51,8 +51,7 @@ function const_array($constant) {
     $stda = isset($team["team"]->keyValues["STDA"])
     						? $team["team"]->keyValues["STDA"]
     						: 0;
-    						
-    if ($stda==$spTag  or ($stda==0 and $spTag==1)) {
+    					      if ($stda==$spTag  or ($stda==0 and $spTag==1)) {
          if ($minusPkte==FALSE) {
             $team["pPkt"] += isset($team["team"]->keyValues["SP"]) ?
                 -$team["team"]->keyValues["SP"] : 0;

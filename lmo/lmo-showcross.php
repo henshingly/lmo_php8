@@ -136,5 +136,4 @@ for($i = 0; $i <= ($anzteams+1); $i++) {
 </table>
 </td>
 </tr>
-</table><? 
-}?>
+</table><?php}?>

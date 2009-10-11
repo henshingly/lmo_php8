@@ -27,8 +27,7 @@ if(!isset($nw)){
     <td class="lmoFooter" colspan="3"  align="left">
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td valign="top"><? 
-  if ($todo == "wert") {
+          <td valign="top"><?php  if ($todo == "wert") {
     echo "<strong>".$text['tipp'][89].":</strong><br>"; /// Zeichenerklaerung
     if ($wertung == "team") {
       echo $text['tipp'][119].": ".$text['tipp'][120]."&nbsp;&nbsp;&nbsp;<br>"; // AT

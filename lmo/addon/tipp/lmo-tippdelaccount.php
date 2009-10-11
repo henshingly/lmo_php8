@@ -84,8 +84,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
       <th colspan="2" align="center"><?=$text['tipp'][6]; ?></th>
     </tr>
     <tr>
-      <td width="20">&nbsp;</td><? 
-  if($newpage!=1){ ?>
+      <td width="20">&nbsp;</td><?php  if($newpage!=1){ ?>
       <td class="nobr" align="center">
         <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return confirm('');">
           <input type="hidden" name="action" value="tipp">
@@ -94,16 +93,13 @@ if (($action == "tipp") && ($todo == "delaccount")) {
           <p><?=" ".$text['tipp'][69]; ?>: &nbsp;<input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>"></p>
           <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text[82]; ?>">
         </form>
-      </td><? 
-  }
+      </td><?php  }
   if($newpage==1){ /* erfolgreich*/?>
       <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
     </tr>
     <tr>
       <td class="lmoFooter" colspan="2" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?=$text['tipp'][141]; ?></a></td>
-    </tr><? 
-  }?>
-  </table><? 
-} 
+    </tr><?php  }?>
+  </table><?php} 
 $file="";
 ?>

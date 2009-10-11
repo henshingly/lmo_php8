@@ -27,12 +27,10 @@ switch($_REQUEST['op']) {
 	case "table":
     require(PATH_TO_ADDONDIR.'/wap/lmo-wap_table.php');
     break;
-	
-	case "help":
+  	case "help":
     require(PATH_TO_ADDONDIR.'/wap/lmo-adminwap_help.php');
     break;
-	
-  default:
+    default:
     require(PATH_TO_ADDONDIR.'/wap/lmo-wap_liga.php');
     break;
 

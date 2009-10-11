@@ -215,8 +215,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
 
   <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
     <tr>
-      <td align="center"><h1><? 
-      if ($save == count($users)) {
+      <td align="center"><h1><?php      if ($save == count($users)) {
         echo $text['tipp'][136];
       }else {
       	echo $text['tipp'][106];
@@ -231,8 +230,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
           <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
             <tr>
               <td align="right">&nbsp;<?=$text['tipp'][23]; ?></td>
-              <td align="left"><? 
-            if ($save == count($users)) {?>
+              <td align="left"><?php            if ($save == count($users)) {?>
                 <input class="lmo-formular-input" type="text" name="nick" value="<?= $nick; ?>"><?
             }else{?>
                 <input type="hidden" name="nick" value="<?= $nick; ?>"><strong><?=$tipp_tipperdaten[0]?></strong><?
@@ -240,15 +238,13 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
               </td>
             </tr>
             <tr>
-              <td align="right">&nbsp;<? 
-            if ($save == count($users)) {?>
+              <td align="right">&nbsp;<?php            if ($save == count($users)) {?>
               <?=$text[323]; ?><?
             } else {?>
               <acronym title="<?=$text['tipp'][304]?>"><?=$text[323]; ?></acronym><?
             }?>
               </td>
-              <td align="left"><? 
-            if ($save == count($users)) {?>
+              <td align="left"><?php            if ($save == count($users)) {?>
                 <input class="lmo-formular-input" type="text" name="xtipperpass" value="<? include(PATH_TO_LMO."/lmo-adminuserpass.php");?>"><?
             }else{?>
                 <input class="lmo-formular-input" type="password" name="xtipperpass" size="25" maxlength="100" value=""><?
@@ -317,14 +313,12 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
             <tr>
               <td align="left"><input type="radio" name="xtippervereinradio" value="2" id="2" <? if($xtippervereinradio==2){echo "checked";} ?>><?= $text['tipp'][49]; ?></td>
               <td align="left"><input class="lmo-formular-input" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?= $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></td>
-            </tr><? 
-  }?>
+            </tr><?php  }?>
             <tr>
               <th align="left" colspan="2"><?= $text['tipp'][273]; ?></th>
             </tr>
             <tr>
-              <td class="lmost5" ><? 
-              $ftype=".l98";
+              <td class="lmost5" ><?php              $ftype=".l98";
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");?>
               </td>
             </tr>

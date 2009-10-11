@@ -6,8 +6,7 @@
  *
  * folgende Zeile hinzugefügt werden:
  *
- *  include(PATH_TO_LMO."/lmo-savehtml1.php");	
- *
+ *  include(PATH_TO_LMO."/lmo-savehtml1.php");   *
  * 
  * Autor: Bernd Hoyer, basierend auf dem LMO3.02
  * Verbesserungen, Bugs etc. bitte nur in das Forum bei Hollwitz.net
@@ -84,8 +83,7 @@ if($lmtype==0){
     			}
     			// * Spielfrei-Hack-Ende1- Autor: Bernd Hoyer - eMail: info@salzland-info.de
     			if($mterm[$y1-1][$i1]>0){$dum1=strftime($datf, $mterm[$y1-1][$i1]);}else{$dum1="";} // Anstosszeit einblenden
-			?>		
- 	   <tr>
+			?>	   	   <tr>
        <td><?=$dum1?>&nbsp;</td>
        <td align="right"><?=$heimteam?></td>
        <td>-</td>
@@ -105,13 +103,11 @@ if($lmtype==0){
 		}
     if (!empty($z)) {?>
 	</table>
-  <?}
-    if (($anzteams-($anzst/2+1))!=0){
+  <?php    if (($anzteams-($anzst/2+1))!=0){
 			$spielfreicc=array_merge($spielfreiaa,$spielfreibb);
 			unset($spielfreiaa);
 			unset($spielfreibb);
-			$i=1;	
-			for ($j=1;$j<$anzteams+1;$j++) {
+			$i=1;  			for ($j=1;$j<$anzteams+1;$j++) {
 			if (!in_array($j,$spielfreicc)) {
 			  if ($i==1) {?>
 				<p><small><?=$text[4004]?>: <?
@@ -151,8 +147,7 @@ if($lmtype==0){
 			$minustore=applyFactor($atore[$i4],$goalfaktor);
 			$torverhaeltnis=applyFactor($dtore[$i4],$goalfaktor);
 			$spieleteam=$spiele[$i4];?>
-						
-		<tr>
+					  		<tr>
        <td align="right"><?=$platz?>&nbsp;</td>
        <td><?=$teamname?>&nbsp;</td>
        <td align="right"><?=$spieleteam?>&nbsp;</td>
@@ -172,10 +167,8 @@ if($lmtype==0){
   <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?=$text[562]?><\/a><\/small>');</script>
   
 </body>
-</html><?}
-    fwrite($wmlfile,ob_get_contents());
+</html><?php    fwrite($wmlfile,ob_get_contents());
     ob_end_clean();
 		fclose($wmlfile);
-	
-}
+  }
 ?>

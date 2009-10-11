@@ -68,8 +68,7 @@ if ($action == "tipp") {
     img3.src = "<?=URL_TO_IMGDIR?>/lmo-admin3.gif";
     function lmoimg(x,y){
       document.getElementsByName("ximg"+x)[0].src = y.src;
-    }<? 
-  }?>
+    }<?php  }?>
   function lmotorclk(x,y,z){
     if(document.all && !window.opera){
       if(z==38){lmotorauf(x,y,1);}
@@ -137,8 +136,7 @@ if ($action == "tipp") {
   }
   ?>
     </td>
-  </tr><? 
- // require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); 
+  </tr><?php // require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); 
  ?>
 </table>
 <?
