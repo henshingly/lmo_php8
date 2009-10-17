@@ -1,42 +1,54 @@
 <?
 /**
-* Spieltag
-*
-* Repräsentiert einen Spieltag
-* <BR>Eine Liga hat mehrere Spieltage.
-* <BR>An einem Spieltag finden mehrere Partien statt.
-*
-* @package   classLib
-* @access public
-*/
-
+ * Spieltag
+ *
+ * Repräsentiert einen Spieltag
+ * <BR>Eine Liga hat mehrere Spieltage.
+ * <BR>An einem Spieltag finden mehrere Partien statt.
+ *
+ * @package   classLib
+ * @access public
+ * @version $Id$
+ */
 class spieltag {
 
-/**
- * Spieltagsnummer,
- * @var integer
- * @access public
-*/
+  /**
+   * Spieltagsnummer,
+   * @var integer
+   * @access public
+   */
   var $nr;
-/**
- * vonDatum als string,
- * @var string
- * @access public
-*/
+
+  /**
+   * vonDatum als string,
+   * @var string
+   * @access public
+   */
   var $von;
-/**
- * bisDatum als string,
- * @var string
- * @access public
-*/
+
+  /**
+   * bisDatum als string,
+   * @var string
+   * @access public
+   */
   var $bis;
-/**
- * Partien des Spieltages,
- * @var array of spieltag objects
- * @access public
-*/
+
+  /**
+   * Partien des Spieltages,
+   * @var array of partien objects
+   * @access public
+   */
   var $partien;
 
+  /**
+   * Konstruktor
+   *
+   * @param integer $new_nr
+   * @param string $new_von
+   * @param string $new_bis
+   * @param array $partien
+   * @return spieltag
+   */
   function spieltag($new_nr,$new_von,$new_bis,$partien=array()) {
     $this->nr = $new_nr;
     $this->von = $new_von;
@@ -44,69 +56,104 @@ class spieltag {
     $this->partien = $partien;
   }
 
-/**
-* Gibt Partie der angegebener Nummer zurück
-*
-* @access public
-* @parameter integer Partienummer
-* @return object Die Partie
-*/
-  function &partieForNumber($number) {
+  /**
+   * Gibt Partien eines Spieltag zurück, Optional: Sortierung
+   *
+   * datum
+   * heimname (noch nicht implementiert)
+   * gastname (noch nicht implementiert)
+   * heimtore (noch nicht implementiert)
+   * gasttore (noch nicht implementiert)
+   * summetore (noch nicht implementiert)
+   *
+   * @access public
+   * @param string Sortierung
+   * @return array Partien
+   */
+  function getPartien($sorted="") {
     $result = null;
-// Bugfix 13.10.04    if(isset($number) and $nNumber > 0 and $number <= $this->partienCount())
-    if(isset($number) and $number > 0 and $number <= $this->partienCount())
-      $result = $this->partien[$number-1];
+
+    switch ($sorted) {
+      case "datum":
+        foreach ($this->partien as $partie) {
+        	var_dump($partie);
+        }
+        break;
+      default:
+        $result = $this->partien;
+        break;
+    }
+
+
     return $result;
   }
 
-/**
-* Gibt Partie der angegebener Teamnummern zurück
-*
-* @access public
-* @parameter integer Heimmannschaftsnummer integer Gastmannschaftsnummer
-* @return object Die Partie
-*/
+  /**
+   * Gibt Partie der angegebener Nummer zurück
+   *
+   * @access public
+   * @param integer Partienummer
+   * @return object Die Partie
+   */
+  function &partieForNumber($number) {
+    $result = null;
+    // Bugfix 13.10.04    if(isset($number) && $nNumber > 0 && $number <= $this->partienCount())
+    if(isset($number) && $number > 0 && $number <= $this->partienCount()) {
+      $result = $this->partien[$number-1];
+    }
+    return $result;
+  }
+
+  /**
+   * Gibt Partie der angegebener Teamnummern zurück
+   *
+   * @access public
+   * @param integer Heimmannschaftsnummer integer Gastmannschaftsnummer
+   * @return object Die Partie
+   */
   function &partieForTeams($heimNr,$gastNr) {
     $count = $this->partienCount();
     $i = -1;
     $found=-1;
     $selectedTag = null;
-    while (($i<$count) and ($found<>0)):
+    while (($i<$count) && ($found<>0)) {
       $i++;
-      if (isset($this->partien[$i]) and ($this->partien[$i]->heim->nr = $heimNr) and ($this->partien[$i]->gast->nr = $gastNr))
+      if (isset($this->partien[$i]) && ($this->partien[$i]->heim->nr = $heimNr) && ($this->partien[$i]->gast->nr = $gastNr)) {
         $found = 0;
-
-    endwhile;
-    if ($found==0) return $this->partien[$i];
-    else return null;
+      }
+    }
+    if ($found==0) {
+      return $this->partien[$i];
+    } else {
+      return null;
+    }
   }
 
-/**
-* Gibt Partie der angegebener Teamnamen zurück
-*
-* @access public
-* @parameter string Heimmannschaftsname string Gastmannschaftsname
-* @return object Die Partie
-*/
-    function &partieForTeamNames($heimName,$gastName) {
-        $result = Null;
-        foreach ($this->partien as $aPartie) {
-            if (($aPartie->heim->name == $heimName ) and ($aPartie->gast->name == $gastName)) {
-              $result = $aPartie;
-              break;
-            }
-        }
-        return $result;
+  /**
+   * Gibt Partie der angegebener Teamnamen zurück
+   *
+   * @access public
+   * @param string Heimmannschaftsname string Gastmannschaftsname
+   * @return object Die Partie
+   */
+  function &partieForTeamNames($heimName,$gastName) {
+    $result = Null;
+    foreach ($this->partien as $aPartie) {
+      if (($aPartie->heim->name == $heimName ) && ($aPartie->gast->name == $gastName)) {
+        $result = $aPartie;
+        break;
+      }
+    }
+    return $result;
   }
 
-
-/**
-* Löscht Partie
-*
-* @access public
-* @parameter objekt Partie
-* @return bool Partie wurde gelöscht TRUE / FALSE
-*/
+  /**
+   * Löscht Partie
+   *
+   * @access public
+   * @param objekt Partie
+   * @return bool Partie wurde gelöscht TRUE / FALSE
+   */
   function removePartie(&$rmvPartie) {
     $result = False;
     reset($this->partien);
@@ -118,47 +165,45 @@ class spieltag {
         $partienArray=array_values($partienArray); // Index neu erstellen
         $result = True;
         break;
-      }
-      else {
+      } else {
         next($partienArray);
         $index++;
       }
     }
     if(isset($partienArray)) {
       $this->partien = &$partienArray;
-    }
-    else
+    } else {
       $this->partien = null;
+    }
 
-  return $result;
+    return $result;
   }
 
-
-/**
-* Anzahl der Partien des Spieltages
-*
-* @access public
-* @return integer Partieanzahl
-*/
+  /**
+   * Anzahl der Partien des Spieltages
+   *
+   * @access public
+   * @return integer Partieanzahl
+   */
   function partienCount() {
     return count($this->partien);
   }
 
-/**
-* Fügt Partie zum Spieltage hinzu
-*
-* @access public
-* @parameter Object die Partie
-*/
+  /**
+   * Fügt Partie zum Spieltage hinzu
+   *
+   * @access public
+   * @param Object die Partie
+   */
   function addPartie(&$neuePartie) {
     $this->partien[] = $neuePartie; // &$ Das muss so sein
   }
 
-/**
-* Debugfunktion.
-*
-* @access private
-*/
+  /**
+   * Debugfunktion.
+   *
+   * @access private
+   */
   function showDetails() {
     echo "\n".$this->nr.". Spieltag (".$this->vonBisString().")\n";
     foreach ($this->partien as $partie) {
@@ -166,11 +211,11 @@ class spieltag {
     }
   }
 
-/**
-* Debugfunktion.
-*
-* @access private
-*/
+  /**
+   * Debugfunktion.
+   *
+   * @access private
+   */
   function showDetailsHTML() {
     echo "<BR>".$this->nr.". Spieltag (".$this->vonBisString().")";
     foreach ($this->partien as $partie) {
@@ -178,53 +223,58 @@ class spieltag {
     }
   }
 
-/**
-* Gibt den Zeitrahmen aus, an dem der Spieltag ausgetragen wird
-*
-* Sind das vonDatum und das bisDatum gesetzt wird zB. 10.10.2003 - 19.10.2003 zurückgegeben
-* <BR> Ist eines der beiden nicht gesetzt, wird nur das Datum zurückgeben ohne Verbinder
-* <BR> zB. ist das vonDatum nicht gesetzt wird nur das bisDatum ausgegeben 19.10.2003 ohne Bindestrich
-* @access public
-* @return string
-*/
+  /**
+   * Gibt den Zeitrahmen aus, an dem der Spieltag ausgetragen wird
+   *
+   * Sind das vonDatum und das bisDatum gesetzt wird zB. 10.10.2003 - 19.10.2003 zurückgegeben
+   * <BR> Ist eines der beiden nicht gesetzt, wird nur das Datum zurückgeben ohne Verbinder
+   * <BR> zB. ist das vonDatum nicht gesetzt wird nur das bisDatum ausgegeben 19.10.2003 ohne Bindestrich
+   *
+   * @access public
+   * @return string
+   */
   function vonBisString() {
     $von = "";
     $bis = "";
-    if ($this->von!='')
+    if ($this->von!='') {
       $von = date("d.m.Y",$this->von);
-    if ($this->bis!='')
+    }
+    if ($this->bis!='') {
       $bis = date("d.m.Y",$this->bis);
+    }
 
-    if ($von!='' and $bis!='')
+    if ($von!='' && $bis!='') {
       return $von." - ".$bis;
+    }
     return $von.$bis;
   }
 
-/**
-* Gibt das vonDatum, an dem der Spieltag ausgetragen wird
-*
-* @access public
-* @return string
-*/
+  /**
+   * Gibt das vonDatum, an dem der Spieltag ausgetragen wird
+   *
+   * @access public
+   * @return string
+   */
   function vonString() {
     $von = "";
-    if ($this->von!='')
+    if ($this->von!='') {
       $von = date("d.m.Y",$this->von);
+    }
     return $von;
   }
 
-/**
-* Gibt das bisDatum, an dem der Spieltag ausgetragen wird
-*
-* @access public
-* @return string
-*/
+  /**
+   * Gibt das bisDatum, an dem der Spieltag ausgetragen wird
+   *
+   * @access public
+   * @return string
+   */
   function bisString() {
     $bis = '';
-    if ($this->bis!='')
+    if ($this->bis!='') {
       $bis = date("d.m.Y",$this->bis);
+    }
     return $bis;
-
   }
 
 } // END class spieltag

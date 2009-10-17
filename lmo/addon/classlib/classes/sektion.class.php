@@ -6,7 +6,8 @@
  *
  * @package   classLib
  * @access  public
-*/
+ * @version $Id$
+ */
 
 class sektion {
   var $keyValues;
