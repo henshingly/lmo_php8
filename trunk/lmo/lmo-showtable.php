@@ -76,7 +76,7 @@ if($tabpkt==0){?>
     <th align="right"><?php echo $text[39]; ?></th><?php
 if($tabpkt==1){?>
     <th style="width:2px;">&nbsp;</th>
-    <th <?=$dummy?>><?php echo $text[37]; ?></th><?php
+    <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
 }
 if($tabonres==2){?>
     <th style="width:2px;">&nbsp;</th>
@@ -88,14 +88,14 @@ if($tabonres==2){?>
     <th align="right"><?php echo $text[36]; ?></th><?php
   if($tabpkt==0){?>
     <th style="width:2px;">&nbsp;</th>
-    <th <?=$dummy?>><?php echo $text[37]; ?></th><?php
+    <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
   } ?>
     <th style="width:2px;">&nbsp;</th>
     <th colspan="3" align="center"><?php echo $text[38]; ?></th>
     <th align="right"><?php echo $text[39]; ?></th><?php
   if($tabpkt==1){?>
     <th style="width:2px;">&nbsp;</th>
-    <th <?=$dummy?>><?php echo $text[37]; ?></th><?php
+    <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
   }?>
     <th style="width:2px;">&nbsp;</th>
     <th align="right"><?php echo $text[33]; ?></th>
@@ -106,7 +106,7 @@ if($tabonres==2){?>
     <th align="right"><?php echo $text[36]; ?></th><?php
   if($tabpkt==0){?>
     <th style="width:2px;">&nbsp;</th>
-    <th<?=$dummy?>><?php echo $text[37]?></th><?php
+    <th<?php echo $dummy?>><?php echo $text[37]?></th><?php
   }?>
     <th style="width:2px;">&nbsp;</th>
     <th colspan="3" align="center"><?php echo $text[38]; ?></th>

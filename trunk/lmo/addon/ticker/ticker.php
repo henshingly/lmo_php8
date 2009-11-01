@@ -1,4 +1,5 @@
-<?php/** Liga Manager Online 4
+<?php
+/** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
   *
@@ -55,7 +56,7 @@ if (basename($_SERVER['PHP_SELF'])=="ticker.php") {?>
 					"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title><?=$versionticker?></title>
+<title><?php echo $versionticker?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
 <style type="text/css">
   @media screen{
@@ -67,12 +68,12 @@ if (basename($_SERVER['PHP_SELF'])=="ticker.php") {?>
   }
 </style>
 </head>
-<body><?
+<body><?php 
 }?>
-  <div align="center"><?
+  <div align="center"><?php 
 if ($ticker_tickertitel==1) { ?>
-    <p><?=$text['ticker'][0]?></p><?php}?>
-    <script type="text/javascript"><?
+    <p><?php echo $text['ticker'][0]?></p><?php }?>
+    <script type="text/javascript"><?php 
 if (!isset($file)) {
   $file="";
 }
@@ -161,20 +162,20 @@ foreach($ticker_array as $file){
 } //foreach
 $ticker_formnumber="t".substr(md5(microtime()),3,4);
 $file=$file2;?>
-  var msg1<?=$ticker_formnumber?>="<?=$ticker_text?>";
-  var laenge<?=$ticker_formnumber?>=msg1<?=$ticker_formnumber?>.length;
-  var timerID<?=$ticker_formnumber?> = null;
-  var timerRunning<?=$ticker_formnumber?> = false;
-  var id<?=$ticker_formnumber?>,pause<?=$ticker_formnumber?>=0,position<?=$ticker_formnumber?>=0;
-  function marquee<?=$ticker_formnumber?>(){
-    var i,k,msg=msg1<?=$ticker_formnumber?>;
-    k=(<?=$ticker_breite?>/msg.length)+1;
+  var msg1<?php echo $ticker_formnumber?>="<?php echo $ticker_text?>";
+  var laenge<?php echo $ticker_formnumber?>=msg1<?php echo $ticker_formnumber?>.length;
+  var timerID<?php echo $ticker_formnumber?> = null;
+  var timerRunning<?php echo $ticker_formnumber?> = false;
+  var id<?php echo $ticker_formnumber?>,pause<?php echo $ticker_formnumber?>=0,position<?php echo $ticker_formnumber?>=0;
+  function marquee<?php echo $ticker_formnumber?>(){
+    var i,k,msg=msg1<?php echo $ticker_formnumber?>;
+    k=(<?php echo $ticker_breite?>/msg.length)+1;
     for(i=0;i<=k;i++) msg+=""+msg;
-    document.<?=$ticker_formnumber?>.marquee.value=msg.substring(position<?=$ticker_formnumber?>,position<?=$ticker_formnumber?>+120);
-    if(position<?=$ticker_formnumber?>++==laenge<?=$ticker_formnumber?>) position<?=$ticker_formnumber?>=0;
-    id=setTimeout("marquee<?=$ticker_formnumber?>()",1000/<?=$ticker_geschwindigkeit+0.1?>);
+    document.<?php echo $ticker_formnumber?>.marquee.value=msg.substring(position<?php echo $ticker_formnumber?>,position<?php echo $ticker_formnumber?>+120);
+    if(position<?php echo $ticker_formnumber?>++==laenge<?php echo $ticker_formnumber?>) position<?php echo $ticker_formnumber?>=0;
+    id=setTimeout("marquee<?php echo $ticker_formnumber?>()",1000/<?php echo $ticker_geschwindigkeit+0.1?>);
     }
-  function action<?=$ticker_formnumber?>(){
+  function action<?php echo $ticker_formnumber?>(){
     if(!pause) {
       clearTimeout(id);
       pause=1;
@@ -184,22 +185,22 @@ $file=$file2;?>
       pause=0;
     }
   }
-  if (laenge<?=$ticker_formnumber?>>0) {
+  if (laenge<?php echo $ticker_formnumber?>>0) {
     if (document.layers) {  //Bug in NN4 -> Keine Styles erlaubt
-      document.write('<form name="<?=$ticker_formnumber?>"><input type="text" name="marquee" SIZE="<?=$ticker_breite?>" readonly><\/form>');
+      document.write('<form name="<?php echo $ticker_formnumber?>"><input type="text" name="marquee" SIZE="<?php echo $ticker_breite?>" readonly><\/form>');
     }else{
-      document.write('<form name="<?=$ticker_formnumber?>" style="margin:0 auto;"><input style="background:#<?=$ticker_background?>;color:#<?=$ticker_color?>;border:1px solid #<?=$ticker_color?>;" type="text" name="marquee" SIZE="<?=$ticker_breite?>" readonly><\/form>');
+      document.write('<form name="<?php echo $ticker_formnumber?>" style="margin:0 auto;"><input style="background:#<?php echo $ticker_background?>;color:#<?php echo $ticker_color?>;border:1px solid #<?php echo $ticker_color?>;" type="text" name="marquee" SIZE="<?php echo $ticker_breite?>" readonly><\/form>');
     }
-    marquee<?=$ticker_formnumber?>();
+    marquee<?php echo $ticker_formnumber?>();
   }
     </script>
 
     <noscript>
-    <marquee style='background:#<?=$ticker_background?>;color:#<?=$ticker_color?>;width:<?=$ticker_breite?>ex;border:1px solid #<?=$ticker_color?>;'><?=$ticker_text?></marquee>
+    <marquee style='background:#<?php echo $ticker_background?>;color:#<?php echo $ticker_color?>;width:<?php echo $ticker_breite?>ex;border:1px solid #<?php echo $ticker_color?>;'><?php echo $ticker_text?></marquee>
     </noscript>
-  </div><?
+  </div><?php 
 //Falls IFRAME - komplettes HTML-Dokument
 if (basename($_SERVER['PHP_SELF'])=="ticker.php") {?>
 </body>
-</html><?
+</html><?php 
 }?>

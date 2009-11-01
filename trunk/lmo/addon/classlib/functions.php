@@ -9,159 +9,45 @@
  * @version $Id$
  */
 
-
+/**
+ *  const_array()
+ *
+ * @access public
+ * @param constant string
+ * @return array
+ */
 function const_array($constant) {
   $array = explode(",",$constant);
   return $array;
 };
 
-
-
 /**
- * Strafen
- *
- * Wird von calcTable verwende
- *
- * SP Straf-/Bonuspunkte links
- * SM Straf-/Bonuspunkte rechts (nur wenn es Minuspunkte gibt)
- * TOR1 Straf-/Bonustore links
- * TOR2 Straf-/Bonustore rechts
- * STDA ab wann zählt Strafe/Bonus
- *
- * @author    Tim Schumacher <webobjects@gmx.net>
- * @package classLib
- * @access privat
- */
-function strafen(&$team,$spTag,$minusPkte) {
-  $stda = isset($team["team"]->keyValues["STDA"]) ? $team["team"]->keyValues["STDA"] : 0;
-  if ($stda==$spTag  or ($stda==0 and $spTag==1)) {
-    if ($minusPkte==FALSE) {
-      $team["pPkt"] += isset($team["team"]->keyValues["SP"])   ? -$team["team"]->keyValues["SP"]       : 0;
-      $team["mPkt"] += isset($team["team"]->keyValues["SM"])   ? -$team["team"]->keyValues["SM"]       : 0;
-      $team["pTor"] += isset($team["team"]->keyValues["TOR1"]) ? -$team["team"]->keyValues["TOR1"]     : 0;
-      $team["mTor"] += isset($team["team"]->keyValues["TOR2"]) ? abs($team["team"]->keyValues["TOR2"]) : 0;
-    }
-    else {
-      $team["mPkt"] += isset($team["team"]->keyValues["SM"])   ? $team["team"]->keyValues["SM"]   : 0;
-      $team["mTor"] += isset($team["team"]->keyValues["TOR2"]) ? $team["team"]->keyValues["TOR2"] : 0;
-    }
-  }
-}
-
-
-/**
- * Gibt ein multidim Array zurück, das die sortierten partien enthält,
- * Aufbau array[0..n](
- * 			'date'  [timestamp des Spieldatums]
- *  		'spTag'  [integer],
- * 			'spieltag' [Object spieltag]
- *   		'partie' [Object partie] )
- *
- * Beispiel:
- * $sortedGames = gamesSorted ($liga,false);
- * echo "&gth;pre>";
- * print_r($sortedGames);
- * echo "&gth;/pre>";
+ *  newStyle()
  *
  * @access public
- * @return Array
+ * @param url string
+ * @param cssURL string
+ * @return string
  */
-function &gamesSorted ($liga,$roundSort=true) {
-  $games = array();
-  foreach ($liga->spieltage as $spieltag) {
-    foreach ($spieltag->partien as $partie) {
-      $sort_1[] = $partie->zeit;
-      $sort_2[] = $spieltag->nr;
-      $games[]= array(
-      'date' => $partie->zeit,
-      'spTag' => $spieltag->nr,
-      'spieltag' => $spieltag,
-      'partie' => $partie,
-      );
-    }
-  }
-  if($roundSort) {
-    array_multisort($sort_2, SORT_ASC,
-    $sort_1, SORT_ASC,$games);
-  }
-  else {
-    array_multisort($sort_1,SORT_ASC,$games);
-  }
-  return $games;
-}
-
-/**
- * Gibt ein multidim Array zurück, das die sortierten partien einer bestimmten mannschaft enthält,
- * Aufbau array[0..n](
- * 			'spieltag' [Object spieltag]
- *   		'partie' [Object partie] )
- *
- * Beispiel:
- * $sortedGames = gamesSorted ($liga,false);
- * echo "&gth;pre>";
- * print_r($sortedGames);
- * echo "&gth;/pre>";
- *
- * @access public
- * @return Array
- */
-function &gamesSortedForTeam ($liga,$team=null,$roundSort=true, $sortDir = SORT_ASC) {
-  if(!is_object($team)) {  // Wurde nix angegeben wird das fav. Team verwendet
-    $team = $liga->teamForNumber($liga->options->keyValues['favTeam']);
-  }
-
-  $games = array();
-  foreach ($liga->spieltage as $spieltag) {
-    foreach ($spieltag->partien as $partie) {
-      if ($partie->heim == $team or $partie->gast == $team) {
-        //	    	  echo "".$partie->datumString()." ".$partie->heim->name." vs ".$partie->gast->name;
-        $sort_1[] = $partie->zeit;
-        $sort_2[] = $spieltag->nr;
-        $games[]= array(
-        'date' => $partie->zeit,
-        'spTag' => $spieltag->nr,
-        'spieltag' => $spieltag,
-        'partie' => $partie,
-        );
-      }
-    }
-  }
-  if($roundSort) {
-    array_multisort($sort_2, $sortDir,
-    $sort_1, $sortDir,$games);
-  }
-  else {
-    array_multisort($sort_1,$sortDir,$games);
-  }
-  unset($games['date']); // wurde nur zum sortieren benötigt
-  unset($games['spTag']);// wurde nur zum sortieren benötigt
-  return $games;
-}
-
-
-// Wird noch von der Function loadFile der Class Liga benoetigt
-function getIniData($key,&$array,$defaultV="") {
-  if(array_key_exists($key,$array))
-  $result = $array[$key];
-  else
-  $result = $defaultV;
-  return $result;
-}
-
-
 function newStyle($url,$cssURL) {
   $found = preg_match("/style=/i",$url);
   if ($found) {
     $pattern = "/style=(.*)/i"; // /style=.*(&?|$)/isU
     $cssURL = "style=".$cssURL;
     $url = preg_replace($pattern, $cssURL, $url);
-  }
-  else
-  $url .= "&style=".$cssURL;
-
+	} else $url .= "&style=".$cssURL;
   return $url;
 }
 
+/**
+ *  sisURL()
+ *
+ * @access public
+ * @param url string
+ * @param alt string
+ * @param neu string
+ * @return string
+*/
 function sisURL($url,$alt='view1',$neu='view2') {
   $alt = "/$alt/isU";
   $url = preg_replace($alt, $neu, $url);
@@ -197,10 +83,10 @@ function strAfterChar($str,$char) {
  *
  * @param string $needle
  * @param string $haystack
- * @param integer $insensitive 0/1
+ * @param boolean $insensitive
  * @return boolean
  */
-function in_string($needle, $haystack, $insensitive = 0) {
+function in_string($needle, $haystack, $insensitive = false) {
   if ($insensitive) {
     return (false !== stristr($haystack, $needle)) ? true : false;
   } else {
@@ -243,9 +129,8 @@ function readLigaDir($dirName,&$dataArray) {
  * @return array
  */
 function findTeamName(&$teamNamesArray,$search) {
-
   $results = array();
-  $expr = "/\s+[IXVivx]*[0-9]*\s*$|\s+\(.*\)$/i";
+	$expr = "/\s+|\d+|\W/i";
   if (is_array($teamNamesArray) ) {
     $match = strtolower(preg_replace($expr,"",$search));
     foreach($teamNamesArray as $teamName) {

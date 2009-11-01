@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Spieltag
  *
@@ -34,6 +34,16 @@ class spieltag {
   var $bis;
 
   /**
+   * modus als integer,
+   * 0 => Liga , jeder gegen jeden
+   * 1 => pokal , KO Tunier
+   *
+   * @var integer
+   * @access privat
+   */
+  var $modus= 0;
+
+  /**
    * Partien des Spieltages,
    * @var array of partien objects
    * @access public
@@ -60,32 +70,62 @@ class spieltag {
    * Gibt Partien eines Spieltag zurück, Optional: Sortierung
    *
    * datum
-   * heimname (noch nicht implementiert)
-   * gastname (noch nicht implementiert)
-   * heimtore (noch nicht implementiert)
-   * gasttore (noch nicht implementiert)
-   * summetore (noch nicht implementiert)
    *
+   * Mögliche weitere Sortierungen:
+   * heimname (nicht implementiert)
+   * gastname (nicht implementiert)
+   * heimtore (nicht implementiert)
+   * gasttore (nicht implementiert)
+   * summetore (nicht implementiert)
+   *
+   * @since 2.8
    * @access public
    * @param string Sortierung
    * @return array Partien
    */
-  function getPartien($sorted="") {
-    $result = null;
-
+  function getPartien($sorted="",$sort_dir='ASC') {
+    $result = array();
     switch ($sorted) {
       case "datum":
         foreach ($this->partien as $partie) {
-        	var_dump($partie);
+        	$result[$partie->zeit+$partie->spNr] = $partie;
         }
+        if ($sort_dir == 'ASC') {
+          ksort($result,SORT_NUMERIC);
+      	} else {
+      	  krsort($result,SORT_NUMERIC);
+      	}
+        $result = array_values($result);
         break;
       default:
         $result = $this->partien;
         break;
     }
-
-
     return $result;
+  }
+
+  /**
+   * Setzt den Modus des Spieltags
+   *  0 = Liga / 1 = Pokal-KoTunier
+   *
+   * @since 2.7
+   * @access public
+   * @parameter integer Modus des Spieltags
+   */
+  function setModus($value) {
+    $this->modus = $value;
+  }
+
+  /**
+   * Gibt den Modus des Spieltags zurück
+   *  0 = Liga / 1 = Pokal-KoTunier
+   *
+   * @since 2.7
+   * @access public
+   * @return integer Modus des Spieltags
+   */
+  function getModus() {
+    return $this->modus;
   }
 
   /**

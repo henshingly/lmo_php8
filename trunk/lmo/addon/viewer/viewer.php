@@ -18,8 +18,11 @@
   * $Id$
   */
  
+if (!defined('VIEWER_VERSION'))  define('VIEWER_VERSION','[<acronym title="Viewer $Revision$ &copy; LMO-Group">&copy;</acronym>]');
+
 require(dirname(__FILE__).'/../../init.php');
-require_once(PATH_TO_ADDONDIR."/viewer/ini.php");
+require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
+require_once(PATH_TO_ADDONDIR."/viewer/viewer_functions.php");
  
 // Load the cache-counter-file for viewers simple cache mechanism
 $viewer_cache_counter_filename = PATH_TO_LMO.'/'.$diroutput.'/viewer_'.$multi.'_count.txt';
@@ -47,6 +50,20 @@ if (file_exists($multi1)) {
   die("Konfigurationsdatei: $multi1 nicht gefunden!");
 }
 
+if (empty($multi_cfgarray['liga1']) && isset($viewer_league)) {
+  $multi_cfgarray['liga1'] = basename($viewer_league);
+  $viewer_cache_counter=0;
+}
+
+//check if one of the leagues is newer than the cache file
+$i=1;
+while (isset($multi_cfgarray['liga'.$i])) {
+  if (filemtime(PATH_TO_LMO.'/'.$diroutput.'viewer_'.$multi.'.txt') < filemtime(PATH_TO_LMO.'/'.$dirliga.$multi_cfgarray['liga'.$i])) {
+    $viewer_cache_counter=0;
+  }
+  $i++;
+}
+
 $multi_cfgarray['cache_refresh'] = isset($multi_cfgarray['cache_refresh'])?$multi_cfgarray['cache_refresh']:0;
 
 if ($viewer_cache_counter == 0 || $viewer_cache_counter > $multi_cfgarray['cache_refresh']) {
@@ -54,8 +71,8 @@ if ($viewer_cache_counter == 0 || $viewer_cache_counter > $multi_cfgarray['cache
    
   $i = 1;
   $output = "";
-  $fav_liga[] = array();
-   $fav_team[][] = array();
+  $fav_liga = array();
+  $fav_team = array();
   while (isset($multi_cfgarray['liga'.$i])) {
     $fav_liga[$i] = $multi_cfgarray['liga'.$i];
     $ii = 1;
@@ -77,7 +94,6 @@ if ($viewer_cache_counter == 0 || $viewer_cache_counter > $multi_cfgarray['cache
   $template = new HTML_Template_IT(PATH_TO_TEMPLATEDIR.'/viewer' ); // Template Object
   $template->loadTemplatefile($template_file.'.tpl.php');
   // Template laden
-   
   if (isset($multi_cfgarray['titelzeile'])) {
     $template->setVariable("Titelzeile", $multi_cfgarray['titelzeile']);
   }

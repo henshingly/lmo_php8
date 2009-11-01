@@ -63,9 +63,13 @@
             <tr>
               <td>
                 <table width=100%  cellspacing="0"  cellpadding="2">
+                <!-- BEGIN Spieltag -->
+                    <tr>
+                      <th colspan="10"><a href="<!--AktSpieltagLink-->"><!--AktSpieltag--></th>
+                    </tr>
                   <!-- BEGIN Inhalt -->
                     <tr class="<!--Zeilenklasse-->">
-                      <td><!--Spieltag--></td>
+                      <td><a href="<!--SpieltagLink-->"><!--Spieltag--></a></td>
                       <td><!--Datum--></td>
                       <td><!--Uhrzeit--></td>
                       <td align="right"><acronym title="<!--HeimLang-->"><!--Heim--></acronym></td><td><!--Iconheim--></td>
@@ -77,6 +81,7 @@
                       <td><!--Spielbericht--></td>
                     </tr>
                   <!-- END Inhalt -->
+                  <!-- END Spieltag -->
                 </table>
               </td>
             </tr>

@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -52,9 +52,9 @@
   
   for($i=0;$i<$v;$i++){
     $j=intval(substr($tab[$i],-7));?>
- <option value="<?=$team[$j]?>"<?
+ <option value="<?php echo $team[$j]?>"<?php 
     if($xtippervereinalt==$team[$j]){
       echo " selected";
-    }?>><?=$team[$j]?> [<?=$tipperteam[$j]?>]</option><?
+    }?>><?php echo $team[$j]?> [<?php echo $tipperteam[$j]?>]</option><?php 
   }
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -216,20 +216,20 @@ if ($file!="") {
   }
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
+  <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
-    <td align="center"><?include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
+    <td align="center"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
   </tr>
   <tr>
     <td align="center">
-      <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
+      <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
-        <input type="hidden" name="file" value="<?=$file; ?>">
-        <input type="hidden" name="st" value="<?=$st; ?>">
+        <input type="hidden" name="file" value="<?php echo $file; ?>">
+        <input type="hidden" name="st" value="<?php echo $st; ?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr><?
+          <tr><?php
   if ($datum1[$st-1]!="") {
     $datum = explode('.',$datum1[$st-1]);
     $dum1=$me[intval($datum[1])]." ".$datum[2];
@@ -255,7 +255,7 @@ if ($file!="") {
       $j=$st.". ".$text[370];
     }
   }?>
-            <th class="nobr" align="left" colspan="<?=$datm+5; ?>"><?
+            <th class="nobr" align="left" colspan="<?php echo $datm+5; ?>"><?php
   if ($lmtype==0) {
     echo $st.". ".$text[2];
   } else {
@@ -269,45 +269,47 @@ if ($file!="") {
       echo " ".$text[4]." ".$datum2[$st-1];
     }
   }?>
-            </th><?php  if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
-            <th class="nobr" align="center" colspan="<? if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
-            <?=$text['tipp'][188]; /* Tipptendenz absolut */?>
+            </th><?php
+  if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
+            <th class="nobr" align="center" colspan="<?php  if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
+            <?php echo $text['tipp'][188]; /* Tipptendenz absolut */?>
             </th>
 <?php  
-/**ERGEBNISMODUS*/
+  }
+  //ERGEBNISMODUS
   if($tipp_tippmodus==1){  
     if($tipp_showdurchschntipp==1){ ?>
             <th class="nobr" align="center" colspan="2">
-            <?="Ø-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
-            </th><?  
+            <?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
+            </th><?php
     } ?>
-            <th class="nobr" align="center" colspan="<? if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
-              <acronym title="<?=$text['tipp'][241].":".$text['tipp'][242] ?>"><?=$text['tipp'][209]; /* Dein Tipp */?></acronym><br><?
+            <th class="nobr" align="center" colspan="<?php  if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
+              <acronym title="<?php echo $text['tipp'][241].":".$text['tipp'][242] ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php
     if ($goalfaktor!=1) {
       echo "(".$text[553+log10($goalfaktor)].")";
     }?>
-            </th><?
+            </th><?php
   }
   
-/**TENDENZMODUS*/
+  //TENDENZMODUS
   if($tipp_tippmodus==0){ ?>
-            <th class="nobr" align="center"><acronym title="<?=$text['tipp'][95] ?>">1</acronym></th><?  
+            <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][95] ?>">1</acronym></th><?php
     if($hidr==0){ ?>
-            <th class="nobr" align="center"><acronym title="<?=$text['tipp'][96] ?>">0</acronym></th><?  
+            <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][96] ?>">0</acronym></th><?php
     }?>
-            <th class="nobr" align="center"><acronym title="<?=$text['tipp'][97] ?>">2</acronym></th><?
+            <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][97] ?>">2</acronym></th><?php
   }
-/**BEIDE*/
+  //BEIDE
   if ($tipp_jokertipp==1){ ?>
-            <th class="nobr" align="center"><acronym title="<?=$text['tipp'][290] ?>"><?=$text['tipp'][289]; ?></acronym></th><?
+            <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][290] ?>"><?php echo $text['tipp'][289]; ?></acronym></th><?php
   } ?>
-            <th class="nobr" colspan="3" align="center"><?=$text['tipp'][31]; /* Ergebnis */?></th><?
+            <th class="nobr" colspan="3" align="center"><?php echo $text['tipp'][31]; /* Ergebnis */?></th><?php
   if($spez==1){?>
-            <th colspan="2">&nbsp;</th><?
+            <th colspan="2">&nbsp;</th><?php
   }?>
-            <th class="nobr" colspan="2" align="right"><?=$text[37]; /* PP */?></th>
+            <th class="nobr" colspan="2" align="right"><?php echo $text[37]; /* PP */?></th>
             <th>&nbsp;</th>
-          </tr><?
+          </tr><?php
   if ($lmtype!=0) {
     
     $anzsp=$anzteams;
@@ -353,15 +355,15 @@ if ($file!="") {
     }
   }?>
           <tr>
-            <td colspan="<?=$datm*2+10-$hidr; ?>" align="right"><?php  if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
+            <td colspan="<?php echo $datm*2+10-$hidr; ?>" align="right"><?php  if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
     echo $text['tipp'][177];
   } 
   if($savebutton==1){ ?>
-              <input class="lmo-formular-button" type="submit" title="<?=$text[114] ?>" name="best" value="<?=$text['tipp'][8]; ?>"<? if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  }else{
+              <input class="lmo-formular-button" type="submit" title="<?php echo $text[114] ?>" name="best" value="<?php echo $text['tipp'][8]; ?>"<?php  if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  }else{
     echo "&nbsp;";
   }?>
             </td>
-            <td class="lmoFrontMarkierung" colspan="<?=$breite-$datm-9; ?>" align="right"><?
+            <td class="lmoFrontMarkierung" colspan="<?php echo $breite-$datm-9; ?>" align="right"><?php
   echo $text[37]." ";
   if($lmtype==0){
    echo $text[2];
@@ -372,7 +374,7 @@ if ($file!="") {
             </td>
           </tr>
           <tr>
-            <td class="lmoFooter" colspan="<?=$breite; ?>" align="center"><? if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
+            <td class="lmoFooter" colspan="<?php echo $breite; ?>" align="center"><?php  if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
           </tr>
         </table>
       </form>
@@ -380,14 +382,14 @@ if ($file!="") {
   </tr>
 </table>
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
-  <tr><?  
+  <tr><?php
    $st0 = $st-1;
    if ($st > 1) {?>
-    <td align='left'>&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?> <?=$text[6]?></a>&nbsp;</td><?
+    <td align='left'>&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a>&nbsp;</td><?php
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>
-    <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[8]?> <?=$text[7]?></a>&nbsp;</td><?
+    <td align="right">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</td><?php
    }?>
   </tr>
 </table><?php} ?>

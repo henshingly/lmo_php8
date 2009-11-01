@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -21,12 +21,12 @@
 ?>
 <table class="lmoMiddle" width="400" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?=$text[54]; ?></h1></td>
+    <td align="center"><h1><?php echo $text[54]; ?></h1></td>
   </tr>
   <tr>
     <td align="center">
-      <p><?=$text[55]; ?></p>
-      <p><?=$text[56]; ?></p>
+      <p><?php echo $text[55]; ?></p>
+      <p><?php echo $text[56]; ?></p>
     </td>
   </tr>
   <tr>
@@ -34,10 +34,10 @@
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmotext">
-            <p><?=$text[47]; ?></p>
-            <p><?=$text[48]; ?></p>
-            <p><?=$text[49]; ?></p>
-            <?=$text[50]; ?>
+            <p><?php echo $text[47]; ?></p>
+            <p><?php echo $text[48]; ?></p>
+            <p><?php echo $text[49]; ?></p>
+            <?php echo $text[50]; ?>
           </td>
         </tr>
       </table>

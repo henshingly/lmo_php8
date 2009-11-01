@@ -1,4 +1,4 @@
-<?
+<?php 
 echo("<card id=\"auswahl\" title=\"Auswahl\">\n");
    
 if ($lmtype == 0) {

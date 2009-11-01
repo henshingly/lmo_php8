@@ -30,21 +30,21 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 <a name="top"></a>
 <table class="lmoSubmenu" width="100%" cellpadding="0" cellspacing="0">
  <tr>
-   <td align="left"><? include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?></td>
+   <td align="left"><?php  include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?></td>
   </tr>
 </table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?=$titel?></h1></td>
+    <td align="center"><h1><?php echo $titel?></h1></td>
   </tr>
   <tr>
     <td align="center">
-      <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
+      <form name="lmoedit" action="<?php  echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
-        <input type="hidden" name="file" value="<? echo $file; ?>">
-        <input type="hidden" name="st" value="<? echo $st; ?>"><?php
+        <input type="hidden" name="file" value="<?php  echo $file; ?>">
+        <input type="hidden" name="st" value="<?php  echo $st; ?>"><?php
 
   $liga1 = new liga();
   if ($liga1->loadFile(PATH_TO_LMO."/".$dirliga.$file)==false)
@@ -92,7 +92,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         <tr>
           <th width="15" class="nobr">&nbsp;</th>
           <th colspan="6" class="nobr" align="left">
-            <strong><?=$spTag->nr.". ".$text[2]."&nbsp;&nbsp;".$spTag->vonBisString()."</strong> / ".$spTag->partienCount()." ".$text[5003] ; ?>
+            <strong><?php echo $spTag->nr.". ".$text[2]."&nbsp;&nbsp;".$spTag->vonBisString()."</strong> / ".$spTag->partienCount()." ".$text[5003] ; ?>
           </th>
           <th colspan="3" class="nobr" align="right">
 				<a href="#top"><?php echo $text[5011]; ?></a>&nbsp;/&nbsp;<a href="#bottom"><?php echo $text[5012]; ?></a></th>
@@ -119,13 +119,13 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
       }?>
         <tr>
           <td>&nbsp;</td>
-          <td><?=$str1.$partie->datumString()." ".$partie->zeitString().$str2; ?></td>
-          <td><?=$str1.$partie->heim->name.$str2; ?></td>
+          <td><?php echo $str1.$partie->datumString()." ".$partie->zeitString().$str2; ?></td>
+          <td><?php echo $str1.$partie->heim->name.$str2; ?></td>
           <td>-</td>
-          <td><?=$str1.$partie->gast->name.$str2; ?></td>
-          <td align='right' ><?=$str1.$hTore.$str2; ?></td>
+          <td><?php echo $str1.$partie->gast->name.$str2; ?></td>
+          <td align='right' ><?php echo $str1.$hTore.$str2; ?></td>
           <td>:</td>
-          <td align='center'><?=$str1.$gTore.$str2; ?></td>
+          <td align='center'><?php echo $str1.$gTore.$str2; ?></td>
           <td></td>
           <td>
             <select class="lmo-formular-input" onChange="dolmoedit()" name="sp_<?php
@@ -148,7 +148,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
-          <td><?=$team->name; ?></td>
+          <td><?php echo $team->name; ?></td>
           <td align='right' colspan=3><?php echo $text[5008]; ?></td>
         </tr><?php
         } // if
@@ -161,7 +161,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 ?>
         <tr>
             <th class="nobr" colspan="10">
-              <acronym title="<? echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<? echo $text[5009]; ?>"></acronym>
+              <acronym title="<?php  echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php  echo $text[5009]; ?>"></acronym>
             </th>
         </tr>
         </table>
@@ -169,5 +169,5 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
       <a name="bottom"></a>
     </td>
   </tr>
-</table><?
+</table><?php 
 }?>

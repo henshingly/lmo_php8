@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -18,20 +18,27 @@
   */
 
 require_once(dirname(__FILE__).'/../../init.php');
+require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 
-// Durch Get bestimmter Parameter (für IFRAME)
-$m_liga=       isset($_GET['mini_liga'])?             urldecode($_GET['mini_liga']):       '';
-$m_ueber=      isset($_GET['mini_ueber'])?            urldecode($_GET['mini_ueber']):      2;
-$m_unter=      isset($_GET['mini_unter'])?            urldecode($_GET['mini_unter']):      2;
-$m_template=   isset($_GET['mini_template'])?         urldecode($_GET['mini_template']):   "standard";
-$m_platz=      !empty($_GET['mini_platz'])?           urldecode($_GET['mini_platz']):      NULL;
+//4-stufiges Fallback für diese Variablen
+//1.GET-Parameter(IFRAME)->2.Variable vorhanden(include)->3.Configwert->4. Standardwert
+$m_template = !empty($_GET['mini_template'])? str_replace('..','',$_GET['mini_template']):
+                (isset($mini_template)? str_replace('..','',$mini_template):$cfgarray['mini']['tabelle_standardTemplate'] );
+if (!is_readable(PATH_TO_TEMPLATEDIR."/mini/$m_template.tpl.php") ) $m_template = "standard";
 
-// Direkt bestimmte Parameter (für include/require)
-$m_liga=       isset($mini_liga)?             $mini_liga:       $m_liga;
-$m_ueber=      isset($mini_ueber)?            $mini_ueber:      $m_ueber;
-$m_unter=      isset($mini_unter)?            $mini_unter:      $m_unter;
-$m_template=   isset($mini_template)?         $mini_template:   $m_template;
-$m_platz=      isset($mini_platz)?            $mini_platz:      $m_platz;
+$m_liga = !empty($_GET['mini_liga'])? urldecode($_GET['mini_liga']):
+            (isset($mini_liga)? $mini_liga:
+              (isset($mini_standardLiga)? $cfgarray['mini']['standardLiga']: '') );
+$m_ueber= !empty($_GET['mini_ueber'])? urldecode($_GET['mini_ueber']):
+            (isset($mini_ueber)? $mini_ueber:
+              (isset($cfgarray['mini']['standardAnzahlueber'])?$cfgarray['mini']['standardAnzahlueber']: 2) );
+$m_unter= !empty($_GET['mini_unter'])? urldecode($_GET['mini_unter']):
+            (isset($mini_unter) ? $mini_unter:
+              (isset($cfgarray['mini']['standardAnzahlunter'])? $cfgarray['mini']['standardAnzahlunter']: 2) );
+$m_platz= !empty($_GET['mini_platz'])? urldecode($_GET['mini_platz']):
+            (isset($mini_platz)? $mini_platz:
+              (!empty($cfgarray['mini']['standardTabellenPlatz'])? $cfgarray['mini']['standardTabellenPlatz']: NULL) );
+
 
 //Falls IFRAME - komplettes HTML-Dokument
 if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
@@ -45,126 +52,160 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
   html,body {margin:0;padding:0;background:transparent;}
 </style>
 </head>
-<body><?
+<body><?php
 }
 
-/**Format of CSV-File:
-  *       0     |      1            |   2   |   3   |  4   |  5   |  6  | 7 | 8  |  9 |    10    |  11       |     12
-  * TeamLongName|TeamnameAbbrevation|Points+|Points-|Goals+|Goals-|Games|Win|Draw|Loss|Marking   |           |TeamShortName
-  *  Teamname   |  Kurzname         |Pkt.+  | Pkt.- |Tore+ | Tore-|Sp.  | + | o  | -  |Markierung| TeamNotiz | Mittelname
-  */
-if (file_exists(PATH_TO_LMO.'/'.$diroutput.basename($m_liga).'-tab.csv')) {
+$CacheOutput='';
+$TableCacheFile = PATH_TO_LMO.'/'.$diroutput.basename($m_liga).".cache";
+// Wenn Cache File vorhanden und auf Aktuellen Stand, gib dies aus.
+if (is_readable($TableCacheFile) && $cfgarray['mini']['CacheTable'] == 1) {
+  $CacheFile= file ($TableCacheFile);
+  if (trim(array_shift($CacheFile)) == (filemtime(PATH_TO_LMO.'/'.$dirliga.$m_liga)."|$m_ueber|$m_unter|$m_platz")  ) {
+    // echo "Cache Ausgabe: <br>";
+    $CacheOutput= print implode("",$CacheFile);
+  }
+}
+if (empty($CacheOutput)) {
+  //"Direkte Ausgabe: <br>";
+  $liga = new liga();
+  if (is_readable(PATH_TO_LMO.'/'.$dirliga.$m_liga) && $m_liga && $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$m_liga) ) {
   $template = new HTML_Template_IT( PATH_TO_TEMPLATEDIR.'/mini' );
   $template->loadTemplatefile($m_template.".tpl.php");
 
-  $m_tabelle=array();
+    $AnzahlTeams= $liga->teamCount();
+    $LigaTabelle= $liga->calcTable($liga->options->keyValues['Rounds']);
+    $LastGameDay= $liga->calcTable($liga->options->keyValues['Actual']-1);
 
-  $handle = fopen (PATH_TO_LMO.'/'.$diroutput.basename($m_liga).'-tab.csv',"rb");
-  while ( ($data = fgetcsv ($handle, 1000, "|")) !== FALSE ) {
-    $m_tabelle[]=$data;
+    $Favorit = $liga->teamForNumber($liga->options->keyValues['favTeam']);
+    if (is_null($m_platz) || $m_platz <= 0 || $m_platz > $AnzahlTeams ) {
+      foreach ($LigaTabelle as $value)
+      if ($Favorit->nr == $value['team']->nr ) $viewPosition= $value['pos'];
+    } else $viewPosition = $m_platz;
+    $beginTabellenPlatz= $viewPosition-$m_unter;
+    $endTabellenPlatz= $viewPosition+$m_ueber;
+    if ($beginTabellenPlatz<=0) {
+      $beginTabellenPlatz = 1;
+      $endTabellenPlatz = $m_unter+1+$m_ueber<$AnzahlTeams? $m_unter+1+$m_ueber:$AnzahlTeams;
   }
-  fclose($handle);
-  $m_anzteams=count($m_tabelle);
-
-  for ($i=0;$i<$m_anzteams;$i++) {
-    if (empty($m_platz)) {
-      if (strpos($m_tabelle[$i][10],"F")!==FALSE) {
-        break;
+    if ($endTabellenPlatz>$AnzahlTeams ) {
+      $endTabellenPlatz = $AnzahlTeams;
+      $beginTabellenPlatz = $AnzahlTeams-$m_unter-1-$m_ueber>0? $AnzahlTeams-$m_unter-1-$m_ueber:1 ;
       }
-    } else {
-      $i=$m_platz-1;
-      break;
-    }
-  }
-  $nach_unten=$m_anzteams-$i-1-$m_unter;
-  $nach_oben=$i-$m_ueber;
 
-  if ($nach_unten<0) {
-    $end=$m_anzteams;
-    $nach_oben=$nach_oben-(-1)*$nach_unten;
-    $nach_unten=0;
-  }
+    for ($j=0; $j<$AnzahlTeams ; $j++) {
+      if ($LigaTabelle[$j]['pos'] >= $beginTabellenPlatz && $LigaTabelle[$j]['pos'] <= $endTabellenPlatz ) {
 
-  if ($nach_oben<0) {
-    $nach_unten=$nach_unten-(-1)*$nach_oben;
-    if ($nach_unten<0) {
-      $nach_unten=0;
-    }
-    $nach_oben=0;
-  }
-
-  for ($j=$nach_oben;$j<$m_anzteams-$nach_unten;$j++) {
     $template->setCurrentBlock("Inhalt");
-    $template->setVariable(array("Platz"=>"<strong>".($j+1)."</strong>"));
-    $template->setVariable(array("TeamBild"=>getSmallImage($m_tabelle[$j][0])));
-    $template->setVariable(array("TeamLang"=>$m_tabelle[$j][0]));
-    $template->setVariable(array("TeamMittel"=>(isset($m_tabelle[$j][12])?$m_tabelle[$j][12]:'')));
-    $template->setVariable(array("Teamnotiz"=>$m_tabelle[$j][11]));
-    $template->setVariable(array("Team"=>$m_tabelle[$j][1]));
-    if ($m_tabelle[$j][3]=='') {
-      $template->setVariable(array("Punkte"=>$m_tabelle[$j][2]));
+        $template->setVariable('Platz',"<strong>".$LigaTabelle[$j]['pos']."</strong>");
+        $template->setVariable('TeamBild',HTML_icon($LigaTabelle[$j]['team']->name,'teams','small'));
+        $template->setVariable('TeamBildMiddle',HTML_icon($LigaTabelle[$j]['team']->name,'teams','middle'));
+        $template->setVariable('TeamBildBig',HTML_icon($LigaTabelle[$j]['team']->name,'teams','big'));
+        $template->setVariable('TeamLang',$LigaTabelle[$j]['team']->name);
+        $template->setVariable('TeamMittel',(isset($LigaTabelle[$j]['team']->mittel)?$LigaTabelle[$j]['team']->mittel:''));
+        $template->setVariable('Team',$LigaTabelle[$j]['team']->kurz);
+        $template->setVariable('Teamnotiz',$LigaTabelle[$j]['team']->valueForKey("NOT"));
+        if ($liga->options->keyValues['MinusPoints'] == 1) {
+          $template->setVariable('Punkte',$LigaTabelle[$j]['pPkt']);
     } else {
-      $template->setVariable(array("Punkte"=>$m_tabelle[$j][2].':'.$m_tabelle[$j][3]));
+          $template->setVariable('Punkte',$LigaTabelle[$j]['pPkt'].':'.$LigaTabelle[$j]['mPkt']);
     }
-    $template->setVariable(array("PlusTore"=>$m_tabelle[$j][4]));
-    $template->setVariable(array("MinusTore"=>$m_tabelle[$j][5]));
-    if (($m_diff=$m_tabelle[$j][4]-$m_tabelle[$j][5])>0) $m_diff='+'.$m_diff;
-    $template->setVariable(array("Tordifferenz"=>$m_diff));
-    $template->setVariable(array("Spiele"=>$m_tabelle[$j][6]));
-    $template->setVariable(array("Siege"=>$m_tabelle[$j][7]));
-    $template->setVariable(array("Unentschieden"=>$m_tabelle[$j][8]));
-    $template->setVariable(array("Niederlagen"=>$m_tabelle[$j][9]));
-    $style='';
-    if ($m_tabelle[$j][10]!='') {
-      if (strpos($m_tabelle[$j][10],'M')!==FALSE){  //Meister
-        $style="background: $lmo_tabelle_background1 repeat;";
-        $style.=empty($lmo_tabelle_color1)?'':"color: $lmo_tabelle_color1;";
-        $template->setVariable(array("Style"=>$style));
-      } elseif (strpos($m_tabelle[$j][10],'C')!==FALSE){  //CL
-        $style="background: $lmo_tabelle_background2 repeat;";
-        $style.=empty($lmo_tabelle_color2)?'':"color: $lmo_tabelle_color2;";
-        $template->setVariable(array("Style"=>$style));
-      } elseif (strpos($m_tabelle[$j][10],'Q')!==FALSE){  //CL-Quali
-        $style="background: $lmo_tabelle_background3 repeat;";
-        $style.=empty($lmo_tabelle_color3)?'':"color: $lmo_tabelle_color3;";
-        $template->setVariable(array("Style"=>$style));
-      } elseif (strpos($m_tabelle[$j][10],'U')!==FALSE){   //UEFA
-        $style="background: $lmo_tabelle_background4 repeat;";
-        $style.=empty($lmo_tabelle_color4)?'':"color: $lmo_tabelle_color4;";
-        $template->setVariable(array("Style"=>$style));
-      } elseif (strpos($m_tabelle[$j][10],'R')!==FALSE){  //Relegation
-        $style="background: $lmo_tabelle_background5 repeat;";
-        $style.=empty($lmo_tabelle_color5)?'':"color: $lmo_tabelle_color5;";
-        $template->setVariable(array("Style"=>$style));
-      } elseif (strpos($m_tabelle[$j][10],'A')!==FALSE){  //Absteiger
-        $style="background: $lmo_tabelle_background6 repeat;";
-        $style.=empty($lmo_tabelle_color6)?'':"color: $lmo_tabelle_color6;";
-        $template->setVariable(array("Style"=>$style));
+        $template->setVariable('PlusTore',$LigaTabelle[$j]['pTor']);
+        $template->setVariable('MinusTore',$LigaTabelle[$j]['mTor']);
+        if (($m_diff=$LigaTabelle[$j]['pTor']-$LigaTabelle[$j]['mTor'])>0) $m_diff='+'.$m_diff;
+        $template->setVariable('Tordifferenz',$m_diff);
+        // Dart Liga
+        $template->setVariable('PlusSaetze',$m_tabelle[$j][12]);
+        $template->setVariable('MinusSaetze',$m_tabelle[$j][13]);
+        if (( $satzDiff = $m_tabelle[$j][12]-$m_tabelle[$j][13]) > 0 ) $satzDiff = "+".$satzDiff;
+        $template->setVariable('SatzDifferenz',$satzDiff);
+        // Dart Liga
+        $template->setVariable('Spiele',$LigaTabelle[$j]['spiele']);
+        $template->setVariable('Siege',$LigaTabelle[$j]['s']);
+        $template->setVariable('Unentschieden',$LigaTabelle[$j]['u']);
+        $template->setVariable('Niederlagen',$LigaTabelle[$j]['n']);
+        foreach ($LastGameDay as $LetzterSpieltag) {
+          if ($LigaTabelle[$j]['team']->nr == $LetzterSpieltag['team']->nr) {
+            $Tendenz = $LetzterSpieltag['pos']-$LigaTabelle[$j]['pos'];
+            $template->setVariable('Tendenz',($Tendenz>0?'+'.$Tendenz:$Tendenz) );
+            break;
       }
     }
-    if (strpos($m_tabelle[$j][10],'F')!==FALSE){  //FavTeam
+        $TendenzImgFile = $Tendenz>0? $cfgarray['mini']['TendenzPfeilUpImg']: ( $Tendenz<0? $cfgarray['mini']['TendenzPfeilDownImg']:$cfgarray['mini']['TendenzPunktImg']);
+        $template->setVariable(array("TendenzIMG"=> "<img src='".URL_TO_IMGDIR."/".$TendenzImgFile."' border='0' title='".$Tendenz."'>") );
+        // Style Classes anhand der liga Options errechnen  -- um Alte Templates zu nutzen wird auch style mit ausgegeben
+        $style= "";$css_class= "";
+        if ($LigaTabelle[$j]['pos'] <= $liga->options->keyValues['Champ']) {
+          // Meister
+          $css_class = $cfgarray['mini']['tabelle_classMeister'];
+          $style="background: ".$cfgarray['lmo_tabelle_background1']." repeat;";
+          $style.=empty($cfgarray['lmo_tabelle_color1'])?'':"color: ".$cfgarray['lmo_tabelle_color1'].";";
+        } elseif ($LigaTabelle[$j]['pos'] <= ($liga->options->keyValues['Champ']+$liga->options->keyValues['CL']) ) {
+          // Champions League
+          $css_class = $cfgarray['mini']['tabelle_classCLAufsteiger'];
+          $style="background: ".$cfgarray['lmo_tabelle_background2']." repeat;";
+          $style.=empty($cfgarray['lmo_tabelle_color2'])?'':"color: ".$cfgarray['lmo_tabelle_color2'].";";
+        } elseif ($LigaTabelle[$j]['pos'] <= ($liga->options->keyValues['Champ']+$liga->options->keyValues['CL']+$liga->options->keyValues['CK']) ) {
+          // CL Qualifikation
+          $css_class = $cfgarray['mini']['tabelle_classCLQuali'];
+          $style="background: ".$cfgarray['lmo_tabelle_background3']." repeat;";
+          $style.=empty($cfgarray['lmo_tabelle_color3'])?'':"color: ".$cfgarray['lmo_tabelle_color3'].";";
+        } elseif ($LigaTabelle[$j]['pos'] <= ($liga->options->keyValues['Champ']+$liga->options->keyValues['CL']+$liga->options->keyValues['CK']+$liga->options->keyValues['UC']) ) {
+          // UEFA Cup
+          $css_class = $cfgarray['mini']['tabelle_classUEFA'];
+          $style="background: ".$cfgarray['lmo_tabelle_background4']." repeat;";
+          $style.=empty($cfgarray['lmo_tabelle_color4'])?'':"color: ".$cfgarray['lmo_tabelle_color4'].";";
+        } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']) ) {
+          // Abstiegs Relegation
+          $css_class = $cfgarray['mini']['tabelle_classAbsteiger'];
+          $style="background: ".$cfgarray['lmo_tabelle_background6']." repeat;";
+          $style.=empty($cfgarray['lmo_tabelle_color6'])?'':"color: ".$cfgarray['lmo_tabelle_color6'].";";
+        } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']-$liga->options->keyValues['AR']) ) {
+          // Abstiegsplaetze
+          $css_class = $cfgarray['mini']['tabelle_classAbstiegsRelegation'];
+          $style="background: ".$cfgarray['lmo_tabelle_background5']." repeat;";
+          $style.=empty($cfgarray['lmo_tabelle_color5'])?'':"color: ".$cfgarray['lmo_tabelle_color5'].";";
+        } else $css_class = "";     // "Normale Tabellenplaetze
+        // Striche nach Meister / CL /CL Quali ....
+        if ($j && $LastClass != $css_class && $cfgarray['mini']['StyleStripLine'])
+        $style.= "border-top: ".$cfgarray['mini']['StyleStripLine'].";";
+        $LastClass= $css_class;
+        //FavTeam
+        if ($LigaTabelle[$j]['team']->nr == $Favorit->nr ){
       $style.="font-weight:bolder;";
-      $template->setVariable(array("Style"=>$style));
+          $css_class.= $cfgarray['mini']['classFavorit'];
     }
-    /*
-    if ($j%2==0) {
-      $style.="background-color:#ccc;";
-      $template->setVariable(array("Style"=>$style));
-    } else {
-      $style.="background-color:#fff;";
-      $template->setVariable(array("Style"=>$style));
-    }*/
+        // Style fuer "Gestreifte" Tabelle
+        if ($cfgarray['mini']['stripedTable'] != 0 ) {
+          $stripedColor = explode(";",trim($cfgarray['mini']['stripedTable']) );
+          if ($j%2==0) $style.="background-color: ".$stripedColor[0].";\n";
+          else $style.="background-color: ".$stripedColor[1].";\n";
+        }
+        $template->setVariable(array("Style"=>$style,"Class"=>$css_class));
     $template->parseCurrentBlock();
   }
+    }
+    $template->setVariable("LigaBild",HTML_icon(basename($m_liga),'liga','small'));
+    $template->setVariable("LigaBildMiddle",HTML_icon(basename($m_liga),'liga','middle'));
+    $template->setVariable("LigaBildBig",HTML_icon(basename($m_liga),'liga','big'));
+    $template->setVariable("ligaDatum",$text['mini'][14].": ".$liga->ligaDatumAsString("%x"));
+    $template->setVariable("URL_TO_LMO", URL_TO_LMO);
+    $template->setVariable("URL_TO_TEMPLATEDIR", URL_TO_TEMPLATEDIR."/mini/");
   $template->setVariable("Link", URL_TO_LMO.'/?action=table&amp;file='.$m_liga);
-  //$template->parse();
+    // cache File schreiben
+    if ( is_writable(dirname($TableCacheFile)) && $cfgarray['mini']['CacheTable'] == 1 ) {
+      $CacheOutput = filemtime(PATH_TO_LMO.'/'.$dirliga.$m_liga)."|$m_ueber|$m_unter|$m_platz\n".$template->get();
+      if ($fileHandle = @fopen($TableCacheFile,"wb") ) {
+        fwrite($fileHandle,$CacheOutput);
+        fclose($fileHandle);
+      }
+    }
   $template->show();
 } else {
   echo getMessage($text['mini'][5]." ".$mini_liga,TRUE);
 }
-
+}
 //Falls IFRAME - komplettes HTML-Dokument
 if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 </body>
-</html><?
+</html><?php
 }?>

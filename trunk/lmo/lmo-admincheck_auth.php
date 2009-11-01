@@ -1,4 +1,4 @@
-<?
+<?php 
 
 if(!isset($_SESSION['lmousername'])){$_SESSION['lmousername']="";}
 if(!isset($_SESSION['lmouserpass'])){$_SESSION['lmouserpass']="";}

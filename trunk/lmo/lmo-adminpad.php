@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -23,7 +23,7 @@ if(($action=="admin") && ($todo=="")){
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?=$text[92];?></h1></td>
+    <td align="center"><h1><?php echo $text[92];?></h1></td>
   </tr>
   <tr>
     <td align="center">
@@ -31,22 +31,22 @@ if(($action=="admin") && ($todo=="")){
         <tr>
           <td class="lmost5" align="left">
             <ul><?php  if($_SESSION["lmouserok"]==2){ ?>
-              <li ><?="<a href='".$adda."new'>".$text[93]."</a>";?></li><?
+              <li ><?php echo "<a href='".$adda."new'>".$text[93]."</a>";?></li><?php 
   }?>
-              <li ><?=$text[94];?>:<? $ftype=".l98"; require(PATH_TO_LMO."/lmo-dirlist.php");?></li><?php  if($_SESSION['lmouserok']==2){ ?>
-              <li><?="<a href='".$adda."delete'>".$text[95]."</a>"; ?></li>
-              <li class="lmoadminli"><?="<a href='".$adda."upload'>".$text[96]."</a>"; ?></li><?php  }?>
-              <li class="lmoadminli"><?="<a href='".$adda."download'>".$text[349]."</a>"; ?></li><?php  if($_SESSION['lmouserok']==2){ ?>
-              <li class="lmoadminli"><?="<a href='".$adda."options'>".$text[97]."</a>"; ?></li><?
+              <li ><?php echo $text[94];?>:<?php  $ftype=".l98"; require(PATH_TO_LMO."/lmo-dirlist.php");?></li><?php  if($_SESSION['lmouserok']==2){ ?>
+              <li><?php echo "<a href='".$adda."delete'>".$text[95]."</a>"; ?></li>
+              <li class="lmoadminli"><?php echo "<a href='".$adda."upload'>".$text[96]."</a>"; ?></li><?php  }?>
+              <li class="lmoadminli"><?php echo "<a href='".$adda."download'>".$text[349]."</a>"; ?></li><?php  if($_SESSION['lmouserok']==2){ ?>
+              <li class="lmoadminli"><?php echo "<a href='".$adda."options'>".$text[97]."</a>"; ?></li><?php 
     if ($eintippspiel) {?>
-              <li class="lmoadminli"><?="<a href='".$adda."tipp'>".$text['tipp'][115]."</a>"; ?></li><?php    }
+              <li class="lmoadminli"><?php echo "<a href='".$adda."tipp'>".$text['tipp'][115]."</a>"; ?></li><?php    }
   }?>
-              <li class="lmoadminli"><?="<a href='".$adda."logout'>".$text[98]."</a>"; ?></li>
+              <li class="lmoadminli"><?php echo "<a href='".$adda."logout'>".$text[98]."</a>"; ?></li>
             </ul>
           </td>
         </tr>
       </table>
     </td>
   </tr>
-</table><?
+</table><?php 
 }?>

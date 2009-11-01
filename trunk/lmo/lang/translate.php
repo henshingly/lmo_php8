@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -88,21 +88,21 @@ if ($_SESSION['lmouserok'] == 2) {
     </style>
   </head>
   <body>
-    <form action="<?=$_SERVER['PHP_SELF']?>" method='post'>
+    <form action="<?php echo $_SERVER['PHP_SELF']?>" method='post'>
     <table>
       <caption><h1>Translation</h1></caption>
       <thead>
         <tr>
           <th>#</th>
-          <td width="49%"><h2><?=$file?></h2></td>
+          <td width="49%"><h2><?php echo $file?></h2></td>
           <th width="49%">
             Translate
-              <select size="1" name="file"><?
+              <select size="1" name="file"><?php 
               foreach($langFiles as $dir => $files) {
                 echo '<option value="'.$dir.'"'.($file==$dir?" selected":'').'>'.$dir;
               }?>
               </select> to
-              <select size="1" name="lang"><?
+              <select size="1" name="lang"><?php 
               foreach ($langFiles["."] as $langfile) {
                 echo "<option".($lang==$langfile?" selected":'').">".$langfile;
               }?>
@@ -122,7 +122,7 @@ if ($_SESSION['lmouserok'] == 2) {
           <th colspan="3"><small>LMO-Translation Tool &ndash; &copy; Rene Marth/<a href="liga-manager-online.de/">LMO-Group</a></small></td>
         </tr>
       </tfoot>
-  <?
+  <?php 
   $de = file($file."/lang-$from_lang.txt");
   $to = array();
 
@@ -196,9 +196,9 @@ if ($_SESSION['lmouserok'] == 2) {
   }
 ?>
 
-    </table><div id="result" onClick="this.style.display='none';"><h1><?=sprintf("%2d",($uncomplete_count/$count*100))?>% seems to be translated!</h1><p>Please note: This script checks only for emtpy values and if 2 values are equal. So if a word in 2 languages is the same you get false negatives. Then you can ignore the marked values.</p><small>Click</small></div>
+    </table><div id="result" onClick="this.style.display='none';"><h1><?php echo sprintf("%2d",($uncomplete_count/$count*100))?>% seems to be translated!</h1><p>Please note: This script checks only for emtpy values and if 2 values are equal. So if a word in 2 languages is the same you get false negatives. Then you can ignore the marked values.</p><small>Click</small></div>
     </form>
 
   </body>
-</html><?
+</html><?php 
 }?>

@@ -1,4 +1,4 @@
-<?
+<?php 
 // 
 // LigaManager Online 3.02b
 // Copyright (C) 1997-2002 by Frank Hollwitz

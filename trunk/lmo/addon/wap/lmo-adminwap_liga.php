@@ -1,7 +1,7 @@
-<?
+<?php 
 $begin=isset($_REQUEST['begin'])?$_REQUEST['begin']:0;?>
 <card id="index" title="Ligenauswahl">
-  <p><?
+  <p><?php 
 if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
   $verz=opendir(PATH_TO_LMO.'/'.substr($dirliga,0,-1));
   $dummy=array();
@@ -116,24 +116,24 @@ if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
   	  
   	$t0= ($t0);?>
     <small>
-      <a href="<?=$_SERVER['PHP_SELF']."?file=".$files?>&amp;op=nav&amp;st=<?=$t1?>"><?=$t0?></a>
-      <br/><?=strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$files)).$t3?>
+      <a href="<?php echo $_SERVER['PHP_SELF']."?file=".$files?>&amp;op=nav&amp;st=<?php echo $t1?>"><?php echo $t0?></a>
+      <br/><?php echo strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$files)).$t3?>
     </small>
-    <br/><?  
+    <br/><?php   
     } else {
           if ($ende<count($dummy)) $ende++;
         }
   }
   if ($begin-1>0) {?>
-      <a href='<?=$_SERVER['PHP_SELF']?>?begin=<?=$begin-$wap_anzahl_ligen_pro_seite?>'>zurück</a><?
+      <a href='<?php echo $_SERVER['PHP_SELF']?>?begin=<?php echo $begin-$wap_anzahl_ligen_pro_seite?>'>zurück</a><?php 
   }
   if ($begin-1>0 && $ende+1<count($dummy)) echo "&#160;|&#160;";
   if ($ende+1<count($dummy)) {?>
-      <a href='<?=$_SERVER['PHP_SELF']?>?begin=<?=$begin+$wap_anzahl_ligen_pro_seite?>'>weiter</a><?
+      <a href='<?php echo $_SERVER['PHP_SELF']?>?begin=<?php echo $begin+$wap_anzahl_ligen_pro_seite?>'>weiter</a><?php 
   }
   if($i==0){ echo $text[223];}
 }
 ?>
   </p>
-  <p><small><a href="<? echo $_SERVER['PHP_SELF']; ?>?op=exit">Logout</a></small></p>
+  <p><small><a href="<?php  echo $_SERVER['PHP_SELF']; ?>?op=exit">Logout</a></small></p>
 </card>

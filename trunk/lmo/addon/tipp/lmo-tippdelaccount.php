@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -79,26 +79,26 @@ if (($action == "tipp") && ($todo == "delaccount")) {
 
 ?>
   <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-    <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
+    <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
     <tr>
-      <th colspan="2" align="center"><?=$text['tipp'][6]; ?></th>
+      <th colspan="2" align="center"><?php echo $text['tipp'][6]; ?></th>
     </tr>
     <tr>
       <td width="20">&nbsp;</td><?php  if($newpage!=1){ ?>
       <td class="nobr" align="center">
-        <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return confirm('');">
+        <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return confirm('');">
           <input type="hidden" name="action" value="tipp">
           <input type="hidden" name="todo" value="delaccount">
           <input type="hidden" name="newpage" value="1">
-          <p><?=" ".$text['tipp'][69]; ?>: &nbsp;<input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>"></p>
-          <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text[82]; ?>">
+          <p><?php echo " ".$text['tipp'][69]; ?>: &nbsp;<input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $xtipperpass; ?>"></p>
+          <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text[82]; ?>">
         </form>
       </td><?php  }
   if($newpage==1){ /* erfolgreich*/?>
       <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
     </tr>
     <tr>
-      <td class="lmoFooter" colspan="2" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?=$text['tipp'][141]; ?></a></td>
+      <td class="lmoFooter" colspan="2" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?php echo $text['tipp'][141]; ?></a></td>
     </tr><?php  }?>
   </table><?php} 
 $file="";

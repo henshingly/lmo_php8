@@ -1,5 +1,5 @@
 <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
-  <tr><?
+  <tr><?php 
   if (isset($anzst)) {
     for ($i=1; $i<=$anzst; $i++) {
       if ($lmtype==1) {

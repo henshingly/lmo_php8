@@ -47,6 +47,10 @@ a:visited {
             <tr>
               <td>
                 <table  class="vRow" cellspacing="1" cellpadding="1" border="0" width=100%>
+                  <!-- BEGIN Spieltag -->
+                    <tr>
+                      <th colspan="7"><a href="<!--AktSpieltagLink-->"><!--AktSpieltag--></th>
+                    </tr>
                   <!-- BEGIN Inhalt -->
                     <tr class="<!--Zeilenklasse-->">
                       <td><!--Datum--></td>
@@ -58,6 +62,7 @@ a:visited {
                       <td><!--Tore--></td>
                     </tr>
                   <!-- END Inhalt -->
+                  <!-- END Spieltag -->
                 </table>
               </td>
             </tr>

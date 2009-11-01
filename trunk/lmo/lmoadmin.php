@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -43,11 +43,11 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
   <head>
   <title>LMO Admin</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
-    <link type='text/css' rel='stylesheet' href='<?=URL_TO_LMO?>/lmo-style-nc.php'>
-    <style type='text/css'>@import url('<?=URL_TO_LMO?>/lmo-style.php');</style>
+    <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_LMO?>/lmo-style-nc.php'>
+    <style type='text/css'>@import url('<?php echo URL_TO_LMO?>/lmo-style.php');</style>
   </head>
   <body>
-  <div align="center"><?
+  <div align="center"><?php 
 
   $action="admin";
   $array = array();
@@ -60,5 +60,5 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
   ?>
   </div>
   </body>
-  </html><?
+  </html><?php 
 }?>

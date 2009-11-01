@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -41,14 +41,14 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
   }?>
 <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?=$text[299];?></h1></td>
+    <td align="center"><h1><?php echo $text[299];?></h1></td>
   </tr>
   <tr>
     <td align="center">
-      <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
+      <form enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <td align="center"><acronym title="<?=$text[302] ?>"><?=$text[300]; ?>:</acronym></td>
+            <td align="center"><acronym title="<?php echo $text[302] ?>"><?php echo $text[300]; ?>:</acronym></td>
           </tr>
           <tr>
             <td align="center">              
@@ -58,10 +58,10 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
               <input type="file" name="userfile">
             </td>
           </tr>
-          <tr><td align="center"><input type="submit" value="<?=$text[301]; ?>"></td></tr>
+          <tr><td align="center"><input type="submit" value="<?php echo $text[301]; ?>"></td></tr>
         </table>
       </form>
     </td>
   </tr>
-</table><?
+</table><?php 
 }?>

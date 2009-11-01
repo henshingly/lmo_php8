@@ -1,4 +1,4 @@
-<?
+<?php 
 echo("<card id=\"tab\" title=\"$st. Spieltag\">\n");
 echo "<p>";
 
@@ -50,8 +50,8 @@ if ($lmtype == 0) {
      
   }
 }?>
-  <p><a href="<?=$_SERVER['PHP_SELF'].'?wap_file='.$file;?>&amp;op=day&amp;st=<? echo $st; ?>"><?=$text[10];?></a> | 
-     <a href="<?=$_SERVER['PHP_SELF'].'?wap_file='.$file;?>&amp;op=help&amp;st=<? echo $st; ?>"><?=$text[20];?></a>
+  <p><a href="<?php echo $_SERVER['PHP_SELF'].'?wap_file='.$file;?>&amp;op=day&amp;st=<?php  echo $st; ?>"><?php echo $text[10];?></a> | 
+     <a href="<?php echo $_SERVER['PHP_SELF'].'?wap_file='.$file;?>&amp;op=help&amp;st=<?php  echo $st; ?>"><?php echo $text[20];?></a>
   </p>
-  <p><small><a href="<?=$_SERVER['PHP_SELF']?>">Home</a></small></p>
+  <p><small><a href="<?php echo $_SERVER['PHP_SELF']?>">Home</a></small></p>
 </card>

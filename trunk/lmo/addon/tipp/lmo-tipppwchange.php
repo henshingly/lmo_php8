@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -91,35 +91,35 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   } // end ($newpage==1)
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
+  <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
-    <th align="center"><?=$text['tipp'][107]; ?></th>
+    <th align="center"><?php echo $text['tipp'][107]; ?></th>
   </tr><?php  if($newpage!=1){ ?>
   <tr>
     <td align="center">
-      <form name="lmotippedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
+      <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="pwchange">
         <input type="hidden" name="newpage" value="1">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><?=" ".$text['tipp'][140]; ?> &nbsp;</td>
-            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?=$xtipperpass; ?>"></td>
+            <td class="nobr" align="right"><?php echo " ".$text['tipp'][140]; ?> &nbsp;</td>
+            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $xtipperpass; ?>"></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><?=" ".$text['tipp'][139]; ?> &nbsp;</td>
-            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?=$xtipperpassneu; ?>"></td>
+            <td class="nobr" align="right"><?php echo " ".$text['tipp'][139]; ?> &nbsp;</td>
+            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?php echo $xtipperpassneu; ?>"></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><?=" ".$text['tipp'][139]." ".$text['tipp'][19]; ?> &nbsp;</td>
-            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?=$xtipperpassneuw; ?>"></td>
+            <td class="nobr" align="right"><?php echo " ".$text['tipp'][139]." ".$text['tipp'][19]; ?> &nbsp;</td>
+            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?php echo $xtipperpassneuw; ?>"></td>
           </tr>
           <tr>
             <td class="lmost4" colspan="3" align="right">
-              <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?=$text[329]; ?>">
+              <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text[329]; ?>">
             </td>
           </tr>
         </table>
@@ -131,7 +131,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
   </tr>
   <tr>
-    <td class="lmoFooter" align="right"><a href="<?=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?=$text[5]." ".$text['tipp'][1]; ?></a></td>
+    <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?php echo $text[5]." ".$text['tipp'][1]; ?></a></td>
   </tr><?php  }?>
 </table><?php} 
 $file=""; ?>

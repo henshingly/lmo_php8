@@ -63,7 +63,7 @@ lmotest=false;
     document.getElementsByName("xviewertage")[0].disabled=true;    
   }
   if(document.getElementsByName("xsttipp")[0].checked==0 && document.getElementsByName("xviewertipp")[0].checked==0){
-      alert('<?=$text['tipp'][301]?>');
+      alert('<?php echo $text['tipp'][301]?>');
   }
 }	  
 // --->

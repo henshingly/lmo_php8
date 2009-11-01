@@ -28,6 +28,10 @@ for($i=1; $i<=$anzahl_ligen; $i++) {
     $template->setCurrentBlock("Liga");                                   // Äusserer Block für die Liga
     $template->setVariable("Anfangsdatum",date($multi_cfgarray['datumsformat'],zeitberechnung("2",-$multi_cfgarray['anzahl_tage_minus'])));  // Relevante Daten setzen
     $template->setVariable("Enddatum",date($multi_cfgarray['datumsformat'],zeitberechnung("2",$multi_cfgarray['anzahl_tage_plus'])));  // Relevante Daten setzen
+    //Anfang Ergebnisse verlinken
+    $template->setVariable("ErgebnisLink",URL_TO_LMO.'/lmo.php?file='.$fav_liga[$i]."&amp;action=results");
+    $template->setVariable("Liganame",$akt_liga->name);
+    $template->setVariable("Ligadatum",$akt_liga->ligaDatumAsString());
     
     //all teams
     if ($all_teams) {
