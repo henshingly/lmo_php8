@@ -1,9 +1,9 @@
-<card id="day" title="<?=$st?>. Spieltag"><?
+<card id="day" title="<?php echo $st?>. Spieltag"><?php 
 //Anzeige Spieltag
 if ($file!="") {
   $st_next=$st+1;
   $st_before=$st-1;?>
-  <p><?
+  <p><?php 
   for ($i=0; $i<$anzsp; $i++) {
     if (($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)) {
       if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
@@ -35,32 +35,32 @@ if ($file!="") {
         $heim_tore='';
         $gast_tore='';
       }?>
-      <input type="text" size="2" name="anzheim<?=$i; ?>" maxlength="2" value="<?=$heim_tore?>"/>:<input type="text" size="2" name="anzgast<?=$i; ?>" maxlength="2" value="<?=$gast_tore?>"/></p><p><?
+      <input type="text" size="2" name="anzheim<?php echo $i; ?>" maxlength="2" value="<?php echo $heim_tore?>"/>:<input type="text" size="2" name="anzgast<?php echo $i; ?>" maxlength="2" value="<?php echo $gast_tore?>"/></p><p><?php 
     }
   }?>
     </p>
-    <p align="center"><?
+    <p align="center"><?php 
   if($st>1){?>
-    <a href="<?=$_SERVER['PHP_SELF']?>?wap_file=<?=$file?>&amp;op=day&amp;st=<?=$st_before?>">«</a>&#160;|<?
+    <a href="<?php echo $_SERVER['PHP_SELF']?>?wap_file=<?php echo $file?>&amp;op=day&amp;st=<?php echo $st_before?>">«</a>&#160;|<?php 
   }?>
     <anchor>Speichern
-	    <go href="<?=$_SERVER['PHP_SELF']?>" method="post"><?
+	    <go href="<?php echo $_SERVER['PHP_SELF']?>" method="post"><?php 
   for($i=0;$i<$anzsp;$i++){ 
     if(($teama[$st-1][$i]>0) && ($teamb[$st-1][$i]>0)){?>
-				<postfield name="st" value="<?=$st?>"/>
+				<postfield name="st" value="<?php echo $st?>"/>
         <postfield name="op" value="save"/>
-        <postfield name="wap_file" value="<?=$file?>"/>
-        <postfield name="heim<?=$i?>" value="$(anzheim<?=$i?>)"/>
-				<postfield name="gast<?=$i?>" value="$(anzgast<?=$i?>)"/>
-        <postfield name="<?=session_name();?>" value="<?=session_id(); ?>"/><?
+        <postfield name="wap_file" value="<?php echo $file?>"/>
+        <postfield name="heim<?php echo $i?>" value="$(anzheim<?php echo $i?>)"/>
+				<postfield name="gast<?php echo $i?>" value="$(anzgast<?php echo $i?>)"/>
+        <postfield name="<?php echo session_name();?>" value="<?php echo session_id(); ?>"/><?php 
 	  }
   }?>	</go> 
-    </anchor><?
+    </anchor><?php 
   if($st<$anzst){?>
-    |&#160;<a href="<?=$_SERVER['PHP_SELF']?>?wap_file=<?=$file?>&amp;op=day&amp;st=<?=$st_next?>">»</a>&#160;<?
+    |&#160;<a href="<?php echo $_SERVER['PHP_SELF']?>?wap_file=<?php echo $file?>&amp;op=day&amp;st=<?php echo $st_next?>">»</a>&#160;<?php 
   }?>
   </p>
-  <p><a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=table&amp;st=<?=$st?>"><?=$text[16];?></a> | <a href="<?=$_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=help&amp;st=<?=$st; ?>"><?=$text[20];?></a></p><?
+  <p><a href="<?php echo $_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=table&amp;st=<?php echo $st?>"><?php echo $text[16];?></a> | <a href="<?php echo $_SERVER['PHP_SELF']."?wap_file=$file";?>&amp;op=help&amp;st=<?php echo $st; ?>"><?php echo $text[20];?></a></p><?php 
 }?>
-  <p><small><a href="<?=$_SERVER['PHP_SELF']?>">Home</a></small></p>
+  <p><small><a href="<?php echo $_SERVER['PHP_SELF']?>">Home</a></small></p>
 </card>

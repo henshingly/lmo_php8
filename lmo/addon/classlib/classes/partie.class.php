@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Partie
  *
@@ -14,6 +14,7 @@ class partie {
    * @access public
    */
   var $spNr;
+
   //  var $n_SpNr;
   /**
    * Datum der Partie,
@@ -27,36 +28,42 @@ class partie {
    * @access public
    */
   var $notiz;
+
   /**
    * Heimmannschaft der Partie,
    * @var array Team Objekt
    * @access public
    */
   var $heim;
+
   /**
    * Gastmannschaft der Partie,
    * @var array Team Objekt
    * @access public
    */
   var $gast;
+
   /**
    * Heimtore der Partie,
    * @var integer
    * @access public
    */
   var $hTore;
+
   /**
    * Gasttore der Partie,
    * @var integer
    * @access public
    */
   var $gTore;
+
   /**
    * Heimpkte der Partie,
    * @var integer
    * @access private
    */
   var $hPunkte;
+
   /**
    * Gastpkte der Partie,
    * @var integer
@@ -69,7 +76,7 @@ class partie {
    * @var string
    * @access public
    */
-  var $reportUrl;
+  var $reportUrl= null;
 
   /**
    * Spielende
@@ -80,7 +87,16 @@ class partie {
    * @var integer
    * @access public
    */
-  var $spielEnde;
+  var $spielEnde= 0;
+
+  /**
+   * Other Parameter - Alle anderen Parameter die nicht direkt zugeordnet werden
+   *
+   * @since 2.7
+   * @var array
+   * @access privat
+  */
+  var $otherParameter = array();
 
   /**
    * Konstruktor
@@ -96,7 +112,7 @@ class partie {
    * @param integer $n_gpunkte
    * @return partie
    */
-  function partie($n_spNr,$n_time,$n_notiz,&$n_heim,&$n_gast,$n_htore,$n_gtore,$n_hpunkte,$n_gpunkte) {
+  function partie($n_spNr,$n_time,$n_notiz,&$n_heim,&$n_gast,$n_htore,$n_gtore,$n_hpunkte=0,$n_gpunkte=0) {
     $this->spNr = $n_spNr;
     $this->zeit = $n_time;
     $this->notiz = $n_notiz;
@@ -106,8 +122,6 @@ class partie {
     $this->gTore = $n_gtore;
     $this->hPunkte = $n_hpunkte;
     $this->gPunkte = $n_gpunkte;
-    $this->reportUrl = NULL;
-    $this->spielEnde = NULL;
   }
 
 
@@ -232,7 +246,6 @@ class partie {
     return $str;
   }
 
-
   /**
    * Debugfunktion.
    *
@@ -255,5 +268,99 @@ class partie {
     echo " Ergebnis:".$this->hTore." - ".$this->gTore;
   }
 
+  /**
+   * Weitere Parameter zur Partie setzen.
+   * z.B. Sätze / Halbzeitergebnisse usw.
+   *
+   * @since 2.7
+   * @access public
+   * @param mixed parameter Parameter die zu der Partie gespeichert werden sollen
+   * @param string key Bezeichner unter dem der Parameter gespeichert werden soll
+   */
+  function setParameter($parameter,$key="") {
+    if (is_array($parameter) ) {
+      $this->otherParameter = array_merge($this->otherParameter,$parameter);
+    } else {
+      $this->otherParameter[$key] = $parameter;
 }
+  }
+
+  /**
+   * Weitere Parameter zur Partie setzen.
+   * z.B. Sätze / Halbzeitergebnisse usw.
+   *
+   * @since 2.7
+   * @access public
+   * @param string key Bezeichner des Parameters der ausgegeben werden soll, ist kein Parameter angegeben, wird das komplette array zurückgegeben.
+   * @return mixed Parameter
+   */
+  function getParameter($key="") {
+    if ($key == "") {
+      return $this->otherParameter;
+    }
+    return $this->otherParameter[$key];
+  }
+
+  /**
+   * Speichern des Links zum Spielbericht
+   *
+   * @since 2.7
+   * @access public
+   * @param string value Link zum Spielbericht
+   */
+  function setreportUrl($value) {
+    $this->reportUrl = $value;
+  }
+
+  /**
+   * Ausgabe des Links zum Spielbericht
+   *  wenn als Ziel null angegeben wird, dann wird nur die URL zurückgegeben
+   *
+   * @since 2.7
+   * @access public
+   * @param string ziel Zielfenster des Links
+   * @param string html Parameter
+   * @return string Link zum Spielbericht
+   */
+  function getreportUrl($ziel="_blank",$param="") {
+    if (is_null($ziel) ) {
+      return $this->reportUrl;
+    }
+    elseif (strpos($this->reportUrl,"http") !== 0 ) {
+      return "<a href=\"http://".$this->reportUrl."\" target=\"".$ziel."\" $param>";
+    }
+    return "<a href=\"".$this->reportUrl."\" target=\"".$ziel."\" $param>";
+  }
+
+  /**
+   * Spielende
+   * 0 = reguläres Ende
+   * 2 = Verlängerung
+   * 1 = 11-Meter-Schießen
+   *
+   * @access public
+   * @since 2.7
+   * @param integer Art des Spielendes
+   */
+  function setSpielEnde($value) {
+    if (is_int($value) ) {
+      $this->spielEnde = $value;
+    }
+  }
+
+  /**
+   * Spielende
+   * 0 = reguläres Ende
+   * 2 = Verlängerung
+   * 1 = 11-Meter-Schießen
+   *
+   * @access public
+   * @since 2.7
+   * @return integer Art des Spielendes
+   */
+  function getSpielEnde() {
+    return $this->spielEnde;
+  }
+
+} // END class Partie
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php 
 if (!isset($wap_file))$file="";?>
 <card id="login" title="Login">
   <p align="center"><b>LMO-Wapadmin</b></p>
@@ -9,7 +9,7 @@ if (!isset($wap_file))$file="";?>
   	<br/>
   	<small><anchor>
   		Einloggen
-  		<go href="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
+  		<go href="<?php  echo $_SERVER['PHP_SELF']; ?>" method="post">
   			<postfield name="xusername" value="$(lmousername)"/>
   			<postfield name="xuserpass" value="$(lmouserpass)"/>
         <postfield name="op" value="liga"/>

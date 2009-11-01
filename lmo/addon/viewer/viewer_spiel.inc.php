@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -27,25 +27,27 @@ foreach ($fav_team[$i] as $akt_team) {
 
     //Anfang Relevante Daten
     $template->setVariable("Liganame",$akt_liga->name);
+    $template->setVariable("Ligadatum",$akt_liga->ligaDatumAsString());
     $template->setVariable("Spieltag",$multi_cfgarray['spieltagtext']." ".$spieltag);
     $template->setVariable("Datum",$myPartie->datumString('-',$multi_cfgarray['datumsformat']));
     $template->setVariable("Uhrzeit",$myPartie->zeitString('-',$multi_cfgarray['uhrzeitformat']));
-    $template->setVariable("Ligadatum",$akt_liga->ligaDatumAsString());
     $template->setVariable("Tore",$myPartie->hToreString($multi_cfgarray['tordummy'])." : ".$myPartie->gToreString($multi_cfgarray['tordummy']).' '.$myPartie->spielEndeString($text));
     //Heim & Gasttore einzeln
     $template->setVariable("ToreHeim",$myPartie->hToreString($multi_cfgarray['tordummy']));
-    $template->setVariable("ToreGast",$myPartie->hToreString($multi_cfgarray['tordummy']));
+    $template->setVariable("ToreGast",$myPartie->gToreString($multi_cfgarray['tordummy']));
     //Ende Relevante Daten
 
     //Neu TeamIcons Heim fuer Bild alt /Anpassung Apache2
     $Heim=$myPartie->heim->name;
     $Gast=$myPartie->gast->name;
-    $template->setVariable("Iconheim",HTML_smallTeamIcon($file,$Heim," alt=''"));
-    $template->setVariable("Icongast",HTML_smallTeamIcon($file,$Gast," alt=''"));
-    $template->setVariable("IconBigheim",HTML_bigTeamIcon($file,$Heim," alt=''"));
-    $template->setVariable("IconBiggast",HTML_bigTeamIcon($file,$Gast," alt=''"));
-    $template->setVariable("IconBigheimalt",HTML_bigTeamIcon($file,$Heim," alt='TeamIcon $Heim'"));
-    $template->setVariable("IconBiggastalt",HTML_bigTeamIcon($file,$Gast," alt='TeamIcon $Gast'"));
+    $template->setVariable("Iconheim",HTML_icon($Heim,'teams','small'));
+    $template->setVariable("Icongast",HTML_icon($Gast,'teams','small'));
+    $template->setVariable("IconMiddleheim",HTML_icon($Heim,'teams','middle'));
+    $template->setVariable("IconMiddlegast",HTML_icon($Gast,'teams','middle'));
+    $template->setVariable("IconBigheim",HTML_icon($Heim,'teams','big'));
+    $template->setVariable("IconBiggast",HTML_icon($Gast,'teams','big'));
+    $template->setVariable("IconBigheimalt",HTML_icon($Heim,'teams','big','',"TeamIcon $Heim"));
+    $template->setVariable("IconBiggastalt",HTML_icon($Gast,'teams','big','',"TeamIcon $Gast"));
     //Ende TeamIcons
 
     $mhp_link_s="";
@@ -111,6 +113,13 @@ foreach ($fav_team[$i] as $akt_team) {
     }
     $template->setVariable("Tabellenlink",$tlink);
     //Ende Tabelle
+
+    //Anfang Spieltag verlinken
+    //Im Unterschied zu den anderen Links wird nur die URL gesetzt, nicht der komplette Link
+    //Rest wird über das Template gesteuert
+    $spieltag_link=URL_TO_LMO.'/lmo.php?file='.$fav_liga[$i]."&amp;action=results&amp;st=".$spieltag;
+    $template->setVariable("SpieltagLink",$spieltag_link);
+    //Ende Spieltag
 
     //Anfang Spielbericht
     $SpBer_link=$myPartie->reportUrl;

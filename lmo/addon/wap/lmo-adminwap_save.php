@@ -1,5 +1,5 @@
 <card id="save" title="Speicherung">
-  <p><?
+  <p><?php 
 require_once(PATH_TO_LMO."/ini.fct");
 $result = FALSE;
 for ($i=0; $i<$anzsp; $i++) {
@@ -75,5 +75,5 @@ if($result) {
   echo "Speicherung fehlgeschlagen";
 }?>
 	</p>
-	<p><a href="<? echo $_SERVER['PHP_SELF']."?wap_file=$file2"; ?>&amp;st=<?=$st?>&amp;op=day">zurück</a></p>
+	<p><a href="<?php  echo $_SERVER['PHP_SELF']."?wap_file=$file2"; ?>&amp;st=<?php echo $st?>&amp;op=day">zurück</a></p>
 </card>

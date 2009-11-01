@@ -29,7 +29,7 @@ if(($file!="") && ($kreuz==1)){
 <td class="lmoKreuz">
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 
-<?
+<?php
 for($i = 0; $i <= ($anzteams+1); $i++) {
   for($j = 0; $j <= ($anzteams+1); $j++) {
     $dummy = "";
@@ -136,4 +136,5 @@ for($i = 0; $i <= ($anzteams+1); $i++) {
 </table>
 </td>
 </tr>
-</table><?php}?>
+</table><?php
+}?>

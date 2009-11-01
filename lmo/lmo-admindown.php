@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -23,14 +23,14 @@ if(($action=="admin") && ($todo=="download")){?>
 
 <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <th align="center"><h1><?=$text[316];?></h1></th>
-    <th align="center"><h1><?=$text[345];?></h1></th>
+    <th align="center"><h1><?php echo $text[316];?></h1></th>
+    <th align="center"><h1><?php echo $text[345];?></h1></th>
   </tr>
   <tr>
     <td align="center" valign="top">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td class="nobr" align="left"><?
+          <td class="nobr" align="left"><?php 
   $ftype=".l98"; 
   require(PATH_TO_LMO."/lmo-admindowndir.php"); ?>
           </td>
@@ -47,5 +47,5 @@ if(($action=="admin") && ($todo=="download")){?>
       </table>
     </td>
   </tr>
-</table><?
+</table><?php 
 }?>

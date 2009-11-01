@@ -1,6 +1,6 @@
 <table class="lmoSubmenu" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="nobr" align="left"><?
+    <td class="nobr" align="left"><?php 
   if ($todo != "") {
     echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp\" title=\"".$text['tipp'][53]."\">".$text['tipp'][52]."</a>";
   } else {
@@ -58,9 +58,9 @@
 */?>
     </td>
     <td width="8">&nbsp;</td>
-    <td class="nobr" align="right"><?
+    <td class="nobr" align="right"><?php 
   if($tipp_regeln==1){?>
-        <a href='<?=URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,this.target,"scrollbars=yes,resizable=yes");return false;'><?=$text['tipp'][185]?></a>&nbsp;&nbsp;<?
+        <a href='<?php echo URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,this.target,"scrollbars=yes,resizable=yes");return false;'><?php echo $text['tipp'][185]?></a>&nbsp;&nbsp;<?php 
   }
   echo "<a href=\"".$adda."logout\">".$text[88]."</a>";
   echo "&nbsp;";?>

@@ -1,6 +1,6 @@
 <card id="auswahl" title="Auswahl">
   <p>
-<?
+<?php 
 if ($lmtype == 0) {
   echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=day&amp;st=$st'>".$text[10]."</a><br/>\n");
   echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=table&amp;st=$st'>".$text[16]."</a><br/>\n");
@@ -226,5 +226,5 @@ else
 
 }//Ausgabe Pokal Ende
 ?></p>
-  <p><small><a href="<?=$_SERVER['PHP_SELF']?>">Home</a></small></p>
+  <p><small><a href="<?php echo $_SERVER['PHP_SELF']?>">Home</a></small></p>
 </card>

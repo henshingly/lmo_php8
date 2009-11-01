@@ -81,7 +81,7 @@ if(($file!="") && ($kurve==1)){
       $dummy=$dummy."0";
       }?>
         <tr>
-          <td align="center"><img src="<? echo $dummy; ?>" border="0" alt="<?=$text[133]?>" /></td>
+          <td align="center"><img src="<?php  echo $dummy; ?>" border="0" alt="<?php echo $text[133]?>" /></td>
         </tr>
 <?php } ?>
 

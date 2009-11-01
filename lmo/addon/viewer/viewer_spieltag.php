@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -55,13 +55,29 @@ for($i=1; $i<=$anzahl_ligen; $i++) {
         $fav_team[$i][] = $x;
       }
     }
-    
+    //Anfang Ergebnisse verlinken
+    $template->setVariable("ErgebnisLink",URL_TO_LMO.'/lmo.php?file='.$fav_liga[$i]."&amp;action=results");
+    $template->setVariable("Liganame",$akt_liga->name);
+    $template->setVariable("Ligadatum",$akt_liga->ligaDatumAsString());
     for ($spieltag=$start; $spieltag<=$ende; $spieltag++) {
+      $template->setCurrentBlock("Spieltag");
+      //Anfang Spieltag verlinken
+      $spieltag_link=URL_TO_LMO.'/lmo.php?file='.$fav_liga[$i]."&amp;action=results&amp;st=".$spieltag;
+      $template->setVariable("AktSpieltag",$spieltag);
+      $template->setVariable("AktSpieltagLink",$spieltag_link);
       $akt_spieltag=$akt_liga->spieltagForNumber($spieltag);
+      if ($akt_liga->options->keyValues['enableGameSort'] == "1") {
+        //Spieltagssortierung ist aktiv
+        $myPartien = $akt_spieltag->getPartien("datum");
+      } else {
+        $myPartien = $akt_spieltag->getPartien();
+      }
+
       $template->setCurrentBlock("Inhalt");  																									//Ausgabe Inhalt Beginn
-      foreach ($akt_spieltag->partien as $myPartie) {
+      foreach ($myPartien as $myPartie) {
         require(PATH_TO_ADDONDIR."/viewer/viewer_spiel.inc.php");
       }
+      $template->parse("Spieltag");
     }
     $template->setVariable("VERSION",VIEWER_VERSION);
     $template->parse("Liga");

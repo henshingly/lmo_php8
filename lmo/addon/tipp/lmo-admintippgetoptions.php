@@ -1,4 +1,4 @@
-<?
+<?php 
   switch ($show) {
     case 0:
       isset($_POST["xtippmodus"])?                            $tipp_tippmodus=$_POST["xtippmodus"]:                   $tipp_tippmodus=0;

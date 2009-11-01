@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -89,7 +89,7 @@ if ($filepointer = fopen($filename, "r+b")) {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="de">
   <head>
-    <title><?=$text['spieler'][18]?></title>
+    <title><?php echo $text['spieler'][18]?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
     <style type="text/css">
       body {background:#fff; color:#000; font: sans-serif 10pt; max-width:200mm;max-height:285mm;}
@@ -106,8 +106,8 @@ if ($filepointer = fopen($filename, "r+b")) {
     </style>
   </head>
   <body>
-    <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?=$text[562]?><\/a><\/small>');</script>
-    <h1><?
+    <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
+    <h1><?php 
       echo $text['spieler'][18];
       if ($team!='') {
         echo ' - '.$team;
@@ -115,23 +115,23 @@ if ($filepointer = fopen($filename, "r+b")) {
     </h1>
       <table cellpadding="0" cellspacing="1" border="0">
         <tr>
-          <th colspan="2"></th><?
+          <th colspan="2"></th><?php 
   for ($i=0;$i<$spaltenzahl;$i++) {
     if ($spalten[$i]!=$text['spieler'][32] && ($spalten[$i]!=$text['spieler'][25] || $team=='')){?>
-          <th class="nobr" align="center"><?=$spalten[$i]?></th><?
+          <th class="nobr" align="center"><?php echo $spalten[$i]?></th><?php 
     }
   }?>
-        </tr><?
+        </tr><?php 
   for ($j1=$begin;$j1<$begin+$maxdisplay;$j1++) {
     $class=fmod($j1,2)!=0?" class='odd'":'';?>
-          <tr><?
+          <tr><?php 
     for ($j2=0;$j2<$spaltenzahl;$j2++) {
       if ($j2==$sort){ 
         $stat_class=' class="lmoBackMarkierung nobr"';
       } else {
         $stat_class=' class="nobr"';
       }
-      if ($j2==0) {?><td align="right"<?=$class?>><strong><?
+      if ($j2==0) {?><td align="right"<?php echo $class?>><strong><?php 
         if (!isset($data[$j1-1][$sort]) || $data[$j1][$sort] !== $data[$j1-1][$sort] && $j1!=$begin) echo ($j1+1).". ";
         
         if ($j1>0 && $j1==$begin) {
@@ -144,17 +144,17 @@ if ($filepointer = fopen($filename, "r+b")) {
           }
         }?>
             </strong></td>
-            <td align="left"<?=$class?>><?
+            <td align="left"<?php echo $class?>><?php 
               //Spielerbild
         if (file_exists(PATH_TO_IMGDIR."/spieler/".$data[$j1][$j2].".jpg")) {
           $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/".$data[$j1][$j2].".jpg");?>
-               <img border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($data[$j1][$j2])?>.jpg" <?=$imgdata[3]?> alt="<?=$text['spieler'][26]?>" title="<?=$data[$j1][$j2]?>"><?
+               <img border="0" src="<?php echo URL_TO_IMGDIR."/spieler/".rawurlencode($data[$j1][$j2])?>.jpg" <?php echo $imgdata[3]?> alt="<?php echo $text['spieler'][26]?>" title="<?php echo $data[$j1][$j2]?>"><?php 
         } elseif (file_exists(PATH_TO_IMGDIR."/spieler/".$data[$j1][$j2].".gif")) {
           $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/".$data[$j1][$j2].".gif");?>
-                <img border="0" src="<?=URL_TO_IMGDIR."/spieler/".rawurlencode($data[$j1][$j2])?>.gif" <?=$imgdata[3]?> alt="<?=$text['spieler'][26]?>" title="<?=$data[$j1][$j2]?>"><?
-        } ?></td><?
+                <img border="0" src="<?php echo URL_TO_IMGDIR."/spieler/".rawurlencode($data[$j1][$j2])?>.gif" <?php echo $imgdata[3]?> alt="<?php echo $text['spieler'][26]?>" title="<?php echo $data[$j1][$j2]?>"><?php 
+        } ?></td><?php 
       } ?>
-            <td<?
+            <td<?php 
             echo $class;
             
             if ($spalten[$j2]!=$text['spieler'][32] && ($spalten[$j2]!=$text['spieler'][25] || $team=='')){
@@ -166,15 +166,15 @@ if ($filepointer = fopen($filename, "r+b")) {
               if ($j2==$sort) echo "<strong>";
               echo  $data[$j1][$j2];
               if ($j2==$sort) echo "</strong>";
-            }?></td><?
+            }?></td><?php 
     }?>
-          </tr><?
+          </tr><?php 
   }?>
 
       </table>
-      <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?=$text[562]?><\/a><\/small>');</script><?
+      <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script><?php 
 }else{?>
-  <?php echo getMessage($text['spieler'][14],TRUE);?><?
+  <?php echo getMessage($text['spieler'][14],TRUE);?><?php 
 }
 function cmpInt ($a1, $a2) {
   global $sort;

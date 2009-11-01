@@ -1,4 +1,5 @@
-<?php/** Liga Manager Online 4
+<?php
+/** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
   *
@@ -94,44 +95,44 @@ if (isset($file) && $file != "") {
 
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0"><?
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0"><?php 
 
   /** Spieltagsauswahl*/?>
   <tr>
-    <td align="center"><? include(PATH_TO_LMO."/lmo-spieltagsmenu.php")?></td>
-  </tr><?
+    <td align="center"><?php  include(PATH_TO_LMO."/lmo-spieltagsmenu.php")?></td>
+  </tr><?php 
   
   /** Ergebnisse*/
   if ($tabonres >= 1 || $action=="results") {?>
   <tr>
-    <td align="center"><? include(PATH_TO_LMO."/lmo-showresults.php")?></td>
-  </tr><?
+    <td align="center"><?php  include(PATH_TO_LMO."/lmo-showresults.php")?></td>
+  </tr><?php 
   }
   
   /** Vor und Zurück-Pfeile*/?>
   <tr>
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr><?  
+        <tr><?php   
    $st0 = $st-1;
    if ($st > 1) {?>
-          <td align="left">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?> <?=$text[6]?></a>&nbsp;</td><?
+          <td align="left">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a>&nbsp;</td><?php 
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>
-          <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[8]?> <?=$text[7]?></a>&nbsp;</td><?
+          <td align="right">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</td><?php 
    }?>
         </tr>
       </table>
     </td>
-  </tr><?
+  </tr><?php 
   
   /** Tabelle*/
   if ($tabonres >= 1 || $action=="table") {?>
   <tr>
-    <td align="center"><? include(PATH_TO_LMO."/lmo-showtable.php")?></td>
-  </tr><?
+    <td align="center"><?php  include(PATH_TO_LMO."/lmo-showtable.php")?></td>
+  </tr><?php 
   }?>
 
-</table><?
+</table><?php 
 }?>

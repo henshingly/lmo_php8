@@ -292,7 +292,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 ?>
             <td class="nobr">
               <a href='<?php echo $addz.$i; ?>' onclick="return dteamlmolink(this.href,'<?php echo $teams[$i]; ?>');" title="<?php echo $text[334]; ?>">
-                <img src="<?php echo URL_TO_IMGDIR."/delete.gif"?>" width="11" height="13" alt="<?$text[333];?>" border="0">
+                <img src="<?php echo URL_TO_IMGDIR."/delete.gif"?>" width="11" height="13" alt="<?php $text[333];?>" border="0">
               </a>
             </td>
 <?php

@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -36,10 +36,10 @@ if($save==1){
 }?>
 <table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><a href="<?=$addr_options?>" onclick="return chklmolink();" title="<?=$text[320]?>"><?=$text[319]?></a></td>
-    <td align="center"><?=$text[497]?></td>
-    <td align="center"><a href="<?=$addr_design?>" onclick="return chklmolink();" title="<?=$text[422]?>"><?=$text[421]?></a></td>
-    <td align="center"><a href="<?=$addr_user?>" onclick="return chklmolink();" title="<?=$text[318]?>"><?=$text[317]?></a></td>
+    <td align="center"><a href="<?php echo $addr_options?>" onclick="return chklmolink();" title="<?php echo $text[320]?>"><?php echo $text[319]?></a></td>
+    <td align="center"><?php echo $text[497]?></td>
+    <td align="center"><a href="<?php echo $addr_design?>" onclick="return chklmolink();" title="<?php echo $text[422]?>"><?php echo $text[421]?></a></td>
+    <td align="center"><a href="<?php echo $addr_user?>" onclick="return chklmolink();" title="<?php echo $text[318]?>"><?php echo $text[317]?></a></td>
   </tr>
 </table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -47,28 +47,28 @@ if($save==1){
     <td align="center" colspan="2"><?php echo getMessage($text[571],TRUE);?></td>
   </tr>
   <tr>
-    <td align="center" colspan="2"><h1><?=$text[498]?></h1></td>
+    <td align="center" colspan="2"><h1><?php echo $text[498]?></h1></td>
   </tr>
   <tr>
     <td valign="top">
-      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?
+      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php 
 $testshow=0;
 foreach($cfgarray as $addon_name => $addon_cfg) {
   if (is_array($addon_cfg)) {?>
-        <tr><td align="right"<?if ($show==$testshow) {?> class="active"><?=$addon_name;?><?}else{?> class="lmost4"><a href="<?=$_SERVER['PHP_SELF']."?action=admin&amp;todo=addons&amp;show=".$testshow;?>"><?=$addon_name;?></a><?}?></td></tr><?
+        <tr><td align="right"<?php if ($show==$testshow) {?> class="active"><?php echo $addon_name;?><?php }else{?> class="lmost4"><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons&amp;show=".$testshow;?>"><?php echo $addon_name;?></a><?php }?></td></tr><?php 
     $testshow++;
   }
 }?>
       </table>
     </td>
     <td align="left" valign="top">
-      <form name="lmoedit" action="<?=$_SERVER['PHP_SELF'];?>" method="post" onSubmit="return chklmopass()">
+      <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="addons">
         <input type="hidden" name="save" value="1">
-        <input type="hidden" name="file" value="<?=$file;?>">
-        <input type="hidden" name="show" value="<?=$show;?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
+        <input type="hidden" name="file" value="<?php echo $file;?>">
+        <input type="hidden" name="show" value="<?php echo $show;?>">
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php 
 $testshow=0;
 foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
   if (is_array($addon_cfg)) {
@@ -77,9 +77,9 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
         ?><tr>
             <td class="lmost5" width="20">&nbsp;</td>
             <td align="right">
-<?=$cfg_name?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="x<?=$cfg_name?>" size="30" value="<?=$cfg_value;?>" onChange="dolmoedit()"></td>
-          </tr><?
+<?php echo $cfg_name?></td>
+            <td align="left"><input class="lmo-formular-input" type="text" name="x<?php echo $cfg_name?>" size="30" value="<?php echo $cfg_value;?>" onChange="dolmoedit()"></td>
+          </tr><?php 
       }
     }
     $testshow++;
@@ -87,7 +87,7 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
 }?>
           <tr>
             <td class="lmost5" colspan="3" align="center">
-              <input title="<?=$text[114]?>" class="lmo-formular-button" type="submit" name="best" value="<?=$text[188];?>">
+              <input title="<?php echo $text[114]?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[188];?>">
             </td>
           </tr>
         </table

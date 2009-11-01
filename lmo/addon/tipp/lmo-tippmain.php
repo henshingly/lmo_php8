@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -56,16 +56,16 @@ if ($action == "tipp") {
     $tipp_tipptabelle1 = 1;
   }
   if ($tipp_tippmodus == 1 && $todo == "edit") {?>
-<script type="text/javascript"><?
+<script type="text/javascript"><?php 
   if($tipp_pfeiltipp==1){ ?>
     img0 = new Image();
-    img0.src = "<?=URL_TO_IMGDIR?>/lmo-admin0.gif";
+    img0.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif";
     img1 = new Image();
-    img1.src = "<?=URL_TO_IMGDIR?>/lmo-admin1.gif";
+    img1.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin1.gif";
     img2 = new Image();
-    img2.src = "<?=URL_TO_IMGDIR?>/lmo-admin2.gif";
+    img2.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif";
     img3 = new Image();
-    img3.src = "<?=URL_TO_IMGDIR?>/lmo-admin3.gif";
+    img3.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin3.gif";
     function lmoimg(x,y){
       document.getElementsByName("ximg"+x)[0].src = y.src;
     }<?php  }?>
@@ -98,7 +98,7 @@ if ($action == "tipp") {
       document.getElementsByName("xtipp"+xx+y)[0].value=aa;
     } 
   }
-</script><?
+</script><?php 
   }
   include(PATH_TO_ADDONDIR."/tipp/lmo-tippmenu.php");
   ?>
@@ -107,10 +107,10 @@ if ($action == "tipp") {
   
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td colspan="3" align="center"><h1><?=$text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></h1></td>
+    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></h1></td>
   </tr>
   <tr>
-    <td colspan="3" align="center"><?
+    <td colspan="3" align="center"><?php 
   if ($_SESSION["lmotipperok"] == 5) {
     if ($file != "" && $viewermode != 1) {
       $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, 0, -4)."_".$_SESSION['lmotippername'].".tip";
@@ -139,5 +139,5 @@ if ($action == "tipp") {
   </tr><?php // require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); 
  ?>
 </table>
-<?
+<?php 
 }?>

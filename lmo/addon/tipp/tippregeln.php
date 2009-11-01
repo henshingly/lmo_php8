@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -142,9 +142,9 @@ $lang=array(
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 					"http://www.w3.org/TR/html4/loose.dtd">
-<html lang="<?=$lang[$userlang]['LANG'];?>">
+<html lang="<?php echo $lang[$userlang]['LANG'];?>">
 <head>
-<title><?=$lang[$userlang]['HEADER'];?></title>
+<title><?php echo $lang[$userlang]['HEADER'];?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
 <style type="text/css">
   body {
@@ -199,75 +199,75 @@ $lang=array(
 </style>
 </head>
 <body>
-<script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?=$lang[$userlang]['JAVA'];?><\/a>')</script>
-<h1><?=$lang[$userlang]['ABS_1'];?></h1>
-<p><?=$lang[$userlang]['ABS_1_text1'];?></p>
-<h2><?=$lang[$userlang]['ABS_2'];?></h2>
+<script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $lang[$userlang]['JAVA'];?><\/a>')</script>
+<h1><?php echo $lang[$userlang]['ABS_1'];?></h1>
+<p><?php echo $lang[$userlang]['ABS_1_text1'];?></p>
+<h2><?php echo $lang[$userlang]['ABS_2'];?></h2>
 <dl>
-  <dt><?=$lang[$userlang]['ABS_2_text1'];?></dt>
-  <dd><?=$lang[$userlang]['ABS_2_text2'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_2_text3'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_2_text4'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_2_text5'];?>
+  <dt><?php echo $lang[$userlang]['ABS_2_text1'];?></dt>
+  <dd><?php echo $lang[$userlang]['ABS_2_text2'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_2_text3'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_2_text4'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_2_text5'];?>
     <ul>
-      <li><?=$lang[$userlang]['ABS_2_text6'];?></li>
-      <li><strong><?=$lang[$userlang]['ABS_2_text7'];?></strong></li>
-      <li><strong><?=$lang[$userlang]['ABS_2_text8'];?></strong></li>
-      <li><strong><?=$lang[$userlang]['ABS_2_text9'];?></strong></li>
-      <li><strong><?=$lang[$userlang]['ABS_2_text10'];?></strong></li>
-      <li><?=$lang[$userlang]['ABS_2_text11'];?></li>
-      <li><strong><?=$lang[$userlang]['ABS_2_text12'];?></strong></li>
+      <li><?php echo $lang[$userlang]['ABS_2_text6'];?></li>
+      <li><strong><?php echo $lang[$userlang]['ABS_2_text7'];?></strong></li>
+      <li><strong><?php echo $lang[$userlang]['ABS_2_text8'];?></strong></li>
+      <li><strong><?php echo $lang[$userlang]['ABS_2_text9'];?></strong></li>
+      <li><strong><?php echo $lang[$userlang]['ABS_2_text10'];?></strong></li>
+      <li><?php echo $lang[$userlang]['ABS_2_text11'];?></li>
+      <li><strong><?php echo $lang[$userlang]['ABS_2_text12'];?></strong></li>
     </ul>
   </dd>
-  <dt><?=$lang[$userlang]['ABS_2_text13'];?></dt>
-  <dd><?=$lang[$userlang]['ABS_2_text14'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_2_text15'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_2_text16'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_2_text17'];?></dd><?
+  <dt><?php echo $lang[$userlang]['ABS_2_text13'];?></dt>
+  <dd><?php echo $lang[$userlang]['ABS_2_text14'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_2_text15'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_2_text16'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_2_text17'];?></dd><?php 
 if ($tipp_jokertipp==1) {?>
-  <dd><?=$lang[$userlang]['ABS_2_text18'];?></dd><?
+  <dd><?php echo $lang[$userlang]['ABS_2_text18'];?></dd><?php 
 }?>  
-  <dt><?=$lang[$userlang]['ABS_2_text19'];?>
-  <dd><?=$lang[$userlang]['ABS_2_text20'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_2_text21'];?> <? echo $tipp_tippBis;?> <?=$lang[$userlang]['ABS_2_text21_1'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_2_text22'];?></dd>
+  <dt><?php echo $lang[$userlang]['ABS_2_text19'];?>
+  <dd><?php echo $lang[$userlang]['ABS_2_text20'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_2_text21'];?> <?php  echo $tipp_tippBis;?> <?php echo $lang[$userlang]['ABS_2_text21_1'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_2_text22'];?></dd>
 </dl>
-<h2><?=$lang[$userlang]['ABS_3'];?></h2>
+<h2><?php echo $lang[$userlang]['ABS_3'];?></h2>
 <dl>
-  <dt><?=$lang[$userlang]['ABS_3_text1'];?></dt>
+  <dt><?php echo $lang[$userlang]['ABS_3_text1'];?></dt>
   <dd>
     <ul>
-      <li><?=$lang[$userlang]['ABS_3_text2'];?> <? echo $tipp_rergebnis;?> <?=$lang[$userlang]['ABS_3_text2_1'];?></li>
-      <li><?=$lang[$userlang]['ABS_3_text3'];?> <? echo $tipp_rtendenzdiff;?> <?=$lang[$userlang]['ABS_3_text2_1'];?></li>
-      <li><?=$lang[$userlang]['ABS_3_text4'];?> <? echo $tipp_rtendenz;?> <?=$lang[$userlang]['ABS_3_text2_1'];?></li>
-      <li><?=$lang[$userlang]['ABS_3_text5'];?> <? echo $tipp_rtor;?>  <?=$lang[$userlang]['ABS_3_text2_1'];?></li>
-<? if ($tipp_jokertipp==1) {?>
+      <li><?php echo $lang[$userlang]['ABS_3_text2'];?> <?php  echo $tipp_rergebnis;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
+      <li><?php echo $lang[$userlang]['ABS_3_text3'];?> <?php  echo $tipp_rtendenzdiff;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
+      <li><?php echo $lang[$userlang]['ABS_3_text4'];?> <?php  echo $tipp_rtendenz;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
+      <li><?php echo $lang[$userlang]['ABS_3_text5'];?> <?php  echo $tipp_rtor;?>  <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
+<?php  if ($tipp_jokertipp==1) {?>
       
-      <li><?=$lang[$userlang]['ABS_3_text6'];?> <strong><? echo $tipp_jokertippmulti;?></strong></li><?
+      <li><?php echo $lang[$userlang]['ABS_3_text6'];?> <strong><?php  echo $tipp_jokertippmulti;?></strong></li><?php 
 }?>  
-    </ul><?
+    </ul><?php 
   if ($tipp_jokertipp==1) {?>
-     <dd><?=$lang[$userlang]['ABS_3_text7'];?></dd><?
+     <dd><?php echo $lang[$userlang]['ABS_3_text7'];?></dd><?php 
 } ?>  
   </dd>
-  <dt><?=$lang[$userlang]['ABS_3_text8'];?></dt>
-  <dd><?=$lang[$userlang]['ABS_3_text9'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_3_text10'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_3_text11'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_3_text12'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_3_text13'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_3_text14'];?></dd>
+  <dt><?php echo $lang[$userlang]['ABS_3_text8'];?></dt>
+  <dd><?php echo $lang[$userlang]['ABS_3_text9'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_3_text10'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_3_text11'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_3_text12'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_3_text13'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_3_text14'];?></dd>
   
-  <dt><?=$lang[$userlang]['ABS_3_text15'];?></dt>
-  <dd><?=$lang[$userlang]['ABS_3_text16'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_3_text17'];?></dd>
+  <dt><?php echo $lang[$userlang]['ABS_3_text15'];?></dt>
+  <dd><?php echo $lang[$userlang]['ABS_3_text16'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_3_text17'];?></dd>
 </dl>
-<h2><?=$lang[$userlang]['ABS_4'];?></h2>  
+<h2><?php echo $lang[$userlang]['ABS_4'];?></h2>  
 <dl>
-  <dd><?=$lang[$userlang]['ABS_4_text1'];?></dd>
-  <dd><?=$lang[$userlang]['ABS_4_text2'];?></dd>
-  <dd><strong><?=$lang[$userlang]['ABS_4_text3'];?></strong></dd>
+  <dd><?php echo $lang[$userlang]['ABS_4_text1'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_4_text2'];?></dd>
+  <dd><strong><?php echo $lang[$userlang]['ABS_4_text3'];?></strong></dd>
 </dl>
-<script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?=$lang[$userlang]['JAVA'];?><\/a>')</script>
+<script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $lang[$userlang]['JAVA'];?><\/a>')</script>
 </body>
 </html>

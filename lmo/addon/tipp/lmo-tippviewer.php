@@ -222,35 +222,35 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?=$_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></h1></td>
+    <td align="center"><h1><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></h1></td>
   </tr>
   <tr>
-    <td align="center"><? if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
+    <td align="center"><?php  if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
   </tr>
   <tr>
-    <td align="center"><?=$text['tipp'][258]." ".$now1." ".$text[4]." ".$then1; ?></td>
+    <td align="center"><?php echo $text['tipp'][258]." ".$now1." ".$text[4]." ".$then1; ?></td>
   </tr>
   <tr>
     <td align="center">
-    <form name="lmoedit" action="<?=$_SERVER['PHP_SELF']; ?>" method="post">
+    <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="action" value="tipp">
       <input type="hidden" name="todo" value="edit">
       <input type="hidden" name="save" value="1">
       <input type="hidden" name="viewermode" value="1">
-      <input type="hidden" name="xstart" value="<?=$start; ?>">
-      <input type="hidden" name="xnow" value="<?=$now; ?>">
-      <input type="hidden" name="xthen" value="<?=$then; ?>">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?
+      <input type="hidden" name="xstart" value="<?php echo $start; ?>">
+      <input type="hidden" name="xnow" value="<?php echo $now; ?>">
+      <input type="hidden" name="xthen" value="<?php echo $then; ?>">
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php 
   if($anzspiele==0){?>
         <tr>
-          <td align="center" colspan="<?=$breite; ?>"><?php echo getMessage($text['tipp'][262],TRUE); ?></td>
-        </tr><?
+          <td align="center" colspan="<?php echo $breite; ?>"><?php echo getMessage($text['tipp'][262],TRUE); ?></td>
+        </tr><?php 
   }
   for($i=0;$i<$anzspiele;$i++){
     if($i==0 || $liga[$i]!=$liga[$i-1]){?>
         <tr>
-          <th align="left" colspan="<?=$breite; ?>"><?=$titel[$i]; ?></th>
-        </tr><?
+          <th align="left" colspan="<?php echo $breite; ?>"><?php echo $titel[$i]; ?></th>
+        </tr><?php 
     }
     if ($i == 0 || $liga[$i] != $liga[$i-1] || $spieltag[$i] != $spieltag[$i-1]) {
       if ($datum1[$i] != "") {
@@ -298,32 +298,32 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           echo " ".$text[4]." ".$datum2[$i];
         }
       } ?></th><?php      if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
-          <th class="nobr" colspan="<? if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>"><?=$text['tipp'][188]; /* Tipptendenz absolut */?></th><?php      }
+          <th class="nobr" colspan="<?php  if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>"><?php echo $text['tipp'][188]; /* Tipptendenz absolut */?></th><?php      }
       if($tipp_tippmodus==1){ 
         if($tipp_showdurchschntipp==1){ ?>
-          <th class="nobr" colspan="2"><?="Ø-".$text['tipp'][30]; /* DurchschnittsTipp */?><br><?
+          <th class="nobr" colspan="2"><?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp */?><br><?php 
           if ($goalfaktor[$i]!=1) {
             echo "(".$text[553+log10($goalfaktor[$i])].")";
           }?></th><?php        }?>
-          <th class="nobr" align="center" colspan="<? if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
-            <acronym title="<?=$text['tipp'][241].":".$text['tipp'][242] ?>"><?=$text['tipp'][209]; /* Dein Tipp */?></acronym><br><?
+          <th class="nobr" align="center" colspan="<?php  if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
+            <acronym title="<?php echo $text['tipp'][241].":".$text['tipp'][242] ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php 
         if ($goalfaktor[$i]!=1) {
           echo "(".$text[553+log10($goalfaktor[$i])].")";
-        }?></th><?
+        }?></th><?php 
       }
       if($tipp_tippmodus==0){ ?>
-          <th class="nobr" align="center"><acronym title="<?=$text['tipp'][95] ?>">1</acronym></th><?php        if($hidr[$i]==0){ ?>
-          <th class="nobr" align="center"><acronym title="<?=$text['tipp'][96] ?>">0</acronym></th><?php        }else{ ?>
+          <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][95] ?>">1</acronym></th><?php        if($hidr[$i]==0){ ?>
+          <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][96] ?>">0</acronym></th><?php        }else{ ?>
           <th>&nbsp;</th><?php        }?>
-          <th class="nobr" align="center"><acronym title="<?=$text['tipp'][97] ?>">2</acronym></th><?php      }
+          <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][97] ?>">2</acronym></th><?php      }
       if ($tipp_jokertipp==1){ ?>
           <th class="nobr" align="center">
-            <acronym title="<?=$text['tipp'][290] ?>"><?=$text['tipp'][289]; ?></acronym>
+            <acronym title="<?php echo $text['tipp'][290] ?>"><?php echo $text['tipp'][289]; ?></acronym>
           </th><?php      }?>
-          <th class="nobr" colspan="5" align="center"><?=$text['tipp'][31]; /* Ergebnis*/ ?></th>
-          <th class="nobr" colspan="2" align="right"><?=$text[37]; /* PP */?></th>
+          <th class="nobr" colspan="5" align="center"><?php echo $text['tipp'][31]; /* Ergebnis*/ ?></th>
+          <th class="nobr" colspan="2" align="right"><?php echo $text[37]; /* PP */?></th>
           <th>&nbsp;</th>
-        </tr><?
+        </tr><?php 
     }
     if ($tipp_einsichterst == 2) {
       if ($goala[$i] != "_" && $goalb[$i] != "_") {
@@ -343,12 +343,12 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
       } 
     }?>
         <tr>
-          <td class="nobr" align="left"><?=$dum1; ?></td>
+          <td class="nobr" align="left"><?php echo $dum1; ?></td>
           <td>&nbsp;</td>
-          <td class="nobr" align="right"><?=$teama[$i];?></td>
+          <td class="nobr" align="right"><?php echo $teama[$i];?></td>
           <td class="nobr" align="center" width="10">-</td>
           <td class="nobr" align="left">
-            <?
+            <?php 
     echo $teamb[$i];
     if ($tippa[$i] == "_") {
       $tippa[$i] = "";
@@ -439,48 +439,48 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           <td>&nbsp;</td><?php      }
       if($btip==true){ ?>
           <td class="nobr" align="right">
-              <input class="lmo-formular-input" type="text" name="xtippa<?=$i; ?>" size="4" maxlength="4" value="<?=$tippa[$i]; ?>" onKeyDown="lmotorclk('a','<?=$i; ?>',event.keyCode)">
+              <input class="lmo-formular-input" type="text" name="xtippa<?php echo $i; ?>" size="4" maxlength="4" value="<?php echo $tippa[$i]; ?>" onKeyDown="lmotorclk('a','<?php echo $i; ?>',event.keyCode)">
           </td><?php        if($tipp_pfeiltipp==1){ ?>
           <td class="nobr" align="center">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td>
-                  <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?=$i; ?>\',1);return false;" title="<?=$text['tipp'][243]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>a\',img1)" onMouseOut="lmoimg(\'<?=$i; ?>a\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?=$i; ?>a" width="7" height="7" border="0"><\/a>')</script>
+                  <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i; ?>\',1);return false;" title="<?php echo $text['tipp'][243]; ?>" onMouseOver="lmoimg(\'<?php echo $i; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i; ?>a" width="7" height="7" border="0"><\/a>')</script>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?=$i; ?>\',-1);return false;" title="<?=$text['tipp'][243]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>b\',img3)" onMouseOut="lmoimg(\'<?=$i; ?>b\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?=$i; ?>b" width="7" height="7" border="0"><\/a>')</script>
+                  <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i; ?>\',-1);return false;" title="<?php echo $text['tipp'][243]; ?>" onMouseOver="lmoimg(\'<?php echo $i; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i; ?>b" width="7" height="7" border="0"><\/a>')</script>
                 </td>
               </tr>
             </table>
-          </td><?
+          </td><?php 
         } 
       } else {
         if($tipp_pfeiltipp==1){ ?>
           <td class="nobr">&nbsp;</td><?php        }?>
-          <td class="nobr" align="right"><?=$tippa[$i]; ?></td><?
+          <td class="nobr" align="right"><?php echo $tippa[$i]; ?></td><?php 
       }?>
           <td class="nobr" width="2">:</td><?php      if($btip==true){?>
           <td class="nobr" align="right">
-              <input class="lmo-formular-input" type="text" name="xtippb<?=$i; ?>" size="4" maxlength="4" value="<?=$tippb[$i]; ?>" onKeyDown="lmotorclk('b','<?=$i; ?>',event.keyCode)">
+              <input class="lmo-formular-input" type="text" name="xtippb<?php echo $i; ?>" size="4" maxlength="4" value="<?php echo $tippb[$i]; ?>" onKeyDown="lmotorclk('b','<?php echo $i; ?>',event.keyCode)">
           </td><?php        if($tipp_pfeiltipp==1){ ?>
           <td class="nobr" align="center">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td>
-                  <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?=$i; ?>\',1);return false;" title="<?=$text['tipp'][244]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>f\',img1)" onMouseOut="lmoimg(\'<?=$i; ?>f\',img0)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?=$i; ?>f" width="7" height="7" border="0"><\/a>')</script>
+                  <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i; ?>\',1);return false;" title="<?php echo $text['tipp'][244]; ?>" onMouseOver="lmoimg(\'<?php echo $i; ?>f\',img1)" onMouseOut="lmoimg(\'<?php echo $i; ?>f\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i; ?>f" width="7" height="7" border="0"><\/a>')</script>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?=$i; ?>\',-1);return false;" title="<?=$text['tipp'][244]; ?>" onMouseOver="lmoimg(\'<?=$i; ?>d\',img3)" onMouseOut="lmoimg(\'<?=$i; ?>d\',img2)"><img src="<?=URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?=$i; ?>d" width="7" height="7" border="0"><\/a>')</script>
+                  <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i; ?>\',-1);return false;" title="<?php echo $text['tipp'][244]; ?>" onMouseOver="lmoimg(\'<?php echo $i; ?>d\',img3)" onMouseOut="lmoimg(\'<?php echo $i; ?>d\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i; ?>d" width="7" height="7" border="0"><\/a>')</script>
                 </td>
               </tr>
             </table>
           </td><?php        }
       } else {?>
-          <td class="nobr"><?=$tippb[$i]; ?></td><?php        if($tipp_pfeiltipp==1){ ?>
+          <td class="nobr"><?php echo $tippb[$i]; ?></td><?php        if($tipp_pfeiltipp==1){ ?>
           <td class="nobr">&nbsp;</td><?php        }
       }
     } /* ende ($tipp_tippmodus==1) */
@@ -496,27 +496,27 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         $tipp = 2;
       }?>
           <td class="nobr" align="center">
-              <input type="radio" name="xtipp<?=$i; ?>" value="1" <? if($tipp==1){echo " checked";} if($btip==false){echo " disabled";} ?>>
+              <input type="radio" name="xtipp<?php echo $i; ?>" value="1" <?php  if($tipp==1){echo " checked";} if($btip==false){echo " disabled";} ?>>
           </td><?php      if($hidr[$i]==0){ ?>
           <td class="nobr" align="center">
-              <input type="radio" name="xtipp<?=$i; ?>" value="3" <? if($tipp==0){echo " checked";} if($btip==false){echo " disabled";} ?>>
+              <input type="radio" name="xtipp<?php echo $i; ?>" value="3" <?php  if($tipp==0){echo " checked";} if($btip==false){echo " disabled";} ?>>
           </td><?php      } else { ?>
           <td class="nobr">&nbsp;</td><?php      }?>
           <td class="nobr" align="center">
-              <input type="radio" name="xtipp<?=$i; ?>" value="2" <? if($tipp==2){echo " checked";} if($btip==false){echo " disabled";} ?>>
+              <input type="radio" name="xtipp<?php echo $i; ?>" value="2" <?php  if($tipp==2){echo " checked";} if($btip==false){echo " disabled";} ?>>
           </td><?php    } // ende ($tipp_tippmodus==0) 
     if ($tipp_jokertipp == 1) {
       if ($tipp_jokertippaktiv[$i] > 0 && $tipp_jokertippaktiv[$i] < time()) {
         $btip = false;
       }?>
           <td class="nobr" align="center">
-              <input type="radio" name="xjokerspiel_<?=$liga[$i]."_".$spieltag[$i]; ?>" value="<?=$spiel[$i]; ?>" <? if($jksp[$i]==$spiel[$i]){echo " checked";} if($btip==false){echo " disabled";} ?>>
+              <input type="radio" name="xjokerspiel_<?php echo $liga[$i]."_".$spieltag[$i]; ?>" value="<?php echo $spiel[$i]; ?>" <?php  if($jksp[$i]==$spiel[$i]){echo " checked";} if($btip==false){echo " disabled";} ?>>
           </td><?php    }?>                                                                                                                   
-          <td class="lmoBackMarkierung" align="right"><?=applyFactor($goala[$i],$goalfaktor[$i]); ?></td>
+          <td class="lmoBackMarkierung" align="right"><?php echo applyFactor($goala[$i],$goalfaktor[$i]); ?></td>
           <td class="lmoBackMarkierung">:</td>
-          <td class="lmoBackMarkierung" align="left"><?=applyFactor($goalb[$i],$goalfaktor[$i]); ?></td>
+          <td class="lmoBackMarkierung" align="left"><?php echo applyFactor($goalb[$i],$goalfaktor[$i]); ?></td>
           <td class="lmoBackMarkierung"></td>
-          <td class="lmoBackMarkierung"><?=$mspez[$i]; ?></td>
+          <td class="lmoBackMarkierung"><?php echo $mspez[$i]; ?></td>
           <td>&nbsp;</td>
           <td class="nobr" align="right"><strong><?php    if ($tipp_jokertipp == 1 && $jksp[$i] == $spiel[$i]) {
       $jkspfaktor = $tipp_jokertippmulti;
@@ -604,8 +604,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         ?></td>
         </tr><?php  }?>
         <tr>
-          <td colspan="<?=$breite; ?>" align="right"><?php  if($savebutton==1){ ?>
-              <input title="<?=$text[114] ?>" class="lmo-formular-button" type="submit" name="best" value="<?=$text['tipp'][8]; ?>"><?php  }?>
+          <td colspan="<?php echo $breite; ?>" align="right"><?php  if($savebutton==1){ ?>
+              <input title="<?php echo $text[114] ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text['tipp'][8]; ?>"><?php  }?>
           </td>
         </tr>
       </table>
@@ -616,8 +616,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td align="left"><a href="<?=$addr.($start-$tipp_viewertage)?>" title="<?=$tipp_viewertage." ".$text['tipp'][257]?>"><?=$text[5]?></a></td>
-          <td align="right"><a href="<?=$addr.($start+$tipp_viewertage)?>" title="<?=$tipp_viewertage." ".$text['tipp'][256]?>"><?=$text[7]?></a></td>
+          <td align="left"><a href="<?php echo $addr.($start-$tipp_viewertage)?>" title="<?php echo $tipp_viewertage." ".$text['tipp'][257]?>"><?php echo $text[5]?></a></td>
+          <td align="right"><a href="<?php echo $addr.($start+$tipp_viewertage)?>" title="<?php echo $tipp_viewertage." ".$text['tipp'][256]?>"><?php echo $text[7]?></a></td>
         </tr>
       </table>
     </td>

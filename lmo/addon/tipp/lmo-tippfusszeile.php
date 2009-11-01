@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -84,7 +84,7 @@ if(!isset($nw)){
     }
   }?>
           </td>
-          <td align="right" valign="bottom" rowspan="2"><? if(!isset($auswertfile)){$auswertfile="";}
+          <td align="right" valign="bottom" rowspan="2"><?php  if(!isset($auswertfile)){$auswertfile="";}
   if (!isset($tippfile)) {
     $tippfile = "";
   }
@@ -108,12 +108,12 @@ if(!isset($nw)){
   if ($calctime == 1) {
     echo $text[471].": ".number_format((getmicrotime()-$startzeit), 4, ".", ",")." sek.<br>";
   }
-  echo $text[54];?> - <? echo $text[55]; ?> <br><?
-  echo $text['tipp'][84]; ?> - <? echo $text['tipp'][85]; ?>
+  echo $text[54];?> - <?php  echo $text[55]; ?> <br><?php 
+  echo $text['tipp'][84]; ?> - <?php  echo $text['tipp'][85]; ?>
           </td>
         </tr>
         <tr>
-          <td valign="bottom"><?
+          <td valign="bottom"><?php 
   if ($file != "" && $lmtype == 0 && $all != 1) {
     echo "<a href=\"".$_SERVER['PHP_SELF']."?file=".$file."&amp;action=table\">".$text[5]." ".$text['tipp'][99]."</a>&nbsp;&nbsp;&nbsp;<br>";
   }

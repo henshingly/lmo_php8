@@ -79,12 +79,12 @@ if ($file != "") {
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><?include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
+    <td align="center"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
   </tr>
   <tr>
     <td align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-        <tr><?
+        <tr><?php
   if ($st == $anzst) {
     $j = $text[374];
   } elseif($st == $anzst-1) {
@@ -96,7 +96,7 @@ if ($file != "") {
   } else {
     $j = $st.". ".$text[370];
   }?>
-          <th colspan="<?=$breite; ?>" align="left"><?php  echo $j;
+          <th colspan="<?php echo $breite; ?>" align="left"><?php  echo $j;
   if ($dats == 1) {
     if ($datum1[$st-1] != "") {
       echo " ".$text[3]." ".$datum1[$st-1];
@@ -106,7 +106,7 @@ if ($file != "") {
     }
   }?>
           </th>
-        </tr><?
+        </tr><?php
   $datsort = $mterm[$st-1];
   asort($datsort);
   reset($datsort);
@@ -116,7 +116,7 @@ if ($file != "") {
       for($n = 0; $n < $modus[$st-1]; $n++) {
         if(($klfin==1) && ($st==$anzst)){ ?>
         <tr>
-          <th class="nobr" colspan="<?=$breite; ?>"><? if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></th>
+          <th class="nobr" colspan="<?php echo $breite; ?>"><?php  if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></th>
         </tr><?php        }?>
         <tr><?php        if($datm==1){
           if($mterm[$st-1][$i][$n]>0){
@@ -124,8 +124,8 @@ if ($file != "") {
           } else {
             $dum1="";
           }?>
-          <td class="nobr"><?=$dum1; ?></td><?php        }?>
-          <td class="nobr" width="2">&nbsp;</td><?
+          <td class="nobr"><?php echo $dum1; ?></td><?php        }?>
+          <td class="nobr" width="2">&nbsp;</td><?php
         if ($n == 0) {
           $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
           $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
@@ -152,7 +152,7 @@ if ($file != "") {
           }
           echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
           echo "</td>";?>
-          <td class="nobr" align="center" width="10">-</td><?
+          <td class="nobr" align="center" width="10">-</td><?php
           if ($m == 2) {
             echo "<td align='left' class=\"lmoTurnierSieger nobr\">";
           } elseif($m==1) {
@@ -174,17 +174,17 @@ if ($file != "") {
           if ($plan==1) {
             echo "</a>";
           }?>
-          </td><?
+          </td><?php
         } else { ?>
           <td class="nobr" colspan="3">&nbsp;</td><?php        }?>
           <td class="nobr" width="2">&nbsp;</td>
-          <td class="nobr" align="right"><?=applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?></td>
+          <td class="nobr" align="right"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?></td>
           <td class="nobr" align="center" width="8">:</td>
-          <td class="nobr" align="left"><?=applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?></td>
+          <td class="nobr" align="left"><?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?></td>
           <td class="nobr" width="2">&nbsp;</td>
-          <td class="nobr"><?=$mspez[$st-1][$i][$n]; ?></td>
+          <td class="nobr"><?php echo $mspez[$st-1][$i][$n]; ?></td>
           <td class="nobr" width="2">&nbsp;</td>
-          <td class="nobr"><?
+          <td class="nobr"><?php
         /** Mannschaftsicons finden
          */
         $lmo_teamaicon="";
@@ -222,7 +222,7 @@ if ($file != "") {
         </tr><?php      }
       if(($modus[$st-1]>1) && ($i<=$anzsp-1)){ ?>
         <tr>
-          <td class="nobr" colspan="<?=$breite; ?>">&nbsp;</td>
+          <td class="nobr" colspan="<?php echo $breite; ?>">&nbsp;</td>
         </tr><?php      }
     }
   }?>
@@ -233,17 +233,18 @@ if ($file != "") {
   <tr>
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr><?  
+        <tr><?php
    $st0 = $st-1;
    if ($st > 1) {?>
-          <td align="left">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[6]?>"><?=$text[5]?> <?=$text[6]?></a>&nbsp;</td><?
+          <td align="left">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a>&nbsp;</td><?php
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>
-          <td align="right">&nbsp;<a href="<?=$addr.$st0?>" title="<?=$text[8]?>"><?=$text[8]?> <?=$text[7]?></a>&nbsp;</td><?
+          <td align="right">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</td><?php
    }?>
         </tr>
       </table>
     </td>
   </tr>
-</table><?php} ?>
+</table><?php
+} ?>

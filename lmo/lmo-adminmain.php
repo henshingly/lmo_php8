@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -34,13 +34,13 @@ if($action=="admin"){
 
   if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo getMessage('Delete install folder or set its chmod to 000!',TRUE);
 ?>
-<script type="text/javascript" src="<?=URL_TO_LMO?>/js/admin.js.php"></script>
+<script type="text/javascript" src="<?php echo URL_TO_LMO?>/js/admin.js.php"></script>
 <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td colspan='2' align="center"><h1><?=$text[77]." ".$text[54];?></h1></td>
+    <td colspan='2' align="center"><h1><?php echo $text[77]." ".$text[54];?></h1></td>
   </tr>
   <tr>
-    <td class="lmoMenu" align="left"><?
+    <td class="lmoMenu" align="left"><?php 
 require_once(PATH_TO_LMO."/lmo-openfile.php");
 if ($_SESSION['lmouserok'] == 2) {
   if ($todo != "new") {
@@ -128,14 +128,14 @@ if ($_SESSION['lmouserok'] == 2) {
   }
 ?>
     </td>
-    <td class="lmoMenu" align="right"><?
+    <td class="lmoMenu" align="right"><?php 
   echo "<a href='{$adda}logout' onclick='return chklmolink();' title='{$text[89]}'>{$text[88]}</a>";
   echo "&nbsp;";
   if($_SESSION['lmouserok']==2){echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}else{echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}?>
      </td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><?
+    <td colspan="2" align="center"><?php 
   if ($_SESSION['lmouserok'] == 2) {
     $addr_options = $_SERVER['PHP_SELF']."?action=admin&amp;todo=options";
     $addr_addons = $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons";
@@ -246,7 +246,7 @@ if ($_SESSION['lmouserok'] == 2) {
     </td>
   </tr>
   <tr>
-    <td colspan='2' class="lmoFooter" align="left"><?
+    <td colspan='2' class="lmoFooter" align="left"><?php 
   if ($einsprachwahl==1){
     echo getLangSelector();
   }?>
@@ -254,9 +254,9 @@ if ($_SESSION['lmouserok'] == 2) {
   </tr>
   <tr>
     <td align="left">
-      <a href="<?=URL_TO_LMO."/lmo.php?file=".$file;?>" target="_blank" title="<?=$text[116]?>"><?=$text[5]?> <?=$text[115]?></a>
+      <a href="<?php echo URL_TO_LMO."/lmo.php?file=".$file;?>" target="_blank" title="<?php echo $text[116]?>"><?php echo $text[5]?> <?php echo $text[115]?></a>
     </td>
-    <td class="lmoFooter" align="right"><? echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
+    <td class="lmoFooter" align="right"><?php  echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
   </tr>
-</table><?
+</table><?php 
 }?>

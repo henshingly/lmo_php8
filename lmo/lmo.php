@@ -1,4 +1,5 @@
-<?php/** Liga Manager Online 4
+<?php
+/** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
   *

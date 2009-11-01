@@ -1,4 +1,4 @@
-<?
+<?php 
 require_once(dirname(__FILE__).'/../../init.php');
 if (!isset($_REQUEST['st'])) $_REQUEST['st']="1";
 if (!isset($_REQUEST['op'])) $_REQUEST['op']="";
@@ -11,9 +11,9 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Ein Datum der Vergangenheit
 header("Last-Modified: " . date("D, d M Y H:i:s"). " GMT"); 
 header("Cache-Control: no-cache, must-revalidate"); 
 header("Pragma: no-cache"); 
-echo('<?xml version="1.0" encoding="iso-8859-1"?>');?>
+echo('<?php xml version="1.0" encoding="iso-8859-1"?>');?>
 <!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
-<wml><?
+<wml><?php 
 switch($_REQUEST['op']) {
 
     case "nav":

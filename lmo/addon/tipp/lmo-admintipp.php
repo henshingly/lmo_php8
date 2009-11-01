@@ -1,4 +1,4 @@
-<?
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -36,33 +36,35 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <th><h1><?=$text['tipp'][63] ?></h1></th>
+    <th><h1><?php echo $text['tipp'][63] ?></h1></th>
   </tr>
   <tr>
     <td align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <th align="left" colspan="3"><? echo $text['tipp'][64]; ?></td>
-        </tr><?php$ftype=".l98"; 
+          <th align="left" colspan="3"><?php  echo $text['tipp'][64]; ?></td>
+        </tr><?php
+$ftype=".l98";
 $iptype="auswert"; 
 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
 if($tipp_gesamt==1){ ?>
         <tr>
           <td width="20">&nbsp;</td>
-          <td align="left"><strong><? echo $text['tipp'][56]; ?></strong></td>
+          <td align="left"><strong><?php  echo $text['tipp'][56]; ?></strong></td>
           <td align="right">
-            <form name="lmoedit" action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <form name="lmoedit" action="<?php  echo $_SERVER['PHP_SELF']; ?>" method="post">
               <input type="hidden" name="action" value="admin">
               <input type="hidden" name="todo" value="tipp">
               <input type="hidden" name="save" value="4">
-              <input class="lmo-formular-button" type="submit" name="best" value="<? echo $text['tipp'][236]; ?>">
+              <input class="lmo-formular-button" type="submit" name="best" value="<?php  echo $text['tipp'][236]; ?>">
             </form>
           </td>
         </tr><?php}?>
 
         <tr>
-          <th align="left" colspan="3"><? echo $text['tipp'][155]; ?></td>
-        </tr><?php$ftype=".l98"; 
+          <th align="left" colspan="3"><?php  echo $text['tipp'][155]; ?></td>
+        </tr><?php
+$ftype=".l98";
 $iptype="einsicht"; 
 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); ?>
       </table>

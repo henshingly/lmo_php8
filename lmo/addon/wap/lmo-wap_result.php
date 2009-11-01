@@ -1,9 +1,9 @@
-<?
+<?php 
 echo("<card id=\"day\" title=\"$st. Spieltag\">\n<p>");
 
 //Anzeige Spieltag
 if($file!=""){?>
-<table columns="2" align="LC"><?
+<table columns="2" align="LC"><?php 
   $st_next = $st+1;
   $st_before = $st-1;
    
@@ -46,7 +46,7 @@ if($file!=""){?>
     echo "<a href=\"".$_SERVER['PHP_SELF'].'?wap_file='.$file."&amp;op=day&amp;st=".$st_next."\">»</a>\n";
   }
   echo "<br/>";	?>
-<br/><a href="<?=$_SERVER['PHP_SELF'].'?wap_file='.$file;?>&amp;op=table&amp;st=<?=$st?>"><?=$text[16];?></a> | <a href="<?=$_SERVER['PHP_SELF'].'?wap_file='.$file;?>&amp;op=help&amp;st=<?=$st?>"><?=$text[20];?></a><?
+<br/><a href="<?php echo $_SERVER['PHP_SELF'].'?wap_file='.$file;?>&amp;op=table&amp;st=<?php echo $st?>"><?php echo $text[16];?></a> | <a href="<?php echo $_SERVER['PHP_SELF'].'?wap_file='.$file;?>&amp;op=help&amp;st=<?php echo $st?>"><?php echo $text[20];?></a><?php 
 } 
 echo("<br/><small><a href='".$_SERVER['PHP_SELF']."'>Home</a></small>");
 // Anzeige Spieltag Ende

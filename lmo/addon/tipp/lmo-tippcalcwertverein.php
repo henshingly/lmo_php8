@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -88,6 +88,6 @@ if(file_exists($auswertfile)){
     rsort($tab0,SORT_STRING);
   }
 }else{?>
-  <?php echo getMessage($text['tipp'][17],TRUE);?><?
+  <?php echo getMessage($text['tipp'][17],TRUE);?><?php 
 }
 ?>

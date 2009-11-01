@@ -1,4 +1,4 @@
-<?
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -25,16 +25,16 @@ if(($action=="admin") && ($todo=="open")){
 ?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?=$text[294]?></h1></td>
+    <td align="center"><h1><?php echo $text[294]?></h1></td>
   </tr>
   <tr>
-    <td align="center"><? require(PATH_TO_LMO."/lmo-dirlist.php"); ?></td>
+    <td align="center"><?php  require(PATH_TO_LMO."/lmo-dirlist.php"); ?></td>
   </tr>
    <tr>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td align="left"><?
+    <td align="left"><?php 
   $subdir=str_replace(array('../','./'),array('',''),$subdir);
   $dirs = get_dir($dirliga.$subdir);
   natcasesort($dirs);
@@ -53,16 +53,16 @@ if(($action=="admin") && ($todo=="open")){
   if ($output!='') {?>
       <table class='lmoInner' cellspacing="0" width="99%">
         <tr>
-          <th colspan="2"><?=$text[509];?></th>
+          <th colspan="2"><?php echo $text[509];?></th>
         </tr>
-        <?=$output?>
-      </table><?
+        <?php echo $output?>
+      </table><?php 
   }
   if (strpos($subdir,'/')!==FALSE) {?>
-      <p><a href="<?=$adda?>open&amp;subdir=<?=dirname($subdir).'/'?>"><?=$text[5];?> <?=$text[562];?></a></p><?
+      <p><a href="<?php echo $adda?>open&amp;subdir=<?php echo dirname($subdir).'/'?>"><?php echo $text[5];?> <?php echo $text[562];?></a></p><?php 
   }
 ?>
     </td>
   </tr>
-</table><?
+</table><?php 
 }?>

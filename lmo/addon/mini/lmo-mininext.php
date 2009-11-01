@@ -131,7 +131,7 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
 
     if (is_null( $team_b = $liga->teamForNumber($b)) ) {
       // Wir ermitteln den nächsten gegner von a wenn b nicht angegeben ist
-      $sortedGames = gamesSortedForTeam ($liga,$team_a,false); // Nur nach der Zeit sortieren unabh. vom spieltag
+      $sortedGames = $liga->gamesSortedForTeam ($team_a,false); // Nur nach der Zeit sortieren unabh. vom spieltag
       $now = time();
       $showLastGame = true;
       foreach ($sortedGames as $game) {
@@ -181,10 +181,12 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
       $template->setVariable("countDown",$text['mini'][15].": ".$days.", ".$text['mini'][16].": ".$hours.", ".$text['mini'][17].": ".$minutes);
 
       $template->setVariable("copy",str_replace('CLASSLIB_VERSION',CLASSLIB_VERSION,$text['mini'][0]));
-      $template->setVariable("imgHomeSmall",HTML_smallTeamIcon($file,$partie->heim->name," alt=''"));
-      $template->setVariable("imgHomeBig",HTML_bigTeamIcon($file,$partie->heim->name,"alt=''"));
-      $template->setVariable("imgGuestSmall",HTML_smallTeamIcon($file,$partie->gast->name,"alt=''"));
-      $template->setVariable("imgGuestBig",HTML_bigTeamIcon($file,$partie->gast->name,"alt=''"));
+      $template->setVariable("imgHomeSmall",HTML_icon($partie->heim->name,'teams','small'));
+      $template->setVariable("imgHomeMiddle",HTML_icon($partie->heim->name,'teams','middle'));
+      $template->setVariable("imgHomeBig",HTML_icon($partie->heim->name,'teams','big'));
+      $template->setVariable("imgGuestSmall",HTML_icon($partie->gast->name,'teams','small'));
+      $template->setVariable("imgGuestMiddle",HTML_icon($partie->gast->name,'teams','middle'));
+      $template->setVariable("imgGuestBig",HTML_icon($partie->gast->name,'teams','big'));
 
       $template->setVariable("homeName",$partie->heim->name);
       $template->setVariable("guestName",$partie->gast->name);
@@ -203,10 +205,12 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
         $template->setCurrentBlock("previous");
         $template->setVariable("previous_gameDate",$lastPartie->datumString());
         $template->setVariable("previous_gameTime",$lastPartie->zeitString());
-        $template->setVariable("previous_imgHomeSmall",HTML_smallTeamIcon($file,$lastPartie->heim->name," alt=''"));
-        $template->setVariable("previous_imgHomeBig",HTML_bigTeamIcon($file,$lastPartie->heim->name,"alt=''"));
-        $template->setVariable("previous_imgGuestSmall",HTML_smallTeamIcon($file,$lastPartie->gast->name,"alt=''"));
-        $template->setVariable("previous_imgGuestBig",HTML_bigTeamIcon($file,$lastPartie->gast->name,"alt=''"));
+        $template->setVariable("previous_imgHomeSmall",HTML_icon($lastPartie->heim->name,'teams','small'));
+        $template->setVariable("previous_imgHomeMiddle",HTML_icon($lastPartie->heim->name,'teams','middle'));
+        $template->setVariable("previous_imgHomeBig",HTML_icon($lastPartie->heim->name,'teams','big'));
+        $template->setVariable("previous_imgGuestSmall",HTML_icon($lastPartie->gast->name,'teams','small'));
+        $template->setVariable("previous_imgGuestMiddle",HTML_icon($lastPartie->gast->name,'teams','middle'));
+        $template->setVariable("previous_imgGuestBig",HTML_icon($lastPartie->gast->name,'teams','big'));
 
         $template->setVariable("previous_homeName",$lastPartie->heim->name);
         $template->setVariable("previous_guestName",$lastPartie->gast->name);
