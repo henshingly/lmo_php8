@@ -576,7 +576,6 @@
 4002=Terugronde
 4003=Heenronde
 4004=Vrij
-4005=ZuStatAddon v1.08 © 2002 door Bernd Hoyer
 4006=Thuiszege
 4007=Uitzege
 4008=Beslissen

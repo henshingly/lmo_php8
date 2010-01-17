@@ -572,7 +572,6 @@
 4002=Második kör
 4003=Elsõ kör
 4004=Szabadnapos
-4005=ZuStatAddon v1.08 &copy; 2002 by Bernd Hoyer
 4006=Hazai gyozelem
 4007=Idegenbeli gyozelem
 4008=Döntetlen

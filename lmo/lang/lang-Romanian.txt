@@ -575,7 +575,6 @@
 4002=Retur
 4003=Tur
 4004=Nu au jucat in aceasta etapa: 
-4005=ZuStatAddon v1.08 ¦ 2002 by Bernd Hoyer
 4006=victorii acasa
 4007=victorii in deplasare
 4008=egaluri

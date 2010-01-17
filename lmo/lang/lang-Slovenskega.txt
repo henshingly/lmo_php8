@@ -576,7 +576,6 @@
 4002=Rückrunde
 4003=Hinrunde
 4004=Spielfrei
-4005=ZuStatAddon v1.08 © 2002 by Bernd Hoyer
 4006=Heimsiege
 4007=Auswärtssiege
 4008=Unentschieden

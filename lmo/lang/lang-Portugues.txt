@@ -576,7 +576,6 @@
 4002=2ª volta
 4003=1ª volta
 4004=Descanso
-4005=ZuStatAddon v1.08 &copy; 2002 by Bernd Hoyer
 4006=Vitórias caseiras
 4007=Vitórias fora
 4008=Empates

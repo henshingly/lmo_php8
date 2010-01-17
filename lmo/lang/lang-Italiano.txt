@@ -577,7 +577,6 @@
 4002=Ritorno
 4003=Andata
 4004=Riposo
-4005=ZuStatAddon v1.08 © 2002 by Bernd Hoyer
 4006=Vittorie interne
 4007=Vittorie esterne
 4008=Pareggi

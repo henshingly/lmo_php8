@@ -572,7 +572,6 @@
 4002=Andre halvdel
 4003=Første halvdel
 4004=Spillefri
-4005=ZuStatAddon v1.08 © 2002 by Bernd Hoyer
 4006=Hjemmeseire
 4007=Borteseire
 4008=Uavgjort
