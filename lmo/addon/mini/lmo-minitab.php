@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
 
 require_once(dirname(__FILE__).'/../../init.php');
@@ -56,11 +57,11 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 }
 
 $CacheOutput='';
-$TableCacheFile = PATH_TO_LMO.'/'.$diroutput.basename($m_liga).".cache";
+$TableCacheFile = PATH_TO_LMO.'/'.$diroutput.basename($m_liga)."-".$m_template.".cache";
 // Wenn Cache File vorhanden und auf Aktuellen Stand, gib dies aus.
 if (is_readable($TableCacheFile) && $cfgarray['mini']['CacheTable'] == 1) {
   $CacheFile= file ($TableCacheFile);
-  if (trim(array_shift($CacheFile)) == (filemtime(PATH_TO_LMO.'/'.$dirliga.$m_liga)."|$m_ueber|$m_unter|$m_platz")  ) {
+  if (trim(array_shift($CacheFile)) == (filemtime(PATH_TO_LMO.'/'.$dirliga.$m_liga)."-".$m_template."|$m_ueber|$m_unter|$m_platz")  ) {
     // echo "Cache Ausgabe: <br>";
     $CacheOutput= print implode("",$CacheFile);
   }
@@ -193,7 +194,7 @@ if (empty($CacheOutput)) {
   $template->setVariable("Link", URL_TO_LMO.'/?action=table&amp;file='.$m_liga);
     // cache File schreiben
     if ( is_writable(dirname($TableCacheFile)) && $cfgarray['mini']['CacheTable'] == 1 ) {
-      $CacheOutput = filemtime(PATH_TO_LMO.'/'.$dirliga.$m_liga)."|$m_ueber|$m_unter|$m_platz\n".$template->get();
+      $CacheOutput = filemtime(PATH_TO_LMO.'/'.$dirliga.$m_liga)."-".$m_template."|$m_ueber|$m_unter|$m_platz\n".$template->get();
       if ($fileHandle = @fopen($TableCacheFile,"wb") ) {
         fwrite($fileHandle,$CacheOutput);
         fclose($fileHandle);
