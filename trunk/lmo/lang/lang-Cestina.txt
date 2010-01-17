@@ -567,7 +567,6 @@
 4002=Jaro
 4003=Podzim
 4004=Volno
-4005=ZuStatAddon v1.08 © 2002 by Bernd Hoyer
 4006=výhry dom.
 4007=výhry hos.
 4008=remízy

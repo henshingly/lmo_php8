@@ -576,7 +576,6 @@
 4002=Ida
 4003=Vuelta
 4004=No jugando
-4005=ZuStatAddon v1.08 &copy; 2002 by Bernd Hoyer
 4006=Gana local
 4007=Gana visitante
 4008=Empate

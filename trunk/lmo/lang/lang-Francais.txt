@@ -576,7 +576,6 @@
 4002=Retour
 4003=Aller
 4004=Sans match
-4005=ZuStatAddon v1.08 © 2002 by Bernd Hoyer
 4006=Victoire à domicile
 4007=Victoire à l&#39;extérieur
 4008=Match nul

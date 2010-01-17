@@ -53,9 +53,6 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           fputs($datei,"Actual=".$stx."\n");
         }
         if ($lmtype==0) {
-          /*Minitabellen-CSV generieren*/
-          include(PATH_TO_ADDONDIR."/mini/lmo-minitab_save.php");
-          /*Minitabellen-CSV generieren*/
           fputs($datei,"Kegel=".$kegel."\n");
           fputs($datei,"HandS=".$hands."\n");
           fputs($datei,"PointsForWin=".$pns."\n");

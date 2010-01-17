@@ -572,20 +572,11 @@
 571=Attention! Only use this <br>if the addon hasn't it's own configuration screen!
 572=Short name of the team (max. 12 chars)
 573=Translation-Tool
-574=Streaks
-575=Won
-576=Unbeated
-577=Draws
-578=Not Won
-579=Lost
-580=Actual
-581=Season
 4000=Total-
 4001=/Match
 4002=2nd Season Half
 4003=1st Season Half
 4004=Free
-4005=ZuStatAddon v1.08 © 2002 by Bernd Hoyer
 4006=Home Wins
 4007=Away Wins
 4008=Draw
@@ -600,6 +591,16 @@
 4017=Highest Away Win(s)
 4018=The Most
 4019=Matches with same number of
+4026=Streaks
+4027=Won
+4028=Unbeated
+4029=Draws
+4030=Not Won
+4031=Lost
+4032=Actual
+4033=Season
+
+
 5001=Spieltage
 5002=Here you can move matches to another match days
 5003=Matches
