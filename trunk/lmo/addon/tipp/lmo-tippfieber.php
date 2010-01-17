@@ -190,4 +190,4 @@ if($file!="" && $tipp_tippfieber==1){
     </tr><?php 
   }?>
   </table>
-</form><?php}?>
+</form><?php }?>

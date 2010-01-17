@@ -133,5 +133,5 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   <tr>
     <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?php echo $text[5]." ".$text['tipp'][1]; ?></a></td>
   </tr><?php  }?>
-</table><?php} 
+</table><?php } 
 $file=""; ?>

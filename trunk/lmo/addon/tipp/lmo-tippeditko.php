@@ -314,8 +314,8 @@ for($n=0;$n<$modus[$st-1];$n++){
     echo "&nbsp;";
   }?>
     </td>
-  </tr><?php}
+  </tr><?php }
 if(($modus[$st-1]>1) && ($i<$anzsp-1)){ ?>
   <tr>
     <td colspan="<?php echo $breite; ?>">&nbsp;</td>
-  </tr><?php}
+  </tr><?php }
