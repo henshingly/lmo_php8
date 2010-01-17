@@ -140,11 +140,11 @@ if ($tabdat == "") {
         </tr>
       </table>
     </td>
-  </tr><?php}
+  </tr><?php }
 //if($all!=1){ ?>
   <tr>
     <td align="center"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
-  </tr><?php//} //if($all!=1)
+  </tr><?php //} //if($all!=1)
 
 $dummy = " align=\"right\"";
 
@@ -527,7 +527,7 @@ for($x = 1; $x <= $anztipper; $x++) {
         </tr>
       </table>
     </td>
-  </tr><?phpif($tipp_anzseiten>1){ ?> 
+  </tr><?php if($tipp_anzseiten>1){ ?> 
   <tr>
     <td align="center">
       <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
@@ -553,7 +553,7 @@ for($x = 1; $x <= $anztipper; $x++) {
         </tr>
       </table>
     </td>
-  </tr><?php} // ende if($tipp_anzseiten>1) ?>
+  </tr><?php } // ende if($tipp_anzseiten>1) ?>
 </table><?php
 if($tabdat!=""){ ?>
   <tr>
@@ -571,4 +571,4 @@ if($tabdat!=""){ ?>
         </tr>
       </table>
     </td>
-  </tr><?php}?>
+  </tr><?php }?>

@@ -59,7 +59,7 @@ if($tipp_gesamt==1){ ?>
               <input class="lmo-formular-button" type="submit" name="best" value="<?php  echo $text['tipp'][236]; ?>">
             </form>
           </td>
-        </tr><?php}?>
+        </tr><?php }?>
 
         <tr>
           <th align="left" colspan="3"><?php  echo $text['tipp'][155]; ?></td>

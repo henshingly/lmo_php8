@@ -392,4 +392,4 @@ if ($file!="") {
     <td align="right">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</td><?php
    }?>
   </tr>
-</table><?php} ?>
+</table><?php } ?>

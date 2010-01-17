@@ -622,7 +622,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
       </table>
     </td>
   </tr>
-</table><?php}
+</table><?php }
 $einsichtfile="";
 $tippfile="";
 ?>

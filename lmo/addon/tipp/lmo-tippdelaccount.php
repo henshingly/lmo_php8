@@ -100,6 +100,6 @@ if (($action == "tipp") && ($todo == "delaccount")) {
     <tr>
       <td class="lmoFooter" colspan="2" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?php echo $text['tipp'][141]; ?></a></td>
     </tr><?php  }?>
-  </table><?php} 
+  </table><?php } 
 $file="";
 ?>

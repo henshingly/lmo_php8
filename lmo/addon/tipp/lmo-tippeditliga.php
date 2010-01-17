@@ -69,7 +69,7 @@ if ($datm==1) {
     $goaltippb[$i]="";
 }?>
   </td>
-  <td>&nbsp;</td><?phpif($tipp_showtendenzabs==1){ ?>
+  <td>&nbsp;</td><?php if($tipp_showtendenzabs==1){ ?>
   <td align="center" class="nobr"><?php  if ($btip1==false) {
     if (!isset($tendenz1[$i])) {
       $tendenz1[$i]=0;
@@ -83,7 +83,7 @@ if ($datm==1) {
     echo $tendenz1[$i]."-".$tendenz0[$i]."-".$tendenz2[$i];
   }?>
   </td>
-  <td>&nbsp;</td><?php}
+  <td>&nbsp;</td><?php }
 if($tipp_showtendenzpro==1){ ?>
   <td align="center" class="nobr"><?php  if ($btip1==false) {
     if (!isset($anzgetippt[$i])) {
@@ -105,7 +105,7 @@ if($tipp_showtendenzpro==1){ ?>
     }
   }?>
   </td>
-  <td>&nbsp;</td><?php}
+  <td>&nbsp;</td><?php }
 if ($btip[$i]==true) {
   $savebutton=1;
 }
@@ -202,7 +202,7 @@ if($tipp_tippmodus==0){
   </td><?php  }?>
   <td align="center">
     <input type="radio" name="xtipp<?php echo $i; ?>" value="2" <?php  if($tipp==2){echo " checked";} if($btip[$i]==false){echo " disabled";} ?>>
-  </td><?php} /* ende ($tipp_tippmodus==0) */
+  </td><?php } /* ende ($tipp_tippmodus==0) */
 
 /**BEIDE*/
 if ($tipp_jokertipp==1){ ?>
