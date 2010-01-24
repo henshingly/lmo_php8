@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,14 +16,14 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 isset($_POST['save'])?$save=$_POST['save']:$save=0;
 isset($_REQUEST['show'])?$show=$_REQUEST['show']:$show=0;
 if($save==1){
-  
+
   switch ($show) {
     case 0:
       $dirliga=trim($_POST["xdirliga"]);
@@ -31,24 +31,25 @@ if($save==1){
       $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
       if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergänzen falls nicht vorhanden
       $ArchivDir=$dirliga.'archiv/';
-      
+
       $deflang=isset($_POST["xdeflang"])?trim($_POST["xdeflang"]):$deflang;
-      
+
       //Zeitformat kontrollieren
       $deftime=isset($_POST["xdeftime"])?$_POST["xdeftime"]:"15:30";
       $datum_tmp = explode(':',$deftime);
       $deftime=strftime("%H:%M", mktime($datum_tmp[0],$datum_tmp[1]));
-      
+
       if (!empty($_POST["xdefdateselect"])) {
         $defdateformat=isset($_POST["xdefdateformat"])?$_POST["xdefdateformat"]:$defdateformat;
       } else {
         $defdateformat=isset($_POST["xdefdateformat2"])?$_POST["xdefdateformat2"]:$defdateformat;
       }
+      $timezone=isset($_POST["xtimezone"])?$_POST["xtimezone"]:"";
       $aadr=isset($_POST["xadr"])?$_POST["xadr"]:'';
-      
+
       $liga_sort=isset($_POST["xliga_sort"])?$_POST["xliga_sort"]:'liga_name';
       $liga_sort_direction=isset($_POST["xliga_sort_direction"])?$_POST["xliga_sort_direction"]:'asc';
-      
+
       break;
     case 1:
       $tabpkt=isset($_POST["xtabpkt"])?trim($_POST["xtabpkt"]):$tabpkt;
@@ -100,22 +101,38 @@ if($save==1){
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?php echo $file;?>">
         <input type="hidden" name="show" value="<?php echo $show;?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php 
-if ($show==0) {?>          
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
+if ($show==0) {?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?php echo $text[506]?>"><?php echo $text[505];?></acronym></td>
             <td class="nobr" colspan="4">
-              <select class="lmo-formular-input" name="xdeflang" onchange="dolmoedit()"><?php 
+              <select class="lmo-formular-input" name="xdeflang" onchange="dolmoedit()"><?php
               $handle=opendir (PATH_TO_LANGDIR);
               while (false!==($f=readdir($handle))) {
                 if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {?>
-                <option<?php if ($lang[1]==$deflang) echo " selected";?>><?php echo $lang[1];?></option><?php 
-                } 
+                <option<?php if ($lang[1]==$deflang) echo " selected";?>><?php echo $lang[1];?></option><?php
+                }
               }
-              closedir($handle); 
+              closedir($handle);
               ?>
               </select></td>
-          </tr>
+          </tr><?php
+  if (version_compare(PHP_VERSION, '5.1.0') >= 0) { ?>
+          <tr>
+            <td class="nobr" align="right"><acronym title="<?php echo $text[575]?>"><?php echo $text[574];?></acronym></td>
+            <td class="nobr" colspan="4">
+              <select class="lmo-formular-input" name="xtimezone" onchange="dolmoedit()"><?php
+              $timezones = get_timezones();
+              foreach ($timezones as $continent=>$zones) {?>
+                <optgroup label="<?php echo $continent;?>"><?php
+                foreach ($zones as $zone_value=>$zone_name) {?>
+                  <option value="<?php echo $zone_value;?>" <?php if ($zone_value==$timezone) echo "selected";?>><?php echo $zone_name;?></option><?php
+                }
+              ?></optgroup><?php
+              }?>
+              </select></td>
+          </tr><?php
+  }?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?php echo $text[222]?>"><?php echo $text[221];?></acronym></td>
             <td class="nobr" colspan="4"><input class="lmo-formular-input" type="text" name="xdirliga" size="20" maxlength="80" value="<?php echo $dirliga;?>" onChange="dolmoedit()"></td>
@@ -127,11 +144,11 @@ if ($show==0) {?>
             <td class="nobr" rowspan="2" align="right"><acronym title="<?php  echo $text[256] ?>"><?php  echo $text[257]; ?></acronym>&nbsp;</td>
             <td class="nobr" align="left">
               <input type="radio" name="xdefdateselect" value="1" checked>
-              <select class="lmo-formular-input" name="xdefdateformat" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[0].checked=true;"><?php 
+              <select class="lmo-formular-input" name="xdefdateformat" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[0].checked=true;"><?php
       $dummf=array("%d.%m. %H:%M","%x %H:%M","%a.%d.%m. %H:%M","%A, %d.%m. %H:%M","%a.%x %H:%M","%A, %x %H:%M");?>
-                <option value="">__</option><?php 
+                <option value="">__</option><?php
       for($y=0;$y<count($dummf);$y++){?>
-                <option value="<?php echo $dummf[$y]?>"<?php if($defdateformat==$dummf[$y]){echo " selected";}?>><?php echo strftime($dummf[$y])?></option><?php 
+                <option value="<?php echo $dummf[$y]?>"<?php if($defdateformat==$dummf[$y]){echo " selected";}?>><?php echo strftime($dummf[$y])?></option><?php
       }?>
               </select>
             </td>
@@ -182,8 +199,8 @@ if ($show==0) {?>
           </tr>
           <tr>
             <td class="nobr" colspan="2"><input type="radio" name="xliga_sort_direction" onClick="dolmoedit()" value="desc"<?php if ($liga_sort_direction=="desc") echo " checked";?>><?php echo $text[528]?></td>
-          </tr><?php 
-}elseif ($show==1) {?>          
+          </tr><?php
+}elseif ($show==1) {?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?php echo $text[228]?>"><?php echo $text[227];?></acronym></td>
             <td class="nobr" colspan="4">
@@ -202,8 +219,8 @@ if ($show==0) {?>
                 <option value="2"<?php if($tabonres==2){echo " selected";}?>><?php echo $text[235]?></option>
               </select>
             </td>
-          </tr><?php 
-}elseif ($show==2) {?>          
+          </tr><?php
+}elseif ($show==2) {?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?php echo $text[390]?>"><?php echo $text[389];?></acronym></td>
             <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xbacklink" onChange="dolmoedit()"<?php if($backlink==1){echo " checked";}?>></td>
@@ -247,8 +264,8 @@ if ($show==0) {?>
             <td class="nobr" colspan="4">
               <input type="checkbox" class="lmo-formular-input" name="xeinzutore" onChange="dolmoedit()"<?php if($einzutore==1){echo " checked";}?>>&nbsp;<?php echo $text[492]?>
             </td>
-          </tr><?php 
-}?>          
+          </tr><?php
+}?>
           <tr>
             <td class="nobr" colspan="6" align="center">
               <input title="<?php echo $text[114]?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[188];?>">

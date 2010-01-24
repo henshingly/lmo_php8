@@ -428,7 +428,7 @@
 427=Legen Sie hier die Optionen für die Umrandung fest (Stärke, Art und Farbe)
 428=Schriftart
 429=Legen Sie hier die Schriftart fest (Achtung: nicht jede Schriftart ist auf jedem System vorhanden)
-430=Schriftgröße 
+430=Schriftgröße
 431=Legen Sie hier die Schriftgröße für normalen Text fest
 432=Festlegen des Ausgabedesigns
 433=Legen Sie hier die Vordergrundfarbe fest (z.B. #ffffff)
@@ -572,6 +572,8 @@
 571=Achtung! Bitte benutzen Sie diese Optionen nur, <br>wenn das Addon keine eigene Konfigurationsoberfläche bestitzt!
 572=Mittellanger Name der Mannschaft (max. 12 Zeichen)
 573=Translation-Tool
+574=Zeitzone
+575=Zeitzone des Servers
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde
