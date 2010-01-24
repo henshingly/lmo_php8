@@ -13,3 +13,6 @@
 012=a
 013=h
 014=State
+015=Days
+016=Hours
+017=Minutes
