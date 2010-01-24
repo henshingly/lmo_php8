@@ -383,8 +383,8 @@
 382=Geben Sie hier die Anzahl der Champions-League-Teilnehmer an (außer dem Meister)
 383=Champions-League-Qualifikanten
 384=Geben Sie hier die Anzahl der Mannschaften an, die an der Champions-League-Qualifikation teilnehmen
-385=UEFA-Cup-Teilnehmer
-386=Geben Sie hier die Anzahl der UEFA-Cup-Teilnehmer, Aufsteiger oder PlayOff-Teilnehmer an
+385=Euroleague-Teilnehmer
+386=Geben Sie hier die Anzahl der Euroleague-Teilnehmer an
 387=feststehende Absteiger
 388=Geben Sie hier die Anzahl der feststehenden Absteiger an
 389=Ligaauswahl
