@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -26,7 +26,23 @@ if (file_exists($cfgfile)) {
 }else{
   die("Konfigurationsdatei: $cfgfile nicht gefunden!");
   //Fehlerhandling hier rein
-}           
+}
+
+//timezone settings (PHP 5.1)
+if (empty($timezone)) {
+  if (function_exists('date_default_timezone_get')) {
+    $timezone = date_default_timezone_get();
+    if ($timezone == 'System/Localtime') {
+      //no timezone name available -> generate it from local time abbr
+      $timezone = timezone_name_from_abbr(date("T"));
+    }
+  }
+}
+ini_set("date.timezone",$timezone);
+if (function_exists('date_default_timezone_set')) {
+  date_default_timezone_set($timezone);
+}
+
 include(PATH_TO_LMO.'/lmo-updateoptions.php');
 $handle=opendir (PATH_TO_CONFIGDIR);
 while (false!==($f=readdir($handle))) {
@@ -37,7 +53,7 @@ while (false!==($f=readdir($handle))) {
       $cfgarray[$f]=$addon_cfgarray;
       extract($addon_cfgarray,EXTR_PREFIX_ALL,$f);                        // Variablen (mit Prefix) erstellen
     }
-  } 
+  }
 }
-closedir($handle); 
+closedir($handle);
 ?>

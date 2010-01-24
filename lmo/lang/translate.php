@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -81,7 +81,7 @@ if ($_SESSION['lmouserok'] == 2) {
       .even {background:#c0c7ff;}
       .uncomplete {background:#ffc7c0;}
       .complete {background:#c7ffc0;}
-      #result {position:absolute;width:30%;left:30%;top:30%;border:2px solid red;background:white;padding:1em;cursor:pointer;}
+      #result {position:fixed;width:30%;left:30%;top:30%;border:2px solid red;background:white;padding:1em;cursor:pointer;}
       table{border:1px solid #999;border-spacing:0;border-collapse:collapse;}
       td, th {border:1px solid #999;padding:0 3px;vertical-align:top;}
       th {text-align:right;}
@@ -97,12 +97,12 @@ if ($_SESSION['lmouserok'] == 2) {
           <td width="49%"><h2><?php echo $file?></h2></td>
           <th width="49%">
             Translate
-              <select size="1" name="file"><?php 
+              <select size="1" name="file"><?php
               foreach($langFiles as $dir => $files) {
                 echo '<option value="'.$dir.'"'.($file==$dir?" selected":'').'>'.$dir;
               }?>
               </select> to
-              <select size="1" name="lang"><?php 
+              <select size="1" name="lang"><?php
               foreach ($langFiles["."] as $langfile) {
                 echo "<option".($lang==$langfile?" selected":'').">".$langfile;
               }?>
@@ -111,18 +111,19 @@ if ($_SESSION['lmouserok'] == 2) {
               <input type="submit" name="change_lang" value="ok">
 
           </th>
+          <th>#</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <td colspan="2"></td>
+          <td colspan="3"></td>
           <th><input type="submit" name="save" value="Save"></th>
         </tr>
         <tr>
-          <th colspan="3"><small>LMO-Translation Tool &ndash; &copy; Rene Marth/<a href="liga-manager-online.de/">LMO-Group</a></small></td>
+          <th colspan="4"><small>LMO-Translation Tool &ndash; &copy; Rene Marth/<a href="liga-manager-online.de/">LMO-Group</a></small></td>
         </tr>
       </tfoot>
-  <?php 
+  <?php
   $de = file($file."/lang-$from_lang.txt");
   $to = array();
 
@@ -184,11 +185,13 @@ if ($_SESSION['lmouserok'] == 2) {
     }
     echo ">";
     if (strlen($pieces_de[1])>88) {
-      echo "<textarea name='i[".intval($pieces_de[0])."]'>".$val."</textarea></td></tr>";
+      echo "<textarea name='i[".intval($pieces_de[0])."]'>".$val."</textarea></td>";
     }else {
-      echo "<input type='text' name='i[".intval($pieces_de[0])."]' value='".$val."'></td></tr>";
+      echo "<input type='text' name='i[".intval($pieces_de[0])."]' value='".$val."'></td>";
     }
+    echo "<th>".$pieces_de[0]."</th></tr>";
     $count++;
+
   }
   //SAVE
   if ($save) {
@@ -200,5 +203,5 @@ if ($_SESSION['lmouserok'] == 2) {
     </form>
 
   </body>
-</html><?php 
+</html><?php
 }?>
