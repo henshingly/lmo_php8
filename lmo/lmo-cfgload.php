@@ -38,7 +38,7 @@ if (empty($timezone)) {
     }
   }
 }
-ini_set("date.timezone",$timezone);
+@ini_set("date.timezone",$timezone);
 if (function_exists('date_default_timezone_set')) {
   date_default_timezone_set($timezone);
 }
