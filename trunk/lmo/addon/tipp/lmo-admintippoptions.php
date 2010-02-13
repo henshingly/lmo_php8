@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 $show=isset($_REQUEST['show'])?$_REQUEST['show']:0;
@@ -57,7 +57,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="tippoptions">
         <input type="hidden" name="save" value="1">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php 
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
   if ($show==0) {?>
           <tr>
             <td width="20">&nbsp;</td>
@@ -237,7 +237,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><?php  echo $text['tipp'][291]; ?></td>
             <td align="left">
-              <select name="xjokertippmulti" onChange="dolmoedit()"<?php  if($tipp_jokertipp==0){echo " disabled";}?>>      
+              <select name="xjokertippmulti" onChange="dolmoedit()"<?php  if($tipp_jokertipp==0){echo " disabled";}?>>
                 <option value="1.5"<?php if($tipp_jokertippmulti=="1.5"){echo " selected";}?>>1.5</option>
                 <option value="2"<?php if($tipp_jokertippmulti=="2"){echo " selected";}?>>2</option>
                 <option value="2.5"<?php if($tipp_jokertippmulti=="2.5"){echo " selected";}?>>2.5</option>
@@ -364,7 +364,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="0"<?php if($tipp_krit1==0){echo " selected";}?>><?php echo $text['tipp'][276]?></option>
                 <option value="1"<?php if($tipp_krit1==1){echo " selected";}?>><?php echo $text['tipp'][277]?></option>
                 <option value="2"<?php if($tipp_krit1==2){echo " selected";}?>><?php echo $text['tipp'][278]?></option>
-                <option value="3"<?php if($tipp_krit1==3){echo " selected";}?>><?php echo $text['tipp'][289]?></option>
+                <option value="3"<?php if($tipp_krit1==3){echo " selected";}?>><?php echo $text['tipp'][279]?></option>
                 <option value="4"<?php if($tipp_krit1==4){echo " selected";}?>><?php echo $text['tipp'][280]?></option>
                 <option value="5"<?php if($tipp_krit1==5){echo " selected";}?>><?php echo $text['tipp'][227]?></option>
                 <option value="6"<?php if($tipp_krit1==6){echo " selected";}?>><?php echo $text['tipp'][271]?></option>
@@ -380,7 +380,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="0"<?php if($tipp_krit2==0){echo " selected";}?>><?php echo $text['tipp'][276]?></option>
                 <option value="1"<?php if($tipp_krit2==1){echo " selected";}?>><?php echo $text['tipp'][277]?></option>
                 <option value="2"<?php if($tipp_krit2==2){echo " selected";}?>><?php echo $text['tipp'][278]?></option>
-                <option value="3"<?php if($tipp_krit2==3){echo " selected";}?>><?php echo $text['tipp'][289]?></option>
+                <option value="3"<?php if($tipp_krit2==3){echo " selected";}?>><?php echo $text['tipp'][279]?></option>
                 <option value="4"<?php if($tipp_krit2==4){echo " selected";}?>><?php echo $text['tipp'][280]?></option>
                 <option value="5"<?php if($tipp_krit2==5){echo " selected";}?>><?php echo $text['tipp'][227]?></option>
                 <option value="6"<?php if($tipp_krit2==6){echo " selected";}?>><?php echo $text['tipp'][271]?></option>
@@ -396,7 +396,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="0"<?php if($tipp_krit3==0){echo " selected";}?>><?php echo $text['tipp'][276]?></option>
                 <option value="1"<?php if($tipp_krit3==1){echo " selected";}?>><?php echo $text['tipp'][277]?></option>
                 <option value="2"<?php if($tipp_krit3==2){echo " selected";}?>><?php echo $text['tipp'][278]?></option>
-                <option value="3"<?php if($tipp_krit3==3){echo " selected";}?>><?php echo $text['tipp'][289]?></option>
+                <option value="3"<?php if($tipp_krit3==3){echo " selected";}?>><?php echo $text['tipp'][279]?></option>
                 <option value="4"<?php if($tipp_krit3==4){echo " selected";}?>><?php echo $text['tipp'][280]?></option>
                 <option value="5"<?php if($tipp_krit3==5){echo " selected";}?>><?php echo $text['tipp'][227]?></option>
                 <option value="6"<?php if($tipp_krit3==6){echo " selected";}?>><?php echo $text['tipp'][271]?></option>
@@ -420,13 +420,13 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
           </tr>
           <tr>
             <td width="20" rowspan="2">&nbsp;</td>
-            <th align="left" colspan="2"><?php 
+            <th align="left" colspan="2"><?php
                 echo$text['tipp'][105];?>
             </th>
           </tr>
           <tr>
-            <td align="left" colspan="2"><?php 
-                $ftype=".l98"; 
+            <td align="left" colspan="2"><?php
+                $ftype=".l98";
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");?>
             </td>
           </tr><?php  }?>
