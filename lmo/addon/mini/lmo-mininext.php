@@ -249,33 +249,35 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
       }
 
       foreach ($dataArray as $ligaFile) {
-        $newLiga = new liga();
-        if($newLiga->loadFile($ligaFile['path'].$ligaFile['src'] ) == TRUE) {
+        if ($ligaFile['path'].$ligaFile['src'] != PATH_TO_LMO.'/'.$dirliga.$file) {
+          $newLiga = new liga();
+          if($newLiga->loadFile($ligaFile['path'].$ligaFile['src'] ) == TRUE) {
 
-          $teamNames = $newLiga->teamNames();
-          $newTeam_a = $newLiga->teamForName($team_a->name);
-          $seachNames = $mini_unGreedy == 1 ? findTeamName($teamNames,$team_b->name):NULL; // ungreedy Searching
-          if (isset($seachNames) && count($seachNames) == 1 ) {
-            $newTeam_b = $newLiga->teamForName($seachNames[0]);// ungreedy Searching war erfolgreich
-            $match = $seachNames[0];
-          }
-          else {
-            $newTeam_b = $newLiga->teamForName($team_b->name);// Searching war zu ungenau (mehr als ein result)
-            $match = NULL;
-          }
-          if (!is_null($newTeam_a) && !is_null($newTeam_b) ){
-            $spiele = $newLiga->allPartieForTeams($newTeam_a,$newTeam_b,TRUE);
-            foreach($spiele as $spiel) {
-              if($spiel->hTore != -1 && $spiel->gTore != -1) {
-                $archivSortDummy[] = $spiel->zeit;
-                if ($spiel->heim == $newTeam_a) {
-                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][13], 'partie'=>$spiel, 'match'=>$match);
-                } else {
-                  $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][12], 'partie'=>$spiel, 'match'=>$match);
+            $teamNames = $newLiga->teamNames();
+            $newTeam_a = $newLiga->teamForName($team_a->name);
+            $seachNames = $mini_unGreedy == 1 ? findTeamName($teamNames,$team_b->name):NULL; // ungreedy Searching
+            if (isset($seachNames) && count($seachNames) == 1 ) {
+              $newTeam_b = $newLiga->teamForName($seachNames[0]);// ungreedy Searching war erfolgreich
+              $match = $seachNames[0];
+            }
+            else {
+              $newTeam_b = $newLiga->teamForName($team_b->name);// Searching war zu ungenau (mehr als ein result)
+              $match = NULL;
+            }
+            if (!is_null($newTeam_a) && !is_null($newTeam_b) ){
+              $spiele = $newLiga->allPartieForTeams($newTeam_a,$newTeam_b,TRUE);
+              foreach($spiele as $spiel) {
+                if($spiel->hTore != -1 && $spiel->gTore != -1) {
+                  $archivSortDummy[] = $spiel->zeit;
+                  if ($spiel->heim == $newTeam_a) {
+                    $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][13], 'partie'=>$spiel, 'match'=>$match);
+                  } else {
+                    $archivPaarungen[] = array('time'=>$spiel->zeit, 'where'=>$text['mini'][12], 'partie'=>$spiel, 'match'=>$match);
+                  }
                 }
               }
-            }
 
+            }
           }
         }
         unset($newLiga);
