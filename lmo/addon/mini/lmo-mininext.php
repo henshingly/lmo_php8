@@ -205,6 +205,7 @@ if ($mini_cache_counter==0 || $mini_cache_counter > $mini_cache_refresh) {
         $template->setCurrentBlock("previous");
         $template->setVariable("previous_gameDate",$lastPartie->datumString());
         $template->setVariable("previous_gameTime",$lastPartie->zeitString());
+        $template->setVariable("previous_gameNote",$lastPartie->notiz);
         $template->setVariable("previous_imgHomeSmall",HTML_icon($lastPartie->heim->name,'teams','small'));
         $template->setVariable("previous_imgHomeMiddle",HTML_icon($lastPartie->heim->name,'teams','middle'));
         $template->setVariable("previous_imgHomeBig",HTML_icon($lastPartie->heim->name,'teams','big'));
