@@ -617,7 +617,5 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
 		$zustatoutput="";
 		fclose($zustatfile);
   }
-} else {
-  echo "No Zustat!";
 }
 ?>
