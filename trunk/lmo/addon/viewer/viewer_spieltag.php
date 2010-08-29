@@ -22,13 +22,13 @@ $template->setVariable("Spieltageminus",$multi_cfgarray['anzahl_spieltage_zuruec
 $template->setVariable("Spieltageplus",$multi_cfgarray['anzahl_spieltage_vor']);
 // Durchlaufe sooft Ligen vorhanden sind
 for($i=1; $i<=$anzahl_ligen; $i++) {
-  $akt_liga=new liga();
+  $liga=new liga();
   // Ligenfile vorhanden?
-  if ($akt_liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$fav_liga[$i]) == TRUE) {
+  if ($liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$fav_liga[$i]) == TRUE) {
     $template->setCurrentBlock("Liga");                                   // Äusserer Block für die Liga
-    //$template->setVariable("Liganame",$akt_liga->name);																							//Ausgabe Liganame
-    $rounds=$akt_liga->options->keyValues['Rounds'];
-    $aktueller_spieltag=$akt_liga->options->keyValues['Actual'];
+    //$template->setVariable("Liganame",$liga->name);																							//Ausgabe Liganame
+    $rounds=$liga->options->keyValues['Rounds'];
+    $aktueller_spieltag=$liga->options->keyValues['Actual'];
     $star=$aktueller_spieltag-($multi_cfgarray['anzahl_spieltage_zurueck']);
     $end=$aktueller_spieltag+$multi_cfgarray['anzahl_spieltage_vor'];
 
@@ -50,31 +50,31 @@ for($i=1; $i<=$anzahl_ligen; $i++) {
     
         //all teams
     if ($all_teams) {
-      $team_count= count($akt_liga->teams);
+      $team_count= count($liga->teams);
       for($x=0;$x<$team_count;$x++) {
         $fav_team[$i][] = $x;
       }
     }
     //Anfang Ergebnisse verlinken
     $template->setVariable("ErgebnisLink",URL_TO_LMO.'/lmo.php?file='.$fav_liga[$i]."&amp;action=results");
-    $template->setVariable("Liganame",$akt_liga->name);
-    $template->setVariable("Ligadatum",$akt_liga->ligaDatumAsString());
+    $template->setVariable("Liganame",$liga->name);
+    $template->setVariable("Ligadatum",$liga->ligaDatumAsString());
     for ($spieltag=$start; $spieltag<=$ende; $spieltag++) {
       $template->setCurrentBlock("Spieltag");
       //Anfang Spieltag verlinken
       $spieltag_link=URL_TO_LMO.'/lmo.php?file='.$fav_liga[$i]."&amp;action=results&amp;st=".$spieltag;
       $template->setVariable("AktSpieltag",$spieltag);
       $template->setVariable("AktSpieltagLink",$spieltag_link);
-      $akt_spieltag=$akt_liga->spieltagForNumber($spieltag);
-      if ($akt_liga->options->keyValues['enableGameSort'] == "1") {
+      $akt_spieltag=$liga->spieltagForNumber($spieltag);
+      if ($liga->options->keyValues['enableGameSort'] == "1") {
         //Spieltagssortierung ist aktiv
-        $myPartien = $akt_spieltag->getPartien("datum");
+        $partien = $akt_spieltag->getPartien("datum");
       } else {
-        $myPartien = $akt_spieltag->getPartien();
+        $partien = $akt_spieltag->getPartien();
       }
 
       $template->setCurrentBlock("Inhalt");  																									//Ausgabe Inhalt Beginn
-      foreach ($myPartien as $myPartie) {
+      foreach ($partien as $partie) {
         require(PATH_TO_ADDONDIR."/viewer/viewer_spiel.inc.php");
       }
       $template->parse("Spieltag");
