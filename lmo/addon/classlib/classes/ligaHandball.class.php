@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  *
  * Bildet eine Handballliga als Objekt ab
