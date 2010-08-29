@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  *
  * Bildet eine Fussball Liga als Objekt ab
