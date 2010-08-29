@@ -22,33 +22,33 @@ $startzeit=zeitberechnung("1",-$multi_cfgarray['anzahl_tage_minus']);
 $endzeit=zeitberechnung("2",$multi_cfgarray['anzahl_tage_plus']);
 // Durchlaufe sooft Ligen vorhanden sind
 for($i=1; $i<=$anzahl_ligen; $i++) {
-  $akt_liga=new liga();
+  $liga=new liga();
   // Ligenfile vorhanden?
-  if ($akt_liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$fav_liga[$i]) == TRUE) {
+  if ($liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$fav_liga[$i]) == TRUE) {
     $template->setCurrentBlock("Liga");                                   // Äusserer Block für die Liga
     $template->setVariable("Anfangsdatum",date($multi_cfgarray['datumsformat'],zeitberechnung("2",-$multi_cfgarray['anzahl_tage_minus'])));  // Relevante Daten setzen
     $template->setVariable("Enddatum",date($multi_cfgarray['datumsformat'],zeitberechnung("2",$multi_cfgarray['anzahl_tage_plus'])));  // Relevante Daten setzen
     //Anfang Ergebnisse verlinken
     $template->setVariable("ErgebnisLink",URL_TO_LMO.'/lmo.php?file='.$fav_liga[$i]."&amp;action=results");
-    $template->setVariable("Liganame",$akt_liga->name);
-    $template->setVariable("Ligadatum",$akt_liga->ligaDatumAsString());
+    $template->setVariable("Liganame",$liga->name);
+    $template->setVariable("Ligadatum",$liga->ligaDatumAsString());
     
     //all teams
     if ($all_teams) {
-      $team_count= count($akt_liga->teams);
+      $team_count= count($liga->teams);
       for($x=0;$x<$team_count;$x++) {
         $fav_team[$i][] = $x;
       }
     }
     
     // Sortiert nach Datum Tim's
-    $sortedGames = gamesSorted($akt_liga,false);
+    $sortedGames = $liga->gamesSorted(false);
     foreach ($sortedGames as $game) {
-      $myPartie = &$game['partie'];
+      $partie = &$game['partie'];
       $mySpieltag = &$game['spieltag'];
       $template->setCurrentBlock("Inhalt");
       // Passend in das Zeitraster?
-      if (($myPartie->zeit <= $endzeit) && ($myPartie->zeit >= $startzeit)) {
+      if (($partie->zeit <= $endzeit) && ($partie->zeit >= $startzeit)) {
         require(PATH_TO_ADDONDIR."/viewer/viewer_spiel.inc.php");
       }
     }
