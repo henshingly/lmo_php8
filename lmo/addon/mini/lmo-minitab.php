@@ -76,12 +76,19 @@ if (empty($CacheOutput)) {
     $AnzahlTeams= $liga->teamCount();
     $LigaTabelle= $liga->calcTable($liga->options->keyValues['Rounds']);
     $LastGameDay= $liga->calcTable($liga->options->keyValues['Actual']-1);
-
     $Favorit = $liga->teamForNumber($liga->options->keyValues['favTeam']);
-    if (is_null($m_platz) || $m_platz <= 0 || $m_platz > $AnzahlTeams ) {
-      foreach ($LigaTabelle as $value)
-      if ($Favorit->nr == $value['team']->nr ) $viewPosition= $value['pos'];
-    } else $viewPosition = $m_platz;
+    $viewPosition = 1;
+    if ( is_null($m_platz) || $m_platz <= 0 || $m_platz > $AnzahlTeams ) {
+      if (is_object($Favorit)) {
+        foreach ($LigaTabelle as $value) {
+          if ($Favorit->nr == $value['team']->nr ) {
+            $viewPosition= $value['pos'];
+          }
+        }
+      }
+    } else {
+      $viewPosition = $m_platz;
+    }
     $beginTabellenPlatz= $viewPosition-$m_unter;
     $endTabellenPlatz= $viewPosition+$m_ueber;
     if ($beginTabellenPlatz<=0) {
@@ -112,13 +119,20 @@ if (empty($CacheOutput)) {
         }
         $template->setVariable('PlusTore',$LigaTabelle[$j]['pTor']);
         $template->setVariable('MinusTore',$LigaTabelle[$j]['mTor']);
-        if (($m_diff=$LigaTabelle[$j]['pTor']-$LigaTabelle[$j]['mTor'])>0) $m_diff='+'.$m_diff;
+        if (($m_diff=$LigaTabelle[$j]['pTor']-$LigaTabelle[$j]['mTor'])>0) {
+          $m_diff='+'.$m_diff;
+        }
         $template->setVariable('Tordifferenz',$m_diff);
         // Dart Liga
-        $template->setVariable('PlusSaetze',$m_tabelle[$j][12]);
-        $template->setVariable('MinusSaetze',$m_tabelle[$j][13]);
-        if (( $satzDiff = $m_tabelle[$j][12]-$m_tabelle[$j][13]) > 0 ) $satzDiff = "+".$satzDiff;
-        $template->setVariable('SatzDifferenz',$satzDiff);
+        if (isset($m_tabelle)) {
+          //not sure if this code is still functional
+          $template->setVariable('PlusSaetze',$m_tabelle[$j][12]);
+          $template->setVariable('MinusSaetze',$m_tabelle[$j][13]);
+          if (( $satzDiff = $m_tabelle[$j][12]-$m_tabelle[$j][13]) > 0 ) {
+            $satzDiff = "+".$satzDiff;
+          }
+          $template->setVariable('SatzDifferenz',$satzDiff);
+        }
         // Dart Liga
         $template->setVariable('Spiele',$LigaTabelle[$j]['spiele']);
         $template->setVariable('Siege',$LigaTabelle[$j]['s']);
@@ -137,54 +151,53 @@ if (empty($CacheOutput)) {
         $style= "";$css_class= "";
 
         // Striped Tables
-        if ($cfgarray['mini']['stripedTable'] != 0 ) {
+        if (!empty($cfgarray['mini']['stripedTable'])) {
           $stripedColor = explode(";",trim($cfgarray['mini']['stripedTable']) );
-          if ($j%2==0) $style.="background-color: ".$stripedColor[0].";\n";
-          else $style.="background-color: ".$stripedColor[1].";\n";
+          $style.= $j%2==0?"background-color: ".$stripedColor[0].";\n":"background-color: ".$stripedColor[1].";\n";
         }
 
         if ($LigaTabelle[$j]['pos'] <= $liga->options->keyValues['Champ']) {
           // Meister
-          $css_class = $cfgarray['mini']['tabelle_classMeister'];
-          $style="background: ".$cfgarray['lmo_tabelle_background1']." repeat;";
-          $style.=empty($cfgarray['lmo_tabelle_color1'])?'':"color: ".$cfgarray['lmo_tabelle_color1'].";";
+          $css_class = isset($cfgarray['mini']['tabelle_classMeister'])?$cfgarray['mini']['tabelle_classMeister']:'';
+          $style = isset($cfgarray['lmo_tabelle_background1'])?"background: ".$cfgarray['lmo_tabelle_background1']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color1'])?"color: ".$cfgarray['lmo_tabelle_color1'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] <= ($liga->options->keyValues['Champ']+$liga->options->keyValues['CL']) ) {
           // Champions League
-          $css_class = $cfgarray['mini']['tabelle_classCLAufsteiger'];
-          $style="background: ".$cfgarray['lmo_tabelle_background2']." repeat;";
-          $style.=empty($cfgarray['lmo_tabelle_color2'])?'':"color: ".$cfgarray['lmo_tabelle_color2'].";";
+          $css_class = isset($cfgarray['mini']['tabelle_classCLAufsteiger'])?$cfgarray['mini']['tabelle_classCLAufsteiger']:'';
+          $style = isset($cfgarray['lmo_tabelle_background2'])?"background: ".$cfgarray['lmo_tabelle_background2']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color2'])?"color: ".$cfgarray['lmo_tabelle_color2'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] <= ($liga->options->keyValues['Champ']+$liga->options->keyValues['CL']+$liga->options->keyValues['CK']) ) {
           // CL Qualifikation
-          $css_class = $cfgarray['mini']['tabelle_classCLQuali'];
-          $style="background: ".$cfgarray['lmo_tabelle_background3']." repeat;";
-          $style.=empty($cfgarray['lmo_tabelle_color3'])?'':"color: ".$cfgarray['lmo_tabelle_color3'].";";
+          $css_class =  isset($cfgarray['mini']['tabelle_classCLQuali'])?$cfgarray['mini']['tabelle_classCLQuali']:'';
+          $style = isset($cfgarray['lmo_tabelle_background3'])?"background: ".$cfgarray['lmo_tabelle_background3']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color3'])?"color: ".$cfgarray['lmo_tabelle_color3'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] <= ($liga->options->keyValues['Champ']+$liga->options->keyValues['CL']+$liga->options->keyValues['CK']+$liga->options->keyValues['UC']) ) {
           // UEFA Cup
-          $css_class = $cfgarray['mini']['tabelle_classUEFA'];
-          $style="background: ".$cfgarray['lmo_tabelle_background4']." repeat;";
-          $style.=empty($cfgarray['lmo_tabelle_color4'])?'':"color: ".$cfgarray['lmo_tabelle_color4'].";";
+          $css_class =  isset($cfgarray['mini']['tabelle_classUEFA'])?$cfgarray['mini']['tabelle_classUEFA']:'';
+          $style = isset($cfgarray['lmo_tabelle_background4'])?"background: ".$cfgarray['lmo_tabelle_background4']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color4'])?"color: ".$cfgarray['lmo_tabelle_color4'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']) ) {
           // Abstiegs Relegation
-          $css_class = $cfgarray['mini']['tabelle_classAbsteiger'];
-          $style="background: ".$cfgarray['lmo_tabelle_background6']." repeat;";
-          $style.=empty($cfgarray['lmo_tabelle_color6'])?'':"color: ".$cfgarray['lmo_tabelle_color6'].";";
+          $css_class =  isset($cfgarray['mini']['tabelle_classAbstiegsRelegation'])?$cfgarray['mini']['tabelle_classAbstiegsRelegation']:'';
+          $style = isset($cfgarray['lmo_tabelle_background5'])?"background: ".$cfgarray['lmo_tabelle_background5']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color5'])?"color: ".$cfgarray['lmo_tabelle_color5'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']-$liga->options->keyValues['AR']) ) {
           // Abstiegsplaetze
-          $css_class = $cfgarray['mini']['tabelle_classAbstiegsRelegation'];
-          $style="background: ".$cfgarray['lmo_tabelle_background5']." repeat;";
-          $style.=empty($cfgarray['lmo_tabelle_color5'])?'':"color: ".$cfgarray['lmo_tabelle_color5'].";";
+          $css_class =  isset($cfgarray['mini']['tabelle_classAbsteiger'])?$cfgarray['mini']['tabelle_classAbsteiger']:'';
+          $style = isset($cfgarray['lmo_tabelle_background6'])?"background: ".$cfgarray['lmo_tabelle_background6']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color6'])?"color: ".$cfgarray['lmo_tabelle_color6'].";":'';
         } else {
           $css_class = "";     // "Normale Tabellenplaetze
         }
 
         // Lined Style Tables
-        if ($j && $LastClass != $css_class && $cfgarray['mini']['StyleStripLine']) {
+        if ($j && $LastClass != $css_class && !empty($cfgarray['mini']['StyleStripLine'])) {
           $style.= "border-top: ".$cfgarray['mini']['StyleStripLine'].";";
         }
         $LastClass = $css_class;
 
         //FavTeam
-        if ($LigaTabelle[$j]['team']->nr == $Favorit->nr ){
+        if (is_object($Favorit) && $LigaTabelle[$j]['team']->nr == $Favorit->nr ){
           $style.="font-weight:bolder;";
           $css_class.= $cfgarray['mini']['classFavorit'];
         }
