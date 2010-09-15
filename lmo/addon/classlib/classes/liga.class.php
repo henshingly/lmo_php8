@@ -308,7 +308,7 @@ class liga {
    * @param object team
    * @return Array
    */
-  function gamesSorted($roundSort=true,$sortDir=SORT_ASC,$team=null) {
+  function gamesSorted($roundSort=true,$sortDir=SORT_ASC,&$team=null) {
     $games = array();
     foreach ($this->spieltage as $spieltag) {
       foreach ($spieltag->partien as $partie) {
@@ -345,7 +345,7 @@ class liga {
     if(!is_a($team,"team") ) { // Wurde nix angegeben wird das fav. Team verwendet
       $team = $this->teamForNumber($this->options->keyValues['favTeam']);
     }
-    return $this->gamesSorted($roundSort,$sortDir,&$team);
+    return $this->gamesSorted($roundSort,$sortDir,$team);
   }
 
   /**
