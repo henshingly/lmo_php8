@@ -952,8 +952,12 @@ class liga {
           }
           }
         // Strafen berücksichtigen
-        $this->strafen($tableArray[$heimCount],$spTagCount);
-        $this->strafen($tableArray[$gastCount],$spTagCount);
+        if ($heimCount!=-1) {
+          $this->strafen($tableArray[$heimCount],$spTagCount);
+        }
+        if ($gastCount!=-1) {
+          $this->strafen($tableArray[$gastCount],$spTagCount);
+        }
 
         if ($partie->hTore>-1) {
           // Tore für Heim hinzufügen
