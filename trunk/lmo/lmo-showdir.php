@@ -69,4 +69,4 @@ if ($archivlink==1) {
     <td align="right">
 <?php include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
   </tr>*/?>
-</table><?
+</table><?php
