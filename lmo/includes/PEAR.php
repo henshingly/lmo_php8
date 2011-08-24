@@ -763,7 +763,7 @@ class PEAR
 }
 
 if (PEAR_ZE2) {
-    include_once './PEAR5.php';
+    include_once dirname(__FILE__).'/PEAR5.php';
 }
 
 // {{{ _PEAR_call_destructors()
