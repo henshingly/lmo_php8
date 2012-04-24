@@ -24,6 +24,10 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
   if (isset($_POST['upl']) && isset($_FILES['userfile'])) {
     $tempfilename = $_FILES['userfile']['tmp_name'];
     $namefilename = $_FILES['userfile']['name']; 
+    if (substr($namefilename,-4) != '.l98') {
+      echo getMessage($text[304],TRUE);
+      exit;
+    }
     $i=0;
     $ufile=$dirliga.$namefilename;
     while (file_exists($ufile)) {
