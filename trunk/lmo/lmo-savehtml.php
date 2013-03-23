@@ -160,7 +160,7 @@ if($lmtype==0 && $st>0){
      </tr><?php 
     }?>
    </table>
-   <p><small>Hinweis: Tabellenstand ohne vorgezogene Spiele!</small></p><?php 
+   <p><small><?php echo $text[576];?></small></p><?php 
     if ($actual==$anzst){?>
     <p><strong><?php echo $text[568]?></strong></p><?php 
     }else{
@@ -232,5 +232,3 @@ if($lmtype==0 && $st>0){
     fclose($wmlfile);
   }
 }
-
-?>
