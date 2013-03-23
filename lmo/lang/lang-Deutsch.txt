@@ -574,6 +574,7 @@
 573=Translation-Tool
 574=Zeitzone
 575=Zeitzone des Servers
+576=Hinweis: Tabellenstand ohne vorgezogene Spiele!
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde

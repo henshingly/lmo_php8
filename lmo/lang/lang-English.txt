@@ -574,6 +574,7 @@
 573=Translation-Tool
 574=Timezone
 575=Servers Timezone
+576=Note: Table without preponed matches!
 4000=Total-
 4001=/Match
 4002=2nd Season Half
