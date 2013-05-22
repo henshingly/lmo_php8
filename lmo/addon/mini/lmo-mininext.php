@@ -86,7 +86,7 @@ $mini_cache_refresh = isset($mini_cache_refresh)?$mini_cache_refresh:0;
 $multi = md5($file.$archivFolder.$mini_template.$a.$b);
 
 // Load the cache-counter-file for viewers simple cache mechanism
-$mini_cache_filename = PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'.txt',"rb")
+$mini_cache_filename = PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'.txt';
 $mini_cache_counter_filename = PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'_count.txt';
 $mini_cache_counter = 0; //counter for cache hits
 if (!file_exists($mini_cache_counter_filename)) {
@@ -100,7 +100,6 @@ if (!file_exists($mini_cache_filename)
     || filemtime(PATH_TO_LMO.'/'.$dirliga.$file) > filemtime($mini_cache_filename)
     || $mini_cache_counter==0
     || $mini_cache_counter > $mini_cache_refresh) {
-) {
   //not cached or cache limit reached -> generate new view
 
   //Falls IFRAME - komplettes HTML-Dokument
@@ -378,7 +377,7 @@ if (!file_exists($mini_cache_filename)
   }
 } else {
   //get cache
-  if ($mini_cache_file = fopen($mini_cache_filename) {
+  if ($mini_cache_file = fopen($mini_cache_filename)) {
    fpassthru($mini_cache_file);
    fclose($mini_cache_file);
   }
@@ -387,4 +386,4 @@ if (!file_exists($mini_cache_filename)
   $mini_cache_counter_file = fopen(PATH_TO_LMO.'/'.$diroutput.'mini_'.$multi.'_count.txt',"wb");
   fwrite($mini_cache_counter_file,++$mini_cache_counter);
   fclose($mini_cache_counter_file);
-}?>
+}
