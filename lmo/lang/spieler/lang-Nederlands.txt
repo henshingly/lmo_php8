@@ -33,7 +33,7 @@
 032=Spelers Link
 033=Entering of Player Statistics is not Activated. Ask the Adminastrator to Activate
 034=Naar de spelers pagina
-035=SpelerAddon v1.1 © R. Marth/T. Keller
+035=SpelerAddon v1.1 Â© R. Marth/T. Keller
 036=door
 037=Sorteer
 038=Type
