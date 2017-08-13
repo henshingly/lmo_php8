@@ -81,9 +81,9 @@ class partie {
   /**
    * Spielende
    * Neu ab 2.2 Spielende
-   * 0 = reguläres Ende
-   * 2 = Verlängerung
-   * 1 = 11-Meter-Schießen
+   * 0 = regulÃ¤res Ende
+   * 2 = VerlÃ¤ngerung
+   * 1 = 11-Meter-SchieÃŸen
    * @var integer
    * @access public
    */
@@ -112,7 +112,7 @@ class partie {
    * @param integer $n_gpunkte
    * @return partie
    */
-  function partie($n_spNr,$n_time,$n_notiz,&$n_heim,&$n_gast,$n_htore,$n_gtore,$n_hpunkte=0,$n_gpunkte=0) {
+  function __construct($n_spNr,$n_time,$n_notiz,&$n_heim,&$n_gast,$n_htore,$n_gtore,$n_hpunkte=0,$n_gpunkte=0) {
     $this->spNr = $n_spNr;
     $this->zeit = $n_time;
     $this->notiz = $n_notiz;
@@ -126,39 +126,39 @@ class partie {
 
 
   /**
-   * Gibt Tore der Heimmanschaft für die Bildschirmausgabe zurück.
+   * Gibt Tore der Heimmanschaft fÃ¼r die Bildschirmausgabe zurÃ¼ck.
    *
-   * Die Ausgabe von negativen Werten wird zur Bildschirmausgabe unterdrückt.
+   * Die Ausgabe von negativen Werten wird zur Bildschirmausgabe unterdrÃ¼ckt.
    * So werden negative Ergebnisse bzw Ergebnisse von Partien die noch nicht
-   * stattfanden durch den Parameterwert für $leer angezeigt.
+   * stattfanden durch den Parameterwert fÃ¼r $leer angezeigt.
    *
    * @access public
-   * @param  string $leer Der Rückgabewert wenn Ergebnis vorhanden ist
+   * @param  string $leer Der RÃ¼ckgabewert wenn Ergebnis vorhanden ist
    * @return string
    */
   function hToreString($leer="_") {
     if ($this->hTore == -1) $str = $leer;
     elseif ($this->hTore == -2) $str = "0*"; // Markieren als greenTable
-    elseif ($this->gTore == -2) $str = "0"; // Wenn Gast der Sieg zugesprochen wurde O Tore für Heim anzeigen
+    elseif ($this->gTore == -2) $str = "0"; // Wenn Gast der Sieg zugesprochen wurde O Tore fÃ¼r Heim anzeigen
     else $str = $this->hTore;
     return $str;
   }
 
   /**
-   * Gibt Tore der Gastmannschaft für die Bildschirmausgabe zurück.
+   * Gibt Tore der Gastmannschaft fÃ¼r die Bildschirmausgabe zurÃ¼ck.
    *
-   * Die Ausgabe von negativen Werten wird zur Bildschirmausgabe unterdrückt.
+   * Die Ausgabe von negativen Werten wird zur Bildschirmausgabe unterdrÃ¼ckt.
    * So werden negative Ergebnisse bzw Ergebnisse von Partien die noch nicht
-   * stattfanden durch den Parameterwert für $leer angezeigt.
+   * stattfanden durch den Parameterwert fÃ¼r $leer angezeigt.
    *
    * @access public
-   * @param  string $leer Der Rückgabewert wenn kein Ergebnis vorhanden ist
+   * @param  string $leer Der RÃ¼ckgabewert wenn kein Ergebnis vorhanden ist
    * @return string
    */
   function gToreString($leer = "_") {
     if ($this->gTore == -1) $str = $leer;
     elseif ($this->gTore == -2) $str = "0*"; // Markieren als greenTable
-    elseif ($this->hTore == -2) $str = "0"; // Wenn Heim der Sieg zugesprochen wurde O Tore für Gast anzeigen
+    elseif ($this->hTore == -2) $str = "0"; // Wenn Heim der Sieg zugesprochen wurde O Tore fÃ¼r Gast anzeigen
     else $str = $this->gTore;
     return $str;
   }
@@ -200,7 +200,7 @@ class partie {
 
 
   /**
-   * Gibt das SpielDatum als formatierten String zurück. "d.m.Y" = Standard
+   * Gibt das SpielDatum als formatierten String zurÃ¼ck. "d.m.Y" = Standard
    *
    * @access public
    * @param string leer Ausgabe, falls kein Datum vorhanden
@@ -213,7 +213,7 @@ class partie {
   }
 
   /**
-   * Gibt die Anfangszeit als formatierten String zurück "Stunden:Minuten" = Standard
+   * Gibt die Anfangszeit als formatierten String zurÃ¼ck "Stunden:Minuten" = Standard
    *
    * @access public
    * @param string leer Ausgabe, falls keine Zeit vorhanden
@@ -226,7 +226,7 @@ class partie {
   }
 
   /**
-   * Gibt für eine Partie aus, ob Verlängerung oder 11/7-Meterschießen
+   * Gibt fÃ¼r eine Partie aus, ob VerlÃ¤ngerung oder 11/7-MeterschieÃŸen
    *
    * @access public
    * @param array text Referenz auf Sprachvariablen
@@ -270,7 +270,7 @@ class partie {
 
   /**
    * Weitere Parameter zur Partie setzen.
-   * z.B. Sätze / Halbzeitergebnisse usw.
+   * z.B. SÃ¤tze / Halbzeitergebnisse usw.
    *
    * @since 2.7
    * @access public
@@ -287,11 +287,11 @@ class partie {
 
   /**
    * Weitere Parameter zur Partie setzen.
-   * z.B. Sätze / Halbzeitergebnisse usw.
+   * z.B. SÃ¤tze / Halbzeitergebnisse usw.
    *
    * @since 2.7
    * @access public
-   * @param string key Bezeichner des Parameters der ausgegeben werden soll, ist kein Parameter angegeben, wird das komplette array zurückgegeben.
+   * @param string key Bezeichner des Parameters der ausgegeben werden soll, ist kein Parameter angegeben, wird das komplette array zurÃ¼ckgegeben.
    * @return mixed Parameter
    */
   function getParameter($key="") {
@@ -314,7 +314,7 @@ class partie {
 
   /**
    * Ausgabe des Links zum Spielbericht
-   *  wenn als Ziel null angegeben wird, dann wird nur die URL zurückgegeben
+   *  wenn als Ziel null angegeben wird, dann wird nur die URL zurÃ¼ckgegeben
    *
    * @since 2.7
    * @access public
@@ -334,9 +334,9 @@ class partie {
 
   /**
    * Spielende
-   * 0 = reguläres Ende
-   * 2 = Verlängerung
-   * 1 = 11-Meter-Schießen
+   * 0 = regulÃ¤res Ende
+   * 2 = VerlÃ¤ngerung
+   * 1 = 11-Meter-SchieÃŸen
    *
    * @access public
    * @since 2.7
@@ -350,9 +350,9 @@ class partie {
 
   /**
    * Spielende
-   * 0 = reguläres Ende
-   * 2 = Verlängerung
-   * 1 = 11-Meter-Schießen
+   * 0 = regulÃ¤res Ende
+   * 2 = VerlÃ¤ngerung
+   * 1 = 11-Meter-SchieÃŸen
    *
    * @access public
    * @since 2.7
