@@ -19,7 +19,7 @@ class stats {
    */
   var $liga;
 
-  function stats(&$ligaObject) {
+  function __construct(&$ligaObject) {
     if ( is_a($ligaObject, "liga") || is_subclass_of($ligaObject, "liga") ) {
       if($ligaObject->options->keyValues['Type']>=1){
         return null;
@@ -32,20 +32,20 @@ class stats {
   }
 
   /**
-   * Berechnet den Die Statistik für einen Spieltag und gibt
-   * ein Array zurück:
+   * Berechnet den Die Statistik fÃ¼r einen Spieltag und gibt
+   * ein Array zurÃ¼ck:
    *    $statsArray["spiele"]     gespielte Partien
    *    $statsArray["hSiege"]     Anzahl Heimpiege
    *    $statsArray["u"]          Anzahl Unendschieden
-   *    $statsArray["gSiege"]     Anzahl Auswärtssiege
+   *    $statsArray["gSiege"]     Anzahl AuswÃ¤rtssiege
    *    $statsArray["hTore"]      Erzielte Tore
-   *    $statsArray["gTore"]      Erzielte Tore Auswärts
-   *    $statsArray["maxhS"][]    object(partie) höchter Heimsieg der Saison
-   *    $statsArray["maxgS"][]    object(partie) höchste Auswärtssieg der Saison
+   *    $statsArray["gTore"]      Erzielte Tore AuswÃ¤rts
+   *    $statsArray["maxhS"][]    object(partie) hÃ¶chter Heimsieg der Saison
+   *    $statsArray["maxgS"][]    object(partie) hÃ¶chste AuswÃ¤rtssieg der Saison
    *    $statsArray["maxTor"][]   object(partie) meiste Tore der Saison
    *
    * @access public
-   * @param integer spTag Spieltag für den die Statistik berechnet werden soll.
+   * @param integer spTag Spieltag fÃ¼r den die Statistik berechnet werden soll.
    * @return array Statistik des Angegebenen Spieltages
    */
   function calcLigaStats($spTag=1) {
@@ -67,7 +67,7 @@ class stats {
           $statsArray["hTore"] += $partie->hTore;
         }
         if ($partie->gTore>-1) {
-          // Tore für Gast hinzufügen
+          // Tore fÃ¼r Gast hinzufÃ¼gen
           $statsArray["gTore"] += $partie->gTore;
         }
         $diff = 0;
@@ -82,7 +82,7 @@ class stats {
           elseif ($partie->gTore < $partie->hTore) { // Heim hat gewonnen
             $statsArray["hSiege"]++;
           }
-          else { // nur während der Entwicklung
+          else { // nur wÃ¤hrend der Entwicklung
             echo "Fehler in Punkteermittlung (Normales Ergebnis)";
             echo $partie->showDetailsHTML();
           }
@@ -137,15 +137,15 @@ class stats {
   }
 
   /**
-   * Berechnung der Statistik für ein Team
+   * Berechnung der Statistik fÃ¼r ein Team
    *
-   * Das Rückgabearray hat die Form
+   * Das RÃ¼ckgabearray hat die Form
    *                 $statsArray["pkts"]           1.5 Pkt./Spiel
    *                 $statsArray["tore"]           191:177 Tore
    *                 $statsArray["tores"]          31.83:29.50 Tore/Spiel
    *                 $statsArray["s"]              4 (66,67%) Siege
    *                 $statsArray["n"]              1 (16,67%) Niederlagen
-   *                 $statsArray["chance"]         wird erst beim Vergleich gefüllt
+   *                 $statsArray["chance"]         wird erst beim Vergleich gefÃ¼llt
    *                 $statsArray["serie"]          Resultat von getSerien
    *                 $statsArray["max"]            Resultat von getMaxResults
    *                 $statsArray["tabelle"]        Tabellenzeile des Teams
@@ -187,7 +187,7 @@ class stats {
   }
 
   /**
-   * Berechnung für den Statistikvergleich zweier Teams
+   * Berechnung fÃ¼r den Statistikvergleich zweier Teams
    *
    * @param teamObject $teama Referenz auf ein TeamObject A
    * @param teamObject $teamb Referenz auf ein TeamObject B
@@ -218,14 +218,14 @@ class stats {
   }
 
   /**
-   * Berechnung der Serien für ein Team
+   * Berechnung der Serien fÃ¼r ein Team
    *
    * @access public
    * @param teamObject $team Referenz auf ein TeamObject
    * @return array SerienArray, array(s,n,u,su,nu)
    */
   function getSerien(&$team){
-    //Berechnung höchster Sieg/ höchste Niederlage
+    //Berechnung hÃ¶chster Sieg/ hÃ¶chste Niederlage
     $serienArray = array ("s"=> 0,
                           "n"=> 0,
                           "u"=> 0,
@@ -306,10 +306,10 @@ class stats {
   }
 
   /**
-   * Gibt die Maximalwerte für Siege (heim, auswärts), Niederlagen heim, auswärts)
-   * und meiste Tore zurück
+   * Gibt die Maximalwerte fÃ¼r Siege (heim, auswÃ¤rts), Niederlagen heim, auswÃ¤rts)
+   * und meiste Tore zurÃ¼ck
    *
-   * Das Rückgabearray hat die Form
+   * Das RÃ¼ckgabearray hat die Form
    *                 $maxArray["sH"][n]["partie"] mit der Referenz auf eine Partie
    *                 $maxArray["sA"][n]["partie"] mit der Referenz auf eine Partie
    *                 $maxArray["nH"][n]["partie"] mit der Referenz auf eine Partie
@@ -391,7 +391,7 @@ class stats {
   }
 
   /**
-   * Berechnung des Saisonverlaufs für ein Team
+   * Berechnung des Saisonverlaufs fÃ¼r ein Team
    *
    * @param teamObject $teama Referenz auf ein TeamObject A
    * @return array Saisonverlauf des Teams
@@ -408,7 +408,7 @@ class stats {
   }
 
   /**
-   * Berechnung des Saisonverlaufs für zwei Teams
+   * Berechnung des Saisonverlaufs fÃ¼r zwei Teams
    *
    * @param teamObject $teama Referenz auf ein TeamObject A
    * @param teamObject $teamb Referenz auf ein TeamObject B
@@ -430,7 +430,7 @@ class stats {
    * Ausgabe der Serie als HTML
    *
    * @author Marcus Schug <lmo@marcus.schug.info>
-   * @param array Array mit Serien analog Rückgabewert von getSerien(()
+   * @param array Array mit Serien analog RÃ¼ckgabewert von getSerien(()
    * @return string Serie als HTML
    */
   function SerieToHTML($serienArray){
