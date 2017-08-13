@@ -1,5 +1,5 @@
-000=Všechny vısledky posledních kol
+000=VÅ¡echny vÃ½sledky poslednÃ­ch kol
 001=.kolo
-002=-rozhodnutí od "zel.stolu"
-003=Vısledek bude proti obìma mustvùm.
-004=K dnešnímu dni ádné zprávy
+002=-rozhodnutÃ­ od "zel.stolu"
+003=VÃ½sledek bude proti obÄ›ma muÅ¾stvÅ¯m.
+004=K dneÅ¡nÃ­mu dni Å¾Ã¡dnÃ© zprÃ¡vy
