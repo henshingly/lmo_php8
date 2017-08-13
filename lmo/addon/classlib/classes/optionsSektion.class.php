@@ -6,7 +6,7 @@
  *
  * @package   classLib
  * @access public
- * @version $Id$
+ * @version $Id: optionsSektion.class.php 538 2010-02-07 15:14:43Z jokerlmo $
  *
  */
 class optionsSektion extends sektion {
@@ -81,7 +81,7 @@ class optionsSektion extends sektion {
    * @param array $optionDetails
    * @return optionsSektion
    */
-  function optionsSektion($aLiga="",$optionDetails="") {
+  function __construct($aLiga="",$optionDetails="") {
     $this->name = "Options";
     if (is_array($optionDetails)) {
       foreach ($optionDetails as $key=>$values) {
