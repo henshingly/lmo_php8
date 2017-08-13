@@ -1,5 +1,5 @@
-000=Tous les résultats de la dernière journée
-001=ème journée
-002=-Décision disciplinaire de la fédération
-003=Le résultat compte pour les deux équipes du point de vue de l&#39;équipe à domicile.
+000=Tous les rÃ©sultats de la derniÃ¨re journÃ©e
+001=Ã¨me journÃ©e
+002=-DÃ©cision disciplinaire de la fÃ©dÃ©ration
+003=Le rÃ©sultat compte pour les deux Ã©quipes du point de vue de l&#39;Ã©quipe Ã  domicile.
 004=Aucune nouvelle pour le moment
