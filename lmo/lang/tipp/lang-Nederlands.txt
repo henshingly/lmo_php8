@@ -303,3 +303,4 @@
 302=Show Only Total Point Standings
 303=Een Nieuwe Speler heeft zich geregistreerd voor Bingoal: nnNickname: [nick]
 304=Laat het veld leeg om uw paswoord niet te veranderen
+
