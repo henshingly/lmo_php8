@@ -1,10 +1,10 @@
 <?php 
 /**
  * lmo-savehtml.php: HTML-Ausgabe von Tabelle, aktuellem Spieltag und folgenden Spieltag
- * In der Datei lmo-savefile.php muss über der Zeile
+ * In der Datei lmo-savefile.php muss Ã¼ber der Zeile
  *  $datei = fopen($file,"w");
  *
- * folgende Zeile hinzugefügt werden:
+ * folgende Zeile hinzugefÃ¼gt werden:
  *
  *  include(PATH_TO_LMO."/lmo-savehtml.php");
  *
@@ -41,7 +41,7 @@ if($lmtype==0 && $st>0){
 <html>
 <head>
   <title><?php echo $titel?></title>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <style type="text/css">
     body {background:#fff; color:#000; font: sans-serif 10pt; max-width:200mm;max-height:285mm;}
     caption, p, h1 {margin: 3pt auto; text-align:center;}
