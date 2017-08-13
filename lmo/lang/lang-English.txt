@@ -3,9 +3,9 @@
 002=Matchday
 003=from
 004=until
-005=«
+005=Â«
 006=previous Matchday
-007=»
+007=Â»
 008=next Matchday
 009=go to this Matchday
 010=Results
@@ -46,14 +46,14 @@
 045=Show table from this Matchday
 046=Go to the Teams Homepage (opens in a new window)
 047=This Script is originally based on the Windows Software 'LigaManager 98 Free' from Frank Hollwitz. The <strong>Liga Manager Online</strong>, also developed by Frank Hollwitz, is a greatly improved version of the Program. Since it is based on PHP, the LMO works with many OS and is comfortably managed with a normal Web-browser. With many different 3rd Party Addons, the LMO has become more flexible. Since the original author, Frank Hollwitz, has stopped improving the script, a group of Add-on developers have decided to work together with the goal of improving and and updating the script.
-048=With this script it is possible to mánage <strong>Normal Leagues</strong> of different Sports, and also<strong>Tournaments</strong>. In addition there is also a <strong>Prediction Game</strong> a <strong>Players Management/Statistics</strong>, the support for mobile devices(cellular phones)<strong>WAP</strong> and a large <strong>League Statistics</strong> included. All this makes the LMO the <strong>Complete Solution</strong> for everyone who manages Sport Leagues and wants to make them publicly viewable.
+048=With this script it is possible to mÃ¡nage <strong>Normal Leagues</strong> of different Sports, and also<strong>Tournaments</strong>. In addition there is also a <strong>Prediction Game</strong> a <strong>Players Management/Statistics</strong>, the support for mobile devices(cellular phones)<strong>WAP</strong> and a large <strong>League Statistics</strong> included. All this makes the LMO the <strong>Complete Solution</strong> for everyone who manages Sport Leagues and wants to make them publicly viewable.
 049=Since this script is server based, it does not depend on a Web-browser. The Web-browser should however work with CSS for best results. When the Webmaster uses the added News-ticker, it will only be shown when JavaScript is aktivated.
 050=<br><small><strong>LMO 3</strong> by Frank Hollwitz<br><strong>LMO 4</strong> by Rene Marth/LMO-Group</small>
 051=Dummy
 052=Welcome!
 053=Please choose a League
 054=Liga Manager Online 4
-055=© 1997-2007 LMO-Group
+055=Â© 1997-2007 LMO-Group
 056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="http://www.liga-manager-online.de/lmo-forum/" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> | <a href="http://www.ligaliste.de/" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
 057=Statistic 1 from
 058=Statistic 2 from
@@ -290,7 +290,7 @@
 289=Save League
 290=Click here to save your League and continue with detailed settings
 291=<b>Congratulations</b><br><br>Your new League has been created. Now you can<br> start with the detailed settings.
-292=» Enter the Teams
+292=Â» Enter the Teams
 293=First you should enter the names all Teams before you start with the other settings
 294=Open a League
 295=Delete a League
@@ -389,7 +389,7 @@
 388=Enter here the number of Teams that are Relegated
 389=League Selection
 390=Should the User be shown a link to the League Selection
-391=« To League Selection
+391=Â« To League Selection
 392=Here you can open a different League
 393=Relegation
 394=Enter here the number of Teams that will participate in the Relegation
@@ -506,7 +506,7 @@
 505=Standard Language
 506=Which Language should be loaded at start? Use only translations that are complete!
 507=Unknown League
-508=« To Archive
+508=Â« To Archive
 509=Archive
 510=Should the User be shown a link to the Archive?
 511=Should the Match Schedules be shown?
@@ -515,7 +515,7 @@
 514=Should the League Statistics be shown?
 515=abs.
 516=tot.
-517=Ø
+517=Ã˜
 518=%
 519=Language Selection
 520=Should Flags be shown by Language Selection
