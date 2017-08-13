@@ -5,12 +5,12 @@
  * Copyright (C) 2003 by Tim Schumacher
  * timme@uni.de /
  *
- *      27.10.05 2.8ß diverse Änderungen an den functionen loadFile() und writeFile() um auch KO Runden speichern zu können.
- *                    gameSorted() und gamesortedforTeam() in die Klasse liga aufgenommen, neue Klasse Stats für Auswertung
+ *      27.10.05 2.8ÃŸ diverse Ã„nderungen an den functionen loadFile() und writeFile() um auch KO Runden speichern zu kÃ¶nnen.
+ *                    gameSorted() und gamesortedforTeam() in die Klasse liga aufgenommen, neue Klasse Stats fÃ¼r Auswertung
  *                    der Statistiken.
  *      05.11.05 2.8RC1 Bugfixes
  *      13.11.05 2.8RC2 Bugfixes  getLigaObject() aus functions.php rausgenommen und als factory pattern in die Klasse liga
- *                                eingefügt. Eine neue Liga sollte nun mit dem Befehl "liga::factory(PATH_TO_LIGAFILE);"  erstellt werden.
+ *                                eingefÃ¼gt. Eine neue Liga sollte nun mit dem Befehl "liga::factory(PATH_TO_LIGAFILE);"  erstellt werden.
  *
  * @author  LMO Group Tim Schumacher <webobjects@gmx.net>
  * @package classLib
@@ -33,7 +33,8 @@ require_once(PATH_TO_ADDONDIR."/classlib/html_output.php");
 // class iniFile
 require_once(PATH_TO_ADDONDIR."/classlib/classes/ini/cIniFileReader.inc");
 // class pdf
-require_once(PATH_TO_ADDONDIR."/classlib/classes/pdf/class.ezpdf.php");
+require_once(PATH_TO_ADDONDIR."/classlib/classes/pdf/Cezpdf.php");         // Version 0.12.40
+include_once(PATH_TO_ADDONDIR."/classlib/classes/pdf/extensions/CezTableImage.php");
 // classes for image manipulation
 if (file_exists(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php") ){
 	require_once(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php");
