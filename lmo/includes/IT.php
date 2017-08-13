@@ -16,7 +16,7 @@
 // | Author: Ulf Wendel <ulf.wendel@phpdoc.de>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id$
+// $Id: IT.php 432 2009-03-08 13:26:56Z jokerlmo $
 //
 
 //jokerlmo: Changed include path
@@ -119,7 +119,7 @@ define('IT_UNKNOWN_OPTION',            -6);
  * </code>
  *
  * @author   Ulf Wendel <uw@netuse.de>
- * @version  $Id$
+ * @version  $Id: IT.php 432 2009-03-08 13:26:56Z jokerlmo $
  * @access   public
  * @package  HTML_Template_IT
  */
@@ -370,7 +370,7 @@ class HTML_Template_IT {
      *                     given to the object.
      * @see      setRoot()
      */
-    function HTML_Template_IT($root = "", $options=null) {
+    function __construct($root = "", $options=null) {
         if(!is_null($options)){
             $this->setOptions($options);
         }
