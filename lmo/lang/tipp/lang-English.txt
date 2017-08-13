@@ -306,4 +306,5 @@ So far we have no Predictions from you for the following Matches:
 300=The Password will be sent to you by E-Mail, make sure the entered adress is correct
 301=Attention! This deactivate the Possibility of making Predictions!
 302=Show Only Total Point Standings
+
 303=A New player has Registered for the Prediction Game: \n\nNickname: [nick]
