@@ -1,12 +1,12 @@
 000=[<acronym title='lmo-mininext for LMO &copy; Tim Schumacher/LMO-Group CLASSLIB_VERSION'>&copy;</acronym>]
-001=N‰chstes Spiel
+001=N√§chstes Spiel
 002=Letztes Saisonspiel
 003=Spielpaarung
 004=Spiele gegeneinander:
 005=Fehler: Liga nicht gefunden!
 006=Warnung: Archivordner nicht gefunden
 007=Vorheriges Spiel
-008=Keine Mannschaft ausgew‰hlt!
+008=Keine Mannschaft ausgew√§hlt!
 009=S
 010=U
 011=N
