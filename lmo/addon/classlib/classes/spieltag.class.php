@@ -2,13 +2,13 @@
 /**
  * Spieltag
  *
- * Repräsentiert einen Spieltag
+ * ReprÃ¤sentiert einen Spieltag
  * <BR>Eine Liga hat mehrere Spieltage.
  * <BR>An einem Spieltag finden mehrere Partien statt.
  *
  * @package   classLib
  * @access public
- * @version $Id$
+ * @version $Id: spieltag.class.php 514 2009-11-01 17:52:09Z jokerlmo $
  */
 class spieltag {
 
@@ -59,7 +59,7 @@ class spieltag {
    * @param array $partien
    * @return spieltag
    */
-  function spieltag($new_nr,$new_von,$new_bis,$partien=array()) {
+  function __construct($new_nr,$new_von,$new_bis,$partien=array()) {
     $this->nr = $new_nr;
     $this->von = $new_von;
     $this->bis = $new_bis;
@@ -67,11 +67,11 @@ class spieltag {
   }
 
   /**
-   * Gibt Partien eines Spieltag zurück, Optional: Sortierung
+   * Gibt Partien eines Spieltag zurÃ¼ck, Optional: Sortierung
    *
    * datum
    *
-   * Mögliche weitere Sortierungen:
+   * MÃ¶gliche weitere Sortierungen:
    * heimname (nicht implementiert)
    * gastname (nicht implementiert)
    * heimtore (nicht implementiert)
@@ -117,7 +117,7 @@ class spieltag {
   }
 
   /**
-   * Gibt den Modus des Spieltags zurück
+   * Gibt den Modus des Spieltags zurÃ¼ck
    *  0 = Liga / 1 = Pokal-KoTunier
    *
    * @since 2.7
@@ -129,7 +129,7 @@ class spieltag {
   }
 
   /**
-   * Gibt Partie der angegebener Nummer zurück
+   * Gibt Partie der angegebener Nummer zurÃ¼ck
    *
    * @access public
    * @param integer Partienummer
@@ -145,7 +145,7 @@ class spieltag {
   }
 
   /**
-   * Gibt Partie der angegebener Teamnummern zurück
+   * Gibt Partie der angegebener Teamnummern zurÃ¼ck
    *
    * @access public
    * @param integer Heimmannschaftsnummer integer Gastmannschaftsnummer
@@ -170,7 +170,7 @@ class spieltag {
   }
 
   /**
-   * Gibt Partie der angegebener Teamnamen zurück
+   * Gibt Partie der angegebener Teamnamen zurÃ¼ck
    *
    * @access public
    * @param string Heimmannschaftsname string Gastmannschaftsname
@@ -188,11 +188,11 @@ class spieltag {
   }
 
   /**
-   * Löscht Partie
+   * LÃ¶scht Partie
    *
    * @access public
    * @param objekt Partie
-   * @return bool Partie wurde gelöscht TRUE / FALSE
+   * @return bool Partie wurde gelÃ¶scht TRUE / FALSE
    */
   function removePartie(&$rmvPartie) {
     $result = False;
@@ -230,7 +230,7 @@ class spieltag {
   }
 
   /**
-   * Fügt Partie zum Spieltage hinzu
+   * FÃ¼gt Partie zum Spieltage hinzu
    *
    * @access public
    * @param Object die Partie
@@ -266,8 +266,8 @@ class spieltag {
   /**
    * Gibt den Zeitrahmen aus, an dem der Spieltag ausgetragen wird
    *
-   * Sind das vonDatum und das bisDatum gesetzt wird zB. 10.10.2003 - 19.10.2003 zurückgegeben
-   * <BR> Ist eines der beiden nicht gesetzt, wird nur das Datum zurückgeben ohne Verbinder
+   * Sind das vonDatum und das bisDatum gesetzt wird zB. 10.10.2003 - 19.10.2003 zurÃ¼ckgegeben
+   * <BR> Ist eines der beiden nicht gesetzt, wird nur das Datum zurÃ¼ckgeben ohne Verbinder
    * <BR> zB. ist das vonDatum nicht gesetzt wird nur das bisDatum ausgegeben 19.10.2003 ohne Bindestrich
    *
    * @access public
