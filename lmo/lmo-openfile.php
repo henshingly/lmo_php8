@@ -50,6 +50,7 @@ if(!empty($file) && check_hilfsadmin($file)){
               case "DatF":         $datf=$wert;break;
               case "urlT":         $urlt=$wert;break;
               case "urlB":         $urlb=$wert;break;
+              case "stats":        $stats=$wert;break;
               case "Plan":         $plan=$wert;break;
               case "Ergebnis":     $ergebnis=$wert;break;
               case "mittore":      $mittore=$wert;break;
@@ -126,6 +127,7 @@ if(!empty($file) && check_hilfsadmin($file)){
       if(!isset($datf)){                       $datf=$defdateformat;}
       if(!isset($urlt)){                       $urlt=1;}
       if(!isset($urlb)){                       $urlb=0;}
+      if(!isset($stats)){                      $stats=0;}
       if(!isset($goalfaktor) || $goalfaktor=="")    { $goalfaktor=1;}
       if(!isset($pointsfaktor) || $pointsfaktor==""){ $pointsfaktor=1;}
       if(!isset($enablegamesort)){             $enablegamesort=1;}
@@ -262,11 +264,11 @@ if(!empty($file) && check_hilfsadmin($file)){
         if($dum[0]=="Teamk"){$teamk[$dum[1]]=stripslashes($dum[2]);}
         $op1=substr($dum[0],0,4);
         $op2=substr($dum[0],0,5);
-        $op3=substr($dum[0],5)-1;
-        $op4=substr($dum[1],2)-1;
+        $op3=((int)substr($dum[0],5)-1);
+        $op4=((int)substr($dum[1],2)-1);
         $op5=substr($dum[0],4);
-        $op6=substr($dum[1],2,-1)-1;
-        $op7=substr($dum[1],-1)-1;
+        $op6=((int)substr($dum[1],2,-1)-1);
+        $op7=((int)substr($dum[1],-1)-1);
         $op8=substr($dum[1],0,2);
 
         if($op1=="Team" && $dum[0]!="Teams" && $dum[0]!="Teamk" && $dum[0]!="Teamm") {
@@ -283,7 +285,7 @@ if(!empty($file) && check_hilfsadmin($file)){
           if($dum[1]=="NOT"){$teamn[$op5]=$dum[2];}
         }
 
-        if(!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
+        if(!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ // nur der benÃ¶tigte Spieltag wird eingelesen
 
         if($op2=="Round") {
           switch($dum[1]) {
@@ -388,7 +390,7 @@ if(!empty($file) && check_hilfsadmin($file)){
           $teamk[$j] = trim(substr($teams[$j],0,5));
         }
       }
-      //echo "<br>".((mictime()-$a)*1000)." µS ".$dum[1];
+      //echo "<br>".((mictime()-$a)*1000)." ÂµS ".$dum[1];
     } else {
       echo getMessage($text[224],TRUE);
     }
