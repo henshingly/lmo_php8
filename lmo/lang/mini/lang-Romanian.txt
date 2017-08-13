@@ -6,7 +6,7 @@
 005=Eroare: Liga nu exista!
 006=Warnung: Archivordner nicht gefunden
 007=Ultimul meci
-008=Keine Mannschaft ausgew‰hlt!
+008=Keine Mannschaft ausgew√§hlt!
 009=Victorii
 010=Egalitate
 011=Infrangeri
