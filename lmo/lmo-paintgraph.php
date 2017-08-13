@@ -22,6 +22,7 @@ require(dirname(__FILE__)."/init.php");
 
 $pgtext1=$text[135];
 $pgtext2=$text[136];
+$font=PATH_TO_ADDONDIR."/classlib/classes/pdf/fonts/FreeSans.ttf";
 
 $pgst=isset($_GET['pgst'])?$_GET['pgst']:1;
 $pgteams=isset($_GET['pgteams'])?$_GET['pgteams']:1;
@@ -116,7 +117,7 @@ for($i = 1; $i <= $pgst; $i++) {
   imagestring($image, 1, 31-$lmo_faktorhorizontal+$i*$lmo_faktorhorizontal, 30-$lmo_faktorvertikal+(($pgteams+1) * $lmo_faktorvertikal), $j, $farbe_a);  //horizontale Spieltagsbeschriftung unten
 }
 
-//K�stchen
+//Kästchen
 for($i = 0; $i < $pgteams; $i++) {
   imagerectangle($image, 29, 28+$i*$lmo_faktorvertikal, (29-$lmo_faktorhorizontal)+(($pgst+1) * $lmo_faktorhorizontal), 28+$lmo_faktorvertikal+($i*$lmo_faktorvertikal), $farbe_b); //horizontal
 }
@@ -159,9 +160,9 @@ for($i = 1; $i <= $pgteams; $i++) {
   }
 }
 
-imagestring($image, 3, 3, 1, rawurldecode(stripslashes($pgteam1)), $farbe_c);  //Mannschaftsname1
+imagettftext($image , 10, 0, 8, 11, $farbe_c , $font, rawurldecode(stripslashes($pgteam1))); //Mannschaftsname1 geändert wegen der Anzeige für Sonderzeichen
 if ($pganz == 2) {
-  imagestring($image, 3, $breit-imagefontwidth(3) * strlen(stripslashes($pgteam2))-2, 1, rawurldecode(stripslashes($pgteam2)), $farbe_d); //Mannschaftsname2
+  imagettftext($image , 10, 0, $breit-imagefontwidth(3) * strlen(stripslashes($pgteam2))-2, 11, $farbe_d , $font, rawurldecode(stripslashes($pgteam2)));   //Mannschaftsname2 geändert wegen der Anzeige für Sonderzeichen
 }
 $linie = explode(',', $pgplatz1);
 if ($pganz == 2) {
