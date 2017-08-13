@@ -1,12 +1,12 @@
 000=Schritt 1 von 3 - Einstellung der Darstellung
 001=Dateiname
-002='.view' wird angehängt
+002='.view' wird angehÃ¤ngt
 003=nach Datum
 004=Anzahl Tage plus
 005=Anzahl Tage minus
 006=nach Spieltag
 007=Anzahl Spieltage vor
-008=Anzahl Spieltage zurück
+008=Anzahl Spieltage zurÃ¼ck
 009=StyleSheet
 010=Datumsformat
 011=Ergebnis anzeigen
@@ -31,8 +31,8 @@
 030=Schritt 2 von 3 - Welche Ligen sollen angezeigt werden?
 031=Schritt 3 von 3 - Welche Teams sollen angezeigt werden?
 032=fertigstellen
-033=wird in neuem Fenster geöffnet
-034=wird im selben Fenster geöffnet
+033=wird in neuem Fenster geÃ¶ffnet
+034=wird im selben Fenster geÃ¶ffnet
 035=zur Tabellenansicht
 036=Bitte diesen Text markieren und an der Stelle, an der der Viewer erscheinen soll, einkopieren. <br>Evtl. die PHP-Zeichen <?php und ?>entfernen!
 037=zur Tabellenansicht (in neuem Fenster)
@@ -41,7 +41,7 @@
 040=Heute hervorheben
 041=Konfiguration beendet
 042=PHP-Code zum Einbinden
-043=Alles auswählen
+043=Alles auswÃ¤hlen
 044=Auswahl aufheben
 045=Auswahl umkehren
 046=Lange
@@ -49,8 +49,8 @@
 048=Mittellange
 049=Liga 
 050=nicht gefunden!
-051=Achtung! Nicht alle Arten von KO-Runden werden vom Viewer unterstützt!
+051=Achtung! Nicht alle Arten von KO-Runden werden vom Viewer unterstÃ¼tzt!
 052=Cachefaktor
-053=Nach dem xx Aufrufen des Viewers wird der Cache erneuert (je mehr Besuche, destso höher kann der Wert sein)
+053=Nach dem xx Aufrufen des Viewers wird der Cache erneuert (je mehr Besuche, destso hÃ¶her kann der Wert sein)
 054=Lieblingsmannschaft hervorheben
 100=LMO-Viewer 4.0 &copy; LMO-Group
