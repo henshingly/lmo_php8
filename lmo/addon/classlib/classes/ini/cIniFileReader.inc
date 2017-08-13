@@ -76,7 +76,7 @@ class IniFileReader {
 
     @access public
     */
-    function IniFileReader($iniFile = "") {
+    function __construct($iniFile = "") {
         if (!(empty($iniFile))) {
             $this->_iniFile = $iniFile;
         } else {
@@ -362,7 +362,7 @@ class IniFileReader {
                             if (count($arrKeyVal) == 2 and trim($arrKeyVal[0]) == $key) {
                                 return trim($arrKeyVal[1]);
                             }
-                            // Workaround um auch values die '=' enthalten zurückzugeben
+                            // Workaround um auch values die '=' enthalten zurÃ¼ckzugeben
                             // Timme
                             elseif (count($arrKeyVal) > 2 and trim($arrKeyVal[0]) == $key) {
                                 $tmp='';
@@ -434,7 +434,7 @@ class IniFileReader {
                         if ($this->issection($line)) {
                             $finished = true;
                         } else {
-                            // Leerzeilen unterdrücken
+                            // Leerzeilen unterdrÃ¼cken
                             if (!$this->isEmtyLine($line)) {
                               $arrKeyVal = explode("=", $line);
                               $keys[$i] = $arrKeyVal[0];
