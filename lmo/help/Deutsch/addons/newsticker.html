@@ -6,7 +6,7 @@
   <meta name="generator" content="Der Dirigent 01.00.01 / www.der-dirigent.de">
   <meta name="author" content="der dirigent">
   <meta name="robots" content="index, follow">
-  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <link rel="stylesheet" href="../../media/lmo.css" type="text/css">
 </head>
 <body>
@@ -83,31 +83,31 @@
         <dd>Geschwindigkeit des Ticker</dd>
       </dl><a href="#top">[nach oben]</a>
       <h3><a name="insert" id="insert"></a> Einbindung</h3>
-      <p>Es gibt prinzipiell zwei Arten, mit der Sie den Newsticker in seine Seiten einbinden können. Die erstere Methode ist dabei zu
-      bevorzugen, die zweite Variante ist eigentlich nur für Server gedacht, die keine PHP-Unterstützung bieten (der LMO läuft dann auf
-      einem externen Server) oder wenn Sie eine Datei mit der Endung .html benutzen. (Diese werden üblicherweise nicht von PHP geparst)</p>
+      <p>Es gibt prinzipiell zwei Arten, mit der Sie den Newsticker in seine Seiten einbinden kÃ¶nnen. Die erstere Methode ist dabei zu
+      bevorzugen, die zweite Variante ist eigentlich nur fÃ¼r Server gedacht, die keine PHP-UnterstÃ¼tzung bieten (der LMO lÃ¤uft dann auf
+      einem externen Server) oder wenn Sie eine Datei mit der Endung .html benutzen. (Diese werden Ã¼blicherweise nicht von PHP geparst)</p>
       <h4>Einbinden per include</h4>
       <p>Hierbei werden die Parameter direkt als PHP-Variablen festgelegt. Sie notieren also <em>innerhalb eines PHP-Blocks</em> (ggfls.
-      mit &lt;?php öffnen) die benötigten Parameter hintereinander wie im folgenden Beispiel:</p>
+      mit &lt;?php Ã¶ffnen) die benÃ¶tigten Parameter hintereinander wie im folgenden Beispiel:</p>
       <p><code>$tickerart="1";<br>
       $tickerligen="liga1.l98,liga2.l98";</code></p>
-      <p>Beachten Sie das <var>$</var> vor dem Parameter, die Anführungszeichen um die Werte und das schließende Semikolon. Sie brauchen
-      nur die Parameter angeben, die sich von den Standardeinstellungen unterscheiden. Danach binden Sie den Ticker über die folgende
+      <p>Beachten Sie das <var>$</var> vor dem Parameter, die AnfÃ¼hrungszeichen um die Werte und das schlieÃŸende Semikolon. Sie brauchen
+      nur die Parameter angeben, die sich von den Standardeinstellungen unterscheiden. Danach binden Sie den Ticker Ã¼ber die folgende
       Anweisung ein:</p>
       <p><code>include("<strong>PfadZumLMO</strong>/addon/ticker/ticker.php");</code></p>
       <p><strong>PfadZumLMO</strong> bezeichnet dabei den absoluten oder relativen Pfad zum LMO-Verzeichnis.</p>
       <p class="attention">Benutzen Sie auf keine Fall eine URL - also <kbd>include("http://www.../ticker.php");</kbd> - damit werden die
       Minitabellen nicht funktionieren! Geben Sie immer einen <strong>Dateipfad</strong> an.</p>
       <h4>Einbinden per IFrame</h4>
-      <p>Diese Art der Einbindung sollte nur verwendet werden, wenn obige Variante aus irgendwelchen Gründen nicht funktioniert. IFrames
-      können nicht von allen Browsern dargestellt werden und auch aus Ergonomiegründen spricht einiges gegen ihre Verwendung. Die Parameter
+      <p>Diese Art der Einbindung sollte nur verwendet werden, wenn obige Variante aus irgendwelchen GrÃ¼nden nicht funktioniert. IFrames
+      kÃ¶nnen nicht von allen Browsern dargestellt werden und auch aus ErgonomiegrÃ¼nden spricht einiges gegen ihre Verwendung. Die Parameter
       werden in diesem Falle nicht vorher definiert, sie sind vielmehr Teil der aufzurufenden Source-URL des eingebetteten Frames. Aus
-      folgendem Beispiel erschließt sich die Verwendung:</p>
+      folgendem Beispiel erschlieÃŸt sich die Verwendung:</p>
       <p><code>&lt;iframe src&#61;"<strong>URLZumLMO</strong>/addon/ticker/ticker.php?tickerart=1&amp;amp;tickerligen=liga1.l98,liga2.l98"
-      frameborder="0" marginwidth="0" marginheight="0" width="<strong>Breite</strong>" height="<strong>Höhe</strong>"
+      frameborder="0" marginwidth="0" marginheight="0" width="<strong>Breite</strong>" height="<strong>HÃ¶he</strong>"
       scrolling="no"&gt;&lt;/iframe&gt;</code></p>
-      <p><strong>URLZumLMO</strong> bezeichnet dabei die WWW-Adresse des LMO, mit <strong>Breite</strong> und/oder <strong>Höhe</strong>
-      müssen Sie (leider) experimentieren, eine der vielen Nachteile von IFrames. Der erste Steuerparameter wird mit <var>?</var>
+      <p><strong>URLZumLMO</strong> bezeichnet dabei die WWW-Adresse des LMO, mit <strong>Breite</strong> und/oder <strong>HÃ¶he</strong>
+      mÃ¼ssen Sie (leider) experimentieren, eine der vielen Nachteile von IFrames. Der erste Steuerparameter wird mit <var>?</var>
       abgetrennt, die restlichen mit <var>&amp;amp;</var>.</p>
     </div>
     <dl id="footer">
