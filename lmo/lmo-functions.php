@@ -84,7 +84,7 @@ function filterZero($a) {
  * @param        string     $alternative_text      If image not found return this instead
  * @return       string     HTML image-Code for the small team icon
  */
-//Umstellung Classlib kann später mal weg
+//Umstellung Classlib kann spÃ¤ter mal weg
 function getSmallImage($team,$alternative_text='') {
   $team=str_replace("/","",$team);
   if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
@@ -131,7 +131,7 @@ function getLangSelector() {
   }
   closedir($handle);
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']=='2') {
-    $output_sprachauswahl .= "&nbsp<a href='".URL_TO_LMO."/lang/translate.php'> » ".$GLOBALS['text'][573]."</a>";
+    $output_sprachauswahl .= "&nbsp<a href='".URL_TO_LMO."/lang/translate.php'> Â» ".$GLOBALS['text'][573]."</a>";
   }
   return $output_sprachauswahl;
 }
@@ -194,5 +194,4 @@ if (!function_exists('is_a')) {
     }
   }
 }
-
 ?>
