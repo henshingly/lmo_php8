@@ -487,7 +487,7 @@ define('NET_FTP_ERR_EXTFILELOAD_FAILED', -35);
  * @since     0.0.1
  * @access    public
  */
-class Net_FTP extends PEAR
+class __construct extends PEAR
 {
     /**
      * The host to connect to
