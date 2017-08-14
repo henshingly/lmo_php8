@@ -26,7 +26,7 @@ require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 $template_folder = PATH_TO_TEMPLATEDIR.'/mini/';
 
 $mini_standardTemplate = isset($cfgarray['mini']['standardTemplate'])?$cfgarray['mini']['standardTemplate']:"mininext.tpl.php";		// Templatefile
-//aus Sicherheitsgründen werden .. gelöscht - somit sind nur templates innerhalb des Templatepfads möglich
+//aus SicherheitsgrÃ¼nden werden .. gelÃ¶scht - somit sind nur templates innerhalb des Templatepfads mÃ¶glich
 $mini_template = isset($_GET['mini_template'])
                      ? str_replace('..','',$_GET['mini_template'])
                      : (isset($mini_template)
@@ -34,10 +34,10 @@ $mini_template = isset($_GET['mini_template'])
                         : $mini_standardTemplate
                        );
 
-//4-stufiges Fallback für diese Variablen
+//4-stufiges Fallback fÃ¼r diese Variablen
 //1.GET-Parameter->2.Variable vorhanden (include)->3.Configwert->4. Standardwert
 
-//Nicht dokumentierte Steuerparameter für Fortgeschrittene
+//Nicht dokumentierte Steuerparameter fÃ¼r Fortgeschrittene
 $mini_withArchiv = isset($_GET['mini_withArchiv'])
                             ? ($_GET['mini_withArchiv']=='1'?1:0)
                             : ( isset($mini_withArchiv)
@@ -78,7 +78,7 @@ if (strpos($archivFolder,'../')!==false) {
 }
 
 $a = isset($_GET['a'])?$_GET['a']:isset($a)?$a:NULL; // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
-$b = isset($_GET['b'])?$_GET['b']:isset($b)?$b:NULL; // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
+$b = isset($_GET['b'])?$_GET['b']:isset($b)?$b:NULL; // nr vom team b (wenn nicht angegeben wird nÃ¤chster Gegner von a verw.)
 
 $mini_cache_refresh = isset($mini_cache_refresh)?$mini_cache_refresh:0;
 
@@ -109,7 +109,7 @@ if (!file_exists($mini_cache_filename)
   <html>
   <head>
   <title>lmo-nextgame</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <style type="text/css">
     html,body {margin:0;padding:0;background:transparent;}
   </style>
@@ -134,14 +134,14 @@ if (!file_exists($mini_cache_filename)
     }
 
     if (is_null( $team_b = $liga->teamForNumber($b)) ) {
-      // Wir ermitteln den nächsten gegner von a wenn b nicht angegeben ist
+      // Wir ermitteln den nÃ¤chsten gegner von a wenn b nicht angegeben ist
       $sortedGames = $liga->gamesSortedForTeam ($team_a,false); // Nur nach der Zeit sortieren unabh. vom spieltag
       $now = time();
       $showLastGame = true;
       foreach ($sortedGames as $game) {
         if ( $now < $game['partie']->zeit ) { // letztes Spiel finden
         $partie = $game['partie'];
-        $template->setVariable("gameTxt",$text['mini'][1]); // Es gibt ein zukünftiges Spiel
+        $template->setVariable("gameTxt",$text['mini'][1]); // Es gibt ein zukÃ¼nftiges Spiel
         $template->setVariable("gameNote",$partie->notiz);
         break; // gegner gefunden
         }

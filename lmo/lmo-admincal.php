@@ -27,7 +27,7 @@ isset($_GET['feld'])?$feld=$_GET['feld']:$feld="";
 <html lang="de">
 <head>
 <title>LMO Admin</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 <style type="text/css">
 body{font-size:81%;font-family:sans-serif;}
 table.caltab { font-size:91%;width:160px; border:1px solid grey; background-color:#ddd; padding:2px; margin:0;}
@@ -81,7 +81,7 @@ $dat2 = getdate(strtotime($dat5." -1 month"));
 $datr=$dat2['month']." ".$dat2['year'];
 $dat3 = getdate(strtotime($dat5." +1 month"));
 $datv=$dat3['month']." ".$dat3['year'];
-$mn=array("0","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember");
+$mn=array("0","Januar","Februar","MÃ¤rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember");
 $erster=$dat1['wday'];?>
 <table class="caltab">
   <tr>
@@ -90,7 +90,7 @@ $erster=$dat1['wday'];?>
         <tr>
           <td align="left"><a href="<?php echo $addi?>&amp;calshow=<?php echo $datr?>" title="zum vorigen Monat">&nbsp;&lt;&nbsp;</a></td>
           <td align="center" class="caltz"><?php echo $mn[$dat1['mon']]." ".$dat1['year'];?></td>
-          <td align="right"><a href="<?php echo $addi?>" title="zum aktuellen Monat">&nbsp;#&nbsp;</a><a href="<?php echo $addi?>&amp;calshow=<?php echo $datv?>" title="zum nächsten Monat">&nbsp;&gt;&nbsp;</a></td>
+          <td align="right"><a href="<?php echo $addi?>" title="zum aktuellen Monat">&nbsp;#&nbsp;</a><a href="<?php echo $addi?>&amp;calshow=<?php echo $datv?>" title="zum nÃ¤chsten Monat">&nbsp;&gt;&nbsp;</a></td>
         </tr>
       </table>
     </td>
@@ -130,7 +130,7 @@ for($i=1;$i<=31;$i++){
     if($heute==1){?>
           <tr><?php 
     }?>
-            <td align="center" class="<?php echo $stil?>"><a href="#" onclick='lmogeben("<?php echo strftime("%d.%m.%Y",strtotime($i." ".$dath))?>")' title="Datum übernehmen"><?php echo "$k$i"?></a></td><?php 
+            <td align="center" class="<?php echo $stil?>"><a href="#" onclick='lmogeben("<?php echo strftime("%d.%m.%Y",strtotime($i." ".$dath))?>")' title="Datum Ã¼bernehmen"><?php echo "$k$i"?></a></td><?php 
     if($heute==7){?>
           </tr><?php 
       $j=$heute;
@@ -149,6 +149,6 @@ if ($j!=7){
     </td>
   </tr>
   <tr>
-    <td align="right"><a href="#" onclick="self.close()" title="Kalender schließen, ohne ein Datum zu übernehmen">[schließen]</a></td>
+    <td align="right"><a href="#" onclick="self.close()" title="Kalender schlieÃŸen, ohne ein Datum zu Ã¼bernehmen">[schlieÃŸen]</a></td>
   </tr>
 </table>

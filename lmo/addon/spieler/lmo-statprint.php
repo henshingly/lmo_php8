@@ -41,7 +41,7 @@ if ($filepointer = fopen($filename, "r+b")) {
   $spalten = array(); //Spaltenbezeichnung
   $data = array(); //Daten
   $typ = array(); //Spaltentyp (TRUE=String)
-  $spalten = fgetcsv($filepointer, 10000, "§"); //Zeile mit Spaltenbezeichnern
+  $spalten = fgetcsv($filepointer, 10000, "Β§"); //Zeile mit Spaltenbezeichnern
   $formel = FALSE;
   for ($i = 0; $i < count($spalten); $i++) {
     if (strstr($spalten[$i], "*_*-*")) {
@@ -52,12 +52,12 @@ if ($filepointer = fopen($filename, "r+b")) {
       $vereinsspalte = $i;
     }
   }
-  if ($formel) fgetcsv($filepointer, 10000, "§"); //Zeile mit Formeln
+  if ($formel) fgetcsv($filepointer, 10000, "Β§"); //Zeile mit Formeln
    
-  $linkspalte = array_search($text['spieler'][32], $spalten); //Linkunterstόtzung aktiviert?
+  $linkspalte = array_search($text['spieler'][32], $spalten); //LinkunterstΓΌtzung aktiviert?
    
   $zeile = 0;
-  while ($data[$zeile] = fgetcsv ($filepointer, 10000, "§")) {
+  while ($data[$zeile] = fgetcsv ($filepointer, 10000, "Β§")) {
     if ((isset($vereinsspalte) && isset($data[$zeile][$vereinsspalte]) && $spieler_vereinsweise_anzeigen == 1 && $team == $data[$zeile][$vereinsspalte]) || $team == '') {
       for($i = 0; $i < count($data[$zeile]); $i++) {
         if (!is_numeric($data[$zeile][$i])) $typ[$i] = TRUE;
@@ -90,7 +90,7 @@ if ($filepointer = fopen($filename, "r+b")) {
 <html lang="de">
   <head>
     <title><?php echo $text['spieler'][18]?></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
     <style type="text/css">
       body {background:#fff; color:#000; font: sans-serif 10pt; max-width:200mm;max-height:285mm;}
       caption, p, h1 {margin: 3pt auto; text-align:center;}
@@ -183,8 +183,8 @@ function cmpInt ($a1, $a2) {
 }
 function cmpStr ($a2, $a1) {
   global $sort;
-  $a1[$sort]=strtr($a1[$sort],"¥µΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέίΰαβγδεζηθικλμνξοπρςστυφψωϊϋόύÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
-  $a2[$sort]=strtr($a2[$sort],"¥µΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέίΰαβγδεζηθικλμνξοπρςστυφψωϊϋόύÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+  $a1[$sort]=strtr($a1[$sort],"Β¥ΒµΓ€ΓΓ‚ΓƒΓ„Γ…Γ†Γ‡ΓΓ‰ΓΓ‹ΓΓΓΓΓΓ‘Γ’Γ“Γ”Γ•Γ–ΓΓ™ΓΓ›ΓΓΓΓ Γ΅ΓΆΓ£Γ¤Γ¥Γ¦Γ§Γ¨Γ©ΓªΓ«Γ¬Γ­Γ®Γ―Γ°Γ±Γ²Γ³Γ΄ΓµΓ¶ΓΈΓΉΓΊΓ»ΓΌΓ½ΓΏ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+  $a2[$sort]=strtr($a2[$sort],"Β¥ΒµΓ€ΓΓ‚ΓƒΓ„Γ…Γ†Γ‡ΓΓ‰ΓΓ‹ΓΓΓΓΓΓ‘Γ’Γ“Γ”Γ•Γ–ΓΓ™ΓΓ›ΓΓΓΓ Γ΅ΓΆΓ£Γ¤Γ¥Γ¦Γ§Γ¨Γ©ΓªΓ«Γ¬Γ­Γ®Γ―Γ°Γ±Γ²Γ³Γ΄ΓµΓ¶ΓΈΓΉΓΊΓ»ΓΌΓ½ΓΏ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
   $c = strnatcasecmp($a2[$sort],$a1[$sort]);
   return $c;
 }
@@ -195,8 +195,8 @@ function cmpInt2 ($a1, $a2) {
 }
 function cmpStr2 ($a2, $a1) {
   global $sort;
-  $a1[$sort]=strtr($a1[$sort],"¥µΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέίΰαβγδεζηθικλμνξοπρςστυφψωϊϋόύÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
-  $a2[$sort]=strtr($a2[$sort],"¥µΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέίΰαβγδεζηθικλμνξοπρςστυφψωϊϋόύÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+  $a1[$sort]=strtr($a1[$sort],"Β¥ΒµΓ€ΓΓ‚ΓƒΓ„Γ…Γ†Γ‡ΓΓ‰ΓΓ‹ΓΓΓΓΓΓ‘Γ’Γ“Γ”Γ•Γ–ΓΓ™ΓΓ›ΓΓΓΓ Γ΅ΓΆΓ£Γ¤Γ¥Γ¦Γ§Γ¨Γ©ΓªΓ«Γ¬Γ­Γ®Γ―Γ°Γ±Γ²Γ³Γ΄ΓµΓ¶ΓΈΓΉΓΊΓ»ΓΌΓ½ΓΏ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+  $a2[$sort]=strtr($a2[$sort],"Β¥ΒµΓ€ΓΓ‚ΓƒΓ„Γ…Γ†Γ‡ΓΓ‰ΓΓ‹ΓΓΓΓΓΓ‘Γ’Γ“Γ”Γ•Γ–ΓΓ™ΓΓ›ΓΓΓΓ Γ΅ΓΆΓ£Γ¤Γ¥Γ¦Γ§Γ¨Γ©ΓªΓ«Γ¬Γ­Γ®Γ―Γ°Γ±Γ²Γ³Γ΄ΓµΓ¶ΓΈΓΉΓΊΓ»ΓΌΓ½ΓΏ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
   $c = strnatcasecmp($a2[$sort],$a1[$sort]);
   return -1*$c;
 }

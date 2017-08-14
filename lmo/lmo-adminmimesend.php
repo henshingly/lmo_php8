@@ -32,7 +32,7 @@ $madr=isset($_GET['madr'])  ? $_GET['madr']    :'';
 <html lang="de">
 <head>
 <title>LMO Admin</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 <link rel="stylesheet" type="text/css" href="<?php echo URL_TO_LMO?>/lmo-style.php">
 </head>
 <body>

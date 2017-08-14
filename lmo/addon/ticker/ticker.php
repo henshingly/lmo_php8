@@ -20,7 +20,7 @@
 
 require_once(dirname(__FILE__).'/../../init.php');
 
-// Durch Get bestimmter Parameter (für IFRAME)
+// Durch Get bestimmter Parameter (fÃ¼r IFRAME)
 $ticker_tickerart=      isset($_GET['tickerart'])?            urldecode($_GET['tickerart']):      $ticker_tickerart;  
 $ticker_ligen=          isset($_GET['tickerligen'])?          urldecode($_GET['tickerligen']):    $ticker_standard_ligen; 
 $ticker_tickertitel=    isset($_GET['tickertitel'])?          urldecode($_GET['tickertitel']):    $ticker_tickertitel; 
@@ -30,7 +30,7 @@ $ticker_background=     isset($_GET['tickerbackground'])?     urldecode($_GET['t
 $ticker_breite=         isset($_GET['tickerbreite'])?         urldecode($_GET['tickerbreite']):         $ticker_breite;
 $ticker_geschwindigkeit=isset($_GET['tickergeschwindigkeit'])?urldecode($_GET['tickergeschwindigkeit']):$ticker_geschwindigkeit;
 
-// Durch gesetzte $tickerart bestimmter Parameter (für include/require)
+// Durch gesetzte $tickerart bestimmter Parameter (fÃ¼r include/require)
 $ticker_tickerart=      isset($tickerart)?            $tickerart:      $ticker_tickerart;  
 $ticker_ligen=          isset($tickerligen)?          $tickerligen:    $ticker_standard_ligen; 
 $ticker_tickertitel=    isset($tickertitel)?          $tickertitel:    $ticker_tickertitel; 
@@ -57,7 +57,7 @@ if (basename($_SERVER['PHP_SELF'])=="ticker.php") {?>
 <html>
 <head>
 <title><?php echo $versionticker?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 <style type="text/css">
   @media screen{
   body {background:transparent;}

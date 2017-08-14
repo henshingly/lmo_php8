@@ -21,7 +21,7 @@
 require_once(dirname(__FILE__).'/../../init.php');
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 
-//4-stufiges Fallback für diese Variablen
+//4-stufiges Fallback fÃ¼r diese Variablen
 //1.GET-Parameter(IFRAME)->2.Variable vorhanden(include)->3.Configwert->4. Standardwert
 $m_template = !empty($_GET['mini_template'])? str_replace('..','',$_GET['mini_template']):
                 (isset($mini_template)? str_replace('..','',$mini_template):$cfgarray['mini']['tabelle_standardTemplate'] );
@@ -48,7 +48,7 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 <html>
 <head>
 <title>Minitab</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 <style type="text/css">
   html,body {margin:0;padding:0;background:transparent;}
 </style>

@@ -42,7 +42,7 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
   <html lang="de">
   <head>
   <title>LMO Admin</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
     <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_LMO?>/lmo-style-nc.php'>
     <style type='text/css'>@import url('<?php echo URL_TO_LMO?>/lmo-style.php');</style>
   </head>

@@ -65,32 +65,32 @@ $lang=array(
       'PROCEED'=>'Weiter',
       'SUCCESS'=>'Erfolg',
       'ERROR'=>'Fehler',
-      'CHECK_AGAIN'=>'Neu prüfen',
+      'CHECK_AGAIN'=>'Neu prÃ¼fen',
       'ERROR_WRONG_PATH'=>'Der Pfad ist nicht korrekt!',
       'ERROR_CONFIRM'=>'Es sind noch Fehler vorhanden! Der LMO wird NICHT funktionieren. Trotzdem fortfahren?',
 
       'STEP0'=>'FTP-Zugangsdaten',
       'STEP0_DESCRIPTION'=>'Um den LMO vollautomatisch zu installieren, ist ein Zugang per FTP notwendig.
-         Dazu müssen Sie die Logindaten für Ihren FTP-Zugang angeben. Die Daten werden vom LMO
+         Dazu mÃ¼ssen Sie die Logindaten fÃ¼r Ihren FTP-Zugang angeben. Die Daten werden vom LMO
          nicht gespeichert oder in irgendeiner anderen Weise weiterverwendet. Falls Sie
-         manuell installieren möchten gelangen Sie
+         manuell installieren mÃ¶chten gelangen Sie
          <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">hier zur manuellen Installation.</a>',
       'STEP0_FTP_SERVER'=>'Geben sie hier die Adresse ihres FTP-Servers ein',
       'STEP0_FTP_SERVER_EXAMPLE'=>'Bsp.: <em><kbd>ftp.beispiel.de</kbd></em>',
       'STEP0_FTP_LOGIN'=>'Geben Sie hier Ihren Usernamen und Ihr Passwort ein',
-      'STEP0_FTP_NO_CONNECTION'=>'Keine Verbindung zu "'.$_SESSION['ftpserver'].'" möglich. Korrigieren Sie die Adresse oder <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installieren Sie manuell</a>',
+      'STEP0_FTP_NO_CONNECTION'=>'Keine Verbindung zu "'.$_SESSION['ftpserver'].'" mÃ¶glich. Korrigieren Sie die Adresse oder <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installieren Sie manuell</a>',
       'STEP0_FTP_NO_LOGIN'=>'Fehler beim Einloggen. Korrigieren Sie die Benutzerdaten oder <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installieren Sie manuell</a>',
 
-      'STEP1'=>'LMO-Verzeichnis auswählen',
-      'STEP1_SELECT_FTP_DIR'=>'Wählen Sie das LMO Verzeichnis aus',
+      'STEP1'=>'LMO-Verzeichnis auswÃ¤hlen',
+      'STEP1_SELECT_FTP_DIR'=>'WÃ¤hlen Sie das LMO Verzeichnis aus',
 
       'STEP2'=>'Dateirechte setzen',
-      'STEP2_MANUAL'=>'<p><strong>Kopieren Sie den Inhalt des Ordners <code>install</code> mit einem FTP-Programm über Ihr LMO-Verzeichnis.</strong></p>
+      'STEP2_MANUAL'=>'<p><strong>Kopieren Sie den Inhalt des Ordners <code>install</code> mit einem FTP-Programm Ã¼ber Ihr LMO-Verzeichnis.</strong></p>
          <p><img src="img/manual_copy.png" alt="Kopieren der Dateien mittels FTP-Programm" width="696"></p>
-         <p><strong>Setzen Sie danach die benötigten Rechte über ihr FTP-Programm.</strong></p>
+         <p><strong>Setzen Sie danach die benÃ¶tigten Rechte Ã¼ber ihr FTP-Programm.</strong></p>
          <p><img src="img/manual_chmod.png" alt="Setzen der Rechte mittels FTP-Programm" width="427"></p>
          <p>Aktualisieren Sie diese Seite <a href="#" onclick="location.reload();return false;">[Reload]</a>, um
-         zu überprüfen, ob alle Rechte richtig gesetzt sind. <a href="'.$_SERVER['PHP_SELF'].'">[Zurück zur automatischen Installation (falls verfügbar)]</a></p>',
+         zu Ã¼berprÃ¼fen, ob alle Rechte richtig gesetzt sind. <a href="'.$_SERVER['PHP_SELF'].'">[ZurÃ¼ck zur automatischen Installation (falls verfÃ¼gbar)]</a></p>',
 
       'STEP3'=>'Konfigurationsdatei erstellen',
       'STEP3_PATH'=>'Geben Sie hier den <strong>kompletten Pfad</strong> zum LMO an',
@@ -100,7 +100,7 @@ $lang=array(
       'STEP3_URL'=>'Geben Sie hier die absolute URL zum LMO an',
       'STEP3_URL_CORRECT'=>' Wenn Sie hier ein Bild sehen, ist die URL richtig!',
       'STEP3_URL_EXAMPLE'=>'Bsp.: <em><kbd>http://www.beispiel.de/lmo</kbd></em>',
-      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Konnte Datei <code>config/init-parameters.php</code> nicht öffnen! Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
+      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Konnte Datei <code>config/init-parameters.php</code> nicht Ã¶ffnen! Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
       'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Konnte die Konfiguration nicht speichern. Vergewissern Sie sich, dass die Datei <code>config/init-parameters.php</code> die Rechte 666 besitzt. Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
       'STEP3_SUCCESS_INI_FILE'=>'Die Konfiguration wurde erfolgreich gespeichert',
 
@@ -110,18 +110,18 @@ $lang=array(
       'STEP4_TEXT2'=>'Falls Fehler aufgetreten sind, wiederholen sie die Installation oder installieren Sie den LMO manuell, indem Sie
     die Datei <code>config/init-parameters.php</code> mit einem Texteditor anpassen und die Schreibrechte mit einem FTP-Programm
     manuell vergeben.',
-      'STEP4_TEXT3'=>'Bitte löschen Sie jetzt unbedingt den Ordner <code>install</code> vom Server oder geben Sie dem Ordner chmod 000.',
+      'STEP4_TEXT3'=>'Bitte lÃ¶schen Sie jetzt unbedingt den Ordner <code>install</code> vom Server oder geben Sie dem Ordner chmod 000.',
       'STEP4_TEXT4'=>'<ul class="attention">
                         <li><strong>Link zum <acronym title="Liga Manager Online">LMO</acronym>:</strong> <a href="%s">%s</a></li>
                         <li><strong>Link zum Adminbereich:</strong> <a href="%s">%s</a> <small>(Standardlogin ist <kbd>admin</kbd> / <kbd>lmo</kbd>)</small></li>
                         <li><strong>Link zur Benutzeranleitung:</strong> <a href="%s">%s</a></li>
                       </ul>',
-      'STEP4_TEXT5'=>'Unterstützen Sie den LMO durch eine Spende: <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal">
+      'STEP4_TEXT5'=>'UnterstÃ¼tzen Sie den LMO durch eine Spende: <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal">
                       <input type="hidden" name="cmd" value="_s-xclick">
-                      <input type="image" src="https://www.paypal.com/de_DE/i/btn/x-click-but04.gif" name="submit" alt="Spenden Sie für den LMO!">
+                      <input type="image" src="https://www.paypal.com/de_DE/i/btn/x-click-but04.gif" name="submit" alt="Spenden Sie fÃ¼r den LMO!">
                       <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 "></form>',
-      'STEP4_TEXT6'=>'Viel Spaß!',
+      'STEP4_TEXT6'=>'Viel SpaÃŸ!',
 
 
 
@@ -183,7 +183,7 @@ $lang=array(
                       </ul>',
       'STEP4_TEXT5'=>'Support LMO: <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal">
                       <input type="hidden" name="cmd" value="_s-xclick">
-                      <input type="image" src="https://www.paypal.com/de_DE/i/btn/x-click-but04.gif" name="submit" alt="Spenden Sie für den LMO!">
+                      <input type="image" src="https://www.paypal.com/de_DE/i/btn/x-click-but04.gif" name="submit" alt="Spenden Sie fÃ¼r den LMO!">
                       <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 "></form>',
       'STEP4_TEXT6'=>'Have fun!',
@@ -192,16 +192,16 @@ $lang=array(
     'FR'=>array(
       'HEADER'=>'Installation du Liga Manager Online 4',
       'PROCEED'=>'Continuer',
-      'SUCCESS'=>'Succès',
+      'SUCCESS'=>'SuccÃ¨s',
       'ERROR'=>'Erreur',
-      'CHECK_AGAIN'=>'Vérifier de nouveau',
+      'CHECK_AGAIN'=>'VÃ©rifier de nouveau',
       'ERROR_WRONG_PATH'=>'Le chemin n\'est pas correct!',
-      'ERROR_CONFIRM'=>'Il y a encore des erreurs! Désirez-vous quand même continuer?',
+      'ERROR_CONFIRM'=>'Il y a encore des erreurs! DÃ©sirez-vous quand mÃªme continuer?',
 
-      'STEP0'=>'Données d\'accès FTP',
-      'STEP0_DESCRIPTION'=>'Pour pouvoir installer le LMO automatiquement, un accès FTP est nécessaire.
-         Pour cela vous devez entrer les données d\'accès de votre serveur FTP. Ces informations ne seront pas sauvegarder ou utiliser pour d\'autres fins dans le LMO.
-         Si vous voulez installer manuellement les paramètres vous pouvez le faire
+      'STEP0'=>'DonnÃ©es d\'accÃ¨s FTP',
+      'STEP0_DESCRIPTION'=>'Pour pouvoir installer le LMO automatiquement, un accÃ¨s FTP est nÃ©cessaire.
+         Pour cela vous devez entrer les donnÃ©es d\'accÃ¨s de votre serveur FTP. Ces informations ne seront pas sauvegarder ou utiliser pour d\'autres fins dans le LMO.
+         Si vous voulez installer manuellement les paramÃ¨tres vous pouvez le faire
          <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">ici pour continuer avec l\'installation manuelle.</a>',
       'STEP0_FTP_SERVER'=>'Veuillez donner l\'adresse de votre serveur FTP',
       'STEP0_FTP_SERVER_EXAMPLE'=>'Ex.: <em><kbd>ftp.exemple.fr</kbd></em>',
@@ -209,40 +209,40 @@ $lang=array(
       'STEP0_FTP_NO_CONNECTION'=>'Aucune connection sur "'.$_SESSION['ftpserver'].'" possible. Veuillez corriger l\'adresse ou bien <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installez-le manuellement</a>',
       'STEP0_FTP_NO_LOGIN'=>'Erreur de connection. Veuillez corriger l\'identifiant ou <a href="'.$_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installez-le manuellement</a>',
 
-      'STEP1'=>'Choissisez le répertoire du LMO',
-      'STEP1_SELECT_FTP_DIR'=>'Veuillez choissir le répertoire du LMO',
+      'STEP1'=>'Choissisez le rÃ©pertoire du LMO',
+      'STEP1_SELECT_FTP_DIR'=>'Veuillez choissir le rÃ©pertoire du LMO',
 
-      'STEP2'=>'Définir les droits d\'accès des fichiers',
-      'STEP2_MANUAL'=>'<p><strong>Veuillez placer les droits d\'accès requéris des fichiers avec votre programme FTP.</strong></p>
+      'STEP2'=>'DÃ©finir les droits d\'accÃ¨s des fichiers',
+      'STEP2_MANUAL'=>'<p><strong>Veuillez placer les droits d\'accÃ¨s requÃ©ris des fichiers avec votre programme FTP.</strong></p>
       <p><img src="img/manual_copy.png" alt="" width="696"></p>
       <p><img src="img/manual_chmod.png" alt="" width="427"></p>
-      <p>Veuillez ensuite actualiser cette page avec un <a href="#" onclick="location.reload();return false;">[Rafraîchir]</a>, pour vérifier , que tout les droits ont été placé correctement. <a href="'.$_SERVER['PHP_SELF'].'">retourner à l\'installation automatique</a></p>',
+      <p>Veuillez ensuite actualiser cette page avec un <a href="#" onclick="location.reload();return false;">[RafraÃ®chir]</a>, pour vÃ©rifier , que tout les droits ont Ã©tÃ© placÃ© correctement. <a href="'.$_SERVER['PHP_SELF'].'">retourner Ã  l\'installation automatique</a></p>',
 
-      'STEP3'=>'Création du fichier de configuration',
-      'STEP3_PATH'=>'Veuillez entrer ici le <strong>chemin complet</strong> pour accèder au LMO',
+      'STEP3'=>'CrÃ©ation du fichier de configuration',
+      'STEP3_PATH'=>'Veuillez entrer ici le <strong>chemin complet</strong> pour accÃ¨der au LMO',
       'STEP3_PATH_EXAMPLE'=>'Ex.: <em><kbd>/home/www/htdocs/lmo</kbd></em>',
       'STEP3_PATH_CORRECT'=>'Le chemin est correct!',
       'STEP3_PATH_WRONG'=>'Le chemin est incorrect!',
-      'STEP3_URL'=>'Veuillez entrer ici l\'adresse URL pour accèder au LMO',
+      'STEP3_URL'=>'Veuillez entrer ici l\'adresse URL pour accÃ¨der au LMO',
       'STEP3_URL_CORRECT'=>' Si vous voyez une image, l\'adresse URL est correcte!',
       'STEP3_URL_EXAMPLE'=>'Ex.: <em><kbd>http://www.exemple.fr/lmo</kbd></em>',
-      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Impossible d\'ouvrir le fichier <code>config/init-parameters.php</code>!  Veuillez définir les droits d\'accès sur chmod 666 et actualisez cette page ([F5]), pour répeter cette étape.',
-      'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Veuillez vérifier avant l\'installation que le fichier <code>config/init-parameters.php</code> a bien les droits d\'accès 666. Veuillez définir les droits d\'accès sur chmod 666 et actualisez cette page, pour répeter cette étape.',
-      'STEP3_SUCCESS_INI_FILE'=>'La configuration a été sauvegardé avec succès',
+      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Impossible d\'ouvrir le fichier <code>config/init-parameters.php</code>!  Veuillez dÃ©finir les droits d\'accÃ¨s sur chmod 666 et actualisez cette page ([F5]), pour rÃ©peter cette Ã©tape.',
+      'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Veuillez vÃ©rifier avant l\'installation que le fichier <code>config/init-parameters.php</code> a bien les droits d\'accÃ¨s 666. Veuillez dÃ©finir les droits d\'accÃ¨s sur chmod 666 et actualisez cette page, pour rÃ©peter cette Ã©tape.',
+      'STEP3_SUCCESS_INI_FILE'=>'La configuration a Ã©tÃ© sauvegardÃ© avec succÃ¨s',
 
 
-      'STEP4'=>'L\'installation a été couronné de succès',
-      'STEP4_TEXT1'=>'Le Liga Manager Online 4 a été installé!',
-      'STEP4_TEXT2'=>'Si des erreurs apparaissent, veuillez répéter l\'installation ou bien installer le LMO manuellement en adaptant le fichier <code>config/init-parameters.php</code> avec un éditeur de texte et donner les droits d\'accès manuellement avec un programme FTP.',
-      'STEP4_TEXT3'=>'Veuillez supprimer à tout prix le répertoire <code>install</code> de votre serveur ou bien lui donner les droits d\accès chmod 000.',
+      'STEP4'=>'L\'installation a Ã©tÃ© couronnÃ© de succÃ¨s',
+      'STEP4_TEXT1'=>'Le Liga Manager Online 4 a Ã©tÃ© installÃ©!',
+      'STEP4_TEXT2'=>'Si des erreurs apparaissent, veuillez rÃ©pÃ©ter l\'installation ou bien installer le LMO manuellement en adaptant le fichier <code>config/init-parameters.php</code> avec un Ã©diteur de texte et donner les droits d\'accÃ¨s manuellement avec un programme FTP.',
+      'STEP4_TEXT3'=>'Veuillez supprimer Ã  tout prix le rÃ©pertoire <code>install</code> de votre serveur ou bien lui donner les droits d\accÃ¨s chmod 000.',
       'STEP4_TEXT4'=>'<ul class="attention">
                         <li><strong>Le <acronym title="Liga Manager Online">LMO</acronym>:</strong> <code><a href="%s">%s</a></code>
-                        <li><strong>Le secteur d\'administration:</strong> <code><a href="%s">%s</a></code> (L\'indentifiant par défaut est <kbd>admin</kbd>/<kbd>lmo</kbd>)
+                        <li><strong>Le secteur d\'administration:</strong> <code><a href="%s">%s</a></code> (L\'indentifiant par dÃ©faut est <kbd>admin</kbd>/<kbd>lmo</kbd>)
                         <li><strong>Description d\'utlisation:</strong> <code><a href="%s">%s</a></code>
                       </ul>',
       'STEP4_TEXT5'=>'<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal">
                       <input type="hidden" name="cmd" value="_s-xclick">
-                      <input type="image" src="https://www.paypal.com/fr_FR/i/btn/x-click-but04.gif" name="submit" alt="Spenden Sie für den LMO!">
+                      <input type="image" src="https://www.paypal.com/fr_FR/i/btn/x-click-but04.gif" name="submit" alt="Spenden Sie fÃ¼r den LMO!">
                       <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 "></form>',
       'STEP4_TEXT6'=>'Bon courage!',
@@ -250,7 +250,7 @@ $lang=array(
 
     ),
   'ES'=>array(
-      'HEADER'=>'Installación de Liga Manager Online 4',
+      'HEADER'=>'InstallaciÃ³n de Liga Manager Online 4',
       'PROCEED'=>'Proceder',
       'SUCCESS'=>'Exitoso',
       'ERROR'=>'Error',
@@ -258,21 +258,21 @@ $lang=array(
       'ERROR_WRONG_PATH'=>'Directorio incorrecto!',
       'ERROR_CONFIRM'=>'Aun hay errores! Continuar?',
 
-      'STEP0'=>'Datos de conexión FTP',
-      'STEP0_DESCRIPTION'=>'Para instalar LMO automaticamente debe insertar sus datos de la conexión FTP. Datos no guardados ni publicados. Si desea instalar manualmente use <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">este link</a>.',
-      'STEP0_FTP_SERVER'=>'Dirección servidor FTP',
+      'STEP0'=>'Datos de conexiÃ³n FTP',
+      'STEP0_DESCRIPTION'=>'Para instalar LMO automaticamente debe insertar sus datos de la conexiÃ³n FTP. Datos no guardados ni publicados. Si desea instalar manualmente use <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">este link</a>.',
+      'STEP0_FTP_SERVER'=>'DirecciÃ³n servidor FTP',
       'STEP0_FTP_SERVER_EXAMPLE'=>'ej.: <em><kbd>ftp.ejemplo.com</kbd></em>',
-      'STEP0_FTP_LOGIN'=>'Ingrese su nombre de usuario y contraseña',
-      'STEP0_FTP_NO_CONNECTION'=>'No se puede establecer conección a "'.$_SESSION['ftpserver'].'". Por favor corrija la dirección del servidor o <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">instale manualmente</a>',
-      'STEP0_FTP_NO_LOGIN'=>'Error en conección. Por favor corrija los datos de usuario o <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">instale manualmente</a>',
+      'STEP0_FTP_LOGIN'=>'Ingrese su nombre de usuario y contraseÃ±a',
+      'STEP0_FTP_NO_CONNECTION'=>'No se puede establecer conecciÃ³n a "'.$_SESSION['ftpserver'].'". Por favor corrija la direcciÃ³n del servidor o <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">instale manualmente</a>',
+      'STEP0_FTP_NO_LOGIN'=>'Error en conecciÃ³n. Por favor corrija los datos de usuario o <a href="'.$_SERVER['PHP_SELF'].'?step=2&amp;man=1">instale manualmente</a>',
 
       'STEP1'=>'Seleccione la carpeta de LMO',
       'STEP1_SELECT_FTP_DIR'=>'Seleccione por favor su carpeta de LMO',
 
       'STEP2'=>'Archivos CHMOD',
-      'STEP2_MANUAL'=>'Por favor dele permisos chmod a estos archivos con su herramienta FTP y presione <a href="#" onclick="location.reload();return false;">[Recargar]</a> para un chequeo. <a href="'.$_SERVER['PHP_SELF'].'">volver a la instalación automática</a>',
+      'STEP2_MANUAL'=>'Por favor dele permisos chmod a estos archivos con su herramienta FTP y presione <a href="#" onclick="location.reload();return false;">[Recargar]</a> para un chequeo. <a href="'.$_SERVER['PHP_SELF'].'">volver a la instalaciÃ³n automÃ¡tica</a>',
 
-      'STEP3'=>'Cree el archivo de configuración',
+      'STEP3'=>'Cree el archivo de configuraciÃ³n',
       'STEP3_PATH'=>'Por favor ingrese el <strong>directorio absoluto</strong> a LMO',
       'STEP3_PATH_EXAMPLE'=>'ej.: <em><kbd>/home/www/htdocs/lmo</kbd></em>',
       'STEP3_PATH_CORRECT'=>'El directorio parece ser correcto!',
@@ -280,18 +280,18 @@ $lang=array(
       'STEP3_URL'=>'Por favor ingrese la <strong>URL absoluta</strong> a LMO',
       'STEP3_URL_EXAMPLE'=>'ej.: http://www.ejemplo.com/lmo',
       'STEP3_URL_CORRECT'=>' Si usted puede ver una imagen delante de este mensaje entonces la URL es correcta!',
-      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'No se puede abrir init-parameters.php! Por favor cambie los permisos del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta página para repetir el chequeo.',
-      'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'No se puede guardar la configuración! Por favor aseguresé que el archivo <code>init-parameters.php</code> tiene permisos chmod de 666. Por favor cambie los permisos chmod del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta página para repetir el chequeo.',
-      'STEP3_SUCCESS_INI_FILE'=>'Configuración guardada con éxito',
+      'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'No se puede abrir init-parameters.php! Por favor cambie los permisos del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta pÃ¡gina para repetir el chequeo.',
+      'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'No se puede guardar la configuraciÃ³n! Por favor aseguresÃ© que el archivo <code>init-parameters.php</code> tiene permisos chmod de 666. Por favor cambie los permisos chmod del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta pÃ¡gina para repetir el chequeo.',
+      'STEP3_SUCCESS_INI_FILE'=>'ConfiguraciÃ³n guardada con Ã©xito',
 
 
-      'STEP4'=>'Instalación exitosa',
+      'STEP4'=>'InstalaciÃ³n exitosa',
       'STEP4_TEXT1'=>'Liga Manager Online 4 instalada exitosamente!',
-      'STEP4_TEXT2'=>'Si usted experimenta errores repita la instalación o instale manualmente. Para instalar manualmente edite el archivo <code>init-parameters.php</code> con un editor de textos común y cambie los permisos chmod de los archivos con su herramienta FTP.',
+      'STEP4_TEXT2'=>'Si usted experimenta errores repita la instalaciÃ³n o instale manualmente. Para instalar manualmente edite el archivo <code>init-parameters.php</code> con un editor de textos comÃºn y cambie los permisos chmod de los archivos con su herramienta FTP.',
       'STEP4_TEXT3'=>'Por favor elimine el archivo <code>install.php</code> o cambie los permisos chmod a 000.',
-      'STEP4_TEXT4'=>'<acronym title="Liga Manager Online">LMO</acronym> ahora está disponible en <code><a href="lmo.php">lmo.php</a></code>. El área de la administración está disponible en <code><a href="lmoadmin.php">lmoadmin.php</a></code> (la conexión estándar es <kbd>admin</kbd>/<kbd>lmo</kbd>).',
+      'STEP4_TEXT4'=>'<acronym title="Liga Manager Online">LMO</acronym> ahora estÃ¡ disponible en <code><a href="lmo.php">lmo.php</a></code>. El Ã¡rea de la administraciÃ³n estÃ¡ disponible en <code><a href="lmoadmin.php">lmoadmin.php</a></code> (la conexiÃ³n estÃ¡ndar es <kbd>admin</kbd>/<kbd>lmo</kbd>).',
       'STEP4_TEXT5'=>'Por favor consulte el <a href="http://www.liga-manager-online.de/">manual en nuestro sitio web</a> para obtener ayuda.',
-      'STEP4_TEXT6'=>'Disfrútalo!',
+      'STEP4_TEXT6'=>'DisfrÃºtalo!',
   )
 
 );
@@ -475,7 +475,7 @@ if ($lmo_install_step==3) {
 <html lang="<?php echo $userlang?>">
   <head>
     <title><?php echo $lang[$userlang]['HEADER'];?></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
     <style type="text/css">
       @media all {
         body     {  max-width:60em;margin: 0.5em auto;padding:0 0.9em;font-size:85%;background-color: #ffffff;color: #000000;font-family:Tahoma, Verdana, sans-serif;border:1px solid #999;-moz-border-radius:8px;}
@@ -738,7 +738,7 @@ if ($lmo_install_step==4) {?>
     <div class="w3cbutton3">
     <a href="<?php echo $_SERVER['PHP_SELF'];?>"><span class="w3c">RE</span>
     <span class="spec">START</span></a></div>
-     © René Marth/<a href="http://liga-manager-online.de/">LMO Group</a>
+     Â© RenÃ© Marth/<a href="http://liga-manager-online.de/">LMO Group</a>
   </div>
   </body>
 </html>
