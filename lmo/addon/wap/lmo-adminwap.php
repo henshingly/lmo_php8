@@ -6,7 +6,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Ein Datum der Vergangenheit
 header("Last-Modified: " . date("D, d M Y H:i:s"). " GMT"); 
 header("Cache-Control: no-cache, must-revalidate"); 
 header("Pragma: no-cache"); 
-echo('<?php xml version="1.0" encoding="iso-8859-1"?>');
+echo('<?php xml version="1.0" encoding="utf-8"?>');
 echo("<!DOCTYPE wml PUBLIC \"-//WAPFORUM//DTD WML 1.1//EN\" \"http://www.wapforum.org/DTD/wml_1.1.xml\">\n");
 echo("<wml>\n");
 define('LMO_AUTH','');
