@@ -54,7 +54,7 @@
 053=Por favor, selecciona una liga/torneo:
 054=Liga Manager Online 4
 055=© 1997-2007 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Pagina de inicio del Liga Manager Online">LMO-Proyecto</a> | <a href="http://www.liga-manager-online.de/lmo-forum/" target="_blank" title="Foro de apoyo para el LMO y sus Addons">Foro de apoyo</a> | <a href="http://www.ligaliste.de/" target="_blank" title="Mas ligas para tu LMO">Lista de ligas</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Pagina de inicio del Liga Manager Online">LMO-Proyecto</a> | <a href="http://www.liga-manager-online.de/lmo-forum/" target="_blank" title="Foro de apoyo para el LMO y sus Addons">Foro de apoyo</a> | <a href="https://www.liga-manager-online.de/lmo-forum/viewforum.php?f=17" target="_blank" title="Mas ligas para tu LMO">Lista de ligas</a> ]
 057=Estadística 1 de
 058=Estadística 2 de
 059=Sin 2º equipo
