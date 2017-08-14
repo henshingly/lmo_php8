@@ -54,7 +54,7 @@
 053=Prego, seleziona un campionato
 054=Liga Manager Online 4
 055=© 1997-2007 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visitate il nostro sito">Progetto-LMO</a> | <a href="http://www.liga-manager-online.de/lmo-forum/" target="_blank" title="Forum di supporto per LMO e Addons">Foro de apoyo</a> | <a href="http://www.ligaliste.de/" target="_blank" title="Qui troverete altri campionati per il vostro LigaManager">Lista campionati</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visitate il nostro sito">Progetto-LMO</a> | <a href="http://www.liga-manager-online.de/lmo-forum/" target="_blank" title="Forum di supporto per LMO e Addons">Foro de apoyo</a> | <a href="https://www.liga-manager-online.de/lmo-forum/viewforum.php?f=17" target="_blank" title="Qui troverete altri campionati per il vostro LigaManager">Lista campionati</a> ]
 057=La statistica 1 di
 058=La statistica 2 di
 059=Nessuna 2. squadra

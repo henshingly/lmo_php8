@@ -21,7 +21,7 @@
 020=*
 021=Infos sur ce script
 022=Notes
-023=Le calendrier particulier de 
+023=Le calendrier particulier de
 024=Choisissez une équipe
 025=Cliquez ici pour voir la journée complète
 026=Montrer les résultats de cette équipe
@@ -40,7 +40,7 @@
 039=Diff.
 040=Classement
 041=Domicile
-042=Extérieur 
+042=Extérieur
 043=Montrer le classement de la journée précédente
 044=Montrer le classement de la prochaine journée
 045=Montrer le classement de cette journée
@@ -54,7 +54,7 @@
 053=Veuillez choisir votre ligue :
 054=Liga Manager Online 4
 055=© 1997-2007 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visitez notre page web">Page web</a> | <a href="http://www.liga-manager-online.de/lmo-forum/" target="_blank" title="Aide pour LMO et ses extensions">Forum de support</a> | <a href="http://www.ligaliste.de/" target="_blank" title="Vous trouverez ici d&#39;autres ligues pour votre LigaManager">Liste de ligues</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visitez notre page web">Page web</a> | <a href="http://www.liga-manager-online.de/lmo-forum/" target="_blank" title="Aide pour LMO et ses extensions">Forum de support</a> | <a href="https://www.liga-manager-online.de/lmo-forum/viewforum.php?f=17" target="_blank" title="Vous trouverez ici d&#39;autres ligues pour votre LigaManager">Liste de ligues</a> ]
 057=La statistique 1 de
 058=La statistique 2 de
 059=Pas d&#39;équipe de réserve
@@ -62,7 +62,7 @@
 061=Classement
 062=Conceptualisation
 063=Matchs
-064=/Match 
+064=/Match
 065=Alternative pour
 066=Entrez ici le nom de la ligue quand celui-ci diffère du nom par défaut
 067=Victoires
@@ -72,7 +72,7 @@
 071=Série actuelle
 072=c.
 073=(Dom.)
-074=(Ext.) 
+074=(Ext.)
 075=Match(s) sans défaite
 076=Match(s) sans victoire
 077=Administration du
@@ -95,7 +95,7 @@
 094=Éditer une nouvelle ligue
 095=Supprimer une ligue du serveur
 096=Télécharger vers le serveur une ligue depuis votre disque dur
-097=Changer les options du script 
+097=Changer les options du script
 098=Se déconnecter de l&#39;interface d&#39;administration
 099=Options générales
 100=Ici vous pouvez éditer les options de base de votre ligue (nombre des matchs, etc.)
@@ -127,7 +127,7 @@
 126=Abréviation de l&#39;équipe (max. 5 caractères)
 127=Nom de l&#39;équipe/Abréviation de l&#39;équipe
 128=Points de pénalité ou de bonification
-129=URL de la page web 
+129=URL de la page web
 130=Lien hypertexte de la page web de l&#39;équipe (ouverture dans une nouvelle fenêtre)
 131=Sanctions disciplinaires que la fédération a prononcées contre l&#39;équipe
 132=Sauvergarder les équipes
@@ -152,7 +152,7 @@
 151=Vendredi
 152=Samedi
 153=Dimanche
-154=# 
+154=#
 155=Date pas encore fixée
 156=Sommaire
 157=Année précédente
