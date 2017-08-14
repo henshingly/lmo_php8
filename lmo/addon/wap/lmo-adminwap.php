@@ -1,11 +1,11 @@
-<?php 
+<?php
 require_once(dirname(__FILE__).'/../../init.php');
 
 header("Content-type: text/vnd.wap.wml");                // Sag dem Browser, dass jetzt WML kommt
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Ein Datum der Vergangenheit um nicht gecached zu werden
-header("Last-Modified: " . date("D, d M Y H:i:s"). " GMT"); 
-header("Cache-Control: no-cache, must-revalidate"); 
-header("Pragma: no-cache"); 
+header("Last-Modified: " . date("D, d M Y H:i:s"). " GMT");
+header("Cache-Control: no-cache, must-revalidate");
+header("Pragma: no-cache");
 echo('<?php xml version="1.0" encoding="utf-8"?>');
 echo("<!DOCTYPE wml PUBLIC \"-//WAPFORUM//DTD WML 1.1//EN\" \"http://www.wapforum.org/DTD/wml_1.1.xml\">\n");
 echo("<wml>\n");
@@ -44,7 +44,7 @@ if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
 		    include (PATH_TO_ADDONDIR."/wap/lmo-adminwap_liga.php");
 		    break;
 	} # Ende switch($op)
-}else { 
+}else {
 	require(PATH_TO_ADDONDIR."/wap/lmo-adminwap_login.php");
 }
 echo("</wml>\n");
