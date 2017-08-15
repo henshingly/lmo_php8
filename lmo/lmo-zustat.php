@@ -451,7 +451,7 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
           $counteranz1 = $counteranz1+1;
         }
         $setztemp1 = $htorreicht1+$htorreicht2;
-        $setztemp2 = (int)$goala[$y1-1][$i1]+$goalb[$y1-1][$i1];
+        $setztemp2 = (int)$goala[$y1-1][$i1]+(int)$goalb[$y1-1][$i1];
         if ($setztemp1 == $setztemp2) {
           $counteranz5 = $counteranz5+1;
         }
