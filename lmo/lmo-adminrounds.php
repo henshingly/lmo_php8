@@ -54,7 +54,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
     reset ($_POST);
     $changesFound = False;
     foreach ($_POST as $k=>$v) {
-      $array = split('_',$k);
+      $array = preg_split('#_#',$k);
       if (isset($array) and count($array)==4 and ($array[0] == 'sp') and ($array[1] != $v)) {
         $alteSpielTagNr = $array[1];
         $neueSpielTagNr = $v;
@@ -154,7 +154,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         } // if
       }   // foreach ($liga->teams as $team)
     }
-    // teamnummern die an einem spieltag antreten. für eine js-Funktion, die verhindert
+    // teamnummern die an einem spieltag antreten. fÃ¼r eine js-Funktion, die verhindert
     // das ein team mehrmals an einem spieltag antreten muss js-funktion muss noch gebaut werden
     //  echo "<input type='hidden' name='sptext_".$spTag->nr."' value='".implode(",",$teamArray)."'>";
   }      // foreach ($spTag->partien as $partie)
