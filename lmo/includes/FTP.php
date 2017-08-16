@@ -28,7 +28,7 @@
 /**
  * Include PEAR.php to obtain the PEAR base class
  */
-require_once 'PEAR.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/includes/PEAR.php';
 
 /**
  * Option to let the ls() method return only files.
