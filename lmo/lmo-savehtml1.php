@@ -7,11 +7,11 @@
  * folgende Zeile hinzugefügt werden:
  *
  *  include(PATH_TO_LMO."/lmo-savehtml1.php");
- * 
+ *
  *
  * Autor: Bernd Hoyer, basierend auf dem LMO3.02
  * Verbesserungen, Bugs etc. bitte nur in das Forum bei Hollwitz.net
- * 
+ *
  */
 
 
@@ -42,7 +42,7 @@ if($lmtype==0){
   <title><?php echo $titel?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <style type="text/css">
-   body {background:#fff; color:#000; font: sans-serif 10pt;padding:auto;}
+   body {background:#fff; color:#000; font: 10pt sans-serif;padding:auto;}
    caption, p, h1 {margin: 3pt auto; text-align:center;}
    table {margin:auto; max-width:200mm;}
    #tabelle{border:1pt solid #000;}
@@ -84,11 +84,12 @@ if($lmtype==0){
     			}
     			// * Spielfrei-Hack-Ende1- Autor: Bernd Hoyer - eMail: info@salzland-info.de
     			if($mterm[$y1-1][$i1]>0){$dum1=strftime($datf, $mterm[$y1-1][$i1]);}else{$dum1="";} // Anstosszeit einblenden
-			?>	   	   <tr>
+			?>
+ 	   <tr>
        <td><?php echo $dum1?>&nbsp;</td>
-       <td align="right"><?php echo $heimteam?></td>
+       <td align="right"><?php echo $heimteam?></td><td><?php echo HTML_icon($heimteam, 'teams');?></td>
        <td>-</td>
-       <td><?php echo $gastteam?>&nbsp;</td>
+       <td><?php echo HTML_icon($gastteam, 'teams');?></td><td><?php echo $gastteam?>&nbsp;</td>
        <td align="right"><?php echo $heimtore?></td>
        <td>:</td>
        <td align="left"><?php echo $gasttore?></td><?php
@@ -104,19 +105,18 @@ if($lmtype==0){
 		}
     if (!empty($z)) {?>
 	</table>
-  <?php
-    }
+  <?php }
     if (($anzteams-($anzst/2+1))!=0){
 			$spielfreicc=array_merge($spielfreiaa,$spielfreibb);
 			unset($spielfreiaa);
 			unset($spielfreibb);
-      $i=1;
-      for ($j=1;$j<$anzteams+1;$j++) {
+			$i=1;
+			for ($j=1;$j<$anzteams+1;$j++) {
 			if (!in_array($j,$spielfreicc)) {
 			  if ($i==1) {?>
 				<p><small><?php echo $text[4004]?>: <?php
         }
-			  echo $teams[$j]?>&nbsp;&nbsp;<?php
+        echo $teams[$j]?>&nbsp;&nbsp;<?php
 			  $i++;
 		  }
 		}?>
@@ -133,13 +133,14 @@ if($lmtype==0){
  		<tr>
       <th>&nbsp;</th>
       <th>&nbsp;</th>
+      <th>&nbsp;</th>
       <th><?php echo $text[33]?></th>
       <th><?php echo $namepkt?></th>
       <th>&nbsp;</th>
       <th><?php echo $nametor?>&nbsp;</th>
       <th align="right" >&nbsp;&nbsp;<?php echo $text[39]?></th>
     </tr><?php
-    
+
     for ($i1=0;$i1<$anzteams;$i1++){
 			$platz=$i1+1;
 			$i4=(int)substr($table1[$i1],35,7);
@@ -151,8 +152,10 @@ if($lmtype==0){
 			$minustore=applyFactor($atore[$i4],$goalfaktor);
 			$torverhaeltnis=applyFactor($dtore[$i4],$goalfaktor);
 			$spieleteam=$spiele[$i4];?>
-					  		<tr>
+
+		<tr>
        <td align="right"><?php echo $platz?>&nbsp;</td>
+	   <td><?php echo HTML_icon($teamname, 'teams');?>&nbsp;</td>
        <td><?php echo $teamname?>&nbsp;</td>
        <td align="right"><?php echo $spieleteam?>&nbsp;</td>
        <td align="right"><?php echo $pluspunkte?>
@@ -169,12 +172,10 @@ if($lmtype==0){
 		}?>
   </table>
   <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
-  
 </body>
-</html><?php
-  }
-  fwrite($wmlfile,ob_get_contents());
+</html><?php }
+    fwrite($wmlfile,ob_get_contents());
     ob_end_clean();
-		fclose($wmlfile);
-  }
+    fclose($wmlfile);
+}
 ?>
