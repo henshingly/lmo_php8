@@ -43,7 +43,7 @@ if($lmtype==0 && $st>0){
   <title><?php echo $titel?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <style type="text/css">
-    body {background:#fff; color:#000; font: sans-serif 10pt; max-width:200mm;max-height:285mm;}
+    body {background:#fff; color:#000; font: 10pt sans-serif; max-width:200mm;max-height:285mm;}
     caption, p, h1 {margin: 3pt auto; text-align:center;}
     table {border:1pt solid #000;margin: 2pt auto;}
     td {padding: 0;white-space:nowrap;}
@@ -58,11 +58,11 @@ if($lmtype==0 && $st>0){
 <body>
   <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
 
-  <h1><?php echo $titel?></h1><?php 
+  <h1><?php echo $titel?></h1><?php
   $z=array_filter($teama[$st-1],"filterZero");
   if (!empty($z)) {?>
   <table>
-    <caption><?php echo $actual?>. <?php echo $text[2]?> <?php if ($datum1[$datumanz]!='') { echo ' - '.$datum1[$datumanz].' '.$text[4].' '.$datum2[$datumanz];}?></caption><?php 
+    <caption><?php echo $actual?>. <?php echo $text[2]?> <?php if ($datum1[$datumanz]!='') { echo ' - '.$datum1[$datumanz].' '.$text[4].' '.$datum2[$datumanz];}?></caption><?php
     $datsort= $mterm[$st-1];
     asort($datsort);
     reset($datsort);
@@ -87,22 +87,22 @@ if($lmtype==0 && $st>0){
       ?>
       <tr>
         <td><?php echo $dum1?>&nbsp;</td>
-        <td align="right"><?php echo $heimteam?></td>
+        <td align="right"><?php echo $heimteam?></td><td><?php echo HTML_icon($heimteam, 'teams');?></td>
         <td>-</td>
-        <td><?php echo $gastteam?>&nbsp;</td>
+        <td><?php echo HTML_icon($gastteam, 'teams');?></td><td><?php echo $gastteam?>&nbsp;</td>
         <td align="right"><?php echo $heimtore?></td>
         <td>:</td>
-        <td align="left"><?php echo $gasttore?></td><?php 
+        <td align="left"><?php echo $gasttore?></td><?php
         if ($msieg[$actual-1][$i1]==3){ ?>
         <td width="2">/</td>
         <td align="right"><?php echo $gasttore?></td>
         <td align="center" width="8">:</td>
-        <td align="left"><?php echo $heimtore?></td><?php 
+        <td align="left"><?php echo $heimtore?></td><?php
         }?>
-      </tr><?php 
+      </tr><?php
       }
     }?>
-    </table><?php 
+    </table><?php
 
     if (($anzteams-($anzst/2+1))!=0){
       $spielfreicc=array_merge($spielfreiaa,$spielfreibb);
@@ -110,13 +110,13 @@ if($lmtype==0 && $st>0){
       for ($j=1;$j<$anzteams+1;$j++) {
         if (!in_array($j,$spielfreicc)) {
           if ($i==1) {?>
-      <p><small><?php echo $text[4004]?>: <?php 
+      <p><small><?php echo $text[4004]?>: <?php
           }
-          echo $teams[$j]?>&nbsp;&nbsp;<?php 
+          echo $teams[$j]?>&nbsp;&nbsp;<?php
           $i++;
         }
       }?>
-      </small></p><?php 
+      </small></p><?php
     }
   }//if empty?>
   <table>
@@ -124,12 +124,13 @@ if($lmtype==0 && $st>0){
     <tr>
       <th>&nbsp;</th>
       <th>&nbsp;</th>
+      <th>&nbsp;</th>
       <th><?php echo $text[33]?></th>
       <th><?php echo $namepkt?></th>
       <th>&nbsp;</th>
       <th><?php echo $nametor?>&nbsp;</th>
       <th align="right" >&nbsp;&nbsp;<?php echo $text[39]?></th>
-    </tr><?php 
+    </tr><?php
 
     for ($i1=0;$i1<$anzteams;$i1++){
       $platz=$i1+1;
@@ -145,29 +146,30 @@ if($lmtype==0 && $st>0){
 
     <tr>
       <td align="right"><?php echo $platz?>&nbsp;</td>
+      <td><?php echo HTML_icon($teamname, 'teams');?>&nbsp;</td>
       <td><?php echo $teamname?>&nbsp;</td>
       <td align="right"><?php echo $spieleteam?>&nbsp;</td>
       <td align="right"><?php echo $pluspunkte?>
      <?php if ($minus==2) {
      ?>:</td>
-       <td align="left"><?php echo $minuspunkte?>&nbsp;<?php 
+       <td align="left"><?php echo $minuspunkte?>&nbsp;<?php
       }else{?>
        </td>
-       <td align="left">&nbsp;<?php 
+       <td align="left">&nbsp;<?php
       }?>
        <td align="right"><?php echo "$plustore:$minustore"?>&nbsp;</td>
        <td align="right">&nbsp;&nbsp;<?php echo $torverhaeltnis?></td>
-     </tr><?php 
+     </tr><?php
     }?>
    </table>
    <p><small><?php echo $text[576];?></small></p><?php 
     if ($actual==$anzst){?>
-    <p><strong><?php echo $text[568]?></strong></p><?php 
+    <p><strong><?php echo $text[568]?></strong></p><?php
     }else{
       $z=array_filter($teama[$st-1],"filterZero");
       if (!empty($z)) {?>
   <table>
-    <caption><?php echo $actual+1?>. <?php echo $text[2]?><?php if ($datum1[$actual]!='') { echo ' - '.$datum1[$actual].' '.$text[4].' '.$datum2[$actual];}?></caption><?php 
+    <caption><?php echo $actual+1?>. <?php echo $text[2]?><?php if ($datum1[$actual]!='') { echo ' - '.$datum1[$actual].' '.$text[4].' '.$datum2[$actual];}?></caption><?php
         $datsort= $mterm[$actual];
         asort($datsort);
         reset($datsort);
@@ -192,43 +194,45 @@ if($lmtype==0 && $st>0){
     ?>
     <tr>
       <td><?php echo $dum1?>&nbsp;</td>
-      <td><?php echo $heimteam?></td>
+      <td align="right"><?php echo $heimteam?></td><td><?php echo HTML_icon($heimteam, 'teams');?></td>
       <td>-</td>
-      <td><?php echo $gastteam?>&nbsp;</td>
+      <td><?php echo HTML_icon($gastteam, 'teams');?></td><td><?php echo $gastteam?>&nbsp;</td>
       <td align="right"><?php echo $heimtore?></td>
       <td>:</td>
-      <td align="left"><?php echo $gasttore?></td><?php 
+      <td align="left"><?php echo $gasttore?></td><?php
             if ($msieg[$actual][$i1]==3){ ?>
         <td width="2">/</td>
         <td align="right"><?php echo $gasttore?></td>
         <td align="center" width="8">:</td>
-        <td align="left"><?php echo $heimtore?></td><?php 
+        <td align="left"><?php echo $heimtore?></td><?php
             }?>
-    </tr><?php 
+    </tr><?php
           }
         }?>
-  </table><?php 
+  </table><?php
         if (($anzteams-($anzst/2+1))!=0){
           $spielfreicc=array_merge($spielfreiaa,$spielfreibb);
           $i=1;
           for ($j=1;$j<$anzteams+1;$j++) {
             if (!in_array($j,$spielfreicc)) {
               if ($i==1) {?>
-           <p><small><?php echo $text[4004]?>: <?php 
+           <p><small><?php echo $text[4004]?>: <?php
               }
-              echo $teams[$j]?>&nbsp;&nbsp;<?php 
+              echo $teams[$j]?>&nbsp;&nbsp;<?php
               $i++;
             }
           }?>
-  </small></p><?php 
+  </small></p><?php
         }
       }//if empty
     }?>
   <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
 </body>
-</html><?php 
+</html><?php
     fwrite($wmlfile,ob_get_contents());
     ob_end_clean();
     fclose($wmlfile);
   }
 }
+
+?>
