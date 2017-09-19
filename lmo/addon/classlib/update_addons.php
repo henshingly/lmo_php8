@@ -41,13 +41,6 @@ function updateAddons($fileName) {
   }
   // ZUSTAT
 
-  // ADDON: MINITAB
-  //Minitabellen-CSV generieren
-  if ($lmtype==0) {
-    include(PATH_TO_ADDONDIR."/mini/lmo-minitab_save.php");
-  }
-  // ADDON: MINITAB
-
   // ADDON: TIPPSPIEL
   //Ermittelt, ob die Liga getippt werden darf
   $ftest0 = 1;
