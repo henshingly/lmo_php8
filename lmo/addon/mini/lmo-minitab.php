@@ -24,7 +24,7 @@ require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 //4-stufiges Fallback für diese Variablen
 //1.GET-Parameter(IFRAME)->2.Variable vorhanden(include)->3.Configwert->4. Standardwert
 $m_template = !empty($_GET['mini_template'])? str_replace('..','',$_GET['mini_template']):
-                (isset($mini_template)? str_replace('..','',$mini_template):$cfgarray['mini']['tabelle_standardTemplate'] );
+                (isset($mini_template)? str_replace('..','',$mini_template):$cfgarray['mini']['standardTemplate'] );
 if (!is_readable(PATH_TO_TEMPLATEDIR."/mini/$m_template.tpl.php") ) $m_template = "standard";
 
 $m_liga = !empty($_GET['mini_liga'])? urldecode($_GET['mini_liga']):
@@ -213,6 +213,7 @@ if (empty($CacheOutput)) {
     $template->setVariable("URL_TO_LMO", URL_TO_LMO);
     $template->setVariable("URL_TO_TEMPLATEDIR", URL_TO_TEMPLATEDIR."/mini/");
     $template->setVariable("Link", URL_TO_LMO.'/?action=table&amp;file='.$m_liga);
+    $template->setVariable("Tabelle",$text[16]);
     // cache File schreiben
     if ( is_writable(dirname($TableCacheFile)) && $cfgarray['mini']['CacheTable'] == 1 ) {
       $CacheOutput = filemtime(PATH_TO_LMO.'/'.$dirliga.$m_liga)."-".$m_template."|$m_ueber|$m_unter|$m_platz\n".$template->get();
