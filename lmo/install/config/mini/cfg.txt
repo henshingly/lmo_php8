@@ -3,3 +3,7 @@ unGreedy=1
 barWidth=120
 standardTemplate=mininext.tpl.php
 cache_refresh=0
+CacheTable=
+TendenzPfeilUpImg=lmo-tab1.gif
+TendenzPfeilDownImg=lmo-tab2.gif
+TendenzPunktImg=lmo-tab0.gif
