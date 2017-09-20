@@ -118,8 +118,8 @@ if (!file_exists($einsichtfile)) {
     // Spieltagsnummer
     $op4 = substr($dum[1], 0, 2);
     // TP
-    $op6 = substr($dum[1], 2, -1)-1;
-    $op7 = substr($dum[1], -1)-1;
+    $op6 = (int)substr($dum[1], 2, -1)-1;
+    $op7 = (int)substr($dum[1], -1)-1;
     $op8 = $dum[3];
     if ($tippernick[$t] != $op1) {
       if ($tippernick[$t] != "") {
