@@ -18,7 +18,7 @@
   */
   
   
-// Tipp noch änderbar oder nicht
+// Tipp noch Ã¤nderbar oder nicht
 
 function tippaenderbar($mterm0, $datum1, $datum2) {
   global $plus; // eine Minute Sicherheitsabstand zwischen Seitenaufruf und abspeichern

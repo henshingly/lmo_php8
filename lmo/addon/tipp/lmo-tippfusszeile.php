@@ -31,7 +31,7 @@ if(!isset($nw)){
     echo "<strong>".$text['tipp'][89].":</strong><br>"; /// Zeichenerklaerung
     if ($wertung == "team") {
       echo $text['tipp'][119].": ".$text['tipp'][120]."&nbsp;&nbsp;&nbsp;<br>"; // AT
-      echo $text['tipp'][119]."Ø: ".$text['tipp'][208]."&nbsp;&nbsp;&nbsp;<br>"; // AT
+      echo $text['tipp'][119]."Ã˜: ".$text['tipp'][208]."&nbsp;&nbsp;&nbsp;<br>"; // AT
     }
     echo $text['tipp'][123].": ".$text['tipp'][117]."&nbsp;&nbsp;&nbsp;<br>"; // SG
     if ($tipp_showstsiege == 1) {
@@ -39,7 +39,7 @@ if(!isset($nw)){
     } // GS
     echo $text['tipp'][123];
     if ($tipp_tippmodus == 1) {
-      echo "Ø: ".$text['tipp'][124];
+      echo "Ã˜: ".$text['tipp'][124];
     } else {
       echo "%: ".$text['tipp'][125];
     }

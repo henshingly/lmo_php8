@@ -313,7 +313,7 @@ if($newpage!=1){ ?>
             <td align="center" colspan="3"><input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text['tipp'][11]; ?>"></td>
           </tr>
           <tr>
-            <td align="left" class="lmoFooter" colspan="3"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp"; ?>" title="<?php echo $text['tipp'][110]; ?>">« <?php echo $text['tipp'][110]; ?></a></td>
+            <td align="left" class="lmoFooter" colspan="3"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp"; ?>" title="<?php echo $text['tipp'][110]; ?>">Â« <?php echo $text['tipp'][110]; ?></a></td>
           </tr>
         </table>
       </form>
@@ -335,7 +335,7 @@ if($newpage==1){ // Anmeldung erfolgreich
           <td align="center"><?php echo getMessage($text['tipp'][20]); ?></td>
         </tr>
         <tr>
-          <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=tipp&amp;todo=logout&amp;">« <?php echo $text['tipp'][21]; ?></a></td>
+          <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=tipp&amp;todo=logout&amp;">Â« <?php echo $text['tipp'][21]; ?></a></td>
         </tr>
       </table>
     </td>

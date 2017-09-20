@@ -78,7 +78,7 @@ if (($action == "tipp") && ($todo == "newligen")) {
     <td align="center"><?php echo getMessage($text['tipp'][20]); ?></td>
   </tr><?php  }
   
-  if($newpage==1 || $i==0){ /* zurück zur Übersicht */?>
+  if($newpage==1 || $i==0){ /* zurÃ¼ck zur Ãœbersicht */?>
   <tr>
     <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?php echo $text[5]." ".$text['tipp'][1]; ?></a></td>
   </tr><?php  }?>    

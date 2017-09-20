@@ -228,7 +228,7 @@ if( $wertung=="einzel"  || $wertung=="intern"){
   }
 } else { /* Teamwertung*/?>
           <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][120]?>"><?php echo $text['tipp'][26]; /* Anzahl Tipper*/ ?></acronym>&nbsp;</th>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][208]?>"><?php echo $text['tipp'][26]."Ø"; /* Anzahl Tipper Durchschnitt*/ ?></acronym>&nbsp;</th><?php }?>
+          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][208]?>"><?php echo $text['tipp'][26]."Ã˜"; /* Anzahl Tipper Durchschnitt*/ ?></acronym>&nbsp;</th><?php }?>
           <th class="nobr" <?php echo $dummy; ?>>&nbsp;<acronym title="<?php echo $text['tipp'][117]?>"><?php if($gewicht!="spiele"){
   echo "<a href=\"".$addt5."spiele\">";
 }
@@ -259,7 +259,7 @@ if($tipp_showstsiege==1){ ?>
   echo "<a href=\"".$addt5."relativ\">";
 }
 if ($tipp_tippmodus == 1) {
-  echo $text['tipp'][123]."Ø";
+  echo $text['tipp'][123]."Ã˜";
 } else {
   echo $text['tipp'][123]."%";
 }

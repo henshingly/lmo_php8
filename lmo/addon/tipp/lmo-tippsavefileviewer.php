@@ -82,7 +82,7 @@ if ($tippfile != "") {
           }
         }
         if ($k == ($i+1) && $jksave == 0 && substr($daten[$l+1], 0, 1) == "@") {
-          // Joker von nicht getippten Spieltag zurückschreiben
+          // Joker von nicht getippten Spieltag zurÃ¼ckschreiben
           $l++;
           fputs($datei, $daten[$l]."\n");
           $jksave = 1;
@@ -91,7 +91,7 @@ if ($tippfile != "") {
         for($k = $start1; $k <= $i; $k++) {
           $sp = substr($daten[$l], 2, strpos($daten[$l], "=")-2);
           if ($sp == $spiel[$k] && $round == $spieltag[$k]) {
-            break; // nicht zurückschreiben
+            break; // nicht zurÃ¼ckschreiben
           }
         }
         if ($k == ($i+1)) {

@@ -63,7 +63,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
     array_shift($dummy);
     $anztippfiles = count($dummy);
     for($k = 0; $k < $anztippfiles; $k++) {
-      @unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k]); // Tipps löschen
+      @unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k]); // Tipps lÃ¶schen
     }
      
     for($i = $del+1; $i < count($users); $i++) {

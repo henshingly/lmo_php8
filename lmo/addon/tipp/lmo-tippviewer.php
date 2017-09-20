@@ -301,7 +301,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           <th class="nobr" colspan="<?php  if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>"><?php echo $text['tipp'][188]; /* Tipptendenz absolut */?></th><?php      }
       if($tipp_tippmodus==1){ 
         if($tipp_showdurchschntipp==1){ ?>
-          <th class="nobr" colspan="2"><?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp */?><br><?php 
+          <th class="nobr" colspan="2"><?php echo "Ã˜-".$text['tipp'][30]; /* DurchschnittsTipp */?><br><?php 
           if ($goalfaktor[$i]!=1) {
             echo "(".$text[553+log10($goalfaktor[$i])].")";
           }?></th><?php        }?>
@@ -577,11 +577,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         
             $lmo_spielnotiz.=" ".$mspez[$i];
         
-          //Grüner Tisch: Heimteam siegt
+          //GrÃ¼ner Tisch: Heimteam siegt
           if ($msieg[$i]==1) {
             $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".$teams[$teama[$i]]." ".$text[211];
           }
-          //Grüner Tisch: Gastteam siegt
+          //GrÃ¼ner Tisch: Gastteam siegt
           if ($msieg[$i]==2) {
             $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($teams[$teamb[$i]]." ".$text[211]);
           }

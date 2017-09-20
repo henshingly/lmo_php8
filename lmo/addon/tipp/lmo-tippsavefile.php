@@ -62,7 +62,7 @@ if ($tippfile != "") {
         $round = substr($daten[$i], 6, -1);
       }
       if ($round != $st) {
-        //////////// nur die unveränderten Spieltage werden zurückgeschrieben
+        //////////// nur die unverÃ¤nderten Spieltage werden zurÃ¼ckgeschrieben
         fputs($datei, $daten[$i]."\n");
       }
     }

@@ -203,7 +203,7 @@ if ($file!="") {
   if (!isset($hidr)) {
     $hidr=0;
   }
-  //  if($lmtype==1 && $modus[$st-1]!=2){$hidr=1;} // bei KO-Turnier außer bei Hin- und Rückspiel keinen Remistipp zulassen
+  //  if($lmtype==1 && $modus[$st-1]!=2){$hidr=1;} // bei KO-Turnier auÃŸer bei Hin- und RÃ¼ckspiel keinen Remistipp zulassen
   if ($hidr==1) {
     $breite--;
   }
@@ -280,7 +280,7 @@ if ($file!="") {
   if($tipp_tippmodus==1){  
     if($tipp_showdurchschntipp==1){ ?>
             <th class="nobr" align="center" colspan="2">
-            <?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
+            <?php echo "Ã˜-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
             </th><?php
     } ?>
             <th class="nobr" align="center" colspan="<?php  if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">

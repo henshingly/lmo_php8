@@ -247,7 +247,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
             if ($nick == $tippernick1) {
               $dat++;
               while ($dat < count($datenalt) && $nick == $tippernick1) {
-                //////////// nur die unveränderten Spieltage werden zurückgeschrieben
+                //////////// nur die unverÃ¤nderten Spieltage werden zurÃ¼ckgeschrieben
                 if ((substr($datenalt[$dat], 0, 1) == "[") && (substr($datenalt[$dat], -1) == "]")) {
                   $nick = substr($datenalt[$dat], 1, -1);
                 } else {
@@ -334,7 +334,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
     } // ende if($l>=$start-1 && $l<=$ende-1)
     else
       {
-      // nicht ausgewertete Tipper zurück schreiben
+      // nicht ausgewertete Tipper zurÃ¼ck schreiben
       $nick = "";
       for($i = 0; $i < count($datenalt); $i++) {
         $zeile = $datenalt[$i];

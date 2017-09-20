@@ -51,7 +51,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
         $nick = substr($daten[$i], 1, -1);
       }
       if ($nick != $_SESSION['lmotippername']) {
-        //////////// nur die unveränderten Tipps werden zurückgeschrieben
+        //////////// nur die unverÃ¤nderten Tipps werden zurÃ¼ckgeschrieben
         fputs($datei, $daten[$i]."\n");
       }
     }

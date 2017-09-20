@@ -51,7 +51,7 @@ if ($_SESSION["lmouserok"] == 2) {
       closedir($verz);
       $anztippfiles = count($dummy);
       for($k = 0; $k < $anztippfiles; $k++) {
-        @unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k]); // Tipps lφschen
+        @unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k]); // Tipps lΓ¶schen
       }
        
       for($i = $del+1; $i < count($users); $i++) {
@@ -217,8 +217,8 @@ function cmp ($a1, $a2) {
     if ($a2[$tipper_sort]==$a1[$tipper_sort]) return 0;
     return ($a1[$tipper_sort]>$a2[$tipper_sort]) ? 1 : -1;
   }else{ //Stringvergleich
-    $a1[$tipper_sort]=strtr($a1[$tipper_sort],"¥µΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέίΰαβγδεζηθικλμνξοπρςστυφψωϊϋόύÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
-  	$a2[$tipper_sort]=strtr($a2[$tipper_sort],"¥µΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέίΰαβγδεζηθικλμνξοπρςστυφψωϊϋόύÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+    $a1[$tipper_sort]=strtr($a1[$tipper_sort],"Β¥ΒµΓ€ΓΓ‚ΓƒΓ„Γ…Γ†Γ‡ΓΓ‰ΓΓ‹ΓΓΓΓΓΓ‘Γ’Γ“Γ”Γ•Γ–ΓΓ™ΓΓ›ΓΓΓΓ Γ΅ΓΆΓ£Γ¤Γ¥Γ¦Γ§Γ¨Γ©ΓªΓ«Γ¬Γ­Γ®Γ―Γ°Γ±Γ²Γ³Γ΄ΓµΓ¶ΓΈΓΉΓΊΓ»ΓΌΓ½ΓΏ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+  	$a2[$tipper_sort]=strtr($a2[$tipper_sort],"Β¥ΒµΓ€ΓΓ‚ΓƒΓ„Γ…Γ†Γ‡ΓΓ‰ΓΓ‹ΓΓΓΓΓΓ‘Γ’Γ“Γ”Γ•Γ–ΓΓ™ΓΓ›ΓΓΓΓ Γ΅ΓΆΓ£Γ¤Γ¥Γ¦Γ§Γ¨Γ©ΓªΓ«Γ¬Γ­Γ®Γ―Γ°Γ±Γ²Γ³Γ΄ΓµΓ¶ΓΈΓΉΓΊΓ»ΓΌΓ½ΓΏ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
   	return  strnatcasecmp($a1[$tipper_sort],$a2[$tipper_sort]);
   }
 }

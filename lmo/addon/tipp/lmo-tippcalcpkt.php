@@ -19,7 +19,7 @@
   
   
 function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jkspfaktor0, $mtipp) {
-  // wieviel Punkte gibts für den Tipp
+  // wieviel Punkte gibts fÃ¼r den Tipp
    
   global $tipp_tippmodus;
   global $tipp_entscheidungnv;
