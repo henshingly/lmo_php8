@@ -116,7 +116,7 @@ if (!file_exists($auswertfile)) {
     $dum = explode('|', $tippdaten[$i-1]);
     $op1 = $dum[0];
     // Nick
-    $op3 = substr($dum[1], 2)-1;
+    $op3 = (int)substr($dum[1], 2)-1;
     // Spieltagsnummer
     $op4 = substr($dum[1], 0, 2);
     // TP
@@ -182,7 +182,7 @@ if (!file_exists($auswertfile)) {
             $tt .= (50000000+$spielegetippt[$a][$i]);
           } elseif($tipp_showzus == 1) {
             if ($tipp_krit == 2) {
-              $tt .= (50000000+$punkte1[$a][$i]);
+              $tt .= (50000000+(int)$punkte1[$a][$i]);
             } elseif($tipp_krit == 3) {
               $tt .= (50000000+$punkte2[$a][$i]);
             } elseif($tipp_krit == 4) {
