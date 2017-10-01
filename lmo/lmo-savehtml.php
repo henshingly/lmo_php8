@@ -41,7 +41,7 @@ if($lmtype==0 && $st>0){
 <html>
 <head>
   <title><?php echo $titel?></title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+  <meta http-equiv="Content-Type" content="text/html; charset="utf-8" >
   <style type="text/css">
     body {background:#fff; color:#000; font: 10pt sans-serif; max-width:200mm;max-height:285mm;}
     caption, p, h1 {margin: 3pt auto; text-align:center;}
