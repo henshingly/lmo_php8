@@ -298,6 +298,7 @@ if ($tipp_jokertipp==1){ ?>
     }
     echo "<a href='#' onclick=\"alert('".$alert."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
     $lmo_spielnotiz="";
+    $alert="";
   } else {
     echo "&nbsp;";
   }
