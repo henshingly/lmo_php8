@@ -145,7 +145,7 @@ $lang=array(
 <html lang="<?php echo $lang[$userlang]['LANG'];?>">
 <head>
 <title><?php echo $lang[$userlang]['HEADER'];?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<meta http-equiv="Content-Type" content="text/html; charset="utf-8" >
 <style type="text/css">
   body {
         max-width : 55em;
