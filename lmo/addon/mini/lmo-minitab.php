@@ -48,7 +48,7 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 <html>
 <head>
 <title>Minitab</title>
-<meta http-equiv="Content-Type" content="text/html; charset="utf-8" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 <style type="text/css">
   html,body {margin:0;padding:0;background:transparent;}
 </style>
