@@ -27,7 +27,7 @@ isset($_GET['feld'])?$feld=$_GET['feld']:$feld="";
 <html lang="de">
 <head>
 <title>LMO Admin</title>
-<meta http-equiv="Content-Type" content="text/html; charset="utf-8" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 <style type="text/css">
 body{font-size:81%;font-family:sans-serif;}
 table.caltab { font-size:91%;width:160px; border:1px solid grey; background-color:#ddd; padding:2px; margin:0;}
