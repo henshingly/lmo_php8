@@ -1,4 +1,4 @@
-<?php
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -60,7 +60,7 @@ if($file!=""){
   }
 }
 
-//Alle Teile für die Startansicht
+//Alle Teile fÃ¼r die Startansicht
 $output_titel="";
 $output_sprachauswahl="";
 $output_kalender="";
@@ -82,8 +82,8 @@ $p1="";
 
 if (!defined("LMO_TEMPLATE")) define("LMO_TEMPLATE","lmo-standard.tpl.php");
 
-//Wenn ein Template der Form [liganame].tpl.php existiert, wird dieses benutzt. Das ermöglicht
-// die Nutzung verschiedener Templates für unterschiedliche Ligen
+//Wenn ein Template der Form [liganame].tpl.php existiert, wird dieses benutzt. Das ermÃ¶glicht
+// die Nutzung verschiedener Templates fÃ¼r unterschiedliche Ligen
 $template = new HTML_Template_IT( PATH_TO_TEMPLATEDIR );
 if (file_exists(PATH_TO_TEMPLATEDIR.'/'.basename($file).".tpl.php")){
   $template->loadTemplatefile(basename($file).".tpl.php");
@@ -115,7 +115,7 @@ if ($einsprachwahl==1){
 ob_start();
 if ($file!="") {
 
-  //Für normale Ligen
+  //FÃ¼r normale Ligen
   if($lmtype==0){
 
     //Kalenderlink
@@ -240,7 +240,7 @@ if ($file!="") {
   }
 }
 
-//Ligenübersicht
+//LigenÃ¼bersicht
 if($backlink==1 && ($file!="" || $action=="tipp")){
   if (basename($file)==$file) {
     $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF']."' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
