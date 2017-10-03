@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -76,7 +76,7 @@ require(PATH_TO_LMO."/lmo-langload.php");
 
 //Functions
 require_once(PATH_TO_LMO."/lmo-functions.php");
-//Übergang Classlib
+//Ãœbergang Classlib
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 //Template System
 require_once(PATH_TO_LMO."/includes/IT.php");
