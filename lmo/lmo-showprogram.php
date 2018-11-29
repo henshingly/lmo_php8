@@ -127,11 +127,11 @@ if($file!=""){
             if ($spez==1) {
               $lmo_spielnotiz.=" ".$mspez[$j][$i];
             }
-//Grüner Tisch: Heimteam siegt
+//GrÃ¼ner Tisch: Heimteam siegt
             if ($msieg[$j][$i]==1) {
               $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".$teams[$teama[$j][$i]]." ".$text[211];
             }
-//Grüner Tisch: Gastteam siegt
+//GrÃ¼ner Tisch: Gastteam siegt
             if ($msieg[$j][$i]==2) {
               $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($teams[$teamb[$j][$i]]." ".$text[211]);
             }
@@ -143,7 +143,7 @@ if($file!=""){
             if ($mnote[$j][$i]!="") {
               $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$j][$i];
             }
-            echo "<a href='#' onclick=\"alert('".mysql_escape_string(htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+            echo "<a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
             $lmo_spielnotiz="";
           } else {
             echo "&nbsp;";
