@@ -308,7 +308,7 @@ for($n=0;$n<$modus[$st-1];$n++){
     if ($mtipp[$st-1][$i][$n] == 1) {
       $lmo_spielnotiz.="\n\n".$text['tipp'][231];
     }
-    echo "<a href='#' onclick=\"alert('".mysql_escape_string(htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+    echo "<a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
     $lmo_spielnotiz="";
   } else {
     echo "&nbsp;";
