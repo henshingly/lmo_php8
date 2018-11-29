@@ -48,7 +48,7 @@ if ($einhinrueck==1 || $einheimausw==1) {
   }
 }?>
   </caption><?php
-/*Inklusive Heim & Auswärts*/
+/*Inklusive Heim & AuswÃ¤rts*/
 if($tabonres==2){?>
   <tr>
     <th align="left" colspan="7"><?php echo $tabdat; ?>&nbsp;</th>
@@ -210,7 +210,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     if ($teamn[$i]!="") {
       $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong> ".$teamn[$i];
     }?>
-      <a href='#' onclick="alert('<?php echo mysql_escape_string(htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
+      <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
     $lmo_tabellennotiz="";
   } else {
     echo "&nbsp;";
