@@ -186,7 +186,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     $lmo_tabellennotiz.=" <strong>".$teams[$i]."</strong>";
     //Straf-/Bonuspunkte
     if ($strafp[$i]!=0 || $strafm[$i]!=0) {
-      $lmo_tabellennotiz.="\n\n<strong>".$text[128].":</strong> ";
+      $lmo_tabellennotiz.="\n\n<strong>".$text[128].":</strong>\n";
       //Punkte
       $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*applyFactor($strafp[$i],$pointsfaktor)):((-1)*applyFactor($strafp[$i],$pointsfaktor));
       //Minuspunkte
@@ -194,21 +194,21 @@ for($x = 1; $x <= $anzteams; $x++) {
         $lmo_tabellennotiz.=":".($strafm[$i]<0?"+".((-1)*applyFactor($strafm[$i],$pointsfaktor)):((-1)*applyFactor($strafm[$i],$pointsfaktor)));
       }
       //Ab ST
-      if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
+      if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[2]} {$strafdat[$i]})";
     }
     //Straf-/Bonustore
     if ($torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-      $lmo_tabellennotiz.="\n<strong>".$text[522].":</strong> ";
+      $lmo_tabellennotiz.="\n<strong>".$text[522].":</strong>\n";
       //Tore
       $lmo_tabellennotiz.=$torkorrektur1[$i]<0?"+".((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":":((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":";
       //Gegentore
       $lmo_tabellennotiz.=$torkorrektur2[$i]<0?"+".((-1)*applyFactor($torkorrektur2[$i],$goalfaktor)):((-1)*applyFactor($torkorrektur2[$i],$goalfaktor));
       //Ab ST
-      if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
+      if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[2]} {$strafdat[$i]})";
     }
     //Teamnotizen
     if ($teamn[$i]!="") {
-      $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong> ".$teamn[$i];
+      $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong>\n".$teamn[$i];
     }?>
       <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
     $lmo_tabellennotiz="";

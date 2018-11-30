@@ -593,6 +593,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           if ($mnote[$i]!="") {
             $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$i];
           }
+          //Notiz zum Tippspiel
           if ($mtipp[$i] == 1) {
             $lmo_spielnotiz.="\n\n".$text['tipp'][231];
           }

@@ -148,19 +148,19 @@ while (list ($key, $val) = each ($datsort)) {
       }
       //Grüner Tisch: Heimteam siegt
       if ($msieg[$st-1][$i]==1) {
-        $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".$teams[$teama[$st-1][$i]]." ".$text[211];
+        $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".$teams[$teama[$st-1][$i]]." ".$text[211];
       }
       //Grüner Tisch: Gastteam siegt
       if ($msieg[$st-1][$i]==2) {
-        $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);
+        $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);
       }
       //Beidseitiges Ergebnis
       if ($msieg[$st-1][$i]==3) {
-        $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($text[212]);
+        $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".addslashes($text[212]);
       }
       //Allgemeine Notiz
       if ($mnote[$st-1][$i]!="") {
-        $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i];
+        $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i];
       }
       echo " <a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
       $lmo_spielnotiz="";

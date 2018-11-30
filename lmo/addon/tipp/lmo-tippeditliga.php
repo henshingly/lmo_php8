@@ -278,20 +278,21 @@ if ($tipp_jokertipp==1){ ?>
     }
     //Grüner Tisch: Heimteam siegt
     if ($msieg[$st-1][$i]==1) {
-      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".$teams[$teama[$st-1][$i]]." ".$text[211];
+      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".$teams[$teama[$st-1][$i]]." ".$text[211];
     }
     //Grüner Tisch: Gastteam siegt
     if ($msieg[$st-1][$i]==2) {
-      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);
+      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);
     }
     //Beidseitiges Ergebnis
     if ($msieg[$st-1][$i]==3) {
-      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong> ".addslashes($text[212]);
+      $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".addslashes($text[212]);
     }
     //Allgemeine Notiz
     if ($mnote[$st-1][$i]!="") {
-      $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong> ".$mnote[$st-1][$i];
+      $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i];
     }
+    //Notiz zum Tippspiel
     if ($mtipp[$st-1][$i] == 1) {
       $lmo_spielnotiz.="\n\n".$text['tipp'][231];
     }
