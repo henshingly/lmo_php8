@@ -54,7 +54,7 @@
 053=Veuillez choisir votre ligue :
 054=Liga Manager Online 4
 055=© 1997-2019 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visitez notre page web">Page web</a> | <a href="https://www.vest-sport.de/file/infusions/forum/index.php?viewforum&forum_id=1" target="_blank" title="Aide pour LMO et ses extensions">Forum de support</a> | <a href="https://www.vest-sport.de/file/infusions/downloads/downloads.php?cat_id=1" target="_blank" title="Vous trouverez ici d&#39;autres ligues pour votre LigaManager">Liste de ligues</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visitez notre page web">Page web</a> | <a href="https://www.vest-sport.de/forum/?viewforum&forum_id=1" target="_blank" title="Aide pour LMO et ses extensions">Forum de support</a> | <a href="https://www.vest-sport.de/file/infusions/downloads/downloads.php?cat_id=1" target="_blank" title="Vous trouverez ici d&#39;autres ligues pour votre LigaManager">Liste de ligues</a> ]
 057=La statistique 1 de
 058=La statistique 2 de
 059=Pas d&#39;équipe de réserve
