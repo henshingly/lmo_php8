@@ -338,9 +338,9 @@ $lmo_dir = dirname(dirname(__FILE__));
 
 $path=str_replace('\\','/',$lmo_dir);
 if (strpos(dirname($_SERVER['SCRIPT_NAME']),"/install")!==FALSE) {
-  $url='http://'.$_SERVER['HTTP_HOST'].dirname(dirname($_SERVER['SCRIPT_NAME']));
+  $url=(isset($_SERVER['HTTPS'])?'https':'http').'://' . $_SERVER['HTTP_HOST'].dirname(dirname($_SERVER['SCRIPT_NAME']));
 } else {
-  $url='http://'.$_SERVER['HTTP_HOST'].dirname(($_SERVER['SCRIPT_NAME']));
+  $url=(isset($_SERVER['HTTPS'])?'https':'http').'://' . $_SERVER['HTTP_HOST'].dirname(($_SERVER['SCRIPT_NAME']));
 }
 
 
