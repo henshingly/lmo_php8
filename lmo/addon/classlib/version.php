@@ -41,6 +41,12 @@ $Path = PATH_TO_ADDONDIR;
           <td><?PHP echo phpversion();?></td>
         </tr>
         <tr>
+          <td>&nbsp</td>
+          <td>LMO_PHP7 Version</td>
+          <td>=</td>
+          <td>LigaManagerOnline 4.0.2 Release Candidat0.0.6</td>
+        </tr>
+        <tr>
           <td colspan=4 style='font-size=10pt;background-color=#FFFFFF;border-bottom-style:solid;border-width:1px;border-color:#000000'>&nbsp;</td>
         </tr>
         </table>
