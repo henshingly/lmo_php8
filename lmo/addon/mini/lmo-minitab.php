@@ -21,6 +21,7 @@
 require_once(dirname(__FILE__).'/../../init.php');
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 $cfgarray['mini']['classFavorit']='';
+$LastClass='';
 
 //4-stufiges Fallback für diese Variablen
 //1.GET-Parameter(IFRAME)->2.Variable vorhanden(include)->3.Configwert->4. Standardwert
