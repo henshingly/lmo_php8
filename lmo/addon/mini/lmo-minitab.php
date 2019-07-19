@@ -20,6 +20,7 @@
 
 require_once(dirname(__FILE__).'/../../init.php');
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
+$cfgarray['mini']['classFavorit']='';
 
 //4-stufiges Fallback für diese Variablen
 //1.GET-Parameter(IFRAME)->2.Variable vorhanden(include)->3.Configwert->4. Standardwert
@@ -48,7 +49,7 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 <html>
 <head>
 <title>Minitab</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 <style type="text/css">
   html,body {margin:0;padding:0;background:transparent;}
 </style>
@@ -179,13 +180,13 @@ if (empty($CacheOutput)) {
         } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']) ) {
           // Abstiegs Relegation
           $css_class =  isset($cfgarray['mini']['tabelle_classAbstiegsRelegation'])?$cfgarray['mini']['tabelle_classAbstiegsRelegation']:'';
-          $style = isset($cfgarray['lmo_tabelle_background6'])?"background: ".$cfgarray['lmo_tabelle_background6']." repeat;":'';
-          $style .= isset($cfgarray['lmo_tabelle_color6'])?"color: ".$cfgarray['lmo_tabelle_color6'].";":'';
+          $style = isset($cfgarray['lmo_tabelle_background5'])?"background: ".$cfgarray['lmo_tabelle_background5']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color5'])?"color: ".$cfgarray['lmo_tabelle_color5'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']-$liga->options->keyValues['AR']) ) {
           // Abstiegsplaetze
           $css_class =  isset($cfgarray['mini']['tabelle_classAbsteiger'])?$cfgarray['mini']['tabelle_classAbsteiger']:'';
-          $style = isset($cfgarray['lmo_tabelle_background5'])?"background: ".$cfgarray['lmo_tabelle_background5']." repeat;":'';
-          $style .= isset($cfgarray['lmo_tabelle_color5'])?"color: ".$cfgarray['lmo_tabelle_color5'].";":'';
+          $style = isset($cfgarray['lmo_tabelle_background6'])?"background: ".$cfgarray['lmo_tabelle_background6']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color6'])?"color: ".$cfgarray['lmo_tabelle_color6'].";":'';
         } else {
           $css_class = "";     // "Normale Tabellenplaetze
         }
