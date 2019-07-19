@@ -169,24 +169,24 @@ if (empty($CacheOutput)) {
           $style .= isset($cfgarray['lmo_tabelle_color2'])?"color: ".$cfgarray['lmo_tabelle_color2'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] <= ($liga->options->keyValues['Champ']+$liga->options->keyValues['CL']+$liga->options->keyValues['CK']) ) {
           // CL Qualifikation
-          $css_class =  isset($cfgarray['mini']['tabelle_classCLQuali'])?$cfgarray['mini']['tabelle_classCLQuali']:'';
+          $css_class = isset($cfgarray['mini']['tabelle_classCLQuali'])?$cfgarray['mini']['tabelle_classCLQuali']:'';
           $style = isset($cfgarray['lmo_tabelle_background3'])?"background: ".$cfgarray['lmo_tabelle_background3']." repeat;":'';
           $style .= isset($cfgarray['lmo_tabelle_color3'])?"color: ".$cfgarray['lmo_tabelle_color3'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] <= ($liga->options->keyValues['Champ']+$liga->options->keyValues['CL']+$liga->options->keyValues['CK']+$liga->options->keyValues['UC']) ) {
           // UEFA Cup
-          $css_class =  isset($cfgarray['mini']['tabelle_classUEFA'])?$cfgarray['mini']['tabelle_classUEFA']:'';
+          $css_class = isset($cfgarray['mini']['tabelle_classUEFA'])?$cfgarray['mini']['tabelle_classUEFA']:'';
           $style = isset($cfgarray['lmo_tabelle_background4'])?"background: ".$cfgarray['lmo_tabelle_background4']." repeat;":'';
           $style .= isset($cfgarray['lmo_tabelle_color4'])?"color: ".$cfgarray['lmo_tabelle_color4'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']) ) {
-          // Abstiegs Relegation
-          $css_class =  isset($cfgarray['mini']['tabelle_classAbstiegsRelegation'])?$cfgarray['mini']['tabelle_classAbstiegsRelegation']:'';
-          $style = isset($cfgarray['lmo_tabelle_background5'])?"background: ".$cfgarray['lmo_tabelle_background5']." repeat;":'';
-          $style .= isset($cfgarray['lmo_tabelle_color5'])?"color: ".$cfgarray['lmo_tabelle_color5'].";":'';
-        } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']-$liga->options->keyValues['AR']) ) {
           // Abstiegsplaetze
-          $css_class =  isset($cfgarray['mini']['tabelle_classAbsteiger'])?$cfgarray['mini']['tabelle_classAbsteiger']:'';
+          $css_class = isset($cfgarray['mini']['tabelle_classAbsteiger'])?$cfgarray['mini']['tabelle_classAbsteiger']:'';
           $style = isset($cfgarray['lmo_tabelle_background6'])?"background: ".$cfgarray['lmo_tabelle_background6']." repeat;":'';
           $style .= isset($cfgarray['lmo_tabelle_color6'])?"color: ".$cfgarray['lmo_tabelle_color6'].";":'';
+        } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']-$liga->options->keyValues['AR']) ) {
+          // Abstiegs Relegation
+          $css_class = isset($cfgarray['mini']['tabelle_classAbstiegsRelegation'])?$cfgarray['mini']['tabelle_classAbstiegsRelegation']:'';
+          $style = isset($cfgarray['lmo_tabelle_background5'])?"background: ".$cfgarray['lmo_tabelle_background5']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color5'])?"color: ".$cfgarray['lmo_tabelle_color5'].";":'';
         } else {
           $css_class = "";     // "Normale Tabellenplaetze
         }
