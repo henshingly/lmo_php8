@@ -48,7 +48,7 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 <html>
 <head>
 <title>Minitab</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
 <style type="text/css">
   html,body {margin:0;padding:0;background:transparent;}
 </style>
@@ -179,13 +179,13 @@ if (empty($CacheOutput)) {
         } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']) ) {
           // Abstiegs Relegation
           $css_class =  isset($cfgarray['mini']['tabelle_classAbstiegsRelegation'])?$cfgarray['mini']['tabelle_classAbstiegsRelegation']:'';
-          $style = isset($cfgarray['lmo_tabelle_background5'])?"background: ".$cfgarray['lmo_tabelle_background5']." repeat;":'';
-          $style .= isset($cfgarray['lmo_tabelle_color5'])?"color: ".$cfgarray['lmo_tabelle_color5'].";":'';
+          $style = isset($cfgarray['lmo_tabelle_background6'])?"background: ".$cfgarray['lmo_tabelle_background6']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color6'])?"color: ".$cfgarray['lmo_tabelle_color6'].";":'';
         } elseif ($LigaTabelle[$j]['pos'] > ($AnzahlTeams-$liga->options->keyValues['AB']-$liga->options->keyValues['AR']) ) {
           // Abstiegsplaetze
           $css_class =  isset($cfgarray['mini']['tabelle_classAbsteiger'])?$cfgarray['mini']['tabelle_classAbsteiger']:'';
-          $style = isset($cfgarray['lmo_tabelle_background6'])?"background: ".$cfgarray['lmo_tabelle_background6']." repeat;":'';
-          $style .= isset($cfgarray['lmo_tabelle_color6'])?"color: ".$cfgarray['lmo_tabelle_color6'].";":'';
+          $style = isset($cfgarray['lmo_tabelle_background5'])?"background: ".$cfgarray['lmo_tabelle_background5']." repeat;":'';
+          $style .= isset($cfgarray['lmo_tabelle_color5'])?"color: ".$cfgarray['lmo_tabelle_color5'].";":'';
         } else {
           $css_class = "";     // "Normale Tabellenplaetze
         }
