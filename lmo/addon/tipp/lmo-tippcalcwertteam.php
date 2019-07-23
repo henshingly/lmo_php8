@@ -114,11 +114,11 @@ if (!file_exists($auswertfile)) {
   }
   for($i = 1; $i <= count($tippdaten); $i++) {
     $dum = explode('|', $tippdaten[$i-1]);
-    $op1 = $dum[0];
+    $op1 = (int)$dum[0];
     // Nick
-    $op3 = substr($dum[1], 2)-1;
+    $op3 = (int)substr($dum[1], 2)-1;
     // Spieltagsnummer
-    $op4 = substr($dum[1], 0, 2);
+    $op4 = (int)substr($dum[1], 0, 2);
     // TP
     if ($dum[1] == "Team") {
       if ($dum[2] == "") {
