@@ -243,7 +243,7 @@ if (!file_exists($auswertfile)) {
     for ($jyz=0; $jyz<$anzst; $jyz++) {
       for ($a=0; $a<$anztipper; $a++) {
         if ($kurvenmodus<4) {
-          $tt=50000000+$tipppunkte[$a][$jyz];
+          $tt=(int)50000000+(int)$tipppunkte[$a][$jyz];
           for ($k=1; $k<=3; $k++) {
             if ($k==1) {
               $tipp_krit=$tipp_krit1;
@@ -255,9 +255,9 @@ if (!file_exists($auswertfile)) {
             if ($tipp_krit==-1) {
               $tt.=50000000;
             } else if ($tipp_krit==0) {
-              $tt.=(50000000-$spielegetippt[$a][$jyz]);
+              $tt.=(50000000-(int)$spielegetippt[$a][$jyz]);
             } else if ($tipp_krit==1) {
-              $tt.=(50000000+$spielegetippt[$a][$jyz]);
+              $tt.=(50000000+(int)$spielegetippt[$a][$jyz]);
             } else if ($tipp_krit==6) {
               if ($tipp_showstsiege==1) {
                 $tt.=(50000000+$stsiege[$a][$jyz]);
@@ -279,7 +279,7 @@ if (!file_exists($auswertfile)) {
         }
         if ($kurvenmodus>2) {
           if ($jyz>0) {
-            $tipppunktegesamt[$a][$jyz]+=$tipppunktegesamt[$a][$jyz-1];
+            $tipppunktegesamt[$a][$jyz]+=(int)$tipppunktegesamt[$a][$jyz-1];
             if ($tipp_showzus==1) {
               $punkte1gesamt[$a][$jyz]+=$punkte1gesamt[$a][$jyz-1];
               $punkte2gesamt[$a][$jyz]+=$punkte2gesamt[$a][$jyz-1];
@@ -289,9 +289,9 @@ if (!file_exists($auswertfile)) {
             if ($kurvenmodus>1 && $tipp_showstsiege==1 && ($tipp_krit1==6 || $tipp_krit2==6 || $tipp_krit3==6)) {
               $stsiegegesamt[$a][$jyz]+=$stsiegegesamt[$a][$jyz-1];
             }
-            $spielegetipptgesamt[$a][$jyz]+=$spielegetipptgesamt[$a][$jyz-1];
+            $spielegetipptgesamt[$a][$jyz]+=(int)$spielegetipptgesamt[$a][$jyz-1];
           }
-          $tt=50000000+$tipppunktegesamt[$a][$jyz];
+          $tt=50000000+(int)$tipppunktegesamt[$a][$jyz];
           for ($k=1; $k<=3; $k++) {
             if ($k==1) {
               $tipp_krit=$tipp_krit1;
@@ -303,12 +303,12 @@ if (!file_exists($auswertfile)) {
             if ($tipp_krit==-1) {
               $tt.=50000000;
             } else if ($tipp_krit==0) {
-              $tt.=(50000000-$spielegetipptgesamt[$a][$jyz]);
+              $tt.=(50000000-(int)$spielegetipptgesamt[$a][$jyz]);
             } else if ($tipp_krit==1) {
-              $tt.=(50000000+$spielegetipptgesamt[$a][$jyz]);
+              $tt.=(50000000+(int)$spielegetipptgesamt[$a][$jyz]);
             } else if ($tipp_krit==6) {
               if ($tipp_showstsiege==1) {
-                $tt.=(50000000+$stsiegegesamt[$a][$jyz]);
+                $tt.=(50000000+(int)$stsiegegesamt[$a][$jyz]);
               }
             } else if ($tipp_showzus==1) {
               if ($tipp_krit==2) {
