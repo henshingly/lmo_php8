@@ -42,7 +42,8 @@ if($enablegamesort == '1' && filterZero($mterm[$st-1])) {
 }
 $spielfreia=array();
 $spielfreib=array();
-while (list ($key, $val) = each ($datsort)) {
+//while (list ($key, $val) = each ($datsort)) {
+foreach($datsort as $key => $val) {
   $i = $key;
   if (($teama[$st-1][$i] > 0) && ($teamb[$st-1][$i] > 0)) {?>
   <tr><?php 
