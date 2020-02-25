@@ -110,7 +110,8 @@ if ($file != "") {
   $datsort = $mterm[$st-1];
   asort($datsort);
   reset($datsort);
-  while (list ($key, $val) = each ($datsort)) {
+  //while (list ($key, $val) = each ($datsort)) {
+  foreach($datsort as $key => $val) {
     $i = $key;
     if (($teama[$st-1][$i] > 0) && ($teamb[$st-1][$i] > 0)) {
       for($n = 0; $n < $modus[$st-1]; $n++) {
