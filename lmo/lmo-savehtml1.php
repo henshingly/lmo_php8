@@ -71,7 +71,8 @@ if($lmtype==0){
         $datsort= $mterm[$y1-1];
         asort($datsort);
         reset($datsort);
-        while (list ($key, $val) = each ($datsort)) {
+        //while (list ($key, $val) = each ($datsort)) { //Deprecated: The each() function ...
+        foreach($datsort as $key => $val) {
           $i1=$key;
           if(($teama[$y1-1][$i1]>0) && ($teamb[$y1-1][$i1]>0)){
             $heimteam=$teams[$teama[$y1-1][$i1]];
