@@ -110,7 +110,7 @@ if ($file != "") {
   $datsort = $mterm[$st-1];
   asort($datsort);
   reset($datsort);
-  //while (list ($key, $val) = each ($datsort)) {
+  //while (list ($key, $val) = each ($datsort)) { //Deprecated: The each() function ...
   foreach($datsort as $key => $val) {
     $i = $key;
     if (($teama[$st-1][$i] > 0) && ($teamb[$st-1][$i] > 0)) {
