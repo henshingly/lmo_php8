@@ -66,7 +66,8 @@ if($lmtype==0 && $st>0){
     $datsort= $mterm[$st-1];
     asort($datsort);
     reset($datsort);
-    while (list ($key, $val) = each ($datsort)) {
+    //while (list ($key, $val) = each ($datsort)) { //Deprecated: The each() function ...
+    foreach($datsort as $key => $val) {
       $i1=$key;
       if(($teama[$st-1][$i1]>0) && ($teamb[$st-1][$i1]>0)){
         $heimteam=$teams[$teama[$actual-1][$i1]];
@@ -173,7 +174,8 @@ if($lmtype==0 && $st>0){
         $datsort= $mterm[$actual];
         asort($datsort);
         reset($datsort);
-        while (list ($key, $val) = each ($datsort)) {
+        //while (list ($key, $val) = each ($datsort)) { //Deprecated: The each() function ...
+        foreach($datsort as $key => $val) {
           $i1=$key;
           if(($teama[$st][$i1]>0) && ($teamb[$st][$i1]>0)){
             $heimteam=$teams[$teama[$actual][$i1]];
