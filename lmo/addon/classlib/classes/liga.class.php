@@ -521,19 +521,19 @@ class liga {
             if ($infoPerPartie[1] == "TA" ) {
               $partieNumber++;
               $gameNumber= 0;
-        }
+            }
             if (preg_match("/^T[AB]$/",$infoPerPartie[1]) ) {
               $iniData[$sections[1][$y]][$partieNumber][$infoPerPartie[1]] = trim($parameter[2][$i]);
             } else {
               if ( $infoPerPartie[1] == "GA" ) {
                 $gameNumber++;
                 $iniData[$sections[1][$y]][$partieNumber][$gameNumber]["SpNr"] = $infoPerPartie[2];
-        }
+              }
               $iniData[$sections[1][$y]][$partieNumber][$gameNumber][$infoPerPartie[1]] = trim($parameter[2][$i]);
-      }
-          }
+            }
           }
         }
+      }
       // Infos aus dem lim File holen (BEGIN)
       $limFile = PATH_TO_ADDONDIR.'/limporter/imports/'.basename($fileName,".l98").'.lim';
       if (file_exists($limFile)) {
@@ -545,7 +545,7 @@ class liga {
           preg_match_all("/^([^=\[]+)=(.*)/m",$sections[0][$y],$parameter,PREG_PATTERN_ORDER);
           for ($i=0; $i<count($parameter[0]);$i++)
           $iniData[$sections[1][$y]][trim($parameter[1][$i])] = trim($parameter[2][$i]);
-      }
+        }
       } // Infos aus dem lim File holen (ENDE)
 
       $tCounter = 1;
@@ -613,7 +613,7 @@ class liga {
               $partie = new partie($spielNr,$zeit,$notiz,$heimTeam,$gastTeam,$theim,$tgast);
             } else {
               $partie = new partie($spielNr,$zeit,$notiz,$gastTeam,$heimTeam,$theim,$tgast);
-          }
+            }
 
             // Spielbericht
             $partie->setreportUrl($this->getIniData("BE",$iniData[$roundSektion][$pCounter],$partienNumber));
@@ -621,11 +621,10 @@ class liga {
             $partie->setSpielEnde($this->getIniData("SP",$iniData[$roundSektion][$pCounter],$partienNumber) );
             // Alle Anderen bisher unbekannten Parameter
             $partie->setParameter($iniData[$roundSektion][$pCounter][$partienNumber]);
-              $this->addPartie($partie);  // Partien werden zusätzlich zu der Liga hinzugefügt
-              $spieltag->addPartie($partie);
-            // }
+            $this->addPartie($partie);  // Partien werden zusätzlich zu der Liga hinzugefügt
+            $spieltag->addPartie($partie);
           } while ($partienNumber<$spieltag->getModus() );
-            }
+        }
         $this->addSpieltag($spieltag);
         unset($iniData[$roundSektion]); // weg damit weil bekannt
         $rCounter++;
