@@ -17,10 +17,10 @@
   *
   * $Id$
   */
-    
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert']==1)) {
-	//require_once(PATH_TO_LMO."/lmo-adminopenfile.php");
+    //require_once(PATH_TO_LMO."/lmo-adminopenfile.php");
     require_once(PATH_TO_LMO."/lmo-openfile.php");
   if (!isset($team)) {
     $team = "";
@@ -54,7 +54,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
           $strafm[$i] = (-1) * intval($_POST["xstrafm".$i]);
         }
 /** Hack-Straftore */
-        $torkorrektur1[$i] = (-1) * intval($_POST["xtorkorrektur1".$i]); 
+        $torkorrektur1[$i] = (-1) * intval($_POST["xtorkorrektur1".$i]);
         $torkorrektur2[$i] = (-1) * intval($_POST["xtorkorrektur2".$i]);
         $strafdat[$i] = intval($_POST["xstrafdat".$i]);
       }
@@ -202,92 +202,93 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <th class="nobr" align="left"><acronym title="<?php echo $text[125].", ".$text[572].", ".$text[126]?>"><?php echo $text[127]; ?></acronym>&nbsp;</th>
-<?php 
-	if ($lmtype==0) { 
+<?php
+  if ($lmtype==0) {
 ?>
             <th class="nobr" colspan="2" align="center"><acronym title="<?php echo $text[131] ?>"><?php echo $text[542]."/".$text[543]; ?></acronym>&nbsp;</th>
             <th class="nobr" align="center"><acronym title="<?php echo $text[523] ?>"><?php echo $text[524]; ?></acronym>&nbsp;</th>
-<?php 
-	} 
-?>
-<!-- Hack-Straftore Ende -->  <?php 
-	if ($lmtype==0) { 
-/** Titel Notiz */
-?> 
-						<th class="nobr" align="center"><acronym title="<?php echo $text[405] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[404]; ?>"></acronym></th>
 <?php
-	} 
+  }
+?>
+<!-- Hack-Straftore Ende -->
+<?php
+  if ($lmtype==0) {
+/** Titel Notiz */
+?>
+            <th class="nobr" align="center"><acronym title="<?php echo $text[405] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[404]; ?>"></acronym></th>
+<?php
+  }
 /** Titel Homepage */  ?>
             <th class="nobr" align="center"><acronym title="<?php echo $text[130] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[129]; ?>"></acronym></th>
             <th class="nobr" colspan="<?php echo $breite; ?>" align="center">&nbsp;</th>
           </tr>
 <?php
 /** Mannschftsnamen */
-	for ($i=1;$i<=$anzteams;$i++) { 
+  for ($i=1;$i<=$anzteams;$i++) {
 ?>
           <tr>
-            <td class="nobr">     
-                <input class="lmo-formular-input" type="text" name="xteams<?php echo $i; ?>" size="32" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()">
-                <input class="lmo-formular-input" type="text" name="xteamm<?php echo $i; ?>" size="12" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" onChange="dolmoedit()">
-                <input class="lmo-formular-input" type="text" name="xteamk<?php echo $i; ?>" size="5" maxlength="5" value="<?php echo htmlspecialchars($teamk[$i]); ?>" onChange="dolmoedit()">
+            <td class="nobr">
+              <input class="lmo-formular-input" type="text" name="xteams<?php echo $i; ?>" size="32" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()">
+              <input class="lmo-formular-input" type="text" name="xteamm<?php echo $i; ?>" size="12" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" onChange="dolmoedit()">
+              <input class="lmo-formular-input" type="text" name="xteamk<?php echo $i; ?>" size="5" maxlength="5" value="<?php echo htmlspecialchars($teamk[$i]); ?>" onChange="dolmoedit()">
               &nbsp;
             </td>
 <?php
-	if ($lmtype==0) { 
+  if ($lmtype==0) {
 ?>
             <td class="lmoBackMarkierung nobr" align="center">
-            	<input class="lmo-formular-input" type="text" name="xstrafp<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$strafp[$i]; ?>" onChange="dolmoedit()">
-<?php  
-		if ($minus==2) { 
+              <input class="lmo-formular-input" type="text" name="xstrafp<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$strafp[$i]; ?>" onChange="dolmoedit()">
+<?php
+    if ($minus==2) {
 ?>
               : <input class="lmo-formular-input" type="text" name="xstrafm<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$strafm[$i]; ?>" onChange="dolmoedit()">
-<?php  
-		} 
-  	echo $namepkt;
+<?php
+    }
+    echo $namepkt;
 ?>
             </td>
 
-  	        <td class="nobr" align="center">
+            <td class="nobr" align="center">
                 <input class="lmo-formular-input" type="text" name="xtorkorrektur1<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur1[$i]; ?>" onChange="dolmoedit()">
               : <input class="lmo-formular-input" type="text" name="xtorkorrektur2<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur2[$i]; ?>" onChange="dolmoedit()">
               <?php echo $nametor;?>
             </td>
-  	        <td class="nobr" align="center">
-              
+            <td class="nobr" align="center">
+
                 <input class="lmo-formular-input" type="text" name="xstrafdat<?php echo $i; ?>" size="2" maxlength="2" value="<?php echo $strafdat[$i]; ?>" onChange="dolmoedit()">
               &nbsp;
             </td>
 
 <?php
-		} 
-		if ($lmtype==0) { 
+  }
+  if ($lmtype==0) {
 ?>
             <td class="nobr" align="center">
-             <input id="n<?php echo $i?>" class="lmo-formular-input" type="text" name="xteamn<?php echo $i; ?>" tabindex="<?php echo $i;?>13" size="20" maxlength="255" value="<?php echo htmlentities($teamn[$i]); ?>" onChange="dolmoedit()">         
-<?php      
-			if (trim($teamn[$i]) == '') {
+              <input id="n<?php echo $i?>" class="lmo-formular-input" type="text" name="xteamn<?php echo $i; ?>" tabindex="<?php echo $i;?>13" size="20" maxlength="255" value="<?php echo htmlentities($teamn[$i]); ?>" onChange="dolmoedit()">
+<?php
+      if (trim($teamn[$i]) == '') {
 ?>
               <script type="text/javascript">document.getElementById('n<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script>
-<?php   
-			}
-?>             
+<?php
+      }
+?>
             </td>
 <?php
-		} 
+    }
 /** Mannschafts URL/Homepage */
 ?>
             <td class="nobr" align="center">
               <input id="h<?php echo $i?>" class="lmo-formular-input" type="text" name="xteamu<?php echo $i; ?>" tabindex="<?php echo $i;?>14" size="30" maxlength="255" value="<?php echo htmlentities($teamu[$i]); ?>" onChange="dolmoedit()">
-<?php      
-			if (trim($teamu[$i]) == '') {
+<?php
+      if (trim($teamu[$i]) == '') {
 ?>
               <script type="text/javascript">document.getElementById('h<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'h<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script>
-<?php   
-			}
+<?php
+      }
 ?>
             </td>
 <?php
-		if ($lmtype==0) { 
+    if ($lmtype==0) {
 /** Mannschaft löschen */
 ?>
             <td class="nobr">
@@ -296,27 +297,27 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
               </a>
             </td>
 <?php
-		} 
+        }
 /** Mannschaftswappen */
 ?>
-          <td class="nobr"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''");?></td>
-        	<td class="nobr"><?php echo HTML_bigTeamIcon($file,$teams[$i]," alt=''");?></td>
+            <td class="nobr"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''");?></td>
+            <td class="nobr"><?php echo HTML_bigTeamIcon($file,$teams[$i]," alt=''");?></td>
           </tr>
 <?php
-	} 
+    }
 ?>
           <tr>
             <td class="nobr" colspan="<?php echo $breite; ?>" align="right">
               <input title="<?php echo $text[114] ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[132]; ?>">
             </td>
 <?php
-	if ($lmtype==0) { 
+    if ($lmtype==0) {
 ?>
             <td class="nobr" colspan="<?php echo $breite; ?>">
               <a href='<?php echo $addz; ?>-1' onclick="return ateamlmolink(this.href);" title="<?php echo $text[337]; ?>"><?php echo $text[336]; ?></a>
             </td>
 <?php
-	} 
+    }
 ?>
           </tr>
         </table>
@@ -324,8 +325,8 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
     </td>
   </tr>
 <?php
-	if ($lmtype==0) { 
-		if ($team!="") {
+    if ($lmtype==0) {
+        if ($team!="") {
 ?>
   <tr>
     <td class="nobr">
@@ -333,8 +334,8 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
     </td>
   </tr>
 <?php
-		}
-	} 
+        }
+    }
 ?>
 </table>
 <?php
