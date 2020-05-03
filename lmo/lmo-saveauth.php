@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -15,7 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  * $Id$
+  * $Id:
   */
   
   
