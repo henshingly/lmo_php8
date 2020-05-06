@@ -117,7 +117,7 @@
 116=So sehen Ihre Besucher das Script (wird in einem neuen Fenster geöffnet)
 117=Sie haben keine Änderungen vorgenommen.\nTrotzdem speichern?
 118=Der Name der Liga wird den Nutzern immer als Überschrift angezeigt (max. 60 Zeichen, z.B. '1. Bundesliga 2001/02')
-119=Es wurden hier Änderungen vorgenommen, die noch\nnicht gespeichert wurden.\n\nKlicken Sie 'Ja', um die Änderungen zu verwerfen\nund fortzufahren, oder 'Nein', um hierzubleiben,\num die Änderungen noch speichern zu können.
+119=Es wurden hier Änderungen vorgenommen, die noch\nnicht gespeichert wurden.\n\nKlicken Sie 'OK', um die Änderungen zu verwerfen\nund fortzufahren, oder 'Abbrechen', um hierzubleiben,\num die Änderungen noch speichern zu können.
 120=Einstellung der Heimtore (0 - 9999, _ oder X)
 121=Einstellung der Gasttore (0 - 9999, _ oder X)
 122=Anstoßdatum des Spiels (Format TT.MM.JJJJ - ggf. mit führenden Nullen)
