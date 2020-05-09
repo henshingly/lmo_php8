@@ -229,7 +229,7 @@ if ($tipp_jokertipp==1) {?>
 }?>  
   <dt><?php echo $lang[$userlang]['ABS_2_text19'];?>
   <dd><?php echo $lang[$userlang]['ABS_2_text20'];?></dd>
-  <dd><?php echo $lang[$userlang]['ABS_2_text21'];?> <?php  echo $tipp_tippBis;?> <?php echo $lang[$userlang]['ABS_2_text21_1'];?></dd>
+  <dd><?php echo $lang[$userlang]['ABS_2_text21'];?> <?php echo $tipp_tippBis;?> <?php echo $lang[$userlang]['ABS_2_text21_1'];?></dd>
   <dd><?php echo $lang[$userlang]['ABS_2_text22'];?></dd>
 </dl>
 <h2><?php echo $lang[$userlang]['ABS_3'];?></h2>
@@ -237,13 +237,13 @@ if ($tipp_jokertipp==1) {?>
   <dt><?php echo $lang[$userlang]['ABS_3_text1'];?></dt>
   <dd>
     <ul>
-      <li><?php echo $lang[$userlang]['ABS_3_text2'];?> <?php  echo $tipp_rergebnis;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
-      <li><?php echo $lang[$userlang]['ABS_3_text3'];?> <?php  echo $tipp_rtendenzdiff;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
-      <li><?php echo $lang[$userlang]['ABS_3_text4'];?> <?php  echo $tipp_rtendenz;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
-      <li><?php echo $lang[$userlang]['ABS_3_text5'];?> <?php  echo $tipp_rtor;?>  <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
-<?php  if ($tipp_jokertipp==1) {?>
+      <li><?php echo $lang[$userlang]['ABS_3_text2'];?> <?php echo $tipp_rergebnis;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
+      <li><?php echo $lang[$userlang]['ABS_3_text3'];?> <?php echo $tipp_rtendenzdiff;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
+      <li><?php echo $lang[$userlang]['ABS_3_text4'];?> <?php echo $tipp_rtendenz;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
+      <li><?php echo $lang[$userlang]['ABS_3_text5'];?> <?php echo $tipp_rtor;?>  <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
+<?php if ($tipp_jokertipp==1) {?>
       
-      <li><?php echo $lang[$userlang]['ABS_3_text6'];?> <strong><?php  echo $tipp_jokertippmulti;?></strong></li><?php 
+      <li><?php echo $lang[$userlang]['ABS_3_text6'];?> <strong><?php echo $tipp_jokertippmulti;?></strong></li><?php 
 }?>  
     </ul><?php 
   if ($tipp_jokertipp==1) {?>

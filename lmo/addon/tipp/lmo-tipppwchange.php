@@ -94,7 +94,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <th align="center"><?php echo $text['tipp'][107]; ?></th>
-  </tr><?php  if($newpage!=1){ ?>
+  </tr><?php if($newpage!=1){ ?>
   <tr>
     <td align="center">
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

@@ -61,7 +61,7 @@ if (($action == "tipp") && ($todo == "newligen")) {
     <th align="center"><?php echo $text['tipp'][135]; ?></th>
   </tr>
   <tr>
-    <td align="left"><?php  if($newpage!=1){ ?>
+    <td align="left"><?php if($newpage!=1){ ?>
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="newligen">

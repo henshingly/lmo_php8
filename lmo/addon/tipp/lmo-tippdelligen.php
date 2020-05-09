@@ -38,7 +38,7 @@ if (($action == "tipp") && ($todo == "delligen")) {
   </tr>
   <tr>
     <td width="20">&nbsp;</td>
-    <td align="left"><?php  if($newpage!=1){?>
+    <td align="left"><?php if($newpage!=1){?>
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="delligen">

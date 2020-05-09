@@ -109,7 +109,7 @@ if ($tabdat == "") {
 ?>
 
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php  if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];} ?></caption><?php if($tipp_tipperimteam>=0){?>
+  <caption><?php if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];} ?></caption><?php if($tipp_tipperimteam>=0){?>
   <tr>
     <td align="center">
       <table class="lmoMenu" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -405,7 +405,7 @@ for($x = 1; $x <= $anztipper; $x++) {
         echo $dumm2;?>
           &nbsp;</td><?php
       } else {?>
-          <td class="<?php echo $dumm1; ?>" align="left"><?php  if($wertung!="intern" && $team[$i]!=" "){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$team[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$team[$i].$dumm2; if($wertung!="intern" && $team[$i]!=" "){echo "</a>";} ?>&nbsp;</td><?php
+          <td class="<?php echo $dumm1; ?>" align="left"><?php if($wertung!="intern" && $team[$i]!=" "){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$team[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$team[$i].$dumm2; if($wertung!="intern" && $team[$i]!=" "){echo "</a>";} ?>&nbsp;</td><?php
       }
 
       if ($tipp_tipperimteam >= 0) {
@@ -414,7 +414,7 @@ for($x = 1; $x <= $anztipper; $x++) {
             $tipperteam[$i] = "&nbsp;";
           }?>
           
-          <td class="<?php echo $dumm1; ?>"><?php  if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$tipperteam[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$tipperteam[$i].$dumm2; if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "</a>";} ?></td><?php
+          <td class="<?php echo $dumm1; ?>"><?php if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$tipperteam[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$tipperteam[$i].$dumm2; if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "</a>";} ?></td><?php
         } else {?>
           
           <td class="<?php echo $dumm1; ?>" align="right">&nbsp;<?php echo $dummy.$tipp_tipperimteam[$i].$dumm2; ?> &nbsp;</td>

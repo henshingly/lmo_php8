@@ -271,7 +271,7 @@ if ($file!="") {
   }?>
             </th><?php
   if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
-            <th class="nobr" align="center" colspan="<?php  if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
+            <th class="nobr" align="center" colspan="<?php if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
             <?php echo $text['tipp'][188]; /* Tipptendenz absolut */?>
             </th>
 <?php  
@@ -283,7 +283,7 @@ if ($file!="") {
             <?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
             </th><?php
     } ?>
-            <th class="nobr" align="center" colspan="<?php  if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
+            <th class="nobr" align="center" colspan="<?php if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
               <acronym title="<?php echo $text['tipp'][241].":".$text['tipp'][242] ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php
     if ($goalfaktor!=1) {
       echo "(".$text[553+log10($goalfaktor)].")";
@@ -355,11 +355,11 @@ if ($file!="") {
     }
   }?>
           <tr>
-            <td colspan="<?php echo $datm*2+10-$hidr; ?>" align="right"><?php  if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
+            <td colspan="<?php echo $datm*2+10-$hidr; ?>" align="right"><?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
     echo $text['tipp'][177];
   } 
   if($savebutton==1){ ?>
-              <input class="lmo-formular-button" type="submit" title="<?php echo $text[114] ?>" name="best" value="<?php echo $text['tipp'][8]; ?>"<?php  if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  }else{
+              <input class="lmo-formular-button" type="submit" title="<?php echo $text[114] ?>" name="best" value="<?php echo $text['tipp'][8]; ?>"<?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  }else{
     echo "&nbsp;";
   }?>
             </td>
@@ -374,7 +374,7 @@ if ($file!="") {
             </td>
           </tr>
           <tr>
-            <td class="lmoFooter" colspan="<?php echo $breite; ?>" align="center"><?php  if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
+            <td class="lmoFooter" colspan="<?php echo $breite; ?>" align="center"><?php if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
           </tr>
         </table>
       </form>

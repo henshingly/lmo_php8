@@ -141,7 +141,7 @@ if ($show==0) {?>
             <td class="nobr" align="right"><acronym title="<?php echo $text[240]?>"><?php echo $text[239];?></acronym></td>
             <td class="nobr" colspan="4"><input class="lmo-formular-input" type="text" name="xdeftime" size="5" maxlength="5" value="<?php echo $deftime;?>" onChange="dolmoedit()"></td>
           </tr><tr>
-            <td class="nobr" rowspan="2" align="right"><acronym title="<?php  echo $text[256] ?>"><?php  echo $text[257]; ?></acronym>&nbsp;</td>
+            <td class="nobr" rowspan="2" align="right"><acronym title="<?php echo $text[256] ?>"><?php echo $text[257]; ?></acronym>&nbsp;</td>
             <td class="nobr" align="left">
               <input type="radio" name="xdefdateselect" value="1" checked>
               <select class="lmo-formular-input" name="xdefdateformat" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[0].checked=true;"><?php
@@ -254,7 +254,7 @@ if ($show==0) {?>
           <tr>
             <td colspan="3">&nbsp;</td>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xeinsprachwahl" onChange="dolmoedit()"<?php if($einsprachwahl==1){echo " checked";}?>></td>
-            <td class="nobr"><acronym title="<?php  echo $text[520] ?>"><?php  echo $text[519]; ?></acronym></td>
+            <td class="nobr"><acronym title="<?php echo $text[520] ?>"><?php echo $text[519]; ?></acronym></td>
           </tr>
           <tr>
             <td class="nobr" rowspan="2" align="right"><acronym title="<?php echo $text[490]?>"><?php echo $text[489];?></acronym></td>

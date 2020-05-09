@@ -48,7 +48,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
   }?>
 
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php  if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];} ?></caption><?php  if($tipp_einsichterst>=1){ ?>
+  <caption><?php if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];} ?></caption><?php if($tipp_einsichterst>=1){ ?>
   <tr>
     <td class="lmoFrontMarkierung"><?php echo $text['tipp'][220]." ".$text['tipp'][215+$tipp_einsichterst]; ?></td>
   </tr><?php  }?>
@@ -396,7 +396,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
   } /* ende for($l=$start-1;$l<=$ende;$l++) */?>
       </table>
     </td>
-  </tr><?php  if($tipp_anzseiten>1 && $tipp_anzseiten<11){?> 
+  </tr><?php if($tipp_anzseiten>1 && $tipp_anzseiten<11){?> 
   <tr>
     <td align="center">
       <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">

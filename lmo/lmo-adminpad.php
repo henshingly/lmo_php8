@@ -30,13 +30,13 @@ if(($action=="admin") && ($todo=="")){
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td class="lmost5" align="left">
-            <ul><?php  if($_SESSION["lmouserok"]==2){ ?>
+            <ul><?php if($_SESSION["lmouserok"]==2){ ?>
               <li ><?php echo "<a href='".$adda."new'>".$text[93]."</a>";?></li><?php 
   }?>
-              <li ><?php echo $text[94];?>:<?php  $ftype=".l98"; require(PATH_TO_LMO."/lmo-dirlist.php");?></li><?php  if($_SESSION['lmouserok']==2){ ?>
+              <li ><?php echo $text[94];?>:<?php  $ftype=".l98"; require(PATH_TO_LMO."/lmo-dirlist.php");?></li><?php if($_SESSION['lmouserok']==2){ ?>
               <li><?php echo "<a href='".$adda."delete'>".$text[95]."</a>"; ?></li>
               <li class="lmoadminli"><?php echo "<a href='".$adda."upload'>".$text[96]."</a>"; ?></li><?php  }?>
-              <li class="lmoadminli"><?php echo "<a href='".$adda."download'>".$text[349]."</a>"; ?></li><?php  if($_SESSION['lmouserok']==2){ ?>
+              <li class="lmoadminli"><?php echo "<a href='".$adda."download'>".$text[349]."</a>"; ?></li><?php if($_SESSION['lmouserok']==2){ ?>
               <li class="lmoadminli"><?php echo "<a href='".$adda."options'>".$text[97]."</a>"; ?></li><?php 
     if ($eintippspiel) {?>
               <li class="lmoadminli"><?php echo "<a href='".$adda."tipp'>".$text['tipp'][115]."</a>"; ?></li><?php    }

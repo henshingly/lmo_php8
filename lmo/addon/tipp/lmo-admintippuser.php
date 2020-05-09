@@ -191,7 +191,7 @@ if ($_SESSION["lmouserok"] == 2) {
       }?> </td>
           <td align="left"><?php echo $tab0[$x]['name']; ?></td>
           <td align="left"><?php echo $tab0[$x]['team']; ?></td>
-          <td align="left"><?php  if($tab0[$x]['ltipp']>0){echo date("d.m.Y H:i",$tab0[$x]['ltipp']);} ?></td>    
+          <td align="left"><?php if($tab0[$x]['ltipp']>0){echo date("d.m.Y H:i",$tab0[$x]['ltipp']);} ?></td>    
           <td align="left"><a href='<?php echo $added.$tab0[$x]['nick']?>' onClick="return chklmolink();"><?php echo $text['tipp'][98]?></a></td>
           <td align="left"><a href='<?php echo $addd.$tab0[$x]['nick']?>' onClick="return confirm('<?php echo $text[499]?>');"><img src="<?php echo URL_TO_IMGDIR?>/delete.gif" border="0" width="11" height="13" alt="<?php echo $text[82]?>"></a></td><?php 
     }?>

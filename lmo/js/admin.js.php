@@ -129,7 +129,7 @@ function dolmoedit(){
   }
 function chklmopass(){
   if(lmotest == true){
-    return confirm("<?php  echo $text[117] ?>");
+    return confirm("<?php echo $text[117] ?>");
   }else{
     return true;
   }
@@ -157,7 +157,7 @@ function dolmoedi2(a,s){
 function chklmopas2(a){
   var r=true;
   if(lmotest == true){
-    r=confirm("<?php  echo $text[117] ?>");
+    r=confirm("<?php echo $text[117] ?>");
     }
   if(lmotest == false){
     var s3=false;
@@ -169,7 +169,7 @@ function chklmopas2(a){
         }
       }
     if(s3 == true){
-      alert("<?php  echo $text[416]; ?>");
+      alert("<?php echo $text[416]; ?>");
       r=false;
       }
     }
@@ -179,29 +179,29 @@ function chklmopas2(a){
   }
 function chklmolink(){
   if(lmotest == false){
-    return confirm("<?php  echo $text[119] ?>");
+    return confirm("<?php echo $text[119] ?>");
   }else{
     return true;
   }
 }
 function siklmolink(adresse){
-  return confirm("<?php  echo $text[249] ?>");
+  return confirm("<?php echo $text[249] ?>");
 }
 function dellmolink(adresse,titel){
-  return confirm("<?php  echo $text[296] ?>:\n"+titel);
+  return confirm("<?php echo $text[296] ?>:\n"+titel);
 }
 function emllmolink(adresse,emailaddi){
-  if(ema=prompt("<?php  echo $text[346] ?>",emailaddi)){
+  if(ema=prompt("<?php echo $text[346] ?>",emailaddi)){
     if(ema!=""){
       window.open(adresse+"&madr="+ema,"lmoelm","width=250,height=150,resizable=yes,dependent=yes");
     }
   }
 }
 function dteamlmolink(adresse,team){
-  return confirm("<?php  echo $text[332] ?>:\n"+team);
+  return confirm("<?php echo $text[332] ?>:\n"+team);
 }
 function ateamlmolink(adresse){
-  return confirm("<?php  echo $text[335] ?>");
+  return confirm("<?php echo $text[335] ?>");
 }
 function opencal(feld,startdat){
   lmocal="<?php echo URL_TO_LMO?>/lmo-admincal.php?abs=lmoedit&feld="+feld;

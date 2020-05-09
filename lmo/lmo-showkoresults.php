@@ -96,7 +96,7 @@ if ($file != "") {
   } else {
     $j = $st.". ".$text[370];
   }?>
-          <th colspan="<?php echo $breite; ?>" align="left"><?php  echo $j;
+          <th colspan="<?php echo $breite; ?>" align="left"><?php echo $j;
   if ($dats == 1) {
     if ($datum1[$st-1] != "") {
       echo " ".$text[3]." ".$datum1[$st-1];
@@ -117,7 +117,7 @@ if ($file != "") {
       for($n = 0; $n < $modus[$st-1]; $n++) {
         if(($klfin==1) && ($st==$anzst)){ ?>
         <tr>
-          <th class="nobr" colspan="<?php echo $breite; ?>"><?php  if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></th>
+          <th class="nobr" colspan="<?php echo $breite; ?>"><?php if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></th>
         </tr><?php        }?>
         <tr><?php        if($datm==1){
           if($mterm[$st-1][$i][$n]>0){

@@ -34,16 +34,16 @@ if($file!="" && $tipp_tippfieber==1){
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcgraph.php");
   //echo $anztipper;
 ?>
-<form name="lmoedit" action="<?php  echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
   <input type="hidden" name="action" value="tipp">
   <input type="hidden" name="todo" value="fieber">
   <input type="hidden" name="file" value="<?php echo $file; ?>">
   <input type="hidden" name="save" value="1">
   <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
     <tr>
-      <th align="left"><?php  echo $text['tipp'][164]." 1";?></th>
-      <th align="left"><?php  echo $text['tipp'][164]." 2";?></th>
-      <th align="left"><?php  echo $text['tipp'][283];?></th>
+      <th align="left"><?php echo $text['tipp'][164]." 1";?></th>
+      <th align="left"><?php echo $text['tipp'][164]." 2";?></th>
+      <th align="left"><?php echo $text['tipp'][283];?></th>
       <th>&nbsp;</th>
     </tr>
     <tr>
@@ -79,7 +79,7 @@ if($file!="" && $tipp_tippfieber==1){
         </select>
       </td>
       <td>
-         <input type="submit" name="best" value="<?php  echo $text['tipp'][236]; ?>">
+         <input type="submit" name="best" value="<?php echo $text['tipp'][236]; ?>">
       </td>
     </tr><?php 
   if (isset($tippernick) && count($tippernick)>1) {?>
@@ -184,7 +184,7 @@ if($file!="" && $tipp_tippfieber==1){
       }
       //PLATZIERUNG
       ?>
-          <tr><td align="center" colspan="3"><img src="<?php  echo $dummy; ?>" border="0"></td></tr><?php    }?>
+          <tr><td align="center" colspan="3"><img src="<?php echo $dummy; ?>" border="0"></td></tr><?php    }?>
         </table>
       </td>
     </tr><?php 

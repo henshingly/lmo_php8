@@ -316,7 +316,7 @@ if($newpage==1){
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></td>
             <td class="nobr" align="left">
-              <select class="lmo-formular-input" name="xteams" onChange="dolmoedit()"><?php  if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>";} ?></select>
+              <select class="lmo-formular-input" name="xteams" onChange="dolmoedit()"><?php if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>";} ?></select>
             </td>
           </tr>
           <tr>
@@ -332,7 +332,7 @@ if($newpage==2){
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right" valign="top"><acronym title="<?php echo  $text[285] ?>"><?php echo  $text[284]; ?></acronym></td>
             <td class="nobr" align="left">
-              <input type="radio" name="xprogram" value="none"<?php  if($xprogram=="none"){echo " checked";} ?> onChange="dolmoedit()"><?php echo  $text[286]; ?><br><br>
+              <input type="radio" name="xprogram" value="none"<?php if($xprogram=="none"){echo " checked";} ?> onChange="dolmoedit()"><?php echo  $text[286]; ?><br><br>
               <?php echo  $text[287]; ?>:<br><?php 
     $ftype=".l98";
     require(PATH_TO_LMO."/lmo-adminnewdir.php"); ?><br><?php 
@@ -344,7 +344,7 @@ if($newpage==2){
       // Prüfe: 1. Stimmt die Anzahl der Spiele pro Spieltag?
       //             2. Ist die Spieltaganzahl gleich Hin- und Rückrunde oder nur Hinrunde?
       if(($xanzsp==$soll_anzsp) && (($xanzst==$soll_anzst) || ($xanzst==$soll_anzst/2))){ ?>
-              <input type="radio" name="xprogram" value="random"<?php  if($xprogram=="random"){echo " checked";} ?> onChange="dolmoedit()"><?php echo  $text[288];
+              <input type="radio" name="xprogram" value="random"<?php if($xprogram=="random"){echo " checked";} ?> onChange="dolmoedit()"><?php echo  $text[288];
       }
     }
     // Änderungen s.janke@tu-bs.de - Ende

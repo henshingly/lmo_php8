@@ -27,7 +27,7 @@ if(!isset($nw)){
     <td class="lmoFooter" colspan="3"  align="left">
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td valign="top"><?php  if ($todo == "wert") {
+          <td valign="top"><?php if ($todo == "wert") {
     echo "<strong>".$text['tipp'][89].":</strong><br>"; /// Zeichenerklaerung
     if ($wertung == "team") {
       echo $text['tipp'][119].": ".$text['tipp'][120]."&nbsp;&nbsp;&nbsp;<br>"; // AT
@@ -84,7 +84,7 @@ if(!isset($nw)){
     }
   }?>
           </td>
-          <td align="right" valign="bottom" rowspan="2"><?php  if(!isset($auswertfile)){$auswertfile="";}
+          <td align="right" valign="bottom" rowspan="2"><?php if(!isset($auswertfile)){$auswertfile="";}
   if (!isset($tippfile)) {
     $tippfile = "";
   }
@@ -108,8 +108,8 @@ if(!isset($nw)){
   if ($calctime == 1) {
     echo $text[471].": ".number_format((getmicrotime()-$startzeit), 4, ".", ",")." sek.<br>";
   }
-  echo $text[54];?> - <?php  echo $text[55]; ?> <br><?php 
-  echo $text['tipp'][84]; ?> - <?php  echo $text['tipp'][85]; ?>
+  echo $text[54];?> - <?php echo $text[55]; ?> <br><?php 
+  echo $text['tipp'][84]; ?> - <?php echo $text['tipp'][85]; ?>
           </td>
         </tr>
         <tr>

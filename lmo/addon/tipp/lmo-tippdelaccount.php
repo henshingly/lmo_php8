@@ -84,7 +84,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
       <th colspan="2" align="center"><?php echo $text['tipp'][6]; ?></th>
     </tr>
     <tr>
-      <td width="20">&nbsp;</td><?php  if($newpage!=1){ ?>
+      <td width="20">&nbsp;</td><?php if($newpage!=1){ ?>
       <td class="nobr" align="center">
         <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return confirm('');">
           <input type="hidden" name="action" value="tipp">

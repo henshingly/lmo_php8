@@ -46,7 +46,7 @@ for($n=0;$n<$modus[$st-1];$n++){
       $dum1="";
     }?>
     <td class="nobr" align="left"><?php echo $dum1; ?></td><?php  }?>
-    <td>&nbsp;</td><?php  if ($n==0) {
+    <td>&nbsp;</td><?php if ($n==0) {
     $m1=array($goala[$st-1][$i][0],$goala[$st-1][$i][1],$goala[$st-1][$i][2],$goala[$st-1][$i][3],$goala[$st-1][$i][4],$goala[$st-1][$i][5],$goala[$st-1][$i][6]);
     $m2=array($goalb[$st-1][$i][0],$goalb[$st-1][$i][1],$goalb[$st-1][$i][2],$goalb[$st-1][$i][3],$goalb[$st-1][$i][4],$goalb[$st-1][$i][5],$goalb[$st-1][$i][6]);
     $m=gewinn($i,$modus[$st-1],$m1,$m2);
@@ -224,25 +224,25 @@ for($n=0;$n<$modus[$st-1];$n++){
       $tipp=2;
     }?>
     <td align="right">
-      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="1" <?php  if($tipp==1){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
+      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="1" <?php if($tipp==1){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
     </td><?php    if($hidr==0){ ?>
     <td align="center">
-      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="3" <?php  if($tipp==0){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
+      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="3" <?php if($tipp==0){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
     </td><?php    }?>
     <td align="right">
-      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="2" <?php  if($tipp==2){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
+      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="2" <?php if($tipp==2){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
     </td><?php  } /* ende ($tipp_tippmodus==0) */
 
 /**BEIDE*/
   if ($tipp_jokertipp==1){ ?>
-    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php  if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>                                                                                                                   
+    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>                                                                                                                   
     <td class="lmoBackMarkierung" align="right"><?php echo $goala[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="center">:</td>
     <td class="lmoBackMarkierung" align="left"><?php echo $goalb[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="left"><?php echo $mspez[$st-1][$i][$n]; ?></td>
     <td width="2">&nbsp;</td>
     <td class="nobr" align="right">
-      <strong><?php  if ($tipp_jokertipp==1 && $jksp==($i+1).($n+1)) {
+      <strong><?php if ($tipp_jokertipp==1 && $jksp==($i+1).($n+1)) {
     $jkspfaktor=$tipp_jokertippmulti;
   } else {
     $jkspfaktor=1;

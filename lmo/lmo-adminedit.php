@@ -516,7 +516,7 @@ if ($file != "") {
       for($n=0;$n<$modus[$st-1];$n++){
         if(($klfin==1) && ($st==$anzst)){ ?>
           <tr>
-            <td class="nobr" colspan=<?php echo $breite; ?>><?php  if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></td>
+            <td class="nobr" colspan=<?php echo $breite; ?>><?php if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></td>
           </tr><?php
         }?>
           <tr><?php
@@ -706,7 +706,7 @@ if ($file != "") {
           </tr>
           <tr>
             <td colspan="<?php echo $breite; ?>" align="center">
-              <acronym title="<?php echo $text[210] ?>">Tickertext: </acronym><textarea class="lmo-formular-input" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php  if(count($nlines)>0){foreach($nlines as $y){echo $y."\n";}} ?></textarea>
+              <acronym title="<?php echo $text[210] ?>">Tickertext: </acronym><textarea class="lmo-formular-input" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php if(count($nlines)>0){foreach($nlines as $y){echo $y."\n";}} ?></textarea>
             </td>
           </tr>
           <tr>

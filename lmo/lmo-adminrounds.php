@@ -39,12 +39,12 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   </tr>
   <tr>
     <td align="center">
-      <form name="lmoedit" action="<?php  echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
+      <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
-        <input type="hidden" name="file" value="<?php  echo $file; ?>">
-        <input type="hidden" name="st" value="<?php  echo $st; ?>"><?php
+        <input type="hidden" name="file" value="<?php echo $file; ?>">
+        <input type="hidden" name="st" value="<?php echo $st; ?>"><?php
 
   $liga1 = new liga();
   if ($liga1->loadFile(PATH_TO_LMO."/".$dirliga.$file)==false)
@@ -161,7 +161,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
 ?>
         <tr>
             <th class="nobr" colspan="10">
-              <acronym title="<?php  echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php  echo $text[5009]; ?>"></acronym>
+              <acronym title="<?php echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php echo $text[5009]; ?>"></acronym>
             </th>
         </tr>
         </table>
