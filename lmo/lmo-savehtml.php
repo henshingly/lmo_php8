@@ -35,15 +35,16 @@ if($lmtype==0 && $st>0){
   isset($tab0) ? $table1=$tab0 : $table1=$tab1;
   if (isset($table1)) {
     $wmlfile= fopen(PATH_TO_LMO.'/'.$diroutput.basename($file)."-st.html","wb");
-    ob_start();?>
+    ob_start();
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-          "http://www.w3.org/TR/html4/loose.dtd">
+        "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <title><?php echo $titel?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <style type="text/css">
-    body {background:#fff; color:#000; font: 10pt sans-serif; max-width:200mm;max-height:285mm;}
+    body {background:#fff; color:#000; font: 10pt sans-serif;}
     caption, p, h1 {margin: 3pt auto; text-align:center;}
     table {border:1pt solid #000;margin: 2pt auto;}
     td {padding: 0;white-space:nowrap;}
@@ -228,7 +229,7 @@ if($lmtype==0 && $st>0){
         }
       }//if empty
     }?>
-  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
+  </center>  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
 </body>
 </html><?php
     fwrite($wmlfile,ob_get_contents());

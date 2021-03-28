@@ -42,7 +42,7 @@ if($lmtype==0){
   <title><?php echo $titel?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <style type="text/css">
-    body {background:#fff; color:#000; font: 10pt sans-serif;padding:auto;}
+    body {background:#fff; color:#000; font: 10pt sans-serif;}
     caption, p, h1 {margin: 3pt auto; text-align:center;}
     table {margin:auto; max-width:200mm;}
     #tabelle{border:1pt solid #000;}
