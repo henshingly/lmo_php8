@@ -135,13 +135,15 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
     <tr onMouseOver="this.className='lmoBackMarkierung';" onMouseOut="this.className=''">
       <td class="nobr" align="center"><?php echo  HTML_smallLigaIcon($liga['file_name'],"alt=''","");?></td>
       <td class="nobr" align="left"><a href="<?php echo $addi.$subdir.$liga['file_name']?>"><?php echo $liga['liga_name']?></a></td>
-      <?php
+<?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
-      <td class="nobr" align="left"><?php echo $liga['file_name']?> &nbsp;</td><?php
+      <td class="nobr" align="left"><?php echo $liga['file_name']?> &nbsp;</td>
+<?php
   }?>
       <td class="nobr" align="left"><?php echo $liga['rundenbezeichnung']." ".$liga['aktueller_spieltag'];?> &nbsp;</td>
       <td class="nobr" align="left"><!--<?php echo filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name'])?>--><?php echo strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></td>
-    </tr><?php
+    </tr>
+<?php
 }
 if($liga_counter==0){echo "<td colspan='5'>[".$text[223]."]</td>";}?>
 
