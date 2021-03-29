@@ -219,6 +219,12 @@ if ($file!="") {
   //Letzte Auswertung
   $output_letzteauswertung.=$text[406].':&nbsp;'.$stand;
 
+  //Einbindung Bootstrap
+  $output_stylesheet2="
+  <link href='".URL_TO_LMO."/css/bootstrap.min.css' rel='stylesheet'/>
+  <script src='".URL_TO_LMO."/js/jquery.min.js'></script>
+  <script src='".URL_TO_LMO."/js/bootstrap.min.js'></script>";
+
   //SaveHTML
   if ($einsavehtml==1) {
       ob_start();?>
@@ -302,7 +308,7 @@ $template->setVariable("Info", $output_info);
 $template->setVariable("Infolink", $p1);
 $template->setVariable("Sprachauswahl", $output_sprachauswahl);
 $template->setVariable("Titel", $output_titel);
-$template->setVariable("Stylesheet", $output_stylesheet);
+$template->setVariable("Stylesheet", $output_stylesheet . $output_stylesheet2);
 //Ticker-Addon
 $template->setVariable("Newsticker", $output_newsticker);
 //Ticker-Addon
