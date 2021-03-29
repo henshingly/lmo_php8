@@ -57,7 +57,7 @@ while($files=readdir($verz)){
           if($option_name=="Type"){
             if($option_wert=="1"){$ligadatei[$liga_counter]['rundenbezeichnung']=$text[370];}
           }
-          //Alle benötigten Werte gefunden -> Abbruch
+          //Alle benÃ¶tigten Werte gefunden -> Abbruch
           if($ligadatei[$liga_counter]['liga_name']!="" &&
              $ligadatei[$liga_counter]['aktueller_spieltag']!="" &&
              $ligadatei[$liga_counter]['anz_teams']!='')break;
@@ -111,12 +111,14 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
       <th class="nobr" align="left" title="<?php echo $text[525].' '.$text[529].' '.$text[526]?>">
         <noscript><a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=liga_name&amp;liga_sort_direction=asc" title="<?php echo $text[527].' '.$text[525].' '.$text[529].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="8" height="7" border="0" alt="&and;"></a> <?php echo $text[529]?> <a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=liga_name&amp;liga_sort_direction=desc" title="<?php echo $text[528].' '.$text[525].' '.$text[529].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/downsimple.png" width="8" height="7" border="0" alt="&or;"></a></noscript>
         <script type="text/javascript">document.write('<?php echo $text[529]?>');</script>
-      </th><?php
+      </th>
+<?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
       <th class="nobr" align="left" title="<?php echo $text[525]." ".$text[531]." ".$text[526] ?>">
         <noscript><a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=file_name&amp;liga_sort_direction=asc" title="<?php echo $text[527].' '.$text[525].' '.$text[531].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="8" height="7" border="0" alt="&and;"></a> <?php echo $text[531]?> <a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=file_name&amp;liga_sort_direction=desc" title="<?php echo $text[528].' '.$text[525].' '.$text[531].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/downsimple.png" width="8" height="7" border="0" alt="&or;"></a></noscript>
         <script type="text/javascript">document.write('<?php echo $text[531]?>');</script>
-      </th><?php
+      </th>
+<?php
   }?>
       <th class="nobr" align="left" title="<?php echo $text[525]." ".$text[2]."/".$text[370]." ".$text[526]?>">
         <noscript><a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=aktueller_spieltag&amp;liga_sort_direction=asc" title="<?php echo $text[527].' '.$text[525].' '.$text[2]."/".$text[370].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="8" height="7" border="0" alt="&and;"></a> <?php echo $text[2]."/".$text[370]?> <a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=aktueller_spieltag&amp;liga_sort_direction=desc" title="<?php echo $text[528].' '.$text[525].' '.$text[2]."/".$text[370].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/downsimple.png" width="8" height="7" border="0" alt="&or;"></a></noscript>
@@ -170,8 +172,8 @@ function cmp ($a1, $a2) {
     if ($a2[$sort]==$a1[$sort]) return 0;
     return ($a1[$sort]>$a2[$sort]) ? 1 : -1;
   }else{ //Stringvergleich
-    $a1[$sort]=strtr($a1[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
-    $a2[$sort]=strtr($a2[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+    $a1[$sort]=strtr($a1[$sort],"Â¥ÂµÃ€ÃÃ‚ÃƒÃ„Ã…Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃŒÃÃÃÃÃ‘Ã’Ã“Ã”Ã•Ã–Ã˜Ã™ÃšÃ›ÃœÃÃŸÃ Ã¡Ã¢Ã£Ã¤Ã¥Ã¦Ã§Ã¨Ã©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã°Ã±Ã²Ã³Ã´ÃµÃ¶Ã¸Ã¹ÃºÃ»Ã¼Ã½Ã¿","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+    $a2[$sort]=strtr($a2[$sort],"Â¥ÂµÃ€ÃÃ‚ÃƒÃ„Ã…Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃŒÃÃÃÃÃ‘Ã’Ã“Ã”Ã•Ã–Ã˜Ã™ÃšÃ›ÃœÃÃŸÃ Ã¡Ã¢Ã£Ã¤Ã¥Ã¦Ã§Ã¨Ã©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã°Ã±Ã²Ã³Ã´ÃµÃ¶Ã¸Ã¹ÃºÃ»Ã¼Ã½Ã¿","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
     return  strnatcasecmp($a1[$sort],$a2[$sort]);
   }
 }
