@@ -104,14 +104,6 @@ if ($_SESSION['lmouserok'] == 2) {
     echo $text['viewer'][20];
   }
   /*Viewer-Addon*/
-  /*PDF-Addon*/
-  echo "&nbsp;";
-  if (($todo!="pdfoptions")){
-    echo "<a href='{$adda}pdfoptions' onclick='return chklmolink();' title='{$text['pdf'][201]}'>{$text['pdf'][200]}</a>";
-  } else {
-    echo $text['pdf'][200];
-  }
-  /*PDF-Addon*/
   } elseif($_SESSION['lmouserok'] == 1) {
     if ($todo != "open") {
       echo "<a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";
@@ -158,9 +150,6 @@ if ($_SESSION['lmouserok'] == 2) {
     /*Viewer-Addon*/
     $viewer_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=vieweroptions";
     /*Viewer-Addon*/
-    /*PDF-Addon*/
-    $pdf_addr_optionen = $_SERVER['PHP_SELF']."?action=admin&amp;todo=pdfoptions";
-    /*PDF-Addon*/
     if ($todo == "new") {
       require(PATH_TO_LMO."/lmo-adminnew.php");
     } elseif($todo == "open") {
@@ -219,11 +208,6 @@ if ($_SESSION['lmouserok'] == 2) {
       require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");
     }
     /*Viewer-Addon*/
-    /*PDF-Addon*/
-    elseif($todo=="pdfoptions"){
-      require(PATH_TO_ADDONDIR."/pdf/lmo-adminpdfoptions.inc.php");
-    }
-    /*PDF-Addon*/
     elseif($todo == "") {
       require(PATH_TO_LMO."/lmo-adminpad.php");
     }
