@@ -159,3 +159,9 @@ if($file!=""){
   </tr>
 </table><?php
 }?>
+<?php
+// Teamplan ADDON BEGIN
+if (file_exists(PATH_TO_ADDONDIR.'/pdf/lmo-showprogram.inc.php'))
+include(PATH_TO_ADDONDIR.'/pdf/lmo-showprogram.inc.php');
+// Teamplan ADDON END
+?>

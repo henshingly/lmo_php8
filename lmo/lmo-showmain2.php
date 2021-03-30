@@ -78,6 +78,7 @@ $output_savehtml="";
 $output_letzteauswertung="";
 $output_berechnungszeit="";
 $output_stylesheet="";
+$output_stylesheet2="";
 $p1="";
 
 if (!defined("LMO_TEMPLATE")) define("LMO_TEMPLATE","lmo-standard.tpl.php");
@@ -102,12 +103,10 @@ if ($file!="") {
 
 
 //Stylesheet
-$output_stylesheet.="
-  <link type='text/css' rel='stylesheet' href='".URL_TO_LMO."/lmo-style-nc.php'>
+$output_stylesheet.="  <link type='text/css' rel='stylesheet' href='".URL_TO_LMO."/lmo-style-nc.php'>
   <style type='text/css'>@import url('".URL_TO_LMO."/lmo-style.php');</style>";
 
 //Sprachauswahl
-
 if ($einsprachwahl==1){
   $output_sprachauswahl = getLangSelector();
 }
@@ -244,6 +243,10 @@ if ($file!="") {
         </table><?php
         $output_savehtml.=ob_get_contents();ob_end_clean();
   }
+  // PDF ADDON BEGIN
+  if (file_exists(PATH_TO_ADDONDIR.'/pdf/lmo-showmain2.inc.php'))
+  include(PATH_TO_ADDONDIR.'/pdf/lmo-showmain2.inc.php');
+  // PDF ADDON END
 }
 
 //Ligenübersicht
