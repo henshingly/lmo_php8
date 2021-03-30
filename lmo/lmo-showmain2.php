@@ -243,10 +243,6 @@ if ($file!="") {
         </table><?php
         $output_savehtml.=ob_get_contents();ob_end_clean();
   }
-  // PDF ADDON BEGIN
-  if (file_exists(PATH_TO_ADDONDIR.'/pdf/lmo-showmain2.inc.php'))
-  include(PATH_TO_ADDONDIR.'/pdf/lmo-showmain2.inc.php');
-  // PDF ADDON END
 }
 
 //Ligenübersicht
