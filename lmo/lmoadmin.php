@@ -37,16 +37,19 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
     $_SESSION['lmouserpass']="";
   }
   ?>
-  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  					"http://www.w3.org/TR/html4/loose.dtd">
-  <html lang="de">
-  <head>
-  <title>LMO Admin</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-    <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_LMO?>/lmo-style-nc.php'>
-    <style type='text/css'>@import url('<?php echo URL_TO_LMO?>/lmo-style.php');</style>
-  </head>
-  <body>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+					"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>LMO Admin</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+  <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_LMO?>/lmo-style-nc.php'>
+  <style type='text/css'>@import url('<?php echo URL_TO_LMO?>/lmo-style.php');</style>
+  <link href='<?php echo URL_TO_LMO?>/css/bootstrap.min.css' rel='stylesheet'/>
+  <script src='<?php echo URL_TO_LMO?>/js/jquery.min.js'></script>
+  <script src='<?php echo URL_TO_LMO?>/js/bootstrap.min.js'></script>
+</head>
+<body>
   <div align="center"><?php 
 
   $action="admin";
