@@ -88,7 +88,7 @@ class spieltag {
     switch ($sorted) {
       case "datum":
         foreach ($this->partien as $partie) {
-        	$result[$partie->zeit+$partie->spNr] = $partie;
+          $result[(int)$partie->zeit+$partie->spNr] = $partie;
         }
         if ($sort_dir == 'ASC') {
           ksort($result,SORT_NUMERIC);
