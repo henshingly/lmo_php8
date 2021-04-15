@@ -1,12 +1,17 @@
 # LMO unter PHP7
-Ich möchte hier mit anderen die Lauffähigkeit des Liga Managers Online unter PHP 7 gewährleisten.
-Die Projektseite ist aber weiterhin <a target="_blank" href="https://www.liga-manager-online.de/homepage/">https://www.liga-manager-online.de/homepage/</a>
+Nachem der LMO nicht mehr weiter entwickelt wird, PHP aber in neuen Versionen veröffentlich wird und einige Dinge nicht mehr funktionieren, hat <a target="_blank" href="https://github.com/henshingly/LMO_PHP7">Henshingley</a> sich die Mühe gemacht den LMO für PHP 7.x zum Laufen gebracht und die Sourcen auf GitHub veröffentlicht.
 
-WICHTIG - 
-Bei dieser LMO Version handelt es sich immer noch um eine Beta Version. Beachtet das bitte. Vor dem drüberkopieren über einen vorhandenen LMO macht zuerst eine Sicherung
+Meinen privaten LMO habe ich schon vor längerem so umgebaut, dass er auch auf mobilen Endgeräten genutzt werden kann. Dazu habe ich mich für das Framework <a target="_blank" href="https://github.com/twbs/bootstrap">Bootstrap</a> entschieden, prinzipiell gehen aber auch problemlos <a target="_blank" href="https://github.com/foundation/foundation-sites">Foundation</a>, <a target="_blank" href="https://materializecss.com/">Materialize</a>, <a target="_blank" href="https://github.com/pure-css/pure">Pure.CSS</a>, <a target="_blank" href="https://github.com/milligram/milligram">Milligram</a>, <a target="_blank" href="https://github.com/dhg/Skeleton">Skeleton</a>, ...
 
-Nachdem joker auf der Projektseite des LMO's das Forum entfernt hat (wegen der Datenschutz-Grundverordnung DSGVO), biete ich auf meiner Webseite ein Supportforum für diesen LMO an (https://www.vest-sport.de/forum/). 
+Das System ist nahezu bei allen identisch, das wichtigste ist das Grid-System, um auf mobilen Seiten an den richtigen Stellen die Umbrüche umzusetzen.
+
+Dabei arbeiten nahezu alle Frontend-Frameworks nach demselben Muster (und dahingehend ist der LMO auch umgebaut worden):
+
+`<table.....>` wird zu `<div class="container-fluid">`
+
+`<tr.....>` wird zu `<div class="row">`
+
+`<td.....>` wird zu `<div class="col">` bzw. zu `<div class="col-x">`
 
 
-Außerdem habe ich schon die neuste ROS PHP Pdf creation class (0.12.40) eingefügt.
-Download der PDF Klasse unter <a target="_blank" href="https://github.com/rospdf/pdf-php">https://github.com/rospdf/pdf-php</a>
+
