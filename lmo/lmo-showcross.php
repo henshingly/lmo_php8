@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  *
+  * 
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -15,62 +15,66 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  * $Id$
   */
 
 
 if(($file!="") && ($kreuz==1)){
   $addc=$_SERVER['PHP_SELF']."?action=cross&amp;file=".$file."&amp;croteam=";
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
-  $croteam=!empty($_GET['croteam'])?$_GET['croteam']:0;
+  $croteam=!empty($_GET['croteam'])?$_GET['croteam']:$favteam;
 ?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-<tr>
-<td class="lmoKreuz">
-<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td>
+      <table class="table table-bordered table-hover" cellspacing="0" cellpadding="0" border="0">
 
 <?php
+/*
 for($i = 0; $i <= ($anzteams+1); $i++) {
   for($j = 0; $j <= ($anzteams+1); $j++) {
+*/
+for($i = 0; $i <= ($anzteams); $i++) {
+  for($j = 0; $j <= ($anzteams); $j++) {
     $dummy = "";
     if ($j == 0) {
       echo "<tr>";
     }
     if ($j == 0){
-      echo "<th align='right'>";
+      echo "<th class='text-center'>";
     } elseif ($j == ($anzteams+1)) {
-      echo "<th align='left'>";
+      echo "<th class='text-left'>";
     } elseif($i == 0 || $i == ($anzteams+1)){
-      echo "<th align='center'>";
+      echo "<th class='text-center'>";
     } elseif($croteam != 0 && ($j == $croteam || $i == $croteam)) {
-      echo "<td align='center' class='lmoBackMarkierung'>";
+      echo "<td class='text-center table-warning'>";
     } elseif($j == $i) {
-      echo "<td class='lmoLeer'>";
+      echo "<td class='table-secondary'>";
     } else {
-      echo "<td align='center'>";
+      echo "<td class='text-center''>";
     }
 
     if (($j == 0) && ($i > 0) && ($i <= $anzteams)) {
       if (($croteam != 0) && (($j == $croteam) || ($i == $croteam))) {
-        echo $teams[$i];
+        echo "<a href=\"".$addc.$i."\">";
+		echo "<acronym title='".$teams[$j]."'>";
+        echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teamk[$i]'");
+		echo "</acronym>";
+        echo "</a>";
       } else {
-        echo "<a href=\"".$addc.$i."\" title=\"".$text[26]."\">".$teams[$i]."</a>";
+        echo "<a href=\"".$addc.$i."\">";
+		echo "<acronym title='".$teams[$i]."'>";
+        echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teamk[$i]'");
+		echo "</acronym>";
+        echo "</a>";
       }
     }
     if ($i == 0 && $j > 0 && $j <= $anzteams) {
-      echo "<a href=\"".$addc.$j."\" title=\"".$teams[$j].": ".$text[26]."\">"."".$teamk[$j].""."</a>";
+      echo "<a href=\"".$addc.$j."\">";
+	  echo "<acronym title='".$teams[$j]."'>";
+      echo HTML_smallTeamIcon($file,$teams[$j]," alt='$teamk[$j]'");
+	  echo "</acronym>";
+      echo "</a>";
     }
-    if ($j == $anzteams+1 && $i > 0 && $i <= $anzteams || $i == $anzteams+1 && $j > 0 && $j <= $anzteams) {
-      echo "<acronym title='".$teams[$j]."'>";
-      echo HTML_smallTeamIcon($file,$teams[$j]," alt='.$teamk[$j].'");
-      echo "</acronym>";
-    }
-    if ($j == $anzteams+1 && $i > 0 && $i <= $anzteams) {
-      echo "<acronym title='".$teams[$i]."'>";
-      echo HTML_smallTeamIcon($file,$teams[$i]," alt='.$teamk[$i].'");
-      echo "</acronym>";
-    }
-
     if (($i > 0) && ($i <= $anzteams) && ($j > 0) && ($j <= $anzteams) && ($j != $i)) {
       $l = 0;
       for($b = 0; $b < $anzst; $b++) {
@@ -104,18 +108,18 @@ for($i = 0; $i <= ($anzteams+1); $i++) {
             }
             echo "<a href=\"".$addr.($b+1)."\" title=\"".$teams[$i]." - ".$teams[$j]." &#10;(".($b+1).". ".$text[2].$lmo_kreuz_longtime.$dummy.")\">";
             if ($goala[$b][$a]=="_" && $lmo_kreuz_shorttime!="") {
-              echo $lmo_kreuz_shorttime;
+               echo $lmo_kreuz_shorttime;
             } else {
-              if ($goala[$b][$a]!="_") echo "<strong>";
-              echo applyFactor($goala[$b][$a],$goalfaktor).":".applyFactor($goalb[$b][$a],$goalfaktor);
-              if ($goala[$b][$a]!="_") echo "</strong>";
-            }
-            if ($spez == 1) {
-              echo " ".$mspez[$b][$a];
-            }
-            if (($mnote[$b][$a] != "") || ($msieg[$b][$a] > 0)) {
-              echo " !";
-            }
+               if ($goala[$b][$a]!="_") echo "<strong>";
+               echo applyFactor($goala[$b][$a],$goalfaktor).":".applyFactor($goalb[$b][$a],$goalfaktor);
+               if ($goala[$b][$a]!="_") echo "</strong>";
+             }
+             if ($spez == 1) {
+                echo " ".$mspez[$b][$a];
+             }
+             if (($mnote[$b][$a] != "") || ($msieg[$b][$a] > 0)) {
+                echo " !";
+             }
             echo "</a>";
             $l++;
           }
@@ -133,8 +137,8 @@ for($i = 0; $i <= ($anzteams+1); $i++) {
     }
   }
   }?>
-</table>
-</td>
-</tr>
-</table><?php
+      </table>
+    </td>
+  </tr>
+</table><?php 
 }?>

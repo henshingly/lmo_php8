@@ -19,7 +19,7 @@
 
 
 $zustatoutput = '';
-if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
+if ($_SESSION['lmouserok'] > 0) {
   if ($lmtype == 0 && $zustatfile = fopen(PATH_TO_LMO.'/'.$diroutput.basename($file).".php", "wb+")) {
 
     $zustatoutput .= "<?php\n";
@@ -88,7 +88,7 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
       $sptore1 = 0;
       $sptore = 0;
       $zuanzsp = 0;
-      $dsxtore = 0;
+      $dstore = 0;
       $zusieg1 = 0;
       $zusieg2 = 0;
       $zuunent1 = 0;
@@ -385,25 +385,25 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
 
 
       if ($zuanzsp > 0) {
-        $dsxtore = round($sptore1/$zuanzsp, 2);
+        $dstore = number_format(round($sptore1/$zuanzsp, 2),2);
       } else {
-        $dsxtore = 0;
+        $dstore = 0;
       }
 
       if ($gzuanzsp > 0) {
-        $gdstore = round($gzutore/$gzuanzsp, 2);
-        $dsheimtore = round($gheimtore/$gzuanzsp, 2);
-        $dsgasttore = round($ggasttore/$gzuanzsp, 2);
+        $gdstore = number_format(round($gzutore/$gzuanzsp, 2),2);
+        $dsheimtore = number_format(round($gheimtore/$gzuanzsp, 2),2);
+        $dsgasttore = number_format(round($ggasttore/$gzuanzsp, 2),2);
       } else {
         $gdstore = 0;
         $dsheimtore = 0;
         $dsgasttore = 0;
       }
-      $zustatoutput .= '$dstore['.$y1.']='.$dsxtore.";\n";
+      $zustatoutput .= '$dstore['.$y1.']='.$dstore.";\n";
       // Durchschnitt Tore pro Spiel
     }
 
-    // Höchster Sieg-Reset - Anfang
+    // Hächster Sieg-Reset - Anfang
     if ($hheimsiegtor != $hheimsiegtor1 || $hgastsiegtor != $hgastsiegtor1) {
       $hheimsieg1 = 0;
       $hgastsieg1 = 0;
@@ -438,7 +438,7 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
       $spieltagflag5 = 0;
     }
 
-    // Höchster Sieg-Reset - Ende
+    // Hächster Sieg-Reset - Ende
 
     // Anzahl gleicher gewonnener Spiele und torreichstes Spiel- Anfang
     for ($y1 = 1; $y1 < $anzst+1; $y1++) {
@@ -451,7 +451,7 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
           $counteranz1 = $counteranz1+1;
         }
         $setztemp1 = $htorreicht1+$htorreicht2;
-        $setztemp2 = (int)$goala[$y1-1][$i1]+(int)$goalb[$y1-1][$i1];
+        $setztemp2 = $goala[$y1-1][$i1]+$goalb[$y1-1][$i1];
         if ($setztemp1 == $setztemp2) {
           $counteranz5 = $counteranz5+1;
         }
@@ -513,21 +513,21 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
         $team_max_gewonnen = array();
         $team_max_gewonnen[] = $team." (".$team_serien['max_gewonnen']['st'].".".$text[145].")";
     	} elseif ($team_serien['max_gewonnen']['count']==$max_gewonnen && $max_gewonnen>0){
-    	  $team_max_gewonnen[] = $team." (".$team_serien['max_gewonnen']['st'].".".$text[145].")";
+    	   $team_max_gewonnen[] = $team." (".$team_serien['max_gewonnen']['st'].".".$text[145].")";
     	}
     	if ($team_serien['max_ungeschlagen']['count']>$max_ungeschlagen) {
         $max_ungeschlagen = $team_serien['max_ungeschlagen']['count'];
         $team_max_ungeschlagen = array();
         $team_max_ungeschlagen[] = $team." (".$team_serien['max_ungeschlagen']['st'].".".$text[145].")";
     	} elseif ($team_serien['max_ungeschlagen']['count']==$max_ungeschlagen && $max_ungeschlagen>0){
-    	  $team_max_ungeschlagen[] = $team." (".$team_serien['max_ungeschlagen']['st'].".".$text[145].")";
+    	   $team_max_ungeschlagen[] = $team." (".$team_serien['max_ungeschlagen']['st'].".".$text[145].")";
     	}
     	if ($team_serien['max_unentschieden']['count']>$max_unentschieden) {
         $max_unentschieden = $team_serien['max_unentschieden']['count'];
         $team_max_unentschieden = array();
         $team_max_unentschieden[] = $team." (".$team_serien['max_unentschieden']['st'].".".$text[145].")";
     	} elseif ($team_serien['max_unentschieden']['count']==$max_unentschieden && $max_unentschieden>0){
-    	  $team_max_unentschieden[] = $team." (".$team_serien['max_unentschieden']['st'].".".$text[145].")";
+    	   $team_max_unentschieden[] = $team." (".$team_serien['max_unentschieden']['st'].".".$text[145].")";
     	}
     	if ($team_serien['max_sieglos']['count']>$max_sieglos) {
         $max_sieglos = $team_serien['max_sieglos']['count'];
@@ -541,7 +541,7 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
         $team_max_verloren = array();
         $team_max_verloren[] = $team." (".$team_serien['max_verloren']['st'].".".$text[145].")";
     	} elseif ($team_serien['max_verloren']['count']==$max_verloren && $max_verloren>0){
-    	  $team_max_verloren[] = $team." (".$team_serien['max_verloren']['st'].".".$text[145].")";
+    	   $team_max_verloren[] = $team." (".$team_serien['max_verloren']['st'].".".$text[145].")";
     	}
     }
     //Serien Ende
@@ -549,67 +549,67 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
 		// Ausgabe der Daten - Anfang
 		$zustatoutput.='$gzutore='.$gzutore.";\n"; 								// Gesamttore der Saison
 		$zustatoutput.='$gdstore='.$gdstore.";\n"; 								// Gesamt-Durchschnitt Tore pro Spiel
-		$zustatoutput.='$gzusieg1='.$gzusieg1.";\n"; 							// Gesamtheimsiege
-		$zustatoutput.='$gzusieg2='.$gzusieg2.";\n"; 							// Gesamtauswärtssiege
-		$zustatoutput.='$gzuunent='.$gzuunent.";\n"; 							// Gesamtunenetschieden
+		$zustatoutput.='$gzusieg1='.$gzusieg1.";\n"; 								// Gesamtheimsiege
+		$zustatoutput.='$gzusieg2='.$gzusieg2.";\n"; 								// Gesamtauswärtssiege
+		$zustatoutput.='$gzuunent='.$gzuunent.";\n"; 								// Gesamtunenetschieden
 		$zustatoutput.='$gbeide='.$gbeide.";\n"; 								// Gesamt beidseitiges Ergebnis
-		$zustatoutput.='$gheimtore='.$gheimtore.";\n"; 							// Gesamt-Heimtore
-		$zustatoutput.='$ggasttore='.$ggasttore.";\n"; 							// Gesamt-Auswärtstore
-		$zustatoutput.='$dsheimtore='.$dsheimtore.";\n"; 						// Gesamt-Durchschnitt Tore pro Heimspiel
-		$zustatoutput.='$dsgasttore='.$dsgasttore.";\n"; 						// Gesamt-Durchschnitt Tore pro Auswärtsspiel
-		$zustatoutput.='$hheimsieg="'.htmlspecialchars($hheimsieg)."\";\n";		// Heimmannschaft1 - höchster Heimsieg
-		$zustatoutput.='$hgastsieg="'.htmlspecialchars($hgastsieg)."\";\n";		// Gastmannschaft1 - höchster Heimsieg
-		$zustatoutput.='$hheimsiegtor="'.$hheimsiegtor."\";\n";						// Tore Heimmannschaft1
-		$zustatoutput.='$hgastsiegtor="'.$hgastsiegtor."\";\n";						// Tore Gastmannschaft1
-		$zustatoutput.='$spieltagflag='.$spieltagflag.";\n";						// Spieltag des Sieges Paarung1
-		$zustatoutput.='$hheimsieg1="'.htmlspecialchars($hheimsieg1)."\";\n";	// Heimmannschaft2 - höchster Heimsieg
-		$zustatoutput.='$hgastsieg1="'.htmlspecialchars($hgastsieg1)."\";\n";	// Gastmannschaft2 - höchster Heimsieg
-		$zustatoutput.='$hheimsiegtor1="'.$hheimsiegtor1."\";\n";					// Tore Heimmannschaft2
-		$zustatoutput.='$hgastsiegtor1="'.$hgastsiegtor1."\";\n";					// Tore Gastmannschaft2
-		$zustatoutput.='$spieltagflag1='.$spieltagflag1.";\n";					// Spieltag des Sieges Paarung2
+		$zustatoutput.='$gheimtore='.$gheimtore.";\n"; 								// Gesamt-Heimtore
+		$zustatoutput.='$ggasttore='.$ggasttore.";\n"; 								// Gesamt-Auswärtstore
+		$zustatoutput.='$dsheimtore='.$dsheimtore.";\n"; 							// Gesamt-Durchschnitt Tore pro Heimspiel
+		$zustatoutput.='$dsgasttore='.$dsgasttore.";\n"; 							// Gesamt-Durchschnitt Tore pro Auswärtsspiel
+		$zustatoutput.='$hheimsieg="'.htmlspecialchars($hheimsieg)."\";\n";					// Heimmannschaft1 - höchster Heimsieg
+		$zustatoutput.='$hgastsieg="'.htmlspecialchars($hgastsieg)."\";\n";					// Gastmannschaft1 - höchster Heimsieg
+		$zustatoutput.='$hheimsiegtor="'.$hheimsiegtor."\";\n";							// Tore Heimmannschaft1
+		$zustatoutput.='$hgastsiegtor="'.$hgastsiegtor."\";\n";							// Tore Gastmannschaft1
+		$zustatoutput.='$spieltagflag='.$spieltagflag.";\n";							// Spieltag des Sieges Paarung1
+		$zustatoutput.='$hheimsieg1="'.htmlspecialchars($hheimsieg1)."\";\n";					// Heimmannschaft2 - höchster Heimsieg
+		$zustatoutput.='$hgastsieg1="'.htmlspecialchars($hgastsieg1)."\";\n";					// Gastmannschaft2 - höchster Heimsieg
+		$zustatoutput.='$hheimsiegtor1="'.$hheimsiegtor1."\";\n";						// Tore Heimmannschaft2
+		$zustatoutput.='$hgastsiegtor1="'.$hgastsiegtor1."\";\n";						// Tore Gastmannschaft2
+		$zustatoutput.='$spieltagflag1='.$spieltagflag1.";\n";							// Spieltag des Sieges Paarung2
 		$zustatoutput.='$counteranz='.$counteranz.";\n";							// Anzahl höchster Heimsiege
-		$zustatoutput.='$aheimsieg="'.htmlspecialchars($aheimsieg)."\";\n";		// Heimmannschaft1 - höchster Auswärtssieg
-		$zustatoutput.='$agastsieg="'.htmlspecialchars($agastsieg)."\";\n";		// Gastmannschaft1 - höchster Auswärtssieg
-		$zustatoutput.='$aheimsiegtor="'.$aheimsiegtor."\";\n";						// Tore Heimmannschaft1
-		$zustatoutput.='$agastsiegtor="'.$agastsiegtor."\";\n";						// Tore Gastmannschaft1
-		$zustatoutput.='$spieltagflag2='.$spieltagflag2.";\n";					// Spieltag des Sieges Paarung1
-		$zustatoutput.='$aheimsieg1="'.htmlspecialchars($aheimsieg1)."\";\n";	// Heimmannschaft2 - höchster Auswärtssieg
-		$zustatoutput.='$agastsieg1="'.htmlspecialchars($agastsieg1)."\";\n";	// Gastmannschaft2 - höchster Auswärtssieg
-		$zustatoutput.='$aheimsiegtor1="'.$aheimsiegtor1."\";\n";					// Tore Heimmannschaft2
-		$zustatoutput.='$agastsiegtor1="'.$agastsiegtor1."\";\n";					// Tore Gastmannschaft2
-		$zustatoutput.='$spieltagflag3='.$spieltagflag3.";\n";					// Spieltag des Sieges Paarung2
-		$zustatoutput.='$counteranz1='.$counteranz1.";\n";						// Anzahl höchster Auswärtssiege
-		$zustatoutput.='$htorreichm1="'.htmlspecialchars($htorreichm1)."\";\n"; 	// Heimmannschaft1 - Torreichstes Spiel1
-		$zustatoutput.='$htorreichm2="'.htmlspecialchars($htorreichm2)."\";\n"; 	// Gastmannschaft1 - Torreichstes Spiel1
-		$zustatoutput.='$htorreicht1="'.$htorreicht1."\";\n";						// Tore Heimmannschaft1
-		$zustatoutput.='$htorreicht2="'.$htorreicht2."\";\n";						// Tore Gastmannschaft1
-		$zustatoutput.='$spieltagflag4='.$spieltagflag4.";\n";					// Spieltag des Sieges Paarung1
-		$zustatoutput.='$htorreichm3="'.htmlspecialchars($htorreichm3)."\";\n"; 	// Heimmannschaft2 - Torreichstes Spiel2
-		$zustatoutput.='$htorreichm4="'.htmlspecialchars($htorreichm4)."\";\n"; 	// Gastmannschaft2 - Torreichstes Spiel2
-		$zustatoutput.='$htorreicht3="'.$htorreicht3."\";\n";						// Tore Heimmannschaft2
-		$zustatoutput.='$htorreicht4="'.$htorreicht4."\";\n";						// Tore Gastmannschaft2
-		$zustatoutput.='$spieltagflag5='.$spieltagflag5.";\n";					// Spieltag des Sieges Paarung2
-		$zustatoutput.='$counteranz5='.$counteranz5.";\n";						// Anzahl höchster Treffer
-		$zustatoutput.='$akt_gewonnen='.$akt_gewonnen.";\n";						//Aktuelle Serie gewonnen
-		$zustatoutput.='$team_akt_gewonnen="'.htmlspecialchars(implode("\n",$team_akt_gewonnen))."\";\n";					//Aktuelle Serie gewonnen Team
+		$zustatoutput.='$aheimsieg="'.htmlspecialchars($aheimsieg)."\";\n";					// Heimmannschaft1 - höchster Auswärtssieg
+		$zustatoutput.='$agastsieg="'.htmlspecialchars($agastsieg)."\";\n";					// Gastmannschaft1 - höchster Auswärtssieg
+		$zustatoutput.='$aheimsiegtor="'.$aheimsiegtor."\";\n";							// Tore Heimmannschaft1
+		$zustatoutput.='$agastsiegtor="'.$agastsiegtor."\";\n";							// Tore Gastmannschaft1
+		$zustatoutput.='$spieltagflag2='.$spieltagflag2.";\n";							// Spieltag des Sieges Paarung1
+		$zustatoutput.='$aheimsieg1="'.htmlspecialchars($aheimsieg1)."\";\n";					// Heimmannschaft2 - hächster Auswärtssieg
+		$zustatoutput.='$agastsieg1="'.htmlspecialchars($agastsieg1)."\";\n";					// Gastmannschaft2 - hächster Auswärtssieg
+		$zustatoutput.='$aheimsiegtor1="'.$aheimsiegtor1."\";\n";						// Tore Heimmannschaft2
+		$zustatoutput.='$agastsiegtor1="'.$agastsiegtor1."\";\n";						// Tore Gastmannschaft2
+		$zustatoutput.='$spieltagflag3='.$spieltagflag3.";\n";							// Spieltag des Sieges Paarung2
+		$zustatoutput.='$counteranz1='.$counteranz1.";\n";							// Anzahl höchster Auswärtssiege
+		$zustatoutput.='$htorreichm1="'.htmlspecialchars($htorreichm1)."\";\n"; 				// Heimmannschaft1 - Torreichstes Spiel1
+		$zustatoutput.='$htorreichm2="'.htmlspecialchars($htorreichm2)."\";\n"; 				// Gastmannschaft1 - Torreichstes Spiel1
+		$zustatoutput.='$htorreicht1="'.$htorreicht1."\";\n";							// Tore Heimmannschaft1
+		$zustatoutput.='$htorreicht2="'.$htorreicht2."\";\n";							// Tore Gastmannschaft1
+		$zustatoutput.='$spieltagflag4='.$spieltagflag4.";\n";							// Spieltag des Sieges Paarung1
+		$zustatoutput.='$htorreichm3="'.htmlspecialchars($htorreichm3)."\";\n"; 				// Heimmannschaft2 - Torreichstes Spiel2
+		$zustatoutput.='$htorreichm4="'.htmlspecialchars($htorreichm4)."\";\n"; 				// Gastmannschaft2 - Torreichstes Spiel2
+		$zustatoutput.='$htorreicht3="'.$htorreicht3."\";\n";							// Tore Heimmannschaft2
+		$zustatoutput.='$htorreicht4="'.$htorreicht4."\";\n";							// Tore Gastmannschaft2
+		$zustatoutput.='$spieltagflag5='.$spieltagflag5.";\n";							// Spieltag des Sieges Paarung2
+		$zustatoutput.='$counteranz5='.$counteranz5.";\n";							// Anzahl höchster Treffer
+		$zustatoutput.='$akt_gewonnen='.$akt_gewonnen.";\n";							//Aktuelle Serie gewonnen
+		$zustatoutput.='$team_akt_gewonnen="'.htmlspecialchars(implode("\n",$team_akt_gewonnen))."\";\n";	//Aktuelle Serie gewonnen Team
 		$zustatoutput.='$akt_ungeschlagen='.$akt_ungeschlagen.";\n";						//Aktuelle Serie ungeschlagen
-		$zustatoutput.='$team_akt_ungeschlagen="'.htmlspecialchars(implode("\n",$team_akt_ungeschlagen))."\";\n";					//Aktuelle Serie ungeschlagen Team
+		$zustatoutput.='$team_akt_ungeschlagen="'.htmlspecialchars(implode("\n",$team_akt_ungeschlagen))."\";\n";	//Aktuelle Serie ungeschlagen Team
 		$zustatoutput.='$akt_unentschieden='.$akt_unentschieden.";\n";						//Aktuelle Serie unentschieden
-		$zustatoutput.='$team_akt_unentschieden="'.htmlspecialchars(implode("\n",$team_akt_unentschieden))."\";\n";						//Aktuelle Serie unentschieden Team
-		$zustatoutput.='$akt_sieglos='.$akt_sieglos.";\n";						//Aktuelle Serie sieglos
-		$zustatoutput.='$team_akt_sieglos="'.htmlspecialchars(implode("\n",$team_akt_sieglos))."\";\n";					//Aktuelle Serie sieglos Team
-		$zustatoutput.='$akt_verloren='.$akt_verloren.";\n";						//Aktuelle Serie verloren
-		$zustatoutput.='$team_akt_verloren="'.htmlspecialchars(implode("\n",$team_akt_verloren))."\";\n";					//Aktuelle Serie verloren Team
-		$zustatoutput.='$max_gewonnen='.$max_gewonnen.";\n";						//Längste Serie gewonnen
-		$zustatoutput.='$team_max_gewonnen="'.htmlspecialchars(implode("\n",$team_max_gewonnen))."\";\n";					//Längste Serie gewonnen Team
+		$zustatoutput.='$team_akt_unentschieden="'.htmlspecialchars(implode("\n",$team_akt_unentschieden))."\";\n";	//Aktuelle Serie unentschieden Team
+		$zustatoutput.='$akt_sieglos='.$akt_sieglos.";\n";							//Aktuelle Serie sieglos
+		$zustatoutput.='$team_akt_sieglos="'.htmlspecialchars(implode("\n",$team_akt_sieglos))."\";\n";		//Aktuelle Serie sieglos Team
+		$zustatoutput.='$akt_verloren='.$akt_verloren.";\n";							//Aktuelle Serie verloren
+		$zustatoutput.='$team_akt_verloren="'.htmlspecialchars(implode("\n",$team_akt_verloren))."\";\n";	//Aktuelle Serie verloren Team
+		$zustatoutput.='$max_gewonnen='.$max_gewonnen.";\n";							//Längste Serie gewonnen
+		$zustatoutput.='$team_max_gewonnen="'.htmlspecialchars(implode("\n",$team_max_gewonnen))."\";\n";	//Längste Serie gewonnen Team
 		$zustatoutput.='$max_ungeschlagen='.$max_ungeschlagen.";\n";						//Längste Serie ungeschlagen
-		$zustatoutput.='$team_max_ungeschlagen="'.htmlspecialchars(implode("\n",$team_max_ungeschlagen))."\";\n";					//Längste Serie ungeschlagen Team
+		$zustatoutput.='$team_max_ungeschlagen="'.htmlspecialchars(implode("\n",$team_max_ungeschlagen))."\";\n";	//Längste Serie ungeschlagen Team
 		$zustatoutput.='$max_unentschieden='.$max_unentschieden.";\n";						//Längste Serie unentschieden
-		$zustatoutput.='$team_max_unentschieden="'.htmlspecialchars(implode("\n",$team_max_unentschieden))."\";\n";					//Längste Serie unentschieden Team
-		$zustatoutput.='$max_sieglos='.$max_sieglos.";\n";						//Längste Serie sieglos
-		$zustatoutput.='$team_max_sieglos="'.htmlspecialchars(implode("\n",$team_max_sieglos))."\";\n";				//Längste Serie sieglos Team
-		$zustatoutput.='$max_verloren='.$max_verloren.";\n";						//Längste Serie verloren
-		$zustatoutput.='$team_max_verloren="'.htmlspecialchars(implode("\n",$team_max_verloren))."\";\n";						//Längste Serie verloren Team
+		$zustatoutput.='$team_max_unentschieden="'.htmlspecialchars(implode("\n",$team_max_unentschieden))."\";\n";	//Längste Serie unentschieden Team
+		$zustatoutput.='$max_sieglos='.$max_sieglos.";\n";							//Längste Serie sieglos
+		$zustatoutput.='$team_max_sieglos="'.htmlspecialchars(implode("\n",$team_max_sieglos))."\";\n";		//Längste Serie sieglos Team
+		$zustatoutput.='$max_verloren='.$max_verloren.";\n";							//Längste Serie verloren
+		$zustatoutput.='$team_max_verloren="'.htmlspecialchars(implode("\n",$team_max_verloren))."\";\n";	//Längste Serie verloren Team
 		$zustatoutput.='?>';
 		// Ausgabe der Daten - Ende
 

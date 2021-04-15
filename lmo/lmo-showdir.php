@@ -20,21 +20,21 @@
   
 
 ?>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+<div  class="container">
    <?php /*<tr>
     <td align="right">
 <?php include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
   </tr>*/?>
-  <tr>
-    <td align="left"><?php 
+  <div class="row">
+    <div class="col"><?php 
 include(PATH_TO_LMO."/lmo-dirlist.php");?>
-    </td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td align="left"><?php 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">&nbsp;</div>
+  </div>
+  <div class="row">
+    <div class="col"><?php 
 if ($archivlink==1) {
   $subdir=str_replace(array('../','./'),array('',''),$subdir);
   $dirs = get_dir($dirliga.$subdir);
@@ -44,29 +44,29 @@ if ($archivlink==1) {
   $output='';
   foreach($dirs as $dir) {
     $descr=@implode("",file($dirliga.$subdir.$dir."/dir-descr.txt"));
-    $output.=  "<tr><td><a href='".$_SERVER['PHP_SELF']."?subdir=".$subdir.$dir."/'>".$dir."</a></td>";
+    $output.=  "<div class='row'><div class='col'><a href='".$_SERVER['PHP_SELF']."?subdir=".$subdir.$dir."/'>".$dir."</a></div>";
     if ($descr!="") {
-      $output.= "<td><small>".htmlentities($descr)."</small></td>";
+      $output.= "<div class='col'><small>".htmlentities($descr)."</small></div>";
     }
-    $output.="</tr>";
+    $output.="</div>";
   }
   
   if ($output!='') {?>
-      <table class='lmoInner' cellspacing="0" width="99%">
-        <tr>
-          <th colspan="2"><?php echo $text[509];?></th>
-        </tr>
+      <div class="container">
+        <div class="row">
+          <div class="col"><?php echo $text[509];?></div>
+        </div>
         <?php echo $output?>
-      </table><?php 
+      </div><?php 
   }
   if (strpos($subdir,'/')!==FALSE) {?>
       <p><a href="<?php echo $_SERVER['PHP_SELF']?>?subdir=<?php echo dirname($subdir).'/'?>"><?php echo $text[5];?> <?php echo $text[562];?></a></p><?php 
   }
 }?>
-    </td>
-  </tr>
+    </div>
+  </div>
   <?php /*<tr>
     <td align="right">
 <?php include(PATH_TO_LMO."/lmo-ligensortierung.php");?></td>
   </tr>*/?>
-</table>
+</div>

@@ -17,12 +17,8 @@
   *
   * $Id$
   */
-  ?>
-<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <th colspan="<?php echo $breite; ?>" align="left">
-    	<?php
-echo $st.". ".$text[2];
+
+echo "<div class='text-center'><strong>".$st.". ".$text[2];
 if($dats==1){ 
   if($datum1[$st-1]!=""){
     echo " ".$text[3]." ".$datum1[$st-1];
@@ -31,8 +27,8 @@ if($dats==1){
     echo " ".$text[4]." ".$datum2[$st-1];
   }
 }?>
-    </th>
-  </tr><?php 
+</strong></div>
+<div class="container-fluid"><?php 
 // Wenn Spieltermine angegeben und Sortierung eingeschaltet, dann nach Datum sortieren
 $datsort = $mterm[$st-1];
 if($enablegamesort == '1' && filterZero($mterm[$st-1])) { 
@@ -42,18 +38,17 @@ if($enablegamesort == '1' && filterZero($mterm[$st-1])) {
 }
 $spielfreia=array();
 $spielfreib=array();
-//while (list ($key, $val) = each ($datsort)) { //Deprecated: The each() function ...
-foreach($datsort as $key => $val) {
+foreach ($datsort as $key => $val) {
   $i = $key;
   if (($teama[$st-1][$i] > 0) && ($teamb[$st-1][$i] > 0)) {?>
-  <tr><?php 
+  <div class="row"><?php 
     if ($datm == 1) {
       if ($mterm[$st-1][$i] > 0) {
         $dum1 = strftime($datf, $mterm[$st-1][$i]);
       } else {
         $dum1 = "";
       }?>
-    <td class="nobr"><?php echo $dum1; ?></td><?php   
+    <div class="col-2"><?php echo $dum1; ?></div><?php   
     }
 
     /* Spielfrei-Hack-Beginn1*/
@@ -63,10 +58,9 @@ foreach($datsort as $key => $val) {
   	//}
     /* Spielfrei-Hack-Ende1*/ ?>
 
-    <td width="2">&nbsp;</td>
-    <td class="nobr" align="right"><?php 
- 
-    if ($plan == "1") {
+    <div class="col-3 text-end">
+    <?php 
+     if ($plan == "1") {
       echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
     }
     if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
@@ -79,12 +73,12 @@ foreach($datsort as $key => $val) {
     if ($plan == "1") {
       echo "</a>";
     }
-    echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");             
+    //echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' style='vertical-align: middle;'");             
     ?>
-    </td>
-    <td align="center" width="10">-</td>
-    <td class="nobr" align="left"><?php 
-    echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+    </div>
+    <div class="col-3 text-start">-&nbsp;
+    <?php 
+    //echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' style='vertical-align: middle;'")."&nbsp;";
     if ($plan == "1") {
       echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
     }
@@ -99,95 +93,87 @@ foreach($datsort as $key => $val) {
       echo "</a>";
     }
       ?>
-    </td>
-    <td width="2">&nbsp;</td>
-    <td align="right"><?php echo applyFactor($goala[$st-1][$i],$goalfaktor); ?></td>
-    <td align="center" width="8">:</td>
-    <td align="left"><?php echo applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td><?php   
+    </div>
+    <div class="col-2 col-sm-auto"><?php echo applyFactor($goala[$st-1][$i],$goalfaktor); ?> : <?php echo applyFactor($goalb[$st-1][$i],$goalfaktor); ?></div>
+    <?php   
     if($spez==1) {?>
-    <td width="2">&nbsp;</td>
-    <td><?php echo $mspez[$st-1][$i]; ?></td><?php 
-    }
-    if ($msieg[$st-1][$i]==3){ ?>
-    <td width="2">/</td>
-    <td align="right"><?php echo applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td>
-    <td align="center" width="8">:</td>
-    <td align="left"><?php echo applyFactor($goala[$st-1][$i],$goalfaktor); ?></td><?php   
+    <?php echo $mspez[$st-1][$i]; ?><?php 
     }?>
-    <td width="2">&nbsp;</td>
-    <td class="nobr" align="left"><?php    
+    <div class="col-2"><?php    
     /** Mannschaftsicons finden
      */
     $lmo_teamaicon="";
     $lmo_teambicon="";
     if($urlb==1 || $mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0){
-      $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");
-      $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''");
+      $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' style='vertical-align: middle;'");
+      $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' style='vertical-align: middle;'");
     }
     /** Spielbericht verlinken
      */
     if($urlb==1){
       if($mberi[$st-1][$i]!=""){
-        $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> &ndash; ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
-        echo " <a href='".$mberi[$st-1][$i]."'  target='_blank'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
+        $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> &ndash; ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br /><br />";
+        echo " <a href='".$mberi[$st-1][$i]."' target='_blank' title='".nl2br($text[270])."'><i class='far fa-book fa-lg text-success'></i></a>";
       }else{
-        echo "&nbsp;&nbsp;&nbsp;";
+        echo " <img src='".URL_TO_IMGDIR."/blank.png' width='19' height='1' border='0' alt=''>";
       }
     }
     /** Notizen anzeigen
-     *
+     * 
      */
     if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
  
-      $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
+      //$lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
       //Beidseitiges Ergebnis
+/*
       if ($msieg[$st-1][$i]==3) {
-        $lmo_spielnotiz.=" / ".applyFactor($goalb[$st-1][$i],$goalfaktor).":".applyFactor($goala[$st-1][$i],$goalfaktor);
+        $lmo_spielnotiz.=" / ".applyFactor($goalb[$st-1][$i],$goalfaktor).":".applyFactor($goala[$st-1][$i],$goalfaktor)."\n\n";
       }
+*/
       if ($spez==1) {
         $lmo_spielnotiz.=" ".$mspez[$st-1][$i];
       }
       //Grüner Tisch: Heimteam siegt
       if ($msieg[$st-1][$i]==1) {
-        $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".$teams[$teama[$st-1][$i]]." ".$text[211];
+        $lmo_spielnotiz.=$text[219].": ".$teams[$teama[$st-1][$i]]." ".$text[211];
       }
       //Grüner Tisch: Gastteam siegt
       if ($msieg[$st-1][$i]==2) {
-        $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);
+        $lmo_spielnotiz.=$text[219].": ".addslashes($teams[$teamb[$st-1][$i]]." ".$text[211]);
       }
       //Beidseitiges Ergebnis
       if ($msieg[$st-1][$i]==3) {
-        $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".addslashes($text[212]);
+        $lmo_spielnotiz.=$text[219].": ".addslashes($text[212]);
       }
       //Allgemeine Notiz
       if ($mnote[$st-1][$i]!="") {
-        $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i];
+        $lmo_spielnotiz.=$text[22].": ".$mnote[$st-1][$i];
       }
-      echo " <a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+      echo " <a href='#' onclick=\"alert('".htmlentities(strip_tags($lmo_spielnotiz))."');window.focus();return false;\" title='".nl2br($lmo_spielnotiz)."'><i class='far fa-comment'></i></a>";
       $lmo_spielnotiz="";
     } else {
-      echo "&nbsp;";
+      echo " <img src='".URL_TO_IMGDIR."/blank.png' width='1' height='1' border='0' alt=''>";
     }
-    ?></td>
-  </tr><?php  }
+    ?></div>
+  </div><?php  }
 }
 
 if ($einzutore == 1) {?>
-  <tr>  
-    <td class="lmoFooter" align="center" width="100%" colspan="<?php echo $breite; ?>">&nbsp;<?php 
+  <div class="row">  
+    <div class="col text-center">&nbsp;<?php 
   $zustat_file = str_replace(".l98", ".l98.php",  basename($file));
   $zustat_dir = basename($diroutput);
   if (file_exists(PATH_TO_LMO.'/'.$zustat_dir."/".$zustat_file)) {
     require(PATH_TO_LMO.'/'.$zustat_dir."/".$zustat_file);
     echo $text[38].": ".applyFactor($zutore[$st],$goalfaktor)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"." ".$text[38].$text[4001].": ".applyFactor($dstore[$st],$goalfaktor);
   }?>
-    </td>
-  </tr><?php 
+    </div>
+  </div><?php 
 }
   
 if ($einspielfrei == 1) {?>
-  <tr>  
-    <td align="center" width="100%" colspan="<?php echo $breite; ?>"><?php 
+  <div class="row">  
+    <div class="col text-start"><?php 
   //if (($anzteams-($anzst/2+1)) == 0) {
     $spielfreic = array_merge($spielfreia, $spielfreib);
     $hoy5 = 1;
@@ -215,7 +201,7 @@ if ($einspielfrei == 1) {?>
     echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$hoy8]," alt=''");
       }
     }
-  ?></td> 
-  </tr><?php 
+  ?></div> 
+  </div><?php 
 }?>
-</table>
+</div>

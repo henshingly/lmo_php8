@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -19,28 +19,25 @@
   
   
 ?>
-<table class="lmoMiddle" width="400" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center"><h1><?php echo $text[54]; ?></h1></td>
-  </tr>
-  <tr>
-    <td align="center">
+<div class="container">
+  <div class="row">
+    <div class="col">&nbsp;</div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-sm-1"><h1><?php echo $text[54]; ?></h1></div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-sm-1">
       <p><?php echo $text[55]; ?></p>
       <p><?php echo $text[56]; ?></p>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-          <td class="lmotext">
-            <p><?php echo $text[47]; ?></p>
-            <p><?php echo $text[48]; ?></p>
-            <p><?php echo $text[49]; ?></p>
-            <?php echo $text[50]; ?>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-sm-1">
+      <p><?php echo $text[47]; ?></p>
+      <p><?php echo $text[48]; ?></p>
+      <p><?php echo $text[49]; ?></p>
+      <?php echo $text[50]; ?>
+    </div>
+  </div>
+</div>

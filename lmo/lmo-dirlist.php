@@ -102,70 +102,37 @@ closedir($verz);
 usort($ligadatei,'cmp');
 if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=='desc') $ligadatei=array_reverse($ligadatei);?>
 
-<script type="text/javascript" src="<?php echo URL_TO_LMO?>/js/sortable/sortabletable.js"></script>
-<script type="text/javascript" src="<?php echo URL_TO_LMO?>/js/sortable/limSortFunctions.js"></script>
-<table id="ligaliste" class="lmoInner" cellspacing="0" width="99%">
-  <thead>
-    <tr>
-      <th></th>
-      <th class="nobr" align="left" title="<?php echo $text[525].' '.$text[529].' '.$text[526]?>">
-        <noscript><a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=liga_name&amp;liga_sort_direction=asc" title="<?php echo $text[527].' '.$text[525].' '.$text[529].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="8" height="7" border="0" alt="&and;"></a> <?php echo $text[529]?> <a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=liga_name&amp;liga_sort_direction=desc" title="<?php echo $text[528].' '.$text[525].' '.$text[529].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/downsimple.png" width="8" height="7" border="0" alt="&or;"></a></noscript>
-        <script type="text/javascript">document.write('<?php echo $text[529]?>');</script>
-      </th>
-<?php
+<div class="container">
+	<div class="row">
+		<div class="col-1">&nbsp;</div>
+		<div class="col-4 text-left"><b><?php echo $text[529];?></b></div>
+		<?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
-      <th class="nobr" align="left" title="<?php echo $text[525]." ".$text[531]." ".$text[526] ?>">
-        <noscript><a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=file_name&amp;liga_sort_direction=asc" title="<?php echo $text[527].' '.$text[525].' '.$text[531].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="8" height="7" border="0" alt="&and;"></a> <?php echo $text[531]?> <a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=file_name&amp;liga_sort_direction=desc" title="<?php echo $text[528].' '.$text[525].' '.$text[531].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/downsimple.png" width="8" height="7" border="0" alt="&or;"></a></noscript>
-        <script type="text/javascript">document.write('<?php echo $text[531]?>');</script>
-      </th>
-<?php
+		<div class="col-2 text-left"><b><?php echo $text[531];?></b></div><?php
   }?>
-      <th class="nobr" align="left" title="<?php echo $text[525]." ".$text[2]."/".$text[370]." ".$text[526]?>">
-        <noscript><a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=aktueller_spieltag&amp;liga_sort_direction=asc" title="<?php echo $text[527].' '.$text[525].' '.$text[2]."/".$text[370].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="8" height="7" border="0" alt="&and;"></a> <?php echo $text[2]."/".$text[370]?> <a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=aktueller_spieltag&amp;liga_sort_direction=desc" title="<?php echo $text[528].' '.$text[525].' '.$text[2]."/".$text[370].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/downsimple.png" width="8" height="7" border="0" alt="&or;"></a></noscript>
-        <script type="text/javascript">document.write('<?php echo $text[2]."/".$text[370]?>');</script>
-      </th>
-      <th class="nobr" align="left" title="<?php echo $text[525]." ".$text[530]." ".$text[526]?>">
-        <noscript><a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=file_date&amp;liga_sort_direction=asc" title="<?php echo $text[527].' '.$text[525].' '.$text[530].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="8" height="7" border="0" alt="&and;"></a> <?php echo $text[530]?> <a href="<?php echo $_SERVER['PHP_SELF']?>?liga_sort=file_date&amp;liga_sort_direction=desc" title="<?php echo $text[528].' '.$text[525].' '.$text[530].' '.$text[526]?>"><img src="<?php echo URL_TO_IMGDIR?>/downsimple.png" width="8" height="7" border="0" alt="&or;"></a></noscript>
-        <script type="text/javascript">document.write('<?php echo $text[530]?>');</script>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
+		<div class="col-2 text-left"><b><?php echo $text[2]."/".$text[370];?></b></div>
+		<div class="col-2 text-left"><b><?php echo $text[530];?></b></div>
+	</div>
 <?php foreach($ligadatei as $liga){?>
-    <tr onMouseOver="this.className='lmoBackMarkierung';" onMouseOut="this.className=''">
-      <td class="nobr" align="center"><?php echo  HTML_smallLigaIcon($liga['file_name'],"alt=''","");?></td>
-      <td class="nobr" align="left"><a href="<?php echo $addi.$subdir.$liga['file_name']?>"><?php echo $liga['liga_name']?></a></td>
-<?php
+	<div class="row">
+		<div class="col-1"><p class="text-right"><?php echo HTML_smallLigaIcon($liga['liga_icon'],"alt=''","");?></p></div>
+		<div class="col-4 text-left"><a href="<?php echo $addi.$subdir.$liga['file_name']."&amp;st=".$liga['aktueller_spieltag']?>"><?php echo $liga['liga_name']?></a></div>
+		<?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
-      <td class="nobr" align="left"><?php echo $liga['file_name']?> &nbsp;</td>
-<?php
+      		<div class="col-2 text-left"><?php echo $liga['file_name']?> &nbsp;</div><?php
   }?>
-      <td class="nobr" align="left"><?php echo $liga['rundenbezeichnung']." ".$liga['aktueller_spieltag'];?> &nbsp;</td>
-      <td class="nobr" align="left"><!--<?php echo filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name'])?>--><?php echo strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></td>
-    </tr>
-<?php
+		<div class="col-2 text-left">
+		<?php echo $liga['rundenbezeichnung'];
+		if($liga['ligatyp'] == 0) {
+		   echo " ".$liga['aktueller_spieltag'];
+		}
+		?> &nbsp;</div>
+		<div class="col-2 text-left"><?php echo strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></div>
+	</div><?php
 }
-if($liga_counter==0){echo "<td colspan='5'>[".$text[223]."]</td>";}?>
-
-</tbody>
-</table>
-<script type="text/javascript">
-  var ligaTable = new SortableTable(document.getElementById("ligaliste"),<?php
-if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {
-  $sortprojection=array('liga_name'=>1,'file_name'=>2,'file_date'=>4,'asc'=>0,'desc'=>1);?>
-                  ["None","CaseInsensitiveString","CaseInsensitiveString","RoundSort", "timeStamp"]);<?php
-} else {
-  $sortprojection=array('liga_name'=>1,'file_name'=>-1,'file_date'=>3,'asc'=>0,'desc'=>1);?>
-                  ["None","CaseInsensitiveString","RoundSort", "timeStamp"]);<?php
-}
-
-if (isset($_SESSION['liga_sort']) && isset($_SESSION['liga_sort_direction'])) {
-  if ($sortprojection[$_SESSION['liga_sort']]>=0)echo "ligaTable.sort(".$sortprojection[$_SESSION['liga_sort']].",".$sortprojection[$_SESSION['liga_sort_direction']].");";
-} else {
-  if ($sortprojection[$lmo_liga_sort]>=0) echo "ligaTable.sort(".$sortprojection[$lmo_liga_sort].",".$sortprojection[$lmo_liga_sort_direction].");";
-}?>
-</script>
-
+if($liga_counter==0){echo "<div class='col'>[".$text[223]."]</div>";}
+?>
+</div>
 <?php
 
 function cmp ($a1, $a2) {

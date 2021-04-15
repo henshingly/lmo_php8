@@ -1,4 +1,4 @@
-<?php
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -17,14 +17,13 @@
   *
   */
   
-
 if (isset($file) && $file != "") {
   $tabtype=isset($_GET['tabtype'])?$_GET['tabtype']:0;
   $newtabtype=0;
   if(!empty($_GET['st'])) { $endtab = $st;}
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=$action&amp;tabtype=$tabtype&amp;file=".$file."&amp;st=";
-  $breite = 10;
+  $breite = 12;
   if ($spez == 1) {
     $breite = $breite+2;
   }
@@ -95,44 +94,46 @@ if (isset($file) && $file != "") {
 
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0"><?php 
-
-  /** Spieltagsauswahl*/?>
-  <tr>
-    <td align="center"><?php  include(PATH_TO_LMO."/lmo-spieltagsmenu.php")?></td>
-  </tr><?php 
+<div class="container">
+  <div class="row">
+    <div class="col text-center"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php")?></div>
+  </div><?php
   
   /** Ergebnisse*/
   if ($tabonres >= 1 || $action=="results") {?>
-  <tr>
-    <td align="center"><?php  include(PATH_TO_LMO."/lmo-showresults.php")?></td>
-  </tr><?php 
+  <div class="row">
+    <div class="col"><?php include(PATH_TO_LMO."/lmo-showresults.php")?></div>
+  </div><?php
   }
   
-  /** Vor und Zurück-Pfeile*/?>
-  <tr>
-    <td>
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr><?php   
+  /** Vor und Zur?ck-Pfeile*/?>
+  <div class="row">
+    <div class="col">
+      <div class="container-fluid">
+        <div class="row"><?php  
    $st0 = $st-1;
    if ($st > 1) {?>
-          <td align="left">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a>&nbsp;</td><?php 
+          <div class="col-6 text-start">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a>&nbsp;</div><?php
+   } else {?>
+          <div class="col-6 text-start"></div><?php
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>
-          <td align="right">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</td><?php 
+          <div class="col-6 text-end">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</div><?php
+   } else {?>
+          <div class="col-6 text-end"></div><?php
    }?>
-        </tr>
-      </table>
-    </td>
-  </tr><?php 
+        </div>
+      </div>
+    </div>
+  </div><?php
   
   /** Tabelle*/
   if ($tabonres >= 1 || $action=="table") {?>
-  <tr>
-    <td align="center"><?php  include(PATH_TO_LMO."/lmo-showtable.php")?></td>
-  </tr><?php 
+  <div class="row">
+    <div class="col"><?php include(PATH_TO_LMO."/lmo-showtable.php")?></div>
+  </div><?php
   }?>
 
-</table><?php 
+</div><?php
 }?>
