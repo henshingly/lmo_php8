@@ -45,9 +45,7 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_LMO?>/lmo-style-nc.php'>
   <style type='text/css'>@import url('<?php echo URL_TO_LMO?>/lmo-style.php');</style>
-  <link href='<?php echo URL_TO_LMO?>/css/bootstrap.min.css' rel='stylesheet'/>
-  <script src='<?php echo URL_TO_LMO?>/js/jquery.min.js'></script>
-  <script src='<?php echo URL_TO_LMO?>/js/bootstrap.min.js'></script>
+  <link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <body>
   <div align="center"><?php 
@@ -62,6 +60,8 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
   }
   ?>
   </div>
+  <!-- JavaScript Bundle with Popper -->
+  <script type="text/javascrpt" src="//cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   </body>
   </html><?php 
 }?>

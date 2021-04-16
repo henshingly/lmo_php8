@@ -87,24 +87,21 @@ for($x = 1; $x <= $anzteams; $x++) {
   <div class="row">
     <div class="col-1 text-right"><span class="<?php echo $label; ?>"><?php echo $x; ?></span>
 <?php
-  $y = "right text-info";
-  //$y = 0;
+  $y = 0;
   if ($endtab > 1 && isset($platz0[$i])) {
     if ($platz0[$i] < $platz1[$i]) {
-      //$y = 1;
-      $y = "up text-success";
+      $y = 1;
     } elseif($platz0[$i] > $platz1[$i]) {
-      //$y = 2;
-      $y = "down text-danger";
+      $y = 2;
     }
   }?>
-    <i class="far fa-arrow-<?php echo $y?>"></i>
+    <img src='<?php echo URL_TO_IMGDIR."/lmo-tab".$y.".gif"; ?>' width="9" height="9" border="0" alt='' />
     </div>
     <div class="col-4 text-left">
     <?php
   echo $dummy.$teams[$i].$dumm2;
   if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        <a href="<?php echo $teamu[$i]?>" target="_blank"><i class='fa-university'></i></a><?php
+        <a href="<?php echo $teamu[$i]?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR."/url.png";?>" alt="<?php echo $text[564]?>" /></a><?php
   }    
   if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
     
@@ -141,7 +138,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     if ($teamn[$i]!="") {
       $lmo_tabellennotiz.=$teamn[$i];
     }?>
-<a href="#" data-toggle="tooltip" title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"> <i class="far fa-exclamation"></i></a><?php
+<a href="#" data-toggle="tooltip" title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"> <img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
     $lmo_tabellennotiz="";
   } else {
     echo "&nbsp;";

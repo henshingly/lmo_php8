@@ -27,14 +27,13 @@
         $j=sprintf("%02d",$i);
         $k=$text[9];
       }
-      echo "<td align='center'>";
 
       if ($i!=$st || empty($tabdat)) {
         if (isset($todo) && $todo=="tabs") {
           echo "<a class='btn btn-sm' href='".$addb.$i."' title='".$k."'>".$j."</a>";
         } else {
           if($i == $st) {
-            echo "<a class='btn btn-sm' href='".$addr.$i."' title='".$k."'>".$j."</a>";
+            echo "<a class='btn btn-sm btn-info' href='".$addr.$i."' title='".$k."'>".$j."</a>";
           } else {
             echo "<a class='btn btn-sm' href='".$addr.$i."' title='".$k."'>".$j."</a>";
           }
