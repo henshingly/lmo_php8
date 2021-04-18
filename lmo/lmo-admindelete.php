@@ -30,22 +30,22 @@ if (($action == "admin") && ($todo == "delete") && ($_SESSION['lmouserok'] == 2)
     }
   }
   ?>
-  <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
-    <tr>
-      <td align="center"><h1><?php echo $text[295]; ?></h1></td>
-    </tr>
-    <tr>
-      <td align="center">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td class="nobr" align="left"><?php 
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col"><h1><?php echo $text[295]; ?></h1></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col">
+	    <div class="container">
+		  <div class="row">
+		    <div class="col"><?php 
   $ftype = ".l98";
   require(PATH_TO_LMO . "/lmo-admindeldir.php");
   ?>
-              </nobr></td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table><?php
+            </div>
+		  </div>
+		</div>
+	  </div>
+    </div>
+  </div><?php
 }

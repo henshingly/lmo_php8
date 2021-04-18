@@ -32,7 +32,7 @@ if ($ftype != "") {
   sort($dummy);
   $i = 0;
   $j = 0;
-  echo"<ul>";
+  echo"<ul class='list-group'>";
   for ($k = 0; $k < count($dummy); $k++) {
     $files = $dummy[$k];
     $sekt = "";
@@ -61,10 +61,10 @@ if ($ftype != "") {
       $j++;
       $t0 = $text[507] . " $j";
     }
-    echo "<li><a href='{$addi}{$dirliga}{$files}' onclick='return dellmolink(this.href,\"{$t0}\");'>{$t0}</a></li>";
+    echo "<li class='list-group-item'><a href='{$addi}{$dirliga}{$files}' onclick='return dellmolink(this.href,\"{$t0}\");'>{$t0}</a></li>";
   }
   if ($i == 0) {
-    echo "<li>[" . $text[223] . "]</li>";
+    echo "<li class='list-group-item'>[" . $text[223] . "]</li>";
   }
   echo"</ul>";
 }

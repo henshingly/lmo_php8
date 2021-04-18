@@ -78,7 +78,7 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
             <td class="lmost5" width="20">&nbsp;</td>
             <td align="right">
 <?php echo $cfg_name?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="x<?php echo $cfg_name?>" size="30" value="<?php echo $cfg_value;?>" onChange="dolmoedit()"></td>
+            <td align="left"><input class="cuastom-control" type="text" name="x<?php echo $cfg_name?>" size="30" value="<?php echo $cfg_value;?>" onChange="dolmoedit()"></td>
           </tr><?php 
       }
     }
@@ -87,7 +87,7 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
 }?>
           <tr>
             <td class="lmost5" colspan="3" align="center">
-              <input title="<?php echo $text[114]?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[188];?>">
+              <input title="<?php echo $text[114]?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo $text[188];?>">
             </td>
           </tr>
         </table

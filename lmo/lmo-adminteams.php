@@ -193,7 +193,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
   </tr>
   <tr>
     <td align="center">
-      <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
+      <form name="lmoedit" class="form-inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
@@ -228,20 +228,20 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 ?>
           <tr>
             <td class="nobr">
-              <input class="lmo-formular-input" type="text" name="xteams<?php echo $i; ?>" size="32" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()">
-              <input class="lmo-formular-input" type="text" name="xteamm<?php echo $i; ?>" size="12" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" onChange="dolmoedit()">
-              <input class="lmo-formular-input" type="text" name="xteamk<?php echo $i; ?>" size="5" maxlength="5" value="<?php echo htmlspecialchars($teamk[$i]); ?>" onChange="dolmoedit()">
+              <input class="custom-control" type="text" name="xteams<?php echo $i; ?>" size="32" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()">
+              <input class="custom-control" type="text" name="xteamm<?php echo $i; ?>" size="12" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" onChange="dolmoedit()">
+              <input class="custom-control" type="text" name="xteamk<?php echo $i; ?>" size="5" maxlength="5" value="<?php echo htmlspecialchars($teamk[$i]); ?>" onChange="dolmoedit()">
               &nbsp;
             </td>
 <?php
   if ($lmtype==0) {
 ?>
             <td class="lmoBackMarkierung nobr" align="center">
-              <input class="lmo-formular-input" type="text" name="xstrafp<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$strafp[$i]; ?>" onChange="dolmoedit()">
+              <input class="custom-control" type="number" name="xstrafp<?php echo $i; ?>" style="width: 40px;" size="1" maxlength="4" value="<?php echo (-1)*$strafp[$i]; ?>" onChange="dolmoedit()">
 <?php
     if ($minus==2) {
 ?>
-              : <input class="lmo-formular-input" type="text" name="xstrafm<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$strafm[$i]; ?>" onChange="dolmoedit()">
+              : <input class="custom-control" type="number" name="xstrafm<?php echo $i; ?>" style="width: 40px;" size="1" maxlength="4" value="<?php echo (-1)*$strafm[$i]; ?>" onChange="dolmoedit()">
 <?php
     }
     echo $namepkt;
@@ -249,13 +249,13 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
             </td>
 
             <td class="nobr" align="center">
-                <input class="lmo-formular-input" type="text" name="xtorkorrektur1<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur1[$i]; ?>" onChange="dolmoedit()">
-              : <input class="lmo-formular-input" type="text" name="xtorkorrektur2<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur2[$i]; ?>" onChange="dolmoedit()">
+                <input class="custom-control" type="number" name="xtorkorrektur1<?php echo $i; ?>" style="width: 40px;" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur1[$i]; ?>" onChange="dolmoedit()">
+              : <input class="custom-control" type="number" name="xtorkorrektur2<?php echo $i; ?>" style="width: 40px;" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur2[$i]; ?>" onChange="dolmoedit()">
               <?php echo $nametor;?>
             </td>
             <td class="nobr" align="center">
 
-                <input class="lmo-formular-input" type="text" name="xstrafdat<?php echo $i; ?>" size="2" maxlength="2" value="<?php echo $strafdat[$i]; ?>" onChange="dolmoedit()">
+                <input class="custom-control" type="number" name="xstrafdat<?php echo $i; ?>" style="width: 40px;" size="2" maxlength="2" value="<?php echo $strafdat[$i]; ?>" onChange="dolmoedit()">
               &nbsp;
             </td>
 
@@ -264,7 +264,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
   if ($lmtype==0) {
 ?>
             <td class="nobr" align="center">
-              <input id="n<?php echo $i?>" class="lmo-formular-input" type="text" name="xteamn<?php echo $i; ?>" tabindex="<?php echo $i;?>13" size="20" maxlength="255" value="<?php echo htmlentities($teamn[$i]); ?>" onChange="dolmoedit()">
+              <input id="n<?php echo $i?>" class="custom-control" type="text" name="xteamn<?php echo $i; ?>" tabindex="<?php echo $i;?>13" size="20" maxlength="255" value="<?php echo htmlentities($teamn[$i]); ?>" onChange="dolmoedit()">
 <?php
       if (trim($teamn[$i]) == '') {
 ?>
@@ -278,7 +278,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 /** Mannschafts URL/Homepage */
 ?>
             <td class="nobr" align="center">
-              <input id="h<?php echo $i?>" class="lmo-formular-input" type="text" name="xteamu<?php echo $i; ?>" tabindex="<?php echo $i;?>14" size="30" maxlength="255" value="<?php echo htmlentities($teamu[$i]); ?>" onChange="dolmoedit()">
+              <input id="h<?php echo $i?>" class="custom-control" type="text" name="xteamu<?php echo $i; ?>" tabindex="<?php echo $i;?>14" size="30" maxlength="255" value="<?php echo htmlentities($teamu[$i]); ?>" onChange="dolmoedit()">
 <?php
       if (trim($teamu[$i]) == '') {
 ?>

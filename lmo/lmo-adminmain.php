@@ -35,107 +35,114 @@ if($action=="admin"){
   if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo getMessage('Delete install folder or set its chmod to 000!',TRUE);
 ?>
 <script type="text/javascript" src="<?php echo URL_TO_LMO?>/js/admin.js.php"></script>
-<table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td colspan='2' align="center"><h1><?php echo $text[77]." ".$text[54];?></h1></td>
-  </tr>
-  <tr>
-    <td class="lmoMenu" align="left"><?php 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"><h1><?php echo $text[77]." ".$text[54];?></h1></div>
+  </div>
+</div>
+<nav><?php 
 require_once(PATH_TO_LMO."/lmo-openfile.php");
 if ($_SESSION['lmouserok'] == 2) {
+  echo "\n<ul class='nav nav-pills'>\n";
   if ($todo != "new") {
-    echo "<a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink();' title='{$text[79]}'>{$text[78]}</a>";
+    echo "<li role='presentation' class='nav-item'><a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink();' title='{$text[79]}' class='nav-link'>{$text[78]}</a></li>\n";
   } else {
-    echo $text[78];
+    echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[78]</a></li>\n";
   }
-  echo "&nbsp;";
+  //echo "&nbsp;";
   if ($todo != "open") {
-    echo "<a href='{$adda}open&amp;subdir=".$subdir."' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";
+    echo "<li role='presentation' class='nav-item'><a href='{$adda}open&amp;subdir=".$subdir."' onclick='return chklmolink();' title='{$text[81]}' class='nav-link'>{$text[80]}</a></li>\n";
   } else {
-    echo $text[80];
+    echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[80]</a></li>\n";
   }
-  echo "&nbsp;";
+  //echo "&nbsp;";
   if ($todo != "delete") {
-    echo "<a href='{$adda}delete' onclick='return chklmolink();' title='{$text[83]}'>{$text[82]}</a>";
+    echo "<li role='presentation' class='nav-item'><a href='{$adda}delete' onclick='return chklmolink();' title='{$text[83]}' class='nav-link'>{$text[82]}</a></li>\n";
   } else {
-    echo $text[82];
+    echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[82]</a></li>\n";
   }
-  echo "&nbsp;";
+  //echo "&nbsp;";
   if ($file != "") {
     if (($todo != "edit") && ($todo != "tabs")) {
-      echo "<a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' title='{$text[91]}'>{$text[90]}</a>";
+      echo "<li role='presentation' class='nav-item'><a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' title='{$text[91]}' class='nav-link'>{$text[90]}</a></li>\n";
     } else {
-      echo $text[90];
+      echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[90]</a></li>\n";
     }
-    echo "&nbsp;";
+  //echo "&nbsp;";
   }
   if ($todo != "upload") {
-    echo "<a href='{$adda}upload' onclick='return chklmolink();' title='{$text[85]}'>{$text[84]}</a>";
+    echo "<li role='presentation' class='nav-item'><a href='{$adda}upload' onclick='return chklmolink();' title='{$text[85]}' class='nav-link'>{$text[84]}</a></li>\n";
   } else {
-    echo $text[84];
+    echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[84]</a></li>\n";
   }
-  echo "&nbsp;";
+  //echo "&nbsp;";
   if ($todo != "download") {
-    echo "<a href='{$adda}download' onclick='return chklmolink();' title='{$text[315]}'>{$text[314]}</a>";
+    echo "<li role='presentation' class='nav-item'><a href='{$adda}download' onclick='return chklmolink();' title='{$text[315]}' class='nav-link'>{$text[314]}</a></li>\n";
   } else {
-    echo $text[314];
+    echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[314]</a></li>\n";
   }
-  echo "&nbsp;";
+  //echo "&nbsp;";
   if (($todo != "options") && ($todo != "addons") && ($todo != "user") && ($todo != "design")) {
-    echo "<a href='{$adda}options' onclick='return chklmolink();' title='{$text[87]}'>{$text[86]}</a>";
+    echo "<li role='presentation' class='nav-item'><a href='{$adda}options' onclick='return chklmolink();' title='{$text[87]}' class='nav-link'>{$text[86]}</a></li>\n";
   } else {
-    echo $text[86];
+    echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[86]</a></li>\n";
   }
-  echo "&nbsp;";
+  //echo "&nbsp;";
   /*Tippspiel-Addon*/
   if ($eintippspiel == 1) {
     if (($todo != "tipp") && ($todo != "tippemail") && ($todo != "tippuser") && ($todo != "tippuseredit") && ($todo != "tippoptions")) {
-      echo "<a href='{$adda}tipp' onclick='return chklmolink();' title='{$text['tipp'][57]}'>{$text['tipp'][0]}</a>";
+      echo "<li role='presentation' class='nav-item'><a href='{$adda}tipp' onclick='return chklmolink();' title='{$text['tipp'][57]}' class='nav-link'>{$text['tipp'][305]}</a></li>\n";
     } else {
-      echo $text['tipp'][0];
+      echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>".$text['tipp'][305]."</a></li>\n";
     }
   }
   /*Tippspiel-Addon*/
   /*Viewer-Addon*/
-  echo "&nbsp;";
+  //echo "&nbsp;";
   if (($todo!="vieweroptions")){
-    echo "<a href='{$adda}vieweroptions' onclick='return chklmolink();' title='{$text['viewer'][21]}'>{$text['viewer'][20]}</a>";
+    echo "<li role='presentation' class='nav-item'><a href='{$adda}vieweroptions' onclick='return chklmolink();' title='{$text['viewer'][21]}' class='nav-link'>{$text['viewer'][20]}</a></li>\n";
   } else {
-    echo $text['viewer'][20];
+    echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>".$text['viewer'][20]."</a></li>\n";
   }
   /*Viewer-Addon*/
+  /*Stats-Addon*/
+  if (($todo!="stats")){
+    echo "<li role='presentation' class='nav-item'><a href='{$adda}stats' onclick='return chklmolink();' title='{$text['stats'][0]}' class='nav-link'>{$text['stats'][0]}</a></li>\n";
+  } else {
+    echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>".$text['stats'][0]."</a></li>\n";
+  }
+  /*Stats-Addon*/
   } elseif($_SESSION['lmouserok'] == 1) {
     if ($todo != "open") {
-      echo "<a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";
+      echo "<li role='presentation' class='nav-item'><a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}' class='nav-link'>{$text[80]}</a></li>\n";
     } else {
-      echo $text[80];
+      echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[80]</a></li>\n";
     }
-    echo "&nbsp;";
+    //echo "&nbsp;";
     if ($file != "") {
       if (($todo != "edit") && ($todo != "tabs")) {
-        echo "<a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' title='{$text[91]}'>{$text[90]}</a>";
+        echo "<li role='presentation' class='nav-item'><a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' title='{$text[91]}' class='nav-link'>{$text[90]}</a></li>\n";
       } else {
-        echo $text[90];
+        echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[90]</a></li>\n";
       }
-      echo "&nbsp;";
+      //echo "&nbsp;";
     }
     if ($todo != "download") {
-      echo "<a href='{$adda}download' onclick='return chklmolink();' title='{$text[315]}'>{$text[314]}</a>";
+      echo "<li role='presentation' class='nav-item'><a href='{$adda}download' onclick='return chklmolink();' title='{$text[315]}' class='nav-link'>{$text[314]}</a><li>\n";
     } else {
-      echo $text[314];
+      echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>$text[314]</a></li>\n";
     }
 
   }
-?>
-    </td>
-    <td class="lmoMenu" align="right"><?php 
-  echo "<a href='{$adda}logout' onclick='return chklmolink();' title='{$text[89]}'>{$text[88]}</a>";
-  echo "&nbsp;";
-  if($_SESSION['lmouserok']==2){echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}else{echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}?>
-     </td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center"><?php 
+  echo "<li role='presentation' class='nav-item pull-right'><a href='{$adda}logout' onclick='return chklmolink();' title='{$text[89]}' class='nav-link'>{$text[88]}</a></li>\n";
+  //echo "&nbsp;";
+  if($_SESSION['lmouserok']==2){
+       echo "<li role='presentation' class='nav-item pull-right'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}' class='nav-link'>{$text[312]}</a></li>\n";
+    } else {
+       echo "<li role='presentation' class='nav-item pull-right'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}' class='nav-link'>{$text[312]}</a></li>\n";
+    }?>
+      </ul>
+</nav><?php 
   if ($_SESSION['lmouserok'] == 2) {
     $addr_options = $_SERVER['PHP_SELF']."?action=admin&amp;todo=options";
     $addr_addons = $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons";
@@ -243,20 +250,20 @@ if ($_SESSION['lmouserok'] == 2) {
   }
 ?>
 
-    </td>
-  </tr>
-  <tr>
-    <td colspan='2' class="lmoFooter" align="left"><?php 
-  if ($einsprachwahl==1){
-    echo getLangSelector();
-  }?>
-    </td>
-  </tr>
-  <tr>
-    <td align="left">
-      <a href="<?php echo URL_TO_LMO."/lmo.php?file=".$file;?>" target="_blank" title="<?php echo $text[116]?>"><?php echo $text[5]?> <?php echo $text[115]?></a>
-    </td>
-    <td class="lmoFooter" align="right"><?php echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
-  </tr>
-</table><?php 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <?php  if ($einsprachwahl==1){ echo getLangSelector(); }?>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <a class="btn btn-warning btn-sm" href="<?php echo URL_TO_LMO."/lmo.php?file=".$file;?>" target="_blank" title="<?php echo $text[116]?>"><?php echo $text[115]?></a>
+    </div>
+    <div class="col-4">
+      <?php echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?>
+    </div>
+  </div>
+</div>
+<?php 
 }?>

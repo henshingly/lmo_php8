@@ -80,36 +80,16 @@ if($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><acronym title="<?php echo $text[275] ?>"><?php echo $text[274]; ?></acronym></td>
-            <td align="right"><input class="lmo-formular-input" type="text" name="xanzst" size="3" maxlength="3" value="<?php echo $anzst?>" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
-            <td align="center">
-              <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',1);" title="<?php echo $text[276]; ?>" onMouseOver="lmoimg(\'sa\',img1)" onMouseOut="lmoimg(\'sa\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"><\/a>')</script></td>
-                </tr>
-                <tr>
-                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',-1);" title="<?php echo $text[276]; ?>" onMouseOver="lmoimg(\'sb\',img3)" onMouseOut="lmoimg(\'sb\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"><\/a>')</script></td>
-                </tr>
-              </table>
-            </td>
+            <td align="right"><input class="custom-control" type="number" style="width: 50px;" name="xanzst" size="3" maxlength="3" value="<?php echo $anzst?>"></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><acronym title="<?php echo $text[278] ?>"><?php echo $text[277]; ?></acronym></td>
-            <td align="right"><input class="lmo-formular-input" type="text" name="xanzsp" size="2" maxlength="2" value="<?php echo $anzsp?>" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
-            <td align="center">
-              <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',1);" title="<?php echo $text[279]; ?>" onMouseOver="lmoimg(\'pa\',img1)" onMouseOut="lmoimg(\'pa\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"><\/a>')</script></td>
-                </tr>
-                <tr>
-                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',-1);" title="<?php echo $text[279]; ?>" onMouseOver="lmoimg(\'pb\',img3)" onMouseOut="lmoimg(\'pb\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"><\/a>')</script></td>
-                </tr>
-              </table>
-            </td>
+            <td align="right"><input class="custom-control" type="number" style="width: 50px;" name="xanzsp" size="2" maxlength="2" value="<?php echo $anzsp?>"></td>
           </tr>
           <tr>
             <td colspan="4" align="right">
-              <input title="<?php echo $text[114] ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[188]; ?>">
+              <input title="<?php echo $text[114] ?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo $text[188]; ?>">
             </td>
           </tr>
           <tr>

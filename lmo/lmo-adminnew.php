@@ -215,17 +215,17 @@ if($newpage==0){ ?>
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $text[244]; ?></acronym></td>
-            <td class="nobr" align="left"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $dirliga; ?><input class="lmo-formular-input" type="text" name="xfile" size="28" maxlength="28" value="<?php echo  $xfile; ?>" onChange="lmofilename()">.l98</acronym></td>
+            <td class="nobr" align="left"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $dirliga; ?><input class="custom-control" type="text" name="xfile" size="28" maxlength="28" value="<?php echo  $xfile; ?>" onChange="lmofilename()">.l98</acronym></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?php echo  $text[118] ?>"><?php echo  $text[113]; ?></acronym></td>
-            <td class="nobr" align="left"><acronym title="<?php echo  $text[118] ?>"><input class="lmo-formular-input" type="text" name="xtitel" size="40" maxlength="60" value="<?php echo  $xtitel; ?>" onChange="lmotitelname()"></acronym></td>
+            <td class="nobr" align="left"><acronym title="<?php echo  $text[118] ?>"><input class="custom-control" type="text" name="xtitel" size="40" maxlength="60" value="<?php echo  $xtitel; ?>" onChange="lmotitelname()"></acronym></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?php echo  $text[175] ?>"><?php echo  $text[174]; ?></acronym></td>
-            <td class="nobr" align="left"><acronym title="<?php echo  $text[175] ?>"><select class="lmo-formular-input" name="xtype" onChange="dolmoedit()"><?php echo  "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>"; echo "<option value=\"1\""; if($xtype==1){echo " selected";} echo ">".$text[177]."</option>"; ?></select></acronym></td>
+            <td class="nobr" align="left"><acronym title="<?php echo  $text[175] ?>"><select class="custom-select" name="xtype" onChange="dolmoedit()"><?php echo  "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>"; echo "<option value=\"1\""; if($xtype==1){echo " selected";} echo ">".$text[177]."</option>"; ?></select></acronym></td>
           </tr><?php 
 }
 if($newpage==1){
@@ -237,21 +237,7 @@ if($newpage==1){
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="nobr" align="right">
-                    <input class="lmo-formular-input" type="text" name="xteams" size="2" maxlength="2" value="18" onChange="lmoteamauf('xteams',0)" onKeyDown="lmoteamclk('xteams',event.keyCode)">
-                  </td>
-                  <td class="nobr" align="center">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\'xteams\',1);" title="<?php echo  $text[273]; ?>" onMouseOver="lmoimg(\'ta\',img1)" onMouseOut="lmoimg(\'ta\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgta" width="7" height="7" border="0"><\/a>')</script>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoteamauf(\'xteams\',-1);" title="<?php echo  $text[273]; ?>" onMouseOver="lmoimg(\'tb\',img3)" onMouseOut="lmoimg(\'tb\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgtb" width="7" height="7" border="0"><\/a>')</script>
-                        </td>
-                      </tr>
-                    </table>
+                    <input class="lcustom-control" type="number" name="xteams" style="width: 50px;" size="2" maxlength="2" value="18">
                   </td>
                 </tr>
               </table>
@@ -264,21 +250,7 @@ if($newpage==1){
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="nobr" align="right">
-                    <input class="lmo-formular-input" type="text" name="xanzst" size="3" maxlength="3" value="34" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)">
-                  </td>
-                  <td class="nobr" align="center">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',1);" title="<?php echo  $text[276]; ?>" onMouseOver="lmoimg(\'sa\',img1)" onMouseOut="lmoimg(\'sa\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgsa" width="7" height="7" border="0"><\/a>')</script>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzstauf(\'xanzst\',-1);" title="<?php echo  $text[276]; ?>" onMouseOver="lmoimg(\'sb\',img3)" onMouseOut="lmoimg(\'sb\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgsb" width="7" height="7" border="0"><\/a>')</script>
-                        </td>
-                      </tr>
-                    </table>
+                    <input class="custom-control" type="number" name="xanzst" style="width: 50px;" size="3" maxlength="3" value="34">
                   </td>
                 </tr>
               </table>
@@ -291,21 +263,7 @@ if($newpage==1){
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="nobr" align="right">
-                    <input class="lmo-formular-input" type="text" name="xanzsp" size="2" maxlength="2" value="9" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)">
-                  </td>
-                  <td class="nobr" align="center">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',1);" title="<?php echo  $text[279]; ?>" onMouseOver="lmoimg(\'pa\',img1)" onMouseOut="lmoimg(\'pa\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximgpa" width="7" height="7" border="0"><\/a>')</script>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <script type="text/javascript">document.write('<a href="#" onclick="lmoanzspauf(\'xanzsp\',-1);" title="<?php echo  $text[279]; ?>" onMouseOver="lmoimg(\'pb\',img3)" onMouseOut="lmoimg(\'pb\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximgpb" width="7" height="7" border="0"><\/a>')</script>
-                        </td>
-                      </tr>
-                    </table>
+                    <input class="custom-control" type="number" name="xanzsp" style="width: 50px;" size="2" maxlength="2" value="9">
                   </td>
                 </tr>
               </table>
@@ -358,7 +316,7 @@ if($newpage==2){
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?php echo  $text[352] ?>"><?php echo  $text[351]." ".$i; ?></acronym></td>
             <td class="nobr" align="left">
-              <select class="lmo-formular-input" name="xmod<?php echo  $i; ?>" onChange="dolmoedit()">
+              <select class="custom-select" name="xmod<?php echo  $i; ?>" onChange="dolmoedit()">
                 <option value="1"<?php if($xmodus[$i-1]==1){echo " selected";}?>><?php echo $text[353]?></option>
                 <option value="2"<?php if($xmodus[$i-1]==2){echo " selected";}?>><?php echo $text[354]?></option>
                 <option value="3"<?php if($xmodus[$i-1]==3){echo " selected";}?>><?php echo $text[355]?></option>
@@ -377,11 +335,11 @@ if($newpage<3){ ?>
             </td><?php 
   if($newpage<2){ ?>
             <td align="right">
-              <input title="<?php echo  $text[261]; ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo  $text[260]; ?>">
+              <input title="<?php echo  $text[261]; ?>" class="btn btn-primary btn.sm" type="submit" name="best" value="<?php echo  $text[260]; ?>">
             </td><?php 
   } else {?>
             <td align="right">
-              <input title="<?php echo  $text[290]; ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo  $text[289]; ?>">
+              <input title="<?php echo  $text[290]; ?>" class="btn btn-primary btn.sm" type="submit" name="best" value="<?php echo  $text[289]; ?>">
             </td><?php 
   }?>
           </tr><?php 
