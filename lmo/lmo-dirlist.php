@@ -55,6 +55,7 @@ while($files=readdir($verz)){
           if($option_name=="Actual"){$ligadatei[$liga_counter]['aktueller_spieltag']=$option_wert;}
           if($option_name=="Teams"){$ligadatei[$liga_counter]['anz_teams']=$option_wert;}
           if($option_name=="Type"){
+            $ligadatei[$liga_counter]['liga_typ']=$option_wert;
             if($option_wert=="1"){$ligadatei[$liga_counter]['rundenbezeichnung']=$text[370];}
           }
           //Alle benötigten Werte gefunden -> Abbruch
@@ -74,19 +75,15 @@ while($files=readdir($verz)){
           switch ($ligadatei[$liga_counter]['aktueller_spieltag']) {
             case ($t5-1):
               $ligadatei[$liga_counter]['rundenbezeichnung']=$text[374];
-              $ligadatei[$liga_counter]['aktueller_spieltag']='';
               break;
             case ($t5-2):
               $ligadatei[$liga_counter]['rundenbezeichnung']=$text[373];
-              $ligadatei[$liga_counter]['aktueller_spieltag']='';
               break;
             case ($t5-3):
               $ligadatei[$liga_counter]['rundenbezeichnung']=$text[372];
-              $ligadatei[$liga_counter]['aktueller_spieltag']='';
               break;
             case ($t5-4):
               $ligadatei[$liga_counter]['rundenbezeichnung']=$text[371];
-              $ligadatei[$liga_counter]['aktueller_spieltag']='';
               break;
           }
         }
@@ -121,7 +118,12 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
       		<div class="col-2 text-left"><?php echo $liga['file_name']?> &nbsp;</div><?php
   }?>
-		<div class="col-2 text-left"><?php echo $liga['rundenbezeichnung']." ".$liga['aktueller_spieltag']?></div>
+		<div class="col-2 text-left">
+		<?php echo $liga['rundenbezeichnung'];
+		if($liga['liga_typ'] == 0) {
+		   echo " ".$liga['aktueller_spieltag'];
+		}
+		?> &nbsp;</div>
 		<div class="col-2 text-left"><?php echo strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></div>
 	</div><?php
 }
