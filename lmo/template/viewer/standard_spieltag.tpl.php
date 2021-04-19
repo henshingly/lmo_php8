@@ -1,95 +1,33 @@
-<style type="text/css">
-.viewer * {
-  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-  font-size: 11px;
-}
-.viewer {
-  border: none;
-  margin: 0 0 0 0;
-  background-color: Blue;
-  color: white;
-}
-
-.viewer a {
-  text-decoration: none;
-  color: #fff;
-}
-.viewer a:visited {
-  text-decoration: none;
-  color: #999;
-}
-
-.viewer td, .viewer th {
-   font-size: 12px;
-  margin: 0 0 0 0;
-   border: none;
-}
-
-.viewer h2 {
-  font-size: 12px;
-  font-weight: bold;
-  padding:0.3em;margin:0;
-  color: black;
-  background-color: #c0c0c0;
-  white-space:nowrap;
-  text-align: left;
-}
-.viewer .vRow, .vRowHighlight {
-  font-size: 10px;
-  background-color:white;
-  color: black;
-}
-
-.viewer .vRow a, .viewer .vRowHighlight a{
-  color: black;
-}
-
-.viewer .vRowHighlight {
-  font-weight: bold;
-}
-
-</style>
-<table class="viewer">
-  <tr>
-    <th>Aktueller Spieltag +<!--Anfangsdatum--><!--Spieltageplus--> / -<!--Enddatum--><!--Spieltageminus--></th>
-  </tr>
-  <tr>
-    <td>
-      <table>
-          <!-- BEGIN Liga -->
-            <tr>
-              <td colspan="6"><h2><!--Liganame--></h2></td>
-            </tr>
-            <tr>
-              <td>
-                <table width=100%  cellspacing="0"  cellpadding="2">
-                <!-- BEGIN Spieltag -->
-                    <tr>
-                      <th colspan="10"><a href="<!--AktSpieltagLink-->"><!--AktSpieltag--></th>
-                    </tr>
-                  <!-- BEGIN Inhalt -->
-                    <tr class="<!--Zeilenklasse-->">
-                      <td><a href="<!--SpieltagLink-->"><!--Spieltag--></a></td>
-                      <td><!--Datum--></td>
-                      <td><!--Uhrzeit--></td>
-                      <td align="right"><acronym title="<!--HeimLang-->"><!--Heim--></acronym></td><td><!--Iconheim--></td>
-                      <td>&nbsp;-&nbsp;</td>
-                      <td><!--Icongast--></td><td align="left"><acronym title="<!--GastLang-->"><!--Gast--></acronym></td>
-                      <td><!--Tore--></td>
-                      <td><!--Tabellenlink--></td>
-                      <td><!--Notiz--></td>
-                      <td><!--Spielbericht--></td>
-                    </tr>
-                  <!-- END Inhalt -->
-                  <!-- END Spieltag -->
-                </table>
-              </td>
-            </tr>
-          <!-- END Liga -->
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td align="right"><small><!--VERSION--></small></td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col">Aktueller Spieltag +<!--Anfangsdatum--><!--Spieltageplus--> / -<!--Enddatum--><!--Spieltageminus--></div>
+  </div>
+  <!-- BEGIN Liga -->
+  <div class="row">
+    <div class="col"><h2><!--Liganame--></h2></div>
+  </div>
+  <!-- BEGIN Spieltag -->
+  <div class="row">
+    <div class="col"><a href="<!--AktSpieltagLink-->"><!--AktSpieltag--></div>
+  </div>
+  <!-- BEGIN Inhalt -->
+  <div class="row">
+    <div class="col"><a href="<!--SpieltagLink-->"><!--Spieltag--></a></div>
+	<div class="col"><!--Datum--></div>
+	<div class="col"><!--Uhrzeit--></div>
+	<div class="col text-end"><acronym title="<!--HeimLang-->"><!--Heim--></acronym></div>
+	<div class="col"><!--Iconheim--></div>
+	<div class="col">&nbsp;-&nbsp;</div>
+	<div class="col text-start"><!--Icongast--></td><td align="left"><acronym title="<!--GastLang-->"><!--Gast--></acronym></div>
+	<div class="col"><!--Tore--></div>
+	<div class="col"><!--Tabellenlink--></div>
+	<div class="col"><!--Notiz--></div>
+	<div class="col"><!--Spielbericht--></div>
+  </div>
+  <!-- END Inhalt -->
+  <!-- END Spieltag -->
+  <!-- END Liga -->
+  <div class="row">
+    <div class="col text-end"><small><!--VERSION--></small></div>
+  </div>
+</div>

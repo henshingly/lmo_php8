@@ -1,13 +1,15 @@
-<table style="font-size:90%;font-family:sans-serif;border-spacing:0;border-collapse:collapse;border:1px solid black;" cellspacing="0">
-  <caption style="font-weight:bold;border:1px solid black;"><a style="text-decoration:underline;" href="<!--Link-->"><!--Tabelle--> »</a></caption>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col"><a href="<!--Link-->"><!--Tabelle--></a></div>
+  </div>
   <!-- BEGIN Inhalt -->
-  <tr style="<!--Style-->">
-    <td align="right"><!--Platz--></td>
-    <td align="right"><!--TendenzIMG--></td>
-    <td align="center"><!--TeamBild--></td>
-    <td><acronym title="<!--TeamLang-->"><!--Team--></acronym></td>
-    <td align="right"><!--Punkte--></td>
-    <td align="right"><!--Tordifferenz--></td>
-  </tr>
+  <div class="row">
+    <div class="col text-end"><!--Platz--></div>
+    <div class="col"><!--TendenzIMG--></div>
+    <div class="col-3"><!--TeamBild--></div>
+    <div class="col"><acronym title="<!--TeamLang-->"><!--Team--></acronym></div>
+    <div class="col"><!--Punkte--></div>
+    <div class="col"><!--Tordifferenz--></div>
+  </div>
   <!-- END Inhalt -->
-</table>
+</div>

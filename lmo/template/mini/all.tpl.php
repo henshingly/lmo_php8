@@ -1,17 +1,19 @@
-<table style="font-size:90%;font-family:sans-serif;border-spacing:0;border-collapse:collapse;border:1px solid black;" cellspacing="0">
-  <caption style="font-weight:bold;border:1px solid black;"><a style="text-decoration:underline;" href="<!--Link-->"><!--Tabelle--> »</a></caption>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col"><a href="<!--Link-->"><!--Tabelle--></a></div>
+  </div>
   <!-- BEGIN Inhalt -->
-  <tr style="<!--Style-->">
-    <td align="right"><!--Platz--></td>
-    <td align="right"><!--TendenzIMG--></td>
-    <td><!--TeamBild-->&nbsp;<acronym title="<!--TeamLang--> (<!--Team-->)"><!--TeamMittel--></acronym></td>
-    <td align="right"><!--Spiele--></td>
-    <td align="right"><!--Punkte--></td>
-    <td><!--PlusTore-->:<!--MinusTore--></td>
-    <td align="right"><!--Tordifferenz--></td>
-    <td align="right"><!--Siege--></td>
-    <td align="right"><!--Unentschieden--></td>
-    <td align="right"><!--Niederlagen--></td>
-  </tr>
+  <div class="row">
+    <div class="col text-end"><!--Platz--></div>
+    <div class="col"><!--TendenzIMG--></div>
+	<div class="col-3"><!--TeamBild-->&nbsp;<acronym title="<!--TeamLang--> (<!--Team-->)"><!--TeamMittel--></acronym></div>
+    <div class="col"><!--Spiele--></div>
+    <div class="col"><!--Punkte--></div>
+    <div class="col"><!--PlusTore-->:<!--MinusTore--></div>
+    <div class="col"><!--Tordifferenz--></div>
+    <div class="col"><!--Siege--></div>
+    <div class="col"><!--Unentschieden--></div>
+    <div class="col"><!--Niederlagen--></div>
+  </div>
   <!-- END Inhalt -->
-</table>
+</div>

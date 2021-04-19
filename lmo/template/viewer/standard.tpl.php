@@ -1,82 +1,35 @@
-<style type="text/css">
-.viewer * {
-  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-  font-size: 10px;
-}
-.viewer {
-  background-color: #ffe4b5;
-  color: black;
-}
-
-.viewer h2 {
-  font-size: 12px;
-  font-weight: bold;
-  padding:0.3em;margin:0;
-  color: black;
-  background-color: #c0c0c0;
-  white-space:nowrap;
-  text-align: left;
-}
-
-.viewer a {
-  text-decoration: none;
-  color: #000;
-}
-.viewer a:visited {
-  text-decoration: none;
-  color: #999;
-}
-
-.viewer table {
-  
-}
-.viewer .vRow {
-  font-size: 10px;
-  background-color:#e0e0e0;
-}
-.viewer .vRowHighlight {
-  background: #c0c0c0;
-}
-
-</style>
-<table class="viewer">
-  <tr>
-    <th>Begegnungen von <!--Anfangsdatum--> bis <!--Enddatum--></th>
-  </tr>
-  <tr>
-    <td>
-      <table>
-          <!-- BEGIN Liga -->
-            <tr>
-              <td><h2><!--Liganame--></h2></td>
-            </tr>
-            <tr>
-              <td>
-                <table width="100%"  cellspacing="0"  cellpadding="2">
-                  <!-- BEGIN Inhalt -->
-                    <tr class="<!--Zeilenklasse-->">
-                      <td><!--Spieltag--></td>
-                      <td><!--Datum--></td>
-                      <td><!--Uhrzeit--></td>
-                      <td align="right"><!--Heim--></td>
-                      <td align="center"><!--Iconheim--></td>
-                      <td>&nbsp;-&nbsp;</td>
-                      <td align="center"><!--Icongast--></td>
-                      <td align="left"><!--Gast--></td>
-                      <td><!--Tore--></td>
-                      <td><!--Tabellenlink--></td>
-                      <td><!--Notiz--></td>
-                      <td><!--Spielbericht--></td>
-                    </tr>
-                  <!-- END Inhalt -->
-                </table>
-              </td>
-            </tr>
-          <!-- END Liga -->
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td align="right"><small><!--VERSION--></small></td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col">Begegnungen von <!--Anfangsdatum--> bis <!--Enddatum--></div>
+  </div>
+  <!-- BEGIN Liga -->
+  <div class="row">
+    <div class="col"><!--Liganame--></div>
+  </div>
+  <div class="row">
+    <div class="col">
+	  <div class="container">
+	    <!-- BEGIN Inhalt -->
+		<div class="row">
+		  <div class="col"><!--Spieltag--></div>
+		  <div class="col"><!--Datum--></div>
+          <div class="col"><!--Uhrzeit--></div>
+          <div class="col text-end"><!--Heim--></div>
+          <div class="col"><!--Iconheim--></div>
+          <div class="col">&nbsp;-&nbsp;</div>
+          <div class="col"><!--Icongast--></div>
+          <div class="col text-start"><!--Gast--></div>
+          <div class="col"><!--Tore--></div>
+          <div class="col"><!--Tabellenlink--></div>
+          <div class="col"><!--Notiz--></div>
+          <div class="col"><!--Spielbericht--></div>
+		</div>
+		<!-- END Inhalt -->
+	  </div>
+	</div>
+  </div>
+  <!-- END Liga -->
+  <div class="row">
+    <div class="col text-end"><small><!--VERSION--></small></div>
+  </div>
+</div>
