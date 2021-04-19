@@ -105,13 +105,6 @@ if ($_SESSION['lmouserok'] == 2) {
     echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>".$text['viewer'][20]."</a></li>\n";
   }
   /*Viewer-Addon*/
-  /*Stats-Addon*/
-  if (($todo!="stats")){
-    echo "<li role='presentation' class='nav-item'><a href='{$adda}stats' onclick='return chklmolink();' title='{$text['stats'][0]}' class='nav-link'>{$text['stats'][0]}</a></li>\n";
-  } else {
-    echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>".$text['stats'][0]."</a></li>\n";
-  }
-  /*Stats-Addon*/
   } elseif($_SESSION['lmouserok'] == 1) {
     if ($todo != "open") {
       echo "<li role='presentation' class='nav-item'><a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}' class='nav-link'>{$text[80]}</a></li>\n";

@@ -23,46 +23,6 @@ if ($file != "") {
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
   $selteam=!empty($_GET['selteam'])?$_GET['selteam']:$selteam;
-  function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
-    $erg = 0;
-    if ($gmod == 1) {
-      if ($m1[0] > $m2[0]) {
-        $erg = 1;
-      } elseif($m1[0] < $m2[0]) {
-        $erg = 2;
-      }
-    } elseif($gmod == 2) {
-      if (($m1[0]+$m1[1]) > ($m2[0]+$m2[1])) {
-        $erg = 1;
-      } elseif(($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
-        $erg = 2;
-      } else {
-        if ($m2[0] > $m1[1]) {
-          $erg = 2;
-        } elseif($m2[0] < $m1[1]) {
-          $erg = 1;
-        }
-      }
-    } else {
-      $erg1 = 0;
-      $erg2 = 0;
-      for($k = 0; $k < $gmod; $k++) {
-        if (($m1[$k] != "_") && ($m2[$k] != "_")) {
-          if ($m1[$k] > $m2[$k]) {
-            $erg1++;
-          } elseif($m1[$k] < $m2[$k]) {
-            $erg2++;
-          }
-        }
-      }
-      if ($erg1 > ($gmod/2)) {
-        $erg = 1;
-      } elseif($erg2 > ($gmod/2)) {
-        $erg = 2;
-      }
-    }
-    return $erg;
-  }?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
