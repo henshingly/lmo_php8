@@ -131,7 +131,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
       $erg = 2;
     }
   } elseif($gmod == 2) {
-	if(($m1[0] || $m1[1]) != "_") {
+	if($m1[1] != "_") {
       if (($m1[0]+$m1[1]) > ($m2[0]+$m2[1])) {
         $erg = 1;
       } elseif(($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
@@ -143,7 +143,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
           $erg = 1;
 		}
       }
-    }
+    } 
   } else {
     $erg1 = 0;
     $erg2 = 0;
