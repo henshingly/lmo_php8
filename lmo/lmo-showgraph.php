@@ -27,7 +27,7 @@ if(($file!="") && ($kurve==1)){
     $show_stat2=0;
   }
   $tension = '0.4';
-  if($lmo_fieber_tension==1) $tension = 0;
+  //if($lmo_fieber_tension==1) $tension = 0;
 ?>
 
 <div class="container">

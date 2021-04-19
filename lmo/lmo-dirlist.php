@@ -115,18 +115,13 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
 	</div>
 <?php foreach($ligadatei as $liga){?>
 	<div class="row">
-		<div class="col-1"><p class="text-right"><?php echo HTML_smallLigaIcon($liga['liga_icon'],"alt=''","");?></p></div>
+		<div class="col-1">&nbsp;</div>
 		<div class="col-4 text-left"><a href="<?php echo $addi.$subdir.$liga['file_name']."&amp;st=".$liga['aktueller_spieltag']?>"><?php echo $liga['liga_name']?></a></div>
 		<?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
       		<div class="col-2 text-left"><?php echo $liga['file_name']?> &nbsp;</div><?php
   }?>
-		<div class="col-2 text-left">
-		<?php echo $liga['rundenbezeichnung'];
-		if($liga['ligatyp'] == 0) {
-		   echo " ".$liga['aktueller_spieltag'];
-		}
-		?> &nbsp;</div>
+		<div class="col-2 text-left"><?php echo $liga['rundenbezeichnung']." ".$liga['aktueller_spieltag']?></div>
 		<div class="col-2 text-left"><?php echo strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></div>
 	</div><?php
 }
