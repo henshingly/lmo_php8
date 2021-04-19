@@ -40,23 +40,24 @@ if(($action=="admin") && ($todo=="open")){
   $output='';
   foreach($dirs as $dir) {
     $descr=@implode("",file($dirliga.$subdir.$dir."/dir-descr.txt"));
-    $output.=  "<div class='row'><div class='col-6'><a href='".$adda."open&amp;subdir=".$subdir.$dir."/'>".$dir."</a></div>";
+    $output.=  "<div class='row'><div class='col-1'>&nbsp;</div><div class='col-4 text-start'><a href='".$adda."open&amp;subdir=".$subdir.$dir."/'>".$dir."</a></div>";
     if ($descr!="") {
-      $output.= "<div class='col'><small>".htmlentities($descr)."</small></div>";
+      $output.= "<div class='col-2 text-start'><small>".$descr."</small></div>";
     }
     $output.="</div>";
   }
 
   if ($output!='') {?>
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
-          <div class="col-6"><?php echo $text[509];?></div>
+		  <div class="col-1">&nbsp;</div>
+          <div class="col-4 text-start"><?php echo $text[509];?></div>
         </div>
         <?php echo $output?>
       </div><?php
   }
   if (strpos($subdir,'/')!==FALSE) {?>
-      <p class="text-left"><a href="<?php echo $adda?>open&amp;subdir=<?php echo dirname($subdir).'/'?>"><?php echo $text[5];?> <?php echo $text[562];?></a></p><?php
+      <p class="text-end"><a href="<?php echo $adda?>open&amp;subdir=<?php echo dirname($subdir).'/'?>"><?php echo $text[5];?> <?php echo $text[562];?></a></p><?php
   }
   ?></div>
   </div>

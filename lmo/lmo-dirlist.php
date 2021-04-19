@@ -102,29 +102,29 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
 <div class="container">
 	<div class="row">
 		<div class="col-1">&nbsp;</div>
-		<div class="col-4 text-left"><b><?php echo $text[529];?></b></div>
+		<div class="col-4 text-start"><b><?php echo $text[529];?></b></div>
 		<?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
-		<div class="col-2 text-left"><b><?php echo $text[531];?></b></div><?php
+		<div class="col-2 text-start"><b><?php echo $text[531];?></b></div><?php
   }?>
-		<div class="col-2 text-left"><b><?php echo $text[2]."/".$text[370];?></b></div>
-		<div class="col-2 text-left"><b><?php echo $text[530];?></b></div>
+		<div class="col-2 text-start"><b><?php echo $text[2]."/".$text[370];?></b></div>
+		<div class="col-2 text-start"><b><?php echo $text[530];?></b></div>
 	</div>
 <?php foreach($ligadatei as $liga){?>
 	<div class="row">
 		<div class="col-1">&nbsp;</div>
-		<div class="col-4 text-left"><a href="<?php echo $addi.$subdir.$liga['file_name']."&amp;st=".$liga['aktueller_spieltag']?>"><?php echo $liga['liga_name']?></a></div>
+		<div class="col-4 text-start"><a href="<?php echo $addi.$subdir.$liga['file_name']."&amp;st=".$liga['aktueller_spieltag']?>"><?php echo $liga['liga_name']?></a></div>
 		<?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
-      		<div class="col-2 text-left"><?php echo $liga['file_name']?> &nbsp;</div><?php
+      		<div class="col-2 text-start"><?php echo $liga['file_name']?> &nbsp;</div><?php
   }?>
-		<div class="col-2 text-left">
+		<div class="col-2 text-start">
 		<?php echo $liga['rundenbezeichnung'];
 		if($liga['liga_typ'] == 0) {
 		   echo " ".$liga['aktueller_spieltag'];
 		}
 		?> &nbsp;</div>
-		<div class="col-2 text-left"><?php echo strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></div>
+		<div class="col-2 text-start"><?php echo strftime($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></div>
 	</div><?php
 }
 if($liga_counter==0){echo "<div class='col'>[".$text[223]."]</div>";}
