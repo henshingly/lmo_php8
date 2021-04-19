@@ -14,4 +14,4 @@ Dabei arbeiten nahezu alle Frontend-Frameworks nach demselben Muster (und dahing
 `<td.....>` wird zu `<div class="col">` bzw. zu `<div class="col-x">`
 
 
-
+Der aktuelle Stand kann unter https://lmo.babig.it/ eingesehen werden (entspricht dem GitHub-Stand).
