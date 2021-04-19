@@ -91,9 +91,9 @@ if ($_SESSION['lmouserok'] == 2) {
   /*Tippspiel-Addon*/
   if ($eintippspiel == 1) {
     if (($todo != "tipp") && ($todo != "tippemail") && ($todo != "tippuser") && ($todo != "tippuseredit") && ($todo != "tippoptions")) {
-      echo "<li role='presentation' class='nav-item'><a href='{$adda}tipp' onclick='return chklmolink();' title='{$text['tipp'][57]}' class='nav-link'>{$text['tipp'][305]}</a></li>\n";
+      echo "<li role='presentation' class='nav-item'><a href='{$adda}tipp' onclick='return chklmolink();' title='{$text['tipp'][57]}' class='nav-link'>{$text['tipp'][0]}</a></li>\n";
     } else {
-      echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>".$text['tipp'][305]."</a></li>\n";
+      echo "<li role='presentation' class='nav-item'><a href='#' class='nav-link active'>".$text['tipp'][0]."</a></li>\n";
     }
   }
   /*Tippspiel-Addon*/
