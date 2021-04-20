@@ -574,7 +574,7 @@ if ($file != "") {
             <td class="lmoBackMarkierung">
               <select class="custom-select" name="xmspez<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text[111] ?>" tabindex="<?php echo $i.$n;?>9" data-width="auto">
                 <option<?php if($mspez[$st-1][$i][$n]=="&nbsp;"){echo " selected";}?>>_</option>
-                <option<?php if($mspez[$st-1][$i][$n]==$text[582]){echo " selected";}?>><?php echo $text[582]?></option>
+                <option<?php if($mspez[$st-1][$i][$n]==$text[0]){echo " selected";}?>><?php echo $text[0]?></option>
                 <option<?php if($mspez[$st-1][$i][$n]==$text[1]){echo " selected";}?>><?php echo $text[1]?></option>
               </select>
             </td>
