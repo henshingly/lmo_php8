@@ -101,7 +101,7 @@ if ($form1) {
   isset($_POST['uhrzeitformat'])                  ? $config_array[16]='uhrzeitformat='.$_POST['uhrzeitformat']                                : $config_array[16]='uhrzeitformat=%H:%M';
   isset($_POST['tordummy'])                       ? $config_array[17]='tordummy='.$_POST['tordummy']                                          : $config_array[17]='tordummy=_';
   isset($_POST['tabellensymbol'])                 ? $config_array[18]='tabellensymbol='.$_POST['tabellensymbol']                              : $config_array[18]='tabellensymbol=tabelle.gif';
-  isset($_POST['spielberichtesymbol'])            ? $config_array[19]='spielberichtesymbol='.$_POST['spielberichtesymbol']                    : $config_array[19]='spielberichtesymbol=bericht.gif';
+  isset($_POST['spielberichtesymbol'])            ? $config_array[20]='spielberichtesymbol='.$_POST['spielberichtesymbol']                    : $config_array[20]='spielberichtesymbol=bericht.gif';
   isset($_POST['notizsymbol'])                    ? $config_array[20]='notizsymbol='.$_POST['notizsymbol']                                    : $config_array[20]='notizsymbol=notiz.gif';
   isset($_POST['spieltagtext'])                   ? $config_array[21]='spieltagtext='.$_POST['spieltagtext']                                  : $config_array[21]='spieltagtext=';
   isset($_POST['cache_refresh'])                  ? $config_array[22] ='cache_refresh='.$_POST['cache_refresh']                               : $config_array[22] ='cache_refresh=';
@@ -194,7 +194,7 @@ if($form3) {
 	echo getMessage($text[138]);
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="800">
   <tr>
     <th align="center"><h1><?php echo $text['viewer'][42]; ?></h1></th>
   </tr>
@@ -207,12 +207,12 @@ if($form3) {
           </tr>
           <tr>
             <td class="nobr">
-              <textarea  rows="6"  cols="80"><?php echo trim("\n<?php \n\$multi='".$save_file_name."';\ninclude('".dirname(__FILE__)."/viewer.php');\n?>");?></textarea>
+              <textarea  rows="6" cols="80"><?php echo trim("\n<?php \n\$multi='".$save_file_name."';\ninclude('".dirname(__FILE__)."/viewer.php');\n?>");?></textarea>
             </td>
           </tr>
-					<tr>
-    				<td class="nobr"><h1><?php echo $text['viewer'][36]; ?></h1></td>
-  				</tr>
+		  <tr>
+    		<td class="nobr"><h1><?php echo $text['viewer'][36]; ?></h1></td>
+  		  </tr>
         </table>
       </form>
     </td>
@@ -227,7 +227,7 @@ if($form3) {
 	if (!$form1 && !$form2 && !$form3) { //<!-- Hauptauswahl  --> 
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="800">
     <tr>
       <th align="center"><h1><?php echo $text['viewer'][21];  ?></h1></td>
     </tr>
@@ -247,21 +247,21 @@ if($form3) {
                  </tr>
                  <tr>
                    <td class="nobr" align="right" height="22"><input class="custom-control" type="radio" value="1" name="modus" checked  onClick="byDate(this);"></td>
-                   <td class="nobr" align="left"> <?php echo $text['viewer'][3];  ?></td>
+                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][3];  ?></td>
                    <td class="nobr" align="right"><input type="radio" value="2" name="modus" onClick="byDay(this);"></td>
-                   <td class="nobr" align="left"><?php echo $text['viewer'][6];  ?></td>
+                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][6];  ?></td>
                  </tr>
                  <tr>
-                   <td class="nobr" align="right" height="22"><input class="custom-control"  type="text" name="anzahl_tage_plus" size="3" value="7"></td>
-                   <td class="nobr" align="left"><?php echo $text['viewer'][4];  ?></td>
-                   <td class="nobr" align="right"><input class="custom-control" type="text" name="anzahl_spieltage_vor" size="3" value="3" disabled> </td>
-                   <td class="nobr" align="left"><?php echo $text['viewer'][7];  ?></td>
+                   <td class="nobr" align="right" height="22"><input class="custom-control"  type="number" name="anzahl_tage_plus" size="3" value="7" style="width: 45px;"></td>
+                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][4];  ?></td>
+                   <td class="nobr" align="right"><input class="custom-control" type="number" name="anzahl_spieltage_vor" size="3" value="3" style="width: 45px;" disabled> </td>
+                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][7];  ?></td>
                  </tr>
                  <tr>
-                   <td class="nobr" align="right" height="22"><input class="custom-control" type="text" name="anzahl_tage_minus" size="3" value="7"> </td>
-                   <td class="nobr" align="left"> <?php echo $text['viewer'][5];  ?></td>
-                   <td class="nobr" align="right"><input class="custom-control" type="text" name="anzahl_spieltage_zurueck" size="3" value="3" disabled></td>
-                   <td class="nobr" align="left"> <?php echo $text['viewer'][8];  ?></td>
+                   <td class="nobr" align="right" height="22"><input class="custom-control" type="number" name="anzahl_tage_minus" size="3" value="7" style="width: 45px;"> </td>
+                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][5];  ?></td>
+                   <td class="nobr" align="right"><input class="custom-control" type="number" name="anzahl_spieltage_zurueck" size="3" value="3" style="width: 45px;" disabled></td>
+                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][8];  ?></td>
                  </tr>
                </table>
                <br>
@@ -272,7 +272,7 @@ if($form3) {
                  <tr>
                    <td class="nobr" align="right"><input class="custom-control" type="text" name="datumsformat" size="6" value="d.m.y"></td>
                    <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][10];  ?></td>
-                   <td class="nobr" align="right"><?php echo $text['viewer'][19];  ?></td>
+                   <td class="nobr" align="right"><?php echo $text['viewer'][20];  ?></td>
                    <td class="nobr" align="left">&nbsp;<select class="custom-select  name="template" size="1">
                         <?php  for($tpl=0; $tpl<$tmpl_counter; $tpl++) {
                              echo "<option>".$tpl_files[$tpl]."</option>".chr(13);
@@ -316,13 +316,13 @@ if($form3) {
                    <td class="nobr" align="left">&nbsp;<input class="custom-control" type="text" name="notizsymbol" size="20" value="notiz.gif" onChange="document.getElementById('notizsymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="notizsymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/notiz.gif" alt=""></td>
                  </tr>
                  <tr>
-                   <td class="nobr" align="right"> <input class="custom-control" type="checkbox" name="mannschaftshomepages_verlinken"> </td>
+                   <td class="nobr" align="right"><input class="custom-control" type="checkbox" name="mannschaftshomepages_verlinken"> </td>
                    <td class="nobr" align="left">&nbsp; <?php echo $text['viewer'][15];  ?> </td>  
                    <td class="nobr" align="right"><?php echo $text['viewer'][26];  ?></td>
                    <td class="nobr" align="left">&nbsp;<input class="custom-control" type="text" name="spieltagtext" size="10" value="<?php echo $text[145];?>"></td>
                  </tr>
                  <tr>
-                   <td class="nobr" align="right"><input class="custom-control" type="text" name="cache_refresh" size="3" value="0"></td>
+                   <td class="nobr" align="right"><input class="custom-control" type="number" name="cache_refresh" size="3" value="0" style="width: 45px;"></td>
                    <td class="nobr" align="left">&nbsp;<acronym title="<?php echo $text['viewer'][53]; ?>"><?php echo $text['viewer'][52]; ?></acronym></td>
                    <td class="nobr" align="right"><?php echo $text['viewer'][12];  ?></td>
                    <td class="nobr" align="left">&nbsp;<input class="custom-control" type="text" name="tordummy" size="1" value="_"></td>
