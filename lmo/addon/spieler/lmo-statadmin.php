@@ -331,25 +331,27 @@ function mark(el){
 				<tr>
 					<td class="nobr" align="right">
 						<form action="<?php echo  $_SERVER['PHP_SELF']?>" method="post">
-							<acronym title="<?php echo $text['spieler'][9]?>"><input type="text" name="wert"></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" + ">
+							<acronym title="<?php echo $text['spieler'][9]?>"><input type="text" name="wert"></acronym>&nbsp;
+							<input class="custom-control" type="submit" value=" + ">
 							<input type="hidden" name="option" value="addplayer">
 							<input type="hidden" name="sort" value="<?php echo $spieler_sort?>">
 							<input type="hidden" name="todo" value="edit">
-              <input type="hidden" name="st" value="<?php echo $st; ?>">
+							<input type="hidden" name="st" value="<?php echo $st; ?>">
 							<input type="hidden" name="file" value="<?php echo $file?>">
 						</form>
 					</td>
 					<td class="nobr" align="left">
 						<form action="<?php echo  $_SERVER['PHP_SELF']?>" method="post">
-							<acronym title="<?php echo $text['spieler'][10]?>"><select name="wert" size="1"><?php 
+							<acronym title="<?php echo $text['spieler'][10]?>"><select class="custom-select" name="wert" size="1"><?php 
 								for ($x=0;$x<$zeile;$x++) {?>
 								<option value="<?php echo $x?>"><?php echo htmlentities(stripslashes($data[$x][0]),ENT_COMPAT);?></option><?php 
 								}?>
-							</select></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" &minus; ">
+							</select></acronym>&nbsp;
+							<input class="custom-control" type="submit" value=" &minus; ">
 							<input type="hidden" name="option" value="delplayer">
 							<input type="hidden" name="sort" value="<?php echo $spieler_sort?>">
 							<input type="hidden" name="todo" value="edit">
-              <input type="hidden" name="st" value="<?php echo $st; ?>">
+							<input type="hidden" name="st" value="<?php echo $st; ?>">
 							<input type="hidden" name="file" value="<?php echo $file?>">
 						</form>
 					</td>
@@ -362,28 +364,29 @@ function mark(el){
 					<td class="nobr" align="right">
 						<form action="<?php echo  $_SERVER['PHP_SELF']?>" method="post" name="spalten">
 							<acronym title="<?php echo $text['spieler'][7]?>"><input type="text" name="wert"></acronym> 
-              <input class="lmo-formular-button" type="submit" value=" + "><br>
+							<input class="custom-control" type="submit" value=" + "><br>
 							<acronym title="<?php echo $text['spieler'][30]?>"><?php echo $text['spieler'][38]?>:</acronym>
-              <input type="radio" name="type" value="0" checked>&nbsp;<?php echo $text['spieler'][52]?>
-              <input type="radio" name="type" value="<?php echo $text['spieler'][43]?>">&nbsp;<?php echo $text['spieler'][53]?>
-              <input type="radio" name="type" value="F">&nbsp;<?php echo $text['spieler'][54]?>
-              <input type="hidden" name="option" value="addcolumn">
+							<input type="radio" name="type" value="0" checked>&nbsp;<?php echo $text['spieler'][52]?>
+							<input type="radio" name="type" value="<?php echo $text['spieler'][43]?>">&nbsp;<?php echo $text['spieler'][53]?>
+							<input type="radio" name="type" value="F">&nbsp;<?php echo $text['spieler'][54]?>
+							<input type="hidden" name="option" value="addcolumn">
 							<input type="hidden" name="sort" value="<?php echo $spieler_sort?>">
 							<input type="hidden" name="todo" value="edit">
-              <input type="hidden" name="st" value="<?php echo $st; ?>">
+							<input type="hidden" name="st" value="<?php echo $st; ?>">
 							<input type="hidden" name="file" value="<?php echo $file?>">
 						</form>
 					</td>
 					<td class="nobr" align="left" valign="top">
 						<form action="<?php echo  $_SERVER['PHP_SELF']?>" method="post" name="spieler">
-							<acronym title="<?php echo $text['spieler'][8]?>"><select name="wert" size="1"><?php 
+							<acronym title="<?php echo $text['spieler'][8]?>"><select class="custom-select" name="wert" size="1"><?php 
 								for ($x=0;$x<$spaltenzahl;$x++) {?>
 								<option value="<?php echo $x?>"<?php if ($x==0){?> disabled<?php }if ($x==1){?> selected<?php }?>><?php echo htmlentities(stripslashes($spalten[$x]),ENT_COMPAT);?></option><?php 
 								}?>
-							</select></acronym>&nbsp;<input class="lmo-formular-button" type="submit" value=" &minus; ">
+							</select></acronym>&nbsp;
+							<input class="custom-control" type="submit" value=" &minus; ">
 							<input type="hidden" name="option" value="delcolumn">
 							<input type="hidden" name="todo" value="edit">
-              <input type="hidden" name="st" value="<?php echo $st; ?>">
+							<input type="hidden" name="st" value="<?php echo $st; ?>">
 							<input type="hidden" name="sort" value="<?php echo $spieler_sort?>">
 							<input type="hidden" name="file" value="<?php echo $file?>">
 						</form>
@@ -399,15 +402,13 @@ function mark(el){
 	<tr>
 	  <td>
 			<form action="<?php echo  $_SERVER['PHP_SELF']?>" method="post">
-        <table id="stats" class="lmoInner" >
+				<table id="stats" class="lmoInner" >
 					<thead>
 						<tr><?php 
 							for ($i=0;$i<$spaltenzahl;$i++) {
                 $stat_sort=$_SERVER['PHP_SELF']."?action=admin&amp;todo=statistik&amp;sort=".$i."&amp;file=".$file."&amp;direction=";?>
-								<th colspan="2" class="nobr" align="center">
-                  <a href="<?php echo $stat_sort?>asc" title="<?php echo $text[527].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
-                  <input type="text" name="spalten<?php echo $i?>" onChange="mark(this)" value="<?php echo $spalten[$i]?>" size="<?php echo strlen($spalten[$i]);?>">
-                  <a href="<?php echo $stat_sort?>desc" title="<?php echo $text[528].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?php echo URL_TO_IMGDIR?>/downsimple.png" width="7" height="7" border="0" alt="&or;"></a>
+								<th class="nobr" align="center">
+									<input type="text" name="spalten<?php echo $i?>" onChange="mark(this)" value="<?php echo $spalten[$i]?>" size="<?php echo strlen($spalten[$i]);?>">
 								</th><?php 
 							}?>
 						</tr>
@@ -416,7 +417,7 @@ function mark(el){
               if ($formel_ges>0){?>
               <tr><?php 
                 for ($i=0;$i<$spaltenzahl;$i++) {?>
-                  <th colspan="2" align="center"><?php 
+                  <th align="center"><?php 
                   if ($formel[$i]){?>
                     <input type="text" onClick="sel('formel_str<?php echo $i?>')" onChange="mark(this)" name="formel_str<?php echo $i?>" value="<?php echo $formel_str[$i]?>" size="<?php echo strlen($formel_str[$i]);?>"><?php 
                   } elseif ($i==0) {
@@ -431,10 +432,10 @@ function mark(el){
 							<td align="right" colspan="<?php echo $spaltenzahl*2?>">
 								<input type="hidden" name="option" value="statupdate">
 								<input type="hidden" name="todo" value="edit">
-                <input type="hidden" name="st" value="<?php echo $st; ?>">
+								<input type="hidden" name="st" value="<?php echo $st; ?>">
 								<input type="hidden" name="sort" value="<?php echo $spieler_sort?>">
 								<input type="hidden" name="file" value="<?php echo $file?>">
-								<input class="lmo-formular-button" type="submit" value="Statistik updaten">
+								<input class="btn btn-primary btn-sm" type="submit" value="Statistik updaten">
 							</td>
 						</tr>
 					</tfoot>
@@ -446,23 +447,13 @@ function mark(el){
 					for ($j2=0;$j2<$spaltenzahl;$j2++) {
             $data[$j1][$j2]=htmlentities(stripslashes($data[$j1][$j2]),ENT_COMPAT);
             if (isset($formel[$j2]) && $formel[$j2]==1){?>
-    			    <td colspan="2" align="center">
+    			    <td align="center">
                 <input type="text" name="data<?php echo $j1."|".$j2?>" value="<?php echo $data[$j1][$j2]?>" size="<?php echo strlen($data[$j1][$j2]);?>" disabled>
               </td><?php 
             }elseif (is_numeric($data[$j1][$j2])){?>
-							<td align="right">
-                <input type="text" name="data<?php echo $j1."|".$j2?>" value="<?php echo  $data[$j1][$j2]?>" size="<?php echo strlen($data[$j1][$j2]);?>">
-              </td>
-              <td align="left">
-  							<table cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'+\',\'data<?php echo $j1?>|<?php echo $j2?>\');" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i; ?>a" width="7" height="7" border="0"><\/a>')</script></td>
-                  </tr>
-                  <tr>
-                    <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'-\',\'data<?php echo $j1?>|<?php echo $j2?>\');" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i; ?>b" width="7" height="7" border="0"><\/a>')</script></td>
-                  </tr>
-                </table>
-							</td><?php 
+			  <td align="left">
+                <input type="number" name="data<?php echo $j1."|".$j2?>" value="<?php echo  $data[$j1][$j2]?>" size="<?php echo strlen($data[$j1][$j2]);?>" style="width: 60px;">
+              </td><?php 
 						}else{
 							if ($spalten[$j2]==$text['spieler'][25]) {?>
 							<td colspan="2" align="left">
@@ -473,7 +464,7 @@ function mark(el){
   							</select>
 							</td><?php 
 							}else{?>
-							<td colspan="2" align="left">
+							<td align="left">
 								<input type="text" name="data<?php echo $j1."|".$j2?>"value="<?php echo  $data[$j1][$j2]?>" size="<?php echo strlen($data[$j1][$j2]);?>">
 							</td><?php 
 							}
@@ -494,32 +485,21 @@ function mark(el){
 			<form action="<?php echo  $_SERVER['PHP_SELF']?>" method="post" name="form1">
 				<input type="hidden" name="option" value="saveconfig">
 				<input type="hidden" name="todo" value="edit">
-        <input type="hidden" name="st" value="<?php echo $st; ?>">
+				<input type="hidden" name="st" value="<?php echo $st; ?>">
 				<input type="hidden" name="file" value="<?php echo $file?>">
 				<table class="lmoInner">
 					<tr>
-						<th colspan="3"><?php echo $text['spieler'][44]?></th>
-            <th colspan="2"><?php echo $text['spieler'][45]?></th>
+						<th colspan="2"><?php echo $text['spieler'][44]?></th>
+						<th colspan="2"><?php echo $text['spieler'][45]?></th>
 					</tr>
 					<tr>
 						<td class="nobr"><?php echo $text['spieler'][22]?>: </td>
-						<td align="right">
-							<input type="text" name="anzeige_pro_seite"value="<?php echo  $spieler_anzeige_pro_seite?>" size="<?php echo strlen($spieler_anzeige_pro_seite);?>">
+						<td align="left">
+							<input type="number" name="anzeige_pro_seite" value="<?php echo  $spieler_anzeige_pro_seite?>" size="<?php echo strlen($spieler_anzeige_pro_seite);?>" style="width: 45px;">
 						</td>
-            <td align="left">
-							<table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'+\',\'anzeige_pro_seite\');" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i; ?>a" width="7" height="7" border="0"><\/a>')</script></td>
-                </tr>
-                <tr>
-                  <td><script type="text/javascript">document.write('<a href="#" onclick="return change(\'-\',\'anzeige_pro_seite\');" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i; ?>b" width="7" height="7" border="0"><\/a>')</script></td>
-                </tr>
-              </table>
-					  </td>
 						<td align="left" class="nobr"><?php echo $text['spieler'][40]?>: </td>
-            <td align="left">
+						<td align="left">
   						<select name="adminbereich_standard_sortierung" onChange="mark(this)" size="1"><?php 
-  
   						for ($x=0;$x<$spaltenzahl;$x++) {?>
   							<option value="<?php echo $x?>" <?php if ($x==$spieler_adminbereich_standard_sortierung ) echo "selected";?>><?php echo $spalten[$x]?></option><?php 
   						}?>
@@ -528,7 +508,7 @@ function mark(el){
 					</tr>
 					<tr>
 						<td align="left" class="nobr"><?php echo $text['spieler'][21]?>: </td>
-						<td align="left" colspan="2">
+						<td align="left">
   						<select name="standard_sortierung" onChange="mark(this)" size="1"><?php 
   						for ($x=0;$x<$spaltenzahl;$x++) {?>
   							<option value="<?php echo $x?>" <?php if ($x==$spieler_standard_sortierung ) echo "selected";?>><?php echo $spalten[$x]?></option><?php 
@@ -536,40 +516,40 @@ function mark(el){
   						</select>
 						</td>
 						<?php if($_SESSION['lmouserok']==2){?>
-            <td align="left" class="nobr"><?php echo $text['spieler'][31]?>: </td>
+						<td align="left" class="nobr"><?php echo $text['spieler'][31]?>: </td>
 						<td align="left"><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" onChange="mark(this)" value="<?php echo $spieler_adminbereich_hilfsadmin_zulassen?>" <?php if ($spieler_adminbereich_hilfsadmin_zulassen==1) echo "checked";?> onClick="if (this.checked==true) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=false; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=true;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=false;}"></td>
             <?php }?>
 					</tr>
-          <tr>
-            <td align="left" class="nobr" rowspan="2"><?php echo $text['spieler'][13]?>: </td>
-            <td align="left" class="nobr" colspan="2"><input type="radio" name="standard_richtung" onClick="mark(this)" value="1"<?php if ($spieler_standard_richtung==1) echo " checked";?>> <?php echo $text['spieler'][48]?></td>
-            <?php if($_SESSION['lmouserok']==2){?>
-            <td align="left" class="nobr"><?php echo $text['spieler'][46]?>: </td>
+					<tr>
+						<td align="left" class="nobr" rowspan="2"><?php echo $text['spieler'][13]?>: </td>
+						<td align="left" class="nobr" colspan="2"><input type="radio" name="standard_richtung" onClick="mark(this)" value="1"<?php if ($spieler_standard_richtung==1) echo " checked";?>> <?php echo $text['spieler'][48]?></td>
+						<?php if($_SESSION['lmouserok']==2){?>
+						<td align="left" class="nobr"><?php echo $text['spieler'][46]?>: </td>
 						<td align="left"><input <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten!=1) echo "disabled"?> type="checkbox" onChange="mark(this)" name="adminbereich_hilfsadmin_fuer_spalten" value="<?php echo $spieler_adminbereich_hilfsadmin_fuer_spalten?>" <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten==1) echo "checked";?>></td>
-            <?php }?>
-          </tr>
-          <tr>
-            <td align="left" colspan="2" class="nobr"><input type="radio" name="standard_richtung" onClick="mark(this)" value="0"<?php if ($spieler_standard_richtung==0) echo " checked";?>> <?php echo $text['spieler'][47]?></td>
-            <td colspan="2" rowspan="4">&nbsp;</td>
-          </tr>
-          <tr>
+						<?php }?>
+					</tr>
+					<tr>
+						<td align="left" colspan="2" class="nobr"><input type="radio" name="standard_richtung" onClick="mark(this)" value="0"<?php if ($spieler_standard_richtung==0) echo " checked";?>> <?php echo $text['spieler'][47]?></td>
+						<td rowspan="4">&nbsp;</td>
+					</tr>
+					<tr>
 						<td align="left" class="nobr"><?php echo $text['spieler'][41]?>: </td>
-						<td colspan="2" align="left"><input type="text" name="ligalink" onChange="mark(this)" value="<?php echo  $spieler_ligalink?>" size="<?php echo strlen($spieler_ligalink);?>"></td>
+						<td lign="left"><input type="text" name="ligalink" onChange="mark(this)" value="<?php echo  $spieler_ligalink?>" size="<?php echo strlen($spieler_ligalink);?>"></td>
 					</tr>
 					<tr>
 						<td align="left" class="nobr"><?php echo $text['spieler'][24]?>: </td>
-						<td colspan="2" align="left"><input type="checkbox" name="extra_sortierspalte" onClick="mark(this)" value="<?php echo $spieler_extra_sortierspalte?>" <?php if ($spieler_extra_sortierspalte==1) echo "checked";?>></td>
+						<td align="left"><input type="checkbox" name="extra_sortierspalte" onClick="mark(this)" value="<?php echo $spieler_extra_sortierspalte?>" <?php if ($spieler_extra_sortierspalte==1) echo "checked";?>></td>
 					</tr>
-          <tr>
+					<tr>
 						<td align="left" class="nobr"><?php echo $text['spieler'][50]?>: </td>
-						<td colspan="2" align="left"><input type="checkbox" name="vereinsweise_anzeigen" onClick="mark(this)" value="<?php echo $spieler_vereinsweise_anzeigen?>"<?php if ($spieler_vereinsweise_anzeigen==1) echo " checked"; if (array_search($text['spieler'][25],$spalten)==0) { echo " disabled";  }?>></td>
+						<td align="left"><input type="checkbox" name="vereinsweise_anzeigen" onClick="mark(this)" value="<?php echo $spieler_vereinsweise_anzeigen?>"<?php if ($spieler_vereinsweise_anzeigen==1) echo " checked"; if (array_search($text['spieler'][25],$spalten)==0) { echo " disabled";  }?>></td>
 					</tr>
 					<tr>
 						<td class="nobr"><?php echo $text['spieler'][23]?>: </td>
-						<td colspan="2" align="left"><input type="checkbox" name="nullwerte_anzeigen" onClick="mark(this)" value="<?php echo $spieler_nullwerte_anzeigen?>" <?php if ($spieler_nullwerte_anzeigen==1) echo "checked";?>></td>
+						<td align="left"><input type="checkbox" name="nullwerte_anzeigen" onClick="mark(this)" value="<?php echo $spieler_nullwerte_anzeigen?>" <?php if ($spieler_nullwerte_anzeigen==1) echo "checked";?>></td>
 					</tr>
 					<tr>
-						<td colspan="5" align="right"><input class="lmo-formular-button" type="submit" value="Konfiguration speichern"></td>
+						<td colspan="4" align="right"><input class="btn btn-primary btn-sm" type="submit" value="Konfiguration speichern"></td>
 					</tr>
 				</table>
 			</form>
