@@ -315,7 +315,7 @@ if ($file != "") {
         for($j = 0; $j < (($anzteams/2)+1); $j++) {
           $m1 = array($goala[$i][$j][0], $goala[$i][$j][1], $goala[$i][$j][2], $goala[$i][$j][3], $goala[$i][$j][4], $goala[$i][$j][5], $goala[$i][$j][6]);
           $m2 = array($goalb[$i][$j][0], $goalb[$i][$j][1], $goalb[$i][$j][2], $goalb[$i][$j][3], $goalb[$i][$j][4], $goalb[$i][$j][5], $goalb[$i][$j][6]);
-          $m = call_user_func('gewinn', $i, $j, $modus[$i], $m1, $m2);
+          $m = gewinn($i, $j, $modus[$i], $m1, $m2);
           if ($m == 1) {
             $teamt[$teamb[$i][$j]] = 1;
           } elseif($m == 2) {
