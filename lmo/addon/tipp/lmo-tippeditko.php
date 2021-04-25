@@ -17,18 +17,18 @@
   *
   * $Id$
   */
-  
+
 for($n=0;$n<$modus[$st-1];$n++){
   if(($klfin==1) && ($st==$anzst)){ ?>
   <tr>
-    <th class="nobr" colspan=<?php echo $breite; ?> align="left"><?php 
+    <th class="nobr" colspan=<?php echo $breite; ?> align="left"><?php
     if($i==1){
       echo "&nbsp;<br>";
     }
     echo $text[419+$i]; ?>
     </th>
   </tr><?php  }?>
-  <tr><?php 
+  <tr><?php
   if ($tipp_einsichterst==2) {
     if ($goala[$st-1][$i][$n]!="_" && $goalb[$st-1][$i][$n]!="_") {
       $btip1=false;
@@ -38,7 +38,7 @@ for($n=0;$n<$modus[$st-1];$n++){
   } else {
     $btip1=false;
   }
-  
+
   if ($datm==1) {
     if ($mterm[$st-1][$i][$n]>0) {
       $dum1=strftime($datf, $mterm[$st-1][$i][$n]);
@@ -49,16 +49,16 @@ for($n=0;$n<$modus[$st-1];$n++){
     <td>&nbsp;</td><?php if ($n==0) {
     $m1=array($goala[$st-1][$i][0],$goala[$st-1][$i][1],$goala[$st-1][$i][2],$goala[$st-1][$i][3],$goala[$st-1][$i][4],$goala[$st-1][$i][5],$goala[$st-1][$i][6]);
     $m2=array($goalb[$st-1][$i][0],$goalb[$st-1][$i][1],$goalb[$st-1][$i][2],$goalb[$st-1][$i][3],$goalb[$st-1][$i][4],$goalb[$st-1][$i][5],$goalb[$st-1][$i][6]);
-    $m=gewinn($i,$modus[$st-1],$m1,$m2);
-    
+    $m = gewinn($i, $j, $modus[$st-1], $m1, $m2);
+
     if ($m==1) {
       echo "<td class=\"lmoTurnierSieger nobr\" align=\"right\">";
-    } else if ($m==2) {
+    } elseif ($m==2) {
       echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"right\">";
     } else {
       echo "<td class=\"nobr\" align=\"right\">";
     }
-    
+
     if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
       echo "<strong>";
     }
@@ -67,10 +67,10 @@ for($n=0;$n<$modus[$st-1];$n++){
       echo '</strong>';
     }
     echo '</td>';?>
-    <td align="center" width="10">-</td><?php 
+    <td align="center" width="10">-</td><?php
     if ($m==1) {
       echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"left\">";
-    } else if ($m==2) {
+    } elseif ($m==2) {
       echo "<td class=\"lmoTurnierSieger nobr\" align=\"left\">";
     } else {
       echo "<td class=\"nobr\" align=\"left\">";
@@ -83,8 +83,8 @@ for($n=0;$n<$modus[$st-1];$n++){
       echo "</strong>";
     }
     echo '</td>';
-  }else{ ?>
-    <td colspan="3">&nbsp;</td><?php 
+  } else { ?>
+    <td colspan="3">&nbsp;</td><?php
   }
   if ($goaltippa[$i][$n]=="_") {
     $goaltippa[$i][$n]="";
@@ -98,7 +98,7 @@ for($n=0;$n<$modus[$st-1];$n++){
   if ($goaltippb[$i][$n]=="-1") {
     $goaltippb[$i][$n]="";
   }?>
-    <td>&nbsp;</td><?php 
+    <td>&nbsp;</td><?php
   if($tipp_showtendenzabs==1){ ?>
     <td align="center" class="nobr"><?php    if ($btip1==false) {
       if (!isset($tendenz1[$i][$n])) {
@@ -184,7 +184,7 @@ for($n=0;$n<$modus[$st-1];$n++){
         </tr>
       </table>
     </td><?php      }
-    }else{
+    } else {
       if($tipp_pfeiltipp==1){ ?>
     <td>&nbsp;</td><?php      }?>
     <td align="right"><?php echo $goaltippa[$i][$n]; ?></td><?php    } ?>
@@ -206,7 +206,7 @@ for($n=0;$n<$modus[$st-1];$n++){
         </tr>
       </table>
     </td><?php      }
-    }else{?>
+    } else {?>
     <td align="left"><?php echo $goaltippb[$i][$n]; ?></td><?php      if($tipp_pfeiltipp==1){ ?>
     <td>&nbsp;</td><?php      }
     }
@@ -216,11 +216,11 @@ for($n=0;$n<$modus[$st-1];$n++){
   if ($tipp_tippmodus==0) {
     if ($goaltippa[$i][$n]=="" || $goaltippb[$i][$n]=="") {
       $tipp=-1;
-    } else if ($goaltippa[$i][$n]>$goaltippb[$i][$n]) {
+    } elseif ($goaltippa[$i][$n]>$goaltippb[$i][$n]) {
       $tipp=1;
-    } else if ($goaltippa[$i][$n]==$goaltippb[$i][$n]) {
+    } elseif ($goaltippa[$i][$n]==$goaltippb[$i][$n]) {
       $tipp=0;
-    } else if ($goaltippa[$i][$n]<$goaltippb[$i][$n]) {
+    } elseif ($goaltippa[$i][$n]<$goaltippb[$i][$n]) {
       $tipp=2;
     }?>
     <td align="right">
@@ -235,7 +235,7 @@ for($n=0;$n<$modus[$st-1];$n++){
 
 /**BEIDE*/
   if ($tipp_jokertipp==1){ ?>
-    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>                                                                                                                   
+    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>
     <td class="lmoBackMarkierung" align="right"><?php echo $goala[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="center">:</td>
     <td class="lmoBackMarkierung" align="left"><?php echo $goalb[$st-1][$i][$n]; ?></td>
@@ -253,7 +253,7 @@ for($n=0;$n<$modus[$st-1];$n++){
   }
   if ($punktespiel==-1) {
     echo "-";
-  } else if ($punktespiel==-2) {
+  } elseif ($punktespiel==-2) {
     echo $text['tipp'][230];
     $nw=1;
   } else {
@@ -276,7 +276,7 @@ for($n=0;$n<$modus[$st-1];$n++){
       </strong>
     </td>
     <td>&nbsp;</td>
-    <td><?php 
+    <td><?php
   /** Mannschaftsicons finden
    */
   $lmo_teamaicon="";
@@ -291,7 +291,7 @@ for($n=0;$n<$modus[$st-1];$n++){
     if($mberi[$st-1][$i][$n]!=""){
       $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
       echo "<a href='".$mberi[$st-1][$i][$n]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
-    }else{
+    } else {
       echo "&nbsp;&nbsp;&nbsp;";
     }
   }
@@ -304,8 +304,8 @@ for($n=0;$n<$modus[$st-1];$n++){
 
     //Allgemeine Notiz
     if ($mnote[$st-1][$i][$n]!="") {
-	  $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i][$n];
-	}
+      $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i][$n];
+    }
 
     //Notiz zum Tippspiel
     if ($mtipp[$st-1][$i][$n] == 1) {
