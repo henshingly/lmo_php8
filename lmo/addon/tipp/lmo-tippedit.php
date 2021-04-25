@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 //require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($file!="") {
   $tipp_showzus=0;
@@ -26,49 +26,9 @@ if ($file!="") {
   if (!isset($nlines)) {
     $nlines=array();
   }
-  
-  function gewinn($gsp,$gmod,$m1,$m2){
-    $erg=0;
-    if ($gmod==1) {
-      if ($m1[0]>$m2[0]) {
-        $erg=1;
-      } else if ($m1[0]<$m2[0]) {
-        $erg=2;
-      }
-    } else if ($gmod==2) {
-      if (($m1[0]+$m1[1])>($m2[0]+$m2[1])) {
-        $erg=1;
-      } else if (($m1[0]+$m1[1])<($m2[0]+$m2[1])) {
-        $erg=2;
-      } else {
-        if ($m2[0]>$m1[1]) {
-          $erg=1;
-        } else if ($m2[0]<$m1[1]) {
-          $erg=2;
-        }
-      }
-    } else {
-      $erg1=0;
-      $erg2=0;
-      for ($k=0; $k<$gmod; $k++) {
-        if (($m1[$k]!="_") && ($m2[$k]!="_")) {
-          if ($m1[$k]>$m2[$k]) {
-            $erg1++;
-          } else if ($m1[$k]<$m2[$k]) {
-            $erg2++;
-          }
-        }
-      }
-      if ($erg1>($gmod/2)) {
-        $erg=1;
-      } else if ($erg2>($gmod/2)) {
-        $erg=2;
-      }
-    }
-    return $erg;
-  }
+
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfile.php");
-  
+
   if (!isset($_POST['save'])) {
     $save=0;
   } else {
@@ -86,7 +46,7 @@ if ($file!="") {
           if ($tipp_tippmodus==1) {
             $goaltippa[$i]=trim($_POST["xtippa".$i]);
             $goaltippb[$i]=trim($_POST["xtippb".$i]);
-            
+
             if ($goaltippa[$i]=="" || $goaltippa[$i]<0 || $goaltippa[$i]=="_") {
               $goaltippa[$i]=-1;
               $goaltippb[$i]=-1;
@@ -96,7 +56,7 @@ if ($file!="") {
                 $goaltippa[$i]="0";
               }
             }
-            
+
             if ($goaltippb[$i]=="" || $goaltippb[$i]<0 || $goaltippb[$i]=="_") {
               $goaltippa[$i]=-1;
               $goaltippb[$i]=-1;
@@ -133,7 +93,7 @@ if ($file!="") {
             if ($tipp_tippmodus==1) {
               $goaltippa[$i][$n]=trim($_POST["xtippa".$i.$n]);
               $goaltippb[$i][$n]=trim($_POST["xtippb".$i.$n]);
-              
+
               if ($goaltippa[$i][$n]=="" || $goaltippa[$i][$n]<0 || $goaltippa[$i][$n]=="_") {
                 $goaltippa[$i][$n]=-1;
                 $goaltippb[$i][$n]=-1;
@@ -274,10 +234,10 @@ if ($file!="") {
             <th class="nobr" align="center" colspan="<?php if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
             <?php echo $text['tipp'][188]; /* Tipptendenz absolut */?>
             </th>
-<?php  
+<?php
   }
   //ERGEBNISMODUS
-  if($tipp_tippmodus==1){  
+  if($tipp_tippmodus==1){
     if($tipp_showdurchschntipp==1){ ?>
             <th class="nobr" align="center" colspan="2">
             <?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
@@ -290,7 +250,7 @@ if ($file!="") {
     }?>
             </th><?php
   }
-  
+
   //TENDENZMODUS
   if($tipp_tippmodus==0){ ?>
             <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][95] ?>">1</acronym></th><?php
@@ -311,7 +271,7 @@ if ($file!="") {
             <th>&nbsp;</th>
           </tr><?php
   if ($lmtype!=0) {
-    
+
     $anzsp=$anzteams;
     for ($i=0; $i<$st; $i++) {
       $anzsp=$anzsp/2;
@@ -344,12 +304,12 @@ if ($file!="") {
       }
     }
   }
-  
+
   for ($i=0; $i<$anzsp; $i++) {
     if ($teama[$st-1][$i]>0 && $teamb[$st-1][$i]>0) {
       if ($lmtype==0) {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippeditliga.php");
-      }else{ 
+      }else{
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippeditko.php");
       }
     }
@@ -357,7 +317,7 @@ if ($file!="") {
           <tr>
             <td colspan="<?php echo $datm*2+10-$hidr; ?>" align="right"><?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
     echo $text['tipp'][177];
-  } 
+  }
   if($savebutton==1){ ?>
               <input class="lmo-formular-button" type="submit" title="<?php echo $text[114] ?>" name="best" value="<?php echo $text['tipp'][8]; ?>"<?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  }else{
     echo "&nbsp;";

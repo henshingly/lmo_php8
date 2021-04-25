@@ -1,6 +1,6 @@
 <card id="auswahl" title="Auswahl">
   <p>
-<?php 
+<?php
 if ($lmtype == 0) {
   echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=day&amp;st=$st'>".$text[10]."</a><br/>\n");
   echo("<a href='{$_SERVER['PHP_SELF']}?wap_file=$file&amp;op=table&amp;st=$st'>".$text[16]."</a><br/>\n");
@@ -16,55 +16,9 @@ else
   if (($klfin == 1) && ($st == $anzst)) {
     $anzsp = $anzsp+1;
   }
-  function gewinn($gst, $gsp, $gmod, $m1, $m2) {
-    $erg = 0;
-    if ($gmod == 1) {
-      if ($m1[0] > $m2[0]) {
-        $erg = 1;
-      }
-      else if ($m1[0] < $m2[0]) {
-        $erg = 2;
-      }
-    }
-    else if ($gmod == 2) {
-      if (($m1[0]+$m1[1]) > ($m2[0]+$m2[1])) {
-        $erg = 1;
-      }
-      else if (($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
-        $erg = 2;
-      } else {
-        if ($m2[0] > $m1[1]) {
-          $erg = 1;
-        }
-        else if ($m2[0] < $m1[1]) {
-          $erg = 2;
-        }
-      }
-    } else {
-      $erg1 = 0;
-      $erg2 = 0;
-      for ($k = 0; $k < $gmod; $k++) {
-        if (($m1[$k] != "_") && ($m2[$k] != "_")) {
-          if ($m1[$k] > $m2[$k]) {
-            $erg1++;
-          }
-          else if ($m1[$k] < $m2[$k]) {
-            $erg2++;
-          }
-        }
-      }
-      if ($erg1 > ($gmod/2)) {
-        $erg = 1;
-      }
-      else if ($erg2 > ($gmod/2)) {
-        $erg = 2;
-      }
-    }
-    return $erg;
-  }
-   
+
   for ($i = 1; $i <= $anzst; $i++) {
-     
+
     if ($i == $anzst) {
       $j = $text[364];
       $k = $text[365];
@@ -102,7 +56,7 @@ else
   } else {
     $j = $st.". ".$text[370];
   }
-   
+
   echo "<br/>";
   //echo $j;
   if ($dats == 1) {
@@ -116,14 +70,14 @@ else
   echo "<br/>\n";
   for ($i = 0; $i < $anzsp; $i++) {
     for ($n = 0; $n < $modus[$st-1]; $n++) {
-       
+
       if (($klfin == 1) && ($st == $anzst)) {
         if ($i == 1) {
           echo "<br/>\n";
         }
         echo $text[419+$i];
       }
-       
+
       if ($datm == 1) {
         if ($mterm[$st-1][$i][$n] > 0) {
           $dum1 = strftime($datf, $mterm[$st-1][$i][$n]);
@@ -132,7 +86,7 @@ else
         }
         echo "<small>$dum1</small>";
       }
-       
+
       if ($n == 0) {
         $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
         $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
@@ -162,19 +116,19 @@ else
             echo "<br/>\n";
           }
         }
-         
+
         if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
           echo "<b>";
         }
         $teamname = $teamk[$teama[$st-1][$i]];
         $teamname = ($teamname);
-         
+
         echo $teamname;
         if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
           echo "</b>";
         }
-         
-         
+
+
         if (($klfin == 1) && ($st == $anzst)) {
           if ($i == 0) {
             if ($m == 2) {
@@ -209,7 +163,7 @@ else
         if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
           echo "</b>";
         }
-         
+
       } else {
         echo "&#160;";
       }
@@ -217,7 +171,7 @@ else
       echo applyFactor($goala[$st-1][$i][$n], $goalfaktor);
       echo "&#160;-&#160;";
       echo applyFactor($goalb[$st-1][$i][$n], $goalfaktor);
-       
+
       echo $mspez[$st-1][$i][$n];
       echo "<br/>\n";
     }
