@@ -44,8 +44,8 @@ function applyFactor ($value, $factor) {
 }
 
 function magicQuotesRemove(&$array) {
-  if(!get_magic_quotes_gpc())
-  return;
+  //if(!get_magic_quotes_gpc())
+  //return;
   foreach($array as $key => $elem) {
     if(is_array($elem))
     magicQuotesRemove($elem);

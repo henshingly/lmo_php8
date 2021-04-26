@@ -17,19 +17,7 @@
   *
   * $Id$
   */
-/*
-//Caching
-require_once(PATH_TO_LMO.'/includes/LiteOutput.php');
-//Cache Options
-$lmo_cache_options = array (
-'cacheDir' => PATH_TO_LMO."/".$diroutput,
-'lifeTime' => 200
-);
 
-$lmo_cache = new Cache_Lite_Output($lmo_cache_options);
-$lmo_site_id = $_SERVER['QUERY_STRING'];  // Make an id for caching
-
-if (!$lmo_cache->start($lmo_site_id)) {*/
 $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
 if($file!=""){
   require(PATH_TO_LMO."/lmo-openfile.php");
@@ -119,55 +107,55 @@ if ($file!="") {
 
     //Kalenderlink
     if($datc==1){
-      $output_kalender.=$action!='cal'?         "<li role='presentation' class='nav-item'><a href='{$addm}cal&amp;st={$st}' title='{$text[141]}' class='nav-link'>{$text[140]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[140]</a></li>";
+      $output_kalender.=$action!='cal'?         "<li class='nav-item'><a href='{$addm}cal&amp;st={$st}' title='{$text[141]}' class='nav-link'>{$text[140]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[140]</a></li>";
     }
     //Ergebnis/Tabelle
     if($tabonres==0){
       if($ergebnis==1){
-        $output_ergebnisse.=$action!='results'? "<li role='presentation' class='nav-item'><a href='{$addm}results&amp;st={$ste}' title='{$text[11]}' class='nav-link'>{$text[10]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[10]</a></li>";
+        $output_ergebnisse.=$action!='results'? "<li class='nav-item'><a href='{$addm}results&amp;st={$ste}' title='{$text[11]}' class='nav-link'>{$text[10]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[10]</a></li>";
       }
       if($tabelle==1){
-        $output_tabelle.=$action!='table'?      "<li role='presentation' class='nav-item'><a href='{$addm}table' title='{$text[17]}' class='nav-link'>{$text[16]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[16]</a></li>";
+        $output_tabelle.=$action!='table'?      "<li class='nav-item'><a href='{$addm}table' title='{$text[17]}' class='nav-link'>{$text[16]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[16]</a></li>";
       }
       //Kombinierte Ansicht
     }else{
       if($ergebnis==1){
-        $output_ergebnisse.=$action!='results' && $action!='table'? "<li role='presentation' class='nav-item'><a href='{$addm}results' title='{$text[104]}' class='nav-link'>{$text[10]}/{$text[16]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[10]/$text[16]</a></li>";
+        $output_ergebnisse.=$action!='results' && $action!='table'? "<li class='nav-item'><a href='{$addm}results' title='{$text[104]}' class='nav-link'>{$text[10]}/{$text[16]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[10]/$text[16]</a></li>";
       }
     }
 
     //Kreuztabelle
     if($kreuz==1){
-      $output_kreuztabelle.=$action!="cross"?   "<li role='presentation' class='nav-item'><a href='{$addm}cross' title='{$text[15]}' class='nav-link'>{$text[14]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[14]</a></li>";
+      $output_kreuztabelle.=$action!="cross"?   "<li class='nav-item'><a href='{$addm}cross' title='{$text[15]}' class='nav-link'>{$text[14]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[14]</a></li>";
     }
     //Spielplan
     if($plan==1){
-      $output_spielplan.=$action!="program"?    "<li role='presentation' class='nav-item'><a href='{$addm}program' title='{$text[13]}' class='nav-link'>{$text[12]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[12]</a></li>";
+      $output_spielplan.=$action!="program"?    "<li class='nav-item'><a href='{$addm}program' title='{$text[13]}' class='nav-link'>{$text[12]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[12]</a></li>";
     }
     //Fieberkurve
     if($kurve==1){
-      $output_fieberkurve.=$action!="graph"?    "<li role='presentation' class='nav-item'><a href='{$addm}graph&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[134]}' class='nav-link'>{$text[133]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[133]</a></li>";
+      $output_fieberkurve.=$action!="graph"?    "<li class='nav-item'><a href='{$addm}graph&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[134]}' class='nav-link'>{$text[133]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[133]</a></li>";
     }
     //Ligastatistiken
     if($ligastats==1){
-      $output_ligastatistik.=$action!="stats"?  "<li role='presentation' class='nav-item'><a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[19]}' class='nav-link'>{$text[18]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[18]</a></li>";
+      $output_ligastatistik.=$action!="stats"?  "<li class='nav-item'><a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[19]}' class='nav-link'>{$text[18]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[18]</a></li>";
     }
     // Pokalligen
   }else{
     //Kalenderlink
     if($datc==1){
-      $output_kalender.=$action!='cal'?         "<li role='presentation' class='nav-item'><a href='{$addm}cal&amp;st={$st}' title='{$text[141]}' class='nav-link'>{$text[140]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[140]</a></li>";;
+      $output_kalender.=$action!='cal'?         "<li class='nav-item'><a href='{$addm}cal&amp;st={$st}' title='{$text[141]}' class='nav-link'>{$text[140]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[140]</a></li>";;
     }
     //Ergebnisse
     if($ergebnis==1){
-      $output_ergebnisse.=$action!='results'?   "<li role='presentation' class='nav-item'><a href='{$addm}results&amp;st={$ste}' title='{$text[11]}' class='nav-link'>{$text[10]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[10]</a></li>";
+      $output_ergebnisse.=$action!='results'?   "<li class='nav-item'><a href='{$addm}results&amp;st={$ste}' title='{$text[11]}' class='nav-link'>{$text[10]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[10]</a></li>";
     }
     //Spielplan
     if($plan==1){
-      $output_spielplan.=$action!="program"?    "<li role='presentation' class='nav-item'><a href='{$addm}program' title='{$text[13]}' class='nav-link'>{$text[12]}</a></li>": "<li role='presentation' class='nav-item active'><a href='#' class='nav-link active'>$text[12]</a></li>";
+      $output_spielplan.=$action!="program"?    "<li class='nav-item'><a href='{$addm}program' title='{$text[13]}' class='nav-link'>{$text[12]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[12]</a></li>";
     }
   }
-  $output_info.=$action!="info"?              "<li role='presentation' class='nav-item pull-right'><a href='{$addm}info' title='{$text[21]}' class='nav-link'>{$text[20]}</a></li>": "<li role='presentation' class='nav-item active pull-right'><a href='#' class='nav-link active'>$text[20]</a></li>";
+  $output_info.=$action!="info"?              "<li class='nav-item pull-right'><a href='{$addm}info' title='{$text[21]}' class='nav-link'>{$text[20]}</a></li>": "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>$text[20]</a></li>";
 
   $druck=0;
 
@@ -247,7 +235,7 @@ if($calctime==1){
 //Spieler-Addon
 if ($file!="" && $einspieler==1 && $mittore==1) {
   include(PATH_TO_ADDONDIR."/spieler/lmo-statloadconfig.php");
-  $output_spielerstatistik.=$action!="spieler"?"<li role='presentation' class='nav-item'><a href='{$addm}spieler' title='{$text['spieler'][12]}' class='nav-link'>{$spieler_ligalink}</a></li>": "<li role='presentation' class='nav-item active pull-right'><a href='#' class='nav-link active'>$spieler_ligalink</a></li>";
+  $output_spielerstatistik.=$action!="spieler"?"<li class='nav-item'><a href='{$addm}spieler' title='{$text['spieler'][12]}' class='nav-link'>{$spieler_ligalink}</a></li>": "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>$spieler_ligalink</a></li>";
   }
 //Spieler-Addon
 
@@ -264,7 +252,7 @@ if($file!="" && $nticker==1){
 $output_tippspiel="";
 if ($eintippspiel==1) {
   if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr(basename($file),0,-4))!==FALSE)){
-    $output_tippspiel.=$action!="tipp"?       "<li role='presentation' class='nav-item'><a href='{$addm}tipp' title='{$text['tipp'][0]}' class='nav-link'>{$text['tipp'][0]}</a></li>" : "<li role='presentation' class='nav-item active pull-right'><a href='#' class='nav-link active'>{$text['tipp'][0]}</a></li>";
+    $output_tippspiel.=$action!="tipp"?       "<li class='nav-item'><a href='{$addm}tipp' title='{$text['tipp'][0]}' class='nav-link'>{$text['tipp'][0]}</a></li>" : "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>{$text['tipp'][0]}</a></li>";
   }
 }
 d($template->toString());

@@ -186,12 +186,6 @@ $(function() {
           <div class="col-4 text-center"><strong><?php echo  $text[71]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php echo  $serie2; ?></div><?php } ?>
         </div>
-<?php
-    // ClassLib Statistik Erweiterung begin
-    include (PATH_TO_LMO."/lmo-classlibstats.php"); 
-    // ClassLib Statistik Erweiterung end
-    }
-?>
       </div>
     </div>
     <div class="col-1">
