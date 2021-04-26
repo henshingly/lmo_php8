@@ -2438,12 +2438,12 @@ class Cpdf
         // fill color
         $color = str_replace('#', '', $hex);
         if (strlen($color) == 3) {
-            $color = $color{0}
-            .$color{0}
-            .$color{1}
-            .$color{1}
-            .$color{2}
-            .$color{2};
+            $color = $color[0]
+            .$color[0]
+            .$color[1]
+            .$color[1]
+            .$color[2]
+            .$color[2];
         }
         $r = number_format(hexdec(substr($color, 0, 2)) / 255, 4);
         $g = number_format(hexdec(substr($color, 2, 2)) / 255, 4);
@@ -2459,12 +2459,12 @@ class Cpdf
         // stroke color
         $color = str_replace('#', '', $hex);
         if (strlen($color) == 3) {
-            $color = $color{0}
-            .$color{0}
-            .$color{1}
-            .$color{1}
-            .$color{2}
-            .$color{2};
+            $color = $color[0]
+            .$color[0]
+            .$color[1]
+            .$color[1]
+            .$color[2]
+            .$color[2];
         }
         $r = number_format(hexdec(substr($color, 0, 2)) / 255, 4);
         $g = number_format(hexdec(substr($color, 2, 2)) / 255, 4);
@@ -3210,19 +3210,19 @@ class Cpdf
         if (strlen($c) <= 0) {
             return false;
         }
-        $ord0 = isset($c{0}) ? ord($c{0}) : -1;
+        $ord0 = isset($c[0]) ? ord($c[0]) : -1;
         if ($ord0 >= 0 && $ord0 <= 127) {
             return $ord0;
         }
-        $ord1 = isset($c{1}) ? ord($c{1}) : -1;
+        $ord1 = isset($c[1]) ? ord($c[1]) : -1;
         if ($ord0 >= 192 && $ord0 <= 223) {
             return ($ord0 - 192) * 64 + ($ord1 - 128);
         }
-        $ord2 = isset($c{2}) ? ord($c{2}) : -1;
+        $ord2 = isset($c[2]) ? ord($c[2]) : -1;
         if ($ord0 >= 224 && $ord0 <= 239) {
             return ($ord0 - 224) * 4096 + ($ord1 - 128) * 64 + ($ord2 - 128);
         }
-        $ord3 = isset($c{3}) ? ord($c{3}) : -1;
+        $ord3 = isset($c[3]) ? ord($c[3]) : -1;
         if ($ord0 >= 240 && $ord0 <= 247) {
             return ($ord0 - 240) * 262144 + ($ord1 - 128) * 4096 + ($ord2 - 128) * 64 + ($ord3 - 128);
         }
