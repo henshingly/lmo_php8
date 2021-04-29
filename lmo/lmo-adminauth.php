@@ -23,11 +23,10 @@ if($action=="admin"){
   require(PATH_TO_LMO."/lmo-admincheck_auth.php");
   if(empty($_SESSION['lmouserok'])){
 ?>
-
+<div class="container-fluid p-3">
+  <div class="text-center"><h1><?php echo $text[77]." ".$text[54]; ?></h1></div>
+</div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col"><h1><?php echo $text[77]." ".$text[54]; ?></h1></div>
-  </div>
   <div class="row">
     <div class="col-4 offset-4">
       <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" role="form" class="form-horizontal">

@@ -35,10 +35,8 @@ if($action=="admin"){
   if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo getMessage('Delete install folder or set its chmod to 000!',TRUE);
 ?>
 <script type="text/javascript" src="<?php echo URL_TO_LMO?>/js/admin.js.php"></script>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col"><h1><?php echo $text[77]." ".$text[54];?></h1></div>
-  </div>
+<div class="container-fluid p-3">
+  <div class="text-center"><h1><?php echo $text[77]." ".$text[54]; ?></h1></div>
 </div>
 <nav><?php 
 require_once(PATH_TO_LMO."/lmo-openfile.php");
