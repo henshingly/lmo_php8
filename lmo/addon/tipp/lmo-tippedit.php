@@ -27,46 +27,6 @@ if ($file!="") {
     $nlines=array();
   }
   
-  function gewinn($gsp,$gmod,$m1,$m2){
-    $erg=0;
-    if ($gmod==1) {
-      if ($m1[0]>$m2[0]) {
-        $erg=1;
-      } else if ($m1[0]<$m2[0]) {
-        $erg=2;
-      }
-    } else if ($gmod==2) {
-      if (($m1[0]+$m1[1])>($m2[0]+$m2[1])) {
-        $erg=1;
-      } else if (($m1[0]+$m1[1])<($m2[0]+$m2[1])) {
-        $erg=2;
-      } else {
-        if ($m2[0]>$m1[1]) {
-          $erg=1;
-        } else if ($m2[0]<$m1[1]) {
-          $erg=2;
-        }
-      }
-    } else {
-      $erg1=0;
-      $erg2=0;
-      for ($k=0; $k<$gmod; $k++) {
-        if (($m1[$k]!="_") && ($m2[$k]!="_")) {
-          if ($m1[$k]>$m2[$k]) {
-            $erg1++;
-          } else if ($m1[$k]<$m2[$k]) {
-            $erg2++;
-          }
-        }
-      }
-      if ($erg1>($gmod/2)) {
-        $erg=1;
-      } else if ($erg2>($gmod/2)) {
-        $erg=2;
-      }
-    }
-    return $erg;
-  }
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfile.php");
   
   if (!isset($_POST['save'])) {

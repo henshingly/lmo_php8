@@ -18,46 +18,6 @@ else
   if (($klfin == 1) && ($st == $anzst)) {
     $anzsp = $anzsp+1;
   }
-  function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
-    $erg = 0;
-    if ($gmod == 1) {
-      if ($m1[0] > $m2[0]) {
-        $erg = 1;
-      } elseif($m1[0] < $m2[0]) {
-        $erg = 2;
-      }
-    } elseif($gmod == 2) {
-      if (($m1[0]+$m1[1]) > ($m2[0]+$m2[1])) {
-        $erg = 1;
-      } elseif(($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
-        $erg = 2;
-      } else {
-        if ($m2[0] > $m1[1]) {
-          $erg = 1;
-        } elseif($m2[0] < $m1[1]) {
-          $erg = 2;
-        }
-      }
-    } else {
-      $erg1 = 0;
-      $erg2 = 0;
-      for($k = 0; $k < $gmod; $k++) {
-        if (($m1[$k] != "_") && ($m2[$k] != "_")) {
-          if ($m1[$k] > $m2[$k]) {
-            $erg1++;
-          } elseif($m1[$k] < $m2[$k]) {
-            $erg2++;
-          }
-        }
-      }
-      if ($erg1 > ($gmod/2)) {
-        $erg = 1;
-      } elseif($erg2 > ($gmod/2)) {
-        $erg = 2;
-      }
-    }
-    return $erg;
-  }
    
   for($i = 1; $i <= $anzst; $i++) {
      
@@ -126,7 +86,7 @@ else
       if ($n == 0) {
         $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
         $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
-        $m = call_user_func('gewinn', $st-1, $i, $modus[$st-1], $m1, $m2);
+        $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
         if (($klfin == 1) && ($st == $anzst)) {
           if ($i == 0) {
             if ($m == 1) {
