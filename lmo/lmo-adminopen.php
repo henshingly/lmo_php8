@@ -39,7 +39,7 @@ if(($action=="admin") && ($todo=="open")){
 
   $output='';
   foreach($dirs as $dir) {
-    $descr=@implode("",file($dirliga.$subdir.$dir."/dir-descr.txt"));
+    $descr=file_get_contents(PATH_TO_LMO.'/'.$dirliga.$subdir.$dir."/dir-descr.txt");
     $output.=  "<div class='row'><div class='col-1'>&nbsp;</div><div class='col-4 text-start'><a href='".$adda."open&amp;subdir=".$subdir.$dir."/'>".$dir."</a></div>";
     if ($descr!="") {
       $output.= "<div class='col-2 text-start'><small>".$descr."</small></div>";
