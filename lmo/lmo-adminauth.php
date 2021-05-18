@@ -23,34 +23,26 @@ if($action=="admin"){
   require(PATH_TO_LMO."/lmo-admincheck_auth.php");
   if(empty($_SESSION['lmouserok'])){
 ?>
-<div class="container-fluid p-3">
+<div class="container-fluid">
   <div class="text-center"><h1><?php echo $text[77]." ".$text[54]; ?></h1></div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid p-3">
   <div class="row">
     <div class="col-4 offset-4">
-      <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" role="form" class="form-horizontal">
+      <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" role="form" class="row g-3">
         <input type="hidden" name="action" value="admin">
-        <div class="form-group"><?php echo $text[305]; ?></div>
-        <div class="form-group">
-           <div class="col-3">
-              <input class="form-control" type="text" name="xusername" placeholder="<?php echo $text[306]; ?>" value="<?php echo $_SESSION['lmousername']; ?>">
-           </div>
+        <div class="col-12"><?php echo $text[305]; ?></div>
+        <div class="col-6">
+           <input class="form-control" type="text" name="xusername" placeholder="<?php echo $text[306]; ?>" value="<?php echo $_SESSION['lmousername']; ?>">
         </div>
-        <div class="form-group">
-           <div class="col-3">
-              <input class="form-control" type="password" name="xuserpass" placeholder="<?php echo $text[308]; ?>" value="<?php echo $_SESSION['lmouserpass']; ?>">
-           </div>
+        <div class="col-6">
+           <input class="form-control" type="password" name="xuserpass" placeholder="<?php echo $text[308]; ?>" value="<?php echo $_SESSION['lmouserpass']; ?>">
         </div>
-        <div class="form-group">
-           <div class="col-2">
-              <input title="<?php echo $text[311] ?>" class="btn btn-primary btn-sm" type="submit" name="xusersub" value="<?php echo $text[310]; ?>">
-           </div>
+        <div class="col-6 text-start">
+           <input title="<?php echo $text[311] ?>" class="btn btn-primary btn-sm" type="submit" name="xusersub" value="<?php echo $text[310]; ?>">
         </div>
-        <div class="form-group">
-           <div class="col-4">
-              <a class="btn btn-secondary btn-sm" href="<?php echo URL_TO_LMO?>/lmo.php" title="<?php echo $text[470]; ?>"><?php echo $text[469]; ?></a>
-           </div>
+        <div class="col-6 text-end">
+           <a class="btn btn-secondary btn-sm" href="<?php echo URL_TO_LMO?>/lmo.php" title="<?php echo $text[470]; ?>"><?php echo $text[469]; ?></a>
         </div>
       </form>
     </div>
