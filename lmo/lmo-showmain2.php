@@ -155,7 +155,7 @@ if ($file!="") {
       $output_spielplan.=$action!="program"?    "<li class='nav-item'><a href='{$addm}program' title='{$text[13]}' class='nav-link'>{$text[12]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[12]</a></li>";
     }
   }
-  $output_info.=$action!="info"?              "<li class='nav-item pull-right'><a href='{$addm}info' title='{$text[21]}' class='nav-link'>{$text[20]}</a></li>": "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>$text[20]</a></li>";
+  $output_info.=$action!="info"?              "<li class='nav-item'><a href='{$addm}info' title='{$text[21]}' class='nav-link'>{$text[20]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[20]</a></li>";
 
   $druck=0;
 
@@ -188,6 +188,7 @@ if ($file!="") {
   $p0="p1";$$p0=c(1).c(0);
 }elseif ($backlink==1 && $action!="tipp")                 {require(PATH_TO_LMO."/lmo-showdir.php");}
 
+  
 if($action=="tipp" && $eintippspiel==1) {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");}
 $output_hauptteil.=ob_get_contents();ob_end_clean();
 
@@ -235,7 +236,7 @@ if($calctime==1){
 //Spieler-Addon
 if ($file!="" && $einspieler==1 && $mittore==1) {
   include(PATH_TO_ADDONDIR."/spieler/lmo-statloadconfig.php");
-  $output_spielerstatistik.=$action!="spieler"?"<li class='nav-item'><a href='{$addm}spieler' title='{$text['spieler'][12]}' class='nav-link'>{$spieler_ligalink}</a></li>": "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>$spieler_ligalink</a></li>";
+  $output_spielerstatistik.=$action!="spieler"?"<li class='nav-item'><a href='{$addm}spieler' title='{$text['spieler'][12]}' class='nav-link'>{$spieler_ligalink}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$spieler_ligalink</a></li>";
   }
 //Spieler-Addon
 

@@ -125,12 +125,12 @@ if ($_SESSION['lmouserok'] == 2) {
     }
 
   }
-  echo "<li role='presentation' class='nav-item pull-right'><a href='{$adda}logout' onclick='return chklmolink();' title='{$text[89]}' class='nav-link'>{$text[88]}</a></li>\n";
+  echo "<li role='presentation' class='nav-item'><a href='{$adda}logout' onclick='return chklmolink();' title='{$text[89]}' class='nav-link'>{$text[88]}</a></li>\n";
   //echo "&nbsp;";
   if($_SESSION['lmouserok']==2){
-       echo "<li role='presentation' class='nav-item pull-right'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}' class='nav-link'>{$text[312]}</a></li>\n";
+       echo "<li role='presentation' class='nav-item'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}' class='nav-link'>{$text[312]}</a></li>\n";
     } else {
-       echo "<li role='presentation' class='nav-item pull-right'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}' class='nav-link'>{$text[312]}</a></li>\n";
+       echo "<li role='presentation' class='nav-item'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}' class='nav-link'>{$text[312]}</a></li>\n";
     }?>
       </ul>
 </nav><?php 
