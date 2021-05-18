@@ -6,7 +6,7 @@
 <title><!--Titel--></title>
 <!--Stylesheet-->
 <!-- CSS only -->
-<link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 </head>
 <body>
@@ -15,15 +15,15 @@
   </div>
   <ul class="nav nav-tabs">
     <!--Kalender-->
-	<!--Ergebnisse-->
-	<!--Tabelle-->
-	<!--Spielplan-->
-	<!--Kreuztabelle-->
-	<!--Fieberkurve-->
-	<!--Ligastatistik-->
-	<!--Spielerstatistik-->
-	<!--Tippspiel-->
-	<!--Info-->
+    <!--Ergebnisse-->
+    <!--Tabelle-->
+    <!--Spielplan-->
+    <!--Kreuztabelle-->
+    <!--Fieberkurve-->
+    <!--Ligastatistik-->
+    <!--Spielerstatistik-->
+    <!--Tippspiel-->
+    <!--Info-->
   </ul>
   <div class="container-fluid">
     <div class="row">
@@ -44,6 +44,6 @@
 	</div>
   </div>
   <!-- JavaScript Bundle with Popper -->
-   <script type="text/javascrpt" src="//cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+   <script type="text/javascrpt" src="//cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   </body>
 </html>
