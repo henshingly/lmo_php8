@@ -45,7 +45,7 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
   <title>LMO Admin</title>
   <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_LMO?>/lmo-style-nc.php'>
   <style type='text/css'>@import url('<?php echo URL_TO_LMO?>/lmo-style.php');</style>
-  <link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
   <div align="center"><?php 
