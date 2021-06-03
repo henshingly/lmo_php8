@@ -575,6 +575,14 @@
 574=Zeitzone
 575=Zeitzone des Servers
 576=Hinweis: Tabellenstand ohne vorgezogene Spiele!
+1000=Serien
+1001=Gewonnen
+1002=Ungeschlagen
+1003=Unentschieden
+1004=Sieglos
+1005=Verloren
+1006=Aktuell
+1007=Saison
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde
