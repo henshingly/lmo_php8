@@ -19,6 +19,7 @@
   
   
 if(($file!="") && ($kurve==1)){
+  $platz_a=$platz_b=0;
   $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
   $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
   $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
