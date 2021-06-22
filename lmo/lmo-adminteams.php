@@ -228,9 +228,9 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 ?>
           <tr>
             <td class="nobr">
-              <input class="custom-control" type="text" name="xteams<?php echo $i; ?>" size="32" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" onChange="dolmoedit()">
-              <input class="custom-control" type="text" name="xteamm<?php echo $i; ?>" size="12" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" onChange="dolmoedit()">
-              <input class="custom-control" type="text" name="xteamk<?php echo $i; ?>" size="5" maxlength="5" value="<?php echo htmlspecialchars($teamk[$i]); ?>" onChange="dolmoedit()">
+              <input class="custom-control" type="text" name="xteams<?php echo $i; ?>" size="32" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" placeholder="<?php echo $text[577] ?>" onChange="dolmoedit()">
+              <input class="custom-control" type="text" name="xteamm<?php echo $i; ?>" size="12" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" placeholder="<?php echo $text[578] ?>" onChange="dolmoedit()">
+              <input class="custom-control" type="text" name="xteamk<?php echo $i; ?>" size="5" maxlength="5" value="<?php echo htmlspecialchars($teamk[$i]); ?>" placeholder="<?php echo $text[579] ?>"onChange="dolmoedit()">
               &nbsp;
             </td>
 <?php
@@ -289,7 +289,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
             </td>
 <?php
     if ($lmtype==0) {
-/** Mannschaft löschen */
+/** Mannschaft lï¿½schen */
 ?>
             <td class="nobr">
               <a href='<?php echo $addz.$i; ?>' onclick="return dteamlmolink(this.href,'<?php echo $teams[$i]; ?>');" title="<?php echo $text[334]; ?>">
@@ -308,13 +308,13 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 ?>
           <tr>
             <td class="nobr" colspan="<?php echo $breite; ?>" align="right">
-              <input title="<?php echo $text[114] ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[132]; ?>">
+              <input title="<?php echo $text[114] ?>" class="btn btn-sm btn-primary" type="submit" name="best" value="<?php echo $text[132]; ?>">
             </td>
 <?php
     if ($lmtype==0) {
 ?>
             <td class="nobr" colspan="<?php echo $breite; ?>">
-              <a href='<?php echo $addz; ?>-1' onclick="return ateamlmolink(this.href);" title="<?php echo $text[337]; ?>"><?php echo $text[336]; ?></a>
+              <a href='<?php echo $addz; ?>-1' title="<?php echo $text[337]; ?>"><?php echo $text[336]; ?></a>
             </td>
 <?php
     }

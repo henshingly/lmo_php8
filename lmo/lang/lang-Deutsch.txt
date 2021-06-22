@@ -575,6 +575,9 @@
 574=Zeitzone
 575=Zeitzone des Servers
 576=Hinweis: Tabellenstand ohne vorgezogene Spiele!
+577=Mannschaft (lang)
+578=(mittel)
+579=(kurz)
 1000=Serien
 1001=Gewonnen
 1002=Ungeschlagen

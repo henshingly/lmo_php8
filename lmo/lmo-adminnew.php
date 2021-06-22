@@ -131,8 +131,8 @@ if ($newpage == 3) {
   }
   $nticker = "0";
   for($i = 1; $i <= $anzteams; $i++) {
-    $teams[$i] = $text[281]." ".$i;
-    $teamk[$i] = $text[282].$i;
+    $teams[$i] = '';
+    $teamk[$i] = '';
     $teamm[$i] = '';
     if ($lmtype == 0) {
       $strafp[$i] = "0";
@@ -215,12 +215,12 @@ if($newpage==0){ ?>
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $text[244]; ?></acronym></td>
-            <td class="nobr" align="left"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $dirliga; ?><input class="custom-control" type="text" name="xfile" size="28" maxlength="28" value="<?php echo  $xfile; ?>" onChange="lmofilename()">.l98</acronym></td>
+            <td class="nobr" align="left"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $dirliga; ?><input class="custom-control" type="text" name="xfile" size="28" maxlength="28" value="<?php echo  $xfile; ?>" placeholder="noname">.l98</acronym></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?php echo  $text[118] ?>"><?php echo  $text[113]; ?></acronym></td>
-            <td class="nobr" align="left"><acronym title="<?php echo  $text[118] ?>"><input class="custom-control" type="text" name="xtitel" size="40" maxlength="60" value="<?php echo  $xtitel; ?>" onChange="lmotitelname()"></acronym></td>
+            <td class="nobr" align="left"><acronym title="<?php echo  $text[118] ?>"><input class="custom-control" type="text" name="xtitel" size="40" maxlength="60" value="<?php echo  $xtitel; ?>" placeholder="No Name"></acronym></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
@@ -295,17 +295,17 @@ if($newpage==2){
     $ftype=".l98";
     require(PATH_TO_LMO."/lmo-adminnewdir.php"); ?><br><?php 
     
-    // Änderungen s.janke@tu-bs.de - Beginn
+    // ï¿½nderungen s.janke@tu-bs.de - Beginn
     if ($xteams>=4) {
       $soll_anzsp = floor($xteams/2);
       $soll_anzst = floor($xteams*($xteams-1)/$soll_anzsp);
-      // Prüfe: 1. Stimmt die Anzahl der Spiele pro Spieltag?
-      //             2. Ist die Spieltaganzahl gleich Hin- und Rückrunde oder nur Hinrunde?
+      // Prï¿½fe: 1. Stimmt die Anzahl der Spiele pro Spieltag?
+      //             2. Ist die Spieltaganzahl gleich Hin- und Rï¿½ckrunde oder nur Hinrunde?
       if(($xanzsp==$soll_anzsp) && (($xanzst==$soll_anzst) || ($xanzst==$soll_anzst/2))){ ?>
               <input type="radio" name="xprogram" value="random"<?php if($xprogram=="random"){echo " checked";} ?> onChange="dolmoedit()"><?php echo  $text[288];
       }
     }
-    // Änderungen s.janke@tu-bs.de - Ende
+    // ï¿½nderungen s.janke@tu-bs.de - Ende
     
     ?>
             </td>
@@ -331,15 +331,15 @@ if($newpage==2){
 if($newpage<3){ ?>
           <tr>
             <td class="lmoFooter" align="left" colspan="2">
-              <a href="<?php echo  $_SERVER['PHP_SELF']; ?>" onclick="return siklmolink(this.href);" title="<?php echo  $text[248]; ?>"><?php echo  $text[247]; ?></a>
+              <a href="<?php echo  $_SERVER['PHP_SELF']; ?>" class="btn btn-warning btn-sm" onclick="return siklmolink(this.href);" title="<?php echo  $text[248]; ?>"><?php echo  $text[247]; ?></a>
             </td><?php 
   if($newpage<2){ ?>
             <td align="right">
-              <input title="<?php echo  $text[261]; ?>" class="btn btn-primary btn.sm" type="submit" name="best" value="<?php echo  $text[260]; ?>">
+              <input title="<?php echo  $text[261]; ?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo  $text[260]; ?>">
             </td><?php 
   } else {?>
             <td align="right">
-              <input title="<?php echo  $text[290]; ?>" class="btn btn-primary btn.sm" type="submit" name="best" value="<?php echo  $text[289]; ?>">
+              <input title="<?php echo  $text[290]; ?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo  $text[289]; ?>">
             </td><?php 
   }?>
           </tr><?php 
@@ -351,7 +351,7 @@ if($newpage==3){ ?>
           </tr>
           <tr>
             <td class="lmoFooter" colspan="3" align="left">
-              <a href="<?php echo  $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;st=-2&amp;file=".$file; ?>" title="<?php echo  $text[293]; ?>"><?php echo  $text[292]; ?></a>
+              <a href="<?php echo  $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;st=-2&amp;file=".$file; ?>" class="btn btn-success btn-sm" title="<?php echo  $text[293]; ?>"><?php echo  $text[292]; ?></a>
             </td>
           </tr><?php 
 } ?>
