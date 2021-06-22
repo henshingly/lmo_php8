@@ -99,7 +99,7 @@ $lang=array(
       'STEP3_PATH_WRONG'=>'Der Pfad ist nicht korrekt!',
       'STEP3_URL'=>'Geben Sie hier die absolute URL zum LMO an',
       'STEP3_URL_CORRECT'=>' Wenn Sie hier ein Bild sehen, ist die URL richtig!',
-      'STEP3_URL_EXAMPLE'=>'Bsp.: <em><kbd>http://www.beispiel.de/lmo</kbd></em>',
+      'STEP3_URL_EXAMPLE'=>'Bsp.: <em><kbd>//www.beispiel.de/lmo</kbd></em>',
       'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Konnte Datei <code>config/init-parameters.php</code> nicht öffnen! Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
       'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Konnte die Konfiguration nicht speichern. Vergewissern Sie sich, dass die Datei <code>config/init-parameters.php</code> die Rechte 666 besitzt. Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
       'STEP3_SUCCESS_INI_FILE'=>'Die Konfiguration wurde erfolgreich gespeichert',
@@ -164,7 +164,7 @@ $lang=array(
       'STEP3_PATH_CORRECT'=>'Path seems to be correct!',
       'STEP3_PATH_WRONG'=>'Path seems to be incorrect!',
       'STEP3_URL'=>'Please insert the <strong>absolute URL</strong> to LMO',
-      'STEP3_URL_EXAMPLE'=>'e.g.: http://www.example.com/lmo',
+      'STEP3_URL_EXAMPLE'=>'e.g.:<em><kbd>//www.example.com/lmo</em></kbd>',
       'STEP3_URL_CORRECT'=>' If you can see a picture in front of this message then the URL is correct!',
       'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Could not open <code>config/init-parameters.php</code>! Please chmod the file with 666 and <a href="#" onclick="location.reload();return false;">[Reload]</a> this page to repeat the check.',
       'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Could not save configuration! Please make sure that the file <code>config/init-parameters.php</code> has the correct chmod of 666. Please chmod the file with 666 and <a href="#" onclick="location.reload();return false;">[Reload]</a> this page to repeat the check.',
@@ -225,7 +225,7 @@ $lang=array(
       'STEP3_PATH_WRONG'=>'Le chemin est incorrect!',
       'STEP3_URL'=>'Veuillez entrer ici l\'adresse URL pour accèder au LMO',
       'STEP3_URL_CORRECT'=>' Si vous voyez une image, l\'adresse URL est correcte!',
-      'STEP3_URL_EXAMPLE'=>'Ex.: <em><kbd>http://www.exemple.fr/lmo</kbd></em>',
+      'STEP3_URL_EXAMPLE'=>'Ex.: <em><kbd>//www.exemple.fr/lmo</kbd></em>',
       'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'Impossible d\'ouvrir le fichier <code>config/init-parameters.php</code>!  Veuillez définir les droits d\'accès sur chmod 666 et actualisez cette page ([F5]), pour répeter cette étape.',
       'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'Veuillez vérifier avant l\'installation que le fichier <code>config/init-parameters.php</code> a bien les droits d\'accès 666. Veuillez définir les droits d\'accès sur chmod 666 et actualisez cette page, pour répeter cette étape.',
       'STEP3_SUCCESS_INI_FILE'=>'La configuration a été sauvegardé avec succès',
@@ -278,7 +278,7 @@ $lang=array(
       'STEP3_PATH_CORRECT'=>'El directorio parece ser correcto!',
       'STEP3_PATH_WRONG'=>'El directorio parece ser incorrecto!',
       'STEP3_URL'=>'Por favor ingrese la <strong>URL absoluta</strong> a LMO',
-      'STEP3_URL_EXAMPLE'=>'ej.: http://www.ejemplo.com/lmo',
+      'STEP3_URL_EXAMPLE'=>'ej.: <em><kbd>//www.ejemplo.com/lmo</em></kbd>',
       'STEP3_URL_CORRECT'=>' Si usted puede ver una imagen delante de este mensaje entonces la URL es correcta!',
       'STEP3_ERROR_INI_FILE_NOT_OPENABLE'=>'No se puede abrir init-parameters.php! Por favor cambie los permisos del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta página para repetir el chequeo.',
       'STEP3_ERROR_INI_FILE_NOT_WRITEABLE'=>'No se puede guardar la configuración! Por favor aseguresé que el archivo <code>init-parameters.php</code> tiene permisos chmod de 666. Por favor cambie los permisos chmod del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta página para repetir el chequeo.',
@@ -338,10 +338,11 @@ $lmo_dir = dirname(dirname(__FILE__));
 
 $path=str_replace('\\','/',$lmo_dir);
 if (strpos(dirname($_SERVER['SCRIPT_NAME']),"/install")!==FALSE) {
-  $url=(isset($_SERVER['HTTPS'])?'https':'http').'://' . $_SERVER['HTTP_HOST'].dirname(dirname($_SERVER['SCRIPT_NAME']));
+  $url='//' . $_SERVER['HTTP_HOST'].dirname(dirname($_SERVER['SCRIPT_NAME']));
 } else {
-  $url=(isset($_SERVER['HTTPS'])?'https':'http').'://' . $_SERVER['HTTP_HOST'].dirname(($_SERVER['SCRIPT_NAME']));
+  $url='//' . $_SERVER['HTTP_HOST'].dirname(($_SERVER['SCRIPT_NAME']));
 }
+
 
 
 
