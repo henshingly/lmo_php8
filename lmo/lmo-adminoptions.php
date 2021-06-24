@@ -268,7 +268,7 @@ if ($show==0) {?>
 }?>
           <tr>
             <td class="nobr" colspan="6" align="center">
-              <input title="<?php echo $text[114]?>" class="btn btn-primary btn-sm type="submit" name="best" value="<?php echo $text[188];?>">
+              <input title="<?php echo $text[114]?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo $text[188];?>">
             </td>
           </tr>
         </table>
