@@ -15,4 +15,6 @@ Dabei arbeiten nahezu alle Frontend-Frameworks nach demselben Muster (und dahing
 
 Der Fokus wurde zunächst auf das FrontEnd gelegt, hier sind nahezu alle Seiten auf responive Design umgestellt. Nicht umgestellt sind bisher die Spielerstatistik und das Tippspiel.
 
+Ebenso werden einzelne Code-Stellen ready for PHP 8 gemacht, bspw. Warnings curly brackets betreffend oder deprecated functions.
+
 Der aktuelle Stand kann unter https://lmo.babig.it/ eingesehen werden (entspricht dem GitHub-Stand).
