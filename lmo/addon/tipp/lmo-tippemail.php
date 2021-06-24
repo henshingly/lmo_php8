@@ -27,8 +27,9 @@ if ($message != "") {
 
   $dumma = file($pswfile);
   
-  $subject = $betreff;
-  $header = "From: ".$text['tipp'][0]." <".$aadr.">";
+  $subject = "=?UTF-8?B?".base64_encode($betreff)."?=";
+  $header = "Content-type: text/plain; charset=utf-8";
+  $header .= "From: ".$text['tipp'][0]." <".$aadr.">";
   $para5 = "-f $aadr";
   $anzemail = 0;
   $anztipper = count($dumma);
@@ -47,6 +48,7 @@ if ($message != "") {
         $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
         $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
         $textmessage = str_replace("[name]", $dummb[3], $textmessage);
+        $textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
         if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
           $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
         } else {
@@ -171,6 +173,7 @@ if ($message != "") {
             $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
             $textmessage = str_replace("[name]", $dummb[3], $textmessage);
             $textmessage = str_replace("[spiele]", $spiele, $textmessage);
+            $textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
             if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
               $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
             } else {
@@ -239,6 +242,7 @@ if ($message != "") {
               $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
               $textmessage = str_replace("[name]", $dummb[3], $textmessage);
               $textmessage = str_replace("[spiele]", $spiele, $textmessage);
+              $textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
               if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
                 $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
               } else {
@@ -266,6 +270,7 @@ if ($message != "") {
     $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
     $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
     $textmessage = str_replace("[name]", $dummb[3], $textmessage);
+    $textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
     if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
       $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
     } else {
