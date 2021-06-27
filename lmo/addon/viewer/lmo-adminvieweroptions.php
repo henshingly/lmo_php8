@@ -161,7 +161,7 @@ if ($form3) {
           $teamnr=0;
         }
       } else {
-        echo "3. Formular SAVE_FILE: ".PATH_TO_LMO.'/'.$dirliga.$ligen_datei." nicht gefunden<br>";
+        echo "3. Formular SAVE_FILE: ".PATH_TO_LMO.'/'.$dirliga.$ligen_datei." ".$text['viewer'][42]"<br>";
       }
       $zz++; $teamnr++;
       $save_array[$zz]=$ligen_datei.'_'.$teamnr.'='.$team;
