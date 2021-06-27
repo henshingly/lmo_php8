@@ -23,14 +23,11 @@ if ($file != "") {
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
   $selteam=!empty($_GET['selteam'])?$_GET['selteam']:$selteam;
-
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td valign="top" align="center">
-      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php 
+?>
+<div class="container">
+  <div class="row">
+    <div class="col-1"><?php 
   for($i = 1; $i <= floor($anzteams/2); $i++) {?>
-        <tr>
-          <td align="right">
             <acronym title="<?php echo $text[23]." ".$teams[$i]?>">
             	<?php
     if($i!=$selteam){?>
@@ -40,21 +37,18 @@ if ($file != "") {
       echo $teamk[$i];
     }
        ?></acronym>
-          </td>          
-          <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
-        </tr><?php 
+         <?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); 
   }?>
-      </table>
-    </td>
-    <td valign="top" align="center">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php 
+    </div>
+    <div class="col-10">
+      <div class="container" id="koprogram"><?php 
   if ($selteam == 0) {
-    echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text[24]."<br>&nbsp;</td></tr>";
+    echo "<div class='row'><div class='col text-center'><br/>".$text[24]."<br/></div></div>";
   } else {
     for($j = 0; $j < $anzst; $j++) {
       for($i = 0; $i < (($anzteams/2)+1); $i++) {
         if (($selteam == $teama[$j][$i]) || ($selteam == $teamb[$j][$i])) {?>
-        <tr><?php 
+        <div class="row"><?php 
           if ($j == $anzst-1) {
             $l = $text[364];
           } elseif($j == $anzst-2) {
@@ -66,16 +60,16 @@ if ($file != "") {
           } else {
             $l = $j+1;
           }?>
-          <th align="right">&nbsp;<a href="<?php echo $addr.($j+1); ?>" title="<?php echo $text[377]; ?>"><?php echo $l; ?></a>&nbsp;</th><?php 
+          <div class="col-1"><a href="<?php echo $addr.($j+1); ?>" title="<?php echo $text[377]; ?>"><?php echo $l; ?></a></div><?php
           $m1 = array($goala[$j][$i][0], $goala[$j][$i][1], $goala[$j][$i][2], $goala[$j][$i][3], $goala[$j][$i][4], $goala[$j][$i][5], $goala[$j][$i][6]);
           $m2 = array($goalb[$j][$i][0], $goalb[$j][$i][1], $goalb[$j][$i][2], $goalb[$j][$i][3], $goalb[$j][$i][4], $goalb[$j][$i][5], $goalb[$j][$i][6]);
           $m = gewinn($j, $i, $modus[$j], $m1, $m2);
           if ($m == 1) {
-            echo "<td class=\"lmoTurnierSieger nobr\" align=\"right\">";
+            echo "<div class='col-3 text-success text-end'>";
           } elseif ($m==2) {
-            echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"right\">";
+            echo "<div class='col-3 text-danger text-end'>";
           } else {
-            echo "<td class=\"nobr\" align=\"right\">";
+            echo "<div class='col-3 text-end'>";
           }
           if ($selteam == $teama[$j][$i]) {
             echo "<strong>";
@@ -88,14 +82,13 @@ if ($file != "") {
           if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
             echo " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
           }
-          echo " </td>";?>
-          <td class="lmost5" align="center" width="10">-</td><?php 
+          echo " </div>";
           if ($m == 2) {
-            echo "<td class=\"lmoTurnierSieger nobr\">";
+            echo "<div class='col-3 text-success'>&nbsp;&nbsp; - &nbsp;&nbsp;";
           } elseif($m==1) {
-            echo "<td align='left' class=\"lmoTurnierVerlierer nobr\">";
+            echo "<div class='col-3 text-danger'>&nbsp;&nbsp; - &nbsp;&nbsp;";
           } else {
-            echo "<td class=\"nobr\" align=\"left\">";
+            echo "<div class='col-3'>&nbsp;&nbsp; - &nbsp;&nbsp;";
           }
           echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt=''")."&nbsp;";
           if ($selteam == $teamb[$j][$i]) {
@@ -108,7 +101,7 @@ if ($file != "") {
           if (($teamu[$teamb[$j][$i]] != "") && ($urlt == 1)) {
             echo " <a href=\"".$teamu[$teamb[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
           }
-          echo " </td>";
+          echo " </div>";
           for($n = 0; $n < $modus[$j]; $n++) {
             if ($datm == 1) {
               if ($mterm[$j][$i][$n] > 0) {
@@ -120,11 +113,11 @@ if ($file != "") {
               }
             }
             if ($n == 0) {
-              echo "<td width=\"2\">&nbsp;</td>";
+              echo "&nbsp;";
             } else {
-              echo "<td width=\"8\">|</td>";
-            }?>
-          <td class="nobr"><?php echo $dumn1;?><?php echo applyFactor($goala[$j][$i][$n],$goalfaktor); ?>&nbsp;:&nbsp;<?php echo applyFactor($goalb[$j][$i][$n],$goalfaktor); ?><?php echo $mspez[$j][$i][$n]; ?><?php echo $dumn2; ?><?php 
+              echo "|";
+            }
+          echo "<div class='col-2'>".applyFactor($goala[$j][$i][$n],$goalfaktor); ?> : <?php echo applyFactor($goalb[$j][$i][$n],$goalfaktor); ?> <?php echo $mspez[$j][$i][$n]; ?><?php
            /** Mannschaftsicons finden
              */
             $lmo_teamaicon="";
@@ -158,33 +151,24 @@ if ($file != "") {
             } else {
               echo "&nbsp;";
             }?>
-          </td><?php          }?>
-        </tr><?php        }
+          </div><?php          }?>
+        </div><?php        }
       }
     }
   }?>
-      </table>
-    </td>
-    <td valign="top" align="center">
-      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php 
+      </div>
+    </div>
+    <div class="col-1 text-start"><br/><?php 
   for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {?>
-        <tr>
-          <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
-          <td align="left">
-            <acronym title="<?php echo $text[23]." ".$teams[$i]?>">
-            	<?php
+      <acronym title="<?php echo $text[23]." ".$teams[$i]?>"><?php
     if($i!=$selteam){?>
             <a href="<?php echo $addp.$i?>"><?php echo $teamk[$i]?></a>
             <?php
     } else {
       echo $teamk[$i];
     }
-       ?></acronym>
-          </td>
-        </tr><?php 
+       ?></acronym><?php 
   }?>
-      </table>
-    </td>
-  </tr>
-</table><?php 
+  </div>
+</div><?php 
 }?>
