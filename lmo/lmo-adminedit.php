@@ -482,7 +482,7 @@ if ($file != "") {
           $dum2 = "";
           $dum3 = "";
         }?>
-            <td class="nobr"><input title="<?php echo $text[122] ?>" class="custom-control" type="text" name="xatdat<?php echo $i.$n; ?>" tabindex="<?php echo $i;?>3" size="10" maxlength="10" value="<?php echo $dum1; ?>" onChange="dolmoedit()"></td>
+            <td class="nobr"><input title="<?php echo $text[122] ?>" class="custom-control" type="text" name="xatdat<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>3" size="10" maxlength="10" value="<?php echo $dum1; ?>" onChange="dolmoedit()"></td>
             <td><input title="<?php echo $text[123] ?>" class="custom-control" type="text" name="xattim<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>4" size="5" maxlength="5" value="<?php echo $dum2; ?>" onChange="dolmoedit()"></td>
             <td width="2">&nbsp;</td><?php
 
