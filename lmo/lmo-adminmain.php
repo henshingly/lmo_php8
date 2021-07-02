@@ -40,8 +40,8 @@ if($action=="admin"){
 </div>
 <nav><?php 
 require_once(PATH_TO_LMO."/lmo-openfile.php");
+echo "\n<ul class='nav nav-pills'>\n";
 if ($_SESSION['lmouserok'] == 2) {
-  echo "\n<ul class='nav nav-pills'>\n";
   if ($todo != "new") {
     echo "<li role='presentation' class='nav-item'><a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink();' title='{$text[79]}' class='nav-link'>{$text[78]}</a></li>\n";
   } else {
