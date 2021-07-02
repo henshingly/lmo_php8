@@ -21,8 +21,6 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($_SESSION['lmouserok']==2) {
   
-  
-  
   isset($_GET['del'])?$del=$_GET['del']:$del=-1;
   isset($_POST['save'])?$save=$_POST['save']:$save=-2;
   isset($_REQUEST['show'])?$show=$_REQUEST['show']:$show=-1;
@@ -31,7 +29,7 @@ if ($_SESSION['lmouserok']==2) {
  
   if ($save>=0) {
     if(isset($_POST["xadmin_name".$save]) && isset($_POST["xadmin_pass".$save]) && isset($_POST["xadmin_rang".$save])) {
-      $lmo_admin_data[$save]=array(trim($_POST["xadmin_name".$save]),trim($_POST["xadmin_pass".$save]),trim($_POST["xadmin_rang".$save]));
+      $lmo_admin_data[$save]=array(trim($_POST["xadmin_name".$save]),password_hash($_POST["xadmin_pass".$save], PASSWORD_BCRYPT),trim($_POST["xadmin_rang".$save]));
       $lmo_helfer_ligen_neu=array();
       if (trim($_POST["xadmin_rang".$save])==1) {  //Hilfsadmin -> Ligen herausfinden
         $lmo_helfer_ligen=isset($_POST["xhelfer_ligen".$save]) && count($_POST["xhelfer_ligen".$save])>0?$_POST["xhelfer_ligen".$save]:array();
@@ -78,7 +76,7 @@ if ($_SESSION['lmouserok']==2) {
       }
     }
     if (empty($admin_dupe) && !empty($_POST["xadmin_name"]) && !empty($_POST["xadmin_pass"])){
-      $lmo_admin_data[]=array(trim($_POST["xadmin_name"]),trim($_POST["xadmin_pass"]),1,'','');  //Neue User sind zunächst immer Hilfsadmins ohne Ligen
+      $lmo_admin_data[]=array(trim($_POST["xadmin_name"]),password_hash($_POST["xadmin_pass"], PASSWORD_BCRYPT),1,'','');  //Neue User sind zunächst immer Hilfsadmins ohne Ligen
       require(PATH_TO_LMO."/lmo-saveauth.php");
       require(PATH_TO_LMO."/lmo-loadauth.php");
       $show=count($lmo_admin_data)-1;
@@ -88,14 +86,14 @@ if ($_SESSION['lmouserok']==2) {
     }
   } 
 ?>
-<table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center"><a href="<?php echo $addr_options?>" onclick="return chklmolink();" title="<?php echo $text[320]?>"><?php echo $text[319]?></a></td>
-    <td align="center"><a href="<?php echo $addr_addons?>" onclick="return chklmolink();" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></td>
-    <td align="center"><a href="<?php echo $addr_design?>" onclick="return chklmolink();" title="<?php echo $text[422]?>"><?php echo $text[421]?></a></td>
-    <td align="center"><?php echo $text[317]?></td>
-  </tr>
-</table>
+<nav>
+  <ul class="nav nav-pills justify-content-center">
+    <li class="nav-item" role="presentation"><a href="<?php echo $addr_options?>"class="nav-link"  title="<?php echo $text[320]?>"><?php echo $text[319]?></a></li>
+    <li class="nav-item" role="presentation"><a href="<?php echo $addr_addons?>" class="nav-link" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></li>
+    <li class="nav-item" role="presentation"><a href="<?php echo $addr_design?>" class="nav-link" title="<?php echo $text[422]?>"><?php echo $text[421]?></a></li>
+    <li class="nav-item" role="presentation"><a href="#" class="nav-link active"><?php echo $text[317]?></a></li>
+  </ul>
+</nav>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center" colspan="2"><h1><?php echo $text[321]?></h1></td>
@@ -138,7 +136,7 @@ if ($_SESSION['lmouserok']==2) {
           </tr>
           <tr>
             <td align="right"><?php echo $text[323]?></td>
-            <td align="left" colspan="2"><input class="form-control" type="text" name="xadmin_pass<?php echo $show?>" size="16" maxlength="32" value="<?php echo $lmo_admin[1]?>"></td>
+            <td align="left" colspan="2"><input class="form-control" type="text" name="xadmin_pass<?php echo $show?>" size="16" maxlength="32" value=""></td>
           </tr>
           <tr>
             <td align="right" rowspan="2"><?php echo $text[324]?></td>

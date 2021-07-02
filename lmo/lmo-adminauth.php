@@ -36,7 +36,7 @@ if($action=="admin"){
            <input class="form-control" type="text" name="xusername" placeholder="<?php echo $text[306]; ?>" value="<?php echo $_SESSION['lmousername']; ?>">
         </div>
         <div class="col-6">
-           <input class="form-control" type="password" name="xuserpass" placeholder="<?php echo $text[308]; ?>" value="<?php echo $_SESSION['lmouserpass']; ?>">
+           <input class="form-control" type="password" name="xuserpass" placeholder="<?php echo $text[308]; ?>" value="">
         </div>
         <div class="col-6 text-start">
            <input title="<?php echo $text[311] ?>" class="btn btn-primary btn-sm" type="submit" name="xusersub" value="<?php echo $text[310]; ?>">
