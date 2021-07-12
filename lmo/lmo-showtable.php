@@ -138,7 +138,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     if ($teamn[$i]!="") {
       $lmo_tabellennotiz.=$teamn[$i];
     }?>
-<a href="#" data-toggle="tooltip" title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"> <img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
+<a href="#" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"> <img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /></a><?php
     $lmo_tabellennotiz="";
   } else {
     echo "&nbsp;";
