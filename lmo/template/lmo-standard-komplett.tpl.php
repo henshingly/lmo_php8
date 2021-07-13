@@ -7,7 +7,7 @@
 <!--Stylesheet-->
 <!-- CSS only -->
 <link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
 </head>
 <body>
   <div class="container p-3">

@@ -19,7 +19,7 @@
   
   
 if(($file!="") && ($kurve==1)){
-  $platz_a=$platz_b=0;
+  $platz_a=$platz_b='';
   $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
   $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
   $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
@@ -27,8 +27,7 @@ if(($file!="") && ($kurve==1)){
     $show_stat1=$show_stat2;
     $show_stat2=0;
   }
-  $tension = '0.4';
-  //if($lmo_fieber_tension==1) $tension = 0;
+  $tension = '0';
 ?>
 
 <div class="container">
@@ -78,7 +77,7 @@ if(($file!="") && ($kurve==1)){
           $platz_b = $platz_b.$platz[$show_stat2][$j].",";
       }
       $platz_b = $platz_b."0";
-      }?>
+    }?>
         <div class="row">
           <div class="col"><br/><canvas id="myChart" width="1000" height="600"></canvas>
 		     <?php
@@ -123,42 +122,48 @@ var myChart = new Chart(ctx, {
 				backgroundColor: 'yellow',
 				borderColor: 'blue',
 				data: [<?php echo $pgplatz2; ?>],
-			},]
+			}],
 		},
 		options: {
 			scales: {
-				xAxes: [{
+				x: {
 					display: true,
 					gridLines: {
-					    color: 'grey'
+					    	color: 'grey'
 					},
-					scaleLabel: {
+					title: {
 						display: true,
 						fontSize: 24,
-						labelString: '<?php echo $pgtext1; ?>'
+						text: '<?php echo $pgtext1; ?>'
 						
 					}
-				}],
-				yAxes: [{
+				},
+				y: {
 					display: true,
 					gridLines: {
-					    color: 'grey'
+					    	color: 'grey'
 					},
-					scaleLabel: {
+					title: {
 						display: true,
 						fontSize: 24,
-						labelString: '<?php echo $pgtext2; ?>'
+						text: '<?php echo $pgtext2; ?>'
 					},
+					min: 1,
+					max: <?php echo $anzteams; ?>,
+					reverse: true,
 					ticks: {
-					    reverse: true,
-					    min: 1,
-					    max: <?php echo $anzteams; ?>,
-					    maxTicksLimit: <?php echo $anzteams; ?>
+					    	maxTicksLimit: <?php echo $anzteams; ?>
 					}
-				}]
+				},
 			},
 			tooltips: {
-			    displayColors: false
+			    	displayColors: false,
+			    	callbacks: {
+			        	title: function(tooltipItems, data) {
+			            		var tooltipItem = tooltipItems[0];
+                                    		return data.labels[tooltipItem.index] + ". Spieltag";
+                                	}
+			    	}
 			}
 		}
 	});
