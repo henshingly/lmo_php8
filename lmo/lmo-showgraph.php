@@ -49,7 +49,7 @@ if(($file!="") && ($kurve==1)){
         </div>
       </div>
     </div>
-    <div class="col-sm-10">
+    <div class="col-sm-12">
       <div class="container">
       <?php
   if($show_stat1==0){?>
@@ -74,7 +74,7 @@ if(($file!="") && ($kurve==1)){
 		     <?php
                 $pgtext1=$text[135];
                 $pgtext2=$text[136];
-                // Anzahl Spieltage in x-AScha
+                // Anzahl Spieltage in x-Achse
                 $spieltag = array();
                 for($i=1; $i<=$anzst;$i++) {
                     $spieltag[] = "'$i'";
