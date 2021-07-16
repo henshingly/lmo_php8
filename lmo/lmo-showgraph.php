@@ -34,16 +34,7 @@ if(($file!="") && ($kurve==1)){
   <div class="row">
     <div class="col-sm-1">
       <div class="container">
-        <div class="row">
-         <div class="col">&nbsp;</div>
-        </div>
-        <div class="row">
-         <div class="col">&nbsp;</div>
-        </div>
-        <div class="row">
-         <div class="col">&nbsp;</div>
-        </div>
-        <div class="row">
+        <div class="row pt-5">
           <div class="col text-right">
           <?php
   for ($i=1; $i<=$anzteams; $i++) {
@@ -175,16 +166,7 @@ var myChart = new Chart(ctx, {
   </div>
     <div class="col-sm-1">
       <div class="container">
-        <div class="row">
-         <div class="col">&nbsp;</div>
-        </div>
-        <div class="row">
-         <div class="col">&nbsp;</div>
-        </div>
-        <div class="row">
-         <div class="col">&nbsp;</div>
-        </div>
-        <div class="row">
+        <div class="row pt-5">
           <div class="col">
           <?php
   for ($i=1; $i<=$anzteams; $i++) {
