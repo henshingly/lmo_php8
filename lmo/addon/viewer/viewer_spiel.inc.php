@@ -26,7 +26,7 @@ foreach ($fav_team[$i] as $akt_team) {
   if (($akt_team == $partie->heim->nr) || ($akt_team == $partie->gast->nr)) {
 
     //Anfang Relevante Daten
-    $goalfaktor = $liga->options->keyValues['goa
+    $goalfaktor = $liga->options->keyValues['goalfaktor'];
     $template->setVariable("Liganame",$liga->name);
     $template->setVariable("Ligadatum",$liga->ligaDatumAsString());
     $template->setVariable("Spieltag",$multi_cfgarray['spieltagtext']." ".$spieltag);
