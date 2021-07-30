@@ -26,15 +26,16 @@ foreach ($fav_team[$i] as $akt_team) {
   if (($akt_team == $partie->heim->nr) || ($akt_team == $partie->gast->nr)) {
 
     //Anfang Relevante Daten
+	$goalfaktor = $liga->options->keyValues['goalfaktor'];
     $template->setVariable("Liganame",$liga->name);
     $template->setVariable("Ligadatum",$liga->ligaDatumAsString());
     $template->setVariable("Spieltag",$multi_cfgarray['spieltagtext']." ".$spieltag);
     $template->setVariable("Datum",$partie->datumString('-',$multi_cfgarray['datumsformat']));
     $template->setVariable("Uhrzeit",$partie->zeitString('-',$multi_cfgarray['uhrzeitformat']));
-    $template->setVariable("Tore",$partie->hToreString($multi_cfgarray['tordummy'])." : ".$partie->gToreString($multi_cfgarray['tordummy']).' '.$partie->spielEndeString($text));
+    $template->setVariable("Tore",($partie->hToreString($multi_cfgarray['tordummy'])./$goalfaktor)" : ".($partie->gToreString($multi_cfgarray['tordummy'])/$goalfaktor).' '.$partie->spielEndeString($text));
     //Heim & Gasttore einzeln
-    $template->setVariable("ToreHeim",$partie->hToreString($multi_cfgarray['tordummy']));
-    $template->setVariable("ToreGast",$partie->gToreString($multi_cfgarray['tordummy']));
+    $template->setVariable("ToreHeim",($partie->hToreString($multi_cfgarray['tordummy'])/$goalfaktor));
+    $template->setVariable("ToreGast",($partie->gToreString($multi_cfgarray['tordummy'])/$goalfaktor));
     //Ende Relevante Daten
 
     //Neu TeamIcons Heim fuer Bild alt /Anpassung Apache2
@@ -78,7 +79,7 @@ foreach ($fav_team[$i] as $akt_team) {
       }
     }//Ende Favteam hervorheben
 
-    //Trotz Konfigwert auch andere Variablen zur Verfügung stellen
+    //Trotz Konfigwert auch andere Variablen zur VerfÃ¼gung stellen
     $template->setVariable("HeimKurz",$partie->heim->kurz);
     $template->setVariable("GastKurz",$partie->gast->kurz);
     $template->setVariable("HeimMittel",$partie->heim->mittel);
@@ -116,7 +117,7 @@ foreach ($fav_team[$i] as $akt_team) {
 
     //Anfang Spieltag verlinken
     //Im Unterschied zu den anderen Links wird nur die URL gesetzt, nicht der komplette Link
-    //Rest wird über das Template gesteuert
+    //Rest wird Ã¼ber das Template gesteuert
     $spieltag_link=URL_TO_LMO.'/lmo.php?file='.$fav_liga[$i]."&amp;action=results&amp;st=".$spieltag;
     $template->setVariable("SpieltagLink",$spieltag_link);
     //Ende Spieltag
@@ -125,9 +126,9 @@ foreach ($fav_team[$i] as $akt_team) {
     $SpBer_link=$partie->reportUrl;
     if ($SpBer_link != "") {
       if ($multi_cfgarray['spielberichte_neues_fenster']=='1' ) {
-        $tlink="<a href='".$SpBer_link."' target='_blank' title='".$text['viewer'][38]." (".$text['viewer'][33].")'><img src='".URL_TO_IMGDIR."/viewer/".$multi_cfgarray['spielberichtesymbol']."' border='0' alt='§'></a>";
+        $tlink="<a href='".$SpBer_link."' target='_blank' title='".$text['viewer'][38]." (".$text['viewer'][33].")'><img src='".URL_TO_IMGDIR."/viewer/".$multi_cfgarray['spielberichtesymbol']."' border='0' alt='Â§'></a>";
       } else {
-        $tlink="<a href='".$SpBer_link."' title='".$text['viewer'][38]." (".$text['viewer'][34].")'><img src='".URL_TO_IMGDIR."/viewer/".$multi_cfgarray['spielberichtesymbol']."' border='0' alt='§'></a>";
+        $tlink="<a href='".$SpBer_link."' title='".$text['viewer'][38]." (".$text['viewer'][34].")'><img src='".URL_TO_IMGDIR."/viewer/".$multi_cfgarray['spielberichtesymbol']."' border='0' alt='Â§'></a>";
       }
       $template->setVariable("Spielbericht", $tlink);
     }//Ende Spielbericht
