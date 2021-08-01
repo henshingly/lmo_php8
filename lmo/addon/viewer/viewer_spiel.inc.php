@@ -32,10 +32,10 @@ foreach ($fav_team[$i] as $akt_team) {
     $template->setVariable("Spieltag",$multi_cfgarray['spieltagtext']." ".$spieltag);
     $template->setVariable("Datum",$partie->datumString('-',$multi_cfgarray['datumsformat']));
     $template->setVariable("Uhrzeit",$partie->zeitString('-',$multi_cfgarray['uhrzeitformat']));
-    $template->setVariable("Tore",($partie->hToreString($multi_cfgarray['tordummy'])/$goalfaktor)." : ".($partie->gToreString($multi_cfgarray['tordummy'])/$goalfaktor).' '.$partie->spielEndeString($text));
+    $template->setVariable("Tore",$partie->hToreString($multi_cfgarray['tordummy'], $goalfaktor)." : ".$partie->gToreString($multi_cfgarray['tordummy'], $goalfaktor).' '.$partie->spielEndeString($text));
     //Heim & Gasttore einzeln
-    $template->setVariable("ToreHeim",($partie->hToreString($multi_cfgarray['tordummy'])/$goalfaktor));
-    $template->setVariable("ToreGast",($partie->gToreString($multi_cfgarray['tordummy'])/$goalfaktor));
+    $template->setVariable("ToreHeim",$partie->hToreString($multi_cfgarray['tordummy']));
+    $template->setVariable("ToreGast",$partie->gToreString($multi_cfgarray['tordummy']));
     //Ende Relevante Daten
 
     //Neu TeamIcons Heim fuer Bild alt /Anpassung Apache2
@@ -47,8 +47,6 @@ foreach ($fav_team[$i] as $akt_team) {
     $template->setVariable("IconMiddlegast",HTML_icon($Gast,'teams','middle'));
     $template->setVariable("IconBigheim",HTML_icon($Heim,'teams','big'));
     $template->setVariable("IconBiggast",HTML_icon($Gast,'teams','big'));
-    $template->setVariable("IconBigheimalt",HTML_icon($Heim,'teams','big','',"TeamIcon $Heim"));
-    $template->setVariable("IconBiggastalt",HTML_icon($Gast,'teams','big','',"TeamIcon $Gast"));
     //Ende TeamIcons
 
     $mhp_link_s="";
