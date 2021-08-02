@@ -136,11 +136,11 @@ class partie {
    * @param  string $leer Der Rückgabewert wenn Ergebnis vorhanden ist
    * @return string
    */
-  function hToreString($leer="_") {
+  function hToreString($leer="_", $faktor="1") {
     if ($this->hTore == -1) $str = $leer;
     elseif ($this->hTore == -2) $str = "0*"; // Markieren als greenTable
     elseif ($this->gTore == -2) $str = "0"; // Wenn Gast der Sieg zugesprochen wurde O Tore für Heim anzeigen
-    else $str = $this->hTore;
+    else $str = intval($this->hTore)/intval($faktor);
     return $str;
   }
 
@@ -155,11 +155,11 @@ class partie {
    * @param  string $leer Der Rückgabewert wenn kein Ergebnis vorhanden ist
    * @return string
    */
-  function gToreString($leer = "_") {
+  function gToreString($leer = "_", $faktor="1") {
     if ($this->gTore == -1) $str = $leer;
     elseif ($this->gTore == -2) $str = "0*"; // Markieren als greenTable
     elseif ($this->hTore == -2) $str = "0"; // Wenn Heim der Sieg zugesprochen wurde O Tore für Gast anzeigen
-    else $str = $this->gTore;
+    else $str = intval($this->gTore)/intval($faktor);
     return $str;
   }
 
