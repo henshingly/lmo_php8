@@ -39,6 +39,9 @@ function HTML_icon($img_name,$img_type,$img_size='small',$html="",$alternative_t
       break;
     }
   }
+  if($imgHTML == "") {
+      $imgHTML = substr($html,6,3);
+  }
   return $imgHTML;
 }
 
