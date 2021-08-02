@@ -206,7 +206,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     } else {
       echo "<td class=\"".$lmo_tabelle_class."\">&nbsp;</td>";
     }?>
-          <td class="<?php echo $lmo_tabelle_class?>" align="center"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
+          <td class="<?php echo $lmo_tabelle_class?>" align="center"><?php echo HTML_smallTeamIcon($file,$teams[$i],""," alt=''"); ?>&nbsp;</td>
           <td class="<?php echo $lmo_tabelle_class; ?> nobr" align="left"> <?php 
     echo $dummy.$teams[$i].$dumm2;
     if (($teamu[$i]!="") && ($urlt==1)) {
@@ -217,7 +217,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
           <td class="<?php echo $lmo_tabelle_class; ?>" align="center"><?php 
 
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-      $lmo_tabellennotiz=HTML_smallTeamIcon($file,$teams[$i]," alt=''");          
+      $lmo_tabellennotiz=HTML_smallTeamIcon($file,$teams[$i],""," alt=''");          
 
       /** Notizen anzeigen
        *

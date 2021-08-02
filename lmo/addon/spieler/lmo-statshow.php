@@ -112,7 +112,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
       if ($teams[$i]!=$team) {?></a><?php
       }?>
          </td>
-         <td align="right"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
+         <td align="right"><?php echo HTML_smallTeamIcon($file,$teams[$i],""," alt=''"); ?></td>
         </tr><?php
     }?>
       </table>

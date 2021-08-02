@@ -39,10 +39,10 @@ if(($file!="") && ($kurve==1)){
           <?php
   for ($i=1; $i<=$anzteams; $i++) {
     if($i!=$show_stat1){?>
-	    <p><a href="<?php echo $addp.$i?>" title="<?php echo $teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' style='vertical-align: middle;'"); ?></a></p>
+	    <p><a href="<?php echo $addp.$i?>" title="<?php echo $teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," style='vertical-align: middle;'"); ?></a></p>
 	    <?php
     } else {
-      echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]'")."</p>\n";
+      echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i])."</p>\n";
     }
   }?>
           </div>
@@ -171,10 +171,10 @@ var myChart = new Chart(ctx, {
           <?php
   for ($i=1; $i<=$anzteams; $i++) {
     if($i!=$show_stat2){?>
-            <p><a href="<?php echo $addp.$show_stat1."&amp;stat2=".$i?>" title="<?php echo $teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' style='vertical-align: middle;'")." ".$teamk[$i]; ?></a></p>
+            <p><a href="<?php echo $addp.$show_stat1."&amp;stat2=".$i?>" title="<?php echo $teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," style='vertical-align: middle;'")." ".$teamk[$i]; ?></a></p>
             <?php
     } else {
-      echo "<p>".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]'")." ".$teamk[$i]."</p>\n";
+      echo "<p>".HTML_smallTeamIcon($file,$teams[$i])." ".$teamk[$i]."</p>\n";
     }
   }?>
           </div>

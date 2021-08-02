@@ -73,12 +73,12 @@ foreach ($datsort as $key => $val) {
     if ($plan == "1") {
       echo "</a>";
     }
-    //echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' style='vertical-align: middle;'");             
+    //echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," style='vertical-align: middle;'"," alt=''");             
     ?>
     </div>
     <div class="col-3 text-start">-&nbsp;
     <?php 
-    //echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' style='vertical-align: middle;'")."&nbsp;";
+    //echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
     if ($plan == "1") {
       echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
     }
@@ -105,8 +105,8 @@ foreach ($datsort as $key => $val) {
     $lmo_teamaicon="";
     $lmo_teambicon="";
     if($urlb==1 || $mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0){
-      $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' style='vertical-align: middle;'");
-      $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' style='vertical-align: middle;'");
+      $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," style='vertical-align: middle;'"," alt=''");
+      $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," style='vertical-align: middle;'"," alt=''");
     }
     /** Spielbericht verlinken
      */
@@ -198,7 +198,7 @@ if ($einspielfrei == 1) {?>
       echo "</a>";
     }
       
-    echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$hoy8]," alt=''");
+    echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$hoy8],""," alt=''");
       }
     }
   ?></div> 

@@ -552,8 +552,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         $lmo_teamaicon="";
         $lmo_teambicon="";
         if($urlb[$i]==1 || $mnote[$i]!="" || $msieg[$i]>0){
-          $lmo_teamaicon=HTML_smallTeamIcon($file,$teama[$i]," alt=''")." ";
-          $lmo_teambicon=HTML_smallTeamIcon($file,$teamb[$i]," alt=''")." ";
+          $lmo_teamaicon=HTML_smallTeamIcon($file,$teama[$i],""," alt=''")." ";
+          $lmo_teambicon=HTML_smallTeamIcon($file,$teamb[$i],""," alt=''")." ";
         }
         /** Spielbericht verlinken
          */

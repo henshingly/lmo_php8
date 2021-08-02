@@ -39,9 +39,6 @@ function HTML_icon($img_name,$img_type,$img_size='small',$html="",$alternative_t
       break;
     }
   }
-  if($imgHTML == "") {
-      $imgHTML = substr($html, 6, strrpos($html, "'") - 6);
-  }
   return $imgHTML;
 }
 
@@ -167,7 +164,8 @@ function findImage ($key,$path,$imgType,$htmlParameter="",$alternative_text='') 
   }
 
   if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
-    return $alternative_text;
+    //return $alternative_text;
+    return substr($alternative_text, 6, strrpos($alternative_text, "'") - 6);
   } else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
     return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter." /> ");

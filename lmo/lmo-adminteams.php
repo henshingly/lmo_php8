@@ -300,7 +300,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
         }
 /** Mannschaftswappen */
 ?>
-            <td class="nobr"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''");?></td>
+            <td class="nobr"><?php echo HTML_smallTeamIcon($file,$teams[$i],""," alt=''");?></td>
             <td class="nobr"><?php echo HTML_bigTeamIcon($file,$teams[$i]," alt=''");?></td>
           </tr>
 <?php

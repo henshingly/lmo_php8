@@ -252,8 +252,8 @@ if ($tipp_jokertipp==1){ ?>
   $lmo_teamaicon="";
   $lmo_teambicon="";
   if($urlb==1 || $mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0){
-    $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")." ";
-    $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")." ";
+    $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]],""," alt=''")." ";
+    $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]],""," alt=''")." ";
   }
   /** Spielbericht verlinken */
   if($urlb==1){

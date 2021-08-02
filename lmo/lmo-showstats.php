@@ -50,9 +50,9 @@ $(function() {
       <?php
   for($i=1;$i<=$anzteams;$i++){
     if($i!=$show_stat1){?>
-            <p><a href="<?php echo $adds.$i?>&amp;stat2=<?php echo $show_stat2?>" title="<?php echo $text[57]." ".$teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' style='vertical-align: middle;'"); ?></a></p><?php
+            <p><a href="<?php echo $adds.$i?>&amp;stat2=<?php echo $show_stat2?>" title="<?php echo $text[57]." ".$teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," style='vertical-align: middle;'"); ?></a></p><?php
     } else {
-      echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]'")."</p>";
+      echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i])."</p>";
     }
   }?>
     </div>
@@ -73,9 +73,9 @@ $(function() {
         <div class="row">
           <div class="col-3 offset-2 text-right"><strong><?php echo $teams[$show_stat1];?></strong></div>
           <div class="col-4 text-center"><?php
-       echo HTML_smallTeamIcon($file,$teams[$show_stat1]," alt='' style='vertical-align: middle;'")."&nbsp;";
+       echo HTML_smallTeamIcon($file,$teams[$show_stat1]," style='vertical-align: middle;'")."&nbsp;";
       if($show_stat2>0 && $show_stat1!=$show_stat2){
-        echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$show_stat2]," alt='' style='vertical-align: middle;'");
+        echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$show_stat2]," style='vertical-align: middle;'");
       }?>
           </div><?php 
       if($show_stat2>0 && $show_stat1!=$show_stat2){ ?>
@@ -192,9 +192,9 @@ $(function() {
       <?php
   for($i=1;$i<=$anzteams;$i++){
     if($i!=$show_stat2){
-               ?><p><a href="<?php echo $adds.$show_stat1?>&amp;stat2=<?php echo $i?>" title="<?php echo $text[58]." ".$teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]'")." ".$teamk[$i]?></a></p><?php
+               ?><p><a href="<?php echo $adds.$show_stat1?>&amp;stat2=<?php echo $i?>" title="<?php echo $text[58]." ".$teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i])." ".$teamk[$i]?></a></p><?php
     } else {
-      echo "<p>".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]'")." ".$teamk[$i]."</p>";
+      echo "<p>".HTML_smallTeamIcon($file,$teams[$i])." ".$teamk[$i]."</p>";
     }
   }?>
     </div>
@@ -367,8 +367,9 @@ $(function() {
     }?>
   </div>
 <?php
-  } //if (file_exists)
-} //if (zustats)
+    } //if (file_exists)
+  } //if (einzustats = 1)
+} // $show_stat1 != 0
 ?>
  
 <?php } ?>

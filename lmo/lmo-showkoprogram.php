@@ -37,7 +37,7 @@ if ($file != "") {
       echo $teamk[$i];
     }
        ?></acronym>
-         <?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); 
+         <?php echo HTML_smallTeamIcon($file,$teams[$i],""," alt=''"); 
   }?>
     </div>
     <div class="col-10">
@@ -78,7 +78,7 @@ if ($file != "") {
           if ($selteam == $teama[$j][$i]) {
             echo "</strong>";
           }
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt=''");
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$j][$i]],""," alt=''");
           if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
             echo " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
           }
@@ -90,7 +90,7 @@ if ($file != "") {
           } else {
             echo "<div class='col-3'>&nbsp;&nbsp; - &nbsp;&nbsp;";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt=''")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]],""," alt=''")."&nbsp;";
           if ($selteam == $teamb[$j][$i]) {
             echo "<strong>";
           }
@@ -123,8 +123,8 @@ if ($file != "") {
             $lmo_teamaicon="";
             $lmo_teambicon="";
             if($urlb==1 || $mnote[$j][$i][$n]!=""){
-              $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt=''");
-              $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt=''");
+              $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]],""," alt=''");
+              $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]],""," alt=''");
             }
             /** Spielbericht verlinken
              */
