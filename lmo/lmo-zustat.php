@@ -443,7 +443,7 @@ if ($_SESSION['lmouserok'] > 0) {
     // Anzahl gleicher gewonnener Spiele und torreichstes Spiel- Anfang
     for ($y1 = 1; $y1 < $anzst+1; $y1++) {
       for($i1 = 0; $i1 < $anzsp; $i1++) {
-        if($goala[$y-1][$i1] != "_") {
+        if($goala[$y1-1][$i1] != "_") {
           if ($goala[$y1-1][$i1] == $hheimsiegtor && $goala[$y1-1][$i1] == $hheimsiegtor1 && $goalb[$y1-1][$i1] == $hgastsiegtor && $goalb[$y1-1][$i1] == $hgastsiegtor1) {
             $counteranz = $counteranz+1;
           }
@@ -452,7 +452,7 @@ if ($_SESSION['lmouserok'] > 0) {
             $counteranz1 = $counteranz1+1;
           }
           $setztemp1 = $htorreicht1+$htorreicht2;
-          $setztemp2 = $goala[$y1-1][$i1]+$goalb[$y1-1][$i1];
+          $setztemp2 = intval($goala[$y1-1][$i1])+intval($goalb[$y1-1][$i1]);
           if ($setztemp1 == $setztemp2) {
             $counteranz5 = $counteranz5+1;
           }
