@@ -40,7 +40,7 @@ function HTML_icon($img_name,$img_type,$img_size='small',$html="",$alternative_t
     }
   }
   if($imgHTML == "") {
-      $imgHTML = substr($html,6,3);
+      $imgHTML = substr($html, 6, strrpos($html, "'") - 6);
   }
   return $imgHTML;
 }
