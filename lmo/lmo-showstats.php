@@ -109,8 +109,8 @@ $(function() {
       $bx=round(10000*$bx/$ex);
       $cx=round(10000*$cx/$fx);
       $dx=round(10000*$dx/$fx);
-      $chg1=number_format((($ax+$cx)/200),2,",",".");
-      $chg2=number_format((($bx+$dx)/200),2,",",".");
+      $chg1=number_format((($ax+$cx)/200),2,",",".")."%";
+      $chg2=number_format((($bx+$dx)/200),2,",",".")."%";
     }
     $serie2="&nbsp;";
     if ($ser1[$show_stat2]>0) {
@@ -126,9 +126,9 @@ $(function() {
 
 ?>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php echo  $chg1; ?>%</div>
+          <div class="col-3 offset-2 text-right"><?php echo  $chg1; ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[60]; ?></strong></div>
-          <div class="col-3"><?php echo  $chg2; ?>%</div>
+          <div class="col-3"><?php echo  $chg2; ?></div>
         </div>
 <?php } ?>
         <div class="row">
@@ -149,7 +149,7 @@ $(function() {
         <div class="row">
           <div class="col-3 offset-2 text-right"><?php if($spiele[$show_stat1]){echo applyFactor(number_format($punkte[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor);}} ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[37].$text[64]; ?></strong></div>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){if($spiele[$show_stat2]){ ?><div class="col-3"><?php echo applyFactor(number_format($punkte[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor);}} ?></div><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){if($spiele[$show_stat2]){ ?><div class="col-3"><?php echo applyFactor(number_format($punkte[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor);} ?></div><?php }} ?>
         </div>
         <div class="row">
           <div class="col-3 offset-2 text-right"><?php echo  applyFactor($etore[$show_stat1],$goalfaktor).":".applyFactor($atore[$show_stat1],$goalfaktor); ?></div>
