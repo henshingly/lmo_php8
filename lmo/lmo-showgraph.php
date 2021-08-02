@@ -19,56 +19,24 @@
   
   
 if(($file!="") && ($kurve==1)){
-  $platz_a=$platz_b='';
-  $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
-  $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
-  $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
-  if ($show_stat1==0 && $show_stat2!=0 || $show_stat1==$show_stat2) {
-    $show_stat1=$show_stat2;
-    $show_stat2=0;
-  }
-  $tension = '0';
+  $tension = '0.4';
+  if($lmo_fieber_tension==1) $tension = 0;
 ?>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-1">
-      <div class="container">
-        <div class="row pt-5">
-          <div class="col text-right">
-          <?php
-  for ($i=1; $i<=$anzteams; $i++) {
-    if($i!=$show_stat1){?>
-	    <p><a href="<?php echo $addp.$i?>" title="<?php echo $teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," style='vertical-align: middle;'"); ?></a></p>
-	    <?php
-    } else {
-      echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i])."</p>\n";
-    }
-  }?>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="col-sm-12">
       <div class="container">
       <?php
-  if($show_stat1==0){?>
-        <div class="row">
-          <div class="col"><br/><?php echo $text[24]?></div>
-        </div><?php
-  } else {
     $tabtype=0;
     require(PATH_TO_LMO."/lmo-calcgraph.php");
-    for($j=0;$j<$anzst;$j++){
-        $platz_a = $platz_a.$platz[$show_stat1][$j].",";
+    for($k=1;$k<$anzteams+1;$k++) {
+        ${'platz_'.$k} = "";
+        for ($l=0;$l<$anzst;$l++) {
+            ${'platz_'.$k} = ${'platz_'.$k}.$platz[$k][$l].",";
+        }
     }
-    $platz_a = $platz_a."0";
-    if($show_stat2>0){
-      for($j=0;$j<$anzst;$j++){
-          $platz_b = $platz_b.$platz[$show_stat2][$j].",";
-      }
-      $platz_b = $platz_b."0";
-    }?>
+    ?>
         <div class="row">
           <div class="col"><br/><canvas id="myChart" width="1000" height="600"></canvas>
 		     <?php
@@ -77,21 +45,36 @@ if(($file!="") && ($kurve==1)){
                 // Anzahl Spieltage in x-Achse
                 $spieltag = array();
                 for($i=1; $i<=$anzst;$i++) {
-                    $spieltag[] = "'$i'";
+                    $spieltag[] = $i;
                 }
                 $xAxis = implode(",", $spieltag);
-                $platz1 = explode(",", $platz_a);
-                $platz2 = explode(",", $platz_b);
-                foreach(array_keys($platz1, '0') as $key) {
-                    unset($platz1[$key]);
-                }
-                foreach(array_keys($platz2, 0) as $key) {
-                unset($platz2[$key]);
-                }
-                $pgplatz1 = implode(",", $platz1);
-                $pgplatz2 = implode(",", $platz2);
-			?>
 
+                for($j=1;$j<$anzteams+1;$j++) {
+                    ${'platz'.$j} = explode(",", ${'platz_'.$j});
+                    foreach(array_keys(${'platz'.$j}, '0') as $key) {
+                        unset(${'platz'.$j}[$key]);
+                    }
+                    ${'pgplatz'.$j} = implode(",", ${'platz'.$j});
+                    if($dark == FALSE) {
+                        $color = mt_rand(0, 160).",".mt_rand(0, 160).",".mt_rand(0, 160).",1";
+                        $axisColor = "rgba(90, 90, 90, 1)";
+                    } else {
+                        $color = mt_rand(160, 250).",".mt_rand(160, 250).",".mt_rand(160, 250).",1";
+                        $axisColor = "rgba(140, 140, 140, 1)";
+                    }
+                    $flag = 'true';
+                    if($j < 3) $flag = 'false';
+                    $data .= "{
+                        label: '$teams[$j]',
+                        fill: false,
+                        lineTension: $tension,
+                        backgroundColor: 'rgba($color)',
+                        borderColor: 'rgba($color)',
+                        data: [${'pgplatz'.$j}],
+                        hidden: $flag,
+                    },";
+                }
+			?>
 <script>
 
 var ctx = document.getElementById("myChart").getContext('2d');
@@ -99,89 +82,73 @@ var myChart = new Chart(ctx, {
 		type: 'line',
 		data: {
 			labels: [<?php echo $xAxis; ?>],
-			datasets: [{
-				label: '<?php echo $teams[$show_stat1]; ?>',
-				fill: false,
-				lineTension: <?php echo $tension; ?>,
-				backgroundColor: 'yellow',
-				borderColor: 'red',
-				data: [<?php echo $pgplatz1; ?>],
-			}, {
-				label: '<?php echo $teams[$show_stat2]; ?>',
-				fill: false,
-				lineTension: <?php echo $tension; ?>,
-				backgroundColor: 'yellow',
-				borderColor: 'blue',
-				data: [<?php echo $pgplatz2; ?>],
-			}],
+			datasets: [<?php echo $data; ?>]
 		},
 		options: {
 			scales: {
 				x: {
-					display: true,
-					gridLines: {
-					    	color: 'grey'
+					grid: {
+					    color: '<?php echo $axisColor; ?>'
 					},
 					title: {
 						display: true,
-						fontSize: 24,
-						text: '<?php echo $pgtext1; ?>'
-						
+						text: '<?php echo $pgtext1; ?>',
+						color: '<?php echo $axisColor; ?>',
+						font: {
+							size: 24,
+						},
+					},
+					ticks: {
+					    color: '<?php echo $axisColor; ?>'
 					}
 				},
 				y: {
-					display: true,
-					gridLines: {
-					    	color: 'grey'
+					grid: {
+					    color: '<?php echo $axisColor; ?>'
 					},
 					title: {
 						display: true,
-						fontSize: 24,
-						text: '<?php echo $pgtext2; ?>'
+						text: '<?php echo $pgtext2; ?>',
+						color: '<?php echo $axisColor; ?>',
+						font: {
+							size: 24,
+						},
 					},
 					min: 1,
 					max: <?php echo $anzteams; ?>,
 					reverse: true,
 					ticks: {
-					    	maxTicksLimit: <?php echo $anzteams; ?>
+					    maxTicksLimit: <?php echo $anzteams; ?>,
+					    color: '<?php echo $axisColor; ?>'
 					}
 				},
 			},
-			tooltips: {
-			    	displayColors: false,
-			    	callbacks: {
-			        	title: function(tooltipItems, data) {
-			            		var tooltipItem = tooltipItems[0];
-                                    		return data.labels[tooltipItem.index] + ". Spieltag";
-                                	}
-			    	}
+			plugins: {
+			    tooltip: {
+			        displayColors: true,
+			        mode: 'index',
+			        callbacks: {
+				        label: function(context) {
+				        	    var label = context.dataset.label;
+				        		var pos = context.parsed.y;
+				        		pos += ". Platz";
+				        		return label + ": " + pos;
+        	            },
+        	            title: function(context) {
+	        	               	var label = context[0].label;
+	        	               	label += ". Spieltag";
+	        	               	return label;
+        	            }
+                	}
+			    }
 			}
 		}
 	});
 </script>
           </div>
         </div>
-<?php } ?>
-    </div>
-  </div>
-    <div class="col-sm-1">
-      <div class="container">
-        <div class="row pt-5">
-          <div class="col">
-          <?php
-  for ($i=1; $i<=$anzteams; $i++) {
-    if($i!=$show_stat2){?>
-            <p><a href="<?php echo $addp.$show_stat1."&amp;stat2=".$i?>" title="<?php echo $teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," style='vertical-align: middle;'")." ".$teamk[$i]; ?></a></p>
-            <?php
-    } else {
-      echo "<p>".HTML_smallTeamIcon($file,$teams[$i])." ".$teamk[$i]."</p>\n";
-    }
-  }?>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </div>
-
 <?php } ?>
