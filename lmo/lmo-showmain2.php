@@ -205,10 +205,10 @@ if ($file!="") {
             include(PATH_TO_LMO."/lmo-savehtml.php");
             include(PATH_TO_LMO."/lmo-savehtml1.php");
       }?>
-           <div class="col offset-4 text-left"><?php
+           <div class="col offset-4 text-start"><?php
       if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-st.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
             </div>
-            <div class="col text-right"><?php
+            <div class="col text-end"><?php
       if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-sp.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
             </div>
           </div>

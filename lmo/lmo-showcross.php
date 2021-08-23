@@ -42,7 +42,7 @@ for($i = 0; $i <= ($anzteams); $i++) {
     if ($j == 0){
       echo "<th class='text-center'>";
     } elseif ($j == ($anzteams+1)) {
-      echo "<th class='text-left'>";
+      echo "<th class='text-start'>";
     } elseif($i == 0 || $i == ($anzteams+1)){
       echo "<th class='text-center'>";
     } elseif($croteam != 0 && ($j == $croteam || $i == $croteam)) {

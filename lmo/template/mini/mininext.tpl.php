@@ -48,6 +48,6 @@
   </div>
   <!-- END previous -->
    <div class="row">
-      <div class="col text-right"><br /><small><!--ligaDatum-->&nbsp;<!--copy--></small></div>
+      <div class="col text-end"><br /><small><!--ligaDatum-->&nbsp;<!--copy--></small></div>
   </div>
 </div>

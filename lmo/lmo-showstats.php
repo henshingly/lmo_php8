@@ -46,7 +46,7 @@ $(function() {
     <div class="col">&nbsp;</div>
   </div>
   <div class="row">
-    <div class="col-1 text-right">
+    <div class="col-1 text-end">
       <?php
   for($i=1;$i<=$anzteams;$i++){
     if($i!=$show_stat1){?>
@@ -71,7 +71,7 @@ $(function() {
       $platz0[intval(substr($tab0[$x], 34))] = $x+1;
     }?>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><strong><?php echo $teams[$show_stat1];?></strong></div>
+          <div class="col-3 offset-2 text-end"><strong><?php echo $teams[$show_stat1];?></strong></div>
           <div class="col-4 text-center"><?php
        echo HTML_smallTeamIcon($file,$teams[$show_stat1]," style='vertical-align: middle;'")."&nbsp;";
       if($show_stat2>0 && $show_stat1!=$show_stat2){
@@ -126,63 +126,63 @@ $(function() {
 
 ?>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php echo  $chg1; ?></div>
+          <div class="col-3 offset-2 text-end"><?php echo  $chg1; ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[60]; ?></strong></div>
           <div class="col-3"><?php echo  $chg2; ?></div>
         </div>
 <?php } ?>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php echo $platz0[$show_stat1];?></div>
+          <div class="col-3 offset-2 text-end"><?php echo $platz0[$show_stat1];?></div>
           <div class="col-4 text-center"><strong><?php echo $text[61];?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php echo $platz0[$show_stat2];?></div><?php } ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php echo applyFactor($punkte[$show_stat1],$pointsfaktor); if($minus==2){":".applyFactor($negativ[$show_stat1],$pointsfaktor);} ?></div>
+          <div class="col-3 offset-2 text-end"><?php echo applyFactor($punkte[$show_stat1],$pointsfaktor); if($minus==2){":".applyFactor($negativ[$show_stat1],$pointsfaktor);} ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[37]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php echo applyFactor($punkte[$show_stat2],$pointsfaktor); if($minus==2){":".applyFactor($negativ[$show_stat2],$pointsfaktor);} ?></div><?php } ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php echo $spiele[$show_stat1];?></div>
+          <div class="col-3 offset-2 text-end"><?php echo $spiele[$show_stat1];?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[63]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php echo $spiele[$show_stat2];?></div><?php } ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php if($spiele[$show_stat1]){echo applyFactor(number_format($punkte[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor);}} ?></div>
+          <div class="col-3 offset-2 text-end"><?php if($spiele[$show_stat1]){echo applyFactor(number_format($punkte[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor);}} ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[37].$text[64]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){if($spiele[$show_stat2]){ ?><div class="col-3"><?php echo applyFactor(number_format($punkte[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor);} ?></div><?php }} ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php echo  applyFactor($etore[$show_stat1],$goalfaktor).":".applyFactor($atore[$show_stat1],$goalfaktor); ?></div>
+          <div class="col-3 offset-2 text-end"><?php echo  applyFactor($etore[$show_stat1],$goalfaktor).":".applyFactor($atore[$show_stat1],$goalfaktor); ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[38]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php echo  applyFactor($etore[$show_stat2],$goalfaktor).":".applyFactor($atore[$show_stat2],$goalfaktor); ?></div><?php } ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php if($spiele[$show_stat1]){ echo number_format(applyFactor($etore[$show_stat1],$goalfaktor)/$spiele[$show_stat1],2).":".number_format(applyFactor($atore[$show_stat1],$goalfaktor)/$spiele[$show_stat1],2);} ?></div>
+          <div class="col-3 offset-2 text-end"><?php if($spiele[$show_stat1]){ echo number_format(applyFactor($etore[$show_stat1],$goalfaktor)/$spiele[$show_stat1],2).":".number_format(applyFactor($atore[$show_stat1],$goalfaktor)/$spiele[$show_stat1],2);} ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[38].$text[64]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php if($spiele[$show_stat2]){ echo number_format(applyFactor($etore[$show_stat2],$goalfaktor)/$spiele[$show_stat2],2).":".number_format(applyFactor($atore[$show_stat2],$goalfaktor)/$spiele[$show_stat2],2);} ?></div><?php } ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php if($spiele[$show_stat1]){echo $siege[$show_stat1]." (".number_format($siege[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></div>
+          <div class="col-3 offset-2 text-end"><?php if($spiele[$show_stat1]){echo $siege[$show_stat1]." (".number_format($siege[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[67]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php if($spiele[$show_stat2]){echo $siege[$show_stat2]." (".number_format($siege[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></div><?php } ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php echo  $maxs0[$show_stat1]; ?></div>
+          <div class="col-3 offset-2 text-end"><?php echo  $maxs0[$show_stat1]; ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[68]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php echo  $maxs0[$show_stat2] ?></div><?php } ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php if($spiele[$show_stat1]){echo $nieder[$show_stat1]." (".number_format($nieder[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></div>
+          <div class="col-3 offset-2 text-end"><?php if($spiele[$show_stat1]){echo $nieder[$show_stat1]." (".number_format($nieder[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[69]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php if($spiele[$show_stat2]){echo $nieder[$show_stat2]." (".number_format($nieder[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></div><?php } ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php echo  $maxn0[$show_stat1]; ?></div>
+          <div class="col-3 offset-2 text-end"><?php echo  $maxn0[$show_stat1]; ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[70]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php echo  $maxn0[$show_stat2]; ?></div><?php } ?>
         </div>
         <div class="row">
-          <div class="col-3 offset-2 text-right"><?php echo  $serie1; ?></div>
+          <div class="col-3 offset-2 text-end"><?php echo  $serie1; ?></div>
           <div class="col-4 text-center"><strong><?php echo  $text[71]; ?></strong></div>
           <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><div class="col-3"><?php echo  $serie2; ?></div><?php } ?>
         </div>
@@ -329,37 +329,37 @@ $(function() {
    </div>
    <div class="row">
      <div class="col-2"><strong><?php echo $text[575]?></strong></div>
-	 <div class="col-1 text-right"><strong><?php echo $akt_gewonnen?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $akt_gewonnen?></strong></div>
 	 <div class="col-3"><?php echo nl2br($team_akt_gewonnen)?></div>
-	 <div class="col-1 text-right"><strong><?php echo $max_gewonnen?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $max_gewonnen?></strong></div>
 	 <div class="col-4"><?php echo nl2br($team_max_gewonnen)?></div>
    </div>  
    <div class="row">
      <div class="col-2"><strong><?php echo $text[576]?></strong></div>
-	 <div class="col-1 text-right"><strong><?php echo $akt_ungeschlagen?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $akt_ungeschlagen?></strong></div>
 	 <div class="col-3"><?php echo nl2br($team_akt_ungeschlagen)?></div>
-	 <div class="col-1 text-right"><strong><?php echo $max_ungeschlagen?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $max_ungeschlagen?></strong></div>
 	 <div class="col-4"><?php echo nl2br($team_max_ungeschlagen)?></div>
    </div>
    <div class="row">
      <div class="col-2"><strong><?php echo $text[577]?></strong></div>
-	 <div class="col-1 text-right"><strong><?php echo $akt_unentschieden?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $akt_unentschieden?></strong></div>
 	 <div class="col-3"><?php echo nl2br($team_akt_unentschieden)?></div>
-	 <div class="col-1 text-right"><strong><?php echo $max_unentschieden?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $max_unentschieden?></strong></div>
 	 <div class="col-4"><?php echo nl2br($team_max_unentschieden)?></div>
    </div>
    <div class="row">
      <div class="col-2"><strong><?php echo $text[578]?></strong></div>
-	 <div class="col-1 text-right"><strong><?php echo $akt_sieglos?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $akt_sieglos?></strong></div>
 	 <div class="col-3"><?php echo nl2br($team_akt_sieglos)?></div>
-	 <div class="col-1 text-right"><strong><?php echo $max_sieglos?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $max_sieglos?></strong></div>
 	 <div class="col-4"><?php echo nl2br($team_max_sieglos)?></div>
    </div>
    <div class="row">
      <div class="col-2"><strong><?php echo $text[579]?></strong></div>
-	 <div class="col-1 text-right"><strong><?php echo $akt_verloren?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $akt_verloren?></strong></div>
 	 <div class="col-3"><?php echo nl2br($team_akt_verloren)?></div>
-	 <div class="col-1 text-right"><strong><?php echo $max_verloren?></strong></div>
+	 <div class="col-1 text-end"><strong><?php echo $max_verloren?></strong></div>
 	 <div class="col-4"><?php echo nl2br($team_max_verloren)?></div>
    </div>
    <?php

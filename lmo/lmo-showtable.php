@@ -30,21 +30,21 @@ if($tabonres==2){?>
   </div><?php 
 }?>
   <div class="row font-weight-bold">
-    <div class="col-1">&nbsp;</div>
-    <div class="col-4">&nbsp;</div>
-    <div class="col-1 text-right"><?php echo $text[33]; ?></div>
-    <div class="col-1 text-right d-none d-md-block"><?php echo $text[34]; ?></div><?php  
+    <div class="col-2">&nbsp;</div>
+    <div class="col-3">&nbsp;</div>
+    <div class="col-1 text-end"><?php echo $text[33]; ?></div>
+    <div class="col-1 text-end d-none d-md-block"><?php echo $text[34]; ?></div><?php  
 if($hidr!=1){?>
-    <div class="col-1 text-right d-none d-md-block"><?php echo $text[35]; ?></div>
+    <div class="col-1 text-end d-none d-md-block"><?php echo $text[35]; ?></div>
 <?php } ?>
-    <div class="col-1 text-right d-none d-md-block"><?php echo $text[36]; ?></div>
+    <div class="col-1 text-end d-none d-md-block"><?php echo $text[36]; ?></div>
 <?php  if($tabpkt==0){?>
-    <div class="col-1 text-right d-none d-md-block"><?php echo $text[37]?></div>
+    <div class="col-1 text-end d-none d-md-block"><?php echo $text[37]?></div>
 <?php } ?>
-    <div class="col-1 text-right"><?php echo $text[38]; ?></div>
-    <div class="col-1 text-right"><?php echo $text[39]; ?></div>
+    <div class="col-1 text-end"><?php echo $text[38]; ?></div>
+    <div class="col-1 text-end"><?php echo $text[39]; ?></div>
 <?php if($tabpkt==1){?>
-    <div class="col-1 text-right"><?php echo $text[37]?></div>
+    <div class="col-1 text-end"><?php echo $text[37]?></div>
 <?php } ?>
   </div>
 <?php
@@ -85,7 +85,7 @@ for($x = 1; $x <= $anzteams; $x++) {
   }
   ?>
   <div class="row">
-    <div class="col-1 text-right"><span class="<?php echo $label; ?>"><?php echo $x; ?></span>
+    <div class="col-2 text-end"><span class="<?php echo $label; ?>"><?php echo $x; ?></span>
 <?php
   $y = 0;
   if ($endtab > 1 && isset($platz0[$i])) {
@@ -97,7 +97,7 @@ for($x = 1; $x <= $anzteams; $x++) {
   }?>
     <img src='<?php echo URL_TO_IMGDIR."/lmo-tab".$y.".gif"; ?>' width="9" height="9" border="0" alt='' />
     </div>
-    <div class="col-4 text-left">
+    <div class="col-3 text-start">
     <?php
   echo $dummy.$teams[$i].$dumm2;
   if (($teamu[$i] != "") && ($urlt == 1)) {?>
@@ -144,24 +144,24 @@ for($x = 1; $x <= $anzteams; $x++) {
     echo "&nbsp;";
   }?>
     </div>
-    <div class="col-1 text-right"><?php echo $dummy.$spiele[$i].$dumm2; ?></div>
-    <div class="col-1 text-right d-none d-md-block"><?php echo $dummy.$siege[$i].$dumm2; ?></div>
+    <div class="col-1 text-end"><?php echo $dummy.$spiele[$i].$dumm2; ?></div>
+    <div class="col-1 text-end d-none d-md-block"><?php echo $dummy.$siege[$i].$dumm2; ?></div>
   <?php if($hidr!=1){ ?>
-    <div class="col-1 text-right d-none d-md-block"><?php echo $dummy.$unent[$i].$dumm2; ?></div>
+    <div class="col-1 text-end d-none d-md-block"><?php echo $dummy.$unent[$i].$dumm2; ?></div>
   <?php }?>
-    <div class="col-1 text-right d-none d-md-block"><?php echo $dummy.$nieder[$i].$dumm2; ?></div>
+    <div class="col-1 text-end d-none d-md-block"><?php echo $dummy.$nieder[$i].$dumm2; ?></div>
   <?php if ($tabpkt == 0) {?>
-    <div class="col-1 text-right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong>
+    <div class="col-1 text-end"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong>
   <?php if ($minus == 2) {?>
     <strong>:</strong>
     <strong><?php echo applyFactor($negativ[$i],$pointsfaktor)?></strong>
   <?php } ?>
     </div>
   <?php } ?>
-    <div class="col-1 text-right"><?php echo $dummy.applyFactor($etore[$i],$goalfaktor).$dumm2; ?><?php echo $dummy; ?>:<?php echo $dumm2; ?><?php echo $dummy.applyFactor($atore[$i],$goalfaktor).$dumm2; ?></div>
-    <div class="col-1 text-right"><?php echo $dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></div>
+    <div class="col-1 text-end"><?php echo $dummy.applyFactor($etore[$i],$goalfaktor).$dumm2; ?><?php echo $dummy; ?>:<?php echo $dumm2; ?><?php echo $dummy.applyFactor($atore[$i],$goalfaktor).$dumm2; ?></div>
+    <div class="col-1 text-end"><?php echo $dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></div>
   <?php if($tabpkt==1){?>
-    <div class="col-1 text-right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?>
+    <div class="col-1 text-end"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?>
   <?php if($minus==2){?>
     : <?php echo applyFactor($negativ[$i],$pointsfaktor)?>
   <?php }?>
