@@ -47,7 +47,7 @@
         if (($heute == 6) || ($heute == 7)) {
           $stil = "bg-warning";
         } else {
-          $stil = "bg-secondary";
+          $stil = "bg-info";
         }
       } else {
         if (($heute == 6) || ($heute == 7)) {

@@ -17,6 +17,6 @@
   <!-- END Inhalt -->
   <!-- END Liga -->
   <div class="row">
-    <div class="col text-right"><small><!--VERSION--></small></div>
+    <div class="col text-end"><small><!--VERSION--></small></div>
   </div>
 </div>

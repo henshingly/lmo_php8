@@ -19,8 +19,6 @@
 
 session_start();
 
-if ($_SESSION['lmouserok'] == 2) {
-
   //This is the base language on the left side - Change it to fit your needs
   $from_lang = "Deutsch";
   //$from_lang = "English"; //Example for English
@@ -203,5 +201,4 @@ if ($_SESSION['lmouserok'] == 2) {
     </form>
 
   </body>
-</html><?php
-}?>
+</html>
