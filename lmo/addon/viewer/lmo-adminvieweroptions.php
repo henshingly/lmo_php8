@@ -59,7 +59,7 @@ while($files=readdir($verz)){
           if($option_name=="Teams"){$ligadatei[$liga_counter]['anz_teams']=$option_wert;}
           if($option_name=="Type"){
             if($option_wert=="1"){$ligadatei[$liga_counter]['rundenbezeichnung']=$text[370];}
-          }          //Alle benötigten Werte gefunden -> Abbruch
+          }          //Alle benï¿½tigten Werte gefunden -> Abbruch
           if($ligadatei[$liga_counter]['liga_name']!="" &&
              $ligadatei[$liga_counter]['anz_teams']!='')break;
        }
@@ -77,9 +77,9 @@ closedir($verz);
 
 //usort($ligadatei,'cmp');
 
-isset($_POST['formular1']) ? $form1=true : $form1=false;                  // formular 1 ausgefüllt?
-isset($_POST['formular2']) ? $form2=true : $form2=false;                  // formular 2 ausgefüllt?
-isset($_POST['formular3']) ? $form3=true : $form3=false;                  // formular 3 ausgefüllt?
+isset($_POST['formular1']) ? $form1=true : $form1=false;                  // formular 1 ausgefï¿½llt?
+isset($_POST['formular2']) ? $form2=true : $form2=false;                  // formular 2 ausgefï¿½llt?
+isset($_POST['formular3']) ? $form3=true : $form3=false;                  // formular 3 ausgefï¿½llt?
 
 if ($form1) {
   isset($_POST['dateiname']) ? $save_file_name=$_POST['dateiname'] : $save_file_name='unbenannt';
@@ -196,14 +196,14 @@ if($form3) {
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="800">
   <tr>
-    <th align="center"><h1><?php echo $text['viewer'][42]; ?></h1></th>
+    <th align="center"><h3><?php echo $text['viewer'][42]; ?></h3></th>
   </tr>
   <tr>
     <td class="nobr">
       <form action="#" onSubmit="return false;">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0" width="100%">
           <tr>
-            <th colspan="2" align="center"><?php echo $text['viewer'][43]; ?></h1></th>
+            <th colspan="2" align="center"><?php echo $text['viewer'][43]; ?></h3></th>
           </tr>
           <tr>
             <td class="nobr">
@@ -211,7 +211,7 @@ if($form3) {
             </td>
           </tr>
 		  <tr>
-    		<td class="nobr"><h1><?php echo $text['viewer'][36]; ?></h1></td>
+    		<td class="nobr"><h3><?php echo $text['viewer'][36]; ?></h3></td>
   		  </tr>
         </table>
       </form>
@@ -229,7 +229,7 @@ if($form3) {
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="800">
     <tr>
-      <th align="center"><h1><?php echo $text['viewer'][21];  ?></h1></td>
+      <th align="center"><h3><?php echo $text['viewer'][21];  ?></h3></td>
     </tr>
     <tr>
       <td class="nobr">
@@ -352,7 +352,7 @@ if (!$form2 && $form1 && !$form3) {  // <!-- Bei  ersten Aufruf Ligendateien anz
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
 	<tr>
-  	<th align="center"><h1><?php echo $text['viewer'][21];  ?></h1></th>
+  	<th align="center"><h3><?php echo $text['viewer'][21];  ?></h3></th>
 	</tr>
 	<tr>
 		<td class="nobr">
@@ -413,14 +413,14 @@ if (!$form3 && $form2){   //<!-- Jetzt kommen die Mannschaftsauswahlen  --> ?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
 	<tr>
-    <th align="center"><h1><?php echo $text['viewer'][21]; ?> </h1></th>
+    <th align="center"><h3><?php echo $text['viewer'][21]; ?> </h3></th>
 	</tr>
   <tr>
   	<td class="nobr">
     	<form method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>" name="B3">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0" width="100%">
           <tr>
-            <th colspan="2" align="center"><?php echo $text['viewer'][31]; ?></h1></th>
+            <th colspan="2" align="center"><?php echo $text['viewer'][31]; ?></h3></th>
           </tr>
           <tr>
 						<td class="nobr">
@@ -430,7 +430,7 @@ if (!$form3 && $form2){   //<!-- Jetzt kommen die Mannschaftsauswahlen  --> ?>
                 if ($liga1->loadFile(PATH_TO_LMO.'/'.$dirliga.$ligenfile[$ausgewaehlte_ligen[$i]]) == TRUE) { // Ligenfile vorhanden? ?>
                   <table class=lmoInner cellspacing="0" cellpadding="0" border="0" width="100%">
                     <tr>
-                      <td class="nobr"  colspan="3" align="center"><h1><?php echo $ligennamen[$ausgewaehlte_ligen[$i]]; ?></h1></td>
+                      <td class="nobr"  colspan="3" align="center"><h3><?php echo $ligennamen[$ausgewaehlte_ligen[$i]]; ?></h3></td>
                     </tr>
 
                     <?php 

@@ -25,7 +25,7 @@ for($i=1; $i<=$anzahl_ligen; $i++) {
   $liga=new liga();
   // Ligenfile vorhanden?
   if ($liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$fav_liga[$i]) == TRUE) {
-    $template->setCurrentBlock("Liga");                                   // Äusserer Block für die Liga
+    $template->setCurrentBlock("Liga");                                   // ï¿½usserer Block fï¿½r die Liga
     $template->setVariable("Anfangsdatum",date($multi_cfgarray['datumsformat'],zeitberechnung("2",-$multi_cfgarray['anzahl_tage_minus'])));  // Relevante Daten setzen
     $template->setVariable("Enddatum",date($multi_cfgarray['datumsformat'],zeitberechnung("2",$multi_cfgarray['anzahl_tage_plus'])));  // Relevante Daten setzen
     //Anfang Ergebnisse verlinken
