@@ -20,7 +20,6 @@
   
 if(($file!="") && ($kurve==1)){
   $tension = '0.4';
-  if($lmo_fieber_tension==1) $tension = 0;
 ?>
 
 <div class="container">
@@ -40,7 +39,8 @@ if(($file!="") && ($kurve==1)){
         <div class="row">
           <div class="col"><br/><canvas id="myChart" width="1000" height="600"></canvas>
 		     <?php
-                $pgtext1=$text[135];
+                $data = "";
+				$pgtext1=$text[135];
                 $pgtext2=$text[136];
                 // Anzahl Spieltage in x-Achse
                 $spieltag = array();
@@ -55,13 +55,8 @@ if(($file!="") && ($kurve==1)){
                         unset(${'platz'.$j}[$key]);
                     }
                     ${'pgplatz'.$j} = implode(",", ${'platz'.$j});
-                    if($dark == FALSE) {
-                        $color = mt_rand(0, 160).",".mt_rand(0, 160).",".mt_rand(0, 160).",1";
-                        $axisColor = "rgba(90, 90, 90, 1)";
-                    } else {
-                        $color = mt_rand(160, 250).",".mt_rand(160, 250).",".mt_rand(160, 250).",1";
-                        $axisColor = "rgba(140, 140, 140, 1)";
-                    }
+                    $color = mt_rand(0, 160).",".mt_rand(0, 160).",".mt_rand(0, 160).",1";
+                    $axisColor = "rgba(90, 90, 90, 1)";
                     $flag = 'true';
                     if($j < 3) $flag = 'false';
                     $data .= "{
