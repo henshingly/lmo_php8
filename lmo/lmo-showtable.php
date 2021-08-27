@@ -97,52 +97,57 @@ for($x = 1; $x <= $anzteams; $x++) {
   }?>
     <img src='<?php echo URL_TO_IMGDIR."/lmo-tab".$y.".gif"; ?>' width="9" height="9" border="0" alt='' />
     </div>
-    <div class="col-3 text-start">
     <?php
-  echo $dummy.$teams[$i].$dumm2;
-  if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        <a href="<?php echo $teamu[$i]?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR."/url.png";?>" alt="<?php echo $text[564]?>" /></a><?php
-  }    
-  if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
+    if (($teamu[$i] != "") && ($urlt == 1)) {?>
+        $url = "<a href="<?php echo $teamu[$i]?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR."/url.png";?>" alt="<?php echo $text[564]?>" /></a>";
+    }    
+    if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
     
-    /** Notizen anzeigen
-     *
-     * Achtung: Da beim Speichern Strafpunkte/-tore positiv sind und Bonuspunkte negativ (altes System des LMO)
-     * muss mit -1 multipliziert werden, um die Punkte/Tore richtig anzuzeigen
-     */
-    
-    $lmo_tabellennotiz="";
-    //Straf-/Bonuspunkte
-    if ($strafp[$i]!=0 || $strafm[$i]!=0) {
-      $lmo_tabellennotiz.="\n\n<strong>".$text[128].":</strong> ";
-      //Punkte
-      $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*applyFactor($strafp[$i],$pointsfaktor)):((-1)*applyFactor($strafp[$i],$pointsfaktor));
-      //Minuspunkte
-      if ($minus==2) {
-        $lmo_tabellennotiz.=":".($strafm[$i]<0?"+".((-1)*applyFactor($strafm[$i],$pointsfaktor)):((-1)*applyFactor($strafm[$i],$pointsfaktor)));
+      /** Notizen anzeigen
+       *
+       * Achtung: Da beim Speichern Strafpunkte/-tore positiv sind und Bonuspunkte negativ (altes System des LMO)
+       * muss mit -1 multipliziert werden, um die Punkte/Tore richtig anzuzeigen
+       */
+      
+      $lmo_tabellennotiz="";
+      //Straf-/Bonuspunkte
+      if ($strafp[$i]!=0 || $strafm[$i]!=0) {
+        $lmo_tabellennotiz.="\n\n<strong>".$text[128].":</strong> ";
+        //Punkte
+        $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*applyFactor($strafp[$i],$pointsfaktor)):((-1)*applyFactor($strafp[$i],$pointsfaktor));
+        //Minuspunkte
+        if ($minus==2) {
+          $lmo_tabellennotiz.=":".($strafm[$i]<0?"+".((-1)*applyFactor($strafm[$i],$pointsfaktor)):((-1)*applyFactor($strafm[$i],$pointsfaktor)));
+        }
+        //Ab ST
+        if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
       }
-      //Ab ST
-      if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
-    }
-    //Straf-/Bonustore
-    if ($torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-      $lmo_tabellennotiz.="\n<strong>".$text[522].":</strong> ";
-      //Tore
-      $lmo_tabellennotiz.=$torkorrektur1[$i]<0?"+".((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":":((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":";
-      //Gegentore
-      $lmo_tabellennotiz.=$torkorrektur2[$i]<0?"+".((-1)*applyFactor($torkorrektur2[$i],$goalfaktor)):((-1)*applyFactor($torkorrektur2[$i],$goalfaktor));
-      //Ab ST
-      if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
-    }
-    //Teamnotizen
-    if ($teamn[$i]!="") {
-      $lmo_tabellennotiz.=$teamn[$i];
-    }?>
-<a href="#" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"> <img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /></a><?php
-    $lmo_tabellennotiz="";
-  } else {
-    echo "&nbsp;";
-  }?>
+      //Straf-/Bonustore
+      if ($torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
+        $lmo_tabellennotiz.="\n<strong>".$text[522].":</strong> ";
+        //Tore
+        $lmo_tabellennotiz.=$torkorrektur1[$i]<0?"+".((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":":((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":";
+        //Gegentore
+        $lmo_tabellennotiz.=$torkorrektur2[$i]<0?"+".((-1)*applyFactor($torkorrektur2[$i],$goalfaktor)):((-1)*applyFactor($torkorrektur2[$i],$goalfaktor));
+        //Ab ST
+        if ($strafdat[$i]!=0) $lmo_tabellennotiz.=" ({$text[524]} {$text[145]} {$strafdat[$i]})";
+      }
+      //Teamnotizen
+      if ($teamn[$i]!="") {
+        $lmo_tabellennotiz.=$teamn[$i];
+      }
+      $notiz = <a href="#" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"> <img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /></a><?php
+      $lmo_tabellennotiz="";
+    } else {
+      $notiz = "&nbsp;";
+    }    ?>
+    <div class="col-3 text-start d-none d-md-block">
+    <?php
+    echo $dummy.$teams[$i].$dumm2.$notiz;?>
+    </div>
+    <div class="col-3 text-start d-md-none">
+    <?php
+    echo $dummy.$teamm[$i].$dumm2.$notiz;?>
     </div>
     <div class="col-1 text-end"><?php echo $dummy.$spiele[$i].$dumm2; ?></div>
     <div class="col-1 text-end d-none d-md-block"><?php echo $dummy.$siege[$i].$dumm2; ?></div>

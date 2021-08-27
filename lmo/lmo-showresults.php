@@ -36,8 +36,8 @@ if($enablegamesort == '1' && filterZero($mterm[$st-1])) {
   asort($datsort);
   reset($datsort);
 }
-$spielfreia=array();
-$spielfreib=array();
+$spielfreia=$spielfreib=array();
+$heim1=$heim2=$gast1=$gast2="";
 foreach ($datsort as $key => $val) {
   $i = $key;
   if (($teama[$st-1][$i] > 0) && ($teamb[$st-1][$i] > 0)) {?>
@@ -45,10 +45,12 @@ foreach ($datsort as $key => $val) {
     if ($datm == 1) {
       if ($mterm[$st-1][$i] > 0) {
         $dum1 = strftime($datf, $mterm[$st-1][$i]);
+        $dum2 = strftime("%d.%m.%y", $mterm[$st-1][$i]);
       } else {
-        $dum1 = "";
+        $dum1 = $dum2 = "";
       }?>
-    <div class="col-2"><?php echo $dum1; ?></div><?php   
+    <div class="col-2 text-end d-none d-md-block"><?php echo $dum1; ?></div>
+    <div class="col-3 text-end d-md-none"><?php echo $dum2; ?></div><?php   
     }
 
     /* Spielfrei-Hack-Beginn1*/
@@ -56,44 +58,58 @@ foreach ($datsort as $key => $val) {
     	$spielfreia[$i]=$teama[$st-1][$i];
     	$spielfreib[$i]=$teamb[$st-1][$i];
   	//}
-    /* Spielfrei-Hack-Ende1*/ ?>
-
-    <div class="col-3 text-end">
-    <?php 
-     if ($plan == "1") {
-      echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+    /* Spielfrei-Hack-Ende1*/ 
+    if ($plan == "1") {
+      $heim1 = "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
     }
     if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
-      echo "<strong>";
+      $heim1 .= "<strong>";
     }
-    echo $teams[$teama[$st-1][$i]];
     if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
-      echo "</strong>";
+      $heim2 =  "</strong>";
     }
     if ($plan == "1") {
-      echo "</a>";
+      $heim2 .= "</a>";
     }
+    ?>
+    <div class="col-3 text-end d-none d-md-block">
+    <?php 
+    echo $heim1.$teams[$teama[$st-1][$i]].$heim2;
     //echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," style='vertical-align: middle;'"," alt=''");             
     ?>
     </div>
-    <div class="col-3 text-start">-&nbsp;
+    <div class="col-2 text-end d-md-none">
     <?php 
-    //echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
-    if ($plan == "1") {
-      echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
-    }
-    if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
-      echo "<strong>";
-    }
-    echo $teams[$teamb[$st-1][$i]];
-    if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
-      echo "</strong>";
-    }
-    if ($plan == "1") {
-      echo "</a>";
-    }
-      ?>
+    echo $heim1.$teamk[$teama[$st-1][$i]].$heim2;
+    //echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' style='vertical-align: middle;'");             
+    ?>
     </div>
+    <?php 
+    if ($plan == "1") {
+      $gast1 = "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+    }
+    if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
+      $gast1 .= "<strong>";
+    }
+    if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
+      $gast2 = "</strong>";
+    }
+    if ($plan == "1") {
+      $gast2 .= "</a>";
+    }
+    ?>
+    <div class="col-3 text-start d-none d-md-block">-&nbsp;
+    <?php
+    //echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' style='vertical-align: middle;'")."&nbsp;";
+    echo $gast1.$teams[$teamb[$st-1][$i]].$gast2;
+    ?>
+    </div>
+    <div class="col-2 text-start d-md-none">-&nbsp;
+    <?php 
+    //echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' style='vertical-align: middle;'")."&nbsp;";
+    echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;
+    ?>  
+    </div>  
     <div class="col-2 col-sm-auto"><?php echo applyFactor($goala[$st-1][$i],$goalfaktor); ?> : <?php echo applyFactor($goalb[$st-1][$i],$goalfaktor); ?></div>
     <?php   
     if($spez==1) {?>

@@ -74,6 +74,7 @@ if ($file != "") {
   //while (list ($key, $val) = each ($datsort)) { //Deprecated: The each() function ...
   foreach($datsort as $key => $val) {
     $i = $key;
+    $heim1 = $heim2 = $gast1 = $gast2 = "";
     if (($teama[$st-1][$i] > 0) && ($teamb[$st-1][$i] > 0)) {
       for($n = 0; $n < $modus[$st-1]; $n++) {?>
       <div class="row"><?php
@@ -83,16 +84,17 @@ if ($file != "") {
         if($datm==1){
           if($mterm[$st-1][$i][$n]>0){
             $dum1=strftime($datf, $mterm[$st-1][$i][$n]);
+            $dum2=strftime("%d.%m.%y", $mterm[$st-1][$i][$n]);
           } else {
-            $dum1="";
+            $dum1=$dum2="";
           }?>
-          <div class="col-2 text-end"><?php echo $dum1; ?></div><?php
+          <div class="col-2 text-end d-none d-md-block"><?php echo $dum1; ?></div>
+          <div class="col-3 text-end d-md-none"><?php echo $dum2; ?></div><?php
         }
         if ($n == 0) {
           $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
           $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
-          $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);?>
-          <div class="col-3 text-end"><?php
+          $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
           if ($m == 1) {
             $color = "text-success";
           } elseif ($m == 2) {
@@ -101,21 +103,25 @@ if ($file != "") {
             $color = "text-primary";
           }
           if ($plan == 1) {
-            echo "<a href=\"".$addp.$teama[$st-1][$i]."\" class=\"".$color."\" title=\"".$text[269]."\">";
+            $heim1 = "<a href=\"".$addp.$teama[$st-1][$i]."\" class=\"".$color."\" title=\"".$text[269]."\">";
           }
           if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
-            echo "<strong>";
+            $heim1 .= "<strong>";
           }
-          echo $teams[$teama[$st-1][$i]];
           if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
-            echo "</strong>";
+            $heim2 = "</strong>";
           }
           if ($plan == 1) {
-            echo "</a>";
-          }
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
-          echo "</div>";?>
-          <div class="col-3">-&nbsp;<?php
+            $heim2 .= "</a>";
+          }?>
+          <div class="col-3 text-end d-none d-md-block"><?php
+          echo $heim1.$teams[$teama[$st-1][$i]].$heim2;
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";?>
+          </div>
+          <div class="col-2 text-end d-md-none"><?php
+          echo $heim1.$teamk[$teama[$st-1][$i]].$heim2;
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";?>
+          </div><?php
           if ($m == 2) {
             $color = "text-success";
           } elseif ($m == 1) {
@@ -123,23 +129,29 @@ if ($file != "") {
           } else {
             $color = "text-primary";
           }
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
           if ($plan==1) {
-            echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" class=\"".$color."\" title=\"".$text[269]."\">";
+            $gast1 = "<a href=\"".$addp.$teamb[$st-1][$i]."\" class=\"".$color."\" title=\"".$text[269]."\">";
           }
           if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
-            echo "<strong>";
+            $gast1 .= "<strong>";
           }
-          echo $teams[$teamb[$st-1][$i]];
           if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
-            echo "</strong>";
+            $gast2 = "</strong>";
           }
           if ($plan==1) {
-            echo "</a>";
+            $gast2 .= "</a>";
           }?>
+          <div class="col-3 text-start d-none d-md-block">-&nbsp; <?php
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+          echo $gast1.$teams[$teamb[$st-1][$i]].$gast2;?>
+          </div>
+          <div class="col-2 text-start d-md-none">-&nbsp;<?php
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+          echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;?>
           </div><?php
         } else { ?>
-          <div class="col-6">&nbsp;</div><?php
+          <div class="col-6 d-none d-md-block">&nbsp;</div>
+          <div class="col-4 d-md-none">&nbsp;</div><?php
         }?>
           <div class="col-2"><?php echo $countint == TRUE ? applyFactor($goala[$st-1][$i][$n],$goalfaktor) : applyFactor($goalb[$st-1][$i][$n],$goalfaktor); ?> : <?php echo  $countint == TRUE ? applyFactor($goalb[$st-1][$i][$n],$goalfaktor) : applyFactor($goala[$st-1][$i][$n],$goalfaktor);?> <?php echo $mspez[$st-1][$i][$n]; ?></div>
           <div class="col-2"><?php
