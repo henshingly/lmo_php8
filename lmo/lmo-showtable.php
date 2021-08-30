@@ -50,7 +50,6 @@ if($hidr!=1){?>
 <?php
 $j = 1;
 for($x = 1; $x <= $anzteams; $x++) {
-  //$i = intval(substr($tab0[$x-1], 34));
   $i = intval(substr($tab0[$x-1], strlen($tab0[$x-1]) - 6));
   if ($i == $favteam) {
     $dummy = "<strong>";
@@ -60,8 +59,8 @@ for($x = 1; $x <= $anzteams; $x++) {
     $dumm2 = "";
   }
   $lmo_tabelle_class = "nobr";
+  $label = "badge bg-secondary";
   if ($tabtype == 0) {
-    $label = "badge bg-secondary";
     if (($x == 1) && ($champ != 0)) {
       $label = "badge bg-success";
       $j = 2;
@@ -81,7 +80,6 @@ for($x = 1; $x <= $anzteams; $x++) {
     if (($x <= $anzteams) && ($x > $anzteams-$anzab) && ($anzab > 0)) {
       $label = "badge bg-danger";
     }
-    
   }
   ?>
   <div class="row">
