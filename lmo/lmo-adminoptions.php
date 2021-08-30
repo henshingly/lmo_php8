@@ -29,7 +29,7 @@ if($save==1){
       $dirliga=trim($_POST["xdirliga"]);
       if($dirliga==""){$dirliga="./";}
       $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
-      if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergänzen falls nicht vorhanden
+      if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergï¿½nzen falls nicht vorhanden
       $ArchivDir=$dirliga.'archiv/';
 
       $deflang=isset($_POST["xdeflang"])?trim($_POST["xdeflang"]):$deflang;
@@ -74,38 +74,44 @@ if($save==1){
   require(PATH_TO_LMO."/init.php");
 }?>
 
-<table width="100%" class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center"><?php echo $text[319]?></td>
-    <td align="center"><a href="<?php echo $addr_addons?>" onclick="return chklmolink();" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></td>
-    <td align="center"><a href="<?php echo $addr_design?>" onclick="return chklmolink();" title="<?php echo $text[422]?>"><?php echo $text[421]?></a></td>
-    <td align="center"><a href="<?php echo $addr_user?>" onclick="return chklmolink();" title="<?php echo $text[318]?>"><?php echo $text[317]?></a></td>
-  </tr>
-</table>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" >
-  <tr>
-    <td align="center" colspan="2"><h1><?php echo $text[225]?></h1></td>
-  </tr>
-  <tr>
-    <td valign="top">
-      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
-        <tr><td align="right"><?php if ($show==0) {echo $text[99];?><?php }else{?> <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=0";?>"><?php echo $text[99];?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==1) {echo $text[226];?><?php }else{?> <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=1";?>"><?php echo $text[226];?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==2) {echo $text[250];?><?php }else{?> <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=2";?>"><?php echo $text[250];?></a><?php }?></td></tr>
-      </table>
-    </td>
-    <td align="left" valign="top">
+<nav>
+  <ul class="nav nav-pills justify-content-center">
+    <li class="nav-item"><a href="#" class="nav-link active"><?php echo $text[319]?></a></li>
+    <li class="nav-item"><a href="<?php echo $addr_addons?>" class="nav-link" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></li>
+    <li class="nav-item"><a href="<?php echo $addr_design?>" class="nav-link" title="<?php echo $text[422]?>"><?php echo $text[421]?></a></li>
+    <li class="nav-item"><a href="<?php echo $addr_user?>" class="nav-link" title="<?php echo $text[318]?>"><?php echo $text[317]?></a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-auto justify-content-center"><h1><?php echo $text[225]?></h1></div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-auto text-end"><?php if ($show==0) {echo $text[99];?><?php }else{?> <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=0";?>"><?php echo $text[99];?></a><?php }?></div>
+        </div>
+        <div class="row">
+          <div class="col-auto text-end"><?php if ($show==1) {echo $text[226];?><?php }else{?> <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=1";?>"><?php echo $text[226];?></a><?php }?></div>
+        </div>
+        <div class="row">
+          <div class="col-auto text-end"><?php if ($show==2) {echo $text[250];?><?php }else{?> <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=2";?>"><?php echo $text[250];?></a><?php }?></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto">
       <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="options">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?php echo $file;?>">
         <input type="hidden" name="show" value="<?php echo $show;?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
+        <div class="container"><?php
 if ($show==0) {?>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[506]?>"><?php echo $text[505];?></acronym></td>
-            <td class="nobr" colspan="4">
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[506]?>"><?php echo $text[505];?></acronym></div>
+            <div class="col-7 text-start">
               <select class="custom-select" name="xdeflang" onchange="dolmoedit()"><?php
               $handle=opendir (PATH_TO_LANGDIR);
               while (false!==($f=readdir($handle))) {
@@ -115,12 +121,13 @@ if ($show==0) {?>
               }
               closedir($handle);
               ?>
-              </select></td>
-          </tr><?php
+              </select>
+            </div>
+          </div><?php
   if (version_compare(PHP_VERSION, '5.1.0') >= 0) { ?>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[575]?>"><?php echo $text[574];?></acronym></td>
-            <td class="nobr" colspan="4">
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[575]?>"><?php echo $text[574];?></acronym></div>
+            <div class="col-7 text-start">
               <select class="custom-select" name="xtimezone" onchange="dolmoedit()"><?php
               $timezones = get_timezones();
               foreach ($timezones as $continent=>$zones) {?>
@@ -130,19 +137,21 @@ if ($show==0) {?>
                 }
               ?></optgroup><?php
               }?>
-              </select></td>
-          </tr><?php
+              </select>
+            </div>
+          </div><?php
   }?>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[222]?>"><?php echo $text[221];?></acronym></td>
-            <td class="nobr" colspan="4"><input class="custom-control" type="text" name="xdirliga" size="20" maxlength="80" value="<?php echo $dirliga;?>" onChange="dolmoedit()"></td>
-          </tr>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[240]?>"><?php echo $text[239];?></acronym></td>
-            <td class="nobr" colspan="4"><input class="custom-control" type="text" name="xdeftime" size="5" maxlength="5" value="<?php echo $deftime;?>" onChange="dolmoedit()"></td>
-          </tr><tr>
-            <td class="nobr" rowspan="2" align="right"><acronym title="<?php echo $text[256] ?>"><?php echo $text[257]; ?></acronym>&nbsp;</td>
-            <td class="nobr" align="left">
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[222]?>"><?php echo $text[221];?></acronym></div>
+            <div class="col-7 text-start"><input class="custom-control" type="text" name="xdirliga" size="20" maxlength="80" value="<?php echo $dirliga;?>" onChange="dolmoedit()"></div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[240]?>"><?php echo $text[239];?></acronym></div>
+            <div class="col-7 text-start"><input class="custom-control" type="text" name="xdeftime" size="5" maxlength="5" value="<?php echo $deftime;?>" onChange="dolmoedit()"></div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[256] ?>"><?php echo $text[257]; ?></acronym>&nbsp;</div>
+            <div class="col-7 text-start">
               <input type="radio" name="xdefdateselect" value="1" checked>
               <select class="custom-control" name="xdefdateformat" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[0].checked=true;"><?php
       $dummf=array("%d.%m. %H:%M","%x %H:%M","%a.%d.%m. %H:%M","%A, %d.%m. %H:%M","%a.%x %H:%M","%A, %x %H:%M");?>
@@ -151,10 +160,11 @@ if ($show==0) {?>
                 <option value="<?php echo $dummf[$y]?>"<?php if($defdateformat==$dummf[$y]){echo " selected";}?>><?php echo strftime($dummf[$y])?></option><?php
       }?>
               </select>
-            </td>
-          </tr>
-          <tr>
-            <td class="nobr" align="left">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"></div>
+            <div class="col-7 text-start">
               <input type="radio" name="xdefdateselect" value=""<?php if (!in_array($defdateformat,$dummf)) echo " checked";?>>
               <input type="text" class="custom-control" name="xdefdateformat2" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[1].checked=true;" value="<?php echo $defdateformat?>">
               <a href="http://php.net/strftime">
@@ -180,99 +190,94 @@ if ($show==0) {?>
                   %p = <?php echo strftime("%p")?><br>
                 </span>
               ?</a>
-            </td>
-          </tr>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[344]?>"><?php echo $text[343];?></acronym></td>
-            <td class="nobr" colspan="4"><input class="custom-control" type="text" name="xadr" size="40" maxlength="128" value="<?php echo $aadr;?>" onChange="dolmoedit()"></td>
-          </tr>
-          <tr>
-            <td class="nobr" align="right" rowspan="2"><acronym title="<?php echo $text[532]?>"><?php echo $text[533];?></acronym></td>
-            <td class="nobr" colspan="2" rowspan="2">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[344]?>"><?php echo $text[343];?></acronym></div>
+            <div class="col-7 text-start"><input class="custom-control" type="text" name="xadr" size="25" maxlength="128" value="<?php echo $aadr;?>" onChange="dolmoedit()"></div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[532]?>"><?php echo $text[533];?></acronym></div>
+            <div class="col-2">
               <select class="custom-select" name="xliga_sort" onChange="dolmoedit()">
                 <option value="liga_name"<?php if ($liga_sort=="liga_name") echo " selected";?>><?php echo $text[529]?></option>
                 <option value="file_date"<?php if ($liga_sort=="file_date") echo " selected";?>><?php echo $text[530]?></option>
                 <option value="file_name"<?php if ($liga_sort=="file_name") echo " selected";?>><?php echo $text[531]?></option>
               </select>
-            </td>
-            <td class="nobr" colspan="2"><input type="radio" name="xliga_sort_direction" onClick="dolmoedit()" value="asc"<?php if ($liga_sort_direction=="asc") echo " checked";?>> <?php echo $text[527]?></td>
-          </tr>
-          <tr>
-            <td class="nobr" colspan="2"><input type="radio" name="xliga_sort_direction" onClick="dolmoedit()" value="desc"<?php if ($liga_sort_direction=="desc") echo " checked";?>><?php echo $text[528]?></td>
-          </tr><?php
+            </div>
+            <div class="col-5">
+              <input type="radio" name="xliga_sort_direction" onClick="dolmoedit()" value="asc"<?php if ($liga_sort_direction=="asc") echo " checked";?>> <?php echo $text[527]?><br/>
+              <input type="radio" name="xliga_sort_direction" onClick="dolmoedit()" value="desc"<?php if ($liga_sort_direction=="desc") echo " checked";?>> <?php echo $text[528]?>
+            </div>
+          </div><?php
 }elseif ($show==1) {?>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[228]?>"><?php echo $text[227];?></acronym></td>
-            <td class="nobr" colspan="4">
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[228]?>"><?php echo $text[227];?></acronym></div>
+            <div class="col-7 text-start">
               <select class="custom-select" name="xtabpkt" onChange="dolmoedit()">
                 <option value="0"<?php if($tabpkt==0){echo " selected";}?>><?php echo $text[229]?></option>
                 <option value="1"<?php if($tabpkt==1){echo " selected";}?>><?php echo $text[230]?></option>
               </select>
-            </td>
-          </tr>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[232]?>"><?php echo $text[231]?></acronym></td>
-            <td class="nobr" colspan="4">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[232]?>"><?php echo $text[231]?></acronym></div>
+            <div class="col-7 text-start">
               <select class="custom-select" name="xtabonres" onChange="dolmoedit()">
                 <option value="0"<?php if($tabonres==0){echo " selected";}?>><?php echo $text[233]?></option>
                 <option value="1"<?php if($tabonres==1){echo " selected";}?>><?php echo $text[234]?></option>
                 <option value="2"<?php if($tabonres==2){echo " selected";}?>><?php echo $text[235]?></option>
               </select>
-            </td>
-          </tr><?php
+            </div>
+          </div><?php
 }elseif ($show==2) {?>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[390]?>"><?php echo $text[389];?></acronym></td>
-            <td class="nobr"><input type="checkbox" class="custom-control" name="xbacklink" onChange="dolmoedit()"<?php if($backlink==1){echo " checked";}?>></td>
-            <td class="nobr" width="15%">&nbsp;</td>
-            <td class="nobr" align="right"><input type="checkbox" class="custom-control" name="xarchivlink" onChange="dolmoedit()"<?php if($archivlink==1){echo " checked";}?>></td>
-            <td class="nobr"><acronym title="<?php echo $text[510]?>"><?php echo $text[509];?></acronym></td>
-          </tr>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[473]?>"><?php echo $text[472];?></acronym></td>
-            <td class="nobr"><input type="checkbox" class="custom-control" name="xcalctime" onChange="dolmoedit()"<?php if($calctime==1){echo " checked";}?>></td>
-            <td>&nbsp;</td>
-            <td class="nobr" align="right"><input type="checkbox" class="custom-control" name="xeinsavehtml" onChange="dolmoedit()"<?php if($einsavehtml==1){echo " checked";}?>></td>
-            <td class="nobr"><acronym title="<?php echo $text[484]?>"><?php echo $text[483];?></acronym></td>
-          </tr>
-          <tr>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[390]?>"><?php echo $text[389];?></acronym></div>
+            <div class="col-1"><input type="checkbox" class="custom-control" name="xbacklink" onChange="dolmoedit()"<?php if($backlink==1){echo " checked";}?>></div>
+            <div class="col-1"><input type="checkbox" class="custom-control" name="xarchivlink" onChange="dolmoedit()"<?php if($archivlink==1){echo " checked";}?>></div>
+            <div class="col-5 text-start"><acronym title="<?php echo $text[510]?>"><?php echo $text[509];?></acronym></div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[473]?>"><?php echo $text[472];?></acronym></div>
+            <div class="col-1"><input type="checkbox" class="custom-control" name="xcalctime" onChange="dolmoedit()"<?php if($calctime==1){echo " checked";}?>></div>
+            <div class="col-1"><input type="checkbox" class="custom-control" name="xeinsavehtml" onChange="dolmoedit()"<?php if($einsavehtml==1){echo " checked";}?>></div>
+            <div class="col-5 text-start"><acronym title="<?php echo $text[484]?>"><?php echo $text[483];?></acronym></div>
+          </div>
+          <div class="row align-items-center">
             <?php /*<td class="nobr" align="right"><acronym title="<?php echo $text[494]?>"><?php echo $text[493];?></acronym></td>
             <td class="nobr"><input type="checkbox" class="custom-control" name="xeinhinrueck" onChange="dolmoedit()"<?php if($einhinrueck==1){echo " checked";}?>></td>*/?>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[486]?>"><?php echo $text[485];?></acronym></td>
-            <td class="nobr"><input type="checkbox" class="custom-control" name="xeinspieler" onChange="dolmoedit()"<?php if($einspieler==1){echo " checked";}?>></td>
-            <td>&nbsp;</td>
-            <td class="nobr" align="right"><input type="checkbox" class="custom-control" name="xeinzustats" onChange="dolmoedit()"<?php if($einzustats==1){echo " checked";}?>></td>
-            <td class="nobr"><acronym title="<?php echo $text[496]?>"><?php echo $text[495];?></acronym></td>
-          </tr>
-          <tr>
-            <td class="nobr" align="right"><acronym title="<?php echo $text[535]?>"><?php echo $text[534];?></acronym></td>
-            <td class="nobr"><input type="checkbox" class="custom-control" name="xeinspielfrei" onChange="dolmoedit()"<?php if($einspielfrei==1){echo " checked";}?>></td>
-            <td>&nbsp;</td>
-            <td class="nobr" align="right"><input type="checkbox" class="custom-control" name="xeintippspiel" onChange="dolmoedit()"<?php if($eintippspiel==1){echo " checked";}?>></td>
-            <td class="nobr"><acronym title="<?php echo $text[488]?>"><?php echo $text[487];?></acronym></td>
-          </tr>
-          <tr>
-            <td colspan="3">&nbsp;</td>
-            <td class="nobr" align="right"><input type="checkbox" class="custom-control" name="xeinsprachwahl" onChange="dolmoedit()"<?php if($einsprachwahl==1){echo " checked";}?>></td>
-            <td class="nobr"><acronym title="<?php echo $text[520] ?>"><?php echo $text[519]; ?></acronym></td>
-          </tr>
-          <tr>
-            <td class="nobr" rowspan="2" align="right"><acronym title="<?php echo $text[490]?>"><?php echo $text[489];?></acronym></td>
-            <td class="nobr" colspan="4"><input type="checkbox" class="custom-control" name="xeinzutoretab" onChange="dolmoedit()"<?php if($einzutoretab==1){echo " checked";}?>>&nbsp;<?php echo $text[491]?>
-          </tr>
-          <tr>
-            <td class="nobr" colspan="4">
-              <input type="checkbox" class="custom-control" name="xeinzutore" onChange="dolmoedit()"<?php if($einzutore==1){echo " checked";}?>>&nbsp;<?php echo $text[492]?>
-            </td>
-          </tr><?php
+            <div class="col-5 text-end"><acronym title="<?php echo $text[486]?>"><?php echo $text[485];?></acronym></div>
+            <div class="col-1"><input type="checkbox" class="custom-control" name="xeinspieler" onChange="dolmoedit()"<?php if($einspieler==1){echo " checked";}?>></div>
+            <div class="col-1"><input type="checkbox" class="custom-control" name="xeinzustats" onChange="dolmoedit()"<?php if($einzustats==1){echo " checked";}?>></div>
+            <div class="col-5 text-start"><acronym title="<?php echo $text[496]?>"><?php echo $text[495];?></acronym></div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[535]?>"><?php echo $text[534];?></acronym></div>
+            <div class="col-1"><input type="checkbox" class="custom-control" name="xeinspielfrei" onChange="dolmoedit()"<?php if($einspielfrei==1){echo " checked";}?>></div>
+            <div class="col-1"><input type="checkbox" class="custom-control" name="xeintippspiel" onChange="dolmoedit()"<?php if($eintippspiel==1){echo " checked";}?>></div>
+            <div class="col-5 text-start"><acronym title="<?php echo $text[488]?>"><?php echo $text[487];?></acronym></div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-6"></div>
+            <div class="col-1"><input type="checkbox" class="custom-control" name="xeinsprachwahl" onChange="dolmoedit()"<?php if($einsprachwahl==1){echo " checked";}?>></div>
+            <div class="col-5 text-start"><acronym title="<?php echo $text[520] ?>"><?php echo $text[519]; ?></acronym></div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[490]?>"><?php echo $text[489];?></acronym></div>
+            <div class="col-1"></div>
+            <div class="col-6 text-start">
+              <input type="checkbox" class="custom-control" name="xeinzutoretab" onChange="dolmoedit()"<?php if($einzutoretab==1){echo " checked";}?>>&nbsp;&nbsp;<?php echo $text[491]?><br/>
+              <input type="checkbox" class="custom-control" name="xeinzutore" onChange="dolmoedit()"<?php if($einzutore==1){echo " checked";}?>>&nbsp;&nbsp;<?php echo $text[492]?>
+            </div>
+          </div><?php
 }?>
-          <tr>
-            <td class="nobr" colspan="6" align="center">
+          <div class="row">
+            <div class="col-auto">
               <input title="<?php echo $text[114]?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo $text[188];?>">
-            </td>
-          </tr>
-        </table>
+            </div>
+          </div>
+        </div>
       </form>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
+</div>
