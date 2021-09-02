@@ -191,302 +191,255 @@ if ($form3) {
 // FORMULARE
 
 if($form3) {
-	echo getMessage($text[138]);
+  echo getMessage($text[138]);
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="800">
-  <tr>
-    <th align="center"><h3><?php echo $text['viewer'][42]; ?></h3></th>
-  </tr>
-  <tr>
-    <td class="nobr">
-      <form action="#" onSubmit="return false;">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0" width="100%">
-          <tr>
-            <th colspan="2" align="center"><?php echo $text['viewer'][43]; ?></h3></th>
-          </tr>
-          <tr>
-            <td class="nobr">
-              <textarea  rows="6" cols="80"><?php echo trim("\n<?php \n\$multi='".$save_file_name."';\ninclude('".dirname(__FILE__)."/viewer.php');\n?>");?></textarea>
-            </td>
-          </tr>
-		  <tr>
-    		<td class="nobr"><h3><?php echo $text['viewer'][36]; ?></h3></td>
-  		  </tr>
-        </table>
-      </form>
-    </td>
-  </tr>
-	<tr>
-    <td class="lmoFooter"><?php echo $text['viewer'][100]; ?></td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col"><h3><?php echo $text['viewer'][42]; ?></h3></div>
+  </div>
+  <div class="row">
+    <div class="col"><?php echo $text['viewer'][43]; ?></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <textarea  rows="6" cols="80"><?php echo trim("\n<?php \n\$multi='".$save_file_name."';\ninclude('".dirname(__FILE__)."/viewer.php');\n?>");?></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <?php echo $text['viewer'][36]; ?>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"><strong><?php echo $text['viewer'][100]; ?></strong></div>
+  </div>
+</div>
 
-<?PHP
-	}
-	if (!$form1 && !$form2 && !$form3) { //<!-- Hauptauswahl  --> 
+<?php
+  }
+  if (!$form1 && !$form2 && !$form3) { //<!-- Hauptauswahl  --> 
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="800">
-    <tr>
-      <th align="center"><h3><?php echo $text['viewer'][21];  ?></h3></td>
-    </tr>
-    <tr>
-      <td class="nobr">
-        <form method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>">
-          <table class="lmoInner" cellspacing="0" cellpadding="0" border="0" width="100%">
-            <tr>
-              <th colspan="2" align="center"><?php echo $text['viewer'][0]; ?></th>
-            </tr>
-            <tr>
-              <td class="nobr" align="right">
-<!--snipp ---------------------------------->
-               <table class="lmoInner" cellspacing="0" cellpadding="0" border="0" width="100%">
-                 <tr>
-                   <td class="nobr"  colspan="4"><?php echo $text['viewer'][1];  ?> <input class="custom-control" type="text" name="dateiname" size="20" value="unbenannt"> &nbsp;<?php echo $text['viewer'][2];  ?> </td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right" height="22"><input class="custom-control" type="radio" value="1" name="modus" checked  onClick="byDate(this);"></td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][3];  ?></td>
-                   <td class="nobr" align="right"><input type="radio" value="2" name="modus" onClick="byDay(this);"></td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][6];  ?></td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right" height="22"><input class="custom-control"  type="number" name="anzahl_tage_plus" size="3" value="7" style="width: 45px;"></td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][4];  ?></td>
-                   <td class="nobr" align="right"><input class="custom-control" type="number" name="anzahl_spieltage_vor" size="3" value="3" style="width: 45px;" disabled> </td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][7];  ?></td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right" height="22"><input class="custom-control" type="number" name="anzahl_tage_minus" size="3" value="7" style="width: 45px;"> </td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][5];  ?></td>
-                   <td class="nobr" align="right"><input class="custom-control" type="number" name="anzahl_spieltage_zurueck" size="3" value="3" style="width: 45px;" disabled></td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][8];  ?></td>
-                 </tr>
-               </table>
-               <br>
-               <table class="lmoInner" cellspacing="0" cellpadding="0" border="0" width="100%">
-                 <tr>
-                   <td class="nobr"  colspan="4"></td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right"><input class="custom-control" type="text" name="datumsformat" size="6" value="d.m.y"></td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][10];  ?></td>
-                   <td class="nobr" align="right"><?php echo $text['viewer'][20];  ?></td>
-                   <td class="nobr" align="left">&nbsp;<select class="custom-select  name="template" size="1">
-                        <?php  for($tpl=0; $tpl<$tmpl_counter; $tpl++) {
-                             echo "<option>".$tpl_files[$tpl]."</option>".chr(13);
-                           } ?>
-                     </select>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right"><input class="custom-control" type="text" name="uhrzeitformat" size="6" value="H:i"></td>                    
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][28];  ?></td>
-                   <td class="nobr" align="right"><?php echo $text['viewer'][27];  ?></td>
-                   <td class="nobr" align="left">&nbsp;<input class="custom-control" type="text" name="titelzeile" size="20" value=""></td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right"><input class="custom-control" type="checkbox" name="favteam_highlight" checked></td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][54];  ?></td>
-                   <td class="nobr" align="right"><?php echo $text['viewer'][16]; ?></td>
-                   <td class="nobr" align="left">&nbsp;<select class="custom-select  name="mannschaftsnamen"  onChange="dolmoedit();">
-                			<option value="0"><?php echo $text['viewer'][46]?></option>
-                			<option value="1"><?php echo $text['viewer'][47]?></option>
-                   		<option value="2"><?php echo $text['viewer'][48]?></option>
-                   	</select>
-                  </td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right"><input class="custom-control" type="checkbox" name="heute_highlight" checked></td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][40];  ?></td>
-                   <td class="nobr" align="right"><?php echo $text['viewer'][23];  ?></td>
-                   <td class="nobr" align="left">&nbsp;<input class="custom-control" type="text" name="spielberichtesymbol" size="20" value="bericht.gif" onChange="document.getElementById('spielberichtesymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="spielberichtesymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/bericht.gif" alt=""></td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right"><input class="custom-control" type="checkbox" name="spielberichte_neues_fenster"></td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][14];  ?></td>
-                   <td class="nobr" align="right"><?php echo $text['viewer'][24];  ?></td>
-                   <td class="nobr" align="left">&nbsp;<input class="custom-control" type="text" name="tabellensymbol" size="20" value="tabelle.gif" onChange="document.getElementById('tabellensymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="tabellensymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/tabelle.gif" alt=""></td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right"><input class="custom-control" type="checkbox" name="tabelle_verlinken"></td>
-                   <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][13];  ?></td> 
-                   <td class="nobr" align="right"><?php echo $text['viewer'][25];  ?></td>
-                   <td class="nobr" align="left">&nbsp;<input class="custom-control" type="text" name="notizsymbol" size="20" value="notiz.gif" onChange="document.getElementById('notizsymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="notizsymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/notiz.gif" alt=""></td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right"><input class="custom-control" type="checkbox" name="mannschaftshomepages_verlinken"> </td>
-                   <td class="nobr" align="left">&nbsp; <?php echo $text['viewer'][15];  ?> </td>  
-                   <td class="nobr" align="right"><?php echo $text['viewer'][26];  ?></td>
-                   <td class="nobr" align="left">&nbsp;<input class="custom-control" type="text" name="spieltagtext" size="10" value="<?php echo $text[145];?>"></td>
-                 </tr>
-                 <tr>
-                   <td class="nobr" align="right"><input class="custom-control" type="number" name="cache_refresh" size="3" value="0" style="width: 45px;"></td>
-                   <td class="nobr" align="left">&nbsp;<acronym title="<?php echo $text['viewer'][53]; ?>"><?php echo $text['viewer'][52]; ?></acronym></td>
-                   <td class="nobr" align="right"><?php echo $text['viewer'][12];  ?></td>
-                   <td class="nobr" align="left">&nbsp;<input class="custom-control" type="text" name="tordummy" size="1" value="_"></td>
-                 </tr>
-               </table>
-<!--snipp ---------------------------------->
-              </td>
-            </tr>
-            <td class="nobr" align="right">
-              <input type="submit" class="btn btn-primary btn-sm" value="<?php echo $text['viewer'][22];  ?> >>" name="B1">
-              <input type="hidden" name="action" value="admin">
-              <input type="hidden" name="formular1" value="1">
-            </td>
-          </table>
-        </form>
-      </td>
-      <tr>
-        <td class="lmoFooter"><?php echo $text['viewer'][100]; ?></td>
-  	</tr>
-	</tr>
-</table>  
+<div class="container">
+  <div class="row">
+    <div class="col"><h3><?php echo $text['viewer'][21]; ?></h3></div>
+  </div>
+  <form class="row" method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>">
+    <div class="row">
+      <div class="col"><strong><?php echo $text['viewer'][0]; ?></strong></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><?php echo $text['viewer'][1];  ?></div>
+      <div class="col-3"><input class="form-control" type="text" name="dateiname" size="20" value="unbenannt"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][2]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-4  offset-2 text-start"><input class="form-check-input" type="radio" value="1" name="modus" checked onClick="byDate(this);">&nbsp;<?php echo $text['viewer'][3];  ?></div>
+      <div class="col-4 text-start"><input class="form-check-input" type="radio" value="2" name="modus" onClick="byDay(this);">&nbsp;<?php echo $text['viewer'][6];  ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-control" type="number" name="anzahl_tage_plus" size="3" value="7"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][4]; ?></div>
+      <div class="col-1"><input class="form-control" type="number" name="anzahl_spieltage_vor" size="3" value="3" disabled></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][7]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-control" type="number" name="anzahl_tage_minus" size="3" value="7"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][5]; ?></div>
+      <div class="col-1"><input class="form-control" type="number" name="anzahl_spieltage_zurueck" size="3" value="3" disabled></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][8]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col">&nbsp;</div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-control" type="number" name="datumsformat" size="6" value="d.m.y"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][10]; ?></div>
+      <div class="col-3">
+        <select class="form-select" name="template" size="1">
+          <?php  for($tpl=0; $tpl<$tmpl_counter; $tpl++) {
+                   echo "<option>".$tpl_files[$tpl]."</option>".chr(13);
+                 } ?>
+        </select>
+      </div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][20]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-control" type="text" name="uhrzeitformat" size="6" value="H:i"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][28]; ?></div>
+      <div class="col-3"><input class="form-control" type="text" name="titelzeile" size="20" value=""></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][27]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-check-input" type="checkbox" name="favteam_highlight" checked></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][54]; ?></div>
+      <div class="col-3">
+        <select class="form-select" name="mannschaftsnamen" onChange="dolmoedit();">
+          <option value="0"><?php echo $text['viewer'][46]?></option>
+          <option value="1"><?php echo $text['viewer'][47]?></option>
+          <option value="2"><?php echo $text['viewer'][48]?></option>
+        </select>
+      </div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][16]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-check-input" type="checkbox" name="heute_highlight" checked></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][40]; ?></div>
+      <div class="col-3"><input class="form-control" type="text" name="spielberichtesymbol" size="20" value="bericht.gif" onChange="document.getElementById('spielberichtesymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="spielberichtesymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/bericht.gif" alt=""></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][23]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-check-input" type="checkbox" name="spielberichte_neues_fenster"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][14]; ?></div>
+      <div class="col-3"><input class="form-control" type="text" name="tabellensymbol" size="20" value="tabelle.gif" onChange="document.getElementById('tabellensymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="tabellensymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/tabelle.gif" alt=""></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][24]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-check-input" type="checkbox" name="tabelle_verlinken"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][13]; ?></div>
+      <div class="col-3"><input class="form-control" type="text" name="notizsymbol" size="20" value="notiz.gif" onChange="document.getElementById('notizsymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="notizsymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/notiz.gif" alt=""></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][25]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-check-input" type="checkbox" name="mannschaftshomepages_verlinken"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][25]; ?></div>
+      <div class="col-3"><input class="form-control" type="text" name="spieltagtext" size="10" value="<?php echo $text[145];?>"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][26]; ?></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-1 offset-2"><input class="form-control" type="number" name="cache_refresh" size="3" value="0"></div>
+      <div class="col-3 text-start"><acronym title="<?php echo $text['viewer'][53]; ?>"><?php echo $text['viewer'][52]; ?></acronym></div>
+      <div class="col-3"><input class="form-control" type="text" name="tordummy" size="1" value="_"></div>
+      <div class="col-3 text-start"><?php echo $text['viewer'][12]; ?></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="submit" class="btn btn-primary btn-sm" value="<?php echo $text['viewer'][22];  ?> >>" name="B1">
+        <input type="hidden" name="action" value="admin">
+        <input type="hidden" name="formular1" value="1">
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col"><strong><?php echo $text['viewer'][100]; ?></strong></div>
+  </div>
+</div>  
 
-<?PHP
-	}
-if (!$form2 && $form1 && !$form3) {  // <!-- Bei  ersten Aufruf Ligendateien anzeigen -->
+<?php
+  }
+  if (!$form2 && $form1 && !$form3) {  // <!-- Bei  ersten Aufruf Ligendateien anzeigen -->
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
-	<tr>
-  	<th align="center"><h3><?php echo $text['viewer'][21];  ?></h3></th>
-	</tr>
-	<tr>
-		<td class="nobr">
-			<form name="B2" method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>">
-				<table class="lmoInner" cellspacing="0" cellpadding="0" border="0" width="100%">
-        	<tr>
-        		<th colspan="2" align="center"><?php echo $text['viewer'][30]; ?></th>
-         	</tr>
-         	<tr>
-        		<td class="nobr">
-							<table class="lmoInner" width="99%">
-              	<tr>
-               		<td class="nobr"  align="left">
-                  			<?php  foreach($ligadatei as $liga){?><input  type="checkbox" name="<?php echo 'c'.$z; ?>" value = "<?php echo 'c'.$z; ?>"> <?php echo $liga['liga_name'].'<br>'; ?>
-                                             <?php echo chr(13); $z++; } 
-                        ?>
-               		</td>
-               	</tr>
-                <tr>
-              		<td align="left">
-                    <script type="text/javascript">
-                      document.writeln ('<input type=button value="<?php echo $text['viewer'][43]; ?>" onClick="checkAll(this)"\>');
-      						    document.writeln ('<input type=button value="<?php echo $text['viewer'][44]; ?>" onClick="uncheckAll(this)"\>');
-      							  document.writeln ('<input type=button value="<?php echo $text['viewer'][45]; ?>" onClick="switchAll(this)"\>');         
-      							</script>
-      					   </td>
-								</tr>
+<div class="container">
+  <div class="row">
+    <div class="col"><h3><?php echo $text['viewer'][21];  ?></h3></div>
+  </div>
+  <form class="row" name="B2" method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>">
+    <div class="row">
+      <div class="col"><strong><?php echo $text['viewer'][30]; ?></strong></div>
+    </div>
+    <div class="row">
+      <div class="col-3 offset-5 text-start">
+      <?php foreach($ligadatei as $liga){?>
+        <input class="form-check-input" type="checkbox" name="<?php echo 'c'.$z; ?>" value = "<?php echo 'c'.$z; ?>"> <?php echo $liga['liga_name'].'<br>'; ?>
+         <?php echo chr(13); $z++; } ?>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <script type="text/javascript">
+          document.writeln ('<input type="button" class="btn btn-sm btn-secondary" value="<?php echo $text['viewer'][43]; ?>" onClick="checkAll(this)"\>');
+      	  document.writeln ('<input type="button" class="btn btn-sm btn-secondary" value="<?php echo $text['viewer'][44]; ?>" onClick="uncheckAll(this)"\>');
+      	  document.writeln ('<input type="button" class="btn btn-sm btn-secondary" value="<?php echo $text['viewer'][45]; ?>" onClick="switchAll(this)"\>');         
+      	</script>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"><?php echo getMessage($text['viewer'][51],TRUE);?></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="hidden" name="action" value="admin">
+        <input type="hidden" name="formular2" value="1">
+        <input type="hidden" name="dateinameok" value="1">
+        <input type="hidden" name="dateiname" value="<?php echo $save_file_name; ?>">
+        <input type="hidden" name="config_array" value="<?php echo $save_config_array; ?>">
+        <input type="hidden" name="zaehler" value="<?php echo $z; ?>">
+        <input type="submit" class="btn btn-primary btn-sm" value="<?php echo $text['viewer'][22]; ?> >>" name="B2">
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col"><strong><?php echo $text['viewer'][100]; ?></strong></div>
+  </div>
+</div>
 
-    						<tr>
-        				<td><?php echo getMessage($text['viewer'][51],TRUE);?></td>
-      				</tr>
-							</table>
-           	</td>
-         	</tr>
-         	<tr>
-         		<td class="nobr" align="right">
-           				<input type="hidden" name="action" value="admin">
-                  <input type="hidden" name="formular2" value="1">
-                  <input type="hidden" name="dateinameok" value="1">
-                	<input type="hidden" name="dateiname" value="<?php echo $save_file_name; ?>">
-                  <input type="hidden" name="config_array" value="<?php echo $save_config_array; ?>">
-                	<input type="hidden" name="zaehler" value="<?php echo $z; ?>">
-                	<input type="submit" class="btn btn-primary btn-sm" value="<?php echo $text['viewer'][22]; ?> >>" name="B2">
-        		</td>
-        	</tr>
-        </table>
-     	</form>
-   	</td>
-	</tr>
-  <tr>
- 		<td class="lmoFooter"><?php echo $text['viewer'][100]; ?></td>
-	</tr>
-</table>
 
 <?php 
 }
-if (!$form3 && $form2){   //<!-- Jetzt kommen die Mannschaftsauswahlen  --> ?>
+if (!$form3 && $form2) {   //<!-- Jetzt kommen die Mannschaftsauswahlen  --> ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
-	<tr>
-    <th align="center"><h3><?php echo $text['viewer'][21]; ?> </h3></th>
-	</tr>
-  <tr>
-  	<td class="nobr">
-    	<form method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>" name="B3">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0" width="100%">
-          <tr>
-            <th colspan="2" align="center"><?php echo $text['viewer'][31]; ?></h3></th>
-          </tr>
-          <tr>
-						<td class="nobr">
-              <?php  $ges_teams=0;
-              for ($i=1; $i<=count($ausgewaehlte_ligen) ;$i++ ) {
-                $liga1=new liga();
-                if ($liga1->loadFile(PATH_TO_LMO.'/'.$dirliga.$ligenfile[$ausgewaehlte_ligen[$i]]) == TRUE) { // Ligenfile vorhanden? ?>
-                  <table class=lmoInner cellspacing="0" cellpadding="0" border="0" width="100%">
-                    <tr>
-                      <td class="nobr"  colspan="3" align="center"><h3><?php echo $ligennamen[$ausgewaehlte_ligen[$i]]; ?></h3></td>
-                    </tr>
+<div class="container">
+  <div class="row">
+    <div class="col"><h3><?php echo $text['viewer'][21]; ?> </h3></div>
+  </div>
+  <form class="row" method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>" name="B3">
+    <div class="row">
+      <div class="col"><strong><?php echo $text['viewer'][31]; ?></strong></div>
+    </div>
+    <?php $ges_teams=0;
+          for ($i=1; $i<=count($ausgewaehlte_ligen) ;$i++ ) {
+            $liga1=new liga();
+            if ($liga1->loadFile(PATH_TO_LMO.'/'.$dirliga.$ligenfile[$ausgewaehlte_ligen[$i]]) == TRUE) { // Ligenfile vorhanden? ?>
+    <div class="row">
+      <div class="col"><h3><?php echo $ligennamen[$ausgewaehlte_ligen[$i]]; ?></h3></div>
+    </div>
+           <?php $ii=1; $spalte=1; $max=count($liga1->teams);
+            foreach ($liga1->teams as $mannschaft) {
+              if ($ii>$max) break;
+              if ($spalte==1) echo '<div class="row">'.chr(13).'<div class="col-3 offset-2 text-start">';
+              if ($spalte==2) echo '<div class="col-3 text-start">';
+              if ($spalte==3) echo '<div class="col-3 text-start">';
+              echo '<input type="checkbox" class="form-check-input" name="t'.$ges_teams.'" value="'.$ligenfile[$ausgewaehlte_ligen[$i]].'['.$ii.']'.'">'.$mannschaft->name;
+              if ($spalte==1) echo '</div>'.chr(13);
+              if ($spalte==2) echo '</div>'.chr(13);
+              if ($spalte==3) echo '</div>'.chr(13)."</div>".chr(13);
+              $ii++; $spalte++; if ($spalte > 3) $spalte=1; $ges_teams++;
+            }
+            if ($spalte <3) echo"</div>";  
+            } else {
+              echo "[".PATH_TO_LMO.'/'.$dirliga.$ligenfile[$ausgewaehlte_ligen[$i]]."] ".$text['viewer'][50]."<br>";
+            }
+          } ?>
+    <div class="row">
+      <div class="col">
+        <script type="text/javascript">
+          document.writeln ('<input type=button class="btn btn-secondary btn-sm" value="<?php echo $text['viewer'][43]; ?>" onClick="checkAll(this)"\>');
+	  document.writeln ('<input type=button class="btn btn-secondary btn-sm" value="<?php echo $text['viewer'][44]; ?>" onClick="uncheckAll(this)"\>');
+	  document.writeln ('<input type=button class="btn btn-secondary btn-sm" value="<?php echo $text['viewer'][45]; ?>" onClick="switchAll(this)"\>');         
+	</script>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="hidden" name="action" value="admin">
+        <input type="hidden" name="formular3" value="1">
+        <input type="hidden" name="ausgewaehlte_ligen[]" value="<?php echo $ausgewaehlte_ligen ?>">
+        <input type="hidden" name="zaehler" value="<?php echo $ges_teams; ?>">
+        <input type="hidden" name="dateiname" value="<?php echo $save_file_name; ?>">
+        <input type="hidden" name="config_array" value="<?php echo $save_config_array; ?>">
+        <input type="hidden" name="zaehler" value="<?php echo $ges_teams; ?>">
+        <input type="submit" class="btn btn-primary btn-sm" value="<?php echo $text['viewer'][32]; ?> >>" name="B3">
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col"><strong><?php echo $text['viewer'][100]; ?></strong></div>
+  </div>
+</div>
 
-                    <?php 
-                    $ii=1; $spalte=1; $max=count($liga1->teams);
-                    foreach ($liga1->teams as $mannschaft) {
-                      if ($ii>$max) break;
-                      if ($spalte==1) echo '<tr>'.chr(13).'<td class="nobr"  align="left">';
-                      if ($spalte==2) echo '<td class="nobr"  align="left">';
-                      if ($spalte==3) echo '<td class="nobr"  align="left">';
-                      echo '<input type="checkbox" name="t'.$ges_teams.'" value="'.$ligenfile[$ausgewaehlte_ligen[$i]].'['.$ii.']'.'">'.$mannschaft->name;
-                      if ($spalte==1) echo '</td>'.chr(13);
-                      if ($spalte==2) echo '</td>'.chr(13);
-                      if ($spalte==3) echo '</td>'.chr(13)."</tr>".chr(13);
-                      $ii++; $spalte++; if ($spalte > 3) $spalte=1; $ges_teams++;
-                    }
-                    if ($spalte <3) echo"</tr>";
-                    ?>
-                  </table> 
-                  <?php 
-                } else {
-                  echo "[".PATH_TO_LMO.'/'.$dirliga.$ligenfile[$ausgewaehlte_ligen[$i]]."] ".$text['viewer'][50]."<br>";
-                }
-              } ?>
-            	</td>
-           </tr>
-           <tr>
-             <td align="left">
-              <script type="text/javascript">
-                document.writeln ('<input type=button class="btn btn-secondary btn-sm" value="<?php echo $text['viewer'][43]; ?>" onClick="checkAll(this)"\>');
-						    document.writeln ('<input type=button class="btn btn-secondary btn-sm" value="<?php echo $text['viewer'][44]; ?>" onClick="uncheckAll(this)"\>');
-							  document.writeln ('<input type=button class="btn btn-secondary btn-sm" value="<?php echo $text['viewer'][45]; ?>" onClick="switchAll(this)"\>');         
-							</script>
-					   </td>
-					 </tr>
-					 <tr>
-					   <td align="right">
-              <input type="hidden" name="action" value="admin">
-              <input type="hidden" name="formular3" value="1">
-              <input type="hidden" name="ausgewaehlte_ligen[]" value="<?php echo $ausgewaehlte_ligen ?>">
-              <input type="hidden" name="zaehler" value="<?php echo $ges_teams; ?>">
-              <input type="hidden" name="dateiname" value="<?php echo $save_file_name; ?>">
-              <input type="hidden" name="config_array" value="<?php echo $save_config_array; ?>">
-              <input type="hidden" name="zaehler" value="<?php echo $ges_teams; ?>">
-              <input type="submit" class="btn btn-primary btn-sm" value="<?php echo $text['viewer'][32]; ?> >>" name="B3"></p>
-						</td>
-          </tr>
-        </table>
-      </form>
-    </td>
-  </tr>
-  <tr>
-    <td class="lmoFooter"><?php echo $text['viewer'][100]; ?></td>
-  </tr>
-</table>
-
-<?PHP 
-	} 
-	}
+<?php
+  } 
+}
 ?>
