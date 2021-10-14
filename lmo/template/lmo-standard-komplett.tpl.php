@@ -6,8 +6,8 @@
 <title><!--Titel--></title>
 <!--Stylesheet-->
 <!-- CSS only -->
-<link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.js"></script>
+<link href="//cdn.jsdelivr.net/npm/bootstrap@<!--Bootstrap-->/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.js"></script>
 </head>
 <body>
   <div class="container p-3">
@@ -44,7 +44,7 @@
 	</div>
   </div>
   <!-- JavaScript Bundle with Popper -->
-   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap@<!--Bootstrap-->/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
    <script type="text/javascript">
       var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
       var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

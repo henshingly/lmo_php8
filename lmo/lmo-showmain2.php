@@ -256,7 +256,7 @@ if ($eintippspiel==1) {
     $output_tippspiel.=$action!="tipp"?       "<li class='nav-item'><a href='{$addm}tipp' title='{$text['tipp'][0]}' class='nav-link'>{$text['tipp'][0]}</a></li>" : "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>{$text['tipp'][0]}</a></li>";
   }
 }
-d($template->toString());
+e($template->toString());
 //Tippspiel-Addon
 
 
@@ -284,6 +284,8 @@ $template->setVariable("Newsticker", $output_newsticker);
 //Ticker-Addon
 //Tippspiel-Addon
 $template->setVariable("Tippspiel", $output_tippspiel);
+//Bootstrap-Version
+$template->setVariable("Bootstrap", $bootstrap);
 $template->show();
 
 //write to cache

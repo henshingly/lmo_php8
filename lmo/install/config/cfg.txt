@@ -108,3 +108,4 @@ lmo_formular_border2=
 lmo_fieber_color1=
 lmo_fieber_color2=
 timezone=Europe/Berlin
+bootstrap=5.1.3

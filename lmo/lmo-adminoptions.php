@@ -209,6 +209,10 @@ if ($show==0) {?>
               <input type="radio" class="form-check-input" name="xliga_sort_direction" onClick="dolmoedit()" value="asc"<?php if ($liga_sort_direction=="asc") echo " checked";?>> <?php echo $text[527]?><br/>
               <input type="radio" class="form-check-input" name="xliga_sort_direction" onClick="dolmoedit()" value="desc"<?php if ($liga_sort_direction=="desc") echo " checked";?>> <?php echo $text[528]?>
             </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><?php echo $text[600];?></div>
+            <div class="col-7 text-start"><input class="form-control" type="text" name="bootstrap" size="25" maxlength="6" value="<?php echo $bootstrap;?>" onChange="dolmoedit()"></div>
           </div><?php
 }elseif ($show==1) {?>
           <div class="row align-items-center">
