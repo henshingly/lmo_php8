@@ -34,63 +34,82 @@ if($file!=""){
       <?php
   for ($i=1; $i<=$anzteams; $i++) {
     if($i!=$selteam){?>
-            <p><a href="<?php echo $addp.$i?>" title="<?php echo $teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," style='vertical-align: middle;'", " alt='$teams[$i]'"); ?></a></p><?php
+            <p><a href="<?php echo $addp.$i?>" title="<?php echo $teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," style='vertical-align: middle;'"); ?></a></p><?php
     } else {
-     echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i],""," alt='$teams[$i]'")."</p>";
+     echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i],"")."</p>";
     }
   }?>
     </div>
     <div class="col-11">
-      <div class="container"><?php
+      <div class="container-fluid"><?php
   if ($selteam == 0) {
     echo "<div class='row'><div class='col'>".$text[24]."<br/></div></div>";
   } else {
     for($j=0;$j<$anzst;$j++) {
       for($i=0;$i<$anzsp;$i++) {
         if(($selteam==$teama[$j][$i]) || ($selteam==$teamb[$j][$i])) {
-?>
-        <div class="row">
-<?php     if($datm==1) {
+        $heim1=$heim2=$gast1=$gast2="";?>
+        <div class="row"><?php
+     if($datm==1) {
             if($mterm[$j][$i]>0) {
               $dum1=strftime($datf, $mterm[$j][$i]);
+              $dum2 = strftime("%d.%m.%y", $mterm[$j][$i]);
             } else {
-              $dum1="";
-            }
-?>
+              $dum1=$dum2="";
+            }?>
 
-          <div class="col-2 text-end"><?php echo $dum1; ?></div>
-<?php        } ?>
+          <div class="col-2 text-end d-none d-md-block"><?php echo $dum1; ?></div>
+          <div class="col-2 text-end d-md-none"><?php echo $dum2; ?></div><?php
+        } ?>
           
-          <div class="col-4 text-end"><?php
+          <?php
           if ($selteam==$teama[$j][$i]) {
-            echo "<strong>";
+            $heim1 = "<strong>";
           }
-          echo $teams[$teama[$j][$i]];
+          //echo $teams[$teama[$j][$i]];
           if ($selteam==$teama[$j][$i]) {
-            echo "</strong>";
+            $heim2 = "</strong>";
           }
-            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," style='vertical-align: middle;'"," alt=''");
-?>        </div>
-          <div class="col-4 text-start"> - &nbsp;&nbsp;<?php
-           echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
+          ?>
+          <div class="col-3 text-end d-none d-md-block">
+          <?php 
+            echo $heim1.$teams[$teama[$j][$i]].$heim2; 
+            //echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
+          ?>
+          </div>
+          <div class="col-3 text-end d-md-none">
+          <?php 
+            echo $heim1.$teamk[$teama[$j][$i]].$heim2; 
+            //echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
+          ?>
+          </div>
+          <?php
           if ($selteam==$teamb[$j][$i]) {
-            echo "<strong>";
+            $gast1 = "<strong>";
           }
-          echo $teams[$teamb[$j][$i]];
+          //echo $teams[$teamb[$j][$i]];
           if ($selteam==$teamb[$j][$i]) {
-            echo "</strong>";
+            $gast2 = "</strong>";
           }
-?>        </div>
-          
-          <div class="col-1"><?php echo applyFactor($goala[$j][$i],$goalfaktor); ?> : <?php echo applyFactor($goalb[$j][$i],$goalfaktor); ?></div>
-<?php
+          ?>
+
+          <div class="col-3 text-start d-none d-md-block"> -&nbsp;&nbsp;
+          <?php 
+            echo $gast1.$teams[$teamb[$j][$i]].$gast2; 
+            //echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
+          ?>
+          </div>
+          <div class="col-3 text-start d-md-none"> -&nbsp;&nbsp; 
+          <?php 
+            echo $gast1.$teamk[$teamb[$j][$i]].$gast2; 
+            //echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
+          ?>
+          </div>
+          <div class="col-1 col-sm-auto"><?php echo applyFactor($goala[$j][$i],$goalfaktor); ?> : <?php echo applyFactor($goalb[$j][$i],$goalfaktor); ?></div><?php
           if($spez==1){ ?>
-          
-          <div class="col-1"><?php echo $mspez[$j][$i]; ?></div>
-<?php        }
-?>
-          
-          <div class="col-1"><?php
+          <div class="col-1 col-sm-auto"><?php echo $mspez[$j][$i]; ?></div><?php
+        }?>
+          <div class="col-1 col-sm-auto"><?php
 /** Mannschaftsicons finden */
           $lmo_teamaicon="";
           $lmo_teambicon="";
@@ -98,7 +117,6 @@ if($file!=""){
             $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," style='vertical-align: middle;'"," alt=''");
             $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," style='vertical-align: middle;'"," alt=''");
           }
-
 /** Spielbericht verlinken */
           if($urlb==1) {
             if($mberi[$j][$i]!="") {

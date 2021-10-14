@@ -50,7 +50,7 @@ foreach ($datsort as $key => $val) {
         $dum1 = $dum2 = "";
       }?>
     <div class="col-2 text-end d-none d-md-block"><?php echo $dum1; ?></div>
-    <div class="col-3 text-end d-md-none"><?php echo $dum2; ?></div><?php   
+    <div class="col-2 text-end d-md-none"><?php echo $dum2; ?></div><?php   
     }
 
     /* Spielfrei-Hack-Beginn1*/
@@ -104,7 +104,7 @@ foreach ($datsort as $key => $val) {
     echo $gast1.$teams[$teamb[$st-1][$i]].$gast2;
     ?>
     </div>
-    <div class="col-2 text-start d-md-none">-&nbsp;
+    <div class="col-3 text-start d-md-none">-&nbsp;
     <?php 
     //echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' style='vertical-align: middle;'")."&nbsp;";
     echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;
