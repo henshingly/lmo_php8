@@ -1047,26 +1047,26 @@ class Cpdf
                       $res .= ' /W [';
                       reset($cid_widths);
                       $opened = false;
-					  foreach($cid_widths as $k => $v) {
-						  foreach($cid_widths as $nextk => $nextv) {
-							  if (($k + 1) == $nextk) {
-								  if (!$opened) {
-									  $res .= " $k [$v";
-									  $opened = true;
-								  } elseif ($opened) {
-									  $res .= ' '.$v;
-								  }
-								  prev($cid_widths);
-							  } else {
-								  if ($opened) {
-									  $res .= " $v]";
-								  } else {
-									  $res .= " $k [$v]";
-								  }
-								  $opened = false;
-								  prev($cid_widths);
-							  }
-						  }
+                      
+                      foreach ($cid_widths as $k => $v) {
+                          $nextv = next($cid_widths);
+                          $nextk = key($cid_widths);
+            
+                          if (($k + 1) == $nextk) {
+                              if (!$opened) {
+                                  $res .= " $k [$v";
+                                  $opened = true;
+                              } elseif ($opened) {
+                                  $res .= ' '.$v;
+                              }
+                          } else {
+                              if ($opened) {
+                                  $res .= " $v]";
+                              } else {
+                                  $res .= " $k [$v]";
+                              }
+                              $opened = false;
+                          }
                       }
 
                     if (isset($nextk) && isset($nextv)) {
