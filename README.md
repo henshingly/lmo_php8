@@ -13,7 +13,9 @@ Dabei arbeiten nahezu alle Frontend-Frameworks nach demselben Muster (und dahing
 
 `<td.....>` wird zu `<div class="col">` bzw. zu `<div class="col-x">`
 
-Der Fokus wurde zunächst auf das FrontEnd gelegt, hier sind nahezu alle Seiten auf responive Design umgestellt. Nicht umgestellt sind bisher die Spielerstatistik und das Tippspiel.
+Der Fokus wurde zunächst auf das FrontEnd gelegt, hier sind nahezu alle Seiten auf responive Design umgestellt. 
+
+Bei der Fieberkurve wird <a target="_blank" href="https://github.com/chartjs/Chart.js">Chart.js</a> verwendet.
 
 Ebenso werden einzelne Code-Stellen ready for PHP 8 gemacht, bspw. Warnings curly brackets betreffend oder deprecated functions.
 
