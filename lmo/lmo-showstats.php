@@ -324,46 +324,47 @@ $(function() {
    </div>
    <div class="row">
      <div class="col-2">&nbsp;</div>
-	 <div class="col-4 text-center"><strong><?php echo $text[1006]?></strong></div>
-	 <div class="col-4 text-center"><strong><?php echo $text[1007]?></strong></div>
+       <div class="col-1"></div>
+       <div class="col-4"><strong><?php echo $text[1006]?></strong></div>
+       <div class="col-1"></div>
+       <div class="col-4"><strong><?php echo $text[1007]?></strong></div>
    </div>
    <div class="row">
      <div class="col-2"><strong><?php echo $text[1002]?></strong></div>
-	 <div class="col-1 text-end"><strong><?php echo $akt_gewonnen?></strong></div>
-	 <div class="col-3"><?php echo nl2br($team_akt_gewonnen)?></div>
-	 <div class="col-1 text-end"><strong><?php echo $max_gewonnen?></strong></div>
-	 <div class="col-4"><?php echo nl2br($team_max_gewonnen)?></div>
+     <div class="col-1 text-end"><strong><?php echo $akt_gewonnen?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_akt_gewonnen)?></div>
+     <div class="col-1 text-end"><strong><?php echo $max_gewonnen?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_max_gewonnen)?></div>
    </div>  
    <div class="row">
      <div class="col-2"><strong><?php echo $text[1003]?></strong></div>
-	 <div class="col-1 text-end"><strong><?php echo $akt_ungeschlagen?></strong></div>
-	 <div class="col-3"><?php echo nl2br($team_akt_ungeschlagen)?></div>
-	 <div class="col-1 text-end"><strong><?php echo $max_ungeschlagen?></strong></div>
-	 <div class="col-4"><?php echo nl2br($team_max_ungeschlagen)?></div>
+     <div class="col-1 text-end"><strong><?php echo $akt_ungeschlagen?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_akt_ungeschlagen)?></div>
+     <div class="col-1 text-end"><strong><?php echo $max_ungeschlagen?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_max_ungeschlagen)?></div>
    </div>
    <div class="row">
      <div class="col-2"><strong><?php echo $text[1004]?></strong></div>
-	 <div class="col-1 text-end"><strong><?php echo $akt_unentschieden?></strong></div>
-	 <div class="col-3"><?php echo nl2br($team_akt_unentschieden)?></div>
-	 <div class="col-1 text-end"><strong><?php echo $max_unentschieden?></strong></div>
-	 <div class="col-4"><?php echo nl2br($team_max_unentschieden)?></div>
+     <div class="col-1 text-end"><strong><?php echo $akt_unentschieden?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_akt_unentschieden)?></div>
+     <div class="col-1 text-end"><strong><?php echo $max_unentschieden?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_max_unentschieden)?></div>
    </div>
    <div class="row">
      <div class="col-2"><strong><?php echo $text[1005]?></strong></div>
-	 <div class="col-1 text-end"><strong><?php echo $akt_sieglos?></strong></div>
-	 <div class="col-3"><?php echo nl2br($team_akt_sieglos)?></div>
-	 <div class="col-1 text-end"><strong><?php echo $max_sieglos?></strong></div>
-	 <div class="col-4"><?php echo nl2br($team_max_sieglos)?></div>
+     <div class="col-1 text-end"><strong><?php echo $akt_sieglos?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_akt_sieglos)?></div>
+     <div class="col-1 text-end"><strong><?php echo $max_sieglos?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_max_sieglos)?></div>
    </div>
    <div class="row">
      <div class="col-2"><strong><?php echo $text[1006]?></strong></div>
-	 <div class="col-1 text-end"><strong><?php echo $akt_verloren?></strong></div>
-	 <div class="col-3"><?php echo nl2br($team_akt_verloren)?></div>
-	 <div class="col-1 text-end"><strong><?php echo $max_verloren?></strong></div>
-	 <div class="col-4"><?php echo nl2br($team_max_verloren)?></div>
+     <div class="col-1 text-end"><strong><?php echo $akt_verloren?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_akt_verloren)?></div>
+     <div class="col-1 text-end"><strong><?php echo $max_verloren?></strong></div>
+     <div class="col-4"><?php echo nl2br($team_max_verloren)?></div>
    </div>
    <?php
-
     }?>
   </div>
 <?php
