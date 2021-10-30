@@ -86,7 +86,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     <div class="col-2 text-end"><span class="<?php echo $label; ?>"><?php echo $x; ?></span>
 <?php
   $y = 0;
-  if ($endtab > 1 && isset($platz0[$i])) {
+  if ($endtab > 1 && isset($platz0[$i]) && isset($platz1[$i])) {
     if ($platz0[$i] < $platz1[$i]) {
       $y = 1;
     } elseif($platz0[$i] > $platz1[$i]) {
