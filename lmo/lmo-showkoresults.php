@@ -153,7 +153,7 @@ if ($file != "") {
           <div class="col-6 d-none d-md-block">&nbsp;</div>
           <div class="col-4 d-md-none">&nbsp;</div><?php
         }?>
-          <div class="col-2"><?php echo $countint == TRUE ? applyFactor($goala[$st-1][$i][$n],$goalfaktor) : applyFactor($goalb[$st-1][$i][$n],$goalfaktor); ?> : <?php echo  $countint == TRUE ? applyFactor($goalb[$st-1][$i][$n],$goalfaktor) : applyFactor($goala[$st-1][$i][$n],$goalfaktor);?> <?php echo $mspez[$st-1][$i][$n]; ?></div>
+          <div class="col-2"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?> : <?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?> <?php echo $mspez[$st-1][$i][$n]; ?></div>
           <div class="col-2"><?php
         /** Mannschaftsicons finden
          */
