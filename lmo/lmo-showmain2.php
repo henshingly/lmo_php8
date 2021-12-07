@@ -286,6 +286,8 @@ $template->setVariable("Newsticker", $output_newsticker);
 $template->setVariable("Tippspiel", $output_tippspiel);
 //Bootstrap-Version
 $template->setVariable("Bootstrap", $bootstrap);
+//Chart.js-Version
+$template->setVariable("Chartjs", $chartjs);
 $template->show();
 
 //write to cache

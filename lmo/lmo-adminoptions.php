@@ -78,7 +78,6 @@ if($save==1){
   <ul class="nav nav-pills justify-content-center">
     <li class="nav-item"><a href="#" class="nav-link active"><?php echo $text[319]?></a></li>
     <li class="nav-item"><a href="<?php echo $addr_addons?>" class="nav-link" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></li>
-    <li class="nav-item"><a href="<?php echo $addr_design?>" class="nav-link" title="<?php echo $text[422]?>"><?php echo $text[421]?></a></li>
     <li class="nav-item"><a href="<?php echo $addr_user?>" class="nav-link" title="<?php echo $text[318]?>"><?php echo $text[317]?></a></li>
   </ul>
 </nav>
@@ -213,6 +212,10 @@ if ($show==0) {?>
           <div class="row align-items-center">
             <div class="col-5 text-end"><?php echo $text[600];?></div>
             <div class="col-7 text-start"><input class="form-control" type="text" name="bootstrap" size="25" maxlength="6" value="<?php echo $bootstrap;?>" onChange="dolmoedit()"></div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-5 text-end"><?php echo $text[601];?></div>
+            <div class="col-7 text-start"><input class="form-control" type="text" name="chartjs" size="25" maxlength="6" value="<?php echo $chartjs;?>" onChange="dolmoedit()"></div>
           </div><?php
 }elseif ($show==1) {?>
           <div class="row align-items-center">

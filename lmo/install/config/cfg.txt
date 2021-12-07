@@ -109,3 +109,4 @@ lmo_fieber_color1=
 lmo_fieber_color2=
 timezone=Europe/Berlin
 bootstrap=5.1.3
+chartjs=3.6.2
