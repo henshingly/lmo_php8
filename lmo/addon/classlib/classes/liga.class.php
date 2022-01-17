@@ -9,7 +9,6 @@
  */
 class liga {
 
-
   /**
    * Nummer der Liga,
    * @var integer
@@ -215,6 +214,7 @@ class liga {
   function addPartie(&$neuePartie) {
     $this->partien[] = $neuePartie;
   }
+
   /**
    * Gibt die Referenz auf das Partieobjekt zu einer Nummer zurück
    *
@@ -245,7 +245,7 @@ class liga {
   function &partieForTeams(&$heim,&$gast) {
     $partie = $this->allPartieForTeams($heim,$gast,false);
     return $partie[0];
-      }
+  }
 
   /**
    * Gibt ein Array von Referenzen auf die Partieobjekte zurück, an denen die Mannschaften
@@ -268,8 +268,8 @@ class liga {
     if (empty($result[0]) ) {
       return null;
     } else {
-    return $result;
-  }
+      return $result;
+    }
   }
 
   /**
@@ -740,12 +740,12 @@ class liga {
             $iniData['Round'.$roundCount]['BE'.$partienNumber]=$spieltag->partien[$pCounter]->reportUrl;
             foreach ($spieltag->partien[$pCounter]->getParameter() as $otherKey => $otherParameter) {
               $iniData['Round'.$roundCount][$otherKey.$partienNumber]=$otherParameter;
-        }
+            }
             if ( $pCounter > 10000 ) {
               die("Script Fehler");
-      }
+            }
           } while (is_object($spieltag->partien[++$pCounter]) && $partienCounter < $spieltag->getModus() );
-    }
+        }
       }
     }
 
@@ -878,7 +878,7 @@ class liga {
    *    $myArray[0..n]["dTor"]       Tordifferenz
    *    $myArray[0..n]["pPkt"]       Pluspunkte
    *    $myArray[0..n]["mPkt"]       Minuspunkte
-   * $myArray[0..n]["possp"] Position an dem $key Spieltag
+   *    $myArray[0..n]["possp"]      Position an dem $key Spieltag
    *
    * @access public
    * @param integer spTag Spieltag für den die Tabelle berechnet werden soll.
@@ -904,7 +904,7 @@ class liga {
       "dTor"=> 0,
       "pPkt"=> 0,
       "mPkt"=> 0,
-                             "possp"=> array());
+      "possp"=> array());
     }
     foreach ($this->spieltage as $spieltag) {
       if ($spieltag->getModus() > 0 ) {
@@ -971,45 +971,45 @@ class liga {
         if ($partie->hTore>-1 && $partie->gTore>-1) { // Ein normales Ergebnis?
           if ($partie->gTore == $partie->hTore) { // Unendschieden
             if ($tableArt != "gast") {
-            $tableArray[$heimCount]["pPkt"] += $pointsForDraw;
-            $tableArray[$heimCount]["mPkt"] += $pointsForDraw;
+              $tableArray[$heimCount]["pPkt"] += $pointsForDraw;
+              $tableArray[$heimCount]["mPkt"] += $pointsForDraw;
               $tableArray[$heimCount]["u"] ++;
               $tableArray[$heimCount]["spiele"] ++;
             }
             if ($tableArt != "heim") {
-            $tableArray[$gastCount]["pPkt"] += $pointsForDraw;
-            $tableArray[$gastCount]["mPkt"] += $pointsForDraw;
-            $tableArray[$gastCount]["u"] ++;
-            $tableArray[$gastCount]["spiele"] ++;
-          }
+              $tableArray[$gastCount]["pPkt"] += $pointsForDraw;
+              $tableArray[$gastCount]["mPkt"] += $pointsForDraw;
+              $tableArray[$gastCount]["u"] ++;
+              $tableArray[$gastCount]["spiele"] ++;
+            }
           }
           elseif ($partie->gTore > $partie->hTore) { // Gast hat gewonnen
             if ($tableArt != "gast") {
-            $tableArray[$heimCount]["mPkt"] += $pointsForWin;
+              $tableArray[$heimCount]["mPkt"] += $pointsForWin;
               $tableArray[$heimCount]["pPkt"] += $pointsForLost;
               $tableArray[$heimCount]["n"] ++;
               $tableArray[$heimCount]["spiele"] ++;
             }
             if ($tableArt != "heim") {
-            $tableArray[$gastCount]["pPkt"] += $pointsForWin;
+              $tableArray[$gastCount]["pPkt"] += $pointsForWin;
               $tableArray[$gastCount]["mPkt"] += $pointsForLost;
-            $tableArray[$gastCount]["s"] ++;
-            $tableArray[$gastCount]["spiele"] ++;
-          }
+              $tableArray[$gastCount]["s"] ++;
+              $tableArray[$gastCount]["spiele"] ++;
+            }
           }
           elseif ($partie->gTore < $partie->hTore) { // Heim hat gewonnen
             if ($tableArt != "gast") {
-            $tableArray[$heimCount]["pPkt"] += $pointsForWin;
+              $tableArray[$heimCount]["pPkt"] += $pointsForWin;
               $tableArray[$heimCount]["mPkt"] += $pointsForLost;
               $tableArray[$heimCount]["s"] ++;
               $tableArray[$heimCount]["spiele"] ++;
             }
             if ($tableArt != "heim") {
-            $tableArray[$gastCount]["mPkt"] += $pointsForWin;
+              $tableArray[$gastCount]["mPkt"] += $pointsForWin;
               $tableArray[$gastCount]["pPkt"] += $pointsForLost;
-            $tableArray[$gastCount]["n"] ++;
-            $tableArray[$gastCount]["spiele"] ++;
-          }
+              $tableArray[$gastCount]["n"] ++;
+              $tableArray[$gastCount]["spiele"] ++;
+            }
           }
           else { // nur während der Entwicklung
             echo "Fehler in Punkteermittlung (Normales Ergebnis)";
@@ -1018,31 +1018,31 @@ class liga {
         }
         else if ($partie->hTore==-2) { // O:0 Tore Heim gewinnt
           if ($tableArt != "gast") {
-          $tableArray[$heimCount]["pPkt"] += $pointsForWin;
+            $tableArray[$heimCount]["pPkt"] += $pointsForWin;
             $tableArray[$heimCount]["mPkt"] += $pointsForLost;
             $tableArray[$heimCount]["s"] ++;
             $tableArray[$heimCount]["spiele"] ++;
           }
           if ($tableArt != "heim") {
-          $tableArray[$gastCount]["mPkt"] += $pointsForWin;
+            $tableArray[$gastCount]["mPkt"] += $pointsForWin;
             $tableArray[$gastCount]["pPkt"] += $pointsForLost;
-          $tableArray[$gastCount]["n"] ++;
-          $tableArray[$gastCount]["spiele"] ++;
-        }
+            $tableArray[$gastCount]["n"] ++;
+            $tableArray[$gastCount]["spiele"] ++;
+          }
         }
         else if ($partie->gTore==-2) { // O:0 Tore Gast gewinnt
           if ($tableArt != "gast") {
-          $tableArray[$heimCount]["mPkt"] += $pointsForWin;
+            $tableArray[$heimCount]["mPkt"] += $pointsForWin;
             $tableArray[$heimCount]["pPkt"] += $pointsForLost;
             $tableArray[$heimCount]["n"] ++;
             $tableArray[$heimCount]["spiele"] ++;
           }
           if ($tableArt != "heim") {
-          $tableArray[$gastCount]["pPkt"] += $pointsForWin;
+            $tableArray[$gastCount]["pPkt"] += $pointsForWin;
             $tableArray[$gastCount]["mPkt"] += $pointsForLost;
-          $tableArray[$gastCount]["s"] ++;
-          $tableArray[$gastCount]["spiele"] ++;
-        }
+            $tableArray[$gastCount]["s"] ++;
+            $tableArray[$gastCount]["spiele"] ++;
+          }
         }
       } // foreach Partien
       //Zusätzliche Berechnung der Position für den jeweiligen Spieltag (Statisktik)
@@ -1080,11 +1080,11 @@ class liga {
    */
   function sortTable($tableArray) {
       foreach($tableArray as $table) {
-      $sort_pPkt[] = $table["pPkt"];
-      $sort_mPkt[] = $this->options->keyValues['MinusPoints'] == 2?$table["mPkt"]: 0;
-      $sort_pTor[] = $table["pTor"];
-      $sort_mTor[] = $table["mTor"];
-      $sort_dTor[] = $table["dTor"];
+        $sort_pPkt[] = $table["pPkt"];
+        $sort_mPkt[] = $this->options->keyValues['MinusPoints'] == 2?$table["mPkt"]: 0;
+        $sort_pTor[] = $table["pTor"];
+        $sort_mTor[] = $table["mTor"];
+        $sort_dTor[] = $table["dTor"];
       }
     // ASC = auf-, DESC = absteigend
     if ( $this->options->keyValues['Kegel']==1 ) { // Sortierung Punkte,erzielte Tore
@@ -1109,8 +1109,8 @@ class liga {
               for($f = $nextpos; $f < $abc; $f++) {
                 if($tmp_tablearray[$f]["team"]===$tmp_table[$b]["team"]) {
                   $tableArray[$nextpos+$b] = $tmp_tablearray[$f];
-      }
-    }
+                }
+              }
             }
           } // END if(count($subteams)>1)
           $subteams = array();
