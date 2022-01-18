@@ -97,7 +97,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     </div>
     <?php
     if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        $url = "<a href="<?php echo $teamu[$i]?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR."/url.png";?>" alt="<?php echo $text[564]?>" /></a>";
+        <a href="<?php echo $teamu[$i]; ?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR."/url.png";?>" alt="<?php echo $text[564]; ?>" /></a>
     }    
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
     
