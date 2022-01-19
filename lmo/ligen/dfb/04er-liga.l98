@@ -1,11 +1,11 @@
 [Options]
 Title=<acronym title="Liga Manager Online">LMO</acronym> 4 for PHP7
-Name=Schlüssel 04er Staffel
+Name=Schlüssel 04er Liga
 Type=0
 Teams=4
 Rounds=6
 Matches=1
-Actual=4
+Actual=1
 Kegel=0
 HandS=0
 PointsForWin=3
