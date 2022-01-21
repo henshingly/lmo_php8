@@ -28,9 +28,9 @@ require(dirname(__FILE__)."/init.php");
 }
 
 
-/** Außenbereich*/
+/** Auï¿½enbereich*/
 .lmoMain { 
-  background: <?php echo $lmo_main_background1?> repeat; 
+  background: <?php echo $lmo_main_background1?>; 
   <?php echo empty($lmo_main_color1)?'':"color: $lmo_main_color1;";?>
   border: 0<?php echo $lmo_main_border1?>; 
   margin:0.3em auto;
@@ -40,13 +40,13 @@ require(dirname(__FILE__)."/init.php");
 }
 
 .lmoMain a{ 
-  background: <?php echo $lmo_main_background1?> repeat; 
+  background: <?php echo $lmo_main_background1?>; 
   <?php echo empty($lmo_main_color1)?'':"color: $lmo_main_color1;";?>
   text-decoration: <?php echo empty($lmo_main_underline1)?'none':$lmo_main_underline1;?>;
 }
 
 .lmoMain a:hover { 
-  background: <?php echo $lmo_main_color1?> repeat; 
+  background: <?php echo $lmo_main_color1?>; 
   <?php echo empty($lmo_main_background1)?'':"color: $lmo_main_background1;";?>
 }
 
@@ -54,23 +54,23 @@ require(dirname(__FILE__)."/init.php");
   margin:0;
 }
 
-/** Außenbereich Überschrift*/
+/** Auï¿½enbereich ï¿½berschrift*/
 .lmoMain h1 { 
   padding: 0.2em; 
   margin:0.2em;
-  background: <?php echo $lmo_main_background2?> repeat; 
+  background: <?php echo $lmo_main_background2?>; 
   <?php echo empty($lmo_main_color2)?'':"color: $lmo_main_color2;";?>
   font-weight: bold;
   <?php echo empty($lmo_main_fontsize2)?'':"font-size: $lmo_main_fontsize2;";?>
   <?php echo empty($lmo_main_fontfamily2)?'':"font-family: $lmo_main_fontfamily2;";?>
 }
 
-/** Außenbereich Menü */
+/** Auï¿½enbereich Menï¿½ */
 .lmoMain .lmoMenu { 
   padding: 0.2em;
   font-weight: bold; 
   white-space:nowrap;
-  background: <?php echo $lmo_main_background4?> repeat; 
+  background: <?php echo $lmo_main_background4?>; 
   <?php echo empty($lmo_main_color4)?'':"color: $lmo_main_color4;";?>
   border:0<?php echo $lmo_main_border4?>;
 }
@@ -79,22 +79,22 @@ require(dirname(__FILE__)."/init.php");
   line-height:140%;
   padding:0.1em;
   font-weight: normal; 
-  background: <?php echo $lmo_main_background5?> repeat; 
+  background: <?php echo $lmo_main_background5?>; 
   <?php echo empty($lmo_main_color5)?'':"color: $lmo_main_color5;";?>
   border:0<?php echo $lmo_main_border5?>;
 }
 
 .lmoMain .lmoMenu a:hover { 
-  background: <?php echo $lmo_main_color5?> repeat; 
+  background: <?php echo $lmo_main_color5?>; 
   <?php echo empty($lmo_main_background5)?'':"color: $lmo_main_background5;";?>
 }
 
-/** Außenbereich Untermenü */
+/** Auï¿½enbereich Untermenï¿½ */
 .lmoMain .lmoSubmenu { 
   padding: 0.2em;
   font-weight: bold; 
   white-space:nowrap;
-  background: <?php echo $lmo_main_background6?> repeat; 
+  background: <?php echo $lmo_main_background6?>; 
   <?php echo empty($lmo_main_color6)?'':"color: $lmo_main_color6;";?>
   border:0<?php echo $lmo_main_border6?>;
 }
@@ -103,13 +103,13 @@ require(dirname(__FILE__)."/init.php");
   line-height:140%;
   padding:0.1em;
   font-weight: normal; 
-  background: <?php echo $lmo_main_background7?> repeat; 
+  background: <?php echo $lmo_main_background7?>; 
   <?php echo empty($lmo_main_color7)?'':"color: $lmo_main_color7;";?>
   border:0<?php echo $lmo_main_border7?>;
 }
 
 .lmoMain .lmoSubmenu a:hover { 
-  background: <?php echo $lmo_main_color7?> repeat; 
+  background: <?php echo $lmo_main_color7?>; 
   <?php echo empty($lmo_main_background7)?'':"color: $lmo_main_background7;";?>
 }
 
@@ -120,20 +120,20 @@ require(dirname(__FILE__)."/init.php");
 
 .lmoMain .lmoFooter a, .lmoMain .lmoFooter table a { 
   text-decoration: underline; 
-  background: <?php echo $lmo_main_background1?> repeat; 
+  background: <?php echo $lmo_main_background1?>; 
   <?php echo empty($lmo_main_color1)?'':"color: $lmo_main_color1;";?>
 }
 
 .lmoMain .lmoFooter a:hover, .lmoMain .lmoFooter table a:hover { 
-  background: <?php echo $lmo_main_color1?> repeat; 
+  background: <?php echo $lmo_main_color1?>; 
   <?php echo empty($lmo_main_background1)?'':"color: $lmo_main_background1;";?>
 }
 
-/** Ende Außenbereich */
+/** Ende Auï¿½enbereich */
 
 /** Mittelbereich */
 .lmoMiddle { 
-  background: <?php echo $lmo_middle_background1?> repeat; 
+  background: <?php echo $lmo_middle_background1?>; 
   <?php echo empty($lmo_middle_color1)?'':"color: $lmo_middle_color1;";?>
   font-weight: bold;
   <?php echo empty($lmo_middle_fontsize1)?'':"font-size: $lmo_middle_fontsize1;";?>
@@ -145,9 +145,9 @@ require(dirname(__FILE__)."/init.php");
 font-size:100%;
 }
 
-/** Überschrift im Mittelbereich */
+/** ï¿½berschrift im Mittelbereich */
 .lmoMiddle h1{ 
-  background: <?php echo $lmo_middle_background2?> repeat; 
+  background: <?php echo $lmo_middle_background2?>; 
   <?php echo empty($lmo_middle_color2)?'':"color: $lmo_middle_color2;";?>
   font-weight: bold;
   <?php echo empty($lmo_middle_fontsize2)?'':"font-size: $lmo_middle_fontsize2;";?>
@@ -159,13 +159,13 @@ font-size:100%;
 .lmoMiddle a {  
   line-height:150%;
   text-decoration: <?php echo empty($lmo_middle_underline1)?'none':$lmo_middle_underline1;?>;
-  background: <?php echo $lmo_middle_background1?> repeat; 
+  background: <?php echo $lmo_middle_background1?>; 
   <?php echo empty($lmo_middle_color1)?'':"color: $lmo_middle_color1;";?>
   font-weight: normal;
 }
 
 .lmoMiddle a:hover { 
-  background: <?php echo $lmo_middle_color1?> repeat; 
+  background: <?php echo $lmo_middle_color1?>; 
   <?php echo empty($lmo_middle_background1)?'':"color: $lmo_middle_background1;";?> 
 }
 
@@ -173,7 +173,7 @@ font-size:100%;
   padding: 0.2em;
   font-weight: bold; 
   white-space:nowrap;
-  background: <?php echo $lmo_middle_background4?> repeat; 
+  background: <?php echo $lmo_middle_background4?>; 
   <?php echo empty($lmo_middle_color4)?'':"color: $lmo_middle_color4;";?>
   border: 0<?php echo $lmo_middle_border4?>;
 }
@@ -182,31 +182,31 @@ font-size:100%;
   line-height:140%;
   padding:0.1em;
   font-weight: normal; 
-  background: <?php echo $lmo_middle_background5?> repeat; 
+  background: <?php echo $lmo_middle_background5?>; 
   <?php echo empty($lmo_middle_color5)?'':"color: $lmo_middle_color5;";?>
   border: 0<?php echo $lmo_middle_border5?>; 
 }
 
 .lmoMiddle .lmoMenu a:hover {
-  background: <?php echo $lmo_middle_color5?> repeat; 
+  background: <?php echo $lmo_middle_color5?>; 
   <?php echo empty($lmo_middle_background5)?'':"color: $lmo_middle_background5;";?>
 }
 
 .lmoMiddle .lmoSubmenu {
-  background: <?php echo $lmo_middle_background6?> repeat; 
+  background: <?php echo $lmo_middle_background6?>; 
   <?php echo empty($lmo_middle_color6)?'':"color: $lmo_middle_color6;";?>
   border: 0<?php echo $lmo_middle_border6?>;
 }
 
 .lmoMiddle .lmoSubmenu a {
   padding:0;
-  background: <?php echo $lmo_middle_background7?> repeat; 
+  background: <?php echo $lmo_middle_background7?>; 
   <?php echo empty($lmo_middle_color7)?'':"color: $lmo_middle_color7;";?>
   border: 0<?php echo $lmo_middle_border7?>; 
 }
 
 .lmoMiddle .lmoSubmenu a:hover {
-  background: <?php echo $lmo_middle_color7?> repeat; 
+  background: <?php echo $lmo_middle_color7?>; 
   <?php echo empty($lmo_middle_background7)?'':"color: $lmo_middle_background7;";?>
 }
 
@@ -214,7 +214,7 @@ font-size:100%;
 .lmoInner {
   margin-left:auto;margin-right:auto;
   padding: 0.2em; 
-  background: <?php echo $lmo_inner_background1?> repeat; 
+  background: <?php echo $lmo_inner_background1?>; 
   <?php echo empty($lmo_inner_color1)?'':"color: $lmo_inner_color1;";?>
   <?php echo empty($lmo_inner_fontsize1)?'':"font-size: $lmo_inner_fontsize1;";?>
   border: 0<?php echo $lmo_inner_border1?>; 
@@ -223,7 +223,7 @@ font-size:100%;
 .lmoInner a {  
   line-height:100%;
   text-decoration: <?php echo empty($lmo_inner_underline1)?'none':$lmo_inner_underline1;?>;
-  background: <?php echo $lmo_inner_background3?> repeat; 
+  background: <?php echo $lmo_inner_background3?>; 
   <?php echo empty($lmo_inner_color3)?'':"color: $lmo_inner_color3;";?>
   font-weight: normal;
 }
@@ -241,17 +241,17 @@ font-size:100%;
 
 .lmoInner th {
   padding: 0.2em; 
-  background: <?php echo $lmo_inner_background2?> repeat; 
+  background: <?php echo $lmo_inner_background2?>; 
   <?php echo empty($lmo_inner_color2)?'':"color: $lmo_inner_color2;";?> 
 }
 
 .lmoInner th a {
-  background: <?php echo $lmo_inner_background2?> repeat; 
+  background: <?php echo $lmo_inner_background2?>; 
   <?php echo empty($lmo_inner_color2)?'':"color: $lmo_inner_color2;";?> 
 }
 
 .lmoInner th a:hover {
-  background: <?php echo $lmo_inner_color2?> repeat; 
+  background: <?php echo $lmo_inner_color2?>; 
   <?php echo empty($lmo_inner_background2)?'':"color: $lmo_inner_background2;";?> 
 }
 
@@ -267,19 +267,19 @@ font-size:100%;
 
 .lmoInner .lmoFooter, .lmoInner .lmoFooter table {
   
-  background: <?php echo $lmo_inner_background2?> repeat; 
+  background: <?php echo $lmo_inner_background2?>; 
   <?php echo empty($lmo_inner_color2)?'':"color: $lmo_inner_color2;";?>
 }
 
 .lmoInner .lmoFooter a, .lmoInner .lmoFooter table a { 
   line-height:150%;
   text-decoration: underline; 
-  background: <?php echo $lmo_inner_background2?> repeat; 
+  background: <?php echo $lmo_inner_background2?>; 
   <?php echo empty($lmo_inner_color2)?'':"color: $lmo_inner_color2;";?>
 }
 
 .lmoInner .lmoFooter a:hover, .lmoInner .lmoFooter table a:hover { 
-  background: <?php echo $lmo_inner_color2?> repeat; 
+  background: <?php echo $lmo_inner_color2?>; 
   <?php echo empty($lmo_inner_background2)?'':"color: $lmo_inner_background2;";?> 
 }
 
@@ -310,7 +310,7 @@ font-size:100%;
 }
 
 .lmoBackMarkierung {
-  background: <?php echo $lmo_kreuzkal_background1?> repeat; 
+  background: <?php echo $lmo_kreuzkal_background1?>; 
 }
 
 .lmoKreuz .lmoBackMarkierung a { 
@@ -318,7 +318,7 @@ font-size:100%;
   height:100%;
   line-height:190%;
   padding:0;
-  background: <?php echo $lmo_kreuzkal_background1?> repeat; 
+  background: <?php echo $lmo_kreuzkal_background1?>; 
   font-weight: bold; 
 }
 
@@ -328,7 +328,7 @@ font-size:100%;
 }
 
 .lmoLeer {
-  background: <?php echo $lmo_kreuzkal_background2?> repeat;
+  background: <?php echo $lmo_kreuzkal_background2?>;
   border:0;
 }
 
@@ -339,92 +339,92 @@ font-size:100%;
 }
 
 .lmoTabelleMeister, .lmoTabelleMeister a:link { 
-  background: <?php echo $lmo_tabelle_background1?> repeat; 
+  background: <?php echo $lmo_tabelle_background1?>; 
   <?php echo empty($lmo_tabelle_color1)?'':"color: $lmo_tabelle_color1;";?> 
 }
 
 .lmoTabelleMeister a:hover { 
-  background: <?php echo $lmo_tabelle_color1?> repeat; 
+  background: <?php echo $lmo_tabelle_color1?>; 
   <?php echo empty($lmo_tabelle_background1)?'':"color: $lmo_tabelle_background1;";?>
 }
 
 .lmoTabelleCleague, .lmoTabelleCleague a:link { 
-  background: <?php echo $lmo_tabelle_background2?> repeat; 
+  background: <?php echo $lmo_tabelle_background2?>; 
   <?php echo empty($lmo_tabelle_color2)?'':"color: $lmo_tabelle_color2;";?> 
 }
 
 .lmoTabelleCleague a:hover {
-  background: <?php echo $lmo_tabelle_color2?> repeat; 
+  background: <?php echo $lmo_tabelle_color2?>; 
   <?php echo empty($lmo_tabelle_background2)?'':"color: $lmo_tabelle_background2;";?> 
 }
 
 .lmoTabelleCleaguequali, .lmoTabelleCleaguequali a:link { 
-  background: <?php echo $lmo_tabelle_background3?> repeat; 
+  background: <?php echo $lmo_tabelle_background3?>; 
   <?php echo empty($lmo_tabelle_color3)?'':"color: $lmo_tabelle_color3;";?> 
 }
 
 .lmoTabelleCleaguequali a:hover { 
-  background: <?php echo $lmo_tabelle_color3?> repeat; 
+  background: <?php echo $lmo_tabelle_color3?>; 
   <?php echo empty($lmo_tabelle_background3)?'':"color: $lmo_tabelle_background3;";?>
 }
 
 .lmoTabelleUefa, .lmoTabelleUefa a:link { 
-  background: <?php echo $lmo_tabelle_background4?> repeat; 
+  background: <?php echo $lmo_tabelle_background4?>; 
   <?php echo empty($lmo_tabelle_color4)?'':"color: $lmo_tabelle_color4;";?>
 }
 
 .lmoTabelleUefa a:hover { 
-  background: <?php echo $lmo_tabelle_color4?> repeat; 
+  background: <?php echo $lmo_tabelle_color4?>; 
   <?php echo empty($lmo_tabelle_background4)?'':"color: $lmo_tabelle_background4;";?>
 }
 
 .lmoTabelleRelegation, .lmoTabelleRelegation a:link { 
-  background: <?php echo $lmo_tabelle_background5?> repeat; 
+  background: <?php echo $lmo_tabelle_background5?>; 
   <?php echo empty($lmo_tabelle_color5)?'':"color: $lmo_tabelle_color5;";?>
 }
 
 .lmoTabelleRelegation a:hover { 
-  background: <?php echo $lmo_tabelle_color5?> repeat; 
+  background: <?php echo $lmo_tabelle_color5?>; 
   <?php echo empty($lmo_tabelle_background5)?'':"color: $lmo_tabelle_background5;";?>
 }
 
 .lmoTabelleAbsteiger, .lmoTabelleAbsteiger a:link { 
-  background: <?php echo $lmo_tabelle_background6?> repeat; 
+  background: <?php echo $lmo_tabelle_background6?>; 
   <?php echo empty($lmo_tabelle_color6)?'':"color: $lmo_tabelle_color6;";?>
 }
 
 .lmoTabelleAbsteiger a:hover { 
-  background: <?php echo $lmo_tabelle_color6?> repeat; 
+  background: <?php echo $lmo_tabelle_color6?>; 
   <?php echo empty($lmo_tabelle_background6)?'':"color: $lmo_tabelle_background6;";?>
 }
 
 .lmoTabelleHeimbilanz { 
-  background: <?php echo $lmo_tabelle_background7?> repeat; 
+  background: <?php echo $lmo_tabelle_background7?>; 
   <?php echo empty($lmo_tabelle_color7)?'':"color: $lmo_tabelle_color7;";?>
 }
 
 .lmoTabelleGastbilanz { 
-  background: <?php echo $lmo_tabelle_background8?> repeat; 
+  background: <?php echo $lmo_tabelle_background8?>; 
   <?php echo empty($lmo_tabelle_color8)?'':"color: $lmo_tabelle_color8;";?> 
 }
 
 .lmoTurnierSieger, .lmoTurnierSieger a:link { 
-  background: <?php echo $lmo_turnier_background1?> repeat; 
+  background: <?php echo $lmo_turnier_background1?>; 
   <?php echo empty($lmo_turnier_color1)?'':"color: $lmo_turnier_color1;";?>
 }
 
 .lmoTurnierSieger a:hover{ 
-  background: <?php echo $lmo_turnier_color1?> repeat; 
+  background: <?php echo $lmo_turnier_color1?>; 
   <?php echo empty($lmo_turnier_background1)?'':"color: $lmo_turnier_background1;";?> 
 }
 
 .lmoTurnierVerlierer, .lmoTurnierVerlierer a:link { 
-  background: <?php echo $lmo_turnier_background2?> repeat; 
+  background: <?php echo $lmo_turnier_background2?>; 
   <?php echo empty($lmo_turnier_color2)?'':"color: $lmo_turnier_color2;";?>
 }
 
 .lmoTurnierVerlierer a:hover{ 
-  background: <?php echo $lmo_turnier_color2?> repeat; 
+  background: <?php echo $lmo_turnier_color2?>; 
   <?php echo empty($lmo_turnier_background2)?'':"color: $lmo_turnier_background2;";?>
 }
 .lmoMain img[alt]{ 
@@ -439,13 +439,13 @@ font-size:100%;
 }
 
 .lmo-formular-input { 
-  background: <?php echo $lmo_formular_background1?> repeat; 
+  background: <?php echo $lmo_formular_background1?>; 
   <?php echo empty($lmo_formular_color1)?'':"color: $lmo_formular_color1;";?>
   border: <?php echo $lmo_formular_border1?>; 
 }
 
 .lmo-formular-button { 
-  background: <?php echo $lmo_formular_background2?> repeat; 
+  background: <?php echo $lmo_formular_background2?>; 
   <?php echo empty($lmo_formular_color2)?'':"color: $lmo_formular_color2;";?> 
   border: <?php echo $lmo_formular_border2?>; 
   font-weight: bold; 
@@ -473,7 +473,7 @@ span.colorpicker {
 span.colorpicker.nocolor {
   display:inline;
   background-image:url("<?php echo URL_TO_IMGDIR?>/transparent.gif");
-  background-repeat: repeat;
+  background-repeat:;
 }
 span.colorpicker.invalid {
   display:inline;
@@ -514,7 +514,7 @@ a:hover span.popup{
   display: inline;
 	font-size:80%;
   position: absolute;
-  background: <?php echo $lmo_middle_background1?> repeat; 
+  background: #fff; 
   <?php echo empty($lmo_middle_color1)?'':"color: $lmo_middle_color1;";?>
   <?php echo empty($lmo_middle_border1)?'':"border: $lmo_middle_border1;";?>
   width: 15em;
