@@ -52,8 +52,8 @@ if($file!=""){
         <div class="row"><?php
      if($datm==1) {
             if($mterm[$j][$i]>0) {
-              $dum1=strftime($datf, $mterm[$j][$i]);
-              $dum2 = strftime("%d.%m.%y", $mterm[$j][$i]);
+              $dum1 = date($datf, $mterm[$j][$i]);
+              $dum2 = date("d.m.y", $mterm[$j][$i]);
             } else {
               $dum1=$dum2="";
             }?>

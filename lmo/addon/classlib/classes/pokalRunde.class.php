@@ -1,9 +1,9 @@
 <?php
 /**
  * Class PokalRunde
- * Bildet die komplette Runde eines KO Tuniers / Playoff oder Ähnlichem ab.
+ * Bildet die komplette Runde eines KO Tuniers / Playoff oder ï¿½hnlichem ab.
  *
- * @author Markus Dörfling <markus@doerfling.net>
+ * @author Markus Dï¿½rfling <markus@doerfling.net>
  * @version $Id$
  * @package classlib
  */
@@ -17,7 +17,7 @@ class pokalRunde {
   var $roundNumber;
 
   /**
-   *  Modus 0->Tabelle / 1-> KO / 2->KO mir Rückspiel / 3->best of 3 / 5->best of 5 / 7->best of 7
+   *  Modus 0->Tabelle / 1-> KO / 2->KO mir Rï¿½ckspiel / 3->best of 3 / 5->best of 5 / 7->best of 7
    * @var integer
    * @access private
    */
@@ -71,17 +71,17 @@ class pokalRunde {
   }
 
   /**
-   * Gibt die Nummer der Runde zurück
+   * Gibt die Nummer der Runde zurï¿½ck
    *
    * @access public
-   * @return integer Modus dér Runde
+   * @return integer Modus dï¿½r Runde
    */
   function getRoundNumber() {
     return $this->roundNumber;
   }
 
   /**
-   * Setzt den Modus dieser Runde zurück
+   * Setzt den Modus dieser Runde zurï¿½ck
    *
    * @access public
    * @param integer value Modus der Runde
@@ -92,10 +92,10 @@ class pokalRunde {
   }
 
   /**
-   * Gibt den aktuellen Modus dieser Runde zurück
+   * Gibt den aktuellen Modus dieser Runde zurï¿½ck
    *
    * @access public
-   * @return integer Modus dér Runde
+   * @return integer Modus dï¿½r Runde
    */
   function getMode() {
     return $this->mode;
@@ -113,8 +113,8 @@ class pokalRunde {
   }
 
   /**
-   * Gibt den Timestamp der Rundenbegins zurück, wenn format angegeben ist wird
-   * das Datum im angegeben Format zurückgegeben
+   * Gibt den Timestamp der Rundenbegins zurï¿½ck, wenn format angegeben ist wird
+   * das Datum im angegeben Format zurï¿½ckgegeben
    *
    * @access public
    * @param string format der Datumsausgabe
@@ -124,7 +124,7 @@ class pokalRunde {
   function getBegin($format="") {
     if ($this->end != 0 ) {
       if ($format == "") return $this->begin;
-      else return strftime($format,$this->begin);
+      else return date($format,$this->begin);
     } else return false;
   }
 
@@ -140,23 +140,23 @@ class pokalRunde {
   }
 
   /**
-   * Gibt den Timestamp der Rundenendes zurück, wenn format angegeben ist wird
-   * das Datum im angegeben Format zurückgegeben
+   * Gibt den Timestamp der Rundenendes zurï¿½ck, wenn format angegeben ist wird
+   * das Datum im angegeben Format zurï¿½ckgegeben
    *
    * @access public
    * @param string format der Datumsausgabe
    * @see strftime()
-   * @return mixed Ende dér Runde
+   * @return mixed Ende dï¿½r Runde
    */
   function getEnd($format="") {
     if ($this->end != 0 ) {
       if ($format == "") return $this->end;
-      else return strftime($format,$this->end);
+      else return date($format,$this->end);
     } else return false;
   }
 
   /**
-   * Fügt Referenzen auf Partien dieser Runde hinzu
+   * Fï¿½gt Referenzen auf Partien dieser Runde hinzu
    *
    * @access public
    * @param array/object value Objecte der partien
@@ -173,7 +173,7 @@ class pokalRunde {
   }
 
   /**
-   * Gibt Partien dieser Runde zurück, ist $Number ="" wird das komplette Array übergeben
+   * Gibt Partien dieser Runde zurï¿½ck, ist $Number ="" wird das komplette Array ï¿½bergeben
    *
    * @access public
    * @param integer Nummer der Partie
@@ -186,7 +186,7 @@ class pokalRunde {
   }
 
   /**
-   * Fügt Referenzen auf die Spieltage (und die Partien dieses Spieltags) dieser Runde hinzu
+   * Fï¿½gt Referenzen auf die Spieltage (und die Partien dieses Spieltags) dieser Runde hinzu
    *
    * @access public
    * @param array/object value Objecte der Spieltage
@@ -207,7 +207,7 @@ class pokalRunde {
   }
 
   /**
-   * Gibt Spieltage dieser Runde zurück, ist $Number ="" wird das komplette Array übergeben
+   * Gibt Spieltage dieser Runde zurï¿½ck, ist $Number ="" wird das komplette Array ï¿½bergeben
    *
    * @access public
    * @param integer Nummer des Spieltags
@@ -220,7 +220,7 @@ class pokalRunde {
   }
 
   /**
-   * Gibt die Anzahl der Spieltage dieser Pokal Runde zurück
+   * Gibt die Anzahl der Spieltage dieser Pokal Runde zurï¿½ck
    *
    * @access public
    * @return interger Anzahl der Spieltage

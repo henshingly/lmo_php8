@@ -99,11 +99,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     $then1 = strtotime("+".($start+$tipp_viewertage)." day");
   }
    
-  $now1 = strftime("%d.%m.%Y", $now1);
+  $now1 = date("d.m.Y", $now1);
   $now = mktime(0, 0, 0, substr($now1, 3, 2), substr($now1, 0, 2), substr($now1, -4));
-  $then = strftime("%d.%m.%Y", $then1);
+  $then = date("d.m.Y", $then1);
   $then = mktime(0, 0, 0, substr($then, 3, 2), substr($then, 0, 2), substr($then, -4));
-  $then1 = strftime("%d.%m.%Y", ($then-1));
+  $then1 = date("d.m.Y", ($then-1));
    
   for($liganr = 0; $liganr < $anzligen; $liganr++) {
     $file = $dateien[$liganr];
@@ -339,7 +339,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     if ($datm[$i] == 1) {
       if ($mterm[$i] > 0) {
         $datf = $defdateformat;
-        $dum1 = strftime($datf, $mterm[$i]);
+        $dum1 = date($datf, $mterm[$i]);
       } 
     }?>
         <tr>

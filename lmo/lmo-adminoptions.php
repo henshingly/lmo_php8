@@ -153,10 +153,10 @@ if ($show==0) {?>
             <div class="col-7 text-start">
               <input type="radio" class="form-check-input" name="xdefdateselect" value="1" checked>
               <select class="custom-select" name="xdefdateformat" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[0].checked=true;"><?php
-      $dummf=array("%d.%m. %H:%M","%x %H:%M","%a.%d.%m. %H:%M","%A, %d.%m. %H:%M","%a.%x %H:%M","%A, %x %H:%M");?>
+      $dummf=array("d.m. H:i", "d.m.Y H:i", "D., d.m. H:i", "l, d.m. H:i", "D., d.m.Y H:i", "l, d.m.Y H:i");?>
                 <option value="">__</option><?php
       for($y=0;$y<count($dummf);$y++){?>
-                <option value="<?php echo $dummf[$y]?>"<?php if($defdateformat==$dummf[$y]){echo " selected";}?>><?php echo strftime($dummf[$y])?></option><?php
+                <option value="<?php echo $dummf[$y]?>"<?php if($defdateformat==$dummf[$y]){echo " selected";}?>><?php echo date($dummf[$y], time())?></option><?php
       }?>
               </select>
             </div>
@@ -166,27 +166,25 @@ if ($show==0) {?>
             <div class="col-7 text-start">
               <input type="radio" class="form-check-input" name="xdefdateselect" value=""<?php if (!in_array($defdateformat,$dummf)) echo " checked";?>>
               <input type="text" class="custom-control" name="xdefdateformat2" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[1].checked=true;" value="<?php echo $defdateformat?>">
-              <a href="http://php.net/strftime">
+              <a href="https://www.php.net/manual/de/datetime.format.php">
                 <span class="popup">
                   <strong><?php echo $text[545];?></strong><br>
-                  %a = <?php echo strftime("%a")?><br>
-                  %A = <?php echo strftime("%A")?><br>
+                  D = <?php echo date("D", time());?><br>
+                  l = <?php echo date("l", time());?><br>
                   <strong><?php echo $text[546];?></strong><br>
-                  %d = <?php echo strftime("%d")?><br>
-                  %e = <?php echo strftime("%e")?><br>
+                  d = <?php echo date("d", time());?><br>
+                  j = <?php echo date("j", time());?><br>
                   <strong><?php echo $text[547];?></strong><br>
-                  %m = <?php echo strftime("%m")?><br>
-                  %b = <?php echo strftime("%b")?><br>
-                  %B = <?php echo strftime("%B")?><br>
+                  m = <?php echo date("m", time());?><br>
+                  M = <?php echo date("M", time());?><br>
+                  F = <?php echo date("F", time());?><br>
                   <strong><?php echo $text[548];?></strong><br>
-                  %y = <?php echo strftime("%y")?><br>
-                  %Y = <?php echo strftime("%Y")?><br><br>
-                  %x = <?php echo strftime("%x")?><br>
+                  y = <?php echo date("y", time());?><br>
+                  Y = <?php echo date("Y", time());?><br>
                   <strong><?php echo $text[549];?></strong><br>
-                  %H = <?php echo strftime("%H")?><br>
-                  %M = <?php echo strftime("%M")?><br>
-                  %R = <?php echo strftime("%R")?><br>
-                  %p = <?php echo strftime("%p")?><br>
+                  H = <?php echo date("H", time());?><br>
+                  i = <?php echo date("i", time());?><br>
+                  A = <?php echo date("A", time());?><br>
                 </span>
               ?</a>
             </div>

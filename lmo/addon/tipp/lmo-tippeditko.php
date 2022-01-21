@@ -41,7 +41,7 @@ for($n=0;$n<$modus[$st-1];$n++){
   
   if ($datm==1) {
     if ($mterm[$st-1][$i][$n]>0) {
-      $dum1=strftime($datf, $mterm[$st-1][$i][$n]);
+      $dum1=date($datf, $mterm[$st-1][$i][$n]);
     } else {
       $dum1="";
     }?>

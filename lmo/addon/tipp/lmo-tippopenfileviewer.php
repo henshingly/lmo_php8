@@ -136,7 +136,7 @@ if ($file != "") {
               $dummy1 = $dummy1+substr($deftime, 0, 2) * 60 * 60+substr($deftime, 3, 2) * 60;
             }
             if ($dummy1 > -1) {
-              $dum[2] = strftime("%d.%m.%Y", $dummy1);
+              $dum[2] = date("d.m.Y", $dummy1);
             } else {
               $dum[2] = "";
             }
@@ -150,7 +150,7 @@ if ($file != "") {
               $dummy2 = $dummy2+substr($deftime, 0, 2) * 60 * 60+substr($deftime, 3, 2) * 60;
             }
             if ($dummy2 > -1) {
-              $dum[2] = strftime("%d.%m.%Y", $dummy2);
+              $dum[2] = date("d.m.Y", $dummy2);
             } else {
               $dum[2] = "";
             }

@@ -83,8 +83,8 @@ if ($file != "") {
         }
         if($datm==1){
           if($mterm[$st-1][$i][$n]>0){
-            $dum1=strftime($datf, $mterm[$st-1][$i][$n]);
-            $dum2=strftime("%d.%m.%y", $mterm[$st-1][$i][$n]);
+            $dum1 = date($datf, $mterm[$st-1][$i][$n]);
+            $dum2 = date("d.m.y", $mterm[$st-1][$i][$n]);
           } else {
             $dum1=$dum2="";
           }?>

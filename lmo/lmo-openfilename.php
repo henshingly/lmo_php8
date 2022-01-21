@@ -25,7 +25,7 @@ if ($file != "") {
      
     $datei = file(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file));
     if ($datei) {
-      $stand=strftime($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file)));
+      $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file)));
       $lmtype=0;
       for($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];

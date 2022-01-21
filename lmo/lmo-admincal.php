@@ -130,7 +130,7 @@ for($i=1;$i<=31;$i++){
     if($heute==1){?>
           <tr><?php 
     }?>
-            <td align="center" class="<?php echo $stil?>"><a href="#" onclick='lmogeben("<?php echo strftime("%d.%m.%Y",strtotime($i." ".$dath))?>")' title="Datum übernehmen"><?php echo "$k$i"?></a></td><?php 
+            <td align="center" class="<?php echo $stil?>"><a href="#" onclick='lmogeben("<?php echo date("d.m.Y",strtotime($i." ".$dath))?>")' title="Datum übernehmen"><?php echo "$k$i"?></a></td><?php 
     if($heute==7){?>
           </tr><?php 
       $j=$heute;

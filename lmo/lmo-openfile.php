@@ -26,7 +26,7 @@ if(!empty($file) && check_hilfsadmin($file)){
     $sekt="";
     $datei = file(PATH_TO_LMO.'/'.$dirliga.$file);
     if ($datei) {
-      $stand=strftime($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
+      $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
       $lmtype=0;
       for($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];
@@ -359,22 +359,22 @@ if(!empty($file) && check_hilfsadmin($file)){
       if(!empty($datum1[$op3])){
         $dat=explode(".",$datum1[$op3]);
         if (checkdate($dat[1],$dat[0],$dat[2])) {
-          $datum1[$op3]=strftime("%d.%m.%Y",mktime(0,0,0,$dat[1],$dat[0],$dat[2]));
+          $datum1[$op3]=date("d.m.Y",mktime(0,0,0,$dat[1],$dat[0],$dat[2]));
         } else {
           $datum1[$op3]="";
         }
         /*$dummy=strtotime(substr($datum1[$op3],0,2)." ".$me[intval(substr($datum1[$op3],3,2))]." ".substr($datum1[$op3],6,4));
-        if($dummy>-1){$datum1[$op3]=strftime("%d.%m.%Y",$dummy);}else{$datum1[$op3]="";}*/
+        if($dummy>-1){$datum1[$op3]=date("d.m.Y",$dummy);}else{$datum1[$op3]="";}*/
       }
       if(!empty($datum2[$op3])){
         $dat=explode(".",$datum2[$op3]);
         if (checkdate($dat[1],$dat[0],$dat[2])) {
-          $datum2[$op3]=strftime("%d.%m.%Y",mktime(0,0,0,$dat[1],$dat[0],$dat[2]));
+          $datum2[$op3]=date("d.m.Y",mktime(0,0,0,$dat[1],$dat[0],$dat[2]));
         } else {
           $datum2[$op3]="";
         }
         /*$dummy=strtotime(substr($datum2[$op3],0,2)." ".$me[intval(substr($datum2[$op3],3,2))]." ".substr($datum2[$op3],6,4));
-        if($dummy>-1){$datum2[$op3]=strftime("%d.%m.%Y",$dummy);}else{$datum2[$op3]="";}*/
+        if($dummy>-1){$datum2[$op3]=date("d.m.Y",$dummy);}else{$datum2[$op3]="";}*/
       }
       for($j=0;$j<=$anzteams;$j++){
         if($teamm[$j]==""){

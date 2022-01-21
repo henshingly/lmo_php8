@@ -463,7 +463,7 @@ class liga {
    */
   function ligaDatumAsString ($dateFormat=null) {
     $dateFormat = !is_null($dateFormat)?$dateFormat:$this->options->keyValues['DatF'];
-    return strftime ( $dateFormat , $this->ligaDatum);
+    return date($dateFormat, $this->ligaDatum);
   }
 
   /**

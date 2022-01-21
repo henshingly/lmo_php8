@@ -44,8 +44,8 @@ foreach ($datsort as $key => $val) {
   <div class="row"><?php 
     if ($datm == 1) {
       if ($mterm[$st-1][$i] > 0) {
-        $dum1 = strftime($datf, $mterm[$st-1][$i]);
-        $dum2 = strftime("%d.%m.%y", $mterm[$st-1][$i]);
+        $dum1 = date($datf, $mterm[$st-1][$i]);
+        $dum2 = date("d.m.y", $mterm[$st-1][$i]);
       } else {
         $dum1 = $dum2 = "";
       }?>

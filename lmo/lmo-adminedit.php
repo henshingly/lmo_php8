@@ -55,7 +55,7 @@ if ($file != "") {
         $datum = explode('.', $datum1[$st-1]);
         $dummy = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
         if ($dummy > -1) {
-          $datum1[$st-1] = strftime("%d.%m.%Y", $dummy);
+          $datum1[$st-1] = date("d.m.Y", $dummy);
         } else {
           $datum1[$st-1] = "";
         }
@@ -65,7 +65,7 @@ if ($file != "") {
         $datum = explode('.', $datum2[$st-1]);
         $dummy = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
         if ($dummy > -1) {
-          $datum2[$st-1] = strftime("%d.%m.%Y", $dummy);
+          $datum2[$st-1] = date("d.m.Y", $dummy);
         } else {
           $datum2[$st-1] = "";
         }
@@ -230,10 +230,10 @@ if ($file != "") {
     $lmo_spieltermine=array_filter(array_values_recursive($mterm[$st-1]),"filterZero");
     if (!empty($lmo_spieltermine)) {
       if (empty($datum1[$st-1])) {
-        $datum1[$st-1] = strftime("%d.%m.%Y", min($lmo_spieltermine));
+        $datum1[$st-1] = date("d.m.Y", min($lmo_spieltermine));
       }
       if (empty($datum2[$st-1])) {
-        $datum2[$st-1] = strftime("%d.%m.%Y", max($lmo_spieltermine));
+        $datum2[$st-1] = date("d.m.Y", max($lmo_spieltermine));
       }
     }
 
@@ -377,9 +377,9 @@ if ($file != "") {
     if ($lmtype == 0) {?>
           <tr><?php
       if ($mterm[$st-1][$i] > 0) {
-        $dum1 = strftime("%d.%m.%Y", $mterm[$st-1][$i]);
-        $dum2 = strftime("%H:%M", $mterm[$st-1][$i]);
-        $dum3 = $me[intval(strftime("%m", $mterm[$st-1][$i]))]." ".strftime("%Y", $mterm[$st-1][$i]);
+        $dum1 = date("d.m.Y", $mterm[$st-1][$i]);
+        $dum2 = date("H:i", $mterm[$st-1][$i]);
+        $dum3 = $me[intval(date("m", $mterm[$st-1][$i]))]." ".date("Y", $mterm[$st-1][$i]);
       } else {
         $dum1 = "";
         $dum2 = "";
@@ -474,9 +474,9 @@ if ($file != "") {
         }?>
           <tr><?php
         if ($mterm[$st-1][$i][$n] > 0) {
-          $dum1 = strftime("%d.%m.%Y", $mterm[$st-1][$i][$n]);
-          $dum2 = strftime("%H:%M", $mterm[$st-1][$i][$n]);
-          $dum3 = $me[intval(strftime("%m", $mterm[$st-1][$i][$n]))]." ".strftime("%Y", $mterm[$st-1][$i][$n]);
+          $dum1 = date("d.m.Y", $mterm[$st-1][$i][$n]);
+          $dum2 = date("H:i", $mterm[$st-1][$i][$n]);
+          $dum3 = $me[intval(date("m", $mterm[$st-1][$i][$n]))]." ".date("Y", $mterm[$st-1][$i][$n]);
         } else {
           $dum1 = "";
           $dum2 = "";
@@ -567,9 +567,9 @@ if ($file != "") {
           $goalb[$st-1][$i][$n] = "_";
         }?>
             <td width="2">&nbsp;</td>
-            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109] ?>" class="custom-control" style="width:40px;" type="number" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>7" min="0" size="1" maxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109] ?>" class="custom-control" style="width:40px;" type="number" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>7" min="0" size="1" maxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>"></td>
             <td class="lmoBackMarkierung" align="center" width="8">:</td>
-            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110] ?>" class="custom-control" style="width:40px;" type="number" name="xgoalb<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>8" min="0" size="1" maxlength="4" value="<?php echo $goalb[$st-1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110] ?>" class="custom-control" style="width:40px;" type="number" name="xgoalb<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>8" min="0" size="1" maxlength="4" value="<?php echo $goalb[$st-1][$i][$n]; ?>"></td>
             <td class="lmoBackMarkierung" width="3">&nbsp;</td>
             <td class="lmoBackMarkierung">
               <select class="custom-select" name="xmspez<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text[111] ?>" tabindex="<?php echo $i.$n;?>9" data-width="auto">
