@@ -17,6 +17,9 @@
   *
   */
 
+$titel="";
+$ergebnis=$mittore=$ligastats1=$kreuz=$plan=$kurve=1;
+$datc=$nticker=$lmtype=0;
 
 if(!empty($file) && check_hilfsadmin($file)){
   $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");

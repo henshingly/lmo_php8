@@ -620,7 +620,7 @@ if ($file != "") {
           <tr>
             <td class="nobr" colspan="<?php echo $breite+1; ?>" align="center">
               <acronym title="<?php echo $text[192] ?>"><?php echo $text[191]; ?></acronym>
-              <select class="custom-select" name="xstx" onChange="dolmoedit()" tabindex="<?php echo $i.$n;?>13" data-width="auto"><?php
+              <select class="custom-select" name="xstx" onChange="dolmoedit()" data-width="auto"><?php
   for($y = 0; $y <= $anzst; $y++) {
     echo "<option value=\"".$y."\"";
     if ($save == 1) {
