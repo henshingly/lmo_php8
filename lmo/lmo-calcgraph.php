@@ -32,7 +32,7 @@ if ($file!="") {
   for ($i=0; $i<$anzst; $i++) {
     $taba[$i] = array("");
   }
-  $platz = array_pad($array,$anzteams+1,"");
+  $platz = array_pad($array,$anzteams,"");
   for ($i=0; $i<$anzteams; $i++) {
     $platz[$i] = array("");
     $platz[$i] = array_pad($array,$anzst+1,"");
@@ -240,6 +240,5 @@ if ($file!="") {
     }
   }
 }
-
 
 ?>
