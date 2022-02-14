@@ -1,10 +1,11 @@
 [Options]
-Title=<acronym title="Liga Manager Online">LMO</acronym> 4 for PHP7
+Title=Liga Manager Online 4
 Name=Schlüssel 18er Liga
 Type=0
 Teams=18
 goalfaktor=1
 pointsfaktor=1
+enableGameSort=1
 Rounds=34
 Matches=9
 Actual=1
@@ -18,36 +19,36 @@ HideDraw=0
 OnRun=0
 MinusPoints=1
 Direct=0
-Champ=1
-CL=2
+Champ=0
+CL=0
 CK=0
-UC=3
+UC=0
 AR=0
-AB=3
+AB=0
 namePkt=Pkt.
 nameTor=Tore
+tableHinRueck=1
+tableHeimAusw=1
 DatC=1
 DatS=1
-DatM=0
+DatM=1
 DatF=%d.%m. %H:%M
 urlT=0
 urlB=0
 Plan=1
-Sprachauswahl=1
 Ergebnis=1
 mittore=0
-favTeam=14
-selTeam=14
+favTeam=0
+selTeam=0
 ticker=0
 Graph=1
 Kreuz=1
 Tabelle=1
 Ligastats=1
-kurve1=14
-kurve2=18
+kurve1=0
+kurve2=0
 
 [News]
-NC=0
 
 [Teams]
 1=Mannschaft 1
@@ -68,6 +69,26 @@ NC=0
 16=Mannschaft 16
 17=Mannschaft 17
 18=Mannschaft 18
+
+[Teamm]
+1=Mannschaft
+2=Mannschaft
+3=Mannschaft
+4=Mannschaft
+5=Mannschaft
+6=Mannschaft
+7=Mannschaft
+8=Mannschaft
+9=Mannschaft
+10=Mannschaft
+11=Mannschaft
+12=Mannschaft
+13=Mannschaft
+14=Mannschaft
+15=Mannschaft
+16=Mannschaft
+17=Mannschaft
+18=Mannschaft
 
 [Teamk]
 1=M1

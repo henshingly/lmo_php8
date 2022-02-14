@@ -1,8 +1,11 @@
 [Options]
-Title=<acronym title="Liga Manager Online">LMO</acronym> 4 for PHP7
+Title=Liga Manager Online 4
 Name=Schlüssel 04er Liga
 Type=0
 Teams=4
+goalfaktor=1
+pointsfaktor=1
+enableGameSort=1
 Rounds=6
 Matches=1
 Actual=1
@@ -13,29 +16,31 @@ PointsForDraw=1
 PointsForLost=0
 Spez=0
 HideDraw=0
-OnRun=1
+OnRun=0
 MinusPoints=1
 Direct=0
-Champ=1
+Champ=0
 CL=0
 CK=0
 UC=0
 AR=0
-AB=1
+AB=0
 namePkt=Pkt.
 nameTor=Tore
+tableHinRueck=1
+tableHeimAusw=1
 DatC=1
 DatS=1
 DatM=1
 DatF=%d.%m. %H:%M
-urlT=1
+urlT=0
 urlB=0
 Plan=1
 Ergebnis=1
-mittore=1
+mittore=0
 favTeam=0
 selTeam=0
-ticker=1
+ticker=0
 Graph=1
 Kreuz=1
 Tabelle=1
@@ -52,6 +57,12 @@ NC=0
 3=Mannschaft 3
 4=Mannschaft 4
 
+[Teamm]
+1=Mannschaft
+2=Mannschaft
+3=Mannschaft
+4=Mannschaft
+
 [Teamk]
 1=Manns
 2=Manns
@@ -60,21 +71,33 @@ NC=0
 
 [Team1]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team2]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team3]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
 [Team4]
 SP=0
+TOR1=0
+TOR2=0
+STDA=0
 URL=
 NOT=
 
@@ -83,12 +106,12 @@ D1=
 D2=
 TA1=1
 TB1=3
-GA1=0
-GB1=3
+GA1=-1
+GB1=-1
 NT1=
 BE1=
 TI1=0
-AT1=0
+AT1=
 
 [Round2]
 D1=
@@ -119,33 +142,33 @@ D1=
 D2=
 TA1=3
 TB1=1
-GA1=4
-GB1=4
+GA1=-1
+GB1=-1
 NT1=
 BE1=
 TI1=
-AT1=0
+AT1=
 
 [Round5]
 D1=
 D2=
 TA1=2
 TB1=1
-GA1=3
-GB1=2
+GA1=-1
+GB1=-1
 NT1=
 BE1=
 TI1=
-AT1=0
+AT1=
 
 [Round6]
 D1=
 D2=
 TA1=3
 TB1=2
-GA1=2
-GB1=0
+GA1=-1
+GB1=-1
 NT1=
 BE1=
 TI1=0
-AT1=0
+AT1=
