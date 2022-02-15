@@ -7,10 +7,10 @@
 #
 #
   <FilesMatch "\.(txt|aus|tip|ein|stat|cfg|l98|csv)$">
-	deny from all
+    deny from all
   </FilesMatch>
   <Files gpl.txt>
-	allow from all
+    allow from all
   </Files>
 
 # Kommentieren Sie im unteren Bereich aus, falls ihr Server diesen Befehl nicht unterstützt
