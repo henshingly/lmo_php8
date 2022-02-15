@@ -19,7 +19,7 @@
   */
 
 
-$todo=isset($_GET['todo']) && $_GET['todo']!="" ?$_GET['todo']:isset($_GET['file']) && $_GET['file']!=""?'edit':'';
+$todo=isset($_GET['todo']) && $_GET['todo'] != "" ? $_GET['todo'] : (isset($_GET['file']) && $_GET['file'] != "" ? 'edit' : '');
 $addi=$_SERVER["PHP_SELF"]."?todo=".$todo."&amp;file=";
 
 $_SESSION['liga_sort']=isset($_REQUEST['liga_sort'])?$_REQUEST['liga_sort']:$liga_sort;
