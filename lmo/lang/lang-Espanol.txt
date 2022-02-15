@@ -53,7 +53,7 @@
 052=¡Bienvenido!
 053=Por favor, selecciona una liga/torneo:
 054=Liga Manager Online 4
-055=© 1997-2019 LMO-Group
+055=© 1997-2022 LMO-Group
 056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Pagina de inicio del Liga Manager Online">LMO-Proyecto</a> | <a href="https://www.vest-sport.de/forum/?viewforum&forum_id=1" target="_blank" title="Foro de apoyo para el LMO y sus Addons">Foro de apoyo</a> | <a href="https://www.vest-sport.de/forum/viewforum.php?f=10" target="_blank" title="Mas ligas para tu LMO">Lista de ligas</a> ]
 057=Estadística 1 de
 058=Estadística 2 de
