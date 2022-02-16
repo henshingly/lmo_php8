@@ -44,8 +44,8 @@ function applyFactor ($value, $factor) {
 }
 
 function magicQuotesRemove(&$array) {
-  if(!get_magic_quotes_gpc())
-  return;
+  //if(!get_magic_quotes_gpc())
+  //return;
   foreach($array as $key => $elem) {
     if(is_array($elem))
     magicQuotesRemove($elem);
@@ -114,14 +114,14 @@ function getMessage($message,$error=FALSE) {
 }
 
 /**
- * Returns which team is the winner on a 
+ * Returns which team is the winner on a
  *
  * @param        string     $gst
  * @param        string     $gsp
- * @param        string     $gmod	modus (0->regular / 1-> KO / 2->KO with 2 games / 3->best of 3 / 5->best of 5 / 7->best of 7)
- * @param        array		$m1		results of home team
- * @param        array		$m2		results of away team
- * @return       int        $erg	winner(home / away)
+ * @param        string     $gmod   modus (0->regular / 1-> KO / 2->KO with 2 games / 3->best of 3 / 5->best of 5 / 7->best of 7)
+ * @param        array      $m1     results of home team
+ * @param        array      $m2     results of away team
+ * @return       int        $erg    winner(home / away)
  */
 function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
   $erg = 0;
@@ -132,7 +132,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
       $erg = 2;
     }
   } elseif($gmod == 2) {
-	if($m1[1] != "_") {
+    if($m1[1] != "_") {
       if (($m1[0]+$m1[1]) > ($m2[0]+$m2[1])) {
         $erg = 1;
       } elseif(($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
@@ -142,7 +142,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
           $erg = 2;
         } elseif($m2[0] < $m1[1]) {
           $erg = 1;
-		}
+        }
       }
     }
   } else {
