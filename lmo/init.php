@@ -18,8 +18,11 @@
   * $Id$
   */
 
-@ini_set("session.use_trans_sid","1");
-@ini_set("arg_separator.output","&amp;");
+if (!isset($_SESSION)) { 
+  // no session has been started yet
+  @ini_set("session.use_trans_sid","1");
+  @ini_set("arg_separator.output","&amp;");
+}
 
 if (session_id()=="") session_start();
 require(dirname(__FILE__).'/config/init-parameters.php');
