@@ -6,7 +6,7 @@
 <title><!--Titel--></title>
 <!--Stylesheet-->
 <link href="//cdn.jsdelivr.net/npm/bootstrap@<!--Bootstrap-->/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@<!--Chartjs-->/dist/chart.js"></script>
 </head>
 <body>
   <div class="container p-3">
