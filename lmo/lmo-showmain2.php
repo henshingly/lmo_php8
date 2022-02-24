@@ -91,8 +91,11 @@ if ($file!="") {
 
 
 //Stylesheet
-$output_stylesheet.="  <link type='text/css' rel='stylesheet' href='".URL_TO_LMO."/lmo-style-nc.php'>
-  <style type='text/css'>@import url('".URL_TO_LMO."/lmo-style.php');</style>";
+//$output_stylesheet.="  <link type='text/css' rel='stylesheet' href='".URL_TO_LMO."/lmo-style.php'>
+//  <style type='text/css'>@import url('".URL_TO_LMO."/lmo-style.php');</style>";
+
+//CSSonly
+$output_stylesheet = "  <link type='text/css' rel='stylesheet' href='".URL_TO_TEMPLATEDIR."/style.css'>";
 
 //Sprachauswahl
 if ($einsprachwahl==1){

@@ -5,7 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title><!--Titel--></title>
 <!--Stylesheet-->
-<!-- CSS only -->
 <link href="//cdn.jsdelivr.net/npm/bootstrap@<!--Bootstrap-->/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.js"></script>
 </head>
