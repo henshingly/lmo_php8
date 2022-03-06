@@ -56,50 +56,46 @@ if($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1
   $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
   $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
 ?>
-<table class="lmoSubmenu" width="100%" cellpadding="0" cellspacing="0">
- <tr>
-   <td align="left"><?php  include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?></td>
-  </tr>
-</table>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center">
+<div class="container">
+ <div class="row p-3">
+   <div class="col"><?php  include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?></div>
+  </div>
+  <div class="row">
+    <div class="col">
       <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?php echo $file; ?>">
         <input type="hidden" name="st" value="<?php echo $st; ?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <th class="nobr" align="left" colspan="4"><?php echo $text[340]; ?></th>
+        <div class="container">
+          <div class="row">
+            <div class="col"><strong><?php echo $text[340]; ?></strong></div>
           </tr>
-          <tr>
-            <td class="nobr" align="center" colspan="4"><?php echo getMessage($text[561],TRUE);?></td>
+          <div class="row">
+            <div class="col"><?php echo getMessage($text[561],TRUE);?></div>
           </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><acronym title="<?php echo $text[275] ?>"><?php echo $text[274]; ?></acronym></td>
-            <td align="right"><input class="custom-control" type="number" style="width: 50px;" name="xanzst" size="3" maxlength="3" value="<?php echo $anzst?>"></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><acronym title="<?php echo $text[278] ?>"><?php echo $text[277]; ?></acronym></td>
-            <td align="right"><input class="custom-control" type="number" style="width: 50px;" name="xanzsp" size="2" maxlength="2" value="<?php echo $anzsp?>"></td>
-          </tr>
-          <tr>
-            <td colspan="4" align="right">
+          <div class="row">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[275] ?>"><?php echo $text[274]; ?></acronym></div>
+            <div class="col-5 text-start"><input class="custom-control" type="number" style="width: 50px;" name="xanzst" size="3" maxlength="3" value="<?php echo $anzst?>"></div>
+          </div>
+          <div class="row">
+            <div class="col-5 text-end"><acronym title="<?php echo $text[278] ?>"><?php echo $text[277]; ?></acronym></div>
+            <div class="col-5 text-start"><input class="custom-control" type="number" style="width: 50px;" name="xanzsp" size="2" maxlength="2" value="<?php echo $anzsp?>"></div>
+          </div>
+          <div class="row pt-3">
+            <div class="col">
               <input title="<?php echo $text[114] ?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo $text[188]; ?>">
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" class="lmoFooter" align="left">
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col">
               <a href="<?php echo $addr?>-1"><?php echo $text[544] ?></a>
-            </td>
-          </tr>
+            </div>
+          </div>
         </table>
       </form>
-    </td>
-  </tr>
-</table><?php 
+    </div>
+  </div>
+</div><?php 
 }?>
