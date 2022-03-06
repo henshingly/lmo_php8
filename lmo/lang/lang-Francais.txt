@@ -559,7 +559,7 @@
 558=Voulez-vous afficher les décimales ? (Seulement pris en compte sur le site du visiteur !)
 559=Droits élargis
 560=Donner à l&#39;éditeur des droits élargis
-561=Attention ! Ce changement peut rendre une ligue inutilisable. <br>N&#39;tiliser cette option que si vous êtes sûr(e) de vous.<br>
+561=Attention ! Ce changement peut rendre une ligue inutilisable. <br>N&#39;tiliser cette option que si vous êtes sûr(e) de vous.
 562=retour
 563=Liens hypertextes soulignés
 564=&#8599;

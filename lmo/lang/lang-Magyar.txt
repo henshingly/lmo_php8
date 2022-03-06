@@ -559,7 +559,7 @@
 558=Szükség van tizedesjegyekre? (Csak kiadáskor vevődik figyelembe!)
 559=széleskörűbb jogok
 560=További jogok adása a segédadminisztrátornak
-561=Vigyázat! Ezek a beállítások használhatatlanná<br> tehetnek egy bajnokságot. <br>Csak akkor használja őket, <br>ha biztos a dolgában.<br>
+561=Vigyázat! Ezek a beállítások használhatatlanná tehetnek egy bajnokságot. <br>Csak akkor használja őket, <br>ha biztos a dolgában.
 562=vissza
 563=Linkek kiemelése
 564=&#8599;

@@ -561,7 +561,7 @@
 558=É necessario le posizione delle virgole? (Vengono considerati solo all'uscita!)
 559=Diritti estesi
 560=Dai al Co-Amministratore i diritti estesi
-561=Attenzione! Queste impostazioni potrebbero <br>portare all'unitizzabilitá del campionato. <br>Utilizzate queste impostazioni solo <br> se siete veramente sicuri di quel che fate.<br>
+561=Attenzione! Queste impostazioni potrebbero portare all'unitizzabilitá del campionato. <br>Utilizzate queste impostazioni solo se siete veramente sicuri di quel che fate.
 562=Indietro
 563=Sottolineare i Links
 564=&#8599;

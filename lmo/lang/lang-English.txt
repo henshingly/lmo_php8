@@ -559,7 +559,7 @@
 558=Are Commas neccesary (only used for release)
 559=Extra Rights
 560=Give the Help Admin Extra Rights
-561=Warning! These settings could cause a League to be unusable<br>Only use these Options if you are sure of what you are doing<br>
+561=Warning! These settings could cause a League to be unusable<br>Only use these Options if you are sure of what you are doing.
 562=back
 563=underscore links
 564=&#8599;

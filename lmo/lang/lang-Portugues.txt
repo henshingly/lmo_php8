@@ -559,7 +559,7 @@
 558=Décimos lugares são necessários? (Only with expenditure are considered!)
 559=Direitos avançados
 560=Extended rights give the auxiliary administrator
-561=Nota! Estas atitudes podem tornar um campeonato existente <br>inútil</br>. Use estas opções <br>apenas</br> se tiver a certeza do que está fazendo.
+561=Nota! Estas atitudes podem tornar um campeonato existente inútil.<br> Use estas opções apenas se tiver a certeza do que está fazendo.
 562=atrás
 563=Links sublinhados
 564=&#8599;

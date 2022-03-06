@@ -559,7 +559,7 @@
 558=Er kommaplasser nødvendig? (Blir bare tatt hensyn ved fremvisning!)
 559=utvidede rettigheter
 560=Gir hjelpeadmin utvidede rettigheter
-561=ADVARSEL! Disse innstillingene kan gjøre <br>ligaen ubrukelig. <br>Vennligst bruk denne muligheten, <br>hvis du vet hva du gjør.<br>
+561=ADVARSEL! Disse innstillingene kan gjøre ligaen ubrukelig. <br>Vennligst bruk denne muligheten, hvis du vet hva du gjør.
 562=tilbake
 563=Uderstreke linker
 564=&#8599;

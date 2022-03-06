@@ -559,7 +559,7 @@
 558=Sind Kommastellen benötigt? (Werden nur bei der Ausgabe berücksichtigt!)
 559=erweiterte Rechte
 560=Gibt dem Hilfsadministrator erweiterte Rechte
-561=Achtung! Diese Einstellungen können eine <br>bestehende Liga unbrauchbar machen. <br>Bitte benutzen Sie diese Optionen nur, <br>wenn Sie wirklich sicher sind.<br>
+561=Achtung! Diese Einstellungen können eine bestehende Liga unbrauchbar machen. <br>Bitte benutzen Sie diese Optionen nur, wenn Sie wirklich sicher sind.
 562=zurück
 563=Links unterstreichen
 564=&#8599;
@@ -578,6 +578,8 @@
 577=Mannschaft (lang)
 578=(mittel)
 579=(kurz)
+600=Bootstrap-Version
+601=Chart.js-Version
 1000=Serien
 1001=Gewonnen
 1002=Ungeschlagen

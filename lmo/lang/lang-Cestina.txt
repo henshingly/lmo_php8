@@ -559,7 +559,7 @@
 558=Jsou nutná des.místa?
 559=Rozšiřující práva
 560=Dát pomocnému adminovi větší pravomoce
-561=Pozor! Tato nastavení <br>platné soutěže mohou vést k nepoužitelnosti. <br>Použijte tuto volbu, <br>když si jste naprosto jisti.<br>
+561=Pozor! Tato nastavení platné soutěže mohou vést k nepoužitelnosti. <br>Použijte tuto volbu, když si jste naprosto jisti.
 562=zpět
 563=Podtrhávat odkazy
 4000=Celkem-

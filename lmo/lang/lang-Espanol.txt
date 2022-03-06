@@ -559,7 +559,7 @@
 558=¿Debe aparecer la coma decimal?
 559=Ampliar derecho
 560=Da derecho ampliado al editor
-561=Atención! Puedes hacer la liga inutilizable! <br>Uso esta opción solamente si estas seguro.<br>
+561=Atención! Puedes hacer la liga inutilizable! <br>Uso esta opción solamente si estas seguro.
 562=volver
 563=Subrayar enlace
 564=&#8599;

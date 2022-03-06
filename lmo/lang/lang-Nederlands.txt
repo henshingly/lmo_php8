@@ -559,7 +559,7 @@
 558=Sind Kommastellen benötigt? (Werden nur bei der Ausgabe berücksichtigt!)
 559=erweiterte Rechte
 560=Gibt dem Hilfsadministrator erweiterte Rechte
-561=Achtung! Diese Einstellungen können eine <br>bestehende Liga unbrauchbar machen. <br>Bitte benutzen Sie diese Optionen nur, <br>wenn Sie wirklich sicher sind.<br>
+561=Achtung! Diese Einstellungen können eine bestehende Liga unbrauchbar machen. <br>Bitte benutzen Sie diese Optionen nur, wenn Sie wirklich sicher sind.
 562=terug
 563=Links onderlijnen
 564=&#8599;
