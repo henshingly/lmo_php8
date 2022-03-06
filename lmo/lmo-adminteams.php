@@ -187,26 +187,27 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
   include(PATH_TO_LMO."/lmo-adminsubnavi.php");
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center"><h1><?php echo $titel?></h1></td>
-  </tr>
-  <tr>
-    <td align="center">
+<div class="container">
+  <div class="row pt-3">
+    <div class="col"><h1><?php echo $titel;?></h1></div>
+  </div>
+  <div class="row">
+    <div class="col">
       <form name="lmoedit" class="form-inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?php echo $file; ?>">
         <input type="hidden" name="st" value="<?php echo $st; ?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <th class="nobr" align="left"><acronym title="<?php echo $text[125].", ".$text[572].", ".$text[126]?>"><?php echo $text[127]; ?></acronym>&nbsp;</th>
+        <div class="container">
+          <div class="row">
+            <div class="col-4"><acronym title="<?php echo $text[125].", ".$text[572].", ".$text[126]?>"><?php echo $text[127]; ?></acronym>&nbsp;</div>
 <?php
   if ($lmtype==0) {
 ?>
-            <th class="nobr" colspan="2" align="center"><acronym title="<?php echo $text[131] ?>"><?php echo $text[542]."/".$text[543]; ?></acronym>&nbsp;</th>
-            <th class="nobr" align="center"><acronym title="<?php echo $text[523] ?>"><?php echo $text[524]; ?></acronym>&nbsp;</th>
+            <div class="col-1 small"><acronym title="<?php echo $text[131] ?>"><?php echo $text[542]."/".$text[543]; ?></acronym></div>
+            <div class="col-1 small"><acronym title="<?php echo $text[131] ?>"><?php echo $text[542]."/".$text[543]; ?></acronym></div>
+            <div class="col-1 small"><acronym title="<?php echo $text[523] ?>"><?php echo $text[524]; ?></acronym></div>
 <?php
   }
 ?>
@@ -215,129 +216,125 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
   if ($lmtype==0) {
 /** Titel Notiz */
 ?>
-            <th class="nobr" align="center"><acronym title="<?php echo $text[405] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[404]; ?>"></acronym></th>
+            <div class="col-1"><acronym title="<?php echo $text[405] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[404]; ?>"></acronym></div>
 <?php
   }
 /** Titel Homepage */  ?>
-            <th class="nobr" align="center"><acronym title="<?php echo $text[130] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[129]; ?>"></acronym></th>
-            <th class="nobr" colspan="<?php echo $breite; ?>" align="center">&nbsp;</th>
-          </tr>
+            <div class="col-1"><acronym title="<?php echo $text[130] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[129]; ?>"></acronym></div>
+          </div>
 <?php
-/** Mannschftsnamen */
-  for ($i=1;$i<=$anzteams;$i++) {
+/** Mannschaftsnamen */
+	for ($i=1;$i<=$anzteams;$i++) { 
 ?>
-          <tr>
-            <td class="nobr">
-              <input class="custom-control" type="text" name="xteams<?php echo $i; ?>" size="32" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" placeholder="<?php echo $text[577] ?>" onChange="dolmoedit()">
-              <input class="custom-control" type="text" name="xteamm<?php echo $i; ?>" size="12" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" placeholder="<?php echo $text[578] ?>" onChange="dolmoedit()">
-              <input class="custom-control" type="text" name="xteamk<?php echo $i; ?>" size="5" maxlength="5" value="<?php echo htmlspecialchars($teamk[$i]); ?>" placeholder="<?php echo $text[579] ?>"onChange="dolmoedit()">
+          <div class="row">
+            <div class="col-4">     
+                <input class="custom-control" type="text" name="xteams<?php echo $i; ?>" size="25" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" placeholder="<?php echo $text[582] ?>" onChange="dolmoedit()">
+                <input class="custom-control" type="text" name="xteamm<?php echo $i; ?>" size="6" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" placeholder="<?php echo $text[583] ?>" onChange="dolmoedit()">
+                <input class="custom-control" type="text" name="xteamk<?php echo $i; ?>" size="2" maxlength="5" value="<?php echo htmlspecialchars($teamk[$i]); ?>" placeholder="<?php echo $text[584] ?>" onChange="dolmoedit()">
+            </div>
+<?php
+	if ($lmtype==0) { 
+?>
+            <div class="col-1">
+            	<input class="custom-control" style="width: 2rem;" type="number" name="xstrafp<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$strafp[$i]; ?>" onChange="dolmoedit()">
+<?php  
+		if ($minus==2) { 
+?>
+              : <input class="custom-control" style="width: 2rem;" type="number" name="xstrafm<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$strafm[$i]; ?>" onChange="dolmoedit()">
+<?php  
+		} 
+  	//echo $namepkt;
+?>
+            </div>
+
+  	    <div class="col-1">
+                <input class="custom-control" style="width: 2rem;" type="number" name="xtorkorrektur1<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur1[$i]; ?>" onChange="dolmoedit()">
+              : <input class="custom-control" style="width: 2rem;" type="number" name="xtorkorrektur2<?php echo $i; ?>" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur2[$i]; ?>" onChange="dolmoedit()">
+              <?php //echo $nametor;?>
+            </div>
+  	     <div class="col-1">
+                <input class="custom-control" style="width: 2rem;" type="number" name="xstrafdat<?php echo $i; ?>" size="2" maxlength="2" value="<?php echo $strafdat[$i]; ?>" onChange="dolmoedit()">
               &nbsp;
-            </td>
-<?php
-  if ($lmtype==0) {
-?>
-            <td class="lmoBackMarkierung nobr" align="center">
-              <input class="custom-control" type="number" name="xstrafp<?php echo $i; ?>" style="width: 40px;" size="1" maxlength="4" value="<?php echo (-1)*$strafp[$i]; ?>" onChange="dolmoedit()">
-<?php
-    if ($minus==2) {
-?>
-              : <input class="custom-control" type="number" name="xstrafm<?php echo $i; ?>" style="width: 40px;" size="1" maxlength="4" value="<?php echo (-1)*$strafm[$i]; ?>" onChange="dolmoedit()">
-<?php
-    }
-    echo $namepkt;
-?>
-            </td>
-
-            <td class="nobr" align="center">
-                <input class="custom-control" type="number" name="xtorkorrektur1<?php echo $i; ?>" style="width: 40px;" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur1[$i]; ?>" onChange="dolmoedit()">
-              : <input class="custom-control" type="number" name="xtorkorrektur2<?php echo $i; ?>" style="width: 40px;" size="1" maxlength="4" value="<?php echo (-1)*$torkorrektur2[$i]; ?>" onChange="dolmoedit()">
-              <?php echo $nametor;?>
-            </td>
-            <td class="nobr" align="center">
-
-                <input class="custom-control" type="number" name="xstrafdat<?php echo $i; ?>" style="width: 40px;" size="2" maxlength="2" value="<?php echo $strafdat[$i]; ?>" onChange="dolmoedit()">
-              &nbsp;
-            </td>
+            </div>
 
 <?php
-  }
-  if ($lmtype==0) {
+		} 
+		if ($lmtype==0) { 
 ?>
-            <td class="nobr" align="center">
-              <input id="n<?php echo $i?>" class="custom-control" type="text" name="xteamn<?php echo $i; ?>" tabindex="<?php echo $i;?>13" size="20" maxlength="255" value="<?php echo htmlentities($teamn[$i]); ?>" onChange="dolmoedit()">
-<?php
-      if (trim($teamn[$i]) == '') {
+            <div class="col-1">
+              <input id="n<?php echo $i?>" class="custom-control" type="text" name="xteamn<?php echo $i; ?>" tabindex="<?php echo $i;?>13" size="20" maxlength="255" value="<?php echo htmlentities($teamn[$i]); ?>" onChange="dolmoedit()">         
+<?php      
+			if (trim($teamn[$i]) == '') {
 ?>
               <script type="text/javascript">document.getElementById('n<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script>
+<?php   
+			}
+?>             
+            </div>
 <?php
-      }
-?>
-            </td>
-<?php
-    }
+		} 
 /** Mannschafts URL/Homepage */
 ?>
-            <td class="nobr" align="center">
+            <div class="col-1">
               <input id="h<?php echo $i?>" class="custom-control" type="text" name="xteamu<?php echo $i; ?>" tabindex="<?php echo $i;?>14" size="30" maxlength="255" value="<?php echo htmlentities($teamu[$i]); ?>" onChange="dolmoedit()">
-<?php
-      if (trim($teamu[$i]) == '') {
+<?php      
+			if (trim($teamu[$i]) == '') {
 ?>
               <script type="text/javascript">document.getElementById('h<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'h<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script>
-<?php
-      }
+<?php   
+			}
 ?>
-            </td>
+            </div>
 <?php
-    if ($lmtype==0) {
-/** Mannschaft l�schen */
+		if ($lmtype==0) { 
+/** Mannschaft löschen */
 ?>
-            <td class="nobr">
+            <div class="col-1">
               <a href='<?php echo $addz.$i; ?>' onclick="return dteamlmolink(this.href,'<?php echo $teams[$i]; ?>');" title="<?php echo $text[334]; ?>">
                 <img src="<?php echo URL_TO_IMGDIR."/delete.gif"?>" width="11" height="13" alt="<?php $text[333];?>" border="0">
               </a>
-            </td>
+            </div>
 <?php
-        }
+		} 
 /** Mannschaftswappen */
 ?>
-            <td class="nobr"><?php echo HTML_smallTeamIcon($file,$teams[$i],""," alt=''");?></td>
-            <td class="nobr"><?php echo HTML_bigTeamIcon($file,$teams[$i],""," alt=''");?></td>
-          </tr>
+            <div class="col-1"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''");?></div>
+          </div>
 <?php
-    }
+	} 
 ?>
-          <tr>
-            <td class="nobr" colspan="<?php echo $breite; ?>" align="right">
-              <input title="<?php echo $text[114] ?>" class="btn btn-sm btn-primary" type="submit" name="best" value="<?php echo $text[132]; ?>">
-            </td>
+          <div class="row p-3">
+            <div class="col-6 text-start">
+              <input title="<?php echo $text[114] ?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo $text[132]; ?>" />
+            </div>
 <?php
-    if ($lmtype==0) {
+	if ($lmtype==0) { 
 ?>
-            <td class="nobr" colspan="<?php echo $breite; ?>">
-              <a href='<?php echo $addz; ?>-1' title="<?php echo $text[337]; ?>"><?php echo $text[336]; ?></a>
-            </td>
+            <div class="col-4 text-end">
+              <a class='btn btn-sm btn-success' role='button' href='<?php echo $addz; ?>-1' onclick="return ateamlmolink(this.href);" title="<?php echo $text[337]; ?>"><?php echo $text[336]; ?></a>
+            </div>
 <?php
-    }
+	} 
 ?>
-          </tr>
-        </table>
+          </div>
+        </div>
       </form>
-    </td>
-  </tr>
+    </div>
+  </div>
 <?php
-    if ($lmtype==0) {
-        if ($team!="") {
+	if ($lmtype==0) { 
+		if ($team!="") {
 ?>
-  <tr>
-    <td class="nobr">
+  <<div class="row p-3">
+    <div class="col">
       <a href="<?php echo $addr?>-3" onclick="return chklmolink();" title="<?php echo $text[339]?>"><?php echo $text[338]?></a>
-    </td>
-  </tr>
+    </div>
+  </div>
 <?php
-        }
-    }
+		}
+	} 
 ?>
-</table>
+</div>
 <?php
 }
 ?>

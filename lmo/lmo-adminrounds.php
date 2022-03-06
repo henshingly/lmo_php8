@@ -28,17 +28,15 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   $rowMarker = array();
 ?>
 <a name="top"></a>
-<table class="lmoSubmenu" width="100%" cellpadding="0" cellspacing="0">
- <tr>
-   <td align="left"><?php  include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?></td>
-  </tr>
-</table>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center"><h1><?php echo $titel?></h1></td>
-  </tr>
-  <tr>
-    <td align="center">
+<div class="container">
+ <div class="row">
+   <div class="col"><?php include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?></div>
+  </div>
+  <div class="row pt-3">
+    <div class="col"><h1><?php echo $titel?></h1></div>
+  </div>
+  <div clas?="row">
+    <div class="col">
       <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
@@ -54,7 +52,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
     reset ($_POST);
     $changesFound = False;
     foreach ($_POST as $k=>$v) {
-      $array = preg_split('#_#',$k);
+      $array = preg_split('/_/',$k);
       if (isset($array) and count($array)==4 and ($array[0] == 'sp') and ($array[1] != $v)) {
         $alteSpielTagNr = $array[1];
         $neueSpielTagNr = $v;
@@ -87,16 +85,15 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   $liga = new liga();
   $liga->loadFile(PATH_TO_LMO."/".$dirliga.$file);
   echo getMessage($meldung); ?>
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
+      <div class="container"><?php
   foreach ($liga->spieltage as $spTag) { ?>
-        <tr>
-          <th width="15" class="nobr">&nbsp;</th>
-          <th colspan="6" class="nobr" align="left">
+        <div class="row p-3">
+          <div class="col-10 text-start">
             <strong><?php echo $spTag->nr.". ".$text[2]."&nbsp;&nbsp;".$spTag->vonBisString()."</strong> / ".$spTag->partienCount()." ".$text[5003] ; ?>
-          </th>
-          <th colspan="3" class="nobr" align="right">
-				<a href="#top"><?php echo $text[5011]; ?></a>&nbsp;/&nbsp;<a href="#bottom"><?php echo $text[5012]; ?></a></th>
-        </tr><?php
+          </div>
+          <div class="col-2 test-end">
+				<a href="#top"><?php echo $text[5011]; ?></a>&nbsp;/&nbsp;<a href="#bottom"><?php echo $text[5012]; ?></a></div>
+        </div><?php
     $pcount = 1;
     $teamArray = array();
     foreach ($spTag->partien as $partie) {
@@ -117,57 +114,48 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
       if (in_array($partie->heim->nr.'-'.$partie->gast->nr,$rowMarker)) {
         $str1 = "<strong>";$str2 = "</strong>";
       }?>
-        <tr>
-          <td>&nbsp;</td>
-          <td><?php echo $str1.$partie->datumString()." ".$partie->zeitString().$str2; ?></td>
-          <td><?php echo $str1.$partie->heim->name.$str2; ?></td>
-          <td>-</td>
-          <td><?php echo $str1.$partie->gast->name.$str2; ?></td>
-          <td align='right' ><?php echo $str1.$hTore.$str2; ?></td>
-          <td>:</td>
-          <td align='center'><?php echo $str1.$gTore.$str2; ?></td>
-          <td></td>
-          <td>
-            <select class="lmo-formular-input" onChange="dolmoedit()" name="sp_<?php
-      echo $spTag->nr."_".$partie->heim->nr."_".$partie->gast->nr.'">';
+        <div class="row">
+          <div class="col-2"><?php echo $str1.$partie->datumString()." ".$partie->zeitString().$str2; ?></div>
+          <div class="col-3"><?php echo $str1.$partie->heim->name.$str2; ?></div>
+          <div class="col-1"> vs. </div>
+          <div class="col-3"><?php echo $str1.$partie->gast->name.$str2; ?></div>
+          <div class="col-1"><?php echo $str1.$hTore.$str2; ?> : <?php echo $str1.$gTore.$str2; ?></div>
+          <div class="col-1">
+            <select class="custom-select" onChange="dolmoedit()" name="sp_<?php
+      echo $spTag->nr."_".$partie->heim->nr."_".$partie->gast->nr.'" data-width="auto">';
       for ($sp = 1;$sp <= $liga->spieltageCount();$sp++) {
-        echo "<option value=$sp";
+        echo "<option value='$sp'";
         if($spTag->nr==$sp){echo " selected";}
         echo ">".$sp.". ".$text[2]."</option>";
       }?>
             </select>
-          </td>
-        </tr><?php
+          </div>
+        </div><?php
       $pcount++;
     }
     if ($liga->options->valueForKey("Type") == 0 ) {
       foreach ($liga->teams as $team) {
         if (!in_array($team->nr,$teamArray)) {?>
-        <tr>
-          <td>&nbsp</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td><?php echo $team->name; ?></td>
-          <td align='right' colspan=3><?php echo $text[5008]; ?></td>
-        </tr><?php
+        <div class="row">
+          <div class="col-4"><?php echo $team->name; ?></div>
+          <div class="col-2"><?php echo $text[5008]; ?></div>
+        </div><?php
         } // if
       }   // foreach ($liga->teams as $team)
     }
-    // teamnummern die an einem spieltag antreten. für eine js-Funktion, die verhindert
+    // teamnummern die an einem spieltag antreten. f&#65533;r eine js-Funktion, die verhindert
     // das ein team mehrmals an einem spieltag antreten muss js-funktion muss noch gebaut werden
     //  echo "<input type='hidden' name='sptext_".$spTag->nr."' value='".implode(",",$teamArray)."'>";
   }      // foreach ($spTag->partien as $partie)
 ?>
-        <tr>
-            <th class="nobr" colspan="10">
-              <acronym title="<?php echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php echo $text[5009]; ?>"></acronym>
-            </th>
-        </tr>
-        </table>
+        <div class="row p-3">
+            <div class="col">
+              <acronym title="<?php echo $text[114] ?>"><input class="btn btn-primary btn-sm" type="submit" name="spPlan" value="<?php echo $text[5009]; ?>"></acronym>
+            </div>
+        </div>
       </form>
       <a name="bottom"></a>
-    </td>
-  </tr>
-</table><?php 
+    </div>
+  </div>
+</div><?php
 }?>
