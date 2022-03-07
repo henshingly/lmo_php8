@@ -38,7 +38,6 @@ if($save==1){
   <ul class="nav nav-pills justify-content-center">
     <li class="nav-item" role="presentation"><a href="<?php echo $addr_options?>" class="nav-link" title="<?php echo $text[320]?>"><?php echo $text[319]?></a></li>
     <li class="nav-item" role="presentation"><a href="#" class="nav-link active"><?php echo $text[497]?></a></li>
-    <li class="nav-item" role="presentation"><a href="<?php echo $addr_design?>" class="nav-link" title="<?php echo $text[422]?>"><?php echo $text[421]?></a></li>
     <li class="nav-item" role="presentation"><a href="<?php echo $addr_user?>" class="nav-link" title="<?php echo $text[318]?>"><?php echo $text[317]?></a></li>
   </ul>
 </nav>
@@ -50,19 +49,18 @@ if($save==1){
     <div class="col"><h1><?php echo $text[498]?></h1></div>
   </div>
   <div class="row align-items-top">
-    <div class="col-2 text-end">
-      <div class="container"><?php 
+    <div class="col-2 text-end"><?php 
 $testshow=0;
 foreach($cfgarray as $addon_name => $addon_cfg) {
-  if (is_array($addon_cfg)) {?>
-          <div class="row">
-            <div class="col-1 text-end"<?php if ($show==$testshow) {?> class="active"><?php echo $addon_name;?><?php }else{?> class="lmost4"><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons&amp;show=".$testshow;?>"><?php echo $addon_name;?></a><?php }?></div><?php 
+  if (is_array($addon_cfg)) { 
+            if ($show==$testshow) { 
+               echo $addon_name."<br />"; 
+            } else {?>
+               <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons&amp;show=".$testshow;?>"><?php echo $addon_name;?></a><br /><?php 
+            } 
     $testshow++;
-    ?>
-          </div><?php
   }
 }?>
-      </div>
     </div>
     <div class="col-8">
       <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" onSubmit="return chklmopass()">
@@ -87,7 +85,7 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
   }
 }?>
           </div>
-          <div class="row">
+          <div class="row pt-3">
             <div class="col text-center">
               <input title="<?php echo $text[114]?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo $text[188];?>">
             </div>
