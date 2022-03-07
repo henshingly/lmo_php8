@@ -276,7 +276,7 @@ if ($show==0) {?>
             </div>
           </div><?php
 }?>
-          <div class="row">
+          <div class="row p-3">
             <div class="col-auto">
               <input title="<?php echo $text[114]?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo $text[188];?>">
             </div>

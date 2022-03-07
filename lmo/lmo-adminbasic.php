@@ -164,7 +164,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
   if ($show==0) {
     if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
           <div class="row">
-            <div class="col-5 text-end"><input class="custom-control" type="text" name="xtitel" size="40" maxlength="60" value="<?php echo $titel; ?>" onChange="dolmoedit()"></div>
+            <div class="col-5 text-end"><input class="custom-control" type="text" name="xtitel" size="25" maxlength="60" value="<?php echo $titel; ?>" onChange="dolmoedit()"></div>
             <div class="col-5 text-start"><acronym title="<?php echo $text[118];?>"><?php echo $text[113];?></acronym></div>
           </div><?php      if($lmtype==0){ ?>
           <div class="row">
@@ -361,7 +361,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             <div class="col-5 text-start"><input type="checkbox" class="form-check-input" name="xligastats" onChange="dolmoedit()"<?php if($ligastats==1){echo " checked";}?>></div><?php
       }?>
           </div>
-          <div class="row">
+          <div class="row p-2">
             <div class="col"><strong><?php echo $text[264];?></strong></div>
           </div>
           <div class="row">
@@ -398,7 +398,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             <div class="col-4 text-end"><input type="checkbox" class="form-check-input" name="xhands" onChange="dolmoedit()"<?php if($hands==1){echo " checked";}?>></div>
             <div class="col-6 text-start"><acronym title="<?php echo $text[408];?>"><?php echo $text[407];?></acronym></div>
           </div>
-          <div class="row">
+          <div class="row p-2">
             <div class="col"><strong><?php echo $text[198];?></strong></div>
           </div>
           <div class="row">
@@ -433,7 +433,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           </div><?php    }
   }elseif ($show==4) {
     if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
-          <div class="row">
+          <div class="row p-2">
             <div class="col"><strong><?php echo $text[264];?></strong></div>
           </div>
           <div class="row">
@@ -444,7 +444,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             <div class="col-4 text-end"><input type="checkbox" class="form-check-input" name="xeinheimausw" onChange="dolmoedit()"<?php if($einheimausw==1){echo " checked";}?>></div>
             <div class="col-6 text-start"><acronym title="<?php echo $text[566];?>"><?php echo $text[565];?></acronym></div>
           </div>
-          <div class="row">
+          <div class="row p-2">
             <div class="col"><strong><?php echo $text[378];?></strong></div>
           </div>
           <div class="row">

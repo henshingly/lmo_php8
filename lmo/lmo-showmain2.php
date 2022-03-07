@@ -201,31 +201,28 @@ if ($file!="") {
 
   //SaveHTML
   if ($einsavehtml==1) {
-      ob_start();?>
-        <div class="container-fluid">
-          <div class="row"><?php
+      ob_start();?><?php
           if($lmtype==0 && $druck==1){
             include(PATH_TO_LMO."/lmo-savehtml.php");
             include(PATH_TO_LMO."/lmo-savehtml1.php");
       }?>
-           <div class="col offset-4 text-start"><?php
-      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-st.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' title='{$text[477]}'>{$text[478]}</a>&nbsp;";}?>
+           <div class="col-2 offset-3 text-start"><?php
+      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-st.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' title='{$text[477]}'>{$text[478]}</a>";}?>
             </div>
-            <div class="col text-end"><?php
-      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-sp.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' title='{$text[479]}'>{$text[480]}</a>&nbsp;";}?>
-            </div>
-          </div>
-        </div><?php
-        $output_savehtml.=ob_get_contents();ob_end_clean();
+            <div class="col-2 offset-3 text-end"><?php
+      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-sp.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' title='{$text[479]}'>{$text[480]}</a>";}?>
+            </div><?php
+        $output_savehtml.=ob_get_contents();
+        ob_end_clean();
   }
 }
 
 //Ligenübersicht
 if($backlink==1 && ($file!="" || $action=="tipp")){
   if (basename($file)==$file) {
-    $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF']."' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
+    $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF']."' title='{$text[392]}'>{$text[391]}</a>";
   } else {
-    $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF'].'?subdir='.dirname($file)."/' title='{$text[392]}'>{$text[391]}</a>&nbsp;&nbsp;&nbsp;";
+    $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF'].'?subdir='.dirname($file)."/' title='{$text[392]}'>{$text[391]}</a>";
   }
 
 }
@@ -259,7 +256,7 @@ if ($eintippspiel==1) {
     $output_tippspiel.=$action!="tipp"?       "<li class='nav-item'><a href='{$addm}tipp' title='{$text['tipp'][0]}' class='nav-link'>{$text['tipp'][0]}</a></li>" : "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>{$text['tipp'][0]}</a></li>";
   }
 }
-d($template->toString());
+e($template->toString());
 //Tippspiel-Addon
 
 
