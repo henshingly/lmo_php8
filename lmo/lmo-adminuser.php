@@ -90,119 +90,103 @@ if ($_SESSION['lmouserok']==2) {
   <ul class="nav nav-pills justify-content-center">
     <li class="nav-item" role="presentation"><a href="<?php echo $addr_options?>"class="nav-link"  title="<?php echo $text[320]?>"><?php echo $text[319]?></a></li>
     <li class="nav-item" role="presentation"><a href="<?php echo $addr_addons?>" class="nav-link" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></li>
-    <li class="nav-item" role="presentation"><a href="<?php echo $addr_design?>" class="nav-link" title="<?php echo $text[422]?>"><?php echo $text[421]?></a></li>
     <li class="nav-item" role="presentation"><a href="#" class="nav-link active"><?php echo $text[317]?></a></li>
   </ul>
 </nav>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center" colspan="2"><h1><?php echo $text[321]?></h1></td>
-  </tr>
-  <tr>
-    <td valign="top">
-      <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php
+<div class="container">
+  <div class="row p-3">
+    <div class="col"><h1><?php echo $text[321]?></h1></div>
+  </div>
+  <div class="row">
+    <div class="col-2 text-end"><?php
   $testshow=0;
   foreach($lmo_admin_data as $lmo_admin) {
-    $show_admin_name=$lmo_admin[2]==2?"<em>".$lmo_admin[0]."</em>":$lmo_admin[0];?>
-         <tr>
-           <td align="right"><?php
+    $show_admin_name=$lmo_admin[2]==2?"<em>".$lmo_admin[0]."</em><br />":$lmo_admin[0];
     if ($show==$testshow) {
-      echo $show_admin_name;
+      echo $show_admin_name."<br />";
     } else {?>
-             <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=user&amp;show=".$testshow;?>"><?php echo $show_admin_name;?></a><?php
-    }    ?></td>
-         </tr><?php
+             <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=user&amp;show=".$testshow;?>"><?php echo $show_admin_name;?></a><br /><?php
+    }    
     $testshow++;
   }?>
-       </table>
-    </td>
-    <td align="center" valign="top">
+    </div>
+    <div class="col-4 offset-1 text-start">
       <form name="lmoedit<?php echo $show?>" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="user">
         <input type="hidden" name="save" value="<?php echo $show?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
+        <div class="container"><?php
   $testshow=0;
   foreach($lmo_admin_data as $lmo_admin) {
     if ($show==-1 && $testshow==0) {?>
-          <tr>
-            <td align="center">&nbsp;<br><?php echo $text[318]?><br>&nbsp;</td>
-          </tr><?php
+          <div class="row">
+            <div class="col"><?php echo $text[318]?></div>
+          </div><?php
     }
     if ($show==$testshow) {?> 
-          <tr>
-            <td align="right"><?php echo $text[322]?></td>
-            <td align="left" colspan="2"><input class="form-control" type="text" name="xadmin_name<?php echo $testshow?>" size="16" maxlength="32" value="<?php echo $lmo_admin[0]?>"></td>
-          </tr>
-          <tr>
-            <td align="right"><?php echo $text[323]?></td>
-            <td align="left" colspan="2"><input class="form-control" type="text" name="xadmin_pass<?php echo $show?>" size="16" maxlength="32" value=""></td>
-          </tr>
-          <tr>
-            <td align="right" rowspan="2"><?php echo $text[324]?></td>
-            <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=true" class="custom-control" type="radio" name="xadmin_rang<?php echo $show?>" value="2" <?php if ($lmo_admin[2]==2) echo " checked";?>><?php echo $text[326]?></td>
-          </tr>
-          <tr>
-            <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=false" class="custom-control" type="radio" name="xadmin_rang<?php echo $show?>" value="1" <?php if ($lmo_admin[2]==1) echo " checked";?>><?php echo $text[325]?></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td align="left"><input class="custom-control" type="checkbox" name="xadmin_erweitert<?php echo $show?>" <?php if (isset($lmo_admin[4]) && $lmo_admin[4]==1) echo " checked";?> <?php if ($lmo_admin[2]==2) echo " disabled";?>><acronym title="<?php echo $text[560]?>"><?php echo $text[559]?></acronym></td>
-          </tr><?php
+          <div class="row">
+            <div class="col-4 text-end"><?php echo $text[322]?></div>
+            <div class="col-8 text-start"><input class="form-control" type="text" name="xadmin_name<?php echo $testshow?>" size="26" maxlength="32" value="<?php echo $lmo_admin[0]?>"></div>
+          </div>
+          <div class="row">
+            <div class="col-4 text-end"><?php echo $text[323]?></div>
+            <div class="col-8 text-start"><input class="form-control" type="text" name="xadmin_pass<?php echo $show?>" size="16" maxlength="32" value=""></div>
+          </div>
+          <div class="row">
+            <div class="col-4 text-end"><?php echo $text[324]?></div>
+            <div class="col-8 text-start"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=true" class="custom-control" type="radio" name="xadmin_rang<?php echo $show?>" value="2" <?php if ($lmo_admin[2]==2) echo " checked";?>> <?php echo $text[326]?></div>
+          </div>
+          <div class="row">
+            <div class="col-8 offset-4 text-start"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=false" class="custom-control" type="radio" name="xadmin_rang<?php echo $show?>" value="1" <?php if ($lmo_admin[2]==1) echo " checked";?>> <?php echo $text[325]?></div>
+          </div>
+          <div class="row">
+            <div class="col-8 offset-4 text-start"><input class="custom-control" type="checkbox" name="xadmin_erweitert<?php echo $show?>" <?php if (isset($lmo_admin[4]) && $lmo_admin[4]==1) echo " checked";?> <?php if ($lmo_admin[2]==2) echo " disabled";?>><acronym title="<?php echo $text[560]?>"> <?php echo $text[559]?></acronym></div>
+          </div><?php
       if($lmo_admin[2]==1){?>
-          <tr>
-            <th colspan="3"><acronym title="<?php echo $text[398]?>"><?php echo $text[397]?></acronym></th>
-          </tr><?php
+          <div class="row">
+            <div class="col-8 offset-4 text-start"><acronym title="<?php echo $text[398]?>"> <?php echo $text[397]?></acronym></div>
+          </div><?php
         $helfer_ligen=explode(',',$lmo_admin_data[$testshow][3]);
         $handle=opendir(PATH_TO_LMO.'/'.$dirliga);
         while ($file=readdir($handle)) {
           require(PATH_TO_LMO."/lmo-openfilename.php");
           if (substr($file,-4)==".l98") {
             $ligenname=substr($file,0,-4);?>
-          <tr>
-            <td align="left" class="lmost5" colspan="3"><input class="custom-control" type="checkbox" name="xhelfer_ligen<?php echo $show?>[]" value="<?php echo $ligenname?>"<?php if (in_array($ligenname,$helfer_ligen)) echo " checked"?>><?php echo  $titel?></td>
-          </tr><?php
+          <div class="row">
+            <div class="col-8 offset-4"><input class="custom-control" type="checkbox" name="xhelfer_ligen<?php echo $show?>[]" value="<?php echo $ligenname?>"<?php if (in_array($ligenname,$helfer_ligen)) echo " checked"?>> <?php echo  $titel?></div>
+          </div><?php
           }
         }
       }?>
-          <tr>
-            <td>&nbsp;</td>
-            <td align="center"><acronym title="<?php echo $text[327]?>"><input class="btn btn-primary btn-sm" type="submit" value="<?php echo $text[329]?>"></acronym></th><?php
+          <div class="row pt-3">
+            <div class="col"><acronym title="<?php echo $text[327]?>"><input class="btn btn-primary btn-sm" type="submit" value="<?php echo $text[329]?>"></acronym></div><?php
       if ($testshow!=0){?>      
-            <td align="right">
+            <div class="col">
               <a href="<?php echo $_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?php echo $show?>" onclick="return confirm('<?php echo $text[499]?>');"><img border="0" width="11" heigth="13" src="<?php echo URL_TO_IMGDIR?>/delete.gif" alt="<?php echo $text[330]?>" title="<?php echo $text[328]?>"></a>
-            </td><?php
+            </div><?php
       }?>
-          </tr><?php 
+          </div><?php 
     }//if $show=$testshow
     $testshow++;
   }//foreach
   ?>
         </table>
       </form>
-    </td>
-  </tr>
-  <tr>
-    <th colspan="2"><h1><?php echo $text[331]?></h1></th>
-  </tr>
-  <tr>
-    <td align="center" colspan="2">
-      <form name="lmoeditx" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-        <input type="hidden" name="action" value="admin">
-        <input type="hidden" name="todo" value="user">
-        <input type="hidden" name="save" value="-1">
-        <input type="hidden" name="show" value="<?php echo count($lmo_admin_data)?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td align="right"><input class="form-control" type="text" name="xadmin_name" size="16" maxlength="32" value="NeuerUser"></td>
-            <td align="left"><input class=" form-control" type="text" name="xadmin_pass" size="16" maxlength="32" value="<?php echo substr(md5(uniqid(rand())),0,rand(8,16));?>"></td>
-            <td align="right"><input class="btn btn-primary btn-sm" type="submit" value="<?php echo $text[329]?>" title="<?php echo $text[327]?>"></td>
-          </tr>
-        </table>
-      </form>
-    </td>
-  </tr>
-</table><?php
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"><h1><?php echo $text[331]?></h1></div>
+  </div>
+  <form name="lmoeditx" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" class="row">
+    <input type="hidden" name="action" value="admin">
+    <input type="hidden" name="todo" value="user">
+    <input type="hidden" name="save" value="-1">
+    <input type="hidden" name="show" value="<?php echo count($lmo_admin_data)?>">
+    <div class="col-auto offset-4"><input class="form-control" type="text" name="xadmin_name" style="width: 10rem;" maxlength="32" value="NeuerUser"></div>
+    <div class="col-auto"><input class="form-control" type="text" name="xadmin_pass" style="width: 10rem;" maxlength="32" value="<?php echo substr(md5(uniqid(rand())),0,rand(8,16));?>"></div>
+    <div class="col-auto"><input class="btn btn-primary btn-sm" type="submit" value="<?php echo $text[329]?>" title="<?php echo $text[327]?>"></div>
+  </form>
+</div><?php
 }
 
 //Sortierfunktion f�r die Admins
