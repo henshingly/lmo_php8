@@ -76,11 +76,11 @@ if ($ftype != "") {
         $j++;
         $t0 = $text[507].$j;
       }
-      echo "<input type='radio' name='xprogram' value='".PATH_TO_LMO."/".$dirliga.$files."'";
+      echo "<input type='radio' class='form-check-input' name='xprogram' value='".PATH_TO_LMO."/".$dirliga.$files."'";
       if ($xprogram == PATH_TO_LMO."/".$dirliga.$files) {
         echo " checked";
       }
-      echo " onChange=\"dolmoedit()\">".$t0."<br>";
+      echo " onChange=\"dolmoedit()\"> ".$t0."<br />";
     }
   }
   if ($i == 0) {

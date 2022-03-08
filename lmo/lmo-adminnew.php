@@ -185,12 +185,12 @@ if ($newpage == 3) {
   $file = $xfile.".l98";
   require(PATH_TO_LMO."/lmo-savefile.php");
 }?>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center"><h1><?php echo  $text[243]; ?></h1></td>
-  </tr>
-  <tr>
-    <td align="center"><?php 
+<div class="container">
+  <div class="row">
+    <div class?="col"><h1><?php echo  $text[243]; ?></h1></div>
+  </div>
+  <div class="row">
+    <div class="col"><?php 
 if($newpage<3){ ?>
       <form name="lmoedit" action="<?php echo  $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">
@@ -207,115 +207,81 @@ if($newpage<3){ ?>
         <input type="hidden" name="xanzsp" value="<?php echo  $xanzsp; ?>"><?php 
   }
 }?>
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <th class="nobr" align="left" colspan="3"><?php echo  $text[246]." ".($newpage+1)." ".$text[259]." 4"; ?></th>
-          </tr><?php 
+        <div class="container">
+          <div class="row">
+            <div class="col"><?php echo  $text[246]." ".($newpage+1)." ".$text[259]." 4"; ?></div>
+          </div><?php 
 if($newpage==0){ ?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $text[244]; ?></acronym></td>
-            <td class="nobr" align="left"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $dirliga; ?><input class="custom-control" type="text" name="xfile" size="28" maxlength="28" value="<?php echo  $xfile; ?>" placeholder="noname">.l98</acronym></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><acronym title="<?php echo  $text[118] ?>"><?php echo  $text[113]; ?></acronym></td>
-            <td class="nobr" align="left"><acronym title="<?php echo  $text[118] ?>"><input class="custom-control" type="text" name="xtitel" size="40" maxlength="60" value="<?php echo  $xtitel; ?>" placeholder="No Name"></acronym></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><acronym title="<?php echo  $text[175] ?>"><?php echo  $text[174]; ?></acronym></td>
-            <td class="nobr" align="left"><acronym title="<?php echo  $text[175] ?>"><select class="custom-select" name="xtype" onChange="dolmoedit()"><?php echo  "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>"; echo "<option value=\"1\""; if($xtype==1){echo " selected";} echo ">".$text[177]."</option>"; ?></select></acronym></td>
-          </tr><?php 
+          <div class="row">
+            <div class="col text-end"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $text[244]; ?></acronym></div>
+            <div class="col text-start"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $dirliga; ?><input class="custom-control" type="text" name="xfile" maxlength="28" value="<?php echo  $xfile; ?>" placeholder="noname">.l98</acronym></div>
+          </div>
+          <div class="row">
+            <div class="col text-end"><acronym title="<?php echo  $text[118] ?>"><?php echo  $text[113]; ?></acronym></div>
+            <div class="col text-start"><acronym title="<?php echo  $text[118] ?>"><input class="custom-control" type="text" name="xtitel" size="26rem" maxlength="60" value="<?php echo  $xtitel; ?>" placeholder="No Name"></acronym></div>
+          </div>
+          <div class="row">
+            <div class="col text-end"><acronym title="<?php echo  $text[175] ?>"><?php echo  $text[174]; ?></acronym></div>
+            <div class="col text-start"><acronym title="<?php echo  $text[175] ?>"><select class="custom-select" name="xtype" onChange="dolmoedit()"><?php echo  "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>"; echo "<option value=\"1\""; if($xtype==1){echo " selected";} echo ">".$text[177]."</option>"; ?></select></acronym></div>
+          </div><?php 
 }
 if($newpage==1){
   if($xtype==0){?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></td>
-            <td class="nobr" align="left">
-              <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td class="nobr" align="right">
-                    <input class="lcustom-control" type="number" name="xteams" style="width: 50px;" size="2" maxlength="2" value="18">
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><acronym title="<?php echo  $text[275] ?>"><?php echo  $text[274]; ?></acronym></td>
-            <td class="nobr" align="left">
-              <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td class="nobr" align="right">
-                    <input class="custom-control" type="number" name="xanzst" style="width: 50px;" size="3" maxlength="3" value="34">
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><acronym title="<?php echo  $text[278] ?>"><?php echo  $text[277]; ?></acronym></td>
-            <td class="nobr" align="left">
-              <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td class="nobr" align="right">
-                    <input class="custom-control" type="number" name="xanzsp" style="width: 50px;" size="2" maxlength="2" value="9">
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr><?php 
+          <div class="row">
+            <div class="col text-end"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></div>
+            <div class="col text-start"><input class="custom-control" type="number" name="xteams" style="width: 3rem;" maxlength="2" value="18"></div>
+          </div>
+          <div class="row">
+            <div class="col text-end"><acronym title="<?php echo  $text[275] ?>"><?php echo  $text[274]; ?></acronym></div>
+            <div class="col text-start"><input class="custom-control" type="number" name="xanzst" style="width: 3rem;" maxlength="3" value="34"></div>
+          </div>
+          <div class="row">
+            <div class="col text-end"><acronym title="<?php echo  $text[278] ?>"><?php echo  $text[277]; ?></acronym></div>
+            <div class="col text-start"><input class="custom-control" type="number" name="xanzsp" style="width: 3rem;" maxlength="2" value="9"></div>
+          </div><?php 
   }else{ ?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></td>
-            <td class="nobr" align="left">
+          <div class="row">
+            <div class="col text-end"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></div>
+            <div class="col text-start">
               <select class="lmo-formular-input" name="xteams" onChange="dolmoedit()"><?php if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>";} ?></select>
-            </td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr">&nbsp;</td>
-            <td class="nobr"><?php echo  $text[350] ?></td>
-          </tr><?php 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-end"></div>
+            <div class="col text-start"><?php echo  $text[350] ?></div>
+          </div><?php 
   }
 }
 if($newpage==2){
   if($xtype==0){?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right" valign="top"><acronym title="<?php echo  $text[285] ?>"><?php echo  $text[284]; ?></acronym></td>
-            <td class="nobr" align="left">
-              <input type="radio" name="xprogram" value="none"<?php if($xprogram=="none"){echo " checked";} ?> onChange="dolmoedit()"><?php echo  $text[286]; ?><br><br>
+          <div class="row">
+            <div class="col text-end"><acronym title="<?php echo  $text[285] ?>"><?php echo  $text[284]; ?></acronym></div>
+            <div class="col text-start">
+              <input type="radio" class="form-check-input" name="xprogram" value="none"<?php if($xprogram=="none"){echo " checked";} ?> onChange="dolmoedit()"> <?php echo  $text[286]; ?><br><br>
               <?php echo  $text[287]; ?>:<br><?php 
     $ftype=".l98";
     require(PATH_TO_LMO."/lmo-adminnewdir.php"); ?><br><?php 
     
-    // �nderungen s.janke@tu-bs.de - Beginn
+    // Änderungen s.janke@tu-bs.de - Beginn
     if ($xteams>=4) {
       $soll_anzsp = floor($xteams/2);
       $soll_anzst = floor($xteams*($xteams-1)/$soll_anzsp);
-      // Pr�fe: 1. Stimmt die Anzahl der Spiele pro Spieltag?
-      //             2. Ist die Spieltaganzahl gleich Hin- und R�ckrunde oder nur Hinrunde?
+      // Prüfe: 1. Stimmt die Anzahl der Spiele pro Spieltag?
+      //             2. Ist die Spieltaganzahl gleich Hin- und Rückrunde oder nur Hinrunde?
       if(($xanzsp==$soll_anzsp) && (($xanzst==$soll_anzst) || ($xanzst==$soll_anzst/2))){ ?>
-              <input type="radio" name="xprogram" value="random"<?php if($xprogram=="random"){echo " checked";} ?> onChange="dolmoedit()"><?php echo  $text[288];
+              <input type="radio" class="form-check-input" name="xprogram" value="random"<?php if($xprogram=="random"){echo " checked";} ?> onChange="dolmoedit()"> <?php echo  $text[288];
       }
     }
-    // �nderungen s.janke@tu-bs.de - Ende
+    // Änderungen s.janke@tu-bs.de - Ende
     
     ?>
-            </td>
-          </tr><?php 
+            </div>
+          </div><?php 
   } else {
     for($i=1;$i<=$xanzst;$i++){?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><acronym title="<?php echo  $text[352] ?>"><?php echo  $text[351]." ".$i; ?></acronym></td>
-            <td class="nobr" align="left">
+          <div class="row">
+            <div class="col text-end"><acronym title="<?php echo  $text[352] ?>"><?php echo  $text[351]." ".$i; ?></acronym></div>
+            <div class="col text-start">
               <select class="custom-select" name="xmod<?php echo  $i; ?>" onChange="dolmoedit()">
                 <option value="1"<?php if($xmodus[$i-1]==1){echo " selected";}?>><?php echo $text[353]?></option>
                 <option value="2"<?php if($xmodus[$i-1]==2){echo " selected";}?>><?php echo $text[354]?></option>
@@ -323,40 +289,39 @@ if($newpage==2){
                 <option value="5"<?php if($xmodus[$i-1]==5){echo " selected";}?>><?php echo $text[356]?></option>
                 <option value="7"<?php if($xmodus[$i-1]==7){echo " selected";}?>><?php echo $text[357]?></option>
               </select>
-            </td>
-          </tr><?php 
+            </div>
+          </div><?php 
     }
   }
 }
 if($newpage<3){ ?>
-          <tr>
-            <td class="lmoFooter" align="left" colspan="2">
-              <a href="<?php echo  $_SERVER['PHP_SELF']; ?>" class="btn btn-warning btn-sm" onclick="return siklmolink(this.href);" title="<?php echo  $text[248]; ?>"><?php echo  $text[247]; ?></a>
-            </td><?php 
+          <div class="row p-3">
+            <div class="col-2 offset-2">
+              <a href="<?php echo  $_SERVER['PHP_SELF']; ?>" class="btn btn-danger btn-sm" onclick="return siklmolink(this.href);" title="<?php echo  $text[248]; ?>"><?php echo  $text[247]; ?></a>
+            </div><?php 
   if($newpage<2){ ?>
-            <td align="right">
+            <div class="col-4 text-end">
               <input title="<?php echo  $text[261]; ?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo  $text[260]; ?>">
-            </td><?php 
+            </div><?php 
   } else {?>
-            <td align="right">
+            <div class="col-4 text-end">
               <input title="<?php echo  $text[290]; ?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo  $text[289]; ?>">
-            </td><?php 
+            </div><?php 
   }?>
-          </tr><?php 
+          </div><?php 
 }
 if($newpage==3){ ?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="left" colspan="2">&nbsp;<br><?php echo  $text[291]; ?><br>&nbsp;</td>
-          </tr>
-          <tr>
-            <td class="lmoFooter" colspan="3" align="left">
+          <div class="row">
+            <div class="col"><?php echo  $text[291]; ?></div>
+          </div>
+          <div class="row pt-3">
+            <div class="col">
               <a href="<?php echo  $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;st=-2&amp;file=".$file; ?>" class="btn btn-success btn-sm" title="<?php echo  $text[293]; ?>"><?php echo  $text[292]; ?></a>
-            </td>
-          </tr><?php 
+            </div>
+          </div><?php 
 } ?>
-        </table>
+        </div>
       </form>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
+</div>
