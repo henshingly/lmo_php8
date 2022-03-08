@@ -134,14 +134,14 @@ if ($show==0) {
 
 ?>
 <script src="<?php echo URL_TO_JSDIR?>/colorpicker.js" type="text/javascript"></script>
-<table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center"><a href="<?php echo $addr_options?>" onclick="return chklmolink();" title="<?php echo $text[320]?>"><?php echo $text[319]?></a></td>
-    <td align="center"><a href="<?php echo $addr_addons?>" onclick="return chklmolink();" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></td>
-    <td align="center"><?php echo $text[421]?></td>
-    <td align="center"><a href="<?php echo $addr_user?>" onclick="return chklmolink();" title="<?php echo $text[318]?>"><?php echo $text[317]?></a></td>
-  </tr>
-</table>
+<nav>
+  <ul class="nav nav-pills justify-content-center">
+    <li class="nav-item" role="presentation"><a href="<?php echo $addr_options?>"class="nav-link"  title="<?php echo $text[320]?>"><?php echo $text[319]?></a></li>
+    <li class="nav-item" role="presentation"><a href="<?php echo $addr_addons?>" class="nav-link" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></li>
+    <li class="nav-item" role="presentation"><a href="#" class="nav-link active"><?php echo $text[421]?></a></li>
+    <li class="nav-item" role="presentation"><a href="<?php echo $addr_user?>" class="nav-link" title="<?php echo $text[318]?>"><?php echo $text[317]?></a></li>
+  </ul>
+</nav>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center" colspan="2"><h1><?php echo $text[432] ?></h1></td>
