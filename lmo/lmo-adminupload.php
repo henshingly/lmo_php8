@@ -43,29 +43,25 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
     }
     @chmod($ufile,0644);
   }?>
-<table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td align="center"><h1><?php echo $text[299];?></h1></td>
-  </tr>
-  <tr>
-    <td align="center">
+<div class="container">
+  <div class="row">
+    <div class="col"><h1><?php echo $text[299];?></h1></div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-auto">
       <form enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td align="center"><acronym title="<?php echo $text[302] ?>"><?php echo $text[300]; ?>:</acronym></td>
-          </tr>
-          <tr>
-            <td align="center">
-              <input type="hidden" name="action" value="admin">
-              <input type="hidden" name="todo" value="upload">
-              <input type="hidden" name="upl" value="1">
-              <input type="file" name="userfile">
-            </td>
-          </tr>
-          <tr><td align="center"><input type="submit" value="<?php echo $text[301]; ?>"></td></tr>
-        </table>
+        <div class="mb-3">
+          <acronym title="<?php echo $text[302] ?>"><?php echo $text[300]; ?>:</acronym>
+        </div>
+        <div class="input-group mb-3">
+          <input type="hidden" name="action" value="admin">
+          <input type="hidden" name="todo" value="upload">
+          <input type="hidden" name="upl" value="1">
+          <input type="file" name="userfile" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary" value=""><?php echo $text[301]; ?></button>
       </form>
-    </td>
-  </tr>
-</table><?php
+    </div>
+  </div>
+</div><?php
 }?>
