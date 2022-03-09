@@ -101,7 +101,7 @@ if ($_SESSION['lmouserok']==2) {
     <div class="col-2 text-end"><?php
   $testshow=0;
   foreach($lmo_admin_data as $lmo_admin) {
-    $show_admin_name=$lmo_admin[2]==2?"<em>".$lmo_admin[0]."</em><br />":$lmo_admin[0];
+    $show_admin_name=$lmo_admin[2]==2?"<em>".$lmo_admin[0]."</em>":$lmo_admin[0];
     if ($show==$testshow) {
       echo $show_admin_name."<br />";
     } else {?>
@@ -136,7 +136,7 @@ if ($_SESSION['lmouserok']==2) {
             <div class="col-4 text-end"><?php echo $text[324]?></div>
             <div class="col-8 text-start"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=true" class="custom-control" type="radio" name="xadmin_rang<?php echo $show?>" value="2" <?php if ($lmo_admin[2]==2) echo " checked";?>> <?php echo $text[326]?></div>
           </div>
-          <div class="row">
+          <div class="row pt-3">
             <div class="col-8 offset-4 text-start"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=false" class="custom-control" type="radio" name="xadmin_rang<?php echo $show?>" value="1" <?php if ($lmo_admin[2]==1) echo " checked";?>> <?php echo $text[325]?></div>
           </div>
           <div class="row">
@@ -162,7 +162,7 @@ if ($_SESSION['lmouserok']==2) {
             <div class="col"><acronym title="<?php echo $text[327]?>"><input class="btn btn-primary btn-sm" type="submit" value="<?php echo $text[329]?>"></acronym></div><?php
       if ($testshow!=0){?>      
             <div class="col">
-              <a href="<?php echo $_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?php echo $show?>" onclick="return confirm('<?php echo $text[499]?>');"><img border="0" width="11" heigth="13" src="<?php echo URL_TO_IMGDIR?>/delete.gif" alt="<?php echo $text[330]?>" title="<?php echo $text[328]?>"></a>
+              <a href="<?php echo $_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?php echo $show?>" class="btn btn-danger btn-sm"onclick="return confirm('<?php echo $text[499]?>');" title="<?php echo $text[328]?>"><?php echo $text[330]?></a>
             </div><?php
       }?>
           </div><?php 
@@ -174,7 +174,7 @@ if ($_SESSION['lmouserok']==2) {
       </form>
     </div>
   </div>
-  <div class="row">
+  <div class="row p-3">
     <div class="col"><h1><?php echo $text[331]?></h1></div>
   </div>
   <form name="lmoeditx" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" class="row">

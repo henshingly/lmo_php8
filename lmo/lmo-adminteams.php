@@ -226,7 +226,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 /** Mannschaftsnamen */
 	for ($i=1;$i<=$anzteams;$i++) { 
 ?>
-          <div class="row">
+          <div class="row p-1">
             <div class="col-4">     
                 <input class="custom-control" type="text" name="xteams<?php echo $i; ?>" size="25" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" placeholder="<?php echo $text[582] ?>" onChange="dolmoedit()">
                 <input class="custom-control" type="text" name="xteamm<?php echo $i; ?>" size="6" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" placeholder="<?php echo $text[583] ?>" onChange="dolmoedit()">
@@ -290,9 +290,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 /** Mannschaft löschen */
 ?>
             <div class="col-1">
-              <a href='<?php echo $addz.$i; ?>' onclick="return dteamlmolink(this.href,'<?php echo $teams[$i]; ?>');" title="<?php echo $text[334]; ?>">
-                <img src="<?php echo URL_TO_IMGDIR."/delete.gif"?>" width="11" height="13" alt="<?php $text[333];?>" border="0">
-              </a>
+              <a href='<?php echo $addz.$i; ?>' onclick="return dteamlmolink(this.href,'<?php echo $teams[$i]; ?>');" class="btn btn-danger btn-sm" title="<?php echo $text[334]; ?>"><?php echo $text[330];?></a>
             </div>
 <?php
 		} 
