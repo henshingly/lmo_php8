@@ -176,14 +176,10 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
       }
     }
   }
-  if ($lmtype == 0) {
-    $breite = 4;
-  } else {
-    $breite = 2;
-  }
   $addr = $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
   $addb = $_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
   $addz = $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=-2&amp;team=";
+  
   include(PATH_TO_LMO."/lmo-adminsubnavi.php");
 ?>
 

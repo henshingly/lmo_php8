@@ -22,13 +22,6 @@
 if ($file != "") {
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
-  $breite = 10;
-  if ($spez == 1) {
-    $breite = $breite+2;
-  }
-  if ($datm == 1) {
-    $breite = $breite+1;
-  }
   $anzsp = $anzteams;
   for($i = 0; $i < $st; $i++) {
     $anzsp = $anzsp/2;
@@ -194,11 +187,13 @@ if ($file != "") {
     }
   }?>
   <div class="row">
-    <div class="col-6 text-start">&nbsp;<?php
+    <div class="col-2 text-start"><?php
    $st0 = $st-1;
    if ($st > 1) {?>
        <a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a><?php
-   }
+   } ?>
+     </div>
+     <div class="col-2 offset-5 text-end"><?php
    $st0 = $st+1;
    if ($st < $anzst) {?>
        <a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a><?php

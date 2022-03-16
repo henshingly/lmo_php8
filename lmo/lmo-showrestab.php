@@ -23,16 +23,6 @@ if (isset($file) && $file != "") {
   if(!empty($_GET['st'])) { $endtab = $st;}
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=$action&amp;tabtype=$tabtype&amp;file=".$file."&amp;st=";
-  $breite = 12;
-  if ($spez == 1) {
-    $breite = $breite+2;
-  }
-  if (in_array(3,$msieg[$st-1])) {
-    $breite = $breite+4;
-  }
-  if ($datm == 1) {
-    $breite = $breite+1;
-  }
   if ($endtab > 1) {
     $endtab--;
     require(PATH_TO_LMO."/lmo-calctable.php");
