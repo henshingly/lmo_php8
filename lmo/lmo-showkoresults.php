@@ -44,7 +44,8 @@ if ($file != "") {
   <tr>
     <td align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-        <tr><?php
+        <tr>
+<?php
   if ($st == $anzst) {
     $j = $text[374];
   } elseif($st == $anzst-1) {
@@ -65,8 +66,9 @@ if ($file != "") {
       echo " ".$text[4]." ".$datum2[$st-1];
     }
   }?>
-          </th>
-        </tr><?php
+</th>
+        </tr>
+<?php
   $datsort = $mterm[$st-1];
   asort($datsort);
   reset($datsort);
@@ -79,24 +81,30 @@ if ($file != "") {
         <tr>
           <th class="nobr" colspan="<?php echo $breite; ?>"><?php if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></th>
         </tr><?php        }?>
-        <tr><?php        if($datm==1){
+        <tr>
+<?php
+        if($datm==1){
           if($mterm[$st-1][$i][$n]>0){
             $dum1=strftime($datf, $mterm[$st-1][$i][$n]);
           } else {
             $dum1="";
           }?>
-          <td class="nobr"><?php echo $dum1; ?></td><?php        }?>
-          <td class="nobr" width="2">&nbsp;</td><?php
+          <td class="nobr"><?php echo $dum1; ?></td>
+<?php
+        }
+?>
+          <td class="nobr" width="2">&nbsp;</td>
+<?php
         if ($n == 0) {
           $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
           $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
           $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
           if ($m == 1) {
-            echo "<td class=\"lmoTurnierSieger nobr\" align='right'>";
+            echo "          <td class=\"lmoTurnierSieger nobr\" align='right'>";
           } elseif ($m==2) {
-            echo "<td class=\"lmoTurnierVerlierer nobr\" align='right'>";
+            echo "          <td class=\"lmoTurnierVerlierer nobr\" align='right'>";
           } else {
-            echo "<td class='nobr' align='right'>";
+            echo "          <td class='nobr' align='right'>";
           }
           if ($plan==1) {
             echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
@@ -112,14 +120,16 @@ if ($file != "") {
             echo "</a>";
           }
           echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
-          echo "</td>";?>
-          <td class="nobr" align="center" width="10">-</td><?php
+          echo "</td>\n";
+?>
+          <td class="nobr" align="center" width="10">-</td>
+<?php
           if ($m == 2) {
-            echo "<td align='left' class=\"lmoTurnierSieger nobr\">";
+            echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
           } elseif($m==1) {
-            echo "<td align='left' class=\"lmoTurnierVerlierer nobr\">";
+            echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">";
           } else {
-            echo "<td align='left' class='nobr'>";
+            echo "          <td class=\"nobr\" align=\"left\">";
           }
           echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
           if ($plan==1) {
@@ -135,9 +145,12 @@ if ($file != "") {
           if ($plan==1) {
             echo "</a>";
           }?>
-          </td><?php
+</td>
+<?php
         } else { ?>
-          <td class="nobr" colspan="3">&nbsp;</td><?php        }?>
+          <td class="nobr" colspan="3">&nbsp;</td>
+<?php
+        }?>
           <td class="nobr" width="2">&nbsp;</td>
           <td class="nobr" align="right"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?></td>
           <td class="nobr" align="center" width="8">:</td>
@@ -178,16 +191,18 @@ if ($file != "") {
           $lmo_spielnotiz="";
         } else {
           echo "&nbsp;";
-        }?>
-          </td>
-        </tr><?php      }
+        }?></td>
+        </tr>
+<?php
+      }
       if(($modus[$st-1]>1) && ($i<=$anzsp-1)){ ?>
         <tr>
           <td class="nobr" colspan="<?php echo $breite; ?>">&nbsp;</td>
-        </tr><?php      }
+        </tr>
+<?php
+      }
     }
   }?>
-
       </table>
     </td>
   </tr>
