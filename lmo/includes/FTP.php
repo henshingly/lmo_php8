@@ -28,7 +28,7 @@ require_once dirname(__FILE__).'/PEAR.php';
  * @name NET_FTP_FILES_ONLY
  * @see Net_FTP::ls()
  */
-define('NET_FTP_FILES_ONLY', 0, true);
+define('NET_FTP_FILES_ONLY', 0);
 /**
  * Option to let the ls() method return only directories.
  *
@@ -36,7 +36,7 @@ define('NET_FTP_FILES_ONLY', 0, true);
  * @name NET_FTP_DIRS_ONLY
  * @see Net_FTP::ls()
  */
-define('NET_FTP_DIRS_ONLY', 1, true);
+define('NET_FTP_DIRS_ONLY', 1);
 /**
  * Option to let the ls() method return directories and files (default).
  *
@@ -44,7 +44,7 @@ define('NET_FTP_DIRS_ONLY', 1, true);
  * @name NET_FTP_DIRS_FILES
  * @see Net_FTP::ls()
  */
-define('NET_FTP_DIRS_FILES', 2, true);
+define('NET_FTP_DIRS_FILES', 2);
 /**
  * Option to let the ls() method return the raw directory listing from ftp_rawlist()
  *
@@ -52,7 +52,7 @@ define('NET_FTP_DIRS_FILES', 2, true);
  * @name NET_FTP_RAWLIST
  * @see Net_FTP::ls()
  */
-define('NET_FTP_RAWLIST', 3, true);
+define('NET_FTP_RAWLIST', 3);
 /**
  * Option to indicate that non-blocking features should not be used in
  * put(). This will also disable the listener functionality as a side effect.
@@ -61,7 +61,7 @@ define('NET_FTP_RAWLIST', 3, true);
  * @name NET_FTP_BLOCKING
  * @see Net_FTP::put()
  */
-define('NET_FTP_BLOCKING', 1, true);
+define('NET_FTP_BLOCKING', 1);
 /**
  * Option to indicate that non-blocking features should be used if available in
  * put(). This will also enable the listener functionality.
@@ -72,7 +72,7 @@ define('NET_FTP_BLOCKING', 1, true);
  * @name NET_FTP_NONBLOCKING
  * @see Net_FTP::put()
  */
-define('NET_FTP_NONBLOCKING', 2, true);
+define('NET_FTP_NONBLOCKING', 2);
 /**
  * Error code to indicate a failed connection
  * This error code indicates, that the connection you tryed to set up
@@ -1075,9 +1075,9 @@ class Net_FTP extends PEAR
         // going through (user, group, world)
         for ($i = 0; $i < strlen($permissions); $i++) {
             // Read permission is set but execute not yet
-            if ((int)$permissions{$i} & 4 and !((int)$permissions{$i} & 1)) {
+            if ((int)$permissions[$i] & 4 and !((int)$permissions[$i] & 1)) {
                 // Adding execute flag
-                $permissions{$i} = (int)$permissions{$i} + 1;
+                $permissions[$i] = (int)$permissions[$i] + 1;
             }
         }
         return (string)$permissions;
