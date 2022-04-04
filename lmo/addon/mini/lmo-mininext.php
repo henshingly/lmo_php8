@@ -66,8 +66,8 @@ $mini_barWidth = isset($_GET['mini_barWidth']) && is_numeric($_GET['mini_barWidt
                             )
                        );
 
-$file = isset($_GET['file'])?$_GET['file']:isset($file)?$file:NULL;
-$archivFolder = isset($_GET['folder'])?$_GET['folder']:isset($folder)?$folder:basename($ArchivDir);// Default
+$file = isset($_GET['file'])?$_GET['file']:(isset($file)?$file:NULL);
+$archivFolder = isset($_GET['folder'])?$_GET['folder']:(isset($folder)?$folder:basename($ArchivDir));// Default
 
 if (substr($archivFolder,-1) != '/') {
   $archivFolder .= '/';
@@ -77,8 +77,8 @@ if (strpos($archivFolder,'../')!==false) {
   exit();
 }
 
-$a = isset($_GET['a'])?$_GET['a']:isset($a)?$a:NULL; // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
-$b = isset($_GET['b'])?$_GET['b']:isset($b)?$b:NULL; // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
+$a = isset($_GET['a'])?$_GET['a']:(isset($a)?$a:NULL); // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
+$b = isset($_GET['b'])?$_GET['b']:(isset($b)?$b:NULL); // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
 
 $mini_cache_refresh = isset($mini_cache_refresh)?$mini_cache_refresh:0;
 
