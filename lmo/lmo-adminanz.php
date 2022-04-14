@@ -71,29 +71,25 @@ if($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1
         <div class="container">
           <div class="row">
             <div class="col"><strong><?php echo $text[340]; ?></strong></div>
-          </tr>
+          </div>
           <div class="row">
             <div class="col"><?php echo getMessage($text[561],TRUE);?></div>
-          </tr>
+          </div>
           <div class="row">
             <div class="col-5 text-end"><acronym title="<?php echo $text[275] ?>"><?php echo $text[274]; ?></acronym></div>
-            <div class="col-5 text-start"><input class="custom-control" type="number" style="width: 50px;" name="xanzst" size="3" maxlength="3" value="<?php echo $anzst?>"></div>
+            <div class="col-5 text-start"><input class="custom-control" type="number" style="width: 3rem;" name="xanzst" size="3" maxlength="3" value="<?php echo $anzst?>"></div>
           </div>
           <div class="row">
             <div class="col-5 text-end"><acronym title="<?php echo $text[278] ?>"><?php echo $text[277]; ?></acronym></div>
-            <div class="col-5 text-start"><input class="custom-control" type="number" style="width: 50px;" name="xanzsp" size="2" maxlength="2" value="<?php echo $anzsp?>"></div>
+            <div class="col-5 text-start"><input class="custom-control" type="number" style="width: 3rem;" name="xanzsp" size="2" maxlength="2" value="<?php echo $anzsp?>"></div>
           </div>
-          <div class="row pt-3">
+          <div class="row p-3">
             <div class="col">
               <input title="<?php echo $text[114] ?>" class="btn btn-primary btn-sm" type="submit" name="best" value="<?php echo $text[188]; ?>">
+              <a class="btn btn-danger btn-sm" href="<?php echo $addr?>-1"><?php echo $text[544] ?></a>
             </div>
           </div>
-          <div class="row pt-2">
-            <div class="col">
-              <a href="<?php echo $addr?>-1"><?php echo $text[544] ?></a>
-            </div>
-          </div>
-        </table>
+        </div>
       </form>
     </div>
   </div>

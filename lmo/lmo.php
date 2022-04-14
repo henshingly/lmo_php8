@@ -17,6 +17,7 @@
   *
   * $Id$
   */
+include ("includes/ref/ref.php");
 
 if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POST['lmo_install_step'])) {
       include(dirname(__FILE__)."/install/install.php");
