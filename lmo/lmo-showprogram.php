@@ -152,8 +152,7 @@ if($file!=""){
             if ($mnote[$j][$i]!="") {
               $lmo_spielnotiz.=$text[22].": ".$mnote[$j][$i];
             }
-            //echo "<a href='#' onclick=\"alert('".htmlentities(strip_tags($lmo_spielnotiz))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
-            echo "<a href='#' onclick=\"alert('".htmlentities(strip_tags($lmo_spielnotiz))."');window.focus();return false;\" title='".nl2br($lmo_spielnotiz)."'><i class='far fa-comment'></i></a>";
+            echo "<a href='#' onclick=\"alert('".htmlentities(strip_tags($lmo_spielnotiz))."');window.focus();return false;\" title='".nl2br($lmo_spielnotiz)."'><i class='bi bi-info-circle-fill text-info' style='font-size: 1.3rem;'></i></a>";
             $lmo_spielnotiz="";
           } else {
             echo "<img src='".URL_TO_IMGDIR."/blank.png' width='1' height='1' border='0' alt=''>";

@@ -85,14 +85,15 @@ for($x = 1; $x <= $anzteams; $x++) {
   <div class="row">
     <div class="col-2 text-end"><span class="<?php echo $label; ?>"><?php echo $x; ?></span>
 <?php
-  $y = 0;
+  $y = "right text-info";
   if ($endtab > 1 && isset($platz0[$i]) && isset($platz1[$i])) {
     if ($platz0[$i] < $platz1[$i]) {
-      $y = 1;
+      $y = "up text-success";
     } elseif($platz0[$i] > $platz1[$i]) {
-      $y = 2;
+      $y = "down text-danger";
     }
   }?>
+    <i class="bi bi-arrow-<?php echo $y?>"></i>
     <img src='<?php echo URL_TO_IMGDIR."/lmo-tab".$y.".gif"; ?>' width="9" height="9" border="0" alt='' />
     </div>
     <?php
@@ -134,7 +135,7 @@ for($x = 1; $x <= $anzteams; $x++) {
       if ($teamn[$i]!="") {
         $lmo_tabellennotiz.=$teamn[$i];
       }
-      $notiz = <a href="#" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"> <img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /></a><?php
+      $notiz = <a href="#" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i></a><?php
       $lmo_tabellennotiz="";
     } else {
       $notiz = "&nbsp;";

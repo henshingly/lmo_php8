@@ -212,11 +212,11 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
   if ($lmtype==0) {
 /** Titel Notiz */
 ?>
-            <div class="col-1"><acronym title="<?php echo $text[405] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[404]; ?>"></acronym></div>
+            <div class="col-1"><acronym title="<?php echo $text[405] ?>"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i></acronym></div>
 <?php
   }
 /** Titel Homepage */  ?>
-            <div class="col-1"><acronym title="<?php echo $text[130] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[129]; ?>"></acronym></div>
+            <div class="col-1"><acronym title="<?php echo $text[130] ?>"><i class="bi bi-box-arrow-up-right text-warning" style="font-size: 1.3rem;"></i></acronym></div>
           </div>
 <?php
 /** Mannschaftsnamen */

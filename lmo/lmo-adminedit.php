@@ -351,9 +351,9 @@ if ($file != "") {
   } else {?>
             <div class="col-1">&nbsp;</div><?php
   }?>
-            <div class="col-1"><acronym title="<?php echo $text[213] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/paragraph.gif" width="17" height="17" alt="<?php echo $text[217]; ?>"></acronym></div>
-            <div class="col-auto"><acronym title="<?php echo $text[112] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[218]; ?>"></acronym></div>
-            <div class="col-auto"><acronym title="<?php echo $text[263] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[262]; ?>"></acronym></div><?php
+            <div class="col-1"><acronym title="<?php echo $text[213] ?>"><i class="bi bi-chat-fill text-success" style="font-size: 1.3rem;"></i></acronym></div>
+            <div class="col-1"><acronym title="<?php echo $text[112] ?>"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i></acronym></div>
+            <div class="col-1"><acronym title="<?php echo $text[263] ?>"><i class="bi bi-box-arrow-up-right text-warning" style="font-size: 1.3rem;"></i></acronym></div><?php
   if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
             <div class="col-1"><?php echo $text['tipp'][57]; ?></div><?php
   }?>
@@ -437,13 +437,13 @@ if ($file != "") {
               <script type="text/javascript">document.getElementById('gT<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'gT<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
             </div>
-            <div class="col-auto">
+            <div class="col-1">
               <input id="n<?php echo $i?>" class="form-control" type="text" name="xmnote<?php echo $i; ?>" tabindex="<?php echo $i;?>11" size="16" maxlength="255" value="<?php echo htmlentities($mnote[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
       if (trim($mnote[$st-1][$i]) == '') {?>
               <script type="text/javascript">document.getElementById('n<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
             </div>
-            <div class="col-auto"><input id="s<?php echo $i?>" class="form-control" type="text" name="xmberi<?php echo $i; ?>" tabindex="<?php echo $i;?>12" size="14" maxlength="255" value="<?php echo htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
+            <div class="col-1"><input id="s<?php echo $i?>" class="form-control" type="text" name="xmberi<?php echo $i; ?>" tabindex="<?php echo $i;?>12" size="14" maxlength="255" value="<?php echo htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
       if (trim($mberi[$st-1][$i]) == '') {?>
               <script type="text/javascript">document.getElementById('s<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
@@ -574,13 +574,13 @@ if ($file != "") {
                 <option<?php if($mspez[$st-1][$i][$n]==$text[1]){echo " selected";}?>><?php echo $text[1]?></option>
               </select>
             </div>
-            <div class="col-auto">
+            <div class="col-1">
               <input id="n<?php echo $i.$n?>" class="custom-control" type="text" name="xmnote<?php echo $i.$n; ?>" size="16" maxlength="255" value="<?php echo htmlentities($mnote[$st-1][$i][$n]); ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>10"><?php
       if (trim($mnote[$st-1][$i][$n]) == '') {?>
               <script type="text/javascript">document.getElementById('n<?php echo $i.$n?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?php echo $i.$n?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
             </div>
-             <div class="col-auto">
+             <div class="col-1">
               <input id="s<?php echo $i.$n?>" class="custom-control" type="text" name="xmberi<?php echo $i.$n; ?>" size="16" maxlength="255" value="<?php echo htmlentities($mberi[$st-1][$i][$n]); ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>11"><?php
       if (trim($mberi[$st-1][$i][$n]) == '') {?>
               <script type="text/javascript">document.getElementById('s<?php echo $i.$n?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?php echo $i.$n?>\').style.display=\'inline\';return false;">+</a>');</script><?php

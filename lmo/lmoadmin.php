@@ -17,6 +17,7 @@
   *
   * $Id$
   */
+  
 
 if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POST['lmo_install_step'])) {
   include(dirname(__FILE__)."/install/install.php");
@@ -44,6 +45,7 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <title>LMO Admin</title>
   <link href="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $bootstrap?>/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" >
   <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_TEMPLATEDIR?>/style.css'>
 </head>
 <body>

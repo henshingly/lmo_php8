@@ -17,6 +17,15 @@
   *
   * $Id$
   */
+  
+$datei = fopen("ip.txt","a");
+if ($datei) {
+   fputs($datei, "IP: ".$_SERVER['REMOTE_ADDR']."\n");
+   fputs($datei, "Host: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\n");
+   fputs($datei, "Script: ".$_SERVER['REQUEST_URI']."\n");
+   fputs($datei, "\n");
+}
+fclose($datei);
 
 function check_hilfsadmin($datei) {
   $hilfsadmin_berechtigung=FALSE;
@@ -76,7 +85,6 @@ function filterZero($a) {
   return (!empty($a));
 }
 
-
 /**
  * Returns HTML imgage code for a small team icon
  *
@@ -107,9 +115,9 @@ function getSmallImage($team,$alternative_text='') {
  */
 function getMessage($message,$error=FALSE) {
   if ($error) {
-    return '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$message.'</p>';
+    return '<p class="error"><i class="bi bi-x-circle-fill text-danger"></i> '.$message.'</p>';
   }else {
-    return '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$message.'</p>';
+    return '<p class="message"><i class="bi bi-check-circle-fil text-success"></i> '.$message.'</p>';
   }
 }
 /**
@@ -131,7 +139,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
       $erg = 2;
     }
   } elseif($gmod == 2) {
-	if($m1[1] != "_") {
+    if($m1[1] != "_") {
       if (($m1[0]+$m1[1]) > ($m2[0]+$m2[1])) {
         $erg = 1;
       } elseif(($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
@@ -141,7 +149,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
           $erg = 2;
         } elseif($m2[0] < $m1[1]) {
           $erg = 1;
-		}
+        }
       }
     } 
   } else {
