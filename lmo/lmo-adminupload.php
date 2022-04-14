@@ -59,7 +59,7 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
           <input type="hidden" name="upl" value="1">
           <input type="file" name="userfile" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary" value=""><?php echo $text[301]; ?></button>
+        <button type="submit" class="btn btn-primary m-3" value=""><?php echo $text[301]; ?></button>
       </form>
     </div>
   </div>

@@ -86,41 +86,41 @@ if ($file != "") {
             $urltb = " <a href=\"".$teamu[$teamb[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
           }
           if ($m == 1) {
-            echo "<div class='col-3 text-success text-end d-none d-md-block'>";
+            echo "<div class='col-3 text-success text-end d-none d-lg-block'>";
           } elseif ($m==2) {
-            echo "<div class='col-3 text-danger text-end d-none d-md-block'>";
+            echo "<div class='col-3 text-danger text-end d-none d-lg-block'>";
           } else {
-            echo "<div class='col-3 text-end d-none d-md-block'>";
+            echo "<div class='col-3 text-end d-none d-lg-block'>";
           }
           echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$j][$i]],""," alt=''");
           echo $heim1.$teams[$teama[$j][$i]].$heim2.$urlta;
           echo " </div>";
           if ($m == 1) {
-            echo "<div class='col-3 text-success text-end d-md-none'>";
+            echo "<div class='col-3 text-success text-end d-lg-none'>";
           } elseif ($m==2) {
-            echo "<div class='col-3 text-danger text-end d-md-none'>";
+            echo "<div class='col-3 text-danger text-end d-lg-none'>";
           } else {
-            echo "<div class='col-3 text-end d-md-none'>";
+            echo "<div class='col-3 text-end d-lg-none'>";
           }
           echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]],""," alt=''");
           echo $heim1.$teamk[$teama[$j][$i]].$heim2.$urlta;
           echo " </div>";
           if ($m == 2) {
-            echo "<div class='col-3 text-success d-none d-md-block'> - &nbsp;";
+            echo "<div class='col-3 text-success d-none d-lg-block'> - &nbsp;";
           } elseif($m==1) {
-            echo "<div class='col-3 text-danger d-none d-md-block'> - &nbsp;";
+            echo "<div class='col-3 text-danger d-none d-lg-block'> - &nbsp;";
           } else {
-            echo "<div class='col-3 d-none d-md-block'> - &nbsp;";
+            echo "<div class='col-3 d-none d-lg-block'> - &nbsp;";
           }
           echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]],""," alt=''");
           echo $gast1.$teams[$teamb[$j][$i]].$gast2.$urltb;
           echo " </div>";
           if ($m == 2) {
-            echo "<div class='col-3 text-success d-md-none'> - &nbsp;";
+            echo "<div class='col-3 text-success d-lg-none'> - &nbsp;";
           } elseif($m==1) {
-            echo "<div class='col-3 text-danger d-md-none'> - &nbsp;";
+            echo "<div class='col-3 text-danger d-lg-none'> - &nbsp;";
           } else {
-            echo "<div class='col-3 d-md-none'> - &nbsp;";
+            echo "<div class='col-3 d-lg-none'> - &nbsp;";
           }
           echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]],""," alt=''");
           echo $gast1.$teamk[$teamb[$j][$i]].$gast2.$urltb;

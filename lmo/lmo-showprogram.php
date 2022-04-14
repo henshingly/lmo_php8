@@ -58,8 +58,8 @@ if($file!=""){
               $dum1=$dum2="";
             }?>
 
-          <div class="col-2 text-end d-none d-md-block"><?php echo $dum1; ?></div>
-          <div class="col-2 text-end d-md-none"><?php echo $dum2; ?></div><?php
+          <div class="col-2 text-end d-none d-lg-block"><?php echo $dum1; ?></div>
+          <div class="col-2 text-end d-lg-none"><?php echo $dum2; ?></div><?php
         } ?>
           
           <?php
@@ -71,13 +71,13 @@ if($file!=""){
             $heim2 = "</strong>";
           }
           ?>
-          <div class="col-3 text-end d-none d-md-block">
+          <div class="col-3 text-end d-none d-lg-block">
           <?php 
             echo $heim1.$teams[$teama[$j][$i]].$heim2; 
             //echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
           ?>
           </div>
-          <div class="col-3 text-end d-md-none">
+          <div class="col-3 text-end d-lg-none">
           <?php 
             echo $heim1.$teamk[$teama[$j][$i]].$heim2; 
             //echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
@@ -93,13 +93,13 @@ if($file!=""){
           }
           ?>
 
-          <div class="col-3 text-start d-none d-md-block"> -&nbsp;&nbsp;
+          <div class="col-3 text-start d-none d-lg-block"> -&nbsp;&nbsp;
           <?php 
             echo $gast1.$teams[$teamb[$j][$i]].$gast2; 
             //echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
           ?>
           </div>
-          <div class="col-3 text-start d-md-none"> -&nbsp;&nbsp; 
+          <div class="col-3 text-start d-lg-none"> -&nbsp;&nbsp; 
           <?php 
             echo $gast1.$teamk[$teamb[$j][$i]].$gast2; 
             //echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," style='vertical-align: middle;'"," alt=''")."&nbsp;";
