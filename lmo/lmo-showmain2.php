@@ -256,7 +256,7 @@ if ($eintippspiel==1) {
     $output_tippspiel.=$action!="tipp"?       "<li class='nav-item'><a href='{$addm}tipp' title='{$text['tipp'][0]}' class='nav-link'>{$text['tipp'][0]}</a></li>" : "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>{$text['tipp'][0]}</a></li>";
   }
 }
-e($template->toString());
+d($template->toString());
 //Tippspiel-Addon
 
 
