@@ -59,7 +59,7 @@ while($files=readdir($verz)){
           if($option_name=="Teams"){$ligadatei[$liga_counter]['anz_teams']=$option_wert;}
           if($option_name=="Type"){
             if($option_wert=="1"){$ligadatei[$liga_counter]['rundenbezeichnung']=$text[370];}
-          }          //Alle benötigten Werte gefunden -> Abbruch
+          }          //Alle benÃ¶tigten Werte gefunden -> Abbruch
           if($ligadatei[$liga_counter]['liga_name']!="" &&
              $ligadatei[$liga_counter]['anz_teams']!='')break;
        }
@@ -77,9 +77,9 @@ closedir($verz);
 
 //usort($ligadatei,'cmp');
 
-isset($_POST['formular1']) ? $form1=true : $form1=false;                  // formular 1 ausgefüllt?
-isset($_POST['formular2']) ? $form2=true : $form2=false;                  // formular 2 ausgefüllt?
-isset($_POST['formular3']) ? $form3=true : $form3=false;                  // formular 3 ausgefüllt?
+isset($_POST['formular1']) ? $form1=true : $form1=false;                  // formular 1 ausgefÃ¼llt?
+isset($_POST['formular2']) ? $form2=true : $form2=false;                  // formular 2 ausgefÃ¼llt?
+isset($_POST['formular3']) ? $form3=true : $form3=false;                  // formular 3 ausgefÃ¼llt?
 
 if ($form1) {
   isset($_POST['dateiname']) ? $save_file_name=$_POST['dateiname'] : $save_file_name='unbenannt';
@@ -161,7 +161,7 @@ if ($form3) {
           $teamnr=0;
         }
       } else {
-        echo "3. Formular SAVE_FILE: ".PATH_TO_LMO.'/'.$dirliga.$ligen_datei." ".$text['viewer'][42]"<br>";
+        echo "3. Formular SAVE_FILE: ".PATH_TO_LMO.'/'.$dirliga.$ligen_datei." ".$text['viewer'][42]."<br>";
       }
       $zz++; $teamnr++;
       $save_array[$zz]=$ligen_datei.'_'.$teamnr.'='.$team;
