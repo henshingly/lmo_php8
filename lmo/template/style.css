@@ -6,3 +6,39 @@
 .lmoMiddle {
     margin:0.5em auto 1.5em auto;
 }
+
+.custom-select {
+    padding: .2rem 0;
+}
+
+.custom-control {
+    padding: .1rem 0;
+}
+
+.custom-input {
+    padding: .1rem 0;
+}
+
+a span.popup, a:link span.popup{
+	display: none;
+}
+
+a:hover span.popup{
+  display: inline;
+  font-size:80%;
+  position: absolute;
+  background: #eee;
+  width: 15em;
+  margin: 1.5em 0 0 -4em;  
+  padding: 0.2em;
+  z-index: 999;
+  white-space:normal;
+  text-decoration:none !important;
+  text-align:left;
+}
+
+a:hover>span.popup {
+  width:auto;
+  max-width:15em;
+  \-moz-border-radius: 8px;
+}

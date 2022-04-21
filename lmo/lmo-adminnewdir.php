@@ -80,11 +80,11 @@ if ($ftype != "") {
       if ($xprogram == PATH_TO_LMO."/".$dirliga.$files) {
         echo " checked";
       }
-      echo " onChange=\"dolmoedit()\"> ".$t0."<br />";
+      echo " onChange=\"dolmoedit()\"> ".$t0;
     }
   }
   if ($i == 0) {
-    echo "[".$text[224]."]<br>";
+    echo "[".$text[224]."]";
   }
 }
 

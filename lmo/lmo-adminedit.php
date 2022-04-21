@@ -327,7 +327,7 @@ if ($file != "") {
         <input type="hidden" name="st" value="<?php echo $st; ?>">
         <div class="container">
           <div class="row">
-            <div class="col-8 text-start"><?php
+            <div class="col-8 text-start pb-3"><?php
   echo $st.". ".$text[2];
   if ($datum1[$st-1] != "") {
     $datum = explode('.', $datum1[$st-1]);
@@ -369,7 +369,7 @@ if ($file != "") {
   }
   for($i = 0; $i < $anzsp; $i++) {
     if ($lmtype == 0) {?>
-          <div class="row"><?php
+          <div class="row pb-1"><?php
       if ($mterm[$st-1][$i] > 0) {
         $dum1 = date("d.m.Y", $mterm[$st-1][$i]);
         $dum2 = date("H:i", $mterm[$st-1][$i]);
@@ -438,12 +438,12 @@ if ($file != "") {
       }?>
             </div>
             <div class="col-1">
-              <input id="n<?php echo $i?>" class="form-control" type="text" name="xmnote<?php echo $i; ?>" tabindex="<?php echo $i;?>11" size="16" maxlength="255" value="<?php echo htmlentities($mnote[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
+              <input id="n<?php echo $i?>" class="custom-control" type="text" name="xmnote<?php echo $i; ?>" tabindex="<?php echo $i;?>11" size="16" maxlength="255" value="<?php echo htmlentities($mnote[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
       if (trim($mnote[$st-1][$i]) == '') {?>
               <script type="text/javascript">document.getElementById('n<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
             </div>
-            <div class="col-1"><input id="s<?php echo $i?>" class="form-control" type="text" name="xmberi<?php echo $i; ?>" tabindex="<?php echo $i;?>12" size="14" maxlength="255" value="<?php echo htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
+            <div class="col-1"><input id="s<?php echo $i?>" class="custom-control" type="text" name="xmberi<?php echo $i; ?>" tabindex="<?php echo $i;?>12" size="14" maxlength="255" value="<?php echo htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
       if (trim($mberi[$st-1][$i]) == '') {?>
               <script type="text/javascript">document.getElementById('s<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
@@ -643,7 +643,7 @@ if ($file != "") {
           </div>
           <div class="row p-3">
             <div class="col">
-              Tickertext: <textarea class="form-control" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php if(count($nlines)>0){foreach($nlines as $y){echo $y."\n";}} ?></textarea>
+              Tickertext: <textarea class="custom-control" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php if(count($nlines)>0){foreach($nlines as $y){echo $y."\n";}} ?></textarea>
             </div>
           </div>
           <div class="row p-3">

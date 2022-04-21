@@ -75,11 +75,11 @@ if($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1
           <div class="row">
             <div class="col"><?php echo getMessage($text[561],TRUE);?></div>
           </div>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col-5 text-end"><acronym title="<?php echo $text[275] ?>"><?php echo $text[274]; ?></acronym></div>
             <div class="col-5 text-start"><input class="custom-control" type="number" style="width: 3rem;" name="xanzst" size="3" maxlength="3" value="<?php echo $anzst?>"></div>
           </div>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col-5 text-end"><acronym title="<?php echo $text[278] ?>"><?php echo $text[277]; ?></acronym></div>
             <div class="col-5 text-start"><input class="custom-control" type="number" style="width: 3rem;" name="xanzsp" size="2" maxlength="2" value="<?php echo $anzsp?>"></div>
           </div>

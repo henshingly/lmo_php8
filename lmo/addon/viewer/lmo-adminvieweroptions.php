@@ -198,20 +198,20 @@ if($form3) {
   <div class="row">
     <div class="col"><h3><?php echo $text['viewer'][42]; ?></h3></div>
   </div>
-  <div class="row">
+  <div class="row pb-1">
     <div class="col"><?php echo $text['viewer'][43]; ?></div>
   </div>
-  <div class="row">
+  <div class="row pb-1">
     <div class="col">
       <textarea  rows="6" cols="80"><?php echo trim("\n<?php \n\$multi='".$save_file_name."';\ninclude('".dirname(__FILE__)."/viewer.php');\n?>");?></textarea>
     </div>
   </div>
-  <div class="row">
+  <div class="row pb-1">
     <div class="col">
       <?php echo $text['viewer'][36]; ?>
     </div>
   </div>
-  <div class="row">
+  <div class="row pb-1">
     <div class="col"><strong><?php echo $text['viewer'][100]; ?></strong></div>
   </div>
 </div>
@@ -226,34 +226,34 @@ if($form3) {
     <div class="col"><h3><?php echo $text['viewer'][21]; ?></h3></div>
   </div>
   <form class="row" method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>">
-    <div class="row">
+    <div class="row pb-1">
       <div class="col"><strong><?php echo $text['viewer'][0]; ?></strong></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2"><?php echo $text['viewer'][1];  ?></div>
       <div class="col-3"><input class="form-control" type="text" name="dateiname" value="unbenannt"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][2]; ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-4  offset-2 text-start"><input class="form-check-input" type="radio" value="1" name="modus" checked onClick="byDate(this);">&nbsp;<?php echo $text['viewer'][3];  ?></div>
       <div class="col-4 text-start"><input class="form-check-input" type="radio" value="2" name="modus" onClick="byDay(this);">&nbsp;<?php echo $text['viewer'][6];  ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2"><input class="form-control" type="number" name="anzahl_tage_plus" value="7"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][4]; ?></div>
       <div class="col-1"><input class="form-control" type="number" name="anzahl_spieltage_vor" value="3" disabled></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][7]; ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2"><input class="form-control" type="number" name="anzahl_tage_minus" value="7"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][5]; ?></div>
       <div class="col-1"><input class="form-control" type="number" name="anzahl_spieltage_zurueck" value="3" disabled></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][8]; ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col">&nbsp;</div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2"><input class="form-control" type="text" name="datumsformat" value="d.m.y"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][10]; ?></div>
       <div class="col-2">
@@ -265,13 +265,13 @@ if($form3) {
       </div>
       <div class="col-3 text-start"><?php echo $text['viewer'][20]; ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2"><input class="form-control" type="text" name="uhrzeitformat" value="H:i"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][28]; ?></div>
       <div class="col-2"><input class="form-control" type="text" name="titelzeile" value=""></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][27]; ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2 text-end"><input class="form-check-input" type="checkbox" name="favteam_highlight" checked></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][54]; ?></div>
       <div class="col-2">
@@ -283,31 +283,31 @@ if($form3) {
       </div>
       <div class="col-3 text-start"><?php echo $text['viewer'][16]; ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2 text-end"><input class="form-check-input" type="checkbox" name="heute_highlight" checked></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][40]; ?></div>
       <div class="col-2"><input class="form-control" type="text" name="spielberichtesymbol" value="bericht.gif" onChange="document.getElementById('spielberichtesymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;"><img id="spielberichtesymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/bericht.gif" alt=""></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][23]; ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2 text-end"><input class="form-check-input" type="checkbox" name="spielberichte_neues_fenster"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][14]; ?></div>
       <div class="col-2"><input class="form-control" type="text" name="tabellensymbol" value="tabelle.gif" onChange="document.getElementById('tabellensymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;"><img id="tabellensymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/tabelle.gif" alt=""></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][24]; ?></div>
     </div>
-    <div class="row align-items-center input-group">
+    <div class="row align-items-center input-group pb-1">
       <div class="col-1 offset-2 text-end"><input class="form-check-input" type="checkbox" name="tabelle_verlinken"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][13]; ?></div>
       <div class="col-2"><input class="form-control" type="text" name="notizsymbol" value="notiz.gif" onChange="document.getElementById('notizsymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;"><img id="notizsymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/notiz.gif" alt=""></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][25]; ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2 text-end"><input class="form-check-input" type="checkbox" name="mannschaftshomepages_verlinken"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][25]; ?></div>
       <div class="col-2"><input class="form-control" type="text" name="spieltagtext"value="<?php echo $text[145];?>"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][26]; ?></div>
     </div>
-    <div class="row align-items-center">
+    <div class="row align-items-center pb-1">
       <div class="col-1 offset-2"><input class="form-control" type="number" name="cache_refresh" size="3" value="0"></div>
       <div class="col-3 text-start"><acronym title="<?php echo $text['viewer'][53]; ?>"><?php echo $text['viewer'][52]; ?></acronym></div>
       <div class="col-2"><input class="form-control" type="text" name="tordummy" value="_"></div>

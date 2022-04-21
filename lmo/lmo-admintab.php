@@ -87,7 +87,7 @@ if ($file != "") {
         <input type="hidden" name="file" value="<?php echo $file;?>">
         <input type="hidden" name="st" value="<?php echo $st;?>">
         <div class="container">
-          <div class="row">
+          <div class="row pb-3">
             <div class="col-4 text-start"><strong><?php echo $st.". ".$text[2];?></strong></div>
             <div class="col-1"><strong><?php echo $text[33];?></strong></div>
             <div class="col-1"><strong><?php echo $text[34];?></strong></div><?php 
@@ -114,7 +114,7 @@ if ($file != "") {
       $dummy = "";
       $dumm2 = "";
     }?>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col-1 text-end">
               <select title="<?php echo $text[414] ?>" class="custom-control" style="width: 2rem;" name="xplatz<?php echo $x;?>"><?php 
     for($y=1;$y<=$anzteams;$y++){?>

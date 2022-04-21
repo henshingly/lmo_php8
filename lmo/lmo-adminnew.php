@@ -208,45 +208,45 @@ if($newpage<3){ ?>
   }
 }?>
         <div class="container">
-          <div class="row">
+          <div class="row pb-1">
             <div class="col"><?php echo  $text[246]." ".($newpage+1)." ".$text[259]." 4"; ?></div>
           </div><?php 
 if($newpage==0){ ?>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $text[244]; ?></acronym></div>
             <div class="col text-start"><acronym title="<?php echo  $text[245]; ?>"><?php echo  $dirliga; ?><input class="custom-control" type="text" name="xfile" maxlength="28" value="<?php echo  $xfile; ?>" placeholder="noname">.l98</acronym></div>
           </div>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[118] ?>"><?php echo  $text[113]; ?></acronym></div>
             <div class="col text-start"><acronym title="<?php echo  $text[118] ?>"><input class="custom-control" type="text" name="xtitel" size="26rem" maxlength="60" value="<?php echo  $xtitel; ?>" placeholder="No Name"></acronym></div>
           </div>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[175] ?>"><?php echo  $text[174]; ?></acronym></div>
             <div class="col text-start"><acronym title="<?php echo  $text[175] ?>"><select class="custom-select" name="xtype" onChange="dolmoedit()"><?php echo  "<option value=\"0\""; if($xtype==0){echo " selected";} echo ">".$text[176]."</option>"; echo "<option value=\"1\""; if($xtype==1){echo " selected";} echo ">".$text[177]."</option>"; ?></select></acronym></div>
           </div><?php 
 }
 if($newpage==1){
   if($xtype==0){?>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></div>
             <div class="col text-start"><input class="custom-control" type="number" name="xteams" style="width: 3rem;" maxlength="2" value="18"></div>
           </div>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[275] ?>"><?php echo  $text[274]; ?></acronym></div>
             <div class="col text-start"><input class="custom-control" type="number" name="xanzst" style="width: 3rem;" maxlength="3" value="34"></div>
           </div>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[278] ?>"><?php echo  $text[277]; ?></acronym></div>
             <div class="col text-start"><input class="custom-control" type="number" name="xanzsp" style="width: 3rem;" maxlength="2" value="9"></div>
           </div><?php 
   }else{ ?>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></div>
             <div class="col text-start">
-              <select class="lmo-formular-input" name="xteams" onChange="dolmoedit()"><?php if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>";} ?></select>
+              <select class="custom-select" name="xteams" onChange="dolmoedit()"><?php if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>";} ?></select>
             </div>
           </div>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col text-end"></div>
             <div class="col text-start"><?php echo  $text[350] ?></div>
           </div><?php 
@@ -254,7 +254,7 @@ if($newpage==1){
 }
 if($newpage==2){
   if($xtype==0){?>
-          <div class="row">
+          <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[285] ?>"><?php echo  $text[284]; ?></acronym></div>
             <div class="col text-start">
               <input type="radio" class="form-check-input" name="xprogram" value="none"<?php if($xprogram=="none"){echo " checked";} ?> onChange="dolmoedit()"> <?php echo  $text[286]; ?><br><br>
@@ -267,7 +267,7 @@ if($newpage==2){
       $soll_anzsp = floor($xteams/2);
       $soll_anzst = floor($xteams*($xteams-1)/$soll_anzsp);
       // Prüfe: 1. Stimmt die Anzahl der Spiele pro Spieltag?
-      //             2. Ist die Spieltaganzahl gleich Hin- und Rückrunde oder nur Hinrunde?
+      //        2. Ist die Spieltaganzahl gleich Hin- und Rückrunde oder nur Hinrunde?
       if(($xanzsp==$soll_anzsp) && (($xanzst==$soll_anzst) || ($xanzst==$soll_anzst/2))){ ?>
               <input type="radio" class="form-check-input" name="xprogram" value="random"<?php if($xprogram=="random"){echo " checked";} ?> onChange="dolmoedit()"> <?php echo  $text[288];
       }

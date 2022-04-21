@@ -77,8 +77,8 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
     if ($show==$testshow) {                      //Addon gefunden
       foreach ($addon_cfg as $cfg_name => $cfg_value) {   //Alle Konfigwerte des Addon
         ?>
-            <div class="col-4 offset-1 text-end"><?php echo $cfg_name?></div>
-            <div class="col-4"><input class="form-control" type="text" name="x<?php echo $cfg_name?>" size="30" value="<?php echo $cfg_value;?>" onChange="dolmoedit()"></div><?php 
+            <div class="col-4 offset-1 text-end pb-1"><?php echo $cfg_name?></div>
+            <div class="col-4 pb-1"><input class="control-control" type="text" name="x<?php echo $cfg_name?>" size="30" value="<?php echo $cfg_value;?>" onChange="dolmoedit()"></div><?php 
       }
     }
     $testshow++;
