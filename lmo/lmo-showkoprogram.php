@@ -27,11 +27,9 @@ if ($file != "") {
 <div class="container">
   <div class="row">
     <div class="col-1"><?php 
-  for($i = 1; $i <= floor($anzteams/2); $i++) {?>
-            <acronym title="<?php echo $text[23]." ".$teams[$i]?>">
-            	<?php
+  for($i = 1; $i <= floor($anzteams/2); $i++) {
     if($i!=$selteam){?>
-            <a href="<?php echo $addp.$i?>" ><?php echo $teamk[$i]?></a>
+            <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
             <?php
     } else {
       echo $teamk[$i];
@@ -149,7 +147,7 @@ if ($file != "") {
             if($urlb==1){
               if($mberi[$j][$i][$n]!=""){
                 $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong><br><br>";
-                echo " <a href='".$mberi[$j][$i][$n]."'  target='_blank'><i class="bi bi-box-arrow-up-right text-warning" style="font-size: 1.3rem;"></i><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a> ";
+                echo " <a href='".$mberi[$j][$i][$n]."'  target='_blank'><i class='bi bi-box-arrow-up-right text-warning' style='font-size: 1.3rem;'></i><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a> ";
               }else{
                 echo "&nbsp;&nbsp;&nbsp;";
               }
@@ -164,7 +162,7 @@ if ($file != "") {
               
               $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$j][$i][$n];
               
-              echo "<a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i><span class='popup'>".nl2br($lmo_spielnotiz)."</span></a>";
+              echo "<a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><i class='bi bi-info-circle-fill text-info' style='font-size: 1.3rem;'></i><span class='popup'>".nl2br($lmo_spielnotiz)."</span></a>";
               $lmo_spielnotiz="";
             } else {
               echo "&nbsp;";
@@ -177,10 +175,9 @@ if ($file != "") {
       </div>
     </div>
     <div class="col-1 text-start"><?php 
-  for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {?>
-      <acronym title="<?php echo $text[23]." ".$teams[$i]?>"><?php
+  for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {
     if($i!=$selteam){?>
-            <a href="<?php echo $addp.$i?>"><?php echo $teamk[$i]?></a>
+            <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
             <?php
     } else {
       echo $teamk[$i];
