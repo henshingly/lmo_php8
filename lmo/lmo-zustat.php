@@ -154,7 +154,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$heimteam]['gewonnen']) && $serie[$heimteam]['gewonnen']>=$serie[$heimteam]['max_gewonnen']['count']) {
               //neues maximum setzen
               $serie[$heimteam]['max_gewonnen']['count'] = $serie[$heimteam]['gewonnen'];
-              $serie[$heimteam]['max_gewonnen']['st'] = $y1-($serie[$heimteam]['max_gewonnen']['count']-1)."-".$y1;
+              $serie[$heimteam]['max_gewonnen']['st'] = $y1-($serie[$heimteam]['max_gewonnen']['count']-1)." - ".$y1;
             }
             if ($serien_array[$gastteam][$y1-1]>0) {
               if (isset($serie[$gastteam]['gewonnen']) && isset($serien_array[$gastteam][$y1-2]) && $serien_array[$gastteam][$y1-2]>0) {
@@ -169,7 +169,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$gastteam]['gewonnen']) && $serie[$gastteam]['gewonnen']>=$serie[$gastteam]['max_gewonnen']['count']) {
               //neues maximum setzen
               $serie[$gastteam]['max_gewonnen']['count'] = $serie[$gastteam]['gewonnen'];
-              $serie[$gastteam]['max_gewonnen']['st'] = $y1-($serie[$gastteam]['max_gewonnen']['count']-1)."-".$y1;
+              $serie[$gastteam]['max_gewonnen']['st'] = $y1-($serie[$gastteam]['max_gewonnen']['count']-1)." - ".$y1;
             }
             //Serien ungeschlagen
             if ($serien_array[$heimteam][$y1-1]>=0) {
@@ -185,7 +185,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$heimteam]['ungeschlagen']) && $serie[$heimteam]['ungeschlagen']>=$serie[$heimteam]['max_ungeschlagen']['count']) {
               //neues maximum setzen
               $serie[$heimteam]['max_ungeschlagen']['count'] = $serie[$heimteam]['ungeschlagen'];
-              $serie[$heimteam]['max_ungeschlagen']['st'] = $y1-($serie[$heimteam]['max_ungeschlagen']['count']-1)."-".$y1;
+              $serie[$heimteam]['max_ungeschlagen']['st'] = $y1-($serie[$heimteam]['max_ungeschlagen']['count']-1)." - ".$y1;
             }
             if ($serien_array[$gastteam][$y1-1]>=0) {
               if (isset($serie[$gastteam]['ungeschlagen']) && isset($serien_array[$gastteam][$y1-2]) && $serien_array[$gastteam][$y1-2]>=0) {
@@ -200,7 +200,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$gastteam]['ungeschlagen']) && $serie[$gastteam]['ungeschlagen']>=$serie[$gastteam]['max_ungeschlagen']['count']) {
               //neues maximum setzen
               $serie[$gastteam]['max_ungeschlagen']['count'] = $serie[$gastteam]['ungeschlagen'];
-              $serie[$gastteam]['max_ungeschlagen']['st'] = $y1-($serie[$gastteam]['max_ungeschlagen']['count']-1)."-".$y1;
+              $serie[$gastteam]['max_ungeschlagen']['st'] = $y1-($serie[$gastteam]['max_ungeschlagen']['count']-1)." - ".$y1;
             }
             //Serien unentschieden
             if ($serien_array[$heimteam][$y1-1]==0) {
@@ -216,7 +216,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$heimteam]['unentschieden']) && $serie[$heimteam]['unentschieden']>=$serie[$heimteam]['max_unentschieden']['count']) {
               //neues maximum setzen
               $serie[$heimteam]['max_unentschieden']['count'] = $serie[$heimteam]['unentschieden'];
-              $serie[$heimteam]['max_unentschieden']['st'] = $y1-($serie[$heimteam]['max_unentschieden']['count']-1)."-".$y1;
+              $serie[$heimteam]['max_unentschieden']['st'] = $y1-($serie[$heimteam]['max_unentschieden']['count']-1)." - ".$y1;
             }
             if ($serien_array[$gastteam][$y1-1]==0) {
               if (isset($serie[$gastteam]['unentschieden']) && isset($serien_array[$gastteam][$y1-2]) && $serien_array[$gastteam][$y1-2]==0) {
@@ -231,7 +231,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$gastteam]['unentschieden']) && $serie[$gastteam]['unentschieden']>=$serie[$gastteam]['max_unentschieden']['count']) {
               //neues maximum setzen
               $serie[$gastteam]['max_unentschieden']['count'] = $serie[$gastteam]['unentschieden'];
-              $serie[$gastteam]['max_unentschieden']['st'] = $y1-($serie[$gastteam]['max_unentschieden']['count']-1)."-".$y1;
+              $serie[$gastteam]['max_unentschieden']['st'] = $y1-($serie[$gastteam]['max_unentschieden']['count']-1)." - ".$y1;
             }
             //Serien sieglos
             if ($serien_array[$heimteam][$y1-1]<=0) {
@@ -247,7 +247,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$heimteam]['sieglos']) && $serie[$heimteam]['sieglos']>=$serie[$heimteam]['max_sieglos']['count']) {
               //neues maximum setzen
               $serie[$heimteam]['max_sieglos']['count'] = $serie[$heimteam]['sieglos'];
-              $serie[$heimteam]['max_sieglos']['st'] = $y1-($serie[$heimteam]['max_sieglos']['count']-1)."-".$y1;
+              $serie[$heimteam]['max_sieglos']['st'] = $y1-($serie[$heimteam]['max_sieglos']['count']-1)." - ".$y1;
             }
             if ($serien_array[$gastteam][$y1-1]<=0) {
               if (isset($serie[$gastteam]['sieglos']) && isset($serien_array[$gastteam][$y1-2]) && $serien_array[$gastteam][$y1-2]<=0) {
@@ -262,7 +262,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$gastteam]['sieglos']) && $serie[$gastteam]['sieglos']>=$serie[$gastteam]['max_sieglos']['count']) {
               //neues maximum setzen
               $serie[$gastteam]['max_sieglos']['count'] = $serie[$gastteam]['sieglos'];
-              $serie[$gastteam]['max_sieglos']['st'] = $y1-($serie[$gastteam]['max_sieglos']['count']-1)."-".$y1;
+              $serie[$gastteam]['max_sieglos']['st'] = $y1-($serie[$gastteam]['max_sieglos']['count']-1)." - ".$y1;
             }
             //Serien verloren
             if ($serien_array[$heimteam][$y1-1]<0) {
@@ -278,7 +278,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$heimteam]['verloren']) && $serie[$heimteam]['verloren']>=$serie[$heimteam]['max_verloren']['count']) {
               //neues maximum setzen
               $serie[$heimteam]['max_verloren']['count'] = $serie[$heimteam]['verloren'];
-              $serie[$heimteam]['max_verloren']['st'] = $y1-($serie[$heimteam]['max_verloren']['count']-1)."-".$y1;
+              $serie[$heimteam]['max_verloren']['st'] = $y1-($serie[$heimteam]['max_verloren']['count']-1)." - ".$y1;
             }
             if ($serien_array[$gastteam][$y1-1]<0) {
               if (isset($serie[$gastteam]['verloren']) && isset($serien_array[$gastteam][$y1-2]) && $serien_array[$gastteam][$y1-2]<0) {
@@ -293,7 +293,7 @@ if ($_SESSION['lmouserok'] > 0) {
             if (isset($serie[$gastteam]['verloren']) && $serie[$gastteam]['verloren']>=$serie[$gastteam]['max_verloren']['count']) {
               //neues maximum setzen
               $serie[$gastteam]['max_verloren']['count'] = $serie[$gastteam]['verloren'];
-              $serie[$gastteam]['max_verloren']['st'] = $y1-($serie[$gastteam]['max_verloren']['count']-1)."-".$y1;
+              $serie[$gastteam]['max_verloren']['st'] = $y1-($serie[$gastteam]['max_verloren']['count']-1)." - ".$y1;
             }
 
 
@@ -513,37 +513,37 @@ if ($_SESSION['lmouserok'] > 0) {
     	if ($team_serien['max_gewonnen']['count']>$max_gewonnen) {
         $max_gewonnen = $team_serien['max_gewonnen']['count'];
         $team_max_gewonnen = array();
-        $team_max_gewonnen[] = $team." (".$team_serien['max_gewonnen']['st'].".".$text[145].")";
+        $team_max_gewonnen[] = $team." (".$text[2]." ".$team_serien['max_gewonnen']['st'].")";
     	} elseif ($team_serien['max_gewonnen']['count']==$max_gewonnen && $max_gewonnen>0){
-    	   $team_max_gewonnen[] = $team." (".$team_serien['max_gewonnen']['st'].".".$text[145].")";
+    	   $team_max_gewonnen[] = $team." (".$text[2]." ".$team_serien['max_gewonnen']['st'].")";
     	}
     	if ($team_serien['max_ungeschlagen']['count']>$max_ungeschlagen) {
         $max_ungeschlagen = $team_serien['max_ungeschlagen']['count'];
         $team_max_ungeschlagen = array();
-        $team_max_ungeschlagen[] = $team." (".$team_serien['max_ungeschlagen']['st'].".".$text[145].")";
+        $team_max_ungeschlagen[] = $team." (".$text[2]." ".$team_serien['max_ungeschlagen']['st'].")";
     	} elseif ($team_serien['max_ungeschlagen']['count']==$max_ungeschlagen && $max_ungeschlagen>0){
-    	   $team_max_ungeschlagen[] = $team." (".$team_serien['max_ungeschlagen']['st'].".".$text[145].")";
+    	   $team_max_ungeschlagen[] = $team." (".$text[2]." ".$team_serien['max_ungeschlagen']['st'].")";
     	}
     	if ($team_serien['max_unentschieden']['count']>$max_unentschieden) {
         $max_unentschieden = $team_serien['max_unentschieden']['count'];
         $team_max_unentschieden = array();
-        $team_max_unentschieden[] = $team." (".$team_serien['max_unentschieden']['st'].".".$text[145].")";
+        $team_max_unentschieden[] = $team." (".$text[2]." ".$team_serien['max_unentschieden']['st'].")";
     	} elseif ($team_serien['max_unentschieden']['count']==$max_unentschieden && $max_unentschieden>0){
-    	   $team_max_unentschieden[] = $team." (".$team_serien['max_unentschieden']['st'].".".$text[145].")";
+    	   $team_max_unentschieden[] = $team." (".$text[2]." ".$team_serien['max_unentschieden']['st'].")";
     	}
     	if ($team_serien['max_sieglos']['count']>$max_sieglos) {
         $max_sieglos = $team_serien['max_sieglos']['count'];
         $team_max_sieglos = array();
-        $team_max_sieglos[] = $team." (".$team_serien['max_sieglos']['st'].".".$text[145].")";
+        $team_max_sieglos[] = $team." (".$text[2]." ".$team_serien['max_sieglos']['st'].")";
     	} elseif ($team_serien['max_sieglos']['count']==$max_sieglos && $max_sieglos>0){
-    	  $team_max_sieglos[] = $team." (".$team_serien['max_sieglos']['st'].".".$text[145].")";
+    	  $team_max_sieglos[] = $team." (".$text[2]." ".$team_serien['max_sieglos']['st'].")";
     	}
     	if ($team_serien['max_verloren']['count']>$max_verloren) {
         $max_verloren = $team_serien['max_verloren']['count'];
         $team_max_verloren = array();
-        $team_max_verloren[] = $team." (".$team_serien['max_verloren']['st'].".".$text[145].")";
+        $team_max_verloren[] = $team." (".$text[2]." ".$team_serien['max_verloren']['st'].")";
     	} elseif ($team_serien['max_verloren']['count']==$max_verloren && $max_verloren>0){
-    	   $team_max_verloren[] = $team." (".$team_serien['max_verloren']['st'].".".$text[145].")";
+    	   $team_max_verloren[] = $team." (".$text[2]." ".$team_serien['max_verloren']['st'].")";
     	}
     }
     //Serien Ende
