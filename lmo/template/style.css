@@ -19,6 +19,12 @@
     padding: .1rem 0;
 }
 
+.col-cross {
+    flex: 0 0 5%;
+    max-width: 5%; 
+    padding-right: 0;
+}
+
 a span.popup, a:link span.popup{
 	display: none;
 }

@@ -23,34 +23,19 @@ if(($file!="") && ($kreuz==1)){
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
   $croteam=!empty($_GET['croteam'])?$_GET['croteam']:$favteam;
 ?>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td>
-      <table class="table table-bordered table-hover" cellspacing="0" cellpadding="0" border="0">
+      <div class="container">
 
 <?php
-/*
-for($i = 0; $i <= ($anzteams+1); $i++) {
-  for($j = 0; $j <= ($anzteams+1); $j++) {
-*/
 for($i = 0; $i <= ($anzteams); $i++) {
+  echo "<div class='row pt-3'>";
   for($j = 0; $j <= ($anzteams); $j++) {
     $dummy = "";
     if ($j == 0) {
-      echo "<tr>";
-    }
-    if ($j == 0){
-      echo "<th class='text-center'>";
-    } elseif ($j == ($anzteams+1)) {
-      echo "<th class='text-start'>";
-    } elseif($i == 0 || $i == ($anzteams+1)){
-      echo "<th class='text-center'>";
-    } elseif($croteam != 0 && ($j == $croteam || $i == $croteam)) {
-      echo "<td class='text-center table-warning'>";
+      echo "<div class='col-cross text-center'>";
     } elseif($j == $i) {
-      echo "<td class='table-secondary'>";
+      echo "<div class='col-cross table-secondary'>";
     } else {
-      echo "<td class='text-center''>";
+      echo "<div class='col-cross text-center'>";
     }
 
     if (($j == 0) && ($i > 0) && ($i <= $anzteams)) {
@@ -91,7 +76,7 @@ for($i = 0; $i <= ($anzteams); $i++) {
               $dummy = "";
             }
             if ($l > 0) {
-              echo "<br>";
+              echo "<br />";
             }
             if ($mterm[$b][$a] > 0) {
               $lmo_kreuz_longtime = ", ".date("D. d.m.Y H:i", $mterm[$b][$a]);
@@ -102,7 +87,7 @@ for($i = 0; $i <= ($anzteams); $i++) {
             }
             echo "<a href=\"".$addr.($b+1)."\" title=\"".$teams[$i]." - ".$teams[$j]." &#10;(".($b+1).". ".$text[2].$lmo_kreuz_longtime.$dummy.")\">";
             if ($goala[$b][$a]=="_" && $lmo_kreuz_shorttime!="") {
-               echo $lmo_kreuz_shorttime;
+               echo "<small>$lmo_kreuz_shorttime</small>";
             } else {
                if ($goala[$b][$a]!="_") echo "<strong>";
                echo applyFactor($goala[$b][$a],$goalfaktor).":".applyFactor($goalb[$b][$a],$goalfaktor);
@@ -121,18 +106,16 @@ for($i = 0; $i <= ($anzteams); $i++) {
       }
     }
     if ($j==$i) echo "&nbsp;";
-    if ($i == 0 || $i == ($anzteams+1) || $j == 0 || $j == ($anzteams+1)) {
-      echo "</th>\n";
+    if ($i == 0 || $i == ($anzteams) || $j == 0 || $j == ($anzteams)) {
+      echo "</div>\n";
     } else {
-      echo "</td>\n";
+      echo "</div>\n";
     }
     if ($j == ($anzteams+1)) {
-      echo "</tr>\n";
+      echo "</div>\n";
     }
   }
+  echo "</div>\n";
   }?>
-      </table>
-    </td>
-  </tr>
-</table><?php 
+      </div><?php 
 }?>
