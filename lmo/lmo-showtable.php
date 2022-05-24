@@ -94,11 +94,10 @@ for($x = 1; $x <= $anzteams; $x++) {
     }
   }?>
     <i class="bi bi-arrow-<?php echo $y?>"></i>
-    <img src='<?php echo URL_TO_IMGDIR."/lmo-tab".$y.".gif"; ?>' width="9" height="9" border="0" alt='' />
     </div>
     <?php
     if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        <a href="<?php echo $teamu[$i]; ?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR."/url.png";?>" alt="<?php echo $text[564]; ?>" /></a>
+        <a href="<?php echo $teamu[$i]; ?>" target="_blank"><i class="bi bi-house" alt="<?php echo $text[564];?>"></i></a>
     }    
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
     
@@ -135,7 +134,7 @@ for($x = 1; $x <= $anzteams; $x++) {
       if ($teamn[$i]!="") {
         $lmo_tabellennotiz.=$teamn[$i];
       }
-      $notiz = <a href="#" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i></a><?php
+      $notiz = <a data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i></a><?php
       $lmo_tabellennotiz="";
     } else {
       $notiz = "&nbsp;";

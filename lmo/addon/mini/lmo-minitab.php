@@ -147,8 +147,6 @@ if (empty($CacheOutput)) {
             break;
           }
         }
-        $TendenzImgFile = $Tendenz>0? $cfgarray['mini']['TendenzPfeilUpImg']: ( $Tendenz<0? $cfgarray['mini']['TendenzPfeilDownImg']:$cfgarray['mini']['TendenzPunktImg']);
-        $template->setVariable(array("TendenzIMG"=> "<img src='".URL_TO_IMGDIR."/".$TendenzImgFile."' border='0' title='".$Tendenz."'>") );
         // Style Classes anhand der liga Options errechnen  -- um Alte Templates zu nutzen wird auch style mit ausgegeben
         $style= "";$css_class= "";
 

@@ -71,7 +71,7 @@ if ($file != "") {
             $heim2 = "</strong>";
           }
           if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
-            $urlta = " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
+            $urlta = " <a href=\"".$teamu[$teama[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><i class=\"bi bi-house\" alt='".$text[564]."' title=\"".$text[46]."\"></i></a>";
           }
           if ($selteam == $teamb[$j][$i]) {
             $gast1 = "<strong>";
@@ -81,7 +81,7 @@ if ($file != "") {
             $gast2 = "</strong>";
           }
           if (($teamu[$teamb[$j][$i]] != "") && ($urlt == 1)) {
-            $urltb = " <a href=\"".$teamu[$teamb[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
+            $urltb = " <a href=\"".$teamu[$teamb[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><i class=\"bi bi-house\" alt='".$text[564]."' title=\"".$text[46]."\"></i></a>";
           }
           if ($m == 1) {
             echo "<div class='col-3 text-success text-end d-none d-lg-block'>";
