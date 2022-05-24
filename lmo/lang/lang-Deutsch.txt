@@ -514,7 +514,7 @@
 513=Sollen die Tabellen dargestellt werden?
 514=Soll die Ligastatistik dargestellt werden?
 515=abs.
-516=ges.
+516=gesamt
 517=Ø
 518=%
 519=Sprachauswahl
