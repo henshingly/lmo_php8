@@ -160,7 +160,7 @@ if ($file != "") {
       if ($teamn[$i]!="") {
         $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong>\n".$teamn[$i];
       }?>
-        <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php 
+      echo "<a data-bs-toggle='tooltip' data-bs-placement='right' data-bs-html='true' title='".$lmo_tabellennotiz."'> <i class='bi bi-info-square text-info' style='font-size: 1.3rem;'></i></a>";
       $lmo_tabellennotiz="";
     } ?>
             </div>

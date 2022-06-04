@@ -162,7 +162,7 @@ if ($file != "") {
         if($urlb==1){
           if($mberi[$st-1][$i][$n]!=""){
             $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
-            echo " <a href='".$mberi[$st-1][$i][$n]."'  target='_blank' title='".$text[270]."'><i class="bi bi-box-arrow-up-right text-warning" style="font-size: 1.3rem;"></i><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
+            echo " <a href='".$mberi[$st-1][$i][$n]."' target='_blank' title='".$text[270]."'><i class='bi bi-box-arrow-up-right text-warning' style='font-size: 1.3rem;'></i></a>";
           }else{
             echo "&nbsp;";
           }
@@ -171,13 +171,9 @@ if ($file != "") {
          *
          */
         if ($mnote[$st-1][$i][$n]!="") {
-     
-          $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i][$n],$goalfaktor).":".applyFactor($goalb[$st-1][$i][$n],$goalfaktor);
           //Allgemeine Notiz
-          
-          $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i][$n];
-          
-          echo " <a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i><span class='popup'>".nl2br($lmo_spielnotiz)."</span></a>";
+          $lmo_spielnotiz="<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i][$n];
+          echo "<a data-bs-toggle='tooltip' data-bs-placement='right' data-bs-html='true' title='".$lmo_spielnotiz."'> <i class='bi bi-info-circle-fill text-info' style='font-size: 1.3rem;'></i></a>";
           $lmo_spielnotiz="";
         } else {
           echo "&nbsp;";

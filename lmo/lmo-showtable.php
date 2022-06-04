@@ -58,7 +58,6 @@ for($x = 1; $x <= $anzteams; $x++) {
     $dummy = "";
     $dumm2 = "";
   }
-  $lmo_tabelle_class = "nobr";
   $label = "badge bg-secondary";
   if ($tabtype == 0) {
     if (($x == 1) && ($champ != 0)) {
@@ -96,9 +95,11 @@ for($x = 1; $x <= $anzteams; $x++) {
     <i class="bi bi-arrow-<?php echo $y?>"></i>
     </div>
     <?php
-    if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        <a href="<?php echo $teamu[$i]; ?>" target="_blank"><i class="bi bi-house" alt="<?php echo $text[564];?>"></i></a>
-    }    
+    if (($teamu[$i] != "") && ($urlt == 1)) {
+        $url = " <a href='".$teamu[$i]."' target='_blank'><i class='bi bi-house'></i></a>";
+    } else {
+        $url = " ";
+    }
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
     
       /** Notizen anzeigen
@@ -110,7 +111,7 @@ for($x = 1; $x <= $anzteams; $x++) {
       $lmo_tabellennotiz="";
       //Straf-/Bonuspunkte
       if ($strafp[$i]!=0 || $strafm[$i]!=0) {
-        $lmo_tabellennotiz.="\n\n<strong>".$text[128].":</strong> ";
+        $lmo_tabellennotiz.="<br><strong>".$text[128].":</strong> ";
         //Punkte
         $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*applyFactor($strafp[$i],$pointsfaktor)):((-1)*applyFactor($strafp[$i],$pointsfaktor));
         //Minuspunkte
@@ -122,7 +123,7 @@ for($x = 1; $x <= $anzteams; $x++) {
       }
       //Straf-/Bonustore
       if ($torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-        $lmo_tabellennotiz.="\n<strong>".$text[522].":</strong> ";
+        $lmo_tabellennotiz.="<br><strong>".$text[522].":</strong> ";
         //Tore
         $lmo_tabellennotiz.=$torkorrektur1[$i]<0?"+".((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":":((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":";
         //Gegentore
@@ -134,18 +135,18 @@ for($x = 1; $x <= $anzteams; $x++) {
       if ($teamn[$i]!="") {
         $lmo_tabellennotiz.=$teamn[$i];
       }
-      $notiz = <a data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="<?php echo  htmlentities(strip_tags($lmo_tabellennotiz))?>"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i></a><?php
+      $notiz = " <a data-bs-toggle='tooltip' data-bs-placement='right' data-bs-html='true' title='".$lmo_tabellennotiz."'><i class='bi bi-info-square'></i></a>";
       $lmo_tabellennotiz="";
     } else {
-      $notiz = "&nbsp;";
-    }    ?>
+      $notiz = " ";
+    }?>
     <div class="col-3 text-start d-none d-lg-block">
     <?php
-    echo $dummy.$teams[$i].$dumm2.$notiz;?>
+    echo $dummy.$teams[$i].$dumm2.$url.$notiz; ?>
     </div>
     <div class="col-3 text-start d-lg-none">
     <?php
-    echo $dummy.$teamm[$i].$dumm2.$notiz;?>
+    echo $dummy.$teamm[$i].$dumm2.$url.$notiz;?>
     </div>
     <div class="col-1 text-end"><?php echo $dummy.$spiele[$i].$dumm2; ?></div>
     <div class="col-1 text-end d-none d-lg-block"><?php echo $dummy.$siege[$i].$dumm2; ?></div>
@@ -171,8 +172,7 @@ for($x = 1; $x <= $anzteams; $x++) {
     </div>
   <?php }  ?>
 </div>
-<?php } ?>
-<?php
+<?php } 
 if ($einzutoretab == 1) {
 ?>
   <div class="row">  

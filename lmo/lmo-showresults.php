@@ -139,13 +139,8 @@ foreach ($datsort as $key => $val) {
      */
     if ($mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
  
-      //$lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
+      $lmo_spielnotiz="";
       //Beidseitiges Ergebnis
-/*
-      if ($msieg[$st-1][$i]==3) {
-        $lmo_spielnotiz.=" / ".applyFactor($goalb[$st-1][$i],$goalfaktor).":".applyFactor($goala[$st-1][$i],$goalfaktor)."\n\n";
-      }
-*/
       if ($spez==1) {
         $lmo_spielnotiz.=" ".$mspez[$st-1][$i];
       }
@@ -163,9 +158,9 @@ foreach ($datsort as $key => $val) {
       }
       //Allgemeine Notiz
       if ($mnote[$st-1][$i]!="") {
-        $lmo_spielnotiz.=$text[22].": ".$mnote[$st-1][$i];
+        $lmo_spielnotiz.="<br><strong>".$text[22].":</strong> ".$mnote[$st-1][$i];
       }
-      echo " <a href='#' onclick=\"alert('".htmlentities(strip_tags($lmo_spielnotiz))."');window.focus();return false;\" title='".nl2br($lmo_spielnotiz)."'><i class='far fa-comment'></i></a>";
+      echo "<a data-bs-toggle='tooltip' data-bs-placement='right' data-bs-html='true' title='".$lmo_spielnotiz."'> <i class='bi bi-info-square text-info' style='font-size: 1.3rem;'></i></a>";
       $lmo_spielnotiz="";
     } else {
       echo " <img src='".URL_TO_IMGDIR."/blank.png' width='1' height='1' border='0' alt=''>";
