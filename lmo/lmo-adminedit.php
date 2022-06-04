@@ -269,6 +269,9 @@ if ($file != "") {
     require(PATH_TO_LMO."/lmo-savefile.php");
     $st = $stz;
   }
+  
+  // Rückrunden-Hack
+  if($save == 990) require_once("lmo-rueckrunde.php");
 
   if ($lmtype != 0) {
     if ($st > 1) {
@@ -313,6 +316,7 @@ if ($file != "") {
 	  <input type="hidden" name="save" value="990">
 	  <input type="hidden" name="file" value="<?php echo $file; ?>">
 	  <input type="hidden" name="st" value="<?php echo $st; ?>">
+	  <input type="submit" name="rueckrundeButton" class="btn btn-primary btn-sm" value="<?php echo $text[3000]; ?>">
 	 </form>
       <?php } ?>
     </div>
