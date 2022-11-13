@@ -101,7 +101,7 @@ if ($file != "") {
             array_push($spiel, $spiel0);
             array_push($teama, $teams[$teama0]);
             array_push($teamb, $teams[$teamb0]);
-            array_push($zeit, strftime("%A, %d.%m.%Y %R", $zeit0));
+            array_push($zeit, date("l, d.m.Y H:i", $zeit0));
             $anzspiele++;
           }
         }

@@ -96,8 +96,8 @@ for($i = 0; $i <= ($anzteams+1); $i++) {
               echo "<br>";
             }
             if ($mterm[$b][$a] > 0) {
-              $lmo_kreuz_longtime = ", ".strftime("%a. %d.%m.%Y %H:%M", $mterm[$b][$a]);
-              $lmo_kreuz_shorttime = strftime("%d.%m.", $mterm[$b][$a]);
+              $lmo_kreuz_longtime = ", ".date("D. d.m.Y H:i", $mterm[$b][$a]);
+              $lmo_kreuz_shorttime = date("d.m.", $mterm[$b][$a]);
             } else {
               $lmo_kreuz_longtime = "";
               $lmo_kreuz_shorttime = "";

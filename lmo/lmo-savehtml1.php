@@ -87,7 +87,7 @@ if($lmtype==0){
               $spielfreibb[$i1]=$teamb[$y1-1][$i1];
             }
             // * Spielfrei-Hack-Ende1- Autor: Bernd Hoyer - eMail: info@salzland-info.de
-            if($mterm[$y1-1][$i1]>0){$dum1=strftime($datf, $mterm[$y1-1][$i1]);}else{$dum1="";} // Anstosszeit einblenden
+            if($mterm[$y1-1][$i1]>0){$dum1=date($datf, $mterm[$y1-1][$i1]);}else{$dum1="";} // Anstosszeit einblenden
 ?>
           <tr>
             <td><?php echo $dum1?>&nbsp;</td>

@@ -22,7 +22,7 @@ if ($file != "") {
   if (substr($file, -4) == ".l98") {
     $daten = array();
     $sekt = "";
-    $stand = strftime($defdateformat, filemtime($dirliga.$file));
+    $stand = date($defdateformat, filemtime($dirliga.$file));
     $datei = fopen($dirliga.$file, "rb");
     while ($datei && !feof($datei)) {
       $zeile = fgets($datei, 10000);
@@ -147,14 +147,14 @@ if ($file != "") {
       }
       $op1 = substr($dum[0], 0, 4);
       $op2 = substr($dum[0], 0, 5);
-      $op3 = substr($dum[0], 5)-1;
-      $op4 = substr($dum[1], 2)-1;
+      $op3 = intval(substr($dum[0], 5))-1;
+      $op4 = intval(substr($dum[1], 2))-1;
       $op5 = substr($dum[0], 4);
-      $op6 = substr($dum[1], 2, -1)-1;
-      $op7 = substr($dum[1], -1)-1;
+      $op6 = intval(substr($dum[1], 2, -1))-1;
+      $op7 = intval(substr($dum[1], -1))-1;
       $op8 = substr($dum[1], 0, 2);
       if ($op3 == $st-1) {
-        ////////////////////////////////////////////////// nur der benötigte Spieltag wird eingelesen
+        ////////////////////////////////////////////////// nur der benÃ¶tigte Spieltag wird eingelesen
         if (($op2 == "Round") && ($dum[1] == "D1")) {
           $datum1[$op3] = $dum[2];
         }
@@ -162,7 +162,7 @@ if ($file != "") {
           if ($datum1[$op3] != "") {
             $dummy = strtotime(substr($datum1[$op3], 0, 2)." ".$me[intval(substr($datum1[$op3], 3, 2))]." ".substr($datum1[$op3], 6, 4));
             if ($dummy > -1) {
-              $datum1[$op3] = strftime("%d.%m.%Y", $dummy);
+              $datum1[$op3] = date("d.m.Y", $dummy);
             } else {
               $datum1[$op3] = "";
             }
@@ -175,7 +175,7 @@ if ($file != "") {
           if ($datum2[$op3] != "") {
             $dummy = strtotime(substr($datum2[$op3], 0, 2)." ".$me[intval(substr($datum2[$op3], 3, 2))]." ".substr($datum2[$op3], 6, 4));
             if ($dummy > -1) {
-              $datum2[$op3] = strftime("%d.%m.%Y", $dummy);
+              $datum2[$op3] = date("d.m.Y", $dummy);
             } else {
               $datum2[$op3] = "";
             }

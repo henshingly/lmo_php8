@@ -82,7 +82,7 @@ if($lmtype==0 && $st>0){
           $spielfreibb[$i1]=$teamb[$actual-1][$i1];
         }
         if($mterm[$actual-1][$i1]>0){
-          $dum1=strftime($datf, $mterm[$actual-1][$i1]);
+          $dum1=date($datf, $mterm[$actual-1][$i1]);
         } else {
           $dum1="";
         } // Anstosszeit einblenden
@@ -190,7 +190,7 @@ if($lmtype==0 && $st>0){
               $spielfreibb[$i1]=$teamb[$actual][$i1];
             }
             if($mterm[$actual][$i1]>0){
-              $dum1=strftime($datf, $mterm[$actual][$i1]);
+              $dum1=date($datf, $mterm[$actual][$i1]);
             } else {
               $dum1="&nbsp;";
             } // Anstosszeit einblenden

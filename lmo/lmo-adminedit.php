@@ -55,7 +55,7 @@ if ($file != "") {
         $datum = explode('.', $datum1[$st-1]);
         $dummy = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
         if ($dummy > -1) {
-          $datum1[$st-1] = strftime("%d.%m.%Y", $dummy);
+          $datum1[$st-1] = date("d.m.Y", $dummy);
         } else {
           $datum1[$st-1] = "";
         }
@@ -65,7 +65,7 @@ if ($file != "") {
         $datum = explode('.', $datum2[$st-1]);
         $dummy = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
         if ($dummy > -1) {
-          $datum2[$st-1] = strftime("%d.%m.%Y", $dummy);
+          $datum2[$st-1] = date("d.m.Y", $dummy);
         } else {
           $datum2[$st-1] = "";
         }
@@ -230,10 +230,10 @@ if ($file != "") {
     $lmo_spieltermine=array_filter(array_values_recursive($mterm[$st-1]),"filterZero");
     if (!empty($lmo_spieltermine)) {
       if (empty($datum1[$st-1])) {
-        $datum1[$st-1] = strftime("%d.%m.%Y", min($lmo_spieltermine));
+        $datum1[$st-1] = date("d.m.Y", min($lmo_spieltermine));
       }
       if (empty($datum2[$st-1])) {
-        $datum2[$st-1] = strftime("%d.%m.%Y", max($lmo_spieltermine));
+        $datum2[$st-1] = date("d.m.Y", max($lmo_spieltermine));
       }
     }
 
@@ -365,9 +365,9 @@ if ($file != "") {
     if ($lmtype == 0) {?>
           <tr><?php
       if ($mterm[$st-1][$i] > 0) {
-        $dum1 = strftime("%d.%m.%Y", $mterm[$st-1][$i]);
-        $dum2 = strftime("%H:%M", $mterm[$st-1][$i]);
-        $dum3 = $me[intval(strftime("%m", $mterm[$st-1][$i]))]." ".strftime("%Y", $mterm[$st-1][$i]);
+        $dum1 = date("d.m.Y", $mterm[$st-1][$i]);
+        $dum2 = date("H:i", $mterm[$st-1][$i]);
+        $dum3 = $me[intval(date("m", $mterm[$st-1][$i]))]." ".date("Y", $mterm[$st-1][$i]);
       } else {
         $dum1 = "";
         $dum2 = "";
@@ -482,9 +482,9 @@ if ($file != "") {
         }?>
           <tr><?php
         if ($mterm[$st-1][$i][$n] > 0) {
-          $dum1 = strftime("%d.%m.%Y", $mterm[$st-1][$i][$n]);
-          $dum2 = strftime("%H:%M", $mterm[$st-1][$i][$n]);
-          $dum3 = $me[intval(strftime("%m", $mterm[$st-1][$i][$n]))]." ".strftime("%Y", $mterm[$st-1][$i][$n]);
+          $dum1 = date("d.m.Y", $mterm[$st-1][$i][$n]);
+          $dum2 = date("H:i", $mterm[$st-1][$i][$n]);
+          $dum3 = $me[intval(date("m", $mterm[$st-1][$i][$n]))]." ".date("Y", $mterm[$st-1][$i][$n]);
         } else {
           $dum1 = "";
           $dum2 = "";

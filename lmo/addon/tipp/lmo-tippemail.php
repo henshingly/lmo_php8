@@ -218,7 +218,7 @@ if ($message != "") {
                     $zeit = zeit($mterm[$st0][$dd], $datum1[$st0], $datum2[$st0]);
                     if ($now < $zeit && $then > $zeit) {
                       if ((($st == 0 && $goaltippa[$st0][$dd] == "_") || ($st > 0 && $goaltippa[$dd] == "_")) && $teama[$st0][$dd] > 0) {
-                        $spiele = $spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text['tipp'][87]." ".strftime("%A, %d.%m.%Y %R", $zeit).")\n";
+                        $spiele = $spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text['tipp'][87]." ".date("l, d.m.Y H:i", $zeit).")\n";
                       }
                     }
                   }
@@ -228,7 +228,7 @@ if ($message != "") {
                       $zeit = zeit($mterm[$st0][$dd][$ddd], $datum1[$st0], $datum2[$st0]);
                       if ($now < $zeit && $then > $zeit) {
                         if ((($st == 0 && $goaltippa[$st0][$dd][$ddd] == "_") || ($st > 0 && $goaltippa[$dd][$ddd] == "_")) && $teama[$st0][$dd] > 0) {
-                          $spiele = $spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text['tipp'][87]." ".strftime("%A, %d.%m.%Y %R", $zeit).")\n";
+                          $spiele = $spiele.$teams[$teama[$st0][$dd]]." - ".$teams[$teamb[$st0][$dd]]." (".$text['tipp'][87]." ".date("l, d.m.Y H:i", $zeit).")\n";
                         }
                       }
                     }
