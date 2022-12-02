@@ -66,8 +66,9 @@ $mini_barWidth = isset($_GET['mini_barWidth']) && is_numeric($_GET['mini_barWidt
                             )
                        );
 
-$file = isset($_GET['file'])?$_GET['file']:isset($file)?$file:NULL;
-$archivFolder = isset($_GET['folder'])?$_GET['folder']:isset($folder)?$folder:basename($ArchivDir);// Default
+$file = isset($_GET['file'])?$_GET['file']:(isset($file)?$file:NULL);
+$archivFolder = isset($_GET['folder'])?$_GET['folder']:(isset($folder)?$folder:basename($ArchivDir));// Default
+$bootstrap = $cfgarray['bootstrap'];
 
 if (substr($archivFolder,-1) != '/') {
   $archivFolder .= '/';
@@ -77,8 +78,8 @@ if (strpos($archivFolder,'../')!==false) {
   exit();
 }
 
-$a = isset($_GET['a'])?$_GET['a']:isset($a)?$a:NULL; // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
-$b = isset($_GET['b'])?$_GET['b']:isset($b)?$b:NULL; // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
+$a = isset($_GET['a'])?$_GET['a']:(isset($a)?$a:NULL); // nr vom team a (wenn nicht angegeben wird favTeam verwendet)
+$b = isset($_GET['b'])?$_GET['b']:(isset($b)?$b:NULL); // nr vom team b (wenn nicht angegeben wird nächster Gegner von a verw.)
 
 $mini_cache_refresh = isset($mini_cache_refresh)?$mini_cache_refresh:0;
 
@@ -110,9 +111,8 @@ if (!file_exists($mini_cache_filename)
   <head>
   <title>lmo-nextgame</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-  <style type="text/css">
-    html,body {margin:0;padding:0;background:transparent;}
-  </style>
+  <link href="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $cfgarray['bootstrap']; ?>/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" >
   </head>
   <body><?php
   }
@@ -172,7 +172,7 @@ if (!file_exists($mini_cache_filename)
 
       $template->setVariable("gameDate",$partie->datumString());
       $template->setVariable("gameTime",$partie->zeitString());
-      $template->setVariable("ligaDatum",$text['mini'][14].": ".$liga->ligaDatumAsString("%x"));
+      $template->setVariable("ligaDatum",$text['mini'][14].": ".$liga->ligaDatumAsString("d.m.Y"));
 
        $now = time();
        $gameDateTime = $partie->zeit;
@@ -372,6 +372,7 @@ if (!file_exists($mini_cache_filename)
   else echo getMessage($text['mini'][5],TRUE);
   //Falls IFRAME - komplettes HTML-Dokument
   if (basename($_SERVER['PHP_SELF'])=="lmo-mininext.php") {?>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $cfgarray['bootstrap']; ?>/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   </body>
   </html><?php
   }

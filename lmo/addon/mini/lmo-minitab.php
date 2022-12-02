@@ -42,7 +42,6 @@ $m_platz= !empty($_GET['mini_platz'])? urldecode($_GET['mini_platz']):
             (isset($mini_platz)? $mini_platz:
               (!empty($cfgarray['mini']['standardTabellenPlatz'])? $cfgarray['mini']['standardTabellenPlatz']: NULL) );
 
-
 //Falls IFRAME - komplettes HTML-Dokument
 if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -51,9 +50,8 @@ if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
 <head>
 <title>Minitab</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-<style type="text/css">
-  html,body {margin:0;padding:0;background:transparent;}
-</style>
+<link href="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $cfgarray['bootstrap']; ?>/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" >
 </head>
 <body><?php
 }
@@ -209,7 +207,7 @@ if (empty($CacheOutput)) {
     $template->setVariable("LigaBild",HTML_icon(basename($m_liga),'liga','small'));
     $template->setVariable("LigaBildMiddle",HTML_icon(basename($m_liga),'liga','middle'));
     $template->setVariable("LigaBildBig",HTML_icon(basename($m_liga),'liga','big'));
-    $template->setVariable("ligaDatum",$text['mini'][14].": ".$liga->ligaDatumAsString("%x"));
+    $template->setVariable("ligaDatum",$text['mini'][14].": ".$liga->ligaDatumAsString("d.m.Y"));
     $template->setVariable("URL_TO_LMO", URL_TO_LMO);
     $template->setVariable("URL_TO_TEMPLATEDIR", URL_TO_TEMPLATEDIR."/mini/");
     $template->setVariable("Link", URL_TO_LMO.'/?action=table&amp;file='.$m_liga);
@@ -229,6 +227,7 @@ if (empty($CacheOutput)) {
 }
 //Falls IFRAME - komplettes HTML-Dokument
 if (basename($_SERVER['PHP_SELF'])=="lmo-minitab.php") {?>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $cfgarray['bootstrap']; ?>/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html><?php
 }?>
