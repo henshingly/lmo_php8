@@ -42,17 +42,18 @@
         echo "<a class='btn btn-sm btn-info' href='".$addr.$i."' title='".$k."'>".$j."</a>";
       }
       echo "&nbsp;";
+      $break = "</div></div><div class='row pt-2'><div class='col'>";
       if (($anzst>47) && (($anzst%4)==0)) {
         if (($i==$anzst/4) || ($i==$anzst/2) || ($i==$anzst/4*3)) {
-          echo "</div></div><div class='row'><div class='col'>";
+          echo $break;
         }
       } elseif (($anzst>35)) {
         if (($i==ceil($anzst/3)) || ($i==ceil($anzst/3*2))) {
-          echo "</div></div><div class='row'><div class='col'>";
+          echo $break;
         }
       } elseif (($anzst>23)) {
         if ($i==ceil($anzst/2)) {
-          echo "</div></div><div class='row'><div class='col'>";
+          echo $break;
         }
       }
     }
