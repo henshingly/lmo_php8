@@ -41,12 +41,12 @@ if ($file != "") {
     <div class="col-10">
       <div class="container" id="koprogram"><?php 
   if ($selteam == 0) {
-    echo "<div class='row'><div class='col text-center'><br/>".$text[24]."<br/></div></div>";
+    echo "<div class='row justify-content-center'><div class='col text-center'><br/>".$text[24]."<br/></div></div>";
   } else {
     for($j = 0; $j < $anzst; $j++) {
       for($i = 0; $i < (($anzteams/2)+1); $i++) {
         if (($selteam == $teama[$j][$i]) || ($selteam == $teamb[$j][$i])) {?>
-        <div class="row"><?php 
+        <div class="row justify-content-center"><?php 
           if ($j == $anzst-1) {
             $l = $text[364];
           } elseif($j == $anzst-2) {
@@ -156,13 +156,10 @@ if ($file != "") {
              *
              */
             if ($mnote[$j][$i][$n]!="") {
-         
               $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong> ".applyFactor($goala[$j][$i][$n],$goalfaktor).":".applyFactor($goalb[$j][$i][$n],$goalfaktor);
               //Allgemeine Notiz
-              
-              $lmo_spielnotiz.="<br><strong>".$text[22].":</strong><br>".$mnote[$j][$i][$n];
-              
-              echo "<a data-bs-toggle='tooltip' data-bs-placement='right' data-bs-html='true' title='".$lmo_spielnotiz."'> <i class='bi bi-info-square text-info' style='font-size: 1.3rem;'></i></a>";
+              $lmo_spielnotiz="<strong>".$text[22].":</strong><br>".$mnote[$j][$i][$n];
+              echo "<a data-bs-toggle='tooltip' data-bs-placement='right' data-bs-html='true' title='".$lmo_spielnotiz."'> <i class='bi bi-info-circle-fill text-info' style='font-size: 1.3rem;'></i></a>";
               $lmo_spielnotiz="";
             } else {
               echo "&nbsp;";
