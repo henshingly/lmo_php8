@@ -46,7 +46,7 @@ if (!defined('CLASSLIB_VERSION')) {
   define('CLASSLIB_VERSION',' (classlib&nbsp;'.CLASSLIB_VERSION_NR.')');
 }
 if (!defined('CLASSLIB_IMG_TYPES')) {
-  define('CLASSLIB_IMG_TYPES',$classlib_img_types);
+  define('CLASSLIB_IMG_TYPES',$cfgarray['classlib']['img_types']);
 }
 if (!defined('CLASSLIB_INFO')) {
   define('CLASSLIB_INFO',"Classlib ".CLASSLIB_VERSION_NR." &#169; <a href=\"mailto:webobjects@gmx.net?subject=LMO-KLASSENBIBLIOTHEK\" title=\"Send mail\">Timme</a>");
