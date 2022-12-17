@@ -195,7 +195,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
               echo " align='center'>";
               $pos=array_search($data[$j1][$j2],$teamu);
 
-              echo getSmallImage($data[$j1][$j2],"&nbsp;".str_replace(" ","&nbsp;",$data[$j1][$j2])."&nbsp;");
+              echo HTML_smallTeamIcon($file,$data[$j1][$j2]);
 
               if(!empty($pos) && $teamu[$pos]!="" && $urlt==1){echo "<a href=\"".$teamu[$pos]."\" target=\"_blank\" title=\"".$text[46]."\"><i class='bi bi-box-arrow-up-right text-warning' title='".$text[564]."'></i></a>";}
             //Spielerlinks

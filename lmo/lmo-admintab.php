@@ -125,7 +125,7 @@ if ($file != "") {
             </div>
             <div class="col-3 text-start"><?php echo $dummy.$teams[$i].$dumm2;?><?php 
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-      $lmo_tabellennotiz=getSmallImage($teams[$i]);
+	   $lmo_tabellennotiz ="";
 
       /** Notizen anzeigen
        *
@@ -133,10 +133,9 @@ if ($file != "") {
        * muss mit -1 multipliziert werden, um die Punkte/Tore richtig anzuzeigen
        */
 
-      $lmo_tabellennotiz.=" <strong>".$teams[$i]."</strong>";
       //Straf-/Bonuspunkte
       if ($strafp[$i]!=0 || $strafm[$i]!=0) {
-        $lmo_tabellennotiz.="\n\n<strong>".$text[128].":</strong> ";
+        $lmo_tabellennotiz.="\n".$text[128].": ";
         //strongunkte
         $lmo_tabellennotiz.=$strafp[$i]<0?"+".((-1)*applyFactor($strafp[$i],$pointsfaktor)):((-1)*applyFactor($strafp[$i],$pointsfaktor));
         //Minuspunkte
@@ -148,7 +147,7 @@ if ($file != "") {
       }
       //Straf-/Bonustore
       if ($torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
-        $lmo_tabellennotiz.="\n<strong>".$text[522].":</strong> ";
+        $lmo_tabellennotiz.="\n".$text[522].": ";
         //Tore
         $lmo_tabellennotiz.=$torkorrektur1[$i]<0?"+".((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":":((-1)*applyFactor($torkorrektur1[$i],$goalfaktor)).":";
         //Gegentore
@@ -158,8 +157,8 @@ if ($file != "") {
       }
       //Teamnotizen
       if ($teamn[$i]!="") {
-        $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong>\n".$teamn[$i];
-      }?>
+        $lmo_tabellennotiz.="\n".$text[22].":\n".$teamn[$i];
+      }
       echo "<a data-bs-toggle='tooltip' data-bs-placement='right' data-bs-html='true' title='".$lmo_tabellennotiz."'> <i class='bi bi-info-square text-info' style='font-size: 1.3rem;'></i></a>";
       $lmo_tabellennotiz="";
     } ?>
@@ -197,5 +196,5 @@ if ($file != "") {
       </form>
     </div>
   </div>
-</div><?php 
-}?>
+</div><?php
+} ?>

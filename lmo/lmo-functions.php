@@ -85,28 +85,7 @@ function filterZero($a) {
   return (!empty($a));
 }
 
-/**
- * Returns HTML imgage code for a small team icon
- *
- * @param        string     $team       Long name of the team
- * @param        string     $alternative_text      If image not found return this instead
- * @return       string     HTML image-Code for the small team icon
- */
-//Umstellung Classlib kann später mal weg
-function getSmallImage($team,$alternative_text='') {
-  $team=str_replace("/","",$team);
-  if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
-    $team=preg_replace("/[^a-zA-Z0-9]/",'',$team);
-  }
-  if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
-    return $alternative_text;
-  } else {
-    $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$team.".gif");
-    return ("<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($team).".gif' {$imgdata[3]} alt=''> ");
-  }
-}
-
-/**
+/*
  * Returns a formatted (error) Message
  *
  * @param        string     $message       Message to return
