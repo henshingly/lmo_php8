@@ -16,7 +16,9 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
+
+if($_SERVER['PHP_SELF'] == '/lmo-showgraph.php')
+	header("Location: /lmo.php");
   
 if(($file!="") && ($kurve==1)){
   $tension = '0.4';
@@ -70,10 +72,11 @@ if(($file!="") && ($kurve==1)){
                     },";
                 }
 			?>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
+const ctx = document.getElementById('myChart');
+new Chart(ctx, {
 		type: 'line',
 		data: {
 			labels: [<?php echo $xAxis; ?>],

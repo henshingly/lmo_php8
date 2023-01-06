@@ -107,14 +107,15 @@ if ($file != "") {
           if ($plan == 1) {
             $heim2 .= "</a>";
           }?>
-          <div class="col-3 text-end d-none d-lg-block <?php echo $color ?>"><?php
+          <div class="col-2 text-end d-none d-lg-block <?php echo $color ?>"><?php
           echo $heim1.$teams[$teama[$st-1][$i]].$heim2;
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";?>
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' width='24'")."&nbsp;";?>
           </div>
           <div class="col-2 text-end d-lg-none <?php echo $color ?>"><?php
           echo $heim1.$teamk[$teama[$st-1][$i]].$heim2;
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";?>
-          </div><?php
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' width='24'")."&nbsp;";?>
+          </div>
+          <?php
           if ($m == 2) {
             $color = "text-success";
           } elseif ($m == 1) {
@@ -134,17 +135,17 @@ if ($file != "") {
           if ($plan==1) {
             $gast2 .= "</a>";
           }?>
-          <div class="col-3 text-start d-none d-lg-block <?php echo $color ?>">-&nbsp; <?php
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+          <div class="col-2 text-start d-none d-lg-block <?php echo $color ?>"><?php
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' width='24'")."&nbsp;";
           echo $gast1.$teams[$teamb[$st-1][$i]].$gast2;?>
           </div>
-          <div class="col-2 text-start d-lg-none <?php echo $color ?>">-&nbsp;<?php
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+          <div class="col-2 text-start d-lg-none <?php echo $color ?>"><?php
+          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' width='24'")."&nbsp;";
           echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;?>
           </div><?php
         } else { ?>
-          <div class="col-6 d-none d-lg-block">&nbsp;</div>
-          <div class="col-4 d-lg-none">&nbsp;</div><?php
+          <div class="col-4 d-none d-lg-block"></div>
+          <div class="col-4 d-lg-none"></div><?php
         }?>
           <div class="col-2 d-none d-lg-block"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?> : <?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?> <?php echo $mspez[$st-1][$i][$n]; ?></div>
           <div class="col-3 d-lg-none"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?> : <?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?> <?php echo $mspez[$st-1][$i][$n]; ?></div>

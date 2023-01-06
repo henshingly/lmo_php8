@@ -27,6 +27,14 @@ if ($datei) {
 }
 fclose($datei);
 
+$fmt = new IntlDateFormatter(
+    'de-DE',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::SHORT,
+    $cfgarray['timezone'],
+    IntlDateFormatter::GREGORIAN
+);
+
 function check_hilfsadmin($datei) {
   $hilfsadmin_berechtigung=FALSE;
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']==1){
@@ -85,7 +93,7 @@ function filterZero($a) {
   return (!empty($a));
 }
 
-/*
+/**
  * Returns a formatted (error) Message
  *
  * @param        string     $message       Message to return

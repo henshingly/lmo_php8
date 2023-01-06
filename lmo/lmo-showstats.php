@@ -29,18 +29,6 @@ if($file!=""){
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
 ?>
 
-<script type="text/javascript">
-/* <![CDATA[ */
-$(function() {
-	/** This code runs when everything has been loaded on the page */
-	/* Inline sparklines take their values from the contents of the tag */
-	 /* Use 'html' instead of an array of values to pass options to a sparkline with data in the tag */
-	$('.tristate').sparkline('html', {type: 'tristate',posBarColor:'#0C0',zeroBarColor:'#999',negBarColor:'#f44'} );
-	//$('.pie').sparkline('html', {type: 'pie',sliceColors:['#0C0','#999','#f44']} );
-});
-/* ]]> */
-</script>
-
 <div class="container">
   <div class="row">
     <div class="col">&nbsp;</div>
