@@ -42,7 +42,7 @@ $Path = PATH_TO_ADDONDIR;
         </tr>
         <tr>
           <td>&nbsp</td>
-          <td>LMO_PHP7 Version</td>
+          <td>LMO Version</td>
           <td>=</td>
           <td>LigaManagerOnline 4.0.2 Release Candidat0.0.8</td>
         </tr>

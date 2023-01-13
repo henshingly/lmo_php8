@@ -68,6 +68,8 @@ $output_berechnungszeit="";
 $output_stylesheet="";
 $output_stylesheet2="";
 $p1="";
+$bootstrap="";
+$chartjs="";
 
 if (!defined("LMO_TEMPLATE")) define("LMO_TEMPLATE","lmo-standard.tpl.php");
 

@@ -23,7 +23,7 @@
 // akzeptiert)
 
 $languages=array(
-    'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.ISO8859-1'),
+    'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.UTF-8'),
     'Cestina'=>array('cs_CS'),
     'Francais'=>array('fr_FR'),
     'English'=>array('en_EN','en_US'),
@@ -61,12 +61,10 @@ if (!function_exists("read_langfile")) {
 read_langfile($text,PATH_TO_LANGDIR."/lang-Deutsch.txt");
 read_langfile($text,PATH_TO_LANGDIR."/lang-{$deflang}.txt");
 
-@setlocale (LC_TIME, $languages[$deflang][0]);  // PHP <4.3
-@setlocale (LC_TIME, $languages[$deflang]);     //PHP >4.3
+@setlocale (LC_TIME, $languages[$deflang]);
 if (isset($lmouserlang) && $lmouserlang!=$deflang) {
   if (file_exists(PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt");
-  setlocale (LC_TIME, $languages[$lmouserlang][0]);  // PHP <4.3
-  setlocale (LC_TIME, $languages[$lmouserlang]);     //PHP >4.3
+  setlocale (LC_TIME, $languages[$lmouserlang]);
 }
 
 setlocale (LC_NUMERIC, 'en_EN');  // Wichtig: Für Arithmetik immer englische Trennzeichen
@@ -108,5 +106,5 @@ $orgtor=$text[38];
 
 
 ///*
-  if (!function_exists("c")){function c($c){if($c==1)return(base64_decode("PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA3LjAueCI+TE1PPC9hY3JvbnltPiA0IGZvciBQSFA3ICAtIDxhIGhyZWY9Ig=="));return(base64_decode("aHR0cDovL3d3dy5saWdhLW1hbmFnZXItb25saW5lLmRlLyIgdGl0bGU9IkNsaWNrIGhlcmUgdG8gZ2V0IGluZm9ybWF0aW9ucyBhYm91dCB0aGlzIHNjcmlwdCI+wqkgMTk5Ny0yMDE5IExNTy1Hcm91cDwvYT4="));}}
-  if (!function_exists("d")){function d($c){if(strpos(htmlentities($c),htmlentities(base64_decode("PCEtLUluZm9saW5rLS0+")))>0){false;}else{ eval(base64_decode("ZWNobyAnPGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA3LjAueCI+TE1PPC9hY3JvbnltPiA0IGZvciBQSFA3IC0gPGEgaHJlZj0iaHR0cDovL3d3dy5saWdhLW1hbmFnZXItb25saW5lLmRlLyIgdGl0bGU9IkNsaWNrIGhlcmUgdG8gZ2V0IGluZm9ybWF0aW9ucyBhYm91dCB0aGlzIHNjcmlwdCI+IDE5OTctMjAxOSBMTU8tR3JvdXA8L2E+"));}}}//*/?>
+  if (!function_exists("c")){function c($c){if($c==1)return(base64_decode("PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LngiPkxNTzwvYWNyb255bT4gNCBmb3IgUEhQIDggIC0gPGEgaHJlZj0i"));return(base64_decode("aHR0cDovL3d3dy5saWdhLW1hbmFnZXItb25saW5lLmRlLyIgdGl0bGU9IkNsaWNrIGhlcmUgdG8gZ2V0IGluZm9ybWF0aW9ucyBhYm91dCB0aGlzIHNjcmlwdCI+wqkgMTk5Ny0yMDE5IExNTy1Hcm91cDwvYT4="));}}
+  if (!function_exists("d")){function d($c){if(strpos(htmlentities($c),htmlentities(base64_decode("PCEtLUluZm9saW5rLS0+")))>0){false;}else{ eval(base64_decode("ZWNobyAnPGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LngiPkxNTzwvYWNyb255bT4gNCBmb3IgUEhQIDggLSA8YSBocmVmPSJodHRwOi8vd3d3LmxpZ2EtbWFuYWdlci1vbmxpbmUuZGUvIiB0aXRsZT0iQ2xpY2sgaGVyZSB0byBnZXQgaW5mb3JtYXRpb25zIGFib3V0IHRoaXMgc2NyaXB0Ij4gMTk5Ny0yMDE5IExNTy1Hcm91cDwvYT4="));}}}//*/?>
