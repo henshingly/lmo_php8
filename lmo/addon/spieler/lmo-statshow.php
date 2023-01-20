@@ -116,31 +116,20 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
     }
   }?>
     <div class="col">
-      <table id="stats" class="table">
-        <thead>
+      <table id="stats" class="table table-striped">
+          <thead>
           <tr>
             <th></th>
             <th></th><?php
   for ($i=0;$i<$spaltenzahl;$i++) {
     if ($spalten[$i]!=$text['spieler'][32]){?>
-            <th class="nobr" align="center"><?php
-      if ($spieler_extra_sortierspalte==0) {
-              ?><a href="<?php echo $_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=1&amp;team=$team";?>" title="<?php echo $text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48]." ".$text['spieler'][37]?>"><img title="<?php echo $text['spieler'][48]?>" border="0" src="<?php echo URL_TO_IMGDIR."/downsimple.png"?>" width="8" height="7" alt="&or;"></a><?php
-      }
-      echo "&nbsp;".$spalten[$i]."&nbsp;";
-      if ($spieler_extra_sortierspalte==0) {
-               ?><a href="<?php echo $_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=0&amp;team=$team";?>" title="<?php echo $text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][47]." ".$text['spieler'][37]?>"><img title="<?php echo $text['spieler'][47]?>" border="0" src="<?php echo URL_TO_IMGDIR."/upsimple.png"?>"  width="8" height="7"  alt="&and;"></a><?php
-
-      }?>
-            </th><?php
+            <th scope="col"><?php echo $spalten[$i];?></th><?php
     }
   }?>
-          </tr>
-        </thead><?php
+          </tr><?php
  if ($spieler_anzeige_pro_seite>0) {?>
-        <tfoot>
           <tr>
-            <th colspan="<?php echo $spaltenzahl+2?>" align="center"><?php
+            <th colspan="<?php echo $spaltenzahl+2?>"><?php
     if ($begin==0){
 
     }elseif (($newbegin=$begin-$spieler_anzeige_pro_seite)>=0) {
@@ -155,19 +144,14 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
     }?>
             </th>
           </tr>
-        </tfoot><?php
-  }?>
-        <tbody><?php
+          </thead>
+          <tbody><?php
+  }
   for ($j1=$begin;$j1<$begin+$maxdisplay;$j1++) {?>
           <tr><?php
     for ($j2=0;$j2<$spaltenzahl;$j2++) {
       $data[$j1][$j2] = stripslashes($data[$j1][$j2]);
-      if ($j2==$sort){
-        $stat_class=' class="text-info nobr"';
-      } else {
-        $stat_class=' class="nobr"';
-      }
-      if ($j2==0) {?><td align="right"><strong><?php
+      if ($j2==0) {?><th scope="row" align="right"><?php
         if (!isset($data[$j1-1][$sort]) || $data[$j1][$sort] !== $data[$j1-1][$sort] && $j1!=$begin) echo ($j1+1).". ";
 
         if ($j1>0 && $j1==$begin) {
@@ -179,17 +163,15 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
             if ($x==0) echo "1. ";
           }
         }?>
-            </strong></td>
-            <td align="left" class="text-info"><?php
+            </th>
+            <td align="left"><?php
               //Spielerbild
              echo  HTML_icon($data[$j1][$j2],'spieler','');
          ?></td><?php
       } ?>
-            <td <?php
-            echo $stat_class;
+            <td><?php
             //Vereinslinks
             if ($spalten[$j2]==$text['spieler'][25]) {
-              echo " align='center'>";
               $pos=array_search($data[$j1][$j2],$teamu);
 
               echo HTML_smallTeamIcon($file,$data[$j1][$j2]);
@@ -197,41 +179,18 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
               if(!empty($pos) && $teamu[$pos]!="" && $urlt==1){echo "<a href=\"".$teamu[$pos]."\" target=\"_blank\" title=\"".$text[46]."\"><i class='bi bi-box-arrow-up-right text-warning' title='".$text[564]."'></i></a>";}
             //Spielerlinks
             }elseif ($j2==0 && !is_null($linkspalte) && $linkspalte!==FALSE && $data[$j1][$linkspalte]!=$text['spieler'][43]){
-              echo " align='left'>&nbsp;".$data[$j1][$j2];
+              echo " align='left'>".$data[$j1][$j2];
               echo " <a href='".$data[$j1][$linkspalte]."' title='".$text['spieler'][34]."'><i class='bi bi-box-arrow-up-right text-warning' title='".$text[564]."'></i></a>";
             //sonst. Spalten
             }elseif ($spalten[$j2]!=$text['spieler'][32]){
-              if (is_numeric($data[$j1][$j2])) {
-                echo " align='center'>";
-              } else {
-                echo " align='left'>";
-              }
-              echo  "&nbsp;".str_replace(" ","&nbsp;",$data[$j1][$j2])."&nbsp;";
+              echo  str_replace(" ","&nbsp;",$data[$j1][$j2]);
             }?></td><?php
     }?>
           </tr><?php
   }?>
-        </tbody>
+      </tbody>
       </table>
-    </div><?php
-  if ($spieler_extra_sortierspalte==1) {?>
-    <div class="col-1">
-      <table class="table">
-        <tr>
-          <td><?php echo $text['spieler'][13]?></td>
-        </tr><?php
-    for ($i=0;$i<$spaltenzahl;$i++) {?>
-        <tr>
-          <td class="nobr">
-            <a href="<?php echo $_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=$begin&amp;sort=$i&amp;direction=1&amp;team=$team";?>">&or;</a>
-            <?php echo $spalten[$i]?>
-            <a href="<?php echo $_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=$begin&amp;sort=$i&amp;direction=0&amp;team=$team";?>">&and;</a>
-          </td>
-        </tr><?php
-    }?>
-      </table>
-    </div><?php
-  }?>
+    </div>
   </div>
   <div class="row p-2">
     <div class="col-4 offset-2 text-start">

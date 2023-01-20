@@ -452,77 +452,99 @@ function mark(el){
 		<div class="col">
 			<div class="container">
 				<div class="row">
-					<div class="col offset-3 text-start"><?php echo $text['spieler'][6] ?></div>
-				</div>
-				<div class="row">
-					<div class="col-3 offset-3 text-start">
-						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-							<acronym title="<?php echo $text['spieler'][9] ?>"><input type="text" name="wert"></acronym>&nbsp;
-							<input class="custom-control" type="submit" value=" + ">
-							<input type="hidden" name="option" value="addplayer">
-							<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
-							<input type="hidden" name="todo" value="edit">
-							<input type="hidden" name="st" value="<?php echo $st; ?>">
-							<input type="hidden" name="file" value="<?php echo $file ?>">
+					<div class="col-3 offset-3">
+						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="row">
+							<div class="col">
+								<input type="text" class="form-control" name="wert" placeholder="<?php echo $text['spieler'][6] ?>">
+							</div>
+							<div class="col-auto">
+								<input class="btn btn-sm btn-success" type="submit" value="+">
+							</div>
+							<div class="col-auto">
+								<input type="hidden" name="option" value="addplayer">
+								<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
+								<input type="hidden" name="todo" value="edit">
+								<input type="hidden" name="st" value="<?php echo $st; ?>">
+								<input type="hidden" name="file" value="<?php echo $file ?>">
+							</div>
 						</form>
 					</div>
 					<div class="col-3 text-start">
-						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-							<acronym title="<?php echo $text['spieler'][10] ?>"><select class="custom-select" name="wert" size="1"><?php
+						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="row">
+							<div class="col">
+								<select class="custom-select" name="wert" size="1"><?php
             for ($x = 0;$x < $zeile;$x++)
             { ?>
-								<option value="<?php echo $x ?>"><?php echo htmlentities(stripslashes($data[$x][0]) , ENT_COMPAT); ?></option><?php
+									<option value="<?php echo $x ?>"><?php echo htmlentities(stripslashes($data[$x][0]) , ENT_COMPAT); ?></option><?php
             } ?>
-							</select></acronym>&nbsp;
-							<input class="custom-control" type="submit" value=" &minus; ">
-							<input type="hidden" name="option" value="delplayer">
-							<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
-							<input type="hidden" name="todo" value="edit">
-							<input type="hidden" name="st" value="<?php echo $st; ?>">
-							<input type="hidden" name="file" value="<?php echo $file ?>">
+								</select>
+							</div>
+							<div class="col-auto">
+								<input class="btn btn-sm btn-warning" type="submit" value="&minus;">
+							</div>
+							<div class="col-auto">
+								<input type="hidden" name="option" value="delplayer">
+								<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
+								<input type="hidden" name="todo" value="edit">
+								<input type="hidden" name="st" value="<?php echo $st; ?>">
+								<input type="hidden" name="file" value="<?php echo $file ?>">
+							</div>
 						</form>
 					</div>
 				</div><?php
             if ($_SESSION['lmouserok'] == 2 || ($_SESSION['lmouserok'] == 1 && $spieler_adminbereich_hilfsadmin_zulassen == 1 && $spieler_adminbereich_hilfsadmin_fuer_spalten == 1))
             { ?>
 				<div class="row">
-					<div class="col offset-3 text-start"><?php echo $text['spieler'][5] ?></div>
-				</div>
-				<div class="row">
 					<div class="col-3 offset-3 text-start">
-						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="spalten">
-							<acronym title="<?php echo $text['spieler'][7] ?>"><input type="text" name="wert"></acronym> 
-							<input class="custom-control" type="submit" value=" + "><br>
-							<acronym title="<?php echo $text['spieler'][30] ?>"><?php echo $text['spieler'][38] ?>:</acronym>
-							<input type="radio" name="type" value="0" checked>&nbsp;<?php echo $text['spieler'][52] ?>
-							<input type="radio" name="type" value="<?php echo $text['spieler'][43] ?>">&nbsp;<?php echo $text['spieler'][53] ?>
-							<input type="radio" name="type" value="F">&nbsp;<?php echo $text['spieler'][54] ?>
-							<input type="hidden" name="option" value="addcolumn">
-							<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
-							<input type="hidden" name="todo" value="edit">
-							<input type="hidden" name="st" value="<?php echo $st; ?>">
-							<input type="hidden" name="file" value="<?php echo $file ?>">
+						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="spalten" class="row">
+							<div class="row">
+								<div class="col">
+									<input type="text" class="form-control" name="wert" placeholder="<?php echo $text['spieler'][5] ?>">
+								</div>
+								<div class="col-auto">
+									<input class="btn btn-sm btn-success" type="submit" value="+">
+								</div>
+								</div>
+								<div class="row">
+								<div class="col">
+								<?php echo $text['spieler'][38] ?>:
+									<input type="radio" class="form-check-input" name="type" value="0" checked>&nbsp;<?php echo $text['spieler'][52] ?>
+									<input type="radio" class="form-check-input" name="type" value="<?php echo $text['spieler'][43] ?>">&nbsp;<?php echo $text['spieler'][53] ?>
+									<input type="radio" class="form-check-input" name="type" value="F">&nbsp;<?php echo $text['spieler'][54] ?>
+									<input type="hidden" name="option" value="addcolumn">
+									<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
+									<input type="hidden" name="todo" value="edit">
+									<input type="hidden" name="st" value="<?php echo $st; ?>">
+									<input type="hidden" name="file" value="<?php echo $file ?>">
+								</div>
+							</div>
 						</form>
 					</div>
 					<div class="col-3 text-start">
-						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="spieler">
-							<acronym title="<?php echo $text['spieler'][8] ?>"><select class="custom-select" name="wert" size="1"><?php
+						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="spieler" class="row">
+							<div class="col">
+								<select class="custom-select" name="wert" size="1"><?php
                 for ($x = 0;$x < $spaltenzahl;$x++)
                 { ?>
-								<option value="<?php echo $x ?>"<?php if ($x == 0)
+									<option value="<?php echo $x ?>"<?php if ($x == 0)
                     { ?> disabled<?php
                     }
                     if ($x == 1)
                     { ?> selected<?php
                     } ?>><?php echo htmlentities(stripslashes($spalten[$x]) , ENT_COMPAT); ?></option><?php
                 } ?>
-							</select></acronym>&nbsp;
-							<input class="custom-control" type="submit" value=" &minus; ">
-							<input type="hidden" name="option" value="delcolumn">
-							<input type="hidden" name="todo" value="edit">
-							<input type="hidden" name="st" value="<?php echo $st; ?>">
-							<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
-							<input type="hidden" name="file" value="<?php echo $file ?>">
+								</select>
+							</div>
+							<div class="col-auto">
+								<input class="btn btn-sm btn-warning" type="submit" value="&minus;">
+							</div>
+								<div class="col-auto">
+								<input type="hidden" name="option" value="delcolumn">
+								<input type="hidden" name="todo" value="edit">
+								<input type="hidden" name="st" value="<?php echo $st; ?>">
+								<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
+								<input type="hidden" name="file" value="<?php echo $file ?>">
+							</div>
 						</form>
 					</div>
 				</div><?php
@@ -534,190 +556,89 @@ function mark(el){
 		<div class="col"><h1><?php echo $text['spieler'][1] ?></h1></dov>
 	</div>
 	<div class="row pt-3">
-	  <div class="col">
+	        <div class="col">
 			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-				<table id="stats" class="table" >
-					<thead>
-						<tr><?php
+				<div class="container">
+					<div class="row"><?php
             for ($i = 0;$i < $spaltenzahl;$i++)
             {
                 $stat_sort = $_SERVER['PHP_SELF'] . "?action=admin&amp;todo=statistik&amp;sort=" . $i . "&amp;file=" . $file . "&amp;direction="; ?>
-								<th align="center">
-									<input type="text" name="spalten<?php echo $i ?>" onChange="mark(this)" value="<?php echo $spalten[$i] ?>" size="<?php echo strlen($spalten[$i]); ?>">
-								</th><?php
+						<div class="col-1">
+							<input type="text" class="form-control" name="spalten<?php echo $i ?>" onChange="mark(this)" value="<?php echo $spalten[$i] ?>" size="<?php echo strlen($spalten[$i]); ?>">
+						</div><?php
             } ?>
-						</tr>
-					</thead>
-					<tfoot><?php
+					</div><?php
             if ($formel_ges > 0)
             { ?>
-              <tr><?php
+              <div class="row p-1"><?php
                 for ($i = 0;$i < $spaltenzahl;$i++)
-                { ?>
-                  <th align="center"><?php
+                { 
                     if ($formel[$i])
                     { ?>
-                    <input type="text" onClick="sel('formel_str<?php echo $i ?>')" onChange="mark(this)" name="formel_str<?php echo $i ?>" value="<?php echo $formel_str[$i] ?>" size="<?php echo strlen($formel_str[$i]); ?>"><?php
+                    <div class="col-2"><input type="text" class="form-control" onClick="sel('formel_str<?php echo $i ?>')" onChange="mark(this)" name="formel_str<?php echo $i ?>" value="<?php echo $formel_str[$i] ?>" size="<?php echo strlen($formel_str[$i]); ?>"></div><?php
                     }
                     elseif ($i == 0)
-                    {
-                        echo "<strong>" . $text['spieler'][54] . ":</strong>";
+                    { ?>
+                    <div class="col-1"><strong><?php echo $text['spieler'][54];?>:</strong></div><?php
                     }
                     else
-                    {
-                        echo "&nbsp;";
-                    } ?>
-                  </th><?php
+                    { ?>
+                    <div class="col-1"></div><?php
+                    } 
                 } ?>
-              </tr>
+              </div>
             <?php
-            } ?>					  						<tr>
-							<td align="right" colspan="<?php echo $spaltenzahl * 2 ?>">
-								<input type="hidden" name="option" value="statupdate">
-								<input type="hidden" name="todo" value="edit">
-								<input type="hidden" name="st" value="<?php echo $st; ?>">
-								<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
-								<input type="hidden" name="file" value="<?php echo $file ?>">
-								<input class="btn btn-primary btn-sm" type="submit" value="Statistik updaten">
-							</td>
-						</tr>
-					</tfoot>
-					<tbody><?php
+            } 
             $display = $zeile;
             $statstart = 0;
             if ($display > $zeile) $display = $zeile;
             for ($j1 = $statstart;$j1 < $display;$j1++)
             { ?>
-				     <tr><?php
+				     <div class="row"><?php
                 for ($j2 = 0;$j2 < $spaltenzahl;$j2++)
                 {
                     $data[$j1][$j2] = htmlentities(stripslashes($data[$j1][$j2]) , ENT_COMPAT);
                     if (isset($formel[$j2]) && $formel[$j2] == 1)
                     { ?>
-    			    <td align="center">
-                <input type="text" name="data<?php echo $j1 . "|" . $j2 ?>" value="<?php echo $data[$j1][$j2] ?>" size="<?php echo strlen($data[$j1][$j2]); ?>" disabled>
-              </td><?php
+    			    <div class="col-1"><input type="text" class="form-control" name="data<?php echo $j1 . "|" . $j2 ?>" value="<?php echo $data[$j1][$j2] ?>" size="<?php echo strlen($data[$j1][$j2]); ?>" disabled></div><?php
                     }
                     elseif (is_numeric($data[$j1][$j2]))
                     { ?>
-			  <td align="left">
-                <input type="number" name="data<?php echo $j1 . "|" . $j2 ?>" value="<?php echo $data[$j1][$j2] ?>" size="<?php echo strlen($data[$j1][$j2]); ?>" style="width: 60px;">
-              </td><?php
+			  <div class="col-1"><input type="number" class="form-control" name="data<?php echo $j1 . "|" . $j2 ?>" value="<?php echo $data[$j1][$j2] ?>" size="<?php echo strlen($data[$j1][$j2]); ?>"></div><?php
                     }
                     else
                     {
                         if ($spalten[$j2] == $text['spieler'][25])
                         { ?>
-							<td colspan="2" align="left">
+							<div class="col-1">
   							<select name="data<?php echo $j1 . "|" . $j2 ?>" size="1"><?php
                             for ($j = 0;$j <= $anzteams;$j++)
                             { ?>
   									<option <?php if (htmlentities($teams[$j]) == $data[$j1][$j2]) echo "selected"; ?>><?php echo htmlentities($teams[$j]) ?></option><?php
                             } ?>
   							</select>
-							</td><?php
+							</div><?php
                         }
                         else
                         { ?>
-							<td align="left">
-								<input type="text" name="data<?php echo $j1 . "|" . $j2 ?>"value="<?php echo $data[$j1][$j2] ?>" size="<?php echo strlen($data[$j1][$j2]); ?>">
-							</td><?php
+							<div class="col-1"><input type="text" class="form-control" name="data<?php echo $j1 . "|" . $j2 ?>"value="<?php echo $data[$j1][$j2] ?>" size="<?php echo strlen($data[$j1][$j2]); ?>"></div><?php
                         }
                     }
                 } ?>
-						</tr><?php
+						</div><?php
             } ?>
-					</tbody>
-				</table>
+				</div>
+				<div class="row p-3 text-end">
+						<div class="col-1 offset-8">
+							<input type="hidden" name="option" value="statupdate">
+							<input type="hidden" name="todo" value="edit">
+							<input type="hidden" name="st" value="<?php echo $st; ?>">
+							<input type="hidden" name="sort" value="<?php echo $spieler_sort ?>">
+							<input type="hidden" name="file" value="<?php echo $file ?>">
+							<input class="btn btn-primary btn-sm" type="submit" value="Statistik updaten">
+						</div>
+				</div>
       			</form>
-		</div>
-	</div>
-	<div class="row pt-3">
-		<div class="col"><h1><?php echo $text['spieler'][39] ?></h1></div>
-	</div>
-	<div class="row pt-3">
-		<div class="col">
-			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form1">
-				<input type="hidden" name="option" value="saveconfig">
-				<input type="hidden" name="todo" value="edit">
-				<input type="hidden" name="st" value="<?php echo $st; ?>">
-				<input type="hidden" name="file" value="<?php echo $file ?>">
-				<table class="table">
-					<tr>
-						<th colspan="2"><?php echo $text['spieler'][44] ?></th>
-						<th colspan="2"><?php echo $text['spieler'][45] ?></th>
-					</tr>
-					<tr>
-						<td<?php echo $text['spieler'][22] ?>: </td>
-						<td align="left">
-							<input type="number" name="anzeige_pro_seite" value="<?php echo $spieler_anzeige_pro_seite ?>" size="<?php echo strlen($spieler_anzeige_pro_seite); ?>" style="width: 45px;">
-						</td>
-						<td align="left"<?php echo $text['spieler'][40] ?>: </td>
-						<td align="left">
-  						<select name="adminbereich_standard_sortierung" onChange="mark(this)" size="1"><?php
-            for ($x = 0;$x < $spaltenzahl;$x++)
-            { ?>
-  							<option value="<?php echo $x ?>" <?php if ($x == $spieler_adminbereich_standard_sortierung) echo "selected"; ?>><?php echo $spalten[$x] ?></option><?php
-            } ?>
-  						</select>
-						</td>
-					</tr>
-					<tr>
-						<td align="left"<?php echo $text['spieler'][21] ?>: </td>
-						<td align="left">
-  						<select name="standard_sortierung" onChange="mark(this)" size="1"><?php
-            for ($x = 0;$x < $spaltenzahl;$x++)
-            { ?>
-  							<option value="<?php echo $x ?>" <?php if ($x == $spieler_standard_sortierung) echo "selected"; ?>><?php echo $spalten[$x] ?></option><?php
-            } ?>
-  						</select>
-						</td>
-						<?php if ($_SESSION['lmouserok'] == 2)
-            { ?>
-						<td align="left"<?php echo $text['spieler'][31] ?>: </td>
-						<td align="left"><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" onChange="mark(this)" value="<?php echo $spieler_adminbereich_hilfsadmin_zulassen ?>" <?php if ($spieler_adminbereich_hilfsadmin_zulassen == 1) echo "checked"; ?> onClick="if (this.checked==true) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=false; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=true;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=false;}"></td>
-            <?php
-            } ?>
-					</tr>
-					<tr>
-						<td align="left"<?php echo $text['spieler'][13] ?>: </td>
-						<td align="left"<input type="radio" name="standard_richtung" onClick="mark(this)" value="1"<?php if ($spieler_standard_richtung == 1) echo " checked"; ?>> <?php echo $text['spieler'][48] ?></td>
-						<?php if ($_SESSION['lmouserok'] == 2)
-            { ?>
-						<td align="left"<?php echo $text['spieler'][46] ?>: </td>
-						<td align="left"<input <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten != 1) echo "disabled" ?> type="checkbox" onChange="mark(this)" name="adminbereich_hilfsadmin_fuer_spalten" value="<?php echo $spieler_adminbereich_hilfsadmin_fuer_spalten ?>" <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten == 1) echo "checked"; ?>></td>
-						<?php
-            } ?>
-					</tr>
-					<tr>
-						<td>&nbsp;</td>
-						<td align="left" colspan="2"<input type="radio" name="standard_richtung" onClick="mark(this)" value="0"<?php if ($spieler_standard_richtung == 0) echo " checked"; ?>> <?php echo $text['spieler'][47] ?></td>
-					</tr>
-					<tr>
-						<td align="left"<?php echo $text['spieler'][41] ?>: </td>
-						<td lign="left"><input type="text" name="ligalink" onChange="mark(this)" value="<?php echo $spieler_ligalink ?>" size="<?php echo strlen($spieler_ligalink); ?>"></td>
-					</tr>
-					<tr>
-						<td align="left"<?php echo $text['spieler'][24] ?>: </td>
-						<td align="left"><input type="checkbox" name="extra_sortierspalte" onClick="mark(this)" value="<?php echo $spieler_extra_sortierspalte ?>" <?php if ($spieler_extra_sortierspalte == 1) echo "checked"; ?>></td>
-					</tr>
-					<tr>
-						<td align="left"<?php echo $text['spieler'][50] ?>: </td>
-						<td align="left"><input type="checkbox" name="vereinsweise_anzeigen" onClick="mark(this)" value="<?php echo $spieler_vereinsweise_anzeigen ?>"<?php if ($spieler_vereinsweise_anzeigen == 1) echo " checked";
-            if (array_search($text['spieler'][25], $spalten) == 0)
-            {
-                echo " disabled";
-            } ?>></td>
-					</tr>
-					<tr>
-						<td<?php echo $text['spieler'][23] ?>: </td>
-						<td align="left"><input type="checkbox" name="nullwerte_anzeigen" onClick="mark(this)" value="<?php echo $spieler_nullwerte_anzeigen ?>" <?php if ($spieler_nullwerte_anzeigen == 1) echo "checked"; ?>></td>
-					</tr>
-					<tr>
-						<td colspan="4" align="right"><input class="btn btn-primary btn-sm" type="submit" value="Konfiguration speichern"></td>
-					</tr>
-				</table>
-			</form>
 		</div>
 	</div>
 </div>
