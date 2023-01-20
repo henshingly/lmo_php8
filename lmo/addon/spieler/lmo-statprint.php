@@ -113,25 +113,19 @@ if ($filepointer = fopen($filename, "r+b")) {
         echo ' - '.$team;
       }?>
     </h1>
-      <table cellpadding="0" cellspacing="1" border="0">
+      <table class="table table-striped">
         <tr>
           <th colspan="2"></th><?php 
   for ($i=0;$i<$spaltenzahl;$i++) {
     if ($spalten[$i]!=$text['spieler'][32] && ($spalten[$i]!=$text['spieler'][25] || $team=='')){?>
-          <th class="nobr" align="center"><?php echo $spalten[$i]?></th><?php 
+          <th align="center"><?php echo $spalten[$i]?></th><?php 
     }
   }?>
         </tr><?php 
-  for ($j1=$begin;$j1<$begin+$maxdisplay;$j1++) {
-    $class=fmod($j1,2)!=0?" class='odd'":'';?>
+  for ($j1=$begin;$j1<$begin+$maxdisplay;$j1++) { ?>
           <tr><?php 
     for ($j2=0;$j2<$spaltenzahl;$j2++) {
-      if ($j2==$sort){ 
-        $stat_class=' class="lmoBackMarkierung nobr"';
-      } else {
-        $stat_class=' class="nobr"';
-      }
-      if ($j2==0) {?><td align="right"<?php echo $class?>><strong><?php 
+      if ($j2==0) {?><td align="right"><strong><?php 
         if (!isset($data[$j1-1][$sort]) || $data[$j1][$sort] !== $data[$j1-1][$sort] && $j1!=$begin) echo ($j1+1).". ";
         
         if ($j1>0 && $j1==$begin) {
@@ -144,7 +138,7 @@ if ($filepointer = fopen($filename, "r+b")) {
           }
         }?>
             </strong></td>
-            <td align="left"<?php echo $class?>><?php 
+            <td align="left"><?php 
               //Spielerbild
         if (file_exists(PATH_TO_IMGDIR."/spieler/".$data[$j1][$j2].".jpg")) {
           $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/".$data[$j1][$j2].".jpg");?>
@@ -155,7 +149,6 @@ if ($filepointer = fopen($filename, "r+b")) {
         } ?></td><?php 
       } ?>
             <td<?php 
-            echo $class;
             
             if ($spalten[$j2]!=$text['spieler'][32] && ($spalten[$j2]!=$text['spieler'][25] || $team=='')){
               if (is_numeric($data[$j1][$j2])) {

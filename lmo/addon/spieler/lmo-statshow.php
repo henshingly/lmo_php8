@@ -79,47 +79,44 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
     $begin = 0;
   }
 ?>
-<table class="lmoMiddle">
-  <tr><?php
+<div class="container">
+  <div class="row"><?php
   if ($spieler_vereinsweise_anzeigen==1) {?>
-    <td valign="top" align="center">
-      <table>
-        <tr>
-          <td align="right" class="nobr"><?php
-    if ($team!='') {?>
-            <a href="<?php echo $_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;direction=$direction";?>"><?php
-    }
-    echo $text['spieler'][51];
-    if ($team!='') {?></a><?php
-    }?>
-          </td>
-          <td align="right"><?php
+    <div class="col-1">
+      <?php
+      if ($team!='') {?>
+        <a href="<?php echo $_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;direction=$direction";?>"><?php
+      }
+      echo $text['spieler'][51];
+      if ($team!='') {?>
+        </a><?php
+      }?>
+     </div>
+     <div class="col-2"><?php
     if (file_exists(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".gif")) {
       $imgdata=getimagesize(PATH_TO_IMGDIR."/spieler/".$text['spieler'][51].".gif");
         ?>   <img title="<?php echo $t?>" border="0" src="<?php echo URL_TO_IMGDIR."/spieler/".rawurlencode($text['spieler'][51]).".gif"?>" <?php echo $imgdata[3]?> alt=""><?php
     }?>
-          </td>
-        </tr><?php
+     </div>
+   </div><?php
     //VEreinsspalte
     for($i=0;$i<count($teams)-1;$i++) {
     $teams[$i] = stripslashes($teams[$i]);?>
-        <tr>
-          <td align="right" class="nobr"><?php
+    <div class="row">
+      <div class="col-auto"><?php
       if ($teams[$i]!=$team) {?>
             <a href="<?php echo $_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;direction=$direction&amp;team=".$teams[$i];?>"><?php
       }
       echo $teamk[$i];
       if ($teams[$i]!=$team) {?></a><?php
       }?>
-         </td>
-         <td align="right"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
-        </tr><?php
-    }?>
-      </table>
-    </td><?php
+      </div>
+      <div class="col-1"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></tdivd>
+    </div><?php
+    }
   }?>
-    <td  valign="top">
-      <table id="stats" class="lmoInner" cellpadding="0" cellspacing="1" border="0">
+    <div class="col">
+      <table id="stats" class="table">
         <thead>
           <tr>
             <th></th>
@@ -216,10 +213,10 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
   }?>
         </tbody>
       </table>
-    </td><?php
+    </div><?php
   if ($spieler_extra_sortierspalte==1) {?>
-    <td valign="top" align="center">
-      <table>
+    <div class="col-1">
+      <table class="table">
         <tr>
           <td><?php echo $text['spieler'][13]?></td>
         </tr><?php
@@ -233,22 +230,20 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
         </tr><?php
     }?>
       </table>
-    </td><?php
+    </div><?php
   }?>
-  </tr>
-</table>
-<table width="99%">
-  <tr>
-    <td align="center">
+  </div>
+  <div class="row p-2">
+    <div class="col-4 offset-2 text-start">
       <a href="<?php echo URL_TO_ADDONDIR."/spieler/lmo-statprint.php?file=$file&amp;begin=$begin&amp;sort=$sort&amp;direction=$direction&amp;team=$team";?>"><?php echo $text['spieler'][56]?></a>
-    </td><?php
+    </div><?php
     if ($spieler_anzeige_pro_seite!=0) {?>
-     <td align="center">
+     <div class="col-4 text-end">
        <a href="<?php echo URL_TO_ADDONDIR."/spieler/lmo-statprint.php?file=$file&amp;sort=$sort&amp;direction=$direction&amp;team=$team";?>"><?php echo $text['spieler'][57]?></a>
-     </td><?php
+     </div><?php
     }?>
-  </tr>
-</table><?php
+  </div>
+</tdiv><?php
 }else{?>
   <?php echo getMessage($text['spieler'][14],TRUE);?><?php
 }

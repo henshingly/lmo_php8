@@ -536,13 +536,13 @@ function mark(el){
 	<div class="row pt-3">
 	  <div class="col">
 			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-				<table id="stats" class="lmoInner" >
+				<table id="stats" class="table" >
 					<thead>
 						<tr><?php
             for ($i = 0;$i < $spaltenzahl;$i++)
             {
                 $stat_sort = $_SERVER['PHP_SELF'] . "?action=admin&amp;todo=statistik&amp;sort=" . $i . "&amp;file=" . $file . "&amp;direction="; ?>
-								<th class="nobr" align="center">
+								<th align="center">
 									<input type="text" name="spalten<?php echo $i ?>" onChange="mark(this)" value="<?php echo $spalten[$i] ?>" size="<?php echo strlen($spalten[$i]); ?>">
 								</th><?php
             } ?>
@@ -642,17 +642,17 @@ function mark(el){
 				<input type="hidden" name="todo" value="edit">
 				<input type="hidden" name="st" value="<?php echo $st; ?>">
 				<input type="hidden" name="file" value="<?php echo $file ?>">
-				<table class="lmoInner">
+				<table class="table">
 					<tr>
 						<th colspan="2"><?php echo $text['spieler'][44] ?></th>
 						<th colspan="2"><?php echo $text['spieler'][45] ?></th>
 					</tr>
 					<tr>
-						<td class="nobr"><?php echo $text['spieler'][22] ?>: </td>
+						<td<?php echo $text['spieler'][22] ?>: </td>
 						<td align="left">
 							<input type="number" name="anzeige_pro_seite" value="<?php echo $spieler_anzeige_pro_seite ?>" size="<?php echo strlen($spieler_anzeige_pro_seite); ?>" style="width: 45px;">
 						</td>
-						<td align="left" class="nobr"><?php echo $text['spieler'][40] ?>: </td>
+						<td align="left"<?php echo $text['spieler'][40] ?>: </td>
 						<td align="left">
   						<select name="adminbereich_standard_sortierung" onChange="mark(this)" size="1"><?php
             for ($x = 0;$x < $spaltenzahl;$x++)
@@ -663,7 +663,7 @@ function mark(el){
 						</td>
 					</tr>
 					<tr>
-						<td align="left" class="nobr"><?php echo $text['spieler'][21] ?>: </td>
+						<td align="left"<?php echo $text['spieler'][21] ?>: </td>
 						<td align="left">
   						<select name="standard_sortierung" onChange="mark(this)" size="1"><?php
             for ($x = 0;$x < $spaltenzahl;$x++)
@@ -674,35 +674,35 @@ function mark(el){
 						</td>
 						<?php if ($_SESSION['lmouserok'] == 2)
             { ?>
-						<td align="left" class="nobr"><?php echo $text['spieler'][31] ?>: </td>
+						<td align="left"<?php echo $text['spieler'][31] ?>: </td>
 						<td align="left"><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" onChange="mark(this)" value="<?php echo $spieler_adminbereich_hilfsadmin_zulassen ?>" <?php if ($spieler_adminbereich_hilfsadmin_zulassen == 1) echo "checked"; ?> onClick="if (this.checked==true) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=false; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=true;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=false;}"></td>
             <?php
             } ?>
 					</tr>
 					<tr>
-						<td align="left" class="nobr"><?php echo $text['spieler'][13] ?>: </td>
-						<td align="left" class="nobr"><input type="radio" name="standard_richtung" onClick="mark(this)" value="1"<?php if ($spieler_standard_richtung == 1) echo " checked"; ?>> <?php echo $text['spieler'][48] ?></td>
+						<td align="left"<?php echo $text['spieler'][13] ?>: </td>
+						<td align="left"<input type="radio" name="standard_richtung" onClick="mark(this)" value="1"<?php if ($spieler_standard_richtung == 1) echo " checked"; ?>> <?php echo $text['spieler'][48] ?></td>
 						<?php if ($_SESSION['lmouserok'] == 2)
             { ?>
-						<td align="left" class="nobr"><?php echo $text['spieler'][46] ?>: </td>
-						<td align="left" class="nobr"><input <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten != 1) echo "disabled" ?> type="checkbox" onChange="mark(this)" name="adminbereich_hilfsadmin_fuer_spalten" value="<?php echo $spieler_adminbereich_hilfsadmin_fuer_spalten ?>" <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten == 1) echo "checked"; ?>></td>
+						<td align="left"<?php echo $text['spieler'][46] ?>: </td>
+						<td align="left"<input <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten != 1) echo "disabled" ?> type="checkbox" onChange="mark(this)" name="adminbereich_hilfsadmin_fuer_spalten" value="<?php echo $spieler_adminbereich_hilfsadmin_fuer_spalten ?>" <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten == 1) echo "checked"; ?>></td>
 						<?php
             } ?>
 					</tr>
 					<tr>
 						<td>&nbsp;</td>
-						<td align="left" colspan="2" class="nobr"><input type="radio" name="standard_richtung" onClick="mark(this)" value="0"<?php if ($spieler_standard_richtung == 0) echo " checked"; ?>> <?php echo $text['spieler'][47] ?></td>
+						<td align="left" colspan="2"<input type="radio" name="standard_richtung" onClick="mark(this)" value="0"<?php if ($spieler_standard_richtung == 0) echo " checked"; ?>> <?php echo $text['spieler'][47] ?></td>
 					</tr>
 					<tr>
-						<td align="left" class="nobr"><?php echo $text['spieler'][41] ?>: </td>
+						<td align="left"<?php echo $text['spieler'][41] ?>: </td>
 						<td lign="left"><input type="text" name="ligalink" onChange="mark(this)" value="<?php echo $spieler_ligalink ?>" size="<?php echo strlen($spieler_ligalink); ?>"></td>
 					</tr>
 					<tr>
-						<td align="left" class="nobr"><?php echo $text['spieler'][24] ?>: </td>
+						<td align="left"<?php echo $text['spieler'][24] ?>: </td>
 						<td align="left"><input type="checkbox" name="extra_sortierspalte" onClick="mark(this)" value="<?php echo $spieler_extra_sortierspalte ?>" <?php if ($spieler_extra_sortierspalte == 1) echo "checked"; ?>></td>
 					</tr>
 					<tr>
-						<td align="left" class="nobr"><?php echo $text['spieler'][50] ?>: </td>
+						<td align="left"<?php echo $text['spieler'][50] ?>: </td>
 						<td align="left"><input type="checkbox" name="vereinsweise_anzeigen" onClick="mark(this)" value="<?php echo $spieler_vereinsweise_anzeigen ?>"<?php if ($spieler_vereinsweise_anzeigen == 1) echo " checked";
             if (array_search($text['spieler'][25], $spalten) == 0)
             {
@@ -710,7 +710,7 @@ function mark(el){
             } ?>></td>
 					</tr>
 					<tr>
-						<td class="nobr"><?php echo $text['spieler'][23] ?>: </td>
+						<td<?php echo $text['spieler'][23] ?>: </td>
 						<td align="left"><input type="checkbox" name="nullwerte_anzeigen" onClick="mark(this)" value="<?php echo $spieler_nullwerte_anzeigen ?>" <?php if ($spieler_nullwerte_anzeigen == 1) echo "checked"; ?>></td>
 					</tr>
 					<tr>
