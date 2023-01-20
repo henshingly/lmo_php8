@@ -175,21 +175,20 @@ if ($file!="") {
     require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalceinsicht.php");
   }
 ?>
-<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
-  <tr>
-    <td align="center"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
-  </tr>
-  <tr>
-    <td align="center">
+<div class="container">
+  <div class="row">
+    <div class="col"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></div>
+  </div>
+  <div class="row">
+    <div class="col">
       <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?php echo $file; ?>">
         <input type="hidden" name="st" value="<?php echo $st; ?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr><?php
+        <div class="container">
+          <div class="row"><?php
   if ($datum1[$st-1]!="") {
     $datum = explode('.',$datum1[$st-1]);
     $dum1=$me[intval($datum[1])]." ".$datum[2];
@@ -215,7 +214,7 @@ if ($file!="") {
       $j=$st.". ".$text[370];
     }
   }?>
-            <th class="nobr" align="left" colspan="<?php echo $datm+5; ?>"><?php
+            <div class="col-6"><?php
   if ($lmtype==0) {
     echo $st.". ".$text[2];
   } else {
@@ -229,47 +228,45 @@ if ($file!="") {
       echo " ".$text[4]." ".$datum2[$st-1];
     }
   }?>
-            </th><?php
+            </div><?php
   if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
-            <th class="nobr" align="center" colspan="<?php if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
+            <div class="col-2">
             <?php echo $text['tipp'][188]; /* Tipptendenz absolut */?>
-            </th>
+            </div>
 <?php  
   }
   //ERGEBNISMODUS
   if($tipp_tippmodus==1){  
     if($tipp_showdurchschntipp==1){ ?>
-            <th class="nobr" align="center" colspan="2">
+            <div class="col-1">
             <?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
-            </th><?php
+            </div><?php
     } ?>
-            <th class="nobr" align="center" colspan="<?php if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
-              <acronym title="<?php echo $text['tipp'][241].":".$text['tipp'][242] ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php
+            <div class="col-3">
+              <?php echo $text['tipp'][209]; /* Dein Tipp */?><br><?php
     if ($goalfaktor!=1) {
       echo "(".$text[553+log10($goalfaktor)].")";
     }?>
-            </th><?php
+            </div><?php
   }
   
   //TENDENZMODUS
   if($tipp_tippmodus==0){ ?>
-            <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][95] ?>">1</acronym></th><?php
+            <div class="col-1">
+              <acronym title="<?php echo $text['tipp'][95] ?>">1</acronym>&nbsp;<?php
     if($hidr==0){ ?>
-            <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][96] ?>">0</acronym></th><?php
+              <acronym title="<?php echo $text['tipp'][96] ?>">0</acronym>&nbsp;<?php
     }?>
-            <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][97] ?>">2</acronym></th><?php
+              <acronym title="<?php echo $text['tipp'][97] ?>">2</acronym>
+            </div><?php
   }
   //BEIDE
   if ($tipp_jokertipp==1){ ?>
-            <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][290] ?>"><?php echo $text['tipp'][289]; ?></acronym></th><?php
+            <div class="col-1"><acronym title="<?php echo $text['tipp'][290] ?>"><?php echo $text['tipp'][289]; ?></acronym></div><?php
   } ?>
-            <th class="nobr" colspan="3" align="center"><?php echo $text['tipp'][31]; /* Ergebnis */?></th><?php
-  if($spez==1){?>
-            <th colspan="2">&nbsp;</th><?php
-  }?>
-            <th class="nobr" colspan="2" align="right"><?php echo $text[37]; /* PP */?></th>
-            <th>&nbsp;</th>
-          </tr><?php
+            <div class="col-1"><?php echo $text['tipp'][31]; /* Ergebnis */?></div>
+            <div class="col-1"><?php echo $text[37]; /* PP */?></div>
+          </div><?php
   if ($lmtype!=0) {
     
     $anzsp=$anzteams;
@@ -314,16 +311,16 @@ if ($file!="") {
       }
     }
   }?>
-          <tr>
-            <td colspan="<?php echo $datm*2+10-$hidr; ?>" align="right"><?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
+          <div class="row">
+            <div class="col-5"><?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
     echo $text['tipp'][177];
   } 
   if($savebutton==1){ ?>
-              <input class="lmo-formular-button" type="submit" title="<?php echo $text[114] ?>" name="best" value="<?php echo $text['tipp'][8]; ?>"<?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  }else{
+              <input class="btn btn-sm btn-success" type="submit" title="<?php echo $text[114] ?>" name="best" value="<?php echo $text['tipp'][8]; ?>"<?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  }else{
     echo "&nbsp;";
   }?>
-            </td>
-            <td class="lmoFrontMarkierung" colspan="<?php echo $breite-$datm-9; ?>" align="right"><?php
+            </div>
+            <div class="col-5 text-end"><?php
   echo $text[37]." ";
   if($lmtype==0){
    echo $text[2];
@@ -331,16 +328,16 @@ if ($file!="") {
    echo $j;
   }
   echo ": ".$punktespieltag;?>
-            </td>
-          </tr>
-          <tr>
-            <td class="lmoFooter" colspan="<?php echo $breite; ?>" align="center"><?php if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
-          </tr>
-        </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col"><?php if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></div>
+          </div>
+        </div>
       </form>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
+</div>
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr><?php
    $st0 = $st-1;

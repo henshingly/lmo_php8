@@ -72,52 +72,44 @@ function changetextarea(x){
 include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
 ?>
 
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <th align="center"><h1><?php echo $text['tipp'][165] ?></h1></th>
-  </tr>
-  <tr>
-    <td align="left">
-      <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <input type="hidden" name="action" value="admin">
-        <input type="hidden" name="todo" value="tippemail">
-        <input type="hidden" name="save" value="1">
-        <input type="hidden" name="textreminder1" value="<?php if($tipp_textreminder1==""){$tipp_textreminder1=$text['tipp'][174];}echo $tipp_textreminder1; ?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td colspan="3" align="left"><input type="radio" name="emailart" value="0" <?php if($emailart==0){echo "checked";} ?> onClick="changetextarea(0)"><?php echo $text['tipp'][166]; ?></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td align="left"><input type="radio" name="emailart" value="2" <?php if($emailart==2){echo "checked";} ?> onClick="changetextarea(2)"><?php echo $text['tipp'][168]; ?></td>
-            <td colspan="2" align="left">
-              <select name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
-                <option value=""><?php echo $text['tipp'][51]?></option><?php 
+<form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <input type="hidden" name="action" value="admin">
+  <input type="hidden" name="todo" value="tippemail">
+  <input type="hidden" name="save" value="1">
+  <input type="hidden" name="textreminder1" value="<?php if($tipp_textreminder1==""){$tipp_textreminder1=$text['tipp'][174];}echo $tipp_textreminder1; ?>">
+  <div class="container">
+    <div class="row p-1">
+      <div class="col"><h1><?php echo $text['tipp'][165] ?></h1></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-3 text-end"><input type="radio" name="emailart" value="0" <?php if($emailart==0){echo "checked";} ?> onClick="changetextarea(0)">&nbsp;<?php echo $text['tipp'][166]; ?></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-3 text-end"><input type="radio" name="emailart" value="2" <?php if($emailart==2){echo "checked";} ?> onClick="changetextarea(2)">&nbsp;<?php echo $text['tipp'][168]; ?></div>
+      <div class="col-3 text-start">
+        <select class="custom-select" name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
+          <option value=""><?php echo $text['tipp'][51]?></option><?php 
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippselectemail.php");?>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td valign="top" align="left">
-              <input type="radio" name="emailart" value="1" <?php if($emailart==1){echo "checked";} ?> onClick="changetextarea(1)"><?php echo $text['tipp'][167]; ?>
-            </td>
-            <td colspan="2">
-              <table cellspacing="0" cellpadding="0" border="0"><?php 
+        </select>
+       </div>
+     </div>
+     <div class="row p-1">
+       <div class="col-3 text-end"><input type="radio" name="emailart" value="1" <?php if($emailart==1){echo "checked";} ?> onClick="changetextarea(1)">&nbsp;<?php echo $text['tipp'][167]; ?></div>
+       <div class="col-5 text-start">
+         <div class="container"><?php 
 $ftype=".l98";
 $iptype="reminder";
 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
 if($i>0){?>
-                <tr>
-                  <td colspan="2" align="left">
-                    <input type="radio" name="liganr" value="0" <?php if($liganr==0){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><strong><?php echo $text['tipp'][263]?></strong>
-                  </td>
-                </tr><?php 
+                <div class="row">
+                  <div class="col">
+                    <input type="radio" name="liganr" value="0" <?php if($liganr==0){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;">&nbsp;<strong><?php echo $text['tipp'][263]?></strong>
+                  </div>
+                </div><?php 
 } ?>
-              </table>
-            </td>
-          </tr><?php 
+              </div>
+            </div>
+          </div><?php 
 $start1=1;
 $ende1=count($dumma);
 if ($save == 1) {
@@ -128,36 +120,28 @@ if ($save == 1) {
     $ende1=$ende;
   }
 }?>
-          <tr>
-            <td colspan="2">&nbsp;</td>
-            <td align="left">
-              <?php echo $text['tipp'][164];?> 
-              <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<?php echo $start1; ?>">
-              <?php echo $text[4];?>
-              <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?php echo $ende1; ?>">
-              <?php echo $text['tipp'][170];?>
-              <input class="lmo-formular-input" type="text" name="tage" size="2" maxlength="2" value="<?php echo $tage; ?>" onFocus="emailart[2].checked=true;changetextarea(1);"><?php echo " ".$text['tipp'][171];?>
-            </td>
-          </tr>          
-          <tr>
-            <th colspan="4">&nbsp;</th>
-          </tr><?php 
+          <div class="row p-1">
+            <div class="col-auto offset-2"><?php echo $text['tipp'][164];?></div>
+            <div class="col-auto"><input class="form-control" type="text" name="start" size="2" maxlength="4" value="<?php echo $start1; ?>"></div>
+            <div class="col-auto"><?php echo $text[4];?></div>
+            <div class="col-auto"><input class="form-control" type="text" name="ende" size="2" maxlength="4" value="<?php echo $ende1; ?>"></div>
+            <div class="col-auto"><?php echo $text['tipp'][170];?></div>
+            <div class="col-auto"><input class="form-control" type="text" name="tage" size="2" maxlength="2" value="<?php echo $tage; ?>" onFocus="emailart[2].checked=true;changetextarea(1);"></div>
+            <div class="col-auto"><?php echo " ".$text['tipp'][171];?></div>
+          </div><?php 
 if ($save == 1) {
   if (isset($betreff)) {
     $betreff1 = $betreff;
   }
 }?>
-          <tr>
-            <td>&nbsp;</td>
-            <td colspan="3" align="left">
-              <?php echo $text['tipp'][265];?>
-              <input class="lmo-formular-input" type="text" name="betreff" id="betreff" size="20" maxlength="40" value="<?php echo $betreff1; ?>">
-            </td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td align="left" colspan="3">
-              <textarea id="message" name="message" rows="10" cols="60"><?php                if ($emailart == 1) {
+          <div class="row p-1">
+            <div class="col-5 offset-3">
+              <input class="form-control" type="text" name="betreff" id="betreff" size="20" maxlength="40" placeholder="<?php echo $text['tipp'][265];?>" value="<?php echo $betreff1; ?>">
+            </div>
+          </div>
+          <div class="row p-1">
+            <div class="col-5 offset-3">
+              <textarea  class="form-control"id="message" name="message" rows="10" cols="60"><?php                if ($emailart == 1) {
                   echo $tipp_textreminder1;
                 } elseif($message != "") {
                   echo $message;
@@ -165,19 +149,16 @@ if ($save == 1) {
                   echo $text['tipp'][295];
                 }?>
               </textarea>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" align="right"><input class="lmo-formular-button" type="submit" name="best" value="<?php echo $text['tipp'][169]; ?>"></td>
-          </tr>
-          <tr>
-            <td class="lmoFooter" width="20">&nbsp;</td>
-            <td class="lmoFooter" valign="top" align="right"><?php echo $text['tipp'][178]; ?></td>
-            <td class="lmoFooter" colspan="2" align="left"><?php echo $text['tipp'][179]; ?></td>
-            </td>
-          </tr>
-        </table>
-      </form>
-    </td>
-  </tr>
-</table>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div class="col"><input class="btn btn-success" type="submit" name="best" value="<?php echo $text['tipp'][169]; ?>"></td>
+          </div>
+          <div class="row p-1">
+            <div class="col-1 offset-4"><?php echo $text['tipp'][178]; ?></div>
+            <div class="col-3 text-start"><?php echo $text['tipp'][179]; ?></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>

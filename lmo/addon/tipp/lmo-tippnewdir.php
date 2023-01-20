@@ -127,13 +127,13 @@ if ($ftype != "") {
                   if ($_SESSION['lmotipperok'] > 0 || $action == "admin" || $todo == "newtipper") {
                     if ($iptype == "reminder") {?>
 
-  <tr>
-    <td class="nobr">
+  <div class="row">
+    <div class="col-auto">
         <input type="hidden" name="liga1[]" value="<?php echo $files; ?>">
-        <input type="radio" name="liganr" value="<?php echo $i; ?>" <?php if(($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><?php echo $t0; ?>
-    </td>
-    <td class="nobr">
-      <select class="lmo-formular-input" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php 
+        <input type="radio" class="form-check-input" name="liganr" value="<?php echo $i; ?>" <?php if(($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><?php echo $t0; ?>
+    </div>
+    <div class="col-auto">
+      <select class="custom-control" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php 
                       if ($liga == $files) {
                         if ($st > 0) {
                           $t1 = $st;
@@ -178,20 +178,19 @@ if ($ftype != "") {
                         echo "</option>";
                       }?>
       </select>
-    </td>
-  </tr><?php 
+    </div>
+  </div><?php 
                     }
                     if($iptype=="einsicht" || $iptype=="auswert"){?>
-  <tr>
-    <td width="20">&nbsp;</td>
-    <td class="nobr" align="left"><?php echo $t0; ?></td>
-    <td class="nobr" align="right">
-      <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <div class="row">
+    <div class="col-2 offset-3 text-end"><?php echo $t0; ?></div>
+    <div class="col-4 text-start">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="tipp">
         <input type="hidden" name="save" value="<?php if($iptype=="einsicht"){echo "3";}else{echo "2";} ?>">
         <input type="hidden" name="liga" value="<?php echo substr($files,0,-4); ?>">
-        <select class="lmo-formular-input" name="st"><?php 
+        <select class="custom-select" name="st"><?php 
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
                         if ($st >= 0) {
                           $t1 = $st;
@@ -249,14 +248,13 @@ if ($ftype != "") {
                         }
                         echo "</option>";
                       }?>
-          </select><?php                      echo $text['tipp'][164]; //Tipper
+          </select><?php
                       $start1=1;
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
                         if (isset($start)) {
                           $start1 = $start;
                         }
-                      }?> 
-          <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<?php echo $start1; ?>"><?php                      echo $text[4]; //bis
+                      }
                       $dummy1=array();
                       $verz1 = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
                        while ($tipfiles = readdir($verz1)) {
@@ -271,11 +269,10 @@ if ($ftype != "") {
                           $ende1 = $ende;
                         }
                       }?> 
-          <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?php echo $ende1; ?>">
-          <input class="lmo-formular-button" type="submit" name="best" value="<?php if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
+          <input class="btn btn-sm btn-success" type="submit" name="best" value="<?php if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
         </form>
-    </td>
-  </tr>
+    </div>
+  </div>
 <?php 
                     }elseif($iptype!="reminder"){
                       $checked = 0;
@@ -289,7 +286,7 @@ if ($ftype != "") {
                       } elseif($todo == "newtipper") {
                         $checked = 1;
                       }?>
-<input type="checkbox" name="xtipperligen[]" value="<?php echo substr($files,0,-4) ?>"<?php 
+<input type="checkbox" class="form-check-input" name="xtipperligen[]" value="<?php echo substr($files,0,-4) ?>"<?php 
                       if (($todo == "newtipper" || $todo == "tippuseredit") && $checked == 1) {
                         echo "checked";
                       } elseif($todo == "tippuseredit" && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$nick.".tip") == true) {
@@ -304,7 +301,7 @@ if ($ftype != "") {
                       }
                       if ($todo == "tippoptions" && $tipp_immeralle == 1) {
                         echo " disabled";
-                      }?>><?php echo $t0 ?><br><?php 
+                      }?>> <?php echo $t0 ?><br /><?php 
                     }
                   }
                   $tt1.=$dummy[$k]."|";

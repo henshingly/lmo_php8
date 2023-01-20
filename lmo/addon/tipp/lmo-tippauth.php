@@ -85,13 +85,12 @@ if ($action == "tipp") {
     include(PATH_TO_ADDONDIR."/tipp/lmo-tippmenu.php");
 ?>
  
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." "; if(isset($titel)){echo $titel;} ?></h1></td>
-  </tr>
-
-  <tr>
-    <td colspan="3" align="center"><?php    if($todo=="wert"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");}
+<div class="container">
+  <div class="row p-1">
+    <div class="col"><h1><?php echo $text['tipp'][0]." "; if(isset($titel)){echo $titel;} ?></h1></div>
+  </div>
+  <div class="row p-1">
+    <div class="col"><?php    if($todo=="wert"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");}
     elseif($todo=="fieber"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippfieber.php");}
     elseif($todo=="einsicht"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippeinsicht.php");}
     elseif($todo=="tabelle"){require(PATH_TO_ADDONDIR."/tipp/lmo-tipptabelle.php");}
@@ -100,122 +99,113 @@ if ($action == "tipp") {
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">  
         <input type="hidden" name="file" value="<?php echo $file?>">  
-        <table class="lmoInner" width="99%">
+        <div class="container">
           <caption><?php echo $text['tipp'][158]; ?></caption>
-          <tr>
-            <th colspan="2"><?php echo $text['tipp'][44]; ?></th>
-          </tr><?php      // Benutzer nicht gefunden
+          <div class="row p-1">
+            <div class="col"><?php echo $text['tipp'][44]; ?></div>
+          </div><?php      // Benutzer nicht gefunden
       if($_SESSION["lmotipperok"]==-2){?> 
-          <tr>
-            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][43],TRUE); ?></td>
-          </tr><?php      }
+          <div class="row p-1">
+            <div class="col"><?php echo getMessage($text['tipp'][43],TRUE); ?></div>
+          </div><?php      }
       // Benutzer nicht freigeschaltet
       if(isset($xtippersub) & $_SESSION["lmotipperok"]=="" && !isset($emailbody)){?> 
-          <tr>
-            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][148],TRUE); ?></td>
-          </tr><?php      }?>
-          <tr>
-            <td align="right"><acronym title="<?php echo $text[307] ?>"><?php echo " ".$text['tipp'][23]; ?></acronym></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtippername" size="16" maxlength="32" value="<?php echo $_SESSION['lmotippername']; ?>"></td>
-          </tr><?php 
+          <div class="row p-1">
+            <div class="col"><?php echo getMessage($text['tipp'][148],TRUE); ?></div>
+          </div><?php      }?>
+          <div class="row p-1">
+            <div class="col-3 text-end"><?php echo " ".$text['tipp'][23]; ?></div>
+            <div class="col-3"><input class="form-control" type="text" name="xtippername" size="16" maxlength="32" value="<?php echo $_SESSION['lmotippername']; ?>"></div>
+          </div><?php 
       // Passwort falsch 
       if($_SESSION["lmotipperok"]==-1){ $xtippername2=$_SESSION["lmotippername"];  ?> 
-          <tr>
-            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][42],TRUE); ?></td>
-          </tr><?php      }?>
-          <tr>
-            <td align="right"><acronym title="<?php echo $text[309] ?>"><?php echo " ".$text[308]; ?></acronym></td>
-            <td align="left"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $_SESSION['lmotipperpass']; ?>"></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td align="left"><input class="lmo-formular-button" title="<?php echo $text[311] ?>" type="submit" name="xtippersub" value="<?php echo $text['tipp'][12]; ?>"></td>
-          </tr>
-        </table>
+          <div class="row p-1">
+            <div class="col"><?php echo getMessage($text['tipp'][42],TRUE); ?></div>
+          </div><?php      }?>
+          <div class="row p-1">
+            <div class="col-3 text-end"><?php echo " ".$text[308]; ?></div>
+            <div class="col-3"><input class="form-control" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $_SESSION['lmotipperpass']; ?>"></div>
+          </div>
+          <div class="row p-1">
+            <div class="col-3 offset-3"><input class="btn btn-sm btn-secondary" title="<?php echo $text[311] ?>" type="submit" name="xtippersub" value="<?php echo $text['tipp'][12]; ?>"></div>
+          </div>
+        </div>
       </form>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table class="lmoInner" width="99%">
-        <tr>
-          <th colspan="3"><?php echo $text['tipp'][45]; ?></th>
-        </tr>
-        <tr>
-          <td align="right" colspan="2"><?php echo $text['tipp'][46]; ?></td>
-          <td align="left">
+    </div>
+  </div>
+  <div class="row p-1">
+    <div class="col">
+      <div class="container">
+        <div class="row p-1">
+          <div class="col-3"><?php echo $text['tipp'][45]; ?></div>
+          <div class="col-3">
             <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
               <input type="hidden" name="action" value="tipp">
               <input type="hidden" name="todo" value="newtipper">
-              <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text['tipp'][11]; ?>" >
+              <input class="btn btn-sm btn-primary" type="submit" name="xtippersub" value="<?php echo $text['tipp'][11]; ?>" >
             </form>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table class="lmoInner" width="99%">
-        <tr>
-          <th colspan="3"><?php echo $text['tipp'][4]; ?></th>
-        </tr>
-        <tr>
-          <td colspan="3" align="left">
-            <ul><?php 
-            $ftype=".l98"; 
-            require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
-            $dummy =  explode("|",$tt1);
-            $ftest2 = explode("|",$tt0);
-            if(isset($dummy) && isset($ftest2)){
-              for($u=0;$u<count($dummy);$u++){
-                if($dummy[$u]!="" && $ftest2[$u]!=""){
-                  $dummy[$u]=substr($dummy[$u],0,-4);
-                  $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
-                  if ($tipp_nurgesamt==0) {?>
-              <li class="lmoadminli"><a href="<?php echo $addw.$dummy[$u].".l98"; ?>"><?php echo $ftest2[$u];?></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
-                  }
-                }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row p-1">
+    <div class="col"><?php echo $text['tipp'][4]; ?></div>
+  </div>
+  <div class="row p-1">
+    <div class="col-auto">
+      <ul class="nav nav-pills"><?php 
+        $ftype=".l98"; 
+        require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
+        $dummy =  explode("|",$tt1);
+        $ftest2 = explode("|",$tt0);
+        if(isset($dummy) && isset($ftest2)){
+          for($u=0;$u<count($dummy);$u++){
+            if($dummy[$u]!="" && $ftest2[$u]!=""){
+              $dummy[$u]=substr($dummy[$u],0,-4);
+              $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
+              if ($tipp_nurgesamt==0) {?>
+        <li class="nav-item"><a href="<?php echo $addw.$dummy[$u].".l98"; ?>"><?php echo $ftest2[$u];?></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
               }
             }
-            if($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
-              $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";?>
-              <li class="lmoadminli"><a href="<?php echo $addw."&amp;all=1" ?>"><strong><?php echo $text['tipp'][25];?></strong></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
-            }
-            $auswertfile="";?>
-            </ul>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td>
+          }
+        }
+        if($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
+          $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";?>
+        <li class="nav-item"><a href="<?php echo $addw."&amp;all=1" ?>"><strong><?php echo $text['tipp'][25];?></strong></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
+        }
+        $auswertfile="";?>
+      </ul>
+    </div>
+  </div>
+  <div class="row p-1">
+    <div class="col">
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="getpass">
-        <table class="lmoInner" width="99%">
-          <tr>
-            <th colspan="3"><?php echo $text['tipp'][74]; ?></th>
-          </tr><?php   
+        <div class="container">
+          <div class="row p-1">
+            <div class="col"><?php echo $text['tipp'][74]; ?></div>
+          </div><?php   
             // Benutzer nicht gefunden
             if($_SESSION["lmotipperok"]==-3){ ?> 
-          <tr>
-            <td align="right" colspan="3"><?php echo $text['tipp'][43]; ?></td>
-          </tr><?php            }?>
-          <tr>
-            <td align="right"><acronym title="<?php echo $text[307] ?>"><?php echo " ".$text['tipp'][23]." ".$text['tipp'][218]." ".$text['tipp'][219]; ?></acronym></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtippername2" size="16" maxlength="32" value="<?php echo $xtippername2; ?>"></td>
-          </tr>
-          <tr>
-            <td align="right"><?php echo $text['tipp'][75]; ?></td>
-            <td align="left"><input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text['tipp'][76]; ?>" ></td>
-          </tr>
-        </table>
+          <div class="row p-1">
+            <div class="col"><?php echo $text['tipp'][43]; ?></div>
+          </div><?php            
+            }?>
+          <div class="row p-1">
+            <div class="col-3 text-start"><?php echo " ".$text['tipp'][23]." ".$text['tipp'][218]." ".$text['tipp'][219]; ?></div>
+            <div class="col-3"><input class="form-control" type="text" name="xtippername2" size="16" maxlength="32" value="<?php echo $xtippername2; ?>"></div>
+          </div>
+          <div class="row p-1">
+            <div class="col-3 text-start"><?php echo $text['tipp'][75]; ?></div>
+            <div class="col-3"><input class="btn btn-sm btn-secondary" type="submit" name="xtippersub" value="<?php echo $text['tipp'][76]; ?>" ></div>
+          </div>
+        </div>
       </form>
-    </td>
-  </tr><?php  }
+    </div>
+  </div><?php  }
   //require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
-</table><?php 
+</div><?php 
   }
 }?>

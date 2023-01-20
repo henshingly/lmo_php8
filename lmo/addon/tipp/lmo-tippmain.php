@@ -105,12 +105,12 @@ if ($action == "tipp") {
 
 
   
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></h1></td>
-  </tr>
-  <tr>
-    <td colspan="3" align="center"><?php 
+<div class="container">
+  <div class="row">
+    <div class="col"><h1><?php echo $text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></h1></div>
+  </div>
+  <div class="row">
+    <div class="col"><?php 
   if ($_SESSION["lmotipperok"] == 5) {
     if ($file != "" && $viewermode != 1) {
       $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, 0, -4)."_".$_SESSION['lmotippername'].".tip";
@@ -135,9 +135,9 @@ if ($action == "tipp") {
     }
   }
   ?>
-    </td>
-  </tr><?php // require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); 
+    </div>
+  </div><?php // require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); 
  ?>
-</table>
+</div>
 <?php 
 }?>

@@ -3,12 +3,12 @@
   *
   * http://lmo.sourceforge.net/
   *
-  * This program is free software; you can redistribute it and/or
+  * This program is free software; you can redisdiv class="row"ibute it and/or
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
   * 
-  * This program is distributed in the hope that it will be useful,
+  * This program is disdiv class="row"ibuted in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
   * General Public License for more details.
@@ -24,19 +24,18 @@ if(($action=="tipp") && ($todo=="")){
   $addw=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;file=";
 ?>
 
-<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php echo $_SESSION['lmotippername'];?><?php if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?><br><?php echo $text['tipp'][237]; ?></caption>
-  <tr>
-    <th align="left"><?php echo $text['tipp'][3]; ?>:</th>
-  </tr>
-  <tr>
-    <td align="left"><?php  $ftype=".tip"; require(PATH_TO_ADDONDIR."/tipp/lmo-tippdir.php"); ?></td>
-  </tr>
-  <tr>
-    <th align="left"><?php echo $text['tipp'][4]; ?></th>
-  </tr>
-  <tr>
-    <td class="nobr" align="left">
+<div class="container">
+  <div class="row">
+    <div class="col"><?php echo $text['tipp'][3]; ?>:</div>
+  </div>
+  <div class="row">
+    <div class="col"><?php  $ftype=".tip"; require(PATH_TO_ADDONDIR."/tipp/lmo-tippdir.php"); ?></td>
+  </div>
+  <div class="row">
+    <div class="col"><?php echo $text['tipp'][4]; ?></th>
+  </div>
+  <div class="row">
+    <div class="col">
       <ul><?php 
   $dummy =  explode('|',$tt1);
   $ftest2 = explode('|',$tt0);
@@ -56,27 +55,27 @@ if(($action=="tipp") && ($todo=="")){
   if($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
     $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";?>
         <li>
-          <a href="<?php echo $addw."&amp;all=1"; ?>"><strong><?php echo $text['tipp'][25];?></strong></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";} ?>
+          <a href="<?php echo $addw."&amp;all=1"; ?>"><?php echo $text['tipp'][25];?></sdiv class="row"ong></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile));} ?>
         </li><?php 
   }
   $auswertfile="";?>
       </ul>
-    </td>
-  </tr>
-  <tr>
-    <th align="left"><?php echo $text['tipp'][145]; ?>:</th>
-  </tr>
-  <tr>
-    <td class="nobr" align="left">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"><?php echo $text['tipp'][145]; ?>:</div>
+  </div>
+  <div class="row">
+    <div class="col">
       <ul>
-        <li class="lmoadminli"><?php echo "<a href='".$adda."newligen'>".$text['tipp'][5]."</a>"; ?></li>
-        <li class="lmoadminli"><?php echo "<a href='".$adda."delligen'>".$text['tipp'][266]."</a>"; ?></li>
-        <li class="lmoadminli"><?php echo "<a href='".$adda."daten'>".$text['tipp'][106];if($tipp_tipperimteam>=0){echo " / ".$text['tipp'][2];}echo "</a>"; ?></li>
-        <li class="lmoadminli"><?php echo "<a href='".$adda."pwchange'>".$text['tipp'][107]."</a>"; ?></li>
-        <li class="lmoadminli"><?php echo "<a href='".$adda."delaccount'>".$text['tipp'][6]."</a>"; ?></li>
-        <li class="lmoadminli"><?php echo "<a href='".$adda."logout'>".$text['tipp'][7]."</a>"; ?></li>
+        <li><?php echo "<a href='".$adda."newligen'>".$text['tipp'][5]."</a>"; ?></li>
+        <li><?php echo "<a href='".$adda."delligen'>".$text['tipp'][266]."</a>"; ?></li>
+        <li><?php echo "<a href='".$adda."daten'>".$text['tipp'][106];if($tipp_tipperimteam>=0){echo " / ".$text['tipp'][2];}echo "</a>"; ?></li>
+        <li><?php echo "<a href='".$adda."pwchange'>".$text['tipp'][107]."</a>"; ?></li>
+        <li><?php echo "<a href='".$adda."delaccount'>".$text['tipp'][6]."</a>"; ?></li>
+        <li><?php echo "<a href='".$adda."logout'>".$text['tipp'][7]."</a>"; ?></li>
       </ul>
-    </td>
-  </tr>
-</table><?php 
+    </div>
+  </div>
+</div><?php 
 }?>

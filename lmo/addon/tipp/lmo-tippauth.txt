@@ -1,0 +1,2 @@
+test|passwort|5|vorname nachname|spam@babig.de|||||1|1|EOL
+test2|test2|5|Karl Ranseier||||||1|1|EOL

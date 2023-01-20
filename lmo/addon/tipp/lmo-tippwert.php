@@ -107,96 +107,57 @@ if ($tabdat == "") {
   $addt5 = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;stwertmodus=".$stwertmodus."&amp;file=".$file."&amp;endtab=".$endtab."&amp;wertung=".$wertung."&amp;teamintern=".str_replace(" ", "%20", $teamintern)."&amp;gewicht=";
 }
 ?>
-
-<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php if($_SESSION["lmotipperok"]==5){echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];}}else{echo $text['tipp'][158];} ?></caption><?php if($tipp_tipperimteam>=0){?>
-  <tr>
-    <td align="center">
-      <table class="lmoMenu" width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-          <th class="nobr"><?php
+<div class="container">
+  <div class="row">
+    <div class="col"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></div>
+  </div>
+  <?php if($tipp_tipperimteam>=0){?>
+  <div class="row">
+    <div class="col-2"><?php
   if ($wertung == "einzel") {
     echo $text['tipp'][61];
   } else {
     echo "<a href=\"".$addt1."einzel\" title=\"".$text['tipp'][59]."\">".$text['tipp'][61]."</a>";
   }?>
-          </th>
-          <th class="nobr"><?php
+    </div>
+    <div class="col-2"><?php
   if ($wertung == "team") {
     echo $text['tipp'][62];
   } else {
     echo "<a href=\"".$addt1."team\" title=\"".$text['tipp'][60]."\">".$text['tipp'][62]."</a>";
   }?>
-          </th><?php
+    </div><?php
   if ($_SESSION['lmotipperverein'] != "" || $wertung == "intern") {?>
-          <th class="nobr"><?php
+     <div class="col-2"><?php
     if ($wertung == "intern") {
       echo $text['tipp'][144];
     } else {
       echo "<a href=\"".$addt1."intern&amp;teamintern=".rawurlencode($_SESSION['lmotipperverein'])."\" title=\"".$text['tipp'][144]."\">".$text['tipp'][144]."</a>";
     }?>
-          </th><?php
+     </div><?php
   }?>
-        </tr>
-      </table>
-    </td>
-  </tr><?php }
-//if($all!=1){ ?>
-  <tr>
-    <td align="center"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
-  </tr><?php //} //if($all!=1)
+   </div><?php } ?>
+   <div class="row">
+     <div class="col">
+     </div>
+   </div>
+</div>
 
-$dummy = " align=\"right\"";
-
-if ($wertung == "intern") {
-  $start = 1;
-  $tipp_anzseite1 = $anztipper;
-}
-if ($tipp_anzseite1 > 0) {
-  $tipp_anzseiten = $anztipper/$tipp_anzseite1;
-} else {
-  $tipp_anzseiten = 0;
-}
-if ($tipp_anzseiten > 1) {
-?> 
+<table class="table" id="1">
+<?php
+$dummy = "";
+?>
   <tr>
-    <td align="center">
-      <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
-        <tr><?php
-  echo "<td class=\"nobr\">".$text['tipp'][205]."&nbsp;</td>";
-  for($i = 0; $i < $tipp_anzseiten; $i++) {
-    $von = ($i * $tipp_anzseite1)+1;
-    $bis = ($i+1) * $tipp_anzseite1;
-    if ($bis > $anztipper) {
-      $bis = $anztipper;
-    }
-    if ($von != $start) {
-      echo "<td class='nobr'><a href=\"".$addt3.$von."\">";
-    } else {
-      echo "<td class=\"nobr\">";
-    }
-    echo $von."-".$bis;
-    if ($von != $start) {
-      echo "</a>";
-    }
-    echo "&nbsp;</td>";
-  }?>
-        </tr>
-      </table>
-    </td>
-  </tr><?php
-} /* ende if($tipp_anzseiten>1) */?>
-  <tr>
-    <td align="center">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
+    <td>
+      <table class="table" id="4"><?php
 if($all==0){ ?>
-        <caption class="nobr"><?php
+        <caption><?php
   if ($stwertmodus == "nur") {
     echo $text['tipp'][202];
   } else {
     echo "<a href=\"".$addt4."nur\" title=\"".$text['tipp'][202]."\">".$text['tipp'][202]."</a>";
   }
-  echo "&nbsp;";
+  echo "";
   if ($stwertmodus == "bis") {
     echo $text['tipp'][203];
   } else {
@@ -205,7 +166,7 @@ if($all==0){ ?>
 </caption><?php
 }?>
         <tr>
-          <th class="nobr" colspan="3"> <?php
+          <th colspan="3"> <?php
 if (isset($lmtype) && $lmtype == 1 && $tabdat != "") {
   if ($st == $anzst) {
     $j = $text[374];
@@ -224,38 +185,38 @@ if (isset($lmtype) && $lmtype == 1 && $tabdat != "") {
 }?>       </th><?php
 if( $wertung=="einzel"  || $wertung=="intern"){
   if( $tipp_tipperimteam>=0){?>
-          <th class="nobr"> <?php echo $text['tipp'][27]; /* Team */?> </th><?php
+          <th> <?php echo $text['tipp'][27]; /* Team */?> </th><?php
   }
 } else { /* Teamwertung*/?>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][120]?>"><?php echo $text['tipp'][26]; /* Anzahl Tipper*/ ?></acronym>&nbsp;</th>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][208]?>"><?php echo $text['tipp'][26]."Ø"; /* Anzahl Tipper Durchschnitt*/ ?></acronym>&nbsp;</th><?php }?>
-          <th class="nobr" <?php echo $dummy; ?>>&nbsp;<acronym title="<?php echo $text['tipp'][117]?>"><?php if($gewicht!="spiele"){
+          <th><acronym title="<?php echo $text['tipp'][120]?>"><?php echo $text['tipp'][26]; /* Anzahl Tipper*/ ?></acronym></th>
+          <th><acronym title="<?php echo $text['tipp'][208]?>"><?php echo $text['tipp'][26]."Ø"; /* Anzahl Tipper Durchschnitt*/ ?></acronym></th><?php }?>
+          <th <?php echo $dummy; ?>><acronym title="<?php echo $text['tipp'][117]?>"><?php if($gewicht!="spiele"){
   echo "<a href=\"".$addt5."spiele\">";
 }
 echo $text['tipp'][123]; // Spiele getippt
 if($gewicht!="spiele"){
   echo "</a>";
-}         ?></acronym>&nbsp;
+}         ?></acronym>
           </th><?php
 if($tipp_showzus==1){
   if($tipp_tippmodus==1){
     if($tipp_rergebnis>0){ ?>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][34].": ".$tipp_rergebnis." ".$text['tipp'][38]?>"><?php echo $text['tipp'][221]; /* RE */?></acronym>&nbsp;</th><?php    }
+          <th><acronym title="<?php echo $text['tipp'][34].": ".$tipp_rergebnis." ".$text['tipp'][38]?>"><?php echo $text['tipp'][221]; /* RE */?></acronym></th><?php    }
     if($tipp_rtendenzdiff>$tipp_rtendenz){ ?>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][35].": ".$tipp_rtendenzdiff." ".$text['tipp'][38]?>"><?php echo $text['tipp'][222]; /* RTD */?></acronym>&nbsp;</th><?php    }
+          <th><acronym title="<?php echo $text['tipp'][35].": ".$tipp_rtendenzdiff." ".$text['tipp'][38]?>"><?php echo $text['tipp'][222]; /* RTD */?></acronym></th><?php    }
     if($tipp_rtendenz>0){ ?>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][36].": ".$tipp_rtendenz." ".$text['tipp'][38]?>"><?php echo $text['tipp'][223]; /* RT */?></acronym>&nbsp;</th><?php    }
+          <th><acronym title="<?php echo $text['tipp'][36].": ".$tipp_rtendenz." ".$text['tipp'][38]?>"><?php echo $text['tipp'][223]; /* RT */?></acronym></th><?php    }
     if($tipp_rtor>0){ ?>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][37].": ".$tipp_rtor." ".$text['tipp'][38]?>"><?php echo $text['tipp'][224]; /* RG */?></acronym>&nbsp;</th><?php    }
+          <th><acronym title="<?php echo $text['tipp'][37].": ".$tipp_rtor." ".$text['tipp'][38]?>"><?php echo $text['tipp'][224]; /* RG */?></acronym></th><?php    }
   } // ende if($tipp_tippmodus==1) 
   if($tipp_rremis>0){ ?>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][192].": ".$tipp_rremis." ".$text['tipp'][38]?>"><?php echo $text['tipp'][225]; /* UB */?></acronym>&nbsp;</th><?php  }
+          <th><acronym title="<?php echo $text['tipp'][192].": ".$tipp_rremis." ".$text['tipp'][38]?>"><?php echo $text['tipp'][225]; /* UB */?></acronym></th><?php  }
   if($tipp_jokertipp==1){ ?>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][227]?>"><?php echo $text['tipp'][226]; /* JP */?></acronym>&nbsp;</th><?php  }
+          <th><acronym title="<?php echo $text['tipp'][227]?>"><?php echo $text['tipp'][226]; /* JP */?></acronym></th><?php  }
 } // ende if($tipp_showzus==1) 
 if($tipp_showstsiege==1){ ?>
-          <th class="nobr" align="right">&nbsp;<acronym title="<?php echo $text['tipp'][271]?>"><?php echo $text['tipp'][90]; /* GS */?></acronym>&nbsp;</th><?php }?>
-          <th class="nobr" <?php echo $dummy; ?>>&nbsp;<acronym title="<?php if ($tipp_tippmodus == 1) { echo $text['tipp'][124];} else { echo $text['tipp'][125]."%";}?>"><?php if ($gewicht != "relativ") {
+          <th><acronym title="<?php echo $text['tipp'][271]?>"><?php echo $text['tipp'][90]; /* GS */?></acronym></th><?php }?>
+          <th <?php echo $dummy; ?>><acronym title="<?php if ($tipp_tippmodus == 1) { echo $text['tipp'][124];} else { echo $text['tipp'][125]."%";}?>"><?php if ($gewicht != "relativ") {
   echo "<a href=\"".$addt5."relativ\">";
 }
 if ($tipp_tippmodus == 1) {
@@ -265,9 +226,9 @@ if ($tipp_tippmodus == 1) {
 }
 if ($gewicht != "relativ") {
   echo "</a>";
-}         ?></acronym>&nbsp;
+}         ?></acronym>
           </th>
-          <th class="nobr" <?php echo $dummy; ?>>&nbsp;<acronym title="<?php echo $text['tipp'][118]?>"><?php if ($gewicht != "absolut") {
+          <th <?php echo $dummy; ?>><acronym title="<?php echo $text['tipp'][118]?>"><?php if ($gewicht != "absolut") {
   echo "<a href=\"".$addt5."absolut\" title=\"".$text['tipp'][149]."\">";
 }
 if ($tipp_tippmodus == 1) {
@@ -277,7 +238,7 @@ if ($tipp_tippmodus == 1) {
 }
 if ($gewicht != "absolut") {
   echo "</a>";
-}       ?></acronym>&nbsp;</th>
+}       ?></acronym></th>
         </tr><?php
 $eigplatz = $anztipper+2;
 $j = 1;
@@ -322,7 +283,7 @@ for($x = 1; $x <= $anztipper; $x++) {
       }
       if (($x == $start && $eigplatz < $x-1) || ($x == $eigplatz && $x > $ende+1)) {?>
         <tr>
-          <td align="right">...&nbsp;</td>
+          <td>...</td>
         </tr><?php
       }
 
@@ -334,29 +295,18 @@ for($x = 1; $x <= $anztipper; $x++) {
         $dumm2 = "";
       }
        
-      $dumm1 = "nobr";
-      if ((($wertung != "intern" && $lax == 1) || ($wertung == "intern" && $lx == 1)) && $tipppunktegesamt[$i] > 0) {
-        $dumm1 = "lmoTabelleMeister nobr";
-      }
-      if ((($wertung != "intern" && $lax == 2) || ($wertung == "intern" && $lx == 2)) && $tipppunktegesamt[$i] > 0) {
-        $dumm1 = "lmoTabelleCleague nobr";
-      }
-      if ((($wertung != "intern" && $lax == 3) || ($wertung == "intern" && $lx == 3)) && $tipppunktegesamt[$i] > 0) {
-        $dumm1 = "lmoTabelleCleaguequali nobr";
-      }
-       
       if ($wertung == "team" || $tippernick[$i] != "") {?>
         <tr>
-          <td class="<?php echo $dumm1; ?>" align="right"><?php
+          <td><?php
         if ($lax == $x) {
-          echo $dummy.$x.$dumm2;
+          echo $x;
         } elseif($wertung == "intern" && $lax != $lx) {
-          echo $dummy.$lx.$dumm2;
+          echo $lx;
           $lax = $lx;
         } else {
-          echo "&nbsp;";
+          echo "";
       }?>
-          &nbsp;</td><?php
+          </td><?php
       $y = 0;
       if (($endtab > 1) && ($tabdat != "") && $tipppunktegesamt[intval(substr($tab0[0], -7))] > 0 && $stwertmodus != "nur") {
         if ($platz0[$i] < $platz1[$i]) {
@@ -366,15 +316,13 @@ for($x = 1; $x <= $anztipper; $x++) {
         }
       }
       if ($tabdat != "" && $stwertmodus != "nur") {
-        echo "<td class=\"".$dumm1."\"";
-        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\" alt=''>";
-        echo "</td>";
+        echo "<td><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\" alt=''></td>";
       } else {
-        echo "<td class=\"".$dumm1."\">&nbsp;</td>";
+        echo "<td></td>";
       }
       
       if( $wertung=="einzel" || $wertung=="intern"){?>
-          <td class="<?php echo $dumm1; ?>" align="left">&nbsp;<?php
+          <td><?php
         echo $dummy;
         if ($tipp_showname == 1) {
           if ($tipp_showemail == 1 && !empty($tipperemail[$i])) {
@@ -403,26 +351,26 @@ for($x = 1; $x <= $anztipper; $x++) {
           echo "<a href='mailto:".$tipperemail[$i]."'>".$tipperemail[$i]."</a>";
         }
         echo $dumm2;?>
-          &nbsp;</td><?php
+          </td><?php
       } else {?>
-          <td class="<?php echo $dumm1; ?>" align="left"><?php if($wertung!="intern" && $team[$i]!=" "){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$team[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$team[$i].$dumm2; if($wertung!="intern" && $team[$i]!=" "){echo "</a>";} ?>&nbsp;</td><?php
+          <td><?php if($wertung!="intern" && $team[$i]!=" "){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$team[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$team[$i].$dumm2; if($wertung!="intern" && $team[$i]!=" "){echo "</a>";} ?></td><?php
       }
 
       if ($tipp_tipperimteam >= 0) {
         if ($wertung == "einzel" || $wertung == "intern") {
           if ($tipperteam[$i] == "") {
-            $tipperteam[$i] = "&nbsp;";
+            $tipperteam[$i] = "";
           }?>
           
-          <td class="<?php echo $dumm1; ?>"><?php if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$tipperteam[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$tipperteam[$i].$dumm2; if($wertung!="intern" && $tipperteam[$i]!="&nbsp;"){echo "</a>";} ?></td><?php
+          <td><?php if($wertung!="intern" && $tipperteam[$i]!=""){echo "<a href=\"".$addt1."intern&amp;teamintern=".str_replace(" ","%20",$tipperteam[$i])."\" title=\"".$text['tipp'][144]."\">";} echo $dummy.$tipperteam[$i].$dumm2; if($wertung!="intern" && $tipperteam[$i]!=""){echo "</a>";} ?></td><?php
         } else {?>
           
-          <td class="<?php echo $dumm1; ?>" align="right">&nbsp;<?php echo $dummy.$tipp_tipperimteam[$i].$dumm2; ?> &nbsp;</td>
+          <td><?php echo $dummy.$tipp_tipperimteam[$i].$dumm2; ?> </td>
           
-          <td class="<?php echo $dumm1; ?>" align="right">&nbsp;<?php echo $dummy.number_format($tipppunktegesamt[$i]/$tipp_tipperimteam[$i],2,".",",").$dumm2; ?>&nbsp;</td><?php
+          <td><?php echo $dummy.number_format($tipppunktegesamt[$i]/$tipp_tipperimteam[$i],2,".",",").$dumm2; ?></td><?php
         }
       }
-      echo "<td class=\"".$dumm1."\" align=\"right\">";
+      echo "<td>";
       if ($gewicht == "spiele") {
         echo "<strong>";
       } else {
@@ -434,66 +382,66 @@ for($x = 1; $x <= $anztipper; $x++) {
       } else {
         echo $dumm2;
       }
-      echo "&nbsp;</td>";
+      echo "</td>";
        
       if ($tipp_showzus == 1) {
         if ($tipp_tippmodus == 1) {
           
           if ($tipp_rergebnis > 0) {
             if ($punkte1gesamt[$i] == "") {
-              $punkte1gesamt[$i] = "&nbsp;";
+              $punkte1gesamt[$i] = "";
             }?>
           
-          <td class="<?php echo $dumm1; ?>" align="right"><?php echo $dummy.$punkte1gesamt[$i].$dumm2; ?>&nbsp;</td><?php          }
+          <td><?php echo $dummy.$punkte1gesamt[$i].$dumm2; ?></td><?php          }
           
           if ($tipp_rtendenzdiff > $tipp_rtendenz) {
             if ($punkte2gesamt[$i] == "") {
-              $punkte2gesamt[$i] = "&nbsp;";
+              $punkte2gesamt[$i] = "";
             }?>
           
-          <td class="<?php echo $dumm1; ?>" align="right"><?php echo $dummy.$punkte2gesamt[$i].$dumm2; ?>&nbsp;</td><?php          } else {
+          <td><?php echo $dummy.$punkte2gesamt[$i].$dumm2; ?></td><?php          } else {
             $punkte3gesamt[$i]+=$punkte2gesamt[$i];
           }
           
           if($tipp_rtendenz>0){
             if($punkte3gesamt[$i]==""){
-              $punkte3gesamt[$i]="&nbsp;";
+              $punkte3gesamt[$i]="";
             }?>
           
-          <td class="<?php echo $dumm1; ?>" align="right"><?php echo $dummy.$punkte3gesamt[$i].$dumm2; ?>&nbsp;</td><?php          }
+          <td><?php echo $dummy.$punkte3gesamt[$i].$dumm2; ?></td><?php          }
           
           if($tipp_rtor>0){
             if($punkte4gesamt[$i]==""){
-              $punkte4gesamt[$i]="&nbsp;";
+              $punkte4gesamt[$i]="";
             }?>
           
-          <td class="<?php echo $dumm1; ?>" align="right"><?php echo $dummy.$punkte4gesamt[$i].$dumm2; ?>&nbsp;</td><?php          }
+          <td><?php echo $dummy.$punkte4gesamt[$i].$dumm2; ?></td><?php          }
         } // ende if($tipp_tippmodus==1)
         
         if($tipp_rremis>0){
           if($punkte5gesamt[$i]==""){
-            $punkte5gesamt[$i]="&nbsp;";
+            $punkte5gesamt[$i]="";
           }?>
           
-          <td class="<?php echo $dumm1; ?>" align="right"><?php echo $dummy.$punkte5gesamt[$i].$dumm2; ?>&nbsp;</td><?php        }
+          <td><?php echo $dummy.$punkte5gesamt[$i].$dumm2; ?></td><?php        }
         
         if($tipp_jokertipp==1){
           if($punkte6gesamt[$i]==""){
-            $punkte6gesamt[$i]="&nbsp;";
+            $punkte6gesamt[$i]="";
           }?>
           
-          <td class="<?php echo $dumm1; ?>" align="right"><?php echo $dummy.$punkte6gesamt[$i].$dumm2; ?>&nbsp;</td><?php        }
+          <td><?php echo $dummy.$punkte6gesamt[$i].$dumm2; ?></td><?php        }
       } // ende if($tipp_showzus==1)
       
       if($tipp_showstsiege==1){
         if($stsiege[$i]==""){
-          $stsiege[$i]="&nbsp;";
+          $stsiege[$i]="";
         }?>
           
-          <td class="<?php echo $dumm1; ?>" align="right"><?php echo $dummy.$stsiege[$i].$dumm2; ?>&nbsp;</td><?php      }
+          <td><?php echo $dummy.$stsiege[$i].$dumm2; ?></td><?php      }
       
       $quotegesamt[$i] = number_format($quotegesamt[$i]/100, 2, ".", ",");
-      echo "<td class=\"".$dumm1."\" align=\"right\">";
+      echo "<td>";
       if ($gewicht == "relativ") {
         echo "<strong>";
       } else {
@@ -505,9 +453,9 @@ for($x = 1; $x <= $anztipper; $x++) {
       } else {
         echo $dumm2;
       }
-      echo "&nbsp;</td>";
+      echo "</td>";
        
-      echo "<td class=\"".$dumm1."\" align=\"right\">";
+      echo "<td>";
       if ($gewicht == "absolut") {
         echo "<strong>";
       } else {
@@ -519,7 +467,7 @@ for($x = 1; $x <= $anztipper; $x++) {
       } else {
         echo $dumm2;
       }
-      echo "&nbsp;</td>";
+      echo "</td>";
       } /* ende if($wertung!="intern" || $teamintern==$tipperteam[$i])*/
     } /* ende   if($wertung=="team" || $tippernick[$i]!="")*/
   } /* ende   if(($x>=$start && $x<=$ende) || $i==$eigpos)*/
@@ -529,10 +477,10 @@ for($x = 1; $x <= $anztipper; $x++) {
     </td>
   </tr><?php if($tipp_anzseiten>1){ ?> 
   <tr>
-    <td align="center">
-      <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
+    <td>
+      <table class="table" id="5">
         <tr><?php
-  echo "<td class=\"nobr\">".$text['tipp'][205]."&nbsp;</td>";
+  echo "<td>".$text['tipp'][205]."</td>";
   for($i = 0; $i < $tipp_anzseiten; $i++) {
     $von = ($i * $tipp_anzseite1)+1;
     $bis = ($i+1) * $tipp_anzseite1;
@@ -540,15 +488,15 @@ for($x = 1; $x <= $anztipper; $x++) {
       $bis = $anztipper;
     }
     if ($von != $start) {
-      echo "<td class='nobr'><a href=\"".$addt3.$von."\">";
+      echo "<td><a href=\"".$addt3.$von."\">";
     } else {
-      echo "<td class=\"nobr\">";
+      echo "<td>";
     }
     echo $von."-".$bis;
     if ($von != $start) {
       echo "</a>";
     }
-    echo "&nbsp;</td>";
+    echo "</td>";
   }?>
         </tr>
       </table>
@@ -556,19 +504,14 @@ for($x = 1; $x <= $anztipper; $x++) {
   </tr><?php } // ende if($tipp_anzseiten>1) ?>
 </table><?php
 if($tabdat!=""){ ?>
-  <tr>
-    <td>
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tr><?php
+   <div class="row"><?php
   $st0 = $endtab-1;
   if ($endtab > 1) {?>
-          <td align="left"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[43]?>"><?php echo $text[5]?> <?php echo $text[6]?></a></td><?php
+      <div class="col-2 text-start"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[43]?>"><?php echo $text[5]?> <?php echo $text[6]?></a></div><?php
   }
   $st0 = $endtab+1;
   if ($endtab < $anzst) {?>
-          <td align="right"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[44]?>"><?php echo $text[8]?> <?php echo $text[7]?></a></td><?php
+      <div class="col-2 offset-10 text-end"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[44]?>"><?php echo $text[8]?> <?php echo $text[7]?></a></div><?php
   }?>
-        </tr>
-      </table>
-    </td>
-  </tr><?php }?>
+  </div>
+<?php }?>

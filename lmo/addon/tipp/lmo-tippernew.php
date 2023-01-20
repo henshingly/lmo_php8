@@ -211,114 +211,96 @@ if ($newpage==1) {
 // end ($newpage==1)
 
 ?>
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0"><?php 
+<form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <input type="hidden" name="action" value="tipp">
+  <input type="hidden" name="todo" value="newtipper">
+  <input type="hidden" name="newpage" value="<?php echo (1); ?>">
+  <div class="container"><?php 
 if($newpage!=1){ ?>
-  <tr>
-    <td colspan="3" align="center">
-      <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <input type="hidden" name="action" value="tipp">
-        <input type="hidden" name="todo" value="newtipper">
-        <input type="hidden" name="newpage" value="<?php echo (1); ?>">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <caption><?php echo $text['tipp'][13]; ?></caption>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><?php echo " ".$text['tipp'][23]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtippernick" size="25" maxlength="32" value="<?php echo $xtippernick; ?>"></td>
-          </tr><?php 
+    <div class="row p-1">
+      <div class="col"><?php echo $text['tipp'][13]; ?></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-2 text-end"><?php echo $text['tipp'][23]; ?></div>
+      <div class="col-3"><input class="form-control" type="text" name="xtippernick" size="25" maxlength="32" value="<?php echo $xtippernick; ?>"></div>
+    </div><?php 
   if($tipp_realname!=0){ ?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><?php echo " ".$text['tipp'][14]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtippervorname" size="25" maxlength="32" value="<?php echo $xtippervorname; ?>"></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><?php echo " ".$text['tipp'][15]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtippernachname" size="25" maxlength="32" value="<?php echo $xtippernachname; ?>"></td>
-          </tr><?php 
+    <div class="row p-1">
+      <div class="col-2 text-end"><?php echo $text['tipp'][14]; ?></div>
+      <div class="col-3"><input class="form-control" type="text" name="xtippervorname" size="25" maxlength="32" value="<?php echo $xtippervorname; ?>"></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-2 text-end"><?php echo $text['tipp'][15]; ?></div>
+      <div class="col-3"><input class="form-control" type="text" name="xtippernachname" size="25" maxlength="32" value="<?php echo $xtippernachname; ?>"></div>
+    </div><?php 
   }
   if($tipp_adresse==1){ ?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><?php echo " ".$text['tipp'][126]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtipperstrasse" size="25" maxlength="32" value="<?php echo $xtipperstrasse; ?>"></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><?php echo " ".$text['tipp'][127]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtipperplz" size="7" maxlength="5" value="<?php echo $xtipperplz; ?>"></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><?php echo " ".$text['tipp'][128]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtipperort" size="25" maxlength="32" value="<?php echo $xtipperort; ?>"></td>
-          </tr><?php 
+     <div class="row p-1">
+       <div class="col-2 text-end"><?php echo $text['tipp'][126]; ?></div>
+       <div class="col-3"><input class="form-control" type="text" name="xtipperstrasse" size="25" maxlength="32" value="<?php echo $xtipperstrasse; ?>"></div>
+     </div>
+     <div class="row p-1">
+       <div class="col-2 text-end"><?php echo $text['tipp'][127]; ?></div>
+       <div class="col-3"><input class="form-control" type="text" name="xtipperplz" size="7" maxlength="5" value="<?php echo $xtipperplz; ?>"></div>
+     </div>
+     <div class="row p-1">
+       <div class="col-2 text-end"><?php echo $text['tipp'][128]; ?></div>
+       <div class="col-3"><input class="form-control" type="text" name="xtipperort" size="25" maxlength="32" value="<?php echo $xtipperort; ?>"></div>
+     </div><?php 
   } ?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><?php echo " ".$text['tipp'][16]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtipperemail" size="25" maxlength="64" value="<?php echo $xtipperemail; ?>"></td>
-          </tr><?php 
+     <div class="row p-1">
+       <div class="col-2 text-end"><?php echo $text['tipp'][16]; ?></div>
+       <div class="col-3"><input class="form-control" type="text" name="xtipperemail" size="25" maxlength="64" value="<?php echo $xtipperemail; ?>"></div>
+     </div><?php 
   if ($tipp_freischaltcode==1) {?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><acronym title="<?php echo $text['tipp'][300]?>"><?php echo " ".$text['tipp'][16]." ".$text['tipp'][19]; ?></acronym></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtipperemail2" size="25" maxlength="64" value="<?php echo $xtipperemail2; ?>"></td>
-          </tr><?php 
+     <div class="row p-1">
+       <div class="col-2 text-end"><?php echo $text['tipp'][16].$text['tipp'][19]; ?></div>
+       <div class="col-3"><input class="form-control" type="text" name="xtipperemail2" size="25" maxlength="64" value="<?php echo $xtipperemail2; ?>"></div>
+     </div><?php 
   } else{ ?>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><?php echo " ".$text[308]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="password" name="xtipperpass" size="25" maxlength="32" value="<?php echo $xtipperpass; ?>"></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="right"><?php echo " ".$text[308]." ".$text['tipp'][19]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="password" name="xtipperpassw" size="25" maxlength="32" value="<?php echo $xtipperpassw; ?>"></td>
-          </tr><?php 
+     <div class="row p-1">
+       <div class="col-2 text-end"><?php echo $text[308]; ?></div>
+       <div class="col-3"><input class="form-control" type="password" name="xtipperpass" size="25" maxlength="32" value="<?php echo $xtipperpass; ?>"></div>
+     </div>
+     <div class="row p-1">
+       <div class="col-2 text-end"><?php echo $text[308].$text['tipp'][19]; ?></div>
+       <div class="col-3"><input class="form-control" type="password" name="xtipperpassw" size="25" maxlength="32" value="<?php echo $xtipperpassw; ?>"></div>
+     </div><?php 
   }
   if($tipp_tipperimteam>=0){ ?>
-          <tr>
-            <th align="left" colspan="3"><?php echo $text['tipp'][47]; ?></th>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td colspan="2" align="left"><input type="radio" name="xtippervereinradio" value="0" <?php if($xtippervereinradio==0){echo "checked";} ?>><?php echo $text['tipp'][50]; ?></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="left"><input type="radio" name="xtippervereinradio" value="1" <?php if($xtippervereinradio==1){echo "checked";} ?>><?php echo $text['tipp'][48]; ?></td>
-            <td align="left">
-              <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true">
-                <option value="" <?php if($xtippervereinalt==""){echo "selected";}?>><?php echo $text['tipp'][51]?></option><?php 
-                require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewteams.php");?>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td align="left"><input type="radio" name="xtippervereinradio" value="2" <?php if($xtippervereinradio==2){echo "checked";} ?>><?php echo $text['tipp'][49]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></td>
-          </tr><?php 
+     <div class="row p-1">
+       <div class="col-"><?php echo $text['tipp'][47]; ?></div>
+     </div>
+     <div class="row p-1">
+       <div class="col"><input type="radio" name="xtippervereinradio" value="0" <?php if($xtippervereinradio==0){echo "checked";} ?>><?php echo $text['tipp'][50]; ?></div>
+     </div>
+     <div class="row p-1">
+       <div class="col-2 text-end"><input type="radio" name="xtippervereinradio" value="1" <?php if($xtippervereinradio==1){echo "checked";} ?>><?php echo $text['tipp'][48]; ?></div>
+       <div class="col-3">
+         <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true">
+           <option value="" <?php if($xtippervereinalt==""){echo "selected";}?>><?php echo $text['tipp'][51]?></option>
+           <?php require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewteams.php");?>
+         </select>
+       </div>
+     </div>
+     <div class="row p-1">
+       <div class="col-2 text-end"><input type="radio" name="xtippervereinradio" value="2" <?php if($xtippervereinradio==2){echo "checked";} ?>><?php echo $text['tipp'][49]; ?></div>
+       <div class="col-3"><input class="form-control" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></div>
+     </div><?php 
   } ?>
-          <tr>
-            <th align="left" colspan="3"><?php echo $text['tipp'][18]; ?></th>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td colspan="2" align="left"><?php $ftype=".l98"; require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); ?></td>
-          </tr>
-          <tr>      
-            <td align="center" colspan="3"><input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text['tipp'][11]; ?>"></td>
-          </tr>
-          <tr>
-            <td align="left" class="lmoFooter" colspan="3"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp"; ?>" title="<?php echo $text['tipp'][110]; ?>">« <?php echo $text['tipp'][110]; ?></a></td>
-          </tr>
-        </table>
-      </form>
-    </td>
-  </tr>
+     <div class="row p-1">
+       <div class="col"><?php echo $text['tipp'][18]; ?></div>
+     </div>
+     <div class="row p-1">
+       <div class="col"><?php $ftype=".l98"; require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); ?></div>
+     </div>
+     <div class="row p-1">
+       <div class="col-1 offset-2"><input class="btn btn-sm btn-secondary" type="submit" name="xtippersub" value="<?php echo $text['tipp'][11]; ?>"></div>
+     </div>
+     <div class="row p-1">
+       <div class="col"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp"; ?>" title="<?php echo $text['tipp'][110]; ?>">« <?php echo $text['tipp'][110]; ?></a></div>
+     </div>
+  </div>
 <?php 
 //$_SESSION["lmotipperok"] = 0; 
 }
@@ -327,20 +309,18 @@ if($newpage==1){ // Anmeldung erfolgreich
   $_SESSION["lmotipperpass"]="";
   $_SESSION["lmotipperok"]=5;
 ?>
-  <tr>
-    <td align="center">
-      <table width="100%" class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-        <caption><?php echo $text['tipp'][13]; ?></caption>
-        <tr>
-          <td align="center"><?php echo getMessage($text['tipp'][20]); ?></td>
-        </tr>
-        <tr>
-          <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=tipp&amp;todo=logout&amp;">« <?php echo $text['tipp'][21]; ?></a></td>
-        </tr>
-      </table>
-    </td>
-  </tr><?php 
+    <div class="row p-1">
+      <div class="col"><?php echo $text['tipp'][13]; ?></div>
+    </div>
+    <div class="row p-1">
+      <div class="col"><?php echo getMessage($text['tipp'][20]); ?></div>
+    </div>
+    <div class="row p-1">
+      <div class="col"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=tipp&amp;todo=logout&amp;">« <?php echo $text['tipp'][21]; ?></a></div>
+    </div>
+<?php 
 } 
 $_SESSION["lmotipperok"] = 0; 
 clearstatcache();?>
-</table>
+  </div>
+</form>
