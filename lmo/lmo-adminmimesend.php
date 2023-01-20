@@ -36,7 +36,6 @@ $madr=isset($_GET['madr'])  ? $_GET['madr']    :'';
 <link rel="stylesheet" type="text/css" href="<?php echo URL_TO_LMO?>/lmo-style.php">
 </head>
 <body>
-<div class="lmoMain">
 <?php 
 if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1) || ($_SESSION["lmouserok"] == 2))) {
   if (($down != 0) && ($madr != "")) {
@@ -100,7 +99,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
     <input type="hidden" name="action" value="admin">
     <input type="hidden" name="todo" value="email">
     <input type="hidden" name="down" value="<?php echo $down?>">
-    <input type="submit" value="Senden">
+    <input type="submit" class="btn btn-sm" value="Senden">
   </form>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
   }
