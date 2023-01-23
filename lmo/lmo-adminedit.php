@@ -346,8 +346,8 @@ if ($file != "") {
     $dum2 = "";
   }
   if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
-               <?php echo $text[3]?> <input class="custom-input" type="text" name="xdatum1" tabindex="1" size="6" maxlength="10" value="<?php echo $datum1[$st-1]; ?>" onChange="dolmoedit()">
-               <?php echo $text[4]?> <input class="custom-input" type="text" name="xdatum2" tabindex="2" size="6" maxlength="10" value="<?php echo $datum2[$st-1]; ?>" onChange="dolmoedit()"><?php
+               <?php echo $text[3]?> <input class="custom-input" size="6" type="text" name="xdatum1" tabindex="1" maxlength="10" value="<?php echo $datum1[$st-1]; ?>" onChange="dolmoedit()">
+               <?php echo $text[4]?> <input class="custom-input" size="6" type="text" name="xdatum2" tabindex="2" maxlength="10" value="<?php echo $datum2[$st-1]; ?>" onChange="dolmoedit()"><?php
   }?>
             </div><?php
   if ($goalfaktor!=1) {?>
@@ -373,7 +373,7 @@ if ($file != "") {
   }
   for($i = 0; $i < $anzsp; $i++) {
     if ($lmtype == 0) {?>
-          <div class="row pb-1"><?php
+          <div class="row p-1"><?php
       if ($mterm[$st-1][$i] > 0) {
         $dum1 = date("d.m.Y", $mterm[$st-1][$i]);
         $dum2 = date("H:i", $mterm[$st-1][$i]);
@@ -389,7 +389,7 @@ if ($file != "") {
             </div>
             <div class="col-2"><?php
       if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
-              <select class="custom-select" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>5" data-size="7"><?php
+              <select class="form-select" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>5" data-size="7"><?php
         for($y = 0; $y <= $anzteams; $y++) {?>
                 <option value="<?php echo $y?>"<?php if ($y == $teama[$st-1][$i]) {echo " selected";}?>><?php echo $teams[$y]?></option><?php
         }?>
@@ -401,7 +401,7 @@ if ($file != "") {
             <div class="col-1"> vs. </div>
             <div class="col-2"><?php
       if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
-              <select class="custom-select" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i;?>6" data-size="7"><?php
+              <select class="form-select" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i;?>6" data-size="7"><?php
         for($y = 0; $y <= $anzteams; $y++) {?>
                 <option value="<?php echo $y?>"<?php if ($y == $teamb[$st-1][$i]) {echo " selected";}?>><?php echo $teams[$y]?></option><?php
         }?>
@@ -417,13 +417,13 @@ if ($file != "") {
       }?>
             </div>
             <div class="col-2">
-              <input title="<?php echo $text[109] ?>" class="custom-control" style="width:35px;" type="number" name="xgoala<?php echo $i; ?>" tabindex="<?php echo $i;?>7" min="0" size="1" maxlength="4" value="<?php echo $goala[$st-1][$i]; ?>">
+              <input title="<?php echo $text[109] ?>" class="custom-control" style="width: 2rem;" type="number" name="xgoala<?php echo $i; ?>" tabindex="<?php echo $i;?>7" min="0" size="1" maxlength="4" value="<?php echo $goala[$st-1][$i]; ?>">
               :
-              <input title="<?php echo $text[110] ?>" class="custom-control" style="width:35px;" type="number" name="xgoalb<?php echo $i; ?>" tabindex="<?php echo $i;?>8" min="0" size="1" maxlength="4" value="<?php echo $goalb[$st-1][$i]; ?>">
+              <input title="<?php echo $text[110] ?>" class="custom-control" style="width: 2rem;" type="number" name="xgoalb<?php echo $i; ?>" tabindex="<?php echo $i;?>8" min="0" size="1" maxlength="4" value="<?php echo $goalb[$st-1][$i]; ?>">
             </div><?php
       if($spez==1){?>
             <div class="col-1">
-              <select class="custom-select" name="xmspez<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>9" data-width="auto">
+              <select class="form-select" name="xmspez<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>9" data-width="auto">
                 <option<?php if($mspez[$st-1][$i]=="&nbsp;"){echo " selected";}?>>_</option>
                 <option<?php if($mspez[$st-1][$i]==$text[0]){echo " selected";}?>><?php echo $text[0]?></option>
                 <option<?php if($mspez[$st-1][$i]==$text[1]){echo " selected";}?>><?php echo $text[1]?></option>
@@ -431,7 +431,7 @@ if ($file != "") {
             </div><?php
       }?>
             <div class="col-1">
-              <select class="custom-select" id="gT<?php echo $i?>"  name="xmsieg<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>10" data-width="auto">
+              <select class="form-select" id="gT<?php echo $i?>"  name="xmsieg<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>10" data-width="auto">
                 <option value="0"<?php if($msieg[$st-1][$i]==0){echo " selected";}?>>_</option>
                 <option value="1"<?php if($msieg[$st-1][$i]==1){echo " selected";}?>><?php echo $text[214]?></option>
                 <option value="2"<?php if($msieg[$st-1][$i]==2){echo " selected";}?>><?php echo $text[215]?></option>
@@ -451,17 +451,19 @@ if ($file != "") {
       if (trim($mberi[$st-1][$i]) == '') {?>
               <script type="text/javascript">document.getElementById('s<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
-            </div><?php
+            </div>
+          </div><?php
       /*Tippspiel-Addon*/
       if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
-            <div class="col">
-              <select class="custom-select" name="xmtipp<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>13" data-width="auto">
+          <div class="row p-1">
+            <div class="col-2 offset-7">
+              <select class="form-select" name="xmtipp<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>13" data-width="auto">
                 <option value="0"<?php if($mtipp[$st-1][$i]<1){echo " selected";}?>>_</option>
                 <option value="1"<?php if($mtipp[$st-1][$i]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
               </select>
-            </div><?php
-      }?>
+            </div>
           </div><?php
+      }
     } else {
       /*Pokalmodus*/
       for($n=0;$n<$modus[$st-1];$n++){
@@ -489,7 +491,7 @@ if ($file != "") {
           if($n==0){ ?>
             <div class="col-2"><?php
           if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
-              <select class="custom-select" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[107] ?>" tabindex="<?php echo $i.$n;?>5" data-width="auto"><?php
+              <select class="form-select" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[107] ?>" tabindex="<?php echo $i.$n;?>5" data-width="auto"><?php
 
             if (($klfin == 1) && ($st == $anzst) && ($i == 1)) {
               echo "<option value=\"0\"";
@@ -525,7 +527,7 @@ if ($file != "") {
             <div class="col-1">vs.</div>
             <div class="col-2"><?php
           if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
-              <select class="custom-select" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i.$n;?>6" data-width="auto"><?php
+              <select class="form-select" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i.$n;?>6" data-width="auto"><?php
             if (($klfin == 1) && ($st == $anzst) && ($i == 1)) {
               echo "<option value=\"0\"";
               if ($teamb[$st-1][$i] == 0) {
@@ -572,7 +574,7 @@ if ($file != "") {
               <input title="<?php echo $text[110] ?>" class="custom-control" style="width:35px;" type="number" name="xgoalb<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>8" min="0" size="1" maxlength="4" value="<?php echo $goalb[$st-1][$i][$n]; ?>">
             </div>
             <div class="col-1">
-              <select class="custom-select" name="xmspez<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text[111] ?>" tabindex="<?php echo $i.$n;?>9" data-width="auto">
+              <select class="form-select" name="xmspez<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text[111] ?>" tabindex="<?php echo $i.$n;?>9" data-width="auto">
                 <option<?php if($mspez[$st-1][$i][$n]=="&nbsp;"){echo " selected";}?>>_</option>
                 <option<?php if($mspez[$st-1][$i][$n]==$text[0]){echo " selected";}?>><?php echo $text[0]?></option>
                 <option<?php if($mspez[$st-1][$i][$n]==$text[1]){echo " selected";}?>><?php echo $text[1]?></option>
@@ -594,7 +596,7 @@ if ($file != "") {
         /**Tippspiel-Addon*/
         if($_SESSION['lmouserok']==2 && $ftest0==1){ echo $ftest0;?>
             <div class="col-auto">
-              <select class="custom-select" name="xmtipp<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text['tipp'][57] ?>" tabindex="<?php echo $i.$n;?>12" data-width="auto">
+              <select class="form-select" name="xmtipp<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text['tipp'][57] ?>" tabindex="<?php echo $i.$n;?>12" data-width="auto">
                 <option value="0"<?php if($mtipp[$st-1][$i][$n]<1){echo " selected";}?>>_</option>
                 <option value="1"<?php if($mtipp[$st-1][$i][$n]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
               </select>
@@ -615,7 +617,7 @@ if ($file != "") {
           <div class="row">
             <div class="col-auto offset-4">
               <?php echo $text[191]; ?>
-              <select class="custom-select" name="xstx" onChange="dolmoedit()" tabindex="<?php echo $i;?>13"><?php
+              <select class="form-select" name="xstx" onChange="dolmoedit()" tabindex="<?php echo $i;?>13"><?php
   for($y = 0; $y <= $anzst; $y++) {
     echo "<option value=\"".$y."\"";
     if ($save == 1) {
@@ -639,15 +641,15 @@ if ($file != "") {
             </div>
             <div class="col-auto">
               <?php echo $text[207]; ?>
-              <select class="custom-select" name="xnticker" onChange="dolmoedit()" data-width="auto">
+              <select class="form-select" name="xnticker" onChange="dolmoedit()" data-width="auto">
                 <option value="1"<?php if($nticker==1){echo " selected";}?>><?php echo $text[181]?></option>
                 <option value="0"<?php if($nticker==0){echo " selected";}?>><?php echo $text[182]?></option>
               </select>
             </div>
           </div>
           <div class="row p-3">
-            <div class="col">
-              Tickertext: <textarea class="custom-control" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php if(count($nlines)>0){foreach($nlines as $y){echo $y."\n";}} ?></textarea>
+            <div class="col-4 offset-4">
+              Tickertext: <textarea class="form-control" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php if(count($nlines)>0){foreach($nlines as $y){echo $y."\n";}} ?></textarea>
             </div>
           </div>
           <div class="row p-3">
