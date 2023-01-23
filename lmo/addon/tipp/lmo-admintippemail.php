@@ -82,19 +82,19 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
       <div class="col"><h1><?php echo $text['tipp'][165] ?></h1></div>
     </div>
     <div class="row p-1">
-      <div class="col-3 text-end"><input type="radio" name="emailart" value="0" <?php if($emailart==0){echo "checked";} ?> onClick="changetextarea(0)">&nbsp;<?php echo $text['tipp'][166]; ?></div>
+      <div class="col-3 text-end"><input type="radio" class="form-check-input" name="emailart" value="0" <?php if($emailart==0){echo "checked";} ?> onClick="changetextarea(0)">&nbsp;<?php echo $text['tipp'][166]; ?></div>
     </div>
     <div class="row p-1">
-      <div class="col-3 text-end"><input type="radio" name="emailart" value="2" <?php if($emailart==2){echo "checked";} ?> onClick="changetextarea(2)">&nbsp;<?php echo $text['tipp'][168]; ?></div>
+      <div class="col-3 text-end"><input type="radio" class="form-check-input" name="emailart" value="2" <?php if($emailart==2){echo "checked";} ?> onClick="changetextarea(2)">&nbsp;<?php echo $text['tipp'][168]; ?></div>
       <div class="col-3 text-start">
-        <select class="custom-select" name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
+        <select class="form-select" name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
           <option value=""><?php echo $text['tipp'][51]?></option><?php 
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippselectemail.php");?>
         </select>
        </div>
      </div>
      <div class="row p-1">
-       <div class="col-3 text-end"><input type="radio" name="emailart" value="1" <?php if($emailart==1){echo "checked";} ?> onClick="changetextarea(1)">&nbsp;<?php echo $text['tipp'][167]; ?></div>
+       <div class="col-3 text-end"><input type="radio" class="form-check-input" name="emailart" value="1" <?php if($emailart==1){echo "checked";} ?> onClick="changetextarea(1)">&nbsp;<?php echo $text['tipp'][167]; ?></div>
        <div class="col-5 text-start">
          <div class="container"><?php 
 $ftype=".l98";

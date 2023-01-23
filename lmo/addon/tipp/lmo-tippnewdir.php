@@ -127,13 +127,13 @@ if ($ftype != "") {
                   if ($_SESSION['lmotipperok'] > 0 || $action == "admin" || $todo == "newtipper") {
                     if ($iptype == "reminder") {?>
 
-  <div class="row">
+  <div class="row p-1">
     <div class="col-auto">
         <input type="hidden" name="liga1[]" value="<?php echo $files; ?>">
-        <input type="radio" class="form-check-input" name="liganr" value="<?php echo $i; ?>" <?php if(($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><?php echo $t0; ?>
+        <input type="radio" class="form-check-input" name="liganr" value="<?php echo $i; ?>" <?php if(($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;">&nbsp;<?php echo $t0; ?>
     </div>
     <div class="col-auto">
-      <select class="custom-control" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php 
+      <select class="form-select" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php 
                       if ($liga == $files) {
                         if ($st > 0) {
                           $t1 = $st;
@@ -182,15 +182,16 @@ if ($ftype != "") {
   </div><?php 
                     }
                     if($iptype=="einsicht" || $iptype=="auswert"){?>
-  <div class="row">
+  <div class="row p-1">
     <div class="col-2 offset-3 text-end"><?php echo $t0; ?></div>
     <div class="col-4 text-start">
-      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <input type="hidden" name="action" value="admin">
-        <input type="hidden" name="todo" value="tipp">
-        <input type="hidden" name="save" value="<?php if($iptype=="einsicht"){echo "3";}else{echo "2";} ?>">
-        <input type="hidden" name="liga" value="<?php echo substr($files,0,-4); ?>">
-        <select class="custom-select" name="st"><?php 
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
+        <div class="col">
+          <input type="hidden" name="action" value="admin">
+          <input type="hidden" name="todo" value="tipp">
+          <input type="hidden" name="save" value="<?php if($iptype=="einsicht"){echo "3";}else{echo "2";} ?>">
+          <input type="hidden" name="liga" value="<?php echo substr($files,0,-4); ?>">
+          <select class="form-select" name="st"><?php 
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
                         if ($st >= 0) {
                           $t1 = $st;
@@ -248,7 +249,7 @@ if ($ftype != "") {
                         }
                         echo "</option>";
                       }?>
-          </select><?php
+            </select><?php
                       $start1=1;
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
                         if (isset($start)) {
@@ -269,7 +270,10 @@ if ($ftype != "") {
                           $ende1 = $ende;
                         }
                       }?> 
-          <input class="btn btn-sm btn-success" type="submit" name="best" value="<?php if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
+          </div>
+          <div class="col-1">
+            <input class="btn btn-sm btn-success" type="submit" name="best" value="<?php if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
+          </div>
         </form>
     </div>
   </div>

@@ -62,11 +62,13 @@
   }
   echo "&nbsp;&nbsp;";
 */?>
-    </li>
-    <li class="nav-item"><?php 
+    </li><?php
   if($tipp_regeln==1){?>
-        <a href='<?php echo URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' class='nav-link' target='regeln' onclick='window.open(this.href,this.target,"scrollbars=yes,resizable=yes");return false;'><?php echo $text['tipp'][185]?></a><?php 
-  }
+    <li class="nav-item">
+      <a href='<?php echo URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' class='nav-link' target='regeln' onclick='window.open(this.href,this.target,"scrollbars=yes,resizable=yes");return false;'><?php echo $text['tipp'][185]?></a>
+    </li><?php 
+  }?>
+    <li class="nav-item"><?php 
   echo "<a href=\"".$adda."logout\" class=\"nav-link\" >".$text[88]."</a>";
   ?>
     </li>
