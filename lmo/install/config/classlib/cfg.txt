@@ -1,1 +1,1 @@
-img_types=.gif,.jpg,.png,.jpeg
+img_types=.svg,.png,.gif,.jpg,.jpeg
