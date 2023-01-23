@@ -46,7 +46,7 @@ foreach ($datsort as $key => $val) {
       if ($mterm[$st-1][$i] > 0) {
         //$dum1 = datefmt_format($fmt, $mterm[$st-1][$i]);
         $dum1 = date($datf, $mterm[$st-1][$i]);
-        $dum2 = date("d.m.y", $mterm[$st-1][$i]);
+        $dum2 = date("d.m.", $mterm[$st-1][$i]);
       } else {
         $dum1 = $dum2 = "";
       }?>
@@ -79,7 +79,7 @@ foreach ($datsort as $key => $val) {
     //echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," style='vertical-align: middle;' width='24'"," alt=''");             
     ?>
     </div>
-    <div class="col-2 text-end d-lg-none">
+    <div class="col-3 text-end d-lg-none">
     <?php 
     echo $heim1.$teamk[$teama[$st-1][$i]].$heim2;
     //echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' style='vertical-align: middle;' width='24'");             
@@ -111,12 +111,12 @@ foreach ($datsort as $key => $val) {
     echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;
     ?>  
     </div>  
-    <div class="col-2 col-sm-auto"><?php echo applyFactor($goala[$st-1][$i],$goalfaktor); ?> : <?php echo applyFactor($goalb[$st-1][$i],$goalfaktor); ?></div>
+    <div class="col-2 col-auto"><?php echo applyFactor($goala[$st-1][$i],$goalfaktor); ?> : <?php echo applyFactor($goalb[$st-1][$i],$goalfaktor); ?></div>
     <?php   
     if($spez==1) {?>
     <?php echo $mspez[$st-1][$i]; ?><?php 
     }?>
-    <div class="col-2"><?php    
+    <div class="col-2 d-none d-lg-block"><?php    
     /** Mannschaftsicons finden
      */
     $lmo_teamaicon="";
