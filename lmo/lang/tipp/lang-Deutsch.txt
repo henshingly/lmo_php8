@@ -135,7 +135,7 @@
 134=Realname
 135=Ligen in Tippschein aufnehmen
 136=Neuen Tipper anlegen
-137=Die geänderten Daten gehen erst mit der nächsten<br> Auswertung in die Punktestandstabellen ein.
+137=Die geänderten Daten gehen erst mit der nächsten Auswertung in die Punktestandstabellen ein.
 138=Dein letzter Tipp:
 139=neues Passwort
 140=altes Passwort

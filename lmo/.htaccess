@@ -1,6 +1,6 @@
-# Kommentieren Sie im unteren Bereich aus, falls ihr Server diesen Befehl nicht unterstützt
-# ACHTUNG: IN DIESEM FALL MÜSSEN SIE AUF ANDEREM WEG SICHERSTELLEN, DASS NIEMAND VOM 
-# BROWSER AUS ZUGRIFF AUF DIE DATEIEN ERHÄLT!
+# Kommentieren Sie im unteren Bereich aus, falls ihr Server diesen Befehl nicht unterstÃ¼tzt
+# ACHTUNG: IN DIESEM FALL MÃœSSEN SIE AUF ANDEREM WEG SICHERSTELLEN, DASS NIEMAND VOM 
+# BROWSER AUS ZUGRIFF AUF DIE DATEIEN ERHÃ„LT!
 #
 # If you experience problems with following commands you have to comment them out
 # ATTENTION: IN THIS CASE YOU HAVE TO PROTECT THE FILES AGAINST ACCESS BY WEB BROWSERS!
@@ -13,7 +13,7 @@
 	allow from all
   </Files>
 
-# Kommentieren Sie im unteren Bereich aus, falls ihr Server diesen Befehl nicht unterstützt
+# Kommentieren Sie im unteren Bereich aus, falls ihr Server diesen Befehl nicht unterstÃ¼tzt
 #
 # If you experience problems with following commands you have to comment them out
 #

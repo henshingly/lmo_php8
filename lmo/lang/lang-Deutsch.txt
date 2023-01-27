@@ -55,8 +55,8 @@
 054=Liga Manager Online 4
 055=© 1997-2019 LMO-Group
 056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Besuchen Sie unsere Homepage">Homepage</a> | <a href="https://www.vest-sport.de/forum/" target="_blank" title="Hilfe zum LMO und seinen Addons">Support-Forum</a> | <a href="https://www.vest-sport.de/forum/viewforum.php?f=10" target="_blank" title="Hier finden Sie weitere Ligen für Ihren LigaManager">Ligaliste</a> ]
-057=Die Statistik 1 von
-058=Die Statistik 2 von
+057=Die Statistik von
+058=Die Statistik von
 059=Keine 2. Mannschaft
 060=Chancen gegen.
 061=Tabellenposition
@@ -417,8 +417,8 @@
 416=Es dürfen nicht mehrere Mannschaften auf einem Platz sein\nEs wird noch nicht gespeichert.
 417=Spiel um Platz 3
 418=Wird auch ein kleines Finale ausgespielt (Spiel um Platz 3)?
-419=großes Finale (um den Titel):
-420=kleines Finale (um Platz 3):
+419=Finale:
+420=Spiel um Platz 3:
 421=Designeditor
 422=Design der Ausgabe festlegen (Schriften, Farben usw.)
 423=Äußerer Rahmen
