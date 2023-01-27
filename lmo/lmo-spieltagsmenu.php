@@ -1,9 +1,6 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col">&nbsp;</div>
-  </div>
-  <div class="row">
-    <div class="col"><?php 
+  <div class="row pt-1">
+    <div class="col d-flex justify-content-center"><?php 
   if (isset($anzst)) {
     for ($i=1; $i<=$anzst; $i++) {
       if ($lmtype==1) {
@@ -42,7 +39,7 @@
         echo "<a class='btn btn-sm btn-info' href='".$addr.$i."' title='".$k."'>".$j."</a>";
       }
       echo "&nbsp;";
-      $break = "</div></div><div class='row pt-2'><div class='col'>";
+      $break = "</div></div><div class='row p-2'><div class='col d-flex justify-content-center'>";
       if (($anzst>47) && (($anzst%4)==0)) {
         if (($i==$anzst/4) || ($i==$anzst/2) || ($i==$anzst/4*3)) {
           echo $break;
@@ -59,8 +56,5 @@
     }
   }?>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">&nbsp;</div>
   </div>
 </div>

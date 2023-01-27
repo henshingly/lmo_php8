@@ -202,7 +202,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
     }?>
     <div class="container">
       <div class="row">
-        <div class="col"><?php echo $text['tipp'][114]?></div>
+        <div class="col d-flex justify-content-center"><?php echo $text['tipp'][114]?></div>
       </div>
       <div class="row">
         <div class="col">

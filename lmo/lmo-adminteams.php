@@ -185,19 +185,19 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 
 <div class="container">
   <div class="row pt-3">
-    <div class="col"><h1><?php echo $titel;?></h1></div>
+    <div class="col d-flex justify-content-center"><h1><?php echo $titel;?></h1></div>
   </div>
   <div class="row">
     <div class="col">
-      <form name="lmoedit" class="form-inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
+      <form name="lmoedit" class="row" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="edit">
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?php echo $file; ?>">
         <input type="hidden" name="st" value="<?php echo $st; ?>">
-        <div class="container">
+
           <div class="row">
-            <div class="col-4"><acronym title="<?php echo $text[125].", ".$text[572].", ".$text[126]?>"><?php echo $text[127]; ?></acronym>&nbsp;</div>
+            <div class="col-5"><acronym title="<?php echo $text[125].", ".$text[572].", ".$text[126]?>"><?php echo $text[127]; ?></acronym></div>
 <?php
   if ($lmtype==0) {
 ?>
@@ -207,7 +207,6 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 <?php
   }
 ?>
-<!-- Hack-Straftore Ende -->
 <?php
   if ($lmtype==0) {
 /** Titel Notiz */
@@ -223,9 +222,9 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 	for ($i=1;$i<=$anzteams;$i++) { 
 ?>
           <div class="row p-1">
-            <div class="col-4">     
+            <div class="col-5">     
                 <input class="custom-control" type="text" name="xteams<?php echo $i; ?>" size="25" maxlength="64" value="<?php echo htmlspecialchars($teams[$i]); ?>" placeholder="<?php echo $text[577] ?>" onChange="dolmoedit()">
-                <input class="custom-control" type="text" name="xteamm<?php echo $i; ?>" size="6" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" placeholder="<?php echo $text[578] ?>" onChange="dolmoedit()">
+                <input class="custom-control" type="text" name="xteamm<?php echo $i; ?>" size="10" maxlength="12" value="<?php echo htmlspecialchars($teamm[$i]); ?>" placeholder="<?php echo $text[578] ?>" onChange="dolmoedit()">
                 <input class="custom-control" type="text" name="xteamk<?php echo $i; ?>" size="2" maxlength="5" value="<?php echo htmlspecialchars($teamk[$i]); ?>" placeholder="<?php echo $text[579] ?>" onChange="dolmoedit()">
             </div>
 <?php
@@ -292,7 +291,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 		} 
 /** Mannschaftswappen */
 ?>
-            <div class="col-1"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''");?></div>
+            <div class="col-1"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt='' width='24'");?></div>
           </div>
 <?php
 	} 
@@ -311,7 +310,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 	} 
 ?>
           </div>
-        </div>
+
       </form>
     </div>
   </div>

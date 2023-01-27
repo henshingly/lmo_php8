@@ -304,13 +304,13 @@ if ($file != "") {
 
 <div class="container">
   <div class="row pt-3">
-    <div class="col"><h1><?php echo $titel?></h1></div>
+    <div class="col d-flex justify-content-center"><h1><?php echo $titel?></h1></div>
   </div>
-  <div class="row">
+  <div class="row p-1">
     <div class="col">
       <?php include (PATH_TO_LMO."/lmo-spieltagsmenu.php");?>
       <?php if ($lmtype == 0) { ?>
-	<form  name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" style="margin:12px 0;">
+	<form  name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	  <input type="hidden" name="action" value="admin">
 	  <input type="hidden" name="todo" value="edit">
 	  <input type="hidden" name="save" value="990">
@@ -321,7 +321,7 @@ if ($file != "") {
       <?php } ?>
     </div>
   </div>
-  <div class="row">
+  <div class="row p-1">
     <div class="col">
       <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()" class="form-inline">
         <input type="hidden" name="action" value="admin">
@@ -346,8 +346,8 @@ if ($file != "") {
     $dum2 = "";
   }
   if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
-               <?php echo $text[3]?> <input class="custom-input" size="6" type="text" name="xdatum1" tabindex="1" maxlength="10" value="<?php echo $datum1[$st-1]; ?>" onChange="dolmoedit()">
-               <?php echo $text[4]?> <input class="custom-input" size="6" type="text" name="xdatum2" tabindex="2" maxlength="10" value="<?php echo $datum2[$st-1]; ?>" onChange="dolmoedit()"><?php
+               <?php echo $text[3]?> <input class="custom-control" size="6" type="text" name="xdatum1" tabindex="1" maxlength="10" value="<?php echo $datum1[$st-1]; ?>" onChange="dolmoedit()">
+               <?php echo $text[4]?> <input class="custom-control" size="6" type="text" name="xdatum2" tabindex="2" maxlength="10" value="<?php echo $datum2[$st-1]; ?>" onChange="dolmoedit()"><?php
   }?>
             </div><?php
   if ($goalfaktor!=1) {?>

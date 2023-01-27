@@ -122,7 +122,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
 
 <div class="container">
   <div class="row p-3">
-    <div class="col"><h1><?php echo $titel?></h1></div>
+    <div class="col d-flex justify-content-center"><h1><?php echo $titel?></h1></div>
   </div>
   <div class="row">
     <div class="col-2 text-end">

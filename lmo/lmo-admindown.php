@@ -22,14 +22,14 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
 if(($action=="admin") && ($todo=="download")){?>
 
 <div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col"><h1><?php echo $text[316];?></h1></div>
-    <div class="col"><h1><?php echo $text[345];?></h1></div>
+  <div class="row">
+    <div class="col d-flex justify-content-center"><h1><?php echo $text[316];?></h1></div>
+    <div class="col d-flex justify-content-center"><h1><?php echo $text[345];?></h1></div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row">
     <div class="col">
       <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row">
           <div class="col"><?php 
   $ftype=".l98"; 
   require(PATH_TO_LMO."/lmo-admindowndir.php"); ?>
@@ -39,7 +39,7 @@ if(($action=="admin") && ($todo=="download")){?>
     </div>
     <div class="col">
       <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row">
           <div class="col"><?php  $ftype=".l98"; 
   require(PATH_TO_LMO."/lmo-adminmimedir.php"); ?>
           </div>

@@ -79,7 +79,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
   <input type="hidden" name="textreminder1" value="<?php if($tipp_textreminder1==""){$tipp_textreminder1=$text['tipp'][174];}echo $tipp_textreminder1; ?>">
   <div class="container">
     <div class="row p-1">
-      <div class="col"><h1><?php echo $text['tipp'][165] ?></h1></div>
+      <div class="col d-flex justify-content-center"><h1><?php echo $text['tipp'][165] ?></h1></div>
     </div>
     <div class="row p-1">
       <div class="col-3 text-end"><input type="radio" class="form-check-input" name="emailart" value="0" <?php if($emailart==0){echo "checked";} ?> onClick="changetextarea(0)">&nbsp;<?php echo $text['tipp'][166]; ?></div>

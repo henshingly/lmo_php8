@@ -55,59 +55,12 @@ if ($action == "tipp") {
   if (!isset($tipp_tipptabelle1)) {
     $tipp_tipptabelle1 = 1;
   }
-  if ($tipp_tippmodus == 1 && $todo == "edit") {?>
-<script type="text/javascript"><?php 
-  if($tipp_pfeiltipp==1){ ?>
-    img0 = new Image();
-    img0.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif";
-    img1 = new Image();
-    img1.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin1.gif";
-    img2 = new Image();
-    img2.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif";
-    img3 = new Image();
-    img3.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin3.gif";
-    function lmoimg(x,y){
-      document.getElementsByName("ximg"+x)[0].src = y.src;
-    }<?php  }?>
-  function lmotorclk(x,y,z){
-    if(document.all && !window.opera){
-      if(z==38){lmotorauf(x,y,1);}
-      if(z==40){lmotorauf(x,y,-1);}
-    }
-  }
-
-  function lmotorauf(x,y,z){
-    if(x=="a"){xx="b";}
-    if(x=="b"){xx="a";}
-    var a=document.getElementsByName("xtipp"+x+y)[0].value;
-    if(a==""){a="-1";}
-    if(a=="_"){a="-1";}
-    var aa=document.getElementsByName("xtipp"+xx+y)[0].value;
-    if(aa==""){aa="-1";}
-    if(aa=="_"){aa="-1";}
-    var ab=aa;
-    if(isNaN(a)==true){a=0;}else{a=parseInt(a);}
-    if((z==1) && (a<9999)){a++;}
-    if((z==-1) && (a>-1)){a--;}
-    if((a>-1) && (aa<0)){aa=0;}
-    if((a<0) && (aa>-1)){aa=-1;}
-    if(a==-1){a="";}
-    document.getElementsByName("xtipp"+x+y)[0].value=a;
-    if(ab!=aa){
-      if(aa==-1){aa="";}
-      document.getElementsByName("xtipp"+xx+y)[0].value=aa;
-    } 
-  }
-</script><?php 
-  }
   include(PATH_TO_ADDONDIR."/tipp/lmo-tippmenu.php");
   ?>
-
-
   
 <div class="container">
   <div class="row">
-    <div class="col"><h1><?php echo $text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></h1></div>
+    <div class="col d-flex justify-content-center"><h1><?php echo $text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></h1></div>
   </div>
   <div class="row">
     <div class="col"><?php 

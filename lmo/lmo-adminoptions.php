@@ -74,7 +74,7 @@ if($save==1){
   require(PATH_TO_LMO."/init.php");
 }?>
 
-<nav>
+<nav class="p-3">
   <ul class="nav nav-pills justify-content-center">
     <li class="nav-item"><a href="#" class="nav-link active"><?php echo $text[319]?></a></li>
     <li class="nav-item"><a href="<?php echo $addr_addons?>" class="nav-link" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></li>
@@ -82,8 +82,8 @@ if($save==1){
   </ul>
 </nav>
 <div class="container">
-  <div class="row">
-    <div class="col-auto justify-content-center"><h1><?php echo $text[225]?></h1></div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-auto"><h1><?php echo $text[225]?></h1></div>
   </div>
   <div class="row">
     <div class="col-3">
@@ -203,13 +203,15 @@ if ($show==0) {?>
               </select>
             </div>
             <div class="col-5">
-              <input type="radio" class="form-check-input" name="xliga_sort_direction" onClick="dolmoedit()" value="asc"<?php if ($liga_sort_direction=="asc") echo " checked";?>> <?php echo $text[527]?><br/>
-              <input type="radio" class="form-check-input" name="xliga_sort_direction" onClick="dolmoedit()" value="desc"<?php if ($liga_sort_direction=="desc") echo " checked";?>> <?php echo $text[528]?>
+              <input type="radio" class="form-check-input" id="gridRadio1" name="xliga_sort_direction" onClick="dolmoedit()" value="asc"<?php if ($liga_sort_direction=="asc") echo " checked";?>>
+              <label class="form-check-label" for="gridRadio1"><?php echo $text[527]?></label><br/>
+              <input type="radio" class="form-check-input" id="gridRadio2" name="xliga_sort_direction" onClick="dolmoedit()" value="desc"<?php if ($liga_sort_direction=="desc") echo " checked";?>>
+              <label class="form-check-label" for="gridRadio2"><?php echo $text[528]?></label>
             </div>
           </div>
           <div class="row align-items-center pb-1">
             <div class="col-5 text-end"><?php echo $text[600];?></div>
-            <div class="col-7 text-start"><input class="form-control" type="text" name="bootstrap" size="25" maxlength="6" value="<?php echo $bootstrap;?>" onChange="dolmoedit()"></div>
+            <div class="col-7 text-start"><input class="form-control" type="text" name="bootstrap" size="25" maxlength="15" value="<?php echo $bootstrap;?>" onChange="dolmoedit()"></div>
           </div>
           <div class="row align-items-center pb-1">
             <div class="col-5 text-end"><?php echo $text[601];?></div>

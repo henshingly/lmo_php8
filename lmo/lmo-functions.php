@@ -18,23 +18,6 @@
   * $Id$
   */
   
-$datei = fopen("ip.txt","a");
-if ($datei) {
-   fputs($datei, "IP: ".$_SERVER['REMOTE_ADDR']."\n");
-   fputs($datei, "Host: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\n");
-   fputs($datei, "Script: ".$_SERVER['REQUEST_URI']."\n");
-   fputs($datei, "\n");
-}
-fclose($datei);
-
-$fmt = new IntlDateFormatter(
-    'de-DE',
-    IntlDateFormatter::FULL,
-    IntlDateFormatter::SHORT,
-    $cfgarray['timezone'],
-    IntlDateFormatter::GREGORIAN
-);
-
 function check_hilfsadmin($datei) {
   $hilfsadmin_berechtigung=FALSE;
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']==1){
@@ -102,9 +85,9 @@ function filterZero($a) {
  */
 function getMessage($message,$error=FALSE) {
   if ($error) {
-    return '<p class="error"><i class="bi bi-x-circle-fill text-danger"></i> '.$message.'</p>';
+    return '<p class="d-flex justify-content-center"><i class="bi bi-x-circle-fill text-danger"> '.$message.'</i></p>';
   }else {
-    return '<p class="message"><i class="bi bi-check-circle-fil text-success"></i> '.$message.'</p>';
+    return '<p class="d-flex justify-content-center"><i class="bi bi-check-circle-fill text-success"> '.$message.'</i></p>';
   }
 }
 /**

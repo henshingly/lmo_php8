@@ -24,7 +24,7 @@ if($action=="admin"){
   if(empty($_SESSION['lmouserok'])){
 ?>
 <div class="container-fluid">
-  <div class="text-center"><h1><?php echo $text[77]." ".$text[54]; ?></h1></div>
+  <div class="d-flex justify-content-center"><h1><?php echo $text[77]." ".$text[54]; ?></h1></div>
 </div>
 <div class="container-fluid p-3">
   <div class="row">

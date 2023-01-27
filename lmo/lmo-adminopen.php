@@ -25,7 +25,7 @@ if(($action=="admin") && ($todo=="open")){
 ?>
 <div class="container-fluid">
   <div class="row">
-    <div class="col"><h1><?php echo $text[294]?></h1></div>
+    <div class="col d-flex justify-content-center"><h1><?php echo $text[294]?></h1></div>
   </div>
   <div class="row">
     <div class="col"><?php require(PATH_TO_LMO."/lmo-dirlist.php"); ?></div>
@@ -40,7 +40,7 @@ if(($action=="admin") && ($todo=="open")){
   $output='';
   foreach($dirs as $dir) {
     $descr=file_get_contents(PATH_TO_LMO.'/'.$dirliga.$subdir.$dir."/dir-descr.txt");
-    $output.=  "<div class='row'><div class='col-1'>&nbsp;</div><div class='col-4 text-start'><a href='".$adda."open&amp;subdir=".$subdir.$dir."/'>".$dir."</a></div>";
+    $output.=  "<div class='row'><div class='col-1'></div><div class='col-4 text-start'><a href='".$adda."open&amp;subdir=".$subdir.$dir."/'>".$dir."</a></div>";
     if ($descr!="") {
       $output.= "<div class='col-2 text-start'><small>".$descr."</small></div>";
     }
@@ -50,7 +50,7 @@ if(($action=="admin") && ($todo=="open")){
   if ($output!='') {?>
       <div class="container">
         <div class="row">
-		  <div class="col-1">&nbsp;</div>
+          <div class="col-1"></div>
           <div class="col-4 text-start"><?php echo $text[509];?></div>
         </div>
         <?php echo $output?>

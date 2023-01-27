@@ -446,7 +446,7 @@ function mark(el){
 </script>
 <div class="container">
 	<div class="row pt-3">
-		<div class="col"><h1><?php echo $text['spieler'][18] ?></h1></div>
+		<div class="col d-flex justify-content-center"><h1><?php echo $text['spieler'][18] ?></h1></div>
 	</div>
 	<div class="row">
 		<div class="col">
@@ -472,7 +472,7 @@ function mark(el){
 					<div class="col-3 text-start">
 						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="row">
 							<div class="col">
-								<select class="custom-select" name="wert" size="1"><?php
+								<select class="form-select" name="wert"><?php
             for ($x = 0;$x < $zeile;$x++)
             { ?>
 									<option value="<?php echo $x ?>"><?php echo htmlentities(stripslashes($data[$x][0]) , ENT_COMPAT); ?></option><?php
@@ -523,7 +523,7 @@ function mark(el){
 					<div class="col-3 text-start">
 						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="spieler" class="row">
 							<div class="col">
-								<select class="custom-select" name="wert" size="1"><?php
+								<select class="form-select" name="wert"><?php
                 for ($x = 0;$x < $spaltenzahl;$x++)
                 { ?>
 									<option value="<?php echo $x ?>"<?php if ($x == 0)
@@ -553,7 +553,7 @@ function mark(el){
 		</div>
 	</div>
 	<div class="row pt-3">
-		<div class="col"><h1><?php echo $text['spieler'][1] ?></h1></dov>
+		<div class="col d-flex justify-content-center"><h1><?php echo $text['spieler'][1] ?></h1></dov>
 	</div>
 	<div class="row pt-3">
 	        <div class="col">
@@ -594,7 +594,7 @@ function mark(el){
             if ($display > $zeile) $display = $zeile;
             for ($j1 = $statstart;$j1 < $display;$j1++)
             { ?>
-				     <div class="row"><?php
+				     <div class="row p-1"><?php
                 for ($j2 = 0;$j2 < $spaltenzahl;$j2++)
                 {
                     $data[$j1][$j2] = htmlentities(stripslashes($data[$j1][$j2]) , ENT_COMPAT);

@@ -32,7 +32,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
 
 <div class="container">
   <div class="row pb-2">
-    <div class="col"><h1><?php echo $text['tipp'][33] ?></h1></div>
+    <div class="col d-flex justify-content-center"><h1><?php echo $text['tipp'][33] ?></h1></div>
   </div>
   <div class="row pb-2">
     <div class="col-3 text-end">

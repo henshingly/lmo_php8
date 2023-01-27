@@ -23,18 +23,18 @@ isset($_POST['save'])?$save=$_POST['save']:$save=0;
 isset($_REQUEST['show'])?$show=$_REQUEST['show']:$show=0;
 if($save==1){
   // Es werden alle Addon-Konfigurationen dargestellt als Texteingabe behandelt
-  // und anschliessend abgespeichert - Es erfolgen keine Pr�fungen auf Variablentyp und -wert
+  // und anschliessend abgespeichert - Es erfolgen keine Prüfungen auf Variablentyp und -wert
   foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
     if (is_array($addon_cfg)) {                 //Addon gefunden 
       foreach ($addon_cfg as $cfg_name => $cfg_value) {
-        if (isset($_POST["x$cfg_name"])) ${$addon_name."_".$cfg_name}=trim($_POST["x$cfg_name"]);    //Alle Post-vars mit x davor werden abgefragt und als Variable mit Pr�fix gespeichert
+        if (isset($_POST["x$cfg_name"])) ${$addon_name."_".$cfg_name}=trim($_POST["x$cfg_name"]);    //Alle Post-vars mit x davor werden abgefragt und als Variable mit Präfix gespeichert
       }
     }
   }
   require(PATH_TO_LMO."/lmo-savecfg.php");
   require(PATH_TO_LMO."/lmo-cfgload.php");
 }?>
-<nav>
+<nav class="p-3">
   <ul class="nav nav-pills justify-content-center">
     <li class="nav-item" role="presentation"><a href="<?php echo $addr_options?>" class="nav-link" title="<?php echo $text[320]?>"><?php echo $text[319]?></a></li>
     <li class="nav-item" role="presentation"><a href="#" class="nav-link active"><?php echo $text[497]?></a></li>
@@ -46,7 +46,7 @@ if($save==1){
     <div class="col"><?php echo getMessage($text[571],TRUE);?></div>
   </div>
   <div class="row">
-    <div class="col"><h1><?php echo $text[498]?></h1></div>
+    <div class="col d-flex justify-content-center"><h1><?php echo $text[498]?></h1></div>
   </div>
   <div class="row align-items-top">
     <div class="col-2 text-end"><?php 
@@ -78,7 +78,7 @@ foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
       foreach ($addon_cfg as $cfg_name => $cfg_value) {   //Alle Konfigwerte des Addon
         ?>
             <div class="col-4 offset-1 text-end pb-1"><?php echo $cfg_name?></div>
-            <div class="col-4 pb-1"><input class="control-control" type="text" name="x<?php echo $cfg_name?>" size="30" value="<?php echo $cfg_value;?>" onChange="dolmoedit()"></div><?php 
+            <div class="col-4 pb-1"><input class="form-control" type="text" name="x<?php echo $cfg_name?>" size="30" value="<?php echo $cfg_value;?>" onChange="dolmoedit()"></div><?php 
       }
     }
     $testshow++;

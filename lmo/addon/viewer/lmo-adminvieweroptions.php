@@ -59,7 +59,7 @@ while($files=readdir($verz)){
           if($option_name=="Teams"){$ligadatei[$liga_counter]['anz_teams']=$option_wert;}
           if($option_name=="Type"){
             if($option_wert=="1"){$ligadatei[$liga_counter]['rundenbezeichnung']=$text[370];}
-          }          //Alle ben�tigten Werte gefunden -> Abbruch
+          }          //Alle benötigten Werte gefunden -> Abbruch
           if($ligadatei[$liga_counter]['liga_name']!="" &&
              $ligadatei[$liga_counter]['anz_teams']!='')break;
        }
@@ -77,9 +77,9 @@ closedir($verz);
 
 //usort($ligadatei,'cmp');
 
-isset($_POST['formular1']) ? $form1=true : $form1=false;                  // formular 1 ausgef�llt?
-isset($_POST['formular2']) ? $form2=true : $form2=false;                  // formular 2 ausgef�llt?
-isset($_POST['formular3']) ? $form3=true : $form3=false;                  // formular 3 ausgef�llt?
+isset($_POST['formular1']) ? $form1=true : $form1=false;                  // formular 1 ausgefüllt?
+isset($_POST['formular2']) ? $form2=true : $form2=false;                  // formular 2 ausgefüllt?
+isset($_POST['formular3']) ? $form3=true : $form3=false;                  // formular 3 ausgefüllt?
 
 if ($form1) {
   isset($_POST['dateiname']) ? $save_file_name=$_POST['dateiname'] : $save_file_name='unbenannt';
@@ -196,23 +196,23 @@ if($form3) {
 
 <div class="container">
   <div class="row">
-    <div class="col"><h3><?php echo $text['viewer'][42]; ?></h3></div>
+    <div class="col d-flex justify-content-center"><h3><?php echo $text['viewer'][42]; ?></h3></div>
   </div>
-  <div class="row pb-1">
-    <div class="col"><?php echo $text['viewer'][43]; ?></div>
+  <div class="row p-1">
+    <div class="col d-flex justify-content-center"><?php echo $text['viewer'][43]; ?></div>
   </div>
-  <div class="row pb-1">
-    <div class="col">
-      <textarea  rows="6" cols="80"><?php echo trim("\n<?php \n\$multi='".$save_file_name."';\ninclude('".dirname(__FILE__)."/viewer.php');\n?>");?></textarea>
+  <div class="row p-1">
+    <div class="col-8 offset-2 d-flex justify-content-center">
+      <textarea class="form-control" rows="6" cols="80"><?php echo trim("\n<?php \n\$multi='".$save_file_name."';\ninclude('".dirname(__FILE__)."/viewer.php');\n?>");?></textarea>
     </div>
   </div>
-  <div class="row pb-1">
-    <div class="col">
+  <div class="row p-1">
+    <div class="col d-flex justify-content-center">
       <?php echo $text['viewer'][36]; ?>
     </div>
   </div>
-  <div class="row pb-1">
-    <div class="col"><strong><?php echo $text['viewer'][100]; ?></strong></div>
+  <div class="row p-1">
+    <div class="col d-flex justify-content-center"><strong><?php echo $text['viewer'][100]; ?></strong></div>
   </div>
 </div>
 
@@ -223,7 +223,7 @@ if($form3) {
 
 <div class="container">
   <div class="row">
-    <div class="col"><h3><?php echo $text['viewer'][21]; ?></h3></div>
+    <div class="col d-flex justify-content-center"><h3><?php echo $text['viewer'][21]; ?></h3></div>
   </div>
   <form class="row" method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>">
     <div class="row pb-1">
@@ -313,9 +313,8 @@ if($form3) {
       <div class="col-2"><input class="form-control" type="text" name="tordummy" value="_"></div>
       <div class="col-3 text-start"><?php echo $text['viewer'][12]; ?></div>
     </div>
-    <div class="row">
+    <div class="row p-2">
       <div class="col">
-	<br />
         <input type="submit" class="btn btn-primary btn-sm" value="<?php echo $text['viewer'][22];  ?> >>" name="B1">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="formular1" value="1">
@@ -334,7 +333,7 @@ if($form3) {
 
 <div class="container">
   <div class="row">
-    <div class="col"><h3><?php echo $text['viewer'][21];  ?></h3></div>
+    <div class="col d-flex justify-content-center"><h3><?php echo $text['viewer'][21];  ?></h3></div>
   </div>
   <form class="row" name="B2" method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>">
     <div class="row">
@@ -347,7 +346,7 @@ if($form3) {
          <?php echo chr(13); $z++; } ?>
       </div>
     </div>
-    <div class="row">
+    <div class="row pt-3">
       <div class="col">
         <script type="text/javascript">
           document.writeln ('<input type="button" class="btn btn-sm btn-secondary" value="<?php echo $text['viewer'][43]; ?>" onClick="checkAll(this)"\>');
@@ -356,7 +355,7 @@ if($form3) {
       	</script>
       </div>
     </div>
-    <div class="row">
+    <div class="row p-3">
       <div class="col"><?php echo getMessage($text['viewer'][51],TRUE);?></div>
     </div>
     <div class="row">
@@ -383,7 +382,7 @@ if (!$form3 && $form2) {   //<!-- Jetzt kommen die Mannschaftsauswahlen  --> ?>
 
 <div class="container">
   <div class="row">
-    <div class="col"><h3><?php echo $text['viewer'][21]; ?> </h3></div>
+    <div class="col d-flex justify-content-center"><h3><?php echo $text['viewer'][21]; ?> </h3></div>
   </div>
   <form class="row" method="POST" action="<?php echo $_SERVER['PHP_SELF'].'?action=admin&todo=vieweroptions'; ?>" name="B3">
     <div class="row">
@@ -393,8 +392,8 @@ if (!$form3 && $form2) {   //<!-- Jetzt kommen die Mannschaftsauswahlen  --> ?>
           for ($i=1; $i<=count($ausgewaehlte_ligen) ;$i++ ) {
             $liga1=new liga();
             if ($liga1->loadFile(PATH_TO_LMO.'/'.$dirliga.$ligenfile[$ausgewaehlte_ligen[$i]]) == TRUE) { // Ligenfile vorhanden? ?>
-    <div class="row">
-      <div class="col"><h3><?php echo $ligennamen[$ausgewaehlte_ligen[$i]]; ?></h3></div>
+    <div class="row pt-4">
+      <div class="col d-flex justify-content-center"><h3><?php echo $ligennamen[$ausgewaehlte_ligen[$i]]; ?></h3></div>
     </div>
              <?php $ii=1; $spalte=1; $max=count($liga1->teams);
               foreach ($liga1->teams as $mannschaft) {
@@ -410,7 +409,7 @@ if (!$form3 && $form2) {   //<!-- Jetzt kommen die Mannschaftsauswahlen  --> ?>
               echo "[".PATH_TO_LMO.'/'.$dirliga.$ligenfile[$ausgewaehlte_ligen[$i]]."] ".$text['viewer'][50]."<br>";
             }
           } ?>
-    <div class="row">
+    <div class="row pt-3">
       <div class="col">
         <script type="text/javascript">
           document.writeln ('<input type=button class="btn btn-secondary btn-sm" value="<?php echo $text['viewer'][43]; ?>" onClick="checkAll(this)"\>');
