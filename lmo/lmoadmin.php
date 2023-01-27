@@ -41,15 +41,15 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 					"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="de">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-  <title>LMO Admin</title>
-  <link href="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $bootstrap?>/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  <link href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" >
-  <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_TEMPLATEDIR?>/style.css'>
-</head>
-<body>
-  <div align="center"><?php 
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <title>LMO Admin</title>
+    <link href="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $bootstrap?>/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" >
+    <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_TEMPLATEDIR?>/style.css'>
+  </head>
+  <body>
+    <div class="container"><?php 
 
   $action="admin";
   $array = array();
@@ -60,9 +60,9 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
     if ((!empty($file) && check_hilfsadmin($file)) || empty($file))  require(PATH_TO_LMO."/lmo-adminmain.php");
   }
   ?>
-  </div>
+    </div>
     <!-- JavaScript Bundle with Popper -->
-  <script type="text/javascrpt" src="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $bootstrap?>/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script type="text/javascrpt" src="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $bootstrap?>/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   </body>
-  </html><?php 
+</html><?php 
 }?>

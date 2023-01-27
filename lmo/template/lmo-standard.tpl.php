@@ -23,6 +23,7 @@
   </div>
   <div class="row">
     <div class="col-auto"><!--Ligenuebersicht--></div>
-    <div class="col-auto ml-auto"><!--LetzteAuswertung--><br><!--Berechnungszeit--><!--Infolink--></div>
+    <div class="col-auto ml-auto d-none d-lg-block"><!--LetzteAuswertung--><br><!--Berechnungszeit--><!--Infolink--></div>
+    <div class="col-auto ml-auto d-lg-none"><!--Infolink--></div>
   </div>
 </div>

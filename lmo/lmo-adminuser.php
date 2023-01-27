@@ -86,7 +86,7 @@ if ($_SESSION['lmouserok']==2) {
     }
   } 
 ?>
-<nav>
+<nav class="p-3">
   <ul class="nav nav-pills justify-content-center">
     <li class="nav-item" role="presentation"><a href="<?php echo $addr_options?>"class="nav-link"  title="<?php echo $text[320]?>"><?php echo $text[319]?></a></li>
     <li class="nav-item" role="presentation"><a href="<?php echo $addr_addons?>" class="nav-link" title="<?php echo $text[498]?>"><?php echo $text[497]?></a></li>

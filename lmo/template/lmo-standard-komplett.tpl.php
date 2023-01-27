@@ -7,7 +7,7 @@
 <title><!--Titel--></title>
 <!--Stylesheet-->
 <link href="//cdn.jsdelivr.net/npm/bootstrap@<!--Bootstrap-->/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<link href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" >
+<link href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css" rel="stylesheet" >
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@<!--Chartjs-->/dist/chart.js"></script>
 </head>
 <body>
@@ -40,8 +40,10 @@
 	<div class="col offset-3"><!--Sprachauswahl--></div>
    </div>
     <div class="row pt-4">
-	<div class="col-2 offset-3"><!--Ligenuebersicht--></div>
-	<div class="col-3 offset-3"><!--LetzteAuswertung--><br /><!--Berechnungszeit--><!--Infolink--></div>
+	<div class="col-2 offset-2 d-none d-lg-block"><!--Ligenuebersicht--></div>
+	<div class="col-2 d-lg-none"><!--Ligenuebersicht--></div>
+	<div class="col-3 offset-3 d-none d-lg-block"><!--LetzteAuswertung--><br /><!--Berechnungszeit--><!--Infolink--></div>
+	<div class="col-5 offset-5 d-lg-none"><!--Infolink--></div>
     </div>
   </div>
   <!-- JavaScript Bundle with Popper -->

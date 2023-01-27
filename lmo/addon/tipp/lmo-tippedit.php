@@ -214,7 +214,7 @@ if ($file!="") {
       $j=$st.". ".$text[370];
     }
   }?>
-            <div class="col-6"><?php
+            <div class="col-6"><b><?php
   if ($lmtype==0) {
     echo $st.". ".$text[2];
   } else {
@@ -228,7 +228,7 @@ if ($file!="") {
       echo " ".$text[4]." ".$datum2[$st-1];
     }
   }?>
-            </div><?php
+            </b></div><?php
   if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
             <div class="col-2">
             <?php echo $text['tipp'][188]; /* Tipptendenz absolut */?>
