@@ -1,47 +1,25 @@
 <?php include("../init.php");?>
 name="lmo3";
 img0 = new Image();
-img0.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif";
+img0.src = "<i class='bi bi-arrow-up-short text-info'></i>";
 img1 = new Image();
-img1.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin1.gif";
+img1.src = "<i class='bi bi-arrow-up-short text-danger'></i>";
 img2 = new Image();
-img2.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif";
+img2.src = "<i class='bi bi-arrow-down-short text-info'></i>";
 img3 = new Image();
-img3.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin3.gif";
+img3.src = "<i class='bi bi-arrow-down-short text-danger'></i>";
 img4 = new Image();
-img4.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin4.gif";
+img4.src = "<i class='bi bi-calendar-date'></i>";
 img5 = new Image();
-img5.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin5.gif";
+img5.src = "<i class='bi bi-calendar-date-fill'></i>";
 lmotest=true;
 
 function lmoimg (x,y){
   document.getElementsByName("ximg"+x)[0].src = y.src;
   }
-function lmofilename(){
-  var s=document.getElementsByName("xfile")[0].value;
-  if(s.length==0){s='noname';}
-  s=s.replace(/\\/,"/")
-  if(s.lastIndexOf("/")>-1){var t=s.substr(s.lastIndexOf("/")+1,s.length); s=t;}
-  if(s.substr(s.length-4,s.length).toLowerCase()==".l98"){var t=s.substr(0,s.length-4); s=t;}
-  document.getElementsByName("xfile")[0].value=s;
-  lmotest=false;
-  }
-function lmotitelname(){
-  var s=document.getElementsByName("xtitel")[0].value;
-  if(s.length==0){s='No Name';}
-  document.getElementsByName("xtitel")[0].value=s;
-  lmotest=false;
-  }
 function dolmoedit(){
   lmotest=false;
   }
-function chklmopass(){
-  if(lmotest == true){
-    return confirm("<?php echo $text[117] ?>");
-  }else{
-    return true;
-  }
-}
 function dolmoedi2(a,s){
   var s1=document.getElementsByName(s)[0].value;
   for(var i=1;i<=a;i++){
@@ -61,6 +39,13 @@ function dolmoedi2(a,s){
     }
   }
   lmotest=false;
+}
+function chklmopass(){
+  if(lmotest == true){
+    return confirm("<?php echo $text[117] ?>");
+  }else{
+    return true;
+  }
 }
 function chklmopas2(a){
   var r=true;
@@ -85,13 +70,6 @@ function chklmopas2(a){
     return false;
     }
   }
-function chklmolink(){
-  if(lmotest == false){
-    return confirm("<?php echo $text[119] ?>");
-  }else{
-    return true;
-  }
-}
 function siklmolink(adresse){
   return confirm("<?php echo $text[249] ?>");
 }
@@ -108,9 +86,7 @@ function emllmolink(adresse,emailaddi){
 function dteamlmolink(adresse,team){
   return confirm("<?php echo $text[332] ?>:\n"+team);
 }
-function ateamlmolink(adresse){
-  return confirm("<?php echo $text[335] ?>");
-}
+
 function opencal(feld,startdat){
   lmocal="<?php echo URL_TO_LMO?>/lmo-admincal.php?abs=lmoedit&feld="+feld;
   if(startdat!=""){lmocal=lmocal+"&calshow="+startdat;}

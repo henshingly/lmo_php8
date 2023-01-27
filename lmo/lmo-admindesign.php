@@ -133,7 +133,6 @@ if ($show==0) {
 }
 
 ?>
-<script src="<?php echo URL_TO_JSDIR?>/colorpicker.js" type="text/javascript"></script>
 <nav>
   <ul class="nav nav-pills justify-content-center">
     <li class="nav-item" role="presentation"><a href="<?php echo $addr_options?>"class="nav-link"  title="<?php echo $text[320]?>"><?php echo $text[319]?></a></li>
