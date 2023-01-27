@@ -28,14 +28,14 @@ if ($file != "") {
   <div class="row">
     <div class="col-1"><?php 
   for($i = 1; $i <= floor($anzteams/2); $i++) {
+    echo HTML_smallTeamIcon($file,$teams[$i]," alt='' width='24'");
     if($i!=$selteam){?>
             <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
             <?php
     } else {
       echo $teamk[$i];
     }
-       ?></acronym>
-         <?php echo HTML_smallTeamIcon($file,$teams[$i],""," alt=''"); 
+    echo "<br>"; 
   }?>
     </div>
     <div class="col-10">
@@ -90,9 +90,10 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 text-end d-none d-lg-block'>";
           }
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$j][$i]],""," alt=''");
+          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt='' width='24'")."&nbsp;";
           echo $heim1.$teams[$teama[$j][$i]].$heim2.$urlta;
           echo " </div>";
+          echo " <div class='col-md-auto'>-</div>";
           if ($m == 1) {
             echo "<div class='col-3 text-success text-end d-lg-none'>";
           } elseif ($m==2) {
@@ -100,27 +101,27 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 text-end d-lg-none'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]],""," alt=''");
+          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt='' width='24'")."&nbsp;";
           echo $heim1.$teamk[$teama[$j][$i]].$heim2.$urlta;
           echo " </div>";
           if ($m == 2) {
-            echo "<div class='col-3 text-success d-none d-lg-block'> - &nbsp;";
+            echo "<div class='col-3 text-success d-none d-lg-block'>";
           } elseif($m==1) {
-            echo "<div class='col-3 text-danger d-none d-lg-block'> - &nbsp;";
+            echo "<div class='col-3 text-danger d-none d-lg-block'>";
           } else {
-            echo "<div class='col-3 d-none d-lg-block'> - &nbsp;";
+            echo "<div class='col-3 d-none d-lg-block'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]],""," alt=''");
+          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt='' width='24'")."&nbsp;";
           echo $gast1.$teams[$teamb[$j][$i]].$gast2.$urltb;
           echo " </div>";
           if ($m == 2) {
-            echo "<div class='col-3 text-success d-lg-none'> - &nbsp;";
+            echo "<div class='col-3 text-success d-lg-none'>";
           } elseif($m==1) {
-            echo "<div class='col-3 text-danger d-lg-none'> - &nbsp;";
+            echo "<div class='col-3 text-danger d-lg-none'>";
           } else {
-            echo "<div class='col-3 d-lg-none'> - &nbsp;";
+            echo "<div class='col-3 d-lg-none'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]],""," alt=''");
+          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt='' width='24'")."&nbsp;";
           echo $gast1.$teamk[$teamb[$j][$i]].$gast2.$urltb;
           echo " </div>";
           for($n = 0; $n < $modus[$j]; $n++) {
@@ -139,8 +140,8 @@ if ($file != "") {
             $lmo_teamaicon="";
             $lmo_teambicon="";
             if($urlb==1 || $mnote[$j][$i][$n]!=""){
-              $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]],""," alt=''");
-              $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]],""," alt=''");
+              $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt='' width='24'");
+              $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt='' width='24'");
             }
             /** Spielbericht verlinken
              */
@@ -173,13 +174,14 @@ if ($file != "") {
     </div>
     <div class="col-1 text-start"><?php 
   for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {
+    echo HTML_smallTeamIcon($file,$teams[$i]," alt='' width='24'");
     if($i!=$selteam){?>
             <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
             <?php
     } else {
       echo $teamk[$i];
-    }
-       ?></acronym><?php 
+    } 
+    echo "<br>";
   }?>
   </div>
 </div><?php 

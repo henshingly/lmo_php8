@@ -76,13 +76,12 @@ foreach ($datsort as $key => $val) {
     <div class="col-3 text-end d-none d-lg-block">
     <?php 
     echo $heim1.$teams[$teama[$st-1][$i]].$heim2;
-    //echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," style='vertical-align: middle;' width='24'"," alt=''");             
+    echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' width='24'");             
     ?>
     </div>
     <div class="col-3 text-end d-lg-none">
     <?php 
-    echo $heim1.$teamk[$teama[$st-1][$i]].$heim2;
-    //echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' style='vertical-align: middle;' width='24'");             
+    echo $heim1.$teamk[$teama[$st-1][$i]].$heim2;  
     ?>
     </div>
     <?php 
@@ -101,13 +100,12 @@ foreach ($datsort as $key => $val) {
     ?>
     <div class="col-3 text-start d-none d-lg-block">-&nbsp;
     <?php
-    //echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' style='vertical-align: middle;' width='24'")."&nbsp;";
+    echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' width='24'")."&nbsp;";
     echo $gast1.$teams[$teamb[$st-1][$i]].$gast2;
     ?>
     </div>
     <div class="col-3 text-start d-lg-none">-&nbsp;
     <?php 
-    //echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' style='vertical-align: middle;' width='24'")."&nbsp;";
     echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;
     ?>  
     </div>  
