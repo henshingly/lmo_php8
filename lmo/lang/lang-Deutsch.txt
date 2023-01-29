@@ -580,6 +580,7 @@
 579=(kurz)
 600=Bootstrap-Version
 601=Chart.js-Version
+602=BootstrapIcon-Version
 1000=Serien
 1001=Gewonnen
 1002=Ungeschlagen

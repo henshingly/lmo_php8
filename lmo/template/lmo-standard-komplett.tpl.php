@@ -7,7 +7,7 @@
 <title><!--Titel--></title>
 <!--Stylesheet-->
 <link href="//cdn.jsdelivr.net/npm/bootstrap@<!--Bootstrap-->/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<link href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css" rel="stylesheet" >
+<link href="//cdn.jsdelivr.net/npm/bootstrap-icons@<!--BootstrapIcon-->/font/bootstrap-icons.css" rel="stylesheet" >
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@<!--Chartjs-->/dist/chart.js"></script>
 </head>
 <body>

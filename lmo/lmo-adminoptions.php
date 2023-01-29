@@ -29,7 +29,7 @@ if($save==1){
       $dirliga=trim($_POST["xdirliga"]);
       if($dirliga==""){$dirliga="./";}
       $dirliga=str_replace("\\",'/',$dirliga);                // (Falschen) Backslash -> Slash
-      if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash erg�nzen falls nicht vorhanden
+      if(substr($dirliga,-1)!='/') $dirliga.='/';            // Slash ergänzen falls nicht vorhanden
       $ArchivDir=$dirliga.'archiv/';
 
       $deflang=isset($_POST["xdeflang"])?trim($_POST["xdeflang"]):$deflang;
@@ -202,7 +202,7 @@ if ($show==0) {?>
                 <option value="file_name"<?php if ($liga_sort=="file_name") echo " selected";?>><?php echo $text[531]?></option>
               </select>
             </div>
-            <div class="col-5">
+            <div class="col-5 text-end">
               <input type="radio" class="form-check-input" id="gridRadio1" name="xliga_sort_direction" onClick="dolmoedit()" value="asc"<?php if ($liga_sort_direction=="asc") echo " checked";?>>
               <label class="form-check-label" for="gridRadio1"><?php echo $text[527]?></label><br/>
               <input type="radio" class="form-check-input" id="gridRadio2" name="xliga_sort_direction" onClick="dolmoedit()" value="desc"<?php if ($liga_sort_direction=="desc") echo " checked";?>>
@@ -211,11 +211,15 @@ if ($show==0) {?>
           </div>
           <div class="row align-items-center pb-1">
             <div class="col-5 text-end"><?php echo $text[600];?></div>
-            <div class="col-7 text-start"><input class="form-control" type="text" name="bootstrap" size="25" maxlength="15" value="<?php echo $bootstrap;?>" onChange="dolmoedit()"></div>
+            <div class="col-7 text-start"><input class="form-control" type="text" name="bootstrap" maxlength="15" value="<?php echo $bootstrap;?>" onChange="dolmoedit()"></div>
+          </div>
+          <div class="row align-items-center pb-1">
+            <div class="col-5 text-end"><?php echo $text[602];?></div>
+            <div class="col-7 text-start"><input class="form-control" type="text" name="bootstrapIcon" maxlength="15" value="<?php echo $bootstrapIcon;?>" onChange="dolmoedit()"></div>
           </div>
           <div class="row align-items-center pb-1">
             <div class="col-5 text-end"><?php echo $text[601];?></div>
-            <div class="col-7 text-start"><input class="form-control" type="text" name="chartjs" size="25" maxlength="6" value="<?php echo $chartjs;?>" onChange="dolmoedit()"></div>
+            <div class="col-7 text-start"><input class="form-control" type="text" name="chartjs" maxlength="6" value="<?php echo $chartjs;?>" onChange="dolmoedit()"></div>
           </div><?php
 }elseif ($show==1) {?>
           <div class="row align-items-center pb-1">
