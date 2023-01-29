@@ -19,14 +19,6 @@
 
 
 /*Zusatzoptionen ab beta3*/
-if (!isset($lmo_fieber_color1)) {
-  $cfgarray['lmo_fieber_color1']='#00f';
-  $lmo_fieber_color1='#00f';
-}
-if (!isset($lmo_fieber_color2)) {
-  $cfgarray['lmo_fieber_color2']='#f00';
-  $lmo_fieber_color2='#f00';
-}
 if (!isset($cfgarray['timezone'])) {
   $cfgarray['timezone']=$timezone;
 }
