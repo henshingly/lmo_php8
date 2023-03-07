@@ -7,6 +7,7 @@
  * @package   classLib
  * @version  $Id: liga.class.php 569 2010-09-15 19:53:15Z jokerlmo $
  */
+#[\AllowDynamicProperties]
 class liga {
 
 
