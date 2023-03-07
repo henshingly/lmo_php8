@@ -34,9 +34,9 @@ if($file!=""){
       <?php
   for ($i=1; $i<=$anzteams; $i++) {
     if($i!=$selteam){?>
-            <p><a href="<?php echo $addp.$i?>" title="<?php echo $teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," style='vertical-align: middle;' width='24'"); ?></a></p><?php
+            <p><a href="<?php echo $addp.$i?>" title="<?php echo $teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' width='24' style='vertical-align: middle;'"); ?></a></p><?php
     } else {
-     echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i],"width='24'")."</p>";
+     echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' width='24' style='vertical-align: middle;'")."</p>";
     }
   }?>
     </div>

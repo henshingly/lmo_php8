@@ -28,7 +28,7 @@ if ($file != "") {
   <div class="row">
     <div class="col-1"><?php 
   for($i = 1; $i <= floor($anzteams/2); $i++) {
-    echo HTML_smallTeamIcon($file,$teams[$i]," alt='' width='24'");
+    echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' width='24' style='vertical-align: middle;'");
     if($i!=$selteam){?>
             <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
             <?php
@@ -140,8 +140,8 @@ if ($file != "") {
             $lmo_teamaicon="";
             $lmo_teambicon="";
             if($urlb==1 || $mnote[$j][$i][$n]!=""){
-              $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt='' width='24'");
-              $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt='' width='24'");
+              $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt='$teams[$i]' width='24' style='vertical-align: middle;'");
+              $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt='$teams[$i]' width='24' style='vertical-align: middle;'");
             }
             /** Spielbericht verlinken
              */
@@ -174,7 +174,7 @@ if ($file != "") {
     </div>
     <div class="col-1 text-start"><?php 
   for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {
-    echo HTML_smallTeamIcon($file,$teams[$i]," alt='' width='24'");
+    echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' width='24' style='vertical-align: middle;'");
     if($i!=$selteam){?>
             <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
             <?php
