@@ -107,11 +107,11 @@ if ($file != "") {
           if ($plan == 1) {
             $heim2 .= "</a>";
           }?>
-          <div class="col-3 text-end d-none d-lg-block <?php echo $color ?>"><?php
+          <div class="col-3 text-end d-none d-lg-block"><?php
           echo $heim1.$teams[$teama[$st-1][$i]].$heim2;
           echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' width='24'")."&nbsp;";?>
           </div>
-          <div class="col-3 text-end d-lg-none <?php echo $color ?>"><?php
+          <div class="col-3 text-end d-lg-none"><?php
           echo $heim1.$teamk[$teama[$st-1][$i]].$heim2;?>
           </div>
           <?php
@@ -134,11 +134,11 @@ if ($file != "") {
           if ($plan==1) {
             $gast2 .= "</a>";
           }?>
-          <div class="col-3 text-start d-none d-lg-block <?php echo $color ?>"><?php
+          <div class="col-3 text-start d-none d-lg-block"><?php
           echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' width='24'")."&nbsp;";
           echo $gast1.$teams[$teamb[$st-1][$i]].$gast2;?>
           </div>
-          <div class="col-3 text-start d-lg-none <?php echo $color ?>"><?php
+          <div class="col-3 text-start d-lg-none"><?php
           echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;?>
           </div><?php
         } else { ?>
