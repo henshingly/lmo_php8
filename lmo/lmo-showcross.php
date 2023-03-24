@@ -33,7 +33,7 @@ for($i = 0; $i <= ($anzteams); $i++) {
     if ($j == 0) {
       echo "<div class='col-cross text-center'>";
     } elseif($j == $i) {
-      echo "<div class='col-cross table-secondary'>";
+      echo "<div class='col-cross bg'>";
     } else {
       echo "<div class='col-cross text-center'>";
     }

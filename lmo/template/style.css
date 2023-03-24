@@ -29,6 +29,10 @@
     padding-right: 0;
 }
 
+.col-cross.bg {
+    background-color: var(--bs-secondary-bg);
+}
+
 a span.popup, a:link span.popup{
 	display: none;
 }
