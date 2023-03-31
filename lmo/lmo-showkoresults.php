@@ -142,8 +142,8 @@ if ($file != "") {
           echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;?>
           </div><?php
         } else { ?>
-          <div class="col-4 d-none d-lg-block"></div>
-          <div class="col-4 d-lg-none"></div><?php
+          <div class="col-6 d-none d-lg-block"></div>
+          <div class="col-6 d-lg-none"></div><?php
         }?>
           <div class="col-2 d-none d-lg-block"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?> : <?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?> <?php echo $mspez[$st-1][$i][$n]; ?></div>
           <div class="col-3 d-lg-none"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?> : <?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?> <?php echo $mspez[$st-1][$i][$n]; ?></div>
