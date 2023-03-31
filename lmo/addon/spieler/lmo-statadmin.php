@@ -641,6 +641,53 @@ function mark(el){
       			</form>
 		</div>
 	</div>
+	<div class="row pt-5">
+	        <div class="col">
+	        	<form action="<?php echo  $_SERVER['PHP_SELF']?>" method="post" name="form1">
+				<input type="hidden" name="option" value="saveconfig">
+				<input type="hidden" name="todo" value="edit">
+        			<input type="hidden" name="st" value="<?php echo $st; ?>">
+				<input type="hidden" name="file" value="<?php echo $file?>">
+				<div class="container">
+					<div class="row p-2">
+						<div class="col"><h3><?php echo $text['spieler'][39]?></h3></div>
+					</div>
+
+					<div class="row p-2">
+						<div class="col-3"><?php echo $text['spieler'][22]?>: </div>
+						<div class="col-auto">
+							<input class="form-control" type="text" name="anzeige_pro_seite"value="<?php echo  $spieler_anzeige_pro_seite?>" size="<?php echo strlen($spieler_anzeige_pro_seite);?>">
+						</div>
+					</div>
+					<div class="row p-2">
+						<div class="col-3"><?php echo $text['spieler'][21]?>: </div>
+						<div class="col-auto">
+	  						<select class="form-select" name="standard_sortierung" onChange="mark(this)" size="1"><?php 
+	  						for ($x=0;$x<$spaltenzahl;$x++) {?>
+  								<option value="<?php echo $x?>" <?php if ($x==$spieler_standard_sortierung ) echo "selected";?>><?php echo $spalten[$x]?></option><?php 
+	  						}?>
+	  						</select>
+						</div>
+					</div>
+			          	<div class="row p-2">
+            					<div class="col-3"><?php echo $text['spieler'][13]?>: </div>
+            					<div class="col-auto">
+            						<input type="radio" class="form-check-input" name="standard_richtung" onClick="mark(this)" value="1"<?php if ($spieler_standard_richtung==1) echo " checked";?>> <?php echo $text['spieler'][48]?>
+            						<br>
+            						<input type="radio" class="form-check-input" name="standard_richtung" onClick="mark(this)" value="0"<?php if ($spieler_standard_richtung==0) echo " checked";?>> <?php echo $text['spieler'][47]?>
+            					</div>
+          				</div>
+          				<div class="row p-2">
+						<div class="col-3"><?php echo $text['spieler'][23]?>: </div>
+						<div class="col-auto"><input type="checkbox" class="form-check-input" name="nullwerte_anzeigen" onClick="mark(this)" value="<?php echo $spieler_nullwerte_anzeigen?>" <?php if ($spieler_nullwerte_anzeigen==1) echo "checked";?>></div>
+					</div>
+					<div class="row p-2">
+						<div class="col"><input class="btn btn-primary btn-sm" type="submit" value="Konfiguration speichern"></div>
+					</div>
+				</div>
+			</form>
+	        </div>
+	</div>
 </div>
 <?php
         }
