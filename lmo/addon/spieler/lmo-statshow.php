@@ -30,6 +30,8 @@ $begin = isset($_GET['begin'])? $_GET['begin']: 0;
 $direction = isset($_GET['direction'])? $_GET['direction']: $spieler_standard_richtung;
 $team = !empty($_GET['team'])? urldecode($_GET['team']): '';
 
+if (!isset($filename)) { $filename = $_GET['file']; }
+
 if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
   $spalten = array(); //Spaltenbezeichnung
   $data = array(); //Daten
@@ -120,10 +122,17 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
           <thead>
           <tr>
             <th></th>
-            <th></th><?php
+            <th></th>
+            <?php
   for ($i=0;$i<$spaltenzahl;$i++) {
     if ($spalten[$i]!=$text['spieler'][32]){?>
-            <th scope="col"><?php echo $spalten[$i];?></th><?php
+            <th scope="col">
+              <a href="<?php echo $_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=1&amp;team=$team";?>" title="<?php echo $text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][48]." ".$text['spieler'][37]?>"><i class="bi bi-arrow-up-short"></i></a>
+              <?php echo $spalten[$i];?>
+              <a href="<?php echo $_SERVER['PHP_SELF']."?file=$file&amp;action=$action&amp;begin=0&amp;sort=$i&amp;direction=0&amp;team=$team";?>" title="<?php echo $text['spieler'][36]." ".$spalten[$i]." ".$text['spieler'][47]." ".$text['spieler'][37]?>"><i class="bi bi-arrow-down-short"></i></a>
+            </th>
+            
+            <?php
     }
   }?>
           </tr><?php
@@ -145,10 +154,12 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
             </th>
           </tr>
           </thead>
-          <tbody><?php
+          <tbody>
+          <?php
   }
   for ($j1=$begin;$j1<$begin+$maxdisplay;$j1++) {?>
-          <tr><?php
+          <tr>
+          <?php
     for ($j2=0;$j2<$spaltenzahl;$j2++) {
       $data[$j1][$j2] = stripslashes($data[$j1][$j2]);
       if ($j2==0) {?><th scope="row" align="right"><?php
@@ -164,12 +175,15 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
           }
         }?>
             </th>
-            <td align="left"><?php
+            <td align="left">
+            <?php
               //Spielerbild
              echo  HTML_icon($data[$j1][$j2],'spieler','');
-         ?></td><?php
+         ?></td>
+         <?php
       } ?>
-            <td><?php
+            <td>
+            <?php
             //Vereinslinks
             if ($spalten[$j2]==$text['spieler'][25]) {
               $pos=array_search($data[$j1][$j2],$teamu);
@@ -184,7 +198,8 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
             //sonst. Spalten
             }elseif ($spalten[$j2]!=$text['spieler'][32]){
               echo  str_replace(" ","&nbsp;",$data[$j1][$j2]);
-            }?></td><?php
+            }?></td>
+            <?php
     }?>
           </tr><?php
   }?>
