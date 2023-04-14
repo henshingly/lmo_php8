@@ -157,7 +157,7 @@ if($all==0){ ?>
   } else {
     echo "<a href=\"".$addt4."nur\" title=\"".$text['tipp'][202]."\">".$text['tipp'][202]."</a>";
   }
-  echo "";
+  echo " ";
   if ($stwertmodus == "bis") {
     echo $text['tipp'][203];
   } else {
@@ -475,7 +475,7 @@ for($x = 1; $x <= $anztipper; $x++) {
         </tr>
       </table>
     </td>
-  </tr><?php if($tipp_anzseiten>1){ ?> 
+  </tr><?php if(isset($tipp_anzseiten) && $tipp_anzseiten>1){ ?> 
   <tr>
     <td>
       <table class="table" id="5">
