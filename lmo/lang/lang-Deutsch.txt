@@ -330,7 +330,7 @@
 329=Speichern
 330=Löschen
 331=Neuen Admin hinzufügen
-332=Wollen Sie die folgende Mannschaft\nwirklich vom Spielbetrieb zurückziehen\n(Das läßt sich nicht zurücknehmen)
+332=Wollen Sie die folgende Mannschaft\nwirklich vom Spielbetrieb zurückziehen\n(Das lässt sich nicht zurücknehmen)
 333=Mannschaft zurückziehen
 334=Diese Mannschaft vom Spielbetrieb zurückziehen
 335=Wollen Sie eine neue Mannschaft zum Spielbetrieb hinzufügen?
@@ -578,6 +578,7 @@
 577=Mannschaft (lang)
 578=(mittel)
 579=(kurz)
+580=Straftore, die diese Mannschaft vom Verband erhalten hat
 600=Bootstrap-Version
 601=Chart.js-Version
 602=BootstrapIcon-Version
