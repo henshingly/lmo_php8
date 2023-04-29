@@ -357,10 +357,7 @@ if ($file != "") {
   }?>
             <div class="col-1"><acronym title="<?php echo $text[213] ?>"><i class="bi bi-chat-fill text-success" style="font-size: 1.3rem;"></i></acronym></div>
             <div class="col-1"><acronym title="<?php echo $text[112] ?>"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i></acronym></div>
-            <div class="col-1"><acronym title="<?php echo $text[263] ?>"><i class="bi bi-box-arrow-up-right text-warning" style="font-size: 1.3rem;"></i></acronym></div><?php
-  if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
-            <div class="col-1"><?php echo $text['tipp'][57]; ?></div><?php
-  }?>
+            <div class="col-1"><acronym title="<?php echo $text[263] ?>"><i class="bi bi-box-arrow-up-right text-warning" style="font-size: 1.3rem;"></i></acronym></div>
           </div><?php
   if ($lmtype != 0) {
     $anzsp = $anzteams;
@@ -408,14 +405,14 @@ if ($file != "") {
               </select><?php
       } else {
         echo $teams[$teamb[$st-1][$i]];
-      }
+      }?>
+          </div><?php
       if($goala[$st-1][$i]=="-1"){
         $goala[$st-1][$i]="_";
       }
       if($goalb[$st-1][$i]=="-1"){
         $goalb[$st-1][$i]="_";
       }?>
-            </div>
             <div class="col-2">
               <input title="<?php echo $text[109] ?>" class="custom-control" style="width: 4rem;" type="number" name="xgoala<?php echo $i; ?>" tabindex="<?php echo $i;?>7" min="0" maxlength="4" value="<?php echo $goala[$st-1][$i]; ?>">
               :
@@ -456,7 +453,8 @@ if ($file != "") {
       /*Tippspiel-Addon*/
       if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
           <div class="row p-1">
-            <div class="col-2 offset-7">
+            <div class="col-1 offset-6"><?php echo $text['487'];?></div>
+            <div class="col-2">
               <select class="form-select" name="xmtipp<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>13">
                 <option value="0"<?php if($mtipp[$st-1][$i]<1){echo " selected";}?>>_</option>
                 <option value="1"<?php if($mtipp[$st-1][$i]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
