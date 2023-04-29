@@ -18,7 +18,7 @@ if($_SESSION['lmouserok']==2){
   if ($todo!='tippuser' && $todo!='tippuseredit') {?>
       <a href='<?php echo $tipp_addr_user?>' class='nav-link' onClick="return chklmolink();" title="<?php echo $text['tipp'][114]?>"><?php echo $text['tipp'][114]?></a><?php 
   } else {?>
-      <a href='+' class='nav-link active' onClick="return chklmolink();" title="<?php echo $text['tipp'][114]?>"><?php echo $text['tipp'][114]?></a><?php
+      <a href='<?php echo $tipp_addr_user?>' class='nav-link active' onClick="return chklmolink();" title="<?php echo $text['tipp'][114]?>"><?php echo $text['tipp'][114]?></a><?php
   }?> 
     </li>
     <li class="nav-item"><?php 
