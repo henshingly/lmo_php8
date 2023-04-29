@@ -90,48 +90,44 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
   } // end ($newpage==1)
 ?>
-<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
-  <tr>
-    <th align="center"><?php echo $text['tipp'][107]; ?></th>
-  </tr><?php if($newpage!=1){ ?>
-  <tr>
-    <td align="center">
-      <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<div class="container">
+  <div class="row">
+    <div class="col"><?php echo $text['tipp'][107]; ?></div>
+  </div><?php if($newpage!=1){ ?>
+  <div class="row">
+    <div class="col offset-2">
+      <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-inline">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="pwchange">
         <input type="hidden" name="newpage" value="1">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><?php echo " ".$text['tipp'][140]; ?> &nbsp;</td>
-            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $xtipperpass; ?>"></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><?php echo " ".$text['tipp'][139]; ?> &nbsp;</td>
-            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?php echo $xtipperpassneu; ?>"></td>
-          </tr>
-          <tr>
-            <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><?php echo " ".$text['tipp'][139]." ".$text['tipp'][19]; ?> &nbsp;</td>
-            <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?php echo $xtipperpassneuw; ?>"></td>
-          </tr>
-          <tr>
-            <td class="lmost4" colspan="3" align="right">
-              <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text[329]; ?>">
-            </td>
-          </tr>
-        </table>
-      </form>
-    </td>
-  </tr><?php  }
+        <div class="container">
+          <div class="row p-1">
+            <div class="col-4 text-end"><?php echo " ".$text['tipp'][140]; ?> &nbsp;</div>
+            <div class="col-auto"><input class="form-control" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $xtipperpass; ?>"></div>
+          </div>
+          <div class="row p-1">
+            <div class="col-4 text-end"><?php echo " ".$text['tipp'][139]; ?> &nbsp;</div>
+            <div class="col-auto"><input class="form-control" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?php echo $xtipperpassneu; ?>"></div>
+          </div>
+          <div class="row p-1">
+            <div class="col-4 text-end"><?php echo " ".$text['tipp'][139]." ".$text['tipp'][19]; ?> &nbsp;</div>
+            <div class="col-auto"><input class="form-control" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?php echo $xtipperpassneuw; ?>"></div>
+          </div>
+          <div class="row pt-3">
+            <div class="col-4 text-end">
+              <input class="btn btn-sm btn-primary" type="submit" name="xtippersub" value="<?php echo $text[329]; ?>">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div><?php  }
   if($newpage==1){ /* erfolgreich */?>
-  <tr>
-    <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
-  </tr>
-  <tr>
-    <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?php echo $text[5]." ".$text['tipp'][1]; ?></a></td>
-  </tr><?php  }?>
-</table><?php } 
+  <div class="row">
+    <div class="col offset-4"><?php echo getMessage($text['tipp'][121]); ?></div>
+  </div>
+  <div class="row">
+    <div class="col offset-4"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?php echo $text[5]." ".$text['tipp'][1]; ?></a></div>
+  </div><?php  }?>
+</div><?php } 
 $file=""; ?>

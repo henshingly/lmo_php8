@@ -78,28 +78,28 @@ if (($action == "tipp") && ($todo == "delaccount")) {
   } // end ($newpage==1)
 
 ?>
-  <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-    <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
-    <tr>
-      <th colspan="2" align="center"><?php echo $text['tipp'][6]; ?></th>
-    </tr>
-    <tr>
-      <td width="20">&nbsp;</td><?php if($newpage!=1){ ?>
-      <td class="nobr" align="center">
-        <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return confirm('');">
+  <div class="container">
+    <div class="row">
+      <div class="col offset-4"><?php echo $text['tipp'][6]; ?></div>
+    </div>
+    <div class="row p-3">
+      <?php if($newpage!=1){ ?>
+      <div class="col-2 offset-4">
+        <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return confirm('');" class="form-inline">
           <input type="hidden" name="action" value="tipp">
           <input type="hidden" name="todo" value="delaccount">
           <input type="hidden" name="newpage" value="1">
-          <p><?php echo " ".$text['tipp'][69]; ?>: &nbsp;<input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $xtipperpass; ?>"></p>
-          <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text[82]; ?>">
+          <input class="form-control" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $xtipperpass; ?>" placeholder="<?php echo $text['tipp'][69]; ?>">
+          <br />
+          <input class="btn btn-sm btn-danger" type="submit" name="xtippersub" value="<?php echo $text[82]; ?>">
         </form>
-      </td><?php  }
+      </div><?php  }
   if($newpage==1){ /* erfolgreich*/?>
-      <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
-    </tr>
-    <tr>
-      <td class="lmoFooter" colspan="2" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?php echo $text['tipp'][141]; ?></a></td>
-    </tr><?php  }?>
-  </table><?php } 
+      <div class="col offset-4"><?php echo getMessage($text['tipp'][121]); ?></div>
+    </div>
+    <div class="row">
+      <div class="col offset-4"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?php echo $text['tipp'][141]; ?></a></div>
+    </div><?php  }?>
+  </div><?php } 
 $file="";
 ?>
