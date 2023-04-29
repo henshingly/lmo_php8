@@ -97,80 +97,23 @@ for($n=0;$n<$modus[$st-1];$n++){
   if ($goaltippb[$i][$n]=="-1") {
     $goaltippb[$i][$n]="";
   } 
-  if($tipp_showtendenzabs==1){ ?>
-    <div class="col-1"><?php    if ($btip1==false) {
-      if (!isset($tendenz1[$i][$n])) {
-        $tendenz1[$i][$n]=0;
-      }
-      if (!isset($tendenz0[$i][$n])) {
-        $tendenz0[$i][$n]=0;
-      }
-      if (!isset($tendenz2[$i][$n])) {
-        $tendenz2[$i][$n]=0;
-      }
-      echo $tendenz1[$i][$n]."-".$tendenz0[$i][$n]."-".$tendenz2[$i][$n];
-    }?>
-    </div><?php  }
-  if($tipp_showtendenzpro==1){ ?>
-    <div class="col-1"><?php    if ($btip1==false) {
-      if (!isset($anzgetippt[$i][$n])) {
-        $anzgetippt[$i][$n]=0;
-      }
-      if ($anzgetippt[$i][$n]>0) {
-        if (!isset($tendenz1[$i][$n])) {
-          $tendenz1[$i][$n]=0;
-        }
-        if (!isset($tendenz0[$i][$n])) {
-          $tendenz0[$i][$n]=0;
-        }
-        if (!isset($tendenz2[$i][$n])) {
-          $tendenz2[$i][$n]=0;
-        }
-      } else {
-        echo "&nbsp;";
-      }
-    }?>
-    </div><?php  }
   if($btip[$i][$n]==true){
     $savebutton=1;
   }
 
 /**ERGEBNISMODUS*/
   if($tipp_tippmodus==1){
-    if($tipp_showdurchschntipp==1){?>
-      <div class="col-1"><?php      if ($btip1==false) {
-        if (!isset($anzgetippt[$i][$n])) {
-          $anzgetippt[$i][$n]=0;
-        }
-        if ($anzgetippt[$i][$n]>0) {
-          if (!isset($toregesa[$i][$n])) {
-            $toregesa[$i][$n]=0;
-          }
-          if (!isset($toregesb[$i][$n])) {
-            $toregesb[$i][$n]=0;
-          }
-          if ($toregesa[$i][$n]<10 && $toregesb[$i][$n]<10) {
-            $nachkomma=1;
-          } else {
-            $nachkomma=0;
-          }
-        } else {
-          echo "";
-        }
-      }?>
-    </div><<?php  }
-  if($btip[$i]==true){ ?>
-  <div class="col-1">
-    <input class="form-control" type="text" name="xtippa<?php echo $i; ?>" size="2" maxlength="4" value="<?php echo $goaltippa[$i]; ?>">
+    if($btip[$i]==true){ ?>
+  <div class="col-2">
+    <input class="custom-control" type="text" name="xtippa<?php echo $i; ?>" style="width:4rem" maxlength="4" value="<?php echo $goaltippa[$i]; ?>"> 
+    : 
+    <input class="custom-control" type="text" name="xtippb<?php echo $i; ?>" style="width:4rem" maxlength="4" value="<?php echo $goaltippb[$i]; ?>">
   </div><?php
   } else { ?>
-  <div class="col-1"><?php echo $goaltippa[$i]; ?></td><?php  }?>
-  <div class="col-1">:</div><?php if($btip[$i]==true){ ?>
-  <div class="col-1">
-    <input class="form-control" type="text" name="xtippb<?php echo $i; ?>" size="2" maxlength="4" value="<?php echo $goaltippb[$i]; ?>">
-  </div><?php
-  }else{ ?>
-  <div class="col-1"><?php echo $goaltippb[$i]; ?></div><?php
+  <div class="col-2">
+    <?php echo $goaltippa[$i]; ?>
+    :
+    <?php echo $goaltippb[$i]; ?></div><?php
   }
 } /* ende $tipp_tippmodus==1 */
 
