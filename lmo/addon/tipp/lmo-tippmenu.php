@@ -9,7 +9,7 @@
   echo "</li>";
   echo "<li class='nav-item'>";
   if ($viewermode == 1) {
-    echo $text['tipp'][9]."&nbsp;&nbsp;";
+    echo "<a href=\"#\" class=\"nav-link active\">".$text['tipp'][9]."</a>";
   } elseif($file != "") {
     if ($tipp_sttipp != -1) {
       if ($todo != "edit") {
