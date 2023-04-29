@@ -148,15 +148,6 @@ if ($file!="") {
   if ($spez==1) {
     $breite+=2;
   }
-  if ($tipp_showtendenzabs==1) {
-    $breite+=2;
-  }
-  if ($tipp_showtendenzpro==1) {
-    $breite+=2;
-  }
-  if ($tipp_showdurchschntipp==1) {
-    $breite+=2;
-  }
   if ($datm==1) {
     $breite++;
   }
@@ -171,7 +162,7 @@ if ($file!="") {
     $breite-=2;
   }
   $savebutton=0;
-  if ($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1 || ($tipp_showdurchschntipp==1 && $tipp_tippmodus==1)) {
+  if ($tipp_tippmodus==1) {
     require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalceinsicht.php");
   }
 ?>
@@ -229,20 +220,9 @@ if ($file!="") {
     }
   }?>
             </b></div><?php
-  if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
-            <div class="col-2">
-            <?php echo $text['tipp'][188]; /* Tipptendenz absolut */?>
-            </div>
-<?php  
-  }
   //ERGEBNISMODUS
-  if($tipp_tippmodus==1){  
-    if($tipp_showdurchschntipp==1){ ?>
-            <div class="col-1">
-            <?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
-            </div><?php
-    } ?>
-            <div class="col-3">
+  if($tipp_tippmodus==1){ ?>
+            <div class="col-2">
               <?php echo $text['tipp'][209]; /* Dein Tipp */?><br><?php
     if ($goalfaktor!=1) {
       echo "(".$text[553+log10($goalfaktor)].")";
@@ -253,9 +233,9 @@ if ($file!="") {
   //TENDENZMODUS
   if($tipp_tippmodus==0){ ?>
             <div class="col-1">
-              <acronym title="<?php echo $text['tipp'][95] ?>">1</acronym>&nbsp;<?php
+              <acronym title="<?php echo $text['tipp'][95] ?>">1</acronym>&nbsp;&nbsp;<?php
     if($hidr==0){ ?>
-              <acronym title="<?php echo $text['tipp'][96] ?>">0</acronym>&nbsp;<?php
+              <acronym title="<?php echo $text['tipp'][96] ?>">0</acronym>&nbsp;&nbsp;<?php
     }?>
               <acronym title="<?php echo $text['tipp'][97] ?>">2</acronym>
             </div><?php
