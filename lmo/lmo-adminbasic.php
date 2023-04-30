@@ -289,7 +289,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             <div class="col-5 offset-5 text-start">
               <input type="radio" class="form-check-input" name="xdatfselect" value=""<?php if (!in_array($datf,$dummf)) echo " checked";?>>
               <input type="text" class="custom-control" name="xdatf2" onChange="dolmoedit();document.getElementsByName('xdatf')[1].checked=true;" value="<?php echo $datf?>">
-              <a href="https://www.php.net/manual/de/datetime.format.php">
+              <a href="https://www.php.net/manual/de/datetime.format.php" class="none">
                 <span class="popup">
                   <strong><?php echo $text[545];?></strong><br>
                   D = <?php echo date("D", time());?><br>

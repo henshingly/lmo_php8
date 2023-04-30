@@ -166,7 +166,7 @@ if ($show==0) {?>
             <div class="col-7 text-start">
               <input type="radio" class="form-check-input" name="xdefdateselect" value=""<?php if (!in_array($defdateformat,$dummf)) echo " checked";?>>
               <input type="text" class="custom-control" name="xdefdateformat2" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[1].checked=true;" value="<?php echo $defdateformat?>">
-              <a href="https://www.php.net/manual/de/datetime.format.php">
+              <a href="https://www.php.net/manual/de/datetime.format.php" class="none">
                 <span class="popup">
                   <strong><?php echo $text[545];?></strong><br>
                   D = <?php echo date("D", time());?><br>
