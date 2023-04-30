@@ -48,7 +48,7 @@ if ($message != "") {
         $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
         $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
         $textmessage = str_replace("[name]", $dummb[3], $textmessage);
-        $textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
+        //$textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";
         if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
           $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
         } else {
@@ -70,7 +70,6 @@ if ($message != "") {
     require(PATH_TO_LMO."/lmo-savecfg.php");
     $now = strtotime("now");
     $then = strtotime("+".$tage." day");
-     
     if ($viewermode == 1) {
       $verz = opendir(substr($dirliga, 0, -1));
       $dateien = array();
@@ -173,7 +172,7 @@ if ($message != "") {
             $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
             $textmessage = str_replace("[name]", $dummb[3], $textmessage);
             $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-            $textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
+            //$textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
             if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
               $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
             } else {
@@ -242,7 +241,7 @@ if ($message != "") {
               $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
               $textmessage = str_replace("[name]", $dummb[3], $textmessage);
               $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-              $textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
+              //$textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
               if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
                 $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
               } else {
@@ -270,7 +269,7 @@ if ($message != "") {
     $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
     $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
     $textmessage = str_replace("[name]", $dummb[3], $textmessage);
-    $textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
+    //$textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";
     if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
       $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
     } else {

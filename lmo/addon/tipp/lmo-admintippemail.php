@@ -58,7 +58,7 @@ function changetextarea(x){
       document.getElementById("betreff").value="<?php echo $text['tipp'][296]?>";
     }
     if(x==1){
-      document.getElementById("message").value=document.getElementsByName("textreminder1")[0].value;
+      document.getElementById("message").value="<?php echo $text['tipp'][174]?>"
       document.getElementById("betreff").value="<?php echo $text['tipp'][167]?>";
     }
     if(x==2){
@@ -103,7 +103,7 @@ require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
 if($i>0){?>
                 <div class="row">
                   <div class="col">
-                    <input type="radio" name="liganr" value="0" <?php if($liganr==0){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;">&nbsp;<strong><?php echo $text['tipp'][263]?></strong>
+                    <input type="radio" class="form-check-input" name="liganr" value="0" <?php if($liganr==0){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;">&nbsp;<strong><?php echo $text['tipp'][263]?></strong>
                   </div>
                 </div><?php 
 } ?>
