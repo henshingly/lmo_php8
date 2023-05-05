@@ -74,22 +74,22 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
           </div><?php  } elseif ($show==2) {?>
           <div class="row pb-2">
             <div class="col-4 text-end"><?php echo $text['tipp'][34]; ?></div>
-            <div class="col-1 text-start"><input class="form-control" type="text" name="xrergebnis" size="5" maxlength="5" value="<?php echo $tipp_rergebnis; ?>" onChange="dolmoedit()"<?php if($tipp_tippmodus==0){echo " disabled";} ?>></div>
+            <div class="col-1 text-start"><input class="form-control" type="text" name="xrergebnis" size="5" maxlength="5" value="<?php echo $tipp_rergebnis; ?>" onChange="dolmoedit()"></div>
             <div class="col-1"><?php echo $text['tipp'][38]; ?></div>
           </div>
           <div class="row pb-2">
             <div class="col-4 text-end"><?php echo $text['tipp'][35]; ?></div>
-            <div class="col-1 text-start"><input class="form-control" type="text" name="xrtendenzdiff" size="5" maxlength="5" value="<?php echo $tipp_rtendenzdiff; ?>" onChange="dolmoedit()"<?php if($tipp_tippmodus==0){echo " disabled";} ?>></div>
+            <div class="col-1 text-start"><input class="form-control" type="text" name="xrtendenzdiff" size="5" maxlength="5" value="<?php echo $tipp_rtendenzdiff; ?>" onChange="dolmoedit()"></div>
             <div class="col-1"><?php echo $text['tipp'][38]; ?></div>
           </div>
           <div class="row pb-2">
             <div class="col-4 text-end"><?php echo $text['tipp'][36]; ?></div>
-            <div class="col-1 text-start"><input class="form-control" type="text" name="xrtendenz" size="5" maxlength="5" value="<?php echo $tipp_rtendenz; ?>" onChange="dolmoedit()"<?php if($tipp_tippmodus==0){echo " disabled";} ?>></div>
+            <div class="col-1 text-start"><input class="form-control" type="text" name="xrtendenz" size="5" maxlength="5" value="<?php echo $tipp_rtendenz; ?>" onChange="dolmoedit()"></div>
             <div class="col-1"><?php echo $text['tipp'][38]; ?></div>
           </div>
           <div class="row pb-2">
             <div class="col-4 text-end"><?php echo $text['tipp'][37]; ?></div>
-            <div class="col-1 text-start"><input class="form-control" type="text" name="xrtor" size="5" maxlength="5" value="<?php echo $tipp_rtor; ?>" onChange="dolmoedit()"<?php if($tipp_tippmodus==0){echo " disabled";} ?>></div>
+            <div class="col-1 text-start"><input class="form-control" type="text" name="xrtor" size="5" maxlength="5" value="<?php echo $tipp_rtor; ?>" onChange="dolmoedit()"></div>
             <div class="col-1"><?php echo $text['tipp'][38]; ?></div>
           </div>
           <div class="row pb-2">
