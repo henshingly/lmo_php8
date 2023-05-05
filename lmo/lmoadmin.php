@@ -43,7 +43,7 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
 <html lang="de">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <title>LMO Admin</title>
     <link href="//cdn.jsdelivr.net/npm/bootstrap@<?php echo $bootstrap?>/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="//cdn.jsdelivr.net/npm/bootstrap-icons@<?php echo $bootstrapIcon?>/font/bootstrap-icons.css" rel="stylesheet" >

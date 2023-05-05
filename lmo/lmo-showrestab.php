@@ -96,26 +96,20 @@ if (isset($file) && $file != "") {
   </div><?php
   }
   
-  /** Vor und Zur?ck-Pfeile*/?>
-  <div class="row">
-    <div class="col">
-      <div class="container-fluid">
-        <div class="row"><?php  
+  /** Vor und Zurück-Pfeile*/?>
+  <div class="row p-2"><?php  
    $st0 = $st-1;
    if ($st > 1) {?>
-          <div class="col-6 text-start">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a>&nbsp;</div><?php
+     <div class="col-6 text-start">&nbsp;<a href="<?php echo $addr.$st0?>"><?php echo $text[5]?> <?php echo $text[6]?></a>&nbsp;</div><?php
    } else {?>
-          <div class="col-6 text-start"></div><?php
+     <div class="col-6 text-start"></div><?php
    }
    $st0 = $st+1;
    if ($st < $anzst) {?>
-          <div class="col-6 text-end">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</div><?php
+     <div class="col-6 text-end">&nbsp;<a href="<?php echo $addr.$st0?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</div><?php
    } else {?>
-          <div class="col-6 text-end"></div><?php
+     <div class="col-6 text-end"></div><?php
    }?>
-        </div>
-      </div>
-    </div>
   </div><?php
   
   /** Tabelle*/

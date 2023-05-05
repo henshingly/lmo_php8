@@ -27,19 +27,19 @@
     <!--Info-->
   </ul>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row p-1">
 	<div class="col"><!--Hauptteil--></div>
     </div>
-    <div class="row">
+    <div class="row p-1">
 	<div class="col"><!--Newsticker--></div>
     </div>
     <div class="row">
 	<!--Savehtml-->
     </div>
-    <div class="row">
+    <div class="row p-1">
 	<div class="col offset-3"><!--Sprachauswahl--></div>
    </div>
-    <div class="row pt-4">
+    <div class="row p-2">
 	<div class="col-2 offset-2 d-none d-lg-block"><!--Ligenuebersicht--></div>
 	<div class="col-2 d-lg-none"><!--Ligenuebersicht--></div>
 	<div class="col-3 offset-3 d-none d-lg-block"><!--LetzteAuswertung--><br /><!--Berechnungszeit--><!--Infolink--></div>
