@@ -51,9 +51,9 @@
       if($tipp_regeln==1){
         isset($_POST["xregelnlink"])?                         $tipp_regelnlink=$_POST["xregelnlink"]:                 $tipp_regelnlink="tippregeln.php";
       }
-      isset($_POST["xshownick"])?                             $tipp_shownick=$_POST["xshownick"]:                     $tipp_shownick="";
-      isset($_POST["xshowname"])?                             $tipp_showname=$_POST["xshowname"]:                     $tipp_showname="";
-      isset($_POST["xshowemail"])?                            $tipp_showemail=$_POST["xshowemail"]:                   $tipp_showemail="";
+      isset($_POST["xshownick"])?                             $tipp_shownick=$_POST["xshownick"]:                     $tipp_shownick=0;
+      isset($_POST["xshowname"])?                             $tipp_showname=$_POST["xshowname"]:                     $tipp_showname=0;
+      isset($_POST["xshowemail"])?                            $tipp_showemail=$_POST["xshowemail"]:                   $tipp_showemail=0;
       if($tipp_showname==0 && $tipp_showemail==0){            $tipp_shownick=1;}
       break;
     case 4:
