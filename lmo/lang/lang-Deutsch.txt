@@ -194,8 +194,8 @@
 193=Standardmannschaften
 194=Spielplan
 195=Standardmannschaft, die beim ersten Spielplan-Aufruf ausgewählt ist
-196=Fieberkurve/Statistik
-197=Standardmannschaften, die beim ersten Aufruf von Fieberkurve bzw. Statistik ausgewählt sind
+196=Statistik
+197=Standardmannschaften, die beim ersten Aufruf von Statistik ausgewählt sind
 198=Punktesystem
 199=Sieg
 200=Unentschieden
@@ -267,7 +267,7 @@
 266=Sollen Links zu den Spielberichten der einzelnen Spielen angezeigt werden (falls vorhanden)?
 267=Mannschafts-Homepages verlinken
 268=Sollen Links zu den Homepages der einzelnen Mannschaften angezeigt werden (falls vorhanden)?
-269=Hier gehts zum Spielplan der Mannschaft
+269=zum Spielplan
 270=Hier finden Sie den Spielbericht (wird in einem neuen Fenster geöffnet)
 271=Anzahl der Mannschaften
 272=Geben Sie hier die Anzahl der an der Liga teilnehmenden Mannschaften ein (4 - 40)

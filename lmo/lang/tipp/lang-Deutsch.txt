@@ -172,7 +172,7 @@
 171=Tagen
 172=Tipp-Tabelle
 173=so würde die Tabelle mit Deinen Tipps aussehen
-174=Hallo [name]&#10;&#10;Diese Mail ist eine Erinnerung an Deine Tippabgabe.&#10;Bisher haben wir leider noch keine Tippabgabe von Dir für folgende Spielpaarungen:&#10;&#10;[spiele]
+174=Hallo [name],\n\ndiese Mail ist eine Erinnerung an Deine Tippabgabe.\nBisher haben wir leider noch keine Tippabgabe von Dir für folgende Spielpaarungen:\n\n[spiele]
 175=Emails wurden versandt
 176=Email wurde nicht versandt<br>
 177=Dieser Spieltag kann noch nicht getippt werden
@@ -253,7 +253,7 @@
 252=Alle Spiele in den nächsten
 253=Datumsweise Tippabgabe zulassen
 254=...für Spiele in den nächsten
-255=[ <a href="http://www.vfb-forchheim.de/handball" target="_blank" title="Schau auch mal auf meiner Homepage vorbei">VfB Forchheim - Handball</a> ]
+255=
 256=Tage vorblättern
 257=Tage zurückblättern
 258=Alle Spiele vom
