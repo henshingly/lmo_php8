@@ -27,16 +27,16 @@
 
       if ($i!=$st || empty($tabdat)) {
         if (isset($todo) && $todo=="tabs") {
-          echo "<a class='btn btn-sm' href='".$addb.$i."' title='".$k."'>".$j."</a>";
+          echo "<a class='btn btn-sm' href='".$addb.$i."' data-bs-toggle='tooltip' data-bs-placement='top' title='".$k."'>".$j."</a>";
         } else {
           if($i == $st) {
-            echo "<a class='btn btn-sm btn-info' href='".$addr.$i."' title='".$k."'>".$j."</a>";
+            echo "<a class='btn btn-sm btn-info' href='".$addr.$i."' data-bs-toggle='tooltip' data-bs-placement='top' title='".$k."'>".$j."</a>";
           } else {
-            echo "<a class='btn btn-sm' href='".$addr.$i."' title='".$k."'>".$j."</a>";
+            echo "<a class='btn btn-sm' href='".$addr.$i."' data-bs-toggle='tooltip' data-bs-placement='top' title='".$k."'>".$j."</a>";
           }
         }
       } else {
-        echo "<a class='btn btn-sm btn-info' href='".$addr.$i."' title='".$k."'>".$j."</a>";
+        echo "<a class='btn btn-sm btn-info' href='".$addr.$i."' data-bs-toggle='tooltip' data-bs-placement='top' title='".$k."'>".$j."</a>";
       }
       echo "&nbsp;";
       $break = "</div></div><div class='row p-2'><div class='col d-flex justify-content-center'>";

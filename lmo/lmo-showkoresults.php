@@ -96,7 +96,7 @@ if ($file != "") {
             $color = "";
           }
           if ($plan == 1) {
-            $heim1 = "<a href=\"".$addp.$teama[$st-1][$i]."\" class=\"".$color."\" title=\"".$text[269]."\">";
+            $heim1 = "<a href=\"".$addp.$teama[$st-1][$i]."\" class=\"".$color."\" data-bs-toggle='tooltip' data-bs-placement='top' title=\"".$text[269]."\">";
           }
           if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
             $heim1 .= "<strong>";
@@ -123,7 +123,7 @@ if ($file != "") {
             $color = "";
           }
           if ($plan==1) {
-            $gast1 = "<a href=\"".$addp.$teamb[$st-1][$i]."\" class=\"".$color."\" title=\"".$text[269]."\">";
+            $gast1 = "<a href=\"".$addp.$teamb[$st-1][$i]."\" class=\"".$color."\" data-bs-toggle='tooltip' data-bs-placement='top' title=\"".$text[269]."\">";
           }
           if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
             $gast1 .= "<strong>";
@@ -186,13 +186,13 @@ if ($file != "") {
     <div class="col-2 text-start"><?php
    $st0 = $st-1;
    if ($st > 1) {?>
-       <a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a><?php
+       <a href="<?php echo $addr.$st0?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a><?php
    } ?>
      </div>
      <div class="col-2 offset-5 text-end"><?php
    $st0 = $st+1;
    if ($st < $anzst) {?>
-       <a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a><?php
+       <a href="<?php echo $addr.$st0?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a><?php
    }?>
     </div>
   </div>

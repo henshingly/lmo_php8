@@ -22,14 +22,14 @@
 <?php
 /*Inklusive Heim & Auswärts*/
 if($tabonres==2){?>
-  <div class="row font-weight-bold">
+  <div class="row fw-bold">
     <div class="col-6"><?php echo $tabdat;?></div>
     <div class="col-1"></div>
     <div class="col-1"><?php echo $text[41]; ?></div>
     <div class="col-1"><?php echo $text[42]; ?></div>
   </div><?php 
 }?>
-  <div class="row font-weight-bold">
+  <div class="row fw-bold">
     <div class="col-2"></div>
     <div class="col-3"></div>
     <div class="col-1 text-end"><?php echo $text[33]; ?></div>
@@ -191,14 +191,14 @@ if ($einzutoretab == 1) {
 <?php
 }
 ?>
-  <div class="row">
+  <div class="row pt-3">
     <div class="col offset-1">
 <?php
   if ($einhinrueck==1 || $einheimausw==1) {
-  if($tabtype!=0){?><a href="<?php echo $addt1."0"?>" title="<?php echo $text[27]?>"><?php echo $text[40]?></a><?php }else{echo $text[40];}?> <?php
+  if($tabtype!=0){?><a href="<?php echo $addt1."0"?>"><?php echo $text[40]?></a><?php }else{echo $text[40];}?> <?php
   if($tabonres!=2 && $einheimausw==1){
-    if($tabtype!=1){?><a href="<?php echo $addt1."1"?>" title="<?php echo $text[28]?>"><?php echo $text[41]?></a><?php }else{echo $text[41];}?> <?php
-    if($tabtype!=2){?><a href="<?php echo $addt1."2"?>" title="<?php echo $text[29]?>"><?php echo $text[42]?></a><?php }else{echo $text[42];}?> <?php
+    if($tabtype!=1){?><a href="<?php echo $addt1."1"?>"><?php echo $text[41]?></a><?php }else{echo $text[41];}?> <?php
+    if($tabtype!=2){?><a href="<?php echo $addt1."2"?>"><?php echo $text[42]?></a><?php }else{echo $text[42];}?> <?php
   }
   if ($einhinrueck==1) {
     if($tabtype!=4){?><a href="<?php echo $addt1."4"?>"><?php echo $text[4003]?></a><?php }else{echo $text[4003];}?> <?php

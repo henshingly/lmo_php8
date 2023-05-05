@@ -40,17 +40,17 @@ for($i = 0; $i <= ($anzteams); $i++) {
 
     if (($j == 0) && ($i > 0) && ($i <= $anzteams)) {
       if (($croteam != 0) && (($j == $croteam) || ($i == $croteam))) {
-        echo "<a href=\"".$addc.$i."\" title='".$teams[$j]."'>";
+        echo "<a href=\"".$addc.$i."\" data-bs-toggle='tooltip' data-bs-placement='top' title='".$teams[$j]."'>";
         echo HTML_smallTeamIcon($file,$teams[$i],"width='24'"," alt='$teamk[$i]'");
         echo "</a>";
       } else {
-        echo "<a href=\"".$addc.$i."\" title='".$teams[$i]."'>";
+        echo "<a href=\"".$addc.$i."\" data-bs-toggle='tooltip' data-bs-placement='top' title='".$teams[$i]."'>";
         echo HTML_smallTeamIcon($file,$teams[$i],"width='24'"," alt='$teamk[$i]'");
         echo "</a>";
       }
     }
     if ($i == 0 && $j > 0 && $j <= $anzteams) {
-      echo "<a href=\"".$addc.$j."\" title='".$teams[$j]."'>";
+      echo "<a href=\"".$addc.$j."\" data-bs-toggle='tooltip' data-bs-placement='top' title='".$teams[$j]."'>";
       echo HTML_smallTeamIcon($file,$teams[$j],"width='24'"," alt='$teamk[$j]'");
       echo "</a>";
     }
@@ -79,13 +79,13 @@ for($i = 0; $i <= ($anzteams); $i++) {
               echo "<br />";
             }
             if ($mterm[$b][$a] > 0) {
-              $lmo_kreuz_longtime = ", ".date("D. d.m.Y H:i", $mterm[$b][$a]);
+              $lmo_kreuz_longtime = ", ".date("d.m.Y", $mterm[$b][$a]);
               $lmo_kreuz_shorttime = date("d.m.", $mterm[$b][$a]);
             } else {
               $lmo_kreuz_longtime = "";
               $lmo_kreuz_shorttime = "";
             }
-            echo "<a href=\"".$addr.($b+1)."\" title=\"".$teams[$i]." - ".$teams[$j]." &#10;(".($b+1).". ".$text[2].$lmo_kreuz_longtime.$dummy.")\">";
+            echo "<a href=\"".$addr.($b+1)."\" data-bs-toggle='tooltip' data-bs-placement='top' data-bs-html='true' title=\"".$teams[$i]." - ".$teams[$j]." <br>(".($b+1).". ".$text[2].$lmo_kreuz_longtime.$dummy.")\">";
             if ($goala[$b][$a]=="_" && $lmo_kreuz_shorttime!="") {
                echo "<small>$lmo_kreuz_shorttime</small>";
             } else {

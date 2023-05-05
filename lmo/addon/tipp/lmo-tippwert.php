@@ -132,7 +132,7 @@ if ($tabdat == "") {
     if ($wertung == "intern") {
       echo $text['tipp'][144];
     } else {
-      echo "<a href=\"".$addt1."intern&amp;teamintern=".rawurlencode($_SESSION['lmotipperverein'])."\" title=\"".$text['tipp'][144]."\">".$text['tipp'][144]."</a>";
+      echo "<a href=\"".$addt1."intern&amp;teamintern=".rawurlencode($_SESSION['lmotipperverein'])."\">".$text['tipp'][144]."</a>";
     }?>
      </div><?php
   }?>
@@ -153,13 +153,13 @@ if($all==0){ ?>
   if ($stwertmodus == "nur") {
     echo $text['tipp'][202];
   } else {
-    echo "<a href=\"".$addt4."nur\" title=\"".$text['tipp'][202]."\">".$text['tipp'][202]."</a>";
+    echo "<a href=\"".$addt4."nur\">".$text['tipp'][202]."</a>";
   }
   echo " ";
   if ($stwertmodus == "bis") {
     echo $text['tipp'][203];
   } else {
-    echo "<a href=\"".$addt4."bis\" title=\"".$text['tipp'][203]."\">".$text['tipp'][203]."</a>";
+    echo "<a href=\"".$addt4."bis\">".$text['tipp'][203]."</a>";
   }?>
       </div>
     </div><?php
@@ -187,9 +187,9 @@ if( $wertung=="einzel"  || $wertung=="intern"){
           <div class="col-1"> <?php echo $text['tipp'][27]; /* Team */?> </div><?php
   }
 } else { /* Teamwertung*/?>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][120]?>"><?php echo $text['tipp'][26]; /* Anzahl Tipper*/ ?></acronym></div>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][208]?>"><?php echo $text['tipp'][26]."Ø"; /* Anzahl Tipper Durchschnitt*/ ?></acronym></div><?php }?>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][117]?>"><?php if($gewicht!="spiele"){
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][120]?>"><?php echo $text['tipp'][26]; /* Anzahl Tipper*/ ?></acronym></div>
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][208]?>"><?php echo $text['tipp'][26]."Ø"; /* Anzahl Tipper Durchschnitt*/ ?></acronym></div><?php }?>
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][117]?>"><?php if($gewicht!="spiele"){
   echo "<a href=\"".$addt5."spiele\">";
 }
 echo $text['tipp'][123]; // Spiele getippt
@@ -200,22 +200,22 @@ if($gewicht!="spiele"){
 if($tipp_showzus==1){
   if($tipp_tippmodus==1){
     if($tipp_rergebnis>0){ ?>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][34].": ".$tipp_rergebnis." ".$text['tipp'][38]?>"><?php echo $text['tipp'][221]; /* RE */?></acronym></div><?php    }
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][34].": ".$tipp_rergebnis." ".$text['tipp'][38]?>"><?php echo $text['tipp'][221]; /* RE */?></acronym></div><?php    }
     if($tipp_rtendenzdiff>$tipp_rtendenz){ ?>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][35].": ".$tipp_rtendenzdiff." ".$text['tipp'][38]?>"><?php echo $text['tipp'][222]; /* RTD */?></acronym></div><?php    }
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][35].": ".$tipp_rtendenzdiff." ".$text['tipp'][38]?>"><?php echo $text['tipp'][222]; /* RTD */?></acronym></div><?php    }
     if($tipp_rtendenz>0){ ?>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][36].": ".$tipp_rtendenz." ".$text['tipp'][38]?>"><?php echo $text['tipp'][223]; /* RT */?></acronym></div><?php    }
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][36].": ".$tipp_rtendenz." ".$text['tipp'][38]?>"><?php echo $text['tipp'][223]; /* RT */?></acronym></div><?php    }
     if($tipp_rtor>0){ ?>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][37].": ".$tipp_rtor." ".$text['tipp'][38]?>"><?php echo $text['tipp'][224]; /* RG */?></acronym></div><?php    }
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][37].": ".$tipp_rtor." ".$text['tipp'][38]?>"><?php echo $text['tipp'][224]; /* RG */?></acronym></div><?php    }
   } // ende if($tipp_tippmodus==1) 
   if($tipp_rremis>0){ ?>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][192].": ".$tipp_rremis." ".$text['tipp'][38]?>"><?php echo $text['tipp'][225]; /* UB */?></acronym></div><?php  }
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][192].": ".$tipp_rremis." ".$text['tipp'][38]?>"><?php echo $text['tipp'][225]; /* UB */?></acronym></div><?php  }
   if($tipp_jokertipp==1){ ?>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][227]?>"><?php echo $text['tipp'][226]; /* JP */?></acronym></div><?php  }
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][227]?>"><?php echo $text['tipp'][226]; /* JP */?></acronym></div><?php  }
 } // ende if($tipp_showzus==1) 
 if($tipp_showstsiege==1){ ?>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][271]?>"><?php echo $text['tipp'][90]; /* GS */?></acronym></div><?php }?>
-          <div class="col-1"><acronym title="<?php if ($tipp_tippmodus == 1) { echo $text['tipp'][124];} else { echo $text['tipp'][125]." %";}?>"><?php if ($gewicht != "relativ") {
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][271]?>"><?php echo $text['tipp'][90]; /* GS */?></acronym></div><?php }?>
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php if ($tipp_tippmodus == 1) { echo $text['tipp'][124];} else { echo $text['tipp'][125]." %";}?>"><?php if ($gewicht != "relativ") {
   echo "<a href=\"".$addt5."relativ\">";
 }
 if ($tipp_tippmodus == 1) {
@@ -227,7 +227,7 @@ if ($gewicht != "relativ") {
   echo "</a>";
 }         ?></acronym>
           </div>
-          <div class="col-1"><acronym title="<?php echo $text['tipp'][118]?>"><?php if ($gewicht != "absolut") {
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][118]?>"><?php if ($gewicht != "absolut") {
   echo "<a href=\"".$addt5."absolut\" title=\"".$text['tipp'][149]."\">";
 }
 if ($tipp_tippmodus == 1) {

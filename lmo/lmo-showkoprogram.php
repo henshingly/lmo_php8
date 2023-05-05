@@ -30,7 +30,7 @@ if ($file != "") {
   for($i = 1; $i <= floor($anzteams/2); $i++) {
     echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' width='24' style='vertical-align: middle;'");
     if($i!=$selteam){?>
-            <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
+            <a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
             <?php
     } else {
       echo $teamk[$i];

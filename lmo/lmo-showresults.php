@@ -61,7 +61,7 @@ foreach ($datsort as $key => $val) {
   	//}
     /* Spielfrei-Hack-Ende1*/ 
     if ($plan == "1") {
-      $heim1 = "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+      $heim1 = "<a href=\"".$addp.$teama[$st-1][$i]."\" data-bs-toggle='tooltip' data-bs-placement='top' title=\"".$text[269]."\">";
     }
     if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
       $heim1 .= "<strong>";
@@ -86,7 +86,7 @@ foreach ($datsort as $key => $val) {
     </div>
     <?php 
     if ($plan == "1") {
-      $gast1 = "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+      $gast1 = "<a href=\"".$addp.$teamb[$st-1][$i]."\" data-bs-toggle='tooltip' data-bs-placement='top' title=\"".$text[269]."\">";
     }
     if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
       $gast1 .= "<strong>";
@@ -128,7 +128,7 @@ foreach ($datsort as $key => $val) {
     if($urlb==1){
       if($mberi[$st-1][$i]!=""){
         $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> &ndash; ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br /><br />";
-        echo " <a href='".$mberi[$st-1][$i]."' target='_blank' title='".nl2br($text[270])."'><i class='far fa-book fa-lg text-success'></i></a>";
+        echo " <a href='".$mberi[$st-1][$i]."' target='_blank' data-bs-toggle='tooltip' data-bs-placement='top' data-bs-html='true' title='".nl2br($text[270])."'><i class='far fa-book fa-lg text-success'></i></a>";
       }else{
         echo " <img src='".URL_TO_IMGDIR."/blank.png' width='19' height='1' border='0' alt=''>";
       }
@@ -195,7 +195,7 @@ if ($einspielfrei == 1) {?>
         $hoy5++;
 
      if ($plan == "1") {
-      echo "<a href=\"".$addp.$hoy8."\" title=\"".$text[269]."\">";
+      echo "<a href=\"".$addp.$hoy8."\" data-bs-toggle='tooltip' data-bs-placement='top' data-bs-html='true' title=\"".$text[269]."\">";
     }
      if (($favteam > 0) && ($favteam == $hoy8)) {
       echo "<strong>";

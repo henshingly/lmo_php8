@@ -233,16 +233,16 @@ if ($file!="") {
   //TENDENZMODUS
   if($tipp_tippmodus==0){ ?>
             <div class="col-1">
-              <acronym title="<?php echo $text['tipp'][95] ?>">1</acronym>&nbsp;&nbsp;<?php
+              <acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][95] ?>">1</acronym>&nbsp;&nbsp;<?php
     if($hidr==0){ ?>
-              <acronym title="<?php echo $text['tipp'][96] ?>">0</acronym>&nbsp;&nbsp;<?php
+              <acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][96] ?>">0</acronym>&nbsp;&nbsp;<?php
     }?>
-              <acronym title="<?php echo $text['tipp'][97] ?>">2</acronym>
+              <acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][97] ?>">2</acronym>
             </div><?php
   }
   //BEIDE
   if ($tipp_jokertipp==1){ ?>
-            <div class="col-1"><acronym title="<?php echo $text['tipp'][290] ?>"><?php echo $text['tipp'][289]; ?></acronym></div><?php
+            <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][290] ?>"><?php echo $text['tipp'][289]; ?></acronym></div><?php
   } ?>
             <div class="col-1"><?php echo $text['tipp'][31]; /* Ergebnis */?></div>
             <div class="col-1"><?php echo $text[37]; /* PP */?></div>

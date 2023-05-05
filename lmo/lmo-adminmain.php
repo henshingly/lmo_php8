@@ -43,45 +43,45 @@ require_once(PATH_TO_LMO."/lmo-openfile.php");
 echo "\n<ul class='nav nav-pills'>\n";
 if ($_SESSION['lmouserok'] == 2) {
   if ($todo != "new") {
-    echo "<li class='nav-item'><a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink();' title='{$text[79]}' class='nav-link'>{$text[78]}</a></li>\n";
+    echo "<li class='nav-item'><a href='{$adda}new&amp;newpage={$newpage}' onclick='return chklmolink();' class='nav-link'>{$text[78]}</a></li>\n";
   } else {
     echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[78]</a></li>\n";
   }
   //echo "&nbsp;";
   if ($todo != "open") {
-    echo "<li class='nav-item'><a href='{$adda}open&amp;subdir=".$subdir."' onclick='return chklmolink();' title='{$text[81]}' class='nav-link'>{$text[80]}</a></li>\n";
+    echo "<li class='nav-item'><a href='{$adda}open&amp;subdir=".$subdir."' onclick='return chklmolink();' class='nav-link'>{$text[80]}</a></li>\n";
   } else {
     echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[80]</a></li>\n";
   }
   //echo "&nbsp;";
   if ($todo != "delete") {
-    echo "<li class='nav-item'><a href='{$adda}delete' onclick='return chklmolink();' title='{$text[83]}' class='nav-link'>{$text[82]}</a></li>\n";
+    echo "<li class='nav-item'><a href='{$adda}delete' onclick='return chklmolink();' class='nav-link'>{$text[82]}</a></li>\n";
   } else {
     echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[82]</a></li>\n";
   }
   //echo "&nbsp;";
   if ($file != "") {
     if (($todo != "edit") && ($todo != "tabs")) {
-      echo "<li class='nav-item'><a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' title='{$text[91]}' class='nav-link'>{$text[90]}</a></li>\n";
+      echo "<li class='nav-item'><a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' class='nav-link'>{$text[90]}</a></li>\n";
     } else {
       echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[90]</a></li>\n";
     }
   //echo "&nbsp;";
   }
   if ($todo != "upload") {
-    echo "<li class='nav-item'><a href='{$adda}upload' onclick='return chklmolink();' title='{$text[85]}' class='nav-link'>{$text[84]}</a></li>\n";
+    echo "<li class='nav-item'><a href='{$adda}upload' onclick='return chklmolink();' class='nav-link'>{$text[84]}</a></li>\n";
   } else {
     echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[84]</a></li>\n";
   }
   //echo "&nbsp;";
   if ($todo != "download") {
-    echo "<li class='nav-item'><a href='{$adda}download' onclick='return chklmolink();' title='{$text[315]}' class='nav-link'>{$text[314]}</a></li>\n";
+    echo "<li class='nav-item'><a href='{$adda}download' onclick='return chklmolink();' class='nav-link'>{$text[314]}</a></li>\n";
   } else {
     echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[314]</a></li>\n";
   }
   //echo "&nbsp;";
   if (($todo != "options") && ($todo != "addons") && ($todo != "user") && ($todo != "design")) {
-    echo "<li class='nav-item'><a href='{$adda}options' onclick='return chklmolink();' title='{$text[87]}' class='nav-link'>{$text[86]}</a></li>\n";
+    echo "<li class='nav-item'><a href='{$adda}options' onclick='return chklmolink();' class='nav-link'>{$text[86]}</a></li>\n";
   } else {
     echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[86]</a></li>\n";
   }
@@ -89,7 +89,7 @@ if ($_SESSION['lmouserok'] == 2) {
   /*Tippspiel-Addon*/
   if ($eintippspiel == 1) {
     if (($todo != "tipp") && ($todo != "tippemail") && ($todo != "tippuser") && ($todo != "tippuseredit") && ($todo != "tippoptions")) {
-      echo "<li class='nav-item'><a href='{$adda}tipp' onclick='return chklmolink();' title='{$text['tipp'][57]}' class='nav-link'>{$text['tipp'][0]}</a></li>\n";
+      echo "<li class='nav-item'><a href='{$adda}tipp' onclick='return chklmolink();' class='nav-link'>{$text['tipp'][0]}</a></li>\n";
     } else {
       echo "<li class='nav-item'><a href='#' class='nav-link active'>".$text['tipp'][0]."</a></li>\n";
     }
@@ -98,39 +98,39 @@ if ($_SESSION['lmouserok'] == 2) {
   /*Viewer-Addon*/
   //echo "&nbsp;";
   if (($todo!="vieweroptions")){
-    echo "<li class='nav-item'><a href='{$adda}vieweroptions' onclick='return chklmolink();' title='{$text['viewer'][21]}' class='nav-link'>{$text['viewer'][20]}</a></li>\n";
+    echo "<li class='nav-item'><a href='{$adda}vieweroptions' onclick='return chklmolink();' class='nav-link'>{$text['viewer'][20]}</a></li>\n";
   } else {
     echo "<li class='nav-item'><a href='#' class='nav-link active'>".$text['viewer'][20]."</a></li>\n";
   }
   /*Viewer-Addon*/
   } elseif($_SESSION['lmouserok'] == 1) {
     if ($todo != "open") {
-      echo "<li class='nav-item'><a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}' class='nav-link'>{$text[80]}</a></li>\n";
+      echo "<li class='nav-item'><a href='{$adda}open' onclick='return chklmolink();' class='nav-link'>{$text[80]}</a></li>\n";
     } else {
       echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[80]</a></li>\n";
     }
     //echo "&nbsp;";
     if ($file != "") {
       if (($todo != "edit") && ($todo != "tabs")) {
-        echo "<li class='nav-item'><a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' title='{$text[91]}' class='nav-link'>{$text[90]}</a></li>\n";
+        echo "<li class='nav-item'><a href='{$adda}edit&amp;file={$file}' onclick='return chklmolink();' class='nav-link'>{$text[90]}</a></li>\n";
       } else {
         echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[90]</a></li>\n";
       }
       //echo "&nbsp;";
     }
     if ($todo != "download") {
-      echo "<li class='nav-item'><a href='{$adda}download' onclick='return chklmolink();' title='{$text[315]}' class='nav-link'>{$text[314]}</a><li>\n";
+      echo "<li class='nav-item'><a href='{$adda}download' onclick='return chklmolink();' class='nav-link'>{$text[314]}</a><li>\n";
     } else {
       echo "<li class='nav-item'><a href='#' class='nav-link active'>$text[314]</a></li>\n";
     }
 
   }
-  echo "<li class='nav-item'><a href='{$adda}logout' onclick='return chklmolink();' title='{$text[89]}' class='nav-link'>{$text[88]}</a></li>\n";
+  echo "<li class='nav-item'><a href='{$adda}logout' onclick='return chklmolink();' class='nav-link'>{$text[88]}</a></li>\n";
   //echo "&nbsp;";
   if($_SESSION['lmouserok']==2){
-       echo "<li class='nav-item'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}' class='nav-link'>{$text[312]}</a></li>\n";
+       echo "<li class='nav-item'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' class='nav-link'>{$text[312]}</a></li>\n";
     } else {
-       echo "<li class='nav-item'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}' class='nav-link'>{$text[312]}</a></li>\n";
+       echo "<li class='nav-item'><a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' class='nav-link'>{$text[312]}</a></li>\n";
     }?>
       </ul>
 </nav><?php 

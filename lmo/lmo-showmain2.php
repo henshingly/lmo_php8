@@ -18,6 +18,9 @@
   * $Id$
   */
 
+if($_SERVER['PHP_SELF'] == '/lmo-showmain2.php')
+	header("Location: /lmo.php");  
+
 $addm=$_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
 if($file!=""){
   require(PATH_TO_LMO."/lmo-openfile.php");
@@ -68,9 +71,6 @@ $output_berechnungszeit="";
 $output_stylesheet="";
 $output_stylesheet2="";
 $p1="";
-$bootstrap="";
-$boostrapIcon="";
-$chartjs="";
 
 if (!defined("LMO_TEMPLATE")) define("LMO_TEMPLATE","lmo-standard.tpl.php");
 
@@ -113,55 +113,55 @@ if ($file!="") {
 
     //Kalenderlink
     if($datc==1){
-      $output_kalender.=$action!='cal'?         "<li class='nav-item'><a href='{$addm}cal&amp;st={$st}' title='{$text[141]}' class='nav-link'>{$text[140]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[140]</a></li>";
+      $output_kalender.=$action!='cal'?         "<li class='nav-item'><a href='{$addm}cal&amp;st={$st}' class='nav-link'>{$text[140]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[140]</a></li>";
     }
     //Ergebnis/Tabelle
     if($tabonres==0){
       if($ergebnis==1){
-        $output_ergebnisse.=$action!='results'? "<li class='nav-item'><a href='{$addm}results&amp;st={$ste}' title='{$text[11]}' class='nav-link'>{$text[10]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[10]</a></li>";
+        $output_ergebnisse.=$action!='results'? "<li class='nav-item'><a href='{$addm}results&amp;st={$ste}' class='nav-link'>{$text[10]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[10]</a></li>";
       }
       if($tabelle==1){
-        $output_tabelle.=$action!='table'?      "<li class='nav-item'><a href='{$addm}table' title='{$text[17]}' class='nav-link'>{$text[16]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[16]</a></li>";
+        $output_tabelle.=$action!='table'?      "<li class='nav-item'><a href='{$addm}table' class='nav-link'>{$text[16]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[16]</a></li>";
       }
       //Kombinierte Ansicht
     }else{
       if($ergebnis==1){
-        $output_ergebnisse.=$action!='results' && $action!='table'? "<li class='nav-item'><a href='{$addm}results' title='{$text[104]}' class='nav-link'>{$text[10]}/{$text[16]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[10]/$text[16]</a></li>";
+        $output_ergebnisse.=$action!='results' && $action!='table'? "<li class='nav-item'><a href='{$addm}results' class='nav-link'>{$text[10]}/{$text[16]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[10]/$text[16]</a></li>";
       }
     }
 
     //Kreuztabelle
     if($kreuz==1){
-      $output_kreuztabelle.=$action!="cross"?   "<li class='nav-item'><a href='{$addm}cross' title='{$text[15]}' class='nav-link'>{$text[14]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[14]</a></li>";
+      $output_kreuztabelle.=$action!="cross"?   "<li class='nav-item'><a href='{$addm}cross' class='nav-link'>{$text[14]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[14]</a></li>";
     }
     //Spielplan
     if($plan==1){
-      $output_spielplan.=$action!="program"?    "<li class='nav-item'><a href='{$addm}program' title='{$text[13]}' class='nav-link'>{$text[12]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[12]</a></li>";
+      $output_spielplan.=$action!="program"?    "<li class='nav-item'><a href='{$addm}program' class='nav-link'>{$text[12]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[12]</a></li>";
     }
     //Fieberkurve
     if($kurve==1){
-      $output_fieberkurve.=$action!="graph"?    "<li class='nav-item'><a href='{$addm}graph&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[134]}' class='nav-link'>{$text[133]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[133]</a></li>";
+      $output_fieberkurve.=$action!="graph"?    "<li class='nav-item'><a href='{$addm}graph&amp;stat1={$stat1}&amp;stat2={$stat2}' class='nav-link'>{$text[133]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[133]</a></li>";
     }
     //Ligastatistiken
     if($ligastats==1){
-      $output_ligastatistik.=$action!="stats"?  "<li class='nav-item'><a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[19]}' class='nav-link'>{$text[18]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[18]</a></li>";
+      $output_ligastatistik.=$action!="stats"?  "<li class='nav-item'><a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' class='nav-link'>{$text[18]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[18]</a></li>";
     }
     // Pokalligen
   }else{
     //Kalenderlink
     if($datc==1){
-      $output_kalender.=$action!='cal'?         "<li class='nav-item'><a href='{$addm}cal&amp;st={$st}' title='{$text[141]}' class='nav-link'>{$text[140]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[140]</a></li>";;
+      $output_kalender.=$action!='cal'?         "<li class='nav-item'><a href='{$addm}cal&amp;st={$st}' class='nav-link'>{$text[140]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[140]</a></li>";;
     }
     //Ergebnisse
     if($ergebnis==1){
-      $output_ergebnisse.=$action!='results'?   "<li class='nav-item'><a href='{$addm}results&amp;st={$ste}' title='{$text[11]}' class='nav-link'>{$text[10]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[10]</a></li>";
+      $output_ergebnisse.=$action!='results'?   "<li class='nav-item'><a href='{$addm}results&amp;st={$ste}' class='nav-link'>{$text[10]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[10]</a></li>";
     }
     //Spielplan
     if($plan==1){
-      $output_spielplan.=$action!="program"?    "<li class='nav-item'><a href='{$addm}program' title='{$text[13]}' class='nav-link'>{$text[12]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[12]</a></li>";
+      $output_spielplan.=$action!="program"?    "<li class='nav-item'><a href='{$addm}program' class='nav-link'>{$text[12]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[12]</a></li>";
     }
   }
-  $output_info.=$action!="info"?              "<li class='nav-item'><a href='{$addm}info' title='{$text[21]}' class='nav-link'>{$text[20]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[20]</a></li>";
+  $output_info.=$action!="info"?              "<li class='nav-item'><a href='{$addm}info' class='nav-link'>{$text[20]}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$text[20]</a></li>";
 
   $druck=0;
 
@@ -210,10 +210,10 @@ if ($file!="") {
             include(PATH_TO_LMO."/lmo-savehtml1.php");
       }?>
            <div class="col-2 offset-3 text-start"><?php
-      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-st.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html' title='{$text[477]}'>{$text[478]}</a>";}?>
+      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-st.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-st.html'>{$text[478]}</a>";}?>
             </div>
             <div class="col-2 offset-3 text-end"><?php
-      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-sp.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html' title='{$text[479]}'>{$text[480]}</a>";}?>
+      if($lmtype==0 && $druck==1 && file_exists(PATH_TO_LMO.'/'.$diroutput.basename($file).'-sp.html')){echo "<a href='".URL_TO_LMO.'/'.$diroutput.basename($file)."-sp.html'>{$text[480]}</a>";}?>
             </div><?php
         $output_savehtml.=ob_get_contents();
         ob_end_clean();
@@ -223,9 +223,9 @@ if ($file!="") {
 //Ligenübersicht
 if($backlink==1 && ($file!="" || $action=="tipp")){
   if (basename($file)==$file) {
-    $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF']."' title='{$text[392]}'>{$text[391]}</a>";
+    $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF']."' data-bs-toggle='tooltip' data-bs-placement='top' data-bs-html='true' title='{$text[392]}'>{$text[391]}</a>";
   } else {
-    $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF'].'?subdir='.dirname($file)."/' title='{$text[392]}'>{$text[391]}</a>";
+    $output_ligenuebersicht.="<a href='".$_SERVER['PHP_SELF'].'?subdir='.dirname($file)."/' data-bs-toggle='tooltip' data-bs-placement='top' data-bs-html='true' title='{$text[392]}'>{$text[391]}</a>";
   }
 
 }
@@ -239,7 +239,7 @@ if($calctime==1){
 //Spieler-Addon
 if ($file!="" && $einspieler==1 && $mittore==1) {
   include(PATH_TO_ADDONDIR."/spieler/lmo-statloadconfig.php");
-  $output_spielerstatistik.=$action!="spieler"?"<li class='nav-item'><a href='{$addm}spieler' title='{$text['spieler'][12]}' class='nav-link'>{$spieler_ligalink}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$spieler_ligalink</a></li>";
+  $output_spielerstatistik.=$action!="spieler"?"<li class='nav-item'><a href='{$addm}spieler' class='nav-link'>{$spieler_ligalink}</a></li>": "<li class='nav-item active'><a href='#' class='nav-link active'>$spieler_ligalink</a></li>";
   }
 //Spieler-Addon
 
@@ -256,10 +256,10 @@ if($file!="" && $nticker==1){
 $output_tippspiel="";
 if ($eintippspiel==1) {
   if(($tipp_immeralle==1 || strpos($tipp_ligenzutippen, substr(basename($file),0,-4))!==FALSE)){
-    $output_tippspiel.=$action!="tipp"?       "<li class='nav-item'><a href='{$addm}tipp' title='{$text['tipp'][0]}' class='nav-link'>{$text['tipp'][0]}</a></li>" : "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>{$text['tipp'][0]}</a></li>";
+    $output_tippspiel.=$action!="tipp"?       "<li class='nav-item'><a href='{$addm}tipp' class='nav-link'>{$text['tipp'][0]}</a></li>" : "<li class='nav-item active pull-right'><a href='#' class='nav-link active'>{$text['tipp'][0]}</a></li>";
   }
 }
-d($template->toString());
+e($template->toString());
 //Tippspiel-Addon
 
 
@@ -289,6 +289,7 @@ $template->setVariable("Newsticker", $output_newsticker);
 $template->setVariable("Tippspiel", $output_tippspiel);
 //Bootstrap-Version
 $template->setVariable("Bootstrap", $bootstrap);
+$template->setVariable("BootstrapIcon", $bootstrapIcon);
 //Chart.js-Version
 $template->setVariable("Chartjs", $chartjs);
 $template->show();
