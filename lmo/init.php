@@ -17,6 +17,13 @@
   *
   * $Id$
   */
+// First line of XSS-Identification
+$get = array();
+$get = $_GET;
+foreach($get as $value) {
+  if(str_starts_with($value,"<"))
+     header('Location: '.$_SERVER['SCRIPT_URI']);
+}
 
 @ini_set("session.use_trans_sid","1");
 @ini_set("arg_separator.output","&amp;");
