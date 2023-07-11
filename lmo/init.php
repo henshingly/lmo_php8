@@ -21,7 +21,7 @@
 $get = array();
 $get = $_GET;
 foreach($get as $value) {
-  if(str_starts_with($value,"<"))
+  if(preg_match("/<[^<>]+>/i", $value))
      header('Location: '.$_SERVER['SCRIPT_URI']);
 }
 
