@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,24 +16,23 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
-require_once(PATH_TO_LMO."/lmo-admintest.php");
+
+require_once(PATH_TO_LMO . "/lmo-admintest.php");
 if ($_POST["liga"] != "" && $_POST["st"] != "") {
   $start=isset($_POST['start'])?$_POST['start']:0;
-  $verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
+  $verz = opendir(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp);
   $dummy = array();
   while ($files = readdir($verz)) {
     if (strtolower(substr($files, -4)) == ".tip" && strtolower(substr($files, 0, strlen($liga))) == strtolower($liga)) {
       array_push($dummy, $files);
     }
   }
-   
+
   $anztipper = count($dummy);
   $einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".$liga."_".$st.".ein";
   $datenalt = array("");
   $nick = "";
-   
+
   if ($st > 0 && file_exists($einsichtfile)) {
     $datei = fopen($einsichtfile, "rb");
     while (!feof($datei)) {
@@ -42,11 +41,11 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
       if ($zeile != "") {
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $nick = substr($zeile, 1, -1);
-          if (!file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$liga."_".$nick.".tip")) {
+          if (!file_exists(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp.$liga."_".$nick.".tip")) {
             $nick = "";
           }
         }
-         
+
         if ($nick != "") {
           array_push($datenalt, $zeile);
         }
@@ -54,7 +53,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
     }
     fclose($datei);
   }
-   
+
   $file = $dirliga.$liga.".l98";
   if (file_exists($file)) {
     $einsichtdatei = fopen($einsichtfile, "wb");
@@ -64,14 +63,14 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
     }
     flock($einsichtdatei, 2);
     echo getMessage($text['tipp'][157]." ".$liga." ".$text['tipp'][65]);
-     
+
     for($k = 0; $k < $anztipper; $k++) {
       // durchlaufe alle Tipper
       $tippernick = substr($dummy[$k], strrpos($dummy[$k], "_")+1, -4);
       if ($k >= $start-1 && $k <= $ende-1) {
         $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k];
         fputs($einsichtdatei, "\n[".$tippernick."]\n");
-         
+
         if (!file_exists($tippfile))
         echo getMessage($text['tipp'][17],TRUE);
         else

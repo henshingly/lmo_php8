@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,14 +16,13 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 if ($todo == "tippuseredit") {
-  require_once(PATH_TO_LMO."/lmo-admintest.php");
+  require_once(PATH_TO_LMO . "/lmo-admintest.php");
 } else {
-  require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+  require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 }
- 
+
 if ($tippfile != "") {
   //if(decoct(fileperms($tippfile))!=100777){chmod ($tippfile, 0777);}
   if (substr($tippfile, -4) == ".tip") {
@@ -39,7 +38,7 @@ if ($tippfile != "") {
       }
       fclose($datei);
     }
-     
+
     $datei = fopen($tippfile, "wb");
     if (!$datei) {
       echo getMessage($text[283],TRUE);
@@ -55,7 +54,7 @@ if ($tippfile != "") {
       }
     }
     flock($datei, 2);
-     
+
     $round = 0;
     for($i = 0; $i < count($daten); $i++) {
       if ((substr($daten[$i], 0, 1) == "[") && (substr($daten[$i], -1) == "]")) {
@@ -66,7 +65,7 @@ if ($tippfile != "") {
         fputs($datei, $daten[$i]."\n");
       }
     }
-     
+
     if ($st > 0) {
       // am Ende getippten Spieltag dazu schreiben
       fputs($datei, "\n[Round".$st."]\n");
@@ -121,7 +120,7 @@ if ($tippfile != "") {
     flock($datei, 3);
     fclose($datei);
   }
-   
+
   clearstatcache();
 }
 

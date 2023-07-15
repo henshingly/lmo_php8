@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,7 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 if($file!="" && $tipp_tippfieber==1){
   $save=isset($_POST['save'])?1:0;
   if($save==1){
@@ -31,7 +30,7 @@ if($file!="" && $tipp_tippfieber==1){
   if($fieber_stat1==$fieber_stat2){$fieber_stat2=-1;}
   if(!isset($kurvenmodus)){$kurvenmodus=1;}
   $addg=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=fieber&amp;file=".$file."&amp;stat1=";
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcgraph.php");
+  require(PATH_TO_ADDONDIR . "/tipp/lmo-tippcalcgraph.php");
   //echo $anztipper;
 ?>
 <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -48,25 +47,25 @@ if($file!="" && $tipp_tippfieber==1){
     </tr>
     <tr>
       <td>
-        <select name="xstat1"><?php 
+        <select name="xstat1"><?php
   $tab=array();
   for($i=0;$i<$anztipper;$i++){
     array_push($tab,strtolower($tippernick[$i]).(50000000+$i));
     }
   sort($tab,SORT_STRING);?>
-          <option value="-1"<?php if($fieber_stat1==-1){echo " selected";}?>>___</option><?php 
+          <option value="-1"<?php if($fieber_stat1==-1){echo " selected";}?>>___</option><?php
   for($i=0;$i<$anztipper;$i++){
     $j=intval(substr($tab[$i],-7));?>
-          <option value="<?php echo $j?>"<?php if($fieber_stat1==$j){echo " selected";}?>><?php echo $tippernick[$j]?></option><?php 
+          <option value="<?php echo $j?>"<?php if($fieber_stat1==$j){echo " selected";}?>><?php echo $tippernick[$j]?></option><?php
     }?>
         </select>
       </td>
       <td>
         <select name="xstat2">
-          <option value="-1"<?php if($fieber_stat2==-1){echo " selected";}?>>___</option><?php 
+          <option value="-1"<?php if($fieber_stat2==-1){echo " selected";}?>>___</option><?php
   for($i=0;$i<$anztipper;$i++){
     $j=intval(substr($tab[$i],-7));?>
-          <option value="<?php echo $j?>"<?php if($fieber_stat2==$j){echo " selected";}?>><?php echo $tippernick[$j]?></option><?php 
+          <option value="<?php echo $j?>"<?php if($fieber_stat2==$j){echo " selected";}?>><?php echo $tippernick[$j]?></option><?php
     }?>
         </select>
       </td>
@@ -79,11 +78,11 @@ if($file!="" && $tipp_tippfieber==1){
       <td>
          <input type="submit" name="best" value="<?php echo $text['tipp'][236]; ?>">
       </td>
-    </tr><?php 
+    </tr><?php
   if (isset($tippernick) && count($tippernick)>1) {?>
     <tr>
       <td colspan="4" align="center">
-        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php 
+        <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
     if ($fieber_stat1<0 && $fieber_stat2>=0) {
       $fieber_stat1=$fieber_stat2;
       $fieber_stat2=-1;
@@ -185,7 +184,7 @@ if($file!="" && $tipp_tippfieber==1){
           <tr><td align="center" colspan="3"><img src="<?php echo $dummy; ?>" border="0"></td></tr><?php    }?>
         </table>
       </td>
-    </tr><?php 
+    </tr><?php
   }?>
   </table>
 </form><?php }?>

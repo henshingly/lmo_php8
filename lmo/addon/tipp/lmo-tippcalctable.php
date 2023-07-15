@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,7 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 if ($file != "") {
   if ($m == 0) {
     if (!isset($tabtype)) {
@@ -188,7 +187,7 @@ if ($file != "") {
               }
             }
             $anzcnt = 0;
-            require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable1.php");
+            require(PATH_TO_ADDONDIR . "/tipp/lmo-tippcalctable1.php");
             if ($anzcnt > 0) {
               for ($b = 1; $b <= count($tab1); $b++) {
                 for ($f = 0; $f < count($tab0); $f++) {

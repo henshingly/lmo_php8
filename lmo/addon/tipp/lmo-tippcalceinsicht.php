@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,7 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 if ($lmtype != 0) {
   $anzsp = $anzteams;
   for($i = 0; $i < $st; $i++) {
@@ -60,7 +59,7 @@ if (!file_exists($einsichtfile)) {
     }
     fclose($datei);
   }
-   
+
   $tippernick = array_pad($array, $anztipper+1, "");
   $jksp2 = array_pad($array, $anztipper+1, "");
   $tippa = array_pad($array, $anztipper+1, "");
@@ -78,7 +77,7 @@ if (!file_exists($einsichtfile)) {
       $tippb[$i] = array_pad(array("_"), $anzsp+1, "_");
     }
   }
-   
+
   if ($lmtype == 0) {
     $tendenz1 = array_pad(array("0"), $anzsp+1, "0");
     $tendenz0 = array_pad(array("0"), $anzsp+1, "0");
@@ -105,7 +104,7 @@ if (!file_exists($einsichtfile)) {
       $btip[$i] = array_pad(array("false"), $modus[$st-1]+1, "false");
     }
   }
-   
+
   $t = 0;
   if ($endtab < 1) {
     $endtab = $anzst;
@@ -148,7 +147,7 @@ if (!file_exists($einsichtfile)) {
           $toregesb[$op6][$op7] += $dum[2];
           $anzgetippt[$op6][$op7]++;
         }
-         
+
         if ($tippb[$t][$op6][$op7] < $tippa[$t][$op6][$op7]) {
           $tendenz1[$op6][$op7]++;
         } elseif($tippb[$t][$op6][$op7] > $tippa[$t][$op6][$op7]) {
@@ -162,7 +161,7 @@ if (!file_exists($einsichtfile)) {
           $toregesb[$op3] += $dum[2];
           $anzgetippt[$op3]++;
         }
-         
+
         if ($tippb[$t][$op3] < $tippa[$t][$op3]) {
           $tendenz1[$op3]++;
         } elseif($tippb[$t][$op3] > $tippa[$t][$op3]) {
@@ -173,7 +172,7 @@ if (!file_exists($einsichtfile)) {
       }
     }
   }
-   
+
   if ($todo = "einsicht") {
     $tab0 = array();
     for($a = 0; $a < $anztipper; $a++) {

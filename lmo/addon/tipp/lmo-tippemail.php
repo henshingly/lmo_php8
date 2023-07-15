@@ -17,10 +17,9 @@
   *
   */
 
-
-require_once(PATH_TO_LMO."/lmo-admintest.php");
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
-require_once(PATH_TO_LMO."/includes/PHPMailer.php");
+require_once(PATH_TO_LMO . "/lmo-admintest.php");
+require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tippaenderbar.php");
+require_once(PATH_TO_LMO . "/includes/PHPMailer.php");
 $mail = new PHPMailer(true);
 
 if ($message != "") {
@@ -65,7 +64,7 @@ if ($message != "") {
     echo getMessage($anzemail." ".$text['tipp'][175]);
   } elseif($emailart == 1) {
     $tipp_textreminder1 = str_replace(array("\r\n","\n","\r"), array("&#10;","&#10;","&#10;") , $message);
-    require(PATH_TO_LMO."/lmo-savecfg.php");
+    require(PATH_TO_LMO . "/lmo-savecfg.php");
     $now = strtotime("now");
     $then = strtotime("+".$tage." day");
     if ($viewermode == 1) {
@@ -111,7 +110,7 @@ if ($message != "") {
 
       for($lnr = 0; $lnr < $anzligen; $lnr++) {
         $file = $dirliga.$dateien[$lnr];
-        require(PATH_TO_ADDONDIR."/tipp/lmo-tippemailviewer.php");
+        require(PATH_TO_ADDONDIR . "/tipp/lmo-tippemailviewer.php");
       }
 
       $goaltipp = array_pad(array("_"), $anzspiele+1, "_");
@@ -130,7 +129,7 @@ if ($message != "") {
             if ($i == 0 || $liga[$i] != $liga[$i-1]) {
               $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$liga[$i]."_".$dummb[0].".tip";
               if (file_exists($tippfile)) {
-                require(PATH_TO_ADDONDIR."/tipp/lmo-tippemailviewer1.php");
+                require(PATH_TO_ADDONDIR . "/tipp/lmo-tippemailviewer1.php");
                 $ktipp = 1;
               } else {
                 $ktipp = 0;
@@ -187,9 +186,9 @@ if ($message != "") {
     } elseif($liga != "" && $tage > 0 && $st >= 0) {
       $file = $liga;
       if ($st > 0) {
-        require(PATH_TO_LMO."/lmo-openfiledat.php");
+        require(PATH_TO_LMO . "/lmo-openfiledat.php");
       } elseif($st == 0) {
-        require(PATH_TO_LMO."/lmo-openfile.php");
+        require(PATH_TO_LMO . "/lmo-openfile.php");
       }
 
       for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
@@ -200,11 +199,11 @@ if ($message != "") {
           $spiele = "";
           if (file_exists($tippfile)) {
             if ($st > 0) {
-              require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfile.php");
+              require(PATH_TO_ADDONDIR . "/tipp/lmo-tippopenfile.php");
               $st0 = $st-1;
               $anzst1 = $st;
             } elseif($st == 0) {
-              require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileall.php");
+              require(PATH_TO_ADDONDIR . "/tipp/lmo-tippopenfileall.php");
               $st0 = 0;
               $anzst1 = $anzst;
             }

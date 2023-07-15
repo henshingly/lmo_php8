@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,9 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+
+require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 if ($einsichtfile != "") {
   //if(decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}
   if (substr($einsichtfile, -4) == ".ein") {
@@ -36,14 +35,14 @@ if ($einsichtfile != "") {
         fclose($datei);
       }
     }
-     
+
     $datei = fopen($einsichtfile, "wb");
     if (!$datei) {
       echo getMessage($text[283],TRUE);
       exit;
     }
     flock($datei, 2);
-     
+
     $nick = "";
     $nick1 = 0;
     $nick2 = -1;
@@ -62,7 +61,7 @@ if ($einsichtfile != "") {
         $nick2 = $l;
       }
     }
-     
+
     for($l = $nick1; $l <= $nick2; $l++) {
       // am Ende getippte dazu schreiben
       if (substr($daten[$l], 0, 1) == "[") {
@@ -107,7 +106,7 @@ if ($einsichtfile != "") {
         }
       }
     }
-     
+
     if ($nick2 == -1) {
       // keine bisherigen Tipps vom Tipper
       fputs($datei, "[".$_SESSION['lmotippername']."]"."\n");
@@ -132,11 +131,11 @@ if ($einsichtfile != "") {
         }
       }
     }
-     
+
     flock($datei, 3);
     fclose($datei);
   }
-   
+
   clearstatcache();
 }
 

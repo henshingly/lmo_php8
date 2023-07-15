@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,7 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 if ($file != "") {
 
   $me = array("0", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
@@ -30,7 +29,7 @@ if ($file != "") {
     $mspez0 = 0;
     $daten = array();
     $sekt = "";
-    if ($datei = fopen(PATH_TO_LMO.'/'.$dirliga.basename($file), "rb")) {
+    if ($datei = fopen(PATH_TO_LMO . '/'.$dirliga.basename($file), "rb")) {
       while (!feof($datei)) {
         $zeile = fgets($datei, 1000);
         $zeile = trim($zeile);
@@ -76,7 +75,7 @@ if ($file != "") {
       fclose($datei);
     }
     clearstatcache();
-     
+
     $tippdaten = array();
     $sekt = "";
     $jkwert = "";
@@ -99,7 +98,7 @@ if ($file != "") {
       }
     }
     fclose($datei);
-     
+
     if (!isset($favteam)) {
       $favteam = 0;
     }
@@ -203,7 +202,7 @@ if ($file != "") {
             if (!isset($msieg0)) {
               $msieg0 = 0;
             }
-             
+
             array_push($liga, $liga0);
             array_push($titel, $titel0);
             array_push($lmtype, $lmtype0);
@@ -284,7 +283,7 @@ if ($file != "") {
                 $tippa0 = $dum1[2];
               } elseif($op8 == "GB") {
                 $tippb0 = $dum1[2];
-                 
+
                 $spieltag0t = substr($dum1[0], 5);
                 $spiel0t = substr($dum1[1], 2);
                 if ($spieltag0t == $spieltag0 && $spiel0t == $spiel0) {
@@ -308,7 +307,7 @@ if ($file != "") {
                     } else {
                       $jksp[$anzspiele-1] = 0;
                     }
-                     
+
                     if ($dum1[3] > 0) {
                       for($k = $rb; $k <= count($daten); $k++) {
                         $dum2 = explode('|', $daten[$k-1]);

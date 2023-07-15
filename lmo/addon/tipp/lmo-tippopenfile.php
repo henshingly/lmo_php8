@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,7 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 if ($tippfile == "") {
   exit;
 }
@@ -58,7 +57,7 @@ if ($lmtype == 0) {
   if (($klfin == 1) && ($st == $anzst)) {
     $anzsp = $anzsp+1;
   }
-   
+
   $goaltippa = array_pad($array, $anzsp+1, "");
   $goaltippb = array_pad($array, $anzsp+1, "");
   for($i = 0; $i < $anzsp; $i++) {

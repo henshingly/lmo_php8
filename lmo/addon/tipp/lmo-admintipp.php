@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,22 +16,22 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
+
 $save=isset($_REQUEST['save'])?$_REQUEST['save']:0;
 $liga=isset($_REQUEST['liga'])?$_REQUEST['liga']:'';
 
 
 if ($save==2) {
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavewert.php");
+  require(PATH_TO_ADDONDIR . "/tipp/lmo-tippsavewert.php");
 }
 if ($save==4) {
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavewertgesamt.php");
+  require(PATH_TO_ADDONDIR . "/tipp/lmo-tippsavewertgesamt.php");
 }
 if ($save==3) {
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveeinsicht.php");
+  require(PATH_TO_ADDONDIR . "/tipp/lmo-tippsaveeinsicht.php");
 }
 
-include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
+include(PATH_TO_ADDONDIR . "/tipp/lmo-admintippmenu.php");
 ?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -45,8 +45,8 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
           <th align="left" colspan="3"><?php echo $text['tipp'][64]; ?></td>
         </tr><?php
 $ftype=".l98";
-$iptype="auswert"; 
-require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
+$iptype="auswert";
+require(PATH_TO_ADDONDIR . "/tipp/lmo-tippnewdir.php");
 if($tipp_gesamt==1){ ?>
         <tr>
           <td width="20">&nbsp;</td>
@@ -65,8 +65,8 @@ if($tipp_gesamt==1){ ?>
           <th align="left" colspan="3"><?php echo $text['tipp'][155]; ?></td>
         </tr><?php
 $ftype=".l98";
-$iptype="einsicht"; 
-require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); ?>
+$iptype="einsicht";
+require(PATH_TO_ADDONDIR . "/tipp/lmo-tippnewdir.php"); ?>
       </table>
     </td>
   </tr>

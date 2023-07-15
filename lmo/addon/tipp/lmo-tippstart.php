@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,7 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 require_once(dirname(__FILE__).'/../../init.php');
 define('LMO_TIPPAUTH', 1);
 if (!isset($_SESSION["lmouserok"])) {
@@ -32,7 +31,7 @@ if (!isset($_SESSION["lmouserpass"])) {
 if (!isset($_SESSION["lmouserfile"])) {
   $_SESSION["lmouserfile"] = "";
 }
- 
+
 $todo=                isset($_REQUEST['todo'])               ?$_REQUEST['todo']                :'';
 $liga=                isset($_REQUEST['liga'])               ?$_REQUEST['liga']                :'';
 $file=                isset($_REQUEST['file'])               ?$_REQUEST['file']                :'';
@@ -60,12 +59,12 @@ if ($todo == "getpass") {
   $_SESSION["lmotipperok"] = -5;
 }
 $action = "tipp";
-require(PATH_TO_ADDONDIR."/tipp/lmo-tippauth.php");
+require(PATH_TO_ADDONDIR . "/tipp/lmo-tippauth.php");
 if ($_SESSION["lmotipperok"] > 0) {
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippmain.php");
+  require(PATH_TO_ADDONDIR . "/tipp/lmo-tippmain.php");
 }
 if ($_SESSION["lmotipperok"] == -4) {
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippernew.php");
+  require(PATH_TO_ADDONDIR . "/tipp/lmo-tippernew.php");
 }
 
 ?>

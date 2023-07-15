@@ -17,17 +17,15 @@
   *
   */
 
-
-//require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($file!="") {
   $tipp_showzus=0;
-  require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcpkt.php");
-  require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
+  require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tippcalcpkt.php");
+  require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tippaenderbar.php");
   if (!isset($nlines)) {
     $nlines=array();
   }
 
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfile.php");
+  require(PATH_TO_ADDONDIR . "/tipp/lmo-tippopenfile.php");
 
   if (!isset($_POST['save'])) {
     $save=0;
@@ -135,11 +133,11 @@ if ($file!="") {
       }
     }
     if ($tipp_jokertipp==1) {
-      require(PATH_TO_ADDONDIR."/tipp/lmo-tippjokeranticheat.php");
+      require(PATH_TO_ADDONDIR . "/tipp/lmo-tippjokeranticheat.php");
     }
-    require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavefile.php");
+    require(PATH_TO_ADDONDIR . "/tipp/lmo-tippsavefile.php");
     if ($tipp_akteinsicht==1) {
-      require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveeinsicht1.php");
+      require(PATH_TO_ADDONDIR . "/tipp/lmo-tippsaveeinsicht1.php");
     }
   }
   $addr=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=edit&amp;file=".$file."&amp;st=";
@@ -172,13 +170,13 @@ if ($file!="") {
   }
   $savebutton=0;
   if ($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1 || ($tipp_showdurchschntipp==1 && $tipp_tippmodus==1)) {
-    require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalceinsicht.php");
+    require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tippcalceinsicht.php");
   }
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
-    <td align="center"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
+    <td align="center"><?php include(PATH_TO_LMO . "/lmo-spieltagsmenu.php");?></td>
   </tr>
   <tr>
     <td align="center">
@@ -308,9 +306,9 @@ if ($file!="") {
   for ($i=0; $i<$anzsp; $i++) {
     if ($teama[$st-1][$i]>0 && $teamb[$st-1][$i]>0) {
       if ($lmtype==0) {
-        require(PATH_TO_ADDONDIR."/tipp/lmo-tippeditliga.php");
+        require(PATH_TO_ADDONDIR . "/tipp/lmo-tippeditliga.php");
       }else{
-        require(PATH_TO_ADDONDIR."/tipp/lmo-tippeditko.php");
+        require(PATH_TO_ADDONDIR . "/tipp/lmo-tippeditko.php");
       }
     }
   }?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,7 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 $dumma = array("");
 $team = array("");
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
@@ -32,9 +31,9 @@ while ($datei && !feof($datei)) {
 fclose($datei);
 $v = 0; // Teamnummer
 array_shift($dumma);
- 
+
 $tipperteam = array_pad($array, count($dumma)+1, "");
- 
+
 for($i = 0; $i < count($dumma); $i++) {
   $dummb1 = explode('|', $dumma[$i]);
   if ($dummb1[5] != "") {
@@ -53,7 +52,7 @@ for($i = 0; $i < count($dumma); $i++) {
     }
   }
 }
- 
+
 $gef = 0;
 for($j = 0; $j < $v && $gef == 0; $j++) {
   if ($xtippervereinradio == 1) {

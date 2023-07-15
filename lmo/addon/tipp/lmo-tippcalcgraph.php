@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,15 +16,14 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, 0, -4).".aus";
 if (!file_exists($auswertfile)) {
   echo getMessage($text['tipp'][17],TRUE);
 } else {
   $datei = fopen($auswertfile,"rb");
   $anztipper=0;
-  
+
   if ($datei!=false) {
     $tippdaten=array();
     $sekt="";
@@ -42,9 +41,9 @@ if (!file_exists($auswertfile)) {
     }
     fclose($datei);
   }
-  
+
   $tippernick = array_pad($array,$anztipper+1,"");
-  
+
   $tipppunkte = array_pad($array,$anztipper+1,"");
   $spielegetippt = array_pad($array,$anztipper+1,"");
   if ($tipp_showzus==1) {
@@ -97,7 +96,7 @@ if (!file_exists($auswertfile)) {
   if ($kurvenmodus>2) {
     $tabb = array_pad($array,$anzst+1,"");
   }
-  
+
   if ($kurvenmodus>1) {
     for ($i=0; $i<$anzst; $i++) {
       if ($kurvenmodus==2 || $kurvenmodus==3) {
@@ -108,7 +107,7 @@ if (!file_exists($auswertfile)) {
       }
     }
   }
-  
+
   $t=0;
   if ($endtab<1) {
     $endtab=$anzst;
@@ -164,7 +163,7 @@ if (!file_exists($auswertfile)) {
       }
     }
   }
-  
+
   if ($kurvenmodus>1 && $tipp_showstsiege==1 && ($tipp_krit1==6 || $tipp_krit2==6 || $tipp_krit3==6)) {
     // Spieltagssieger ermitteln
     $stsiege = array_pad($array,$anztipper+1,"");
@@ -237,8 +236,8 @@ if (!file_exists($auswertfile)) {
       }
     }
   }
-  
-  
+
+
   if ($kurvenmodus>1 && $anztipper>0) {
     for ($jyz=0; $jyz<$anzst; $jyz++) {
       for ($a=0; $a<$anztipper; $a++) {
@@ -331,13 +330,13 @@ if (!file_exists($auswertfile)) {
         rsort($taba[$jyz],SORT_STRING);
         $laeng1=strlen($taba[$jyz][0]);
       }
-      
+
       if ($kurvenmodus>2) {
         array_shift($tabb[$jyz]);
         rsort($tabb[$jyz],SORT_STRING);
         $laeng2=strlen($tabb[$jyz][0]);
       }
-      
+
       for ($x=0; $x<$anztipper; $x++) {
         if ($kurvenmodus<4) {
           $x3=intval(substr($taba[$jyz][$x],-7));
@@ -362,7 +361,7 @@ if (!file_exists($auswertfile)) {
             $platz[$x3][$jyz]=$y+1;
           }
         }
-        
+
         if ($kurvenmodus>2) {
           $x3=intval(substr($tabb[$jyz][$x],-7));
           $y=$x;

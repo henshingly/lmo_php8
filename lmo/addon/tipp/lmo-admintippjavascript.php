@@ -1,3 +1,23 @@
+<?php
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+
+?>
 <script type="text/javascript">
 <!---
 function immerallechange(){
@@ -48,23 +68,23 @@ function regelnchange(){
 function jokerchange(){
 lmotest=false;
   if(document.getElementsByName("xjokertipp")[0].checked==1){
-    document.getElementsByName("xjokertippmulti")[0].disabled=false;   
+    document.getElementsByName("xjokertippmulti")[0].disabled=false;
     }
   else{
-    document.getElementsByName("xjokertippmulti")[0].disabled=true;    
+    document.getElementsByName("xjokertippmulti")[0].disabled=true;
     }
   }
 
 function viewerchange(){
 lmotest=false;
   if(document.getElementsByName("xviewertipp")[0].checked==1){
-    document.getElementsByName("xviewertage")[0].disabled=false;   
+    document.getElementsByName("xviewertage")[0].disabled=false;
   } else {
-    document.getElementsByName("xviewertage")[0].disabled=true;    
+    document.getElementsByName("xviewertage")[0].disabled=true;
   }
   if(document.getElementsByName("xsttipp")[0].checked==0 && document.getElementsByName("xviewertipp")[0].checked==0){
       alert('<?php echo $text['tipp'][301]?>');
   }
-}	  
+}
 // --->
 </script>

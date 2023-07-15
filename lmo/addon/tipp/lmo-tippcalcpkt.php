@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,11 +16,10 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jkspfaktor0, $mtipp) {
-  // wieviel Punkte gibts für den Tipp
-   
+  // wieviel Punkte gibt es für den Tipp
+
   global $tipp_tippmodus;
   global $tipp_entscheidungnv;
   global $tipp_entscheidungie;
@@ -33,7 +32,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
   global $tipp_rremis;
   global $tipp_gtpunkte;
   global $tipp_showzus;
-   
+
   if ($tipp_showzus == 1) {
     if ($tipp_tippmodus == 1) {
       global $punkte1;
@@ -44,7 +43,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
     global $punkte5;
     global $punkte6;
   }
-   
+
   if ($mtipp == 1) {
     $punktespiel = -2;
   } // Spiel nicht werten
@@ -236,7 +235,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
     }
     $punktespiel *= $jkspfaktor0;
   }
-   
+
   //  echo $gta0.$gtb0.$ga0.$gb0."->".$punktespiel."<br>";
   return $punktespiel;
 }

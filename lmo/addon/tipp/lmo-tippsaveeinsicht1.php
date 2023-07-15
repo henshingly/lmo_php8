@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,9 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+
+require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
   $einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".substr($file, 0, -4)."_".$st.".ein";
   //if(decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}
@@ -35,7 +34,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
       }
       fclose($datei);
     }
-     
+
     $datei = fopen($einsichtfile, "wb");
     if (!$datei) {
       echo getMessage($text[283],TRUE);
@@ -44,7 +43,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
       //echo getMessage($text['tipp'][41]);
     }
     flock($datei, 2);
-     
+
     $nick = "";
     for($i = 0; $i < count($daten); $i++) {
       if ((substr($daten[$i], 0, 1) == "[") && (substr($daten[$i], -1) == "]")) {
@@ -55,7 +54,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
         fputs($datei, $daten[$i]."\n");
       }
     }
-     
+
     fputs($datei, "\n[".$_SESSION['lmotippername']."]\n"); // am Ende getippte dazu schreiben
     if ($tipp_jokertipp == 1) {
       fputs($datei, "@".$jksp."@\n");
@@ -107,7 +106,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
     flock($datei, 3);
     fclose($datei);
   }
-   
+
   clearstatcache();
 }
 

@@ -17,17 +17,15 @@
   *
   */
 
-
-
-require_once(PATH_TO_LMO."/lmo-admintest.php");
+require_once(PATH_TO_LMO . "/lmo-admintest.php");
 $show=isset($_REQUEST['show'])?$_REQUEST['show']:0;
 $save=isset($_POST['save'])?$_POST['save']:0;
 if($save==1){
-  require(PATH_TO_ADDONDIR."/tipp/lmo-admintippgetoptions.php");
-  require(PATH_TO_LMO."/lmo-savecfg.php");
+  require(PATH_TO_ADDONDIR . "/tipp/lmo-admintippgetoptions.php");
+  require(PATH_TO_LMO . "/lmo-savecfg.php");
 }
-include_once(PATH_TO_ADDONDIR."/tipp/lmo-admintippjavascript.php");
-include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
+include_once(PATH_TO_ADDONDIR . "/tipp/lmo-admintippjavascript.php");
+include(PATH_TO_ADDONDIR . "/tipp/lmo-admintippmenu.php");
 ?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -427,7 +425,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
           <tr>
             <td align="left" colspan="2"><?php
                 $ftype=".l98";
-                require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");?>
+                require(PATH_TO_ADDONDIR . "/tipp/lmo-tippnewdir.php");?>
             </td>
           </tr><?php  }?>
           <tr>

@@ -11,7 +11,7 @@ require(dirname(__FILE__)."/init.php");
   color: #a00;
 }
 
-/** Auﬂenbereich*/
+/** Au√üenbereich*/
 .lmoMain { 
   background: <?php echo $lmo_main_background1?> repeat; 
   <?php echo empty($lmo_main_color1)?'':"color: $lmo_main_color1;";?>
@@ -22,7 +22,7 @@ require(dirname(__FILE__)."/init.php");
   margin:0;
 }
 
-/** Auﬂenbereich ‹berschrift*/
+/** Au√üenbereich √úberschrift*/
 .lmoMain h1 { 
   background: <?php echo $lmo_main_background2?> repeat; 
   <?php echo empty($lmo_main_color2)?'':"color: $lmo_main_color2;";?> 
@@ -30,7 +30,7 @@ require(dirname(__FILE__)."/init.php");
   <?php echo empty($lmo_main_fontfamily2)?'':"font-family: $lmo_main_fontfamily2;";?>
 }
 
-/** Auﬂenbereich Men¸ */
+/** Au√üenbereich Men√º */
 .lmoMain .lmoMenu { 
   font-weight: bold; 
   background: <?php echo $lmo_main_background4?> repeat; 
@@ -42,7 +42,7 @@ require(dirname(__FILE__)."/init.php");
   <?php echo empty($lmo_main_color5)?'':"color: $lmo_main_color5;";?> 
 }
 
-/** Auﬂenbereich Untermen¸ */
+/** Au√üenbereich Untermen√º */
 .lmoMain .lmoSubmenu { 
   font-weight: bold; 
   background: <?php echo $lmo_main_background6?> repeat; 
@@ -57,7 +57,7 @@ require(dirname(__FILE__)."/init.php");
   <?php echo empty($lmo_main_color7)?'':"color: $lmo_main_color7;";?> 
 }
 
-/** Auﬂenbereich Fusszeilen */
+/** Au√üenbereich Fusszeilen */
 .lmoMain .lmoFooter { 
   <?php echo empty($lmo_main_fontsize3)?'':"font-size: $lmo_main_fontsize3;";?> 
   font-weight: normal;
@@ -69,7 +69,7 @@ require(dirname(__FILE__)."/init.php");
   <?php echo empty($lmo_main_color1)?'':"color: $lmo_main_color1;";?>
 }
 
-/** Ende Auﬂenbereich */
+/** Ende Au√üenbereich */
 
 /** Mittelbereich */
 .lmoMiddle { 
@@ -79,7 +79,7 @@ require(dirname(__FILE__)."/init.php");
   font-weight: bold;
 }
 
-/** ‹berschrift im Mittelbereich */
+/** √úberschrift im Mittelbereich */
 .lmoMiddle h1{ 
   background: <?php echo $lmo_middle_background2?> repeat; 
   <?php echo empty($lmo_middle_color2)?'':"color: $lmo_middle_color2;";?>

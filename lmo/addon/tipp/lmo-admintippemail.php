@@ -17,8 +17,7 @@
   *
   */
 
-
-require_once(PATH_TO_LMO."/lmo-admintest.php");
+require_once(PATH_TO_LMO . "/lmo-admintest.php");
 
 $save               = isset($_POST['save'])               ? $_POST['save']               : 0;
 $message            = isset($_POST['message'])            ? $_POST['message']            : '';
@@ -46,7 +45,7 @@ if ($save == 1) {
       $viewermode = 0;
     }
   }
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippemail.php");
+  require(PATH_TO_ADDONDIR . "/tipp/lmo-tippemail.php");
 }
 
 ?>
@@ -69,7 +68,7 @@ function changetextarea(x){
 }
 </script>
 <?php
-include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
+include(PATH_TO_ADDONDIR . "/tipp/lmo-admintippmenu.php");
 ?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -94,7 +93,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td colspan="2" align="left">
               <select name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
                 <option value=""><?php echo $text['tipp'][51]?></option><?php
-                require(PATH_TO_ADDONDIR."/tipp/lmo-tippselectemail.php");?>
+                require(PATH_TO_ADDONDIR . "/tipp/lmo-tippselectemail.php");?>
               </select>
             </td>
           </tr>
@@ -107,7 +106,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
               <table cellspacing="0" cellpadding="0" border="0"><?php
 $ftype=".l98";
 $iptype="reminder";
-require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
+require(PATH_TO_ADDONDIR . "/tipp/lmo-tippnewdir.php");
 if($i>0){?>
                 <tr>
                   <td colspan="2" align="left">

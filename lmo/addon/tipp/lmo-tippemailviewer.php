@@ -17,7 +17,6 @@
   *
   */
 
-
 if ($file != "") {
   $liga0 = substr($dateien[$lnr], 0, -4);
   $lmtype0 = 0;

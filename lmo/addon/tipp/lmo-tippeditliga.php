@@ -15,10 +15,10 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  * $Id$
   */
-  ?>
-<tr><?php 
+
+?>
+<tr><?php
 if ($tipp_einsichterst==2) {
   if ($goala[$st-1][$i]!="_" && $goalb[$st-1][$i]!="_") {
     $btip1=false;
@@ -37,7 +37,7 @@ if ($datm==1) {
   }?>
   <td class="nobr" align="left"><?php echo $dum1; ?></td><?php }?>
   <td>&nbsp;</td>
-  <td class="nobr" align="right"><?php 
+  <td class="nobr" align="right"><?php
   if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
     echo "<strong>";
   }
@@ -207,7 +207,7 @@ if($tipp_tippmodus==0){
 
 /**BEIDE*/
 if ($tipp_jokertipp==1){ ?>
-  <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo $i+1; ?>" <?php if($jksp==$i+1){echo " checked";} if ($btip[$i]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php } ?>                                                                                                                   
+  <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo $i+1; ?>" <?php if($jksp==$i+1){echo " checked";} if ($btip[$i]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php } ?>
   <td class="lmoBackMarkierung" align="right"><?php echo applyFactor($goala[$st-1][$i],$goalfaktor); ?></td>
   <td class="lmoBackMarkierung" align="center">:</td>
   <td class="lmoBackMarkierung" align="left"><?php echo applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td><?php if($spez==1){ ?>

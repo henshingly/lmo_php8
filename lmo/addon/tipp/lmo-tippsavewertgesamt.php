@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,17 +16,16 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
-  require_once(PATH_TO_LMO."/lmo-admintest.php");
+
+require_once(PATH_TO_LMO . "/lmo-admintest.php");
 $dummb = array("");
 $dummd = array();
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
- 
+
 $dummd = file($pswfile);
 
 $anztipper = count($dummd);
- 
+
 $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
 $auswertdatei = fopen($auswertfile, "wb");
 if (!$auswertdatei) {
@@ -43,7 +42,7 @@ if ($tipp_showemail == 1) {
   $tipperemail = array_pad($array, $anztipper+1, "");
 }
 $tipperteam = array_pad($array, $anztipper+1, "");
- 
+
 for($i = 0; $i < $anztipper; $i++) {
   $dummb = explode('|', $dummd[$i]);
   $tippernick[$i] = $dummb[0];
@@ -55,7 +54,7 @@ for($i = 0; $i < $anztipper; $i++) {
   }
   $tipperteam[$i] = $dummb[5];
 }
-$verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert");
+$verz = opendir(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp."auswert");
 $dummy = array();
 while ($files = readdir($verz)) {
   if (strtolower(substr($files, -4)) == ".aus" && strtolower(substr($files, -10)) != "gesamt.aus") {
@@ -63,7 +62,7 @@ while ($files = readdir($verz)) {
   }
 }
 closedir($verz);
- 
+
 $anzligen = count($dummy);
 $anzligenaus = 0;
 $liganame = array_pad($array, $anzligen+1, "");
@@ -82,9 +81,9 @@ for($i = 0; $i < $anztipper; $i++) {
   $tipppunkte[$i] = array_pad(array("0"), (int)$anzligen+1, "0");
   (int)$spielegetipptges[$i] = array_pad(array("0"), (int)$anzligen+1, "0");
 }
- 
+
 for($k = 0; $k < $anzligen; $k++) {
-   
+
   $ftest = 0;
   $ftest1 = "";
   $ftest1 = explode(',', $tipp_ligenzutippen);
@@ -120,7 +119,7 @@ for($k = 0; $k < $anzligen; $k++) {
       }
       fclose($datei);
     }
-     
+
     for($i = 1; $i <= count($tippdaten); $i++) {
       $dum = explode('|', $tippdaten[$i-1]);
       $op1 = $dum[0];
@@ -159,7 +158,7 @@ for($k = 0; $k < $anzligen; $k++) {
     $anzligenaus++;
   }
 } // ende for($k=0;$k<$anzligen;$k++)
- 
+
 fputs($auswertdatei, "[Options]\n");
 fputs($auswertdatei, "AnzLigen=".$anzligenaus."\n");
 for($k = 1; $k <= $anzligenaus; $k++) {
@@ -191,7 +190,7 @@ for($j = 0; $j < $anztipper; $j++) {
 }
 flock($auswertdatei, LOCK_UN);
 fclose($auswertdatei);
- 
+
 clearstatcache();
 if (isset($todo) && $todo != "edit") {
   $file = "";

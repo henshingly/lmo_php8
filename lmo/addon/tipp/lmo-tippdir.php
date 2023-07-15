@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,11 +16,10 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 $addi=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=edit&amp;file=";
 if ($ftype!="") {
-  $verz=opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp,0,-1));
+  $verz=opendir(substr(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp,0,-1));
   $dummy=array();
   while ($files=readdir($verz)) {
     if (substr($files,-5-strlen($_SESSION['lmotippername']))=="_".$_SESSION['lmotippername'].$ftype) {
@@ -29,7 +28,7 @@ if ($ftype!="") {
   }
   closedir($verz);
   sort($dummy);
-  
+
   $i=0;
   $j=0;
   $tt0="";
@@ -42,13 +41,13 @@ if ($ftype!="") {
     $t1="";
     $t4="";
     $t2=$text[2];
-    if (file_exists(PATH_TO_LMO."/".$dirliga.$dummy[$k])) {
-      $datei = fopen(PATH_TO_LMO."/".$dirliga.$dummy[$k],"rb");
+    if (file_exists(PATH_TO_LMO . "/".$dirliga.$dummy[$k])) {
+      $datei = fopen(PATH_TO_LMO . "/".$dirliga.$dummy[$k],"rb");
       if ($datei) {
         while (!feof($datei)) {
           $zeile = fgets($datei,10000);
           $zeile=trim($zeile);
-          
+
           if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")) {
             $sekt=substr($zeile,1,-1);
           } else if ((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";") && ($sekt=="Options")) {
@@ -101,19 +100,19 @@ if ($ftype!="") {
       } else {
         $t3="";
       }
-      
+
       $ftest=0;
       $ftest1="";
       $ftest1=explode(',',$tipp_ligenzutippen);
       if (isset($ftest1)) {
         for ($u=0; $u<count($ftest1); $u++) {
-          
+
           if ($ftest1[$u]==substr($dummy[$k],0,-4)) {
             $ftest=1;
           }
         }
       }
-      
+
       if ($ftest==1 || $tipp_immeralle==1) {
         $i++;
         if ($tipp_sttipp!=-1) {
@@ -126,7 +125,7 @@ if ($ftype!="") {
         }
         $tt1.=$dummy[$k]."|";
         $tt0.=$t0."|";
-        
+
       }
     }
   }

@@ -20,10 +20,10 @@
 // First line of XSS-Identification
 $get = array();
 $get = $_GET;
-foreach($get as $value) {
+/*foreach($get as $value) {
   if (str_starts_with($value,"<"))
      die("XSS-Scripting detected");
-}
+}*/
 
 if (!isset($_SESSION)) {
   // no session has been started yet

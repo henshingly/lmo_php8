@@ -1,6 +1,26 @@
+<?php
+/** Liga Manager Online 4
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
+
+?>
 <table class="lmoSubmenu" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td class="nobr" align="left"><?php 
+    <td class="nobr" align="left"><?php
   if ($todo != "") {
     echo "<a href=\"".$_SERVER['PHP_SELF']."?action=tipp\" title=\"".$text['tipp'][53]."\">".$text['tipp'][52]."</a>";
   } else {
@@ -58,9 +78,9 @@
 */?>
     </td>
     <td width="8">&nbsp;</td>
-    <td class="nobr" align="right"><?php 
+    <td class="nobr" align="right"><?php
   if($tipp_regeln==1){?>
-        <a href='<?php echo URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,this.target,"scrollbars=yes,resizable=yes");return false;'><?php echo $text['tipp'][185]?></a>&nbsp;&nbsp;<?php 
+        <a href='<?php echo URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,this.target,"scrollbars=yes,resizable=yes");return false;'><?php echo $text['tipp'][185]?></a>&nbsp;&nbsp;<?php
   }
   echo "<a href=\"".$adda."logout\">".$text[88]."</a>";
   echo "&nbsp;";?>

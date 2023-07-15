@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,6 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
 
 require_once(dirname(__FILE__).'/../../init.php');
 
@@ -27,7 +25,7 @@ if ($max < 1) {
 } else {
   $min = $max;
 }
- 
+
 if ($kmodus < 4) {
   $linie = explode(',', $pgplatz1);
   for($i = 0; $i < count($linie)-1; $i++) {
@@ -68,7 +66,7 @@ if ($kmodus > 2) {
     }
   }
 }
- 
+
 if ($kmodus < 4) {
   for($i = 0; $i < count($linie)-1; $i++) {
     if (strlen($linie[$i]) > 0) {
@@ -105,13 +103,13 @@ if ($kmodus > 2) {
     }
   }
 }
- 
+
 if (($max-$min) > 0) {
   $khoch = round(240/($max-$min));
 } else {
   $khoch = 12;
 }
- 
+
 if ($khoch > 12) {
   $khoch = 12;
 }
@@ -120,7 +118,7 @@ if ($khoch < 1) {
 } elseif(($max-$min) < 21) {
   $khoch = 12;
 }
- 
+
 $hoch = (($max-$min+1) * $khoch+12)+47;
 $breit = (($pgst+1) * 12)+35;
 $image = imagecreate($breit, $hoch);
@@ -146,10 +144,10 @@ $farbe_d1 = imagecolorallocate($image, 128, 0, 0);
 if ($kmodus > 1) {
   $color = isset($lmo_tabelle_background1)?get_color($lmo_tabelle_background1):array(237, 244, 156);
   $farbe_e = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Meister
-  
+
   $color = isset($lmo_tabelle_background2)?get_color($lmo_tabelle_background2):array(204, 205, 254);
   $farbe_f = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Champleague
-  
+
   $color = isset($lmo_tabelle_background3)?get_color($lmo_tabelle_background3):array(166, 238, 237);
   $farbe_g = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Champquali
 }
@@ -170,7 +168,7 @@ for($i = $min; $i <= $max; $i++) {
     imagestring($image, 1, 20+(($pgst+1) * 12), 24+($khoch/2)+(($i-$min) * $khoch), $j, $farbe_a);
   }
 }
- 
+
 for($i = 1; $i <= $pgst; $i++) {
   $j = strval($i);
   if ($i < 10) {

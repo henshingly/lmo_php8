@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,9 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+
+require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 
 $action=isset($_REQUEST['action'])?$_REQUEST['action']:'';
 $todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:'';
@@ -32,11 +31,11 @@ if ($action == "tipp") {
   if ($_SESSION["lmotipperok"] == 5) {
     if (($todo == "edit" && $viewermode != 1) || $todo == "einsicht") {
       $lmo_only_st=true;
-      require(PATH_TO_LMO."/lmo-openfile.php");
+      require(PATH_TO_LMO . "/lmo-openfile.php");
     } elseif($todo == "tabelle") {
-      require_once(PATH_TO_LMO."/lmo-openfile.php");
+      require_once(PATH_TO_LMO . "/lmo-openfile.php");
     } elseif(($todo == "wert" && $all != 1) || $todo == "fieber") {
-      require(PATH_TO_LMO."/lmo-openfilename.php");
+      require(PATH_TO_LMO . "/lmo-openfilename.php");
     } elseif($todo == "wert" && $all == 1) {
     }
   }
@@ -56,7 +55,7 @@ if ($action == "tipp") {
     $tipp_tipptabelle1 = 1;
   }
   if ($tipp_tippmodus == 1 && $todo == "edit") {?>
-<script type="text/javascript"><?php 
+<script type="text/javascript"><?php
   if($tipp_pfeiltipp==1){ ?>
     img0 = new Image();
     img0.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif";
@@ -96,48 +95,48 @@ if ($action == "tipp") {
     if(ab!=aa){
       if(aa==-1){aa="";}
       document.getElementsByName("xtipp"+xx+y)[0].value=aa;
-    } 
+    }
   }
-</script><?php 
+</script><?php
   }
-  include(PATH_TO_ADDONDIR."/tipp/lmo-tippmenu.php");
+  include(PATH_TO_ADDONDIR . "/tipp/lmo-tippmenu.php");
   ?>
 
 
-  
+
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></h1></td>
   </tr>
   <tr>
-    <td colspan="3" align="center"><?php 
+    <td colspan="3" align="center"><?php
   if ($_SESSION["lmotipperok"] == 5) {
     if ($file != "" && $viewermode != 1) {
       $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, 0, -4)."_".$_SESSION['lmotippername'].".tip";
     }
     if ($viewermode == 1) {
-      require(PATH_TO_ADDONDIR."/tipp/lmo-tippviewer.php");
+      require(PATH_TO_ADDONDIR . "/tipp/lmo-tippviewer.php");
     } else {
       switch ($todo) {
-        case "edit":       require(PATH_TO_ADDONDIR."/tipp/lmo-tippedit.php");break;
-        case "einsicht":   require(PATH_TO_ADDONDIR."/tipp/lmo-tippeinsicht.php");break;
-        case "tabelle":    require(PATH_TO_ADDONDIR."/tipp/lmo-tipptabelle.php");break;
-        case "fieber":     require(PATH_TO_ADDONDIR."/tipp/lmo-tippfieber.php");break;
-        case "wert":       require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");break;
-        case "daten":      require(PATH_TO_ADDONDIR."/tipp/lmo-tippdaten.php");break;
-        case "newligen":   require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewligen.php");break;
-        case "delligen":   require(PATH_TO_ADDONDIR."/tipp/lmo-tippdelligen.php");break;
-        case "pwchange":   require(PATH_TO_ADDONDIR."/tipp/lmo-tipppwchange.php");break;
-        case "delaccount": require(PATH_TO_ADDONDIR."/tipp/lmo-tippdelaccount.php");break;
-        case "info":       require(PATH_TO_LMO."/lmo-showinfo.php");break;
-        default:           require(PATH_TO_ADDONDIR."/tipp/lmo-tipppad.php");break;
+        case "edit":       require(PATH_TO_ADDONDIR . "/tipp/lmo-tippedit.php");break;
+        case "einsicht":   require(PATH_TO_ADDONDIR . "/tipp/lmo-tippeinsicht.php");break;
+        case "tabelle":    require(PATH_TO_ADDONDIR . "/tipp/lmo-tipptabelle.php");break;
+        case "fieber":     require(PATH_TO_ADDONDIR . "/tipp/lmo-tippfieber.php");break;
+        case "wert":       require(PATH_TO_ADDONDIR . "/tipp/lmo-tippwert.php");break;
+        case "daten":      require(PATH_TO_ADDONDIR . "/tipp/lmo-tippdaten.php");break;
+        case "newligen":   require(PATH_TO_ADDONDIR . "/tipp/lmo-tippnewligen.php");break;
+        case "delligen":   require(PATH_TO_ADDONDIR . "/tipp/lmo-tippdelligen.php");break;
+        case "pwchange":   require(PATH_TO_ADDONDIR . "/tipp/lmo-tipppwchange.php");break;
+        case "delaccount": require(PATH_TO_ADDONDIR . "/tipp/lmo-tippdelaccount.php");break;
+        case "info":       require(PATH_TO_LMO . "/lmo-showinfo.php");break;
+        default:           require(PATH_TO_ADDONDIR . "/tipp/lmo-tipppad.php");break;
       }
     }
   }
   ?>
     </td>
-  </tr><?php // require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); 
+  </tr><?php // require(PATH_TO_ADDONDIR . "/tipp/lmo-tippfusszeile.php");
  ?>
 </table>
-<?php 
+<?php
 }?>

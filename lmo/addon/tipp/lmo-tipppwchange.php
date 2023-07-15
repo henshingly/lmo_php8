@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -22,7 +22,7 @@ $xtipperpassneu=isset($_REQUEST['xtipperpassneu'])?$_REQUEST['xtipperpassneu']:'
 $xtipperpassneuw=isset($_REQUEST['xtipperpassneuw'])?$_REQUEST['xtipperpassneuw']:'';
 $newpage=isset($_REQUEST['newpage'])?1:0;
 
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 if (($action == "tipp") && ($todo == "pwchange")) {
 
   $users = array("");
@@ -38,7 +38,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     }
   }
   fclose($datei);
-  
+
   $gef = 0;
   for($i = 1; $i < count($users) && $gef == 0; $i++) {
     $dummb = explode('|', $users[$i]);
@@ -60,7 +60,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
       $xtippervereinalt = $dummb[5];
     }
   }
-   
+
   if ($newpage == 1) {
     $xtipperpass = trim($xtipperpass);
     if ($xtipperpass != $dummb[1]) {
@@ -68,7 +68,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
       echo getMessage($text['tipp'][42],TRUE);
     }
   }
-   
+
   if ($newpage == 1) {
     $xtipperpassneu = trim($xtipperpassneu);
     if ($xtipperpassneu == "") {
@@ -84,10 +84,10 @@ if (($action == "tipp") && ($todo == "pwchange")) {
       echo getMessage($text['tipp'][70],TRUE);
     }
   }
-   
+
   if ($newpage == 1) {
     $users[$save] = $dummb[0]."|".$xtipperpassneu."|".$dummb[2]."|".$dummb[3]."|".$dummb[4]."|".$dummb[5]."|".$dummb[6]."|".$dummb[7]."|".$dummb[8]."|".$dummb[9]."|".$dummb[10]."|EOL";
-    require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
+    require(PATH_TO_ADDONDIR . "/tipp/lmo-tippsaveauth.php");
   } // end ($newpage==1)
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
@@ -133,5 +133,5 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   <tr>
     <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?php echo $text[5]." ".$text['tipp'][1]; ?></a></td>
   </tr><?php  }?>
-</table><?php } 
+</table><?php }
 $file=""; ?>

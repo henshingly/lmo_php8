@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,6 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
 
 if(!isset($nw)){
   $nw=0;
@@ -108,12 +106,12 @@ if(!isset($nw)){
   if ($calctime == 1) {
     echo $text[471].": ".number_format((getmicrotime()-$startzeit), 4, ".", ",")." sek.<br>";
   }
-  echo $text[54];?> - <?php echo $text[55]; ?> <br><?php 
+  echo $text[54];?> - <?php echo $text[55]; ?> <br><?php
   echo $text['tipp'][84]; ?> - <?php echo $text['tipp'][85]; ?>
           </td>
         </tr>
         <tr>
-          <td valign="bottom"><?php 
+          <td valign="bottom"><?php
   if ($file != "" && $lmtype == 0 && $all != 1) {
     echo "<a href=\"".$_SERVER['PHP_SELF']."?file=".$file."&amp;action=table\">".$text[5]." ".$text['tipp'][99]."</a>&nbsp;&nbsp;&nbsp;<br>";
   }

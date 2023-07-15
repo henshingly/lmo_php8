@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,12 +16,11 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
 if (empty($all)) {
   $all = 0;
 } else {
-  $all = 1; 
+  $all = 1;
 }
 if ($all == 1) {
   $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
@@ -68,7 +67,7 @@ if (!file_exists($auswertfile)) {
     }
     fclose($datei);
   }
-   
+
   $dumma = array("");
   $tipp_tipperimteam = array_pad($array, $teamsanzahl+1, "0");
   if ($tipp_showstsiege == 1) {
@@ -108,7 +107,7 @@ if (!file_exists($auswertfile)) {
     }
   }
   $t = 0;
-   
+
   if ($endtab < 1) {
     $endtab = $anzst1;
   }
@@ -160,7 +159,7 @@ if (!file_exists($auswertfile)) {
       }
     }
   }
-   
+
   if ($tipp_showstsiege == 1) {
     // Spieltagssieger ermitteln
     $tab = array_pad($array, $endtab, "");
@@ -222,8 +221,8 @@ if (!file_exists($auswertfile)) {
       }
     }
   }
-   
-   
+
+
   $tab0 = array("");
   for($a = 0; $a < $teamsanzahl; $a++) {
     $spielegetipptgesamt[$a] = array_sum($spielegetippt[$a]);
@@ -236,14 +235,14 @@ if (!file_exists($auswertfile)) {
       $punkte5gesamt[$a] = array_sum($punkte5[$a]);
       $punkte6gesamt[$a] = array_sum($punkte6[$a]);
     }
-     
+
     if ($tipppunktegesamt[$a] == "") {
       $tipppunktegesamt[$a] = 0;
     }
     if ($spielegetipptgesamt[$a] == "") {
       $spielegetipptgesamt[$a] = 0;
     }
-     
+
     if ($quotegesamt[$a] == "") {
       $quotegesamt[$a] = 0;
     }
@@ -256,7 +255,7 @@ if (!file_exists($auswertfile)) {
       }
       $quotegesamt[$a] *= 100;
     }
-     
+
     $tt = "";
     if ($gewicht == "relativ") {
       $tt .= (50000000+$quotegesamt[$a]);
