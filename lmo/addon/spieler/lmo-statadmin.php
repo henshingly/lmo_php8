@@ -466,12 +466,12 @@ function mark(el) {
                     <tfoot><?php
         if ($formel_ges > 0) {?>
                         <tr><?php
-            for ($i = 0;$i < $spaltenzahl;$i++) {?>
+            for ($i = 0; $i < $spaltenzahl; $i++) {?>
                             <th colspan="2" align="center"><?php
                 if ($formel[$i]) {?>
                                 <input type="text" onClick="sel('formel_str<?php echo $i?>')" onChange="mark(this)" name="formel_str<?php echo $i?>" value="<?php echo $formel_str[$i]?>" size="<?php echo strlen($formel_str[$i]);?>"><?php
                 } elseif ($i == 0) {
-                    echo "<strong>".$text['spieler'][54].":</strong>";
+                    echo "<strong>" . $text['spieler'][54] . ":</strong>";
                 } else {
                     echo "&nbsp;";
                 }?>
@@ -493,9 +493,9 @@ function mark(el) {
                     <tbody><?php
         $display = $zeile;$statstart = 0;
         if ($display > $zeile) $display = $zeile;
-        for ($j1 = $statstart;$j1 < $display;$j1++) {?>
+        for ($j1 = $statstart; $j1 < $display; $j1++) {?>
                         <tr><?php
-            for ($j2 = 0;$j2 < $spaltenzahl;$j2++) {
+            for ($j2 = 0; $j2 < $spaltenzahl; $j2++) {
                 $data[$j1][$j2] = htmlentities(stripslashes($data[$j1][$j2]), ENT_COMPAT);
                 if (isset($formel[$j2]) && $formel[$j2] == 1) {?>
                     <td colspan="2" align="center">
@@ -519,7 +519,7 @@ function mark(el) {
                     if ($spalten[$j2] == $text['spieler'][25]) {?>
                             <td colspan="2" align="left">
                               <select name="data<?php echo $j1."|".$j2?>" size="1"><?php
-                        for ($j = 0;$j <= $anzteams;$j++) {?>
+                        for ($j = 0; $j <= $anzteams; $j++) {?>
                                       <option <?php if (htmlentities($teams[$j])==$data[$j1][$j2]) echo "selected";?>><?php echo htmlentities($teams[$j])?></option><?php
                         }?>
                               </select>
@@ -571,7 +571,7 @@ function mark(el) {
                         <td align="left" class="nobr"><?php echo $text['spieler'][40]?>: </td>
                         <td align="left">
                             <select name="adminbereich_standard_sortierung" onChange="mark(this)" size="1"><?php
-        for ($x = 0;$x < $spaltenzahl;$x++) {?>
+        for ($x = 0; $x < $spaltenzahl; $x++) {?>
                               <option value="<?php echo $x?>" <?php if ($x==$spieler_adminbereich_standard_sortierung ) echo "selected";?>><?php echo $spalten[$x]?></option><?php
         }?>
                             </select>
@@ -581,7 +581,7 @@ function mark(el) {
                         <td align="left" class="nobr"><?php echo $text['spieler'][21]?>: </td>
                         <td align="left" colspan="2">
                             <select name="standard_sortierung" onChange="mark(this)" size="1"><?php
-        for ($x = 0;$x < $spaltenzahl;$x++) {?>
+        for ($x = 0; $x < $spaltenzahl; $x++) {?>
                               <option value="<?php echo $x?>" <?php if ($x == $spieler_standard_sortierung ) echo "selected";?>><?php echo $spalten[$x]?></option><?php
         }?>
                             </select>
