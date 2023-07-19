@@ -22,7 +22,7 @@ $get = array();
 $get = $_GET;
 foreach($get as $value) {
   if(str_starts_with($value,"<"))
-     header('Location: '.$_SERVER['SCRIPT_URI']);
+     die("XSS-Scripting detected");
 }
 
 @ini_set("session.use_trans_sid","1");
