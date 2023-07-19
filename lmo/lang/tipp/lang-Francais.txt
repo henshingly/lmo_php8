@@ -302,3 +302,4 @@
 301=Attention! Ici vous pouvez désactiver la possibilité de faire des pronostiques!
 302=Montrer seulement le classement total des points
 303=Un nouveau joueur s&#39;est inscrit pour le jeu des pronostiques: \n\nIdentifiant: [nick]
+304=Si vous ne souhaitez pas modifier le mot de passe, laissez le champ vide

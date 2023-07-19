@@ -186,7 +186,7 @@ if( $wertung=="einzel" || $wertung=="intern"){
   if( $tipp_tipperimteam>=0){?>
           <div class="col-1"> <?php echo $text['tipp'][27]; /* Team */?> </div><?php
   } else {?>
-  	  <div class="col-1"> <?php echo $text['tipp'][330]; /* Tipper */?> </div><?php
+  	  <div class="col-1"> <?php echo $text['tipp'][23]; /* Nickname */?> </div><?php
   }
 } else { /* Teamwertung*/?>
           <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][120]?>"><?php echo $text['tipp'][26]; /* Anzahl Tipper*/ ?></acronym></div>

@@ -307,3 +307,4 @@ No tenemos hasta ahora ninguna predicción suya para los siguientes juegos:
 301=¡Atención!  Esto desactiva la posibilidad de hacer predicciones!
 302=Muestre Solamente Las Estadísticas Totales De Puntos
 303=Un Nuevo Jugador se ha Registrado para el Juego de Predicción: \n\nNombre de Usuario: [nick]
+304=Si no desea cambiar la contraseña, deje el campo en blanco

@@ -302,3 +302,4 @@
 301=Pozor! Pokud si deaktivuješ položku, nebudeš moci tipovat!
 302=Jen celkovou tabulku ukázat
 303=Nové tipovací konto funkční: \n\nNick: [nick]
+304=Pokud nechcete heslo změnit, ponechte pole prázdné

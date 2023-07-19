@@ -302,3 +302,4 @@
 301=ADVARSEL! Dermed deaktiverer du muligheten til å avgi tips!
 302=Vise ny total poengstilling
 303=En ny tpper har registrert seg for tippespillet: \n\nNick: [nick]
+304=Hvis du ikke vil endre passordet, la feltet stå tomt
