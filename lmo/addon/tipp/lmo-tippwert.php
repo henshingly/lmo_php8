@@ -182,13 +182,16 @@ if (isset($lmtype) && $lmtype == 1 && $tabdat != "") {
 } else {
   echo $tabdat;
 }?>       </div><?php
-if( $wertung=="einzel"  || $wertung=="intern"){
+if( $wertung=="einzel" || $wertung=="intern"){
   if( $tipp_tipperimteam>=0){?>
           <div class="col-1"> <?php echo $text['tipp'][27]; /* Team */?> </div><?php
+  } else {?>
+  	  <div class="col-1"> <?php echo $text['tipp'][330]; /* Tipper */?> </div><?php
   }
 } else { /* Teamwertung*/?>
           <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][120]?>"><?php echo $text['tipp'][26]; /* Anzahl Tipper*/ ?></acronym></div>
-          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][208]?>"><?php echo $text['tipp'][26]."Ø"; /* Anzahl Tipper Durchschnitt*/ ?></acronym></div><?php }?>
+          <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][208]?>"><?php echo $text['tipp'][26]."Ø"; /* Anzahl Tipper Durchschnitt*/ ?></acronym></div><?php 
+}/*?>
           <div class="col-1"><acronym data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text['tipp'][117]?>"><?php if($gewicht!="spiele"){
   echo "<a href=\"".$addt5."spiele\">";
 }
@@ -196,7 +199,7 @@ echo $text['tipp'][123]; // Spiele getippt
 if($gewicht!="spiele"){
   echo "</a>";
 }         ?></acronym>
-          </div><?php
+          </div><?php*/
 if($tipp_showzus==1){
   if($tipp_tippmodus==1){
     if($tipp_rergebnis>0){ ?>
@@ -352,6 +355,7 @@ for($x = 1; $x <= $anztipper; $x++) {
           <div class="col-1"><?php echo $dummy.number_format($tipppunktegesamt[$i]/$tipp_tipperimteam[$i],2,".",",").$dumm2; ?></div><?php
         }
       }
+/*
       echo "<div class='col-1'>";
       if ($gewicht == "spiele") {
         echo "<strong>";
@@ -365,7 +369,7 @@ for($x = 1; $x <= $anztipper; $x++) {
         echo $dumm2;
       }
       echo "</div>";
-       
+ */     
       if ($tipp_showzus == 1) {
         if ($tipp_tippmodus == 1) {
           
@@ -413,8 +417,9 @@ for($x = 1; $x <= $anztipper; $x++) {
         if($stsiege[$i]==""){
           $stsiege[$i]="";
         }
+        echo "<div class='col-1'>".$dummy.$stsiege[$i].$dumm2."</div>";
         $quotegesamt[$i] = number_format($quotegesamt[$i]/100, 2, ".", ",");
-        echo "<div class='col-1' id='1'>";
+        echo "<div class='col-1'>";
         if ($gewicht == "relativ") {
           echo "<strong>";
         } else {
@@ -440,8 +445,8 @@ for($x = 1; $x <= $anztipper; $x++) {
           echo $dumm2;
         }
         echo "</div>";
-      } /* ende if($wertung!="intern" || $teamintern==$tipperteam[$i])*/
-    }
+      } /* ende $tipp_showstsiege==1 */
+    } /* ende $wertung != "intern" || $teamintern == $tipperteam[$i]) */
   } /* ende   if(($x>=$start && $x<=$ende) || $i==$eigpos)*/
     echo "</div>";
 } /* ende for($x=1;$x<=$anztipper;$x++)*/?>
