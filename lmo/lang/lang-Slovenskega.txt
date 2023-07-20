@@ -585,6 +585,7 @@
 701=sobota
 702=avg.
 703=avgusta
+704=sl_SL
 1000=serija
 1001=Zmagal
 1002=Neporažen

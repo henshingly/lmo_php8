@@ -585,6 +585,7 @@
 701=Zaterdag
 702=Aug.
 703=augustus
+704=nl_NL
 1000=reeks
 1001=Won
 1002=Ongeslagen

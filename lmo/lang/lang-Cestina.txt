@@ -585,6 +585,7 @@
 701=Sobota
 702=srp.
 703=srpen
+704=cs_CS
 1000=serie
 1001=Câștigat
 1002=Neînvins

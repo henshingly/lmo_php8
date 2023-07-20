@@ -585,6 +585,7 @@
 701=Sábado
 702=Ago.
 703=Agosto
+704=pt_PT
 1000=série
 1001=Ganhou
 1002=Invicto

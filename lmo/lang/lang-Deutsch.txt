@@ -586,6 +586,7 @@
 701=Samstag
 702=Aug.
 703=August
+704=de-DE
 1000=Serien
 1001=Gewonnen
 1002=Ungeschlagen

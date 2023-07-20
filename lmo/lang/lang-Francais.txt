@@ -585,6 +585,7 @@
 701=Samedi
 702=Ao.
 703=Août
+704=fr_FR
 1000=series
 1001=victoire
 1002=invaincu

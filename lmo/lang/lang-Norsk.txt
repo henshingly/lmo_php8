@@ -585,6 +585,7 @@
 701=lørdag
 702=aug.
 703=august
+704=no_NO
 1000=serie
 1001=Vunnet
 1002=Ubeseiret

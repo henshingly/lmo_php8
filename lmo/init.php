@@ -64,16 +64,6 @@ if (!file_exists(PATH_TO_LMO."/init.php")) {
 //Configuration
 require(PATH_TO_LMO."/lmo-cfgload.php");
 
-//Dateformat
-$fmt = new IntlDateFormatter(
-    'de-DE',
-    IntlDateFormatter::FULL, 	/*Datum */
-    IntlDateFormatter::SHORT, 	/*Uhrzeit */
-    $cfgarray['timezone'],
-    IntlDateFormatter::GREGORIAN,
-    $cfgarray['defdateformat']
-);
-
 //Language
 if(isset($_GET["lmouserlang"])){
   $_SESSION["lmouserlang"]=$_GET["lmouserlang"];
@@ -90,6 +80,15 @@ if(isset($_SESSION["lmouserlang"])){
 
 
 require(PATH_TO_LMO."/lmo-langload.php");
+//Dateformat
+$fmt = new IntlDateFormatter(
+    $text['704'],
+    IntlDateFormatter::FULL, 	/*Datum */
+    IntlDateFormatter::SHORT, 	/*Uhrzeit */
+    $cfgarray['timezone'],
+    IntlDateFormatter::GREGORIAN,
+    $cfgarray['defdateformat']
+);
 
 //Functions
 require_once(PATH_TO_LMO."/lmo-functions.php");

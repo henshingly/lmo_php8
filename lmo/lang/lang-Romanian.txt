@@ -585,6 +585,7 @@
 701=sâmbătă
 702=Aug.
 703=August
+704=ro_RO
 1000=serie
 1001=Câștigat
 1002=Neînvins
