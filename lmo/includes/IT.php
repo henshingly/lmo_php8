@@ -123,6 +123,9 @@ define('IT_UNKNOWN_OPTION',            -6);
  * @access   public
  * @package  HTML_Template_IT
  */
+ 
+#[\AllowDynamicProperties]
+ 
 class HTML_Template_IT {
 
     /**
@@ -715,18 +718,19 @@ class HTML_Template_IT {
      * @access   public
      * @see      init()
      */
-    function free()
-    {
+    function free() {
+
         $this->err = array();
 
-        $this->currentBlock = '__global__';
+        $this->currentBlock = "__global__";
 
-        $this->variableCache = array();
-        $this->blocklist     = array();
-        $this->touchedBlocks = array();
+        $this->variableCache    = array();
+        $this->blocklookup      = array();
+        $this->touchedBlocks    = array();
 
         $this->flagBlocktrouble = false;
         $this->flagGlobalParsed = false;
+
     } // end func free
 
     /**
