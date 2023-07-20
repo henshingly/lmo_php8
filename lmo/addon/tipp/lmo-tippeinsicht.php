@@ -76,7 +76,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
       if ($von != $start) {
         echo "<td align='center'><a href=\"".$addt3.$von."\">";
       } else {
-        echo "<td align='center'>";
+        echo "<td align='center' class=\"nobr\">";
       }
       $k1 = strtolower(substr($tippernick[intval(substr($tab0[$von], -6))], 0, 3));
       $k2 = strtolower(substr($tippernick[intval(substr($tab0[$bis], -6))], 0, 3));
@@ -95,7 +95,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
   </div><?php  } /* ende if($tipp_anzseiten>1) */?>
   <div class="row">
     <div class="col">
-      <table class="table table-hover" ><?php  $tab1 = array("");
+      <table class="table table-hover"><?php  $tab1 = array("");
   $nw = 0;
   $ende = $start+$tipp_anzseite;
   if ($ende > $anztipper) {
@@ -105,7 +105,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
     $tab0 = array("");
   }
   //if($anztipper<1){exit;}
-  for($l = $start-1; $l <= ($ende+1); $l++) {
+  for($l = $start-1; $l <= ($ende+2); $l++) {
     if ($l >= $start && $l < $ende) {
       $k = intval(substr($tab0[$l], -6));
     }
@@ -172,11 +172,10 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               }
             }
           }
-          if ($l == ($start-1) || $l == ($ende+1)) {?>
+          if ($l == ($start-1) || $l == ($ende+2)) {?>
           <th scope="col"><?php            if ($n == 0) {
-              echo $teamk[$teama[$st-1][$i]];
+              echo $teamk[$teama[$st-1][$i]]."<br/>";
             }
-            echo "<br>";
             if ($lmtype != 0) {
               if ($mtipp[$st-1][$i][$n] == 1) {
                 echo "<acronym title='".$text['tipp'][231]."'><del>";
@@ -196,9 +195,8 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 $nw = 1;
               }
             }
-            echo "<br>";
             if ($n == 0) {
-              echo $teamk[$teamb[$st-1][$i]];
+              echo "<br/>".$teamk[$teamb[$st-1][$i]];
             }?>              
           </th><?php 
           } elseif($l<$ende) {
@@ -380,13 +378,19 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
     } /* ende for($i=0;$i<$anzsp;$i++) */
     
     if($l>=$start && $l<$ende){?>
-          <td><?php echo $punktetipper?></td><?php 
+          <td><?php echo $punktetipper?></td>
+          <td>&nbsp; <?php      if($tipp_tipptabelle1==1 && $l>=$start && $l<$ende && $lmtype==0){?>
+            <a href="<?php echo $addt.rawurlencode($tippernick[$k])?>" title="<?php echo $text['tipp'][181]." ".$tippernick[$k]?>"><?php echo $text['tipp'][172]?></a><?php 
+      }?>
+          </td><?php 
     } elseif ($l==$start-1) {?>
-          <th valign="bottom"><?php echo $text[37];?></th><?php 
-    } elseif ($l==$ende+1) {?>
-          <th valign="top"><?php echo $text[37];?></th><?php 
+          <th scope="col"><?php echo $text[37];?></th>
+          <th>&nbsp;</th><?php 
+    } elseif ($l==$ende+2) {?>
+          <th scope="col"><?php echo $text[37];?></th>
+          <th>&nbsp;</th><?php 
     } else {?>
-          <td></td><?php 
+          <td colspan="2">&nbsp;</td><?php 
     }?>
         </tr><?php 
   } /* ende for($l=$start-1;$l<=$ende;$l++) */?>
@@ -394,7 +398,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
     </div>
   </div><?php if($tipp_anzseiten>1 && $tipp_anzseiten<11){?> 
   <div class="row">
-    <div clas="col">
+    <div class="col">
       <table class="table table-hover">
         <tr><?php 
     echo "<td align=\"right\" valign=\"top\" rowspan=\"".(floor($tipp_anzseiten/10)+1)."\">".$text['tipp'][164]."&nbsp;</td>";

@@ -142,10 +142,6 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <div class="col-1 text-start"><input type="checkbox" class="form-check-input" name="xtipptabelle1" onClick="dolmoedit()"<?php if($tipp_tipptabelle1==1){echo " checked";}?>></div>
           </div>
           <div class="row pb-2">
-            <div class="col-4 text-end"><?php echo $text[133]; ?></div>
-            <div class="col-1 text-start"><input type="checkbox" class="form-check-input" name="xtippfieber" onClick="dolmoedit()"<?php if($tipp_tippfieber==1){echo " checked";}?>></div>
-          </div>
-          <div class="row pb-2">
             <div class="col-4 text-end"><?php echo $text['tipp'][56]; ?></div>
             <div class="col-1 text-start"><input type="checkbox" class="form-check-input" name="xgesamt" onClick="dolmoedit()"<?php if($tipp_gesamt==1){echo " checked";}?>></select>
             </div>

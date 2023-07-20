@@ -116,18 +116,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
   </tr>
   <tr>
     <td>
-      <table class="table"><?php 
-  if($nick!=""){ ?>
-        <caption><?php 
-    if($tabtype!="0"){?><a href="<?php echo $addt1."0"?>" title="<?php echo $text[27]?>"><?php echo $text[40]?></a><?php }else{echo $text[40];}?><?php 
-    if($tabtype!="1"){?><a href="<?php echo $addt1."1"?>" title="<?php echo $text[28]?>"><?php echo $text[41]?></a><?php }else{echo $text[41];}?><?php 
-    if($tabtype!="2"){?><a href="<?php echo $addt1."2"?>" title="<?php echo $text[29]?>"><?php echo $text[42]?></a><?php }else{echo $text[42];}?><?php 
-    if ($einhinrueck==1) {
-      if($tabtype!="4"){?><a href="<?php echo $addt1."4"?>" title="<?php echo $text[4003]?>"><?php echo $text[4003]?></a><?php }else{echo $text[4003];}?><?php 
-      if($tabtype!="3"){?><a href="<?php echo $addt1."3"?>" title="<?php echo $text[4002]?>"><?php echo $text[4002]?></a><?php }else{echo $text[4002];}
-    }?>
-        </caption><?php 
-  } /* ende if($nick!="")*/?>
+      <table class="table">
         <tr>
           <th colspan="6"> <?php echo $tabdat; ?> </th>
           <th></th>
@@ -165,23 +154,23 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     $lmo_tabelle_class="nobr";
     if ($tabtype==0) {
       if (($x==1) && ($champ!=0)) {
-        $lmo_tabelle_class="lmoTabelleMeister nobr";
+        $lmo_tabelle_class="table-success";
         $j=2;
       }
       if (($x>=$j) && ($x<$j+$anzcl) && ($anzcl>0)) {
-        $lmo_tabelle_class="lmoTabelleCleague nobr";
+        $lmo_tabelle_class="table-info";
       }
       if (($x>=$j+$anzcl) && ($x<$j+$anzcl+$anzck) && ($anzck>0)) {
-        $lmo_tabelle_class="lmoTabelleCleaguequali nobr";
+        $lmo_tabelle_class="table-primary";
       }
       if (($x>=$j+$anzcl+$anzck) && ($x<$j+$anzcl+$anzck+$anzuc) && ($anzuc>0)) {
-        $lmo_tabelle_class="lmoTabelleUefa nobr";
+        $lmo_tabelle_class="table-secondary";
       }
       if (($x<=$anzteams) && ($x>$anzteams-$anzab) && ($anzab>0)) {
-        $lmo_tabelle_class="lmoTabelleAbsteiger nobr";
+        $lmo_tabelle_class="table-danger";
       }
       if (($x<=$anzteams-$anzab) && ($x>$anzteams-$anzab-$anzar) && ($anzar>0)) {
-        $lmo_tabelle_class="lmoTabelleRelegation nobr";
+        $lmo_tabelle_class="table-warning";
       }
     }?>
         <tr>
