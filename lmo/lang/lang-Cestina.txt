@@ -581,6 +581,10 @@
 600=Versiune Bootstrap
 601=Versiunea Chart.js
 602=Versiunea BootstrapIcon
+700=So.
+701=Sobota
+702=srp.
+703=srpen
 1000=serie
 1001=Câștigat
 1002=Neînvins

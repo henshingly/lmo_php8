@@ -151,40 +151,24 @@ if ($show==0) {?>
           <div class="row align-items-center pb-1">
             <div class="col-5 text-end"><acronym title="<?php echo $text[256] ?>"><?php echo $text[257]; ?></acronym>&nbsp;</div>
             <div class="col-7 text-start">
-              <input type="radio" class="form-check-input" name="xdefdateselect" value="1" checked>
-              <select class="custom-select" name="xdefdateformat" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[0].checked=true;"><?php
-      $dummf=array("d.m. H:i", "d.m.Y H:i", "D., d.m. H:i", "l, d.m. H:i", "D., d.m.Y H:i", "l, d.m.Y H:i");?>
-                <option value="">__</option><?php
-      for($y=0;$y<count($dummf);$y++){?>
-                <option value="<?php echo $dummf[$y]?>"<?php if($defdateformat==$dummf[$y]){echo " selected";}?>><?php echo date($dummf[$y], time())?></option><?php
-      }?>
-              </select>
-            </div>
-          </div>
-          <div class="row align-items-center pb-1">
-            <div class="col-5 text-end"></div>
-            <div class="col-7 text-start">
-              <input type="radio" class="form-check-input" name="xdefdateselect" value=""<?php if (!in_array($defdateformat,$dummf)) echo " checked";?>>
-              <input type="text" class="custom-control" name="xdefdateformat2" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[1].checked=true;" value="<?php echo $defdateformat?>">
-              <a href="https://www.php.net/manual/de/datetime.format.php" class="none">
+              <input type="text" class="custom-control" name="xdefdateformat2" value="<?php echo $defdateformat?>">
+              <a href="https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax" class="none">
                 <span class="popup">
                   <strong><?php echo $text[545];?></strong><br>
-                  D = <?php echo date("D", time());?><br>
-                  l = <?php echo date("l", time());?><br>
+                  E = <?php echo $text[700];?><br>
+                  EEEE = <?php echo $text[701];?><br>
                   <strong><?php echo $text[546];?></strong><br>
-                  d = <?php echo date("d", time());?><br>
-                  j = <?php echo date("j", time());?><br>
+                  dd = 04<br>
                   <strong><?php echo $text[547];?></strong><br>
-                  m = <?php echo date("m", time());?><br>
-                  M = <?php echo date("M", time());?><br>
-                  F = <?php echo date("F", time());?><br>
+                  MM = 08<br>
+                  MMM = <?php echo $text[702];?><br>
+                  MMMM = <?php echo $text[703];?><br>
                   <strong><?php echo $text[548];?></strong><br>
-                  y = <?php echo date("y", time());?><br>
-                  Y = <?php echo date("Y", time());?><br>
+                  Y = 2023<br>
+                  YY = 23<br>
                   <strong><?php echo $text[549];?></strong><br>
-                  H = <?php echo date("H", time());?><br>
-                  i = <?php echo date("i", time());?><br>
-                  A = <?php echo date("A", time());?><br>
+                  HH = 21<br>
+                  mm = 30<br>
                 </span>
               ?</a>
             </div>

@@ -581,6 +581,10 @@
 600=Bootstrap verzió
 601=Chart.js verzió
 602=BootstrapIcon verzió
+700=szo.
+701=szombat
+702=aug.
+703=augusztus
 1000=sorozat
 1001=Nyert
 1002=Veretlen

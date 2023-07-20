@@ -273,46 +273,6 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             <div class="col-1 text-start"><input type="checkbox" class="form-check-input" name="xdatm" onChange="dolmoedit()"<?php if($datm==1){echo " checked";}?>></div>
           </div>
           <div class="row pb-1">
-            <div class="col-5 text-end"><acronym title="<?php echo $text[256];?>"><?php echo $text[257];?></acronym></div>
-            <div class="col-5 text-start">
-              <input type="radio" class="form-check-input" name="xdatfselect" value="1" checked>
-              <select class="custom-select" name="xdatf" onChange="dolmoedit();document.getElementsByName('xdatfselect')[0].checked=true;"><?php
-      $dummf=array("d.m. H:i", "d.m.Y H:i", "D., d.m. H:i", "l, d.m. H:i", "D., d.m.Y H:i", "l, d.m.Y H:i");?>
-                <option value="">__</option><?php
-      for($y=0;$y<count($dummf);$y++){?>
-                <option value="<?php echo $dummf[$y]?>"<?php if($datf==$dummf[$y]){echo " selected";}?>><?php echo date($dummf[$y], time())?></option><?php
-      }?>
-              </select>
-            </div>
-          </div>
-          <div class="row pb-1">
-            <div class="col-5 offset-5 text-start">
-              <input type="radio" class="form-check-input" name="xdatfselect" value=""<?php if (!in_array($datf,$dummf)) echo " checked";?>>
-              <input type="text" class="custom-control" name="xdatf2" onChange="dolmoedit();document.getElementsByName('xdatf')[1].checked=true;" value="<?php echo $datf?>">
-              <a href="https://www.php.net/manual/de/datetime.format.php" class="none">
-                <span class="popup">
-                  <strong><?php echo $text[545];?></strong><br>
-                  D = <?php echo date("D", time());?><br>
-                  l = <?php echo date("l", time());?><br>
-                  <strong><?php echo $text[546];?></strong><br>
-                  d = <?php echo date("d", time());?><br>
-                  j = <?php echo date("j", time());?><br>
-                  <strong><?php echo $text[547];?></strong><br>
-                  m = <?php echo date("m", time());?><br>
-                  M = <?php echo date("M", time());?><br>
-                  F = <?php echo date("F", time());?><br>
-                  <strong><?php echo $text[548];?></strong><br>
-                  y = <?php echo date("y", time());?><br>
-                  Y = <?php echo date("Y", time());?><br>
-                  <strong><?php echo $text[549];?></strong><br>
-                  H = <?php echo date("H", time());?><br>
-                  i = <?php echo date("i", time());?><br>
-                  A = <?php echo date("A", time());?><br>
-                </span>
-              ?</a>
-            </div>
-          </div>
-          <div class="row pb-1">
             <div class="col-5 text-end"><acronym title="<?php echo $text[252];?>"><?php echo $text[251];?></acronym></div>
             <div class="col-1 text-start"><input type="checkbox" class="form-check-input" name="xdats" onChange="dolmoedit()"<?php if($dats==1){echo " checked";}?>></div>
           </div>

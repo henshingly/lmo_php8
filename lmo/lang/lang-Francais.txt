@@ -581,6 +581,10 @@
 600=Bootstrap version
 601=Chart.js version
 602=BootstrapIcon version
+700=Sam.
+701=Samedi
+702=Ao.
+703=Août
 1000=series
 1001=victoire
 1002=invaincu

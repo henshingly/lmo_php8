@@ -92,7 +92,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         fputs($datei,"DatC=".$datc."\n");
         fputs($datei,"DatS=".$dats."\n");
         fputs($datei,"DatM=".$datm."\n");
-        fputs($datei,"DatF=".$datf."\n");
+        fputs($datei,"DatF=".$defdateformat."\n");
         fputs($datei,"urlT=".$urlt."\n");
         fputs($datei,"urlB=".$urlb."\n");
         fputs($datei,"Plan=".$plan."\n");

@@ -581,6 +581,10 @@
 600=Bootstrap-versie
 601=Chart.js-versie
 602=BootstrapIcon-versie
+700=Za.
+701=Zaterdag
+702=Aug.
+703=augustus
 1000=reeks
 1001=Won
 1002=Ongeslagen

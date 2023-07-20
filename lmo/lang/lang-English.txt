@@ -581,6 +581,10 @@
 600=Bootstrap version
 601=Chart.js version
 602=BootstrapIcon version
+700=Sat.
+701=Saturday
+702=Aug.
+703=August
 1000=Series
 1001=won
 1002=not lost

@@ -124,7 +124,8 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
 		   echo " ".$liga['aktueller_spieltag'];
 		}
 		?></div>
-		<div class="col-2 text-start d-none d-lg-block"><?php echo date($defdateformat, filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></div>
+		<div class="col-2 text-start d-none d-lg-block"><?php echo datefmt_format($fmt, filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?>
+		<?php //echo date($defdateformat, filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></div>
 	</div><?php
 }
 if($liga_counter==0){echo "<div class='col'>[".$text[223]."]</div>";}

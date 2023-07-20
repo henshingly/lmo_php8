@@ -581,6 +581,10 @@
 600=Bootstrap-versjon
 601=Chart.js-versjon
 602=BootstrapIcon versjon
+700=lør.
+701=lørdag
+702=aug.
+703=august
 1000=serie
 1001=Vunnet
 1002=Ubeseiret

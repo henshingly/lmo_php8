@@ -581,6 +581,10 @@
 600=Različica Bootstrap
 601=Različica Chart.js
 602=Različica BootstrapIcon
+700=sob.
+701=sobota
+702=avg.
+703=avgusta
 1000=serija
 1001=Zmagal
 1002=Neporažen

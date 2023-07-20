@@ -581,6 +581,10 @@
 600=Versiune Bootstrap
 601=Versiunea Chart.js
 602=Versiunea BootstrapIcon
+700=sam.
+701=sâmbătă
+702=Aug.
+703=August
 1000=serie
 1001=Câștigat
 1002=Neînvins
