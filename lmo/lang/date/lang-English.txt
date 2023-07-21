@@ -4,7 +4,7 @@
 03=Thursday	
 04=Friday
 05=Saturday
-06=Sonntag
+06=Sunday
 07=Mon
 08=Tue
 09=Wed
