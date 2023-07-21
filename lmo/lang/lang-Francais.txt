@@ -479,7 +479,7 @@
 478=Imprimer la journée actuelle
 479=Montrer la version imprimée de la saison complète
 480=Imprimer le calendrier de la ligue
-481=Ici vous pouvez entrer le chemin des extensions, plusieurs extensions sont séparées par une &#39;,&#39;.  (un &#39;/&#39; à la fin, p. ex. &#39;wap/&#39;, peut être un chemin absolu ou relatif, mais ce répertoire doit avoir les droits complets d&#39;écriture)
+481=Ici vous pouvez entrer le chemin des extensions, plusieurs extensions sont séparées par une &#39;,&#39;.  (un &#39;/&#39; à la fin, p. ex. &#39;viewer/&#39;, peut être un chemin absolu ou relatif, mais ce répertoire doit avoir les droits complets d&#39;écriture)
 482=Répertoire des extensions
 483=Version imprimée
 484=Voulez-vous créer une version à imprimer ?

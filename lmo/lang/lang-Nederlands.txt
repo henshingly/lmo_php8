@@ -479,7 +479,7 @@
 478=Huidige Speeldag afdrukken
 479=Geeft een afdrukvoorbeeld van alle wedstrijden
 480=Afdeling kalender afdrukken
-481=Hier kommen die Pfade der zusätzlichen Addons rein, mehrere Addons durch ',' trennen. (mit '/' am Ende, z.B. 'wap/', kann ein absoluter oder relativer Systempfad sein, dieses Verzeichnis muß volle Schreibrechte besitzen)
+481=Hier kommen die Pfade der zusätzlichen Addons rein, mehrere Addons durch ',' trennen. (mit '/' am Ende, z.B. 'viewer/', kann ein absoluter oder relativer Systempfad sein, dieses Verzeichnis muß volle Schreibrechte besitzen)
 482=Addonverzeichnisse
 483=Afdruk voorbeeld
 484=Soll eine druckerfreundliche Ansicht erzeugt werden?

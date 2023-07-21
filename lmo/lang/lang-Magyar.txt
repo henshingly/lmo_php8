@@ -479,7 +479,7 @@
 478=Forduló nyomtatása 
 479=Menetrend nyomtatása
 480=Menetrend nyomtatása 
-481=Itt tud még elérési utakat megadni a kiegészítésekhez. Válassza el oket ',' jellel. (egy '/'-rel a végén, pl. 'wap/'; lehet abszolút vagy relatív elérési út. A könyvtárnak teljes írhatósági joggal kell rendedlkeznie)
+481=Itt tud még elérési utakat megadni a kiegészítésekhez. Válassza el oket ',' jellel. (egy '/'-rel a végén, pl. 'viewer/'; lehet abszolút vagy relatív elérési út. A könyvtárnak teljes írhatósági joggal kell rendedlkeznie)
 482=Kiegészítések könyvtárai
 483=Nézet nyomtatása
 484=Kíván nyomtatóbarát nézetet létrehozni?

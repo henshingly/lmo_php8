@@ -481,7 +481,7 @@
 478=Stampa la giornata attuale
 479=Visualizza una previsione di stampo del calendario completo
 480=Stampa il calendario del campionato
-481=Qui vanno inseriti i percorsi degli ampliamenti (Addons), piú Addons separarli con la virgola ','. (con '/' alla fine, esem. 'wap/', puó essere un percorso assoluto o relativo del sistema, questa cartella deve avere i diritti di scrizione (CHMOD))
+481=Qui vanno inseriti i percorsi degli ampliamenti (Addons), piú Addons separarli con la virgola ','. (con '/' alla fine, esem. 'viewer/', puó essere un percorso assoluto o relativo del sistema, questa cartella deve avere i diritti di scrizione (CHMOD))
 482=Cartelle ampliamenti
 483=Visualizzazione stampo
 484=Deve essere creata una visualizzazione da stampo semplice?

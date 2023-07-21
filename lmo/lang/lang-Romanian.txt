@@ -479,7 +479,7 @@
 478=Versiunea pentru tiparire
 479=Zeigt eine Druckansicht des kompletten Spielplan an
 480=Versiunea pentru tiparire / Programul campionatului
-481=Hier kommen die Pfade der zusätzlichen Addons rein, mehrere Addons durch ',' trennen. (mit '/' am Ende, z.B. 'wap/', kann ein absoluter oder relativer Systempfad sein, dieses Verzeichnis muß volle Schreibrechte besitzen)
+481=Hier kommen die Pfade der zusätzlichen Addons rein, mehrere Addons durch ',' trennen. (mit '/' am Ende, z.B. 'viewer/', kann ein absoluter oder relativer Systempfad sein, dieses Verzeichnis muß volle Schreibrechte besitzen)
 482=Addonverzeichnisse
 483=Versiunea pentru tiparire
 484=Soll eine druckerfreundliche Ansicht erzeugt werden?

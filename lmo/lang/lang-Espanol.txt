@@ -479,7 +479,7 @@
 478=Imprimir esta jornada
 479=Imprimir programa de liga
 480=Imprimir programa de liga
-481=Aqui puedes introducir rutas adicionales a tus 'addons'. Separalas con ','. (con '/' al final, ej. 'wap/'; pueden usarse rutas absolutas o relativas. Estos directorios deben tener todos los permisos de escritura)
+481=Aqui puedes introducir rutas adicionales a tus 'addons'. Separalas con ','. (con '/' al final, ej. 'viewer/'; pueden usarse rutas absolutas o relativas. Estos directorios deben tener todos los permisos de escritura)
 482=Directorios de 'add-ons'
 483=Vista de impresión
 484=¿Quieres crear una vista preparada para la impresion?

@@ -479,7 +479,7 @@
 478=Print Actual Matchday
 479=Print Match Schedule
 480=Print Match Schedule
-481=Here you can enter the paths to extra add-ons, separate the addons with ',' (with '/' at the end, e.g. 'wap/')
+481=Here you can enter the paths to extra add-ons, separate the addons with ',' (with '/' at the end, e.g. 'viewer/')
 482=Add On Directory
 483=Printer View
 484=Should a Printer friendly view be created?

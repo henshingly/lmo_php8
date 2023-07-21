@@ -479,7 +479,7 @@
 478=Utskriftsvennlig side av denne serierunden
 479=Viser en utskrifstvennlig side av den komplette terminlisten og tabeller
 480=Utskiftsvennlig side av ligaen
-481=Her kommer stiene til fe forskjellige ekstra Addons, flere Addons deles med ','  (og med '/' til slutt, f.eks 'wap/', kan være en absolutt eller relativ systemsti men denne folderen må ha fulle skriverettigheter)
+481=Her kommer stiene til fe forskjellige ekstra Addons, flere Addons deles med ','  (og med '/' til slutt, f.eks 'viewer/', kan være en absolutt eller relativ systemsti men denne folderen må ha fulle skriverettigheter)
 482=Addonfoldere
 483=Utkiftsvennlig oversikt
 484=Skal det lages en utskriftsvennlig side av oversikten?
