@@ -58,7 +58,8 @@ if($file!=""){
           <th align="right">&nbsp;<a href="<?php echo $addr.($j+1); ?>" title="<?php echo $text[25]; ?>"><?php echo $j+1; ?></a>&nbsp;</th>
 <?php        if($datm==1){
             if($mterm[$j][$i]>0){
-              $dum1 = date($datf, $mterm[$j][$i]);
+              //$dum1 = date($datf, $mterm[$j][$i]);
+              $dum1 = strtr(date($datf, $mterm[$j][$i]), $trans_lang);
             }else{
               $dum1="";
             }

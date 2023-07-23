@@ -112,7 +112,8 @@ if ($file != "") {
           for($n = 0; $n < $modus[$j]; $n++) {
             if ($datm == 1) {
               if ($mterm[$j][$i][$n] > 0) {
-                $dumn1 = "<acronym title=\"".date($datf, $mterm[$j][$i][$n])."\">"; 
+                //$dumn1 = "<acronym title=\"".date($datf, $mterm[$j][$i][$n])."\">"; 
+                $dumn1 = "<acronym title=\"" . strtr(date($datf, $mterm[$j][$i][$n]), $trans_lang) . "\">"; 
                 $dumn2 = "</acronym>";
               } else {
                 $dumn1 = "";

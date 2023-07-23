@@ -17,6 +17,13 @@
   *
   * $Id$
   */
+// First line of XSS-Identification
+$get = array();
+$get = $_GET;
+foreach($get as $value) {
+  if(preg_match("/<[^<>]+>/i", $value))
+     header('Location: '.$_SERVER['SCRIPT_URI']);
+}
 
 if (!isset($_SESSION)) { 
   // no session has been started yet

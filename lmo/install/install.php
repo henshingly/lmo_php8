@@ -57,7 +57,7 @@ $userlang = $_SESSION['userlang'];
 
 $filelist=array(
   777=>array('ligen','output','config','ligen/dfb','config/viewer','addon/tipp/tipps','addon/tipp/tipps/auswert','addon/tipp/tipps/einsicht','addon/tipp/tipps/auswert/vereine','addon/spieler/stats'),
-  666=>array('config/cfg.txt','config/lmo-auth.php','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','config/wap/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98')
+  666=>array('config/cfg.txt','config/lmo-auth.php','config/tipp/cfg.txt','config/spieler/cfg.txt','config/ticker/cfg.txt','config/mini/cfg.txt','config/classlib/cfg.txt','addon/tipp/lmo-tippauth.txt','ligen/*.l98')
 );
 $lang=array(
     'DE'=>array(

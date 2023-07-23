@@ -479,7 +479,7 @@
 478=Imprimir Jornada
 479=Imprimir calendário do campeonato
 480=Imprimir Resultados do Campeonato
-481=Here you can enter additional paths to your add-ons. Separate them by ','. (with '/' at the end, e.g. 'wap/'; may be an absolute or relativer path. This directory needs to have full writing permissions)
+481=Here you can enter additional paths to your add-ons. Separate them by ','. (with '/' at the end, e.g. 'viewer/'; may be an absolute or relativer path. This directory needs to have full writing permissions)
 482=Add-on directories
 483=Modo Imprimir
 484=Deseja criar uma vista de impressão?

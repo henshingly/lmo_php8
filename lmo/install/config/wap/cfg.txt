@@ -1,1 +1,0 @@
-anzahl_ligen_pro_seite=5

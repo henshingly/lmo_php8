@@ -123,6 +123,9 @@ define('IT_UNKNOWN_OPTION',            -6);
  * @access   public
  * @package  HTML_Template_IT
  */
+ 
+#[\AllowDynamicProperties]
+ 
 class HTML_Template_IT {
 
     /**

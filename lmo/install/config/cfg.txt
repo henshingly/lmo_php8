@@ -107,3 +107,4 @@ lmo_formular_border1=2px inset #eee
 lmo_formular_border2=2px outset #eee
 lmo_fieber_color1=#900
 lmo_fieber_color2=#00C
+timezone=Europe/Berlin
