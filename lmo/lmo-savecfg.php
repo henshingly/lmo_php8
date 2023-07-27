@@ -42,7 +42,7 @@ if($_SESSION['lmouserok']==2){
           clearstatcache();
         }
       }else{                                             // Hauptkonfiguration
-        $ok=fwrite($datei, "$cfgname=${$cfgname}\n") && $ok;
+        $ok=fwrite($datei, "$cfgname={${$cfgname}}\n") && $ok;
       }
     }
     flock($datei,LOCK_UN);
