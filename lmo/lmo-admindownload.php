@@ -35,7 +35,7 @@ if (($action == "admin") && ($todo == "download") && (($_SESSION["lmouserok"] ==
     }
     closedir($verz);
     sort($dummy);
-    if ($dummy[$down-1] != ""  && check_hilfsadmin($dummy[$down-1])) {
+    if ($dummy[(int)$down-1] != ""  && check_hilfsadmin($dummy[(int)$down-1])) {
       header("Content-Type: text/x-lmo3");
       header("Content-Disposition: attachment; filename=\"".$dummy[$down-1]."\"");
       readfile(sprintf("%s/%s", $dirliga, $dummy[$down-1]));
