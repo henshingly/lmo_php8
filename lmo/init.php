@@ -64,6 +64,10 @@ if (!file_exists(PATH_TO_LMO."/init.php")) {
 //Configuration
 require(PATH_TO_LMO."/lmo-cfgload.php");
 
+if (!defined('LMO_VERSION')) {
+  define('LMO_VERSION',$cfgarray['lmoVersion']);
+}
+
 //Language
 if(isset($_GET["lmouserlang"])){
   $_SESSION["lmouserlang"]=$_GET["lmouserlang"];

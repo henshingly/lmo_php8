@@ -24,7 +24,7 @@
     <div class="col">&nbsp;</div>
   </div>
   <div class="row">
-    <div class="col-10 offset-sm-1"><h1><?php echo $text[54]; ?></h1></div>
+    <div class="col-10 offset-sm-1"><h1><?php echo $text[54]; ?> <?php echo LMO_VERSION;?></h1></div>
   </div>
   <div class="row">
     <div class="col-10 offset-sm-1">
