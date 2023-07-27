@@ -22,40 +22,6 @@ function const_array($constant) {
 };
 
 /**
- *  newStyle()
- *
- * @access public
- * @param url string
- * @param cssURL string
- * @return string
- */
-function newStyle($url,$cssURL) {
-  $found = preg_match("/style=/i",$url);
-  if ($found) {
-    $pattern = "/style=(.*)/i"; // /style=.*(&?|$)/isU
-    $cssURL = "style=".$cssURL;
-    $url = preg_replace($pattern, $cssURL, $url);
-	} else $url .= "&style=".$cssURL;
-  return $url;
-}
-
-/**
- *  sisURL()
- *
- * @access public
- * @param url string
- * @param alt string
- * @param neu string
- * @return string
-*/
-function sisURL($url,$alt='view1',$neu='view2') {
-  $alt = "/$alt/isU";
-  $url = preg_replace($alt, $neu, $url);
-  return $url;
-}
-
-
-/**
  * get the text before the last occurence of the character
  * example: strBeforChar("fussballbl2004.l98",".") returns "fussballbl2004"
  *

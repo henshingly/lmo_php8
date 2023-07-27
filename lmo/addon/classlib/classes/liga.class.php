@@ -535,19 +535,6 @@ class liga {
           }
         }
       }
-      // Infos aus dem lim File holen (BEGIN)
-      $limFile = PATH_TO_ADDONDIR.'/limporter/imports/'.basename($fileName,".l98").'.lim';
-      if (file_exists($limFile)) {
-        $limDATA = implode("",file($limFile) );
-        // sectionen suchen und die einzelnen Sectionen in Array $sections speichern
-        preg_match_all("/^\[([^\]]+)+\][^\[]+/m",$limDATA,$sections,PREG_PATTERN_ORDER);
-        for ($y=0;$y<count($sections[0]);$y++) {
-          // Parameter und werte trennen
-          preg_match_all("/^([^=\[]+)=(.*)/m",$sections[0][$y],$parameter,PREG_PATTERN_ORDER);
-          for ($i=0; $i<count($parameter[0]);$i++)
-          $iniData[$sections[1][$y]][trim($parameter[1][$i])] = trim($parameter[2][$i]);
-        }
-      } // Infos aus dem lim File holen (ENDE)
 
       $tCounter = 1;
       foreach($iniData["Teams"] as $key=>$value) {
@@ -593,10 +580,8 @@ class liga {
 
         $spieltag = new spieltag($rCounter,$startTime,$endTime);
         // Modus des Spieltags
-        $spieltag->setModus($this->getIniData("MO",$iniData[$roundSektion]) );
-        // foreach (array_keys($iniData[$roundSektion]) as $pCounter) {
+        $spieltag->setModus($this->getIniData("MO",$iniData[$roundSektion]));
         for ($pCounter=1; isset($iniData[$roundSektion][$pCounter]["TA"]); $pCounter++) {
-          // if (!empty($iniData[$roundSektion][$pCounter]["TA"]) ) {
           $heimTeam = &$this->teamForNumber($this->getIniData("TA",$iniData[$roundSektion],$pCounter));
           $gastTeam = &$this->teamForNumber($this->getIniData("TB",$iniData[$roundSektion],$pCounter));
           $partienNumber = 0;
