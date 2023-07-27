@@ -1,9 +1,9 @@
 <?php
 /**
  * Class PokalRunde
- * Bildet die komplette Runde eines KO Tuniers / Playoff oder �hnlichem ab.
+ * Bildet die komplette Runde eines KO Tuniers / Playoff oder ähnlichem ab.
  *
- * @author Markus D�rfling <markus@doerfling.net>
+ * @author Markus Dörfling <markus@doerfling.net>
  * @version $Id$
  * @package classlib
  */
@@ -17,7 +17,7 @@ class pokalRunde {
   var $roundNumber;
 
   /**
-   *  Modus 0->Tabelle / 1-> KO / 2->KO mir R�ckspiel / 3->best of 3 / 5->best of 5 / 7->best of 7
+   *  Modus 0->Tabelle / 1-> KO / 2->KO mir Rückspiel / 3->best of 3 / 5->best of 5 / 7->best of 7
    * @var integer
    * @access private
    */
@@ -71,17 +71,17 @@ class pokalRunde {
   }
 
   /**
-   * Gibt die Nummer der Runde zur�ck
+   * Gibt die Nummer der Runde zurück
    *
    * @access public
-   * @return integer Modus d�r Runde
+   * @return integer Modus der Runde
    */
   function getRoundNumber() {
     return $this->roundNumber;
   }
 
   /**
-   * Setzt den Modus dieser Runde zur�ck
+   * Setzt den Modus dieser Runde zurück
    *
    * @access public
    * @param integer value Modus der Runde
@@ -92,10 +92,10 @@ class pokalRunde {
   }
 
   /**
-   * Gibt den aktuellen Modus dieser Runde zur�ck
+   * Gibt den aktuellen Modus dieser Runde zurück
    *
    * @access public
-   * @return integer Modus d�r Runde
+   * @return integer Modus der Runde
    */
   function getMode() {
     return $this->mode;
@@ -113,8 +113,8 @@ class pokalRunde {
   }
 
   /**
-   * Gibt den Timestamp der Rundenbegins zur�ck, wenn format angegeben ist wird
-   * das Datum im angegeben Format zur�ckgegeben
+   * Gibt den Timestamp der Rundenbegins zurück, wenn format angegeben ist wird
+   * das Datum im angegeben Format zurückgegeben
    *
    * @access public
    * @param string format der Datumsausgabe
@@ -140,8 +140,8 @@ class pokalRunde {
   }
 
   /**
-   * Gibt den Timestamp der Rundenendes zur�ck, wenn format angegeben ist wird
-   * das Datum im angegeben Format zur�ckgegeben
+   * Gibt den Timestamp der Rundenendes zurück, wenn format angegeben ist wird
+   * das Datum im angegeben Format zurückgegeben
    *
    * @access public
    * @param string format der Datumsausgabe
@@ -173,7 +173,7 @@ class pokalRunde {
   }
 
   /**
-   * Gibt Partien dieser Runde zur�ck, ist $Number ="" wird das komplette Array �bergeben
+   * Gibt Partien dieser Runde zurück, ist $Number ="" wird das komplette Array übergeben
    *
    * @access public
    * @param integer Nummer der Partie
@@ -207,7 +207,7 @@ class pokalRunde {
   }
 
   /**
-   * Gibt Spieltage dieser Runde zur�ck, ist $Number ="" wird das komplette Array �bergeben
+   * Gibt Spieltage dieser Runde zurück, ist $Number ="" wird das komplette Array übergeben
    *
    * @access public
    * @param integer Nummer des Spieltags
@@ -220,7 +220,7 @@ class pokalRunde {
   }
 
   /**
-   * Gibt die Anzahl der Spieltage dieser Pokal Runde zur�ck
+   * Gibt die Anzahl der Spieltage dieser Pokal Runde zurück
    *
    * @access public
    * @return interger Anzahl der Spieltage

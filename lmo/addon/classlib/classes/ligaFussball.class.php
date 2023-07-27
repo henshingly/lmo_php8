@@ -10,11 +10,11 @@
 class ligaFussball extends liga {
 
   /**
-   * Sortiert die errechnete Tabelle und gibt diese als Array zurück
+   * Sortiert die errechnete Tabelle und gibt diese als Array zurÃ¼ck
    *   - Pkt - (Anzahl Spiele) - Differenz Tore - geschossene Tore -
-   *     - das Gesamtergebnis aus Hin- und Rückspiel im direkten Vergleich
-   *     - die Anzahl der auswärts erzielten Tore im direkten Vergleich
-   *     - die Anzahl aller auswärts erzielten Tore
+   *     - das Gesamtergebnis aus Hin- und RÃ¼ckspiel im direkten Vergleich
+   *     - die Anzahl der auswÃ¤rts erzielten Tore im direkten Vergleich
+   *     - die Anzahl aller auswÃ¤rts erzielten Tore
    *
    * @access protected
    * @param  array $tableArray Die zu sortierende Tabelle
@@ -35,19 +35,19 @@ class ligaFussball extends liga {
       }
       if ( $sort_pPkt[$i] == $sort_pPkt[$i+1] && $sort_spiele[$i] == $sort_spiele[$i+1]
         && $sort_dTor[$i] == $sort_dTor[$i+1] && $sort_pTor[$i] == $sort_pTor[$i+1]) {
-        // Partien für den Direkten Vergleich suchen.
+        // Partien fÃ¼r den Direkten Vergleich suchen.
         $allParties = $this->allPartieForTeams($tableArray[$i]['team'],$tableArray[$i+1]['team'],true);
         foreach ($allParties as $partie) {
           $tore[$partie->heim->nr] += $partie->hTore > -1? $partie->hTore:0;
           $tore[$partie->gast->nr] += $partie->gTore>-1? $partie->gTore:0;
           $gastTore[$partie->gast->nr] = $partie->gTore>-1? $partie->gTore:0;
         }
-        // das Gesamtergebnis aus Hin- und Rückspiel im direkten Vergleich
+        // das Gesamtergebnis aus Hin- und RÃ¼ckspiel im direkten Vergleich
         if ($tore[$tableArray[$i]['team']->nr] == $tore[$tableArray[$i+1]['team']->nr]) {
-          // die Anzahl der auswärts erzielten Tore im direkten Vergleich
+          // die Anzahl der auswÃ¤rts erzielten Tore im direkten Vergleich
           if ( $gastTore[$tableArray[$i]['team']->nr] == $gastTore[$tableArray[$i+1]['team']->nr] ) {
             unset ($tore);
-            // die Anzahl aller auswärts erzielten Tore
+            // die Anzahl aller auswÃ¤rts erzielten Tore
             foreach ($this->spieltage as $spieltag) {
               foreach ($spieltag->partien as $partie) {
                 $tore[$partie->gast->nr] += $partie->gTore>-1? $partie->gTore:0;
