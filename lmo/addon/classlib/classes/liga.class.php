@@ -458,8 +458,8 @@ class liga {
    * wird die Standardformatierung aus den Ligaoptionen verwendet
    *
    * @access public
-   * @see strftime()
-   * @param string dateFormat gewünschtes Ausgabeformat (siehe strftime() )
+   * @see date()
+   * @param string dateFormat gewünschtes Ausgabeformat (siehe date() )
    * @return String
    */
   function ligaDatumAsString ($dateFormat=null) {
