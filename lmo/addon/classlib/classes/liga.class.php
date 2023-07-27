@@ -7,7 +7,9 @@
  * @package   classLib
  * @version  $Id: liga.class.php 569 2010-09-15 19:53:15Z jokerlmo $
  */
+#[\AllowDynamicProperties]
 class liga {
+
 
   /**
    * Nummer der Liga,
@@ -214,7 +216,6 @@ class liga {
   function addPartie(&$neuePartie) {
     $this->partien[] = $neuePartie;
   }
-
   /**
    * Gibt die Referenz auf das Partieobjekt zu einer Nummer zurück
    *
@@ -268,7 +269,7 @@ class liga {
     if (empty($result[0]) ) {
       return null;
     } else {
-      return $result;
+    return $result;
     }
   }
 
@@ -387,8 +388,8 @@ class liga {
     while (($i<$count) && ($found<>0)) {
       $i++;
       if (isset($this->spieltage[$i])) {
-      $found = strcmp($this->spieltage[$i]->nr,$spTagNr);
-    }
+        $found = strcmp($this->spieltage[$i]->nr,$spTagNr);
+      }
     }
     if ($found==0) {
       return $this->spieltage[$i];
@@ -457,13 +458,13 @@ class liga {
    * wird die Standardformatierung aus den Ligaoptionen verwendet
    *
    * @access public
-   * @see date()
-   * @param string dateFormat gewünschtes Ausgabeformat (siehe date() )
+   * @see strftime()
+   * @param string dateFormat gewünschtes Ausgabeformat (siehe strftime() )
    * @return String
    */
   function ligaDatumAsString ($dateFormat=null) {
     $dateFormat = !is_null($dateFormat)?$dateFormat:$this->options->keyValues['DatF'];
-    return date( $dateFormat , $this->ligaDatum);
+    return date($dateFormat, $this->ligaDatum);
   }
 
   /**
@@ -569,8 +570,7 @@ class liga {
       unset($iniData["Teamk"]); // weg damit weil bekannt
       unset($iniData["Teamm"]); // weg damit weil bekannt
       if ( isset($_GET['clibd']) && $_GET['clibd']==1 ) {
-        echo "<pre>classlib ".CLASSLIB_VERSION_NR.
-        " loadFile($fileName) call from File ".$_SERVER['PHP_SELF']."<pre>";
+        echo "<pre>classlib " . CLASSLIB_VERSION_NR . " loadFile($fileName) call from File " . $_SERVER['PHP_SELF']."<pre>";
       }
       // Partien einlesen
       $rCounter = 1;
@@ -878,7 +878,7 @@ class liga {
    *    $myArray[0..n]["dTor"]       Tordifferenz
    *    $myArray[0..n]["pPkt"]       Pluspunkte
    *    $myArray[0..n]["mPkt"]       Minuspunkte
-   *    $myArray[0..n]["possp"]      Position an dem $key Spieltag
+   * $myArray[0..n]["possp"] Position an dem $key Spieltag
    *
    * @access public
    * @param integer spTag Spieltag für den die Tabelle berechnet werden soll.
@@ -904,7 +904,7 @@ class liga {
       "dTor"=> 0,
       "pPkt"=> 0,
       "mPkt"=> 0,
-      "possp"=> array());
+                             "possp"=> array());
     }
     foreach ($this->spieltage as $spieltag) {
       if ($spieltag->getModus() > 0 ) {
@@ -949,7 +949,7 @@ class liga {
           if ($tableArray[$count]["team"]===$partie->gast) {
             $gastCount=$count;
           }
-          }
+        }
         // Strafen berücksichtigen
         if ($heimCount!=-1) {
           $this->strafen($tableArray[$heimCount],$spTagCount);
@@ -982,8 +982,7 @@ class liga {
               $tableArray[$gastCount]["u"] ++;
               $tableArray[$gastCount]["spiele"] ++;
             }
-          }
-          elseif ($partie->gTore > $partie->hTore) { // Gast hat gewonnen
+          } elseif ($partie->gTore > $partie->hTore) { // Gast hat gewonnen
             if ($tableArt != "gast") {
               $tableArray[$heimCount]["mPkt"] += $pointsForWin;
               $tableArray[$heimCount]["pPkt"] += $pointsForLost;
@@ -1015,8 +1014,7 @@ class liga {
             echo "Fehler in Punkteermittlung (Normales Ergebnis)";
             echo $partie->showDetailsHTML();
           }
-        }
-        else if ($partie->hTore==-2) { // O:0 Tore Heim gewinnt
+        } else if ($partie->hTore==-2) { // O:0 Tore Heim gewinnt
           if ($tableArt != "gast") {
             $tableArray[$heimCount]["pPkt"] += $pointsForWin;
             $tableArray[$heimCount]["mPkt"] += $pointsForLost;
@@ -1029,8 +1027,7 @@ class liga {
             $tableArray[$gastCount]["n"] ++;
             $tableArray[$gastCount]["spiele"] ++;
           }
-        }
-        else if ($partie->gTore==-2) { // O:0 Tore Gast gewinnt
+        } else if ($partie->gTore==-2) { // O:0 Tore Gast gewinnt
           if ($tableArt != "gast") {
             $tableArray[$heimCount]["mPkt"] += $pointsForWin;
             $tableArray[$heimCount]["pPkt"] += $pointsForLost;
@@ -1079,13 +1076,13 @@ class liga {
    * @return array
    */
   function sortTable($tableArray) {
-      foreach($tableArray as $table) {
-        $sort_pPkt[] = $table["pPkt"];
-        $sort_mPkt[] = $this->options->keyValues['MinusPoints'] == 2?$table["mPkt"]: 0;
-        $sort_pTor[] = $table["pTor"];
-        $sort_mTor[] = $table["mTor"];
-        $sort_dTor[] = $table["dTor"];
-      }
+    foreach($tableArray as $table) {
+      $sort_pPkt[] = $table["pPkt"];
+      $sort_mPkt[] = $this->options->keyValues['MinusPoints'] == 2?$table["mPkt"]: 0;
+      $sort_pTor[] = $table["pTor"];
+      $sort_mTor[] = $table["mTor"];
+      $sort_dTor[] = $table["dTor"];
+    }
     // ASC = auf-, DESC = absteigend
     if ( $this->options->keyValues['Kegel']==1 ) { // Sortierung Punkte,erzielte Tore
       array_multisort($sort_pPkt,SORT_DESC ,$sort_mPkt,SORT_ASC ,$sort_pTor,SORT_DESC ,$sort_dtor,SORT_DESC ,$tableArray,SORT_DESC);
