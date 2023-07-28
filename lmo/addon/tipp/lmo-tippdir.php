@@ -120,7 +120,7 @@ if ($ftype!="") {
           $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dummy[$k],0,-4)."_".str_replace(" ","_",$_SESSION['lmotippername']).".tip";
           echo "<li><a href='".$addi.$dummy[$k]."'>".$t0."</a>";
           if (file_exists($tippfile)) {
-            echo "<br><small>".$text['tipp'][138]." ".date($defdateformat,filemtime($tippfile)).$t3."</small>";
+            echo "<br><small>".$text['tipp'][138]." ".datefmt_format($fmt, filemtime($tippfile)).$t3."</small>";
           }
           echo "</li>";
         }

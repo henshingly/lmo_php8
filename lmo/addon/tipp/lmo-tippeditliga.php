@@ -31,7 +31,7 @@ if ($tipp_einsichterst==2) {
 
 if ($datm==1) {
   if ($mterm[$st-1][$i]>0) {
-    $dum1=date($datf, $mterm[$st-1][$i]);
+    $dum1=datefmt_format($fmt, $mterm[$st-1][$i]);
   } else {
     $dum1="";
   }?>

@@ -95,11 +95,11 @@ if(!isset($nw)){
     $auswertfile = $einsichtfile;
   }
   if ($auswertfile != "" && file_exists($auswertfile)) {
-    $auswertstand = date("d.m.Y H:i", filemtime($auswertfile)); // Stand der *.aus-Datei
+    $auswertstand = datefmt_format($fmt, filemtime($auswertfile)); // Stand der *.aus-Datei
     echo $text['tipp'][83].": ".$auswertstand."<br>";
   }
   if ($tippfile != "" && $all != 1 && ($todo != "tabelle" || $nick != "") && file_exists($tippfile)) {
-    $tippstand = date("d.m.Y H:i", filemtime($tippfile)); // Stand der *_user.tip-Datei
+    $tippstand = datefmt_format($fmt, filemtime($tippfile)); // Stand der *_user.tip-Datei
     echo $text['tipp'][86].": ".$tippstand."<br>";
   }
   if ($file != "" && $all != 1 && isset($stand) && $stand != "") {

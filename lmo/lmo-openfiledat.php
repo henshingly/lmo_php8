@@ -22,7 +22,7 @@ if ($file != "") {
   if (substr($file, -4) == ".l98") {
     $daten = array();
     $sekt = "";
-    $stand = date($defdateformat, filemtime($dirliga.$file));
+    $stand = datefmt_format($fmt, filemtime($dirliga.$file));
     $datei = fopen($dirliga.$file, "rb");
     while ($datei && !feof($datei)) {
       $zeile = fgets($datei, 10000);

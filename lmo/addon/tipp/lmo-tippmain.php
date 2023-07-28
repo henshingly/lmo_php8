@@ -89,8 +89,7 @@ if ($action == "tipp") {
   }
   ?>
     </div>
-  </div><?php // require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); 
- ?>
+  </div>
 </div>
 <?php 
 }?>

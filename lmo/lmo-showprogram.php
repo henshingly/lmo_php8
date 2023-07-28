@@ -52,7 +52,7 @@ if($file!=""){
         <div class="row"><?php
      if($datm==1) {
             if($mterm[$j][$i]>0) {
-              $dum1 = date($datf, $mterm[$j][$i]);
+              $dum1 = datefmt_format($fmt, $mterm[$j][$i]);
               $dum2 = date("d.m.y", $mterm[$j][$i]);
             } else {
               $dum1=$dum2="";
@@ -61,7 +61,6 @@ if($file!=""){
           <div class="col-2 text-end d-none d-lg-block"><?php echo $dum1; ?></div>
           <div class="col-2 text-end d-lg-none"><?php echo $dum2; ?></div><?php
         } ?>
-          
           <?php
           if ($selteam==$teama[$j][$i]) {
             $heim1 = "<strong>";
