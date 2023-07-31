@@ -34,7 +34,7 @@
               <td valign="bottom" align="left"><!--Ligenuebersicht--></td>
               <td class="lmoFooter" valign="bottom" align="right"><!--LetzteAuswertung--><br><!--Berechnungszeit--><!--Infolink--></td>
             </tr>
-    	    </table>
+          </table>
         </td>
       </tr>
     </table>
