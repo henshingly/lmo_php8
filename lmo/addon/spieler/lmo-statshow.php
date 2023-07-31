@@ -248,7 +248,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
 <table width="99%">
   <tr>
     <td align="center">
-      <a href="<?php echo URL_TO_ADDONDIR . jhztgtz"/spieler/lmo-statprint.php?file=$file&amp;begin=$begin&amp;sort=$sort&amp;direction=$direction&amp;team=$team";?>"><?php echo $text['spieler'][56]?></a>
+      <a href="<?php echo URL_TO_ADDONDIR . "/spieler/lmo-statprint.php?file=$file&amp;begin=$begin&amp;sort=$sort&amp;direction=$direction&amp;team=$team";?>"><?php echo $text['spieler'][56]?></a>
     </td><?php
     if ($spieler_anzeige_pro_seite != 0) { ?>
     <td align="center">
