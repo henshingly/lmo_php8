@@ -575,6 +575,7 @@
 574=Zeitzone
 575=Zeitzone des Servers
 576=Hinweis: Tabellenstand ohne vorgezogene Spiele!
+577=Platz
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde
@@ -596,7 +597,7 @@
 4019=Spiele mit gleicher Anzahl
 4020=Restprogramm
 4021=Bewertung der Restprogramme
-4022=&sum; Pkt.verh&auml;ltnis Gegner
+4022=∑ Pkt.verhältnis Gegner
 4023=Tendenz
 4024=gleich
 4025=leichter

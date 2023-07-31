@@ -12,4 +12,7 @@
 011=N
 012=a
 013=h
-014=Stand
+014=Stond
+015=Dagen
+016=Uur
+017=Minuten

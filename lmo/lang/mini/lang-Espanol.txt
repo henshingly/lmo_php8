@@ -13,3 +13,6 @@
 012=v
 013=l
 014=Actualizado
+015=Días
+016=Horas
+017=Minutos

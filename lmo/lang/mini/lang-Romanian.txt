@@ -1,15 +1,18 @@
 000=[<acronym title='lmo-mininext for LMO &copy; Tim Schumacher/LMO-Group CLASSLIB_VERSION'>&copy;</acronym>]
 001=Meciul urmator
 002=Ultimul meci
-003=Spielpaarung
+003=pereche de joc
 004=Statistica:
 005=Eroare: Liga nu exista!
-006=Warnung: Archivordner nicht gefunden
+006=Avertisment: folderul arhivă nu a fost găsit
 007=Ultimul meci
-008=Keine Mannschaft ausgewählt!
+008=Nicio echipă selectată!
 009=Victorii
 010=Egalitate
 011=Infrangeri
 012=depl
 013=acasa
-014=Stand
+014=Statea
+015=Zile
+016=Ore
+017=Minute

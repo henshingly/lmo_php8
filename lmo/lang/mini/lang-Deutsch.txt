@@ -15,4 +15,4 @@
 014=Stand
 015=Tage
 016=Stunden
-017=Minuten 
+017=Minuten
