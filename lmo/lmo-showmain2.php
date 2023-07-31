@@ -228,8 +228,10 @@ if ($file!="") {
   //SaveHTML
   if ($einsavehtml==1) {
       ob_start();?>
+
         <table width="100%" cellspacing="0" cellpadding="0" border="0">
-          <tr><?php
+          <tr>
+<?php
           if($lmtype==0 && $druck==1){
             include(PATH_TO_LMO."/lmo-savehtml.php");
             include(PATH_TO_LMO."/lmo-savehtml1.php");
