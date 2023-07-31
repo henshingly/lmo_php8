@@ -17,6 +17,9 @@
       <table width="100%">
         <caption><!--gameTxt--></caption>
         <tr>
+         <th><!--countDown--></th>
+        </tr>
+        <tr>
          <th><!--gameDate--> <!--gameTime--></th>
         </tr>
         <tr>
