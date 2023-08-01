@@ -94,7 +94,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
         if ($tipp_showzus == 1) {
           $punkte3++;
         }
-      } elseif($gtb0-$gta0 == $gb0-$ga0) {
+      } elseif((int)$gtb0-(int)$gta0 == (int)$gb0-(int)$ga0) {
         $punktespiel = $tipp_rtendenzdiff;
         if ($tipp_showzus == 1) {
           $punkte2++;
@@ -141,7 +141,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
       }
     } elseif($msieg == 2) {
       // GT-Entscheidung
-      if ($gtb0-$gta0 > 0) {
+      if ((int)$gtb0-(int)$gta0 > 0) {
         if ($tipp_gtpunkte == 1) {
           $punktespiel = $tipp_rtendenz;
           if ($tipp_showzus == 1) {
@@ -158,7 +158,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
       }
     } elseif($msieg == 3) {
       // GT-Entscheidung beidseitiges Erg.
-      if ($gtb0-$gta0 == 0) {
+      if ((int)$gtb0-(int)$gta0 == 0) {
         if ($tipp_gtpunkte == 1) {
           $punktespiel = $tipp_rtendenz;
           if ($tipp_showzus == 1) {
@@ -201,7 +201,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
       $punktespiel = -1;
     } elseif($msieg == 1) {
       // GT-Entscheidung
-      if ($gtb0-$gta0 < 0) {
+      if ((int)$gtb0-(int)$gta0 < 0) {
         $punktespiel = 1;
       } else {
         $punktespiel = 0;
@@ -215,7 +215,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
       }
     } elseif($msieg == 3) {
       // GT-Entscheidung beidseitiges Erg.
-      if ($gtb0-$gta0 == 0) {
+      if ((int)$gtb0-(int)$gta0 == 0) {
         $punktespiel = 1;
       } else {
         $punktespiel = 0;
@@ -232,7 +232,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
   }
   if ($jkspfaktor0 > 1 && $punktespiel > 0) {
     if ($tipp_showzus == 1) {
-      $punkte6 += $punktespiel * $jkspfaktor0-$punktespiel;
+      $punkte6 += (int)$punktespiel * (int)$jkspfaktor0-(int)$punktespiel;
     }
     $punktespiel *= $jkspfaktor0;
   }
