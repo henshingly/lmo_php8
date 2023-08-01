@@ -312,13 +312,13 @@ if (!file_exists($auswertfile)) {
               }
             } else if ($tipp_showzus==1) {
               if ($tipp_krit==2) {
-                $tt.=(50000000+$punkte1gesamt[$a][$jyz]);
+                $tt.=(50000000+(int)$punkte1gesamt[$a][$jyz]);
               } else if ($tipp_krit==3) {
-                $tt.=(50000000+$punkte2gesamt[$a][$jyz]);
+                $tt.=(50000000+(int)$punkte2gesamt[$a][$jyz]);
               } else if ($tipp_krit==4) {
-                $tt.=(50000000+$punkte3gesamt[$a][$jyz]);
+                $tt.=(50000000+(int)$punkte3gesamt[$a][$jyz]);
               } else if ($tipp_krit==5) {
-                $tt.=(50000000+$punkte6gesamt[$a][$jyz]);
+                $tt.=(50000000+(int)$punkte6gesamt[$a][$jyz]);
               }
             }
           }
