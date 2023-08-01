@@ -45,7 +45,7 @@ if(($file != "") && ($kurve == 1)){
         }
     }?>
                   <tr>
-                    <td align="center"><br/><canvas id="myChart" width="800" height="450"></canvas>
+                    <td align="center"><br/><canvas id="myChart" width="700" height="500"></canvas>
 <?php
     $data = "";
     $pgtext1 = $text[135];
