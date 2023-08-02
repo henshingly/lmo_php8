@@ -37,7 +37,7 @@ if($save==1){
       //Zeitformat kontrollieren
       $deftime=isset($_POST["xdeftime"])?$_POST["xdeftime"]:"15:30";
       $datum_tmp = explode(':',$deftime);
-      $deftime=strftime("H:i", mktime($datum_tmp[0],$datum_tmp[1]));
+      $deftime=date("H:i", mktime($datum_tmp[0],$datum_tmp[1]));
 
       if (!empty($_POST["xdefdateselect"])) {
         $defdateformat=isset($_POST["xdefdateformat"])?$_POST["xdefdateformat"]:$defdateformat;
