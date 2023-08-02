@@ -299,18 +299,18 @@ require(dirname(__FILE__)."/init.php");
 }
 
 .sort-arrow {
-	display:none;
+  display:none;
 }
 
 .sort-arrow.descending {
-	display:none;
+  display:none;
 }
 
 .sort-arrow.ascending {
-	display:none;
+  display:none;
 }
 a span.popup, a:link span.popup{
-	display: none;
+  display: none;
 }
 <?php 
 @include(PATH_TO_TEMPLATEDIR."/style.css");?>
