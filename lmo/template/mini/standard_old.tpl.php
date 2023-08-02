@@ -6,8 +6,8 @@
     <td align="right"><!--TendenzIMG--></td>
     <td align="center"><!--TeamBild--></td>
     <td><acronym title="<!--TeamLang-->"><!--Team--></acronym></td>
-    <td align="right"><!--Punkte--></td>
     <td align="right"><!--Tordifferenz--></td>
+    <td align="right"><!--Punkte--></td>
   </tr>
   <!-- END Inhalt -->
 </table>
