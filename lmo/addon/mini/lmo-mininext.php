@@ -1,25 +1,24 @@
 <?php
 /** Liga Manager Online 4
- *
- * http://lmo.sourceforge.net/
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
- *
- * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
- *
- * $Id$
- */
+  *
+  * http://lmo.sourceforge.net/
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+  * published by the Free Software Foundation; either version 2 of
+  * the License, or (at your option) any later version.
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  * General Public License for more details.
+  *
+  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
+  *
+  */
 
-require (dirname(__FILE__) . '/../../init.php');
-require_once (PATH_TO_ADDONDIR . "/classlib/ini.php");
+require_once(dirname(__FILE__) . '/../../init.php');
+require_once(PATH_TO_ADDONDIR . "/classlib/ini.php");
 
 $template_folder = PATH_TO_TEMPLATEDIR . '/mini/';
 
@@ -90,13 +89,13 @@ if (!file_exists($mini_cache_filename)
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <style type="text/css">
     html,body {margin:0;padding:0;background:transparent;}
+<?php @include(PATH_TO_TEMPLATEDIR."/mini/style.css");?>
   </style>
 </head>
 <body><?php
     }
 
-    $template = new HTML_Template_IT($template_folder); // verzeichnis
-    //$tpl = new LMO_HTML_Template_IT($tpl_folder); // verzeichnis
+    $template = new HTML_Template_IT($template_folder); // folder
     $template -> loadTemplatefile($mini_template);
     $team_a = null;
     $team_b = null;
