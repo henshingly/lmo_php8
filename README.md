@@ -1,5 +1,5 @@
 # LMO with PHP7
-Together with others, I would like to ensure that the Liga Manager Online runs under PHP 7.
+Together with others, I would like to ensure that the Liga Manager Online runs under PHP 8.
 The project page is still <a target="_blank" href="https://www.liga-manager-online.de/homepage/">https://www.liga-manager-online.de/homepage/</a>
 
 IMPORTANT -
@@ -13,7 +13,7 @@ Download the PDF class at <a target="_blank" href="https://github.com/rospdf/pdf
 --------------------------------------------------------------------------------------------------------
 
 # LMO mit PHP7
-Ich möchte hier mit anderen die Lauffähigkeit des Liga Managers Online unter PHP 7 gewährleisten.
+Ich möchte hier mit anderen die Lauffähigkeit des Liga Managers Online unter PHP 8 gewährleisten.
 Die Projektseite ist aber weiterhin <a target="_blank" href="https://www.liga-manager-online.de/homepage/">https://www.liga-manager-online.de/homepage/</a>
 
 WICHTIG - 
