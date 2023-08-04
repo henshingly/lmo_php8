@@ -67,7 +67,7 @@ if(($file!="") && ($kurve==1)){
                         lineTension: $tension,
                         backgroundColor: 'rgba($color)',
                         borderColor: 'rgba($color)',
-                        data: [{${'pgplatz'.$j}[],
+                        data: [{${'pgplatz'.$j}}],
                         hidden: $flag,
                     },";
                 }
