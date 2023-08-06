@@ -98,12 +98,13 @@ if (isset($file) && $file != "") {
         $spalten = fgetcsv($filepointer, 1000, "#"); //Zeile mit Spaltenbezeichnern
         $typ = array(); //Spaltentyp (TRUE=String)
         $zeile = 0;
-        if (is_null($spalten[0])) { //Datei war leer
+        if ($spalten==FALSE) { //Datei war leer
+            $spalten=array();
             $spalten[0] = $text['spieler'][2]; //Name der ersten Spalte
             set_file_buffer($filepointer, 0);
             fwrite($filepointer, $spalten[0] . "\n"); //Erste Zeile/Spalte in Datei schreiben
         }
-        //  Wenn in einer Spalte eine Formel steht, wurde am Namen *_*-* angehängt
+        //  Wenn in einer Spalte eine Formel steht, wurde am Namen *_*-* angehÃ¤ngt
         $formel_ges = 0;
         $speicher_spalten = $spalten;
         $formel = array();
@@ -136,7 +137,7 @@ if (isset($file) && $file != "") {
         fclose($filepointer);
 
         switch ($spieler_option) {
-            case "addplayer": //Spieler hinzufügen
+            case "addplayer": //Spieler hinzufÃ¼gen
                 if ($wert != "") {
                     $filepointer = @fopen($filename, "w+b");
                     set_file_buffer($filepointer, 0);
@@ -180,7 +181,7 @@ if (isset($file) && $file != "") {
                     echo $text['spieler'][4];
                 }
             break;
-            case "delplayer": //Spieler löschen
+            case "delplayer": //Spieler lÃ¶schen
                 if ($wert != "") {
                     $filepointer = @fopen($filename, "w+b");
                     set_file_buffer($filepointer, 0);
@@ -198,7 +199,7 @@ if (isset($file) && $file != "") {
                     $filepointer = fopen($filename, "rb");
                     $spalten = fgetcsv($filepointer, 1000, "#"); //Zeile mit Spaltenbezeichnern
                     if ($formel_ges > 0) {
-                        fgetcsv($filepointer, 1000, "#"); //Zeile mit Formeln übergehen
+                        fgetcsv($filepointer, 1000, "#"); //Zeile mit Formeln Ã¼bergehen
 
                     }
                     while ($data[$zeile] = fgetcsv($filepointer, 10000, "#")) {
@@ -209,7 +210,7 @@ if (isset($file) && $file != "") {
                     @touch(PATH_TO_LMO . "/" . $dirliga . $file);
                 }
             break;
-            case "addcolumn": //Spalte hinzufügen
+            case "addcolumn": //Spalte hinzufÃ¼gen
                 if ($wert != "") {
                     if (isset($_REQUEST['type'])) $val = $_REQUEST['type'];
                     else $val = "0";
@@ -641,8 +642,8 @@ function cmpInt ($a1, $a2) {
 
 function cmpStr ($a2, $a1) {
     global $spieler_sort;
-    $a1[$spieler_sort] = strtr($a1[$spieler_sort], "¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ", "YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
-    $a2[$spieler_sort] = strtr($a2[$spieler_sort], "¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëìíîïğñòóôõöøùúûüıÿ", "YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+    $a1[$spieler_sort] = strtr($a1[$spieler_sort], "Â¥ÂµÃ€ÃÃ‚ÃƒÃ„Ã…Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃŒÃÃÃÃÃ‘Ã’Ã“Ã”Ã•Ã–Ã˜Ã™ÃšÃ›ÃœÃÃŸÃ Ã¡Ã¢Ã£Ã¤Ã¥Ã¦Ã§Ã¨Ã©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã°Ã±Ã²Ã³Ã´ÃµÃ¶Ã¸Ã¹ÃºÃ»Ã¼Ã½Ã¿", "YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+    $a2[$spieler_sort] = strtr($a2[$spieler_sort], "Â¥ÂµÃ€ÃÃ‚ÃƒÃ„Ã…Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃŒÃÃÃÃÃ‘Ã’Ã“Ã”Ã•Ã–Ã˜Ã™ÃšÃ›ÃœÃÃŸÃ Ã¡Ã¢Ã£Ã¤Ã¥Ã¦Ã§Ã¨Ã©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã°Ã±Ã²Ã³Ã´ÃµÃ¶Ã¸Ã¹ÃºÃ»Ã¼Ã½Ã¿", "YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
     $c = strnatcasecmp($a2[$spieler_sort], $a1[$spieler_sort]);
     if (!$c)
     $c = strnatcasecmp($a1[$spieler_sort], $a2[$spieler_sort]);
