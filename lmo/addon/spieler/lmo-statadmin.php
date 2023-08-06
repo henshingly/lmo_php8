@@ -114,8 +114,9 @@ if (isset($file) && $file != "")
         $spalten = fgetcsv($filepointer, 1000, "#"); //Zeile mit Spaltenbezeichnern
         $typ = array(); //Spaltentyp (TRUE=String)
         $zeile = 0;
-        if (is_null($spalten[0]))
+        if ($spalten==FALSE)
         { //Datei war leer
+			$spalten=array();
             $spalten[0] = $text['spieler'][2]; //Name der ersten Spalte
             set_file_buffer($filepointer, 0);
             fwrite($filepointer, $spalten[0] . "\n"); //Erste Zeile/Spalte in Datei schreiben
