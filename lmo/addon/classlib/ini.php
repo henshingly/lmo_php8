@@ -37,7 +37,13 @@ require_once(PATH_TO_ADDONDIR."/classlib/classes/pdf/Cezpdf.php");         // Ve
 include_once(PATH_TO_ADDONDIR."/classlib/classes/pdf/extensions/CezTableImage.php");
 // classes for image manipulation
 if (file_exists(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php") ){
-	require_once(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php");
+  require_once(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php");
+}
+if (!defined('LMO_VERSION_NR')) {
+  define('LMO_VERSION_NR','4.1.0');
+}
+if (!defined('LMO_VERSION')) {
+  define('LMO_VERSION','LMO4PHP8&nbsp;'.LMO_VERSION_NR);
 }
 if (!defined('CLASSLIB_VERSION_NR')) {
   define('CLASSLIB_VERSION_NR','2.8');
