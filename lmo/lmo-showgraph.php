@@ -83,7 +83,7 @@ if(($file != "") && ($kurve == 1)){
                               hidden: $flag,
                             },";
     } ?>
-                      <script src="<?php echo URL_TO_LMO?>/js/chart.js"></script>
+                      <script src="<?php echo URL_TO_LMO; ?>/js/chart.js"></script>
                       <script>
                         const ctx = document.getElementById('myChart');
                         new Chart(ctx, {
