@@ -21,7 +21,7 @@
 ?>
 <table class="lmoMiddle" width="400" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?php echo $text[54]; ?></h1></td>
+    <td align="center"><h1><?php echo $text[54] . " - Vers. " . LMO_VERSION_NR;?></h1></td>
   </tr>
   <tr>
     <td align="center">

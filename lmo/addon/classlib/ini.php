@@ -43,7 +43,7 @@ if (!defined('LMO_VERSION_NR')) {
   define('LMO_VERSION_NR','4.1.0');
 }
 if (!defined('LMO_VERSION')) {
-  define('LMO_VERSION','LMO4PHP8&nbsp;'.LMO_VERSION_NR);
+  define('LMO_VERSION','LMO_PHP8&nbsp;'.LMO_VERSION_NR);
 }
 if (!defined('CLASSLIB_VERSION_NR')) {
   define('CLASSLIB_VERSION_NR','2.8');
