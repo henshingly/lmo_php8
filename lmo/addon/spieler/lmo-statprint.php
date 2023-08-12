@@ -5,17 +5,16 @@
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
+ * published by the Free Softjhyware Foundation; either version 2 of
  * the License, or (at your option) any later version.
  *
- * This program is distributed in the hope th6745at it will be useful,
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * General Public License for more details.
  *
  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
  *
- * $Id$
 */
 
 require_once (dirname(__FILE__) . '/../../init.php');
@@ -108,58 +107,48 @@ if ($filepointer = fopen($filename, "r+b")) {
     <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
     <h1><?php
     echo $text['spieler'][18];
-    if ($team != '') {
-        echo ' - ' . $team;
+    if ($team!='') {
+        echo ' - '.$team;
     }?>
     </h1>
       <table cellpadding="0" cellspacing="1" border="0">
         <tr>
-          <th colspan="2"></th><?php
-    for ($i = 0; $i < $spaltenzahl; $i++) {
-        if ($spalten[$i] != $text['spieler'][32] && ($spalten[$i] != $text['spieler'][25] || $team == '')) {?>
-          <th class="nobr" align="center"><?php echo $spalten[$i]?></th><?php
+          <th colspan="2"></th>
+<?php
+    for ($i=0;$i<$spaltenzahl;$i++) {
+        if ($spalten[$i]!=$text['spieler'][32] && ($spalten[$i]!=$text['spieler'][25] || $team=='')){?>
+          <th class="nobr" align="center"><?php echo $spalten[$i]?></th>
+<?php
         }
     }?>
         </tr><?php
-    for ($j1 = $begin; $j1 < $begin + $maxdisplay; $j1++) {
-        $class = fmod($j1, 2) != 0?" class='odd'":'';?>
-          <tr><?php
-        for ($j2 = 0; $j2 < $spaltenzahl; $j2++) {
-            if ($j2 == $sort) {
-                $stat_class = ' class="lmoBackMarkierung nobr"';
-            } else {
-                $stat_class = ' class="nobr"';
-            }
-            if ($j2 == 0) {?>
-            <td align="right"<?php echo $class?>><strong><?php
-                if (!isset($data[$j1 - 1][$sort]) || $data[$j1][$sort] !== $data[$j1 - 1][$sort] && $j1!=$begin) echo ($j1 + 1) . ". ";
+    for ($j1=$begin;$j1<$begin+$maxdisplay;$j1++) {
+        $class=fmod($j1,2)!=0?" class='odd'":'';?>
 
-                if ($j1 > 0 && $j1 == $begin) {
-                    for ($x = $begin - 1; $x >= 0; $x--) {
-                        if ($data[$x][$sort] != $data[$j1][$sort]) {
-                            echo ($x + 2) . ". ";
+        <tr><?php
+        for ($j2=0;$j2<$spaltenzahl;$j2++) {
+            if ($j2==$sort){
+            $stat_class=' class="lmoBackMarkierung nobr"';
+            } else {
+                $stat_class=' class="nobr"';
+            }
+            if ($j2==0) {?>
+
+          <td align='right'<?php echo $class?>><strong><?php
+                if (!isset($data[$j1-1][$sort]) || $data[$j1][$sort] !== $data[$j1-1][$sort] && $j1!=$begin) echo ($j1+1).". ";
+                if ($j1>0 && $j1==$begin) {
+                    for ($x=$begin-1; $x>=0; $x--){
+                        if ($data[$x][$sort]!=$data[$j1][$sort]) {
+                            echo ($x+2).". ";
                             break;
                         }
-                        if ($x == 0) echo "1. ";
+                        if ($x==0) echo "1. ";
                     }
                 }?></strong></td>
-            <td align="left"<?php echo $class?>><?php
-                //Spielerbild
-                if (file_exists(PATH_TO_IMGDIR . "/spieler/" . $data[$j1][$j2] . ".jpg")) {
-                    $imgdata = getimagesize(PATH_TO_IMGDIR . "/spieler/" . $data[$j1][$j2].".jpg");?>
-              <img border="0" src="<?php echo URL_TO_IMGDIR . "/spieler/" . rawurlencode($data[$j1][$j2])?>.jpg" <?php echo $imgdata[3]?> alt="<?php echo $text['spieler'][26]?>" title="<?php echo $data[$j1][$j2]?>"><?php
-                } elseif (file_exists(PATH_TO_IMGDIR . "/spieler/" . $data[$j1][$j2] . ".png")) {
-                    $imgdata = getimagesize(PATH_TO_IMGDIR . "/spieler/" . $data[$j1][$j2].".png");?>
-              <img border="0" src="<?php echo URL_TO_IMGDIR . "/spieler/" . rawurlencode($data[$j1][$j2])?>.png" <?php echo $imgdata[3]?> alt="<?php echo $text['spieler'][26]?>" title="<?php echo $data[$j1][$j2]?>"><?php
-                } elseif (file_exists(PATH_TO_IMGDIR . "/spieler/" . $data[$j1][$j2] . ".gif")) {
-                    $imgdata = getimagesize(PATH_TO_IMGDIR . "/spieler/" . $data[$j1][$j2].".gif");?>
-              <img border="0" src="<?php echo URL_TO_IMGDIR . "/spieler/" . rawurlencode($data[$j1][$j2])?>.gif" <?php echo $imgdata[3]?> alt="<?php echo $text['spieler'][26]?>" title="<?php echo $data[$j1][$j2]?>"><?php
-                } ?></td><?php
-            } ?>
-            <td<?php
-            echo $class;
-
+          <td align='center'<?php echo $class .">" . HTML_icon($data[$j1][$j2], 'spieler', 'small') . "</td>\n"; // Spielerbild
+            }
             if ($spalten[$j2] != $text['spieler'][32] && ($spalten[$j2] != $text['spieler'][25] || $team == '')) {
+                echo "          <td" . $class;
                 if (is_numeric($data[$j1][$j2])) {
                     echo " align='center'>";
                 } else {
@@ -168,48 +157,46 @@ if ($filepointer = fopen($filename, "r+b")) {
                 if ($j2 == $sort) echo "<strong>";
                 echo  $data[$j1][$j2];
                 if ($j2 == $sort) echo "</strong>";
-            }?></td><?php
+                echo "</td>\n";
+            }
         }?>
-          </tr><?php
+        </tr><?php
     }?>
 
       </table>
-      <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script><?php
+    <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
+  </body>
+</html><?php
 } else {
-    echo getMessage($text['spieler'][14], true);?><?php
+    echo getMessage($text['spieler'][14],TRUE);
 }
-
 function cmpInt ($a1, $a2) {
     global $sort;
-    if ($a2[$sort] == $a1[$sort]) return 0;
-    return ($a1[$sort] > $a2[$sort]) ? -1 : 1;
+    if ($a2[$sort]==$a1[$sort]) return 0;
+    return ($a1[$sort]>$a2[$sort]) ? -1 : 1;
 }
-
 function cmpStr ($a2, $a1) {
     global $sort;
-    $a1[$sort] = strtr($a1[$sort], "¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ", "YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
-    $a2[$sort] = strtr($a2[$sort], "¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ", "YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
-    $c = strnatcasecmp($a2[$sort], $a1[$sort]);
+    $a1[$sort]=strtr($a1[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+    $a2[$sort]=strtr($a2[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+    $c = strnatcasecmp($a2[$sort],$a1[$sort]);
     return $c;
 }
-
 function cmpInt2 ($a1, $a2) {
     global $sort;
-    if ($a2[$sort] == $a1[$sort]) return 0;
-    return ($a1[$sort] > $a2[$sort]) ? 1 : -1;
+    if ($a2[$sort]==$a1[$sort]) return 0;
+    return ($a1[$sort]>$a2[$sort]) ? 1 : -1;
 }
-
 function cmpStr2 ($a2, $a1) {
     global $sort;
-    $a1[$sort] = strtr($a1[$sort], "¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ", "YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
-    $a2[$sort] = strtr($a2[$sort], "¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ", "YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
-    $c = strnatcasecmp($a2[$sort], $a1[$sort]);
-    return -1 * $c;
+    $a1[$sort]=strtr($a1[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+    $a2[$sort]=strtr($a2[$sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
+    $c = strnatcasecmp($a2[$sort],$a1[$sort]);
+    return -1*$c;
 }
-
 function filterNullwerte ($a) {
-    global $sort, $zeile;
-    if ($a[$sort] == 0) $zeile--;
-    return ($a[$sort] != 0);
+    global $sort,$zeile;
+    if ($a[$sort]==0) $zeile--;
+    return ($a[$sort]!=0);
 }
 ?>
