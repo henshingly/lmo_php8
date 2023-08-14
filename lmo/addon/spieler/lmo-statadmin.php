@@ -200,7 +200,6 @@ if (isset($file) && $file != "") {
                     $spalten = fgetcsv($filepointer, 1000, "#"); //Zeile mit Spaltenbezeichnern
                     if ($formel_ges > 0) {
                         fgetcsv($filepointer, 1000, "#"); //Zeile mit Formeln übergehen
-
                     }
                     while ($data[$zeile] = fgetcsv($filepointer, 10000, "#")) {
                         $zeile++;
@@ -455,7 +454,7 @@ function mark(el) {
                     <thead>
                         <tr><?php
         for ($i = 0;$i < $spaltenzahl;$i++) {
-            $stat_sort=$_SERVER['PHP_SELF']."?action=admin&amp;todo=statistik&amp;sort=".$i."&amp;file=".$file."&amp;direction=";?>
+            $stat_sort = $_SERVER['PHP_SELF'] . "?action=admin&amp;todo=statistik&amp;sort=" . $i . "&amp;file=" . $file . "&amp;direction="; ?>
                             <th colspan="2" class="nobr" align="center">
                                 <a href="<?php echo $stat_sort?>asc" title="<?php echo $text[527].' '.$text[526]?>" onClick="return chklmolink();"><img src="<?php echo URL_TO_IMGDIR?>/upsimple.png" width="7" height="7" border="0" alt="&and;"></a>
                                 <input type="text" name="spalten<?php echo $i?>" onChange="mark(this)" value="<?php echo $spalten[$i]?>" size="<?php echo strlen($spalten[$i]);?>">
