@@ -50,9 +50,9 @@ a:visited {
                   <!-- BEGIN Inhalt -->
                     <tr class="<!--Zeilenklasse-->">
                       <td><!--Datum--></td>
-                      <td align="center"><!--IconBigheimalt--></td>
+                      <td align="center"><!--IconBigheim--></td>
                       <td>&nbsp;-&nbsp;</td>
-                      <td  align="center"><!--IconBiggastalt--></td>
+                      <td  align="center"><!--IconBiggast--></td>
                       <td><!--Tore--></td>
                     </tr>
                   <!-- END Inhalt -->

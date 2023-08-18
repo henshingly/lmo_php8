@@ -19,7 +19,7 @@
 018=Afficher la notice (comme symbole)
 019=Modèle
 020=Viewer
-021=Configuration du LMO-Viewer 4.0
+021=Configuration du LMO-Viewer 4.1
 022=continuer
 023=Symbole des feuilles de matchs
 024=Symbole du classement
@@ -53,4 +53,6 @@
 052=Facteur cache
 053=Après le x-ème appel du LMO-Viewer le cache sera actualisé (plus vous avez de visiteur, plus élever cette valeur pourra être)
 054=Mise en évidence de l&#39;équipe préférée
-100=LMO-Viewer 4.0 &copy; LMO-Group
+055=Fichier de configuration
+056=pas trouvé!
+100=LMO-Viewer 4.1 &copy; LMO-Group

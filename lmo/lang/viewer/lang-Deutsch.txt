@@ -19,7 +19,7 @@
 018=Notiz anzeigen (als Symbol)
 019=Template
 020=Viewer
-021=Konfiguration LMO-Viewer 4.0
+021=Konfiguration LMO-Viewer 4.1
 022=weiter
 023=Berichtsymbol
 024=Tabellensymbol
@@ -53,4 +53,6 @@
 052=Cachefaktor
 053=Nach dem xx Aufrufen des Viewers wird der Cache erneuert (je mehr Besuche, destso höher kann der Wert sein)
 054=Lieblingsmannschaft hervorheben
-100=LMO-Viewer 4.0 &copy; LMO-Group
+055=Konfigurationsdatei
+056=nicht gefunden!
+100=LMO-Viewer 4.1 &copy; LMO-Group

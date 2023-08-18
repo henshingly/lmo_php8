@@ -19,13 +19,13 @@
 018=Show Notes (as Symbol)
 019=Template
 020=Viewer
-021=Configurating LMO-Viewer 4.0
+021=Configurating LMO-Viewer 4.1
 022=next
 023=BSymbol
 024=TSymbol
 025=NSymbol
 026=Matchday texts
-027=
+027=Koptekst
 028=Time Format
 029=Saved Successfully
 030=Step 2 of 3 - Which Leagues should be shown?
@@ -51,4 +51,8 @@
 050=not found!
 051=Attention! Not all types of KO tournaments are supported!
 052=Attention! This value is only supported if you have installed the Hack for middlelong team names!
-100=LMO-Viewer 4.0 &copy; LMO-Group
+053=Nadat de kijker xx keer is benaderd, wordt de cache vernieuwd (hoe meer bezoeken, hoe hoger de waarde kan zijn)
+054=Markeer favoriete team
+055=Configurationsdatei
+056=niet gevonden!
+100=LMO-Viewer 4.1 &copy; LMO-Group
