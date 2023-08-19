@@ -141,7 +141,8 @@ if ($save == 1) {
           </div>
           <div class="row p-1">
             <div class="col-5 offset-3">
-              <textarea  class="form-control"id="message" name="message" rows="10" cols="60"><?php                if ($emailart == 1) {
+              <textarea  class="form-control"id="message" name="message" rows="10" cols="60"><?php
+                if ($emailart == 1) {
                   echo $tipp_textreminder1;
                 } elseif($message != "") {
                   echo $message;

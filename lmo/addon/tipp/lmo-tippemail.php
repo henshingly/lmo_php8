@@ -20,6 +20,8 @@
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
+require_once(PATH_TO_LMO."/includes/PHPMailer.php");
+$mail = new PHPMailer(true);
 
 if ($message != "") {
   $dumma = array();
@@ -27,10 +29,9 @@ if ($message != "") {
 
   $dumma = file($pswfile);
   
-  $subject = "=?UTF-8?B?".base64_encode($betreff)."?=";
-  $header = "Content-type: text/plain; charset=utf-8";
-  $header .= "From: ".$text['tipp'][0]." <".$aadr.">";
-  $para5 = "-f $aadr";
+  $mail->isMail();
+  $mail->Subject = $betreff;
+  $mail->setFrom($aadr);
   $anzemail = 0;
   $anztipper = count($dumma);
   if (!isset($start)) {
@@ -43,29 +44,26 @@ if ($message != "") {
   if ($emailart == 0) {
     for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
       $dummb = explode('|', $dumma[$tippernr]);
-      if ($dummb[9] != -1) {
+      if ($dummb[9] != -1 && $dummb[4] != "") {
         $textmessage = $message;
         $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
         $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
         $textmessage = str_replace("[name]", $dummb[3], $textmessage);
-        //$textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";
-        if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
-          $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
-        } else {
-          $sent=mail($dummb[4], $subject, $textmessage, $header);
-        }
-        if ($sent) {
+        $mail->Body = utf8_decode($textmessage);
+        $mail->addAddress($dummb[4]);
+        if ($mail->send()) {
           $anzemail++;
+          $mail->ClearAllRecipients(); 
+	  $mail->ClearReplyTos();
         } else {
-          echo getMessage($text['tipp'][176],TRUE);
+          $mail->ErrorInfo();
+          $mail->ClearAllRecipients(); 
+	  $mail->ClearReplyTos();
         }
       }
     }
     echo getMessage($anzemail." ".$text['tipp'][175]);
-  }
-   
-   
-  elseif($emailart == 1) {
+  } elseif($emailart == 1) {
     $tipp_textreminder1 = str_replace(array("\r\n","\n","\r"), array("&#10;","&#10;","&#10;") , $message);
     require(PATH_TO_LMO."/lmo-savecfg.php");
     $now = strtotime("now");
@@ -141,11 +139,11 @@ if ($message != "") {
             if ($ktipp == 1) {
               if ($goaltipp[$i] == "_") {
                 if ($lliga != $liga[$i]) {
-                  $spiele = $spiele."\n".$titel[$i].":\n";
+                  $spiele .= "\n".$titel[$i].":";
                 }
                 if ($lspieltag != $spieltag[$i] || $lliga != $liga[$i]) {
                   if ($lmtype[$i] == 0) {
-                    $spiele = $spiele.$spieltag[$i].".".$text[2].":\n";
+                    $spiele .= "\n".$spieltag[$i].".".$text[2].":\n";
                   } else {
                     if ($spieltag[$i] == $anzst[$i]) {
                       $j = $text[374];
@@ -158,10 +156,10 @@ if ($message != "") {
                     } else {
                       $j = $spieltag[$i].". ".$text[370];
                     }
-                    $spiele = $spiele.$j.":\n";
+                    $spiele .= $j.":\n";
                   }
                 }
-                $spiele = $spiele.$teama[$i]." - ".$teamb[$i]." (".$text['tipp'][87]." ".$zeit[$i].")\n";
+                $spiele .= "\n".$teama[$i]." - ".$teamb[$i]." (".$text['tipp'][87]." ".$zeit[$i].")\n";
                 $lliga = $liga[$i];
                 $lspieltag = $spieltag[$i];
               }
@@ -172,16 +170,16 @@ if ($message != "") {
             $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
             $textmessage = str_replace("[name]", $dummb[3], $textmessage);
             $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-            //$textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
-            if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
-              $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
-            } else {
-              $sent=mail($dummb[4], $subject, $textmessage, $header);
-            }
-            if ($sent) {
+            $mail->Body = utf8_decode($textmessage);
+            $mail->addAddress($dummb[4]);
+            if ($mail->send()) {
               $anzemail++;
+              $mail->ClearAllRecipients(); 
+	      $mail->ClearReplyTos();
             } else {
-              echo getMessage($text['tipp'][176],TRUE);
+              $mail->ErrorInfo();
+              $mail->ClearAllRecipients(); 
+    	      $mail->ClearReplyTos();
             }
           }
         }
@@ -241,16 +239,16 @@ if ($message != "") {
               $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
               $textmessage = str_replace("[name]", $dummb[3], $textmessage);
               $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-              //$textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";;
-              if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
-                $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
-              } else {
-                $sent=mail($dummb[4], $subject, $textmessage, $header);
-              }
-              if ($sent) {
+	      $mail->Body = utf8_decode($textmessage);
+	      $mail->addAddress($dummb[4]);
+       	      if ($mail->send()) {
                 $anzemail++;
+                $mail->ClearAllRecipients(); 
+	        $mail->ClearReplyTos();
               } else {
-                echo getMessage($text['tipp'][176],TRUE);
+                $mail->ErrorInfo();
+                $mail->ClearAllRecipients(); 
+	        $mail->ClearReplyTos();
               }
             }
           }
@@ -258,9 +256,7 @@ if ($message != "") {
       } // ende for($tippernr=0;$tippernr<$anztipper;$tippernr++)
     }
     echo getMessage($anzemail." ".$text['tipp'][175]);
-  } // ende if($emailart==1)
-   
-  elseif($emailart == 2 && $adressat != "") {
+  } elseif($emailart == 2 && $adressat != "") {
     $dummb = explode('|', $dumma[0]);
     for($i = 0; $i < $anztipper && $adressat != $dummb[0]; $i++) {
       $dummb = explode('|', $dumma[$i]);
@@ -269,16 +265,16 @@ if ($message != "") {
     $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
     $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
     $textmessage = str_replace("[name]", $dummb[3], $textmessage);
-    //$textmessage = "=?UTF-8?B?".base64_encode($textmessage)."?=";
-    if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
-      $sent=mail($dummb[4], $subject, $textmessage, $header, $para5);
+    $mail->Body = utf8_decode($textmessage);
+    $mail->addAddress($dummb[4]);
+    if ($mail->send()) {
+      $anzemail++;
+      $mail->ClearAllRecipients(); 
+      $mail->ClearReplyTos();
     } else {
-      $sent=mail($dummb[4], $subject, $textmessage, $header);
-    }
-    if ($sent) {
-      echo getMessage('1 '.$text['tipp'][175]);
-    } else {
-      echo getMessage($text['tipp'][176],TRUE);
+      $mail->ErrorInfo();
+      $mail->ClearAllRecipients(); 
+      $mail->ClearReplyTos();
     }
   }
 }
