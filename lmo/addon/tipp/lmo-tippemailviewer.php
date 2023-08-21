@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 if ($file != "") {
   $liga0 = substr($dateien[$lnr], 0, -4);
   $lmtype0 = 0;
@@ -53,7 +53,7 @@ if ($file != "") {
     }
     array_shift($daten);
     clearstatcache();
-     
+
     if (!isset($titel)) {
       $titel = "No Name";
     }
@@ -83,7 +83,7 @@ if ($file != "") {
         } elseif($op8 == "TB") {
           $teamb0 = $dum[2];
 	    } elseif($op8 == "TI") {
-          $tipp = $dum[2];           
+          $tipp = $dum[2];
         } elseif($op8 == "AT") {
           $zeit0 = zeit($dum[2], $datum10, $datum20);
           if ($zeit0 > $now && $zeit0 < $then && $teama0 > 0 && $tipp <> 1) {
@@ -91,7 +91,7 @@ if ($file != "") {
             if ($lmtype0 == 0) {
               $modus0 = 1;
             }
-             
+
             array_push($liga, $liga0);
             array_push($titel, $titel0);
             array_push($lmtype, $lmtype0);
@@ -101,7 +101,7 @@ if ($file != "") {
             array_push($spiel, $spiel0);
             array_push($teama, $teams[$teama0]);
             array_push($teamb, $teams[$teamb0]);
-            array_push($zeit, date("l, d.m.Y H:i", $zeit0));
+            array_push($zeit, date("d.m.Y H:i", $zeit0));
             $anzspiele++;
           }
         }

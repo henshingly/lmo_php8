@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 
 $save               = isset($_POST['save'])               ? $_POST['save']               : 0;
@@ -58,7 +58,7 @@ function changetextarea(x){
       document.getElementById("betreff").value="<?php echo $text['tipp'][296]?>";
     }
     if(x==1){
-      document.getElementById("message").value=document.getElementsByName("textreminder1")[0].value;
+      document.getElementById("message").value="<?php echo $text['tipp'][174]?>"
       document.getElementById("betreff").value="<?php echo $text['tipp'][167]?>";
     }
     if(x==2){
@@ -68,7 +68,7 @@ function changetextarea(x){
   }
 }
 </script>
-<?php 
+<?php
 include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
 ?>
 
@@ -93,7 +93,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td align="left"><input type="radio" name="emailart" value="2" <?php if($emailart==2){echo "checked";} ?> onClick="changetextarea(2)"><?php echo $text['tipp'][168]; ?></td>
             <td colspan="2" align="left">
               <select name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
-                <option value=""><?php echo $text['tipp'][51]?></option><?php 
+                <option value=""><?php echo $text['tipp'][51]?></option><?php
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippselectemail.php");?>
               </select>
             </td>
@@ -104,7 +104,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
               <input type="radio" name="emailart" value="1" <?php if($emailart==1){echo "checked";} ?> onClick="changetextarea(1)"><?php echo $text['tipp'][167]; ?>
             </td>
             <td colspan="2">
-              <table cellspacing="0" cellpadding="0" border="0"><?php 
+              <table cellspacing="0" cellpadding="0" border="0"><?php
 $ftype=".l98";
 $iptype="reminder";
 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
@@ -113,11 +113,11 @@ if($i>0){?>
                   <td colspan="2" align="left">
                     <input type="radio" name="liganr" value="0" <?php if($liganr==0){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><strong><?php echo $text['tipp'][263]?></strong>
                   </td>
-                </tr><?php 
+                </tr><?php
 } ?>
               </table>
             </td>
-          </tr><?php 
+          </tr><?php
 $start1=1;
 $ende1=count($dumma);
 if ($save == 1) {
@@ -131,17 +131,17 @@ if ($save == 1) {
           <tr>
             <td colspan="2">&nbsp;</td>
             <td align="left">
-              <?php echo $text['tipp'][164];?> 
+              <?php echo $text['tipp'][164];?>
               <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<?php echo $start1; ?>">
               <?php echo $text[4];?>
               <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?php echo $ende1; ?>">
               <?php echo $text['tipp'][170];?>
               <input class="lmo-formular-input" type="text" name="tage" size="2" maxlength="2" value="<?php echo $tage; ?>" onFocus="emailart[2].checked=true;changetextarea(1);"><?php echo " ".$text['tipp'][171];?>
             </td>
-          </tr>          
+          </tr>
           <tr>
             <th colspan="4">&nbsp;</th>
-          </tr><?php 
+          </tr><?php
 if ($save == 1) {
   if (isset($betreff)) {
     $betreff1 = $betreff;
@@ -157,7 +157,8 @@ if ($save == 1) {
           <tr>
             <td>&nbsp;</td>
             <td align="left" colspan="3">
-              <textarea id="message" name="message" rows="10" cols="60"><?php                if ($emailart == 1) {
+              <textarea id="message" name="message" rows="10" cols="60"><?php
+                if ($emailart == 1) {
                   echo $tipp_textreminder1;
                 } elseif($message != "") {
                   echo $message;
