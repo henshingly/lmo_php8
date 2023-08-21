@@ -21,8 +21,8 @@
 $get = array();
 $get = $_GET;
 foreach($get as $value) {
-  if(preg_match("/<[^<>]+>/i", $value))
-     header('Location: '.$_SERVER['SCRIPT_URI']);
+  if(str_starts_with($value,"<"))
+     die("XSS-Scripting detected");
 }
 
 if (!isset($_SESSION)) { 
