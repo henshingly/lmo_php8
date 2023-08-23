@@ -179,7 +179,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     }
   }
    
-  if ($tipp_showtendenzabs == 1 || $tipp_showtendenzpro == 1 || ($tipp_showdurchschntipp == 1 && $tipp_tippmodus == 1)) {
+  if ($tipp_tippmodus == 1) {
     $tendenz1 = array_pad(array("0"), $anzspiele+1, "0");
     $tendenz0 = array_pad(array("0"), $anzspiele+1, "0");
     $tendenz2 = array_pad(array("0"), $anzspiele+1, "0");
