@@ -207,4 +207,5 @@ if ($action == "tipp") {
   </div>
 </div><?php 
   }
+ }
 }?>
