@@ -318,8 +318,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     $dum1 = ""; 
     if ($datm[$i] == 1) {
       if ($mterm[$i] > 0) {
-        $datf = $defdateformat;
-        $dum1 = date($datf, $mterm[$i]);
+        $dum1 = datefmt_format($fmt, $mterm[$i]);
       } 
     }?>
         <div class="row">
