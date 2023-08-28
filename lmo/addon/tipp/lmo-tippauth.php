@@ -96,7 +96,7 @@ if ($action == "tipp") {
     elseif($todo=="einsicht"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippeinsicht.php");}
     elseif($todo=="tabelle"){require(PATH_TO_ADDONDIR."/tipp/lmo-tipptabelle.php");}
     elseif($todo=="info"){require(PATH_TO_LMO."/lmo-showinfo.php");}
-    else{?>
+    else {?>
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">  
         <input type="hidden" name="file" value="<?php echo $file?>">  
@@ -163,26 +163,26 @@ if ($action == "tipp") {
         <tr>
           <td colspan="3" align="left">
             <ul><?php 
-            $ftype=".l98"; 
-            require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
-            $dummy =  explode("|",$tt1);
-            $ftest2 = explode("|",$tt0);
-            if(isset($dummy) && isset($ftest2)){
-              for($u=0;$u<count($dummy);$u++){
-                if($dummy[$u]!="" && $ftest2[$u]!=""){
-                  $dummy[$u]=substr($dummy[$u],0,-4);
-                  $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
-                  if ($tipp_nurgesamt==0) {?>
+      $ftype=".l98"; 
+      require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
+      $dummy =  explode("|",$tt1);
+      $ftest2 = explode("|",$tt0);
+      if(isset($dummy) && isset($ftest2)){
+        for($u=0;$u<count($dummy);$u++){
+          if($dummy[$u]!="" && $ftest2[$u]!=""){
+            $dummy[$u]=substr($dummy[$u],0,-4);
+            $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
+            if ($tipp_nurgesamt==0) {?>
               <li class="lmoadminli"><a href="<?php echo $addw.$dummy[$u].".l98"; ?>"><?php echo $ftest2[$u];?></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
-                  }
-                }
-              }
             }
-            if($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
-              $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";?>
+          }
+        }
+      }
+      if($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
+        $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";?>
               <li class="lmoadminli"><a href="<?php echo $addw."&amp;all=1" ?>"><strong><?php echo $text['tipp'][25];?></strong></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
-            }
-            $auswertfile="";?>
+      }
+      $auswertfile="";?>
             </ul>
           </td>
         </tr>
@@ -198,8 +198,8 @@ if ($action == "tipp") {
           <tr>
             <th colspan="3"><?php echo $text['tipp'][74]; ?></th>
           </tr><?php   
-            // Benutzer nicht gefunden
-            if($_SESSION["lmotipperok"]==-3){ ?> 
+      // Benutzer nicht gefunden
+      if($_SESSION["lmotipperok"]==-3){ ?> 
           <tr>
             <td align="right" colspan="3"><?php echo $text['tipp'][43]; ?></td>
           </tr><?php            }?>
@@ -214,8 +214,8 @@ if ($action == "tipp") {
         </table>
       </form>
     </td>
-  </tr><?php  }
-  //require(PATH_TO_ADDONDIR."/tipp/lmo-tippfusszeile.php"); ?>
+  </tr>
 </table><?php 
+    }
   }
 }?>
