@@ -83,13 +83,7 @@
       isset($_POST["xmailbeianmeldung"])?                     $tipp_mailbeianmeldung=1:                               $tipp_mailbeianmeldung=0;
     break;
     case 6:
-      isset($_POST["xpfeiltipp"])?                            $tipp_pfeiltipp=1:                                      $tipp_pfeiltipp=0;
-      isset($_POST["xshowtendenzabs"])?                       $tipp_showtendenzabs=$_POST["xshowtendenzabs"]:         $tipp_showtendenzabs="";
-      isset($_POST["xshowtendenzpro"])?                       $tipp_showtendenzpro=$_POST["xshowtendenzpro"]:         $tipp_showtendenzpro="";
-      isset($_POST["xshowdurchschntipp"])?                    $tipp_showdurchschntipp=$_POST["xshowdurchschntipp"]:   $tipp_showdurchschntipp="";
-      if($tipp_showtendenzabs==1 || 
-         $tipp_showtendenzpro==1 || 
-         ($tipp_showdurchschntipp==1 && $tipp_tippmodus==1)){ $tipp_tippeinsicht=1;}
+      if($tipp_tippmodus==1){ $tipp_tippeinsicht=1;}
       isset($_POST["xsttipp"])?                               $tipp_sttipp=1:                                         $tipp_sttipp=-1;
       isset($_POST["xviewertipp"])?                           $tipp_viewertipp=1:                                     $tipp_viewertipp=0;
       if ($tipp_viewertipp==1) {
