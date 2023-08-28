@@ -18,7 +18,7 @@
   */
 
 
-if(!empty($file) && check_hilfsadmin($file)){
+if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsadmin($file)){
   $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
   if(substr($file,-4)==".l98"){
     $daten=array();
