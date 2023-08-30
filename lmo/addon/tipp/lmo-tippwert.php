@@ -527,7 +527,7 @@ for($x = 1; $x <= $anztipper; $x++) {
         </tr>
       </table>
     </td>
-  </tr><?php if($tipp_anzseiten>1){ ?> 
+  </tr><?php if(isset($tipp_anzseiten) && $tipp_anzseiten>1){ ?>
   <tr>
     <td align="center">
       <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
