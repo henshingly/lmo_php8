@@ -397,8 +397,5 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
       echo getMessage($text[224],TRUE);
     }
   }
-}  else {
-  header("Location: //".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/lmo.php");
-  exit;
 }
 ?>
