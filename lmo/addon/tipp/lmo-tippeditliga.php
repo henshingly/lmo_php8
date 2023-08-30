@@ -44,12 +44,12 @@ if ($datm==1) {
   echo $teams[$teama[$st-1][$i]];
   if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
     echo "</strong>";
-}
-echo "&nbsp;" . HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");?>
+  }
+  echo " " . HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");
+?>
   </td>
   <td align="center" width="10">&nbsp;-&nbsp;</td>
-  <td class="nobr" align="left"><?php
-  echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''") . "&nbsp;"; 
+  <td class="nobr" align="left"><?php echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''") . "&nbsp;";
   if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
     echo "<strong>";
   }
@@ -69,8 +69,7 @@ echo "&nbsp;" . HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");?>
   }
   if ($goaltippb[$i]=="-1") {
     $goaltippb[$i]="";
-}?>
-  </td>
+}?>  </td>
   <td>&nbsp;</td><?php if($tipp_showtendenzabs==1){ ?>
   <td align="center" class="nobr"><?php if ($btip1==false) {
     if (!isset($tendenz1[$i])) {
