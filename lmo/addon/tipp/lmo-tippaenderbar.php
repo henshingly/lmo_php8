@@ -33,7 +33,7 @@ function tippaenderbar($mterm0, $datum1, $datum2) {
     $btip = false;
   } else {
     $btip = false;
-    $now = strtotime("+".$tipp_tippBis+$plus." minute");
+    $now = strtotime("+".($tipp_tippBis+$plus)." minute");
     if ($mterm0 > 0) {
       if ($now < $mterm0) {
         $btip = true;
