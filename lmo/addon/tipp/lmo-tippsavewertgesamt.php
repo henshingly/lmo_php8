@@ -70,8 +70,8 @@ $liganame = array_pad($array, $anzligen+1, "");
 if ($tipp_showzus == 1) {
   $punkte = array_pad($array, $anztipper+1, "");
 }
-$tipppunkte = array_pad($array, $anztipper+1, "");
-$spielegetipptges = array_pad($array, $anztipper+1, "");
+$tipppunkte = array_pad($array, (int)$anztipper+1, "");
+(int)$spielegetipptges = array_pad($array, (int)$anztipper+1, "");
 for($i = 0; $i < $anztipper; $i++) {
   if ($tipp_showzus == 1) {
     $punkte[$i] = array_pad($array, $anzligen+1, "");
@@ -79,8 +79,8 @@ for($i = 0; $i < $anztipper; $i++) {
       $punkte[$i][$p] = array_pad(array(""), 7, "");
     }
   }
-  $tipppunkte[$i] = array_pad(array("0"), $anzligen+1, "0");
-  $spielegetipptges[$i] = array_pad(array("0"), $anzligen+1, "0");
+  $tipppunkte[$i] = array_pad(array("0"), (int)$anzligen+1, "0");
+  (int)$spielegetipptges[$i] = array_pad(array("0"), (int)$anzligen+1, "0");
 }
  
 for($k = 0; $k < $anzligen; $k++) {
@@ -141,7 +141,7 @@ for($k = 0; $k < $anzligen; $k++) {
         $gef = 0;
         for($j = 0; $j < $anztipper && $gef == 0; $j++) {
           if ($tippernick[$j] == $op1) {
-            $spielegetipptges[$j][$anzligenaus] += (int)$dum[2];
+            (int)$spielegetipptges[$j][$anzligenaus] += (int)$dum[2];
             $gef = 1;
           }
         }
