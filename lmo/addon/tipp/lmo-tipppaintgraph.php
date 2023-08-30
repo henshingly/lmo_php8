@@ -131,7 +131,7 @@ $farbe_body = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Hi
 $luminanz=0.3*$color[0] + 0.59*$color[1] + 0.11*$color[2];
 $color = $luminanz > 127?array(($color[0]+190-$luminanz),($color[1]+190-$luminanz),($color[2]+190-$luminanz)):array(($color[0]+127-$luminanz),($color[1]+127-$luminanz),($color[2]+127-$luminanz));
 
-$farbe_b = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Gitter
+$farbe_b = imagecolorallocate($image, (int)round($color[0]), (int)round($color[1]), (int)round($color[2]));  //Gitter
 
 $color = isset($lmo_inner_color1)?get_color($lmo_inner_color1):array(0, 0, 0);
 $farbe_a = imagecolorallocate($image, $color[0], $color[1], $color[2]);  //Schrift
