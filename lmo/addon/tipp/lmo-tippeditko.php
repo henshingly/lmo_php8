@@ -41,7 +41,7 @@ for($n=0;$n<$modus[$st-1];$n++){
 
   if ($datm==1) {
     if ($mterm[$st-1][$i][$n]>0) {
-      $dum1=date($datf, $mterm[$st-1][$i][$n]);
+      $dum1 = strtr(date($datf, $mterm[$st-1][$i][$n]), $trans_lang);
     } else {
       $dum1="";
     }?>
@@ -66,8 +66,9 @@ for($n=0;$n<$modus[$st-1];$n++){
     if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
       echo '</strong>';
     }
+	echo "&nbsp;" . HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");
     echo '</td>';?>
-    <td align="center" width="10">-</td><?php
+    <td align="center" width="10">&nbsp;-&nbsp;</td><?php
     if ($m==1) {
       echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"left\">";
     } elseif ($m==2) {
@@ -75,6 +76,7 @@ for($n=0;$n<$modus[$st-1];$n++){
     } else {
       echo "<td class=\"nobr\" align=\"left\">";
     }
+	echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''") . "&nbsp;";
     if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
       echo "<strong>";
     }

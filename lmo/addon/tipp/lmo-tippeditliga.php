@@ -31,7 +31,7 @@ if ($tipp_einsichterst==2) {
 
 if ($datm==1) {
   if ($mterm[$st-1][$i]>0) {
-    $dum1=date($datf, $mterm[$st-1][$i]);
+    $dum1 = strtr(date($datf, $mterm[$st-1][$i]), $trans_lang);
   } else {
     $dum1="";
   }?>
@@ -44,10 +44,12 @@ if ($datm==1) {
   echo $teams[$teama[$st-1][$i]];
   if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
     echo "</strong>";
-}?>
+}
+echo "&nbsp;" . HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");?>
   </td>
-  <td align="center" width="10">-</td>
-  <td class="nobr" align="left"><?php 
+  <td align="center" width="10">&nbsp;-&nbsp;</td>
+  <td class="nobr" align="left"><?php
+  echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''") . "&nbsp;"; 
   if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
     echo "<strong>";
   }
