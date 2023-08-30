@@ -63,7 +63,7 @@ if (!file_exists($auswertfile)) {
     if ($tipp_showzus==1) {
       $punkte1gesamt = array_pad($array,$anztipper+1,"");
       $punkte2gesamt = array_pad($array,$anztipper+1,"");
-      $punkte3gesamt = array_pad($array,$anztipper+1,"");
+      (int)$punkte3gesamt = array_pad($array,(int)$anztipper+1,"");
       $punkte6gesamt = array_pad($array,$anztipper+1,"");
     }
   }
@@ -86,7 +86,7 @@ if (!file_exists($auswertfile)) {
       if ($tipp_showzus==1) {
         $punkte1gesamt[$i] = array_pad(array(""),$anzst+1,"");
         $punkte2gesamt[$i] = array_pad(array(""),$anzst+1,"");
-        $punkte3gesamt[$i] = array_pad(array(""),$anzst+1,"");
+        (int)$punkte3gesamt[$i] = array_pad(array(""),(int)$anzst+1,"");
         $punkte6gesamt[$i] = array_pad(array(""),$anzst+1,"");
       }
     }
@@ -154,7 +154,7 @@ if (!file_exists($auswertfile)) {
       } else if ($op4=="P3") {
         $punkte3[$t][$op3]=$dum[2];
         if ($kurvenmodus>2) {
-          $punkte3gesamt[$t][$op3]=$dum[2];
+          (int)$punkte3gesamt[$t][$op3]=(int)$dum[2];
         }
       } else if ($op4=="P6") {
         $punkte6[$t][$op3]=$dum[2];
@@ -191,20 +191,20 @@ if (!file_exists($auswertfile)) {
             $tipp_krit=$tipp_krit3;
           }
           if ($tipp_krit==-1) {
-            $tt.=50000000;
+            $tt.=(int)50000000;
           } else if ($tipp_krit==0) {
-            $tt.=(50000000-$spielegetippt[$a][$i]);
+            $tt.=((int)50000000-(int)$spielegetippt[$a][$i]);
           } else if ($tipp_krit==1) {
-            $tt.=(50000000+$spielegetippt[$a][$i]);
+            $tt.=((int)50000000+(int)$spielegetippt[$a][$i]);
           } else if ($tipp_showzus==1) {
             if ($tipp_krit==2) {
-              $tt.=(50000000+$punkte1[$a][$i]);
+              $tt.=((int)50000000+(int)$punkte1[$a][$i]);
             } else if ($tipp_krit==3) {
-              $tt.=(50000000+$punkte2[$a][$i]);
+              $tt.=((int)50000000+(int)$punkte2[$a][$i]);
             } else if ($tipp_krit==4) {
-              $tt.=(50000000+$punkte3[$a][$i]);
+              $tt.=((int)50000000+(int)$punkte3[$a][$i]);
             } else if ($tipp_krit==5) {
-              $tt.=(50000000+$punkte6[$a][$i]);
+              $tt.=((int)50000000+(int)$punkte6[$a][$i]);
             }
           }
         }
@@ -253,45 +253,45 @@ if (!file_exists($auswertfile)) {
               $tipp_krit=$tipp_krit3;
             }
             if ($tipp_krit==-1) {
-              $tt.=50000000;
+              $tt.=(int)50000000;
             } else if ($tipp_krit==0) {
-              $tt.=(50000000-(int)$spielegetippt[$a][$jyz]);
+              $tt.=((int)50000000-(int)$spielegetippt[$a][$jyz]);
             } else if ($tipp_krit==1) {
-              $tt.=(50000000+(int)$spielegetippt[$a][$jyz]);
+              $tt.=((int)50000000+(int)$spielegetippt[$a][$jyz]);
             } else if ($tipp_krit==6) {
               if ($tipp_showstsiege==1) {
-                $tt.=(50000000+$stsiege[$a][$jyz]);
+                $tt.=((int)50000000+(int)$stsiege[$a][$jyz]);
               }
             } else if ($tipp_showzus==1) {
               if ($tipp_krit==2) {
-                $tt.=(50000000+$punkte1[$a][$jyz]);
+                $tt.=((int)50000000+(int)$punkte1[$a][$jyz]);
               } else if ($tipp_krit==3) {
-                $tt.=(50000000+$punkte2[$a][$jyz]);
+                $tt.=((int)50000000+(int)$punkte2[$a][$jyz]);
               } else if ($tipp_krit==4) {
-                $tt.=(50000000+$punkte3[$a][$jyz]);
+                $tt.=((int)50000000+(int)$punkte3[$a][$jyz]);
               } else if ($tipp_krit==5) {
-                $tt.=(50000000+$punkte6[$a][$jyz]);
+                $tt.=((int)50000000+(int)$punkte6[$a][$jyz]);
               }
             }
           }
-          $tt.=(50000000+$a);
+          $tt.=((int)50000000+(int)$a);
           array_push($taba[$jyz],$tt);
         }
         if ($kurvenmodus>2) {
           if ($jyz>0) {
-            $tipppunktegesamt[$a][$jyz]+=(int)$tipppunktegesamt[$a][$jyz-1];
+            (int)$tipppunktegesamt[$a][$jyz]+=(int)$tipppunktegesamt[$a][$jyz-1];
             if ($tipp_showzus==1) {
-              $punkte1gesamt[$a][$jyz]+=$punkte1gesamt[$a][$jyz-1];
-              $punkte2gesamt[$a][$jyz]+=$punkte2gesamt[$a][$jyz-1];
-              $punkte3gesamt[$a][$jyz]+=$punkte3gesamt[$a][$jyz-1];
-              $punkte6gesamt[$a][$jyz]+=$punkte6gesamt[$a][$jyz-1];
+              (int)$punkte1gesamt[$a][$jyz]+=(int)$punkte1gesamt[$a][$jyz-1];
+              (int)$punkte2gesamt[$a][$jyz]+=(int)$punkte2gesamt[$a][$jyz-1];
+              (int)$punkte3gesamt[$a][$jyz]+=(int)$punkte3gesamt[$a][$jyz-1];
+              (int)$punkte6gesamt[$a][$jyz]+=(int)$punkte6gesamt[$a][$jyz-1];
             }
             if ($kurvenmodus>1 && $tipp_showstsiege==1 && ($tipp_krit1==6 || $tipp_krit2==6 || $tipp_krit3==6)) {
               $stsiegegesamt[$a][$jyz]+=$stsiegegesamt[$a][$jyz-1];
             }
             $spielegetipptgesamt[$a][$jyz]+=(int)$spielegetipptgesamt[$a][$jyz-1];
           }
-          $tt=50000000+(int)$tipppunktegesamt[$a][$jyz];
+          $tt=(int)50000000+(int)$tipppunktegesamt[$a][$jyz];
           for ($k=1; $k<=3; $k++) {
             if ($k==1) {
               $tipp_krit=$tipp_krit1;
@@ -301,28 +301,28 @@ if (!file_exists($auswertfile)) {
               $tipp_krit=$tipp_krit3;
             }
             if ($tipp_krit==-1) {
-              $tt.=50000000;
+              $tt.=(int)50000000;
             } else if ($tipp_krit==0) {
-              $tt.=(50000000-(int)$spielegetipptgesamt[$a][$jyz]);
+              $tt.=((int)50000000-(int)$spielegetipptgesamt[$a][$jyz]);
             } else if ($tipp_krit==1) {
-              $tt.=(50000000+(int)$spielegetipptgesamt[$a][$jyz]);
+              $tt.=((int)50000000+(int)$spielegetipptgesamt[$a][$jyz]);
             } else if ($tipp_krit==6) {
               if ($tipp_showstsiege==1) {
-                $tt.=(50000000+(int)$stsiegegesamt[$a][$jyz]);
+                $tt.=((int)50000000+(int)$stsiegegesamt[$a][$jyz]);
               }
             } else if ($tipp_showzus==1) {
               if ($tipp_krit==2) {
-                $tt.=(50000000+(int)$punkte1gesamt[$a][$jyz]);
+                (int)$tt.=((int)50000000+(int)$punkte1gesamt[$a][$jyz]);
               } else if ($tipp_krit==3) {
-                $tt.=(50000000+(int)$punkte2gesamt[$a][$jyz]);
+                $tt.=((int)50000000+(int)$punkte2gesamt[$a][$jyz]);
               } else if ($tipp_krit==4) {
-                $tt.=(50000000+(int)$punkte3gesamt[$a][$jyz]);
+                (int)$tt.=((int)50000000+(int)$punkte3gesamt[$a][$jyz]);
               } else if ($tipp_krit==5) {
-                $tt.=(50000000+(int)$punkte6gesamt[$a][$jyz]);
+                $tt.=((int)50000000+(int)$punkte6gesamt[$a][$jyz]);
               }
             }
           }
-          $tt.=(50000000+$a);
+          $tt.=((int)50000000+(int)$a);
           array_push($tabb[$jyz],$tt);
         }
       }
