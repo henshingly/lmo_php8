@@ -72,10 +72,8 @@ if($file!="" && $tipp_tippfieber==1){
       </td>
       <td>
         <select name="xkurvenmodus">
-          <option value="4"<?php if($kurvenmodus==4){echo " selected";}?>><?php echo $text['tipp'][233]?></option>
           <option value="1"<?php if($kurvenmodus==1){echo " selected";}?>><?php echo $text['tipp'][235]?></option>
           <option value="2"<?php if($kurvenmodus==2){echo " selected";}?>><?php echo $text['tipp'][232]?></option>
-          <option value="3"<?php if($kurvenmodus==3){echo " selected";}?>><?php echo $text['tipp'][234]?></option>
         </select>
       </td>
       <td>
