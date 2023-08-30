@@ -339,17 +339,17 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     if ($datm[$i] == 1) {
       if ($mterm[$i] > 0) {
         $datf = $defdateformat;
-        $dum1 = date($datf, $mterm[$i]);
+        $dum1 = strtr(date($datf, $mterm[$i]), $trans_lang);
       } 
     }?>
         <tr>
           <td class="nobr" align="left"><?php echo $dum1; ?></td>
           <td>&nbsp;</td>
-          <td class="nobr" align="right"><?php echo $teama[$i];?></td>
+          <td class="nobr" align="right"><?php echo $teama[$i] . " " . HTML_smallTeamIcon($file,$teama[$i]," alt=''");?></td>
           <td class="nobr" align="center" width="10">-</td>
           <td class="nobr" align="left">
             <?php 
-    echo $teamb[$i];
+    echo HTML_smallTeamIcon($file,$teamb[$i]," alt=''") . " " . $teamb[$i];
     if ($tippa[$i] == "_") {
       $tippa[$i] = "";
     }
