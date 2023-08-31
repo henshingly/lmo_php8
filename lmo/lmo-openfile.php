@@ -21,7 +21,6 @@ $titel="";
 $ergebnis=$mittore=$ligastats1=$kreuz=$plan=$kurve=1;
 $datc=$nticker=$lmtype=0;
 if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsadmin($file)){
-  $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
   if(substr($file,-4)==".l98"){
     $daten=array();
     $array=array();
@@ -365,8 +364,6 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
         } else {
           $datum1[$op3]="";
         }
-        /*$dummy=strtotime(substr($datum1[$op3],0,2)." ".$me[intval(substr($datum1[$op3],3,2))]." ".substr($datum1[$op3],6,4));
-        if($dummy>-1){$datum1[$op3]=date("d.m.Y",$dummy);}else{$datum1[$op3]="";}*/
       }
       if(!empty($datum2[$op3])){
         $dat=explode(".",$datum2[$op3]);
@@ -375,8 +372,6 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
         } else {
           $datum2[$op3]="";
         }
-        /*$dummy=strtotime(substr($datum2[$op3],0,2)." ".$me[intval(substr($datum2[$op3],3,2))]." ".substr($datum2[$op3],6,4));
-        if($dummy>-1){$datum2[$op3]=date("d.m.Y",$dummy);}else{$datum2[$op3]="";}*/
       }
       for($j=0;$j<=$anzteams;$j++){
         if($teamm[$j]==""){
@@ -392,13 +387,9 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
           $teamk[$j] = trim(substr($teams[$j],0,5));
         }
       }
-      //echo "<br>".((mictime()-$a)*1000)." µS ".$dum[1];
     } else {
       echo getMessage($text[224],TRUE);
     }
-  }
-}  else {
-  header("Location: //".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/lmo.php");
-  exit;
-}
+  } 
+} 
 ?>
