@@ -28,7 +28,7 @@ $down=isset($_GET['down'])  ? $_GET['down']    :0;
 $madr=isset($_GET['madr'])  ? $_GET['madr']    :'';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-					"http://www.w3.org/TR/html4/loose.dtd">
+                "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="de">
 <head>
 <title>LMO Admin</title>
@@ -78,7 +78,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
       }
     } elseif($down==-1) {
-      if(count($dummy)>0) {
+      if (count($dummy)>0) {
         $zipfile = new ZipArchive;
         $zipfile->open($temp, ZipArchive::CREATE);
         for($i=0;$i<count($dummy);$i++){
