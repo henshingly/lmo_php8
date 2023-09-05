@@ -324,7 +324,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         <div class="row">
           <div class="col-2"><?php echo $dum1; ?></div>
           <div class="col-3 text-end"><?php echo $teama[$i];?></div>
-          <div class="col-3"> - 
+		  <div class="col-auto">-</div>
+          <div class="col-3">
             <?php 
     echo $teamb[$i];
     if ($tippa[$i] == "_") {
