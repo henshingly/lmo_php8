@@ -294,11 +294,11 @@ for($x = 1; $x <= $anztipper; $x++) {
       }?>
       <div class="row justify-content-center"><?php       
       if ($wertung == "team" || $tippernick[$i] != "") {?>
-          <div class="col-1"><?php
+          <div class="col-1 text-end"><?php
         if ($lax == $x) {
-          echo $x;
+          echo $x.".";
         } elseif($wertung == "intern" && $lax != $lx) {
-          echo $lx;
+          echo $lx.".";
           $lax = $lx;
         } else {
           echo "";
