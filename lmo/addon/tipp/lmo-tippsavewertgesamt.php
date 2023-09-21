@@ -82,7 +82,7 @@ for($i = 0; $i < $anztipper; $i++) {
   $tipppunkte[$i] = array_pad(array("0"), $anzligen+1, "0");
   $spielegetipptges[$i] = array_pad(array("0"), $anzligen+1, "0");
 }
- 
+
 for($k = 0; $k < $anzligen; $k++) {
    
   $ftest = 0;
@@ -127,7 +127,7 @@ for($k = 0; $k < $anzligen; $k++) {
       // Nick
       $op3 = (int)substr($dum[1], 2)-1;
       // Spieltagsnummer
-      $op4 = (int)substr($dum[1], 0, 2);
+      $op4 = substr($dum[1], 0, 2);
       // PP
       if ($op4 == "TP") {
         $gef = 0;
@@ -150,7 +150,10 @@ for($k = 0; $k < $anzligen; $k++) {
         $gef = 0;
         for($j = 0; $j < $anztipper && $gef == 0; $j++) {
           if ($tippernick[$j] == $op1) {
-            $punkte[$j][$anzligenaus][$artpkt] += (int)$dum[2];
+            //fuchteln wegen string+int-Inkompatibiltität ab PHP 8
+            $temp = $punkte[$j][$anzligenaus][$artpkt];
+            $temp = (int)$temp + (int)$dum[2];
+            $punkte[$j][$anzligenaus][$artpkt] = $temp;
             $gef = 1;
           }
         }
