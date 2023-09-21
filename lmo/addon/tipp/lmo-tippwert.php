@@ -137,10 +137,6 @@ if ($tabdat == "") {
      </div><?php
   }?>
    </div><?php } ?>
-   <div class="row">
-     <div class="col">
-     </div>
-   </div>
 </div>
 
 <?php
@@ -412,43 +408,43 @@ for($x = 1; $x <= $anztipper; $x++) {
           }?>
           <div class="col-1"><?php echo $dummy.$punkte6gesamt[$i].$dumm2; ?></div><?php        }
       } // ende if($tipp_showzus==1)
-      
-      if($tipp_showstsiege==1){
-        if($stsiege[$i]==""){
+
+      if($tipp_showstsiege==1) {
+        if($stsiege[$i]=="") {
           $stsiege[$i]="";
         }
         echo "<div class='col-1'>".$dummy.$stsiege[$i].$dumm2."</div>";
-        $quotegesamt[$i] = number_format($quotegesamt[$i]/100, 2, ".", ",");
-        echo "<div class='col-1'>";
-        if ($gewicht == "relativ") {
-          echo "<strong>";
-        } else {
-          echo $dummy;
-        }
-        echo $quotegesamt[$i];
-        if ($gewicht == "relativ") {
-          echo "</strong>";
-        } else {
-          echo $dumm2;
-        }
-        echo "</div>";
-        echo "<div class='col-1'>";
-        if ($gewicht == "absolut") {
-          echo "<strong>";
-        } else {
-          echo $dummy;
-        }
-        echo $tipppunktegesamt[$i];
-        if ($gewicht == "absolut") {
-          echo "</strong>";
-        } else {
-          echo $dumm2;
-        }
-        echo "</div>";
-      } /* ende $tipp_showstsiege==1 */
+      }
+      $quotegesamt[$i] = number_format($quotegesamt[$i]/100, 2, ".", ",");
+      echo "<div class='col-1'>";
+      if ($gewicht == "relativ") {
+        echo "<strong>";
+      } else {
+        echo $dummy;
+      }
+      echo $quotegesamt[$i];
+      if ($gewicht == "relativ") {
+        echo "</strong>";
+      } else {
+        echo $dumm2;
+      }
+      echo "</div>";
+      echo "<div class='col-1'>";
+      if ($gewicht == "absolut") {
+        echo "<strong>";
+      } else {
+        echo $dummy;
+      }
+      echo $tipppunktegesamt[$i];
+      if ($gewicht == "absolut") {
+        echo "</strong>";
+      } else {
+        echo $dumm2;
+      }
+      echo "</div>";
     } /* ende $wertung != "intern" || $teamintern == $tipperteam[$i]) */
-  } /* ende   if(($x>=$start && $x<=$ende) || $i==$eigpos)*/
-    echo "</div>";
+  } /* ende   if(($x>=$start && $x<=$ende) || $i==$eigpos) */
+  echo "</div>";
 } /* ende for($x=1;$x<=$anztipper;$x++)*/?>
       </div>
     </div>
