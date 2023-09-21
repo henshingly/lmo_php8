@@ -406,7 +406,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       } else {
         echo "<td class=\"".$lmo_tabelle_class."\">&nbsp;</td>";
       }?>
-          <td class="<?php echo $lmo_tabelle_class; ?>" align="left"><?php echo $dummy.$teams[$team[$i]].$dumm2; ?></td>
+          <td class="<?php echo $lmo_tabelle_class; ?>" align="left"><?php echo HTML_smallTeamIcon($file,$teams[$team[$i]]," alt=''")." ".$dummy.$teams[$team[$i]].$dumm2; ?></td>
           <td class="<?php echo $lmo_tabelle_class; ?>">&nbsp;</td>
           <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$spielegetippt[$i].$dumm2;?></td>
           <td class="<?php echo $lmo_tabelle_class; ?>">&nbsp;</td>
