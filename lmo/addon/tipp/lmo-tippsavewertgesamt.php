@@ -69,8 +69,8 @@ $liganame = array_pad($array, $anzligen+1, "");
 if ($tipp_showzus == 1) {
   $punkte = array_pad($array, $anztipper+1, "");
 }
-$tipppunkte = array_pad($array, (int)$anztipper+1, "");
-(int)$spielegetipptges = array_pad($array, (int)$anztipper+1, "");
+$tipppunkte = array_pad($array, $anztipper+1, "");
+$spielegetipptges = array_pad($array, $anztipper+1, "");
 for($i = 0; $i < $anztipper; $i++) {
   if ($tipp_showzus == 1) {
     $punkte[$i] = array_pad($array, $anzligen+1, "");
@@ -78,8 +78,8 @@ for($i = 0; $i < $anztipper; $i++) {
       $punkte[$i][$p] = array_pad(array(""), 7, "");
     }
   }
-  $tipppunkte[$i] = array_pad(array("0"), (int)$anzligen+1, "0");
-  (int)$spielegetipptges[$i] = array_pad(array("0"), (int)$anzligen+1, "0");
+  $tipppunkte[$i] = array_pad(array("0"), $anzligen+1, "0");
+  $spielegetipptges[$i] = array_pad(array("0"), $anzligen+1, "0");
 }
 
 for($k = 0; $k < $anzligen; $k++) {
@@ -126,7 +126,7 @@ for($k = 0; $k < $anzligen; $k++) {
       // Nick
       $op3 = (int)substr($dum[1], 2)-1;
       // Spieltagsnummer
-      $op4 = (int)substr($dum[1], 0, 2);
+      $op4 = substr($dum[1], 0, 2);
       // PP
       if ($op4 == "TP") {
         $gef = 0;
@@ -140,7 +140,7 @@ for($k = 0; $k < $anzligen; $k++) {
         $gef = 0;
         for($j = 0; $j < $anztipper && $gef == 0; $j++) {
           if ($tippernick[$j] == $op1) {
-            (int)$spielegetipptges[$j][$anzligenaus] += (int)$dum[2];
+            $spielegetipptges[$j][$anzligenaus] += (int)$dum[2];
             $gef = 1;
           }
         }
@@ -149,7 +149,10 @@ for($k = 0; $k < $anzligen; $k++) {
         $gef = 0;
         for($j = 0; $j < $anztipper && $gef == 0; $j++) {
           if ($tippernick[$j] == $op1) {
-            $punkte[$j][$anzligenaus][$artpkt] += (int)$dum[2];
+            //fuchteln wegen string+int-Inkompatibiltität ab PHP 8 ***Fix by DwB***
+            $temp = $punkte[$j][$anzligenaus][$artpkt];
+            $temp = (int)$temp + (int)$dum[2];
+            $punkte[$j][$anzligenaus][$artpkt] = $temp;
             $gef = 1;
           }
         }
