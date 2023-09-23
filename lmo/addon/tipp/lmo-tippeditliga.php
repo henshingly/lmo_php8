@@ -72,11 +72,10 @@ if ($btip[$i]==true) {
 /**ERGEBNISMODUS*/
 if ($tipp_tippmodus==1) { ?>
   <div class="col-2"><?php
-  if($btip[$i]==true){ ?>
-    <input class="custom-control" type="text" name="xtippa<?php echo $i; ?>" size="2" maxlength="4" value="<?php echo $goaltippa[$i]; ?>"> : <input class="custom-control" type="text" name="xtippb<?php echo $i; ?>" size="2" maxlength="4" value="<?php echo $goaltippb[$i]; ?>">
-  <?php } else { ?>
-    <?php echo $goaltippa[$i]; ?> : <?php echo $goaltippb[$i]; ?>
-  <?php } ?>
+  $read = "";
+  if($btip[$i]==false)
+     $read = "disabled";?>
+    <input class="custom-control" type="text" name="xtippa<?php echo $i; ?>" size="2" maxlength="4" value="<?php echo $goaltippa[$i]; ?>" <?php echo $read; ?>> : <input class="custom-control" type="text" name="xtippb<?php echo $i; ?>" size="2" maxlength="4" value="<?php echo $goaltippb[$i]; ?>" <?php echo $read; ?>>
   </div><?php
 } /* ende ($tipp_tippmodus==1) */
 
