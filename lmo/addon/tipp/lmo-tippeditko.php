@@ -17,7 +17,6 @@
   *
   * $Id$
   */
-  
 for($n=0;$n<$modus[$st-1];$n++){
   if(($klfin==1) && ($st==$anzst)){ ?>
   <div class="row">
@@ -103,18 +102,12 @@ for($n=0;$n<$modus[$st-1];$n++){
 
 /**ERGEBNISMODUS*/
   if($tipp_tippmodus==1){
-    if($btip[$i]==true){ ?>
+    $read="";
+    if($btip[$i]==false)
+       $read="disabled"; ?>
   <div class="col-2">
-    <input class="custom-control" type="text" name="xtippa<?php echo $i; ?>" style="width:4rem" maxlength="4" value="<?php echo $goaltippa[$i]; ?>"> 
-    : 
-    <input class="custom-control" type="text" name="xtippb<?php echo $i; ?>" style="width:4rem" maxlength="4" value="<?php echo $goaltippb[$i]; ?>">
+    <input class="custom-control" type="text" name="xtippa<?php echo $i; ?>" style="width:4rem" maxlength="4" value="<?php echo $goaltippa[$i][$n]; ?>" <?php echo $read; ?>> : <input class="custom-control" type="text" name="xtippb<?php echo $i; ?>" style="width:4rem" maxlength="4" value="<?php echo $goaltippb[$i][$n]; ?>" <?php echo $read; ?>>
   </div><?php
-  } else { ?>
-  <div class="col-2">
-    <?php echo $goaltippa[$i]; ?>
-    :
-    <?php echo $goaltippb[$i]; ?></div><?php
-  }
 } /* ende $tipp_tippmodus==1 */
 
 /**TENDENZMODUS*/
