@@ -59,15 +59,16 @@ if (($action == "tipp") && ($todo == "newligen")) {
   <div class="row">
     <div class="col offset-4"><?php echo $text['tipp'][135]; ?></div>
   </div>
-  <div class="row">
-    <div class="cvol offset-4"><?php if($newpage!=1){ ?>
+  <div class="row p-3">
+    <div class="col offset-4"><?php if($newpage!=1){ ?>
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="newligen">
         <input type="hidden" name="newpage" value="1"><?php  $ftype=".l98"; 
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); 
     if($i!=0){ ?>
-        <input class="btn btn-sm btn-primary" type="submit" name="xtippersub" value="<?php echo $text['tipp'][11]; ?>"><?php    } ?>
+        <br />
+        <input class="btn btn-sm btn-primary" type="submit" name="xtippersub" value="<?php echo $text['tipp'][5]; ?>"><?php    } ?>
       </form><?php  }?>
     </div>
   </div><?php 
