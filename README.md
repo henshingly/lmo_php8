@@ -14,9 +14,9 @@ Dabei arbeiten nahezu alle Frontend-Frameworks nach demselben Muster (und dahing
 `<td.....>` wird zu `<div class="col">` bzw. zu `<div class="col-x">`
 
 Die Umstellung des Front- und Backends auf responsive Design ist abgeschlossen.
-Bei einzelen Addons gibt es Elemente, in denen nicht aus responsive umgestellt werden kann (bspw. Spielersttistik, wenn mehr als 12 Datenfelder enthalten sind).
+Bei einzelen Addons gibt es Elemente, in denen nicht aus responsive umgestellt werden kann (bspw. Spielerstatistik, wenn mehr als 12 Datenfelder enthalten sind).
 
-Das Release 4.1.0 basiert komplett auf PHP 8.x, Stand jetzt sind keine Fehlermeldungen mehr vorhanden. Sollten welche identifiziert werden, bitte unter "Issues" ein Ticket eröffnen. 
+Das Release 4.1.1 basiert komplett auf PHP 8.x, Stand jetzt sind keine Fehlermeldungen mehr vorhanden. Sollten welche identifiziert werden, bitte unter "Issues" ein Ticket eröffnen. 
 
 Bei der Fieberkurve wird <a target="_blank" href="//www.chartjs.org/">Chart.js</a> verwendet, Iconset ist von Bootstrap.
 
