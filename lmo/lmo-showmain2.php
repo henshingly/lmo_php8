@@ -187,7 +187,7 @@ if ($file!="") {
     if ($lmtype==0){
       //Normal
       switch($action) {
-        case "cal":      if ($datc==1)                     {require(PATH_TO_LMO."/lmo-cal.php");}break;
+        case "cal":      if ($datc==1)                    {require(PATH_TO_LMO."/lmo-cal.php");}break;
         case "results":  if ($ergebnis==1)                {$druck=1;require(PATH_TO_LMO."/lmo-showrestab.php");}break;
         case "table":    if ($tabelle==1)                 {$druck=1;require(PATH_TO_LMO."/lmo-showrestab.php");}break;
         case "cross":    if ($kreuz==1)                   {require(PATH_TO_LMO."/lmo-showcross.php");}break;
@@ -205,12 +205,12 @@ if ($file!="") {
       }
     }
     //Spieler-Addon
-    if ($action=="spieler"){if ($mittore==1)               {require(PATH_TO_ADDONDIR."/spieler/lmo-statshow.php");}}
+    if ($action=="spieler"){if ($mittore==1)              {require(PATH_TO_ADDONDIR."/spieler/lmo-statshow.php");}}
     //Spieler-Addon
   }
-  if ($action=="info")                                     {require(PATH_TO_LMO."/lmo-showinfo.php");}
+  if ($action=="info")                                    {require(PATH_TO_LMO."/lmo-showinfo.php");}
   $p0="p1";$$p0=c(1).c(0);
-}elseif ($backlink==1 && $action!="tipp")                 {require(PATH_TO_LMO."/lmo-showdir.php");}
+} elseif ($backlink==1 && $action!="tipp")                {require(PATH_TO_LMO."/lmo-showdir.php");}
 
 if ($action=="tipp" && $eintippspiel==1) {require(PATH_TO_ADDONDIR."/tipp/lmo-tippstart.php");}
 $output_hauptteil.=ob_get_contents();ob_end_clean();

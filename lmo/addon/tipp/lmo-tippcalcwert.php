@@ -159,7 +159,7 @@ if (!file_exists($auswertfile)) {
 
   if ($tipp_showstsiege == 1 && $anztipper > 0) {
     // Spieltagssieger ermitteln
-    $tab = array_pad($array, $endtab, "");
+    $tab = array_pad($array, (int)$endtab, "");
     $a = 0;
     for($i = 0; $i < $endtab && isset($tipppunkte[$a][$i]); $i++) {
       $tab[$i] = array();

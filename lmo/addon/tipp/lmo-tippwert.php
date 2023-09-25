@@ -25,8 +25,7 @@ if ($endtab == 0) {
 } else {
   $tabdat = $endtab.". ".$text[2];
 }
-$all        = isset($_REQUEST['all'])        ? $_REQUEST['all']                : 0;
-//  if($stwertmodus=="bis" ){$endtab=$anzst;}
+$all            = isset($_REQUEST['all'])           ? $_REQUEST['all']                : 0;
 if ($all == 1) {
   $endtab = 0;
   $tabdat = "";
@@ -34,14 +33,13 @@ if ($all == 1) {
 } else {
   $st = $endtab;
 }
-$wertung        = isset($_REQUEST['wertung'])        ? $_REQUEST['wertung']                : 'einzel';
-$gewicht        = isset($_REQUEST['gewicht'])        ? $_REQUEST['gewicht']                : 'absolut';
-$stwertmodus    = isset($_REQUEST['stwertmodus'])    ? $_REQUEST['stwertmodus']            : 'bis';
-//$tipp_anzseite1 = isset($_REQUEST['tipp_anzseite1']) ? intval($_REQUEST['tipp_anzseite1']) : $tipp_anzseite1;
-$von            = isset($_REQUEST['von'])            ? intval($_REQUEST['von'])            : 1;
-$start          = isset($_REQUEST['start'])          ? intval($_REQUEST['start'])          : 1;
-$eigpos         = isset($_REQUEST['eigpos'])         ? intval($_REQUEST['eigpos'])         : 1;
-$wertung = isset($_REQUEST['wertung']) ? $_REQUEST['wertung'] : "einzel";
+$wertung        = isset($_REQUEST['wertung'])        ? $_REQUEST['wertung']           : 'einzel';
+$gewicht        = isset($_REQUEST['gewicht'])        ? $_REQUEST['gewicht']           : 'absolut';
+$stwertmodus    = isset($_REQUEST['stwertmodus'])    ? $_REQUEST['stwertmodus']       : 'bis';
+$von            = isset($_REQUEST['von'])            ? intval($_REQUEST['von'])       : 1;
+$start          = isset($_REQUEST['start'])          ? intval($_REQUEST['start'])     : 1;
+$eigpos         = isset($_REQUEST['eigpos'])         ? intval($_REQUEST['eigpos'])    : 1;
+$wertung        = isset($_REQUEST['wertung'])        ? $_REQUEST['wertung']           : "einzel";
 
 if (($tabdat != "" && $stwertmodus == "nur") || $all == 1) {
   $tipp_showstsiege = 0;
@@ -82,10 +80,10 @@ $platz0 = array("");
 if (!isset($anztipper)) {
   $anztipper = 0;
 }
-$platz0 = array_pad($array, $anztipper+1, "");
+$platz0 = array_pad($array, $anztipper + 1, "");
 for($x = 0; $x < $anztipper; $x++) {
   $x3 = intval(substr($tab0[$x], -7));
-  $platz0[$x3] = $x+1;
+  $platz0[$x3] = $x + 1;
 }
 
 if ($tabdat == "") {
