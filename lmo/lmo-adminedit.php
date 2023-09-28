@@ -270,7 +270,7 @@ if ($file != "") {
     $st = $stz;
   }
   if ($lmtype != 0) {
-    if ($st > 1) {
+    if ($st >= 1) {
       $teamt = array_pad(array("0"), 129, "0");
       for($i = 0; $i < ($st-1); $i++) {
         for($j = 0; $j < (($anzteams/2)+1); $j++) {
