@@ -37,7 +37,7 @@ if ($lmtype == 0) {
         if ($goalb[$actual - 1][$i1] == "_") $goalb[$actual - 1][$i1] = "-1";
     }
 }
-if ($lmtype==0) {
+if ($lmtype == 0) {
     isset($tab0) ? $table1=$tab0 : $table1=$tab1;
     if (isset($table1)) {
         $wmlfile= fopen(PATH_TO_LMO.'/'.$diroutput.basename($file)."-sp.html","wb");
