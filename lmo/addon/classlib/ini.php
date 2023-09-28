@@ -40,7 +40,7 @@ if (file_exists(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php"
   require_once(PATH_TO_ADDONDIR."/classlib/classes/phpthumb/phpthumb.class.php");
 }
 if (!defined('LMO_VERSION_NR')) {
-  define('LMO_VERSION_NR','4.1.1');
+  define('LMO_VERSION_NR','4.1.2');
 }
 if (!defined('LMO_VERSION')) {
   define('LMO_VERSION','LMO_PHP8&nbsp;'.LMO_VERSION_NR);
