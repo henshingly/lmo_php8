@@ -24,7 +24,7 @@ if (file_exists($cfgfile)) {
   $cfgarray+=$main_cfgarray;
   extract ($cfgarray);                        // Variablen erstellen
 }else{
-  die("Konfigurationsdatei: $cfgfile nicht gefunden!");
+  die($text['viewer'][55].": ". $cfgfile . " " . $text['viewer'][56]);
   //Fehlerhandling hier rein
 }
 
@@ -47,11 +47,11 @@ include(PATH_TO_LMO.'/lmo-updateoptions.php');
 $handle=opendir (PATH_TO_CONFIGDIR);
 while (false!==($f=readdir($handle))) {
   if (is_dir(PATH_TO_CONFIGDIR.'/'.$f) && $f!='.' && $f!='..') {
-    $addon_cfgfile=PATH_TO_CONFIGDIR."/$f/cfg.txt";                       // Konfigurationsdatei
+    $addon_cfgfile=PATH_TO_CONFIGDIR."/$f/cfg.txt";    // Konfigurationsdatei
     if (file_exists($addon_cfgfile)) {
-      $addon_cfgarray=parse_ini_file($addon_cfgfile);         // in Array lesen
+      $addon_cfgarray=parse_ini_file($addon_cfgfile);  // in Array lesen
       $cfgarray[$f]=$addon_cfgarray;
-      extract($addon_cfgarray,EXTR_PREFIX_ALL,$f);                        // Variablen (mit Prefix) erstellen
+      extract($addon_cfgarray,EXTR_PREFIX_ALL,$f);     // Variablen (mit Prefix) erstellen
     }
   }
 }

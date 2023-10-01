@@ -17,8 +17,8 @@
   *
   * $Id$
   */
-  
-  
+
+
 if ($file != "") {
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
@@ -35,8 +35,8 @@ if ($file != "") {
   }
   if (($klfin==1) && ($st==$anzst)) {
     $anzsp = $anzsp+1;
-  }
-?>
+  }?>
+
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
@@ -233,12 +233,12 @@ if ($file != "") {
          *
          */
         if ($mnote[$st-1][$i][$n]!="") {
-     
+
           $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".applyFactor($goala[$st-1][$i][$n],$goalfaktor).":".applyFactor($goalb[$st-1][$i][$n],$goalfaktor);
           //Allgemeine Notiz
-          
+
           $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i][$n];
-          
+
           echo " <a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
           $lmo_spielnotiz="";
         } else {
@@ -275,4 +275,4 @@ if ($file != "") {
     </td>
   </tr>
 </table><?php
-} 
+}

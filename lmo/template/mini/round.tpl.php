@@ -31,6 +31,6 @@ p { font: bold 0.9em Helvetica, Arial, Sans-Serif; padding: 0.2em; margin: 0em; 
     <td align="center"><!--Punkte--></td>
   </tr><!-- END Inhalt -->
   <tr>
-    <td colspan="10" align="right"><!--ligaDatum--></th>
+    <td colspan="10" align="right"><!--ligaDatum--></td>
   </tr>
 </table>

@@ -396,7 +396,7 @@
 395=erzielte Tore zählen vor Tordifferenz
 396=Zählen die erzielten Tore bei Punktgleichheit mehr als die Tordifferenz (z.B. beim Kegeln)?
 397=Freigegebene Ligen
-398=Geben Sie hier die Namen der Ligen an, die dieser Hilfs-Admin bearbeiten darf
+398=Gaben Sie hier die Namen der Ligen ein, die dieser Hilfs-Admin bearbeiten darf (bitte mit Komma getrennt und ohne Pfad und Namenserweiterung, also z.B. &quot;1l_2001-02,dp_2001-02&quot;). Die angegebenen Ligen müssen bereits auf dem Server existieren!
 399=Startanzeige
 400=Was soll beim Aufruf einer Liga zuerst angezeigt werden?
 401=Alle Ligen auf einmal versenden

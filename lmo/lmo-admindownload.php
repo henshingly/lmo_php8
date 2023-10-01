@@ -35,13 +35,12 @@ if (($action == "admin") && ($todo == "download") && (($_SESSION["lmouserok"] ==
     }
     closedir($verz);
     sort($dummy);
-    if ($dummy[$down-1] != ""  && check_hilfsadmin($dummy[$down-1])) {
+    if ($dummy[(int)$down-1] != ""  && check_hilfsadmin($dummy[(int)$down-1])) {
       header("Content-Type: text/x-lmo3");
       header("Content-Disposition: attachment; filename=\"".$dummy[$down-1]."\"");
       readfile(sprintf("%s/%s", $dirliga, $dummy[$down-1]));
     }
   } elseif($down == -1) {
-    require(PATH_TO_LMO."/lmo-adminmimezip.php");
     $ftype = ".l98";
     $verz = opendir(substr($dirliga, 0, -1));
     $dummy = array();
@@ -53,16 +52,18 @@ if (($action == "admin") && ($todo == "download") && (($_SESSION["lmouserok"] ==
     closedir($verz);
     sort($dummy);
     if (count($dummy) > 0) {
-      $zipfile = new zipfile();
+      $zipfile = new zipArchive();
+      $zipfile->open($diroutput."ligen.zip", ZipArchive::CREATE);
       for($i = 0; $i < count($dummy); $i++) {
         if (check_hilfsadmin($dummy[$i])) {
-          $filedata = fread(fopen($dirliga.$dummy[$i], "rb"), filesize($dirliga.$dummy[$i]));
-          $zipfile->add_file($filedata, $dummy[$i]);
+          $zipfile->addFile(PATH_TO_LMO."/".$dirliga.$dummy[$i], $dummy[$i]);
         }
       }
+      $zipfile->close();
       header("Content-Type: application/zip");
       header("Content-Disposition: attachment; filename=\"ligen.zip\"");
-      echo $zipfile->file();
+      readfile($diroutput."ligen.zip");
+      unlink($diroutput."ligen.zip");
     }
   }
 }

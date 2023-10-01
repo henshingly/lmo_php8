@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,18 +16,17 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-if (isset($xtippername2)) {
+
+require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
+if(isset($xtippername2)) {
   $dumma = array();
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  
+
   $dumma = file($pswfile);
-  
+
   for($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i++) {
     $dummb = explode('|', $dumma[$i]);
-    if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != false)) {
+    if($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != false)) {
       // User gefunden
       $_SESSION['lmotippername'] = $dummb[0];
       $_SESSION["lmotipperok"] = 0;
@@ -38,16 +37,16 @@ if (isset($xtippername2)) {
       //      $header .= "X-Mailer: PHP/" . phpversion(). "\n";
       //      $header .= "X-Sender-IP: $REMOTE_ADDR\n";
       //      $header .= "Content-Type: text/plain";
-      if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
+      if(function_exists('ini_get') && @ini_get('safe_mode')=="0") {
         $para5 = "-f $aadr";
-        if (mail($dummb[4], $text['tipp'][79], $emailbody, $header, $para5)) {
+        if(mail($dummb[4], $text['tipp'][79], $emailbody, $header, $para5)) {
           echo $text['tipp'][78]."<br>";
           $xtippername2 = "";
         } else {
           echo $text['tipp'][80]." ".$aadr;
         }
       } else {
-        if (mail($dummb[4], $text['tipp'][79], $emailbody, $header)) {
+        if(mail($dummb[4], $text['tipp'][79], $emailbody, $header)) {
           echo $text['tipp'][78]."<br>";
           $xtippername2 = "";
         } else {
@@ -56,7 +55,7 @@ if (isset($xtippername2)) {
       }
     }
   }
-  if ($_SESSION["lmotipperok"] == -5) {
+  if($_SESSION["lmotipperok"] == -5) {
     $_SESSION["lmotipperok"] = -3;
   } // Benutzer nicht gefunden
 } else {

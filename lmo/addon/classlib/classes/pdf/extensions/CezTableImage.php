@@ -36,13 +36,13 @@ include 'Cezpdf.php';
 /**
  * cezpdf extension for displaying images in table cells.
  */
-set_time_limit(1800);
 class CezTableImage extends Cezpdf
 {
     /**
      * @param Cezpdf $ezpdf current cezpdf object
      */
-    public function __construct($p, $o = 'portrait', $t = 'none', $op = array()){
+    public function __construct($p, $o = 'portrait', $t = 'none', $op = [])
+    {
         parent::__construct($p, $o, $t, $op);
         $this->allowedTags .= '|showimage:.*?';
     }
@@ -62,26 +62,29 @@ class CezTableImage extends Cezpdf
         if (!is_array($cols)) {
             // take the columns from the first row of the data set
             reset($data);
-            list($k, $v) = each($data);
+            
+            $k = key($data);
+            $v = current($data);
+
             if (!is_array($v)) {
                 return;
             }
-            $cols = array();
+            $cols = [];
             foreach ($v as $k1 => $v1) {
                 $cols[$k1] = $k1;
             }
         }
 
         if (!is_array($options)) {
-            $options = array();
+            $options = [];
         }
 
-        $defaults = array('shaded' => 1, 'showBgCol' => 0, 'shadeCol' => array(0.8, 0.8, 0.8), 'shadeCol2' => array(0.7, 0.7, 0.7), 'fontSize' => 10, 'titleFontSize' => 12,
-        'titleGap' => 5, 'lineCol' => array(0, 0, 0), 'gap' => 5, 'xPos' => 'centre', 'xOrientation' => 'centre',
-        'showHeadings' => 1, 'textCol' => array(0, 0, 0), 'width' => 0, 'maxWidth' => 0, 'cols' => array(), 'minRowSpace' => -100, 'rowGap' => 2, 'colGap' => 5,
+        $defaults = ['shaded' => 1, 'showBgCol' => 0, 'shadeCol' => [0.8, 0.8, 0.8], 'shadeCol2' => [0.7, 0.7, 0.7], 'fontSize' => 10, 'titleFontSize' => 12,
+        'titleGap' => 5, 'lineCol' => [0, 0, 0], 'gap' => 5, 'xPos' => 'centre', 'xOrientation' => 'centre',
+        'showHeadings' => 1, 'textCol' => [0, 0, 0], 'width' => 0, 'maxWidth' => 0, 'cols' => [], 'minRowSpace' => -100, 'rowGap' => 2, 'colGap' => 5,
         'innerLineThickness' => 1, 'outerLineThickness' => 1, 'splitRows' => 0, 'protectRows' => 1, 'nextPageY' => 0,
-        'shadeHeadingCol' => array(), 'gridlines' => EZ_GRIDLINE_DEFAULT,
-        );
+        'shadeHeadingCol' => [], 'gridlines' => EZ_GRIDLINE_DEFAULT,
+        ];
 
         foreach ($defaults as $key => $value) {
             if (is_array($value)) {
@@ -98,12 +101,23 @@ class CezTableImage extends Cezpdf
         // @deprecated Compatibility with 'showLines' option
         if (isset($options['showLines'])) {
             switch ($options['showLines']) {
-                case 0:    $options['gridlines'] = 0; break;
-                case 1:    $options['gridlines'] = EZ_GRIDLINE_DEFAULT; break;
-                case 2:    $options['gridlines'] = EZ_GRIDLINE_HEADERONLY + EZ_GRIDLINE_ROWS; break;
-                case 3:    $options['gridlines'] = EZ_GRIDLINE_ROWS; break;
-                case 4:    $options['gridlines'] = EZ_GRIDLINE_HEADERONLY; break;
-                default:    $options['gridlines'] = EZ_GRIDLINE_TABLE + EZ_GRIDLINE_HEADERONLY + EZ_GRIDLINE_COLUMNS;
+                case 0:
+                    $options['gridlines'] = 0;
+                    break;
+                case 1:
+                    $options['gridlines'] = EZ_GRIDLINE_DEFAULT;
+                    break;
+                case 2:
+                    $options['gridlines'] = EZ_GRIDLINE_HEADERONLY + EZ_GRIDLINE_ROWS;
+                    break;
+                case 3:
+                    $options['gridlines'] = EZ_GRIDLINE_ROWS;
+                    break;
+                case 4:
+                    $options['gridlines'] = EZ_GRIDLINE_HEADERONLY;
+                    break;
+                default:
+                    $options['gridlines'] = EZ_GRIDLINE_TABLE + EZ_GRIDLINE_HEADERONLY + EZ_GRIDLINE_COLUMNS;
             }
             unset($options['showLines']);
         }
@@ -116,7 +130,7 @@ class CezTableImage extends Cezpdf
 
         $middle = ($this->ez['pageWidth'] - $this->ez['rightMargin']) / 2 + ($this->ez['leftMargin']) / 2;
         // figure out the maximum widths of the text within each column
-        $maxWidth = array();
+        $maxWidth = [];
         foreach ($cols as $colName => $colHeading) {
             $maxWidth[$colName] = 0;
         }
@@ -142,7 +156,7 @@ class CezTableImage extends Cezpdf
         }
 
         // calculate the start positions of each of the columns
-        $pos = array();
+        $pos = [];
         $x = 0;
         $t = $x;
         $adjustmentWidth = 0;
@@ -172,8 +186,8 @@ class CezTableImage extends Cezpdf
 
         if ($options['width'] && $adjustmentWidth > 0 && $setWidth < $options['width']) {
             // first find the current widths of the columns involved in this mystery
-            $cols0 = array();
-            $cols1 = array();
+            $cols0 = [];
+            $cols1 = [];
             $xq = 0;
             $presentWidth = 0;
             $last = '';
@@ -201,12 +215,12 @@ class CezTableImage extends Cezpdf
                 while ($presentWidth > $neededWidth && $cnt < 100) {
                     ++$cnt; // insurance policy
                     // find the widest columns, and the next to widest width
-                    $aWidest = array();
+                    $aWidest = [];
                     $nWidest = 0;
                     $widest = 0;
                     foreach ($cols0 as $colName => $w) {
                         if ($w > $widest) {
-                            $aWidest = array($colName);
+                            $aWidest = [$colName];
                             $nWidest = $widest;
                             $widest = $w;
                         } elseif ($w == $widest) {
@@ -488,7 +502,7 @@ class CezTableImage extends Cezpdf
                         // if these cells need to be split over a page, then $newPage will be set, and the remaining
                         // text will be placed in $leftOvers
                         $newPage = 0;
-                        $leftOvers = array();
+                        $leftOvers = [];
 
                         foreach ($cols as $colName => $colTitle) {
                             $this->ezSetY($y + $height);
@@ -497,7 +511,6 @@ class CezTableImage extends Cezpdf
                                 // KH: parse image tags and calculate the position and size for the images
                                 $this->parseImages($row[$colName], $maxWidth[$colName], 0, ($this->y - $options['rowGap'] - 2 * abs($descender)));
                                 if (isset($options['cols'][$colName]) && isset($options['cols'][$colName]['link']) && strlen($options['cols'][$colName]['link'])) {
-
                                     //$lines = explode("\n",$row[$colName]);
                                     $lines = preg_split("[\r\n|\r|\n]", $row[$colName]);
                                     if (isset($row[$options['cols'][$colName]['link']]) && strlen($row[$options['cols'][$colName]['link']])) {
@@ -510,7 +523,7 @@ class CezTableImage extends Cezpdf
                                     $lines = preg_split("[\r\n|\r|\n]", $row[$colName]);
                                 }
                             } else {
-                                $lines = array();
+                                $lines = [];
                             }
                             $this->y -= $options['rowGap'];
                             foreach ($lines as $line) {
@@ -721,16 +734,15 @@ class CezTableImage extends Cezpdf
         if ($params->isUrl()) {
             if (function_exists('imagecreatefrompng')) {
                 switch ($params->getImageType()) {
-
                     case 3: // png
                         $image = imagecreatefrompng($params->getFilename());
-                    break;
+                        break;
                     case 2: // jpeg
                         $image = imagecreatefromjpeg($params->getFilename());
-                    break;
+                        break;
                     case 1: // gif
                         $image = imagecreatefromgif($params->getFilename());
-                    break;
+                        break;
                 }
                 parent::addImage($image, $x, $y, $params->getWidth(), $params->getHeight(), $quality, $angle);
             }
@@ -739,13 +751,13 @@ class CezTableImage extends Cezpdf
             switch ($params->getImageType()) {
                 case 3: // png
                     parent::addPngFromFile($params->getFilename(), $x, $y, $params->getWidth(), $params->getHeight(), $angle);
-                break;
+                    break;
                 case 2: // jpeg
                     parent::addJpegFromFile($params->getFilename(), $x, $y, $params->getWidth(), $params->getHeight(), $angle);
-                break;
+                    break;
                 case 1: // gif
                     parent::addGifFromFile($params->getFilename(), $x, $y, $params->getWidth(), $params->getHeight(), $angle);
-                break;
+                    break;
             }
         }
     }

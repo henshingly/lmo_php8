@@ -20,12 +20,12 @@
 // First line of XSS-Identification
 $get = array();
 $get = $_GET;
-foreach($get as $value) {
-  if(preg_match("/<[^<>]+>/i", $value))
-     header('Location: '.$_SERVER['SCRIPT_URI']);
-}
+/*foreach($get as $value) {
+  if (str_starts_with($value,"<"))
+     die("XSS-Scripting detected");
+}*/
 
-if (!isset($_SESSION)) { 
+if (!isset($_SESSION)) {
   // no session has been started yet
   @ini_set("session.use_trans_sid","1");
   @ini_set("arg_separator.output","&amp;");
@@ -68,13 +68,13 @@ if (!file_exists(PATH_TO_LMO."/init.php")) {
 require(PATH_TO_LMO."/lmo-cfgload.php");
 
 //Language
-if(isset($_GET["lmouserlang"])){
+if (isset($_GET["lmouserlang"])){
   $_SESSION["lmouserlang"]=$_GET["lmouserlang"];
 }
-if(isset($_POST["lmouserlang"])){
+if (isset($_POST["lmouserlang"])){
   $_SESSION["lmouserlang"]=$_POST["lmouserlang"];
 }
-if(isset($_SESSION["lmouserlang"])){
+if (isset($_SESSION["lmouserlang"])){
   $lmouserlang=$_SESSION["lmouserlang"];
 } else {
   $lmouserlang=$deflang;

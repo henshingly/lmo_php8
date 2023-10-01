@@ -28,7 +28,7 @@ $down=isset($_GET['down'])  ? $_GET['down']    :0;
 $madr=isset($_GET['madr'])  ? $_GET['madr']    :'';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-					"http://www.w3.org/TR/html4/loose.dtd">
+                "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="de">
 <head>
 <title>LMO Admin</title>
@@ -51,50 +51,63 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
     }
     closedir($verz);
     sort($dummy);
+    $temp = $diroutput."ligen.zip";
+    require(PATH_TO_LMO."/includes/PHPMailer.php");
     if ($down > 0) {
       if ($dummy[$down-1] != "" && check_hilfsadmin($dummy[$down-1])) {
-        require(PATH_TO_LMO."/lmo-adminmimezip.php");
-        $zipfile = new zipfile();
-        $filedata = fread(fopen($dirliga.$dummy[$down-1], "rb"), filesize($dirliga.$dummy[$down-1]));
-        $zipfile->add_file($filedata, $dummy[$down-1]);
-        $mail = new mime_mail();
-        $mail->from = $aadr;
-        $mail->to = $madr;
-        $mail->subject = $text[341];
-        $mail->body = $text[342]."\n\n--------------------------------------------------\nSender: ".$_SERVER['REMOTE_ADDR']." (".$_SERVER['HTTP_USER_AGENT'].")\n";
-        $mail->add_attachment($zipfile->file(), "lmo_".substr($dummy[$down-1], 0, -4).".zip", "application/octet-stream");
-        if ($mail->send() === TRUE) {
+        $zipfile = new ZipArchive;
+        $zipfile->open($temp, ZipArchive::CREATE);
+        $zipfile->addFile(PATH_TO_LMO."/".$dirliga.$dummy[$down-1], $dummy[$down-1]);
+        $zipfile->close();
+        $mail = new PHPMailer(true);
+        $mail->isMail();
+        $mail->setFrom($aadr);
+        $mail->addAddress($madr);
+        $mail->Subject = $text[341];
+        $mail->Body = $text[342];
+        $mail->addAttachment($temp, $dummy[$down-1].".zip");
+        if ($mail->send()) {
           echo getMessage($text[348]);
-        }else{
-          echo getMessage($text[550],TRUE);
+          $mail->ClearAllRecipients(); 
+          $mail->ClearReplyTos();
+        } else {
+          $mail->ErrorInfo();
+          $mail->ClearAllRecipients(); 
+          $mail->ClearReplyTos();
         }?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
       }
-    }elseif($down==-1){
-      if(count($dummy)>0){
-        require(PATH_TO_LMO."/lmo-adminmimezip.php");
-        $zipfile = new zipfile();
+    } elseif($down==-1) {
+      if (count($dummy)>0) {
+        $zipfile = new ZipArchive;
+        $zipfile->open($temp, ZipArchive::CREATE);
         for($i=0;$i<count($dummy);$i++){
           if (check_hilfsadmin($dummy[$i])) {
-            $filedata = fread(fopen($dirliga.$dummy[$i], "rb"), filesize($dirliga.$dummy[$i]));
-            $zipfile -> add_file($filedata, $dummy[$i]);
+            $zipfile->addFile(PATH_TO_LMO."/".$dirliga.$dummy[$i], $dummy[$i]);
           }
         }
-        $mail = new mime_mail();
-        $mail->from = $aadr;
-        $mail->to = $madr;
-        $mail->subject = $text[341];
-        $mail->body = $text[342]."\n\n--------------------------------------------------\nSender: ".$_SERVER['REMOTE_ADDR']." (".$_SERVER['HTTP_USER_AGENT'].")\n";
-        $mail->add_attachment($zipfile -> file(), "lmo_".substr($dummy[$down-1],0,-4).".zip", "application/octet-stream");
-        if ($mail->send()===TRUE){
+        $zipfile->close();
+        $mail = new PHPMailer(true);
+        $mail->isMail();
+        $mail->setFrom($aadr);
+        $mail->addAddress($madr);
+        $mail->Subject = $text[341];
+        $mail->Body = $text[342];
+        $mail->addAttachment($temp);
+        if ($mail->send()) {
           echo getMessage($text[348]);
-        }else{
-          echo getMessage($text[550],TRUE);
+          $mail->ClearAllRecipients(); 
+          $mail->ClearReplyTos();
+        } else {
+          $mail->ErrorInfo();
+          $mail->ClearAllRecipients(); 
+          $mail->ClearReplyTos();
         }?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
       }
     }
-  }else{?>
+    unlink($temp);
+  } else {?>
   <form action="<?php echo $_SERVER['PHP_SELF']?>">
     <label>Mailadresse: <input name="madr" type="text" class="lmo-formular-input" size="25" maxlength="128"></label>
     <input type="hidden" name="action" value="admin">
