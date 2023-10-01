@@ -186,7 +186,7 @@ $lang=array(
 );
 $userlan=$_SESSION['lmouserlang'];
 
-if (isset($lang[$userlan])) {
+if(isset($lang[$userlan])) {
     $userlang=$userlan;
 } else {
     $userlang="Deutsch";
@@ -276,7 +276,7 @@ if (isset($lang[$userlan])) {
   <dd><?php echo $lang[$userlang]['ABS_2_text15'];?></dd>
   <dd><?php echo $lang[$userlang]['ABS_2_text16'];?></dd>
   <dd><?php echo $lang[$userlang]['ABS_2_text17'];?></dd><?php
-if ($tipp_jokertipp==1) {?>
+if($tipp_jokertipp==1) {?>
   <dd><?php echo $lang[$userlang]['ABS_2_text18'];?></dd><?php
 }?>
   <dt><?php echo $lang[$userlang]['ABS_2_text19'];?>
@@ -293,12 +293,12 @@ if ($tipp_jokertipp==1) {?>
       <li><?php echo $lang[$userlang]['ABS_3_text3'];?> <?php echo $tipp_rtendenzdiff;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
       <li><?php echo $lang[$userlang]['ABS_3_text4'];?> <?php echo $tipp_rtendenz;?> <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
       <li><?php echo $lang[$userlang]['ABS_3_text5'];?> <?php echo $tipp_rtor;?>  <?php echo $lang[$userlang]['ABS_3_text2_1'];?></li>
-<?php if ($tipp_jokertipp==1) {?>
+<?php if($tipp_jokertipp==1) {?>
 
       <li><?php echo $lang[$userlang]['ABS_3_text6'];?> <strong><?php echo $tipp_jokertippmulti;?></strong></li><?php
 }?>
     </ul><?php
-  if ($tipp_jokertipp==1) {?>
+  if($tipp_jokertipp==1) {?>
      <dd><?php echo $lang[$userlang]['ABS_3_text7'];?></dd><?php
 } ?>
   </dd>

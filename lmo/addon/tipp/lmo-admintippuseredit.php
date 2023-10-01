@@ -18,10 +18,10 @@
   */
 
 $edit=false;
-if (isset($_POST['nick'])) {
+if(isset($_POST['nick'])) {
   //Edited
   $nick=trim($_POST['nick']);
-} elseif (isset($_GET['nick'])) {
+} elseif(isset($_GET['nick'])) {
   //toEdit
   $edit=true;
   $nick=trim($_GET['nick']);
@@ -59,7 +59,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
   $users = file($pswfile);
   array_unshift($users,'');
 
-  if ($save != -1) {
+  if($save != -1) {
     $gef=0;
     for($i=1;$i<count($users) && $gef==0;$i++){
       $tipp_tipperdaten = explode('|',$users[$i]);
@@ -67,7 +67,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
       if($nick==$tipp_tipperdaten[0] && $newpage == 0){
         $gef=1;
         $save=$i;
-        if (!$edit) $newpage=1;
+        if(!$edit) $newpage=1;
       } elseif($nick==$tipp_tipperdaten[0] && $newpage == 1){
         $newpage = 0;
         echo getMessage($text['tipp'][24],TRUE);
@@ -215,7 +215,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
 
   <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
     <tr>
-      <td align="center"><h1><?php      if ($save == count($users)) {
+      <td align="center"><h1><?php      if($save == count($users)) {
         echo $text['tipp'][136];
       }else {
       	echo $text['tipp'][106];
@@ -223,14 +223,14 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
     </tr>
     <tr>
       <td align="center">
-        <form name="lmotippedit" action="<?php echo  $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="if (this.nick.value=='') {alert ('<?php echo $text['tipp'][112]?>');this.nick.focus();return false;}">
+        <form name="lmotippedit" action="<?php echo  $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="if(this.nick.value=='') {alert ('<?php echo $text['tipp'][112]?>');this.nick.focus();return false;}">
           <input type="hidden" name="action" value="admin">
           <input type="hidden" name="todo" value="tippuseredit">
           <input type="hidden" name="newpage" value="<?php echo $save == count($users)?'1':'0'?>">
           <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
             <tr>
               <td align="right">&nbsp;<?php echo $text['tipp'][23]; ?></td>
-              <td align="left"><?php            if ($save == count($users)) {?>
+              <td align="left"><?php            if($save == count($users)) {?>
                 <input class="lmo-formular-input" type="text" name="nick" value="<?php echo  $nick; ?>"><?php
             }else{?>
                 <input type="hidden" name="nick" value="<?php echo  $nick; ?>"><strong><?php echo $tipp_tipperdaten[0]?></strong><?php
@@ -238,13 +238,13 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
               </td>
             </tr>
             <tr>
-              <td align="right">&nbsp;<?php            if ($save == count($users)) {?>
+              <td align="right">&nbsp;<?php            if($save == count($users)) {?>
               <?php echo $text[323]; ?><?php
             } else {?>
               <acronym title="<?php echo $text['tipp'][304]?>"><?php echo $text[323]; ?></acronym><?php
             }?>
               </td>
-              <td align="left"><?php            if ($save == count($users)) {?>
+              <td align="left"><?php            if($save == count($users)) {?>
                 <input class="lmo-formular-input" type="text" name="xtipperpass" value="<?php  include(PATH_TO_LMO . "/lmo-adminuserpass.php");?>"><?php
             }else{?>
                 <input class="lmo-formular-input" type="password" name="xtipperpass" size="25" maxlength="100" value=""><?php

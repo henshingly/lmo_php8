@@ -33,9 +33,9 @@ $tage               = isset($_POST['tage'])               ? $_POST['tage']      
 $liga1              = isset($_POST['liga1'])              ? $_POST['liga1']              : array();
 $st1                = isset($_POST['st1'])                ? $_POST['st1']                : array();
 
-if ($save == 1) {
-  if ($emailart == 1) {
-    if ($liganr == 0) {
+if($save == 1) {
+  if($emailart == 1) {
+    if($liganr == 0) {
       $st = 0;
       $file='';
       $viewermode = 1;
@@ -51,7 +51,7 @@ if ($save == 1) {
 ?>
 <script type="text/javascript">
 function changetextarea(x){
-  if (document.getElementById) {
+  if(document.getElementById) {
     if(x==0){
       document.getElementById("message").value="<?php echo $text['tipp'][295]?>";
       document.getElementById("betreff").value="<?php echo $text['tipp'][296]?>";
@@ -119,8 +119,8 @@ if($i>0){?>
           </tr><?php
 $start1=1;
 $ende1=count($dumma);
-if ($save == 1) {
-  if (isset($start)) {
+if($save == 1) {
+  if(isset($start)) {
     $start1 = $start;
   }
   if(isset($ende)) {
@@ -141,8 +141,8 @@ if ($save == 1) {
           <tr>
             <th colspan="4">&nbsp;</th>
           </tr><?php
-if ($save == 1) {
-  if (isset($betreff)) {
+if($save == 1) {
+  if(isset($betreff)) {
     $betreff1 = $betreff;
   }
 }?>
@@ -157,7 +157,7 @@ if ($save == 1) {
             <td>&nbsp;</td>
             <td align="left" colspan="3">
               <textarea id="message" name="message" rows="10" cols="60"><?php
-                if ($emailart == 1) {
+                if($emailart == 1) {
                   echo $tipp_textreminder1;
                 } elseif($message != "") {
                   echo $message;

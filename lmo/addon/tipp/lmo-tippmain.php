@@ -24,12 +24,12 @@ $todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:'';
 $file=isset($_REQUEST['file'])?$_REQUEST['file']:'';
 
 
-if ($action == "tipp") {
-  if ($file != "") {
+if($action == "tipp") {
+  if($file != "") {
     $addm = $_SERVER['PHP_SELF']."?file=".$file."&amp;action=";
   }
-  if ($_SESSION["lmotipperok"] == 5) {
-    if (($todo == "edit" && $viewermode != 1) || $todo == "einsicht") {
+  if($_SESSION["lmotipperok"] == 5) {
+    if(($todo == "edit" && $viewermode != 1) || $todo == "einsicht") {
       $lmo_only_st=true;
       require(PATH_TO_LMO . "/lmo-openfile.php");
     } elseif($todo == "tabelle") {
@@ -42,19 +42,19 @@ if ($action == "tipp") {
   $me = array("0", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
   $adda = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
   //if(!isset($st)){$st=$stx;}else{$sty=$st;}
-  if (!isset($newpage)) {
+  if(!isset($newpage)) {
     $newpage = 0;
   }
-  if (!isset($file)) {
+  if(!isset($file)) {
     $file = "";
   }
-  if (!isset($tippfile)) {
+  if(!isset($tippfile)) {
     $tippfile = "";
   }
-  if (!isset($tipp_tipptabelle1)) {
+  if(!isset($tipp_tipptabelle1)) {
     $tipp_tipptabelle1 = 1;
   }
-  if ($tipp_tippmodus == 1 && $todo == "edit") {?>
+  if($tipp_tippmodus == 1 && $todo == "edit") {?>
 <script type="text/javascript"><?php
   if($tipp_pfeiltipp==1){ ?>
     img0 = new Image();
@@ -110,11 +110,11 @@ if ($action == "tipp") {
   </tr>
   <tr>
     <td colspan="3" align="center"><?php
-  if ($_SESSION["lmotipperok"] == 5) {
-    if ($file != "" && $viewermode != 1) {
+  if($_SESSION["lmotipperok"] == 5) {
+    if($file != "" && $viewermode != 1) {
       $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($file, 0, -4)."_".$_SESSION['lmotippername'].".tip";
     }
-    if ($viewermode == 1) {
+    if($viewermode == 1) {
       require(PATH_TO_ADDONDIR . "/tipp/lmo-tippviewer.php");
     } else {
       switch ($todo) {

@@ -33,13 +33,13 @@ isset($_POST['xtippervereinneu'])?       $xtippervereinneu=trim($_POST['xtipperv
 isset($_REQUEST['xtipperpass'])?         $xtipperpass=trim($_REQUEST['xtipperpass']):           $xtipperpass="";
 isset($_POST['xtipperpassw'])?           $xtipperpassw=trim($_POST['xtipperpassw']):            $xtipperpassw="";
 isset($_POST['xtipperligen'])?           $xtipperligen=$_POST['xtipperligen']:                  $xtipperligen="";
-if ($tipp_freischaltcode==1) {
+if($tipp_freischaltcode==1) {
   isset($_POST['xtipperemail2'])?        $xtipperemail2=trim($_POST['xtipperemail2']):          $xtipperemail2="";
 } else {
   $xtipperemail2=$xtipperemail;
 }
 
-if ($newpage==1) {
+if($newpage==1) {
   $users = array("");
   $userf = array("");
   $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
@@ -47,17 +47,17 @@ if ($newpage==1) {
   while (!feof($datei)) {
     $zeile = fgets($datei,1000);
     $zeile=trim(chop($zeile));
-    if ($zeile!="") {
-      if ($zeile!="") {
+    if($zeile!="") {
+      if($zeile!="") {
         array_push($users,$zeile);
       }
       $dummb1 = explode('|',$zeile);
-      if (strtolower($dummb1[0])==strtolower($xtippernick)) {
+      if(strtolower($dummb1[0])==strtolower($xtippernick)) {
         $newpage=0;
         // Nick schon vorhanden
         echo getMessage($text['tipp'][24],TRUE);
       }
-      if (strtolower($dummb1[4])==strtolower($xtipperemail)) {
+      if(strtolower($dummb1[4])==strtolower($xtipperemail)) {
         $newpage=0;
         // Email schon vorhanden
         echo getMessage($text['tipp'][201],TRUE);
@@ -67,57 +67,57 @@ if ($newpage==1) {
   fclose($datei);
 }
 
-if ($newpage==1) {
-  if ($xtippernick=="") {
+if($newpage==1) {
+  if($xtippernick=="") {
     $newpage=0;
     echo getMessage($text['tipp'][112],TRUE);
   }
-  if (preg_match('/[\W|_]/',$xtippernick)!=0) {
+  if(preg_match('/[\W|_]/',$xtippernick)!=0) {
     $newpage=0;
     echo getMessage($text['tipp'][109],TRUE);
   }
-  if ($tipp_realname!=0) {
-    if ($xtippervorname=="") {
+  if($tipp_realname!=0) {
+    if($xtippervorname=="") {
       $newpage=0;
       echo getMessage($text['tipp'][66],TRUE);
     }
-    if ($xtippernachname=="") {
+    if($xtippernachname=="") {
       $newpage=0;
       echo getMessage($text['tipp'][67],TRUE);
     }
-    if (strpos($xtippernachname, " ")!=false || strpos($xtippervorname, " ")>-1) {
+    if(strpos($xtippernachname, " ")!=false || strpos($xtippervorname, " ")>-1) {
       $newpage=0;
       echo getMessage($text['tipp'][109],TRUE);
     }
   }
-  if ($tipp_adresse==1) {
-    if ($xtipperstrasse=="") {
+  if($tipp_adresse==1) {
+    if($xtipperstrasse=="") {
       $newpage=0;
       echo getMessage($text['tipp'][129],TRUE);
     }
-    if ($xtipperplz=="") {
+    if($xtipperplz=="") {
       $newpage=0;
       echo getMessage($text['tipp'][130],TRUE);
     }
-    if ($xtipperort=="") {
+    if($xtipperort=="") {
       $newpage=0;
       echo getMessage($text['tipp'][131],TRUE);
     }
   }
-  if ($xtipperemail=="" || strpos($xtipperemail, " ")>0 || strpos($xtipperemail, "@")<1 || $xtipperemail!= $xtipperemail2) {
+  if($xtipperemail=="" || strpos($xtipperemail, " ")>0 || strpos($xtipperemail, "@")<1 || $xtipperemail!= $xtipperemail2) {
     $newpage=0;
     echo getMessage($text['tipp'][68],TRUE);
   }
 
-  if ($tipp_freischaltcode!=1) {
-    if ($xtipperpass=="") {
+  if($tipp_freischaltcode!=1) {
+    if($xtipperpass=="") {
       $newpage=0;
       echo getMessage($text['tipp'][69],TRUE);
-    } else if (strlen($xtipperpass)<3) {
+    } else if(strlen($xtipperpass)<3) {
       $newpage=0;
       echo getMessage($text['tipp'][73],TRUE);
     }
-    if ($xtipperpassw!=$xtipperpass) {
+    if($xtipperpassw!=$xtipperpass) {
       $newpage=0;
       echo getMessage($text['tipp'][70],TRUE);
     }
@@ -125,16 +125,16 @@ if ($newpage==1) {
     $xtipperpass=substr(md5(uniqid(rand())),0,rand(8,16));
   }
 
-  if ($xtippervereinradio==1) {
-    if ($xtippervereinalt=="") {
+  if($xtippervereinradio==1) {
+    if($xtippervereinalt=="") {
       $newpage=0;
       echo getMessage($text['tipp'][71],TRUE);
     } else {
       require(PATH_TO_ADDONDIR . "/tipp/lmo-tippcheckteam.php");
     }
   }
-  if ($xtippervereinradio==2) {
-    if ($xtippervereinneu=="") {
+  if($xtippervereinradio==2) {
+    if($xtippervereinneu=="") {
       $newpage=0;
       echo getMessage($text['tipp'][72],TRUE);
     } else {
@@ -143,28 +143,28 @@ if ($newpage==1) {
   }
 }
 
-if ($newpage==1) {
+if($newpage==1) {
   $userf1="";
 
-  if ($xtippervereinradio==1) {
+  if($xtippervereinradio==1) {
     $_SESSION['lmotipperverein']=$xtippervereinalt;
-  } else if ($xtippervereinradio==2) {
+  } else if($xtippervereinradio==2) {
     $_SESSION['lmotipperverein']=$xtippervereinneu;
   } else {
     $_SESSION['lmotipperverein']="";
   }
 
   $zeile=$xtippernick."|".$xtipperpass."|";
-  if ($tipp_freischaltung==0) {
+  if($tipp_freischaltung==0) {
     $zeile.="5|";
   } else {
     $zeile.="|";
   }
-  if ($tipp_realname!=-1) {
+  if($tipp_realname!=-1) {
     $zeile.=$xtippervorname." ".$xtippernachname;
   }
   $zeile.="|".$xtipperemail."|".$_SESSION['lmotipperverein'];
-  if ($tipp_adresse==1) {
+  if($tipp_adresse==1) {
     $zeile.="|$xtipperstrasse|$xtipperplz|$xtipperort";
   } else {
     $zeile.="|||";
@@ -172,7 +172,7 @@ if ($newpage==1) {
   $zeile.="|1|1|EOL";
   array_push($users,$zeile);
 
-  if ($xtipperligen!="") {
+  if($xtipperligen!="") {
     foreach($xtipperligen as $key => $value){
       $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$xtippernick.".tip";
       $st=-1;
@@ -190,7 +190,7 @@ if ($newpage==1) {
   }
   $save=-1;
   require(PATH_TO_ADDONDIR . "/tipp/lmo-tippsaveauth.php");
-  if ($auswertdatei = fopen(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp."auswert/gesamt.aus","ab")) {
+  if($auswertdatei = fopen(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp."auswert/gesamt.aus","ab")) {
     flock($auswertdatei,2);
     fputs($auswertdatei,"\n[".$xtippernick."]\n");
     fputs($auswertdatei,"Team=".$_SESSION['lmotipperverein']."\n");
@@ -199,10 +199,10 @@ if ($newpage==1) {
     fclose($auswertdatei);
   }
   /**Freischaltcode versenden*/
-  if ($tipp_freischaltcode==1) {
+  if($tipp_freischaltcode==1) {
     include(PATH_TO_ADDONDIR . "/tipp/lmo-admintippfreischaltung.php");
   }
-  if ($tipp_mailbeianmeldung==1) {
+  if($tipp_mailbeianmeldung==1) {
     include(PATH_TO_ADDONDIR . "/tipp/lmo-admintippbenachrichtigung.php");
   }
 }
@@ -258,7 +258,7 @@ if($newpage!=1){ ?>
             <td align="right"><?php echo " ".$text['tipp'][16]; ?></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xtipperemail" size="25" maxlength="64" value="<?php echo $xtipperemail; ?>"></td>
           </tr><?php
-  if ($tipp_freischaltcode==1) {?>
+  if($tipp_freischaltcode==1) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><acronym title="<?php echo $text['tipp'][300]?>"><?php echo " ".$text['tipp'][16]." ".$text['tipp'][19]; ?></acronym></td>

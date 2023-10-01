@@ -19,12 +19,12 @@
 
 require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 $tipp_mailtext = str_replace(array('\n', '[nick]', '[pass]', '[url]'), array("\n", $xtippernick, $xtipperpass, $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?action=tipp&xtippername=" . $xtippernick . "&xtipperpass=" . $xtipperpass), $text['tipp'][298]);
-if (function_exists('ini_get') && @ini_get('safe_mode') == "0") {
+if(function_exists('ini_get') && @ini_get('safe_mode') == "0") {
   $sent = mail($xtipperemail, $text['tipp'][77], $tipp_mailtext, "From:" . $text['tipp'][0] . " <" . $aadr . ">","-f " . $aadr);
 } else {
   $sent = mail($xtipperemail, $text['tipp'][77], $tipp_mailtext, "From:" . $text['tipp'][0] . " <" . $aadr . ">");
 }
-if ($sent) {
+if($sent) {
   echo getMessage($text['tipp'][78]);
 } else {
   echo getMessage($text['tipp'][80], TRUE);

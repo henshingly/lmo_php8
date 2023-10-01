@@ -17,7 +17,7 @@
   *
   */
 
-if (($file != "") && ($subteams != "")) {
+if(($file != "") && ($subteams != "")) {
   $subteam = explode('.', $subteams);
   $spiele1 = array_pad($array, $anzteams+1, "");
   $siege1 = array_pad($array, $anzteams+1, "");
@@ -36,72 +36,72 @@ if (($file != "") && ($subteams != "")) {
   }
   $tab1 = array("");
   for($a = 1; $a <= $anzteams; $a++) {
-    if ($tabtype == 3) {
+    if($tabtype == 3) {
       $hoy = ($anzst/2);
     }
-    if ($tabtype == 4) {
+    if($tabtype == 4) {
       $endtab = ($anzst/2);
     }
     for($j = $hoy; $j < $endtab; $j++) {
       for($i = 0; $i < $anzsp; $i++) {
-        if ($btip[$j][$i] == false) {
+        if($btip[$j][$i] == false) {
           $b = 0;
           for($c = 0; $c < count($subteam); $c++) {
-            if ($subteam[$c] == $teama[$j][$i]) {
+            if($subteam[$c] == $teama[$j][$i]) {
               $b++;
             } elseif($subteam[$c] == $teamb[$j][$i]) {
               $b++;
             }
           }
-          if (($b == 2) && ($mcalc[$j][$i] < 2) && ($goaltippa[$j][$i] != "_") && ($goaltippb[$j][$i] != "_") && ((($tabtype == 0 or $tabtype == 3 or $tabtype == 4) && (($a == $teama[$j][$i]) || ($a == $teamb[$j][$i]))) || (($tabtype == 1) && ($a == $teama[$j][$i])) || (($tabtype == 2) && ($a == $teamb[$j][$i])))) {
+          if(($b == 2) && ($mcalc[$j][$i] < 2) && ($goaltippa[$j][$i] != "_") && ($goaltippb[$j][$i] != "_") && ((($tabtype == 0 or $tabtype == 3 or $tabtype == 4) && (($a == $teama[$j][$i]) || ($a == $teamb[$j][$i]))) || (($tabtype == 1) && ($a == $teama[$j][$i])) || (($tabtype == 2) && ($a == $teamb[$j][$i])))) {
             $mcalc[$j][$i] = $mcalc[$j][$i]+1;
             $anzcnt++;
             $p0s = $pns;
             $p0u = $pnu;
             $p0n = $pnn;
             $spiele1[$a] = $spiele1[$a]+1;
-            if ($a == $teama[$j][$i]) {
+            if($a == $teama[$j][$i]) {
               $etore1[$a] = $etore1[$a]+$goaltippa[$j][$i];
               $atore1[$a] = $atore1[$a]+$goaltippb[$j][$i];
-              if ($goaltippa[$j][$i] > $goaltippb[$j][$i]) {
+              if($goaltippa[$j][$i] > $goaltippb[$j][$i]) {
                 $siege1[$a] = $siege1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0s;
-                if ($minus == 2) {
+                if($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0n;
                 }
               } elseif($goaltippa[$j][$i] < $goaltippb[$j][$i]) {
                 $nieder1[$a] = $nieder1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0n;
-                if ($minus == 2) {
+                if($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0s;
                 }
               } elseif($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
                 $unent1[$a] = $unent1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0u;
-                if ($minus == 2) {
+                if($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0u;
                 }
               }
             }
-            if ($a == $teamb[$j][$i]) {
+            if($a == $teamb[$j][$i]) {
               $etore1[$a] = $etore1[$a]+$goaltippb[$j][$i];
               $atore1[$a] = $atore1[$a]+$goaltippa[$j][$i];
-              if ($goaltippa[$j][$i] < $goaltippb[$j][$i]) {
+              if($goaltippa[$j][$i] < $goaltippb[$j][$i]) {
                 $siege1[$a] = $siege1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0s;
-                if ($minus == 2) {
+                if($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0n;
                 }
               } elseif($goaltippa[$j][$i] > $goaltippb[$j][$i]) {
                 $nieder1[$a] = $nieder1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0n;
-                if ($minus == 2) {
+                if($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0s;
                 }
               } elseif($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
                 $unent1[$a] = $unent1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0u;
-                if ($minus == 2) {
+                if($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0u;
                 }
               }
@@ -112,13 +112,13 @@ if (($file != "") && ($subteams != "")) {
     }
     $dtore1[$a] = $etore1[$a]-$atore1[$a];
     $quote1[$a] = 0;
-    if ($spiele1[$a] != 0) {
+    if($spiele1[$a] != 0) {
       $quote1[$a] = number_format($punkte1[$a]/$spiele1[$a], 2, ".", ",");
     }
     $quote1[$a] *= 100;
     for($c = 0; $c < count($subteam); $c++) {
-      if ($subteam[$c] == $a) {
-        if ($kegel == 0) {
+      if($subteam[$c] == $a) {
+        if($kegel == 0) {
           array_push($tab1, (50000000+$quote1[$a]).(50000000+$punkte1[$a]).(50000000-$negativ1[$a]).(50000000+$dtore1[$a]).(50000000+$etore1[$a]).(50000000+$c).(50000000+$a));
         } else {
           array_push($tab1, (50000000+$quote1[$a]).(50000000+$punkte1[$a]).(50000000-$negativ1[$a]).(50000000+$etore1[$a]).(50000000+$dtore1[$a]).(50000000+$c).(50000000+$a));

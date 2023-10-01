@@ -18,8 +18,8 @@
   */
 
 require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
-if (($action == "tipp") && ($todo == "delaccount")) {
-  if (!isset($xtipperpass)) {
+if(($action == "tipp") && ($todo == "delaccount")) {
+  if(!isset($xtipperpass)) {
     $xtipperpass = "";
   }
   $users = array("");
@@ -31,30 +31,30 @@ if (($action == "tipp") && ($todo == "delaccount")) {
   $gef = 0;
   for($i = 1; $i < count($users) && $gef == 0; $i++) {
     $dummb = explode('|', $users[$i]);
-    if ($_SESSION['lmotippername'] == $dummb[0]) {
+    if($_SESSION['lmotippername'] == $dummb[0]) {
       // Nick gefunden
       $gef = 1;
       $del = $i;
     }
   }
-  if ($gef == 0) {
+  if($gef == 0) {
     exit;
   }
 
-  if ($newpage == 1) {
+  if($newpage == 1) {
     $xtipperpass = trim($xtipperpass);
-    if ($xtipperpass != $dummb[1]) {
+    if($xtipperpass != $dummb[1]) {
       $newpage = 0;
       echo getMessage($text['tipp'][42],TRUE);
     }
   }
 
-  if ($newpage == 1) {
+  if($newpage == 1) {
     $userf3 = explode('|', $users[$del]);
     $verz = opendir(substr(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp, 0, -1));
     $dummy = array("");
     while ($files = readdir($verz)) {
-      if (substr($files, -5-strlen($userf3[0])) == "_".$userf3[0].".tip") {
+      if(substr($files, -5-strlen($userf3[0])) == "_".$userf3[0].".tip") {
         array_push($dummy, $files);
       }
     }

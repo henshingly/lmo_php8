@@ -21,39 +21,39 @@ require(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 $xtippername=isset($_REQUEST['xtippername'])?$_REQUEST['xtippername']:'';
 $xtipperpass=isset($_REQUEST['xtipperpass'])?$_REQUEST['xtipperpass']:'';
 
-if ($action == "tipp") {
-  if (!isset($_SESSION['lmotipperok'])) {
+if($action == "tipp") {
+  if(!isset($_SESSION['lmotipperok'])) {
     $_SESSION['lmotipperok'] = 0;
   }
-  if (!isset($_SESSION['lmotippername'])) {
+  if(!isset($_SESSION['lmotippername'])) {
     $_SESSION['lmotippername'] = "";
   }
-  if (!isset($_SESSION['lmotipperpass'])) {
+  if(!isset($_SESSION['lmotipperpass'])) {
     $_SESSION['lmotipperpass'] = "";
   }
-  if (!isset($_SESSION['lmotipperverein'])) {
+  if(!isset($_SESSION['lmotipperverein'])) {
     $_SESSION['lmotipperverein'] = "";
   }
-  if ($_SESSION["lmotipperok"] < 1 && $_SESSION["lmotipperok"] > -4) {
+  if($_SESSION["lmotipperok"] < 1 && $_SESSION["lmotipperok"] > -4) {
     $xtippername2 = "";
-    if (!empty($xtippername) && !empty($xtipperpass)) {
+    if(!empty($xtippername) && !empty($xtipperpass)) {
       $_SESSION['lmotippername'] = $xtippername;
       $_SESSION['lmotipperpass'] = $xtipperpass;
       $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-      if (($tippers = file($pswfile)) === FALSE) $tippers = array();
+      if(($tippers = file($pswfile)) === FALSE) $tippers = array();
       $_SESSION["lmotipperok"] = -2;
       foreach($tippers as $tipper) {
-        if ($_SESSION["lmotipperok"] == -2) {
+        if($_SESSION["lmotipperok"] == -2) {
           $fileinfo = explode('|', trim($tipper));
-          if ($_SESSION['lmotippername'] == $fileinfo[0]) {
+          if($_SESSION['lmotippername'] == $fileinfo[0]) {
             // Nick gefunden
             $_SESSION["lmotipperok"] = -1;
-            if ($_SESSION["lmotipperpass"] == $fileinfo[1]) {
+            if($_SESSION["lmotipperpass"] == $fileinfo[1]) {
               // Passwort richtig
               $lmotippername=$_SESSION['lmotippername'];
               $lmotipperverein = $fileinfo[5];
               $_SESSION["lmotipperok"] = $fileinfo[2];
-              if ($_SESSION["lmotipperok"] == 5) {
+              if($_SESSION["lmotipperok"] == 5) {
                 //echo $_SESSION["lmotipperok"];
                 //array_shift($tipper);
               }
@@ -63,15 +63,15 @@ if ($action == "tipp") {
       }
     }
   }
-  if ($_SESSION["lmotipperok"] == -5) {
+  if($_SESSION["lmotipperok"] == -5) {
     // Passwort-Anforderung
     require(PATH_TO_ADDONDIR . "/tipp/lmo-tippemailpass.php");
   }
-  if ($_SESSION["lmotipperok"] < 1 && $_SESSION["lmotipperok"] > -4) {
+  if($_SESSION["lmotipperok"] < 1 && $_SESSION["lmotipperok"] > -4) {
     $addw = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=wert&amp;file=";
     $adda = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
 
-    if (($todo == "wert" && $all != 1) || $todo == "fieber" || $todo == "edit") {
+    if(($todo == "wert" && $all != 1) || $todo == "fieber" || $todo == "edit") {
       require(PATH_TO_LMO . "/lmo-openfilename.php");
     } elseif($todo == "einsicht") {
       $lmo_only_st=true;
@@ -171,7 +171,7 @@ if ($action == "tipp") {
           if($dummy[$u]!="" && $ftest2[$u]!=""){
             $dummy[$u]=substr($dummy[$u],0,-4);
             $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
-            if ($tipp_nurgesamt==0) {?>
+            if($tipp_nurgesamt==0) {?>
               <li class="lmoadminli"><a href="<?php echo $addw.$dummy[$u].".l98"; ?>"><?php echo $ftest2[$u];?></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php
             }
           }

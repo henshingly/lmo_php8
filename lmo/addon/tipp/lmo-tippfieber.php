@@ -79,47 +79,47 @@ if($file!="" && $tipp_tippfieber==1){
          <input type="submit" name="best" value="<?php echo $text['tipp'][236]; ?>">
       </td>
     </tr><?php
-  if (isset($tippernick) && count($tippernick)>1) {?>
+  if(isset($tippernick) && count($tippernick)>1) {?>
     <tr>
       <td colspan="4" align="center">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
-    if ($fieber_stat1<0 && $fieber_stat2>=0) {
+    if($fieber_stat1<0 && $fieber_stat2>=0) {
       $fieber_stat1=$fieber_stat2;
       $fieber_stat2=-1;
     }
-    if ($fieber_stat1<0) {
+    if($fieber_stat1<0) {
       echo "<tr><th><h2>".$text['tipp'][284]."</h2></th></tr>";
     } else {
       $dummy=URL_TO_ADDONDIR."/tipp/lmo-tipppaintgraph.php?pganz=";
-      if ($fieber_stat2>=0) {
+      if($fieber_stat2>=0) {
         $dummy=$dummy."2";
       } else {
         $dummy=$dummy."1";
       }
       $dummy=$dummy."&amp;pgteam1=".htmlentities($tippernick[$fieber_stat1]);
-      if ($fieber_stat2>=0) {
+      if($fieber_stat2>=0) {
         $dummy=$dummy."&amp;pgteam2=".htmlentities($tippernick[$fieber_stat2]);
       }
-      if ($kurvenmodus==1) {
-        if ($fieber_stat2>=0) {
+      if($kurvenmodus==1) {
+        if($fieber_stat2>=0) {
           $max=max(max($tipppunkte[$fieber_stat1]),max($tipppunkte[$fieber_stat2]));
         } else {
           $max=max($tipppunkte[$fieber_stat1]);
         }
-      } else if ($kurvenmodus==2) {
-        if ($fieber_stat2>=0) {
+      } else if($kurvenmodus==2) {
+        if($fieber_stat2>=0) {
           $max=max(max($platz[$fieber_stat1]),max($platz[$fieber_stat2]));
         } else {
           $max=max($platz[$fieber_stat1]);
         }
-      } else if ($kurvenmodus==3) {
-        if ($fieber_stat2>=0) {
+      } else if($kurvenmodus==3) {
+        if($fieber_stat2>=0) {
           $max=max(max($platz[$fieber_stat1]),max($platz[$fieber_stat2]),max($platz1[$fieber_stat1]),max($platz1[$fieber_stat2]));
         } else {
           $max=max(max($platz[$fieber_stat1]),max($platz1[$fieber_stat1]));
         }
-      } else if ($kurvenmodus==4) {
-        if ($fieber_stat2>=0) {
+      } else if($kurvenmodus==4) {
+        if($fieber_stat2>=0) {
           $max=max(max($platz1[$fieber_stat1]),max($platz1[$fieber_stat2]));
         } else {
           $max=max($platz1[$fieber_stat1]);
@@ -127,9 +127,9 @@ if($file!="" && $tipp_tippfieber==1){
       }
       $dummy=$dummy."&amp;max=".$max;
       $dummy=$dummy."&amp;pgst=".$anzst;
-      if ($kurvenmodus<4) {
+      if($kurvenmodus<4) {
         $dummy=$dummy."&amp;pgplatz1=";
-        if ($kurvenmodus==1) {
+        if($kurvenmodus==1) {
           for ($j=0; $j<$anzst; $j++) {
             $dummy.=$tipppunkte[$fieber_stat1][$j].",";
           }
@@ -140,17 +140,17 @@ if($file!="" && $tipp_tippfieber==1){
         }
         $dummy.="0";
       }
-      if ($kurvenmodus>2) {
+      if($kurvenmodus>2) {
         $dummy=$dummy."&amp;pgplatz1a=";
         for ($j=0; $j<$anzst; $j++) {
           $dummy.=$platz1[$fieber_stat1][$j].",";
         }
         $dummy.="0";
       }
-      if ($fieber_stat2>=0) {
-        if ($kurvenmodus<4) {
+      if($fieber_stat2>=0) {
+        if($kurvenmodus<4) {
           $dummy=$dummy."&amp;pgplatz2=";
-          if ($kurvenmodus==1) {
+          if($kurvenmodus==1) {
             for ($j=0; $j<$anzst; $j++) {
               $dummy.=$tipppunkte[$fieber_stat2][$j].",";
             }
@@ -161,7 +161,7 @@ if($file!="" && $tipp_tippfieber==1){
           }
           $dummy.="0";
         }
-        if ($kurvenmodus>2) {
+        if($kurvenmodus>2) {
           $dummy=$dummy."&amp;pgplatz2a=";
           for ($j=0; $j<$anzst; $j++) {
             $dummy.=$platz1[$fieber_stat2][$j].",";
@@ -172,7 +172,7 @@ if($file!="" && $tipp_tippfieber==1){
       $dummy=$dummy."&amp;kmodus=".$kurvenmodus;
       $dummy=$dummy."&amp;pgtext1=".$text[135];
       //SPIELTAGE
-      if ($kurvenmodus==1) {
+      if($kurvenmodus==1) {
         $dummy=$dummy."&amp;pgtext2=".strtoupper($text['tipp'][38]);
       }
       // PUNKTE

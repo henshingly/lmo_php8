@@ -18,8 +18,8 @@
   */
 
 require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
-if (($action == "tipp") && ($todo == "newligen")) {
-  if ($newpage == 1) {
+if(($action == "tipp") && ($todo == "newligen")) {
+  if($newpage == 1) {
     $users = array("");
     $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
 
@@ -29,16 +29,16 @@ if (($action == "tipp") && ($todo == "newligen")) {
     $gef = 0;
     for($i = 1; $i < count($users) && $gef == 0; $i++) {
       $dummb = explode('|', $users[$i]);
-      if ($_SESSION['lmotippername'] == $dummb[0]) {
+      if($_SESSION['lmotippername'] == $dummb[0]) {
         // Nick gefunden
         $gef = 1;
       }
     }
-    if ($gef == 0) {
+    if($gef == 0) {
       exit;
     }
 
-    if ($xtipperligen != "") {
+    if($xtipperligen != "") {
       foreach($xtipperligen as $key => $value) {
         $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$_SESSION['lmotippername'].".tip";
         $st = -1;

@@ -17,14 +17,14 @@
   *
   */
 
-if ($action == "tipp") {
+if($action == "tipp") {
   require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 } elseif($action == "admin") {
   require_once(PATH_TO_LMO . "/lmo-admintest.php");
 }
 
 $datei = fopen($pswfile, "wb");
-if (!$datei) {
+if(!$datei) {
   echo getMessage($text[283],TRUE);
   exit;
 } else {

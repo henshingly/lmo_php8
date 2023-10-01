@@ -24,7 +24,7 @@ $datei = fopen($pswfile, "rb");
 while ($datei && !feof($datei)) {
   $zeile = fgets($datei, 1000);
   $zeile = chop($zeile);
-  if ($zeile != "") {
+  if($zeile != "") {
     array_push($dumma, $zeile);
   }
 }
@@ -36,16 +36,16 @@ $tipperteam = array_pad($array, count($dumma)+1, "");
 
 for($i = 0; $i < count($dumma); $i++) {
   $dummb1 = explode('|', $dumma[$i]);
-  if ($dummb1[5] != "") {
+  if($dummb1[5] != "") {
     $gef = 0;
     for($j = 0; $j < $v && $gef == 0; $j++) {
-      if ($team[$j] == $dummb1[5]) {
+      if($team[$j] == $dummb1[5]) {
         // Team schonmal gefunden
         $tipperteam[$j]++;
         $gef = 1;
       }
     }
-    if ($gef == 0) {
+    if($gef == 0) {
       $team[$v] = $dummb1[5];
       $tipperteam[$v]++;
       $v++;
@@ -55,18 +55,18 @@ for($i = 0; $i < count($dumma); $i++) {
 
 $gef = 0;
 for($j = 0; $j < $v && $gef == 0; $j++) {
-  if ($xtippervereinradio == 1) {
-    if ($xtippervereinalt == $team[$j]) {
+  if($xtippervereinradio == 1) {
+    if($xtippervereinalt == $team[$j]) {
       $gef = 1;
-      if ($tipperteam[$j] >= $tipp_tipperimteam && $tipp_tipperimteam != 0) {
+      if($tipperteam[$j] >= $tipp_tipperimteam && $tipp_tipperimteam != 0) {
         // max. Tipperanzahl schon erreicht
         $newpage = 0;
         echo getMessage($text['tipp'][142],TRUE);
       }
     }
   }
-  if ($xtippervereinradio == 2) {
-    if ($xtippervereinneu == $team[$j]) {
+  if($xtippervereinradio == 2) {
+    if($xtippervereinneu == $team[$j]) {
       // Team existiert bereits
       $gef = 1;
       $newpage = 0;

@@ -19,7 +19,7 @@
 
 require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 $tipp_mailtext = str_replace(array('\n', '[nick]'),array("\n", $xtippernick), $text['tipp'][303]);
-if (function_exists('ini_get') && @ini_get('safe_mode') == "0") {
+if(function_exists('ini_get') && @ini_get('safe_mode') == "0") {
   $sent = mail($aadr, $text['tipp'][13], $tipp_mailtext, "From:" . $text['tipp'][0] . " <" . $aadr . ">", "-f " . $aadr . "\r\n");
 } else {
   $sent = mail($aadr, $text['tipp'][13], $tipp_mailtext, "From:" . $text['tipp'][0] . " <" . $aadr . ">");

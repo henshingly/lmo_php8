@@ -44,7 +44,7 @@ if(($action=="tipp") && ($todo=="")){
       if($dummy[$u]!="" && $ftest2[$u]!=""){
         $dummy[$u]=substr($dummy[$u],0,-4);
         $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
-        if ($tipp_nurgesamt==0) {?>
+        if($tipp_nurgesamt==0) {?>
         <li>
           <a href="<?php echo $addw.$dummy[$u].".l98"; ?>"><?php echo $ftest2[$u];?></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i", filemtime($auswertfile))."</small>";}?>
         </li><?php

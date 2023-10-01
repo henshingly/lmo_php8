@@ -21,7 +21,7 @@ $tipper_sort=  isset($_REQUEST['tipper_sort'])  ? $_REQUEST['tipper_sort'] : '';
 $del=          isset($_REQUEST['del'])          ? $_REQUEST['del']         : '';
 
 require_once(PATH_TO_LMO . "/lmo-admintest.php");
-if ($_SESSION["lmouserok"] == 2) {
+if($_SESSION["lmouserok"] == 2) {
 
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
 
@@ -32,18 +32,18 @@ if ($_SESSION["lmouserok"] == 2) {
     $gef = 0;
     for($i = 1; $i < count($users) && $gef == 0; $i++) {
       $dummb = explode('|', $users[$i]);
-      if ($del == $dummb[0]) {
+      if($del == $dummb[0]) {
         // Nick gefunden
         $gef = 1;
         $del = $i;
       }
     }
-    if ($gef == 1) {
+    if($gef == 1) {
       $userf3 = explode('|', $users[$del]);
       $verz = opendir(substr(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp, 0, -1));
       $dummy = array();
       while ($files = readdir($verz)) {
-        if (substr($files, -4-strlen($userf3[0])) == $userf3[0].".tip") {
+        if(substr($files, -4-strlen($userf3[0])) == $userf3[0].".tip") {
           array_push($dummy, $files);
         }
       }
@@ -73,9 +73,9 @@ if ($_SESSION["lmouserok"] == 2) {
       <script type="text/javascript" src="<?php echo URL_TO_LMO?>/js/sortable/limSortFunctions.js"></script>
       <table id="tipper" class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 	<?php
-  if (count($users) > 1) {
+  if(count($users) > 1) {
     $tipper_sort_direction=isset($_GET['tipper_sort_direction'])?$_GET['tipper_sort_direction']:"asc";
-    if (!isset($_GET['tipper_sort'])) {
+    if(!isset($_GET['tipper_sort'])) {
       $tipper_sort = "id";
     }
 
@@ -150,10 +150,10 @@ if ($_SESSION["lmouserok"] == 2) {
       $ltipp[$i] = 0;
       $freig[$i] = $userd[2];
       $verz = opendir(substr(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp, 0, -1));
-      if ($verz) {
+      if($verz) {
         while ($files = readdir($verz)) {
-          if (substr($files, -5-strlen($userd[0])) == "_".$userd[0].".tip") {
-            if (filemtime(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp.$files) > $ltipp[$i]) {
+          if(substr($files, -5-strlen($userd[0])) == "_".$userd[0].".tip") {
+            if(filemtime(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp.$files) > $ltipp[$i]) {
               $ltipp[$i] = filemtime(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp.$files);
             }
           }
@@ -176,14 +176,14 @@ if ($_SESSION["lmouserok"] == 2) {
     for($x = 0; $x < $anztipper-1; $x++) {?>
         <tr>
           <td align="left"><?php
-      if ($tab0[$x]['freig']!="5"){?>
+      if($tab0[$x]['freig']!="5"){?>
             <img src="<?php echo URL_TO_IMGDIR?>/wrong.gif" border="0" width="12" height="12" alt="+"><?php
       } else {?>
             <img src="<?php echo URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt="-"><?php
       }?> </td>
           <td align="right"><?php echo $tab0[$x]['id']; ?></td>
           <td align="left"><?php
-      if ($tab0[$x]['email']!=""){?>
+      if($tab0[$x]['email']!=""){?>
             <a href="mailto:<?php echo $tab0[$x]['email']; ?>"><?php echo $tab0[$x]['nick']; ?></a><?php
       } else {
         echo $tab0[$x]['nick'];
@@ -212,8 +212,8 @@ if ($_SESSION["lmouserok"] == 2) {
 </table><?php }
 function cmp ($a1, $a2) {
   global $tipper_sort;
-  if (is_numeric($a1[$tipper_sort]) && is_numeric($a2[$tipper_sort])) {  //Numerischer Vergleich
-    if ($a2[$tipper_sort]==$a1[$tipper_sort]) return 0;
+  if(is_numeric($a1[$tipper_sort]) && is_numeric($a2[$tipper_sort])) {  //Numerischer Vergleich
+    if($a2[$tipper_sort]==$a1[$tipper_sort]) return 0;
     return ($a1[$tipper_sort]>$a2[$tipper_sort]) ? 1 : -1;
   }else{ //Stringvergleich
     $a1[$tipper_sort]=strtr($a1[$tipper_sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");

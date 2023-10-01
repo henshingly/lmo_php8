@@ -18,12 +18,12 @@
   */
 
 require_once(PATH_TO_LMO . "/lmo-admintest.php");
-if ($_POST["liga"] != "" && $_POST["st"] != "") {
+if($_POST["liga"] != "" && $_POST["st"] != "") {
   $start=isset($_POST['start'])?$_POST['start']:0;
   $verz = opendir(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp);
   $dummy = array();
   while ($files = readdir($verz)) {
-    if (strtolower(substr($files, -4)) == ".tip" && strtolower(substr($files, 0, strlen($liga))) == strtolower($liga)) {
+    if(strtolower(substr($files, -4)) == ".tip" && strtolower(substr($files, 0, strlen($liga))) == strtolower($liga)) {
       array_push($dummy, $files);
     }
   }
@@ -33,20 +33,20 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
   $datenalt = array("");
   $nick = "";
 
-  if ($st > 0 && file_exists($einsichtfile)) {
+  if($st > 0 && file_exists($einsichtfile)) {
     $datei = fopen($einsichtfile, "rb");
     while (!feof($datei)) {
       $zeile = fgets($datei, 1000);
       $zeile = trim(chop($zeile));
-      if ($zeile != "") {
-        if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+      if($zeile != "") {
+        if((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $nick = substr($zeile, 1, -1);
-          if (!file_exists(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp.$liga."_".$nick.".tip")) {
+          if(!file_exists(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp.$liga."_".$nick.".tip")) {
             $nick = "";
           }
         }
 
-        if ($nick != "") {
+        if($nick != "") {
           array_push($datenalt, $zeile);
         }
       }
@@ -55,9 +55,9 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
   }
 
   $file = $dirliga.$liga.".l98";
-  if (file_exists($file)) {
+  if(file_exists($file)) {
     $einsichtdatei = fopen($einsichtfile, "wb");
-    if (!$einsichtdatei) {
+    if(!$einsichtdatei) {
       echo getMessage($text['tipp'][157]." ".$einsichtfile.$text[283],TRUE);
       exit;
     }
@@ -67,23 +67,23 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
     for($k = 0; $k < $anztipper; $k++) {
       // durchlaufe alle Tipper
       $tippernick = substr($dummy[$k], strrpos($dummy[$k], "_")+1, -4);
-      if ($k >= $start-1 && $k <= $ende-1) {
+      if($k >= $start-1 && $k <= $ende-1) {
         $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k];
         fputs($einsichtdatei, "\n[".$tippernick."]\n");
 
-        if (!file_exists($tippfile))
+        if(!file_exists($tippfile))
         echo getMessage($text['tipp'][17],TRUE);
         else
           {
           $datei = fopen($tippfile, "rb");
-          if ($datei != false) {
+          if($datei != false) {
             $tippdaten = array();
             $sekt = "";
             $jkwert = "";
             while (!feof($datei)) {
               $zeile = fgets($datei, 1000);
               $zeile = trim($zeile);
-              if ((substr($zeile, 0, 1) == "@") && (substr($zeile, -1) == "@")) {
+              if((substr($zeile, 0, 1) == "@") && (substr($zeile, -1) == "@")) {
                 $jkwert = trim(substr($zeile, 1, -1));
               } elseif((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
                 $sekt = trim(substr($zeile, 1, -1));
@@ -103,12 +103,12 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
             $op3 = substr($dum[0], 5);            // Spieltagsnummer
             $op8 = substr($dum[1], 0, 2);
             $jksp = $dum[3];
-            if ($st == $op3) {
-              if ($tipp_jokertipp == 1 && $jkspgrpw != $op3) {
+            if($st == $op3) {
+              if($tipp_jokertipp == 1 && $jkspgrpw != $op3) {
                 fputs($einsichtdatei, "@".$jksp."@\n");
                 $jkspgrpw = $op3;
               }
-              if (($op2 == "Round") && ($op8 == "GB" || $op8 == "GA")) {
+              if(($op2 == "Round") && ($op8 == "GB" || $op8 == "GA")) {
                 fputs($einsichtdatei, $dum[1]."=".$dum[2]."\n");
               }
             }
@@ -120,11 +120,11 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
         $nick = "";
         for($i = 0; $i < count($datenalt); $i++) {
           $zeile = $datenalt[$i];
-          if ($zeile != "") {
-            if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+          if($zeile != "") {
+            if((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
               $nick = substr($zeile, 1, -1);
             }
-            if ($nick == $tippernick) {
+            if($nick == $tippernick) {
               fputs($einsichtdatei, $datenalt[$i]."\n");
             }
           }

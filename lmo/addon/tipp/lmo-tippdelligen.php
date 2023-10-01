@@ -18,12 +18,12 @@
   */
 
 require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
-if (($action == "tipp") && ($todo == "delligen")) {
-  if ($newpage == 1) {
-    if ($xtipperligen != "") {
+if(($action == "tipp") && ($todo == "delligen")) {
+  if($newpage == 1) {
+    if($xtipperligen != "") {
       foreach($xtipperligen as $key => $value) {
         $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$_SESSION['lmotippername'].".tip";
-        if (file_exists($tippfile)) {
+        if(file_exists($tippfile)) {
           @unlink($tippfile); // Tipps löschen
         }
       }
