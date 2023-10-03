@@ -22,7 +22,7 @@ if($lmtype==0){
     if ($goalb[$actual-1][$i1]=="-1") $goalb[$actual-1][$i1]="_";
   }
   $endtab=$actual;
-  include(PATH_TO_LMO."/lmo-calctable.php");
+  include_once(PATH_TO_LMO."/lmo-calctable.php");
 
   for($i1=0;$i1<$anzsp;$i1++){
     if ($goala[$actual-1][$i1]=="_") $goala[$actual-1][$i1]="-1";
@@ -82,16 +82,16 @@ if($lmtype==0 && $st>0){
           $spielfreibb[$i1]=$teamb[$actual-1][$i1];
         }
         if($mterm[$actual-1][$i1]>0){
-          $dum1=date($datf, $mterm[$actual-1][$i1]);
+          $dum1=datefmt_format($fmt, $mterm[$actual-1][$i1]);
         } else {
           $dum1="";
         } // Anstosszeit einblenden
       ?>
       <tr>
-        <td><?php echo $dum1?>&nbsp;</td>
+        <td><?php echo $dum1?></td>
         <td align="right"><?php echo $heimteam?></td><td><?php echo HTML_icon($heimteam, 'teams');?></td>
         <td>-</td>
-        <td><?php echo HTML_icon($gastteam, 'teams');?></td><td><?php echo $gastteam?>&nbsp;</td>
+        <td><?php echo HTML_icon($gastteam, 'teams');?></td><td><?php echo $gastteam?></td>
         <td align="right"><?php echo $heimtore?></td>
         <td>:</td>
         <td align="left"><?php echo $gasttore?></td><?php
@@ -114,7 +114,7 @@ if($lmtype==0 && $st>0){
           if ($i==1) {?>
       <p><small><?php echo $text[4004]?>: <?php
           }
-          echo $teams[$j]?>&nbsp;&nbsp;<?php
+          echo $teams[$j]?><?php
           $i++;
         }
       }?>
@@ -124,14 +124,14 @@ if($lmtype==0 && $st>0){
   <table>
     <caption><?php echo $text[16]?> - <?php echo $actual?>. <?php echo $text[2]?></caption>
     <tr>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th><?php echo $text[33]?></th>
       <th><?php echo $namepkt?></th>
-      <th>&nbsp;</th>
-      <th><?php echo $nametor?>&nbsp;</th>
-      <th align="right" >&nbsp;&nbsp;<?php echo $text[39]?></th>
+      <th></th>
+      <th><?php echo $nametor?></th>
+      <th align="right" ><?php echo $text[39]?></th>
     </tr><?php
 
     for ($i1=0;$i1<$anzteams;$i1++){
@@ -147,20 +147,20 @@ if($lmtype==0 && $st>0){
       $spieleteam=$spiele[$i4];?>
 
     <tr>
-      <td align="right"><?php echo $platz?>&nbsp;</td>
-      <td><?php echo HTML_icon($teamname, 'teams');?>&nbsp;</td>
-      <td><?php echo $teamname?>&nbsp;</td>
-      <td align="right"><?php echo $spieleteam?>&nbsp;</td>
+      <td align="right"><?php echo $platz?></td>
+      <td><?php echo HTML_icon($teamname, 'teams');?></td>
+      <td><?php echo $teamname?></td>
+      <td align="right"><?php echo $spieleteam?></td>
       <td align="right"><?php echo $pluspunkte?>
      <?php if ($minus==2) {
      ?>:</td>
-       <td align="left"><?php echo $minuspunkte?>&nbsp;<?php
+       <td align="left"><?php echo $minuspunkte?><?php
       }else{?>
        </td>
-       <td align="left">&nbsp;<?php
+       <td align="left"><?php
       }?>
-       <td align="right"><?php echo "$plustore:$minustore"?>&nbsp;</td>
-       <td align="right">&nbsp;&nbsp;<?php echo $torverhaeltnis?></td>
+       <td align="right"><?php echo "$plustore:$minustore"?></td>
+       <td align="right"><?php echo $torverhaeltnis?></td>
      </tr><?php
     }?>
    </table>
@@ -192,14 +192,14 @@ if($lmtype==0 && $st>0){
             if($mterm[$actual][$i1]>0){
               $dum1=date($datf, $mterm[$actual][$i1]);
             } else {
-              $dum1="&nbsp;";
+              $dum1="";
             } // Anstosszeit einblenden
     ?>
     <tr>
-      <td><?php echo $dum1?>&nbsp;</td>
+      <td><?php echo $dum1?></td>
       <td align="right"><?php echo $heimteam?></td><td><?php echo HTML_icon($heimteam, 'teams');?></td>
       <td>-</td>
-      <td><?php echo HTML_icon($gastteam, 'teams');?></td><td><?php echo $gastteam?>&nbsp;</td>
+      <td><?php echo HTML_icon($gastteam, 'teams');?></td><td><?php echo $gastteam?></td>
       <td align="right"><?php echo $heimtore?></td>
       <td>:</td>
       <td align="left"><?php echo $gasttore?></td><?php
@@ -221,7 +221,7 @@ if($lmtype==0 && $st>0){
               if ($i==1) {?>
            <p><small><?php echo $text[4004]?>: <?php
               }
-              echo $teams[$j]?>&nbsp;&nbsp;<?php
+              echo $teams[$j]?><?php
               $i++;
             }
           }?>
