@@ -15,6 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  * $Id$
   */
 
 for($n=0;$n<$modus[$st-1];$n++){
@@ -28,8 +29,8 @@ for($n=0;$n<$modus[$st-1];$n++){
     </th>
   </tr><?php  }?>
   <tr><?php
-  if($tipp_einsichterst==2) {
-    if($goala[$st-1][$i][$n]!="_" && $goalb[$st-1][$i][$n]!="_") {
+  if ($tipp_einsichterst==2) {
+    if ($goala[$st-1][$i][$n]!="_" && $goalb[$st-1][$i][$n]!="_") {
       $btip1=false;
     } else {
       $btip1=true;
@@ -38,77 +39,75 @@ for($n=0;$n<$modus[$st-1];$n++){
     $btip1=false;
   }
 
-  if($datm==1) {
-    if($mterm[$st-1][$i][$n]>0) {
-      $dum1 = strtr(date($datf, $mterm[$st-1][$i][$n]), $trans_lang);
+  if ($datm==1) {
+    if ($mterm[$st-1][$i][$n]>0) {
+      $dum1=date($datf, $mterm[$st-1][$i][$n]);
     } else {
       $dum1="";
     }?>
     <td class="nobr" align="left"><?php echo $dum1; ?></td><?php  }?>
-    <td>&nbsp;</td><?php if($n==0) {
+    <td>&nbsp;</td><?php if ($n==0) {
     $m1=array($goala[$st-1][$i][0],$goala[$st-1][$i][1],$goala[$st-1][$i][2],$goala[$st-1][$i][3],$goala[$st-1][$i][4],$goala[$st-1][$i][5],$goala[$st-1][$i][6]);
     $m2=array($goalb[$st-1][$i][0],$goalb[$st-1][$i][1],$goalb[$st-1][$i][2],$goalb[$st-1][$i][3],$goalb[$st-1][$i][4],$goalb[$st-1][$i][5],$goalb[$st-1][$i][6]);
     $m = gewinn($i, $j, $modus[$st-1], $m1, $m2);
 
-    if($m==1) {
+    if ($m==1) {
       echo "<td class=\"lmoTurnierSieger nobr\" align=\"right\">";
-    } elseif($m==2) {
+    } elseif ($m==2) {
       echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"right\">";
     } else {
       echo "<td class=\"nobr\" align=\"right\">";
     }
 
-    if(($favteam>0) && ($favteam==$teama[$st-1][$i])) {
+    if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
       echo "<strong>";
     }
     echo $teams[$teama[$st-1][$i]];
-    if(($favteam>0) && ($favteam==$teama[$st-1][$i])) {
+    if (($favteam>0) && ($favteam==$teama[$st-1][$i])) {
       echo '</strong>';
     }
-	echo "&nbsp;" . HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");
     echo '</td>';?>
-    <td align="center" width="10">&nbsp;-&nbsp;</td><?php
-    if($m==1) {
+    <td align="center" width="10">-</td><?php
+    if ($m==1) {
       echo "<td class=\"lmoTurnierVerlierer nobr\" align=\"left\">";
-    } elseif($m==2) {
+    } elseif ($m==2) {
       echo "<td class=\"lmoTurnierSieger nobr\" align=\"left\">";
     } else {
       echo "<td class=\"nobr\" align=\"left\">";
     }
-	echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''") . "&nbsp;";
-    if(($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
+    if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
       echo "<strong>";
     }
     echo $teams[$teamb[$st-1][$i]];
-    if(($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
+    if (($favteam>0) && ($favteam==$teamb[$st-1][$i])) {
       echo "</strong>";
     }
     echo '</td>';
   } else { ?>
     <td colspan="3">&nbsp;</td><?php
   }
-  if($goaltippa[$i][$n]=="_") {
+  if ($goaltippa[$i][$n]=="_") {
     $goaltippa[$i][$n]="";
   }
-  if($goaltippb[$i][$n]=="_") {
+  if ($goaltippb[$i][$n]=="_") {
     $goaltippb[$i][$n]="";
   }
-  if($goaltippa[$i][$n]=="-1") {
+  if ($goaltippa[$i][$n]=="-1") {
     $goaltippa[$i][$n]="";
   }
-  if($goaltippb[$i][$n]=="-1") {
+  if ($goaltippb[$i][$n]=="-1") {
     $goaltippb[$i][$n]="";
   }?>
     <td>&nbsp;</td><?php
   if($tipp_showtendenzabs==1){ ?>
-    <td align="center" class="nobr"><?php    if($btip1==false) {
-      if(!isset($tendenz1[$i][$n])) {
+    <td align="center" class="nobr"><?php    if ($btip1==false) {
+      if (!isset($tendenz1[$i][$n])) {
         $tendenz1[$i][$n]=0;
       }
-      if(!isset($tendenz0[$i][$n])) {
+      if (!isset($tendenz0[$i][$n])) {
         $tendenz0[$i][$n]=0;
       }
-      if(!isset($tendenz2[$i][$n])) {
+      if (!isset($tendenz2[$i][$n])) {
         $tendenz2[$i][$n]=0;
       }
       echo $tendenz1[$i][$n]."-".$tendenz0[$i][$n]."-".$tendenz2[$i][$n];
@@ -116,18 +115,18 @@ for($n=0;$n<$modus[$st-1];$n++){
     </td>
     <td>&nbsp;</td><?php  }
   if($tipp_showtendenzpro==1){ ?>
-    <td align="center" class="nobr"><?php    if($btip1==false) {
-      if(!isset($anzgetippt[$i][$n])) {
+    <td align="center" class="nobr"><?php    if ($btip1==false) {
+      if (!isset($anzgetippt[$i][$n])) {
         $anzgetippt[$i][$n]=0;
       }
-      if($anzgetippt[$i][$n]>0) {
-        if(!isset($tendenz1[$i][$n])) {
+      if ($anzgetippt[$i][$n]>0) {
+        if (!isset($tendenz1[$i][$n])) {
           $tendenz1[$i][$n]=0;
         }
-        if(!isset($tendenz0[$i][$n])) {
+        if (!isset($tendenz0[$i][$n])) {
           $tendenz0[$i][$n]=0;
         }
-        if(!isset($tendenz2[$i][$n])) {
+        if (!isset($tendenz2[$i][$n])) {
           $tendenz2[$i][$n]=0;
         }
         echo number_format(($tendenz1[$i][$n]/$anzgetippt[$i][$n]*100),0,".",",")."%-".number_format(($tendenz0[$i][$n]/$anzgetippt[$i][$n]*100),0,".",",")."%-".number_format(($tendenz2[$i][$n]/$anzgetippt[$i][$n]*100),0,".",",")."%";
@@ -144,18 +143,18 @@ for($n=0;$n<$modus[$st-1];$n++){
 /**ERGEBNISMODUS*/
   if($tipp_tippmodus==1){
     if($tipp_showdurchschntipp==1){?>
-      <td align="center" class="nobr"><?php      if($btip1==false) {
-        if(!isset($anzgetippt[$i][$n])) {
+      <td align="center" class="nobr"><?php      if ($btip1==false) {
+        if (!isset($anzgetippt[$i][$n])) {
           $anzgetippt[$i][$n]=0;
         }
-        if($anzgetippt[$i][$n]>0) {
-          if(!isset($toregesa[$i][$n])) {
+        if ($anzgetippt[$i][$n]>0) {
+          if (!isset($toregesa[$i][$n])) {
             $toregesa[$i][$n]=0;
           }
-          if(!isset($toregesb[$i][$n])) {
+          if (!isset($toregesb[$i][$n])) {
             $toregesb[$i][$n]=0;
           }
-          if($toregesa[$i][$n]<10 && $toregesb[$i][$n]<10) {
+          if ($toregesa[$i][$n]<10 && $toregesb[$i][$n]<10) {
             $nachkomma=1;
           } else {
             $nachkomma=0;
@@ -214,14 +213,14 @@ for($n=0;$n<$modus[$st-1];$n++){
   } /* ende $tipp_tippmodus==1 */
 
 /**TENDENZMODUS*/
-  if($tipp_tippmodus==0) {
-    if($goaltippa[$i][$n]=="" || $goaltippb[$i][$n]=="") {
+  if ($tipp_tippmodus==0) {
+    if ($goaltippa[$i][$n]=="" || $goaltippb[$i][$n]=="") {
       $tipp=-1;
-    } elseif($goaltippa[$i][$n]>$goaltippb[$i][$n]) {
+    } elseif ($goaltippa[$i][$n]>$goaltippb[$i][$n]) {
       $tipp=1;
-    } elseif($goaltippa[$i][$n]==$goaltippb[$i][$n]) {
+    } elseif ($goaltippa[$i][$n]==$goaltippb[$i][$n]) {
       $tipp=0;
-    } elseif($goaltippa[$i][$n]<$goaltippb[$i][$n]) {
+    } elseif ($goaltippa[$i][$n]<$goaltippb[$i][$n]) {
       $tipp=2;
     }?>
     <td align="right">
@@ -235,7 +234,7 @@ for($n=0;$n<$modus[$st-1];$n++){
     </td><?php  } /* ende ($tipp_tippmodus==0) */
 
 /**BEIDE*/
-  if($tipp_jokertipp==1){ ?>
+  if ($tipp_jokertipp==1){ ?>
     <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>
     <td class="lmoBackMarkierung" align="right"><?php echo $goala[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="center">:</td>
@@ -243,27 +242,27 @@ for($n=0;$n<$modus[$st-1];$n++){
     <td class="lmoBackMarkierung" align="left"><?php echo $mspez[$st-1][$i][$n]; ?></td>
     <td width="2">&nbsp;</td>
     <td class="nobr" align="right">
-      <strong><?php if($tipp_jokertipp==1 && $jksp==($i+1).($n+1)) {
+      <strong><?php if ($tipp_jokertipp==1 && $jksp==($i+1).($n+1)) {
     $jkspfaktor=$tipp_jokertippmulti;
   } else {
     $jkspfaktor=1;
   }
   $punktespiel=-1;
-  if($goaltippa[$i][$n]!="" && $goaltippb[$i][$n]!="" && $goala[$st-1][$i][$n]!="_" && $goalb[$st-1][$i][$n]!="_") {
+  if ($goaltippa[$i][$n]!="" && $goaltippb[$i][$n]!="" && $goala[$st-1][$i][$n]!="_" && $goalb[$st-1][$i][$n]!="_") {
     $punktespiel=tipppunkte($goaltippa[$i][$n], $goaltippb[$i][$n], $goala[$st-1][$i][$n], $goalb[$st-1][$i][$n], 0, $mspez[$st-1][$i][$n], $text[0], $text[1], $jkspfaktor, $mtipp[$st-1][$i][$n]);
   }
-  if($punktespiel==-1) {
+  if ($punktespiel==-1) {
     echo "-";
-  } elseif($punktespiel==-2) {
+  } elseif ($punktespiel==-2) {
     echo $text['tipp'][230];
     $nw=1;
   } else {
-    if($tipp_tippmodus==1) {
+    if ($tipp_tippmodus==1) {
       echo $punktespiel;
     } else {
-      if($punktespiel>0) {
+      if ($punktespiel>0) {
         echo "<img src='".URL_TO_IMGDIR."/right.gif' width='12' height='12' border='0' alt='&#9786;'>";
-        if($punktespiel>1) {
+        if ($punktespiel>1) {
           echo "+".($punktespiel-1);
         }
       } else {
@@ -271,7 +270,7 @@ for($n=0;$n<$modus[$st-1];$n++){
       }
     }
   }
-  if($punktespiel>0) {
+  if ($punktespiel>0) {
     $punktespieltag+=$punktespiel;
   }?>
       </strong>
@@ -299,17 +298,17 @@ for($n=0;$n<$modus[$st-1];$n++){
   /** Notizen anzeigen
    *
    */
-  if($mnote[$st-1][$i][$n]!="" || $mtipp[$st-1][$i][$n] > 0) {
+  if ($mnote[$st-1][$i][$n]!="" || $mtipp[$st-1][$i][$n] > 0) {
 
     $lmo_spielnotiz=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong> ".$goala[$st-1][$i][$n].":".$goalb[$st-1][$i][$n];
 
     //Allgemeine Notiz
-    if($mnote[$st-1][$i][$n]!="") {
+    if ($mnote[$st-1][$i][$n]!="") {
       $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i][$n];
     }
 
     //Notiz zum Tippspiel
-    if($mtipp[$st-1][$i][$n] == 1) {
+    if ($mtipp[$st-1][$i][$n] == 1) {
       $lmo_spielnotiz.="\n\n".$text['tipp'][231];
     }
     echo "<a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";

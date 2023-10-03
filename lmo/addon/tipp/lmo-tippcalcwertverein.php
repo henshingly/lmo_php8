@@ -1,4 +1,4 @@
-<?php
+<?php 
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  *
+  * 
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,7 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-
+  
+  
 if(file_exists($auswertfile)){
   $datei = fopen($auswertfile,"rb");
   $anzteams=0;
@@ -39,14 +40,14 @@ if(file_exists($auswertfile)){
       }
     }
     fclose($datei);
-  }
+  }  
   array_shift($tippdaten);
 
   if($m==0){
     $team = array_pad($array,$anzteams+1,"0");
     $spielegetippt = array_pad($array,$anzteams+1,"0");
     $tipppunktegesamt = array_pad($array,$anzteams+1,"0");
-
+  
     for($i=1;$i<=$anzteams;$i++){
       $team[$i]=$i;
     }
@@ -58,7 +59,7 @@ if(file_exists($auswertfile)){
   for($i=1;$i<=count($tippdaten);$i++){
     $dum=explode('|',$tippdaten[$i-1]);
     $op1=$dum[0];               // Nick
-    $op3=(int)substr($dum[1],2)-1;   // Spieltagsnummer
+    $op3=substr($dum[1],2)-1;   // Spieltagsnummer
     $op4=substr($dum[1],0,2);   // TP
     if($op3<$endtab){
       if($op4=="SG"){$spielegetippt[$op1]+=$dum[2];}
@@ -87,6 +88,6 @@ if(file_exists($auswertfile)){
     rsort($tab0,SORT_STRING);
   }
 }else{?>
-  <?php echo getMessage($text['tipp'][17],TRUE);?><?php
+  <?php echo getMessage($text['tipp'][17],TRUE);?><?php 
 }
 ?>

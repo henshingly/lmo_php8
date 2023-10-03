@@ -16,8 +16,9 @@
   *
   *
   */
-
-
+  
+if(!isset($namepkt)){$namepkt="";}
+if(!isset($nametor)){$nametor="";}
 if ($st > 0) {
     $actual = $anzst;
 } else {
@@ -69,6 +70,7 @@ if ($lmtype == 0) {
       <td>
 <?php
         for ($y1 = 1; $y1 < $anzst + 1; $y1++) {
+            $spielfreiaa=$spielfreibb=array();
             $datumanz = $y1 - 1;
             $z = array_filter($teama[$y1 - 1], "filterZero");
             if (!empty($z)) {

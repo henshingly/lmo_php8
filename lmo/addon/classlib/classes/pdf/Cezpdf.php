@@ -1,6 +1,6 @@
 <?php
 
-// include_once 'Cpdf.php';
+// include_once 'Cpdf.php'; Version 0.12.67
 // Relative Pfade führten zu Problemen. 01.08.2017 Henshingly
 include_once (PATH_TO_ADDONDIR.'/classlib/classes/pdf/Cpdf.php');
 

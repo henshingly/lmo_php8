@@ -1,6 +1,7 @@
 <?php
 
-// include_once 'include/TTFsubset.php';
+
+// include_once 'include/TTFsubset.php'; Version 0.12.67
 // Relative Pfade führten zu Problemen. 28.04.2017 Henshingly
 include_once (PATH_TO_ADDONDIR.'/classlib/classes/pdf/include/TTFsubset.php');
 
