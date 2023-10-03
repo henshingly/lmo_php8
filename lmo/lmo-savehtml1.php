@@ -62,6 +62,7 @@ if($lmtype==0){
 <?php
     for ($y1=1;$y1<$anzst+1;$y1++) {
       $datumanz=$y1-1;
+	  $spielfreiaa=$spielfreibb=array();
       $z=array_filter($teama[$y1-1],"filterZero");
       if (!empty($z)) {
 ?>
