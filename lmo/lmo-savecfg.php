@@ -30,7 +30,7 @@ if($_SESSION['lmouserok']==2){
   if ($datei) {
     flock($datei,LOCK_EX);
     foreach($cfgarray as $cfgname => $cfgvalue) {
-      if (is_array($cfgvalue)) {                           * Addonvariablen
+      if (is_array($cfgvalue)) {                                               // Addonvariablen
         $addon_datei = fopen(PATH_TO_CONFIGDIR.'/'.$cfgname.'/cfg.txt',"wb");  //Addondatei
         if ($addon_datei) {
           $ok=flock($datei,LOCK_EX) && $ok;
@@ -42,14 +42,14 @@ if($_SESSION['lmouserok']==2){
           fclose($addon_datei);
           clearstatcache();
         }
-      }else{                                               * Hauptkonfiguration
+      } else {                                                                   // Hauptkonfiguration
         $ok=fwrite($datei, "$cfgname={${$cfgname}}\n") && $ok;
       }
     }
     flock($datei,LOCK_UN);
     fclose($datei);
     clearstatcache();
-  }else{
+  } else {
     $ok=false;
   }
   if ($ok) {
