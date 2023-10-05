@@ -1,4 +1,4 @@
-7<?php 
+<?php 
 /**
  *
  * classlib Addon for LigaManager Online
