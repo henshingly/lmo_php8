@@ -22,10 +22,10 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
 if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
   if ($file!="") {
     if (substr($file,-4)==".l98") {
-      if ($einsavehtml==1) {
+      /*if ($einsavehtml==1) {
         include(PATH_TO_LMO."/lmo-savehtml.php");
         include(PATH_TO_LMO."/lmo-savehtml1.php");
-      }
+      }*/
       if ($einzutore==1 || $einzutoretab==1 || $einzustats==1) {
         include(PATH_TO_LMO."/lmo-zustat.php");
       }
