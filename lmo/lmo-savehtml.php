@@ -1,26 +1,26 @@
 <?php
-/**
-  * lmo-savehtml.php: HTML-Ausgabe von Tabelle, aktuellem Spieltag und folgenden Spieltag
+  /*
+  * lmo-savehtml1.php: HTML-Ausgabe von Tabelle, aktuellem Spieltag und folgenden Spieltag
   * In der Datei lmo-savefile.php muss über der Zeile
   *  $datei = fopen($file,"w");
   *
   * folgende Zeile hinzugefügt werden:
   *
-  *  include(PATH_TO_LMO."/lmo-savehtml.php");
+  *  include(PATH_TO_LMO."/lmo-savehtml1.php");
   *
   *
   * Autor: Bernd Hoyer, basierend auf dem LMO3.02
-  * Verbesserungen, Bugs etc. bitte nur in das Forum bei Hollwitz.net
-  *
-  * 01.08.2023 - Verbesserungen bitte nun in das Forum auf vest-sport.de/forum
+  * ////Verbesserungen, Bugs etc. bitte nur in das Forum bei Hollwitz.net\\\\  obsolet, Forum nicht mehr vorhanden
   *
   *
+  *
+  * 10/02/2023 - Please post any improvements, bugs or suggestions in the forum at https://www.vest-sport.de/forum
+  * 02.10.2023 - Verbesserungen, Bugs oder Vorschläge bitte nun in das Forum auf https://www.vest-sport.de/forum
   */
+
 
 if(!isset($namepkt)){$namepkt="";}
 if(!isset($nametor)){$nametor="";}
-
-$trans_lang = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1], 'Wednesday' => $text['date'][2], 'Thursday' => $text['date'][3], 'Friday' => $text['date'][4], 'Saturday' => $text['date'][5], 'Sunday' => $text['date'][6], 'Mon' => $text['date'][7], 'Tue' => $text['date'][8], 'Wed' => $text['date'][9], 'Thu' => $text['date'][10], 'Fri' => $text['date'][11], 'Sat' => $text['date'][12], 'Sun' => $text['date'][13], 'January' => $text['date'][14], 'February' => $text['date'][15], 'March' => $text['date'][16], 'April' => $text['date'][17], 'May' => $text['date'][18], 'June' => $text['date'][19], 'July' => $text['date'][20], 'August' => $text['date'][21], 'September' => $text['date'][22], 'October' => $text['date'][23], 'November' => $text['date'][24], 'December' => $text['date'][25], 'Jan' => $text['date'][26], 'Feb' => $text['date'][27], 'Mar' => $text['date'][28], 'Apr' => $text['date'][29], 'May' => $text['date'][30], 'Jun' => $text['date'][31], 'Jul' => $text['date'][32], 'Aug' => $text['date'][33], 'Sep' => $text['date'][34], 'Oct' => $text['date'][35], 'Nov' => $text['date'][36], 'Dec' => $text['date'][37] );
 
 if ($st > 0) {
     $actual = $st;

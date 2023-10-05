@@ -1,5 +1,5 @@
 <?php
-/**
+  /*
   * lmo-savehtml1.php: HTML-Ausgabe von Tabelle, aktuellem Spieltag und folgenden Spieltag
   * In der Datei lmo-savefile.php muss über der Zeile
   *  $datei = fopen($file,"w");
@@ -10,15 +10,18 @@
   *
   *
   * Autor: Bernd Hoyer, basierend auf dem LMO3.02
-  * Verbesserungen, Bugs etc. bitte nur in das Forum bei Hollwitz.net
-  *
-  * 01.08.2023 - Verbesserungen bitte nun in das Forum auf vest-sport.de/forum
+  * ////Verbesserungen, Bugs etc. bitte nur in das Forum bei Hollwitz.net\\\\  obsolet, Forum nicht mehr vorhanden
   *
   *
+  *
+  * 10/02/2023 - Please post any improvements, bugs or suggestions in the forum at https://www.vest-sport.de/forum
+  * 02.10.2023 - Verbesserungen, Bugs oder Vorschläge bitte nun in das Forum auf https://www.vest-sport.de/forum
   */
-  
+
+
 if(!isset($namepkt)){$namepkt="";}
 if(!isset($nametor)){$nametor="";}
+
 if ($st > 0) {
     $actual = $anzst;
 } else {
@@ -125,7 +128,7 @@ if ($lmtype == 0) {
 ?>
           </tr>
 <?php
-                    }   
+                    }
                 }
             $actual=$actual+1;
             }
