@@ -177,18 +177,18 @@ if (!file_exists($auswertfile)) {
           if ($tipp_krit == -1) {
             $tt .= 50000000;
           } elseif($tipp_krit == 0) {
-            $tt .= (50000000-$spielegetippt[$a][$i]);
+            $tt .= (50000000-(int)$spielegetippt[$a][$i]);
           } elseif($tipp_krit == 1) {
-            $tt .= (50000000+$spielegetippt[$a][$i]);
+            $tt .= (50000000+(int)$spielegetippt[$a][$i]);
           } elseif($tipp_showzus == 1) {
             if ($tipp_krit == 2) {
               $tt .= (50000000+(int)$punkte1[$a][$i]);
             } elseif($tipp_krit == 3) {
-              $tt .= (50000000+$punkte2[$a][$i]);
+              $tt .= (50000000+(int)$punkte2[$a][$i]);
             } elseif($tipp_krit == 4) {
-              $tt .= (50000000+$punkte3[$a][$i]);
+              $tt .= (50000000+(int)$punkte3[$a][$i]);
             } elseif($tipp_krit == 5) {
-              $tt .= (50000000+$punkte6[$a][$i]);
+              $tt .= (50000000+(int)$punkte6[$a][$i]);
             }
           }
         }
@@ -269,22 +269,22 @@ if (!file_exists($auswertfile)) {
         $tipp_krit = $tipp_krit3;
       }
       if ($tipp_krit == 0) {
-        $tt .= (50000000+$quotegesamt[$a]);
+        $tt .= (50000000+(int)$quotegesamt[$a]);
       } elseif($tipp_krit == 1) {
-        $tt .= (50000000+$spielegetipptgesamt[$a]);
+        $tt .= (50000000+(int)$spielegetipptgesamt[$a]);
       } elseif($tipp_krit == 6) {
         if ($tipp_showstsiege == 1) {
-          $tt .= (50000000+$stsiege[$a]);
+          $tt .= (50000000+(int)$stsiege[$a]);
         }
       } elseif($tipp_showzus == 1) {
         if ($tipp_krit == 2) {
-          $tt .= (50000000+$punkte1gesamt[$a]);
+          $tt .= (50000000+(int)$punkte1gesamt[$a]);
         } elseif($tipp_krit == 3) {
-          $tt .= (50000000+$punkte2gesamt[$a]);
+          $tt .= (50000000+(int)$punkte2gesamt[$a]);
         } elseif($tipp_krit == 4) {
-          $tt .= (50000000+$punkte3gesamt[$a]);
+          $tt .= (50000000+(int)$punkte3gesamt[$a]);
         } elseif($tipp_krit == 5) {
-          $tt .= (50000000+$punkte6gesamt[$a]);
+          $tt .= (50000000+(int)$punkte6gesamt[$a]);
         }
       }
     }

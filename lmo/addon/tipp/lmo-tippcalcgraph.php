@@ -181,7 +181,7 @@ if (!file_exists($auswertfile)) {
     for ($i=0; $i<$anzst; $i++) {
       $tab[$i] = array("");
       for ($a=0; $a<$anztipper; $a++) {
-        $tt=50000000+$tipppunkte[$a][$i];
+        $tt=50000000+(int)$tipppunkte[$a][$i];
         for ($k=1; $k<=3; $k++) {
           if ($k==1) {
             $tipp_krit=$tipp_krit1;
@@ -193,18 +193,18 @@ if (!file_exists($auswertfile)) {
           if ($tipp_krit==-1) {
             $tt.=50000000;
           } else if ($tipp_krit==0) {
-            $tt.=(50000000-$spielegetippt[$a][$i]);
+            $tt.=(50000000-(int)$spielegetippt[$a][$i]);
           } else if ($tipp_krit==1) {
-            $tt.=(50000000+$spielegetippt[$a][$i]);
+            $tt.=(50000000+(int)$spielegetippt[$a][$i]);
           } else if ($tipp_showzus==1) {
             if ($tipp_krit==2) {
-              $tt.=(50000000+$punkte1[$a][$i]);
+              $tt.=(50000000+(int)$punkte1[$a][$i]);
             } else if ($tipp_krit==3) {
-              $tt.=(50000000+$punkte2[$a][$i]);
+              $tt.=(50000000+(int)$punkte2[$a][$i]);
             } else if ($tipp_krit==4) {
-              $tt.=(50000000+$punkte3[$a][$i]);
+              $tt.=(50000000+(int)$punkte3[$a][$i]);
             } else if ($tipp_krit==5) {
-              $tt.=(50000000+$punkte6[$a][$i]);
+              $tt.=(50000000+(int)$punkte6[$a][$i]);
             }
           }
         }
@@ -260,17 +260,17 @@ if (!file_exists($auswertfile)) {
               $tt.=(50000000+(int)$spielegetippt[$a][$jyz]);
             } else if ($tipp_krit==6) {
               if ($tipp_showstsiege==1) {
-                $tt.=(50000000+$stsiege[$a][$jyz]);
+                $tt.=(50000000+(int)$stsiege[$a][$jyz]);
               }
             } else if ($tipp_showzus==1) {
               if ($tipp_krit==2) {
-                $tt.=(50000000+$punkte1[$a][$jyz]);
+                $tt.=(50000000+(int)$punkte1[$a][$jyz]);
               } else if ($tipp_krit==3) {
-                $tt.=(50000000+$punkte2[$a][$jyz]);
+                $tt.=(50000000+(int)$punkte2[$a][$jyz]);
               } else if ($tipp_krit==4) {
-                $tt.=(50000000+$punkte3[$a][$jyz]);
+                $tt.=(50000000+(int)$punkte3[$a][$jyz]);
               } else if ($tipp_krit==5) {
-                $tt.=(50000000+$punkte6[$a][$jyz]);
+                $tt.=(50000000+(int)$punkte6[$a][$jyz]);
               }
             }
           }

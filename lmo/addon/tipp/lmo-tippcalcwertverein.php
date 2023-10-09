@@ -59,8 +59,8 @@ if(file_exists($auswertfile)){
   for($i=1;$i<=count($tippdaten);$i++){
     $dum=explode('|',$tippdaten[$i-1]);
     $op1=$dum[0];               // Nick
-    $op3=substr($dum[1],2)-1;   // Spieltagsnummer
-    $op4=substr($dum[1],0,2);   // TP
+    $op3=(int)substr($dum[1],2)-1;   // Spieltagsnummer
+    $op4=(int)substr($dum[1],0,2);   // TP
     if($op3<$endtab){
       if($op4=="SG"){$spielegetippt[$op1]+=$dum[2];}
       elseif($op4=="TP"){$tipppunktegesamt[$op1]+=$dum[2];}
