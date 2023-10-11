@@ -2,7 +2,7 @@
 
 [![GitHub release](https://img.shields.io/github/release/henshingly/LMO_PHP8?include_prereleases=&sort=semver&color=blue)](https://github.com/henshingly/LMO_PHP8/releases/)
 [![download-badge](https://img.shields.io/github/downloads/henshingly/LMO_PHP8/total.svg?style=flat-square "Download status")](https://github.com/henshingly/LMO_PHP8/releases/latest "Download status")
-[![Donate](https://img.shields.io/badge/-Buy%20me%20a%20coffee-brown.svg)](https://www.paypal.com/paypal.me/LMOforum)
+[![Donate](https://img.shields.io/badge/-Buy%20me%20a%20coffee-brown.svg)](https://paypal.me/LMOforum)
 # LMO with PHP8
 Together with others, I would like to ensure that the Liga Manager Online runs under PHP 8.
 The project page is still <a target="_blank" href="https://www.liga-manager-online.de/homepage/">https://www.liga-manager-online.de/homepage/</a>
