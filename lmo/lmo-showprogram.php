@@ -58,9 +58,8 @@ if($file!=""){
           <th align="right">&nbsp;<a href="<?php echo $addr.($j+1); ?>" title="<?php echo $text[25]; ?>"><?php echo $j+1; ?></a>&nbsp;</th>
 <?php        if($datm==1){
             if($mterm[$j][$i]>0){
-              //$dum1 = date($datf, $mterm[$j][$i]);
               $dum1 = strtr(date($datf, $mterm[$j][$i]), $trans_lang);
-            }else{
+            } else {
               $dum1="";
             }
 ?>
@@ -97,7 +96,8 @@ if($file!=""){
           if($spez==1){ ?>
           <td style="width:2px;">&nbsp;</td>
           <td align="left"><?php echo $mspez[$j][$i]; ?></td>
-<?php        }
+<?php
+          }
 ?>
           <td style="width:2px;">&nbsp;</td>
           <td class="nobr"><?php
@@ -114,7 +114,7 @@ if($file!=""){
             if($mberi[$j][$i]!=""){
               $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong><br><br>";
               echo "<a href='".$mberi[$j][$i]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
-            }else{
+            } else {
               echo "&nbsp;";
             }
           }
