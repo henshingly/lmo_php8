@@ -19,7 +19,7 @@
   */
 
 
-if($file!=""){
+if($file!="") {
   $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
   $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
   if ($show_stat1==0 && $show_stat2!=0) {
@@ -34,11 +34,11 @@ if($file!=""){
   <tr>
     <td valign="top" align="center">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php
-  for($i=1;$i<=$anzteams;$i++){?>
+  for($i=1;$i<=$anzteams;$i++) {?>
         <tr>
           <td align="right">
             <acronym title="<?php echo $text[57]." ".$teams[$i]?>"><?php
-    if($i!=$show_stat1){?>
+    if($i!=$show_stat1) {?>
             <a href="<?php echo $adds.$i?>&amp;stat2=<?php echo $show_stat2?>"><?php echo $teamk[$i]; ?></a><?php
     } else {
       echo $teamk[$i];
@@ -51,7 +51,7 @@ if($file!=""){
     </td>
     <td valign="top" align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
-  if($show_stat1==0){?>
+  if($show_stat1==0) {?>
         <tr>
           <td align="center">&nbsp;<br /><?php echo $text[24]; ?><br />&nbsp;</td>
         </tr><?php
@@ -67,11 +67,11 @@ if($file!=""){
           <th align="right"><?php echo $teams[$show_stat1];?></th>
           <th align="center"><?php
       echo HTML_smallTeamIcon($file,$teams[$show_stat1]," alt=''")."&nbsp;";
-      if($show_stat2>0 && $show_stat1!=$show_stat2){
+      if($show_stat2>0 && $show_stat1!=$show_stat2) {
         echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$show_stat2]," alt=''");
       }?>
           </th><?php
-      if($show_stat2>0 && $show_stat1!=$show_stat2){ ?>
+      if($show_stat2>0 && $show_stat1!=$show_stat2) {?>
           <th align="left"><?php echo $teams[$show_stat2];?></th><?php
       }?>
         </tr>
@@ -127,57 +127,57 @@ if($file!=""){
         <tr>
           <td align="right"><?php echo $platz0[$show_stat1];?></td>
           <th><?php echo $text[61];?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php echo $platz0[$show_stat2];?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $platz0[$show_stat2];?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php echo applyFactor($punkte[$show_stat1],$pointsfaktor); if($minus==2){":".applyFactor($negativ[$show_stat1],$pointsfaktor);} ?></td>
+          <td align="right"><?php echo applyFactor($punkte[$show_stat1],$pointsfaktor); if($minus==2) {":".applyFactor($negativ[$show_stat1],$pointsfaktor);} ?></td>
           <th><?php echo $text[37]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php echo applyFactor($punkte[$show_stat2],$pointsfaktor); if($minus==2){":".applyFactor($negativ[$show_stat2],$pointsfaktor);} ?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo applyFactor($punkte[$show_stat2],$pointsfaktor); if($minus==2) {":".applyFactor($negativ[$show_stat2],$pointsfaktor);} ?></td><?php } ?>
         </tr>
         <tr>
           <td align="right"><?php echo $spiele[$show_stat1];?></td>
           <th><?php echo $text[63]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php echo $spiele[$show_stat2];?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $spiele[$show_stat2];?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php if($spiele[$show_stat1]){echo applyFactor(number_format($punkte[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor);}} ?></td>
+          <td align="right"><?php if($spiele[$show_stat1]) {echo applyFactor(number_format($punkte[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor); if($minus==2) {":".applyFactor(number_format($negativ[$show_stat1]/$spiele[$show_stat1],2),$pointsfaktor);}} ?></td>
           <th><?php echo $text[37].$text[64]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){if($spiele[$show_stat2]){ ?><td align="left"><?php echo applyFactor(number_format($punkte[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor); if($minus==2){":".applyFactor(number_format($negativ[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor);}} ?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {if($spiele[$show_stat2]) {?><td align="left"><?php echo applyFactor(number_format($punkte[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor); if($minus==2) {":".applyFactor(number_format($negativ[$show_stat2]/$spiele[$show_stat2],2),$pointsfaktor);}} ?></td><?php } ?>
         </tr>
         <tr>
           <td align="right"><?php echo applyFactor($etore[$show_stat1],$goalfaktor).":".applyFactor($atore[$show_stat1],$goalfaktor); ?></td>
           <th><?php echo $text[38]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php echo applyFactor($etore[$show_stat2],$goalfaktor).":".applyFactor($atore[$show_stat2],$goalfaktor); ?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo applyFactor($etore[$show_stat2],$goalfaktor).":".applyFactor($atore[$show_stat2],$goalfaktor); ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php if($spiele[$show_stat1]){ echo number_format(applyFactor($etore[$show_stat1],$goalfaktor)/$spiele[$show_stat1],2).":".number_format(applyFactor($atore[$show_stat1],$goalfaktor)/$spiele[$show_stat1],2);} ?></td>
+          <td align="right"><?php if($spiele[$show_stat1]) { echo number_format(applyFactor($etore[$show_stat1],$goalfaktor)/$spiele[$show_stat1],2).":".number_format(applyFactor($atore[$show_stat1],$goalfaktor)/$spiele[$show_stat1],2);} ?></td>
           <th><?php echo $text[38].$text[64]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php if($spiele[$show_stat2]){ echo number_format(applyFactor($etore[$show_stat2],$goalfaktor)/$spiele[$show_stat2],2).":".number_format(applyFactor($atore[$show_stat2],$goalfaktor)/$spiele[$show_stat2],2);} ?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php if($spiele[$show_stat2]) { echo number_format(applyFactor($etore[$show_stat2],$goalfaktor)/$spiele[$show_stat2],2).":".number_format(applyFactor($atore[$show_stat2],$goalfaktor)/$spiele[$show_stat2],2);} ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php if($spiele[$show_stat1]){echo $siege[$show_stat1]." (".number_format($siege[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></td>
+          <td align="right"><?php if($spiele[$show_stat1]) {echo $siege[$show_stat1]." (".number_format($siege[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></td>
           <th><?php echo $text[67]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php if($spiele[$show_stat2]){echo $siege[$show_stat2]." (".number_format($siege[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php if($spiele[$show_stat2]) {echo $siege[$show_stat2]." (".number_format($siege[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></td><?php } ?>
         </tr>
         <tr>
           <td align="right"><?php echo $maxs0[$show_stat1]; ?></td>
           <th valign="top"><?php echo $text[68]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php echo $maxs0[$show_stat2] ?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $maxs0[$show_stat2] ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php if($spiele[$show_stat1]){echo $nieder[$show_stat1]." (".number_format($nieder[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></td>
+          <td align="right"><?php if($spiele[$show_stat1]) {echo $nieder[$show_stat1]." (".number_format($nieder[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></td>
           <th><?php echo $text[69]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php if($spiele[$show_stat2]){echo $nieder[$show_stat2]." (".number_format($nieder[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php if($spiele[$show_stat2]) {echo $nieder[$show_stat2]." (".number_format($nieder[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></td><?php } ?>
         </tr>
         <tr>
           <td align="right"><?php echo $maxn0[$show_stat1]; ?></td>
           <th valign="top"><?php echo $text[70]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php echo $maxn0[$show_stat2]; ?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $maxn0[$show_stat2]; ?></td><?php } ?>
         </tr>
         <tr>
           <td align="right"><?php echo $serie1; ?></td>
           <th valign="top"><?php echo $text[71]; ?></th>
-          <?php if($show_stat2>0 && $show_stat1!=$show_stat2){ ?><td align="left"><?php echo $serie2; ?></td><?php } ?>
+          <?php if($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $serie2; ?></td><?php } ?>
         </tr>
 
 <?php
@@ -302,12 +302,12 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
     </td>
     <td valign="top" align="center">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php
-  for($i=1;$i<=$anzteams;$i++){?>
+  for($i=1;$i<=$anzteams;$i++) {?>
         <tr>
           <td><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?>&nbsp;</td>
           <td align="left">
             <acronym title="<?php echo $text[57]." ".$teams[$i]?>"><?php
-    if($i!=$show_stat2){
+    if($i!=$show_stat2) {
                ?><a href="<?php echo $adds.$show_stat1?>&amp;stat2=<?php echo $i?>"><?php echo $teamk[$i]?></a><?php
     } else {
       echo $teamk[$i];

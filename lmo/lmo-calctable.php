@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
 *
 * http://lmo.sourceforge.net/
@@ -16,8 +16,8 @@
 * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
 *
 */
- 
- 
+
+
 if ($file != "") {
   if (!isset($tabtype)) {
     $tabtype = 0;
@@ -44,7 +44,7 @@ if ($file != "") {
   $ser2 = array_pad($array, $anzteams+1, "0");
   $ser3 = array_pad($array, $anzteams+1, "0");
   $ser4 = array_pad($array, $anzteams+1, "0");
-   
+
   $tab0 = array();
   $stt = 0;
   $hoy = 0;
@@ -332,7 +332,7 @@ if ($file != "") {
         $tab0[$ih] = $handd.substr($tab0[$ih], 2);
       }
       sort($tab0, SORT_STRING);
-       
+
     }
   }
   //print_r($tab0);

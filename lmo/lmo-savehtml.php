@@ -19,8 +19,8 @@
   */
 
 
-if(!isset($namepkt)){$namepkt="";}
-if(!isset($nametor)){$nametor="";}
+if(!isset($namepkt)) {$namepkt="";}
+if(!isset($nametor)) {$nametor="";}
 
 if ($st > 0) {
   $actual = $st;
@@ -107,7 +107,7 @@ if ($lmtype == 0 && $st > 0) {
         <td align="right"><?php echo $heimtore?></td>
         <td>:</td>
         <td align="left"><?php echo $gasttore?></td><?php
-          if ($msieg[$actual - 1][$i1] == 3) { ?>
+          if ($msieg[$actual - 1][$i1] == 3) {?>
         <td width="2">/</td>
         <td align="right"><?php echo $gasttore?></td>
         <td align="center" width="8">:</td>
@@ -216,7 +216,7 @@ if ($lmtype == 0 && $st > 0) {
       <td align="right"><?php echo $heimtore?></td>
       <td>:</td>
       <td align="left"><?php echo $gasttore?></td><?php
-            if ($msieg[$actual][$i1]==3) { ?>
+            if ($msieg[$actual][$i1]==3) {?>
         <td width="2">/</td>
         <td align="right"><?php echo $gasttore?></td>
         <td align="center" width="8">:</td>

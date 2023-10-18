@@ -21,11 +21,11 @@ $trans_lang = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1]
 
 function check_hilfsadmin($datei) {
   $hilfsadmin_berechtigung=FALSE;
-  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']==1){
+  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']==1) {
     $hilfsadmin_ligen = explode(',',$_SESSION['lmouserfile']);
-    if(isset($hilfsadmin_ligen)){
+    if(isset($hilfsadmin_ligen)) {
       foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
-        if($hilfsadmin_liga.".l98"==basename($datei)){
+        if($hilfsadmin_liga.".l98"==basename($datei)) {
           $hilfsadmin_berechtigung=TRUE;
         }
       }

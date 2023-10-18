@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 if ($file!="") {
   $spiele = array_pad($array,$anzteams+1,"0");
   $siege = array_pad($array,$anzteams+1,"0");
@@ -137,7 +137,7 @@ if ($file!="") {
         }
       }
     }
-    
+
     for ($a=1; $a<=$anzteams; $a++) {
       if ($endtab==$strafdat[$a]) {        // Hack-Straftore
         $etore[$a]=$etore[$a]-$torkorrektur1[$a];        // Hack-Straftore

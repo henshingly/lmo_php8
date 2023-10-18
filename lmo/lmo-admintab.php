@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -104,23 +104,23 @@ if ($file != "") {
             <th align="left" colspan="4"><?php echo $st.". ".$text[2];?></th>
             <th align="left" width="2">&nbsp;</th>
             <th align="right"><?php echo $text[33];?></th>
-            <th align="right"><?php echo $text[34];?></th><?php 
-  if($hidr!=1){ ?>
-            <th align="right"><?php echo $text[35];?></th><?php 
+            <th align="right"><?php echo $text[34];?></th><?php
+  if($hidr!=1) {?>
+            <th align="right"><?php echo $text[35];?></th><?php
   }?>
-            <th align="right"><?php echo $text[36];?></th><?php 
-  if($tabpkt==0){ ?>
+            <th align="right"><?php echo $text[36];?></th><?php
+  if($tabpkt==0) {?>
             <th>&nbsp;</th>
-            <th <?php echo $dummy?>><?php echo $text[37]?></th><?php 
+            <th <?php echo $dummy?>><?php echo $text[37]?></th><?php
   }?>
             <th align="left" width="2">&nbsp;</th>
             <th align="left" colspan="3" align="center"><?php echo $text[38];?></th>
-            <th align="right"><?php echo $text[39];?></th><?php 
-  if($tabpkt==1){ ?>
+            <th align="right"><?php echo $text[39];?></th><?php
+  if($tabpkt==1) {?>
             <th>&nbsp;</th>
-            <th <?php echo $dummy?>><?php echo $text[37]?></th><?php 
+            <th <?php echo $dummy?>><?php echo $text[37]?></th><?php
   }?>
-          </tr><?php 
+          </tr><?php
   $j = 1;
   for($x = 1; $x <= $anzteams; $x++) {
     $i = intval(substr($tab2[$x-1], 34));
@@ -133,16 +133,16 @@ if ($file != "") {
     }?>
           <tr>
             <td align="right">
-              <select title="<?php echo $text[414] ?>" class="lmo-formular-input" name="xplatz<?php echo $x;?>" onChange="dolmoedi2(<?php echo $anzteams;?>,'xplatz<?php echo $x;?>')"><?php 
-    for($y=1;$y<=$anzteams;$y++){?>
-                <option value="<?php echo $y?>" <?php if($y==$handt[$x]){echo " selected";}?>><?php echo $y?></option>
-                <?php 
+              <select title="<?php echo $text[414] ?>" class="lmo-formular-input" name="xplatz<?php echo $x;?>" onChange="dolmoedi2(<?php echo $anzteams;?>,'xplatz<?php echo $x;?>')"><?php
+    for($y=1;$y<=$anzteams;$y++) {?>
+                <option value="<?php echo $y?>" <?php if($y==$handt[$x]) {echo " selected";}?>><?php echo $y?></option>
+                <?php
     }?>
               </select>
             </td>
             <td class="nobr"><?php echo $dummy.$teams[$i].$dumm2;?></td>
             <td>&nbsp;</td>
-            <td><?php 
+            <td><?php
     if ($teamn[$i]!="" || $strafp[$i]!=0 || $strafm[$i]!=0 || $torkorrektur1[$i]!=0 || $torkorrektur2[$i]!=0) {
       $lmo_tabellennotiz=getSmallImage($teams[$i]);
 
@@ -179,7 +179,7 @@ if ($file != "") {
       if ($teamn[$i]!="") {
         $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong>\n".$teamn[$i];
       }?>
-        <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt=''><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php 
+        <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt=''><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
       $lmo_tabellennotiz="";
     } else {
       echo "&nbsp;";
@@ -187,33 +187,33 @@ if ($file != "") {
             </td>
             <td>&nbsp;</td>
             <td align="right"><?php echo $dummy.$spiele[$i].$dumm2;?></td>
-            <td align="right"><?php echo $dummy.$siege[$i].$dumm2;?></td><?php 
-    if($hidr!=1){ ?>
-            <td align="right"><?php echo $dummy.$unent[$i].$dumm2;?></td><?php 
+            <td align="right"><?php echo $dummy.$siege[$i].$dumm2;?></td><?php
+    if($hidr!=1) {?>
+            <td align="right"><?php echo $dummy.$unent[$i].$dumm2;?></td><?php
     }?>
-            <td align="right"><?php echo $dummy.$nieder[$i].$dumm2;?></td><?php 
+            <td align="right"><?php echo $dummy.$nieder[$i].$dumm2;?></td><?php
     if ($tabpkt == 0) {?>
             <td width="2">&nbsp;</td>
-            <td align="right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?php 
+            <td align="right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?php
       if ($minus == 2) {?>
             <td align="center" width="4"><strong>:</strong></td>
-            <td><strong><?php echo applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?php 
+            <td><strong><?php echo applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?php
       }
     }?>
             <td>&nbsp;</td>
             <td align="right"><?php echo $dummy.applyFactor($etore[$i],$goalfaktor).$dumm2; ?></td>
             <td align="center" width="4"><?php echo $dummy; ?>:<?php echo $dumm2; ?></td>
             <td><?php echo $dummy.applyFactor($atore[$i],$goalfaktor).$dumm2; ?></td>
-            <td align="right"><?php echo $dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td><?php 
-    if($tabpkt==1){?>
+            <td align="right"><?php echo $dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td><?php
+    if($tabpkt==1) {?>
             <td width="2">&nbsp;</td>
-            <td align="right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?php 
-      if($minus==2){?>
+            <td align="right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?php
+      if($minus==2) {?>
             <td align="center" width="4"><strong>:</strong></td>
-            <td><strong><?php echo applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?php 
+            <td><strong><?php echo applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?php
       }
     }?>
-          </tr><?php 
+          </tr><?php
   }?>
           <tr>
             <th align="right" colspan="<?php echo $breite;?>" align="center">
@@ -224,5 +224,5 @@ if ($file != "") {
       </form>
     </td>
   </tr>
-</table><?php 
+</table><?php
 }?>

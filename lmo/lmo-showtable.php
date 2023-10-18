@@ -27,9 +27,9 @@ $breite = 11;
 if ($minus == 2) {
   $breite = $breite+2;
 }
-if($tabonres==2){
+if ($tabonres==2) {
   $gesamtbreite=3*$breite+11;
-}else{
+} else {
   $gesamtbreite=$breite+11;
 }
 ?>
@@ -37,19 +37,19 @@ if($tabonres==2){
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><?php
 if ($einhinrueck==1 || $einheimausw==1) {
-  if($tabtype!=0){?><a href="<?php echo $addt1."0" ?>" title="<?php echo $text[27]; ?>"><?php echo $text[40]; ?></a><?php }else{echo $text[40];}?>&nbsp;<?php
-  if($tabonres!=2 && $einheimausw==1){
-    if($tabtype!=1){?><a href="<?php echo $addt1."1" ?>" title="<?php echo $text[28]; ?>"><?php echo $text[41]; ?></a><?php }else{echo $text[41];}?>&nbsp;<?php
-    if($tabtype!=2){?><a href="<?php echo $addt1."2" ?>" title="<?php echo $text[29]; ?>"><?php echo $text[42]; ?></a><?php }else{echo $text[42];}?>&nbsp;<?php
+  if ($tabtype!=0) {?><a href="<?php echo $addt1."0" ?>" title="<?php echo $text[27]; ?>"><?php echo $text[40]; ?></a><?php } else {echo $text[40];}?>&nbsp;<?php
+  if ($tabonres!=2 && $einheimausw==1) {
+    if ($tabtype!=1) {?><a href="<?php echo $addt1."1" ?>" title="<?php echo $text[28]; ?>"><?php echo $text[41]; ?></a><?php } else {echo $text[41];}?>&nbsp;<?php
+    if ($tabtype!=2) {?><a href="<?php echo $addt1."2" ?>" title="<?php echo $text[29]; ?>"><?php echo $text[42]; ?></a><?php } else {echo $text[42];}?>&nbsp;<?php
   }
   if ($einhinrueck==1) {
-    if($tabtype!=4){?><a href="<?php echo $addt1."4"?>" title="<?php echo $text[4003]; ?>"><?php echo $text[4003]; ?></a><?php }else{echo $text[4003];}?>&nbsp;<?php
-    if($tabtype!=3){?><a href="<?php echo $addt1."3"?>" title="<?php echo $text[4002]; ?>"><?php echo $text[4002]; ?></a><?php }else{echo $text[4002];}
+    if ($tabtype!=4) {?><a href="<?php echo $addt1."4"?>" title="<?php echo $text[4003]; ?>"><?php echo $text[4003]; ?></a><?php } else {echo $text[4003];}?>&nbsp;<?php
+    if ($tabtype!=3) {?><a href="<?php echo $addt1."3"?>" title="<?php echo $text[4002]; ?>"><?php echo $text[4002]; ?></a><?php } else {echo $text[4002];}
   }
 }?>
   </caption><?php
 /*Inklusive Heim & Auswärts*/
-if($tabonres==2){?>
+if ($tabonres==2) {?>
   <tr>
     <th align="left" colspan="7"><?php echo $tabdat; ?>&nbsp;</th>
     <th colspan="<?php echo $breite; ?>">&nbsp;</th>
@@ -60,63 +60,68 @@ if($tabonres==2){?>
   </tr><?php
 }?>
   <tr>
-    <th align="left" colspan="7"><?php if($tabonres!=2){echo $tabdat;}?>&nbsp;</th>
-    <th align="right"><?php echo $text[33]; ?></th>
-    <th align="right"><?php echo $text[34]; ?></th><?php
-if($hidr!=1){?>
-    <th align="right"><?php echo $text[35]; ?></th><?php
+    <th align="left" colspan="7"><?php if ($tabonres!=2) {echo $tabdat;}?>&nbsp;</th>
+    <th class="text-center"><?php echo $text[33]; ?></th>
+    <th class="text-center"><?php echo $text[34]; ?></th>
+<?php
+if ($hidr!=1) {?>
+    <th align="right"><?php echo $text[35]; ?></th>
+<?php
 }?>
-    <th align="right"><?php echo $text[36]; ?></th><?php
-if($tabpkt==0){?>
+    <th class="text-center"><?php echo $text[36]; ?></th>
+<?php
+if ($tabpkt==0) {?>
     <th style="width:2px;">&nbsp;</th>
     <th <?php echo $dummy ?>><?php echo $text[37]; ?></th><?php
 }?>
     <th style="width:2px;">&nbsp;</th>
     <th colspan="3" align="center"><?php echo $text[38]; ?></th>
     <th align="right"><?php echo $text[39]; ?></th><?php
-if($tabpkt==1){?>
+if ($tabpkt==1) {?>
     <th style="width:2px;">&nbsp;</th>
     <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
 }
-if($tabonres==2){?>
+if ($tabonres==2) {?>
     <th style="width:2px;">&nbsp;</th>
     <th align="right"><?php echo $text[33]; ?></th>
     <th align="right"><?php echo $text[34]; ?></th><?php
-  if($hidr!=1){?>
+  if ($hidr!=1) {?>
     <th align="right"><?php echo $text[35]; ?></th><?php
   } ?>
     <th align="right"><?php echo $text[36]; ?></th><?php
-  if($tabpkt==0){?>
+  if ($tabpkt==0) {?>
     <th style="width:2px;">&nbsp;</th>
     <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
   } ?>
     <th style="width:2px;">&nbsp;</th>
     <th colspan="3" align="center"><?php echo $text[38]; ?></th>
     <th align="right"><?php echo $text[39]; ?></th><?php
-  if($tabpkt==1){?>
+  if ($tabpkt==1) {?>
     <th style="width:2px;">&nbsp;</th>
     <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
   }?>
     <th style="width:2px;">&nbsp;</th>
     <th align="right"><?php echo $text[33]; ?></th>
     <th align="right"><?php echo $text[34]; ?></th><?php
-  if($hidr!=1){?>
+  if ($hidr!=1) {?>
     <th align="right"><?php echo $text[35]; ?></th><?php
   }?>
     <th align="right"><?php echo $text[36]; ?></th><?php
-  if($tabpkt==0){?>
+  if ($tabpkt==0) {?>
     <th style="width:2px;">&nbsp;</th>
-    <th<?php echo $dummy?>><?php echo $text[37]?></th><?php
+    <th <?php echo $dummy?>><?php echo $text[37]?></th><?php
   }?>
     <th style="width:2px;">&nbsp;</th>
     <th colspan="3" align="center"><?php echo $text[38]; ?></th>
     <th align="right"><?php echo $text[39]; ?></th><?php
-  if($tabpkt==1){?>
+  if ($tabpkt==1) {?>
     <th style="width:2px;">&nbsp;</th>
-    <th <?php echo $dummy ?>><?php echo $text[37]; ?></th><?php
+    <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
   }
 }?>
-  </tr><?php
+
+  </tr>
+<?php
 $j = 1;
 for($x = 1; $x <= $anzteams; $x++) {
   $i = intval(substr($tab0[$x-1], 34));
@@ -152,25 +157,22 @@ for($x = 1; $x <= $anzteams; $x++) {
   }?>
   <tr>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$x.$dumm2; ?></td>
-    <?php
+<?php
   $y = 0;
   if ($endtab > 1 && isset($platz0[$i])) {
     if ($platz0[$i] < $platz1[$i]) {
       $y = 1;
-    } elseif($platz0[$i] > $platz1[$i]) {
+    } elseif ($platz0[$i] > $platz1[$i]) {
       $y = 2;
     }
   }?>
     <td class="<?php echo $lmo_tabelle_class ?>"><img src='<?php echo URL_TO_IMGDIR."/lmo-tab".$y.".gif"; ?>' width="9" height="9" border="0" alt='' /></td>
     <td class="<?php echo $lmo_tabelle_class ?>" align="center"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
-    <td class="<?php echo $lmo_tabelle_class ?>" align="left">
-    	<?php
+    <td class="<?php echo $lmo_tabelle_class ?>" align="left"><?php
   echo $dummy.$teams[$i].$dumm2;
   if (($teamu[$i] != "") && ($urlt == 1)) {?>
         <a href="<?php echo $teamu[$i]; ?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR."/url.png";?>" alt="<?php echo $text[564]?>" /></a><?php
-  }?>
-
-    </td>
+  }?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><?php
 
@@ -214,48 +216,49 @@ for($x = 1; $x <= $anzteams; $x++) {
     $lmo_tabellennotiz="";
   } else {
     echo "&nbsp;";
-  }?>
-    </td>
+  }?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$spiele[$i].$dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$siege[$i].$dumm2; ?></td><?php
-  if($hidr!=1){ ?>
+  if ($hidr!=1) {?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$unent[$i].$dumm2; ?></td><?php
   } ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$nieder[$i].$dumm2; ?></td><?php
   if ($tabpkt == 0) {?>
-    <td class="<?php echo $lmo_tabelle_class?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class?>" align="right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?php
+    <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?php
     if ($minus == 2) {?>
     <td class="<?php echo $lmo_tabelle_class?>" align="center" style="width:4px;"><strong>:</strong></td>
     <td class="<?php echo $lmo_tabelle_class?>"><strong><?php echo applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?php
     }
   }?>
-
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.applyFactor($etore[$i],$goalfaktor).$dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><?php echo $dummy; ?>:<?php echo $dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy.applyFactor($atore[$i],$goalfaktor).$dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td><?php
-  if($tabpkt==1){?>
-    <td class="<?php echo$lmo_tabelle_class?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class?>" align="right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?php
-    if($minus==2){?>
-    <td class="<?php echo $lmo_tabelle_class?>" align="center" style="width:4px;"><strong>:</strong></td>
-    <td class="<?php echo $lmo_tabelle_class?>"><strong><?php echo applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?php
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td>
+<?php
+  if ($tabpkt==1) {?>
+    <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong></td>
+<?php
+    if ($minus==2) {?>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($negativ[$i],$pointsfaktor)?></strong></td>
+<?php
     }
   }
-  if($tabonres==2){
+  if ($tabonres==2) {
     $lmo_tabelle_class="lmoTabelleHeimbilanz";?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$hspiele[$i].$dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$hsiege[$i].$dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$hunent[$i].$dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$hnieder[$i].$dumm2; ?></td><?php
-    if($tabpkt==0){?>
+    if ($tabpkt==0) {?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($hpunkte[$i],$pointsfaktor)?></strong></td><?php
-      if($minus==2){?>
+      if ($minus==2) {?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($hnegativ[$i],$pointsfaktor)?></strong></td><?php
       }
@@ -265,10 +268,10 @@ for($x = 1; $x <= $anzteams; $x++) {
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><?php echo $dummy; ?>:<?php echo $dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy.applyFactor($hatore[$i],$goalfaktor).$dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.applyFactor($hdtore[$i],$goalfaktor).$dumm2; ?></td><?php
-    if($tabpkt==1){?>
+    if ($tabpkt==1) {?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($hpunkte[$i],$pointsfaktor)?></strong></td><?php
-      if($minus==2){?>
+      if ($minus==2) {?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($hnegativ[$i],$pointsfaktor)?></strong></td><?php
       }
@@ -279,10 +282,10 @@ for($x = 1; $x <= $anzteams; $x++) {
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$asiege[$i].$dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$aunent[$i].$dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.$anieder[$i].$dumm2; ?></td><?php
-    if($tabpkt==0){?>
+    if ($tabpkt==0) {?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($apunkte[$i],$pointsfaktor)?></strong></td><?php
-      if($minus==2){?>
+      if ($minus==2) {?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($anegativ[$i],$pointsfaktor)?></strong></td><?php
       }
@@ -292,16 +295,18 @@ for($x = 1; $x <= $anzteams; $x++) {
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><?php echo $dummy; ?>:<?php echo $dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy.applyFactor($aatore[$i],$goalfaktor).$dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy.applyFactor($adtore[$i],$goalfaktor).$dumm2; ?></td><?php
-    if($tabpkt==1){?>
+    if ($tabpkt==1) {?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($apunkte[$i],$pointsfaktor)?></strong></td><?php
-      if($minus==2){?>
+      if ($minus==2) {?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($anegativ[$i],$pointsfaktor)?></strong></td><?php
       }
     }
   }  /*tabonres==2*/?>
-  </tr><?php
+
+  </tr>
+<?php
 }/*for*/?>
   <tr>
     <td class="lmoFooter" align="center" colspan="<?php echo $gesamtbreite?>">&nbsp;<?php

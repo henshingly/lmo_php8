@@ -19,8 +19,8 @@
   */
 
 
-if(!isset($namepkt)){$namepkt="";}
-if(!isset($nametor)){$nametor="";}
+if(!isset($namepkt)) {$namepkt="";}
+if(!isset($nametor)) {$nametor="";}
 
 if ($st > 0) {
   $actual = $anzst;
