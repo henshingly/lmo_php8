@@ -23,13 +23,13 @@
 // akzeptiert)
 
 $languages=array(
-    'Bosanski'=>array('bs_BA'),
+    'Bosanski'=>array('bs_BA','bos'),
     'Cestina'=>array('cs_CS'),
     'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.ISO8859-1'),
     'English'=>array('en_EN','en_US'),
     'Espanol'=>array('es_ES'),
     'Francais'=>array('fr_FR'),
-    'Hrvatski'=>array('hr_HR'),
+    'Hrvatski'=>array('hr_HR','hrv'),
     'Italiano'=>array('it_IT'),
     'Magyar'=>array('hu_HU'),
     'Nederlands'=>array('nl_NL'),
