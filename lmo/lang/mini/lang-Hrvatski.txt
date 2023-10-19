@@ -1,0 +1,18 @@
+000=[<acronym title='lmo-mininext for LMO &copy; Tim Schumacher/LMO-Group CLASSLIB_VERSION'>&copy;</acronym>]
+001=Sljedeća igra (kolo)
+002=Zadnja utakmica sezone
+003=Raspored parovi
+004=Igra jedni protiv drugih:
+005=Greška: Liga nije pronađena!
+006=Upozorenje: Mapa arhive nije pronađena
+007=Prethodna utakmica
+008=Nije odabran tim!
+009=S
+010=U
+011=N
+012=a
+013=h
+014=Stanje
+015=Dani
+016=Sati
+017=Minute

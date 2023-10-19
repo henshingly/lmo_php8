@@ -1,0 +1,5 @@
+000=Svi rezultati od posljednjeg dana utakmice
+001=.Dan kola
+002=-Odluka sportskog suda (zeleni sto)
+003=Iz perspektive domaćina rezultat podjednako vrijedi za obje momčadi.
+004=Trenutačno nema izvješća

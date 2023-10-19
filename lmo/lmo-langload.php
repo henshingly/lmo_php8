@@ -35,7 +35,9 @@ $languages=array(
     'Italiano'=>array('it_IT'),
     'Portugues'=>array('pt_BR'),
     'Romanian'=>array('ro_RO'),
-    'Türkce'=>array('tr_TR')
+    'Türkce'=>array('tr_TR'),
+    'Bosanski'=>array('bs_BA'),
+    'Hrvatski'=>array('hr_HR')
     );
 
 $text=array();
