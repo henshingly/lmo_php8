@@ -576,6 +576,12 @@
 575=Zeitzone des Servers
 576=Hinweis: Tabellenstand ohne vorgezogene Spiele!
 577=Platz
+2000=Volleyball
+2001=Volleyball Version by vbfan
+2020=Bälle
+2021=Bälle gewonnen
+2022=Bälle verloren
+2025=Quot.
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde
