@@ -23,21 +23,21 @@
 // akzeptiert)
 
 $languages=array(
-    'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.ISO8859-1'),
+    'Bosanski'=>array('bs_BA'),
     'Cestina'=>array('cs_CS'),
-    'Francais'=>array('fr_FR'),
+    'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.ISO8859-1'),
     'English'=>array('en_EN','en_US'),
-    'Nederlands'=>array('nl_NL'),
-    'Slovenskega'=>array('sl_SL'),
-    'Magyar'=>array('hu_HU'),
     'Espanol'=>array('es_ES'),
-    'Norsk'=>array('no_NO'),
+    'Francais'=>array('fr_FR'),
+    'Hrvatski'=>array('hr_HR'),
     'Italiano'=>array('it_IT'),
+    'Magyar'=>array('hu_HU'),
+    'Nederlands'=>array('nl_NL'),
+    'Norsk'=>array('no_NO'),
     'Portugues'=>array('pt_BR'),
     'Romanian'=>array('ro_RO'),
-    'Türkce'=>array('tr_TR'),
-    'Bosanski'=>array('bs_BA'),
-    'Hrvatski'=>array('hr_HR')
+    'Slovenskega'=>array('sl_SL'),
+    'Türkce'=>array('tr_TR')
     );
 
 $text=array();
