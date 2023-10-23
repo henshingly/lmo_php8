@@ -1,0 +1,5 @@
+000=Vsi rezultati zadnje tekme
+001=.Gameday
+002=-Odločitev športnega sodišča
+003=Z vidika domačih rezultat za obe ekipi šteje enakovredno.
+004=Trenutno ni poročil

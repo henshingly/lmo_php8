@@ -1,0 +1,5 @@
+000=Todos os resultados da última jornada
+001=.Dia de jogo
+002=-Decisão pela quadra poliesportiva
+003=O resultado conta igualmente para ambas as equipes na perspectiva do time da casa.
+004=Nenhum relatório no momento

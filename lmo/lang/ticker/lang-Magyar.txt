@@ -1,0 +1,5 @@
+000=Az utolsó mérkőzés összes eredménye
+001=.Játéknap
+002=- Sportbíróság döntése
+003=Az eredmény mindkét csapat számára egyformán számít a hazai csapat szempontjából.
+004=Jelenleg nincsenek jelentések
