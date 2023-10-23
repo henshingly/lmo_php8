@@ -20,7 +20,7 @@
 019=Treba li prikazati statistiku igrača?
 020=Širina slike igrača
 021=Prethodno sortiranje korisnika
-022=Oglas na stranici 
+022=Oglas na stranici
 023=Prikaži nulte vrijednosti
 024=Dodatni stupac za sortiranje
 025=Klub

@@ -21,7 +21,7 @@
 020=Spiller bildebredde
 021=Førsortering Bruker
 022=Visninger pr side
-023=Nullwerte einblenden
+023=Vis nullverdier
 024=Ekstra sorteringskolonne
 025=Klubb
 026=Spillerbilde
@@ -37,7 +37,7 @@
 036=Etter
 037=sortere
 038=Type
-039=Konfiguration
+039=Konfigurasjon
 040=førsortering Admin
 041=Linkbetegnelse
 042=Visninger pr side Admin
