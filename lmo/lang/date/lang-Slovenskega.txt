@@ -1,7 +1,7 @@
 00=Pondelok
-01=Utorok	
+01=Utorok
 02=Streda
-03=Štvrtok	
+03=Štvrtok
 04=Piatok
 05=Sobota
 06=Nedeľa

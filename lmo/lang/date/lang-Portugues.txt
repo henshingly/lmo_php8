@@ -1,7 +1,7 @@
 00=Segunda-feira
-01=Terça-feira	
+01=Terça-feira
 02=Quarta-feira
-03=Quinta-feira	
+03=Quinta-feira
 04=Sexta-Feira
 05=Sábado
 06=Domingo

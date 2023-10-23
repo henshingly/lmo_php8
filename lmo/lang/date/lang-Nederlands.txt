@@ -1,7 +1,7 @@
 00=Maandag
-01=Dinsdag	
+01=Dinsdag
 02=Woensdag
-03=Donderdag	
+03=Donderdag
 04=Vrijdag
 05=Zaterdag
 06=Zondag

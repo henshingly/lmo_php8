@@ -1,7 +1,7 @@
 00=Hétfő
-01=Kedd	
+01=Kedd
 02=Szerda
-03=Csütörtök	
+03=Csütörtök
 04=Péntek
 05=Szombat
 06=Vasárnap

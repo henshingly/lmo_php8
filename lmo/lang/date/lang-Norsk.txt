@@ -1,7 +1,7 @@
 00=Mandag
-01=Tirsdag	
+01=Tirsdag
 02=Onsdag
-03=Torsdag	
+03=Torsdag
 04=Fredag
 05=Lørdag
 06=Søndag

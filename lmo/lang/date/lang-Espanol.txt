@@ -1,7 +1,7 @@
 00=Lunes
-01=Martes	
+01=Martes
 02=Miércoles
-03=Jueves	
+03=Jueves
 04=Viernes
 05=Sábado
 06=Domingo
