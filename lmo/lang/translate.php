@@ -30,7 +30,6 @@ if ($_SESSION['lmouserok'] == 2) {
     if($dir = opendir($directory)) {
       // Create an array for all files found
       $tmp = Array();
-
       // Add the files
       while($file = readdir($dir)) {
         // Make sure the file exists
@@ -73,6 +72,25 @@ if ($_SESSION['lmouserok'] == 2) {
   <head>
     <title>LMO Translation</title>
     <style type="text/css">
+      button {
+        padding: .4em .8em;
+        background: #3839ab linear-gradient(hsl(0 0% 100% /.2), transparent);
+        border: thin solid rgb(0 0 0 /.1);
+        border-radius: 0 0.4em 0.4em 0.4em;
+        box-shadow: 0 .2em 0.4em rgb(0 0 0 /.5);
+        color: white;
+        text-shadow: 0 -.05em .05em rgb(0 0 0 /.5);
+        font-weight: bold;
+        font-size: 125%;
+        line-height: 1.5;
+      }
+      button.ok {
+        background-color: #5a9900;
+      }
+      button:focus,
+      button:hover {
+       	box-shadow: 0 .3em 0.6em rgb(0 0 0 / .8);
+      }
       body {background:#fff;}
       body * {font-size:10px;font-family:Tahoma;}
       tbody textarea,tbody input {width:100%;height:100%;border:0;margin:0;padding:0;background:transparent;}
@@ -93,7 +111,7 @@ if ($_SESSION['lmouserok'] == 2) {
       <caption><h1>Translation</h1></caption>
       <thead>
         <tr>
-          <th>#</th>
+          <th><center>#</center></th>
           <td width="49%"><h2><?php echo $file?></h2></td>
           <th width="49%">
             Translate
@@ -111,16 +129,15 @@ if ($_SESSION['lmouserok'] == 2) {
               <input type="submit" name="change_lang" value="ok">
 
           </th>
-          <th>#</th>
+          <th><center>#</center></th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <td colspan="3"></td>
-          <th><input type="submit" name="save" value="Save"></th>
+          <td align="center" colspan="4"><button class="ok" type="submit" name="save">Save</button></td>
         </tr>
         <tr>
-          <th colspan="4"><small>LMO-Translation Tool &ndash; &copy; Rene Marth/<a href="liga-manager-online.de/">LMO-Group</a></small></td>
+          <th colspan="4"><small>LMO-Translation Tool – © Rene Marth/<a href="https://www.liga-manager-online.de/">LMO-Group</a></small></td>
         </tr>
       </tfoot>
   <?php
