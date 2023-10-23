@@ -1,0 +1,18 @@
+000=[<acronym title='lmo-mininext for LMO © Tim Schumacher/LMO-Group CLASSLIB_VERSION'>©</acronym>]
+001=Következő játék
+002=A szezon utolsó meccse
+003=Létesítmények
+004=Játssz egymás ellen:
+005=Hiba: A bajnokság nem található!
+006=Figyelmeztetés: Az archívummappa nem található
+007=Előző játék
+008=Nincs kiválasztott csapat!
+009=G
+010=H
+011=V
+012=e
+013=o
+014=állt
+015=Napok
+016=Órák
+017=Percek

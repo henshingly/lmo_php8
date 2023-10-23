@@ -1,4 +1,4 @@
-000=[<acronym title='lmo-mininext for LMO &copy; Tim Schumacher/LMO-Group CLASSLIB_VERSION'>&copy;</acronym>]
+000=[<acronym title='lmo-mininext for LMO © Tim Schumacher/LMO-Group CLASSLIB_VERSION'>©</acronym>]
 001=Next match
 002=Last match
 003=Match

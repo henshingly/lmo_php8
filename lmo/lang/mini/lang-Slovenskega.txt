@@ -1,0 +1,18 @@
+000=[<acronym title='lmo-mininext for LMO © Tim Schumacher/LMO-Group CLASSLIB_VERSION'>©</acronym>]
+001=Naslednja igra
+002=Zadnja tekma sezone
+003=Napeljave
+004=Igrajte drug proti drugemu:
+005=Napaka: lige ni mogoče najti!
+006=Opozorilo: arhivske mape ni mogoče najti
+007=Prejšnja igra
+008=Nobena ekipa ni izbrana!
+009=Z
+010=R
+011=P
+012=s
+013=d
+014=Je stal
+015=Dnevi
+016=Ure
+017=Minut
