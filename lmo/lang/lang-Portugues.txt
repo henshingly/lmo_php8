@@ -54,7 +54,7 @@
 053=Por favor seleccione um campeonato ou taça:
 054=<acronym title="Sistema de resultados">LMO</acronym>
 055=© 1997-2023 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visite a nossa Homepage">Projecto-LMO</a> | <a href="https://www.vest-sport.de/forum/?viewforum&forum_id=1" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> |  <a href="https://www.vest-sport.de/forum/viewforum.php?f=10" target="_blank" title="Aqui poderá encontrar mais campeonatos">Lista de campeonatos Hollwitz</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visite a nossa Homepage">Projecto-LMO</a> | <a href="https://www.vest-sport.de/forum/?viewforum&forum_id=1" target="_blank" title="Find some help for LMO and his Addons">Support Forum</a> |  <a href="https://www.vest-sport.de/forum/viewforum.php?f=10" target="_blank" title="Aqui você pode encontrar mais ligas para o seu LigaManager">Lista da liga</a> ]
 057=Estatísticas para
 058=Estatísticas para
 059=Não há 2ª equipa
@@ -396,7 +396,7 @@
 395=Number of goals scored outweighs +/-.
 396=Do the number of goals scored outweigh +/- if teams have equal points (e.g. skittle)?
 397=Permitir campeonatos
-398=Enter the names of the leagues the assistant admin may edit (Please separate with commas and don't put paths, e.g. &quot;1l_2002-03,dp_2002-03&quot;). The leagues must exist on the server already!
+398=Enter the names of the leagues the assistant admin may edit (Please separate with commas and don't put paths, e.g. "1l_2002-03,dp_2002-03"). The leagues must exist on the server already!
 399=Start up screen
 400=What shall be shown first when starting a league?
 401=Enviar todas os campeonatos de uma vez
@@ -568,9 +568,20 @@
 567=Erro quando
 568=Fim da época
 569=Variedade da data <i>Date assortment</i>
-570=Sollen die Spiele in der Ergebnisansicht nach Datum sortiert werden?
-571=Achtung! Bitte benutzen Sie diese Optionen nur, <br>wenn das Addon keine eigene Konfigurationsoberfläche bestitzt!
-572=Mittellanger Name der Mannschaft (max. 12 Zeichen)
+570=Os jogos devem ser classificados por data na visualização de resultados?
+571=Perigo! Por favor, use essas opções apenas se o complemento não tiver <br>interface de configuração própria!
+572=Nome da equipe de tamanho médio (máx. 12 caracteres)
+573=Translation-Tool
+574=Fuso horário
+575=Fuso horário do servidor
+576=Nota: Classificação da mesa sem jogos iniciais!
+577=Posição
+2000=Volleyball
+2001=Volleyball Version by vbfan
+2020=Bolas
+2021=Bolas ganhas
+2022=Bolas perdidas
+2025=Quot.
 4000=Total-
 4001=/ jogo
 4002=2ª volta
@@ -590,3 +601,30 @@
 4017=Maior vitória fora de casa
 4018=Mais
 4019=Jogos com o mesmo número
+4020=Programa restante
+4021=Avaliação dos restantes programas
+4022=∑ Oponente com proporção de pontos
+4023=Tendência
+4024=até
+4025=isqueiro
+4026=pesado
+4027=Series
+4028=Ganho
+4029=Invicto
+4030=Empate
+4031=Sem ganho
+4032=Perdido
+4033=Atual
+4034=Temporada
+5001=Dias de jogo
+5002=Aqui você pode atribuir determinados jogos a outros dias de jogo
+5003=Jogos
+5004=de
+5005=para
+5006=verschoben
+5007=Jogo
+5008=Spielfrei
+5009=Salvar
+5010=Spieltag
+5011=Acima
+5012=Unten

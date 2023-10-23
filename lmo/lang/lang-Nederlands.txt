@@ -1,11 +1,11 @@
 000=(n.v.t.)
-001=(i.E.)
+001=(i.S.)
 002=Speelronde
 003=van
 004=tot
-005=&lt;=
+005=<=
 006=Vorige speelronde
-007==&gt;
+007==>
 008=Volgende speelronde
 009=Ga naar deze Speelronde
 010=Uitslagen
@@ -45,7 +45,7 @@
 044=naar de stand van de volgende speelronde
 045=naar de stand van deze speelronde
 046=Klik voor de website van deze vereniging (opent in een nieuw venster)
-047=Dit script is gebaseerd op mijn Windows-Sortware &quot;LigaManager '98 Free&quot;. Omdat er voor Windows ontelbare competitieprogramma's zijn, wil ik met dit PHP-script nieuwe wegen inslaan.
+047=Dit script is gebaseerd op mijn Windows-Sortware "LigaManager '98 Free". Omdat er voor Windows ontelbare competitieprogramma's zijn, wil ik met dit PHP-script nieuwe wegen inslaan.
 048=De LigaManager Online is volledig compatibel met LigaManager '98 Free, zowel qua functies en bediening. Een aantal minder belangrijke mogelijkheden zijn weggelaten (o.a. de optie voor beginwaarden). In plaats daarvan zijn enkele functies verbeterd (bijv. het direct vergelijken) en zijn nieuwe mogelijkheden toegevoegd (bijv. z.B. tendensen in de stand en de kalender). En er is nu eindelijk de mogelijkheid om KO-toernooien (bijv. PlayOffs, Beker) te beheren.
 049=De berekeningen (stand/statistiek) zijn gebaseerd op speelronden. Daarom wordt er niet gekeken naar verschoven wedstrijden. Deze worden aan die speelronde toegeschreven, waaraan deze ingevoerd is.
 050=Dit script is browseronafhankelijk omdat het op de server uitgevoerd wordt. Uw browser moet wel CSS ondersteunen om een optimale opmaak te bewerkstelligen. Wanneer de Webmaster de ingebouwde nieuwsbanner gebruikt, wordt deze alleen bij een geactiveerd JavaScript getoond.<br>De Nederlandse vertaling is van de hand van <a href="http://www.dzt62.nl/" target="_blank" title="Homepage van de vertaler">DZT'62</a>.
@@ -54,7 +54,7 @@
 053=Kies hieronder een competitieoverzicht:
 054=<acronym title="Liga Manager Online">LMO</acronym>4
 055=© 1997-2019 LMO-Groep
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Visit the Homepage of Liga Manager Online">LMO-Project</a> | <a href="https://www.vest-sport.de/forum/?viewforum&forum_id=1" target="_blank" title="Further leagues for your League Manager">The league-list</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Bezoek onze startpagina">Homepagina</a> | <a href="https://www.vest-sport.de/forum/" target="_blank" title="Hulp bij de LMO en zijn add-ons">Ondersteuningsforum</a> | <a href="https://www.vest-sport.de/forum/viewforum.php?f=10" target="_blank" title="Hier vindt u meer competities voor uw LeagueManager">Ligalijst</a> ]
 057=De statistieken 1 van
 058=De statistieken 2 van
 059=Geen 2de team
@@ -113,7 +113,7 @@
 112=Notitie per wedstrijd (max. 255 tekens, een eventuele 'Groene-tafel'-beslissing hoeft niet nogmaals vermeld te worden)
 113=Competitienaam
 114=Klik hier om de veranderingen op te slaan
-115==&gt; naar bezoekersaangezicht
+115==> naar bezoekersaangezicht
 116=Zo wordt het script weergegeven aan de gebruiker (opent in een nieuw venster)
 117=U heeft niks veranderd.nEr wordt dus niks opgeslagen.
 118=Competitienaam (max. 60 tekens, bijv. 'Waterpolocompetitie HerenJeugd 2002-2003')
@@ -258,7 +258,7 @@
 257=Formaat van de aanvangstijd
 258=In welk formaat moeten de data en tijden weergegeven worden?
 259=van
-260=Verder =&gt;
+260=Verder =>
 261=Klik hier om met de volgende stap verder te gaan
 262=URL verslag
 263=Voer hier de URL van de vereniging in
@@ -290,7 +290,7 @@
 289=Competitie opslaan
 290=Klik hier om u nieuwe competitie op te slaan en verder details in te vullen
 291=<b>Gefeliciteerd</b><br><br>Uw nieuwe competitie is opgeslagen. U kunt nu de details invullen.
-292==&gt; Teamopgaven
+292==> Teamopgaven
 293=Als eerste moet u de verenigingsnamen invullen voordat u verder kunt.
 294=Competitie openen
 295=Competitie verwijderen
@@ -299,7 +299,7 @@
 298=kon niet gewist worden
 299=Upload van een bestand
 300=Kies het gewenste bestand uit
-301=Upload starten
+301=Begin het uploaden
 302=Kies hier een competitie van uw lokale harde schijf uit, die u op deze server wilt uploaden om deze met dit script te bewerken. (aub alleen LigaManager-Competities uitkiezen: *.L98)
 303=Upload succesvol
 304=Upload mislukt (Schrijfrechten!)
@@ -399,8 +399,8 @@
 398=Geef hier de namen van de teams in die deze Hulp-admin mag bewerken (teams met komma's scheiden; de teams moeten natuurlijk bestaan)
 399=Beginscherm
 400=Wat moet er op het beginscherm worden weergegeven als een gebruiker inlogt?
-401=Alle competities in &eacut;&eacut;n keer verzenden
-402=Alle competities in &eacut;&eacut;n keer downloaden
+401=Alle competities in één keer verzenden
+402=Alle competities in één keer downloaden
 403=Gekozen speeldag
 404=Notitie mbt het team
 405=Notitie mbt het team (max. 255 tekens, punten in mindering hoeven niet nog eens ingevuld te worden)
@@ -419,7 +419,7 @@
 418=Wordt er een troostfinale gespeeld (Wedstrijd om de derde plaats)?
 419=Finale (om de titel):
 420=Troostfinale (om plaats 3):
-421=Designeditor
+421=Ontwerp-editor
 422=Design van de weergave vastleggen (lettertype, kleuren etc.)
 423=Buitenste rand (het lmoMenu)
 424=Kleur: achtergrond, voorgrond
@@ -479,50 +479,50 @@
 478=Huidige Speeldag afdrukken
 479=Geeft een afdrukvoorbeeld van alle wedstrijden
 480=Afdeling kalender afdrukken
-481=Hier kommen die Pfade der zusätzlichen Addons rein, mehrere Addons durch ',' trennen. (mit '/' am Ende, z.B. 'viewer/', kann ein absoluter oder relativer Systempfad sein, dieses Verzeichnis muß volle Schreibrechte besitzen)
-482=Addonverzeichnisse
+481=De paden van de extra add-ons komen hier binnen, scheid verschillende add-ons met ','. (met '/' aan het einde, bijvoorbeeld 'viewer/', kan een absoluut of relatief systeempad zijn, deze map moet volledige schrijfrechten hebben)
+482=Add-on-mappen
 483=Afdruk voorbeeld
-484=Soll eine druckerfreundliche Ansicht erzeugt werden?
+484=Wilt u een printvriendelijke weergave creëren?
 485=Spelerstatistiek
-486=Soll die Eingabe von Spielerstatistiken angezeigt werden? (Muss zusätzlich für jede Liga einzeln aktiviert werden!)
+486=Moet de invoer van spelersstatistieken worden weergegeven? (Moet ook voor elke competitie afzonderlijk worden geactiveerd!)
 487=Bingoal
 488=Moet het Bingoal Game aangezet worden?
 489=Doelpunt statistiek
-490=Sollen zusätzliche Torstatistiken (Gesamttore und Durchschnittstore) angezeigt werden?
+490=Moeten er aanvullende doelpuntenstatistieken (totaal aantal doelpunten en gemiddelde doelpunten) worden weergegeven?
 491=onder Tabel
-492=unter Ergebnissen
+492=onder resultaten
 493=Heen-/Terugronde Tabel
-494=Sollen zusätzliche Hin- und Rückrundentabellen angezeigt werden?
-495=Zusatzstatistiken
-496=Sollen zusätzliche Statistiken angezeigt werden?
-497=Addons
+494=Moeten er extra rondetafeltafels worden geplaatst?
+495=Aanvullende statistieken
+496=Wilt u aanvullende statistieken weergeven?
+497=Add-ons
 498=Konfiguratie van de geinstalleerde Addons
 499=Verwijderen?
 500=Normaal
 501=Titel
-502=Fußinfos
-503=Hervorhebungen
+502=Voetinformatie
+503=Hoogtepunten
 504=Taal
 505=Standaard taal
 506=Welke taal moet er geladen worden? Beachte: Nur vollständige Übersetzungen auswählen!
-507=Unbenannte Liga
+507=Naamloze Liga
 508=« naar Archief
 509=Archief
-510=Soll den Nutzern das Archiv angezeigt werden?
-511=Sollen die Spielpläne dargestellt werden?
-512=Soll die Ergebnisübersicht dargestellt werden?
-513=Sollen die Tabellen dargestellt werden?
-514=Soll die Ligastatistik dargestellt werden?
+510=Moeten gebruikers het archief kunnen zien?
+511=Moeten de spelplannen worden getoond?
+512=Moet het overzicht van de resultaten worden weergegeven?
+513=Moeten de tabellen worden weergegeven?
+514=Moeten de competitiestatistieken worden weergegeven?
 515=abs.
 516=ges.
 517=Ø
 518=%
 519=Taal selectie
 520=Moetne de vlaggen voor de andere talen getoond worden?
-521=Abzug/Hinzufügen von Toren
+521=Doelen aftrekken/optellen
 522=Straf-/Bonus Doelpunt
-523=Stafpunkte-/tore ab Spieltag X einrechnen
-524=ab
+523=Bereken strafpunten/doelpunten van speeldag X
+524=weg
 525=naaar
 526=sorteren
 527=Oplopend
@@ -533,12 +533,12 @@
 532=Hoe zal het afdelingsoverzicht gesorteerd worden?
 533=Liga sortering
 534=Vrije Teams
-535=Sollen spielfreie Teams angezeigt werden?
+535=Moeten niet-spelende teams worden weergegeven?
 536=Frames
-537=Überschrift
-538=Fußzeilen
+537=Kop
+538=Voetteksten
 539=Hoofdmenu
-540=Untermenü
+540=Submenu
 541=Link
 542=Straf
 543=Bonus
@@ -548,29 +548,40 @@
 547=Maand
 548=Jaar
 549=Uur
-550=Versand nicht erfolgreich
-551=Playdown ermöglichen
-552=Kann der Verlierer eine Runde weiterkommen?
+550=Verzending mislukt
+551=Afspelen inschakelen
+552=Kan de verliezer doorgaan naar een ronde?
 553=Geen
 554=Tiental
 555=Hondertal
 556=Duizendtal
 557=Komma's
-558=Sind Kommastellen benötigt? (Werden nur bei der Ausgabe berücksichtigt!)
-559=erweiterte Rechte
-560=Gibt dem Hilfsadministrator erweiterte Rechte
-561=Achtung! Diese Einstellungen können eine <br>bestehende Liga unbrauchbar machen. <br>Bitte benutzen Sie diese Optionen nur, <br>wenn Sie wirklich sicher sind.<br>
+558=Zijn decimalen vereist? (Worden alleen in de uitvoer rekening gehouden!)
+559=uitgebreide rechten
+560=Geeft de assistent-administrator uitgebreide rechten
+561=Gevaar! Deze instellingen kunnen een bestaande competitie onbruikbaar maken. <br>Gebruik deze opties alleen <br>als u het echt zeker weet.<br>
 562=terug
 563=Links onderlijnen
 564=&#8599;
 565=Heen-/Terugtabellen
-566=Sollen zusätzliche Heim- und Auswärtstabellen angezeigt werden?
+566=Moeten er extra thuis- en uittabellen worden weergegeven?
 567=Fout bij het herstellen
 568=Seizoenseinde
 569=Datum sortering
-570=Sollen die Spiele in der Ergebnisansicht nach Datum sortiert werden?
-571=Achtung! Bitte benutzen Sie diese Optionen nur, <br>wenn das Addon keine eigene Konfigurationsoberfläche bestitzt!
-572=Mittellanger Name der Mannschaft (max. 12 Zeichen)
+570=Moeten de partijen in de resultatenweergave op datum worden gesorteerd?
+571=Gevaar! Gebruik deze opties alleen als de add-on geen eigen configuratie-interface heeft!
+572=Middellange teamnaam (max. 12 tekens)
+573=Translation-Tool
+574=Tijdzone
+575=Servertijdzone
+576=Let op: tafelklassement zonder vroege games!
+577=Positie
+2000=Volleyball
+2001=Volleyball Version by vbfan
+2020=Ballen
+2021=Ballen gewonnen
+2022=Ballen verloren
+2025=Quot.
 4000=Tesamen
 4001=/Spel
 4002=Terugronde
@@ -582,11 +593,38 @@
 4009=Statistieken van de afdeling
 4010=Thuis doelpunt
 4011=Uit doelpunt
-4012=Spiele beidseitiges Ergebnis
+4012=Speel dubbelzijdige resultaten
 4013=Hoogste Thuiszege
-4014=ST
-4015=+ weitere
-4016=Spiele mit gleichem Ergebnis
+4014=SD
+4015=+ meer
+4016=Spelletjes met hetzelfde resultaat
 4017=Hoogste Uitzege
 4018=De meeste doelpunten
 4019=Speler met gelijk Aantal
+4020=Resterend programma
+4021=Evaluatie van de overige programma's
+4022=∑ Puntverhouding tegenstander
+4023=Tendens
+4024=zelfs
+4025=makkelijker
+4026=zwaarder
+4027=Serie
+4028=Won
+4029=Ongeslagen
+4030=Tekenen
+4031=Winloos
+4032=Kwijt
+4033=Huidig
+4034=Seizoen
+5001=Spel dagen
+5002=Hier kunt u bepaalde wedstrijden aan andere wedstrijddagen toewijzen
+5003=Spellen
+5004=van de
+5005=voor de
+5006=vertraging
+5007=Spel
+5008=Spel gratis
+5009=Opslaan
+5010=Spel dag
+5011=Boven
+5012=Onderstaand

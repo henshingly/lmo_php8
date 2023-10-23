@@ -396,7 +396,7 @@
 395=Postignuti golovi računaju se prije gol razlike
 396=Ako je neriješeno, računaju li se postignuti golovi više od gol-razlike (npr. u kuglanju)?
 397=Otvorena prvenstva
-398=Ovdje unesite nazive liga koje ovaj pomoćni administrator smije uređivati ​​(odvojite ih zarezom i bez puta ili proširenja imena, npr. &quot;1l_2001-02,dp_2001-02&quot;). Navedene lige moraju već postojati na poslužitelju!
+398=Ovdje unesite nazive liga koje ovaj pomoćni administrator smije uređivati ​​(odvojite ih zarezom i bez puta ili proširenja imena, npr. "1l_2001-02,dp_2001-02"). Navedene lige moraju već postojati na poslužitelju!
 399=startni pregled
 400=Sta treba biti prikazano poslije otvoranja prvenstva ?
 401=Pošalji sve lige odjednom

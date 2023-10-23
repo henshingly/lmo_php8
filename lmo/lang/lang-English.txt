@@ -576,6 +576,12 @@
 575=Servers Timezone
 576=Note: Table without preponed matches!
 577=Position
+2000=Volleyball
+2001=Volleyball Version by vbfan
+2020=Balls
+2021=Balls won
+2022=Balls lost
+2025=Quot.
 4000=Total-
 4001=/Match
 4002=2nd Season Half
@@ -597,7 +603,7 @@
 4019=Matches with same number of
 4020=Remaining matches
 4021=Estimation of the remaining matches
-4022=&sum; opponents point difference
+4022=∑ opponents point difference
 4023=Tendency
 4024=same
 4025=easier
