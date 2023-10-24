@@ -1,10 +1,10 @@
 000=Étape 1 de 3 -  Réglage de la représentation
 001=Nom du fichier
-002=&#39;.view&#39; sera défini automatiquement
-003=d&#39;après la date
+002='.view' sera défini automatiquement
+003=d'après la date
 004=nombre de jours après
 005=nombre de jours avant
-006=d&#39;après la journée
+006=d'après la journée
 007=nombre de journées après
 008=nombre de journées avant
 009=Stylesheet
@@ -13,8 +13,8 @@
 012=Affichage but non connu
 013=Classement dans nouvelle fenêtre
 014=Feuille de match dans nouvelle fenêtre
-015=Lien vers page d&#39;accueil des équipes
-016=Nom de l&#39;équipe
+015=Lien vers page d'accueil des équipes
+016=Nom de l'équipe
 017=Afficher la journée
 018=Afficher la notice (comme symbole)
 019=Modèle
@@ -26,7 +26,7 @@
 025=Symbole des notices
 026=Texte pour la journée
 027=Titre
-028=Format de l&#39;horaire
+028=Format de l'horaire
 029=Données sauvegardée avec succès
 030=Étape 2 de 3 - Quelles ligues désirez-vous afficher?
 031=Étape 3 de 3 - Quelles équipes désirez-vous afficher?
@@ -34,7 +34,7 @@
 033=ouvrir dans une nouvelle fenêtre
 034=ouvrir dans la même fenêtre
 035=voir classement
-036=Veuillez selectionner ce texte et le copier à l&#39;endroit où vous désirez afficher le LMO-Viewer<br>Éventuellement supprimer les codes PHP <?php et ?>
+036=Veuillez selectionner ce texte et le copier à l'endroit où vous désirez afficher le LMO-Viewer<br>Éventuellement supprimer les codes PHP <?php et ?>
 037=voir classement (nouvelle fenêtre)
 038=voir feuille de match
 039=voir feuille de match (nouvelle fenêtre)
@@ -49,10 +49,10 @@
 048=moyen
 049=Ligue
 050=pas trouvée!
-051=Attention! Pas toutes les formes de coupes sont assitées par l&#39;extension LMO-Viewer!
+051=Attention! Pas toutes les formes de coupes sont assitées par l'extension LMO-Viewer!
 052=Facteur cache
 053=Après le x-ème appel du LMO-Viewer le cache sera actualisé (plus vous avez de visiteur, plus élever cette valeur pourra être)
-054=Mise en évidence de l&#39;équipe préférée
+054=Mise en évidence de l'équipe préférée
 055=Fichier de configuration
 056=pas trouvé!
-100=LMO-Viewer 4.1 &copy; LMO-Group
+100=LMO-Viewer 4.1 © LMO-Group

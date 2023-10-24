@@ -115,9 +115,9 @@
 114=Klik hier om de veranderingen op te slaan
 115==> naar bezoekersaangezicht
 116=Zo wordt het script weergegeven aan de gebruiker (opent in een nieuw venster)
-117=U heeft niks veranderd.nEr wordt dus niks opgeslagen.
+117=U heeft niks veranderd.\nEr wordt dus niks opgeslagen.
 118=Competitienaam (max. 60 tekens, bijv. 'Waterpolocompetitie HerenJeugd 2002-2003')
-119=Er zijn wijzingen doorgevoerd, die nog niet opgeslagen zijn.nnKlik op 'Ja', om de wijzingen te annulerenn , of 'Nee' om de wijzigingen later op te slaan.
+119=Er zijn wijzingen doorgevoerd, die nog niet opgeslagen zijn.\n\nKlik op 'Ja', om de wijzingen te annulerenn , of 'Nee' om de wijzigingen later op te slaan.
 120=Instelling thuisdoelpunten (0 - 9999, _ zonder X)
 121=Instelling uitdoelpunten (0 - 9999, _ zonder X)
 122=Aanvangsdatum van de wedstrijd (Formaat DD.MM.JJJJ - dagen en maanden tweecijferig)
@@ -247,7 +247,7 @@
 246=Stap
 247=Afbreken
 248=Afbreken, hierna gaat u weer terug naar het beginscherm
-249=Weet u zeker dat u wilt afbreken?
+249=Wil je echt het aanmaken van een competitie annuleren?\nJe eerdere deelnames gaan dan verloren.
 250=Toon/weergeven
 251=Wedstrijdsdatum
 252=Start- en Einddatum weergeven?
@@ -294,7 +294,7 @@
 293=Als eerste moet u de verenigingsnamen invullen voordat u verder kunt.
 294=Competitie openen
 295=Competitie verwijderen
-296=Moet deze competitie daadwerkelijk gewist worden?n(Dit is onomkeerbaar)
+296=Moet deze competitie daadwerkelijk gewist worden?\n(Dit is onomkeerbaar)
 297=werd met succes gewist
 298=kon niet gewist worden
 299=Upload van een bestand
@@ -330,14 +330,14 @@
 329=Opslaan
 330=Wissen
 331=Nieuwe Admin toevoegen
-332=Weet u zeker dat u de volgende teams wilt verwijderen?
+332=Weet u zeker dat u het volgende team wilt verwijderen?\n(Dit kan niet ongedaan worden gemaakt)
 333=Team verwijderen
 334=Dit team verwijderen
 335=Weet u zeker dat u dit team wilt verwijderen?
 336=Team toevoegen
 337=Een nieuw team toevoegen
 338=Aantal speeldagen en wedstrijden
-339=Hier kunt u het aantal speeldagen en aantal wedstrijden veranderen. LET OP: U kunt u gegevens kwijt raken!
+339=Hier kunt u het aantal speeldagen en aantal wedstrijden veranderen.\nLET OP: U kunt u gegevens kwijt raken!
 340=Aantal speelronden en wedstrijden
 341=LMO-Beheer
 342=Hier is de door u opgevraagde competitie.
@@ -414,7 +414,7 @@
 413=naar de stand van deze speeldag
 414=Welke plaats krijgt dit team in de stand van competitie?
 415=Handmatig gesorteerde stand opslaan
-416=Er mogen geen meerdere teams op 1 plaats staatnEr is niets opgeslagen.
+416=Er mogen geen meerdere teams op 1 plaats staat.\nEr is niets opgeslagen.
 417=Wedstrijd om de derde plaats
 418=Wordt er een troostfinale gespeeld (Wedstrijd om de derde plaats)?
 419=Finale (om de titel):

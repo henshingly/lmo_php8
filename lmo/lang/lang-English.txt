@@ -115,9 +115,9 @@
 114=Click here to save your changes
 115=Go to the Users Area
 116=Your visitors will see the script like this (opens in a new window)
-117=You have made no changes.nSave anyway?
+117=You have made no changes.\nSave anyway?
 118=Users will always see the name of the League as a Title (max. 60 Characters)
-119=You have made changes that have nnot been saved.nnClick 'Yes', if you do not wish to save the changesnand continue, or 'No' to stay here nin order to save your changes
+119=You have made changes that have \nnot been saved.\n\nClick 'Yes', if you do not wish to save the changesnand continue, or 'No' to stay here nin order to save your changes
 120=Settings for Home Goals (0 - 9999, _ or X)
 121=Settings for Guest Goals ((0 - 9999, _ or X)
 122=Starting Date of Match (Format DD.MM.YYYY - if needed, with leading zeroes)
@@ -247,7 +247,7 @@
 246=Step
 247=Abort League creation
 248=Here you can abort the creation of a new League and return to the Main Menu.
-249=Do you really want to abort the creation of a new League?nAll changes will be lost.
+249=Do you really want to abort the creation of a new League?\nAll changes will be lost.
 250=View/Representation
 251=Matchday Date
 252=Should Start and End Dates be shown for the Matchday?
@@ -294,7 +294,7 @@
 293=First you should enter the names all Teams before you start with the other settings
 294=Open a League
 295=Delete a League
-296=Do you really want to Delete this League?n(This cannot be reversed)
+296=Do you really want to Delete this League?\n(This cannot be reversed)
 297=Successfully Deleted
 298=Could not be Deleted
 299=Upload File
@@ -330,14 +330,14 @@
 329=Save
 330=Delete
 331=Add a new Admin
-332=Do you want to nremove the following Team?n(this cannot be reversed)
+332=Do you want to nremove the following Team?\n(this cannot be reversed)
 333=Remove Team
 334=Remove this Team
 335=Do you want to add a new Team?
 336=Add new Team
 337=Add a new Team
 338=Number of Matchdays and Matches
-339=Here you can set the number of Matchdays, and the number of Matches pro Matchday. nWARNING: Data could be lost!
+339=Here you can set the number of Matchdays, and the number of Matches pro Matchday.\nWARNING: Data could be lost!
 340=Number of Matchdays and Matches
 341=LMO-Admin League Dispatch
 342=Here is the League you've asked for
@@ -414,7 +414,7 @@
 413=Go to the Table of this Matchday
 414=Which place in the Table should this Team become
 415=Save the Table Manually
-416=It is not allowed to have more than 1 Team on same Table! Placing It will not be saved
+416=It is not allowed to have more than 1 Team on same Table!\nPlacing It will not be saved
 417=Match for the 3rd place
 418=Will there be a small Final played (Match for 3rd place)
 419=Final (for the Title):

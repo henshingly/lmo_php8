@@ -83,7 +83,7 @@
 082=Anmerkung:
 083=Letzte Auswertung
 084=Tippspiel-AddOn 1.21
-085=&copy 2002 by Frank Albrecht
+085=© 2002 by Frank Albrecht
 086=Dein letzter Tipp für diese Liga
 087=Tippabgabe bis
 088=Minuten vor dem Anpfiff
@@ -253,7 +253,7 @@
 252=Alle Spiele in den nächsten
 253=Datumsweise Tippabgabe zulassen
 254=...für Spiele in den nächsten
-255=[ <a href="http://www.vfb-forchheim.de/handball" target="_blank" title="Schau auch mal auf meiner Homepage vorbei">VfB Forchheim - Handball</a> ]
+255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Schau auch mal auf meiner Homepage vorbei">HC Forchheim - Handball</a> ]
 256=Tage vorblättern
 257=Tage zurückblättern
 258=Alle Spiele vom
@@ -302,4 +302,4 @@
 301=Achtung! Damit deaktivieren Sie die Möglichkeit, Tipps abzugeben!
 302=Nur Gesamtpunktestand anzeigen
 303=Ein neuer Tipper hat sich für das Tippspiel angemeldet: \n\nNickname: [nick]
-304=Lassen Sie das Feld leer für keine Änderung des Passworts
+304=Lassen Sie das Feld leer um keine Änderung des Passworts duchzuführen

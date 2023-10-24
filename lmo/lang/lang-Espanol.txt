@@ -115,9 +115,9 @@
 114=Click aqui para guardar los cambios
 115=Ir a la vista de usuario
 116=Asi es como tus visitantes verán el script (Se abrirá una nueva ventana)
-117=No has cambiado nada.n¿Guardar de todas formas?
+117=No has cambiado nada.\n¿Guardar de todas formas?
 118=El nombre de la liga sera siempre visible para los usuarios como una cabecera (max. 60 caracteres, ej. '1. Bundesliga 2002/03' o 'Premier League 2002/03')
-119=Hay cambios que aunnno han sido guardados.nClick en 'Si' para descartar los cambiosny continuar o 'No' para quedarteny guardar los cambios.
+119=Hay cambios que aunnno han sido guardados.\n\nClick en 'Si' para descartar los cambiosny continuar o 'No' para quedarteny guardar los cambios.
 120=Ajuste de goles locales(0 - 9999, _ or X)
 121=Ajuste de goles visitantes (0 - 9999, _ or X)
 122=Fecha de inicio del partido (formato dd.mm.yyyy - si es necesario con '0's a la izquierda)
@@ -247,7 +247,7 @@
 246=Paso
 247=Cancelar la creación de una nueva liga
 248=Haciendo click aquie, cancelarás la creación de una nueva liga y volverás al Menú Principal
-249=¿Realmente quieres cancelar la creación de una nueva liga?nTodo lo que hayas introducido hasta ahora se perderá.
+249=¿Realmente quieres cancelar la creación de una nueva liga?\nTodo lo que hayas introducido hasta ahora se perderá.
 250=Mostrar
 251=Fecha de la jornada
 252=¿Quieres mostrar las fechas de comienzo y final de cada jornada?
@@ -294,7 +294,7 @@
 293=Primero, debes introducir los nombres de los equipos antes de continuar editando
 294=Abrir una liga
 295=Borrar una liga
-296=¿Realmente quieres borrar esta liga?n(¡Imposible deshacer!)
+296=¿Realmente quieres borrar esta liga?\n(¡Imposible deshacer!)
 297=borrada con exito
 298=no pudo ser borrada
 299=Enviar un fichero
@@ -330,14 +330,14 @@
 329=Guardar
 330=Borrar
 331=Añadir nuevo administrador
-332=¿Realmente quieres borrar este equiponde la liga?n(¡Imposible deshacer!)
+332=¿Realmente quieres borrar este equiponde la liga?\n(¡Imposible deshacer!)
 333=Borrar equipo
 334=Borrar este equipo de la liga
 335=¿Quieres añadir un nuevo equipo a la liga?
 336=Añadir equipo
 337=Añadir nuevo equipo a la liga
 338=Número de jornadas y partidos
-339=Aqui puedes cambiar el número de jornadas y el de partidos por jornada. ¡ATENCIÓN! ¡Esto podría causaruna pérdida de datos!
+339=Aqui puedes cambiar el número de jornadas y el de partidos por jornada.\n¡ATENCIÓN! ¡Esto podría causaruna pérdida de datos!
 340=Número de jornadas y partidos
 341=Administrador de LMO enviando una liga
 342=Aqui está la liga que pediste.
@@ -414,7 +414,7 @@
 413=Ver la clasificación para esta jornada
 414=¿En que posición quieres colocar a este equipo?
 415=Guardar la clasificacoón ordenada a mano
-416=No puede haber mas de un equipo en una posición de liganAun no ha sido guardado.
+416=No puede haber mas de un equipo en una posición de liga.\nAun no ha sido guardado.
 417=Partido por el 3º y 4º puesto
 418=¿Habra una "final de consolación" (3º y 4º puesto)?
 419=Gran final (por el título):

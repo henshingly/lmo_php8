@@ -115,9 +115,9 @@
 114=Clicca qui per salvare le modifiche
 115=Vai all'anteprima della pagina iniziale
 116=Anteprima della pagina iniziale (verrá aperta una nuova finestra del Browser)
-117=Non ha modificato niente.nSalvare ugualmente?
+117=Non ha modificato niente.\nSalvare ugualmente?
 118=Il nome del campionato gli verrá indicato agli utenti sempre come titolo (mass. 60 caratteri, esemp. '1. Bundesliga 2004/05')
-119=Sono state fatte delle modifiche, che ancora nnon sono state salvate.nnclicca su 'si', per ignorare le modifichene quindi proseguire, oppure 'no', per rimanere qui,ne di poter ancora salvare le modifiche.
+119=Sono state fatte delle modifiche, che ancora nnon sono state salvate.\n\nclicca su 'si', per ignorare le modifichene quindi proseguire, oppure 'no', per rimanere qui,ne di poter ancora salvare le modifiche.
 120=Impostazioni delle reti in casa (0 - 9999, _ opp. X)
 121=Impostazioni delle reti fuori casa (0 - 9999, _ opp. X)
 122=Data di calcio d'inizio dell'incontro (Formato GG.MM.AAAA - se necessario con gli zeri iniziali)
@@ -247,7 +247,7 @@
 246=Passo
 247=Interrompere creazione di campionato
 248=Qui si interrompe la creazione del campionato e si ritorna al menú precedente
-249=Vuole veramente interrompere la creazione di un campionato?nTutti i dati inseriti fine adesso andranno persi.
+249=Vuole veramente interrompere la creazione di un campionato?\nTutti i dati inseriti fine adesso andranno persi.
 250=Visualizzare/Raffigurare
 251=Data della giornata
 252=Le date di inizio e fine di giornata, dovranno essere visualizzati?
@@ -294,7 +294,7 @@
 293=É necessario digitare i nomi delle squadre prima che si inizia l'impostazione dettagliata.
 294=Aprire un campionato
 295=Cancella un campionato
-296=Vuole veramente cancellare questo campionato?n(Dopo non si puó piú ripristinare!)
+296=Vuole veramente cancellare questo campionato?\n(Dopo non si puó piú ripristinare!)
 297=cancellazione avvenuta con successo
 298=cancellazione non é potuta avvenire
 299=Upload di un file
@@ -330,14 +330,14 @@
 329=Salvare
 330=Cancella
 331=Aggiungere un nuovo amministratore
-332=Vuole veramente ritirare la squadrandal campionato?n(Un ripristino non é possibile!)
+332=Vuole veramente ritirare la squadrandal campionato?\n(Un ripristino non é possibile!)
 333=Ritirare la squadra
 334=Ritirare questa squadra dal campionato
 335=Vuole aggiungere una nuova squadre al campionato?
 336=Aggiungere squadra
 337=Aggiungere una nuova squadra al campionato
 338=Numero di giornate e incontri
-339=Qui si possono modificare il numero delle giornate e gli incontri per ogni giornata. nAttenzione: Questo puó portare alla perdita dei dati!
+339=Qui si possono modificare il numero delle giornate e gli incontri per ogni giornata.\nAttenzione: Questo puó portare alla perdita dei dati!
 340=Numero delle giornate e relativi incontri
 341=LMO-Amministratore invio campionati
 342=Qui il suo campionato richiesto.
@@ -414,7 +414,7 @@
 413=Vai alla classifica di questa giornata
 414=Quale posizione in classifica deve essere assegnata alla squadra?
 415=Salvare manualmente la classifica
-416=NOn é permesso che piú di una squadra possiede lo stesso posto in classificanIl salvataggio non é stato ancora effettuato.
+416=Non possono esserci più squadre in un unico posto nella tabella\nNon verrà ancora salvata.
 417=Spareggio per il 3° posto
 418=Verrá giocata una piccola finale (Spareggio per il 3° posto)?
 419=Grande finale (per il titolo):

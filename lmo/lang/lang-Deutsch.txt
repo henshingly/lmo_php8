@@ -337,7 +337,7 @@
 336=Mannschaft hinzufügen
 337=Eine neue Mannschaft zum Spielbetrieb hinzufügen
 338=Spieltags- und Spiel-Anzahl
-339=Hier könen Sie die Anzahl der Spieltage und die Anzahl der Spiele pro Spieltag ändern. \nACHTUNG: Das kann zu Datenverlust führen!
+339=Hier könen Sie die Anzahl der Spieltage und die Anzahl der Spiele pro Spieltag ändern.\nACHTUNG: Das kann zu Datenverlust führen!
 340=Anzahl der Spieltage und Spiele
 341=LMO-Admin Ligaversand
 342=Hier ist Ihre angeforderte Liga.
@@ -414,7 +414,7 @@
 413=zur Tabelle dieses Spieltags wechseln
 414=Welchen Tabellenplatz soll diese Mannschaft zugewiesen bekommen?
 415=manuelle Tabelle speichern
-416=Es dürfen nicht mehrere Mannschaften auf einem Platz sein\nEs wird noch nicht gespeichert.
+416=Es dürfen nicht mehrere Mannschaften auf einem Platz sein.\nEs wird noch nicht gespeichert.
 417=Spiel um Platz 3
 418=Wird auch ein kleines Finale ausgespielt (Spiel um Platz 3)?
 419=großes Finale (um den Titel):

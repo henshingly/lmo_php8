@@ -115,9 +115,9 @@
 114=Clique aqui para gravar as alterações
 115=Ver como utilizador
 116=Obrigado aos nossos visitantes por visitarem a página do script (O site irá abrir numa nova janela)
-117=Você não gravou nada.nQuer gravar na mesma?
+117=Você não gravou nada.\nQuer gravar na mesma?
 118=O nome do campeonato ficará visível para todos os utilizadores (max. 60 caracteres, ex. 'Superliga 2002/03' or 'Liga de Honra 2002/03')
-119=There have been changes thatnhaven't been saved yet.nnClick 'Yes' to withdraw the changesnand continue or 'No' to stay herenand save the changes.
+119=There have been changes thatnhaven't been saved yet.\n\nClick 'Yes' to withdraw the changesnand continue or 'No' to stay herenand save the changes.
 120=Ajustamento dos golos da equipa visitada (0 - 9999, _ ou X)
 121=Ajustamento dos golos da equipa visitada (0 - 9999, _ ou X)
 122=Data do jogo (formato dd.mm.aaaa - insira os '0's se necessário)
@@ -247,7 +247,7 @@
 246=Step
 247=Cancelar a criação de um novo campeonato
 248=By clicking here, you will cancel the creation of a new league and return to the main lmoMenu
-249=Do you really want to cancel the creation of a new league?nEverything you entered so far will be lost.
+249=Do you really want to cancel the creation of a new league?\nEverything you entered so far will be lost.
 250=Ver/Mostrar
 251=Dia do jogo
 252=Do you want the first and last dates of the game day to be displayed?
@@ -294,7 +294,7 @@
 293=Primiero, devererá escrever o nome das equipas antes de continuar com mais alterações
 294=Abrir campeonato
 295=Apagar campeonato
-296=Tem a certeza que quer apagar este campeonato?n(No undo-function!)
+296=Tem a certeza que quer apagar este campeonato?\n(No undo-function!)
 297=Apagado com sucesso
 298=Não pode ser apagado
 299=Upload um ficheiro
@@ -330,14 +330,14 @@
 329=Gravar
 330=Apagar
 331=Adicionar novo administrador
-332=Do you really want to withdraw this teamnfrom the league?n(Não é possível voltar atrás!)
+332=Do you really want to withdraw this teamnfrom the league?\n(Não é possível voltar atrás!)
 333=Withdraw team
 334=Withdraw this team from the league
 335=Deseja adicionar uma noca equipa no campeonato?
 336=Adicionar equipa
 337=Adicionar nova equipa ao campeonato
 338=Número de jogos e jornadas
-339=Here you can change the number of game days and the number of matches per game day. &#10;ATTENTION! This might cause a loss of data!
+339=Here you can change the number of game days and the number of matches per game day.\nATTENTION! This might cause a loss of data!
 340=Número de jogos e jornadas
 341=LMO admin enviando campeonato
 342=Aqui está o campeonato pedido
@@ -414,7 +414,7 @@
 413=Ver classificação para esta jornada
 414=What rank do you want to put this team on?
 415=Gravar manualmente a classificação ordenada
-416=There mustn't be more than one team on a league postitionnNot saved yet.
+416=There mustn't be more than one team on a league postition.\nNot saved yet.
 417=Jogo para o 3º lugar
 418=Will there be a "small final" (match for 3rd place)?
 419=Final (para o Título):

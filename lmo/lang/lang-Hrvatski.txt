@@ -247,7 +247,7 @@
 246=Korak
 247=Prekini stvaranje prvenstva
 248=Ovdje se prekida stvaranje prvenstva i vraća se na predhodni izbornik.
-249=Hoćete prekinuti stvaranje prvenstva?\ Svi podaci do sada unešeni bit će izgubljeni.
+249=Hoćete prekinuti stvaranje prvenstva?\nSvi podaci do sada unešeni bit će izgubljeni.
 250=Prikazati
 251=Datum kola
 252=Je li trebaju biti prikazani datumi početka i završetka kola ?
@@ -337,7 +337,7 @@
 336=Dodaj tim (momčad)
 337=Dodajte novu momčad prvenstvu
 338=Broj kola i susreta
-339=Ovdje se može izmjeniti broj kola i broj susreta u kolu. \nUpozorenje:ovo mo$e dovesti do gubljenja podataka
+339=Ovdje se može izmjeniti broj kola i broj susreta u kolu.\nUPOZORENJE:ovo mo$e dovesti do gubljenja podataka
 340=Broj kola i njihovih susreta
 341=LMO-Administrator šalje prvenstva
 342=Izvolite zatraženo prvenstvo.
@@ -414,7 +414,7 @@
 413=Idi na ljestvicu ovog kola
 414=Koje mjesto na ljestvici treba biti dodiljeno momčadi
 415=Pohranti ručno ljestvicu
-416=Nije dopusteno da više od jedne momčadi ima isto mjesto na ljestvici niste jos pohranili
+416=Nije dopusteno da više od jedne momčadi ima isto mjesto na ljestvici.\nniste jos pohranili
 417=Razigravanje za 3 ce mjesto
 418=Biti ce odigrano malo finale (razigravanje za 3 će mjesto) ?
 419=Veliko finale /Završnica (za naslova)
@@ -572,9 +572,7 @@
 571=Upozerenje/paznja ! Koristiti ova podešavnja samo, <br>ako proširenje-(Addon) ne sadrži sopstvenu konfiguracijsku površinu (Sučelje)!
 572=Naziv tima srednje duljine (maks. 12 znakova)
 573=Prijevod
-574=Vremenska zona 
-575=Vremenska zona poslužitelja 
-576=Napomena: poredak na tablici bez ranih igara
+574=Vremenska zona575=Vremenska zona poslužitelja576=Napomena: poredak na tablici bez ranih igara
 577=Mjesto
 2000=Volleyball (Odbojka)
 2001=Volleyball Version (odbojka vrzija) by vbfan

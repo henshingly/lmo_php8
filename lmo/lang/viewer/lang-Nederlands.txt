@@ -55,4 +55,4 @@
 054=Markeer favoriete team
 055=Configurationsdatei
 056=niet gevonden!
-100=LMO-Viewer 4.1 &copy; LMO-Group
+100=LMO-Viewer 4.1 © LMO-Group

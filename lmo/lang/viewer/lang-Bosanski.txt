@@ -55,4 +55,4 @@
 054=Istaknite svoj omiljeni tim
 055=Konfiguracijska datoteka
 056=nije pronađeno!
-100=LMO-Viewer 4.1 &copy; LMO-Group
+100=LMO-Viewer 4.1 © LMO-Group

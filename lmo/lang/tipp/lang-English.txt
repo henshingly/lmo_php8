@@ -1,4 +1,4 @@
-000=Prediction Game
+000=Prediction game
 001=to Prediction Game Overview
 002=ChangeTeam
 003=Predict a League
@@ -83,7 +83,7 @@
 082=Note:
 083=Last Evaluation
 084=Tippspiel-AddOn 1.21
-085=&copy 2002 by Frank Albrecht
+085=© 2002 by Frank Albrecht
 086=Your last Prediction for this League
 087=Predictions allowed until
 088=Minutes before Start
@@ -149,7 +149,7 @@
 148=You have not been Activated
 149=to Absolute Standing
 150=to Relative Standing
-151=relative Wertung
+151=relative rating
 152=If Outcome is decided in Overtime, count a Draw Prediction as correct
 153=If Outcome is decided by a Shootout, count a Draw Prediction as correct
 154=max. number of MDs which can be Predicted in advance
@@ -173,16 +173,11 @@
 172=Prediction Table
 173=this is how the Table would look with your Predictions
 174=Hello [name]
-
-This mail is to remind you of your Predictions.
-So far we have no Predictions from you for the following Matches:
-
-[spiele]
 175=E-Mails sent
 176=E-Mail not sent<br>
 177=This Matchday cannot be Predicted
 178=Place Holder:
-179=[nick] Nickname<br>[pass] Passwort<br>[name] Name<br>[spiele] Auflistung der noch zu tippenden Spiele (nur Tip-Reminder)
+179=[nick] Nickname<br>[pass] Passwort<br>[name] Name<br>[spiele] List of games still to be predict (only Prediction-Reminder)
 180=Update Total Results
 181=this is how the Table would look with the Prediction from
 182=to your Prediction Table
@@ -258,7 +253,7 @@ So far we have no Predictions from you for the following Matches:
 252=All Matches in the next
 253=Allow Predictions by Date
 254=...for Matches in the next
-255=[ <a href="http://www.vfb-forchheim.de/handball" target="_blank" title="Please Visit our Hompepagei">VfB Forchheim - Handball</a> ]
+255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Please Visit our Hompepagei">HC Forchheim - Handball</a> ]
 256=Next Day
 257=Day Before
 258=All Matches from
@@ -301,10 +296,10 @@ So far we have no Predictions from you for the following Matches:
 295=Hello Player,
 296=Prediction Game Newsletter
 297=Hello
-298=Hello [nick], \n\nHere is your Registration information for the Prediction Game: \n\nNickname: [nick]\nPassword: [pass]\n\nYou can Log In here: \n[url]\n\nYou can also change your Password there.\n\nHave Fun!
+298=Hello [nick], \nnHere is your Registration information for the Prediction Game: \n\nNickname: [nick]\nPassword: [pass]\n\nYou can Log In here: \n[url]\n\nYou can also change your Password there.\n\nHave Fun!
 299=Send Registration Information via E-Mail
 300=The Password will be sent to you by E-Mail, make sure the entered adress is correct
 301=Attention! This deactivate the Possibility of making Predictions!
 302=Show Only Total Point Standings
-
 303=A New player has Registered for the Prediction Game: \n\nNickname: [nick]
+304=Leave the field blank to avoid changing the password

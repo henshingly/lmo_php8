@@ -32,7 +32,7 @@
 199=Stranica pomoći kako biste saznali više o postavkama PDF dodataka.
 200=PDF-Dizajn
 201=Postavke PDF dizajna
-202=PDF-Postavke 3.0 &copy; Henshingly
+202=PDF-Postavke 3.0 © Henshingly
 203=Globalne postavke
 204=Kolo
 205=Raspored lige
@@ -44,8 +44,7 @@
 211=Početna stranica
 212=Prikaz teksta na rubu PDF datoteke. Npr. URL vaše početne stranice.
 213=Otvori link
-214=Novi prozor/kartica   
-215=Isti prozor/kartica
+214=Novi prozor/kartica  215=Isti prozor/kartica
 216=Povezivanje PDF dokumenta u istom prozoru/kartici (target='_self')
 217=Prikažite poveznicu za preuzimanje programa Adobe Reader.
 218=Kako otvoriti PDF dokumente? Isti prozor ili novi prozor.
@@ -72,8 +71,7 @@
 239=Uspravno (Portret)
 240=Pejzažni format (Pejzaž)
 241=Pejzažni ili portretni format timskog plana PDF dokumenta
-242=Odabrana ekipa 
-243=Istaknite odabrani tim podebljanim ili normalnim formatom fonta
+242=Odabrana ekipa243=Istaknite odabrani tim podebljanim ili normalnim formatom fonta
 244=Podebljano
 245=Normalno
 246=Ime tima
@@ -92,11 +90,9 @@
 259=1 Stranica
 260=2 Stranica
 261=Ikona (Grb)tima
-262=Trebaju li ikone tima (Grb) biti prikazane u PDF dokumentu? Prikaz ikona proširuje ispis PDF dokumenta. 
-263=Pokaži
+262=Trebaju li ikone tima (Grb) biti prikazane u PDF dokumentu? Prikaz ikona proširuje ispis PDF dokumenta.263=Pokaži
 264=Sakriti
-265=Ikona tima (Grb) u tablici na dan utakmice (Kolo) 
-266=Ikona tima (Grb) na tablici lige
+265=Ikona tima (Grb) u tablici na dan utakmice (Kolo)266=Ikona tima (Grb) na tablici lige
 267=Ikona tima (Grb)u tablici na dan sljedeće utakmice
 268=Širina Tablice
 269=Postavljanje širine dvije tablice za dan utakmice (kolo) u postocima

@@ -115,9 +115,9 @@
 114=Cliquez ici pour sauvegarder vos changements
 115=Voir l'interface publique
 116=C'est la version que vos visiteurs verront (ouverture dans une nouvelle fenêtre)
-117=Vous n'avez rien changénVoulez-vous quand même sauvegarder?
+117=Vous n'avez rien changé.\nVoulez-vous quand même sauvegarder?
 118=Les visiteurs verront comme titre le nom de la ligue (max. 60 caractères, p.ex. 'Ligue 1 2005/06')
-119=Vous avez fait des modifications,nque vous n'avez pas encore sauvegardées.nCliquez 'Oui' pour ignorer vos modificationsn ou 'Non' pour rester ici et sauvegarder vos changements.
+119=Vous avez fait des modifications,nque vous n'avez pas encore sauvegardées.\n\nCliquez 'Oui' pour ignorer vos modificationsn ou 'Non' pour rester ici et sauvegarder vos changements.
 120=Sélection des buts à domicile (0 - 9999, _ ou X)
 121=Sélection des buts à l'exterieur (0 - 9999, _ ou X)
 122=Date du coup d'envoi du match (Format JJ.MM.AAAA - le cas échéant avec des zéros au début)
@@ -247,7 +247,7 @@
 246=Page
 247=Annuler la création de la ligue
 248=Ici vous annulez la création d'une nouvelle ligue et vous retournez au menu général
-249=Voulez-vous vraiment annuler la création d'une ligue?nVous données seront perdues.
+249=Voulez-vous vraiment annuler la création d'une ligue?\nVous données seront perdues.
 250=Affichage graphique
 251=Date du match
 252=Voulez-vous afficher la date de début et de fin de la journée?
@@ -294,7 +294,7 @@
 293=Veuillez entrer en premier le nom des équipes, avant de changer d'autres paramètres
 294=Ouvrir une ligue
 295=Supprimer une ligue
-296=Voulez-vous vraiment supprimer cette ligue?n(Effacement irréversible!)
+296=Voulez-vous vraiment supprimer cette ligue?\n(Effacement irréversible!)
 297=a été supprimé avec succès
 298=n'a pas pu être supprimé
 299=Télécharger un fichier vers le serveur
@@ -330,14 +330,14 @@
 329=Sauvegarder
 330=Supprimer
 331=Créer un nouvel administrateur
-332=Voulez-vous vraiment retirer l'équipe suivantendu calendrier de la saisonn(suppression irréversible!)
+332=Voulez-vous vraiment retirer l'équipe suivantendu calendrier de la saison?\n(suppression irréversible!)
 333=Retirer l'équipe
 334=Retirer l'équipe suivante de la ligue
 335=Voulez-vous ajouter une équipe dans cette ligue ?
 336=Ajouter une équipe
 337=Ajouter une nouvelle équipe dans cette ligue
 338=Nombres de journées et de matchs
-339=Ici vous pouvez définir le nombre de journées et de matchs par journée.  nATTENTION: Cela peut entraîner la perte de données!
+339=Ici vous pouvez définir le nombre de journées et de matchs par journée.\nATTENTION: Cela peut entraîner la perte de données!
 340=Nombres de journées et de matchs
 341=LMO-Admin Envoi d'une ligue
 342=Ci-joint la ligue demandée.
@@ -414,7 +414,7 @@
 413=Retourner au classement de cette journée
 414=Quelle position dans le classement voulez-vous définir pour cette équipe?
 415=Sauvegarder ce classement manuel
-416=Vous ne pouvez pas avoir plusieurs équipes à la même place du classementnAucune sauvegarde n'a été faite.
+416=Vous ne pouvez pas avoir plusieurs équipes à la même place du classement.\nAucune sauvegarde n'a été faite.
 417=Match pour la 3ème place
 418=Y-a-t'il une petite finale (Match pour la 3ème place)?
 419=Finale:

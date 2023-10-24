@@ -115,9 +115,9 @@
 114=Klikni tukaj za shranitev sprememb
 115=pojdi na pogled s strani obiskovalca
 116=Tako bodo obiskovalci videli skripto (odprto bo v novem oknu)
-117=Ničesar nisi spremenil,nzato ni ničesar za shranjevanje.
+117=Niste naredili nobenih sprememb.\nAli jo vseeno shraniti?
 118=Ime lige bo vselej vidno obiskovalcem kot heading (max. 60 znakov, n.pr. '1. SNL liga 2002/03')
-119=Narejene so bile spremembe,nki še niso bile shranjene.nnKliknite 'Ja', za opustitev spremembnin nadaljevanje, ali pa 'Ne', da bi ostali tukaj,nin bili v možnosti, da shranitev sprememb.
+119=Narejene so bile spremembe,nki še niso bile shranjene.\n\nKliknite 'Ja', za opustitev spremembnin nadaljevanje, ali pa 'Ne', da bi ostali tukaj,nin bili v možnosti, da shranitev sprememb.
 120=Nastavitev zadetkov domačega moštva (0 - 9999, _ ali X)
 121=Nastavitev zadetkov gostujočega moštva (0 - 9999, _ oder X)
 122=Datum začetka tekme (format dd.mm.yyyy - če je potrebno z vodečo '0')
@@ -247,7 +247,7 @@
 246=Korak
 247=Prekini izdelavo nove lige
 248=Tukaj prekinete izdelavo nove lige in se vrnete na glavno kazalo
-249=Ali zares želite prekiniti izdelavo nove lige?nVsi podatki, ki ste jih vnesli do sedaj bodo izgubljeni.
+249=Ali zares želite prekiniti izdelavo nove lige?\nVsi podatki, ki ste jih vnesli do sedaj bodo izgubljeni.
 250=pokaži/prikaži
 251=Datum kola
 252=Ali naj bo prikazan prvi in zadnji datum tekem določenega kola?
@@ -294,7 +294,7 @@
 293=Najprej moraš vpisati imena moštev, nato pa lahko nadaljuješ z urejanjem
 294=Odpri ligo
 295=Izbriši ligo
-296=Ali si prepričan, da ligo zares želiš izbrisati?n(Undo ni možen!)
+296=Ali si prepričan, da ligo zares želiš izbrisati?\n(Undo ni možen!)
 297=uspešno izbrisana
 298=ni bilo mogoče izbrisati
 299=Upload datoteke
@@ -330,14 +330,14 @@
 329=Shrani
 330=Izbriši
 331=Dodaj novega administratorja
-332=Ali si prepričan, da želiš odstraniti to moštvoniz lige?n(Undo možnosti NI!)
+332=Ali si prepričan, da želiš odstraniti to moštvoniz lige?\n(Undo možnosti NI!)
 333=Odstrani moštvo
 334=Odstrani to moštvo iz lige
 335=Ali želiš ligi dodati novo moštvo?
 336=Dodaj moštvo
 337=Dodaj ligi novo moštvo
 338=Število kol in tekem
-339=Tukaj lahko spremeniš število kol in število tekem na kolo. &#10;POZOR! Spreminjanje lahko privede do izgube podatkov!
+339=Tukaj lahko spremeniš število kol in število tekem na kolo.\nPOZOR! Spreminjanje lahko privede do izgube podatkov!
 340=Število kol in tekem na kolo
 341=LMO-Admin pošiljanje lige
 342=Tukaj je vaša zahtevana liga.
@@ -414,7 +414,7 @@
 413=pojdi na lestvico tega kola
 414=Which league position do you want tp put this team on?
 415=shrani ročno sortirano lestvico
-416=There mustn't be more than one team on a league postitionnNot yet saved.
+416=There mustn't be more than one team on a league postition.\nNot yet saved.
 417=Tekma za 3. mesto
 418=Ali bo tekma 'malega finala' (za 3. mesto)?
 419=Veliki finale (za naslov):

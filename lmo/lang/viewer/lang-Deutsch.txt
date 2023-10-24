@@ -47,12 +47,11 @@
 046=Lange
 047=Kurze
 048=Mittellange
-049=Liga 
-050=nicht gefunden!
+049=Liga050=nicht gefunden!
 051=Achtung! Nicht alle Arten von KO-Runden werden vom Viewer unterstützt!
 052=Cachefaktor
 053=Nach dem xx Aufrufen des Viewers wird der Cache erneuert (je mehr Besuche, destso höher kann der Wert sein)
 054=Lieblingsmannschaft hervorheben
 055=Konfigurationsdatei
 056=nicht gefunden!
-100=LMO-Viewer 4.1 &copy; LMO-Group
+100=LMO-Viewer 4.1 © LMO-Group

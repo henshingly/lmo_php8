@@ -115,9 +115,9 @@
 114=Klikkeljen ide a változások elmentéséhez!
 115=Ugorj a felhasználói nézetre!
 116=Így fogják látni a szkriptet a látogatók (Az oldal egy új ablakban nyílik meg)
-117=Nem változtatott semmin.nMégis menteni kíván?
+117=Nem változtatott semmin.\nMégis menteni kíván?
 118=A bajnokság neve fejlécként végig látható lesz (max. 60 karakter, pl. '1. osztály 2002/03' vagy 'Premier League 2002/03')
-119=Változások történtek, amiketnmég nem mentett el.nnKlikkeljen az 'Igen'-re ha vissza akarja vonni a változásokatnés tovább kíván lépni vagy a 'Nem'-re ha maradni akarnés elmenteni a változásokat.
+119=Változások történtek, amiketnmég nem mentett el.\n\nKlikkeljen az 'Igen'-re ha vissza akarja vonni a változásokatnés tovább kíván lépni vagy a 'Nem'-re ha maradni akarnés elmenteni a változásokat.
 120=Hazai gólok beállítása (0 - 9999, _ vagy X)
 121=Vendég gólok beállítása (0 - 9999, _ vagy X)
 122=Meccs kezdési dátuma (nn.hh.éééé formátumban - ha szükséges, kezd? '0'-ák)
@@ -247,7 +247,7 @@
 246=Lépés
 247=Mégse hozzon létre új bajnokságot
 248=Ide klikkelve mégsem jön létre új bajnokság és visszatér a fő lmo Menü-be
-249=Biztos nem akar új bajnokságot létrehozni?nMinden eddig bevitt adat el fog veszni.
+249=Biztos nem akar új bajnokságot létrehozni?\nMinden eddig bevitt adat el fog veszni.
 250=Nézet/Megjelenítés
 251=Forduló dátum
 252=Megjelenjen a forduló első és utolsó dátuma?
@@ -294,7 +294,7 @@
 293=Kérem adja meg a csapatneveket, mielőtt folytatja a további szerkesztést
 294=Megnyit egy bajnokságot
 295=Töröl egy bajnokságot
-296=Tényleg törölni kívánja ezt a bajnokságot?n(Nincs visszavonás!)
+296=Tényleg törölni kívánja ezt a bajnokságot?\n(Nincs visszavonás!)
 297=sikeresen törlődött
 298=nem tudott törlődni
 299=Feltölt egy fájlt
@@ -330,14 +330,14 @@
 329=Ment
 330=Töröl
 331=Új admin hozzáadása
-332=Tényleg ki akarja venni a csapatotn a bajnokságból?n(Nem visszavonható!)
+332=Tényleg ki akarja venni a csapatotn a bajnokságból?\n(Nem visszavonható!)
 333=Kivesz egy csapatot
 334=Kikveszi ezt a csapatot a bajnokságból
 335=Új csapatot kíván adni a bajnoksághoz?
 336=Hozzáad egy csapatot
 337=Hozzáad egy új csapatot a bajnoksághoz
 338=Fordulók és meccsek száma
-339=Itt megváltoztathatja a fordulók és a fordulónkénti meccsek számát.nFIGYELEM! Ez adatvesztést okozhat!
+339=Itt megváltoztathatja a fordulók és a fordulónkénti meccsek számát.\nFIGYELEM! Ez adatvesztést okozhat!
 340=Fordulók és meccsek száma
 341=Az LMO admin egy bajnokságot küld
 342=Itt a kért bajnokság.
@@ -414,7 +414,7 @@
 413=Forduló helyezéseinek megtekintése
 414=Melyik pozícióba kívánja tenni ezt a csapatot?
 415=Elmenti a beállított helyezéseket
-416=Nem lehet egynél több csapat ugyanazon pozícióbannNem volt mentés.
+416=Nem lehet egynél több csapat ugyanazon pozícióban.\nNem volt mentés.
 417=Meccs a 3. helyért
 418=Lesz "kisdöntő" (meccs a 3. helyért)?
 419=Nagydöntő (a címért):

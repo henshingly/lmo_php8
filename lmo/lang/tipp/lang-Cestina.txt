@@ -83,7 +83,7 @@
 082=Poznámka:
 083=Poslední návštěva
 084=Tippspiel-AddOn 1.21
-085=&copy 2002 by Frank Albrecht
+085=© 2002 by Frank Albrecht
 086=Váš poslední tip této soutěže
 087=tipuj do
 088=minut do začátku zápasu
@@ -253,7 +253,7 @@
 252=Všechny zápasy v následujících
 253=Zadání tipů alá LMO-Viewer
 254=Zadání tipů alá LMO-Viewer pro zápasy v příštích
-255=[ <a href="http://www.vfb-forchheim.de/handball" target="_blank" title="Schau auch mal auf meiner Homepage vorbei">VfB Forchheim - Handball</a> ]
+255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Podívejte se také na mou domovskou stránku">HC Forchheim - Házená</a> ]
 256=dní dopředu
 257=dní zpět
 258=Všechny zápasy od
@@ -291,10 +291,10 @@
 290=Žolíkový tip (zdvojnásobý body)
 291=Multiplikator pro žolíkový tip
 292=žolíkový tip nemůže být vložen vícekrát
-293=Mail an Admin bei Anmeldung
-294=anzeigen
+293=Email admin při registraci
+294=ukázat
 295=Fotbalu a tipování zdar,
-296=Tippspiel-Newsletter
+296=Tipovací soutěž-Zpravodaj
 297=Ahoj
 298=Ahoj [nick], \n\nzde jsou tvoje přihlašovací údaje pro tipovací soutěž: \n\nNick: [nick]\nHeslo: [pass]\n\nZde se můžeš přihlásit: \n[url]\n\nZde si také můžeš změnit heslo.\n\nMnoho štěstí!
 299=Přihlašovací údaje byly odeslány!
@@ -302,3 +302,4 @@
 301=Pozor! Pokud si deaktivuješ položku, nebudeš moci tipovat!
 302=Jen celkovou tabulku ukázat
 303=Nové tipovací konto funkční: \n\nNick: [nick]
+304=Nechte pole prázdné, aby nedošlo ke změně hesla

@@ -1,4 +1,4 @@
-000=Bingoal
+000=Tippspiel
 001=naar Bingoal Game Overzicht
 002=Verander Team
 003=Voorspel een Afdeling
@@ -83,7 +83,7 @@
 082=Nota:
 083=Laatste Evaluatie
 084=Tippspiel AddOn 1.21
-085=&copy 2002 door Frank Albrecht
+085=© 2002 door Frank Albrecht
 086=Uw laatste voorspelling voor deze afdeling
 087=Voorspellinge toegelaten tot
 088=Minuten voor de Start
@@ -253,7 +253,7 @@
 252=Alle wedstrijden in de volgende
 253=Allow Predictions by Date
 254=...for Matches in the next
-255=[ <a href="http://www.vfb-forchheim.de/handball" target="_blank" title="Please Visit our Hompepagei">VfB Forchheim - Handball</a> ]
+255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Please Visit our Hompepagei">HC Forchheim - Handball</a> ]
 256=Volgende Dag
 257=Vorige Dag
 258=Alle Wedstrijden van
@@ -296,11 +296,10 @@
 295=Hallo Speler,
 296=Bingoal Nieuwsletter
 297=Hallo
-298=Hello [nick], nnHere is your Registration information for the Prediction Game: nnNickname: [nick]nPassword: [pass]nnYou can Log In here: n[url]nnYou can also change your Password there.nnHave Fun!
+298=Hallo [nick], \n\nHier vindt u uw registratiegegevens voor het voorspellingsspel: \n\nNickname: [nick]\nPassword: [pass]\n\nU kunt hier inloggen: \n[url]\n\nU kunt daar ook uw wachtwoord wijzigen.\n\nVeel plezier!
 299=Verzend Registratie Informatie via E-Mail
 300=Het paswoord zal u via mail toegestuurd wordenl, kijk na dat u het e-mail adres corect hebt ingevoerd
 301=Opgelet! This deactivate the Possibility of making Predictions!
 302=Show Only Total Point Standings
-303=Een Nieuwe Speler heeft zich geregistreerd voor Bingoal: nnNickname: [nick]
-304=Laat het veld leeg om uw paswoord niet te veranderen
-
+303=Een Nieuwe Speler heeft zich geregistreerd voor Bingoal: \n\nNickname: [nick]
+304=Laat het veld leeg om te voorkomen dat het wachtwoord wordt gewijzigd

@@ -115,9 +115,9 @@
 114=Klikněte zde k uložení
 115=Náhled
 116=Co bude vidět návštěvník vašich stránek
-117=Nemáte vloženy žádne údaje.nNebude nic uloženo.
+117=Nemáte vloženy žádne údaje.\nNebude nic uloženo.
 118=Jméno LIGY, jak bude zobrazeno v nadpisu (max. 60 znaků, např '1. Bundesliga 2001/02')
-119=Zde bude možné udělat změny, které ještěnnejsou uloženy.nnKlikni 'Ano', jestli to chcešnuložit, nebo 'Ne', k návratu,na jinému vyplnění.
+119=Zde bude možné udělat změny, které ještěnnejsou uloženy.\n\nKlikni 'Ano', jestli to chcešnuložit, nebo 'Ne', k návratu,na jinému vyplnění.
 120=Vložení gólů domácích (0 - 9999, _ nebo X)
 121=Vložení gólů hostů (0 - 9999, _ nebo X)
 122=Hrací den zápasu (Format DD.MM.RRRR - i s nulami)
@@ -247,7 +247,7 @@
 246=Krok
 247=Přerušit vkládání LIGY
 248=Zde zastavíme nastavení LIGY a přejdeme zpět.
-249=Chcete opravdu zastavit úpravu nastavení LIGY?nVaše vložené údaje se nenávratně ztratí.
+249=Chcete opravdu zastavit úpravu nastavení LIGY?\nVaše vložené údaje se nenávratně ztratí.
 250=Nastavení/zobrazení
 251=Datum hr.dne
 252=Chcete zobrazit datum od-do?
@@ -294,7 +294,7 @@
 293=První věc, kterou byste nyní měli udělat, je zadat jména týmů před provedením dalších úprav
 294=Otevřít ligu
 295=Smazat ligu
-296=Chcete opravdu tuto LIGU smazatn(návrat nebude možný)
+296=Opravdu chcete smazat tuto ligu?\n(Toto nelze vzít zpět)
 297=byla smazána
 298=nemůžete smazat
 299=Upload dat
@@ -330,14 +330,14 @@
 329=Uložit
 330=Vymazat
 331=Připojit nového Admina
-332=Chcete zvolené mužstvonopravdu smazat ze soutěžen(Návrat nebude možný)
+332=Chcete zvolené mužstvonopravdu smazat ze soutěžen?\n(Návrat nebude možný)
 333=Odebrat mužstvo
 334=Toto mužstvo vyjmout ze soutěže
 335=Chcete opravdu vložit mužstvo do soutěže?
 336=Vložit mužstvo
 337=Vložit nové mužstvo
 338=Počet kol a zápasů v kole
-339=Zde můžete změnit počet kol a zápasů v kole. &#10;POZOR: Je možná ztráta všech zadaných dat!
+339=Zde můžete změnit počet kol a zápasů v kole.\nPOZOR: Je možná ztráta všech zadaných dat!
 340=Počet kol a zápasů
 341=LMO-Admin Liga
 342=Zde je vámi požadovaná liga.
@@ -414,7 +414,7 @@
 413=K tabulce tohot kola
 414=Jaké místo chcete mužstvu ručně nastavit?
 415=uložit manuální nastavení tabulky
-416=Es dürfen nicht mehrere Mannschaften auf einem Platz seinnEs wird noch nicht gespeichert.
+416=Na jednom hřišti nemůže být více týmů.\nZatím nebude uloženo.
 417=Zápas o 3.místo
 418=Bude sehráno i malé finále (o 3.místo)?
 419=velké finále (o titul):

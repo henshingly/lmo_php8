@@ -115,7 +115,7 @@
 114=Apasa aici pentru a prelua modificarile
 115=Index vizitatori
 116=Asa vad vizitatorii aplicatia (se deschide in fereastra noua)
-117=Nu ati facut modificari.
+117=Nu ați făcut nicio modificare.\nO salvați oricum?
 118=Numele campionatului va fi folosit ca titlu (max. 60 caractere, ex. 'Divizia A 2001/02')
 119=Au fost facute modificari, apasati DA pentru preluarea modificarilor sau NU pentru ca modificarile sa nu fie preluate.
 120=Setari pentru golurile echipei gazda (0 - 9999, _ sau X)
@@ -247,7 +247,7 @@
 246=Pasul
 247=Renunta la acest campionat
 248=Aici puteti renunta la creearea campionatului
-249=Chiar doriți să anulați crearea unei ligi?nÎnregistrările dvs. anterioare se vor pierde.
+249=Chiar doriți să anulați crearea unei ligi?\nÎnregistrările dvs. anterioare se vor pierde.
 250=Arata/Permisiuni
 251=Data etapei
 252=Ar trebui să fie afișate datele de început și de sfârșit ale zilei meciului?
@@ -294,7 +294,7 @@
 293=Primul lucru pe care trebuie să-l faceți este să introduceți numele echipelor înainte de a face alte modificări
 294=Deschide un campionat
 295=Sterge un campionat
-296=Chiar doriți să ștergeți această ligă?n(Acesta nu poate fi retras)
+296=Chiar doriți să ștergeți această ligă?\n(Acesta nu poate fi retras)
 297=a fost șters cu succes
 298=nu a putut fi șters
 299=Incarca un fisier
@@ -330,14 +330,14 @@
 329=Trimite
 330=Sterge
 331=Adauga administrator
-332=Chiar doriți să retrageți următoarea echipă din joc? (Acest lucru nu poate fi retras)
+332=Chiar doriți să retrageți următoarea echipă din joc?\n(Acest lucru nu poate fi retras)
 333=Retrage echipa
 334=Retrage această echipă din joc
 335=Vrei să adaugi o nouă echipă la joc?
 336=Adauga echipa
 337=Adaugă o nouă echipă în joc
 338=Ziua jocului și numărul de jocuri
-339=Aici puteți modifica numărul de zile de joc și numărul de jocuri pe zi de joc. nATENȚIE: Acest lucru poate duce la pierderea datelor!
+339=Aici puteți modifica numărul de zile de joc și numărul de jocuri pe zi de joc.\nATENȚIE: Acest lucru poate duce la pierderea datelor!
 340=Numărul de zile de meci și de jocuri
 341=LMO-Admin Ligă de expediere
 342=Iată liga solicitată.
@@ -414,7 +414,7 @@
 413=Du-te la masa pentru această zi de meci
 414=Ce loc în tabel ar trebui să fie atribuit acestei echipe?
 415=salvați tabelul manual
-416=Nu pot exista mai multe echipe pe un singur terennNu va fi salvat încă.
+416=Nu pot exista mai multe echipe pe un singur teren.\nNu va fi salvat încă.
 417=Meci pe locul 3
 418=Va fi și o finală mică (joc pentru locul trei)?
 419=Finala:
