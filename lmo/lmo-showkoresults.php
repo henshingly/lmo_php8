@@ -97,7 +97,7 @@ if ($file != "") {
 ?>
           <td class="nobr" width="2">&nbsp;</td>
 <?php
-        if ($n==0) {
+        if ($n % 2 == 0) {  //for the changing edition of the home team
           $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
           $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
           $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
