@@ -419,7 +419,7 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
     }
     if ($spieltagflag4>0) {?>
         <tr>
-          <th colspan="4" align="center"><?php echo $text[4018]?><?php echo $text[38]?></th>
+          <th colspan="4" align="center"><?php echo $text[4018]?> <?php echo $text[38]?></th>
         </tr>
         <tr>
           <td align="right"><?php echo $htorreichm1?> - </td>
