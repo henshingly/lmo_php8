@@ -388,7 +388,7 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
   	      $counteranz0=$counteranz-2;?>
       	<tr>
           <td>&nbsp;</td>
-          <td colspan="3" align="right"><small><?php echo $text[4015]?><?php echo $counteranz0?><?php echo $text[4016]?></small></td>
+          <td colspan="3" align="right"><small><?php echo $text[4015]?> <?php echo $counteranz0?> <?php echo $text[4016]?></small></td>
         </tr><?php
   	    }
       }
@@ -412,7 +412,7 @@ if ($ligaLoaded	and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
   	      $counteranz4=$counteranz1-2;?>
         <tr>
           <td>&nbsp;</td>
-          <td colspan="3" align="right"><small><?php echo $text[4015]?><?php echo $counteranz4?><?php echo $text[4016]?></small></td>
+          <td colspan="3" align="right"><small><?php echo $text[4015]?> <?php echo $counteranz4?> <?php echo $text[4016]?></small></td>
         </tr><?php
   	    }
       }
