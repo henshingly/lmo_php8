@@ -102,6 +102,7 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
             }else{
               if($schl=="KlFin"){         $klfin=$wert;}
               if($schl=="playdown"){      $playdown=$wert;}
+              if($schl=="playoffmode"){   $playoffmode=$wert;}
             }
           }
           $daten[]="$sekt|$schl|$wert|EOL";
@@ -169,9 +170,10 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
         if(!isset($einhinrueck)){              $einhinrueck=1;}
         if(!isset($einheimausw)){              $einheimausw=1;}
       }else{
-        if(!isset($anzteams)){                 $anzteams=16;}
-        if(!isset($klfin)){                    $klfin=0;}
-        if(empty($playdown)){                  $playdown=0;}
+        if(!isset($anzteams)){                 $anzteams    = 16;}
+        if(!isset($klfin)){                    $klfin       = 0;}
+        if(empty($playdown)){                  $playdown    = 0;}
+        if(empty($playoffmode)){               $playoffmode = 0;}
         $anzsp=floor($anzteams/2);
         $anzst=strlen(decbin($anzteams-1));
         $spez=1;

@@ -107,8 +107,9 @@ if ($newpage == 3) {
     $einhinrueck = "1";
     $einheimausw = "1";
   } else {
-    $klfin = "0";
-    $playdown = "0";
+    $klfin       = "0";
+    $playdown    = "0";
+    $playoffmode = "0";
   }
   $hands = "0";
   $ergebnis = "1";
