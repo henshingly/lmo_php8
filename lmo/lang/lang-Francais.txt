@@ -576,6 +576,16 @@
 575=Fuseau horaire du serveur
 576=Remarque : classement des tables sans premiers jeux !
 577=Position
+800=Mode Playoffs - réglage du jeu à domicile
+801=Mod.: 1-1-1-...
+802=L'équipe A a d'abord l'avantage du terrain, puis change après chaque match.
+803=Mod.: 2-2-1
+804=L'équipe A joue d'abord 2 matchs à domicile, puis 2 matchs à l'extérieur et si nécessaire, le cinquième match est à nouveau à domicile.
+805=Mod.: 2-2-1-1-1
+806=L'équipe A joue d'abord 2 matchs à domicile, puis 2 matchs à l'extérieur, puis continue avec l'avantage du terrain en alternance jusqu'à ce que la première équipe ait gagné 4 matchs.
+807=Mod.: 2-3-2
+808=L'équipe A joue d'abord 2 matchs à domicile, puis 3 matchs à l'extérieur, puis à nouveau 2 matchs à domicile jusqu'à ce que la première équipe ait gagné 4 matchs.
+809=Sélection du mode
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Balles

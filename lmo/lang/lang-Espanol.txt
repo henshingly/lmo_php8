@@ -576,6 +576,16 @@
 575=Zona horaria del servidor
 576=Nota: ¡Clasificación de la mesa sin juegos tempranos!
 577=Posición
+800=Playoff Modus - configuración del juego en casa
+801=Mod.: 1-1-1-...
+802=El equipo A tiene primero la ventaja de jugar en casa y luego cambia después de cada partido.
+803=Mod.: 2-2-1
+804=El equipo A primero juega 2 partidos en casa, luego 2 partidos fuera de casa y, si es necesario, el quinto partido vuelve a ser en casa.
+805=Mod.: 2-2-1-1-1
+806=El equipo A primero tiene 2 partidos en casa, luego 2 partidos fuera de casa y luego continúa alternando la ventaja de jugar en casa hasta que el primer equipo haya ganado 4 juegos.
+807=Mod.: 2-3-2
+808=El equipo A primero tiene 2 partidos en casa, luego 3 partidos fuera de casa y luego 2 partidos en casa nuevamente hasta que el primer equipo haya ganado 4 juegos.
+809=Selección de modo
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Bolas

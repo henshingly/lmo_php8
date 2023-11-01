@@ -576,6 +576,16 @@
 575=Server tidssone
 576=Merk: Tabellplasseringer uten tidlige kamper!
 577=Posisjon
+800=Sluttspillmodus – Hjemmespillinnstilling
+801=Mod.: 1-1-1-...
+802=Lag A har hjemmefordel først og endres deretter etter hver kamp
+803=Mod.: 2-2-1
+804=Lag A har først 2 hjemmekamper, deretter 2 bortekamper og om nødvendig er den femte kampen hjemme igjen
+805=Mod.: 2-2-1-1-1
+806=Lag A har først 2 hjemmekamper, deretter 2 bortekamper og så fortsetter det med vekslende hjemmefordel til førstelaget har vunnet 4 kamper.
+807=Mod.: 2-3-2
+808=Lag A har først 2 hjemmekamper, deretter 3 bortekamper og så 2 hjemmekamper igjen til førstelaget har vunnet 4 kamper.
+809=Modusvalg
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Baller

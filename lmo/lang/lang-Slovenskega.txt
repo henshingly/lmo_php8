@@ -576,6 +576,16 @@
 575=Časovni pas strežnika
 576=Opomba: lestvica na mizi brez zgodnjih iger!
 577=Položaj
+800=Način končnice - nastavitev domače igre
+801=Mod.: 1-1-1-...
+802=Ekipa A ima najprej domačo prednost, nato pa se menja po vsaki tekmi
+803=Mod.: 2-2-1
+804=Ekipo A najprej čakata 2 tekmi doma, nato 2 tekmi v gosteh in po potrebi peta tekma spet doma
+805=Mod.: 2-2-1-1-1
+806=Ekipa A ima najprej 2 tekmi doma, nato 2 tekmi v gosteh in nato nadaljuje z izmenično prednostjo doma, dokler prva ekipa ne zmaga 4 iger.
+807=Mod.: 2-3-2
+808=Ekipa A ima najprej 2 tekmi doma, nato 3 tekme v gosteh in nato spet 2 tekmi doma, dokler prva ekipa ne zmaga 4 iger.
+809=Izbira načina
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Žoge
@@ -598,7 +608,7 @@
 4014=ST
 4015=+ več
 4016=Igre z enakim rezultatom
-4017=Höchste(r) Auswärtssieg(e)
+4017=najvišja zmaga v gosteh
 4018=Najvišje zmage v gosteh
 4019=Igre z isto številko
 4020=Preostali program

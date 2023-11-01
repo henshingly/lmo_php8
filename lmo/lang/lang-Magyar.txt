@@ -576,6 +576,16 @@
 575=Szerver időzóna
 576=Megjegyzés: A tabellák állása korai meccsek nélkül!
 577=Pozíció
+800=Playoff mód - otthoni játék beállítása
+801=Mod.: 1-1-1-...
+802=Az A-csapat először hazai előnyben van, majd minden meccs után cserél
+803=Mod.: 2-2-1
+804=Az A-csapatnak először 2 hazai, majd 2 idegenbeli meccse van, és szükség esetén az ötödik meccs ismét otthon
+805=Mod.: 2-2-1-1-1
+806=Az A-csapatnak először 2 hazai, majd 2 idegenbeli meccse van, majd váltakozó hazai előnnyel folytatódik, amíg az első csapat meg nem nyer 4 meccset.
+807=Mod.: 2-3-2
+808=Az A-csapatnak először 2 hazai, majd 3 idegenbeli meccse van, majd ismét 2 hazai meccse van, amíg az első csapat 4 meccset nem nyer.
+809=Mód kiválasztása
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Labdák

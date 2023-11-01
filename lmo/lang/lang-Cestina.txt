@@ -352,7 +352,7 @@
 351=Spielmodus kola
 352=Zde vyberte herní režim pro toto kolo
 353=jediná hra
-354=Hin- und Rückspiel
+354=První noha a druhá noha
 355=Best Of 3
 356=Best Of 5
 357=Best Of 7
@@ -576,6 +576,16 @@
 575=Časové pásmo serveru
 576=Poznámka: Pořadí bez prvních zápasů!
 577=Místo
+800=Režim Playoff – nastavení domácí hry
+801=Mod.: 1-1-1-...
+802=Tým A má nejprve domácí výhodu a poté se po každém zápase střídá
+803=Mod.: 2-2-1
+804=Tým A má nejprve 2 domácí zápasy, poté 2 zápasy venku a v případě potřeby je pátý zápas opět doma
+805=Mod.: 2-2-1-1-1
+806=Tým A má nejprve 2 domácí zápasy, pak 2 zápasy venku a pak pokračuje se střídavou domácí výhodou, dokud první tým nevyhraje 4 zápasy.
+807=Mod.: 2-3-2
+808=Tým A má nejprve 2 domácí zápasy, poté 3 zápasy venku a poté znovu 2 domácí zápasy, dokud první tým nevyhraje 4 zápasy.
+809=Výběr režimu
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Míče

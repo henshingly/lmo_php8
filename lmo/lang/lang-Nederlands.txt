@@ -576,6 +576,16 @@
 575=Servertijdzone
 576=Let op: tafelklassement zonder vroege games!
 577=Positie
+800=Playoff-modus - thuiswedstrijdinstelling
+801=Mod.: 1-1-1-...
+802=Team A heeft eerst het thuisvoordeel en wisselt daarna na elke wedstrijd
+803=Mod.: 2-2-1
+804=Team A heeft eerst 2 thuiswedstrijden, daarna 2 uitwedstrijden en desnoods is de vijfde wedstrijd weer thuis
+805=Mod.: 2-2-1-1-1
+806=Team A heeft eerst 2 thuiswedstrijden, daarna 2 uitwedstrijden en gaat daarna door met afwisselend thuisvoordeel totdat het eerste team 4 wedstrijden heeft gewonnen.
+807=Mod.: 2-3-2
+808=Team A heeft eerst 2 thuiswedstrijden, daarna 3 uitwedstrijden en daarna weer 2 thuiswedstrijden totdat het eerste team 4 wedstrijden heeft gewonnen.
+809=Modusselectie
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Ballen

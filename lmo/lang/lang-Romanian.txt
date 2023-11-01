@@ -576,6 +576,16 @@
 575=Fusul orar al serverului
 576=Notă: Clasamentul tabelului fără jocurile timpurii!
 577=Poziţie
+800=Mod playoff - setarea jocului de acasă
+801=Mod.: 1-1-1-...
+802=Echipa A are mai întâi avantaj acasă și apoi se schimbă după fiecare joc
+803=Mod.: 2-2-1
+804=Echipa A are mai întâi 2 meciuri acasă, apoi 2 în deplasare și, dacă este necesar, al cincilea joc este din nou acasă
+805=Mod.: 2-2-1-1-1
+806=Echipa A are mai întâi 2 jocuri pe teren propriu, apoi 2 jocuri în deplasare și apoi continuă cu un avantaj alternativ pe teren propriu până când prima echipă a câștigat 4 jocuri.
+807=Mod.: 2-3-2
+808=Echipa A are mai întâi 2 jocuri acasă, apoi 3 în deplasare și apoi din nou 2 jocuri acasă până când prima echipă a câștigat 4 jocuri.
+809=Selectarea modului
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Mingi

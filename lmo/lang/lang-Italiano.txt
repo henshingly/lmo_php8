@@ -576,6 +576,16 @@
 575=Fuso orario del server
 576=Nota: classifica senza partite anticipate!
 577=Posizione
+800=Modalità playoff: impostazione della partita in casa
+801=Mod.: 1-1-1-...
+802=La squadra A ha per prima il vantaggio in casa e poi cambia dopo ogni partita
+803=Mod.: 2-2-1
+804=La squadra A gioca prima 2 partite in casa, poi 2 partite in trasferta e, se necessario, la quinta partita è di nuovo in casa
+805=Mod.: 2-2-1-1-1
+806=La squadra A gioca prima 2 partite in casa, poi 2 in trasferta e poi continua con il vantaggio casalingo alternato finché la prima squadra non vince 4 partite.
+807=Mod.: 2-3-2
+808=La squadra A gioca prima 2 partite in casa, poi 3 in trasferta e poi ancora 2 partite in casa finché la prima squadra non vince 4 partite.
+809=Selezione modalità
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Palle

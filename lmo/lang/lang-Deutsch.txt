@@ -576,6 +576,16 @@
 575=Zeitzone des Servers
 576=Hinweis: Tabellenstand ohne vorgezogene Spiele!
 577=Platz
+800=Playoff Modus - Heimspieleinstellung
+801=Mod.: 1-1-1-...
+802=Team A hat zuerst Heimrecht danach wechselt es nach jedem Spiel
+803=Mod.: 2-2-1
+804=Team A hat zuerst 2 Heimspiele danach 2 Auswärtsspiele und wenn nötig ist das fünfte Spiel wieder zu hause
+805=Mod.: 2-2-1-1-1
+806=Team A hat zuerst 2 Heimspiele danach 2 Auswärtsspiele und danach geht es mit wechselnden Heimrecht weiter bis das erste Team 4 Spiele gewonnen hat.
+807=Mod.: 2-3-2
+808=Team A hat zuerst 2 Heimspiele danach 3 Auswärtsspiele und danach wieder 2 Heimspiele bis das erste Team 4 Spiele gewonnen hat.
+809=Modusauswahl
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Bälle

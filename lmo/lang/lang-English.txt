@@ -576,6 +576,16 @@
 575=Servers Timezone
 576=Note: Table without preponed matches!
 577=Position
+800=Playoff mode - home game setting
+801=Mod.: 1-1-1-...
+802=Team A has home advantage first and then changes after each game
+803=Mod.: 2-2-1
+804=Team A first has 2 home games, then 2 away games and if necessary the fifth game is at home again
+805=Mod.: 2-2-1-1-1
+806=Team A first has 2 home games, then 2 away games and then it continues with alternating home advantage until the first team has won 4 games.
+807=Mod.: 2-3-2
+808=Team A first has 2 home games, then 3 away games and then 2 home games again until the first team has won 4 games.
+809=Mode selection
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Balls

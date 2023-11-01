@@ -353,9 +353,9 @@
 352=Izabrati ovdje modul igre za ovo kolo
 353=Jedini susret
 354=Domaća - i Gostujuća
-355=Bolje/bolji od 3 (Best Of 3
-356=Bolje/bolji od 5 (Best Of 5
-357=Bolje/bolji od 7 (Best Of 7
+355=Bolje/bolji od 3 (Best Of 3)
+356=Bolje/bolji od 5 (Best Of 5)
+357=Bolje/bolji od 7 (Best Of 7)
 358=OF
 359=Idi na osminu finala
 360=ČF
@@ -573,7 +573,19 @@
 572=Naziv tima srednje duljine (maks. 12 znakova)
 573=Prijevod
 574=Vremenska zona575=Vremenska zona poslužitelja576=Napomena: poredak na tablici bez ranih igara
+575=Vremenska zona servera
+576=Napomena: Tablica na tabeli bez ranih utakmica!
 577=Mjesto
+800=Režim doigravanja - postavka za kućnu igru
+801=Mod.: 1-1-1-...
+802=Ekipa A prvo ima prednost kod kuće, a zatim mijenja nakon svake utakmice
+803=Mod.: 2-2-1
+804=Ekipa A prvo ima 2 utakmice kod kuće, zatim 2 utakmice u gostima i ako je potrebno peta utakmica je opet kod kuće
+805=Mod.: 2-2-1-1-1
+806=Ekipa A prvo ima 2 utakmice kod kuće, zatim 2 utakmice u gostima, a zatim nastavlja sa naizmjeničnom prednošću domaćina sve dok prva ekipa ne pobijedi u 4 utakmice.
+807=Mod.: 2-3-2
+808=Tim A prvo ima 2 utakmice kod kuće, zatim 3 utakmice u gostima i onda opet 2 utakmice kod kuće dok prvi tim ne pobijedi u 4 utakmice.
+809=Odabir načina rada
 2000=Volleyball (Odbojka)
 2001=Volleyball Version (odbojka vrzija) by vbfan
 2020=Poen
@@ -593,7 +605,7 @@
 4011=Gostujući zgoditci
 4012=Direktni susreti (rezultati obje momčadi)
 4013=Najveća domaća pobjeda
-4014=ST
+4014=GD
 4015=+ ostale
 4016=Susreti sa istim rezultatom
 4017=Najveća gostujuća pobjeda
