@@ -123,7 +123,7 @@ if ($file != "") {
             if ($n == 0) {
               echo "<td width=\"2\">&nbsp;</td>";
             } else {
-              echo "<td width=\"8\">|</td>";
+              echo "<td width=\"8\">|&nbsp;&nbsp;</td>";
             }?>
           <td class="nobr"><?php echo $dumn1;?><?php echo applyFactor($goala[$j][$i][$n],$goalfaktor); ?>&nbsp;:&nbsp;<?php echo applyFactor($goalb[$j][$i][$n],$goalfaktor); ?><?php echo $mspez[$j][$i][$n]; ?><?php echo $dumn2; ?><?php 
            /** Mannschaftsicons finden
@@ -141,7 +141,7 @@ if ($file != "") {
                 $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong><br><br>";
                 echo " <a href='".$mberi[$j][$i][$n]."'  target='_blank'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a> ";
               }else{
-                echo "&nbsp;&nbsp;&nbsp;";
+                echo "&nbsp;";
               }
             }
             /** Notizen anzeigen

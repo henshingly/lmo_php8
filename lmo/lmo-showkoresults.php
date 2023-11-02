@@ -97,116 +97,337 @@ if ($file != "") {
 ?>
           <td class="nobr" width="2">&nbsp;</td>
 <?php
-        if ($n % 2 == 0) {  //for the changing edition of the home team
-          $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
-          $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
-          $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
-          if ($m==1) {
-            echo "          <td class=\"lmoTurnierSieger nobr\" align='right'>";
-          } /*elseif ($m==2) {
-            echo "          <td class=\"lmoTurnierVerlierer nobr\" align='right'>"; // Verliere nicht rot einfärben
-          }*/ else {
-            echo "          <td class='nobr' align='right'>";
-          }
-          if ($plan==1) {
-            echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
-          }
-          if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
-            echo "<strong>";
-          }
-          echo $teams[$teama[$st-1][$i]];
-          if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
-            echo "</strong>";
-          }
-          if ($plan==1) {
-            echo "</a>";
-          }
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
-          echo "</td>\n";
+        if ($playoffmode == 1 || $playoffmode == 2) { // Modus 2-2-1 or 2-2-1-1-1
+          if ($n==0 || $n==1 || $n==4 || $n==6) {
+            $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
+            $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
+            $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
+            if ($m==1) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align='right'>";
+            } /*elseif ($m==2) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align='right'>"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class='nobr' align='right'>";
+            }
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teama[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
+            echo "</td>\n";
 ?>
           <td class="nobr" align="center" width="10">-</td>
 <?php
-          if ($m==2) {
-            echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
-          } /*elseif($m==1) {
-            echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
-          }*/ else {
-            echo "          <td class=\"nobr\" align=\"left\">";
-          }
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
-          if ($plan==1) {
-            echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
-          }
-          if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
-            echo "<strong>";
-          }
-          echo $teams[$teamb[$st-1][$i]];
-          if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
-            echo "</strong>";
-          }
-          if ($plan==1) {
-            echo "</a>";
-          }?>
-</td>
+            if ($m==2) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
+            } /*elseif($m==1) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class=\"nobr\" align=\"left\">";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teamb[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }?></td>
           <td class="nobr" width="2">&nbsp;</td>
           <td class="nobr" align="right"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?></td>
           <td class="nobr" align="center" width="8">:</td>
           <td class="nobr" align="left"><?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?></td>
 <?php
-        } else {
-          if ($m==2) {
-            echo "          <td class=\"lmoTurnierSieger nobr\" align='right'>";
-          } /*elseif ($m==1) {
-            echo "          <td class=\"lmoTurnierVerlierer nobr\" align='right'>"; // Verliere nicht rot einfärben
-          }*/ else {
-            echo "          <td class='nobr' align='right'>";
-          }
-          if ($plan==1) {
-            echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
-          }
-          if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
-            echo "<strong>";
-          }
-          echo $teams[$teamb[$st-1][$i]];
-          if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
-            echo "</strong>";
-          }
-          if ($plan==1) {
-            echo "</a>";
-          }
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
-          echo "</td>\n";
+          } else {
+            if ($m==2) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align='right'>";
+            } /*elseif ($m==1) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align='right'>"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class='nobr' align='right'>";
+            }
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teamb[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+            echo "</td>\n";
 ?>
           <td class="nobr" align="center" width="10">-</td>
 <?php
-          if ($m==1) {
-            echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
-          } /*elseif($m==2) {
-            echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
-          }*/ else {
-            echo "          <td class=\"nobr\" align=\"left\">";
-          }
-          echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
-          if ($plan==1) {
-            echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
-          }
-          if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
-            echo "<strong>";
-          }
-          echo $teams[$teama[$st-1][$i]];
-          if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
-            echo "</strong>";
-          }
-          if ($plan==1) {
-            echo "</a>";
-          }?>
-</td>
+            if ($m==1) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
+            } /*elseif($m==2) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class=\"nobr\" align=\"left\">";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teama[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }?></td>
           <td class="nobr" width="2">&nbsp;</td>
           <td class="nobr" align="right"><?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor); ?></td>
           <td class="nobr" align="center" width="8">:</td>
           <td class="nobr" align="left"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor);?></td>
 <?php
-        }?>
+          }
+        }
+        if ($playoffmode == 3) { // Modus 2-3-2
+          if ($n==0 || $n==1 || $n==5 || $n==6) {
+            $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
+            $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
+            $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
+            if ($m==1) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align='right'>";
+            } /*elseif ($m==2) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align='right'>"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class='nobr' align='right'>";
+            }
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teama[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
+            echo "</td>\n";
+?>
+          <td class="nobr" align="center" width="10">-</td>
+<?php
+            if ($m==2) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
+            } /*elseif($m==1) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class=\"nobr\" align=\"left\">";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teamb[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }?></td>
+          <td class="nobr" width="2">&nbsp;</td>
+          <td class="nobr" align="right"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?></td>
+          <td class="nobr" align="center" width="8">:</td>
+          <td class="nobr" align="left"><?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?></td>
+<?php
+          } else {
+            if ($m==2) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align='right'>";
+            } /*elseif ($m==1) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align='right'>"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class='nobr' align='right'>";
+            }
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teamb[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+            echo "</td>\n";
+?>
+          <td class="nobr" align="center" width="10">-</td>
+<?php
+            if ($m==1) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
+            } /*elseif($m==2) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class=\"nobr\" align=\"left\">";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teama[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }?></td>
+          <td class="nobr" width="2">&nbsp;</td>
+          <td class="nobr" align="right"><?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor); ?></td>
+          <td class="nobr" align="center" width="8">:</td>
+          <td class="nobr" align="left"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor);?></td>
+<?php
+          }
+        }
+        if ($playoffmode < 1) { // now Modus = everything else ($playoffmode == 0; and KO-League without $playoffmode Option like old Champions-League Finalrounds)
+          if ($n % 2 == 0) {
+            $m1 = array($goala[$st-1][$i][0], $goala[$st-1][$i][1], $goala[$st-1][$i][2], $goala[$st-1][$i][3], $goala[$st-1][$i][4], $goala[$st-1][$i][5], $goala[$st-1][$i][6]);
+            $m2 = array($goalb[$st-1][$i][0], $goalb[$st-1][$i][1], $goalb[$st-1][$i][2], $goalb[$st-1][$i][3], $goalb[$st-1][$i][4], $goalb[$st-1][$i][5], $goalb[$st-1][$i][6]);
+            $m = gewinn($st-1, $i, $modus[$st-1], $m1, $m2);
+            if ($m==1) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align='right'>";
+            } /*elseif ($m==2) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align='right'>"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class='nobr' align='right'>";
+            }
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teama[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
+            echo "</td>\n";
+?>
+          <td class="nobr" align="center" width="10">-</td>
+<?php
+            if ($m==2) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
+            } /*elseif($m==1) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class=\"nobr\" align=\"left\">";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teamb[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }?></td>
+          <td class="nobr" width="2">&nbsp;</td>
+          <td class="nobr" align="right"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor); ?></td>
+          <td class="nobr" align="center" width="8">:</td>
+          <td class="nobr" align="left"><?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor);?></td>
+<?php
+          } else {
+            if ($m==2) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align='right'>";
+            } /*elseif ($m==1) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align='right'>"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class='nobr' align='right'>";
+            }
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teamb[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teamb[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teamb[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")."&nbsp;";
+            echo "</td>\n";
+?>
+          <td class="nobr" align="center" width="10">-</td>
+<?php
+            if ($m==1) {
+              echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
+            } /*elseif($m==2) {
+              echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
+            }*/ else {
+              echo "          <td class=\"nobr\" align=\"left\">";
+            }
+            echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")."&nbsp;";
+            if ($plan==1) {
+              echo "<a href=\"".$addp.$teama[$st-1][$i]."\" title=\"".$text[269]."\">";
+            }
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "<strong>";
+            }
+            echo $teams[$teama[$st-1][$i]];
+            if (($favteam > 0) && ($favteam==$teama[$st-1][$i])) {
+              echo "</strong>";
+            }
+            if ($plan==1) {
+              echo "</a>";
+            }?></td>
+          <td class="nobr" width="2">&nbsp;</td>
+          <td class="nobr" align="right"><?php echo applyFactor($goalb[$st-1][$i][$n],$goalfaktor); ?></td>
+          <td class="nobr" align="center" width="8">:</td>
+          <td class="nobr" align="left"><?php echo applyFactor($goala[$st-1][$i][$n],$goalfaktor);?></td>
+<?php
+          }
+        }
+?>
           <td class="nobr" width="2">&nbsp;</td>
           <td class="nobr"><?php echo $mspez[$st-1][$i][$n]; ?></td>
           <td class="nobr" width="2">&nbsp;</td>
