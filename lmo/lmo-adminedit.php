@@ -18,6 +18,7 @@
   */
 
 
+if (!isset($playoffmode)) $playoffmode = '0';
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($file != "") {
   $save=isset($_POST['save'])?$_POST['save']:0;
@@ -492,10 +493,11 @@ if ($file != "") {
         }?>
             <td class="nobr"><input title="<?php echo $text[122] ?>" class="lmo-formular-input" type="text" name="xatdat<?php echo $i.$n; ?>" size="10" maxlength="10" value="<?php echo $dum1; ?>" onChange="dolmoedit()"><script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat<?php echo $i.$n; ?>\',\'<?php echo $dum3; ?>\')" title="<?php echo $text[139]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>c\',img5)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>c\',img4)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin4.gif" name="ximg<?php echo $i.$n; ?>c" width="12" height="11" border="0"><\/a>');</script></td>
             <td><input title="<?php echo $text[123] ?>" class="lmo-formular-input" type="text" name="xattim<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>3" size="5" maxlength="5" value="<?php echo $dum2; ?>" onChange="dolmoedit()"></td>
-            <td width="2">&nbsp;</td><?php
-
-          if($n==0){ ?>
-            <td class="nobr" align="right"><?php
+            <td width="2">&nbsp;</td>
+<?php
+        if($n==0){ ?>
+            <td class="nobr" align="right">
+<?php
           if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
               <select class="lmo-formular-input" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[107] ?>" tabindex="<?php echo $i.$n;?>4"><?php
 
@@ -524,14 +526,18 @@ if ($file != "") {
                   echo ">".$teams[$y]."</option>";
                 }
               }
-            }?>
-              </select><?php
+            }
+?>
+              </select>
+<?php
           } else {
             echo $teams[$teama[$st-1][$i]];
-          }?>
+          }
+?>
             </td>
             <td align="center" width="10">-</td>
-            <td class="nobr"><?php
+            <td class="nobr">
+<?php
           if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
               <select class="lmo-formular-input" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i.$n;?>5"><?php
             if (($klfin == 1) && ($st == $anzst) && ($i == 1)) {
@@ -559,21 +565,72 @@ if ($file != "") {
                   echo ">".$teams[$y]."</option>";
                 }
               }
-            }?>
-              </select><?php
+            }
+?>
+              </select>
+<?php
           } else {
             echo $teams[$teamb[$st-1][$i]];
-          }?>
-            </td><?php
-        } else {?>
-            <td colspan="3">&nbsp;</td><?php
+          }
+?>
+            </td>
+<?php
+        } else {
+          if ($playoffmode == 1 || $playoffmode == 2) { // Modus 2-2-1 or 2-2-1-1-1
+            if ($n==1 || $n==4 || $n==6) {
+?>
+            <td class="nobr" align="right"><?php echo $teams[$teama[$st-1][$i]]; ?></td>
+            <td align="center" width="10">-</td>
+            <td class="nobr"><?php echo $teams[$teamb[$st-1][$i]]; ?></td>
+<?php
+            } else {
+?>
+            <td class="nobr" align="right"><?php echo $teams[$teamb[$st-1][$i]]; ?></td>
+            <td align="center" width="10">-</td>
+            <td class="nobr"><?php echo $teams[$teama[$st-1][$i]]; ?></td>
+<?php
+            }
+          }
+          if ($playoffmode == 3) { // Modus 2-3-2
+            if ($n==1 || $n==5 || $n==6) {
+?>
+            <td class="nobr" align="right"><?php echo $teams[$teama[$st-1][$i]]; ?></td>
+            <td align="center" width="10">-</td>
+            <td class="nobr"><?php echo $teams[$teamb[$st-1][$i]]; ?></td>
+<?php
+            } else {
+?>
+            <td class="nobr" align="right"><?php echo $teams[$teamb[$st-1][$i]]; ?></td>
+            <td align="center" width="10">-</td>
+            <td class="nobr"><?php echo $teams[$teama[$st-1][$i]]; ?></td>
+<?php
+            }
+          }
+          if ($playoffmode < 1) { // now Modus = everything else ($playoffmode == 0; and KO-League without $playoffmode Option like old Champions-League Finalrounds)
+            if ($n % 2 == 0) {
+?>
+            <td class="nobr" align="right"><?php echo $teams[$teama[$st-1][$i]]; ?></td>
+            <td align="center" width="10">-</td>
+            <td class="nobr"><?php echo $teams[$teamb[$st-1][$i]]; ?></td>
+<?php
+            } else {
+?>
+            <td class="nobr" align="right"><?php echo $teams[$teamb[$st-1][$i]]; ?></td>
+            <td align="center" width="10">-</td>
+            <td class="nobr"><?php echo $teams[$teama[$st-1][$i]]; ?></td>
+<?php
+            }
+          }
         }
         if ($goala[$st-1][$i][$n] == "-1") {
           $goala[$st-1][$i][$n] = "_";
         }
         if ($goalb[$st-1][$i][$n] == "-1") {
           $goalb[$st-1][$i][$n] = "_";
-        }?>
+        }
+        if ($playoffmode == 1 || $playoffmode == 2) { // Modus 2-2-1 or 2-2-1-1-1
+          if ($n==0 || $n==1 || $n==4 || $n==6) {
+?>
             <td width="2">&nbsp;</td>
             <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109] ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>6" size="4" maxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i.$n; ?>',event.keyCode)"></td>
             <td class="lmoBackMarkierung" align="center">
@@ -598,6 +655,151 @@ if ($file != "") {
                 </tr>
               </table>
             </td>
+<?php
+          } else {
+?>
+            <td width="2">&nbsp;</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110] ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>7" size="4" maxlength="4" value="<?php echo $goalb[$st-1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>f\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>f\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>f" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>d\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>d\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>d" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+            <td class="lmoBackMarkierung" align="center" width="8">:</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109] ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>6" size="4" maxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>a" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>b" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+<?php
+          }
+        }
+        if ($playoffmode == 3) { // Modus 2-3-2
+          if ($n==0 || $n==1 || $n==5 || $n==6) {
+?>
+            <td width="2">&nbsp;</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109] ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>6" size="4" maxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>a" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>b" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+            <td class="lmoBackMarkierung" align="center" width="8">:</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110] ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>7" size="4" maxlength="4" value="<?php echo $goalb[$st-1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>f\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>f\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>f" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>d\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>d\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>d" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+<?php
+          } else {
+?>
+            <td width="2">&nbsp;</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110] ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>7" size="4" maxlength="4" value="<?php echo $goalb[$st-1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>f\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>f\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>f" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>d\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>d\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>d" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+            <td class="lmoBackMarkierung" align="center" width="8">:</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109] ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>6" size="4" maxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>a" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>b" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+<?php
+          }
+        }
+        if ($playoffmode < 1) { // now Modus = everything else ($playoffmode == 0; and KO-League without $playoffmode Option like old Champions-League Finalrounds)
+          if ($n % 2 == 0) {
+?>
+            <td width="2">&nbsp;</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109] ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>6" size="4" maxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>a" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>b" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+            <td class="lmoBackMarkierung" align="center" width="8">:</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110] ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>7" size="4" maxlength="4" value="<?php echo $goalb[$st-1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>f\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>f\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>f" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>d\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>d\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>d" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+<?php
+          } else {
+?>
+            <td width="2">&nbsp;</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110] ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>7" size="4" maxlength="4" value="<?php echo $goalb[$st-1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>f\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>f\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>f" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[121]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>d\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>d\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>d" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+            <td class="lmoBackMarkierung" align="center" width="8">:</td>
+            <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109] ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>6" size="4" maxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i.$n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i.$n; ?>',event.keyCode)"></td>
+            <td class="lmoBackMarkierung" align="center">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>a" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text[120]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>b" width="7" height="7" border="0"><\/a>')</script></td>
+                </tr>
+              </table>
+            </td>
+<?php
+          }
+        }
+?>
             <td class="lmoBackMarkierung" width="2">&nbsp;</td>
             <td class="lmoBackMarkierung">
               <select class="lmo-formular-input" name="xmspez<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text[111] ?>" tabindex="<?php echo $i.$n;?>8">
