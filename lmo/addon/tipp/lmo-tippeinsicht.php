@@ -172,8 +172,10 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               }
             }
           }
-          if ($l == ($start-1) || $l == ($ende+2)) {?>
-          <th align="center" valign="center" class="nobr"><?php            if ($n == 0) {
+          if ($l == ($start-1) || $l == ($ende+2)) {
+?>
+
+          <th valign="center" class="nobr"><center><?php            if ($n == 0) {
               echo $teamk[$teama[$st-1][$i]]."<br>";
             }
             if ($lmtype != 0) {
@@ -197,8 +199,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
             }
             if ($n == 0) {
               echo "<br>".$teamk[$teamb[$st-1][$i]];
-            }?>              
-          </th><?php 
+            }?></center></th><?php 
           } elseif ($l<$ende) {
             if(($lmtype==0 && $btip[$i]==true) || ($lmtype!=0 && $btip[$i][$n]==true)){ ?>
           <td align="center" class="nobr"><?php 
@@ -384,16 +385,20 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
       }?>
           </td><?php 
     } elseif ($l==$start-1) {?>
+
           <th valign="bottom"><?php echo $text[37];?></th>
           <th>&nbsp;</th><?php 
     } elseif ($l==$ende+2) {?>
+
           <th valign="top"><?php echo $text[37];?></th>
           <th>&nbsp;</th><?php 
     } else {?>
           <td class="lmoLeer" colspan="2">&nbsp;</td><?php 
     }?>
+
         </tr><?php 
   } /* ende for($l=$start-1;$l<=$ende;$l++) */?>
+
       </table>
     </td>
   </tr><?php if($tipp_anzseiten>1 && $tipp_anzseiten<11){?> 
