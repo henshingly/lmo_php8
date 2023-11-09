@@ -50,7 +50,7 @@ if (($file != "") && ($subteams != "")) {
           for($c = 0; $c < count($subteam); $c++) {
             if ($subteam[$c] == $teama[$j][$i]) {
               $b++;
-            } elseif($subteam[$c] == $teamb[$j][$i]) {
+            } elseif ($subteam[$c] == $teamb[$j][$i]) {
               $b++;
             }
           }
@@ -70,13 +70,13 @@ if (($file != "") && ($subteams != "")) {
                 if ($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0n;
                 }
-              } elseif($goaltippa[$j][$i] < $goaltippb[$j][$i]) {
+              } elseif ($goaltippa[$j][$i] < $goaltippb[$j][$i]) {
                 $nieder1[$a] = $nieder1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0n;
                 if ($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0s;
                 }
-              } elseif($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
+              } elseif ($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
                 $unent1[$a] = $unent1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0u;
                 if ($minus == 2) {
@@ -93,13 +93,13 @@ if (($file != "") && ($subteams != "")) {
                 if ($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0n;
                 }
-              } elseif($goaltippa[$j][$i] > $goaltippb[$j][$i]) {
+              } elseif ($goaltippa[$j][$i] > $goaltippb[$j][$i]) {
                 $nieder1[$a] = $nieder1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0n;
                 if ($minus == 2) {
                   $negativ1[$a] = $negativ1[$a]+$p0s;
                 }
-              } elseif($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
+              } elseif ($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
                 $unent1[$a] = $unent1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0u;
                 if ($minus == 2) {

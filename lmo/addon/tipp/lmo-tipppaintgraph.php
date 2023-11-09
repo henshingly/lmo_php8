@@ -117,7 +117,7 @@ if ($khoch > 12) {
 }
 if ($khoch < 1) {
   $khoch = 1;
-} elseif(($max-$min) < 21) {
+} elseif (($max-$min) < 21) {
   $khoch = 12;
 }
  
@@ -205,7 +205,7 @@ if ($kmodus > 1 && $khoch > 1) {
     }
   }
 }
-imagestring($image, 3, 3, 1, stripslashes($pgteam1), $farbe_c);
+imagestring($image, 3, 19, 1, stripslashes($pgteam1), $farbe_c);
 if ($pganz == 2) {
   imagestring($image, 3, $breit-imagefontwidth(3) * strlen(stripslashes($pgteam2))-2, 1, stripslashes($pgteam2), $farbe_d);
 }

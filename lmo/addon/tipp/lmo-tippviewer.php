@@ -128,7 +128,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           $tippa[$i] = trim($_POST["xtippa".$i]);
           if ($tippa[$i] == "" || $tippa[$i] < 0) {
             $tippa[$i] = -1;
-          } elseif($tippa[$i] == "_") {
+          } elseif ($tippa[$i] == "_") {
             $tippa[$i] = -1;
           } else {
             $tippa[$i] = intval(trim($tippa[$i]));
@@ -139,7 +139,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           $tippb[$i] = trim($_POST["xtippb".$i]);
           if ($tippb[$i] == "" || $tippb[$i] < 0) {
             $tippb[$i] = -1;
-          } elseif($tippb[$i] == "_") {
+          } elseif ($tippb[$i] == "_") {
             $tippb[$i] = -1;
           } else {
             $tippb[$i] = intval(trim($tippb[$i]));
@@ -147,17 +147,17 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
               $tippb[$i] = "0";
             }
           }
-        } elseif($tipp_tippmodus == 0) {
+        } elseif ($tipp_tippmodus == 0) {
           if (!isset($_POST["xtipp".$i])) {
             $_POST["xtipp".$i] = 0;
           }
           if ($_POST["xtipp".$i] == 1) {
             $tippa[$i] = "1";
             $tippb[$i] = "0";
-          } elseif($_POST["xtipp".$i] == 2) {
+          } elseif ($_POST["xtipp".$i] == 2) {
             $tippa[$i] = "0";
             $tippb[$i] = "1";
-          } elseif($_POST["xtipp".$i] == 3) {
+          } elseif ($_POST["xtipp".$i] == 3) {
             $tippa[$i] = "0";
             $tippb[$i] = "0";
           } else {
@@ -268,11 +268,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
       if ($lmtype[$i] == 1) {
         if ($spieltag[$i] == $anzst[$i]) {
           $j = $text[374];
-        } elseif($spieltag[$i] == $anzst[$i]-1) {
+        } elseif ($spieltag[$i] == $anzst[$i]-1) {
           $j = $text[373];
-        } elseif($spieltag[$i] == $anzst[$i]-2) {
+        } elseif ($spieltag[$i] == $anzst[$i]-2) {
           $j = $text[372];
-        } elseif($spieltag[$i] == $anzst[$i]-3) {
+        } elseif ($spieltag[$i] == $anzst[$i]-3) {
           $j = $text[371];
         } else {
           $j = $spieltag[$i].". ".$text[370];
@@ -339,7 +339,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     if ($datm[$i] == 1) {
       if ($mterm[$i] > 0) {
         $datf = $defdateformat;
-        $dum1 = date($datf, $mterm[$i]);
+        $dum1 = strtr(date($datf, $mterm[$i]), $trans_lang);
       } 
     }?>
         <tr>
@@ -488,11 +488,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
       $tipp = -1;
       if ($tippa[$i] == "" || $tippb[$i] == "") {
         $tipp = -1;
-      } elseif($tippa[$i] > $tippb[$i]) {
+      } elseif ($tippa[$i] > $tippb[$i]) {
         $tipp = 1;
-      } elseif($tippa[$i] == $tippb[$i]) {
+      } elseif ($tippa[$i] == $tippb[$i]) {
         $tipp = 0;
-      } elseif($tippa[$i] < $tippb[$i]) {
+      } elseif ($tippa[$i] < $tippb[$i]) {
         $tipp = 2;
       }?>
           <td class="nobr" align="center">
@@ -529,7 +529,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     }
     if ($punktespiel == -1) {
       echo "-";
-    } elseif($punktespiel == -2) {
+    } elseif ($punktespiel == -2) {
       echo $text['tipp'][230];
       $nw = 1;
     } else {

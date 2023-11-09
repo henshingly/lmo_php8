@@ -32,7 +32,7 @@ if ($file != "") {
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));
-        } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+        } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
           $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
           $wert = trim(substr($zeile, strpos($zeile, "=")+1));
           if ($sekt == "Options") {
@@ -74,17 +74,17 @@ if ($file != "") {
         $op8 = substr($dum[1], 0, 2);
         if ($dum[1] == "D1") {
           $datum10 = $dum[2];
-        } elseif($dum[1] == "D2") {
+        } elseif ($dum[1] == "D2") {
           $datum20 = $dum[2];
-        } elseif($dum[1] == "MO" && $lmtype0 != 0) {
+        } elseif ($dum[1] == "MO" && $lmtype0 != 0) {
           $modus0 = $dum[2];
-        } elseif($op8 == "TA") {
+        } elseif ($op8 == "TA") {
           $teama0 = $dum[2];
-        } elseif($op8 == "TB") {
+        } elseif ($op8 == "TB") {
           $teamb0 = $dum[2];
-	    } elseif($op8 == "TI") {
+	    } elseif ($op8 == "TI") {
           $tipp = $dum[2];           
-        } elseif($op8 == "AT") {
+        } elseif ($op8 == "AT") {
           $zeit0 = zeit($dum[2], $datum10, $datum20);
           if ($zeit0 > $now && $zeit0 < $then && $teama0 > 0 && $tipp <> 1) {
             $spiel0 = substr($dum[1], 2);

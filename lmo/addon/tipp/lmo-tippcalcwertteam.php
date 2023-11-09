@@ -43,7 +43,7 @@ if (!file_exists($auswertfile)) {
       $zeile = trim($zeile);
       if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $sekt = trim(substr($zeile, 1, -1));
-      } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+      } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         array_push($tippdaten, $sekt."|".$schl."|".$wert."|EOL");
@@ -60,7 +60,7 @@ if (!file_exists($auswertfile)) {
             $team[$teamsanzahl] = $wert;
             $teamsanzahl++;
           }
-        } elseif($schl == "AnzLigen") {
+        } elseif ($schl == "AnzLigen") {
           $endtab = $wert;
           $anzst1 = $wert;
         } // nur fuer die Gesamtwertung
@@ -136,24 +136,24 @@ if (!file_exists($auswertfile)) {
           }
         }
       }
-    } elseif(($stwertmodus == "nur" && ($tabdat == "" || $op3 == $endtab-1)) || ($stwertmodus == "bis" && $op3 < $endtab)) {
+    } elseif (($stwertmodus == "nur" && ($tabdat == "" || $op3 == $endtab-1)) || ($stwertmodus == "bis" && $op3 < $endtab)) {
       if ($t > -1 && $op3 > -1) {
         if ($op4 == "TP") {
           $tipppunkte[$t][$op3] += $dum[2];
-        } elseif($op4 == "SG") {
+        } elseif ($op4 == "SG") {
           $spielegetippt[$t][$op3] += $dum[2];
-        } elseif($tipp_showzus == 1) {
+        } elseif ($tipp_showzus == 1) {
           if ($op4 == "P1") {
             $punkte1[$t][$op3] += $dum[2];
-          } elseif($op4 == "P2") {
+          } elseif ($op4 == "P2") {
             $punkte2[$t][$op3] += $dum[2];
-          } elseif($op4 == "P3") {
+          } elseif ($op4 == "P3") {
             $punkte3[$t][$op3] += $dum[2];
-          } elseif($op4 == "P4") {
+          } elseif ($op4 == "P4") {
             $punkte4[$t][$op3] += $dum[2];
-          } elseif($op4 == "P5") {
+          } elseif ($op4 == "P5") {
             $punkte5[$t][$op3] += $dum[2];
-          } elseif($op4 == "P6") {
+          } elseif ($op4 == "P6") {
             $punkte6[$t][$op3] += $dum[2];
           }
         }
@@ -172,25 +172,25 @@ if (!file_exists($auswertfile)) {
         for($k = 1; $k <= 3; $k++) {
           if ($k == 1) {
             $tipp_krit = $tipp_krit1;
-          } elseif($k == 2) {
+          } elseif ($k == 2) {
             $tipp_krit = $tipp_krit2;
-          } elseif($k == 3) {
+          } elseif ($k == 3) {
             $tipp_krit = $tipp_krit3;
           }
           if ($tipp_krit == -1) {
             $tt .= 50000000;
-          } elseif($tipp_krit == 0) {
+          } elseif ($tipp_krit == 0) {
             $tt .= (50000000-$spielegetippt[$a][$i]);
-          } elseif($tipp_krit == 1) {
+          } elseif ($tipp_krit == 1) {
             $tt .= (50000000+$spielegetippt[$a][$i]);
-          } elseif($tipp_showzus == 1) {
+          } elseif ($tipp_showzus == 1) {
             if ($tipp_krit == 2) {
               $tt .= (50000000+$punkte1[$a][$i]);
-            } elseif($tipp_krit == 3) {
+            } elseif ($tipp_krit == 3) {
               $tt .= (50000000+$punkte2[$a][$i]);
-            } elseif($tipp_krit == 4) {
+            } elseif ($tipp_krit == 4) {
               $tt .= (50000000+$punkte3[$a][$i]);
-            } elseif($tipp_krit == 5) {
+            } elseif ($tipp_krit == 5) {
               $tt .= (50000000+$punkte6[$a][$i]);
             }
           }
@@ -260,34 +260,34 @@ if (!file_exists($auswertfile)) {
     $tt = "";
     if ($gewicht == "relativ") {
       $tt .= (50000000+$quotegesamt[$a]);
-    } elseif($gewicht == "spiele") {
+    } elseif ($gewicht == "spiele") {
       $tt .= (50000000+$spielegetipptgesamt[$a]);
     }
     $tt .= (50000000+$tipppunktegesamt[$a]);
     for($k = 1; $k <= 3; $k++) {
       if ($k == 1) {
         $tipp_krit = $tipp_krit1;
-      } elseif($k == 2) {
+      } elseif ($k == 2) {
         $tipp_krit = $tipp_krit2;
-      } elseif($k == 3) {
+      } elseif ($k == 3) {
         $tipp_krit = $tipp_krit3;
       }
       if ($tipp_krit == 0) {
         $tt .= (50000000+$quotegesamt[$a]);
-      } elseif($tipp_krit == 1) {
+      } elseif ($tipp_krit == 1) {
         $tt .= (50000000+$spielegetipptgesamt[$a]);
-      } elseif($tipp_krit == 6) {
+      } elseif ($tipp_krit == 6) {
         if ($tipp_showstsiege == 1) {
           $tt .= (50000000+$stsiege[$a]);
         }
-      } elseif($tipp_showzus == 1) {
+      } elseif ($tipp_showzus == 1) {
         if ($tipp_krit == 2) {
           $tt .= (50000000+$punkte1gesamt[$a]);
-        } elseif($tipp_krit == 3) {
+        } elseif ($tipp_krit == 3) {
           $tt .= (50000000+$punkte2gesamt[$a]);
-        } elseif($tipp_krit == 4) {
+        } elseif ($tipp_krit == 4) {
           $tt .= (50000000+$punkte3gesamt[$a]);
-        } elseif($tipp_krit == 5) {
+        } elseif ($tipp_krit == 5) {
           $tt .= (50000000+$punkte6gesamt[$a]);
         }
       }

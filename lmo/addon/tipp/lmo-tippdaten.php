@@ -130,7 +130,7 @@ if (($action == "tipp") && ($todo == "daten")) {
   if ($newpage == 1) {
     if ($xtippervereinradio == 1) {
       $_SESSION['lmotipperverein'] = $xtippervereinalt;
-    } elseif($xtippervereinradio == 2) {
+    } elseif ($xtippervereinradio == 2) {
       $_SESSION['lmotipperverein'] = $xtippervereinneu;
     } else {
       $_SESSION['lmotipperverein'] = "";

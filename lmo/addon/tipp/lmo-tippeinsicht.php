@@ -130,10 +130,10 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
         }
       }
     } /* Nickname links*/
-    elseif($l == $ende && $anztipper > 0) {
+    elseif ($l == $ende && $anztipper > 0) {
       echo $text['tipp'][188];
     } /* Tipptendenz*/
-    elseif($l == ($ende+1) && $anztipper > 0 && $tipp_tippmodus == 1) {
+    elseif ($l == ($ende+1) && $anztipper > 0 && $tipp_tippmodus == 1) {
       echo "Ø-".$text['tipp'][30];
     } /* Durchschnittstipp */?>
           </th><?php 
@@ -149,7 +149,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               } else {
                 $btip[$i][$n] = tippaenderbar($mterm[$st-1][$i][$n], $datum1[$st-1], $datum2[$st-1]);
               }
-            } elseif($tipp_einsichterst == 2) {
+            } elseif ($tipp_einsichterst == 2) {
               if ($lmtype != 0) {
                 if ($goala[$st-1][$i][$n] != "_" && $goalb[$st-1][$i][$n] != "_") {
                   $btip[$i][$n] = false;
@@ -199,7 +199,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               echo "<br>".$teamk[$teamb[$st-1][$i]];
             }?>              
           </th><?php 
-          } elseif($l<$ende) {
+          } elseif ($l<$ende) {
             if(($lmtype==0 && $btip[$i]==true) || ($lmtype!=0 && $btip[$i][$n]==true)){ ?>
           <td align="center" class="nobr"><?php 
             }else{
@@ -260,7 +260,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               if ($punktespiel == $tipp_rergebnis * $jkspfaktor || $punktespiel == ($tipp_rergebnis+$tipp_rremis) * $jkspfaktor) {
                 $dummy1 = "<strong>";
                 $dummy4 = "</strong>";
-              } elseif($punktespiel == $tipp_rtendenzdiff * $jkspfaktor || $punktespiel == ($tipp_rtendenzdiff+$tipp_rremis) * $jkspfaktor) {
+              } elseif ($punktespiel == $tipp_rtendenzdiff * $jkspfaktor || $punktespiel == ($tipp_rtendenzdiff+$tipp_rremis) * $jkspfaktor) {
                 $dummy2 = "<strong>";
                 $dummy3 = "</strong>";
               }
@@ -272,7 +272,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                   if ($goala[$st-1][$i][$n] == $tippa[$k][$i][$n]) {
                     $dummy1 = "<strong>";
                     $dummy2 = "</strong>";
-                  } elseif($goalb[$st-1][$i][$n] == $tippb[$k][$i][$n]) {
+                  } elseif ($goalb[$st-1][$i][$n] == $tippb[$k][$i][$n]) {
                     $dummy3 = "<strong>";
                     $dummy4 = "</strong>";
                   }
@@ -283,7 +283,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                   if ($goala[$st-1][$i] == $tippa[$k][$i]) {
                     $dummy1 = "<strong>";
                     $dummy2 = "</strong>";
-                  } elseif($goalb[$st-1][$i] == $tippb[$k][$i]) {
+                  } elseif ($goalb[$st-1][$i] == $tippb[$k][$i]) {
                     $dummy3 = "<strong>";
                     $dummy4 = "</strong>";
                   }
@@ -313,21 +313,21 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 if ($lmtype != 0) {
                   if ($tippa[$k][$i][$n] == "_" || $tippb[$k][$i][$n] == "_") {
                     echo "_";
-                  } elseif($tippa[$k][$i][$n] == $tippb[$k][$i][$n]) {
+                  } elseif ($tippa[$k][$i][$n] == $tippb[$k][$i][$n]) {
                     echo "0";
-                  } elseif($tippa[$k][$i][$n] > $tippb[$k][$i][$n]) {
+                  } elseif ($tippa[$k][$i][$n] > $tippb[$k][$i][$n]) {
                     echo "1";
-                  } elseif($tippa[$k][$i][$n] < $tippb[$k][$i][$n]) {
+                  } elseif ($tippa[$k][$i][$n] < $tippb[$k][$i][$n]) {
                     echo "2";
                   }
                 } else {
                   if ($tippa[$k][$i] == "_" || $tippb[$k][$i] == "_") {
                     echo "_";
-                  } elseif($tippa[$k][$i] == $tippb[$k][$i]) {
+                  } elseif ($tippa[$k][$i] == $tippb[$k][$i]) {
                     echo "0";
-                  } elseif($tippa[$k][$i] > $tippb[$k][$i]) {
+                  } elseif ($tippa[$k][$i] > $tippb[$k][$i]) {
                     echo "1";
-                  } elseif($tippa[$k][$i] < $tippb[$k][$i]) {
+                  } elseif ($tippa[$k][$i] < $tippb[$k][$i]) {
                     echo "2";
                   }
                 }
@@ -340,16 +340,16 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               }
             }?>
           </td><?php 
-          } elseif($l==$ende){?>
+          } elseif ($l==$ende){?>
           <td align="center" class="lmoLeer nobr"><?php            if($anztipper>0){
               if($lmtype==0 && $btip[$i]==false){
                 echo $tendenz1[$i]."-".$tendenz0[$i]."-".$tendenz2[$i];
-              } elseif($lmtype!=0 && $btip[$i][$n]==false){
+              } elseif ($lmtype!=0 && $btip[$i][$n]==false){
                 echo $tendenz1[$i][$n]."-".$tendenz0[$i][$n]."-".$tendenz2[$i][$n];
               }
             }?>
           </td><?php 
-          } elseif($l==($ende+1)){?>
+          } elseif ($l==($ende+1)){?>
           <td align="center" class="lmoLeer nobr"><strong><?php            if ($anztipper > 0 && $tipp_tippmodus == 1) {
               if ($lmtype == 0 && $btip[$i] == false) {
                 if ($anzgetippt[$i] > 0) {
@@ -360,7 +360,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                   }
                   echo number_format(($toregesa[$i]/$anzgetippt[$i]), $nachkomma, ".", ",").":".number_format(($toregesb[$i]/$anzgetippt[$i]), $nachkomma, ".", ",");
                 }
-              } elseif($lmtype != 0 && $btip[$i][$n] == false) {
+              } elseif ($lmtype != 0 && $btip[$i][$n] == false) {
                 if ($anzgetippt[$i][$n] > 0) {
                   if ($toregesa[$i][$n] < 10 && $toregesb[$i][$n] < 10) {
                     $nachkomma = 1;

@@ -54,7 +54,7 @@ for($i = 0; $i < $anztipper; $i++) {
   }
   $tipperteam[$i] = $dummb[5];
 }
-$verz = opendir(PATH_TO_ADDONDIR . "/tipp/".$tipp_dirtipp."auswert");
+$verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert");
 $dummy = array();
 while ($files = readdir($verz)) {
   if (strtolower(substr($files, -4)) == ".aus" && strtolower(substr($files, -10)) != "gesamt.aus") {
@@ -97,7 +97,7 @@ for($k = 0; $k < $anzligen; $k++) {
   $auswertfile1 = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$k];
   if ($ftest == 0 && $tipp_immeralle == 0) {
     // Liga darf nicht in Gesamtwertung einfliessen
-  } elseif(!file_exists($auswertfile1))
+  } elseif (!file_exists($auswertfile1))
   echo getMessage($text['tipp'][17],TRUE);
   else
     {
@@ -111,7 +111,7 @@ for($k = 0; $k < $anzligen; $k++) {
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));
-        } elseif((strpos($zeile, "=") !== false) && (substr($zeile, 0, 1) != ";")) {
+        } elseif ((strpos($zeile, "=") !== false) && (substr($zeile, 0, 1) != ";")) {
           $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
           $wert = trim(substr($zeile, strpos($zeile, "=")+1));
           array_push($tippdaten, $sekt."|".$schl."|".$wert."|EOL");
@@ -136,7 +136,7 @@ for($k = 0; $k < $anzligen; $k++) {
             $gef = 1;
           }
         }
-      } elseif($op4 == "SG") {
+      } elseif ($op4 == "SG") {
         $gef = 0;
         for($j = 0; $j < $anztipper && $gef == 0; $j++) {
           if ($tippernick[$j] == $op1) {
@@ -144,7 +144,7 @@ for($k = 0; $k < $anzligen; $k++) {
             $gef = 1;
           }
         }
-      } elseif(substr($op4, 0, 1) == "P" && $tipp_showzus == 1) {
+      } elseif (substr($op4, 0, 1) == "P" && $tipp_showzus == 1) {
         $artpkt = substr($op4, 1, 1);
         $gef = 0;
         for($j = 0; $j < $anztipper && $gef == 0; $j++) {

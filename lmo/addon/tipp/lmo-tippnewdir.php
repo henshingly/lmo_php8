@@ -50,7 +50,7 @@ if ($ftype != "") {
     $files = $dummy[$k];
     if ($_SESSION['lmouserok'] != 1) {
       $ftest = 1;
-    } elseif($_SESSION['lmouserok'] == 1) {
+    } elseif ($_SESSION['lmouserok'] == 1) {
       $ftest = 0;
       $ftest1 = explode(',', $_SESSION['lmouserfile']);
       if (isset($ftest1)) {
@@ -73,7 +73,7 @@ if ($ftype != "") {
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = substr($zeile, 1, -1);
-        } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
+        } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
           $schl = substr($zeile, 0, strpos($zeile, "="));
           $wert = substr($zeile, strpos($zeile, "=")+1);
           if ($schl == "Name") {
@@ -163,13 +163,13 @@ if ($ftype != "") {
                           $t5 = strlen(decbin($t4-1));
                           if ($y == $t5) {
                             echo $text[374];
-                          } elseif($y == $t5-1) {
+                          } elseif ($y == $t5-1) {
                             echo $text[373];
-                          } elseif($y == $t5-2) {
+                          } elseif ($y == $t5-2) {
                             echo $text[372];
-                          } elseif($y == $t5-3) {
+                          } elseif ($y == $t5-3) {
                             echo $text[371];
-                          } elseif($y == $t5-4) {
+                          } elseif ($y == $t5-4) {
                             echo $text[370];
                           } else {
                             echo $y.". ".$t2;
@@ -237,11 +237,11 @@ if ($ftype != "") {
                           $t5 = strlen(decbin($t4-1));
                           if ($y == $t5) {
                             echo $text[374];
-                          } elseif($y == $t5-1) {
+                          } elseif ($y == $t5-1) {
                             echo $text[373];
-                          } elseif($y == $t5-2) {
+                          } elseif ($y == $t5-2) {
                             echo $text[372];
-                          } elseif($y == $t5-3) {
+                          } elseif ($y == $t5-3) {
                             echo $text[371];                          
                           } else {
                             echo $y.". ".$t2;
@@ -277,7 +277,7 @@ if ($ftype != "") {
     </td>
   </tr>
 <?php 
-                    }elseif($iptype!="reminder"){
+                    }elseif ($iptype!="reminder"){
                       $checked = 0;
                       if (($todo == "newtipper" || $todo == "tippuseredit") && $xtipperligen != "") {
                         $checked = 0;
@@ -286,13 +286,13 @@ if ($ftype != "") {
                             $checked = 1;
                           }
                         }
-                      } elseif($todo == "newtipper") {
+                      } elseif ($todo == "newtipper") {
                         $checked = 1;
                       }?>
 <input type="checkbox" name="xtipperligen[]" value="<?php echo substr($files,0,-4) ?>"<?php 
                       if (($todo == "newtipper" || $todo == "tippuseredit") && $checked == 1) {
                         echo "checked";
-                      } elseif($todo == "tippuseredit" && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$nick.".tip") == true) {
+                      } elseif ($todo == "tippuseredit" && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$nick.".tip") == true) {
                         echo "checked";
                       }
                        

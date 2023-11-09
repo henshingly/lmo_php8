@@ -33,7 +33,7 @@ if(file_exists($auswertfile)){
         $sekt=trim(substr($zeile,1,-1));
         array_push($tippdaten,$sekt."|||EOL");
         $anzteams++;
-      }elseif((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
+      }elseif ((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
         $schl=trim(substr($zeile,0,strpos($zeile,"=")));
         $wert=trim(substr($zeile,strpos($zeile,"=")+1));
         array_push($tippdaten,$sekt."|".$schl."|".$wert."|EOL");
@@ -60,10 +60,10 @@ if(file_exists($auswertfile)){
     $dum=explode('|',$tippdaten[$i-1]);
     $op1=$dum[0];               // Nick
     $op3=(int)substr($dum[1],2)-1;   // Spieltagsnummer
-    $op4=(int)substr($dum[1],0,2);   // TP
+    $op4=substr($dum[1],0,2);   // TP
     if($op3<$endtab){
       if($op4=="SG"){$spielegetippt[$op1]+=$dum[2];}
-      elseif($op4=="TP"){$tipppunktegesamt[$op1]+=$dum[2];}
+      elseif ($op4=="TP"){$tipppunktegesamt[$op1]+=$dum[2];}
     }
   }
 
