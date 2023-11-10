@@ -49,8 +49,8 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
 
 <div class="container">
   <?php if($tipp_einsichterst>=1){ ?>
-  <div class="row">
-    <div class="col"><?php echo $text['tipp'][220]." ".$text['tipp'][215+$tipp_einsichterst]; ?></div>
+  <div class="row p-1">
+    <div class="col d-flex justify-content-center"><p class="lead"><?php echo $text['tipp'][220]." ".$text['tipp'][215+$tipp_einsichterst]; ?></p></div>
   </div><?php  }?>
   <div class="row">
     <div class="col"><?php 

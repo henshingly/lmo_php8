@@ -112,12 +112,9 @@ if (!file_exists($einsichtfile)) {
   }
   for($i = 1; $i <= count($tippdaten); $i++) {
     $dum = explode('|', $tippdaten[$i-1]);
-    $op1 = $dum[0];
-    // Nick
-    $op3 = (int)substr($dum[1], 2)-1;
-    // Spieltagsnummer
-    $op4 = substr($dum[1], 0, 2);
-    // TP
+    $op1 = $dum[0];    // Nick
+    $op3 = (int)substr($dum[1], 2)-1;    // Spieltagsnummer
+    $op4 = substr($dum[1], 0, 2);    // TP
     $op6 = (int)substr($dum[1], 2, -1)-1;
     $op7 = (int)substr($dum[1], -1)-1;
     $op8 = $dum[3];

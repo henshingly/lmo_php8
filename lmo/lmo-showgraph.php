@@ -72,7 +72,7 @@ if(($file!="") && ($kurve==1)){
                     },";
                 }
 			?>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="//cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
 const ctx = document.getElementById('myChart');
