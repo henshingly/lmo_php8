@@ -39,7 +39,7 @@ if ($tippfile != "") {
     if (!$datei) {
       echo getMessage($text[283],TRUE);
       exit;
-    } elseif ($start1 == 0) {
+    } elseif($start1 == 0) {
       echo getMessage($text['tipp'][41]);
     }
     flock($datei, 2);
@@ -59,7 +59,7 @@ if ($tippfile != "") {
               if ($jksp[$k] > 0) {
                 fputs($datei, "@".$jksp[$k]."@\n");
                 $jksave = 1;
-              } elseif (substr($daten[$l+1], 0, 1) == "@") {
+              } elseif(substr($daten[$l+1], 0, 1) == "@") {
                 $l++;
                 fputs($datei, $daten[$l]."\n");
                 $jksave = 1;
@@ -67,14 +67,14 @@ if ($tippfile != "") {
             }
             if ($tippa[$k] == "_") {
               fputs($datei, "GA".$spiel[$k]."=-1\n");
-            } elseif ($tippa[$k] == "") {
+            } elseif($tippa[$k] == "") {
               fputs($datei, "GA".$spiel[$k]."=-1\n");
             } else {
               fputs($datei, "GA".$spiel[$k]."=".$tippa[$k]."\n");
             }
             if ($tippb[$k] == "_") {
               fputs($datei, "GB".$spiel[$k]."=-1\n");
-            } elseif ($tippb[$k] == "") {
+            } elseif($tippb[$k] == "") {
               fputs($datei, "GB".$spiel[$k]."=-1\n");
             } else {
               fputs($datei, "GB".$spiel[$k]."=".$tippb[$k]."\n");
@@ -87,7 +87,7 @@ if ($tippfile != "") {
           fputs($datei, $daten[$l]."\n");
           $jksave = 1;
         }
-      } elseif ($daten[$l] != "" && substr($daten[$l], 0, 1) != "@") {
+      } elseif($daten[$l] != "" && substr($daten[$l], 0, 1) != "@") {
         for($k = $start1; $k <= $i; $k++) {
           $sp = substr($daten[$l], 2, strpos($daten[$l], "=")-2);
           if ($sp == $spiel[$k] && $round == $spieltag[$k]) {
@@ -111,14 +111,14 @@ if ($tippfile != "") {
         }
         if ($tippa[$k] == "_") {
           fputs($datei, "GA".$spiel[$k]."=-1\n");
-        } elseif ($tippa[$k] == "") {
+        } elseif($tippa[$k] == "") {
           fputs($datei, "GA".$spiel[$k]."=-1\n");
         } else {
           fputs($datei, "GA".$spiel[$k]."=".$tippa[$k]."\n");
         }
         if ($tippb[$k] == "_") {
           fputs($datei, "GB".$spiel[$k]."=-1\n");
-        } elseif ($tippb[$k] == "") {
+        } elseif($tippb[$k] == "") {
           fputs($datei, "GB".$spiel[$k]."=-1\n");
         } else {
           fputs($datei, "GB".$spiel[$k]."=".$tippb[$k]."\n");

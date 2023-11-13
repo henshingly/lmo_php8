@@ -36,7 +36,7 @@ if ($file != "") {
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));
-        } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+        } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
           $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
           $wert = trim(substr($zeile, strpos($zeile, "=")+1));
           if ($sekt == "Options") {
@@ -90,9 +90,9 @@ if ($file != "") {
       $zeile = trim($zeile);
       if ((substr($zeile, 0, 1) == "@") && (substr($zeile, -1) == "@")) {
         $jkwert = trim(substr($zeile, 1, -1));
-      } elseif ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+      } elseif((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $sekt = trim(substr($zeile, 1, -1));
-      } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+      } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         array_push($tippdaten, $sekt."|".$schl."|".$wert."|".$jkwert."|EOL");
@@ -142,7 +142,7 @@ if ($file != "") {
             }
           }
           $datum10 = $dum[2];
-        } elseif ($dum[1] == "D2") {
+        } elseif($dum[1] == "D2") {
           $dummy2 = "";
           if ($dum[2] != "") {
             $dummy2 = strtotime(substr($dum[2], 0, 2)." ".$me[intval(substr($dum[2], 3, 2))]." ".substr($dum[2], 6, 4));
@@ -156,37 +156,37 @@ if ($file != "") {
             }
           }
           $datum20 = $dum[2];
-        } elseif ($dum[1] == "MO" && $lmtype0 != 0) {
+        } elseif($dum[1] == "MO" && $lmtype0 != 0) {
           $modus0 = $dum[2];
-        } elseif ($op8 == "TA") {
+        } elseif($op8 == "TA") {
           $teama0 = $dum[2];
-        } elseif ($op8 == "TB") {
+        } elseif($op8 == "TB") {
           $teamb0 = $dum[2];
-        } elseif ($op8 == "GA") {
+        } elseif($op8 == "GA") {
           $goala0 = $dum[2];
-        } elseif ($op8 == "GB") {
+        } elseif($op8 == "GB") {
           $goalb0 = $dum[2];
-        } elseif ($op8 == "SP") {
+        } elseif($op8 == "SP") {
           $mspez0 = $dum[2];
-        } elseif ($op8 == "ET" && $lmtype0 == 0 && $dum[2] == 3) {
+        } elseif($op8 == "ET" && $lmtype0 == 0 && $dum[2] == 3) {
           $msieg0 = 3;
-        } elseif ($op8 == "NT") {
+        } elseif($op8 == "NT") {
           $mnote0 = addslashes($dum[2]);
-        } elseif ($op8 == "BE") {
+        } elseif($op8 == "BE") {
           $mberi0 = addslashes($dum[2]);
-        } elseif ($op8 == "TI") {
+        } elseif($op8 == "TI") {
           $mtipp0 = $dum[2];
-        } elseif ($op8 == "AT" && $teama0 > 0) {
+        } elseif($op8 == "AT" && $teama0 > 0) {
           $btip = false;
           if ($dum[2] > 0) {
             if ($now <= $dum[2] && $then > $dum[2]) {
               $btip = true;
             }
-          } elseif ($dummy1 > 0) {
+          } elseif($dummy1 > 0) {
             if ($now <= $dummy1 && $then > $dummy1) {
               $btip = true;
             }
-          } elseif ($dummy2 > 0) {
+          } elseif($dummy2 > 0) {
             if ($now <= $dummy2 && $then > $dummy2) {
               $btip = true;
             }
@@ -282,7 +282,7 @@ if ($file != "") {
               $op8 = substr($dum1[1], 0, 2);
               if ($op8 == "GA") {
                 $tippa0 = $dum1[2];
-              } elseif ($op8 == "GB") {
+              } elseif($op8 == "GB") {
                 $tippb0 = $dum1[2];
                  
                 $spieltag0t = substr($dum1[0], 5);

@@ -58,7 +58,7 @@ if ($einsichtfile != "") {
       if ($nick != $_SESSION['lmotippername']) {
         //////////// nur die unveränderten Tipps werden zurückgeschrieben
         fputs($datei, $daten[$l]."\n");
-      } elseif ($daten[$l] != "") {
+      } elseif($daten[$l] != "") {
         $nick2 = $l;
       }
     }
@@ -74,7 +74,7 @@ if ($einsichtfile != "") {
             if ($jksp[$k] > 0) {
               fputs($datei, "@".$jksp[$k]."@\n");
               $jksave = 1;
-            } elseif (substr($daten[$l+1], 0, 1) == "@") {
+            } elseif(substr($daten[$l+1], 0, 1) == "@") {
               $l++;
               fputs($datei, $daten[$l]."\n");
               $jksave = 1;
@@ -82,20 +82,20 @@ if ($einsichtfile != "") {
           }
           if ($tippa[$k] == "_") {
             fputs($datei, "GA".$spiel[$k]."=-1\n");
-          } elseif ($tippa[$k] == "") {
+          } elseif($tippa[$k] == "") {
             fputs($datei, "GA".$spiel[$k]."=-1\n");
           } else {
             fputs($datei, "GA".$spiel[$k]."=".$tippa[$k]."\n");
           }
           if ($tippb[$k] == "_") {
             fputs($datei, "GB".$spiel[$k]."=-1\n");
-          } elseif ($tippb[$k] == "") {
+          } elseif($tippb[$k] == "") {
             fputs($datei, "GB".$spiel[$k]."=-1\n");
           } else {
             fputs($datei, "GB".$spiel[$k]."=".$tippb[$k]."\n");
           }
         }
-      } elseif ($daten[$l] != "" && substr($daten[$l], 0, 1) != "@") {
+      } elseif($daten[$l] != "" && substr($daten[$l], 0, 1) != "@") {
         for($k = $start2; $k <= $i; $k++) {
           $sp = substr($daten[$l], 2, strpos($daten[$l], "=")-2);
           if ($sp == $spiel[$k]) {
@@ -118,14 +118,14 @@ if ($einsichtfile != "") {
         // getippte dazu schreiben
         if ($tippa[$k] == "_") {
           fputs($datei, "GA".$spiel[$k]."=-1\n");
-        } elseif ($tippa[$k] == "") {
+        } elseif($tippa[$k] == "") {
           fputs($datei, "GA".$spiel[$k]."=-1\n");
         } else {
           fputs($datei, "GA".$spiel[$k]."=".$tippa[$k]."\n");
         }
         if ($tippb[$k] == "_") {
           fputs($datei, "GB".$spiel[$k]."=-1\n");
-        } elseif ($tippb[$k] == "") {
+        } elseif($tippb[$k] == "") {
           fputs($datei, "GB".$spiel[$k]."=-1\n");
         } else {
           fputs($datei, "GB".$spiel[$k]."=".$tippb[$k]."\n");

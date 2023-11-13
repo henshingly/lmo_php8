@@ -73,14 +73,14 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
       if ($lmtype == 0) {
         if ($goaltippa[$j-1] == "_") {
           fputs($datei, "GA".$j."=-1\n");
-        } elseif ($goaltippa[$j-1] == "") {
+        } elseif($goaltippa[$j-1] == "") {
           fputs($datei, "GA".$j."=-1\n");
         } else {
           fputs($datei, "GA".$j."=".$goaltippa[$j-1]."\n");
         }
         if ($goaltippb[$j-1] == "_") {
           fputs($datei, "GB".$j."=-1\n");
-        } elseif ($goaltippb[$j-1] == "") {
+        } elseif($goaltippb[$j-1] == "") {
           fputs($datei, "GB".$j."=-1\n");
         } else {
           fputs($datei, "GB".$j."=".$goaltippb[$j-1]."\n");
@@ -89,14 +89,14 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
         for($n = 1; $n <= $modus[$st-1]; $n++) {
           if ($goaltippa[$j-1][$n-1] == "_") {
             fputs($datei, "GA".$j.$n."=-1\n");
-          } elseif ($goaltippa[$j-1][$n-1] == "") {
+          } elseif($goaltippa[$j-1][$n-1] == "") {
             fputs($datei, "GA".$j.$n."=-1\n");
           } else {
             fputs($datei, "GA".$j.$n."=".$goaltippa[$j-1][$n-1]."\n");
           }
           if ($goaltippb[$j-1][$n-1] == "_") {
             fputs($datei, "GB".$j.$n."=-1\n");
-          } elseif ($goaltippb[$j-1][$n-1] == "") {
+          } elseif($goaltippb[$j-1][$n-1] == "") {
             fputs($datei, "GB".$j.$n."=-1\n");
           } else {
             fputs($datei, "GB".$j.$n."=".$goaltippb[$j-1][$n-1]."\n");

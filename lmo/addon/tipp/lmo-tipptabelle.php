@@ -113,7 +113,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     }
   } /* ende if($nick!="") */?>
   <tr>
-    <th class="nobr" align="center"><?php if($nick==$_SESSION['lmotippername'] && $nick!=""){echo $text['tipp'][173];}elseif ($nick!=""){echo $text['tipp'][181]." ".$nick;}else{echo $text['tipp'][184];} ?></th>
+    <th class="nobr" align="center"><?php if($nick==$_SESSION['lmotippername'] && $nick!=""){echo $text['tipp'][173];}elseif($nick!=""){echo $text['tipp'][181]." ".$nick;}else{echo $text['tipp'][184];} ?></th>
   </tr>
   <tr>
     <td align="center">

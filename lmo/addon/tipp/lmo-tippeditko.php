@@ -235,7 +235,7 @@ for($n=0;$n<$modus[$st-1];$n++){
 
 /**BEIDE*/
   if ($tipp_jokertipp==1){ ?>
-    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif ($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>
+    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>
     <td class="lmoBackMarkierung" align="right"><?php echo $goala[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="center">:</td>
     <td class="lmoBackMarkierung" align="left"><?php echo $goalb[$st-1][$i][$n]; ?></td>

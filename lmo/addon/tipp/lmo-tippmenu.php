@@ -9,7 +9,7 @@
   echo "&nbsp;&nbsp;";
   if ($viewermode == 1) {
     echo $text['tipp'][9]."&nbsp;&nbsp;";
-  } elseif ($file != "") {
+  } elseif($file != "") {
     if ($tipp_sttipp != -1) {
       if ($todo != "edit") {
         echo "<a href=\"".$adda."edit&amp;file=".$file."&amp;st=".$st."\" title=\"".$text['tipp'][9]."\">".$text['tipp'][9]."</a>";

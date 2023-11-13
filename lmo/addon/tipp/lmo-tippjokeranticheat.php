@@ -47,9 +47,9 @@ while (!feof($datei)) {
   $zeile = trim($zeile);
   if ((substr($zeile, 0, 1) == "@") && (substr($zeile, -1) == "@")) {
     $jkwert = trim(substr($zeile, 1, -1));
-  } elseif ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+  } elseif((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
     $sekt = trim(substr($zeile, 1, -1));
-  } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+  } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
     $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
     $wert = trim(substr($zeile, strpos($zeile, "=")+1));
     array_push($tippdaten, $sekt."|".$schl."|".$wert."|".$jkwert."|EOL");
@@ -64,7 +64,7 @@ for($ia = 1; $ia <= count($tippdaten); $ia++) {
     $jkspanti = $dum[3];
     if ($jksp == $jkspanti) {
       $jkspanticheat = false;
-    } elseif ($jkspanti > 0) {
+    } elseif($jkspanti > 0) {
       if ($lmtype == 0) {
         $btip = tippaenderbar($mterm[$st-1][$jkspanti-1], $datum1[$st-1], $datum2[$st-1]);
       } else {

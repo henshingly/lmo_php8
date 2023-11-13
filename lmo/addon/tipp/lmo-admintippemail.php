@@ -159,7 +159,7 @@ if ($save == 1) {
             <td align="left" colspan="3">
               <textarea id="message" name="message" rows="10" cols="60"><?php                if ($emailart == 1) {
                   echo $tipp_textreminder1;
-                } elseif ($message != "") {
+                } elseif($message != "") {
                   echo $message;
                 } else {
                   echo $text['tipp'][295];

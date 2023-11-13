@@ -74,7 +74,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     if ($xtipperpassneu == "") {
       $newpage = 0;
       echo getMessage($text['tipp'][69],TRUE);
-    } elseif (strlen($xtipperpassneu) < 3) {
+    } elseif(strlen($xtipperpassneu) < 3) {
       $newpage = 0;
       echo getMessage($text['tipp'][73],TRUE);
     }

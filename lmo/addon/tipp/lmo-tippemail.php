@@ -63,7 +63,7 @@ if ($message != "") {
       }
     }
     echo getMessage($anzemail." ".$text['tipp'][175]);
-  } elseif ($emailart == 1) {
+  } elseif($emailart == 1) {
     $tipp_textreminder1 = str_replace(array("\r\n","\n","\r"), array("&#10;","&#10;","&#10;") , $message);
     require(PATH_TO_LMO."/lmo-savecfg.php");
     $now = strtotime("now");
@@ -147,11 +147,11 @@ if ($message != "") {
                   } else {
                     if ($spieltag[$i] == $anzst[$i]) {
                       $j = $text[374];
-                    } elseif ($spieltag[$i] == $anzst[$i]-1) {
+                    } elseif($spieltag[$i] == $anzst[$i]-1) {
                       $j = $text[373];
-                    } elseif ($spieltag[$i] == $anzst[$i]-2) {
+                    } elseif($spieltag[$i] == $anzst[$i]-2) {
                       $j = $text[372];
-                    } elseif ($spieltag[$i] == $anzst[$i]-3) {
+                    } elseif($spieltag[$i] == $anzst[$i]-3) {
                       $j = $text[371];
                     } else {
                       $j = $spieltag[$i].". ".$text[370];
@@ -184,11 +184,11 @@ if ($message != "") {
           }
         }
       }
-    } elseif ($liga != "" && $tage > 0 && $st >= 0) {
+    } elseif($liga != "" && $tage > 0 && $st >= 0) {
       $file = $liga;
       if ($st > 0) {
         require(PATH_TO_LMO."/lmo-openfiledat.php");
-      } elseif ($st == 0) {
+      } elseif($st == 0) {
         require(PATH_TO_LMO."/lmo-openfile.php");
       }
        
@@ -203,7 +203,7 @@ if ($message != "") {
               require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfile.php");
               $st0 = $st-1;
               $anzst1 = $st;
-            } elseif ($st == 0) {
+            } elseif($st == 0) {
               require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileall.php");
               $st0 = 0;
               $anzst1 = $anzst;
@@ -219,7 +219,7 @@ if ($message != "") {
                       }
                     }
                   }
-                } elseif ($lmtype != 0) {
+                } elseif($lmtype != 0) {
                   for($dd = 0; $dd < $anzsp; $dd++) {
                     for($ddd = 0; $ddd < $modus[$st0]; $ddd++) {
                       $zeit = zeit($mterm[$st0][$dd][$ddd], $datum1[$st0], $datum2[$st0]);
@@ -256,7 +256,7 @@ if ($message != "") {
       } // ende for($tippernr=0;$tippernr<$anztipper;$tippernr++)
     }
     echo getMessage($anzemail." ".$text['tipp'][175]);
-  } elseif ($emailart == 2 && $adressat != "") {
+  } elseif($emailart == 2 && $adressat != "") {
     $dummb = explode('|', $dumma[0]);
     for($i = 0; $i < $anztipper && $adressat != $dummb[0]; $i++) {
       $dummb = explode('|', $dumma[$i]);
