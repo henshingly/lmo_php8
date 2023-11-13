@@ -330,8 +330,12 @@ if ($file != "") {
         <input type="hidden" name="file" value="<?php echo $file; ?>">
         <input type="hidden" name="st" value="<?php echo $st; ?>">
         <div class="container">
-          <div class="row">
-            <div class="col-8 text-start pb-3"><?php
+          <div class="row"><?php
+          if ($goalfaktor==1) { ?>
+            <div class="col-5 text-start"><?php
+          } else { ?>
+            <div class="col-7 text-start"><?php
+          }
   echo $st.". ".$text[2];
   if ($datum1[$st-1] != "") {
     $datum = explode('.', $datum1[$st-1]);
@@ -351,13 +355,13 @@ if ($file != "") {
   }?>
             </div><?php
   if ($goalfaktor!=1) {?>
-            <div class="col-1"><?php if ($goalfaktor!=1) {echo "(".$text[553+log10($goalfaktor)].")";}?></div><?php
-  } else {?>
-            <div class="col-1">&nbsp;</div><?php
+            <div class="col-2"><?php if ($goalfaktor!=1) {echo "(".$text[553+log10($goalfaktor)].")";}?></div><?php
   }?>
+            <div class="col-4 d-none d-lg-block"></div>
+            <div class="col-2 d-lg-none"></div>
             <div class="col-1"><acronym title="<?php echo $text[213] ?>"><i class="bi bi-chat-fill text-success" style="font-size: 1.3rem;"></i></acronym></div>
-            <div class="col-1"><acronym title="<?php echo $text[112] ?>"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i></acronym></div>
-            <div class="col-1"><acronym title="<?php echo $text[263] ?>"><i class="bi bi-box-arrow-up-right text-warning" style="font-size: 1.3rem;"></i></acronym></div>
+            <div class="col-1 d-none d-lg-block"><acronym title="<?php echo $text[112] ?>"><i class="bi bi-info-circle-fill text-info" style="font-size: 1.3rem;"></i></acronym></div>
+            <div class="col-1 d-none d-lg-block"><acronym title="<?php echo $text[263] ?>"><i class="bi bi-box-arrow-up-right text-warning" style="font-size: 1.3rem;"></i></acronym></div>
           </div><?php
   if ($lmtype != 0) {
     $anzsp = $anzteams;
@@ -384,7 +388,7 @@ if ($file != "") {
               <input title="<?php echo $text[122] ?>" class="custom-control" type="text" name="xatdat<?php echo $i; ?>" tabindex="<?php echo $i;?>3" size="6" maxlength="10" value="<?php echo $dum1; ?>" onChange="dolmoedit()" ondblclick="fillAll(this);">
               <input title="<?php echo $text[123] ?>" class="custom-control" type="text" name="xattim<?php echo $i; ?>" tabindex="<?php echo $i;?>4" size="2" maxlength="5" value="<?php echo $dum2; ?>" onChange="dolmoedit()" ondblclick="fillAll(this);">
             </div>
-            <div class="col-2"><?php
+            <div class="col-2 d-none d-lg-block"><?php
       if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
               <select class="form-select" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>5" data-size="7"><?php
         for($y = 0; $y <= $anzteams; $y++) {?>
@@ -395,8 +399,19 @@ if ($file != "") {
         echo $teams[$teama[$st-1][$i]];
       }?>
             </div>
+            <div class="col-1 d-lg-none"><?php
+      if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
+              <select class="form-select" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>5" data-size="7"><?php
+        for($y = 0; $y <= $anzteams; $y++) {?>
+                <option value="<?php echo $y?>"<?php if ($y == $teama[$st-1][$i]) {echo " selected";}?>><?php echo $teamk[$y]?></option><?php
+        }?>
+              </select><?php
+      } else {
+        echo $teamk[$teama[$st-1][$i]];
+      }?>
+            </div>
             <div class="col-1"> vs. </div>
-            <div class="col-2"><?php
+            <div class="col-2 d-none d-lg-block"><?php
       if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
               <select class="form-select" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i;?>6" data-size="7"><?php
         for($y = 0; $y <= $anzteams; $y++) {?>
@@ -405,6 +420,17 @@ if ($file != "") {
               </select><?php
       } else {
         echo $teams[$teamb[$st-1][$i]];
+      }?>
+          </div>
+            <div class="col-1 d-lg-none"><?php
+      if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
+              <select class="form-select" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i;?>6" data-size="7"><?php
+        for($y = 0; $y <= $anzteams; $y++) {?>
+                <option value="<?php echo $y?>"<?php if ($y == $teamb[$st-1][$i]) {echo " selected";}?>><?php echo $teamk[$y]?></option><?php
+        }?>
+              </select><?php
+      } else {
+        echo $teamk[$teamb[$st-1][$i]];
       }?>
           </div><?php
       if($goala[$st-1][$i]=="-1"){
@@ -438,13 +464,13 @@ if ($file != "") {
               <script type="text/javascript">document.getElementById('gT<?php echo $i?>').style.display='none';document.write('<a href="#" class="none" onClick="this.style.display=\'none\';document.getElementById(\'gT<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
             </div>
-            <div class="col-1">
+            <div class="col-1 d-none d-lg-block">
               <input id="n<?php echo $i?>" class="custom-control" type="text" name="xmnote<?php echo $i; ?>" tabindex="<?php echo $i;?>11" size="16" maxlength="255" value="<?php echo htmlentities($mnote[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
       if (trim($mnote[$st-1][$i]) == '') {?>
               <script type="text/javascript">document.getElementById('n<?php echo $i?>').style.display='none';document.write('<a href="#" class="none" onClick="this.style.display=\'none\';document.getElementById(\'n<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
             </div>
-            <div class="col-1"><input id="s<?php echo $i?>" class="custom-control" type="text" name="xmberi<?php echo $i; ?>" tabindex="<?php echo $i;?>12" size="14" maxlength="255" value="<?php echo htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
+            <div class="col-1 d-none d-lg-block"><input id="s<?php echo $i?>" class="custom-control" type="text" name="xmberi<?php echo $i; ?>" tabindex="<?php echo $i;?>12" size="14" maxlength="255" value="<?php echo htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
       if (trim($mberi[$st-1][$i]) == '') {?>
               <script type="text/javascript">document.getElementById('s<?php echo $i?>').style.display='none';document.write('<a href="#" class="none" onClick="this.style.display=\'none\';document.getElementById(\'s<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
@@ -453,8 +479,8 @@ if ($file != "") {
       /*Tippspiel-Addon*/
       if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
           <div class="row p-1">
-            <div class="col-1 offset-6"><?php echo $text['487'];?></div>
-            <div class="col-2">
+            <div class="col-1 offset-6 d-none d-lg-block"><?php echo $text['487'];?></div>
+            <div class="col-2 d-none d-lg-block">
               <select class="form-select" name="xmtipp<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>13">
                 <option value="0"<?php if($mtipp[$st-1][$i]<1){echo " selected";}?>>_</option>
                 <option value="1"<?php if($mtipp[$st-1][$i]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
@@ -470,7 +496,7 @@ if ($file != "") {
             <div class="col"><?php if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></div>
           </div><?php
         }?>
-          <div class="row"><?php
+          <div class="row p-1"><?php
         if ($mterm[$st-1][$i][$n] > 0) {
           $dum1 = date("d.m.Y", $mterm[$st-1][$i][$n]);
           $dum2 = date("H:i", $mterm[$st-1][$i][$n]);
@@ -567,7 +593,7 @@ if ($file != "") {
           $goalb[$st-1][$i][$n] = "_";
         }?>
             <div class="col-2">
-              <input title="<?php echo $text[109] ?>" class="custom-control" style="width: 4rem" type="number" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>7" min="0" smaxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>">
+              <input title="<?php echo $text[109] ?>" class="custom-control" style="width: 4rem;" type="number" name="xgoala<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>7" min="0" smaxlength="4" value="<?php echo $goala[$st-1][$i][$n]; ?>">
               :
               <input title="<?php echo $text[110] ?>" class="custom-control" style="width: 4rem;" type="number" name="xgoalb<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>8" min="0" maxlength="4" value="<?php echo $goalb[$st-1][$i][$n]; ?>">
             </div>
@@ -590,17 +616,20 @@ if ($file != "") {
               <script type="text/javascript">document.getElementById('s<?php echo $i.$n?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?php echo $i.$n?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
             </div>
+          </div>
         <?php
         /**Tippspiel-Addon*/
-        if($_SESSION['lmouserok']==2 && $ftest0==1){ echo $ftest0;?>
-            <div class="col-auto">
+        if($_SESSION['lmouserok']==2 && $ftest0==1){?>
+          <div class="row p-1">
+            <div class="col-2 offset-5"><?php echo $text['487'];?></div>
+            <div class="col-2">
               <select class="form-select" name="xmtipp<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text['tipp'][57] ?>" tabindex="<?php echo $i.$n;?>12">
                 <option value="0"<?php if($mtipp[$st-1][$i][$n]<1){echo " selected";}?>>_</option>
                 <option value="1"<?php if($mtipp[$st-1][$i][$n]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
               </select>
-            </div><?php
-        }?>
+            </div>
           </div><?php
+        }
       }
       if(($modus[$st-1]>1) && ($i<$anzsp-1)){ ?>
           <div class="row">
