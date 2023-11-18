@@ -56,7 +56,7 @@ if (($action == "admin") && ($todo == "download") && (($_SESSION["lmouserok"] ==
       $zipfile->open("ligen.zip", ZipArchive::CREATE);
       for($i = 0; $i < count($dummy); $i++) {
         if (check_hilfsadmin($dummy[$i])) {
-          $zipfile->addFile(PATH_TO_LMO."/ligen/".$dummy[$i], $dummy[$i]);
+          $zipfile->addFile(PATH_TO_LMO.$dirliga.$dummy[$i], $dummy[$i]);
         }
       }
       $zipfile->close();

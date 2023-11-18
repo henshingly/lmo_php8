@@ -55,7 +55,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
       if ($dummy[$down-1] != "" && check_hilfsadmin($dummy[$down-1])) {
 	$zipfile = new ZipArchive;
 	$zipfile->open($temp, ZipArchive::CREATE);
-	$zipfile->addFile(PATH_TO_LMO."/ligen/".$dummy[$down-1], $dummy[$down-1]);
+	$zipfile->addFile(PATH_TO_LMO.$dirliga.$dummy[$down-1], $dummy[$down-1]);
 	$zipfile->close();
         $mail = new PHPMailer(true);
         $mail->isMail();
