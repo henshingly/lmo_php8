@@ -49,7 +49,7 @@ if ($message != "") {
         $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
         $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
         $textmessage = str_replace("[name]", $dummb[3], $textmessage);
-        $mail->Body = utf8_decode($textmessage);
+        $mail->Body  = iconv("UTF-8", "ISO-8859-1", $textmessage);
         $mail->addAddress($dummb[4]);
         if ($mail->send()) {
           $anzemail++;
@@ -170,7 +170,7 @@ if ($message != "") {
             $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
             $textmessage = str_replace("[name]", $dummb[3], $textmessage);
             $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-            $mail->Body = utf8_decode($textmessage);
+            $mail->Body  = iconv("UTF-8", "ISO-8859-1", $textmessage);
             $mail->addAddress($dummb[4]);
             if ($mail->send()) {
               $anzemail++;
@@ -239,8 +239,8 @@ if ($message != "") {
               $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
               $textmessage = str_replace("[name]", $dummb[3], $textmessage);
               $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-	      $mail->Body = utf8_decode($textmessage);
-	      $mail->addAddress($dummb[4]);
+              $mail->Body  = iconv("UTF-8", "ISO-8859-1", $textmessage);
+              $mail->addAddress($dummb[4]);
        	      if ($mail->send()) {
                 $anzemail++;
                 $mail->ClearAllRecipients(); 
@@ -265,7 +265,7 @@ if ($message != "") {
     $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
     $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
     $textmessage = str_replace("[name]", $dummb[3], $textmessage);
-    $mail->Body = utf8_decode($textmessage);
+    $mail->Body = iconv("UTF-8", "ISO-8859-1", $textmessage);
     $mail->addAddress($dummb[4]);
     if ($mail->send()) {
       $anzemail++;
