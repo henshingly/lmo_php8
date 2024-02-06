@@ -318,9 +318,9 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
 	if ($lmtype==0) { 
 		if ($team!="") {
 ?>
-  <<div class="row p-3">
+  <div class="row p-3">
     <div class="col">
-      <a href="<?php echo $addr?>-3" onclick="return chklmolink();" title="<?php echo $text[339]?>"><?php echo $text[338]?></a>
+      <a class="btn btn-secondary btn-sm" href="<?php echo $addr?>-3" onclick="return chklmolink();" title="<?php echo $text[339]?>"><?php echo $text[338]?></a>
     </div>
   </div>
 <?php
