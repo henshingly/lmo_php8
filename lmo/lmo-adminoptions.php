@@ -88,14 +88,14 @@ if($save==1){
   <div class="row">
     <div class="col-3">
       <div class="container">
-        <div class="row">
-          <div class="col-auto text-end"><?php if ($show==0) {echo $text[99];?><?php }else{?> <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=0";?>"><?php echo $text[99];?></a><?php }?></div>
+        <div class="row p-1">
+          <div class="col-auto text-end"><?php if ($show==0) {echo $text[99];?><?php }else{?> <a class="btn btn-sm btn-outline-primary" href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=0";?>"><?php echo $text[99];?></a><?php }?></div>
         </div>
-        <div class="row">
-          <div class="col-auto text-end"><?php if ($show==1) {echo $text[226];?><?php }else{?> <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=1";?>"><?php echo $text[226];?></a><?php }?></div>
+        <div class="row p-1">
+          <div class="col-auto text-end"><?php if ($show==1) {echo $text[226];?><?php }else{?> <a class="btn btn-sm btn-outline-primary" href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=1";?>"><?php echo $text[226];?></a><?php }?></div>
         </div>
-        <div class="row">
-          <div class="col-auto text-end"><?php if ($show==2) {echo $text[250];?><?php }else{?> <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=2";?>"><?php echo $text[250];?></a><?php }?></div>
+        <div class="row p-1">
+          <div class="col-auto text-end"><?php if ($show==2) {echo $text[250];?><?php }else{?> <a class="btn btn-sm btn-outline-primary" href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=options&amp;show=2";?>"><?php echo $text[250];?></a><?php }?></div>
         </div>
       </div>
     </div>

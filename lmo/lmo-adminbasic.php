@@ -127,28 +127,28 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
   <div class="row">
     <div class="col-2 text-end">
     <?php if ($show==0) { 
-      echo $text[183]."<br />";
+      echo "<p>$text[183]</p>";
     } else { ?>
-      <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?php echo $text[183];?></a><br /><?php
+      <p><a class="btn btn-sm btn-outline-primary" href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=0&amp;file=$file&amp;st=-1";?>"><?php echo $text[183];?></a></p><?php
     }
     if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1) {
         if ($show==2) {
-          echo $text[250]."<br />";
+          echo "<p>$text[250]</p>";
         } else { ?>
-          <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=2&amp;file=$file&amp;st=-1";?>"><?php echo $text[250];?></a><br /><?php 
+          <p><a class="btn btn-sm btn-outline-primary" href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=2&amp;file=$file&amp;st=-1";?>"><?php echo $text[250];?></a><p><?php 
         }
         if ($lmtype==0) {
           if ($show==3) {
-            echo $text[178]."<br />";
+            echo "<p>$text[178]</p>";
           } else { ?>
-            <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=3&amp;file=$file&amp;st=-1";?>"><?php echo $text[178];?></a><br /><?php
+            <p><a class="btn btn-sm btn-outline-primary" href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=3&amp;file=$file&amp;st=-1";?>"><?php echo $text[178];?></a><p><?php
           }
           if ($show==4) {
-            echo $text[40]."<br />";
+            echo "<p>$text[40]</p>";
           } else { ?>
-            <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=4&amp;file=$file&amp;st=-1";?>"><?php echo $text[40];?></a><br /><?php
+            <a class="btn btn-sm btn-outline-primary" href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;show=4&amp;file=$file&amp;st=-1";?>"><?php echo $text[40];?></a><p><?php
           } ?>
-        <a href='<?php echo "$addr-3"?>' title="<?php echo $text[339]?>"><?php echo $text[338]?></a><?php
+        <p><a class="btn btn-sm btn-outline-primary" href='<?php echo "$addr-3"?>' title="<?php echo $text[339]?>"><?php echo $text[338]?></a></p><?php
        }
     } ?>
     </div>

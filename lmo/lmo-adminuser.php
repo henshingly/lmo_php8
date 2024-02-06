@@ -103,9 +103,9 @@ if ($_SESSION['lmouserok']==2) {
   foreach($lmo_admin_data as $lmo_admin) {
     $show_admin_name=$lmo_admin[2]==2?"<em>".$lmo_admin[0]."</em>":$lmo_admin[0];
     if ($show==$testshow) {
-      echo $show_admin_name."<br />";
+      echo "<p>$show_admin_name</p>";
     } else {?>
-             <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=user&amp;show=".$testshow;?>"><?php echo $show_admin_name;?></a><br /><?php
+             <p><a class="btn btn-sm btn-outline-primary" href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=user&amp;show=".$testshow;?>"><?php echo $show_admin_name;?></a></p><?php
     }    
     $testshow++;
   }?>
@@ -134,13 +134,13 @@ if ($_SESSION['lmouserok']==2) {
           </div>
           <div class="row">
             <div class="col-4 text-end"><?php echo $text[324]?></div>
-            <div class="col-8 text-start"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=true" class="custom-control" type="radio" name="xadmin_rang<?php echo $show?>" value="2" <?php if ($lmo_admin[2]==2) echo " checked";?>> <?php echo $text[326]?></div>
+            <div class="col-8 text-start"><input class="form-check-input" onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=true" type="radio" name="xadmin_rang<?php echo $show?>" value="2" <?php if ($lmo_admin[2]==2) echo " checked";?>> <?php echo $text[326]?></div>
           </div>
           <div class="row pt-3">
-            <div class="col-8 offset-4 text-start"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=false" class="custom-control" type="radio" name="xadmin_rang<?php echo $show?>" value="1" <?php if ($lmo_admin[2]==1) echo " checked";?>> <?php echo $text[325]?></div>
+            <div class="col-8 offset-4 text-start"><input class="form-check-input" onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=false" type="radio" name="xadmin_rang<?php echo $show?>" value="1" <?php if ($lmo_admin[2]==1) echo " checked";?>> <?php echo $text[325]?></div>
           </div>
           <div class="row">
-            <div class="col-8 offset-4 text-start"><input class="custom-control" type="checkbox" name="xadmin_erweitert<?php echo $show?>" <?php if (isset($lmo_admin[4]) && $lmo_admin[4]==1) echo " checked";?> <?php if ($lmo_admin[2]==2) echo " disabled";?>><acronym title="<?php echo $text[560]?>"> <?php echo $text[559]?></acronym></div>
+            <div class="col-8 offset-4 text-start"><input class="form-check-input" type="checkbox" name="xadmin_erweitert<?php echo $show?>" <?php if (isset($lmo_admin[4]) && $lmo_admin[4]==1) echo " checked";?> <?php if ($lmo_admin[2]==2) echo " disabled";?>> <acronym title="<?php echo $text[560]?>"><?php echo $text[559]?></acronym></div>
           </div><?php
       if($lmo_admin[2]==1){?>
           <div class="row">
@@ -153,7 +153,7 @@ if ($_SESSION['lmouserok']==2) {
           if (substr($file,-4)==".l98") {
             $ligenname=substr($file,0,-4);?>
           <div class="row">
-            <div class="col-8 offset-4"><input class="custom-control" type="checkbox" name="xhelfer_ligen<?php echo $show?>[]" value="<?php echo $ligenname?>"<?php if (in_array($ligenname,$helfer_ligen)) echo " checked"?>> <?php echo  $titel?></div>
+            <div class="col-8 offset-4"><input class="form-check-input" type="checkbox" name="xhelfer_ligen<?php echo $show?>[]" value="<?php echo $ligenname?>"<?php if (in_array($ligenname,$helfer_ligen)) echo " checked"?>> <?php echo  $titel?></div>
           </div><?php
           }
         }

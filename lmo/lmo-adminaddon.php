@@ -54,9 +54,9 @@ $testshow=0;
 foreach($cfgarray as $addon_name => $addon_cfg) {
   if (is_array($addon_cfg)) { 
             if ($show==$testshow) { 
-               echo $addon_name."<br />"; 
+               echo "<p>$addon_name</p>"; 
             } else {?>
-               <a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons&amp;show=".$testshow;?>"><?php echo $addon_name;?></a><br /><?php 
+               <p><a class="btn btn-sm btn-outline-primary" href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons&amp;show=".$testshow;?>"><?php echo $addon_name;?></a></p><?php 
             } 
     $testshow++;
   }
