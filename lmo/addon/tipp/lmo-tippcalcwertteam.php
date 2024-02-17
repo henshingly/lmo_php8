@@ -226,12 +226,12 @@ if (!file_exists($auswertfile)) {
     $spielegetipptgesamt[$a] = array_sum($spielegetippt[$a]);
     $tipppunktegesamt[$a] = array_sum($tipppunkte[$a]);
     if ($tipp_showzus == 1) {
-      $punkte1gesamt[$a] = array_sum($punkte1[$a]);
-      $punkte2gesamt[$a] = array_sum($punkte2[$a]);
-      $punkte3gesamt[$a] = array_sum($punkte3[$a]);
-      $punkte4gesamt[$a] = array_sum($punkte4[$a]);
-      $punkte5gesamt[$a] = array_sum($punkte5[$a]);
-      $punkte6gesamt[$a] = array_sum($punkte6[$a]);
+      $punkte1gesamt[$a] = array_sum((int)$punkte1[$a]);
+      $punkte2gesamt[$a] = array_sum((int)$punkte2[$a]);
+      $punkte3gesamt[$a] = array_sum((int)$punkte3[$a]);
+      $punkte4gesamt[$a] = array_sum((int)$punkte4[$a]);
+      $punkte5gesamt[$a] = array_sum((int)$punkte5[$a]);
+      $punkte6gesamt[$a] = array_sum((int)$punkte6[$a]);
     }
      
     if ($tipppunktegesamt[$a] == "") {
