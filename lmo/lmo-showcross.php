@@ -27,13 +27,15 @@ if(($file!="") && ($kreuz==1)){
 
 <?php
 for($i = 0; $i <= ($anzteams); $i++) {
-  echo "<div class='row pt-3'>";
+  echo "<div class='row pt-1'>";
   for($j = 0; $j <= ($anzteams); $j++) {
     $dummy = "";
     if ($j == 0) {
       echo "<div class='col-cross text-center'>";
     } elseif($j == $i) {
       echo "<div class='col-cross bg'>";
+    } elseif($croteam != 0 && ($j == $croteam || $i == $croteam)) {
+      echo "<div class='col-cross text-center sel'>";
     } else {
       echo "<div class='col-cross text-center'>";
     }
@@ -41,17 +43,17 @@ for($i = 0; $i <= ($anzteams); $i++) {
     if (($j == 0) && ($i > 0) && ($i <= $anzteams)) {
       if (($croteam != 0) && (($j == $croteam) || ($i == $croteam))) {
         echo "<a href=\"".$addc.$i."\" data-bs-toggle='tooltip' data-bs-placement='top' title='".$teams[$j]."'>";
-        echo HTML_smallTeamIcon($file,$teams[$i],"width='24'"," alt='$teamk[$i]'");
+        echo HTML_smallTeamIcon($file,$teams[$i],"width='24' alt='$teamk[$i]'");
         echo "</a>";
       } else {
         echo "<a href=\"".$addc.$i."\" data-bs-toggle='tooltip' data-bs-placement='top' title='".$teams[$i]."'>";
-        echo HTML_smallTeamIcon($file,$teams[$i],"width='24'"," alt='$teamk[$i]'");
+        echo HTML_smallTeamIcon($file,$teams[$i],"width='24' alt='$teamk[$i]'");
         echo "</a>";
       }
     }
     if ($i == 0 && $j > 0 && $j <= $anzteams) {
       echo "<a href=\"".$addc.$j."\" data-bs-toggle='tooltip' data-bs-placement='top' title='".$teams[$j]."'>";
-      echo HTML_smallTeamIcon($file,$teams[$j],"width='24'"," alt='$teamk[$j]'");
+      echo HTML_smallTeamIcon($file,$teams[$j],"width='24' alt='$teamk[$i]'");
       echo "</a>";
     }
     if (($i > 0) && ($i <= $anzteams) && ($j > 0) && ($j <= $anzteams) && ($j != $i)) {
