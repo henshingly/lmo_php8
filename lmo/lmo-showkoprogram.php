@@ -23,17 +23,17 @@ if ($file != "") {
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
   $selteam=!empty($_GET['selteam'])?$_GET['selteam']:$selteam;
+  $urlta=$urltb="";
 ?>
 <div class="container">
   <div class="row">
     <div class="col-1"><?php 
   for($i = 1; $i <= floor($anzteams/2); $i++) {
-    echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' width='24' style='vertical-align: middle;'");
     if($i!=$selteam){?>
-            <a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
+            <a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' alt='$teamk[$i]'");?></a>
             <?php
     } else {
-      echo $teamk[$i];
+      echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' alt='$teamk[$i]'");
     }
     echo "<br>"; 
   }?>
@@ -174,12 +174,11 @@ if ($file != "") {
     </div>
     <div class="col-1 text-start"><?php 
   for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {
-    echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' width='24' style='vertical-align: middle;'");
     if($i!=$selteam){?>
-            <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo $teamk[$i]?></a>
+            <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' alt='$teamk[$i]'")?></a>
             <?php
     } else {
-      echo $teamk[$i];
+      echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' alt='$teamk[$i]'");
     } 
     echo "<br>";
   }?>

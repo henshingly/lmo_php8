@@ -34,9 +34,9 @@ if($file!=""){
       <?php
   for ($i=1; $i<=$anzteams; $i++) {
     if($i!=$selteam){?>
-            <p><a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $teams[$i]?>"><?php echo $teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' width='24' style='vertical-align: middle;'"); ?></a></p><?php
+            <p><a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teamk[$i]' width='24' style='vertical-align: middle;'"); ?></a></p><?php
     } else {
-     echo "<p>".$teamk[$i]." ".HTML_smallTeamIcon($file,$teams[$i]," alt='$teams[$i]' width='24' style='vertical-align: middle;'")."</p>";
+     echo "<p>".HTML_smallTeamIcon($file,$teams[$i]," alt='$teamk[$i]' width='24' style='vertical-align: middle;'")."</p>";
     }
   }?>
     </div>
@@ -109,14 +109,14 @@ if($file!=""){
           <div class="col-1 col-sm-auto"><?php echo $mspez[$j][$i]; ?></div><?php
         }?>
           <div class="col-1 col-sm-auto"><?php
-/** Mannschaftsicons finden */
+		  /** Mannschaftsicons finden */
           $lmo_teamaicon="";
           $lmo_teambicon="";
           if($urlb==1 || $mnote[$j][$i]!="" || $msieg[$j][$i]>0) {
             $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," style='vertical-align: middle;'"," alt='' width='24'");
             $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," style='vertical-align: middle;'"," alt='' width='24'");
           }
-/** Spielbericht verlinken */
+		  /** Spielbericht verlinken */
           if($urlb==1) {
             if($mberi[$j][$i]!="") {
               $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong><br><br>";
@@ -135,19 +135,19 @@ if($file!=""){
             if ($spez==1) {
               $lmo_spielnotiz.=" ".$mspez[$j][$i];
             }
-//Grüner Tisch: Heimteam siegt
+			//Grüner Tisch: Heimteam siegt
             if ($msieg[$j][$i]==1) {
               $lmo_spielnotiz.=$text[219].": ".$teams[$teama[$j][$i]]." ".$text[211];
             }
-//Grüner Tisch: Gastteam siegt
+			//Grüner Tisch: Gastteam siegt
             if ($msieg[$j][$i]==2) {
               $lmo_spielnotiz.=$text[219].": ".addslashes($teams[$teamb[$j][$i]]." ".$text[211]);
             }
-//Beidseitiges Ergebnis
+			//Beidseitiges Ergebnis
             if ($msieg[$j][$i]==3) {
               $lmo_spielnotiz.=$text[219].": ".addslashes($text[212]);
             }
-//Allgemeine Notiz
+			//Allgemeine Notiz
             if ($mnote[$j][$i]!="") {
               $lmo_spielnotiz.=$text[22].": ".$mnote[$j][$i];
             }
