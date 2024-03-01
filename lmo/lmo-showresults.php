@@ -98,13 +98,13 @@ foreach ($datsort as $key => $val) {
       $gast2 .= "</a>";
     }
     ?>
-    <div class="col-3 text-start d-none d-lg-block">-&nbsp;
+    <div class="col-3 text-start d-none d-lg-block">-&nbsp;&nbsp;&nbsp;&nbsp;
     <?php
     echo HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' width='24'")."&nbsp;";
     echo $gast1.$teams[$teamb[$st-1][$i]].$gast2;
     ?>
     </div>
-    <div class="col-3 text-start d-lg-none">-&nbsp;
+    <div class="col-3 text-start d-lg-none">-&nbsp;&nbsp;&nbsp;&nbsp;
     <?php 
     echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;
     ?>  
