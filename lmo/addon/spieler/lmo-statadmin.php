@@ -452,7 +452,7 @@ function mark(el){
 	<div class="row">
 		<div class="col">
 			<div class="container">
-				<div class="row">
+				<div class="row p-1">
 					<div class="col-3 offset-3">
 						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="row">
 							<div class="col">
@@ -495,7 +495,7 @@ function mark(el){
 				</div><?php
             if ($_SESSION['lmouserok'] == 2 || ($_SESSION['lmouserok'] == 1 && $spieler_adminbereich_hilfsadmin_zulassen == 1 && $spieler_adminbereich_hilfsadmin_fuer_spalten == 1))
             { ?>
-				<div class="row">
+				<div class="row p-1">
 					<div class="col-3 offset-3 text-start">
 						<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="spalten" class="row">
 							<div class="row">
@@ -505,8 +505,8 @@ function mark(el){
 								<div class="col-auto">
 									<input class="btn btn-sm btn-success" type="submit" value="+">
 								</div>
-								</div>
-								<div class="row">
+							</div>
+							<div class="row">
 								<div class="col">
 								<?php echo $text['spieler'][38] ?>:
 									<input type="radio" class="form-check-input" name="type" value="0" checked>&nbsp;<?php echo $text['spieler'][52] ?>
