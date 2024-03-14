@@ -115,9 +115,9 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
       } elseif(($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
         $erg = 2;
       } else {
-        if ($m2[0] > $m1[1]) {
+        if ($m2[1] > $m1[1]) {
           $erg = 2;
-        } elseif($m2[0] < $m1[1]) {
+        } elseif($m2[1] < $m1[1]) {
           $erg = 1;
         }
       }
