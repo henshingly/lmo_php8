@@ -23,9 +23,9 @@ function check_hilfsadmin($datei) {
   $hilfsadmin_berechtigung=FALSE;
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']==1) {
     $hilfsadmin_ligen = explode(',',$_SESSION['lmouserfile']);
-    if(isset($hilfsadmin_ligen)) {
+    if (isset($hilfsadmin_ligen)) {
       foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
-        if($hilfsadmin_liga.".l98"==basename($datei)) {
+        if ($hilfsadmin_liga.".l98"==basename($datei)) {
           $hilfsadmin_berechtigung=TRUE;
         }
       }
@@ -45,10 +45,10 @@ function applyFactor ($value, $factor) {
 }
 
 function magicQuotesRemove(&$array) {
-  //if(!get_magic_quotes_gpc())
+  //if (!get_magic_quotes_gpc())
   //return;
   foreach($array as $key => $elem) {
-    if(is_array($elem))
+    if (is_array($elem))
     magicQuotesRemove($elem);
     else
     $array[$key] = stripslashes($elem);
@@ -129,19 +129,19 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
   if ($gmod == 1) {
     if ($m1[0] > $m2[0]) {
       $erg = 1;
-    } elseif($m1[0] < $m2[0]) {
+    } elseif ($m1[0] < $m2[0]) {
       $erg = 2;
     }
-  } elseif($gmod == 2) {
-    if($m1[1] != "_") {
+  } elseif ($gmod == 2) {
+    if ($m1[1] != "_") {
       if (($m1[0]+$m1[1]) > ($m2[0]+$m2[1])) {
         $erg = 1;
-      } elseif(($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
+      } elseif (($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
         $erg = 2;
       } else {
-        if ($m2[0] > $m1[1]) {
+        if ($m2[1] > $m1[1]) {
           $erg = 2;
-        } elseif($m2[0] < $m1[1]) {
+        } elseif ($m2[1] < $m1[1]) {
           $erg = 1;
         }
       }
@@ -153,14 +153,14 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
       if (($m1[$k] != "_") && ($m2[$k] != "_")) {
         if ($m1[$k] > $m2[$k]) {
           $erg1++;
-        } elseif($m1[$k] < $m2[$k]) {
+        } elseif ($m1[$k] < $m2[$k]) {
           $erg2++;
         }
       }
     }
     if ($erg1 > ($gmod/2)) {
       $erg = 1;
-    } elseif($erg2 > ($gmod/2)) {
+    } elseif ($erg2 > ($gmod/2)) {
       $erg = 2;
     }
   }
