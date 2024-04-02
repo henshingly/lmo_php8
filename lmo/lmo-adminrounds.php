@@ -109,27 +109,27 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         $hTore = 0;
         $gTore = 0;
       }
-      $teamArray[] = $partie->heim->nr;
-      $teamArray[] = $partie->gast->nr;
+      $teamArray[] = $partie->heim?->nr;
+      $teamArray[] = $partie->gast?->nr;
 
       $str1 = "";
       $str2 = "";
-      if (in_array($partie->heim->nr.'-'.$partie->gast->nr,$rowMarker)) {
+      if (in_array($partie->heim?->nr.'-'.$partie->gast?->nr,$rowMarker)) {
         $str1 = "<strong>";$str2 = "</strong>";
       }?>
         <tr>
           <td>&nbsp;</td>
           <td><?php echo $str1.$partie->datumString()." ".$partie->zeitString().$str2; ?></td>
-          <td><?php echo $str1.$partie->heim->name.$str2; ?></td>
+          <td><?php echo $str1.$partie->heim?->name.$str2; ?></td>
           <td>-</td>
-          <td><?php echo $str1.$partie->gast->name.$str2; ?></td>
+          <td><?php echo $str1.$partie->gast?->name.$str2; ?></td>
           <td align='right' ><?php echo $str1.$hTore.$str2; ?></td>
           <td>:</td>
           <td align='center'><?php echo $str1.$gTore.$str2; ?></td>
           <td></td>
           <td>
             <select class="lmo-formular-input" onChange="dolmoedit()" name="sp_<?php
-      echo $spTag->nr."_".$partie->heim->nr."_".$partie->gast->nr.'">';
+      echo $spTag->nr."_".$partie->heim?->nr."_".$partie->gast?->nr.'">';
       for ($sp = 1;$sp <= $liga->spieltageCount();$sp++) {
         echo "<option value=$sp";
         if($spTag->nr==$sp){echo " selected";}
