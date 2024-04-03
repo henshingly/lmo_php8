@@ -519,18 +519,20 @@ class liga {
             // Partie Filtern
             preg_match("/([a-zA-Z]+)([\d]+)/",trim($parameter[1][$i]),$infoPerPartie);
             // $infoPerPartie -> 0 kompletter treffer / 1 Art des Parameters ( GA/GB ... ) / 2 Nummer der Partie
-            if ($infoPerPartie[1] == "TA" ) {
-              $partieNumber++;
-              $gameNumber= 0;
-            }
-            if (preg_match("/^T[AB]$/",$infoPerPartie[1]) ) {
-              $iniData[$sections[1][$y]][$partieNumber][$infoPerPartie[1]] = trim($parameter[2][$i]);
-            } else {
-              if ( $infoPerPartie[1] == "GA" ) {
-                $gameNumber++;
-                $iniData[$sections[1][$y]][$partieNumber][$gameNumber]["SpNr"] = $infoPerPartie[2];
+            if (count($infoPerPartie) > 0) {
+              if ($infoPerPartie[1] == "TA" ) {
+                $partieNumber++;
+                $gameNumber= 0;
               }
-              $iniData[$sections[1][$y]][$partieNumber][$gameNumber][$infoPerPartie[1]] = trim($parameter[2][$i]);
+              if (preg_match("/^T[AB]$/",$infoPerPartie[1]) ) {
+                $iniData[$sections[1][$y]][$partieNumber][$infoPerPartie[1]] = trim($parameter[2][$i]);
+              } else {
+                if ($infoPerPartie[1] == "GA" ) {
+                  $gameNumber++;
+                  $iniData[$sections[1][$y]][$partieNumber][$gameNumber]["SpNr"] = $infoPerPartie[2];
+                }
+                $iniData[$sections[1][$y]][$partieNumber][$gameNumber][$infoPerPartie[1]] = trim($parameter[2][$i]);
+              }
             }
           }
         }
