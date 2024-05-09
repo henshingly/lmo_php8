@@ -32,6 +32,7 @@ if($action=="admin"){
   $file=isset($_REQUEST['file'])?$_REQUEST['file']:"";
   $subdir=isset($_REQUEST["subdir"])?$_REQUEST["subdir"]:dirname($file)."/";
 
+  if (version_compare(PHP_VERSION, '8.0.0', '<')) echo getMessage('This LMO was designed for PHP 8.<br>You don´t have PHP 8 yet, your PHP version: ' . PHP_VERSION, TRUE);
   if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo getMessage('Delete install folder or set its chmod to 000!',TRUE);
 ?>
 <script type="text/javascript" src="<?php echo URL_TO_LMO?>/js/admin.js.php"></script>
