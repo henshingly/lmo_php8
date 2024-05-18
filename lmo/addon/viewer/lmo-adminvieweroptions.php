@@ -398,12 +398,12 @@ if (!$form3 && $form2) {   //<!-- Jetzt kommen die Mannschaftsauswahlen  --> ?>
              <?php $ii=1; $spalte=1; $max=count($liga1->teams);
               foreach ($liga1->teams as $mannschaft) {
                 if ($ii>$max) break;
-                if ($spalte==1) echo '<div class="row">'.chr(13).'<div class="col-3 offset-2 text-start">';
-                if ($spalte>1) echo '<div class="col-3 text-start">';
+                if ($spalte==1) echo '<div class="row">'.chr(13).'<div class="col-2 offset-3 text-start">';
+                if ($spalte>1) echo '<div class="col-2 text-start">';
                 echo '<input type="checkbox" class="form-check-input" name="t'.$ges_teams.'" value="'.$ligenfile[$ausgewaehlte_ligen[$i]].'['.$ii.']'.'">&nbsp;'.$mannschaft->name;
-                if ($spalte<3) echo '</div>'.chr(13);
-                if ($spalte==3) echo '</div>'.chr(13)."</div>".chr(13);
-                $ii++; $spalte++; if ($spalte > 3) $spalte=1; $ges_teams++;
+                if ($spalte<4) echo '</div>'.chr(13);
+                if ($spalte==4) echo '</div>'.chr(13)."</div>".chr(13);
+                $ii++; $spalte++; if ($spalte > 4) $spalte=1; $ges_teams++;
               }
             } else {
               echo "[".PATH_TO_LMO.'/'.$dirliga.$ligenfile[$ausgewaehlte_ligen[$i]]."] ".$text['viewer'][50]."<br>";
