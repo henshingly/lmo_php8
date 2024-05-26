@@ -27,6 +27,7 @@ if ($endtab == 0) {
   $tabdat = $endtab.". ".$text[2];
 }
 $all        = isset($_REQUEST['all'])        ? $_REQUEST['all']                : 0;
+$th = 1;
 //  if($stwertmodus=="bis" ){$endtab=$anzst;}
 if ($all == 1) {
   $endtab = 0;
@@ -111,7 +112,8 @@ if ($tabdat == "") {
   <div class="row">
     <div class="col"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></div>
   </div>
-  <?php if($tipp_tipperimteam>=0){?>
+  <?php if($tipp_tipperimteam>=0){
+     $th=2;?>
   <div class="row">
     <div class="col-2"><?php
   if ($wertung == "einzel") {
@@ -161,7 +163,7 @@ if($all==0){ ?>
     </div><?php
 }?>
     <div class="row justify-content-center">
-      <div class="col-1"> <?php
+      <div class="col-<?php echo $th;?>"> <?php
 if (isset($lmtype) && $lmtype == 1 && $tabdat != "") {
   if ($st == $anzst) {
     $j = $text[374];
