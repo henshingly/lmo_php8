@@ -311,7 +311,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
          <div class="col-4"><strong><?php echo  $text['tipp'][273]; ?></strong></div>
        </div>
        <div class="row">
-         <div class="col-3 offset-2 text-start"><?php              $ftype=".l98";
+         <div class="col-5 offset-2 text-start"><?php              $ftype=".l98";
            require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");?>
          </div>
        </div>
