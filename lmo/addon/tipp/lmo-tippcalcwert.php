@@ -65,46 +65,46 @@ if (!file_exists($auswertfile)) {
     fclose($datei);
   }
    
-  $tippernick = array_pad($array, $anztipper+1, "");
-  $tippername = array_pad($array, $anztipper+1, "");
-  $tipperemail = array_pad($array, $anztipper+1, "");
-  $tipperteam = array_pad($array, $anztipper+1, "");
+  $tippernick = array_pad($array, $anztipper, "");
+  $tippername = array_pad($array, $anztipper, "");
+  $tipperemail = array_pad($array, $anztipper, "");
+  $tipperteam = array_pad($array, $anztipper, "");
   if ($tipp_showstsiege == 1) {
-    $stsiege = array_pad($array, $anztipper+1, "");
+    $stsiege = array_pad($array, $anztipper, 0);
   }
-  $spielegetipptgesamt = array_pad($array, $anztipper+1, "0");
-  $quotegesamt = array_pad($array, $anztipper+1, "0");
-  $tipppunktegesamt = array_pad($array, $anztipper+1, "0");
+  $spielegetipptgesamt = array_pad($array, $anztipper, 0);
+  $quotegesamt = array_pad($array, $anztipper, 0);
+  $tipppunktegesamt = array_pad($array, $anztipper, 0);
    
   if ($tipp_showzus == 1) {
-    $punkte1gesamt = array_pad($array, $anztipper+1, "");
-    $punkte2gesamt = array_pad($array, $anztipper+1, "");
-    $punkte3gesamt = array_pad($array, $anztipper+1, "");
-    $punkte4gesamt = array_pad($array, $anztipper+1, "");
-    $punkte5gesamt = array_pad($array, $anztipper+1, "");
-    $punkte6gesamt = array_pad($array, $anztipper+1, "");
+    $punkte1gesamt = array_pad($array, $anztipper, 0);
+    $punkte2gesamt = array_pad($array, $anztipper, 0);
+    $punkte3gesamt = array_pad($array, $anztipper, 0);
+    $punkte4gesamt = array_pad($array, $anztipper, 0);
+    $punkte5gesamt = array_pad($array, $anztipper, 0);
+    $punkte6gesamt = array_pad($array, $anztipper, 0);
   }
    
-  $spielegetippt = array_pad($array, $anztipper+1, "0");
-  $tipppunkte = array_pad($array, $anztipper+1, "");
+  $spielegetippt = array_pad($array, $anztipper, 0);
+  $tipppunkte = array_pad($array, $anztipper, 0);
   if ($tipp_showzus == 1) {
-    $punkte1 = array_pad($array, $anztipper+1, "");
-    $punkte2 = array_pad($array, $anztipper+1, "");
-    $punkte3 = array_pad($array, $anztipper+1, "");
-    $punkte4 = array_pad($array, $anztipper+1, "");
-    $punkte5 = array_pad($array, $anztipper+1, "");
-    $punkte6 = array_pad($array, $anztipper+1, "");
+    $punkte1 = array_pad($array, $anztipper, 0);
+    $punkte2 = array_pad($array, $anztipper, 0);
+    $punkte3 = array_pad($array, $anztipper, 0);
+    $punkte4 = array_pad($array, $anztipper, 0);
+    $punkte5 = array_pad($array, $anztipper, 0);
+    $punkte6 = array_pad($array, $anztipper, 0);
   }
   for($i = 0; $i < $anztipper; $i++) {
-    $spielegetippt[$i] = array_pad(array("0"), $anzst1+1, "0");
-    $tipppunkte[$i] = array_pad(array("0"), $anzst1+1, "0");
+    $spielegetippt[$i] = array_pad(array(), $anzst1, 0);
+    $tipppunkte[$i] = array_pad(array(), $anzst1, 0);
     if ($tipp_showzus == 1) {
-      $punkte1[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte2[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte3[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte4[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte5[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte6[$i] = array_pad(array(""), $anzst1+1, "");
+      $punkte1[$i] = array_pad(array(), $anzst1, 0);
+      $punkte2[$i] = array_pad(array(), $anzst1, 0);
+      $punkte3[$i] = array_pad(array(), $anzst1, 0);
+      $punkte4[$i] = array_pad(array(), $anzst1, 0);
+      $punkte5[$i] = array_pad(array(), $anzst1, 0);
+      $punkte6[$i] = array_pad(array(), $anzst1, 0);
     }
   }
   $t = 0;
@@ -225,12 +225,12 @@ if (!file_exists($auswertfile)) {
     $spielegetipptgesamt[$a] = array_sum($spielegetippt[$a]);
     $tipppunktegesamt[$a] = array_sum($tipppunkte[$a]);
     if ($tipp_showzus == 1) {
-      $punkte1gesamt[$a] = array_sum((int)$punkte1[$a]);
-      $punkte2gesamt[$a] = array_sum((int)$punkte2[$a]);
-      $punkte3gesamt[$a] = array_sum((int)$punkte3[$a]);
-      $punkte4gesamt[$a] = array_sum((int)$punkte4[$a]);
-      $punkte5gesamt[$a] = array_sum((int)$punkte5[$a]);
-      $punkte6gesamt[$a] = array_sum((int)$punkte6[$a]);
+      $punkte1gesamt[$a] = array_sum($punkte1[$a]);
+      $punkte2gesamt[$a] = array_sum($punkte2[$a]);
+      $punkte3gesamt[$a] = array_sum($punkte3[$a]);
+      $punkte4gesamt[$a] = array_sum($punkte4[$a]);
+      $punkte5gesamt[$a] = array_sum($punkte5[$a]);
+      $punkte6gesamt[$a] = array_sum($punkte6[$a]);
     }
      
     if ($tipppunktegesamt[$a] == "") {
