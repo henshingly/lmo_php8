@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -65,46 +65,46 @@ if (!file_exists($auswertfile)) {
     fclose($datei);
   }
    
-  $tippernick = array_pad($array, $anztipper+1, "");
-  $tippername = array_pad($array, $anztipper+1, "");
-  $tipperemail = array_pad($array, $anztipper+1, "");
-  $tipperteam = array_pad($array, $anztipper+1, "");
+  $tippernick = array_pad($array, $anztipper, "");
+  $tippername = array_pad($array, $anztipper, "");
+  $tipperemail = array_pad($array, $anztipper, "");
+  $tipperteam = array_pad($array, $anztipper, "");
   if ($tipp_showstsiege == 1) {
-    $stsiege = array_pad($array, $anztipper+1, "");
+    $stsiege = array_pad($array, $anztipper, 0);
   }
-  $spielegetipptgesamt = array_pad($array, $anztipper+1, "0");
-  $quotegesamt = array_pad($array, $anztipper+1, "0");
-  $tipppunktegesamt = array_pad($array, $anztipper+1, "0");
+  $spielegetipptgesamt = array_pad($array, $anztipper, 0);
+  $quotegesamt = array_pad($array, $anztipper, 0);
+  $tipppunktegesamt = array_pad($array, $anztipper, 0);
    
   if ($tipp_showzus == 1) {
-    $punkte1gesamt = array_pad($array, $anztipper+1, "");
-    $punkte2gesamt = array_pad($array, $anztipper+1, "");
-    $punkte3gesamt = array_pad($array, $anztipper+1, "");
-    $punkte4gesamt = array_pad($array, $anztipper+1, "");
-    $punkte5gesamt = array_pad($array, $anztipper+1, "");
-    $punkte6gesamt = array_pad($array, $anztipper+1, "");
+    $punkte1gesamt = array_pad($array, $anztipper, 0);
+    $punkte2gesamt = array_pad($array, $anztipper, 0);
+    $punkte3gesamt = array_pad($array, $anztipper, 0);
+    $punkte4gesamt = array_pad($array, $anztipper, 0);
+    $punkte5gesamt = array_pad($array, $anztipper, 0);
+    $punkte6gesamt = array_pad($array, $anztipper, 0);
   }
    
-  $spielegetippt = array_pad($array, $anztipper+1, "0");
-  $tipppunkte = array_pad($array, $anztipper+1, "");
+  $spielegetippt = array_pad($array, $anztipper, 0);
+  $tipppunkte = array_pad($array, $anztipper, 0);
   if ($tipp_showzus == 1) {
-    $punkte1 = array_pad($array, $anztipper+1, "");
-    $punkte2 = array_pad($array, $anztipper+1, "");
-    $punkte3 = array_pad($array, $anztipper+1, "");
-    $punkte4 = array_pad($array, $anztipper+1, "");
-    $punkte5 = array_pad($array, $anztipper+1, "");
-    $punkte6 = array_pad($array, $anztipper+1, "");
+    $punkte1 = array_pad($array, $anztipper, 0);
+    $punkte2 = array_pad($array, $anztipper, 0);
+    $punkte3 = array_pad($array, $anztipper, 0);
+    $punkte4 = array_pad($array, $anztipper, 0);
+    $punkte5 = array_pad($array, $anztipper, 0);
+    $punkte6 = array_pad($array, $anztipper, 0);
   }
   for($i = 0; $i < $anztipper; $i++) {
-    $spielegetippt[$i] = array_pad(array("0"), $anzst1+1, "0");
-    $tipppunkte[$i] = array_pad(array("0"), $anzst1+1, "0");
+    $spielegetippt[$i] = array_pad(array(), $anzst1, 0);
+    $tipppunkte[$i] = array_pad(array(), $anzst1, 0);
     if ($tipp_showzus == 1) {
-      $punkte1[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte2[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte3[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte4[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte5[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte6[$i] = array_pad(array(""), $anzst1+1, "");
+      $punkte1[$i] = array_pad(array(), $anzst1, 0);
+      $punkte2[$i] = array_pad(array(), $anzst1, 0);
+      $punkte3[$i] = array_pad(array(), $anzst1, 0);
+      $punkte4[$i] = array_pad(array(), $anzst1, 0);
+      $punkte5[$i] = array_pad(array(), $anzst1, 0);
+      $punkte6[$i] = array_pad(array(), $anzst1, 0);
     }
   }
   $t = 0;
@@ -177,18 +177,18 @@ if (!file_exists($auswertfile)) {
           if ($tipp_krit == -1) {
             $tt .= 50000000;
           } elseif($tipp_krit == 0) {
-            $tt .= (50000000-(int)$spielegetippt[$a][$i]);
+            $tt .= (50000000-$spielegetippt[$a][$i]);
           } elseif($tipp_krit == 1) {
-            $tt .= (50000000+(int)$spielegetippt[$a][$i]);
+            $tt .= (50000000+$spielegetippt[$a][$i]);
           } elseif($tipp_showzus == 1) {
             if ($tipp_krit == 2) {
               $tt .= (50000000+(int)$punkte1[$a][$i]);
             } elseif($tipp_krit == 3) {
-              $tt .= (50000000+(int)$punkte2[$a][$i]);
+              $tt .= (50000000+$punkte2[$a][$i]);
             } elseif($tipp_krit == 4) {
-              $tt .= (50000000+(int)$punkte3[$a][$i]);
+              $tt .= (50000000+$punkte3[$a][$i]);
             } elseif($tipp_krit == 5) {
-              $tt .= (50000000+(int)$punkte6[$a][$i]);
+              $tt .= (50000000+$punkte6[$a][$i]);
             }
           }
         }
@@ -269,22 +269,22 @@ if (!file_exists($auswertfile)) {
         $tipp_krit = $tipp_krit3;
       }
       if ($tipp_krit == 0) {
-        $tt .= (50000000+(int)$quotegesamt[$a]);
+        $tt .= (50000000+$quotegesamt[$a]);
       } elseif($tipp_krit == 1) {
-        $tt .= (50000000+(int)$spielegetipptgesamt[$a]);
+        $tt .= (50000000+$spielegetipptgesamt[$a]);
       } elseif($tipp_krit == 6) {
         if ($tipp_showstsiege == 1) {
-          $tt .= (50000000+(int)$stsiege[$a]);
+          $tt .= (50000000+$stsiege[$a]);
         }
       } elseif($tipp_showzus == 1) {
         if ($tipp_krit == 2) {
-          $tt .= (50000000+(int)$punkte1gesamt[$a]);
+          $tt .= (50000000+$punkte1gesamt[$a]);
         } elseif($tipp_krit == 3) {
-          $tt .= (50000000+(int)$punkte2gesamt[$a]);
+          $tt .= (50000000+$punkte2gesamt[$a]);
         } elseif($tipp_krit == 4) {
-          $tt .= (50000000+(int)$punkte3gesamt[$a]);
+          $tt .= (50000000+$punkte3gesamt[$a]);
         } elseif($tipp_krit == 5) {
-          $tt .= (50000000+(int)$punkte6gesamt[$a]);
+          $tt .= (50000000+$punkte6gesamt[$a]);
         }
       }
     }

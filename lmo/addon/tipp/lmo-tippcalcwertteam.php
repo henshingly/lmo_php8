@@ -36,7 +36,7 @@ if (!file_exists($auswertfile)) {
   $anzst1 = $anzst;
   $team = array();
   if ($datei != false) {
-    $tippdaten = array("");
+    $tippdaten = array();
     $sekt = "";
     while (!feof($datei)) {
       $zeile = fgets($datei, 1000);
@@ -70,41 +70,41 @@ if (!file_exists($auswertfile)) {
   }
    
   $dumma = array("");
-  $tipp_tipperimteam = array_pad($array, $teamsanzahl+1, "0");
+  $tipp_tipperimteam = array_pad($array, $teamsanzahl, 0);
   if ($tipp_showstsiege == 1) {
-    $stsiege = array_pad($array, $teamsanzahl+1, "");
+    $stsiege = array_pad($array, $teamsanzahl, 0);
   }
-  $tipppunktegesamt = array_pad($array, $teamsanzahl+1, "0");
-  $spielegetipptgesamt = array_pad($array, $teamsanzahl+1, "0");
-  $quotegesamt = array_pad($array, $teamsanzahl+1, "0");
+  $tipppunktegesamt = array_pad($array, $teamsanzahl, 0);
+  $spielegetipptgesamt = array_pad($array, $teamsanzahl, 0);
+  $quotegesamt = array_pad($array, $teamsanzahl, 0);
   if ($tipp_showzus == 1) {
-    $punkte1gesamt = array_pad($array, $teamsanzahl+1, "");
-    $punkte2gesamt = array_pad($array, $teamsanzahl+1, "");
-    $punkte3gesamt = array_pad($array, $teamsanzahl+1, "");
-    $punkte4gesamt = array_pad($array, $teamsanzahl+1, "");
-    $punkte5gesamt = array_pad($array, $teamsanzahl+1, "");
-    $punkte6gesamt = array_pad($array, $teamsanzahl+1, "");
+    $punkte1gesamt = array_pad($array, $teamsanzahl, 0);
+    $punkte2gesamt = array_pad($array, $teamsanzahl, 0);
+    $punkte3gesamt = array_pad($array, $teamsanzahl, 0);
+    $punkte4gesamt = array_pad($array, $teamsanzahl, 0);
+    $punkte5gesamt = array_pad($array, $teamsanzahl, 0);
+    $punkte6gesamt = array_pad($array, $teamsanzahl, 0);
   }
-  $spielegetippt = array_pad($array, $teamsanzahl+1, "0");
-  $tipppunkte = array_pad($array, $teamsanzahl+1, "");
+  $spielegetippt = array_pad($array, $teamsanzahl, 0);
+  $tipppunkte = array_pad($array, $teamsanzahl, 0);
   if ($tipp_showzus == 1) {
-    $punkte1 = array_pad($array, $teamsanzahl+1, "");
-    $punkte2 = array_pad($array, $teamsanzahl+1, "");
-    $punkte3 = array_pad($array, $teamsanzahl+1, "");
-    $punkte4 = array_pad($array, $teamsanzahl+1, "");
-    $punkte5 = array_pad($array, $teamsanzahl+1, "");
-    $punkte6 = array_pad($array, $teamsanzahl+1, "");
+    $punkte1 = array_pad($array, $teamsanzahl, 0);
+    $punkte2 = array_pad($array, $teamsanzahl, 0);
+    $punkte3 = array_pad($array, $teamsanzahl, 0);
+    $punkte4 = array_pad($array, $teamsanzahl, 0);
+    $punkte5 = array_pad($array, $teamsanzahl, 0);
+    $punkte6 = array_pad($array, $teamsanzahl, 0);
   }
   for($i = 0; $i < $teamsanzahl; $i++) {
-    $spielegetippt[$i] = array_pad(array("0"), $anzst1+1, "0");
-    $tipppunkte[$i] = array_pad(array("0"), $anzst1+1, "0");
+    $spielegetippt[$i] = array_pad(array(), $anzst1, 0);
+    $tipppunkte[$i] = array_pad(array(), $anzst1, 0);
     if ($tipp_showzus == 1) {
-      $punkte1[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte2[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte3[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte4[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte5[$i] = array_pad(array(""), $anzst1+1, "");
-      $punkte6[$i] = array_pad(array(""), $anzst1+1, "");
+      $punkte1[$i] = array_pad(array(), $anzst1, 0);
+      $punkte2[$i] = array_pad(array(), $anzst1, 0);
+      $punkte3[$i] = array_pad(array(), $anzst1, 0);
+      $punkte4[$i] = array_pad(array(), $anzst1, 0);
+      $punkte5[$i] = array_pad(array(), $anzst1, 0);
+      $punkte6[$i] = array_pad(array(), $anzst1, 0);
     }
   }
   $t = 0;
@@ -114,18 +114,15 @@ if (!file_exists($auswertfile)) {
   }
   for($i = 1; $i <= count($tippdaten); $i++) {
     $dum = explode('|', $tippdaten[$i-1]);
-    $op1 = (int)$dum[0];
-    // Nick
-    $op3 = (int)substr($dum[1], 2)-1;
-    // Spieltagsnummer
-    $op4 = (int)substr($dum[1], 0, 2);
-    // TP
+    $op1 = $dum[0];    // Nick
+    $op3 = (int)substr($dum[1], 2)-1;    // Spieltagsnummer
+    $op4 = substr($dum[1], 0, 2);    // TP
     if ($dum[1] == "Team") {
-      if ($dum[2] == "") {
+      if (empty($dum[2])) {
         $t = -1;
       } // Tipper hat kein Team
       else
-        {
+      {
         $gef = 0;
         for($j = 0; $j < $teamsanzahl && $gef == 0; $j++) {
           if ($team[$j] == $dum[2]) {
@@ -141,7 +138,7 @@ if (!file_exists($auswertfile)) {
         if ($op4 == "TP") {
           $tipppunkte[$t][$op3] += $dum[2];
         } elseif($op4 == "SG") {
-          $spielegetippt[$t][$op3] += $dum[2];
+          $spielegetippt[$t][$op3] += (int)$dum[2];
         } elseif($tipp_showzus == 1) {
           if ($op4 == "P1") {
             $punkte1[$t][$op3] += $dum[2];
