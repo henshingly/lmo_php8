@@ -44,7 +44,7 @@ if ($tippfile != "") {
     if (!$datei) {
       echo getMessage($text[283],TRUE);
       exit;
-    } elseif($todo != "newtipper" && $todo != "newligen" && $todo != "tippuseredit") {
+    } elseif ($todo != "newtipper" && $todo != "newligen" && $todo != "tippuseredit") {
       if (!isset($jkspanticheat)) {
         $jkspanticheat = false;
       }
@@ -86,14 +86,14 @@ if ($tippfile != "") {
         if ($lmtype == 0) {
           if ($goaltippa[$j-1] == "_") {
             fputs($datei, "GA".$j."=-1\n");
-          } elseif($goaltippa[$j-1] == "") {
+          } elseif ($goaltippa[$j-1] == "") {
             fputs($datei, "GA".$j."=-1\n");
           } else {
             fputs($datei, "GA".$j."=".$goaltippa[$j-1]."\n");
           }
           if ($goaltippb[$j-1] == "_") {
             fputs($datei, "GB".$j."=-1\n");
-          } elseif($goaltippb[$j-1] == "") {
+          } elseif ($goaltippb[$j-1] == "") {
             fputs($datei, "GB".$j."=-1\n");
           } else {
             fputs($datei, "GB".$j."=".$goaltippb[$j-1]."\n");
@@ -102,14 +102,14 @@ if ($tippfile != "") {
           for($n = 1; $n <= $modus[$st-1]; $n++) {
             if ($goaltippa[$j-1][$n-1] == "_") {
               fputs($datei, "GA".$j.$n."=-1\n");
-            } elseif($goaltippa[$j-1][$n-1] == "") {
+            } elseif ($goaltippa[$j-1][$n-1] == "") {
               fputs($datei, "GA".$j.$n."=-1\n");
             } else {
               fputs($datei, "GA".$j.$n."=".$goaltippa[$j-1][$n-1]."\n");
             }
             if ($goaltippb[$j-1][$n-1] == "_") {
               fputs($datei, "GB".$j.$n."=-1\n");
-            } elseif($goaltippb[$j-1][$n-1] == "") {
+            } elseif ($goaltippb[$j-1][$n-1] == "") {
               fputs($datei, "GB".$j.$n."=-1\n");
             } else {
               fputs($datei, "GB".$j.$n."=".$goaltippb[$j-1][$n-1]."\n");

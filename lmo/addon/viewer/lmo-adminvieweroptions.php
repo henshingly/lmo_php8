@@ -23,101 +23,101 @@ require_once (PATH_TO_ADDONDIR . "/classlib/ini.php");
 <script src="<?php echo URL_TO_JSDIR?>/viewer.js" type="text/javascript"></script>
 <?php
 if ($_SESSION['lmouserok'] == 2) {
-    $verz = substr($dirliga, -1) == '/'? opendir(substr(PATH_TO_LMO . "/" . $dirliga, 0, -1)): opendir(PATH_TO_LMO . "/" . $dirliga);
-    $tmpl_verz = substr($dirliga, -1) == '/'? opendir(substr(PATH_TO_TEMPLATEDIR . "/viewer/", 0, -1)): opendir(PATH_TO_TEMPLATEDIR . "/viewer/");
-    $tmpl_counter = 0;
-    while($t_files = readdir($tmpl_verz)) {
-        if (strtolower(substr($t_files, -8)) == ".tpl.php") {
-                $tpl_files[$tmpl_counter ++] = substr($t_files, 0, -8);
-        }
+  $verz = substr($dirliga, -1) == '/'? opendir(substr(PATH_TO_LMO . "/" . $dirliga, 0, -1)): opendir(PATH_TO_LMO . "/" . $dirliga);
+  $tmpl_verz = substr($dirliga, -1) == '/'? opendir(substr(PATH_TO_TEMPLATEDIR . "/viewer/", 0, -1)): opendir(PATH_TO_TEMPLATEDIR . "/viewer/");
+  $tmpl_counter = 0;
+  while($t_files = readdir($tmpl_verz)) {
+    if (strtolower(substr($t_files, -8)) == ".tpl.php") {
+      $tpl_files[$tmpl_counter ++] = substr($t_files, 0, -8);
     }
-    $liga_counter = 0;
-    $unbenannte_liga_counter = 0;
-    $ligadatei = array();
-    while($files = readdir($verz)) {
-        if (strtolower(substr($files, -4)) == ".l98") {
-            $sekt = "";
-            $datei = fopen(PATH_TO_LMO . "/" . $dirliga.$files, "rb");
-            if ($datei) {
-                $ligadatei[$liga_counter]['file_date'] = filemtime(PATH_TO_LMO . "/" . $dirliga.$files); //Datum
-                $ligadatei[$liga_counter]['file_name'] = $files;
-                $ligadatei[$liga_counter]['liga_name'] = "";  //Liganame
-                $ligadatei[$liga_counter]['anz_teams'] = "";  //Anzahl der Mannschaften
-                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[2];  //Spieltag oder Pokalrunde
-                while (!feof($datei)) {
-                    $zeile = fgets($datei, 1000);
-                    $zeile = trim($zeile);
-                    if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {  //Sektion
-                        $sekt = substr($zeile, 1, -1);
-                    } elseif ((strpos($zeile, "=") !== false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {  //Wert
-                        $option = explode("=", $zeile, 2);
-                        $option_name = $option[0];
-                        $option_wert = isset($option[1])?$option[1]:'';
-                        if ($option_name == "Name") {
-                            $ligadatei[$liga_counter]['liga_name'] = $option_wert;
-                        }
-                        if ($option_name == "Teams") {
-                            $ligadatei[$liga_counter]['anz_teams'] = $option_wert;
-                        }
-                        if ($option_name == "Type") {
-                            if ($option_wert == "1") {
-                                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[370];
-                            }
-                        } //Alle benötigten Werte gefunden -> Abbruch
-                        if ($ligadatei[$liga_counter]['liga_name'] != "" && $ligadatei[$liga_counter]['anz_teams'] != '')break;
-                    }
-                }
-                fclose($datei);
-                if ($ligadatei[$liga_counter]['liga_name'] == "") {
-                    $unbenannte_liga_counter ++;
-                    $ligadatei[$liga_counter]['liga_name'] = $text[507] . " " . $unbenannte_liga_counter;
-                }
-                $liga_counter ++;
+  }
+  $liga_counter = 0;
+  $unbenannte_liga_counter = 0;
+  $ligadatei = array();
+  while($files = readdir($verz)) {
+    if (strtolower(substr($files, -4)) == ".l98") {
+      $sekt = "";
+      $datei = fopen(PATH_TO_LMO . "/" . $dirliga.$files, "rb");
+      if ($datei) {
+        $ligadatei[$liga_counter]['file_date'] = filemtime(PATH_TO_LMO . "/" . $dirliga.$files); //Datum
+        $ligadatei[$liga_counter]['file_name'] = $files;
+        $ligadatei[$liga_counter]['liga_name'] = "";  //Liganame
+        $ligadatei[$liga_counter]['anz_teams'] = "";  //Anzahl der Mannschaften
+        $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[2];  //Spieltag oder Pokalrunde
+        while (!feof($datei)) {
+          $zeile = fgets($datei, 1000);
+          $zeile = trim($zeile);
+          if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {  //Sektion
+            $sekt = substr($zeile, 1, -1);
+          } elseif ((strpos($zeile, "=") !== false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {  //Wert
+            $option = explode("=", $zeile, 2);
+            $option_name = $option[0];
+            $option_wert = isset($option[1])?$option[1]:'';
+            if ($option_name == "Name") {
+              $ligadatei[$liga_counter]['liga_name'] = $option_wert;
             }
+            if ($option_name == "Teams") {
+              $ligadatei[$liga_counter]['anz_teams'] = $option_wert;
+            }
+            if ($option_name == "Type") {
+              if ($option_wert == "1") {
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[370];
+              }
+            } //Alle benötigten Werte gefunden -> Abbruch
+            if ($ligadatei[$liga_counter]['liga_name'] != "" && $ligadatei[$liga_counter]['anz_teams'] != '')break;
+          }
         }
+        fclose($datei);
+        if ($ligadatei[$liga_counter]['liga_name'] == "") {
+          $unbenannte_liga_counter ++;
+          $ligadatei[$liga_counter]['liga_name'] = $text[507] . " " . $unbenannte_liga_counter;
+        }
+        $liga_counter ++;
+      }
     }
-    closedir($verz);
+  }
+  closedir($verz);
 
-    //usort($ligadatei,'cmp');
+  //usort($ligadatei,'cmp');
 
-    isset($_POST['formular1']) ? $form1 = true : $form1=false;                  // formular 1 ausgefüllt?
-    isset($_POST['formular2']) ? $form2 = true : $form2=false;                  // formular 2 ausgefüllt?
-    isset($_POST['formular3']) ? $form3 = true : $form3=false;                  // formular 3 ausgefüllt?
-    if ($form1) {
-        isset($_POST['dateiname']) ? $save_file_name = $_POST['dateiname'] : $save_file_name = 'unbenannt';
-        $_POST['modus'] == 1 ? $config_array[2] = 'modus=1' :  $config_array[2] = 'modus=2';
-        isset($_POST['anzahl_tage_plus'])               ? $config_array[3] ='anzahl_tage_plus='.intval($_POST['anzahl_tage_plus'])                : $config_array[3] ='anzahl_tage_plus=';
-        isset($_POST['anzahl_tage_minus'])              ? $config_array[4] ='anzahl_tage_minus='.intval($_POST['anzahl_tage_minus'])              : $config_array[4] ='anzahl_tage_minus=';
-        isset($_POST['anzahl_spieltage_vor'])           ? $config_array[5] ='anzahl_spieltage_vor='.intval($_POST['anzahl_spieltage_vor'])        : $config_array[5] ='anzahl_spieltage_vor=';
-        isset($_POST['anzahl_spieltage_zurueck'])       ? $config_array[6]='anzahl_spieltage_zurueck='.intval($_POST['anzahl_spieltage_zurueck']) : $config_array[6] ='anzahl_spieltage_zurueck=';
-        isset($_POST['datumsformat'])                   ? $config_array[7] ='datumsformat=' . $_POST['datumsformat']                                : $config_array[7] ='datumsformat=d.m.Y';
-        isset($_POST['heute_highlight'])                ? $config_array[8] ='heute_highlight=1'                                                   : $config_array[8]='heute_highlight=';
-        isset($_POST['tabelle_verlinken'])              ? $config_array[9] ='tabelle_verlinken=1'                                                 : $config_array[9] ='tabelle_verlinken=';
-        isset($_POST['spielberichte_neues_fenster'])    ? $config_array[10]='spielberichte_neues_fenster=1'                                       : $config_array[10]='spielberichte_neues_fenster=';
-        isset($_POST['mannschaftshomepages_verlinken']) ? $config_array[11]='mannschaftshomepages_verlinken=1'                                    : $config_array[11]='mannschaftshomepages_verlinken=';
-        isset($_POST['mannschaftsnamen'])               ? $config_array[12]='mannschaftsnamen=' . $_POST['mannschaftsnamen']                        : $config_array[12]='mannschaftsnamen=';
-        isset($_POST['titelzeile'])                     ? $config_array[13]='titelzeile=' . $_POST['titelzeile']                                    : $config_array[13]='titelzeile=';
-        isset($_POST['anstosstermin'])                  ? $config_array[14]='anstosstermin=' . $_POST['anstosstermin']                              : $config_array[14]='anstosstermin=';
-        isset($_POST['template'])                       ? $config_array[15]='template=' . $_POST['template']                                        : $config_array[15]='template=standard';
-        isset($_POST['uhrzeitformat'])                  ? $config_array[16]='uhrzeitformat=' . $_POST['uhrzeitformat']                              : $config_array[16]='uhrzeitformat=H:i';
-        isset($_POST['tordummy'])                       ? $config_array[17]='tordummy=' . $_POST['tordummy']                                        : $config_array[17]='tordummy=_';
-        isset($_POST['tabellensymbol'])                 ? $config_array[18]='tabellensymbol=' . $_POST['tabellensymbol']                            : $config_array[18]='tabellensymbol=tabelle.gif';
-        isset($_POST['spielberichtesymbol'])            ? $config_array[19]='spielberichtesymbol=' . $_POST['spielberichtesymbol']                  : $config_array[19]='spielberichtesymbol=bericht.gif';
-        isset($_POST['notizsymbol'])                    ? $config_array[20]='notizsymbol=' . $_POST['notizsymbol']                                  : $config_array[20]='notizsymbol=notiz.gif';
-        isset($_POST['spieltagtext'])                   ? $config_array[21]='spieltagtext=' . $_POST['spieltagtext']                                : $config_array[21]='spieltagtext=';
-        isset($_POST['cache_refresh'])                  ? $config_array[22] ='cache_refresh=' . $_POST['cache_refresh']                             : $config_array[22] ='cache_refresh=';
-        isset($_POST['favteam_highlight'])              ? $config_array[23] ='favteam_highlight=1'                                                : $config_array[23] ='favteam_highlight=';
+  isset($_POST['formular1']) ? $form1 = true : $form1=false;  // formular 1 ausgefüllt?
+  isset($_POST['formular2']) ? $form2 = true : $form2=false;  // formular 2 ausgefüllt?
+  isset($_POST['formular3']) ? $form3 = true : $form3=false;  // formular 3 ausgefüllt?
+  if ($form1) {
+    isset($_POST['dateiname'])                      ? $save_file_name  =$_POST['dateiname']                                                    : $save_file_name   = 'unbenannt';
+    $_POST['modus'] == 1                            ? $config_array[2] ='modus=1'                                                              : $config_array[2]  = 'modus=2';
+    isset($_POST['anzahl_tage_plus'])               ? $config_array[3] ='anzahl_tage_plus='.intval($_POST['anzahl_tage_plus'])                 : $config_array[3]  = 'anzahl_tage_plus=';
+    isset($_POST['anzahl_tage_minus'])              ? $config_array[4] ='anzahl_tage_minus='.intval($_POST['anzahl_tage_minus'])               : $config_array[4]  = 'anzahl_tage_minus=';
+    isset($_POST['anzahl_spieltage_vor'])           ? $config_array[5] ='anzahl_spieltage_vor='.intval($_POST['anzahl_spieltage_vor'])         : $config_array[5]  = 'anzahl_spieltage_vor=';
+    isset($_POST['anzahl_spieltage_zurueck'])       ? $config_array[6] ='anzahl_spieltage_zurueck='.intval($_POST['anzahl_spieltage_zurueck']) : $config_array[6]  = 'anzahl_spieltage_zurueck=';
+    isset($_POST['datumsformat'])                   ? $config_array[7] ='datumsformat=' . $_POST['datumsformat']                               : $config_array[7]  = 'datumsformat=d.m.Y';
+    isset($_POST['heute_highlight'])                ? $config_array[8] ='heute_highlight=1'                                                    : $config_array[8]  = 'heute_highlight=';
+    isset($_POST['tabelle_verlinken'])              ? $config_array[9] ='tabelle_verlinken=1'                                                  : $config_array[9]  = 'tabelle_verlinken=';
+    isset($_POST['spielberichte_neues_fenster'])    ? $config_array[10]='spielberichte_neues_fenster=1'                                        : $config_array[10] = 'spielberichte_neues_fenster=';
+    isset($_POST['mannschaftshomepages_verlinken']) ? $config_array[11]='mannschaftshomepages_verlinken=1'                                     : $config_array[11] = 'mannschaftshomepages_verlinken=';
+    isset($_POST['mannschaftsnamen'])               ? $config_array[12]='mannschaftsnamen=' . $_POST['mannschaftsnamen']                       : $config_array[12] = 'mannschaftsnamen=';
+    isset($_POST['titelzeile'])                     ? $config_array[13]='titelzeile=' . $_POST['titelzeile']                                   : $config_array[13] = 'titelzeile=';
+    isset($_POST['anstosstermin'])                  ? $config_array[14]='anstosstermin=' . $_POST['anstosstermin']                             : $config_array[14] = 'anstosstermin=';
+    isset($_POST['template'])                       ? $config_array[15]='template=' . $_POST['template']                                       : $config_array[15] = 'template=standard';
+    isset($_POST['uhrzeitformat'])                  ? $config_array[16]='uhrzeitformat=' . $_POST['uhrzeitformat']                             : $config_array[16] = 'uhrzeitformat=H:i';
+    isset($_POST['tordummy'])                       ? $config_array[17]='tordummy=' . $_POST['tordummy']                                       : $config_array[17] = 'tordummy=_';
+    isset($_POST['tabellensymbol'])                 ? $config_array[18]='tabellensymbol=' . $_POST['tabellensymbol']                           : $config_array[18] = 'tabellensymbol=tabelle.gif';
+    isset($_POST['spielberichtesymbol'])            ? $config_array[19]='spielberichtesymbol=' . $_POST['spielberichtesymbol']                 : $config_array[19] = 'spielberichtesymbol=bericht.gif';
+    isset($_POST['notizsymbol'])                    ? $config_array[20]='notizsymbol=' . $_POST['notizsymbol']                                 : $config_array[20] = 'notizsymbol=notiz.gif';
+    isset($_POST['spieltagtext'])                   ? $config_array[21]='spieltagtext=' . $_POST['spieltagtext']                               : $config_array[21] = 'spieltagtext=';
+    isset($_POST['cache_refresh'])                  ? $config_array[22]='cache_refresh=' . $_POST['cache_refresh']                             : $config_array[22] = 'cache_refresh=';
+    isset($_POST['favteam_highlight'])              ? $config_array[23]='favteam_highlight=1'                                                  : $config_array[23] = 'favteam_highlight=';
 
-        $save_config_array = implode(';', $config_array);
-    }
+    $save_config_array = implode(';', $config_array);
+  }
 
-    $z = 1;
-    foreach($ligadatei as $liga) {
-        $ligennamen[$z] = $liga['liga_name'];
-        $ligenfile[$z] = $liga['file_name'];
-        $ligenteams[$z] = $liga['anz_teams'];
-        $z ++;
-    }
+  $z = 1;
+  foreach($ligadatei as $liga) {
+    $ligennamen[$z] = $liga['liga_name'];
+    $ligenfile[$z] = $liga['file_name'];
+    $ligenteams[$z] = $liga['anz_teams'];
+    $z ++;
+  }
 
     if (isset($_POST['B2'])) {
         $save_file_name = $_POST['dateiname'];

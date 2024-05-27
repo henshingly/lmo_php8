@@ -74,12 +74,12 @@ if ($action == "tipp") {
      
     if (($todo == "wert" && $all != 1) || $todo == "fieber" || $todo == "edit") {
       require(PATH_TO_LMO."/lmo-openfilename.php");
-    } elseif($todo == "einsicht") {
+    } elseif ($todo == "einsicht") {
       $lmo_only_st=true;
       require(PATH_TO_LMO."/lmo-openfile.php");
-    } elseif($todo == "tabelle") {
+    } elseif ($todo == "tabelle") {
       require_once(PATH_TO_LMO."/lmo-openfile.php");
-    } elseif($todo == "wert" && $all == 1) {
+    } elseif ($todo == "wert" && $all == 1) {
     }
      
     include(PATH_TO_ADDONDIR."/tipp/lmo-tippmenu.php");
@@ -92,10 +92,10 @@ if ($action == "tipp") {
 
   <tr>
     <td colspan="3" align="center"><?php    if($todo=="wert"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");}
-    elseif($todo=="fieber"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippfieber.php");}
-    elseif($todo=="einsicht"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippeinsicht.php");}
-    elseif($todo=="tabelle"){require(PATH_TO_ADDONDIR."/tipp/lmo-tipptabelle.php");}
-    elseif($todo=="info"){require(PATH_TO_LMO."/lmo-showinfo.php");}
+    elseif ($todo=="fieber"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippfieber.php");}
+    elseif ($todo=="einsicht"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippeinsicht.php");}
+    elseif ($todo=="tabelle"){require(PATH_TO_ADDONDIR."/tipp/lmo-tipptabelle.php");}
+    elseif ($todo=="info"){require(PATH_TO_LMO."/lmo-showinfo.php");}
     else{?>
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">  

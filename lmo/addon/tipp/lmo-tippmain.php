@@ -33,11 +33,11 @@ if ($action == "tipp") {
     if (($todo == "edit" && $viewermode != 1) || $todo == "einsicht") {
       $lmo_only_st=true;
       require(PATH_TO_LMO."/lmo-openfile.php");
-    } elseif($todo == "tabelle") {
+    } elseif ($todo == "tabelle") {
       require_once(PATH_TO_LMO."/lmo-openfile.php");
-    } elseif(($todo == "wert" && $all != 1) || $todo == "fieber") {
+    } elseif (($todo == "wert" && $all != 1) || $todo == "fieber") {
       require(PATH_TO_LMO."/lmo-openfilename.php");
-    } elseif($todo == "wert" && $all == 1) {
+    } elseif ($todo == "wert" && $all == 1) {
     }
   }
   $me = array("0", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");

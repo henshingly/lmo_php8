@@ -209,11 +209,11 @@ if($all==0){ ?>
 if (isset($lmtype) && $lmtype == 1 && $tabdat != "") {
   if ($st == $anzst) {
     $j = $text[374];
-  } elseif($st == $anzst-1) {
+  } elseif ($st == $anzst-1) {
     $j = $text[373];
-  } elseif($st == $anzst-2) {
+  } elseif ($st == $anzst-2) {
     $j = $text[372];
-  } elseif($st == $anzst-3) {
+  } elseif ($st == $anzst-3) {
     $j = $text[371];
   } else {
     $j = $st.". ".$text[370];
@@ -267,7 +267,7 @@ if ($gewicht != "relativ") {
   echo "</a>";
 }         ?></acronym>&nbsp;
           </th>
-          <th class="nobr" <?php echo $dummy; ?>>&nbsp;<acronym title="<?php echo $text['tipp'][118]?>"><?php if ($gewicht != "absolut") {
+          <th class="nobr" <?php echo $dummy; ?>>&nbsp;<acronym title="<?php echo $text['tipp'][38]?>"><?php if ($gewicht != "absolut") {
   echo "<a href=\"".$addt5."absolut\" title=\"".$text['tipp'][149]."\">";
 }
 if ($tipp_tippmodus == 1) {
@@ -350,7 +350,7 @@ for($x = 1; $x <= $anztipper; $x++) {
           <td class="<?php echo $dumm1; ?>" align="right"><?php
         if ($lax == $x) {
           echo $dummy.$x.$dumm2;
-        } elseif($wertung == "intern" && $lax != $lx) {
+        } elseif ($wertung == "intern" && $lax != $lx) {
           echo $dummy.$lx.$dumm2;
           $lax = $lx;
         } else {
@@ -361,7 +361,7 @@ for($x = 1; $x <= $anztipper; $x++) {
       if (($endtab > 1) && ($tabdat != "") && $tipppunktegesamt[intval(substr($tab0[0], -7))] > 0 && $stwertmodus != "nur") {
         if ($platz0[$i] < $platz1[$i]) {
           $y = 1;
-        } elseif($platz0[$i] > $platz1[$i]) {
+        } elseif ($platz0[$i] > $platz1[$i]) {
           $y = 2;
         }
       }
@@ -399,7 +399,7 @@ for($x = 1; $x <= $anztipper; $x++) {
           if ($tipp_showname == 1) {
             echo ")";
           }
-        } elseif($tipp_showemail == 1 && $tipp_showname == 0) {
+        } elseif ($tipp_showemail == 1 && $tipp_showname == 0) {
           echo "<a href='mailto:".$tipperemail[$i]."'>".$tipperemail[$i]."</a>";
         }
         echo $dumm2;?>

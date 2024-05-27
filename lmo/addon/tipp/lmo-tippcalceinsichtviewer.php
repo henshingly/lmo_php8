@@ -32,7 +32,7 @@ if (file_exists($einsichtfile)) {
         if ($zeile != "[Options]") {
           array_push($tippdaten, $sekt."|||EOL");
         }
-      } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+      } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         array_push($tippdaten, $sekt."|".$schl."|".$wert."|EOL");
@@ -64,9 +64,9 @@ if (file_exists($einsichtfile)) {
            
           if ($tippb0 < $tippa0) {
             $tendenz1[$k]++;
-          } elseif($tippb0 > $tippa0) {
+          } elseif ($tippb0 > $tippa0) {
             $tendenz2[$k]++;
-          } elseif($tippa0 >= 0 && $tippb0 >= 0) {
+          } elseif ($tippa0 >= 0 && $tippb0 >= 0) {
             $tendenz0[$k]++;
           }
         }

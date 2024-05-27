@@ -48,7 +48,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
   if ($mtipp == 1) {
     $punktespiel = -2;
   } // Spiel nicht werten
-  elseif($tipp_tippmodus == 1) {
+  elseif ($tipp_tippmodus == 1) {
     // Ergebnis-Tippmodus
     if ($msieg == 0) {
       if ($msp == $text0 && $tipp_entscheidungnv == 1) {
@@ -67,7 +67,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
         } else {
           $punktespiel = 0;
         }
-      } elseif($msp == $text1 && $tipp_entscheidungie == 1) {
+      } elseif ($msp == $text1 && $tipp_entscheidungie == 1) {
         if ($gtb0 == $gta0) {
           if ($tipp_rtendenzremis == 1) {
             $punktespiel = $tipp_rtendenz;
@@ -83,24 +83,24 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
         } else {
           $punktespiel = 0;
         }
-      } elseif($gta0 == $ga0 && $gtb0 == $gb0) {
+      } elseif ($gta0 == $ga0 && $gtb0 == $gb0) {
         $punktespiel = $tipp_rergebnis;
         if ($tipp_showzus == 1) {
           $punkte1++;
         }
-      } elseif($ga0 == $gb0 && $gta0 == $gtb0 && $tipp_rtendenzremis == 1) {
+      } elseif ($ga0 == $gb0 && $gta0 == $gtb0 && $tipp_rtendenzremis == 1) {
         // richtiger 0-Tipp
         $punktespiel = $tipp_rtendenz;
         if ($tipp_showzus == 1) {
           $punkte3++;
         }
-      } elseif($gtb0-$gta0 == $gb0-$ga0) {
+      } elseif ($gtb0-$gta0 == $gb0-$ga0) {
         $punktespiel = $tipp_rtendenzdiff;
         if ($tipp_showzus == 1) {
           $punkte2++;
         }
       } // richtige Tendenz und Tordiff
-      elseif(($gtb0 > $gta0 && $gb0 > $ga0) || ($gtb0 < $gta0 && $gb0 < $ga0)) {
+      elseif (($gtb0 > $gta0 && $gb0 > $ga0) || ($gtb0 < $gta0 && $gb0 < $ga0)) {
         $punktespiel = $tipp_rtendenz;
         if ($tipp_showzus == 1) {
           $punkte3++;
@@ -111,7 +111,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
             $punkte4++;
           }
         }
-      } elseif($gta0 == $ga0 || $gtb0 == $gb0) {
+      } elseif ($gta0 == $ga0 || $gtb0 == $gb0) {
         $punktespiel = $tipp_rtor;
         if ($tipp_showzus == 1) {
           $punkte4++;
@@ -119,10 +119,10 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
       } else {
         $punktespiel = 0;
       }
-    } elseif($tipp_gtpunkte == 2 && ($msieg == 1 || $msieg == 2 || $msieg == 3)) {
+    } elseif ($tipp_gtpunkte == 2 && ($msieg == 1 || $msieg == 2 || $msieg == 3)) {
       // GT-Entscheidung nicht werten
       $punktespiel = -1;
-    } elseif($msieg == 1) {
+    } elseif ($msieg == 1) {
       // GT-Entscheidung
       if ($gtb0-$gta0 < 0) {
         if ($tipp_gtpunkte == 1) {
@@ -139,7 +139,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
       } else {
         $punktespiel = 0;
       }
-    } elseif($msieg == 2) {
+    } elseif ($msieg == 2) {
       // GT-Entscheidung
       if ($gtb0-$gta0 > 0) {
         if ($tipp_gtpunkte == 1) {
@@ -156,7 +156,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
       } else {
         $punktespiel = 0;
       }
-    } elseif($msieg == 3) {
+    } elseif ($msieg == 3) {
       // GT-Entscheidung beidseitiges Erg.
       if ($gtb0-$gta0 == 0) {
         if ($tipp_gtpunkte == 1) {
@@ -176,7 +176,7 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
     } else {
       $punktespiel = -1;
     } // Ergebnis noch nicht eingetragen
-  } elseif($tipp_tippmodus == 0) {
+  } elseif ($tipp_tippmodus == 0) {
     // Tendenz-Tippmodus
     if ($msieg == 0) {
       if ($msp == $text0 && $tipp_entscheidungnv == 1) {
@@ -185,35 +185,35 @@ function tipppunkte($gta0, $gtb0, $ga0, $gb0, $msieg, $msp, $text0, $text1, $jks
         } else {
           $punktespiel = 0;
         }
-      } elseif($msp == $text1 && $tipp_entscheidungie == 1) {
+      } elseif ($msp == $text1 && $tipp_entscheidungie == 1) {
         if ($gtb0 == $gta0) {
           $punktespiel = 1;
         } else {
           $punktespiel = 0;
         }
-      } elseif(($gtb0 > $gta0 && $gb0 > $ga0) || ($gtb0 < $gta0 && $gb0 < $ga0) || ($gtb0 == $gta0 && $gb0 == $ga0)) {
+      } elseif (($gtb0 > $gta0 && $gb0 > $ga0) || ($gtb0 < $gta0 && $gb0 < $ga0) || ($gtb0 == $gta0 && $gb0 == $ga0)) {
         $punktespiel = 1;
       } else {
         $punktespiel = 0;
       }
-    } elseif($tipp_gtpunkte == 2 && ($msieg == 1 || $msieg == 2 || $msieg == 3)) {
+    } elseif ($tipp_gtpunkte == 2 && ($msieg == 1 || $msieg == 2 || $msieg == 3)) {
       // GT-Entscheidung nicht werten
       $punktespiel = -1;
-    } elseif($msieg == 1) {
+    } elseif ($msieg == 1) {
       // GT-Entscheidung
       if ($gtb0-$gta0 < 0) {
         $punktespiel = 1;
       } else {
         $punktespiel = 0;
       }
-    } elseif($msieg == 2) {
+    } elseif ($msieg == 2) {
       // GT-Entscheidung
       if ($gtb0-$gta0 > 0) {
         $punktespiel = 1;
       } else {
         $punktespiel = 0;
       }
-    } elseif($msieg == 3) {
+    } elseif ($msieg == 3) {
       // GT-Entscheidung beidseitiges Erg.
       if ($gtb0-$gta0 == 0) {
         $punktespiel = 1;

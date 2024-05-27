@@ -160,7 +160,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
                   if ($goaltippa[$st0][$i] != "_" && $goala[$st0][$i] != "_") {
                     $punktespiel = tipppunkte($goaltippa[$st0][$i], $goaltippb[$st0][$i], $goala[$st0][$i], $goalb[$st0][$i], $msieg[$st0][$i], $mspez[$st0][$i], $text[0], $text[1], $jkspfaktor, $mtipp[$st0][$i]);
                   }
-                } elseif($goaltippa[$i] != "_" && $goala[$st-1][$i] != "_" && $goala[$st-1][$i] > -1) {
+                } elseif ($goaltippa[$i] != "_" && $goala[$st-1][$i] != "_" && $goala[$st-1][$i] > -1) {
                   $punktespiel = tipppunkte($goaltippa[$i], $goaltippb[$i], $goala[$st-1][$i], $goalb[$st-1][$i], $msieg[$st-1][$i], $mspez[$st-1][$i], $text[0], $text[1], $jkspfaktor, $mtipp[$st-1][$i]);
                 }
                 if ($punktespiel > -1) {
@@ -194,7 +194,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
                     if ($goaltippa[$st0][$i][$n] != "_" && $goala[$st0][$i][$n] != "_") {
                       $punktespiel = tipppunkte($goaltippa[$st0][$i][$n], $goaltippb[$st0][$i][$n], $goala[$st0][$i][$n], $goalb[$st0][$i][$n], 0, $mspez[$st0][$i][$n], $text[0], $text[1], $jkspfaktor, $mtipp[$st0][$i][$n]);
                     }
-                  } elseif($goaltippa[$i][$n] != "_" && $goala[$st-1][$i][$n] != "_" && $goala[$st-1][$i][$n] > -1 ) {
+                  } elseif ($goaltippa[$i][$n] != "_" && $goala[$st-1][$i][$n] != "_" && $goala[$st-1][$i][$n] > -1 ) {
                     $punktespiel = tipppunkte($goaltippa[$i][$n], $goaltippb[$i][$n], $goala[$st-1][$i][$n], $goalb[$st-1][$i][$n], 0, $mspez[$st-1][$i][$n], $text[0], $text[1], $jkspfaktor, $mtipp[$st-1][$i][$n]);
                   }
                   if ($punktespiel > -1) {

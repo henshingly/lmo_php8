@@ -68,7 +68,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
         $gef=1;
         $save=$i;
         if (!$edit) $newpage=1;
-      } elseif($nick==$tipp_tipperdaten[0] && $newpage == 1){ 
+      } elseif ($nick==$tipp_tipperdaten[0] && $newpage == 1){ 
         $newpage = 0;
         echo getMessage($text['tipp'][24],TRUE);
       }
@@ -138,7 +138,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
 
   if($newpage==1){
     if($xtippervereinradio==1){$team=$xtippervereinalt;}
-    elseif($xtippervereinradio==2){$team=$xtippervereinneu;}
+    elseif ($xtippervereinradio==2){$team=$xtippervereinneu;}
     else{$team="";}
 
     if($xtippervereinradio>0){

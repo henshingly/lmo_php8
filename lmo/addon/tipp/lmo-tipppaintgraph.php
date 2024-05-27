@@ -117,7 +117,7 @@ if ($khoch > 12) {
 }
 if ($khoch < 1) {
   $khoch = 1;
-} elseif(($max-$min) < 21) {
+} elseif (($max-$min) < 21) {
   $khoch = 12;
 }
  

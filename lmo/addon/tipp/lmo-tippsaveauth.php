@@ -20,7 +20,7 @@
 
 if ($action == "tipp") {
   require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-} elseif($action == "admin") {
+} elseif ($action == "admin") {
   require_once(PATH_TO_LMO."/lmo-admintest.php");
 }
 

@@ -42,14 +42,14 @@ if (!file_exists($einsichtfile)) {
       $zeile = trim($zeile);
       if ((substr($zeile, 0, 1) == "@") && (substr($zeile, -1) == "@")) {
         $jkwert = trim(substr($zeile, 1, -1));
-      } elseif((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
+      } elseif ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $sekt = trim(substr($zeile, 1, -1));
         $jkwert = -1;
         if ($zeile != "[Options]") {
           array_push($tippdaten, $sekt."|||EOL");
           $anztipper++;
         }
-      } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+      } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         if (!isset($jkwert)) {
@@ -151,9 +151,9 @@ if (!file_exists($einsichtfile)) {
          
         if ($tippb[$t][$op6][$op7] < $tippa[$t][$op6][$op7]) {
           $tendenz1[$op6][$op7]++;
-        } elseif($tippb[$t][$op6][$op7] > $tippa[$t][$op6][$op7]) {
+        } elseif ($tippb[$t][$op6][$op7] > $tippa[$t][$op6][$op7]) {
           $tendenz2[$op6][$op7]++;
-        } elseif($tippa[$t][$op6][$op7] >= 0 && $tippb[$t][$op6][$op7] >= 0) {
+        } elseif ($tippa[$t][$op6][$op7] >= 0 && $tippb[$t][$op6][$op7] >= 0) {
           $tendenz0[$op6][$op7]++;
         }
       } else {
@@ -165,9 +165,9 @@ if (!file_exists($einsichtfile)) {
          
         if ($tippb[$t][$op3] < $tippa[$t][$op3]) {
           $tendenz1[$op3]++;
-        } elseif($tippb[$t][$op3] > $tippa[$t][$op3]) {
+        } elseif ($tippb[$t][$op3] > $tippa[$t][$op3]) {
           $tendenz2[$op3]++;
-        } elseif($tippa[$t][$op3] >= 0 && $tippb[$t][$op3] >= 0) {
+        } elseif ($tippa[$t][$op3] >= 0 && $tippb[$t][$op3] >= 0) {
           $tendenz0[$op3]++;
         }
       }
