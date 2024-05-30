@@ -243,7 +243,10 @@ if($newpage==1){
           <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></div>
             <div class="col text-start">
-              <select class="custom-select" name="xteams" onChange="dolmoedit()"><?php if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>";} ?></select>
+              <select class="custom-select" name="xteams" onChange="dolmoedit()"><?php if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){ 
+                echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>"; 
+                if ($i==16) echo "<option value='24'>24</option>"; 
+              } ?></select>
             </div>
           </div>
           <div class="row pb-1">

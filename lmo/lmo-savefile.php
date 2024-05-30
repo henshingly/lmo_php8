@@ -88,6 +88,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         } else {
           fputs($datei,"KlFin=".$klfin."\n");
           fputs($datei,"playdown=".$playdown."\n");
+          fputs($datei,"playoffmode=".$playoffmode."\n");
         }
         fputs($datei,"DatC=".$datc."\n");
         fputs($datei,"DatS=".$dats."\n");
@@ -95,6 +96,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         fputs($datei,"DatF=".$defdateformat."\n");
         fputs($datei,"urlT=".$urlt."\n");
         fputs($datei,"urlB=".$urlb."\n");
+	fputs($datei,"stats=".$stats."\n");
         fputs($datei,"Plan=".$plan."\n");
         fputs($datei,"Ergebnis=".$ergebnis."\n");
         fputs($datei,"mittore=".$mittore."\n");
@@ -138,9 +140,9 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
             if ($minus==2) {
               fputs($datei,"SM=".$strafm[$i]."\n");
             }
-            fputs($datei,"TOR1=".$torkorrektur1[$i]."\n"); // Hack-Straftore
-        		fputs($datei,"TOR2=".$torkorrektur2[$i]."\n"); // Hack-Straftore
-        		fputs($datei,"STDA=".$strafdat[$i]."\n");      // Hack-Straftore
+            fputs($datei,"TOR1=".$torkorrektur1[$i]."\n"); 	// Hack-Straftore
+        	fputs($datei,"TOR2=".$torkorrektur2[$i]."\n"); 	// Hack-Straftore
+        	fputs($datei,"STDA=".$strafdat[$i]."\n");      	// Hack-Straftore
           }
           fputs($datei,"URL=".$teamu[$i]."\n");
           fputs($datei,"NOT=".$teamn[$i]."\n");
@@ -157,6 +159,23 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           fputs($datei,"D2=".$datum2[$i-1]."\n");
           if ($lmtype!=0) {
             fputs($datei,"MO=".$modus[$i-1]."\n");
+            if($anzteams==24) {
+               switch ($i) {
+                 case 1:
+                 case 2:
+                   $anzsp=16;
+                   break;
+                 case 3:
+                   $anzsp=8;
+                   break;
+                 case 4:
+                   $anzsp=4;
+                   break;
+                 case 5:
+                   $anzsp=2;
+                   break;
+               }
+            }
             $anzsp=$anzsp/2;
             if (($klfin==1) && ($i==$anzst)) {
               $anzsp=$anzsp+1;
