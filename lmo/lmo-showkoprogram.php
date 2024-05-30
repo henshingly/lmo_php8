@@ -135,6 +135,7 @@ if ($file != "") {
               }
             }
           echo "<div class='col-2'>".applyFactor($goala[$j][$i][$n],$goalfaktor); ?> : <?php echo applyFactor($goalb[$j][$i][$n],$goalfaktor); ?> <?php echo $mspez[$j][$i][$n]; ?><?php
+          if ($anzst-$j == 1) echo "</div><div class='col-2'>";
            /** Mannschaftsicons finden
              */
             $lmo_teamaicon="";
