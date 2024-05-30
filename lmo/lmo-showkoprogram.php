@@ -30,10 +30,10 @@ if ($file != "") {
     <div class="col-1"><?php 
   for($i = 1; $i <= floor($anzteams/2); $i++) {
     if($i!=$selteam){?>
-            <a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' alt='$teamk[$i]'");?></a>
-            <?php
+      <a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;'", " alt='$teamk[$i]'");?></a>
+    <?php
     } else {
-      echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' alt='$teamk[$i]'");
+      echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;'", " alt='$teamk[$i]'");
     }
     echo "<br>"; 
   }?>
@@ -90,7 +90,7 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 text-end d-none d-lg-block'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt='' width='24'")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," width='24'")."&nbsp;";
           echo $heim1.$teams[$teama[$j][$i]].$heim2.$urlta;
           echo " </div>";
           echo " <div class='col-md-auto'>-</div>";
@@ -101,7 +101,7 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 text-end d-lg-none'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt='' width='24'")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," width='24'")."&nbsp;";
           echo $heim1.$teamk[$teama[$j][$i]].$heim2.$urlta;
           echo " </div>";
           if ($m == 2) {
@@ -111,7 +111,7 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 d-none d-lg-block'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt='' width='24'")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," width='24'")."&nbsp;";
           echo $gast1.$teams[$teamb[$j][$i]].$gast2.$urltb;
           echo " </div>";
           if ($m == 2) {
@@ -121,7 +121,7 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 d-lg-none'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt='' width='24'")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," width='24'")."&nbsp;";
           echo $gast1.$teamk[$teamb[$j][$i]].$gast2.$urltb;
           echo " </div>";
           for($n = 0; $n < $modus[$j]; $n++) {
@@ -140,8 +140,8 @@ if ($file != "") {
             $lmo_teamaicon="";
             $lmo_teambicon="";
             if($urlb==1 || $mnote[$j][$i][$n]!=""){
-              $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt='$teams[$i]' width='24' style='vertical-align: middle;'");
-              $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt='$teams[$i]' width='24' style='vertical-align: middle;'");
+              $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt='$teams[$i]' width='24' style='vertical-align: middle;'", " alt='$teamk[$i]'");
+              $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt='$teams[$i]' width='24' style='vertical-align: middle;'", " alt='$teamk[$i]'");
             }
             /** Spielbericht verlinken
              */
@@ -175,7 +175,7 @@ if ($file != "") {
     <div class="col-1 text-start"><?php 
   for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {
     if($i!=$selteam){?>
-            <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' alt='$teamk[$i]'")?></a>
+            <a href="<?php echo $addp.$i?>" title="<?php echo $text[23]." ".$teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;'", " alt='$teamk[$i]'")?></a>
             <?php
     } else {
       echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' alt='$teamk[$i]'");

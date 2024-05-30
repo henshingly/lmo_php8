@@ -34,9 +34,9 @@ if($file!=""){
       <?php
   for ($i=1; $i<=$anzteams; $i++) {
     if($i!=$selteam){?>
-            <p><a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teamk[$i]' width='24' style='vertical-align: middle;'"); ?></a></p><?php
+            <p><a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;'", " alt='$teamk[$i]'"); ?></a></p><?php
     } else {
-     echo "<p>".HTML_smallTeamIcon($file,$teams[$i]," alt='$teamk[$i]' width='24' style='vertical-align: middle;'")."</p>";
+     echo "<p>".HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;'", " alt='$teamk[$i]'")."</p>";
     }
   }?>
     </div>
@@ -109,7 +109,7 @@ if($file!=""){
           <div class="col-1 col-sm-auto"><?php echo $mspez[$j][$i]; ?></div><?php
         }?>
           <div class="col-1 col-sm-auto"><?php
-		  /** Mannschaftsicons finden */
+	  /** Mannschaftsicons finden */
           $lmo_teamaicon="";
           $lmo_teambicon="";
           if($urlb==1 || $mnote[$j][$i]!="" || $msieg[$j][$i]>0) {
