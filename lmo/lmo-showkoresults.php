@@ -97,7 +97,7 @@ if ($file != "") {
             $color = "";
           }
           if ($plan == 1) {
-            $heim1 = "<a href=\"".$addp.$teama[$st-1][$i]."\" class=\"".$color."\" data-bs-toggle='tooltip' data-bs-placement='top' title=\"".$text[269]."\">";
+            $heim1 = "<a href='".$addp.$teama[$st-1][$i]."' class='".$color."' data-bs-toggle='tooltip' data-bs-placement='top' title='".$text[269]."'>";
           }
           if (($favteam > 0) && ($favteam == $teama[$st-1][$i])) {
             $heim1 .= "<strong>";
@@ -108,11 +108,11 @@ if ($file != "") {
           if ($plan == 1) {
             $heim2 .= "</a>";
           }?>
-          <div class="col-3 text-end d-none d-lg-block"><?php
+          <div class="col-3 text-end d-none d-lg-block <?php echo $color; ?>"><?php
           echo $heim1.$teams[$teama[$st-1][$i]].$heim2;
           echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt='' width='24'")."&nbsp;";?>
           </div>
-          <div class="col-2 text-end d-lg-none"><?php
+          <div class="col-2 text-end d-lg-none <?php echo $color; ?>"><?php
           echo $heim1.$teamk[$teama[$st-1][$i]].$heim2;?>
           </div>
           <?php
@@ -124,7 +124,7 @@ if ($file != "") {
             $color = "";
           }
           if ($plan==1) {
-            $gast1 = "<a href=\"".$addp.$teamb[$st-1][$i]."\" class=\"".$color."\" data-bs-toggle='tooltip' data-bs-placement='top' title=\"".$text[269]."\">";
+            $gast1 = "<a href='".$addp.$teamb[$st-1][$i]."' class='".$color."' data-bs-toggle='tooltip' data-bs-placement='top' title='".$text[269]."'>";
           }
           if (($favteam > 0) && ($favteam == $teamb[$st-1][$i])) {
             $gast1 .= "<strong>";
@@ -135,11 +135,11 @@ if ($file != "") {
           if ($plan==1) {
             $gast2 .= "</a>";
           }?>
-          <div class="col-3 text-start d-none d-lg-block"><?php
+          <div class="col-3 text-start d-none d-lg-block <?php echo $color; ?>"><?php
           echo "&nbsp;".HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt='' width='24'")."&nbsp;";
           echo $gast1.$teams[$teamb[$st-1][$i]].$gast2;?>
           </div>
-          <div class="col-2 text-start d-lg-none"><?php
+          <div class="col-2 text-start d-lg-none <?php echo $color; ?>"><?php
           echo $gast1.$teamk[$teamb[$st-1][$i]].$gast2;?>
           </div><?php
         } else { ?>
