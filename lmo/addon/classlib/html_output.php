@@ -148,19 +148,19 @@ function findImage ($key,$path,$imgType,$htmlParameter="",$alternative_text='') 
   if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
     $key=preg_replace("/[^a-zA-Z0-9]/",'',$key);
     // echo $key;
-  }
-  else {
+  } else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter." /> ");
+    $size = isset($imgdata[3]) ? $imgdata[3] : "";
+    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' ".$size."  ".$htmlParameter." /> ");
   }
 
   if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
     $key=preg_replace("/[I(A)0-9]+$/",'',$key);
     // echo $key;
-  }
-  else {
+  } else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter."/> ");
+    $size = isset($imgdata[3]) ? $imgdata[3] : "";
+    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' ".$size."  ".$htmlParameter."/> ");
   }
 
   if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
@@ -168,7 +168,8 @@ function findImage ($key,$path,$imgType,$htmlParameter="",$alternative_text='') 
     return substr($alternative_text, 6, strrpos($alternative_text, "'") - 6);
   } else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter." /> ");
+    $size = isset($imgdata[3]) ? $imgdata[3] : "";
+    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' ".$size."  ".$htmlParameter." /> ");
   }
 }
 
