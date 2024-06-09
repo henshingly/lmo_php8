@@ -30,8 +30,6 @@ require_once(PATH_TO_ADDONDIR."/classlib/html_output.php");
 
 
 // Weitere Klassen einbinden
-// class iniFile
-require_once(PATH_TO_ADDONDIR."/classlib/classes/ini/cIniFileReader.inc");
 // class pdf
 require_once(PATH_TO_ADDONDIR."/classlib/classes/pdf/Cezpdf.php");         // Version 0.12.40
 include_once(PATH_TO_ADDONDIR."/classlib/classes/pdf/extensions/CezTableImage.php");
