@@ -18,6 +18,10 @@
   */
 
 session_start();
+$min_php_version ="7.4.0";
+if (version_compare(PHP_VERSION, $min_php_version, '<')) {
+  echo "<p class='error'><img src='img/wrong.gif' border='0' width='12' height='12' alt='ERROR'> This LMO requires a web server with PHP ".$min_php_version." or higher installed.<br>Your web server does not currently support this because your PHP version is: ".PHP_VERSION;
+}
 
 //check if the call is from maindir (lmo.php) or install/install.php directly
 if (is_readable('includes/FTP.php')) {
@@ -86,9 +90,9 @@ $lang=array(
 
     'STEP2'=>'Dateirechte setzen',
     'STEP2_MANUAL'=>'<p><strong>Kopieren Sie die beiden Ordner (<code>addon</code> und <code>config</code>) <u>aus dem Ordner</u> <code>install</code> mit einem FTP-Programm über Ihr LMO-Verzeichnis.</strong></p>
-      <p><img src="img/manual_copy.png" alt="Kopieren der Dateien mittels FTP-Programm" width="696"></p>
+      <p><img src="install/img/manual_copy.png" alt="Kopieren der Dateien mittels FTP-Programm" width="696"></p>
       <p><strong>Setzen Sie danach die benötigten Rechte über ihr FTP-Programm.</strong></p>
-      <p><img src="img/manual_chmod.png" alt="Setzen der Rechte mittels FTP-Programm" width="427"></p>
+      <p><img src="install/img/manual_chmod.png" alt="Setzen der Rechte mittels FTP-Programm" width="427"></p>
       <p>Aktualisieren Sie diese Seite <a href="#" onclick="location.reload();return false;">[Reload]</a>, um
       zu überprüfen, ob alle Rechte richtig gesetzt sind.<br><a href="'.$_SERVER['PHP_SELF'].'">[Zurück zur automatischen Installation (falls verfügbar)]</a></p>',
 
@@ -144,9 +148,9 @@ $lang=array(
 
     'STEP2'=>'CHMOD files',
     'STEP2_MANUAL'=>'<p><strong>Copy the two folders (<code>addon</code> and <code>config</code>) <u>from the</u> <code>install</code> folder via your LMO using an FTP program</strong></p>
-      <p><img src="img/manual_copy.png" alt="Copying files using a FTP tool" width="696"></p>
+      <p><img src="install/img/manual_copy.png" alt="Copying files using a FTP tool" width="696"></p>
       <p><strong>Please chmod these file with your FTP tool.</strong></p>
-      <p><img src="img/manual_chmod.png" alt="Chmod files using a FTP tool" width="427"></p>
+      <p><img src="install/img/manual_chmod.png" alt="Chmod files using a FTP tool" width="427"></p>
       <p>Press <a href="#" onclick="location.reload();return false;">[Reload]</a> for
       a check.<br><a href="'.$_SERVER['PHP_SELF'].'">[Back to automatic installation (if available)]</a><p>',
 
@@ -202,9 +206,9 @@ $lang=array(
 
     'STEP2'=>'Définir les droits d\'accès des fichiers',
     'STEP2_MANUAL'=>'<p><strong>Copiez les deux dossiers (<code>addon</code> et <code>config</code>) <u>du dossier</u> <code>install</code> via votre LMO à l&apos;aide d&apos;un programme FTP -Répertoire.</strong></p>
-      <p><img src="img/manual_copy.png" alt="" width="696"></p>
+      <p><img src="install/img/manual_copy.png" alt="" width="696"></p>
       <p><strong>Définissez ensuite les droits requis via votre programme FTP.</strong></p>
-      <p><img src="img/manual_chmod.png" alt="" width="427"></p>
+      <p><img src="install/img/manual_chmod.png" alt="" width="427"></p>
       <p>Veuillez ensuite actualiser cette page avec un <a href="#" onclick="location.reload();return false;">[Rafraîchir]</a>, pour vérifier , que tout les droits ont été placé correctement.<br><a href="'.$_SERVER['PHP_SELF'].'">[Retourner à l\'installation automatique]</a></p>',
 
     'STEP3'=>'Création du fichier de configuration',
@@ -255,9 +259,9 @@ $lang=array(
 
     'STEP2'=>'Archivos CHMOD',
     'STEP2_MANUAL'=>'Copie las dos carpetas (<code>addon</code> y <code>config</code>) <u>de la carpeta</u> <code>install</code> en su LMO usando un programa FTP.
-      <p><img src="img/manual_copy.png" alt="Copiar los archivos usando el programa FTP" width="696"></p>
+      <p><img src="install/img/manual_copy.png" alt="Copiar los archivos usando el programa FTP" width="696"></p>
       <p><strong>Luego configure los derechos requeridos a través de su programa FTP.</strong></p>
-      <p><img src="img/manual_chmod.png" alt="Configurar los derechos mediante un programa FTP" width="427"></p>
+      <p><img src="install/img/manual_chmod.png" alt="Configurar los derechos mediante un programa FTP" width="427"></p>
       <p>Actualiza esta página <a href="#" onclick="location.reload();return false;">[Reload]</a> para
       para comprobar si todos los derechos están configurados correctamente.<br><a href="'.$_SERVER['PHP_SELF'].'">[Volver a la instalación automática (si está disponible)]</a></p>',
 
