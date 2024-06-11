@@ -38,6 +38,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         fputs($datei,"[Options]\n");
         fputs($datei,"Title=".$text[54]."\n");
         fputs($datei,"Name=".$titel."\n");
+        fputs($datei,"icon=".$icon."\n");
         fputs($datei,"Type=".$lmtype."\n");
         fputs($datei,"Teams=".$anzteams."\n");
         fputs($datei,"goalfaktor=".$goalfaktor."\n");

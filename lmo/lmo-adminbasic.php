@@ -30,6 +30,7 @@ if($file!=""){
         if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){
           $titel=isset($_POST["xtitel"])?trim($_POST["xtitel"]):$titel;
           if($titel==""){$titel="No Name";}
+          $icon=isset($_POST["xicon"])?trim($_POST["xicon"]):$icon;
           $goalfaktor=isset($_POST["xgoalfaktor"]) && is_numeric($_POST["xgoalfaktor"])?$_POST["xgoalfaktor"]:$goalfaktor;
           $pointsfaktor=isset($_POST["xpointsfaktor"]) && is_numeric($_POST["xpointsfaktor"])?$_POST["xpointsfaktor"]:$pointsfaktor;
         }
@@ -166,6 +167,10 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <div class="row pb-1">
             <div class="col-3 offset-2 text-end"><input class="form-control" type="text" name="xtitel" maxlength="60" value="<?php echo $titel; ?>" onChange="dolmoedit()"></div>
             <div class="col-5 text-start"><acronym title="<?php echo $text[118];?>"><?php echo $text[113];?></acronym></div>
+          </div>
+          <div class="row pb-1">
+            <div class="col-3 offset-2 text-end"><input class="form-control" type="text" name="xicon" maxlength="60" value="<?php echo $icon; ?>" onChange="dolmoedit()"></div>
+            <div class="col-5 text-start"><?php echo $text[2000];?></div>
           </div><?php      if($lmtype==0){ ?>
           <div class="row pb-1">
             <div class="col-2 offset-3 text-end"><input class="form-control" type="text" name="xnamepkt" maxlength="60" value="<?php if($namepkt==""){echo $text[37];}else{echo $namepkt;} ?>" onChange="dolmoedit()"></div>

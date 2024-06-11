@@ -41,6 +41,7 @@ while($files=readdir($verz)){
       $ligadatei[$liga_counter]['liga_name']="";  //Liganame
       $ligadatei[$liga_counter]['aktueller_spieltag']="";  //Aktueller Spieltag
       $ligadatei[$liga_counter]['anz_teams']="";  //Anzahl der Mannschaften
+      $ligadatei[$liga_counter]['icon']="";  //Liga-Icon
       $ligadatei[$liga_counter]['rundenbezeichnung']=$text[2];  //Spieltag oder Pokalrunde
       while (!feof($datei)) {
         $zeile = fgets($datei,1000);
@@ -54,6 +55,7 @@ while($files=readdir($verz)){
           if($option_name=="Name"){$ligadatei[$liga_counter]['liga_name']=$option_wert;}
           if($option_name=="Actual"){$ligadatei[$liga_counter]['aktueller_spieltag']=$option_wert;}
           if($option_name=="Teams"){$ligadatei[$liga_counter]['anz_teams']=$option_wert;}
+          if($option_name=="icon"){$ligadatei[$liga_counter]['icon']=$option_wert;}
           if($option_name=="Type"){
             $ligadatei[$liga_counter]['liga_typ']=$option_wert;
             if($option_wert=="1"){$ligadatei[$liga_counter]['rundenbezeichnung']=$text[370];}
@@ -61,7 +63,7 @@ while($files=readdir($verz)){
           //Alle benötigten Werte gefunden -> Abbruch
           if($ligadatei[$liga_counter]['liga_name']!="" &&
              $ligadatei[$liga_counter]['aktueller_spieltag']!="" &&
-             $ligadatei[$liga_counter]['anz_teams']!='')break;
+             $ligadatei[$liga_counter]['anz_teams']!='') break;
         }
       }
       fclose($datei);
@@ -112,7 +114,7 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction']=
 	</div>
 <?php foreach($ligadatei as $liga){?>
 	<div class="row">
-		<div class="col-4 offset-1 text-start d-none d-lg-block"><a href="<?php echo $addi.$subdir.$liga['file_name']."&amp;st=".$liga['aktueller_spieltag']?>"><?php echo $liga['liga_name']?></a></div>
+		<div class="col-4 offset-1 text-start d-none d-lg-block"><a href="<?php echo $addi.$subdir.$liga['file_name']."&amp;st=".$liga['aktueller_spieltag']?>"><?php echo  HTML_smallLigaIcon($liga['icon'],"alt='' width='24'","");?><?php echo $liga['liga_name']?></a></div>
 		<div class="col text-start d-lg-none"><a href="<?php echo $addi.$subdir.$liga['file_name']."&amp;st=".$liga['aktueller_spieltag']?>"><?php echo $liga['liga_name']?></a></div>
 		<?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
