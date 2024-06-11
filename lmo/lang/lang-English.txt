@@ -586,6 +586,10 @@
 702=Aug.
 703=August
 704=en-US
+800=Playoff-Mode
+801=Home advantage playoff modeBest of 5/Best of 7
+802=H, A, H, A, H, (A, H)
+803=H, H, A, A, H, (A, H)
 1000=Series
 1001=won
 1002=not lost
@@ -594,6 +598,7 @@
 1005=lost
 1006=current record
 1007=season
+2000=League-Icon
 3000=set second half
 3001=The league as an odd number of matchdays. The start of second half couldn't be identifies
 3002=Second half successfull created

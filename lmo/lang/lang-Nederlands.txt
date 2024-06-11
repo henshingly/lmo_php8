@@ -586,6 +586,10 @@
 702=Aug.
 703=augustus
 704=nl_NL
+800=Playoff-Modus
+801=Thuisvoordeel playoff-modus Best of 5/Best of 7
+802=T, U, T, U, T, (U, T)
+803=T, T, U, U, T, (U, T)
 1000=reeks
 1001=Won
 1002=Ongeslagen
@@ -594,6 +598,7 @@
 1005=Verloren
 1006=Huidige
 1007=seizoen
+2000=Competitie-Icon
 3000=Maak een spelplan voor de tweede helft
 3001=De competitie heeft een oneven aantal speeldagen. Er kon geen heen- en terugreis worden geïdentificeerd.
 3002=Het wedstrijdschema van de tweede helft is succesvol opgeslagen.

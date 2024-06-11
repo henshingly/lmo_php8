@@ -586,6 +586,10 @@
 702=avg.
 703=avgusta
 704=sl_SL
+800=Način končnice
+801=HPrednost domačega načina končnice Best of 5/Best of 7
+802=H, A, H, A, H, (A, H)
+803=H, H, A, A, H, (A, H)
 1000=serija
 1001=Zmagal
 1002=Neporažen
@@ -594,6 +598,7 @@
 1005=Izgubljeno
 1006=Trenutno
 1007=letni čas
+2000=Liga-Icon
 3000=Ustvarite načrt igre za drugi polčas
 3001=Liga ima liho število igralnih dni. Povratnega potovanja ni bilo mogoče identificirati.
 3002=Razpored tekem drugega polčasa je bil uspešno shranjen.

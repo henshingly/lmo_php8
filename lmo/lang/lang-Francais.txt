@@ -586,6 +586,10 @@
 702=Ao.
 703=Août
 704=fr_FR
+800=Mode séries éliminatoires
+801=Mode éliminatoires avec avantage à domicile Best of 5/Best of 7
+802=D, E, D, E, D, (E, D)
+803=D, D, E, E, D, (E, D)
 1000=series
 1001=victoire
 1002=invaincu
@@ -594,6 +598,7 @@
 1005=perdu
 1006=actuellement
 1007=saison
+2000=Ligue-Icon
 3000=Créer seconde mi-temps
 3001=La ligue a un nombre impair de jours de match. Aucun aller-retour n'a pu être identifié.
 3002=Le plan de match de la seconde mi-temps a été enregistré avec succès.

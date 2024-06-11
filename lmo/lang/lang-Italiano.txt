@@ -589,6 +589,10 @@
 702=Ago.
 703=Agosto
 704=it_IT
+800=Modalità playoff
+801=Modalità playoff vantaggio casa Best of 5/Best of 7
+802=I, E, I, E, I, (E, I)
+803=I, I, E, E, I, (E, I)
 1000=serie
 1001=Vinto
 1002=Imbattuto
@@ -597,6 +601,7 @@
 1005=Perso
 1006=Corrente
 1007=stagione
+2000=Campionato-Icon
 3000=Crea il piano di gioco del secondo tempo
 3001=Il campionato ha un numero dispari di giorni di gioco. Non è stato possibile identificare alcun viaggio di andata e ritorno.
 3002=Il programma della seconda metà della partita è stato salvato con successo.

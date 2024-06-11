@@ -586,6 +586,10 @@
 702=aug.
 703=augusztus
 704=hu_HU
+800=Rájátszás mód
+801=Hazai előny rájátszás mód Best of 5/Best of 7
+802=H, V, H, V, H, (V, H)
+803=H, H, V, V, H, (V, H)
 1000=sorozat
 1001=Nyert
 1002=Veretlen
@@ -594,6 +598,7 @@
 1005=Elveszett
 1006=Aktuális
 1007=szezon
+2000=Ligának-Icon
 3000=Második félidő játéktervének elkészítése
 3001=A ligának páratlan számú játéknapja van. Oda-vissza utat nem lehetett azonosítani.
 3002=A második félidő játéktervét sikeresen elmentettük.

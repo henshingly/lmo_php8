@@ -586,6 +586,10 @@
 702=aug.
 703=august
 704=no_NO
+800=Sluttspillmodus
+801=Hjemmefordel sluttspillmodus Best of 5/Best of 7
+802=H, B, H, B, H, (B, H)
+803=H, H, B, B, H, (B, H)
 1000=serie
 1001=Vunnet
 1002=Ubeseiret
@@ -594,6 +598,7 @@
 1005=Tapt
 1006=Gjeldende
 1007=sesong
+2000=Ligaen-Icon
 3000=Lag andre omgangsspillplan
 3001=Ligaen har et oddetall spilledager. Ingen rundtur kunne identifiseres.
 3002=Den andre omgangs kampplan ble lagret.
