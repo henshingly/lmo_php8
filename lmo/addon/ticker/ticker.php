@@ -20,90 +20,55 @@
 
 require_once(dirname(__FILE__).'/../../init.php');
 
-// Durch Get bestimmter Parameter (für IFRAME)
-$ticker_tickerart=      isset($_GET['tickerart'])?            urldecode($_GET['tickerart']):      $ticker_tickerart;  
-$ticker_ligen=          isset($_GET['tickerligen'])?          urldecode($_GET['tickerligen']):    $ticker_standard_ligen; 
-$ticker_tickertitel=    isset($_GET['tickertitel'])?          urldecode($_GET['tickertitel']):    $ticker_tickertitel; 
-$ticker_notizanzeigen=  isset($_GET['tickernotizen'])?        urldecode($_GET['tickernotizen']):  $ticker_notizanzeigen; 
-$ticker_color=          isset($_GET['tickercolor'])?          urldecode($_GET['tickercolor']):          $ticker_color;
-$ticker_background=     isset($_GET['tickerbackground'])?     urldecode($_GET['tickerbackground']):     $ticker_background;
-$ticker_breite=         isset($_GET['tickerbreite'])?         urldecode($_GET['tickerbreite']):         $ticker_breite;
-$ticker_geschwindigkeit=isset($_GET['tickergeschwindigkeit'])?urldecode($_GET['tickergeschwindigkeit']):$ticker_geschwindigkeit;
-
 // Durch gesetzte $tickerart bestimmter Parameter (für include/require)
 $ticker_tickerart=      isset($tickerart)?            $tickerart:      $ticker_tickerart;  
 $ticker_ligen=          isset($tickerligen)?          $tickerligen:    $ticker_standard_ligen; 
 $ticker_tickertitel=    isset($tickertitel)?          $tickertitel:    $ticker_tickertitel; 
 $ticker_notizanzeigen=  isset($tickernotizen)?        $tickernotizen:  $ticker_notizanzeigen; 
-$ticker_color=          isset($tickercolor)?          $color:          $ticker_color;
-$ticker_background=     isset($tickerbackground)?     $background:     $ticker_background;
 $ticker_breite=         isset($tickerbreite)?         $breite:         $ticker_breite;
 $ticker_geschwindigkeit=isset($tickergeschwindigkeit)?$geschwindigkeit:$ticker_geschwindigkeit;
 
-$ticker_text="";
 $versionticker="LMO-Ticker 2.0 ";
+$trenner=" +++ ";
 $array = array();  
 $msieg=0;
-$mnote="";
-$dummy1="";
-$dummy2="";
-$dummy3="";
-$dummy4="";
-
-//Falls IFRAME - komplettes HTML-Dokument
-if (basename($_SERVER['PHP_SELF'])=="ticker.php") {?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-					"http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title><?php echo $versionticker?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-<style type="text/css">
-  @media screen{
-  body {background:transparent;}
-  body,div,p,marquee {margin:0 auto;padding:0;text-align:center;}
-  }
-  @media print{
-  body {display:none;}
-  }
-</style>
-</head>
-<body><?php 
-}?>
+$ticker_text=$mnote=$dummy1=$dummy2=$dummy3=$dummy4="";
+?>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jQuery.Marquee/1.6.0/jquery.marquee.min.js"></script>
+  <script type="text/javascript">
+      $(function(){
+        $('.marquee').marquee();    
+      });
+  </script>
   <div align="center"><?php 
 if ($ticker_tickertitel==1) { ?>
-    <p><?php echo $text['ticker'][0]?></p><?php }?>
-    <script type="text/javascript"><?php 
+    <p><?php echo $text['ticker'][0]?></p><?php }
 if (!isset($file)) {
   $file="";
 }
 $file2=$file;
 $ticker_array=explode(",",$ticker_ligen);
+
 foreach($ticker_array as $file){
-  //ob_start();
   require(PATH_TO_LMO."/lmo-openfile.php");
-  //ob_end_clean();
-  
-  $trenner=" +++ ";
   if (isset($lmtype)) {
-    if ($ticker_tickerart==2){
+    if($ticker_tickerart==2) {
       $hilf="";
       if (isset($nlines)) {
         for($i=0;$i<count($nlines);$i++){
-          $hilf.=$nlines[$i].$trenner;
+          if(strlen($nlines[$i]) > 0) 
+            $hilf.=$trenner.$nlines[$i];
         }
-      }else{
-        $hilf.=$text['ticker'][4].$trenner;
       }
       $ticker_text.=$hilf;
-    }else{ 
+    } else {
       $hilf="";
       $hilf1="";
       if ($lmtype==0) {
         for ($i=0; $i<$anzsp; $i++) {
           if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ) {
-  
-            if ($mspez[$stx-1][$i]=="&nbsp;") {
+               if ($mspez[$stx-1][$i]=="&nbsp;") {
               $mspezhilf="";
             } else {
               $mspezhilf=" ".$mspez[$stx-1][$i];
@@ -129,7 +94,7 @@ foreach($ticker_array as $file){
               } else {
                 $dummy4="";
               }
-              $hilf=$hilf.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".applyFactor($goala[$stx-1][$i],$goalfaktor).":".applyFactor($goalb[$stx-1][$i],$goalfaktor).$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4." +++ ";
+              $hilf=$hilf.$teams[$teama[$stx-1][$i]]." - ".$teams[$teamb[$stx-1][$i]]." ".applyFactor($goala[$stx-1][$i],$goalfaktor).":".applyFactor($goalb[$stx-1][$i],$goalfaktor).$mspezhilf.$dummy1.$dummy2.$dummy3.$dummy4.$trenner;
             }
           }
         }  //for
@@ -148,59 +113,21 @@ foreach($ticker_array as $file){
                 } else {
                   $dummy4="";
                 }
-                $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]."-".$teams[$teamb[$stx-1][$i]]." ".applyFactor($goala[$stx-1][$i][$n],$goalfaktor).":".applyFactor($goalb[$stx-1][$i][$n],$goalfaktor).$mspezhilf.$dummy4." +++ ";
+                $hilf1=$hilf1.$teams[$teama[$stx-1][$i]]." - ".$teams[$teamb[$stx-1][$i]]." ".applyFactor($goala[$stx-1][$i][$n],$goalfaktor).":".applyFactor($goalb[$stx-1][$i][$n],$goalfaktor).$mspezhilf.$dummy4.$trenner;
               }
             }
           }
         }
       }
-      $ticker_text.=" +++ $titel ($stx{$text['ticker'][1]}): $hilf $hilf1";
     }
+    $ticker_text.=" $trenner $titel ($stx{$text['ticker'][1]}): $hilf $hilf1";
   } else {
     $ticker_text=$text[224].$trenner;
   }
 } //foreach
 $ticker_formnumber="t".substr(md5(microtime()),3,4);
 $file=$file2;?>
-  var msg1<?php echo $ticker_formnumber?>="<?php echo $ticker_text?>";
-  var laenge<?php echo $ticker_formnumber?>=msg1<?php echo $ticker_formnumber?>.length;
-  var timerID<?php echo $ticker_formnumber?> = null;
-  var timerRunning<?php echo $ticker_formnumber?> = false;
-  var id<?php echo $ticker_formnumber?>,pause<?php echo $ticker_formnumber?>=0,position<?php echo $ticker_formnumber?>=0;
-  function marquee<?php echo $ticker_formnumber?>(){
-    var i,k,msg=msg1<?php echo $ticker_formnumber?>;
-    k=(<?php echo $ticker_breite?>/msg.length)+1;
-    for(i=0;i<=k;i++) msg+=""+msg;
-    document.<?php echo $ticker_formnumber?>.marquee.value=msg.substring(position<?php echo $ticker_formnumber?>,position<?php echo $ticker_formnumber?>+120);
-    if(position<?php echo $ticker_formnumber?>++==laenge<?php echo $ticker_formnumber?>) position<?php echo $ticker_formnumber?>=0;
-    id=setTimeout("marquee<?php echo $ticker_formnumber?>()",1000/<?php echo $ticker_geschwindigkeit+0.1?>);
-    }
-  function action<?php echo $ticker_formnumber?>(){
-    if(!pause) {
-      clearTimeout(id);
-      pause=1;
-      }
-    else{
-      marquee();
-      pause=0;
-    }
-  }
-  if (laenge<?php echo $ticker_formnumber?>>0) {
-    if (document.layers) {  //Bug in NN4 -> Keine Styles erlaubt
-      document.write('<form name="<?php echo $ticker_formnumber?>"><input type="text" name="marquee" SIZE="<?php echo $ticker_breite?>" readonly><\/form>');
-    }else{
-      document.write('<form name="<?php echo $ticker_formnumber?>" style="margin:0 auto;"><input style="background:#<?php echo $ticker_background?>;color:#<?php echo $ticker_color?>;border:1px solid #<?php echo $ticker_color?>;" type="text" name="marquee" SIZE="<?php echo $ticker_breite?>" readonly><\/form>');
-    }
-    marquee<?php echo $ticker_formnumber?>();
-  }
-    </script>
-
-    <noscript>
-    <marquee style='background:#<?php echo $ticker_background?>;color:#<?php echo $ticker_color?>;width:<?php echo $ticker_breite?>ex;border:1px solid #<?php echo $ticker_color?>;'><?php echo $ticker_text?></marquee>
-    </noscript>
-  </div><?php 
-//Falls IFRAME - komplettes HTML-Dokument
-if (basename($_SERVER['PHP_SELF'])=="ticker.php") {?>
-</body>
-</html><?php 
-}?>
+    <div data-duration="5000" class="marquee" style="width: <?php echo $ticker_breite;?>em; overflow: hidden; background-color: var(--bs-secondary-bg-subtle);">
+<?php echo $ticker_text; ?>
+    </div>
+  </div>
