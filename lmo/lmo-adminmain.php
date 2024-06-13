@@ -33,7 +33,7 @@ if($action=="admin"){
   $subdir=isset($_REQUEST["subdir"])?$_REQUEST["subdir"]:dirname($file)."/";
 
   $warning = (int)0;
-  if (version_compare(PHP_VERSION, '7.4.0', '<')) echo warning_message("This LMO requires a web server with PHP 7.4.x or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>".PHP_VERSION."</mark>", $warning = $warning+1, TRUE);
+  if (version_compare(PHP_VERSION, $min_php_version, '<')) echo warning_message("This LMO requires a web server with PHP ".$min_php_version." or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>".PHP_VERSION."</mark>", $warning = $warning+1, TRUE);
   if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo warning_message("Delete install folder or set its chmod to 000!", $warning = $warning+1,TRUE);
 ?>
 

@@ -19,9 +19,6 @@
 
 session_start();
 $min_php_version ="7.4.0";
-if (version_compare(PHP_VERSION, $min_php_version, '<')) {
-  echo "<p class='error'><img src='img/wrong.gif' border='0' width='12' height='12' alt='ERROR'> This LMO requires a web server with PHP ".$min_php_version." or higher installed.<br>Your web server does not currently support this because your PHP version is: ".PHP_VERSION;
-}
 
 //check if the call is from maindir (lmo.php) or install/install.php directly
 if (is_readable('includes/FTP.php')) {
@@ -70,6 +67,8 @@ $lang=array(
     'SUCCESS'=>'Erfolg',
     'ERROR'=>'Fehler',
     'CHECK_AGAIN'=>'Neu prüfen',
+    'PHP_ERROR_1'=>'Für diesen LMO ist ein Webserver mit PHP',
+    'PHP_ERROR_2'=>'oder höher erforderlich.<br>Ihr Webserver unterstützt dies derzeit nicht, Ihre PHP-Version ist:',
     'ERROR_WRONG_PATH'=>'Der Pfad ist nicht korrekt!',
     'ERROR_CONFIRM'=>'Es sind noch Fehler vorhanden! Der LMO wird NICHT funktionieren. Trotzdem fortfahren?',
 
@@ -88,11 +87,11 @@ $lang=array(
     'STEP1'=>'LMO-Verzeichnis auswählen',
     'STEP1_SELECT_FTP_DIR'=>'Wählen Sie das LMO Verzeichnis aus',
 
-    'STEP2'=>'Dateirechte setzen',
+    'STEP2'=>'PHP Version überprüfen und Dateirechte setzen (CHMOD)',
     'STEP2_MANUAL'=>'<p><strong>Kopieren Sie die beiden Ordner (<code>addon</code> und <code>config</code>) <u>aus dem Ordner</u> <code>install</code> mit einem FTP-Programm über Ihr LMO-Verzeichnis.</strong></p>
-      <p><img src="install/img/manual_copy.png" alt="Kopieren der Dateien mittels FTP-Programm" width="696"></p>
+      <p><img src="img/manual_copy.png" alt="Kopieren der Dateien mittels FTP-Programm" width="696"></p>
       <p><strong>Setzen Sie danach die benötigten Rechte über ihr FTP-Programm.</strong></p>
-      <p><img src="install/img/manual_chmod.png" alt="Setzen der Rechte mittels FTP-Programm" width="427"></p>
+      <p><img src="img/manual_chmod.png" alt="Setzen der Rechte mittels FTP-Programm" width="427"></p>
       <p>Aktualisieren Sie diese Seite <a href="#" onclick="location.reload();return false;">[Reload]</a>, um
       zu überprüfen, ob alle Rechte richtig gesetzt sind.<br><a href="'.$_SERVER['PHP_SELF'].'">[Zurück zur automatischen Installation (falls verfügbar)]</a></p>',
 
@@ -129,6 +128,8 @@ $lang=array(
     'PROCEED'=>'Proceed',
     'SUCCESS'=>'Success',
     'ERROR'=>'Error',
+    'PHP_ERROR_1'=>'This LMO requires a web server running PHP ',
+    'PHP_ERROR_2'=>'or later.<br>Your web server does not currently support this, your PHP version is:',
     'CHECK_AGAIN'=>'Test again',
     'ERROR_WRONG_PATH'=>'Incorrect path!',
     'ERROR_CONFIRM'=>'There are still errors left! Proceed?',
@@ -146,11 +147,11 @@ $lang=array(
     'STEP1'=>'Select LMO folder',
     'STEP1_SELECT_FTP_DIR'=>'Please select your LMO folder',
 
-    'STEP2'=>'CHMOD files',
+    'STEP2'=>'Check PHP version and set file permissions (CHMOD)',
     'STEP2_MANUAL'=>'<p><strong>Copy the two folders (<code>addon</code> and <code>config</code>) <u>from the</u> <code>install</code> folder via your LMO using an FTP program</strong></p>
-      <p><img src="install/img/manual_copy.png" alt="Copying files using a FTP tool" width="696"></p>
+      <p><img src="img/manual_copy.png" alt="Copying files using a FTP tool" width="696"></p>
       <p><strong>Please chmod these file with your FTP tool.</strong></p>
-      <p><img src="install/img/manual_chmod.png" alt="Chmod files using a FTP tool" width="427"></p>
+      <p><img src="img/manual_chmod.png" alt="Chmod files using a FTP tool" width="427"></p>
       <p>Press <a href="#" onclick="location.reload();return false;">[Reload]</a> for
       a check.<br><a href="'.$_SERVER['PHP_SELF'].'">[Back to automatic installation (if available)]</a><p>',
 
@@ -186,6 +187,8 @@ $lang=array(
     'PROCEED'=>'Continuer',
     'SUCCESS'=>'Succès',
     'ERROR'=>'Erreur',
+    'PHP_ERROR_1'=>'Ce LMO nécessite un serveur Web exécutant PHP',
+    'PHP_ERROR_2'=>'ou version ultérieure.<br>Votre serveur Web ne le prend pas en charge actuellement, votre version de PHP est:',
     'CHECK_AGAIN'=>'Vérifier de nouveau',
     'ERROR_WRONG_PATH'=>'Le chemin n\'est pas correct!',
     'ERROR_CONFIRM'=>'Il y a encore des erreurs! Désirez-vous quand même continuer?',
@@ -204,11 +207,11 @@ $lang=array(
     'STEP1'=>'Choissisez le répertoire du LMO',
     'STEP1_SELECT_FTP_DIR'=>'Veuillez choissir le répertoire du LMO',
 
-    'STEP2'=>'Définir les droits d\'accès des fichiers',
+    'STEP2'=>'Vérifiez la version PHP et définir les droits d\'accès des fichiers (CHMOD)',
     'STEP2_MANUAL'=>'<p><strong>Copiez les deux dossiers (<code>addon</code> et <code>config</code>) <u>du dossier</u> <code>install</code> via votre LMO à l&apos;aide d&apos;un programme FTP -Répertoire.</strong></p>
-      <p><img src="install/img/manual_copy.png" alt="" width="696"></p>
+      <p><img src="img/manual_copy.png" alt="" width="696"></p>
       <p><strong>Définissez ensuite les droits requis via votre programme FTP.</strong></p>
-      <p><img src="install/img/manual_chmod.png" alt="" width="427"></p>
+      <p><img src="img/manual_chmod.png" alt="" width="427"></p>
       <p>Veuillez ensuite actualiser cette page avec un <a href="#" onclick="location.reload();return false;">[Rafraîchir]</a>, pour vérifier , que tout les droits ont été placé correctement.<br><a href="'.$_SERVER['PHP_SELF'].'">[Retourner à l\'installation automatique]</a></p>',
 
     'STEP3'=>'Création du fichier de configuration',
@@ -242,6 +245,8 @@ $lang=array(
     'PROCEED'=>'Proceder',
     'SUCCESS'=>'Exitoso',
     'ERROR'=>'Error',
+    'PHP_ERROR_1'=>'Este LMO requiere un servidor web que ejecute PHP',
+    'PHP_ERROR_2'=>'o posterior.<br>Su servidor web no soporta esto actualmente, su versión de PHP es:',
     'CHECK_AGAIN'=>'Intenta otra vez',
     'ERROR_WRONG_PATH'=>'Directorio incorrecto!',
     'ERROR_CONFIRM'=>'Aun hay errores! Continuar?',
@@ -257,11 +262,11 @@ $lang=array(
     'STEP1'=>'Seleccione la carpeta de LMO',
     'STEP1_SELECT_FTP_DIR'=>'Seleccione por favor su carpeta de LMO',
 
-    'STEP2'=>'Archivos CHMOD',
+    'STEP2'=>'Verifique la versión de PHP y establezca permisos de archivos (CHMOD)',
     'STEP2_MANUAL'=>'Copie las dos carpetas (<code>addon</code> y <code>config</code>) <u>de la carpeta</u> <code>install</code> en su LMO usando un programa FTP.
-      <p><img src="install/img/manual_copy.png" alt="Copiar los archivos usando el programa FTP" width="696"></p>
+      <p><img src="img/manual_copy.png" alt="Copiar los archivos usando el programa FTP" width="696"></p>
       <p><strong>Luego configure los derechos requeridos a través de su programa FTP.</strong></p>
-      <p><img src="install/img/manual_chmod.png" alt="Configurar los derechos mediante un programa FTP" width="427"></p>
+      <p><img src="img/manual_chmod.png" alt="Configurar los derechos mediante un programa FTP" width="427"></p>
       <p>Actualiza esta página <a href="#" onclick="location.reload();return false;">[Reload]</a> para
       para comprobar si todos los derechos están configurados correctamente.<br><a href="'.$_SERVER['PHP_SELF'].'">[Volver a la instalación automática (si está disponible)]</a></p>',
 
@@ -306,7 +311,6 @@ if (isset($_POST['check'])) $lmo_install_step=3;
 $_SESSION['man']=!empty($_REQUEST['man'])?TRUE:FALSE;
 
 $patherror = $urlerror = $installerror = $loginerror ='';
-$loginerror='';
 
 $lmo_dir = dirname(dirname(__FILE__));
 
@@ -489,6 +493,18 @@ if ($lmo_install_step==3) {
 echo $patherror;
 if ($lmo_install_step==0) {
   if (!$_SESSION['man'] && !isset($_REQUEST['man'])) {
+    if (version_compare(PHP_VERSION, $min_php_version, '<')) {?>
+  <h2><?php echo $lang[$userlang]['ERROR']?></h2>
+  <table width="90%">
+    <tr>
+      <td class="error"><?php echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> ".$lang[$userlang]['PHP_ERROR_1']." <b>".$min_php_version."</b> ".$lang[$userlang]['PHP_ERROR_2']." <b>".PHP_VERSION."</b>";
+      $error++;
+?>
+      </td>
+    </tr>
+  </table>
+<?php
+    }
 ?>
   <h2><?php echo $lang[$userlang]['STEP0']?></h2>
   <table width="90%">
@@ -513,7 +529,7 @@ if ($lmo_install_step==0) {
               <input type="hidden" name="lmo_install_step" value="1">
             </dd>
             <dt>
-              <input type="submit" value="<?php echo $lang[$userlang]['PROCEED']?>">
+              <input type="submit" value="<?php echo $lang[$userlang]['PROCEED']?>" <?php if (version_compare(PHP_VERSION, $min_php_version, '<')) echo " disabled='disabled'"?>>
             </dt>
           </dl>
         </form>
@@ -568,12 +584,20 @@ if ($lmo_install_step==2) { //Manuell
     <tr>
       <td>
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" onSubmit="return check();">
-          <dl><?php
+          <dl>
+            <dt>PHP > <?php echo $min_php_version; ?></dt>
+            <dd><?php
   $error=0;
+  if (version_compare(PHP_VERSION, $min_php_version, '<')) {
+    echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['ERROR']."'> PHP: ".PHP_VERSION;
+    $error++;
+  } else {
+    echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> PHP: ".PHP_VERSION;
+  }
   foreach ($filelist as $chmod=>$files) {
     echo "<dt>chmod ".($chmod)."</dt>";
     foreach ($files as $file) {
-      echo "          <dd>";
+      echo "\n            <dd>";
       if (strpos($file,'*')) {
         $handle = opendir ($lmo_dir."/".dirname($file));
         while (false !== ($file2 = readdir($handle))) {
