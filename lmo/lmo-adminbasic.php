@@ -32,11 +32,11 @@ if ($file!="") {
           if ($titel=="") {$titel="No Name";}
           $goalfaktor=isset($_POST["xgoalfaktor"]) && is_numeric($_POST["xgoalfaktor"])?$_POST["xgoalfaktor"]:$goalfaktor;
           $pointsfaktor=isset($_POST["xpointsfaktor"]) && is_numeric($_POST["xpointsfaktor"])?$_POST["xpointsfaktor"]:$pointsfaktor;
-          $playoffmode=isset($_POST["xplayoffmode"]) && is_numeric($_POST["xplayoffmode"])?$_POST["xplayoffmode"]:$playoffmode;
         }
         $favteam=isset($_POST["xfavteam"])?trim($_POST["xfavteam"]):$favteam;
         $selteam=isset($_POST["xselteam"])?trim($_POST["xselteam"]):$selteam;
         if ($lmtype==0) {
+          $playoffmode=isset($_POST["xplayoffmode"]) && is_numeric($_POST["xplayoffmode"])?$_POST["xplayoffmode"]:$playoffmode;
           $stat1=isset($_POST["xstat1"])?trim($_POST["xstat1"]):$stat1;
           $stat2=isset($_POST["xstat2"])?trim($_POST["xstat2"]):$stat2;
           $namepkt=isset($_POST["xnamepkt"])?trim($_POST["xnamepkt"]):$namepkt;
