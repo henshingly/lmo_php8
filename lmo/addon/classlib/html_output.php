@@ -151,7 +151,7 @@ function findImage ($key,$path,$imgType,$htmlParameter="",$alternative_text='') 
   } else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
     $size = isset($imgdata[3]) ? $imgdata[3] : "";
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' ".$size."  ".$htmlParameter." /> ");
+    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' ".$size."  ".$htmlParameter." ".$alternative_text." /> ");
   }
 
   if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
@@ -160,7 +160,7 @@ function findImage ($key,$path,$imgType,$htmlParameter="",$alternative_text='') 
   } else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
     $size = isset($imgdata[3]) ? $imgdata[3] : "";
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' ".$size."  ".$htmlParameter."/> ");
+    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' ".$size."  ".$htmlParameter." ".$alternative_text." /> ");
   }
 
   if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
@@ -169,7 +169,7 @@ function findImage ($key,$path,$imgType,$htmlParameter="",$alternative_text='') 
   } else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
     $size = isset($imgdata[3]) ? $imgdata[3] : "";
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' ".$size."  ".$htmlParameter." /> ");
+    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' ".$size."  ".$htmlParameter." ".$alternative_text." /> ");
   }
 }
 
