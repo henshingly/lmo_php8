@@ -34,9 +34,13 @@ if($file!=""){
       <?php
   for ($i=1; $i<=$anzteams; $i++) {
     if($i!=$selteam){?>
-            <p><a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $teams[$i]?>"><?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;'", " alt='$teamk[$i]'"); ?></a></p><?php
+            <p>
+                <a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $teams[$i]?>">
+                    <?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' title='$teams[$i]'", " alt='$teamk[$i]'"); ?>
+                </a>
+            </p><?php
     } else {
-     echo "<p>".HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;'", " alt='$teamk[$i]'")."</p>";
+     echo "<p>".HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' title='$teams[$i]'", " alt='$teamk[$i]'")."</p>";
     }
   }?>
     </div>
@@ -113,8 +117,8 @@ if($file!=""){
           $lmo_teamaicon="";
           $lmo_teambicon="";
           if($urlb==1 || $mnote[$j][$i]!="" || $msieg[$j][$i]>0) {
-            $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," style='vertical-align: middle;'"," alt='' width='24'");
-            $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," style='vertical-align: middle;'"," alt='' width='24'");
+            $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," width='24' style='vertical-align: middle;' title='".$teams[$teama[$j][$i]]."'"," alt='".$teamk[$teama[$j][$i]]."'");
+            $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," width='24' style='vertical-align: middle;' title='".$teams[$teamb[$j][$i]]."'"," alt='".$teamk[$teamb[$j][$i]]."'");
           }
 		  /** Spielbericht verlinken */
           if($urlb==1) {

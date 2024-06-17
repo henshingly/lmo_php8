@@ -31,11 +31,11 @@ if ($file != "") {
   for($i = 1; $i <= floor($anzteams/2); $i++) {
     if($i!=$selteam){?>
       <a href="<?php echo $addp.$i?>" data-bs-toggle='tooltip' data-bs-placement='top' title="<?php echo $text[23]." ".$teams[$i]?>">
-          <?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' title='$teams[$i]'", " alt='$teams[$i]'");?>
+          <?php echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' title='$teams[$i]'", " alt='$teamk[$i]'");?>
       </a>
     <?php
     } else {
-      echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' title='$teams[$i]'", " alt='$teams[$i]'");
+      echo HTML_smallTeamIcon($file,$teams[$i]," width='24' style='vertical-align: middle;' title='$teams[$i]'", " alt='$teamk[$i]'");
     }
     echo "<br>"; 
   }?>
@@ -92,7 +92,7 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 text-end d-none d-lg-block'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," width='24' title='$teams[$teama[$j][$i]]'"," alt='$teams[$teama[$j][$i]]'")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," width='24' title='$teams[$teama[$j][$i]]'"," alt='$teamk[$teama[$j][$i]]'")."&nbsp;";
           echo $heim1.$teams[$teama[$j][$i]].$heim2.$urlta;
           echo " </div>";
           echo " <div class='col-md-auto'>-</div>";
@@ -103,7 +103,7 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 text-end d-lg-none'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," width='24' title='$teams[$teama[$j][$i]]'"," alt='$teams[$teama[$j][$i]]'")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," width='24' title='$teams[$teama[$j][$i]]'"," alt='$teamk[$teama[$j][$i]]'")."&nbsp;";
           echo $heim1.$teamk[$teama[$j][$i]].$heim2.$urlta;
           echo " </div>";
           if ($m == 2) {
@@ -113,7 +113,7 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 d-none d-lg-block'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," width='24' title='$teams[$teamb[$j][$i]]'"," alt='$teams[$teamb[$j][$i]]'")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," width='24' title='$teams[$teamb[$j][$i]]'"," alt='$teamk[$teamb[$j][$i]]'")."&nbsp;";
           echo $gast1.$teams[$teamb[$j][$i]].$gast2.$urltb;
           echo " </div>";
           if ($m == 2) {
@@ -123,7 +123,7 @@ if ($file != "") {
           } else {
             echo "<div class='col-3 d-lg-none'>";
           }
-          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," width='24' title='$teams[$teamb[$j][$i]]'"," alt='$teams[$teamb[$j][$i]]'")."&nbsp;";
+          echo HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," width='24' title='$teams[$teamb[$j][$i]]'"," alt='$teamk[$teamb[$j][$i]]'")."&nbsp;";
           echo $gast1.$teamk[$teamb[$j][$i]].$gast2.$urltb;
           echo " </div>";
           for($n = 0; $n < $modus[$j]; $n++) {
