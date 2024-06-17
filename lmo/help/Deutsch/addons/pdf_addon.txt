@@ -33,9 +33,9 @@ Dieses PDF Addon Paket enthält den offiziellen GIT-Klon der R&OS PHP PDF-Klasse
     4. <c:alink:https://www.liga-manager-online.de/homepage/homepage/addons/teamvergleich.html>PDF Teamvergleich von plastic</c:alink>
         enthält unter anderem die PDF Ausgabedatei stats_viewp.php
 
-Dieses Paket wurde von mir neu geschnürt um diverse festgestellte Bugs zu entfernen und die Möglichkeit der Sprachauswahl aller Dateien zu gewährleisten. Außerdem wurde noch die Verwendbarkeit der Addons unter PHP7 getestet. Bei mir lief es auch unter PHP Version 7.3.3.
-Ich muss außerdem zugeben das ich nicht den originalen <c:alink:https://www.liga-manager-online.de/homepage/homepage/download/>LMO 4.0.2a</c:alink>, von der Webseite www.liga-manager-online.de, genommenhabe. Sondern den LMO mit PHP7 Unterstützung von meiner Webseite. Also alle hier beschriebenen Einstellungen und Codeänderungen beziehen sich auf die <u>LMO_PHP7</u> Version.
-
+Dieses Paket wurde von mir neu geschnürt um diverse festgestellte Bugs zu entfernen und die Möglichkeit der Sprachauswahl aller Dateien zu gewährleisten. Außerdem wurde noch die Verwendbarkeit der Addons unter PHP 8 getestet. Bei mir lief es auch unter PHP Version 8.2.4.
+Ich muss außerdem zugeben das ich nicht den originalen <c:alink:https://www.liga-manager-online.de/homepage/homepage/download/>LMO 4.0.2a</c:alink>, von der Webseite www.liga-manager-online.de, genommenhabe. Sondern den LMO mit PHP 8 Unterstützung von meiner Webseite. Also alle hier beschriebenen Einstellungen und Codeänderungen beziehen sich auf die <u>LMO_PHP 8</u> Version.
+#NP
 
 1<Changelog>
 
