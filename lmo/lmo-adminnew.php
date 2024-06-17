@@ -229,15 +229,15 @@ if($newpage==1){
   if($xtype==0){?>
           <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></div>
-            <div class="col text-start"><input class="custom-control" type="number" name="xteams" style="width: 4rem;" maxlength="2" value="18"></div>
+            <div class="col text-start"><input class="custom-control" type="number" name="xteams" style="width: 4rem;" min="2" maxlength="2" value="18"></div>
           </div>
           <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[275] ?>"><?php echo  $text[274]; ?></acronym></div>
-            <div class="col text-start"><input class="custom-control" type="number" name="xanzst" style="width: 4rem;" maxlength="3" value="34"></div>
+            <div class="col text-start"><input class="custom-control" type="number" name="xanzst" style="width: 4rem;" min="1" maxlength="3" value="34"></div>
           </div>
           <div class="row pb-1">
             <div class="col text-end"><acronym title="<?php echo  $text[278] ?>"><?php echo  $text[277]; ?></acronym></div>
-            <div class="col text-start"><input class="custom-control" type="number" name="xanzsp" style="width: 4rem;" maxlength="2" value="9"></div>
+            <div class="col text-start"><input class="custom-control" type="number" name="xanzsp" style="width: 4rem;" min="1" maxlength="2" value="9"></div>
           </div><?php 
   }else{ ?>
           <div class="row pb-1">
