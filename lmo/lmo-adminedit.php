@@ -428,7 +428,7 @@ if ($file != "") {
               <input title="<?php echo $text[122] ?>" class="custom-control" type="text" name="xatdat<?php echo $i; ?>" tabindex="<?php echo $i;?>3" size="6" maxlength="10" value="<?php echo $dum1; ?>" onChange="dolmoedit()" ondblclick="fillAll(this);">
               <input title="<?php echo $text[123] ?>" class="custom-control" type="text" name="xattim<?php echo $i; ?>" tabindex="<?php echo $i;?>4" size="2" maxlength="5" value="<?php echo $dum2; ?>" onChange="dolmoedit()" ondblclick="fillAll(this);">
             </div>
-            <div class="col-2 d-none d-lg-block"><?php
+            <div class="col-2"><?php
       if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
               <select class="form-select" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>5" data-size="7"><?php
         for($y = 0; $y <= $anzteams; $y++) {?>
@@ -439,19 +439,8 @@ if ($file != "") {
         echo $teams[$teama[$st-1][$i]];
       }?>
             </div>
-            <div class="col-1 d-lg-none"><?php
-      if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
-              <select class="form-select" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>5" data-size="7"><?php
-        for($y = 0; $y <= $anzteams; $y++) {?>
-                <option value="<?php echo $y?>"<?php if ($y == $teama[$st-1][$i]) {echo " selected";}?>><?php echo $teamk[$y]?></option><?php
-        }?>
-              </select><?php
-      } else {
-        echo $teamk[$teama[$st-1][$i]];
-      }?>
-            </div>
-            <div class="col-1"> vs. </div>
-            <div class="col-2 d-none d-lg-block"><?php
+            <div class="col-1 text-center"> vs. </div>
+            <div class="col-2"><?php
       if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
               <select class="form-select" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i;?>6" data-size="7"><?php
         for($y = 0; $y <= $anzteams; $y++) {?>
@@ -461,18 +450,7 @@ if ($file != "") {
       } else {
         echo $teams[$teamb[$st-1][$i]];
       }?>
-          </div>
-            <div class="col-1 d-lg-none"><?php
-      if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
-              <select class="form-select" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i;?>6" data-size="7"><?php
-        for($y = 0; $y <= $anzteams; $y++) {?>
-                <option value="<?php echo $y?>"<?php if ($y == $teamb[$st-1][$i]) {echo " selected";}?>><?php echo $teamk[$y]?></option><?php
-        }?>
-              </select><?php
-      } else {
-        echo $teamk[$teamb[$st-1][$i]];
-      }?>
-          </div><?php
+            </div><?php
       if($goala[$st-1][$i]=="-1"){
         $goala[$st-1][$i]="_";
       }
