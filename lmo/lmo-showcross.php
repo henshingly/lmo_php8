@@ -43,17 +43,17 @@ for($i = 0; $i <= ($anzteams); $i++) {
     if (($j == 0) && ($i > 0) && ($i <= $anzteams)) {
       if (($croteam != 0) && (($j == $croteam) || ($i == $croteam))) {
         echo "<a href=\"".$addc.$i."\" data-bs-toggle='tooltip' data-bs-placement='top' title='".$teams[$j]."'>";
-        echo HTML_smallTeamIcon($file,$teams[$i],"width='24' alt='$teamk[$i]'");
+        echo HTML_smallTeamIcon($file,$teams[$i],"width='24' title='$teamk[$i]'"," alt='$teamk[$i]'");
         echo "</a>";
       } else {
         echo "<a href=\"".$addc.$i."\" data-bs-toggle='tooltip' data-bs-placement='top' title='".$teams[$i]."'>";
-        echo HTML_smallTeamIcon($file,$teams[$i],"width='24' alt='$teamk[$i]'");
+        echo HTML_smallTeamIcon($file,$teams[$i],"width='24' title='$teamk[$i]'"," alt='$teamk[$i]'");
         echo "</a>";
       }
     }
     if ($i == 0 && $j > 0 && $j <= $anzteams) {
       echo "<a href=\"".$addc.$j."\" data-bs-toggle='tooltip' data-bs-placement='top' title='".$teams[$j]."'>";
-      echo HTML_smallTeamIcon($file,$teams[$j],"width='24' alt='$teamk[$i]'");
+      echo HTML_smallTeamIcon($file,$teams[$j],"width='24' title='$teamk[$i]'"," alt='$teamk[$i]'");
       echo "</a>";
     }
     if (($i > 0) && ($i <= $anzteams) && ($j > 0) && ($j <= $anzteams) && ($j != $i)) {
