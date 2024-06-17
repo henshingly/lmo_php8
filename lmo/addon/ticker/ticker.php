@@ -32,6 +32,7 @@ $versionticker="LMO-Ticker 2.0 ";
 $trenner=" +++ ";
 $array = array();  
 $msieg=0;
+$hilf=$hilf1="";
 $ticker_text=$mnote=$dummy1=$dummy2=$dummy3=$dummy4="";
 ?>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -54,7 +55,6 @@ foreach($ticker_array as $file){
   require(PATH_TO_LMO."/lmo-openfile.php");
   if (isset($lmtype)) {
     if($ticker_tickerart==2) {
-      $hilf="";
       if (isset($nlines)) {
         for($i=0;$i<count($nlines);$i++){
           if(strlen($nlines[$i]) > 0) 
@@ -63,8 +63,6 @@ foreach($ticker_array as $file){
       }
       $ticker_text.=$hilf;
     } else {
-      $hilf="";
-      $hilf1="";
       if ($lmtype==0) {
         for ($i=0; $i<$anzsp; $i++) {
           if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ) {
@@ -127,7 +125,7 @@ foreach($ticker_array as $file){
 } //foreach
 $ticker_formnumber="t".substr(md5(microtime()),3,4);
 $file=$file2;?>
-    <div data-duration="5000" class="marquee" style="width: <?php echo $ticker_breite;?>em; overflow: hidden; background-color: var(--bs-secondary-bg-subtle);">
+    <div data-duration="<?php echo $ticker_geschwindigkeit;?>" class="marquee" style="width: <?php echo $ticker_breite;?>em; overflow: hidden; background-color: var(--bs-secondary-bg-subtle);">
 <?php echo $ticker_text; ?>
     </div>
   </div>
