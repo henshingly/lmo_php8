@@ -292,20 +292,20 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
          <div class="col-4 offset-3"><strong><?php echo  $text['tipp'][27]; ?></strong></div>
        </div>
        <div class="row">
-         <div class="col-4"><input type="radio" class="form-check-input" name="xtippervereinradio" value="0" id="0" <?php if($xtippervereinradio==0){echo "checked";} ?>><?php echo  $text['tipp'][50]; ?></div>
+         <div class="col-4"><input type="radio" class="form-check-input" name="xtippervereinradio" value="0" id="0" <?php if($xtippervereinradio==0){echo "checked";} ?>> <?php echo  $text['tipp'][50]; ?></div>
        </div>
        <div class="row">
-         <div class="col-2 text-end"><input type="radio" class="form-check-input" name="xtippervereinradio" value="1" id="1" <?php if($xtippervereinradio==1){echo "checked";} ?>><?php echo  $text['tipp'][48]; ?></div>
-         <div class="col-5">
-           <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true"><?php 
+         <div class="col-2 text-end"><input type="radio" class="form-check-input" name="xtippervereinradio" value="1" id="1" <?php if($xtippervereinradio==1){echo "checked";} ?>> <?php echo  $text['tipp'][48]; ?></div>
+         <div class="col-3">
+           <select class="form-select" name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true"><?php 
            echo "<option value=\"\" "; if($xtippervereinalt==""){echo "selected";} echo ">".$text['tipp'][51]."</option>";
              require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewteams.php");?>
            </select>
          </div>
        </div>
        <div class="row">
-         <div class="col-2 text-end"><input type="radio" class="form-check-input" name="xtippervereinradio" value="2" id="2" <?php if($xtippervereinradio==2){echo "checked";} ?>><?php echo  $text['tipp'][49]; ?></div>
-         <div class="col-5"><input class="form-control" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo  $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></div>
+         <div class="col-2 text-end"><input type="radio" class="form-check-input" name="xtippervereinradio" value="2" id="2" <?php if($xtippervereinradio==2){echo "checked";} ?>> <?php echo  $text['tipp'][49]; ?></div>
+         <div class="col-3"><input class="form-control" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo  $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></div>
        </div><?php  }?>
        <div class="row">
          <div class="col-4"><strong><?php echo  $text['tipp'][273]; ?></strong></div>
