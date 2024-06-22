@@ -70,8 +70,6 @@ if ($_SESSION["lmouserok"] == 2) {
   </div>
   <div class="row">
     <div class="col">
-      <script type="text/javascript" src="<?php echo URL_TO_LMO?>/js/sortable/sortabletable.js"></script>
-      <script type="text/javascript" src="<?php echo URL_TO_LMO?>/js/sortable/limSortFunctions.js"></script>
       <div class="container">
 	<?php 
   if (count($users) > 1) {
