@@ -33,7 +33,7 @@ $xtipperpass          = isset($_POST['xtipperpass']) ? trim($_POST['xtipperpass'
 $xtippervorname       = isset($_POST['xtippervorname'])    ? $_POST['xtippervorname']    : '';
 $xtippernachname      = isset($_POST['xtippernachname'])   ? $_POST['xtippernachname']   : '';
 $xtipperstrasse       = isset($_POST['xtipperstrasse'])    ? $_POST['xtipperstrasse']    : '';
-$xtipperplz           = isset($_POST['xtipperplz'])       ? $_POST['xtipperplz']       : '';
+$xtipperplz           = isset($_POST['xtipperplz'])        ? $_POST['xtipperplz']       : '';
 $xtipperort           = isset($_POST['xtipperort'])        ? $_POST['xtipperort']        : '';
 $xtipperemail         = isset($_POST['xtipperemail'])      ? $_POST['xtipperemail']      : '';
 $xfrei                = isset($_POST['xfrei'])             ? '5'             : '';
@@ -45,10 +45,10 @@ $xtippervereinneu     = isset($_POST['xtippervereinneu'])  ? $_POST['xtippervere
 $xtippersub           = isset($_POST['xtippersub'])        ? $_POST['xtippersub']        : '';
 $xtipperligen         = isset($_POST['xtipperligen'])      ? $_POST['xtipperligen']      : array();
 
-$newpage=	      isset($_REQUEST['newpage'])        ? $_REQUEST['newpage']        : 0;
-$save=	        isset($_REQUEST['save'])           ? $_REQUEST['save']           : 0;
-$action=	      isset($_REQUEST['action'])         ? $_REQUEST['action']         : '';
-$todo=	        isset($_REQUEST['todo'])           ? $_REQUEST['todo']           : '';
+$newpage=	        isset($_REQUEST['newpage'])        ? $_REQUEST['newpage']        : 0;
+$save=	            isset($_REQUEST['save'])           ? $_REQUEST['save']           : 0;
+$action=	        isset($_REQUEST['action'])         ? $_REQUEST['action']         : '';
+$todo=	            isset($_REQUEST['todo'])           ? $_REQUEST['todo']           : '';
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
@@ -83,8 +83,8 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
     $tipp_tipperdaten=array_pad(array(),10,'');
     $save = count($users);
     $tipp_tipperdaten[2]='5';
-    $tipp_tipperdaten[9]='1';
-    $tipp_tipperdaten[10]='1';
+    $tipp_tipperdaten[9]='-1';
+    $tipp_tipperdaten[10]='-1';
   }
   
   
