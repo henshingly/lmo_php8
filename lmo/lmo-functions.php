@@ -18,7 +18,14 @@
   */
 
 $trans_lang = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1], 'Wednesday' => $text['date'][2], 'Thursday' => $text['date'][3], 'Friday' => $text['date'][4], 'Saturday' => $text['date'][5], 'Sunday' => $text['date'][6], 'Mon' => $text['date'][7], 'Tue' => $text['date'][8], 'Wed' => $text['date'][9], 'Thu' => $text['date'][10], 'Fri' => $text['date'][11], 'Sat' => $text['date'][12], 'Sun' => $text['date'][13], 'January' => $text['date'][14], 'February' => $text['date'][15], 'March' => $text['date'][16], 'April' => $text['date'][17], 'May' => $text['date'][18], 'June' => $text['date'][19], 'July' => $text['date'][20], 'August' => $text['date'][21], 'September' => $text['date'][22], 'October' => $text['date'][23], 'November' => $text['date'][24], 'December' => $text['date'][25], 'Jan' => $text['date'][26], 'Feb' => $text['date'][27], 'Mar' => $text['date'][28], 'Apr' => $text['date'][29], 'May' => $text['date'][30], 'Jun' => $text['date'][31], 'Jul' => $text['date'][32], 'Aug' => $text['date'][33], 'Sep' => $text['date'][34], 'Oct' => $text['date'][35], 'Nov' => $text['date'][36], 'Dec' => $text['date'][37] );
-$min_php_version ="7.4.0";
+$string = file_get_contents(PATH_TO_LMO."/composer.json", FALSE);
+$json_a = json_decode($string, TRUE, 4);
+$lmo_version =$json_a['version'];
+$LMO_UPDATE = file_get_contents($_SERVER['REQUEST_SCHEME'].$json_a['extra']['check'], FALSE);
+$json_update = json_decode($LMO_UPDATE, TRUE, 4);
+$new_lmo_version = $json_update['stable']['current'];
+$new_lmo_version_link = $json_update['stable']['download'];
+$min_php_version = "7.4.0";
 
 function check_hilfsadmin($datei) {
   $hilfsadmin_berechtigung=FALSE;
@@ -117,13 +124,29 @@ function getMessage($message,$error=FALSE) {
 
 function warning_message($warning_title, $warning, $warning_description = false) {
   return "<!-- Button trigger modal -->
-<button type='button' class='btn btn-warning rounded-pill px-3 btn-sm' data-toggle='modal' data-target='#warning".$warning."'>Warning ".$warning."</button>
+<button type='button' class='btn btn-warning rounded-pill px-3 btn-sm' data-toggle='modal' data-backdrop='static' data-target='#warning".$warning."'>Notice ".$warning."</button>
 
 <!-- Modal -->
 <div class='modal fade' id='warning".$warning."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
   <div class='modal-dialog'>
     <div class='modal-content'>
-      <div class='modal-header bg-warning text-white'><h5 class='modal-title' id='exampleModalLabel'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-radioactive' viewBox='0 0 16 16'><path d='M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8'/><path d='M9.653 5.496A3 3 0 0 0 8 5c-.61 0-1.179.183-1.653.496L4.694 2.992A5.97 5.97 0 0 1 8 2c1.222 0 2.358.365 3.306.992zm1.342 2.324a3 3 0 0 1-.884 2.312 3 3 0 0 1-.769.552l1.342 2.683c.57-.286 1.09-.66 1.538-1.103a6 6 0 0 0 1.767-4.624zm-5.679 5.548 1.342-2.684A3 3 0 0 1 5.005 7.82l-2.994-.18a6 6 0 0 0 3.306 5.728ZM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0'/></svg>  Warning ".$warning."</h5></div>
+      <div class='modal-header bg-warning text-white'><h5 class='modal-title' id='exampleModalLabel'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-radioactive' viewBox='0 0 16 16'><path d='M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8'/><path d='M9.653 5.496A3 3 0 0 0 8 5c-.61 0-1.179.183-1.653.496L4.694 2.992A5.97 5.97 0 0 1 8 2c1.222 0 2.358.365 3.306.992zm1.342 2.324a3 3 0 0 1-.884 2.312 3 3 0 0 1-.769.552l1.342 2.683c.57-.286 1.09-.66 1.538-1.103a6 6 0 0 0 1.767-4.624zm-5.679 5.548 1.342-2.684A3 3 0 0 1 5.005 7.82l-2.994-.18a6 6 0 0 0 3.306 5.728ZM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0'/></svg>  Notice ".$warning."</h5></div>
+      <div class='modal-body'>".$warning_title."</div>
+      <div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div>
+    </div>
+  </div>
+</div>";
+}
+
+function update_message($warning_title, $warning, $warning_description = false) {
+  return "<!-- Button trigger modal -->
+<button type='button' class='btn btn-info rounded-pill px-3 btn-sm' data-toggle='modal' data-backdrop='static' data-target='#warning".$warning."'>Notice ".$warning."</button>
+
+<!-- Modal -->
+<div class='modal fade' id='warning".$warning."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header bg-info text-white'><h5 class='modal-title' id='exampleModalLabel'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-radioactive' viewBox='0 0 16 16'><path d='M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8'/><path d='M9.653 5.496A3 3 0 0 0 8 5c-.61 0-1.179.183-1.653.496L4.694 2.992A5.97 5.97 0 0 1 8 2c1.222 0 2.358.365 3.306.992zm1.342 2.324a3 3 0 0 1-.884 2.312 3 3 0 0 1-.769.552l1.342 2.683c.57-.286 1.09-.66 1.538-1.103a6 6 0 0 0 1.767-4.624zm-5.679 5.548 1.342-2.684A3 3 0 0 1 5.005 7.82l-2.994-.18a6 6 0 0 0 3.306 5.728ZM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0'/></svg>  Notice ".$warning."</h5></div>
       <div class='modal-body'>".$warning_title."</div>
       <div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div>
     </div>
