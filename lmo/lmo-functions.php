@@ -18,13 +18,6 @@
   */
 
 $trans_lang = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1], 'Wednesday' => $text['date'][2], 'Thursday' => $text['date'][3], 'Friday' => $text['date'][4], 'Saturday' => $text['date'][5], 'Sunday' => $text['date'][6], 'Mon' => $text['date'][7], 'Tue' => $text['date'][8], 'Wed' => $text['date'][9], 'Thu' => $text['date'][10], 'Fri' => $text['date'][11], 'Sat' => $text['date'][12], 'Sun' => $text['date'][13], 'January' => $text['date'][14], 'February' => $text['date'][15], 'March' => $text['date'][16], 'April' => $text['date'][17], 'May' => $text['date'][18], 'June' => $text['date'][19], 'July' => $text['date'][20], 'August' => $text['date'][21], 'September' => $text['date'][22], 'October' => $text['date'][23], 'November' => $text['date'][24], 'December' => $text['date'][25], 'Jan' => $text['date'][26], 'Feb' => $text['date'][27], 'Mar' => $text['date'][28], 'Apr' => $text['date'][29], 'May' => $text['date'][30], 'Jun' => $text['date'][31], 'Jul' => $text['date'][32], 'Aug' => $text['date'][33], 'Sep' => $text['date'][34], 'Oct' => $text['date'][35], 'Nov' => $text['date'][36], 'Dec' => $text['date'][37] );
-$string = file_get_contents(PATH_TO_LMO."/composer.json", FALSE);
-$json_a = json_decode($string, TRUE, 4);
-$lmo_version =$json_a['version'];
-$LMO_UPDATE = file_get_contents($_SERVER['REQUEST_SCHEME'].$json_a['extra']['check'], FALSE);
-$json_update = json_decode($LMO_UPDATE, TRUE, 4);
-$new_lmo_version = $json_update['stable']['current'];
-$new_lmo_version_link = $json_update['stable']['download'];
 $min_php_version = "7.4.0";
 
 function check_hilfsadmin($datei) {
@@ -293,4 +286,29 @@ if (!function_exists('is_a')) {
     return php_compat_is_a($object, $class);
   }
 }
+
+
+// URL mit PHP auf Existenz überprüfen
+// Funktion deklarieren
+function url_check($url) { 
+  $url_objects = @get_headers($url); 
+  return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$url_objects[0]) : false; 
+};
+
+$string_json = file_get_contents(PATH_TO_LMO."/composer.json", FALSE);
+$json_a = json_decode($string_json, TRUE, 4);
+$lmo_version = $json_a['version'];
+$updatefilecheck_URL = $json_a['extra']['check'];
+
+// UpdateURL prüfen
+if(url_check($json_a['extra']['check'])){
+  $LMO_UPDATE = file_get_contents($json_a['extra']['check'], FALSE);
+  $json_update = json_decode($LMO_UPDATE, TRUE, 4);
+  $new_lmo_version = $json_update['stable']['current'];
+  $new_lmo_version_link = $json_update['stable']['download'];
+} else {
+  // UpdateURL ist nicht erreichbar
+  $new_lmo_version = $json_a['version'];
+  $new_lmo_version_link = "";
+};
 ?>
