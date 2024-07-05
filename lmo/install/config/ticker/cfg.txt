@@ -1,8 +1,6 @@
 standard_ligen=
 tickerart=1
-tickertitel=0
+tickertitel=1
 notizanzeigen=1
-color=fff
-background=666
-breite=60
-geschwindigkeit=10
+breite=40
+geschwindigkeit=5000
