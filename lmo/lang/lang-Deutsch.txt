@@ -592,6 +592,9 @@
 2021=Bälle gewonnen
 2022=Bälle verloren
 2025=Quot.
+3000=Rückrundenspielplan erstellen
+3001=Die Liga hat eine ungerade Anzahl an Spieltagen. Es konnte keine Hin- & Rückrunde identifiziert werden.
+3002=Der Rückrundenspielplan wurde erfolgreich gespeichert.
 4000=Gesamt-
 4001=/Spiel
 4002=Rückrunde

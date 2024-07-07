@@ -270,6 +270,10 @@ if ($file != "") {
     require(PATH_TO_LMO."/lmo-savefile.php");
     $st = $stz;
   }
+  
+  // Rückrunden-Hack
+  if($save == 990) require_once("lmo-rueckrunde.php");
+
   if ($lmtype != 0) {
     if ($st >= 1) {
       $teamt = array_pad(array("0"), 129, "0");
@@ -318,6 +322,7 @@ if ($file != "") {
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?php echo $file; ?>">
         <input type="hidden" name="st" value="<?php echo $st; ?>">
+        <input type="submit" name="rueckrundeButton" class="lmo-formular-button" value="<?php echo $text[3000]; ?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <th class="nobr" align="left" colspan="<?php echo $breite-10; ?>"><?php
