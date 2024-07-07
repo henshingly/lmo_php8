@@ -592,6 +592,9 @@
 2021=Mingi câștigate
 2022=Mingi pierdute
 2025=Quot.
+3000=Creează un plan de joc pentru a doua jumătate
+3001=Liga are un număr impar de zile de meci. Nu a putut fi identificată nicio călătorie dus-întors.
+3002=Planul de joc din a doua jumătate a fost salvat cu succes.
 4000=Total&nbsp;
 4001=/joc
 4002=Retur

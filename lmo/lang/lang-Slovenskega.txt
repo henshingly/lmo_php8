@@ -592,6 +592,9 @@
 2021=Osvojene žoge
 2022=Žoge izgubljene
 2025=Quot.
+3000=Ustvarite načrt igre za drugi polčas
+3001=Liga ima liho število dni tekem. Nobenega povratnega potovanja ni bilo mogoče identificirati.
+3002=Načrt igre za drugi polčas je bil uspešno shranjen.
 4000=Skupaj-
 4001=/Igra
 4002=Druga polovica sezone

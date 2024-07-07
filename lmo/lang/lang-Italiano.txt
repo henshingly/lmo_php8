@@ -592,6 +592,9 @@
 2021=Palle vinte
 2022=Palle perse
 2025=Quot.
+3000=Crea piano di gioco per il secondo tempo
+3001=Il campionato ha un numero dispari di giorni di partite. Non è stato possibile identificare alcun viaggio di andata e ritorno.
+3002=Il piano di gioco del secondo tempo è stato salvato con successo.
 4000=Totale-
 4001=/Incontro
 4002=Ritorno

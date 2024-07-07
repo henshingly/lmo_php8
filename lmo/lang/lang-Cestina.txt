@@ -592,6 +592,9 @@
 2021=Vyhrály míče
 2022=Míče ztracené
 2025=Quot.
+3000=Creează un plan de joc pentru a doua jumătate
+3001=Liga are un număr impar de zile de joc. Nu a putut fi identificată nicio călătorie dus-întors.
+3002=Programul meciului a doua repriză a fost salvat cu succes.
 4000=Celkem-
 4001=/zápasy
 4002=Jaro

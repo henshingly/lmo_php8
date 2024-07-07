@@ -592,6 +592,9 @@
 2021=Bolas ganhas
 2022=Bolas perdidas
 2025=Quot.
+3000=Criar plano de jogo para o segundo tempo
+3001=A liga tem um número ímpar de dias de jogos. Nenhuma viagem de ida e volta foi identificada.
+3002=O plano de jogo do segundo tempo foi salvo com sucesso.
 4000=Total-
 4001=/ jogo
 4002=2ª volta

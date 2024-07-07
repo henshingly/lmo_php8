@@ -592,6 +592,9 @@
 2021=Osvojeni poeni
 2022=Izgubljeni poeni
 2025=Quot.
+3000=Stvorite plan igre za drugo poluvrijeme
+3001=Liga ima neparan broj dana utakmica. Nije bilo moguće identificirati povratno putovanje.
+3002=Plan igre za drugo poluvrijeme je uspješno spremljen.
 4000=Ukupno
 4001=/Susret
 4002=Proljetni dio (drugi dio)

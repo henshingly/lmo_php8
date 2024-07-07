@@ -592,6 +592,9 @@
 2021=Bolas ganadas
 2022=Bolas perdidas
 2025=Quot.
+3000=Crear plan de juego para la segunda mitad
+3001=La liga tiene un número impar de días de partido. No se pudo identificar ningún viaje de ida y vuelta.
+3002=El plan de juego de la segunda mitad se guardó exitosamente.
 4000=Total-
 4001=/partido
 4002=Ida

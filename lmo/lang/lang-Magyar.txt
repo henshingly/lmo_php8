@@ -592,6 +592,9 @@
 2021=Nyertek labdák
 2022=Elveszett labdák
 2025=Quot.
+3000=Második félidő játéktervének elkészítése
+3001=A bajnokság páratlan számú mérkőzésnappal rendelkezik. Oda-vissza utat nem sikerült azonosítani.
+3002=A második félidő játéktervét sikerült elmenteni.
 4000=Összesen-
 4001=/meccs
 4002=Második kör

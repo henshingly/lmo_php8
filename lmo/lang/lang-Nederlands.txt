@@ -592,6 +592,9 @@
 2021=Ballen gewonnen
 2022=Ballen verloren
 2025=Quot.
+3000=Maak een spelplan voor de tweede helft
+3001=De competitie heeft een oneven aantal wedstrijddagen. Er kon geen heen- en terugreis worden vastgesteld.
+3002=Het spelplan voor de tweede helft is succesvol opgeslagen.
 4000=Tesamen
 4001=/Spel
 4002=Terugronde

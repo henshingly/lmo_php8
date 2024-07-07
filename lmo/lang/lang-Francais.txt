@@ -592,6 +592,9 @@
 2021=Bälle gewonnen
 2022=Balles perdues
 2025=Quot.
+3000=Créer un plan de match pour la seconde mi-temps
+3001=La ligue a un nombre impair de jours de match. Aucun aller-retour n'a pu être identifié.
+3002=Le plan de match de la seconde mi-temps a été enregistré avec succès.
 4000=Total-
 4001=/Match
 4002=Retour

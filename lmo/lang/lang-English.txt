@@ -592,6 +592,9 @@
 2021=Balls won
 2022=Balls lost
 2025=Quot.
+3000=Create second half game plan
+3001=The league has an odd number of match days. No round trip could be identified.
+3002=The second half game plan was saved successfully.
 4000=Total-
 4001=/Match
 4002=2nd Season Half
