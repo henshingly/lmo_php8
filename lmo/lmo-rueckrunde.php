@@ -19,7 +19,7 @@
 		
 		if($rounds % 2 == 0)
 		{
-			$gamesPerDay = $liga->options->Matches;
+			$gamesPerDay = $liga->options->keyValues['Matches'];
 			$daysPerRound = $rounds/2;
 			
 			for($i = 0; $i < $rounds/2; $i++)
