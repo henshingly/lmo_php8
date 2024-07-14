@@ -312,7 +312,19 @@ if ($file != "") {
     <td align="center"><h1><?php echo $titel?></h1></td>
   </tr>
   <tr>
-    <td align="center"><?php include (PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
+    <td align="center">
+	<?php include (PATH_TO_LMO."/lmo-spieltagsmenu.php");
+  if ($lmtype == 0) { ?>
+      <form  name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <input type="hidden" name="action" value="admin">
+        <input type="hidden" name="todo" value="edit">
+        <input type="hidden" name="save" value="990">
+        <input type="hidden" name="file" value="<?php echo $file; ?>">
+        <input type="hidden" name="st" value="<?php echo $st; ?>">
+        <input type="submit" name="rueckrundeButton" class="lmo-formular-button" value="<?php echo $text[3000]; ?>">
+      </form><?php
+  } ?>
+    </td>
   </tr>
   <tr>
     <td align="center">
@@ -322,7 +334,6 @@ if ($file != "") {
         <input type="hidden" name="save" value="1">
         <input type="hidden" name="file" value="<?php echo $file; ?>">
         <input type="hidden" name="st" value="<?php echo $st; ?>">
-        <input type="submit" name="rueckrundeButton" class="lmo-formular-button" value="<?php echo $text[3000]; ?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <th class="nobr" align="left" colspan="<?php echo $breite-10; ?>"><?php
