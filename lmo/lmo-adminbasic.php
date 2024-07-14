@@ -35,8 +35,10 @@ if ($file!="") {
         }
         $favteam=isset($_POST["xfavteam"])?trim($_POST["xfavteam"]):$favteam;
         $selteam=isset($_POST["xselteam"])?trim($_POST["xselteam"]):$selteam;
-        if ($lmtype==0) {
+        if ($lmtype==1) {
           $playoffmode=isset($_POST["xplayoffmode"]) && is_numeric($_POST["xplayoffmode"])?$_POST["xplayoffmode"]:$playoffmode;
+        }
+        if ($lmtype==0) {
           $stat1=isset($_POST["xstat1"])?trim($_POST["xstat1"]):$stat1;
           $stat2=isset($_POST["xstat2"])?trim($_POST["xstat2"]):$stat2;
           $namepkt=isset($_POST["xnamepkt"])?trim($_POST["xnamepkt"]):$namepkt;
