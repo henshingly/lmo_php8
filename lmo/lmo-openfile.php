@@ -27,7 +27,6 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
     $sekt="";
     $datei = file(PATH_TO_LMO.'/'.$dirliga.$file);
     if ($datei) {
-      $stand=datefmt_format($fmt, filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
       $lmtype=0;
       for($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];
@@ -257,7 +256,7 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
       for($i=1;$i<=count($daten);$i++){
         $dum=explode("|",$daten[$i-1]);
         //if($nticker==1){
-        if(($dum[0]=="News") && ($dum[1]!="NC")){$nlines[]=stripslashes($dum[2]);}
+          if(($dum[0]=="News") && ($dum[1]!="NC")){$nlines[]=stripslashes($dum[2]);}
         //}
 
         if($dum[0]=="Teams"){$teams[$dum[1]]=stripslashes($dum[2]);}
