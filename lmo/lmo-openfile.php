@@ -28,7 +28,7 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
     $sekt="";
     $datei = file(PATH_TO_LMO.'/'.$dirliga.$file);
     if ($datei) {
-      datefmt_format($fmt, filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
+      $stand=datefmt_format($fmt, filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
       $lmtype=0;
       for($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];
