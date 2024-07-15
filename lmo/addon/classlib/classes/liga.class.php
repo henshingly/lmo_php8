@@ -743,10 +743,9 @@ class liga {
             foreach ($spieltag->partien[$pCounter]->getParameter() as $otherKey => $otherParameter) {
               $iniData['Round'.$roundCount][$otherKey.$partienNumber]=$otherParameter;
             }
-            if ( $pCounter > 10000 ) {
-              die("Script Fehler");
-            }
-          } while (is_object($spieltag->partien[++$pCounter]) && $partienCounter < $spieltag->getModus() );
+            if($pCounter > 10000 ) die("Script ERROR");                       
+            ++$pCounter; // NEU 2012-06-27 Timme
+          } while (isset($spieltag->partien[$pCounter]) && is_object($spieltag->partien[$pCounter]) && $partienCounter < $spieltag->getModus() );
         }
       }
     }
