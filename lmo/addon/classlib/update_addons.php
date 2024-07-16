@@ -5,6 +5,7 @@
  * @param string $fileName
  */
 function updateAddons($fileName) {
+  include PATH_TO_LMO.'/init.php';
   //Importieren der Konfigurations-Variablen. Alternativ müssten alle gebrauchten Variabeln hier als global deklariert werden
   include PATH_TO_LMO.'/lmo-cfgload.php';
   //Die restlichen nötigen Variabeln fürs Tippspiel als global deklarieren

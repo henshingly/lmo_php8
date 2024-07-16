@@ -17,7 +17,6 @@
   *
   */
   
-require(dirname(__FILE__).'/init.php'); 
 $titel="";
 $ergebnis=$mittore=$ligastats1=$kreuz=$plan=$kurve=1;
 $datc=$nticker=$lmtype=0;

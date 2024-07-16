@@ -13,7 +13,6 @@
  * Verbesserungen, Bugs etc. bitte nur in das Forum bei Hollwitz.net
  *
  */
-require(dirname(__FILE__).'/init.php');
 
 if($st>0){$actual=$st;}else{$actual=$stx;}
 if($lmtype==0){
