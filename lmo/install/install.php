@@ -19,6 +19,7 @@
 
 session_start();
 $min_php_version ="7.4.0";
+$error = "";
 
 //check if the call is from maindir (lmo.php) or install/install.php directly
 if (is_readable('includes/FTP.php')) {
