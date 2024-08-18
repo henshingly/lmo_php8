@@ -37,19 +37,19 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
   <tr>
     <td valign="top">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
-        <tr><td align="right"><?php if ($show==0) {echo $text['tipp'][91]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=0";?>"><?php echo $text['tipp'][91]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==1) {echo $text[220]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=1";?>"><?php echo $text[220]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==2) {echo $text['tipp'][32]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=2";?>"><?php echo $text['tipp'][32]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==3) {echo $text['tipp'][240]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=3";?>"><?php echo $text['tipp'][240]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==4) {echo $text['tipp'][214]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=4";?>"><?php echo $text['tipp'][214]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==5) {echo $text['tipp'][239]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=5";?>"><?php echo $text['tipp'][239]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==6) {echo $text['tipp'][246]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=6";?>"><?php echo $text['tipp'][246]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==7) {echo $text['tipp'][157]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=7";?>"><?php echo $text['tipp'][157]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==8) {echo $text['tipp'][172]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=8";?>"><?php echo $text['tipp'][172]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==9) {echo $text['tipp'][247]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=9";?>"><?php echo $text['tipp'][247]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==10) {echo $text['tipp'][274]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=10";?>"><?php echo $text['tipp'][274]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==11) {echo $text['tipp'][163]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=11";?>"><?php echo $text['tipp'][163]; ?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==12) {echo $text['tipp'][103]; ?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=12";?>"><?php echo $text['tipp'][103]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==0) {echo $text['tipp'][91]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=0";?>"><?php echo $text['tipp'][91]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==1) {echo $text[220]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=1";?>"><?php echo $text[220]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==2) {echo $text['tipp'][32]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=2";?>"><?php echo $text['tipp'][32]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==3) {echo $text['tipp'][240]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=3";?>"><?php echo $text['tipp'][240]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==4) {echo $text['tipp'][214]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=4";?>"><?php echo $text['tipp'][214]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==5) {echo $text['tipp'][239]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=5";?>"><?php echo $text['tipp'][239]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==6) {echo $text['tipp'][246]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=6";?>"><?php echo $text['tipp'][246]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==7) {echo $text['tipp'][157]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=7";?>"><?php echo $text['tipp'][157]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==8) {echo $text['tipp'][172]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=8";?>"><?php echo $text['tipp'][172]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==9) {echo $text['tipp'][247]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=9";?>"><?php echo $text['tipp'][247]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==10) {echo $text['tipp'][274]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=10";?>"><?php echo $text['tipp'][274]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==11) {echo $text['tipp'][163]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=11";?>"><?php echo $text['tipp'][163]; ?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==12) {echo $text['tipp'][103]; ?><?php } else {?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippoptions&amp;show=12";?>"><?php echo $text['tipp'][103]; ?></a><?php }?></td></tr>
       </table>
     </td>
     <td align="center" valign="top">
@@ -68,12 +68,12 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="0"<?php if($tipp_tippmodus==0){echo " selected";}?>><?php echo $text['tipp'][93]?></option>
               </select>
             </td>
-          </tr><?php  }elseif ($show==1) {?>
+          </tr><?php  } elseif ($show==1) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][39]; ?></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xdirtipp" size="20" maxlength="80" value="<?php echo $tipp_dirtipp; ?>" onChange="dolmoedit()"></td>
-          </tr><?php  }elseif ($show==2) {?>
+          </tr><?php  } elseif ($show==2) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][34]; ?></td>
@@ -139,7 +139,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="2"<?php if($tipp_gtpunkte==2){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
               </select>
             </td>
-          </tr><?php  }elseif ($show==3) {?>
+          </tr><?php  } elseif ($show==3) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][157]; ?></td>
@@ -179,7 +179,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <input type="checkbox" name="xshowname" value="1" <?php if($tipp_showname==1){echo "checked";} ?> onClick="dolmoedit()"><?php echo $text['tipp'][134]; ?>
             <input type="checkbox" name="xshowemail" value="1" <?php if($tipp_showemail==1){echo "checked";} ?> onClick="dolmoedit()"><?php echo $text['tipp'][219]; ?>
             </td>
-          </tr><?php  }elseif ($show==4) {?>
+          </tr><?php  } elseif ($show==4) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][87]; ?></td>
@@ -243,7 +243,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="2.5"<?php if($tipp_jokertippmulti=="2.5"){echo " selected";}?>>2.5</option>
                 <option value="3"<?php if($tipp_jokertippmulti=="3"){echo " selected";}?>>3</option>
             </td>
-          </tr><?php  }elseif ($show==5) {?>
+          </tr><?php  } elseif ($show==5) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][132]; ?></td>
@@ -268,7 +268,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][293]; ?></td>
             <td align="left"><input type="checkbox" name="xmailbeianmeldung" onClick="dolmoedit()"<?php if($tipp_mailbeianmeldung==1){echo " checked";}?>></td>
-          </tr><?php  }elseif ($show==6) {?>
+          </tr><?php  } elseif ($show==6) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][245]." ".$text['tipp'][294]; ?></td>
@@ -308,7 +308,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][161]; ?></td>
             <td align="left"><input type="checkbox" name="xakteinsicht" onClick="dolmoedit()"<?php if($tipp_akteinsicht==1){echo " checked";}?>></td>
-          </tr><?php  }elseif ($show==7) {?>
+          </tr><?php  } elseif ($show==7) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][160]; ?></td>
@@ -324,7 +324,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][204]; ?></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xanzseite" size="5" maxlength="5" value="<?php echo $tipp_anzseite; ?>" onChange="dolmoedit()"></td>
-          </tr><?php  }elseif ($show==8) {?>
+          </tr><?php  } elseif ($show==8) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][183]; ?></td>
@@ -334,7 +334,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][260]; ?></td>
             <td align="left"><input type="checkbox" name="xwertverein" onClick="dolmoedit()"<?php if($tipp_wertverein==1){echo " checked";}?>></td>
-          </tr><?php  }elseif ($show==9) {?>
+          </tr><?php  } elseif ($show==9) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][302]; ?></td>
@@ -354,7 +354,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][272]; ?></td>
             <td align="left"><input type="checkbox" name="xshowstsiege" onClick="dolmoedit()"<?php if($tipp_showstsiege==1){echo " checked";}?>></td>
-          </tr><?php  }elseif ($show==10) {?>
+          </tr><?php  } elseif ($show==10) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][275]." 1"; ?></td>
@@ -402,7 +402,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
                 <option value="6"<?php if($tipp_krit3==6){echo " selected";}?>><?php echo $text['tipp'][271]?></option>
               </select>
             </td>
-          </tr><?php  }elseif ($show==11) {?>
+          </tr><?php  } elseif ($show==11) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][81]; ?></td>
@@ -412,7 +412,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][180]; ?></td>
             <td align="left"><input type="checkbox" name="xaktauswertges" onClick="dolmoedit()"<?php if($tipp_aktauswertges==1){echo " checked";}?>></td>
-          </tr><?php  }elseif ($show==12) {?>
+          </tr><?php  } elseif ($show==12) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><?php echo $text['tipp'][104]; ?></td>
