@@ -25,7 +25,7 @@
 $languages=array(
     'Bosanski'=>array('bs_BA','bos'),
     'Cestina'=>array('cs_CS'),
-    'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.ISO8859-1'),
+    'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.UTF-8'),
     'English'=>array('en_EN','en_US'),
     'Espanol'=>array('es_ES'),
     'Francais'=>array('fr_FR'),
@@ -63,12 +63,10 @@ if (!function_exists("read_langfile")) {
 read_langfile($text,PATH_TO_LANGDIR."/lang-Deutsch.txt");
 read_langfile($text,PATH_TO_LANGDIR."/lang-{$deflang}.txt");
 
-@setlocale (LC_TIME, $languages[$deflang][0]);  // PHP <4.3
-@setlocale (LC_TIME, $languages[$deflang]);     //PHP >4.3
+@setlocale (LC_TIME, $languages[$deflang][0]);
 if (isset($lmouserlang) && $lmouserlang!=$deflang) {
   if (file_exists(PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt");
-  setlocale (LC_TIME, $languages[$lmouserlang][0]);  // PHP <4.3
-  setlocale (LC_TIME, $languages[$lmouserlang]);     //PHP >4.3
+  setlocale (LC_TIME, $languages[$lmouserlang][0]);
 }
 
 setlocale (LC_NUMERIC, 'en_EN');  // Wichtig: Für Arithmetik immer englische Trennzeichen
@@ -110,5 +108,5 @@ $orgtor=$text[38];
 
 
 ///*
-  if (!function_exists("c")){function c($c){if($c==1)return(base64_decode("PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LjAueCI+TE1PPC9hY3JvbnltPiA0IGZvciBQSFA4ICAtIDxhIGhyZWY9Ig=="));return(base64_decode("aHR0cHM6Ly93d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5kZS8iIHRpdGxlPSJDbGljayBoZXJlIHRvIGdldCBpbmZvcm1hdGlvbnMgYWJvdXQgdGhpcyBzY3JpcHQiPiYjMTY5OyAxOTk3LTIwMjMgTE1PLUdyb3VwPC9hPg=="));}}
-  if (!function_exists("d")){function d($c){if(strpos(htmlentities($c),htmlentities(base64_decode("PCEtLUluZm9saW5rLS0+")))>0){false;}else{ eval(base64_decode("ZWNobyAnPGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LjAueCI+TE1PPC9hY3JvbnltPiA0IGZvciBQSFA4ICAtIDxhIGhyZWY9Imh0dHA6Ly93d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5kZS8iIHRpdGxlPSJDbGljayBoZXJlIHRvIGdldCBpbmZvcm1hdGlvbnMgYWJvdXQgdGhpcyBzY3JpcHQiPiYjMTY5OyAxOTk3LTIwMjQgTE1PLUdyb3VwPC9hPic7"));}}}//*/?>
+  if (!function_exists("c")){function c($c){if($c==1)return(base64_decode("PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LngiPkxNTzwvYWNyb255bT4gNCBmb3IgUEhQOCAtIDxhIGhyZWY9Ig=="));return(base64_decode("aHR0cHM6Ly93d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5kZS8iIHRpdGxlPSJDbGljayBoZXJlIHRvIGdldCBpbmZvcm1hdGlvbnMgYWJvdXQgdGhpcyBzY3JpcHQiPiYjMTY5OyAxOTk3LTIwMjMgTE1PLUdyb3VwPC9hPg=="));}}
+  if (!function_exists("d")){function d($c){if(strpos(htmlentities($c),htmlentities(base64_decode("PCEtLUluZm9saW5rLS0+")))>0){false;}else{ eval(base64_decode("ZWNobyAnPGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LngiPkxNTzwvYWNyb255bT4gNCBmb3IgUEhQOCAtIDxhIGhyZWY9Imh0dHA6Ly93d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5kZS8iIHRpdGxlPSJDbGljayBoZXJlIHRvIGdldCBpbmZvcm1hdGlvbnMgYWJvdXQgdGhpcyBzY3JpcHQiPiYjMTY5OyAxOTk3LTIwMjQgTE1PLUdyb3VwPC9hPic7"));}}}//*/?>
