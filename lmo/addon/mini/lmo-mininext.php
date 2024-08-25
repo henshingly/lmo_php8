@@ -101,6 +101,7 @@ if (!file_exists($mini_cache_filename)
     $partie = null;
     $lastPartie = null;
     $liga = new liga();
+    $showLastGame = true;
     if ($file && $liga -> loadFile(PATH_TO_LMO . '/' . $dirliga . $file) == true) {
         if (!is_null($a)) {
             $team_a = $liga -> teamForNumber($a);
