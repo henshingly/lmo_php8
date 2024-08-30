@@ -53,7 +53,7 @@ class optionsSektion extends sektion {
     "DatC"=>1,
     "DatS"=>1,
     "DatM"=>1,
-    "DatF"=>"%a.%d.%m. %H:%M",
+    "DatF"=>"d.m.Y H:i",
     "urlT"=>1,
     "urlB"=>1,
     "Graph"=>1,
