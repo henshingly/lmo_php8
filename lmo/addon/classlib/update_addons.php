@@ -1,13 +1,14 @@
 <?php
 /**
- * Updatefunktion für Addons
+ * Updatefunktion fÃ¼r Addons
  *
  * @param string $fileName
  */
 function updateAddons($fileName) {
-  //Importieren der Konfigurations-Variablen. Alternativ müssten alle gebrauchten Variabeln hier als global deklariert werden
+  include PATH_TO_LMO.'/init.php';
+  //Importieren der Konfigurations-Variablen. Alternativ mÃ¼ssten alle gebrauchten Variabeln hier als global deklariert werden
   include PATH_TO_LMO.'/lmo-cfgload.php';
-  //Die restlichen nötigen Variabeln fürs Tippspiel als global deklarieren
+  //Die restlichen nÃ¶tigen Variabeln fÃ¼rs Tippspiel als global deklarieren
   global $text;
   global $punkte1;
   global $punkte2;
@@ -16,14 +17,14 @@ function updateAddons($fileName) {
   global $punkte5;
   global $punkte6;
 
-  //Falls diese Datei geändert wird, empfiehlt es sich, alle Fehler
-  //anzeigen zu lassen, um evtl. nicht gesetzte Variablen frühzeitig zu erkennen
+  //Falls diese Datei geÃ¤ndert wird, empfiehlt es sich, alle Fehler
+  //anzeigen zu lassen, um evtl. nicht gesetzte Variablen frÃ¼hzeitig zu erkennen
   //error_reporting(E_ALL);
   $liga = basename($fileName, '.l98');
   $file = $liga.'.l98';
   $action = "admin";
   $array = array();
-  //Liga-Datei öffnen
+  //Liga-Datei Ã¶ffnen
   include PATH_TO_LMO."/lmo-openfile.php";
 
   // SAVEHTML
