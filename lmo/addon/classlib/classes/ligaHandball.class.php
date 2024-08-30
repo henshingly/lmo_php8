@@ -12,9 +12,9 @@ class ligaHandball extends liga {
   //const Ligatype = "Handball";
 
   /**
-   * Sortiert die errechnete Tabelle und gibt diese als Array zurück
-   *  (§43 DHB) : Pkt - (Anzahl Spiele) - Direkter Vergleich(Pkt/Differenz Tore)
-   *    Absatz 2 ist außer Acht gelassen worden
+   * Sortiert die errechnete Tabelle und gibt diese als Array zurÃ¼ck
+   *  (Â§43 DHB) : Pkt - (Anzahl Spiele) - Direkter Vergleich(Pkt/Differenz Tore)
+   *    Absatz 2 ist auÃŸer Acht gelassen worden
    *
    * @access protected
    * @param  array $tableArray Die zu sortierende Tabelle
@@ -61,7 +61,7 @@ class ligaHandball extends liga {
   }
 
   /**
-   * Sortiert die errechnete Tabelle bei Direktem Vergleich und gibt diese als Array zurück
+   * Sortiert die errechnete Tabelle bei Direktem Vergleich und gibt diese als Array zurÃ¼ck
    *   Sortierung PlusPkt / Anzahl Spiele / Differenz Tore
    *
    * @access protected
