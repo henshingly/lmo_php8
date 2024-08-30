@@ -378,6 +378,16 @@ font-size:100%;
   <?php echo empty($lmo_tabelle_background4)?'':"color: $lmo_tabelle_background4;";?>
 }
 
+.lmoTabelleConference, .lmoTabelleConference a:link { 
+  background: <?php echo $lmo_tabelle_background9?> repeat; 
+  <?php echo empty($lmo_tabelle_color9)?'':"color: $lmo_tabelle_color9;";?>
+}
+
+.lmoTabelleConference a:hover { 
+  background: <?php echo $lmo_tabelle_color9?> repeat; 
+  <?php echo empty($lmo_tabelle_background9)?'':"color: $lmo_tabelle_background9;";?>
+}
+
 .lmoTabelleRelegation, .lmoTabelleRelegation a:link { 
   background: <?php echo $lmo_tabelle_background5?> repeat; 
   <?php echo empty($lmo_tabelle_color5)?'':"color: $lmo_tabelle_color5;";?>

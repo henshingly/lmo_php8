@@ -226,6 +226,17 @@ require(dirname(__FILE__)."/init.php");
   text-decoration: none; 
 }
 
+.lmoTabelleConference { 
+  background: <?php echo $lmo_tabelle_background9?> repeat; 
+  <?php echo empty($lmo_tabelle_color9)?'':"color: $lmo_tabelle_color9;";?>
+}
+
+.lmoTabelleConference a { 
+  background: <?php echo $lmo_tabelle_background9?> repeat; 
+  <?php echo empty($lmo_tabelle_color9)?'':"color: $lmo_tabelle_color9;";?>
+  text-decoration: none; 
+}
+
 .lmoTabelleRelegation { 
   background: <?php echo $lmo_tabelle_background5?> repeat; 
   <?php echo empty($lmo_tabelle_color5)?'':"color: $lmo_tabelle_color5;";?>
