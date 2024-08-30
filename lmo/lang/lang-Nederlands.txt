@@ -576,6 +576,8 @@
 575=Servertijdzone
 576=Let op: tafelklassement zonder vroege games!
 577=Positie
+578=UEFA Conference League-deelnemers
+579=Vul hier het aantal UEFA Conference League-deelnemers in
 800=Playoff-modus - thuiswedstrijdinstelling
 801=Mod.: 1-1-1-...
 802=Team A heeft eerst het thuisvoordeel en wisselt daarna na elke wedstrijd

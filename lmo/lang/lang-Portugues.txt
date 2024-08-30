@@ -576,6 +576,8 @@
 575=Fuso horário do servidor
 576=Nota: Classificação da mesa sem jogos iniciais!
 577=Posição
+578=Participantes da UEFA Conference League
+579=Insira aqui o número de participantes da UEFA Conference League
 800=Modo Playoff - configuração do jogo em casa
 801=Mod.: 1-1-1-...
 802=O time A tem a vantagem de jogar em casa primeiro e depois muda após cada jogo

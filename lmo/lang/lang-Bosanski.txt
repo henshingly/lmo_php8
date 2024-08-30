@@ -576,6 +576,8 @@
 575=Vremenska zona servera
 576=Napomena: Tablica na tabeli bez ranih utakmica!
 577=Mjesto
+578=Učesnici UEFA konferencijske lige
+579=Ovdje unesite broj učesnika UEFA Conference League
 800=Režim doigravanja - postavka za kućnu igru
 801=Mod.: 1-1-1-...
 802=Ekipa A prvo ima prednost kod kuće, a zatim mijenja nakon svake utakmice

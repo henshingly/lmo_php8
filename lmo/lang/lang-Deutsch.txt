@@ -576,6 +576,8 @@
 575=Zeitzone des Servers
 576=Hinweis: Tabellenstand ohne vorgezogene Spiele!
 577=Platz
+578=UEFA Conference League Teilnehmer
+579=Geben Sie hier die Anzahl der UEFA Conference League-Teilnehmer an
 800=Playoff Modus - Heimspieleinstellung
 801=Mod.: 1-1-1-...
 802=Team A hat zuerst Heimrecht danach wechselt es nach jedem Spiel

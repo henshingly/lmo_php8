@@ -576,6 +576,8 @@
 575=Časovni pas strežnika
 576=Opomba: lestvica na mizi brez zgodnjih iger!
 577=Položaj
+578=Udeleženci konferenčne lige UEFA
+579=Tukaj vnesite število udeležencev konferenčne lige UEFA
 800=Način končnice - nastavitev domače igre
 801=Mod.: 1-1-1-...
 802=Ekipa A ima najprej domačo prednost, nato pa se menja po vsaki tekmi

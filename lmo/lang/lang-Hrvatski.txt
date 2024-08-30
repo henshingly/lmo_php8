@@ -576,6 +576,8 @@
 575=Vremenska zona poslužitelja
 576=Napomena: poredak na tablici bez ranih igara
 577=Mjesto
+578=Sudionici UEFA Lige konferencija
+579=Ovdje unesite broj sudionika UEFA Lige konferencija
 800=Način doigravanja - postavka za domaću igru
 801=Mod.: 1-1-1-...
 802=Momčad A prvo ima prednost domaćeg terena, a zatim se mijenja nakon svake utakmice
