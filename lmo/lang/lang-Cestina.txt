@@ -578,6 +578,8 @@
 577=Místo
 578=Účastníci konferenční ligy UEFA
 579=Sem zadejte počet účastníků konferenční ligy UEFA
+590=Byla vydána nová verze LMO.
+591=Lze stáhnout ZDE!
 800=Režim Playoff – nastavení domácí hry
 801=Mod.: 1-1-1-...
 802=Tým A má nejprve domácí výhodu a poté se po každém zápase střídá

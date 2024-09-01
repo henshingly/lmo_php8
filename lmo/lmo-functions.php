@@ -133,13 +133,13 @@ function warning_message($warning_title, $warning, $warning_description = false)
 
 function update_message($warning_title, $warning, $warning_description = false) {
   return "<!-- Button trigger modal -->
-<button type='button' class='btn btn-info rounded-pill px-3 btn-sm' data-toggle='modal' data-backdrop='static' data-target='#warning".$warning."'>Notice ".$warning."</button>
+<button type='button' class='btn btn-info rounded-pill px-3 btn-sm' data-toggle='modal' data-backdrop='static' data-target='#warning".$warning."'>".$warning."</button>
 
 <!-- Modal -->
 <div class='modal fade' id='warning".$warning."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
   <div class='modal-dialog'>
     <div class='modal-content'>
-      <div class='modal-header bg-info text-white'><h5 class='modal-title' id='exampleModalLabel'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-arrow-down-square-fill' viewBox='0 0 16 16'><path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0'/></svg>  Notice ".$warning."</h5></div>
+      <div class='modal-header bg-info text-white'><h5 class='modal-title' id='exampleModalLabel'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-arrow-down-square-fill' viewBox='0 0 16 16'><path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0'/></svg>  ".$warning."</h5></div>
       <div class='modal-body'>".$warning_title."</div>
       <div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div>
     </div>

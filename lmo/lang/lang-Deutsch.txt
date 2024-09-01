@@ -578,6 +578,8 @@
 577=Platz
 578=UEFA Conference League Teilnehmer
 579=Geben Sie hier die Anzahl der UEFA Conference League-Teilnehmer an
+590=Eine neue LMO-Version wurde veröffentlicht.
+591=Diese kann HIER heruntergeladen werden!
 800=Playoff Modus - Heimspieleinstellung
 801=Mod.: 1-1-1-...
 802=Team A hat zuerst Heimrecht danach wechselt es nach jedem Spiel

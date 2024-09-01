@@ -578,6 +578,8 @@
 577=Poziţie
 578=Participanți la UEFA Conference League
 579=Introduceți aici numărul de participanți la UEFA Conference League
+590=O nouă versiune LMO a fost lansată.
+591=Poate fi descărcat AICI!
 800=Mod playoff - setarea jocului de acasă
 801=Mod.: 1-1-1-...
 802=Echipa A are mai întâi avantaj acasă și apoi se schimbă după fiecare joc
