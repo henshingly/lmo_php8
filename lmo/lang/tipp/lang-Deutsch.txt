@@ -75,7 +75,7 @@
 074=Passwort vergessen?
 075=Hier kannst Du Dein Passwort
 076=anfordern
-077=Deine Zugangsdaten fuer das Tippspiel
+077=Deine Zugangsdaten für das Tippspiel
 078=Passwort wurde an Deine Email-Adresse versandt
 079=Passwortanforderung Tippspiel
 080=Passwortversand fehlgeschlagen
@@ -135,7 +135,7 @@
 134=Realname
 135=Ligen in Tippschein aufnehmen
 136=Neuen Tipper anlegen
-137=Die geänderten Daten gehen erst mit der nächsten<br> Auswertung in die Punktestandstabellen ein.
+137=Die geänderten Daten gehen erst mit der nächsten<br>Auswertung in die Punktestandstabellen ein.
 138=Dein letzter Tipp:
 139=neues Passwort
 140=altes Passwort
@@ -172,7 +172,7 @@
 171=Tagen
 172=Tipp-Tabelle
 173=so würde die Tabelle mit Deinen Tipps aussehen
-174=Hallo [name]&#10;&#10;Diese Mail ist eine Erinnerung an Deine Tippabgabe.&#10;Bisher haben wir leider noch keine Tippabgabe von Dir für folgende Spielpaarungen:&#10;&#10;[spiele]
+174=Hallo [name],\n\ndiese Mail ist eine Erinnerung an Deine Tippabgabe.\nBisher haben wir leider noch keine Tippabgabe von Dir für folgende Spielpaarungen:\n\n[spiele]
 175=Emails wurden versandt
 176=Email wurde nicht versandt<br>
 177=Dieser Spieltag kann noch nicht getippt werden
@@ -286,7 +286,7 @@
 285=Spieltagswertung
 286=Angabe des Realnamen bei der Anmeldung
 287=rot
-288=Joker-Tipp zulassen ? (Pro Spieltag 1 Joker)
+288=Joker-Tipp zulassen? (Pro Spieltag 1 Joker)
 289=Joker
 290=Joker-Tipp (verdoppelt die Punktezahl)
 291=Multiplikator für den Joker-Tipp
