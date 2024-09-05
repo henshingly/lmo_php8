@@ -572,9 +572,9 @@
 571=Upozerenje/paznja ! Koristiti ova podešavnja samo, <br>ako proširenje-(Addon) ne sadrži sopstvenu konfiguracijsku površinu (Sučelje)!
 572=Naziv tima srednje duljine (maks. 12 znakova)
 573=Prijevod
-574=Vremenska zona575=Vremenska zona poslužitelja576=Napomena: poredak na tablici bez ranih igara
-575=Vremenska zona servera
-576=Napomena: Tablica na tabeli bez ranih utakmica!
+574=Vremenska zona
+575=Vremenska zona poslužitelja
+576=Napomena: poredak na tablici bez ranih igara
 577=Mjesto
 578=Učesnici UEFA konferencijske lige
 579=Ovdje unesite broj učesnika UEFA Conference League
