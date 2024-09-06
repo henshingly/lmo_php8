@@ -40,7 +40,7 @@ Die Projektseite ist aber weiterhin <a target="_blank" href="https://www.liga-ma
 ## Beschreibung des LMO's
 Mit diesem Skript können Sie Ihren Besuchern einen tollen Ergebnisdienst über Ihre Lieblingsligen anbieten. Das Beste daran ist, dass die gesamte Verwaltung der Ligen direkt auf dem Server abläuft. Sie müssen sich also nur noch um die Ergebnisse kümmern und Ihre Besucher erhalten sofort die aktuellen Tabellen, Statistiken und mehr. Das ist wirklich super praktisch, denn so müssen Sie sich nicht mehr mit Fremdsoftware befassen und sparen sich auch noch viel Zeit, die Sie sonst für Exporte und Uploads aufwenden müssten.
 
-Momentan Unterstützte Sprachen (_alphabetisch sortiert_)
+Momentan unterstützte Sprachen (_alphabetisch sortiert_)
 - ![Bosnisch](https://www.vest-sport.de/forum_files/md/Bosanski.svg) Bosnisch
 - ![Deutsch](https://www.vest-sport.de/forum_files/md/Deutsch.svg) Deutsch (auch Installationssprache und Hilfedateien)
 - ![Englisch](https://www.vest-sport.de/forum_files/md/English.svg) Englisch (auch Installationssprache)
