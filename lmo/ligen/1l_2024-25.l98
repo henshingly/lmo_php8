@@ -21,9 +21,8 @@ MinusPoints=2
 Direct=0
 Champ=1
 CL=3
-CK=0
+CK=1
 UC=1
-UL=1
 AR=1
 AB=2
 namePkt=Pkt.
@@ -50,7 +49,6 @@ kurve1=0
 kurve2=0
 
 [News]
-NC=0
 
 [Teams]
 1=Bayern München
