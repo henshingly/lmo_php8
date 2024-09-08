@@ -16,7 +16,7 @@ Currently supported languages (_sorted alphabetically_)
 - ![Dutch](https://www.vest-sport.de/forum_files/md/Nederlands.svg) Dutch
 - ![English](https://www.vest-sport.de/forum_files/md/English.svg) English (also installation language)
 - ![French](https://www.vest-sport.de/forum_files/md/Francais.svg) French (also installation language)
-- ![German](https://www.vest-sport.de/forum_files/md/Deutsch.svg) German (also installation language and help files)
+- ![German](https://www.vest-sport.de/forum_files/md/Deutsch.svg) German (also installation language and [help files](https://www.vest-sport.de/lmo_git/help/Deutsch/index.html))
 - ![Hungarian](https://www.vest-sport.de/forum_files/md/Magyar.svg) Hungarian
 - ![Italian](https://www.vest-sport.de/forum_files/md/Italiano.svg) Italian
 - ![Norwegian](https://www.vest-sport.de/forum_files/md/Norsk.svg) Norwegian
@@ -42,7 +42,7 @@ Mit diesem Skript können Sie Ihren Besuchern einen tollen Ergebnisdienst über 
 
 Momentan unterstützte Sprachen (_alphabetisch sortiert_)
 - ![Bosnisch](https://www.vest-sport.de/forum_files/md/Bosanski.svg) Bosnisch
-- ![Deutsch](https://www.vest-sport.de/forum_files/md/Deutsch.svg) Deutsch (auch Installationssprache und Hilfedateien)
+- ![Deutsch](https://www.vest-sport.de/forum_files/md/Deutsch.svg) Deutsch (auch Installationssprache und [Hilfedateien](https://www.vest-sport.de/lmo_git/help/Deutsch/index.html))
 - ![Englisch](https://www.vest-sport.de/forum_files/md/English.svg) Englisch (auch Installationssprache)
 - ![Französisch](https://www.vest-sport.de/forum_files/md/Francais.svg) Französisch (auch Installationssprache)
 - ![Italienisch](https://www.vest-sport.de/forum_files/md/Italiano.svg) Italienisch
