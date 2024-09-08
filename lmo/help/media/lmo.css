@@ -15,7 +15,7 @@ ol li {margin-bottom: 0.5em; }
 .advanced {border:1px solid #aca; background:#e0ffe7; padding:0.4em; -moz-border-radius:8px; -webkit-border-radius:8px;-moz-box-shadow: 0 0 6px #888;-webkit-box-shadow: 0 0 6px #888;}
 strong {color:#800; }
 code {display:block; background-color: #eee; padding: 0.3em; font-size: 95%; margin-left:3em; margin-right:3em; border:1px solid #666; }
-h1 {font:bolder 180% "Trebuchet MS", Helvetica, Arial, sans-serif ; color:#0266AE; line-height: 50px; background:url(../media/h1.png) no-repeat 0 0; padding-left:60px; margin-top: 0.5em; text-shadow: 0.15em 0.15em 0.2em #D7E6FF;}
+h1 {font:bolder 180% "Trebuchet MS", Helvetica, Arial, sans-serif ; color:#0266AE; line-height: 50px; background:url(../media/h1.svg) no-repeat 0 0; padding-left:60px; margin-top: 0.5em; text-shadow: 0.15em 0.15em 0.2em #D7E6FF;}
 h2 {font-size:115%; font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:#0266AE; border-bottom:1px solid #0266AE; }
 h3 {font-size:105%; font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; color:#0266AE; border-bottom:1px solid #0266AE; }
 h4 {font-weight:bold; margin:0.5em 0 1em 1em; color:white; background:#0266AE; font-size:100%; padding-left:1em; }
