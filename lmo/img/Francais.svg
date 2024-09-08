@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="800"
+   height="577.77777"
+   viewBox="0 0 36 26"
+   aria-hidden="true"
+   role="img"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="Francais.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title1">Flag of France</title>
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#EEEFFF"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.31"
+     inkscape:cx="400.38168"
+     inkscape:cy="288.54962"
+     inkscape:window-width="2160"
+     inkscape:window-height="1330"
+     inkscape:window-x="-12"
+     inkscape:window-y="-12"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <path
+     fill="#ed2939"
+     d="m 36,22 a 4,4 0 0 1 -4,4 H 24 V 0 h 8 a 4,4 0 0 1 4,4 z"
+     id="path1" />
+  <path
+     fill="#002495"
+     d="M 4,0 A 4,4 0 0 0 0,4 v 18 a 4,4 0 0 0 4,4 h 8 V 0 Z"
+     id="path2" />
+  <path
+     fill="#EEEFFF"
+     d="M 12,0 H 24 V 26 H 12 Z"
+     id="path3" />
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Flag of France</dc:title>
+        <dc:date>04.09.2024</dc:date>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Henshingly</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

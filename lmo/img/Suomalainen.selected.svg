@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800"
+   height="577.77777"
+   viewBox="0 0 36 26"
+   aria-hidden="true"
+   role="img"
+   class="iconify iconify--twemoji"
+   preserveAspectRatio="xMidYMid"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="Suomalainen.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.12375"
+     inkscape:cx="400"
+     inkscape:cy="288.76529"
+     inkscape:window-width="2160"
+     inkscape:window-height="1330"
+     inkscape:window-x="-12"
+     inkscape:window-y="-12"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     fill="#eeffff"
+     d="M 32,0 H 18 V 10 H 36 V 4 A 4,4 0 0 0 32,0 Z"
+     id="path1"
+     style="opacity:0.4" />
+  <path
+     fill="#eeffff"
+     d="M 11,0 H 4 A 4,4 0 0 0 0,4 v 6 h 11 z"
+     id="path2"
+     style="opacity:0.4" />
+  <path
+     fill="#eeffff"
+     d="M 32,26 H 18 V 16 h 18 v 6 a 4,4 0 0 1 -4,4 z M 11,26 H 4 A 4,4 0 0 1 0,22 v -6 h 11 z"
+     id="path3"
+     style="opacity:0.4" />
+  <path
+     fill="#002f6c"
+     d="M 18,0 H 11 V 10 H 0 v 6 h 11 v 10 h 7 V 16 H 36 V 10 H 18 Z"
+     id="path4"
+     style="opacity:0.4" />
+</svg>

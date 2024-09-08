@@ -476,6 +476,8 @@ if ($lmo_install_step==3) {
         p        {  margin:0.3em;}
         .error   {  border:1px solid #d99;background:#ffe7e0;padding:0.4em;}
         .foot    {  text-align:left;margin-top:1em;font-size:85%;}
+        .flag { float:right; margin:0.5em; }
+        .flag a { display: block;  /*width: 100%;*/}
         .w3cbutton3 {  float:right; margin:0.5em;  border: 1px solid #999;  font-family: helvetica,arial,sans-serif;  font-size: 70%;  font-weight: bold;}
         .w3cbutton3 a {  display: block;  /*width: 100%;*/}
         .w3cbutton3 a:link,
@@ -715,22 +717,22 @@ if ($lmo_install_step==4) {?>
     <div class="w3cbutton3">
     <a href=" http://jigsaw.w3.org/css-validator/check/referer"><span class="w3c">W3C</span>
     <span class="spec">CSS 2.1</span></a></div>
-    <div class="w3cbutton3">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=FR"><img src="img/Francais.gif" alt="FR" width="16"></a>
+    <div class="flag">
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=FR"><img src="<?php echo $url;?>/img/Francais.svg" alt="FR" height="14"></a>
     </div>
-    <div class="w3cbutton3">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=EN"><img src="img/English.gif" alt="EN" width="16"></a>
+    <div class="flag">
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=EN"><img src="<?php echo $url;?>/img/English.svg" alt="EN" height="14"></a>
     </div>
-    <div class="w3cbutton3">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=ES"><img src="img/Espanol.gif" alt="ES" width="16"></a>
+    <div class="flag">
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=ES"><img src="<?php echo $url;?>/img/Espanol.svg" alt="ES" height="14"></a>
     </div>
-    <div class="w3cbutton3">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=DE"><img src="img/Deutsch.gif" alt="DE" width="16"></a>
+    <div class="flag">
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=DE"><img src="<?php echo $url;?>/img/Deutsch.svg" alt="DE" height="14"></a>
     </div>
     <div class="w3cbutton3">
     <a href="<?php echo $_SERVER['PHP_SELF'];?>"><span class="w3c">RE</span>
     <span class="spec">START</span></a></div>
-     © René Marth/<a href="http://liga-manager-online.de/">LMO Group</a>
+     © René Marth/<a href="https://www.liga-manager-online.de/">LMO Group</a>
   </div>
   </body>
 </html>

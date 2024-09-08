@@ -22,37 +22,43 @@
 // von der neuen Sprache überschrieben (So werden auch unvollständige Übersetzungen
 // akzeptiert)
 
-$languages=array(
-    'Bosanski'=>array('bs_BA','bos'),
-    'Cestina'=>array('cs_CS'),
-    'Deutsch'=>array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.UTF-8'),
-    'English'=>array('en_EN','en_US'),
-    'Espanol'=>array('es_ES'),
-    'Francais'=>array('fr_FR'),
-    'Hrvatski'=>array('hr_HR','hrv'),
-    'Italiano'=>array('it_IT'),
-    'Magyar'=>array('hu_HU'),
-    'Nederlands'=>array('nl_NL'),
-    'Norsk'=>array('no_NO'),
-    'Portugues'=>array('pt_BR'),
-    'Romanian'=>array('ro_RO'),
-    'Slovenskega'=>array('sl_SL'),
-    'Türkce'=>array('tr_TR')
-    );
+$languages = array(
+    'Bosanski'    => array('bs_BA','bos'),
+    'Cestina'     => array('cs_CS'),
+    'Dansk'       => array('da_DK', 'dan'),
+    'Deutsch'     => array('de_DE@euro','de_DE', 'de', 'ge', 'german','de_DE.UTF-8'),
+    'English'     => array('en_EN','en_GB.UTF-8','en_US'),
+    'Espanol'     => array('es_ES','es_ES.UTF-8','es_ES@euro'),
+    'Francais'    => array('fr_FR'),
+    'Hrvatski'    => array('hr_HR','hrv'),
+    'Italiano'    => array('it_IT'),
+    'Magyar'      => array('hu_HU'),
+    'Nederlands'  => array('nl_NL'),
+    'Norsk'       => array('no_NO'),
+    'Polski'      => array('pl_PL', 'pol'),
+    'Portugues'   => array('pt_BR'),
+    'Romanian'    => array('ro_RO'),
+    'Slovenskega' => array('sl_SL'),
+    'Suomalainen' => array('fi_FI'),
+    'Svenska'     => array('sv_SE'),
+    'Türkce'      => array('tr_TR'),
+    'Українська'  => array('uk_UA', 'ukr')
+  );
 
-$text=array();
+$text = array();
 
 if (!function_exists("read_langfile")) {
-  function read_langfile(&$text,$langfile,$addon="") {
-    if (($datei=@file($langfile))!==FALSE) {
+  function read_langfile(&$text, $langfile, $addon = "") {
+    if (($datei = @file($langfile)) !== FALSE) {
       foreach ($datei as $value) {
-        $paar=explode('=',trim($value),2);
+        $paar = explode('=', trim($value), 2);
         if (isset($paar[0]) && is_numeric($paar[0])) {
-          if (!isset($paar[1])) $paar[1]="";
-          if (func_num_args()==2) {
-            $text[intval($paar[0])]=$paar[1];
-          }else{
-            $text[$addon][intval($paar[0])]=$paar[1];
+          if (!isset($paar[1])) $paar[1] = "";
+          if (func_num_args() == 2) {
+            $text[intval($paar[0])] = $paar[1];
+          }
+          else {
+            $text[$addon][intval($paar[0])] = $paar[1];
           }
         }
       }
@@ -60,8 +66,8 @@ if (!function_exists("read_langfile")) {
   }
 }
 
-read_langfile($text,PATH_TO_LANGDIR."/lang-Deutsch.txt");
-read_langfile($text,PATH_TO_LANGDIR."/lang-{$deflang}.txt");
+read_langfile($text, PATH_TO_LANGDIR."/lang-Deutsch.txt");
+read_langfile($text, PATH_TO_LANGDIR."/lang-{$deflang}.txt");
 
 @setlocale (LC_TIME, $languages[$deflang][0]);
 if (isset($lmouserlang) && $lmouserlang!=$deflang) {
@@ -73,8 +79,8 @@ setlocale (LC_NUMERIC, 'en_EN');  // Wichtig: Für Arithmetik immer englische Tr
 
 
 //Alle lang-Dateien im Addon-Verzeichnis
-$handle=opendir (PATH_TO_LANGDIR);
-while (false!==($f=readdir($handle))) {
+$handle = opendir (PATH_TO_LANGDIR);
+while (false !== ($f = readdir($handle))) {
   if (is_dir(PATH_TO_LANGDIR.'/'.$f) && $f!='.' && $f!='..') {  //Wenn Unterverzeichnis Lang-dateien auslesen
     if (file_exists(PATH_TO_LANGDIR."/$f/lang-{$deflang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/$f/lang-{$deflang}.txt",$f);
     if (isset($lmouserlang)) {
@@ -83,8 +89,8 @@ while (false!==($f=readdir($handle))) {
   }
 }
 
-$orgpkt=$text[37];
-$orgtor=$text[38];
+$orgpkt = $text[37];
+$orgtor = $text[38];
 
 
 

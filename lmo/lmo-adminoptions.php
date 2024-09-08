@@ -115,7 +115,7 @@ if ($show==0) {?>
               }
               closedir($handle);
               ?>
-              </select></td>
+              </select>&nbsp;<?php echo "<img src='".URL_TO_IMGDIR.'/'.$deflang.".svg' height='16'>";?></td>
           </tr><?php
   if (version_compare(PHP_VERSION, '5.1.0') >= 0) { ?>
           <tr>
