@@ -17,7 +17,7 @@ Currently supported languages (_sorted alphabetically_)
 - ![English](https://www.vest-sport.de/forum_files/md/English.svg) English (also installation language)
 - ![French](https://www.vest-sport.de/forum_files/md/Francais.svg) French (also installation language)
 - ![German](https://www.vest-sport.de/forum_files/md/Deutsch.svg) German (also installation language and help files)
-- ![Hungarian](https://www.vest-sport.de/forum_files/md/Norsk.svg) Hungarian
+- ![Hungarian](https://www.vest-sport.de/forum_files/md/Magyar.svg) Hungarian
 - ![Italian](https://www.vest-sport.de/forum_files/md/Italiano.svg) Italian
 - ![Norwegian](https://www.vest-sport.de/forum_files/md/Norsk.svg) Norwegian
 - ![Portuguese](https://www.vest-sport.de/forum_files/md/Portugues.svg) Portuguese
