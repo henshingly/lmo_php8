@@ -476,7 +476,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           </tr>
           <tr>
             <td class="nobr" align="right"><select class="lmo-formular-input" name="xanzcl" onChange="dolmoedit()"><?php
-      for($i=0;$i<5;$i++) {?>
+      for($i=0;$i<9;$i++) {?>
                 <option value="<?php echo $i?>"<?php if ($anzcl==$i) {echo " selected";}?>><?php echo $i?></option><?php
       }?>
               </select>&nbsp;
