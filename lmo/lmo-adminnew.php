@@ -317,7 +317,7 @@ if($newpage==1){
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?php echo  $text[272] ?>"><?php echo  $text[271]; ?></acronym></td>
             <td class="nobr" align="left">
-              <select class="lmo-formular-input" name="xteams" onChange="dolmoedit()"><?php if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>";} ?></select>
+              <select class="lmo-formular-input" name="xteams" onChange="dolmoedit()"><?php if($xteams==""){$xteams=16;}for($i=2;$i<129;$i=$i*2){echo "<option value=\"".$i."\""; if($xteams==$i){echo " selected";} echo ">".$i."</option>"; if ($i==16) echo "<option value='24'>24</option>"; } ?></select>
             </td>
           </tr>
           <tr>
