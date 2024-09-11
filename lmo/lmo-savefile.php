@@ -49,7 +49,8 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         }
         if ($st>0) {
           fputs($datei,"Actual=".$st."\n");
-        } else {
+        }
+        else {
           fputs($datei,"Actual=".$stx."\n");
         }
         if ($lmtype==0) {
@@ -85,7 +86,8 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           }
           fputs($datei,"tableHinRueck=".$einhinrueck."\n");
           fputs($datei,"tableHeimAusw=".$einheimausw."\n");
-        } else {
+        }
+        else {
           fputs($datei,"KlFin=".$klfin."\n");
           fputs($datei,"playdown=".$playdown."\n");
           fputs($datei,"playoffmode=".$playoffmode."\n");
@@ -140,8 +142,8 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
               fputs($datei,"SM=".$strafm[$i]."\n");
             }
             fputs($datei,"TOR1=".$torkorrektur1[$i]."\n"); // Hack-Straftore
-        		fputs($datei,"TOR2=".$torkorrektur2[$i]."\n"); // Hack-Straftore
-        		fputs($datei,"STDA=".$strafdat[$i]."\n");      // Hack-Straftore
+            fputs($datei,"TOR2=".$torkorrektur2[$i]."\n"); // Hack-Straftore
+            fputs($datei,"STDA=".$strafdat[$i]."\n");      // Hack-Straftore
           }
           fputs($datei,"URL=".$teamu[$i]."\n");
           fputs($datei,"NOT=".$teamn[$i]."\n");
@@ -172,16 +174,20 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
             if ($lmtype==0) {
               if ($goala[$i-1][$j-1]=="_") {
                 fputs($datei,"GA".$j."=-1\n");
-              } else if ($msieg[$i-1][$j-1]==1) {
+              }
+              else if ($msieg[$i-1][$j-1]==1) {
                 fputs($datei,"GA".$j."=-2\n");
-              } else {
+              }
+              else {
                 fputs($datei,"GA".$j."=".$goala[$i-1][$j-1]."\n");
               }
               if ($goalb[$i-1][$j-1]=="_") {
                 fputs($datei,"GB".$j."=-1\n");
-              } else if ($msieg[$i-1][$j-1]==2) {
+              }
+              else if ($msieg[$i-1][$j-1]==2) {
                 fputs($datei,"GB".$j."=-2\n");
-              } else {
+              }
+              else {
                 fputs($datei,"GB".$j."=".$goalb[$i-1][$j-1]."\n");
               }
               if ($msieg[$i-1][$j-1]==3) {
@@ -190,9 +196,11 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
               if ($spez==1) {
                 if ($mspez[$i-1][$j-1]=="_") {
                   fputs($datei,"SP".$j."=0\n");
-                } else if ($mspez[$i-1][$j-1]==$text[0]) {
+                }
+                else if ($mspez[$i-1][$j-1]==$text[0]) {
                   fputs($datei,"SP".$j."=2\n");
-                } else if ($mspez[$i-1][$j-1]==$text[1]) {
+                }
+                else if ($mspez[$i-1][$j-1]==$text[1]) {
                   fputs($datei,"SP".$j."=1\n");
                 }
               }
@@ -200,23 +208,28 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
               fputs($datei,"BE".$j."=".$mberi[$i-1][$j-1]."\n");
               fputs($datei,"TI".$j."=".$mtipp[$i-1][$j-1]."\n");
               fputs($datei,"AT".$j."=".$mterm[$i-1][$j-1]."\n");
-            } else {
+            }
+            else {
               for ($n=1; $n<=$modus[$i-1]; $n++) {
                 if ($goala[$i-1][$j-1][$n-1]=="_") {
                   fputs($datei,"GA".$j.$n."=-1\n");
-                } else {
+                }
+                else {
                   fputs($datei,"GA".$j.$n."=".$goala[$i-1][$j-1][$n-1]."\n");
                 }
                 if ($goalb[$i-1][$j-1][$n-1]=="_") {
                   fputs($datei,"GB".$j.$n."=-1\n");
-                } else {
+                }
+                else {
                   fputs($datei,"GB".$j.$n."=".$goalb[$i-1][$j-1][$n-1]."\n");
                 }
                 if ($mspez[$i-1][$j-1][$n-1]=="_") {
                   fputs($datei,"SP".$j.$n."=0\n");
-                } else if ($mspez[$i-1][$j-1][$n-1]==$text[0]) {
+                }
+                else if ($mspez[$i-1][$j-1][$n-1]==$text[0]) {
                   fputs($datei,"SP".$j.$n."=2\n");
-                } else if ($mspez[$i-1][$j-1][$n-1]==$text[1]) {
+                }
+                else if ($mspez[$i-1][$j-1][$n-1]==$text[1]) {
                   fputs($datei,"SP".$j.$n."=1\n");
                 }
                 fputs($datei,"NT".$j.$n."=".$mnote[$i-1][$j-1][$n-1]."\n");
@@ -232,7 +245,8 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           unlink(PATH_TO_LMO.'/'.$diroutput.'/viewer_'.substr($file,0,-4).'_count.txt');
         }
         fclose($datei);
-      } else {
+      }
+      else {
         echo getMessage($text[283],TRUE);
       }
       clearstatcache();
