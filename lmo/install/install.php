@@ -718,16 +718,16 @@ if ($lmo_install_step==4) {?>
     <a href=" http://jigsaw.w3.org/css-validator/check/referer"><span class="w3c">W3C</span>
     <span class="spec">CSS 2.1</span></a></div>
     <div class="flag">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=FR"><img src="<?php echo $url;?>/img/Francais.svg" alt="FR" height="14"></a>
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=FR"><img src="<?php echo $url;?>/img/Francais.svg" title="Francais" alt="FR" height="14"></a>
     </div>
     <div class="flag">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=EN"><img src="<?php echo $url;?>/img/English.svg" alt="EN" height="14"></a>
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=EN"><img src="<?php echo $url;?>/img/English.svg" title="English" alt="EN" height="14"></a>
     </div>
     <div class="flag">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=ES"><img src="<?php echo $url;?>/img/Espanol.svg" alt="ES" height="14"></a>
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=ES"><img src="<?php echo $url;?>/img/Espanol.svg" title="Espanol" alt="ES" height="14"></a>
     </div>
     <div class="flag">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=DE"><img src="<?php echo $url;?>/img/Deutsch.svg" alt="DE" height="14"></a>
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=DE"><img src="<?php echo $url;?>/img/Deutsch.svg" title="Deutsch" alt="DE" height="14"></a>
     </div>
     <div class="w3cbutton3">
     <a href="<?php echo $_SERVER['PHP_SELF'];?>"><span class="w3c">RE</span>
