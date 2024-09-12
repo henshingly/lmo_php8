@@ -80,6 +80,26 @@ if ($file != "") {
     if ($lmtype != 0) {
       $anzsp2 = $anzteams;
       for($i = 0; $i < $st; $i++) {
+        if($anzteams==24) {
+          switch ($i) {
+            case 0:
+            case 1:
+              $anzsp2=16;
+            break;
+            case 2:
+              $anzsp2=8;
+            break;
+            case 3:
+              $anzsp2=4;
+            break;
+            case 4:
+              $anzsp2=2;
+            break;
+            case 5:
+              $anzsp2=1;
+            break;
+          }
+        }
         $anzsp2 = $anzsp2/2;
       }
       if (($klfin == 1) && ($st == $anzst)) {
@@ -372,6 +392,26 @@ if ($file != "") {
   if ($lmtype != 0) {
     $anzsp = $anzteams;
     for($i = 0; $i < $st; $i++) {
+      if($anzteams==24) {
+        switch ($i) {
+          case 0:
+          case 1:
+            $anzsp=16;
+          break;
+          case 2:
+            $anzsp=8;
+          break;
+          case 3:
+            $anzsp=4;
+          break;
+          case 4:
+            $anzsp=2;
+          break;
+          case 5:
+            $anzsp=1;
+          break;
+        }
+      }
       $anzsp = $anzsp/2;
     }
     if (($klfin == 1) && ($st == $anzst)) {

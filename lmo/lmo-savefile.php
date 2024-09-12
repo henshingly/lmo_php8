@@ -160,6 +160,23 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           fputs($datei,"D2=".$datum2[$i-1]."\n");
           if ($lmtype!=0) {
             fputs($datei,"MO=".$modus[$i-1]."\n");
+            if($anzteams==24) {
+              switch ($i) {
+                case 1:
+                case 2:
+                  $anzsp=16;
+                  break;
+                case 3:
+                  $anzsp=8;
+                  break;
+                case 4:
+                  $anzsp=4;
+                  break;
+                case 5:
+                  $anzsp=2;
+                  break;
+              }
+            }
             $anzsp=$anzsp/2;
             if (($klfin==1) && ($i==$anzst)) {
               $anzsp=$anzsp+1;
