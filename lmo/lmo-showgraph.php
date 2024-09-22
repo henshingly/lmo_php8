@@ -61,16 +61,16 @@ if(($file != "") && ($kurve == 1)){
     $axisColor = "rgba(90, 90, 90, 1)";
     $flag = 'true';
     if($j < 3) $flag = 'false';
-      $data .= "{
-        label: '$teams[$j]',
-        fill: false,
-        lineTension: $tension,
-        backgroundColor: 'rgba($color)',
-        borderColor: 'rgba($color)',
-        data: [{${'pgplatz'.$j}}],
-        hidden: $flag,
-      },";
-    }
+    $data .= "{
+      label: '$teams[$j]',
+      fill: false,
+      lineTension: $tension,
+      backgroundColor: 'rgba($color)',
+      borderColor: 'rgba($color)',
+      data: [{${'pgplatz'.$j}}],
+      hidden: $flag,
+    },";
+  }
 ?>
                       <script src="<?php echo URL_TO_LMO; ?>/js/chart.js"></script>
                       <script>
