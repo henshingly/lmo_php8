@@ -743,7 +743,7 @@ class liga {
             foreach ($spieltag->partien[$pCounter]->getParameter() as $otherKey => $otherParameter) {
               $iniData['Round'.$roundCount][$otherKey.$partienNumber]=$otherParameter;
             }
-            if($pCounter > 10000 ) die("Script ERROR");                       
+            if($pCounter > 10000 ) die("Script ERROR");
             ++$pCounter; // NEU 2012-06-27 Timme
           } while (isset($spieltag->partien[$pCounter]) && is_object($spieltag->partien[$pCounter]) && $partienCounter < $spieltag->getModus() );
         }
@@ -1094,9 +1094,9 @@ class liga {
     if($this->options->keyValues['Direct']==1) {
       $subteams = array();
       $pPkt = 0;
-      $nPkt = 0;
+      $mPkt = 0;
       for ($abc = 0; $abc < count($tableArray); $abc++) {
-        if($pPkt == $tableArray[$abc]["pPkt"] && $nPkt == $tableArray[$abc]["nPkt"]) {
+        if($pPkt == $tableArray[$abc]["pPkt"] && $mPkt == $tableArray[$abc]["mPkt"]) {
           $subteams[$tableArray[$abc]["team"]->nr] = $tableArray[$abc]["team"];
         } else {
           if(count($subteams)>1) {
@@ -1113,7 +1113,7 @@ class liga {
           } // END if(count($subteams)>1)
           $subteams = array();
           $pPkt = $tableArray[$abc]["pPkt"];
-          $nPkt = $tableArray[$abc]["nPkt"];
+          $mPkt = $tableArray[$abc]["mPkt"];
           $subteams[$tableArray[$abc]["team"]->nr] = $tableArray[$abc]["team"];
         }
       } // END for ($abc = 0; $abc < count($tableArray); $abc++)
