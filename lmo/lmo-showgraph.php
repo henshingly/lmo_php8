@@ -22,6 +22,13 @@ if($_SERVER['PHP_SELF'] == '/lmo-showgraph.php')
 
 if(($file != "") && ($kurve == 1)){
   $tension = '0.4';
+  $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
+  $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
+  $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
+  if ($show_stat1 == 0 && $show_stat2 != 0 || $show_stat1 == $show_stat2) {
+    $show_stat1 = $show_stat2;
+    $show_stat2 = 0;
+  }
 ?>
 
           <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -59,17 +66,23 @@ if(($file != "") && ($kurve == 1)){
     ${'pgplatz'.$j} = implode(",", ${'platz'.$j});
     $color = mt_rand(0, 160).",".mt_rand(0, 160).",".mt_rand(0, 160).",1";
     $axisColor = "rgba(90, 90, 90, 1)";
-    $flag = 'true';
-    if($j < 3) $flag = 'false';
+    if ($show_stat1 == 0 && $show_stat2 == 0) {
+      $flag = 'true';
+      if($j < 3) $flag = 'false';
+    } else if ($j == $show_stat1 || $j == $show_stat2) {
+      $flag = 'false';
+    } else {
+      $flag = 'true';
+    }
     $data .= "{
-      label: '$teams[$j]',
-      fill: false,
-      lineTension: $tension,
-      backgroundColor: 'rgba($color)',
-      borderColor: 'rgba($color)',
-      data: [{${'pgplatz'.$j}}],
-      hidden: $flag,
-    },";
+                              label: '$teams[$j]',
+                              fill: false,
+                              lineTension: $tension,
+                              backgroundColor: 'rgba($color)',
+                              borderColor: 'rgba($color)',
+                              data: [{${'pgplatz'.$j}}],
+                              hidden: $flag,
+                            },";
   }
 ?>
                       <script src="<?php echo URL_TO_LMO; ?>/js/chart.js"></script>
