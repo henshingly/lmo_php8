@@ -284,7 +284,7 @@ if($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
   echo "</td></tr>";
 
   if(isset($team_b) and is_object($team_b) ) {
-    echo "<tr><th colspan=\"3\">$text[4021]</th></tr>";
+    echo "<tr><th style=\"text-align:center\" colspan=\"3\">$text[4021]</th></tr>";
     echo "<tr><td align=\"right\">";
     echo $rstPrgPlus_a.":".$rstPrgMinus_a." (".($rstPrg_a>0?"+".$rstPrg_a:$rstPrg_a).")";
     echo "</td><th class=\"top\" style=\"text-align:center\">$text[4022]</th>";
