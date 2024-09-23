@@ -447,40 +447,40 @@ font-size:100%;
 .lmo-formular-button { 
   background: <?php echo $lmo_formular_background2?> repeat; 
   <?php echo empty($lmo_formular_color2)?'':"color: $lmo_formular_color2;";?> 
-  border: <?php echo $lmo_formular_border2?>; 
-  font-weight: bold; 
-  width:     auto;
-  overflow:  visible;
-  padding:   0 0.3em;
+  border:       <?php echo $lmo_formular_border2?>; 
+  font-weight:  bold; 
+  width:        auto;
+  overflow:     visible;
+  padding:      0 0.3em;
 
 }
 
 span.colorpicker {
   background-image:url("<?php echo URL_TO_IMGDIR?>/blank.gif");
-  border: 1px solid #000; 
-  font-size:15px; 
-  text-decoration: none;
-  width:					11px;
-	height:					11px;
-  background-position:	center center;
-  background-repeat:		no-repeat;
-  background-color: transparent;
-	margin:					0 2px;
+  border:               1px solid #000; 
+  font-size:            15px; 
+  text-decoration:      none;
+  width:                11px;
+  height:               11px;
+  background-position:  center center;
+  background-repeat:    no-repeat;
+  background-color:     transparent;
+  margin:               0 2px;
   display:inline;
   cursor:crosshair;
 }
 
 span.colorpicker.nocolor {
-  display:inline;
-  background-image:url("<?php echo URL_TO_IMGDIR?>/transparent.gif");
-  background-repeat: repeat;
+  display:              inline;
+  background-image:     url("<?php echo URL_TO_IMGDIR?>/transparent.gif");
+  background-repeat:    repeat;
 }
 span.colorpicker.invalid {
-  display:inline;
-  background-image:url("<?php echo URL_TO_IMGDIR?>/attention.gif");
-  background-position:center;
-  background-repeat: no-repeat;
-  border: 0; 
+  display:              inline;
+  background-image:     url("<?php echo URL_TO_IMGDIR?>/attention.gif");
+  background-position:  center;
+  background-repeat:    no-repeat;
+  border:               0; 
 }
 
 span.colorpicker table {
@@ -489,47 +489,62 @@ span.colorpicker table {
 }
 
 .sortarrow {
-	background-image:		url("<?php echo URL_TO_IMGDIR?>/blank.png");
-  width:					11px;
-	height:					11px;
-	background-position:	center center;
-	background-repeat:		no-repeat;
-	margin:					0 2px;
+  background-image:     url("<?php echo URL_TO_IMGDIR?>/blank.png");
+  width:                11px;
+  height:               11px;
+  background-position:  center center;
+  background-repeat:    no-repeat;
+  margin:               0 2px;
   display:inline;
 }
 
 .sortarrow.descending {
   display:inline;
-	background-image:		url("<?php echo URL_TO_IMGDIR?>/downsimple.png");
+  background-image:    url("<?php echo URL_TO_IMGDIR?>/downsimple.png");
 }
 
 .sortarrow.ascending {
   display:inline;
-  background-image:		url("<?php echo URL_TO_IMGDIR?>/upsimple.png");
+  background-image:    url("<?php echo URL_TO_IMGDIR?>/upsimple.png");
 }
 a span.popup, a:link span.popup{
-	display: none;
+  display: none;
 }
 a:hover span.popup{
   display: inline;
-	font-size:80%;
+  font-size:80%;
   position: absolute;
   background: <?php echo $lmo_middle_background1?> repeat; 
   <?php echo empty($lmo_middle_color1)?'':"color: $lmo_middle_color1;";?>
   <?php echo empty($lmo_middle_border1)?'':"border: $lmo_middle_border1;";?>
-  width: 15em;
-	margin: 1.5em 0 0 -4em;  
-  padding: 0.2em;
-	z-index: 999;
-  white-space:normal;
-  text-decoration:none !important;
-  text-align:left;
+  width:            15em;
+  margin:           1.5em 0 0 -4em;  
+  padding:          0.2em;
+  z-index:          999;
+  white-space:      normal;
+  text-decoration:  none !important;
+  text-align:       left;
 }
 
 a:hover>span.popup {
   width:auto;
-  max-width:15em;
+  max-width:           15em;
   \-moz-border-radius: 8px;
 }
 
+th.bottom {
+  vertical-align: bottom;
+}
+
+.baseline {
+  vertical-align: baseline;
+}
+
+.top {
+  vertical-align: top;
+}
+
+.middle {
+  vertical-align: middle;
+}
 <?php @include(PATH_TO_TEMPLATEDIR."/style.css");?>

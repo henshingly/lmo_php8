@@ -312,5 +312,21 @@ require(dirname(__FILE__)."/init.php");
 a span.popup, a:link span.popup{
   display: none;
 }
+
+th.bottom {
+  vertical-align: bottom;
+}
+
+.baseline {
+  vertical-align: baseline;
+}
+
+.top {
+  vertical-align: top;
+}
+
+.middle {
+  vertical-align: middle;
+}
 <?php 
 @include(PATH_TO_TEMPLATEDIR."/style.css");?>
