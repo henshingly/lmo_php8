@@ -15,7 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  * $Id$
+  *
   */
 ?>
 <table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">

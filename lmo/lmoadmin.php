@@ -15,7 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  * $Id$
+  *
   */
   
 if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POST['lmo_install_step'])) {

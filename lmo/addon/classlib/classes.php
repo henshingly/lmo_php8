@@ -7,7 +7,7 @@
  * objektorientierten Erweiterung in Form von sog. Addons für den Liga Manager Online.
  *
  * @author    Tim Schumacher <webobjects@gmx.net>
- * @version   $Id$
+ *
  * @package   classLib
 */
 

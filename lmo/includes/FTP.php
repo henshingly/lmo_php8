@@ -13,7 +13,7 @@
  * @author    Jorrit Schippers <jschippers@php.net>
  * @copyright 1997-2008 The PHP Group
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @version   CVS: $Id$
+ *
  * @link      http://pear.php.net/package/Net_FTP
  * @since     File available since Release 0.0.1
  */

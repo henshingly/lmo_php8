@@ -18,7 +18,7 @@
  *
  * @package classLib
  * @access   public
- * @version $Id$
+ *
  */
 
 /**

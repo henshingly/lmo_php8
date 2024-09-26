@@ -15,7 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  * $Id$
+  *
   */
 // First line of XSS-Identification
 $get = array();

@@ -15,7 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  * $Id$
+  *
   */
 
 if(($file!="") && ($_SESSION['lmouserok']==2)){

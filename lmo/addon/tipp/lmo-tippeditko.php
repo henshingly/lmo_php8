@@ -15,7 +15,7 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  * $Id$
+  *
   */
 
 for($n=0;$n<$modus[$st-1];$n++){

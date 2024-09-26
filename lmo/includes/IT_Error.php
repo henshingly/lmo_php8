@@ -15,7 +15,7 @@
 // | Author: Ulf Wendel <ulf.wendel@phpdoc.de>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id$
+//
 
 //jokerlmo: Changed include path
 require_once(PATH_TO_LMO.'/includes/PEAR.php');

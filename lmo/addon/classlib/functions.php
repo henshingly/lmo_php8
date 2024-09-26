@@ -6,7 +6,7 @@
  * @author    Tim Schumacher <webobjects@gmx.net>
  * @package classLib
  * @access public
- * @version $Id$
+ *
  */
 
 /**

@@ -4,7 +4,7 @@
  * Bildet die komplette Runde eines KO Tuniers / Playoff oder Ähnlichem ab.
  *
  * @author Markus Dörfling <markus@doerfling.net>
- * @version $Id$
+ *
  * @package classlib
  */
 

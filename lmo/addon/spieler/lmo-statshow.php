@@ -15,7 +15,7 @@
  *
  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
  *
- * $Id$
+ *
 */
 
 require_once(dirname(__FILE__) . '/../../init.php');

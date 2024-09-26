@@ -16,7 +16,7 @@
 // | Author: Ulf Wendel <ulf.wendel@phpdoc.de>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id$
+//
 //
 
 //jokerlmo: Changed include path
@@ -37,7 +37,7 @@ require_once(PATH_TO_LMO.'/includes/IT_Error.php');
 *
 * @author   Ulf Wendel <uw@netuse.de>
 * @access   public
-* @version  $Id$
+*
 * @package  IT[X]
 */
 class HTML_Template_ITX extends HTML_Template_IT {

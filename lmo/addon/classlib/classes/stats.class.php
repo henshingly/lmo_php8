@@ -8,7 +8,7 @@
  *
  * @author Marcus Schug <lmo@marcus.schug.info>
  * @package classlib
- * @version $Id$
+ *
  */
 class stats {
 
