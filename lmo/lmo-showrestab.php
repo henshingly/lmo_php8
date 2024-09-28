@@ -109,7 +109,7 @@ if (isset($file) && $file != "") {
   </tr><?php
   }
 
-  /** Vor und Zurück-Pfeile*/?>
+  /** Vor und ZurÃ¼ck-Pfeile*/?>
   <tr>
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">

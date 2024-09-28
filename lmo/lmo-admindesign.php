@@ -532,14 +532,14 @@ if ($show==0) {?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right"><input class="lmo-formular-input" type="text" name="xlmo_fieber_color1" id="lmo_fieber_color1input" size="7" maxlength="7" value="<?php echo $lmo_fieber_color1?>" onChange="dolmoedit();relateColor('lmo_fieber_color1', this.value);"><script type="text/javascript">makePicker('lmo_fieber_color1');</script></td>
-            <td><acronym title="<?php echo $text[433] ?>"><?php echo $text[124]?> 1</acronym></td>
+            <td><acronym title="<?php echo $text[433] ?>"><?php echo $text[281]?> 1</acronym></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="right">
               <input class="lmo-formular-input" type="text" name="xlmo_fieber_color2" id="lmo_fieber_color2input" size="7" maxlength="7" value="<?php echo $lmo_fieber_color2?>" onChange="dolmoedit();relateColor('lmo_fieber_color2', this.value);"><script type="text/javascript">makePicker('lmo_fieber_color2');</script>
             </td>
-            <td><acronym title="<?php echo $text[433] ?>"><?php echo $text[124]?> 2</acronym></td>
+            <td><acronym title="<?php echo $text[433] ?>"><?php echo $text[281]?> 2</acronym></td>
           </tr>
           <tr>
             <th colspan="3"><?php echo $text[464]?></th>

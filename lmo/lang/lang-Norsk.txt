@@ -122,7 +122,7 @@
 121=Innstilling av bortemål (0 - 9999, _ eller X)
 122=Kampdato (Format DD.MM.ÅÅÅÅ - med lende nuller!)
 123=Kampavspark (Format HH:MM - med ledende nuller!) - hvis feltet er tomt blir defaultverdien brukt ved lagring
-124=Klubbnavn
+124=UNOCCUPY
 125=Klubbnavn (max. 32 tegn)
 126=Kortversjon av klubbnavn (max. 5 tegn)
 127=Klubbnavn/-kortversjon
@@ -337,7 +337,7 @@
 336=Legge til klubb
 337=Legger til en ny klubb til klubblisten
 338=Serierunder og kampantall
-339=Her kan du endre antall serierunder og antall kamper pr. serierunde.\nADVARSEL: Dette kan føre til tap av data!
+339=Her kan du endre antall serierunder og antall kamper pr. serierunde. ADVARSEL: Dette kan føre til tap av data!
 340=Antall serierunder og kamper
 341=LMO-Admin Ligaforsendelse
 342=Her er din ønskede liga.
@@ -396,7 +396,7 @@
 395=scorede mål teller før målforskjell
 396=teller de score målene mer ved poenglikhet enn målforskjell?
 397=Frigivne ligaer
-398=Angi her ligaene som hjelpe admin får lov å redigere
+398=Her velger du navnene på ligaene som denne assisterende administratoren har lov til å redigere. Han har ikke tilgang til andre ligaer.
 399=Startvisning
 400=Hva skal vises første gang en liga lastes?
 401=Sende alle ligaer på en gang
@@ -414,7 +414,7 @@
 413=bytte til tabellen for denne runden
 414=Hvilken tabellplass skal dette laget tildeles?
 415=Lagre manuell tabell
-416=Det er ikke lov å ha flere lag på en plass.\nDet kan derfor ikke lagres.
+416=Det er ikke lov å ha flere lag på en plass. Det kan derfor ikke lagres.
 417=Bronsefinale
 418=Blir også bronsefinale spilt (kamp om plass 3)?
 419=Finale (om tittelen):

@@ -122,7 +122,7 @@
 121=Setari pentru golurile echipei oaspete (0 - 9999, _ sau X)
 122=Data etapei (Format ZZ.LL.AAAA)
 123=Ora jocurilor (Format HH:MM) - daca nu completati nimic, va fi setata ora standard pentru competitie
-124=Echipa
+124=UNOCCUPY
 125=Numele echipei (max. 32 caractere)
 126=Prescurtare (max. 5 caractere)
 127=Nume/prescurtare
@@ -337,7 +337,7 @@
 336=Adauga echipa
 337=Adaugă o nouă echipă în joc
 338=Ziua jocului și numărul de jocuri
-339=Aici puteți modifica numărul de zile de joc și numărul de jocuri pe zi de joc.\nATENȚIE: Acest lucru poate duce la pierderea datelor!
+339=Aici puteți modifica numărul de zile de joc și numărul de jocuri pe zi de joc. ATENȚIE: Acest lucru poate duce la pierderea datelor!
 340=Numărul de zile de meci și de jocuri
 341=LMO-Admin Ligă de expediere
 342=Iată liga solicitată.
@@ -396,7 +396,7 @@
 395=Golurile marcate contează înainte de diferența de goluri
 396=Dacă există egalitate, golurile marcate contează mai mult decât diferența de goluri (de exemplu, la bowling)?
 397=Ligi lansate
-398=Geben Sie hier die Namen der Ligen an, die dieser Hilfs-Admin bearbeiten darf
+398=Aici selectați numele ligilor pe care acest administrator asistent are voie să le editeze. Nu are acces la alte ligi.
 399=Porniți afișajul
 400=Ce ar trebui să fie afișat mai întâi la deschiderea unei ligi?
 401=Trimite toate ligile deodată
@@ -414,7 +414,7 @@
 413=Du-te la masa pentru această zi de meci
 414=Ce loc în tabel ar trebui să fie atribuit acestei echipe?
 415=salvați tabelul manual
-416=Nu pot exista mai multe echipe pe un singur teren.\nNu va fi salvat încă.
+416=Nu pot exista mai multe echipe pe un singur teren. Nu va fi salvat încă.
 417=Meci pe locul 3
 418=Va fi și o finală mică (joc pentru locul trei)?
 419=Finala:

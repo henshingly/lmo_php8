@@ -122,7 +122,7 @@
 121=Instelling uitdoelpunten (0 - 9999, _ zonder X)
 122=Aanvangsdatum van de wedstrijd (Formaat DD.MM.JJJJ - dagen en maanden tweecijferig)
 123=Aanvangstijd van de wedstrijd (Formaat HH:MM)
-124=Team
+124=UNOCCUPY
 125=Verenigingsnaam (max. 32 tekens)
 126=Afkorting van de verenigingsnaam (max. 5 tekens)
 127=Verenigingsnaam / afkorting
@@ -337,7 +337,7 @@
 336=Team toevoegen
 337=Een nieuw team toevoegen
 338=Aantal speeldagen en wedstrijden
-339=Hier kunt u het aantal speeldagen en aantal wedstrijden veranderen.\nLET OP: U kunt u gegevens kwijt raken!
+339=Hier kunt u het aantal speeldagen en aantal wedstrijden veranderen. LET OP: U kunt u gegevens kwijt raken!
 340=Aantal speelronden en wedstrijden
 341=LMO-Beheer
 342=Hier is de door u opgevraagde competitie.
@@ -396,7 +396,7 @@
 395=Aantal doelpunten belangrijker dan het doelsaldo
 396=Is het aantal gescoorde doelpunten dan het doelsaldo bij gelijk puntenaantal?
 397=Vrijgegeven competities
-398=Geef hier de namen van de teams in die deze Hulp-admin mag bewerken (teams met komma's scheiden; de teams moeten natuurlijk bestaan)
+398=Selecteer hier de namen van de competities die deze assistent-beheerder mag bewerken. Hij heeft geen toegang tot andere competities.
 399=Beginscherm
 400=Wat moet er op het beginscherm worden weergegeven als een gebruiker inlogt?
 401=Alle competities in één keer verzenden
@@ -414,7 +414,7 @@
 413=naar de stand van deze speeldag
 414=Welke plaats krijgt dit team in de stand van competitie?
 415=Handmatig gesorteerde stand opslaan
-416=Er mogen geen meerdere teams op 1 plaats staat.\nEr is niets opgeslagen.
+416=Er mogen geen meerdere teams op 1 plaats staat. Er is niets opgeslagen.
 417=Wedstrijd om de derde plaats
 418=Wordt er een troostfinale gespeeld (Wedstrijd om de derde plaats)?
 419=Finale (om de titel):

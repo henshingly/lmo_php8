@@ -122,7 +122,7 @@
 121=Einstellung der Gasttore (0 - 9999, _ oder X)
 122=Anstoßdatum des Spiels (Format TT.MM.JJJJ - ggf. mit führenden Nullen)
 123=AnstoßZeit des Spiels (Format HH:MM - ggf. mit führenden Nullen) - lassen Sie dieses Feld leer, wird beim Speichern automatisch die Standard-Anstoßzeit eingesetzt
-124=Mannschaft
+124=UNBESETZT
 125=Name der Mannschaft (max. 64 Zeichen)
 126=Kürzel der Mannschaft (max. 5 Zeichen)
 127=Mannschaftsname (lang, mittel, kurz)
@@ -337,7 +337,7 @@
 336=Mannschaft hinzufügen
 337=Eine neue Mannschaft zum Spielbetrieb hinzufügen
 338=Spieltags- und Spiel-Anzahl
-339=Hier könen Sie die Anzahl der Spieltage und die Anzahl der Spiele pro Spieltag ändern.\nACHTUNG: Das kann zu Datenverlust führen!
+339=Hier könen Sie die Anzahl der Spieltage und die Anzahl der Spiele pro Spieltag ändern. ACHTUNG: Das kann zu Datenverlust führen!
 340=Anzahl der Spieltage und Spiele
 341=LMO-Admin Ligaversand
 342=Hier ist Ihre angeforderte Liga.
@@ -396,7 +396,7 @@
 395=erzielte Tore zählen vor Tordifferenz
 396=Zählen die erzielten Tore bei Punktgleichheit mehr als die Tordifferenz (z.B. beim Kegeln)?
 397=Freigegebene Ligen
-398=Gaben Sie hier die Namen der Ligen ein, die dieser Hilfs-Admin bearbeiten darf (bitte mit Komma getrennt und ohne Pfad und Namenserweiterung, also z.B. "1l_2001-02,dp_2001-02"). Die angegebenen Ligen müssen bereits auf dem Server existieren!
+398=Wählen Sie hier die Namen der Ligen aus, die dieser Hilfs-Admin bearbeiten darf. Auf andere Ligen hat dieser keinen Zugriff.
 399=Startanzeige
 400=Was soll beim Aufruf einer Liga zuerst angezeigt werden?
 401=Alle Ligen auf einmal versenden
@@ -414,7 +414,7 @@
 413=zur Tabelle dieses Spieltags wechseln
 414=Welchen Tabellenplatz soll diese Mannschaft zugewiesen bekommen?
 415=manuelle Tabelle speichern
-416=Es dürfen nicht mehrere Mannschaften auf einem Platz sein.\nEs wird noch nicht gespeichert.
+416=Es dürfen nicht mehrere Mannschaften auf einem Platz sein Es wird noch nicht gespeichert.
 417=Spiel um Platz 3
 418=Wird auch ein kleines Finale ausgespielt (Spiel um Platz 3)?
 419=großes Finale (um den Titel):

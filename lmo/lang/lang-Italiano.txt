@@ -122,7 +122,7 @@
 121=Impostazioni delle reti fuori casa (0 - 9999, _ opp. X)
 122=Data di calcio d'inizio dell'incontro (Formato GG.MM.AAAA - se necessario con gli zeri iniziali)
 123=Orario di inizio dell'incontro (Formato HH:MM - se necessario con gli zeri iniziali) - lasciando questo campo vuoto, verrá inserita automaticamente l'orario di inizio standard
-124=Squadra
+124=UNOCCUPY
 125=Nome della squadra (max. 32 Zeichen)
 126=Sigla della squadra (max. 5 Zeichen)
 127=Nome della squadra/-sigla
@@ -330,7 +330,7 @@
 329=Salvare
 330=Cancella
 331=Aggiungere un nuovo amministratore
-332=Vuole veramente ritirare la squadrandal campionato?\n(Un ripristino non é possibile!)
+332=Vuole veramente ritirare la squadrandal campionato? (Un ripristino non é possibile!)
 333=Ritirare la squadra
 334=Ritirare questa squadra dal campionato
 335=Vuole aggiungere una nuova squadre al campionato?
@@ -396,7 +396,7 @@
 395=Le reti segnate vengono prima della media inglese
 396=A punteggio uguale, le reti segnate valgono piú della media inglese?
 397=Campionati aperti
-398=Digita qui i nomi dei campionati che il Co-Amministratore puó modificare
+398=Seleziona qui i nomi dei campionati che questo assistente amministratore può modificare. Non ha accesso ad altri campionati.
 399=Visualizzazione di inizio
 400=Cosa deve essere visualizzato dopo l'apertura di un campionato?
 401=Inviare tutti i campionati ad una volta
@@ -414,7 +414,7 @@
 413=Vai alla classifica di questa giornata
 414=Quale posizione in classifica deve essere assegnata alla squadra?
 415=Salvare manualmente la classifica
-416=Non possono esserci più squadre in un unico posto nella tabella\nNon verrà ancora salvata.
+416=Non possono esserci più squadre in un unico posto nella tabella. Non verrà ancora salvata.
 417=Spareggio per il 3° posto
 418=Verrá giocata una piccola finale (Spareggio per il 3° posto)?
 419=Grande finale (per il titolo):

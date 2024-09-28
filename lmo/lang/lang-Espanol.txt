@@ -122,7 +122,7 @@
 121=Ajuste de goles visitantes (0 - 9999, _ or X)
 122=Fecha de inicio del partido (formato dd.mm.yyyy - si es necesario con '0's a la izquierda)
 123=Hora de inicio del partido (formato hh:mm - si es necesario con '0's a la izquierda) - si dejas esto en blanco, se asignará la hora de comienzo estandar al guardar
-124=Equipo
+124=UNOCCUPY
 125=Nombre del equipo (max. 64 caracteres)
 126=Abreviatura del equipo (max. 5 caracteres)
 127=Nombre / abrev.
@@ -337,7 +337,7 @@
 336=Añadir equipo
 337=Añadir nuevo equipo a la liga
 338=Número de jornadas y partidos
-339=Aqui puedes cambiar el número de jornadas y el de partidos por jornada.\n¡ATENCIÓN! ¡Esto podría causaruna pérdida de datos!
+339=Aqui puedes cambiar el número de jornadas y el de partidos por jornada. ¡ATENCIÓN! ¡Esto podría causaruna pérdida de datos!
 340=Número de jornadas y partidos
 341=Administrador de LMO enviando una liga
 342=Aqui está la liga que pediste.
@@ -396,7 +396,7 @@
 395=Number of goals scored outweighs +/-.
 396=Do the number of goals scored outweigh +/- if teams have equal points (e.g. skittle)?
 397=Ligas permitidas
-398=Introduce los nombres de las ligas que el Asistente de Administración puede editar (Por favor, separalas con comas y no pongas rutas, ej. "1l_2002-03,dp_2002-03"). ¡Las ligas deben existir en el servidor!
+398=Aquí seleccione los nombres de las ligas que este administrador asistente puede editar. No tiene acceso a otras ligas.
 399=Pantalla de entrada
 400=¿Que pantalla debe ser mostrada al seleccionar una liga?
 401=Enviar todas las ligas
@@ -414,7 +414,7 @@
 413=Ver la clasificación para esta jornada
 414=¿En que posición quieres colocar a este equipo?
 415=Guardar la clasificacoón ordenada a mano
-416=No puede haber mas de un equipo en una posición de liga.\nAun no ha sido guardado.
+416=No puede haber mas de un equipo en una posición de liga. Aun no ha sido guardado.
 417=Partido por el 3º y 4º puesto
 418=¿Habra una "final de consolación" (3º y 4º puesto)?
 419=Gran final (por el título):

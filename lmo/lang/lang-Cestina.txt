@@ -122,7 +122,7 @@
 121=Vložení gólů hostů (0 - 9999, _ nebo X)
 122=Hrací den zápasu (Format DD.MM.RRRR - i s nulami)
 123=Hodina zápasu (Format HH:MM - i s nulami) - toto pole může být prázdné a doplní se dle hlavního nastavení
-124=Mužstvo
+124=UNOCCUPY
 125=Jméno mužstva (max. 32 znaků)
 126=Zkrácený název (max. 5 znaků)
 127=Jméno mužstva/-zkráceně
@@ -337,7 +337,7 @@
 336=Vložit mužstvo
 337=Vložit nové mužstvo
 338=Počet kol a zápasů v kole
-339=Zde můžete změnit počet kol a zápasů v kole.\nPOZOR: Je možná ztráta všech zadaných dat!
+339=Zde můžete změnit počet kol a zápasů v kole.POZOR: Je možná ztráta všech zadaných dat!
 340=Počet kol a zápasů
 341=LMO-Admin Liga
 342=Zde je vámi požadovaná liga.
@@ -396,7 +396,7 @@
 395=erzielte Tore zählen vor Tordiff.
 396=Pokud je nerozhodný stav, počítají se vstřelené góly více než rozdíl gólů (např. v bowlingu)?
 397=Sdílené ligy
-398=Zde zadejte názvy lig, které může tento asistent administrátora upravovat (oddělte je prosím čárkou a bez cesty nebo přípony názvu, např. „1l_2001-02,dp_2001-02“). Zadané ligy již na serveru musí existovat!
+398=Zde vyberte názvy lig, které může tento asistent administrátora upravovat. Nemá přístup do jiných lig.
 399=Náhled po startu
 400=Co bude po startu LIGY zobrazeno dříve?
 401=Všechny LIGY poslat
@@ -414,7 +414,7 @@
 413=K tabulce tohot kola
 414=Jaké místo chcete mužstvu ručně nastavit?
 415=uložit manuální nastavení tabulky
-416=Na jednom hřišti nemůže být více týmů.\nZatím nebude uloženo.
+416=Na jednom hřišti nemůže být více týmů. Zatím nebude uloženo.
 417=Zápas o 3.místo
 418=Bude sehráno i malé finále (o 3.místo)?
 419=velké finále (o titul):

@@ -122,7 +122,7 @@
 121=Sélection des buts à l'exterieur (0 - 9999, _ ou X)
 122=Date du coup d'envoi du match (Format JJ.MM.AAAA - le cas échéant avec des zéros au début)
 123=Heure du coup d'envoi du match (Format HH:MM - le cas échéant avec des zéros au début) - si vous laissez ce champ vide l'heure du coup d'envoi standard sera affichée.
-124=Équipe
+124=UNOCCUPY
 125=Nom de l'équipe (max. 64 caractères)
 126=Abréviation de l'équipe (max. 5 caractères)
 127=Nom de l'équipe/Abréviation de l'équipe
@@ -337,7 +337,7 @@
 336=Ajouter une équipe
 337=Ajouter une nouvelle équipe dans cette ligue
 338=Nombres de journées et de matchs
-339=Ici vous pouvez définir le nombre de journées et de matchs par journée.\nATTENTION: Cela peut entraîner la perte de données!
+339=Ici vous pouvez définir le nombre de journées et de matchs par journée. ATTENTION: Cela peut entraîner la perte de données!
 340=Nombres de journées et de matchs
 341=LMO-Admin Envoi d'une ligue
 342=Ci-joint la ligue demandée.
@@ -396,7 +396,7 @@
 395=Nombre de buts marqués > Différence de buts
 396=En cas d'égalité de points de plusieurs équipes le nombre de buts marqués est plus important que la meilleure différence de buts (p.ex. au Rugby)?
 397=Ligues débloquées
-398=Donnez ici le nom des ligues que vos éditeurs peuvent éditer.
+398=Sélectionnez ici les noms des ligues que cet administrateur adjoint est autorisé à modifier. Il n'a pas accès aux autres ligues.
 399=Visualisation de départ
 400=Que doit être montré lors de la sélection d'une ligue?
 401=Envoyer toutes les ligues en une fois
@@ -414,7 +414,7 @@
 413=Retourner au classement de cette journée
 414=Quelle position dans le classement voulez-vous définir pour cette équipe?
 415=Sauvegarder ce classement manuel
-416=Vous ne pouvez pas avoir plusieurs équipes à la même place du classement.\nAucune sauvegarde n'a été faite.
+416=Vous ne pouvez pas avoir plusieurs équipes à la même place du classement. Aucune sauvegarde n'a été faite.
 417=Match pour la 3ème place
 418=Y-a-t'il une petite finale (Match pour la 3ème place)?
 419=Finale:

@@ -122,7 +122,7 @@
 121=Vendég gólok beállítása (0 - 9999, _ vagy X)
 122=Meccs kezdési dátuma (nn.hh.éééé formátumban - ha szükséges, kezd? '0'-ák)
 123=Meccs kezdési időpontja (óó:pp formátumban - ha szükséges, kezdő '0'-ák) - ha üresen hagyja, az alapértelmezett kezdési időpont lesz bállítva mentéskor
-124=Csapat
+124=UNOCCUPY
 125=Csapat neve (max. 32 karakter)
 126=Csapatnév rövidítése (max. 5 karakter)
 127=Csapatnév / röv.
@@ -337,7 +337,7 @@
 336=Hozzáad egy csapatot
 337=Hozzáad egy új csapatot a bajnoksághoz
 338=Fordulók és meccsek száma
-339=Itt megváltoztathatja a fordulók és a fordulónkénti meccsek számát.\nFIGYELEM! Ez adatvesztést okozhat!
+339=Itt megváltoztathatja a fordulók és a fordulónkénti meccsek számát. FIGYELEM! Ez adatvesztést okozhat!
 340=Fordulók és meccsek száma
 341=Az LMO admin egy bajnokságot küld
 342=Itt a kért bajnokság.
@@ -396,7 +396,7 @@
 395=Gólkülönbség előtt a több lőtt gól számít
 396=Pontazonosság esetén kívánja, hogy a több lőtt gólt számítson (pl. körbeverésnél)?
 397=Engedélyezett bajnokságok
-398=Adja meg az admin asszisztens által szerkeszthető bajnokságok neveit (Kérem vesszővel válassza el és ne adjon meg elérési utakat pl. "1l_2002-03,dp_2002-03&quot". A bajnokságoknak már léteznie kell a szerveren!
+398=Itt válassza ki azoknak a ligáknak a nevét, amelyeket ez a segédadminisztrátor szerkeszthet. Nincs hozzáférése más ligákhoz.
 399=Kezdőképernyő
 400=Mi jelenjen meg először egy bajnokság indításakor?
 401=Elküldi az összes bajnokságot
@@ -414,7 +414,7 @@
 413=Forduló helyezéseinek megtekintése
 414=Melyik pozícióba kívánja tenni ezt a csapatot?
 415=Elmenti a beállított helyezéseket
-416=Nem lehet egynél több csapat ugyanazon pozícióban.\nNem volt mentés.
+416=Nem lehet egynél több csapat ugyanazon pozícióban. Nem volt mentés.
 417=Meccs a 3. helyért
 418=Lesz "kisdöntő" (meccs a 3. helyért)?
 419=Nagydöntő (a címért):

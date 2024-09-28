@@ -122,7 +122,7 @@
 121=Settings for Guest Goals ((0 - 9999, _ or X)
 122=Starting Date of Match (Format DD.MM.YYYY - if needed, with leading zeroes)
 123=Starting Time of Match (Format DD.MM.YYYY - if needed, with leading zeroes) Leave empty to use the Standard Starting Time
-124=Team
+124=UNOCCUPY
 125=Team Name (max. 64 chars)
 126=Abbrevation of the Team Name (max. 5 chars)
 127=Team name (long, short, abbrevation)
@@ -337,7 +337,7 @@
 336=Add new Team
 337=Add a new Team
 338=Number of Matchdays and Matches
-339=Here you can set the number of Matchdays, and the number of Matches pro Matchday.\nWARNING: Data could be lost!
+339=Here you can set the number of Matchdays, and the number of Matches pro Matchday.WARNING: Data could be lost!
 340=Number of Matchdays and Matches
 341=LMO-Admin League Dispatch
 342=Here is the League you've asked for
@@ -396,7 +396,7 @@
 395=Goals Scored counts before Goal Difference
 396=Do the total Goals Scored count more when Teams have the same amount of Points as the Goal Difference
 397=Leagues available
-398=Enter here the League names that this Help-Admin can edit.
+398=Here select the names of the leagues that this assistant admin is allowed to edit. He has no access to other leagues.
 399=Start Display
 400=What should be shown when opening a League
 401=Send all Leagues at once
@@ -414,7 +414,7 @@
 413=Go to the Table of this Matchday
 414=Which place in the Table should this Team become
 415=Save the Table Manually
-416=It is not allowed to have more than 1 Team on same Table!\nPlacing It will not be saved
+416=It is not allowed to have more than 1 Team on same Table! Placing It will not be saved
 417=Match for the 3rd place
 418=Will there be a small Final played (Match for 3rd place)
 419=Final (for the Title):

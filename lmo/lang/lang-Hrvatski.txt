@@ -122,7 +122,7 @@
 121=Postaviti golove kao gost (0 - 9999, _ opp. X)
 122=Datum odigravanja susreta (Format DD.MM.GGGG)
 123=Sat odigravanja susreta(Format HH:MM)  - Ako ostavite prazno bit ce ubačeno automatski sat početka standard
-124=Momčad
+124=UNOCCUPY
 125=Ime Momčadi (max. 32 znaka)
 126=Skrćenica  (max. 5 Zeichen)Sigla
 127=Ime momčadi/-skraćenica
@@ -337,7 +337,7 @@
 336=Dodaj tim (momčad)
 337=Dodajte novu momčad prvenstvu
 338=Broj kola i susreta
-339=Ovdje se može izmjeniti broj kola i broj susreta u kolu.\nUPOZORENJE:ovo mo$e dovesti do gubljenja podataka
+339=Ovdje se može izmjeniti broj kola i broj susreta u kolu. UPOZORENJE:ovo mo$e dovesti do gubljenja podataka
 340=Broj kola i njihovih susreta
 341=LMO-Administrator šalje prvenstva
 342=Izvolite zatraženo prvenstvo.
@@ -396,7 +396,7 @@
 395=Postignuti golovi računaju se prije gol razlike
 396=Ako je neriješeno, računaju li se postignuti golovi više od gol-razlike (npr. u kuglanju)?
 397=Otvorena prvenstva
-398=Ovdje unesite nazive liga koje ovaj pomoćni administrator smije uređivati ​​(odvojite ih zarezom i bez puta ili proširenja imena, npr. "1l_2001-02,dp_2001-02"). Navedene lige moraju već postojati na poslužitelju!
+398=Ovdje odaberite nazive liga koje ovaj pomoćni administrator smije uređivati. On nema pristup drugim ligama.
 399=startni pregled
 400=Sta treba biti prikazano poslije otvoranja prvenstva ?
 401=Pošalji sve lige odjednom
@@ -414,7 +414,7 @@
 413=Idi na ljestvicu ovog kola
 414=Koje mjesto na ljestvici treba biti dodiljeno momčadi
 415=Pohranti ručno ljestvicu
-416=Nije dopusteno da više od jedne momčadi ima isto mjesto na ljestvici.\nniste jos pohranili
+416=Nije dopusteno da više od jedne momčadi ima isto mjesto na ljestvici. Niste jos pohranili
 417=Razigravanje za 3 ce mjesto
 418=Biti ce odigrano malo finale (razigravanje za 3 će mjesto) ?
 419=Veliko finale /Završnica (za naslova)

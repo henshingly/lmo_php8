@@ -99,7 +99,7 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
                 case "kurve1":            if(!isset($stat1))$stat1=$wert;break;
                 case "kurve2":            if(!isset($stat2))$stat2=$wert;break;
               }
-            }else{
+            } else {
               if($schl=="KlFin"){         $klfin=$wert;}
               if($schl=="playdown"){      $playdown=$wert;}
               if($schl=="playoffmode"){   $playoffmode=$wert;}
@@ -124,7 +124,7 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
       if(!isset($titel)){                      $titel="No Name";}
       if(!isset($dats)){                       $dats=1;}
       if(!isset($datm)){                       $datm=0;}
-      if(!isset($datc)){                       if((isset($dats)) || (isset($datm))){$datc=1;}else{$datc=0;}}
+      if(!isset($datc)){                       if((isset($dats)) || (isset($datm))){$datc=1;} else {$datc=0;}}
       if((!isset($dats)) || (!isset($datm))){  $datc=0;}
       if(!isset($datf)){                       $datf=$defdateformat;}
       if(!isset($urlt)){                       $urlt=1;}
@@ -169,7 +169,7 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
         else{                                  $nametor=$text[38];}
         if(!isset($einhinrueck)){              $einhinrueck=1;}
         if(!isset($einheimausw)){              $einheimausw=1;}
-      }else{
+      } else {
         if(!isset($anzteams)){                 $anzteams    = 16;}
         if(!isset($klfin)){                    $klfin       = 0;}
         if(empty($playdown)){                  $playdown    = 0;}
@@ -219,7 +219,7 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
           $msieg[$i] = array_pad(array("0"),40,"0");
           $mterm[$i] = array_pad(array("0"),40,"0");
         }
-      }else{
+      } else {
         $datum1 = array_pad($array,7,"");
         $datum2 = array_pad($array,7,"");
         $modus = array_pad(array("1"),7,"1");
@@ -303,27 +303,27 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
           if($lmtype==0) {
             switch ($op8) {
               case "GA":
-              $goala[$op3][$op4]=$dum[2];
-              if($goala[$op3][$op4]==""){$goala[$op3][$op4]=-1;}
-              elseif($goala[$op3][$op4]=="-1"){$goala[$op3][$op4]="_";}
-              elseif($goala[$op3][$op4]=="-2"){$msieg[$op3][$op4]=1;$goala[$op3][$op4]="0";}
+                $goala[$op3][$op4]=$dum[2];
+                if($goala[$op3][$op4]==""){$goala[$op3][$op4]=-1;}
+                elseif($goala[$op3][$op4]=="-1"){$goala[$op3][$op4]="_";}
+                elseif($goala[$op3][$op4]=="-2"){$msieg[$op3][$op4]=1;$goala[$op3][$op4]="0";}
               break;
               case "GB":
-              $goalb[$op3][$op4]=$dum[2];
-              if($goalb[$op3][$op4]==""){$goalb[$op3][$op4]=-1;}
-              elseif($goalb[$op3][$op4]=="-1"){$goalb[$op3][$op4]="_";}
-              elseif($goalb[$op3][$op4]=="-2"){$msieg[$op3][$op4]=2;$goalb[$op3][$op4]="0";}
+                $goalb[$op3][$op4]=$dum[2];
+                if($goalb[$op3][$op4]==""){$goalb[$op3][$op4]=-1;}
+                elseif($goalb[$op3][$op4]=="-1"){$goalb[$op3][$op4]="_";}
+                elseif($goalb[$op3][$op4]=="-2"){$msieg[$op3][$op4]=2;$goalb[$op3][$op4]="0";}
               break;
               case "SP":
-              if($spez==1){
-                $mspez[$op3][$op4]=$dum[2];
-                if($mspez[$op3][$op4]==0){$mspez[$op3][$op4]="&nbsp;";}
-                elseif($mspez[$op3][$op4]==2){$mspez[$op3][$op4]=$text[0];}
-                elseif($mspez[$op3][$op4]==1){$mspez[$op3][$op4]=$text[1];}
-              }
+                if($spez==1){
+                  $mspez[$op3][$op4]=$dum[2];
+                  if($mspez[$op3][$op4]==0){$mspez[$op3][$op4]="&nbsp;";}
+                  elseif($mspez[$op3][$op4]==2){$mspez[$op3][$op4]=$text[0];}
+                  elseif($mspez[$op3][$op4]==1){$mspez[$op3][$op4]=$text[1];}
+                }
               break;
               case "ET":
-              if ($dum[2]==3){$msieg[$op3][$op4]=3;}
+                if ($dum[2]==3){$msieg[$op3][$op4]=3;}
               break;
               case "NT":$mnote[$op3][$op4]=$dum[2];break;
               case "BE":$mberi[$op3][$op4]=$dum[2];break;
@@ -334,20 +334,20 @@ if(!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsad
             if($dum[1]=="MO"){$modus[$op3]=$dum[2];}
             switch ($op8) {
               case "GA":
-              $goala[$op3][$op6][$op7]=$dum[2];
-              if($goala[$op3][$op6][$op7]==""){$goala[$op3][$op6][$op7]=-1;}
-              elseif($goala[$op3][$op6][$op7]=="-1"){$goala[$op3][$op6][$op7]="_";}
+                $goala[$op3][$op6][$op7]=$dum[2];
+                if($goala[$op3][$op6][$op7]==""){$goala[$op3][$op6][$op7]=-1;}
+                elseif($goala[$op3][$op6][$op7]=="-1"){$goala[$op3][$op6][$op7]="_";}
               break;
               case "GB":
-              $goalb[$op3][$op6][$op7]=$dum[2];
-              if($goalb[$op3][$op6][$op7]==""){$goalb[$op3][$op6][$op7]=-1;}
-              elseif($goalb[$op3][$op6][$op7]=="-1"){$goalb[$op3][$op6][$op7]="_";}
+                $goalb[$op3][$op6][$op7]=$dum[2];
+                if($goalb[$op3][$op6][$op7]==""){$goalb[$op3][$op6][$op7]=-1;}
+                elseif($goalb[$op3][$op6][$op7]=="-1"){$goalb[$op3][$op6][$op7]="_";}
               break;
               case "SP":
-              $mspez[$op3][$op6][$op7]=$dum[2];
-              if($mspez[$op3][$op6][$op7]==0){$mspez[$op3][$op6][$op7]="&nbsp;";}
-              elseif($mspez[$op3][$op6][$op7]==2){$mspez[$op3][$op6][$op7]=$text[0];}
-              elseif($mspez[$op3][$op6][$op7]==1){$mspez[$op3][$op6][$op7]=$text[1];}
+                $mspez[$op3][$op6][$op7]=$dum[2];
+                if($mspez[$op3][$op6][$op7]==0){$mspez[$op3][$op6][$op7]="&nbsp;";}
+                elseif($mspez[$op3][$op6][$op7]==2){$mspez[$op3][$op6][$op7]=$text[0];}
+                elseif($mspez[$op3][$op6][$op7]==1){$mspez[$op3][$op6][$op7]=$text[1];}
               break;
               case "NT":$mnote[$op3][$op6][$op7]=$dum[2];break;
               case "BE":$mberi[$op3][$op6][$op7]=$dum[2];break;

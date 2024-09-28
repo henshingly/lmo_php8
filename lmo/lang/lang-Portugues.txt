@@ -122,7 +122,7 @@
 121=Ajustamento dos golos da equipa visitada (0 - 9999, _ ou X)
 122=Data do jogo (formato dd.mm.aaaa - insira os '0's se necessário)
 123=Hora do joho (formato hh:mm - insira os '0's se necessário) - se deixar esta casinha em branco, o sistema irá aplicar a hora standet dos jogos
-124=Equipa
+124=UNOCCUPY
 125=Nome da equipa (max. 32 caracteres)
 126=Abreviatura para esta equipa (max. 5 caracteres)
 127=Nome da equipa / abreviatura.
@@ -337,7 +337,7 @@
 336=Adicionar equipa
 337=Adicionar nova equipa ao campeonato
 338=Número de jogos e jornadas
-339=Here you can change the number of game days and the number of matches per game day.\nATTENTION! This might cause a loss of data!
+339=Here you can change the number of game days and the number of matches per game day. ATTENTION! This might cause a loss of data!
 340=Número de jogos e jornadas
 341=LMO admin enviando campeonato
 342=Aqui está o campeonato pedido
@@ -396,7 +396,7 @@
 395=Number of goals scored outweighs +/-.
 396=Do the number of goals scored outweigh +/- if teams have equal points (e.g. skittle)?
 397=Permitir campeonatos
-398=Enter the names of the leagues the assistant admin may edit (Please separate with commas and don't put paths, e.g. "1l_2002-03,dp_2002-03"). The leagues must exist on the server already!
+398=Selecione aqui os nomes das ligas que este administrador assistente tem permissão para editar. Ele não tem acesso a outras ligas.
 399=Start up screen
 400=What shall be shown first when starting a league?
 401=Enviar todas os campeonatos de uma vez
@@ -414,7 +414,7 @@
 413=Ver classificação para esta jornada
 414=What rank do you want to put this team on?
 415=Gravar manualmente a classificação ordenada
-416=There mustn't be more than one team on a league postition.\nNot saved yet.
+416=There mustn't be more than one team on a league postition. Not saved yet.
 417=Jogo para o 3º lugar
 418=Will there be a "small final" (match for 3rd place)?
 419=Final (para o Título):
