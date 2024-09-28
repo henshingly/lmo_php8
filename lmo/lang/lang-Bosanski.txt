@@ -590,6 +590,12 @@
 807=Mod.: 2-3-2
 808=Tim A prvo ima 2 utakmice kod kuće, zatim 3 utakmice u gostima i onda opet 2 utakmice kod kuće dok prvi tim ne pobijedi u 4 utakmice.
 809=Odabir načina rada
+1000=Sport
+1001=drugo
+1002=Pikado
+1003=Rukomet
+1004=Fudbal
+1005=Hokej na ledu
 2000=Volleyball (Odbojka)
 2001=Volleyball Version (odbojka vrzija) by vbfan
 2020=Poen

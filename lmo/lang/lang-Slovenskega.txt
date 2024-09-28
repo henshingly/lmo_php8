@@ -590,6 +590,12 @@
 807=Mod.: 2-3-2
 808=Ekipa A ima najprej 2 tekmi doma, nato 3 tekme v gosteh in nato spet 2 tekmi doma, dokler prva ekipa ne zmaga 4 iger.
 809=Izbira načina
+1000=Šport
+1001=drugo
+1002=Pikado
+1003=Rokomet
+1004=Nogomet
+1005=Hokej na ledu
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Žoge

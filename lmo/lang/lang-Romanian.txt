@@ -590,6 +590,12 @@
 807=Mod.: 2-3-2
 808=Echipa A are mai întâi 2 jocuri acasă, apoi 3 în deplasare și apoi din nou 2 jocuri acasă până când prima echipă a câștigat 4 jocuri.
 809=Selectarea modului
+1000=Sport
+1001=altele
+1002=Darts
+1003=Handbal
+1004=Fotbal
+1005=Hochei pe gheață
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Mingi

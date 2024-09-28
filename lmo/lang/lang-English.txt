@@ -590,6 +590,12 @@
 807=Mod.: 2-3-2
 808=Team A first has 2 home games, then 3 away games and then 2 home games again until the first team has won 4 games.
 809=Mode selection
+1000=Sport
+1001=other
+1002=Darts
+1003=Handball
+1004=Football
+1005=Ice hockey
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Balls

@@ -590,6 +590,12 @@
 807=Mod.: 2-3-2
 808=Tým A má nejprve 2 domácí zápasy, poté 3 zápasy venku a poté znovu 2 domácí zápasy, dokud první tým nevyhraje 4 zápasy.
 809=Výběr režimu
+1000=Sport
+1001=jiné
+1002=Šipky
+1003=Házená
+1004=Fotbal
+1005=Lední hokej
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Míče

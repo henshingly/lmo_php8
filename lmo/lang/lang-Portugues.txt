@@ -590,6 +590,12 @@
 807=Mod.: 2-3-2
 808=O time A primeiro tem 2 jogos em casa, depois 3 jogos fora e depois 2 jogos em casa novamente até que o primeiro time ganhe 4 jogos.
 809=Seleção de modo
+1000=Desporto
+1001=outros
+1002=Dardos
+1003=Handebol
+1004=Futebol
+1005=Hóquei no gelo
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Bolas

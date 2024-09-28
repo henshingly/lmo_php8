@@ -590,6 +590,12 @@
 807=Mod.: 2-3-2
 808=Team A heeft eerst 2 thuiswedstrijden, daarna 3 uitwedstrijden en daarna weer 2 thuiswedstrijden totdat het eerste team 4 wedstrijden heeft gewonnen.
 809=Modusselectie
+1000=Sport
+1001=overig
+1002=Darts
+1003=Handbal
+1004=Voetbal
+1005=IJshockey
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Ballen

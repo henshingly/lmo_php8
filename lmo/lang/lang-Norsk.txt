@@ -590,6 +590,12 @@
 807=Mod.: 2-3-2
 808=Lag A har først 2 hjemmekamper, deretter 3 bortekamper og så 2 hjemmekamper igjen til førstelaget har vunnet 4 kamper.
 809=Modusvalg
+1000=Sport
+1001=annet
+1002=Dart
+1003=Håndball
+1004=Fotball
+1005=Ishockey
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Baller

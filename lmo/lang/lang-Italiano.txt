@@ -590,6 +590,12 @@
 807=Mod.: 2-3-2
 808=La squadra A gioca prima 2 partite in casa, poi 3 in trasferta e poi ancora 2 partite in casa finché la prima squadra non vince 4 partite.
 809=Selezione modalità
+1000=Sport
+1001=altro
+1002=Freccette
+1003=Pallamano
+1004=Calcio
+1005=Hockey su ghiaccio
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Palle
