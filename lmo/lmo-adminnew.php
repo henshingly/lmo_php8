@@ -165,6 +165,23 @@ if ($newpage == 3) {
       }
     } else {
       $modus[$i-1] = isset($_POST["xmod".$i])?$_POST["xmod".$i]:"1";
+      if($anzteams==24) {
+         switch ($i) {
+           case 1:
+           case 2:
+             $anzsp=16;
+             break;
+           case 3:
+             $anzsp=8;
+             break;
+           case 4:
+             $anzsp=4;
+             break;
+           case 5:
+             $anzsp=2;
+             break;
+         }
+      }
       $anzsp = $anzsp/2;
       for($j = 1; $j <= $anzsp; $j++) {
         $teama[$i-1][$j-1] = "0";
