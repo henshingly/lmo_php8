@@ -71,23 +71,50 @@ while($files = readdir($verz)){
       if ($ligadatei[$liga_counter]['aktueller_spieltag'] != ""){
         if ($ligadatei[$liga_counter]['rundenbezeichnung'] != $text[2]){  //Pokal
           $t5 = strlen(decbin($ligadatei[$liga_counter]['anz_teams']));
+          $Number_of_teams = $ligadatei[$liga_counter]['anz_teams'];
           switch ($ligadatei[$liga_counter]['aktueller_spieltag']) {
+            case ($t5):
+              if ($Number_of_teams == 24) {  // Falls das KO-Turnier mit 24 Mannschaften erstellt wurde - Finale
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[374];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
+              }
+            break;
             case ($t5 - 1):
-              $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[374];
-              $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
-              break;
+              if ($Number_of_teams == 24) {  // Falls das KO-Turnier mit 24 Mannschaften erstellt wurde - vierte Runde (Halbfinale)
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[373];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
+              } else {
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[374];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
+              }
+            break;
             case ($t5 - 2):
-              $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[373];
-              $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
-              break;
+              if ($Number_of_teams == 24) {  // Falls das KO-Turnier mit 24 Mannschaften erstellt wurde - dritte Runde (Viertelfinale)
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[372];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
+              } else {
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[373];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
+              }
+            break;
             case ($t5 - 3):
-              $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[372];
-              $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
-              break;
+              if ($Number_of_teams == 24) {  // Falls das KO-Turnier mit 24 Mannschaften erstellt wurde - zweite Runde (Achtelfinale)
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[371];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
+              } else {
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[372];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
+              }
+            break;
             case ($t5 - 4):
-              $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[371];
-              $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
-              break;
+              if ($Number_of_teams == 24) {  // Falls das KO-Turnier mit 24 Mannschaften erstellt wurde - erste Runde (Runde 1)
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[370];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = '1';
+              } else {
+                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[371];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
+              }
+            break;
           }
         }
       } else {
@@ -133,7 +160,7 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction'] 
   <tbody>
 <?php foreach($ligadatei as $liga){?>
     <tr onMouseOver="this.className='lmoBackMarkierung';" onMouseOut="this.className=''">
-      <td class="nobr" align="center"><?php echo  HTML_smallLigaIcon($liga['file_name'],"alt=''","");?></td>
+      <td class="nobr" align="center"><?php echo HTML_smallLigaIcon($liga['file_name'],"alt=''","");?></td>
       <td class="nobr" align="left"><a href="<?php echo $addi.$subdir.$liga['file_name']?>"><?php echo $liga['liga_name']?></a></td>
 <?php
   if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0) {?>
