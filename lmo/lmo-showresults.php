@@ -22,7 +22,7 @@
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <th colspan="<?php echo $breite; ?>" align="left">
-    	<?php
+<?php
 echo $st.". ".$text[2];
 if($dats==1) {
   if($datum1[$st-1]!="") {
