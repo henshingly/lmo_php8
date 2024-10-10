@@ -52,7 +52,7 @@ if ($_SESSION['lmouserok']==2) {
           }
         }
       }  //Ende Hilfsadmin
-      $lmo_admin_data[$save][3]=implode(',',$lmo_helfer_ligen_neu); //Ligen hinzuf¸gen
+      $lmo_admin_data[$save][3]=implode(',',$lmo_helfer_ligen_neu); //Ligen hinzuf√ºgen
       //Erweiterter Hilfsadmin
       if (trim($_POST["xadmin_rang".$save])==1 && isset($_POST["xadmin_erweitert".$save])) {
         $lmo_admin_data[$save][4]="1";
@@ -66,7 +66,7 @@ if ($_SESSION['lmouserok']==2) {
     array_unshift($lmo_admin_data,$main_admin);
     require(PATH_TO_LMO."/lmo-saveauth.php");
     require(PATH_TO_LMO."/lmo-loadauth.php");
-  }elseif ($del>=0) {  //User lˆschen
+  }elseif ($del>=0) {  //User l√∂schen
     $lmo_admin_data[$del]='';
     require(PATH_TO_LMO."/lmo-saveauth.php");
     require(PATH_TO_LMO."/lmo-loadauth.php");
@@ -78,7 +78,7 @@ if ($_SESSION['lmouserok']==2) {
       }
     }
     if (empty($admin_dupe) && !empty($_POST["xadmin_name"]) && !empty($_POST["xadmin_pass"])){
-      $lmo_admin_data[]=array(trim($_POST["xadmin_name"]),password_hash($_POST["xadmin_pass"], PASSWORD_BCRYPT),1,'','');  //Neue User sind zun‰chst immer Hilfsadmins ohne Ligen
+      $lmo_admin_data[]=array(trim($_POST["xadmin_name"]),password_hash($_POST["xadmin_pass"], PASSWORD_BCRYPT),1,'','');  //Neue User sind zun√§chst immer Hilfsadmins ohne Ligen
       require(PATH_TO_LMO."/lmo-saveauth.php");
       require(PATH_TO_LMO."/lmo-loadauth.php");
       $show=count($lmo_admin_data)-1;
@@ -207,7 +207,7 @@ if ($_SESSION['lmouserok']==2) {
 </table><?php
 }
 
-//Sortierfunktion f¸r die Admins
+//Sortierfunktion f√ºr die Admins
   function sort_admin ($admin_a, $admin_b) {
     return strnatcasecmp($admin_a[0], $admin_b[0]);
   }?>
