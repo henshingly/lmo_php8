@@ -28,7 +28,7 @@ if($_SESSION['lmouserok']==2){
     flock($datei,LOCK_EX);
     fwrite($datei,"<?php exit(); ?>\n");
     foreach($lmo_admin_data as $lmo_admin) {
-      if (count($lmo_admin)>1) fputs($datei,implode("|",$lmo_admin)."\n");
+      if (is_array($lmo_admin) && count($lmo_admin)>1) fputs($datei,implode("|",$lmo_admin)."\n");
     }
     flock($datei,LOCK_UN);
     echo getMessage($text[138]);

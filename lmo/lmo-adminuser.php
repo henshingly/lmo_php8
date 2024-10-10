@@ -31,7 +31,7 @@ if ($_SESSION['lmouserok']==2) {
 
   if ($save>=0) {
     if(isset($_POST["xadmin_name".$save]) && isset($_POST["xadmin_pass".$save]) && isset($_POST["xadmin_rang".$save])) {
-      $lmo_admin_data[$save]=array(trim($_POST["xadmin_name".$save]),trim($_POST["xadmin_pass".$save]),trim($_POST["xadmin_rang".$save]));
+      $lmo_admin_data[$save]=array(trim($_POST["xadmin_name".$save]),password_hash($_POST["xadmin_pass".$save], PASSWORD_BCRYPT),trim($_POST["xadmin_rang".$save]));
       $lmo_helfer_ligen_neu=array();
       if (trim($_POST["xadmin_rang".$save])==1) {  //Hilfsadmin -> Ligen herausfinden
         $lmo_helfer_ligen=isset($_POST["xhelfer_ligen".$save]) && count($_POST["xhelfer_ligen".$save])>0?$_POST["xhelfer_ligen".$save]:array();
@@ -78,7 +78,7 @@ if ($_SESSION['lmouserok']==2) {
       }
     }
     if (empty($admin_dupe) && !empty($_POST["xadmin_name"]) && !empty($_POST["xadmin_pass"])){
-      $lmo_admin_data[]=array(trim($_POST["xadmin_name"]),trim($_POST["xadmin_pass"]),1,'','');  //Neue User sind zunächst immer Hilfsadmins ohne Ligen
+      $lmo_admin_data[]=array(trim($_POST["xadmin_name"]),password_hash($_POST["xadmin_pass"], PASSWORD_BCRYPT),1,'','');  //Neue User sind zunächst immer Hilfsadmins ohne Ligen
       require(PATH_TO_LMO."/lmo-saveauth.php");
       require(PATH_TO_LMO."/lmo-loadauth.php");
       $show=count($lmo_admin_data)-1;
@@ -138,7 +138,7 @@ if ($_SESSION['lmouserok']==2) {
           </tr>
           <tr>
             <td align="right"><?php echo $text[323]?></td>
-            <td align="left" colspan="2"><input class="lmo-formular-input" type="text" name="xadmin_pass<?php echo $show?>" size="16" maxlength="32" value="<?php echo $lmo_admin[1]?>"></td>
+            <td align="left" colspan="2"><input class="lmo-formular-input" type="text" name="xadmin_pass<?php echo $show?>" size="16" maxlength="32" value=""></td>
           </tr>
           <tr>
             <td align="right" rowspan="2"><?php echo $text[324]?></td>
