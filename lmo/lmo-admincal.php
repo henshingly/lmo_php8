@@ -23,7 +23,7 @@ isset($_GET['abs'])?$abs=$_GET['abs']:$abs="";
 isset($_GET['feld'])?$feld=$_GET['feld']:$feld="";
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-					"http://www.w3.org/TR/html4/loose.dtd">
+                "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="de">
 <head>
 <title>LMO Admin</title>

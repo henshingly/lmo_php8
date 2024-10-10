@@ -84,7 +84,8 @@ if ($filepointer = fopen($filename, "r+b")) {
         $begin = 0;
     }
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="de">
   <head>
     <title><?php echo $text['spieler'][18]?></title>
