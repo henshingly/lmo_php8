@@ -45,7 +45,7 @@ if($action=="admin"){
                 </tr>
                 <tr>
                   <td align="right"><acronym title="<?php echo $text[309] ?>"><?php echo " ".$text[308]; ?></acronym></td>
-                  <td align="left"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value=""></td>
+                  <td align="left"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value="<?php echo $_SESSION['lmouserpass']; ?>"></td>
                 </tr>
                 <tr>
                   <td align="left">&nbsp;</td>
