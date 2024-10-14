@@ -138,7 +138,7 @@ if ($_SESSION['lmouserok']==2) {
           </tr>
           <tr>
             <td align="right"><?php echo $text[308]?></td>
-            <td align="left" colspan="2"><input class="lmo-formular-input" type="text" name="xadmin_pass<?php echo $show?>" size="16" maxlength="32" value=""></td>
+            <td align="left" colspan="2"><input class="lmo-formular-input" type="text" name="xadmin_pass<?php echo $show?>" size="16" maxlength="32" value="<?php echo $lmo_admin[1]?>"></td>
           </tr>
           <tr>
             <td align="right" rowspan="2"><?php echo $text[324]?></td>
