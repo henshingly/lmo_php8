@@ -340,7 +340,7 @@ if($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
         <tr>
           <td align="right"><?php echo $text[516]; ?></td>
           <td align="right"><?php echo $text[4006]; ?></td>
-          <td align="center"><?php echo $text[4008]; ?></td>
+          <td align="center"><?php echo $text[200]; ?></td>
           <td align="left"><?php echo $text[4007]; ?></td>
         </tr>
         <tr>
@@ -468,7 +468,7 @@ if($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
                 <td class="lmoTabelleUefa"><?php echo nl2br($team_max_ungeschlagen)?></td>
               </tr>
               <tr>
-                <th><?php echo $text[4030]?></th>
+                <th><?php echo $text[200]?></th>
                 <td align="right"><strong><?php echo $akt_unentschieden?></strong>&nbsp;</td>
                 <td><?php echo nl2br($team_akt_unentschieden)?></td>
                 <td align="right"><strong><?php echo $max_unentschieden?></strong>&nbsp;</td>

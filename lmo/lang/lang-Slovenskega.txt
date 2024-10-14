@@ -38,7 +38,7 @@
 037=toč.
 038=goli
 039=razl.
-040=Lestvica
+040=Kopirajte naslednjo kodo v svoj "config/lmo-auth.php"
 041=Doma
 042=Na tujem
 043=Pojdi na tabelo prejšnjega kola
@@ -122,7 +122,7 @@
 121=Nastavitev zadetkov gostujočega moštva (0 - 9999, _ oder X)
 122=Datum začetka tekme (format dd.mm.yyyy - če je potrebno z vodečo '0')
 123=Čas začetka tekme (format hh:mm - če je potrebno z vodečo '0') - če polje pustiš prazno, bo pri shranjevanju uporabljen privzet čas začetka tekme
-124=UNOCCUPY
+124=Spremeni v skrbniško področje
 125=Ime moštva (max. 32 znakov)
 126=Okrajšava za moštvo (max. 5 znakov)
 127=Ime moštva/-okrajšava
@@ -320,8 +320,8 @@
 319=Možnosti
 320=Osnovne nastavitve sistema
 321=Administriranje uporabnikov
-322=Uporabniško ime
-323=Geslo
+322=Vnesite prejšnje podatke za skrbniško področje
+323=Ustvari zgoščeno vrednost
 324=Dostopna dovoljenja
 325=Pomoč administratorju (vnos rezultatov)
 326=Administrator (polni dostop)
@@ -408,9 +408,9 @@
 407=Omogoči ročno sortiranje tabel
 408=Ali želiš sortirati table ročno, ko pride do sprememb? (aktiviraj funkcijo samo ko jo RESNIČNO potrebuješ!)
 409=Tukaj lahko ponovno pregledaš tabelo in jo presortiraš, če je potrebno
-410=Lestvica
+410=Tukaj preklopite nazaj na prijavno območje za skrbnika
 411=Pojdi nazaj na pregled rezultatov
-412=Rezultati
+412=Kopiraj v odložišče
 413=pojdi na lestvico tega kola
 414=Which league position do you want tp put this team on?
 415=shrani ročno sortirano lestvico
@@ -448,7 +448,7 @@
 447=News-ticker
 448=Vnosna polja (admin-območje)
 449=Gumbi (admin-območje)
-450=Background barve za tabelo
+450=Ustvari zgoščeno vrednost gesla za LMO
 451=Prvak
 452=sodeluje v Ligi prvakov
 453=sodeluje v kvalifikacijah za ligo prvakov
@@ -591,11 +591,12 @@
 808=Ekipa A ima najprej 2 tekmi doma, nato 3 tekme v gosteh in nato spet 2 tekmi doma, dokler prva ekipa ne zmaga 4 iger.
 809=Izbira načina
 1000=Šport
-1001=drugo
-1002=Pikado
-1003=Rokomet
-1004=Nogomet
-1005=Hokej na ledu
+1001=Vrsta lige (še ne deluje, razen za pikado)
+1002=drugo
+1003=Pikado
+1004=Rokomet
+1005=Nogomet
+1006=Hokej na ledu
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Žoge
@@ -612,7 +613,7 @@
 4004=Igra brezplačna
 4006=Domače zmage
 4007=Zmage v gosteh
-4008=pripraviti
+4008=Kliknite tukaj, da ustvarite zgoščeno vrednost
 4009=Statistični podatki o ligi
 4010=Domači goli
 4011=Gol v gosteh
@@ -634,7 +635,7 @@
 4027=Serija
 4028=zmagal
 4029=Brez poraza
-4030=pripraviti
+4030=FREE
 4031=Brez zmage
 4032=Izgubljeno
 4033=Trenutno

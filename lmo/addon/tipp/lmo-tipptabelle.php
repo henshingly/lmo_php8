@@ -120,7 +120,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php 
   if($nick!=""){ ?>
         <caption><?php 
-    if($tabtype!="0"){?><a href="<?php echo $addt1."0"?>" title="<?php echo $text[27]?>"><?php echo $text[40]?></a><?php }else{echo $text[40];}?>&nbsp;<?php 
+    if($tabtype!="0"){?><a href="<?php echo $addt1."0"?>" title="<?php echo $text[27]?>"><?php echo $text[16]?></a><?php }else{echo $text[16];}?>&nbsp;<?php 
     if($tabtype!="1"){?><a href="<?php echo $addt1."1"?>" title="<?php echo $text[28]?>"><?php echo $text[41]?></a><?php }else{echo $text[41];}?>&nbsp;<?php 
     if($tabtype!="2"){?><a href="<?php echo $addt1."2"?>" title="<?php echo $text[29]?>"><?php echo $text[42]?></a><?php }else{echo $text[42];}?>&nbsp;<?php 
     if ($einhinrueck==1) {

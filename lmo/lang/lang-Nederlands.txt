@@ -38,7 +38,7 @@
 037=PNT
 038=VR:TEG
 039=SLD
-040=Stand
+040=Kopieer de volgende code naar uw "config/lmo-auth.php"
 041=Thuis
 042=Uit
 043=naar de stand van de vorige speelronde
@@ -122,7 +122,7 @@
 121=Instelling uitdoelpunten (0 - 9999, _ zonder X)
 122=Aanvangsdatum van de wedstrijd (Formaat DD.MM.JJJJ - dagen en maanden tweecijferig)
 123=Aanvangstijd van de wedstrijd (Formaat HH:MM)
-124=UNOCCUPY
+124=Ga naar het admin-gedeelte
 125=Verenigingsnaam (max. 32 tekens)
 126=Afkorting van de verenigingsnaam (max. 5 tekens)
 127=Verenigingsnaam / afkorting
@@ -320,8 +320,8 @@
 319=Opties
 320=Globale opties van het script bewaren
 321=Gebruikersbeheer
-322=Gebruikersnaam
-323=Paswoord
+322=Voer uw eerdere gegevens in voor het admin-gedeelte
+323=Genereer hashwaarde
 324=Rechten
 325=Hulp-Admin (Uitslagenupdate)
 326=Admin (Volledige Toegang)
@@ -408,9 +408,9 @@
 407=Handmatig stand sorteren
 408=Handmatig stand sorteren (deze functie alleen activeren indien noodzakelijk)?
 409=Hier kunt u de stand controleren of opnieuw sorteren
-410=Stand
-411=Terug naar het uitslagen overzicht
-412=Uitslagen
+410=Hier schakelt u terug naar het inloggedeelte voor de beheerder
+411=Ga hier terug naar het resultatenoverzicht
+412=Kopieer naar klembord
 413=naar de stand van deze speeldag
 414=Welke plaats krijgt dit team in de stand van competitie?
 415=Handmatig gesorteerde stand opslaan
@@ -448,7 +448,7 @@
 447=Nieuws-banner
 448=Invoervelden (Beheer-sectie)
 449=Knoppen(Beheer-sectie)
-450=Achtergrondkleuren voor de stand
+450=Genereer de wachtwoord-hash voor de LMO
 451=Kampioen
 452=Champions-League-deelnemers
 453=Champions-League-gekwalificeerden
@@ -591,11 +591,12 @@
 808=Team A heeft eerst 2 thuiswedstrijden, daarna 3 uitwedstrijden en daarna weer 2 thuiswedstrijden totdat het eerste team 4 wedstrijden heeft gewonnen.
 809=Modusselectie
 1000=Sport
-1001=overig
-1002=Darts
-1003=Handbal
-1004=Voetbal
-1005=IJshockey
+1001=Type competitie (nog niet functioneel, behalve voor darts)
+1002=overig
+1003=Darts
+1004=Handbal
+1005=Voetbal
+1006=IJshockey
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Ballen
@@ -612,7 +613,7 @@
 4004=Vrij
 4006=Thuiszege
 4007=Uitzege
-4008=Beslissen
+4008=Klik hier om de hashwaarde te genereren
 4009=Statistieken van de afdeling
 4010=Thuis doelpunt
 4011=Uit doelpunt
@@ -634,7 +635,7 @@
 4027=Serie
 4028=Won
 4029=Ongeslagen
-4030=Tekenen
+4030=FREE
 4031=Winloos
 4032=Kwijt
 4033=Huidig

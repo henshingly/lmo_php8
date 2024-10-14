@@ -133,11 +133,11 @@ if ($_SESSION['lmouserok']==2) {
     }
     if ($show==$testshow) {?>
           <tr>
-            <td align="right"><?php echo $text[322]?></td>
+            <td align="right"><?php echo $text[306]?></td>
             <td align="left" colspan="2"><input class="lmo-formular-input" type="text" name="xadmin_name<?php echo $testshow?>" size="16" maxlength="32" value="<?php echo $lmo_admin[0]?>"></td>
           </tr>
           <tr>
-            <td align="right"><?php echo $text[323]?></td>
+            <td align="right"><?php echo $text[308]?></td>
             <td align="left" colspan="2"><input class="lmo-formular-input" type="text" name="xadmin_pass<?php echo $show?>" size="16" maxlength="32" value=""></td>
           </tr>
           <tr>

@@ -38,7 +38,7 @@
 037=Pts.
 038=Goles
 039=+/-
-040=Clasificaciones
+040=Copia el siguiente código en tu "config/lmo-auth.php"
 041=Local
 042=Visitante
 043=Ver la clasificación tras la anterior jornada
@@ -122,7 +122,7 @@
 121=Ajuste de goles visitantes (0 - 9999, _ or X)
 122=Fecha de inicio del partido (formato dd.mm.yyyy - si es necesario con '0's a la izquierda)
 123=Hora de inicio del partido (formato hh:mm - si es necesario con '0's a la izquierda) - si dejas esto en blanco, se asignará la hora de comienzo estandar al guardar
-124=UNOCCUPY
+124=Cambiar al área de administración
 125=Nombre del equipo (max. 64 caracteres)
 126=Abreviatura del equipo (max. 5 caracteres)
 127=Nombre / abrev.
@@ -320,8 +320,8 @@
 319=Opciones
 320=Establecer las opciones globales del script
 321=Administración de usuarios
-322=Nombre de usuario
-323=Contraseña
+322=Ingresa tus datos anteriores para el área de administración
+323=Generar valor hash
 324=Permisos
 325=Asistente de administración (actualizar resultados)
 326=Administrador principal (acceso completo)
@@ -408,9 +408,9 @@
 407=Activar clasificación ordenada a mano
 408=¿Quieres ordenar la clasificación manualmente si hay algo distinto? (¡Activa esta función solo si es realmente necesario!)
 409=Aqui puedes comprobar la clasificación y reordenarla si es necesario
-410=Clasificación
+410=Aquí regresa al área de inicio de sesión para el administrador
 411=Volver a la vista general de resultados(pantalla de resultados)
-412=Resultados
+412=Copiar al portapapeles
 413=Ver la clasificación para esta jornada
 414=¿En que posición quieres colocar a este equipo?
 415=Guardar la clasificacoón ordenada a mano
@@ -448,7 +448,7 @@
 447=Marquesina de noticias(Newsticker)
 448=Campos de entrada(Input fields) (Area Administrativa)
 449=Botones (Area Administrativa)
-450=Colores de fondo para la clasificación
+450=Generar el hash de contraseña para el LMO
 451=Campeón
 452=Participantes en la Champions-League
 453=Participantes en la fase previa de la Champions-League
@@ -591,11 +591,12 @@
 808=El equipo A primero tiene 2 partidos en casa, luego 3 partidos fuera de casa y luego 2 partidos en casa nuevamente hasta que el primer equipo haya ganado 4 juegos.
 809=Selección de modo
 1000=Deporte
-1001=otro
-1002=Dardos
-1003=Balonmano
-1004=Fútbol
-1005=Hockey sobre hielo
+1001=Tipo de liga (aún no funcional excepto dardos)
+1002=otro
+1003=Dardos
+1004=Balonmano
+1005=Fútbol
+1006=Hockey sobre hielo
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Bolas
@@ -612,7 +613,7 @@
 4004=No jugando
 4006=Gana local
 4007=Gana visitante
-4008=Empate
+4008=Haga clic aquí para generar el valor hash
 4009=Información estadística para esta liga
 4010=Goles locales
 4011=Goles visitantes
@@ -634,7 +635,7 @@
 4027=Serie
 4028=Ganado
 4029=Invicto
-4030=Dibujar
+4030=FREE
 4031=Sin victorias
 4032=Perdido
 4033=Actual

@@ -152,7 +152,7 @@ if ($show==0) {
         <tr><td align="right"><?php if ($show==0) {echo $text[423]?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=0";?>"><?php echo $text[423];?></a><?php }?></td></tr>
         <tr><td align="right"><?php if ($show==1) {echo $text[436]?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=1";?>"><?php echo $text[436];?></a><?php }?></td></tr>
         <tr><td align="right"><?php if ($show==2) {echo $text[441]?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=2";?>"><?php echo $text[441];?></a><?php }?></td></tr>
-        <tr><td align="right"><?php if ($show==3) {echo $text[450]?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=3";?>"><?php echo $text[450];?></a><?php }?></td></tr>
+        <tr><td align="right"><?php if ($show==3) {echo $text[16]?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=3";?>"><?php echo $text[16];?></a><?php }?></td></tr>
         <tr><td align="right"><?php if ($show==4) {echo $text[459]?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=4";?>"><?php echo $text[459];?></a><?php }?></td></tr>
         <tr><td align="right"><?php if ($show==5) {echo $text[236]?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=5";?>"><?php echo $text[236];?></a><?php }?></td></tr>
         <tr><td align="right"><?php if ($show==6) {echo $text[462]?><?php }else{?><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=design&amp;show=6";?>"><?php echo $text[462];?></a><?php }?></td></tr>

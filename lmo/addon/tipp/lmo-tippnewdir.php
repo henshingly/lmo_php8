@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 if ($ftype != "") {
   if (!isset($iptype)) {
     $iptype = "";
@@ -28,7 +28,7 @@ if ($ftype != "") {
   if (!isset($liga)) {
     $liga = "";
   }
-   
+
   $verz = opendir(substr(PATH_TO_LMO.'/'.$dirliga, 0, -1));
   $dummy = array("");
   while ($files = readdir($verz)) {
@@ -104,19 +104,19 @@ if ($ftype != "") {
       if ($t2 == $text[370]) {
         $anzst = strlen(decbin($t4-1));
       }
-       
+
       $ftest = 0;
       $ftest1 = "";
       $ftest1 = explode(',', $tipp_ligenzutippen);
       if (isset($ftest1)) {
         for($u = 0; $u < count($ftest1); $u++) {
-           
+
           if ($ftest1[$u] == substr($files, 0, -4)) {
             $ftest = 1;
           }
         }
       }
-       
+
       if (($action != "tipp" && $todo != "tipp") || $ftest == 1 || $tipp_immeralle == 1) {
         if ($todo != "delligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$_SESSION['lmotippername'].".tip") == true)) {
           if ($todo != "newligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$_SESSION['lmotippername'].".tip") == false)) {
@@ -133,7 +133,7 @@ if ($ftype != "") {
         <input type="radio" name="liganr" value="<?php echo $i; ?>" <?php if(($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><?php echo $t0; ?>
     </td>
     <td class="nobr">
-      <select class="lmo-formular-input" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php 
+      <select class="lmo-formular-input" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php
                       if ($liga == $files) {
                         if ($st > 0) {
                           $t1 = $st;
@@ -150,7 +150,7 @@ if ($ftype != "") {
                         echo $text['tipp'][229];
                       }
                       echo "</option>";
-                       
+
                       for($y = 1; $y <= $anzst; $y++) {
                         echo "<option value=\"".$y."\"";
                         if ($y == $t1) {
@@ -179,35 +179,36 @@ if ($ftype != "") {
                       }?>
       </select>
     </td>
-  </tr><?php 
+  </tr><?php
                     }
                     if($iptype=="einsicht" || $iptype=="auswert"){?>
-  <tr>
-    <td width="20">&nbsp;</td>
-    <td class="nobr" align="left"><?php echo $t0; ?></td>
-    <td class="nobr" align="right">
-      <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <input type="hidden" name="action" value="admin">
-        <input type="hidden" name="todo" value="tipp">
-        <input type="hidden" name="save" value="<?php if($iptype=="einsicht"){echo "3";}else{echo "2";} ?>">
-        <input type="hidden" name="liga" value="<?php echo substr($files,0,-4); ?>">
-        <select class="lmo-formular-input" name="st"><?php 
+        <tr>
+          <td width="20">&nbsp;</td>
+          <td class="nobr" align="left"><?php echo $t0; ?></td>
+          <td class="nobr" align="right">
+            <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+              <input type="hidden" name="action" value="admin">
+              <input type="hidden" name="todo" value="tipp">
+              <input type="hidden" name="save" value="<?php if($iptype=="einsicht"){echo "3";}else{echo "2";} ?>">
+              <input type="hidden" name="liga" value="<?php echo substr($files,0,-4); ?>">
+              <select class="lmo-formular-input" name="st">
+<?php
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
                         if ($st >= 0) {
                           $t1 = $st;
                         }
                       }
-                       
+
                       if ($iptype == "auswert") {
                         if ($t2 == $text[2]) {
-                          echo "<option value=\"0\"";
+                          echo "                <option value=\"0\"";
                           if ($t1 == 0) {
                             echo " selected";
                           }
                           echo ">"; // alle Spieltage
-                        
+
                           echo $text['tipp'][228];
-                          echo "</option>";
+                          echo "</option>\n";
                         }
                         //TODO - alle Runden auswerten
                         /*echo "<option value=\"0\"";
@@ -222,9 +223,9 @@ if ($ftype != "") {
                         }
                         echo "</option>";*/
                       }
-                       
+
                       for($y = 1; $y <= $anzst; $y++) {
-                        echo "<option value=\"".$y."\"";
+                        echo "                <option value=\"".$y."\"";
                         if ($y == $t1) {
                           echo " selected";
                         }
@@ -242,21 +243,21 @@ if ($ftype != "") {
                           } elseif ($y == $t5-2) {
                             echo $text[372];
                           } elseif ($y == $t5-3) {
-                            echo $text[371];                          
+                            echo $text[371];
                           } else {
                             echo $y.". ".$t2;
                           }
                         }
-                        echo "</option>";
-                      }?>
-          </select><?php                      echo $text['tipp'][164]; //Tipper
+                        echo "</option>\n";
+                      }?>              </select><?php echo $text['tipp'][164]."\n"; //Tipper
                       $start1=1;
                       if ($liga == substr($files, 0, -4) && (($save == 2 && $iptype == "auswert") || ($save == 3 && $iptype == "einsicht"))) {
                         if (isset($start)) {
                           $start1 = $start;
                         }
-                      }?> 
-          <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<?php echo $start1; ?>"><?php                      echo $text[4]; //bis
+                      }?>
+              <input class="lmo-formular-input" type="text" name="start" size="2" maxlength="4" value="<?php echo $start1; ?>">
+                <?php echo $text[4]."\n"; //bis
                       $dummy1=array();
                       $verz1 = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
                        while ($tipfiles = readdir($verz1)) {
@@ -270,13 +271,13 @@ if ($ftype != "") {
                         if (isset($ende)) {
                           $ende1 = $ende;
                         }
-                      }?> 
-          <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?php echo $ende1; ?>">
-          <input class="lmo-formular-button" type="submit" name="best" value="<?php if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
-        </form>
-    </td>
-  </tr>
-<?php 
+                      }?>
+              <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?php echo $ende1; ?>">
+              <input class="lmo-formular-button" type="submit" name="best" value="<?php if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
+            </form>
+          </td>
+        </tr>
+<?php
                     }elseif ($iptype!="reminder"){
                       $checked = 0;
                       if (($todo == "newtipper" || $todo == "tippuseredit") && $xtipperligen != "") {
@@ -289,13 +290,13 @@ if ($ftype != "") {
                       } elseif ($todo == "newtipper") {
                         $checked = 1;
                       }?>
-<input type="checkbox" name="xtipperligen[]" value="<?php echo substr($files,0,-4) ?>"<?php 
+<input type="checkbox" name="xtipperligen[]" value="<?php echo substr($files,0,-4) ?>"<?php
                       if (($todo == "newtipper" || $todo == "tippuseredit") && $checked == 1) {
                         echo "checked";
                       } elseif ($todo == "tippuseredit" && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$nick.".tip") == true) {
                         echo "checked";
                       }
-                       
+
                       if ($todo == "tippoptions" && ($ftest == 1 || $tipp_immeralle == 1)) {
                         echo "checked";
                       }
@@ -304,7 +305,7 @@ if ($ftype != "") {
                       }
                       if ($todo == "tippoptions" && $tipp_immeralle == 1) {
                         echo " disabled";
-                      }?>><?php echo $t0 ?><br><?php 
+                      }?>><?php echo $t0 ?><br><?php
                     }
                   }
                   $tt1.=$dummy[$k]."|";
@@ -317,8 +318,13 @@ if ($ftype != "") {
       }
     }
   }
-  if($i==0){
-    echo "<li>[".$text[223]."]</li>";
+  if($i==0){?>
+        <tr>
+          <td></td>
+          <td><li>[ <?php echo $text[223]; ?> ]</li></td>
+          <td></td>
+        </tr>
+<?php
   }
-}      
+}
 ?>

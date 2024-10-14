@@ -42,8 +42,9 @@ include(PATH_TO_ADDONDIR . "/tipp/lmo-admintippmenu.php");
     <td align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <th align="left" colspan="3"><?php echo $text['tipp'][64]; ?></td>
-        </tr><?php
+          <th align="left" colspan="3"><?php echo $text['tipp'][64]; ?></th>
+        </tr>
+<?php
 $ftype=".l98";
 $iptype="auswert";
 require(PATH_TO_ADDONDIR . "/tipp/lmo-tippnewdir.php");
@@ -62,7 +63,7 @@ if($tipp_gesamt==1){ ?>
         </tr><?php }?>
 
         <tr>
-          <th align="left" colspan="3"><?php echo $text['tipp'][155]; ?></td>
+          <th align="left" colspan="3"><?php echo $text['tipp'][155]; ?></th>
         </tr><?php
 $ftype=".l98";
 $iptype="einsicht";

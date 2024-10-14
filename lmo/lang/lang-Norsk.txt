@@ -38,7 +38,7 @@
 037=Png.
 038=Mål
 039=Forskj.
-040=Tabell
+040=Kopier følgende kode til "config/lmo-auth.php"
 041=Hjemme
 042=Borte
 043=til tabellen etter forrige serierunde
@@ -122,7 +122,7 @@
 121=Innstilling av bortemål (0 - 9999, _ eller X)
 122=Kampdato (Format DD.MM.ÅÅÅÅ - med lende nuller!)
 123=Kampavspark (Format HH:MM - med ledende nuller!) - hvis feltet er tomt blir defaultverdien brukt ved lagring
-124=UNOCCUPY
+124=Bytt til admin området
 125=Klubbnavn (max. 32 tegn)
 126=Kortversjon av klubbnavn (max. 5 tegn)
 127=Klubbnavn/-kortversjon
@@ -320,8 +320,8 @@
 319=Alternativer
 320=Fastsette globale alternativer for skriptet
 321=Brukerforvaltning
-322=Brukernavn
-323=Passord
+322=Skriv inn dine tidligere data for administrasjonsområdet
+323=Generer hash-verdi
 324=Rettigheter
 325=Hjelpe-Admin (Resultatoppdatering)
 326=Full-Admin (Full tilgang)
@@ -408,9 +408,9 @@
 407=Håndsortering av tabellen mulig
 408=Ønsker du ved avvik eller problemer å sortere tabellen manuelt? (Aktiver dette alternativet bare hvis du virkelig trenger det!)
 409=Her kan du sjekke tabllen og evnt korrigere
-410=Tabell
+410=Her bytter du tilbake til påloggingsområdet for admin
 411=Bytt her tilbake til resultatoversikten
-412=Resultater
+412=Kopier til utklippstavlen
 413=bytte til tabellen for denne runden
 414=Hvilken tabellplass skal dette laget tildeles?
 415=Lagre manuell tabell
@@ -448,7 +448,7 @@
 447=Newsticker
 448=Inputfelt
 449=Buttons
-450=Tabell
+450=Generer passordhashen for LMO
 451=Mester
 452=Champions-League-Deltaker
 453=Champions-League-Kvalifisering
@@ -591,11 +591,12 @@
 808=Lag A har først 2 hjemmekamper, deretter 3 bortekamper og så 2 hjemmekamper igjen til førstelaget har vunnet 4 kamper.
 809=Modusvalg
 1000=Sport
-1001=annet
-1002=Dart
-1003=Håndball
-1004=Fotball
-1005=Ishockey
+1001=Type liga (ikke funksjonell ennå med unntak av dart)
+1002=annet
+1003=Dart
+1004=Håndball
+1005=Fotball
+1006=Ishockey
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Baller
@@ -612,7 +613,7 @@
 4004=Spillefri
 4006=Hjemmeseire
 4007=Borteseire
-4008=Uavgjort
+4008=Klikk her for å generere hash-verdien
 4009=Statistiske data til ligaen
 4010=Hjemmemål
 4011=Bortemål
@@ -634,7 +635,7 @@
 4027=Serie
 4028=Vant
 4029=Ubeseiret
-4030=Tegne
+4030=FREE
 4031=Winless
 4032=Tapt
 4033=Nåværende

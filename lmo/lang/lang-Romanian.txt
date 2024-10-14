@@ -38,7 +38,7 @@
 037=Pct.
 038=Goluri
 039=Dif.
-040=Clasament
+040=Copiați următorul cod în "config/lmo-auth.php"
 041=Acasa
 042=Deplasare
 043=clasament etapa precedenta
@@ -122,7 +122,7 @@
 121=Setari pentru golurile echipei oaspete (0 - 9999, _ sau X)
 122=Data etapei (Format ZZ.LL.AAAA)
 123=Ora jocurilor (Format HH:MM) - daca nu completati nimic, va fi setata ora standard pentru competitie
-124=UNOCCUPY
+124=Schimbați în zona de administrare
 125=Numele echipei (max. 32 caractere)
 126=Prescurtare (max. 5 caractere)
 127=Nume/prescurtare
@@ -320,8 +320,8 @@
 319=Optiuni
 320=Setați opțiunile globale ale scriptului
 321=Managementul utilizatorilor
-322=Nume de utilizator
-323=Parola
+322=Introduceți datele dumneavoastră anterioare pentru zona de administrare
+323=Generează valoarea hash
 324=Drept de acces
 325=Asistent administrator (Actualizare rezultate)
 326=Administrator complet (acces complet)
@@ -408,9 +408,9 @@
 407=Permite sortarea manuală a mesei
 408=Doriți să sortați manual tabelul dacă există discrepanțe sau probleme? (Activați opțiunea doar dacă aveți cu adevărat nevoie de ea!)
 409=Aici puteți verifica din nou tabelul și îl puteți rearanja dacă este necesar
-410=Clasament
+410=Aici reveniți la zona de conectare pentru administrator
 411=Reveniți la prezentarea generală a rezultatelor aici
-412=Rezultate
+412=Copiați în clipboard
 413=Du-te la masa pentru această zi de meci
 414=Ce loc în tabel ar trebui să fie atribuit acestei echipe?
 415=salvați tabelul manual
@@ -448,7 +448,7 @@
 447=Newsticker
 448=Câmpuri de intrare
 449=Butoane
-450=Masa
+450=Generează hash-ul parolei pentru LMO
 451=Campion
 452=Champions-League-Participanți/alpiniști
 453=Champions-League-Calificări
@@ -591,11 +591,12 @@
 808=Echipa A are mai întâi 2 jocuri acasă, apoi 3 în deplasare și apoi din nou 2 jocuri acasă până când prima echipă a câștigat 4 jocuri.
 809=Selectarea modului
 1000=Sport
-1001=altele
-1002=Darts
-1003=Handbal
-1004=Fotbal
-1005=Hochei pe gheață
+1001=Tip de ligă (nu este încă funcțională, cu excepția darts)
+1002=altele
+1003=Darts
+1004=Handbal
+1005=Fotbal
+1006=Hochei pe gheață
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Mingi
@@ -612,7 +613,7 @@
 4004=Nu au jucat in aceasta etapa:
 4006=victorii acasa
 4007=victorii in deplasare
-4008=egaluri
+4008=Clic aici pentru a genera valoarea hash
 4009=Statistica campionat
 4010=goluri acasa
 4011=goluri in deplasare
@@ -634,7 +635,7 @@
 4027=Serie
 4028=Castigat
 4029=Neînvins
-4030=Unentschieden
+4030=FREE
 4031=Fără câștig
 4032=Pierdut
 4033=Actual

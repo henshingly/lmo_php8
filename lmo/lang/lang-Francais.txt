@@ -38,7 +38,7 @@
 037=Pts
 038=Buts
 039=Diff.
-040=Classement
+040=Copiez le code suivant dans votre "config/lmo-auth.php"
 041=Domicile
 042=Extérieur
 043=Montrer le classement de la journée précédente
@@ -122,7 +122,7 @@
 121=Sélection des buts à l'exterieur (0 - 9999, _ ou X)
 122=Date du coup d'envoi du match (Format JJ.MM.AAAA - le cas échéant avec des zéros au début)
 123=Heure du coup d'envoi du match (Format HH:MM - le cas échéant avec des zéros au début) - si vous laissez ce champ vide l'heure du coup d'envoi standard sera affichée.
-124=UNOCCUPY
+124=Passer à la zone d'administration
 125=Nom de l'équipe (max. 64 caractères)
 126=Abréviation de l'équipe (max. 5 caractères)
 127=Nom de l'équipe/Abréviation de l'équipe
@@ -320,8 +320,8 @@
 319=Options
 320=Options générales du script
 321=Administration utilisateur
-322=Identifiant
-323=Mot de passe
+322=Entrez vos données précédentes pour la zone d'administration
+323=Générer une valeur de hachage
 324=Droits d'accès
 325=Editeur (Mise à jour des résultats)
 326=Administrateur (Accès à toutes les rubriques)
@@ -408,9 +408,9 @@
 407=Trier manuellement le classement
 408=Voulez-vous trier manuellement le classement lors de conflits et problèmes? (À activer seulement si vous avez besoin de cette option!)
 409=Ici vous pouvez vérifier et changer le classement si besoin est
-410=Classement
+410=Ici, vous revenez à la zone de connexion pour l'administrateur
 411=Retourner à la liste de résultats
-412=Résultats
+412=Copier dans le presse-papier
 413=Retourner au classement de cette journée
 414=Quelle position dans le classement voulez-vous définir pour cette équipe?
 415=Sauvegarder ce classement manuel
@@ -448,7 +448,7 @@
 447=Téléscripteur
 448=Champs
 449=Boutons
-450=Tableau
+450=Générer le hachage du mot de passe pour le LMO
 451=Champion
 452=Ligues des Champions
 453=Qualifier pour le tour préliminaire de la Ligue des Champions
@@ -591,11 +591,12 @@
 808=L'équipe A joue d'abord 2 matchs à domicile, puis 3 matchs à l'extérieur, puis à nouveau 2 matchs à domicile jusqu'à ce que la première équipe ait gagné 4 matchs.
 809=Sélection du mode
 1000=Sport
-1001=autre
-1002=Fléchettes
-1003=Handball
-1004=Football
-1005=Hockey sur glace
+1001=Type de ligue (pas encore fonctionnel sauf pour les fléchettes)
+1002=autre
+1003=Fléchettes
+1004=Handball
+1005=Football
+1006=Hockey sur glace
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Balles
@@ -612,7 +613,7 @@
 4004=Sans match
 4006=Victoire à domicile
 4007=Victoire à l'extérieur
-4008=Match nul
+4008=Cliquez ici pour générer la valeur de hachage
 4009=Statistiques de la ligue
 4010=Buts à domicile
 4011=Buts à l'extérieur
@@ -634,7 +635,7 @@
 4027=Série
 4028=Gagné
 4029=Invaincu
-4030=Dessiner
+4030=FREE
 4031=Sans victoire
 4032=Perdu
 4033=Actuel

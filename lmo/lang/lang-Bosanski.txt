@@ -38,7 +38,7 @@
 037=Bod.
 038=Set
 039=+/-.
-040=Ljestvica
+040=Kopiraj sljedeći kod u svoj "config/lmo-auth.php"
 041=Kao Domaćin
 042=Kao Gost
 043=Pregledajte prethodni poredak
@@ -122,7 +122,7 @@
 121=Postaviti golove kao gost (0 - 9999, _ opp. X)
 122=Datum odigravanja susreta (Format DD.MM.GGGG)
 123=Sat odigravanja susreta(Format HH:MM)  - Ako ostavite prazno bit ce ubačeno automatski sat početka standard
-124=UNOCCUPY
+124=Prebacite se na administrativnu oblast
 125=Ime Momčadi (max. 32 znaka)
 126=Skrćenica  (max. 5 Zeichen)Sigla
 127=Ime momčadi/-skraćenica
@@ -320,8 +320,8 @@
 319=Podešavanja (Opcije)
 320=Odabrati opća podešavanja Scripta
 321=Administracija korisnika
-322=Ime korisnika
-323=Lozinka
+322=Unesite svoje prethodne podatke za administrativnu oblast
+323=Generiraj hash vrijednost
 324=Pravo (Odobrenje za ulaz)
 325=Pomocni administrator (Osuvremenje rezultata)
 326=Administrator   (sva prava)
@@ -408,9 +408,9 @@
 407=Dopustiti ručno podešavanje ljestvice (tablice)
 408=Želite li ručno sortirati tablicu ako postoje odstupanja ili problemi? (Aktivirajte opciju samo ako vam je stvarno potrebna!)
 409=Ovdje možete ponovno provjeriti tablicu i preurediti je ako je potrebno
-410=Ljestvica
+410=Ovdje se vraćate na područje za prijavu za administratora
 411=Vratite se na okvir rezlutata
-412=Rezultati
+412=Kopiraj u međuspremnik
 413=Idi na ljestvicu ovog kola
 414=Koje mjesto na ljestvici treba biti dodiljeno momčadi
 415=Pohranti ručno ljestvicu
@@ -448,7 +448,7 @@
 447=Polje za novosti
 448=Prozorčići za tipkanje/unošenje
 449=Tipke
-450=Ljestvica
+450=Generiraj hash lozinke za LMO
 451=Prvak
 452=Sudionik Lige Prvaka/u viši rang
 453=Kvalifikacije za Ligu Prvaka
@@ -591,11 +591,12 @@
 808=Tim A prvo ima 2 utakmice kod kuće, zatim 3 utakmice u gostima i onda opet 2 utakmice kod kuće dok prvi tim ne pobijedi u 4 utakmice.
 809=Odabir načina rada
 1000=Sport
-1001=drugo
-1002=Pikado
-1003=Rukomet
-1004=Fudbal
-1005=Hokej na ledu
+1001=Vrsta lige (još nije funkcionalna osim za pikado)
+1002=drugo
+1003=Pikado
+1004=Rukomet
+1005=Fudbal
+1006=Hokej na ledu
 2000=Volleyball (Odbojka)
 2001=Volleyball Version (odbojka vrzija) by vbfan
 2020=Poen
@@ -612,7 +613,7 @@
 4004=Slobodan / a
 4006=Domaće pobjede
 4007=Gostujuće pobjede
-4008=Neriješeno
+4008=Kliknite ovdje za generiranje hash vrijednosti
 4009=Statistike prvenstva
 4010=Domaći zgoditci
 4011=Gostujući zgoditci
@@ -634,7 +635,7 @@
 4027=Serija
 4028=Pobjeda
 4029=nepobjeđen
-4030=nerješeno
+4030=FREE
 4031=bez pobjede
 4032=izgubljeno
 4033=Trenutno

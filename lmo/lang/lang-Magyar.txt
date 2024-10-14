@@ -38,7 +38,7 @@
 037=Pont
 038=Gól
 039=+/-
-040=Helyezések
+040=Másolja a következő kódot a "config/lmo-auth.php" fájlba
 041=Otthon
 042=Idegenben
 043=Előző forduló utáni helyezések
@@ -122,7 +122,7 @@
 121=Vendég gólok beállítása (0 - 9999, _ vagy X)
 122=Meccs kezdési dátuma (nn.hh.éééé formátumban - ha szükséges, kezd? '0'-ák)
 123=Meccs kezdési időpontja (óó:pp formátumban - ha szükséges, kezdő '0'-ák) - ha üresen hagyja, az alapértelmezett kezdési időpont lesz bállítva mentéskor
-124=UNOCCUPY
+124=Váltson az adminisztrátori területre
 125=Csapat neve (max. 32 karakter)
 126=Csapatnév rövidítése (max. 5 karakter)
 127=Csapatnév / röv.
@@ -320,8 +320,8 @@
 319=Beállítások
 320=A szkript általános tulajdonságainak beállítása
 321=Felhasználó adminisztráció
-322=Felhasználónév
-323=Jelszó
+322=Adja meg korábbi adatait az adminisztrációs területhez
+323=Hash-érték generálása
 324=Jogok
 325=Admin asszisztens (eredmények megadása)
 326=Fő admin (teljes hozzáférés)
@@ -408,9 +408,9 @@
 407=Helyezések manuális megadásának engedélyezése
 408=Kívánja manuálisan megadni a helyezéseket, ha valami nem stimmel? (Csak akkor aktiválja a funkciót, ha igazán szüksége van rá!)
 409=Itt újból ellenőrizheti a helyezéseket és változtathat, ha szükséges
-410=Helyezések
+410=Itt visszavált az adminisztrátor bejelentkezési területére
 411=Vissza az eredmények áttekintéséhez
-412=Eredmények
+412=Másolás a vágólapra
 413=Forduló helyezéseinek megtekintése
 414=Melyik pozícióba kívánja tenni ezt a csapatot?
 415=Elmenti a beállított helyezéseket
@@ -448,7 +448,7 @@
 447=Hírkijelzo
 448=Bemeneti mezok (admin felület)
 449=Gombok (admin felület)
-450=Helyezések háttérszínei
+450=Jelszókivonat létrehozása az LMO-hoz
 451=Bajnok
 452=Bajnokok-Ligája résztvevo
 453=Bajnokok-Ligája selejtezojében induló
@@ -591,11 +591,12 @@
 808=Az A-csapatnak először 2 hazai, majd 3 idegenbeli meccse van, majd ismét 2 hazai meccse van, amíg az első csapat 4 meccset nem nyer.
 809=Mód kiválasztása
 1000=Sport
-1001=egyéb
-1002=Darts
-1003=Kézilabda
-1004=Futball
-1005=Jégkorong
+1001=Liga típusa (még nem működik, kivéve a dartsot)
+1002=egyéb
+1003=Darts
+1004=Kézilabda
+1005=Futball
+1006=Jégkorong
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Labdák
@@ -612,7 +613,7 @@
 4004=Szabadnapos
 4006=Hazai gyozelem
 4007=Idegenbeli gyozelem
-4008=Döntetlen
+4008=Kattintson ide a hash érték létrehozásához
 4009=Statisztikai infó a bajnoksághoz
 4010=Hazai gólok
 4011=Idegenbeli gólok
@@ -634,7 +635,7 @@
 4027=Sorozat
 4028=Nyerte
 4029=Veretlen
-4030=Húz
+4030=FREE
 4031=Winless
 4032=Elveszett
 4033=Jelenlegi

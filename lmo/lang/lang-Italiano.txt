@@ -38,7 +38,7 @@
 037=Pt.
 038=Reti
 039=MI
-040=Classifica
+040=Copiare il seguente codice in "config/lmo-auth.php".
 041=In casa
 042=Fuori casa
 043=sfoglia alla classifica precedente
@@ -122,7 +122,7 @@
 121=Impostazioni delle reti fuori casa (0 - 9999, _ opp. X)
 122=Data di calcio d'inizio dell'incontro (Formato GG.MM.AAAA - se necessario con gli zeri iniziali)
 123=Orario di inizio dell'incontro (Formato HH:MM - se necessario con gli zeri iniziali) - lasciando questo campo vuoto, verrá inserita automaticamente l'orario di inizio standard
-124=UNOCCUPY
+124=Passare all'area di amministrazione
 125=Nome della squadra (max. 32 Zeichen)
 126=Sigla della squadra (max. 5 Zeichen)
 127=Nome della squadra/-sigla
@@ -320,8 +320,8 @@
 319=Opzioni
 320=Definire opzioni globali dello Script
 321=Amministrazione utenti
-322=Nome di utente
-323=Password
+322=Inserire i dati precedenti per l'area di amministrazione
+323=Generare il valore hash
 324=Diritto di accesso
 325=Co-Amministratore (aggiornamenti risultati)
 326=Amministratore (Accesso su tutto)
@@ -408,9 +408,9 @@
 407=Permettere la classificazione manuale della classifica
 408=Desidera classificare la classifica manualmente se ci sono delle irregolaritá? (attiva l'opzione solo se é veramente necessario!)
 409=Qui si puó controllare la classifica e eventualmente classificare
-410=Classifica
+410=Qui si torna all'area di login per l'amministratore
 411=Ritorna da qui al quadro dei risultati
-412=Risultati
+412=Copia negli appunti
 413=Vai alla classifica di questa giornata
 414=Quale posizione in classifica deve essere assegnata alla squadra?
 415=Salvare manualmente la classifica
@@ -448,7 +448,7 @@
 447=Newsticker
 448=Finestrine di digitazione
 449=Tasti
-450=Classifica
+450=Generare l'hash della password per l'LMO
 451=Campione
 452=Partecipante Champions-League/promossa
 453=Qualificante Champions-League
@@ -591,11 +591,12 @@
 808=La squadra A gioca prima 2 partite in casa, poi 3 in trasferta e poi ancora 2 partite in casa finché la prima squadra non vince 4 partite.
 809=Selezione modalità
 1000=Sport
-1001=altro
-1002=Freccette
-1003=Pallamano
-1004=Calcio
-1005=Hockey su ghiaccio
+1001=Tipo di campionato (non ancora funzionante ad eccezione delle freccette)
+1002=altro
+1003=Freccette
+1004=Pallamano
+1005=Calcio
+1006=Hockey su ghiaccio
 2000=Volleyball
 2001=Volleyball Version by vbfan
 2020=Palle
@@ -612,7 +613,7 @@
 4004=Riposo
 4006=Vittorie interne
 4007=Vittorie esterne
-4008=Pareggi
+4008=Clicca qui per generare il valore hash
 4009=Statistiche dati sul campionato
 4010=Reti interne
 4011=Reti esterne
@@ -634,7 +635,7 @@
 4027=Serie
 4028=Vinto
 4029=Imbattuto
-4030=Disegno
+4030=FREE
 4031=Senza vittorie
 4032=Perduto
 4033=Attuale

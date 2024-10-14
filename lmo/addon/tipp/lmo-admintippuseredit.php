@@ -239,9 +239,9 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
             </tr>
             <tr>
               <td align="right">&nbsp;<?php            if ($save == count($users)) {?>
-              <?php echo $text[323]; ?><?php 
+              <?php echo $text[308]; ?><?php 
             } else {?>
-              <acronym title="<?php echo $text['tipp'][304]?>"><?php echo $text[323]; ?></acronym><?php 
+              <acronym title="<?php echo $text['tipp'][304]?>"><?php echo $text[308]; ?></acronym><?php 
             }?>
               </td>
               <td align="left"><?php            if ($save == count($users)) {?>
