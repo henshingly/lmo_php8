@@ -19,11 +19,17 @@
   
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
+require_once(PATH_TO_LMO."/includes/PHPMailer.php");
+$mail = new PHPMailer(true);
+
 if (isset($xtippername2)) {
   $dumma = array();
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
   
   $dumma = file($pswfile);
+  $mail->isMail();
+  $mail->Subject = $text['tipp'][79];
+  $mail->setFrom($aadr);
   
   for($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i++) {
     $dummb = explode('|', $dumma[$i]);
@@ -32,28 +38,19 @@ if (isset($xtippername2)) {
       $_SESSION['lmotippername'] = $dummb[0];
       $_SESSION["lmotipperok"] = 0;
       $emailbody = "Hallo ".$dummb[0]."\n\n".$text['tipp'][77]."\n".$text['tipp'][23].": ".$dummb[0]."\n".$text[308].": ".$dummb[1];
-      $header = "From:$aadr\n";
-      //      $header .= "Reply-To: $aadr\n";
-      //      $header .= "Bcc: $aadr\n";
-      //      $header .= "X-Mailer: PHP/" . phpversion(). "\n";
-      //      $header .= "X-Sender-IP: $REMOTE_ADDR\n";
-      //      $header .= "Content-Type: text/plain";
-      if (function_exists('ini_get') && @ini_get('safe_mode')=="0") {
-        $para5 = "-f $aadr";
-        if (mail($dummb[4], $text['tipp'][79], $emailbody, $header, $para5)) {
-          echo $text['tipp'][78]."<br>";
-          $xtippername2 = "";
-        } else {
-          echo $text['tipp'][80]." ".$aadr;
-        }
+      $mail->Body = iconv("UTF-8", "ISO-8859-1", $emailbody);
+      $mail->addAddress($dummb[4]);
+      if ($mail->send()) {
+        $mail->ClearAllRecipients(); 
+        $mail->ClearReplyTos();
+        echo $text['tipp'][78]."<br>";
       } else {
-        if (mail($dummb[4], $text['tipp'][79], $emailbody, $header)) {
-          echo $text['tipp'][78]."<br>";
-          $xtippername2 = "";
-        } else {
-          echo $text['tipp'][80]." ".$aadr;
-        }
+        $mail->ErrorInfo();
+        $mail->ClearAllRecipients(); 
+        $mail->ClearReplyTos();
+        echo $text['tipp'][80]."<br>";
       }
+      $xtippername2 = "";    
     }
   }
   if ($_SESSION["lmotipperok"] == -5) {
