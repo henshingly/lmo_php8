@@ -18,7 +18,7 @@
   */
 
 
-require(dirname(__FILE__)."/init.php");
+require(__DIR__."/init.php");
 
 $pgtext1=$text[135];
 $pgtext2=$text[136];

@@ -32,7 +32,7 @@ if (!isset($_SESSION)) {
 }
 
 if (session_id()=="") session_start();
-require(dirname(__FILE__).'/config/init-parameters.php');
+require(__DIR__.'/config/init-parameters.php');
 
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
   $_SESSION['debug']=TRUE;

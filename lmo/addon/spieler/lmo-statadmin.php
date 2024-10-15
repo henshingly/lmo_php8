@@ -18,7 +18,7 @@
  *
  */
 
-require_once (dirname(__FILE__) . '/../../init.php');
+require_once(__DIR__ . '/../../init.php');
 
 if (isset($_REQUEST["ligalink"])) {
     $spieler_ligalink = $_REQUEST["ligalink"];
@@ -48,7 +48,7 @@ else $spieler_wert = "";
 //Datei auslesen
 if (isset($file) && $file != "") {
     //Konfiguration auslesen
-    require (PATH_TO_ADDONDIR . "/spieler/lmo-statloadconfig.php");
+    require(PATH_TO_ADDONDIR . "/spieler/lmo-statloadconfig.php");
 
     //Adminkontrolle
     if ($_SESSION['lmouserok'] == 2 || ($_SESSION['lmouserok'] == 1 && $spieler_adminbereich_hilfsadmin_zulassen == 1)) {

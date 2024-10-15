@@ -23,7 +23,7 @@ if (!defined('VIEWER_VERSION_NR')) {
 
 if (!defined('VIEWER_VERSION'))  define('VIEWER_VERSION','[<acronym title="Viewer ' . VIEWER_VERSION_NR . ' &copy; LMO-Group">&copy;</acronym>]');
 
-require(dirname(__FILE__) . '/../../init.php');
+require(__DIR__ . '/../../init.php');
 require_once(PATH_TO_ADDONDIR . "/classlib/ini.php");
 require_once(PATH_TO_ADDONDIR . "/viewer/viewer_functions.php");
 

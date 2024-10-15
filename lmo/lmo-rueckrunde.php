@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__).'/init.php');
+require_once(__DIR__.'/init.php');
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 
 if(isset($file) && $file != "")

@@ -17,8 +17,8 @@
  *
 */
 
-require (dirname(__FILE__) . '/../../init.php');
-require_once (PATH_TO_ADDONDIR . "/classlib/ini.php");
+require(__DIR__ . '/../../init.php');
+require_once(PATH_TO_ADDONDIR . "/classlib/ini.php");
 ?>
 <script src="<?php echo URL_TO_JSDIR?>/viewer.js" type="text/javascript"></script>
 <?php

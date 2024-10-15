@@ -24,7 +24,7 @@ if (!function_exists("getmicrotime")) {
   }
 }
 $startzeit = getmicrotime();
-require(dirname(__FILE__)."/init.php");
+require(__DIR__."/init.php");
 
 if((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()=="") {
   session_start();

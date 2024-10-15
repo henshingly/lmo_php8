@@ -20,7 +20,7 @@
 /**
  * Include PEAR.php to obtain the PEAR base class
  */
-require_once dirname(__FILE__).'/PEAR.php';
+require_once __DIR__.'/PEAR.php';
 /**
  * Option to let the ls() method return only files.
  *

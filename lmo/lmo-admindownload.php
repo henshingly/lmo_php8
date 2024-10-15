@@ -19,7 +19,7 @@
   
   
 session_start();
-require(dirname(__FILE__)."/init.php");
+require(__DIR__."/init.php");
 $action = isset($_GET['action'])?$_GET['action']:'';
 $todo = isset($_GET['todo'])?$_GET['todo']:'';
 $down = isset($_GET['down'])?$_GET['down']:0;

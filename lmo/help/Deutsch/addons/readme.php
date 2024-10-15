@@ -45,7 +45,7 @@
 error_reporting(E_ALL);
 date_default_timezone_set('Europe/Berlin');
 
-require_once(dirname(__FILE__).'/../../../init.php');
+require_once(__DIR__.'/../../../init.php');
 require_once(PATH_TO_ADDONDIR."/pdf/ini.php");
 
 

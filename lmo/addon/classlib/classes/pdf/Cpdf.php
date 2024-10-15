@@ -435,7 +435,7 @@ class Cpdf
         $this->fileIdentifier = md5('ROSPDF');
 
         // set the default font path to [...]/src/fonts
-        $this->fontPath = dirname(__FILE__).'/fonts';
+        $this->fontPath = __DIR__.'/fonts';
 
         // set tempPath for cross platform
         if (strpos(PHP_OS, 'WIN') !== false) {
