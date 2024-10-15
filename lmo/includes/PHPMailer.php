@@ -357,7 +357,7 @@ class PHPMailer
     public $AuthType = '';
 
     /**
-     * SMTP SMTPXClient command attibutes
+     * SMTP SMTPXClient command attributes
      *
      * @var array
      */
@@ -756,7 +756,7 @@ class PHPMailer
      *
      * @var string
      */
-    const VERSION = '6.9.1';
+    const VERSION = '6.9.2';
 
     /**
      * Error severity: message only, continue processing.
@@ -1071,7 +1071,7 @@ class PHPMailer
      * be modified after calling this function), addition of such addresses is delayed until send().
      * Addresses that have been added already return false, but do not throw exceptions.
      *
-     * @param string $kind    One of 'to', 'cc', 'bcc', or 'ReplyTo'
+     * @param string $kind    One of 'to', 'cc', 'bcc', or 'Reply-To'
      * @param string $address The email address
      * @param string $name    An optional username associated with the address
      *
@@ -4224,7 +4224,7 @@ class PHPMailer
             $result = $_SERVER['SERVER_NAME'];
         } elseif (function_exists('gethostname') && gethostname() !== false) {
             $result = gethostname();
-        } elseif (php_uname('n') !== false) {
+        } elseif (php_uname('n') !== '') {
             $result = php_uname('n');
         }
         if (!static::isValidHost($result)) {
@@ -4249,7 +4249,7 @@ class PHPMailer
             empty($host)
             || !is_string($host)
             || strlen($host) > 256
-            || !preg_match('/^([a-zA-Z\d.-]*|\[[a-fA-F\d:]+\])$/', $host)
+            || !preg_match('/^([a-z\d.-]*|\[[a-f\d:]+\])$/i', $host)
         ) {
             return false;
         }
