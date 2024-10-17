@@ -172,7 +172,7 @@
 171=dager
 172=Tips tabell
 173=slik hadde tabellen sett ut med dine tips
-174=Hei [name]&#10;&#10;Denne mailen er en påminnelse om din tiping.&#10;Hittil har vi ikke mottatt noen tips for følgende kamper:&#10;&#10;[spiele]
+174=Hei [nick]&#10;&#10;Denne mailen er en påminnelse om din tiping.&#10;Hittil har vi ikke mottatt noen tips for følgende kamper:&#10;&#10;[spiele]
 175=Emails ble sendt
 176=Email ble ikke sendt<br>
 177=Denne runden kan ikke tippes ennå

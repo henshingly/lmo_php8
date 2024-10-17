@@ -172,12 +172,12 @@
 171=danima
 172=Tablica predviđanja
 173=ovako bi izgledala tablica s vašim predviđanjima
-174=Pozdrav [name]&#10;&#10;Ova e-poruka je podsjetnik na vaše predviđanje.&#10;Nažalost, još nismo primili nikakva predviđanja od vas za sljedeće utakmice:&#10;&#10;[ igre]
+174=Pozdrav [nick]&#10;&#10;Ova e-poruka je podsjetnik na vaše predviđanje.&#10;Nažalost, još nismo primili nikakva predviđanja od vas za sljedeće utakmice:&#10;&#10;[spiele]
 175=E-poruke su poslane
 176=E-pošta nije poslana<br>
 177=Ovaj dan (kolo) utakmice još se ne može kladiti
 178=Rezerviranog mjesta:
-179=[nick] Nadimak<br>[lozinka] Lozinka<br>[ime] Ime<br>[igre] Popis igara koje još treba upisati (samo podsjetnik na savjet)
+179=[nick] Nadimak<br>[pass] Lozinka<br>[name] Ime<br>[spiele] Popis igara koje još treba upisati (samo podsjetnik na savjet)
 180=Ažuriranje ukupnog poretka
 181=ovako bi izgledala Tablica s Predviđanjem iz
 182=na svoju tablicu predviđanja

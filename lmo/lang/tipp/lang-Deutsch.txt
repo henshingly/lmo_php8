@@ -172,7 +172,7 @@
 171=Tagen
 172=Tipp-Tabelle
 173=so würde die Tabelle mit Deinen Tipps aussehen
-174=Hallo [name],\n\ndiese Mail ist eine Erinnerung an Deine Tippabgabe.\nBisher haben wir leider noch keine Tippabgabe von Dir für folgende Spielpaarungen:\n\n[spiele]
+174=Hallo [nick],&#13;&#13;diese Mail ist eine Erinnerung an Deine Tippabgabe.&#13;Bisher haben wir leider noch keine Tippabgabe von Dir für folgende Spielpaarungen:&#13;&#13;[spiele]
 175=Emails wurden versandt
 176=Email wurde nicht versandt<br>
 177=Dieser Spieltag kann noch nicht getippt werden

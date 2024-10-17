@@ -172,7 +172,7 @@
 171=Días
 172=Tabla de Predicción
 173=ésto es como se vería la tabla con sus predicciones
-174=Hola [name]
+174=Hola [nick], &#13;&#13;Este correo electrónico es un recordatorio de tu predicción.&#13;Desafortunadamente, aún no hemos recibido tu predicción para los siguientes partidos:&#13;&#13; [spiele]
 175=Emails enviados
 176=E-Mail no enviado<br>
 177=Esta jornada no puede ser predicha

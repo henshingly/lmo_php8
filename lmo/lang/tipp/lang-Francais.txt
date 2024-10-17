@@ -172,7 +172,7 @@
 171=prochains jours
 172=Classement des pronostiques
 173=vue du classement avec mes pronostiques
-174=Salut [name]&#10;&#10;Petit rappel pour penser à poster rapidement tes pronostiques.&#10;Car nous n'avons aucun pronostique de ta part pour les matchs suivants:&#10;&#10;[spiele]
+174=Salut [nick]&#10;&#10;Petit rappel pour penser à poster rapidement tes pronostiques.&#10;Car nous n'avons aucun pronostique de ta part pour les matchs suivants:&#10;&#10;[spiele]
 175=Les emails ont été envoyés
 176=Les emails n'ont pas été envoyés<br>
 177=Cette journée ne peut pas être pronostiquée.

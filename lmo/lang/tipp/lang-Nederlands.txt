@@ -172,12 +172,12 @@
 171=Dagen
 172=Voorspellings Tabel
 173=dit is hoe het klassement er zou uitzien met uw voorspellingen
-174=Hallo [naam]
+174=Hallo [nick], &#13;&#13;Deze e-mail is een herinnering aan je voorspelling.&#13;Helaas hebben we nog geen voorspelling van je ontvangen voor de volgende wedstrijden:&#13;&#13; [spiele]
 175=E-Mails verzonden
 176=E-Mail niet verzonden<br>
 177=Op deze Wedstrijddag kan je geen voorspelling uitvoeren
 178=Place Holder:
-179=[nick] Nickname<br>[pass] Paswoord<br>[name] Naam<br>[spiele] Auflistung der noch zu tippenden Spiele (nur Tip-Reminder)
+179=[nick] Nickname<br>[pass] Paswoord<br>[name] Naam<br>[spiele] Lijst met games die nog een fooi moeten geven (alleen fooiherinnering)
 180=Update Totaal Resultaten
 181=this is how the Table would look with the Prediction from
 182=naar uw Voorspellings Tabel

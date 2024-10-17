@@ -172,7 +172,7 @@
 171=Days
 172=Prediction Table
 173=this is how the Table would look with your Predictions
-174=Hello [name]
+174=Hy [nick], &#13;&#13;this email is a reminder of your prediction.&#13;Unfortunately, we have not yet received a prediction from you for the following fixtures:&#13;&#13;[spiele]
 175=E-Mails sent
 176=E-Mail not sent<br>
 177=This Matchday cannot be Predicted

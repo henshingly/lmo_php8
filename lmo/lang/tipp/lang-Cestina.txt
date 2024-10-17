@@ -172,12 +172,12 @@
 171=dnech
 172=Tabulka soutěže
 173=tady si můžete prohlédnout tabulku s vašimi tipy
-174=Ahoj [name]&#10;Tento mail je upozornění na další tipovací kolo.&#10;Nenatipoval jste [st].kolo:&#10;[spiele]&#10;Zde jsou vaše přihlašovací údaje:&#10;jméno: [nick]&#10;heslo: [pass]&#10;&#10;http://khfotbal.com/lmo/lmo.php?action=tipp
+174=Ahoj [nick], &#13;&#13;Tento e-mail je připomínkou vaší předpovědi.&#13;Bohužel jsme od vás dosud neobdrželi předpovědi pro následující utkání:&#13;&#13; [spiele]
 175=Email(y) by(y) odeslán(y)
 176=Email nebyl odeslán
 177=Toto kolo nemůže být ještě natipováno
 178=Místo:
-179=[nick] jméno<br>[pass] heslo<br>[name] jméno<br>[st] kolo (jen Upozornění na tipování)<br>[spiele] Zobrazení všech zápasů k tipování (jen Tip-Reminder)
+179=[nick] jméno<br>[pass] heslo<br>[name] jméno<br>[spiele] kolo (jen Upozornění na tipování)<br>[spiele] Zobrazení všech zápasů k tipování (jen Tip-Reminder)
 180=Aktualizace celkové tabulky po zadání výsledků
 181=Tady můžete vidět tabulku s tipy od
 182=k tvojí tipovací tabulce

@@ -172,7 +172,7 @@
 171=zile
 172=Clasament
 173=Asa ar arata clasamentul dupa pronosticurile tale :-)
-174=Buna ziua [name]&#10;&#10;Acest e-mail este un memento pentru a trimite pontul.&#10;Din păcate, nu am primit încă sfaturi de la dumneavoastră pentru următoarele programări:&#10;&#10;[spiele]
+174=Buna ziua [nick]&#10;&#10;Acest e-mail este un memento pentru a trimite pontul.&#10;Din păcate, nu am primit încă sfaturi de la dumneavoastră pentru următoarele programări:&#10;&#10;[spiele]
 175=Au fost trimise e-mailuri
 176=E-mailul nu a fost trimis<br>
 177=Această zi de meci nu poate fi pariată încă
