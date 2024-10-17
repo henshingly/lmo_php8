@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
 require_once(PATH_TO_LMO."/includes/PHPMailer.php");
@@ -28,7 +28,7 @@ if ($message != "") {
   $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
 
   $dumma = file($pswfile);
-  
+
   $mail->isMail();
   $mail->Subject = $betreff;
   $mail->setFrom($aadr);
@@ -40,24 +40,22 @@ if ($message != "") {
   if (!isset($ende)) {
     $ende = $anztipper;
   }
-   
+
   if ($emailart == 0) {
     for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
       $dummb = explode('|', $dumma[$tippernr]);
       if ($dummb[9] != -1 && $dummb[4] != "") {
         $textmessage = $message;
-        $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
-        $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
-        $textmessage = str_replace("[name]", $dummb[3], $textmessage);
+        $textmessage = str_replace(array("[nick]", "[pass]", "[name]"),array($dummb[0], $dummb[1], $dummb[3]), $textmessage);
         $mail->Body  = iconv("UTF-8", "ISO-8859-1", $textmessage);
         $mail->addAddress($dummb[4]);
         if ($mail->send()) {
           $anzemail++;
-          $mail->ClearAllRecipients(); 
+          $mail->ClearAllRecipients();
 	  $mail->ClearReplyTos();
         } else {
           $mail->ErrorInfo();
-          $mail->ClearAllRecipients(); 
+          $mail->ClearAllRecipients();
 	  $mail->ClearReplyTos();
         }
       }
@@ -91,9 +89,9 @@ if ($message != "") {
       }
       closedir($verz);
       sort($dateien);
-       
+
       $anzligen = count($dateien);
-       
+
       $teams = array_pad($array, 65, "");
       $teams[0] = "___";
       $liga = array();
@@ -106,16 +104,16 @@ if ($message != "") {
       $teama = array();
       $teamb = array();
       $zeit = array();
-       
+
       $anzspiele = 0;
-       
+
       for($lnr = 0; $lnr < $anzligen; $lnr++) {
         $file = $dirliga.$dateien[$lnr];
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippemailviewer.php");
       }
-       
+
       $goaltipp = array_pad(array("_"), $anzspiele+1, "_");
-       
+
       for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
         $dummb = explode('|', $dumma[$tippernr]);
         if ($dummb[10] != -1 && $dummb[4] != "") {
@@ -174,11 +172,11 @@ if ($message != "") {
             $mail->addAddress($dummb[4]);
             if ($mail->send()) {
               $anzemail++;
-              $mail->ClearAllRecipients(); 
+              $mail->ClearAllRecipients();
 	      $mail->ClearReplyTos();
             } else {
               $mail->ErrorInfo();
-              $mail->ClearAllRecipients(); 
+              $mail->ClearAllRecipients();
     	      $mail->ClearReplyTos();
             }
           }
@@ -191,7 +189,7 @@ if ($message != "") {
       } elseif ($st == 0) {
         require(PATH_TO_LMO."/lmo-openfile.php");
       }
-       
+
       for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
         $dummb = explode('|', $dumma[$tippernr]);
         if ($dummb[10] != -1 && $dummb[4] != "") {
@@ -233,7 +231,7 @@ if ($message != "") {
                 }
               }
             } // ende for($spieltag=1;$spieltag<=$anzst;$spieltag++)
-             
+
             if ($spiele != "") {
               $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
               $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
@@ -243,11 +241,11 @@ if ($message != "") {
               $mail->addAddress($dummb[4]);
        	      if ($mail->send()) {
                 $anzemail++;
-                $mail->ClearAllRecipients(); 
+                $mail->ClearAllRecipients();
 	        $mail->ClearReplyTos();
               } else {
                 $mail->ErrorInfo();
-                $mail->ClearAllRecipients(); 
+                $mail->ClearAllRecipients();
 	        $mail->ClearReplyTos();
               }
             }
@@ -269,7 +267,7 @@ if ($message != "") {
     $mail->addAddress($dummb[4]);
     if ($mail->send()) {
       $anzemail++;
-      $mail->ClearAllRecipients(); 
+      $mail->ClearAllRecipients();
       $mail->ClearReplyTos();
     } else {
       $sent=mail($dummb[4], $subject, $textmessage, $header);
