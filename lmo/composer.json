@@ -3,8 +3,8 @@
     "type": "PHP-Script",
     "description": "The Liga Manager Online (LMO for short) is free software for managing sports leagues with tables on the Internet.",
     "homepage": "https://github.com/henshingly/lmo_php8",
-    "version": "4.1.3",
-    "time": "2023-10-25",
+    "version": "4.1.4",
+    "time": "2024-10-17",
     "keywords": [
         "LMO",
         "Liga Manager Online",
