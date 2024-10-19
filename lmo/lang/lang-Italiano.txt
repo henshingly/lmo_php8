@@ -137,7 +137,7 @@
 136=PIAZZAMENTO
 137=Non é stato ancora salvato!
 138=I dati sono stati salvati con successo
-139=Selezionare data con l'aiuto del PopUp-Calendario
+139=Seleziona la data utilizzando il calendario pop-up
 140=Calendario
 141=Visualizza il calendario del campionato
 142=Sfoglia un mese indietro
