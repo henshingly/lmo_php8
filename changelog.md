@@ -24,7 +24,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ***
-## [4.1.4] - 2024-10-17
+## [4.1.4] - 2024-10-20
 
 _Hier hätten wir die Changelogs für 4.1.4._  
 
@@ -118,7 +118,7 @@ _Here we write changelog notes for the next version._
 
 
 ***
-## [4.1.4] - 2024-10-17
+## [4.1.4] - 2024-10-20
 
 _Here we had the changelogs for 4.1.4._  
 
