@@ -36,6 +36,8 @@ _Hier hätten wir die Changelogs für 4.1.4._
 
 
 ### Changed  
+* Pop-Up Kalender im Admin Backend auf Mehrsprachig geändert (war vorher fest auf deutsch)  
+* TabSprünge bei Eingabe von Daten in KO-Turnieren nach Hinweis von DwB optimiert. 
 * Verwendung von [PHPMailer()](https://github.com/PHPMailer/PHPMailer) anstelle von [mail()](https://www.php.net/manual/de/function.mail.php)  
 * Sprachdateien aktualisiert (doppelte entfernt bzw. in neue Bezeichnung geändert)  
 * Die Flaggen der Sprachauswahl geändert (GIF -> SVG)  
@@ -52,6 +54,7 @@ _Hier hätten wir die Changelogs für 4.1.4._
 
 
 ### Fixed  
+* Fehler in der Ligastatistik [gefixt](https://github.com/henshingly/lmo_php8/issues/18). Thx DwB
 * null-Zugriff vermeiden [#9](https://github.com/henshingly/lmo_php8/pull/9) (thx tombrain)  
 * Vermeinden von outOfIndex-Zugriff in liga.class mit Handsortierung [#10](https://github.com/henshingly/lmo_php8/pull/10) (thx tombrain)  
 * Message für Tipp-Reminder wird als 0 vorbelegt. [#12](https://github.com/henshingly/lmo_php8/pull/12)  
@@ -127,6 +130,8 @@ _Here we had the changelogs for 4.1.4._
 
 
 ### Changed  
+* Pop-up calendar in the admin backend changed to multilingual (was previously fixed in German)  
+* Optimized tab jumps when entering data in knockout tournaments following advice from DwB.  
 * Using [PHPMailer()](https://github.com/PHPMailer/PHPMailer) instead of [mail()](https://www.php.net/manual/de/function.mail.php)  
 * Language files updated (duplicate ones removed or changed to new name)  
 * Changed the language selection flags (GIF -> SVG)  
@@ -142,6 +147,7 @@ _Here we had the changelogs for 4.1.4._
 
 
 ### Fixed  
+* Bug in league statistics [fixed](https://github.com/henshingly/lmo_php8/issues/18). Thx DwB  
 * avoid null access [#9](https://github.com/henshingly/lmo_php8/pull/9) (thx tombrain)  
 * Avoid outOfIndex access in liga.class with hand sorting [#10](https://github.com/henshingly/lmo_php8/pull/10) (thx tombrain)  
 * Message for tip reminder is preset as 0. [#12](https://github.com/henshingly/lmo_php8/pull/12)  
