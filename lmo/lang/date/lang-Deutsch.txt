@@ -36,3 +36,8 @@
 35=Okt
 36=Nov
 37=Dez
+38=zum vorigen Monat
+39=zum aktuellen Monat
+40=zum nächsten Monat
+41=Datum übernehmen
+42=Kalender schließen, ohne ein Datum zu übernehmen

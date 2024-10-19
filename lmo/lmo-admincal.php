@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,9 +16,10 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
 
+
+
+require(__DIR__."/init.php");
 isset($_GET['abs'])?$abs=$_GET['abs']:$abs="";
 isset($_GET['feld'])?$feld=$_GET['feld']:$feld="";
 ?>
@@ -63,7 +64,8 @@ function lmogeben(x){
 </script>
 </head>
 <body>
-<?php 
+<center>
+<?php
 $addi=$_SERVER['PHP_SELF']."?abs=".$abs."&amp;feld=".$feld;
 $dat = time();
 $dat0 = getdate($dat);
@@ -81,16 +83,16 @@ $dat2 = getdate(strtotime($dat5." -1 month"));
 $datr=$dat2['month']." ".$dat2['year'];
 $dat3 = getdate(strtotime($dat5." +1 month"));
 $datv=$dat3['month']." ".$dat3['year'];
-$mn=array("0","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember");
+$mn=array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1], 'Wednesday' => $text['date'][2], 'Thursday' => $text['date'][3], 'Friday' => $text['date'][4], 'Saturday' => $text['date'][5], 'Sunday' => $text['date'][6], 'Mon' => $text['date'][7], 'Tue' => $text['date'][8], 'Wed' => $text['date'][9], 'Thu' => $text['date'][10], 'Fri' => $text['date'][11], 'Sat' => $text['date'][12], 'Sun' => $text['date'][13], 'January' => $text['date'][14], 'February' => $text['date'][15], 'March' => $text['date'][16], 'April' => $text['date'][17], 'May' => $text['date'][18], 'June' => $text['date'][19], 'July' => $text['date'][20], 'August' => $text['date'][21], 'September' => $text['date'][22], 'October' => $text['date'][23], 'November' => $text['date'][24], 'December' => $text['date'][25], 'Jan' => $text['date'][26], 'Feb' => $text['date'][27], 'Mar' => $text['date'][28], 'Apr' => $text['date'][29], 'May' => $text['date'][30], 'Jun' => $text['date'][31], 'Jul' => $text['date'][32], 'Aug' => $text['date'][33], 'Sep' => $text['date'][34], 'Oct' => $text['date'][35], 'Nov' => $text['date'][36], 'Dec' => $text['date'][37] );
 $erster=$dat1['wday'];?>
 <table class="caltab">
   <tr>
     <td align="center">
       <table class="caltab1" width=100%>
         <tr>
-          <td align="left"><a href="<?php echo $addi?>&amp;calshow=<?php echo $datr?>" title="zum vorigen Monat">&nbsp;&lt;&nbsp;</a></td>
-          <td align="center" class="caltz"><?php echo $mn[$dat1['mon']]." ".$dat1['year'];?></td>
-          <td align="right"><a href="<?php echo $addi?>" title="zum aktuellen Monat">&nbsp;#&nbsp;</a><a href="<?php echo $addi?>&amp;calshow=<?php echo $datv?>" title="zum nächsten Monat">&nbsp;&gt;&nbsp;</a></td>
+          <td align="left"><a href="<?php echo $addi?>&amp;calshow=<?php echo $datr?>" title="<?php echo $text['date'][38];?>">&nbsp;&lt;&nbsp;</a></td>
+          <td align="center" class="caltz"><?php echo $mn[$dat1['month']]." ".$dat1['year'];?></td>
+          <td align="right"><a href="<?php echo $addi?>" title="<?php echo $text['date'][39];?>">&nbsp;#&nbsp;</a><a href="<?php echo $addi?>&amp;calshow=<?php echo $datv?>" title="<?php echo $text['date'][40];?>">&nbsp;&gt;&nbsp;</a></td>
         </tr>
       </table>
     </td>
@@ -99,18 +101,18 @@ $erster=$dat1['wday'];?>
     <td align="center">
       <table class="caltab1" width=100%>
         <tr>
-          <td align="center" class="calwt">Mo</td>
-          <td align="center" class="calwt">Di</td>
-          <td align="center" class="calwt">Mi</td>
-          <td align="center" class="calwt">Do</td>
-          <td align="center" class="calwt">Fr</td>
-          <td align="center" class="calwt">Sa</td>
-          <td align="center" class="calwt">So</td>
-        </tr><?php 
+          <td align="center" class="calwt"><?php echo $text['date'][7];?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][8];?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][9];?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][10];?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][11];?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][12];?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][13];?></td>
+        </tr><?php
 if($erster==0){$erster=7;}?>
-        <tr><?php 
+        <tr><?php
 for($i=0;$i<$erster-1;$i++){?>
-          <td class="calat">&nbsp;</td><?php 
+          <td class="calat">&nbsp;</td><?php
 }
 for($i=1;$i<=31;$i++){
   $dat4 = getdate(strtotime($i." ".$dath));
@@ -128,20 +130,20 @@ for($i=1;$i<=31;$i++){
     }
     if ($i<=9){$k="0";}else{$k="";}
     if($heute==1){?>
-          <tr><?php 
+          <tr><?php
     }?>
-            <td align="center" class="<?php echo $stil?>"><a href="#" onclick='lmogeben("<?php echo date("d.m.Y",strtotime($i." ".$dath))?>")' title="Datum übernehmen"><?php echo "$k$i"?></a></td><?php 
+            <td align="center" class="<?php echo $stil?>"><a href="#" onclick='lmogeben("<?php echo date("d.m.Y",strtotime($i." ".$dath))?>")' title="<?php echo $text['date'][41];?>"><?php echo "$k$i"?></a></td><?php
     if($heute==7){?>
-          </tr><?php 
+          </tr><?php
       $j=$heute;
     }
   }
 }
 if ($j!=7){
   for ($i=0;$i<7-$j;$i++){?>
-            <td class="calat">&nbsp;</td><?php 
+            <td class="calat">&nbsp;</td><?php
   }?>
-          </tr><?php 
+          </tr><?php
 }?>
           </td>
         </tr>
@@ -149,6 +151,9 @@ if ($j!=7){
     </td>
   </tr>
   <tr>
-    <td align="right"><a href="#" onclick="self.close()" title="Kalender schließen, ohne ein Datum zu übernehmen">[schließen]</a></td>
+    <td align="right"><a href="#" onclick="self.close()" title="<?php echo $text['date'][42];?>">[<?php echo $text[347];?>]</a></td>
   </tr>
 </table>
+</center>
+</body>
+</html>

@@ -36,3 +36,8 @@
 35=Oct
 36=Noi
 37=Dec
+38=până la luna trecută
+39=până la luna curentă
+40=până în luna următoare
+41=Aplica data
+42=Închide calendarul fără a aplica o dată

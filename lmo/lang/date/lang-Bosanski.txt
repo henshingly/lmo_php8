@@ -36,3 +36,8 @@
 35=Okt
 36=Nov
 37=Dec
+38=prošli mjesec
+39=na tekući mjesec
+40=do sljedećeg mjeseca
+41=Datum primjene
+42=Zatvori kalendar bez primjene datuma

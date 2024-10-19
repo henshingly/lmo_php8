@@ -36,3 +36,8 @@
 35=Okt
 36=Nov
 37=Des
+38=til forrige måned
+39=til inneværende måned
+40=til neste måned
+41=Bruk dato
+42=Lukk kalenderen uten å bruke en dato

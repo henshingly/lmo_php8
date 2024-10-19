@@ -74,7 +74,7 @@ function ateamlmolink(adresse){
 function opencal(feld,startdat){
   lmocal="<?php echo URL_TO_LMO?>/lmo-admincal.php?abs=lmoedit&feld="+feld;
   if(startdat!=""){lmocal=lmocal+"&calshow="+startdat;}
-  lmowin = window.open(lmocal,"lmocalpop","width=180,height=200,resizable=yes,dependent=yes");
+  lmowin = window.open(lmocal,"lmocalpop","width=220,height=200,resizable=yes,dependent=yes");
   lmotest=false;
   return false;
 }

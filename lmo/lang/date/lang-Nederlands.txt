@@ -36,3 +36,8 @@
 35=Okt
 36=Nov
 37=Dec
+38=vorige maand
+39=naar de huidige maand
+40=naar de volgende maand
+41= Datum van toepassing
+42=Kalender sluiten zonder een datum toe te passen

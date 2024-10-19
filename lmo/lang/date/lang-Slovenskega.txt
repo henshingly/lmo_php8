@@ -36,3 +36,8 @@
 35=Oct
 36=Nov
 37=Dec
+38=do prejšnji mesec
+39=na tekoči mesec
+40=do naslednjega meseca
+41=Datum uporabe
+42=Zapri koledar brez uporabe datuma

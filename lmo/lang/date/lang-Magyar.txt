@@ -36,3 +36,8 @@
 35=Okt
 36=Nov
 37=Dec
+38=múlt hónap
+39=az aktuális hónapra
+40=a következő hónapra
+41=Alkalmazás dátuma
+42=Naptár bezárása dátum megadása nélkül

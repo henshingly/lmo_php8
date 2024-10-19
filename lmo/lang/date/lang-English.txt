@@ -36,3 +36,8 @@
 35=Oct
 36=Nov
 37=Dec
+38=to the last month
+39=to the current month
+40=to the next month
+41=Apply date
+42=Close calendar without applying a date
