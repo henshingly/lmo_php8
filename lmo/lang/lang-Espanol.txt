@@ -133,7 +133,7 @@
 132=Guardar Equipos
 133=Gráficos
 134=Ver los gráficos del equipo
-135=JORNADAS
+135=DÍAS DE PARTIDO
 136=POSICIÓN
 137=¡Aún no has guardado!
 138=Datos guardados con éxito

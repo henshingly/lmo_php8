@@ -133,8 +133,8 @@
 132=Uložit mužstva
 133=Graf
 134=Ukázat graf
-135=HRACÍ DEN
-136=Umístění
+135=ZÁPASOVÉ DNY
+136=UMÍSTĚNÍ
 137=Nebude ještě nic uloženo!
 138=Data úspěšně uložena
 139=Datum s nápovědou kalendáře v okénku (nefunkční v Netscape)

@@ -133,8 +133,8 @@
 132=Preluati echipa
 133=Evolutie
 134=Arata evolutiile echipelor
-135=Etape
-136=Loc
+135=ZILE MECI
+136=PLASAMENT
 137=Nu au fost preluate modificarile!
 138=Datele au fost preluate
 139=Alege o data din calendar

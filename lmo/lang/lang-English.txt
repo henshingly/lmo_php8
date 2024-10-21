@@ -133,7 +133,7 @@
 132=Save Teams
 133=Charts
 134=Show Charts
-135=Matchday
+135=MATCHDAY
 136=PLACING
 137=It has not been saved!
 138=Data Saved succesfully
