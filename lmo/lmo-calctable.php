@@ -301,7 +301,7 @@ if ($file != "") {
           require(PATH_TO_LMO."/lmo-calctable1.php");
           if ($anzcnt > 0) {
             for ($b = 1; $b <= count($tab1); $b++) {
-              for($f = 0; $f < count($tab0); $f++) {
+              for ($f = 0; $f < count($tab0); $f++) {
                 if (intval(substr($tab0[$f], -7)) == intval(substr($tab1[$b-1], -7))) {
                   $tab0[$f] = substr($tab0[$f], 0, 17-strlen($b)).$b.substr($tab0[$f], 17);
                 }

@@ -123,7 +123,7 @@ if ($tabonres==2) {?>
   </tr>
 <?php
 $j = 1;
-for($x = 1; $x <= $anzteams; $x++) {
+for ($x = 1; $x <= $anzteams; $x++) {
   $i = intval(substr($tab0[$x-1], 34));
   if ($i == $favteam) {
     $dummy = "<strong>";

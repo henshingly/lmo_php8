@@ -24,11 +24,11 @@
     <th colspan="<?php echo $breite; ?>" align="left">
 <?php
 echo $st.". ".$text[2];
-if($dats==1) {
-  if($datum1[$st-1]!="") {
+if ($dats==1) {
+  if ($datum1[$st-1]!="") {
     echo " ".$text[3]." ".$datum1[$st-1];
   }
-  if($datum2[$st-1]!="") {
+  if ($datum2[$st-1]!="") {
     echo " ".$text[4]." ".$datum2[$st-1];
   }
 }?>
@@ -36,7 +36,7 @@ if($dats==1) {
   </tr><?php
 // Wenn Spieltermine angegeben und Sortierung eingeschaltet, dann nach Datum sortieren
 $datsort = $mterm[$st-1];
-if($enablegamesort == '1' && filterZero($mterm[$st-1])) {
+if ($enablegamesort == '1' && filterZero($mterm[$st-1])) {
   $datsort = $mterm[$st-1];
   asort($datsort);
   reset($datsort);
@@ -106,7 +106,7 @@ foreach($datsort as $key => $val) {
     <td align="right"><?php echo applyFactor($goala[$st-1][$i],$goalfaktor); ?></td>
     <td align="center" width="8">:</td>
     <td align="left"><?php echo applyFactor($goalb[$st-1][$i],$goalfaktor); ?></td><?php
-    if($spez==1) {?>
+    if ($spez==1) {?>
     <td width="2">&nbsp;</td>
     <td><?php echo $mspez[$st-1][$i]; ?></td><?php
     }
@@ -122,14 +122,14 @@ foreach($datsort as $key => $val) {
      */
     $lmo_teamaicon="";
     $lmo_teambicon="";
-    if($urlb==1 || $mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
+    if ($urlb==1 || $mnote[$st-1][$i]!="" || $msieg[$st-1][$i]>0) {
       $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");
       $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''");
     }
     /** Spielbericht verlinken
      */
-    if($urlb==1) {
-      if($mberi[$st-1][$i]!="") {
+    if ($urlb==1) {
+      if ($mberi[$st-1][$i]!="") {
         $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> &ndash; ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
         echo " <a href='".$mberi[$st-1][$i]."'  target='_blank'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
       } else {

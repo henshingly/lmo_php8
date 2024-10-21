@@ -80,7 +80,7 @@ if ($file != "") {
     if ($lmtype != 0) {
       $anzsp2 = $anzteams;
       for($i = 0; $i < $st; $i++) {
-        if($anzteams==24) {
+        if ($anzteams==24) {
           switch ($i) {
             case 0:
             case 1:
@@ -148,7 +148,7 @@ if ($file != "") {
         $goala[$st-1][$i] = isset($_POST["xgoala".$i]) ? trim($_POST["xgoala".$i]) : '';
         if ($goala[$st-1][$i] == "" || $goala[$st-1][$i] == "_") {
           $goala[$st-1][$i] = -1;
-        } elseif(strtoupper($goala[$st-1][$i]) == "X") {
+        } elseif (strtoupper($goala[$st-1][$i]) == "X") {
           $goala[$st-1][$i] = 0;
           $msieg[$st-1][$i] = 1;
         } else {
@@ -160,7 +160,7 @@ if ($file != "") {
         $goalb[$st-1][$i] = isset($_POST["xgoalb".$i]) ? trim($_POST["xgoalb".$i]) : '';
         if ($goalb[$st-1][$i] == "" || $goalb[$st-1][$i] == "_") {
           $goalb[$st-1][$i] = -1;
-        } elseif(strtoupper($goalb[$st-1][$i]) == "X") {
+        } elseif (strtoupper($goalb[$st-1][$i]) == "X") {
           $goalb[$st-1][$i] = 0;
           $msieg[$st-1][$i] = 2;
         } else {
@@ -193,7 +193,7 @@ if ($file != "") {
           $goala[$st-1][$i][$n] = trim($_POST["xgoala".$i.$n]);
           if ($goala[$st-1][$i][$n] == "") {
             $goala[$st-1][$i][$n] = -1;
-          } elseif($goala[$st-1][$i][$n] == "_") {
+          } elseif ($goala[$st-1][$i][$n] == "_") {
             $goala[$st-1][$i][$n] = -1;
           } else {
             $goala[$st-1][$i][$n] = intval(trim($goala[$st-1][$i][$n]));
@@ -204,7 +204,7 @@ if ($file != "") {
           $goalb[$st-1][$i][$n] = trim($_POST["xgoalb".$i.$n]);
           if ($goalb[$st-1][$i][$n] == "") {
             $goalb[$st-1][$i][$n] = -1;
-          } elseif($goalb[$st-1][$i][$n] == "_") {
+          } elseif ($goalb[$st-1][$i][$n] == "_") {
             $goalb[$st-1][$i][$n] = -1;
           } else {
             $goalb[$st-1][$i][$n] = intval(trim($goalb[$st-1][$i][$n]));
@@ -290,7 +290,7 @@ if ($file != "") {
   }
   
   // Rückrunden-Hack
-  if($save == 990) require_once("lmo-rueckrunde.php");
+  if ($save == 990) require_once("lmo-rueckrunde.php");
 
   if ($lmtype != 0) {
     if ($st >= 1) {
@@ -302,13 +302,13 @@ if ($file != "") {
           $m = gewinn($i, $j, $modus[$i], $m1, $m2);
           if ($m == 1) {
             $teamt[$teamb[$i][$j]] = 1;
-          } elseif($m == 2) {
+          } elseif ($m == 2) {
             $teamt[$teama[$i][$j]] = 1;
           }
           if (($klfin == 1) && ($i == $st-2)) {
             if ($m == 1) {
               $teamt[$teamb[$i][$j]] = 2;
-            } elseif($m == 2) {
+            } elseif ($m == 2) {
               $teamt[$teama[$i][$j]] = 2;
             }
           }
@@ -331,7 +331,7 @@ if ($file != "") {
   </tr>
   <tr>
     <td align="center">
-	<?php include (PATH_TO_LMO."/lmo-spieltagsmenu.php");
+<?php include (PATH_TO_LMO."/lmo-spieltagsmenu.php");
   if ($lmtype == 0) { ?>
       <form  name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">
@@ -368,7 +368,7 @@ if ($file != "") {
   } else {
     $dum2 = "";
   }
-  if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
+  if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
               <acronym title="<?php echo $text[105] ?>"> <?php echo $text[3]?></acronym> <input class="lmo-formular-input" type="text" name="xdatum1" tabindex="01" size="10" maxlength="10" value="<?php echo $datum1[$st-1]; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum1\',\'<?php echo $dum1; ?>\')" title="<?php echo $text[139]; ?>" onMouseOver="lmoimg(\'d1\',img5)" onMouseOut="lmoimg(\'d1\',img4)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin4.gif" name="ximgd1" width="12" height="11" border="0"></a>');</script>
               <acronym title="<?php echo $text[106] ?>"> <?php echo $text[4]?></acronym> <input class="lmo-formular-input" type="text" name="xdatum2" tabindex="02" size="10" maxlength="10" value="<?php echo $datum2[$st-1]; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum2\',\'<?php echo $dum2; ?>\')" title="<?php echo $text[139]; ?>" onMouseOver="lmoimg(\'d2\',img5)" onMouseOut="lmoimg(\'d2\',img4)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin4.gif" name="ximgd2" width="12" height="11" border="0"></a>');</script><?php
   }?>
@@ -378,19 +378,19 @@ if ($file != "") {
   } else {?>
             <th colspan="<?php echo $breite-13; ?>">&nbsp;</th><?php
   }
-  if($lmtype==0){ ?>
+  if ($lmtype==0){ ?>
             <th class="nobr"><acronym title="<?php echo $text[213] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/paragraph.gif" width="17" height="17" alt="<?php echo $text[217]; ?>"></acronym></th><?php
   }?>
             <th class="nobr"><acronym title="<?php echo $text[112] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[218]; ?>"></acronym></th>
             <th class="nobr"><acronym title="<?php echo $text[263] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[262]; ?>"></acronym></th><?php
-  if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
+  if ($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
             <th class="nobr"><acronym title="<?php echo $text['tipp'][57] ?>"><?php echo $text['tipp'][57]; ?></acronym></th><?php
   }?>
           </tr><?php
   if ($lmtype != 0) {
     $anzsp = $anzteams;
     for($i = 0; $i < $st; $i++) {
-      if($anzteams==24) {
+      if ($anzteams==24) {
         switch ($i) {
           case 0:
           case 1:
@@ -432,7 +432,7 @@ if ($file != "") {
             <td><input title="<?php echo $text[123] ?>" class="lmo-formular-input" type="text" name="xattim<?php echo $i; ?>" tabindex="<?php echo $i;?>04" size="5" maxlength="5" value="<?php echo $dum2; ?>" onChange="dolmoedit()" ondblclick="fillAll(this);"></td>
             <td width="2">&nbsp;</td>
             <td class="nobr" align="right"><?php
-      if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
+      if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
               <select class="lmo-formular-input" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>05"><?php
         for($y = 0; $y <= $anzteams; $y++) {?>
                 <option value="<?php echo $y?>"<?php if ($y == $teama[$st-1][$i]) {echo " selected";}?>><?php echo $teams[$y]?></option><?php
@@ -444,7 +444,7 @@ if ($file != "") {
             </td>
             <td align="center" width="10">-</td>
             <td class="nobr"><?php
-      if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
+      if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){ ?>
               <select class="lmo-formular-input" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i;?>06"><?php
         for($y = 0; $y <= $anzteams; $y++) {?>
                 <option value="<?php echo $y?>"<?php if ($y == $teamb[$st-1][$i]) {echo " selected";}?>><?php echo $teams[$y]?></option><?php
@@ -453,10 +453,10 @@ if ($file != "") {
       } else {
         echo $teams[$teamb[$st-1][$i]];
       }
-      if($goala[$st-1][$i]=="-1"){
+      if ($goala[$st-1][$i]=="-1"){
         $goala[$st-1][$i]="_";
       }
-      if($goalb[$st-1][$i]=="-1"){
+      if ($goalb[$st-1][$i]=="-1"){
         $goalb[$st-1][$i]="_";
       }?>
             </td>
@@ -484,25 +484,25 @@ if ($file != "") {
                 </tr>
               </table>
             </td><?php
-      if($spez==1){?>
+      if ($spez==1){?>
             <td width="2">&nbsp;</td>
             <td>
               <select class="lmo-formular-input" name="xmspez<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>09" >
-                <option<?php if($mspez[$st-1][$i]=="&nbsp;"){echo " selected";}?>>_</option>
-                <option<?php if($mspez[$st-1][$i]==$text[0]){echo " selected";}?>><?php echo $text[0]?></option>
-                <option<?php if($mspez[$st-1][$i]==$text[1]){echo " selected";}?>><?php echo $text[1]?></option>
+                <option<?php if ($mspez[$st-1][$i]=="&nbsp;"){echo " selected";}?>>_</option>
+                <option<?php if ($mspez[$st-1][$i]==$text[0]){echo " selected";}?>><?php echo $text[0]?></option>
+                <option<?php if ($mspez[$st-1][$i]==$text[1]){echo " selected";}?>><?php echo $text[1]?></option>
               </select>
             </td><?php
       }?>
             <td width="2">&nbsp;</td>
             <td align="center">
               <select id="gT<?php echo $i?>" class="lmo-formular-input" name="xmsieg<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>10" >
-                <option value="0"<?php if($msieg[$st-1][$i]==0){echo " selected";}?>>_</option>
-                <option value="1"<?php if($msieg[$st-1][$i]==1){echo " selected";}?>><?php echo $text[214]?></option>
-                <option value="2"<?php if($msieg[$st-1][$i]==2){echo " selected";}?>><?php echo $text[215]?></option>
-                <option value="3"<?php if($msieg[$st-1][$i]==3){echo " selected";}?>><?php echo $text[216]?></option>
+                <option value="0"<?php if ($msieg[$st-1][$i]==0){echo " selected";}?>>_</option>
+                <option value="1"<?php if ($msieg[$st-1][$i]==1){echo " selected";}?>><?php echo $text[214]?></option>
+                <option value="2"<?php if ($msieg[$st-1][$i]==2){echo " selected";}?>><?php echo $text[215]?></option>
+                <option value="3"<?php if ($msieg[$st-1][$i]==3){echo " selected";}?>><?php echo $text[216]?></option>
               </select><?php
-      if($msieg[$st-1][$i]==0) {?>
+      if ($msieg[$st-1][$i]==0) {?>
               <script type="text/javascript">document.getElementById('gT<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'gT<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
             </td>
@@ -518,11 +518,11 @@ if ($file != "") {
       }?>
             </td><?php
       /*Tippspiel-Addon*/
-      if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
+      if ($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
             <td>
               <select class="lmo-formular-input" name="xmtipp<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>12" >
-                <option value="0"<?php if($mtipp[$st-1][$i]<1){echo " selected";}?>>_</option>
-                <option value="1"<?php if($mtipp[$st-1][$i]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
+                <option value="0"<?php if ($mtipp[$st-1][$i]<1){echo " selected";}?>>_</option>
+                <option value="1"<?php if ($mtipp[$st-1][$i]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
               </select>
             </td><?php
       }?>
@@ -530,9 +530,9 @@ if ($file != "") {
     } else {
       /*Pokalmodus*/
       for($n=0;$n<$modus[$st-1];$n++){
-        if(($klfin==1) && ($st==$anzst)){ ?>
+        if (($klfin==1) && ($st==$anzst)){ ?>
           <tr>
-            <td class="nobr" colspan=<?php echo $breite; ?>><?php if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></td>
+            <td class="nobr" colspan=<?php echo $breite; ?>><?php if ($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></td>
           </tr><?php
         }?>
           <tr><?php
@@ -549,10 +549,10 @@ if ($file != "") {
             <td><input title="<?php echo $text[123] ?>" class="lmo-formular-input" type="text" name="xattim<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>04" size="5" maxlength="5" value="<?php echo $dum2; ?>" onChange="dolmoedit()"></td>
             <td width="2">&nbsp;</td>
 <?php
-        if($n==0){ ?>
+        if ($n==0){ ?>
             <td class="nobr" align="right">
 <?php
-          if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
+          if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
               <select class="lmo-formular-input" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[107] ?>" tabindex="<?php echo $i.$n;?>05"><?php
 
             if (($klfin == 1) && ($st == $anzst) && ($i == 1)) {
@@ -592,7 +592,7 @@ if ($file != "") {
             <td align="center" width="10">-</td>
             <td class="nobr">
 <?php
-          if($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
+          if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1){?>
               <select class="lmo-formular-input" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108] ?>" tabindex="<?php echo $i.$n;?>06"><?php
             if (($klfin == 1) && ($st == $anzst) && ($i == 1)) {
               echo "<option value=\"0\"";
@@ -857,26 +857,26 @@ if ($file != "") {
             <td class="lmoBackMarkierung" width="2">&nbsp;</td>
             <td class="lmoBackMarkierung">
               <select class="lmo-formular-input" name="xmspez<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text[111] ?>" tabindex="<?php echo $i.$n;?>09">
-                <option<?php if($mspez[$st-1][$i][$n]=="&nbsp;"){echo " selected";}?>>_</option>
-                <option<?php if($mspez[$st-1][$i][$n]==$text[0]){echo " selected";}?>><?php echo $text[0]?></option>
-                <option<?php if($mspez[$st-1][$i][$n]==$text[1]){echo " selected";}?>><?php echo $text[1]?></option>
+                <option<?php if ($mspez[$st-1][$i][$n]=="&nbsp;"){echo " selected";}?>>_</option>
+                <option<?php if ($mspez[$st-1][$i][$n]==$text[0]){echo " selected";}?>><?php echo $text[0]?></option>
+                <option<?php if ($mspez[$st-1][$i][$n]==$text[1]){echo " selected";}?>><?php echo $text[1]?></option>
               </select>
             </td>
             <td width="2">&nbsp;</td>
             <td><input class="lmo-formular-input" type="text" name="xmnote<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>10" size="16" value="<?php echo htmlentities($mnote[$st-1][$i][$n]); ?>" onChange="dolmoedit()"></td>
             <td><input class="lmo-formular-input" type="text" name="xmberi<?php echo $i.$n; ?>" tabindex="<?php echo $i.$n;?>11" size="16" value="<?php echo htmlentities($mberi[$st-1][$i][$n]); ?>" onChange="dolmoedit()"></td><?php
         /**Tippspiuel-Addon*/
-        if($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
+        if ($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
             <td>
               <select class="lmo-formular-input" name="xmtipp<?php echo $i.$n; ?>" onChange="dolmoedit()" title="<?php echo $text['tipp'][57] ?>" tabindex="<?php echo $i.$n;?>12">
-                <option value="0"<?php if($mtipp[$st-1][$i][$n]<1){echo " selected";}?>>_</option>
-                <option value="1"<?php if($mtipp[$st-1][$i][$n]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
+                <option value="0"<?php if ($mtipp[$st-1][$i][$n]<1){echo " selected";}?>>_</option>
+                <option value="1"<?php if ($mtipp[$st-1][$i][$n]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
               </select>
             </td><?php
         }?>
           </tr><?php
       }
-      if(($modus[$st-1]>1) && ($i<$anzsp-1)){ ?>
+      if (($modus[$st-1]>1) && ($i<$anzsp-1)){ ?>
           <tr>
             <td colspan="<?php echo $breite; ?>">&nbsp;</td>
           </tr><?php
@@ -916,14 +916,14 @@ if ($file != "") {
             <td colspan="<?php echo $breite; ?>" align="center">
               <acronym title="<?php echo $text[208] ?>"><?php echo $text[207]; ?></acronym>
               <select tabindex="<?php echo $i;?>014" class="lmo-formular-input" name="xnticker" onChange="dolmoedit()">
-                <option value="1"<?php if($nticker==1){echo " selected";}?>><?php echo $text[181]?></option>
-                <option value="0"<?php if($nticker==0){echo " selected";}?>><?php echo $text[182]?></option>
+                <option value="1"<?php if ($nticker==1){echo " selected";}?>><?php echo $text[181]?></option>
+                <option value="0"<?php if ($nticker==0){echo " selected";}?>><?php echo $text[182]?></option>
               </select>
             </td>
           </tr>
           <tr>
             <td colspan="<?php echo $breite; ?>" align="center">
-              <acronym title="<?php echo $text[210] ?>">Tickertext: </acronym><textarea tabindex="<?php echo $i;?>015" class="lmo-formular-input" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php if(count($nlines)>0){foreach($nlines as $y){echo $y."\n";}} ?></textarea>
+              <acronym title="<?php echo $text[210] ?>">Tickertext: </acronym><textarea tabindex="<?php echo $i;?>015" class="lmo-formular-input" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php if (count($nlines)>0){foreach($nlines as $y){echo $y."\n";}} ?></textarea>
             </td>
           </tr>
           <tr>

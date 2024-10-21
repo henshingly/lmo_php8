@@ -19,8 +19,8 @@
   */
 
 
-if(!isset($namepkt)) {$namepkt="";}
-if(!isset($nametor)) {$nametor="";}
+if (!isset($namepkt)) {$namepkt="";}
+if (!isset($nametor)) {$nametor="";}
 
 if ($st > 0) {
   $actual = $anzst;
@@ -29,14 +29,14 @@ if ($st > 0) {
 }
 
 if ($lmtype == 0) {
-  for($i1 = 0; $i1 < $anzsp; $i1++) {
+  for ($i1 = 0; $i1 < $anzsp; $i1++) {
     if ($goala[$actual - 1][$i1] == "-1") $goala[$actual - 1][$i1] = "_";
     if ($goalb[$actual - 1][$i1] == "-1") $goalb[$actual - 1][$i1] = "_";
   }
   $endtab = $actual;
   include_once(PATH_TO_LMO . "/lmo-calctable.php");
 
-  for($i1 = 0; $i1 < $anzsp; $i1++) {
+  for ($i1 = 0; $i1 < $anzsp; $i1++) {
     if ($goala[$actual - 1][$i1] == "_") $goala[$actual - 1][$i1] = "-1";
     if ($goalb[$actual - 1][$i1] == "_") $goalb[$actual - 1][$i1] = "-1";
   }
