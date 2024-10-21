@@ -74,6 +74,7 @@ if(($file != "") && ($kurve == 1)){
     } else {
       $flag = 'true';
     }
+    $teams[$j] = str_replace( "'", "´", $teams[$j] ); //Team names with an apostrophe inside destroy the graph curve
     $data .= "{
                               label: '$teams[$j]',
                               fill: false,
