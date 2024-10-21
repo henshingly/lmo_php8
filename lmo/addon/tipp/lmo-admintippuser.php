@@ -29,9 +29,9 @@ if ($_SESSION["lmouserok"] == 2) {
   $users = file($pswfile);
   array_unshift($users,'');
 
-  if($del != "") {
+  if ($del != "") {
     $gef = 0;
-    for($i = 1; $i < count($users) && $gef == 0; $i++) {
+    for ($i = 1; $i < count($users) && $gef == 0; $i++) {
       $dummb = explode('|', $users[$i]);
       if ($del == $dummb[0]) {
         // Nick gefunden
@@ -50,11 +50,11 @@ if ($_SESSION["lmouserok"] == 2) {
       }
       closedir($verz);
       $anztippfiles = count($dummy);
-      for($k = 0; $k < $anztippfiles; $k++) {
+      for ($k = 0; $k < $anztippfiles; $k++) {
         @unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k]); // Tipps löschen
       }
        
-      for($i = $del+1; $i < count($users); $i++) {
+      for ($i = $del+1; $i < count($users); $i++) {
         $users[$i-1] = $users[$i];
       }
       array_pop($users); // die letzte Zeile abgeschnitten
@@ -140,7 +140,7 @@ if ($_SESSION["lmouserok"] == 2) {
     $team = array_pad($array, $anztipper, "");
     $ltipp = array_pad($array, $anztipper, "");
     $freig = array_pad($array, $anztipper, "");
-    for($i = 1; $i < $anztipper; $i++) {
+    for ($i = 1; $i < $anztipper; $i++) {
       $userd = explode('|', $users[$i]);
       $id[$i] = $i;
       $nick[$i] = $userd[0];
@@ -172,9 +172,9 @@ if ($_SESSION["lmouserok"] == 2) {
 
     
     usort($tab0, 'cmp');
-    if($tipper_sort_direction=='desc') $tab0=array_reverse($tab0);?> 
+    if ($tipper_sort_direction=='desc') $tab0=array_reverse($tab0);?> 
         <tbody><?php 
-    for($x = 0; $x < $anztipper-1; $x++) {?>
+    for ($x = 0; $x < $anztipper-1; $x++) {?>
         <tr>
           <td align="left"><?php 
       if ($tab0[$x]['freig']!="5"){?>
@@ -191,7 +191,7 @@ if ($_SESSION["lmouserok"] == 2) {
       }?> </td>
           <td align="left"><?php echo $tab0[$x]['name']; ?></td>
           <td align="left"><?php echo $tab0[$x]['team']; ?></td>
-          <td align="left"><?php if($tab0[$x]['ltipp']>0){echo date("d.m.Y H:i",$tab0[$x]['ltipp']);} ?></td>    
+          <td align="left"><?php if ($tab0[$x]['ltipp']>0){echo date("d.m.Y H:i",$tab0[$x]['ltipp']);} ?></td>    
           <td align="left"><a href='<?php echo $added.$tab0[$x]['nick']?>' onClick="return chklmolink();"><?php echo $text['tipp'][98]?></a></td>
           <td align="left"><a href='<?php echo $addd.$tab0[$x]['nick']?>' onClick="return confirm('<?php echo $text[499]?>');"><img src="<?php echo URL_TO_IMGDIR?>/delete.gif" border="0" width="11" height="13" alt="<?php echo $text[82]?>"></a></td><?php 
     }?>
@@ -216,7 +216,7 @@ function cmp ($a1, $a2) {
   if (is_numeric($a1[$tipper_sort]) && is_numeric($a2[$tipper_sort])) {  //Numerischer Vergleich
     if ($a2[$tipper_sort]==$a1[$tipper_sort]) return 0;
     return ($a1[$tipper_sort]>$a2[$tipper_sort]) ? 1 : -1;
-  }else{ //Stringvergleich
+  } else { //Stringvergleich
     $a1[$tipper_sort]=strtr($a1[$tipper_sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
   	$a2[$tipper_sort]=strtr($a2[$tipper_sort],"¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ","YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
   	return  strnatcasecmp($a1[$tipper_sort],$a2[$tipper_sort]);

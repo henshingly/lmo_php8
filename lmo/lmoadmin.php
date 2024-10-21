@@ -24,15 +24,15 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
   define('LMO_AUTH', 1);
   require(__DIR__.'/init.php');
   $subdir='';
-  if(!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
-  if(!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
-  if(!isset($_SESSION["lmouserpass"])){$_SESSION["lmouserpass"]="";}
-  if(!isset($_SESSION["lmouserfile"])){$_SESSION["lmouserfile"]="";}
-  if(!isset($_SESSION["lmouserokerweitert"])){$_SESSION["lmouserokerweitert"]=0;}
+  if (!isset($_SESSION["lmouserok"])){$_SESSION["lmouserok"]=0;}
+  if (!isset($_SESSION["lmousername"])){$_SESSION["lmousername"]="";}
+  if (!isset($_SESSION["lmouserpass"])){$_SESSION["lmouserpass"]="";}
+  if (!isset($_SESSION["lmouserfile"])){$_SESSION["lmouserfile"]="";}
+  if (!isset($_SESSION["lmouserokerweitert"])){$_SESSION["lmouserokerweitert"]=0;}
 
   $todo=isset($_REQUEST['todo'])?$_REQUEST['todo']:"";
   $st=isset($_REQUEST['st'])?$_REQUEST['st']:NULL;
-  if($todo=="logout"){
+  if ($todo=="logout"){
     $_SESSION['lmouserok']=0;
     $_SESSION['lmouserpass']="";
   }
@@ -55,7 +55,7 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
   $action="admin";
   $array = array();
   require(PATH_TO_LMO."/lmo-adminauth.php");
-  if(isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0){
+  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']>0){
     $file=!empty($_REQUEST['file'])?$_REQUEST['file']:'';
     if (!empty($file) && ($todo=="open" || $todo=="")) $todo="edit";
     if ((!empty($file) && check_hilfsadmin($file)) || empty($file))  require(PATH_TO_LMO."/lmo-adminmain.php");

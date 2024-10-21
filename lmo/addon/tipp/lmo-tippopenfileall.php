@@ -51,7 +51,7 @@ if ($lmtype == 0) {
   $jksp = array_pad($array, 116, "");
   $goaltippa = array_pad($array, 116, "");
   $goaltippb = array_pad($array, 116, "");
-  for($i = 0; $i < 116; $i++) {
+  for ($i = 0; $i < 116; $i++) {
     $goaltippa[$i] = array_pad(array("_"), 40, "_");
     $goaltippb[$i] = array_pad(array("_"), 40, "_");
   }
@@ -59,10 +59,10 @@ if ($lmtype == 0) {
   $jksp = array_pad($array, 7, "");
   $goaltippa = array_pad($array, 7, "");
   $goaltippb = array_pad($array, 7, "");
-  for($i = 0; $i < 7; $i++) {
+  for ($i = 0; $i < 7; $i++) {
     $goaltippa[$i] = array_pad(array(""), 64, "");
     $goaltippb[$i] = array_pad(array(""), 64, "");
-    for($j = 0; $j < 64; $j++) {
+    for ($j = 0; $j < 64; $j++) {
       $goaltippa[$i][$j] = array_pad(array("_"), 7, "_");
       $goaltippb[$i][$j] = array_pad(array("_"), 7, "_");
     }
@@ -70,7 +70,7 @@ if ($lmtype == 0) {
 }
  
  
-for($i = 1; $i <= count($tippdaten); $i++) {
+for ($i = 1; $i <= count($tippdaten); $i++) {
   $dum = explode('|', $tippdaten[$i-1]);
   $op2 = substr($dum[0], 0, 5);
   $op3 = substr($dum[0], 5)-1;

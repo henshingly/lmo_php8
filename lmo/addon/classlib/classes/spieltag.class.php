@@ -137,8 +137,8 @@ class spieltag {
    */
   function &partieForNumber($number) {
     $result = null;
-    // Bugfix 13.10.04    if(isset($number) && $nNumber > 0 && $number <= $this->partienCount())
-    if(isset($number) && $number > 0 && $number <= $this->partienCount()) {
+    // Bugfix 13.10.04    if (isset($number) && $nNumber > 0 && $number <= $this->partienCount())
+    if (isset($number) && $number > 0 && $number <= $this->partienCount()) {
       $result = $this->partien[$number-1];
     }
     return $result;
@@ -210,7 +210,7 @@ class spieltag {
         $index++;
       }
     }
-    if(isset($partienArray)) {
+    if (isset($partienArray)) {
       $this->partien = &$partienArray;
     } else {
       $this->partien = null;

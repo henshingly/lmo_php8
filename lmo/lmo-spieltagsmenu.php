@@ -29,7 +29,7 @@
         if (isset($todo) && $todo=="tabs") {
           echo "<a href='".$addb.$i."' title='".$k."'>".$j."</a>";
         } else {
-          if($i == $st) {
+          if ($i == $st) {
             echo "$j";
           } else {
             echo "<a href='".$addr.$i."' title='".$k."'>".$j."</a>";

@@ -137,11 +137,11 @@ if ($file != "") {
           }
           // ende if (($goaltippa[$j][$i]!="_") && ($goaltippb[$j][$i]!="_") &&
         }
-        // ende if($btip[$j][$i]==false)
+        // ende if ($btip[$j][$i]==false)
       }
-      // ende for($i=0;$i<$anzsp;$i++)
+      // ende for ($i=0;$i<$anzsp;$i++)
     }
-    // ende for($j=$hoy;$j<$endtab;$j++)
+    // ende for ($j=$hoy;$j<$endtab;$j++)
     if (($tabtype == 0 or $tabtype == 3 or $tabtype == 4) && $m==0) {
       $punkte[$a] = $punkte[$a]-$strafp[$a];
       if ($minus == 2) {
@@ -162,7 +162,7 @@ if ($file != "") {
       }
     }
   }
-  // ende for($a=1;$a<=$anzteams;$a++)
+  // ende for ($a=1;$a<=$anzteams;$a++)
   if ($m == ($anztipper-1)) {
     array_shift($tab0);
     rsort($tab0, SORT_STRING);
@@ -204,10 +204,10 @@ if ($file != "") {
       }
       rsort($tab0, SORT_STRING);
     }
-    // ende if($direkt==1)
+    // ende if ($direkt==1)
   }
-  // ende if($m==($anztipper-1))
+  // ende if ($m==($anztipper-1))
 }
-// ende if($file!="")
+// ende if ($file!="")
 
 ?>

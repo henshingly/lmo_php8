@@ -7,7 +7,7 @@ if ($todo!='tipp') {?>
   echo $text['tipp'][63];
 }?> </td>
     <td align="center"><?php 
-if($_SESSION['lmouserok']==2){
+if ($_SESSION['lmouserok']==2){
   if ($todo!='tippemail') {?>
       <a href='<?php echo $tipp_addr_email?>' onClick="return chklmolink();" title="<?php echo $text['tipp'][165]?>"><?php echo $text['tipp'][165]?></a><?php 
   } else {

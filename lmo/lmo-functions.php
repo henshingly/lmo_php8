@@ -182,7 +182,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
   } else {
     $erg1 = 0;
     $erg2 = 0;
-    for($k = 0; $k < $gmod; $k++) {
+    for ($k = 0; $k < $gmod; $k++) {
       if (($m1[$k] != "_") && ($m2[$k] != "_")) {
         if ($m1[$k] > $m2[$k]) {
           $erg1++;
@@ -301,7 +301,7 @@ $lmo_version = $json_a['version'];
 $updatefilecheck_URL = $json_a['extra']['check'];
 
 // UpdateURL prüfen
-if(url_check($json_a['extra']['check'])){
+if (url_check($json_a['extra']['check'])){
   $LMO_UPDATE = file_get_contents($json_a['extra']['check'], FALSE);
   $json_update = json_decode($LMO_UPDATE, TRUE, 4);
   $new_lmo_version = $json_update['stable']['current'];

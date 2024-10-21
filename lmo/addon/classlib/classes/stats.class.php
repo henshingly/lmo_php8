@@ -21,12 +21,12 @@ class stats {
 
   function __construct(&$ligaObject) {
     if ( is_a($ligaObject, "liga") || is_subclass_of($ligaObject, "liga") ) {
-      if($ligaObject->options->keyValues['Type']>=1){
+      if ($ligaObject->options->keyValues['Type']>=1){
         return null;
       }
       $this->liga = $ligaObject ;
     }
-    else{
+    else {
       return null;
     }
   }
@@ -94,7 +94,7 @@ class stats {
           $statsArray["gSiege"]++;
         }
         $next_index = count($statsArray["maxhS"]);
-        if(count($statsArray["maxhS"]) < 1){
+        if (count($statsArray["maxhS"]) < 1){
           $statsArray["maxhS"][0]["spieltag"]=$spieltag->nr;
           $statsArray["maxhS"][0]["partie"]=$partie;
         } elseif (($statsArray["maxhS"][0]["partie"]->hTore - $statsArray["maxhS"][0]["partie"]->gTore) < ($partie->hTore - $partie->gTore)){
@@ -106,7 +106,7 @@ class stats {
           $statsArray["maxhS"][$next_index]["partie"]=$partie;
         }
         $next_index = count($statsArray["maxgS"]);
-        if(count($statsArray["maxgS"]) < 1 ){
+        if (count($statsArray["maxgS"]) < 1 ){
           $statsArray["maxgS"][0]["spieltag"]=$spieltag->nr;
           $statsArray["maxgS"][0]["partie"]=$partie;
         } elseif (($statsArray["maxgS"][0]["partie"]->gTore - $statsArray["maxgS"][0]["partie"]->hTore) < ($partie->gTore - $partie->hTore)){
@@ -118,7 +118,7 @@ class stats {
           $statsArray["maxgS"][$next_index]["partie"]=$partie;
         }
         $next_index = count($statsArray["maxTor"]);
-        if(count($statsArray["maxTor"]) < 1){
+        if (count($statsArray["maxTor"]) < 1){
           $statsArray["maxTor"][0]["spieltag"]=$spieltag->nr;
           $statsArray["maxTor"][0]["partie"]=$partie;
         } elseif (($statsArray["maxTor"][0]["partie"]->hTore + $statsArray["maxTor"][0]["partie"]->gTore) < ($partie->hTore + $partie->gTore)){
@@ -130,7 +130,7 @@ class stats {
           $statsArray["maxTor"][$next_index]["partie"]=$partie;
         }
       } // foreach Partien
-      if($spTagCount<$spTag) $spTagCount++; else break;
+      if ($spTagCount<$spTag) $spTagCount++; else break;
     } // foreach Spieltage
 
     return $statsArray;
@@ -167,7 +167,7 @@ class stats {
                          "tabelle"=>array());
     $tableArray = $this->liga->calcTable($this->liga->options->keyValues['Rounds'],"all",TRUE);
     foreach($tableArray as $zeile){
-      if($zeile["team"] == $team){
+      if ($zeile["team"] == $team){
         $statsArray["pkts"] = ($zeile["spiele"]==0)?0:number_format(round($zeile["pPkt"]/$zeile["spiele"],2),2,".","");
         $statsArray["tore"] = $zeile["pTor"].":".$zeile["mTor"];
         $pTorS = ($zeile["spiele"]==0)?0:number_format(round($zeile["pTor"]/$zeile["spiele"],2),2,".","");
@@ -236,7 +236,7 @@ class stats {
       $partie = $result["partie"];
       if ($partie->hTore>-1 and $partie->gTore>-1) { // Ein normales Ergebnis?
         if ($partie->gTore > $partie->hTore) { // Gast hat gewonnen
-          if($partie->heim == $team){ //Niederlage
+          if ($partie->heim == $team){ //Niederlage
             $serienArray["s"] = 0;
             $serienArray["n"] ++;
             $serienArray["u"] = 0;
@@ -250,7 +250,7 @@ class stats {
             $serienArray["nu"] = 0;
           }
         } elseif ($partie->gTore < $partie->hTore) { // Heim hat gewonnen
-          if($partie->heim == $team){ //Sieg
+          if ($partie->heim == $team){ //Sieg
             $serienArray["s"] ++;
             $serienArray["n"] = 0;
             $serienArray["u"] = 0;
@@ -263,7 +263,7 @@ class stats {
             $serienArray["su"] = 0;
             $serienArray["nu"] ++;
           }
-        }elseif ($partie->gTore == $partie->hTore) { //Unentschieden
+        } elseif ($partie->gTore == $partie->hTore) { //Unentschieden
           $serienArray["s"] = 0;
           $serienArray["n"] = 0;
           $serienArray["u"]  ++;
@@ -272,7 +272,7 @@ class stats {
         }
       }
       else if ($partie->hTore==-2) { // O:0 Tore Heim gewinnt
-        if($partie->heim == $team){
+        if ($partie->heim == $team){
           $serienArray["s"] ++;
           $serienArray["n"] = 0;
           $serienArray["u"] = 0;
@@ -287,7 +287,7 @@ class stats {
         }
       }
       else if ($partie->gTore==-2) { // O:0 Tore Gast gewinnt
-        if($partie->gast == $team){
+        if ($partie->gast == $team){
           $serienArray["s"] ++;
           $serienArray["n"] = 0;
           $serienArray["u"] = 0;
@@ -331,9 +331,9 @@ class stats {
       $partie = $result["partie"];
       if ($partie->hTore>-1 and $partie->gTore>-1) { // Ein normales Ergebnis?
         if ($partie->gTore > $partie->hTore) { // Gast hat gewonnen
-          if($partie->heim == $team){ //Niederlage
+          if ($partie->heim == $team){ //Niederlage
             $next_index = count($maxArray["nH"]);
-            if(count($maxArray["nH"]) < 1){
+            if (count($maxArray["nH"]) < 1){
               $maxArray["nH"][0]["partie"]=$partie;
             } elseif (($maxArray["nH"][0]["partie"]->gTore - $maxArray["nH"][0]["partie"]->hTore) < ($partie->gTore - $partie->hTore)){
               unset($maxArray["nH"]);
@@ -343,7 +343,7 @@ class stats {
             }
           } elseif ($partie->gast == $team){ // Sieg
             $next_index = count($maxArray["sA"]);
-            if(count($maxArray["sA"]) < 1){
+            if (count($maxArray["sA"]) < 1){
               $maxArray["sA"][0]["partie"]=$partie;
             } elseif (($maxArray["sA"][0]["partie"]->gTore - $maxArray["sA"][0]["partie"]->hTore) < ($partie->gTore - $partie->hTore)){
               unset($maxArray["sA"]);
@@ -353,9 +353,9 @@ class stats {
             }
           }
         } elseif ($partie->gTore < $partie->hTore) { // Heim hat gewonnen
-          if($partie->heim == $team){ //Sieg
+          if ($partie->heim == $team){ //Sieg
             $next_index = count($maxArray["sH"]);
-            if(count($maxArray["sH"]) < 1){
+            if (count($maxArray["sH"]) < 1){
               $maxArray["sH"][0]["partie"]=$partie;
             } elseif (($maxArray["sH"][0]["partie"]->hTore - $maxArray["sH"][0]["partie"]->gTore) < ($partie->hTore - $partie->gTore)){
               unset($maxArray["sH"]);
@@ -365,7 +365,7 @@ class stats {
             }
           } elseif ($partie->gast == $team){ //Niederlage
             $next_index = count($maxArray["nA"]);
-            if(count($maxArray["nA"]) < 1){
+            if (count($maxArray["nA"]) < 1){
               $maxArray["nA"][0]["partie"]=$partie;
             } elseif (($maxArray["nA"][0]["partie"]->hTore - $maxArray["nA"][0]["partie"]->gTore) < ($partie->hTore - $partie->gTore)){
               unset($maxArray["nA"]);
@@ -377,7 +377,7 @@ class stats {
 
         }
         $next_index = count($maxArray["Tor"]);
-        if(count($maxArray["Tor"]) < 1){
+        if (count($maxArray["Tor"]) < 1){
           $maxArray["Tor"][0]["partie"]=$partie;
         } elseif (($maxArray["Tor"][0]["partie"]->gTore + $maxArray["Tor"][0]["partie"]->hTore) < ($partie->gTore + $partie->hTore)){
           unset($maxArray["Tor"]);
@@ -399,7 +399,7 @@ class stats {
   function getVerlaufTeam(&$team) {
     $tableArray = $this->liga->calcTable($this->liga->options->keyValues['Rounds'],"all",TRUE);
     foreach($tableArray as $zeile){
-      if($zeile["team"] == $team){
+      if ($zeile["team"] == $team){
         $positionen["A"] = $zeile["possp"];
         break;
       }
@@ -417,7 +417,7 @@ class stats {
   function getVerlaufTeams(&$teama, &$teamb) {
     $tableArray = $this->liga->calcTable($this->liga->options->keyValues['Rounds'],"all",TRUE);
     foreach($tableArray as $zeile){
-      if($zeile["team"] == $teama){
+      if ($zeile["team"] == $teama){
         $positionen["A"] = $zeile["possp"];
       } elseif ($zeile["team"] == $teamb){
         $positionen["B"] = $zeile["possp"];
@@ -436,21 +436,21 @@ class stats {
   function SerieToHTML($serienArray){
     $output = '';
     $serie = FALSE;
-    if($serienArray['s']>0){
+    if ($serienArray['s']>0){
       $output = $serienArray['s'].' Sieg(e)';
     }
-    elseif($serienArray['u']>0){
+    elseif ($serienArray['u']>0){
       $output = $serienArray['u'].' Unentschieden';
     }
-    elseif($serienArray['n']>0){
+    elseif ($serienArray['n']>0){
       $output = $serienArray['n'].' Niederlage(n)';
     }
-    if($serienArray['nu']>0){
-      if( $output != '') $output .='<br>';
+    if ($serienArray['nu']>0){
+      if ( $output != '') $output .='<br>';
       $output .= $serienArray['nu'].' Spiele o. Sieg';
     }
-    if($serienArray['su']>0){
-      if($output != '') $output .='<br>';
+    if ($serienArray['su']>0){
+      if ($output != '') $output .='<br>';
       $output = $serienArray['su'].' Spiele o. Niederlage';
     }
     return $output;

@@ -95,7 +95,7 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
 
 
 
-      for($i1 = 0; $i1 < $anzsp; $i1++) {
+      for ($i1 = 0; $i1 < $anzsp; $i1++) {
         if (($teama[$y1-1][$i1] > 0) && ($teamb[$y1-1][$i1] > 0)) {
 
           $heimteam = $teams[$teama[$y1-1][$i1]];
@@ -442,7 +442,7 @@ if ($_SESSION['lmouserok'] > 0 || isset($generate_zustat)) {
 
     // Anzahl gleicher gewonnener Spiele und torreichstes Spiel- Anfang
     for ($y1 = 1; $y1 < $anzst+1; $y1++) {
-      for($i1 = 0; $i1 < $anzsp; $i1++) {
+      for ($i1 = 0; $i1 < $anzsp; $i1++) {
         if ($goala[$y1-1][$i1] == $hheimsiegtor && $goala[$y1-1][$i1] == $hheimsiegtor1 && $goalb[$y1-1][$i1] == $hgastsiegtor && $goalb[$y1-1][$i1] == $hgastsiegtor1) {
           $counteranz = $counteranz+1;
         }

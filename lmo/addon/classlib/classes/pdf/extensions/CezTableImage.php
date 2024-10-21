@@ -741,7 +741,7 @@ class CezTableImage extends Cezpdf
                         $image = imagecreatefromjpeg($params->getFilename());
                         break;
                     case 1: // gif
-                        $image = imagecreatefromgif($params->getFilename());
+                        $image = imagecreatefromgif ($params->getFilename());
                         break;
                 }
                 parent::addImage($image, $x, $y, $params->getWidth(), $params->getHeight(), $quality, $angle);

@@ -30,7 +30,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
   array_unshift($users,'');
   
   $gef = 0;
-  for($i = 1; $i < count($users) && $gef == 0; $i++) {
+  for ($i = 1; $i < count($users) && $gef == 0; $i++) {
     $dummb = explode('|', $users[$i]);
     if ($_SESSION['lmotippername'] == $dummb[0]) {
       // Nick gefunden
@@ -62,11 +62,11 @@ if (($action == "tipp") && ($todo == "delaccount")) {
     closedir($verz);
     array_shift($dummy);
     $anztippfiles = count($dummy);
-    for($k = 0; $k < $anztippfiles; $k++) {
+    for ($k = 0; $k < $anztippfiles; $k++) {
       @unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k]); // Tipps löschen
     }
      
-    for($i = $del+1; $i < count($users); $i++) {
+    for ($i = $del+1; $i < count($users); $i++) {
       $users[$i-1] = $users[$i];
     }
     array_pop($users); // die letzte Zeile abgeschnitten
@@ -79,12 +79,12 @@ if (($action == "tipp") && ($todo == "delaccount")) {
 
 ?>
   <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-    <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
+    <caption><?php echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
     <tr>
       <th colspan="2" align="center"><?php echo $text['tipp'][6]; ?></th>
     </tr>
     <tr>
-      <td width="20">&nbsp;</td><?php if($newpage!=1){ ?>
+      <td width="20">&nbsp;</td><?php if ($newpage!=1){ ?>
       <td class="nobr" align="center">
         <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return confirm('');">
           <input type="hidden" name="action" value="tipp">
@@ -94,7 +94,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
           <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text[82]; ?>">
         </form>
       </td><?php  }
-  if($newpage==1){ /* erfolgreich*/?>
+  if ($newpage==1){ /* erfolgreich*/?>
       <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
     </tr>
     <tr>

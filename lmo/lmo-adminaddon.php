@@ -21,7 +21,7 @@
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 isset($_POST['save'])?$save=$_POST['save']:$save=0;
 isset($_REQUEST['show'])?$show=$_REQUEST['show']:$show=0;
-if($save==1){
+if ($save==1){
   // Es werden alle Addon-Konfigurationen dargestellt als Texteingabe behandelt
   // und anschliessend abgespeichert - Es erfolgen keine Prüfungen auf Variablentyp und -wert
   foreach($cfgarray as $addon_name => $addon_cfg) {    //Alle Addons abklappern
@@ -55,7 +55,7 @@ if($save==1){
 $testshow=0;
 foreach($cfgarray as $addon_name => $addon_cfg) {
   if (is_array($addon_cfg)) {?>
-        <tr><td align="right"<?php if ($show==$testshow) {?> class="active"><?php echo $addon_name;?><?php }else{?> class="lmost4"><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons&amp;show=".$testshow;?>"><?php echo $addon_name;?></a><?php }?></td></tr><?php 
+        <tr><td align="right"<?php if ($show==$testshow) {?> class="active"><?php echo $addon_name;?><?php } else {?> class="lmost4"><a href="<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons&amp;show=".$testshow;?>"><?php echo $addon_name;?></a><?php }?></td></tr><?php 
     $testshow++;
   }
 }?>

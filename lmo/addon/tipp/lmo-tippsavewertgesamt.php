@@ -43,7 +43,7 @@ if ($tipp_showemail == 1) {
 }
 $tipperteam = array_pad($array, $anztipper+1, "");
 
-for($i = 0; $i < $anztipper; $i++) {
+for ($i = 0; $i < $anztipper; $i++) {
   $dummb = explode('|', $dummd[$i]);
   $tippernick[$i] = $dummb[0];
   if ($tipp_showname == 1) {
@@ -71,10 +71,10 @@ if ($tipp_showzus == 1) {
 }
 $tipppunkte = array_pad($array, $anztipper+1, "");
 $spielegetipptges = array_pad($array, $anztipper+1, "");
-for($i = 0; $i < $anztipper; $i++) {
+for ($i = 0; $i < $anztipper; $i++) {
   if ($tipp_showzus == 1) {
     $punkte[$i] = array_pad($array, $anzligen+1, "");
-    for($p = 0; $p < $anzligen; $p++) {
+    for ($p = 0; $p < $anzligen; $p++) {
       $punkte[$i][$p] = array_pad(array(""), 7, "");
     }
   }
@@ -82,13 +82,13 @@ for($i = 0; $i < $anztipper; $i++) {
   $spielegetipptges[$i] = array_pad(array("0"), $anzligen+1, "0");
 }
 
-for($k = 0; $k < $anzligen; $k++) {
+for ($k = 0; $k < $anzligen; $k++) {
 
   $ftest = 0;
   $ftest1 = "";
   $ftest1 = explode(',', $tipp_ligenzutippen);
   if (isset($ftest1)) {
-    for($u = 0; $u < count($ftest1); $u++) {
+    for ($u = 0; $u < count($ftest1); $u++) {
       if ($ftest1[$u] == substr($dummy[$k], 0, -4)) {
         $ftest = 1;
       }
@@ -120,7 +120,7 @@ for($k = 0; $k < $anzligen; $k++) {
       fclose($datei);
     }
 
-    for($i = 1; $i <= count($tippdaten); $i++) {
+    for ($i = 1; $i <= count($tippdaten); $i++) {
       $dum = explode('|', $tippdaten[$i-1]);
       $op1 = $dum[0];
       // Nick
@@ -130,7 +130,7 @@ for($k = 0; $k < $anzligen; $k++) {
       // PP
       if ($op4 == "TP") {
         $gef = 0;
-        for($j = 0; $j < $anztipper && $gef == 0; $j++) {
+        for ($j = 0; $j < $anztipper && $gef == 0; $j++) {
           if ($tippernick[$j] == $op1) {
             $tipppunkte[$j][$anzligenaus] += (int)$dum[2];
             $gef = 1;
@@ -138,7 +138,7 @@ for($k = 0; $k < $anzligen; $k++) {
         }
       } elseif ($op4 == "SG") {
         $gef = 0;
-        for($j = 0; $j < $anztipper && $gef == 0; $j++) {
+        for ($j = 0; $j < $anztipper && $gef == 0; $j++) {
           if ($tippernick[$j] == $op1) {
             $spielegetipptges[$j][$anzligenaus] += (int)$dum[2];
             $gef = 1;
@@ -147,7 +147,7 @@ for($k = 0; $k < $anzligen; $k++) {
       } elseif (substr($op4, 0, 1) == "P" && $tipp_showzus == 1) {
         $artpkt = substr($op4, 1, 1);
         $gef = 0;
-        for($j = 0; $j < $anztipper && $gef == 0; $j++) {
+        for ($j = 0; $j < $anztipper && $gef == 0; $j++) {
           if ($tippernick[$j] == $op1) {
             //fuchteln wegen string+int-Inkompatibiltität ab PHP 8 ***Fix by DwB***
             $temp = $punkte[$j][$anzligenaus][$artpkt];
@@ -160,14 +160,14 @@ for($k = 0; $k < $anzligen; $k++) {
     }
     $anzligenaus++;
   }
-} // ende for($k=0;$k<$anzligen;$k++)
+} // ende for ($k=0;$k<$anzligen;$k++)
 
 fputs($auswertdatei, "[Options]\n");
 fputs($auswertdatei, "AnzLigen=".$anzligenaus."\n");
-for($k = 1; $k <= $anzligenaus; $k++) {
+for ($k = 1; $k <= $anzligenaus; $k++) {
   fputs($auswertdatei, "TT".$k."=".$liganame[$k-1]."\n");
 }
-for($j = 0; $j < $anztipper; $j++) {
+for ($j = 0; $j < $anztipper; $j++) {
   fputs($auswertdatei, "\n[".$tippernick[$j]."]\n");
   fputs($auswertdatei, "Team=".$tipperteam[$j]."\n");
   if ($tipp_showname == 1) {
@@ -176,14 +176,14 @@ for($j = 0; $j < $anztipper; $j++) {
   if ($tipp_showemail == 1) {
     fputs($auswertdatei, "Email=".$tipperemail[$j]."\n");
   }
-  for($k = 1; $k <= $anzligenaus; $k++) {
+  for ($k = 1; $k <= $anzligenaus; $k++) {
     if ($tipppunkte[$j][$k-1] == "") {
       $tipppunkte[$j][$k-1] = 0;
     }
     fputs($auswertdatei, "TP".$k."=".$tipppunkte[$j][$k-1]."\n");
     fputs($auswertdatei, "SG".$k."=".$spielegetipptges[$j][$k-1]."\n");
     if ($tipp_showzus == 1) {
-      for($p = 1; $p < 7; $p++) {
+      for ($p = 1; $p < 7; $p++) {
         if ($punkte[$j][$k-1][$p] > 0) {
           fputs($auswertdatei, "P".$p.$k."=".$punkte[$j][$k-1][$p]."\n");
         }

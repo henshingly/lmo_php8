@@ -34,15 +34,15 @@ if ($ftype != "") {
   $i = 0;
   $j = 0;
   echo"<ul>";
-  for($k = 0; $k < count($dummy); $k++) {
+  for ($k = 0; $k < count($dummy); $k++) {
     $files = $dummy[$k];
     if ($_SESSION['lmouserok'] == 2) {
       $ftest = 1;
-    } elseif($_SESSION['lmouserok'] == 1) {
+    } elseif ($_SESSION['lmouserok'] == 1) {
       $ftest = 0;
       $ftest1 = explode(',', $_SESSION['lmouserfile']);
       if (isset($ftest1)) {
-        for($u = 0; $u < count($ftest1); $u++) {
+        for ($u = 0; $u < count($ftest1); $u++) {
           if ($ftest1[$u].".l98" == $files) {
             $ftest = 1;
           }
@@ -59,7 +59,7 @@ if ($ftype != "") {
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = substr($zeile, 1, -1);
-        } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
+        } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
           $schl = substr($zeile, 0, strpos($zeile, "="));
           $wert = substr($zeile, strpos($zeile, "=")+1);
           if ($schl == "Name") {
@@ -79,7 +79,7 @@ if ($ftype != "") {
   }
   if ($i == 0) {
     echo "<li>[".$text[223]."]</li>";
-  } elseif(($i > 1) && ($_SESSION['lmouserok'] == 2)) {
+  } elseif (($i > 1) && ($_SESSION['lmouserok'] == 2)) {
     echo "<li><a href='".$addi."-1'><strong>".$text[402]."</strong></a></li>";
   }
   echo"</ul>";

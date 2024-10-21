@@ -38,7 +38,7 @@ if ($file != "") {
     }
   } else {
     $lmo_termine = array();
-    for($n = 0; $n < $modus[$st-1]; $n++) {
+    for ($n = 0; $n < $modus[$st-1]; $n++) {
       $lmo_termine=array_filter($mterm[$st-1][$n],"filterZero");  //Nullwerte filtern
     }
     if (!empty($lmo_termine)) {
@@ -85,7 +85,7 @@ if ($file != "") {
   }
   
   $lmo_stlink = array_pad(array(), $lmo_arrays, '');
-  for($j = 0; $j < $anzst; $j++) {
+  for ($j = 0; $j < $anzst; $j++) {
     $lmo_stlink_title = array_pad(array(), $lmo_arrays, '');
       
       //Bezeichnungen generieren
@@ -93,13 +93,13 @@ if ($file != "") {
     if ($j == $anzst-1) {
       $text2 = $text[364];
       $text1 = $text[374];
-    } elseif($j == $anzst-2) {
+    } elseif ($j == $anzst-2) {
       $text2 = $text[362];
       $text1 = $text[373];
-    } elseif($j == $anzst-3) {
+    } elseif ($j == $anzst-3) {
       $text2 = $text[360];
       $text1 = $text[372];
-    } elseif($j == $anzst-4) {
+    } elseif ($j == $anzst-4) {
       $text2 = $text[358];
       $text1 = $text[371];
     } else {
@@ -107,8 +107,8 @@ if ($file != "") {
       $text2 = ($j+1).". ".$text[376];
     }
       
-    for($i = 0; $i < $anzsp; $i++) {
-      for($n = 0; $n < $modus[$j]; $n++) {
+    for ($i = 0; $i < $anzsp; $i++) {
+      for ($n = 0; $n < $modus[$j]; $n++) {
         if (!empty($mterm[$j][$i][$n]) && date($lmo_daterule, $mterm[$j][$i][$n]) == $md) { //konkretes Spieldatum vorhanden
           $a = intval(date($lmo_daterule2, $mterm[$j][$i][$n]));
           if (($teama[$j][$i] != 0) && ($teamb[$j][$i] != 0)) {
@@ -145,7 +145,7 @@ if ($file != "") {
       $a = intval(date($lmo_daterule2, $lmo_stdatum1));
       $lmo_stlink_title[$a] = ($j+1).". ".$text[2]." &#10;(".$text[155].")";
       if (!empty($lmo_stdatum2) && $lmo_stdatum2>$lmo_stdatum1) { //Von ... bis ... vorhanden
-        for($k = $a; $k <= intval(date($lmo_daterule2, $lmo_stdatum2)); $k++) {
+        for ($k = $a; $k <= intval(date($lmo_daterule2, $lmo_stdatum2)); $k++) {
           $lmo_stlink_title[$k] = ($j+1).". ".$text[2]." &#10;(".$text[155].")";
         }
       }
@@ -156,7 +156,7 @@ if ($file != "") {
     }
     
     //Links generieren
-    for($i = 0; $i < count($lmo_stlink_title); $i++) {
+    for ($i = 0; $i < count($lmo_stlink_title); $i++) {
       if (!empty($lmo_stlink_title[$i])) { 
         $lmo_stlink[$i] = $lmo_stlink[$i]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".$lmo_stlink_title[$i]."\">".($j+1).". ".$text[145]."</a><br>";;
       }

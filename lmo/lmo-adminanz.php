@@ -19,11 +19,11 @@
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1)){
+if ($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1)){
   require_once(PATH_TO_LMO."/lmo-openfile.php");
-  if(isset ($save) && $save==1){
-    for($i=0;$i<$anzst;$i++){
-      for($j=$anzsp;$j<40;$j++){
+  if (isset ($save) && $save==1){
+    for ($i=0;$i<$anzst;$i++){
+      for ($j=$anzsp;$j<40;$j++){
         $teama[$i][$j]=0;
         $teamb[$i][$j]=0;
         $goala[$i][$j]=-1;
@@ -35,8 +35,8 @@ if($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1
         $mspez[$i][$j]="_";
         }
       }
-    for($i=$anzst;$i<116;$i++){
-      for($j=0;$j<40;$j++){
+    for ($i=$anzst;$i<116;$i++){
+      for ($j=0;$j<40;$j++){
         $teama[$i][$j]=0;
         $teamb[$i][$j]=0;
         $goala[$i][$j]=-1;
@@ -50,7 +50,7 @@ if($file!="" && ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1
       }
     $anzst=trim($_POST["xanzst"]);
     $anzsp=trim($_POST["xanzsp"]);
-    if($stx>$anzst){$stx=$anzst;}
+    if ($stx>$anzst){$stx=$anzst;}
     require(PATH_TO_LMO."/lmo-savefile.php");
     }
   $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";

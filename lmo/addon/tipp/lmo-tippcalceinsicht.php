@@ -20,7 +20,7 @@
   
 if ($lmtype != 0) {
   $anzsp = $anzteams;
-  for($i = 0; $i < $st; $i++) {
+  for ($i = 0; $i < $st; $i++) {
     $anzsp = $anzsp/2;
   }
   if (($klfin == 1) && ($st == $anzst)) {
@@ -65,11 +65,11 @@ if (!file_exists($einsichtfile)) {
   $jksp2 = array_pad($array, $anztipper+1, "");
   $tippa = array_pad($array, $anztipper+1, "");
   $tippb = array_pad($array, $anztipper+1, "");
-  for($i = 0; $i < $anztipper; $i++) {
+  for ($i = 0; $i < $anztipper; $i++) {
     if ($lmtype != 0) {
       $tippa[$i] = array_pad($array, $anzsp+1, "");
       $tippb[$i] = array_pad($array, $anzsp+1, "");
-      for($n = 0; $n < $anzsp; $n++) {
+      for ($n = 0; $n < $anzsp; $n++) {
         $tippa[$i][$n] = array_pad(array("_"), 7, "_");
         $tippb[$i][$n] = array_pad(array("_"), 7, "_");
       }
@@ -95,7 +95,7 @@ if (!file_exists($einsichtfile)) {
     $toregesb = array_pad($array, $anzsp+1, "");
     $anzgetippt = array_pad($array, $anzsp+1, "");
     $btip = array_pad($array, $anzsp+1, "");
-    for($i = 0; $i < $anzsp; $i++) {
+    for ($i = 0; $i < $anzsp; $i++) {
       $tendenz1[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
       $tendenz0[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
       $tendenz2[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
@@ -110,7 +110,7 @@ if (!file_exists($einsichtfile)) {
   if ($endtab < 1) {
     $endtab = $anzst;
   }
-  for($i = 1; $i <= count($tippdaten); $i++) {
+  for ($i = 1; $i <= count($tippdaten); $i++) {
     $dum = explode('|', $tippdaten[$i-1]);
     $op1 = $dum[0];
     // Nick
@@ -176,7 +176,7 @@ if (!file_exists($einsichtfile)) {
    
   if ($todo = "einsicht") {
     $tab0 = array();
-    for($a = 0; $a < $anztipper; $a++) {
+    for ($a = 0; $a < $anztipper; $a++) {
       array_push($tab0, strtolower($tippernick[$a]).(50000000+$a));
     }
     sort($tab0, SORT_STRING);

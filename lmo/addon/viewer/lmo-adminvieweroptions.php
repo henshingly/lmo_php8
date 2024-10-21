@@ -273,7 +273,7 @@ if ($_SESSION['lmouserok'] == 2) {
                         <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][10];  ?></td>
                         <td class="nobr" align="right"><?php echo $text['viewer'][19];  ?></td>
                         <td class="nobr" align="left">&nbsp;<select class="lmo-formular-input"  name="template" size="1"><?php
-        for($tpl=0; $tpl<$tmpl_counter; $tpl++) {
+        for ($tpl=0; $tpl<$tmpl_counter; $tpl++) {
             echo "<option>".$tpl_files[$tpl]."</option>".chr(13);
         }
 ?></select>

@@ -118,7 +118,7 @@ if ($file != "") {
     if (!isset($datm)) {
       $datm = 0;
     }
-    for($i = 1; $i <= count($daten); $i++) {
+    for ($i = 1; $i <= count($daten); $i++) {
       $dum = explode('|', $daten[$i-1]);
       if ($dum[0] == "Teams") {
         $teams[$dum[1]] = stripslashes($dum[2]);
@@ -277,7 +277,7 @@ if ($file != "") {
             array_push($jksp, "");
             array_push($tipp_jokertippaktiv, "0");
             $anzspiele++;
-            for($j = 1; $j <= count($tippdaten); $j++) {
+            for ($j = 1; $j <= count($tippdaten); $j++) {
               $dum1 = explode('|', $tippdaten[$j-1]);
               $op8 = substr($dum1[1], 0, 2);
               if ($op8 == "GA") {
@@ -310,7 +310,7 @@ if ($file != "") {
                     }
                      
                     if ($dum1[3] > 0) {
-                      for($k = $rb; $k <= count($daten); $k++) {
+                      for ($k = $rb; $k <= count($daten); $k++) {
                         $dum2 = explode('|', $daten[$k-1]);
                         $op8 = substr($dum2[1], 0, 2);
                         if ($op8 == "AT") {

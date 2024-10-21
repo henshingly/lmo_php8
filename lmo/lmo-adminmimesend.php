@@ -77,11 +77,11 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         }?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
       }
-    } elseif($down==-1) {
+    } elseif ($down==-1) {
       if (count($dummy)>0) {
         $zipfile = new ZipArchive;
         $zipfile->open($temp, ZipArchive::CREATE);
-        for($i=0;$i<count($dummy);$i++){
+        for ($i=0;$i<count($dummy);$i++){
           if (check_hilfsadmin($dummy[$i])) {
             $zipfile->addFile(PATH_TO_LMO."/".$dirliga.$dummy[$i], $dummy[$i]);
           }

@@ -20,7 +20,7 @@
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($tippfile != "") {
-  //if(decoct(fileperms($tippfile))!=100777){chmod ($tippfile, 0777);}
+  //if (decoct(fileperms($tippfile))!=100777){chmod ($tippfile, 0777);}
   if (substr($tippfile, -4) == ".tip") {
     $daten = array("");
     if (file_exists($tippfile)) {
@@ -46,13 +46,13 @@ if ($tippfile != "") {
      
     $stsave = array_pad($array, 116, "0");
     $round = 0;
-    for($l = 0; $l < count($daten); $l++) {
+    for ($l = 0; $l < count($daten); $l++) {
       if (substr($daten[$l], 0, 6) == "[Round") {
         fputs($datei, $daten[$l]."\n");
         $round = substr($daten[$l], 6, -1);
         $jksave = 0;
         $stsave[$round] = 1;
-        for($k = $start1; $k <= $i; $k++) {
+        for ($k = $start1; $k <= $i; $k++) {
           if ($round == $spieltag[$k]) {
             // getippte dazu schreiben
             if ($jksave == 0) {
@@ -88,7 +88,7 @@ if ($tippfile != "") {
           $jksave = 1;
         }
       } elseif ($daten[$l] != "" && substr($daten[$l], 0, 1) != "@") {
-        for($k = $start1; $k <= $i; $k++) {
+        for ($k = $start1; $k <= $i; $k++) {
           $sp = substr($daten[$l], 2, strpos($daten[$l], "=")-2);
           if ($sp == $spiel[$k] && $round == $spieltag[$k]) {
             break; // nicht zurückschreiben
@@ -100,7 +100,7 @@ if ($tippfile != "") {
       }
     }
      
-    for($k = $start1; $k <= $i; $k++) {
+    for ($k = $start1; $k <= $i; $k++) {
       if ($spieltag[$k] > 0 && $stsave[$spieltag[$k]] == 0) {
         // vorher nicht getippte st dazu schreiben
         if ($k == $start1 || $spieltag[$k] != $spieltag[$k-1]) {

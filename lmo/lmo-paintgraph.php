@@ -98,7 +98,7 @@ imagestring($image, 2, 28, 28+(($pgteams+1) * $lmo_faktorvertikal), $pgtext1, $f
 imagestringup($image, 2, 4, $hoch-28, $pgtext2, $farbe_a);                                //seitliche Beschriftung (PLATZIERUNG)
 
 //Spieltagsbeschriftung vertikal
-for($i = 1; $i <= $pgteams; $i++) {
+for ($i = 1; $i <= $pgteams; $i++) {
   $j = strval($i);
   if ($i < 10) {
     $j = "0".$j;
@@ -108,7 +108,7 @@ for($i = 1; $i <= $pgteams; $i++) {
 }
 
 //Spieltagsbeschriftung horizontal
-for($i = 1; $i <= $pgst; $i++) {
+for ($i = 1; $i <= $pgst; $i++) {
   $j = strval($i);
   if ($i < 10) {
     $j = "0".$j;
@@ -118,43 +118,43 @@ for($i = 1; $i <= $pgst; $i++) {
 }
 
 //Kästchen
-for($i = 0; $i < $pgteams; $i++) {
+for ($i = 0; $i < $pgteams; $i++) {
   imagerectangle($image, 29, 28+$i*$lmo_faktorvertikal, (29-$lmo_faktorhorizontal)+(($pgst+1) * $lmo_faktorhorizontal), 28+$lmo_faktorvertikal+($i*$lmo_faktorvertikal), $farbe_b); //horizontal
 }
-for($i = 0; $i < $pgst; $i++) {
+for ($i = 0; $i < $pgst; $i++) {
   imagerectangle($image, 29+$i*$lmo_faktorhorizontal, 28, (29+$lmo_faktorhorizontal)+$i*$lmo_faktorhorizontal, 28-$lmo_faktorvertikal+(($pgteams+1)*$lmo_faktorvertikal), $farbe_b); //vertikal
 }
 
 $j = 1;
-for($i = 1; $i <= $pgteams; $i++) {
+for ($i = 1; $i <= $pgteams; $i++) {
   if (($i == 1) && ($pgch != 0)) {
     $j = 2;
-    for($k = 1; $k <= $pgst; $k++) {
+    for ($k = 1; $k <= $pgst; $k++) {
       imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_e);
     }
   }
   if (($i >= $j) && ($i < $j+$pgcl) && ($pgcl > 0)) {
-    for($k = 1; $k <= $pgst; $k++) {
+    for ($k = 1; $k <= $pgst; $k++) {
       imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_f);
     }
   }
   if (($i >= $j+$pgcl) && ($i < $j+$pgcl+$pgck) && ($pgck > 0)) {
-    for($k = 1; $k <= $pgst; $k++) {
+    for ($k = 1; $k <= $pgst; $k++) {
       imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_g);
     }
   }
   if (($i >= $j+$pgcl+$pgck) && ($i < $j+$pgcl+$pgck+$pguc) && ($pguc > 0)) {
-    for($k = 1; $k <= $pgst; $k++) {
+    for ($k = 1; $k <= $pgst; $k++) {
       imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_h);
     }
   }
   if (($i <= $pgteams) && ($i > $pgteams-$pgab) && ($pgab > 0)) {
-    for($k = 1; $k <= $pgst; $k++) {
+    for ($k = 1; $k <= $pgst; $k++) {
       imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_i);
     }
   }
   if (($i <= $pgteams-$pgab) && ($i > $pgteams-$pgab-$pgar) && ($pgar > 0)) {
-    for($k = 1; $k <= $pgst; $k++) {
+    for ($k = 1; $k <= $pgst; $k++) {
       imagefill($image, 28+($k * $lmo_faktorhorizontal), 20+($i * $lmo_faktorvertikal), $farbe_j);
     }
   }
@@ -168,7 +168,7 @@ $linie = explode(',', $pgplatz1);
 if ($pganz == 2) {
   $lini2 = explode(',', $pgplatz2);
 }
-for($i = 1; $i < $pgst; $i++) {
+for ($i = 1; $i < $pgst; $i++) {
   if ($linie[$i] > 0 && $linie[$i-1] > 0) {
     imageline($image, 30-$lmo_faktorhorizontal/2+($i * $lmo_faktorhorizontal), 29-$lmo_faktorvertikal/2+($linie[$i-1] * $lmo_faktorvertikal), 30-$lmo_faktorhorizontal/2+(($i+1) * $lmo_faktorhorizontal), 29-$lmo_faktorvertikal/2+($linie[$i] * $lmo_faktorvertikal), $farbe_c);
     imageline($image, 29-$lmo_faktorhorizontal/2+($i * $lmo_faktorhorizontal), 29-$lmo_faktorvertikal/2+($linie[$i-1] * $lmo_faktorvertikal), 29-$lmo_faktorhorizontal/2+(($i+1) * $lmo_faktorhorizontal), 29-$lmo_faktorvertikal/2+($linie[$i] * $lmo_faktorvertikal), $farbe_c);

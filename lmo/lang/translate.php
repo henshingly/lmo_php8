@@ -27,26 +27,26 @@ if ($_SESSION['lmouserok'] == 2) {
 
   function getFiles($directory) {
     // Try to open the directory
-    if($dir = opendir($directory)) {
+    if ($dir = opendir($directory)) {
       // Create an array for all files found
       $tmp = Array();
       // Add the files
       while($file = readdir($dir)) {
         // Make sure the file exists
 
-        if($file != "." && $file != ".." && $file[0] != '.' && $file!="CVS") {
+        if ($file != "." && $file != ".." && $file[0] != '.' && $file!="CVS") {
 
           // If it's a directiry, list all files within it
-          if(is_dir($directory . "/" . $file)) {
+          if (is_dir($directory . "/" . $file)) {
 
             $tmp2 = getFiles($directory . "/" . $file);
-            if(is_array($tmp2)) {
+            if (is_array($tmp2)) {
               $tmp[$file] = $tmp2;
             }
           } elseif ( strpos($file,'.txt')!==FALSE) {
             if ($directory == '.' ) {
               $tmp[$directory][]=$file;
-            }else {
+            } else {
               $tmp[]=$file;
             }
           }
@@ -203,7 +203,7 @@ if ($_SESSION['lmouserok'] == 2) {
     echo ">";
     if (strlen($pieces_de[1])>88) {
       echo "<textarea name='i[".intval($pieces_de[0])."]'>".$val."</textarea></td>";
-    }else {
+    } else {
       echo "<input type='text' name='i[".intval($pieces_de[0])."]' value='".$val."'></td>";
     }
     echo "<th>".$pieces_de[0]."</th></tr>";

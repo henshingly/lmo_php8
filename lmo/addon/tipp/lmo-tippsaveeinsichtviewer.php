@@ -20,7 +20,7 @@
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($einsichtfile != "") {
-  //if(decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}
+  //if (decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}
   if (substr($einsichtfile, -4) == ".ein") {
     $daten = array("");
     if (file_exists($einsichtfile)) {
@@ -47,7 +47,7 @@ if ($einsichtfile != "") {
     $nick = "";
     $nick1 = 0;
     $nick2 = -1;
-    for($l = 0; $l < count($daten); $l++) {
+    for ($l = 0; $l < count($daten); $l++) {
       if ((substr($daten[$l], 0, 1) == "[") && (substr($daten[$l], -1) == "]")) {
         $nick = substr($daten[$l], 1, -1);
         if ($nick == $_SESSION['lmotippername']) {
@@ -63,12 +63,12 @@ if ($einsichtfile != "") {
       }
     }
      
-    for($l = $nick1; $l <= $nick2; $l++) {
+    for ($l = $nick1; $l <= $nick2; $l++) {
       // am Ende getippte dazu schreiben
       if (substr($daten[$l], 0, 1) == "[") {
         fputs($datei, $daten[$l]."\n");
         $jksave = 0;
-        for($k = $start2; $k <= $i; $k++) {
+        for ($k = $start2; $k <= $i; $k++) {
           // getippte dazu schreiben
           if ($jksave == 0) {
             if ($jksp[$k] > 0) {
@@ -96,7 +96,7 @@ if ($einsichtfile != "") {
           }
         }
       } elseif ($daten[$l] != "" && substr($daten[$l], 0, 1) != "@") {
-        for($k = $start2; $k <= $i; $k++) {
+        for ($k = $start2; $k <= $i; $k++) {
           $sp = substr($daten[$l], 2, strpos($daten[$l], "=")-2);
           if ($sp == $spiel[$k]) {
             break; // nicht zurückschreiben
@@ -114,7 +114,7 @@ if ($einsichtfile != "") {
       if ($jksp[$start2] > 0) {
         fputs($datei, "@".$jksp[$start2]."@\n");
       }
-      for($k = $start2; $k <= $i; $k++) {
+      for ($k = $start2; $k <= $i; $k++) {
         // getippte dazu schreiben
         if ($tippa[$k] == "_") {
           fputs($datei, "GA".$spiel[$k]."=-1\n");

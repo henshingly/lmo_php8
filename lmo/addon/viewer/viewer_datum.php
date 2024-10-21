@@ -20,7 +20,7 @@
 $startzeit = zeitberechnung("1", -$multi_cfgarray['anzahl_tage_minus']);
 $endzeit = zeitberechnung("2", $multi_cfgarray['anzahl_tage_plus']);
 // Durchlaufe sooft Ligen vorhanden sind
-for($i = 1; $i <= $anzahl_ligen; $i ++) {
+for ($i = 1; $i <= $anzahl_ligen; $i ++) {
     $liga = new liga();
     // Ligenfile vorhanden?
         if ($liga->loadFile(PATH_TO_LMO . '/' . $dirliga . $fav_liga[$i]) == true) {
@@ -35,7 +35,7 @@ for($i = 1; $i <= $anzahl_ligen; $i ++) {
         //all teams
         if ($all_teams) {
             $team_count = count($liga->teams);
-            for($x = 0; $x < $team_count; $x ++) {
+            for ($x = 0; $x < $team_count; $x ++) {
             $fav_team[$i][] = $x;
             }
         }

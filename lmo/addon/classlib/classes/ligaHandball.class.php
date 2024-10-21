@@ -32,21 +32,21 @@ class ligaHandball extends liga {
     $pPkt = 0;
     $spiele = 0;
     for ($position = 0; $position < count($tableArray); $position++) {
-      if($pPkt == $tableArray[$position]["pPkt"] && $spiele == $tableArray[$position]["spiele"]) {
+      if ($pPkt == $tableArray[$position]["pPkt"] && $spiele == $tableArray[$position]["spiele"]) {
         $subteams[$tableArray[$position]["team"]->nr] = $tableArray[$position]["team"];
       } else {
-        if(count($subteams)>1) {
+        if (count($subteams)>1) {
           $tmp_table = $this->calcTableforTeams($subteams);
           $tmp_tablearray = $tableArray;
           $nextpos = $position - count($tmp_table) ;
           for ($b = 0; $b < count($tmp_table); $b++) {
-            for($f = $nextpos; $f < $position; $f++) {
-              if($tmp_tablearray[$f]["team"]===$tmp_table[$b]["team"]) {
+            for ($f = $nextpos; $f < $position; $f++) {
+              if ($tmp_tablearray[$f]["team"]===$tmp_table[$b]["team"]) {
                 $tableArray[$nextpos+$b] = $tmp_tablearray[$f];
               }
             }
           }
-        }  // END if(count($subteams)>1)
+        }  // END if (count($subteams)>1)
         $subteams = array();
         $pPkt = $tableArray[$position]["pPkt"];
         $spiele = $tableArray[$position]["spiele"];

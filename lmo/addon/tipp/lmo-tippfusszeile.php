@@ -19,7 +19,7 @@
   
   
 
-if(!isset($nw)){
+if (!isset($nw)){
   $nw=0;
 }
 ?>
@@ -84,7 +84,7 @@ if(!isset($nw)){
     }
   }?>
           </td>
-          <td align="right" valign="bottom" rowspan="2"><?php if(!isset($auswertfile)){$auswertfile="";}
+          <td align="right" valign="bottom" rowspan="2"><?php if (!isset($auswertfile)){$auswertfile="";}
   if (!isset($tippfile)) {
     $tippfile = "";
   }

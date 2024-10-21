@@ -27,12 +27,12 @@ if ($file != "") {
     if ($datei) {
       $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file)));
       $lmtype=0;
-      for($tt=0;$tt<count($datei);$tt++) {
+      for ($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));
-        } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+        } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
           $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
           $wert = trim(substr($zeile, strpos($zeile, "=")+1));
           if ($sekt == "Options") {

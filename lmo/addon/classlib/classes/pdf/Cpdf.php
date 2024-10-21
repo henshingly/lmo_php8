@@ -3756,7 +3756,7 @@ class Cpdf
             $h = $w * $imageHeight / $imageWidth;
         }
 
-        $imgres = imagecreatefromgif($img);
+        $imgres = imagecreatefromgif ($img);
         $tmpName = tempnam($this->tempPath, 'img');
         imagejpeg($imgres, $tmpName, 90);
 

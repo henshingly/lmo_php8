@@ -163,7 +163,7 @@ if ($file!="") {
   if (!isset($hidr)) {
     $hidr=0;
   }
-  //  if($lmtype==1 && $modus[$st-1]!=2){$hidr=1;} // bei KO-Turnier außer bei Hin- und Rückspiel keinen Remistipp zulassen
+  //  if ($lmtype==1 && $modus[$st-1]!=2){$hidr=1;} // bei KO-Turnier außer bei Hin- und Rückspiel keinen Remistipp zulassen
   if ($hidr==1) {
     $breite--;
   }
@@ -176,7 +176,7 @@ if ($file!="") {
   }
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
+  <caption><?php echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <td align="center"><?php include(PATH_TO_LMO."/lmo-spieltagsmenu.php");?></td>
   </tr>
@@ -230,20 +230,20 @@ if ($file!="") {
     }
   }?>
             </th><?php
-  if($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
-            <th class="nobr" align="center" colspan="<?php if($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";}else{echo "2";} ?>">
+  if ($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
+            <th class="nobr" align="center" colspan="<?php if ($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";} else {echo "2";} ?>">
             <?php echo $text['tipp'][188]; /* Tipptendenz absolut */?>
             </th>
 <?php
   }
   //ERGEBNISMODUS
-  if($tipp_tippmodus==1){
-    if($tipp_showdurchschntipp==1){ ?>
+  if ($tipp_tippmodus==1){
+    if ($tipp_showdurchschntipp==1){ ?>
             <th class="nobr" align="center" colspan="2">
             <?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp*/ ?>
             </th><?php
     } ?>
-            <th class="nobr" align="center" colspan="<?php if($tipp_pfeiltipp==1){echo "5";}else{echo "3";} ?>">
+            <th class="nobr" align="center" colspan="<?php if ($tipp_pfeiltipp==1){echo "5";} else {echo "3";} ?>">
               <acronym title="<?php echo $text['tipp'][241].":".$text['tipp'][242] ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php
     if ($goalfaktor!=1) {
       echo "(".$text[553+log10($goalfaktor)].")";
@@ -252,9 +252,9 @@ if ($file!="") {
   }
 
   //TENDENZMODUS
-  if($tipp_tippmodus==0){ ?>
+  if ($tipp_tippmodus==0){ ?>
             <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][95] ?>">1</acronym></th><?php
-    if($hidr==0){ ?>
+    if ($hidr==0){ ?>
             <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][96] ?>">0</acronym></th><?php
     }?>
             <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][97] ?>">2</acronym></th><?php
@@ -264,7 +264,7 @@ if ($file!="") {
             <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][290] ?>"><?php echo $text['tipp'][289]; ?></acronym></th><?php
   } ?>
             <th class="nobr" colspan="3" align="center"><?php echo $text['tipp'][31]; /* Ergebnis */?></th><?php
-  if($spez==1){?>
+  if ($spez==1){?>
             <th colspan="2">&nbsp;</th><?php
   }?>
             <th class="nobr" colspan="2" align="right"><?php echo $text[37]; /* PP */?></th>
@@ -309,32 +309,32 @@ if ($file!="") {
     if ($teama[$st-1][$i]>0 && $teamb[$st-1][$i]>0) {
       if ($lmtype==0) {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippeditliga.php");
-      }else{
+      } else {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippeditko.php");
       }
     }
   }?>
           <tr>
-            <td colspan="<?php echo $datm*2+10-$hidr; ?>" align="right"><?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
+            <td colspan="<?php echo $datm*2+10-$hidr; ?>" align="right"><?php if ($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){
     echo $text['tipp'][177];
   }
-  if($savebutton==1){ ?>
-              <input class="lmo-formular-button" type="submit" title="<?php echo $text[114] ?>" name="best" value="<?php echo $text['tipp'][8]; ?>"<?php if($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  }else{
+  if ($savebutton==1){ ?>
+              <input class="lmo-formular-button" type="submit" title="<?php echo $text[114] ?>" name="best" value="<?php echo $text['tipp'][8]; ?>"<?php if ($tipp_imvorraus>=0 && $st>($stx+$tipp_imvorraus)){echo " disabled";} ?>><?php  } else {
     echo "&nbsp;";
   }?>
             </td>
             <td class="lmoFrontMarkierung" colspan="<?php echo $breite-$datm-9; ?>" align="right"><?php
   echo $text[37]." ";
-  if($lmtype==0){
+  if ($lmtype==0){
    echo $text[2];
-  }else{
+  } else {
    echo $j;
   }
   echo ": ".$punktespieltag;?>
             </td>
           </tr>
           <tr>
-            <td class="lmoFooter" colspan="<?php echo $breite; ?>" align="center"><?php if($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
+            <td class="lmoFooter" colspan="<?php echo $breite; ?>" align="center"><?php if ($tipp_tippBis>0){echo $text['tipp'][87]." ".$tipp_tippBis." ".$text['tipp'][88];} ?></td>
           </tr>
         </table>
       </form>

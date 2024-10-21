@@ -29,7 +29,7 @@ if ($file != "") {
       $zeile = trim($zeile);
       if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $sekt = trim(substr($zeile, 1, -1));
-      } elseif((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+      } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         if ($sekt == "Options") {
@@ -118,7 +118,7 @@ if ($file != "") {
       $teama = array_pad($array, 116, "");
       $teamb = array_pad($array, 116, "");
       $mterm = array_pad($array, 116, "");
-      for($i = 0; $i < 116; $i++) {
+      for ($i = 0; $i < 116; $i++) {
         $teama[$i] = array_pad(array("0"), 40, "0");
         $teamb[$i] = array_pad(array("0"), 40, "0");
         $mterm[$i] = array_pad(array("0"), 40, "0");
@@ -130,17 +130,17 @@ if ($file != "") {
       $teama = array_pad($array, 7, "");
       $teamb = array_pad($array, 7, "");
       $mterm = array_pad($array, 7, "");
-      for($i = 0; $i < 7; $i++) {
+      for ($i = 0; $i < 7; $i++) {
         $teama[$i] = array_pad(array("0"), 64, "0");
         $teamb[$i] = array_pad(array("0"), 64, "0");
         $mterm[$i] = array_pad($array, 64, "");
-        for($j = 0; $j < 64; $j++) {
+        for ($j = 0; $j < 64; $j++) {
           $mterm[$i][$j] = array_pad(array("0"), 7, "0");
         }
       }
     }
     $teams[0] = "___";
-    for($i = 1; $i <= count($daten); $i++) {
+    for ($i = 1; $i <= count($daten); $i++) {
       $dum = explode('|', $daten[$i-1]);
       if ($dum[0] == "Teams") {
         $teams[$dum[1]] = stripslashes($dum[2]);

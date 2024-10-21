@@ -32,22 +32,22 @@ if (($file != "") && ($subteams != "")) {
   $quote1 = array_pad($array, $anzteams+1, "");
   $mcalc = array_pad($array, 116, "");
   $hoy = 0;
-  for($i = 0; $i < 116; $i++) {
+  for ($i = 0; $i < 116; $i++) {
     $mcalc[$i] = array_pad($array, 40, "0");
   }
   $tab1 = array("");
-  for($a = 1; $a <= $anzteams; $a++) {
+  for ($a = 1; $a <= $anzteams; $a++) {
     if ($tabtype == 3) {
       $hoy = ($anzst/2);
     }
     if ($tabtype == 4) {
       $endtab = ($anzst/2);
     }
-    for($j = $hoy; $j < $endtab; $j++) {
-      for($i = 0; $i < $anzsp; $i++) {
+    for ($j = $hoy; $j < $endtab; $j++) {
+      for ($i = 0; $i < $anzsp; $i++) {
         if ($btip[$j][$i] == false) {
           $b = 0;
-          for($c = 0; $c < count($subteam); $c++) {
+          for ($c = 0; $c < count($subteam); $c++) {
             if ($subteam[$c] == $teama[$j][$i]) {
               $b++;
             } elseif ($subteam[$c] == $teamb[$j][$i]) {
@@ -117,7 +117,7 @@ if (($file != "") && ($subteams != "")) {
       $quote1[$a] = number_format($punkte1[$a]/$spiele1[$a], 2, ".", ",");
     }
     $quote1[$a] *= 100;
-    for($c = 0; $c < count($subteam); $c++) {
+    for ($c = 0; $c < count($subteam); $c++) {
       if ($subteam[$c] == $a) {
         if ($kegel == 0) {
           array_push($tab1, (50000000+$quote1[$a]).(50000000+$punkte1[$a]).(50000000-$negativ1[$a]).(50000000+$dtore1[$a]).(50000000+$etore1[$a]).(50000000+$c).(50000000+$a));

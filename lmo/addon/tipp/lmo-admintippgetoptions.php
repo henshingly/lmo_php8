@@ -5,7 +5,7 @@
       break;
     case 1:
       isset($_POST["xdirtipp"])?                              $tipp_dirtipp=$_POST["xdirtipp"]:                       $tipp_krit1="tipps/";
-      if(substr($tipp_dirtipp,-1)!="/"){                      $tipp_dirtipp=$tipp_dirtipp."/";}
+      if (substr($tipp_dirtipp,-1)!="/"){                      $tipp_dirtipp=$tipp_dirtipp."/";}
                                                               $tipp_dirtipp=str_replace("\\","/",$tipp_dirtipp);
       break;
     case 2:
@@ -48,13 +48,13 @@
         $tipp_nurgesamt=0;
       }
       isset($_POST["xregeln"])?                               $tipp_regeln=1:                                         $tipp_regeln=0;
-      if($tipp_regeln==1){
+      if ($tipp_regeln==1){
         isset($_POST["xregelnlink"])?                         $tipp_regelnlink=$_POST["xregelnlink"]:                 $tipp_regelnlink="tippregeln.php";
       }
       isset($_POST["xshownick"])?                             $tipp_shownick=$_POST["xshownick"]:                     $tipp_shownick="";
       isset($_POST["xshowname"])?                             $tipp_showname=$_POST["xshowname"]:                     $tipp_showname="";
       isset($_POST["xshowemail"])?                            $tipp_showemail=$_POST["xshowemail"]:                   $tipp_showemail="";
-      if($tipp_showname==0 && $tipp_showemail==0){            $tipp_shownick=1;}
+      if ($tipp_showname==0 && $tipp_showemail==0){            $tipp_shownick=1;}
       break;
     case 4:
       isset($_POST["xtippohne"])?                             $tipp_tippohne=$_POST["xtippohne"]:                     $tipp_tippohne=0;
@@ -69,7 +69,7 @@
         is_numeric($_POST["ximvorraus"])?                     $tipp_imvorraus=$_POST["ximvorraus"]:                   $tipp_imvorraus=-1;  
       
       isset($_POST["xjokertipp"])?                            $tipp_jokertipp=1:                                      $tipp_jokertipp=0;
-      if($tipp_jokertipp==1){
+      if ($tipp_jokertipp==1){
         isset($_POST["xjokertippmulti"])  &&
           is_numeric($_POST["xjokertippmulti"]) &&
           intval($_POST["xjokertippmulti"])>0 ?               $tipp_jokertippmulti=$_POST["xjokertippmulti"]:         $tipp_jokertippmulti=2;
@@ -87,7 +87,7 @@
       isset($_POST["xshowtendenzabs"])?                       $tipp_showtendenzabs=$_POST["xshowtendenzabs"]:         $tipp_showtendenzabs="";
       isset($_POST["xshowtendenzpro"])?                       $tipp_showtendenzpro=$_POST["xshowtendenzpro"]:         $tipp_showtendenzpro="";
       isset($_POST["xshowdurchschntipp"])?                    $tipp_showdurchschntipp=$_POST["xshowdurchschntipp"]:   $tipp_showdurchschntipp="";
-      if($tipp_showtendenzabs==1 || 
+      if ($tipp_showtendenzabs==1 || 
          $tipp_showtendenzpro==1 || 
          ($tipp_showdurchschntipp==1 && $tipp_tippmodus==1)){ $tipp_tippeinsicht=1;}
       isset($_POST["xsttipp"])?                               $tipp_sttipp=1:                                         $tipp_sttipp=-1;
@@ -130,8 +130,8 @@
     case 12:
       isset($_POST["ximmeralle"])?                            $tipp_immeralle=1:                                      $tipp_immeralle=0;
       $tipp_ligenzutippen="";
-      if($tipp_immeralle!=1){
-        if(isset($_POST["xtipperligen"]) && !empty($_POST["xtipperligen"])){
+      if ($tipp_immeralle!=1){
+        if (isset($_POST["xtipperligen"]) && !empty($_POST["xtipperligen"])){
           $tipp_ligenzutippen=implode(",",$_POST["xtipperligen"]);
         }
       }

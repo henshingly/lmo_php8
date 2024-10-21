@@ -52,7 +52,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
     $zeile = 0;
     while ($data[$zeile] = fgetcsv ($filepointer, 10000, "#")) {
         if ((isset($vereinsspalte) && isset($data[$zeile][$vereinsspalte]) && $spieler_vereinsweise_anzeigen == 1 && $team == $data[$zeile][$vereinsspalte]) || $team == '') {
-            for($i = 0; $i < count($data[$zeile]); $i++) {
+            for ($i = 0; $i < count($data[$zeile]); $i++) {
                 if (!is_numeric($data[$zeile][$i])) $typ[$i] = true;
             }
             $zeile++;
@@ -99,7 +99,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
           </td>
         </tr><?php
         //Vereinsspalte
-        for($i = 0; $i < count($teams) - 1; $i++) {
+        for ($i = 0; $i < count($teams) - 1; $i++) {
             $teams[$i] = stripslashes($teams[$i]);?>
         <tr>
           <td align="right" class="nobr"><?php
@@ -202,7 +202,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
                 echo "            <td " . $stat_class . " align='left'>";
                 $pos = array_search($data[$j1][$j2], $teamu);
                 echo HTML_icon($data[$j1][$j2], 'teams', 'small') . str_replace(" ", "&nbsp;", $data[$j1][$j2]) . "&nbsp;</td>\n";
-                if(!empty($pos) && $teamu[$pos] != "" && $urlt == 1) {echo "<a href=\"" . $teamu[$pos] . "\" target=\"_blank\" title=\"" . $text[46] . "\"><img border='0' width='11' src='" . URL_TO_IMGDIR . "/url.png' alt='" . $spalten[$i] . "' title=\"" . $text[46] . "\"></a></td>";}
+                if (!empty($pos) && $teamu[$pos] != "" && $urlt == 1) {echo "<a href=\"" . $teamu[$pos] . "\" target=\"_blank\" title=\"" . $text[46] . "\"><img border='0' width='11' src='" . URL_TO_IMGDIR . "/url.png' alt='" . $spalten[$i] . "' title=\"" . $text[46] . "\"></a></td>";}
 
             //Spielerlinks
             } elseif ($j2 == 0 && !is_null($linkspalte) && $linkspalte!==false && $data[$j1][$linkspalte] != $text['spieler'][43]) {

@@ -31,7 +31,7 @@ if (isset($xtippername2)) {
   $mail->Subject = $text['tipp'][79];
   $mail->setFrom($aadr);
   
-  for($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i++) {
+  for ($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i++) {
     $dummb = explode('|', $dumma[$i]);
     if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != false)) {
       // User gefunden

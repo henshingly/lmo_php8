@@ -316,7 +316,7 @@ $patherror = $urlerror = $installerror = $loginerror ='';
 $lmo_dir = dirname(__DIR__);
 
 // Determine HTTP / HTTPS
-if(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!='off' or $_SERVER['SERVER_PORT']==443) $protocol='https:';
+if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!='off' or $_SERVER['SERVER_PORT']==443) $protocol='https:';
 else $protocol='http:';
 
 $path=str_replace('\\','/',$lmo_dir);
@@ -335,7 +335,7 @@ if ($lmo_install_step==1) {
   $_SESSION['ftpuser'] =   isset($_POST['ftpuser'])?   trim($_POST['ftpuser']):(!empty($_SESSION['ftpuser'])?$_SESSION['ftpuser']:'');
   $_SESSION['ftppass'] =   isset($_POST['ftppass'])?   trim($_POST['ftppass']):(!empty($_SESSION['ftppass'])?$_SESSION['ftppass']:'');
 
-  if($ftp->connect($_SESSION['ftpserver'], 21) !== TRUE) {
+  if ($ftp->connect($_SESSION['ftpserver'], 21) !== TRUE) {
     $urlerror.='<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="'.$lang[$userlang]['ERROR'].'"> '.$lang[$userlang]['STEP0_FTP_NO_CONNECTION'].'</p>';
     $lmo_install_step=0;
   } else {
@@ -349,7 +349,7 @@ if ($lmo_install_step==1) {
   if ( $lmo_install_step != 0) {
     $_SESSION['ftpdir'] =   isset($_POST['ftpdir'])?   trim(str_replace("../",'',$_POST['ftpdir']))   : '';
     $ftpdir = $_SESSION['ftpdir'];
-    if(empty($_POST['ftpdir'])) {
+    if (empty($_POST['ftpdir'])) {
       // Choose path
 
       $_SESSION['view'] =   isset($_GET['view'])?   trim(str_replace("../",'',$_GET['view']))   : '';
@@ -614,7 +614,7 @@ if ($lmo_install_step==2) { //Manuell
           }
 
         }
-      } else{
+      } else {
         if (is_writable($lmo_dir."/".$file)) {
           echo "<img src='img/right.gif' border='0' width='12' height='12' alt='".$lang[$userlang]['SUCCESS']."'> $file <small>(".($chmod).")</small>";
         } else {
@@ -742,7 +742,7 @@ if ($lmo_install_step==4) {?>
 function filecollect(&$ftp,$dir='.') {
   $ftp->cd($dir);
   $list=$ftp->ls(".", NET_FTP_DIRS_ONLY);
-  if($list===false) echo "LIST FAILS!";
+  if ($list===false) echo "LIST FAILS!";
   else {
     foreach($list as $entry) {
       if ($entry['name'] != '.' && $entry['name'] != '..') {
