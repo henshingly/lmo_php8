@@ -115,7 +115,7 @@ Das PDF-ADDON ist nun integriert. Weiter geht es mit dem Einbinden der Designobe
    Die Zeilen 206 - 210 sehen folgendermaßen aus.
 #C
     /*Viewer-Addon*/
-    elseif($todo=="vieweroptions"){
+    elseif ($todo=="vieweroptions"){
       require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");
     }
     /*Viewer-Addon*/
@@ -125,7 +125,7 @@ Das PDF-ADDON ist nun integriert. Weiter geht es mit dem Einbinden der Designobe
 
 #C
     /*PDF-Addon*/
-    elseif($todo=="pdfoptions"){
+    elseif ($todo=="pdfoptions"){
       require(PATH_TO_ADDONDIR."/pdf/lmo-adminpdfoptions.inc.php");
     }
     /*PDF-Addon*/
@@ -135,12 +135,12 @@ Das PDF-ADDON ist nun integriert. Weiter geht es mit dem Einbinden der Designobe
 	 
 #C
     /*Viewer-Addon*/
-    elseif($todo=="vieweroptions"){
+    elseif ($todo=="vieweroptions"){
       require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");
     }
     /*Viewer-Addon*/
     /*PDF-Addon*/
-    elseif($todo=="pdfoptions"){
+    elseif ($todo=="pdfoptions"){
       require(PATH_TO_ADDONDIR."/pdf/lmo-adminpdfoptions.inc.php");
     }
     /*PDF-Addon*/

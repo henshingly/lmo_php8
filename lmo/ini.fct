@@ -82,7 +82,7 @@ function ReadIniSections($inifile, $sort = FALSE) {
 // ----------------------------------------------------------------------------------------
 //
 // This function returns the sections of an Ini-File as an array if exists. To check the
-// existence call this function with an if-statemant like if(count(ReadIniSections("file"))).
+// existence call this function with an if-statemant like if (count(ReadIniSections("file"))).
 // If no sections were found or $inifile does not exist count(ReadIniSections("file"))
 // returns '0' which is the same as FALSE. If sort is set to TRUE the array will be sorted
 // alphabeticaly. The default is FALSE.
@@ -113,7 +113,7 @@ function ReadIniSections($inifile, $sort = FALSE) {
     fclose($file);
 
     if (isset($ReadIniSections)) {
-      if($sort) {
+      if ($sort) {
         sort($ReadIniSections, SORT_STRING);
       }
       return $ReadIniSections;
@@ -136,7 +136,7 @@ function ReadIniItems($inifile, $section, $sort = FALSE) {
 //
 // This function returns the item names of a given section of an Ini-File as an array if
 // exists. To check the existence call this function with an if-statemant like
-// if(count(ReadIniItems("file", "section"))). If no items were found or $inifile does not
+// if (count(ReadIniItems("file", "section"))). If no items were found or $inifile does not
 // exist count(ReadIniItems("file", "section")) returns '0' which is the same as FALSE.
 // If sort is set to TRUE the array will be sortet alphabeticaly. The default is FALSE.
 //
@@ -186,7 +186,7 @@ function ReadIniItems($inifile, $section, $sort = FALSE) {
     fclose($file);
 
     if (isset($ReadIniItems)) {
-      if($sort) {
+      if ($sort) {
         sort($ReadIniItems, SORT_STRING);
       }
       return $ReadIniItems;
@@ -209,7 +209,7 @@ function ReadIniValue($inifile, $section, $item) {
 //
 // This function returns the value of a given item and section of an Ini-File as a string
 // if exists. If $item or $inifile does not exist it returns an empty string. Call this
-// function with an if-statemant like if(strlen(ReadIniValue("file", "section", "item")) > 1).
+// function with an if-statemant like if (strlen(ReadIniValue("file", "section", "item")) > 1).
 // To identify an empty item the item must include a '=', e. g. 'MyItem='. Items without
 // a '=' are not identified as an item.
 //
@@ -280,7 +280,7 @@ function WriteIniValue($inifile, $section, $item, $value) {
 //
 // This function writes a value to an Ini-File. If the Ini-File does not exist it
 // will be created. Returns TRUE if succesfull else FALSE. Call this function with
-// an if-statemant like if(WriteIniValue("file", "section", "item", "value")).
+// an if-statemant like if (WriteIniValue("file", "section", "item", "value")).
 
 
   $writing = FALSE;
@@ -386,7 +386,7 @@ function DeleteIniItem($inifile, $section, $item) {
 //
 // This function deletes an item from an Ini-File. Returns TRUE if succesfull
 // else FALSE. Call this function with an if-statemant like
-// if(DeleteIniItem("file", "section", "item")).
+// if (DeleteIniItem("file", "section", "item")).
 
 
   $writing = FALSE;
@@ -458,7 +458,7 @@ function DeleteIniSection($inifile, $section, $recursive = FALSE, $DeleteIfEmpty
 // the section will only deleted if there are no items in the section. If it is
 // the last section of an Ini-File the Ini-File will be deletet to. Returns TRUE
 // if succesfull else FALSE. Call this function with an if-statemant like
-// if(DeleteIniSection("file", "section")).
+// if (DeleteIniSection("file", "section")).
 
 
   $writing = FALSE;
@@ -525,7 +525,7 @@ function RenameIniSection($inifile, $OldSectionName, $NewSectionName) {
 //
 // This function renames a section from an Ini-File. Returns TRUE
 // if succesfull else FALSE. Call this function with an if-statemant like
-// if(RenameIniSection("file", "OldSection", "NewSection")).
+// if (RenameIniSection("file", "OldSection", "NewSection")).
 
 
   $writing = FALSE;
@@ -583,7 +583,7 @@ function MoveSection($inifile, $section, $direction = "down", $upperOffset = 0, 
 // This function moves a complete section one position up or down depending on direction
 // (default is "down"). Offset is need to check if a section is the first oder last
 // section (see below). This function Returns TRUE if it is succesfull else FALSE. Call
-// this function with an if-statemant like if(MoveSection("file", "section")).
+// this function with an if-statemant like if (MoveSection("file", "section")).
 
 
   $direction = strtolower($direction);
@@ -719,7 +719,7 @@ function MoveItem($inifile, $section, $item, $direction = "down") {
 //
 // This function moves an item one position up or down depending on direction (default is
 // "down"). This function Returns TRUE if it is succesfull else FALSE. Call this function
-// with an if-statemant like if(MoveItem("file", "section", "item")).
+// with an if-statemant like if (MoveItem("file", "section", "item")).
 
 
   $direction = strtolower($direction);
@@ -733,24 +733,24 @@ function MoveItem($inifile, $section, $item, $direction = "down") {
 
   $ar_items = ReadIniItems($inifile, $section);
 
-  for($j = 0; $j < count($ar_items); $j++) {
+  for ($j = 0; $j < count($ar_items); $j++) {
     $ar_item_values[$j] = array("item" => $ar_items[$j], "value" => ReadIniValue($inifile, $section, $ar_items[$j]));
-    if(DeleteIniItem($inifile, $section, $ar_items[$j])) {
+    if (DeleteIniItem($inifile, $section, $ar_items[$j])) {
 	  $writing = TRUE;
 	} else {
 	  $writing = FALSE;
 	}
   }
 
-  for($i = 0; $i < count($ar_items); $i++) {
+  for ($i = 0; $i < count($ar_items); $i++) {
   $key = $ar_item_values[$i]['item'];
   $val = $ar_item_values[$i]['value'];
-	if($item == $key) {
+	if ($item == $key) {
 	  $old_index = $i;
 	  $old_item = $key;
 	  $old_val = $val;
-      if($direction == "up") {
-	    if($i == 0) {
+      if ($direction == "up") {
+	    if ($i == 0) {
 		  array_shift($ar_item_values);
 		  array_push($ar_item_values, array('item' => $old_item, 'value' => $old_val));
           $is_limes = TRUE;
@@ -759,7 +759,7 @@ function MoveItem($inifile, $section, $item, $direction = "down") {
 	      $new_index = $i - 1;
 	    }
 	  } else {
-	    if($i == count($ar_items) - 1) {
+	    if ($i == count($ar_items) - 1) {
 		  array_pop($ar_item_values);
 		  array_unshift($ar_item_values, array('item' => $old_item, 'value' => $old_val));
           $is_limes = TRUE;
@@ -772,7 +772,7 @@ function MoveItem($inifile, $section, $item, $direction = "down") {
 	}
   }
 	
-	if(!$is_limes) {
+	if (!$is_limes) {
       $new_item = $ar_item_values[$new_index]['item'];
 	  $new_val = $ar_item_values[$new_index]['value'];
 	  
@@ -782,8 +782,8 @@ function MoveItem($inifile, $section, $item, $direction = "down") {
 	  $ar_item_values[$old_index]['value'] = $new_val;
 	}
 
-  for($i = count($ar_items) - 1; $i >= 0; $i--) {
-    if(WriteIniValue($inifile, $section, $ar_item_values[$i]['item'], $ar_item_values[$i]['value'])) {
+  for ($i = count($ar_items) - 1; $i >= 0; $i--) {
+    if (WriteIniValue($inifile, $section, $ar_item_values[$i]['item'], $ar_item_values[$i]['value'])) {
 	  $writing = TRUE;
 	} else {
 	  $writing = FALSE;
@@ -821,8 +821,8 @@ function CleanIni($inifile) {
     $helpfile = fopen($tempfile, _WRITE_);
     while (!feof($file)) {
       $line = fgets($file, _LineLength_);
-	  if(ord($line) == 10 || ord($line) == 13) {
-	    if($counter == 0) {
+	  if (ord($line) == 10 || ord($line) == 13) {
+	    if ($counter == 0) {
 	      $counter .= 1;
 		  fputs($helpfile, $line);
 		} else {
@@ -947,8 +947,8 @@ function SectionExist($inifile, $section) {
   $arSection = ReadIniSections($inifile);
   $user_found = FALSE;
   
-  for($i = 0; $i < count($arSection); $i++) {
-    if(strtolower($arSection[$i]) == strtolower($section)) {
+  for ($i = 0; $i < count($arSection); $i++) {
+    if (strtolower($arSection[$i]) == strtolower($section)) {
 	  $user_found = TRUE;
 	}
   }
