@@ -288,7 +288,7 @@ if ($file != "") {
     require(PATH_TO_LMO."/lmo-savefile.php");
     $st = $stz;
   }
-
+  
   // Rückrunden-Hack
   if ($save == 990) require_once("lmo-rueckrunde.php");
 
@@ -927,7 +927,7 @@ if ($file != "") {
             </td>
           </tr>
           <tr>
-            <th style="text-align:center" colspan="<?php echo $breite; ?>" align="center">
+            <th colspan="<?php echo $breite; ?>" align="center">
               <input title="<?php echo $text[114] ?>" tabindex="<?php echo $i;?>016" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[103]; ?>">
             </th>
           </tr>
