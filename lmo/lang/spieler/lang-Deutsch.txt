@@ -56,3 +56,4 @@
 055=Fehler
 056=Ansicht ausdrucken
 057=Gesamtansicht ausdrucken
+058=Konfiguration speichern

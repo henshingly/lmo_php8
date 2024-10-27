@@ -379,10 +379,10 @@ if ($file != "") {
             <th colspan="<?php echo $breite-13; ?>">&nbsp;</th><?php
   }
   if ($lmtype==0){ ?>
-            <th class="nobr"><acronym title="<?php echo $text[213] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/paragraph.gif" width="17" height="17" alt="<?php echo $text[217]; ?>"></acronym></th><?php
+            <th style="text-align:center" class="nobr"><acronym title="<?php echo $text[213] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/paragraph.gif" width="17" height="17" alt="<?php echo $text[217]; ?>"></acronym></th><?php
   }?>
-            <th class="nobr"><acronym title="<?php echo $text[112] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[218]; ?>"></acronym></th>
-            <th class="nobr"><acronym title="<?php echo $text[263] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[262]; ?>"></acronym></th><?php
+            <th style="text-align:center" class="nobr"><acronym title="<?php echo $text[112] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[218]; ?>"></acronym></th>
+            <th style="text-align:center" class="nobr"><acronym title="<?php echo $text[263] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[262]; ?>"></acronym></th><?php
   if ($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
             <th class="nobr"><acronym title="<?php echo $text['tipp'][57] ?>"><?php echo $text['tipp'][57]; ?></acronym></th><?php
   }?>

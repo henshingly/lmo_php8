@@ -56,3 +56,4 @@
 055=Feil
 056=Skrive ut oversikt
 057=Skrive ut totaloversikt
+058=Lagre konfigurasjon
