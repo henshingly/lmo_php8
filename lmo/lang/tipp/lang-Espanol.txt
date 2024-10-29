@@ -253,7 +253,7 @@
 252=All Matches in the next
 253=Allow Predictions by Date
 254=...for Matches in the next
-255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Por favor viste nuestra web">HC Forchheim - Handball</a> ]
+255=
 256=Siguiente Día
 257=Día Anterior
 258=Todas las Jornadas desde
@@ -296,10 +296,10 @@
 295=Hola Jugador,
 296=Boletín Juego de Predicción
 297=Hola
-298=Hola [nick], \n\nAquí está su información de registro para el Juego de Predicción: \n\nNombre de Usuario: [nick]\nContraseña: [pass]\n\nPuede ingresar aquí: \n[url]\n\nYou también puede cambiar su contraseña allí.\n\ndisfrutelo!
+298=Hola [nick], &#13;&#13;Aquí está su información de registro para el Juego de Predicción: &#13;&#13;Nombre de Usuario: [nick]&#13;Contraseña: [pass]&#13;&#13;Puede ingresar aquí: &#13;[url]&#13;&#13;You también puede cambiar su contraseña allí.&#13;&#13;disfrutelo!
 299=Envíe la información de registro vía el email
 300=La contraseña le será enviada por E-Mail, cerciorese que la dirección ingresada esv correcta
 301=¡Atención!  Esto desactiva la posibilidad de hacer predicciones!
 302=Muestre Solamente Las Estadísticas Totales De Puntos
-303=Un Nuevo Jugador se ha Registrado para el Juego de Predicción: \n\nNombre de Usuario: [nick]
+303=Un Nuevo Jugador se ha Registrado para el Juego de Predicción: &#13;&#13;Nombre de Usuario: [nick]
 304=Deje el campo en blanco para evitar cambiar la contraseña

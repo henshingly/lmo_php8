@@ -253,7 +253,7 @@
 252=Meciurile din urmatoarele
 253=Permiteți trimiterea bacșilor după dată
 254=...pentru jocurile din următorii câțiva ani
-255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Aruncă o privire și pe pagina mea de pornire">HC Forchheim - Handbal</a> ]
+255=
 256=Sări înainte de zile
 257=Derulați înapoi zilele
 258=Toate meciurile din
@@ -296,10 +296,10 @@
 295=Bună, Tipper,
 296=Buletin informativ despre jocuri de pariuri
 297=Buna ziua
-298=Bună ziua [Nick], \n\nIată informațiile dvs. de înregistrare pentru jocurile de pariuri: \n\nPorecla: [Nick]\nParola: [Parola]\n\nPuteți să vă conectați aici: \n[URL]\n\nDe asemenea, puteți introduce parola ta acolo se schimbă.\n\nDistrați-vă!
+298=Bună ziua [nick], &#13;&#13;Iată informațiile dvs. de înregistrare pentru jocurile de pariuri: &#13;&#13;Porecla: [nick]&#13;Parola: [pass]&#13;&#13;Puteți să vă conectați aici: &#13;[url]&#13;&#13;De asemenea, puteți introduce parola ta acolo se schimbă.&#13;&#13;Distrați-vă!
 299=Trimite datele de inscriere prin Email
 300=Parola va fi trimisa la adresa de Email
 301=Pericol! Acest lucru dezactivează capacitatea de a trimite sfaturi!
 302=Afișați numai punctele totale
-303=User nou: \n\nNume: [nick]
+303=User nou: &#13;&#13;Nume: [nick]
 304=Lăsați câmpul necompletat pentru a evita schimbarea parolei

@@ -253,7 +253,7 @@
 252=Tous les matchs des
 253=Permettre les pronostiques d'après la date
 254=...pour les matchs dans les prochaines
-255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Jette un coup d'oeil sur mon site web">HC Forchheim - Handball</a> ]
+255=
 256=Jour suivant
 257=Jour précédent
 258=Tous les matchs de
@@ -296,10 +296,10 @@
 295=Cher pronostiqueur,
 296=Newsletter du pronostiqueur
 297=Salut
-298=Salut [nick], \n\nici tu trouveras tes dates d'inscription pour le jeu des pronostiques: \n\nIdentifiant: [nick]\nMot de passe: [pass]\n\nIci le lien pour jouer: \n[url]nnSur le site tu peux changer ton mot de passe.\n\nBonne chance.!
+298=Salut [nick], &#13;&#13;ici tu trouveras tes dates d'inscription pour le jeu des pronostiques: &#13;&#13;Identifiant: [nick]&#13;Mot de passe: [pass]&#13;&#13;Ici le lien pour jouer: &#13;[url]nnSur le site tu peux changer ton mot de passe.&#13;&#13;Bonne chance.!
 299=Envoyer les données d'inscription par email
 300=Le mot de passe vous a été envoyé par email, veuillez vérifier que votre adresse e-mail est correcte...
 301=Attention! Ici vous pouvez désactiver la possibilité de faire des pronostiques!
 302=Montrer seulement le classement total des points
-303=Un nouveau joueur s'est inscrit pour le jeu des pronostiques: \n\nIdentifiant: [nick]
+303=Un nouveau joueur s'est inscrit pour le jeu des pronostiques: &#13;&#13;Identifiant: [nick]
 304=Laissez le champ vide pour éviter de changer le mot de passe

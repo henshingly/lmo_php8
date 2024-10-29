@@ -177,7 +177,7 @@
 176=Email nebyl odeslán
 177=Toto kolo nemůže být ještě natipováno
 178=Místo:
-179=[nick] jméno<br>[pass] heslo<br>[name] jméno<br>[spiele] kolo (jen Upozornění na tipování)<br>[spiele] Zobrazení všech zápasů k tipování (jen Tip-Reminder)
+179=[nick] Přezdívka<br>[pass] Heslo<br>[name] Jméno<br>[spiele] Seznam her, které mají být ještě tipovány (pouze připomenutí tipu)
 180=Aktualizace celkové tabulky po zadání výsledků
 181=Tady můžete vidět tabulku s tipy od
 182=k tvojí tipovací tabulce
@@ -253,7 +253,7 @@
 252=Všechny zápasy v následujících
 253=Zadání tipů alá LMO-Viewer
 254=Zadání tipů alá LMO-Viewer pro zápasy v příštích
-255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Podívejte se také na mou domovskou stránku">HC Forchheim - Házená</a> ]
+255=
 256=dní dopředu
 257=dní zpět
 258=Všechny zápasy od
@@ -296,10 +296,10 @@
 295=Fotbalu a tipování zdar,
 296=Tipovací soutěž-Zpravodaj
 297=Ahoj
-298=Ahoj [nick], \n\nzde jsou tvoje přihlašovací údaje pro tipovací soutěž: \n\nNick: [nick]\nHeslo: [pass]\n\nZde se můžeš přihlásit: \n[url]\n\nZde si také můžeš změnit heslo.\n\nMnoho štěstí!
+298=Ahoj [nick], &#13;&#13;zde jsou tvoje přihlašovací údaje pro tipovací soutěž: &#13;&#13;Nick: [nick]&#13;Heslo: [pass]&#13;&#13;Zde se můžeš přihlásit: &#13;[url]&#13;&#13;Zde si také můžeš změnit heslo.&#13;&#13;Mnoho štěstí!
 299=Přihlašovací údaje byly odeslány!
 300=Tvoje heslo bude posláno na email, raději zkontroluj znovu emailovou adresu!!
 301=Pozor! Pokud si deaktivuješ položku, nebudeš moci tipovat!
 302=Jen celkovou tabulku ukázat
-303=Nové tipovací konto funkční: \n\nNick: [nick]
+303=Nové tipovací konto funkční: &#13;&#13;Nick: [nick]
 304=Nechte pole prázdné, aby nedošlo ke změně hesla

@@ -296,10 +296,10 @@
 295=Hei Tipper,
 296=Tippespill-Newsletter
 297=Hei
-298=Hei [nick], \n\nher er dine login data for tippespillet: \n\nNick: [nick]\nPassord: [pass]\n\nHer kan du logge deg inn: \n[url]\n\nDer kan du også endre passord.\n\nLykke til!
+298=Hei [nick], &#13;&#13;her er dine login data for tippespillet: &#13;&#13;Nick: [nick]&#13;Passord: [pass]&#13;&#13;Her kan du logge deg inn: &#13;[url]&#13;&#13;Der kan du også endre passord.&#13;&#13;Lykke til!
 299=Sende registreringsdata pr. email
 300=Passordet blir sendt til deg pr. email, forsikre deg om at den oppgitte adressen er gyldig
 301=ADVARSEL! Dermed deaktiverer du muligheten til å avgi tips!
 302=Vise ny total poengstilling
-303=En ny tpper har registrert seg for tippespillet: \n\nNick: [nick]
+303=En ny tpper har registrert seg for tippespillet: &#13;&#13;Nick: [nick]
 304=La feltet stå tomt for å unngå å endre passordet

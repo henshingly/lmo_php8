@@ -46,7 +46,7 @@
 045=If You are not Registered:
 046=You can Register here for the Prediction Game
 047=Which Team would you like to Join?
-048=<acronym title="in Klammern: [Tipper im Team]">Join a current Team:</acronym>
+048=<acronym title="in brackets: [Tipster in the team]">Join a current Team:</acronym>
 049=Make New Team:
 050=None
 051=Please Select
@@ -253,7 +253,7 @@
 252=All Matches in the next
 253=Allow Predictions by Date
 254=...for Matches in the next
-255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Please Visit our Hompepagei">HC Forchheim - Handball</a> ]
+255=
 256=Next Day
 257=Day Before
 258=All Matches from
@@ -296,10 +296,10 @@
 295=Hello Player,
 296=Prediction Game Newsletter
 297=Hello
-298=Hello [nick], \nnHere is your Registration information for the Prediction Game: \n\nNickname: [nick]\nPassword: [pass]\n\nYou can Log In here: \n[url]\n\nYou can also change your Password there.\n\nHave Fun!
+298=Hello [nick], &#13;nHere is your Registration information for the Prediction Game: &#13;&#13;Nickname: [nick]&#13;Password: [pass]&#13;&#13;You can Log In here: &#13;[url]&#13;&#13;You can also change your Password there.&#13;&#13;Have Fun!
 299=Send Registration Information via E-Mail
 300=The Password will be sent to you by E-Mail, make sure the entered adress is correct
 301=Attention! This deactivate the Possibility of making Predictions!
 302=Show Only Total Point Standings
-303=A New player has Registered for the Prediction Game: \n\nNickname: [nick]
+303=A New player has Registered for the Prediction Game: &#13;&#13;Nickname: [nick]
 304=Leave the field blank to avoid changing the password
