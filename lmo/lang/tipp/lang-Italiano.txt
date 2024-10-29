@@ -1,4 +1,4 @@
-﻿000=Gioco di pronostico
+000=Gioco di pronostico
 001=alla panoramica del gioco delle scommesse
 002=Cambia squadra
 003=Tipo lega

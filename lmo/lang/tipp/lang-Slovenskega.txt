@@ -1,4 +1,4 @@
-﻿000=Igra napovedi
+000=Igra napovedi
 001=na pregled stavne igre
 002=Zamenjaj ekipo
 003=Vnesite ligo

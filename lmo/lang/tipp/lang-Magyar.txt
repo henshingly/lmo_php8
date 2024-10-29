@@ -1,4 +1,4 @@
-﻿000=Jósító játék
+000=Jósító játék
 001=a fogadási játék áttekintésére
 002=Csapatváltás
 003=Típus liga

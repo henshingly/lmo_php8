@@ -1,4 +1,4 @@
-﻿000=Jogo de previsão
+000=Jogo de previsão
 001=para a visão geral do jogo de apostas
 002=Mudar de equipa
 003=Tipo liga
