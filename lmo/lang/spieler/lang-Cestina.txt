@@ -56,3 +56,4 @@
 055=Chyba
 056=Tisk zobrazení
 057=Vytiskněte si celkový pohled
+058=Uložit konfiguraci

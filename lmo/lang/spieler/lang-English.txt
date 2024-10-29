@@ -56,3 +56,4 @@
 055=Error
 056=Print View
 057=Print All
+058=Save configuration

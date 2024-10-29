@@ -56,3 +56,4 @@
 055=Greška
 056=Pogled za ispis (Štampati)
 057=Ispišite cjelokupni prikaz
+058=Spremi konfiguraciju

@@ -621,7 +621,7 @@ function mark(el) {
                         <td colspan="2" align="left"><input type="checkbox" name="nullwerte_anzeigen" onClick="mark(this)" value="<?php echo $spieler_nullwerte_anzeigen?>" <?php if ($spieler_nullwerte_anzeigen==1) echo "checked";?>></td>
                     </tr>
                     <tr>
-                        <td colspan="5" align="right"><input class="lmo-formular-button" type="submit" value="Konfiguration speichern"></td>
+                        <td colspan="5" align="center"><input class="lmo-formular-button" type="submit" value="<?php echo $text['spieler'][58]?>"></td>
                     </tr>
                 </table>
             </form>

@@ -56,3 +56,4 @@
 055=Erreur
 056=Imprimer la vue
 057=Imprimer la vue d'ensemble
+058=Enregistrer la configuration
