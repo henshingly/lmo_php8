@@ -91,11 +91,11 @@ if (($file!="") && ($_SESSION['lmouserok']==2)){
   foreach ($liga->spieltage as $spTag) { ?>
         <tr>
           <th width="15" class="nobr">&nbsp;</th>
-          <th colspan="6" class="nobr" align="left">
+          <th style="text-align:left" colspan="6" class="nobr">
             <strong><?php echo $spTag->nr.". ".$text[2]."&nbsp;&nbsp;".$spTag->vonBisString()."</strong> / ".$spTag->partienCount()." ".$text[5003] ; ?>
           </th>
-          <th colspan="3" class="nobr" align="right">
-				<a href="#top"><?php echo $text[5011]; ?></a>&nbsp;/&nbsp;<a href="#bottom"><?php echo $text[5012]; ?></a></th>
+          <th style="text-align:right" colspan="3" class="nobr">
+            <a href="#top"><?php echo $text[5011]; ?></a>&nbsp;/&nbsp;<a href="#bottom"><?php echo $text[5012]; ?></a></th>
         </tr><?php
     $pcount = 1;
     $teamArray = array();
@@ -160,7 +160,7 @@ if (($file!="") && ($_SESSION['lmouserok']==2)){
   }      // foreach ($spTag->partien as $partie)
 ?>
         <tr>
-            <th class="nobr" colspan="10">
+            <th style="text-align:center" class="nobr" colspan="10">
               <acronym title="<?php echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php echo $text[5009]; ?>"></acronym>
             </th>
         </tr>

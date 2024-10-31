@@ -512,7 +512,7 @@ if ($file != "") {
               <script type="text/javascript">document.getElementById('n<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
             </td>
-            <td align="center"><input id="s<?php echo $i?>" class="lmo-formular-input" type="text" name="xmberi<?php echo $i; ?>" size="16" maxlength="255" value="<?php echo htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
+            <td align="center"><input id="s<?php echo $i?>" class="lmo-formular-input" type="text" name="xmberi<?php echo $i; ?>" tabindex="<?php echo $i;?>12" size="16" maxlength="255" value="<?php echo htmlentities($mberi[$st-1][$i]); ?>" onChange="dolmoedit()"><?php
       if (trim($mberi[$st-1][$i]) == '') {?>
               <script type="text/javascript">document.getElementById('s<?php echo $i?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?php echo $i?>\').style.display=\'inline\';return false;">+</a>');</script><?php
       }?>
@@ -520,7 +520,7 @@ if ($file != "") {
       /*Tippspiel-Addon*/
       if ($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
             <td>
-              <select class="lmo-formular-input" name="xmtipp<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>12" >
+              <select class="lmo-formular-input" name="xmtipp<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i;?>13" >
                 <option value="0"<?php if ($mtipp[$st-1][$i]<1){echo " selected";}?>>_</option>
                 <option value="1"<?php if ($mtipp[$st-1][$i]==1){echo " selected";}?>><?php echo $text['tipp'][199]?></option>
               </select>
