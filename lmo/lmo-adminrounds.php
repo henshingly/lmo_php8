@@ -160,8 +160,8 @@ if (($file!="") && ($_SESSION['lmouserok']==2)){
   }      // foreach ($spTag->partien as $partie)
 ?>
         <tr>
-            <th style="text-align:center" class="nobr" colspan="10">
-              <acronym title="<?php echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php echo $text[5009]; ?>"></acronym>
+            <th style="text-align:right" class="nobr" colspan="10">
+              <acronym title="<?php echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php echo $text[5009]; ?>"></acronym>&nbsp;&nbsp;&nbsp;
             </th>
         </tr>
         </table>
