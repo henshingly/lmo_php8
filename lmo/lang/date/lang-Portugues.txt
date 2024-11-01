@@ -36,3 +36,8 @@
 35=Out
 36=Nov
 37=Dez
+38=para último mês
+39=para o mês corrente
+40=para o próximo mês
+41=Data de aplicação
+42=Fechar calendário sem aplicar data

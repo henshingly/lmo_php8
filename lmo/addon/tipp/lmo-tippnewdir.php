@@ -46,7 +46,7 @@ if ($ftype != "") {
   if (!isset($_SESSION["lmouserok"])) {
     $_SESSION["lmouserok"] = 0;
   }
-  for($k = 0; $k < count($dummy); $k++) {
+  for ($k = 0; $k < count($dummy); $k++) {
     $files = $dummy[$k];
     if ($_SESSION['lmouserok'] != 1) {
       $ftest = 1;
@@ -54,7 +54,7 @@ if ($ftype != "") {
       $ftest = 0;
       $ftest1 = explode(',', $_SESSION['lmouserfile']);
       if (isset($ftest1)) {
-        for($u = 0; $u < count($ftest1); $u++) {
+        for ($u = 0; $u < count($ftest1); $u++) {
           if ($ftest1[$u].".l98" == $files) {
             $ftest = 1;
           }
@@ -109,7 +109,7 @@ if ($ftype != "") {
       $ftest1 = "";
       $ftest1 = explode(',', $tipp_ligenzutippen);
       if (isset($ftest1)) {
-        for($u = 0; $u < count($ftest1); $u++) {
+        for ($u = 0; $u < count($ftest1); $u++) {
 
           if ($ftest1[$u] == substr($files, 0, -4)) {
             $ftest = 1;
@@ -130,10 +130,10 @@ if ($ftype != "") {
   <tr>
     <td class="nobr">
         <input type="hidden" name="liga1[]" value="<?php echo $files; ?>">
-        <input type="radio" name="liganr" value="<?php echo $i; ?>" <?php if(($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><?php echo $t0; ?>
+        <input type="radio" name="liganr" value="<?php echo $i; ?>" <?php if (($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if (emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><?php echo $t0; ?>
     </td>
     <td class="nobr">
-      <select class="lmo-formular-input" name="st1[]" onChange="if(emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php
+      <select class="lmo-formular-input" name="st1[]" onChange="if (emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php
                       if ($liga == $files) {
                         if ($st > 0) {
                           $t1 = $st;
@@ -151,7 +151,7 @@ if ($ftype != "") {
                       }
                       echo "</option>";
 
-                      for($y = 1; $y <= $anzst; $y++) {
+                      for ($y = 1; $y <= $anzst; $y++) {
                         echo "<option value=\"".$y."\"";
                         if ($y == $t1) {
                           echo " selected";
@@ -181,7 +181,7 @@ if ($ftype != "") {
     </td>
   </tr><?php
                     }
-                    if($iptype=="einsicht" || $iptype=="auswert"){?>
+                    if ($iptype=="einsicht" || $iptype=="auswert"){?>
         <tr>
           <td width="20">&nbsp;</td>
           <td class="nobr" align="left"><?php echo $t0; ?></td>
@@ -189,7 +189,7 @@ if ($ftype != "") {
             <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
               <input type="hidden" name="action" value="admin">
               <input type="hidden" name="todo" value="tipp">
-              <input type="hidden" name="save" value="<?php if($iptype=="einsicht"){echo "3";}else{echo "2";} ?>">
+              <input type="hidden" name="save" value="<?php if ($iptype=="einsicht"){echo "3";} else {echo "2";} ?>">
               <input type="hidden" name="liga" value="<?php echo substr($files,0,-4); ?>">
               <select class="lmo-formular-input" name="st">
 <?php
@@ -224,7 +224,7 @@ if ($ftype != "") {
                         echo "</option>";*/
                       }
 
-                      for($y = 1; $y <= $anzst; $y++) {
+                      for ($y = 1; $y <= $anzst; $y++) {
                         echo "                <option value=\"".$y."\"";
                         if ($y == $t1) {
                           echo " selected";
@@ -273,12 +273,12 @@ if ($ftype != "") {
                         }
                       }?>
               <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?php echo $ende1; ?>">
-              <input class="lmo-formular-button" type="submit" name="best" value="<?php if($iptype=="einsicht"){echo $text['tipp'][156];}else{echo $text['tipp'][58];}  ?>">
+              <input class="lmo-formular-button" type="submit" name="best" value="<?php if ($iptype=="einsicht"){echo $text['tipp'][156];} else {echo $text['tipp'][58];}  ?>">
             </form>
           </td>
         </tr>
 <?php
-                    }elseif ($iptype!="reminder"){
+                    } elseif ($iptype!="reminder"){
                       $checked = 0;
                       if (($todo == "newtipper" || $todo == "tippuseredit") && $xtipperligen != "") {
                         $checked = 0;
@@ -318,7 +318,7 @@ if ($ftype != "") {
       }
     }
   }
-  if($i==0){?>
+  if ($i==0){?>
         <tr>
           <td></td>
           <td><li>[ <?php echo $text[223]; ?> ]</li></td>

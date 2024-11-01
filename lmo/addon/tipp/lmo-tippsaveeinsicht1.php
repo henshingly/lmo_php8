@@ -21,7 +21,7 @@
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
   $einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".substr($file, 0, -4)."_".$st.".ein";
-  //if(decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}
+  //if (decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}
   if (substr($einsichtfile, -4) == ".ein") {
     $daten = array("");
     if (file_exists($einsichtfile)) {
@@ -46,7 +46,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
     flock($datei, 2);
      
     $nick = "";
-    for($i = 0; $i < count($daten); $i++) {
+    for ($i = 0; $i < count($daten); $i++) {
       if ((substr($daten[$i], 0, 1) == "[") && (substr($daten[$i], -1) == "]")) {
         $nick = substr($daten[$i], 1, -1);
       }
@@ -62,14 +62,14 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
     }
     if ($lmtype != 0) {
       $anzsp = $anzteams;
-      for($i = 0; $i < $st; $i++) {
+      for ($i = 0; $i < $st; $i++) {
         $anzsp = $anzsp/2;
       }
       if (($klfin == 1) && ($st == $anzst)) {
         $anzsp = $anzsp+1;
       }
     }
-    for($j = 1; $j <= $anzsp; $j++) {
+    for ($j = 1; $j <= $anzsp; $j++) {
       if ($lmtype == 0) {
         if ($goaltippa[$j-1] == "_") {
           fputs($datei, "GA".$j."=-1\n");
@@ -86,7 +86,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
           fputs($datei, "GB".$j."=".$goaltippb[$j-1]."\n");
         }
       } else {
-        for($n = 1; $n <= $modus[$st-1]; $n++) {
+        for ($n = 1; $n <= $modus[$st-1]; $n++) {
           if ($goaltippa[$j-1][$n-1] == "_") {
             fputs($datei, "GA".$j.$n."=-1\n");
           } elseif ($goaltippa[$j-1][$n-1] == "") {

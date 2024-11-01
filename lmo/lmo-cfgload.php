@@ -23,7 +23,7 @@ if (file_exists($cfgfile)) {
   $main_cfgarray=parse_ini_file($cfgfile);         // in Array lesen
   $cfgarray+=$main_cfgarray;
   extract ($cfgarray);                        // Variablen erstellen
-}else{
+} else {
   die($text['viewer'][55].": ". $cfgfile . " " . $text['viewer'][56]);
   //Fehlerhandling hier rein
 }

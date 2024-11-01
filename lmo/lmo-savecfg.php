@@ -24,7 +24,7 @@
   */
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if($_SESSION['lmouserok']==2){
+if ($_SESSION['lmouserok']==2){
   $ok=true;
   $datei = fopen($cfgfile,"wb");
   if ($datei) {

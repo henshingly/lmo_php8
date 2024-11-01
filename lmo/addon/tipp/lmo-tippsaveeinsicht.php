@@ -66,7 +66,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
     flock($einsichtdatei, 2);
     echo getMessage($text['tipp'][157]." ".$liga." ".$text['tipp'][65]);
      
-    for($k = 0; $k < $anztipper; $k++) {
+    for ($k = 0; $k < $anztipper; $k++) {
       // durchlaufe alle Tipper
       $tippernick = substr($dummy[$k], strrpos($dummy[$k], "_")+1, -4);
       if ($k >= $start-1 && $k <= $ende-1) {
@@ -99,7 +99,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
           }
 
           $jkspgrpw = 0;
-          for($i = 1; $i <= count($tippdaten); $i++) {
+          for ($i = 1; $i <= count($tippdaten); $i++) {
             $dum = explode('|', $tippdaten[$i-1]);
             $op2 = substr($dum[0], 0, 5);            // Round
             $op3 = substr($dum[0], 5);            // Spieltagsnummer
@@ -116,11 +116,11 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
             }
           }
         }
-      } // ende if($k>=$start-1 && $k<=$ende-1)
+      } // ende if ($k>=$start-1 && $k<=$ende-1)
       else
         {
         $nick = "";
-        for($i = 0; $i < count($datenalt); $i++) {
+        for ($i = 0; $i < count($datenalt); $i++) {
           $zeile = $datenalt[$i];
           if ($zeile != "") {
             if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
@@ -130,12 +130,12 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
               fputs($einsichtdatei, $datenalt[$i]."\n");
             }
           }
-        } // ende for($i=0;$i<count($datenalt);$i++)
+        } // ende for ($i=0;$i<count($datenalt);$i++)
       } // ende else
-    } // ende for($k=0;$k<$anztipper;$k++)
+    } // ende for ($k=0;$k<$anztipper;$k++)
     flock($einsichtdatei, 3);
     fclose($einsichtdatei);
-  } // ende if(file_exists($file))
+  } // ende if (file_exists($file))
   closedir($verz);
 }
 clearstatcache();

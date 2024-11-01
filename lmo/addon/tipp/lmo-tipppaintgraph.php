@@ -30,7 +30,7 @@ if ($max < 1) {
  
 if ($kmodus < 4) {
   $linie = explode(',', $pgplatz1);
-  for($i = 0; $i < count($linie)-1; $i++) {
+  for ($i = 0; $i < count($linie)-1; $i++) {
     if (strlen($linie[$i]) > 0) {
       if ($linie[$i] < $min) {
         $min = $linie[$i];
@@ -39,7 +39,7 @@ if ($kmodus < 4) {
   }
   if ($pganz == 2) {
     $lini2 = explode(',', $pgplatz2);
-    for($i = 0; $i < count($lini2)-1; $i++) {
+    for ($i = 0; $i < count($lini2)-1; $i++) {
       if (strlen($lini2[$i]) > 0) {
         if ($lini2[$i] < $min) {
           $min = $lini2[$i];
@@ -50,7 +50,7 @@ if ($kmodus < 4) {
 }
 if ($kmodus > 2) {
   $liniea = explode(',', $pgplatz1a);
-  for($i = 0; $i < count($liniea)-1; $i++) {
+  for ($i = 0; $i < count($liniea)-1; $i++) {
     if (strlen($liniea[$i]) > 0) {
       if ($liniea[$i] < $min) {
         $min = $liniea[$i];
@@ -59,7 +59,7 @@ if ($kmodus > 2) {
   }
   if ($pganz == 2) {
     $lini2a = explode(',', $pgplatz2a);
-    for($i = 0; $i < count($lini2a)-1; $i++) {
+    for ($i = 0; $i < count($lini2a)-1; $i++) {
       if (strlen($lini2a[$i]) > 0) {
         if ($lini2a[$i] < $min) {
           $min = $lini2a[$i];
@@ -70,7 +70,7 @@ if ($kmodus > 2) {
 }
  
 if ($kmodus < 4) {
-  for($i = 0; $i < count($linie)-1; $i++) {
+  for ($i = 0; $i < count($linie)-1; $i++) {
     if (strlen($linie[$i]) > 0) {
       if ($kmodus == 1) {
         $linie[$i] = $max-$linie[$i];
@@ -80,7 +80,7 @@ if ($kmodus < 4) {
     }
   }
   if ($pganz == 2) {
-    for($i = 0; $i < count($lini2)-1; $i++) {
+    for ($i = 0; $i < count($lini2)-1; $i++) {
       if (strlen($lini2[$i]) > 0) {
         if ($kmodus == 1) {
           $lini2[$i] = $max-$lini2[$i];
@@ -92,13 +92,13 @@ if ($kmodus < 4) {
   }
 }
 if ($kmodus > 2) {
-  for($i = 0; $i < count($liniea)-1; $i++) {
+  for ($i = 0; $i < count($liniea)-1; $i++) {
     if (strlen($liniea[$i]) > 0) {
       $liniea[$i] -= $min;
     }
   }
   if ($pganz == 2) {
-    for($i = 0; $i < count($lini2a)-1; $i++) {
+    for ($i = 0; $i < count($lini2a)-1; $i++) {
       if (strlen($lini2a[$i]) > 0) {
         $lini2a[$i] -= $min;
       }
@@ -157,7 +157,7 @@ if ($kmodus > 1) {
 imagestring($image, 2, 28, 28+(($max-$min+1) * $khoch+12), $pgtext1, $farbe_a);
 imagestringup($image, 2, 4, $hoch-28, $pgtext2, $farbe_a);
 
-for($i = $min; $i <= $max; $i++) {
+for ($i = $min; $i <= $max; $i++) {
   $j = strval($i);
   if ($kmodus == 1) {
     $j = $max-$j+$min;
@@ -171,7 +171,7 @@ for($i = $min; $i <= $max; $i++) {
   }
 }
  
-for($i = 1; $i <= $pgst; $i++) {
+for ($i = 1; $i <= $pgst; $i++) {
   $j = strval($i);
   if ($i < 10) {
     $j = "0".$j;
@@ -179,27 +179,27 @@ for($i = 1; $i <= $pgst; $i++) {
   imagestring($image, 1, 19+($i * 12), 18, $j, $farbe_a);
   imagestring($image, 1, 19+($i * 12), 18+(($max-$min+1) * $khoch+12), $j, $farbe_a);
 }
-for($i = $min; $i <= $max; $i++) {
+for ($i = $min; $i <= $max; $i++) {
   imagerectangle($image, 29, 28+(($i-$min) * $khoch), 17+(($pgst+1) * 12), 28+$khoch+(($i-$min) * $khoch), $farbe_b);
 }
-for($i = 0; $i < $pgst; $i++) {
+for ($i = 0; $i < $pgst; $i++) {
   imagerectangle($image, 29+($i * 12), 28, 41+($i * 12), 16+(($max-$min+1) * $khoch+12), $farbe_b);
 }
 $j = 1;
 if ($kmodus > 1 && $khoch > 1) {
-  for($i = $min; $i <= $max; $i++) {
+  for ($i = $min; $i <= $max; $i++) {
     if ($i == 1) {
-      for($k = 1; $k <= $pgst; $k++) {
+      for ($k = 1; $k <= $pgst; $k++) {
         imagefill($image, 20+($k * 12), 29+(($i-$min) * $khoch), $farbe_e);
       }
     }
     if ($i == 2) {
-      for($k = 1; $k <= $pgst; $k++) {
+      for ($k = 1; $k <= $pgst; $k++) {
         imagefill($image, 20+($k * 12), 29+(($i-$min) * $khoch), $farbe_f);
       }
     }
     if ($i == 3) {
-      for($k = 1; $k <= $pgst; $k++) {
+      for ($k = 1; $k <= $pgst; $k++) {
         imagefill($image, 20+($k * 12), 29+(($i-$min) * $khoch), $farbe_g);
       }
     }
@@ -209,7 +209,7 @@ imagestring($image, 3, 19, 1, stripslashes($pgteam1), $farbe_c);
 if ($pganz == 2) {
   imagestring($image, 3, $breit-imagefontwidth(3) * strlen(stripslashes($pgteam2))-2, 1, stripslashes($pgteam2), $farbe_d);
 }
-for($i = 1; $i < $pgst; $i++) {
+for ($i = 1; $i < $pgst; $i++) {
   if ($kmodus < 4) {
     if (strlen($linie[$i]) > 0 && strlen($linie[$i-1]) > 0) {
       imageline($image, 24+($i * 12), 28+$khoch/2+($linie[$i-1] * $khoch), 24+(($i+1) * 12), 28+$khoch/2+($linie[$i] * $khoch), $farbe_c);

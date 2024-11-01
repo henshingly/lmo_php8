@@ -188,10 +188,10 @@ class partie {
         $result = 0;
       }
     }
-    elseif($this->hTore == -2) { // green Table home wins
+    elseif ($this->hTore == -2) { // green Table home wins
       $result = 1;
     }
-    elseif($this->gTore == -2) {// green Table away wins
+    elseif ($this->gTore == -2) {// green Table away wins
       $result = 2; // Bugfix 14.2.05 $result = 1
     }
 

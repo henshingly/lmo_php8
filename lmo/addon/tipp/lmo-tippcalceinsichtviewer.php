@@ -42,7 +42,7 @@ if (file_exists($einsichtfile)) {
   }
   array_shift($tippdaten);
    
-  for($l = 1; $l <= count($tippdaten); $l++) {
+  for ($l = 1; $l <= count($tippdaten); $l++) {
     $dum = explode('|', $tippdaten[$l-1]);
     $op4 = substr($dum[1], 0, 2);
     if ($op4 == "GA") {
@@ -52,7 +52,7 @@ if (file_exists($einsichtfile)) {
       $tippb0 = $dum[2];
       $spiel0 = substr($dum[1], 2);
        
-      for($k = $start2; $k <= $i; $k++) {
+      for ($k = $start2; $k <= $i; $k++) {
         if ($spiel0 == $spiel[$k]) {
           if ($tippa0 > 0) {
             $toregesa[$k] += $tippa0;

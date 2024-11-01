@@ -133,7 +133,7 @@ if (!file_exists($mini_cache_filename)
                 $showLastGame = true;
             }
 
-            if($partie -> heim == $team_a) {
+            if ($partie -> heim == $team_a) {
                 $team_b = $partie -> gast;
             } else {
                 $team_b = $partie -> heim;
@@ -211,7 +211,7 @@ if (!file_exists($mini_cache_filename)
 
             $spiele = $liga -> allPartieForTeams($team_a,$team_b,true);
             foreach($spiele as $spiel) {
-                if($spiel -> hTore != -1 && $spiel -> gTore != -1) {
+                if ($spiel -> hTore != -1 && $spiel -> gTore != -1) {
                     $archivSortDummy[] = $spiel -> zeit;
                     if ($spiel -> heim == $team_a) {
                         $archivPaarungen[] = array('time'=>$spiel -> zeit, 'where'=>$text['mini'][13], 'partie'=>$spiel, 'match'=>null);
@@ -230,7 +230,7 @@ if (!file_exists($mini_cache_filename)
             foreach ($dataArray as $ligaFile) {
                 if ($ligaFile['path'] . $ligaFile['src'] != PATH_TO_LMO . '/' . $dirliga . $file) {
                     $newLiga = new liga();
-                    if($newLiga -> loadFile($ligaFile['path'] . $ligaFile['src'] ) == true) {
+                    if ($newLiga -> loadFile($ligaFile['path'] . $ligaFile['src'] ) == true) {
 
                         $teamNames = $newLiga -> teamNames();
                         $newTeam_a = $newLiga -> teamForName($team_a -> name);
@@ -245,7 +245,7 @@ if (!file_exists($mini_cache_filename)
                         if (!is_null($newTeam_a) && !is_null($newTeam_b) ){
                             $spiele = $newLiga -> allPartieForTeams($newTeam_a,$newTeam_b,true);
                             foreach($spiele as $spiel) {
-                                if($spiel -> hTore != -1 && $spiel -> gTore != -1) {
+                                if ($spiel -> hTore != -1 && $spiel -> gTore != -1) {
                                     $archivSortDummy[] = $spiel -> zeit;
                                     if ($spiel -> heim == $newTeam_a) {
                                         $archivPaarungen[] = array('time'=>$spiel -> zeit, 'where'=>$text['mini'][13], 'partie'=>$spiel, 'match'=>$match);

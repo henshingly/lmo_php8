@@ -21,26 +21,27 @@ $trans_lang = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1]
 $min_php_version = "7.4.0";
 
 function check_hilfsadmin($datei) {
-  $hilfsadmin_berechtigung=FALSE;
-  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']==1) {
-    $hilfsadmin_ligen = explode(',',$_SESSION['lmouserfile']);
+  $hilfsadmin_berechtigung = FALSE;
+  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 1) {
+    $hilfsadmin_ligen = explode(',', $_SESSION['lmouserfile']);
     if (isset($hilfsadmin_ligen)) {
       foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
-        if ($hilfsadmin_liga.".l98"==basename($datei)) {
-          $hilfsadmin_berechtigung=TRUE;
+        if ($hilfsadmin_liga . ".l98" == basename($datei)) {
+          $hilfsadmin_berechtigung = TRUE;
         }
       }
     }
-  } else {
-    $hilfsadmin_berechtigung=TRUE;
+  }
+  else {
+    $hilfsadmin_berechtigung = TRUE;
   }
   return $hilfsadmin_berechtigung;
 }
 
 
 function applyFactor ($value, $factor) {
-  if (is_numeric($value) && $value!=0) {
-    return ($value/$factor);
+  if (is_numeric($value) && $value != 0) {
+    return ($value / $factor);
   }
   return $value;
 }
@@ -58,13 +59,13 @@ function magicQuotesRemove(&$array) {
 
 function get_dir($verz) {
   $ret = array();
-  if (substr($verz,-1)!='/') $verz.='/';
+  if (substr($verz,-1) != '/') $verz .= '/';
 
-  $handle = opendir(PATH_TO_LMO."/".$verz);
+  $handle = opendir(PATH_TO_LMO . "/" . $verz);
   if ($handle) {
     while ($file = readdir ($handle)) {
       if ($file != "." && $file != "..") {
-        if (is_dir(PATH_TO_LMO."/".$verz.$file)) {
+        if (is_dir(PATH_TO_LMO . "/" . $verz . $file)) {
           $ret[] = $file;
         }
       }
@@ -87,16 +88,16 @@ function filterZero($a) {
  * @return       string     HTML image-Code for the small team icon
  */
 //Umstellung Classlib kann später mal weg
-function getSmallImage($team,$alternative_text='') {
-  $team=str_replace("/","",$team);
-  if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
-    $team=preg_replace("/[^a-zA-Z0-9]/",'',$team);
+function getSmallImage($team, $alternative_text = '') {
+  $team=str_replace("/", "", $team);
+  if (!file_exists(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif")) {
+    $team = preg_replace("/[^a-zA-Z0-9]/", '', $team);
   }
-  if (!file_exists(PATH_TO_IMGDIR."/teams/small/".$team.".gif")) {
+  if (!file_exists(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif")) {
     return $alternative_text;
   } else {
-    $imgdata=getimagesize(PATH_TO_IMGDIR."/teams/small/".$team.".gif");
-    return ("<img border='0' src='".URL_TO_IMGDIR."/teams/small/".rawurlencode($team).".gif' {$imgdata[3]} alt=''> ");
+    $imgdata = getimagesize(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif");
+    return ("<img border='0' src='" . URL_TO_IMGDIR . "/teams/small/" . rawurlencode($team) . ".gif' {$imgdata[3]} alt=''> ");
   }
 }
 
@@ -107,11 +108,11 @@ function getSmallImage($team,$alternative_text='') {
  * @param        bool       $error         Default FALSE, Is this an error message?
  * @return       string     Formatted (error) message
  */
-function getMessage($message,$error=FALSE) {
+function getMessage($message, $error = FALSE) {
   if ($error) {
-    return '<p class="error"><img src="'.URL_TO_IMGDIR.'/wrong.gif" border="0" width="12" height="12" alt=""> '.$message.'</p>';
+    return '<p class="error"><img src="' . URL_TO_IMGDIR . '/wrong.gif" border="0" width="12" height="12" alt=""> ' . $message . '</p>';
   } else {
-    return '<p class="message"><img src="'.URL_TO_IMGDIR.'/right.gif" border="0" width="12" height="12" alt=""> '.$message.'</p>';
+    return '<p class="message"><img src="' . URL_TO_IMGDIR . '/right.gif" border="0" width="12" height="12" alt=""> ' . $message . '</p>';
   }
 }
 
@@ -120,11 +121,11 @@ function warning_message($warning_title, $warning, $warning_description = false)
 <button type='button' class='btn btn-warning rounded-pill px-3 btn-sm' data-toggle='modal' data-backdrop='static' data-target='#warning".$warning."'>Notice ".$warning."</button>
 
 <!-- Modal -->
-<div class='modal fade' id='warning".$warning."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+<div class='modal fade' id='warning" . $warning . "' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
   <div class='modal-dialog'>
     <div class='modal-content'>
-      <div class='modal-header bg-warning text-white'><h5 class='modal-title' id='exampleModalLabel'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-radioactive' viewBox='0 0 16 16'><path d='M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8'/><path d='M9.653 5.496A3 3 0 0 0 8 5c-.61 0-1.179.183-1.653.496L4.694 2.992A5.97 5.97 0 0 1 8 2c1.222 0 2.358.365 3.306.992zm1.342 2.324a3 3 0 0 1-.884 2.312 3 3 0 0 1-.769.552l1.342 2.683c.57-.286 1.09-.66 1.538-1.103a6 6 0 0 0 1.767-4.624zm-5.679 5.548 1.342-2.684A3 3 0 0 1 5.005 7.82l-2.994-.18a6 6 0 0 0 3.306 5.728ZM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0'/></svg>  Notice ".$warning."</h5></div>
-      <div class='modal-body'>".$warning_title."</div>
+      <div class='modal-header bg-warning text-white'><h5 class='modal-title' id='exampleModalLabel'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-radioactive' viewBox='0 0 16 16'><path d='M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8'/><path d='M9.653 5.496A3 3 0 0 0 8 5c-.61 0-1.179.183-1.653.496L4.694 2.992A5.97 5.97 0 0 1 8 2c1.222 0 2.358.365 3.306.992zm1.342 2.324a3 3 0 0 1-.884 2.312 3 3 0 0 1-.769.552l1.342 2.683c.57-.286 1.09-.66 1.538-1.103a6 6 0 0 0 1.767-4.624zm-5.679 5.548 1.342-2.684A3 3 0 0 1 5.005 7.82l-2.994-.18a6 6 0 0 0 3.306 5.728ZM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0'/></svg>  Notice " . $warning . "</h5></div>
+      <div class='modal-body'>" . $warning_title . "</div>
       <div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div>
     </div>
   </div>
@@ -133,14 +134,14 @@ function warning_message($warning_title, $warning, $warning_description = false)
 
 function update_message($warning_title, $warning, $warning_description = false) {
   return "<!-- Button trigger modal -->
-<button type='button' class='btn btn-info rounded-pill px-3 btn-sm' data-toggle='modal' data-backdrop='static' data-target='#warning".$warning."'>".$warning."</button>
+<button type='button' class='btn btn-info rounded-pill px-3 btn-sm' data-toggle='modal' data-backdrop='static' data-target='#warning" . $warning . "'>" . $warning . "</button>
 
 <!-- Modal -->
-<div class='modal fade' id='warning".$warning."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+<div class='modal fade' id='warning" . $warning . "' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
   <div class='modal-dialog'>
     <div class='modal-content'>
-      <div class='modal-header bg-info text-white'><h5 class='modal-title' id='exampleModalLabel'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-arrow-down-square-fill' viewBox='0 0 16 16'><path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0'/></svg>  ".$warning."</h5></div>
-      <div class='modal-body'>".$warning_title."</div>
+      <div class='modal-header bg-info text-white'><h5 class='modal-title' id='exampleModalLabel'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-arrow-down-square-fill' viewBox='0 0 16 16'><path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0'/></svg>  " . $warning . "</h5></div>
+      <div class='modal-body'>" . $warning_title . "</div>
       <div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div>
     </div>
   </div>
@@ -167,9 +168,9 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
     }
   } elseif ($gmod == 2) {
     if ($m1[1] != "_") {
-      if (($m1[0]+$m1[1]) > ($m2[0]+$m2[1])) {
+      if (($m1[0] + $m1[1]) > ($m2[0] + $m2[1])) {
         $erg = 1;
-      } elseif (($m1[0]+$m1[1]) < ($m2[0]+$m2[1])) {
+      } elseif (($m1[0] + $m1[1]) < ($m2[0] + $m2[1])) {
         $erg = 2;
       } else {
         if ($m2[1] > $m1[1]) {
@@ -182,7 +183,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
   } else {
     $erg1 = 0;
     $erg2 = 0;
-    for($k = 0; $k < $gmod; $k++) {
+    for ($k = 0; $k < $gmod; $k++) {
       if (($m1[$k] != "_") && ($m2[$k] != "_")) {
         if ($m1[$k] > $m2[$k]) {
           $erg1++;
@@ -201,24 +202,27 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
 }
 
 function getLangSelector() {
-  $output_sprachauswahl ='';
+  $output_sprachauswahl = '';
+  $border = "0";
 
-  $handle=opendir (PATH_TO_LANGDIR);
-  while (false!==($f=readdir($handle))) {
-    if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {
-      if ($lang[1]=="") return '';
-      if ($lang[1]!=$_SESSION['lmouserlang']) {
-        $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".svg";
-        $output_sprachauswahl.="<a href='{$_SERVER['PHP_SELF']}?".htmlentities(preg_replace("/&?lmouserlang=.+?\b/","",$_SERVER['QUERY_STRING']))."&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' height='16' title='{$lang[1]}' alt='{$lang[1]}'></a>  ";
+  $handle = opendir (PATH_TO_LANGDIR);
+  while (false !== ($f = readdir($handle))) {
+    if (preg_match("/^lang-?(.*)?\.txt$/", $f,$lang) > 0) {
+      if ($lang[1] == "") return '';
+      if ($lang[1] != $_SESSION['lmouserlang']) {
+        $border = "1mm";
+        $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . ".svg";
+        $output_sprachauswahl .= "<a href='{$_SERVER['PHP_SELF']}?" . htmlentities(preg_replace("/&?lmouserlang=.+?\b/", "", $_SERVER['QUERY_STRING'])) . "&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' height='16' style='margin-right:$border' title='{$lang[1]}' alt='{$lang[1]}'></a>";
       } else {
-        $imgfile=URL_TO_IMGDIR.'/'.$lang[1].".selected.svg";
-        $output_sprachauswahl.="<img src='{$imgfile}' height='16' title='{$lang[1]}' alt='{$lang[1]}'>  ";
+        $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . ".selected.svg";
+        $output_sprachauswahl .= "<img src='{$imgfile}' height='16' border='$border' title='{$lang[1]}' alt='{$lang[1]}'>  ";
       }
     }
+    $border = "0";
   }
   closedir($handle);
-  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok']=='2') {
-    $output_sprachauswahl .= "&nbsp<a href='".URL_TO_LMO."/lang/translate.php'> » ".$GLOBALS['text'][573]."</a>";
+  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == '2') {
+    $output_sprachauswahl .= "&nbsp<a href='" . URL_TO_LMO . "/lang/translate.php'> » " . $GLOBALS['text'][573] . "</a>";
   }
   return $output_sprachauswahl;
 }
@@ -228,8 +232,7 @@ function get_timezones() {
   if (function_exists('timezone_identifiers_list')) {
     $zones = array_reverse(timezone_identifiers_list());
 
-    foreach ($zones as $zone)
-    {
+    foreach ($zones as $zone) {
       $zone = explode('/', $zone); // 0 => Continent, 1 => City
 
       // Only use "friendly" continent names
@@ -292,16 +295,16 @@ if (!function_exists('is_a')) {
 // Funktion deklarieren
 function url_check($url) { 
   $url_objects = @get_headers($url); 
-  return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$url_objects[0]) : false; 
+  return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : false; 
 };
 
-$string_json = file_get_contents(PATH_TO_LMO."/composer.json", FALSE);
+$string_json = file_get_contents(PATH_TO_LMO . "/composer.json", FALSE);
 $json_a = json_decode($string_json, TRUE, 4);
 $lmo_version = $json_a['version'];
 $updatefilecheck_URL = $json_a['extra']['check'];
 
 // UpdateURL prüfen
-if(url_check($json_a['extra']['check'])){
+if (url_check($json_a['extra']['check'])){
   $LMO_UPDATE = file_get_contents($json_a['extra']['check'], FALSE);
   $json_update = json_decode($LMO_UPDATE, TRUE, 4);
   $new_lmo_version = $json_update['stable']['current'];

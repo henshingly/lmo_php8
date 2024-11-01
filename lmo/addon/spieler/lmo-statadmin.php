@@ -350,7 +350,7 @@ if (isset($file) && $file != "") {
 function change(op,x) {
     var el=document.getElementsByName(x)[0];
     var a=el.value;
-    if(!isNaN(a)) {
+    if (!isNaN(a)) {
         a=parseInt(a);
         document.getElementsByName(x)[0].value=eval(a+op+"1");
     }
@@ -587,7 +587,7 @@ function mark(el) {
                             </select>
                         </td>
                         <?php
-        if($_SESSION['lmouserok'] == 2) {?>
+        if ($_SESSION['lmouserok'] == 2) {?>
                         <td align="left" class="nobr"><?php echo $text['spieler'][31]?>: </td>
                         <td align="left"><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" onChange="mark(this)" value="<?php echo $spieler_adminbereich_hilfsadmin_zulassen?>" <?php if ($spieler_adminbereich_hilfsadmin_zulassen==1) echo "checked";?> onClick="if (this.checked==true) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=false; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=true;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=false;}"></td><?php
         }?>
@@ -595,7 +595,7 @@ function mark(el) {
                     <tr>
                         <td align="left" class="nobr" rowspan="2"><?php echo $text['spieler'][13]?>: </td>
                         <td align="left" class="nobr" colspan="2"><input type="radio" name="standard_richtung" onClick="mark(this)" value="1"<?php if ($spieler_standard_richtung==1) echo " checked";?>> <?php echo $text['spieler'][48]?></td><?php
-        if($_SESSION['lmouserok'] == 2) {?>
+        if ($_SESSION['lmouserok'] == 2) {?>
                         <td align="left" class="nobr"><?php echo $text['spieler'][46]?>: </td>
                         <td align="left"><input <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten!=1) echo "disabled"?> type="checkbox" onChange="mark(this)" name="adminbereich_hilfsadmin_fuer_spalten" value="<?php echo $spieler_adminbereich_hilfsadmin_fuer_spalten?>" <?php if ($spieler_adminbereich_hilfsadmin_fuer_spalten==1) echo "checked";?>></td><?php
         }?>
@@ -621,7 +621,7 @@ function mark(el) {
                         <td colspan="2" align="left"><input type="checkbox" name="nullwerte_anzeigen" onClick="mark(this)" value="<?php echo $spieler_nullwerte_anzeigen?>" <?php if ($spieler_nullwerte_anzeigen==1) echo "checked";?>></td>
                     </tr>
                     <tr>
-                        <td colspan="5" align="right"><input class="lmo-formular-button" type="submit" value="Konfiguration speichern"></td>
+                        <td colspan="5" align="center"><input class="lmo-formular-button" type="submit" value="<?php echo $text['spieler'][58]?>"></td>
                     </tr>
                 </table>
             </form>

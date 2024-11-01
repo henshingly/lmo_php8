@@ -30,7 +30,7 @@ if ($file != "") {
     $breite = $breite+1;
   }
   $anzsp = $anzteams;
-  for($i = 0; $i < $st; $i++) {
+  for ($i = 0; $i < $st; $i++) {
     $anzsp = $anzsp/2;
   }
   if (($klfin==1) && ($st==$anzst)) {
@@ -48,11 +48,11 @@ if ($file != "") {
 <?php
   if ($st==$anzst) {
     $j = $text[374];
-  } elseif($st==$anzst-1) {
+  } elseif ($st==$anzst-1) {
     $j = $text[373];
-  } elseif($st==$anzst-2) {
+  } elseif ($st==$anzst-2) {
     $j = $text[372];
-  } elseif($st==$anzst-3) {
+  } elseif ($st==$anzst-3) {
     $j = $text[371];
   } else {
     $j = $st.". ".$text[370];
@@ -77,15 +77,15 @@ if ($file != "") {
   foreach($datsort as $key => $val) {
     $i = $key;
     if (($teama[$st-1][$i] > 0) && ($teamb[$st-1][$i] > 0)) {
-      for($n = 0; $n < $modus[$st-1]; $n++) {
-        if(($klfin==1) && ($st==$anzst)){ ?>
+      for ($n = 0; $n < $modus[$st-1]; $n++) {
+        if (($klfin==1) && ($st==$anzst)){ ?>
         <tr>
-          <th class="nobr" colspan="<?php echo $breite; ?>"><?php if($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></th>
+          <th class="nobr" colspan="<?php echo $breite; ?>"><?php if ($i==1){echo "&nbsp;<br>";} echo $text[419+$i]; ?></th>
         </tr><?php        }?>
         <tr>
 <?php
-        if($datm==1){
-          if($mterm[$st-1][$i][$n]>0){
+        if ($datm==1){
+          if ($mterm[$st-1][$i][$n]>0){
             //$dum1 = date($datf, $mterm[$st-1][$i][$n]);
             $dum1 = strtr(date($datf, $mterm[$st-1][$i][$n]), $trans_lang);
           } else {
@@ -129,7 +129,7 @@ if ($file != "") {
 <?php
             if ($m==2) {
               echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
-            } /*elseif($m==1) {
+            } /*elseif ($m==1) {
               echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
             }*/ else {
               echo "          <td class=\"nobr\" align=\"left\">";
@@ -181,7 +181,7 @@ if ($file != "") {
 <?php
             if ($m==1) {
               echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
-            } /*elseif($m==2) {
+            } /*elseif ($m==2) {
               echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
             }*/ else {
               echo "          <td class=\"nobr\" align=\"left\">";
@@ -239,7 +239,7 @@ if ($file != "") {
 <?php
             if ($m==2) {
               echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
-            } /*elseif($m==1) {
+            } /*elseif ($m==1) {
               echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
             }*/ else {
               echo "          <td class=\"nobr\" align=\"left\">";
@@ -291,7 +291,7 @@ if ($file != "") {
 <?php
             if ($m==1) {
               echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
-            } /*elseif($m==2) {
+            } /*elseif ($m==2) {
               echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
             }*/ else {
               echo "          <td class=\"nobr\" align=\"left\">";
@@ -349,7 +349,7 @@ if ($file != "") {
 <?php
             if ($m==2) {
               echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
-            } /*elseif($m==1) {
+            } /*elseif ($m==1) {
               echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
             }*/ else {
               echo "          <td class=\"nobr\" align=\"left\">";
@@ -401,7 +401,7 @@ if ($file != "") {
 <?php
             if ($m==1) {
               echo "          <td class=\"lmoTurnierSieger nobr\" align=\"left\">";
-            } /*elseif($m==2) {
+            } /*elseif ($m==2) {
               echo "          <td class=\"lmoTurnierVerlierer nobr\" align=\"left\">"; // Verliere nicht rot einfärben
             }*/ else {
               echo "          <td class=\"nobr\" align=\"left\">";
@@ -436,17 +436,17 @@ if ($file != "") {
          */
         $lmo_teamaicon="";
         $lmo_teambicon="";
-        if($urlb==1 || $mnote[$st-1][$i][$n]!=""){
+        if ($urlb==1 || $mnote[$st-1][$i][$n]!=""){
           $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''");
           $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''");
         }
         /** Spielbericht verlinken
          */
-        if($urlb==1){
-          if($mberi[$st-1][$i][$n]!=""){
+        if ($urlb==1){
+          if ($mberi[$st-1][$i][$n]!=""){
             $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
             echo " <a href='".$mberi[$st-1][$i][$n]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
-          }else{
+          } else {
             echo "&nbsp;&nbsp;&nbsp;";
           }
         }
@@ -468,7 +468,7 @@ if ($file != "") {
         </tr>
 <?php
       }
-      if(($modus[$st-1]>1) && ($i<=$anzsp-1)){ ?>
+      if (($modus[$st-1]>1) && ($i<=$anzsp-1)){ ?>
         <tr>
           <td class="nobr" colspan="<?php echo $breite; ?>">&nbsp;</td>
         </tr>

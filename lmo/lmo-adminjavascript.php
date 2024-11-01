@@ -15,40 +15,40 @@ img5 = new Image();
 img5.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin5.gif";
 var lmotest=true;
 function chklmopass(){
-  if(lmotest == true){
+  if (lmotest == true){
     return confirm("<?php echo $text[117] ?>");
-  }else{
+  } else {
     return true;
   }
 }
 function chklmopas2(a){
   var r=true;
-  if(lmotest == true){
+  if (lmotest == true){
     alert("<?php echo $text[117] ?>");
     r=false;
     }
-  if(lmotest == false){
+  if (lmotest == false){
     var s3=false;
-    for(var i=1;i<a;i++){
-      for(var j=i+1;j<=a;j++){
+    for (var i=1;i<a;i++){
+      for (var j=i+1;j<=a;j++){
         var s1=document.getElementsByName("xplatz"+i)[0].value;
         var s2=document.getElementsByName("xplatz"+j)[0].value;
-        if(s1==s2){s3=true;}
+        if (s1==s2){s3=true;}
         }
       }
-    if(s3 == true){
+    if (s3 == true){
       alert("<?php echo $text[416]; ?>");
       r=false;
       }
     }
-  if(r == false){
+  if (r == false){
     return false;
     }
   }
 function chklmolink(){
-  if(lmotest == false){
+  if (lmotest == false){
     return confirm("<?php echo $text[119] ?>");
-  }else{
+  } else {
     return true;
   }
 }
@@ -59,8 +59,8 @@ function dellmolink(adresse,titel){
   return confirm("<?php echo $text[296] ?>:\n"+titel);
 }
 function emllmolink(adresse,emailaddi){
-  if(ema=prompt("<?php echo $text[346] ?>",emailaddi)){
-    if(ema!=""){
+  if (ema=prompt("<?php echo $text[346] ?>",emailaddi)){
+    if (ema!=""){
       window.open(adresse+"&madr="+ema,"lmoelm","width=250,height=150,resizable=yes,dependent=yes");
     }
   }
@@ -73,8 +73,8 @@ function ateamlmolink(adresse){
 }
 function opencal(feld,startdat){
   lmocal="<?php echo URL_TO_LMO?>/lmo-admincal.php?abs=lmoedit&feld="+feld;
-  if(startdat!=""){lmocal=lmocal+"&calshow="+startdat;}
-  lmowin = window.open(lmocal,"lmocalpop","width=180,height=200,resizable=yes,dependent=yes");
+  if (startdat!=""){lmocal=lmocal+"&calshow="+startdat;}
+  lmowin = window.open(lmocal,"lmocalpop","width=220,height=200,resizable=yes,dependent=yes");
   lmotest=false;
   return false;
 }

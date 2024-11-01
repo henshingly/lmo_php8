@@ -374,7 +374,7 @@ class HTML_Template_IT {
      * @see      setRoot()
      */
     function __construct($root = "", $options=null) {
-        if(!is_null($options)){
+        if (!is_null($options)){
             $this->setOptions($options);
         }
         $this->variablesRegExp = "@" . $this->openingDelimiter .
@@ -426,7 +426,7 @@ class HTML_Template_IT {
     function setOptions($options)
     {
         foreach($options as $option=>$value){
-            if( PEAR::isError($error=$this->setOption($option, $value)) ){
+            if ( PEAR::isError($error=$this->setOption($option, $value)) ){
                 return $error;
             }
         }

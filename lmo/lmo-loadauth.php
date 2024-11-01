@@ -29,7 +29,7 @@ if ($datei) {
     if (count($data)>1) $lmo_admin_data[]=$data;   //[0]=Name, [1]=Passwort, [2]=Rang, [3]=Ligen, [4]=Erweiterter Hilfsadmin
   }
   fclose($datei);
-}else{
+} else {
   echo getMessage($text[283],TRUE);
   exit;
 }

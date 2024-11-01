@@ -104,11 +104,11 @@ function in_string($needle, $haystack, $insensitive = false) {
  */
 function readLigaDir($dirName,&$dataArray) {
   $exists = file_exists($dirName);
-  if($exists) {
+  if ($exists) {
     $dir = dir($dirName);
     while($data=$dir->read()){
       $ext = strtolower( strAfterChar($data,"."));
-      if($ext == 'l98') {
+      if ($ext == 'l98') {
         $name = trim(substr($data,0,strrpos($data, $ext)-1));
         $dataArray[] = array('path'=>$dir->path,
                              'src'=>$data,

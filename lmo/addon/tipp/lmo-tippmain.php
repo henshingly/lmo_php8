@@ -42,7 +42,7 @@ if ($action == "tipp") {
   }
   $me = array("0", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
   $adda = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=";
-  //if(!isset($st)){$st=$stx;}else{$sty=$st;}
+  //if (!isset($st)){$st=$stx;} else {$sty=$st;}
   if (!isset($newpage)) {
     $newpage = 0;
   }
@@ -57,7 +57,7 @@ if ($action == "tipp") {
   }
   if ($tipp_tippmodus == 1 && $todo == "edit") {?>
 <script type="text/javascript"><?php 
-  if($tipp_pfeiltipp==1){ ?>
+  if ($tipp_pfeiltipp==1){ ?>
     img0 = new Image();
     img0.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif";
     img1 = new Image();
@@ -70,31 +70,31 @@ if ($action == "tipp") {
       document.getElementsByName("ximg"+x)[0].src = y.src;
     }<?php  }?>
   function lmotorclk(x,y,z){
-    if(document.all && !window.opera){
-      if(z==38){lmotorauf(x,y,1);}
-      if(z==40){lmotorauf(x,y,-1);}
+    if (document.all && !window.opera){
+      if (z==38){lmotorauf(x,y,1);}
+      if (z==40){lmotorauf(x,y,-1);}
     }
   }
 
   function lmotorauf(x,y,z){
-    if(x=="a"){xx="b";}
-    if(x=="b"){xx="a";}
+    if (x=="a"){xx="b";}
+    if (x=="b"){xx="a";}
     var a=document.getElementsByName("xtipp"+x+y)[0].value;
-    if(a==""){a="-1";}
-    if(a=="_"){a="-1";}
+    if (a==""){a="-1";}
+    if (a=="_"){a="-1";}
     var aa=document.getElementsByName("xtipp"+xx+y)[0].value;
-    if(aa==""){aa="-1";}
-    if(aa=="_"){aa="-1";}
+    if (aa==""){aa="-1";}
+    if (aa=="_"){aa="-1";}
     var ab=aa;
-    if(isNaN(a)==true){a=0;}else{a=parseInt(a);}
-    if((z==1) && (a<9999)){a++;}
-    if((z==-1) && (a>-1)){a--;}
-    if((a>-1) && (aa<0)){aa=0;}
-    if((a<0) && (aa>-1)){aa=-1;}
-    if(a==-1){a="";}
+    if (isNaN(a)==true){a=0;} else {a=parseInt(a);}
+    if ((z==1) && (a<9999)){a++;}
+    if ((z==-1) && (a>-1)){a--;}
+    if ((a>-1) && (aa<0)){aa=0;}
+    if ((a<0) && (aa>-1)){aa=-1;}
+    if (a==-1){a="";}
     document.getElementsByName("xtipp"+x+y)[0].value=a;
-    if(ab!=aa){
-      if(aa==-1){aa="";}
+    if (ab!=aa){
+      if (aa==-1){aa="";}
       document.getElementsByName("xtipp"+xx+y)[0].value=aa;
     } 
   }
@@ -107,7 +107,7 @@ if ($action == "tipp") {
   
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." ";if(isset($titel)){echo $titel;} ?></h1></td>
+    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." ";if (isset($titel)){echo $titel;} ?></h1></td>
   </tr>
   <tr>
     <td colspan="3" align="center"><?php 

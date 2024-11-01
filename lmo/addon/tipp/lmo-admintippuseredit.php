@@ -51,7 +51,7 @@ $action=	      isset($_REQUEST['action'])         ? $_REQUEST['action']         
 $todo=	        isset($_REQUEST['todo'])           ? $_REQUEST['todo']           : '';
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
+if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
   include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
 
   $pswfile=PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
@@ -61,10 +61,10 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
 
   if ($save != -1) {
     $gef=0;
-    for($i=1;$i<count($users) && $gef==0;$i++){
+    for ($i=1;$i<count($users) && $gef==0;$i++){
       $tipp_tipperdaten = explode('|',$users[$i]);
       // Änderung & Nick gefunden
-      if($nick==$tipp_tipperdaten[0] && $newpage == 0){ 
+      if ($nick==$tipp_tipperdaten[0] && $newpage == 0){ 
         $gef=1;
         $save=$i;
         if (!$edit) $newpage=1;
@@ -73,7 +73,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
         echo getMessage($text['tipp'][24],TRUE);
       }
     }
-    if($gef==0){
+    if ($gef==0){
       $save=$i;
     }
     
@@ -89,24 +89,24 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
   
   
   
-  if($newpage!=1){
-    if($tipp_tipperdaten[5]==""){
+  if ($newpage!=1){
+    if ($tipp_tipperdaten[5]==""){
       $xtippervereinradio=0;
     }
-    else{
+    else {
       $xtippervereinradio=1;
       $xtippervereinalt=$tipp_tipperdaten[5];
     }
   }
   
-  if($newpage==1){
+  if ($newpage==1){
     $tipp_tipperdaten[0]=$nick;
     $tipp_tipperdaten[1]=trim($xtipperpass)!=''?$xtipperpass:$tipp_tipperdaten[1];
     $tipp_tipperdaten[3]=$xtippervorname;
     $tipp_tipperdaten[3].=" ".$xtippernachname;
 
 
-    if(substr_count($tipp_tipperdaten[3], " ")>1){
+    if (substr_count($tipp_tipperdaten[3], " ")>1){
       $newpage=0;
       echo getMessage($text['tipp'][109],TRUE);
     }
@@ -116,32 +116,32 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
     $tipp_tipperdaten[7]=$xtipperplz;
     $tipp_tipperdaten[8]=$xtipperort;
 
-    if($xtippervereinradio=='1'){
+    if ($xtippervereinradio=='1'){
       $xtippervereinalt=trim($xtippervereinalt);
-      if($xtippervereinalt==""){
+      if ($xtippervereinalt==""){
         $newpage=0;
         echo getMessage($text['tipp'][71],TRUE);
-      }else{
+      } else {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
       }
     }
-    if($xtippervereinradio=='2'){
+    if ($xtippervereinradio=='2'){
       $xtippervereinneu=trim($xtippervereinneu);
-      if($xtippervereinneu==""){
+      if ($xtippervereinneu==""){
         $newpage=0;
         echo getMessage($text['tipp'][72],TRUE);
-      }else{
+      } else {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
       }
     }
   }
 
-  if($newpage==1){
-    if($xtippervereinradio==1){$team=$xtippervereinalt;}
+  if ($newpage==1){
+    if ($xtippervereinradio==1){$team=$xtippervereinalt;}
     elseif ($xtippervereinradio==2){$team=$xtippervereinneu;}
-    else{$team="";}
+    else {$team="";}
 
-    if($xtippervereinradio>0){
+    if ($xtippervereinradio>0){
       $xtippervereinradio=1;
       $xtippervereinalt=$team;
       $xtippervereinneu="";
@@ -158,36 +158,36 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
 
     $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
     while($files=readdir($verz)){
-      if(substr($files,strrpos($files,"_")+1,-4)==$nick && strtolower(substr($files,-4))==".tip"){
+      if (substr($files,strrpos($files,"_")+1,-4)==$nick && strtolower(substr($files,-4))==".tip"){
         $delete=1;
-        if(!empty($xtipperligen)){
+        if (!empty($xtipperligen)){
           foreach($xtipperligen as $key => $value){
             $tippfile=$value."_".$nick.".tip";
-            if($tippfile==$files){
+            if ($tippfile==$files){
               $delete=0;
             }
           }
         }
-        if($delete==1){
+        if ($delete==1){
           unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$files);
         } // Abonnement beenden
       }
     }
     closedir($verz);
 
-    if(!empty($xtipperligen)){
+    if (!empty($xtipperligen)){
       foreach($xtipperligen as $key => $value){
         $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
         while($files=readdir($verz)){
           $create=1;
-          //if(substr($files,0,-4)==$nick && substr($files,0,strrpos($files,"_"))==$value && strtolower(substr($files,-4))==".tip"){
-          if(substr($files,strrpos($files,"_")+1,-4)==$nick && substr($files,0,strrpos($files,"_"))==$value && strtolower(substr($files,-4))==".tip"){
+          //if (substr($files,0,-4)==$nick && substr($files,0,strrpos($files,"_"))==$value && strtolower(substr($files,-4))==".tip"){
+          if (substr($files,strrpos($files,"_")+1,-4)==$nick && substr($files,0,strrpos($files,"_"))==$value && strtolower(substr($files,-4))==".tip"){
             $create=0; // bereits abonniert
             break;
           }
         }
         closedir($verz);
-        if($create==1){
+        if ($create==1){
           $tippfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$value."_".$nick.".tip";
           $st=-1;require(PATH_TO_ADDONDIR."/tipp/lmo-tippsavefile.php"); // Tipp-Datei erstellen
           $auswertdatei = fopen(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$value.".aus","ab");
@@ -217,7 +217,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
     <tr>
       <td align="center"><h1><?php      if ($save == count($users)) {
         echo $text['tipp'][136];
-      }else {
+      } else {
       	echo $text['tipp'][106];
       } ?></h1></td>
     </tr>
@@ -232,7 +232,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
               <td align="right">&nbsp;<?php echo $text['tipp'][23]; ?></td>
               <td align="left"><?php            if ($save == count($users)) {?>
                 <input class="lmo-formular-input" type="text" name="nick" value="<?php echo  $nick; ?>"><?php 
-            }else{?>
+            } else {?>
                 <input type="hidden" name="nick" value="<?php echo  $nick; ?>"><strong><?php echo $tipp_tipperdaten[0]?></strong><?php 
             }?>
               </td>
@@ -246,7 +246,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
               </td>
               <td align="left"><?php            if ($save == count($users)) {?>
                 <input class="lmo-formular-input" type="text" name="xtipperpass" value="<?php  include(PATH_TO_LMO."/lmo-adminuserpass.php");?>"><?php 
-            }else{?>
+            } else {?>
                 <input class="lmo-formular-input" type="password" name="xtipperpass" size="25" maxlength="100" value=""><?php 
             }?>
               </td>
@@ -277,7 +277,7 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
             </tr>
             <tr>
               <td>&nbsp;</td>
-              <td align="left"><input type="checkbox" name="xfrei" <?php if($tipp_tipperdaten[2]==5){echo "checked";} ?>><?php echo  $text['tipp'][147] ?></td>
+              <td align="left"><input type="checkbox" name="xfrei" <?php if ($tipp_tipperdaten[2]==5){echo "checked";} ?>><?php echo  $text['tipp'][147] ?></td>
             </tr>
             <tr>
               <th align="left" colspan="2"><?php echo  $text['tipp'][165]; ?></th>
@@ -285,33 +285,33 @@ if($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
             <tr>
               <td>&nbsp;</td>
               <td align="left">
-                <input type="checkbox" name="xnews" <?php if(isset($tipp_tipperdaten[9]) && $tipp_tipperdaten[9]!=-1){echo "checked";} ?>><?php echo  $text['tipp'][206] ?>
+                <input type="checkbox" name="xnews" <?php if (isset($tipp_tipperdaten[9]) && $tipp_tipperdaten[9]!=-1){echo "checked";} ?>><?php echo  $text['tipp'][206] ?>
               </td>
             </tr>
             <tr>
               <td>&nbsp;</td>
               <td align="left">
-                <input type="checkbox" name="xremind" <?php if(isset($tipp_tipperdaten[10]) && $tipp_tipperdaten[10]!=-1){echo "checked";} ?>><?php echo  $text['tipp'][167] ?>
+                <input type="checkbox" name="xremind" <?php if (isset($tipp_tipperdaten[10]) && $tipp_tipperdaten[10]!=-1){echo "checked";} ?>><?php echo  $text['tipp'][167] ?>
               </td>
             </tr>
-<?php if($tipp_tipperimteam>=0){ ?>
+<?php if ($tipp_tipperimteam>=0){ ?>
             <tr>
               <th align="left" colspan="2"><?php echo  $text['tipp'][27]; ?></th>
             </tr>
             <tr>
-              <td align="left" colspan="2"><input type="radio" name="xtippervereinradio" value="0" id="0" <?php if($xtippervereinradio==0){echo "checked";} ?>><?php echo  $text['tipp'][50]; ?></td>
+              <td align="left" colspan="2"><input type="radio" name="xtippervereinradio" value="0" id="0" <?php if ($xtippervereinradio==0){echo "checked";} ?>><?php echo  $text['tipp'][50]; ?></td>
             </tr>
             <tr>
-              <td align="left"><input type="radio" name="xtippervereinradio" value="1" id="1" <?php if($xtippervereinradio==1){echo "checked";} ?>><?php echo  $text['tipp'][48]; ?></td>
+              <td align="left"><input type="radio" name="xtippervereinradio" value="1" id="1" <?php if ($xtippervereinradio==1){echo "checked";} ?>><?php echo  $text['tipp'][48]; ?></td>
               <td align="left">
                 <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true"><?php 
-                echo "<option value=\"\" "; if($xtippervereinalt==""){echo "selected";} echo ">".$text['tipp'][51]."</option>";
+                echo "<option value=\"\" "; if ($xtippervereinalt==""){echo "selected";} echo ">".$text['tipp'][51]."</option>";
                   require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewteams.php");?>
                 </select>
               </td>
             </tr>
             <tr>
-              <td align="left"><input type="radio" name="xtippervereinradio" value="2" id="2" <?php if($xtippervereinradio==2){echo "checked";} ?>><?php echo  $text['tipp'][49]; ?></td>
+              <td align="left"><input type="radio" name="xtippervereinradio" value="2" id="2" <?php if ($xtippervereinradio==2){echo "checked";} ?>><?php echo  $text['tipp'][49]; ?></td>
               <td align="left"><input class="lmo-formular-input" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo  $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></td>
             </tr><?php  }?>
             <tr>

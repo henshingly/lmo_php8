@@ -52,7 +52,7 @@ if ($lmtype == 0) {
   $goaltippb = array_pad(array("_"), $anzsp+1, "_");
 } else {
   $anzsp = $anzteams;
-  for($i = 0; $i < $st; $i++) {
+  for ($i = 0; $i < $st; $i++) {
     $anzsp = $anzsp/2;
   }
   if (($klfin == 1) && ($st == $anzst)) {
@@ -61,12 +61,12 @@ if ($lmtype == 0) {
    
   $goaltippa = array_pad($array, $anzsp+1, "");
   $goaltippb = array_pad($array, $anzsp+1, "");
-  for($i = 0; $i < $anzsp; $i++) {
+  for ($i = 0; $i < $anzsp; $i++) {
     $goaltippa[$i] = array_pad(array("_"), $modus[$st-1]+1, "_");
     $goaltippb[$i] = array_pad(array("_"), $modus[$st-1]+1, "_");
   }
 }
-for($i = 1; $i <= count($tippdaten); $i++) {
+for ($i = 1; $i <= count($tippdaten); $i++) {
   $dum = explode('|', $tippdaten[$i-1]);
   $op2 = substr($dum[0], 0, 5);
   $op3 = substr($dum[0], 5)-1;
@@ -125,7 +125,7 @@ for($i = 1; $i <= count($tippdaten); $i++) {
       }
     } // ende else
   } // ende nur benötigter st
-} // ende for($i=1;$i<=count($tippdaten);$i++)
+} // ende for ($i=1;$i<=count($tippdaten);$i++)
 clearstatcache();
 
 ?>

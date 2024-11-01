@@ -25,7 +25,7 @@ $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
 $dumma = file($pswfile);
  
 sort($dumma, SORT_STRING);
-for($i = 0; $i < count($dumma); $i++) {
+for ($i = 0; $i < count($dumma); $i++) {
   $dummb = explode("|", $dumma[$i]);
   echo "<option value=\"".$dummb[0]."\" ";
   echo ">".$dummb[0]." (".$dummb[3]." - ".$dummb[4].")"."</option>";

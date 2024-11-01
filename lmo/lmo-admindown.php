@@ -19,7 +19,7 @@
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if(($action=="admin") && ($todo=="download")){?>
+if (($action=="admin") && ($todo=="download")){?>
 
       <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
         <tr>

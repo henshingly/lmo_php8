@@ -87,16 +87,16 @@ if ($action == "tipp") {
  
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." "; if(isset($titel)){echo $titel;} ?></h1></td>
+    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." "; if (isset($titel)){echo $titel;} ?></h1></td>
   </tr>
 
   <tr>
-    <td colspan="3" align="center"><?php    if($todo=="wert"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");}
+    <td colspan="3" align="center"><?php    if ($todo=="wert"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippwert.php");}
     elseif ($todo=="fieber"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippfieber.php");}
     elseif ($todo=="einsicht"){require(PATH_TO_ADDONDIR."/tipp/lmo-tippeinsicht.php");}
     elseif ($todo=="tabelle"){require(PATH_TO_ADDONDIR."/tipp/lmo-tipptabelle.php");}
     elseif ($todo=="info"){require(PATH_TO_LMO."/lmo-showinfo.php");}
-    else{?>
+    else {?>
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">  
         <input type="hidden" name="file" value="<?php echo $file?>">  
@@ -105,12 +105,12 @@ if ($action == "tipp") {
           <tr>
             <th colspan="2"><?php echo $text['tipp'][44]; ?></th>
           </tr><?php      // Benutzer nicht gefunden
-      if($_SESSION["lmotipperok"]==-2){?> 
+      if ($_SESSION["lmotipperok"]==-2){?> 
           <tr>
             <td align="right" colspan="3"><?php echo getMessage($text['tipp'][43],TRUE); ?></td>
           </tr><?php      }
       // Benutzer nicht freigeschaltet
-      if(isset($xtippersub) & $_SESSION["lmotipperok"]=="" && !isset($emailbody)){?> 
+      if (isset($xtippersub) & $_SESSION["lmotipperok"]=="" && !isset($emailbody)){?> 
           <tr>
             <td align="right" colspan="3"><?php echo getMessage($text['tipp'][148],TRUE); ?></td>
           </tr><?php      }?>
@@ -119,7 +119,7 @@ if ($action == "tipp") {
             <td align="left"><input class="lmo-formular-input" type="text" name="xtippername" size="16" maxlength="32" value="<?php echo $_SESSION['lmotippername']; ?>"></td>
           </tr><?php 
       // Passwort falsch 
-      if($_SESSION["lmotipperok"]==-1){ $xtippername2=$_SESSION["lmotippername"];  ?> 
+      if ($_SESSION["lmotipperok"]==-1){ $xtippername2=$_SESSION["lmotippername"];  ?> 
           <tr>
             <td align="right" colspan="3"><?php echo getMessage($text['tipp'][42],TRUE); ?></td>
           </tr><?php      }?>
@@ -167,20 +167,20 @@ if ($action == "tipp") {
             require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
             $dummy =  explode("|",$tt1);
             $ftest2 = explode("|",$tt0);
-            if(isset($dummy) && isset($ftest2)){
-              for($u=0;$u<count($dummy);$u++){
-                if($dummy[$u]!="" && $ftest2[$u]!=""){
+            if (isset($dummy) && isset($ftest2)){
+              for ($u=0;$u<count($dummy);$u++){
+                if ($dummy[$u]!="" && $ftest2[$u]!=""){
                   $dummy[$u]=substr($dummy[$u],0,-4);
                   $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".$dummy[$u].".aus";
                   if ($tipp_nurgesamt==0) {?>
-              <li class="lmoadminli"><a href="<?php echo $addw.$dummy[$u].".l98"; ?>"><?php echo $ftest2[$u];?></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
+              <li class="lmoadminli"><a href="<?php echo $addw.$dummy[$u].".l98"; ?>"><?php echo $ftest2[$u];?></a><?php if (file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
                   }
                 }
               }
             }
-            if($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
+            if ($tipp_gesamt==1 && ($u>2 || $tipp_nurgesamt==1 && $u==2)){
               $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";?>
-              <li class="lmoadminli"><a href="<?php echo $addw."&amp;all=1" ?>"><strong><?php echo $text['tipp'][25];?></strong></a><?php if(file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
+              <li class="lmoadminli"><a href="<?php echo $addw."&amp;all=1" ?>"><strong><?php echo $text['tipp'][25];?></strong></a><?php if (file_exists($auswertfile)){echo "<br><small>".$text['tipp'][83].": ".date("d.m.Y H:i",filemtime($auswertfile))."</small>";}?></li><?php 
             }
             $auswertfile="";?>
             </ul>
@@ -199,7 +199,7 @@ if ($action == "tipp") {
             <th colspan="3"><?php echo $text['tipp'][74]; ?></th>
           </tr><?php   
             // Benutzer nicht gefunden
-            if($_SESSION["lmotipperok"]==-3){ ?> 
+            if ($_SESSION["lmotipperok"]==-3){ ?> 
           <tr>
             <td align="right" colspan="3"><?php echo $text['tipp'][43]; ?></td>
           </tr><?php            }?>

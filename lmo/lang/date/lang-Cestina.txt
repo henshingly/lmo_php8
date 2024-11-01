@@ -36,3 +36,8 @@
 35=Říj
 36=Lis
 37=Pro
+38=minulý měsíc
+39=do aktuálního měsíce
+40=do dalšího měsíce
+41=Datum použití
+42=Zavřít kalendář bez použití data

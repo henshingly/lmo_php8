@@ -20,7 +20,7 @@
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if($_SESSION['lmouserok']==2){
+if ($_SESSION['lmouserok']==2){
   $lmo_auth_file=PATH_TO_CONFIGDIR."/lmo-auth.php";
   
   $datei = fopen($lmo_auth_file,"wb");
@@ -32,7 +32,7 @@ if($_SESSION['lmouserok']==2){
     }
     flock($datei,LOCK_UN);
     echo getMessage($text[138]);
-  }else{
+  } else {
       echo getMessage($text[283],TRUE);
   }
 }

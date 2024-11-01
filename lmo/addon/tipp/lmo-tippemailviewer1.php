@@ -42,7 +42,7 @@ while (!feof($datei)) {
   }
 }
 fclose($datei);
-for($ii = 1; $ii <= count($tippdaten); $ii++) {
+for ($ii = 1; $ii <= count($tippdaten); $ii++) {
   $dum = explode('|', $tippdaten[$ii-1]);
   $op2 = substr($dum[0], 0, 5);
   $op8 = substr($dum[1], 0, 2);
@@ -50,7 +50,7 @@ for($ii = 1; $ii <= count($tippdaten); $ii++) {
     $spieltag0 = substr($dum[0], 5);
     $spiel0 = substr($dum[1], 2);
     if ($dum[2] != "" && $dum[2] != "-1") {
-      for($j = 0; $j < $anzspiele; $j++) {
+      for ($j = 0; $j < $anzspiele; $j++) {
         if ($liga[$j] == $liga[$i] && $spieltag[$j] == $spieltag0 && $spiel[$j] == $spiel0) {
           $goaltipp[$j] = 1;
         }

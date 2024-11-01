@@ -48,7 +48,7 @@ include(PATH_TO_ADDONDIR . "/tipp/lmo-admintippmenu.php");
 $ftype=".l98";
 $iptype="auswert";
 require(PATH_TO_ADDONDIR . "/tipp/lmo-tippnewdir.php");
-if($tipp_gesamt==1){ ?>
+if ($tipp_gesamt==1){ ?>
         <tr>
           <td width="20">&nbsp;</td>
           <td align="left"><strong><?php echo $text['tipp'][56]; ?></strong></td>

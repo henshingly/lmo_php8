@@ -29,7 +29,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
     $save = 0;
   }
   if ($save == 1) {
-    for($i = 1; $i <= $anzteams; $i++) {
+    for ($i = 1; $i <= $anzteams; $i++) {
       if ($_POST["xteams".$i] != "") {
         $teams[$i] = isset($_POST["xteams".$i])?trim($_POST["xteams".$i]):'';
       }
@@ -134,7 +134,7 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
         }
         if ($stat2 == $team) {
           $stat2 = 0;
-        } elseif($stat2 > $team) {
+        } elseif ($stat2 > $team) {
           $stat2--;
         }
         for ($i = $team+1; $i <= $anzteams; $i++) {

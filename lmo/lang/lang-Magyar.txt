@@ -133,8 +133,8 @@
 132=Elmenti a csapatokat
 133=Csapat grafikonok
 134=Megtekinti a csapat grafikonokat
-135=FORDULÓK
-136=HELYEZÉS
+135=MÉRKŐZÉSNAPOK
+136=ELHELYEZÉS
 137=Még nem mentett!
 138=Az adatok sikeresen elmentődtek
 139=Válasszon egy dátumot a felbukkanó naptár segítségével (Sajnos a funkció nem működik Netscape böngészővel)

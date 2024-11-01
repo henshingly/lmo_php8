@@ -32,7 +32,7 @@ if (!$datei) {
   echo getMessage($text[138]);
 }
 flock($datei, LOCK_EX);
-for($i = 1; $i < count($users); $i++) {
+for ($i = 1; $i < count($users); $i++) {
   fputs($datei, trim($users[$i])."\n");
 }
 flock($datei, LOCK_UN);

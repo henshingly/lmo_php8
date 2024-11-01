@@ -19,9 +19,9 @@
   
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
-if($action=="admin"){
+if ($action=="admin"){
   require(PATH_TO_LMO."/lmo-admincheck_auth.php");
-  if(empty($_SESSION['lmouserok'])){
+  if (empty($_SESSION['lmouserok'])){
 ?>
 
 <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">

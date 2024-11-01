@@ -84,10 +84,10 @@ $mb = date("mY", strtotime("now"));
   }
   
   $lmo_stlink = array_pad(array(), $lmo_arrays, '');
-  for($j = 0; $j < $anzst; $j++) {
+  for ($j = 0; $j < $anzst; $j++) {
     $lmo_stlink_title = array_pad(array(), $lmo_arrays, '');
     
-    for($i = 0; $i < $anzsp; $i++) {
+    for ($i = 0; $i < $anzsp; $i++) {
       if (!empty($mterm[$j][$i]) && date($lmo_daterule, $mterm[$j][$i]) == $md) { //konkretes Spieldatum vorhanden
         $a = intval(date($lmo_daterule2, $mterm[$j][$i]));
         if (($teama[$j][$i] != 0) && ($teamb[$j][$i] != 0)) {
@@ -120,7 +120,7 @@ $mb = date("mY", strtotime("now"));
       $a = intval(date($lmo_daterule2, $lmo_stdatum1));
       $lmo_stlink_title[$a] = ($j+1).". ".$text[2]." &#10;(".$text[155].")";
       if (!empty($lmo_stdatum2) && $lmo_stdatum2>$lmo_stdatum1) { //Von ... bis ... vorhanden
-        for($k = $a; $k <= intval(date($lmo_daterule2, $lmo_stdatum2)); $k++) {
+        for ($k = $a; $k <= intval(date($lmo_daterule2, $lmo_stdatum2)); $k++) {
           $lmo_stlink_title[$k] = ($j+1).". ".$text[2]." &#10;(".$text[155].")";
         }
       }
@@ -131,7 +131,7 @@ $mb = date("mY", strtotime("now"));
     }
     
     //Links generieren
-    for($i = 0; $i < count($lmo_stlink_title); $i++) {
+    for ($i = 0; $i < count($lmo_stlink_title); $i++) {
       if (!empty($lmo_stlink_title[$i])) { 
         $lmo_stlink[$i] = $lmo_stlink[$i]."&nbsp;&nbsp;<a href=\"".$addr.($j+1)."\" title=\"".$lmo_stlink_title[$i]."\">".($j+1).". ".$text[145]."</a><br>";;
       }

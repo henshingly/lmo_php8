@@ -26,17 +26,17 @@
   $dumma = file($pswfile);
   
   $v=0; // Teamnummer
-  for($i=0;$i<count($dumma);$i++){
+  for ($i=0;$i<count($dumma);$i++){
     $dummb = explode('|',$dumma[$i]);
-    if($dummb[5]!=""){
+    if ($dummb[5]!=""){
       $gef=0;
-      for($j=0;$j<$v && $gef==0;$j++){
-        if($team[$j]==$dummb[5]){ // Team schonmal gefunden
+      for ($j=0;$j<$v && $gef==0;$j++){
+        if ($team[$j]==$dummb[5]){ // Team schonmal gefunden
           $tipperteam[$j]++;
           $gef=1;
           }
         }
-      if($gef==0){
+      if ($gef==0){
         $team[$v] = $dummb[5];
         $tipperteam[$v]++;
         $v++;
@@ -45,15 +45,15 @@
     }
     
   $tab=array();
-  for($i=0;$i<$v;$i++){
+  for ($i=0;$i<$v;$i++){
     array_push($tab,strtolower($team[$i]).(50000000+$i));
     }
   sort($tab,SORT_STRING);
   
-  for($i=0;$i<$v;$i++){
+  for ($i=0;$i<$v;$i++){
     $j=intval(substr($tab[$i],-7));?>
  <option value="<?php echo $team[$j]?>"<?php 
-    if($xtippervereinalt==$team[$j]){
+    if ($xtippervereinalt==$team[$j]){
       echo " selected";
     }?>><?php echo $team[$j]?> [<?php echo $tipperteam[$j]?>]</option><?php 
   }

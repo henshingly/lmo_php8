@@ -2,10 +2,10 @@
 require_once(__DIR__.'/init.php');
 require_once(PATH_TO_ADDONDIR."/classlib/ini.php");
 
-if(isset($file) && $file != "")
+if (isset($file) && $file != "")
 {
   $liga = new Liga();
-  if($liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file))
+  if ($liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file))
   {
     completeSchedule($liga);
     $liga->writeFile(PATH_TO_LMO.'/'.$dirliga.$file);
@@ -17,14 +17,14 @@ function completeSchedule($liga)
 {
   $rounds = $liga->options->keyValues["Rounds"];
 
-  if($rounds % 2 == 0)
+  if ($rounds % 2 == 0)
   {
     //$gamesPerDay = $liga->options->keyValues['Matches']; // $gamesPerDay is not needed here
     $daysPerRound = $rounds/2;
 
-    for($i = 0; $i < $rounds/2; $i++)
+    for ($i = 0; $i < $rounds/2; $i++)
     {
-      if(isset($liga->spieltage[$i + $daysPerRound]))
+      if (isset($liga->spieltage[$i + $daysPerRound]))
       {
         $liga->spieltage[$i + $daysPerRound]->partien = array();
       }

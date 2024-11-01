@@ -296,10 +296,10 @@
 295=Hallo Speler,
 296=Bingoal Nieuwsletter
 297=Hallo
-298=Hallo [nick], \n\nHier vindt u uw registratiegegevens voor het voorspellingsspel: \n\nNickname: [nick]\nPassword: [pass]\n\nU kunt hier inloggen: \n[url]\n\nU kunt daar ook uw wachtwoord wijzigen.\n\nVeel plezier!
+298=Hallo [nick], &#13;&#13;Hier vindt u uw registratiegegevens voor het voorspellingsspel: &#13;&#13;Nickname: [nick]&#13;Password: [pass]&#13;&#13;U kunt hier inloggen: &#13;[url]&#13;&#13;U kunt daar ook uw wachtwoord wijzigen.&#13;&#13;Veel plezier!
 299=Verzend Registratie Informatie via E-Mail
 300=Het paswoord zal u via mail toegestuurd wordenl, kijk na dat u het e-mail adres corect hebt ingevoerd
 301=Opgelet! This deactivate the Possibility of making Predictions!
 302=Show Only Total Point Standings
-303=Een Nieuwe Speler heeft zich geregistreerd voor Bingoal: \n\nNickname: [nick]
+303=Een Nieuwe Speler heeft zich geregistreerd voor Bingoal: &#13;&#13;Nickname: [nick]
 304=Laat het veld leeg om te voorkomen dat het wachtwoord wordt gewijzigd

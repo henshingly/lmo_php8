@@ -1,4 +1,4 @@
-<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0"><?php if(strlen($cal)>4){ ?>
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0"><?php if (strlen($cal)>4){ ?>
   <tr>
     <td align="center">
       <table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -29,11 +29,11 @@
       $erster = 7;
     }
     echo "<tr>";
-    for($i = 0; $i < $erster-1; $i++) {
+    for ($i = 0; $i < $erster-1; $i++) {
       echo "<td class=\"lmoLeer\">&nbsp;</td>";
     }
   }
-  for($i = 1; $i <= 31; $i++) {
+  for ($i = 1; $i <= 31; $i++) {
     $dat4 = getdate(strtotime($i.$mj));
     $heute = $dat4['wday'];
     if ($heute == 0) {
@@ -102,7 +102,7 @@
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php 
   $dat0 = getdate(time());
   $lmo_output_buffer=array();
-  for($i = 1; $i <= 12; $i++) {
+  for ($i = 1; $i <= 12; $i++) {
     if (($i == 1) || ($i == 7)) {
       echo "<tr>";
     }

@@ -35,11 +35,11 @@ array_shift($dumma);
 
 $tipperteam = array_pad($array, count($dumma)+1, "");
 
-for($i = 0; $i < count($dumma); $i++) {
+for ($i = 0; $i < count($dumma); $i++) {
   $dummb1 = explode('|', $dumma[$i]);
   if ($dummb1[5] != "") {
     $gef = 0;
-    for($j = 0; $j < $v && $gef == 0; $j++) {
+    for ($j = 0; $j < $v && $gef == 0; $j++) {
       if ($team[$j] == $dummb1[5]) {
         // Team schonmal gefunden
         $tipperteam[$j]++;
@@ -55,7 +55,7 @@ for($i = 0; $i < count($dumma); $i++) {
 }
 
 $gef = 0;
-for($j = 0; $j < $v && $gef == 0; $j++) {
+for ($j = 0; $j < $v && $gef == 0; $j++) {
   if ($xtippervereinradio == 1) {
     if ($xtippervereinalt == $team[$j]) {
       $gef = 1;

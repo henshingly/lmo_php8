@@ -50,7 +50,7 @@ function updateAddons($fileName) {
     $ftest1 = "";
     $ftest1 = explode(',', $tipp_ligenzutippen);
     if (isset($ftest1)) {
-      for($u = 0; $u < count($ftest1); $u++) {
+      for ($u = 0; $u < count($ftest1); $u++) {
         if ($ftest1[$u] == $liga) {
           $ftest0 = 1;
         }

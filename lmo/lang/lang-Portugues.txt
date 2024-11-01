@@ -133,8 +133,8 @@
 132=Gravar equipas
 133=Gráficos
 134=Ver gráficos da equipa
-135=JORNADAS
-136=RANKING
+135=DIAS DE JOGO
+136=COLOCAÇÃO
 137=Você ainda não gravou o seu trabalho!
 138=Dados gravados com sucesso
 139=Seleccione a data no calendário(Esta opção não está disponível para navegadores Netscape)

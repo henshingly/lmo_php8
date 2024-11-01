@@ -28,12 +28,12 @@ if ($file != "") {
   <tr>
     <td valign="top" align="center">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php 
-  for($i = 1; $i <= floor($anzteams/2); $i++) {?>
+  for ($i = 1; $i <= floor($anzteams/2); $i++) {?>
         <tr>
           <td align="right">
             <acronym title="<?php echo $text[23]." ".$teams[$i]?>">
             	<?php
-    if($i!=$selteam){?>
+    if ($i!=$selteam){?>
             <a href="<?php echo $addp.$i?>" ><?php echo $teamk[$i]?></a>
             <?php
     } else {
@@ -51,17 +51,17 @@ if ($file != "") {
   if ($selteam == 0) {
     echo "<tr><td align=\"center\" class=\"lmost5\">&nbsp;<br>".$text[24]."<br>&nbsp;</td></tr>";
   } else {
-    for($j = 0; $j < $anzst; $j++) {
-      for($i = 0; $i < (($anzteams/2)+1); $i++) {
+    for ($j = 0; $j < $anzst; $j++) {
+      for ($i = 0; $i < (($anzteams/2)+1); $i++) {
         if (($selteam == $teama[$j][$i]) || ($selteam == $teamb[$j][$i])) {?>
         <tr><?php 
           if ($j == $anzst-1) {
             $l = $text[364];
-          } elseif($j == $anzst-2) {
+          } elseif ($j == $anzst-2) {
             $l = $text[362];
-          } elseif($j == $anzst-3) {
+          } elseif ($j == $anzst-3) {
             $l = $text[360];
-          } elseif($j == $anzst-4) {
+          } elseif ($j == $anzst-4) {
             $l = $text[358];
           } else {
             $l = $j+1;
@@ -92,7 +92,7 @@ if ($file != "") {
           <td class="lmost5" align="center" width="10">-</td><?php 
           if ($m == 2) {
             echo "<td class=\"lmoTurnierSieger nobr\">";
-          } elseif($m==1) {
+          } elseif ($m==1) {
             echo "<td align='left' class=\"lmoTurnierVerlierer nobr\">";
           } else {
             echo "<td class=\"nobr\" align=\"left\">";
@@ -109,7 +109,7 @@ if ($file != "") {
             echo " <a href=\"".$teamu[$teamb[$j][$i]]."\" target=\"_blank\" title=\"".$text[46]."\"><img border='0' width='11' src='".URL_TO_IMGDIR."/url.png' alt='".$text[564]."' title=\"".$text[46]."\"></a>";
           }
           echo " </td>";
-          for($n = 0; $n < $modus[$j]; $n++) {
+          for ($n = 0; $n < $modus[$j]; $n++) {
             if ($datm == 1) {
               if ($mterm[$j][$i][$n] > 0) {
                 //$dumn1 = "<acronym title=\"".date($datf, $mterm[$j][$i][$n])."\">"; 
@@ -130,17 +130,17 @@ if ($file != "") {
              */
             $lmo_teamaicon="";
             $lmo_teambicon="";
-            if($urlb==1 || $mnote[$j][$i][$n]!=""){
+            if ($urlb==1 || $mnote[$j][$i][$n]!=""){
               $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$j][$i]]," alt=''");
               $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$j][$i]]," alt=''");
             }
             /** Spielbericht verlinken
              */
-            if($urlb==1){
-              if($mberi[$j][$i][$n]!=""){
+            if ($urlb==1){
+              if ($mberi[$j][$i][$n]!=""){
                 $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$j][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$j][$i]]."</strong><br><br>";
                 echo " <a href='".$mberi[$j][$i][$n]."'  target='_blank'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a> ";
-              }else{
+              } else {
                 echo "&nbsp;";
               }
             }
@@ -168,13 +168,13 @@ if ($file != "") {
     </td>
     <td valign="top" align="center">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php 
-  for($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {?>
+  for ($i = ceil($anzteams/2)+1; $i <= $anzteams; $i++) {?>
         <tr>
           <td>&nbsp;<?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
           <td align="left">
             <acronym title="<?php echo $text[23]." ".$teams[$i]?>">
             	<?php
-    if($i!=$selteam){?>
+    if ($i!=$selteam){?>
             <a href="<?php echo $addp.$i?>"><?php echo $teamk[$i]?></a>
             <?php
     } else {

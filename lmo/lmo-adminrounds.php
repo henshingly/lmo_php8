@@ -18,9 +18,9 @@
   *
   */
 
-if(($file!="") && ($_SESSION['lmouserok']==2)){
-  if(!isset($team)){$team="";}
-  if(!isset($save)){$save=0;}
+if (($file!="") && ($_SESSION['lmouserok']==2)){
+  if (!isset($team)){$team="";}
+  if (!isset($save)){$save=0;}
   $addr=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=";
   $addb=$_SERVER['PHP_SELF']."?action=admin&amp;todo=tabs&amp;file=".$file."&amp;st=";
   $addz=$_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;file=".$file."&amp;st=-2&amp;team=";
@@ -67,7 +67,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
         $gast = $liga1->teamForNumber($gastNr);
 
         $aPartie = $liga1->partieForTeams($heim,$gast);
-        if($aSpielTag->removePartie($aPartie)) {
+        if ($aSpielTag->removePartie($aPartie)) {
           $changesFound = True;
           $newSpielTag->addPartie($aPartie);
           $liga1->spieltage[$neueSpielTagNr-1] = $newSpielTag;
@@ -91,18 +91,18 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   foreach ($liga->spieltage as $spTag) { ?>
         <tr>
           <th width="15" class="nobr">&nbsp;</th>
-          <th colspan="6" class="nobr" align="left">
+          <th style="text-align:left" colspan="6" class="nobr">
             <strong><?php echo $spTag->nr.". ".$text[2]."&nbsp;&nbsp;".$spTag->vonBisString()."</strong> / ".$spTag->partienCount()." ".$text[5003] ; ?>
           </th>
-          <th colspan="3" class="nobr" align="right">
-				<a href="#top"><?php echo $text[5011]; ?></a>&nbsp;/&nbsp;<a href="#bottom"><?php echo $text[5012]; ?></a></th>
+          <th style="text-align:right" colspan="3" class="nobr">
+            <a href="#top"><?php echo $text[5011]; ?></a>&nbsp;/&nbsp;<a href="#bottom"><?php echo $text[5012]; ?></a></th>
         </tr><?php
     $pcount = 1;
     $teamArray = array();
     foreach ($spTag->partien as $partie) {
       $hTore = $partie->hTore;
       $gTore = $partie->gTore;
-      if($hTore == -1 and $gTore == -1) {
+      if ($hTore == -1 and $gTore == -1) {
         $hTore = "__";
         $gTore = "__";
       } elseif ($hTore < -1 or $gTore < -1) {
@@ -132,7 +132,7 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
       echo $spTag->nr."_".$partie->heim?->nr."_".$partie->gast?->nr.'">';
       for ($sp = 1;$sp <= $liga->spieltageCount();$sp++) {
         echo "<option value=$sp";
-        if($spTag->nr==$sp){echo " selected";}
+        if ($spTag->nr==$sp){echo " selected";}
         echo ">".$sp.". ".$text[2]."</option>";
       }?>
             </select>
@@ -160,8 +160,8 @@ if(($file!="") && ($_SESSION['lmouserok']==2)){
   }      // foreach ($spTag->partien as $partie)
 ?>
         <tr>
-            <th class="nobr" colspan="10">
-              <acronym title="<?php echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php echo $text[5009]; ?>"></acronym>
+            <th style="text-align:right" class="nobr" colspan="10">
+              <acronym title="<?php echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php echo $text[5009]; ?>"></acronym>&nbsp;&nbsp;&nbsp;
             </th>
         </tr>
         </table>

@@ -42,7 +42,7 @@ if ($message != "") {
   }
 
   if ($emailart == 0) {
-    for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
+    for ($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
       $dummb = explode('|', $dumma[$tippernr]);
       if ($dummb[9] != -1 && $dummb[4] != "") {
         $textmessage = $message;
@@ -76,7 +76,7 @@ if ($message != "") {
           $ftest1 = "";
           $ftest1 = explode(',', $tipp_ligenzutippen);
           if (isset($ftest1)) {
-            for($u = 0; $u < count($ftest1); $u++) {
+            for ($u = 0; $u < count($ftest1); $u++) {
               if ($ftest1[$u] == substr($files, 0, -4)) {
                 $ftest = 1;
               }
@@ -107,24 +107,24 @@ if ($message != "") {
 
       $anzspiele = 0;
 
-      for($lnr = 0; $lnr < $anzligen; $lnr++) {
+      for ($lnr = 0; $lnr < $anzligen; $lnr++) {
         $file = $dirliga.$dateien[$lnr];
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippemailviewer.php");
       }
 
       $goaltipp = array_pad(array("_"), $anzspiele+1, "_");
 
-      for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
+      for ($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
         $dummb = explode('|', $dumma[$tippernr]);
         if ($dummb[10] != -1 && $dummb[4] != "") {
-          for($i = 0; $i < $anzspiele; $i++) {
+          for ($i = 0; $i < $anzspiele; $i++) {
             $goaltipp[$i] = "_";
           }
           $textmessage = $message;
           $lliga = "";
           $lspieltag = "";
           $spiele = "";
-          for($i = 0; $i < $anzspiele; $i++) {
+          for ($i = 0; $i < $anzspiele; $i++) {
             if ($i == 0 || $liga[$i] != $liga[$i-1]) {
               $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$liga[$i]."_".$dummb[0].".tip";
               if (file_exists($tippfile)) {
@@ -190,7 +190,7 @@ if ($message != "") {
         require(PATH_TO_LMO."/lmo-openfile.php");
       }
 
-      for($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
+      for ($tippernr = $start-1; $tippernr < $ende; $tippernr++) {
         $dummb = explode('|', $dumma[$tippernr]);
         if ($dummb[10] != -1 && $dummb[4] != "") {
           $textmessage = $message;
@@ -206,10 +206,10 @@ if ($message != "") {
               $st0 = 0;
               $anzst1 = $anzst;
             }
-            for(; $st0 <= $anzst1; $st0++) {
+            for (; $st0 <= $anzst1; $st0++) {
               if ($tipp_imvorraus < 0 || $st0 <= ($stx+$tipp_imvorraus)) {
                 if ($lmtype == 0) {
-                  for($dd = 0; $dd < $anzsp; $dd++) {
+                  for ($dd = 0; $dd < $anzsp; $dd++) {
                     $zeit = zeit($mterm[$st0][$dd], $datum1[$st0], $datum2[$st0]);
                     if ($now < $zeit && $then > $zeit) {
                       if ((($st == 0 && $goaltippa[$st0][$dd] == "_") || ($st > 0 && $goaltippa[$dd] == "_")) && $teama[$st0][$dd] > 0) {
@@ -218,8 +218,8 @@ if ($message != "") {
                     }
                   }
                 } elseif ($lmtype != 0) {
-                  for($dd = 0; $dd < $anzsp; $dd++) {
-                    for($ddd = 0; $ddd < $modus[$st0]; $ddd++) {
+                  for ($dd = 0; $dd < $anzsp; $dd++) {
+                    for ($ddd = 0; $ddd < $modus[$st0]; $ddd++) {
                       $zeit = zeit($mterm[$st0][$dd][$ddd], $datum1[$st0], $datum2[$st0]);
                       if ($now < $zeit && $then > $zeit) {
                         if ((($st == 0 && $goaltippa[$st0][$dd][$ddd] == "_") || ($st > 0 && $goaltippa[$dd][$ddd] == "_")) && $teama[$st0][$dd] > 0) {
@@ -230,7 +230,7 @@ if ($message != "") {
                   }
                 }
               }
-            } // ende for($spieltag=1;$spieltag<=$anzst;$spieltag++)
+            } // ende for ($spieltag=1;$spieltag<=$anzst;$spieltag++)
 
             if ($spiele != "") {
               $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
@@ -250,13 +250,13 @@ if ($message != "") {
               }
             }
           }
-        } // ende if($dummb[10]!=-1)
-      } // ende for($tippernr=0;$tippernr<$anztipper;$tippernr++)
+        } // ende if ($dummb[10]!=-1)
+      } // ende for ($tippernr=0;$tippernr<$anztipper;$tippernr++)
     }
     echo getMessage($anzemail." ".$text['tipp'][175]);
   } elseif ($emailart == 2 && $adressat != "") {
     $dummb = explode('|', $dumma[0]);
-    for($i = 0; $i < $anztipper && $adressat != $dummb[0]; $i++) {
+    for ($i = 0; $i < $anztipper && $adressat != $dummb[0]; $i++) {
       $dummb = explode('|', $dumma[$i]);
     }
     $textmessage = $message;

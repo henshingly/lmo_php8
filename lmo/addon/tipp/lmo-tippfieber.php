@@ -18,18 +18,18 @@
   */
   
   
-if($file!="" && $tipp_tippfieber==1){
+if ($file!="" && $tipp_tippfieber==1){
   $save=isset($_POST['save'])?1:0;
-  if($save==1){
+  if ($save==1){
     $fieber_stat1=trim($_POST["xstat1"]);
     $fieber_stat2=trim($_POST["xstat2"]);
     $kurvenmodus=trim($_POST["xkurvenmodus"]);
   }
-  if(!isset($eigpos)){$eigpos=0;}
-  if(!isset($fieber_stat1)){$fieber_stat1=-1;}
-  if(!isset($fieber_stat2)){$fieber_stat2=-1;}
-  if($fieber_stat1==$fieber_stat2){$fieber_stat2=-1;}
-  if(!isset($kurvenmodus)){$kurvenmodus=1;}
+  if (!isset($eigpos)){$eigpos=0;}
+  if (!isset($fieber_stat1)){$fieber_stat1=-1;}
+  if (!isset($fieber_stat2)){$fieber_stat2=-1;}
+  if ($fieber_stat1==$fieber_stat2){$fieber_stat2=-1;}
+  if (!isset($kurvenmodus)){$kurvenmodus=1;}
   $addg=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=fieber&amp;file=".$file."&amp;stat1=";
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcgraph.php");
   //echo $anztipper;
@@ -50,30 +50,30 @@ if($file!="" && $tipp_tippfieber==1){
       <td>
         <select name="xstat1"><?php 
   $tab=array();
-  for($i=0;$i<$anztipper;$i++){
+  for ($i=0;$i<$anztipper;$i++){
     array_push($tab,strtolower($tippernick[$i]).(50000000+$i));
     }
   sort($tab,SORT_STRING);?>
-          <option value="-1"<?php if($fieber_stat1==-1){echo " selected";}?>>___</option><?php 
-  for($i=0;$i<$anztipper;$i++){
+          <option value="-1"<?php if ($fieber_stat1==-1){echo " selected";}?>>___</option><?php 
+  for ($i=0;$i<$anztipper;$i++){
     $j=intval(substr($tab[$i],-7));?>
-          <option value="<?php echo $j?>"<?php if($fieber_stat1==$j){echo " selected";}?>><?php echo $tippernick[$j]?></option><?php 
+          <option value="<?php echo $j?>"<?php if ($fieber_stat1==$j){echo " selected";}?>><?php echo $tippernick[$j]?></option><?php 
     }?>
         </select>
       </td>
       <td>
         <select name="xstat2">
-          <option value="-1"<?php if($fieber_stat2==-1){echo " selected";}?>>___</option><?php 
-  for($i=0;$i<$anztipper;$i++){
+          <option value="-1"<?php if ($fieber_stat2==-1){echo " selected";}?>>___</option><?php 
+  for ($i=0;$i<$anztipper;$i++){
     $j=intval(substr($tab[$i],-7));?>
-          <option value="<?php echo $j?>"<?php if($fieber_stat2==$j){echo " selected";}?>><?php echo $tippernick[$j]?></option><?php 
+          <option value="<?php echo $j?>"<?php if ($fieber_stat2==$j){echo " selected";}?>><?php echo $tippernick[$j]?></option><?php 
     }?>
         </select>
       </td>
       <td>
         <select name="xkurvenmodus">
-          <option value="1"<?php if($kurvenmodus==1){echo " selected";}?>><?php echo $text['tipp'][235]?></option>
-          <option value="2"<?php if($kurvenmodus==2){echo " selected";}?>><?php echo $text['tipp'][232]?></option>	
+          <option value="1"<?php if ($kurvenmodus==1){echo " selected";}?>><?php echo $text['tipp'][235]?></option>
+          <option value="2"<?php if ($kurvenmodus==2){echo " selected";}?>><?php echo $text['tipp'][232]?></option>	
         </select>
       </td>
       <td>
@@ -177,7 +177,7 @@ if($file!="" && $tipp_tippfieber==1){
         $dummy=$dummy."&amp;pgtext2=".strtoupper($text['tipp'][38]);
       }
       // PUNKTE
-      else{
+      else {
         $dummy=$dummy."&amp;pgtext2=".$text[136];
       }
       //PLATZIERUNG

@@ -133,8 +133,8 @@
 132=Pohraniti momčadi
 133=Uporediti
 134=Tabela Rezlutata
-135=KOLA
-136=POREDAK
+135=DANI UTAKMICA
+136=POSTAVLJANJE
 137=Još nije pohranjeno (Spašeno)
 138=Podaci su uspješno spremljeni
 139=Izaberi datum pomoću PopUp-kalendara.

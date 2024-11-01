@@ -156,7 +156,9 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right"><input class="lmo-formular-input" type="text" name="xtitel" size="40" maxlength="60" value="<?php echo $titel; ?>" onChange="dolmoedit()"></td>
             <td class="nobr" align="left"><acronym title="<?php echo $text[118];?>"><?php echo $text[113];?></acronym></td>
-          </tr><?php      if ($lmtype==0) { ?>
+          </tr>
+<?php
+      if ($lmtype==0) { ?>
           <tr>
             <td class="nobr" align="right"><input class="lmo-formular-input" type="text" name="xnamepkt" size="7" maxlength="60" value="<?php if ($namepkt=="") {echo $text[37];} else {echo $namepkt;} ?>" onChange="dolmoedit()"></td>
             <td class="nobr" align="left"><acronym title="<?php echo $text[66];?>"><?php echo $text[65]." ".$text[37];?></acronym></td>
@@ -192,7 +194,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right">
               <select class="lmo-formular-input" name="xfavteam" onChange="dolmoedit()"><?php
-    for($y=0;$y<=$anzteams;$y++) {?>
+    for ($y=0;$y<=$anzteams;$y++) {?>
                 <option value="<?php echo $y?>"<?php if ($y==$favteam) {echo " selected";}?>><?php echo $teams[$y]?></option><?php
     }?>
               </select>
@@ -202,7 +204,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right">
               <select class="lmo-formular-input" name="xselteam" onChange="dolmoedit()"><?php
-    for($y=0;$y<=$anzteams;$y++) {?>
+    for ($y=0;$y<=$anzteams;$y++) {?>
                 <option value="<?php echo $y?>"<?php if ($y==$selteam) {echo " selected";}?>><?php echo $teams[$y]?></option><?php
     }?>
               </select>
@@ -212,7 +214,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right">
               <select class="lmo-formular-input" name="xstat1" onChange="dolmoedit()"><?php
-      for($y=0;$y<=$anzteams;$y++) {?>
+      for ($y=0;$y<=$anzteams;$y++) {?>
                 <option value="<?php echo $y?>"<?php if ($y==$stat1) {echo " selected";}?>><?php echo $teams[$y]?></option><?php
       }?>
               </select>
@@ -221,13 +223,13 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           </tr>
           <tr>
             <td class="nobr" align="right"><select class="lmo-formular-input" name="xstat2" onChange="dolmoedit()"><?php
-      for($y=0;$y<=$anzteams;$y++) {?>
+      for ($y=0;$y<=$anzteams;$y++) {?>
                 <option value="<?php echo $y?>"<?php if ($y==$stat2) {echo " selected";}?>><?php echo $teams[$y]?></option><?php
       }?>
               </select>
             </td>
           </tr><?php    }
-  }elseif ($show==2) {
+  } elseif ($show==2) {
     if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1) { ?>
           <tr>
             <td class="nobr" align="right"><acronym title="<?php echo $text[570];?>"><?php echo $text[569];?></acronym></td>
@@ -247,14 +249,14 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             <td class="nobr" align="right"><acronym title="<?php echo $text[400];?>"><?php echo $text[399];?></acronym>&nbsp;</td>
             <td class="nobr" align="left">
               <select class="lmo-formular-input" name="xonrun" onChange="dolmoedit()">
-                <option value="0"<?php if ($ergebnis == '0')  {echo " disabled";}elseif ($onrun==0) {echo " selected";}?>><?php echo $text[10]?></option>
-                <option value="1"<?php if ($tabelle == '0')   {echo " disabled";}elseif ($onrun==1) {echo " selected";}?>><?php echo $text[16]?></option>
-                <option value="2"<?php if ($plan == '0')      {echo " disabled";}elseif ($onrun==2) {echo " selected";}?>><?php echo $text[12]?></option>
-                <option value="3"<?php if ($kreuz == '0')     {echo " disabled";}elseif ($onrun==3) {echo " selected";}?>><?php echo $text[14]?></option>
-                <option value="4"<?php if ($kurve == '0')     {echo " disabled";}elseif ($onrun==4) {echo " selected";}?>><?php echo $text[133]?></option>
-                <option value="5"<?php if ($ligastats == '0') {echo " disabled";}elseif ($onrun==5) {echo " selected";}?>><?php echo $text[18]?></option>
-                <option value="6"<?php if ($dats == '0')      {echo " disabled";}elseif ($onrun==6) {echo " selected";}?>><?php echo $text[140]?></option>
-                <option value="7"<?php if ($mittore == '0')   {echo " disabled";}elseif ($onrun==7) {echo " selected";}?>><?php echo $text[485]?></option>
+                <option value="0"<?php if ($ergebnis == '0')  {echo " disabled";} elseif ($onrun==0) {echo " selected";}?>><?php echo $text[10]?></option>
+                <option value="1"<?php if ($tabelle == '0')   {echo " disabled";} elseif ($onrun==1) {echo " selected";}?>><?php echo $text[16]?></option>
+                <option value="2"<?php if ($plan == '0')      {echo " disabled";} elseif ($onrun==2) {echo " selected";}?>><?php echo $text[12]?></option>
+                <option value="3"<?php if ($kreuz == '0')     {echo " disabled";} elseif ($onrun==3) {echo " selected";}?>><?php echo $text[14]?></option>
+                <option value="4"<?php if ($kurve == '0')     {echo " disabled";} elseif ($onrun==4) {echo " selected";}?>><?php echo $text[133]?></option>
+                <option value="5"<?php if ($ligastats == '0') {echo " disabled";} elseif ($onrun==5) {echo " selected";}?>><?php echo $text[18]?></option>
+                <option value="6"<?php if ($dats == '0')      {echo " disabled";} elseif ($onrun==6) {echo " selected";}?>><?php echo $text[140]?></option>
+                <option value="7"<?php if ($mittore == '0')   {echo " disabled";} elseif ($onrun==7) {echo " selected";}?>><?php echo $text[485]?></option>
               </select>
             </td>
           </tr><?php      }?>
@@ -269,7 +271,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
               <select class="lmo-formular-input" name="xdatf" onChange="dolmoedit();document.getElementsByName('xdatfselect')[0].checked=true;"><?php
       $dummf=array("d.m. H:i", "d.m.Y H:i", "D., d.m. H:i", "l, d.m. H:i", "D., d.m.Y H:i", "l, d.m.Y H:i");?>
                 <option value="">__</option><?php
-      for($y=0;$y<count($dummf);$y++) {?>
+      for ($y=0;$y<count($dummf);$y++) {?>
                 <option value="<?php echo $dummf[$y]?>"<?php if ($datf==$dummf[$y]) {echo " selected";}?>><?php echo date($dummf[$y], time())?></option><?php
       }?>
               </select>
@@ -351,8 +353,9 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xurlb" onChange="dolmoedit()"<?php if ($urlb==1) {echo " checked";}?>></td>
             <td class="nobr" align="left"><acronym title="<?php echo $text[266];?>"><?php echo $text[265];?></acronym></td>
-          </tr><?php      }
-      if ($lmtype==1) { ?>
+          </tr><?php
+    }
+    if ($lmtype==1) { ?>
           <tr>
             <th align="left" colspan="2"><?php echo $text[800];?></th>
           </tr>
@@ -394,8 +397,9 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           </tr>
           <tr>
             <td class="nobr" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<acronym title="<?php echo $text[808];?>"><?php echo $text[807];?></acronym></td>
-          </tr><?php      }
-  }elseif ($show==3) {
+          </tr><?php
+    }
+  } elseif ($show==3) {
     if (($_SESSION['lmouserok']==2  || $_SESSION['lmouserokerweitert']==1) && $lmtype==0) { ?>
           <tr>
             <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xminus" onChange="dolmoedit()"<?php if ($minus==2) {echo " checked";}?>>&nbsp;</td>
@@ -454,7 +458,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
               </table>
             </td>
           </tr><?php    }
-  }elseif ($show==4) {
+  } elseif ($show==4) {
     if ($_SESSION['lmouserok']==2 || $_SESSION['lmouserokerweitert']==1) { ?>
           <tr>
             <th align="left" colspan="2"><?php echo $text[264];?></th>
@@ -476,7 +480,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           </tr>
           <tr>
             <td class="nobr" align="right"><select class="lmo-formular-input" name="xanzcl" onChange="dolmoedit()"><?php
-      for($i=0;$i<9;$i++) {?>
+      for ($i=0;$i<9;$i++) {?>
                 <option value="<?php echo $i?>"<?php if ($anzcl==$i) {echo " selected";}?>><?php echo $i?></option><?php
       }?>
               </select>&nbsp;
@@ -486,7 +490,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right">
               <select class="lmo-formular-input" name="xanzck" onChange="dolmoedit()"><?php
-      for($i=0;$i<5;$i++) {?>
+      for ($i=0;$i<5;$i++) {?>
                 <option value="<?php echo $i?>"<?php if ($anzck==$i) {echo " selected";}?>><?php echo $i?></option><?php
       }?>
               </select>&nbsp;
@@ -496,7 +500,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right">
               <select class="lmo-formular-input" name="xanzuc" onChange="dolmoedit()"><?php
-      for($i=0;$i<=$anzteams;$i++) {?>
+      for ($i=0;$i<=$anzteams;$i++) {?>
                 <option value="<?php echo $i?>"<?php if ($anzuc==$i) {echo " selected";}?>><?php echo $i?></option><?php
       }?>
               </select>&nbsp;
@@ -506,7 +510,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right">
               <select class="lmo-formular-input" name="xanzar" onChange="dolmoedit()"><?php
-      for($i=0;$i<=$anzteams;$i++) {?>
+      for ($i=0;$i<=$anzteams;$i++) {?>
                 <option value="<?php echo $i?>"<?php if ($anzar==$i) {echo " selected";}?>><?php echo $i?></option><?php
       }?>
               </select>&nbsp;
@@ -516,7 +520,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="right">
               <select class="lmo-formular-input" name="xanzab" onChange="dolmoedit()"><?php
-      for($i=0;$i<=$anzteams;$i++) {?>
+      for ($i=0;$i<=$anzteams;$i++) {?>
                 <option value="<?php echo $i?>"<?php if ($anzab==$i) {echo " selected";}?>><?php echo $i?></option><?php
       }?>
               </select>&nbsp;

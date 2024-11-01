@@ -256,7 +256,7 @@ class Cache_Lite
     {
         $availableOptions = array('hashedDirectoryLevel', 'automaticCleaningFactor', 'automaticSerialization', 'fileNameProtection', 'memoryCaching', 'onlyMemoryCaching', 'memoryCachingLimit', 'cacheDir', 'caching', 'lifeTime', 'fileLocking', 'writeControl', 'readControl', 'readControlType', 'pearErrorMode');
         foreach($options as $key => $value) {
-            if(in_array($key, $availableOptions)) {
+            if (in_array($key, $availableOptions)) {
                 $property = '_'.$key;
                 $this->$property = $value;
             }

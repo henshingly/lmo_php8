@@ -28,7 +28,7 @@ if (($action == "tipp") && ($todo == "newligen")) {
     array_unshift($users,'');
     
     $gef = 0;
-    for($i = 1; $i < count($users) && $gef == 0; $i++) {
+    for ($i = 1; $i < count($users) && $gef == 0; $i++) {
       $dummb = explode('|', $users[$i]);
       if ($_SESSION['lmotippername'] == $dummb[0]) {
         // Nick gefunden
@@ -56,29 +56,29 @@ if (($action == "tipp") && ($todo == "newligen")) {
   } // end ($newpage==1)
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
+  <caption><?php echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <th align="center"><?php echo $text['tipp'][135]; ?></th>
   </tr>
   <tr>
-    <td align="left"><?php if($newpage!=1){ ?>
+    <td align="left"><?php if ($newpage!=1){ ?>
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="todo" value="newligen">
         <input type="hidden" name="newpage" value="1"><?php  $ftype=".l98"; 
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php"); 
-    if($i!=0){ ?>
+    if ($i!=0){ ?>
         <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text['tipp'][11]; ?>"><?php    } ?>
       </form><?php  }?>
     </td>
   </tr><?php 
   
-  if($newpage==1){ /* Anmeldung erfolgreich */?>
+  if ($newpage==1){ /* Anmeldung erfolgreich */?>
   <tr>
     <td align="center"><?php echo getMessage($text['tipp'][20]); ?></td>
   </tr><?php  }
   
-  if($newpage==1 || $i==0){ /* zurück zur Übersicht */?>
+  if ($newpage==1 || $i==0){ /* zurück zur Übersicht */?>
   <tr>
     <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?php echo $text[5]." ".$text['tipp'][1]; ?></a></td>
   </tr><?php  }?>    

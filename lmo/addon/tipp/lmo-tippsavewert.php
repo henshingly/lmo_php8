@@ -92,20 +92,20 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
   if ($tipp_wertverein == 1) {
     $vpunkte = array_pad($array, $anzteams+1, "");
     $vspiele = array_pad($array, $anzteams+1, "");
-    for($i = 1; $i <= $anzteams; $i++) {
+    for ($i = 1; $i <= $anzteams; $i++) {
       $vpunkte[$i] = array_pad(array("0"), $anzst+1, "0");
       $vspiele[$i] = array_pad(array("0"), $anzst+1, "0");
     }
   }
    
-  for($l = 0; $l < $anztipperliga; $l++) {
+  for ($l = 0; $l < $anztipperliga; $l++) {
     // durchlaufe alle Tipper
     $tippernick1 = substr($dummy[$l], strrpos($dummy[$l], "_")+1, -4);
     if ($l >= $start-1 && $l <= $ende-1) {
       $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$l];
       if (file_exists($tippfile)) {
         $gef = 0;
-        for($g = 0; $g < count($dummd) && $gef == 0; $g++) {
+        for ($g = 0; $g < count($dummd) && $gef == 0; $g++) {
           //Tipper tippt diese Liga
           $dumme = explode('|', $dummd[$g]);
           if ($tippernick1 == $dumme[0]) {
@@ -128,7 +128,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
           }
            
           $st1 = $st;
-          for($st0 = 0; $st0 < $anzst; $st0++) {
+          for ($st0 = 0; $st0 < $anzst; $st0++) {
             if ($st > 0) {
               $st0 = $anzst;
             } else {
@@ -148,7 +148,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
               $punkte6 = 0;
             }
              
-            for($i = 0; $i < $anzsp; $i++) {
+            for ($i = 0; $i < $anzsp; $i++) {
               if ($lmtype == 0) {
                 if ($tipp_jokertipp == 1 && (($st == 0 && $jksp[$st0] == $i+1) || $jksp == $i+1)) {
                   $jkspfaktor = $tipp_jokertippmulti;
@@ -183,7 +183,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
                 if ($st==0) {
                   $modus[$st-1]=0;
                 }
-                for($n = 0; $n < $modus[$st-1]; $n++) {
+                for ($n = 0; $n < $modus[$st-1]; $n++) {
                   if ($tipp_jokertipp == 1 && (($st == 0 && $jksp[$st0] == ($i+1).($n+1)) || $jksp == ($i+1).($n+1))) {
                     $jkspfaktor = $tipp_jokertippmulti;
                   } else {
@@ -205,7 +205,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
                   }
                 }
               } // ende else
-            } // ende for($i=1;$j<=$anzsp;$i++)
+            } // ende for ($i=1;$j<=$anzsp;$i++)
             if ($spielegetippt > 0) {
               fputs($auswertdatei, "SG".$st1."=".$spielegetippt."\n");
             }
@@ -234,10 +234,10 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
             if ($tp > 0) {
               fputs($auswertdatei, "TP".$st1."=".$tp."\n");
             }
-          } // ende for($st0=1;$st0<$anzst;$st0++)
+          } // ende for ($st0=1;$st0<$anzst;$st0++)
            
-          //if(!isset($dat)){$dat=0;}
-          //if($dat>=count($datenalt)){$dat=0;}
+          //if (!isset($dat)){$dat=0;}
+          //if ($dat>=count($datenalt)){$dat=0;}
           if ($st > 0) {
             $dat = 0;
             while ($tippernick1 != substr($datenalt[$dat], 1, -1) && $dat < (count($datenalt)-1)) {
@@ -259,7 +259,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
                 $dat++;
               }
             }
-          } // ende if($st>0)
+          } // ende if ($st>0)
           if ($tipp_wertverein == 1) {
             $tipp_wertvereinfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/vereine/".$liga."_".$tippernick1.".ver";
             $datenalt1 = array("");
@@ -287,16 +287,16 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
             if ($tipp_wertvereindatei) {
               flock($tipp_wertvereindatei, 2);
                
-              for($i = 1; $i <= $anzteams; $i++) {
+              for ($i = 1; $i <= $anzteams; $i++) {
                 fputs($tipp_wertvereindatei, "[".$i."]"."\n");
                 $anzst1 = $anzst;
-                for($j = 1; $j <= $anzst1; $j++) {
+                for ($j = 1; $j <= $anzst1; $j++) {
                   if ($st > 0) {
                     $j = $st;
                     $anzst1 = $st;
                     $dat = 0;
-                    //if(!isset($dat)){$dat=0;}
-                    //if($dat>=count($datenalt1)){$dat=0;}
+                    //if (!isset($dat)){$dat=0;}
+                    //if ($dat>=count($datenalt1)){$dat=0;}
                     while ($datenalt1[$dat] != "[".$i."]" && $dat < (count($datenalt1)-1)) {
                       $dat++;
                     }
@@ -329,14 +329,14 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
               fclose($tipp_wertvereindatei);
             }
           }
-        } // ende if($gef==1)
-      } // ende if(file_exists($tippfile))
-    } // ende if($l>=$start-1 && $l<=$ende-1)
+        } // ende if ($gef==1)
+      } // ende if (file_exists($tippfile))
+    } // ende if ($l>=$start-1 && $l<=$ende-1)
     else
       {
       // nicht ausgewertete Tipper zurück schreiben
       $nick = "";
-      for($i = 0; $i < count($datenalt); $i++) {
+      for ($i = 0; $i < count($datenalt); $i++) {
         $zeile = $datenalt[$i];
         if ($zeile != "") {
           if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
@@ -346,12 +346,12 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
             fputs($auswertdatei, $datenalt[$i]."\n");
           }
         }
-      } // ende for($i=0;$i<count($datenalt);$i++)
+      } // ende for ($i=0;$i<count($datenalt);$i++)
     } // ende else
-  } // ende for($l=0;$l<$anztipperliga;$l++)
+  } // ende for ($l=0;$l<$anztipperliga;$l++)
   flock($auswertdatei, 3);
   fclose($auswertdatei);
-} // ende if(file_exists($file))
+} // ende if (file_exists($file))
  
 clearstatcache();
 if (isset($todo) && $todo != "edit") {

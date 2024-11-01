@@ -25,7 +25,7 @@ if ($todo == "tippuseredit") {
 }
  
 if ($tippfile != "") {
-  //if(decoct(fileperms($tippfile))!=100777){chmod ($tippfile, 0777);}
+  //if (decoct(fileperms($tippfile))!=100777){chmod ($tippfile, 0777);}
   if (substr($tippfile, -4) == ".tip") {
     $daten = array("");
     if ($st > 0 && file_exists($tippfile)) {
@@ -57,7 +57,7 @@ if ($tippfile != "") {
     flock($datei, 2);
      
     $round = 0;
-    for($i = 0; $i < count($daten); $i++) {
+    for ($i = 0; $i < count($daten); $i++) {
       if ((substr($daten[$i], 0, 1) == "[") && (substr($daten[$i], -1) == "]")) {
         $round = substr($daten[$i], 6, -1);
       }
@@ -75,14 +75,14 @@ if ($tippfile != "") {
       }
       if ($lmtype != 0) {
         $anzsp = $anzteams;
-        for($i = 0; $i < $st; $i++) {
+        for ($i = 0; $i < $st; $i++) {
           $anzsp = $anzsp/2;
         }
         if (($klfin == 1) && ($st == $anzst)) {
           $anzsp = $anzsp+1;
         }
       }
-      for($j = 1; $j <= $anzsp; $j++) {
+      for ($j = 1; $j <= $anzsp; $j++) {
         if ($lmtype == 0) {
           if ($goaltippa[$j-1] == "_") {
             fputs($datei, "GA".$j."=-1\n");
@@ -99,7 +99,7 @@ if ($tippfile != "") {
             fputs($datei, "GB".$j."=".$goaltippb[$j-1]."\n");
           }
         } else {
-          for($n = 1; $n <= $modus[$st-1]; $n++) {
+          for ($n = 1; $n <= $modus[$st-1]; $n++) {
             if ($goaltippa[$j-1][$n-1] == "_") {
               fputs($datei, "GA".$j.$n."=-1\n");
             } elseif ($goaltippa[$j-1][$n-1] == "") {

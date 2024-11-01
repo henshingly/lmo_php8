@@ -176,7 +176,7 @@ class liga {
    */
   function &teamForNumber($teamNumber) {
     $result = null;
-    if(isset($teamNumber) && $teamNumber > 0 && $teamNumber <= $this->teamCount()) {
+    if (isset($teamNumber) && $teamNumber > 0 && $teamNumber <= $this->teamCount()) {
       $result = $this->teams[$teamNumber-1];
     }
     return $result;
@@ -225,8 +225,8 @@ class liga {
    */
   function &partieForNumber($number) {
     $result = null;
-    // Bugfix 13.10.04    if(isset($number) && $nNumber > 0 && $number <= $this->partienCount())
-    if(isset($number) && $number > 0 && $number <= $this->partienCount()) {
+    // Bugfix 13.10.04    if (isset($number) && $nNumber > 0 && $number <= $this->partienCount())
+    if (isset($number) && $number > 0 && $number <= $this->partienCount()) {
       $result = $this->partien[$number-1];
     }
     return $result;
@@ -324,7 +324,7 @@ class liga {
         }
       }
     }
-    if($roundSort) {
+    if ($roundSort) {
       array_multisort($sort_2,$sortDir, $sort_1,$sortDir, $games);
     } else {
       array_multisort($sort_1,$sortDir,$games);
@@ -343,7 +343,7 @@ class liga {
    */
 
   function gamesSortedForTeam ($team=null,$roundSort=true,$sortDir=SORT_ASC) {
-    if(!is_a($team,"team") ) { // Wurde nix angegeben wird das fav. Team verwendet
+    if (!is_a($team,"team") ) { // Wurde nix angegeben wird das fav. Team verwendet
       $team = $this->teamForNumber($this->options->keyValues['favTeam']);
     }
     return $this->gamesSorted($roundSort,$sortDir,$team);
@@ -502,7 +502,7 @@ class liga {
    */
   function loadFile($fileName='') {
     $iniData = array();
-    if(file_exists($fileName) && !empty($fileName) && !is_dir($fileName) ) {
+    if (file_exists($fileName) && !empty($fileName) && !is_dir($fileName) ) {
       $this->ligaDatum = filemtime($fileName);
       // ligaFile in einen kompletten String einlesen
       $ligaFile = implode("",file($fileName) );
@@ -553,13 +553,13 @@ class liga {
 
       $tCounter = 1;
       foreach($iniData["Teams"] as $key=>$value) {
-        if(isset($iniData["Team".$tCounter]) && $iniData["Team".$tCounter]!="" ) {
+        if (isset($iniData["Team".$tCounter]) && $iniData["Team".$tCounter]!="" ) {
           $teamKurz = $iniData["Teamk"][$key];
           $teamMittel = isset($iniData['Teamm'][$key])?$iniData['Teamm'][$key]:'';
           $team = new team($value,$teamKurz,$key,$teamMittel);
           $teamDetails = $iniData["Team".$tCounter];
           foreach ($teamDetails as $detailsKey=>$detailsValue) {
-            if(isset($detailsKey) && $detailsKey!="") {
+            if (isset($detailsKey) && $detailsKey!="") {
               $team->keyValues[$detailsKey]=$detailsValue;
             }
           }
@@ -636,7 +636,7 @@ class liga {
       $options = new optionsSektion($this,$optionDetails);
 
       // Liganame setzen
-      if(isset( $optionDetails["Name"]) && $optionDetails["Name"]!="") {
+      if (isset( $optionDetails["Name"]) && $optionDetails["Name"]!="") {
         if ($this->name == "") {
           $this->name = $optionDetails["Name"];
         } else {
@@ -644,7 +644,7 @@ class liga {
         }
       }
       foreach ($optionDetails as $detailsKey=>$detailsValue) {
-        if(isset($detailsKey) && $detailsKey!="") {
+        if (isset($detailsKey) && $detailsKey!="") {
           $options->keyValues[$detailsKey]=$detailsValue;
         }
       }
@@ -686,7 +686,7 @@ class liga {
       }
       // aktuellen Spieltag bestimmen
       foreach ($spieltag->partien as $partie) {
-        if($partie->hTore + $partie->gTore > -1) { // aktueller Spieltag muss min. ein Ergebnis enthalten
+        if ($partie->hTore + $partie->gTore > -1) { // aktueller Spieltag muss min. ein Ergebnis enthalten
           $aktSpTag = $spieltag->nr;
         }
       }
@@ -743,7 +743,7 @@ class liga {
             foreach ($spieltag->partien[$pCounter]->getParameter() as $otherKey => $otherParameter) {
               $iniData['Round'.$roundCount][$otherKey.$partienNumber]=$otherParameter;
             }
-            if($pCounter > 10000 ) die("Script ERROR");
+            if ($pCounter > 10000 ) die("Script ERROR");
             ++$pCounter; // NEU 2012-06-27 Timme
           } while (isset($spieltag->partien[$pCounter]) && is_object($spieltag->partien[$pCounter]) && $partienCounter < $spieltag->getModus() );
         }
@@ -911,15 +911,15 @@ class liga {
       if ($spieltag->getModus() > 0 ) {
         continue;
       }
-      if($tableArt=="hin" && ($spieltag->nr > ($this->spieltageCount()/2) )) {
-        if($spTagCount<$spTag) {
+      if ($tableArt=="hin" && ($spieltag->nr > ($this->spieltageCount()/2) )) {
+        if ($spTagCount<$spTag) {
           $spTagCount++;
         } else {
           break;
         }
         continue;
-      } elseif($tableArt=="rueck" && ($spieltag->nr <= $this->spieltageCount()/2 )) {
-        if($spTagCount<$spTag) {
+      } elseif ($tableArt=="rueck" && ($spieltag->nr <= $this->spieltageCount()/2 )) {
+        if ($spTagCount<$spTag) {
           $spTagCount++;
         } else {
           break;
@@ -1044,7 +1044,7 @@ class liga {
         }
       } // foreach Partien
       //Zusätzliche Berechnung der Position für den jeweiligen Spieltag (Statisktik)
-      if($possp == TRUE) {
+      if ($possp == TRUE) {
         for ($i=0;$i<count($tableArray);$i++) { // Tordiff.
           $tableArray[$i]["dTor"]=$tableArray[$i]["pTor"]-$tableArray[$i]["mTor"];
         }
@@ -1053,7 +1053,7 @@ class liga {
           $tableArray[$i]["possp"][$spTagCount-1] = $tableArray[$i]["pos"];
         }
       }
-      if($spTagCount<$spTag) {
+      if ($spTagCount<$spTag) {
         $spTagCount++;
       } else {
         break;
@@ -1091,26 +1091,26 @@ class liga {
       array_multisort($sort_pPkt,SORT_DESC, $sort_mPkt,SORT_ASC, $sort_dTor,SORT_DESC, $sort_pTor,SORT_DESC, $sort_mTor,SORT_ASC, $tableArray,SORT_DESC);
     }
     // BEGIN Direkter Vergleich
-    if($this->options->keyValues['Direct']==1) {
+    if ($this->options->keyValues['Direct']==1) {
       $subteams = array();
       $pPkt = 0;
       $mPkt = 0;
       for ($abc = 0; $abc < count($tableArray); $abc++) {
-        if($pPkt == $tableArray[$abc]["pPkt"] && $mPkt == $tableArray[$abc]["mPkt"]) {
+        if ($pPkt == $tableArray[$abc]["pPkt"] && $mPkt == $tableArray[$abc]["mPkt"]) {
           $subteams[$tableArray[$abc]["team"]->nr] = $tableArray[$abc]["team"];
         } else {
-          if(count($subteams)>1) {
+          if (count($subteams)>1) {
             $tmp_table = $this->calcTableforTeams($subteams);
             $tmp_tablearray = $tableArray;
             $nextpos = $abc - count($tmp_table) ;
             for ($b = 0; $b < count($tmp_table); $b++) {
-              for($f = $nextpos; $f < $abc; $f++) {
-                if($tmp_tablearray[$f]["team"]===$tmp_table[$b]["team"]) {
+              for ($f = $nextpos; $f < $abc; $f++) {
+                if ($tmp_tablearray[$f]["team"]===$tmp_table[$b]["team"]) {
                   $tableArray[$nextpos+$b] = $tmp_tablearray[$f];
                 }
               }
             }
-          } // END if(count($subteams)>1)
+          } // END if (count($subteams)>1)
           $subteams = array();
           $pPkt = $tableArray[$abc]["pPkt"];
           $mPkt = $tableArray[$abc]["mPkt"];
@@ -1164,7 +1164,7 @@ class liga {
           if ($tableArray[$count]["team"]===$partie->heim) $heimCount=$count;
           if ($tableArray[$count]["team"]===$partie->gast) $gastCount=$count;
         }
-        if($heimCount==-1 OR $gastCount==-1) continue;
+        if ($heimCount==-1 OR $gastCount==-1) continue;
         if ($partie->hTore>-1) {
           // Tore für Heim hinzufügen
           $tableArray[$heimCount]["pTor"] += $partie->hTore;

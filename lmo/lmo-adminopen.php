@@ -20,7 +20,7 @@
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 $subdir=isset($_REQUEST["subdir"])?$_REQUEST["subdir"]:'';
-if(($action=="admin") && ($todo=="open")){
+if (($action=="admin") && ($todo=="open")){
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
 ?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">

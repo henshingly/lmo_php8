@@ -21,7 +21,7 @@
 if (isset($file) && $file != "") {
   $tabtype=isset($_GET['tabtype'])?$_GET['tabtype']:0;
   $newtabtype=0;
-  if(!empty($_GET['st'])) { $endtab = $st;}
+  if (!empty($_GET['st'])) { $endtab = $st;}
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=$action&amp;tabtype=$tabtype&amp;file=".$file."&amp;st=";
   $breite = 10;
@@ -39,7 +39,7 @@ if (isset($file) && $file != "") {
     require(PATH_TO_LMO."/lmo-calctable.php");
     $platz1 = array("");
     $platz1 = array_pad($array, $anzteams+1, "");
-    for($x = 0; $x < $anzteams; $x++) {
+    for ($x = 0; $x < $anzteams; $x++) {
       $platz1[intval(substr($tab0[$x], 34))] = $x+1;
     }
     $endtab++;
@@ -50,7 +50,7 @@ if (isset($file) && $file != "") {
     require(PATH_TO_LMO."/lmo-calctable.php");
     $hplatz = array("");
     $hplatz = array_pad($array, $anzteams+1, "");
-    for($x = 0; $x < $anzteams; $x++) {
+    for ($x = 0; $x < $anzteams; $x++) {
       $hplatz[intval(substr($tab0[$x], 34))] = $x+1;
     }
     $hspiele = $spiele;
@@ -66,7 +66,7 @@ if (isset($file) && $file != "") {
     require(PATH_TO_LMO."/lmo-calctable.php");
     $aplatz = array("");
     $aplatz = array_pad($array, $anzteams+1, "");
-    for($x = 0; $x < $anzteams; $x++) {
+    for ($x = 0; $x < $anzteams; $x++) {
       $aplatz[intval(substr($tab0[$x], 34))] = $x+1;
     }
     $aspiele = $spiele;
@@ -83,7 +83,7 @@ if (isset($file) && $file != "") {
   require(PATH_TO_LMO."/lmo-calctable.php");
   $platz0 = array("");
   $platz0 = array_pad($array, $anzteams+1, "");
-  for($x = 0; $x < $anzteams; $x++) {
+  for ($x = 0; $x < $anzteams; $x++) {
     $platz0[intval(substr($tab0[$x], 34))] = $x+1;
   }
   if ($tabdat == "") {

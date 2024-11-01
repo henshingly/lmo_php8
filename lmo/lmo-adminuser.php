@@ -30,7 +30,7 @@ if ($_SESSION['lmouserok']==2) {
   require(PATH_TO_LMO."/lmo-loadauth.php");
 
   if ($save>=0) {
-    if(isset($_POST["xadmin_name".$save]) && isset($_POST["xadmin_pass".$save]) && isset($_POST["xadmin_rang".$save])) {
+    if (isset($_POST["xadmin_name".$save]) && isset($_POST["xadmin_pass".$save]) && isset($_POST["xadmin_rang".$save])) {
       $lmo_admin_data[$save]=array(trim($_POST["xadmin_name".$save]),trim($_POST["xadmin_pass".$save]),trim($_POST["xadmin_rang".$save]));
       $lmo_helfer_ligen_neu=array();
       if (trim($_POST["xadmin_rang".$save])==1) {  //Hilfsadmin -> Ligen herausfinden
@@ -66,11 +66,11 @@ if ($_SESSION['lmouserok']==2) {
     array_unshift($lmo_admin_data,$main_admin);
     require(PATH_TO_LMO."/lmo-saveauth.php");
     require(PATH_TO_LMO."/lmo-loadauth.php");
-  }elseif ($del>=0) {  //User löschen
+  } elseif ($del>=0) {  //User löschen
     $lmo_admin_data[$del]='';
     require(PATH_TO_LMO."/lmo-saveauth.php");
     require(PATH_TO_LMO."/lmo-loadauth.php");
-  }elseif ($save==-1) {  //Neuen User anlegen
+  } elseif ($save==-1) {  //Neuen User anlegen
     foreach ($lmo_admin_data as $admin ) {
       if (trim($_POST["xadmin_name"])==$admin[0]) {
         $admin_dupe=1;
@@ -151,7 +151,7 @@ if ($_SESSION['lmouserok']==2) {
             <td>&nbsp;</td>
             <td align="left"><input class="lmo-formular-input" type="checkbox" name="xadmin_erweitert<?php echo $show?>" <?php if (isset($lmo_admin[4]) && $lmo_admin[4]==1) echo " checked";?> <?php if ($lmo_admin[2]==2) echo " disabled";?>><acronym title="<?php echo $text[560]?>"><?php echo $text[559]?></acronym></td>
           </tr><?php
-      if($lmo_admin[2]==1){?>
+      if ($lmo_admin[2]==1){?>
           <tr>
             <th colspan="3"><acronym title="<?php echo $text[398]?>"><?php echo $text[397]?></acronym></th>
           </tr><?php

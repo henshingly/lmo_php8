@@ -173,7 +173,7 @@
 172=bytte til denne måneden
 173=bytte til dette året
 174=Ligatype
-175=Velg her ligatype (Liga=Liga med poeng og tabeller / Utslagningsturnering = f.eks PlayOff/cup)
+175=Velg her ligatype (Liga=Liga med poeng og tabeller / Utslagningsturnering=f.eks PlayOff/cup)
 176=Liga
 177=Utslagningsturnering (cup)
 178=Spillesystem

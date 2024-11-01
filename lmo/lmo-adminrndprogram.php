@@ -77,9 +77,9 @@ if (($xteams%2) == 1) {
 }
  
 $plan = array_pad($array, 80, "");
-for($i = 0; $i < 40; $i++) {
+for ($i = 0; $i < 40; $i++) {
   $plan[$i] = array_pad($array, 40, "");
-  for($j = 0; $j < 40; $j++) {
+  for ($j = 0; $j < 40; $j++) {
     $plan[$i][$j] = "-1";
   }
 }
@@ -167,9 +167,9 @@ for ($i = count($abbildungsarray); --$i; $i > 0) {
 /**
  * Schleife, die die Textfelder des LMO-Spielplans schreibt.
  */
-for($spieltag = 0; $spieltag < $spieltage; $spieltag++) {
+for ($spieltag = 0; $spieltag < $spieltage; $spieltag++) {
   $spielnr = 0;
-  for($heim = 0; $heim < $anzteams; $heim++) {
+  for ($heim = 0; $heim < $anzteams; $heim++) {
     $ausw = $plan[$spieltag][$heim];
     if ($ausw > -1) {
       $heim_abbild = $abbildungsarray[$heim];

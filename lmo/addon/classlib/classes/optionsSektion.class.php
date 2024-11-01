@@ -89,11 +89,11 @@ class optionsSektion extends sektion {
       }
     }
     // Wenn eine Liga angegeben wird, werden entsprechende Keys gleich initialisiert
-    if(get_class($aLiga)=="liga") {
-      if(isset($aLiga->name) and $aLiga->name != "") {
+    if (get_class($aLiga)=="liga") {
+      if (isset($aLiga->name) and $aLiga->name != "") {
         $this->keyValues['Name'] = $aLiga->name;
       }
-      if(isset($aLiga->aktSpTag) and $aLiga->aktSpTag != "") {
+      if (isset($aLiga->aktSpTag) and $aLiga->aktSpTag != "") {
         $this->keyValues['Actual'] = $aLiga->aktSpTag;
       }
       $this->keyValues['Teams'] = $aLiga->teamCount();

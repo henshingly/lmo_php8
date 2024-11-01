@@ -57,7 +57,7 @@ if ($filepointer = fopen($filename, "r+b")) {
     $zeile = 0;
     while ($data[$zeile] = fgetcsv ($filepointer, 10000, "#")) {
         if ((isset($vereinsspalte) && isset($data[$zeile][$vereinsspalte]) && $spieler_vereinsweise_anzeigen == 1 && $team == $data[$zeile][$vereinsspalte]) || $team == '') {
-            for($i = 0; $i < count($data[$zeile]); $i++) {
+            for ($i = 0; $i < count($data[$zeile]); $i++) {
                 if (!is_numeric($data[$zeile][$i])) $typ[$i] = true;
             }
             $zeile++;

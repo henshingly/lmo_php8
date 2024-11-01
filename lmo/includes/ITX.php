@@ -318,7 +318,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
         $this->updateBlockvariablelist($blockname);
     /*
     // check if any inner blocks were found
-    if(is_array($this->blockinner[$blockname]) and count($this->blockinner[$blockname]) > 0) {
+    if (is_array($this->blockinner[$blockname]) and count($this->blockinner[$blockname]) > 0) {
         // loop through inner blocks, registering the variable placeholders in each
         foreach($this->blockinner[$blockname] as $childBlock) {
             $this->updateBlockvariablelist($childBlock);

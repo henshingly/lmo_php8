@@ -160,7 +160,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
           fputs($datei,"D2=".$datum2[$i-1]."\n");
           if ($lmtype!=0) {
             fputs($datei,"MO=".$modus[$i-1]."\n");
-            if($anzteams==24) {
+            if ($anzteams==24) {
               switch ($i) {
                 case 1:
                 case 2:

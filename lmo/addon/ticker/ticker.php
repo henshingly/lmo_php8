@@ -48,12 +48,12 @@ $ticker_array=explode(",",$ticker_ligen);
 foreach($ticker_array as $file){
   require(PATH_TO_LMO."/lmo-openfile.php");
   if (isset($lmtype)) {
-    if($ticker_tickerart==2) {
+    if ($ticker_tickerart==2) {
       $hilf="";
       $hilf1="";
       if (isset($nlines)) {
-        for($i=0;$i<count($nlines);$i++){
-          if(strlen($nlines[$i]) > 0)
+        for ($i=0;$i<count($nlines);$i++){
+          if (strlen($nlines[$i]) > 0)
             $hilf.=$trenner.$nlines[$i];
         }
       }
@@ -94,7 +94,7 @@ foreach($ticker_array as $file){
             }
           }
         }  //for
-      }else{
+      } else {
         for ($i=0; $i<$anzsp; $i++) {
           for ($n=0; $n<$modus[$stx-1]; $n++) {
             if (($teama[$stx-1][$i]>0) && ($teamb[$stx-1][$i]>0) ) {

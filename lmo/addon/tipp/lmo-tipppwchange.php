@@ -40,7 +40,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   fclose($datei);
   
   $gef = 0;
-  for($i = 1; $i < count($users) && $gef == 0; $i++) {
+  for ($i = 1; $i < count($users) && $gef == 0; $i++) {
     $dummb = explode('|', $users[$i]);
     if ($_SESSION['lmotippername'] == $dummb[0]) {
       // Nick gefunden
@@ -91,10 +91,10 @@ if (($action == "tipp") && ($todo == "pwchange")) {
   } // end ($newpage==1)
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php echo $_SESSION['lmotippername'];if($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
+  <caption><?php echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <th align="center"><?php echo $text['tipp'][107]; ?></th>
-  </tr><?php if($newpage!=1){ ?>
+  </tr><?php if ($newpage!=1){ ?>
   <tr>
     <td align="center">
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -126,7 +126,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
       </form>
     </td>
   </tr><?php  }
-  if($newpage==1){ /* erfolgreich */?>
+  if ($newpage==1){ /* erfolgreich */?>
   <tr>
     <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
   </tr>

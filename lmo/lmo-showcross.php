@@ -19,7 +19,7 @@
   */
 
 
-if(($file!="") && ($kreuz==1)){
+if (($file!="") && ($kreuz==1)){
   $addc=$_SERVER['PHP_SELF']."?action=cross&amp;file=".$file."&amp;croteam=";
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
   $croteam=!empty($_GET['croteam'])?$_GET['croteam']:0;
@@ -30,8 +30,8 @@ if(($file!="") && ($kreuz==1)){
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 
 <?php
-for($i = 0; $i <= ($anzteams+1); $i++) {
-  for($j = 0; $j <= ($anzteams+1); $j++) {
+for ($i = 0; $i <= ($anzteams+1); $i++) {
+  for ($j = 0; $j <= ($anzteams+1); $j++) {
     $dummy = "";
     if ($j == 0) {
       echo "<tr>";
@@ -40,11 +40,11 @@ for($i = 0; $i <= ($anzteams+1); $i++) {
       echo "<th align='right'>";
     } elseif ($j == ($anzteams+1)) {
       echo "<th align='left'>";
-    } elseif($i == 0 || $i == ($anzteams+1)){
+    } elseif ($i == 0 || $i == ($anzteams+1)){
       echo "<th align='center'>";
-    } elseif($croteam != 0 && ($j == $croteam || $i == $croteam)) {
+    } elseif ($croteam != 0 && ($j == $croteam || $i == $croteam)) {
       echo "<td align='center' class='lmoBackMarkierung'>";
-    } elseif($j == $i) {
+    } elseif ($j == $i) {
       echo "<td class='lmoLeer'>";
     } else {
       echo "<td align='center'>";
@@ -73,8 +73,8 @@ for($i = 0; $i <= ($anzteams+1); $i++) {
 
     if (($i > 0) && ($i <= $anzteams) && ($j > 0) && ($j <= $anzteams) && ($j != $i)) {
       $l = 0;
-      for($b = 0; $b < $anzst; $b++) {
-        for($a = 0; $a < $anzsp; $a++) {
+      for ($b = 0; $b < $anzst; $b++) {
+        for ($a = 0; $a < $anzsp; $a++) {
           if (($i == $teama[$b][$a]) && ($j == $teamb[$b][$a])) {
             if (($mnote[$b][$a] != "") || ($msieg[$b][$a] > 0)) {
               if ($msieg[$b][$a] == 1) {

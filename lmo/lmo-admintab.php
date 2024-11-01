@@ -38,7 +38,7 @@ if ($file != "") {
   require(PATH_TO_LMO."/lmo-calctable.php");
   $platz0 = array("");
   $platz0 = array_pad($array, $anzteams+1, "");
-  for($x = 0; $x < $anzteams; $x++) {
+  for ($x = 0; $x < $anzteams; $x++) {
     $x3 = intval(substr($tab2[$x], 34));
     $platz0[$x3] = $x+1;
   }
@@ -50,7 +50,7 @@ if ($file != "") {
     $xa = "";
     $xb = "";
     $xc = 0;
-    for($i = 1; $i <= $anzteams; $i++) {
+    for ($i = 1; $i <= $anzteams; $i++) {
       if ($i < 10) {
         $xa = $xa."0";
       }
@@ -69,7 +69,7 @@ if ($file != "") {
   }
 
   $handt = array_pad($array, $anzteams+2, "");
-  for($i = 0; $i < $anzteams; $i++) {
+  for ($i = 0; $i < $anzteams; $i++) {
     if ($handp[$st-1] != 0) {
       $handt[$i+1] = intval(substr($handp[$st-1], $i * 2, 2));
     } else {
@@ -105,24 +105,24 @@ if ($file != "") {
             <th align="left" width="2">&nbsp;</th>
             <th align="right"><?php echo $text[33];?></th>
             <th align="right"><?php echo $text[34];?></th><?php
-  if($hidr!=1) {?>
+  if ($hidr!=1) {?>
             <th align="right"><?php echo $text[35];?></th><?php
   }?>
             <th align="right"><?php echo $text[36];?></th><?php
-  if($tabpkt==0) {?>
+  if ($tabpkt==0) {?>
             <th>&nbsp;</th>
             <th <?php echo $dummy?>><?php echo $text[37]?></th><?php
   }?>
             <th align="left" width="2">&nbsp;</th>
             <th align="left" colspan="3" align="center"><?php echo $text[38];?></th>
             <th align="right"><?php echo $text[39];?></th><?php
-  if($tabpkt==1) {?>
+  if ($tabpkt==1) {?>
             <th>&nbsp;</th>
             <th <?php echo $dummy?>><?php echo $text[37]?></th><?php
   }?>
           </tr><?php
   $j = 1;
-  for($x = 1; $x <= $anzteams; $x++) {
+  for ($x = 1; $x <= $anzteams; $x++) {
     $i = intval(substr($tab2[$x-1], 34));
     if ($i == $favteam) {
       $dummy = "<strong>";
@@ -134,8 +134,8 @@ if ($file != "") {
           <tr>
             <td align="right">
               <select title="<?php echo $text[414] ?>" class="lmo-formular-input" name="xplatz<?php echo $x;?>" onChange="dolmoedi2(<?php echo $anzteams;?>,'xplatz<?php echo $x;?>')"><?php
-    for($y=1;$y<=$anzteams;$y++) {?>
-                <option value="<?php echo $y?>" <?php if($y==$handt[$x]) {echo " selected";}?>><?php echo $y?></option>
+    for ($y=1;$y<=$anzteams;$y++) {?>
+                <option value="<?php echo $y?>" <?php if ($y==$handt[$x]) {echo " selected";}?>><?php echo $y?></option>
                 <?php
     }?>
               </select>
@@ -188,7 +188,7 @@ if ($file != "") {
             <td>&nbsp;</td>
             <td align="right"><?php echo $dummy.$spiele[$i].$dumm2;?></td>
             <td align="right"><?php echo $dummy.$siege[$i].$dumm2;?></td><?php
-    if($hidr!=1) {?>
+    if ($hidr!=1) {?>
             <td align="right"><?php echo $dummy.$unent[$i].$dumm2;?></td><?php
     }?>
             <td align="right"><?php echo $dummy.$nieder[$i].$dumm2;?></td><?php
@@ -205,10 +205,10 @@ if ($file != "") {
             <td align="center" width="4"><?php echo $dummy; ?>:<?php echo $dumm2; ?></td>
             <td><?php echo $dummy.applyFactor($atore[$i],$goalfaktor).$dumm2; ?></td>
             <td align="right"><?php echo $dummy.applyFactor($dtore[$i],$goalfaktor).$dumm2; ?></td><?php
-    if($tabpkt==1) {?>
+    if ($tabpkt==1) {?>
             <td width="2">&nbsp;</td>
             <td align="right"><strong><?php echo applyFactor($punkte[$i],$pointsfaktor)?></strong></td><?php
-      if($minus==2) {?>
+      if ($minus==2) {?>
             <td align="center" width="4"><strong>:</strong></td>
             <td><strong><?php echo applyFactor($negativ[$i],$pointsfaktor)?></strong></td><?php
       }

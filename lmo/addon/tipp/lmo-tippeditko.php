@@ -18,11 +18,11 @@
   *
   */
 
-for($n=0;$n<$modus[$st-1];$n++){
-  if(($klfin==1) && ($st==$anzst)){ ?>
+for ($n=0;$n<$modus[$st-1];$n++){
+  if (($klfin==1) && ($st==$anzst)){ ?>
   <tr>
     <th class="nobr" colspan=<?php echo $breite; ?> align="left"><?php
-    if($i==1){
+    if ($i==1){
       echo "&nbsp;<br>";
     }
     echo $text[419+$i]; ?>
@@ -99,7 +99,7 @@ for($n=0;$n<$modus[$st-1];$n++){
     $goaltippb[$i][$n]="";
   }?>
     <td>&nbsp;</td><?php
-  if($tipp_showtendenzabs==1){ ?>
+  if ($tipp_showtendenzabs==1){ ?>
     <td align="center" class="nobr"><?php    if ($btip1==false) {
       if (!isset($tendenz1[$i][$n])) {
         $tendenz1[$i][$n]=0;
@@ -114,7 +114,7 @@ for($n=0;$n<$modus[$st-1];$n++){
     }?>
     </td>
     <td>&nbsp;</td><?php  }
-  if($tipp_showtendenzpro==1){ ?>
+  if ($tipp_showtendenzpro==1){ ?>
     <td align="center" class="nobr"><?php    if ($btip1==false) {
       if (!isset($anzgetippt[$i][$n])) {
         $anzgetippt[$i][$n]=0;
@@ -136,13 +136,13 @@ for($n=0;$n<$modus[$st-1];$n++){
     }?>
     </td>
     <td>&nbsp;</td><?php  }
-  if($btip[$i][$n]==true){
+  if ($btip[$i][$n]==true){
     $savebutton=1;
   }
 
 /**ERGEBNISMODUS*/
-  if($tipp_tippmodus==1){
-    if($tipp_showdurchschntipp==1){?>
+  if ($tipp_tippmodus==1){
+    if ($tipp_showdurchschntipp==1){?>
       <td align="center" class="nobr"><?php      if ($btip1==false) {
         if (!isset($anzgetippt[$i][$n])) {
           $anzgetippt[$i][$n]=0;
@@ -166,10 +166,10 @@ for($n=0;$n<$modus[$st-1];$n++){
       }?>
     </td>
     <td>&nbsp;</td><?php    }
-    if($btip[$i][$n]==true){ ?>
+    if ($btip[$i][$n]==true){ ?>
     <td align="right">
       <input class="lmo-formular-input" type="text" name="xtippa<?php echo $i.$n; ?>" size="4" maxlength="4" value="<?php echo $goaltippa[$i][$n]; ?>" onKeyDown="lmotorclk('a','<?php echo $i.$n; ?>',event.keyCode)">
-    </td><?php      if($tipp_pfeiltipp==1){ ?>
+    </td><?php      if ($tipp_pfeiltipp==1){ ?>
     <td align="center">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -185,13 +185,13 @@ for($n=0;$n<$modus[$st-1];$n++){
       </table>
     </td><?php      }
     } else {
-      if($tipp_pfeiltipp==1){ ?>
+      if ($tipp_pfeiltipp==1){ ?>
     <td>&nbsp;</td><?php      }?>
     <td align="right"><?php echo $goaltippa[$i][$n]; ?></td><?php    } ?>
-    <td>:</td><?php    if($btip[$i][$n]==true){ ?>
+    <td>:</td><?php    if ($btip[$i][$n]==true){ ?>
     <td align="right">
       <input class="lmo-formular-input" type="text" name="xtippb<?php echo $i.$n; ?>" size="4" maxlength="4" value="<?php echo $goaltippb[$i][$n]; ?>" onKeyDown="lmotorclk('b','<?php echo $i.$n; ?>',event.keyCode)">
-    </td><?php      if($tipp_pfeiltipp==1){ ?>
+    </td><?php      if ($tipp_pfeiltipp==1){ ?>
     <td align="center">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -207,7 +207,7 @@ for($n=0;$n<$modus[$st-1];$n++){
       </table>
     </td><?php      }
     } else {?>
-    <td align="left"><?php echo $goaltippb[$i][$n]; ?></td><?php      if($tipp_pfeiltipp==1){ ?>
+    <td align="left"><?php echo $goaltippb[$i][$n]; ?></td><?php      if ($tipp_pfeiltipp==1){ ?>
     <td>&nbsp;</td><?php      }
     }
   } /* ende $tipp_tippmodus==1 */
@@ -224,18 +224,18 @@ for($n=0;$n<$modus[$st-1];$n++){
       $tipp=2;
     }?>
     <td align="right">
-      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="1" <?php if($tipp==1){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
-    </td><?php    if($hidr==0){ ?>
+      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="1" <?php if ($tipp==1){echo " checked";} if ($btip[$i][$n]==false){echo " disabled";} ?>>
+    </td><?php    if ($hidr==0){ ?>
     <td align="center">
-      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="3" <?php if($tipp==0){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
+      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="3" <?php if ($tipp==0){echo " checked";} if ($btip[$i][$n]==false){echo " disabled";} ?>>
     </td><?php    }?>
     <td align="right">
-      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="2" <?php if($tipp==2){echo " checked";} if($btip[$i][$n]==false){echo " disabled";} ?>>
+      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="2" <?php if ($tipp==2){echo " checked";} if ($btip[$i][$n]==false){echo " disabled";} ?>>
     </td><?php  } /* ende ($tipp_tippmodus==0) */
 
 /**BEIDE*/
   if ($tipp_jokertipp==1){ ?>
-    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if($jksp==($i+1).($n+1)){echo " checked";} if($btip[$i][$n]==false){echo " disabled";}elseif ($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>
+    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if ($jksp==($i+1).($n+1)){echo " checked";} if ($btip[$i][$n]==false){echo " disabled";} elseif ($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>
     <td class="lmoBackMarkierung" align="right"><?php echo $goala[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="center">:</td>
     <td class="lmoBackMarkierung" align="left"><?php echo $goalb[$st-1][$i][$n]; ?></td>
@@ -281,14 +281,14 @@ for($n=0;$n<$modus[$st-1];$n++){
    */
   $lmo_teamaicon="";
   $lmo_teambicon="";
-  if($urlb==1 || $mnote[$st-1][$i][$n]!=""){
+  if ($urlb==1 || $mnote[$st-1][$i][$n]!=""){
     $lmo_teamaicon=HTML_smallTeamIcon($file,$teams[$teama[$st-1][$i]]," alt=''")." ";
     $lmo_teambicon=HTML_smallTeamIcon($file,$teams[$teamb[$st-1][$i]]," alt=''")." ";
   }
   /** Spielbericht verlinken
    */
-  if($urlb==1){
-    if($mberi[$st-1][$i][$n]!=""){
+  if ($urlb==1){
+    if ($mberi[$st-1][$i][$n]!=""){
       $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> - ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
       echo "<a href='".$mberi[$st-1][$i][$n]."'  target='_blank' title='".$text[270]."'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
     } else {
@@ -318,7 +318,7 @@ for($n=0;$n<$modus[$st-1];$n++){
   }?>
     </td>
   </tr><?php }
-if(($modus[$st-1]>1) && ($i<$anzsp-1)){ ?>
+if (($modus[$st-1]>1) && ($i<$anzsp-1)){ ?>
   <tr>
     <td colspan="<?php echo $breite; ?>">&nbsp;</td>
   </tr><?php }

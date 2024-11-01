@@ -24,18 +24,18 @@ function getmicrotime(){
   return ((float)$usec + (float)$sec);
 }
 $startzeit = getmicrotime();
-if($action=="admin"){
+if ($action=="admin"){
   $me=array("0","January","February","March","April","May","June","July","August","September","October","November","December");
   $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
-  if(!isset($st)){$sty=0;}else{$sty=$st;}
-  if(!isset($newpage)){$newpage=0;}
+  if (!isset($st)){$sty=0;} else {$sty=$st;}
+  if (!isset($newpage)){$newpage=0;}
   $file=isset($_REQUEST['file'])?$_REQUEST['file']:"";
   $subdir=isset($_REQUEST["subdir"])?$_REQUEST["subdir"]:dirname($file)."/";
 
   $warning = (int)0;
   if (version_compare(PHP_VERSION, $min_php_version, '<')) echo warning_message("This LMO requires a web server with PHP ".$min_php_version." or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>".PHP_VERSION."</mark>", $warning = $warning+1, TRUE);
   if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo warning_message("Delete install folder or set its chmod to 000!", $warning = $warning+1,TRUE);
-  if($_SESSION['lmouserok'] == 2) {
+  if ($_SESSION['lmouserok'] == 2) {
     if ($new_lmo_version > $lmo_version) echo update_message($text[590]."<br><a href='".$new_lmo_version_link.$new_lmo_version."' target='_blank' class='tooltip-test' title='Current Version'>".$text[591]."</a>", "Update",TRUE);
   }
 ?>
@@ -120,7 +120,7 @@ if ($_SESSION['lmouserok'] == 2) {
     }
   }
   /*PDF-Addon*/
-  } elseif($_SESSION['lmouserok'] == 1) {
+  } elseif ($_SESSION['lmouserok'] == 1) {
     if ($todo != "open") {
       echo "<a href='{$adda}open' onclick='return chklmolink();' title='{$text[81]}'>{$text[80]}</a>";
     } else {
@@ -147,7 +147,7 @@ if ($_SESSION['lmouserok'] == 2) {
     <td class="lmoMenu" align="right"><?php 
   echo "<a href='{$adda}logout' onclick='return chklmolink();' title='{$text[89]}'>{$text[88]}</a>";
   echo "&nbsp;";
-  if($_SESSION['lmouserok']==2){echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}else{echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}?>
+  if ($_SESSION['lmouserok']==2){echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";} else {echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}?>
      </td>
   </tr>
   <tr>
@@ -171,22 +171,22 @@ if ($_SESSION['lmouserok'] == 2) {
     /*PDF-Addon*/
     if ($todo == "new") {
       require(PATH_TO_LMO."/lmo-adminnew.php");
-    } elseif($todo == "open") {
+    } elseif ($todo == "open") {
       require(PATH_TO_LMO."/lmo-adminopen.php");
-    } elseif($todo == "delete") {
+    } elseif ($todo == "delete") {
       require(PATH_TO_LMO."/lmo-admindelete.php");
-    } elseif($todo == "edit") {
+    } elseif ($todo == "edit") {
       if ($sty == -1) {
         require(PATH_TO_LMO."/lmo-adminbasic.php");
-      } elseif($sty == -2) {
+      } elseif ($sty == -2) {
         require(PATH_TO_LMO."/lmo-adminteams.php");
-      } elseif($sty == -3) {
+      } elseif ($sty == -3) {
         require(PATH_TO_LMO."/lmo-adminanz.php");
-      } elseif($sty==-10){
+      } elseif ($sty==-10){
         require(PATH_TO_LMO."/lmo-adminrounds.php");
       }
       /*Spielerstatistik-Addon*/
-      elseif($sty == -4 && $einspieler == 1) {
+      elseif ($sty == -4 && $einspieler == 1) {
         require(PATH_TO_ADDONDIR."/spieler/lmo-statadmin.php");
       }
       /*Spielerstatistik-Addon*/
@@ -194,62 +194,62 @@ if ($_SESSION['lmouserok'] == 2) {
         {
         require(PATH_TO_LMO."/lmo-adminedit.php");
       }
-    } elseif($todo == "tabs") {
+    } elseif ($todo == "tabs") {
       require(PATH_TO_LMO."/lmo-admintab.php");
-    } elseif($todo == "upload") {
+    } elseif ($todo == "upload") {
       require(PATH_TO_LMO."/lmo-adminupload.php");
-    } elseif($todo == "download") {
+    } elseif ($todo == "download") {
       require(PATH_TO_LMO."/lmo-admindown.php");
-    } elseif($todo == "options") {
+    } elseif ($todo == "options") {
       require(PATH_TO_LMO."/lmo-adminoptions.php");
-    } elseif($todo == "user") {
+    } elseif ($todo == "user") {
       require(PATH_TO_LMO."/lmo-adminuser.php");
-    } elseif($todo == "addons") {
+    } elseif ($todo == "addons") {
       require(PATH_TO_LMO."/lmo-adminaddon.php");
-    } elseif($todo == "design") {
+    } elseif ($todo == "design") {
       require(PATH_TO_LMO."/lmo-admindesign.php");
     }
     /*Tippspiel-Addon*/
-    elseif($todo == "tipp") {
+    elseif ($todo == "tipp") {
       require(PATH_TO_ADDONDIR."/tipp/lmo-admintipp.php");
-    } elseif($todo == "tippemail") {
+    } elseif ($todo == "tippemail") {
       require(PATH_TO_ADDONDIR."/tipp/lmo-admintippemail.php");
-    } elseif($todo == "tippuser") {
+    } elseif ($todo == "tippuser") {
       require(PATH_TO_ADDONDIR."/tipp/lmo-admintippuser.php");
-    } elseif($todo == "tippuseredit") {
+    } elseif ($todo == "tippuseredit") {
       require(PATH_TO_ADDONDIR."/tipp/lmo-admintippuseredit.php");
-    } elseif($todo == "tippoptions") {
+    } elseif ($todo == "tippoptions") {
       require(PATH_TO_ADDONDIR."/tipp/lmo-admintippoptions.php");
     }
     /*Tippspiel-Addon*/
     /*Viewer-Addon*/
-    elseif($todo=="vieweroptions"){
+    elseif ($todo=="vieweroptions"){
       require(PATH_TO_ADDONDIR."/viewer/lmo-adminvieweroptions.php");
     }
     /*Viewer-Addon*/
     /*PDF-Addon*/
-    elseif($todo=="pdfoptions"){
+    elseif ($todo=="pdfoptions"){
       require(PATH_TO_ADDONDIR."/pdf/lmo-adminpdfoptions.inc.php");
     }
     /*PDF-Addon*/
-    elseif($todo == "") {
+    elseif ($todo == "") {
       require(PATH_TO_LMO."/lmo-adminpad.php");
     }
-  } elseif($_SESSION['lmouserok'] == 1) {
+  } elseif ($_SESSION['lmouserok'] == 1) {
     if ($todo == "open") {
       require(PATH_TO_LMO."/lmo-adminopen.php");
-    } elseif($todo == "edit") {
+    } elseif ($todo == "edit") {
       if ($sty == -1) {
         require(PATH_TO_LMO."/lmo-adminbasic.php");
-      } elseif($sty == -2 && $_SESSION['lmouserokerweitert'] == 1) {
+      } elseif ($sty == -2 && $_SESSION['lmouserokerweitert'] == 1) {
         require(PATH_TO_LMO."/lmo-adminteams.php");
-      } elseif($sty == -3 && $_SESSION['lmouserokerweitert'] == 1) {
+      } elseif ($sty == -3 && $_SESSION['lmouserokerweitert'] == 1) {
         require(PATH_TO_LMO."/lmo-adminanz.php");
-      } elseif($sty==-10){
+      } elseif ($sty==-10){
         require(PATH_TO_LMO."/lmo-adminrounds.php");
       }
       /*Spielerstatistik-Addon*/
-      elseif($sty == -4 && $einspieler == 1) {
+      elseif ($sty == -4 && $einspieler == 1) {
         require(PATH_TO_ADDONDIR."/spieler/lmo-statadmin.php");
       }
       /*Spielerstatistik-Addon*/
@@ -257,11 +257,11 @@ if ($_SESSION['lmouserok'] == 2) {
         {
         require(PATH_TO_LMO."/lmo-adminedit.php");
       }
-    } elseif($todo == "tabs") {
+    } elseif ($todo == "tabs") {
       require(PATH_TO_LMO."/lmo-admintab.php");
-    } elseif($todo == "download") {
+    } elseif ($todo == "download") {
       require(PATH_TO_LMO."/lmo-admindown.php");
-    } elseif($todo == "") {
+    } elseif ($todo == "") {
       require(PATH_TO_LMO."/lmo-adminpad.php");
     }
   }

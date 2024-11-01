@@ -17,10 +17,10 @@
   *
   */
 
-if($_SERVER['PHP_SELF'] == '/lmo-showgraph.php')
+if ($_SERVER['PHP_SELF'] == '/lmo-showgraph.php')
   header("Location: /lmo.php");
 
-if(($file != "") && ($kurve == 1)){
+if (($file != "") && ($kurve == 1)){
   $tension = '0.4';
   $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
   $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
@@ -38,9 +38,9 @@ if(($file != "") && ($kurve == 1)){
 <?php
   $tabtype = 0;
   require(PATH_TO_LMO."/lmo-calcgraph.php");
-  for($k = 1; $k < $anzteams + 1; $k ++) {
+  for ($k = 1; $k < $anzteams + 1; $k ++) {
     ${'platz_'.$k} = "";
-    for($l = 0; $l < $anzst; $l ++) {
+    for ($l = 0; $l < $anzst; $l ++) {
       ${'platz_'.$k} = ${'platz_'.$k}.$platz[$k][$l].",";
     }
   }
@@ -53,12 +53,12 @@ if(($file != "") && ($kurve == 1)){
   $pgtext2 = $text[136];
   // Anzahl Spieltage in x-Achse
   $spieltag = array();
-  for($i = 1; $i <= $anzst; $i ++) {
+  for ($i = 1; $i <= $anzst; $i ++) {
     $spieltag[] = $i;
   }
   $xAxis = implode(",", $spieltag);
 
-  for($j = 1; $j < $anzteams + 1; $j ++) {
+  for ($j = 1; $j < $anzteams + 1; $j ++) {
     ${'platz'.$j} = explode(",", ${'platz_'.$j});
     foreach(array_keys(${'platz'.$j}, '0') as $key) {
       unset(${'platz'.$j}[$key]);
@@ -68,12 +68,13 @@ if(($file != "") && ($kurve == 1)){
     $axisColor = "rgba(90, 90, 90, 1)";
     if ($show_stat1 == 0 && $show_stat2 == 0) {
       $flag = 'true';
-      if($j < 3) $flag = 'false';
+      if ($j < 3) $flag = 'false';
     } else if ($j == $show_stat1 || $j == $show_stat2) {
       $flag = 'false';
     } else {
       $flag = 'true';
     }
+    $teams[$j] = str_replace( "'", "´", $teams[$j] ); //Team names with an apostrophe inside destroy the graph curve
     $data .= "{
                               label: '$teams[$j]',
                               fill: false,
