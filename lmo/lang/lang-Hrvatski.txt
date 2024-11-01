@@ -578,6 +578,7 @@
 577=Mjesto
 578=Sudionici UEFA Lige konferencija
 579=Ovdje unesite broj sudionika UEFA Lige konferencija
+580=Kliknite ovdje za informacije o ovoj skripti
 590=Izdana je nova LMO verzija.
 591=Može se preuzeti OVDJE!
 800=Način doigravanja - postavka za domaću igru

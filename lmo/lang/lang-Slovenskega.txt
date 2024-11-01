@@ -578,6 +578,7 @@
 577=Položaj
 578=Udeleženci konferenčne lige UEFA
 579=Tukaj vnesite število udeležencev konferenčne lige UEFA
+580=Kliknite tukaj za informacije o tem skriptu
 590=Izdana je bila nova različica LMO.
 591=Lahko ga prenesete TUKAJ!
 800=Način končnice - nastavitev domače igre

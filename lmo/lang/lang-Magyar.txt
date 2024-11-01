@@ -578,6 +578,7 @@
 577=Pozíció
 578=UEFA Konferencia Liga résztvevői
 579=Ide írja be az UEFA Conference League résztvevőinek számát
+580=Kattintson ide, ha információkat szeretne kapni erről a szkriptről
 590=Az új LMO verzió megjelent.
 591=Innen letölthető!
 800=Playoff mód - otthoni játék beállítása

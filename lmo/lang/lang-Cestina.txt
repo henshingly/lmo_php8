@@ -578,6 +578,7 @@
 577=Místo
 578=Účastníci konferenční ligy UEFA
 579=Sem zadejte počet účastníků konferenční ligy UEFA
+580=Kliknutím sem získáte informace o tomto skriptu
 590=Byla vydána nová verze LMO.
 591=Lze stáhnout ZDE!
 800=Režim Playoff – nastavení domácí hry

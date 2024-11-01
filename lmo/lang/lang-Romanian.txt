@@ -578,6 +578,7 @@
 577=Poziţie
 578=Participanți la UEFA Conference League
 579=Introduceți aici numărul de participanți la UEFA Conference League
+580=Faceți clic aici pentru a obține informații despre acest script
 590=O nouă versiune LMO a fost lansată.
 591=Poate fi descărcat AICI!
 800=Mod playoff - setarea jocului de acasă

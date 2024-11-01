@@ -578,6 +578,7 @@
 577=Posisjon
 578=UEFA Conference League-deltakere
 579=Skriv inn antall deltakere i UEFA Conference League her
+580=Klikk her for å få informasjon om dette skriptet
 590=En ny LMO-versjon har blitt utgitt.
 591=Den kan lastes ned HER!
 800=Sluttspillmodus – Hjemmespillinnstilling
