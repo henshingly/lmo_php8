@@ -295,7 +295,7 @@ if ($eintippspiel==1) {
 
 $infoLink = '<acronym title="Liga Manager Online for PHP 8.x">LMO</acronym> 4 for PHP8 - <a target="_blank" href="https://www.liga-manager-online.de/" title="' . $text[580] . '">' . $text[55] . '</a>';
 
-if (!$template->checkPlaceholderExists('__global__', 'Infolink'))
+if (!array_key_exists('Infolink', $template->blockvariables['__global__']))
 {
   trigger_error("'Infolink' is missing in template'", E_USER_WARNING);
   echo $infoLink; 
