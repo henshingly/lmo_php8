@@ -51,13 +51,11 @@ if ($message != "") {
         $mail->addAddress($dummb[4]);
         if ($mail->send()) {
           $anzemail++;
-          $mail->ClearAllRecipients();
-	  $mail->ClearReplyTos();
         } else {
-          $mail->ErrorInfo();
-          $mail->ClearAllRecipients();
-	  $mail->ClearReplyTos();
+          echo $mail->ErrorInfo;
         }
+        $mail->ClearAllRecipients();
+        $mail->ClearReplyTos();
       }
     }
     echo getMessage($anzemail." ".$text['tipp'][175]);
@@ -172,13 +170,11 @@ if ($message != "") {
             $mail->addAddress($dummb[4]);
             if ($mail->send()) {
               $anzemail++;
-              $mail->ClearAllRecipients();
-	      $mail->ClearReplyTos();
             } else {
-              $mail->ErrorInfo();
-              $mail->ClearAllRecipients();
-    	      $mail->ClearReplyTos();
+              echo $mail->ErrorInfo;
             }
+            $mail->ClearAllRecipients();
+    	      $mail->ClearReplyTos();
           }
         }
       }
@@ -241,13 +237,11 @@ if ($message != "") {
               $mail->addAddress($dummb[4]);
        	      if ($mail->send()) {
                 $anzemail++;
-                $mail->ClearAllRecipients();
-	        $mail->ClearReplyTos();
               } else {
-                $mail->ErrorInfo();
-                $mail->ClearAllRecipients();
-	        $mail->ClearReplyTos();
+                echo $mail->ErrorInfo;
               }
+              $mail->ClearAllRecipients();
+              $mail->ClearReplyTos();
             }
           }
         } // ende if ($dummb[10]!=-1)

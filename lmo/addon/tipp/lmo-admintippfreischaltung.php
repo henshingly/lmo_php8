@@ -30,13 +30,8 @@ $mail->setFrom($aadr);
 $mail->Body = iconv('UTF-8', ' ISO-8859-1', $tipp_mailtext);
 $mail->addAddress($xtipperemail);
 if ($mail->send()) {
-  $mail->ClearAllRecipients();
-  $mail->ClearReplyTos();
   echo getMessage($text['tipp'][78]);
 } else {
-  $mail->ErrorInfo();
-  $mail->ClearAllRecipients();
-  $mail->ClearReplyTos();
-  echo getMessage($text['tipp'][80], TRUE);
+  echo getMessage($text['tipp'][80]  . "Details: {$mail->ErrorInfo}", true);
 }
 ?>

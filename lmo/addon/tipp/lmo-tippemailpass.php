@@ -20,7 +20,6 @@
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 require_once(PATH_TO_LMO."/includes/PHPMailer.php");
-$mail = new PHPMailer(true);
 
 if (isset($xtippername2)) {
   $dumma = array();
@@ -38,18 +37,16 @@ if (isset($xtippername2)) {
       $_SESSION['lmotippername'] = $dummb[0];
       $_SESSION["lmotipperok"] = 0;
       $emailbody = "Hallo ".$dummb[0]."\n\n".$text['tipp'][77]."\n".$text['tipp'][23].": ".$dummb[0]."\n".$text[308].": ".$dummb[1];
+      $mail = new PHPMailer(true);
       $mail->Body = iconv("UTF-8", "ISO-8859-1", $emailbody);
       $mail->addAddress($dummb[4]);
       if ($mail->send()) {
-        $mail->ClearAllRecipients(); 
-        $mail->ClearReplyTos();
         echo $text['tipp'][78]."<br>";
       } else {
-        $mail->ErrorInfo();
-        $mail->ClearAllRecipients(); 
-        $mail->ClearReplyTos();
-        echo $text['tipp'][80]."<br>";
+        echo $text['tipp'][80].". Details: {$mail->ErrorInfo}<br>";
       }
+      $mail->ClearAllRecipients(); 
+      $mail->ClearReplyTos();
       $xtippername2 = "";    
     }
   }

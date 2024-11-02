@@ -68,13 +68,10 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $mail->addAttachment($temp, $dummy[$down-1].".zip");
         if ($mail->send()) {
           echo getMessage($text[348]);
-          $mail->ClearAllRecipients(); 
-          $mail->ClearReplyTos();
         } else {
-          $mail->ErrorInfo();
-          $mail->ClearAllRecipients(); 
-          $mail->ClearReplyTos();
-        }?>
+          echo getMessage($text[550] . "Details: {$mail->ErrorInfo}", true);
+        }
+        ?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
       }
     } elseif ($down==-1) {
@@ -96,13 +93,10 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $mail->addAttachment($temp);
         if ($mail->send()) {
           echo getMessage($text[348]);
-          $mail->ClearAllRecipients(); 
-          $mail->ClearReplyTos();
         } else {
-          $mail->ErrorInfo();
-          $mail->ClearAllRecipients(); 
-          $mail->ClearReplyTos();
-        }?>
+          echo getMessage($text[550] . "Details: {$mail->ErrorInfo}", true);
+        }
+        ?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
       }
     }
