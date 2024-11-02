@@ -45,8 +45,6 @@ if (isset($xtippername2)) {
       } else {
         echo $text['tipp'][80].". Details: {$mail->ErrorInfo}<br>";
       }
-      $mail->ClearAllRecipients(); 
-      $mail->ClearReplyTos();
       $xtippername2 = "";    
     }
   }
