@@ -27,12 +27,7 @@ $mail->setFrom($aadr);
 
 $mail->Body = iconv('UTF-8', ' ISO-8859-1', $tipp_mailtext);
 $mail->addAddress($xtipperemail);
-if ($mail->send()) {
-    $mail->ClearAllRecipients();
-    $mail->ClearReplyTos();
-} else {
-    $mail->ErrorInfo();
-    $mail->ClearAllRecipients();
-    $mail->ClearReplyTos();
+if (!$mail->send()) {
+    echo $mail->ErrorInfo;
 }
 ?>
