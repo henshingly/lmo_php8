@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,8 +16,8 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
+
+
 session_start();
 require(__DIR__."/init.php");
 if (!isset($_SESSION["lmouserok"]))$_SESSION["lmouserok"]==0;
@@ -37,7 +37,7 @@ $madr=isset($_GET['madr'])  ? $_GET['madr']    :'';
 </head>
 <body>
 <div class="lmoMain">
-<?php 
+<?php
 if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1) || ($_SESSION["lmouserok"] == 2))) {
   if (($down != 0) && ($madr != "")) {
     $array = array();
@@ -72,7 +72,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
           echo getMessage($text[550] . "Details: {$mail->ErrorInfo}", true);
         }
         ?>
-  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
+  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php
       }
     } elseif ($down==-1) {
       if (count($dummy)>0) {
@@ -97,7 +97,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
           echo getMessage($text[550] . "Details: {$mail->ErrorInfo}", true);
         }
         ?>
-  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
+  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php
       }
     }
     unlink($temp);
@@ -109,7 +109,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
     <input type="hidden" name="down" value="<?php echo $down?>">
     <input type="submit" value="Senden">
   </form>
-  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php 
+  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php
   }
 }?>
 </body>
