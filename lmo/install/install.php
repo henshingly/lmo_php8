@@ -28,23 +28,23 @@ if (is_readable('includes/FTP.php')) {
     //check for ftp capabilities
     if (!function_exists("ftp_connect")) {
         if (function_exists("fsockopen")) {
-            require_once 'includes/Socket.php';
+            require_once'includes/Socket.php';
         } else {
             //not ftp, no sockets -> manual
             $_REQUEST['man']=1;
         }
     }
-    require_once 'includes/FTP.php';
+    require_once'includes/FTP.php';
 } else {
     if (!function_exists("ftp_connect")) {
         if (function_exists("fsockopen")) {
-            require_once '../includes/Socket.php';
+            require_once'../includes/Socket.php';
         } else {
             //not ftp, no sockets -> manual
             $_REQUEST['man']=1;
         }
     }
-    require_once '../includes/FTP.php';
+    require_once'../includes/FTP.php';
 }
 
 if (!isset($_SESSION['ftpserver'])) {
