@@ -328,7 +328,7 @@
 327=Klicken Sie hier, um Änderungen, die Sie bei diesem User vorgenommen haben, zu übernehmen
 328=Klicken Sie hier, um diesen User zu löschen (Das ist unwiderruflich!)
 329=Speichern
-330=Löschen
+330=Hier sind Ihre angeforderten Ligen.
 331=Neuen Admin hinzufügen
 332=Wollen Sie die folgende Mannschaft\nwirklich vom Spielbetrieb zurückziehen\n(Das läßt sich nicht zurücknehmen)
 333=Mannschaft zurückziehen

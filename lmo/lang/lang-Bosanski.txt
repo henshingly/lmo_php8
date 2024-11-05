@@ -328,7 +328,7 @@
 327=Kliknite ovdje da primijenite promjene koje ste napravili na ovog korisnika
 328=Kliknite ovdje za brisanje ovog korisnika (Nemoguće se vratiti unatrag!)
 329=Pohraniti
-330=Izbriši
+330=Evo liga koje ste tražili.
 331=Dodati novog administratora
 332=Želite li stvarno povući sljedeći tim iz igre?\n(Nemoguće se vratiti unatrag)
 333=Povući momčad

@@ -172,7 +172,7 @@ if ($_SESSION['lmouserok']==2) {
             <td align="center"><acronym title="<?php echo $text[327]?>"><input class="lmo-formular-button" type="submit" value="<?php echo $text[329]?>"></acronym></th><?php
       if ($testshow!=0){?>
             <td align="right">
-              <a href="<?php echo $_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?php echo $show?>" onclick="return confirm('<?php echo $text[499]?>');"><img border="0" width="11" heigth="13" src="<?php echo URL_TO_IMGDIR?>/delete.gif" alt="<?php echo $text[330]?>" title="<?php echo $text[328]?>"></a>
+              <a href="<?php echo $_SERVER['PHP_SELF']?>?action=admin&amp;todo=user&amp;del=<?php echo $show?>" onclick="return confirm('<?php echo $text[499]?>');"><img border="0" width="11" heigth="13" src="<?php echo URL_TO_IMGDIR?>/delete.gif" alt="<?php echo $text[82]?>" title="<?php echo $text[328]?>"></a>
             </td><?php
       }?>
           </tr><?php

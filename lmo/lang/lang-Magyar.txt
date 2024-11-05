@@ -328,7 +328,7 @@
 327=Klikkeljen ide a felhasználó elmentéséhez
 328=Klikkeljen ide a felhasználó törléséhez (Nem visszavonható!)
 329=Ment
-330=Töröl
+330=Itt vannak a ligák, amelyeket kért.
 331=Új admin hozzáadása
 332=Tényleg ki akarja venni a csapatotn a bajnokságból?\n(Nem visszavonható!)
 333=Kivesz egy csapatot

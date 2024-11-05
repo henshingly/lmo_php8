@@ -328,7 +328,7 @@
 327=Opslaan van de wijzigingen van deze gebruiker
 328=Wissen van deze Gebruiker (onomkeerbaar!)
 329=Opslaan
-330=Wissen
+330=Hier zijn de competities waar je om hebt gevraagd.
 331=Nieuwe Admin toevoegen
 332=Weet u zeker dat u het volgende team wilt verwijderen?\n(Dit kan niet ongedaan worden gemaakt)
 333=Team verwijderen

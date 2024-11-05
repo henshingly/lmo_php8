@@ -328,7 +328,7 @@
 327=Klikk her for å bruke endringene du har gjort for denne brukeren
 328=Klikk her for å slette denne brukeren (Det lar seg ikke omgjøre!)
 329=Lagre
-330=Slette
+330=Her er ligaene du har bedt om.
 331=Legge til ny admin
 332=Vil du virkelig slette dennenklubben fra klubblisten?\n(Det lar seg ikke omgjøre)
 333=Slette klubb

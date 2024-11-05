@@ -328,7 +328,7 @@
 327=Haz click aqui para guardar los cambios que hayas realizado con este usuario
 328=Click aqui para borrar este usuario (¡Sin función deshacer!)
 329=Guardar
-330=Borrar
+330=Aquí están las Ligas que has pedido.
 331=Añadir nuevo administrador
 332=¿Realmente quieres borrar este equiponde la liga?\n(¡Imposible deshacer!)
 333=Borrar equipo

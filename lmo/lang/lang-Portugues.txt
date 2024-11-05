@@ -328,7 +328,7 @@
 327=Clique aqui para gravar as alterações que efectou-ou no utilizador
 328=Clique aqui para apagar o utilizador (Não é possível voltar atrás!)
 329=Gravar
-330=Apagar
+330=Aqui estão as ligas que encomendou.
 331=Adicionar novo administrador
 332=Do you really want to withdraw this teamnfrom the league?\n(Não é possível voltar atrás!)
 333=Withdraw team

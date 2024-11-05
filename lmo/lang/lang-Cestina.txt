@@ -328,7 +328,7 @@
 327=Klikněte sem pro použití změn, které jste provedli u tohoto uživatele
 328=Klikněte sem pro smazání tohoto uživatele (Toto je neodvolatelné!)
 329=Uložit
-330=Vymazat
+330=Zde jsou ligy, o které jste požádali.
 331=Připojit nového Admina
 332=Chcete zvolené mužstvonopravdu smazat ze soutěžen?\n(Návrat nebude možný)
 333=Odebrat mužstvo

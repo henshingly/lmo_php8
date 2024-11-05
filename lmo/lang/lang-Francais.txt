@@ -328,7 +328,7 @@
 327=Cliquez ici, pour sauvergarder les changements faits sur l'utilisateur
 328=Cliquer ici, pour supprimer l'utilisateur (suppression irréversible!)
 329=Sauvegarder
-330=Supprimer
+330=Voici les ligues que vous avez demandées.
 331=Créer un nouvel administrateur
 332=Voulez-vous vraiment retirer l'équipe suivantendu calendrier de la saison?\n(suppression irréversible!)
 333=Retirer l'équipe

@@ -328,7 +328,7 @@
 327=Clicca qui per aggiornare le modifiche dei dati dell'utente
 328=Clicca qui per cancellare l'utente (Un ripristino non é possibile!)
 329=Salvare
-330=Cancella
+330=Ecco i campionati che hai richiesto.
 331=Aggiungere un nuovo amministratore
 332=Vuole veramente ritirare la squadrandal campionato? (Un ripristino non é possibile!)
 333=Ritirare la squadra

@@ -328,7 +328,7 @@
 327=Click here to save the changes for this user
 328=Click here to delete the User(this cannot be reversed)
 329=Save
-330=Delete
+330=Here are the Leagues you've asked for.
 331=Add a new Admin
 332=Do you want to nremove the following Team?\n(this cannot be reversed)
 333=Remove Team
@@ -340,7 +340,7 @@
 339=Here you can set the number of Matchdays, and the number of Matches pro Matchday.WARNING: Data could be lost!
 340=Number of Matchdays and Matches
 341=LMO-Admin League Dispatch
-342=Here is the League you've asked for
+342=Here is the League you've asked for.
 343=Webmaster's E-Mail
 344=Enter here the E-Mail adress of the webmaster (or Main Admins). Neccessary for sending Leagues with E-Mail.
 345=Sends a League by E-Mail

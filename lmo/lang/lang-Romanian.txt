@@ -328,7 +328,7 @@
 327=Faceți clic aici pentru a aplica modificările pe care le-ați făcut acestui utilizator
 328=Faceți clic aici pentru a șterge acest utilizator (Acest lucru este irevocabil!)
 329=Trimite
-330=Sterge
+330=Iată ligile pe care le-ați cerut.
 331=Adauga administrator
 332=Chiar doriți să retrageți următoarea echipă din joc?\n(Acest lucru nu poate fi retras)
 333=Retrage echipa

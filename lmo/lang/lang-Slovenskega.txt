@@ -328,7 +328,7 @@
 327=Klikni tukaj za shranitev sprememb tega uporabnika
 328=Klikni tukaj za izbris tega uporabnika (Undo možnosti NI!)
 329=Shrani
-330=Izbriši
+330=Tukaj so lige, ki ste jih zahtevali.
 331=Dodaj novega administratorja
 332=Ali si prepričan, da želiš odstraniti to moštvoniz lige?\n(Undo možnosti NI!)
 333=Odstrani moštvo

@@ -89,7 +89,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $mail->setFrom($aadr);
         $mail->addAddress($madr);
         $mail->Subject = $text[341];
-        $mail->Body = $text[342];
+        $mail->Body = $text[330];
         $mail->addAttachment($temp);
         if ($mail->send()) {
           echo getMessage($text[348]);
