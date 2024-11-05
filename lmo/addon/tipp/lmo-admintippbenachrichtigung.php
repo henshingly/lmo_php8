@@ -22,11 +22,11 @@ $mail = new PHPMailer(true);
 $tipp_mailtext = str_replace(array('\n', '[nick]'), array("\n", $xtippernick), $text['tipp'][303]);
 
 $mail->isMail();
-$mail->Subject = $text['tipp'][13];
+$mail->Subject = iconv('UTF-8', ' ISO-8859-1', $text['tipp'][13]);  //prints special characters in the subject of the email
 $mail->setFrom($aadr);
 
 $mail->Body = iconv('UTF-8', ' ISO-8859-1', $tipp_mailtext);
-$mail->addAddress($xtipperemail);
+$mail->addAddress($aadr);
 if (!$mail->send()) {
     echo $mail->ErrorInfo;
 }
