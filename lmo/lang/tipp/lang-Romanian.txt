@@ -93,7 +93,7 @@
 092=Rezultat
 093=Tendinţă
 094=La jocul de pariuri
-095=Câștigă acasă
+095=LMO Pronosticuri-Admin
 096=A desena
 097=Câștigă departe
 098=Editați | ×
@@ -253,7 +253,7 @@
 252=Meciurile din urmatoarele
 253=Permiteți trimiterea bacșilor după dată
 254=...pentru jocurile din următorii câțiva ani
-255=
+255=Autentificare: [url]
 256=Sări înainte de zile
 257=Derulați înapoi zilele
 258=Toate meciurile din
@@ -293,13 +293,13 @@
 292=Sfatul Joker nu mai poate fi modificat
 293=Trimiteți un e-mail la administrator la înregistrare
 294=lasa sa arate
-295=Bună, Tipper,
+295=Bună, Tipper [nick],
 296=Buletin informativ despre jocuri de pariuri
 297=Buna ziua
-298=Bună ziua [nick], &#13;&#13;Iată informațiile dvs. de înregistrare pentru jocurile de pariuri: &#13;&#13;Porecla: [nick]&#13;Parola: [pass]&#13;&#13;Puteți să vă conectați aici: &#13;[url]&#13;&#13;De asemenea, puteți introduce parola ta acolo se schimbă.&#13;&#13;Distrați-vă!
+298=Bună ziua [nick], \n\nIată informațiile dvs. de înregistrare pentru jocurile de pariuri: \n\nPorecla: [nick]\nParola: [pass]\n\nPuteți să vă conectați aici: \n[url]\n\nDe asemenea, puteți introduce parola ta acolo se schimbă.\n\nDistrați-vă!
 299=Trimite datele de inscriere prin Email
 300=Parola va fi trimisa la adresa de Email
 301=Pericol! Acest lucru dezactivează capacitatea de a trimite sfaturi!
 302=Afișați numai punctele totale
-303=User nou: &#13;&#13;Nume: [nick]
+303=Un nou parior s-a înregistrat pentru jocul de pariuri: \n\nNume: [nick]
 304=Lăsați câmpul necompletat pentru a evita schimbarea parolei

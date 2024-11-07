@@ -90,7 +90,7 @@
 089=Explicação da personagem
 090=GS
 091=Modo de digitação
-092=Resultado
+092=Administrador de Jogo de previsão LMO
 093=Tendência
 094=para o jogo de apostas
 095=Vitória em casa
@@ -253,7 +253,7 @@
 252=Todos os jogos da próxima
 253=Permitir o envio de dicas data a data
 254=...para jogos nos próximos
-255=
+255=Login: [url]
 256=Saltar dias para a frente
 257=Voltar dias
 258=Todos os jogos de
@@ -293,13 +293,13 @@
 292=A dica do Joker já não pode ser alterada
 293=E-mail para o administrador ao registar-se
 294=mostrar
-295=Olá Tipper,
+295=Olá Tipper [nick],
 296=Boletim informativo sobre jogos de previsão
 297=Olá
-298=Olá [nick], &#13;&#13;Aqui estão os seus dados de login para o jogo de apostas: &#13;&#13;Nickname: [nick]&#13;Password: [pass]&#13;&#13;Pode fazer login aqui: &#13;[url] &#13; &#13;Aí também pode alterar a sua palavra-passe. &#13;&#13;Divirta-se!
+298=Olá [nick], \n\nAqui estão os seus dados de login para o jogo de apostas: \n\nNickname: [nick]\nPassword: [pass]\nPode fazer login aqui: \n[url] \n\nAí também pode alterar a sua palavra-passe. \n\nDivirta-se!
 299=Enviar dados de registo por email
 300=A palavra-passe ser-lhe-á enviada por e-mail, certifique-se de que o endereço fornecido é válido
 301=Atenção! Isto desativa a capacidade de enviar dicas!
 302=Mostrar apenas total de pontos
-303=Um novo apostador registou-se no jogo de apostas: &#13;&#13;Alcunha: [nick]
+303=Um novo apostador registou-se no jogo de apostas: \n\nAlcunha: [nick]
 304=Deixe o campo em branco para não alterar a palavra-passe

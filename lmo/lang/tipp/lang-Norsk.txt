@@ -90,7 +90,7 @@
 089=Tegnforklaring
 090=GS
 091=Tipsmodus
-092=Resultat
+092=Administrator for LMO-Tippespill
 093=Tendens
 094=til tippespill
 095=Hjemmesier
@@ -253,7 +253,7 @@
 252=Alle kamper de neste
 253=Tillate tipping etter dato
 254=...for kamper de neste
-255=[ <a href="https://www.hc-forchheim.de" target="_blank" title="Ta en titt på min hjemmeside">HC Forchheim - Handball</a> ]
+255=Logg inn: [url]
 256=dager fremover
 257=dager bakover
 258=Alle kamper fra
@@ -293,13 +293,13 @@
 292=Joker-tips kan ikke forandres
 293=Mail til admin ved registrering
 294=vise
-295=Hei Tipper,
+295=Hei Tipper [nick],
 296=Tippespill-Newsletter
 297=Hei
-298=Hei [nick], &#13;&#13;her er dine login data for tippespillet: &#13;&#13;Nick: [nick]&#13;Passord: [pass]&#13;&#13;Her kan du logge deg inn: &#13;[url]&#13;&#13;Der kan du også endre passord.&#13;&#13;Lykke til!
+298=Hei [nick], \n\nher er dine login data for tippespillet: \n\nNick: [nick]\nPassord: [pass]\n\nHer kan du logge deg inn: \n[url]\n\nDer kan du også endre passord.\n\nLykke til!
 299=Sende registreringsdata pr. email
 300=Passordet blir sendt til deg pr. email, forsikre deg om at den oppgitte adressen er gyldig
 301=ADVARSEL! Dermed deaktiverer du muligheten til å avgi tips!
 302=Vise ny total poengstilling
-303=En ny tpper har registrert seg for tippespillet: &#13;&#13;Nick: [nick]
+303=En ny tpper har registrert seg for tippespillet: \n\nNick: [nick]
 304=La feltet stå tomt for å unngå å endre passordet

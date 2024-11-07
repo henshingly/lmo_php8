@@ -64,7 +64,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td align="right"><?php echo $text['tipp'][91]; ?></td>
             <td align="left">
               <select name="xtippmodus" onChange="moduschange()">
-                <option value="1"<?php if ($tipp_tippmodus==1){echo " selected";}?>><?php echo $text['tipp'][92]?></option>
+                <option value="1"<?php if ($tipp_tippmodus==1){echo " selected";}?>><?php echo $text['tipp'][31]?></option>
                 <option value="0"<?php if ($tipp_tippmodus==0){echo " selected";}?>><?php echo $text['tipp'][93]?></option>
               </select>
             </td>

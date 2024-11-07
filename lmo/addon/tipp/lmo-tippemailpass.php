@@ -18,32 +18,32 @@
   */
 
 
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-require_once(PATH_TO_LMO."/includes/PHPMailer.php");
+require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
+require_once(PATH_TO_LMO . "/includes/PHPMailer.php");
 
 if (isset($xtippername2)) {
   $dumma = array();
-  $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
+  $pswfile = PATH_TO_ADDONDIR . "/tipp/" . $tipp_tippauthtxt;
 
   $dumma = file($pswfile);
   $mail->isMail();
-  $mail->Subject = $text['tipp'][79];
-  $mail->setFrom($aadr);
+  $mail->Subject = iconv('UTF-8', ' ISO-8859-1', $text['tipp'][79] . ' (' . $_SERVER['HTTP_HOST'] . ')');
+  $mail->setFrom($aadr, $text['tipp'][92]);
 
-  for ($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i++) {
+  for ($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i ++) {
     $dummb = explode('|', $dumma[$i]);
     if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != false)) {
       // User gefunden
       $_SESSION['lmotippername'] = $dummb[0];
       $_SESSION["lmotipperok"] = 0;
-      $emailbody = "Hallo ".$dummb[0]."\n\n".$text['tipp'][77]."\n".$text['tipp'][23].": ".$dummb[0]."\n".$text[308].": ".$dummb[1];
+      $emailbody = $text['tipp'][297] . " " . $dummb[0] . "\n\n" . $text['tipp'][77] . "\n\n" . $text['tipp'][23] . ": " . $dummb[0] . "\n" . $text[308] . ": " . $dummb[1] . "\n\n" . str_replace(array('\n', '[url]'), array("\n", $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "?action=tipp&xtippername=" . $dummb[0] . "&xtipperpass=" . $dummb[1]), $text['tipp'][255]);
       $mail = new PHPMailer(true);
       $mail->Body = iconv("UTF-8", "ISO-8859-1", $emailbody);
       $mail->addAddress($dummb[4]);
       if ($mail->send()) {
-        echo $text['tipp'][78]."<br>";
+        echo $text['tipp'][78] . "<br>";
       } else {
-        echo $text['tipp'][80].". Details: {$mail->ErrorInfo}<br>";
+        echo $text['tipp'][80] . ". Details: {$mail->ErrorInfo}<br>";
       }
       $xtippername2 = "";
     }

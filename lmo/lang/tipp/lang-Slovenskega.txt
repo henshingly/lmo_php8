@@ -90,7 +90,7 @@
 089=Razlaga znakov
 090=GS
 091=Nacin vnosa
-092=Rezultat
+092=Administrator Igra napovedi LMO
 093=Nagnjenost
 094=k stavni igri
 095=Domaca zmaga
@@ -253,7 +253,7 @@
 252=Vse igre v naslednjem
 253=Dovoli oddajo nasvetov po datumih
 254=...za igre v naslednjih nekaj
-255=
+255=Prijava: [url]
 256=Preskoci naprej dni
 257=Pojdi nazaj
 258=Vse igre od
@@ -293,13 +293,13 @@
 292=Joker nasveta ni vec mogoce spremeniti
 293=Ob registraciji pošljite e-pošto skrbniku
 294=pokaži
-295=Pozdravljeni prekucnik,
+295=Pozdravljeni prekucnik [nick],
 296=Glasilo igre napovedi
 297=Pozdravljeni
-298=Pozdravljeni [nick], &#13;&#13;Tu so vaši podatki za prijavo v stavno igro: &#13;&#13;Vzdevek: [nick]&#13;Geslo: [pass]&#13;&#13;Lahko se prijavite tukaj: &#13;[url]&#13; &#13;Tam lahko tudi spremenite geslo.&#13;&#13;Zabavajte se!
+298=Pozdravljeni [nick], \n\nTu so vaši podatki za prijavo v stavno igro: \n\nVzdevek: [nick]\nGeslo: [pass]\n\nLahko se prijavite tukaj: \n[url]\n\nTam lahko tudi spremenite geslo.\n\nZabavajte se!
 299=Pošlji registracijske podatke po e-pošti
 300=Geslo vam bo poslano po e-pošti, preverite, ali je navedeni naslov veljaven
 301=Pozor! To onemogoci možnost pošiljanja nasvetov!
 302=Prikaži samo skupno število tock
-303=Nov igralec stav se je registriral za stavno igro: &#13;&#13;Vzdevek: [nick]
+303=Nov igralec stav se je registriral za stavno igro: \n\nVzdevek: [nick]
 304=Pustite polje prazno, ce ne želite spremeniti gesla

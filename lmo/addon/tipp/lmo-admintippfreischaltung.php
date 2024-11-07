@@ -17,15 +17,16 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
+
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 require_once (PATH_TO_LMO . '/includes/PHPMailer.php');
 
 $mail = new PHPMailer(true);
-$tipp_mailtext = str_replace(array('\n', '[nick]', '[pass]', '[url]'), array("\n", $xtippernick, $xtipperpass, "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?action=tipp&xtippername=" . $xtippernick . "&xtipperpass=" . $xtipperpass), $text['tipp'][298]);
+$tipp_mailtext = str_replace(array('\n', '[nick]', '[pass]', '[url]'), array("\n", $xtippernick, $xtipperpass,  $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']  . "?action=tipp&xtippername=" . $xtippernick . "&xtipperpass=" . $xtipperpass), $text['tipp'][298]);
 
 $mail->isMail();
-$mail->Subject = $text['tipp'][77];
-$mail->setFrom($aadr);
+$mail->Subject = iconv('UTF-8', ' ISO-8859-1', $text['tipp'][77] . ' (' . $_SERVER['HTTP_HOST'] . ')');
+$mail->setFrom($aadr, $text['tipp'][92]);
 
 $mail->Body = iconv('UTF-8', ' ISO-8859-1', $tipp_mailtext);
 $mail->addAddress($xtipperemail);

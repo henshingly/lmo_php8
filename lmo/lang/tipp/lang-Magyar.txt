@@ -90,7 +90,7 @@
 089=Karakter magyarázat
 090=GS
 091=Típus mód
-092=Eredmény
+092=LMO Jósító játék adminisztrátora
 093=Tendencia
 094=a fogadásba
 095=Hazai gyozelem
@@ -253,7 +253,7 @@
 252=Minden játék a következoben
 253=A tippek beküldésének engedélyezése dátumonkénti alapon
 254=...a következo néhány játékhoz
-255=
+255=Bejelentkezés: [url]
 256=Napok átugrása
 257=Menj vissza napokat
 258=Minden játék innen
@@ -293,13 +293,13 @@
 292=A Joker tipp már nem módosítható
 293=E-mail az adminnak a regisztrációkor
 294=show
-295=Kedves Billeno!
+295=Szia Tipper [nick]!
 296=Jósító játék hírlevél
 297=Szia
-298=Szia [nick]! &#13;&#13;Itt vannak a bejelentkezési adataid a fogadási játékhoz: &#13;&#13;Becenév: [nick]&#13;Jelszó: [pass]&#13;&#13;Itt tudsz bejelentkezni: &#13;[url]&#13; &#13;Ott a jelszavadat is megváltoztathatod.&#13;&#13;Jó szórakozást!
+298=Szia [nick]! \n\nItt vannak a bejelentkezési adataid a fogadási játékhoz: \n\nBecenév: [nick]\nJelszó: [pass]\n\nItt tudsz bejelentkezni: \n[url]\n\nOtt a jelszavadat is megváltoztathatod.\n\nJó szórakozást!
 299=Regisztrációs adatok küldése e-mailben
 300=A jelszót e-mailben elküldjük Önnek, ellenorizze, hogy a megadott cím érvényes-e
 301=Figyelem! Ez kikapcsolja a tippek küldésének lehetoségét!
 302=Csak az összes pont megjelenítése
-303=Új fogadó regisztrált a fogadási játékra: &#13;&#13;Becenév: [nick]
+303=Új fogadó regisztrált a fogadási játékra: \n\nBecenév: [nick]
 304=Hagyja üresen a mezot, ha nem akar jelszót változtatni

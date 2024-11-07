@@ -90,7 +90,7 @@
 089=Objašnjenje simbola
 090=GS
 091=Način predviđanja
-092=Rezlutat
+092=LMO Admin igra klađenja
 093=Tendencija
 094=na igru ​​klađenja
 095=Domaća pobjeda
@@ -253,7 +253,7 @@
 252=Sve utakmice u sljedećem
 253=Dopusti predviđanja po datumu
 254=...za utakmice u sljedećem
-255=
+255=Prijava: [url]
 256=Sljedeći dan
 257=Dan prije
 258=Sve utakmice iz
@@ -293,13 +293,13 @@
 292=Predviđanje Jokera nije dopušteno mijenjati
 293=Pošaljite e-mail administratoru prilikom registracije
 294=pokazati
-295=Pozdrav igraču,
+295=Pozdrav igraču [nick],
 296=Bilten kladioničarskih igara
 297=Zdravo (bok)
-298=Pozdrav [nick], &#13;&#13;novdje su tvoji detalji pristupa igri klađenja: &#13;&#13;nadimak: [nick]&#13;Lozinka: [pass]&#13;&#13;Možeš se prijaviti ovdje: &#13;[url]&#13;&#13;Tamo također možeš promijeniti svoju lozinku.&#13;&#13;Zabavite se!
+298=Pozdrav [nick], \n\nnovdje su tvoji detalji pristupa igri klađenja: \n\nnadimak: [nick]\nLozinka: [pass]\n\nMožeš se prijaviti ovdje: \n[url]\n\nTamo također možeš promijeniti svoju lozinku.\n\nZabavite se!
 299=Podatke o registraciji pošaljite e-poštom
 300=Lozinka će vam biti poslana putem e-pošte, provjerite je li navedena adresa važeća
 301=Pažnja! Time se deaktivira mogućnost predviđanja!
 302=Prikaži samo ukupne bodove
-303=Novi kladilac se registrirao za igru ​​klađenja: &#13;&#13;Nadimak: [nick]
+303=Novi kladilac se registrirao za igru ​​klađenja: \n\nNadimak: [nick]
 304=Ostavite polje prazno da ne biste mijenjali lozinku

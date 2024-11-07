@@ -16,14 +16,15 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
+
 require_once (PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 require_once (PATH_TO_LMO . '/includes/PHPMailer.php');
 $mail = new PHPMailer(true);
 $tipp_mailtext = str_replace(array('\n', '[nick]'), array("\n", $xtippernick), $text['tipp'][303]);
 
 $mail->isMail();
-$mail->Subject = iconv('UTF-8', ' ISO-8859-1', $text['tipp'][13]);  //prints special characters in the subject of the email
-$mail->setFrom($aadr);
+$mail->Subject = iconv('UTF-8', ' ISO-8859-1', $text['tipp'][13] . ' (' . $_SERVER['HTTP_HOST'] . ')');
+$mail->setFrom($aadr, $text['tipp'][92]);
 
 $mail->Body = iconv('UTF-8', ' ISO-8859-1', $tipp_mailtext);
 $mail->addAddress($aadr);

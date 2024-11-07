@@ -90,7 +90,7 @@
 089=Spiegazione del carattere
 090=GS
 091=Modalità digitazione
-092=Risultato
+092=Amministrazione del LMO-Gioco di pronostico
 093=Tendenza
 094=al gioco delle scommesse
 095=Vittoria casalinga
@@ -253,7 +253,7 @@
 252=Tutti i giochi nel prossimo
 253=Consenti l'invio di suggerimenti giorno per giorno
 254=...per i giochi nei prossimi
-255=
+255=Accesso: [URL]
 256=Salta i giorni successivi
 257=Torna indietro di giorni
 258=Tutti i giochi da
@@ -293,13 +293,13 @@
 292=Il suggerimento del jolly non può più essere modificato
 293=E-mail all'amministratore al momento della registrazione
 294=mostra
-295=Ciao ribaltabile,
+295=Ciao ribaltabile [nick],
 296=Newsletter sui giochi di pronostico
 297=Ciao
-298=Ciao [nick], &#13;&#13;Ecco i tuoi dati di accesso per il gioco delle scommesse: &#13;&#13;Nickname: [nick]&#13;Password: [pass]&#13;&#13;Puoi accedere qui: &#13;[url]&#13; &#13;Lì puoi anche cambiare la tua password.&#13;&#13;Buon divertimento!
+298=Ciao [nick], \n\nEcco i tuoi dati di accesso per il gioco delle scommesse: \n\nNickname: [nick]\nPassword: [pass]\n\nPuoi accedere qui: \n[url]\n\nLì puoi anche cambiare la tua password.\n\nBuon divertimento!
 299=Invia i dati di registrazione via email
 300=La password ti verrà inviata via email, assicurati che l'indirizzo fornito sia valido
 301=Attenzione! Ciò disattiva la possibilità di inviare suggerimenti!
 302=Mostra solo i punti totali
-303=Un nuovo scommettitore si è registrato al gioco delle scommesse: &#13;&#13;Nickname: [nick]
+303=Un nuovo scommettitore si è registrato al gioco delle scommesse: \n\nNickname: [nick]
 304=Lascia il campo vuoto per non modificare la password

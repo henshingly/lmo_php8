@@ -90,7 +90,7 @@
 089=Legend
 090=GS
 091=Prediction Mode
-092=Results
+092=LMO Predictions game Admin
 093=Tendence
 094=to Prediction Game
 095=Home Win
@@ -253,7 +253,7 @@
 252=All Matches in the next
 253=Allow Predictions by Date
 254=...for Matches in the next
-255=
+255=Login: [url]
 256=Next Day
 257=Day Before
 258=All Matches from
@@ -293,13 +293,13 @@
 292=Joker-Prediction is not allowed to be changed
 293=Mail to Admin by Registration
 294=Show
-295=Hello Player,
+295=Hello Player [nick],
 296=Prediction Game Newsletter
 297=Hello
-298=Hello [nick], &#13;nHere is your Registration information for the Prediction Game: &#13;&#13;Nickname: [nick]&#13;Password: [pass]&#13;&#13;You can Log In here: &#13;[url]&#13;&#13;You can also change your Password there.&#13;&#13;Have Fun!
+298=Hello [nick], \nHere is your Registration information for the Prediction Game: \n\nNickname: [nick]\nPassword: [pass]\n\nYou can Log In here: \n[url]\n\nYou can also change your Password there.\n\nHave Fun!
 299=Send Registration Information via E-Mail
 300=The Password will be sent to you by E-Mail, make sure the entered adress is correct
 301=Attention! This deactivate the Possibility of making Predictions!
 302=Show Only Total Point Standings
-303=A New player has Registered for the Prediction Game: &#13;&#13;Nickname: [nick]
+303=A New player has Registered for the Prediction Game: \n\nNickname: [nick]
 304=Leave the field blank to avoid changing the password
