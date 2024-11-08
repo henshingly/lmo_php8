@@ -62,7 +62,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $mail = new PHPMailer(true);
         $mail->isMail();
         $mail->CharSet = "UTF-8";
-        $mail->setFrom($aadr);
+        $mail->setFrom($aadr, "LMO Admin");
         $mail->addAddress($madr);
         $mail->Subject = $text[341];
         $mail->Body = $text[342];
@@ -88,7 +88,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $mail = new PHPMailer(true);
         $mail->isMail();
         $mail->CharSet = "UTF-8";
-        $mail->setFrom($aadr);
+        $mail->setFrom($aadr, "LMO Admin");
         $mail->addAddress($madr);
         $mail->Subject = $text[341];
         $mail->Body = $text[330];
