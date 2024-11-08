@@ -26,7 +26,7 @@ $tipp_mailtext = str_replace(array('\n', '[nick]', '[pass]', '[url]'), array("\n
 
 $mail->isMail();
 $mail->CharSet = "UTF-8";
-$mail->Subject $text['tipp'][77] . ' (' . $_SERVER['HTTP_HOST'] . ')';
+$mail->Subject = $text['tipp'][77] . " (" . $_SERVER["HTTP_HOST"] . ")";
 $mail->setFrom($aadr, $text['tipp'][92]);
 
 $mail->Body = $tipp_mailtext;

@@ -30,7 +30,7 @@ if ($message != "") {
 
   $mail->isMail();
   $mail->CharSet = "UTF-8";
-  $mail->Subject = $betreff . ' (' . $_SERVER['HTTP_HOST'] . ')';
+  $mail->Subject = $betreff . " (" . $_SERVER["HTTP_HOST"] . ")";
   $mail->setFrom($aadr, $text['tipp'][92]);
   $anzemail = 0;
   $anztipper = count($dumma);
@@ -47,7 +47,7 @@ if ($message != "") {
       if ($dummb[9] != -1 && $dummb[4] != "") {
         $textmessage = $message;
         $textmessage = str_replace(array("[nick]", "[pass]", "[name]"),array($dummb[0], $dummb[1], $dummb[3]), $textmessage);
-        $mail->Body $textmessage;
+        $mail->Body = $textmessage;
         $mail->addAddress($dummb[4]);
         if ($mail->send()) {
           $anzemail ++;
@@ -166,7 +166,7 @@ if ($message != "") {
             $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
             $textmessage = str_replace("[name]", $dummb[3], $textmessage);
             $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-            $mail->Body  = $textmessage;
+            $mail->Body = $textmessage;
             $mail->addAddress($dummb[4]);
             if ($mail->send()) {
               $anzemail ++;
@@ -233,7 +233,7 @@ if ($message != "") {
               $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
               $textmessage = str_replace("[name]", $dummb[3], $textmessage);
               $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-              $mail->Body  = $textmessage;
+              $mail->Body = $textmessage;
               $mail->addAddress($dummb[4]);
        	      if ($mail->send()) {
                 $anzemail++;

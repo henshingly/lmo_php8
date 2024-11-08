@@ -28,7 +28,7 @@ if (isset($xtippername2)) {
   $dumma = file($pswfile);
   $mail->isMail();
   $mail->CharSet = "UTF-8";
-  $mail->Subject $text['tipp'][79] . ' (' . $_SERVER['HTTP_HOST'] . ')');
+  $mail->Subject = $text['tipp'][79] . " (" . $_SERVER["HTTP_HOST"] . ")";
   $mail->setFrom($aadr, $text['tipp'][92]);
 
   for ($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i ++) {
