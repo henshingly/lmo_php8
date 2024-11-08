@@ -27,7 +27,8 @@ if (isset($xtippername2)) {
 
   $dumma = file($pswfile);
   $mail->isMail();
-  $mail->Subject = iconv('UTF-8', ' ISO-8859-1', $text['tipp'][79] . ' (' . $_SERVER['HTTP_HOST'] . ')');
+  $mail->CharSet = "UTF-8";
+  $mail->Subject $text['tipp'][79] . ' (' . $_SERVER['HTTP_HOST'] . ')');
   $mail->setFrom($aadr, $text['tipp'][92]);
 
   for ($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i ++) {
@@ -38,12 +39,12 @@ if (isset($xtippername2)) {
       $_SESSION["lmotipperok"] = 0;
       $emailbody = $text['tipp'][297] . " " . $dummb[0] . "\n\n" . $text['tipp'][77] . "\n\n" . $text['tipp'][23] . ": " . $dummb[0] . "\n" . $text[308] . ": " . $dummb[1] . "\n\n" . str_replace(array('\n', '[url]'), array("\n", $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "?action=tipp&xtippername=" . $dummb[0] . "&xtipperpass=" . $dummb[1]), $text['tipp'][255]);
       $mail = new PHPMailer(true);
-      $mail->Body = iconv("UTF-8", "ISO-8859-1", $emailbody);
+      $mail->Body = $emailbody;
       $mail->addAddress($dummb[4]);
       if ($mail->send()) {
         echo $text['tipp'][78] . "<br>";
       } else {
-        echo $text['tipp'][80] . ". Details: {$mail->ErrorInfo}<br>";
+        echo $text['tipp'][80] . " Details: {$mail->ErrorInfo}<br>";
       }
       $xtippername2 = "";
     }

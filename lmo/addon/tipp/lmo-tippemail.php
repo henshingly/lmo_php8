@@ -17,18 +17,19 @@
   *
   */
 
-require_once(PATH_TO_LMO."/lmo-admintest.php");
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
-require_once(PATH_TO_LMO."/includes/PHPMailer.php");
+require_once(PATH_TO_LMO . "/lmo-admintest.php");
+require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tippaenderbar.php");
+require_once(PATH_TO_LMO . "/includes/PHPMailer.php");
 $mail = new PHPMailer(true);
 
 if ($message != "") {
   $dumma = array();
-  $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
+  $pswfile = PATH_TO_ADDONDIR . "/tipp/" . $tipp_tippauthtxt;
 
   $dumma = file($pswfile);
 
   $mail->isMail();
+  $mail->CharSet = "UTF-8";
   $mail->Subject = $betreff . ' (' . $_SERVER['HTTP_HOST'] . ')';
   $mail->setFrom($aadr, $text['tipp'][92]);
   $anzemail = 0;
@@ -46,10 +47,10 @@ if ($message != "") {
       if ($dummb[9] != -1 && $dummb[4] != "") {
         $textmessage = $message;
         $textmessage = str_replace(array("[nick]", "[pass]", "[name]"),array($dummb[0], $dummb[1], $dummb[3]), $textmessage);
-        $mail->Body  = iconv("UTF-8", "ISO-8859-1", $textmessage);
+        $mail->Body $textmessage;
         $mail->addAddress($dummb[4]);
         if ($mail->send()) {
-          $anzemail++;
+          $anzemail ++;
         } else {
           echo $mail->ErrorInfo;
         }
@@ -57,9 +58,9 @@ if ($message != "") {
         $mail->ClearReplyTos();
       }
     }
-    echo getMessage($anzemail." ".$text['tipp'][175]);
+    echo getMessage($anzemail . " " . $text['tipp'][175]);
   } elseif ($emailart == 1) {
-    $tipp_textreminder1 = str_replace(array("\r\n","\n","\r"), array("&#10;","&#10;","&#10;") , $message);
+    $tipp_textreminder1 = str_replace(array("\r\n", "\n", "\r"), array("&#10;", "&#10;", "&#10;") , $message);
     require(PATH_TO_LMO . "/lmo-savecfg.php");
     $now = strtotime("now");
     $then = strtotime("+" . $tage . " day");
@@ -165,10 +166,10 @@ if ($message != "") {
             $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
             $textmessage = str_replace("[name]", $dummb[3], $textmessage);
             $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-            $mail->Body  = iconv("UTF-8", "ISO-8859-1", $textmessage);
+            $mail->Body  = $textmessage;
             $mail->addAddress($dummb[4]);
             if ($mail->send()) {
-              $anzemail++;
+              $anzemail ++;
             } else {
               echo $mail->ErrorInfo;
             }
@@ -194,7 +195,7 @@ if ($message != "") {
           if (file_exists($tippfile)) {
             if ($st > 0) {
               require(PATH_TO_ADDONDIR . "/tipp/lmo-tippopenfile.php");
-              $st0 = $st-1;
+              $st0 = $st -1;
               $anzst1 = $st;
             } elseif ($st == 0) {
               require(PATH_TO_ADDONDIR . "/tipp/lmo-tippopenfileall.php");
@@ -232,7 +233,7 @@ if ($message != "") {
               $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
               $textmessage = str_replace("[name]", $dummb[3], $textmessage);
               $textmessage = str_replace("[spiele]", $spiele, $textmessage);
-              $mail->Body  = iconv("UTF-8", "ISO-8859-1", $textmessage);
+              $mail->Body  = $textmessage;
               $mail->addAddress($dummb[4]);
        	      if ($mail->send()) {
                 $anzemail++;
@@ -256,7 +257,7 @@ if ($message != "") {
     $textmessage = str_replace("[nick]", $dummb[0], $textmessage);
     $textmessage = str_replace("[pass]", $dummb[1], $textmessage);
     $textmessage = str_replace("[name]", $dummb[3], $textmessage);
-    $mail->Body = iconv("UTF-8", "ISO-8859-1", $textmessage);
+    $mail->Body = $textmessage;
     $mail->addAddress($dummb[4]);
     if ($mail->send()) {
       $anzemail++;

@@ -23,11 +23,12 @@ $mail = new PHPMailer(true);
 $tipp_mailtext = str_replace(array('\n', '[nick]'), array("\n", $xtippernick), $text['tipp'][303]);
 
 $mail->isMail();
-$mail->Subject = iconv('UTF-8', ' ISO-8859-1', $text['tipp'][13] . ' (' . $_SERVER['HTTP_HOST'] . ')');
+$mail->CharSet = "UTF-8";
+$mail->Subject = $text['tipp'][13] . ' (' . $_SERVER['HTTP_HOST'] . ')';
 $mail->setFrom($aadr, $text['tipp'][92]);
 
-$mail->Body = iconv('UTF-8', ' ISO-8859-1', $tipp_mailtext);
-$mail->addAddress($aadr);
+$mail->Body = $tipp_mailtext;
+$mail->addAddress($aadr, $text['tipp'][92]);
 if (!$mail->send()) {
     echo $mail->ErrorInfo;
 }
