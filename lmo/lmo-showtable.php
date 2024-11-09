@@ -27,10 +27,10 @@ $breite = 11;
 if ($minus == 2) {
   $breite = $breite+2;
 }
-if ($tabonres==2) {
-  $gesamtbreite=3*$breite+11;
+if ($tabonres == 2) {
+  $gesamtbreite = 3 * $breite + 11;
 } else {
-  $gesamtbreite=$breite+11;
+  $gesamtbreite = $breite + 11;
 }
 ?>
 
@@ -75,7 +75,7 @@ if ($tabpkt==0) {?>
     <th <?php echo $dummy ?>><?php echo $text[37]; ?></th><?php
 }?>
     <th style="width:2px;">&nbsp;</th>
-    <th colspan="3" align="center"><?php echo $text[38]; ?></th>
+    <th style="text-align:center" colspan="3"><?php echo $text[38]; ?></th>
     <th align="right"><?php echo $text[39]; ?></th><?php
 if ($tabpkt==1) {?>
     <th style="width:2px;">&nbsp;</th>

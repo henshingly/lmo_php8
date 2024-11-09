@@ -71,7 +71,7 @@ if ($lmtype == 0 && $st > 0) {
   </style>
 </head>
 <body>
-  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
+  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script><center>
 
   <h1><?php echo $titel?></h1><?php
     $z = array_filter($teama[$st - 1], "filterZero");
@@ -234,7 +234,7 @@ if ($lmtype == 0 && $st > 0) {
           for ($j = 1; $j < $anzteams + 1; $j++) {
             if (!in_array($j, $spielfreicc)) {
               if ($i == 1) {?>
-           <p><small><?php echo $text[4004]?>: <?php
+  <p><small><?php echo $text[4004]?>: <?php
               }
               echo $teams[$j]?>&nbsp;&nbsp;<?php
               $i++;

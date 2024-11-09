@@ -354,7 +354,7 @@ if ($file != "") {
         <input type="hidden" name="st" value="<?php echo $st; ?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <th class="nobr" align="left" colspan="<?php echo $breite-10; ?>"><?php
+            <th class="nobr" style="text-align:left" colspan="<?php echo $breite-10; ?>"><?php
   echo $st.". ".$text[2];
   if ($datum1[$st-1] != "") {
     $datum = explode('.', $datum1[$st-1]);
@@ -374,7 +374,7 @@ if ($file != "") {
   }?>
             </th><?php
   if ($goalfaktor!=1) {?>
-            <th class="nobr" colspan="<?php echo $breite-13; ?>"><?php if ($goalfaktor!=1) {echo "(".$text[553+log10($goalfaktor)].")";}?></th><?php
+            <th style="text-align:center" class="nobr" colspan="<?php echo $breite-13; ?>"><?php if ($goalfaktor!=1) {echo "(".$text[553+log10($goalfaktor)].")";}?></th><?php
   } else {?>
             <th colspan="<?php echo $breite-13; ?>">&nbsp;</th><?php
   }
@@ -384,7 +384,7 @@ if ($file != "") {
             <th style="text-align:center" class="nobr"><acronym title="<?php echo $text[112] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[218]; ?>"></acronym></th>
             <th style="text-align:center" class="nobr"><acronym title="<?php echo $text[263] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[262]; ?>"></acronym></th><?php
   if ($_SESSION['lmouserok']==2 && $ftest0==1){ ?>
-            <th class="nobr"><acronym title="<?php echo $text['tipp'][57] ?>"><?php echo $text['tipp'][57]; ?></acronym></th><?php
+            <th style="text-align:center" class="nobr"><acronym title="<?php echo $text['tipp'][57] ?>"><?php echo $text['tipp'][57]; ?></acronym></th><?php
   }?>
           </tr><?php
   if ($lmtype != 0) {
