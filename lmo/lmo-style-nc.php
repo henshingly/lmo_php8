@@ -328,21 +328,5 @@ th.bottom {
 .middle {
   vertical-align: middle;
 }
-
-th.bottom {
-  vertical-align: bottom;
-}
-
-.baseline {
-  vertical-align: baseline;
-}
-
-.top {
-  vertical-align: top;
-}
-
-.middle {
-  vertical-align: middle;
-}
 <?php 
 @include(PATH_TO_TEMPLATEDIR."/style.css");?>
