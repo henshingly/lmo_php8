@@ -60,7 +60,7 @@ if ($lmtype == 0 && $st > 0) {
   <style type="text/css">
     body {background:#fff; color:#000; font: 10pt sans-serif;}
     caption, p, h1 {margin: 3pt auto; text-align:center;}
-    table {border:1pt solid #000;margin: 2pt auto;}
+    table {border:1pt solid #000; border-radius:6px; -moz-border-radius:6px; -webkit-border-radius:6px; margin: 2pt auto;}
     td {padding: 0;white-space:nowrap;}
     th {border-bottom: 1px solid #000;}
     h1 {font:14pt bolder;}
@@ -234,7 +234,7 @@ if ($lmtype == 0 && $st > 0) {
           for ($j = 1; $j < $anzteams + 1; $j++) {
             if (!in_array($j, $spielfreicc)) {
               if ($i == 1) {?>
-  <p><small><?php echo $text[4004]?>: <?php
+           <p><small><?php echo $text[4004]?>: <?php
               }
               echo $teams[$j]?>&nbsp;&nbsp;<?php
               $i++;

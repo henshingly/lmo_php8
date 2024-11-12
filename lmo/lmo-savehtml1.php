@@ -57,8 +57,8 @@ if ($lmtype == 0) {
     body {background:#fff; color:#000; font: 10pt sans-serif;}
     caption, p, h1 {margin: 3pt auto; text-align:center;}
     table {margin:auto; max-width:200mm;}
-    #tabelle{border:1pt solid #000;}
-    table table {border:1pt solid #000; margin:20pt 0 2pt; width:100%;}
+    #tabelle{border:1pt solid #000; border-radius:6px; -moz-border-radius:6px; -webkit-border-radius:6px; margin: 2pt auto;}
+    table table {border:1pt solid #000; margin:20pt 0 2pt; border-radius:6px; -moz-border-radius:6px; -webkit-border-radius:6px; margin: 2pt auto; width:100%;}
     td {padding: 0; white-space:nowrap;}
     th {border-bottom: 1px solid #000;}
     h1 {font:14pt bolder;}

@@ -267,7 +267,7 @@ if ($file!="") {
   if ($spez==1){?>
             <th colspan="2">&nbsp;</th><?php
   }?>
-            <th class="nobr" colspan="2" align="right"><?php echo $text[37]; /* PP */?></th>
+            <th class="nobr" colspan="2" align="right"><?php echo $text[37]; ?></th>
             <th>&nbsp;</th>
           </tr><?php
   if ($lmtype!=0) {
