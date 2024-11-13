@@ -9,7 +9,7 @@
   <FilesMatch "\.(txt|aus|tip|ein|stat|cfg|l98|csv)$">
     deny from all
   </FilesMatch>
-  <Files gpl.txt>
+  <Files license.txt>
     allow from all
   </Files>
 
