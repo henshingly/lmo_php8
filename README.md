@@ -4,6 +4,7 @@
 [![download-badge](https://img.shields.io/github/downloads/henshingly/lmo_php8/total.svg?style=flat-square "Download status")](https://github.com/henshingly/lmo_php8/releases/latest "Download status") 
 [![discussion](https://img.shields.io/github/discussions/henshingly/lmo_php8)](https://github.com/henshingly/lmo_php8/discussions) 
 [![issues](https://img.shields.io/github/issues/henshingly/lmo_php8)](https://github.com/henshingly/lmo_php8/issues) 
+[![Message](https://img.shields.io/badge/CHANGELOG-blue)](https://github.com/henshingly/LMO_PHP8/blob/master/changelog.md) 
 [![Donate](https://img.shields.io/badge/-Buy%20me%20a%20coffee-brown.svg)](https://paypal.me/LMOforum)
 # (ENGLISH) LMO with PHP8
 Together with others, I want to ensure that Liga Manager Online runs on PHP 8.
