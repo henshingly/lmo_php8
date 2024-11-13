@@ -66,7 +66,7 @@ if ($action=="admin"){
       <p><?php echo $text[54]."<br>Copyright ".$text[55]; ?></p>
       <p>LigaManager Online comes with ABSOLUTELY NO WARRANTY.</p>
       <p> This is free software, and you are welcome to redistribute it under certain conditions.</p>
-      <p>Read <a href="<?php echo URL_TO_LMO?>/gpl.txt" target="_blank" title="GPL - GNU General Public License">this</a> for details.</p>
+      <p>Read <a href="<?php echo URL_TO_LMO?>/license.txt" target="_blank" title="GPL - GNU General Public License">this</a> for details.</p>
     </td>
   </tr>
 </table><?php 
