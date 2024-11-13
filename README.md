@@ -1,9 +1,10 @@
-[![LMO für PHP 8](https://github.com/henshingly/LMO_PHP8/blob/master/lmo/help/media/logo.svg)](https://www.vest-sport.de/forum)
-
-[![GitHub release](https://img.shields.io/github/release/henshingly/LMO_PHP8?include_prereleases=&sort=semver&color=blue)](https://github.com/henshingly/LMO_PHP8/releases/)
-[![download-badge](https://img.shields.io/github/downloads/henshingly/LMO_PHP8/total.svg?style=flat-square "Download status")](https://github.com/henshingly/LMO_PHP8/releases/latest "Download status")
+[![LMO für PHP 8](https://github.com/henshingly/lmo_php8/blob/master/lmo/help/media/logo.svg)](https://www.vest-sport.de/forum)  
+[![GitHub release](https://img.shields.io/github/release/henshingly/lmo_php8?include_prereleases=&sort=semver&color=blue)](https://github.com/henshingly/lmo_php8/releases/) 
+[![commits](https://img.shields.io/github/commits-since/henshingly/lmo_php8/latest)](https://github.com/henshingly/lmo_php8/commits/main/) 
+[![download-badge](https://img.shields.io/github/downloads/henshingly/lmo_php8/total.svg?style=flat-square "Download status")](https://github.com/henshingly/lmo_php8/releases/latest "Download status") 
+[![discussion](https://img.shields.io/github/discussions/henshingly/lmo_php8)](https://github.com/henshingly/lmo_php8/discussions) 
+[![issues](https://img.shields.io/github/issues/henshingly/lmo_php8)](https://github.com/henshingly/lmo_php8/issues) 
 [![Donate](https://img.shields.io/badge/-Buy%20me%20a%20coffee-brown.svg)](https://paypal.me/LMOforum)
-[![Message](https://img.shields.io/badge/CHANGELOG-blue)](https://github.com/henshingly/LMO_PHP8/blob/master/changelog.md)
 # (ENGLISH) LMO with PHP8
 Together with others, I want to ensure that Liga Manager Online runs on PHP 8.
 However, the project page is still <a target="_blank" href="https://www.liga-manager-online.de/homepage/">https://www.liga-manager-online.de/homepage /</a>
