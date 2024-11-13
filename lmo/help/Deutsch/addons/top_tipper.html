@@ -49,17 +49,14 @@
     </div>
     <div id="content">
       <a name="top" id="top"></a>
-      <h1>TopTipper</h1><img src="../../media/toptipper.png" alt="TopTipper-Ansicht" align="right">
-      <ol>
+      <h1>TopTipper</h1>
+      <ol type="1">
         <li><a href="#system">Systemvoraussetzung</a></li>
-
-
-
         <li><a href="#erklaerung">Zur Erklärung der Dateien</a></li>
         <li><a href="#download">Download</a></li>
-      </ol>
+      </ol><a name="system"></a> <img src="../../media/toptipper.png" alt="TopTipper-Ansicht" align="right">
       <p>Das Addon TopTipper gibt Ihnen eine Anzeige des Tabellenstandes im Tippspiel.
-      <h3><a name="system" id="system">Systemvoraussetzung</a></h3>
+      <h3><a name="toptipper" id="toptipper">Systemvoraussetzung</a></h3>
       <ul>
         <li>Lauffähiger LMO 4 ab Beta 3 mit Tippspiel<br>
       </ul><a href="#top">[nach oben]</a>
@@ -117,13 +114,11 @@
         <dd>befindet sich direkt im Root_Verzeichniss Ihres LMO's.</dd>
         <dd>Dient zum Einbinden des ganzen Scriptes (Inhalt anpassen)</dd><br><br>
         <dd>Beispiel:</dd>
-
-
-        <dd>&lt;?php</dd>
-        <dd>$multi="kal";&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>// in diesem Fall wird die von euch angepasste Datei <var>kal.tip</var> eingebunden.</strong></dd>
-        <dd>require(dirname(__FILE__).'/init.php');</dd>
-        <dd>include(PATH_TO_ADDONDIR."/tipp/toptipper.php");</dd></dd>
-        <dd>?&gt;</dd>
+        <p><code>&lt;?php<br>
+        $multi="kal";  // Die von euch angepasste Datei kal.tip wird eingebunden.<br>
+        require(dirname(__FILE__) . '/init.php');<br>
+        include(PATH_TO_ADDONDIR . "/tipp/toptipper.php");<br>
+        ?&gt;</code></p>
         </dl>
       </ul><a href="#top">[nach oben]</a>
       <h3><a name="download" id="download">Download</a></h3>
