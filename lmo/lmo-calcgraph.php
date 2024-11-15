@@ -38,12 +38,12 @@ if ($file!="") {
     $platz[$i] = array_pad($array,$anzst+1,"");
   }
   for ($jyz=0; $jyz<$anzst; $jyz++) {
-    $sttest=false;
+    $sttest=FALSE;
     $endtab=$jyz+1;
     for ($a=1; $a<=$anzteams; $a++) {
       for ($i=0; $i<$anzsp; $i++) {
         if (($goala[$jyz][$i]!="_") && ($goalb[$jyz][$i]!="_") && ((($tabtype==0) && (($a==$teama[$jyz][$i]) || ($a==$teamb[$jyz][$i]))) || (($tabtype==1) && ($a==$teama[$jyz][$i])) || (($tabtype==2) && ($a==$teamb[$jyz][$i])))) {
-          $sttest=true;
+          $sttest=TRUE;
           $p0s=$pns;
           $p0u=$pnu;
           $p0n=$pnn;
@@ -69,7 +69,7 @@ if ($file!="") {
               if ($minus==2) {
                 $negativ[$a]=$negativ[$a]+$p0n;
               }
-            } else if ($msieg[$jyz][$i]==2) {
+            } elseif ($msieg[$jyz][$i]==2) {
               $nieder[$a]=$nieder[$a]+1;
               $punkte[$a]=$punkte[$a]+$p0n;
               if ($minus==2) {
@@ -82,13 +82,13 @@ if ($file!="") {
                 if ($minus==2) {
                   $negativ[$a]=$negativ[$a]+$p0n;
                 }
-              } else if ($goala[$jyz][$i]<$goalb[$jyz][$i]) {
+              } elseif ($goala[$jyz][$i]<$goalb[$jyz][$i]) {
                 $nieder[$a]=$nieder[$a]+1;
                 $punkte[$a]=$punkte[$a]+$p0n;
                 if ($minus==2) {
                   $negativ[$a]=$negativ[$a]+$p0s;
                 }
-              } else if ($goala[$jyz][$i]==$goalb[$jyz][$i]) {
+              } elseif ($goala[$jyz][$i]==$goalb[$jyz][$i]) {
                 $unent[$a]=$unent[$a]+1;
                 $punkte[$a]=$punkte[$a]+$p0u;
                 if ($minus==2) {
@@ -106,26 +106,26 @@ if ($file!="") {
               if ($minus==2) {
                 $negativ[$a]=$negativ[$a]+$p0n;
               }
-            } else if ($msieg[$jyz][$i]==1) {
+            } elseif ($msieg[$jyz][$i]==1) {
               $nieder[$a]=$nieder[$a]+1;
               $punkte[$a]=$punkte[$a]+$p0n;
               if ($minus==2) {
                 $negativ[$a]=$negativ[$a]+$p0s;
               }
-            } else if ($msieg[$jyz][$i]==0) {
+            } elseif ($msieg[$jyz][$i]==0) {
               if ($goala[$jyz][$i]<$goalb[$jyz][$i]) {
                 $siege[$a]=$siege[$a]+1;
                 $punkte[$a]=$punkte[$a]+$p0s;
                 if ($minus==2) {
                   $negativ[$a]=$negativ[$a]+$p0n;
                 }
-              } else if ($goala[$jyz][$i]>$goalb[$jyz][$i]) {
+              } elseif ($goala[$jyz][$i]>$goalb[$jyz][$i]) {
                 $nieder[$a]=$nieder[$a]+1;
                 $punkte[$a]=$punkte[$a]+$p0n;
                 if ($minus==2) {
                   $negativ[$a]=$negativ[$a]+$p0s;
                 }
-              } else if ($goala[$jyz][$i]==$goalb[$jyz][$i]) {
+              } elseif ($goala[$jyz][$i]==$goalb[$jyz][$i]) {
                 $unent[$a]=$unent[$a]+1;
                 $punkte[$a]=$punkte[$a]+$p0u;
                 if ($minus==2) {
@@ -139,28 +139,28 @@ if ($file!="") {
     }
 
     for ($a=1; $a<=$anzteams; $a++) {
-      if ($endtab==$strafdat[$a]) {        // Hack-Straftore
-        $etore[$a]=$etore[$a]-$torkorrektur1[$a];        // Hack-Straftore
-        $atore[$a]=$atore[$a]-$torkorrektur2[$a];        // Hack-Straftore
-      }      // Hack-Straftore
+      if ($endtab==$strafdat[$a]) {                // Hack-Straftore
+        $etore[$a]=$etore[$a]-$torkorrektur1[$a];  // Hack-Straftore
+        $atore[$a]=$atore[$a]-$torkorrektur2[$a];  // Hack-Straftore
+      }                                            // Hack-Straftore
       $dtore[$a]=$etore[$a]-$atore[$a];
-      if ($endtab>=$strafdat[$a]) {        // Hack-Straftore
+      if ($endtab>=$strafdat[$a]) {                // Hack-Straftore
         $punkte[$a]=$punkte[$a]-$strafp[$a];
         if ($minus==2) {
           $negativ[$a]=$negativ[$a]-$strafm[$a];
         }
-      }      // Hack-Straftore
+      }                                            // Hack-Straftore
       if ($kegel==0) {
         array_push($taba[$jyz],(50000000+$punkte[$a]).(50000000-$negativ[$a]).(50000000+$dtore[$a]).(50000000+$etore[$a]).(50000000+$a));
       } else {
         array_push($taba[$jyz],(50000000+$punkte[$a]).(50000000-$negativ[$a]).(50000000+$etore[$a]).(50000000+$dtore[$a]).(50000000+$a));
       }
-      if ($endtab>=$strafdat[$a]) {        // Hack-Straftore
+      if ($endtab>=$strafdat[$a]) {                // Hack-Straftore
         $punkte[$a]=$punkte[$a]+$strafp[$a];
         if ($minus==2) {
           $negativ[$a]=$negativ[$a]+$strafm[$a];
         }
-      }      // Hack-Straftore
+      }                                            // Hack-Straftore
     }
     array_shift($taba[$jyz]);
     rsort($taba[$jyz],SORT_STRING);
@@ -227,7 +227,7 @@ if ($file!="") {
         sort($taba[$jyz],SORT_STRING);
       }
     }
-    if ($sttest==true) {
+    if ($sttest==TRUE) {
       for ($x=0; $x<$anzteams; $x++) {
         $x3=intval(substr($taba[$jyz][$x],34));
         $platz[$x3][$jyz]=$x+1;

@@ -192,7 +192,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
               if ($goala[$i-1][$j-1]=="_") {
                 fputs($datei,"GA".$j."=-1\n");
               }
-              else if ($msieg[$i-1][$j-1]==1) {
+              elseif ($msieg[$i-1][$j-1]==1) {
                 fputs($datei,"GA".$j."=-2\n");
               }
               else {
@@ -201,7 +201,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
               if ($goalb[$i-1][$j-1]=="_") {
                 fputs($datei,"GB".$j."=-1\n");
               }
-              else if ($msieg[$i-1][$j-1]==2) {
+              elseif ($msieg[$i-1][$j-1]==2) {
                 fputs($datei,"GB".$j."=-2\n");
               }
               else {
@@ -214,10 +214,10 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
                 if ($mspez[$i-1][$j-1]=="_") {
                   fputs($datei,"SP".$j."=0\n");
                 }
-                else if ($mspez[$i-1][$j-1]==$text[0]) {
+                elseif ($mspez[$i-1][$j-1]==$text[0]) {
                   fputs($datei,"SP".$j."=2\n");
                 }
-                else if ($mspez[$i-1][$j-1]==$text[1]) {
+                elseif ($mspez[$i-1][$j-1]==$text[1]) {
                   fputs($datei,"SP".$j."=1\n");
                 }
               }
@@ -243,10 +243,10 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
                 if ($mspez[$i-1][$j-1][$n-1]=="_") {
                   fputs($datei,"SP".$j.$n."=0\n");
                 }
-                else if ($mspez[$i-1][$j-1][$n-1]==$text[0]) {
+                elseif ($mspez[$i-1][$j-1][$n-1]==$text[0]) {
                   fputs($datei,"SP".$j.$n."=2\n");
                 }
-                else if ($mspez[$i-1][$j-1][$n-1]==$text[1]) {
+                elseif ($mspez[$i-1][$j-1][$n-1]==$text[1]) {
                   fputs($datei,"SP".$j.$n."=1\n");
                 }
                 fputs($datei,"NT".$j.$n."=".$mnote[$i-1][$j-1][$n-1]."\n");

@@ -268,7 +268,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
             <td class="nobr" rowspan="2" align="right"><acronym title="<?php echo $text[256];?>"><?php echo $text[257];?></acronym>&nbsp;</td>
             <td class="nobr" align="left">
               <input type="radio" name="xdatfselect" value="1" checked>
-              <select class="lmo-formular-input" name="xdatf" onChange="dolmoedit();document.getElementsByName('xdatfselect')[0].checked=true;"><?php
+              <select class="lmo-formular-input" name="xdatf" onChange="dolmoedit();document.getElementsByName('xdatfselect')[0].checked=TRUE;"><?php
       $dummf=array("d.m. H:i", "d.m.Y H:i", "D., d.m. H:i", "l, d.m. H:i", "D., d.m.Y H:i", "l, d.m.Y H:i");?>
                 <option value="">__</option><?php
       for ($y=0;$y<count($dummf);$y++) {?>
@@ -280,7 +280,7 @@ include(PATH_TO_LMO."/lmo-adminsubnavi.php");
           <tr>
             <td class="nobr" align="left">
               <input type="radio" name="xdatfselect" value=""<?php if (!in_array($datf,$dummf)) echo " checked";?>>
-              <input type="text" class="lmo-formular-input" name="xdatf2" onChange="dolmoedit();document.getElementsByName('xdatf')[1].checked=true;" value="<?php echo $datf?>">
+              <input type="text" class="lmo-formular-input" name="xdatf2" onChange="dolmoedit();document.getElementsByName('xdatf')[1].checked=TRUE;" value="<?php echo $datf?>">
               <a href="https://www.php.net/manual/de/datetime.format.php">
                 <span class="popup">
                   <strong><?php echo $text[545];?></strong><br>

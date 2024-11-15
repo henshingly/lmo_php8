@@ -257,18 +257,18 @@ if ($file != "") {
       }
     }
     if ($endtab >= $strafdat[$a] && ($tabtype == 0 or ($tabtype == 3 && $strafdat[$a] > ($hoy = ($anzst/2))) or ($tabtype == 4 && $strafdat[$a] <= ($endtab = ($anzst/2))))) {
-      // Hack-Straftore
+                                                  // Hack-Straftore
       $etore[$a] = $etore[$a]-$torkorrektur1[$a]; // Hack-Straftore
       $atore[$a] = $atore[$a]-$torkorrektur2[$a]; // Hack-Straftore
     }
     $dtore[$a] = $etore[$a]-$atore[$a];
     if ($endtab >= $strafdat[$a] && ($tabtype == 0 or ($tabtype == 3 && $strafdat[$a] > ($hoy = ($anzst/2))) or ($tabtype == 4 && $strafdat[$a] <= ($endtab = ($anzst/2))))) {
-      // Hack-Straftore
+                                                  // Hack-Straftore
       $punkte[$a] = $punkte[$a]-$strafp[$a];
       if ($minus == 2) {
         $negativ[$a] = $negativ[$a]-$strafm[$a];
       }
-    } // Hack-Straftore
+    }                                             // Hack-Straftore
     if ($kegel == 0) {
       array_push($tab0, (50000000+$punkte[$a]).(50000000-$negativ[$a]).(50000000+$dtore[$a]).(50000000+$etore[$a]).(50000000+$a));
     } else {

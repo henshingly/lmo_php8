@@ -28,10 +28,10 @@ if ($file != "") {
     $breite = $breite-1;
   }
   if ($minus == 2) {
-    $dummy = " colspan=\"3\" align=\"center\"";
+    $dummy = "colspan=\"3\" style=\"text-align:center\"";
     $breite = $breite+2;
   } else {
-    $dummy = " align=\"right\"";
+    $dummy = "style=\"text-align:right\"";
   }
   $endtab = $st;
   $tabdat = "";
@@ -101,20 +101,20 @@ if ($file != "") {
         <input type="hidden" name="st" value="<?php echo $st;?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
-            <th align="left" colspan="4"><?php echo $st.". ".$text[2];?></th>
-            <th align="left" width="2">&nbsp;</th>
-            <th align="right"><?php echo $text[33];?></th>
-            <th align="right"><?php echo $text[34];?></th><?php
+            <th style="text-align:left" colspan="4"><?php echo $st.". ".$text[2];?></th>
+            <th style="text-align:left" width="2">&nbsp;</th>
+            <th style="text-align:center"><acronym title="<?php echo $text[63];?>"><?php echo $text[33];?></acronym></th>
+            <th style="text-align:center"><acronym title="<?php echo $text[199];?>"><?php echo $text[34];?></acronym></th><?php
   if ($hidr!=1) {?>
-            <th align="right"><?php echo $text[35];?></th><?php
+            <th style="text-align:center"><acronym title="<?php echo $text[200];?>"><?php echo $text[35];?></acronym></th><?php
   }?>
-            <th align="right"><?php echo $text[36];?></th><?php
+            <th style="text-align:center"><acronym title="<?php echo $text[201];?>"><?php echo $text[36];?></acronym></th><?php
   if ($tabpkt==0) {?>
             <th>&nbsp;</th>
             <th <?php echo $dummy?>><?php echo $text[37]?></th><?php
   }?>
-            <th align="left" width="2">&nbsp;</th>
-            <th align="left" colspan="3" align="center"><?php echo $text[38];?></th>
+            <th style="text-align:"left" width="2">&nbsp;</th>
+            <th style="text-align:"left" colspan="3" align="center"><?php echo $text[38];?></th>
             <th align="right"><?php echo $text[39];?></th><?php
   if ($tabpkt==1) {?>
             <th>&nbsp;</th>
@@ -179,7 +179,7 @@ if ($file != "") {
       if ($teamn[$i]!="") {
         $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong>\n".$teamn[$i];
       }?>
-        <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt=''><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
+        <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return FALSE;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt=''><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
       $lmo_tabellennotiz="";
     } else {
       echo "&nbsp;";
@@ -216,7 +216,7 @@ if ($file != "") {
           </tr><?php
   }?>
           <tr>
-            <th align="right" colspan="<?php echo $breite;?>" align="center">
+            <th style="text-align:center" colspan="<?php echo $breite;?>">
               <input title="<?php echo $text[114] ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[415];?>">
             </td>
           </tr>

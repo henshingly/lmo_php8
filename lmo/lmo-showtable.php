@@ -51,24 +51,24 @@ if ($einhinrueck==1 || $einheimausw==1) {
 /*Inklusive Heim & Auswärts*/
 if ($tabonres==2) {?>
   <tr>
-    <th align="left" colspan="7"><?php echo $tabdat; ?>&nbsp;</th>
+    <th style="text-align:left" colspan="7"><?php echo $tabdat; ?>&nbsp;</th>
     <th colspan="<?php echo $breite; ?>">&nbsp;</th>
     <th style="width:2px;">&nbsp;</th>
-    <th align="left" colspan="<?php echo $breite; ?>"><?php echo $text[41]; ?></th>
+    <th style="text-align:left" colspan="<?php echo $breite; ?>"><?php echo $text[41]; ?></th>
     <th style="width:2px;">&nbsp;</th>
-    <th align="left" colspan="<?php echo $breite; ?>"><?php echo $text[42]; ?></th>
+    <th style="text-align:left" colspan="<?php echo $breite; ?>"><?php echo $text[42]; ?></th>
   </tr><?php
 }?>
   <tr>
-    <th align="left" colspan="7"><?php if ($tabonres!=2) {echo $tabdat;}?>&nbsp;</th>
-    <th class="text-center"><?php echo $text[33]; ?></th>
-    <th class="text-center"><?php echo $text[34]; ?></th>
+    <th style="text-align:left" colspan="7"><?php if ($tabonres!=2) {echo $tabdat;}?>&nbsp;</th>
+    <th style="text-align:center"><acronym title="<?php echo $text[63];?>"><?php echo $text[33];?></acronym></th>
+    <th style="text-align:center"><acronym title="<?php echo $text[199];?>"><?php echo $text[34];?></acronym></th>
 <?php
 if ($hidr!=1) {?>
-    <th align="right"><?php echo $text[35]; ?></th>
+    <th style="text-align:right"><acronym title="<?php echo $text[200];?>"><?php echo $text[35];?></acronym></th>
 <?php
 }?>
-    <th class="text-center"><?php echo $text[36]; ?></th>
+    <th style="text-align:enter"><acronym title="<?php echo $text[201];?>"><?php echo $text[36];?></acronym></th>
 <?php
 if ($tabpkt==0) {?>
     <th style="width:2px;">&nbsp;</th>
@@ -76,44 +76,44 @@ if ($tabpkt==0) {?>
 }?>
     <th style="width:2px;">&nbsp;</th>
     <th style="text-align:center" colspan="3"><?php echo $text[38]; ?></th>
-    <th align="right"><?php echo $text[39]; ?></th><?php
+    <th style="text-align:right"><?php echo $text[39]; ?></th><?php
 if ($tabpkt==1) {?>
     <th style="width:2px;">&nbsp;</th>
     <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
 }
 if ($tabonres==2) {?>
     <th style="width:2px;">&nbsp;</th>
-    <th align="right"><?php echo $text[33]; ?></th>
-    <th align="right"><?php echo $text[34]; ?></th><?php
+    <th style="text-align:right"><acronym title="<?php echo $text[63];?>"><?php echo $text[33];?></acronym></th>
+    <th style="text-align:right"><acronym title="<?php echo $text[199];?>"><?php echo $text[34];?></acronym></th><?php
   if ($hidr!=1) {?>
-    <th align="right"><?php echo $text[35]; ?></th><?php
+    <th style="text-align:right"><acronym title="<?php echo $text[200];?>"><?php echo $text[35];?></acronym></th><?php
   } ?>
-    <th align="right"><?php echo $text[36]; ?></th><?php
+    <th style="text-align:right"><acronym title="<?php echo $text[201];?>"><?php echo $text[36];?></acronym></th><?php
   if ($tabpkt==0) {?>
     <th style="width:2px;">&nbsp;</th>
     <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
   } ?>
     <th style="width:2px;">&nbsp;</th>
     <th colspan="3" align="center"><?php echo $text[38]; ?></th>
-    <th align="right"><?php echo $text[39]; ?></th><?php
+    <th style="text-align:right"><?php echo $text[39]; ?></th><?php
   if ($tabpkt==1) {?>
     <th style="width:2px;">&nbsp;</th>
     <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
   }?>
     <th style="width:2px;">&nbsp;</th>
-    <th align="right"><?php echo $text[33]; ?></th>
-    <th align="right"><?php echo $text[34]; ?></th><?php
+    <th style="text-align:right"><acronym title="<?php echo $text[63];?>"><?php echo $text[33];?></acronym></th>
+    <th style="text-align:right"><acronym title="<?php echo $text[199];?>"><?php echo $text[34];?></acronym></th><?php
   if ($hidr!=1) {?>
-    <th align="right"><?php echo $text[35]; ?></th><?php
+    <th style="text-align:right"><acronym title="<?php echo $text[200];?>"><?php echo $text[35];?></acronym></th><?php
   }?>
-    <th align="right"><?php echo $text[36]; ?></th><?php
+    <th style="text-align:right"><acronym title="<?php echo $text[201];?>"><?php echo $text[36];?></acronym></th><?php
   if ($tabpkt==0) {?>
     <th style="width:2px;">&nbsp;</th>
     <th <?php echo $dummy?>><?php echo $text[37]?></th><?php
   }?>
     <th style="width:2px;">&nbsp;</th>
     <th colspan="3" align="center"><?php echo $text[38]; ?></th>
-    <th align="right"><?php echo $text[39]; ?></th><?php
+    <th style="text-align:right"><?php echo $text[39]; ?></th><?php
   if ($tabpkt==1) {?>
     <th style="width:2px;">&nbsp;</th>
     <th <?php echo $dummy?>><?php echo $text[37]; ?></th><?php
@@ -212,7 +212,7 @@ for ($x = 1; $x <= $anzteams; $x++) {
     if ($teamn[$i]!="") {
       $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong>\n".$teamn[$i];
     }?>
-      <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
+      <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return FALSE;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.gif"?>' width='10' height='12' border='0' alt='' /><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
     $lmo_tabellennotiz="";
   } else {
     echo "&nbsp;";
