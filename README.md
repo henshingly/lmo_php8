@@ -6,7 +6,7 @@
 [![issues](https://img.shields.io/github/issues/henshingly/lmo_php8)](https://github.com/henshingly/lmo_php8/issues) 
 [![Message](https://img.shields.io/badge/CHANGELOG-blue)](https://github.com/henshingly/LMO_PHP8/blob/master/changelog.md) 
 [![Donate](https://img.shields.io/badge/-Buy%20me%20a%20coffee-brown.svg)](https://paypal.me/LMOforum)
-# (ENGLISH) LMO with PHP8
+# (ENGLISH) LMO on PHP8
 Together with others, I want to ensure that Liga Manager Online runs on PHP 8.
 However, the project page is still <a target="_blank" href="https://www.liga-manager-online.de/homepage/">https://www.liga-manager-online.de/homepage /</a>
 ## Description of the LMO
@@ -37,7 +37,7 @@ This LMO version is still a beta version. Please note this. Before copying over 
 After joker has removed the forum on the LMO's project page (because of the General Data Protection Regulation GDPR), I offer a support forum for this LMO on my website (https://www.vest-sport.de/forum/).
 
 --------------------------------------------------------------------------------------------------------
-# (DEUTSCH) LMO mit PHP8
+# (DEUTSCH) LMO auf PHP8
 Ich möchte hier mit anderen die Lauffähigkeit des Liga Managers Online unter PHP 8 gewährleisten.
 Die Projektseite ist aber weiterhin <a target="_blank" href="https://www.liga-manager-online.de/homepage/">https://www.liga-manager-online.de/homepage/</a>
 ## Beschreibung des LMO's
