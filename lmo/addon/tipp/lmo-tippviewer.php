@@ -350,16 +350,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           <td class="nobr" align="left">
             <?php 
     echo $teamb[$i];
-    if ($tippa[$i] == "_") {
+    if ($tippa[$i] == "_" || $tippb[$i] == "_" || $tippa[$i] == "-1" || $tippb[$i] == "-1") {
       $tippa[$i] = "";
-    }
-    if ($tippb[$i] == "_") {
-      $tippb[$i] = "";
-    }
-    if ($tippa[$i] == "-1") {
-      $tippa[$i] = "";
-    }
-    if ($tippb[$i] == "-1") {
       $tippb[$i] = "";
     }?>
             
