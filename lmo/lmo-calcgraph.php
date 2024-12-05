@@ -80,13 +80,13 @@ if ($file!="") {
                 $siege[$a]=$siege[$a]+1;
                 $punkte[$a]=$punkte[$a]+$p0s;
                 if ($minus==2) {
-                  $negativ[$a]=$negativ[$a]+$p0n;
+                  $negativ[$a]=$negativ[$a] + $p0n;
                 }
               } elseif ($goala[$jyz][$i]<$goalb[$jyz][$i]) {
                 $nieder[$a]=$nieder[$a]+1;
                 $punkte[$a]=$punkte[$a]+$p0n;
                 if ($minus==2) {
-                  $negativ[$a]=$negativ[$a]+$p0s;
+                  $negativ[$a]=$negativ[$a] + $p0s;
                 }
               } elseif ($goala[$jyz][$i]==$goalb[$jyz][$i]) {
                 $unent[$a]=$unent[$a]+1;
@@ -104,26 +104,26 @@ if ($file!="") {
               $siege[$a]=$siege[$a]+1;
               $punkte[$a]=$punkte[$a]+$p0s;
               if ($minus==2) {
-                $negativ[$a]=$negativ[$a]+$p0n;
+                $negativ[$a]=$negativ[$a] + $p0n;
               }
             } elseif ($msieg[$jyz][$i]==1) {
               $nieder[$a]=$nieder[$a]+1;
               $punkte[$a]=$punkte[$a]+$p0n;
               if ($minus==2) {
-                $negativ[$a]=$negativ[$a]+$p0s;
+                $negativ[$a]=$negativ[$a] + $p0s;
               }
             } elseif ($msieg[$jyz][$i]==0) {
               if ($goala[$jyz][$i]<$goalb[$jyz][$i]) {
                 $siege[$a]=$siege[$a]+1;
                 $punkte[$a]=$punkte[$a]+$p0s;
                 if ($minus==2) {
-                  $negativ[$a]=$negativ[$a]+$p0n;
+                  $negativ[$a]=$negativ[$a] + $p0n;
                 }
               } elseif ($goala[$jyz][$i]>$goalb[$jyz][$i]) {
                 $nieder[$a]=$nieder[$a]+1;
                 $punkte[$a]=$punkte[$a]+$p0n;
                 if ($minus==2) {
-                  $negativ[$a]=$negativ[$a]+$p0s;
+                  $negativ[$a]=$negativ[$a] + $p0s;
                 }
               } elseif ($goala[$jyz][$i]==$goalb[$jyz][$i]) {
                 $unent[$a]=$unent[$a]+1;

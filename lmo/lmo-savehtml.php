@@ -241,7 +241,7 @@ if ($lmtype == 0 && $st > 0) {
           for ($j = 1; $j < $anzteams + 1; $j ++) {
             if (!in_array($j, $spielfreicc)) {
               if ($i == 1) {?>
-           <p><small><?php echo $text[4004];?>: <?php
+  <p><small><?php echo $text[4004];?>: <?php
               }
               echo $teams[$j];?>&nbsp;&nbsp;<?php
               $i ++;
