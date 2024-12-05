@@ -67,17 +67,17 @@ if (($file != "") && ($kurve == 1)){
     $color = mt_rand(0, 160).",".mt_rand(0, 160).",".mt_rand(0, 160).",1";
     $axisColor = "rgba(90, 90, 90, 1)";
     if ($show_stat1 == 0 && $show_stat2 == 0) {
-      $flag = 'true';
-      if ($j < 3) $flag = 'false';
+      $flag = 'TRUE';
+      if ($j < 3) $flag = 'FALSE';
     } else if ($j == $show_stat1 || $j == $show_stat2) {
-      $flag = 'false';
+      $flag = 'FALSE';
     } else {
-      $flag = 'true';
+      $flag = 'TRUE';
     }
     $teams[$j] = str_replace( "'", "´", $teams[$j] ); //Team names with an apostrophe inside destroy the graph curve
     $data .= "{
                               label: '$teams[$j]',
-                              fill: false,
+                              fill: FALSE,
                               lineTension: $tension,
                               backgroundColor: 'rgba($color)',
                               borderColor: 'rgba($color)',
@@ -102,7 +102,7 @@ if (($file != "") && ($kurve == 1)){
                                   color: '<?php echo $axisColor; ?>'
                                 },
                                 title: {
-                                  display: true,
+                                  display: TRUE,
                                   text: '<?php echo $pgtext1; ?>',
                                   color: '<?php echo $axisColor; ?>',
                                   font: {
@@ -118,7 +118,7 @@ if (($file != "") && ($kurve == 1)){
                                   color: '<?php echo $axisColor; ?>'
                                 },
                                 title: {
-                                  display: true,
+                                  display: TRUE,
                                   text: '<?php echo $pgtext2; ?>',
                                   color: '<?php echo $axisColor; ?>',
                                   font: {
@@ -127,7 +127,7 @@ if (($file != "") && ($kurve == 1)){
                                 },
                                 min: 1,
                                 max: <?php echo $anzteams; ?>,
-                                reverse: true,
+                                reverse: TRUE,
                                 ticks: {
                                   maxTicksLimit: <?php echo $anzteams; ?>,
                                   color: '<?php echo $axisColor; ?>'
@@ -136,7 +136,7 @@ if (($file != "") && ($kurve == 1)){
                             },
                             plugins: {
                               tooltip: {
-                                displayColors: true,
+                                displayColors: TRUE,
                                 mode: 'index',
                                 callbacks: {
                                   label: function(context) {

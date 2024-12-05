@@ -36,7 +36,7 @@ class ligaFussball extends liga {
       if ( $sort_pPkt[$i] == $sort_pPkt[$i+1] && $sort_spiele[$i] == $sort_spiele[$i+1]
         && $sort_dTor[$i] == $sort_dTor[$i+1] && $sort_pTor[$i] == $sort_pTor[$i+1]) {
         // Partien für den Direkten Vergleich suchen.
-        $allParties = $this->allPartieForTeams($tableArray[$i]['team'],$tableArray[$i+1]['team'],true);
+        $allParties = $this->allPartieForTeams($tableArray[$i]['team'],$tableArray[$i+1]['team'],TRUE);
         foreach ($allParties as $partie) {
           $tore[$partie->heim->nr] += $partie->hTore > -1? $partie->hTore:0;
           $tore[$partie->gast->nr] += $partie->gTore>-1? $partie->gTore:0;
@@ -76,7 +76,7 @@ class ligaFussball extends liga {
 
   function sortDirectTable($tableArray) {
     echo "function sortDirectTable($tableArray) {";
-    return false;
+    return FALSE;
   }
 
 } // END class FussballLiga

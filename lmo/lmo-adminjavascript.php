@@ -13,43 +13,43 @@ img4 = new Image();
 img4.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin4.gif";
 img5 = new Image();
 img5.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin5.gif";
-var lmotest=true;
+var lmotest=TRUE;
 function chklmopass(){
-  if (lmotest == true){
+  if (lmotest == TRUE){
     return confirm("<?php echo $text[117] ?>");
   } else {
-    return true;
+    return TRUE;
   }
 }
 function chklmopas2(a){
-  var r=true;
-  if (lmotest == true){
+  var r=TRUE;
+  if (lmotest == TRUE){
     alert("<?php echo $text[117] ?>");
-    r=false;
+    r=FALSE;
     }
-  if (lmotest == false){
-    var s3=false;
+  if (lmotest == FALSE){
+    var s3=FALSE;
     for (var i=1;i<a;i++){
       for (var j=i+1;j<=a;j++){
         var s1=document.getElementsByName("xplatz"+i)[0].value;
         var s2=document.getElementsByName("xplatz"+j)[0].value;
-        if (s1==s2){s3=true;}
+        if (s1==s2){s3=TRUE;}
         }
       }
-    if (s3 == true){
+    if (s3 == TRUE){
       alert("<?php echo $text[416]; ?>");
-      r=false;
+      r=FALSE;
       }
     }
-  if (r == false){
-    return false;
+  if (r == FALSE){
+    return FALSE;
     }
   }
 function chklmolink(){
-  if (lmotest == false){
+  if (lmotest == FALSE){
     return confirm("<?php echo $text[119] ?>");
   } else {
-    return true;
+    return TRUE;
   }
 }
 function siklmolink(adresse){
@@ -75,8 +75,8 @@ function opencal(feld,startdat){
   lmocal="<?php echo URL_TO_LMO?>/lmo-admincal.php?abs=lmoedit&feld="+feld;
   if (startdat!=""){lmocal=lmocal+"&calshow="+startdat;}
   lmowin = window.open(lmocal,"lmocalpop","width=220,height=200,resizable=yes,dependent=yes");
-  lmotest=false;
-  return false;
+  lmotest=FALSE;
+  return FALSE;
 }
 
 </script>

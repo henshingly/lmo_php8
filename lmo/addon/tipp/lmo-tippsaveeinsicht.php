@@ -78,7 +78,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
         else
           {
           $datei = fopen($tippfile, "rb");
-          if ($datei != false) {
+          if ($datei != FALSE) {
             $tippdaten = array();
             $sekt = "";
             $jkwert = "";
@@ -89,7 +89,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
                 $jkwert = trim(substr($zeile, 1, -1));
               } elseif ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
                 $sekt = trim(substr($zeile, 1, -1));
-              } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+              } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
                 $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
                 $wert = trim(substr($zeile, strpos($zeile, "=")+1));
                 array_push($tippdaten, $sekt."|".$schl."|".$wert."|".$jkwert."|EOL");

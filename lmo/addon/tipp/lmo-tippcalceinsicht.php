@@ -34,7 +34,7 @@ if (!file_exists($einsichtfile)) {
 } else {
   $datei = fopen($einsichtfile, "rb");
   $anztipper = 0;
-  if ($datei != false) {
+  if ($datei != FALSE) {
     $tippdaten = array();
     $sekt = "";
     while (!feof($datei)) {
@@ -49,7 +49,7 @@ if (!file_exists($einsichtfile)) {
           array_push($tippdaten, $sekt."|||EOL");
           $anztipper++;
         }
-      } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+      } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         if (!isset($jkwert)) {
@@ -86,7 +86,7 @@ if (!file_exists($einsichtfile)) {
     $toregesa = array_pad(array("0"), $anzsp+1, "0");
     $toregesb = array_pad(array("0"), $anzsp+1, "0");
     $anzgetippt = array_pad(array("0"), $anzsp+1, "0");
-    $btip = array_pad(array("false"), $anzsp+1, "0");
+    $btip = array_pad(array("FALSE"), $anzsp+1, "0");
   } else {
     $tendenz1 = array_pad($array, $anzsp+1, "");
     $tendenz0 = array_pad($array, $anzsp+1, "");
@@ -102,7 +102,7 @@ if (!file_exists($einsichtfile)) {
       $toregesa[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
       $toregesb[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
       $anzgetippt[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
-      $btip[$i] = array_pad(array("false"), $modus[$st-1]+1, "false");
+      $btip[$i] = array_pad(array("FALSE"), $modus[$st-1]+1, "FALSE");
     }
   }
    

@@ -50,7 +50,7 @@ if (substr($archivFolder,-1) != '/') {
     $archivFolder .= '/';
 }
 
-if (strpos($archivFolder,'../')!==false) {
+if (strpos($archivFolder,'../')!==FALSE) {
     exit();
 }
 
@@ -101,20 +101,20 @@ if (!file_exists($mini_cache_filename)
     $partie = null;
     $lastPartie = null;
     $liga = new liga();
-    $showLastGame = true;
-    if ($file && $liga -> loadFile(PATH_TO_LMO . '/' . $dirliga . $file) == true) {
+    $showLastGame = TRUE;
+    if ($file && $liga -> loadFile(PATH_TO_LMO . '/' . $dirliga . $file) == TRUE) {
         if (!is_null($a)) {
             $team_a = $liga -> teamForNumber($a);
         } elseif (is_null($team_a = $liga -> teamForNumber($liga -> options -> keyValues['favTeam']))) {
-            echo getMessage($text['mini'][8], true);
+            echo getMessage($text['mini'][8], TRUE);
             exit;
         }
 
         if (is_null( $team_b = $liga -> teamForNumber($b)) ) {
             // We determine the nearest opponent of team 'a' if team 'b' is not specified
-            $sortedGames = $liga -> gamesSortedForTeam ($team_a,false); // Only sort by time regardless of game day
+            $sortedGames = $liga -> gamesSortedForTeam ($team_a,FALSE); // Only sort by time regardless of game day
             $now = time();
-            $showLastGame = true;
+            $showLastGame = TRUE;
             foreach ($sortedGames as $game) {
                 if ( $now < $game['partie'] -> zeit ) { // letztes Spiel finden
                     $partie = $game['partie'];
@@ -127,10 +127,10 @@ if (!file_exists($mini_cache_filename)
             if (!isset($partie) ) { // No more games found, so show last game (season ended)
                 $partie = $lastPartie;
                 unset($lastPartie);
-                $showLastGame = false;
+                $showLastGame = FALSE;
                 $template -> setVariable("gameTxt", $text['mini'][2]);
             } else {
-                $showLastGame = true;
+                $showLastGame = TRUE;
             }
 
             if ($partie -> heim == $team_a) {
@@ -209,7 +209,7 @@ if (!file_exists($mini_cache_filename)
             $archivSortDummy = array();
             // determine games of the current league
 
-            $spiele = $liga -> allPartieForTeams($team_a,$team_b,true);
+            $spiele = $liga -> allPartieForTeams($team_a,$team_b,TRUE);
             foreach($spiele as $spiel) {
                 if ($spiel -> hTore != -1 && $spiel -> gTore != -1) {
                     $archivSortDummy[] = $spiel -> zeit;
@@ -223,14 +223,14 @@ if (!file_exists($mini_cache_filename)
 
             // Archivfolder lesen
 
-            if ($mini_withArchiv==1 && readLigaDir(PATH_TO_LMO . '/' . $dirliga . $archivFolder, $dataArray) == false) {
-                echo getMessage($text['mini'][6]." ".PATH_TO_LMO . '/' . $dirliga . $archivFolder, true);
+            if ($mini_withArchiv==1 && readLigaDir(PATH_TO_LMO . '/' . $dirliga . $archivFolder, $dataArray) == FALSE) {
+                echo getMessage($text['mini'][6]." ".PATH_TO_LMO . '/' . $dirliga . $archivFolder, TRUE);
             }
 
             foreach ($dataArray as $ligaFile) {
                 if ($ligaFile['path'] . $ligaFile['src'] != PATH_TO_LMO . '/' . $dirliga . $file) {
                     $newLiga = new liga();
-                    if ($newLiga -> loadFile($ligaFile['path'] . $ligaFile['src'] ) == true) {
+                    if ($newLiga -> loadFile($ligaFile['path'] . $ligaFile['src'] ) == TRUE) {
 
                         $teamNames = $newLiga -> teamNames();
                         $newTeam_a = $newLiga -> teamForName($team_a -> name);
@@ -243,7 +243,7 @@ if (!file_exists($mini_cache_filename)
                             $match = null;
                         }
                         if (!is_null($newTeam_a) && !is_null($newTeam_b) ){
-                            $spiele = $newLiga -> allPartieForTeams($newTeam_a,$newTeam_b,true);
+                            $spiele = $newLiga -> allPartieForTeams($newTeam_a,$newTeam_b,TRUE);
                             foreach($spiele as $spiel) {
                                 if ($spiel -> hTore != -1 && $spiel -> gTore != -1) {
                                     $archivSortDummy[] = $spiel -> zeit;
@@ -340,7 +340,7 @@ if (!file_exists($mini_cache_filename)
 
         echo $mini_output;
     } // if file
-    else echo getMessage($text['mini'][5],true);
+    else echo getMessage($text['mini'][5],TRUE);
     // If IFRAME - complete HTML document
     if (basename($_SERVER['PHP_SELF'])=="lmo-mininext.php") {?>
 </body>

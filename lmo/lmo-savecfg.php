@@ -25,7 +25,7 @@
   
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if ($_SESSION['lmouserok']==2){
-  $ok=true;
+  $ok=TRUE;
   $datei = fopen($cfgfile,"wb");
   if ($datei) {
     flock($datei,LOCK_EX);
@@ -50,7 +50,7 @@ if ($_SESSION['lmouserok']==2){
     fclose($datei);
     clearstatcache();
   } else {
-    $ok=false;
+    $ok=FALSE;
   }
   if ($ok) {
     echo getMessage($text[138]);

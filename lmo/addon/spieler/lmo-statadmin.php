@@ -109,10 +109,10 @@ if (isset($file) && $file != "") {
         $speicher_spalten = $spalten;
         $formel = array();
         for ($i = 0;$i < count($spalten);$i++) {
-            $formel[$i] = false;
+            $formel[$i] = FALSE;
             if (strstr($spalten[$i], "*_*-*")) {
                 $formel_ges++;
-                $formel[$i] = true;
+                $formel[$i] = TRUE;
                 $spalten[$i] = substr($spalten[$i], 0, strlen($spalten[$i]) - 5);
             }
         }
@@ -122,7 +122,7 @@ if (isset($file) && $file != "") {
         }
         while ($data[$zeile] = fgetcsv($filepointer, 10000, "#")) {
             for ($i = 0;$i < count($data[$zeile]);$i++) {
-                if (!is_numeric($data[$zeile][$i])) $typ[$i] = true;
+                if (!is_numeric($data[$zeile][$i])) $typ[$i] = TRUE;
             }
             $zeile++;
         }
@@ -228,9 +228,9 @@ if (isset($file) && $file != "") {
                         $formel_ges++;
                         $speicher_spalten[$spaltenzahl] .= "*_*-*";
                         $val = "0";
-                        $formel[$spaltenzahl] = true;
+                        $formel[$spaltenzahl] = TRUE;
                     } else {
-                        $formel[$spaltenzahl] = false;
+                        $formel[$spaltenzahl] = FALSE;
                     }
                     $formel_str[$spaltenzahl] = "0";
                     fputs($filepointer, join("#", $speicher_spalten) . "\n"); //Spaltenbezeichner schreiben
@@ -354,9 +354,9 @@ function change(op,x) {
         a=parseInt(a);
         document.getElementsByName(x)[0].value=eval(a+op+"1");
     }
-    lmotest=false;
+    lmotest=FALSE;
     mark(el);
-    return false;
+    return FALSE;
 }
 function sel(x) {
     document.getElementsByName(x)[0].select();
@@ -589,7 +589,7 @@ function mark(el) {
                         <?php
         if ($_SESSION['lmouserok'] == 2) {?>
                         <td align="left" class="nobr"><?php echo $text['spieler'][31]?>: </td>
-                        <td align="left"><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" onChange="mark(this)" value="<?php echo $spieler_adminbereich_hilfsadmin_zulassen?>" <?php if ($spieler_adminbereich_hilfsadmin_zulassen==1) echo "checked";?> onClick="if (this.checked==true) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=false; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=true;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=false;}"></td><?php
+                        <td align="left"><input type="checkbox" name="adminbereich_hilfsadmin_zulassen" onChange="mark(this)" value="<?php echo $spieler_adminbereich_hilfsadmin_zulassen?>" <?php if ($spieler_adminbereich_hilfsadmin_zulassen==1) echo "checked";?> onClick="if (this.checked==TRUE) document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=FALSE; else {document.form1.adminbereich_hilfsadmin_fuer_spalten.disabled=TRUE;document.form1.adminbereich_hilfsadmin_fuer_spalten.checked=FALSE;}"></td><?php
         }?>
                     </tr>
                     <tr>

@@ -543,7 +543,7 @@ class Net_FTP extends PEAR
      */
     var $_ssl;
     /**
-     * Determine whether to use passive-mode (true) or active-mode (false)
+     * Determine whether to use passive-mode (TRUE) or active-mode (FALSE)
      *
      * Is null when it hasn't been explicitly set
      *
@@ -561,7 +561,7 @@ class Net_FTP extends PEAR
     /**
      * This holds the handle for the ftp-connection
      *
-     * If null, the connection hasn't been setup yet. If false, the connection
+     * If null, the connection hasn't been setup yet. If FALSE, the connection
      * attempt has failed. Else, it contains an ftp resource.
      *
      * @access  private
@@ -623,14 +623,14 @@ class Net_FTP extends PEAR
      */
     var $_listeners = array();
     /**
-     * Is true when a login has been performed
+     * Is TRUE when a login has been performed
      * and was successful
      *
      * @access  private
      * @var     boolean
      * @since   1.4
      */
-    var $_loggedin = false;
+    var $_loggedin = FALSE;
     /**
      * This generates a new FTP-Object. The FTP-connection will not be established,
      * yet.
@@ -715,19 +715,19 @@ class Net_FTP extends PEAR
                                    $this->_timeout);
         }
         if (!$handle) {
-            $this->_handle = false;
+            $this->_handle = FALSE;
             return $this->raiseError("Connection to host failed",
                                      NET_FTP_ERR_CONNECT_FAILED);
         } else {
             $this->_handle =& $handle;
-            return true;
+            return TRUE;
         }
     }
     /**
      * This function close the FTP-connection
      *
      * @access public
-     * @return bool|PEAR_Error Returns true on success, PEAR_Error on failure
+     * @return bool|PEAR_Error Returns TRUE on success, PEAR_Error on failure
      */
     function disconnect()
     {
@@ -737,7 +737,7 @@ class Net_FTP extends PEAR
                                     NET_FTP_ERR_DISCONNECT_FAILED);
         }
         $this->_handle = null;
-        return true;
+        return TRUE;
     }
     /**
      * This logs you into the ftp-server. You are free to specify username and
@@ -776,16 +776,16 @@ class Net_FTP extends PEAR
         if (!$res) {
             return $this->raiseError("Unable to login", NET_FTP_ERR_LOGIN_FAILED);
         } else {
-            $this->_loggedin = true;
-            // distinguish between null and false, null means this setting wasn't
+            $this->_loggedin = TRUE;
+            // distinguish between null and FALSE, null means this setting wasn't
             // explicitly changed, so we only change it when setPassive or
             // setActive was called by the user
-            if ($this->_passv === true) {
+            if ($this->_passv === TRUE) {
                 $this->setPassive();
-            } elseif ($this->_passv === false) {
+            } elseif ($this->_passv === FALSE) {
                 $this->setActive();
             }
-            return true;
+            return TRUE;
         }
     }
     /**
@@ -805,7 +805,7 @@ class Net_FTP extends PEAR
             return $this->raiseError("Directory change failed",
                                      NET_FTP_ERR_DIRCHANGE_FAILED);
         } else {
-            return true;
+            return TRUE;
         }
     }
     /**
@@ -839,44 +839,44 @@ class Net_FTP extends PEAR
      * @return mixed True on success, otherwise PEAR::Error
      * @see NET_FTP_ERR_CREATEDIR_FAILED
      */
-    function mkdir($dir, $recursive = false)
+    function mkdir($dir, $recursive = FALSE)
     {
         $dir     = $this->_constructPath($dir);
         $savedir = $this->pwd();
         $this->pushErrorHandling(PEAR_ERROR_RETURN);
         $e = $this->cd($dir);
         $this->popErrorHandling();
-        if ($e === true) {
+        if ($e === TRUE) {
             $this->cd($savedir);
-            return true;
+            return TRUE;
         }
         $this->cd($savedir);
-        if ($recursive === false) {
+        if ($recursive === FALSE) {
             $res = @ftp_mkdir($this->_handle, $dir);
             if (!$res) {
                 return $this->raiseError("Creation of '$dir' failed",
                                          NET_FTP_ERR_CREATEDIR_FAILED);
             } else {
-                return true;
+                return TRUE;
             }
         } else {
             // do not look at the first character, as $dir is absolute,
             // it will always be a /
-            if (strpos(substr($dir, 1), '/') === false) {
-                return $this->mkdir($dir, false);
+            if (strpos(substr($dir, 1), '/') === FALSE) {
+                return $this->mkdir($dir, FALSE);
             }
             if (substr($dir, -1) == '/') {
                 $dir = substr($dir, 0, -1);
             }
             $parent = substr($dir, 0, strrpos($dir, '/'));
-            $res    = $this->mkdir($parent, true);
-            if ($res === true) {
-                $res = $this->mkdir($dir, false);
+            $res    = $this->mkdir($parent, TRUE);
+            if ($res === TRUE) {
+                $res = $this->mkdir($dir, FALSE);
             }
-            if ($res !== true) {
+            if ($res !== TRUE) {
                 return $res;
             }
-            return true;
+            return TRUE;
         }
     }
     /**
@@ -924,7 +924,7 @@ class Net_FTP extends PEAR
      * Currently, you must give a number as the the permission argument (777 or
      * similar). The file can be either a relative or absolute path.
      * NOTE: Some servers do not support this feature. In that case, you will
-     * get a PEAR error object returned. If successful, the method returns true
+     * get a PEAR error object returned. If successful, the method returns TRUE
      *
      * @param mixed   $target      The file or array of files to set permissions for
      * @param integer $permissions The mode to set the file permissions to
@@ -944,7 +944,7 @@ class Net_FTP extends PEAR
                 } // end if isError
             } // end for i < count($target)
             
-            return true;
+            return TRUE;
         } else {
             $res = $this->site("CHMOD " . $permissions . " " . $target);
             if (!$res) {
@@ -962,7 +962,7 @@ class Net_FTP extends PEAR
      * The file can be either a relative or absolute path.
      * NOTE: Some servers do not support this feature. In that case, you
      * will get a PEAR error object returned. If successful, the method
-     * returns true
+     * returns TRUE
      *
      * @param mixed   $target      The folder or array of folders to
      *                             set permissions for
@@ -1036,7 +1036,7 @@ class Net_FTP extends PEAR
                 }
             } // end foreach $file_list
         } // end if is_array
-        return true; // No errors
+        return TRUE; // No errors
     } // end method chmodRecursive
     /**
      * Rename or move a file or a directory from the ftp-server
@@ -1057,7 +1057,7 @@ class Net_FTP extends PEAR
             return $this->raiseError("Could not rename ".$remote_from." to ".
                                      $remote_to." !", NET_FTP_ERR_RENAME_FAILED);
         }
-        return true;
+        return TRUE;
     }
     /**
      * This will return logical permissions mask for directory.
@@ -1102,7 +1102,7 @@ class Net_FTP extends PEAR
     function mdtm($file, $format = null)
     {
         $file = $this->_constructPath($file);
-        if ($this->_checkRemoteDir($file) !== false) {
+        if ($this->_checkRemoteDir($file) !== FALSE) {
             return $this->raiseError("Filename '$file' seems to be a directory.",
                                      NET_FTP_ERR_MDTMDIR_UNSUPPORTED);
         }
@@ -1173,7 +1173,7 @@ class Net_FTP extends PEAR
      *           ["files_inside"]=>  string The number of files/dirs inside the
      *                               directory excluding "." and ".."<br>
      *           ["date"]        =>  int The creation-date as Unix timestamp<br>
-     *           ["is_dir"]      =>  bool true, cause this is a dir<br>
+     *           ["is_dir"]      =>  bool TRUE, cause this is a dir<br>
      * <br><br>
      * Files:<br>
      *           ["name"]        =>  string The name of the file<br>
@@ -1183,7 +1183,7 @@ class Net_FTP extends PEAR
      *           ["user"]        =>  string The owner of the file<br>
      *           ["group"]       =>  string The group-owner of the file<br>
      *           ["date"]        =>  int The creation-date as Unix timestamp<br>
-     *           ["is_dir"]      =>  bool false, cause this is a file<br>
+     *           ["is_dir"]      =>  bool FALSE, cause this is a file<br>
      *
      * @param string $dir  (optional) The directory to list or null, when listing
      *                     the current directory.
@@ -1232,7 +1232,7 @@ class Net_FTP extends PEAR
      * Whether the given string is a file or directory is only determined by the
      * last sign inside the string ("/" or not).
      *
-     * If you specify a directory, you can optionally specify $recursive as true,
+     * If you specify a directory, you can optionally specify $recursive as TRUE,
      * to let the directory be deleted recursive (with all sub-directories and files
      * inherited).
      *
@@ -1250,10 +1250,10 @@ class Net_FTP extends PEAR
      * @see NET_FTP_ERR_DELETEFILE_FAILED, NET_FTP_ERR_DELETEDIR_FAILED,
      *      NET_FTP_ERR_REMOTEPATHNODIR
      */
-    function rm($path, $recursive = false, $filesonly = false)
+    function rm($path, $recursive = FALSE, $filesonly = FALSE)
     {
         $path = $this->_constructPath($path);
-        if ($this->_checkRemoteDir($path) === true) {
+        if ($this->_checkRemoteDir($path) === TRUE) {
             if ($recursive) {
                 return $this->_rmDirRecursive($path, $filesonly);
             } else {
@@ -1288,7 +1288,7 @@ class Net_FTP extends PEAR
      *      NET_FTP_ERR_OVERWRITELOCALFILE_FAILED,
      *      NET_FTP_ERR_OVERWRITELOCALFILE_FAILED
      */
-    function get($remote_file, $local_file, $overwrite = false, $mode = null)
+    function get($remote_file, $local_file, $overwrite = FALSE, $mode = null)
     {
         if (!isset($mode)) {
             $mode = $this->checkFileExtension($remote_file);
@@ -1319,7 +1319,7 @@ class Net_FTP extends PEAR
                                      "' could not be downloaded to '$local_file'.",
                                      NET_FTP_ERR_OVERWRITELOCALFILE_FAILED);
         } else {
-            return true;
+            return TRUE;
         }
     }
     /**
@@ -1351,7 +1351,7 @@ class Net_FTP extends PEAR
      *      NET_FTP_ERR_OVERWRITEREMOTEFILE_FORBIDDEN,
      *      NET_FTP_ERR_UPLOADFILE_FAILED, NET_FTP_NONBLOCKING, NET_FTP_BLOCKING
      */
-    function put($local_file, $remote_file, $overwrite = false, $mode = null,
+    function put($local_file, $remote_file, $overwrite = FALSE, $mode = null,
         $options = 0)
     {
         if ($options & (NET_FTP_BLOCKING | NET_FTP_NONBLOCKING) === 
@@ -1393,7 +1393,7 @@ class Net_FTP extends PEAR
                                      .$remote_file."'.",
                                      NET_FTP_ERR_UPLOADFILE_FAILED);
         } else {
-            return true;
+            return TRUE;
         }
     }
     /**
@@ -1406,19 +1406,19 @@ class Net_FTP extends PEAR
      * the $local_path, too. Then the script-basedir will be used for comletion of
      * the path.
      * The parameter $overwrite will determine, whether to overwrite existing files
-     * or not. Standard for this is false. Fourth you can explicitly set a mode for
+     * or not. Standard for this is FALSE. Fourth you can explicitly set a mode for
      * all transfer actions done. If you do not set this, the method tries to
      * determine the transfer mode by checking your mode-directory for the file
      * extension. If the extension is not inside the mode-directory, it will get
      * your default mode.
      * 
      * Since 1.4 no error will be returned when a file exists while $overwrite is 
-     * set to false. 
+     * set to FALSE. 
      *
      * @param string $remote_path The path to download
      * @param string $local_path  The path to download to
      * @param bool   $overwrite   (optional) Whether to overwrite existing files
-     *                            (true) or not (false, standard).
+     *                            (TRUE) or not (FALSE, standard).
      * @param int    $mode        (optional) The transfermode (either FTP_ASCII or
      *                            FTP_BINARY).
      * @param array  $excluded_paths (optional) List of remote files or directories to
@@ -1433,11 +1433,11 @@ class Net_FTP extends PEAR
      * NET_FTP_ERR_REMOTEPATHNODIR, NET_FTP_ERR_LOCALPATHNODIR,
      * NET_FTP_ERR_CREATELOCALDIR_FAILED
      */
-    function getRecursive($remote_path, $local_path, $overwrite = false,
+    function getRecursive($remote_path, $local_path, $overwrite = FALSE,
                           $mode = null, $excluded_paths = array())
     {
         $remote_path = $this->_constructPath($remote_path);
-        if ($this->_checkRemoteDir($remote_path) !== true) {
+        if ($this->_checkRemoteDir($remote_path) !== TRUE) {
             return $this->raiseError("Given remote-path '".$remote_path.
                                      "' seems not to be a directory.",
                                      NET_FTP_ERR_REMOTEPATHNODIR);
@@ -1490,7 +1490,7 @@ class Net_FTP extends PEAR
                 }
             }
         }
-        return true;
+        return TRUE;
     }
     /**
      * This functionality allows you to transfer a whole directory-structure from
@@ -1502,7 +1502,7 @@ class Net_FTP extends PEAR
      * be used for comletion of the path.
      * The parameter $overwrite will determine, whether to overwrite existing files
      * or not.
-     * Standard for this is false. Fourth you can explicitly set a mode for all
+     * Standard for this is FALSE. Fourth you can explicitly set a mode for all
      * transfer actions done. If you do not set this, the method tries to determine
      * the transfer mode by checking your mode-directory for the file-extension. If
      * the extension is not inside the mode-directory, it will get your default
@@ -1511,7 +1511,7 @@ class Net_FTP extends PEAR
      * @param string $local_path     The path to download to
      * @param string $remote_path    The path to download
      * @param bool   $overwrite      (optional) Whether to overwrite existing files
-     *                               (true) or not (false, standard).
+     *                               (TRUE) or not (FALSE, standard).
      * @param int    $mode           (optional) The transfermode (either FTP_ASCII or
      *                               FTP_BINARY).
      * @param array  $excluded_paths (optional) List of local files or directories to
@@ -1527,7 +1527,7 @@ class Net_FTP extends PEAR
      *      NET_FTP_ERR_UPLOADFILE_FAILED, NET_FTP_ERR_LOCALPATHNODIR,
      *      NET_FTP_ERR_REMOTEPATHNODIR
      */
-    function putRecursive($local_path, $remote_path, $overwrite = false,
+    function putRecursive($local_path, $remote_path, $overwrite = FALSE,
                           $mode = null, $excluded_paths = array())
     {
         $remote_path = $this->_constructPath($remote_path);
@@ -1545,7 +1545,7 @@ class Net_FTP extends PEAR
             }
         }
         $this->cd($old_path);
-        if ($this->_checkRemoteDir($remote_path) !== true) {
+        if ($this->_checkRemoteDir($remote_path) !== TRUE) {
             return $this->raiseError("Given remote-path '".$remote_path.
                                      "' seems not to be a directory.",
                                      NET_FTP_ERR_REMOTEPATHNODIR);
@@ -1576,7 +1576,7 @@ class Net_FTP extends PEAR
                 }
             }
         }
-        return true;
+        return TRUE;
     }
     /**
      * This checks, whether a file should be transfered in ascii- or binary-mode
@@ -1591,7 +1591,7 @@ class Net_FTP extends PEAR
      */
     function checkFileExtension($filename)
     {
-        if (($pos = strrpos($filename, '.')) === false) {
+        if (($pos = strrpos($filename, '.')) === FALSE) {
             return $this->_mode;
         } else {
             $ext = substr($filename, $pos + 1);
@@ -1619,7 +1619,7 @@ class Net_FTP extends PEAR
                                     NET_FTP_ERR_HOSTNAMENOSTRING);
         }
         $this->_hostname = $host;
-        return true;
+        return TRUE;
     }
     /**
      * Set the Port
@@ -1637,7 +1637,7 @@ class Net_FTP extends PEAR
                              NET_FTP_ERR_PORTLESSZERO);
         }
         $this->_port = $port;
-        return true;
+        return TRUE;
     }
     /**
      * Set to connect through secure SSL connection
@@ -1651,8 +1651,8 @@ class Net_FTP extends PEAR
             return PEAR::raiseError('SSL connection not supported. Function ftp_ssl_connect does not exist.',
                    NET_FTP_ERR_NOSSL);
         }
-        $this->_ssl = true;
-        return true;
+        $this->_ssl = TRUE;
+        return TRUE;
     }
     /**
      * Set the Username
@@ -1670,7 +1670,7 @@ class Net_FTP extends PEAR
                    NET_FTP_ERR_USERNAMENOSTRING);
         }
         $this->_username = $user;
-        return true;
+        return TRUE;
     }
     /**
      * Set the password
@@ -1688,7 +1688,7 @@ class Net_FTP extends PEAR
                                     NET_FTP_ERR_PASSWORDNOSTRING);
         }
         $this->_password = $password;
-        return true;
+        return TRUE;
     }
     /**
      * Set the transfer-mode. You can use the predefined constants
@@ -1704,7 +1704,7 @@ class Net_FTP extends PEAR
     {
         if (($mode == FTP_ASCII) || ($mode == FTP_BINARY)) {
             $this->_mode = $mode;
-            return true;
+            return TRUE;
         } else {
             return $this->raiseError('FTP-Mode has either to be FTP_ASCII or'.
                                      'FTP_BINARY', NET_FTP_ERR_NOMODECONST);
@@ -1718,9 +1718,9 @@ class Net_FTP extends PEAR
      */
     function setPassive()
     {
-        $this->_passv = true;
+        $this->_passv = TRUE;
         if ($this->_handle != null && $this->_loggedin) {
-            @ftp_pasv($this->_handle, true);
+            @ftp_pasv($this->_handle, TRUE);
         }
     }
     /**
@@ -1731,9 +1731,9 @@ class Net_FTP extends PEAR
      */
     function setActive()
     {
-        $this->_passv = false;
+        $this->_passv = FALSE;
         if ($this->_handle != null && $this->_loggedin) {
-            @ftp_pasv($this->_handle, false);
+            @ftp_pasv($this->_handle, FALSE);
         }
     }
     /**
@@ -1759,13 +1759,13 @@ class Net_FTP extends PEAR
         if (isset($this->_handle) && is_resource($this->_handle)) {
             $res = @ftp_set_option($this->_handle, FTP_TIMEOUT_SEC, $timeout);
         } else {
-            $res = true;
+            $res = TRUE;
         }
         if (!$res) {
             return PEAR::raiseError("Set timeout failed.",
                                     NET_FTP_ERR_SETTIMEOUT_FAILED);
         }
-        return true;
+        return TRUE;
     }        
     /**
      * Adds an extension to a mode-directory
@@ -1835,7 +1835,7 @@ class Net_FTP extends PEAR
                                      NET_FTP_ERR_EXTFILEREAD_FAILED);
         }
         
-        $exts = @parse_ini_file($filename, true);
+        $exts = @parse_ini_file($filename, TRUE);
         if (!is_array($exts)) {
             return $this->raiseError("Extensions-file '$filename' could not be".
                 "loaded", NET_FTP_ERR_EXTFILELOAD_FAILED);
@@ -1855,7 +1855,7 @@ class Net_FTP extends PEAR
             }
         }
         
-        return true;
+        return TRUE;
     }
     /**
      * Returns the hostname
@@ -1881,7 +1881,7 @@ class Net_FTP extends PEAR
      * Returns whether to connect through secure SSL connection
      *
      * @access public
-     * @return bool True if with SSL, false if without SSL
+     * @return bool True if with SSL, FALSE if without SSL
      */
     function getSsl()
     {
@@ -1921,7 +1921,7 @@ class Net_FTP extends PEAR
      * Returns, whether the connection is set to passive mode or not
      *
      * @access public
-     * @return bool True if passive-, false if active-mode
+     * @return bool True if passive-, FALSE if active-mode
      */
     function isPassive()
     {
@@ -1964,10 +1964,10 @@ class Net_FTP extends PEAR
     function attach(&$observer)
     {
         if (!is_a($observer, 'Net_FTP_Observer')) {
-            return false;
+            return FALSE;
         }
         $this->_listeners[$observer->getId()] = &$observer;
-        return true;
+        return TRUE;
     }
     /**
      * Removes a Net_FTP_Observer instance from the list of observers.
@@ -1983,10 +1983,10 @@ class Net_FTP extends PEAR
     {
         if (!is_a($observer, 'Net_FTP_Observer') ||
             !isset($this->_listeners[$observer->getId()])) {
-            return false;
+            return FALSE;
         }
         unset($this->_listeners[$observer->getId()]);
-        return true;
+        return TRUE;
     }
     /**
      * Sets the directory listing matcher
@@ -2046,7 +2046,7 @@ class Net_FTP extends PEAR
         
         $this->_matcher = array('pattern' => $pattern, 'map' => $matchmap);
         
-        return true;
+        return TRUE;
     }
     /**
      * Informs each registered observer instance that a new message has been
@@ -2093,7 +2093,7 @@ class Net_FTP extends PEAR
      * @param string $path Path to check
      *
      * @access private
-     * @return mixed True if $path is a directory, otherwise false, PEAR_Error
+     * @return mixed True if $path is a directory, otherwise FALSE, PEAR_Error
      *               when an error occurs in determining path type
      */
     function _checkRemoteDir($path)
@@ -2105,7 +2105,7 @@ class Net_FTP extends PEAR
         $res = $this->cd($path);
         $this->cd($pwd);
         
-        return $this->isError($res, NET_FTP_ERR_DIRCHANGE_FAILED) === false; 
+        return $this->isError($res, NET_FTP_ERR_DIRCHANGE_FAILED) === FALSE; 
     }
     /**
      * This will remove a file
@@ -2131,7 +2131,7 @@ class Net_FTP extends PEAR
             return $this->raiseError("Could not delete file '$file'.",
                                      NET_FTP_ERR_DELETEFILE_FAILED);
         } else {
-            return true;
+            return TRUE;
         }
     }
     /**
@@ -2155,7 +2155,7 @@ class Net_FTP extends PEAR
             return $this->raiseError("Could not delete directory '$dir'.",
                                      NET_FTP_ERR_DELETEDIR_FAILED);
         } else {
-            return true;
+            return TRUE;
         }
     }
     /**
@@ -2169,7 +2169,7 @@ class Net_FTP extends PEAR
      * @return mixed True on success, otherwise PEAR::Error
      * @see NET_FTP_ERR_REMOTEPATHNODIR, NET_FTP_ERR_DELETEDIR_FAILED
      */
-    function _rmDirRecursive($dir, $filesonly = false)
+    function _rmDirRecursive($dir, $filesonly = FALSE)
     {
         if (substr($dir, (strlen($dir) - 1), 1) != "/") {
             return $this->raiseError("Directory name '".$dir.
@@ -2210,7 +2210,7 @@ class Net_FTP extends PEAR
         if (PEAR::isError($res)) {
             return $res;
         } else {
-            return true;
+            return TRUE;
         }
     }
     /**
@@ -2377,7 +2377,7 @@ class Net_FTP extends PEAR
         $dir       = dir($dir_path);
         $dir_list  = array();
         $file_list = array();
-        while (false !== ($entry = $dir->read())) {
+        while (FALSE !== ($entry = $dir->read())) {
             if (($entry != '.') && ($entry != '..')) {
                 if (is_dir($dir_path.$entry)) {
                     $dir_list[] = $entry;

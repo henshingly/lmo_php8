@@ -83,7 +83,7 @@ if ($viewer_cache_counter == 0 || $viewer_cache_counter > $multi_cfgarray['cache
         $ii = 1;
         //all teams if no fav teams selected
         if (!isset($multi_cfgarray[$multi_cfgarray['liga'.$i].'_'.$ii])) {
-            $all_teams = true;
+            $all_teams = TRUE;
         }
         while (isset($multi_cfgarray[$multi_cfgarray['liga'.$i].'_'.$ii])) {
             $fav_team[$i][$ii] = $multi_cfgarray[$multi_cfgarray['liga'.$i].'_'.$ii];

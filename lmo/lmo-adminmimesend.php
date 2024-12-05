@@ -59,7 +59,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         $zipfile->open($temp, ZipArchive::CREATE);
         $zipfile->addFile(PATH_TO_LMO . "/" . $dirliga . $dummy[$down-1], $dummy[$down-1]);
         $zipfile->close();
-        $mail = new PHPMailer(true);
+        $mail = new PHPMailer(TRUE);
         $mail->isMail();
         $mail->CharSet = "UTF-8";
         $mail->setFrom($aadr, "LMO Admin");
@@ -70,7 +70,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         if ($mail->send()) {
           echo getMessage($text[348]);
         } else {
-          echo getMessage($text[550] . " Details: {$mail->ErrorInfo}", true);
+          echo getMessage($text[550] . " Details: {$mail->ErrorInfo}", TRUE);
         }
         ?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php
@@ -85,7 +85,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
           }
         }
         $zipfile->close();
-        $mail = new PHPMailer(true);
+        $mail = new PHPMailer(TRUE);
         $mail->isMail();
         $mail->CharSet = "UTF-8";
         $mail->setFrom($aadr, "LMO Admin");
@@ -96,7 +96,7 @@ if (($action == "admin") && ($todo == "email") && (($_SESSION["lmouserok"] == 1)
         if ($mail->send()) {
           echo getMessage($text[348]);
         } else {
-          echo getMessage($text[550] . " Details: {$mail->ErrorInfo}", true);
+          echo getMessage($text[550] . " Details: {$mail->ErrorInfo}", TRUE);
         }
         ?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]?><\/a>');</script></p><?php

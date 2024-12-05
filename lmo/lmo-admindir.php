@@ -55,7 +55,7 @@ while($files=readdir($verz)){
           $zeile=trim($zeile);
           if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){  //Sektion
             $sekt=substr($zeile,1,-1);
-          } elseif ((strpos($zeile,"=")!==false) && (substr($zeile,0,1)!=";") && ($sekt=="Options")){  //Wert
+          } elseif ((strpos($zeile,"=")!==FALSE) && (substr($zeile,0,1)!=";") && ($sekt=="Options")){  //Wert
             $option=explode("=",$zeile,2);
             $option_name=$option[0];
             $option_wert=isset($option[1])?$option[1]:'';

@@ -60,7 +60,7 @@
     <td width="8">&nbsp;</td>
     <td class="nobr" align="right"><?php 
   if ($tipp_regeln==1){?>
-        <a href='<?php echo URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,this.target,"scrollbars=yes,resizable=yes");return false;'><?php echo $text['tipp'][185]?></a>&nbsp;&nbsp;<?php 
+        <a href='<?php echo URL_TO_ADDONDIR."/tipp/".$tipp_regelnlink?>' target='regeln' onclick='window.open(this.href,this.target,"scrollbars=yes,resizable=yes");return FALSE;'><?php echo $text['tipp'][185]?></a>&nbsp;&nbsp;<?php 
   }
   echo "<a href=\"".$adda."logout\">".$text[88]."</a>";
   echo "&nbsp;";?>

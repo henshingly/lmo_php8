@@ -31,7 +31,7 @@ if ($action == "tipp") {
   }
   if ($_SESSION["lmotipperok"] == 5) {
     if (($todo == "edit" && $viewermode != 1) || $todo == "einsicht") {
-      $lmo_only_st=true;
+      $lmo_only_st=TRUE;
       require(PATH_TO_LMO."/lmo-openfile.php");
     } elseif ($todo == "tabelle") {
       require_once(PATH_TO_LMO."/lmo-openfile.php");
@@ -86,7 +86,7 @@ if ($action == "tipp") {
     if (aa==""){aa="-1";}
     if (aa=="_"){aa="-1";}
     var ab=aa;
-    if (isNaN(a)==true){a=0;} else {a=parseInt(a);}
+    if (isNaN(a)==TRUE){a=0;} else {a=parseInt(a);}
     if ((z==1) && (a<9999)){a++;}
     if ((z==-1) && (a>-1)){a--;}
     if ((a>-1) && (aa<0)){aa=0;}

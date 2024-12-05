@@ -36,7 +36,7 @@ if ($file != "") {
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));
-        } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+        } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
           $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
           $wert = trim(substr($zeile, strpos($zeile, "=")+1));
           if ($sekt == "Options") {
@@ -81,7 +81,7 @@ if ($file != "") {
     $sekt = "";
     $jkwert = "";
     $datei = fopen($tippfile, "rb");
-    if ($datei == false) {
+    if ($datei == FALSE) {
       exit;
     }
     while (!feof($datei)) {
@@ -92,7 +92,7 @@ if ($file != "") {
         $jkwert = trim(substr($zeile, 1, -1));
       } elseif ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $sekt = trim(substr($zeile, 1, -1));
-      } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+      } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         array_push($tippdaten, $sekt."|".$schl."|".$wert."|".$jkwert."|EOL");
@@ -177,21 +177,21 @@ if ($file != "") {
         } elseif ($op8 == "TI") {
           $mtipp0 = $dum[2];
         } elseif ($op8 == "AT" && $teama0 > 0) {
-          $btip = false;
+          $btip = FALSE;
           if ($dum[2] > 0) {
             if ($now <= $dum[2] && $then > $dum[2]) {
-              $btip = true;
+              $btip = TRUE;
             }
           } elseif ($dummy1 > 0) {
             if ($now <= $dummy1 && $then > $dummy1) {
-              $btip = true;
+              $btip = TRUE;
             }
           } elseif ($dummy2 > 0) {
             if ($now <= $dummy2 && $then > $dummy2) {
-              $btip = true;
+              $btip = TRUE;
             }
           }
-          if ($btip == true) {
+          if ($btip == TRUE) {
             $spiel0 = substr($dum[1], 2);
             $mterm0 = $dum[2];
             if ($lmtype0 == 0) {

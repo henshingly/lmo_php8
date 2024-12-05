@@ -27,10 +27,10 @@ require(PATH_TO_ADDONDIR . '/spieler/lmo-statloadconfig.php');
 $sort = isset($_GET['sort'])? $_GET['sort']: $spieler_standard_sortierung;
 if (isset($_GET['begin'])) {
     $begin = $_GET['begin'];
-    $all = false;
+    $all = FALSE;
 } else {
     $begin = 0;
-    $all = true;
+    $all = TRUE;
 }
 $direction = isset($_GET['direction'])? $_GET['direction']: $spieler_standard_richtung;
 $team = isset($_GET['team'])? urldecode($_GET['team']): '';
@@ -38,12 +38,12 @@ $team = isset($_GET['team'])? urldecode($_GET['team']): '';
 if ($filepointer = fopen($filename, "r+b")) {
     $spalten = array(); //Spaltenbezeichnung
     $data = array(); //Daten
-    $typ = array(); //Spaltentyp (true=String)
+    $typ = array(); //Spaltentyp (TRUE=String)
     $spalten = fgetcsv($filepointer, 10000, "#"); //Zeile mit Spaltenbezeichnern
-    $formel = false;
+    $formel = FALSE;
     for ($i = 0; $i < count($spalten); $i++) {
         if (strstr($spalten[$i], "*_*-*")) {
-            $formel = true;
+            $formel = TRUE;
             $spalten[$i] = substr($spalten[$i], 0, strlen($spalten[$i]) - 5);
         }
         if ($spalten[$i] == $text['spieler'][25]) {
@@ -58,7 +58,7 @@ if ($filepointer = fopen($filename, "r+b")) {
     while ($data[$zeile] = fgetcsv ($filepointer, 10000, "#")) {
         if ((isset($vereinsspalte) && isset($data[$zeile][$vereinsspalte]) && $spieler_vereinsweise_anzeigen == 1 && $team == $data[$zeile][$vereinsspalte]) || $team == '') {
             for ($i = 0; $i < count($data[$zeile]); $i++) {
-                if (!is_numeric($data[$zeile][$i])) $typ[$i] = true;
+                if (!is_numeric($data[$zeile][$i])) $typ[$i] = TRUE;
             }
             $zeile++;
         } else {
@@ -79,7 +79,7 @@ if ($filepointer = fopen($filename, "r+b")) {
 
     if ($begin + $spieler_anzeige_pro_seite > $zeile) $maxdisplay = $zeile - $begin;
       else $maxdisplay = $spieler_anzeige_pro_seite;
-    if ($spieler_anzeige_pro_seite <= 0 || $all == true) {
+    if ($spieler_anzeige_pro_seite <= 0 || $all == TRUE) {
         $maxdisplay = $zeile;
         $begin = 0;
     }
@@ -105,7 +105,7 @@ if ($filepointer = fopen($filename, "r+b")) {
     </style>
   </head>
   <body>
-    <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
+    <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return FALSE;"><?php echo $text[562]?><\/a><\/small>');</script>
     <h1><?php
     echo $text['spieler'][18];
     if ($team!='') {
@@ -165,7 +165,7 @@ if ($filepointer = fopen($filename, "r+b")) {
     }?>
 
       </table>
-    <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562]?><\/a><\/small>');</script>
+    <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return FALSE;"><?php echo $text[562]?><\/a><\/small>');</script>
   </body>
 </html><?php
 } else {

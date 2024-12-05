@@ -56,7 +56,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
     * @access    public
     * @see      $haltOnWarning, $warn, warning()
     */
-    var $printWarning = false;
+    var $printWarning = FALSE;
 
     /**
     * Call die() on warning?
@@ -64,7 +64,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
     * @access    public
     * @see       $warn, $printWarning, warning()
     */
-    var $haltOnWarning = false;
+    var $haltOnWarning = FALSE;
 
     /**
     * RegExp used to test for a valid blockname.
@@ -156,14 +156,14 @@ class HTML_Template_ITX extends HTML_Template_IT {
     *
     * @param    string      Blockname
     * @param    string      Blockcontent
-    * @param    boolean     true if the new block inherits the content
+    * @param    boolean     TRUE if the new block inherits the content
     *                       of the old block
     * @return   boolean
     * @throws   IT_Error
     * @see      replaceBlockfile(), addBlock(), addBlockfile()
     * @access   public
     */
-    function replaceBlock($block, $template, $keep_content = false)
+    function replaceBlock($block, $template, $keep_content = FALSE)
     {
         if (!isset($this->blocklist[$block])) {
             return new IT_Error(
@@ -197,7 +197,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
         // old TODO - I'm not sure if we need this
         // update caches
 
-        return true;
+        return TRUE;
     } // end func replaceBlock
 
     /**
@@ -206,9 +206,9 @@ class HTML_Template_ITX extends HTML_Template_IT {
     * @brother replaceBlock()
     * @param    string    Blockname
     * @param    string    Name of the file that contains the blockcontent
-    * @param    boolean   true if the new block inherits the content of the old block
+    * @param    boolean   TRUE if the new block inherits the content of the old block
     */
-    function replaceBlockfile($block, $filename, $keep_content = false)
+    function replaceBlockfile($block, $filename, $keep_content = FALSE)
     {
         return $this->replaceBlock($block, $this->getFile($filename), $keep_content);
     } // end func replaceBlockfile
@@ -301,7 +301,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
         $template = "<!-- BEGIN $blockname -->" . $template . "<!-- END $blockname -->";
         $this->findBlocks($template);
         if ($this->flagBlocktrouble) {
-            return false;    // findBlocks() already throws an exception
+            return FALSE;    // findBlocks() already throws an exception
         }
         $this->blockinner[$parents[0]][] = $blockname;
         $this->blocklist[$parents[0]] = preg_replace(
@@ -325,7 +325,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
         }
     }
     */
-        return true;
+        return TRUE;
     } // end func addBlock
 
     /**
@@ -521,7 +521,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
                                           "object"        => $callbackobject
                                         );
 
-        return true;
+        return TRUE;
     } // end func setCallbackFunction
 
     /**
@@ -678,11 +678,11 @@ class HTML_Template_ITX extends HTML_Template_IT {
         }
 
         if (!is_array($delimiter)) {
-            $delimiter = array( $delimiter => true );
+            $delimiter = array( $delimiter => TRUE );
         }
 
         $len         = strlen($code);
-        $enclosed    = false;
+        $enclosed    = FALSE;
         $enclosed_by = '';
 
         if (isset($delimiter[$code[0]])) {
@@ -725,12 +725,12 @@ class HTML_Template_ITX extends HTML_Template_IT {
     *
     * @param    string    Blockname
     * @param    mixed     Name of one variable or array of variables
-    *                     ( array ( name => true ) ) to be stripped.
+    *                     ( array ( name => TRUE ) ) to be stripped.
     */
     function deleteFromBlockvariablelist($block, $variables)
     {
         if (!is_array($variables)) {
-            $variables = array($variables => true);
+            $variables = array($variables => TRUE);
         }
 
         reset($this->blockvariables[$block]);
@@ -754,7 +754,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
 
         if (0 != count($regs[1])) {
             foreach ($regs[1] as $k => $var) {
-                $this->blockvariables[$block][$var] = true;
+                $this->blockvariables[$block][$var] = TRUE;
             }
         } else {
             $this->blockvariables[$block] = array();

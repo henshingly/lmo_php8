@@ -17,13 +17,13 @@
   *
   */
 
-$edit=false;
+$edit=FALSE;
 if (isset($_POST['nick'])) {
   //Edited
   $nick=trim($_POST['nick']);
 } elseif (isset($_GET['nick'])) {
   //toEdit
-  $edit=true;
+  $edit=TRUE;
   $nick=trim($_GET['nick']);
 } else {
   $nick='';
@@ -223,7 +223,7 @@ if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
     </tr>
     <tr>
       <td align="center">
-        <form name="lmotippedit" action="<?php echo  $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="if (this.nick.value=='') {alert ('<?php echo $text['tipp'][112]?>');this.nick.focus();return false;}">
+        <form name="lmotippedit" action="<?php echo  $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="if (this.nick.value=='') {alert ('<?php echo $text['tipp'][112]?>');this.nick.focus();return FALSE;}">
           <input type="hidden" name="action" value="admin">
           <input type="hidden" name="todo" value="tippuseredit">
           <input type="hidden" name="newpage" value="<?php echo $save == count($users)?'1':'0'?>">
@@ -304,7 +304,7 @@ if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
             <tr>
               <td align="left"><input type="radio" name="xtippervereinradio" value="1" id="1" <?php if ($xtippervereinradio==1){echo "checked";} ?>><?php echo  $text['tipp'][48]; ?></td>
               <td align="left">
-                <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true"><?php 
+                <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=TRUE"><?php 
                 echo "<option value=\"\" "; if ($xtippervereinalt==""){echo "selected";} echo ">".$text['tipp'][51]."</option>";
                   require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewteams.php");?>
                 </select>
@@ -312,7 +312,7 @@ if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
             </tr>
             <tr>
               <td align="left"><input type="radio" name="xtippervereinradio" value="2" id="2" <?php if ($xtippervereinradio==2){echo "checked";} ?>><?php echo  $text['tipp'][49]; ?></td>
-              <td align="left"><input class="lmo-formular-input" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo  $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></td>
+              <td align="left"><input class="lmo-formular-input" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo  $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=TRUE"></td>
             </tr><?php  }?>
             <tr>
               <th align="left" colspan="2"><?php echo  $text['tipp'][273]; ?></th>

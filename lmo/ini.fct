@@ -390,7 +390,7 @@ function DeleteIniItem($inifile, $section, $item) {
 
 
   $writing = FALSE;
-  $ini_exists = flase;
+  $ini_exists = FALSE;
   $section_exists = FALSE;
   $item_exists = FALSE;
   $ini_sec = ReadIniSections($inifile);

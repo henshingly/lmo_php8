@@ -27,7 +27,7 @@ if (substr($tippfile, -4) != ".tip") {
 $tippdaten = array();
 $sekt = "";
 $datei = fopen($tippfile, "rb");
-if ($datei == false) {
+if ($datei == FALSE) {
   exit;
 }
 while (!feof($datei)) {
@@ -38,7 +38,7 @@ while (!feof($datei)) {
   } elseif ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
     $sekt = trim(substr($zeile, 1, -1));
     $jkwert = "";
-  } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+  } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
     $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
     $wert = trim(substr($zeile, strpos($zeile, "=")+1));
     array_push($tippdaten, $sekt."|".$schl."|".$wert."|".$jkwert."|EOL");

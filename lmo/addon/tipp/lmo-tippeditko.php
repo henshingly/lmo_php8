@@ -31,12 +31,12 @@ for ($n=0;$n<$modus[$st-1];$n++){
   <tr><?php
   if ($tipp_einsichterst==2) {
     if ($goala[$st-1][$i][$n]!="_" && $goalb[$st-1][$i][$n]!="_") {
-      $btip1=false;
+      $btip1=FALSE;
     } else {
-      $btip1=true;
+      $btip1=TRUE;
     }
   } else {
-    $btip1=false;
+    $btip1=FALSE;
   }
 
   if ($datm==1) {
@@ -100,7 +100,7 @@ for ($n=0;$n<$modus[$st-1];$n++){
   }?>
     <td>&nbsp;</td><?php
   if ($tipp_showtendenzabs==1){ ?>
-    <td align="center" class="nobr"><?php    if ($btip1==false) {
+    <td align="center" class="nobr"><?php    if ($btip1==FALSE) {
       if (!isset($tendenz1[$i][$n])) {
         $tendenz1[$i][$n]=0;
       }
@@ -115,7 +115,7 @@ for ($n=0;$n<$modus[$st-1];$n++){
     </td>
     <td>&nbsp;</td><?php  }
   if ($tipp_showtendenzpro==1){ ?>
-    <td align="center" class="nobr"><?php    if ($btip1==false) {
+    <td align="center" class="nobr"><?php    if ($btip1==FALSE) {
       if (!isset($anzgetippt[$i][$n])) {
         $anzgetippt[$i][$n]=0;
       }
@@ -136,14 +136,14 @@ for ($n=0;$n<$modus[$st-1];$n++){
     }?>
     </td>
     <td>&nbsp;</td><?php  }
-  if ($btip[$i][$n]==true){
+  if ($btip[$i][$n]==TRUE){
     $savebutton=1;
   }
 
 /**ERGEBNISMODUS*/
   if ($tipp_tippmodus==1){
     if ($tipp_showdurchschntipp==1){?>
-      <td align="center" class="nobr"><?php      if ($btip1==false) {
+      <td align="center" class="nobr"><?php      if ($btip1==FALSE) {
         if (!isset($anzgetippt[$i][$n])) {
           $anzgetippt[$i][$n]=0;
         }
@@ -166,7 +166,7 @@ for ($n=0;$n<$modus[$st-1];$n++){
       }?>
     </td>
     <td>&nbsp;</td><?php    }
-    if ($btip[$i][$n]==true){ ?>
+    if ($btip[$i][$n]==TRUE){ ?>
     <td align="right">
       <input class="lmo-formular-input" type="text" name="xtippa<?php echo $i.$n; ?>" size="4" maxlength="4" value="<?php echo $goaltippa[$i][$n]; ?>" onKeyDown="lmotorclk('a','<?php echo $i.$n; ?>',event.keyCode)">
     </td><?php      if ($tipp_pfeiltipp==1){ ?>
@@ -174,12 +174,12 @@ for ($n=0;$n<$modus[$st-1];$n++){
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td>
-            <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text['tipp'][243]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>a" width="7" height="7" border="0"><\/a>')</script>
+            <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',1);return FALSE;" title="<?php echo $text['tipp'][243]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>a\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>a\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>a" width="7" height="7" border="0"><\/a>')</script>
           </td>
         </tr>
         <tr>
           <td>
-            <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text['tipp'][243]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>b" width="7" height="7" border="0"><\/a>')</script>
+            <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'<?php echo $i.$n; ?>\',-1);return FALSE;" title="<?php echo $text['tipp'][243]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>b\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>b\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>b" width="7" height="7" border="0"><\/a>')</script>
           </td>
         </tr>
       </table>
@@ -188,7 +188,7 @@ for ($n=0;$n<$modus[$st-1];$n++){
       if ($tipp_pfeiltipp==1){ ?>
     <td>&nbsp;</td><?php      }?>
     <td align="right"><?php echo $goaltippa[$i][$n]; ?></td><?php    } ?>
-    <td>:</td><?php    if ($btip[$i][$n]==true){ ?>
+    <td>:</td><?php    if ($btip[$i][$n]==TRUE){ ?>
     <td align="right">
       <input class="lmo-formular-input" type="text" name="xtippb<?php echo $i.$n; ?>" size="4" maxlength="4" value="<?php echo $goaltippb[$i][$n]; ?>" onKeyDown="lmotorclk('b','<?php echo $i.$n; ?>',event.keyCode)">
     </td><?php      if ($tipp_pfeiltipp==1){ ?>
@@ -196,12 +196,12 @@ for ($n=0;$n<$modus[$st-1];$n++){
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td>
-            <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',1);return false;" title="<?php echo $text['tipp'][244]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>f\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>f\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>f" width="7" height="7" border="0"><\/a>')</script>
+            <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',1);return FALSE;" title="<?php echo $text['tipp'][244]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>f\',img1)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>f\',img0)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif" name="ximg<?php echo $i.$n; ?>f" width="7" height="7" border="0"><\/a>')</script>
           </td>
         </tr>
         <tr>
           <td>
-            <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',-1);return false;" title="<?php echo $text['tipp'][244]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>d\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>d\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>d" width="7" height="7" border="0"><\/a>')</script>
+            <script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'<?php echo $i.$n; ?>\',-1);return FALSE;" title="<?php echo $text['tipp'][244]; ?>" onMouseOver="lmoimg(\'<?php echo $i.$n; ?>d\',img3)" onMouseOut="lmoimg(\'<?php echo $i.$n; ?>d\',img2)"><img src="<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif" name="ximg<?php echo $i.$n; ?>d" width="7" height="7" border="0"><\/a>')</script>
           </td>
         </tr>
       </table>
@@ -224,18 +224,18 @@ for ($n=0;$n<$modus[$st-1];$n++){
       $tipp=2;
     }?>
     <td align="right">
-      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="1" <?php if ($tipp==1){echo " checked";} if ($btip[$i][$n]==false){echo " disabled";} ?>>
+      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="1" <?php if ($tipp==1){echo " checked";} if ($btip[$i][$n]==FALSE){echo " disabled";} ?>>
     </td><?php    if ($hidr==0){ ?>
     <td align="center">
-      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="3" <?php if ($tipp==0){echo " checked";} if ($btip[$i][$n]==false){echo " disabled";} ?>>
+      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="3" <?php if ($tipp==0){echo " checked";} if ($btip[$i][$n]==FALSE){echo " disabled";} ?>>
     </td><?php    }?>
     <td align="right">
-      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="2" <?php if ($tipp==2){echo " checked";} if ($btip[$i][$n]==false){echo " disabled";} ?>>
+      <input type="radio" name="xtipp<?php echo $i.$n; ?>" value="2" <?php if ($tipp==2){echo " checked";} if ($btip[$i][$n]==FALSE){echo " disabled";} ?>>
     </td><?php  } /* ende ($tipp_tippmodus==0) */
 
 /**BEIDE*/
   if ($tipp_jokertipp==1){ ?>
-    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if ($jksp==($i+1).($n+1)){echo " checked";} if ($btip[$i][$n]==false){echo " disabled";} elseif ($tipp_jokertippaktiv==false){echo " disabled";} ?>></td><?php  }?>
+    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i+1).($n+1); ?>" <?php if ($jksp==($i+1).($n+1)){echo " checked";} if ($btip[$i][$n]==FALSE){echo " disabled";} elseif ($tipp_jokertippaktiv==FALSE){echo " disabled";} ?>></td><?php  }?>
     <td class="lmoBackMarkierung" align="right"><?php echo $goala[$st-1][$i][$n]; ?></td>
     <td class="lmoBackMarkierung" align="center">:</td>
     <td class="lmoBackMarkierung" align="left"><?php echo $goalb[$st-1][$i][$n]; ?></td>
@@ -311,7 +311,7 @@ for ($n=0;$n<$modus[$st-1];$n++){
     if ($mtipp[$st-1][$i][$n] == 1) {
       $lmo_spielnotiz.="\n\n".$text['tipp'][231];
     }
-    echo "<a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+    echo "<a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return FALSE;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
     $lmo_spielnotiz="";
   } else {
     echo "&nbsp;";

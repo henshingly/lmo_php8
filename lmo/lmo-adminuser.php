@@ -41,12 +41,12 @@ if ($_SESSION['lmouserok']==2) {
             if (substr($lmo_helfer_ligen[$u],-4)==".l98") {
               $lmo_helfer_ligen[$u]=substr($lmo_helfer_ligen[$u],0,$l);  //l98-Endung entfernen
             }
-            while (strrchr($lmo_helfer_ligen[$u],"/")!==false) {
+            while (strrchr($lmo_helfer_ligen[$u],"/")!==FALSE) {
               $lmo_helfer_ligen[$u]=strrchr($lmo_helfer_ligen[$u],"/");
               $l=strlen($lmo_helfer_ligen[$u])-1;
               $lmo_helfer_ligen[$u]=substr($lmo_helfer_ligen[$u],1,$l);
             }
-            if (file_exists($dirliga.$lmo_helfer_ligen[$u].".l98")===true) {  //Datei existiert
+            if (file_exists($dirliga.$lmo_helfer_ligen[$u].".l98")===TRUE) {  //Datei existiert
               $lmo_helfer_ligen_neu[]=$lmo_helfer_ligen[$u];
             }
           }
@@ -142,10 +142,10 @@ if ($_SESSION['lmouserok']==2) {
           </tr>
           <tr>
             <td align="right" rowspan="2"><?php echo $text[324]?></td>
-            <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=true" class="lmo-formular-input" type="radio" name="xadmin_rang<?php echo $show?>" value="2" <?php if ($lmo_admin[2]==2) echo " checked";?>><?php echo $text[326]?></td>
+            <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=TRUE" class="lmo-formular-input" type="radio" name="xadmin_rang<?php echo $show?>" value="2" <?php if ($lmo_admin[2]==2) echo " checked";?>><?php echo $text[326]?></td>
           </tr>
           <tr>
-            <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=false" class="lmo-formular-input" type="radio" name="xadmin_rang<?php echo $show?>" value="1" <?php if ($lmo_admin[2]==1) echo " checked";?>><?php echo $text[325]?></td>
+            <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show?>.xadmin_erweitert<?php echo $show?>.disabled=FALSE" class="lmo-formular-input" type="radio" name="xadmin_rang<?php echo $show?>" value="1" <?php if ($lmo_admin[2]==1) echo " checked";?>><?php echo $text[325]?></td>
           </tr>
           <tr>
             <td>&nbsp;</td>

@@ -37,19 +37,19 @@ class Cache_Lite_Output extends Cache_Lite
     *
     * @param string $id cache id
     * @param string $group name of the cache group
-    * @return boolean true if the cache is hit (false else)
+    * @return boolean TRUE if the cache is hit (FALSE else)
     * @access public
     */
     function start($id, $group = 'default')
     {
         $data = $this->get($id, $group);
-        if ($data !== false) {
+        if ($data !== FALSE) {
             echo($data);
-            return true;
+            return TRUE;
         } else {
             ob_start();
-            ob_implicit_flush(false);
-            return false;
+            ob_implicit_flush(FALSE);
+            return FALSE;
         }
     }
 

@@ -152,23 +152,23 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
             } elseif ($tipp_einsichterst == 2) {
               if ($lmtype != 0) {
                 if ($goala[$st-1][$i][$n] != "_" && $goalb[$st-1][$i][$n] != "_") {
-                  $btip[$i][$n] = false;
+                  $btip[$i][$n] = FALSE;
                 } else {
-                  $btip[$i][$n] = true;
+                  $btip[$i][$n] = TRUE;
                 }
               } else {
                 if ($goala[$st-1][$i] != "_" && $goalb[$st-1][$i] != "_") {
-                  $btip[$i] = false;
+                  $btip[$i] = FALSE;
                 } else {
-                  $btip[$i] = true;
+                  $btip[$i] = TRUE;
                 }
               }
             } else {
               // Tipps immer anzeigen
               if ($lmtype != 0) {
-                $btip[$i][$n] = false;
+                $btip[$i][$n] = FALSE;
               } else {
-                $btip[$i] = false;
+                $btip[$i] = FALSE;
               }
             }
           }
@@ -200,7 +200,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
             }?>              
           </th><?php 
           } elseif ($l<$ende) {
-            if (($lmtype==0 && $btip[$i]==true) || ($lmtype!=0 && $btip[$i][$n]==true)){ ?>
+            if (($lmtype==0 && $btip[$i]==TRUE) || ($lmtype!=0 && $btip[$i][$n]==TRUE)){ ?>
           <td align="center" class="nobr"><?php 
             } else {
             if ($lmtype != 0) {
@@ -342,16 +342,16 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
           </td><?php 
           } elseif ($l==$ende){?>
           <td align="center" class="lmoLeer nobr"><?php            if ($anztipper>0){
-              if ($lmtype==0 && $btip[$i]==false){
+              if ($lmtype==0 && $btip[$i]==FALSE){
                 echo $tendenz1[$i]."-".$tendenz0[$i]."-".$tendenz2[$i];
-              } elseif ($lmtype!=0 && $btip[$i][$n]==false){
+              } elseif ($lmtype!=0 && $btip[$i][$n]==FALSE){
                 echo $tendenz1[$i][$n]."-".$tendenz0[$i][$n]."-".$tendenz2[$i][$n];
               }
             }?>
           </td><?php 
           } elseif ($l==($ende+1)){?>
           <td align="center" class="lmoLeer nobr"><strong><?php            if ($anztipper > 0 && $tipp_tippmodus == 1) {
-              if ($lmtype == 0 && $btip[$i] == false) {
+              if ($lmtype == 0 && $btip[$i] == FALSE) {
                 if ($anzgetippt[$i] > 0) {
                   if ($toregesa[$i] < 10 && $toregesb[$i] < 10) {
                     $nachkomma = 1;
@@ -360,7 +360,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                   }
                   echo number_format(($toregesa[$i]/$anzgetippt[$i]), $nachkomma, ".", ",").":".number_format(($toregesb[$i]/$anzgetippt[$i]), $nachkomma, ".", ",");
                 }
-              } elseif ($lmtype != 0 && $btip[$i][$n] == false) {
+              } elseif ($lmtype != 0 && $btip[$i][$n] == FALSE) {
                 if ($anzgetippt[$i][$n] > 0) {
                   if ($toregesa[$i][$n] < 10 && $toregesb[$i][$n] < 10) {
                     $nachkomma = 1;

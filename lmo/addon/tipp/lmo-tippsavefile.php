@@ -46,9 +46,9 @@ if ($tippfile != "") {
       exit;
     } elseif ($todo != "newtipper" && $todo != "newligen" && $todo != "tippuseredit") {
       if (!isset($jkspanticheat)) {
-        $jkspanticheat = false;
+        $jkspanticheat = FALSE;
       }
-      if ($jkspanticheat == false) {
+      if ($jkspanticheat == FALSE) {
         echo getMessage($text['tipp'][41]);
       } else {
         echo getMessage($text['tipp'][41]." ".$text['tipp'][292]);

@@ -54,7 +54,7 @@ define('FTP_TIMEOUT_SEC', 0);
 /**
  * &resource ftp_connect ( string host [, int port [, int timeout ] ] );
  *
- * Opens an FTP connection and return resource or false on failure.
+ * Opens an FTP connection and return resource or FALSE on failure.
  *
  * FTP Success respons code: 220
  *
@@ -72,10 +72,10 @@ define('FTP_TIMEOUT_SEC', 0);
  */
 function &ftp_connect($host, $port = 21, $timeout = 90)
 {
-    $false = false; // We are going to return refrence (E_STRICT)
+    $FALSE = FALSE; // We are going to return refrence (E_STRICT)
 
     if (!is_string($host) || !is_integer($port) || !is_integer($timeout)) {
-        return $false;
+        return $FALSE;
     }
 
     $control                        = @fsockopen($host, $port, $iError, $sError,
@@ -83,10 +83,10 @@ function &ftp_connect($host, $port = 21, $timeout = 90)
     $GLOBALS['_NET_FTP']['timeout'] = $timeout;
 
     if (!is_resource($control)) {
-        return $false;
+        return $FALSE;
     }
 
-    stream_set_blocking($control, true);
+    stream_set_blocking($control, TRUE);
     stream_set_timeout($control, $timeout);
 
     do {
@@ -98,7 +98,7 @@ function &ftp_connect($host, $port = 21, $timeout = 90)
         return $control;
     }
 
-    return $false;
+    return $FALSE;
 }
 
 /**
@@ -123,7 +123,7 @@ function &ftp_connect($host, $port = 21, $timeout = 90)
 function ftp_login(&$control, $username, $password)
 {
     if (!is_resource($control) || is_null($username)) {
-        return false;
+        return FALSE;
     }
 
     fputs($control, 'USER '.$username."\r\n");
@@ -134,7 +134,7 @@ function ftp_login(&$control, $username, $password)
     } while ($array['unread_bytes'] > 0);
 
     if (substr($contents[count($contents)-1], 0, 3) != 331) {
-        return false;
+        return FALSE;
     }
 
     fputs($control, 'PASS '.$password."\r\n");
@@ -145,13 +145,13 @@ function ftp_login(&$control, $username, $password)
     } while ($array['unread_bytes']);
 
     if (substr($contents[count($contents)-1], 0, 3) == 230) {
-        return true;
+        return TRUE;
     }
 
     trigger_error('ftp_login() [<a href="function.ftp-login">function.ftp-login'.
         '</a>]: '.$contents[count($contents)-1], E_USER_WARNING);
     
-    return false;
+    return FALSE;
 }
 
 /**
@@ -174,13 +174,13 @@ function ftp_login(&$control, $username, $password)
 function ftp_quit(&$control)
 {
     if (!is_resource($control)) {
-        return false;
+        return FALSE;
     }
 
     fputs($control, 'QUIT'."\r\n");
     fclose($control);
     $control = null;
-    return true;
+    return TRUE;
 }
 
 /**
@@ -232,7 +232,7 @@ function ftp_pwd(&$control)
         return $path;
     }
 
-    return false;
+    return FALSE;
 }
 
 /**
@@ -253,7 +253,7 @@ function ftp_pwd(&$control)
 function ftp_chdir(&$control, $pwd)
 {
     if (!is_resource($control) || !is_string($pwd)) {
-        return false;
+        return FALSE;
     }
 
     fputs($control, 'CWD '.$pwd."\r\n");
@@ -264,18 +264,18 @@ function ftp_chdir(&$control, $pwd)
     } while ($array['unread_bytes'] > 0);
 
     if (substr($content[count($content)-1], 0, 3) == 250) {
-        return true;
+        return TRUE;
     }
 
     trigger_error('ftp_chdir() [<a
             href="function.ftp-chdir">function.ftp-chdir</a>]:
                 ' .$content[count($content)-1], E_USER_WARNING);
 
-    return false;
+    return FALSE;
 }
 
 $_NET_FTP                = array();
-$_NET_FTP['USE_PASSIVE'] = false;
+$_NET_FTP['USE_PASSIVE'] = FALSE;
 $_NET_FTP['DATA']        = null;
 
 /**
@@ -293,7 +293,7 @@ $_NET_FTP['DATA']        = null;
  * FTP success response code: 227
  *
  * @param stream  &$control FTP stream
- * @param boolean $pasv     True to switch to passive, false for active mode
+ * @param boolean $pasv     True to switch to passive, FALSE for active mode
  *
  * @access public
  * @return boolean
@@ -301,7 +301,7 @@ $_NET_FTP['DATA']        = null;
 function ftp_pasv(&$control, $pasv)
 {
     if (!is_resource($control) || !is_bool($pasv)) {
-        return false;
+        return FALSE;
     }
 
     // If data connection exists, destroy it
@@ -317,7 +317,7 @@ function ftp_pasv(&$control, $pasv)
 
     // Are we suppost to create active or passive connection?
     if (!$pasv) {
-        $GLOBALS['_NET_FTP']['USE_PASSIVE'] = false;
+        $GLOBALS['_NET_FTP']['USE_PASSIVE'] = FALSE;
         // Pick random "low bit"
         $low = rand(39, 250);
         // Pick random "high bit"
@@ -337,12 +337,12 @@ function ftp_pasv(&$control, $pasv)
                     fputs($control, 'PORT '.$s."\r\n");
                     $line = fgets($control, 512);
                     if (substr($line, 0, 3) == 200) {
-                        return true;
+                        return TRUE;
                     }
                 }
             }
         }
-        return false;
+        return FALSE;
     }
 
     // Since we are here, we are suppost to create passive data connection.
@@ -355,7 +355,7 @@ function ftp_pasv(&$control, $pasv)
     } while ($array['unread_bytes']);
 
     if (substr($cont = $content[count($content)-1], 0, 3) != 227) {
-        return false;
+        return FALSE;
     }
 
     $pos    = strpos($cont, '(')+1;
@@ -373,15 +373,15 @@ function ftp_pasv(&$control, $pasv)
         $GLOBALS['_NET_FTP']['timeout']);
 
     if (is_resource($data)) {
-        $GLOBALS['_NET_FTP']['USE_PASSIVE'] = true;
+        $GLOBALS['_NET_FTP']['USE_PASSIVE'] = TRUE;
         $GLOBALS['_NET_FTP']['DATA']        = &$data;
-        stream_set_blocking($data, true);
+        stream_set_blocking($data, TRUE);
         stream_set_timeout($data, $GLOBALS['_NET_FTP']['timeout']);
 
-        return true;
+        return TRUE;
     }
 
-    return false;
+    return FALSE;
 }
 
 /**
@@ -399,10 +399,10 @@ function ftp_pasv(&$control, $pasv)
  * @access public
  * @return   array
  */
-function ftp_rawlist(&$control, $pwd, $recursive = false)
+function ftp_rawlist(&$control, $pwd, $recursive = FALSE)
 {
     if (!is_resource($control) || !is_string($pwd)) {
-        return false;
+        return FALSE;
     }
 
     if (!isset($GLOBALS['_NET_FTP']['DATA']) ||
@@ -413,7 +413,7 @@ function ftp_rawlist(&$control, $pwd, $recursive = false)
 
     $msg = fgets($control, 512);
     if (substr($msg, 0, 3) == 425) {
-        return false;
+        return FALSE;
     }
 
     $data = &$GLOBALS['_NET_FTP']['DATA'];
@@ -424,8 +424,8 @@ function ftp_rawlist(&$control, $pwd, $recursive = false)
     $content = array();
 
     switch ($GLOBALS['_NET_FTP']['USE_PASSIVE']) {
-    case true:
-        while (true) {
+    case TRUE:
+        while (TRUE) {
             $string = rtrim(fgets($data, 1024));
             
             if ($string=='') {
@@ -438,7 +438,7 @@ function ftp_rawlist(&$control, $pwd, $recursive = false)
         fclose($data);
         break;
         
-    case false:
+    case FALSE:
         $string = socket_read($data, 1024, PHP_BINARY_READ);
         
         $content = explode("\n", $string);
@@ -469,14 +469,14 @@ function ftp_rawlist(&$control, $pwd, $recursive = false)
 function ftp_systype(&$control)
 {
     if (!is_resource($control)) {
-        return false;
+        return FALSE;
     }
 
     fputs($control, 'SYST'."\r\n");
     $line = fgets($control, 256);
 
     if (substr($line, 0, 3) != 215) {
-        return false;
+        return FALSE;
     }
 
     $os = substr($line, 4, strpos($line, ' ', 4)-4);
@@ -505,7 +505,7 @@ function ftp_systype(&$control)
 function ftp_alloc(&$control, $int, &$msg = null)
 {
     if (!is_resource($control) || !is_integer($int)) {
-        return false;
+        return FALSE;
     }
 
     fputs($control, 'ALLO '.$int.' R '.$int."\r\n");
@@ -514,10 +514,10 @@ function ftp_alloc(&$control, $int, &$msg = null)
 
     $code = substr($msg, 0, 3);
     if ($code == 200 || $code == 202) {
-        return true;
+        return TRUE;
     }
 
-    return false;
+    return FALSE;
 }
 
 /**
@@ -543,7 +543,7 @@ function ftp_put(&$control, $remote, $local, $mode, $pos = 0)
 {
     if (!is_resource($control) || !is_readable($local) ||
             !is_integer($mode) || !is_integer($pos)) {
-        return false;
+        return FALSE;
     }
 
     $types   = array (
@@ -575,7 +575,7 @@ function ftp_put(&$control, $remote, $local, $mode, $pos = 0)
     fputs($control, 'TYPE '.$types[$mode]."\r\n");
     $line = fgets($control, 256); // "Type set to TYPE"
     if (substr($line, 0, 3) != 200) {
-        return false;
+        return FALSE;
     }
 
     fputs($control, 'STOR '.$remote."\r\n");
@@ -583,20 +583,20 @@ function ftp_put(&$control, $remote, $local, $mode, $pos = 0)
     $line = fgets($control, 256); // "Opening TYPE mode data connect."
 
     if (substr($line, 0, 3) != 150) {
-        return false;
+        return FALSE;
     }
 
     // Creating resource to $local file
     $fp = fopen($local, 'r'. $windows[$mode]);
     if (!is_resource($fp)) {
         $fp = null;
-        return false;
+        return FALSE;
     }
 
     // Loop throu that file and echo it to the data socket
     $i = 0;
     switch ($GLOBALS['_NET_FTP']['USE_PASSIVE']) {
-    case false:
+    case FALSE:
         $data = &socket_accept($data);
         while (!feof($fp)) {
             $i += socket_write($data, fread($fp, 10240), 10240);
@@ -604,7 +604,7 @@ function ftp_put(&$control, $remote, $local, $mode, $pos = 0)
         socket_close($data);
         break;
 
-    case true:
+    case TRUE:
         while (!feof($fp)) {
             $i += fputs($data, fread($fp, 10240), 10240);
         }
@@ -617,7 +617,7 @@ function ftp_put(&$control, $remote, $local, $mode, $pos = 0)
     do {
         $line = fgets($control, 256);
     } while (substr($line, 0, 4) != "226 ");
-    return true;
+    return TRUE;
 }
 
 /**
@@ -637,7 +637,7 @@ function ftp_get(&$control, $local, $remote, $mode, $resume = 0)
 {
     if (!is_resource($control) || !is_writable(dirname($local)) ||
             !is_integer($mode) || !is_integer($resume)) {
-        return false;
+        return FALSE;
     }
     $types   = array (
             0 => 'A',
@@ -657,13 +657,13 @@ function ftp_get(&$control, $local, $remote, $mode, $resume = 0)
     fputs($control, 'TYPE '.$types[$mode]."\r\n");
     $line = fgets($control, 256);
     if (substr($line, 0, 3) != 200) {
-        return false;
+        return FALSE;
     }
 
     $fp = fopen($local, 'w'.$windows[$mode]);
     if (!is_resource($fp)) {
         $fp = null;
-        return false;
+        return FALSE;
     }
 }
 
@@ -682,15 +682,15 @@ function ftp_cdup(&$control)
     $line = fgets($control, 256);
 
     if (substr($line, 0, 3) != 250) {
-        return false;
+        return FALSE;
     }
 
-    return true;
+    return TRUE;
 }
 
 /**
  * Set permissions on a file via FTP
- * Returns the new file permission on success or false on error
+ * Returns the new file permission on success or FALSE on error
  *
  * NOTE: This command is *not* supported by the standard
  * NOTE: This command not ready!
@@ -706,7 +706,7 @@ function ftp_cdup(&$control)
 function ftp_chmod(&$control, $mode, $file)
 {
     if (!is_resource($control) || !is_integer($mode) || !is_string($file)) {
-        return false;
+        return FALSE;
     }
 
     // chmod not in the standard, proftpd doesn't recognize it
@@ -721,7 +721,7 @@ function ftp_chmod(&$control, $mode, $file)
     trigger_error('ftp_chmod() [<a
             href="function.ftp-chmod">function.ftp-chmod</a>]: ' .
             rtrim($line), E_USER_WARNING);
-    return false;
+    return FALSE;
 }
 
 /**
@@ -737,17 +737,17 @@ function ftp_chmod(&$control, $mode, $file)
 function ftp_delete(&$control, $path)
 {
     if (!is_resource($control) || !is_string($path)) {
-        return false;
+        return FALSE;
     }
 
     fputs($control, 'DELE '.$path."\r\n");
     $line = fgets($control, 256);
 
     if (substr($line, 0, 3) == 250) {
-        return true;
+        return TRUE;
     }
 
-    return false;
+    return FALSE;
 }
 
 /**
@@ -765,7 +765,7 @@ function ftp_delete(&$control, $path)
 function ftp_exec(&$control, $cmd)
 {
     if (!is_resource($control) || !is_string($cmd)) {
-        return false;
+        return FALSE;
     }
     // Command not defined in the standart
     // proftpd doesn't recognize SITE EXEC (only help,chgrp,chmod and ratio)
@@ -775,9 +775,9 @@ function ftp_exec(&$control, $cmd)
     // php.net/ftp_exec uses respons code 200 to verify if command was sent
     // successfully or not, so we'll just do the same
     if (substr($line, 0, 3) == 200) {
-        return true;
+        return TRUE;
     }
 
-    return false;
+    return FALSE;
 }
 ?>

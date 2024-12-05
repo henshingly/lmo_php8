@@ -36,9 +36,9 @@ $tippdaten = array("");
 $sekt = "";
 $jkwert = "";
 $jkspanti = "";
-$jkspanticheat = false;
+$jkspanticheat = FALSE;
 $datei = fopen($tippfile, "rb");
-if ($datei == false) {
+if ($datei == FALSE) {
   exit;
 }
 while (!feof($datei)) {
@@ -49,7 +49,7 @@ while (!feof($datei)) {
     $jkwert = trim(substr($zeile, 1, -1));
   } elseif ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
     $sekt = trim(substr($zeile, 1, -1));
-  } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+  } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
     $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
     $wert = trim(substr($zeile, strpos($zeile, "=")+1));
     array_push($tippdaten, $sekt."|".$schl."|".$wert."|".$jkwert."|EOL");
@@ -63,7 +63,7 @@ for ($ia = 1; $ia <= count($tippdaten); $ia++) {
   if ($op3 == $st-1) {
     $jkspanti = $dum[3];
     if ($jksp == $jkspanti) {
-      $jkspanticheat = false;
+      $jkspanticheat = FALSE;
     } elseif ($jkspanti > 0) {
       if ($lmtype == 0) {
         $btip = tippaenderbar($mterm[$st-1][$jkspanti-1], $datum1[$st-1], $datum2[$st-1]);
@@ -72,9 +72,9 @@ for ($ia = 1; $ia <= count($tippdaten); $ia++) {
         $n1 = substr($jkspanti, -1);
         $btip = tippaenderbar($mterm[$st-1][$jkspanti1-1][$n1-1], $datum1[$st-1], $datum2[$st-1]);
       }
-      if ($btip == false) {
+      if ($btip == FALSE) {
         $jksp = $jkspanti;
-        $jkspanticheat = true;
+        $jkspanticheat = TRUE;
         break;
       }
     }

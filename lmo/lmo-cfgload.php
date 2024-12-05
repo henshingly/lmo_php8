@@ -45,11 +45,11 @@ if (function_exists('date_default_timezone_set')) {
 
 include(PATH_TO_LMO.'/lmo-updateoptions.php');
 $handle=opendir (PATH_TO_CONFIGDIR);
-while (false!==($f=readdir($handle))) {
+while (FALSE!==($f=readdir($handle))) {
   if (is_dir(PATH_TO_CONFIGDIR.'/'.$f) && $f!='.' && $f!='..') {
     $addon_cfgfile=PATH_TO_CONFIGDIR."/$f/cfg.txt";    // Konfigurationsdatei
     if (file_exists($addon_cfgfile)) {
-      $addon_cfgarray=parse_ini_file($addon_cfgfile, false, INI_SCANNER_RAW);         // in Array lesen
+      $addon_cfgarray=parse_ini_file($addon_cfgfile, FALSE, INI_SCANNER_RAW);         // in Array lesen
       $cfgarray[$f]=$addon_cfgarray;
       extract($addon_cfgarray,EXTR_PREFIX_ALL,$f);     // Variablen (mit Prefix) erstellen
     }

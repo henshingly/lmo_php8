@@ -36,7 +36,7 @@ if ($file != "") {
     $tab0 = array("");
     $btip = array_pad($array, $anzst+1, "");
     for ($i = 0; $i < $anzst; $i++) {
-      $btip[$i] = array_pad(array("false"), $anzsp+1, "false");
+      $btip[$i] = array_pad(array("FALSE"), $anzsp+1, "FALSE");
     }
   }
   $stt = 0;
@@ -58,20 +58,20 @@ if ($file != "") {
           }
           else if ($tipp_einsichterst == 2) {
             if ($goala[$j][$i] != "_" && $goalb[$j][$i] != "_") {
-              $btip[$j][$i] = false;
+              $btip[$j][$i] = FALSE;
             } else {
-              $btip[$j][$i] = true;
+              $btip[$j][$i] = TRUE;
             }
           } else {
             // Tipps immer anzeigen
-            $btip[$j][$i] = false;
+            $btip[$j][$i] = FALSE;
           }
           if ($mtipp[$j][$i] == 1) {
             // nicht in der Wertung
-            $btip[$j][$i] = true;
+            $btip[$j][$i] = TRUE;
           }
         }
-        if ($btip[$j][$i] == false) {
+        if ($btip[$j][$i] == FALSE) {
           if ($tabtype == 3) {
             $hoy = ($anzst/2);
           }
@@ -137,7 +137,7 @@ if ($file != "") {
           }
           // ende if (($goaltippa[$j][$i]!="_") && ($goaltippb[$j][$i]!="_") &&
         }
-        // ende if ($btip[$j][$i]==false)
+        // ende if ($btip[$j][$i]==FALSE)
       }
       // ende for ($i=0;$i<$anzsp;$i++)
     }

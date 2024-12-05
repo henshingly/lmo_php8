@@ -22,7 +22,7 @@ if (file_exists($auswertfile)){
   $datei = fopen($auswertfile,"rb");
   $anzteams=0;
 
-  if ($datei!=false){
+  if ($datei!=FALSE){
     $tippdaten=array("");
     $sekt="";
     while (!feof($datei)) {
@@ -33,7 +33,7 @@ if (file_exists($auswertfile)){
         $sekt=trim(substr($zeile,1,-1));
         array_push($tippdaten,$sekt."|||EOL");
         $anzteams++;
-      } elseif ((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
+      } elseif ((strpos($zeile,"=")!=FALSE) && (substr($zeile,0,1)!=";")){
         $schl=trim(substr($zeile,0,strpos($zeile,"=")));
         $wert=trim(substr($zeile,strpos($zeile,"=")+1));
         array_push($tippdaten,$sekt."|".$schl."|".$wert."|EOL");

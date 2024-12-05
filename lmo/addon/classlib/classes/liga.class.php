@@ -121,7 +121,7 @@ class liga {
       } else {
         return new liga();
       }
-    } else return false;
+    } else return FALSE;
   }
 
   /**
@@ -244,7 +244,7 @@ class liga {
    * @return object die gesuchte Partie als Object, wenn die Partie nicht gefunden wurde null
    */
   function &partieForTeams(&$heim,&$gast) {
-    $partie = $this->allPartieForTeams($heim,$gast,false);
+    $partie = $this->allPartieForTeams($heim,$gast,FALSE);
     return $partie[0];
   }
 
@@ -256,7 +256,7 @@ class liga {
    * @access public
    * @param object Object der Heimmannschaft
    * @param object Object der Gastmannschaft
-   * @param boolean Wenn true werden auch Rückspiele zurückgegeben
+   * @param boolean Wenn TRUE werden auch Rückspiele zurückgegeben
    * @return array Alle gesuchten Partien (Objecte)
    */
   function &allPartieForTeams(&$heim,&$gast,$both=FALSE) {
@@ -309,7 +309,7 @@ class liga {
    * @param object team
    * @return Array
    */
-  function gamesSorted($roundSort=true,$sortDir=SORT_ASC,&$team=null) {
+  function gamesSorted($roundSort=TRUE,$sortDir=SORT_ASC,&$team=null) {
     $games = array();
     foreach ($this->spieltage as $spieltag) {
       foreach ($spieltag->partien as $partie) {
@@ -342,7 +342,7 @@ class liga {
    * @return Array
    */
 
-  function gamesSortedForTeam ($team=null,$roundSort=true,$sortDir=SORT_ASC) {
+  function gamesSortedForTeam ($team=null,$roundSort=TRUE,$sortDir=SORT_ASC) {
     if (!is_a($team,"team") ) { // Wurde nix angegeben wird das fav. Team verwendet
       $team = $this->teamForNumber($this->options->keyValues['favTeam']);
     }
@@ -512,7 +512,7 @@ class liga {
         // Parameter und werte trennen
         preg_match_all("/^([^=\[]+)=(.*)/m",$sections[0][$y],$parameter,PREG_PATTERN_ORDER);
         for ($i=0, $partieNumber=0; $i<count($parameter[0]);$i++) {
-          if (strpos(strtolower($sections[1][$y]),"round") === false || preg_match("/^D[12]$|^MO$/",trim($parameter[1][$i]) ) ) {
+          if (strpos(strtolower($sections[1][$y]),"round") === FALSE || preg_match("/^D[12]$|^MO$/",trim($parameter[1][$i]) ) ) {
             // andere Section oder SpieltagParameter
             $iniData[$sections[1][$y]][trim($parameter[1][$i])] = trim($parameter[2][$i]);
           } else {
@@ -754,7 +754,7 @@ class liga {
     $datei = @fopen($fileName,"w");
     if (!$datei) {
       echo "<font color=\"#ff0000\">Kann File zum Schreiben nicht öffnen (Schreibrechte?) CLASS liga function writeFile()</font>";
-      return false;
+      return FALSE;
     } elseif ($datei && $message==1) {
       echo "<font color=\"#008800\">Writing File $fileName (".$datei.")</font>";
     }
@@ -770,7 +770,7 @@ class liga {
     fclose($datei);
     // start the update function
     updateAddons($fileName);
-    return true;
+    return TRUE;
   }
 
   /**
@@ -884,10 +884,10 @@ class liga {
    * @access public
    * @param integer spTag Spieltag für den die Tabelle berechnet werden soll.
    * @param string tableArt Art der Tabelle "all","heim","gast","hin","rueck"
-   * @param boolean possp wenn true wird für jeden Spieltag die Position bestimmt (Statistik)
+   * @param boolean possp wenn TRUE wird für jeden Spieltag die Position bestimmt (Statistik)
    * @return array Tabelle des Angegebenen Spieltages
    */
-  function calcTable($spTag=1,$tableArt="all",$possp=false) {
+  function calcTable($spTag=1,$tableArt="all",$possp=FALSE) {
 
     $actual = $this->options->keyValues['Actual'];
     $spTag = ($spTag<1)?$actual:$spTag;

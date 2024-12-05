@@ -86,11 +86,11 @@ function strAfterChar($str,$char) {
  * @param boolean $insensitive
  * @return boolean
  */
-function in_string($needle, $haystack, $insensitive = false) {
+function in_string($needle, $haystack, $insensitive = FALSE) {
   if ($insensitive) {
-    return (false !== stristr($haystack, $needle)) ? true : false;
+    return (FALSE !== stristr($haystack, $needle)) ? TRUE : FALSE;
   } else {
-    return (false !== strpos($haystack, $needle))  ? true : false;
+    return (FALSE !== strpos($haystack, $needle))  ? TRUE : FALSE;
   }
 }
 

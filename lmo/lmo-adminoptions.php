@@ -108,7 +108,7 @@ if ($show==0) {?>
             <td class="nobr" colspan="4">
               <select class="lmo-formular-input" name="xdeflang" onchange="dolmoedit()"><?php
               $handle=opendir (PATH_TO_LANGDIR);
-              while (false!==($f=readdir($handle))) {
+              while (FALSE!==($f=readdir($handle))) {
                 if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {?>
                 <option<?php if ($lang[1]==$deflang) echo " selected";?>><?php echo $lang[1];?></option><?php
                 }
@@ -144,7 +144,7 @@ if ($show==0) {?>
             <td class="nobr" rowspan="2" align="right"><acronym title="<?php echo $text[256] ?>"><?php echo $text[257]; ?></acronym>&nbsp;</td>
             <td class="nobr" align="left">
               <input type="radio" name="xdefdateselect" value="1" checked>
-              <select class="lmo-formular-input" name="xdefdateformat" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[0].checked=true;"><?php
+              <select class="lmo-formular-input" name="xdefdateformat" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[0].checked=TRUE;"><?php
       $dummf=array("d.m. H:i", "d.m.Y H:i", "D., d.m. H:i", "l, d.m. H:i", "D., d.m.Y H:i", "l, d.m.Y H:i");?>
                 <option value="">__</option><?php
       for ($y=0;$y<count($dummf);$y++){?>
@@ -156,7 +156,7 @@ if ($show==0) {?>
           <tr>
             <td class="nobr" align="left">
               <input type="radio" name="xdefdateselect" value=""<?php if (!in_array($defdateformat,$dummf)) echo " checked";?>>
-              <input type="text" class="lmo-formular-input" name="xdefdateformat2" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[1].checked=true;" value="<?php echo $defdateformat?>">
+              <input type="text" class="lmo-formular-input" name="xdefdateformat2" onChange="dolmoedit();document.getElementsByName('xdefdateselect')[1].checked=TRUE;" value="<?php echo $defdateformat?>">
               <a href="https://www.php.net/manual/de/datetime.format.php">
                 <span class="popup">
                   <strong><?php echo $text[545];?></strong><br>

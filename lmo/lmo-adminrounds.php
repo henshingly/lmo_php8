@@ -47,7 +47,7 @@ if (($file!="") && ($_SESSION['lmouserok']==2)){
         <input type="hidden" name="st" value="<?php echo $st; ?>"><?php
 
   $liga1 = new liga();
-  if ($liga1->loadFile(PATH_TO_LMO."/".$dirliga.$file)==false)
+  if ($liga1->loadFile(PATH_TO_LMO."/".$dirliga.$file)==FALSE)
   echo $text[224];
 
   if (isset($_POST)) {

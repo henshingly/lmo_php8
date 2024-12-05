@@ -34,7 +34,7 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
         $zeile=trim($zeile);
         if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
           $sekt=trim(substr($zeile,1,-1));
-        } elseif ((strpos($zeile,"=")!==false) && (substr($zeile,0,1)!=";")){
+        } elseif ((strpos($zeile,"=")!==FALSE) && (substr($zeile,0,1)!=";")){
           $conf=explode("=",$zeile,2);
           $schl=trim($conf[0]);
           $wert=trim($conf[1]);
@@ -288,7 +288,7 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
           if ($dum[1]=="NOT"){$teamn[$op5]=$dum[2];}
         }
 
-        if (!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
+        if (!isset($lmo_only_st) || ($lmo_only_st==TRUE && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
 
         if ($op2=="Round") {
           switch($dum[1]) {

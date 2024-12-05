@@ -26,7 +26,7 @@ if (isset($xtippername2)) {
   $pswfile = PATH_TO_ADDONDIR . "/tipp/" . $tipp_tippauthtxt;
 
   $dumma = file($pswfile);
-  $mail = new PHPMailer(true);
+  $mail = new PHPMailer(TRUE);
   $mail->isMail();
   $mail->CharSet = "UTF-8";
   $mail->Subject = $text['tipp'][79] . " (" . $_SERVER["HTTP_HOST"] . ")";
@@ -34,7 +34,7 @@ if (isset($xtippername2)) {
 
   for ($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i ++) {
     $dummb = explode('|', $dumma[$i]);
-    if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != false)) {
+    if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != FALSE)) {
       // User gefunden
       $_SESSION['lmotippername'] = $dummb[0];
       $_SESSION["lmotipperok"] = 0;

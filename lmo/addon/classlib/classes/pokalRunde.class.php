@@ -125,7 +125,7 @@ class pokalRunde {
     if ($this->end != 0 ) {
       if ($format == "") return $this->begin;
       else return date($format,$this->begin);
-    } else return false;
+    } else return FALSE;
   }
 
   /**
@@ -152,7 +152,7 @@ class pokalRunde {
     if ($this->end != 0 ) {
       if ($format == "") return $this->end;
       else return date($format,$this->end);
-    } else return false;
+    } else return FALSE;
   }
 
   /**
@@ -181,7 +181,7 @@ class pokalRunde {
    */
   function getPartien($number="") {
     if ($number == "" ) return $this->partien;
-    elseif (!array_key_exists($number,$this->partien[$number]) ) return false;
+    elseif (!array_key_exists($number,$this->partien[$number]) ) return FALSE;
     else return $this->partien[$number];
   }
 
@@ -215,7 +215,7 @@ class pokalRunde {
    */
   function getSpieltage($number="") {
     if ($number == "" ) return $this->spieltage;
-    elseif (!array_key_exists($number,$this->spieltage[$number]) ) return false;
+    elseif (!array_key_exists($number,$this->spieltage[$number]) ) return FALSE;
     else return $this->spieltage[$number];
   }
 

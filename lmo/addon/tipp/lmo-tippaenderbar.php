@@ -30,13 +30,13 @@ function tippaenderbar($mterm0, $datum1, $datum2) {
   global $deftime;
    
   if ($tipp_imvorraus >= 0 && $st > ($stx+$tipp_imvorraus)) {
-    $btip = false;
+    $btip = FALSE;
   } else {
-    $btip = false;
+    $btip = FALSE;
     $now = strtotime("+".($tipp_tippBis+$plus)." minute");
     if ($mterm0 > 0) {
       if ($now < $mterm0) {
-        $btip = true;
+        $btip = TRUE;
       }
     } else {
       if ($datum1 != "") {
@@ -47,7 +47,7 @@ function tippaenderbar($mterm0, $datum1, $datum2) {
         }
          
         if ($now < $datum1a) {
-          $btip = true;
+          $btip = TRUE;
         }
       } elseif ($datum2 != "") {
         if ($tipp_tippohne == 1 && $deftime > 0) {
@@ -57,7 +57,7 @@ function tippaenderbar($mterm0, $datum1, $datum2) {
         }
          
         if ($now < $datum1a) {
-          $btip = true;
+          $btip = TRUE;
         }
       }
     }

@@ -23,7 +23,7 @@ $template->setVariable("Spieltageplus", $multi_cfgarray['anzahl_spieltage_vor'])
 for ($i = 1; $i <= $anzahl_ligen; $i ++) {
     $liga = new liga();
     // Ligenfile vorhanden?
-    if ($liga->loadFile(PATH_TO_LMO . '/' . $dirliga.$fav_liga[$i]) == true) {
+    if ($liga->loadFile(PATH_TO_LMO . '/' . $dirliga.$fav_liga[$i]) == TRUE) {
         $template->setCurrentBlock("Liga");  // Äusserer Block für die Liga
         //$template->setVariable("Liganame", $liga->name);  //Ausgabe Liganame
         $rounds = $liga->options->keyValues['Rounds'];
@@ -80,7 +80,7 @@ for ($i = 1; $i <= $anzahl_ligen; $i ++) {
         $template->setVariable("VERSION", VIEWER_VERSION);
         $template->parse("Liga");
     } else  {
-        echo getMessage($text['viewer'][49] . " . $fav_liga[$i] . " . $text['viewer'][50], true); // Ligenfile vorhanden? Frage beantwortet
+        echo getMessage($text['viewer'][49] . " . $fav_liga[$i] . " . $text['viewer'][50], TRUE); // Ligenfile vorhanden? Frage beantwortet
     }
 }
 ?>

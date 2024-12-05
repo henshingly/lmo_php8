@@ -51,7 +51,7 @@ if ($ftype!="") {
           
           if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")) {
             $sekt=substr($zeile,1,-1);
-          } else if ((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";") && ($sekt=="Options")) {
+          } else if ((strpos($zeile,"=")!=FALSE) && (substr($zeile,0,1)!=";") && ($sekt=="Options")) {
             $schl=substr($zeile,0,strpos($zeile,"="));
             $wert=substr($zeile,strpos($zeile,"=")+1);
             if ($schl=="Name") {

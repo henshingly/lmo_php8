@@ -12,7 +12,7 @@ img4 = new Image();
 img4.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin4.gif";
 img5 = new Image();
 img5.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin5.gif";
-lmotest=true;
+lmotest=TRUE;
 
 function lmoimg (x,y){
   document.getElementsByName("ximg"+x)[0].src = y.src;
@@ -25,13 +25,13 @@ function lmotorclk(x,y,z){
   }
 function lmoteamauf(x,z){
   var a=document.getElementsByName(x)[0].value;
-  if (isNaN(a)==true){a=0;} else {a=parseInt(a);}
+  if (isNaN(a)==TRUE){a=0;} else {a=parseInt(a);}
   if (a>40){a=40;}
   if (a<4){a=4;}
   if ((z==1) && (a<40)){a++;}
   if ((z==-1) && (a>4)){a--;}
   document.getElementsByName(x)[0].value=a;
-  lmotest=false;
+  lmotest=FALSE;
   }
 function lmoteamclk(x,z){
   if (document.all && !window.opera){
@@ -41,13 +41,13 @@ function lmoteamclk(x,z){
   }
 function lmoanzstauf(x,z){
   var a=document.getElementsByName(x)[0].value;
-  if (isNaN(a)==true){a=0;} else {a=parseInt(a);}
+  if (isNaN(a)==TRUE){a=0;} else {a=parseInt(a);}
   if (a>116){a=116;}
   if (a<1){a=1;}
   if ((z==1) && (a<116)){a++;}
   if ((z==-1) && (a>1)){a--;}
   document.getElementsByName(x)[0].value=a;
-  lmotest=false;
+  lmotest=FALSE;
   }
 function lmoanzstclk(x,z){
   if (document.all && !window.opera){
@@ -57,13 +57,13 @@ function lmoanzstclk(x,z){
   }
 function lmoanzspauf(x,z){
   var a=document.getElementsByName(x)[0].value;
-  if (isNaN(a)==true){a=0;} else {a=parseInt(a);}
+  if (isNaN(a)==TRUE){a=0;} else {a=parseInt(a);}
   if (a>40){a=40;}
   if (a<1){a=1;}
   if ((z==1) && (a<40)){a++;}
   if ((z==-1) && (a>1)){a--;}
   document.getElementsByName(x)[0].value=a;
-  lmotest=false;
+  lmotest=FALSE;
   }
 function lmoanzspclk(x,z){
   if (document.all && !window.opera){
@@ -83,7 +83,7 @@ function lmotorauf(x,y,z){
   if (aa==""){aa="-1";}
   if (aa=="_"){aa="-1";}
   var ab=aa;
-  if (isNaN(a)==true){a=0;} else {a=parseInt(a);}
+  if (isNaN(a)==TRUE){a=0;} else {a=parseInt(a);}
   if ((z==1) && (a<9999)){a++;}
   if ((z==-1) && (a>-1)){a--;}
   if ((a>-1) && (aa<0)){aa=0;}
@@ -95,7 +95,7 @@ function lmotorauf(x,y,z){
     if (aa==-1){aa="_";}
     document.getElementsByName("xgoal"+xx+y)[0].value=aa;
     }  
-  lmotest=false;
+  lmotest=FALSE;
   if (a=="X"){lmotorgte(x,y);}
   }
 function lmotorgte(x,y){
@@ -107,7 +107,7 @@ function lmotorgte(x,y){
     document.getElementsByName("xgoal"+x+y)[0].value=document.getElementsByName("xgoal"+c+y)[0].value;
     document.getElementsByName("xmsieg"+y)[0].selectedIndex=b;
     }
-  lmotest=false;
+  lmotest=FALSE;
   }
 function lmofilename(){
   var s=document.getElementsByName("xfile")[0].value;
@@ -116,22 +116,22 @@ function lmofilename(){
   if (s.lastIndexOf("/")>-1){var t=s.substr(s.lastIndexOf("/")+1,s.length); s=t;}
   if (s.substr(s.length-4,s.length).toLowerCase()==".l98"){var t=s.substr(0,s.length-4); s=t;}
   document.getElementsByName("xfile")[0].value=s;
-  lmotest=false;
+  lmotest=FALSE;
   }
 function lmotitelname(){
   var s=document.getElementsByName("xtitel")[0].value;
   if (s.length==0){s='No Name';}
   document.getElementsByName("xtitel")[0].value=s;
-  lmotest=false;
+  lmotest=FALSE;
   }
 function dolmoedit(){
-  lmotest=false;
+  lmotest=FALSE;
   }
 function chklmopass(){
-  if (lmotest == true){
+  if (lmotest == TRUE){
     return confirm("<?php echo $text[117] ?>");
   } else {
-    return true;
+    return TRUE;
   }
 }
 function dolmoedi2(a,s){
@@ -152,36 +152,36 @@ function dolmoedi2(a,s){
       }
     }
   }
-  lmotest=false;
+  lmotest=FALSE;
 }
 function chklmopas2(a){
-  var r=true;
-  if (lmotest == true){
+  var r=TRUE;
+  if (lmotest == TRUE){
     r=confirm("<?php echo $text[117] ?>");
     }
-  if (lmotest == false){
-    var s3=false;
+  if (lmotest == FALSE){
+    var s3=FALSE;
     for (var i=1;i < a;i++){
       for (var j=i+1;j <= a;j++){
         var s1=document.getElementsByName("xplatz"+i)[0].value;
         var s2=document.getElementsByName("xplatz"+j)[0].value;
-        if (s1==s2){s3=true;}
+        if (s1==s2){s3=TRUE;}
         }
       }
-    if (s3 == true){
+    if (s3 == TRUE){
       alert("<?php echo $text[416]; ?>");
-      r=false;
+      r=FALSE;
       }
     }
-  if (r == false){
-    return false;
+  if (r == FALSE){
+    return FALSE;
     }
   }
 function chklmolink(){
-  if (lmotest == false){
+  if (lmotest == FALSE){
     return confirm("<?php echo $text[119] ?>");
   } else {
-    return true;
+    return TRUE;
   }
 }
 function siklmolink(adresse){
@@ -207,8 +207,8 @@ function opencal(feld,startdat){
   lmocal="<?php echo URL_TO_LMO?>/lmo-admincal.php?abs=lmoedit&feld="+feld;
   if (startdat!=""){lmocal=lmocal+"&calshow="+startdat;}
   lmowin = window.open(lmocal,"lmocalpop","width=220,height=200,resizable=yes,dependent=yes");
-  lmotest=false;
-  return false;
+  lmotest=FALSE;
+  return FALSE;
 }
 
 function fillAll(elm) {
@@ -223,7 +223,7 @@ function fillAll(elm) {
 /*
 * This is the plugin
 */
-(function(a){a.createModal=function(b){defaults={title:"",message:"Your Message Goes Here!",closeButton:true,scrollable:false};var b=a.extend({},defaults,b);var c=(b.scrollable===true)?'style="max-height: 420px;overflow-y: auto;"':"";html='<div class="modal fade" id="myModal">';html+='<div class="modal-dialog">';html+='<div class="modal-content">';html+='<div class="modal-header">';html+='<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';if (b.title.length>0){html+='<h4 class="modal-title">'+b.title+"</h4>"}html+="</div>";html+='<div class="modal-body" '+c+">";html+=b.message;html+="</div>";html+='<div class="modal-footer">';if (b.closeButton===true){html+='<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>'}html+="</div>";html+="</div>";html+="</div>";html+="</div>";a("body").prepend(html);a("#myModal").modal().on("hidden.bs.modal",function(){a(this).remove()})}})(jQuery);
+(function(a){a.createModal=function(b){defaults={title:"",message:"Your Message Goes Here!",closeButton:TRUE,scrollable:FALSE};var b=a.extend({},defaults,b);var c=(b.scrollable===TRUE)?'style="max-height: 420px;overflow-y: auto;"':"";html='<div class="modal fade" id="myModal">';html+='<div class="modal-dialog">';html+='<div class="modal-content">';html+='<div class="modal-header">';html+='<button type="button" class="close" data-dismiss="modal" aria-hidden="TRUE">×</button>';if (b.title.length>0){html+='<h4 class="modal-title">'+b.title+"</h4>"}html+="</div>";html+='<div class="modal-body" '+c+">";html+=b.message;html+="</div>";html+='<div class="modal-footer">';if (b.closeButton===TRUE){html+='<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>'}html+="</div>";html+="</div>";html+="</div>";html+="</div>";a("body").prepend(html);a("#myModal").modal().on("hidden.bs.modal",function(){a(this).remove()})}})(jQuery);
 
 /*
 * Here is how you use it
@@ -237,9 +237,9 @@ $(function(){
         $.createModal({
             title:'My Title',
             message: iframe,
-            closeButton:true,
-            scrollable:false
+            closeButton:TRUE,
+            scrollable:FALSE
         });
-        return false;        
+        return FALSE;        
     });    
 })

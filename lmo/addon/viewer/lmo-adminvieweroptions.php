@@ -49,7 +49,7 @@ if ($_SESSION['lmouserok'] == 2) {
           $zeile = trim($zeile);
           if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {  //Sektion
             $sekt = substr($zeile, 1, -1);
-          } elseif ((strpos($zeile, "=") !== false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {  //Wert
+          } elseif ((strpos($zeile, "=") !== FALSE) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {  //Wert
             $option = explode("=", $zeile, 2);
             $option_name = $option[0];
             $option_wert = isset($option[1])?$option[1]:'';
@@ -80,9 +80,9 @@ if ($_SESSION['lmouserok'] == 2) {
 
   //usort($ligadatei,'cmp');
 
-  isset($_POST['formular1']) ? $form1 = true : $form1=false;  // formular 1 ausgefüllt?
-  isset($_POST['formular2']) ? $form2 = true : $form2=false;  // formular 2 ausgefüllt?
-  isset($_POST['formular3']) ? $form3 = true : $form3=false;  // formular 3 ausgefüllt?
+  isset($_POST['formular1']) ? $form1 = TRUE : $form1=FALSE;  // formular 1 ausgefüllt?
+  isset($_POST['formular2']) ? $form2 = TRUE : $form2=FALSE;  // formular 2 ausgefüllt?
+  isset($_POST['formular3']) ? $form3 = TRUE : $form3=FALSE;  // formular 3 ausgefüllt?
   if ($form1) {
     isset($_POST['dateiname'])                      ? $save_file_name  =$_POST['dateiname']                                                    : $save_file_name   = 'unbenannt';
     $_POST['modus'] == 1                            ? $config_array[2] ='modus=1'                                                              : $config_array[2]  = 'modus=2';
@@ -134,15 +134,15 @@ if ($_SESSION['lmouserok'] == 2) {
     }
 
     $z = 1;
-    $error_dateiopen = false;
-    $speicherflag = false;
+    $error_dateiopen = FALSE;
+    $speicherflag = FALSE;
     if ($form3) {
         $save_file_name = $_POST['dateiname'];
         $config_array = explode(';', $_POST['config_array']);
         $zz = 1;
         $anz_ligen = 0;
         $teamnr = 0;
-        $flag = true;
+        $flag = TRUE;
         $save_array[1] = '[Viewer Ligen]';
         $doppelt_check = "";
         $z = $_POST['zaehler'];
@@ -154,7 +154,7 @@ if ($_SESSION['lmouserok'] == 2) {
                 $team = substr($ldn, strrpos($ldn, '[') + 1);
                 $team = substr($team, 0, strrpos($team, ']'));
                 $liga1 = new liga();
-                if ($liga1 -> loadFile(PATH_TO_LMO . '/' . $dirliga . $ligen_datei) == true) { // Ligenfile vorhanden?
+                if ($liga1 -> loadFile(PATH_TO_LMO . '/' . $dirliga . $ligen_datei) == TRUE) { // Ligenfile vorhanden?
                     $file_ligen_datei = file(chop(PATH_TO_LMO . '/ligen/' . $ligen_datei));
                     if ($ligen_datei != $doppelt_check) {
                         $doppelt_check = $ligen_datei;
@@ -172,21 +172,21 @@ if ($_SESSION['lmouserok'] == 2) {
             }
         }
         $savedateiname = PATH_TO_CONFIGDIR . '/viewer/' . $save_file_name . '.view';
-        $error_dateiopen = false;
+        $error_dateiopen = FALSE;
         if (!$fp = fopen($savedateiname, "w")) {
-            $error_dateiopen = true; 
+            $error_dateiopen = TRUE; 
             echo $text[567]; //Error
         } else {
             $config_array = explode(';', $_POST['config_array']);
             fwrite($fp, "[config]\n");
             foreach ($config_array as $w) {
                 if (!$ok = fwrite($fp, $w.chr(10))) {
-                    $error_dateiopen = true;
+                    $error_dateiopen = TRUE;
                 }
             }
             foreach ($save_array as $w) {
                 if (!$ok = fwrite($fp, $w.chr(10))) {
-                    $error_dateiopen = true;
+                    $error_dateiopen = TRUE;
                 }
             }
             fclose ($fp);
@@ -203,7 +203,7 @@ if ($_SESSION['lmouserok'] == 2) {
         </tr>
         <tr>
           <td class="nobr">
-            <form action="#" onSubmit="return false;">
+            <form action="#" onSubmit="return FALSE;">
               <table class="lmoInner" cellspacing="0" cellpadding="0" border="0" width="100%">
                 <tr>
                   <th colspan="2" align="center"><?php echo $text['viewer'][43]; ?></h1></th>
@@ -382,7 +382,7 @@ if ($_SESSION['lmouserok'] == 2) {
                         </td>
                       </tr>
                       <tr>
-                        <td><?php echo getMessage($text['viewer'][51],true);?></td>
+                        <td><?php echo getMessage($text['viewer'][51],TRUE);?></td>
                       </tr>
                     </table>
                   </td>
@@ -425,7 +425,7 @@ if ($_SESSION['lmouserok'] == 2) {
         $ges_teams=0;
         for ($i=1; $i <= count($ausgewaehlte_ligen); $i++ ) {
             $liga1=new liga();
-            if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $ligenfile[$ausgewaehlte_ligen[$i]]) == true) { // Ligenfile vorhanden? ?>
+            if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $ligenfile[$ausgewaehlte_ligen[$i]]) == TRUE) { // Ligenfile vorhanden? ?>
                     <table class=lmoInner cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
                         <td class="nobr"  colspan="3" align="center"><h1><?php echo $ligennamen[$ausgewaehlte_ligen[$i]]; ?></h1></td>

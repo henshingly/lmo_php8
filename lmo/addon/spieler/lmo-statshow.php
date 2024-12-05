@@ -33,12 +33,12 @@ if (!isset($filename)) { $filename = $_GET['file']; }
 if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
     $spalten = array(); //Spaltenbezeichnung
     $data = array(); //Daten
-    $typ = array(); //Spaltentyp (true=String)
+    $typ = array(); //Spaltentyp (TRUE=String)
     $spalten = fgetcsv($filepointer, 10000, "#"); //Zeile mit Spaltenbezeichnern
-    $formel = false;
+    $formel = FALSE;
     for ($i = 0; $i < count($spalten); $i++) {
         if (strstr($spalten[$i], "*_*-*")) {
-            $formel = true;
+            $formel = TRUE;
             $spalten[$i] = substr($spalten[$i], 0, strlen($spalten[$i]) - 5);
     }
     if ($spalten[$i] == $text['spieler'][25]) {
@@ -53,7 +53,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
     while ($data[$zeile] = fgetcsv ($filepointer, 10000, "#")) {
         if ((isset($vereinsspalte) && isset($data[$zeile][$vereinsspalte]) && $spieler_vereinsweise_anzeigen == 1 && $team == $data[$zeile][$vereinsspalte]) || $team == '') {
             for ($i = 0; $i < count($data[$zeile]); $i++) {
-                if (!is_numeric($data[$zeile][$i])) $typ[$i] = true;
+                if (!is_numeric($data[$zeile][$i])) $typ[$i] = TRUE;
             }
             $zeile++;
         } else {
@@ -205,7 +205,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
                 if (!empty($pos) && $teamu[$pos] != "" && $urlt == 1) {echo "<a href=\"" . $teamu[$pos] . "\" target=\"_blank\" title=\"" . $text[46] . "\"><img border='0' width='11' src='" . URL_TO_IMGDIR . "/url.png' alt='" . $spalten[$i] . "' title=\"" . $text[46] . "\"></a></td>";}
 
             //Spielerlinks
-            } elseif ($j2 == 0 && !is_null($linkspalte) && $linkspalte!==false && $data[$j1][$linkspalte] != $text['spieler'][43]) {
+            } elseif ($j2 == 0 && !is_null($linkspalte) && $linkspalte!==FALSE && $data[$j1][$linkspalte] != $text['spieler'][43]) {
                 echo "            <td " . $stat_class . " align='left'>&nbsp;".$data[$j1][$j2];
                 echo " <a href='" . $data[$j1][$linkspalte] . "' title='" . $text['spieler'][34] . "'><img border='0' width='11' src='" . URL_TO_IMGDIR . "/url.png' alt='" . $text[564] . "'></a></td>\n";
 
@@ -266,7 +266,7 @@ if (is_readable($filename) && $filepointer = fopen($filename, "r+b")) {
 </table>
 <?php
 } else { ?>
-    <?php echo getMessage($text['spieler'][14], true);?><?php
+    <?php echo getMessage($text['spieler'][14], TRUE);?><?php
 }
 
 function cmpInt ($a1, $a2) {

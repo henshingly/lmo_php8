@@ -37,7 +37,7 @@ if (!file_exists($auswertfile)) {
   $eigpos = -1;
   $anzst1 = $anzst;
    
-  if ($datei != false) {
+  if ($datei != FALSE) {
     $tippdaten = array();
     $sekt = "";
     while (!feof($datei)) {
@@ -50,7 +50,7 @@ if (!file_exists($auswertfile)) {
           array_push($tippdaten, $sekt."|||EOL");
           $anztipper++;
         }
-      } elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+      } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         if ($schl == "AnzLigen") {

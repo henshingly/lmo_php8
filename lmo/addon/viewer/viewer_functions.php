@@ -34,7 +34,7 @@ function zeitberechnung($modus, $wert) {
         break;
 
         default:
-            return false;
+            return FALSE;
   }   // switch
 }
 

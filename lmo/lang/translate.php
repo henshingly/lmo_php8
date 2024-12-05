@@ -216,7 +216,7 @@ if ($_SESSION['lmouserok'] == 2) {
   }
 ?>
 
-    </table><div id="result" onClick="this.style.display='none';"><h1><?php echo sprintf("%2d",($uncomplete_count/$count*100))?>% seems to be translated!</h1><p>Please note: This script checks only for emtpy values and if 2 values are equal. So if a word in 2 languages is the same you get false negatives. Then you can ignore the marked values.</p><small>Click</small></div>
+    </table><div id="result" onClick="this.style.display='none';"><h1><?php echo sprintf("%2d",($uncomplete_count/$count*100))?>% seems to be translated!</h1><p>Please note: This script checks only for emtpy values and if 2 values are equal. So if a word in 2 languages is the same you get FALSE negatives. Then you can ignore the marked values.</p><small>Click</small></div>
     </form>
 
   </body>

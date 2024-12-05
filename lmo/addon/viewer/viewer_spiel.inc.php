@@ -98,7 +98,7 @@ foreach ($fav_team[$i] as $akt_team) {
         //Anfang Notitz
         if (trim($partie->notiz) != "") {
             $icon = URL_TO_IMGDIR . "/viewer/" . $multi_cfgarray['notizsymbol'];
-            $ntext = '<a href="#" title="' . $partie->notiz . '" onclick="alert(\'' . $text[22] . ': ' . $partie->notiz . '\');window.focus();return false;"><img src="' . $icon . '" border="0" alt=""></a>';
+            $ntext = '<a href="#" title="' . $partie->notiz . '" onclick="alert(\'' . $text[22] . ': ' . $partie->notiz . '\');window.focus();return FALSE;"><img src="' . $icon . '" border="0" alt=""></a>';
             $template->setVariable("Notiz", $ntext);
         }//Ende Notiz
 
