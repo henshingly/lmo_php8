@@ -18,42 +18,51 @@
   */
 
 if (!function_exists("getmicrotime")) {
-  function getmicrotime(){
-    list($usec, $sec) = explode(" ",microtime());
-    return ((float)$usec + (float)$sec);
-  }
+    function getmicrotime() {
+        list($usec, $sec) = explode(" ",microtime());
+        return ((float)$usec + (float)$sec);
+    }
 }
 $startzeit = getmicrotime();
 require(__DIR__."/init.php");
 
-if ((isset($_REQUEST["action"]) && $_REQUEST["action"]=="tipp") && session_id()=="") {
-  session_start();
+if ((isset($_REQUEST["action"]) && $_REQUEST["action"] == "tipp") && session_id() == "") {
+    session_start();
 }
 
 $array = array();
-$ftype=".l98";
-if (isset($_REQUEST['st'])) {$st=$_REQUEST['st'];}
-if (!isset($_REQUEST["action"])){
-  $_REQUEST["action"]="";
-  $action="";
-} else {
-  $action=$_REQUEST["action"];
+$ftype = ".l98";
+if (isset($_REQUEST['st'])) {
+    $st = $_REQUEST['st'];
+}
+if (!isset($_REQUEST["action"])) {
+    $_REQUEST["action"] = "";
+    $action = "";
+}
+else {
+    $action = $_REQUEST["action"];
 }
 if (!isset($file)) {
-  if (!isset($_REQUEST["file"])){
-    $_REQUEST["file"]="";
-    $file="";
-  } else {
-    $file=$_REQUEST["file"];
-  }
+    if (!isset($_REQUEST["file"])) {
+        $_REQUEST["file"] = "";
+        $file = "";
+    }
+    else {
+        $file = $_REQUEST["file"];
+    }
 }
-$subdir=isset($_REQUEST["subdir"])?$_REQUEST["subdir"]:'';
+$subdir = isset($_REQUEST["subdir"]) ? $_REQUEST["subdir"] : '';
 
-if ($_REQUEST["action"]=="admin"){
-  $_REQUEST["action"]="";
-  $action="";
+if ($_REQUEST["action"] == "admin") {
+    $_REQUEST["action"] = "";
+    $action = "";
 }
 
-include(PATH_TO_LMO."/lmo-showmain2.php");
+if (!file_exists(PATH_TO_LMO . '/' . $dirliga . $file)) {
+    redirect($lmo_url);
+}
+else {
+    include (PATH_TO_LMO . '/lmo-showmain2.php');
+}
 
 ?>

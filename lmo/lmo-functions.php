@@ -21,62 +21,62 @@ $trans_lang = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1]
 $min_php_version = "7.4.0";
 
 function check_hilfsadmin($datei) {
-  $hilfsadmin_berechtigung = FALSE;
-  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 1) {
-    $hilfsadmin_ligen = explode(',', $_SESSION['lmouserfile']);
-    if (isset($hilfsadmin_ligen)) {
-      foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
-        if ($hilfsadmin_liga . ".l98" == basename($datei)) {
-          $hilfsadmin_berechtigung = TRUE;
+    $hilfsadmin_berechtigung = FALSE;
+    if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 1) {
+        $hilfsadmin_ligen = explode(',', $_SESSION['lmouserfile']);
+        if (isset($hilfsadmin_ligen)) {
+            foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
+                if ($hilfsadmin_liga . ".l98" == basename($datei)) {
+                    $hilfsadmin_berechtigung = TRUE;
+                }
+            }
         }
-      }
     }
-  }
-  else {
-    $hilfsadmin_berechtigung = TRUE;
-  }
-  return $hilfsadmin_berechtigung;
+    else {
+        $hilfsadmin_berechtigung = TRUE;
+    }
+    return $hilfsadmin_berechtigung;
 }
 
 
 function applyFactor ($value, $factor) {
-  if (is_numeric($value) && $value != 0) {
-    return ($value / $factor);
-  }
-  return $value;
+    if (is_numeric($value) && $value != 0) {
+        return ($value / $factor);
+    }
+    return $value;
 }
 
 function magicQuotesRemove(&$array) {
-  //if (!get_magic_quotes_gpc())
-  //return;
-  foreach($array as $key => $elem) {
-    if (is_array($elem))
-    magicQuotesRemove($elem);
-    else
-    $array[$key] = stripslashes($elem);
-  }
+    //if (!get_magic_quotes_gpc())
+    //return;
+    foreach($array as $key => $elem) {
+        if (is_array($elem))
+            magicQuotesRemove($elem);
+        else
+            $array[$key] = stripslashes($elem);
+    }
 }
 
 function get_dir($verz) {
-  $ret = array();
-  if (substr($verz,-1) != '/') $verz .= '/';
+    $ret = array();
+    if (substr($verz,-1) != '/') $verz .= '/';
 
-  $handle = opendir(PATH_TO_LMO . "/" . $verz);
-  if ($handle) {
-    while ($file = readdir ($handle)) {
-      if ($file != "." && $file != "..") {
-        if (is_dir(PATH_TO_LMO . "/" . $verz . $file)) {
-          $ret[] = $file;
+    $handle = opendir(PATH_TO_LMO . "/" . $verz);
+    if ($handle) {
+        while ($file = readdir ($handle)) {
+            if ($file != "." && $file != "..") {
+                if (is_dir(PATH_TO_LMO . "/" . $verz . $file)) {
+                    $ret[] = $file;
+                }
+            }
         }
-      }
+        closedir($handle);
     }
-    closedir($handle);
-  }
-  return $ret;
+    return $ret;
 }
 
 function filterZero($a) {
-  return (!empty($a));
+    return (!empty($a));
 }
 
 
@@ -89,16 +89,17 @@ function filterZero($a) {
  */
 //Umstellung Classlib kann später mal weg
 function getSmallImage($team, $alternative_text = '') {
-  $team=str_replace("/", "", $team);
-  if (!file_exists(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif")) {
-    $team = preg_replace("/[^a-zA-Z0-9]/", '', $team);
-  }
-  if (!file_exists(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif")) {
-    return $alternative_text;
-  } else {
-    $imgdata = getimagesize(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif");
-    return ("<img border='0' src='" . URL_TO_IMGDIR . "/teams/small/" . rawurlencode($team) . ".gif' {$imgdata[3]} alt=''> ");
-  }
+    $team = str_replace("/", "", $team);
+    if (!file_exists(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif")) {
+        $team = preg_replace("/[^a-zA-Z0-9]/", '', $team);
+    }
+    if (!file_exists(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif")) {
+        return $alternative_text;
+    }
+    else {
+        $imgdata = getimagesize(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif");
+        return ("<img border='0' src='" . URL_TO_IMGDIR . "/teams/small/" . rawurlencode($team) . ".gif' {$imgdata[3]} alt=''> ");
+    }
 }
 
 /**
@@ -109,15 +110,16 @@ function getSmallImage($team, $alternative_text = '') {
  * @return       string     Formatted (error) message
  */
 function getMessage($message, $error = FALSE) {
-  if ($error) {
-    return '<p class="error"><img src="' . URL_TO_IMGDIR . '/wrong.gif" border="0" width="12" height="12" alt=""> ' . $message . '</p>';
-  } else {
-    return '<p class="message"><img src="' . URL_TO_IMGDIR . '/right.gif" border="0" width="12" height="12" alt=""> ' . $message . '</p>';
-  }
+    if ($error) {
+        return '<p class="error"><img src="' . URL_TO_IMGDIR . '/wrong.gif" border="0" width="12" height="12" alt=""> ' . $message . '</p>';
+    }
+    else {
+        return '<p class="message"><img src="' . URL_TO_IMGDIR . '/right.gif" border="0" width="12" height="12" alt=""> ' . $message . '</p>';
+    }
 }
 
 function warning_message($warning_title, $warning, $warning_description = FALSE) {
-  return "<!-- Button trigger modal -->
+    return "<!-- Button trigger modal -->
 <button type='button' class='btn btn-warning rounded-pill px-3 btn-sm' data-toggle='modal' data-backdrop='static' data-target='#warning".$warning."'>Notice ".$warning."</button>
 
 <!-- Modal -->
@@ -133,7 +135,7 @@ function warning_message($warning_title, $warning, $warning_description = FALSE)
 }
 
 function update_message($warning_title, $warning, $warning_description = FALSE) {
-  return "<!-- Button trigger modal -->
+    return "<!-- Button trigger modal -->
 <button type='button' class='btn btn-info rounded-pill px-3 btn-sm' data-toggle='modal' data-backdrop='static' data-target='#warning" . $warning . "'>" . $warning . "</button>
 
 <!-- Modal -->
@@ -159,104 +161,113 @@ function update_message($warning_title, $warning, $warning_description = FALSE) 
  * @return       int        $erg    winner(home / away)
  */
 function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
-  $erg = 0;
-  if ($gmod == 1) {
-    if ($m1[0] > $m2[0]) {
-      $erg = 1;
-    } elseif ($m1[0] < $m2[0]) {
-      $erg = 2;
-    }
-  } elseif ($gmod == 2) {
-    if ($m1[1] != "_") {
-      if (($m1[0] + $m1[1]) > ($m2[0] + $m2[1])) {
-        $erg = 1;
-      } elseif (($m1[0] + $m1[1]) < ($m2[0] + $m2[1])) {
-        $erg = 2;
-      } else {
-        if ($m2[1] > $m1[1]) {
-          $erg = 2;
-        } elseif ($m2[1] < $m1[1]) {
-          $erg = 1;
+    $erg = 0;
+    if ($gmod == 1) {
+        if ($m1[0] > $m2[0]) {
+            $erg = 1;
         }
-      }
-    }
-  } else {
-    $erg1 = 0;
-    $erg2 = 0;
-    for ($k = 0; $k < $gmod; $k++) {
-      if (($m1[$k] != "_") && ($m2[$k] != "_")) {
-        if ($m1[$k] > $m2[$k]) {
-          $erg1++;
-        } elseif ($m1[$k] < $m2[$k]) {
-          $erg2++;
+        elseif ($m1[0] < $m2[0]) {
+            $erg = 2;
         }
-      }
     }
-    if ($erg1 > ($gmod/2)) {
-      $erg = 1;
-    } elseif ($erg2 > ($gmod/2)) {
-      $erg = 2;
+    elseif ($gmod == 2) {
+        if ($m1[1] != "_") {
+            if (($m1[0] + $m1[1]) > ($m2[0] + $m2[1])) {
+                $erg = 1;
+            }
+            elseif (($m1[0] + $m1[1]) < ($m2[0] + $m2[1])) {
+                $erg = 2;
+            }
+            else {
+                if ($m2[1] > $m1[1]) {
+                    $erg = 2;
+                }
+                elseif ($m2[1] < $m1[1]) {
+                    $erg = 1;
+                }
+            }
+        }
     }
-  }
-  return $erg;
+    else {
+        $erg1 = 0;
+        $erg2 = 0;
+        for ($k = 0; $k < $gmod; $k++) {
+            if (($m1[$k] != "_") && ($m2[$k] != "_")) {
+                if ($m1[$k] > $m2[$k]) {
+                    $erg1++;
+                }
+                elseif ($m1[$k] < $m2[$k]) {
+                    $erg2++;
+                }
+            }
+        }
+        if ($erg1 > ($gmod / 2)) {
+            $erg = 1;
+        }
+        elseif ($erg2 > ($gmod / 2)) {
+            $erg = 2;
+        }
+    }
+    return $erg;
 }
 
 function getLangSelector() {
-  $output_sprachauswahl = '';
-  $border = "0";
-
-  $handle = opendir (PATH_TO_LANGDIR);
-  while (FALSE !== ($f = readdir($handle))) {
-    if (preg_match("/^lang-?(.*)?\.txt$/", $f,$lang) > 0) {
-      if ($lang[1] == "") return '';
-      if ($lang[1] != $_SESSION['lmouserlang']) {
-        $border = "1mm";
-        $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . ".svg";
-        $output_sprachauswahl .= "<a href='{$_SERVER['PHP_SELF']}?" . htmlentities(preg_replace("/&?lmouserlang=.+?\b/", "", $_SERVER['QUERY_STRING'])) . "&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' height='16' style='margin-right:$border' title='{$lang[1]}' alt='{$lang[1]}'></a>";
-      } else {
-        $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . ".selected.svg";
-        $output_sprachauswahl .= "<img src='{$imgfile}' height='16' border='$border' title='{$lang[1]}' alt='{$lang[1]}'>  ";
-      }
-    }
+    $output_sprachauswahl = '';
     $border = "0";
-  }
-  closedir($handle);
-  if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == '2') {
-    $output_sprachauswahl .= "&nbsp<a href='" . URL_TO_LMO . "/lang/translate.php'> » " . $GLOBALS['text'][573] . "</a>";
-  }
-  return $output_sprachauswahl;
+
+    $handle = opendir (PATH_TO_LANGDIR);
+    while (FALSE !== ($f = readdir($handle))) {
+        if (preg_match("/^lang-?(.*)?\.txt$/", $f,$lang) > 0) {
+            if ($lang[1] == "") return '';
+            if ($lang[1] != $_SESSION['lmouserlang']) {
+                $border = "1mm";
+                $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . ".svg";
+                $output_sprachauswahl .= "<a href='{$_SERVER['PHP_SELF']}?" . htmlentities(preg_replace("/&?lmouserlang=.+?\b/", "", $_SERVER['QUERY_STRING'])) . "&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' height='16' style='margin-right:$border' title='{$lang[1]}' alt='{$lang[1]}'></a>";
+            }
+            else {
+                $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . ".selected.svg";
+                $output_sprachauswahl .= "<img src='{$imgfile}' height='16' border='$border' title='{$lang[1]}' alt='{$lang[1]}'>  ";
+            }
+        }
+        $border = "0";
+    }
+    closedir($handle);
+    if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == '2') {
+        $output_sprachauswahl .= "&nbsp<a href='" . URL_TO_LMO . "/lang/translate.php'> » " . $GLOBALS['text'][573] . "</a>";
+    }
+    return $output_sprachauswahl;
 }
 
 function get_timezones() {
-  //load avail timezones
-  if (function_exists('timezone_identifiers_list')) {
-    $zones = array_reverse(timezone_identifiers_list());
+    //load avail timezones
+    if (function_exists('timezone_identifiers_list')) {
+        $zones = array_reverse(timezone_identifiers_list());
 
-    foreach ($zones as $zone) {
-      $zone = explode('/', $zone); // 0 => Continent, 1 => City
+        foreach ($zones as $zone) {
+            $zone = explode('/', $zone); // 0 => Continent, 1 => City
 
-      // Only use "friendly" continent names
-      if ($zone[0] == 'Africa' ||
-          $zone[0] == 'America' ||
-          $zone[0] == 'Antarctica' ||
-          $zone[0] == 'Arctic' ||
-          $zone[0] == 'Asia' ||
-          $zone[0] == 'Atlantic' ||
-          $zone[0] == 'Australia' ||
-          $zone[0] == 'Europe' ||
-          $zone[0] == 'Indian' ||
-          $zone[0] == 'Pacific')
-      {
-        if (isset($zone[1]) != '')
-        {
-          $locations[$zone[0]][$zone[0]. '/' . $zone[1]] = str_replace('_', ' ', $zone[1]); // Creates array(DateTimeZone => 'Friendly name')
+            // Only use "friendly" continent names
+            if ($zone[0] == 'Africa' ||
+                $zone[0] == 'America' ||
+                $zone[0] == 'Antarctica' ||
+                $zone[0] == 'Arctic' ||
+                $zone[0] == 'Asia' ||
+                $zone[0] == 'Atlantic' ||
+                $zone[0] == 'Australia' ||
+                $zone[0] == 'Europe' ||
+                $zone[0] == 'Indian' ||
+                $zone[0] == 'Pacific')
+            {
+                if (isset($zone[1]) != '') {
+                    $locations[$zone[0]][$zone[0] . '/' . $zone[1]] = str_replace('_', ' ', $zone[1]); // Creates array(DateTimeZone => 'Friendly name')
+                }
+            }
         }
-      }
     }
-  } else {
-    return array();
-  }
-  return array_reverse($locations);
+    else {
+        return array();
+    }
+    return array_reverse($locations);
 }
 
 /**
@@ -273,29 +284,35 @@ function get_timezones() {
  * @require     PHP 4.0.0 (user_error) (is_subclass_of)
  */
 function php_compat_is_a($object, $class) {
-  if (!is_object($object)) {
-    return FALSE;
-  }
-  if (strtolower(get_class($object)) == strtolower($class)) {
-    return TRUE;
-  } else {
-    return is_subclass_of($object, $class);
-  }
+    if (!is_object($object)) {
+        return FALSE;
+    }
+    if (strtolower(get_class($object)) == strtolower($class)) {
+        return TRUE;
+    }
+    else {
+        return is_subclass_of($object, $class);
+    }
 }
 
 // Define
 if (!function_exists('is_a')) {
-  function is_a($object, $class) {
-    return php_compat_is_a($object, $class);
-  }
+    function is_a($object, $class) {
+        return php_compat_is_a($object, $class);
+    }
+}
+
+// Redirect browser using the header function
+function redirect($location) {
+    header('Location: ' . $location);
 }
 
 
 // URL mit PHP auf Existenz überprüfen
 // Funktion deklarieren
 function url_check($url) { 
-  $url_objects = @get_headers($url); 
-  return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : FALSE; 
+    $url_objects = @get_headers($url); 
+    return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : FALSE; 
 };
 
 $string_json = file_get_contents(PATH_TO_LMO . "/composer.json", FALSE);
@@ -305,13 +322,14 @@ $updatefilecheck_URL = $json_a['extra']['check'];
 
 // UpdateURL prüfen
 if (url_check($json_a['extra']['check'])){
-  $LMO_UPDATE = file_get_contents($json_a['extra']['check'], FALSE);
-  $json_update = json_decode($LMO_UPDATE, TRUE, 4);
-  $new_lmo_version = $json_update['stable']['current'];
-  $new_lmo_version_link = $json_update['stable']['download'];
-} else {
-  // UpdateURL ist nicht erreichbar
-  $new_lmo_version = $json_a['version'];
-  $new_lmo_version_link = "";
+    $LMO_UPDATE = file_get_contents($json_a['extra']['check'], FALSE);
+    $json_update = json_decode($LMO_UPDATE, TRUE, 4);
+    $new_lmo_version = $json_update['stable']['current'];
+    $new_lmo_version_link = $json_update['stable']['download'];
+}
+else {
+    // UpdateURL ist nicht erreichbar
+    $new_lmo_version = $json_a['version'];
+    $new_lmo_version_link = "";
 };
 ?>
