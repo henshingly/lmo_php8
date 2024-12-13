@@ -131,7 +131,7 @@ foreach($datsort as $key => $val) {
     if ($urlb==1) {
       if ($mberi[$st-1][$i]!="") {
         $lmo_spielbericht=$lmo_teamaicon."<strong>".$teams[$teama[$st-1][$i]]."</strong> &ndash; ".$lmo_teambicon."<strong>".$teams[$teamb[$st-1][$i]]."</strong><br><br>";
-        echo " <a href='".$mberi[$st-1][$i]."'  target='_blank'><img src='".URL_TO_IMGDIR."/lmo-st1.gif' width='10' height='12' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
+        echo " <a href='".$mberi[$st-1][$i]."'  target='_blank'><img src='".URL_TO_IMGDIR."/lmo-st1.svg' height='15' border='0' alt=''><span class='popup'>".$lmo_spielbericht.nl2br($text[270])."</span></a>";
       } else {
         echo "&nbsp;&nbsp;&nbsp;";
       }
@@ -165,7 +165,7 @@ foreach($datsort as $key => $val) {
       if ($mnote[$st-1][$i]!="") {
         $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$st-1][$i];
       }
-      echo " <a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return FALSE;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.gif' width='10' height='12' border='0' alt=''></a>";
+      echo " <a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return FALSE;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.svg' height='15' border='0' alt=''></a>";
       $lmo_spielnotiz="";
     } else {
       echo "&nbsp;";
