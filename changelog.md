@@ -21,6 +21,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Security  
+* Cross Site Scripting/XSS Lücke geschlossen   
 
 
 ***
