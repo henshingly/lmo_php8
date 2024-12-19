@@ -1,4 +1,4 @@
-[![LMO für PHP 8](https://github.com/henshingly/lmo_php8/blob/master/lmo/help/media/logo.svg)](https://www.vest-sport.de/forum)  
+[![LMO für PHP 8](https://www.vest-sport.de/forum_files/md/logo.svg)](https://www.vest-sport.de/forum)  
 [![GitHub release](https://img.shields.io/github/release/henshingly/lmo_php8?include_prereleases=&sort=semver&color=blue)](https://github.com/henshingly/lmo_php8/releases/) 
 [![commits](https://img.shields.io/github/commits-since/henshingly/lmo_php8/latest)](https://github.com/henshingly/lmo_php8/commits/main/) 
 [![download-badge](https://img.shields.io/github/downloads/henshingly/lmo_php8/total.svg?style=flat-square "Download status")](https://github.com/henshingly/lmo_php8/releases/latest "Download status") 
