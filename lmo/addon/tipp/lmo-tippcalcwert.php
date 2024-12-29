@@ -274,7 +274,7 @@ if (!file_exists($auswertfile)) {
         $tt .= (50000000+$spielegetipptgesamt[$a]);
       } elseif ($tipp_krit == 6) {
         if ($tipp_showstsiege == 1) {
-          $tt .= (50000000+$stsiege[$a]);
+          $tt .= (50000000+intval($stsiege[$a]));
         }
       } elseif ($tipp_showzus == 1) {
         if ($tipp_krit == 2) {
