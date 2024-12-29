@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -46,7 +46,7 @@ if ($action=="admin"){
     <td colspan='2' align="center"><h1><?php echo $text[77]." ".$text[54];?></h1></td>
   </tr>
   <tr>
-    <td class="lmoMenu" align="left"><?php 
+    <td class="lmoMenu" align="left"><?php
 require_once(PATH_TO_LMO."/lmo-openfile.php");
 if ($_SESSION['lmouserok'] == 2) {
   if ($todo != "new") {
@@ -144,14 +144,14 @@ if ($_SESSION['lmouserok'] == 2) {
   }
 ?>
     </td>
-    <td class="lmoMenu" align="right"><?php 
+    <td class="lmoMenu" align="right"><?php
   echo "<a href='{$adda}logout' onclick='return chklmolink();' title='{$text[89]}'>{$text[88]}</a>";
   echo "&nbsp;";
   if ($_SESSION['lmouserok']==2){echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";} else {echo "<a href='".URL_TO_LMO."/help/Deutsch/index.html' target='_blank' title='{$text[313]}'>{$text[312]}</a>";}?>
      </td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><?php 
+    <td colspan="2" align="center"><?php
   if ($_SESSION['lmouserok'] == 2) {
     $addr_options = $_SERVER['PHP_SELF']."?action=admin&amp;todo=options";
     $addr_addons = $_SERVER['PHP_SELF']."?action=admin&amp;todo=addons";
@@ -270,7 +270,7 @@ if ($_SESSION['lmouserok'] == 2) {
     </td>
   </tr>
   <tr>
-    <td colspan='2' class="lmoFooter" align="left"><?php 
+    <td colspan='2' class="lmoFooter" align="left"><?php
   if ($einsprachwahl==1){
     echo getLangSelector();
   }?>
@@ -282,5 +282,5 @@ if ($_SESSION['lmouserok'] == 2) {
     </td>
     <td class="lmoFooter" align="right"><?php echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
   </tr>
-</table><?php 
+</table><?php
 }?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -208,27 +208,27 @@ if ($newpage == 3) {
     <td align="center"><h1><?php echo  $text[243]; ?></h1></td>
   </tr>
   <tr>
-    <td align="center"><?php 
+    <td align="center"><?php
 if ($newpage<3){ ?>
       <form name="lmoedit" action="<?php echo  $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="new">
-        <input type="hidden" name="newpage" value="<?php echo ($newpage+1); ?>"><?php 
+        <input type="hidden" name="newpage" value="<?php echo ($newpage+1); ?>"><?php
   if ($newpage>0){ ?>
         <input type="hidden" name="xfile" value="<?php echo  $xfile; ?>">
         <input type="hidden" name="xtitel" value="<?php echo  $xtitel; ?>">
-        <input type="hidden" name="xtype" value="<?php echo  $xtype; ?>"><?php 
+        <input type="hidden" name="xtype" value="<?php echo  $xtype; ?>"><?php
   }
   if ($newpage>1){ ?>
         <input type="hidden" name="xteams" value="<?php echo  $xteams; ?>">
         <input type="hidden" name="xanzst" value="<?php echo  $xanzst; ?>">
-        <input type="hidden" name="xanzsp" value="<?php echo  $xanzsp; ?>"><?php 
+        <input type="hidden" name="xanzsp" value="<?php echo  $xanzsp; ?>"><?php
   }
 }?>
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <th class="nobr" align="left" colspan="3"><?php echo  $text[246]." ".($newpage+1)." ".$text[259]." 4"; ?></th>
-          </tr><?php 
+          </tr><?php
 if ($newpage==0){ ?>
           <tr>
             <td width="20">&nbsp;</td>
@@ -244,7 +244,7 @@ if ($newpage==0){ ?>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><acronym title="<?php echo  $text[175] ?>"><?php echo  $text[174]; ?></acronym></td>
             <td class="nobr" align="left"><acronym title="<?php echo  $text[175] ?>"><select class="lmo-formular-input" name="xtype" onChange="dolmoedit()"><?php echo  "<option value=\"0\""; if ($xtype==0){echo " selected";} echo ">".$text[176]."</option>"; echo "<option value=\"1\""; if ($xtype==1){echo " selected";} echo ">".$text[177]."</option>"; ?></select></acronym></td>
-          </tr><?php 
+          </tr><?php
 }
 if ($newpage==1){
   if ($xtype==0){?>
@@ -328,7 +328,7 @@ if ($newpage==1){
                 </tr>
               </table>
             </td>
-          </tr><?php 
+          </tr><?php
   } else { ?>
           <tr>
             <td width="20">&nbsp;</td>
@@ -341,7 +341,7 @@ if ($newpage==1){
             <td width="20">&nbsp;</td>
             <td class="nobr">&nbsp;</td>
             <td class="nobr"><?php echo  $text[350] ?></td>
-          </tr><?php 
+          </tr><?php
   }
 }
 if ($newpage==2){
@@ -351,10 +351,10 @@ if ($newpage==2){
             <td class="nobr" align="right" valign="top"><acronym title="<?php echo  $text[285] ?>"><?php echo  $text[284]; ?></acronym></td>
             <td class="nobr" align="left">
               <input type="radio" name="xprogram" value="none"<?php if ($xprogram=="none"){echo " checked";} ?> onChange="dolmoedit()"><?php echo  $text[286]; ?><br><br>
-              <?php echo  $text[287]; ?>:<br><?php 
+              <?php echo  $text[287]; ?>:<br><?php
     $ftype=".l98";
-    require(PATH_TO_LMO."/lmo-adminnewdir.php"); ?><br><?php 
-    
+    require(PATH_TO_LMO."/lmo-adminnewdir.php"); ?><br><?php
+
     // Änderungen s.janke@tu-bs.de - Beginn
     if ($xteams>=4) {
       $soll_anzsp = floor($xteams/2);
@@ -366,10 +366,10 @@ if ($newpage==2){
       }
     }
     // Änderungen s.janke@tu-bs.de - Ende
-    
+
     ?>
             </td>
-          </tr><?php 
+          </tr><?php
   } else {
     for ($i=1;$i<=$xanzst;$i++){?>
           <tr>
@@ -384,7 +384,7 @@ if ($newpage==2){
                 <option value="7"<?php if ($xmodus[$i-1]==7){echo " selected";}?>><?php echo $text[357]?></option>
               </select>
             </td>
-          </tr><?php 
+          </tr><?php
     }
   }
 }
@@ -392,17 +392,17 @@ if ($newpage<3){ ?>
           <tr>
             <td class="lmoFooter" align="left" colspan="2">
               <a href="<?php echo  $_SERVER['PHP_SELF']; ?>" onclick="return siklmolink(this.href);" title="<?php echo  $text[248]; ?>"><?php echo  $text[247]; ?></a>
-            </td><?php 
+            </td><?php
   if ($newpage<2){ ?>
             <td align="right">
               <input title="<?php echo  $text[261]; ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo  $text[260]; ?>">
-            </td><?php 
+            </td><?php
   } else {?>
             <td align="right">
               <input title="<?php echo  $text[290]; ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo  $text[289]; ?>">
-            </td><?php 
+            </td><?php
   }?>
-          </tr><?php 
+          </tr><?php
 }
 if ($newpage==3){ ?>
           <tr>
@@ -413,7 +413,7 @@ if ($newpage==3){ ?>
             <td class="lmoFooter" colspan="3" align="left">
               <a href="<?php echo  $_SERVER['PHP_SELF']."?action=admin&amp;todo=edit&amp;st=-2&amp;file=".$file; ?>" title="<?php echo  $text[293]; ?>"><?php echo  $text[292]; ?></a>
             </td>
-          </tr><?php 
+          </tr><?php
 } ?>
         </table>
       </form>

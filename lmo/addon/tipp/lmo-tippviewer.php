@@ -17,13 +17,13 @@
   *
   *
   */
-  
-  
+
+
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($tipp_viewertipp == 1 && $viewermode == 1) {
   require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcpkt.php");
   require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
-   
+
   $verz = opendir(substr(PATH_TO_LMO.'/'.$dirliga, 0, -1));
   $dateien = array();
   while ($files = readdir($verz)) {
@@ -48,9 +48,9 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
   }
   closedir($verz);
   sort($dateien);
-   
+
   $anzligen = count($dateien);
-   
+
   $teams = array_pad($array, 65, "");
   $teams[0] = "___";
   $liga = array();
@@ -81,9 +81,9 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
   $tippb = array();
   $jksp = array();
   $tipp_jokertippaktiv = array();
-   
+
   $anzspiele = 0;
-   
+
   if (!isset($save)) {
     $save = 0;
   }
@@ -98,19 +98,19 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     $now1 = strtotime("+".$start." day");
     $then1 = strtotime("+".($start+$tipp_viewertage)." day");
   }
-   
+
   $now1 = date("d.m.Y", $now1);
   $now = mktime(0, 0, 0, substr($now1, 3, 2), substr($now1, 0, 2), substr($now1, -4));
   $then = date("d.m.Y", $then1);
   $then = mktime(0, 0, 0, substr($then, 3, 2), substr($then, 0, 2), substr($then, -4));
   $then1 = date("d.m.Y", ($then-1));
-   
+
   for ($liganr = 0; $liganr < $anzligen; $liganr++) {
     $file = $dateien[$liganr];
     $tippfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($dateien[$liganr], 0, -4)."_".$_SESSION['lmotippername'].".tip";
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfileviewer.php");
   }
-    
+
   if ($save == 1) {
     $now = time();
     $start1 = 0;
@@ -178,7 +178,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
       }
     }
   }
-   
+
   if ($tipp_showtendenzabs == 1 || $tipp_showtendenzpro == 1 || ($tipp_showdurchschntipp == 1 && $tipp_tippmodus == 1)) {
     $tendenz1 = array_pad(array("0"), $anzspiele+1, "0");
     $tendenz0 = array_pad(array("0"), $anzspiele+1, "0");
@@ -196,7 +196,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
       }
     }
   }
-   
+
   $addr = $_SERVER['PHP_SELF']."?action=tipp&amp;todo=edit&amp;file=&amp;viewermode=1&amp;start=";
   $breite = 17;
   if ($tipp_tippmodus == 1 && $tipp_pfeiltipp == 1) {
@@ -240,17 +240,17 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
       <input type="hidden" name="xstart" value="<?php echo $start; ?>">
       <input type="hidden" name="xnow" value="<?php echo $now; ?>">
       <input type="hidden" name="xthen" value="<?php echo $then; ?>">
-      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php 
+      <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
   if ($anzspiele==0){?>
         <tr>
           <td align="center" colspan="<?php echo $breite; ?>"><?php echo getMessage($text['tipp'][262],TRUE); ?></td>
-        </tr><?php 
+        </tr><?php
   }
   for ($i=0;$i<$anzspiele;$i++){
     if ($i==0 || $liga[$i]!=$liga[$i-1]){?>
         <tr>
           <th align="left" colspan="<?php echo $breite; ?>"><?php echo $titel[$i]; ?></th>
-        </tr><?php 
+        </tr><?php
     }
     if ($i == 0 || $liga[$i] != $liga[$i-1] || $spieltag[$i] != $spieltag[$i-1]) {
       if ($datum1[$i] != "") {
@@ -299,17 +299,17 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         }
       } ?></th><?php      if ($tipp_showtendenzabs==1 || $tipp_showtendenzpro==1){ ?>
           <th class="nobr" colspan="<?php if ($tipp_showtendenzabs==1 && $tipp_showtendenzpro==1){echo "4";} else {echo "2";} ?>"><?php echo $text['tipp'][188]; /* Tipptendenz absolut */?></th><?php      }
-      if ($tipp_tippmodus==1){ 
+      if ($tipp_tippmodus==1){
         if ($tipp_showdurchschntipp==1){ ?>
-          <th class="nobr" colspan="2"><?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp */?><br><?php 
+          <th class="nobr" colspan="2"><?php echo "Ø-".$text['tipp'][30]; /* DurchschnittsTipp */?><br><?php
           if ($goalfaktor[$i]!=1) {
             echo "(".$text[553+log10($goalfaktor[$i])].")";
           }?></th><?php        }?>
           <th class="nobr" align="center" colspan="<?php if ($tipp_pfeiltipp==1){echo "5";} else {echo "3";} ?>">
-            <acronym title="<?php echo $text['tipp'][241].":".$text['tipp'][242] ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php 
+            <acronym title="<?php echo $text['tipp'][241].":".$text['tipp'][242] ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php
         if ($goalfaktor[$i]!=1) {
           echo "(".$text[553+log10($goalfaktor[$i])].")";
-        }?></th><?php 
+        }?></th><?php
       }
       if ($tipp_tippmodus==0){ ?>
           <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][95] ?>">1</acronym></th><?php        if ($hidr[$i]==0){ ?>
@@ -323,7 +323,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           <th class="nobr" colspan="5" align="center"><?php echo $text['tipp'][31]; /* Ergebnis*/ ?></th>
           <th class="nobr" colspan="2" align="right"><?php echo $text[37]; /* PP */?></th>
           <th>&nbsp;</th>
-        </tr><?php 
+        </tr><?php
     }
     if ($tipp_einsichterst == 2) {
       if ($goala[$i] != "_" && $goalb[$i] != "_") {
@@ -334,13 +334,13 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     } else {
       $btip1 = FALSE;
     }
-    
-    $dum1 = ""; 
+
+    $dum1 = "";
     if ($datm[$i] == 1) {
       if ($mterm[$i] > 0) {
         $datf = $defdateformat;
         $dum1 = strtr(date($datf, $mterm[$i]), $trans_lang);
-      } 
+      }
     }?>
         <tr>
           <td class="nobr" align="left"><?php echo $dum1; ?></td>
@@ -348,13 +348,13 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           <td class="nobr" align="right"><?php echo $teama[$i];?></td>
           <td class="nobr" align="center" width="10">-</td>
           <td class="nobr" align="left">
-            <?php 
+            <?php
     echo $teamb[$i];
     if ($tippa[$i] == "_" || $tippb[$i] == "_" || $tippa[$i] == "-1" || $tippb[$i] == "-1") {
       $tippa[$i] = "";
       $tippb[$i] = "";
     }?>
-            
+
           </td>
           <td class="nobr">&nbsp;</td><?php    if ($tipp_showtendenzabs==1){ ?>
           <td align="center" class="nobr">
@@ -370,7 +370,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         }
         echo $tendenz1[$i]."-".$tendenz0[$i]."-".$tendenz2[$i];
       }?>
-            
+
           </td>
           <td class="nobr">&nbsp;</td><?php    }
     if ($tipp_showtendenzpro==1){ ?>
@@ -394,7 +394,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           echo "&nbsp;";
         }
       }?>
-            
+
           </td>
           <td>&nbsp;</td><?php    }
     $plus = 1;
@@ -426,7 +426,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
             echo "&nbsp;";
           }
         }?>
-            
+
           </td>
           <td>&nbsp;</td><?php      }
       if ($btip==TRUE){ ?>
@@ -446,12 +446,12 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
                 </td>
               </tr>
             </table>
-          </td><?php 
-        } 
+          </td><?php
+        }
       } else {
         if ($tipp_pfeiltipp==1){ ?>
           <td class="nobr">&nbsp;</td><?php        }?>
-          <td class="nobr" align="right"><?php echo $tippa[$i]; ?></td><?php 
+          <td class="nobr" align="right"><?php echo $tippa[$i]; ?></td><?php
       }?>
           <td class="nobr" width="2">:</td><?php      if ($btip==TRUE){?>
           <td class="nobr" align="right">
@@ -496,14 +496,14 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           <td class="nobr">&nbsp;</td><?php      }?>
           <td class="nobr" align="center">
               <input type="radio" name="xtipp<?php echo $i; ?>" value="2" <?php if ($tipp==2){echo " checked";} if ($btip==FALSE){echo " disabled";} ?>>
-          </td><?php    } // ende ($tipp_tippmodus==0) 
+          </td><?php    } // ende ($tipp_tippmodus==0)
     if ($tipp_jokertipp == 1) {
       if ($tipp_jokertippaktiv[$i] > 0 && $tipp_jokertippaktiv[$i] < time()) {
         $btip = FALSE;
       }?>
           <td class="nobr" align="center">
               <input type="radio" name="xjokerspiel_<?php echo $liga[$i]."_".$spieltag[$i]; ?>" value="<?php echo $spiel[$i]; ?>" <?php if ($jksp[$i]==$spiel[$i]){echo " checked";} if ($btip==FALSE){echo " disabled";} ?>>
-          </td><?php    }?>                                                                                                                   
+          </td><?php    }?>
           <td class="lmoBackMarkierung" align="right"><?php echo applyFactor($goala[$i],$goalfaktor[$i]); ?></td>
           <td class="lmoBackMarkierung">:</td>
           <td class="lmoBackMarkierung" align="left"><?php echo applyFactor($goalb[$i],$goalfaktor[$i]); ?></td>
@@ -566,9 +566,9 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           if ($msieg[$i]==3) {
             $lmo_spielnotiz.=" / ".applyFactor($goalb[$i],$goalfaktor[$i]).":".applyFactor($goala[$i],$goalfaktor[$i]);
           }
-        
+
             $lmo_spielnotiz.=" ".$mspez[$i];
-        
+
           //Grüner Tisch: Heimteam siegt
           if ($msieg[$i]==1) {
             $lmo_spielnotiz.="\n\n<strong>".$text[219].":</strong>\n".$teama[$i]." ".$text[211];
