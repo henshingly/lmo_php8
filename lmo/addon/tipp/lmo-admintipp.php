@@ -36,7 +36,7 @@ include(PATH_TO_ADDONDIR . "/tipp/lmo-admintippmenu.php");
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <th><h1><?php echo $text['tipp'][63] ?></h1></th>
+    <th style="text-align:center"><h1><?php echo $text['tipp'][63] ?></h1></th>
   </tr>
   <tr>
     <td align="center">
