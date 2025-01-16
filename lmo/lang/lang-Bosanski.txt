@@ -580,6 +580,7 @@
 579=Ovdje unesite broj učesnika UEFA Conference League
 590=Nova LMO verzija je objavljena.
 591=Može se preuzeti OVDJE!
+592=sec
 800=Režim doigravanja - postavka za kućnu igru
 801=Mod.: 1-1-1-...
 802=Ekipa A prvo ima prednost kod kuće, a zatim mijenja nakon svake utakmice

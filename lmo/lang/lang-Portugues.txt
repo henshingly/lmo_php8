@@ -580,6 +580,7 @@
 579=Insira aqui o número de participantes da UEFA Conference League
 590=Uma nova versão do LMO foi lançada.
 591=Pode ser baixado AQUI!
+592=seg
 800=Modo Playoff - configuração do jogo em casa
 801=Mod.: 1-1-1-...
 802=O time A tem a vantagem de jogar em casa primeiro e depois muda após cada jogo

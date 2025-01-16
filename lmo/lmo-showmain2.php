@@ -264,7 +264,7 @@ if ($backlink==1 && ($file!="" || $action=="tipp")) {
 
 //Berechnungszeit
 if ($calctime==1) {
-  $output_berechnungszeit.=$text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
+  $output_berechnungszeit.=$text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." ".$text[592].".<br>";
 }
 
 
@@ -326,6 +326,6 @@ $template->show();
 /*$lmo_cache->end();
 } else {
 //Result was cached!
-if (isset($_SESSION['debug'])) echo "real time due caching: ".number_format((getmicrotime()-$startzeit),4,".",",")." sek.<br>";
+if (isset($_SESSION['debug'])) echo "real time due caching: ".number_format((getmicrotime()-$startzeit),4,".",",")." ".$text[592].".<br>";
 }*/
 ?>

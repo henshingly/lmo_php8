@@ -580,6 +580,7 @@
 579=Ide írja be az UEFA Conference League résztvevőinek számát
 590=Az új LMO verzió megjelent.
 591=Innen letölthető!
+592=mp
 800=Playoff mód - otthoni játék beállítása
 801=Mod.: 1-1-1-...
 802=Az A-csapat először hazai előnyben van, majd minden meccs után cserél

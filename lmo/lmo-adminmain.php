@@ -280,7 +280,7 @@ if ($_SESSION['lmouserok'] == 2) {
     <td align="left">
       <a href="<?php echo URL_TO_LMO."/lmo.php?file=".$file;?>" target="_blank" title="<?php echo $text[116]?>"><?php echo $text[5]?> <?php echo $text[115]?></a>
     </td>
-    <td class="lmoFooter" align="right"><?php echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." sek."; ?></td>
+    <td class="lmoFooter" align="right"><?php echo $text[471].": ".number_format((getmicrotime()-$startzeit),4,".",",")." ".$text[592]."."; ?></td>
   </tr>
 </table><?php
 }?>
