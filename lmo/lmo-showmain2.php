@@ -153,7 +153,7 @@ if ($file!="") {
     }
     //Fieberkurve
     if ($kurve==1) {
-      $output_fieberkurve.=$action!="graph"?    "<a href='{$addm}graph&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[134]}'>{$text[133]}</a>": $text[133];
+      $output_fieberkurve.=$action!="graph"?    "<a href='{$addm}graph' title='{$text[134]}'>{$text[133]}</a>": $text[133];
       $output_fieberkurve.="&nbsp;&nbsp;";
     }
     //Ligastatistiken
@@ -221,9 +221,9 @@ if ($file!="") {
 
   //Einbindung Bootstrap
   $output_stylesheet2="
-  <link href='".URL_TO_LMO."/css/bootstrap.min.css' rel='stylesheet'/>
-  <script src='".URL_TO_LMO."/js/jquery.min.js'></script>
-  <script src='".URL_TO_LMO."/js/bootstrap.min.js'></script>";
+  <link href='".URL_TO_LMO."/css/bootstrap.min.css' rel='stylesheet'>
+  <script type='text/javascript' src='".URL_TO_LMO."/js/jquery.min.js'></script>
+  <script type='text/javascript' src='".URL_TO_LMO."/js/bootstrap.min.js'></script>";
 
   //SaveHTML
   if ($einsavehtml==1) {

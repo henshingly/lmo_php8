@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 			<!-- template designed by Marco Von Ballmoos  -->
 			<title>File Source for classes.php</title>
-			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<link rel="stylesheet" href="../media/stylesheet.css">
 											</head>
 		<body>
 						
@@ -16,33 +16,33 @@
 <li><a name="a3"></a><span class="src-doc"> * LMO Class Library Version (01/2004)</span></li>
 <li><a name="a4"></a><span class="src-doc"> *</span></li>
 <li><a name="a5"></a><span class="src-doc"> * Die LMO Class Library (classlib) bildet ein Ligadatei (.l98) des LMO</span></li>
-<li><a name="a6"></a><span class="src-doc"> * in Form eines Objektbaums ab und ermöglicht so die Entwicklung von</span></li>
-<li><a name="a7"></a><span class="src-doc"> * objektorientierten Erweiterung in Form von sog. Addons für den Liga Manager Online.</span></li>
+<li><a name="a6"></a><span class="src-doc"> * in Form eines Objektbaums ab und ermÃ¶glicht so die Entwicklung von</span></li>
+<li><a name="a7"></a><span class="src-doc"> * objektorientierten Erweiterung in Form von sog. Addons fÃ¼r den Liga Manager Online.</span></li>
 <li><a name="a8"></a><span class="src-doc"> *</span></li>
-<li><a name="a9"></a><span class="src-doc"> * &lt;br&gt;Änderungen:</span></li>
+<li><a name="a9"></a><span class="src-doc"> * &lt;br&gt;Ã„nderungen:</span></li>
 <li><a name="a10"></a><span class="src-doc"> * &lt;br&gt; 20.07.04 2.0 Start</span></li>
-<li><a name="a11"></a><span class="src-doc"> * &lt;br&gt; 22.07.04 2.1 Pdf Class hinzugefügt.</span></li>
+<li><a name="a11"></a><span class="src-doc"> * &lt;br&gt; 22.07.04 2.1 Pdf Class hinzugefÃ¼gt.</span></li>
 <li><a name="a12"></a><span class="src-doc"> * &lt;br&gt; 23.07.04 2.1 Bugfix in methode $liga-&gt;writeFile teamdetails gingen verloren</span></li>
 <li><a name="a13"></a><span class="src-doc"> * &lt;br&gt; 31.07.04     relative Pfadangabe in class.ezpdf.php ersetzt</span></li>
-<li><a name="a14"></a><span class="src-doc"> * &lt;br&gt; 01.08.04 2.2 Spielbericht (reportURL) zur class Partie hinzugefügt</span></li>
-<li><a name="a15"></a><span class="src-doc"> * &lt;br&gt;              Beim Einlesen der Runden wird jetzt der Pokalmodus berücksichtigt</span></li>
+<li><a name="a14"></a><span class="src-doc"> * &lt;br&gt; 01.08.04 2.2 Spielbericht (reportURL) zur class Partie hinzugefÃ¼gt</span></li>
+<li><a name="a15"></a><span class="src-doc"> * &lt;br&gt;              Beim Einlesen der Runden wird jetzt der Pokalmodus berÃ¼cksichtigt</span></li>
 <li><a name="a16"></a><span class="src-doc"> * &lt;br&gt; 20.09.04 2.3 Class iniFile function getIniFile</span></li>
-<li><a name="a17"></a><span class="src-doc"> * &lt;br&gt;              Beim Auslesen einer URL, die keyValues enthält</span></li>
+<li><a name="a17"></a><span class="src-doc"> * &lt;br&gt;              Beim Auslesen einer URL, die keyValues enthÃ¤lt</span></li>
 <li><a name="a18"></a><span class="src-doc"> * &lt;br&gt;              fehlten die Gleichheitszeichen</span></li>
 <li><a name="a19"></a><span class="src-doc"> * &lt;br&gt; 22.09.04 2.3 Pokalmodus in loadLiga implementiert</span></li>
-<li><a name="a20"></a><span class="src-doc"> * &lt;br&gt; 22.11.04 2.4 Mal wieder keyValue gefunden und in keyValues geändert</span></li>
+<li><a name="a20"></a><span class="src-doc"> * &lt;br&gt; 22.11.04 2.4 Mal wieder keyValue gefunden und in keyValues geÃ¤ndert</span></li>
 <li><a name="a21"></a><span class="src-doc"> * &lt;br&gt;              classes.php Ist der aktuelle Spieltag nicht gesetzt wird $aktSpTag = 1</span></li>
-<li><a name="a22"></a><span class="src-doc"> * &lt;br&gt; 02.12.04 2.5 writeFile / loadFile geändert</span></li>
-<li><a name="a23"></a><span class="src-doc"> * &lt;br&gt;              Das komplette File wird zunächst in ein array geladen und zwischengespeichert.</span></li>
-<li><a name="a24"></a><span class="src-doc"> * &lt;br&gt;              Beim Speichern wird dieses zunächst mit den Werten der Objekte abgeglichen und</span></li>
+<li><a name="a22"></a><span class="src-doc"> * &lt;br&gt; 02.12.04 2.5 writeFile / loadFile geÃ¤ndert</span></li>
+<li><a name="a23"></a><span class="src-doc"> * &lt;br&gt;              Das komplette File wird zunÃ¤chst in ein array geladen und zwischengespeichert.</span></li>
+<li><a name="a24"></a><span class="src-doc"> * &lt;br&gt;              Beim Speichern wird dieses zunÃ¤chst mit den Werten der Objekte abgeglichen und</span></li>
 <li><a name="a25"></a><span class="src-doc"> * &lt;br&gt;              dann im Anschluss komplett ins file geschrieben. Dadurch gehen keine Informationen verloren</span></li>
-<li><a name="a26"></a><span class="src-doc"> * &lt;br&gt;              Auch Erweiterungen des LigaFiles (z.B, zusätzliche Sektionen wie beim MittellangTeamName</span></li>
+<li><a name="a26"></a><span class="src-doc"> * &lt;br&gt;              Auch Erweiterungen des LigaFiles (z.B, zusÃ¤tzliche Sektionen wie beim MittellangTeamName</span></li>
 <li><a name="a27"></a><span class="src-doc"> * &lt;br&gt;              Addon werden erkannt und geschrieben.</span></li>
-<li><a name="a28"></a><span class="src-doc"> * &lt;br&gt; 20.12.04 2.6 neue Fktion gamesSorted hinzugefügt (Sortierung der Partien)</span></li>
+<li><a name="a28"></a><span class="src-doc"> * &lt;br&gt; 20.12.04 2.6 neue Fktion gamesSorted hinzugefÃ¼gt (Sortierung der Partien)</span></li>
 <li><a name="a29"></a><span class="src-doc"> * &lt;br&gt; 14.01.05 2.6 SP1 Klasse Partie function valuateGame() Ermittelt die Wertung einer Partie (beta Status)</span></li>
-<li><a name="a30"></a><span class="src-doc"> * &lt;br&gt; 16.02.05 2.6 SP2 Klasse Partie fkt. gToreString() und hToreString() überarbeitet. Bei greenTable wird 0 bzw. 0*</span></li>
-<li><a name="a31"></a><span class="src-doc"> *                                     zurückgegeben. (beta Status)</span></li>
-<li><a name="a32"></a><span class="src-doc"> * &lt;br&gt; 10.04.05 2.7 (Dank an Gowi) update Funktionen für addons implementiert</span></li>
+<li><a name="a30"></a><span class="src-doc"> * &lt;br&gt; 16.02.05 2.6 SP2 Klasse Partie fkt. gToreString() und hToreString() Ã¼berarbeitet. Bei greenTable wird 0 bzw. 0*</span></li>
+<li><a name="a31"></a><span class="src-doc"> *                                     zurÃ¼ckgegeben. (beta Status)</span></li>
+<li><a name="a32"></a><span class="src-doc"> * &lt;br&gt; 10.04.05 2.7 (Dank an Gowi) update Funktionen fÃ¼r addons implementiert</span></li>
 <li><a name="a33"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">    Tim Schumacher &lt;webobjects@gmx.net&gt;</span></li>
 <li><a name="a34"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@version</span><span class="src-doc">   2.7</span></li>
 <li><a name="a35"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc">   classLib</span></li>
@@ -115,13 +115,13 @@
 <li><a name="a100"></a>  <span class="src-key">function </span><a href="../classLib/team.html#methodteam">team</a><span class="src-sym">(</span><span class="src-var">$name</span>=<span class="src-str">&quot;&quot;</span><span class="src-sym">,</span><span class="src-var">$kurz</span>=<span class="src-str">&quot;&quot;</span><span class="src-sym">,</span><span class="src-var">$nr</span>=<span class="src-str">&quot;&quot;</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
 <li><a name="a101"></a>    <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/team.html#var$name">name</a> = <span class="src-var">$name</span><span class="src-sym">;</span></li>
 <li><a name="a102"></a>    <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/team.html#var$kurz">kurz</a> = <span class="src-var">$kurz</span><span class="src-sym">;</span></li>
-<li><a name="a103"></a><span class="src-comm">//    $this-&gt;mittel = null; Wird noch nicht verwendet da MittellangeNamen noch nicht zu standard gehören</span></li>
+<li><a name="a103"></a><span class="src-comm">//    $this-&gt;mittel = null; Wird noch nicht verwendet da MittellangeNamen noch nicht zu standard gehÃ¶ren</span></li>
 <li><a name="a104"></a>    <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/team.html#var$nr">nr</a> = <span class="src-var">$nr</span><span class="src-sym">;</span></li>
 <li><a name="a105"></a>    <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/team.html#var$keyValues">keyValues</a> = <span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">&quot;SP&quot;</span>=&gt;<span class="src-num">0</span><span class="src-sym">,</span><span class="src-str">&quot;SM&quot;</span>=&gt;<span class="src-num">0</span><span class="src-sym">,</span><span class="src-str">&quot;TOR1&quot;</span>=&gt;<span class="src-num">0</span><span class="src-sym">,</span><span class="src-str">&quot;TOR2&quot;</span>=&gt;<span class="src-num">0</span><span class="src-sym">,</span><span class="src-str">&quot;STDA&quot;</span>=&gt;<span class="src-num">0</span><span class="src-sym">,</span><span class="src-str">&quot;URL&quot;</span>=&gt;<span class="src-str">&quot;&quot;</span><span class="src-sym">,</span><span class="src-str">&quot;NOT&quot;</span>=&gt;<span class="src-str">&quot;&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
 <li><a name="a106"></a>  <span class="src-sym">}</span></li>
 <li><a name="a107"></a>&nbsp;</li>
 <li><a name="a108"></a><span class="src-doc">/**</span></li>
-<li><a name="a109"></a><span class="src-doc"> * Fügt ein neues KeyValue Paar hinzu</span></li>
+<li><a name="a109"></a><span class="src-doc"> * FÃ¼gt ein neues KeyValue Paar hinzu</span></li>
 <li><a name="a110"></a><span class="src-doc"> *</span></li>
 <li><a name="a111"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> private</span></li>
 <li><a name="a112"></a><span class="src-doc">*/</span></li>
@@ -129,7 +129,7 @@
 <li><a name="a114"></a>    <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/team.html#var$keyValues">keyValues</a><span class="src-sym">[</span><span class="src-var">$new_key</span><span class="src-sym">]</span>=<span class="src-var">$new_value</span><span class="src-sym">;</span></li>
 <li><a name="a115"></a>  <span class="src-sym">}</span></li>
 <li><a name="a116"></a><span class="src-doc">/**</span></li>
-<li><a name="a117"></a><span class="src-doc"> * Gibt value zu einem Key zurück</span></li>
+<li><a name="a117"></a><span class="src-doc"> * Gibt value zu einem Key zurÃ¼ck</span></li>
 <li><a name="a118"></a><span class="src-doc"> *</span></li>
 <li><a name="a119"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> private</span></li>
 <li><a name="a120"></a><span class="src-doc">*/</span></li>
@@ -215,9 +215,9 @@
 <li><a name="a199"></a><span class="src-doc">/**</span></li>
 <li><a name="a200"></a><span class="src-doc"> * Spielende</span></li>
 <li><a name="a201"></a><span class="src-doc"> * Neu ab 2.2 Spielende</span></li>
-<li><a name="a202"></a><span class="src-doc"> * 0 = reguläres Ende</span></li>
-<li><a name="a203"></a><span class="src-doc"> * 2 = Verlängerung</span></li>
-<li><a name="a204"></a><span class="src-doc"> * 1 = 11-Meter-Schießen</span></li>
+<li><a name="a202"></a><span class="src-doc"> * 0 = regulÃ¤res Ende</span></li>
+<li><a name="a203"></a><span class="src-doc"> * 2 = VerlÃ¤ngerung</span></li>
+<li><a name="a204"></a><span class="src-doc"> * 1 = 11-Meter-SchieÃŸen</span></li>
 <li><a name="a205"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">integer </span></li>
 <li><a name="a206"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a207"></a><span class="src-doc">*/</span></li>
@@ -241,37 +241,37 @@
 <li><a name="a225"></a>&nbsp;</li>
 <li><a name="a226"></a>&nbsp;</li>
 <li><a name="a227"></a><span class="src-doc">/**</span></li>
-<li><a name="a228"></a><span class="src-doc">* Gibt Tore der Heimmanschaft für die Bildschirmausgabe zurück.</span></li>
+<li><a name="a228"></a><span class="src-doc">* Gibt Tore der Heimmanschaft fÃ¼r die Bildschirmausgabe zurÃ¼ck.</span></li>
 <li><a name="a229"></a><span class="src-doc">*</span></li>
-<li><a name="a230"></a><span class="src-doc">* Die Ausgabe von negativen Werten wird zur Bildschirmausgabe unterdrückt.</span></li>
+<li><a name="a230"></a><span class="src-doc">* Die Ausgabe von negativen Werten wird zur Bildschirmausgabe unterdrÃ¼ckt.</span></li>
 <li><a name="a231"></a><span class="src-doc">* So werden negative Ergebnisse bzw Ergebnisse von Partien die noch nicht</span></li>
-<li><a name="a232"></a><span class="src-doc">* stattfanden durch den Parameterwert für $leer angezeigt.</span></li>
+<li><a name="a232"></a><span class="src-doc">* stattfanden durch den Parameterwert fÃ¼r $leer angezeigt.</span></li>
 <li><a name="a233"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
-<li><a name="a234"></a><span class="src-doc">* </span><span class="src-doc-coretag">@param </span><span class="src-doc"> </span><span class="src-doc-type">string </span><span class="src-doc-var">$leer </span><span class="src-doc">Der Rückgabewert wenn Ergebnis vorhanden ist</span></li>
+<li><a name="a234"></a><span class="src-doc">* </span><span class="src-doc-coretag">@param </span><span class="src-doc"> </span><span class="src-doc-type">string </span><span class="src-doc-var">$leer </span><span class="src-doc">Der RÃ¼ckgabewert wenn Ergebnis vorhanden ist</span></li>
 <li><a name="a235"></a><span class="src-doc">* </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">string </span></li>
 <li><a name="a236"></a><span class="src-doc">*/</span></li>
 <li><a name="a237"></a>  <span class="src-key">function </span><a href="../classLib/partie.html#methodhToreString">hToreString</a><span class="src-sym">(</span><span class="src-var">$leer</span>=<span class="src-str">&quot;_&quot;</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
 <li><a name="a238"></a>      <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$hTore">hTore</a> == -<span class="src-num">1</span><span class="src-sym">) </span><span class="src-var">$str </span>= <span class="src-var">$leer</span><span class="src-sym">;</span></li>
 <li><a name="a239"></a>      <span class="src-key">elseif </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$hTore">hTore</a> == -<span class="src-num">2</span><span class="src-sym">) </span><span class="src-var">$str </span>= <span class="src-str">&quot;0*&quot;</span><span class="src-sym">; </span><span class="src-comm">// Markieren als greenTable</span></li>
-<li><a name="a240"></a>      <span class="src-key">elseif </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$gTore">gTore</a> == -<span class="src-num">2</span><span class="src-sym">) </span><span class="src-var">$str </span>= <span class="src-str">&quot;0&quot;</span><span class="src-sym">; </span><span class="src-comm">// Wenn Gast der Sieg zugesprochen wurde O Tore für Heim anzeigen</span></li>
+<li><a name="a240"></a>      <span class="src-key">elseif </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$gTore">gTore</a> == -<span class="src-num">2</span><span class="src-sym">) </span><span class="src-var">$str </span>= <span class="src-str">&quot;0&quot;</span><span class="src-sym">; </span><span class="src-comm">// Wenn Gast der Sieg zugesprochen wurde O Tore fÃ¼r Heim anzeigen</span></li>
 <li><a name="a241"></a>    <span class="src-key">else </span><span class="src-var">$str </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$hTore">hTore</a><span class="src-sym">;</span></li>
 <li><a name="a242"></a>    <span class="src-key">return </span><span class="src-var">$str</span><span class="src-sym">;</span></li>
 <li><a name="a243"></a>  <span class="src-sym">}</span></li>
 <li><a name="a244"></a>&nbsp;</li>
 <li><a name="a245"></a><span class="src-doc">/**</span></li>
-<li><a name="a246"></a><span class="src-doc">* Gibt Tore der Gastmannschaft für die Bildschirmausgabe zurück.</span></li>
+<li><a name="a246"></a><span class="src-doc">* Gibt Tore der Gastmannschaft fÃ¼r die Bildschirmausgabe zurÃ¼ck.</span></li>
 <li><a name="a247"></a><span class="src-doc">*</span></li>
-<li><a name="a248"></a><span class="src-doc">* Die Ausgabe von negativen Werten wird zur Bildschirmausgabe unterdrückt.</span></li>
+<li><a name="a248"></a><span class="src-doc">* Die Ausgabe von negativen Werten wird zur Bildschirmausgabe unterdrÃ¼ckt.</span></li>
 <li><a name="a249"></a><span class="src-doc">* So werden negative Ergebnisse bzw Ergebnisse von Partien die noch nicht</span></li>
-<li><a name="a250"></a><span class="src-doc">* stattfanden durch den Parameterwert für $leer angezeigt.</span></li>
+<li><a name="a250"></a><span class="src-doc">* stattfanden durch den Parameterwert fÃ¼r $leer angezeigt.</span></li>
 <li><a name="a251"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
-<li><a name="a252"></a><span class="src-doc">* </span><span class="src-doc-coretag">@param </span><span class="src-doc"> </span><span class="src-doc-type">string </span><span class="src-doc-var">$leer </span><span class="src-doc">Der Rückgabewert wenn kein Ergebnis vorhanden ist</span></li>
+<li><a name="a252"></a><span class="src-doc">* </span><span class="src-doc-coretag">@param </span><span class="src-doc"> </span><span class="src-doc-type">string </span><span class="src-doc-var">$leer </span><span class="src-doc">Der RÃ¼ckgabewert wenn kein Ergebnis vorhanden ist</span></li>
 <li><a name="a253"></a><span class="src-doc">* </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">string </span></li>
 <li><a name="a254"></a><span class="src-doc">*/</span></li>
 <li><a name="a255"></a>  <span class="src-key">function </span><a href="../classLib/partie.html#methodgToreString">gToreString</a><span class="src-sym">(</span><span class="src-var">$leer </span>= <span class="src-str">&quot;_&quot;</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
 <li><a name="a256"></a>      <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$gTore">gTore</a> == -<span class="src-num">1</span><span class="src-sym">) </span><span class="src-var">$str </span>= <span class="src-var">$leer</span><span class="src-sym">;</span></li>
 <li><a name="a257"></a>      <span class="src-key">elseif </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$gTore">gTore</a> == -<span class="src-num">2</span><span class="src-sym">) </span><span class="src-var">$str </span>= <span class="src-str">&quot;0*&quot;</span><span class="src-sym">; </span><span class="src-comm">// Markieren als greenTable</span></li>
-<li><a name="a258"></a>      <span class="src-key">elseif </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$hTore">hTore</a> == -<span class="src-num">2</span><span class="src-sym">) </span><span class="src-var">$str </span>= <span class="src-str">&quot;0&quot;</span><span class="src-sym">; </span><span class="src-comm">// Wenn Heim der Sieg zugesprochen wurde O Tore für Gast anzeigen</span></li>
+<li><a name="a258"></a>      <span class="src-key">elseif </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$hTore">hTore</a> == -<span class="src-num">2</span><span class="src-sym">) </span><span class="src-var">$str </span>= <span class="src-str">&quot;0&quot;</span><span class="src-sym">; </span><span class="src-comm">// Wenn Heim der Sieg zugesprochen wurde O Tore fÃ¼r Gast anzeigen</span></li>
 <li><a name="a259"></a>    <span class="src-key">else </span><span class="src-var">$str </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/partie.html#var$gTore">gTore</a><span class="src-sym">;</span></li>
 <li><a name="a260"></a>    <span class="src-key">return </span><span class="src-var">$str</span><span class="src-sym">;</span></li>
 <li><a name="a261"></a>  <span class="src-sym">}</span></li>
@@ -314,7 +314,7 @@
 <li><a name="a298"></a>&nbsp;</li>
 <li><a name="a299"></a>&nbsp;</li>
 <li><a name="a300"></a><span class="src-doc">/**</span></li>
-<li><a name="a301"></a><span class="src-doc">* Gibt das SpielDatum als formatierten String zurück. (&quot;d.m.Y&quot;)</span></li>
+<li><a name="a301"></a><span class="src-doc">* Gibt das SpielDatum als formatierten String zurÃ¼ck. (&quot;d.m.Y&quot;)</span></li>
 <li><a name="a302"></a><span class="src-doc">*</span></li>
 <li><a name="a303"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a304"></a><span class="src-doc">* </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">string </span></li>
@@ -325,7 +325,7 @@
 <li><a name="a309"></a>  <span class="src-sym">}</span></li>
 <li><a name="a310"></a>&nbsp;</li>
 <li><a name="a311"></a><span class="src-doc">/**</span></li>
-<li><a name="a312"></a><span class="src-doc">* Gibt die Anwurfzeit als formatierten String zurück (&quot;Stunden:Minuten&quot;).</span></li>
+<li><a name="a312"></a><span class="src-doc">* Gibt die Anwurfzeit als formatierten String zurÃ¼ck (&quot;Stunden:Minuten&quot;).</span></li>
 <li><a name="a313"></a><span class="src-doc">*</span></li>
 <li><a name="a314"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a315"></a><span class="src-doc">* </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">string </span></li>
@@ -363,7 +363,7 @@
 <li><a name="a347"></a><span class="src-doc">/**</span></li>
 <li><a name="a348"></a><span class="src-doc">* Spieltag</span></li>
 <li><a name="a349"></a><span class="src-doc">*</span></li>
-<li><a name="a350"></a><span class="src-doc">* Repräsentiert einen Spieltag</span></li>
+<li><a name="a350"></a><span class="src-doc">* ReprÃ¤sentiert einen Spieltag</span></li>
 <li><a name="a351"></a><span class="src-doc">* &lt;BR&gt;Eine Liga hat mehrere Spieltage.</span></li>
 <li><a name="a352"></a><span class="src-doc">* &lt;BR&gt;An einem Spieltag finden mehrere Partien statt.</span></li>
 <li><a name="a353"></a><span class="src-doc">*</span></li>
@@ -406,7 +406,7 @@
 <li><a name="a390"></a>  <span class="src-sym">}</span></li>
 <li><a name="a391"></a>&nbsp;</li>
 <li><a name="a392"></a><span class="src-doc">/**</span></li>
-<li><a name="a393"></a><span class="src-doc">* Gibt Partie der angegebener Nummer zurück</span></li>
+<li><a name="a393"></a><span class="src-doc">* Gibt Partie der angegebener Nummer zurÃ¼ck</span></li>
 <li><a name="a394"></a><span class="src-doc">*</span></li>
 <li><a name="a395"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a396"></a><span class="src-doc">* </span><span class="src-doc-coretag">@parameter </span><span class="src-doc-type">integer </span><span class="src-doc">Partienummer</span></li>
@@ -421,7 +421,7 @@
 <li><a name="a405"></a>  <span class="src-sym">}</span></li>
 <li><a name="a406"></a>&nbsp;</li>
 <li><a name="a407"></a><span class="src-doc">/**</span></li>
-<li><a name="a408"></a><span class="src-doc">* Gibt Partie der angegebener Teamnummern zurück</span></li>
+<li><a name="a408"></a><span class="src-doc">* Gibt Partie der angegebener Teamnummern zurÃ¼ck</span></li>
 <li><a name="a409"></a><span class="src-doc">*</span></li>
 <li><a name="a410"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a411"></a><span class="src-doc">* </span><span class="src-doc-coretag">@parameter </span><span class="src-doc-type">integer </span><span class="src-doc">Heimmannschaftsnummer integer Gastmannschaftsnummer</span></li>
@@ -443,7 +443,7 @@
 <li><a name="a427"></a>  <span class="src-sym">}</span></li>
 <li><a name="a428"></a>&nbsp;</li>
 <li><a name="a429"></a><span class="src-doc">/**</span></li>
-<li><a name="a430"></a><span class="src-doc">* Gibt Partie der angegebener Teamnamen zurück</span></li>
+<li><a name="a430"></a><span class="src-doc">* Gibt Partie der angegebener Teamnamen zurÃ¼ck</span></li>
 <li><a name="a431"></a><span class="src-doc">*</span></li>
 <li><a name="a432"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a433"></a><span class="src-doc">* </span><span class="src-doc-coretag">@parameter </span><span class="src-doc-type">string </span><span class="src-doc">Heimmannschaftsname string Gastmannschaftsname</span></li>
@@ -462,11 +462,11 @@
 <li><a name="a446"></a>&nbsp;</li>
 <li><a name="a447"></a>&nbsp;</li>
 <li><a name="a448"></a><span class="src-doc">/**</span></li>
-<li><a name="a449"></a><span class="src-doc">* Löscht Partie</span></li>
+<li><a name="a449"></a><span class="src-doc">* LÃ¶scht Partie</span></li>
 <li><a name="a450"></a><span class="src-doc">*</span></li>
 <li><a name="a451"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a452"></a><span class="src-doc">* </span><span class="src-doc-coretag">@parameter </span><span class="src-doc-type">objekt </span><span class="src-doc">Partie</span></li>
-<li><a name="a453"></a><span class="src-doc">* </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">bool </span><span class="src-doc">Partie wurde gelöscht TRUE / FALSE</span></li>
+<li><a name="a453"></a><span class="src-doc">* </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">bool </span><span class="src-doc">Partie wurde gelÃ¶scht TRUE / FALSE</span></li>
 <li><a name="a454"></a><span class="src-doc">*/</span></li>
 <li><a name="a455"></a>  <span class="src-key">function </span><a href="../classLib/spieltag.html#methodremovePartie">removePartie</a><span class="src-sym">(</span><span class="src-sym">&amp;</span><span class="src-var">$rmvPartie</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
 <li><a name="a456"></a>    <span class="src-var">$result </span>= <span class="src-id">False</span><span class="src-sym">;</span></li>
@@ -506,7 +506,7 @@
 <li><a name="a490"></a>  <span class="src-sym">}</span></li>
 <li><a name="a491"></a>&nbsp;</li>
 <li><a name="a492"></a><span class="src-doc">/**</span></li>
-<li><a name="a493"></a><span class="src-doc">* Fügt Partie zum Spieltage hinzu</span></li>
+<li><a name="a493"></a><span class="src-doc">* FÃ¼gt Partie zum Spieltage hinzu</span></li>
 <li><a name="a494"></a><span class="src-doc">*</span></li>
 <li><a name="a495"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a496"></a><span class="src-doc">* </span><span class="src-doc-coretag">@parameter </span><span class="src-doc-type">Object </span><span class="src-doc">die Partie</span></li>
@@ -542,8 +542,8 @@
 <li><a name="a526"></a><span class="src-doc">/**</span></li>
 <li><a name="a527"></a><span class="src-doc">* Gibt den Zeitrahmen aus, an dem der Spieltag ausgetragen wird</span></li>
 <li><a name="a528"></a><span class="src-doc">*</span></li>
-<li><a name="a529"></a><span class="src-doc">* Sind das vonDatum und das bisDatum gesetzt wird zB. 10.10.2003 - 19.10.2003 zurückgegeben</span></li>
-<li><a name="a530"></a><span class="src-doc">* &lt;BR&gt; Ist eines der beiden nicht gesetzt, wird nur das Datum zurückgeben ohne Verbinder</span></li>
+<li><a name="a529"></a><span class="src-doc">* Sind das vonDatum und das bisDatum gesetzt wird zB. 10.10.2003 - 19.10.2003 zurÃ¼ckgegeben</span></li>
+<li><a name="a530"></a><span class="src-doc">* &lt;BR&gt; Ist eines der beiden nicht gesetzt, wird nur das Datum zurÃ¼ckgeben ohne Verbinder</span></li>
 <li><a name="a531"></a><span class="src-doc">* &lt;BR&gt; zB. ist das vonDatum nicht gesetzt wird nur das bisDatum ausgegeben 19.10.2003 ohne Bindestrich</span></li>
 <li><a name="a532"></a><span class="src-doc">* </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a533"></a><span class="src-doc">* </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">string </span></li>
@@ -778,7 +778,7 @@
 <li><a name="a761"></a><span class="src-doc">*/</span></li>
 <li><a name="a762"></a>  <span class="src-key">var </span><a href="../classLib/liga.html#var$spieltage">$spieltage</a><span class="src-sym">;</span></li>
 <li><a name="a763"></a><span class="src-doc">/**</span></li>
-<li><a name="a764"></a><span class="src-doc"> * Vollständiger Pfad und Dateiname der Liga</span></li>
+<li><a name="a764"></a><span class="src-doc"> * VollstÃ¤ndiger Pfad und Dateiname der Liga</span></li>
 <li><a name="a765"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
 <li><a name="a766"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a767"></a><span class="src-doc">*/</span></li>
@@ -810,7 +810,7 @@
 <li><a name="a793"></a>  <span class="src-sym">}</span></li>
 <li><a name="a794"></a>&nbsp;</li>
 <li><a name="a795"></a><span class="src-doc">/**</span></li>
-<li><a name="a796"></a><span class="src-doc"> * Gibt die Anzahl der teilnehmenden Mannschaften zurück</span></li>
+<li><a name="a796"></a><span class="src-doc"> * Gibt die Anzahl der teilnehmenden Mannschaften zurÃ¼ck</span></li>
 <li><a name="a797"></a><span class="src-doc"> *</span></li>
 <li><a name="a798"></a><span class="src-doc">*/</span></li>
 <li><a name="a799"></a>  <span class="src-key">function </span><a href="../classLib/liga.html#methodteamCount">teamCount</a><span class="src-sym">(</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
@@ -818,7 +818,7 @@
 <li><a name="a801"></a>  <span class="src-sym">}</span></li>
 <li><a name="a802"></a>&nbsp;</li>
 <li><a name="a803"></a><span class="src-doc">/**</span></li>
-<li><a name="a804"></a><span class="src-doc"> * Fügt ein Teamobjekt zur Liga hinzu</span></li>
+<li><a name="a804"></a><span class="src-doc"> * FÃ¼gt ein Teamobjekt zur Liga hinzu</span></li>
 <li><a name="a805"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> private</span></li>
 <li><a name="a806"></a><span class="src-doc">*/</span></li>
 <li><a name="a807"></a>  <span class="src-key">function </span><a href="../classLib/liga.html#methodaddTeam">addTeam</a><span class="src-sym">(</span><span class="src-sym">&amp;</span><span class="src-var">$neuesTeam</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
@@ -826,7 +826,7 @@
 <li><a name="a809"></a>  <span class="src-sym">}</span></li>
 <li><a name="a810"></a>&nbsp;</li>
 <li><a name="a811"></a><span class="src-doc">/**</span></li>
-<li><a name="a812"></a><span class="src-doc"> * Gibt die Referenz auf das Teamobjekt zu einem Teamnamen zurück</span></li>
+<li><a name="a812"></a><span class="src-doc"> * Gibt die Referenz auf das Teamobjekt zu einem Teamnamen zurÃ¼ck</span></li>
 <li><a name="a813"></a><span class="src-doc"> *</span></li>
 <li><a name="a814"></a><span class="src-doc">*/</span></li>
 <li><a name="a815"></a>  <span class="src-key">function </span><span class="src-sym">&amp;</span><a href="../classLib/liga.html#methodteamForName">teamForName</a><span class="src-sym">(</span><span class="src-var">$teamName</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
@@ -844,7 +844,7 @@
 <li><a name="a827"></a>  <span class="src-sym">}</span></li>
 <li><a name="a828"></a>&nbsp;</li>
 <li><a name="a829"></a><span class="src-doc">/**</span></li>
-<li><a name="a830"></a><span class="src-doc"> * Gibt die Referenz auf das Teamobjekt zu einer Teamnummer zurück</span></li>
+<li><a name="a830"></a><span class="src-doc"> * Gibt die Referenz auf das Teamobjekt zu einer Teamnummer zurÃ¼ck</span></li>
 <li><a name="a831"></a><span class="src-doc"> *</span></li>
 <li><a name="a832"></a><span class="src-doc">*/</span></li>
 <li><a name="a833"></a>  <span class="src-key">function </span><span class="src-sym">&amp;</span><a href="../classLib/liga.html#methodteamForNumber">teamForNumber</a><span class="src-sym">(</span><span class="src-var">$teamNumber</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
@@ -855,7 +855,7 @@
 <li><a name="a838"></a>  <span class="src-sym">}</span></li>
 <li><a name="a839"></a>&nbsp;</li>
 <li><a name="a840"></a><span class="src-doc">/**</span></li>
-<li><a name="a841"></a><span class="src-doc"> * Gibt ein Array mit Strings zurück, in dem sämtliche Mannschaftsnamen enthalten sind</span></li>
+<li><a name="a841"></a><span class="src-doc"> * Gibt ein Array mit Strings zurÃ¼ck, in dem sÃ¤mtliche Mannschaftsnamen enthalten sind</span></li>
 <li><a name="a842"></a><span class="src-doc"> *</span></li>
 <li><a name="a843"></a><span class="src-doc">*/</span></li>
 <li><a name="a844"></a>  <span class="src-key">function </span><a href="../classLib/liga.html#methodteamNames">teamNames</a><span class="src-sym">(</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
@@ -875,7 +875,7 @@
 <li><a name="a858"></a>  <span class="src-sym">}</span></li>
 <li><a name="a859"></a>&nbsp;</li>
 <li><a name="a860"></a><span class="src-doc">/**</span></li>
-<li><a name="a861"></a><span class="src-doc"> * Fügt eine Partie zur Liga hinzu</span></li>
+<li><a name="a861"></a><span class="src-doc"> * FÃ¼gt eine Partie zur Liga hinzu</span></li>
 <li><a name="a862"></a><span class="src-doc"> *</span></li>
 <li><a name="a863"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> private</span></li>
 <li><a name="a864"></a><span class="src-doc">*/</span></li>
@@ -883,7 +883,7 @@
 <li><a name="a866"></a>    <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/liga.html#var$partien">partien</a><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-var">$neuePartie</span><span class="src-sym">;</span></li>
 <li><a name="a867"></a>  <span class="src-sym">}</span></li>
 <li><a name="a868"></a><span class="src-doc">/**</span></li>
-<li><a name="a869"></a><span class="src-doc"> * Gibt die Referenz auf das Partieobjekt zu einer Nummer zurück</span></li>
+<li><a name="a869"></a><span class="src-doc"> * Gibt die Referenz auf das Partieobjekt zu einer Nummer zurÃ¼ck</span></li>
 <li><a name="a870"></a><span class="src-doc"> *</span></li>
 <li><a name="a871"></a><span class="src-doc">*/</span></li>
 <li><a name="a872"></a>  <span class="src-key">function </span><span class="src-sym">&amp;</span><a href="../classLib/liga.html#methodpartieForNumber">partieForNumber</a><span class="src-sym">(</span><span class="src-var">$number</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
@@ -895,7 +895,7 @@
 <li><a name="a878"></a>  <span class="src-sym">}</span></li>
 <li><a name="a879"></a>&nbsp;</li>
 <li><a name="a880"></a><span class="src-doc">/**</span></li>
-<li><a name="a881"></a><span class="src-doc"> * Gibt die Referenz auf das Partieobjekt zurück, an der die Mannschaften</span></li>
+<li><a name="a881"></a><span class="src-doc"> * Gibt die Referenz auf das Partieobjekt zurÃ¼ck, an der die Mannschaften</span></li>
 <li><a name="a882"></a><span class="src-doc"> * aufeinandertreffen</span></li>
 <li><a name="a883"></a><span class="src-doc">*/</span></li>
 <li><a name="a884"></a>    <span class="src-key">function </span><span class="src-sym">&amp;</span><a href="../classLib/liga.html#methodpartieForTeams">partieForTeams</a><span class="src-sym">(</span><span class="src-sym">&amp;</span><span class="src-var">$heim</span><span class="src-sym">,</span><span class="src-sym">&amp;</span><span class="src-var">$gast</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
@@ -910,7 +910,7 @@
 <li><a name="a893"></a>  <span class="src-sym">}</span></li>
 <li><a name="a894"></a>&nbsp;</li>
 <li><a name="a895"></a><span class="src-doc">/**</span></li>
-<li><a name="a896"></a><span class="src-doc"> * Gibt die Referenz auf das Partieobjekt zurück, an der die Mannschaften</span></li>
+<li><a name="a896"></a><span class="src-doc"> * Gibt die Referenz auf das Partieobjekt zurÃ¼ck, an der die Mannschaften</span></li>
 <li><a name="a897"></a><span class="src-doc"> * mit den anzugebenen Namen aufeinandertreffen</span></li>
 <li><a name="a898"></a><span class="src-doc">*/</span></li>
 <li><a name="a899"></a>    <span class="src-key">function </span><span class="src-sym">&amp;</span><a href="../classLib/liga.html#methodpartieForTeamNames">partieForTeamNames</a><span class="src-sym">(</span><span class="src-var">$heimName</span><span class="src-sym">,</span><span class="src-var">$gastName</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
@@ -928,7 +928,7 @@
 <li><a name="a911"></a>  <span class="src-sym">}</span></li>
 <li><a name="a912"></a>&nbsp;</li>
 <li><a name="a913"></a><span class="src-doc">/**</span></li>
-<li><a name="a914"></a><span class="src-doc"> * Fügt einen Spieltag zur Liga hinzu</span></li>
+<li><a name="a914"></a><span class="src-doc"> * FÃ¼gt einen Spieltag zur Liga hinzu</span></li>
 <li><a name="a915"></a><span class="src-doc"> *</span></li>
 <li><a name="a916"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> private</span></li>
 <li><a name="a917"></a><span class="src-doc"> *</span></li>
@@ -938,7 +938,7 @@
 <li><a name="a921"></a>  <span class="src-sym">}</span></li>
 <li><a name="a922"></a>&nbsp;</li>
 <li><a name="a923"></a><span class="src-doc">/**</span></li>
-<li><a name="a924"></a><span class="src-doc"> * Gibt die Anzahl der Spieltage der Liga zurück</span></li>
+<li><a name="a924"></a><span class="src-doc"> * Gibt die Anzahl der Spieltage der Liga zurÃ¼ck</span></li>
 <li><a name="a925"></a><span class="src-doc"> *</span></li>
 <li><a name="a926"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a927"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">interger </span><span class="src-doc">Anzahl der Spieltage</span></li>
@@ -949,7 +949,7 @@
 <li><a name="a932"></a>  <span class="src-sym">}</span></li>
 <li><a name="a933"></a>&nbsp;</li>
 <li><a name="a934"></a><span class="src-doc">/**</span></li>
-<li><a name="a935"></a><span class="src-doc"> * Gibt die Referenz des Spieltags mit der angegebenen Nummer zurück</span></li>
+<li><a name="a935"></a><span class="src-doc"> * Gibt die Referenz des Spieltags mit der angegebenen Nummer zurÃ¼ck</span></li>
 <li><a name="a936"></a><span class="src-doc"> *</span></li>
 <li><a name="a937"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a938"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">object </span><span class="src-doc-type">Spieltag </span><span class="src-doc">der Nummer</span></li>
@@ -971,7 +971,7 @@
 <li><a name="a954"></a>  <span class="src-sym">}</span></li>
 <li><a name="a955"></a>&nbsp;</li>
 <li><a name="a956"></a><span class="src-doc">/**</span></li>
-<li><a name="a957"></a><span class="src-doc"> * Gibt die Referenz des aktuellen Spieltags zurück</span></li>
+<li><a name="a957"></a><span class="src-doc"> * Gibt die Referenz des aktuellen Spieltags zurÃ¼ck</span></li>
 <li><a name="a958"></a><span class="src-doc"> *</span></li>
 <li><a name="a959"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a960"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">object </span><span class="src-doc-type">Spieltag </span><span class="src-doc">der Nummer</span></li>
@@ -1029,7 +1029,7 @@
 <li><a name="a1012"></a>  <span class="src-sym">}</span></li>
 <li><a name="a1013"></a>&nbsp;</li>
 <li><a name="a1014"></a><span class="src-doc">/**</span></li>
-<li><a name="a1015"></a><span class="src-doc"> * Gibt das FileDatum als String zurück. Wird keine Formatierung angegeben,</span></li>
+<li><a name="a1015"></a><span class="src-doc"> * Gibt das FileDatum als String zurÃ¼ck. Wird keine Formatierung angegeben,</span></li>
 <li><a name="a1016"></a><span class="src-doc"> * wird die Standardformatierung aus den Ligaoptionen verwendet</span></li>
 <li><a name="a1017"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a1018"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">String </span></li>
@@ -1041,7 +1041,7 @@
 <li><a name="a1024"></a>  <span class="src-sym">}</span></li>
 <li><a name="a1025"></a>&nbsp;</li>
 <li><a name="a1026"></a><span class="src-doc">/**</span></li>
-<li><a name="a1027"></a><span class="src-doc"> * Lädt das angegebene LigaFile und erstellt den Objektbaum</span></li>
+<li><a name="a1027"></a><span class="src-doc"> * LÃ¤dt das angegebene LigaFile und erstellt den Objektbaum</span></li>
 <li><a name="a1028"></a><span class="src-doc"> *</span></li>
 <li><a name="a1029"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
 <li><a name="a1030"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@return </span><span class="src-doc-type">Boolean </span></li>
@@ -1168,7 +1168,7 @@
 <li><a name="a1151"></a>              <span class="src-var">$partie </span>= <span class="src-key">new </span><span class="src-id"><a href="../classLib/partie.html">partie</a></span><span class="src-sym">(</span><span class="src-var">$pCounter</span><span class="src-sym">,</span><span class="src-var">$zeit</span><span class="src-sym">,</span><span class="src-var">$notiz</span><span class="src-sym">,</span><span class="src-var">$heimTeam</span><span class="src-sym">,</span><span class="src-var">$gastTeam</span><span class="src-sym">,</span><span class="src-var">$theim</span><span class="src-sym">,</span><span class="src-var">$tgast</span><span class="src-sym">,</span><span class="src-str">&quot;&quot;</span><span class="src-sym">,</span><span class="src-str">&quot;&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
 <li><a name="a1152"></a>              <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">reportUrl </span>= <span class="src-var">$reportUrl</span><span class="src-sym">;</span></li>
 <li><a name="a1153"></a>              <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">spielEnde </span>= <span class="src-var">$spEnde</span><span class="src-sym">;</span></li>
-<li><a name="a1154"></a>              <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/liga.html#methodaddPartie">addPartie</a><span class="src-sym">(</span><span class="src-var">$partie</span><span class="src-sym">)</span><span class="src-sym">;  </span><span class="src-comm">// Partien werden zusätzlich zu der Liga hinzugefügt</span></li>
+<li><a name="a1154"></a>              <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/liga.html#methodaddPartie">addPartie</a><span class="src-sym">(</span><span class="src-var">$partie</span><span class="src-sym">)</span><span class="src-sym">;  </span><span class="src-comm">// Partien werden zusÃ¤tzlich zu der Liga hinzugefÃ¼gt</span></li>
 <li><a name="a1155"></a>              <span class="src-var">$spieltag</span><span class="src-sym">-&gt;</span><span class="src-id">addPartie</span><span class="src-sym">(</span><span class="src-var">$partie</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
 <li><a name="a1156"></a>            <span class="src-sym">}</span></li>
 <li><a name="a1157"></a>            <span class="src-var">$pCounter</span>++<span class="src-sym">;</span></li>
@@ -1225,12 +1225,12 @@
 <li><a name="a1208"></a>    <span class="src-var">$aktSpTag </span>= <span class="src-num">1</span><span class="src-sym">;</span></li>
 <li><a name="a1209"></a>    <span class="src-var">$maxSp </span>= <span class="src-num">0</span><span class="src-sym">;</span></li>
 <li><a name="a1210"></a>    <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">options</span><span class="src-sym">-&gt;</span><span class="src-id">keyValues</span><span class="src-sym">[</span><span class="src-str">'Type'</span><span class="src-sym">]</span>==<span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
-<li><a name="a1211"></a>      echo <span class="src-str">&quot;&lt;font color=\&quot;#ff0000\&quot;&gt;&lt;b&gt;classlib Addon&lt;/b&gt; Pokalturniere können noch nicht gespeichert werden&lt;/font&gt;&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a1211"></a>      echo <span class="src-str">&quot;&lt;font color=\&quot;#ff0000\&quot;&gt;&lt;b&gt;classlib Addon&lt;/b&gt; Pokalturniere kÃ¶nnen noch nicht gespeichert werden&lt;/font&gt;&quot;</span><span class="src-sym">;</span></li>
 <li><a name="a1212"></a>      <span class="src-key">exit</span><span class="src-sym">;</span></li>
 <li><a name="a1213"></a>    <span class="src-sym">}</span></li>
 <li><a name="a1214"></a>    <span class="src-var">$datei </span>= <a href="http://www.php.net/fopen">fopen</a><span class="src-sym">(</span><span class="src-var">$fileName</span><span class="src-sym">,</span><span class="src-str">&quot;w&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
 <li><a name="a1215"></a>    <span class="src-key">if </span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-var">$datei</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
-<li><a name="a1216"></a>      echo <span class="src-str">&quot;&lt;font color=\&quot;#ff0000\&quot;&gt;Kann File zum Schreiben nicht öffnen (Schreibrechte?) CLASS liga function writeFile()&lt;/font&gt;&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a1216"></a>      echo <span class="src-str">&quot;&lt;font color=\&quot;#ff0000\&quot;&gt;Kann File zum Schreiben nicht Ã¶ffnen (Schreibrechte?) CLASS liga function writeFile()&lt;/font&gt;&quot;</span><span class="src-sym">;</span></li>
 <li><a name="a1217"></a>      <span class="src-key">exit</span><span class="src-sym">;</span></li>
 <li><a name="a1218"></a>    <span class="src-sym">}</span><span class="src-key">else </span><span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$datei </span><span class="src-key">and </span><span class="src-var">$message</span>==<span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">{</span></li>
 <li><a name="a1219"></a>      echo <span class="src-str">&quot;</span><span class="src-str">&lt;<span class="src-id">font</span> <span class="src-id">color</span>=\&quot;#008800\&quot;&gt;<span class="src-id">Writing</span> <span class="src-id">File</span> <span class="src-var">$fileName</span> (</span><span class="src-str">&quot;</span>.<span class="src-var">$datei</span>.<span class="src-str">&quot;)&lt;/font&gt;&quot;</span><span class="src-sym">;</span></li>
@@ -1272,7 +1272,7 @@
 <li><a name="a1255"></a>      <span class="src-sym">}</span></li>
 <li><a name="a1256"></a>    <span class="src-sym">}</span></li>
 <li><a name="a1257"></a>&nbsp;</li>
-<li><a name="a1258"></a>        <span class="src-comm">// Jetzt die unbekannten Sectionen einfügen</span></li>
+<li><a name="a1258"></a>        <span class="src-comm">// Jetzt die unbekannten Sectionen einfÃ¼gen</span></li>
 <li><a name="a1259"></a>        <span class="src-key">foreach </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../classLib/liga.html#var$sections">sections</a> <span class="src-key">as </span><span class="src-var">$section</span>=&gt;<span class="src-var">$keys</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
 <li><a name="a1260"></a>      <span class="src-key">foreach </span><span class="src-sym">(</span><span class="src-var">$keys </span><span class="src-key">as </span><span class="src-var">$key</span>=&gt;<span class="src-var">$val</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
 <li><a name="a1261"></a>                <span class="src-var">$iniData</span><span class="src-sym">[</span><span class="src-var">$section</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-var">$key</span><span class="src-sym">] </span>= <span class="src-var">$val</span><span class="src-sym">;</span></li>
@@ -1373,10 +1373,10 @@
 <li><a name="a1356"></a>    <span class="src-sym">}</span></li>
 <li><a name="a1357"></a>  <span class="src-sym">}</span></li>
 <li><a name="a1358"></a><span class="src-doc">/**</span></li>
-<li><a name="a1359"></a><span class="src-doc"> * Berechnet den Tabellenstand für einen Spieltag</span></li>
+<li><a name="a1359"></a><span class="src-doc"> * Berechnet den Tabellenstand fÃ¼r einen Spieltag</span></li>
 <li><a name="a1360"></a><span class="src-doc"> *</span></li>
-<li><a name="a1361"></a><span class="src-doc"> * Berechnet den Tabellenstand für einen Spieltag und gibt</span></li>
-<li><a name="a1362"></a><span class="src-doc"> * ein mehrdimensionales Array zurück:</span></li>
+<li><a name="a1361"></a><span class="src-doc"> * Berechnet den Tabellenstand fÃ¼r einen Spieltag und gibt</span></li>
+<li><a name="a1362"></a><span class="src-doc"> * ein mehrdimensionales Array zurÃ¼ck:</span></li>
 <li><a name="a1363"></a><span class="src-doc"> *    &lt;BR&gt;mit n = anzahlTeams - 1;</span></li>
 <li><a name="a1364"></a><span class="src-doc"> *    &lt;BR&gt;$myArray[0..n][&quot;pos&quot;]        Tabellenposition</span></li>
 <li><a name="a1365"></a><span class="src-doc"> *    &lt;BR&gt;$myArray[0..n][&quot;team&quot;]       Referenz auf Team</span></li>
@@ -1437,17 +1437,17 @@
 <li><a name="a1420"></a>        <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$heimCount</span>&gt;-<span class="src-num">1 </span><span class="src-key">and </span><span class="src-var">$gastCount</span>&gt;-<span class="src-num">1</span><span class="src-sym">) </span><span class="src-key">break</span><span class="src-sym">;</span></li>
 <li><a name="a1421"></a>        <span class="src-var">$count</span>++<span class="src-sym">;</span></li>
 <li><a name="a1422"></a>      <span class="src-sym">}</span></li>
-<li><a name="a1423"></a>      <span class="src-comm">// Strafen berücksichtigen</span></li>
+<li><a name="a1423"></a>      <span class="src-comm">// Strafen berÃ¼cksichtigen</span></li>
 <li><a name="a1424"></a>      <a href="../classLib/_functions_php.html#functionstrafen">strafen</a><span class="src-sym">(</span><span class="src-var">$tableArray</span><span class="src-sym">[</span><span class="src-var">$heimCount</span><span class="src-sym">]</span><span class="src-sym">,</span><span class="src-var">$spTagCount</span><span class="src-sym">,</span><span class="src-var">$minusPkte</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
 <li><a name="a1425"></a>      <a href="../classLib/_functions_php.html#functionstrafen">strafen</a><span class="src-sym">(</span><span class="src-var">$tableArray</span><span class="src-sym">[</span><span class="src-var">$gastCount</span><span class="src-sym">]</span><span class="src-sym">,</span><span class="src-var">$spTagCount</span><span class="src-sym">,</span><span class="src-var">$minusPkte</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
 <li><a name="a1426"></a>&nbsp;</li>
 <li><a name="a1427"></a>      <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">hTore</span>&gt;-<span class="src-num">1</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
-<li><a name="a1428"></a>        <span class="src-comm">// Tore für Heim hinzufügen</span></li>
+<li><a name="a1428"></a>        <span class="src-comm">// Tore fÃ¼r Heim hinzufÃ¼gen</span></li>
 <li><a name="a1429"></a>        <span class="src-var">$tableArray</span><span class="src-sym">[</span><span class="src-var">$heimCount</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;pTor&quot;</span><span class="src-sym">] </span>+= <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">hTore</span><span class="src-sym">;</span></li>
 <li><a name="a1430"></a>        <span class="src-var">$tableArray</span><span class="src-sym">[</span><span class="src-var">$gastCount</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;mTor&quot;</span><span class="src-sym">] </span>+= <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">hTore</span><span class="src-sym">;</span></li>
 <li><a name="a1431"></a>      <span class="src-sym">}</span></li>
 <li><a name="a1432"></a>      <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">gTore</span>&gt;-<span class="src-num">1</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
-<li><a name="a1433"></a>        <span class="src-comm">// Tore für Gast hinzufügen</span></li>
+<li><a name="a1433"></a>        <span class="src-comm">// Tore fÃ¼r Gast hinzufÃ¼gen</span></li>
 <li><a name="a1434"></a>        <span class="src-var">$tableArray</span><span class="src-sym">[</span><span class="src-var">$gastCount</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;pTor&quot;</span><span class="src-sym">] </span>+= <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">gTore</span><span class="src-sym">;</span></li>
 <li><a name="a1435"></a>        <span class="src-var">$tableArray</span><span class="src-sym">[</span><span class="src-var">$heimCount</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;mTor&quot;</span><span class="src-sym">] </span>+= <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">gTore</span><span class="src-sym">;</span></li>
 <li><a name="a1436"></a>      <span class="src-sym">}</span></li>
@@ -1503,7 +1503,7 @@
 <li><a name="a1486"></a>              <span class="src-var">$tableArray</span><span class="src-sym">[</span><span class="src-var">$heimCount</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;ser3&quot;</span><span class="src-sym">] </span>=<span class="src-num">0</span><span class="src-sym">;</span></li>
 <li><a name="a1487"></a>              <span class="src-var">$tableArray</span><span class="src-sym">[</span><span class="src-var">$gastCount</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;ser3&quot;</span><span class="src-sym">] </span>=<span class="src-num">0</span><span class="src-sym">;</span></li>
 <li><a name="a1488"></a>          <span class="src-sym">}</span></li>
-<li><a name="a1489"></a>          <span class="src-key">else </span><span class="src-sym">{ </span><span class="src-comm">// nur während der Entwicklung</span></li>
+<li><a name="a1489"></a>          <span class="src-key">else </span><span class="src-sym">{ </span><span class="src-comm">// nur wÃ¤hrend der Entwicklung</span></li>
 <li><a name="a1490"></a>              echo <span class="src-str">&quot;Fehler in Punkteermittlung (Normales Ergebnis)&quot;</span><span class="src-sym">;</span></li>
 <li><a name="a1491"></a>            echo <span class="src-var">$partie</span><span class="src-sym">-&gt;</span><span class="src-id">showDetailsHTML</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
 <li><a name="a1492"></a>            <span class="src-sym">}</span></li>
@@ -1574,7 +1574,7 @@
 <li><a name="a1557"></a>    <span class="src-var">$tableArray</span><span class="src-sym">[</span><span class="src-var">$i</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">&quot;pos&quot;</span><span class="src-sym">]</span>=<span class="src-var">$i</span>+<span class="src-num">1</span><span class="src-sym">;</span></li>
 <li><a name="a1558"></a>    <span class="src-var">$i</span>++<span class="src-sym">;</span></li>
 <li><a name="a1559"></a>  <span class="src-sym">}</span></li>
-<li><a name="a1560"></a>  <span class="src-comm">// Hier fehlt noch die Prüfung  wie bei Pkt und Torgleichen Teams</span></li>
+<li><a name="a1560"></a>  <span class="src-comm">// Hier fehlt noch die PrÃ¼fung  wie bei Pkt und Torgleichen Teams</span></li>
 <li><a name="a1561"></a>  <span class="src-comm">// verfahren werden soll (Direkter Vergleich etc)</span></li>
 <li><a name="a1562"></a>  <span class="src-key">return </span><span class="src-var">$tableArray</span><span class="src-sym">;</span></li>
 <li><a name="a1563"></a><span class="src-sym">}</span></li>

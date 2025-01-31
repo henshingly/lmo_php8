@@ -46,7 +46,7 @@ if (($file != "") && ($kurve == 1)){
   }
 ?>
                   <tr>
-                    <td align="center"><br/><canvas id="myChart" width="700" height="500"></canvas>
+                    <td align="center"><br><canvas id="myChart"></canvas>
 <?php
   $data = "";
   $pgtext1 = $text[135];
@@ -87,7 +87,7 @@ if (($file != "") && ($kurve == 1)){
   }
 ?>
                       <script src="<?php echo URL_TO_LMO; ?>/js/chart.js"></script>
-                      <script>
+                      <script type="text/javascript">
                         const ctx = document.getElementById('myChart');
                         new Chart(ctx, {
                           type: 'line',

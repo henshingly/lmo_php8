@@ -154,7 +154,7 @@ function findImage ($key,$path,$imgType,$htmlParameter="",$alternative_text='') 
   }
   else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter." /> ");
+    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter."> ");
   }
 
   if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
@@ -163,14 +163,14 @@ function findImage ($key,$path,$imgType,$htmlParameter="",$alternative_text='') 
   }
   else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter."/> ");
+    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter."> ");
   }
 
   if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
     return $alternative_text;
   } else {
     $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter." /> ");
+    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter."> ");
   }
 }
 

@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 			<!-- template designed by Marco Von Ballmoos  -->
 			<title>File Source for functions.php</title>
-			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<link rel="stylesheet" href="../media/stylesheet.css">
 											</head>
 		<body>
 						
@@ -53,7 +53,7 @@
 <li><a name="a40"></a><span class="src-doc"> * &lt;BR&gt;SM Straf-/Bonuspunkte rechts (nur wenn es Minuspunkte gibt)</span></li>
 <li><a name="a41"></a><span class="src-doc"> * &lt;BR&gt;TOR1 Straf-/Bonustore links</span></li>
 <li><a name="a42"></a><span class="src-doc"> * &lt;BR&gt;TOR2 Straf-/Bonustore rechts</span></li>
-<li><a name="a43"></a><span class="src-doc"> * &lt;BR&gt;STDA ab wann zählt Strafe/Bonus</span></li>
+<li><a name="a43"></a><span class="src-doc"> * &lt;BR&gt;STDA ab wann zÃ¤hlt Strafe/Bonus</span></li>
 <li><a name="a44"></a><span class="src-doc"> *</span></li>
 <li><a name="a45"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@author</span><span class="src-doc">    Tim Schumacher &lt;webobjects@gmx.net&gt;</span></li>
 <li><a name="a46"></a><span class="src-doc"> * </span><span class="src-doc-coretag">@package</span><span class="src-doc"> classLib</span></li>
@@ -90,7 +90,7 @@
 <li><a name="a77"></a>&nbsp;</li>
 <li><a name="a78"></a>&nbsp;</li>
 <li><a name="a79"></a><span class="src-doc">/**</span></li>
-<li><a name="a80"></a><span class="src-doc"> * Gibt ein multidim Array zurück, das die sortierten partien enthält,</span></li>
+<li><a name="a80"></a><span class="src-doc"> * Gibt ein multidim Array zurÃ¼ck, das die sortierten partien enthÃ¤lt,</span></li>
 <li><a name="a81"></a><span class="src-doc"> * &lt;BR&gt;Aufbau array[0..n](</span></li>
 <li><a name="a82"></a><span class="src-doc"> * &lt;BR&gt;            'date'  [timestamp des Spieldatums]</span></li>
 <li><a name="a83"></a><span class="src-doc"> * &lt;BR&gt;         'spTag'  [integer],</span></li>
@@ -132,7 +132,7 @@
 <li><a name="a119"></a><span class="src-sym">}</span></li>
 <li><a name="a120"></a>&nbsp;</li>
 <li><a name="a121"></a><span class="src-doc">/**</span></li>
-<li><a name="a122"></a><span class="src-doc"> * Gibt ein multidim Array zurück, das die sortierten partien einer bestimmten mannschaft enthält,</span></li>
+<li><a name="a122"></a><span class="src-doc"> * Gibt ein multidim Array zurÃ¼ck, das die sortierten partien einer bestimmten mannschaft enthÃ¤lt,</span></li>
 <li><a name="a123"></a><span class="src-doc"> * &lt;BR&gt;Aufbau array[0..n](</span></li>
 <li><a name="a124"></a><span class="src-doc"> * &lt;BR&gt;            'spieltag' [Object spieltag]</span></li>
 <li><a name="a125"></a><span class="src-doc"> * &lt;BR&gt;          'partie' [Object partie] )</span></li>
@@ -175,8 +175,8 @@
 <li><a name="a162"></a>    <span class="src-key">else </span><span class="src-sym">{</span></li>
 <li><a name="a163"></a>      <a href="http://www.php.net/array_multisort">array_multisort</a><span class="src-sym">(</span><span class="src-var">$sort_1</span><span class="src-sym">,</span><span class="src-var">$sortDir</span><span class="src-sym">,</span><span class="src-var">$games</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
 <li><a name="a164"></a>  <span class="src-sym">}</span></li>
-<li><a name="a165"></a>    unset<span class="src-sym">(</span><span class="src-var">$games</span><span class="src-sym">[</span><span class="src-str">'date'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">; </span><span class="src-comm">// wurde nur zum sortieren benötigt</span></li>
-<li><a name="a166"></a>    unset<span class="src-sym">(</span><span class="src-var">$games</span><span class="src-sym">[</span><span class="src-str">'spTag'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span><span class="src-comm">// wurde nur zum sortieren benötigt</span></li>
+<li><a name="a165"></a>    unset<span class="src-sym">(</span><span class="src-var">$games</span><span class="src-sym">[</span><span class="src-str">'date'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">; </span><span class="src-comm">// wurde nur zum sortieren benÃ¶tigt</span></li>
+<li><a name="a166"></a>    unset<span class="src-sym">(</span><span class="src-var">$games</span><span class="src-sym">[</span><span class="src-str">'spTag'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span><span class="src-comm">// wurde nur zum sortieren benÃ¶tigt</span></li>
 <li><a name="a167"></a>    <span class="src-key">return </span><span class="src-var">$games</span><span class="src-sym">;</span></li>
 <li><a name="a168"></a><span class="src-sym">}</span></li>
 <li><a name="a169"></a>&nbsp;</li>

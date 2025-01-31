@@ -48,7 +48,7 @@ if ($file!="") {
     <td valign="top" align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0"><?php
   if ($selteam == 0) {
-    echo "<tr><td align=\"center\">&nbsp;<br />".$text[24]."<br />&nbsp;</td></tr>";
+    echo "<tr><td align=\"center\">&nbsp;<br>".$text[24]."<br>&nbsp;</td></tr>";
   } else {
     for ($j=0;$j<$anzst;$j++) {
       for ($i=0;$i<$anzsp;$i++) {

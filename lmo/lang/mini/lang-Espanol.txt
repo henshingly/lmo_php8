@@ -2,7 +2,7 @@
 001=Próximo partido
 002=Última jornada
 003=Partido
-004=Últimos encuentros<br /> de ambos:
+004=Últimos encuentros<br> de ambos:
 005=Error: No se han encontrado la liga!
 006=Atención: No se han encontrado el directorio "archivos"
 007=Último partido

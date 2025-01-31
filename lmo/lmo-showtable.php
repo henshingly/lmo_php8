@@ -166,12 +166,12 @@ for ($x = 1; $x <= $anzteams; $x++) {
       $y = 2;
     }
   }?>
-    <td class="<?php echo $lmo_tabelle_class ?>"><img src='<?php echo URL_TO_IMGDIR."/lmo-tab".$y.".gif"; ?>' width="9" height="9" border="0" alt='' /></td>
+    <td class="<?php echo $lmo_tabelle_class ?>"><img src='<?php echo URL_TO_IMGDIR."/lmo-tab".$y.".gif"; ?>' width="9" height="9" border="0" alt=''></td>
     <td class="<?php echo $lmo_tabelle_class ?>" align="center"><?php echo HTML_smallTeamIcon($file,$teams[$i]," alt=''"); ?></td>
     <td class="<?php echo $lmo_tabelle_class ?>" align="left"><?php
   echo $dummy.$teams[$i].$dumm2;
   if (($teamu[$i] != "") && ($urlt == 1)) {?>
-        <a href="<?php echo $teamu[$i]; ?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR."/url.png";?>" alt="<?php echo $text[564]?>" /></a><?php
+        <a href="<?php echo $teamu[$i]; ?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR."/url.png";?>" alt="<?php echo $text[564]?>"></a><?php
   }?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><?php
@@ -212,7 +212,7 @@ for ($x = 1; $x <= $anzteams; $x++) {
     if ($teamn[$i]!="") {
       $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong>\n".$teamn[$i];
     }?>
-      <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return FALSE;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.svg"?>' height='15' border='0' alt='' /><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
+      <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return FALSE;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.svg"?>' height='15' border='0' alt=''><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
     $lmo_tabellennotiz="";
   } else {
     echo "&nbsp;";

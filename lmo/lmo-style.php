@@ -547,4 +547,9 @@ th.bottom {
 .middle {
   vertical-align: middle;
 }
+
+#myChart{
+    width: 700px;
+    height: 700px;
+}
 <?php @include(PATH_TO_TEMPLATEDIR."/style.css");?>
