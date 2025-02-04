@@ -130,10 +130,10 @@ if ($ftype != "") {
   <tr>
     <td class="nobr">
         <input type="hidden" name="liga1[]" value="<?php echo $files; ?>">
-        <input type="radio" name="liganr" value="<?php echo $i; ?>" <?php if (($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if (emailart[2].checked==FALSE)changetextarea(1);emailart[2].checked=TRUE;"><?php echo $t0; ?>
+        <input type="radio" name="liganr" value="<?php echo $i; ?>" <?php if (($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if (emailart[2].checked==FALSE)changetextarea(1);emailart[2].checked=true;"><?php echo $t0; ?>
     </td>
     <td class="nobr">
-      <select class="lmo-formular-input" name="st1[]" onChange="if (emailart[2].checked==FALSE)changetextarea(1);emailart[2].checked=TRUE;liganr[<?php echo $i-1; ?>].checked=TRUE;"><?php
+      <select class="lmo-formular-input" name="st1[]" onChange="if (emailart[2].checked==FALSE)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php
                       if ($liga == $files) {
                         if ($st > 0) {
                           $t1 = $st;

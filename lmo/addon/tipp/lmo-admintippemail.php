@@ -92,7 +92,7 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
             <td>&nbsp;</td>
             <td align="left"><input type="radio" name="emailart" value="2" <?php if ($emailart==2){echo "checked";} ?> onClick="changetextarea(2)"><?php echo $text['tipp'][168]; ?></td>
             <td colspan="2" align="left">
-              <select name="adressat" onChange="emailart[1].checked=TRUE;changetextarea(2);">
+              <select name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
                 <option value=""><?php echo $text['tipp'][51]?></option><?php 
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippselectemail.php");?>
               </select>
@@ -111,7 +111,7 @@ require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
 if ($i>0){?>
                 <tr>
                   <td colspan="2" align="left">
-                    <input type="radio" name="liganr" value="0" <?php if ($liganr==0){echo "checked";} ?> onClick="if (emailart[2].checked==FALSE)changetextarea(1);emailart[2].checked=TRUE;"><strong><?php echo $text['tipp'][263]?></strong>
+                    <input type="radio" name="liganr" value="0" <?php if ($liganr==0){echo "checked";} ?> onClick="if (emailart[2].checked==FALSE)changetextarea(1);emailart[2].checked=true;"><strong><?php echo $text['tipp'][263]?></strong>
                   </td>
                 </tr><?php 
 } ?>
@@ -136,7 +136,7 @@ if ($save == 1) {
               <?php echo $text[4];?>
               <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?php echo $ende1; ?>">
               <?php echo $text['tipp'][170];?>
-              <input class="lmo-formular-input" type="text" name="tage" size="2" maxlength="2" value="<?php echo $tage; ?>" onFocus="emailart[2].checked=TRUE;changetextarea(1);"><?php echo " ".$text['tipp'][171];?>
+              <input class="lmo-formular-input" type="text" name="tage" size="2" maxlength="2" value="<?php echo $tage; ?>" onFocus="emailart[2].checked=true;"><?php echo " ".$text['tipp'][171];?>
             </td>
           </tr>          
           <tr>

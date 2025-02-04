@@ -290,7 +290,7 @@ if ($newpage!=1){ ?>
             <td width="20">&nbsp;</td>
             <td align="left"><input type="radio" name="xtippervereinradio" value="1" <?php if ($xtippervereinradio==1){echo "checked";} ?>><?php echo $text['tipp'][48]; ?></td>
             <td align="left">
-              <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=TRUE">
+              <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true">
                 <option value="" <?php if ($xtippervereinalt==""){echo "selected";}?>><?php echo $text['tipp'][51]?></option><?php 
                 require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewteams.php");?>
               </select>
@@ -299,7 +299,7 @@ if ($newpage!=1){ ?>
           <tr>
             <td width="20">&nbsp;</td>
             <td align="left"><input type="radio" name="xtippervereinradio" value="2" <?php if ($xtippervereinradio==2){echo "checked";} ?>><?php echo $text['tipp'][49]; ?></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=TRUE"></td>
+            <td align="left"><input class="lmo-formular-input" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></td>
           </tr><?php 
   } ?>
           <tr>
