@@ -45,9 +45,6 @@ if (!file_exists(dirname(__FILE__)."/config/init-parameters.php") || isset($_POS
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link type='text/css' rel='stylesheet' href='<?php echo URL_TO_LMO?>/lmo-style-nc.php'>
   <style type='text/css'>@import url('<?php echo URL_TO_LMO; ?>/lmo-style.php');</style>
-  <link href='<?php echo URL_TO_LMO; ?>/css/bootstrap.min.css' rel='stylesheet'>
-  <script type='text/javascript' src='<?php echo URL_TO_LMO; ?>/js/jquery.min.js'></script>
-  <script type='text/javascript' src='<?php echo URL_TO_LMO; ?>/js/bootstrap.min.js'></script>
 </head>
 <body>
   <div align="center"><?php 
