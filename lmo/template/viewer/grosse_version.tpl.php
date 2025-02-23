@@ -87,9 +87,9 @@
                       <td><!--Spieltag--></td>
                       <td><!--Datum--></td>
                       <td><!--Uhrzeit--></td>
-                      <td align="right"><a href="#" onclick="return FALSE"><!--Heim--><span class="popup"><!--Iconheim--> <!--HeimLang--></td><td><!--Iconheim--></td>
+                      <td align="right"><a href="#" onclick="return false"><!--Heim--><span class="popup"><!--Iconheim--> <!--HeimLang--></td><td><!--Iconheim--></td>
                       <td>&nbsp;-&nbsp;</td>
-                      <td><!--Icongast--></td><td  align="left"><a href="#" onclick="return FALSE"><!--Gast--><span class="popup"><!--Icongast--> <!--GastLang--></span></td>
+                      <td><!--Icongast--></td><td  align="left"><a href="#" onclick="return false"><!--Gast--><span class="popup"><!--Icongast--> <!--GastLang--></span></td>
                       <td><!--Tore--></td>
                       <td><!--Tabellenlink--></td>
                       <td><!--Notiz--></td>

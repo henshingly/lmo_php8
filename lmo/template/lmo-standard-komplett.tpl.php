@@ -25,7 +25,7 @@
         <td colspan="2" align="center"><!--Savehtml--></td>
       </tr>
       <tr>
-        <td class="lmoFooter" colspan="2" align="left"><!--Sprachauswahl-->&nbsp;</td>
+        <td class="lmoFooter" colspan="2" align="left"><!--Sprachauswahl--></td>
       </tr>
       <tr>
         <td colspan="2">
