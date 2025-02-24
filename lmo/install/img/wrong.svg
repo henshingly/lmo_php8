@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="13.39321mm"
+   height="13.39321mm"
+   viewBox="0 0 13.39321 13.39321"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="wrong.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title1">Wrong Image</title>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.6168981"
+     inkscape:cx="-75.453116"
+     inkscape:cy="89.987118"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-124.88333,-124.61875)">
+    <path
+       class="st0"
+       d="m 131.57994,124.61875 c 3.69887,0 6.6966,2.99773 6.6966,6.6966 0,3.69888 -2.99773,6.69661 -6.6966,6.69661 -3.69888,0 -6.69661,-2.99773 -6.69661,-6.69661 0,-3.69887 2.99773,-6.6966 6.69661,-6.6966 z m 1.30968,4.26773 c 0.29898,-0.30427 0.78582,-0.30692 1.08744,-0.003 0.30163,0.30163 0.30163,0.79375 0.003,1.09802 l -1.31498,1.3335 1.31498,1.33615 c 0.29633,0.30162 0.29368,0.7911 -0.008,1.09273 -0.30163,0.30162 -0.78846,0.30162 -1.08479,-0.003 l -1.30704,-1.32556 -1.30969,1.32821 c -0.29898,0.30427 -0.78581,0.30692 -1.08744,0.003 -0.30162,-0.30162 -0.30162,-0.79375 -0.003,-1.09802 l 1.31497,-1.3335 -1.31762,-1.33614 c -0.29633,-0.30163 -0.29369,-0.79111 0.008,-1.09273 0.30162,-0.30163 0.78846,-0.30163 1.08479,0.003 l 1.30704,1.32557 z"
+       id="path1"
+       style="clip-rule:evenodd;fill:#ff4141;fill-rule:evenodd;stroke-width:0.264583" />
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Wrong Image</dc:title>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Henshingly</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
