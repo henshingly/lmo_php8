@@ -21,7 +21,8 @@
 $get = array();
 $get = $_GET;
 foreach ($get as $value) {
-    if (str_starts_with($value, '<'))
+    //if (str_starts_with($value, '<')) // doesn't work on PHP < 8
+    if (substr($value, 0, 1) == '<')
         die('XSS-Scripting detected');
 }
 
