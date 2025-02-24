@@ -337,12 +337,12 @@ if ($lmo_install_step == 1) {
     $_SESSION['ftppass'] = isset($_POST['ftppass']) ? trim($_POST['ftppass']) : (!empty($_SESSION['ftppass']) ? $_SESSION['ftppass'] : '');
 
     if ($ftp->connect($_SESSION['ftpserver'], 21) !== TRUE) {
-        $urlerror .= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="' . $lang[$userlang]['ERROR'].'"> ' . $lang[$userlang]['STEP0_FTP_NO_CONNECTION'] . '</p>';
+        $urlerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'].'"> ' . $lang[$userlang]['STEP0_FTP_NO_CONNECTION'] . '</p>';
         $lmo_install_step=0;
     } else {
         if ($ftp->login($_SESSION['ftpuser'], $_SESSION['ftppass']) !== TRUE) {
             $ftp->disconnect();
-            $loginerror .= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="' . $lang[$userlang]['ERROR'].'"> ' . $lang[$userlang]['STEP0_FTP_NO_LOGIN'] . '</p>';
+            $loginerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'].'"> ' . $lang[$userlang]['STEP0_FTP_NO_LOGIN'] . '</p>';
             $lmo_install_step = 0;
         }
     }
@@ -362,7 +362,7 @@ if ($lmo_install_step == 1) {
             if (PEAR::isError($ftp->size("init.php"))) {
                 // Pathtest
                 $ftp->cd('..');
-                $patherror .= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="' . $lang[$userlang]['ERROR'] . '"> "' . $ftpdir . '": ' . $lang[$userlang]['ERROR_WRONG_PATH'] . '</p>';
+                $patherror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> "' . $ftpdir . '": ' . $lang[$userlang]['ERROR_WRONG_PATH'] . '</p>';
                 $filelist = filecollect($ftp, $_SESSION['view']);
                 $lmo_install_step = 1;
             } else {
@@ -438,12 +438,12 @@ if ($lmo_install_step == 3) {
     $somecontent = "<?php \n\t\$lmo_dateipfad='" . $path . "'; //Dateipfad zum LMO\n\t\$lmo_url='" . $url . "'; //abolute URL zum LMO\n?>";
     // Make sure the file exists and is writable
     if (!$handle = fopen($filename, "wb")) {
-        $installerror .= '<p class="error"><img src="../img/wrong.gif" border="0" width="12" height="12" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_OPENABLE'] . '</p>';
+        $installerror .= '<p class="error"><img src="../img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_OPENABLE'] . '</p>';
     } else {
         if (!fwrite($handle, $somecontent)) {
-            $installerror .= '<p class="error"><img src="img/wrong.gif" border="0" width="12" height="12" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_WRITEABLE'] . '</p>';
+            $installerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_WRITEABLE'] . '</p>';
         } else {
-            $installerror .= '<p><em><img src="img/right.gif" border="0" width="12" height="12" alt="' . $lang[$userlang]['SUCCESS'] . '"> ' . $lang[$userlang]['STEP3_SUCCESS_INI_FILE'] . '</em></p>';
+            $installerror .= '<p><em><img src="img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['SUCCESS'] . '"> ' . $lang[$userlang]['STEP3_SUCCESS_INI_FILE'] . '</em></p>';
         }
         fclose($handle);
     }
@@ -499,7 +499,7 @@ if ($lmo_install_step == 0) {
     <h2><?php echo $lang[$userlang]['ERROR']?></h2>
     <table width="90%">
         <tr>
-            <td class="error"><?php echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['ERROR'] . "'> " . $lang[$userlang]['PHP_ERROR_1'] . " <b>" . $min_php_version . "</b> " . $lang[$userlang]['PHP_ERROR_2'] . " <b>" . PHP_VERSION . "</b>";
+            <td class="error"><?php echo "<img src='img/wrong.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> " . $lang[$userlang]['PHP_ERROR_1'] . " <b>" . $min_php_version . "</b> " . $lang[$userlang]['PHP_ERROR_2'] . " <b>" . PHP_VERSION . "</b>";
             $error++;
 ?>
             </td>
@@ -591,10 +591,10 @@ if ($lmo_install_step == 2) { //Manuell
                         <dd><?php
     $error=0;
     if (version_compare(PHP_VERSION, $min_php_version, '<')) {
-        echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['ERROR'] . "'> PHP: " . PHP_VERSION;
+        echo "<img src='img/wrong.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> PHP: " . PHP_VERSION;
         $error++;
     } else {
-        echo "<img src='img/right.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['SUCCESS'] . "'> PHP: " . PHP_VERSION;
+        echo "<img src='img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['SUCCESS'] . "'> PHP: " . PHP_VERSION;
     }
     foreach ($filelist as $chmod=>$files) {
         echo "<dt>chmod " . ($chmod) . "</dt>";
@@ -605,9 +605,9 @@ if ($lmo_install_step == 2) { //Manuell
                 while (FALSE !== ($file2 = readdir($handle))) {
                     if ($file2 != "." && $file2 != ".." && !is_dir($lmo_dir . "/" . dirname($file) . "/$file2")) {
                         if (is_writable($lmo_dir . "/" . dirname($file) . "/$file2")) {
-                            echo "<img src='img/right.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['SUCCESS'] . "'> " . dirname($file) . "/$file2"." <small>(" . ($chmod) . ")</small><dd>";
+                            echo "<img src='img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['SUCCESS'] . "'> " . dirname($file) . "/$file2"." <small>(" . ($chmod) . ")</small><dd>";
                         } else {
-                            echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['ERROR'] . "'> " . dirname($file) . "/$file2"." <small>(" . ($chmod) . ")</small><dd>";
+                            echo "<img src='img/wrong.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> " . dirname($file) . "/$file2"." <small>(" . ($chmod) . ")</small><dd>";
                             $error++;
                         }
                     }
@@ -615,9 +615,9 @@ if ($lmo_install_step == 2) { //Manuell
                 }
             } else {
                 if (is_writable($lmo_dir . "/" . $file)) {
-                    echo "<img src='img/right.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['SUCCESS'] . "'> $file <small>(" . ($chmod) . ")</small>";
+                    echo "<img src='img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['SUCCESS'] . "'> $file <small>(" . ($chmod) . ")</small>";
                 } else {
-                    echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['ERROR'] . "'> $file <small>(" . ($chmod) . ")</small>";
+                    echo "<img src='img/wrong.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> $file <small>(" . ($chmod) . ")</small>";
                     $error++;
                 }
             }
@@ -659,9 +659,9 @@ if ($lmo_install_step == 3) {?>
                         </dd>
                         <dd><?php
                             if (file_exists($path . "/config/init-parameters.php")) {
-                                echo "<img src='img/right.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['SUCCESS'] . "'> " . $lang[$userlang]['STEP3_PATH_CORRECT'];
+                                echo "<img src='img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['SUCCESS'] . "'> " . $lang[$userlang]['STEP3_PATH_CORRECT'];
                             } else {
-                                echo "<img src='img/wrong.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['ERROR'] . "'> " . $lang[$userlang]['STEP3_PATH_WRONG'];
+                                echo "<img src='img/wrong.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> " . $lang[$userlang]['STEP3_PATH_WRONG'];
                                 $error = 1;
                             }?>
                         </dd>
@@ -672,7 +672,7 @@ if ($lmo_install_step == 3) {?>
                             <input name="url" type="text" size="55" value="<?php echo $url?>"> <?php echo $lang[$userlang]['STEP3_URL_EXAMPLE'];?>
                         </dd>
                         <dd><?php
-                            echo "<img src='$url/img/right.gif' border='0' width='12' height='12' alt='" . $lang[$userlang]['ERROR'] . "'> " . $lang[$userlang]['STEP3_URL_CORRECT'];
+                            echo "<img src='$url/img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> " . $lang[$userlang]['STEP3_URL_CORRECT'];
                             ?>
                         </dd>
                         <dt>
