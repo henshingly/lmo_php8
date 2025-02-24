@@ -529,12 +529,12 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         echo $punktespiel;
       } else {
         if ($punktespiel > 0) {
-          echo "<img src='".URL_TO_IMGDIR."/right.gif' border='0' alt=''>";
+          echo "<img src='".URL_TO_IMGDIR."/right.svg' height='20' border='0' alt=''>";
           if ($punktespiel > 1) {
             echo "+".($punktespiel-1);
           }
         } else {
-          echo "<img src='".URL_TO_IMGDIR."/wrong.gif' border='0' alt=''>";
+          echo "<img src='".URL_TO_IMGDIR."/wrong.svg' height='20' border='0' alt=''>";
         }
       }
     }    ?></strong>

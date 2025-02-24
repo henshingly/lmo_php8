@@ -178,9 +178,9 @@ if ($_SESSION["lmouserok"] == 2) {
         <tr>
           <td align="left"><?php 
       if ($tab0[$x]['freig']!="5"){?>
-            <img src="<?php echo URL_TO_IMGDIR?>/wrong.gif" border="0" width="12" height="12" alt="+"><?php 
+            <img src="<?php echo URL_TO_IMGDIR?>/wrong.svg" border="0" height="20" alt="+"><?php 
       } else {?>
-            <img src="<?php echo URL_TO_IMGDIR?>/right.gif" border="0" width="12" height="12" alt="-"><?php 
+            <img src="<?php echo URL_TO_IMGDIR?>/right.svg" border="0" height="20" alt="-"><?php 
       }?> </td>
           <td align="right"><?php echo $tab0[$x]['id']; ?></td>
           <td align="left"><?php 

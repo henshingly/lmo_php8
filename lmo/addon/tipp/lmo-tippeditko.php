@@ -261,12 +261,12 @@ for ($n=0;$n<$modus[$st-1];$n++){
       echo $punktespiel;
     } else {
       if ($punktespiel>0) {
-        echo "<img src='".URL_TO_IMGDIR."/right.gif' width='12' height='12' border='0' alt='&#9786;'>";
+        echo "<img src='".URL_TO_IMGDIR."/right.svg' height='20' border='0' alt='&#9786;'>";
         if ($punktespiel>1) {
           echo "+".($punktespiel-1);
         }
       } else {
-        echo "<img src='".URL_TO_IMGDIR."/wrong.gif' width='12' height='12' border='0' alt='&#9785;'>";
+        echo "<img src='".URL_TO_IMGDIR."/wrong.svg' height='20' border='0' alt='&#9785;'>";
       }
     }
   }
