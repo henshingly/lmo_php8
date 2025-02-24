@@ -111,10 +111,10 @@ function getSmallImage($team, $alternative_text = '') {
  */
 function getMessage($message, $error = FALSE) {
     if ($error) {
-        return '<p class="error"><img src="' . URL_TO_IMGDIR . '/wrong.gif" border="0" width="12" height="12" alt=""> ' . $message . '</p>';
+        return '<p class="error"><img src="' . URL_TO_IMGDIR . '/wrong.svg" border="0" width="20" alt=""> ' . $message . '</p>';
     }
     else {
-        return '<p class="message"><img src="' . URL_TO_IMGDIR . '/right.gif" border="0" width="12" height="12" alt=""> ' . $message . '</p>';
+        return '<p class="message"><img src="' . URL_TO_IMGDIR . '/right.svg" border="0" width="20" alt=""> ' . $message . '</p>';
     }
 }
 
