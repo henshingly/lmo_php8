@@ -12,16 +12,12 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-<<<<<<< Updated upstream
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <title
      id="title1">Right Image</title>
-=======
-   xmlns:svg="http://www.w3.org/2000/svg">
->>>>>>> Stashed changes
   <sodipodi:namedview
      id="namedview1"
      pagecolor="#ffffff"
@@ -33,11 +29,7 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="3.2337963"
-<<<<<<< Updated upstream
      inkscape:cx="97.717967"
-=======
-     inkscape:cx="97.56335"
->>>>>>> Stashed changes
      inkscape:cy="224.34932"
      inkscape:window-width="3840"
      inkscape:window-height="2054"
@@ -58,7 +50,6 @@
        id="path2"
        style="clip-rule:evenodd;fill:#6bbe66;fill-rule:evenodd;stroke-width:0.264583" />
   </g>
-<<<<<<< Updated upstream
   <metadata
      id="metadata1">
     <rdf:RDF>
@@ -73,6 +64,4 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-=======
->>>>>>> Stashed changes
 </svg>
