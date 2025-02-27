@@ -57,3 +57,4 @@
 056=Afdruk Voorbeeld
 057=Print Alle
 058=Configuratie opslaan
+059=Spelerstatistieken bijwerken

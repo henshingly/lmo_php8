@@ -57,3 +57,4 @@
 056=Vista de Impresión
 057=Imprimir Todo
 058=Guardar configuración
+059=Actualizaciones de estadísticas de juego

@@ -57,3 +57,4 @@
 056=Tisk zobrazení
 057=Vytiskněte si celkový pohled
 058=Uložit konfiguraci
+059=Aktualizujte statistiky hráčů

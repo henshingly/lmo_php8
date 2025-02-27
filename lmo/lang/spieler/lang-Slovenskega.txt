@@ -57,3 +57,4 @@
 056=Pogled za tiskanje
 057=Natisni celoten pogled
 058=Shrani konfiguracijo
+059=Posodobi statistiko igralca

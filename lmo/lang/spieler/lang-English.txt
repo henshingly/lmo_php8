@@ -57,3 +57,4 @@
 056=Print View
 057=Print All
 058=Save configuration
+059=Update Player Statistics

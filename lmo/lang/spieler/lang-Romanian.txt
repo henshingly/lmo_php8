@@ -57,3 +57,4 @@
 056=Vizualizare tipărită
 057=Tipărește imaginea de ansamblu
 058=Salvați configurația
+059=Actualizează statisticile jucătorului

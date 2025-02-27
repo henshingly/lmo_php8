@@ -57,3 +57,4 @@
 056=Nyomtatási nézet
 057=Nyomtatási általános nézet
 058=Konfiguráció mentése
+059=Játékos statisztikák frissítése

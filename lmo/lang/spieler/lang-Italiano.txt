@@ -57,3 +57,4 @@
 056=Visualizzazione stampa
 057=Stampa vista complessiva
 058=Salva configurazione
+059=Aggiorna statistiche giocatore
