@@ -59,7 +59,9 @@ if (($action == "admin") && ($todo == "open")){
         <?php echo $output;?>
       </table><?php 
     }
-    if (strpos($subdir, '/') !== FALSE) {?>
+    if (str_contains($subdir, '/')) {
+    //if (strpos($subdir, '/') !== FALSE) {
+?>
       <p><a href="<?php echo $adda;?>open&amp;subdir=<?php echo dirname($subdir) . '/';?>"><?php echo $text[5];?> <?php echo $text[562];?></a></p><?php 
     }
 ?>

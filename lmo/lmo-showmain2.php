@@ -281,9 +281,10 @@ if ($file!="" && $nticker==1) {
 //Tippspiel-Addon
 $output_tippspiel="";
 if ($eintippspiel==1) {
-  if ($tipp_immeralle == 1 || strpos($tipp_ligenzutippen, substr(basename($file),0,-4))!==FALSE) {
-    $output_tippspiel.=$action!="tipp"?       "<a href='{$addm}tipp' title='{$text['tipp'][0]}'>{$text['tipp'][0]}</a>&nbsp;&nbsp;":$text['tipp'][0]."&nbsp;&nbsp;";
-  }
+    if ($tipp_immeralle == 1 || str_contains($tipp_ligenzutippen, substr(basename($file), 0, -4))) {
+    //if ($tipp_immeralle == 1 || strpos($tipp_ligenzutippen, substr(basename($file),0,-4))!==FALSE) {
+        $output_tippspiel.=$action!="tipp"?       "<a href='{$addm}tipp' title='{$text['tipp'][0]}'>{$text['tipp'][0]}</a>&nbsp;&nbsp;":$text['tipp'][0]."&nbsp;&nbsp;";
+    }
 }
 d($template->toString());
 //Tippspiel-Addon

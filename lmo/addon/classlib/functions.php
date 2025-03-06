@@ -17,43 +17,9 @@
  * @return array
  */
 function const_array($constant) {
-  $array = explode(",",$constant);
-  return $array;
+    $array = explode(',', $constant);
+    return $array;
 };
-
-/**
- *  newStyle()
- *
- * @access public
- * @param url string
- * @param cssURL string
- * @return string
- */
-function newStyle($url,$cssURL) {
-  $found = preg_match("/style=/i",$url);
-  if ($found) {
-    $pattern = "/style=(.*)/i"; // /style=.*(&?|$)/isU
-    $cssURL = "style=".$cssURL;
-    $url = preg_replace($pattern, $cssURL, $url);
-	} else $url .= "&style=".$cssURL;
-  return $url;
-}
-
-/**
- *  sisURL()
- *
- * @access public
- * @param url string
- * @param alt string
- * @param neu string
- * @return string
-*/
-function sisURL($url,$alt='view1',$neu='view2') {
-  $alt = "/$alt/isU";
-  $url = preg_replace($alt, $neu, $url);
-  return $url;
-}
-
 
 /**
  * get the text before the last occurence of the character
@@ -64,7 +30,7 @@ function sisURL($url,$alt='view1',$neu='view2') {
  * @return string
  */
 function strBeforChar($str,$char) {
-  return substr($str,0,strrpos($str, $char));
+    return substr($str, 0, strrpos($str, $char));
 }
 
 /**
@@ -76,7 +42,7 @@ function strBeforChar($str,$char) {
  * @return string
  */
 function strAfterChar($str,$char) {
-  return substr($str,strrpos($str, $char)+1);
+    return substr($str, strrpos($str, $char) + 1);
 }
 
 /**
@@ -86,12 +52,13 @@ function strAfterChar($str,$char) {
  * @param boolean $insensitive
  * @return boolean
  */
-function in_string($needle, $haystack, $insensitive = FALSE) {
-  if ($insensitive) {
-    return (FALSE !== stristr($haystack, $needle)) ? TRUE : FALSE;
-  } else {
-    return (FALSE !== strpos($haystack, $needle))  ? TRUE : FALSE;
-  }
+function in_string($needle, $haystack, $insensitive = false) {
+    if ($insensitive) {
+        return (false !== stristr($haystack, $needle)) ? true : false;
+    } else {
+        //return (false !== strpos($haystack, $needle)) ? true : false;
+        return (str_contains($haystack, $needle)) ? true : false;
+    }
 }
 
 /**
@@ -103,22 +70,23 @@ function in_string($needle, $haystack, $insensitive = FALSE) {
  * @return boolean
  */
 function readLigaDir($dirName,&$dataArray) {
-  $exists = file_exists($dirName);
-  if ($exists) {
-    $dir = dir($dirName);
-    while($data=$dir->read()){
-      $ext = strtolower( strAfterChar($data,"."));
-      if ($ext == 'l98') {
-        $name = trim(substr($data,0,strrpos($data, $ext)-1));
-        $dataArray[] = array('path'=>$dir->path,
-                             'src'=>$data,
-                             'fileName'=>$name
-                            );
-      }
+    $exists = file_exists($dirName);
+    if ($exists) {
+        $dir = dir($dirName);
+        while($data=$dir->read()){
+            $ext = strtolower( strAfterChar($data,"."));
+            if ($ext == 'l98') {
+                $name = trim(substr($data,0,strrpos($data, $ext)-1));
+                $dataArray[] = array(
+                  'path' => $dir->path,
+                  'src' => $data,
+                  'fileName' => $name
+                );
+            }
+        }
+        $dir->close();
     }
-    $dir->close();
-  }
-  return $exists;
+    return $exists;
 }
 
 /**
@@ -129,19 +97,19 @@ function readLigaDir($dirName,&$dataArray) {
  * @return array
  */
 function findTeamName(&$teamNamesArray,$search) {
-  $results = array();
-	$expr = "/\s+|\d+|\W/i";
-  if (is_array($teamNamesArray) ) {
-    $match = strtolower(preg_replace($expr,"",$search));
-    foreach($teamNamesArray as $teamName) {
-      $match_with = strtolower(preg_replace($expr,"",$teamName));
-      if ($match_with == $match) {
-        $results[] = $teamName;
-        break;
-      }
+    $results = array();
+    $expr = "/\s+|\d+|\W/i";
+    if (is_array($teamNamesArray) ) {
+        $match = strtolower(preg_replace($expr,"",$search));
+        foreach($teamNamesArray as $teamName) {
+            $match_with = strtolower(preg_replace($expr,"",$teamName));
+            if ($match_with == $match) {
+                $results[] = $teamName;
+                break;
+            }
+        }
     }
-  }
-  return $results;
+    return $results;
 }
 
 ?>

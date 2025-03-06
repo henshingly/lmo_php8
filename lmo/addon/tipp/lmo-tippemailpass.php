@@ -34,7 +34,8 @@ if (isset($xtippername2)) {
 
   for ($i = 0; $i < count($dumma) && $_SESSION["lmotipperok"] == -5; $i ++) {
     $dummb = explode('|', $dumma[$i]);
-    if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != FALSE)) {
+    if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && str_contains($dummb[4], '@'))) {
+    //if ($xtippername2 == $dummb[0] || ($xtippername2 == $dummb[4] && strpos($dummb[4], "@") != FALSE)) {
       // User gefunden
       $_SESSION['lmotippername'] = $dummb[0];
       $_SESSION["lmotipperok"] = 0;

@@ -36,7 +36,8 @@ if ($file != "") {
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));
-        } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
+        } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
+        //elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
           $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
           $wert = trim(substr($zeile, strpos($zeile, "=")+1));
           if ($sekt == "Options") {
@@ -92,7 +93,8 @@ if ($file != "") {
         $jkwert = trim(substr($zeile, 1, -1));
       } elseif ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
         $sekt = trim(substr($zeile, 1, -1));
-      } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
+      } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
+      //elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         array_push($tippdaten, $sekt."|".$schl."|".$wert."|".$jkwert."|EOL");

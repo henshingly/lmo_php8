@@ -45,7 +45,8 @@ if ($ftype != "") {
         $zeile = trim($zeile);
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = substr($zeile, 1, -1);
-        } elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
+        } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
+        //elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
           $schl = substr($zeile, 0, strpos($zeile, "="));
           $wert = substr($zeile, strpos($zeile, "=") + 1);
           if ($schl == "Name") {

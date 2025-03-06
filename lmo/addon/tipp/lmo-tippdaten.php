@@ -80,7 +80,8 @@ if (($action == "tipp") && ($todo == "daten")) {
         $newpage = 0;
         echo getMessage($text['tipp'][67],TRUE);
       }
-      if (strpos($xtippernachname, " ") != FALSE || strpos($xtippervorname, " ") > -1) {
+      if (str_contains($xtippernachname, ' ') || strpos($xtippervorname, ' ') > -1) {
+      //if (strpos($xtippernachname, " ") != FALSE || strpos($xtippervorname, " ") > -1) {
         $newpage = 0;
         echo getMessage($text['tipp'][109],TRUE);
       }
@@ -99,7 +100,8 @@ if (($action == "tipp") && ($todo == "daten")) {
         echo getMessage($text['tipp'][131],TRUE);
       }
     }
-    if ($xtipperemail=="" || strpos($xtipperemail, " ")>0 || strpos($xtipperemail, "@")<1 || $xtipperemail!= $xtipperemail2) {
+    if ($xtipperemail == '' || str_contains($xtipperemail, ' ') || !str_contains($xtipperemail, '@') || $xtipperemail != $xtipperemail2) {
+    //if ($xtipperemail=="" || strpos($xtipperemail, " ")>0 || strpos($xtipperemail, "@")<1 || $xtipperemail!= $xtipperemail2) {
       $newpage = 0;
       echo getMessage($text['tipp'][68],TRUE);
     }
