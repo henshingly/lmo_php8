@@ -336,7 +336,7 @@ class liga
                         'date' => $partie->zeit,
                         'spTag' => $spieltag->nr,
                         'spieltag' => $spieltag,
-                        'partie' => $partie,
+                        'partie' => $partie
                     );
                 }
             }
