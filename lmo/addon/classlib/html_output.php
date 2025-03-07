@@ -32,17 +32,17 @@
  * @param string $html HTML-Params
  * @param string $alternative_text
  */
-function HTML_icon($img_name,$img_type,$img_size='small',$html="",$alternative_text="") {
-  $subFolder = "/".$img_type."/".$img_size."/";
-  foreach( const_array( CLASSLIB_IMG_TYPES ) as $extension) {
-    if ($imgHTML = findImage($img_name,$subFolder,$extension,$html,$alternative_text) ) {
-      break;
+function HTML_icon($img_name, $img_type, $img_size = 'small', $html = '', $alternative_text = '') {
+    $subFolder = '/' . $img_type . '/' . $img_size . '/';
+    foreach( const_array( CLASSLIB_IMG_TYPES ) as $extension) {
+        if ($imgHTML = findImage($img_name, $subFolder, $extension, $html, $alternative_text) ) {
+            break;
+        }
     }
-  }
-  if ($imgHTML == "") {
-      $imgHTML = substr($html, 6, strrpos($html, "'") - 6);
-  }
-  return $imgHTML;
+    if ($imgHTML == '') {
+        $imgHTML = substr($html, 6, strrpos($html, "'") - 6);
+    }
+    return $imgHTML;
 }
 
 /**
@@ -56,8 +56,8 @@ function HTML_icon($img_name,$img_type,$img_size='small',$html="",$alternative_t
  * @param string $alternative_text
  * @return string
  */
-function HTML_smallTeamIcon($ligaFile,$team,$htmlParameter="",$alternative_text="") {
-  return HTML_icon($team,'teams','small',$htmlParameter,$alternative_text);
+function HTML_smallTeamIcon($ligaFile, $team, $htmlParameter = '', $alternative_text = '') {
+    return HTML_icon($team,'teams','small', $htmlParameter, $alternative_text);
 }
 
 /**
@@ -71,9 +71,9 @@ function HTML_smallTeamIcon($ligaFile,$team,$htmlParameter="",$alternative_text=
  * @param string $alternative_text
  * @return string
  */
-function HTML_bigTeamIcon($ligaFile,$team,$htmlParameter="",$alternative_text="") {
-  return HTML_icon($team,'teams','big',$htmlParameter,$alternative_text);
-    }
+function HTML_bigTeamIcon($ligaFile, $team, $htmlParameter = '', $alternative_text = '') {
+    return HTML_icon($team, 'teams', 'big', $htmlParameter, $alternative_text);
+}
 
 /**
  * Returns HTML code for a small league logo (if  available in img/liga/small)
@@ -85,10 +85,10 @@ function HTML_bigTeamIcon($ligaFile,$team,$htmlParameter="",$alternative_text=""
  * @param string $alternative_text
  * @return string
  */
-function HTML_smallLigaIcon($ligaFile,$htmlParameter="",$alternative_text="") {
-  $fileName = strBeforChar(basename($ligaFile),'.');
-  return HTML_icon($fileName,'liga','small',$htmlParameter,$alternative_text);
-    }
+function HTML_smallLigaIcon($ligaFile, $htmlParameter = '', $alternative_text = '') {
+    $fileName = strBeforChar(basename($ligaFile), '.');
+    return HTML_icon($fileName, 'liga', 'small', $htmlParameter, $alternative_text);
+}
 
 /**
  * Returns HTML code for a big league logo (if  available in img/liga/big)
@@ -100,10 +100,10 @@ function HTML_smallLigaIcon($ligaFile,$htmlParameter="",$alternative_text="") {
  * @param string $alternative_text
  * @return string
  */
-function HTML_bigLigaIcon($ligaFile,$htmlParameter="",$alternative_text="") {
-  $fileName = strBeforChar(basename($ligaFile),'.');
-  return HTML_icon($fileName,'liga','big',$htmlParameter,$alternative_text);
-    }
+function HTML_bigLigaIcon($ligaFile, $htmlParameter = '', $alternative_text = '') {
+    $fileName = strBeforChar(basename($ligaFile), '.');
+    return HTML_icon($fileName, 'liga', 'big', $htmlParameter, $alternative_text);
+}
 
 
 /**
@@ -117,9 +117,9 @@ function HTML_bigLigaIcon($ligaFile,$htmlParameter="",$alternative_text="") {
  * @return string
  */
 
-function HTML_smallSpielerIcon($spieler,$htmlParameter="",$alternative_text="") {
-  return HTML_icon($spieler,'spieler','small',$htmlParameter,$alternative_text);
-    }
+function HTML_smallSpielerIcon($spieler, $htmlParameter = '', $alternative_text = '') {
+    return HTML_icon($spieler, 'spieler', 'small', $htmlParameter, $alternative_text);
+}
 
 /**
  * Returns HTML code for a big players icon (if available in img/spieler/big)
@@ -131,9 +131,9 @@ function HTML_smallSpielerIcon($spieler,$htmlParameter="",$alternative_text="") 
  * @param string $htmlParameter
  * @return string
  */
-function HTML_bigSpielerIcon($spieler,$htmlParameter="",$alternative_text="") {
-  return HTML_icon($spieler,'spieler','big',$htmlParameter,$alternative_text);
-    }
+function HTML_bigSpielerIcon($spieler, $htmlParameter = '', $alternative_text = '') {
+    return HTML_icon($spieler, 'spieler', 'big', $htmlParameter, $alternative_text);
+}
 
 /**
  * Heuristic search for an image
@@ -145,33 +145,34 @@ function HTML_bigSpielerIcon($spieler,$htmlParameter="",$alternative_text="") {
  * @param string $alternative_text
  * @return string
  */
-function findImage ($key,$path,$imgType,$htmlParameter="",$alternative_text='') {
-  //$key=str_replace("/","",isset($key));
-  $key=str_replace("/","",$key);
-  if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
-    $key=preg_replace("/[^a-zA-Z0-9]/",'',$key);
-    // echo $key;
-  }
-  else {
-    $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter."> ");
-  }
+function findImage ($key, $path, $imgType, $htmlParameter = '', $alternative_text='') {
+    //$key = str_replace('/', '', isset($key));
+    $key = str_replace('/', '', $key);
+    if (!file_exists(PATH_TO_IMGDIR . $path . $key . $imgType)) {
+        $key = preg_replace("/[^a-zA-Z0-9]/", '', $key);
+        // echo $key;
+    }
+    else {
+        $imgdata = getimagesize(PATH_TO_IMGDIR . $path . $key . $imgType);
+        return ("<img src='" . URL_TO_IMGDIR . $path . rawurlencode($key) . "$imgType' {$imgdata[3]} " . $htmlParameter . "> ");
+    }
 
-  if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
-    $key=preg_replace("/[I(A)0-9]+$/",'',$key);
-    // echo $key;
-  }
-  else {
-    $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter."> ");
-  }
+    if (!file_exists(PATH_TO_IMGDIR . $path . $key . $imgType)) {
+        $key = preg_replace("/[I(A)0-9]+$/", '', $key);
+        // echo $key;
+    }
+    else {
+        $imgdata = getimagesize(PATH_TO_IMGDIR . $path . $key . $imgType);
+        return ("<img src='" . URL_TO_IMGDIR . $path . rawurlencode($key) . "$imgType' {$imgdata[3]} " . $htmlParameter . "> ");
+    }
 
-  if (!file_exists(PATH_TO_IMGDIR.$path.$key.$imgType)) {
-    return $alternative_text;
-  } else {
-    $imgdata=getimagesize(PATH_TO_IMGDIR.$path.$key.$imgType);
-    return ("<img src='".URL_TO_IMGDIR.$path.rawurlencode($key)."$imgType' {$imgdata[3]} ".$htmlParameter."> ");
-  }
+    if (!file_exists(PATH_TO_IMGDIR . $path . $key . $imgType)) {
+        return $alternative_text;
+    }
+    else {
+        $imgdata = getimagesize(PATH_TO_IMGDIR . $path . $key . $imgType);
+        return ("<img src='" . URL_TO_IMGDIR . $path . rawurlencode($key) . "$imgType' {$imgdata[3]} " . $htmlParameter . "> ");
+    }
 }
 
 ?>

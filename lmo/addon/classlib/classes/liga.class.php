@@ -287,7 +287,7 @@ class liga {
     function &partieForTeamNames($heimName, $gastName) {
         $heimName = strtolower($heimName);
         $gastName = strtolower($gastName);
-        $result = Null;
+        $result = null;
         foreach ($this->partien as $aPartie) {
             if ((strtolower($aPartie->heim->name) == $heimName) && (strtolower($aPartie->gast->name) == $gastName)) {
                 $result = $aPartie;
@@ -323,7 +323,7 @@ class liga {
                       'date' => $partie->zeit,
                       'spTag' => $spieltag->nr,
                       'spieltag' => $spieltag,
-                      'partie' => $partie,
+                      'partie' => $partie
                     );
                 }
             }
@@ -349,7 +349,7 @@ class liga {
     */
 
     function gamesSortedForTeam($team = null, $roundSort = true, $sortDir = SORT_ASC) {
-        if (!is_a($team, 'team')) {  // Wurde nix angegeben wird das fav. Team verwendet
+        if (!is_a($team, 'team')) {  // Wurde nichts angegeben wird das Fav. Team verwendet
             $team = $this->teamForNumber($this->options->keyValues['favTeam']);
         }
         return $this->gamesSorted($roundSort, $sortDir, $team);
@@ -546,7 +546,7 @@ class liga {
             }
             /*
             // Infos aus dem lim File holen (BEGIN)
-            $limFile = PATH_TO_ADDONDIR.'/limporter/imports/'.basename($fileName,".l98").'.lim';
+            $limFile = PATH_TO_ADDONDIR . '/limporter/imports/'.basename($fileName,".l98").'.lim';
             if (file_exists($limFile)) {
                 $limDATA = implode("",file($limFile));
                 // sectionen suchen und die einzelnen Sectionen in Array $sections speichern
@@ -590,14 +590,14 @@ class liga {
                 $roundSektion = 'Round' . $rCounter;
                 $startDate = preg_split('/\./', $this->getIniData('D1', $iniData[$roundSektion]));
                 $endDate = preg_split('/\./', $this->getIniData('D2', $iniData[$roundSektion]));
-                if (count($startDate) != 3 or checkDate($startDate[1], $startDate[0], $startDate[2]) == FALSE) {
+                if (count($startDate) != 3 or checkDate($startDate[1], $startDate[0], $startDate[2]) == false) {
                     $startTime = null;
                 }
                 else {
                     $startTime = mktime(0, 0, 0, (int) $startDate[1], (int) $startDate[0], (int) $startDate[2]);
                 }
 
-                if (count($endDate) <> 3 or checkDate($endDate[1], $endDate[0], $endDate[2]) == FALSE) {
+                if (count($endDate) <> 3 or checkDate($endDate[1], $endDate[0], $endDate[2]) == false) {
                     $endTime = null;
                 }
                 else {
