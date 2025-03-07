@@ -90,7 +90,7 @@ class liga {
     * @param string $kurz
     * @return liga
     */
-    function __construct($name = '', $kurz = '')
+    function __construct($name = '', $kurz = '') {
         $this->name = $name;
         $this->kurz = $kurz;
     }
@@ -1174,7 +1174,7 @@ class liga {
               'mTor' => 0,
               'dTor' => 0,
               'pPkt' => 0,
-              'mPkt' => 0);
+              'mPkt' => 0
             );
         }
         foreach ($this->spieltage as $spieltag) {
