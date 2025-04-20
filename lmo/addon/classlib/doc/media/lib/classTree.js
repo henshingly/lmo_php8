@@ -437,8 +437,10 @@ WebFXTreeItem.prototype.toString = function (nItem, nItemCount) {
     }
     else if (!this.icon) { this.icon = webFXTreeConfig.fileIcon; }
     var label = this.text;
-    label = label.replace('<', '<');
-    label = label.replace('>', '>');
+    label = label.replace(/&/g, '&amp;');
+    label = label.replace(/</g, '&lt;');
+    label = label.replace(/>/g, '&gt;');
+    label = label.replace(/"/g, '&quot;');
     var str = "<div id=\"" + this.id + "\" ondblclick=\"webFXTreeHandler.toggle(this);\" class=\"webfx-tree-item\" onkeydown=\"return webFXTreeHandler.keydown(this)\">";
     str += indent;
     str += "<img id=\"" + this.id + "-plus\" src=\"" + ((this.folder)?((this.open)?((this.parentNode._last)?webFXTreeConfig.lMinusIcon:webFXTreeConfig.tMinusIcon):((this.parentNode._last)?webFXTreeConfig.lPlusIcon:webFXTreeConfig.tPlusIcon)):((this.parentNode._last)?webFXTreeConfig.lIcon:webFXTreeConfig.tIcon)) + "\" onclick=\"webFXTreeHandler.toggle(this);\">"
