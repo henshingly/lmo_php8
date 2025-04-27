@@ -21,8 +21,8 @@
 $get = array();
 $get = $_GET;
 foreach ($get as $value) {
-    //if (str_starts_with($value, '<')) // doesn't work on PHP < 8
-    if (substr($value, 0, 1) == '<')
+    //if (str_starts_with(urlencode($value), '<') || str_starts_with(urlencode($value), '%')) // doesn't work on PHP < 8
+    if (substr(urlencode($value), 0, 1) == '<' || substr(urlencode($value), 0, 1) == '%')
         die('XSS-Scripting detected');
 }
 
@@ -86,11 +86,11 @@ if (isset($_SESSION["lmouserlang"])){
 require (PATH_TO_LMO . '/lmo-langload.php');
 
 // Functions
-require_once (PATH_TO_LMO . '/lmo-functions.php');
+require_once(PATH_TO_LMO . '/lmo-functions.php');
 // Übergang Classlib
-require_once (PATH_TO_ADDONDIR . '/classlib/ini.php');
+require_once(PATH_TO_ADDONDIR . '/classlib/ini.php');
 // Template System
-require_once (PATH_TO_LMO . '/includes/IT.php');
+require_once(PATH_TO_LMO . '/includes/IT.php');
 
 // Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);
