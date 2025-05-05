@@ -32,10 +32,10 @@ $ligadatei = array();
 while($files = readdir($verz)){
   if (strtolower(substr($files,-4)) == ".l98"){
     $sekt = "";
-    $datei = fopen(PATH_TO_LMO."/".$dirliga.$subdir.$files,"rb");
+    $datei = fopen(PATH_TO_LMO."/".$dirliga.$subdir.'/'.$files,"rb");
     if ($datei && check_hilfsadmin($files)) {
 
-      $ligadatei[$liga_counter]['file_date'] = filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$files); //Datum
+      $ligadatei[$liga_counter]['file_date'] = filemtime(PATH_TO_LMO."/".$dirliga.$subdir.'/'.$files); //Datum
       $ligadatei[$liga_counter]['file_name'] = $files;
 
       $ligadatei[$liga_counter]['liga_name'] = "";                //Liganame
@@ -169,7 +169,7 @@ if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction'] 
 <?php
   }?>
       <td class="nobr" align="left"><?php echo $liga['rundenbezeichnung']." ".$liga['aktueller_spieltag'];?> &nbsp;</td>
-      <td class="nobr" align="left"><!--<?php echo filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name'])?>--><?php echo date($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.$liga['file_name']))?></td>
+      <td class="nobr" align="left"><!--<?php echo filemtime(PATH_TO_LMO."/".$dirliga.$subdir.'/'.$liga['file_name'])?>--><?php echo date($defdateformat,filemtime(PATH_TO_LMO."/".$dirliga.$subdir.'/'.$liga['file_name']))?></td>
     </tr>
 <?php
 }
