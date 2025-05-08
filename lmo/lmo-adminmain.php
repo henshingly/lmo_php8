@@ -30,7 +30,10 @@ if ($action=="admin"){
   if (!isset($st)){$sty=0;} else {$sty=$st;}
   if (!isset($newpage)){$newpage=0;}
   $file=isset($_REQUEST['file'])?$_REQUEST['file']:"";
-  $subdir = isset($_REQUEST['subdir']) ? $_REQUEST['subdir'] : dirname($file);
+  $subdir = isset($_REQUEST["subdir"]) ? $_REQUEST["subdir"] : dirname($file) . '/';
+    if ($subdir == '/'){
+        $subdir = '';
+    }
 
   $warning = (int)0;
   if (version_compare(PHP_VERSION, $min_php_version, '<')) echo getMessage("This LMO requires a web server with PHP ".$min_php_version." or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>".PHP_VERSION."</mark>", $warning = $warning+1, TRUE);
