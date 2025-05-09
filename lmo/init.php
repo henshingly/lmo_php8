@@ -21,8 +21,7 @@
 $get = array();
 $get = $_GET;
 foreach ($get as $value) {
-    //if (str_starts_with(urlencode($value), '<') || str_starts_with(urlencode($value), '%')) // doesn't work on PHP < 8
-    if (substr(urlencode($value), 0, 1) == '<' || substr(urlencode($value), 0, 1) == '%')
+    if (str_starts_with(urlencode($value), '<') || str_starts_with(urlencode($value), '%'))
         die('XSS-Scripting detected');
 }
 
