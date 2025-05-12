@@ -52,7 +52,7 @@ if (($file!="") && ($_SESSION['lmouserok']==2)){
 
   if (isset($_POST)) {
     reset ($_POST);
-    $changesFound = False;
+    $changesFound = false;
     foreach ($_POST as $k=>$v) {
       $array = preg_split('#_#',$k);
       if (isset($array) and count($array)==4 and ($array[0] == 'sp') and ($array[1] != $v)) {
@@ -68,7 +68,7 @@ if (($file!="") && ($_SESSION['lmouserok']==2)){
 
         $aPartie = $liga1->partieForTeams($heim,$gast);
         if ($aSpielTag->removePartie($aPartie)) {
-          $changesFound = True;
+          $changesFound = true;
           $newSpielTag->addPartie($aPartie);
           $liga1->spieltage[$neueSpielTagNr-1] = $newSpielTag;
           $liga1->spieltage=array_values($liga1->spieltage); // Index neu erstellen
@@ -80,7 +80,7 @@ if (($file!="") && ($_SESSION['lmouserok']==2)){
       }
     } // foreach
 
-    if ($changesFound == True) {
+    if ($changesFound == true) {
       $liga1->writeFile(PATH_TO_LMO."/".$dirliga.$file,0,0);
     }
   }

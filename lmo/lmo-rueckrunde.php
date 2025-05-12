@@ -41,6 +41,6 @@ function completeSchedule($liga)
       }
     }
   }
-  else echo getMessage($text[3001], TRUE);;
+  else echo getMessage($text[3001], true);
 }
 ?>

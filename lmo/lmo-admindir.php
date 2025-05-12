@@ -34,11 +34,11 @@ while($files=readdir($verz)){
       $hilfsadmin_ligen = explode(',',$_SESSION['lmouserfile']);
       if (isset($hilfsadmin_ligen)){
         foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
-          if ($hilfsadmin_liga.".l98"==$files){$hilfsadmin_berechtigung=TRUE;}
+          if ($hilfsadmin_liga.".l98"==$files){$hilfsadmin_berechtigung=true;}
         }
       }
     }
-    if ($_SESSION['lmouserok']==2 || $hilfsadmin_berechtigung===TRUE) {
+    if ($_SESSION['lmouserok']==2 || $hilfsadmin_berechtigung===true) {
       $ligadatei[$liga_counter]['file_date']=filemtime(PATH_TO_LMO."/".$dirliga.$files); //Datum 
       $ligadatei[$liga_counter]['file_name']=$files;
   

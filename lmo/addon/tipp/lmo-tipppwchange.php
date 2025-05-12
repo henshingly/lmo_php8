@@ -65,7 +65,7 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     $xtipperpass = trim($xtipperpass);
     if ($xtipperpass != $dummb[1]) {
       $newpage = 0;
-      echo getMessage($text['tipp'][42],TRUE);
+      echo getMessage($text['tipp'][42],true);
     }
   }
    
@@ -73,15 +73,15 @@ if (($action == "tipp") && ($todo == "pwchange")) {
     $xtipperpassneu = trim($xtipperpassneu);
     if ($xtipperpassneu == "") {
       $newpage = 0;
-      echo getMessage($text['tipp'][69],TRUE);
+      echo getMessage($text['tipp'][69],true);
     } elseif (strlen($xtipperpassneu) < 3) {
       $newpage = 0;
-      echo getMessage($text['tipp'][73],TRUE);
+      echo getMessage($text['tipp'][73],true);
     }
     $xtipperpassneuw = trim($xtipperpassneuw);
     if ($xtipperpassneuw != $xtipperpassneu) {
       $newpage = 0;
-      echo getMessage($text['tipp'][70],TRUE);
+      echo getMessage($text['tipp'][70],true);
     }
   }
    

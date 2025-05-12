@@ -264,7 +264,7 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         fclose($datei);
       }
       else {
-        echo getMessage($text[283],TRUE);
+        echo getMessage($text[283],true);
       }
       clearstatcache();
     }

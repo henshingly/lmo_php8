@@ -17,13 +17,13 @@
   *
   */
 
-$edit=FALSE;
+$edit=false;
 if (isset($_POST['nick'])) {
   //Edited
   $nick=trim($_POST['nick']);
 } elseif (isset($_GET['nick'])) {
   //toEdit
-  $edit=TRUE;
+  $edit=true;
   $nick=trim($_GET['nick']);
 } else {
   $nick='';
@@ -70,7 +70,7 @@ if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
         if (!$edit) $newpage=1;
       } elseif ($nick==$tipp_tipperdaten[0] && $newpage == 1){ 
         $newpage = 0;
-        echo getMessage($text['tipp'][24],TRUE);
+        echo getMessage($text['tipp'][24],true);
       }
     }
     if ($gef==0){
@@ -108,7 +108,7 @@ if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
 
     if (substr_count($tipp_tipperdaten[3], " ")>1){
       $newpage=0;
-      echo getMessage($text['tipp'][109],TRUE);
+      echo getMessage($text['tipp'][109],true);
     }
 
     $tipp_tipperdaten[4]=$xtipperemail;
@@ -120,7 +120,7 @@ if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
       $xtippervereinalt=trim($xtippervereinalt);
       if ($xtippervereinalt==""){
         $newpage=0;
-        echo getMessage($text['tipp'][71],TRUE);
+        echo getMessage($text['tipp'][71],true);
       } else {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
       }
@@ -129,7 +129,7 @@ if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
       $xtippervereinneu=trim($xtippervereinneu);
       if ($xtippervereinneu==""){
         $newpage=0;
-        echo getMessage($text['tipp'][72],TRUE);
+        echo getMessage($text['tipp'][72],true);
       } else {
         require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
       }
@@ -223,7 +223,7 @@ if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
     </tr>
     <tr>
       <td align="center">
-        <form name="lmotippedit" action="<?php echo  $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="if (this.nick.value=='') {alert ('<?php echo $text['tipp'][112]?>');this.nick.focus();return FALSE;}">
+        <form name="lmotippedit" action="<?php echo  $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="if (this.nick.value=='') {alert ('<?php echo $text['tipp'][112]?>');this.nick.focus();return false;}">
           <input type="hidden" name="action" value="admin">
           <input type="hidden" name="todo" value="tippuseredit">
           <input type="hidden" name="newpage" value="<?php echo $save == count($users)?'1':'0'?>">

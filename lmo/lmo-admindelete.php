@@ -26,7 +26,7 @@ if (($action == "admin") && ($todo == "delete") && ($_SESSION['lmouserok'] == 2)
     if (@unlink(PATH_TO_LMO . "/" . $dfile)) {
       echo getMessage($dfile . " " . $text[297]);
     } else {
-      echo getMessage($dfile . " " . $text[298], TRUE);
+      echo getMessage($dfile . " " . $text[298], true);
     }
   }
   ?>

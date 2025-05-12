@@ -92,7 +92,7 @@ define('IT_UNKNOWN_OPTION',            -6);
  * </code>
  *
  * This will result in one repition of block1 which contains two repitions
- * of inner1. inner2 will be removed if $removeEmptyBlock is set to TRUE which is the default.
+ * of inner1. inner2 will be removed if $removeEmptyBlock is set to true which is the default.
  *
  * Usage:
  * <code>
@@ -140,7 +140,7 @@ class HTML_Template_IT {
      * Clear cache on get()?
      * @var      boolean
      */
-    var $clearCache = FALSE;
+    var $clearCache = false;
 
     /**
      * First character of a variable placeholder ( _{_VARIABLE} ).
@@ -197,14 +197,14 @@ class HTML_Template_IT {
      * @var      boolean
      * @access   public
      */
-    var $removeUnknownVariables = FALSE;
+    var $removeUnknownVariables = false;
 
     /**
      * Controls the handling of empty blocks, default is remove.
      * @var      boolean
      * @access   public
      */
-    var $removeEmptyBlocks = TRUE;
+    var $removeEmptyBlocks = true;
 
     /**
      * RegExp used to find blocks an their content, filled by the constructor.
@@ -268,7 +268,7 @@ class HTML_Template_IT {
      * text such as the message "Your shopping basked is empty".
      *
      * Now if there is no replacement done in such a block the block will
-     * be recognized as "empty" and by default ($removeEmptyBlocks = TRUE) be
+     * be recognized as "empty" and by default ($removeEmptyBlocks = true) be
      * stripped off. To avoid thisyou can now call touchBlock() to avoid this.
      *
      * The array $touchedBlocks stores a list of touched block which must not
@@ -301,13 +301,13 @@ class HTML_Template_IT {
     /**
      * Clear the variable cache on parse?
      *
-     * If you're not an expert just leave the default FALSE.
-     * True reduces memory consumption somewhat if you tend to
+     * If you're not an expert just leave the default false.
+     * true reduces memory consumption somewhat if you tend to
      * add lots of values for unknown placeholder.
      *
      * @var    boolean
      */
-    var $clearCacheOnParse = FALSE;
+    var $clearCacheOnParse = false;
 
     /**
      * Root directory for all file operations.
@@ -321,13 +321,13 @@ class HTML_Template_IT {
      * Internal flag indicating that a blockname was used multiple times.
      * @var    boolean
      */
-    var $flagBlocktrouble = FALSE;
+    var $flagBlocktrouble = false;
 
     /**
      * Flag indicating that the global block was parsed.
      * @var    boolean
      */
-    var $flagGlobalParsed = FALSE;
+    var $flagGlobalParsed = false;
 
     /**
      * EXPERIMENTAL! FIXME!
@@ -341,7 +341,7 @@ class HTML_Template_IT {
      *
      * @var    boolean
      */
-    var $flagCacheTemplatefile = TRUE;
+    var $flagCacheTemplatefile = true;
 
     /**
      * EXPERIMENTAL! FIXME!
@@ -357,8 +357,8 @@ class HTML_Template_IT {
      * (this is a backwards compatibility feature, see also bugs #21951, #20392)
      */
     var $_options = array(
-        'preserve_data' => FALSE,
-        'use_preg'      => TRUE
+        'preserve_data' => false,
+        'use_preg'      => true
     );
 
 
@@ -417,8 +417,8 @@ class HTML_Template_IT {
      * @access public
      * @param  string  options array of options
      *                 default value:
-     *                   'preserve_data' => FALSE,
-     *                   'use_preg'      => TRUE
+     *                   'preserve_data' => false,
+     *                   'use_preg'      => true
      * @param  mixed   option value
      * @return mixed   IT_OK on success, error object on failure
      * @see $options
@@ -492,7 +492,7 @@ class HTML_Template_IT {
      * @see      parseCurrentBlock()
      * @throws   PEAR_Error
      */
-    function parse($block = "__global__", $flag_recursion = FALSE)
+    function parse($block = "__global__", $flag_recursion = false)
     {
         static $regs, $values;
 
@@ -504,7 +504,7 @@ class HTML_Template_IT {
         }
 
         if ("__global__" == $block) {
-            $this->flagGlobalParsed = TRUE;
+            $this->flagGlobalParsed = true;
         }
 
         if (!$flag_recursion) {
@@ -512,7 +512,7 @@ class HTML_Template_IT {
             $values = array();
         }
         $outer = $this->blocklist[$block];
-        $empty = TRUE;
+        $empty = true;
 
         if ($this->clearCacheOnParse) {
 
@@ -520,7 +520,7 @@ class HTML_Template_IT {
                 $regs[] = $this->openingDelimiter .
                           $name . $this->closingDelimiter;
                 $values[] = $value;
-                $empty = FALSE;
+                $empty = false;
             }
             $this->variableCache = array();
 
@@ -533,7 +533,7 @@ class HTML_Template_IT {
                                $allowedvar . $this->closingDelimiter;
                    $values[] = $this->variableCache[$allowedvar];
                    unset($this->variableCache[$allowedvar]);
-                   $empty = FALSE;
+                   $empty = false;
                 }
 
             }
@@ -544,9 +544,9 @@ class HTML_Template_IT {
 
             foreach ($this->blockinner[$block] as $k => $innerblock) {
 
-                $this->parse($innerblock, TRUE);
+                $this->parse($innerblock, true);
                 if ("" != $this->blockdata[$innerblock]) {
-                    $empty = FALSE;
+                    $empty = false;
                 }
 
                 $placeholder = $this->openingDelimiter . "__" .
@@ -650,7 +650,7 @@ class HTML_Template_IT {
      * are added.
      *
      * @param    string      name of the block
-     * @return   boolean     FALSE on failure, otherwise TRUE
+     * @return   boolean     false on failure, otherwise true
      * @throws   PEAR_Error
      * @access   public
      */
@@ -665,14 +665,14 @@ class HTML_Template_IT {
 
         $this->currentBlock = $block;
 
-        return TRUE;
+        return true;
     } // end func setCurrentBlock
 
     /**
-     * Preserves an empty block even if removeEmptyBlocks is TRUE.
+     * Preserves an empty block even if removeEmptyBlocks is true.
      *
      * @param    string      name of the block
-     * @return   boolean     FALSE on FALSE, otherwise TRUE
+     * @return   boolean     false on false, otherwise true
      * @throws   PEAR_Error
      * @access   public
      * @see      $removeEmptyBlocks
@@ -685,9 +685,9 @@ class HTML_Template_IT {
                 '"' . $block . "'", IT_BLOCK_NOT_FOUND  );
         }
 
-        $this->touchedBlocks[$block] = TRUE;
+        $this->touchedBlocks[$block] = true;
 
-        return TRUE;
+        return true;
     } // end func touchBlock
 
     /**
@@ -728,8 +728,8 @@ class HTML_Template_IT {
         $this->blocklookup      = array();
         $this->touchedBlocks    = array();
 
-        $this->flagBlocktrouble = FALSE;
-        $this->flagGlobalParsed = FALSE;
+        $this->flagBlocktrouble = false;
+        $this->flagGlobalParsed = false;
 
     } // end func free
 
@@ -745,8 +745,8 @@ class HTML_Template_IT {
      * @see          LoadTemplatefile(), $template
      * @access       public
      */
-    function setTemplate( $template, $removeUnknownVariables = TRUE,
-                          $removeEmptyBlocks = TRUE
+    function setTemplate( $template, $removeUnknownVariables = true,
+                          $removeEmptyBlocks = true
     ) {
 
         $this->removeUnknownVariables = $removeUnknownVariables;
@@ -768,9 +768,9 @@ class HTML_Template_IT {
         }
 
         if ($this->flagBlocktrouble)
-            return FALSE;
+            return false;
 
-        return TRUE;
+        return true;
     } // end func setTemplate
 
     /**
@@ -780,13 +780,13 @@ class HTML_Template_IT {
      * @param    bool        how to handle unknown variables.
      * @param    bool        how to handle empty blocks.
      * @access   public
-     * @return   boolean    FALSE on failure, otherwise TRUE
+     * @return   boolean    false on failure, otherwise true
      * @see      $template, setTemplate(), $removeUnknownVariables,
      *           $removeEmptyBlocks
      */
     function loadTemplatefile( $filename,
-                               $removeUnknownVariables = FALSE,
-                               $removeEmptyBlocks = TRUE ) {
+                               $removeUnknownVariables = false,
+                               $removeEmptyBlocks = true ) {
 
         $template = "";
         if (!$this->flagCacheTemplatefile ||
@@ -799,7 +799,7 @@ class HTML_Template_IT {
         return $template!=""?
                 $this->setTemplate(
                         $template,$removeUnknownVariables, $removeEmptyBlocks
-                    ):FALSE;
+                    ):false;
     } // end func LoadTemplatefile
 
     /**
@@ -833,7 +833,7 @@ class HTML_Template_IT {
             if (0 != count($regs[1])) {
 
                 foreach ($regs[1] as $k => $var)
-                    $this->blockvariables[$name][$var] = TRUE;
+                    $this->blockvariables[$name][$var] = true;
 
             } else {
 
@@ -893,7 +893,7 @@ class HTML_Template_IT {
                                             $blockname . "'",
                                             IT_BLOCK_DUPLICATE
                                     );
-                    $this->flagBlocktrouble = TRUE;
+                    $this->flagBlocktrouble = true;
                 }
 
                 $this->blocklist[$blockname] = $blockcontent;
@@ -980,7 +980,7 @@ class HTML_Template_IT {
     */
     function _preserveOpeningDelimiter($str)
     {
-        return (FALSE === strpos($str, $this->openingDelimiter))?
+        return (false === strpos($str, $this->openingDelimiter))?
                 $str:
                 str_replace(
                     $this->openingDelimiter,
@@ -995,7 +995,7 @@ class HTML_Template_IT {
      *
      * @param integer $value error code
      *
-     * @return string error message, or FALSE if the error code was
+     * @return string error message, or false if the error code was
      * not recognized
      */
     function errorMessage($value)

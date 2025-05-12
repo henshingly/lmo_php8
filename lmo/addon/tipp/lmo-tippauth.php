@@ -41,7 +41,7 @@ if ($action == "tipp") {
       $_SESSION['lmotippername'] = $xtippername;
       $_SESSION['lmotipperpass'] = $xtipperpass;
       $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-      if (($tippers = file($pswfile)) === FALSE) $tippers = array();
+      if (($tippers = file($pswfile)) === false) $tippers = array();
       $_SESSION["lmotipperok"] = -2;
       foreach($tippers as $tipper) {
         if ($_SESSION["lmotipperok"] == -2) {
@@ -75,7 +75,7 @@ if ($action == "tipp") {
     if (($todo == "wert" && $all != 1) || $todo == "fieber" || $todo == "edit") {
       require(PATH_TO_LMO."/lmo-openfilename.php");
     } elseif ($todo == "einsicht") {
-      $lmo_only_st=TRUE;
+      $lmo_only_st=true;
       require(PATH_TO_LMO."/lmo-openfile.php");
     } elseif ($todo == "tabelle") {
       require_once(PATH_TO_LMO."/lmo-openfile.php");
@@ -107,12 +107,12 @@ if ($action == "tipp") {
           </tr><?php      // Benutzer nicht gefunden
       if ($_SESSION["lmotipperok"]==-2){?> 
           <tr>
-            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][43],TRUE); ?></td>
+            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][43],true); ?></td>
           </tr><?php      }
       // Benutzer nicht freigeschaltet
       if (isset($xtippersub) & $_SESSION["lmotipperok"]=="" && !isset($emailbody)){?> 
           <tr>
-            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][148],TRUE); ?></td>
+            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][148],true); ?></td>
           </tr><?php      }?>
           <tr>
             <td align="right"><acronym title="<?php echo $text[307] ?>"><?php echo " ".$text['tipp'][23]; ?></acronym></td>
@@ -121,7 +121,7 @@ if ($action == "tipp") {
       // Passwort falsch 
       if ($_SESSION["lmotipperok"]==-1){ $xtippername2=$_SESSION["lmotippername"];  ?> 
           <tr>
-            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][42],TRUE); ?></td>
+            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][42],true); ?></td>
           </tr><?php      }?>
           <tr>
             <td align="right"><acronym title="<?php echo $text[309] ?>"><?php echo " ".$text[308]; ?></acronym></td>

@@ -43,7 +43,7 @@ if ($_SESSION['lmouserok'] == 2) {
             if (is_array($tmp2)) {
               $tmp[$file] = $tmp2;
             }
-          } elseif ( strpos($file,'.txt')!==FALSE) {
+          } elseif ( strpos($file,'.txt')!==false) {
             if ($directory == '.' ) {
               $tmp[$directory][]=$file;
             } else {
@@ -63,7 +63,7 @@ if ($_SESSION['lmouserok'] == 2) {
   $lang = isset($_POST['lang'])?$_POST['lang']:'English';
   $file = isset($_POST['file'])?$_POST['file']:'.';
 
-  $save = isset($_POST['save'])?TRUE:FALSE;
+  $save = isset($_POST['save'])?true:false;
 
   $i = isset($_POST['i'])?$_POST['i']:array();
 
@@ -168,7 +168,7 @@ if ($_SESSION['lmouserok'] == 2) {
   }
 
   foreach ($de as $line) {
-    $uncomplete = TRUE;
+    $uncomplete = true;
     $pieces_de = explode("=",$line,2);
     if (!empty($to[intval($pieces_de[0])])) {
       //SAVE
@@ -177,7 +177,7 @@ if ($_SESSION['lmouserok'] == 2) {
       }
       $val = htmlspecialchars(stripslashes($to[intval($pieces_de[0])]),ENT_QUOTES);
       if (strlen($pieces_de[1])<3 || trim($to[intval($pieces_de[0])]) != trim($pieces_de[1]) ) {
-        $uncomplete=FALSE;
+        $uncomplete=false;
         $uncomplete_count++;
       }
     } else {
@@ -216,7 +216,7 @@ if ($_SESSION['lmouserok'] == 2) {
   }
 ?>
 
-    </table><div id="result" onClick="this.style.display='none';"><h1><?php echo sprintf("%2d",($uncomplete_count/$count*100))?>% seems to be translated!</h1><p>Please note: This script checks only for emtpy values and if 2 values are equal. So if a word in 2 languages is the same you get FALSE negatives. Then you can ignore the marked values.</p><small>Click</small></div>
+    </table><div id="result" onClick="this.style.display='none';"><h1><?php echo sprintf("%2d",($uncomplete_count/$count*100))?>% seems to be translated!</h1><p>Please note: This script checks only for emtpy values and if 2 values are equal. So if a word in 2 languages is the same you get false negatives. Then you can ignore the marked values.</p><small>Click</small></div>
     </form>
 
   </body>

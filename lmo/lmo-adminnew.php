@@ -41,7 +41,7 @@ if ($newpage == 0) {
 }
 if ($newpage == 1) {
   if (file_exists($dirliga.$xfile.".l98")) {
-    echo getMessage($text[280],TRUE);
+    echo getMessage($text[280],true);
     $newpage = 0;
   }
 }

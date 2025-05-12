@@ -71,7 +71,7 @@ if (!isset($nw)){
       echo $text['tipp'][225].": ".$text['tipp'][192].": ".$tipp_rremis." ".$text['tipp'][38]."&nbsp;&nbsp;&nbsp;<br>";
     }
     if ($tipp_jokertipp == 1 && $todo == "einsicht") {
-      echo getMessage($text['tipp'][287],TRUE).": ".$text['tipp'][289]."&nbsp;&nbsp;&nbsp;<br>";
+      echo getMessage($text['tipp'][287],true).": ".$text['tipp'][289]."&nbsp;&nbsp;&nbsp;<br>";
     }
     if ($tipp_jokertipp == 1 && $todo == "wert") {
       echo $text['tipp'][226].": ".$text['tipp'][227]."&nbsp;&nbsp;&nbsp;<br>";

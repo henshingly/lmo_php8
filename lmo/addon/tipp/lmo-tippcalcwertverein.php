@@ -22,7 +22,7 @@ if (file_exists($auswertfile)){
   $datei = fopen($auswertfile,"rb");
   $anzteams=0;
 
-  if ($datei!=FALSE){
+  if ($datei!=false){
     $tippdaten=array("");
     $sekt="";
     while (!feof($datei)) {
@@ -34,7 +34,7 @@ if (file_exists($auswertfile)){
         array_push($tippdaten,$sekt."|||EOL");
         $anzteams++;
       } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile,"=")!=FALSE) && (substr($zeile,0,1)!=";")){
+        //elseif ((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
         $schl=trim(substr($zeile,0,strpos($zeile,"=")));
         $wert=trim(substr($zeile,strpos($zeile,"=")+1));
         array_push($tippdaten,$sekt."|".$schl."|".$wert."|EOL");
@@ -89,6 +89,6 @@ if (file_exists($auswertfile)){
     rsort($tab0,SORT_STRING);
   }
 } else {?>
-  <?php echo getMessage($text['tipp'][17],TRUE);?><?php 
+  <?php echo getMessage($text['tipp'][17],true);?><?php 
 }
 ?>

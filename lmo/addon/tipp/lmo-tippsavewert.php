@@ -55,7 +55,7 @@ if ($st >= 0 && file_exists($auswertfile)) {
  
 $auswertdatei = fopen($auswertfile, "wb");
 if (!$auswertdatei) {
-  echo getMessage($text['tipp'][29]." ".$auswertdatei.$text[283],TRUE);
+  echo getMessage($text['tipp'][29]." ".$auswertdatei.$text[283],true);
   exit;
 }
 flock($auswertdatei, 2);
@@ -64,7 +64,7 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
   echo getMessage($text['tipp'][0].': '.$text['tipp'][29]." <var>".$liga."</var> ".$text['tipp'][65]);
   if ($todo != "edit") {
     if ($st != 0) {
-      $lmo_only_st=TRUE;
+      $lmo_only_st=true;
     }
       require(PATH_TO_LMO."/lmo-openfile.php");
   }

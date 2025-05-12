@@ -99,7 +99,7 @@ $project_version = "Version 3.2.0";
 
 $pdf = new Creport('a4', 'portrait', 'none', null);
 
-$start = microtime(TRUE);
+$start = microtime(true);
 
 // IMPORTANT: To allow custom callbacks being executed
 $pdf->allowedTags .= '|uline|rf:?.*?|dots:[0-9]+';
@@ -309,11 +309,11 @@ $pdf->restoreState();
 
 if (isset($_GET['d']) && $_GET['d']) {
   echo "<pre>";
-  echo $pdf->ezOutput(TRUE);
+  echo $pdf->ezOutput(true);
   echo "</pre>";
 } else {
   $pdf->ezStream(['Content-Disposition' => 'readme.pdf']);
 }
 
-$end = microtime(TRUE) - $start;
+$end = microtime(true) - $start;
 error_log($end);

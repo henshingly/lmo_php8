@@ -42,7 +42,7 @@ if ($file!="") {
       if ($lmtype==0) {
         $plus=0;
         $btip=tippaenderbar($mterm[$st-1][$i],$datum1[$st-1],$datum2[$st-1]);
-        if ($btip==TRUE) {
+        if ($btip==true) {
           if ($tipp_tippmodus==1) {
             $goaltippa[$i]=trim($_POST["xtippa".$i]);
             $goaltippb[$i]=trim($_POST["xtippb".$i]);
@@ -89,7 +89,7 @@ if ($file!="") {
         for ($n=0; $n<$modus[$st-1]; $n++) {
           $plus=0;
           $btip=tippaenderbar($mterm[$st-1][$i][$n],$datum1[$st-1],$datum2[$st-1]);
-          if ($btip==TRUE) {
+          if ($btip==true) {
             if ($tipp_tippmodus==1) {
               $goaltippa[$i][$n]=trim($_POST["xtippa".$i.$n]);
               $goaltippb[$i][$n]=trim($_POST["xtippb".$i.$n]);
@@ -282,24 +282,24 @@ if ($file!="") {
   }
   $punktespieltag=0;
   $nw=0;
-  $tipp_jokertippaktiv=TRUE;
+  $tipp_jokertippaktiv=true;
   $plus=1;
   if ($lmtype==0) {
-    $btip = array_pad($array,$anzsp+1,"FALSE");
+    $btip = array_pad($array,$anzsp+1,"false");
     for ($i=0; $i<$anzsp; $i++) {
       $btip[$i]=tippaenderbar($mterm[$st-1][$i],$datum1[$st-1],$datum2[$st-1]);
-      if ($tipp_jokertipp==1 && $jksp==($i+1) && $btip[$i]==FALSE) {
-        $tipp_jokertippaktiv=FALSE;
+      if ($tipp_jokertipp==1 && $jksp==($i+1) && $btip[$i]==false) {
+        $tipp_jokertippaktiv=false;
       }
     }
   } else {
     $btip = array_pad($array,$anzsp+1,"");
     for ($i=0; $i<$anzsp; $i++) {
-      $btip[$i] = array_pad(array("FALSE"),$modus[$st-1]+1,"FALSE");
+      $btip[$i] = array_pad(array("false"),$modus[$st-1]+1,"false");
       for ($n=0; $n<$modus[$st-1]; $n++) {
         $btip[$i][$n]=tippaenderbar($mterm[$st-1][$i][$n],$datum1[$st-1],$datum2[$st-1]);
-        if ($tipp_jokertipp==1 && $jksp==($i+1).($n+1) && $btip[$i][$n]==FALSE) {
-          $tipp_jokertippaktiv=FALSE;
+        if ($tipp_jokertipp==1 && $jksp==($i+1).($n+1) && $btip[$i][$n]==false) {
+          $tipp_jokertippaktiv=false;
         }
       }
     }

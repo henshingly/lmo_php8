@@ -39,7 +39,7 @@ if ($einsichtfile != "") {
      
     $datei = fopen($einsichtfile, "wb");
     if (!$datei) {
-      echo getMessage($text[283],TRUE);
+      echo getMessage($text[283],true);
       exit;
     }
     flock($datei, 2);

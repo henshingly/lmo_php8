@@ -20,7 +20,7 @@
   
 if (file_exists($einsichtfile)) {
   $datei = fopen($einsichtfile, "rb");
-  if ($datei != FALSE) {
+  if ($datei != false) {
     $tippdaten = array("");
     $sekt = "";
     while (!feof($datei)) {
@@ -33,7 +33,7 @@ if (file_exists($einsichtfile)) {
           array_push($tippdaten, $sekt."|||EOL");
         }
       } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
+        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
         $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         array_push($tippdaten, $sekt."|".$schl."|".$wert."|EOL");

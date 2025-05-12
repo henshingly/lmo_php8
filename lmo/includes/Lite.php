@@ -49,7 +49,7 @@ class Cache_Lite
     *
     * @var boolean $_caching
     */
-    var $_caching = TRUE;
+    var $_caching = true;
 
     /**
     * Cache lifetime (in seconds)
@@ -65,7 +65,7 @@ class Cache_Lite
     *
     * @var boolean $_fileLocking
     */
-    var $_fileLocking = TRUE;
+    var $_fileLocking = true;
 
     /**
     * Timestamp of the last valid cache
@@ -96,7 +96,7 @@ class Cache_Lite
     *
     * @var boolean $_writeControl
     */
-    var $_writeControl = TRUE;
+    var $_writeControl = true;
 
     /**
     * Enable / disable read control
@@ -106,7 +106,7 @@ class Cache_Lite
     *
     * @var boolean $_writeControl
     */
-    var $_readControl = TRUE;
+    var $_readControl = true;
 
     /**
     * Type of read control (only if read control is enabled)
@@ -151,7 +151,7 @@ class Cache_Lite
     *
     * @var boolean $_memoryCaching
     */
-    var $_memoryCaching = FALSE;
+    var $_memoryCaching = false;
 
     /**
     * Enable / Disable "Only Memory Caching"
@@ -159,7 +159,7 @@ class Cache_Lite
     *
     * @var boolean $_onlyMemoryCaching
     */
-    var $_onlyMemoryCaching = FALSE;
+    var $_onlyMemoryCaching = false;
 
     /**
     * Memory caching array
@@ -185,14 +185,14 @@ class Cache_Lite
     /**
     * File Name protection
     *
-    * if set to TRUE, you can use any cache id or group name
-    * if set to FALSE, it can be faster but cache ids and group names
+    * if set to true, you can use any cache id or group name
+    * if set to false, it can be faster but cache ids and group names
     * will be used directly in cache file names so be carefull with
     * special characters...
     *
     * @var boolean $fileNameProtection
     */
-    var $_fileNameProtection = TRUE;
+    var $_fileNameProtection = true;
 
     /**
     * Enable / disable automatic serialization
@@ -202,7 +202,7 @@ class Cache_Lite
     *
     * @var boolean $_serialize
     */
-    var $_automaticSerialization = FALSE;
+    var $_automaticSerialization = false;
 
     /**
     * Disable / Tune the automatic cleaning process
@@ -269,15 +269,15 @@ class Cache_Lite
     *
     * @param string $id cache id
     * @param string $group name of the cache group
-    * @param boolean $doNotTestCacheValidity if set to TRUE, the cache validity won't be tested
-    * @return string data of the cache (or FALSE if no cache available)
+    * @param boolean $doNotTestCacheValidity if set to true, the cache validity won't be tested
+    * @return string data of the cache (or false if no cache available)
     * @access public
     */
-    function get($id, $group = 'default', $doNotTestCacheValidity = FALSE)
+    function get($id, $group = 'default', $doNotTestCacheValidity = false)
     {
         $this->_id = $id;
         $this->_group = $group;
-        $data = FALSE;
+        $data = false;
         if ($this->_caching) {
             $this->_setFileName($id, $group);
             if ($this->_memoryCaching) {
@@ -289,7 +289,7 @@ class Cache_Lite
                     }
                 } else {
                     if ($this->_onlyMemoryCaching) {
-                        return FALSE;
+                        return false;
                     }
                 }
             }
@@ -310,7 +310,7 @@ class Cache_Lite
             }
             return $data;
         }
-        return FALSE;
+        return false;
     }
 
     /**
@@ -319,7 +319,7 @@ class Cache_Lite
     * @param string $data data to put in cache (can be another type than strings if automaticSerialization is on)
     * @param string $id cache id
     * @param string $group name of the cache group
-    * @return boolean TRUE if no problem
+    * @return boolean true if no problem
     * @access public
     */
     function save($data, $id = NULL, $group = 'default')
@@ -334,27 +334,27 @@ class Cache_Lite
             if ($this->_memoryCaching) {
                 $this->_memoryCacheAdd($this->_file, $data);
                 if ($this->_onlyMemoryCaching) {
-                    return TRUE;
+                    return true;
                 }
             }
 	    if ($this->_automaticCleaningFactor>0) {
                 $rand = rand(1, $this->_automaticCleaningFactor);
 	        if ($rand==1) {
-	            $this->clean(FALSE, 'old');
+	            $this->clean(false, 'old');
 		}
             }
             if ($this->_writeControl) {
                 if (!$this->_writeAndControl($data)) {
                     @touch($this->_file, time() - 2*abs($this->_lifeTime));
-                    return FALSE;
+                    return false;
                 } else {
-                    return TRUE;
+                    return true;
                 }
             } else {
 	        return $this->_write($data);
 	    }
         }
-        return FALSE;
+        return false;
     }
 
     /**
@@ -362,7 +362,7 @@ class Cache_Lite
     *
     * @param string $id cache id
     * @param string $group name of the cache group
-    * @return boolean TRUE if no problem
+    * @return boolean true if no problem
     * @access public
     */
     function remove($id, $group = 'default')
@@ -374,7 +374,7 @@ class Cache_Lite
                 $this->_memoryCachingCounter = $this->_memoryCachingCounter - 1;
             }
             if ($this->_onlyMemoryCaching) {
-                return TRUE;
+                return true;
             }
         }
         return $this->_unlink($this->_file);
@@ -388,10 +388,10 @@ class Cache_Lite
     *
     * @param string $group name of the cache group
     * @param string $mode flush cache mode : 'old', 'ingroup', 'notingroup'
-    * @return boolean TRUE if no problem
+    * @return boolean true if no problem
     * @access public
     */
-    function clean($group = FALSE, $mode = 'ingroup')
+    function clean($group = false, $mode = 'ingroup')
     {
         return $this->_cleanDir($this->_cacheDir, $group, $mode);
     }
@@ -445,10 +445,10 @@ class Cache_Lite
     *
     * @param string $id cache id
     * @param string $group name of the cache group
-    * @param boolean $doNotTestCacheValidity if set to TRUE, the cache validity won't be tested
+    * @param boolean $doNotTestCacheValidity if set to true, the cache validity won't be tested
     * @access public
     */
-    function getMemoryCachingState($id, $group = 'default', $doNotTestCacheValidity = FALSE)
+    function getMemoryCachingState($id, $group = 'default', $doNotTestCacheValidity = false)
     {
         if ($this->_caching) {
             if ($data = $this->get($id, $group, $doNotTestCacheValidity)) {
@@ -493,16 +493,16 @@ class Cache_Lite
     * Remove a file
     *
     * @param string $file complete file path and name
-    * @return boolean TRUE if no problem
+    * @return boolean true if no problem
     * @access private
     */
     function _unlink($file)
     {
         if (!@unlink($file)) {
             $this->raiseError('Cache_Lite : Unable to remove cache !', -3);
-            return FALSE;
+            return false;
         } else {
-            return TRUE;
+            return true;
         }
     }
 
@@ -512,10 +512,10 @@ class Cache_Lite
     * @param string $dir directory complete path (with a trailing slash)
     * @param string $group name of the cache group
     * @param string $mode flush cache mode : 'old', 'ingroup', 'notingroup'
-    * @return boolean TRUE if no problem
+    * @return boolean true if no problem
     * @access private
     */
-    function _cleanDir($dir, $group = FALSE, $mode = 'ingroup')
+    function _cleanDir($dir, $group = false, $mode = 'ingroup')
     {
         if ($this->_fileNameProtection) {
             $motif = ($group) ? 'cache_'.md5($group).'_' : 'cache_';
@@ -530,14 +530,14 @@ class Cache_Lite
                 }
             }
             if ($this->_onlyMemoryCaching) {
-                return TRUE;
+                return true;
             }
         }
         if (!($dh = opendir($dir))) {
             $this->raiseError('Cache_Lite : Unable to open cache directory !', -4);
-            return FALSE;
+            return false;
         }
-        $result = TRUE;
+        $result = true;
         while ($file = readdir($dh)) {
             if (($file != '.') && ($file != '..')) {
                 if (substr($file, 0, 6)=='cache_') {
@@ -643,20 +643,20 @@ class Cache_Lite
                 $hashData = $this->_hash($data, $this->_readControlType);
                 if ($hashData != $hashControl) {
                     @touch($this->_file, time() - 2*abs($this->_lifeTime));
-                    return FALSE;
+                    return false;
                 }
             }
             return $data;
         }
         $this->raiseError('Cache_Lite : Unable to read cache !', -2);
-        return FALSE;
+        return false;
     }
 
     /**
     * Write the given data in the cache file
     *
     * @param string $data data to put in cache
-    * @return boolean TRUE if ok
+    * @return boolean true if ok
     * @access private
     */
     function _write($data)
@@ -673,7 +673,7 @@ class Cache_Lite
                 @fwrite($fp, $data, $len);
                 if ($this->_fileLocking) @flock($fp, LOCK_UN);
                 @fclose($fp);
-                return TRUE;
+                return true;
             } else {
                 if (($try==1) and ($this->_hashedDirectoryLevel>0)) {
                     $hash = md5($this->_fileName);
@@ -689,14 +689,14 @@ class Cache_Lite
             }
         }
         $this->raiseError('Cache_Lite : Unable to write cache file : '.$this->_file, -1);
-        return FALSE;
+        return false;
     }
 
     /**
     * Write the given data in the cache file and control it just after to avoir corrupted cache entries
     *
     * @param string $data data to put in cache
-    * @return boolean TRUE if the test is ok
+    * @return boolean true if the test is ok
     * @access private
     */
     function _writeAndControl($data)

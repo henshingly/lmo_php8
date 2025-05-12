@@ -25,7 +25,7 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
     $tempfilename = $_FILES['userfile']['tmp_name'];
     $namefilename = $_FILES['userfile']['name'];
     if (substr($namefilename,-4) != '.l98') {
-      echo getMessage($text[304],TRUE);
+      echo getMessage($text[304],true);
       exit;
     }
     $i=0;
@@ -39,7 +39,7 @@ if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
     if (move_uploaded_file($tempfilename,$ufile)) {
       echo getMessage($text[303].":<br>".$ufile);
     } else {
-      echo getMessage($text[304],TRUE);
+      echo getMessage($text[304],true);
     }
     @chmod($ufile,0644);
   }?>

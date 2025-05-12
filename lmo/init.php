@@ -36,7 +36,7 @@ if (session_id() == "") session_start();
 require (__DIR__ . '/config/init-parameters.php');
 
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
-    $_SESSION['debug'] = TRUE;
+    $_SESSION['debug'] = true;
     @error_reporting(E_ALL);
     @ini_set('display_errors', '1');
 }

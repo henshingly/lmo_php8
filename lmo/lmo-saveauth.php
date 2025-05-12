@@ -33,7 +33,7 @@ if ($_SESSION['lmouserok']==2){
     flock($datei,LOCK_UN);
     echo getMessage($text[138]);
   } else {
-      echo getMessage($text[283],TRUE);
+      echo getMessage($text[283],true);
   }
 }
 ?>

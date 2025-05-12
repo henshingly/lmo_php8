@@ -60,7 +60,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
   if (file_exists($file)) {
     $einsichtdatei = fopen($einsichtfile, "wb");
     if (!$einsichtdatei) {
-      echo getMessage($text['tipp'][157]." ".$einsichtfile.$text[283],TRUE);
+      echo getMessage($text['tipp'][157]." ".$einsichtfile.$text[283],true);
       exit;
     }
     flock($einsichtdatei, 2);
@@ -74,11 +74,11 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
         fputs($einsichtdatei, "\n[".$tippernick."]\n");
          
         if (!file_exists($tippfile))
-        echo getMessage($text['tipp'][17],TRUE);
+        echo getMessage($text['tipp'][17],true);
         else
           {
           $datei = fopen($tippfile, "rb");
-          if ($datei != FALSE) {
+          if ($datei != false) {
             $tippdaten = array();
             $sekt = "";
             $jkwert = "";
@@ -90,7 +90,7 @@ if ($_POST["liga"] != "" && $_POST["st"] != "") {
               } elseif ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
                 $sekt = trim(substr($zeile, 1, -1));
               } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-              //elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";")) {
+              //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
                 $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
                 $wert = trim(substr($zeile, strpos($zeile, "=")+1));
                 array_push($tippdaten, $sekt."|".$schl."|".$wert."|".$jkwert."|EOL");

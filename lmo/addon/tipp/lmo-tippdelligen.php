@@ -49,7 +49,7 @@ if (($action == "tipp") && ($todo == "delligen")) {
         <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text['tipp'][268]; ?>"><?php 
     }?>
       </form>
-      <?php echo getMessage('<strong>'.$text['tipp'][82].'</strong> '.$text['tipp'][267],TRUE); 
+      <?php echo getMessage('<strong>'.$text['tipp'][82].'</strong> '.$text['tipp'][267],true); 
   }?>
     </td>
     <td width="20">&nbsp;</td>

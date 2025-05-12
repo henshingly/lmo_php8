@@ -44,7 +44,7 @@ if ($save==1){
 </table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center" colspan="2"><?php echo getMessage($text[571],TRUE);?></td>
+    <td align="center" colspan="2"><?php echo getMessage($text[571],true);?></td>
   </tr>
   <tr>
     <td align="center" colspan="2"><h1><?php echo $text[498]?></h1></td>

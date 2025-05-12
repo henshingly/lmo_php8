@@ -19,7 +19,7 @@
 
 require_once (PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 require_once (PATH_TO_LMO . '/includes/PHPMailer.php');
-$mail = new PHPMailer(TRUE);
+$mail = new PHPMailer(true);
 $tipp_mailtext = str_replace(array('\n', '[nick]'), array("\n", $xtippernick), $text['tipp'][303]);
 
 $mail->isMail();

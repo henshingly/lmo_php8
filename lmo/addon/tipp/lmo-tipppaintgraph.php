@@ -254,7 +254,7 @@ function get_color(&$styleclass) {
   } elseif (strlen($styleclass) == 7) {
     return(array(hexdec(substr($styleclass, 1, 2)), hexdec(substr($styleclass, 3, 2)), hexdec(substr($styleclass, 5, 2))));
   }
-  return FALSE;
+  return false;
 }
 
 ?>

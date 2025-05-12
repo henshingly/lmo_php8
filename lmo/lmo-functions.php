@@ -27,13 +27,13 @@ function check_hilfsadmin($datei) {
         if (isset($hilfsadmin_ligen)) {
             foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
                 if ($hilfsadmin_liga . ".l98" == basename($datei)) {
-                    $hilfsadmin_berechtigung = TRUE;
+                    $hilfsadmin_berechtigung = true;
                 }
             }
         }
     }
     else {
-        $hilfsadmin_berechtigung = TRUE;
+        $hilfsadmin_berechtigung = true;
     }
     return $hilfsadmin_berechtigung;
 }
@@ -256,7 +256,7 @@ function php_compat_is_a($object, $class) {
         return false;
     }
     if (strtolower(get_class($object)) == strtolower($class)) {
-        return TRUE;
+        return true;
     }
     else {
         return is_subclass_of($object, $class);
@@ -284,14 +284,14 @@ function url_check($url) {
 };
 
 $string_json = file_get_contents(PATH_TO_LMO . "/composer.json", false);
-$json_a = json_decode($string_json, TRUE, 4);
+$json_a = json_decode($string_json, true, 4);
 $lmo_version = $json_a['version'];
 $updatefilecheck_URL = $json_a['extra']['check'];
 
 // UpdateURL prüfen
 if (url_check($json_a['extra']['check'])){
     $LMO_UPDATE = file_get_contents($json_a['extra']['check'], false);
-    $json_update = json_decode($LMO_UPDATE, TRUE, 4);
+    $json_update = json_decode($LMO_UPDATE, true, 4);
     $new_lmo_version = $json_update['stable']['current'];
     $new_lmo_version_link = $json_update['stable']['download'];
 }

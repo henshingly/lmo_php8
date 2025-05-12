@@ -43,7 +43,7 @@ if ($file!="") {
     for ($a=1; $a<=$anzteams; $a++) {
       for ($i=0; $i<$anzsp; $i++) {
         if (($goala[$jyz][$i]!="_") && ($goalb[$jyz][$i]!="_") && ((($tabtype==0) && (($a==$teama[$jyz][$i]) || ($a==$teamb[$jyz][$i]))) || (($tabtype==1) && ($a==$teama[$jyz][$i])) || (($tabtype==2) && ($a==$teamb[$jyz][$i])))) {
-          $sttest=TRUE;
+          $sttest=true;
           $p0s=$pns;
           $p0u=$pnu;
           $p0n=$pnn;
@@ -227,7 +227,7 @@ if ($file!="") {
         sort($taba[$jyz],SORT_STRING);
       }
     }
-    if ($sttest==TRUE) {
+    if ($sttest==true) {
       for ($x=0; $x<$anzteams; $x++) {
         $x3=intval(substr($taba[$jyz][$x],34));
         $platz[$x3][$jyz]=$x+1;

@@ -26,7 +26,7 @@ if ($action == "tipp") {
 
 $datei = fopen($pswfile, "wb");
 if (!$datei) {
-  echo getMessage($text[283],TRUE);
+  echo getMessage($text[283],true);
   exit;
 } else {
   echo getMessage($text[138]);

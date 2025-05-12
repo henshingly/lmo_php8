@@ -20,7 +20,7 @@
 require_once(PATH_TO_LMO . "/lmo-admintest.php");
 require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tippaenderbar.php");
 require_once(PATH_TO_LMO . "/includes/PHPMailer.php");
-$mail = new PHPMailer(TRUE);
+$mail = new PHPMailer(true);
 
 if ($message != "") {
   $dumma = array();

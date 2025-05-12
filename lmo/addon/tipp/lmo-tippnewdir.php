@@ -74,7 +74,7 @@ if ($ftype != "") {
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = substr($zeile, 1, -1);
         } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
-        //elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
+        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
           $schl = substr($zeile, 0, strpos($zeile, "="));
           $wert = substr($zeile, strpos($zeile, "=")+1);
           if ($schl == "Name") {
@@ -119,8 +119,8 @@ if ($ftype != "") {
       }
 
       if (($action != "tipp" && $todo != "tipp") || $ftest == 1 || $tipp_immeralle == 1) {
-        if ($todo != "delligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$_SESSION['lmotippername'].".tip") == TRUE)) {
-          if ($todo != "newligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$_SESSION['lmotippername'].".tip") == FALSE)) {
+        if ($todo != "delligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$_SESSION['lmotippername'].".tip") == true)) {
+          if ($todo != "newligen" || (($ftest == 1 || $tipp_immeralle == 1) && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$_SESSION['lmotippername'].".tip") == false)) {
             if ($todo != "newtipper" || $ftest == 1 || $tipp_immeralle == 1) {
               if ($todo != "tippemail" || $ftest == 1 || $tipp_immeralle == 1) {
                 if ($todo != "tippuseredit" || $ftest == 1 || $tipp_immeralle == 1) {
@@ -131,10 +131,10 @@ if ($ftype != "") {
   <tr>
     <td class="nobr">
         <input type="hidden" name="liga1[]" value="<?php echo $files; ?>">
-        <input type="radio" name="liganr" value="<?php echo $i; ?>" <?php if (($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if (emailart[2].checked==FALSE)changetextarea(1);emailart[2].checked=true;"><?php echo $t0; ?>
+        <input type="radio" name="liganr" value="<?php echo $i; ?>" <?php if (($liga=="" && $i==1) || $liga==$files){echo "checked";} ?> onClick="if (emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><?php echo $t0; ?>
     </td>
     <td class="nobr">
-      <select class="lmo-formular-input" name="st1[]" onChange="if (emailart[2].checked==FALSE)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php
+      <select class="lmo-formular-input" name="st1[]" onChange="if (emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;liganr[<?php echo $i-1; ?>].checked=true;"><?php
                       if ($liga == $files) {
                         if ($st > 0) {
                           $t1 = $st;
@@ -294,7 +294,7 @@ if ($ftype != "") {
 <input type="checkbox" name="xtipperligen[]" value="<?php echo substr($files,0,-4) ?>"<?php
                       if (($todo == "newtipper" || $todo == "tippuseredit") && $checked == 1) {
                         echo "checked";
-                      } elseif ($todo == "tippuseredit" && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$nick.".tip") == TRUE) {
+                      } elseif ($todo == "tippuseredit" && file_exists(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.substr($files, 0, -4)."_".$nick.".tip") == true) {
                         echo "checked";
                       }
 

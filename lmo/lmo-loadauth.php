@@ -30,7 +30,7 @@ if ($datei) {
   }
   fclose($datei);
 } else {
-  echo getMessage($text[283],TRUE);
+  echo getMessage($text[283],true);
   exit;
 }
 

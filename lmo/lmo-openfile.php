@@ -289,7 +289,7 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
           if ($dum[1]=="NOT"){$teamn[$op5]=$dum[2];}
         }
 
-        if (!isset($lmo_only_st) || ($lmo_only_st==TRUE && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
+        if (!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
 
         if ($op2=="Round") {
           switch($dum[1]) {
@@ -391,7 +391,7 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
         }
       }
     } else {
-      echo getMessage($text[224],TRUE);
+      echo getMessage($text[224],true);
     }
   }
 }

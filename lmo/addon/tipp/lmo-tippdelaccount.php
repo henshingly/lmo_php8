@@ -46,7 +46,7 @@ if (($action == "tipp") && ($todo == "delaccount")) {
     $xtipperpass = trim($xtipperpass);
     if ($xtipperpass != $dummb[1]) {
       $newpage = 0;
-      echo getMessage($text['tipp'][42],TRUE);
+      echo getMessage($text['tipp'][42],true);
     }
   }
    

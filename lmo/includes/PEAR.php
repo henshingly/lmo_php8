@@ -34,12 +34,12 @@ define('PEAR_ERROR_EXCEPTION', 32);
 /**#@-*/
 
 if (substr(PHP_OS, 0, 3) == 'WIN') {
-    define('OS_WINDOWS', TRUE);
-    define('OS_UNIX',    FALSE);
+    define('OS_WINDOWS', true);
+    define('OS_UNIX',    false);
     define('PEAR_OS',    'Windows');
 } else {
-    define('OS_WINDOWS', FALSE);
-    define('OS_UNIX',    TRUE);
+    define('OS_WINDOWS', false);
+    define('OS_UNIX',    true);
     define('PEAR_OS',    'Unix'); // blatant assumption
 }
 
@@ -49,7 +49,7 @@ $GLOBALS['_PEAR_destructor_object_list'] = array();
 $GLOBALS['_PEAR_shutdown_funcs']         = array();
 $GLOBALS['_PEAR_error_handler_stack']    = array();
 
-@ini_set('track_errors', TRUE);
+@ini_set('track_errors', true);
 
 /**
  * Base class for other PEAR classes.  Provides rudimentary
@@ -89,7 +89,7 @@ class PEAR
      * @var     bool
      * @access  private
      */
-    var $_debug = FALSE;
+    var $_debug = false;
 
     /**
      * Default error mode for this object.
@@ -138,11 +138,11 @@ class PEAR
      * @var array
      */
     protected static $bivalentMethods = array(
-        'setErrorHandling' => TRUE,
-        'raiseError' => TRUE,
-        'throwError' => TRUE,
-        'pushErrorHandling' => TRUE,
-        'popErrorHandling' => TRUE,
+        'setErrorHandling' => true,
+        'raiseError' => true,
+        'throwError' => true,
+        'pushErrorHandling' => true,
+        'popErrorHandling' => true,
     );
 
     /**
@@ -173,7 +173,7 @@ class PEAR
                 $_PEAR_destructor_object_list[] = $this;
                 if (!isset($GLOBALS['_PEAR_SHUTDOWN_REGISTERED'])) {
                     register_shutdown_function("_PEAR_call_destructors");
-                    $GLOBALS['_PEAR_SHUTDOWN_REGISTERED'] = TRUE;
+                    $GLOBALS['_PEAR_SHUTDOWN_REGISTERED'] = true;
                 }
                 break;
             } else {
@@ -277,7 +277,7 @@ class PEAR
         // that no shutdown func is registered.  Bug #6445
         if (!isset($GLOBALS['_PEAR_SHUTDOWN_REGISTERED'])) {
             register_shutdown_function("_PEAR_call_destructors");
-            $GLOBALS['_PEAR_SHUTDOWN_REGISTERED'] = TRUE;
+            $GLOBALS['_PEAR_SHUTDOWN_REGISTERED'] = true;
         }
         $GLOBALS['_PEAR_shutdown_funcs'][] = array($func, $args);
     }
@@ -286,21 +286,21 @@ class PEAR
      * Tell whether a value is a PEAR error.
      *
      * @param   mixed $data   the value to test
-     * @param   int   $code   if $data is an error object, return TRUE
+     * @param   int   $code   if $data is an error object, return true
      *                        only if $code is a string and
      *                        $obj->getMessage() == $code or
      *                        $code is an integer and $obj->getCode() == $code
      *
-     * @return  bool    TRUE if parameter is an error
+     * @return  bool    true if parameter is an error
      */
     public static function isError($data, $code = null)
     {
         if (!is_a($data, 'PEAR_Error')) {
-            return FALSE;
+            return false;
         }
 
         if (is_null($code)) {
-            return TRUE;
+            return true;
         } elseif (is_string($code)) {
             return $data->getMessage() == $code;
         }
@@ -427,17 +427,17 @@ class PEAR
      * This method checks unsets an error code if available
      *
      * @param mixed error code
-     * @return bool TRUE if the error code was unset, FALSE otherwise
+     * @return bool true if the error code was unset, false otherwise
      * @access private
      * @since PHP 4.3.0
      */
     function _checkDelExpect($error_code)
     {
-        $deleted = FALSE;
+        $deleted = false;
         foreach ($this->_expected_errors as $key => $error_array) {
             if (in_array($error_code, $error_array)) {
                 unset($this->_expected_errors[$key][array_search($error_code, $error_array)]);
-                $deleted = TRUE;
+                $deleted = true;
             }
 
             // clean up empty arrays
@@ -460,19 +460,19 @@ class PEAR
      */
     function delExpect($error_code)
     {
-        $deleted = FALSE;
+        $deleted = false;
         if ((is_array($error_code) && (0 != count($error_code)))) {
             // $error_code is a non-empty array here; we walk through it trying
             // to unset all values
             foreach ($error_code as $key => $error) {
-                $deleted =  $this->_checkDelExpect($error) ? TRUE : FALSE;
+                $deleted =  $this->_checkDelExpect($error) ? true : false;
             }
 
-            return $deleted ? TRUE : PEAR::raiseError("The expected error you submitted does not exist"); // IMPROVE ME
+            return $deleted ? true : PEAR::raiseError("The expected error you submitted does not exist"); // IMPROVE ME
         } elseif (!empty($error_code)) {
             // $error_code comes alone, trying to unset it
             if ($this->_checkDelExpect($error_code)) {
-                return TRUE;
+                return true;
             }
 
             return PEAR::raiseError("The expected error you submitted does not exist"); // IMPROVE ME
@@ -511,7 +511,7 @@ class PEAR
      * @param string $error_class The returned error object will be
      *                  instantiated from this class, if specified.
      *
-     * @param bool $skipmsg If TRUE, raiseError will only pass error codes,
+     * @param bool $skipmsg If true, raiseError will only pass error codes,
      *                  the error message parameter will be dropped.
      *
      * @return object   a PEAR error object
@@ -525,7 +525,7 @@ class PEAR
                          $options = null,
                          $userinfo = null,
                          $error_class = null,
-                         $skipmsg = FALSE)
+                         $skipmsg = false)
     {
         // The error is yet a PEAR error object
         if (is_object($message)) {
@@ -638,7 +638,7 @@ class PEAR
                 break;
         }
         $stack[] = array($mode, $options);
-        return TRUE;
+        return true;
     }
 
     public static function staticPopErrorHandling()
@@ -674,7 +674,7 @@ class PEAR
                 trigger_error("invalid error mode", E_USER_WARNING);
                 break;
         }
-        return TRUE;
+        return true;
     }
 
     /**
@@ -685,7 +685,7 @@ class PEAR
      * @param mixed $mode (same as setErrorHandling)
      * @param mixed $options (same as setErrorHandling)
      *
-     * @return bool Always TRUE
+     * @return bool Always true
      *
      * @see PEAR::setErrorHandling
      */
@@ -707,13 +707,13 @@ class PEAR
             PEAR::setErrorHandling($mode, $options);
         }
         $stack[] = array($mode, $options);
-        return TRUE;
+        return true;
     }
 
     /**
     * Pop the last error handler used
     *
-    * @return bool Always TRUE
+    * @return bool Always true
     *
     * @see PEAR::pushErrorHandling
     */
@@ -728,7 +728,7 @@ class PEAR
         } else {
             PEAR::setErrorHandling($mode, $options);
         }
-        return TRUE;
+        return true;
     }
 
     /**
@@ -741,15 +741,15 @@ class PEAR
     public static function loadExtension($ext)
     {
         if (extension_loaded($ext)) {
-            return TRUE;
+            return true;
         }
 
-        // if either returns TRUE dl() will produce a FATAL error, stop that
+        // if either returns true dl() will produce a FATAL error, stop that
         if (
-            function_exists('dl') === FALSE ||
+            function_exists('dl') === false ||
             ini_get('enable_dl') != 1
         ) {
-            return FALSE;
+            return false;
         }
 
         if (OS_WINDOWS) {

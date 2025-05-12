@@ -62,7 +62,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
  */
  
 /*
- * dummy wird TRUE, wenn der virtuelle Spieler "Spielfrei"
+ * dummy wird true, wenn der virtuelle Spieler "Spielfrei"
  * bei einer ungeraden Spielerzahl hinzugefügt wird.
  * Falls es einen Dummy gibt, hat dieser die Spielernummer
  * des Spieler auf dem festen Platz ($anzteams - 1).
@@ -73,7 +73,7 @@ $dummy = false;
 $anzteams = $xteams;
 if (($xteams%2) == 1) {
   $anzteams++;
-  $dummy = TRUE; 
+  $dummy = true; 
 }
  
 $plan = array_pad($array, 80, "");
@@ -89,7 +89,7 @@ $spieltageHinrunde = $anzteams - 1;
 $spieltage = ($anzteams - 1) * 2;
 
 // Hat der feste Platz zu Beginn Heimrecht? Dieses Recht wechselt an jedem Spieltag, der Tisch wird gedreht.
-$festerPlatzIsHome = TRUE;
+$festerPlatzIsHome = true;
 
 // Spieler X, Sitzbelegung durch Spieler aendert sich nicht
 $spielerNrFesterPlatz = $anzteams - 1;

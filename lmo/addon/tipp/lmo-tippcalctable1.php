@@ -45,7 +45,7 @@ if (($file != "") && ($subteams != "")) {
     }
     for ($j = $hoy; $j < $endtab; $j++) {
       for ($i = 0; $i < $anzsp; $i++) {
-        if ($btip[$j][$i] == FALSE) {
+        if ($btip[$j][$i] == false) {
           $b = 0;
           for ($c = 0; $c < count($subteam); $c++) {
             if ($subteam[$c] == $teama[$j][$i]) {

@@ -36,10 +36,10 @@ if ($action=="admin"){
     }
 
   $warning = (int)0;
-  if (version_compare(PHP_VERSION, $min_php_version, '<')) echo getMessage("This LMO requires a web server with PHP ".$min_php_version." or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>".PHP_VERSION."</mark>", $warning = $warning+1, TRUE);
-  if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo getMessage("Delete install folder or set its chmod to 000!", $warning = $warning+1,TRUE);
+  if (version_compare(PHP_VERSION, $min_php_version, '<')) echo getMessage("This LMO requires a web server with PHP ".$min_php_version." or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>".PHP_VERSION."</mark>", $warning = $warning+1, true);
+  if (@file_exists(PATH_TO_LMO."/install/install.php") && @is_readable(PATH_TO_LMO."/install/install.php")) echo getMessage("Delete install folder or set its chmod to 000!", $warning = $warning+1,true);
   if ($_SESSION['lmouserok'] == 2) {
-    if ($new_lmo_version > $lmo_version) echo getMessage($text[590]."<br><a href='".$new_lmo_version_link.$new_lmo_version."' target='_blank' class='tooltip-test' title='Current Version'>".$text[591]."</a>", "Update",TRUE);
+    if ($new_lmo_version > $lmo_version) echo getMessage($text[590]."<br><a href='".$new_lmo_version_link.$new_lmo_version."' target='_blank' class='tooltip-test' title='Current Version'>".$text[591]."</a>", "Update",true);
   }
 ?>
 

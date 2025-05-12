@@ -29,7 +29,7 @@ $anztipper = count($dummd);
 $auswertfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/gesamt.aus";
 $auswertdatei = fopen($auswertfile, "wb");
 if (!$auswertdatei) {
-  echo getMessage($text['tipp'][0].': '.$text['tipp'][29]." ".$auswertdatei.$text[283],TRUE);
+  echo getMessage($text['tipp'][0].': '.$text['tipp'][29]." ".$auswertdatei.$text[283],true);
   exit;
 }
 flock($auswertdatei, LOCK_EX);
@@ -98,12 +98,12 @@ for ($k = 0; $k < $anzligen; $k++) {
   if ($ftest == 0 && $tipp_immeralle == 0) {
     // Liga darf nicht in Gesamtwertung einfliessen
   } elseif (!file_exists($auswertfile1))
-  echo getMessage($text['tipp'][17],TRUE);
+  echo getMessage($text['tipp'][17],true);
   else
     {
     $liganame[$anzligenaus] = $dummy[$k];
     $datei = fopen($auswertfile1, "rb");
-    if ($datei != FALSE) {
+    if ($datei != false) {
       $tippdaten = array();
       $sekt = "";
       while (!feof($datei)) {
@@ -112,7 +112,7 @@ for ($k = 0; $k < $anzligen; $k++) {
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = trim(substr($zeile, 1, -1));
         } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile, "=") !== FALSE) && (substr($zeile, 0, 1) != ";")) {
+        //elseif ((strpos($zeile, "=") !== false) && (substr($zeile, 0, 1) != ";")) {
           $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
           $wert = trim(substr($zeile, strpos($zeile, "=")+1));
           array_push($tippdaten, $sekt."|".$schl."|".$wert."|EOL");

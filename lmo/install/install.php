@@ -19,8 +19,8 @@
 */
 
 session_start();
-$string_json = file_get_contents('../composer.json', FALSE);
-$json_a = json_decode($string_json, TRUE, 4);
+$string_json = file_get_contents('../composer.json', false);
+$json_a = json_decode($string_json, true, 4);
 $lmo_version_search = array('<', '>', '=');
 $min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php']);
 $error = '';
@@ -99,7 +99,7 @@ $lang = array(
             <p><img src="img/DE_manual_copy.png" alt="Kopieren der Dateien mittels FTP-Programm" width="696"></p>
             <p><strong>Setzen Sie danach die benötigten Rechte über ihr FTP-Programm.</strong></p>
             <p><img src="img/DE_manual_chmod.png" alt="Setzen der Rechte mittels FTP-Programm" width="427"></p>
-            <p>Aktualisieren Sie diese Seite <a href="#" onclick="location.reload();return FALSE;">[Reload]</a>, um
+            <p>Aktualisieren Sie diese Seite <a href="#" onclick="location.reload();return false;">[Reload]</a>, um
             zu überprüfen, ob alle Rechte richtig gesetzt sind.<br><a href="' . $_SERVER['PHP_SELF'].'">[Zurück zur automatischen Installation (falls verfügbar)]</a></p>',
 
         'STEP3' => 'Konfigurationsdatei erstellen',
@@ -110,8 +110,8 @@ $lang = array(
         'STEP3_URL' => 'Geben Sie hier die absolute URL zum LMO an',
         'STEP3_URL_CORRECT' => ' Wenn Sie hier ein Bild sehen, ist die URL richtig!',
         'STEP3_URL_EXAMPLE' => 'Bsp.: <em><kbd>http://www.beispiel.de/lmo</kbd></em>',
-        'STEP3_ERROR_INI_FILE_NOT_OPENABLE' => 'Konnte Datei <code>config/init-parameters.php</code> nicht öffnen! Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return FALSE;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
-        'STEP3_ERROR_INI_FILE_NOT_WRITEABLE' => 'Konnte die Konfiguration nicht speichern. Vergewissern Sie sich, dass die Datei <code>config/init-parameters.php</code> die Rechte 666 besitzt. Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return FALSE;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
+        'STEP3_ERROR_INI_FILE_NOT_OPENABLE' => 'Konnte Datei <code>config/init-parameters.php</code> nicht öffnen! Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
+        'STEP3_ERROR_INI_FILE_NOT_WRITEABLE' => 'Konnte die Konfiguration nicht speichern. Vergewissern Sie sich, dass die Datei <code>config/init-parameters.php</code> die Rechte 666 besitzt. Bitte setzen Sie die Rechte auf chmod 666 und <a href="#" onclick="location.reload();return false;">aktualisieren Sie diese Seite</a>, um den Vorgang zu wiederholen.',
         'STEP3_SUCCESS_INI_FILE' => 'Die Konfiguration wurde erfolgreich gespeichert',
 
         'STEP4' => 'Installation erfolgreich',
@@ -158,7 +158,7 @@ $lang = array(
             <p><img src="img/EN_manual_copy.png" alt="Copying files using a FTP tool" width="696"></p>
             <p><strong>Please chmod these file with your FTP tool.</strong></p>
             <p><img src="img/EN_manual_chmod.png" alt="Chmod files using a FTP tool" width="427"></p>
-            <p>Press <a href="#" onclick="location.reload();return FALSE;">[Reload]</a> for
+            <p>Press <a href="#" onclick="location.reload();return false;">[Reload]</a> for
             a check.<br><a href="' . $_SERVER['PHP_SELF'].'">[Back to automatic installation (if available)]</a><p>',
 
         'STEP3' => 'Create configuration file',
@@ -169,8 +169,8 @@ $lang = array(
         'STEP3_URL' => 'Please insert the <strong>absolute URL</strong> to LMO',
         'STEP3_URL_EXAMPLE' => 'e.g.: http://www.example.com/lmo',
         'STEP3_URL_CORRECT' => ' If you can see a picture in front of this message then the URL is correct!',
-        'STEP3_ERROR_INI_FILE_NOT_OPENABLE' => 'Could not open <code>config/init-parameters.php</code>! Please chmod the file with 666 and <a href="#" onclick="location.reload();return FALSE;">[Reload]</a> this page to repeat the check.',
-        'STEP3_ERROR_INI_FILE_NOT_WRITEABLE' => 'Could not save configuration! Please make sure that the file <code>config/init-parameters.php</code> has the correct chmod of 666. Please chmod the file with 666 and <a href="#" onclick="location.reload();return FALSE;">[Reload]</a> this page to repeat the check.',
+        'STEP3_ERROR_INI_FILE_NOT_OPENABLE' => 'Could not open <code>config/init-parameters.php</code>! Please chmod the file with 666 and <a href="#" onclick="location.reload();return false;">[Reload]</a> this page to repeat the check.',
+        'STEP3_ERROR_INI_FILE_NOT_WRITEABLE' => 'Could not save configuration! Please make sure that the file <code>config/init-parameters.php</code> has the correct chmod of 666. Please chmod the file with 666 and <a href="#" onclick="location.reload();return false;">[Reload]</a> this page to repeat the check.',
         'STEP3_SUCCESS_INI_FILE' => 'Configuration successfully saved',
 
         'STEP4' => 'Installation successful',
@@ -217,7 +217,7 @@ $lang = array(
             <p><img src="img/FR_manual_copy.png" alt="" width="696"></p>
             <p><strong>Définissez ensuite les droits requis via votre programme FTP.</strong></p>
             <p><img src="img/FR_manual_chmod.png" alt="" width="427"></p>
-            <p>Veuillez ensuite actualiser cette page avec un <a href="#" onclick="location.reload();return FALSE;">[Rafraîchir]</a>, pour vérifier , que tout les droits ont été placé correctement.<br><a href="' . $_SERVER['PHP_SELF'].'">[Retourner à l\'installation automatique]</a></p>',
+            <p>Veuillez ensuite actualiser cette page avec un <a href="#" onclick="location.reload();return false;">[Rafraîchir]</a>, pour vérifier , que tout les droits ont été placé correctement.<br><a href="' . $_SERVER['PHP_SELF'].'">[Retourner à l\'installation automatique]</a></p>',
 
         'STEP3' => 'Création du fichier de configuration',
         'STEP3_PATH' => 'Veuillez entrer ici le <strong>chemin complet</strong> pour accèder au LMO',
@@ -271,7 +271,7 @@ $lang = array(
             <p><img src="img/ES_manual_copy.png" alt="Copiar los archivos usando el programa FTP" width="696"></p>
             <p><strong>Luego configure los derechos requeridos a través de su programa FTP.</strong></p>
             <p><img src="img/ES_manual_chmod.png" alt="Configurar los derechos mediante un programa FTP" width="427"></p>
-            <p>Actualiza esta página <a href="#" onclick="location.reload();return FALSE;">[Reload]</a> para
+            <p>Actualiza esta página <a href="#" onclick="location.reload();return false;">[Reload]</a> para
             para comprobar si todos los derechos están configurados correctamente.<br><a href="' . $_SERVER['PHP_SELF'].'">[Volver a la instalación automática (si está disponible)]</a></p>',
 
         'STEP3' => 'Cree el archivo de configuración',
@@ -282,8 +282,8 @@ $lang = array(
         'STEP3_URL' => 'Por favor ingrese la <strong>URL absoluta</strong> a LMO',
         'STEP3_URL_EXAMPLE' => 'ej.: http://www.ejemplo.com/lmo',
         'STEP3_URL_CORRECT' => ' Si usted puede ver una imagen delante de este mensaje entonces la URL es correcta!',
-        'STEP3_ERROR_INI_FILE_NOT_OPENABLE' => 'No se puede abrir init-parameters.php! Por favor cambie los permisos del archivo a 666 y <a href="#" onclick="location.reload();return FALSE;">[Recargue]</a> esta página para repetir el chequeo.',
-        'STEP3_ERROR_INI_FILE_NOT_WRITEABLE' => 'No se puede guardar la configuración! Por favor aseguresé que el archivo <code>init-parameters.php</code> tiene permisos chmod de 666. Por favor cambie los permisos chmod del archivo a 666 y <a href="#" onclick="location.reload();return FALSE;">[Recargue]</a> esta página para repetir el chequeo.',
+        'STEP3_ERROR_INI_FILE_NOT_OPENABLE' => 'No se puede abrir init-parameters.php! Por favor cambie los permisos del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta página para repetir el chequeo.',
+        'STEP3_ERROR_INI_FILE_NOT_WRITEABLE' => 'No se puede guardar la configuración! Por favor aseguresé que el archivo <code>init-parameters.php</code> tiene permisos chmod de 666. Por favor cambie los permisos chmod del archivo a 666 y <a href="#" onclick="location.reload();return false;">[Recargue]</a> esta página para repetir el chequeo.',
         'STEP3_SUCCESS_INI_FILE' => 'Configuración guardada con éxito',
 
         'STEP4' => 'Instalación exitosa',
@@ -303,7 +303,7 @@ $lang = array(
 
 
 if (!empty($_GET['debug']) || !empty($_SESSION['debug'])) {
-    $_SESSION['debug'] = TRUE;
+    $_SESSION['debug'] = true;
     @error_reporting(E_ALL);
     @ini_set('display_errors', 'On');
 }
@@ -313,7 +313,7 @@ else {
 }
 $lmo_install_step = isset($_REQUEST['lmo_install_step']) ? $_REQUEST['lmo_install_step'] : 0;
 if (isset($_POST['check'])) $lmo_install_step = 3;
-$_SESSION['man'] = !empty($_REQUEST['man']) ? TRUE : FALSE;
+$_SESSION['man'] = !empty($_REQUEST['man']) ? true : false;
 
 $patherror = $urlerror = $installerror = $loginerror = '';
 
@@ -324,7 +324,7 @@ if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' or $_SERVER['SERVER_
 else $protocol = 'http:';
 
 $path = str_replace('\\', '/', $lmo_dir);
-if (strpos(dirname($_SERVER['SCRIPT_NAME']), '/install') !== FALSE) {
+if (strpos(dirname($_SERVER['SCRIPT_NAME']), '/install') !== false) {
     $url = $protocol . '//' . $_SERVER['HTTP_HOST'] . dirname(dirname($_SERVER['SCRIPT_NAME']));
 }
 else {
@@ -339,12 +339,12 @@ if ($lmo_install_step == 1) {
     $_SESSION['ftpuser'] = isset($_POST['ftpuser']) ? trim($_POST['ftpuser']) : (!empty($_SESSION['ftpuser']) ? $_SESSION['ftpuser'] : '');
     $_SESSION['ftppass'] = isset($_POST['ftppass']) ? trim($_POST['ftppass']) : (!empty($_SESSION['ftppass']) ? $_SESSION['ftppass'] : '');
 
-    if ($ftp->connect($_SESSION['ftpserver'], 21) !== TRUE) {
+    if ($ftp->connect($_SESSION['ftpserver'], 21) !== true) {
         $urlerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'].'"> ' . $lang[$userlang]['STEP0_FTP_NO_CONNECTION'] . '</p>';
         $lmo_install_step=0;
     }
     else {
-        if ($ftp->login($_SESSION['ftpuser'], $_SESSION['ftppass']) !== TRUE) {
+        if ($ftp->login($_SESSION['ftpuser'], $_SESSION['ftppass']) !== true) {
             $ftp->disconnect();
             $loginerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'].'"> ' . $lang[$userlang]['STEP0_FTP_NO_LOGIN'] . '</p>';
             $lmo_install_step = 0;
@@ -384,9 +384,9 @@ if ($lmo_install_step == 1) {
                         }
                         else {
                             // Handle config files
-                            if (strpos($file, 'cfg.txt') !== FALSE || strpos($file, 'auth') !== FALSE) {
+                            if (strpos($file, 'cfg.txt') !== false || strpos($file, 'auth') !== false) {
                                 if (!file_exists($lmo_dir . '/' . $file)) {
-                                    if (strpos($file, 'lmo-auth.php')!==FALSE && file_exists($lmo_dir . '/lmo-auth.txt')) {
+                                    if (strpos($file, 'lmo-auth.php')!==false && file_exists($lmo_dir . '/lmo-auth.txt')) {
                                         // copy old auth-file into new one
                                         $auth_old = file($lmo_dir . '/lmo-auth.txt');
                                         $auth_file = fopen($lmo_dir . '/' . $file, 'wb');
@@ -401,7 +401,7 @@ if ($lmo_install_step == 1) {
                                     $ftp->chmod($file, $chmod);
                                 }
                                 else {
-                                    if (strpos($file, 'cfg.txt') !== FALSE) {
+                                    if (strpos($file, 'cfg.txt') !== false) {
                                         // Merge config files
                                         // Read config files
                                         $cfg_old = parse_ini_file($lmo_dir . '/' . $file);
@@ -616,7 +616,7 @@ if ($lmo_install_step == 2) { //Manuell
             echo "\n                        <dd>";
             if (strpos($file,'*')) {
                 $handle = opendir ($lmo_dir . '/' . dirname($file));
-                while (FALSE !== ($file2 = readdir($handle))) {
+                while (false !== ($file2 = readdir($handle))) {
                     if ($file2 != '.' && $file2 != '..' && !is_dir($lmo_dir . '/' . dirname($file) . "/$file2")) {
                         if (is_writable($lmo_dir . '/' . dirname($file) . "/$file2")) {
                             echo "<img src='img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['SUCCESS'] . "'> " . dirname($file) . "/$file2"." <small>(" . ($chmod) . ")</small><dd>";
@@ -652,7 +652,7 @@ if ($lmo_install_step == 2) { //Manuell
                     if (<?php echo $error?> > 0) {
                         return confirm("<?php echo $lang[$userlang]['ERROR_CONFIRM'];?>");
                     }
-                    return TRUE;
+                    return true;
                 }
                 </script>
         </td>
@@ -671,7 +671,7 @@ if ($lmo_install_step == 3) {?>
                         <dt><?php echo $lang[$userlang]['STEP3_PATH'];?></dt>
                         <dd>
                         <?php echo $patherror?>
-                            <a href="#" onclick="document.getElementsByName('path')[0].value='<?php echo $path;?>';return FALSE;"><em>[Auto]</em></a>
+                            <a href="#" onclick="document.getElementsByName('path')[0].value='<?php echo $path;?>';return false;"><em>[Auto]</em></a>
                             <input name="path" type="text" size="55" value="<?php echo $path?>"> <?php echo $lang[$userlang]['STEP3_PATH_EXAMPLE'];?>
                         </dd>
                         <dd><?php
@@ -686,7 +686,7 @@ if ($lmo_install_step == 3) {?>
                         <dt><?php echo $lang[$userlang]['STEP3_URL'];?></dt>
                         <dd>
                         <?php echo $urlerror?>
-                            <a href="#" onclick="document.getElementsByName('url')[0].value='<?php echo addslashes($url)?>';return FALSE;"><em>[Auto]</em></a>
+                            <a href="#" onclick="document.getElementsByName('url')[0].value='<?php echo addslashes($url)?>';return false;"><em>[Auto]</em></a>
                             <input name="url" type="text" size="55" value="<?php echo $url?>"> <?php echo $lang[$userlang]['STEP3_URL_EXAMPLE'];?>
                         </dd>
                         <dd><?php
@@ -704,7 +704,7 @@ if ($lmo_install_step == 3) {?>
                             if (<?php echo $error?> > 0) {
                                 return confirm("<?php echo $lang[$userlang]['ERROR_CONFIRM'];?>");
                             }
-                            return TRUE;
+                            return true;
                         }
                     </script>
                 </form>
@@ -759,7 +759,7 @@ if ($lmo_install_step == 4) {?>
 function filecollect(&$ftp, $dir = '.') {
     $ftp->cd($dir);
     $list = $ftp->ls('.', NET_FTP_DIRS_ONLY);
-    if ($list === FALSE) echo 'LIST FAILS!';
+    if ($list === false) echo 'LIST FAILS!';
     else {
         foreach ($list as $entry) {
             if ($entry['name'] != '.' && $entry['name'] != '..') {

@@ -111,7 +111,7 @@ require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
 if ($i>0){?>
                 <tr>
                   <td colspan="2" align="left">
-                    <input type="radio" name="liganr" value="0" <?php if ($liganr==0){echo "checked";} ?> onClick="if (emailart[2].checked==FALSE)changetextarea(1);emailart[2].checked=true;"><strong><?php echo $text['tipp'][263]?></strong>
+                    <input type="radio" name="liganr" value="0" <?php if ($liganr==0){echo "checked";} ?> onClick="if (emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><strong><?php echo $text['tipp'][263]?></strong>
                   </td>
                 </tr><?php 
 } ?>

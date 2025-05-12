@@ -21,7 +21,7 @@
 require_once(PATH_TO_ADDONDIR . "/tipp/lmo-tipptest.php");
 require_once(PATH_TO_LMO . '/includes/PHPMailer.php');
 
-$mail = new PHPMailer(TRUE);
+$mail = new PHPMailer(true);
 $tipp_mailtext = str_replace(array('\n', '[nick]', '[pass]', '[url]'), array("\n", $xtippernick, $xtipperpass,  $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "?action=tipp&xtippername=" . $xtippernick . "&xtipperpass=" . $xtipperpass), $text['tipp'][298]);
 
 $mail->isMail();
@@ -34,6 +34,6 @@ $mail->addAddress($xtipperemail, $xtippernick);
 if ($mail->send()) {
   echo getMessage($text['tipp'][78]);
 } else {
-  echo getMessage($text['tipp'][80]  . " Details: {$mail->ErrorInfo}", TRUE);
+  echo getMessage($text['tipp'][80]  . " Details: {$mail->ErrorInfo}", true);
 }
 ?>

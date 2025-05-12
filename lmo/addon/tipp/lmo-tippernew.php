@@ -57,12 +57,12 @@ if ($newpage==1) {
       if (strtolower($dummb1[0])==strtolower($xtippernick)) {
         $newpage=0;
         // Nick schon vorhanden
-        echo getMessage($text['tipp'][24],TRUE);
+        echo getMessage($text['tipp'][24],true);
       }
       if (strtolower($dummb1[4])==strtolower($xtipperemail)) {
         $newpage=0;
         // Email schon vorhanden
-        echo getMessage($text['tipp'][201],TRUE);
+        echo getMessage($text['tipp'][201],true);
       }
     }
   }
@@ -72,58 +72,58 @@ if ($newpage==1) {
 if ($newpage==1) {
   if ($xtippernick=="") {
     $newpage=0;
-    echo getMessage($text['tipp'][112],TRUE);
+    echo getMessage($text['tipp'][112],true);
   }
   if (preg_match('/[\W|_]/',$xtippernick)!=0) {
     $newpage=0;
-    echo getMessage($text['tipp'][109],TRUE);
+    echo getMessage($text['tipp'][109],true);
   }
   if ($tipp_realname!=0) {
     if ($xtippervorname=="") {
       $newpage=0;
-      echo getMessage($text['tipp'][66],TRUE);
+      echo getMessage($text['tipp'][66],true);
     }
     if ($xtippernachname=="") {
       $newpage=0;
-      echo getMessage($text['tipp'][67],TRUE);
+      echo getMessage($text['tipp'][67],true);
     }
     if (str_contains($xtippernachname, ' ') || strpos($xtippervorname, ' ') > -1) {
-    //if (strpos($xtippernachname, " ")!=FALSE || strpos($xtippervorname, " ")>-1) {
+    //if (strpos($xtippernachname, " ")!=false || strpos($xtippervorname, " ")>-1) {
       $newpage=0;
-      echo getMessage($text['tipp'][109],TRUE);
+      echo getMessage($text['tipp'][109],true);
     }
   }
   if ($tipp_adresse==1) {
     if ($xtipperstrasse=="") {
       $newpage=0;
-      echo getMessage($text['tipp'][129],TRUE);
+      echo getMessage($text['tipp'][129],true);
     }
     if ($xtipperplz=="") {
       $newpage=0;
-      echo getMessage($text['tipp'][130],TRUE);
+      echo getMessage($text['tipp'][130],true);
     }
     if ($xtipperort=="") {
       $newpage=0;
-      echo getMessage($text['tipp'][131],TRUE);
+      echo getMessage($text['tipp'][131],true);
     }
   }
   if ($xtipperemail == '' || str_contains($xtipperemail, ' ') || !str_contains($xtipperemail, '@') || $xtipperemail != $xtipperemail2) {
   //if ($xtipperemail=="" || strpos($xtipperemail, " ")>0 || strpos($xtipperemail, "@")<1 || $xtipperemail!= $xtipperemail2) {
     $newpage=0;
-    echo getMessage($text['tipp'][68],TRUE);
+    echo getMessage($text['tipp'][68],true);
   }
   
   if ($tipp_freischaltcode!=1) {
     if ($xtipperpass=="") {
       $newpage=0;
-      echo getMessage($text['tipp'][69],TRUE);
+      echo getMessage($text['tipp'][69],true);
     } else if (strlen($xtipperpass)<3) {
       $newpage=0;
-      echo getMessage($text['tipp'][73],TRUE);
+      echo getMessage($text['tipp'][73],true);
     }
     if ($xtipperpassw!=$xtipperpass) {
       $newpage=0;
-      echo getMessage($text['tipp'][70],TRUE);
+      echo getMessage($text['tipp'][70],true);
     }
   } else {
     $xtipperpass=substr(md5(uniqid(rand())),0,rand(8,16));
@@ -132,7 +132,7 @@ if ($newpage==1) {
   if ($xtippervereinradio==1) {
     if ($xtippervereinalt=="") {
       $newpage=0;
-      echo getMessage($text['tipp'][71],TRUE);
+      echo getMessage($text['tipp'][71],true);
     } else {
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
     }
@@ -140,7 +140,7 @@ if ($newpage==1) {
   if ($xtippervereinradio==2) {
     if ($xtippervereinneu=="") {
       $newpage=0;
-      echo getMessage($text['tipp'][72],TRUE);
+      echo getMessage($text['tipp'][72],true);
     } else {
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippcheckteam.php");
     }

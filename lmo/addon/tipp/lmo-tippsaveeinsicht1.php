@@ -38,7 +38,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
      
     $datei = fopen($einsichtfile, "wb");
     if (!$datei) {
-      echo getMessage($text[283],TRUE);
+      echo getMessage($text[283],true);
       exit;
     } else {
       //echo getMessage($text['tipp'][41]);

@@ -42,13 +42,13 @@ if ($tippfile != "") {
      
     $datei = fopen($tippfile, "wb");
     if (!$datei) {
-      echo getMessage($text[283],TRUE);
+      echo getMessage($text[283],true);
       exit;
     } elseif ($todo != "newtipper" && $todo != "newligen" && $todo != "tippuseredit") {
       if (!isset($jkspanticheat)) {
-        $jkspanticheat = FALSE;
+        $jkspanticheat = false;
       }
-      if ($jkspanticheat == FALSE) {
+      if ($jkspanticheat == false) {
         echo getMessage($text['tipp'][41]);
       } else {
         echo getMessage($text['tipp'][41]." ".$text['tipp'][292]);

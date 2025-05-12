@@ -37,7 +37,7 @@ if ($tippfile != "") {
      
     $datei = fopen($tippfile, "wb");
     if (!$datei) {
-      echo getMessage($text[283],TRUE);
+      echo getMessage($text[283],true);
       exit;
     } elseif ($start1 == 0) {
       echo getMessage($text['tipp'][41]);
