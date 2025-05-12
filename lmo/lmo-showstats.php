@@ -323,7 +323,7 @@ if ($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
   if ($einzustats == 1) {
     $zustat_file = PATH_TO_LMO."/".basename($diroutput)."/".str_replace(".l98", ".l98.php", basename($file));
     if (!file_exists($zustat_file) || filemtime($zustat_file) < filemtime(PATH_TO_LMO.'/'.$dirliga.$file)) {
-      $generate_zustat = TRUE;
+      $generate_zustat = true;
       include_once(PATH_TO_LMO."/lmo-zustat.php");
     }
     include_once($zustat_file);?>
@@ -456,30 +456,30 @@ if ($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
               <tr>
                 <th style="text-align:right"><?php echo $text[4028]?>&nbsp;&nbsp;</th>
                 <td align="right" class="lmoTabelleMeister"><strong><?php echo $akt_gewonnen?></strong>&nbsp;</td>
-                <td class="lmoTabelleMeister"><?php echo nl2br($team_akt_gewonnen, False)?>&nbsp;</td>
+                <td class="lmoTabelleMeister"><?php echo nl2br($team_akt_gewonnen, false)?>&nbsp;</td>
                 <td align="right" class="lmoTabelleMeister"><strong><?php echo $max_gewonnen?></strong>&nbsp;</td>
-                <td class="lmoTabelleMeister">&nbsp;<?php echo nl2br($team_max_gewonnen, False)?></td>
+                <td class="lmoTabelleMeister">&nbsp;<?php echo nl2br($team_max_gewonnen, false)?></td>
               </tr>
               <tr>
                 <th style="text-align:right"><?php echo $text[4029]?>&nbsp;&nbsp;</th>
                 <td align="right" class="lmoTabelleUefa"><strong><?php echo $akt_ungeschlagen?></strong>&nbsp;</td>
-                <td class="lmoTabelleUefa"><?php echo nl2br($team_akt_ungeschlagen, False)?>&nbsp;</td>
+                <td class="lmoTabelleUefa"><?php echo nl2br($team_akt_ungeschlagen, false)?>&nbsp;</td>
                 <td align="right" class="lmoTabelleUefa"><strong><?php echo $max_ungeschlagen?></strong>&nbsp;</td>
-                <td class="lmoTabelleUefa">&nbsp;<?php echo nl2br($team_max_ungeschlagen, False)?></td>
+                <td class="lmoTabelleUefa">&nbsp;<?php echo nl2br($team_max_ungeschlagen, false)?></td>
               </tr>
               <tr>
                 <th style="text-align:right"><?php echo $text[200]?>&nbsp;&nbsp;</th>
                 <td align="right"><strong><?php echo $akt_unentschieden?>&nbsp;</strong>&nbsp;</td>
-                <td><?php echo nl2br($team_akt_unentschieden, False)?></td>
+                <td><?php echo nl2br($team_akt_unentschieden, false)?></td>
                 <td align="right"><strong><?php echo $max_unentschieden?></strong>&nbsp;</td>
-                <td><?php echo nl2br($team_max_unentschieden, False)?></td>
+                <td><?php echo nl2br($team_max_unentschieden, false)?></td>
               </tr>
               <tr>
                 <th style="text-align:right"><?php echo $text[4031]?>&nbsp;&nbsp;</th>
                 <td align="right" class="lmoTabelleRelegation"><strong><?php echo $akt_sieglos?></strong>&nbsp;</td>
-                <td class="lmoTabelleRelegation"><?php echo nl2br($team_akt_sieglos, False)?>&nbsp;</td>
+                <td class="lmoTabelleRelegation"><?php echo nl2br($team_akt_sieglos, false)?>&nbsp;</td>
                 <td align="right" class="lmoTabelleRelegation"><strong><?php echo $max_sieglos?></strong>&nbsp;</td>
-                <td class="lmoTabelleRelegation"><?php echo nl2br($team_max_sieglos, False)?></td>
+                <td class="lmoTabelleRelegation"><?php echo nl2br($team_max_sieglos, false)?></td>
               </tr>
               <tr>
                 <th style="text-align:right"><?php echo $text[4032]?>&nbsp;&nbsp;</th>
