@@ -3,8 +3,8 @@
  * LMO Class Library Version (01/2004)
  *
  * Die LMO Class Library (classlib) bildet ein Ligadatei (.l98) des LMO
- * in Form eines Objektbaums ab und ermöglicht so die Entwicklung von
- * objektorientierten Erweiterung in Form von sog. Addons für den Liga Manager Online.
+ * in Form eines Objektbaums ab und ermÃ¶glicht so die Entwicklung von
+ * objektorientierten Erweiterung in Form von sog. Addons fÃ¼r den Liga Manager Online.
  *
  * @author    Tim Schumacher <webobjects@gmx.net>
  *
