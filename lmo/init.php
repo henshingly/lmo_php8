@@ -21,8 +21,9 @@
 $get = array();
 $get = $_GET;
 foreach ($get as $value) {
-    if (str_starts_with(urlencode($value), '<') || str_starts_with(urlencode($value), '%'))
-        die('XSS-Scripting detected');
+    if (str_contains($value, 'script') || str_contains($value, '%')) {
+        die('<center><br><br><b>Everything has been stopped!</b><br><br>XSS-Scripting detected!<br><br><a href="./lmo.php" title="Back">BACK</a></center>');
+    }
 }
 
 if (!isset($_SESSION)) {
