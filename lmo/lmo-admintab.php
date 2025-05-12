@@ -179,7 +179,7 @@ if ($file != "") {
       if ($teamn[$i]!="") {
         $lmo_tabellennotiz.="\n\n<strong>".$text[22].":</strong>\n".$teamn[$i];
       }?>
-        <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return FALSE;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.svg"?>' height='15' border='0' alt=''><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
+        <a href='#' onclick="alert('<?php echo addcslashes('',htmlentities(strip_tags($lmo_tabellennotiz)))?>');window.focus();return false;"><img src='<?php echo URL_TO_IMGDIR."/lmo-st2.svg"?>' height='15' border='0' alt=''><span class='popup'><?php echo nl2br($lmo_tabellennotiz)?></span></a><?php
       $lmo_tabellennotiz="";
     } else {
       echo "&nbsp;";

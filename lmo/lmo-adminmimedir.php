@@ -60,7 +60,7 @@ if ($ftype != "") {
         if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
           $sekt = substr($zeile, 1, -1);
         } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
-        //elseif ((strpos($zeile, "=") != FALSE) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
+        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
           $schl = substr($zeile, 0, strpos($zeile, "="));
           $wert = substr($zeile, strpos($zeile, "=")+1);
           if ($schl == "Name") {
@@ -75,13 +75,13 @@ if ($ftype != "") {
         $j++;
         $t0 = $text[507]." $j";
       }
-      echo "<li><a target='lmoelm' href='{$addi}".($k+1)."' onclick='emllmolink(this.href,\"{$aadr}\");return FALSE;'>{$t0}</a></li>";
+      echo "<li><a target='lmoelm' href='{$addi}".($k+1)."' onclick='emllmolink(this.href,\"{$aadr}\");return false;'>{$t0}</a></li>";
     }
   }
   if ($i == 0) {
     echo "<li>[{$text[223]}]</li>";
   } elseif (($i > 1) && ($_SESSION['lmouserok'] == 2)) {
-    echo "<li><a target='lmoelm' href='{$addi}-1' onclick='emllmolink(this.href,\"{$aadr}\");return FALSE;'><strong>{$text[401]}</strong></a></li>";
+    echo "<li><a target='lmoelm' href='{$addi}-1' onclick='emllmolink(this.href,\"{$aadr}\");return false;'><strong>{$text[401]}</strong></a></li>";
   }
   echo"</ul>";
 }

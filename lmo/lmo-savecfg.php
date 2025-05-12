@@ -50,7 +50,7 @@ if ($_SESSION['lmouserok']==2){
     fclose($datei);
     clearstatcache();
   } else {
-    $ok=FALSE;
+    $ok=false;
   }
   if ($ok) {
     echo getMessage($text[138]);

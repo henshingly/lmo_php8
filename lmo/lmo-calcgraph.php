@@ -38,7 +38,7 @@ if ($file!="") {
     $platz[$i] = array_pad($array,$anzst+1,"");
   }
   for ($jyz=0; $jyz<$anzst; $jyz++) {
-    $sttest=FALSE;
+    $sttest=false;
     $endtab=$jyz+1;
     for ($a=1; $a<=$anzteams; $a++) {
       for ($i=0; $i<$anzsp; $i++) {

@@ -21,7 +21,7 @@ $trans_lang = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1]
 $min_php_version = "7.4.0";
 
 function check_hilfsadmin($datei) {
-    $hilfsadmin_berechtigung = FALSE;
+    $hilfsadmin_berechtigung = false;
     if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 1) {
         $hilfsadmin_ligen = explode(',', $_SESSION['lmouserfile']);
         if (isset($hilfsadmin_ligen)) {
@@ -106,10 +106,10 @@ function getSmallImage($team, $alternative_text = '') {
  * Returns a formatted (error) Message
  *
  * @param        string     $message       Message to return
- * @param        bool       $error         Default FALSE, Is this an error message?
+ * @param        bool       $error         Default false, Is this an error message?
  * @return       string     Formatted (error) message
  */
-function getMessage($message, $error = FALSE) {
+function getMessage($message, $error = false) {
     if ($error) {
         return '<p class="error"><img src="' . URL_TO_IMGDIR . '/wrong.svg" border="0" width="20" alt=""> ' . $message . '</p>';
     }
@@ -184,7 +184,7 @@ function getLangSelector() {
     $border = "0";
 
     $handle = opendir (PATH_TO_LANGDIR);
-    while (FALSE !== ($f = readdir($handle))) {
+    while (false !== ($f = readdir($handle))) {
         if (preg_match("/^lang-?(.*)?\.txt$/", $f,$lang) > 0) {
             if ($lang[1] == "") return '';
             if ($lang[1] != $_SESSION['lmouserlang']) {
@@ -253,7 +253,7 @@ function get_timezones() {
  */
 function php_compat_is_a($object, $class) {
     if (!is_object($object)) {
-        return FALSE;
+        return false;
     }
     if (strtolower(get_class($object)) == strtolower($class)) {
         return TRUE;
@@ -280,17 +280,17 @@ function redirect($location) {
 // Funktion deklarieren
 function url_check($url) { 
     $url_objects = @get_headers($url); 
-    return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : FALSE; 
+    return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : false; 
 };
 
-$string_json = file_get_contents(PATH_TO_LMO . "/composer.json", FALSE);
+$string_json = file_get_contents(PATH_TO_LMO . "/composer.json", false);
 $json_a = json_decode($string_json, TRUE, 4);
 $lmo_version = $json_a['version'];
 $updatefilecheck_URL = $json_a['extra']['check'];
 
 // UpdateURL prüfen
 if (url_check($json_a['extra']['check'])){
-    $LMO_UPDATE = file_get_contents($json_a['extra']['check'], FALSE);
+    $LMO_UPDATE = file_get_contents($json_a['extra']['check'], false);
     $json_update = json_decode($LMO_UPDATE, TRUE, 4);
     $new_lmo_version = $json_update['stable']['current'];
     $new_lmo_version_link = $json_update['stable']['download'];

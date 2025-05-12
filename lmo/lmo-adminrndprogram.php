@@ -67,7 +67,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
  * Falls es einen Dummy gibt, hat dieser die Spielernummer
  * des Spieler auf dem festen Platz ($anzteams - 1).
  */
-$dummy = FALSE;
+$dummy = false;
 
 // Anzahl der Spieler
 $anzteams = $xteams;

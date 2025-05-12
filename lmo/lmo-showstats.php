@@ -188,7 +188,7 @@ $liga = new liga();
 
 // Existiert bereits ein Objekt der Liga (z.B. durch ein anderes Addin), wird dieses verwendet
 // Dadurch wird das erneute Laden des Files vermieden. Performance !!!!
-$ligaLoaded = FALSE;
+$ligaLoaded = false;
 if ($file && (!isset($liga) || !is_object($liga) || $liga->fileName != $file)) {
   $liga = new liga();
   $ligaLoaded = $liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file);
@@ -205,7 +205,7 @@ if ($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
   $faktor = $liga->teamCount();
   $sortedGames_a = array();
   $sortedGames_b = array();
-  $sortedGames_a = $liga->gamesSortedForTeam ($team_a,FALSE);
+  $sortedGames_a = $liga->gamesSortedForTeam ($team_a,false);
   echo "<!-- OUTPUT Restprogramm START-->";
   echo "<tr><td align=\"right\" valign=\"top\">";
   foreach ($sortedGames_a as $game_a) {
@@ -239,7 +239,7 @@ if ($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
   if ($show_stat1 <> $show_stat2 and $show_stat2 > 0 and $show_stat2 <= $liga->teamCount() ) {
     $team_b = new team();
     $team_b = $liga->teamForNumber($show_stat2);
-    $sortedGames_b = $liga->gamesSortedForTeam ($team_b,FALSE);
+    $sortedGames_b = $liga->gamesSortedForTeam ($team_b,false);
 
     foreach ($sortedGames_b as $game_b) {
       $result = $game_b['partie']->valuateGame();

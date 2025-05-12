@@ -108,7 +108,7 @@ if ($show==0) {?>
             <td class="nobr" colspan="4">
               <select class="lmo-formular-input" name="xdeflang" onchange="dolmoedit()"><?php
               $handle=opendir (PATH_TO_LANGDIR);
-              while (FALSE!==($f=readdir($handle))) {
+              while (false!==($f=readdir($handle))) {
                 if (preg_match("/^lang-?(.*)?\.txt$/",$f,$lang)>0) {?>
                 <option<?php if ($lang[1]==$deflang) echo " selected";?>><?php echo $lang[1];?></option><?php
                 }

@@ -55,7 +55,7 @@ if ($archivlink == 1) {
       </table><?php
     }
     if (str_contains($subdir, '/')) {
-    //if (strpos($subdir, '/') !== FALSE) {
+    //if (strpos($subdir, '/') !== false) {
 ?>
       <p><a href="<?php echo $_SERVER['PHP_SELF']?>?subdir=<?php echo dirname($subdir) . '/'?>"><?php echo $text[5];?> <?php echo $text[562];?></a></p><?php
     }

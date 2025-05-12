@@ -144,7 +144,7 @@ if ($file!="") {
             if ($mnote[$j][$i]!="") {
               $lmo_spielnotiz.="\n\n<strong>".$text[22].":</strong>\n".$mnote[$j][$i];
             }
-            echo "<a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return FALSE;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.svg' height='15' border='0' alt=''></a>";
+            echo "<a href='#' onclick=\"alert('".addcslashes('',htmlentities(strip_tags($lmo_spielnotiz)))."');window.focus();return false;\"><span class='popup'>".nl2br($lmo_spielnotiz)."</span><img src='".URL_TO_IMGDIR."/lmo-st2.svg' height='15' border='0' alt=''></a>";
             $lmo_spielnotiz="";
           } else {
             echo "&nbsp;";

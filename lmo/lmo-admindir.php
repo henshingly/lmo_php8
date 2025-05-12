@@ -30,7 +30,7 @@ $unbenannte_liga_counter=0;
 while($files=readdir($verz)){
   if (strtolower(substr($files,-4))==".l98"){
     if ($_SESSION['lmouserok']==1){
-      $hilfsadmin_berechtigung=FALSE;
+      $hilfsadmin_berechtigung=false;
       $hilfsadmin_ligen = explode(',',$_SESSION['lmouserfile']);
       if (isset($hilfsadmin_ligen)){
         foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
@@ -56,7 +56,7 @@ while($files=readdir($verz)){
           if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){  //Sektion
             $sekt=substr($zeile,1,-1);
           } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  // Wert
-          //elseif ((strpos($zeile,"=")!==FALSE) && (substr($zeile,0,1)!=";") && ($sekt=="Options")){  //Wert
+          //elseif ((strpos($zeile,"=")!==false) && (substr($zeile,0,1)!=";") && ($sekt=="Options")){  //Wert
             $option=explode("=",$zeile,2);
             $option_name=$option[0];
             $option_wert=isset($option[1])?$option[1]:'';

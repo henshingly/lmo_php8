@@ -25,10 +25,10 @@ function chklmopas2(a){
   var r=TRUE;
   if (lmotest == TRUE){
     alert("<?php echo $text[117] ?>");
-    r=FALSE;
+    r=false;
     }
-  if (lmotest == FALSE){
-    var s3=FALSE;
+  if (lmotest == false){
+    var s3=false;
     for (var i=1;i<a;i++){
       for (var j=i+1;j<=a;j++){
         var s1=document.getElementsByName("xplatz"+i)[0].value;
@@ -38,15 +38,15 @@ function chklmopas2(a){
       }
     if (s3 == TRUE){
       alert("<?php echo $text[416]; ?>");
-      r=FALSE;
+      r=false;
       }
     }
-  if (r == FALSE){
-    return FALSE;
+  if (r == false){
+    return false;
     }
   }
 function chklmolink(){
-  if (lmotest == FALSE){
+  if (lmotest == false){
     return confirm("<?php echo $text[119] ?>");
   } else {
     return TRUE;
@@ -75,8 +75,8 @@ function opencal(feld,startdat){
   lmocal="<?php echo URL_TO_LMO?>/lmo-admincal.php?abs=lmoedit&feld="+feld;
   if (startdat!=""){lmocal=lmocal+"&calshow="+startdat;}
   lmowin = window.open(lmocal,"lmocalpop","width=220,height=200,resizable=yes,dependent=yes");
-  lmotest=FALSE;
-  return FALSE;
+  lmotest=false;
+  return false;
 }
 
 </script>

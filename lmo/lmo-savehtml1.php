@@ -66,7 +66,7 @@ if ($lmtype == 0) {
   </style>
 </head>
 <body>
-  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return FALSE;"><?php echo $text[562];?><\/a><\/small>');</script>
+  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562];?><\/a><\/small>');</script>
   <h1><?php echo $titel;?></h1>
   <table>
     <tr>
@@ -204,7 +204,7 @@ if ($lmtype == 0) {
     }
 ?>
   </table>
-  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return FALSE;"><?php echo $text[562];?><\/a><\/small>');</script>
+  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562];?><\/a><\/small>');</script>
 </body>
 </html>
 <?php

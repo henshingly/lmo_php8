@@ -49,7 +49,7 @@ $text = array();
 
 if (!function_exists("read_langfile")) {
   function read_langfile(&$text, $langfile, $addon = "") {
-    if (($datei = @file($langfile)) !== FALSE) {
+    if (($datei = @file($langfile)) !== false) {
       foreach ($datei as $value) {
         $paar = explode('=', trim($value), 2);
         if (isset($paar[0]) && is_numeric($paar[0])) {
@@ -80,7 +80,7 @@ setlocale (LC_NUMERIC, 'en_EN');  // Wichtig: Für Arithmetik immer englische Tr
 
 //Alle lang-Dateien im Addon-Verzeichnis
 $handle = opendir (PATH_TO_LANGDIR);
-while (FALSE !== ($f = readdir($handle))) {
+while (false !== ($f = readdir($handle))) {
   if (is_dir(PATH_TO_LANGDIR.'/'.$f) && $f!='.' && $f!='..') {  //Wenn Unterverzeichnis Lang-dateien auslesen
     if (file_exists(PATH_TO_LANGDIR."/$f/lang-{$deflang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/$f/lang-{$deflang}.txt",$f);
     if (isset($lmouserlang)) {
@@ -115,4 +115,4 @@ $orgtor = $text[38];
 
 ///*
   if (!function_exists("c")){function c($c){if ($c==1)return(base64_decode("PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LngiPkxNTzwvYWNyb255bT4gNC4xLjQgLSA8YSBocmVmPSI="));return(base64_decode("aHR0cHM6Ly93d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5kZS8iIHRpdGxlPSJDbGljayBoZXJlIHRvIGdldCBpbmZvcm1hdGlvbnMgYWJvdXQgdGhpcyBzY3JpcHQiPsKpIDE5OTctMjAyNCBMTU8tR3JvdXA8L2E+"));}}
-  if (!function_exists("d")){function d($c){if (strpos(htmlentities($c),htmlentities(base64_decode("PCEtLUluZm9saW5rLS0+")))>0){FALSE;} else { eval(base64_decode("ZWNobyAnPGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LngiPkxNTzwvYWNyb255bT4gNC4xLjQgLSA8YSBocmVmPSJodHRwOi8vd3d3LmxpZ2EtbWFuYWdlci1vbmxpbmUuZGUvIiB0aXRsZT0iQ2xpY2sgaGVyZSB0byBnZXQgaW5mb3JtYXRpb25zIGFib3V0IHRoaXMgc2NyaXB0Ij7CqSAxOTk3LTIwMjQgTE1PLUdyb3VwPC9hPic7"));}}}//*/?>
+  if (!function_exists("d")){function d($c){if (strpos(htmlentities($c),htmlentities(base64_decode("PCEtLUluZm9saW5rLS0+")))>0){false;} else { eval(base64_decode("ZWNobyAnPGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LngiPkxNTzwvYWNyb255bT4gNC4xLjQgLSA8YSBocmVmPSJodHRwOi8vd3d3LmxpZ2EtbWFuYWdlci1vbmxpbmUuZGUvIiB0aXRsZT0iQ2xpY2sgaGVyZSB0byBnZXQgaW5mb3JtYXRpb25zIGFib3V0IHRoaXMgc2NyaXB0Ij7CqSAxOTk3LTIwMjQgTE1PLUdyb3VwPC9hPic7"));}}}//*/?>

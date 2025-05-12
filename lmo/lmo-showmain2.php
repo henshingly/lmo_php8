@@ -282,7 +282,7 @@ if ($file!="" && $nticker==1) {
 $output_tippspiel="";
 if ($eintippspiel==1) {
     if ($tipp_immeralle == 1 || str_contains($tipp_ligenzutippen, substr(basename($file), 0, -4))) {
-    //if ($tipp_immeralle == 1 || strpos($tipp_ligenzutippen, substr(basename($file),0,-4))!==FALSE) {
+    //if ($tipp_immeralle == 1 || strpos($tipp_ligenzutippen, substr(basename($file),0,-4))!==false) {
         $output_tippspiel.=$action!="tipp"?       "<a href='{$addm}tipp' title='{$text['tipp'][0]}'>{$text['tipp'][0]}</a>&nbsp;&nbsp;":$text['tipp'][0]."&nbsp;&nbsp;";
     }
 }

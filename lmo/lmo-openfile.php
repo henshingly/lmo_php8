@@ -35,7 +35,7 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
         if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
           $sekt=trim(substr($zeile,1,-1));
         } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile,"=")!==FALSE) && (substr($zeile,0,1)!=";")){
+        //elseif ((strpos($zeile,"=")!==false) && (substr($zeile,0,1)!=";")){
           $conf=explode("=",$zeile,2);
           $schl=trim($conf[0]);
           $wert=trim($conf[1]);
