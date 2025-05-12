@@ -19,7 +19,8 @@
 */
 
 session_start();
-$string_json = file_get_contents('../composer.json', false);
+if (file_exists('../composer.json')) $string_json = file_get_contents('../composer.json', false);
+if (file_exists('./composer.json')) $string_json = file_get_contents('./composer.json', false);
 $json_a = json_decode($string_json, true, 4);
 $lmo_version_search = array('<', '>', '=');
 $min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php']);
