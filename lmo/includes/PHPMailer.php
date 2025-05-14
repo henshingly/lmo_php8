@@ -948,7 +948,7 @@ class PHPMailer
     /**
      * Sets message type to HTML or plain.
      *
-     * @param bool $isHtml true for HTML mode
+     * @param bool $isHtml True for HTML mode
      */
     public function isHTML($isHtml = true)
     {
@@ -3749,7 +3749,7 @@ class PHPMailer
      *
      * @throws Exception
      *
-     * @return bool true on successfully adding an attachment
+     * @return bool True on successfully adding an attachment
      */
     public function addStringAttachment(
         $string,
@@ -3810,7 +3810,7 @@ class PHPMailer
      * @param string $disposition Disposition to use: `inline` (default) or `attachment`
      *                            (unlikely you want this – {@see `addAttachment()`} instead)
      *
-     * @return bool true on successfully adding an attachment
+     * @return bool True on successfully adding an attachment
      * @throws Exception
      *
      */
@@ -3882,7 +3882,7 @@ class PHPMailer
      *
      * @throws Exception
      *
-     * @return bool true on successfully adding an attachment
+     * @return bool True on successfully adding an attachment
      */
     public function addStringEmbeddedImage(
         $string,
@@ -4104,7 +4104,7 @@ class PHPMailer
      * @param string      $name  Custom header name
      * @param string|null $value Header value
      *
-     * @return bool true if a header was replaced successfully
+     * @return bool True if a header was replaced successfully
      */
     public function clearCustomHeader($name, $value = null)
     {
@@ -4135,7 +4135,7 @@ class PHPMailer
      * @param string      $name  Custom header name
      * @param string|null $value Header value
      *
-     * @return bool true if a header was replaced successfully
+     * @return bool True if a header was replaced successfully
      * @throws Exception
      */
     public function replaceCustomHeader($name, $value = null)
@@ -4318,7 +4318,7 @@ class PHPMailer
     /**
      * Check if an error occurred.
      *
-     * @return bool true if an error did occur
+     * @return bool True if an error did occur
      */
     public function isError()
     {
@@ -4333,7 +4333,7 @@ class PHPMailer
      * @param string      $name  Custom header name
      * @param string|null $value Header value
      *
-     * @return bool true if a header was set successfully
+     * @return bool True if a header was set successfully
      * @throws Exception
      */
     public function addCustomHeader($name, $value = null)
