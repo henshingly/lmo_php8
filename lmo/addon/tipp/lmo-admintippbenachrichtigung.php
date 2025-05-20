@@ -23,8 +23,9 @@ $mail = new PHPMailer(true);
 $tipp_mailtext = str_replace(array('\n', '[nick]'), array("\n", $xtippernick), $text['tipp'][303]);
 
 $mail->isMail();
-$mail->CharSet = "UTF-8";
-$mail->Subject = $text['tipp'][13] . " (" . $_SERVER["HTTP_HOST"] . ")";
+$mail->CharSet = 'UTF-8';
+$mail->Encoding = 'base64';
+$mail->Subject = $text['tipp'][13] . ' (' . $_SERVER['HTTP_HOST'] . ')';
 $mail->setFrom($aadr, $text['tipp'][92]);
 
 $mail->Body = $tipp_mailtext;
