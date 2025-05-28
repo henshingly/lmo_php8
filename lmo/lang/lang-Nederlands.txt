@@ -113,7 +113,7 @@
 112=Notitie per wedstrijd (max. 255 tekens, een eventuele 'Groene-tafel'-beslissing hoeft niet nogmaals vermeld te worden)
 113=Competitienaam
 114=Klik hier om de veranderingen op te slaan
-115==> naar bezoekersaangezicht
+115=naar bezoekersaangezicht
 116=Zo wordt het script weergegeven aan de gebruiker (opent in een nieuw venster)
 117=U heeft niks veranderd.\nEr wordt dus niks opgeslagen.
 118=Competitienaam (max. 60 tekens, bijv. 'Waterpolocompetitie HerenJeugd 2002-2003')
@@ -579,8 +579,22 @@
 578=UEFA Conference League-deelnemers
 579=Vul hier het aantal UEFA Conference League-deelnemers in
 590=Er is een nieuwe LMO-versie uitgebracht.
-591=Het kan HIER worden gedownload!
-592=sec
+591=Systeemvereisten
+592=PHP-versie
+593=LMO-update
+594=Uw LMO-installatie is up-to-date.<br>Er zijn momenteel geen updates beschikbaar.
+595=Controleer de versie opnieuw
+596=Geen update beschikbaar
+597=Informatie over de update
+598=Versie
+599=Aankondiging in het forum
+600=Wijzigingslogboek
+601=Publicatiedatum
+602=Licentie
+603=Versievergelijking
+604=Nieuwe versie
+605=Huidige versie
+799=sec
 800=Playoff-modus - thuiswedstrijdinstelling
 801=Mod.: 1-1-1-...
 802=Team A heeft eerst het thuisvoordeel en wisselt daarna na elke wedstrijd

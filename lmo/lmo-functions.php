@@ -17,8 +17,46 @@
   *
   */
 
-$trans_lang = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1], 'Wednesday' => $text['date'][2], 'Thursday' => $text['date'][3], 'Friday' => $text['date'][4], 'Saturday' => $text['date'][5], 'Sunday' => $text['date'][6], 'Mon' => $text['date'][7], 'Tue' => $text['date'][8], 'Wed' => $text['date'][9], 'Thu' => $text['date'][10], 'Fri' => $text['date'][11], 'Sat' => $text['date'][12], 'Sun' => $text['date'][13], 'January' => $text['date'][14], 'February' => $text['date'][15], 'March' => $text['date'][16], 'April' => $text['date'][17], 'May' => $text['date'][18], 'June' => $text['date'][19], 'July' => $text['date'][20], 'August' => $text['date'][21], 'September' => $text['date'][22], 'October' => $text['date'][23], 'November' => $text['date'][24], 'December' => $text['date'][25], 'Jan' => $text['date'][26], 'Feb' => $text['date'][27], 'Mar' => $text['date'][28], 'Apr' => $text['date'][29], 'May' => $text['date'][30], 'Jun' => $text['date'][31], 'Jul' => $text['date'][32], 'Aug' => $text['date'][33], 'Sep' => $text['date'][34], 'Oct' => $text['date'][35], 'Nov' => $text['date'][36], 'Dec' => $text['date'][37] );
-$min_php_version = "7.4.0";
+$trans_lang = array(
+                    'Monday' => $text['date'][0],
+                    'Tuesday' => $text['date'][1],
+                    'Wednesday' => $text['date'][2],
+                    'Thursday' => $text['date'][3],
+                    'Friday' => $text['date'][4],
+                    'Saturday' => $text['date'][5],
+                    'Sunday' => $text['date'][6],
+                    'Mon' => $text['date'][7],
+                    'Tue' => $text['date'][8],
+                    'Wed' => $text['date'][9],
+                    'Thu' => $text['date'][10],
+                    'Fri' => $text['date'][11],
+                    'Sat' => $text['date'][12],
+                    'Sun' => $text['date'][13],
+                    'January' => $text['date'][14],
+                    'February' => $text['date'][15],
+                    'March' => $text['date'][16],
+                    'April' => $text['date'][17],
+                    'May' => $text['date'][18],
+                    'June' => $text['date'][19],
+                    'July' => $text['date'][20],
+                    'August' => $text['date'][21],
+                    'September' => $text['date'][22],
+                    'October' => $text['date'][23],
+                    'November' => $text['date'][24],
+                    'December' => $text['date'][25],
+                    'Jan' => $text['date'][26],
+                    'Feb' => $text['date'][27],
+                    'Mar' => $text['date'][28],
+                    'Apr' => $text['date'][29],
+                    'May' => $text['date'][30],
+                    'Jun' => $text['date'][31],
+                    'Jul' => $text['date'][32],
+                    'Aug' => $text['date'][33],
+                    'Sep' => $text['date'][34],
+                    'Oct' => $text['date'][35],
+                    'Nov' => $text['date'][36],
+                    'Dec' => $text['date'][37]
+                );
 
 function check_hilfsadmin($datei) {
     $hilfsadmin_berechtigung = false;
@@ -26,7 +64,7 @@ function check_hilfsadmin($datei) {
         $hilfsadmin_ligen = explode(',', $_SESSION['lmouserfile']);
         if (isset($hilfsadmin_ligen)) {
             foreach ($hilfsadmin_ligen as $hilfsadmin_liga) {
-                if ($hilfsadmin_liga . ".l98" == basename($datei)) {
+                if ($hilfsadmin_liga . '.l98' == basename($datei)) {
                     $hilfsadmin_berechtigung = true;
                 }
             }
@@ -59,13 +97,13 @@ function magicQuotesRemove(&$array) {
 
 function get_dir($verz) {
     $ret = array();
-    if (substr($verz,-1) != '/') $verz .= '/';
+    if (substr($verz, -1) != '/') $verz .= '/';
 
-    $handle = opendir(PATH_TO_LMO . "/" . $verz);
+    $handle = opendir(PATH_TO_LMO . '/' . $verz);
     if ($handle) {
         while ($file = readdir ($handle)) {
-            if ($file != "." && $file != "..") {
-                if (is_dir(PATH_TO_LMO . "/" . $verz . $file)) {
+            if ($file != '.' && $file != '..') {
+                if (is_dir(PATH_TO_LMO . '/' . $verz . $file)) {
                     $ret[] = $file;
                 }
             }
@@ -89,16 +127,16 @@ function filterZero($a) {
  */
 //Umstellung Classlib kann später mal weg
 function getSmallImage($team, $alternative_text = '') {
-    $team = str_replace("/", "", $team);
-    if (!file_exists(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif")) {
-        $team = preg_replace("/[^a-zA-Z0-9]/", '', $team);
+    $team = str_replace('/', '', $team);
+    if (!file_exists(PATH_TO_IMGDIR . '/teams/small/' . $team . '.gif')) {
+        $team = preg_replace('/[^a-zA-Z0-9]/', '', $team);
     }
-    if (!file_exists(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif")) {
+    if (!file_exists(PATH_TO_IMGDIR . '/teams/small/' . $team . '.gif')) {
         return $alternative_text;
     }
     else {
-        $imgdata = getimagesize(PATH_TO_IMGDIR . "/teams/small/" . $team . ".gif");
-        return ("<img border='0' src='" . URL_TO_IMGDIR . "/teams/small/" . rawurlencode($team) . ".gif' {$imgdata[3]} alt=''> ");
+        $imgdata = getimagesize(PATH_TO_IMGDIR . '/teams/small/' . $team . '.gif');
+        return ('<img border="0" src="' . URL_TO_IMGDIR . '/teams/small/' . rawurlencode($team) . '.gif" {$imgdata[3]} alt=""> ');
     }
 }
 
@@ -139,7 +177,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
         }
     }
     elseif ($gmod == 2) {
-        if ($m1[1] != "_") {
+        if ($m1[1] != '_') {
             if (($m1[0] + $m1[1]) > ($m2[0] + $m2[1])) {
                 $erg = 1;
             }
@@ -160,7 +198,7 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
         $erg1 = 0;
         $erg2 = 0;
         for ($k = 0; $k < $gmod; $k++) {
-            if (($m1[$k] != "_") && ($m2[$k] != "_")) {
+            if (($m1[$k] != '_') && ($m2[$k] != '_')) {
                 if ($m1[$k] > $m2[$k]) {
                     $erg1++;
                 }
@@ -181,27 +219,27 @@ function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
 
 function getLangSelector() {
     $output_sprachauswahl = '';
-    $border = "0";
+    $border = '0';
 
     $handle = opendir (PATH_TO_LANGDIR);
     while (false !== ($f = readdir($handle))) {
-        if (preg_match("/^lang-?(.*)?\.txt$/", $f,$lang) > 0) {
-            if ($lang[1] == "") return '';
+        if (preg_match('/^lang-?(.*)?\.txt$/', $f,$lang) > 0) {
+            if ($lang[1] == '') return '';
             if ($lang[1] != $_SESSION['lmouserlang']) {
-                $border = "1mm";
-                $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . ".svg";
+                $border = '1mm';
+                $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . '.svg';
                 $output_sprachauswahl .= "<a href='{$_SERVER['PHP_SELF']}?" . htmlentities(preg_replace("/&?lmouserlang=.+?\b/", "", $_SERVER['QUERY_STRING'])) . "&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' height='16' style='margin-right:$border' title='{$lang[1]}' alt='{$lang[1]}'></a>";
             }
             else {
-                $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . ".selected.svg";
+                $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . '.selected.svg';
                 $output_sprachauswahl .= "<img src='{$imgfile}' height='16' border='$border' title='{$lang[1]}' alt='{$lang[1]}'>  ";
             }
         }
-        $border = "0";
+        $border = '0';
     }
     closedir($handle);
     if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == '2') {
-        $output_sprachauswahl .= "&nbsp<a href='" . URL_TO_LMO . "/lang/translate.php'> » " . $GLOBALS['text'][573] . "</a>";
+        $output_sprachauswahl .= '&nbsp<a href="' . URL_TO_LMO . '/lang/translate.php"> » ' . $GLOBALS['text'][573] . '</a>';
     }
     return $output_sprachauswahl;
 }
@@ -283,9 +321,12 @@ function url_check($url) {
     return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : false; 
 };
 
-$string_json = file_get_contents(PATH_TO_LMO . "/composer.json", false);
+$string_json = file_get_contents(PATH_TO_LMO . '/composer.json', false);
 $json_a = json_decode($string_json, true, 4);
 $lmo_version = $json_a['version'];
+$lmo_license = $json_a['license'];
+$lmo_version_search = array('<', '>', '=');
+$min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php']);
 $updatefilecheck_URL = $json_a['extra']['check'];
 
 // UpdateURL prüfen
@@ -294,10 +335,14 @@ if (url_check($json_a['extra']['check'])){
     $json_update = json_decode($LMO_UPDATE, true, 4);
     $new_lmo_version = $json_update['stable']['current'];
     $new_lmo_version_link = $json_update['stable']['download'];
+    $new_lmo_version_changelog = $json_update['stable']['changelog'];
+    $new_lmo_version_announcement = $json_update['stable']['announcement'];
+    $new_lmo_version_time = $json_update['stable']['time'];
+    $new_lmo_version_require_php = $json_update['stable']['require']['php'];
 }
 else {
     // UpdateURL ist nicht erreichbar
     $new_lmo_version = $json_a['version'];
-    $new_lmo_version_link = "";
+    $new_lmo_version_link = '';
 };
 ?>
