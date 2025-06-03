@@ -432,7 +432,7 @@ if ($_SESSION['lmouserok'] == 2) {
         $ges_teams = 0;
         for ($i = 1; $i <= $ausgewaehlte_ligen; $i++) {
             $liga1 = new liga();
-            if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $ligenfile[$i]) == TRUE) { // Ligenfile vorhanden? ?>
+            if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $ligenfile[$i]) == true) { // Ligenfile vorhanden? ?>
                     <table class=lmoInner cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
                         <td class="nobr"  colspan="3" align="center"><h1><?php echo $ligennamen[$i];?></h1></td>
