@@ -128,11 +128,13 @@ if ($_SESSION['lmouserok'] == 2) {
         $save_config_array = implode(';', $config_array);
         $zz = 1;
         $z = $_POST['zaehler'];
+        $ausgewaehlte_ligen_arr = array();
         for ($i = 1; $i < $z; $i++) {
         $h = 'c' . $i;
             if (isset ($_POST[$h])) {
-                $ausgewaehlte_ligen[$zz++] = $i;
+                $ausgewaehlte_ligen_arr[$zz++] = $i;
             }
+            $ausgewaehlte_ligen = count($ausgewaehlte_ligen_arr);
         }
     }
 
@@ -428,12 +430,12 @@ if ($_SESSION['lmouserok'] == 2) {
                 <tr>
                   <td class="nobr"><?php
         $ges_teams = 0;
-        for ($i = 1; $i <= count($ausgewaehlte_ligen); $i++ ) {
+        for ($i = 1; $i <= $ausgewaehlte_ligen; $i++) {
             $liga1 = new liga();
-            if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $ligenfile[$ausgewaehlte_ligen[$i]]) == true) { // Ligenfile vorhanden? ?>
+            if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $ligenfile[$i]) == TRUE) { // Ligenfile vorhanden? ?>
                     <table class=lmoInner cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td class="nobr"  colspan="3" align="center"><h1><?php echo $ligennamen[$ausgewaehlte_ligen[$i]];?></h1></td>
+                        <td class="nobr"  colspan="3" align="center"><h1><?php echo $ligennamen[$i];?></h1></td>
                       </tr><?php
                 $ii = 1; $spalte = 1; $max = count($liga1->teams);
                 foreach ($liga1->teams as $mannschaft) {
@@ -441,7 +443,7 @@ if ($_SESSION['lmouserok'] == 2) {
                     if ($spalte == 1) echo '<tr>' . chr(13) . '<td class="nobr"  align="left">';
                     if ($spalte == 2) echo '<td class="nobr"  align="left">';
                     if ($spalte == 3) echo '<td class="nobr"  align="left">';
-                    echo '<input type="checkbox" name="t' . $ges_teams . '" value="' . $ligenfile[$ausgewaehlte_ligen[$i]] . '[' . $ii . ']' . '">' . $mannschaft->name;
+                    echo '<input type="checkbox" name="t' . $ges_teams . '" value="' . $ligenfile[$i] . '[' . $ii . ']' . '">' . $mannschaft->name;
                     if ($spalte == 1) echo '</td>' . chr(13);
                     if ($spalte == 2) echo '</td>' . chr(13);
                     if ($spalte == 3) echo '</td>' . chr(13) . '</tr>' . chr(13);
@@ -453,7 +455,7 @@ if ($_SESSION['lmouserok'] == 2) {
 <?php
             }
             else {
-                echo '[' . PATH_TO_LMO . '/' . $dirliga . $ligenfile[$ausgewaehlte_ligen[$i]] . '] ' . $text['viewer'][50] . '<br>';
+                echo '[' . PATH_TO_LMO . '/' . $dirliga . $ligenfile[$i] . '] ' . $text['viewer'][50] . '<br>';
             }
         }?>
                   </td>
@@ -471,7 +473,7 @@ if ($_SESSION['lmouserok'] == 2) {
                   <td align="right">
                     <input type="hidden" name="action" value="admin">
                     <input type="hidden" name="formular3" value="1">
-                    <input type="hidden" name="ausgewaehlte_ligen[]" value="<?php echo $ausgewaehlte_ligen ?>">
+                    <input type="hidden" name="ausgewaehlte_ligen" value="<?php echo $ausgewaehlte_ligen; ?>">
                     <input type="hidden" name="zaehler" value="<?php echo $ges_teams;?>">
                     <input type="hidden" name="dateiname" value="<?php echo $save_file_name;?>">
                     <input type="hidden" name="config_array" value="<?php echo $save_config_array;?>">
