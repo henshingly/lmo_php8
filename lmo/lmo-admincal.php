@@ -19,15 +19,15 @@
 
 
 
-require(__DIR__ . "/init.php");
-isset($_GET['abs'])?$abs=$_GET['abs']:$abs="";
-isset($_GET['feld'])?$feld=$_GET['feld']:$feld="";
+require(__DIR__ . '/init.php');
+isset($_GET['abs']) ? $abs = $_GET['abs'] : $abs = '';
+isset($_GET['feld']) ? $feld = $_GET['feld'] : $feld = '';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
                 "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="de">
+<html lang="<?php echo $text[798]; ?>">
 <head>
-<title>Pop-Up <?php echo $text[255];?></title>
+<title>Pop-Up <?php echo $text[255]; ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 <style type="text/css">
 body{font-size:81%;font-family:sans-serif;}
@@ -66,33 +66,33 @@ function lmogeben(x){
 <body>
 <center>
 <?php
-$addi = $_SERVER['PHP_SELF'] . "?abs=" . $abs . "&amp;feld=" . $feld;
+$addi = $_SERVER['PHP_SELF'] . '?abs=' . $abs . '&amp;feld=' . $feld;
 $dat = time();
 $dat0 = getdate($dat);
-if (!isset($_GET['calshow']) || $_GET['calshow'] == "") {
-   $calshow=$dat0['month'] . " " . $dat0['year'];
+if (!isset($_GET['calshow']) || $_GET['calshow'] == '') {
+    $calshow = $dat0['month'] . ' ' . $dat0['year'];
 } else {
-  $calshow = $_GET['calshow'];
+    $calshow = $_GET['calshow'];
 }
 $dath = $calshow;
-$calshow = "";
-$dat5 = "1 " . $dath;
+$calshow = '';
+$dat5 = '1 ' . $dath;
 $dat1 = getdate(strtotime($dat5));
-$dat2 = getdate(strtotime($dat5 . " -1 month"));
-$datr = $dat2['month'] . " " . $dat2['year'];
-$dat3 = getdate(strtotime($dat5 . " +1 month"));
-$datv = $dat3['month'] . " " . $dat3['year'];
+$dat2 = getdate(strtotime($dat5 . ' -1 month'));
+$datr = $dat2['month'] . ' ' . $dat2['year'];
+$dat3 = getdate(strtotime($dat5 . ' +1 month'));
+$datv = $dat3['month'] . ' ' . $dat3['year'];
 $mn = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1], 'Wednesday' => $text['date'][2], 'Thursday' => $text['date'][3], 'Friday' => $text['date'][4], 'Saturday' => $text['date'][5], 'Sunday' => $text['date'][6], 'Mon' => $text['date'][7], 'Tue' => $text['date'][8], 'Wed' => $text['date'][9], 'Thu' => $text['date'][10], 'Fri' => $text['date'][11], 'Sat' => $text['date'][12], 'Sun' => $text['date'][13], 'January' => $text['date'][14], 'February' => $text['date'][15], 'March' => $text['date'][16], 'April' => $text['date'][17], 'May' => $text['date'][18], 'June' => $text['date'][19], 'July' => $text['date'][20], 'August' => $text['date'][21], 'September' => $text['date'][22], 'October' => $text['date'][23], 'November' => $text['date'][24], 'December' => $text['date'][25], 'Jan' => $text['date'][26], 'Feb' => $text['date'][27], 'Mar' => $text['date'][28], 'Apr' => $text['date'][29], 'May' => $text['date'][30], 'Jun' => $text['date'][31], 'Jul' => $text['date'][32], 'Aug' => $text['date'][33], 'Sep' => $text['date'][34], 'Oct' => $text['date'][35], 'Nov' => $text['date'][36], 'Dec' => $text['date'][37] );
 
-$first = $dat1['wday'];?>
+$first = $dat1['wday']; ?>
 <table class="caltab">
   <tr>
     <td align="center">
       <table class="caltab1" width=100%>
         <tr>
-          <td align="left"><a href="<?php echo $addi?>&amp;calshow=<?php echo $datr?>" title="<?php echo $text['date'][38];?>">&nbsp;&lt;&nbsp;</a></td>
-          <td align="center" class="caltz"><?php echo $mn[$dat1['month']] . " " . $dat1['year'];?></td>
-          <td align="right"><a href="<?php echo $addi?>" title="<?php echo $text['date'][39];?>">&nbsp;#&nbsp;</a><a href="<?php echo $addi?>&amp;calshow=<?php echo $datv?>" title="<?php echo $text['date'][40];?>">&nbsp;&gt;&nbsp;</a></td>
+          <td align="left"><a href="<?php echo $addi; ?>&amp;calshow=<?php echo $datr; ?>" title="<?php echo $text['date'][38]; ?>">&nbsp;&lt;&nbsp;</a></td>
+          <td align="center" class="caltz"><?php echo $mn[$dat1['month']] . ' ' . $dat1['year']; ?></td>
+          <td align="right"><a href="<?php echo $addi; ?>" title="<?php echo $text['date'][39]; ?>">&nbsp;#&nbsp;</a><a href="<?php echo $addi; ?>&amp;calshow=<?php echo $datv; ?>" title="<?php echo $text['date'][40]; ?>">&nbsp;&gt;&nbsp;</a></td>
         </tr>
       </table>
     </td>
@@ -101,49 +101,58 @@ $first = $dat1['wday'];?>
     <td align="center">
       <table class="caltab1" width=100%>
         <tr>
-          <td align="center" class="calwt"><?php echo $text['date'][7];?></td>
-          <td align="center" class="calwt"><?php echo $text['date'][8];?></td>
-          <td align="center" class="calwt"><?php echo $text['date'][9];?></td>
-          <td align="center" class="calwt"><?php echo $text['date'][10];?></td>
-          <td align="center" class="calwt"><?php echo $text['date'][11];?></td>
-          <td align="center" class="calwt"><?php echo $text['date'][12];?></td>
-          <td align="center" class="calwt"><?php echo $text['date'][13];?></td>
-        </tr><?php
-if ($first == 0) {$first = 7;}?>
-        <tr><?php
+          <td align="center" class="calwt"><?php echo $text['date'][7]; ?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][8]; ?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][9]; ?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][10]; ?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][11]; ?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][12]; ?></td>
+          <td align="center" class="calwt"><?php echo $text['date'][13]; ?></td>
+        </tr>
+<?php
+if ($first == 0) {
+    $first = 7;
+}?>
+        <tr>
+<?php
 for ($i = 0; $i < $first - 1; $i ++){?>
-          <td class="calat">&nbsp;</td><?php
+          <td class="calat">&nbsp;</td>
+<?php
 }
 for ($i = 1; $i <= 31; $i ++){
-  $dat4 = getdate(strtotime($i . " " . $dath));
-  $today = $dat4['wday'];
-  if ($today == 0) {$today = 7;}
-  if ($dat1['mon'] == $dat4['mon']){
-    $stil = "calat";
-    $dum1 = $dat0['mday'] . "." . $dat0['mon'] . "." . $dat0['year'];
-    $dum2 = $dat4['mday'] . "." . $dat4['mon'] . "." . $dat4['year'];
-    if ($dum1 == $dum2){
-      if (($today == 6) || ($today == 7)){$stil = "calhe";} else {$stil = "calht";}
-      }
-      else {
-      if (($today == 6) || ($today == 7)){$stil = "calwe";} else {$stil = "calat";}
+    $dat4 = getdate(strtotime($i . ' ' . $dath));
+    $today = $dat4['wday'];
+    if ($today == 0) {$today = 7;}
+    if ($dat1['mon'] == $dat4['mon']){
+        $stil = 'calat';
+        $dum1 = $dat0['mday'] . '.' . $dat0['mon'] . '.' . $dat0['year'];
+        $dum2 = $dat4['mday'] . '.' . $dat4['mon'] . '.' . $dat4['year'];
+        if ($dum1 == $dum2){
+            if (($today == 6) || ($today == 7)){$stil = 'calhe';} else {$stil = 'calht';}
+        }
+        else {
+            if (($today == 6) || ($today == 7)){$stil = 'calwe';} else {$stil = 'calat';}
+        }
+        if ($i <= 9) {$k = '0';} else {$k = '';}
+        if ($today == 1){?>
+        <tr>
+<?php
+        }?>
+          <td align="center" class="<?php echo $stil; ?>"><a href="#" onclick='lmogeben("<?php echo date('d.m.Y',strtotime($i.' '.$dath)); ?>")' title="<?php echo $text['date'][41]; ?>"><?php echo $k . $i; ?></a></td>
+<?php
+        if ($today == 7){?>
+        </tr>
+<?php
+            $j = $today;
+        }
     }
-    if ($i <= 9) {$k = "0";} else {$k = "";}
-    if ($today == 1){?>
-          <tr><?php
-    }?>
-            <td align="center" class="<?php echo $stil?>"><a href="#" onclick='lmogeben("<?php echo date("d.m.Y",strtotime($i." ".$dath))?>")' title="<?php echo $text['date'][41];?>"><?php echo "$k$i"?></a></td><?php
-    if ($today == 7){?>
-          </tr><?php
-      $j = $today;
-    }
-  }
 }
 if ($j != 7){
-  for ($i = 0; $i < 7 - $j; $i ++){?>
+    for ($i = 0; $i < 7 - $j; $i ++){?>
             <td class="calat">&nbsp;</td><?php
-  }?>
-          </tr><?php
+    }?>
+        </tr>
+<?php
 }?>
           </td>
         </tr>
@@ -151,7 +160,7 @@ if ($j != 7){
     </td>
   </tr>
   <tr>
-    <td align="right"><a href="#" onclick="self.close()" title="<?php echo $text['date'][42];?>">[<?php echo $text[347];?>]</a></td>
+    <td align="center"><a href="#" onclick="self.close()" title="<?php echo $text['date'][42]; ?>">[<?php echo $text[347]; ?>]</a></td>
   </tr>
 </table>
 </center>
