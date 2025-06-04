@@ -63,13 +63,14 @@ for ($i = 0; $i <= ($anzteams+1); $i++) {
     if ($j == $anzteams+1 && $i > 0 && $i <= $anzteams || $i == $anzteams+1 && $j > 0 && $j <= $anzteams) {
       $teams[$j] = str_replace( "'", "´", $teams[$j] ); //an attribute value literal can occur in an attribute specification list only after a VI delimiter because Team names with an apostrophe inside
       echo "<acronym title='".$teams[$j]."'>";
-      echo HTML_smallTeamIcon($file,$teams[$j]," alt='.$teamk[$j].'");
+      echo HTML_smallTeamIcon($file,$teams[$j]," alt='$teamk[$j]'");
       echo "</acronym>";
+      
     }
     if ($j == $anzteams+1 && $i > 0 && $i <= $anzteams) {
       $teams[$i] = str_replace( "'", "´", $teams[$i] ); //an attribute value literal can occur in an attribute specification list only after a VI delimiter because Team names with an apostrophe inside
       echo "<acronym title='".$teams[$i]."'>";
-      echo HTML_smallTeamIcon($file,$teams[$i]," alt='.$teamk[$i].'");
+      echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teamk[$i]'");
       echo "</acronym>";
     }
 
