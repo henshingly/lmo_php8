@@ -594,6 +594,7 @@
 603=Comparație versiuni
 604=Versiune nouă
 605=Versiunea curentă
+798=ro
 799=sec
 800=Mod playoff - setarea jocului de acasă
 801=Mod.: 1-1-1-...

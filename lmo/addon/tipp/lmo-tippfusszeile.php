@@ -106,9 +106,9 @@ if (!isset($nw)){
     echo $text[406].": ".$stand."<br>";
   } // Stand der *.l98-Datei
   if ($calctime == 1) {
-    echo $text[471].": ".number_format((getmicrotime()-$startzeit), 4, ".", ",")." ".$text[592].".<br>";
+    echo $text[471].": ".number_format((getmicrotime()-$startzeit), 4, ".", ",")." ".$text[799].".<br>";
   }
-  echo $text[54];?> - <?php echo $text[55]; ?> <br><?php 
+  echo $text[54]; ?> - <?php echo $text[55]; ?> <br><?php 
   echo $text['tipp'][84]; ?> - <?php echo $text['tipp'][85]; ?>
           </td>
         </tr>

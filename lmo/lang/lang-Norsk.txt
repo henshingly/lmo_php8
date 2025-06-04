@@ -594,6 +594,7 @@
 603=Versjonssammenligning
 604=Ny versjon
 605=Gjeldende versjon
+798=no
 799=sek
 800=Sluttspillmodus – Hjemmespillinnstilling
 801=Mod.: 1-1-1-...

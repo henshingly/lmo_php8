@@ -594,6 +594,7 @@
 603=Verzió-összehasonlítás
 604=Új verzió
 605=Jelenlegi verzió
+798=hu
 799=mp
 800=Playoff mód - otthoni játék beállítása
 801=Mod.: 1-1-1-...

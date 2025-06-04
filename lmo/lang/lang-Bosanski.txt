@@ -594,6 +594,7 @@
 603=Poređenje verzija
 604=Nova verzija
 605=Trenutna verzija
+798=bs
 799=sec
 800=Režim doigravanja - postavka za kućnu igru
 801=Mod.: 1-1-1-...

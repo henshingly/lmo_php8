@@ -594,6 +594,7 @@
 603=Porovnání verzí
 604=Nová verze
 605=Aktuální verze
+798=cs
 799=sek
 800=Režim Playoff – nastavení domácí hry
 801=Mod.: 1-1-1-...

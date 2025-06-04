@@ -594,6 +594,7 @@
 603=Confronto versioni
 604=Nuova versione
 605=Versione corrente
+798=it
 799=sec
 800=Modalità playoff: impostazione della partita in casa
 801=Mod.: 1-1-1-...

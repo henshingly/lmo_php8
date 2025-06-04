@@ -594,6 +594,7 @@
 603=Versievergelijking
 604=Nieuwe versie
 605=Huidige versie
+798=nl
 799=sec
 800=Playoff-modus - thuiswedstrijdinstelling
 801=Mod.: 1-1-1-...
