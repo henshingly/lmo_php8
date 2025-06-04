@@ -30,7 +30,7 @@ if (($file!="") && ($_SESSION['lmouserok']==2)){
 <a name="top"></a>
 <table class="lmoSubmenu" width="100%" cellpadding="0" cellspacing="0">
  <tr>
-   <td align="left"><?php  include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?></td>
+   <td align="left"><?php include(PATH_TO_LMO."/lmo-adminsubnavi.php"); ?></td>
   </tr>
 </table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
