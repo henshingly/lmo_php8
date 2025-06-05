@@ -58,7 +58,7 @@ else {
   <style type='text/css'>@import url('<?php echo URL_TO_LMO; ?>/lmo-style.php');</style>
 </head>
 <body>
-  <div align="center">
+<div align="center">
 <?php
     $action = 'admin';
     $array = array();
@@ -71,7 +71,7 @@ else {
             require(PATH_TO_LMO . '/lmo-adminmain.php');
     }
 ?>
-  </div>
+</div>
 </body>
 </html><?php
 }

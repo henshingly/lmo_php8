@@ -15,8 +15,8 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  *
   */
-
 
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 function getmicrotime() {
@@ -33,7 +33,9 @@ if ($action == 'admin') {
     else {
         $sty = $st;
     }
-    if (!isset($newpage)) {$newpage = 0;}
+    if (!isset($newpage)) {
+        $newpage = 0;
+    }
     $file = isset($_REQUEST['file']) ? $_REQUEST['file'] : '';
     $subdir = isset($_REQUEST['subdir']) ? $_REQUEST['subdir'] : dirname($file) . '/';
     if ($subdir == '/') {
@@ -44,7 +46,6 @@ if ($action == 'admin') {
     if (version_compare(PHP_VERSION, $min_php_version, '<')) echo getMessage('This LMO requires a web server with PHP ' . $min_php_version . ' or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>' . PHP_VERSION . '</mark>', $warning = $warning + 1, true);
     if (@file_exists(PATH_TO_LMO . '/install/install.php') && @is_readable(PATH_TO_LMO . '/install/install.php')) echo getMessage('Delete install folder or set its chmod to 000!', $warning = $warning + 1,true);
 ?>
-
 <script type="text/javascript" src="<?php echo URL_TO_LMO;?>/js/admin.js.php"></script>
 <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
   <tr>
@@ -56,121 +57,120 @@ if ($action == 'admin') {
     require_once(PATH_TO_LMO . '/lmo-openfile.php');
     if ($_SESSION['lmouserok'] == 2) {
         if ($todo != 'new') {
-            echo '<a href="' . $adda . 'new&amp;newpage=' . $newpage . '" onclick="return chklmolink();" title="' . $text[79] . '">' . $text[78] . '</a>';
+            echo '      <a href="' . $adda . 'new&amp;newpage=' . $newpage . '" onclick="return chklmolink();" title="' . $text[79] . '">' . $text[78] . '</a>';
         }
         else {
             echo $text[78];
         }
-        echo '&nbsp;';
+        echo '&nbsp;' . "\n";
         if ($todo != 'open') {
-            echo '<a href="' . $adda . 'open&amp;subdir=' . $subdir . '" onclick="return chklmolink();" title="' . $text[81] . '">' . $text[80] . '</a>';
+            echo '      <a href="' . $adda . 'open&amp;subdir=' . $subdir . '" onclick="return chklmolink();" title="' . $text[81] . '">' . $text[80] . '</a>';
         }
         else {
-            echo $text[80];
+            echo '      ' . $text[80];
         }
-        echo '&nbsp;';
+        echo '&nbsp;' . "\n";
         if ($todo != 'delete') {
-            echo '<a href="' . $adda . 'delete" onclick="return chklmolink();" title="' . $text[83] . '">' . $text[82] . '</a>';
+            echo '      <a href="' . $adda . 'delete" onclick="return chklmolink();" title="' . $text[83] . '">' . $text[82] . '</a>';
         }
         else {
-            echo $text[82];
+            echo '      ' . $text[82];
         }
-        echo '&nbsp;';
+        echo '&nbsp;' . "\n";
         if ($file != '') {
             if (($todo != 'edit') && ($todo != 'tabs')) {
-                echo '<a href="' . $adda . 'edit&amp;file=' . $file . '" onclick="return chklmolink();" title="' . $text[91] . '">' . $text[90] . '</a>';
+                echo '      <a href="' . $adda . 'edit&amp;file=' . $file . '" onclick="return chklmolink();" title="' . $text[91] . '">' . $text[90] . '</a>';
             }
             else {
-                echo $text[90];
+                echo '      ' . $text[90];
             }
-            echo '&nbsp;';
+            echo '&nbsp;' . "\n";
         }
         if ($todo != 'upload') {
-            echo '<a href="' . $adda . 'upload" onclick="return chklmolink();" title="' . $text[85] . '">' . $text[84] . '</a>';
+            echo '      <a href="' . $adda . 'upload" onclick="return chklmolink();" title="' . $text[85] . '">' . $text[84] . '</a>';
         }
         else {
-            echo $text[84];
+            echo '      ' . $text[84];
         }
-        echo '&nbsp;';
+        echo '&nbsp;' . "\n";
         if ($todo != 'download') {
-            echo '<a href="' . $adda . 'download" onclick="return chklmolink();" title="' . $text[315] . '">' . $text[314] . '</a>';
+            echo '      <a href="' . $adda . 'download" onclick="return chklmolink();" title="' . $text[315] . '">' . $text[314] . '</a>';
         }
         else {
-            echo $text[314];
+            echo '      ' . $text[314];
         }
-        echo '&nbsp;';
+        echo '&nbsp;' . "\n";
         if (($todo != 'options') && ($todo != 'addons') && ($todo != 'user') && ($todo != 'design')) {
-            echo '<a href="' . $adda . 'options" onclick="return chklmolink();" title="' . $text[87] . '">' . $text[86] . '</a>';
+            echo '      <a href="' . $adda . 'options" onclick="return chklmolink();" title="' . $text[87] . '">' . $text[86] . '</a>';
         }
         else {
-            echo $text[86];
+            echo '      ' . $text[86];
         }
-        echo '&nbsp;';
+        echo '&nbsp;' . "\n";
         /*Tippspiel-Addon*/
         if ($eintippspiel == 1) {
             if (($todo != 'tipp') && ($todo != 'tippemail') && ($todo != 'tippuser') && ($todo != 'tippuseredit') && ($todo != 'tippoptions')) {
-                echo '<a href="' . $adda . 'tipp" onclick="return chklmolink();" title="' . $text['tipp'][57] . '">' . $text['tipp'][0] . '</a>';
+                echo '      <a href="' . $adda . 'tipp" onclick="return chklmolink();" title="' . $text['tipp'][57] . '">' . $text['tipp'][0] . '</a>';
             }
             else {
-                echo $text['tipp'][0];
+                echo '      ' . $text['tipp'][0];
             }
         }
         /*Tippspiel-Addon*/
         /*Viewer-Addon*/
-        echo '&nbsp;';
+        echo '&nbsp;' . "\n";
         if (($todo != 'vieweroptions')) {
-            echo '<a href="' . $adda . 'vieweroptions" onclick="return chklmolink();" title="' . $text['viewer'][21] . '">' . $text['viewer'][20] . '</a>';
+            echo '      <a href="' . $adda . 'vieweroptions" onclick="return chklmolink();" title="' . $text['viewer'][21] . '">' . $text['viewer'][20] . '</a>';
         }
         else {
-            echo $text['viewer'][20];
+            echo '      ' . $text['viewer'][20];
         }
         /*Viewer-Addon*/
         /*PDF-Addon*/
         if (file_exists(PATH_TO_ADDONDIR.'/pdf/lmo-adminpdfoptions.inc.php')) {
-            echo '&nbsp;';
+            echo '&nbsp;' . "\n";
             if (($todo != 'pdfoptions')) {
-                echo '<a href="' . $adda . 'pdfoptions" onclick="return chklmolink();" title="' . $text['pdf'][201] . '">' . $text['pdf'][200] . '</a>';
+                echo '      <a href="' . $adda . 'pdfoptions" onclick="return chklmolink();" title="' . $text['pdf'][201] . '">' . $text['pdf'][200] . '</a>';
             }
             else {
-                echo $text['pdf'][200];
+                echo '      ' . $text['pdf'][200];
             }
         }
         /*PDF-Addon*/
     } elseif ($_SESSION['lmouserok'] == 1) {
         if ($todo != 'open') {
-            echo '<a href="' . $adda . 'open" onclick="return chklmolink();" title="' . $text[81] . '">' . $text[80] . '</a>';
+            echo '      <a href="' . $adda . 'open" onclick="return chklmolink();" title="' . $text[81] . '">' . $text[80] . '</a>';
         }
         else {
-            echo $text[80];
+            echo '      ' . $text[80];
         }
-        echo '&nbsp;';
+        echo '&nbsp;' . "\n";
         if ($file != '') {
             if (($todo != 'edit') && ($todo != 'tabs')) {
-                echo '<a href="' . $adda . 'edit&amp;file=' . $file . '" onclick="return chklmolink();" title="' . $text[91] . '">' . $text[90] . '</a>';
+                echo '      <a href="' . $adda . 'edit&amp;file=' . $file . '" onclick="return chklmolink();" title="' . $text[91] . '">' . $text[90] . '</a>';
             }
             else {
-                echo $text[90];
+                echo '      ' . $text[90];
             }
-            echo '&nbsp;';
+            echo '&nbsp;' . "\n";
         }
         if ($todo != 'download') {
-            echo '<a href="' . $adda . 'download" onclick="return chklmolink();" title="' . $text[315] . '">' . $text[314] . '</a>';
+            echo '      <a href="' . $adda . 'download" onclick="return chklmolink();" title="' . $text[315] . '">' . $text[314] . '</a>';
         }
         else {
-            echo $text[314];
+            echo '      ' . $text[314];
         }
-    }
-?>
+    }?>
+
     </td>
     <td class="lmoMenu" align="right">
 <?php
     if ($_SESSION['lmouserok'] == 2 && $new_lmo_version > $lmo_version) {
-        echo '<a href="' . $adda . 'update" onclick="return chklmolink();" class="lmopUpdate" title="' . $text[590] . '">' . $text[593] . '</a>';
-        echo '&nbsp;';
+        echo '      <a href="' . $adda . 'update" onclick="return chklmolink();" class="lmopUpdate" title="' . $text[590] . '">' . $text[593] . '</a>' . "\n";
+        echo '&nbsp;' . "\n";
     }
-    echo '<a href="' . URL_TO_LMO . '/help/Deutsch/index.html" target="_blank" title="' . $text[313] . '">' . $text[312] . '</a>';
-    echo '<a href="' . $adda . 'logout" onclick="return chklmolink();" title="' . $text[89] . '">' . $text[88] . '</a>';
-    echo '&nbsp;';
+    echo '      <a href="' . URL_TO_LMO . '/help/Deutsch/index.html" target="_blank" title="' . $text[313] . '">' . $text[312] . '</a>' . "\n";
+    echo '      <a href="' . $adda . 'logout" onclick="return chklmolink();" title="' . $text[89] . '">' . $text[88] . '</a>&nbsp;' . "\n";
 ?>
     </td>
   </tr>
