@@ -228,18 +228,18 @@ function getLangSelector() {
             if ($lang[1] != $_SESSION['lmouserlang']) {
                 $border = '1mm';
                 $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . '.svg';
-                $output_sprachauswahl .= "<a href='{$_SERVER['PHP_SELF']}?" . htmlentities(preg_replace("/&?lmouserlang=.+?\b/", "", $_SERVER['QUERY_STRING'])) . "&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' height='16' style='margin-right:$border' title='{$lang[1]}' alt='{$lang[1]}'></a>";
+                $output_sprachauswahl .= "      <a href='{$_SERVER['PHP_SELF']}?" . htmlentities(preg_replace("/&?lmouserlang=.+?\b/", "", $_SERVER['QUERY_STRING'])) . "&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' height='16' style='margin-right:$border' title='{$lang[1]}' alt='{$lang[1]}'></a>\n";
             }
             else {
                 $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . '.selected.svg';
-                $output_sprachauswahl .= "<img src='{$imgfile}' height='16' border='$border' title='{$lang[1]}' alt='{$lang[1]}'>  ";
+                $output_sprachauswahl .= "      <img src='{$imgfile}' height='16' border='$border' title='{$lang[1]}' alt='{$lang[1]}'>\n";
             }
         }
         $border = '0';
     }
     closedir($handle);
-    if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == '2') {
-        $output_sprachauswahl .= '&nbsp<a href="' . URL_TO_LMO . '/lang/translate.php"> » ' . $GLOBALS['text'][573] . '</a>';
+    if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 2) {
+        $output_sprachauswahl .= '      &nbsp<a href="' . URL_TO_LMO . '/lang/translate.php"> » ' . $GLOBALS['text'][573] . '</a>';
     }
     return $output_sprachauswahl;
 }

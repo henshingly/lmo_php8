@@ -15,24 +15,25 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  *
   */
 
-
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
-if (($action == 'admin') && ($todo == 'download')) {?>
-
+if (($action == 'admin') && ($todo == 'download')){?>
       <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <th align="center"><h1><?php echo $text[316];?></h1></th>
-          <th align="center"><h1><?php echo $text[345];?></h1></th>
+          <th align="center"><h1><?php echo $text[316]; ?></h1></th>
+          <th align="center"><h1><?php echo $text[345]; ?></h1></th>
         </tr>
         <tr>
           <td align="center" valign="top">
             <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
               <tr>
-                <td class="nobr" align="left"><?php
-    $ftype = '.l98';
-    require(PATH_TO_LMO . '/lmo-admindowndir.php'); ?>
+                <td class="nobr" align="left">
+<?php 
+    $ftype = '.l98'; 
+    require(PATH_TO_LMO . '/lmo-admindowndir.php');
+?>
                 </td>
               </tr>
             </table>
@@ -40,13 +41,15 @@ if (($action == 'admin') && ($todo == 'download')) {?>
           <td align="center" valign="top">
             <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
               <tr>
-                <td class="nobr" align="left"><?php
-    $ftype = '.l98';
-    require(PATH_TO_LMO . '/lmo-adminmimedir.php'); ?>
+                <td class="nobr" align="left">
+<?php
+    $ftype = '.l98'; 
+    require(PATH_TO_LMO . '/lmo-adminmimedir.php');
+?>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
-      </table><?php
+      </table><?php 
 }?>

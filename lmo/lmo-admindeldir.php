@@ -73,6 +73,6 @@ if ($ftype != "") {
                     <li>[<?php echo $text[223]; ?>]</li>
 <?php
     }?>
-                  <ul>
+                  </ul>
 <?php
 }

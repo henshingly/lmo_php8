@@ -1,5 +1,5 @@
-      <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
-        <tr>
+            <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
+              <tr>
 <?php
 if (isset($anzst)) {
     for ($i = 1; $i <= $anzst; $i++) {
@@ -27,9 +27,8 @@ if (isset($anzst)) {
         }
         else {
             $j = sprintf("%02d", $i);
-            $k = $text[9];
-        }
-        echo "          <td align='center'>";
+            $k = $text[9]; }?>
+                <td align='center'><?php
 
         if ($i != $st || empty($tabdat)) {
             if (isset($todo) && $todo == "tabs") {
@@ -46,24 +45,30 @@ if (isset($anzst)) {
         }
         else {
             echo $j;
-        }
-        echo '&nbsp;</td>' . "\n";
+        }?>&nbsp;</td>
+<?php
         if (($anzst > 47) && (($anzst % 4) == 0)) {
-            if (($i == $anzst / 4) || ($i == $anzst / 2) || ($i == $anzst / 4 * 3)) {
-                echo '        </tr><tr>' . "\n";
+            if (($i == $anzst / 4) || ($i == $anzst / 2) || ($i == $anzst / 4 * 3)) {?>
+              </tr>
+              <tr>
+<?php
             }
         }
         elseif (($anzst > 35)) {
-            if (($i == ceil($anzst / 3)) || ($i == ceil($anzst / 3 * 2))) {
-                echo '        </tr><tr>' . "\n";
+            if (($i == ceil($anzst / 3)) || ($i == ceil($anzst / 3 * 2))) {?>
+              </tr>
+              <tr>
+<?php
             }
         }
         elseif (($anzst > 23)) {
-            if ($i == ceil($anzst / 2)) {
-                echo '        </tr><tr>' . "\n";
+            if ($i == ceil($anzst / 2)) {?>
+              </tr>
+              <tr>
+<?php
             }
         }
     }
 }?>
-        </tr>
-      </table>
+              </tr>
+            </table>

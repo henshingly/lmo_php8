@@ -215,11 +215,11 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
   if ($lmtype==0) {
 /** Titel Notiz */
 ?>
-            <th class="nobr" align="center"><acronym title="<?php echo $text[405] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.gif" width="17" height="17" alt="<?php echo $text[404]; ?>"></acronym></th>
+            <th class="nobr" align="center"><acronym title="<?php echo $text[405] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/notiz.svg" height="20" alt="<?php echo $text[404]; ?>"></acronym></th>
 <?php
   }
 /** Titel Homepage */  ?>
-            <th class="nobr" align="center"><acronym title="<?php echo $text[130] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.gif" width="17" height="17" alt="<?php echo $text[129]; ?>"></acronym></th>
+            <th class="nobr" align="center"><acronym title="<?php echo $text[130] ?>"><img src="<?php echo URL_TO_IMGDIR;?>/spielbericht.svg" height="20" alt="<?php echo $text[129]; ?>"></acronym></th>
             <th class="nobr" colspan="<?php echo $breite; ?>" align="center">&nbsp;</th>
           </tr>
 <?php
