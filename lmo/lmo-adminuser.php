@@ -173,7 +173,7 @@ if ($_SESSION['lmouserok'] == 2) {
                     if (substr($file, -4) == '.l98') {
                         $ligenname = substr($file, 0, -4); ?>
                 <tr>
-                  <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?php echo $show; ?>[]" value="<?php echo $ligenname; ?>"<?php if (in_array($ligenname,$helfer_ligen)) echo ' checked'; ?>><?php echo  $titel; ?></td>
+                  <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?php echo $show; ?>[]" value="<?php echo $ligenname; ?>"<?php if (in_array($ligenname,$helfer_ligen)) echo ' checked'; ?>><?php echo $titel; ?></td>
                 </tr>
 <?php
                     }

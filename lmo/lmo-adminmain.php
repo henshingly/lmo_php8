@@ -60,7 +60,7 @@ if ($action == 'admin') {
             echo '      <a href="' . $adda . 'new&amp;newpage=' . $newpage . '" onclick="return chklmolink();" title="' . $text[79] . '">' . $text[78] . '</a>';
         }
         else {
-            echo $text[78];
+            echo '      ' . $text[78];
         }
         echo '&nbsp;' . "\n";
         if ($todo != 'open') {
@@ -325,6 +325,7 @@ if ($action == 'admin') {
     if ($einsprachwahl == 1) {
         echo getLangSelector();
     }?>
+
     </td>
   </tr>
   <tr>

@@ -2,17 +2,17 @@
 
 name="lmo3";
 img0 = new Image();
-img0.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin0.gif";
+img0.src = "<?php echo URL_TO_IMGDIR;?>/lmo-admin0.gif";
 img1 = new Image();
-img1.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin1.gif";
+img1.src = "<?php echo URL_TO_IMGDIR;?>/lmo-admin1.gif";
 img2 = new Image();
-img2.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin2.gif";
+img2.src = "<?php echo URL_TO_IMGDIR;?>/lmo-admin2.gif";
 img3 = new Image();
-img3.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin3.gif";
+img3.src = "<?php echo URL_TO_IMGDIR;?>/lmo-admin3.gif";
 img4 = new Image();
-img4.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin4.gif";
+img4.src = "<?php echo URL_TO_IMGDIR;?>/lmo-admin4.gif";
 img5 = new Image();
-img5.src = "<?php echo URL_TO_IMGDIR?>/lmo-admin5.gif";
+img5.src = "<?php echo URL_TO_IMGDIR;?>/lmo-admin5.gif";
 var lmotest=true;
 function chklmopass(){
   if (lmotest == true){
@@ -72,7 +72,7 @@ function ateamlmolink(adresse){
   return confirm("<?php echo $text[335] ?>");
 }
 function opencal(feld,startdat){
-  lmocal="<?php echo URL_TO_LMO?>/lmo-admincal.php?abs=lmoedit&feld="+feld;
+  lmocal="<?php echo URL_TO_LMO;?>/lmo-admincal.php?abs=lmoedit&feld="+feld;
   if (startdat!=""){lmocal=lmocal+"&calshow="+startdat;}
   lmowin = window.open(lmocal,"lmocalpop","width=220,height=200,resizable=yes,dependent=yes");
   lmotest=false;

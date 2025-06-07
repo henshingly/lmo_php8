@@ -15,8 +15,8 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  *
   */
-
 
 session_start();
 require(__DIR__ . '/init.php');
@@ -33,7 +33,7 @@ $madr = isset($_GET['madr']) ? $_GET['madr'] : '';
 <head>
 <title>LMO Admin</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-<link rel="stylesheet" type="text/css" href="<?php echo URL_TO_LMO;?>/lmo-style.php">
+<link rel="stylesheet" type="text/css" href="<?php echo URL_TO_LMO; ?>/lmo-style.php">
 </head>
 <body>
 <div class="lmoMain">
@@ -75,7 +75,7 @@ if (($action == 'admin') && ($todo == 'email') && (($_SESSION['lmouserok'] == 1)
                     echo getMessage($text[550] . " Details: {$mail->ErrorInfo}", true);
                 }
 ?>
-  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347];?><\/a>');</script></p>
+  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]; ?><\/a>');</script></p>
 <?php
             }
         }
@@ -105,21 +105,21 @@ if (($action == 'admin') && ($todo == 'email') && (($_SESSION['lmouserok'] == 1)
                     echo getMessage($text[550] . " Details: {$mail->ErrorInfo}", true);
                 }
 ?>
-  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347];?><\/a>');</script></p>
+  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]; ?><\/a>');</script></p>
 <?php
             }
         }
         unlink($temp);
     }
     else {?>
-  <form action="<?php echo $_SERVER['PHP_SELF'];?>">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <label>Mailadresse: <input name="madr" type="text" class="lmo-formular-input" size="25" maxlength="128"></label>
     <input type="hidden" name="action" value="admin">
     <input type="hidden" name="todo" value="email">
-    <input type="hidden" name="down" value="<?php echo $down;?>">
+    <input type="hidden" name="down" value="<?php echo $down; ?>">
     <input type="submit" value="Senden">
   </form>
-  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347];?><\/a>');</script></p>
+  <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]; ?><\/a>');</script></p>
 <?php
     }
 }
