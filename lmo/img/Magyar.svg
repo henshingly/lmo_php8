@@ -2,12 +2,12 @@
 <svg
    version="1.1"
    id="Layer_1"
-   viewBox="0 0 512 335.448"
+   viewBox="0 0 24.421074 16"
    xml:space="preserve"
    sodipodi:docname="Magyar.svg"
-   width="512"
-   height="335.448"
-   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   width="24.421074"
+   height="16"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -27,25 +27,29 @@
    inkscape:deskcolor="#d1d1d1"
    showgrid="false"
    inkscape:zoom="1.1474268"
-   inkscape:cx="183.88972"
-   inkscape:cy="173.43154"
-   inkscape:window-width="2160"
-   inkscape:window-height="1330"
-   inkscape:window-x="-12"
-   inkscape:window-y="-12"
+   inkscape:cx="183.45397"
+   inkscape:cy="172.99579"
+   inkscape:window-width="3840"
+   inkscape:window-height="2054"
+   inkscape:window-x="-11"
+   inkscape:window-y="-11"
    inkscape:window-maximized="1"
-   inkscape:current-layer="Layer_1" />&#10;<path
-   style="fill:#CE2939"
-   d="M 473.655,0 H 38.345 C 17.167,0 0,17.167 0,38.345 v 73.471 H 512 V 38.345 C 512,17.167 494.833,0 473.655,0 Z"
-   id="path1" />&#10;<path
-   style="fill:#477050"
-   d="m 0,297.103 c 0,21.177 17.167,38.345 38.345,38.345 h 435.31 c 21.177,0 38.345,-17.167 38.345,-38.345 V 223.632 H 0 Z"
-   id="path2" />&#10;<rect
-   y="111.814"
-   style="fill:#EEEFFF"
-   width="512"
-   height="111.81"
+   inkscape:current-layer="Layer_1" />
+<path
+   style="fill:#ce2939;stroke-width:0.0476974"
+   d="M 22.592116,0 H 1.8289571 C 0.8188214,0 0,0.8188214 0,1.8289571 V 5.3333333 H 24.421073 V 1.8289571 C 24.421073,0.8188214 23.602251,0 22.592116,0 Z"
+   id="path1" />
+<path
+   style="fill:#477050;stroke-width:0.0476974"
+   d="M 0,14.171043 C 0,15.181131 0.8188214,16 1.8289571,16 H 22.592116 c 1.010088,0 1.828957,-0.818821 1.828957,-1.828957 V 10.666667 H 0 Z"
+   id="path2" />
+<rect
+   y="5.3332381"
+   style="fill:#eeefff;stroke-width:0.0476974"
+   width="24.421072"
+   height="5.3330469"
    id="rect2"
-   x="0" />&#10;<metadata
+   x="0" />
+<metadata
    id="metadata1"><rdf:RDF><cc:Work
        rdf:about=""><dc:title>Flag of Hungary</dc:title><dc:date>04.09.2024</dc:date><dc:contributor><cc:Agent><dc:title>Henshingly</dc:title></cc:Agent></dc:contributor></cc:Work></rdf:RDF></metadata></svg>

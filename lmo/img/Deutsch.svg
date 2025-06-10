@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="800"
-   height="577.77777"
-   viewBox="0 0 36 26"
+   width="22.153847"
+   height="16"
+   viewBox="0 0 0.9969231 0.72000001"
    aria-hidden="true"
    role="img"
    version="1.1"
    id="svg3"
    sodipodi:docname="Deutsch.svg"
-   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -31,25 +31,29 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="0.89375"
      inkscape:cx="400"
-     inkscape:cy="177.9021"
-     inkscape:window-width="2160"
-     inkscape:window-height="1330"
-     inkscape:window-x="-12"
-     inkscape:window-y="-12"
+     inkscape:cy="178.46154"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg3" />
+     inkscape:current-layer="svg3"
+     showgrid="false" />
   <path
-     fill="#FFCE00"
-     d="m 0,22 a 4,4 0 0 0 4,4 h 28 a 4,4 0 0 0 4,-4 V 18 H 0 Z"
-     id="path1" />
+     fill="#ffce00"
+     d="M 0,0.60923077 A 0.11076923,0.11076923 0 0 0 0.11076923,0.72 H 0.88615385 A 0.11076923,0.11076923 0 0 0 0.99692308,0.60923077 V 0.49846154 H 0 Z"
+     id="path1"
+     style="stroke-width:0.0276923" />
   <path
-     fill="#D00000"
-     d="m 0,9 h 36 v 9 H 0 Z"
-     id="path2" />
+     fill="#d00000"
+     d="M 0,0.24923077 H 0.99692308 V 0.49846154 H 0 Z"
+     id="path2"
+     style="stroke-width:0.0276923" />
   <path
      fill="#000000"
-     d="M 32,0 H 4 A 4,4 0 0 0 0,4 V 9 H 36 V 4 A 4,4 0 0 0 32,0 Z"
-     id="path3" />
+     d="M 0.88615385,0 H 0.11076923 A 0.11076923,0.11076923 0 0 0 0,0.11076923 V 0.24923077 H 0.99692308 V 0.11076923 A 0.11076923,0.11076923 0 0 0 0.88615385,0 Z"
+     id="path3"
+     style="stroke-width:0.0276923" />
   <metadata
      id="metadata1">
     <rdf:RDF>

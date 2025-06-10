@@ -2,9 +2,9 @@
 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
 
 <svg
-   width="800"
-   height="577.77777"
-   viewBox="0 0 36 26"
+   width="22.153847"
+   height="16"
+   viewBox="0 0 0.9969231 0.72000001"
    aria-hidden="true"
    role="img"
    class="iconify iconify--twemoji"
@@ -12,7 +12,7 @@
    version="1.1"
    id="svg4"
    sodipodi:docname="Suomalainen.svg"
-   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -32,26 +32,30 @@
      inkscape:zoom="1.12375"
      inkscape:cx="400"
      inkscape:cy="288.76529"
-     inkscape:window-width="2160"
-     inkscape:window-height="1330"
-     inkscape:window-x="-12"
-     inkscape:window-y="-12"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg4" />
   <path
-     fill="#EEFFFF"
-     d="M 32,0 H 18 V 10 H 36 V 4 A 4,4 0 0 0 32,0 Z"
-     id="path1" />
+     fill="#eeffff"
+     d="M 0.88615385,0 H 0.49846154 V 0.27692308 H 0.99692308 V 0.11076923 A 0.11076923,0.11076923 0 0 0 0.88615385,0 Z"
+     id="path1"
+     style="stroke-width:0.0276923" />
   <path
-     fill="#EEFFFF"
-     d="M 11,0 H 4 A 4,4 0 0 0 0,4 v 6 h 11 z"
-     id="path2" />
+     fill="#eeffff"
+     d="M 0.30461539,0 H 0.11076923 A 0.11076923,0.11076923 0 0 0 0,0.11076923 v 0.16615385 h 0.30461539 z"
+     id="path2"
+     style="stroke-width:0.0276923" />
   <path
-     fill="#EEFFFF"
-     d="M 32,26 H 18 V 16 h 18 v 6 a 4,4 0 0 1 -4,4 z M 11,26 H 4 A 4,4 0 0 1 0,22 v -6 h 11 z"
-     id="path3" />
+     fill="#eeffff"
+     d="M 0.88615385,0.72 H 0.49846154 V 0.44307693 H 0.99692308 V 0.60923077 A 0.11076923,0.11076923 0 0 1 0.88615385,0.72 Z m -0.58153846,0 H 0.11076923 A 0.11076923,0.11076923 0 0 1 0,0.60923077 V 0.44307693 h 0.30461539 z"
+     id="path3"
+     style="stroke-width:0.0276923" />
   <path
-     fill="#002F6C"
-     d="M 18,0 H 11 V 10 H 0 v 6 h 11 v 10 h 7 V 16 H 36 V 10 H 18 Z"
-     id="path4" />
+     fill="#002f6c"
+     d="M 0.49846154,0 H 0.30461539 V 0.27692308 H 0 V 0.44307693 H 0.30461539 V 0.72 H 0.49846154 V 0.44307693 H 0.99692308 V 0.27692308 H 0.49846154 Z"
+     id="path4"
+     style="stroke-width:0.0276923" />
 </svg>

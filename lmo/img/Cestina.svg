@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="800"
-   height="577.77905"
-   viewBox="0 0 36 26.000057"
+   width="22.153797"
+   height="15.999999"
+   viewBox="0 0 0.99692087 0.71999995"
    aria-hidden="true"
    role="img"
    version="1.1"
    id="svg3"
    sodipodi:docname="Cestina.svg"
-   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -31,26 +31,29 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="1.2932051"
-     inkscape:cx="400.16853"
-     inkscape:cy="288.43065"
-     inkscape:window-width="2160"
-     inkscape:window-height="1330"
-     inkscape:window-x="-12"
-     inkscape:window-y="-12"
+     inkscape:cx="400.16854"
+     inkscape:cy="288.04402"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg3" />
+     inkscape:current-layer="layer1" />
   <path
-     fill="#D7141A"
-     d="m 1.3830001,24.973 a 3.795,3.795 0 0 0 2.617,1.027 H 32 c 2.209,0 4,-1.791 4,-4.5 V 13 H 17.5 Z"
-     id="path1" />
+     fill="#d7141a"
+     d="m 0.03829838,0.69155849 a 0.10509208,0.10509208 0 0 0 0.07247061,0.0284399 h 0.77538292 c 0.0611722,0 0.11076898,-0.0495968 0.11076898,-0.12461511 V 0.35999921 H 0.48461432 Z"
+     id="path1"
+     style="stroke-width:0.0276922" />
   <path
-     fill="#EEEFFF"
-     d="M 32,1.4028959e-7 H 4.0000001 A 3.98,3.98 0 0 0 1.3540001,1.0060001 L 17.5,13 H 36 V 4.0000001 A 4,4 0 0 0 32,1.4028959e-7 Z"
-     id="path2" />
+     fill="#eeefff"
+     d="M 0.88615191,0 H 0.11076899 A 0.11021514,0.11021514 0 0 0 0.03749531,0.0278584 L 0.48461432,0.35999921 H 0.99692089 V 0.11076899 A 0.11076899,0.11076899 0 0 0 0.88615191,0 Z"
+     id="path2"
+     style="stroke-width:0.0276922" />
   <path
-     fill="#11457E"
-     d="M 1.3830001,24.973 17.5,13 1.3540001,1.0060001 A 3.985,3.985 0 0 0 1.2481502e-7,4.0000001 V 21.5 c 0,1.48 0.53699999518498,2.683 1.38299997518498,3.473 z"
-     id="path3" />
+     fill="#11457e"
+     d="M 0.03829838,0.69155849 0.48461432,0.35999921 0.03749531,0.0278584 A 0.1103536,0.1103536 0 0 0 0,0.11076899 v 0.48461432 c 0,0.0409845 0.01487074,0.0742983 0.03829838,0.0961752 z"
+     id="path3"
+     style="stroke-width:0.0276922" />
   <metadata
      id="metadata1">
     <rdf:RDF>
@@ -66,4 +69,8 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Layer 1" />
 </svg>

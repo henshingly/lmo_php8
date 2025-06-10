@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="800"
-   height="577.77777"
-   viewBox="0 0 36 26"
+   width="22.153847"
+   height="16"
+   viewBox="0 0 0.9969231 0.72000001"
    aria-hidden="true"
    role="img"
    version="1.1"
    id="svg7"
    sodipodi:docname="Türkce.selected.svg"
-   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -30,20 +30,20 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="1.3290731"
-     inkscape:cx="400.27896"
-     inkscape:cy="288.92316"
-     inkscape:window-width="2160"
-     inkscape:window-height="1330"
-     inkscape:window-x="-12"
-     inkscape:window-y="-12"
+     inkscape:cx="399.90276"
+     inkscape:cy="288.54696"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg7"
      showgrid="false" />
   <path
      fill="#e30a17"
-     d="m 36,22 a 4,4 0 0 1 -4,4 H 4 A 4,4 0 0 1 0,22 V 4 A 4,4 0 0 1 4,0 h 28 a 4,4 0 0 1 4,4 z"
+     d="M 0.99692308,0.60923077 A 0.11076923,0.11076923 0 0 1 0.88615385,0.72 H 0.11076923 A 0.11076923,0.11076923 0 0 1 0,0.60923077 V 0.11076923 A 0.11076923,0.11076923 0 0 1 0.11076923,0 h 0.77538462 a 0.11076923,0.11076923 0 0 1 0.11076923,0.11076923 z"
      id="path1"
-     style="opacity:0.4" />
+     style="opacity:0.4;stroke-width:0.0276923" />
   <metadata
      id="metadata1">
     <rdf:RDF>
@@ -61,7 +61,7 @@
   </metadata>
   <path
      fill="#ffffff"
-     d="m 17.103687,13.004998 5.585158,-1.814517 -3.45203,4.750758 v -5.872482 l 3.45203,4.750758 z m 0.380768,3.30178 a 6.1746285,6.1746285 0 1 1 0,-6.6035596 4.9397027,4.9397027 0 1 0 0,6.6035596 z"
+     d="M 0.47364057,0.36013841 0.62830648,0.30989024 0.5327118,0.4414497 V 0.27882712 l 0.0955947,0.13155945 z m 0.0105443,0.0914339 a 0.17098971,0.17098971 0 1 1 0,-0.18286781 0.13679177,0.13679177 0 1 0 0,0.18286781 z"
      id="path2"
-     style="opacity:0.4;stroke-width:0.000411642" />
+     style="opacity:0.4;stroke-width:1.13993e-05" />
 </svg>

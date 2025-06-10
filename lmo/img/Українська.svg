@@ -10,7 +10,7 @@
    version="1.1"
    id="svg2"
    sodipodi:docname="Українська.svg"
-   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -29,18 +29,21 @@
      inkscape:zoom="1.12375"
      inkscape:cx="400"
      inkscape:cy="288.76529"
-     inkscape:window-width="2160"
-     inkscape:window-height="1330"
-     inkscape:window-x="-12"
-     inkscape:window-y="-12"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
+     inkscape:current-layer="svg2"
+     showgrid="false" />
   <path
-     fill="#0057B7"
-     d="M 32,0 H 4 A 4,4 0 0 0 0,4 v 9 H 36 V 4 A 4,4 0 0 0 32,0 Z"
-     id="path1" />
+     fill="#0057b7"
+     d="M 0.88615385,0 H 0.11076923 A 0.11076923,0.11076923 0 0 0 0,0.11076923 V 0.36 H 0.99692308 V 0.11076923 A 0.11076923,0.11076923 0 0 0 0.88615385,0 Z"
+     id="path1"
+     style="stroke-width:0.0276923" />
   <path
-     fill="#FFD700"
-     d="m 36,22 a 4,4 0 0 1 -4,4 H 4 A 4,4 0 0 1 0,22 v -9 h 36 z"
-     id="path2" />
+     fill="#ffd700"
+     d="M 0.99692308,0.60923077 A 0.11076923,0.11076923 0 0 1 0.88615385,0.72 H 0.11076923 A 0.11076923,0.11076923 0 0 1 0,0.60923077 V 0.36 h 0.99692308 z"
+     id="path2"
+     style="stroke-width:0.0276923" />
 </svg>
