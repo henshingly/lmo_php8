@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -53,14 +53,14 @@
 
 
 
-require_once(PATH_TO_LMO."/lmo-admintest.php");
+require_once(PATH_TO_LMO . "/lmo-admintest.php");
 
-/** änderungen:
+/** Änderungen:
  * a) 1. Index verdoppelt, entspricht jetzt den Spieltagen statt Spieler-Nummer.
  * b) Indizes beginnen bei 0 statt 1.
  * c) Kreuztabellen-Initialiserung komplett mit '-1' statt Hauptdiagonale mit '0'
  */
- 
+
 /*
  * dummy wird true, wenn der virtuelle Spieler "Spielfrei"
  * bei einer ungeraden Spielerzahl hinzugefügt wird.
@@ -71,17 +71,17 @@ $dummy = false;
 
 // Anzahl der Spieler
 $anzteams = $xteams;
-if (($xteams%2) == 1) {
-  $anzteams++;
-  $dummy = true; 
+if (($xteams % 2) == 1) {
+    $anzteams++;
+    $dummy = true;
 }
- 
+
 $plan = array_pad($array, 80, "");
 for ($i = 0; $i < 40; $i++) {
-  $plan[$i] = array_pad($array, 40, "");
-  for ($j = 0; $j < 40; $j++) {
-    $plan[$i][$j] = "-1";
-  }
+    $plan[$i] = array_pad($array, 40, "");
+    for ($j = 0; $j < 40; $j++) {
+        $plan[$i][$j] = "-1";
+    }
 }
 
 // Selbsterklärend
@@ -91,7 +91,7 @@ $spieltage = ($anzteams - 1) * 2;
 // Hat der feste Platz zu Beginn Heimrecht? Dieses Recht wechselt an jedem Spieltag, der Tisch wird gedreht.
 $festerPlatzIsHome = true;
 
-// Spieler X, Sitzbelegung durch Spieler aendert sich nicht
+// Spieler X, Sitzbelegung durch Spieler ändert sich nicht
 $spielerNrFesterPlatz = $anzteams - 1;
 
 // Tischpartner von Spieler X
@@ -102,49 +102,49 @@ $spielerNrGegenueberFesterPlatz = 0;
  */
 for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
 
-  /**
-   * 1. Abschnitt: Paarung des Spielers auf dem festen Sitzplatz
-   */
-  $spielerNrGegenueberFesterPlatz = $spieltag;
-  if ($festerPlatzIsHome) {
-    // Hinrunde
-    $plan[$spieltag][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
-    // Rueckrunde
-    $plan[$spieltag+$spieltageHinrunde][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
-  }
-  else {
-    // Hinrunde
-    $plan[$spieltag][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
-    // Rückrunde
-    $plan[$spieltag+$spieltageHinrunde][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
-  }
+    /*
+     * 1. Abschnitt: Paarung des Spielers auf dem festen Sitzplatz
+     */
+    $spielerNrGegenueberFesterPlatz = $spieltag;
+    if ($festerPlatzIsHome) {
+        // Hinrunde
+        $plan[$spieltag][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
+        // Rueckrunde
+        $plan[$spieltag + $spieltageHinrunde][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
+    }
+    else {
+        // Hinrunde
+        $plan[$spieltag][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
+        // Rückrunde
+        $plan[$spieltag + $spieltageHinrunde][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
+    }
 
-  /**
-   * 2. Abschnitt: Alle weiteren Paarungen
-   */
-  $beweglicheSpieler = $anzteams - 1;
-  $zielSitzGerade = 2;
-  $zielSitzUngerade = $beweglicheSpieler - $zielSitzGerade;
-  $zielSitzGeradeVerschoben = ($zielSitzGerade + $spieltag) % $beweglicheSpieler;
-  $zielSitzUngeradeVerschoben = ($zielSitzUngerade + $spieltag) % $beweglicheSpieler;
-
-  /**
-   * Innere Schleife, läuft über alle Paarungen EINES Spieltages.
-   */
-  while ($zielSitzGerade < $beweglicheSpieler) {
-    // Hinrunde
-    $plan[$spieltag][$zielSitzGeradeVerschoben] = $zielSitzUngeradeVerschoben;
-    // Rückrunde
-    $plan[$spieltag+$spieltageHinrunde][$zielSitzUngeradeVerschoben] = $zielSitzGeradeVerschoben;
-
-    // Weiterrutschen der beweglichen Spieler
-    $zielSitzGerade += 2;
-    $zielSitzUngerade -= 2;
+    /*
+     * 2. Abschnitt: Alle weiteren Paarungen
+     */
+    $beweglicheSpieler = $anzteams - 1;
+    $zielSitzGerade = 2;
+    $zielSitzUngerade = $beweglicheSpieler - $zielSitzGerade;
     $zielSitzGeradeVerschoben = ($zielSitzGerade + $spieltag) % $beweglicheSpieler;
     $zielSitzUngeradeVerschoben = ($zielSitzUngerade + $spieltag) % $beweglicheSpieler;
-  }
-  // 1. Tisch (mit festem Spieler) drehen, Heimrecht wechselt
-  $festerPlatzIsHome = !$festerPlatzIsHome;
+
+    /*
+     * Innere Schleife, läuft über alle Paarungen EINES Spieltages.
+     */
+    while ($zielSitzGerade < $beweglicheSpieler) {
+        // Hinrunde
+        $plan[$spieltag][$zielSitzGeradeVerschoben] = $zielSitzUngeradeVerschoben;
+        // Rückrunde
+        $plan[$spieltag + $spieltageHinrunde][$zielSitzUngeradeVerschoben] = $zielSitzGeradeVerschoben;
+
+        // Weiterrutschen der beweglichen Spieler
+        $zielSitzGerade += 2;
+        $zielSitzUngerade -= 2;
+        $zielSitzGeradeVerschoben = ($zielSitzGerade + $spieltag) % $beweglicheSpieler;
+        $zielSitzUngeradeVerschoben = ($zielSitzUngerade + $spieltag) % $beweglicheSpieler;
+    }
+    // 1. Tisch (mit festem Spieler) drehen, Heimrecht wechselt
+    $festerPlatzIsHome = !$festerPlatzIsHome;
 }
 
 /**
@@ -158,31 +158,31 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
 $abbildungsarray = range(1,$anzteams);
 // Fisher-Yates Shuffle
 for ($i = count($abbildungsarray); --$i; $i > 0) {
-  $j = @mt_rand(0, $i+1);
-  $temp = $abbildungsarray[$i];
-  $abbildungsarray[$i] = $abbildungsarray[$j];
-  $abbildungsarray[$j] = $temp;
+    $j = @mt_rand(0, $i+1);
+    $temp = $abbildungsarray[$i];
+    $abbildungsarray[$i] = $abbildungsarray[$j];
+    $abbildungsarray[$j] = $temp;
 }
 
 /**
  * Schleife, die die Textfelder des LMO-Spielplans schreibt.
  */
 for ($spieltag = 0; $spieltag < $spieltage; $spieltag++) {
-  $spielnr = 0;
-  for ($heim = 0; $heim < $anzteams; $heim++) {
-    $ausw = $plan[$spieltag][$heim];
-    if ($ausw > -1) {
-      $heim_abbild = $abbildungsarray[$heim];
-      $ausw_abbild = $abbildungsarray[$ausw];
-      // Dummyspieler "Spielfrei" drinnen ja/nein?
-      // Berücksichtige hier Indexverschiebung +1 zwischen meinen Spielernummern und LMO
-      if (!$dummy || ($heim_abbild!=$spielerNrFesterPlatz+1 && $ausw_abbild!=$spielerNrFesterPlatz+1)) {
-        $yteama[$spieltag][$spielnr] = $heim_abbild;
-        $yteamb[$spieltag][$spielnr] = $ausw_abbild;
-        //echo "Spieltag: $spieltag, Spiel: $spielnr|| Paar: $heim_abbild vs. $ausw_abbild.<br>";
-        $spielnr++;
-      }
+    $spielnr = 0;
+    for ($heim = 0; $heim < $anzteams; $heim++) {
+        $ausw = $plan[$spieltag][$heim];
+        if ($ausw > -1) {
+            $heim_abbild = $abbildungsarray[$heim];
+            $ausw_abbild = $abbildungsarray[$ausw];
+            // Dummyspieler "Spielfrei" drinnen ja/nein?
+            // Berücksichtige hier Indexverschiebung +1 zwischen meinen Spielernummern und LMO
+            if (!$dummy || ($heim_abbild != $spielerNrFesterPlatz + 1 && $ausw_abbild != $spielerNrFesterPlatz + 1)) {
+                $yteama[$spieltag][$spielnr] = $heim_abbild;
+                $yteamb[$spieltag][$spielnr] = $ausw_abbild;
+                //echo "Spieltag: $spieltag, Spiel: $spielnr|| Paar: $heim_abbild vs. $ausw_abbild.<br>";
+                $spielnr++;
+            }
+        }
     }
-  }
 }
 ?>

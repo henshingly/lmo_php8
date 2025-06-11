@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -15,26 +15,27 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  *
   */
 
-
-require_once(PATH_TO_LMO . "/lmo-admintest.php");
-$subdir = isset($_REQUEST["subdir"]) ? $_REQUEST["subdir"] : '';
-if (($action == "admin") && ($todo == "open")){
-    $adda = $_SERVER['PHP_SELF'] . "?action=admin&amp;todo=";
+require_once(PATH_TO_LMO . '/lmo-admintest.php');
+$subdir = isset($_REQUEST['subdir']) ? $_REQUEST['subdir'] : '';
+if (($action == 'admin') && ($todo == 'open')) {
+    $adda = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=';
 ?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><h1><?php echo $text[294];?></h1></td>
   </tr>
   <tr>
-    <td align="center"><?php require(PATH_TO_LMO . "/lmo-dirlist.php");?></td>
+    <td align="center"><?php require(PATH_TO_LMO . '/lmo-dirlist.php');?></td>
   </tr>
    <tr>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td align="left"><?php 
+    <td align="left">
+<?php 
     $subdir = str_replace(array('../','./'), array('',''), $subdir);
     $dirs = get_dir($dirliga . $subdir);
     natcasesort($dirs);
@@ -42,13 +43,13 @@ if (($action == "admin") && ($todo == "open")){
 
     $output = '';
     foreach($dirs as $dir) {
-        $descr = @file_get_contents(PATH_TO_LMO . '/' . $dirliga . $subdir . $dir . "/dir-descr.txt");
-        //$descr=@implode("",file($dirliga.$subdir.$dir."/dir-descr.txt"));
-        $output .= "<tr><td><a href='" . $adda . "open&amp;subdir=" . $subdir . $dir . "/'>" . $dir . "</a></td>";
-        if ($descr != "") {
-            $output .= "<td><small>" . htmlentities($descr) . "</small></td>";
+        $descr = @file_get_contents(PATH_TO_LMO . '/' . $dirliga . $subdir . $dir . '/dir-descr.txt');
+        //$descr = @implode('', file($dirliga . $subdir . $dir . '/dir-descr.txt'));
+        $output .= '<tr><td><a href="' . $adda . 'open&amp;subdir=' . $subdir . $dir . '">' . $dir . '</a></td>';
+        if ($descr != '') {
+            $output .= '<td><small>' . htmlentities($descr) . '</small></td>';
         }
-        $output .= "</tr>";
+        $output .= '</tr>';
     }
 
     if ($output != '') {?>

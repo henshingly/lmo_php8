@@ -22,7 +22,7 @@
       <table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
 <?php
-if ($st < 0 || $todo != "edit") {?>
+if ($st < 0 || $todo != 'edit') {?>
           <td align="center"><a href='<?php echo $addr; ?>1' onClick="return chklmolink();" title="<?php echo $text[411]; ?>"><?php echo $text[10]; ?></a></td>
 <?php
 }
@@ -51,7 +51,7 @@ else {?>
 }
 
 if ($hands == 1) {
-    if ($todo != "tabs") {?>
+    if ($todo != 'tabs') {?>
           <td align="center"><a href='<?php echo $addb . $stx; ?>' onClick="return chklmolink();" title="<?php echo $text[409]; ?>"><?php echo $text[16]; ?></a></td>
 <?php
     }
