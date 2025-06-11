@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="499.50836"
-   height="624.38544"
-   viewBox="-0.85 -0.85 6.35 7.9374999"
+   width="11.999999"
+   height="14.999998"
+   viewBox="-0.85 -0.85 0.15254999 0.19068748"
    id="svg8"
    version="1.1"
    fill="3b87d5"
    stroke="3b87d5"
    sodipodi:docname="lmo-st2.svg"
-   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,26 +25,27 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="2.26875"
-     inkscape:cx="249.69697"
+     inkscape:cx="249.47658"
      inkscape:cy="312.2865"
      inkscape:window-width="3840"
      inkscape:window-height="2054"
      inkscape:window-x="-11"
      inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg8">
+     inkscape:current-layer="svg8"
+     showgrid="false">
     <inkscape:page
        x="0"
        y="0"
-       width="6.3499999"
-       height="7.9375"
+       width="0.15255"
+       height="0.19068748"
        id="page2"
        margin="0"
        bleed="0" />
   </sodipodi:namedview>
   <g
      id="SVG-LMO_note"
-     transform="translate(-1.9083333,-1.1145833)">
+     transform="matrix(0.02402362,0,0,0.02402362,-0.875425,-0.85635625)">
     <defs
        id="defs2" />
     <g

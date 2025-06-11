@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="100"
-   height="100"
-   viewBox="0 0 100 100"
+   width="21.591837"
+   height="21.591837"
+   viewBox="0 0 21.591837 21.591837"
    fill="none"
    version="1.1"
    id="svg2"
@@ -24,27 +24,28 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="12.833988"
-     inkscape:cx="48.426101"
-     inkscape:cy="66.425182"
+     inkscape:cx="48.153388"
+     inkscape:cy="66.191429"
      inkscape:window-width="3840"
      inkscape:window-height="2054"
      inkscape:window-x="-11"
      inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
+     inkscape:current-layer="svg2"
+     showgrid="false" />
   <!-- Weißer Kreis-Hintergrund -->
   <circle
-     cx="50"
-     cy="50"
-     r="48"
-     fill="white"
-     stroke="#000"
+     cx="10.795918"
+     cy="10.795918"
+     r="9.7959185"
+     fill="#ffffff"
+     stroke="#000000"
      stroke-width="2"
      id="circle1" />
   <!-- Kurzer Stift (Outline-Stil) -->
   <g
      id="g3"
-     transform="matrix(2.2983289,0,0,2.2983289,-61.897943,-74.773486)">
+     transform="matrix(0.46904671,0,0,0.46904671,-12.040397,-14.668059)">
     <g
        id="g2">
       <path
@@ -65,10 +66,10 @@
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
   </g>
   <rect
-     style="fill:#030303;fill-rule:evenodd;stroke-width:1.70758"
+     style="fill:#030303;fill-rule:evenodd;stroke-width:0.348486"
      id="rect3"
-     width="42.777039"
-     height="4.7530041"
-     x="37.23452"
-     y="79.190666" />
+     width="8.7300081"
+     height="0.9700008"
+     x="8.1907187"
+     y="16.753197" />
 </svg>
