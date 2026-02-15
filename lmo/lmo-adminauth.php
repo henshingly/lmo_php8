@@ -44,7 +44,7 @@ if ($action == 'admin') {
                   </tr>
                   <tr>
                     <td align="right"><acronym title="<?php echo $text[309]; ?>"><?php echo ' ' . $text[308]; ?></acronym></td>
-                    <td align="left"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value="<?php echo $_SESSION['lmouserpass']; ?>"></td>
+                    <td align="left"><input class="lmo-formular-input" type="password" name="xuserpass" size="16" maxlength="32" value=""></td>
                   </tr>
                   <tr>
                     <td align="left">&nbsp;</td>
@@ -68,7 +68,6 @@ if ($action == 'admin') {
         <p>Read <a href="<?php echo URL_TO_LMO; ?>/license.txt" target="_blank" title="GPL - GNU General Public License">this</a> for details.</p>
       </td>
     </tr>
-  </table>
-<?php
+  </table><?php
     }
 }?>
