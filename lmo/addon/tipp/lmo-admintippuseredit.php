@@ -324,7 +324,7 @@ if ($action=="admin" && $todo=="tippuseredit" && ($nick!="" || $save==-1)){
             </tr>
             <tr>
               <td align="left">
-                <a href='<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;del=".$tipp_tipperdaten[0];?>' onClick="return confirm('<?php echo $text[499]?>');"><img src="<?php echo URL_TO_IMGDIR?>/delete.gif" border="0" width="11" height="13" alt="<?php echo $text[82]?>"></a>
+                <a href='<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser&amp;del=".$tipp_tipperdaten[0];?>' onClick="return confirm('<?php echo $text[499]?>');"><img src="<?php echo URL_TO_IMGDIR?>/delete.svg" border="0" height="18" alt="<?php echo $text[82]?>"></a>
                 &nbsp;&nbsp;<a href='<?php echo $_SERVER['PHP_SELF']."?action=admin&amp;todo=tippuser"?>'><?php echo $text[544]?></a>
               </td>
               <td align="right">
