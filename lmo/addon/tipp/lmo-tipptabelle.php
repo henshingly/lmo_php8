@@ -54,7 +54,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
         }
       }
       require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalctable.php");
-    } else if ($tipp_tipptabelle==1) {
+    } elseif ($tipp_tipptabelle==1) {
       // alle Tipper
       $tabdat="";
       $verz=opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
@@ -191,7 +191,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
     if (($endtab>1) && ($tabtype==0) && ($tabdat!="")) {
       if ($platz0[$i]<$platz1[$i]) {
         $y=1;
-      } else if ($platz0[$i]>$platz1[$i]) {
+      } elseif ($platz0[$i]>$platz1[$i]) {
         $y=2;
       }
     }
@@ -397,7 +397,7 @@ if ($file!="" && $tipp_tipptabelle1==1) {
       if (($endtab>1) && ($tabdat!="") && $tipppunktegesamt[intval(substr($tab0[0],25))]>0) {
         if ($platz0[$i]<$platz1[$i]) {
           $y=1;
-        } else if ($platz0[$i]>$platz1[$i]) {
+        } elseif ($platz0[$i]>$platz1[$i]) {
           $y=2;
         }
       }

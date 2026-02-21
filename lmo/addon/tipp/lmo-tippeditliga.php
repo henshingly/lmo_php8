@@ -187,11 +187,11 @@ if ($tipp_tippmodus==0){
   $tipp=-1;
   if ($goaltippa[$i]=="" || $goaltippb[$i]=="") {
     $tipp=-1;
-  } else if ($goaltippa[$i]>$goaltippb[$i]) {
+  } elseif ($goaltippa[$i]>$goaltippb[$i]) {
     $tipp=1;
-  } else if ($goaltippa[$i]==$goaltippb[$i]) {
+  } elseif ($goaltippa[$i]==$goaltippb[$i]) {
     $tipp=0;
-  } else if ($goaltippa[$i]<$goaltippb[$i]) {
+  } elseif ($goaltippa[$i]<$goaltippb[$i]) {
     $tipp=2;
   }?>
   <td align="center">
@@ -225,7 +225,7 @@ if ($tipp_jokertipp==1){ ?>
     }
     if ($punktespiel==-1) {
       echo "-";
-    } else if ($punktespiel==-2) {
+    } elseif ($punktespiel==-2) {
       echo $text['tipp'][230];
       $nw=1;
     } else {

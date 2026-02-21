@@ -87,13 +87,13 @@ if ($ftype!="") {
           $t5=strlen(decbin($t4-1));
           if ($t1==$t5) {
             $t3=" / ".$text[374];
-          } else if ($t1==$t5-1) {
+          } elseif ($t1==$t5-1) {
             $t3=" / ".$text[373];
-          } else if ($t1==$t5-2) {
+          } elseif ($t1==$t5-2) {
             $t3=" / ".$text[372];
-          } else if ($t1==$t5-3) {
+          } elseif ($t1==$t5-3) {
             $t3=" / ".$text[371];
-          } else if ($t1==$t5-4) {
+          } elseif ($t1==$t5-4) {
             $t3=" / ".$text[370];
           } else {
             $t3=" / ".$t1.". ".$t2;

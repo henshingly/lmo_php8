@@ -69,7 +69,7 @@ if (($file != "") && ($kurve == 1)){
     if ($show_stat1 == 0 && $show_stat2 == 0) {
       $flag = 'true';
       if ($j < 3) $flag = 'false';
-    } else if ($j == $show_stat1 || $j == $show_stat2) {
+    } elseif ($j == $show_stat1 || $j == $show_stat2) {
       $flag = 'false';
     } else {
       $flag = 'true';

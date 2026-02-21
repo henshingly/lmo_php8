@@ -232,9 +232,9 @@ foreach ($data as $line) {
         $collecting = 0;
       break;
     }
-  } else if ($collecting) {
+  } elseif ($collecting) {
     $code .= $line;
-  } else if (((strlen($line) > 1 && $line[1] == '<'))) {
+  } elseif (((strlen($line) > 1 && $line[1] == '<'))) {
     // then this is a title
     $tmp = substr($line, 2, strpos($line, '>') - 2);
     $tmp2 = $tmp . '<C:rf:' . $line[0] . '' . rawurlencode($tmp) . '>';

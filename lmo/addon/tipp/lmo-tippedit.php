@@ -66,17 +66,17 @@ if ($file!="") {
                 $goaltippb[$i]="0";
               }
             }
-          } else if ($tipp_tippmodus==0) {
+          } elseif ($tipp_tippmodus==0) {
             if (!isset($_POST["xtipp".$i])) {
               $_POST["xtipp".$i]=0;
             }
             if ($_POST["xtipp".$i]==1) {
               $goaltippa[$i]="1";
               $goaltippb[$i]="0";
-            } else if ($_POST["xtipp".$i]==2) {
+            } elseif ($_POST["xtipp".$i]==2) {
               $goaltippa[$i]="0";
               $goaltippb[$i]="1";
-            } else if ($_POST["xtipp".$i]==3) {
+            } elseif ($_POST["xtipp".$i]==3) {
               $goaltippa[$i]="0";
               $goaltippb[$i]="0";
             } else {
@@ -112,17 +112,17 @@ if ($file!="") {
                   $goaltippb[$i][$n]="0";
                 }
               }
-            } else if ($tipp_tippmodus==0) {
+            } elseif ($tipp_tippmodus==0) {
               if (!isset($_POST["xtipp".$i.$n])) {
                 $_POST["xtipp".$i.$n]=0;
               }
               if ($_POST["xtipp".$i.$n]==1) {
                 $goaltippa[$i][$n]="1";
                 $goaltippb[$i][$n]="0";
-              } else if ($_POST["xtipp".$i.$n]==2) {
+              } elseif ($_POST["xtipp".$i.$n]==2) {
                 $goaltippa[$i][$n]="0";
                 $goaltippb[$i][$n]="1";
-              } else if ($_POST["xtipp".$i.$n]==3) {
+              } elseif ($_POST["xtipp".$i.$n]==3) {
                 $goaltippa[$i][$n]="0";
                 $goaltippb[$i][$n]="0";
               } else {
@@ -205,11 +205,11 @@ if ($file!="") {
   if ($lmtype==1) {
     if ($st==$anzst) {
       $j=$text[374];
-    } else if ($st==$anzst-1) {
+    } elseif ($st==$anzst-1) {
       $j=$text[373];
-    } else if ($st==$anzst-2) {
+    } elseif ($st==$anzst-2) {
       $j=$text[372];
-    } else if ($st==$anzst-3) {
+    } elseif ($st==$anzst-3) {
       $j=$text[371];
     } else {
       $j=$st.". ".$text[370];

@@ -56,7 +56,7 @@ if ($file != "") {
             $plus = 0;
             $btip[$j][$i] = tippaenderbar($mterm[$j][$i], $datum1[$j], $datum2[$j]);
           }
-          else if ($tipp_einsichterst == 2) {
+          elseif ($tipp_einsichterst == 2) {
             if ($goala[$j][$i] != "_" && $goalb[$j][$i] != "_") {
               $btip[$j][$i] = false;
             } else {
@@ -119,14 +119,14 @@ if ($file != "") {
                   $negativ[$a] = $negativ[$a]+$p0n;
                 }
               }
-              else if ($goaltippa[$j][$i] > $goaltippb[$j][$i]) {
+              elseif ($goaltippa[$j][$i] > $goaltippb[$j][$i]) {
                 $nieder[$a] = $nieder[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0n;
                 if ($minus == 2) {
                   $negativ[$a] = $negativ[$a]+$p0s;
                 }
               }
-              else if ($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
+              elseif ($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
                 $unent[$a] = $unent[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0u;
                 if ($minus == 2) {

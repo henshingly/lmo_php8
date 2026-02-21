@@ -117,7 +117,7 @@ if ($newpage==1) {
     if ($xtipperpass=="") {
       $newpage=0;
       echo getMessage($text['tipp'][69],true);
-    } else if (strlen($xtipperpass)<3) {
+    } elseif (strlen($xtipperpass)<3) {
       $newpage=0;
       echo getMessage($text['tipp'][73],true);
     }
@@ -152,7 +152,7 @@ if ($newpage==1) {
   
   if ($xtippervereinradio==1) {
     $_SESSION['lmotipperverein']=$xtippervereinalt;
-  } else if ($xtippervereinradio==2) {
+  } elseif ($xtippervereinradio==2) {
     $_SESSION['lmotipperverein']=$xtippervereinneu;
   } else {
     $_SESSION['lmotipperverein']="";

@@ -107,19 +107,19 @@ if ($file!="" && $tipp_tippfieber==1){
         } else {
           $max=max($tipppunkte[$fieber_stat1]);
         }
-      } else if ($kurvenmodus==2) {
+      } elseif ($kurvenmodus==2) {
         if ($fieber_stat2>=0) {
           $max=max(max($platz[$fieber_stat1]),max($platz[$fieber_stat2]));
         } else {
           $max=max($platz[$fieber_stat1]);
         }
-      } else if ($kurvenmodus==3) {
+      } elseif ($kurvenmodus==3) {
         if ($fieber_stat2>=0) {
           $max=max(max($platz[$fieber_stat1]),max($platz[$fieber_stat2]),max($platz1[$fieber_stat1]),max($platz1[$fieber_stat2]));
         } else {
           $max=max(max($platz[$fieber_stat1]),max($platz1[$fieber_stat1]));
         }
-      } else if ($kurvenmodus==4) {
+      } elseif ($kurvenmodus==4) {
         if ($fieber_stat2>=0) {
           $max=max(max($platz1[$fieber_stat1]),max($platz1[$fieber_stat2]));
         } else {

@@ -254,7 +254,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
                                 __FILE__, __LINE__
                                 );
 
-        } else if ( '' == $blockname ||
+        } elseif ( '' == $blockname ||
                     !preg_match($this->checkblocknameRegExp, $blockname)
         ) {
 
@@ -262,11 +262,11 @@ class HTML_Template_ITX extends HTML_Template_IT {
                     __FILE__, __LINE__
                     );
 
-        } else if ('' == $template) {
+        } elseif ('' == $template) {
 
             return new IT_Error('No block content given.', __FILE__, __LINE__);
 
-        } else if (isset($this->blocklist[$blockname])) {
+        } elseif (isset($this->blocklist[$blockname])) {
 
             return new IT_Error('The block already exists.',
                                 __FILE__, __LINE__
@@ -284,7 +284,7 @@ class HTML_Template_ITX extends HTML_Template_IT {
                 __FILE__, __LINE__
             );
 
-        } else if ( count($parents) > 1 ) {
+        } elseif ( count($parents) > 1 ) {
 
             reset($parents);
             while (list($k, $parent) = each($parents)) {
