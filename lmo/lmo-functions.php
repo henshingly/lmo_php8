@@ -358,9 +358,9 @@ function lmo_sanitize_and_log($data, $source = 'unknown')
 }
 
 // Apply to global variables
-$_GET     = lmo_sanitize_and_log($_GET, '$_GET');
-$_POST    = lmo_sanitize_and_log($_POST, '$_POST');
-$_COOKIE  = lmo_sanitize_and_log($_COOKIE, '$_COOKIE');
+$_GET = lmo_sanitize_and_log($_GET, '$_GET');
+$_POST = lmo_sanitize_and_log($_POST, '$_POST');
+$_COOKIE = lmo_sanitize_and_log($_COOKIE, '$_COOKIE');
 $_REQUEST = lmo_sanitize_and_log($_REQUEST, '$_REQUEST');
 
 ?>
