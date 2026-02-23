@@ -331,7 +331,7 @@ if (url_check($json_a['extra']['check'])) {
 function lmo_sanitize_and_log($data, $source = 'unknown')
 {
     // Define the path to your custom log file
-    $logFile = __DIR__ . '/error_log.txt';
+    $logFile = __DIR__ . '/xss_log.txt';
 
     if (is_array($data)) {
         foreach ($data as $key => $value) {
