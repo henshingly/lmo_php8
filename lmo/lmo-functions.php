@@ -18,47 +18,29 @@
   */
 
 $trans_lang = array(
-                    'Monday' => $text['date'][0],
-                    'Tuesday' => $text['date'][1],
-                    'Wednesday' => $text['date'][2],
-                    'Thursday' => $text['date'][3],
-                    'Friday' => $text['date'][4],
-                    'Saturday' => $text['date'][5],
-                    'Sunday' => $text['date'][6],
-                    'Mon' => $text['date'][7],
-                    'Tue' => $text['date'][8],
-                    'Wed' => $text['date'][9],
-                    'Thu' => $text['date'][10],
-                    'Fri' => $text['date'][11],
-                    'Sat' => $text['date'][12],
-                    'Sun' => $text['date'][13],
-                    'January' => $text['date'][14],
-                    'February' => $text['date'][15],
-                    'March' => $text['date'][16],
-                    'April' => $text['date'][17],
-                    'May' => $text['date'][18],
-                    'June' => $text['date'][19],
-                    'July' => $text['date'][20],
-                    'August' => $text['date'][21],
-                    'September' => $text['date'][22],
-                    'October' => $text['date'][23],
-                    'November' => $text['date'][24],
-                    'December' => $text['date'][25],
-                    'Jan' => $text['date'][26],
-                    'Feb' => $text['date'][27],
-                    'Mar' => $text['date'][28],
-                    'Apr' => $text['date'][29],
-                    'May' => $text['date'][30],
-                    'Jun' => $text['date'][31],
-                    'Jul' => $text['date'][32],
-                    'Aug' => $text['date'][33],
-                    'Sep' => $text['date'][34],
-                    'Oct' => $text['date'][35],
-                    'Nov' => $text['date'][36],
-                    'Dec' => $text['date'][37]
-                );
+    'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1],
+    'Wednesday' => $text['date'][2], 'Thursday' => $text['date'][3],
+    'Friday' => $text['date'][4], 'Saturday' => $text['date'][5],
+    'Sunday' => $text['date'][6], 'Mon' => $text['date'][7],
+    'Tue' => $text['date'][8], 'Wed' => $text['date'][9],
+    'Thu' => $text['date'][10], 'Fri' => $text['date'][11],
+    'Sat' => $text['date'][12], 'Sun' => $text['date'][13],
+    'January' => $text['date'][14], 'February' => $text['date'][15],
+    'March' => $text['date'][16], 'April' => $text['date'][17],
+    'May' => $text['date'][18], 'June' => $text['date'][19],
+    'July' => $text['date'][20], 'August' => $text['date'][21],
+    'September' => $text['date'][22], 'October' => $text['date'][23],
+    'November' => $text['date'][24], 'December' => $text['date'][25],
+    'Jan' => $text['date'][26], 'Feb' => $text['date'][27],
+    'Mar' => $text['date'][28], 'Apr' => $text['date'][29],
+    'May' => $text['date'][30], 'Jun' => $text['date'][31],
+    'Jul' => $text['date'][32], 'Aug' => $text['date'][33],
+    'Sep' => $text['date'][34], 'Oct' => $text['date'][35],
+    'Nov' => $text['date'][36], 'Dec' => $text['date'][37]
+);
 
-function check_hilfsadmin($datei) {
+function check_hilfsadmin($datei)
+{
     $hilfsadmin_berechtigung = false;
     if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 1) {
         $hilfsadmin_ligen = explode(',', $_SESSION['lmouserfile']);
@@ -69,22 +51,23 @@ function check_hilfsadmin($datei) {
                 }
             }
         }
-    }
-    else {
+    } else {
         $hilfsadmin_berechtigung = true;
     }
     return $hilfsadmin_berechtigung;
 }
 
 
-function applyFactor ($value, $factor) {
+function applyFactor ($value, $factor)
+{
     if (is_numeric($value) && $value != 0) {
         return ($value / $factor);
     }
     return $value;
 }
 
-function magicQuotesRemove(&$array) {
+function magicQuotesRemove(&$array)
+{
     //if (!get_magic_quotes_gpc())
     //return;
     foreach($array as $key => $elem) {
@@ -95,7 +78,8 @@ function magicQuotesRemove(&$array) {
     }
 }
 
-function get_dir($verz) {
+function get_dir($verz)
+{
     $ret = array();
     if (substr($verz, -1) != '/') $verz .= '/';
 
@@ -113,7 +97,8 @@ function get_dir($verz) {
     return $ret;
 }
 
-function filterZero($a) {
+function filterZero($a)
+{
     return (!empty($a));
 }
 
@@ -121,20 +106,20 @@ function filterZero($a) {
 /**
  * Returns HTML imgage code for a small team icon
  *
- * @param        string     $team       Long name of the team
- * @param        string     $alternative_text      If image not found return this instead
- * @return       string     HTML image-Code for the small team icon
+ * @param   string  $team               Long name of the team
+ * @param   string  $alternative_text   If image not found return this instead
+ * @return  string  HTML image-Code for the small team icon
  */
-//Umstellung Classlib kann später mal weg
-function getSmallImage($team, $alternative_text = '') {
+// Umstellung Classlib kann später mal weg
+function getSmallImage($team, $alternative_text = '')
+{
     $team = str_replace('/', '', $team);
     if (!file_exists(PATH_TO_IMGDIR . '/teams/small/' . $team . '.gif')) {
         $team = preg_replace('/[^a-zA-Z0-9]/', '', $team);
     }
     if (!file_exists(PATH_TO_IMGDIR . '/teams/small/' . $team . '.gif')) {
         return $alternative_text;
-    }
-    else {
+    } else {
         $imgdata = getimagesize(PATH_TO_IMGDIR . '/teams/small/' . $team . '.gif');
         return ('<img border="0" src="' . URL_TO_IMGDIR . '/teams/small/' . rawurlencode($team) . '.gif" {$imgdata[3]} alt=""> ');
     }
@@ -143,15 +128,15 @@ function getSmallImage($team, $alternative_text = '') {
 /**
  * Returns a formatted (error) Message
  *
- * @param        string     $message       Message to return
- * @param        bool       $error         Default false, Is this an error message?
- * @return       string     Formatted (error) message
+ * @param   string  $message    Message to return
+ * @param   bool    $error      Default false, Is this an error message?
+ * @return  string  Formatted (error) message
  */
-function getMessage($message, $error = false) {
+function getMessage($message, $error = false)
+{
     if ($error) {
         return '<p class="error"><img src="' . URL_TO_IMGDIR . '/wrong.svg" border="0" width="20" alt=""> ' . $message . '</p>';
-    }
-    else {
+    } else {
         return '<p class="message"><img src="' . URL_TO_IMGDIR . '/right.svg" border="0" width="20" alt=""> ' . $message . '</p>';
     }
 }
@@ -159,65 +144,59 @@ function getMessage($message, $error = false) {
 /**
  * Returns which team is the winner on a
  *
- * @param        string     $gst
- * @param        string     $gsp
- * @param        string     $gmod   modus (0->regular / 1-> KO / 2->KO with 2 games / 3->best of 3 / 5->best of 5 / 7->best of 7)
- * @param        array      $m1     results of home team
- * @param        array      $m2     results of away team
- * @return       int        $erg    winner(home / away)
+ * @param   string  $gst
+ * @param   string  $gsp
+ * @param   string  $gmod   modus (0->regular / 1-> KO / 2->KO with 2 games / 3->best of 3 / 5->best of 5 / 7->best of 7)
+ * @param   array   $m1     results of home team
+ * @param   array   $m2     results of away team
+ * @return  int     $erg    winner(home / away)
  */
-function gewinn ($gst, $gsp, $gmod, $m1, $m2) {
+function gewinn ($gst, $gsp, $gmod, $m1, $m2)
+{
     $erg = 0;
     if ($gmod == 1) {
         if ($m1[0] > $m2[0]) {
             $erg = 1;
-        }
-        elseif ($m1[0] < $m2[0]) {
+        } elseif ($m1[0] < $m2[0]) {
             $erg = 2;
         }
-    }
-    elseif ($gmod == 2) {
+    } elseif ($gmod == 2) {
         if ($m1[1] != '_') {
             if (($m1[0] + $m1[1]) > ($m2[0] + $m2[1])) {
                 $erg = 1;
-            }
-            elseif (($m1[0] + $m1[1]) < ($m2[0] + $m2[1])) {
+            } elseif (($m1[0] + $m1[1]) < ($m2[0] + $m2[1])) {
                 $erg = 2;
-            }
-            else {
+            } else {
                 if ($m2[1] > $m1[1]) {
                     $erg = 2;
-                }
-                elseif ($m2[1] < $m1[1]) {
+                } elseif ($m2[1] < $m1[1]) {
                     $erg = 1;
                 }
             }
         }
-    }
-    else {
+    } else {
         $erg1 = 0;
         $erg2 = 0;
         for ($k = 0; $k < $gmod; $k++) {
             if (($m1[$k] != '_') && ($m2[$k] != '_')) {
                 if ($m1[$k] > $m2[$k]) {
                     $erg1++;
-                }
-                elseif ($m1[$k] < $m2[$k]) {
+                } elseif ($m1[$k] < $m2[$k]) {
                     $erg2++;
                 }
             }
         }
         if ($erg1 > ($gmod / 2)) {
             $erg = 1;
-        }
-        elseif ($erg2 > ($gmod / 2)) {
+        } elseif ($erg2 > ($gmod / 2)) {
             $erg = 2;
         }
     }
     return $erg;
 }
 
-function getLangSelector() {
+function getLangSelector()
+{
     $output_sprachauswahl = '';
     $border = '0';
 
@@ -229,8 +208,7 @@ function getLangSelector() {
                 $border = '1mm';
                 $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . '.svg';
                 $output_sprachauswahl .= "      <a href='{$_SERVER['PHP_SELF']}?" . htmlentities(preg_replace("/&?lmouserlang=.+?\b/", "", $_SERVER['QUERY_STRING'])) . "&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' height='16' style='margin-right:$border' title='{$lang[1]}' alt='{$lang[1]}'></a>\n";
-            }
-            else {
+            } else {
                 $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . '.selected.svg';
                 $output_sprachauswahl .= "      <img src='{$imgfile}' height='16' border='$border' title='{$lang[1]}' alt='{$lang[1]}'>\n";
             }
@@ -244,7 +222,8 @@ function getLangSelector() {
     return $output_sprachauswahl;
 }
 
-function get_timezones() {
+function get_timezones()
+{
     //load avail timezones
     if (function_exists('timezone_identifiers_list')) {
         $zones = array_reverse(timezone_identifiers_list());
@@ -269,8 +248,7 @@ function get_timezones() {
                 }
             }
         }
-    }
-    else {
+    } else {
         return array();
     }
     return array_reverse($locations);
@@ -289,14 +267,14 @@ function get_timezones() {
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error) (is_subclass_of)
  */
-function php_compat_is_a($object, $class) {
+function php_compat_is_a($object, $class)
+{
     if (!is_object($object)) {
         return false;
     }
     if (strtolower(get_class($object)) == strtolower($class)) {
         return true;
-    }
-    else {
+    } else {
         return is_subclass_of($object, $class);
     }
 }
@@ -309,14 +287,16 @@ if (!function_exists('is_a')) {
 }
 
 // Redirect browser using the header function
-function redirect($location) {
+function redirect($location)
+{
     header('Location: ' . $location);
 }
 
 
 // URL mit PHP auf Existenz überprüfen
 // Funktion deklarieren
-function url_check($url) { 
+function url_check($url)
+{ 
     $url_objects = @get_headers($url); 
     return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : false; 
 };
@@ -330,7 +310,7 @@ $min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php'
 $updatefilecheck_URL = $json_a['extra']['check'];
 
 // UpdateURL prüfen
-if (url_check($json_a['extra']['check'])){
+if (url_check($json_a['extra']['check'])) {
     $LMO_UPDATE = file_get_contents($json_a['extra']['check'], false);
     $json_update = json_decode($LMO_UPDATE, true, 4);
     $new_lmo_version = $json_update['stable']['current'];
@@ -339,10 +319,48 @@ if (url_check($json_a['extra']['check'])){
     $new_lmo_version_announcement = $json_update['stable']['announcement'];
     $new_lmo_version_time = $json_update['stable']['time'];
     $new_lmo_version_require_php = $json_update['stable']['require']['php'];
-}
-else {
+} else {
     // UpdateURL ist nicht erreichbar
     $new_lmo_version = $json_a['version'];
     $new_lmo_version_link = '';
 };
+
+/**
+ * Sanitizes input values and logs potential XSS attempts to a custom file.
+ */
+function lmo_sanitize_and_log($data, $source = 'unknown')
+{
+    // Define the path to your custom log file
+    $logFile = __DIR__ . '/error_log.txt';
+
+    if (is_array($data)) {
+        foreach ($data as $key => $value) {
+            $data[$key] = lmo_sanitize_and_log($value, $source . '[' . $key . ']');
+        }
+        return $data;
+    }
+
+    $trimmed = trim($data);
+    $stripped = strip_tags($trimmed);
+    $sanitized = htmlspecialchars($stripped, ENT_QUOTES, 'UTF-8');
+
+    // Logging: If the input was modified, write to the custom log file
+    if ($trimmed !== $sanitized) {
+        $timestamp = date("Y-m-d H:i:s");
+        $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown IP';
+        $logMessage = "[$timestamp] [IP: $ip] Security: Potential XSS/Tags removed from $source\n";
+        
+        // Append the message to the custom log file
+        file_put_contents($logFile, $logMessage, FILE_APPEND);
+    }
+
+    return $sanitized;
+}
+
+// Apply to global variables
+$_GET     = lmo_sanitize_and_log($_GET, '$_GET');
+$_POST    = lmo_sanitize_and_log($_POST, '$_POST');
+$_COOKIE  = lmo_sanitize_and_log($_COOKIE, '$_COOKIE');
+$_REQUEST = lmo_sanitize_and_log($_REQUEST, '$_REQUEST');
+
 ?>

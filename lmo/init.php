@@ -17,14 +17,6 @@
   *
   *
   */
-// First line of XSS-Identification
-$get = array();
-$get = $_GET;
-foreach ($get as $value) {
-    if (str_contains($value, 'script') || str_contains($value, '%')) {
-        die('<center><br><br><b>Everything has been stopped!</b><br><br>XSS-Scripting detected!<br><br><a href="./lmo.php" title="Back">BACK</a></center>');
-    }
-}
 
 if (!isset($_SESSION)) {
     // no session has been started yet
@@ -77,8 +69,7 @@ if (isset($_POST['lmouserlang'])){
 }
 if (isset($_SESSION['lmouserlang'])){
     $lmouserlang = $_SESSION['lmouserlang'];
-}
-else {
+} else {
     $lmouserlang = $deflang;
     $_SESSION['lmouserlang'] = $deflang;
 }
@@ -97,6 +88,7 @@ require_once(PATH_TO_LMO . '/includes/IT.php');
 magicQuotesRemove($_GET);
 magicQuotesRemove($_POST);
 magicQuotesRemove($_COOKIE);
+
 // Workaround for register_globals TODO: fix that!!!
 if (!function_exists('ini_get') || !ini_get('register_globals')) {
     @extract($_GET);

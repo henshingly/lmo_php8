@@ -6,7 +6,7 @@
 # ATTENTION: IN THIS CASE YOU HAVE TO PROTECT THE FILES AGAINST ACCESS BY WEB BROWSERS!
 #
 #
-  <FilesMatch "\.(txt|aus|tip|ein|stat|cfg|l98|csv)$">
+  <FilesMatch "\.(txt|aus|tip|ein|ver|stat|cfg|l98|csv)$">
     deny from all
   </FilesMatch>
   <Files license.txt>
@@ -29,3 +29,19 @@
 # php_flag session.use_trans_sid 1
 # php_value arg_separator.output &amp;
 #
+
+# ----------------------------------------------------------------------
+# XSS & PATH_INFO PROTECTION
+# ----------------------------------------------------------------------
+RewriteEngine On
+
+# Block URLs containing angle brackets (XSS attempts)
+# This stops attacks directly in the browser path or within parameters
+  RewriteCond %{REQUEST_URI} [<>] [OR]
+  RewriteCond %{QUERY_STRING} [<>]
+  RewriteRule ^ - [F,L]
+
+
+# Turn off PATH_INFO (text following .php/)
+# Prevents malicious requests such as lmo.php/<script>...
+  AcceptPathInfo Off
