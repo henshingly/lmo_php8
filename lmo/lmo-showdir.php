@@ -22,7 +22,7 @@
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="left"><?php
-include(PATH_TO_LMO . "/lmo-dirlist.php");?>
+include(PATH_TO_LMO . '/lmo-dirlist.php'); ?>
     </td>
   </tr>
   <tr>
@@ -38,26 +38,24 @@ if ($archivlink == 1) {
 
     $output = '';
     foreach($dirs as $dir) {
-        $descr = @file_get_contents(PATH_TO_LMO . '/' . $dirliga . $subdir . $dir . "/dir-descr.txt");
-        $output .=  "      <tr><td><a href='" . $_SERVER['PHP_SELF'] . "?subdir=" . $subdir . $dir . "/'>" . $dir . "</a></td>";
-        if ($descr != "") {
-            $output .= "      <td><small>" . htmlentities($descr) . "</small></td>";
+        $descr = @file_get_contents(PATH_TO_LMO . '/' . $dirliga . $subdir . $dir . '/dir-descr.txt');
+        $output .= "      <tr><td><a href='" . $_SERVER['PHP_SELF'] . '?subdir=' . $subdir . $dir . '/">' . $dir . '</a></td>';
+        if ($descr != '') {
+            $output .= '      <td><small>' . htmlentities($descr) . '</small></td>';
         }
-        $output .= "</tr>";
+        $output .= '</tr>';
     }
 
     if ($output != '') {?>
       <table class='lmoInner' cellspacing="0" width="99%">
         <tr>
-          <th style="text-align:center" colspan="2"><?php echo $text[509];?></th>
+          <th style="text-align:center" colspan="2"><?php echo $text[509]; ?></th>
         </tr>
-        <?php echo $output?>
+        <?php echo $output; ?>
       </table><?php
     }
-    if (str_contains($subdir, '/')) {
-    //if (strpos($subdir, '/') !== false) {
-?>
-      <p><a href="<?php echo $_SERVER['PHP_SELF']?>?subdir=<?php echo dirname($subdir) . '/'?>"><?php echo $text[5];?> <?php echo $text[562];?></a></p><?php
+    if (str_contains($subdir, '/')) { ?>
+      <p><a href="<?php echo $_SERVER['PHP_SELF']; ?>?subdir=<?php echo dirname($subdir) . '/'; ?>"><?php echo $text[5]; ?> <?php echo $text[562]; ?></a></p><?php
     }
 }?>
     </td>

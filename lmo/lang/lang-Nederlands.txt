@@ -606,7 +606,8 @@
 807=Mod.: 2-3-2
 808=Team A heeft eerst 2 thuiswedstrijden, daarna 3 uitwedstrijden en daarna weer 2 thuiswedstrijden totdat het eerste team 4 wedstrijden heeft gewonnen.
 809=Modusselectie
-1000=Sport
+999=Lichtkranttekst
+1000=Sporttak
 1001=Type competitie (nog niet functioneel, behalve voor darts)
 1002=overig
 1003=Darts

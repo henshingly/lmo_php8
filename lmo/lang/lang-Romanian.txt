@@ -605,8 +605,9 @@
 806=Echipa A are mai întâi 2 jocuri pe teren propriu, apoi 2 jocuri în deplasare și apoi continuă cu un avantaj alternativ pe teren propriu până când prima echipă a câștigat 4 jocuri.
 807=Mod.: 2-3-2
 808=Echipa A are mai întâi 2 jocuri acasă, apoi 3 în deplasare și apoi din nou 2 jocuri acasă până când prima echipă a câștigat 4 jocuri.
-809=Selectarea modului
-1000=Sport
+809=Selectare mod
+999=Text rulant
+1000=Ramură sportivă
 1001=Tip de ligă (nu este încă funcțională, cu excepția darts)
 1002=altele
 1003=Darts

@@ -606,6 +606,7 @@
 807=Mod.: 2-3-2
 808=Team A hat zuerst 2 Heimspiele danach 3 Auswärtsspiele und danach wieder 2 Heimspiele bis das erste Team 4 Spiele gewonnen hat.
 809=Modusauswahl
+999=Tickertext
 1000=Sportart
 1001=Typ der Liga (Bis auf Dart und Volleyball noch ohne Funktion)
 1002=sonstiges

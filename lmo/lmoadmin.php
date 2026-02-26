@@ -15,13 +15,11 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  *
   */
 
 if (!file_exists(dirname(__FILE__) . '/config/init-parameters.php') || isset($_POST['lmo_install_step'])) {
     include(dirname(__FILE__) . '/install/install.php');
-}
-else {
+} else {
     define('LMO_AUTH', 1);
     require(__DIR__ . '/init.php');
     $subdir = '';

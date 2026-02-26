@@ -606,6 +606,7 @@
 807=Mod.: 2-3-2
 808=La squadra A gioca prima 2 partite in casa, poi 3 in trasferta e poi ancora 2 partite in casa finché la prima squadra non vince 4 partite.
 809=Selezione modalità
+999=Testo scorrevole
 1000=Sport
 1001=Tipo di campionato (non ancora funzionante ad eccezione delle freccette)
 1002=altro

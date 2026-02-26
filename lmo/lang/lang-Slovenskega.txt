@@ -606,7 +606,8 @@
 807=Mod.: 2-3-2
 808=Ekipa A ima najprej 2 tekmi doma, nato 3 tekme v gosteh in nato spet 2 tekmi doma, dokler prva ekipa ne zmaga 4 iger.
 809=Izbira načina
-1000=Šport
+999=Drsno besedilo
+1000=Športna panoga
 1001=Vrsta lige (še ne deluje, razen za pikado)
 1002=drugo
 1003=Pikado

@@ -606,7 +606,8 @@
 807=Mod.: 2-3-2
 808=Tým A má nejprve 2 domácí zápasy, poté 3 zápasy venku a poté znovu 2 domácí zápasy, dokud první tým nevyhraje 4 zápasy.
 809=Výběr režimu
-1000=Sport
+999=Text tikeru
+1000=Druh sportu 
 1001=Typ ligy (ještě nefunkční kromě šipek)
 1002=jiné
 1003=Šipky

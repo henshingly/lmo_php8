@@ -606,7 +606,8 @@
 807=Mod.: 2-3-2
 808=O time A primeiro tem 2 jogos em casa, depois 3 jogos fora e depois 2 jogos em casa novamente até que o primeiro time ganhe 4 jogos.
 809=Seleção de modo
-1000=Desporto
+999=Texto corrido
+1000=Modalidade desportiva
 1001=Tipo de liga (ainda não funcional, exceto dardos)
 1002=outros
 1003=Dardos

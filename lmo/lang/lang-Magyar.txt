@@ -605,8 +605,9 @@
 806=Az A-csapatnak először 2 hazai, majd 2 idegenbeli meccse van, majd váltakozó hazai előnnyel folytatódik, amíg az első csapat meg nem nyer 4 meccset.
 807=Mod.: 2-3-2
 808=Az A-csapatnak először 2 hazai, majd 3 idegenbeli meccse van, majd ismét 2 hazai meccse van, amíg az első csapat 4 meccset nem nyer.
-809=Mód kiválasztása
-1000=Sport
+809=Módválasztás
+999=Futószöveg
+1000=Sportág
 1001=Liga típusa (még nem működik, kivéve a dartsot)
 1002=egyéb
 1003=Darts

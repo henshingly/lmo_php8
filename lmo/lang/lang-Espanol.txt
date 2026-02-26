@@ -606,6 +606,7 @@
 807=Mod.: 2-3-2
 808=El equipo A primero tiene 2 partidos en casa, luego 3 partidos fuera de casa y luego 2 partidos en casa nuevamente hasta que el primer equipo haya ganado 4 juegos.
 809=Selección de modo
+999=Texto de teletipo
 1000=Deporte
 1001=Tipo de liga (aún no funcional excepto dardos)
 1002=otro

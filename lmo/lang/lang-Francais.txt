@@ -606,6 +606,7 @@
 807=Mod.: 2-3-2
 808=L'équipe A joue d'abord 2 matchs à domicile, puis 3 matchs à l'extérieur, puis à nouveau 2 matchs à domicile jusqu'à ce que la première équipe ait gagné 4 matchs.
 809=Sélection du mode
+999=Texte du défilement
 1000=Sport
 1001=Type de ligue (pas encore fonctionnel sauf pour les fléchettes)
 1002=autre

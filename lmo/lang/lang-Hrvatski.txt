@@ -606,6 +606,7 @@
 807=Mod.: 2-3-2
 808=Momčad A prvo ima 2 utakmice kod kuće, zatim 3 utakmice u gostima i zatim opet 2 utakmice kod kuće dok prva momčad ne dobije 4 utakmice.
 809=Odabir načina
+999=Pomični tekst
 1000=Sport
 1001=Vrsta lige (još nije funkcionalna osim za pikado)
 1002=ostalo
