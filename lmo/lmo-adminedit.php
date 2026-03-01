@@ -15,13 +15,13 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
+  *
   */
 
 if (!isset($playoffmode)) $playoffmode = '0';
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 if ($file != '') {
     $save = isset($_POST['save']) ? $_POST['save'] : 0;
-
     $tabdat = '_';
     $ftest0 = 1;
     $liga = basename(substr($file, 0, -4));
@@ -117,8 +117,8 @@ if ($file != '') {
                     }
                     $datu1 = explode('.', $dum1);
                     $datu2 = explode(':', $dum2);
-                    $dummy = strtotime($datu1[0] . ' ' . $me[intval($datu1[1])] . ' ' . $datu1[2] . ' ' . $datu2[0] . ':' . $datu2[1]);
-                    $mterm[$st - 1][$i] = $dummy > -1 ? $dummy : '';
+                    $dt = DateTime::createFromFormat('d.m.Y H:i', $dum1 . ' ' . $dum2);
+                    $dt !== false ? $mterm[$st - 1][$i] = $dt->getTimestamp() : $mterm[$st - 1][$i] = '';
                 } else {
                     $mterm[$st - 1][$i] = '';
                 }
@@ -132,8 +132,8 @@ if ($file != '') {
                         }
                         $datu1 = explode('.', $dum1);
                         $datu2 = explode(':', $dum2);
-                        $dummy = strtotime($datu1[0] . ' ' . $me[intval($datu1[1])] . ' ' . $datu1[2] . ' ' . $datu2[0] . ':' . $datu2[1]);
-                        $mterm[$st - 1][$i][$n] = $dummy > -1 ? $dummy : '';
+                        $dt = DateTime::createFromFormat('d.m.Y H:i', $dum1 . ' ' . $dum2);
+                        $dt !== false ? $mterm[$st - 1][$i][$n] = $dt->getTimestamp() : $mterm[$st - 1][$i][$n] = '';
                     } else {
                         $mterm[$st - 1][$i][$n] = '';
                     }
@@ -232,7 +232,6 @@ if ($file != '') {
         }
 
         /*Spieltagsdatum (falls nicht angegeben) aus Spieldaten extrahieren*/
-
         function array_values_recursive($ary)
         {
             $lst = array();
@@ -246,6 +245,7 @@ if ($file != '') {
             }
             return $lst;
         }
+
         $lmo_spieltermine = array_filter(array_values_recursive($mterm[$st - 1]), 'filterZero');
         if (!empty($lmo_spieltermine)) {
             if (empty($datum1[$st - 1])) {
@@ -292,7 +292,7 @@ if ($file != '') {
     // Rückrunden-Hack
     if ($save == 990) require_once(PATH_TO_LMO . '/lmo-rueckrunde.php');
 
-    if ($lmtype != 0) {
+        if ($lmtype != 0) {
         $teamt = array_pad(array('0'), 129, '0');
         if ($st > 1) {
             for ($i = 0; $i < ($st - 1); $i++) {
@@ -301,12 +301,7 @@ if ($file != '') {
                 }
                 $maxMatches = count($goalb[$i]);
                 for ($j = 0; $j < $maxMatches; $j++) {
-                    if (
-                        !isset($goalb[$i][$j]) ||
-                        !isset($goala[$i][$j]) ||
-                        !isset($teama[$i][$j]) ||
-                        !isset($teamb[$i][$j])
-                    ) {
+                    if (!isset($goalb[$i][$j]) || !isset($goala[$i][$j]) || !isset($teama[$i][$j]) || !isset($teamb[$i][$j])) {
                         continue;
                     }
                     $m1 = $goala[$i][$j];
@@ -445,10 +440,12 @@ if ($file != '') {
         if ($lmtype == 0) { ?>
                 <tr>
 <?php
-            if ($mterm[$st - 1][$i] > 0) {
-                $dum1 = date('d.m.Y', $mterm[$st - 1][$i]);
-                $dum2 = date('H:i', $mterm[$st - 1][$i]);
-                $dum3 = $me[intval(date('m', $mterm[$st - 1][$i]))] . ' ' . date('Y', $mterm[$st - 1][$i]);
+            if (isset($mterm[$st - 1][$i]) && filterZero($mterm[$st - 1][$i])) {
+                $dt = new DateTime();
+                $dt->setTimestamp((int)$mterm[$st - 1][$i]);
+                $dum1 = $dt->format('d.m.Y');
+                $dum2 = $dt->format('H:i');
+                $dum3 = $me[intval($dt->format('m'))] . ' ' . $dt->format('Y');
             } else {
                 $dum1 = $dum2 = $dum3 = '';
             }?>
@@ -486,7 +483,7 @@ if ($file != '') {
                 echo $teams[$teamb[$st - 1][$i]];
             }
             if ($goala[$st - 1][$i] == '-1') {
-                $goala[$st - 1][$i ] ='_';
+                $goala[$st - 1][$i] = '_';
             }
             if ($goalb[$st - 1][$i] == '-1') {
                 $goalb[$st - 1][$i] = '_';
@@ -581,10 +578,12 @@ if ($file != '') {
                 }?>
                 <tr>
 <?php
-                if ($mterm[$st - 1][$i][$n] > 0) {
-                    $dum1 = date('d.m.Y', $mterm[$st - 1][$i][$n]);
-                    $dum2 = date('H:i', $mterm[$st - 1][$i][$n]);
-                    $dum3 = $me[intval(date('m', $mterm[$st - 1][$i][$n]))] . ' ' . date('Y', $mterm[$st - 1][$i][$n]);
+                if (isset($mterm[$st - 1][$i][$n]) && filterZero($mterm[$st - 1][$i][$n])) {
+                  $dt = new DateTime();
+                  $dt->setTimestamp((int)$mterm[$st - 1][$i][$n]);
+                  $dum1 = $dt->format('d.m.Y');
+                  $dum2 = $dt->format('H:i');
+                  $dum3 = $me[intval($dt->format('m'))] . ' ' . $dt->format('Y');
                 } else {
                   $dum1 = $dum2 = $dum3 = '';
                 }?>

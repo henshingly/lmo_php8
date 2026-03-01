@@ -15,12 +15,14 @@ class partie {
     */
     var $spNr;
 
-    //    var $n_SpNr;
+    //  var $n_SpNr;
+
     /**
     * Datum der Partie,
     * @var date
     * @access public
     */
+
     var $zeit;
     /**
     * Notiz zur Partie,
@@ -95,7 +97,7 @@ class partie {
     * @since 2.7
     * @var array
     * @access privat
-  */
+    */
     var $otherParameter = array();
 
     /**
@@ -112,7 +114,8 @@ class partie {
     * @param integer $n_gpunkte
     * @return partie
     */
-    function __construct($n_spNr, $n_time, $n_notiz, &$n_heim, &$n_gast, $n_htore, $n_gtore, $n_hpunkte = 0, $n_gpunkte = 0) {
+    function __construct($n_spNr, $n_time, $n_notiz, &$n_heim, &$n_gast, $n_htore, $n_gtore, $n_hpunkte = 0, $n_gpunkte = 0)
+    {
         $this->spNr = $n_spNr;
         $this->zeit = $n_time;
         $this->notiz = $n_notiz;
@@ -136,7 +139,8 @@ class partie {
     * @param  string $leer Der Rückgabewert wenn Ergebnis vorhanden ist
     * @return string
     */
-    function hToreString($leer = '_', $faktor = '1') {
+    function hToreString($leer = '_', $faktor = '1')
+    {
         if ($this->hTore == -1) $str = $leer;
         elseif ($this->hTore == -2) $str = '0*'; // Markieren als greenTable
         elseif ($this->gTore == -2) $str = '0'; // Wenn Gast der Sieg zugesprochen wurde O Tore für Heim anzeigen
@@ -155,7 +159,8 @@ class partie {
     * @param  string $leer Der Rückgabewert wenn kein Ergebnis vorhanden ist
     * @return string
     */
-    function gToreString($leer = '_', $faktor = '1') {
+    function gToreString($leer = '_', $faktor = '1')
+    {
         if ($this->gTore == -1) $str = $leer;
         elseif ($this->gTore == -2) $str = '0*'; // Markieren als greenTable
         elseif ($this->hTore == -2) $str = '0'; // Wenn Heim der Sieg zugesprochen wurde O Tore für Gast anzeigen
@@ -167,31 +172,28 @@ class partie {
     * Ermittelt die Wertung der Partie
     *
     * Result Value
-    * -1 : no result
-    *  0 : draw
-    *  1 : home wins
-    *  2 : away wins
+    * -1: no result
+    * 0	: draw
+    * 1 : home wins
+    * 2 : away wins
     *
     * @access public
     * @return integer
     */
-    function valuateGame() {
+    function valuateGame()
+    {
         $result = -1;
         if ($this->hTore > -1 and $this->gTore > -1) { // ok there is a result
             if ($this->hTore > $this->gTore) { // home wins
                 $result = 1;
-            }
-            elseif ($this->hTore < $this->gTore) { // away wins
+            } elseif ($this->hTore < $this->gTore) { // away wins
                 $result = 2;
-            }
-            else { // Unentschieden
+            } else { // Unentschieden
                 $result = 0;
             }
-        }
-        elseif ($this->hTore == -2) { // green Table home wins
+        } elseif ($this->hTore == -2) { // green Table home wins
             $result = 1;
-        }
-        elseif ($this->gTore == -2) {// green Table away wins
+        } elseif ($this->gTore == -2) {// green Table away wins
             $result = 2; // Bugfix 14.2.05 $result = 1
         }
         return $result;
@@ -199,28 +201,34 @@ class partie {
 
 
     /**
-    * Gibt das SpielDatum als formatierten String zurück. "d.m.Y" = Standard
+    * Gibt das SpielDatum als formatierten String zurück. 'd.m.Y' = Standard
     *
     * @access public
     * @param string leer Ausgabe, falls kein Datum vorhanden
     * @param string format Datumsformat in date()-Notation Standard = d.m.Y
     * @return string
     */
-    function datumString($leer = '', $format = 'd.m.Y') {
-        $str = ($this->zeit < 1) ? $leer : date($format, $this->zeit);
+    function datumString($leer = '', $format = 'd.m.Y')
+    {
+        $dt = new DateTime();
+        $dt->setTimeStamp((int)$this->zeit);
+        $str = is_numeric($this->zeit) ? $dt->format($format) : $leer;
         return $str;
     }
 
     /**
-    * Gibt die Anfangszeit als formatierten String zurück "Stunden:Minuten" = Standard
+    * Gibt die Anfangszeit als formatierten String zurück 'Stunden:Minuten' = Standard
     *
     * @access public
     * @param string leer Ausgabe, falls keine Zeit vorhanden
     * @param string format Zeitformat in date()-Notation Standard = H:i
     * @return string
     */
-    function zeitString($leer = '', $format = 'H:i') {
-        $str = ($this->zeit < 1) ? $leer : date($format, $this->zeit);
+    function zeitString($leer = '', $format = 'H:i')
+    {
+        $dt = new DateTime();
+        $dt->setTimeStamp((int)$this->zeit);
+        $str = is_numeric($this->zeit) ? $dt->format($format) : $leer;
         return $str;
     }
 
@@ -232,17 +240,15 @@ class partie {
     * @param string leer Ausgabe, falls keine n.V./i.E vorhanden
     * @return string
     */
-    function spielEndeString(&$text, $leer = '') {
+    function spielEndeString(&$text, $leer = '')
+    {
         if ($this->spielEnde == 0) {
             $str = $leer;
-        }
-        elseif ($this->spielEnde == 1) {
+        } elseif ($this->spielEnde == 1) {
             $str = $text[1];
-        }
-        elseif ($this->spielEnde == 2) {
+        } elseif ($this->spielEnde == 2) {
             $str = $text[0];
-        }
-        else {
+        } else {
             $str = $this->spielEnde;
         }
         return $str;
@@ -253,10 +259,11 @@ class partie {
     *
     * @access private
     */
-    function showDetails() {
+    function showDetails()
+    {
         echo $this->heim->name . ' - ' . $this->gast->name;
         echo ' Anpfiff: ' . $this->zeitString() . 'Uhr';
-        echo ' Ergebnis:' . $this->hTore . ' - '.$this->gTore . "\n";
+        echo ' Ergebnis:' . $this->hTore . ' - ' . $this->gTore . "\n";
     }
 
     /**
@@ -264,8 +271,9 @@ class partie {
     *
     * @access private
     */
-    function showDetailsHTML() {
-        echo '<BR>' . $this->heim->name .' - ' . $this->gast->name;
+    function showDetailsHTML()
+    {
+        echo '<br>' . $this->heim->name . ' - ' . $this->gast->name;
         echo ' Anpfiff: ' . $this->zeitString() . 'Uhr';
         echo ' Ergebnis:' . $this->hTore . ' - ' . $this->gTore;
     }
@@ -279,11 +287,11 @@ class partie {
     * @param mixed parameter Parameter die zu der Partie gespeichert werden sollen
     * @param string key Bezeichner unter dem der Parameter gespeichert werden soll
     */
-    function setParameter($parameter, $key = '') {
+    function setParameter($parameter, $key = '')
+    {
         if (is_array($parameter) ) {
             $this->otherParameter = array_merge($this->otherParameter, $parameter);
-        }
-        else {
+        } else {
             $this->otherParameter[$key] = $parameter;
         }
     }
@@ -297,7 +305,8 @@ class partie {
     * @param string key Bezeichner des Parameters der ausgegeben werden soll, ist kein Parameter angegeben, wird das komplette array zurückgegeben.
     * @return mixed Parameter
     */
-    function getParameter($key = '') {
+    function getParameter($key = '')
+    {
         if ($key == '') {
             return $this->otherParameter;
         }
@@ -311,7 +320,8 @@ class partie {
     * @access public
     * @param string value Link zum Spielbericht
     */
-    function setreportUrl($value) {
+    function setreportUrl($value)
+    {
         $this->reportUrl = $value;
     }
 
@@ -325,14 +335,14 @@ class partie {
     * @param string html Parameter
     * @return string Link zum Spielbericht
     */
-    function getreportUrl($ziel = '_blank', $param = '') {
-        if (is_null($ziel) ) {
+    function getreportUrl($ziel = '_blank', $param = '')
+    {
+        if (is_null($ziel)) {
             return $this->reportUrl;
+        } elseif (strpos($this->reportUrl, 'http') !== 0) {
+            return '<a href="http://' . $this->reportUrl . '" target="' . $ziel . "\" $param>";
         }
-        elseif (strpos($this->reportUrl, 'http') !== 0 ) {
-            return "<a href=\"http://" . $this->reportUrl . "\" target=\"" . $ziel . "\" $param>";
-        }
-        return "<a href=\"" . $this->reportUrl . "\" target=\"" . $ziel . "\" $param>";
+        return '<a href="' . $this->reportUrl . '" target="' . $ziel . "\" $param>";
     }
 
     /**
@@ -345,7 +355,8 @@ class partie {
     * @since 2.7
     * @param integer Art des Spielendes
     */
-    function setSpielEnde($value) {
+    function setSpielEnde($value)
+    {
         if (is_int($value) ) {
             $this->spielEnde = $value;
         }
@@ -361,7 +372,8 @@ class partie {
     * @since 2.7
     * @return integer Art des Spielendes
     */
-    function getSpielEnde() {
+    function getSpielEnde()
+    {
         return $this->spielEnde;
     }
 
