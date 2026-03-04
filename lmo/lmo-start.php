@@ -35,15 +35,15 @@ $array = array();
 $ftype = '.l98';
 if (isset($_REQUEST['st'])) {$st = $_REQUEST['st'];}
 if(!isset($_REQUEST['action'])) {
-    $_REQUEST['action']='';
+    $_REQUEST['action'] = '';
     $action = '';
 } else {
     $action = $_REQUEST['action'];
 }
 if (!isset($file)) {
     if(!isset($_REQUEST['file'])) {
-        $_REQUEST['file']='';
-        $file='';
+        $_REQUEST['file'] = '';
+        $file = '';
     } else {
         $file = $_REQUEST['file'];
     }
