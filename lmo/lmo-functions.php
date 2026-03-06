@@ -296,9 +296,9 @@ function redirect($location)
 // URL mit PHP auf Existenz überprüfen
 // Funktion deklarieren
 function url_check($url)
-{ 
-    $url_objects = @get_headers($url); 
-    return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : false; 
+{
+    $url_objects = @get_headers($url);
+    return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : false;
 };
 
 $string_json = file_get_contents(PATH_TO_LMO . '/composer.json', false);
@@ -328,39 +328,53 @@ if (url_check($json_a['extra']['check'])) {
 /**
  * Sanitizes input values and logs potential XSS attempts to a custom file.
  */
-function lmo_sanitize_and_log($data, $source = 'unknown')
+function lmo_sanitize_and_log($data, $source = 'unknown', $isStrict = true)
 {
-    // Define the path to your custom log file
     $logFile = __DIR__ . '/xss_log.txt';
 
     if (is_array($data)) {
         foreach ($data as $key => $value) {
-            $data[$key] = lmo_sanitize_and_log($value, $source . '[' . $key . ']');
+            $data[$key] = lmo_sanitize_and_log($value, $source . '[' . $key . ']', $isStrict);
         }
         return $data;
     }
 
-    $trimmed = trim($data);
-    $stripped = strip_tags($trimmed);
-    $sanitized = htmlspecialchars($stripped, ENT_QUOTES, 'UTF-8');
+    $original = (string)$data;
 
-    // Logging: If the input was modified, write to the custom log file
-    if ($trimmed !== $sanitized) {
+    // 1. Grundreinigung (Tags weg)
+    $sanitized = strip_tags($original);
+
+    if ($isStrict) {
+        // 2. Aggressives Blockieren von Funktionsaufrufen (Klammern)
+        $sanitized = str_replace(['(', ')', '`'], ['&#40;', '&#41;', '&#96;'], $sanitized);
+
+        // 3. Blockieren von Attribut-Ausbrüchen (Anführungszeichen)
+        $sanitized = str_replace(['"', "'"], ['&quot;', '&#39;'], $sanitized);
+
+        // 4. HTML5 & JS Keyword-Killer (autofocus, onfocus, javascript, etc.)
+        $bad_patterns = [
+            '/autofocus/i', '/contenteditable/i', '/on[a-z]+=/i',
+            '/javascript:/i', '/<script/i', '/eval/i'
+        ];
+        $sanitized = preg_replace($bad_patterns, 'no_$0', $sanitized);
+    }
+
+    // Logging bei Manipulation
+    if ($original !== $sanitized) {
         $timestamp = date("Y-m-d H:i:s");
-        $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown IP';
-        $logMessage = "[$timestamp] [IP: $ip] Security: Potential XSS/Tags removed from $source\n";
-        
-        // Append the message to the custom log file
+        $logMessage = "[$timestamp] [IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown') . "] Blocked $source\n";
         file_put_contents($logFile, $logMessage, FILE_APPEND);
     }
 
     return $sanitized;
 }
 
-// Apply to global variables
-$_GET = lmo_sanitize_and_log($_GET, '$_GET');
-$_POST = lmo_sanitize_and_log($_POST, '$_POST');
-$_COOKIE = lmo_sanitize_and_log($_COOKIE, '$_COOKIE');
-$_REQUEST = lmo_sanitize_and_log($_REQUEST, '$_REQUEST');
+// Erst GET/POST einzeln, dann REQUEST komplett neu aufbauen
+$_GET     = lmo_sanitize_and_log($_GET, '$_GET', true);
+$_POST    = lmo_sanitize_and_log($_POST, '$_POST', (isset($_SESSION['lmouserok']) ? false : true));
+$_COOKIE  = lmo_sanitize_and_log($_COOKIE, '$_COOKIE', true);
+
+// $_REQUEST manuell aus den bereits sauberen Werten zusammensetzen
+$_REQUEST = array_merge($_GET, $_POST, $_COOKIE);
 
 ?>
