@@ -91,7 +91,7 @@ if ($file != '') {
                         echo '</strong>';
                     }
                     echo '&nbsp;' . HTML_smallTeamIcon($file, $teams[$teama[$j][$i]],' alt=""');
-                    if (($teamu[$teama[$j][$i]] != "") && ($urlt == 1)) {
+                    if (($teamu[$teama[$j][$i]] != '') && ($urlt == 1)) {
                         echo ' <a href="' . $teamu[$teama[$j][$i]] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
                     } ?></td>
           <td class="lmost5" align="center" width="10">-</td>
@@ -111,8 +111,8 @@ if ($file != '') {
                     if ($selteam == $teamb[$j][$i]) {
                         echo '</strong>';
                     }
-                    if (($teamu[$teamb[$j][$i]] != "") && ($urlt == 1)) {
-                        echo '<a href="' . $teamu[$teamb[$j][$i]] . ' target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
+                    if (($teamu[$teamb[$j][$i]] != '') && ($urlt == 1)) {
+                        echo '<a href="' . $teamu[$teamb[$j][$i]] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
                     } ?></td>
 <?php
                     for ($n = 0; $n < $modus[$j]; $n++) {
@@ -127,10 +127,10 @@ if ($file != '') {
                                 $dumn2 = '';
                             }
                         }
-                        if ($n == 0) { ?>
-          <td width="2">&nbsp;</td><?php
-                        } else { ?>
-          <td width="8">|&nbsp;&nbsp;</td><?php
+                        if ($n == 0) {
+                            echo '          <td width="2">&nbsp;</td>';
+                        } else {
+                            echo '          <td width="8">|&nbsp;&nbsp;</td>';
                         }?>
           <td class="nobr"><?php echo $dumn1;?><?php echo applyFactor($goala[$j][$i][$n], $goalfaktor); ?>&nbsp;:&nbsp;<?php echo applyFactor($goalb[$j][$i][$n], $goalfaktor); ?><?php echo $mspez[$j][$i][$n]; ?><?php echo $dumn2; ?><?php
                         /** Mannschaftsicons finden **/
@@ -142,26 +142,30 @@ if ($file != '') {
                         }
                         /** Spielbericht verlinken **/
                         if ($urlb == 1) {
-                            if ($mberi[$j][$i][$n] != "") {
-                                $lmo_spielbericht = $lmo_teamaicon . '<strong>' . $teams[$teama[$j][$i]] . '</strong> - ' . $lmo_teambicon . '<strong>' . $teams[$teamb[$j][$i]] . '</strong><br><br>';
-                                echo '&nbsp;<a href="' . $mberi[$j][$i][$n] . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" border="0" alt=""><span class="popup">' . $lmo_spielbericht . nl2br($text[270]) . '</span></a>';
+                            if ($mberi[$j][$i][$n] != '') {
+                                // Header für Spielbericht
+                                $lmo_spielbericht_html = '<strong>' . $teams[$teama[$j][$i]] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $teams[$teamb[$j][$i]] . '</strong>' . nl2br($text[270]);
+
+                                // Link mit Mouseover-Funktion und data-info Attribut
+                                echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><a href="' . $mberi[$j][$i][$n] . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" border="0" alt=""></a></span>&nbsp;';
                             } else {
-                                echo "&nbsp;";
+                                echo '&nbsp;';
                             }
                         }
                         /** Notizen anzeigen **/
-                        $lmo_spielnotiz = '';
                         if ($mnote[$j][$i][$n] != '') {
-                            $lmo_spielnotiz = $lmo_teamaicon . '<strong>' . $teams[$teama[$j][$i]] . #</strong> - ' . $lmo_teambicon . '<strong>' . $teams[$teamb[$j][$i]] . '</strong> ' . applyFactor($goala[$j][$i][$n], $goalfaktor) . ':' . applyFactor($goalb[$j][$i][$n], $goalfaktor);
+                            //Zentrierte Kopfzeile für Notizen
+                            $lmo_spielnotiz = '<strong>' . $teams[$teama[$j][$i]] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $teams[$teamb[$j][$i]] . '&nbsp;&nbsp;' . applyFactor($goala[$j][$i][$n], $goalfaktor) . ':' . applyFactor($goalb[$j][$i][$n], $goalfaktor) . '</strong>';
                             //Allgemeine Notiz
+                            $lmo_spielnotiz .= '<br><strong>' . $text[22] . ':</strong> ' . $mnote[$j][$i][$n];
 
-                            $lmo_spielnotiz .= "\n\n" . '<strong>' . $text[22] . ':</strong>' . "\n" . $mnote[$j][$i][$n];
-
-                            echo '&nbsp;<a href="#" onclick="alert("' . addcslashes('', htmlentities(strip_tags($lmo_spielnotiz))) . '");window.focus();return false;"><span class="popup">' . nl2br($lmo_spielnotiz) . '</span><img src="' . URL_TO_IMGDIR . '/lmo-st2.svg" height="15" border="0" alt=""></a>';
+                            //Ausgabe als neutrales Element (kein Link)
+                            echo '&nbsp;<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars(nl2br($lmo_spielnotiz)) . '" class="tooltip-trigger"><img src="' . URL_TO_IMGDIR . '/lmo-st2.svg" height="15" class="svg-no-style" border="0" alt=""></span>';
                             $lmo_spielnotiz = '';
                         } else {
                             echo '&nbsp;';
-                        }?></td><?php
+                        }?></td>
+<?php
                     }?>
         </tr><?php
                 }
