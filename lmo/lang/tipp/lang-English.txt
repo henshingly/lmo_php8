@@ -41,7 +41,7 @@
 040=Show Link to Prediction Game
 041=Predictions Saved Successfully
 042=Wrong Password
-043=Nickname not Found
+043=Nickname/email address not found
 044=Registered Players can Log In here:
 045=If You are not Registered:
 046=You can Register here for the Prediction Game
@@ -253,7 +253,7 @@
 252=All Matches in the next
 253=Allow Predictions by Date
 254=...for Matches in the next
-255=Login: [url]
+255=Login:
 256=Next Day
 257=Day Before
 258=All Matches from

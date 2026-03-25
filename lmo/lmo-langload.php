@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -47,13 +47,13 @@ $languages = array(
 
 $text = array();
 
-if (!function_exists("read_langfile")) {
-  function read_langfile(&$text, $langfile, $addon = "") {
+if (!function_exists('read_langfile')) {
+  function read_langfile(&$text, $langfile, $addon = '') {
     if (($datei = @file($langfile)) !== false) {
       foreach ($datei as $value) {
         $paar = explode('=', trim($value), 2);
         if (isset($paar[0]) && is_numeric($paar[0])) {
-          if (!isset($paar[1])) $paar[1] = "";
+          if (!isset($paar[1])) $paar[1] = '';
           if (func_num_args() == 2) {
             $text[intval($paar[0])] = $paar[1];
           }
@@ -66,13 +66,13 @@ if (!function_exists("read_langfile")) {
   }
 }
 
-read_langfile($text, PATH_TO_LANGDIR."/lang-Deutsch.txt");
-read_langfile($text, PATH_TO_LANGDIR."/lang-{$deflang}.txt");
+read_langfile($text, PATH_TO_LANGDIR . '/lang-Deutsch.txt');
+read_langfile($text, PATH_TO_LANGDIR . '/lang-' . $deflang . '.txt');
 
 @setlocale (LC_TIME, $languages[$deflang][0]);
-if (isset($lmouserlang) && $lmouserlang!=$deflang) {
-  if (file_exists(PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/lang-{$lmouserlang}.txt");
-  setlocale (LC_TIME, $languages[$lmouserlang][0]);
+if (isset($lmouserlang) && $lmouserlang != $deflang) {
+    if (file_exists(PATH_TO_LANGDIR . '/lang-' . $lmouserlang . '.txt')) read_langfile($text, PATH_TO_LANGDIR . '/lang-' . $lmouserlang . '.txt');
+    setlocale (LC_TIME, $languages[$lmouserlang][0]);
 }
 
 setlocale (LC_NUMERIC, 'en_EN');  // Wichtig: Für Arithmetik immer englische Trennzeichen
@@ -81,12 +81,12 @@ setlocale (LC_NUMERIC, 'en_EN');  // Wichtig: Für Arithmetik immer englische Tr
 //Alle lang-Dateien im Addon-Verzeichnis
 $handle = opendir (PATH_TO_LANGDIR);
 while (false !== ($f = readdir($handle))) {
-  if (is_dir(PATH_TO_LANGDIR.'/'.$f) && $f!='.' && $f!='..') {  //Wenn Unterverzeichnis Lang-dateien auslesen
-    if (file_exists(PATH_TO_LANGDIR."/$f/lang-{$deflang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/$f/lang-{$deflang}.txt",$f);
-    if (isset($lmouserlang)) {
-      if (file_exists(PATH_TO_LANGDIR."/$f/lang-{$lmouserlang}.txt")) read_langfile($text,PATH_TO_LANGDIR."/$f/lang-{$lmouserlang}.txt",$f);
+    if (is_dir(PATH_TO_LANGDIR . '/' . $f) && $f != '.' && $f != '..') {  //Wenn Unterverzeichnis Lang-dateien auslesen
+        if (file_exists(PATH_TO_LANGDIR . '/' . $f . '/lang-' . $deflang . '.txt')) read_langfile($text, PATH_TO_LANGDIR . '/' . $f . '/lang-' . $deflang . '.txt', $f);
+        if (isset($lmouserlang)) {
+            if (file_exists(PATH_TO_LANGDIR . '/' . $f . '/lang-' . $lmouserlang . '.txt')) read_langfile($text, PATH_TO_LANGDIR . '/' . $f . '/lang-' . $lmouserlang . '.txt', $f);
+        }
     }
-  }
 }
 
 $orgpkt = $text[37];
@@ -114,5 +114,5 @@ $orgtor = $text[38];
 
 
 ///*
-  if (!function_exists("c")){function c($c){if ($c==1)return(base64_decode("PGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LngiPkxNTzwvYWNyb255bT4gNC4xLjQgLSA8YSBocmVmPSI="));return(base64_decode("aHR0cHM6Ly93d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5kZS8iIHRpdGxlPSJDbGljayBoZXJlIHRvIGdldCBpbmZvcm1hdGlvbnMgYWJvdXQgdGhpcyBzY3JpcHQiPsKpIDE5OTctMjAyNCBMTU8tR3JvdXA8L2E+"));}}
-  if (!function_exists("d")){function d($c){if (strpos(htmlentities($c),htmlentities(base64_decode("PCEtLUluZm9saW5rLS0+")))>0){false;} else { eval(base64_decode("ZWNobyAnPGFjcm9ueW0gdGl0bGU9IkxpZ2EgTWFuYWdlciBPbmxpbmUgZm9yIFBIUCA4LngiPkxNTzwvYWNyb255bT4gNC4xLjQgLSA8YSBocmVmPSJodHRwOi8vd3d3LmxpZ2EtbWFuYWdlci1vbmxpbmUuZGUvIiB0aXRsZT0iQ2xpY2sgaGVyZSB0byBnZXQgaW5mb3JtYXRpb25zIGFib3V0IHRoaXMgc2NyaXB0Ij7CqSAxOTk3LTIwMjQgTE1PLUdyb3VwPC9hPic7"));}}}//*/?>
+if (!function_exists('c')) {function c($c) {if ($c == 1) return(base64_decode('PGEgaHJlZj0iaHR0cHM6Ly93d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5vcmciIHRhcmdldD0iX2JsYW5rIiBjbGFzcz0ibG1vLWxpbmstdHJpZ2dlciIgZGF0YS1pbmZvPSI8c3Ryb25nPkxpZ2EgTWFuYWdlciBPbmxpbmU8L3N0cm9uZz5UaGlzIGlzIGEgY2xvbmUgb2YgdGhlIG9yaWdpbmFsIExpZ2EgTWFuYWdlciBPbmxpbmUuPGJyPjxiPkFkYXB0ZWQgZm9yIFBIUCA4LjwvYj48YnI+Q2xpY2tpbmcgdGhpcyBsaW5rIHdpbGwgdGFrZSB5b3UgdG8gdGhlIHdlYnNpdGUgb2YgdGhlIG5ldyBwcm9qZWN0LiIgb25tb3VzZW92ZXI9InNob3dMTU9Ub29sdGlwKHRoaXMpIiBvbm1vdXNlb3V0PSJoaWRlTE1PVG9vbHRpcCgpIj5MTU8gNCBmb3IgUEhQODwvYT4mbmJzcDstJm5ic3A7')); return(base64_decode('PHNwYW4gY2xhc3M9Imxtby10ZXh0LXRyaWdnZXIiIGRhdGEtaW5mbz0iPHN0cm9uZz5MaWdhIE1hbmFnZXIgT25saW5lPC9zdHJvbmc+VGhlIG9yaWdpbmFsIExpZ2EgTWFuYWdlciBPbmxpbmUgcHJvamVjdCBvbiB0aGUgd2Vic2l0ZSB3d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5kZSB3YXMgZGlzY29udGludWVkIGF0IHRoZSBlbmQgb2YgMjAyNS4iIG9ubW91c2VvdmVyPSJzaG93TE1PVG9vbHRpcCh0aGlzKSIgb25tb3VzZW91dD0iaGlkZUxNT1Rvb2x0aXAoKSI+wqkgMTk5Ny1ub3cgTE1PLUdyb3VwPC9zcGFuPg=='));}}
+if (!function_exists('d')) {function d($c) {if (strpos(htmlentities($c), htmlentities(base64_decode('PCEtLUluZm9saW5rLS0+'))) > 0) {false;} else {eval(base64_decode('ZWNobyAnPGEgaHJlZj0iaHR0cHM6Ly93d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5vcmciIHRhcmdldD0iX2JsYW5rIiBjbGFzcz0ibG1vLWxpbmstdHJpZ2dlciIgZGF0YS1pbmZvPSI8c3Ryb25nPkxpZ2EgTWFuYWdlciBPbmxpbmU8L3N0cm9uZz5UaGlzIGlzIGEgY2xvbmUgb2YgdGhlIG9yaWdpbmFsIExpZ2EgTWFuYWdlciBPbmxpbmUuPGJyPjxiPkFkYXB0ZWQgZm9yIFBIUCA4LjwvYj48YnI+Q2xpY2tpbmcgdGhpcyBsaW5rIHdpbGwgdGFrZSB5b3UgdG8gdGhlIHdlYnNpdGUgb2YgdGhlIG5ldyBwcm9qZWN0LiIgb25tb3VzZW92ZXI9InNob3dMTU9Ub29sdGlwKHRoaXMpIiBvbm1vdXNlb3V0PSJoaWRlTE1PVG9vbHRpcCgpIj5MTU8gNCBmb3IgUEhQODwvYT4mbmJzcDstJm5ic3A7PHNwYW4gY2xhc3M9Imxtby10ZXh0LXRyaWdnZXIiIGRhdGEtaW5mbz0iPHN0cm9uZz5MaWdhIE1hbmFnZXIgT25saW5lPC9zdHJvbmc+VGhlIG9yaWdpbmFsIExpZ2EgTWFuYWdlciBPbmxpbmUgcHJvamVjdCBvbiB0aGUgd2Vic2l0ZSB3d3cubGlnYS1tYW5hZ2VyLW9ubGluZS5kZSB3YXMgZGlzY29udGludWVkIGF0IHRoZSBlbmQgb2YgMjAyNS4iIG9ubW91c2VvdmVyPSJzaG93TE1PVG9vbHRpcCh0aGlzKSIgb25tb3VzZW91dD0iaGlkZUxNT1Rvb2x0aXAoKSI+wqkgMTk5Ny1ub3cgTE1PLUdyb3VwPC9zcGFuPic7'));}}}?>

@@ -41,7 +41,7 @@
 040=Toon Link naar Bingoal Game
 041=Voorspellingen Succesvol Opgeslagen
 042=Fout Passwoord
-043=Nickname niet Gevonden
+043=Bijnaam/e-mailadres niet gevonden
 044=Geregistreerde Spelers kunnen hier inloggen:
 045=Als u nog niet geregistreerd bent:
 046=U kan zich hier registreren voor het Bingoal Game
@@ -253,7 +253,7 @@
 252=Alle wedstrijden in de volgende
 253=Allow Predictions by Date
 254=...for Matches in the next
-255=Inloggen: [url]
+255=Inloggen:
 256=Volgende Dag
 257=Vorige Dag
 258=Alle Wedstrijden van

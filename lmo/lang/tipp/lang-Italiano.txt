@@ -41,7 +41,7 @@
 040=Visualizza il collegamento al gioco delle scommesse
 041=Suggerimenti salvati con successo
 042=Password errata
-043=Nickname non trovato
+043=Nome utente/indirizzo email non trovato
 044=Giocatori registrati, effettuate il login qui:
 045=Se non hai ancora effettuato l'accesso:
 046=Qui puoi iscriverti al gioco delle scommesse
@@ -253,7 +253,7 @@
 252=Tutti i giochi nel prossimo
 253=Consenti l'invio di suggerimenti giorno per giorno
 254=...per i giochi nei prossimi
-255=Accesso: [URL]
+255=Accesso:
 256=Salta i giorni successivi
 257=Torna indietro di giorni
 258=Tutti i giochi da

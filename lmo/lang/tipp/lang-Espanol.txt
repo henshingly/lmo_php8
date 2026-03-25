@@ -41,7 +41,7 @@
 040=Mostrar Enlace del Juego de Predicción
 041=Predicciones Guardadas Exitosamente
 042=Contraseña Incorrecta
-043=Nombre de Usuario no encontrado
+043=Apodo / dirección de correo electrónico no encontrado
 044=Los jugadores registrados pueden ingresar aquí:
 045=Si no está Registrado:
 046=Puede registrarse aquí para el Juego de Predicción
@@ -253,7 +253,7 @@
 252=All Matches in the next
 253=Allow Predictions by Date
 254=...for Matches in the next
-255=Iniciar sesión: [url]
+255=Iniciar sesión:
 256=Siguiente Día
 257=Día Anterior
 258=Todas las Jornadas desde

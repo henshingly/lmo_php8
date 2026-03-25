@@ -41,7 +41,7 @@
 040=Prikaži vezu (link) na igru predviđanja
 041=Predviđanja su uspješno spremljena
 042=Pogrešna lozinka
-043=Nadimak (nikname) nije pronađen
+043=Nadimak/email adresa nije pronađena
 044=Molimo registrirane igrače da se prijave ovdje:
 045=Ako još niste prijavljeni:
 046=Ovdje se možete prijaviti za igru ​​klađenja
@@ -253,7 +253,7 @@
 252=Sve utakmice u sljedećem
 253=Dopusti predviđanja po datumu
 254=...za utakmice u sljedećem
-255=Prijava: [url]
+255=Prijava:
 256=Sljedeći dan
 257=Dan prije
 258=Sve utakmice iz

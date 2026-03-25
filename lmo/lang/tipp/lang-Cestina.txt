@@ -41,7 +41,7 @@
 040=Odkaz k tipovací soutěži
 041=Tipy byly úspěšně uloženy
 042=Špatné heslo
-043=Nick-jméno nenalezeno
+043=Přezdívka/e-mailová adresa nenalezena
 044=Přihlášení již zaregistrovaného tipujícího:
 045=Pokud nejsi zaregistrován:
 046=Zde se musíte zaregistrovat
@@ -253,7 +253,7 @@
 252=Všechny zápasy v následujících
 253=Zadání tipů alá LMO-Viewer
 254=Zadání tipů alá LMO-Viewer pro zápasy v příštích
-255=Přihlášení: [url]
+255=Přihlášení:
 256=dní dopředu
 257=dní zpět
 258=Všechny zápasy od
