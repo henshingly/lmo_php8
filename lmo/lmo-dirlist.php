@@ -18,7 +18,7 @@
   */
 
 $todo = isset($_GET['todo']) && $_GET['todo'] != '' ? $_GET['todo'] : (isset($_GET['file']) && $_GET['file'] != '' ? 'edit' : '');
-$addi = htmlspecialchars('lmo-dirlist.php', ENT_QUOTES, 'UTF-8') . '?todo=' . urlencode($todo) . '&file=';
+$addi = $_SERVER['PHP_SELF'] . '?todo=' . $todo . '&amp;file=';
 
 $_SESSION['liga_sort'] = isset($_REQUEST['liga_sort']) ? $_REQUEST['liga_sort'] : $liga_sort;
 $_SESSION['liga_sort_direction'] = isset($_REQUEST['liga_sort_direction']) ? $_REQUEST['liga_sort_direction'] : $liga_sort_direction;
