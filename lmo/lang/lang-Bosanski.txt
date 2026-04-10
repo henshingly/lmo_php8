@@ -54,7 +54,7 @@
 053=Molim izaberite prvenstvo
 054=Liga Manager Online 4
 055=© 1997-2023 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Posjetite našu početnu stranicu">Početnu stranicu</a> | <a href="https://www.vest-sport.de/forum/" target="_blank" title="Pomoć s LMO-om i njegovim dodacima">Forum za podršku</a> | <a href="https://www.vest-sport.de/forum/viewforum.php?f=10" target="_blank" title="Ovdje možete pronaći više liga za svog LeagueManager">Popis liga</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Posjetite našu početnu stranicu">Početnu stranicu</a> | <a href="https://www.liga-manager-online.org/forum/" target="_blank" title="Pomoć s LMO-om i njegovim dodacima">Forum za podršku</a> | <a href="https://www.liga-manager-online.org/forum/viewforum.php?f=10" target="_blank" title="Ovdje možete pronaći više liga za svog LeagueManager">Popis liga</a> ]
 057=Statistika 1 od
 058=Statistika 2 od
 059=Nijedna 2. momcad

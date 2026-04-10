@@ -54,7 +54,7 @@
 053=Kérem válasszon ki egy bajnokságot:
 054=Liga Manager Online 4
 055=Š 1997-2023 LMO-Group
-056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Látogassa meg kezdőlapunkat">Kezdőlap</a> | <a href="https://www.vest-sport.de/forum/" target="_blank" title="Help with the LMO and its addons">Támogatói fórum</a> | <a href="https://www.vest-sport.de/forum/viewforum.php?f=10" target="_blank" title="Itt talál további ligákat a LeagueManagerhez">ligalistához</a> ]
+056=[ <a href="http://www.liga-manager-online.de/" target="_blank" title="Látogassa meg kezdőlapunkat">Kezdőlap</a> | <a href="https://www.liga-manager-online.org/forum/" target="_blank" title="Help with the LMO and its addons">Támogatói fórum</a> | <a href="https://www.liga-manager-online.org/forum/viewforum.php?f=10" target="_blank" title="Itt talál további ligákat a LeagueManagerhez">ligalistához</a> ]
 057=1.Statisztika
 058=2.Statisztika
 059=Nincs másik csapat

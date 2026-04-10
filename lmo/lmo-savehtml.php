@@ -14,8 +14,8 @@
   *
   *
   *
-  * 10/02/2023 - Please post any improvements, bugs or suggestions in the forum at https://www.vest-sport.de/forum
-  * 02.10.2023 - Verbesserungen, Bugs oder Vorschläge bitte nun in das Forum auf https://www.vest-sport.de/forum
+  * 10/02/2023 - Please post any improvements, bugs or suggestions in the forum at https://www.liga-manager-online.org/forum
+  * 02.10.2023 - Verbesserungen, Bugs oder Vorschläge bitte nun in das Forum auf https://www.liga-manager-online.org/forum
   */
 
 
