@@ -46,13 +46,12 @@ if ($message != '') {
             $dummb = explode('|', $dumma[$tippernr]);
             if ($dummb[9] != -1 && $dummb[4] != '') {
                 $textmessage = $message;
-                $textmessage = str_replace(array('[nick]', '[pass]', '[name]'),array($dummb[0], $dummb[1], $dummb[3]), $textmessage);
+                $textmessage = str_replace(array('[nick]', '[pass]', '[name]'),array($dummb[0], $xtipperpass, $dummb[3]), $textmessage);
                 $mail->Body = $textmessage;
                 $mail->addAddress($dummb[4]);
                 if ($mail->send()) {
                     $anzemail ++;
-                }
-                else {
+                } else {
                     echo $mail->ErrorInfo;
                 }
                 $mail->ClearAllRecipients();
@@ -60,8 +59,7 @@ if ($message != '') {
             }
         }
             echo getMessage($anzemail . ' ' . $text['tipp'][175]);
-    }
-    elseif ($emailart == 1) {
+    } elseif ($emailart == 1) {
         $tipp_textreminder1 = str_replace(array("\r\n", "\n", "\r"), array('&#10;', '&#10;', '&#10;') , $message);
         require(PATH_TO_LMO . '/lmo-savecfg.php');
         $now = strtotime('now');
@@ -130,8 +128,7 @@ if ($message != '') {
                             if (file_exists($tippfile)) {
                                 require(PATH_TO_ADDONDIR . '/tipp/lmo-tippemailviewer1.php');
                                 $ktipp = 1;
-                            }
-                            else {
+                            } else {
                                 $ktipp = 0;
                             }
                         }
@@ -143,21 +140,16 @@ if ($message != '') {
                                 if ($lspieltag != $spieltag[$i] || $lliga != $liga[$i]) {
                                     if ($lmtype[$i] == 0) {
                                         $spiele .= "\n" . $spieltag[$i] . '. ' . $text[2] . ':';
-                                    }
-                                    else {
+                                    } else {
                                         if ($spieltag[$i] == $anzst[$i]) {
                                             $j = $text[374];
-                                        }
-                                        elseif ($spieltag[$i] == $anzst[$i]-1) {
+                                        } elseif ($spieltag[$i] == $anzst[$i]-1) {
                                             $j = $text[373];
-                                        }
-                                        elseif ($spieltag[$i] == $anzst[$i]-2) {
+                                        } elseif ($spieltag[$i] == $anzst[$i]-2) {
                                             $j = $text[372];
-                                        }
-                                        elseif ($spieltag[$i] == $anzst[$i]-3) {
+                                        } elseif ($spieltag[$i] == $anzst[$i]-3) {
                                             $j = $text[371];
-                                        }
-                                        else {
+                                        } else {
                                             $j = $spieltag[$i] . '. ' . $text[370];
                                         }
                                         $spiele .= $j . ':';
@@ -178,8 +170,7 @@ if ($message != '') {
                         $mail->addAddress($dummb[4]);
                         if ($mail->send()) {
                             $anzemail ++;
-                        }
-                        else {
+                        } else {
                             echo $mail->ErrorInfo;
                         }
                         $mail->ClearAllRecipients();
@@ -187,13 +178,11 @@ if ($message != '') {
                     }
                 }
             }
-        }
-        elseif ($liga != '' && $tage > 0 && $st >= 0) {
+        } elseif ($liga != '' && $tage > 0 && $st >= 0) {
             $file = $liga;
             if ($st > 0) {
                 require(PATH_TO_LMO . '/lmo-openfiledat.php');
-            }
-            elseif ($st == 0) {
+            } elseif ($st == 0) {
                 require(PATH_TO_LMO . '/lmo-openfile.php');
             }
 
@@ -208,8 +197,7 @@ if ($message != '') {
                             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippopenfile.php');
                             $st0 = $st - 1;
                             $anzst1 = $st;
-                        }
-                        elseif ($st == 0) {
+                        } elseif ($st == 0) {
                             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippopenfileall.php');
                             $st0 = 0;
                             $anzst1 = $anzst;
@@ -225,8 +213,7 @@ if ($message != '') {
                                             }
                                         }
                                     }
-                                }
-                                elseif ($lmtype != 0) {
+                                } elseif ($lmtype != 0) {
                                     for ($dd = 0; $dd < $anzsp; $dd ++) {
                                         for ($ddd = 0; $ddd < $modus[$st0]; $ddd ++) {
                                             $zeit = zeit($mterm[$st0][$dd][$ddd], $datum1[$st0], $datum2[$st0]);
@@ -250,8 +237,7 @@ if ($message != '') {
                             $mail->addAddress($dummb[4]);
                             if ($mail->send()) {
                                 $anzemail++;
-                            }
-                            else {
+                            } else {
                                 echo $mail->ErrorInfo;
                             }
                             $mail->ClearAllRecipients();
@@ -262,8 +248,7 @@ if ($message != '') {
             } // End for ($tippernr = $start - 1; $tippernr < $ende; $tippernr ++)
         } // End elseif ($liga != '' && $tage > 0 && $st >= 0)
         echo getMessage($anzemail . ' ' . $text['tipp'][175]);
-    }
-    elseif ($emailart == 2 && $adressat != '') {
+    } elseif ($emailart == 2 && $adressat != '') {
         $dummb = explode('|', $dumma[0]);
         for ($i = 0; $i < $anztipper && $adressat != $dummb[0]; $i ++) {
             $dummb = explode('|', $dumma[$i]);
@@ -278,8 +263,7 @@ if ($message != '') {
             $anzemail++;
             $mail->ClearAllRecipients();
             $mail->ClearReplyTos();
-        }
-        else {
+        } else {
             $sent = mail($dummb[4], $subject, $textmessage, $header);
         }
     }

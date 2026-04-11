@@ -326,11 +326,11 @@ if (url_check($json_a['extra']['check'])) {
 };
 
 /**
- * Sanitizes input values and logs potential XSS attempts to a custom file.
+ * Bereinigt Eingabewerte und protokolliert potenzielle XSS-Angriffe in einer benutzerdefinierten Datei.
  */
 function lmo_sanitize_and_log($data, $source = 'unknown', $isStrict = true)
 {
-    $logFile = __DIR__ . '/xss_log.txt';
+    $logFile = __DIR__ . '/xss_log.txt'; // DIe Logdatei befindet sich dann im Hauptordner des LMO's
 
     if (is_array($data)) {
         foreach ($data as $key => $value) {
@@ -377,4 +377,29 @@ $_COOKIE  = lmo_sanitize_and_log($_COOKIE, '$_COOKIE', true);
 // $_REQUEST manuell aus den bereits sauberen Werten zusammensetzen
 $_REQUEST = array_merge($_GET, $_POST, $_COOKIE);
 
+/**
+ * Zentrale Funktion zur Passwortprüfung und zum automatischen Upgrade auf sichere Hashes.
+ * Unterstützt Argon2ID, BCrypt und alten Klartext.
+ */
+function checkAndUpgradePassword($inputPass, $storedHash)
+{
+    $bestAlgo = defined('PASSWORD_ARGON2ID') ? PASSWORD_ARGON2ID : PASSWORD_BCRYPT;
+    $result = [
+        'success' => false,
+        'needsUpgrade' => false,
+        'newHash' => null
+    ];
+
+    // Prüfung: Stimmt der Hash (password_verify) ODER ist es noch alter Klartext?
+    if (password_verify($inputPass, $storedHash) || $inputPass === $storedHash) {
+        $result['success'] = true;
+
+        // Upgrade-Bedarf prüfen: Wenn Klartext ODER veralteter Algorithmus
+        if (!password_get_info($storedHash)['algo'] || password_needs_rehash($storedHash, $bestAlgo)) {
+            $result['needsUpgrade'] = true;
+            $result['newHash'] = password_hash($inputPass, $bestAlgo);
+        }
+    }
+    return $result;
+}
 ?>

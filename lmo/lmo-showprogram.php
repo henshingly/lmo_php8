@@ -32,7 +32,7 @@ if ($file != '') {
     for ($i = 1; $i <= $anzteams; $i++) { ?>
         <tr>
           <td align="right">
-            <acronym title="<?php echo $text[23] . ' ' . $teams[$i]; ?>"><?php
+            <acronym title="<?php echo $text[23] . '&nbsp;' . $teams[$i]; ?>"><?php
         if ($i != $selteam) { ?><a href="<?php echo $addp . $i?>"><?php echo $teamk[$i]; ?></a><?php
         } else {
             echo $teamk[$i];
@@ -109,50 +109,52 @@ if ($file != '') {
                         $lmo_teamaicon = HTML_smallTeamIcon($file, $teams[$teama[$j][$i]], ' alt=""');
                         $lmo_teambicon = HTML_smallTeamIcon($file, $teams[$teamb[$j][$i]], ' alt=""');
                     }
-
-                    /** Spielbericht verlinken */
+                    /** Spielbericht verlinken **/
                     if ($urlb == 1) {
                         if ($mberi[$j][$i] != '') {
-                            $lmo_spielbericht = $lmo_teamaicon . '<strong>' . $teams[$teama[$j][$i]] . '</strong> - ' . $lmo_teambicon . '<strong>' . $teams[$teamb[$j][$i]] . '</strong><br><br>';
-                            echo '<a href="' . $mberi[$j][$i] . '"  target="_blank" title="' . $text[270] . '"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" border="0" alt=""><span class="popup">' . $lmo_spielbericht . nl2br($text[270]) . '</span></a>';
+                            //Spielbericht Inhalt
+                            $lmo_spielbericht_html = '<strong>' . $teams[$teama[$j][$i]] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $teams[$teamb[$j][$i]] . '</strong>' . nl2br($text[270]);
+                            // Link mit Mouseover-Funktion und data-info Attribut
+                            echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" alt=""></span>&nbsp;';
                         } else {
                             echo '&nbsp;';
                         }
                     }
-
-                    /** bisherige Ergebnisse (AddOn Team Vergleich) */
-                    if (file_exists(PATH_TO_ADDONDIR . '/stats/lmo-showprogram.inc.php')) include(PATH_TO_ADDONDIR . '/stats/lmo-showprogram.inc.php');
-
-                    /** Notizen anzeigen */
+                    /** Notizen anzeigen **/
                     if ($mnote[$j][$i] != '' || $msieg[$j][$i] > 0) {
-                        $lmo_spielnotiz = $lmo_teamaicon . '<strong>' . $teams[$teama[$j][$i]] . '</strong> - ' . $lmo_teambicon . '<strong>' . $teams[$teamb[$j][$i]] . '</strong> ' . applyFactor($goala[$j][$i], $goalfaktor) . ':' . applyFactor($goalb[$j][$i], $goalfaktor);
-                        //Beidseitiges Ergebnis
-                        if ($msieg[$j][$i] == 3) {
-                            $lmo_spielnotiz .= ' / ' . applyFactor($goalb[$j][$i], $goalfaktor) . ':' . applyFactor($goala[$j][$i], $goalfaktor);
-                        }
+                        //Grüner Tisch: Beidseitiges Ergebnis vorbereiten
+                        $lmo_notiz_both = ($msieg[$st - 1][$i] == 3) ? ' / ' . applyFactor($goalb[$st - 1][$i], $goalfaktor) . ':' . applyFactor($goala[$st - 1][$i], $goalfaktor) : '';
+                        //Alles in EIN Tag packen, damit das CSS es als EINE zentrierte Zeile erkennt
+                        $lmo_spielnotiz = '<strong>' . $teams[$teama[$j][$i]] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $teams[$teamb[$j][$i]] . '&nbsp;&nbsp;' . applyFactor($goala[$j][$i], $goalfaktor) . ':' . applyFactor($goalb[$j][$i], $goalfaktor) . $lmo_notiz_both . '</strong>';
                         if ($spez == 1) {
-                            $lmo_spielnotiz .= ' ' . $mspez[$j][$i];
+                            $lmo_spielnotiz .= '&nbsp;' . $mspez[$j][$i] . '<br>';
                         }
                         //Grüner Tisch: Heimteam siegt
                         if ($msieg[$j][$i] == 1) {
-                            $lmo_spielnotiz .= "\n\n" . '<strong>' . $text[219] . ':</strong>' . "\n" . $teams[$teama[$j][$i]] . ' ' . $text[211];
+                            $lmo_spielnotiz .= '<strong>' . $text[219] . ':</strong>' . $teams[$teama[$j][$i]] . '&nbsp;' . $text[211] . '<br>';
                         }
                         //Grüner Tisch: Gastteam siegt
                         if ($msieg[$j][$i] == 2) {
-                            $lmo_spielnotiz .= "\n\n" . '<strong>' . $text[219] . ':</strong>' . "\n" . addslashes($teams[$teamb[$j][$i]] . ' ' . $text[211]);
+                            $lmo_spielnotiz .= '<strong>' . $text[219] . ':</strong>' . $teams[$teamb[$j][$i]] . '&nbsp;' . $text[211] . '<br>';
                         }
-                        //Beidseitiges Ergebnis
+                        //Grüner Tisch: Beidseitiges Ergebnis
                         if ($msieg[$j][$i] == 3) {
-                            $lmo_spielnotiz .= "\n\n" . '<strong>' . $text[219] . ':</strong>' . "\n" . addslashes($text[212]);
+                            $lmo_spielnotiz .= '<strong>' . $text[219] . ':</strong>' . $text[212] . '<br>';
                         }
                         //Allgemeine Notiz
                         if ($mnote[$j][$i] != '') {
-                            $lmo_spielnotiz .= "\n\n" . '<strong>' . $text[22] . ':</strong>' . "\n" . $mnote[$j][$i];
+                            $lmo_spielnotiz .= '<strong>' . $text[22] . ':</strong>' . $mnote[$j][$i] . '<br>';
                         }
-                        echo '<a href="#" onclick="alert("' . addcslashes('', htmlentities(strip_tags($lmo_spielnotiz))) . '");window.focus();return false;"><span class="popup">' . nl2br($lmo_spielnotiz) . '</span><img src="' . URL_TO_IMGDIR . '/lmo-st2.svg" height="15" border="0" alt=""></a>';
+
+                        //Ausgabe als neutrales Element (kein Link)
+                        echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars(nl2br($lmo_spielnotiz)) . '" class="tooltip-trigger"><img src="' . URL_TO_IMGDIR . '/lmo-st2.svg" height="15" class="svg-no-style" alt=""></span>';
                         $lmo_spielnotiz = '';
-                    } else {
+                    }
+
+                    /** bisherige Ergebnisse (AddOn Team Vergleich) */
+                    if (file_exists(PATH_TO_ADDONDIR . '/stats/lmo-showprogram.inc.php')) {
                         echo '&nbsp;';
+                        include(PATH_TO_ADDONDIR . '/stats/lmo-showprogram.inc.php');
                     } ?></td>
         </tr>
 <?php

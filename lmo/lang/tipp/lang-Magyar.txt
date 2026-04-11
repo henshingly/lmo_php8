@@ -41,7 +41,7 @@
 040=Link megjelenítése fogadási játékhoz
 041=A tippek sikeresen elmentve
 042=Rossz jelszó
-043=A becenév nem található
+043=A becenév/e-mail cím nem található
 044=Regisztrált játékosok jelentkezzenek be itt:
 045=Ha még nincs bejelentkezve:
 046=Itt regisztrálhat a fogadási játékra
@@ -253,7 +253,7 @@
 252=Minden játék a következoben
 253=A tippek beküldésének engedélyezése dátumonkénti alapon
 254=...a következo néhány játékhoz
-255=Bejelentkezés: [url]
+255=Bejelentkezés:
 256=Napok átugrása
 257=Menj vissza napokat
 258=Minden játék innen

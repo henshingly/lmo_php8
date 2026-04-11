@@ -34,7 +34,6 @@ while($files = readdir($verz)) {
         if ($datei && check_hilfsadmin($files)) {
             $ligadatei[$liga_counter]['file_date'] = filemtime(PATH_TO_LMO . '/' . $dirliga . $subdir . $files);  //Datum
             $ligadatei[$liga_counter]['file_name'] = $files;
-
             $ligadatei[$liga_counter]['liga_name'] = '';                //Liganame
             $ligadatei[$liga_counter]['aktueller_spieltag'] = '';       //Aktueller Spieltag
             $ligadatei[$liga_counter]['anz_teams'] = '';                //Anzahl der Mannschaften
@@ -188,9 +187,7 @@ if (isset($_SESSION['liga_sort']) && isset($_SESSION['liga_sort_direction'])) {
     if ($sortprojection[$lmo_liga_sort] >= 0) echo 'ligaTable.sort(' . $sortprojection[$lmo_liga_sort] . ', ' . $sortprojection[$lmo_liga_sort_direction] . ');';
 } ?>
 </script>
-
 <?php
-
 function cmp ($a1, $a2) {
     $sort = (isset($_SESSION['liga_sort']) && isset($a1[$_SESSION['liga_sort']]) && isset($a1[$_SESSION['liga_sort']]))?$_SESSION['liga_sort']:'liga_name';
     if (is_numeric($a1[$sort]) && is_numeric($a2[$sort])) {  //Numerischer Vergleich

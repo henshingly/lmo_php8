@@ -41,7 +41,7 @@
 040=Ver link para jogo de apostas
 041=Dicas guardadas com sucesso
 042=Password errada
-043=Apelido não encontrado
+043=Apelido/endereço de e-mail não encontrado
 044=Jogadores registados por favor façam login aqui:
 045=Se ainda não está ligado:
 046=Aqui pode inscrever-se no jogo de apostas
@@ -253,7 +253,7 @@
 252=Todos os jogos da próxima
 253=Permitir o envio de dicas data a data
 254=...para jogos nos próximos
-255=Login: [url]
+255=Login:
 256=Saltar dias para a frente
 257=Voltar dias
 258=Todos os jogos de

@@ -29,7 +29,8 @@ include(PATH_TO_LMO . '/lmo-dirlist.php'); ?>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td align="left"><?php
+    <td align="left">
+<?php
 if ($archivlink == 1) {
     $subdir = str_replace(array('../', './'), array('', ''), $subdir);
     $dirs = get_dir($dirliga . $subdir);
@@ -39,11 +40,14 @@ if ($archivlink == 1) {
     $output = '';
     foreach($dirs as $dir) {
         $descr = @file_get_contents(PATH_TO_LMO . '/' . $dirliga . $subdir . $dir . '/dir-descr.txt');
-        $output .= "      <tr><td><a href='" . $_SERVER['PHP_SELF'] . '?subdir=' . $subdir . $dir . '/">' . $dir . '</a></td>';
+        $output .= '        <tr>
+          <td><a href="' . $_SERVER['PHP_SELF'] . '?subdir=' . $subdir . $dir . '">' . $dir . '</a></td>';
         if ($descr != '') {
-            $output .= '      <td><small>' . htmlentities($descr) . '</small></td>';
+            $output .= '
+          <td><small>' . htmlentities($descr) . '</small></td>';
         }
-        $output .= '</tr>';
+        $output .= '
+        </tr>' . "\n";
     }
 
     if ($output != '') {?>
@@ -51,8 +55,10 @@ if ($archivlink == 1) {
         <tr>
           <th style="text-align:center" colspan="2"><?php echo $text[509]; ?></th>
         </tr>
-        <?php echo $output; ?>
-      </table><?php
+<?php
+        echo $output; ?>
+      </table>
+<?php
     }
     if (str_contains($subdir, '/')) { ?>
       <p><a href="<?php echo $_SERVER['PHP_SELF']; ?>?subdir=<?php echo dirname($subdir) . '/'; ?>"><?php echo $text[5]; ?> <?php echo $text[562]; ?></a></p><?php

@@ -41,7 +41,7 @@
 040=Link spre pronosticuri
 041=Pronosticurile au fost salvate
 042=Parola gresita
-043=Acest utilizator nu exista
+043=Poreclă/adresă de e-mail negăsită
 044=Daca esti deja inregistrat, te poti autentifica aici:
 045=Daca nu esti inregistrat:
 046=-aici te poti inregistra pentru pronosticuri
@@ -253,7 +253,7 @@
 252=Meciurile din urmatoarele
 253=Permiteți trimiterea bacșilor după dată
 254=...pentru jocurile din următorii câțiva ani
-255=Autentificare: [url]
+255=Autentificare:
 256=Sări înainte de zile
 257=Derulați înapoi zilele
 258=Toate meciurile din

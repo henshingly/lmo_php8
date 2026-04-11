@@ -41,7 +41,7 @@
 040=Lage link til tippespillet
 041=Tips suksessfult lagret
 042=Galt passord
-043=Nick ikke funnet
+043=Kallenavn/e-postadresse ikke funnet
 044=Registrerte spillere vennnligst logg dere inn her:
 045=Hvis du ennå ikke er registrert:
 046=Her kan du registrere deg for tippespillet:
@@ -253,7 +253,7 @@
 252=Alle kamper de neste
 253=Tillate tipping etter dato
 254=...for kamper de neste
-255=Logg inn: [url]
+255=Logg inn:
 256=dager fremover
 257=dager bakover
 258=Alle kamper fra

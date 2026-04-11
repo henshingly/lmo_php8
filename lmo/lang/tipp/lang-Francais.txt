@@ -41,7 +41,7 @@
 040=Liens vers le concours de pronostiques
 041=Pronostique sauvegardé avec succès
 042=Mot de passe incorrect
-043=Pseudo incorrect ou inexistant
+043=Surnom/adresse e-mail introuvable
 044=Utilisateur déjà inscrit, se connecter ici:
 045=Si vous n'êtes pas encore inscrit:
 046=Pour le concours de pronostique, vous pouvez
@@ -253,7 +253,7 @@
 252=Tous les matchs des
 253=Permettre les pronostiques d'après la date
 254=...pour les matchs dans les prochaines
-255=Connexion: [url]
+255=Connexion:
 256=Jour suivant
 257=Jour précédent
 258=Tous les matchs de

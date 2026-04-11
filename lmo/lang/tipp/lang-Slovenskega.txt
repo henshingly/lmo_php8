@@ -41,7 +41,7 @@
 040=Prikaži povezavo do stavne igre
 041=Nasveti uspešno shranjeni
 042=Napacno geslo
-043=Vzdevka ni bilo mogoce najti
+043=Vzdevek/e-poštni naslov ni bil najden
 044=Registrirani igralci se prijavite tukaj:
 045=Ce še niste prijavljeni:
 046=Tukaj se lahko prijavite za igro stav
@@ -253,7 +253,7 @@
 252=Vse igre v naslednjem
 253=Dovoli oddajo nasvetov po datumih
 254=...za igre v naslednjih nekaj
-255=Prijava: [url]
+255=Prijava:
 256=Preskoci naprej dni
 257=Pojdi nazaj
 258=Vse igre od

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -17,84 +17,87 @@
   *
   */
 
-$xtipperpass=isset($_REQUEST['xtipperpass'])?$_REQUEST['xtipperpass']:'';
-$xtipperpassneu=isset($_REQUEST['xtipperpassneu'])?$_REQUEST['xtipperpassneu']:'';
-$xtipperpassneuw=isset($_REQUEST['xtipperpassneuw'])?$_REQUEST['xtipperpassneuw']:'';
-$newpage=isset($_REQUEST['newpage'])?1:0;
+$xtipperpass = isset($_REQUEST['xtipperpass']) ? $_REQUEST['xtipperpass'] : '';
+$xtipperpassneu = isset($_REQUEST['xtipperpassneu']) ? $_REQUEST['xtipperpassneu'] : '';
+$xtipperpassneuw = isset($_REQUEST['xtipperpassneuw']) ? $_REQUEST['xtipperpassneuw'] : '';
+$newpage = isset($_REQUEST['newpage']) ? 1 : 0;
 
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-if (($action == "tipp") && ($todo == "pwchange")) {
+require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
+if (($action == 'tipp') && ($todo == 'pwchange')) {
+    $users = array();
+    $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
+    $datei = fopen($pswfile, 'rb');
+    while ($datei && !feof($datei)) {
+        $zeile = fgets($datei, 1000);
+        $zeile = trim($zeile);
+        if ($zeile != '') {
+            if ($zeile != '') {
+                array_push($users, $zeile);
+            }
+        }
+    }
+    fclose($datei);
 
-  $users = array("");
-  $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
-  $datei = fopen($pswfile, "rb");
-  while ($datei && !feof($datei)) {
-    $zeile = fgets($datei, 1000);
-    $zeile = trim($zeile);
-    if ($zeile != "") {
-      if ($zeile != "") {
-        array_push($users, $zeile);
-      }
+    $gef = 0;
+    for ($i = 1; $i < count($users) && $gef == 0; $i++) {
+        $dummb = explode('|', $users[$i]);
+        if ($_SESSION['lmotippername'] == $dummb[0]) {
+            // Nick gefunden
+            $gef = 1;
+            $save = $i;
+        }
     }
-  }
-  fclose($datei);
-  
-  $gef = 0;
-  for ($i = 1; $i < count($users) && $gef == 0; $i++) {
-    $dummb = explode('|', $users[$i]);
-    if ($_SESSION['lmotippername'] == $dummb[0]) {
-      // Nick gefunden
-      $gef = 1;
-      $save = $i;
+    if ($gef == 0) {
+        exit;
     }
-  }
-  if ($gef == 0) {
-    exit;
-  }
 
-  if ($newpage != 1) {
-    if ($dummb[5] == "") {
-      $xtippervereinradio = 0;
-    } else {
-      $xtippervereinradio = 1;
-      $xtippervereinalt = $dummb[5];
+    if ($newpage != 1) {
+        if ($dummb[5] == '') {
+            $xtippervereinradio = 0;
+        } else {
+            $xtippervereinradio = 1;
+            $xtippervereinalt = $dummb[5];
+        }
     }
-  }
-   
-  if ($newpage == 1) {
-    $xtipperpass = trim($xtipperpass);
-    if ($xtipperpass != $dummb[1]) {
-      $newpage = 0;
-      echo getMessage($text['tipp'][42],true);
+
+    if ($newpage == 1) {
+        $xtipperpass = trim($xtipperpass);
+
+        // Prüfung gegen den Hash (unterstützt BCRYPT und ARGON2ID automatisch)
+        if (!password_verify($xtipperpass, $dummb[1])) {
+            $newpage = 0;
+            echo getMessage($text['tipp'][42], true);
+        }
     }
-  }
-   
-  if ($newpage == 1) {
-    $xtipperpassneu = trim($xtipperpassneu);
-    if ($xtipperpassneu == "") {
-      $newpage = 0;
-      echo getMessage($text['tipp'][69],true);
-    } elseif (strlen($xtipperpassneu) < 3) {
-      $newpage = 0;
-      echo getMessage($text['tipp'][73],true);
+
+    if ($newpage == 1) {
+        $xtipperpassneu = trim($xtipperpassneu);
+        if ($xtipperpassneu == '') {
+            $newpage = 0;
+            echo getMessage($text['tipp'][69], true);
+        } elseif (strlen($xtipperpassneu) < 3) {
+            $newpage = 0;
+            echo getMessage($text['tipp'][73], true);
+        }
+        $xtipperpassneuw = trim($xtipperpassneuw);
+        if ($xtipperpassneuw != $xtipperpassneu) {
+            $newpage = 0;
+            echo getMessage($text['tipp'][70], true);
+        }
     }
-    $xtipperpassneuw = trim($xtipperpassneuw);
-    if ($xtipperpassneuw != $xtipperpassneu) {
-      $newpage = 0;
-      echo getMessage($text['tipp'][70],true);
+
+    if ($newpage == 1) {
+        $users[$save] = $dummb[0] . '|' . $xtipperpassneu . '|' . $dummb[2] . '|' . $dummb[3] . '|' . $dummb[4] . '|' . $dummb[5] . '|' . $dummb[6] . '|' . $dummb[7] . '|' . $dummb[8] . '|' . $dummb[9] . '|' . $dummb[10] . '|EOL';
+        require(PATH_TO_ADDONDIR . '/tipp/lmo-tippsaveauth.php');
     }
-  }
-   
-  if ($newpage == 1) {
-    $users[$save] = $dummb[0]."|".$xtipperpassneu."|".$dummb[2]."|".$dummb[3]."|".$dummb[4]."|".$dummb[5]."|".$dummb[6]."|".$dummb[7]."|".$dummb[8]."|".$dummb[9]."|".$dummb[10]."|EOL";
-    require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
-  } // end ($newpage==1)
 ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
+  <caption><?php echo $_SESSION['lmotippername']; if ($_SESSION['lmotipperverein'] != '') {echo ' - ' . $_SESSION['lmotipperverein'];} ?></caption>
   <tr>
     <th align="center"><?php echo $text['tipp'][107]; ?></th>
-  </tr><?php if ($newpage!=1){ ?>
+  </tr>
+<?php
+    if ($newpage != 1) { ?>
   <tr>
     <td align="center">
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -104,17 +107,17 @@ if (($action == "tipp") && ($todo == "pwchange")) {
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><?php echo " ".$text['tipp'][140]; ?> &nbsp;</td>
+            <td class="nobr" align="right"><?php echo '&nbsp;' . $text['tipp'][140]; ?> &nbsp;</td>
             <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $xtipperpass; ?>"></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><?php echo " ".$text['tipp'][139]; ?> &nbsp;</td>
+            <td class="nobr" align="right"><?php echo '&nbsp;' . $text['tipp'][139]; ?> &nbsp;</td>
             <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneu" size="16" maxlength="32" value="<?php echo $xtipperpassneu; ?>"></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" align="right"><?php echo " ".$text['tipp'][139]." ".$text['tipp'][19]; ?> &nbsp;</td>
+            <td class="nobr" align="right"><?php echo '&nbsp;' . $text['tipp'][139] . '&nbsp;' . $text['tipp'][19]; ?>&nbsp;</td>
             <td class="nobr"><input class="lmo-formular-input" type="password" name="xtipperpassneuw" size="16" maxlength="32" value="<?php echo $xtipperpassneuw; ?>"></td>
           </tr>
           <tr>
@@ -125,13 +128,20 @@ if (($action == "tipp") && ($todo == "pwchange")) {
         </table>
       </form>
     </td>
-  </tr><?php  }
-  if ($newpage==1){ /* erfolgreich */?>
+  </tr>
+<?php
+    }
+    if ($newpage == 1) { /* erfolgreich */?>
   <tr>
     <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
   </tr>
   <tr>
-    <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp;todo=" ?>"><?php echo $text[5]." ".$text['tipp'][1]; ?></a></td>
-  </tr><?php  }?>
-</table><?php } 
-$file=""; ?>
+    <td class="lmoFooter" align="right"><a href="<?php echo $_SERVER['PHP_SELF'] . '?action=tipp&amp;todo='; ?>"><?php echo $text[5] . '&nbsp;' . $text['tipp'][1]; ?></a></td>
+  </tr>
+<?php
+    }?>
+</table>
+<?php
+}
+$file = '';
+?>
