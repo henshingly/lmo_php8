@@ -168,66 +168,66 @@ if ($file != '') {
 
         //Kalenderlink
         if ($datc == 1) {
-            $output_kalender .= $action != 'cal' ? '<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}</a>' : $text[140];
+            $output_kalender .= $action != 'cal' ? '<a href="' . $addm . 'cal&amp;st=' . $st . '" title="' . $text[141] . '">' . $text[140] . '</a>' : $text[140];
             $output_kalender .= '&nbsp;&nbsp;';
         }
         //Ergebnis/Tabelle
         if ($tabonres == 0) {
             if ($ergebnis == 1) {
-                $output_ergebnisse .= $action != 'results' ? '<a href='{$addm}results&amp;st={$ste}' title='{$text[11]}'>{$text[10]}</a>' : $text[10];
+                $output_ergebnisse .= $action != 'results' ? '<a href="' . $addm . 'results&amp;st=' . $ste . '" title="' . $text[11] . '">' . $text[10] . '</a>' : $text[10];
                 $output_ergebnisse .= '&nbsp;&nbsp;';
             }
             if ($tabelle == 1) {
-                $output_tabelle .= $action != 'table' ? '<a href='{$addm}table' title='{$text[17]}'>{$text[16]}</a>' : $text[16];
+                $output_tabelle .= $action != 'table' ? '<a href="' . $addm . 'table" title="' . $text[17] . '">' . $text[16] . '</a>' : $text[16];
                 $output_tabelle .= '&nbsp;&nbsp;';
             }
             //Kombinierte Ansicht
         } else {
             if ($ergebnis == 1) {
-                $output_ergebnisse .= $action != 'results' && $action != 'table' ? '<a href='{$addm}results' title='{$text[104]}'>{$text[10]}/{$text[16]}</a>' : $text[10] . '/' . $text[16];
+                $output_ergebnisse .= $action != 'results' && $action != 'table' ? '<a href="' . $addm . 'results" title="' . $text[104] . '">' . $text[10] . '/' . $text[16] . '</a>' : $text[10] . '/' . $text[16];
                 $output_ergebnisse .= '&nbsp;&nbsp;';
             }
         }
 
         //Kreuztabelle
         if ($kreuz == 1) {
-            $output_kreuztabelle .= $action != 'cross' ? '<a href='{$addm}cross' title='{$text[15]}'>{$text[14]}</a>' : $text[14];
+            $output_kreuztabelle .= $action != 'cross' ? '<a href="' . $addm . 'cross" title="' . $text[15] . '">' . $text[14] . '</a>' : $text[14];
             $output_kreuztabelle .= '&nbsp;&nbsp;';
         }
         //Spielplan
         if ($plan == 1) {
-            $output_spielplan .= $action != 'program' ? '<a href='{$addm}program' title='{$text[13]}'>{$text[12]}</a>' : $text[12];
+            $output_spielplan .= $action != 'program' ? '<a href="' . $addm . 'program" title="' . $text[13] . '">' . $text[12] . '</a>' : $text[12];
             $output_spielplan .= '&nbsp;&nbsp;';
         }
         //Fieberkurve
         if ($kurve == 1) {
-            $output_fieberkurve .= $action != 'graph' ? '<a href='{$addm}graph' title='{$text[134]}'>{$text[133]}</a>' : $text[133];
+            $output_fieberkurve .= $action != 'graph' ? '<a href="' . $addm . 'graph" title="' . $text[134] . '">' . $text[133] . '</a>' : $text[133];
             $output_fieberkurve .= '&nbsp;&nbsp;';
         }
         //Ligastatistiken
         if ($ligastats == 1) {
-            $output_ligastatistik .= $action != 'stats' ? '<a href='{$addm}stats&amp;stat1={$stat1}&amp;stat2={$stat2}' title='{$text[19]}'>{$text[18]}</a>' : $text[18];
+            $output_ligastatistik .= $action != 'stats' ? '<a href="' . $addm . 'stats&amp;stat1=' . $stat1 . '&amp;stat2=' . $stat2 . '" title="' . $text[19] . '">' . $text[18] . '</a>' : $text[18];
             $output_ligastatistik .= '&nbsp;&nbsp;';
         }
         // Pokalligen
     } else {
         //Kalenderlink
         if ($datc == 1) {
-            $output_kalender .= $action != 'cal' ? '<a href='{$addm}cal&amp;st={$st}' title='{$text[141]}'>{$text[140]}</a>' : $text[140];
+            $output_kalender .= $action != 'cal' ? '<a href="' . $addm . 'cal&amp;st=' . $st . '" title="' . $text[141] . '">' . $text[140] . '</a>' : $text[140];
             $output_kalender .= '&nbsp;&nbsp;';
         }
         //Ergebnisse
         if ($ergebnis == 1) {
-            $output_ergebnisse .= $action != 'results' ? '<a href='{$addm}results&amp;st={$ste}' title='{$text[11]}'>{$text[10]}</a>' : $text[10];
+            $output_ergebnisse .= $action != 'results' ? '<a href="' . $addm . 'results&amp;st=' . $ste . '" title="' . $text[11] . '">' . $text[10] . '</a>' : $text[10];
             $output_ergebnisse .= '&nbsp;&nbsp;';
         }
         //Spielplan
         if ($plan == 1) {
-            $output_spielplan .= $action != 'program' ? '<a href='{$addm}program' title='{$text[13]}'>{$text[12]}</a>' : $text[12];
+            $output_spielplan .= $action != 'program' ? '<a href="' . $addm . 'program" title="' . $text[13] . '">' . $text[12] . '</a>' : $text[12];
             $output_spielplan .= '&nbsp;&nbsp;';
         }
     }
-    $output_info .= $action != 'info' ? '<a href='{$addm}info' title='{$text[21]}'>{$text[20]}</a>' : $text[20];
+    $output_info .= $action != 'info' ? '<a href="' . $addm . 'info" title="' . $text[21] . '">' . $text[20] . '</a>' : $text[20];
 
     $druck = 0;
 
@@ -299,7 +299,7 @@ if ($file != '') {
 //Ligenübersicht
 if ($backlink == 1 && ($file != '' || $action == 'tipp')) {
     if (basename($file) == $file) {
-        $output_ligenuebersicht .= '<a href="' . $_SERVER['PHP_SELF'] . '" title="' . $text[392]} . '">' . $text[391] . '</a>&nbsp;&nbsp;&nbsp;';
+        $output_ligenuebersicht .= '<a href="' . $_SERVER['PHP_SELF'] . '" title="' . $text[392] . '">' . $text[391] . '</a>&nbsp;&nbsp;&nbsp;';
     } else {
         $output_ligenuebersicht .= '<a href="' . $_SERVER['PHP_SELF'] . '?subdir=' . dirname($file) . '" title="' . $text[392] . '">' . $text[391] . '</a>&nbsp;&nbsp;&nbsp;';
     }
@@ -331,7 +331,7 @@ if ($file != '' && $nticker == 1) {
 $output_tippspiel = '';
 if ($eintippspiel == 1) {
     if ($tipp_immeralle == 1 || str_contains($tipp_ligenzutippen, substr(basename($file), 0, -4))) {
-        $output_tippspiel .= $action != 'tipp' ? '<a href="' . $addm . 'tipp" title="' . $text['tipp'][0] . '">' . $text['tipp'][0] . '</a>&nbsp;&nbsp;' : $text['tipp'][0] . '&nbsp;&nbsp;';
+        $output_tippspiel .= $action != 'tipp' ? '<a <a href="' . $addm . 'tipp" title="' . $text['tipp'][0] . '">' . $text['tipp'][0] : $text['tipp'][0];
     }
 }
 d($template->toString());
