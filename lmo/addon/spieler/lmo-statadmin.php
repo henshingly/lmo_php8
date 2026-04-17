@@ -132,14 +132,14 @@ if (isset($file) && $file != '') {
         else $filepointer = fopen($filename, 'w+b');
         $spalten = array();
         $data = array();
-        $spalten = fgetcsv($filepointer, 1000, '#');   // Zeile mit Spaltenbezeichnern
-        $typ = array();                                // Spaltentyp (true = String)
+        $spalten = fgetcsv($filepointer, 1000, '#', '"', '');   // Zeile mit Spaltenbezeichnern
+        $typ = array();                                         // Spaltentyp (true = String)
         $zeile = 0;
-        if ($spalten == false) {                       // Datei war leer
+        if ($spalten == false) {                                // Datei war leer
             $spalten = array();
-            $spalten[0] = $text['spieler'][2];         // Name der ersten Spalte
+            $spalten[0] = $text['spieler'][2];                  // Name der ersten Spalte
             set_file_buffer($filepointer, 0);
-            fwrite($filepointer, $spalten[0] . "\n");  // Erste Zeile/Spalte in Datei schreiben
+            fwrite($filepointer, $spalten[0] . "\n");           // Erste Zeile/Spalte in Datei schreiben
         }
         // Wenn in einer Spalte eine Formel steht, wurde am Namen *_*-* angehängt
         $formel_ges = 0;
@@ -460,9 +460,9 @@ if (isset($file) && $file != '') {
                     <acronym title="<?php echo $text['spieler'][7];?>"><input type="text" name="wert"></acronym>
                     <input class="lmo-formular-button" type="submit" value=" + "><br>
                     <acronym title="<?php echo $text['spieler'][30];?>"><?php echo $text['spieler'][38];?>:</acronym>
-                    <input type="radio" name="type" value="0" checked>&nbsp;<?php echo $text['spieler'][52];?> 
-                    <input type="radio" name="type" value="<?php echo $text['spieler'][43];?>">&nbsp;<?php echo $text['spieler'][53];?> 
-                    <input type="radio" name="type" value="F">&nbsp;<?php echo $text['spieler'][54];?> 
+                    <input type="radio" name="type" value="0" checked>&nbsp;<?php echo $text['spieler'][52];?>
+                    <input type="radio" name="type" value="<?php echo $text['spieler'][43];?>">&nbsp;<?php echo $text['spieler'][53];?>
+                    <input type="radio" name="type" value="F">&nbsp;<?php echo $text['spieler'][54];?>
                     <input type="hidden" name="option" value="addcolumn">
                     <input type="hidden" name="sort" value="<?php echo $spieler_sort;?>">
                     <input type="hidden" name="todo" value="edit">
