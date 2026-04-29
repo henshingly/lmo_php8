@@ -207,19 +207,74 @@ function getLangSelector()
             if ($lang[1] != $_SESSION['lmouserlang']) {
                 $border = '1mm';
                 $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . '.svg';
-                $output_sprachauswahl .= "      <a href='{$_SERVER['PHP_SELF']}?" . htmlentities(preg_replace("/&?lmouserlang=.+?\b/", "", $_SERVER['QUERY_STRING'])) . "&amp;lmouserlang={$lang[1]}' title='{$lang[1]}'><img src='{$imgfile}' height='16' style='margin-right:$border' title='{$lang[1]}' alt='{$lang[1]}'></a>\n";
+                $output_sprachauswahl .= '
+           <a href="' . $_SERVER['PHP_SELF'] . '?' . htmlentities(preg_replace('/&?lmouserlang=.+?\b/', '', $_SERVER['QUERY_STRING'])) . '&amp;lmouserlang=' . $lang[1] . '" title="' . $lang[1] . '"><img src="' . $imgfile . '" height="16" style="margin-right:' . $border . '" title="' . $lang[1] . '" alt="' . $lang[1] . '"></a>';
             } else {
                 $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . '.selected.svg';
-                $output_sprachauswahl .= "      <img src='{$imgfile}' height='16' border='$border' title='{$lang[1]}' alt='{$lang[1]}'>\n";
+                $output_sprachauswahl .= '
+          <img src="' . $imgfile . '" height="16" border="' . $border . '" title="' . $lang[1] . '" alt="' . $lang[1] . '">';
             }
         }
         $border = '0';
     }
     closedir($handle);
     if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 2) {
-        $output_sprachauswahl .= '      &nbsp;<a href="' . URL_TO_LMO . '/lang/translate.php"> » ' . $GLOBALS['text'][573] . '</a>';
+        $output_sprachauswahl .= ' >> <a href="' . URL_TO_LMO . '/lang/lmo-admintranslate.php" class="lmo-lang-edit" title="' . htmlspecialchars($GLOBALS['text'][573]) . '">';
+        $output_sprachauswahl .= '<img src="'.URL_TO_IMGDIR.'/pencil.svg" height="20" alt="Edit">';
+        $output_sprachauswahl .= '</a>';
     }
     return $output_sprachauswahl;
+}
+
+function getLangSelectorSide()
+{
+    $currentLang = $_SESSION['lmouserlang'] ?? 'Deutsch';
+    $currentFlag = URL_TO_IMGDIR . '/' . $currentLang . '.svg';
+
+    $output = '<div class="lmo-lang-side">';
+
+    $output .= '<div class="lmo-lang-trigger">';
+    $output .= '<img src="' . $currentFlag . '" height="18" alt="' . $currentLang . '" title="' . $currentLang . '">';
+    $output .= '</div>';
+
+    $output .= '<div class="lmo-lang-flyout">';
+
+    $langs = [];
+
+    if ($handle = opendir(PATH_TO_LANGDIR)) {
+        while (false !== ($f = readdir($handle))) {
+            if (preg_match('/^lang-?(.*)?\.txt$/', $f, $lang) > 0) {
+                if ($lang[1] == '') continue;
+
+                $langs[] = $lang[1];
+            }
+        }
+        closedir($handle);
+    }
+
+    sort($langs, SORT_NATURAL | SORT_FLAG_CASE);
+
+    foreach ($langs as $langName) {
+
+        $imgfile = URL_TO_IMGDIR . '/' . $langName . '.svg';
+
+        $link = $_SERVER['PHP_SELF'] . '?' . htmlentities(preg_replace('/&?lmouserlang=.+?\b/', '', $_SERVER['QUERY_STRING'])) . '&lmouserlang=' . $langName;
+
+        $output .= '<a href="' . $link . '" class="lmo-lang-item" title="' . $langName . '">';
+        $output .= '<img src="' . $imgfile . '" height="20" alt="' . $langName . '">';
+        $output .= '</a>';
+    }
+
+    if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 2) {
+        $output .= ' >> <a href="' . URL_TO_LMO . '/lang/translate.php"
+            class="lmo-lang-edit"
+            title="' . htmlspecialchars($GLOBALS['text'][573]) . '">';
+        $output .= '<img src="'.URL_TO_IMGDIR.'/pencil.svg" height="20" alt="Edit">';
+        $output .= '</a>';
+    }
+    $output .= '</div></div>';
+
+    return $output;
 }
 
 function get_timezones()
@@ -293,8 +348,8 @@ function redirect($location)
 }
 
 
-// URL mit PHP auf Existenz überprüfen
-// Funktion deklarieren
+// Check URL for existence using PHP
+// Declare function
 function url_check($url)
 {
     $url_objects = @get_headers($url);
@@ -309,7 +364,7 @@ $lmo_version_search = array('<', '>', '=');
 $min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php']);
 $updatefilecheck_URL = $json_a['extra']['check'];
 
-// UpdateURL prüfen
+// Check updateURL
 if (url_check($json_a['extra']['check'])) {
     $LMO_UPDATE = file_get_contents($json_a['extra']['check'], false);
     $json_update = json_decode($LMO_UPDATE, true, 4);
@@ -320,17 +375,17 @@ if (url_check($json_a['extra']['check'])) {
     $new_lmo_version_time = $json_update['stable']['time'];
     $new_lmo_version_require_php = $json_update['stable']['require']['php'];
 } else {
-    // UpdateURL ist nicht erreichbar
+    // The updateURL is unreachable.
     $new_lmo_version = $json_a['version'];
     $new_lmo_version_link = '';
 };
 
 /**
- * Bereinigt Eingabewerte und protokolliert potenzielle XSS-Angriffe in einer benutzerdefinierten Datei.
+ * Sanitizes input values and logs potential XSS attempts to a custom file.
  */
 function lmo_sanitize_and_log($data, $source = 'unknown', $isStrict = true)
 {
-    $logFile = __DIR__ . '/xss_log.txt'; // DIe Logdatei befindet sich dann im Hauptordner des LMO's
+    $logFile = __DIR__ . '/xss_log.txt';
 
     if (is_array($data)) {
         foreach ($data as $key => $value) {
@@ -341,17 +396,17 @@ function lmo_sanitize_and_log($data, $source = 'unknown', $isStrict = true)
 
     $original = (string)$data;
 
-    // 1. Grundreinigung (Tags weg)
+    // 1. Basic cleaning (Tags away)
     $sanitized = strip_tags($original);
 
     if ($isStrict) {
-        // 2. Aggressives Blockieren von Funktionsaufrufen (Klammern)
+        // 2. Aggressive blocking of function calls (brackets)
         $sanitized = str_replace(['(', ')', '`'], ['&#40;', '&#41;', '&#96;'], $sanitized);
 
-        // 3. Blockieren von Attribut-Ausbrüchen (Anführungszeichen)
+        // 3. Blocking attribute breakouts (quotation marks)
         $sanitized = str_replace(['"', "'"], ['&quot;', '&#39;'], $sanitized);
 
-        // 4. HTML5 & JS Keyword-Killer (autofocus, onfocus, javascript, etc.)
+        // 4. HTML5 & JS keyword killers (autofocus, onfocus, javascript, etc.)
         $bad_patterns = [
             '/autofocus/i', '/contenteditable/i', '/on[a-z]+=/i',
             '/javascript:/i', '/<script/i', '/eval/i'
@@ -359,7 +414,7 @@ function lmo_sanitize_and_log($data, $source = 'unknown', $isStrict = true)
         $sanitized = preg_replace($bad_patterns, 'no_$0', $sanitized);
     }
 
-    // Logging bei Manipulation
+    // Logging in case of manipulation
     if ($original !== $sanitized) {
         $timestamp = date("Y-m-d H:i:s");
         $logMessage = "[$timestamp] [IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown') . "] Blocked $source\n";
@@ -369,37 +424,12 @@ function lmo_sanitize_and_log($data, $source = 'unknown', $isStrict = true)
     return $sanitized;
 }
 
-// Erst GET/POST einzeln, dann REQUEST komplett neu aufbauen
+// First, rebuild the GET/POST command individually, then rebuild the entire REQUEST.
 $_GET     = lmo_sanitize_and_log($_GET, '$_GET', true);
 $_POST    = lmo_sanitize_and_log($_POST, '$_POST', (isset($_SESSION['lmouserok']) ? false : true));
 $_COOKIE  = lmo_sanitize_and_log($_COOKIE, '$_COOKIE', true);
 
-// $_REQUEST manuell aus den bereits sauberen Werten zusammensetzen
+// Manually construct $_REQUEST from the already clean values
 $_REQUEST = array_merge($_GET, $_POST, $_COOKIE);
 
-/**
- * Zentrale Funktion zur Passwortprüfung und zum automatischen Upgrade auf sichere Hashes.
- * Unterstützt Argon2ID, BCrypt und alten Klartext.
- */
-function checkAndUpgradePassword($inputPass, $storedHash)
-{
-    $bestAlgo = defined('PASSWORD_ARGON2ID') ? PASSWORD_ARGON2ID : PASSWORD_BCRYPT;
-    $result = [
-        'success' => false,
-        'needsUpgrade' => false,
-        'newHash' => null
-    ];
-
-    // Prüfung: Stimmt der Hash (password_verify) ODER ist es noch alter Klartext?
-    if (password_verify($inputPass, $storedHash) || $inputPass === $storedHash) {
-        $result['success'] = true;
-
-        // Upgrade-Bedarf prüfen: Wenn Klartext ODER veralteter Algorithmus
-        if (!password_get_info($storedHash)['algo'] || password_needs_rehash($storedHash, $bestAlgo)) {
-            $result['needsUpgrade'] = true;
-            $result['newHash'] = password_hash($inputPass, $bestAlgo);
-        }
-    }
-    return $result;
-}
 ?>
