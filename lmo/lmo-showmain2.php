@@ -301,7 +301,7 @@ if ($backlink == 1 && ($file != '' || $action == 'tipp')) {
     if (basename($file) == $file) {
         $output_ligenuebersicht .= '<a href="' . $_SERVER['PHP_SELF'] . '" title="' . $text[392] . '">' . $text[391] . '</a>&nbsp;&nbsp;&nbsp;';
     } else {
-        $output_ligenuebersicht .= '<a href="' . $_SERVER['PHP_SELF'] . '?subdir=' . dirname($file) . '" title="' . $text[392] . '">' . $text[391] . '</a>&nbsp;&nbsp;&nbsp;';
+        $output_ligenuebersicht .= '<a href="' . $_SERVER['PHP_SELF'] . '?subdir=' . dirname($file) . '/" title="' . $text[392] . '">' . $text[391] . '</a>&nbsp;&nbsp;&nbsp;';
     }
 }
 
