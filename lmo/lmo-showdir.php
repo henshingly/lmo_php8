@@ -41,7 +41,7 @@ if ($archivlink == 1) {
     foreach($dirs as $dir) {
         $descr = @file_get_contents(PATH_TO_LMO . '/' . $dirliga . $subdir . $dir . '/dir-descr.txt');
         $output .= '        <tr>
-          <td><a href="' . $_SERVER['PHP_SELF'] . '?subdir=' . $subdir . $dir . '">' . $dir . '</a></td>';
+          <td><a href="' . $_SERVER['PHP_SELF'] . '?subdir=' . $subdir . $dir . '/">' . $dir . '</a></td>';
         if ($descr != '') {
             $output .= '
           <td><small>' . htmlentities($descr) . '</small></td>';
