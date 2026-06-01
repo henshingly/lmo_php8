@@ -34,7 +34,7 @@ Currently supported languages (_sorted alphabetically_)
 > [!NOTE]
 This LMO version is still a beta version. Please note this. Before copying over an existing LMO, make a backup first!
 
-After joker has removed the forum on the LMO's project page (because of the General Data Protection Regulation GDPR), I offer a support forum for this LMO on my website (https://www.vest-sport.de/forum/).
+After joker has removed the forum on the LMO's project page (because of the General Data Protection Regulation GDPR), I offer a support forum for this LMO on my website (https://www.liga-manager-online.org/forum/).
 
 --------------------------------------------------------------------------------------------------------
 # (DEUTSCH) LMO auf PHP8
@@ -65,4 +65,4 @@ Momentan unterstützte Sprachen (_alphabetisch sortiert_)
 > [!NOTE]
 Bei dieser LMO Version handelt es sich immer noch um eine Beta Version. Beachtet das bitte. Vor dem drüberkopieren über einen vorhandenen LMO macht zuerst eine Sicherung!
 
-Nachdem joker auf der Projektseite des LMO's das Forum entfernt hat (wegen der Datenschutz-Grundverordnung DSGVO), biete ich auf meiner Webseite ein Supportforum für diesen LMO an (https://www.vest-sport.de/forum/). 
+Nachdem joker auf der Projektseite des LMO's das Forum entfernt hat (wegen der Datenschutz-Grundverordnung DSGVO), biete ich auf meiner Webseite ein Supportforum für diesen LMO an (https://www.liga-manager-online.org/forum/). 
