@@ -22,43 +22,37 @@ require_once(__DIR__ . '/../../init.php');
 
 if (isset($_REQUEST['sort_direction'])) {
     $stats_sort_direction = $_REQUEST['sort_direction'];
-}
-else {
+} else {
     $stats_sort_direction = 'asc';
 }
 
 if (isset($_REQUEST['ligalink'])) {
     $spieler_ligalink = $_REQUEST['ligalink'];
-}
-else {
+} else {
     $spieler_ligalink = $text['spieler'][18];
 }
 
 if (isset($_REQUEST['sort'])) {
     $spieler_sort = $_REQUEST['sort'];
-}
-else {
+} else {
     $spieler_sort = '';
 }
 
 if (isset($_REQUEST['statstart'])) {
     $statstart = $_REQUEST['statstart'];
-}
-else {
+} else {
     $spieler_statstart = 0;
 }
 
 if (isset($_REQUEST['option'])) {
     $spieler_option = $_REQUEST['option'];
-}
-else {
+} else {
     $spieler_option = '';
 }
 
 if (isset($_REQUEST['wert'])) {
     $wert = $_REQUEST['wert'];
-}
-else {
+} else {
     $spieler_wert = '';
 }
 
@@ -87,24 +81,21 @@ if (isset($file) && $file != '') {
         }
         if (isset($_REQUEST['nullwerte_anzeigen'])) {
             $spieler_nullwerte_anzeigen = 1;
-        }
-        else {
+        } else {
             if ($spieler_option == 'saveconfig') {
                 $spieler_nullwerte_anzeigen = 0;
             }
         }
         if (isset($_REQUEST['vereinsweise_anzeigen'])) {
             $spieler_vereinsweise_anzeigen = 1;
-        }
-        else {
+        } else {
             if ($spieler_option == 'saveconfig') {
                 $spieler_vereinsweise_anzeigen = 0;
             }
         }
         if (isset($_REQUEST['extra_sortierspalte'])) {
             $spieler_extra_sortierspalte = 1;
-        }
-        else {
+        } else {
             if ($spieler_option == 'saveconfig') {
                 $spieler_extra_sortierspalte = 0;
             }
@@ -112,34 +103,34 @@ if (isset($file) && $file != '') {
         if ($_SESSION['lmouserok'] == 2) {
             if (isset($_REQUEST['adminbereich_hilfsadmin_zulassen'])) {
                 $spieler_adminbereich_hilfsadmin_zulassen = 1;
-            }
-            else {
+            } else {
                 if ($spieler_option == 'saveconfig') {
                     $spieler_adminbereich_hilfsadmin_zulassen = 0;
                 }
             }
             if (isset($_REQUEST['adminbereich_hilfsadmin_fuer_spalten'])) {
                 $spieler_adminbereich_hilfsadmin_fuer_spalten = 1;
-            }
-            else {
+            } else {
                 if ($spieler_option == 'saveconfig') {
                     $spieler_adminbereich_hilfsadmin_fuer_spalten = 0;
                 }
             }
         }
         if ($spieler_sort == '') $spieler_sort = intval($spieler_adminbereich_standard_sortierung);
-        if (file_exists($filename)) $filepointer = fopen($filename, 'r+b');
-        else $filepointer = fopen($filename, 'w+b');
+        if (file_exists($filename))
+            $filepointer = fopen($filename, 'r+b');
+        else
+            $filepointer = fopen($filename, 'w+b');
         $spalten = array();
         $data = array();
-        $spalten = fgetcsv($filepointer, 1000, '#', '"', '');   // Zeile mit Spaltenbezeichnern
-        $typ = array();                                         // Spaltentyp (true = String)
+        $spalten = fgetcsv($filepointer, separator: '#', escape: '');   // Zeile mit Spaltenbezeichnern
+        $typ = array();                                                 // Spaltentyp (true = String)
         $zeile = 0;
-        if ($spalten == false) {                                // Datei war leer
+        if ($spalten == false) {                                        // Datei war leer
             $spalten = array();
-            $spalten[0] = $text['spieler'][2];                  // Name der ersten Spalte
-            set_file_buffer($filepointer, 0);
-            fwrite($filepointer, $spalten[0] . "\n");           // Erste Zeile/Spalte in Datei schreiben
+            $spalten[0] = $text['spieler'][2];                          // Name der ersten Spalte
+            stream_set_write_buffer($filepointer, 0);
+            fwrite($filepointer, $spalten[0] . "\n");                   // Erste Zeile/Spalte in Datei schreiben
         }
         // Wenn in einer Spalte eine Formel steht, wurde am Namen *_*-* angehängt
         $formel_ges = 0;
@@ -165,7 +156,8 @@ if (isset($file) && $file != '') {
         }
         array_pop($data);
         if ($spieler_option != 'statupdate') {
-            if (!isset($typ[intval($spieler_sort) ])) usort($data, 'cmpInt');
+            if (!isset($typ[intval($spieler_sort) ]))
+                usort($data, 'cmpInt');
             else {
                 usort($data, 'cmpStr');
             }
@@ -177,7 +169,7 @@ if (isset($file) && $file != '') {
             case 'addplayer':  // Spieler hinzufügen
                 if ($wert != '') {
                     $filepointer = @fopen($filename, 'w+b');
-                    set_file_buffer($filepointer, 0);
+                    stream_set_write_buffer($filepointer, 0);
                     fputs($filepointer, join('#', $speicher_spalten) . "\n");
                     if ($formel_ges > 0) {
                         fputs($filepointer, join('#', $formel_str) . "\n");
@@ -194,18 +186,15 @@ if (isset($file) && $file != '') {
                             if ($spalten[$i] == $text['spieler'][25] || $spalten[$i] == $text['spieler'][32]) {
                                 $data[0][$i] = $text['spieler'][43];
                                 $newplayer .= '#' . $text['spieler'][43];
-                            }
-                            else {
+                            } else {
                                 $data[0][$i] = "0";
                                 $newplayer .= '#0';
                             }
-                        }
-                        else {
+                        } else {
                             if (is_numeric($data[$zeile - 1][$i])) {
                                 $data[$zeile][$i] = "0";
                                 $newplayer .= '#0';
-                            }
-                            else {
+                            } else {
                                 $data[$zeile][$i] = $text['spieler'][43];
                                 $newplayer .= '#' . $text['spieler'][43];
                             }
@@ -217,15 +206,14 @@ if (isset($file) && $file != '') {
                     $statstart = $zeile;
                     if ($statstart < 0) $statstart = 0;
                     @touch(PATH_TO_LMO . '/' . $dirliga . $file);
-                }
-                else {
+                } else {
                     echo $text['spieler'][4];
                 }
             break;
             case 'delplayer':  // Spieler löschen
                 if ($wert != '') {
                     $filepointer = @fopen($filename, 'w+b');
-                    set_file_buffer($filepointer, 0);
+                    stream_set_write_buffer($filepointer, 0);
                     fputs($filepointer, join('#', $speicher_spalten) . "\n");
                     if ($formel_ges > 0) {
                         fputs($filepointer, join('#', $formel_str) . "\n");
@@ -252,12 +240,14 @@ if (isset($file) && $file != '') {
             break;
             case 'addcolumn':  // Spalte hinzufügen
                 if ($wert != '') {
-                    if (isset($_REQUEST['type'])) $val = $_REQUEST['type'];
-                    else $val = "0";
+                    if (isset($_REQUEST['type']))
+                        $val = $_REQUEST['type'];
+                    else
+                        $val = "0";
                     if ($wert == $text['spieler'][25]) $val = $text['spieler'][43];
                     if ($wert == $text['spieler'][32]) $val = $text['spieler'][43];
                     $filepointer = @fopen($filename, 'w+b');
-                    set_file_buffer($filepointer, 0);
+                    stream_set_write_buffer($filepointer, 0);
                     $spalten[$spaltenzahl] = $wert;
                     $speicher_spalten[$spaltenzahl] = $wert;
                     if ($val == 'F') {
@@ -270,8 +260,7 @@ if (isset($file) && $file != '') {
                         $speicher_spalten[$spaltenzahl] .= "*_*-*";
                         $val = "0";
                         $formel[$spaltenzahl] = true;
-                    }
-                    else {
+                    } else {
                         $formel[$spaltenzahl] = false;
                     }
                     $formel_str[$spaltenzahl] = "0";
@@ -289,15 +278,14 @@ if (isset($file) && $file != '') {
                     $spaltenzahl++;
                     fclose($filepointer);
                     @touch(PATH_TO_LMO . '/' . $dirliga . $file);
-                }
-                else {
+                } else {
                     echo $text['spieler'][3];
                 }
             break;
             case 'delcolumn':
                 if ($wert > 0) {
                     $filepointer = @fopen($filename, 'w+b');
-                    set_file_buffer($filepointer, 0);
+                    stream_set_write_buffer($filepointer, 0);
                     if ($formel[$wert]) $formel_ges--;
                     array_splice($spalten, $wert, 1);
                     array_splice($speicher_spalten, $wert, 1);
@@ -321,7 +309,7 @@ if (isset($file) && $file != '') {
             break;
             case 'sortieren':
                 $filepointer = @fopen($filename, 'w+b');
-                set_file_buffer($filepointer, 0);
+                stream_set_write_buffer($filepointer, 0);
                 fputs($filepointer, join('#', $speicher_spalten) . "\n");
                 if ($formel_ges > 0) {
                     fputs($filepointer, join('#', $formel_str) . "\n");
@@ -333,14 +321,13 @@ if (isset($file) && $file != '') {
             break;
             case 'statupdate':  // Statistik aktualisieren
                 $filepointer = @fopen($filename, 'w+b');
-                set_file_buffer($filepointer, 0);
+                stream_set_write_buffer($filepointer, 0);
                 for ($i0 = 0; $i0 < $spaltenzahl; $i0++) {
                     if (isset($_REQUEST['spalten' . $i0])) {
                         $spalten[$i0] = $_REQUEST['spalten' . $i0];
                         if ($formel[$i0]) {
                             $speicher_spalten[$i0] = $_REQUEST['spalten' . $i0] . "*_*-*";
-                        }
-                        else {
+                        } else {
                             $speicher_spalten[$i0] = $_REQUEST['spalten' . $i0];
                         }
                     }
@@ -369,7 +356,7 @@ if (isset($file) && $file != '') {
             case 'saveconfig':  // Konfiguration sichern
                 $filepointer = @fopen($configfile, 'w+b');
                 flock($filepointer, LOCK_EX);
-                set_file_buffer($filepointer, 0);
+                stream_set_write_buffer($filepointer, 0);
                 fputs($filepointer, $text['spieler'][21] . '=' . $spieler_standard_sortierung . "\n");
                 fputs($filepointer, $text['spieler'][13] . '=' . $spieler_standard_richtung . "\n");
                 fputs($filepointer, $text['spieler'][40] . '=' . $spieler_adminbereich_standard_sortierung . "\n");
@@ -522,11 +509,9 @@ if (isset($file) && $file != '') {
             for ($i = 0; $i < $spaltenzahl; $i++) {?>
                     <th colspan="2" align="center"><?php
                 if ($formel[$i]) {?><input type="text" onClick="sel('formel_str<?php echo $i;?>')" onChange="mark(this)" name="formel_str<?php echo $i;?>" value="<?php echo $formel_str[$i];?>" size="<?php echo strlen($formel_str[$i]);?>"><?php
-                }
-                elseif ($i == 0) {
+                } elseif ($i == 0) {
                     echo '<strong>' . $text['spieler'][54] . ':</strong>';
-                }
-                else {
+                } else {
                     echo '&nbsp;';
                 }?></th>
 <?php
@@ -559,8 +544,7 @@ if (isset($file) && $file != '') {
                       <input type="text" name="data<?php echo $j1 . '|' . $j2;?>" value="<?php echo $data[$j1][$j2];?>" size="<?php echo strlen($data[$j1][$j2]);?>" disabled>
                     </td>
 <?php
-                }
-                elseif (is_numeric($data[$j1][$j2])) {?>
+                } elseif (is_numeric($data[$j1][$j2])) {?>
                     <td align="right">
                       <input type="text" name="data<?php echo $j1 . '|' . $j2;?>" value="<?php echo $data[$j1][$j2];?>" size="<?php echo strlen($data[$j1][$j2]);?>">
                     </td>
@@ -575,8 +559,7 @@ if (isset($file) && $file != '') {
                       </table>
                     </td>
 <?php
-                }
-                else {
+                } else {
                     if ($spalten[$j2] == $text['spieler'][25]) {?>
                     <td colspan="2" align="left">
                       <select name="data<?php echo $j1 . '|' . $j2;?>" size="1">
@@ -588,8 +571,7 @@ if (isset($file) && $file != '') {
                       </select>
                     </td>
 <?php
-                    }
-                    else {?>
+                    } else {?>
                     <td colspan="2" align="left">
                       <input type="text" name="data<?php echo $j1 . '|' . $j2;?>" value="<?php echo $data[$j1][$j2];?>" size="<?php echo strlen($data[$j1][$j2]);?>">
                     </td>
@@ -688,7 +670,7 @@ if (isset($file) && $file != '') {
                 </tr>
                 <tr>
                   <td align="left" class="nobr"><?php echo $text['spieler'][50];?>: </td>
-                  <td colspan="2" align="left"><input type="checkbox" name="vereinsweise_anzeigen" onClick="mark(this)" value="<?php echo $spieler_vereinsweise_anzeigen;?>"<?php if ($spieler_vereinsweise_anzeigen == 1) echo ' checked'; if (array_search($text['spieler'][25], $spalten) == 0) { echo ' disabled';}?>></td>
+                  <td colspan="2" align="left"><input type="checkbox" name="vereinsweise_anzeigen" onClick="mark(this)" value="<?php echo $spieler_vereinsweise_anzeigen;?>"<?php if ($spieler_vereinsweise_anzeigen == 1) echo ' checked'; if (array_search($text['spieler'][25], $spalten) === false) { echo ' disabled'; } ?>></td>
                 </tr>
                 <tr>
                   <td class="nobr"><?php echo $text['spieler'][23];?>: </td>
@@ -702,8 +684,7 @@ if (isset($file) && $file != '') {
           </td>
         </tr>
       </table><?php
-    }
-    else {
+    } else {
         echo $text['spieler'][33];
     }  // Hilfsadmin
 }  // Datei existiert
@@ -746,8 +727,7 @@ function formel_berechnen ($formel, $formel_str,$spalten) {
             echo (chop($help_str));
             if (strlen(trim($help_str)) == 0 || trim($help_str) == 'MAX' || trim($help_str) == 'MIN') {
                 $formel_str[$i] = '$help2 = round(' . $formel_str[$i] . ', 2);';
-            }
-            else {
+            } else {
                 $formel_str[$i] = '$help2 = "' . $text['spieler'][55] . '";';
             }
         }
