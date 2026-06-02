@@ -4,7 +4,7 @@
       <table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td align="left"><a href="<?php echo $addk.$ma; ?>" title="<?php echo $text[142]; ?>"><?php echo $text[5]; ?></a></td>
-          <td align="center"><a href="<?php echo $addk.$ml; ?>" title="<?php echo $text[173]; ?>"><?php echo $md; ?></a></td>
+          <td align="center"><a href="<?php echo $addk.$ml; ?>" title="<?php echo $text[173]; ?>"><?php echo strtr($md, $trans_lang); ?></a></td>
           <td align="right"><a href="<?php echo $addk.$mb; ?>" title="<?php echo $text[143]; ?>"><?php echo $text[154]; ?></a>&nbsp;&nbsp;<a href="<?php echo $addk.$mc; ?>" title="<?php echo $text[144]; ?>"><?php echo $text[7]; ?></a></td>
         </tr>
       </table>
