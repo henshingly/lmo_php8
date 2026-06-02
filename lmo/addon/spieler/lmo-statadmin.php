@@ -138,7 +138,7 @@ if (isset($file) && $file != '') {
         $formel = array();
         for ($i = 0; $i < count($spalten); $i++) {
             $formel[$i] = false;
-            if (strstr($spalten[$i], "*_*-*")) {
+            if (str_contains($spalten[$i], "*_*-*")) {
                 $formel_ges++;
                 $formel[$i] = true;
                 $spalten[$i] = substr($spalten[$i], 0, strlen($spalten[$i]) - 5);
@@ -146,9 +146,9 @@ if (isset($file) && $file != '') {
         }
         if ($formel_ges > 0) {
             $formel_str = array();
-            $formel_str = fgetcsv($filepointer, 1000, '#');  // Zeile mit Spaltenbezeichnern
+            $formel_str = fgetcsv($filepointer, separator: '#', escape: '');  // Zeile mit Spaltenbezeichnern
         }
-        while ($data[$zeile] = fgetcsv($filepointer, 10000, '#')) {
+        while ($data[$zeile] = fgetcsv($filepointer, separator: '#', escape: '')) {
             for ($i = 0; $i < count($data[$zeile]); $i++) {
                 if (!is_numeric($data[$zeile][$i])) $typ[$i] = true;
             }
@@ -226,11 +226,11 @@ if (isset($file) && $file != '') {
                     $zeile = 0;
                     fclose($filepointer);
                     $filepointer = fopen($filename, 'rb');
-                    $spalten = fgetcsv($filepointer, 1000, '#');  // Zeile mit Spaltenbezeichnern
+                    $spalten = fgetcsv($filepointer, separator: '#', escape: '');  // Zeile mit Spaltenbezeichnern
                     if ($formel_ges > 0) {
-                        fgetcsv($filepointer, 1000, '#');  // Zeile mit Formeln übergehen
+                        fgetcsv($filepointer, separator: '#', escape: '');  // Zeile mit Formeln übergehen
                     }
-                    while ($data[$zeile] = fgetcsv($filepointer, 10000, '#')) {
+                    while ($data[$zeile] = fgetcsv($filepointer, separator: '#', escape: '')) {
                         $zeile++;
                     }
                     $spaltenzahl = count($spalten);
