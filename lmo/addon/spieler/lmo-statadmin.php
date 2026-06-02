@@ -736,7 +736,11 @@ function formel_berechnen ($formel, $formel_str,$spalten) {
         if ($formel[$i]) {
             for ($j = 0; $j < count($data); $j++) {
                 $help2 = 0.0;
-                @eval($formel_str[$i]);
+                try {
+                    @eval($formel_str[$i]);
+                } catch (\DivisionByZeroError $e) {
+                    $help2 = 0.0; 
+                }
                 $data[$j][$i] = $help2;
             }
         }
