@@ -29,8 +29,7 @@ $sort = isset($_GET['sort']) ? $_GET['sort'] : $spieler_standard_sortierung;
 if (isset($_GET['begin'])) {
     $begin = $_GET['begin'];
     $all = false;
-}
-else {
+} else {
     $begin = 0;
     $all = true;
 }
@@ -44,7 +43,7 @@ if ($filepointer = fopen($filename, 'r+b')) {
     $spalten = fgetcsv($filepointer, 10000, '#');  // Zeile mit Spaltenbezeichnern
     $formel = false;
     for ($i = 0; $i < count($spalten); $i++) {
-        if (strstr($spalten[$i], '*_*-*')) {
+        if (str_contains($spalten[$i], '*_*-*')) {
             $formel = true;
             $spalten[$i] = substr($spalten[$i], 0, strlen($spalten[$i]) - 5);
         }
@@ -63,28 +62,29 @@ if ($filepointer = fopen($filename, 'r+b')) {
                 if (!is_numeric($data[$zeile][$i])) $typ[$i] = true;
             }
             $zeile++;
-        }
-        else {
+        } else {
             array_pop($data);
         }
     }
     array_pop($data);
     if ($spieler_nullwerte_anzeigen == 0 && !isset($typ[$sort])) $data = array_filter($data, 'filterNullwerte');  // Nullwerte ausfiltern
     if ($direction == 1) {
-        if (!isset($typ[$sort])) usort($data, 'cmpInt');
-          else usort($data, 'cmpStr2');
-    }
-    else {
-        if (!isset($typ[$sort])) usort($data, 'cmpInt2');
-          else usort($data, 'cmpStr');
+        if (!isset($typ[$sort]))
+            usort($data, 'cmpInt');
+        else
+            usort($data, 'cmpStr2');
+    } else {
+        if (!isset($typ[$sort]))
+            usort($data, 'cmpInt2');
+        else
+            usort($data, 'cmpStr');
     }
 
     $spaltenzahl = count($spalten);
 
     if ($begin + $spieler_anzeige_pro_seite > $zeile) {
         $maxdisplay = $zeile - $begin;
-    }
-    else {
+    } else {
         $maxdisplay = $spieler_anzeige_pro_seite;
     }
     if ($spieler_anzeige_pro_seite <= 0 || $all == true) {
@@ -138,8 +138,7 @@ if ($filepointer = fopen($filename, 'r+b')) {
         for ($j2 = 0; $j2 < $spaltenzahl; $j2++) {
             if ($j2 == $sort) {
                 $stat_class = ' class="lmoBackMarkierung nobr"';
-            }
-            else {
+            } else {
                 $stat_class = ' class="nobr"';
             }
             if ($j2 == 0) {?>
@@ -162,8 +161,7 @@ if ($filepointer = fopen($filename, 'r+b')) {
           <td' . $class;
                 if (is_numeric($data[$j1][$j2])) {
                     echo ' align="center">';
-                }
-                else {
+                } else {
                     echo ' align="left">';
                 }
                 if ($j2 == $sort) echo '<strong>';
@@ -179,8 +177,7 @@ if ($filepointer = fopen($filename, 'r+b')) {
     <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562];?><\/a><\/small>');</script>
   </body>
 </html><?php
-}
-else {
+} else {
     echo getMessage($text['spieler'][14], true);
 }
 function cmpInt ($a1, $a2) {
