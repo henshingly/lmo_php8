@@ -33,10 +33,10 @@ if (!isset($filename)) {
 }
 
 if (is_readable($filename) && $filepointer = fopen($filename, 'r+b')) {
-    $spalten = array();                            // Spaltenbezeichnung
-    $data = array();                               // Daten
-    $typ = array();                                // Spaltentyp (true=String)
-    $spalten = fgetcsv($filepointer, 10000, '#');  // Zeile mit Spaltenbezeichnern
+    $spalten = array();                                            // Spaltenbezeichnung
+    $data = array();                                               // Daten
+    $typ = array();                                                // Spaltentyp (true=String)
+    $spalten = fgetcsv($filepointer, separator: '#', escape: "");  // Zeile mit Spaltenbezeichnern
     $formel = false;
     for ($i = 0; $i < count($spalten); $i++) {
         if (strstr($spalten[$i], '*_*-*')) {
@@ -47,12 +47,13 @@ if (is_readable($filename) && $filepointer = fopen($filename, 'r+b')) {
             $vereinsspalte = $i;
         }
     }
-    if ($formel) fgetcsv($filepointer, 10000, '#');              // Zeile mit Formeln
+    if ($formel) fgetcsv($filepointer, separator: '#', escape: "");  // Zeile mit Formeln
 
-    $linkspalte = array_search($text['spieler'][32], $spalten);  // Linkunterstützung aktiviert?
+    $linkspalte = array_search($text['spieler'][32], $spalten);      // Linkunterstützung aktiviert?
 
     $zeile = 0;
-    while ($data[$zeile] = fgetcsv ($filepointer, 10000, '#')) {
+    while ($data[$zeile] = fgetcsv($filepointer, separator: '#', escape: "")) {
+
         if ((isset($vereinsspalte) && isset($data[$zeile][$vereinsspalte]) && $spieler_vereinsweise_anzeigen == 1 && $team == $data[$zeile][$vereinsspalte]) || $team == '') {
             for ($i = 0; $i < count($data[$zeile]); $i++) {
                 if (!is_numeric($data[$zeile][$i])) $typ[$i] = true;
