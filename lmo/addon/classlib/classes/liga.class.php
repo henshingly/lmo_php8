@@ -121,8 +121,9 @@ class liga {
                 return new liga();
             }
         }
-        else
-            return false;
+        else 
+            $null = null;
+        return $null;
     }
 
     /**
