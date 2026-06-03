@@ -1106,7 +1106,7 @@ class liga {
         }
         // ASC = auf-, DESC = absteigend
         if ($this->options->keyValues['Kegel'] == 1) {  // Sortierung Punkte,erzielte Tore
-            array_multisort($sort_pPkt, SORT_DESC, $sort_mPkt, SORT_ASC, $sort_pTor, SORT_DESC, $sort_dtor, SORT_DESC, $tableArray, SORT_DESC);
+            array_multisort($sort_pPkt, SORT_DESC, $sort_mPkt, SORT_ASC, $sort_pTor, SORT_DESC, $sort_dTor, SORT_DESC, $tableArray, SORT_DESC);
         }
         else {  // Sortierung PlusPkt,Tordiff
             array_multisort($sort_pPkt, SORT_DESC, $sort_mPkt, SORT_ASC, $sort_dTor, SORT_DESC, $sort_pTor, SORT_DESC, $sort_mTor, SORT_ASC, $tableArray, SORT_DESC);
