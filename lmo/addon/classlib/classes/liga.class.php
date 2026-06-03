@@ -315,6 +315,8 @@ class liga {
     */
     function gamesSorted($roundSort = true, $sortDir = SORT_ASC, &$team = null) {
         $games = array();
+        $sort_1 = array();  // FIX: initialisieren, sonst Undefined variable wenn keine Spiele vorhanden
+        $sort_2 = array();  // FIX: initialisieren, sonst Undefined variable wenn keine Spiele vorhanden
         foreach ($this->spieltage as $spieltag) {
             foreach ($spieltag->partien as $partie) {
                 if ($partie->heim == $team || $partie->gast == $team || is_null($team)) {
@@ -328,6 +330,9 @@ class liga {
                     );
                 }
             }
+        }
+        if (empty($games)) {  // FIX: array_multisort auf leere Arrays vermeiden
+            return $games;
         }
         if ($roundSort) {
             array_multisort($sort_2, $sortDir, $sort_1, $sortDir, $games);
