@@ -392,7 +392,7 @@ class liga {
         $i = -1;
         $found = -1;
         $selectedTag = null;
-        while (($i < $count) && ($found <> 0)) {
+        while (($i < $count) && ($found != 0)) {
             $i++;
             if (isset($this->spieltage[$i])) {
                 $found = strcmp($this->spieltage[$i]->nr, $spTagNr);
