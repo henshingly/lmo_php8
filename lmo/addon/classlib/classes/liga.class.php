@@ -510,6 +510,7 @@ class liga {
     */
     function loadFile($fileName = '') {
         $iniData = array();
+        $status = false;  // FIX: initialisieren, sonst Undefined variable wenn Datei nicht existiert
         if (file_exists($fileName) && !empty($fileName) && !is_dir($fileName)) {
             $this->ligaDatum = filemtime($fileName);
             // ligaFile in einen kompletten String einlesen
@@ -526,8 +527,11 @@ class liga {
                     }
                     else {
                         // Partie Filtern
-                        preg_match('/([a-zA-Z]+)([\d]+)/', trim($parameter[1][$i]), $infoPerPartie);
+                        if (!preg_match('/([a-zA-Z]+)([\d]+)/', trim($parameter[1][$i]), $infoPerPartie)) {
+                            continue; // Parameter passt nicht zum erwarteten Format
+                        }
                         // $infoPerPartie -> 0 kompletter treffer / 1 Art des Parameters (GA/GB ...) / 2 Nummer der Partie
+                        if (!isset($gameNumber)) $gameNumber = 0;
                         if ($infoPerPartie[1] == 'TA') {
                             $partieNumber++;
                             $gameNumber = 0;
@@ -545,21 +549,6 @@ class liga {
                     }
                 }
             }
-            /*
-            // Infos aus dem lim File holen (BEGIN)
-            $limFile = PATH_TO_ADDONDIR . '/limporter/imports/'.basename($fileName,".l98").'.lim';
-            if (file_exists($limFile)) {
-                $limDATA = implode("",file($limFile));
-                // sectionen suchen und die einzelnen Sectionen in Array $sections speichern
-                preg_match_all("/^\[([^\]]+)+\][^\[]+/m", $limDATA, $sections,PREG_PATTERN_ORDER);
-                for ($y=0;$y<count($sections[0]);$y++) {
-                    // Parameter und werte trennen
-                    preg_match_all("/^([^=\[]+)=(.*)/m", $sections[0][$y], $parameter,PREG_PATTERN_ORDER);
-                    for ($i=0; $i<count($parameter[0]);$i++)
-                    $iniData[$sections[1][$y]][trim($parameter[1][$i])] = trim($parameter[2][$i]);
-                }
-            } // Infos aus dem lim File holen (ENDE)
-            */
 
             $tCounter = 1;
             foreach ($iniData['Teams'] as $key => $value) {
@@ -591,14 +580,14 @@ class liga {
                 $roundSektion = 'Round' . $rCounter;
                 $startDate = preg_split('/\./', $this->getIniData('D1', $iniData[$roundSektion]));
                 $endDate = preg_split('/\./', $this->getIniData('D2', $iniData[$roundSektion]));
-                if (count($startDate) != 3 or checkDate($startDate[1], $startDate[0], $startDate[2]) == false) {
+                if (count($startDate) != 3 || checkDate($startDate[1], $startDate[0], $startDate[2]) == false) {  // FIX: or → ||
                     $startTime = null;
                 }
                 else {
                     $startTime = mktime(0, 0, 0, (int) $startDate[1], (int) $startDate[0], (int) $startDate[2]);
                 }
 
-                if (count($endDate) <> 3 or checkDate($endDate[1], $endDate[0], $endDate[2]) == false) {
+                if (count($endDate) != 3 || checkDate($endDate[1], $endDate[0], $endDate[2]) == false) {  // FIX: <> → != und or → ||
                     $endTime = null;
                 }
                 else {
