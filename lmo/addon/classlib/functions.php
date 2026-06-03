@@ -54,11 +54,9 @@ function strAfterChar($str,$char) {
  */
 function in_string($needle, $haystack, $insensitive = false) {
     if ($insensitive) {
-        return (false !== stristr($haystack, $needle)) ? true : false;
-    }
-    else {
-        //return (false !== strpos($haystack, $needle)) ? true : false;
-        return (str_contains($haystack, $needle)) ? true : false;
+        return str_contains(strtolower($haystack), strtolower($needle));
+    } else {
+        return str_contains($haystack, $needle);
     }
 }
 
