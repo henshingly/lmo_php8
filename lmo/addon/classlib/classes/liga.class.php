@@ -580,14 +580,14 @@ class liga {
                 $roundSektion = 'Round' . $rCounter;
                 $startDate = preg_split('/\./', $this->getIniData('D1', $iniData[$roundSektion]));
                 $endDate = preg_split('/\./', $this->getIniData('D2', $iniData[$roundSektion]));
-                if (count($startDate) != 3 || checkDate($startDate[1], $startDate[0], $startDate[2]) == false) {  // FIX: or → ||
+                if (count($startDate) != 3 || checkDate($startDate[1], $startDate[0], $startDate[2]) === false) {  // FIX: or → ||
                     $startTime = null;
                 }
                 else {
                     $startTime = mktime(0, 0, 0, (int) $startDate[1], (int) $startDate[0], (int) $startDate[2]);
                 }
 
-                if (count($endDate) != 3 || checkDate($endDate[1], $endDate[0], $endDate[2]) == false) {  // FIX: <> → != und or → ||
+                if (count($endDate) != 3 || checkDate($endDate[1], $endDate[0], $endDate[2]) === false) {  // FIX: <> → != und or → ||
                     $endTime = null;
                 }
                 else {
