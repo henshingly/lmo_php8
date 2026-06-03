@@ -62,7 +62,7 @@ class pokalRunde {
     * @param array spieltage Spieltage (objecte) dieser Runde
     * @return void
     */
-    function pokalRunde($roundNumber, $mode, $begin = 0, $end = 0, $spieltage = null) {
+    function __construct($roundNumber, $mode, $begin = 0, $end = 0, $spieltage = null) {
         $this->roundNumber = $roundNumber;
         $this->setMode($mode);
         $this->setBegin($begin);
