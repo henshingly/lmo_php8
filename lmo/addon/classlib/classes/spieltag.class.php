@@ -157,7 +157,7 @@ class spieltag {
         $i = -1;
         $found = -1;
         $selectedTag = null;
-        while (($i < $count) && ($found <> 0)) {
+        while (($i < $count) && ($found != 0)) {
             $i++;
             if (isset($this->partien[$i]) && ($this->partien[$i]->heim->nr = $heimNr) && ($this->partien[$i]->gast->nr = $gastNr)) {
                 $found = 0;
