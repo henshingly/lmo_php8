@@ -939,27 +939,26 @@ if ($file != '') {
                     <acronym title="<?php echo $text[192]; ?>"><?php echo $text[191]; ?></acronym>
                     <select class="lmo-formular-input" name="xstx" onChange="dolmoedit()" tabindex="<?php echo $i; ?>013">
 <?php
-    for ($y = 0; $y <= $anzst; $y++) {?>
-                      <option value="<?php echo $y; ?>"<?php
+    for ($y = 0; $y <= $anzst; $y++) {
+        echo '<option value="' . $y . '"';
         if ($save == 1) {
             if ($y == 0) {
-                echo '>' . $text[403];
+                echo '>' . $text[403] . '</option>';
+            } else {
+                if ($y == $stx) {
+                    echo ' selected';
+                }
+                echo '>' . $y . '. ' . $text[2] . '</option>';
             }
-            elseif ($y == $stx) {
-                echo ' selected>' . $y . '. ' . $text[2];
-            }
-            echo '</option>';
-        }
-        else {
+        } else {
             if ($y == 0) {
-                echo ' selected>' . $text[403];
+                echo ' selected>' . $text[403] . '</option>';
+            } else {
+                echo '>' . $y . '. ' . $text[2] . '</option>';
             }
-            else {
-                echo '>' . $y . '. ' . $text[2];
-            }
-            echo '</option>';
         }
-}?>
+    }
+    ?>
                     </select>
                   </td>
                 </tr>
