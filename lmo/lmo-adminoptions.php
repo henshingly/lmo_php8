@@ -109,15 +109,12 @@ if ($show == 0) {?>
                   <td class="nobr" colspan="4">
                     <select class="lmo-formular-input" name="xdeflang" onchange="dolmoedit()">
 <?php
-    $handle = opendir (PATH_TO_LANGDIR);
-    while (false !== ($f = readdir($handle))) {
-        if (preg_match('/^lang-?(.*) ? \.txt$/', $f,$lang) > 0) {?>
-                      <option<?php if ($lang[1] == $deflang) echo ' selected'; ?>><?php echo $lang[1]; ?></option>
+    foreach (glob(PATH_TO_LANGDIR . '/lang-*.txt') as $filepath) {
+        if (preg_match('/lang-(.+)\.txt$/', $filepath, $lang)) { ?>
+        <option<?php if ($lang[1] == $deflang) echo ' selected'; ?>><?php echo $lang[1]; ?></option>
 <?php
         }
-    }
-    closedir($handle);
-?>
+    } ?>
                     </select>&nbsp;<?php echo '<img src="' . URL_TO_IMGDIR . '/' . $deflang . '.svg" height="16">'; ?></td>
                 </tr>
 <?php
