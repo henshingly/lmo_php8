@@ -162,9 +162,7 @@ if ($einsprachwahl == 1) {
 
 ob_start();
 if ($file != '') {
-
-    // Für normale Ligen
-    if ($lmtype == 0) {
+    if ($lmtype == 0) { // Für normale Ligen
 
         // Kalenderlink
         if ($datc == 1) {
@@ -209,8 +207,8 @@ if ($file != '') {
             $output_ligastatistik .= $action != 'stats' ? '<a href="' . $addm . 'stats&amp;stat1=' . $stat1 . '&amp;stat2=' . $stat2 . '" title="' . $text[19] . '">' . $text[18] . '</a>' : $text[18];
             $output_ligastatistik .= '&nbsp;&nbsp;';
         }
-        // Pokalligen
-    } else {
+    } else { // Für Pokalligen
+
         // Kalenderlink
         if ($datc == 1) {
             $output_kalender .= $action != 'cal' ? '<a href="' . $addm . 'cal&amp;st=' . $st . '" title="' . $text[141] . '">' . $text[140] . '</a>' : $text[140];
