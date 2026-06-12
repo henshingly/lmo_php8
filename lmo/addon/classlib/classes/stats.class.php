@@ -17,17 +17,23 @@ class stats {
     *
     * @var Object  Typ liga
     */
-    var $liga;
+    var $liga = null;
 
+    /**
+    * FIX (PHP 8): Konstruktoren können kein "return null" zur Signalisierung
+    * eines Fehlers nutzen - $this->liga blieb dann undefiniert/null und
+    * spätere $this->liga->... Aufrufe verursachten
+    * "Attempt to read property on null". $this->liga ist jetzt explizit
+    * null vorinitialisiert (s.o.); aufrufender Code sollte nach dem
+    * Konstruktor prüfen, ob $statsObj->liga !== null ist, bevor er die
+    * anderen Methoden dieser Klasse verwendet.
+    */
     function __construct(&$ligaObject) {
         if ( is_a($ligaObject, 'liga') || is_subclass_of($ligaObject, 'liga') ) {
             if ($ligaObject->options->keyValues['Type']>=1){
-                return null;
+                return;
             }
             $this->liga = $ligaObject ;
-        }
-        else {
-            return null;
         }
     }
 
@@ -53,6 +59,7 @@ class stats {
         $spTag = ($spTag<1)?$actual:$spTag;
         $spTagCount = 1;
         $statsArray = array(
+                        'spiele' => 0,
                         'hSiege' => 0,
                         'u' => 0,
                         'gSiege' => 0,
