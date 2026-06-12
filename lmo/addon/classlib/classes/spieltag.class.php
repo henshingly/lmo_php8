@@ -159,7 +159,10 @@ class spieltag {
         $selectedTag = null;
         while (($i < $count) && ($found != 0)) {
             $i++;
-            if (isset($this->partien[$i]) && ($this->partien[$i]->heim->nr = $heimNr) && ($this->partien[$i]->gast->nr = $gastNr)) {
+            // FIX: war versehentlich Zuweisung (=) statt Vergleich (==),
+            // wodurch heim->nr/gast->nr überschrieben wurden und die
+            // Bedingung praktisch immer wahr war.
+            if (isset($this->partien[$i]) && ($this->partien[$i]->heim->nr == $heimNr) && ($this->partien[$i]->gast->nr == $gastNr)) {
                 $found = 0;
             }
         }
@@ -167,7 +170,11 @@ class spieltag {
             return $this->partien[$i];
         }
         else {
-            return null;
+            // FIX (PHP 8): "Only variable references should be returned by
+            // reference"-Notice bei direktem "return null" in einer
+            // function &...(). $selectedTag ist bereits oben mit null
+            // vorinitialisiert und wird hier stattdessen zurückgegeben.
+            return $selectedTag;
         }
     }
 
