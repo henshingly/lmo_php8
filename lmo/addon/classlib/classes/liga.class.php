@@ -269,7 +269,11 @@ class liga {
             }
         }
         if (empty($result[0])) {
-            return null;
+            // FIX (PHP 8): "Only variable references should be returned by
+            // reference"-Notice bei direktem "return null" in einer
+            // function &...().
+            $noResult = null;
+            return $noResult;
         }
         else {
             return $result;
@@ -406,7 +410,10 @@ class liga {
         if ($found == 0) {
             return $this->spieltage[$i];
         }
-        return null;
+        // FIX (PHP 8): "Only variable references should be returned by
+        // reference"-Notice bei direktem "return null" - $selectedTag ist
+        // bereits oben mit null vorinitialisiert.
+        return $selectedTag;
     }
 
     /**
@@ -667,6 +674,317 @@ class liga {
     }
 
     /**
+    * Lädt eine Liga aus der MySQL/MariaDB-Datenbank und erstellt denselben
+    * Objektbaum wie loadFile() (teams, spieltage, partien, options).
+    *
+    * Drop-in-Ersatz für loadFile() im Viewer-Addon (DB-Migration):
+    *   $liga = new liga();
+    *   $liga->loadFromDb($pdo, 'bundesliga.l98');           // subdir=''
+    *   $liga->loadFromDb($pdo, 'bundesliga.l98', 'archiv/'); // mit subdir
+    *
+    * @access public
+    * @param PDO $pdo bestehende Datenbankverbindung
+    * @param string $fileName Dateiname der Liga (z.B. "bundesliga.l98"),
+    *                          ENTSPRICHT lmo_ligen.file_name. Kann auch einen
+    *                          Pfad wie "archiv/bundesliga.l98" enthalten,
+    *                          dann wird $subdir daraus abgeleitet.
+    * @param string $subdir Unterordner relativ zu dirliga (z.B. "archiv/"),
+    *                        entspricht lmo_ligen.subdir
+    * @return Boolean
+    */
+    function loadFromDb($pdo, $fileName = '', $subdir = '') {
+        $status = false;
+        if (!($pdo instanceof PDO) || $fileName === '') {
+            return $status;
+        }
+
+        // FIX: Alle DB-Zugriffe in try/catch - eine fehlende Tabelle
+        // (z.B. unvollständiges Schema) oder ein DB-Fehler durfte hier nicht
+        // als unbehandelte PDOException bis zum Aufrufer durchschlagen
+        // (Fatal Error -> HTTP 500). loadFromDb() liefert in diesem Fall
+        // analog zu loadFile() bei fehlender Datei einfach false zurück.
+        try {
+
+        // Pfadanteil aus $fileName herauslösen, falls vorhanden
+        // (z.B. "archiv/bundesliga.l98" -> subdir="archiv/", file="bundesliga.l98")
+        $file = $fileName;
+        if (str_contains($file, '/')) {
+            $subdir = rtrim(dirname($file), '/') . '/';
+            $file   = basename($file);
+        }
+        $subdir = ($subdir === '' || $subdir === '/') ? '' : $subdir;
+
+        // ── Liga-Datensatz laden ─────────────────────────────────────────────
+        $stmtLiga = $pdo->prepare("
+            SELECT * FROM lmo_ligen
+            WHERE subdir = ? AND file_name = ?
+            LIMIT 1
+        ");
+        $stmtLiga->execute([$subdir, $file]);
+        $row = $stmtLiga->fetch();
+
+        if (!$row && $subdir !== '') {
+            // Fallback: ohne Subdir versuchen (wie lmo-openfile-db.php)
+            $stmtLiga->execute(['', $file]);
+            $row = $stmtLiga->fetch();
+        }
+
+        if (!$row) {
+            return $status;
+        }
+
+        $ligaId = (int) $row['id'];
+        $lmtype = (int) $row['lmtype'];
+
+        // ── Teams laden ──────────────────────────────────────────────────────
+        $stmtTeams = $pdo->prepare("
+            SELECT * FROM lmo_teams WHERE liga_id = ? ORDER BY team_nr
+        ");
+        $stmtTeams->execute([$ligaId]);
+        $teamRows = $stmtTeams->fetchAll();
+
+        // Map team_nr -> team-Objekt (für Verweise aus den Spielen)
+        $teamsByNr = array();
+        foreach ($teamRows as $t) {
+            $nr     = (int) $t['team_nr'];
+            $name   = stripslashes($t['name_lang']);
+            $kurz   = $t['name_kurz']   ?: '';
+            $mittel = $t['name_mittel'] ?: '';
+
+            $team = new team($name, $kurz, $nr, $mittel);
+
+            // Strafen / Bonuswerte aus lmo_teams (nur Liga-Modus relevant,
+            // siehe optionsSektion-Defaults SP/SM/TOR1/TOR2/STDA)
+            $team->keyValues['SP']   = (int) ($t['strafp'] ?? 0);
+            $team->keyValues['SM']   = (int) ($t['strafm'] ?? 0);
+            $team->keyValues['TOR1'] = (int) ($t['torkorrektur1'] ?? 0);
+            $team->keyValues['TOR2'] = (int) ($t['torkorrektur2'] ?? 0);
+            $team->keyValues['STDA'] = $t['strafdat'] ?: 0;
+            $team->keyValues['URL']  = $t['url']      ?: '';
+            $team->keyValues['NOT']  = $t['notiz']    ?: '';
+
+            $this->addTeam($team);
+            $teamsByNr[$nr] = &$this->teams[count($this->teams) - 1];
+        }
+
+        // ── Spieltage + Spiele laden ─────────────────────────────────────────
+        $stmtRunden = $pdo->prepare("
+            SELECT * FROM lmo_spieltage WHERE liga_id = ? ORDER BY runde_nr
+        ");
+        $stmtRunden->execute([$ligaId]);
+        $rundenRows = $stmtRunden->fetchAll();
+
+        if ($lmtype == 0) {
+            $stmtSpiele = $pdo->prepare("
+                SELECT * FROM lmo_spiele WHERE liga_id = ? ORDER BY runde_nr, match_nr
+            ");
+        } else {
+            $stmtSpiele = $pdo->prepare("
+                SELECT * FROM lmo_spiele WHERE liga_id = ? ORDER BY runde_nr, match_nr, ko_slot
+            ");
+        }
+        $stmtSpiele->execute([$ligaId]);
+        $spielRows = $stmtSpiele->fetchAll();
+
+        // Spiele nach runde_nr gruppieren
+        $spieleByRunde = array();
+        foreach ($spielRows as $sp) {
+            $spieleByRunde[(int) $sp['runde_nr']][] = $sp;
+        }
+
+        foreach ($rundenRows as $rd) {
+            $rundeNr = (int) $rd['runde_nr'];
+
+            // Start-/Endzeit der Runde als Unix-Timestamp (analog loadFile():
+            // dort wird D1/D2 im Format dd.mm.yyyy erwartet; in der DB liegen
+            // datum1/datum2 als Y-m-d vor)
+            $startTime = null;
+            if (!empty($rd['datum1'])) {
+                $ts = strtotime($rd['datum1']);
+                if ($ts !== false) $startTime = $ts;
+            }
+            $endTime = null;
+            if (!empty($rd['datum2'])) {
+                $ts = strtotime($rd['datum2']);
+                if ($ts !== false) $endTime = $ts;
+            }
+
+            $spieltag = new spieltag($rundeNr, $startTime, $endTime);
+            if ($lmtype == 0) {
+                $spieltag->setModus(0);
+            } else {
+                $spieltag->setModus((int) ($rd['modus'] ?? 1));
+            }
+
+            foreach ($spieleByRunde[$rundeNr] ?? array() as $sp) {
+                $heimNr = (int) $sp['team_a'];
+                $gastNr = (int) $sp['team_b'];
+
+                // FIX: teamForNumber() liefert null, falls Team-Nr unbekannt
+                // (z.B. noch nicht angelegte Slots) - dann Platzhalter-Team
+                // verwenden, damit $partie->heim/->gast nie null sind und
+                // spätere ->name/->nr Zugriffe nicht mit
+                // "Attempt to read property on null" abbrechen.
+                if (isset($teamsByNr[$heimNr])) {
+                    $heimTeam = &$teamsByNr[$heimNr];
+                } else {
+                    $placeholder = new team('', '', $heimNr, '');
+                    $heimTeam = $placeholder;
+                }
+                if (isset($teamsByNr[$gastNr])) {
+                    $gastTeam = &$teamsByNr[$gastNr];
+                } else {
+                    $placeholder = new team('', '', $gastNr, '');
+                    $gastTeam = $placeholder;
+                }
+
+                $goalA = $sp['goal_a'];
+                $goalB = $sp['goal_b'];
+                $hTore = ($goalA === '_' || $goalA === '' || $goalA === null) ? -1 : (int) $goalA;
+                $gTore = ($goalB === '_' || $goalB === '' || $goalB === null) ? -1 : (int) $goalB;
+
+                $zeit = !empty($sp['anstoss_ts']) ? (int) $sp['anstoss_ts'] : null;
+                $notiz = $sp['notiz'] ?? '';
+
+                $spielNr = (int) $sp['match_nr'];
+
+                $partie = new partie($spielNr, $zeit, $notiz, $heimTeam, $gastTeam, $hTore, $gTore);
+                $partie->setreportUrl($sp['bericht'] ?? '');
+
+                // 'spez' in lmo_spiele kodiert n.V./i.E. (1/2), entspricht
+                // SP im .l98-Format -> spielEnde
+                $spezVal = (int) ($sp['spez'] ?? 0);
+                $partie->setSpielEnde($spezVal);
+
+                $this->addPartie($partie);
+                $spieltag->addPartie($partie);
+            }
+
+            $this->addSpieltag($spieltag);
+        }
+
+        // ── Options-Sektion aufbauen ──────────────────────────────────────────
+        // Mapping lmo_ligen-Spalten -> .l98-Options-Keys (siehe optionsSektion
+        // Default-keyValues sowie lmo-openfile-db.php für dieselbe Zuordnung)
+        $optionDetails = array(
+            'Title'         => "<acronym title='Liga Manager Online " . (defined('CLASSLIB_VERSION') ? CLASSLIB_VERSION : '') . "'>LMO</acronym>",
+            'Name'          => $row['liga_name'],
+            'Type'          => $lmtype,
+            'Teams'         => (int) $row['anz_teams'],
+            'Rounds'        => count($rundenRows),
+            'Matches'       => $this->spieltageMaxPartien(),
+            'Actual'        => (int) $row['aktueller_st'],
+            'Kegel'         => (int) $row['kegel'],
+            'HandS'         => (int) $row['hands'],
+            'PointsForWin'  => (int) $row['pns'],
+            'PointsForDraw' => (int) $row['pnu'],
+            'PointsForLost' => (int) $row['pnn'],
+            'XtraS'         => (int) $row['pxs'],
+            'XtraU'         => (int) $row['pxu'],
+            'XtraV'         => (int) $row['pxn'],
+            'SpezS'         => (int) $row['pps'],
+            'SpezU'         => (int) $row['ppu'],
+            'SpezV'         => (int) $row['ppn'],
+            'Spez'          => (int) $row['spez'],
+            'HideDraw'      => (int) $row['hidr'],
+            'OnRun'         => (int) $row['onrun'],
+            'MinusPoints'   => (int) $row['minus'],
+            'Direct'        => (int) $row['direkt'],
+            'Champ'         => (int) $row['champ'],
+            'CL'            => (int) $row['anzcl'],
+            'CK'            => (int) $row['anzck'],
+            'UC'            => (int) $row['anzuc'],
+            'AR'            => (int) $row['anzar'],
+            'AB'            => (int) $row['anzab'],
+            'namePkt'       => $row['name_pkt'] ?: 'Pkt.',
+            'nameTor'       => $row['name_tor'] ?: 'Tore',
+            'DatC'          => (int) $row['datc'],
+            'DatS'          => (int) $row['dats'],
+            'DatM'          => (int) $row['datm'],
+            'DatF'          => $row['datf'] ?: 'd.m.Y H:i',
+            'urlT'          => (int) $row['urlt'],
+            'urlB'          => (int) $row['urlb'],
+            'Graph'         => (int) $row['kurve'],
+            'Kreuz'         => (int) $row['kreuz'],
+            'Tabelle'       => (int) $row['tabelle'],
+            'Ligastats'     => (int) $row['ligastats'],
+            'Plan'          => (int) $row['plan'],
+            'Ergebnis'      => (int) $row['ergebnis'],
+            'mittore'       => (int) $row['mittore'],
+            'favTeam'       => (int) $row['favteam'],
+            'selTeam'       => (int) $row['selteam'],
+            'kurve1'        => (int) $row['stat1'],
+            'kurve2'        => (int) $row['stat2'],
+            'tableHinRueck' => (int) $row['ein_hinrueck'],
+            'tableHeimAusw' => (int) $row['ein_heimausw'],
+            'ticker'        => (int) $row['nticker'],
+            'klfin'         => (int) ($row['klfin']      ?? 0),
+            'playdown'      => (int) ($row['playdown']   ?? 0),
+            'playoffmode'   => (int) ($row['playoffmode'] ?? 0),
+            'goalfaktor'    => (float) ($row['goalfaktor']   ?: 1),
+            'pointsfaktor'  => (float) ($row['pointsfaktor'] ?: 1),
+            'enableGameSort'=> (int) ($row['enablegamesort'] ?? 1),
+        );
+
+        // Liganame setzen (analog loadFile())
+        if (isset($optionDetails['Name']) && $optionDetails['Name'] != '') {
+            if ($this->name == '') {
+                $this->name = $optionDetails['Name'];
+            } else {
+                $optionDetails['Name'] = $this->name;
+            }
+        }
+
+        $options = new optionsSektion($this, $optionDetails);
+        foreach ($optionDetails as $detailsKey => $detailsValue) {
+            if (isset($detailsKey) && $detailsKey != '') {
+                $options->keyValues[$detailsKey] = $detailsValue;
+            }
+        }
+        $this->options = &$options;
+
+        // ── Sonstige Metadaten ────────────────────────────────────────────────
+        $this->kurz     = $row['file_name'] ?? '';
+        $this->fileName = $fileName;
+        // ligaDatum entspricht filemtime() bei loadFile(); hier: Zeitpunkt
+        // der letzten DB-Aktualisierung
+        $this->ligaDatum = !empty($row['updated_at']) ? strtotime($row['updated_at']) : time();
+
+        $status = true;
+        return $status;
+
+        } catch (\Throwable $e) {
+            // Sowohl PDOExceptions (DB-Fehler) als auch sonstige Fehler
+            // (z.B. undefinierte Konstanten bei unvollständigem Setup)
+            // werden hier abgefangen, damit loadFromDb() im Fehlerfall
+            // immer nur false zurückgibt - analog zu loadFile() bei
+            // fehlender/ungültiger Datei - statt eines Fatal Errors (HTTP 500).
+            if (function_exists('error_log')) {
+                error_log('liga::loadFromDb() PDOException: ' . $e->getMessage());
+            }
+            return false;
+        }
+    }
+
+    /**
+    * Hilfsfunktion für loadFromDb(): ermittelt die maximale Anzahl an
+    * Partien über alle bisher geladenen Spieltage (entspricht der
+    * "Matches"-Ermittlung in loadFile()/writeFile()).
+    *
+    * @access private
+    * @return integer
+    */
+    function spieltageMaxPartien() {
+        $max = 0;
+        foreach ($this->spieltage as $spieltag) {
+            if ($spieltag->partienCount() > $max) {
+                $max = $spieltag->partienCount();
+            }
+        }
+        return $max;
+    }
+
+    /**
     * schreibt das LigaFile
     *
     * if there is a need for any update functionality for special addons, you should define them
@@ -907,6 +1225,9 @@ class liga {
         $spTag = ($spTag < 1) ? $actual : $spTag;
         $spTagCount = 1;
 
+        // FIX (PHP 8): vorinitialisieren, sonst "Undefined variable"
+        // falls $this->teams leer ist.
+        $tableArray = array();
         foreach ($this->teams as $team) {
             $tableArray[] = array(
               'pos' => -1,
@@ -1160,6 +1481,9 @@ class liga {
     */
     function calcTableforTeams($subteams) {
         $spTagCount = 1;
+        // FIX (PHP 8): vorinitialisieren, sonst "Undefined variable"
+        // falls $subteams leer ist.
+        $tableArray = array();
         foreach ($subteams as $team) {
             $tableArray[] = array(
               'pos' => -1,
