@@ -193,7 +193,11 @@ class pokalRunde {
     function getPartien($number = '') {
         if ($number == '' )
             return $this->partien;
-        elseif (!array_key_exists($number, $this->partien[$number]))
+        // FIX: array_key_exists()-Argumente waren vertauscht
+        // (prüfte Keys von $this->partien[$number] statt von $this->partien,
+        // was bei nicht existierendem $number einen Undefined-Array-Key-Fehler
+        // verursacht hätte).
+        elseif (!array_key_exists($number, $this->partien))
             return false;
         else
             return $this->partien[$number];
@@ -231,7 +235,8 @@ class pokalRunde {
     function getSpieltage($number = '') {
         if ($number == '' )
             return $this->spieltage;
-        elseif (!array_key_exists($number, $this->spieltage[$number]))
+        // FIX: array_key_exists()-Argumente waren vertauscht (siehe getPartien())
+        elseif (!array_key_exists($number, $this->spieltage))
             return false;
         else
             return $this->spieltage[$number];
