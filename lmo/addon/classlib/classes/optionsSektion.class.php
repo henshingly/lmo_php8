@@ -89,7 +89,11 @@ class optionsSektion extends sektion {
             }
         }
         // Wenn eine Liga angegeben wird, werden entsprechende Keys gleich initialisiert
-        if (get_class($aLiga) == 'liga') {
+        // FIX (PHP 8): get_class() erwartet ein Objekt; bei Default '' würde
+        // get_class('') einen TypeError werfen. Zudem: instanceof statt
+        // get_class()=='liga', damit Subklassen (ligaFussball/ligaHandball)
+        // ebenfalls erkannt werden.
+        if ($aLiga instanceof liga) {
             if (isset($aLiga->name) && $aLiga->name != '') {
                 $this->keyValues['Name'] = $aLiga->name;
             }
