@@ -310,7 +310,9 @@ class partie {
         if ($key == '') {
             return $this->otherParameter;
         }
-        return $this->otherParameter[$key];
+        // FIX (PHP 8): "Undefined array key"-Warning, falls für diese Partie
+        // (z.B. bei loadFromDb() ohne otherParameter) der Key nicht gesetzt ist.
+        return $this->otherParameter[$key] ?? null;
     }
 
     /**
@@ -339,7 +341,9 @@ class partie {
     {
         if (is_null($ziel)) {
             return $this->reportUrl;
-        } elseif (strpos($this->reportUrl, 'http') !== 0) {
+        // FIX (PHP 8.1+): strpos() mit null als Haystack ist deprecated.
+        // $this->reportUrl ist standardmäßig null -> als '' behandeln.
+        } elseif (strpos((string) $this->reportUrl, 'http') !== 0) {
             return '<a href="http://' . $this->reportUrl . '" target="' . $ziel . "\" $param>";
         }
         return '<a href="' . $this->reportUrl . '" target="' . $ziel . "\" $param>";
