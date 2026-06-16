@@ -820,7 +820,7 @@ class liga {
                 $heimNr = (int) $sp['team_a'];
                 $gastNr = (int) $sp['team_b'];
 
-                // KO-Modus: Spiele mit team_a=0 und team_b=0 sind noch nicht
+                // KO-Modus: Spiele mit team_a=NULL und team_b=NULL sind noch nicht
                 // vergeben (z.B. Halbfinale bevor die Paarungen feststehen).
                 // Diese Platzhalter-Slots werden übersprungen, analog zum
                 // loadFile()-Verhalten (dort werden TA=0/TB=0-Zeilen nie als
