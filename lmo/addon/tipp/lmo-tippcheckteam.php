@@ -31,7 +31,10 @@ while ($datei && !feof($datei)) {
 }
 fclose($datei);
 $v = 0; // Teamnummer
-array_shift($dumma);
+// Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
+$dumma = array_values(array_filter($dumma, function ($line) {
+    return $line !== '' && !str_starts_with(trim($line), '<?php');
+}));
 
 $tipperteam = array_pad($array, count($dumma)+1, "");
 
