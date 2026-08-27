@@ -23,6 +23,10 @@ $tipperteam = array();
 $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
 
 $dumma = file($pswfile);
+// Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
+$dumma = array_values(array_filter($dumma, function ($line) {
+    return !str_starts_with(trim($line), '<?php');
+}));
 
 $v = 0; // Teamnummer
 for ($i = 0; $i < count($dumma); $i++) {
