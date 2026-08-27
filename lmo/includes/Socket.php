@@ -362,7 +362,7 @@ function ftp_pasv(&$control, $pasv)
     $pos2   = strrpos($cont, ')')-$pos;
     $string = substr($cont, $pos, $pos2);
 
-    $array = split(',', $string);
+    $array = explode(',', $string);
     // IP we are connecting to
     $ip = $array[0]. '.' .$array[1]. '.' .$array[2]. '.' .$array[3];
     // Port ( 256*lowbit + highbit
