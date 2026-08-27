@@ -60,7 +60,7 @@ function check_hilfsadmin($datei)
 
 function applyFactor ($value, $factor)
 {
-    if (is_numeric($value) && $value != 0) {
+    if (is_numeric($value) && $value != 0 && is_numeric($factor) && $factor != 0) {
         return ($value / $factor);
     }
     return $value;
