@@ -60,6 +60,25 @@ if (!file_exists(PATH_TO_LMO . '/init.php')) {
 // Configuration
 require(PATH_TO_LMO . '/lmo-cfgload.php');
 
+// Admin session keys: always ensure defaults exist, regardless of entry
+// point (public frontend, admin area, tipp addon, ...), so downstream
+// code can safely read $_SESSION['lmouserok'] etc. without isset() checks.
+if (!isset($_SESSION['lmouserok'])) {
+    $_SESSION['lmouserok'] = 0;
+}
+if (!isset($_SESSION['lmouserokerweitert'])) {
+    $_SESSION['lmouserokerweitert'] = 0;
+}
+if (!isset($_SESSION['lmousername'])) {
+    $_SESSION['lmousername'] = '';
+}
+if (!isset($_SESSION['lmouserpass'])) {
+    $_SESSION['lmouserpass'] = '';
+}
+if (!isset($_SESSION['lmouserfile'])) {
+    $_SESSION['lmouserfile'] = '';
+}
+
 //Language
 if (isset($_GET['lmouserlang'])){
     $_SESSION['lmouserlang'] = $_GET['lmouserlang'];
