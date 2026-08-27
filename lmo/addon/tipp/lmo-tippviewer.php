@@ -306,14 +306,14 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
             if ($tipp_tippmodus == 1) {
                 if ($tipp_showdurchschntipp == 1) { ?>
           <th class="nobr" colspan="2"><?php echo 'Ø-' . $text['tipp'][30]; /* DurchschnittsTipp */?><br><?php
-                    if ($goalfaktor[$i] != 1) {
+                    if ($goalfaktor[$i] > 0 && $goalfaktor[$i] != 1) {
                         echo '(' . $text[553 + log10($goalfaktor[$i])] . ')';
                     } ?></th>
 <?php
                 } ?>
           <th class="nobr" align="center" colspan="<?php if ($tipp_pfeiltipp == 1) {echo '5';} else {echo '3';} ?>">
             <acronym title="<?php echo $text['tipp'][241] . ':' . $text['tipp'][242]; ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php
-                if ($goalfaktor[$i] != 1) {
+                if ($goalfaktor[$i] > 0 && $goalfaktor[$i] != 1) {
                     echo '(' . $text[553 + log10($goalfaktor[$i])] . ')';
                 } ?></th>
 <?php
