@@ -23,17 +23,17 @@ require_once(PATH_TO_LMO . '/includes/PHPMailer.php');
 if (isset($xtippername2)) {
     $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
     $lines = file($pswfile);
-    $userFound = false;
     // Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
     $lines = array_values(array_filter($lines, function ($line) {
         return !str_starts_with(trim($line), '<?php');
     }));
+    $userFound = false;
 
     foreach ($lines as $key => $line) {
         $data = explode('|', $line);
 
         // Prüfe Benutzername (Index 0) oder E-Mail (Index 4)
-        if ($xtippername2 == $data[0] || ($xtippername2 == $data[4] && str_contains($data[4], '@'))) {
+        if ($xtippername2 == $data[0] || (isset($data[4]) && $xtippername2 == $data[4] && str_contains($data[4], '@'))) {
 
             // 1. Neues temporäres Passwort generieren (8 Zeichen)
             $newPassword = bin2hex(random_bytes(4)); 
