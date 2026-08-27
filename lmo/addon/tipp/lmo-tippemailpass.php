@@ -24,6 +24,10 @@ if (isset($xtippername2)) {
     $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
     $lines = file($pswfile);
     $userFound = false;
+    // Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
+    $lines = array_values(array_filter($lines, function ($line) {
+        return !str_starts_with(trim($line), '<?php');
+    }));
 
     foreach ($lines as $key => $line) {
         $data = explode('|', $line);
