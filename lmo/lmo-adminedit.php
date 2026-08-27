@@ -387,8 +387,8 @@ if ($file != '') {
     }?>
                   </th>
 <?php
-    if ($goalfaktor != 1) { ?>
-                  <th style="text-align:center" class="nobr" colspan="<?php echo $breite - 13; ?>"><?php if ($goalfaktor != 1) {echo '(' . $text[553 + log10($goalfaktor)] . ')';}?></th>
+    if ($goalfaktor > 0 && $goalfaktor != 1) { ?>
+                  <th style="text-align:center" class="nobr" colspan="<?php echo $breite - 13; ?>"><?php if ($goalfaktor > 0 && $goalfaktor != 1) {echo '(' . $text[553 + log10($goalfaktor)] . ')';}?></th>
 <?php
     } else { ?>
                   <th colspan="<?php echo $breite - 13; ?>">&nbsp;</th>
