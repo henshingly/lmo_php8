@@ -26,16 +26,15 @@ $dumma = [];
 
 if (file_exists($pswfile)) {
     $dumma = file($pswfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    // Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
+    $dumma = array_values(array_filter($dumma, function ($line) {
+        return !str_starts_with(trim($line), '<?php');
+    }));
 }
 
 sort($dumma, SORT_STRING);
 
 foreach ($dumma as $line) {
-
-    // PHP-Zeile überspringen
-    if (str_starts_with(trim($line), '<?php')) {
-        continue;
-    }
 
     $dummb = explode('|', $line);
 
