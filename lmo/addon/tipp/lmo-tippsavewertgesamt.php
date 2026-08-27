@@ -23,6 +23,10 @@ $dummd = array();
 $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
 
 $dummd = file($pswfile);
+// Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
+$dummd = array_values(array_filter($dummd, function ($line) {
+    return !str_starts_with(trim($line), '<?php');
+}));
 
 $anztipper = count($dummd);
 
