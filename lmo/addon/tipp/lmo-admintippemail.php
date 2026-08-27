@@ -41,8 +41,8 @@ if ($save == 1) {
       $file='';
       $viewermode = 1;
     } else {
-      $st = $st1[$liganr-1];
-      $liga = $liga1[$liganr-1];
+      $st = isset($st1[$liganr-1]) ? $st1[$liganr-1] : '';
+      $liga = isset($liga1[$liganr-1]) ? $liga1[$liganr-1] : '';
       $viewermode = 0;
     }
   }
