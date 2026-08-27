@@ -22,10 +22,21 @@ require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tippaenderbar.php');
 require_once(PATH_TO_LMO . '/includes/PHPMailer.php');
 $mail = new PHPMailer(true);
 
+// Basis-URL für den [pass]-Platzhalter: da Passwoerter seit der Umstellung
+// auf password_hash() nicht mehr im Klartext vorliegen, wird statt des
+// (nutzlosen) Hash-Werts ein personalisierter Link zum Passwort-Reset
+// verschickt (nutzt denselben Mechanismus wie lmo-tippemailpass.php).
+$tippResetBaseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST']
+    . $_SERVER['PHP_SELF'] . '?action=tipp&todo=getpass&xtippername2=';
+
 if ($message != '') {
     $dumma = array();
     $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
     $dumma = file($pswfile);
+    // Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
+    $dumma = array_values(array_filter($dumma, function ($line) {
+        return !str_starts_with(trim($line), '<?php');
+    }));
 
     $mail->isMail();
     $mail->CharSet = 'UTF-8';
@@ -44,9 +55,9 @@ if ($message != '') {
     if ($emailart == 0) {
         for ($tippernr = $start - 1; $tippernr < $ende; $tippernr ++) {
             $dummb = explode('|', $dumma[$tippernr]);
-            if ($dummb[9] != -1 && $dummb[4] != '') {
+            if (isset($dummb[9], $dummb[4]) && $dummb[9] != -1 && $dummb[4] != '') {
                 $textmessage = $message;
-                $textmessage = str_replace(array('[nick]', '[pass]', '[name]'),array($dummb[0], $xtipperpass, $dummb[3]), $textmessage);
+                $textmessage = str_replace(array('[nick]', '[pass]', '[name]'),array($dummb[0], $tippResetBaseUrl . urlencode($dummb[0]), $dummb[3]), $textmessage);
                 $mail->Body = $textmessage;
                 $mail->addAddress($dummb[4]);
                 if ($mail->send()) {
@@ -114,7 +125,7 @@ if ($message != '') {
 
             for ($tippernr = $start - 1; $tippernr < $ende; $tippernr++) {
                 $dummb = explode('|', $dumma[$tippernr]);
-                if ($dummb[10] != -1 && $dummb[4] != '') {
+                if (isset($dummb[10], $dummb[4]) && $dummb[10] != -1 && $dummb[4] != '') {
                     for ($i = 0; $i < $anzspiele; $i ++) {
                         $goaltipp[$i] = '_';
                     }
@@ -163,7 +174,7 @@ if ($message != '') {
                     }
                     if ($spiele != '') {
                         $textmessage = str_replace('[nick]', $dummb[0], $textmessage);
-                        $textmessage = str_replace('[pass]', $dummb[1], $textmessage);
+                        $textmessage = str_replace('[pass]', $tippResetBaseUrl . urlencode($dummb[0]), $textmessage);
                         $textmessage = str_replace('[name]', $dummb[3], $textmessage);
                         $textmessage = str_replace('[spiele]', $spiele, $textmessage);
                         $mail->Body = $textmessage;
@@ -188,7 +199,7 @@ if ($message != '') {
 
             for ($tippernr = $start - 1; $tippernr < $ende; $tippernr ++) {
                 $dummb = explode('|', $dumma[$tippernr]);
-                if ($dummb[10] != -1 && $dummb[4] != '') {
+                if (isset($dummb[10], $dummb[4]) && $dummb[10] != -1 && $dummb[4] != '') {
                     $textmessage = $message;
                     $tippfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . substr($file, 0, -4) . '_' . $dummb[0] . '.tip';
                     $spiele = '';
@@ -230,7 +241,7 @@ if ($message != '') {
 
                         if ($spiele != '') {
                             $textmessage = str_replace('[nick]', $dummb[0], $textmessage);
-                            $textmessage = str_replace('[pass]', $dummb[1], $textmessage);
+                            $textmessage = str_replace('[pass]', $tippResetBaseUrl . urlencode($dummb[0]), $textmessage);
                             $textmessage = str_replace('[name]', $dummb[3], $textmessage);
                             $textmessage = str_replace('[spiele]', $spiele, $textmessage);
                             $mail->Body = $textmessage;
@@ -255,7 +266,7 @@ if ($message != '') {
         }
         $textmessage = $message;
         $textmessage = str_replace('[nick]', $dummb[0], $textmessage);
-        $textmessage = str_replace('[pass]', $dummb[1], $textmessage);
+        $textmessage = str_replace('[pass]', $tippResetBaseUrl . urlencode($dummb[0]), $textmessage);
         $textmessage = str_replace('[name]', $dummb[3], $textmessage);
         $mail->Body = $textmessage;
         $mail->addAddress($dummb[4]);
