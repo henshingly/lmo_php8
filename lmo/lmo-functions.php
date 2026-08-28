@@ -427,7 +427,6 @@ function lmo_sanitize_and_log($data, $source = 'unknown', $isStrict = true)
 // First, rebuild the GET/POST command individually, then rebuild the entire REQUEST.
 $_GET     = lmo_sanitize_and_log($_GET, '$_GET', true);
 $_POST    = lmo_sanitize_and_log($_POST, '$_POST', (isset($_SESSION['lmouserok']) ? false : true));
-$_COOKIE  = lmo_sanitize_and_log($_COOKIE, '$_COOKIE', true);
 
 // Manually construct $_REQUEST from the already clean values
 $_REQUEST = array_merge($_GET, $_POST, $_COOKIE);
