@@ -22,6 +22,9 @@ if (isset($file) && $file != "") {
   $tabtype=isset($_GET['tabtype'])?$_GET['tabtype']:0;
   $newtabtype=0;
   if (!empty($_GET['st'])) { $endtab = $st;}
+  // Ursprünglichen Wert sichern: lmo-calctable.php kann $endtab bei Hin-/Rückrunden-Tabellen (tabtype 3/4) intern ueberschreiben, daher
+  // reicht ein einfaches $endtab--/$endtab++ nicht aus, um ihn nach dem require() wieder zuverlaessig herzustellen.
+  $endtab_original = $endtab;
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=$action&amp;tabtype=$tabtype&amp;file=".$file."&amp;st=";
   $breite = 10;
@@ -34,15 +37,15 @@ if (isset($file) && $file != "") {
   if ($datm == 1) {
     $breite = $breite+1;
   }
-  if ($endtab > 1) {
-    $endtab--;
+  if ($endtab_original > 1) {
+    $endtab = $endtab_original - 1;
     require(PATH_TO_LMO."/lmo-calctable.php");
     $platz1 = array("");
     $platz1 = array_pad($array, $anzteams+1, "");
     for ($x = 0; $x < $anzteams; $x++) {
       $platz1[intval(substr($tab0[$x], 34))] = $x+1;
     }
-    $endtab++;
+    $endtab = $endtab_original;
   }
   if ($tabonres == 2) {
     $newtabtype = $tabtype;
@@ -80,12 +83,14 @@ if (isset($file) && $file != "") {
     $adtore = $dtore;
     $tabtype=$newtabtype;
   }
+  $endtab = $endtab_original;
   require(PATH_TO_LMO."/lmo-calctable.php");
   $platz0 = array("");
   $platz0 = array_pad($array, $anzteams+1, "");
   for ($x = 0; $x < $anzteams; $x++) {
     $platz0[intval(substr($tab0[$x], 34))] = $x+1;
   }
+  $endtab = $endtab_original;
   if ($tabdat == "") {
     $addt1 = $_SERVER['PHP_SELF']."?action=$action&amp;file=".$file."&amp;endtab=".$endtab."&amp;st=".$st."&amp;tabtype=";
   } else {
