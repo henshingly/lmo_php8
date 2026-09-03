@@ -182,9 +182,9 @@ if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) {
 }
 
 if (isset($_SESSION['liga_sort']) && isset($_SESSION['liga_sort_direction'])) {
-    if ($sortprojection[$_SESSION['liga_sort']] >= 0) echo 'ligaTable.sort(' . $sortprojection[$_SESSION['liga_sort']] . ',' . $sortprojection[$_SESSION['liga_sort_direction']] . ');';
+    if (isset($sortprojection[$_SESSION['liga_sort']], $sortprojection[$_SESSION['liga_sort_direction']]) && $sortprojection[$_SESSION['liga_sort']] >= 0) echo 'ligaTable.sort(' . $sortprojection[$_SESSION['liga_sort']] . ',' . $sortprojection[$_SESSION['liga_sort_direction']] . ');';
 } else {
-    if ($sortprojection[$lmo_liga_sort] >= 0) echo 'ligaTable.sort(' . $sortprojection[$lmo_liga_sort] . ', ' . $sortprojection[$lmo_liga_sort_direction] . ');';
+    if (isset($sortprojection[$lmo_liga_sort], $sortprojection[$lmo_liga_sort_direction]) && $sortprojection[$lmo_liga_sort] >= 0) echo 'ligaTable.sort(' . $sortprojection[$lmo_liga_sort] . ', ' . $sortprojection[$lmo_liga_sort_direction] . ');';
 } ?>
 </script>
 <?php
