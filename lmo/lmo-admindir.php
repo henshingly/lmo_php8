@@ -21,8 +21,14 @@
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 $addi = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=edit&amp;file=';
 
-$_SESSION['liga_sort'] = isset($_REQUEST['liga_sort']) ? $_REQUEST['liga_sort'] : $liga_sort;
-$_SESSION['liga_sort_direction'] = isset($_REQUEST['liga_sort_direction']) ? $_REQUEST['liga_sort_direction'] : $liga_sort_direction;
+$valid_liga_sort = array('liga_name', 'file_name', 'file_date');
+$valid_liga_sort_direction = array('asc', 'desc');
+$_SESSION['liga_sort'] = (isset($_REQUEST['liga_sort']) && in_array($_REQUEST['liga_sort'], $valid_liga_sort, true))
+    ? $_REQUEST['liga_sort']
+    : (in_array($liga_sort, $valid_liga_sort, true) ? $liga_sort : 'liga_name');
+$_SESSION['liga_sort_direction'] = (isset($_REQUEST['liga_sort_direction']) && in_array($_REQUEST['liga_sort_direction'], $valid_liga_sort_direction, true))
+    ? $_REQUEST['liga_sort_direction']
+    : (in_array($liga_sort_direction, $valid_liga_sort_direction, true) ? $liga_sort_direction : 'asc');
 
 $verz = opendir(substr(PATH_TO_LMO . '/' . $dirliga, 0, -1));
 $liga_counter = 0;
@@ -76,7 +82,7 @@ while($files = readdir($verz)) {
                                 $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[370];
                             }
                         }
-                        //Alle benφtigten Werte gefunden -> Abbruch
+                        //Alle benΓ¶tigten Werte gefunden -> Abbruch
                         if ($ligadatei[$liga_counter]['liga_name'] != '' &&  
                             $ligadatei[$liga_counter]['aktueller_spieltag'] != '' && 
                             $ligadatei[$liga_counter]['anz_teams'] != '')
@@ -145,8 +151,8 @@ function cmp ($a1, $a2) {
             return ($a1[$sort] > $a2[$sort]) ? 1 : -1;
     }
     else { //Stringvergleich
-        $a1[$sort] = strtr($a1[$sort], '¥µΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέίΰαβγδεζηθικλμνξοπρςστυφψωϊϋόύÿ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
-        $a2[$sort] = strtr($a2[$sort], '¥µΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέίΰαβγδεζηθικλμνξοπρςστυφψωϊϋόύÿ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
+        $a1[$sort] = strtr($a1[$sort], 'Β¥ΒµΓ€ΓΓ‚ΓƒΓ„Γ…Γ†Γ‡ΓΓ‰ΓΓ‹ΓΓΓΓΓΓ‘Γ’Γ“Γ”Γ•Γ–ΓΓ™ΓΓ›ΓΓΓΓ Γ΅ΓΆΓ£Γ¤Γ¥Γ¦Γ§Γ¨Γ©ΓªΓ«Γ¬Γ­Γ®Γ―Γ°Γ±Γ²Γ³Γ΄ΓµΓ¶ΓΈΓΉΓΊΓ»ΓΌΓ½ΓΏ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
+        $a2[$sort] = strtr($a2[$sort], 'Β¥ΒµΓ€ΓΓ‚ΓƒΓ„Γ…Γ†Γ‡ΓΓ‰ΓΓ‹ΓΓΓΓΓΓ‘Γ’Γ“Γ”Γ•Γ–ΓΓ™ΓΓ›ΓΓΓΓ Γ΅ΓΆΓ£Γ¤Γ¥Γ¦Γ§Γ¨Γ©ΓªΓ«Γ¬Γ­Γ®Γ―Γ°Γ±Γ²Γ³Γ΄ΓµΓ¶ΓΈΓΉΓΊΓ»ΓΌΓ½ΓΏ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
         return  strnatcasecmp($a1[$sort], $a2[$sort]);
     }
 }
