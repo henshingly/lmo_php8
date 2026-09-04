@@ -22,29 +22,31 @@
 $addm = $_SERVER['PHP_SELF'] . '?file=' . $file . '&amp;action=';
 if ($file != '') {
     require(PATH_TO_LMO . '/lmo-openfile.php');
-    if (empty($_GET['endtab'])) {
-        $endtab = $anzst;
-        $ste = $st;
-        $tabdat = '';
-    } else {
-        $endtab = $_GET['endtab'];
-        $tabdat = $endtab . '. ' . $text[2];
-        $ste = $endtab;
-    }
-    if (!empty($_GET['st'])) {
-        $tabdat = $st . '. ' . $text[2];
-    }
-    if (empty($_REQUEST['action']) && $action == '') {
-        if (!isset($onrun)) $onrun = '0';
-        switch ($onrun) {
-            case '0': $action = 'results';break;
-            case '1': $action = 'table';break;
-            case '2': $action = 'program';break;
-            case '3': $action = 'cross';break;
-            case '4': $action = 'graph';break;
-            case '5': $action = 'stats';break;
-            case '6': $action = 'cal';break;
-            case '7': $action=  'spieler';break;
+    if ($file != '') {
+        if (empty($_GET['endtab'])) {
+            $endtab = $anzst;
+            $ste = $st;
+            $tabdat = '';
+        } else {
+            $endtab = $_GET['endtab'];
+            $tabdat = $endtab . '. ' . $text[2];
+            $ste = $endtab;
+        }
+        if (!empty($_GET['st'])) {
+            $tabdat = $st . '. ' . $text[2];
+        }
+        if (empty($_REQUEST['action']) && $action == '') {
+            if (!isset($onrun)) $onrun = '0';
+            switch ($onrun) {
+                case '0': $action = 'results';break;
+                case '1': $action = 'table';break;
+                case '2': $action = 'program';break;
+                case '3': $action = 'cross';break;
+                case '4': $action = 'graph';break;
+                case '5': $action = 'stats';break;
+                case '6': $action = 'cal';break;
+                case '7': $action=  'spieler';break;
+            }
         }
     }
 }
