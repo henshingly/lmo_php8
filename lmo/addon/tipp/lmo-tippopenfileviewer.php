@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var list<\Lmo\Tipp\AnstehendesSpiel> $lmo_spiele anstehende Spiele aller Ligen (wird hier ergaenzt)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
@@ -70,8 +70,6 @@ if (!defined('PATH_TO_LMO')) {
  * @var mixed $urlb0
  */
 
-// $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
-require(PATH_TO_LMO . '/lmo-ligadaten.php');
 
 
 if ($file != "") {
@@ -94,8 +92,7 @@ if ($file != "") {
     $hidr0 = $lmo_einstellungen->wert('HideDraw') ?? 0;
     $dats0 = $lmo_einstellungen->wert('DatS');
     $datm0 = $lmo_einstellungen->wert('DatM');
-    $ligaDaten->anzteams = $lmo_einstellungen->wert('Teams');
-    $ligaDaten->favteam = $lmo_einstellungen->wert('favTeam');
+    $lmo_favteam = $lmo_einstellungen->wert('favTeam');
     clearstatcache();
 
     $tippdaten = array();
@@ -122,12 +119,7 @@ if ($file != "") {
     }
     fclose($datei);
 
-    $anzst0 = strlen(decbin($ligaDaten->anzteams-1));
-    foreach ($lmo_liga->mannschaften as $lmo_nr => $lmo_mannschaft) {
-      if ($lmo_mannschaft->name !== null) {
-        $ligaDaten->teams[$lmo_nr] = $lmo_mannschaft->anzeigename();
-      }
-    }
+    $anzst0 = strlen(decbin((int)$lmo_einstellungen->wert('Teams')-1));
     foreach ($lmo_liga->spieltage as $lmo_spieltag_nr => $lmo_spieltag) {
       $spieltag0 = (string)$lmo_spieltag_nr;
       // Datum des Spieltags in der Form TT.MM.JJJJ und als Zeit; ein Datum, das es nicht gibt, zaehlt als leer
@@ -187,32 +179,12 @@ if ($file != "") {
             // Nummer des Spiels wie im Schluessel der Datei: Partie, im Pokal gefolgt vom Spiel der Paarung
             $spiel0 = $lmo_pokal ? $lmo_partie_nr.$lmo_spiel_nr : (string)$lmo_partie_nr;
 
-            array_push($liga, $liga0);
-            array_push($ligaDaten->titel, $titel0);
-            array_push($ligaDaten->lmtype, $lmtype0);
-            array_push($ligaDaten->anzst, $anzst0);
-            array_push($ligaDaten->hidr, $hidr0);
-            array_push($ligaDaten->dats, $dats0);
-            array_push($ligaDaten->datm, $datm0);
-            array_push($spieltag, $spieltag0);
-            array_push($ligaDaten->modus, $modus0);
-            array_push($ligaDaten->datum1, $datum10);
-            array_push($ligaDaten->datum2, $datum20);
-            array_push($spiel, $spiel0);
-            array_push($ligaDaten->urlb, $urlb0);
-            array_push($ligaDaten->goalfaktor, $goalfaktor0);
-            if ($ligaDaten->favteam == $teama0) {
-              $teama0 = "<strong>".($ligaDaten->teams[$teama0] ?? '')."</strong>";
-            } else {
-              $teama0 = $ligaDaten->teams[$teama0] ?? '';
+            // Name zum Anzeigen; die Lieblingsmannschaft der Liga ist hervorgehoben
+            $lmo_namen = array();
+            foreach (array($teama0, $teamb0) as $lmo_nr) {
+              $lmo_name = $lmo_nr > 0 ? $lmo_liga->mannschaftsname($lmo_nr) : '___';
+              $lmo_namen[] = $lmo_favteam == $lmo_nr ? "<strong>".$lmo_name."</strong>" : $lmo_name;
             }
-            array_push($ligaDaten->teama, $teama0);
-            if ($ligaDaten->favteam == $teamb0) {
-              $teamb0 = "<strong>".($ligaDaten->teams[$teamb0] ?? '')."</strong>";
-            } else {
-              $teamb0 = $ligaDaten->teams[$teamb0] ?? '';
-            }
-            array_push($ligaDaten->teamb, $teamb0);
             if ($goala0 == "") {
               $goala0 = -1;
             }
@@ -223,7 +195,6 @@ if ($file != "") {
               $msieg0 = 1;
               $goala0 = 0;
             }
-            array_push($ligaDaten->goala, $goala0);
             if ($goalb0 == "") {
               $goalb0 = -1;
             }
@@ -234,7 +205,6 @@ if ($file != "") {
               $msieg0 = 2;
               $goalb0 = 0;
             }
-            array_push($ligaDaten->goalb, $goalb0);
             if ($mspez0 == 0) {
               $mspez0 = "&nbsp;";
             }
@@ -244,12 +214,34 @@ if ($file != "") {
             if ($mspez0 == 1) {
               $mspez0 = $text[1];
             }
-            array_push($ligaDaten->mspez, $mspez0);
-            array_push($ligaDaten->mtipp, $mtipp0);
-            array_push($ligaDaten->mnote, $mnote0);
-            array_push($ligaDaten->mberi, $mberi0);
-            array_push($ligaDaten->msieg, $msieg0);
-            array_push($ligaDaten->mterm, $mterm0);
+
+            $lmo_spiel = new \Lmo\Tipp\AnstehendesSpiel();
+            $lmo_spiel->titel = $titel0;
+            $lmo_spiel->typ = $lmtype0;
+            $lmo_spiel->runden = $anzst0;
+            $lmo_spiel->ohneUnentschieden = $hidr0;
+            $lmo_spiel->mitSpieltagsdatum = $dats0;
+            $lmo_spiel->mitAnstosszeit = $datm0;
+            $lmo_spiel->mitSpielbericht = $urlb0;
+            $lmo_spiel->mitZusatz = $lmo_einstellungen->wert('Spez');
+            $lmo_spiel->torfaktor = $goalfaktor0;
+            $lmo_spiel->spieleJePaarung = $modus0;
+            $lmo_spiel->ersterTag = $datum10;
+            $lmo_spiel->letzterTag = $datum20;
+            $lmo_spiel->heim = $lmo_namen[0];
+            $lmo_spiel->gast = $lmo_namen[1];
+            $lmo_spiel->toreHeim = $goala0;
+            $lmo_spiel->toreGast = $goalb0;
+            $lmo_spiel->zusatz = $mspez0;
+            $lmo_spiel->wertung = $msieg0;
+            $lmo_spiel->notiz = $mnote0;
+            $lmo_spiel->bericht = $mberi0;
+            $lmo_spiel->ohneTippwertung = $mtipp0;
+            $lmo_spiel->anstoss = $mterm0;
+            $lmo_spiele[] = $lmo_spiel;
+            array_push($liga, $liga0);
+            array_push($spieltag, $spieltag0);
+            array_push($spiel, $spiel0);
             array_push($tippa, "");
             array_push($tippb, "");
             array_push($jksp, "");

@@ -91,32 +91,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
 
     sort($dateien);
     $anzligen = count($dateien);
-    $ligaDaten->teams = array_pad($array, 65, '');
-    $ligaDaten->teams[0] = '___';
+    // anstehende Spiele aller Ligen des Tippers (Lmo\Tipp\AnstehendesSpiel); gleicher Index wie $liga, $spieltag, $spiel
+    $lmo_spiele = array();
     $liga = array();
-    $ligaDaten->titel = array();
-    $ligaDaten->lmtype = array();
-    $ligaDaten->anzst = array();
-    $ligaDaten->hidr = array();
-    $ligaDaten->dats = array();
-    $ligaDaten->datm = array();
     $spieltag = array();
-    $ligaDaten->modus = array();
-    $ligaDaten->datum1 = array();
-    $ligaDaten->datum2 = array();
     $spiel = array();
-    $ligaDaten->teama = array();
-    $ligaDaten->teamb = array();
-    $ligaDaten->goala = array();
-    $ligaDaten->goalb = array();
-    $ligaDaten->goalfaktor = array();
-    $ligaDaten->mspez = array();
-    $ligaDaten->mtipp = array();
-    $ligaDaten->mnote = array();
-    $ligaDaten->urlb = array();
-    $ligaDaten->mberi = array();
-    $ligaDaten->msieg = array();
-    $ligaDaten->mterm = array();
     $tippa = array();
     $tippb = array();
     $jksp = array();
@@ -155,7 +134,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         $start1 = 0;
         $start2 = 0;
         for ($i = 0; $i < $anzspiele; $i++) {
-            $btip = tippaenderbar($ligaDaten->mterm[$i], $ligaDaten->datum1[$i], $ligaDaten->datum2[$i]);
+            $btip = tippaenderbar($lmo_spiele[$i]->anstoss, $lmo_spiele[$i]->ersterTag, $lmo_spiele[$i]->letzterTag);
             if ($btip == true) {
                 if ($tipp_jokertipp == 1 && isset($_POST['xjokerspiel_' . $liga[$i] . '_' . $spieltag[$i]])) {
                     $jksp[$i] = trim($_POST['xjokerspiel_' . $liga[$i] . '_' . $spieltag[$i]]);
@@ -289,31 +268,31 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     for ($i = 0; $i < $anzspiele; $i++) {
         if ($i == 0 || $liga[$i] != $liga[$i - 1]) { ?>
         <tr>
-          <th align="left" colspan="<?php echo $breite; ?>"><?php echo $ligaDaten->titel[$i]; ?></th>
+          <th align="left" colspan="<?php echo $breite; ?>"><?php echo $lmo_spiele[$i]->titel; ?></th>
         </tr>
 <?php
         }
         if ($i == 0 || $liga[$i] != $liga[$i - 1] || $spieltag[$i] != $spieltag[$i - 1]) {
-            if ($ligaDaten->datum1[$i] != '') {
-                $datum = explode('.', $ligaDaten->datum1[$i]);
+            if ($lmo_spiele[$i]->ersterTag != '') {
+                $datum = explode('.', $lmo_spiele[$i]->ersterTag);
                 $dum1 = $me[intval($datum[1])] . ' ' . $datum[2];
             } else {
                 $dum1 = '';
             }
-            if ($ligaDaten->datum2[$i] != '') {
-                $datum = explode('.', $ligaDaten->datum2[$i]);
+            if ($lmo_spiele[$i]->letzterTag != '') {
+                $datum = explode('.', $lmo_spiele[$i]->letzterTag);
                 $dum2 = $me[intval($datum[1])] . ' ' . $datum[2];
             } else {
                 $dum2 = '';
             }
-            if ($ligaDaten->lmtype[$i] == 1) {
-                if ($spieltag[$i] == $ligaDaten->anzst[$i]) {
+            if ($lmo_spiele[$i]->typ == 1) {
+                if ($spieltag[$i] == $lmo_spiele[$i]->runden) {
                     $j = $text[374];
-                } elseif ($spieltag[$i] == $ligaDaten->anzst[$i] - 1) {
+                } elseif ($spieltag[$i] == $lmo_spiele[$i]->runden - 1) {
                     $j = $text[373];
-                } elseif ($spieltag[$i] == $ligaDaten->anzst[$i] - 2) {
+                } elseif ($spieltag[$i] == $lmo_spiele[$i]->runden - 2) {
                     $j = $text[372];
-                } elseif ($spieltag[$i] == $ligaDaten->anzst[$i] - 3) {
+                } elseif ($spieltag[$i] == $lmo_spiele[$i]->runden - 3) {
                     $j = $text[371];
                 } else {
                     $j = $spieltag[$i] . '. ' . $text[370];
@@ -324,7 +303,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
             if ($tipp_tippeinsicht == 1) {
                 echo '<a href="' . $_SERVER['PHP_SELF'] . '?action=tipp&amp;todo=einsicht&amp;file=' . $liga[$i] . '.l98&amp;st=' . $spieltag[$i] . '">';
             }
-            if ($ligaDaten->lmtype[$i] == 0) {
+            if ($lmo_spiele[$i]->typ == 0) {
                 echo $spieltag[$i] . '. ' . $text[2];
             } else {
                 echo $j;
@@ -332,12 +311,12 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
             if ($tipp_tippeinsicht == 1) {
                 echo '</a>';
             }
-            if ($ligaDaten->dats[$i] == 1) {
-                if ($ligaDaten->datum1[$i] != '') {
-                    echo ' ' . $text[3] . ' ' . $ligaDaten->datum1[$i];
+            if ($lmo_spiele[$i]->mitSpieltagsdatum == 1) {
+                if ($lmo_spiele[$i]->ersterTag != '') {
+                    echo ' ' . $text[3] . ' ' . $lmo_spiele[$i]->ersterTag;
                 }
-                if ($ligaDaten->datum2[$i] != '') {
-                    echo ' ' . $text[4] . ' ' . $ligaDaten->datum2[$i];
+                if ($lmo_spiele[$i]->letzterTag != '') {
+                    echo ' ' . $text[4] . ' ' . $lmo_spiele[$i]->letzterTag;
                 }
             } ?></th>
 <?php
@@ -348,22 +327,22 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
             if ($tipp_tippmodus == 1) {
                 if ($tipp_showdurchschntipp == 1) { ?>
           <th class="nobr" colspan="2"><?php echo 'Ø-' . $text['tipp'][30]; /* DurchschnittsTipp */?><br><?php
-                    if ($ligaDaten->goalfaktor[$i] > 0 && $ligaDaten->goalfaktor[$i] != 1) {
-                        echo '(' . $text[553 + log10($ligaDaten->goalfaktor[$i])] . ')';
+                    if ($lmo_spiele[$i]->torfaktor > 0 && $lmo_spiele[$i]->torfaktor != 1) {
+                        echo '(' . $text[553 + log10($lmo_spiele[$i]->torfaktor)] . ')';
                     } ?></th>
 <?php
                 } ?>
           <th class="nobr" align="center" colspan="<?php if ($tipp_pfeiltipp == 1) {echo '5';} else {echo '3';} ?>">
             <acronym title="<?php echo $text['tipp'][241] . ':' . $text['tipp'][242]; ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php
-                if ($ligaDaten->goalfaktor[$i] > 0 && $ligaDaten->goalfaktor[$i] != 1) {
-                    echo '(' . $text[553 + log10($ligaDaten->goalfaktor[$i])] . ')';
+                if ($lmo_spiele[$i]->torfaktor > 0 && $lmo_spiele[$i]->torfaktor != 1) {
+                    echo '(' . $text[553 + log10($lmo_spiele[$i]->torfaktor)] . ')';
                 } ?></th>
 <?php
             }
             if ($tipp_tippmodus == 0) { ?>
           <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][95]; ?>">1</acronym></th>
 <?php
-                if ($ligaDaten->hidr[$i] == 0) { ?>
+                if ($lmo_spiele[$i]->ohneUnentschieden == 0) { ?>
           <th class="nobr" align="center"><acronym title="<?php echo $text['tipp'][96]; ?>">0</acronym></th>
 <?php
                 } else { ?>
@@ -387,7 +366,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
 <?php
         }
         if ($tipp_einsichterst == 2) {
-            if ($ligaDaten->goala[$i] != '_' && $ligaDaten->goalb[$i] != '_') {
+            if ($lmo_spiele[$i]->toreHeim != '_' && $lmo_spiele[$i]->toreGast != '_') {
                 $btip1 = false;
             } else {
                 $btip1 = true;
@@ -397,19 +376,18 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         }
 
         $dum1 = '';
-        if ($ligaDaten->datm[$i] == 1) {
-            if ($ligaDaten->mterm[$i] > 0) {
-                $ligaDaten->datf = $defdateformat;
-                $dum1 = strtr(date($ligaDaten->datf, $ligaDaten->mterm[$i]), $trans_lang);
+        if ($lmo_spiele[$i]->mitAnstosszeit == 1) {
+            if ($lmo_spiele[$i]->anstoss > 0) {
+                $dum1 = strtr(date($defdateformat, $lmo_spiele[$i]->anstoss), $trans_lang);
             }
         } ?>
         <tr>
           <td class="nobr" align="left"><?php echo $dum1; ?></td>
           <td>&nbsp;</td>
-          <td class="nobr" align="right"><?php echo $ligaDaten->teama[$i];?></td>
+          <td class="nobr" align="right"><?php echo $lmo_spiele[$i]->heim;?></td>
           <td class="nobr" align="center" width="10">-</td>
           <td class="nobr" align="left"><?php
-        echo $ligaDaten->teamb[$i];
+        echo $lmo_spiele[$i]->gast;
         if ($tippa[$i] == '_' || $tippb[$i] == '_' || $tippa[$i] == '-1' || $tippb[$i] == '-1') {
             $tippa[$i] = '';
             $tippb[$i] = '';
@@ -458,7 +436,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
 <?php
         }
         $plus = 1;
-        $btip = tippaenderbar($ligaDaten->mterm[$i], $ligaDaten->datum1[$i], $ligaDaten->datum2[$i]);
+        $btip = tippaenderbar($lmo_spiele[$i]->anstoss, $lmo_spiele[$i]->ersterTag, $lmo_spiele[$i]->letzterTag);
         if ($btip == true) {
             $savebutton = 1;
         }
@@ -567,7 +545,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
               <input type="radio" name="xtipp<?php echo $i; ?>" value="1"<?php if ($tipp == 1) {echo ' checked';} if ($btip == false) {echo ' disabled';} ?>>
           </td>
 <?php
-            if ($ligaDaten->hidr[$i] == 0) { ?>
+            if ($lmo_spiele[$i]->ohneUnentschieden == 0) { ?>
           <td class="nobr" align="center">
               <input type="radio" name="xtipp<?php echo $i; ?>" value="3"<?php if ($tipp == 0) {echo ' checked';} if ($btip == false) {echo ' disabled';} ?>>
           </td>
@@ -590,11 +568,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
           </td>
 <?php
         } ?>
-          <td class="lmoBackMarkierung" align="right"><?php echo applyFactor($ligaDaten->goala[$i], $ligaDaten->goalfaktor[$i]); ?></td>
+          <td class="lmoBackMarkierung" align="right"><?php echo applyFactor($lmo_spiele[$i]->toreHeim, $lmo_spiele[$i]->torfaktor); ?></td>
           <td class="lmoBackMarkierung">:</td>
-          <td class="lmoBackMarkierung" align="left"><?php echo applyFactor($ligaDaten->goalb[$i], $ligaDaten->goalfaktor[$i]); ?></td>
+          <td class="lmoBackMarkierung" align="left"><?php echo applyFactor($lmo_spiele[$i]->toreGast, $lmo_spiele[$i]->torfaktor); ?></td>
           <td class="lmoBackMarkierung"></td>
-          <td class="lmoBackMarkierung"><?php echo $ligaDaten->mspez[$i]; ?></td>
+          <td class="lmoBackMarkierung"><?php echo $lmo_spiele[$i]->zusatz; ?></td>
           <td>&nbsp;</td>
           <td class="nobr" align="right"><strong><?php
         if ($tipp_jokertipp == 1 && $jksp[$i] == $spiel[$i]) {
@@ -603,8 +581,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
             $jkspfaktor = 1;
         }
         $punktespiel = -1;
-        if ($tippa[$i] != '' && $tippb[$i] != '' && $ligaDaten->goala[$i] != '_' && $ligaDaten->goalb[$i] != '_') {
-            $punktespiel = tipppunkte($tippa[$i], $tippb[$i], $ligaDaten->goala[$i], $ligaDaten->goalb[$i], $ligaDaten->msieg[$i], $ligaDaten->mspez[$i], $text[0], $text[1], $jkspfaktor, $ligaDaten->mtipp[$i]);
+        if ($tippa[$i] != '' && $tippb[$i] != '' && $lmo_spiele[$i]->toreHeim != '_' && $lmo_spiele[$i]->toreGast != '_') {
+            $punktespiel = tipppunkte($tippa[$i], $tippb[$i], $lmo_spiele[$i]->toreHeim, $lmo_spiele[$i]->toreGast, $lmo_spiele[$i]->wertung, $lmo_spiele[$i]->zusatz, $text[0], $text[1], $jkspfaktor, $lmo_spiele[$i]->ohneTippwertung);
         }
         if ($punktespiel == -1) {
             echo '-';
@@ -629,48 +607,48 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
         /** Mannschaftsicons finden **/
         $lmo_teamaicon = '';
         $lmo_teambicon = '';
-        if ($ligaDaten->urlb[$i] == 1 || $ligaDaten->mnote[$i] != '' || $ligaDaten->msieg[$i] > 0) {
-            $lmo_teamaicon = HTML_smallTeamIcon($file, $ligaDaten->teama[$i], ' alt=""') . '&nbsp;';
-            $lmo_teambicon = HTML_smallTeamIcon($file, $ligaDaten->teamb[$i], ' alt=""') . '&nbsp;';
+        if ($lmo_spiele[$i]->mitSpielbericht == 1 || $lmo_spiele[$i]->notiz != '' || $lmo_spiele[$i]->wertung > 0) {
+            $lmo_teamaicon = HTML_smallTeamIcon($file, $lmo_spiele[$i]->heim, ' alt=""') . '&nbsp;';
+            $lmo_teambicon = HTML_smallTeamIcon($file, $lmo_spiele[$i]->gast, ' alt=""') . '&nbsp;';
         }
         /** Spielbericht verlinken **/
-        if ($ligaDaten->urlb[$i] == 1) {
-            if ($ligaDaten->mberi[$i] != '') {
+        if ($lmo_spiele[$i]->mitSpielbericht == 1) {
+            if ($lmo_spiele[$i]->bericht != '') {
                 //Spielbericht Inhalt
-                $lmo_spielbericht_html = '<strong>' . $ligaDaten->teama[$i] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $ligaDaten->teamb[$i] . '</strong>' . nl2br($text[270]);
+                $lmo_spielbericht_html = '<strong>' . $lmo_spiele[$i]->heim . $lmo_teamaicon . ' - ' . $lmo_teambicon . $lmo_spiele[$i]->gast . '</strong>' . nl2br($text[270]);
                 // Link mit Mouseover-Funktion und data-info Attribut
-                echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><a href="' . $ligaDaten->mberi[$st - 1][$i] . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" border="0" alt=""></a></span>&nbsp;';
+                echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><a href="' . $lmo_spiele[$i]->bericht . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" border="0" alt=""></a></span>&nbsp;';
             } else {
                 echo '&nbsp;';
             }
         }
         /** Notizen anzeigen **/
-        if ($ligaDaten->mnote[$i] != '' || $ligaDaten->msieg[$i] > 0 || $ligaDaten->mtipp[$i] > 0) {
+        if ($lmo_spiele[$i]->notiz != '' || $lmo_spiele[$i]->wertung > 0 || $lmo_spiele[$i]->ohneTippwertung > 0) {
             //Grüner Tisch: Beidseitiges Ergebnis vorbereiten
-            $lmo_notiz_both = ($ligaDaten->msieg[$i] == 1) ? ' / ' . applyFactor($ligaDaten->goalb[$i], $ligaDaten->goalfaktor) . ':' . applyFactor($ligaDaten->goala[$i], $ligaDaten->goalfaktor) : '';
+            $lmo_notiz_both = ($lmo_spiele[$i]->wertung == 1) ? ' / ' . applyFactor($lmo_spiele[$i]->toreGast, $lmo_spiele[$i]->torfaktor) . ':' . applyFactor($lmo_spiele[$i]->toreHeim, $lmo_spiele[$i]->torfaktor) : '';
             //Alles in EIN Tag packen, damit das CSS es als EINE zentrierte Zeile erkennt
-            $lmo_spielnotiz = '<strong>' . $ligaDaten->teama[$i] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $ligaDaten->teamb[$i] . '&nbsp;&nbsp;' . applyFactor($ligaDaten->goala[$i], $ligaDaten->goalfaktor) . ':' . applyFactor($ligaDaten->goalb[$i], $ligaDaten->goalfaktor) . $lmo_notiz_both . '</strong>';
-            if ($ligaDaten->spez == 1) {
-                $lmo_spielnotiz .= '&nbsp;' . $ligaDaten->mspez[$i] . '<br>';
+            $lmo_spielnotiz = '<strong>' . $lmo_spiele[$i]->heim . $lmo_teamaicon . ' - ' . $lmo_teambicon . $lmo_spiele[$i]->gast . '&nbsp;&nbsp;' . applyFactor($lmo_spiele[$i]->toreHeim, $lmo_spiele[$i]->torfaktor) . ':' . applyFactor($lmo_spiele[$i]->toreGast, $lmo_spiele[$i]->torfaktor) . $lmo_notiz_both . '</strong>';
+            if ($lmo_spiele[$i]->mitZusatz == 1) {
+                $lmo_spielnotiz .= '&nbsp;' . $lmo_spiele[$i]->zusatz . '<br>';
             }
             //Grüner Tisch: Heimteam siegt
-            if ($ligaDaten->msieg[$i] == 1) {
-                $lmo_spielnotiz .= '<strong>' . $text[219] . ':</strong>' . $ligaDaten->teama[$i] . '&nbsp;' . $text[211] . '<br>';
+            if ($lmo_spiele[$i]->wertung == 1) {
+                $lmo_spielnotiz .= '<strong>' . $text[219] . ':</strong>' . $lmo_spiele[$i]->heim . '&nbsp;' . $text[211] . '<br>';
             }
             //Grüner Tisch: Gastteam siegt
-            if ($ligaDaten->msieg[$i] == 2) {
-                $lmo_spielnotiz .= '<strong>' . $text[219] . ':</strong>' . $ligaDaten->teamb[$i] . '&nbsp;' . $text[211] . '<br>';
+            if ($lmo_spiele[$i]->wertung == 2) {
+                $lmo_spielnotiz .= '<strong>' . $text[219] . ':</strong>' . $lmo_spiele[$i]->gast . '&nbsp;' . $text[211] . '<br>';
             }
             //Grüner Tisch: Beidseitiges Ergebnis
-            if ($ligaDaten->msieg[$i] == 3) {
+            if ($lmo_spiele[$i]->wertung == 3) {
                 $lmo_spielnotiz .= '<strong>' . $text[219] . ':</strong>' . $text[212] . '<br>';
             }
             //Allgemeine Notiz
-            if ($ligaDaten->mnote[$i] != '') {
-                $lmo_spielnotiz .= '<strong>' . $text[22] . ':</strong>' . $ligaDaten->mnote[$i] . '<br>';
+            if ($lmo_spiele[$i]->notiz != '') {
+                $lmo_spielnotiz .= '<strong>' . $text[22] . ':</strong>' . $lmo_spiele[$i]->notiz . '<br>';
             }
             //Notiz zum Tippspiel
-            if ($ligaDaten->mtipp[$i] == 1) {
+            if ($lmo_spiele[$i]->ohneTippwertung == 1) {
                 $lmo_spielnotiz .= '<br><strong>' . $text[487] . '</strong>' . $text['tipp'][231];
             }
             //Ausgabe als neutrales Element (kein Link)

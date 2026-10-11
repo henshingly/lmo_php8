@@ -1011,7 +1011,7 @@ GEAENDERT addon/tipp/lmo-tippauth.txt
 <strong>-</strong>
 </td>
 <td class="nobr" align="left">
-<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Alpha&amp;nbsp; - &amp;nbsp;&lt;strong&gt;B | C&lt;/strong&gt;&amp;nbsp;&amp;nbsp;_:_&lt;/strong&gt;&lt;strong&gt;Notiz:&lt;/strong&gt;Hinspiel | Flutlicht&lt;br&gt;" class="tooltip-trigger">
+<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Alpha&amp;nbsp; - &amp;nbsp;&lt;strong&gt;B | C&lt;/strong&gt;&amp;nbsp;&amp;nbsp;_:_&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;strong&gt;Notiz:&lt;/strong&gt;Hinspiel | Flutlicht&lt;br&gt;" class="tooltip-trigger">
 <img src="http://lmo.test/lmo/img/lmo-st2.svg" height="15" class="svg-no-style" alt="">
 </span>
 </td>
@@ -2191,7 +2191,7 @@ xtippb0=0
 <strong>-</strong>
 </td>
 <td class="nobr" align="left">
-<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Alpha&amp;nbsp; - &amp;nbsp;&lt;strong&gt;B | C&lt;/strong&gt;&amp;nbsp;&amp;nbsp;_:_&lt;/strong&gt;&lt;strong&gt;Notiz:&lt;/strong&gt;Hinspiel | Flutlicht&lt;br&gt;" class="tooltip-trigger">
+<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Alpha&amp;nbsp; - &amp;nbsp;&lt;strong&gt;B | C&lt;/strong&gt;&amp;nbsp;&amp;nbsp;_:_&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;strong&gt;Notiz:&lt;/strong&gt;Hinspiel | Flutlicht&lt;br&gt;" class="tooltip-trigger">
 <img src="http://lmo.test/lmo/img/lmo-st2.svg" height="15" class="svg-no-style" alt="">
 </span>
 </td>

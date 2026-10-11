@@ -34,15 +34,8 @@ $then = PHP_INT_MAX;
 $liga = $spieltag = $spiel = $zeit = $tippa = $tippb = $jksp = $tipp_jokertippaktiv = [];
 $anzspiele = 0;
 
-require PATH_TO_LMO . '/lmo-ligadaten.php';
-// das Tippspiel sammelt in den Feldern der Liga Listen ueber mehrere Ligen, anders als ihr Typ es vorsieht
-/** @var mixed $ligaDaten */
-$ligaDaten->teams = array_pad($array, 65, '');
-$ligaDaten->teams[0] = '___';
-foreach (['titel', 'lmtype', 'anzst', 'hidr', 'dats', 'datm', 'modus', 'datum1', 'datum2', 'teama', 'teamb', 'goala', 'goalb',
-    'goalfaktor', 'mspez', 'mtipp', 'mnote', 'urlb', 'mberi', 'msieg', 'mterm'] as $feld) {
-    $ligaDaten->$feld = [];
-}
+// die anstehenden Spiele (Lmo\Tipp\AnstehendesSpiel), gleicher Index wie $liga, $spieltag, $spiel
+$lmo_spiele = [];
 
 // Ligenordner relativ zum LMO, wie in der Konfiguration
 $dirliga = '../tests/Unit/Tipp/fixtures/';
@@ -56,4 +49,4 @@ if ($testLader === 'lmo-tippopenfileviewer.php') {
 
 require PATH_TO_ADDONDIR . '/tipp/' . $testLader;
 
-return compact('ligaDaten', 'liga', 'spieltag', 'spiel', 'zeit', 'tippa', 'tippb', 'anzspiele');
+return compact('lmo_spiele', 'liga', 'spieltag', 'spiel', 'zeit', 'tippa', 'tippb', 'anzspiele');
