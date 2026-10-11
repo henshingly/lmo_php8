@@ -274,4 +274,33 @@ L98;
         self::assertFalse($liga->loadFile(sys_get_temp_dir() . '/lmo-gibt-es-nicht-' . uniqid() . '.l98'));
         self::assertFalse($liga->loadFile($this->tempDir()));
     }
+
+    /** @return array<string, array{string}> */
+    public static function brokenDates(): array
+    {
+        return [
+            'Text' => ['ab.cd.efgh'],
+            'unvollstaendig' => ['23.08.'],
+            'kein Kalendertag' => ['31.02.2024'],
+            'zu viele Teile' => ['1.2.3.4'],
+            'ohne Punkte' => ['morgen'],
+        ];
+    }
+
+    /**
+     * Ein unlesbares Spieltagsdatum in der Ligadatei gilt als fehlend; die Liga wird trotzdem geladen.
+     *
+     * @dataProvider brokenDates
+     */
+    public function testBrokenRoundDateIsTreatedAsMissing(string $date): void
+    {
+        $content = str_replace('D1=23.08.2024', 'D1=' . $date, self::LIGA, $count);
+        self::assertSame(1, $count);
+
+        $eins = $this->load($content)->SpieltagForNumber(1);
+
+        self::assertNull($eins->von);
+        self::assertSame(mktime(0, 0, 0, 8, 24, 2024), $eins->bis);
+        self::assertSame(1, $eins->partienCount());
+    }
 }

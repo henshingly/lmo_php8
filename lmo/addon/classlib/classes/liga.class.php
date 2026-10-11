@@ -31,7 +31,7 @@ class liga {
 
     /**
     * Name der Liga,
-    * @var string
+    * @var string|null
     * @access public
     */
     var $name;
@@ -109,6 +109,23 @@ class liga {
     function __construct($name = '', $kurz = '') {
         $this->name = $name;
         $this->kurz = $kurz;
+    }
+
+    /**
+    * Datum aus der Ligadatei (TT.MM.JJJJ) als Unix-Zeitstempel um 0 Uhr.
+    * Ein fehlendes oder unlesbares Datum ergibt null.
+    *
+    * @access protected
+    * @param mixed $date
+    * @return integer|null
+    */
+    static function dateToTime($date) {
+        $parts = explode('.', (string) $date);
+        if (count($parts) != 3 || !is_numeric($parts[0]) || !is_numeric($parts[1]) || !is_numeric($parts[2])) {
+            return null;
+        }
+        list($day, $month, $year) = array_map('intval', $parts);
+        return checkdate($month, $day, $year) ? mktime(0, 0, 0, $month, $day, $year) : null;
     }
 
     /**
@@ -416,7 +433,7 @@ class liga {
         while (($i < $count) && ($found != 0)) {
             $i++;
             if (isset($this->spieltage[$i])) {
-                $found = strcmp($this->spieltage[$i]->nr, $spTagNr);
+                $found = strcmp((string) $this->spieltage[$i]->nr, (string) $spTagNr);
             }
         }
         if ($found == 0) {
@@ -627,21 +644,8 @@ class liga {
             $rCounter = 1;
             while (!empty($iniData['Round' . $rCounter])) {
                 $roundSektion = 'Round' . $rCounter;
-                $startDate = preg_split('/\./', $this->getIniData('D1', $iniData[$roundSektion]));
-                $endDate = preg_split('/\./', $this->getIniData('D2', $iniData[$roundSektion]));
-                if (count($startDate) != 3 || checkDate($startDate[1], $startDate[0], $startDate[2]) === false) {  // FIX: or → ||
-                    $startTime = null;
-                }
-                else {
-                    $startTime = mktime(0, 0, 0, (int) $startDate[1], (int) $startDate[0], (int) $startDate[2]);
-                }
-
-                if (count($endDate) != 3 || checkDate($endDate[1], $endDate[0], $endDate[2]) === false) {  // FIX: <> → != und or → ||
-                    $endTime = null;
-                }
-                else {
-                    $endTime = mktime(0, 0, 0, (int) $endDate[1], (int) $endDate[0], (int) $endDate[2]);
-                }
+                $startTime = self::dateToTime($this->getIniData('D1', $iniData[$roundSektion]));
+                $endTime = self::dateToTime($this->getIniData('D2', $iniData[$roundSektion]));
 
                 $spieltag = new spieltag($rCounter, $startTime, $endTime);
                 // Modus des Spieltags
@@ -654,8 +658,8 @@ class liga {
                     }
                 }
                 for ($pCounter = 1; isset($iniData[$roundSektion][$pCounter]['TA']); $pCounter++) {
-                    $heimTeam = &$this->teamForNumber($this->getIniData('TA', $iniData[$roundSektion], $pCounter));
-                    $gastTeam = &$this->teamForNumber($this->getIniData('TB', $iniData[$roundSektion], $pCounter));
+                    $heimTeam = &$this->teamForNumber((int) $this->getIniData('TA', $iniData[$roundSektion], $pCounter));
+                    $gastTeam = &$this->teamForNumber((int) $this->getIniData('TB', $iniData[$roundSektion], $pCounter));
                     $partienNumber = 0;
                     do {  // if ($spieltag->getModus() < 1)
                         $theim = $this->getIniData('GA', $iniData[$roundSektion][$pCounter], ++$partienNumber);
@@ -728,7 +732,7 @@ class liga {
     *   $liga->loadFromDb($pdo, 'bundesliga.l98', 'archiv/'); // mit subdir
     *
     * @access public
-    * @param PDO $pdo bestehende Datenbankverbindung
+    * @param mixed $pdo bestehende Datenbankverbindung (PDO); alles andere ergibt false
     * @param string $fileName Dateiname der Liga (z.B. "bundesliga.l98"),
     *                          ENTSPRICHT lmo_ligen.file_name. Kann auch einen
     *                          Pfad wie "archiv/bundesliga.l98" enthalten,
@@ -991,9 +995,7 @@ class liga {
 
         $options = new optionsSektion($this, $optionDetails);
         foreach ($optionDetails as $detailsKey => $detailsValue) {
-            if ($detailsKey != '') {
-                $options->keyValues[$detailsKey] = $detailsValue;
-            }
+            $options->keyValues[$detailsKey] = $detailsValue;
         }
         $this->options = &$options;
 

@@ -19,7 +19,7 @@ class partie {
 
     /**
     * Datum der Partie,
-    * @var integer|string Unix-Zeitstempel, '' ohne Termin
+    * @var integer|string|null Unix-Zeitstempel, '' oder null ohne Termin
     * @access public
     */
 
@@ -103,13 +103,13 @@ class partie {
     /**
     * Konstruktor
     *
-    * @param integer $n_spNr
-    * @param string $n_time
+    * @param integer|string $n_spNr
+    * @param integer|string|null $n_time Unix-Zeitstempel, '' oder null ohne Termin
     * @param string $n_notiz
     * @param team $n_heim
     * @param team $n_gast
-    * @param integer $n_htore
-    * @param integer $n_gtore
+    * @param integer|string $n_htore
+    * @param integer|string $n_gtore
     * @param integer $n_hpunkte
     * @param integer $n_gpunkte
     * @return partie
