@@ -778,6 +778,162 @@ class LigaDaten
         return $wert == 1 ? $anzeigeSp1 : $wert;
     }
 
+    /**
+     * Der Abschnitt [News], wie er in die Datei geschrieben wird: die Anzahl (NC) und die Zeilen
+     * N0, N1 ... Ohne Newszeilen bleibt der Abschnitt leer.
+     *
+     * @return list<array{string, string}> Schluessel und Wert je Zeile
+     */
+    public function newsZumSpeichern(): array
+    {
+        if (!isset($this->nlines)) {
+            return [];
+        }
+        $anzahl = count($this->nlines);
+        $zeilen = [['NC', (string) $anzahl]];
+        for ($i = 0; $i < $anzahl; $i++) {
+            $zeilen[] = ['N' . $i, (string) ($this->nlines[$i] ?? '')];
+        }
+
+        return $zeilen;
+    }
+
+    /**
+     * Die Abschnitte [Round1] ..., wie sie in die Datei geschrieben werden. Die Umrechnung fuer die
+     * Anzeige (setzeSpieltagswert()) wird dabei zurueckgenommen: "_" -> -1, Wertung am gruenen
+     * Tisch -> -2 bzw. ET=3, Anzeigetext des Zusatzes -> 2 bzw. 1.
+     *
+     * Liga: je Spieltag so viele Partien wie Matches. Pokal: die Zahl der Paarungen halbiert sich
+     * von Runde zu Runde (bei 24 Mannschaften 8, 8, 4, 2, 1), mit Spiel um Platz 3 hat die
+     * letzte Runde eine Paarung mehr; je Paarung so viele Spiele wie der Modus der Runde.
+     *
+     * Wie der bisherige Code veraendert das Speichern die Liga: Im Pokal steht anzsp danach auf
+     * der Zahl der Paarungen der letzten Runde, und fehlende Wertungen (msieg) sind mit 0 belegt.
+     *
+     * @param string $anzeigeSp2 Anzeigetext fuer SP=2 (Sprachtext 0)
+     * @param string $anzeigeSp1 Anzeigetext fuer SP=1 (Sprachtext 1)
+     * @return list<array{string, list<array{string, string}>}> je Abschnitt: Name, dann Schluessel und Wert je Zeile
+     */
+    public function spieltageZumSpeichern(string $anzeigeSp2, string $anzeigeSp1): array
+    {
+        $pokal = $this->art() === self::POKAL;
+        if ($pokal) {
+            $this->anzsp = $this->anzteams;
+        }
+        $abschnitte = [];
+        for ($st = 1; $st <= $this->anzst; $st++) {
+            $s = $st - 1;
+            $zeilen = [];
+            if ($this->hands == 1) {
+                $zeilen[] = ['HS', (string) ($this->handp[$s] ?? '')];
+            }
+            $zeilen[] = ['D1', (string) ($this->datum1[$s] ?? '')];
+            $zeilen[] = ['D2', (string) ($this->datum2[$s] ?? '')];
+            if ($pokal) {
+                $zeilen[] = ['MO', (string) ($this->modus[$s] ?? '')];
+                if ($this->anzteams == 24 && $st <= 5) {
+                    $this->anzsp = [16, 16, 8, 4, 2][$s];
+                }
+                /** @var int|float|numeric-string $paarungen */
+                $paarungen = $this->anzsp;
+                $this->anzsp = $paarungen / 2;
+                if ($this->klfin == 1 && $st == $this->anzst) {
+                    $this->anzsp = $this->anzsp + 1;
+                }
+            }
+            for ($nr = 1; $nr <= $this->anzsp; $nr++) {
+                $p = $nr - 1;
+                if (!isset($this->msieg[$s][$p])) {
+                    $this->msieg[$s][$p] = 0;
+                }
+                $zeilen[] = ['TA' . $nr, (string) ($this->teama[$s][$p] ?? '')];
+                $zeilen[] = ['TB' . $nr, (string) ($this->teamb[$s][$p] ?? '')];
+                if (!$pokal) {
+                    $wertung = $this->msieg[$s][$p];
+                    $zeilen[] = ['GA' . $nr, self::toreFuerDatei($this->goala[$s][$p] ?? '', $wertung == 1)];
+                    $zeilen[] = ['GB' . $nr, self::toreFuerDatei($this->goalb[$s][$p] ?? '', $wertung == 2)];
+                    if ($wertung == 3) {
+                        $zeilen[] = ['ET' . $nr, '3'];
+                    }
+                    if ($this->spez == 1) {
+                        $zusatz = self::zusatzFuerDatei($this->mspez[$s][$p] ?? '', $anzeigeSp2, $anzeigeSp1);
+                        if ($zusatz !== null) {
+                            $zeilen[] = ['SP' . $nr, $zusatz];
+                        }
+                    }
+                    foreach (self::PARTIEWERTE as $schluessel => $feld) {
+                        $zeilen[] = [$schluessel . $nr, (string) ($this->{$feld}[$s][$p] ?? '')];
+                    }
+                    continue;
+                }
+                $spiele = $this->modus[$s] ?? 0;
+                for ($spiel = 1; $spiel <= $spiele; $spiel++) {
+                    $n = $spiel - 1;
+                    $zeilen[] = ['GA' . $nr . $spiel, self::toreFuerDatei($this->goala[$s][$p][$n] ?? '', false)];
+                    $zeilen[] = ['GB' . $nr . $spiel, self::toreFuerDatei($this->goalb[$s][$p][$n] ?? '', false)];
+                    $zusatz = self::zusatzFuerDatei($this->mspez[$s][$p][$n] ?? '', $anzeigeSp2, $anzeigeSp1);
+                    if ($zusatz !== null) {
+                        $zeilen[] = ['SP' . $nr . $spiel, $zusatz];
+                    }
+                    foreach (self::PARTIEWERTE as $schluessel => $feld) {
+                        $zeilen[] = [$schluessel . $nr . $spiel, (string) ($this->{$feld}[$s][$p][$n] ?? '')];
+                    }
+                }
+            }
+            $abschnitte[] = ['Round' . $st, $zeilen];
+        }
+
+        return $abschnitte;
+    }
+
+    /**
+     * Die ganze Ligadatei in der Reihenfolge, in der sie geschrieben wird: [Options], [News],
+     * die Mannschaften, die Spieltage. Parameter wie optionenZumSpeichern() und spieltageZumSpeichern().
+     *
+     * @param int|string|null $aktuellerSpieltag
+     * @return list<array{string, list<array{string, string}>}> je Abschnitt: Name, dann Schluessel und Wert je Zeile
+     */
+    public function abschnitteZumSpeichern(string $programm, $aktuellerSpieltag, string $anzeigeSp2, string $anzeigeSp1): array
+    {
+        return array_merge(
+            [['Options', $this->optionenZumSpeichern($programm, $aktuellerSpieltag)], ['News', $this->newsZumSpeichern()]],
+            $this->mannschaftenZumSpeichern(),
+            $this->spieltageZumSpeichern($anzeigeSp2, $anzeigeSp1)
+        );
+    }
+
+    /**
+     * Tore fuer die Datei: "_" (nicht gespielt) -> -1, mit Wertung am gruenen Tisch -> -2.
+     *
+     * @param mixed $tore
+     */
+    private static function toreFuerDatei($tore, bool $wertung): string
+    {
+        if ($tore == '_') {
+            return '-1';
+        }
+        /** @var int|float|string|null $tore */
+        return $wertung ? '-2' : (string) $tore;
+    }
+
+    /**
+     * Zusatz SP fuer die Datei: "_" -> 0, die Anzeigetexte -> 2 bzw. 1. Alles andere (auch der
+     * leere Zusatz "&nbsp;") wird nicht geschrieben: null.
+     *
+     * @param mixed $zusatz
+     */
+    private static function zusatzFuerDatei($zusatz, string $anzeigeSp2, string $anzeigeSp1): ?string
+    {
+        if ($zusatz == '_') {
+            return '0';
+        }
+        if ($zusatz == $anzeigeSp2) {
+            return '2';
+        }
+
+        return $zusatz == $anzeigeSp1 ? '1' : null;
+    }
+
     /** Liga oder Pokal, nach dem bisher bekannten Typ */
     private function art(): string
     {

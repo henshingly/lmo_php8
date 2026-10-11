@@ -774,4 +774,173 @@ class LigaDatenTest extends TestCase
         $liga->setzeNewszeile('News', 'N0', 'Neu');
         self::assertSame(['Neu'], $liga->nlines, 'mit Newsticker beginnen die Zeilen leer');
     }
+
+    public function testNewsZumSpeichern(): void
+    {
+        $liga = new LigaDaten();
+        self::assertSame([], $liga->newsZumSpeichern(), 'ohne Newszeilen bleibt der Abschnitt leer');
+
+        $liga->nlines = ['eins', 'zwei'];
+        self::assertSame([['NC', '2'], ['N0', 'eins'], ['N1', 'zwei']], $liga->newsZumSpeichern());
+
+        $liga->nlines = [];
+        self::assertSame([['NC', '0']], $liga->newsZumSpeichern());
+    }
+
+    public function testSpieltageEinerLigaZumSpeichern(): void
+    {
+        $liga = self::ligaMitSpieltagen();
+        $liga->anzst = 2;
+        $liga->anzsp = 2;
+        foreach (['D1' => '23.08.2024', 'TA1' => '1', 'TB1' => '2', 'GA1' => '2', 'GB1' => '1', 'SP1' => '2', 'NT1' => 'Notiz',
+            'TA2' => '3', 'TB2' => '1', 'GA2' => '-2', 'GB2' => '', 'ET2' => '3'] as $schluessel => $wert) {
+            $liga->setzeSpieltagswert('Round1', $schluessel, $wert, 'n.V.', 'i.E.');
+        }
+
+        $abschnitte = $liga->spieltageZumSpeichern('n.V.', 'i.E.');
+
+        self::assertSame(['Round1', 'Round2'], array_column($abschnitte, 0));
+        self::assertSame([
+            ['D1', '23.08.2024'], ['D2', ''],
+            ['TA1', '1'], ['TB1', '2'], ['GA1', '2'], ['GB1', '1'], ['SP1', '2'], ['NT1', 'Notiz'], ['BE1', ''], ['TI1', ''], ['AT1', '0'],
+            ['TA2', '3'], ['TB2', '1'], ['GA2', '0'], ['GB2', '-1'], ['ET2', '3'], ['NT2', ''], ['BE2', ''], ['TI2', ''], ['AT2', '0'],
+        ], $abschnitte[0][1]);
+        self::assertSame(
+            [['D1', ''], ['D2', ''], ['TA1', '0'], ['TB1', '0'], ['GA1', '-1'], ['GB1', '-1'], ['NT1', ''], ['BE1', ''], ['TI1', ''], ['AT1', '0']],
+            array_slice($abschnitte[1][1], 0, 10),
+            'ein Spieltag ohne Eintraege: nicht gespielt'
+        );
+    }
+
+    public function testWertungAmGruenenTischWirdWiederZuMinusZwei(): void
+    {
+        $liga = self::ligaMitSpieltagen();
+        $liga->anzst = 1;
+        $liga->anzsp = 2;
+        $liga->setzeSpieltagswert('Round1', 'GA1', '-2', 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Round1', 'GB1', '3', 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Round1', 'GA2', '1', 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Round1', 'GB2', '-2', 'n.V.', 'i.E.');
+
+        $werte = array_column($liga->spieltageZumSpeichern('n.V.', 'i.E.')[0][1], 1, 0);
+
+        self::assertSame(['-2', '3'], [$werte['GA1'], $werte['GB1']]);
+        self::assertSame(['1', '-2'], [$werte['GA2'], $werte['GB2']]);
+    }
+
+    public function testHandicapUndZusatzStehenNurBeiBedarfInDerDatei(): void
+    {
+        $liga = self::ligaMitSpieltagen('0');
+        $liga->anzst = 1;
+        $liga->anzsp = 1;
+        $liga->setzeSpieltagswert('Round1', 'HS', '030102', 'n.V.', 'i.E.');
+        self::assertSame(['D1', 'D2', 'TA1', 'TB1', 'GA1', 'GB1', 'NT1', 'BE1', 'TI1', 'AT1'], array_column($liga->spieltageZumSpeichern('n.V.', 'i.E.')[0][1], 0));
+
+        $liga->hands = '1';
+        $liga->spez = '1';
+        $liga->mspez[0][0] = 'i.E.';
+        $zeilen = $liga->spieltageZumSpeichern('n.V.', 'i.E.')[0][1];
+        self::assertSame(['HS', '030102'], $zeilen[0]);
+        self::assertSame('1', array_column($zeilen, 1, 0)['SP1']);
+
+        // der leere Zusatz "&nbsp;" wird nicht geschrieben, "_" als 0
+        $liga->mspez[0][0] = '&nbsp;';
+        self::assertNotContains('SP1', array_column($liga->spieltageZumSpeichern('n.V.', 'i.E.')[0][1], 0));
+        $liga->mspez[0][0] = '_';
+        self::assertSame('0', array_column($liga->spieltageZumSpeichern('n.V.', 'i.E.')[0][1], 1, 0)['SP1']);
+    }
+
+    public function testRundenEinesPokalsZumSpeichern(): void
+    {
+        $pokal = self::pokalMitRunden();
+        $pokal->klfin = '1';
+        foreach (['MO' => '2', 'TA1' => '1', 'TB1' => '2', 'GA11' => '1', 'GB11' => '0', 'GA12' => '-1', 'SP11' => '2'] as $schluessel => $wert) {
+            $pokal->setzeSpieltagswert('Round1', $schluessel, $wert, 'n.V.', 'i.E.');
+        }
+
+        $abschnitte = $pokal->spieltageZumSpeichern('n.V.', 'i.E.');
+
+        self::assertSame(['Round1', 'Round2'], array_column($abschnitte, 0), '4 Mannschaften: Halbfinale und Finale');
+        $runde1 = array_column($abschnitte[0][1], 0);
+        self::assertSame(['D1', 'D2', 'MO', 'TA1', 'TB1', 'GA11', 'GB11', 'SP11', 'NT11', 'BE11', 'TI11', 'AT11', 'GA12', 'GB12', 'NT12', 'BE12'], array_slice($runde1, 0, 16), 'ohne Zusatz im Rueckspiel steht kein SP12');
+        self::assertContains('TA2', $runde1, 'zwei Paarungen im Halbfinale');
+        self::assertNotContains('TA3', $runde1);
+        $werte = array_column($abschnitte[0][1], 1, 0);
+        self::assertSame(['1', '0', '2', '-1'], [$werte['GA11'], $werte['GB11'], $werte['SP11'], $werte['GA12']]);
+        $runde2 = array_column($abschnitte[1][1], 0);
+        self::assertContains('TA2', $runde2, 'Finale und Spiel um Platz 3');
+        self::assertNotContains('TA3', $runde2);
+        self::assertNotContains('GA12', $runde2, 'ein Spiel je Paarung');
+    }
+
+    /** Eigenheit des bisherigen Codes, die erhalten bleibt: das Speichern veraendert die Liga. */
+    public function testSpeichernVeraendertPaarungenUndWertungenDesPokals(): void
+    {
+        $pokal = self::pokalMitRunden();
+        self::assertSame(2.0, $pokal->anzsp);
+        self::assertNull($pokal->msieg);
+
+        $pokal->spieltageZumSpeichern('n.V.', 'i.E.');
+
+        self::assertSame(1, $pokal->anzsp, 'Paarungen der letzten Runde');
+        self::assertSame([[0, 0], [0]], $pokal->msieg);
+    }
+
+    public function testDieGanzeDateiInDerSchreibreihenfolge(): void
+    {
+        $liga = self::ligaMitSpieltagen();
+        $liga->anzst = 2;
+        $liga->anzsp = 1;
+
+        $abschnitte = $liga->abschnitteZumSpeichern('Liga Manager Online 4', 1, 'n.V.', 'i.E.');
+
+        self::assertSame(['Options', 'News', 'Teams', 'Teamm', 'Teamk', 'Team1', 'Team2', 'Team3', 'Round1', 'Round2'], array_column($abschnitte, 0));
+        self::assertSame(['Title', 'Liga Manager Online 4'], $abschnitte[0][1][0]);
+        self::assertSame([], $abschnitte[1][1]);
+    }
+
+    /** Was gespeichert wird, ergibt beim Lesen wieder dieselbe Datei. */
+    public function testGespeicherteLigaWirdWiederGleichGelesen(): void
+    {
+        $datei = __DIR__ . '/../../../lmo/ligen/1l_2024-25.l98';
+        $lies = static function (iterable $zeilen): LigaDaten {
+            $liga = new LigaDaten();
+            $liga->setzeStartwerte();
+            $eintraege = \Lmo\Liga\LigaDatei::zerlege($zeilen);
+            foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
+                if ($abschnitt === 'Options') {
+                    $liga->setzeOption($schluessel, $wert);
+                }
+            }
+            $liga->ergaenzeVorgabewerte('d.m.Y H:i');
+            $liga->bereiteMannschaftenVor();
+            $liga->bereiteNewsVor();
+            $liga->bereiteSpieltageVor();
+            foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
+                $liga->setzeNewszeile($abschnitt, $schluessel, $wert);
+                $liga->setzeMannschaftswert($abschnitt, $schluessel, $wert);
+                $liga->setzeSpieltagswert($abschnitt, $schluessel, $wert, 'n.V.', 'i.E.');
+            }
+            $liga->ergaenzeMannschaftsnamen();
+
+            return $liga;
+        };
+        $alsText = static function (LigaDaten $liga): array {
+            $zeilen = [];
+            foreach ($liga->abschnitteZumSpeichern('LMO', $liga->stx, 'n.V.', 'i.E.') as [$abschnitt, $eintraege]) {
+                $zeilen[] = '[' . $abschnitt . ']';
+                foreach ($eintraege as [$schluessel, $wert]) {
+                    $zeilen[] = $schluessel . '=' . $wert;
+                }
+            }
+
+            return $zeilen;
+        };
+
+        $einmal = $alsText($lies((array) file($datei)));
+        $zweimal = $alsText($lies($einmal));
+
+        self::assertGreaterThan(2500, count($einmal));
+        self::assertSame($einmal, $zweimal);
+    }
 }
