@@ -607,7 +607,7 @@ class liga {
                     $team = new team($value, $teamKurz, $key, $teamMittel);
                     $teamDetails = $iniData['Team' . $tCounter];
                     foreach ($teamDetails as $detailsKey => $detailsValue) {
-                        if (isset($detailsKey) && $detailsKey != '') {
+                        if ($detailsKey != '') {
                             $team->keyValues[$detailsKey] = $detailsValue;
                         }
                     }
@@ -704,7 +704,7 @@ class liga {
                 }
             }
             foreach ($optionDetails as $detailsKey => $detailsValue) {
-                if (isset($detailsKey) && $detailsKey != '') {
+                if ($detailsKey != '') {
                     $options->keyValues[$detailsKey] = $detailsValue;
                 }
             }
@@ -991,7 +991,7 @@ class liga {
 
         $options = new optionsSektion($this, $optionDetails);
         foreach ($optionDetails as $detailsKey => $detailsValue) {
-            if (isset($detailsKey) && $detailsKey != '') {
+            if ($detailsKey != '') {
                 $options->keyValues[$detailsKey] = $detailsValue;
             }
         }
@@ -1598,6 +1598,8 @@ class liga {
     * @return array
     */
     function sortTable($tableArray) {
+        // auch fuer eine leere Tabelle definiert
+        $sort_pPkt = $sort_mPkt = $sort_pTor = $sort_mTor = $sort_dTor = $sort_nr = array();
         foreach ($tableArray as $table) {
             $sort_pPkt[] = $table['pPkt'];
             $sort_mPkt[] = $this->options->keyValues['MinusPoints'] == 2 ? $table['mPkt'] : 0;

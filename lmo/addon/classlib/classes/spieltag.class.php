@@ -257,12 +257,7 @@ class spieltag {
                 $index++;
             }
         }
-        if (isset($partienArray)) {
-            $this->partien = &$partienArray;
-        }
-        else {
-            $this->partien = null;
-        }
+        $this->partien = $partienArray;
         return $result;
     }
 

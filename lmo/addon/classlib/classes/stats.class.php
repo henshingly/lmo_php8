@@ -225,14 +225,14 @@ class stats {
             $dx =($statsArrayB['tabelle']['pTor'] / $statsArrayB['tabelle']['spiele']) + ($statsArrayA['tabelle']['mTor'] / $statsArrayA['tabelle']['spiele']);
             $ex = $ax + $bx;
             $fx = $cx + $dx;
-        }
-        if (isset($ex) && ($ex > 0) && isset($fx) &&($fx > 0)) {
-            $ax = round(10000 * $ax / $ex);
-            $bx = round(10000 * $bx / $ex);
-            $cx = round(10000 * $cx / $fx);
-            $dx = round(10000 * $dx / $fx);
-            $statsArrayA['chance'] = number_format((($ax + $cx) / 200), 2, ',', '.');
-            $statsArrayB['chance'] = number_format((($bx + $dx) / 200), 2, ',', '.');
+            if ($ex > 0 && $fx > 0) {
+                $ax = round(10000 * $ax / $ex);
+                $bx = round(10000 * $bx / $ex);
+                $cx = round(10000 * $cx / $fx);
+                $dx = round(10000 * $dx / $fx);
+                $statsArrayA['chance'] = number_format((($ax + $cx) / 200), 2, ',', '.');
+                $statsArrayB['chance'] = number_format((($bx + $dx) / 200), 2, ',', '.');
+            }
         }
         $resultArray[] = $statsArrayA;
         $resultArray[] = $statsArrayB;
@@ -442,6 +442,7 @@ class stats {
     * @return array Saisonverlauf des Teams
     */
     function getVerlaufTeam(&$team) {
+        $positionen = array();
         $tableArray = $this->liga->calcTable($this->liga->options->keyValues['Rounds'], 'all', true);
         foreach($tableArray as $zeile){
             if ($zeile['team'] == $team){
@@ -460,6 +461,7 @@ class stats {
     * @return array Saisonverlauf der Teams
     */
     function getVerlaufTeams(&$teama, &$teamb) {
+        $positionen = array();
         $tableArray = $this->liga->calcTable($this->liga->options->keyValues['Rounds'], 'all', true);
         foreach($tableArray as $zeile){
             if ($zeile['team'] == $teama){

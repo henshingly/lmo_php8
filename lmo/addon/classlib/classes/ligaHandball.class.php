@@ -21,6 +21,7 @@ class ligaHandball extends liga {
     * @return array
     */
     function sortTable($tableArray) {
+        $sort_pPkt = $sort_spiele = array();
         foreach($tableArray as $table) {
             $sort_pPkt[] = $table['pPkt'];
             $sort_spiele[] = $table['spiele'];
@@ -54,6 +55,7 @@ class ligaHandball extends liga {
     * @return array
     */
     function sortDirectTable($tableArray) {
+        $sort_pPkt = $sort_spiele = $sort_dTor = array();
         foreach($tableArray as $table) {
             $sort_pPkt[] = $table['pPkt'];
             $sort_spiele[] = $table['spiele'];

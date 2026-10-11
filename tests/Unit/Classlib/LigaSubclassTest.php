@@ -107,4 +107,30 @@ final class LigaSubclassTest extends ClasslibTestCase
     {
         self::assertNull(\liga::factory(sys_get_temp_dir() . '/lmo-gibt-es-nicht-' . uniqid() . '.l98'));
     }
+
+    /** @return array<string, array{string}> */
+    public static function leagueClasses(): array
+    {
+        return ['liga' => ['liga'], 'ligaFussball' => ['ligaFussball'], 'ligaHandball' => ['ligaHandball']];
+    }
+
+    /**
+     * Eine Tabelle ohne Zeilen (Liga ohne Teams) bleibt leer; vorher fehlten die Sortierspalten.
+     *
+     * @dataProvider leagueClasses
+     */
+    public function testSortingAnEmptyTable(string $class): void
+    {
+        $liga = self::league([], [], [], $class);
+
+        self::assertSame([], $liga->sortTable([]));
+    }
+
+    public function testHandballSortingAnEmptyDirectTable(): void
+    {
+        /** @var \ligaHandball $liga */
+        $liga = self::league([], [], [], 'ligaHandball');
+
+        self::assertSame([], $liga->sortDirectTable([]));
+    }
 }
