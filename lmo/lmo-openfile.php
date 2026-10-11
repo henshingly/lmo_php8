@@ -53,11 +53,9 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
       }
       if (!isset($st)){                         $st=1;}
       if (!isset($stats)){                      $stats=0;}
-      // nur der benoetigte Spieltag wird eingelesen, wenn $lmo_only_st gesetzt ist
-      $lmo_nur_spieltag=!isset($lmo_only_st) ? null : ($lmo_only_st==true ? $st-1 : false);
       // Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\LigaDaten)
-      $ligaDaten->lies($lmo_eintraege,$defdateformat,$text[0],$text[1],$lmo_nur_spieltag);
-      unset($lmo_eintraege,$lmo_nur_spieltag);
+      $ligaDaten->lies($lmo_eintraege,$defdateformat,$text[0],$text[1]);
+      unset($lmo_eintraege);
       if ($ligaDaten->lmtype==0){
         // eigene Bezeichnung fuer Punkte/Tore gilt auch fuer die Sprachtexte, sonst umgekehrt
         if ($ligaDaten->namepkt!=""){                      $text[37]=$ligaDaten->namepkt;}

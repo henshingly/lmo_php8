@@ -83,55 +83,19 @@ if ($file != "") {
     exit;
   }
   if (substr($file, -4) == ".l98") {
-    $mspez0 = 0;
-    $daten = array();
-    $sekt = "";
-    if ($datei = fopen(PATH_TO_LMO.'/'.$dirliga.basename($file), "rb")) {
-      while (!feof($datei)) {
-        $zeile = fgets($datei, 1000);
-        $zeile = trim($zeile);
-        if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
-          $sekt = trim(substr($zeile, 1, -1));
-        } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
-          $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
-          $wert = trim(substr($zeile, strpos($zeile, "=")+1));
-          if ($sekt == "Options") {
-            if ($schl == "Name") {
-              $titel0 = stripslashes($wert);
-            }
-            if ($schl == "goalfaktor") {
-              $goalfaktor0 = $wert;
-            }
-            if ($schl == "urlB") {
-              $urlb0 = $wert;
-            }
-            if ($schl == "Type") {
-              $lmtype0 = stripslashes($wert);
-            }
-            if ($schl == "Teams") {
-              $ligaDaten->anzteams = $wert;
-            }
-            if ($lmtype0 == 0) {
-              if ($schl == "HideDraw") {
-                $hidr0 = $wert;
-              }
-            }
-            if ($schl == "DatS") {
-              $dats0 = $wert;
-            }
-            if ($schl == "DatM") {
-              $datm0 = $wert;
-            }
-            if ($schl == "favTeam") {
-              $ligaDaten->favteam = $wert;
-            }
-          }
-          array_push($daten, $sekt."|".$schl."|".$wert."|EOL");
-        }
-      }
-      fclose($datei);
-    }
+    // die ganze Liga als Rohdaten (Lmo\Liga\Rohdaten\Liga); was die Datei nicht nennt, bekommt den Vorgabewert
+    $lmo_liga = \Lmo\Liga\Rohdaten\Liga::lies(PATH_TO_LMO.'/'.$dirliga.basename($file));
+    $lmo_optionen = $lmo_liga->optionen;
+    $lmo_pokal = $lmo_liga->istPokal();
+    $titel0 = stripslashes($lmo_optionen['Name'] ?? '');
+    $lmtype0 = stripslashes($lmo_optionen['Type'] ?? '0');
+    $goalfaktor0 = $lmo_optionen['goalfaktor'] ?? 1;
+    $urlb0 = $lmo_optionen['urlB'] ?? 0;
+    $hidr0 = $lmo_pokal ? 0 : ($lmo_optionen['HideDraw'] ?? 0);
+    $dats0 = $lmo_optionen['DatS'] ?? 1;
+    $datm0 = $lmo_optionen['DatM'] ?? 0;
+    $ligaDaten->anzteams = $lmo_optionen['Teams'] ?? ($lmo_pokal ? 16 : 18);
+    $ligaDaten->favteam = $lmo_optionen['favTeam'] ?? 0;
     clearstatcache();
 
     $tippdaten = array();
@@ -158,86 +122,56 @@ if ($file != "") {
     }
     fclose($datei);
 
-    if (!isset($ligaDaten->favteam)) {
-      $ligaDaten->favteam = 0;
-    }
-    if (!isset($ligaDaten->titel)) {
-      $ligaDaten->titel = "No Name";
-    }
-    if ($lmtype0 != 0) {
-      if (!isset($ligaDaten->anzteams)) {
-        $ligaDaten->anzteams = 16;
-      }
-    }
     $anzst0 = strlen(decbin($ligaDaten->anzteams-1));
-    if (!isset($ligaDaten->dats)) {
-      $ligaDaten->dats = 1;
-    }
-    if (!isset($ligaDaten->datm)) {
-      $ligaDaten->datm = 0;
-    }
-    for ($i = 1; $i <= count($daten); $i++) {
-      $dum = explode('|', $daten[$i-1]);
-      if ($dum[0] == "Teams") {
-        $ligaDaten->teams[$dum[1]] = stripslashes($dum[2]);
+    foreach ($lmo_liga->mannschaften as $lmo_nr => $lmo_mannschaft) {
+      if ($lmo_mannschaft->name !== null) {
+        $ligaDaten->teams[$lmo_nr] = stripslashes($lmo_mannschaft->name);
       }
-      $op2 = substr($dum[0], 0, 5);
-      if ($op2 == "Round") {
-        $spieltag0 = substr($dum[0], 5);
-        $op8 = substr($dum[1], 0, 2);
-        if ($dum[1] == "D1") {
-          $rb = $i+2; // Anfang des st merken
-          $dummy1 = "";
-          if ($dum[2] != "") {
-            $dummy1 = strtotime(substr($dum[2], 0, 2)." ".$me[intval(substr($dum[2], 3, 2))]." ".substr($dum[2], 6, 4));
-            if ($tipp_tippohne == 1 && $deftime > 0) {
-              $dummy1 = $dummy1+substr($deftime, 0, 2) * 60 * 60+substr($deftime, 3, 2) * 60;
-            }
-            if ($dummy1 > -1) {
-              $dum[2] = date("d.m.Y", $dummy1);
-            } else {
-              $dum[2] = "";
-            }
+    }
+    foreach ($lmo_liga->spieltage as $lmo_spieltag_nr => $lmo_spieltag) {
+      $spieltag0 = (string)$lmo_spieltag_nr;
+      // Datum des Spieltags in der Form TT.MM.JJJJ und als Zeit; ein Datum, das es nicht gibt, zaehlt als leer
+      $datum10 = $datum20 = "";
+      $dummy1 = $dummy2 = "";
+      foreach (array('D1', 'D2') as $lmo_schl) {
+        $lmo_zeit = \Lmo\Liga\LigaDaten::datumAlsZeit($lmo_spieltag->werte[$lmo_schl] ?? '');
+        if ($lmo_zeit !== false) {
+          if ($lmo_schl == 'D1') {
+            $datum10 = date("d.m.Y", $lmo_zeit);
+          } else {
+            $datum20 = date("d.m.Y", $lmo_zeit);
           }
-          $datum10 = $dum[2];
-        } elseif ($dum[1] == "D2") {
-          $dummy2 = "";
-          if ($dum[2] != "") {
-            $dummy2 = strtotime(substr($dum[2], 0, 2)." ".$me[intval(substr($dum[2], 3, 2))]." ".substr($dum[2], 6, 4));
-            if ($tipp_tippohne == 1 && $deftime > 0) {
-              $dummy2 = $dummy2+substr($deftime, 0, 2) * 60 * 60+substr($deftime, 3, 2) * 60;
-            }
-            if ($dummy2 > -1) {
-              $dum[2] = date("d.m.Y", $dummy2);
-            } else {
-              $dum[2] = "";
-            }
+          if ($tipp_tippohne == 1 && $deftime > 0) {
+            $lmo_zeit = $lmo_zeit+substr($deftime, 0, 2) * 60 * 60+substr($deftime, 3, 2) * 60;
           }
-          $datum20 = $dum[2];
-        } elseif ($dum[1] == "MO" && $lmtype0 != 0) {
-          $modus0 = $dum[2];
-        } elseif ($op8 == "TA") {
-          $teama0 = $dum[2];
-        } elseif ($op8 == "TB") {
-          $teamb0 = $dum[2];
-        } elseif ($op8 == "GA") {
-          $goala0 = $dum[2];
-        } elseif ($op8 == "GB") {
-          $goalb0 = $dum[2];
-        } elseif ($op8 == "SP") {
-          $mspez0 = $dum[2];
-        } elseif ($op8 == "ET" && $lmtype0 == 0 && $dum[2] == 3) {
-          $msieg0 = 3;
-        } elseif ($op8 == "NT") {
-          $mnote0 = addslashes($dum[2]);
-        } elseif ($op8 == "BE") {
-          $mberi0 = addslashes($dum[2]);
-        } elseif ($op8 == "TI") {
-          $mtipp0 = $dum[2];
-        } elseif ($op8 == "AT" && $teama0 > 0) {
+          if ($lmo_schl == 'D1') {
+            $dummy1 = $lmo_zeit;
+          } else {
+            $dummy2 = $lmo_zeit;
+          }
+        }
+      }
+      // Spiele je Paarung: in der Liga eines, im Pokal nach dem Modus der Runde
+      $modus0 = $lmo_pokal ? ($lmo_spieltag->werte['MO'] ?? '1') : 1;
+      foreach ($lmo_spieltag->partien as $lmo_partie_nr => $lmo_partie) {
+        foreach ($lmo_partie->spiele as $lmo_spiel_nr => $lmo_werte) {
+          // jedes Spiel mit seinen eigenen Werten; ohne Mannschaft oder ohne Anstosszeile (AT) ist es keines
+          if (!($lmo_partie->heim > 0) || !isset($lmo_werte['AT'])) {
+            continue;
+          }
+          $teama0 = $lmo_partie->heim;
+          $teamb0 = $lmo_partie->gast ?? 0;
+          $goala0 = $lmo_werte['GA'] ?? '';
+          $goalb0 = $lmo_werte['GB'] ?? '';
+          $mspez0 = $lmo_werte['SP'] ?? 0;
+          $msieg0 = (!$lmo_pokal && ($lmo_werte['ET'] ?? '') == 3) ? 3 : 0;
+          $mnote0 = addslashes($lmo_werte['NT'] ?? '');
+          $mberi0 = addslashes($lmo_werte['BE'] ?? '');
+          $mtipp0 = $lmo_werte['TI'] ?? 0;
+          $mterm0 = $lmo_werte['AT'];
           $btip = false;
-          if ($dum[2] > 0) {
-            if ($now <= $dum[2] && $then > $dum[2]) {
+          if ($mterm0 > 0) {
+            if ($now <= $mterm0 && $then > $mterm0) {
               $btip = true;
             }
           } elseif ($dummy1 > 0) {
@@ -250,17 +184,8 @@ if ($file != "") {
             }
           }
           if ($btip == true) {
-            $spiel0 = substr($dum[1], 2);
-            $mterm0 = $dum[2];
-            if ($lmtype0 == 0) {
-              $modus0 = 1;
-            }
-            if (!isset($mspez0)) {
-              $mspez0 = "";
-            }
-            if (!isset($msieg0)) {
-              $msieg0 = 0;
-            }
+            // Nummer des Spiels wie im Schluessel der Datei: Partie, im Pokal gefolgt vom Spiel der Paarung
+            $spiel0 = $lmo_pokal ? $lmo_partie_nr.$lmo_spiel_nr : (string)$lmo_partie_nr;
 
             array_push($liga, $liga0);
             array_push($ligaDaten->titel, $titel0);
@@ -277,15 +202,15 @@ if ($file != "") {
             array_push($ligaDaten->urlb, $urlb0);
             array_push($ligaDaten->goalfaktor, $goalfaktor0);
             if ($ligaDaten->favteam == $teama0) {
-              $teama0 = "<strong>".$ligaDaten->teams[$teama0]."</strong>";
+              $teama0 = "<strong>".($ligaDaten->teams[$teama0] ?? '')."</strong>";
             } else {
-              $teama0 = $ligaDaten->teams[$teama0];
+              $teama0 = $ligaDaten->teams[$teama0] ?? '';
             }
             array_push($ligaDaten->teama, $teama0);
             if ($ligaDaten->favteam == $teamb0) {
-              $teamb0 = "<strong>".$ligaDaten->teams[$teamb0]."</strong>";
+              $teamb0 = "<strong>".($ligaDaten->teams[$teamb0] ?? '')."</strong>";
             } else {
-              $teamb0 = $ligaDaten->teams[$teamb0];
+              $teamb0 = $ligaDaten->teams[$teamb0] ?? '';
             }
             array_push($ligaDaten->teamb, $teamb0);
             if ($goala0 == "") {
@@ -320,15 +245,10 @@ if ($file != "") {
               $mspez0 = $text[1];
             }
             array_push($ligaDaten->mspez, $mspez0);
-            $mspez0 = 0;
-            if (!isset($mtipp0)) {
-              $mtipp0 = 0;
-            }
             array_push($ligaDaten->mtipp, $mtipp0);
             array_push($ligaDaten->mnote, $mnote0);
             array_push($ligaDaten->mberi, $mberi0);
             array_push($ligaDaten->msieg, $msieg0);
-            $msieg0 = 0;
             array_push($ligaDaten->mterm, $mterm0);
             array_push($tippa, "");
             array_push($tippb, "");
@@ -368,14 +288,13 @@ if ($file != "") {
                     }
 
                     if ($dum1[3] > 0) {
-                      for ($k = $rb; $k <= count($daten); $k++) {
-                        $dum2 = explode('|', $daten[$k-1]);
-                        $op8 = substr($dum2[1], 0, 2);
-                        if ($op8 == "AT") {
-                          $spiel0 = substr($dum2[1], 2);
-                          if ($spiel0 == $dum1[3]) {
-                            $tipp_jokertippaktiv[$anzspiele-1] = zeit($dum2[2], $datum10, $datum20);
-                            break;
+                      // Anstoss des Jokerspiels in diesem Spieltag
+                      foreach ($lmo_spieltag->partien as $lmo_jk_partie_nr => $lmo_jk_partie) {
+                        foreach ($lmo_jk_partie->spiele as $lmo_jk_spiel_nr => $lmo_jk_werte) {
+                          $lmo_jk_spiel = $lmo_pokal ? $lmo_jk_partie_nr.$lmo_jk_spiel_nr : (string)$lmo_jk_partie_nr;
+                          if (isset($lmo_jk_werte['AT']) && $lmo_jk_spiel == $dum1[3]) {
+                            $tipp_jokertippaktiv[$anzspiele-1] = zeit($lmo_jk_werte['AT'], $datum10, $datum20);
+                            break 2;
                           }
                         }
                       }

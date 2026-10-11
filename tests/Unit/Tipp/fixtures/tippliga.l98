@@ -1,0 +1,33 @@
+[Options]
+Name=Tippliga
+Type=0
+Teams=3
+goalfaktor=1
+urlB=1
+HideDraw=0
+DatS=1
+DatM=0
+favTeam=2
+
+[Teams]
+1=Alpha
+2=B | C
+3=Gamma
+
+[Round1]
+D1=01.03.2025
+D2=02.03.2025
+TA1=1
+TB1=2
+GA1=2
+GB1=1
+NT1=Abbruch | Nebel
+BE1=
+TI1=0
+AT1=1740826800
+TA2=3
+TB2=1
+GA2=-1
+GB2=-1
+TI2=0
+AT2=1740834000

@@ -56,6 +56,38 @@ final class LigaDatei
     }
 
     /**
+     * Liest nur einen Abschnitt einer Ligadatei, z. B. [Options] fuer eine Liste aller Ligen.
+     * Die Datei wird nur bis zum Ende dieses Abschnitts gelesen; steht er mehrfach in der Datei,
+     * zaehlt der erste. Eine fehlende oder nicht lesbare Datei ergibt ein leeres Array.
+     *
+     * @return array<string, string> Schluessel => Wert; bei doppelten Schluesseln gilt der letzte
+     */
+    public static function liesAbschnitt(string $pfad, string $abschnitt): array
+    {
+        $datei = is_file($pfad) ? @fopen($pfad, 'rb') : false;
+        if ($datei === false) {
+            return [];
+        }
+        $werte = [];
+        $aktuell = null;
+        while (($zeile = fgets($datei)) !== false) {
+            $zeile = trim($zeile);
+            if (substr($zeile, 0, 1) === '[' && substr($zeile, -1) === ']') {
+                if ($aktuell === $abschnitt) {
+                    break;
+                }
+                $aktuell = trim(substr($zeile, 1, -1));
+            } elseif ($aktuell === $abschnitt && strpos($zeile, '=') !== false && substr($zeile, 0, 1) !== ';') {
+                [$schluessel, $wert] = explode('=', $zeile, 2);
+                $werte[trim($schluessel)] = trim($wert);
+            }
+        }
+        fclose($datei);
+
+        return $werte;
+    }
+
+    /**
      * Fasst aufeinanderfolgende Eintraege desselben Abschnitts zusammen.
      *
      * @param list<array{string, string, string}> $eintraege Ergebnis von zerlege()

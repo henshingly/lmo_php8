@@ -48,37 +48,13 @@ if ($ftype != '') {
         $t4 = '';
         $t2 = $text[2];
         if (file_exists(PATH_TO_LMO . '/' . $dirliga . $dummy[$k])) {
-            $datei = fopen(PATH_TO_LMO . '/' . $dirliga . $dummy[$k], 'rb');
-            if ($datei) {
-                while (!feof($datei)) {
-                    $zeile = fgets($datei, 10000);
-                    $zeile = trim($zeile);
-
-                    if ((substr($zeile, 0, 1) == '[') && (substr($zeile, -1) == ']')) {
-                        $sekt = substr($zeile, 1, -1);
-                    } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
-                        $schl = substr($zeile, 0, strpos($zeile, '='));
-                        $wert = substr($zeile, strpos($zeile, '=') + 1);
-                        if ($schl == 'Name') {
-                            $t0 = $wert;
-                        }
-                        if ($schl == 'Actual') {
-                            $t1=$wert;
-                        }
-                        if ($schl == 'Teams') {
-                            $t4 = $wert;
-                        }
-                        if ($schl == 'Type') {
-                            if ($wert == '1') {
-                                $t2 = $text[370];
-                            }
-                        }
-                        if (($t0 != ') && ($t1 != ') && ($t4 != '')) {
-                            break;
-                        }
-                    }
-                }
-                fclose($datei);
+            // Abschnitt [Options] der Ligadatei (Lmo\Liga\LigaDatei)
+            $lmo_optionen = \Lmo\Liga\LigaDatei::liesAbschnitt(PATH_TO_LMO . '/' . $dirliga . $dummy[$k], 'Options');
+            $t0 = $lmo_optionen['Name'] ?? $t0;
+            $t1 = $lmo_optionen['Actual'] ?? $t1;
+            $t4 = $lmo_optionen['Teams'] ?? $t4;
+            if (($lmo_optionen['Type'] ?? '') == '1') {
+                $t2 = $text[370];
             }
             if ($t0 == '') {
                 $j++;

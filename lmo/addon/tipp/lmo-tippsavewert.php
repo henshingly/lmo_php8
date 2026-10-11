@@ -104,10 +104,7 @@ flock($auswertdatei, 2);
 if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
   echo getMessage($text['tipp'][0].': '.$text['tipp'][29]." <var>".$liga."</var> ".$text['tipp'][65]);
   if ($todo != "edit") {
-    if ($st != 0) {
-      $lmo_only_st=true;
-    }
-      require(PATH_TO_LMO."/lmo-openfile.php");
+    require(PATH_TO_LMO."/lmo-openfile.php");
   }
   $verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
   $dummy = array();

@@ -133,4 +133,19 @@ final class LigaSubclassTest extends ClasslibTestCase
 
         self::assertSame([], $liga->sortDirectTable([]));
     }
+
+    /** LigaType steht im Abschnitt [Options]; eine gleichnamige Zeile woanders zaehlt nicht. */
+    public function testFactoryReadsTheLeagueTypeFromOptionsOnly(): void
+    {
+        $file = $this->leagueFile("[Options]\nName=Liga\n\n[Eigenes]\nLigaType=Handball\n\n[Teams]\n1=A\n");
+
+        self::assertSame(\liga::class, get_class(\liga::factory($file)));
+    }
+
+    public function testFactoryWithUnknownLeagueType(): void
+    {
+        $file = $this->leagueFile("[Options]\nLigaType=Gibtesnicht\n");
+
+        self::assertSame(\liga::class, get_class(\liga::factory($file)));
+    }
 }

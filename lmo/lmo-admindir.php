@@ -57,42 +57,16 @@ foreach ($verz as $files) {  // sortiert: gleiche Liganamen und "Unbenannte Liga
             $ligadatei[$liga_counter]['anz_teams'] = '';                                                //Anzahl der Mannschaften
             $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[2];                                  //Spieltag oder Pokalrunde
 
-            $sekt = '';
-            $datei = fopen(PATH_TO_LMO . '/' . $dirliga . $files, 'rb');
-            if ($datei) {
-                while (!feof($datei)) {
-                    $zeile = fgets($datei, 1000);
-                    $zeile = trim($zeile);
-                    if ((substr($zeile, 0, 1) == '[') && (substr($zeile,-1) == ']')) {  //Sektion
-                        $sekt=substr($zeile, 1, -1);
-                    }
-                    elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  // Wert
-                    //elseif ((strpos($zeile, '=') !== false) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  //Wert
-                        $option = explode('=', $zeile, 2);
-                        $option_name = $option[0];
-                        $option_wert = isset($option[1]) ? $option[1] : '';
-                        if ($option_name == 'Name') {
-                            $ligadatei[$liga_counter]['liga_name'] = $option_wert;
-                        }
-                        if ($option_name == 'Actual') {
-                            $ligadatei[$liga_counter]['aktueller_spieltag'] = $option_wert;
-                        }
-                        if ($option_name == 'Teams') {
-                            $ligadatei[$liga_counter]['anz_teams'] = $option_wert;
-                        }
-                        if ($option_name == 'Type') {
-                            if ($option_wert == '1') {
-                                $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[370];
-                            }
-                        }
-                        //Alle benötigten Werte gefunden -> Abbruch
-                        if ($ligadatei[$liga_counter]['liga_name'] != '' &&
-                            $ligadatei[$liga_counter]['aktueller_spieltag'] != '' &&
-                            $ligadatei[$liga_counter]['anz_teams'] != '')
-                        break;
-                    }
+            $lmo_pfad = PATH_TO_LMO . '/' . $dirliga . $files;
+            if (is_readable($lmo_pfad)) {
+                // Abschnitt [Options] der Ligadatei (Lmo\Liga\LigaDatei)
+                $lmo_optionen = \Lmo\Liga\LigaDatei::liesAbschnitt($lmo_pfad, 'Options');
+                $ligadatei[$liga_counter]['liga_name'] = $lmo_optionen['Name'] ?? $ligadatei[$liga_counter]['liga_name'];
+                $ligadatei[$liga_counter]['aktueller_spieltag'] = $lmo_optionen['Actual'] ?? $ligadatei[$liga_counter]['aktueller_spieltag'];
+                $ligadatei[$liga_counter]['anz_teams'] = $lmo_optionen['Teams'] ?? $ligadatei[$liga_counter]['anz_teams'];
+                if (($lmo_optionen['Type'] ?? '') == '1') {
+                    $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[370];
                 }
-                fclose($datei);
                 if ($ligadatei[$liga_counter]['liga_name'] == '') {
                     $unbenannte_liga_counter++;
                     $ligadatei[$liga_counter]['liga_name'] = $text[507] . ' ' . $unbenannte_liga_counter;

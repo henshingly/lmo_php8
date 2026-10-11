@@ -343,4 +343,43 @@ Rounds=2", self::LIGA);
         self::assertSame('2', $liga->options->keyValues['Rounds']);
         self::assertArrayNotHasKey(';Rounds', $liga->options->keyValues);
     }
+
+    /**
+     * Im Pokal gehoert ein Wert zu dem Spiel, dessen Nummer im Schluessel steht (AT11 = Paarung 1,
+     * Spiel 1), auch wenn die Zeilen in anderer Reihenfolge stehen. Frueher zaehlte die Reihenfolge:
+     * was hinter den Toren des Rueckspiels stand, landete beim Rueckspiel.
+     */
+    public function testCupValuesBelongToTheGameNamedInTheKey(): void
+    {
+        $content = str_replace(
+            "GA11=1\nGB11=0\nAT11=1727802000\nGA12=2\nGB12=2\nAT12=1728406800\n",
+            "GA11=1\nGB11=0\nGA12=2\nGB12=2\nAT12=1728406800\nAT11=1727802000\nNT11=Hinspiel\n",
+            self::POKAL,
+            $count
+        );
+        self::assertSame(1, $count);
+
+        $spieltag = $this->load($content)->SpieltagForNumber(1);
+
+        self::assertSame(2, $spieltag->partienCount());
+        $hin = $spieltag->partieForNumber(1);
+        $rueck = $spieltag->partieForNumber(2);
+        self::assertSame(['1727802000', 'Hinspiel', '1', '0'], [$hin->zeit, $hin->notiz, $hin->hTore, $hin->gTore]);
+        self::assertSame(['1728406800', '', '2', '2'], [$rueck->zeit, $rueck->notiz, $rueck->hTore, $rueck->gTore]);
+    }
+
+    /** Ob die Schluessel eine Spielnummer tragen, entscheidet der Typ der Datei, wie im Kern des LMO. */
+    public function testLeagueOrCupIsDecidedByTheFileType(): void
+    {
+        // eine Liga: GA11 ist die Partie 11, auch wenn der Spieltag einen Modus nennt
+        $content = str_replace('[Round1]' . "\n" . 'HS=030102', "[Round1]\nMO=2\nHS=030102\nTA11=2\nTB11=3\nGA11=4\nGB11=0", self::LIGA, $count);
+        self::assertSame(1, $count);
+
+        $liga = $this->load($content);
+
+        self::assertSame('Testliga 2024/25', $liga->name);
+        self::assertSame('0', $liga->options->keyValues['Type']);
+        $partien = $liga->SpieltagForNumber(1)->partien;
+        self::assertSame(['2', '1'], [$partien[0]->hTore, $partien[0]->gTore], 'Partie 1 bleibt, wie sie ist');
+    }
 }

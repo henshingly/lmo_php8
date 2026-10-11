@@ -96,4 +96,42 @@ class LigaDateiTest extends TestCase
         self::assertSame([['Options', 'Name', 'Liga [Nord]'], ['Options', 'Teams', '2'], ['Teams', '1', 'A = B']], LigaDatei::eintraege($abschnitte));
         self::assertSame('', LigaDatei::alsText([]));
     }
+
+    public function testLiesAbschnittLiestNurDiesenAbschnitt(): void
+    {
+        $optionen = LigaDatei::liesAbschnitt(__DIR__ . '/fixtures/strich.l98', 'Options');
+
+        self::assertSame(['Name' => 'Mit Strich', 'Type' => '0', 'Teams' => '2', 'Rounds' => '1', 'Matches' => '1'], $optionen);
+        self::assertSame(['1' => 'Alpha', '2' => 'A | B'], LigaDatei::liesAbschnitt(__DIR__ . '/fixtures/strich.l98', 'Teams'));
+        self::assertSame([], LigaDatei::liesAbschnitt(__DIR__ . '/fixtures/strich.l98', 'Gibtesnicht'));
+        self::assertSame([], LigaDatei::liesAbschnitt(__DIR__ . '/fixtures/gibt-es-nicht.l98', 'Options'));
+        self::assertSame([], LigaDatei::liesAbschnitt(__DIR__ . '/fixtures', 'Options'));
+    }
+
+    /** Dasselbe Ergebnis wie beim Lesen der ganzen Datei, fuer jede Ligadatei des Repos. */
+    public function testLiesAbschnittStimmtMitDerGanzenDateiUeberein(): void
+    {
+        $dateien = glob(dirname(__DIR__, 3) . '/lmo/ligen/{*,*/*}.l98', GLOB_BRACE) ?: [];
+        self::assertNotEmpty($dateien);
+        foreach ($dateien as $pfad) {
+            $erwartet = [];
+            foreach (LigaDatei::lies($pfad) as [$abschnitt, $schluessel, $wert]) {
+                if ($abschnitt === 'Options') {
+                    $erwartet[$schluessel] = $wert;
+                }
+            }
+            self::assertSame($erwartet, LigaDatei::liesAbschnitt($pfad, 'Options'), basename($pfad));
+        }
+    }
+
+    public function testLiesAbschnittMitSonderfaellen(): void
+    {
+        $pfad = sys_get_temp_dir() . '/lmo-abschnitt-' . getmypid() . '-' . bin2hex(random_bytes(3)) . '.l98';
+        file_put_contents($pfad, "vorab=1\r\n[ Options ]\r\n Name = Liga [Nord] \r\n;Teams=9\r\nTeams=4\r\nTeams=6\r\nohne Gleichheitszeichen\r\n[Teams]\r\n1=A\r\n[Options]\r\nName=zweiter Abschnitt\r\n");
+        try {
+            self::assertSame(['Name' => 'Liga [Nord]', 'Teams' => '6'], LigaDatei::liesAbschnitt($pfad, 'Options'));
+        } finally {
+            unlink($pfad);
+        }
+    }
 }

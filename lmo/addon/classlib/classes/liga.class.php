@@ -143,13 +143,11 @@ class liga {
             return null;
         }
         // LigaType=Handball -> ligaHandball, ohne/unbekannter Typ -> liga
-        foreach (file($file) as $configLine) {
-            if (preg_match('/^LigaType=(\w+)/', $configLine, $ligaType)) {
-                $class = 'liga' . ucfirst(strtolower($ligaType[1]));
-                if (class_exists($class) && is_subclass_of($class, 'liga')) {
-                    return new $class();
-                }
-                break;
+        $rohdaten = \Lmo\Liga\Rohdaten\Liga::lies($file);
+        if (preg_match('/^(\w+)/', $rohdaten->optionen['LigaType'] ?? '', $ligaType)) {
+            $class = 'liga' . ucfirst(strtolower($ligaType[1]));
+            if (class_exists($class) && is_subclass_of($class, 'liga')) {
+                return new $class();
             }
         }
         return new liga();
@@ -530,7 +528,8 @@ class liga {
     function getIniData($key, &$array, $partie = null) {
         $result = '';
         if (is_array($array)) {
-            if (!is_null($partie) && array_key_exists($key, $array[$partie])) {
+            // ein Spiel, das der Modus der Runde vorsieht, die Datei aber nicht nennt, ergibt leere Werte
+            if (!is_null($partie) && isset($array[$partie]) && is_array($array[$partie]) && array_key_exists($key, $array[$partie])) {
                 $result = $array[$partie][$key];
                 unset($array[$partie][$key]); // löschen da jetzt bekannt
             }
@@ -544,6 +543,67 @@ class liga {
 
 
     /**
+    * Bringt die Rohdaten einer Ligadatei in die Form, aus der loadFile() die Objekte baut:
+    * $iniData[Abschnitt][Schluessel] = Wert; in den Spieltagen je Partie
+    * $iniData['RoundN'][Partie]['TA'|'TB'] und $iniData['RoundN'][Partie][Spiel][Art] = Wert.
+    * SpNr ist die Nummer aus dem Schluessel der Tore (3 bzw. im Pokal 31).
+    *
+    * @access private
+    * @param \Lmo\Liga\Rohdaten\Liga $rohdaten
+    * @return array
+    */
+    static function iniDataAusRohdaten($rohdaten) {
+        $iniData = array();
+        if ($rohdaten->optionen) {
+            $iniData['Options'] = $rohdaten->optionen;
+        }
+        if ($rohdaten->news) {
+            $iniData['News'] = $rohdaten->news;
+        }
+        foreach (array('Teams' => 'name', 'Teamm' => 'mittel', 'Teamk' => 'kurz') as $abschnitt => $eigenschaft) {
+            foreach ($rohdaten->mannschaften as $nr => $mannschaft) {
+                if ($mannschaft->$eigenschaft !== null) {
+                    $iniData[$abschnitt][$nr] = $mannschaft->$eigenschaft;
+                }
+            }
+        }
+        foreach ($rohdaten->mannschaften as $nr => $mannschaft) {
+            if ($mannschaft->werte) {
+                $iniData['Team' . $nr] = $mannschaft->werte;
+            }
+        }
+        $pokal = $rohdaten->istPokal();
+        foreach ($rohdaten->spieltage as $nr => $spieltag) {
+            $runde = $spieltag->werte;
+            foreach ($spieltag->partien as $partieNr => $partie) {
+                if ($partie->heim !== null) {
+                    $runde[$partieNr]['TA'] = $partie->heim;
+                }
+                if ($partie->gast !== null) {
+                    $runde[$partieNr]['TB'] = $partie->gast;
+                }
+                foreach ($partie->spiele as $spielNr => $werte) {
+                    foreach ($werte as $art => $wert) {
+                        if ($art == 'GA') {
+                            $runde[$partieNr][$spielNr]['SpNr'] = $partieNr . ($pokal ? $spielNr : '');
+                        }
+                        $runde[$partieNr][$spielNr][$art] = $wert;
+                    }
+                }
+            }
+            if ($runde) {
+                $iniData['Round' . $nr] = $runde;
+            }
+        }
+        foreach ($rohdaten->weitereAbschnitte as $abschnitt) {
+            foreach ($abschnitt[1] as $zeile) {
+                $iniData[$abschnitt[0]][$zeile[0]] = $zeile[1];
+            }
+        }
+        return $iniData;
+    }
+
+    /**
     * Lädt das angegebene LigaFile und erstellt den Objektbaum
     *
     * @access public
@@ -555,73 +615,10 @@ class liga {
         $status = false;  // FIX: initialisieren, sonst Undefined variable wenn Datei nicht existiert
         if (file_exists($fileName) && !empty($fileName) && !is_dir($fileName)) {
             $this->ligaDatum = filemtime($fileName);
-            // Abschnitte, Schluessel und Werte zeilenweise lesen (Lmo\Liga\LigaDatei, wie der Kern):
-            // eckige Klammern in Namen oder Notizen gehoeren zum Wert und beenden keinen Abschnitt.
-            // Zeilen vor dem ersten Abschnitt zaehlen nicht.
-            $abschnitte = array();
-            foreach (\Lmo\Liga\LigaDatei::abschnitte(\Lmo\Liga\LigaDatei::lies($fileName)) as $abschnitt) {
-                if ($abschnitt[0] !== '') {
-                    $abschnitte[] = $abschnitt;
-                }
-            }
-            // $sections[1] = Namen der Abschnitte, $parameter[1]/[2] = Schluessel/Werte eines Abschnitts
-            $sections = array(1 => array_column($abschnitte, 0));
-            for ($y = 0; $y < count($abschnitte); $y++) {
-                $parameter = array(1 => $abschnitte[$y][1], 2 => $abschnitte[$y][2]);
-                // Modus des Spieltags (MO): 0/leer = Liga, sonst Pokal mit mehreren Spielen je Paarung
-                $roundModus = 0;
-                foreach ($parameter[1] as $moIndex => $moKey) {
-                    if (trim($moKey) == 'MO') {
-                        $roundModus = (int) trim($parameter[2][$moIndex]);
-                    }
-                }
-                for ($i = 0, $partieNumber = 0; $i < count($parameter[1]); $i++) {
-                    // Spieltagswerte ohne Partienummer: D1, D2 und Schluessel nur aus Buchstaben (MO, HS)
-                    if (!str_contains(strtolower($sections[1][$y]), 'round') || preg_match('/^D[12]$|^[A-Za-z]+$/', trim($parameter[1][$i]))) {
-                        // andere Section oder SpieltagParameter
-                        $iniData[$sections[1][$y]][trim($parameter[1][$i])] = trim($parameter[2][$i]);
-                    }
-                    else {
-                        // Partie Filtern
-                        if (!preg_match('/([a-zA-Z]+)([\d]+)/', trim($parameter[1][$i]), $infoPerPartie)) {
-                            continue; // Parameter passt nicht zum erwarteten Format
-                        }
-                        // $infoPerPartie -> 0 kompletter treffer / 1 Art des Parameters (GA/GB ...) / 2 Nummer der Partie
-                        if ($roundModus < 1) {
-                            // Liga: die Nummer im Schluessel ist die Partie (SP3 gehoert zu TA3), unabhaengig
-                            // von der Reihenfolge der Zeilen - wie lmo-openfile.php
-                            $ligaPartie = (int) $infoPerPartie[2];
-                            if (preg_match('/^T[AB]$/', $infoPerPartie[1])) {
-                                $iniData[$sections[1][$y]][$ligaPartie][$infoPerPartie[1]] = trim($parameter[2][$i]);
-                            }
-                            else {
-                                if ($infoPerPartie[1] == 'GA') {
-                                    $iniData[$sections[1][$y]][$ligaPartie][1]['SpNr'] = $infoPerPartie[2];
-                                }
-                                $iniData[$sections[1][$y]][$ligaPartie][1][$infoPerPartie[1]] = trim($parameter[2][$i]);
-                            }
-                            continue;
-                        }
-                        // Pokal: GA11, GA12 ... die Nummer ist mehrdeutig, zugeordnet wird ueber die Reihenfolge
-                        if (!isset($gameNumber)) $gameNumber = 0;
-                        if ($infoPerPartie[1] == 'TA') {
-                            $partieNumber++;
-                            $gameNumber = 0;
-                        }
-                        if (preg_match('/^T[AB]$/', $infoPerPartie[1])) {
-                            $iniData[$sections[1][$y]][$partieNumber][$infoPerPartie[1]] = trim($parameter[2][$i]);
-                        }
-                        else {
-                            if ($infoPerPartie[1] == 'GA') {
-                                $gameNumber++;
-                                $iniData[$sections[1][$y]][$partieNumber][$gameNumber]['SpNr'] = $infoPerPartie[2];
-                            }
-                            $iniData[$sections[1][$y]][$partieNumber][$gameNumber][$infoPerPartie[1]] = trim($parameter[2][$i]);
-                        }
-                    }
-                }
-            }
-
+            // Gelesen wird die Datei ueber die Rohdaten (Lmo\Liga\Rohdaten\Liga), wie im Kern.
+            // Ob die Schluessel einer Partie eine Spielnummer tragen (GA31 = Paarung 3, Spiel 1),
+            // richtet sich dort nach dem Typ der Datei (Pokal), nicht mehr nach dem Modus der Runde.
+            $iniData = self::iniDataAusRohdaten(\Lmo\Liga\Rohdaten\Liga::lies($fileName));
             $tCounter = 1;
             foreach ($iniData['Teams'] as $key => $value) {
                 if (isset($iniData['Team' . $tCounter]) && $iniData['Team' . $tCounter] != '') {
@@ -690,7 +687,7 @@ class liga {
                         // aus der Datei kommt ein String, setSpielEnde() erwartet int
                         $partie->setSpielEnde((int) $this->getIniData('SP', $iniData[$roundSektion][$pCounter], $partienNumber));
                         // Alle Anderen bisher unbekannten Parameter
-                        $partie->setParameter($iniData[$roundSektion][$pCounter][$partienNumber]);
+                        $partie->setParameter($iniData[$roundSektion][$pCounter][$partienNumber] ?? array());
                         $this->addPartie($partie);  // Partien werden zusätzlich zu der Liga hinzugefügt
                         $spieltag->addPartie($partie);
                     }
@@ -1154,25 +1151,24 @@ class liga {
             }
         }
 
-        // fileContent schreiben
-        $datei = @fopen($fileName, 'w');
-        if (!$datei) {
+        // Geschrieben wird die Datei ueber die Rohdaten (Lmo\Liga\Rohdaten\Liga), wie im Kern:
+        // dieselbe Reihenfolge der Abschnitte und dieselben Zeilenenden
+        $abschnitte = array();
+        foreach ($iniData as $sek => $keys) {
+            $zeilen = array();
+            foreach ($keys as $key => $val) {
+                $zeilen[] = array((string) $key, (string) $val);
+            }
+            $abschnitte[] = array((string) $sek, $zeilen);
+        }
+        $rohdaten = \Lmo\Liga\Rohdaten\Liga::ausEintraegen(\Lmo\Liga\LigaDatei::eintraege($abschnitte));
+        if (!$rohdaten->schreibe($fileName)) {
             echo '<font color="#ff0000">Cannot open file for writing (write permissions?) CLASS liga function writeFile()</font>';
             return false;
         }
-        elseif ($datei && $message == 1) {
-            echo '<font color="#008800">Writing File $fileName (".$datei.")</font>';
+        if ($message == 1) {
+            echo '<font color="#008800">Writing File $fileName</font>';
         }
-        flock($datei, LOCK_EX);
-        foreach ($iniData as $sek => $keys) {
-            fputs($datei, "[$sek]\n");
-            foreach ($keys as $key => $val) {
-                fputs($datei, "$key=$val\n");
-            }
-            fputs($datei, "\n");
-        }
-        flock($datei, LOCK_UN);
-        fclose($datei);
         // start the update function
         updateAddons($fileName);
         return true;

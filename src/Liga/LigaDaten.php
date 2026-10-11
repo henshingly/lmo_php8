@@ -317,7 +317,7 @@ class LigaDaten
     /** Partie: Schluessel ohne Nummer (NT1 -> NT) => Feld, fuer Werte, die unveraendert uebernommen werden */
     private const PARTIEWERTE = ['NT' => 'mnote', 'BE' => 'mberi', 'TI' => 'mtipp', 'AT' => 'mterm'];
 
-    /** Was jeder Lader braucht, auch die abgespeckten: siehe ergaenzeGrunddaten() */
+    /** Was auch eine Liga ohne [Options] braucht: siehe ergaenzeGrunddaten() */
     private const GRUNDDATEN = ['stx', 'lmvers', 'titel', 'dats', 'datm', 'datc'];
 
     /** Kommen auch aus dem Seitenaufruf: die Datei setzt sie nur, wenn sie noch fehlen */
@@ -368,9 +368,8 @@ class LigaDaten
     }
 
     /**
-     * Ergaenzt, was jeder Lader braucht, auch die abgespeckten (lmo-openfilename.php,
-     * lmo-openfiledat.php), die nur wenige Schluessel lesen: Name, Version, aktueller Spieltag,
-     * Datumsanzeige und die Groesse des Spielplans.
+     * Ergaenzt, was der alte Code immer voraussetzt: Name, Version, aktueller Spieltag,
+     * Datumsanzeige und die Groesse des Spielplans. Teil von ergaenzeVorgabewerte().
      *
      * Liga (Type=0): fehlende Anzahl der Partien und Spieltage ergibt sich aus der Anzahl der
      * Mannschaften (jeder gegen jeden, Hin- und Rueckrunde). Pokal: Partien und Runden werden
@@ -752,12 +751,23 @@ class LigaDaten
             if (empty($this->{$feld}[$spieltag])) {
                 continue;
             }
-            $teile = explode('.', (string) $this->{$feld}[$spieltag]);
-            $gueltig = count($teile) === 3 && is_numeric($teile[0]) && is_numeric($teile[1]) && is_numeric($teile[2])
-                && checkdate((int) $teile[1], (int) $teile[0], (int) $teile[2]);
-            $zeit = $gueltig ? mktime(0, 0, 0, (int) $teile[1], (int) $teile[0], (int) $teile[2]) : false;
+            $zeit = self::datumAlsZeit((string) $this->{$feld}[$spieltag]);
             $this->{$feld}[$spieltag] = $zeit === false ? '' : date('d.m.Y', $zeit);
         }
+    }
+
+    /**
+     * Das Datum eines Spieltags aus der Datei (T.M.JJJJ) als Zeitstempel, 0 Uhr.
+     *
+     * @return int|false false, wenn es leer ist oder es den Tag nicht gibt
+     */
+    public static function datumAlsZeit(string $datum)
+    {
+        $teile = explode('.', $datum);
+        $gueltig = count($teile) === 3 && is_numeric($teile[0]) && is_numeric($teile[1]) && is_numeric($teile[2])
+            && checkdate((int) $teile[1], (int) $teile[0], (int) $teile[2]);
+
+        return $gueltig ? mktime(0, 0, 0, (int) $teile[1], (int) $teile[0], (int) $teile[2]) : false;
     }
 
     /**
@@ -973,12 +983,11 @@ class LigaDaten
      * Uebernimmt aus den Eintraegen einer Ligadatei den Abschnitt [Options].
      *
      * @param iterable<array{string, string, string}> $eintraege Ergebnis von LigaDatei::zerlege()
-     * @param string[]|null $nurSchluessel nur diese Schluessel (die abgespeckten Lader lesen nur wenige), null = alle
      */
-    public function setzeOptionen(iterable $eintraege, ?array $nurSchluessel = null): void
+    public function setzeOptionen(iterable $eintraege): void
     {
         foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
-            if ($abschnitt === 'Options' && ($nurSchluessel === null || in_array($schluessel, $nurSchluessel, true))) {
+            if ($abschnitt === 'Options') {
                 $this->setzeOption($schluessel, $wert);
             }
         }
@@ -987,26 +996,23 @@ class LigaDaten
     /**
      * Liest eine ganze Ligadatei ueber ihre Rohdaten: [Options] mit Vorgabewerten, News,
      * Mannschaften, Spieltage und Partien. Vorher setzeStartwerte() aufrufen.
+     * Gelesen wird immer alles; eine leere Liste ergibt eine leere Liga mit allen Vorgabewerten.
      *
      * @param list<array{string, string, string}> $eintraege Ergebnis von LigaDatei::zerlege() bzw. lies()
      * @param string $datumsformat Datumsformat der Installation (Einstellung defdateformat)
      * @param string $anzeigeSp2 Anzeigetext fuer SP=2 (Sprachtext 0)
      * @param string $anzeigeSp1 Anzeigetext fuer SP=1 (Sprachtext 1)
-     * @param int|float|false|null $nurSpieltag null: alle Spieltage lesen; Zahl: nur den Spieltag mit diesem
-     *                                          Index (Spieltag - 1); false: keinen
      */
-    public function lies(array $eintraege, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1, $nurSpieltag = null): void
+    public function lies(array $eintraege, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1): void
     {
-        $this->liesRohdaten(Rohdaten\Liga::ausEintraegen($eintraege), $datumsformat, $anzeigeSp2, $anzeigeSp1, $nurSpieltag);
+        $this->liesRohdaten(Rohdaten\Liga::ausEintraegen($eintraege), $datumsformat, $anzeigeSp2, $anzeigeSp1);
     }
 
     /**
      * Erzeugt aus den Rohdaten einer Liga die aufbereiteten Felder fuer den alten Code.
      * Parameter wie lies(). Vorher setzeStartwerte() aufrufen.
-     *
-     * @param int|float|false|null $nurSpieltag
      */
-    public function liesRohdaten(Rohdaten\Liga $rohdaten, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1, $nurSpieltag = null): void
+    public function liesRohdaten(Rohdaten\Liga $rohdaten, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1): void
     {
         $this->rohdaten = $rohdaten;
         $eintraege = LigaDatei::eintraege($rohdaten->abschnitte());
@@ -1022,9 +1028,7 @@ class LigaDaten
             $this->setzeNewszeile($abschnitt, $schluessel, $wert);
             $this->setzeMannschaftswert($abschnitt, $schluessel, $wert);
             $spieltag = self::spieltagsIndex($abschnitt);
-            if ($nurSpieltag === null || ($nurSpieltag !== false && $spieltag == $nurSpieltag)) {
-                $this->setzeSpieltagswert($abschnitt, $schluessel, $wert, $anzeigeSp2, $anzeigeSp1);
-            }
+            $this->setzeSpieltagswert($abschnitt, $schluessel, $wert, $anzeigeSp2, $anzeigeSp1);
         }
         // nur der Spieltag, zu dem die letzte Zeile gehoert (wie bisher; in der Reihenfolge der
         // Rohdaten ist das der letzte Spieltag, wenn kein unbekannter Abschnitt folgt)
