@@ -325,12 +325,17 @@ class LigaDaten
     private const NUR_WENN_GESETZT = ['namepkt', 'nametor'];
 
     /**
-     * Setzt vor dem Lesen einer Datei die Werte zurueck, die nicht von der zuvor geladenen Liga
-     * uebrig bleiben duerfen. Alle anderen Felder behalten ihren Wert, bis die Datei oder
-     * ergaenzeVorgabewerte() sie setzt.
+     * Leert vor dem Lesen einer Datei alle Felder, damit nichts von der zuvor geladenen Liga
+     * uebrig bleibt, und setzt die Startwerte. Stehen bleiben nur die drei Felder, die auch aus
+     * dem Seitenaufruf kommen (gewaehlte Mannschaft, Auswahl der Fieberkurve).
      */
     public function setzeStartwerte(): void
     {
+        foreach (self::felder() as $feld) {
+            if (!in_array($feld, self::NUR_WENN_LEER, true)) {
+                $this->$feld = null;
+            }
+        }
         $this->titel = '';
         $this->ergebnis = $this->mittore = $this->kreuz = $this->plan = $this->kurve = 1;
         $this->datc = $this->nticker = $this->lmtype = 0;
@@ -662,9 +667,7 @@ class LigaDaten
      *    gruenen Tisch fuer Heim (GA) bzw. Gast (GB); ET=3 -> Wertung gegen beide
      *  - Zusatz SP: 0 -> "&nbsp;", 2 und 1 -> die uebergebenen Anzeigetexte. In der Liga nur mit Spez=1.
      *
-     * Wird fuer jede Zeile der Datei aufgerufen, auch aus anderen Abschnitten: Das Handicap des
-     * Spieltags, den spieltagsIndex() fuer den Abschnitt nennt, wird dabei mit "0" belegt, falls
-     * es fehlt (so entsteht auch der Eintrag -1).
+     * Zeilen aus anderen Abschnitten werden uebergangen.
      *
      * @param string $anzeigeSp2 Anzeigetext fuer SP=2 (Sprachtext 0)
      * @param string $anzeigeSp1 Anzeigetext fuer SP=1 (Sprachtext 1)
@@ -727,9 +730,10 @@ class LigaDaten
                     $this->{self::PARTIEWERTE[$art]}[$st][$paarung][$spiel] = $wert;
                 }
             }
-        }
-        if (!isset($this->handp[$st])) {
-            $this->handp[$st] = '0';
+            // ein Spieltag ohne Handicap in der Datei bekommt "0"
+            if (!isset($this->handp[$st])) {
+                $this->handp[$st] = '0';
+            }
         }
     }
 

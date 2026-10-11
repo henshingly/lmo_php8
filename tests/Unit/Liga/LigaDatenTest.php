@@ -167,18 +167,41 @@ class LigaDatenTest extends TestCase
         self::assertSame([$erwartet1, $erwartet2], [$liga->stat1, $liga->stat2]);
     }
 
-    public function testStartwerteSetzenNurWasNichtUebrigBleibenDarf(): void
+    public function testStartwerteLassenNichtsVonDerVorigenLigaUebrig(): void
     {
         $liga = new LigaDaten();
-        $liga->titel = 'vorige Liga';
-        $liga->lmtype = '1';
-        $liga->anzteams = '8';
+        $liga->lies(self::kleineLiga(), 'd.m.Y', 'n.V.', 'i.E.');
+        $liga->selteam = '2';
+        $liga->stat1 = '3';
 
         $liga->setzeStartwerte();
 
         self::assertSame('', $liga->titel);
         self::assertSame(0, $liga->lmtype);
-        self::assertSame('8', $liga->anzteams, 'bleibt, bis die Datei oder die Vorgabewerte es setzen');
+        self::assertSame([1, 1, 1, 1, 1], [$liga->ergebnis, $liga->mittore, $liga->kreuz, $liga->plan, $liga->kurve]);
+        self::assertNull($liga->anzteams);
+        self::assertNull($liga->pns);
+        self::assertNull($liga->teams);
+        self::assertNull($liga->goala);
+        self::assertNull($liga->strafp);
+        self::assertSame(['2', '3'], [$liga->selteam, $liga->stat1], 'kommen auch aus dem Seitenaufruf');
+    }
+
+    /** Ein Pokal nach einer Liga: Strafen und Wertungen der Liga duerfen nicht stehen bleiben. */
+    public function testZweiteLigaUebernimmtNichtsVonDerErsten(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->lies(self::kleineLiga(), 'd.m.Y', 'n.V.', 'i.E.');
+        self::assertSame('2', $liga->strafp[2]);
+
+        $liga->setzeStartwerte();
+        $liga->lies(\Lmo\Liga\LigaDatei::zerlege(['[Options]', 'Type=1', 'Teams=4']), 'd.m.Y', 'n.V.', 'i.E.');
+
+        self::assertNull($liga->strafp);
+        self::assertNull($liga->msieg);
+        self::assertNull($liga->pns);
+        self::assertSame('', $liga->titel, 'der Startwert; "No Name" greift nur in den abgespeckten Ladern');
     }
 
     /** @return array<string, array{string}> */
@@ -718,15 +741,15 @@ class LigaDatenTest extends TestCase
         self::assertSame('1740826800', $pokal->mterm[0][1][1]);
     }
 
-    /** Eigenheit des alten Laders, auf die sich niemand verlassen sollte, die aber erhalten bleibt. */
-    public function testJedeZeileBelegtDasHandicapIhresSpieltags(): void
+    public function testNurZeilenEinesSpieltagsBelegenDasHandicap(): void
     {
         $liga = self::ligaMitSpieltagen();
 
         $liga->setzeSpieltagswert('Options', 'Name', 'Liga', 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Teams', '1', 'Alpha', 'n.V.', 'i.E.');
         $liga->setzeSpieltagswert('Round120', 'TA1', '1', 'n.V.', 'i.E.');
 
-        self::assertSame('0', $liga->handp[-1]);
+        self::assertArrayNotHasKey(-1, $liga->handp, 'frueher legte jede Zeile der Datei einen Eintrag an');
         self::assertSame('0', $liga->handp[119]);
         self::assertSame('1', $liga->teama[119][0], 'Spieltage hinter den 116 Plaetzen werden angelegt');
     }
