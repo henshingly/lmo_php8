@@ -69,21 +69,13 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
         if ($ligaDaten->nametor!=""){                      $text[38]=$ligaDaten->nametor;}
         else {                                  $ligaDaten->nametor=$text[38];}
       }
-      $ligaDaten->teams = array_pad($array,$ligaDaten->anzteams+2,"");
-      $ligaDaten->teamm = array_pad($array,$ligaDaten->anzteams+2,"");
-      $ligaDaten->teamk = array_pad($array,$ligaDaten->anzteams+2,"");
-      $ligaDaten->teamu = array_pad($array,$ligaDaten->anzteams+2,"");
-      $ligaDaten->teamn = array_pad($array,$ligaDaten->anzteams+2,"");
+      // Felder der Mannschaften in voller Groesse, Platz 0 = "___" (Lmo\Liga\LigaDaten)
+      $ligaDaten->bereiteMannschaftenVor();
       if (!isset($ligaDaten->nticker)){$ligaDaten->nticker=0;}
       if ($ligaDaten->nticker==1){
         $ligaDaten->nlines = array();
       }
       if ($ligaDaten->lmtype==0){
-        $ligaDaten->strafp = array_pad(array("0"),116,"0");
-        $ligaDaten->strafm = array_pad(array("0"),116,"0");
-        $ligaDaten->torkorrektur1 = array_pad(array("0"),116,"0"); // Hack-Straftore
-        $ligaDaten->torkorrektur2 = array_pad(array("0"),116,"0"); // Hack-Straftore
-        $ligaDaten->strafdat      = array_pad(array("0"),116,"0"); // Hack-Straftore
         $ligaDaten->handp = array_pad(array("0"),116,"0");
         $ligaDaten->datum1 = array_pad($array,116,"");
         $ligaDaten->datum2 = array_pad($array,116,"");
@@ -143,18 +135,14 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
           }
         }
       }
-      $ligaDaten->teams[0]="___";
-      $ligaDaten->teamm[0]="___";
-      $ligaDaten->teamk[0]="___";//$a=mictime();
       for ($i=1;$i<=count($daten);$i++){
         $dum=explode("|",$daten[$i-1]);
         //if ($nticker==1){
         if (($dum[0]=="News") && ($dum[1]!="NC")){$ligaDaten->nlines[]=stripslashes($dum[2]);}
         //}
 
-        if ($dum[0]=="Teams"){$ligaDaten->teams[$dum[1]]=stripslashes($dum[2]);}
-        if ($dum[0]=="Teamm"){$ligaDaten->teamm[$dum[1]]=stripslashes($dum[2]);}
-        if ($dum[0]=="Teamk"){$ligaDaten->teamk[$dum[1]]=stripslashes($dum[2]);}
+        // [Teams], [Teamm], [Teamk] und [Team1] ... [TeamN]
+        $ligaDaten->setzeMannschaftswert($dum[0],$dum[1],$dum[2]);
         $op1=substr($dum[0],0,4);
         $op2=substr($dum[0],0,5);
         $op3=((int)substr($dum[0],5)-1);
@@ -164,19 +152,6 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
         $op7=((int)substr($dum[1],-1)-1);
         $op8=substr($dum[1],0,2);
 
-        if ($op1=="Team" && $dum[0]!="Teams" && $dum[0]!="Teamk" && $dum[0]!="Teamm") {
-          if ($ligaDaten->lmtype==0){
-            switch ($dum[1]) {
-              case "SP":$ligaDaten->strafp[$op5]=$dum[2];break;
-              case "SM":$ligaDaten->strafm[$op5]=$dum[2];break;
-              case "TOR1":$ligaDaten->torkorrektur1[$op5]=$dum[2];break; // Hack-Straftore
-              case "TOR2":$ligaDaten->torkorrektur2[$op5]=$dum[2];break; // Hack-Straftore
-              case "STDA":$ligaDaten->strafdat[$op5]=$dum[2];break;      // Hack-Straftore
-            }
-          }
-          if ($dum[1]=="URL"){$ligaDaten->teamu[$op5]=$dum[2];}
-          if ($dum[1]=="NOT"){$ligaDaten->teamn[$op5]=$dum[2];}
-        }
 
         if (!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
 
@@ -265,20 +240,8 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
           $ligaDaten->datum2[$op3]="";
         }
       }
-      for ($j=0;$j<=$ligaDaten->anzteams;$j++){
-        if ($ligaDaten->teamm[$j]==""){
-          //search longest name part an take this as middle name
-          $parts = preg_split("%[ |/]%",$ligaDaten->teams[$j]);
-          foreach ($parts as $part) {
-            if (strlen($part) >= strlen($ligaDaten->teamm[$j]) ) {
-              $ligaDaten->teamm[$j] = trim(substr($part, 0, 12));
-            }
-          }
-        }
-        if ($ligaDaten->teamk[$j]==""){
-          $ligaDaten->teamk[$j] = trim(substr($ligaDaten->teams[$j],0,5));
-        }
-      }
+      // fehlende Kurz- und Mittelnamen aus dem Namen ableiten
+      $ligaDaten->ergaenzeMannschaftsnamen();
     } else {
       echo getMessage($text[224],true);
     }

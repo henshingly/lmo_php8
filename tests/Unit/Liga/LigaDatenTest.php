@@ -429,4 +429,139 @@ class LigaDatenTest extends TestCase
 
         self::assertSame($zeilen, $wieder->optionenZumSpeichern('LMO', $wieder->stx));
     }
+
+    private static function ligaMitDreiMannschaften(): LigaDaten
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->setzeOption('Teams', '3');
+        $liga->ergaenzeVorgabewerte('d.m.Y');
+        $liga->bereiteMannschaftenVor();
+
+        return $liga;
+    }
+
+    public function testMannschaftenBekommenFelderInVollerGroesse(): void
+    {
+        $liga = self::ligaMitDreiMannschaften();
+
+        self::assertSame(['___', '', '', '', ''], $liga->teams, 'Platz 0, drei Mannschaften, ein Platz dahinter');
+        self::assertSame(['___', '', '', '', ''], $liga->teamk);
+        self::assertSame(['', '', '', '', ''], $liga->teamu);
+        self::assertCount(116, $liga->strafp);
+        self::assertSame(['0'], array_values(array_unique($liga->strafp)));
+        self::assertCount(116, $liga->strafdat);
+    }
+
+    public function testImPokalBleibenStrafenUnberuehrt(): void
+    {
+        $pokal = new LigaDaten();
+        $pokal->setzeStartwerte();
+        $pokal->setzeOption('Type', '1');
+        $pokal->setzeOption('Teams', '4');
+        $pokal->ergaenzeVorgabewerte('d.m.Y');
+
+        $pokal->bereiteMannschaftenVor();
+        $pokal->setzeMannschaftswert('Team1', 'SP', '3');
+        $pokal->setzeMannschaftswert('Team1', 'URL', 'http://a.example');
+
+        self::assertCount(6, $pokal->teams);
+        self::assertNull($pokal->strafp);
+        self::assertSame('http://a.example', $pokal->teamu[1]);
+    }
+
+    public function testMannschaftswerteAusDerDatei(): void
+    {
+        $liga = self::ligaMitDreiMannschaften();
+
+        $liga->setzeMannschaftswert('Teams', '1', "FC M\'gladbach");
+        $liga->setzeMannschaftswert('Teamk', '1', 'FCM');
+        $liga->setzeMannschaftswert('Team1', 'SP', '-3');
+        $liga->setzeMannschaftswert('Team1', 'STDA', '5');
+        $liga->setzeMannschaftswert('Team1', 'NOT', 'Notiz');
+        $liga->setzeMannschaftswert('Team1', 'XY', 'unbekannter Schluessel');
+        $liga->setzeMannschaftswert('Round1', 'SP', '2');
+        $liga->setzeMannschaftswert('Options', 'Teams', '99');
+
+        self::assertSame("FC M'gladbach", $liga->teams[1]);
+        self::assertSame('FCM', $liga->teamk[1]);
+        self::assertSame('-3', $liga->strafp[1]);
+        self::assertSame('5', $liga->strafdat[1]);
+        self::assertSame('Notiz', $liga->teamn[1]);
+        self::assertSame('0', $liga->strafp[2]);
+        self::assertSame('3', $liga->anzteams);
+    }
+
+    /** @return array<string, array{string, string, string}> */
+    public static function mannschaftsnamen(): array
+    {
+        return [
+            'laengstes Wort' => ['Hamburger SV', 'Hamburger', 'Hambu'],
+            'gleich lang: das letzte' => ['Rot Weiss Essen', 'Essen', 'Rot W'],
+            'hoechstens 12 Zeichen' => ['Unterhachinger SpVgg', 'Unterhaching', 'Unter'],
+            'Schraegstrich trennt' => ['SG Wattenscheid/Bochum', 'Wattenscheid', 'SG Wa'],
+            'ein kurzes Wort' => ['VfL', 'VfL', 'VfL'],
+            'ohne Namen' => ['', '', ''],
+        ];
+    }
+
+    /** @dataProvider mannschaftsnamen */
+    public function testFehlendeKurzUndMittelnamenWerdenAbgeleitet(string $name, string $mittel, string $kurz): void
+    {
+        $liga = self::ligaMitDreiMannschaften();
+        $liga->setzeMannschaftswert('Teams', '2', $name);
+
+        $liga->ergaenzeMannschaftsnamen();
+
+        self::assertSame($mittel, $liga->teamm[2]);
+        self::assertSame($kurz, $liga->teamk[2]);
+    }
+
+    public function testVorhandeneKurzUndMittelnamenBleiben(): void
+    {
+        $liga = self::ligaMitDreiMannschaften();
+        $liga->setzeMannschaftswert('Teams', '1', 'TSG 1899 Hoffenheim');
+        $liga->setzeMannschaftswert('Teamm', '1', 'Hoffenheim');
+        $liga->setzeMannschaftswert('Teamk', '1', 'TSG');
+
+        $liga->ergaenzeMannschaftsnamen();
+
+        self::assertSame('Hoffenheim', $liga->teamm[1]);
+        self::assertSame('TSG', $liga->teamk[1]);
+        self::assertSame('___', $liga->teamm[0]);
+    }
+
+    public function testMannschaftenZumSpeichern(): void
+    {
+        $liga = self::ligaMitDreiMannschaften();
+        $liga->setzeMannschaftswert('Teams', '1', 'Alpha');
+        $liga->setzeMannschaftswert('Team1', 'SP', '2');
+        $liga->setzeMannschaftswert('Team1', 'SM', '1');
+        $liga->setzeMannschaftswert('Team1', 'URL', 'http://alpha.example');
+
+        $abschnitte = $liga->mannschaftenZumSpeichern();
+
+        self::assertSame(['Teams', 'Teamm', 'Teamk', 'Team1', 'Team2', 'Team3'], array_column($abschnitte, 0));
+        self::assertSame([['1', 'Alpha'], ['2', ''], ['3', '']], $abschnitte[0][1]);
+        self::assertSame(
+            [['SP', '2'], ['TOR1', '0'], ['TOR2', '0'], ['STDA', '0'], ['URL', 'http://alpha.example'], ['NOT', '']],
+            $abschnitte[3][1],
+            'ohne Minuspunkte steht SM nicht in der Datei'
+        );
+
+        $liga->minus = '2';
+        self::assertSame(['SP', 'SM', 'TOR1', 'TOR2', 'STDA', 'URL', 'NOT'], array_column($liga->mannschaftenZumSpeichern()[3][1], 0));
+    }
+
+    public function testMannschaftenEinesPokalsZumSpeichern(): void
+    {
+        $pokal = new LigaDaten();
+        $pokal->setzeStartwerte();
+        $pokal->setzeOption('Type', '1');
+        $pokal->setzeOption('Teams', '2');
+        $pokal->ergaenzeVorgabewerte('d.m.Y');
+        $pokal->bereiteMannschaftenVor();
+
+        self::assertSame([['URL', ''], ['NOT', '']], $pokal->mannschaftenZumSpeichern()[3][1]);
+    }
 }

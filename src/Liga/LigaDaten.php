@@ -278,6 +278,28 @@ class LigaDaten
         'kurve2' => ['stat2', self::LIGA, null],
     ];
 
+    /** Abschnitte mit einem Wert je Mannschaft (Schluessel = Nummer der Mannschaft): Abschnitt => Feld */
+    private const MANNSCHAFTSLISTEN = ['Teams' => 'teams', 'Teamm' => 'teamm', 'Teamk' => 'teamk'];
+
+    /**
+     * Abschnitte [Team1] ... [TeamN]: Schluessel => [Feld, gilt fuer], in der Reihenfolge der Datei.
+     * Strafen und Torkorrekturen gibt es nur in einer Liga; dort ist "0" der Wert ohne Eintrag.
+     *
+     * @var array<string, array{string, string}>
+     */
+    private const MANNSCHAFTSWERTE = [
+        'SP' => ['strafp', self::LIGA],
+        'SM' => ['strafm', self::LIGA],
+        'TOR1' => ['torkorrektur1', self::LIGA],
+        'TOR2' => ['torkorrektur2', self::LIGA],
+        'STDA' => ['strafdat', self::LIGA],
+        'URL' => ['teamu', self::IMMER],
+        'NOT' => ['teamn', self::IMMER],
+    ];
+
+    /** So viele Plaetze haben die Felder je Mannschaft mit Strafen und Torkorrekturen immer */
+    private const PLAETZE_JE_MANNSCHAFT = 116;
+
     /** Was jeder Lader braucht, auch die abgespeckten: siehe ergaenzeGrunddaten() */
     private const GRUNDDATEN = ['stx', 'lmvers', 'titel', 'dats', 'datm', 'datc'];
 
@@ -443,6 +465,111 @@ class LigaDaten
         }
 
         return $zeilen;
+    }
+
+    /**
+     * Legt vor dem Lesen der Mannschaften die Felder in voller Groesse an: ein Platz je Mannschaft,
+     * dazu Platz 0 (Platzhalter "___" bei den Namen) und ein Platz dahinter. Der alte Code greift
+     * ohne Pruefung auf diese Plaetze zu. Braucht die Anzahl der Mannschaften, also erst nach
+     * ergaenzeVorgabewerte() bzw. ergaenzeGrunddaten().
+     *
+     * Im Pokal bleiben Strafen und Torkorrekturen unberuehrt.
+     */
+    public function bereiteMannschaftenVor(): void
+    {
+        /** @var int|float|numeric-string $teams */
+        $teams = $this->anzteams;
+        $plaetze = max(0, (int) ($teams + 2));
+        foreach (['teams', 'teamm', 'teamk', 'teamu', 'teamn'] as $feld) {
+            $this->$feld = $plaetze > 0 ? array_fill(0, $plaetze, '') : [];
+        }
+        if ($this->art() === self::LIGA) {
+            foreach (self::MANNSCHAFTSWERTE as [$feld, $gilt]) {
+                if ($gilt === self::LIGA) {
+                    $this->$feld = array_fill(0, self::PLAETZE_JE_MANNSCHAFT, '0');
+                }
+            }
+        }
+        $this->teams[0] = $this->teamm[0] = $this->teamk[0] = '___';
+    }
+
+    /**
+     * Uebernimmt eine Zeile aus [Teams], [Teamm], [Teamk] oder [Team1] ... [TeamN].
+     * Zeilen aus anderen Abschnitten und unbekannte Schluessel werden uebergangen.
+     */
+    public function setzeMannschaftswert(string $abschnitt, string $schluessel, string $wert): void
+    {
+        if (isset(self::MANNSCHAFTSLISTEN[$abschnitt])) {
+            // Namen stehen mit Schraegstrichen vor Anfuehrungszeichen in der Datei
+            $this->{self::MANNSCHAFTSLISTEN[$abschnitt]}[$schluessel] = stripslashes($wert);
+
+            return;
+        }
+        if (substr($abschnitt, 0, 4) !== 'Team' || !isset(self::MANNSCHAFTSWERTE[$schluessel])) {
+            return;
+        }
+        [$feld, $gilt] = self::MANNSCHAFTSWERTE[$schluessel];
+        if ($gilt === self::IMMER || $gilt === $this->art()) {
+            $this->{$feld}[substr($abschnitt, 4)] = $wert;
+        }
+    }
+
+    /**
+     * Leitet nach dem Lesen fehlende Kurz- und Mittelnamen aus dem Namen ab: der Mittelname ist
+     * das laengste Wort (bei gleicher Laenge das letzte), hoechstens 12 Zeichen; der Kurzname
+     * sind die ersten 5 Zeichen.
+     */
+    public function ergaenzeMannschaftsnamen(): void
+    {
+        for ($nr = 0; $nr <= $this->anzteams; $nr++) {
+            $name = (string) ($this->teams[$nr] ?? '');
+            if (($this->teamm[$nr] ?? '') == '') {
+                $this->teamm[$nr] = '';
+                foreach (preg_split('%[ |/]%', $name) ?: [] as $wort) {
+                    if (strlen($wort) >= strlen($this->teamm[$nr])) {
+                        $this->teamm[$nr] = trim(substr($wort, 0, 12));
+                    }
+                }
+            }
+            if (($this->teamk[$nr] ?? '') == '') {
+                $this->teamk[$nr] = trim(substr($name, 0, 5));
+            }
+        }
+    }
+
+    /**
+     * Die Abschnitte der Mannschaften, wie sie in die Datei geschrieben werden: [Teams], [Teamm],
+     * [Teamk] und je Mannschaft [TeamN]. Strafminuspunkte (SM) stehen nur in der Datei, wenn die
+     * Liga Minuspunkte fuehrt (MinusPoints=2).
+     *
+     * @return list<array{string, list<array{string, string}>}> je Abschnitt: Name, dann Schluessel und Wert je Zeile
+     */
+    public function mannschaftenZumSpeichern(): array
+    {
+        $anzahl = (int) $this->anzteams;
+        $abschnitte = [];
+        foreach (self::MANNSCHAFTSLISTEN as $abschnitt => $feld) {
+            $zeilen = [];
+            for ($nr = 1; $nr <= $anzahl; $nr++) {
+                $zeilen[] = [(string) $nr, (string) ($this->{$feld}[$nr] ?? '')];
+            }
+            $abschnitte[] = [$abschnitt, $zeilen];
+        }
+        for ($nr = 1; $nr <= $anzahl; $nr++) {
+            $zeilen = [];
+            foreach (self::MANNSCHAFTSWERTE as $schluessel => [$feld, $gilt]) {
+                if ($gilt !== self::IMMER && $gilt !== $this->art()) {
+                    continue;
+                }
+                if ($schluessel === 'SM' && $this->minus != 2) {
+                    continue;
+                }
+                $zeilen[] = [$schluessel, (string) ($this->{$feld}[$nr] ?? '')];
+            }
+            $abschnitte[] = ['Team' . $nr, $zeilen];
+        }
+
+        return $abschnitte;
     }
 
     /** Liga oder Pokal, nach dem bisher bekannten Typ */

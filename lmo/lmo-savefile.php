@@ -68,31 +68,12 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
             }
           }
         //}
-        fputs($datei,"\n[Teams]\n");
-        for ($i=1; $i<=$ligaDaten->anzteams; $i++) {
-          fputs($datei,$i."=".$ligaDaten->teams[$i]."\n");
-        }
-        fputs($datei,"\n[Teamm]\n");
-        for ($i=1; $i<=$ligaDaten->anzteams; $i++) {
-          fputs($datei,$i."=".$ligaDaten->teamm[$i]."\n");
-        }
-        fputs($datei,"\n[Teamk]\n");
-        for ($i=1; $i<=$ligaDaten->anzteams; $i++) {
-          fputs($datei,$i."=".$ligaDaten->teamk[$i]."\n");
-        }
-        for ($i=1; $i<=$ligaDaten->anzteams; $i++) {
-          fputs($datei,"\n[Team".$i."]\n");
-          if ($ligaDaten->lmtype==0) {
-            fputs($datei,"SP=".$ligaDaten->strafp[$i]."\n");
-            if ($ligaDaten->minus==2) {
-              fputs($datei,"SM=".$ligaDaten->strafm[$i]."\n");
-            }
-            fputs($datei,"TOR1=".$ligaDaten->torkorrektur1[$i]."\n"); // Hack-Straftore
-            fputs($datei,"TOR2=".$ligaDaten->torkorrektur2[$i]."\n"); // Hack-Straftore
-            fputs($datei,"STDA=".$ligaDaten->strafdat[$i]."\n");      // Hack-Straftore
+        // [Teams], [Teamm], [Teamk] und [Team1] ... [TeamN]: Lmo\Liga\LigaDaten
+        foreach ($ligaDaten->mannschaftenZumSpeichern() as list($abschnitt, $zeilen)) {
+          fputs($datei,"\n[".$abschnitt."]\n");
+          foreach ($zeilen as list($schl, $wert)) {
+            fputs($datei,$schl."=".$wert."\n");
           }
-          fputs($datei,"URL=".$ligaDaten->teamu[$i]."\n");
-          fputs($datei,"NOT=".$ligaDaten->teamn[$i]."\n");
         }
         if ($ligaDaten->lmtype!=0) {
           $ligaDaten->anzsp=$ligaDaten->anzteams;
