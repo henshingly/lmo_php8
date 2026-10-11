@@ -9,6 +9,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Changed  
+- Die beiden abgespeckten Lader `lmo-openfilename.php` und `lmo-openfiledat.php` benutzen denselben Leser und dieselbe Zuordnung der Schlüssel wie der Hauptlader.
 - Die ganze Ligadatei wird über `Lmo\Liga\LigaDaten` geschrieben; `lmo-savefile.php` enthält nur noch das Öffnen, Sperren und Schreiben der Zeilen. Die geschriebene Datei ist unverändert.
 - News, Spieltage und Partien liest `Lmo\Liga\LigaDaten`; der Lader `lmo-openfile.php` enthält nur noch den Ablauf. Die gelesenen Werte sind unverändert.
 - Auch die Abschnitte der Mannschaften (`[Teams]`, `[Teamk]`, `[Teamm]`, `[Team1]` …) werden über `Lmo\Liga\LigaDaten` gelesen und gespeichert, einschließlich der abgeleiteten Kurz- und Mittelnamen. Gelesene Werte und geschriebene Datei sind unverändert.
@@ -26,6 +27,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
+- Ein senkrechter Strich (`|`) in einer Notiz, einem Mannschaftsnamen, einer Adresse oder einer Newszeile schnitt beim Laden alles dahinter ab.
 - Ein unlesbares Datum im letzten Spieltag einer Ligadatei (z. B. `D1=ab.cd.efgh`) ließ das Laden der Liga abbrechen; es wird jetzt geleert.
 - Classlib (Addons mini, viewer, ticker): Eine eckige Klammer in einem Liganamen, Mannschaftsnamen oder einer Notiz schnitt den Rest des Abschnitts ab (Name gekürzt, Mannschaft oder Zusatz „n. V.“ fehlten). Kommentarzeilen mit `;` am Anfang wurden als Schlüssel gelesen.
 - Tippspiel und Benutzerverwaltung: Fehlte einer Ligadatei die Anzahl der Spieltage (`Rounds`), brach der abgespeckte Lader `lmo-openfilename.php` mit „Division by zero“ ab. Beide abgespeckten Lader ergänzen fehlende Angaben jetzt wie der Hauptlader.
@@ -260,6 +262,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Changed  
+- The two reduced loaders `lmo-openfilename.php` and `lmo-openfiledat.php` use the same reader and the same key mapping as the main loader.
 - The whole league file is written through `Lmo\Liga\LigaDaten`; `lmo-savefile.php` only contains opening, locking and writing the lines. The written file is unchanged.
 - News, rounds and matches are read by `Lmo\Liga\LigaDaten`; the loader `lmo-openfile.php` only contains the sequence. The values read are unchanged.
 - The team sections (`[Teams]`, `[Teamk]`, `[Teamm]`, `[Team1]` …) are now read and saved through `Lmo\Liga\LigaDaten` as well, including the derived short and medium names. Values read and the written file are unchanged.
@@ -277,6 +280,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
+- A vertical bar (`|`) in a note, a team name, an address or a news line cut off everything after it when loading.
 - An unreadable date in the last round of a league file (e.g. `D1=ab.cd.efgh`) aborted loading the league; it is now cleared.
 - Classlib (addons mini, viewer, ticker): a square bracket in a league name, team name or note cut off the rest of the section (name shortened, team or the "a.e.t." marker missing). Comment lines starting with `;` were read as keys.
 - Tip game and user administration: if a league file lacked the number of rounds (`Rounds`), the reduced loader `lmo-openfilename.php` aborted with "Division by zero". Both reduced loaders now fill in missing values like the main loader.
