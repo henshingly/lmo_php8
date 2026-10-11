@@ -113,6 +113,7 @@ final class Instance
 
         $path = sys_get_temp_dir() . '/lmo-golden-' . getmypid() . '-' . bin2hex(random_bytes(3));
         self::copyTree($source, $path, true);
+        self::linkVendor(rtrim($sourceRoot, '/') . '/vendor', $path . '/vendor');
 
         // Laufzeitdateien einer lokalen Installation (z. B. aus dem Web-Container) nicht uebernehmen:
         // Jede Instanz startet mit der Standardkonfiguration und dem Standardkonto admin/lmo.
@@ -171,6 +172,19 @@ final class Instance
                 unlink($file);
             }
         }
+    }
+
+    /**
+     * Die Composer-Abhaengigkeiten liegen neben lmo/ (bei Nutzern legt lmo-install den Verweis
+     * vendor/autoload.php an). Nur der Originalstand bringt noch ein eigenes lmo/vendor mit.
+     */
+    private static function linkVendor(string $vendor, string $link): void
+    {
+        if (file_exists($link) || !is_file($vendor . '/autoload.php') || @symlink($vendor, $link)) {
+            return;
+        }
+        mkdir($link);
+        file_put_contents($link . '/autoload.php', '<?php return require ' . var_export($vendor . '/autoload.php', true) . ";\n");
     }
 
     private static function copyTree(string $from, string $to, bool $topLevel = false): void

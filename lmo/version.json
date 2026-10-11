@@ -1,0 +1,11 @@
+{
+    "version": "4.2.1",
+    "time": "2026-10-10",
+    "license": "GPL-2.0-only",
+    "require": {
+        "php": ">=8.0"
+    },
+    "extra": {
+        "check": "https://www.vest-sport.de/check_version.json"
+    }
+}

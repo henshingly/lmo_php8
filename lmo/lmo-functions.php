@@ -397,7 +397,7 @@ function url_check($url)
     return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : false;
 };
 
-$string_json = file_get_contents(PATH_TO_LMO . '/composer.json', false);
+$string_json = file_get_contents(PATH_TO_LMO . '/version.json', false);
 $json_a = json_decode($string_json, true, 4);
 $lmo_version = $json_a['version'];
 $lmo_license = $json_a['license'];

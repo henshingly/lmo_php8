@@ -1,7 +1,6 @@
-vendor/
+/vendor/
 .original/
 .phpunit.result.cache
-lmo/vendor/
 coverage/
 # Laufzeitdateien einer Installation (legt lmo-setup.php an)
 lmo/config/init-parameters.php
