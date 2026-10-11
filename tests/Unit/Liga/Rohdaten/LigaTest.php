@@ -300,4 +300,39 @@ L98;
         self::assertSame([], $liga->weitereAbschnitte);
         self::assertStringNotContainsString('vorab', $liga->alsText());
     }
+
+    public function testMannschaftsnameZumAnzeigen(): void
+    {
+        $liga = Liga::ausEintraegen(LigaDatei::zerlege(['[Teams]', "1=O\\'Neill", '2=B | C', '[Teamk]', '3=XYZ']));
+
+        self::assertSame("O'Neill", $liga->mannschaftsname(1), 'ohne die Schraegstriche der Datei');
+        self::assertSame('B | C', $liga->mannschaftsname('2'), 'die Nummer steht in einer Partie als Text');
+        self::assertSame('', $liga->mannschaftsname(3), 'nur ein Kurzname');
+        self::assertSame('', $liga->mannschaftsname(9));
+        self::assertSame('', $liga->mannschaftsname('0'));
+        self::assertSame("O\\'Neill", $liga->mannschaften[1]->name, 'die Rohdaten bleiben, wie sie sind');
+        self::assertCount(3, $liga->mannschaften, 'nachfragen legt nichts an');
+    }
+
+    public function testSpieltagNenntErstenUndLetztenTagAlsZeit(): void
+    {
+        $liga = Liga::ausEintraegen(LigaDatei::zerlege(['[Round1]', 'D1=1.9.2024', 'D2=31.02.2025', '[Round2]', 'D2=02.09.2024', '[Round3]', 'D1=bald']));
+
+        self::assertSame(mktime(0, 0, 0, 9, 1, 2024), $liga->spieltage[1]->ersterTag());
+        self::assertNull($liga->spieltage[1]->letzterTag(), 'den Tag gibt es nicht');
+        self::assertNull($liga->spieltage[2]->ersterTag(), 'steht nicht in der Datei');
+        self::assertSame(mktime(0, 0, 0, 9, 2, 2024), $liga->spieltage[2]->letzterTag());
+        self::assertNull($liga->spieltage[3]->ersterTag());
+        self::assertSame('1.9.2024', $liga->spieltage[1]->werte['D1'], 'die Rohdaten bleiben, wie sie sind');
+    }
+
+    public function testEinstellungenAendernDieRohdatenNicht(): void
+    {
+        $liga = new Liga();
+        $vorher = $liga->alsText();
+
+        self::assertSame(18, $liga->einstellungen()->wert('Teams'));
+        self::assertSame([], $liga->optionen);
+        self::assertSame($vorher, $liga->alsText());
+    }
 }

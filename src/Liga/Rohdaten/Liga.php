@@ -2,6 +2,7 @@
 
 namespace Lmo\Liga\Rohdaten;
 
+use Lmo\Liga\Einstellungen;
 use Lmo\Liga\LigaDatei;
 
 /**
@@ -174,6 +175,26 @@ final class Liga
     public function spieltag(int $nr): Spieltag
     {
         return $this->spieltage[$nr] ??= new Spieltag();
+    }
+
+    /**
+     * Die Einstellungen mit ihren Vorgabewerten, so wie der LMO mit ihnen arbeitet.
+     * $optionen selbst bleibt, wie es in der Datei steht.
+     */
+    public function einstellungen(): Einstellungen
+    {
+        return new Einstellungen($this);
+    }
+
+    /**
+     * Der Name einer Mannschaft zum Anzeigen. In der Datei steht er mit Schraegstrichen (O\'Neill),
+     * hier kommt er ohne zurueck. Gibt es die Mannschaft nicht oder hat sie keinen Namen: ''.
+     *
+     * @param int|string $nr Nummer der Mannschaft, wie sie in einer Partie steht
+     */
+    public function mannschaftsname($nr): string
+    {
+        return stripslashes($this->mannschaften[$nr]->name ?? '');
     }
 
     /**
