@@ -39,6 +39,8 @@ services:
       - ./lmo:/var/www/html/lmo
       # Composer-Abhaengigkeiten liegen wie im Repo neben lmo/ (vorher: composer install bzw. docker compose run --rm tests)
       - ./vendor:/var/www/html/vendor:ro
+      # die Klassen des LMO (Lmo\Liga\...), die der Composer-Autoloader neben vendor/ erwartet
+      - ./src:/var/www/html/src:ro
       # Laufzeitdaten getrennt vom Code (Neustart von vorn: docker compose down -v)
       - ./lmo:/srv/lmo-src:ro
       - web-config:/var/www/html/lmo/config
