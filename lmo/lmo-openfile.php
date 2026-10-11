@@ -20,6 +20,9 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+// $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
+require(PATH_TO_LMO . '/lmo-ligadaten.php');
+
 $titel="";
 $ergebnis=$mittore=$ligastats1=$kreuz=$plan=$kurve=1;
 $datc=$nticker=$lmtype=0;
@@ -406,13 +409,4 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
   }
   $file = '';
 }
-
-// Alle Werte der Liga zusaetzlich als Objekt (Lmo\Liga\LigaDaten): Eigenschaft und Variable sind
-// dieselbe Stelle im Speicher. Neuer Code liest $ligaDaten->titel statt $titel; alter Code laeuft
-// unveraendert weiter und sieht jede Aenderung, die ueber das Objekt gemacht wird.
-$ligaDaten = new \Lmo\Liga\LigaDaten();
-foreach (\Lmo\Liga\LigaDaten::felder() as $lmo_feld) {
-    $ligaDaten->$lmo_feld = &$$lmo_feld;
-}
-unset($lmo_feld);
 ?>

@@ -20,6 +20,9 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+// $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
+require(PATH_TO_LMO . '/lmo-ligadaten.php');
+
 
 if ($file != "") {
 
