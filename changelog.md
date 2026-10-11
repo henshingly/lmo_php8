@@ -9,6 +9,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Changed  
+- PHPStan prüft die Klassen und Funktionen der Classlib jetzt auf Stufe 1.
 
 
 ### Deprecated  
@@ -18,6 +19,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
+- Classlib: Das Sortieren einer Tabelle ohne Zeilen (`sortTable()`, `sortDirectTable()`) brach mit einem Fehler ab; `getVerlaufTeam()` und `getVerlaufTeams()` liefern für ein Team außerhalb der Liga ein leeres Array statt einer PHP-Warnung.
 
 
 ### Security  
@@ -235,6 +237,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Changed  
+- PHPStan now checks the classes and functions of the classlib on level 1.
 
 
 ### Deprecated  
@@ -244,6 +247,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
+- Classlib: sorting a table without rows (`sortTable()`, `sortDirectTable()`) aborted with an error; `getVerlaufTeam()` and `getVerlaufTeams()` return an empty array for a team outside the league instead of a PHP warning.
 
 
 ### Security  
