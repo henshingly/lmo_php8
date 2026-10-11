@@ -1,0 +1,14 @@
+# Alte Dateien, die die Liga nur noch ueber Lmo\Liga\LigaDaten lesen und am Dateianfang
+# angeben, welche Variablen sie erwarten (@var): Stufe 6 statt Stufe 0.
+# Eine umgestellte Datei hier eintragen.
+parameters:
+    level: 6
+    phpVersion:
+        min: 80000
+        max: 80599
+    paths:
+        - lmo/lmo-showcross.php
+    # Klassen und Funktionen des LMO
+    scanDirectories:
+        - lmo
+        - src

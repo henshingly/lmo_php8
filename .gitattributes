@@ -15,5 +15,6 @@ bin/* text eol=lf
 /phpstan-strict.neon.dist export-ignore
 /phpstan-classlib.neon.dist export-ignore
 /phpstan-tests.neon.dist export-ignore
+/phpstan-liga.neon.dist export-ignore
 /tests export-ignore
 /TESTING.md export-ignore
