@@ -24,7 +24,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
  *
@@ -198,11 +197,12 @@ if ($_SESSION['lmouserok'] == 2) {
                 $helfer_ligen = explode(',', $lmo_admin_data[$testshow][3]);
                 $handle = opendir(PATH_TO_LMO . '/' . $dirliga);
                 while ($file = readdir($handle)) {
-                    require(PATH_TO_LMO . '/lmo-openfilename.php');
                     if (substr($file, -4) == '.l98') {
-                        $ligenname = substr($file, 0, -4); ?>
+                        $ligenname = substr($file, 0, -4);
+                        // Name der Liga aus dem Abschnitt [Options] (Lmo\Liga\LigaDatei)
+                        $lmo_liganame = stripslashes(\Lmo\Liga\LigaDatei::liesAbschnitt(PATH_TO_LMO . '/' . $dirliga . $file, 'Options')['Name'] ?? 'No Name'); ?>
                 <tr>
-                  <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?php echo $show; ?>[]" value="<?php echo $ligenname; ?>"<?php if (in_array($ligenname,$helfer_ligen)) echo ' checked'; ?>><?php echo $ligaDaten->titel; ?></td>
+                  <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?php echo $show; ?>[]" value="<?php echo $ligenname; ?>"<?php if (in_array($ligenname,$helfer_ligen)) echo ' checked'; ?>><?php echo $lmo_liganame; ?></td>
                 </tr>
 <?php
                     }
