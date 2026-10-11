@@ -54,7 +54,9 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
       if (!isset($st)){                         $st=1;}
       if (!isset($stats)){                      $stats=0;}
       // Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\LigaDaten)
-      $ligaDaten->lies($lmo_eintraege,$defdateformat,$text[0],$text[1]);
+      // $lmo_liga: die Rohdaten der Liga (Lmo\Liga\Rohdaten\Liga); neue Seiten arbeiten direkt darauf
+      $lmo_liga=\Lmo\Liga\Rohdaten\Liga::ausEintraegen($lmo_eintraege);
+      $ligaDaten->liesRohdaten($lmo_liga,$defdateformat,$text[0],$text[1]);
       unset($lmo_eintraege);
       if ($ligaDaten->lmtype==0){
         // eigene Bezeichnung fuer Punkte/Tore gilt auch fuer die Sprachtexte, sonst umgekehrt

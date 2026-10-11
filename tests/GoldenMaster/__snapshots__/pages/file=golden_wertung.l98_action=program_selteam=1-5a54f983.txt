@@ -248,7 +248,7 @@
 <td align="left">0</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr">
-<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Mannschaft 1 - Mannschaft 6&amp;nbsp;&amp;nbsp;0:0&lt;/strong&gt;&lt;strong&gt;Grüne-Tisch-Entscheidung:&lt;/strong&gt;Das Ergebnis zählt für beide Mannschaften gleichermaßen aus Sicht der Heimmannschaft.&lt;br&gt;" class="tooltip-trigger">
+<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Mannschaft 1 - Mannschaft 6&amp;nbsp;&amp;nbsp;0:0 / 0:0&lt;/strong&gt;&lt;strong&gt;Grüne-Tisch-Entscheidung:&lt;/strong&gt;Das Ergebnis zählt für beide Mannschaften gleichermaßen aus Sicht der Heimmannschaft.&lt;br&gt;" class="tooltip-trigger">
 <img src="http://lmo.test/lmo/img/lmo-st2.svg" height="15" class="svg-no-style" alt="">
 </span>
 </td>
@@ -336,7 +336,7 @@
 <td align="left">2</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr">
-<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Mannschaft 1 - Mannschaft 8&amp;nbsp;&amp;nbsp;2:2&lt;/strong&gt;&lt;strong&gt;Grüne-Tisch-Entscheidung:&lt;/strong&gt;Das Ergebnis zählt für beide Mannschaften gleichermaßen aus Sicht der Heimmannschaft.&lt;br&gt;" class="tooltip-trigger">
+<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Mannschaft 1 - Mannschaft 8&amp;nbsp;&amp;nbsp;2:2 / 2:2&lt;/strong&gt;&lt;strong&gt;Grüne-Tisch-Entscheidung:&lt;/strong&gt;Das Ergebnis zählt für beide Mannschaften gleichermaßen aus Sicht der Heimmannschaft.&lt;br&gt;" class="tooltip-trigger">
 <img src="http://lmo.test/lmo/img/lmo-st2.svg" height="15" class="svg-no-style" alt="">
 </span>
 </td>
