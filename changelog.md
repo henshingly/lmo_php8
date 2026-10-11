@@ -9,7 +9,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Changed  
-- PHPStan prüft die Klassen und Funktionen der Classlib jetzt auf Stufe 3 und die Tests auf Stufe 5.
+- PHPStan prüft die Klassen und Funktionen der Classlib und die Tests jetzt auf Stufe 5.
 - Classlib: Die Typangaben in den Kommentaren stimmen mit dem Verhalten überein (z. B. `team|null` statt `object` bei den Suchfunktionen, `$` vor den Parameternamen). Am Code selbst ändert sich dadurch nichts.
 
 
@@ -20,6 +20,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
+- Classlib: Ein unlesbares Spieltagsdatum in der Ligadatei (z. B. `D1=ab.cd.efgh` oder `D1=23.08.`) ließ das Laden der Liga mit einem Fehler abbrechen; es gilt jetzt als fehlend.
 - Classlib: Das Sortieren einer Tabelle ohne Zeilen (`sortTable()`, `sortDirectTable()`) brach mit einem Fehler ab; `getVerlaufTeam()` und `getVerlaufTeams()` liefern für ein Team außerhalb der Liga ein leeres Array statt einer PHP-Warnung.
 
 
@@ -238,7 +239,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Changed  
-- PHPStan now checks the classes and functions of the classlib on level 3 and the tests on level 5.
+- PHPStan now checks the classes and functions of the classlib and the tests on level 5.
 - Classlib: the types in the comments match the behaviour (e.g. `team|null` instead of `object` for the lookup functions, `$` in front of parameter names). The code itself does not change.
 
 
@@ -249,6 +250,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
+- Classlib: an unreadable round date in the league file (e.g. `D1=ab.cd.efgh` or `D1=23.08.`) aborted loading the league with an error; it now counts as missing.
 - Classlib: sorting a table without rows (`sortTable()`, `sortDirectTable()`) aborted with an error; `getVerlaufTeam()` and `getVerlaufTeams()` return an empty array for a team outside the league instead of a PHP warning.
 
 
