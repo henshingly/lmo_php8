@@ -79,9 +79,9 @@ if ($file != '') {
           <th style="text-align:right">&nbsp;<a href="<?php echo $addr . ($j + 1); ?>" title="<?php echo $text[25]; ?>"><?php echo $j + 1; ?></a>&nbsp;</th>
 <?php
                 if ($lmo_einstellungen->mitAnstosszeit()) {
-                    if(is_numeric($lmo_spiel->anstoss)) {
+                    if ($lmo_spiel->anstoss !== null) {
                         $dt = new DateTime();
-                        $dt->setTimeStamp((int)$lmo_spiel->anstoss);
+                        $dt->setTimeStamp($lmo_spiel->anstoss);
                         $dum1 = $dt->format($lmo_einstellungen->datumsformat($defdateformat));
                     } else {
                         $dum1 = '';
@@ -112,9 +112,9 @@ if ($file != '') {
                     echo '</strong>';
                 } ?></td>
           <td style="width:2px;">&nbsp;</td>
-          <td align="right"><?php echo applyFactor($lmo_spiel->toreHeim, $lmo_einstellungen->torfaktor()); ?></td>
+          <td align="right"><?php echo $lmo_spiel->toreHeimText($lmo_einstellungen->torfaktor()); ?></td>
           <td align="center" style="width:8px;">:</td>
-          <td align="left"><?php echo applyFactor($lmo_spiel->toreGast, $lmo_einstellungen->torfaktor()); ?></td>
+          <td align="left"><?php echo $lmo_spiel->toreGastText($lmo_einstellungen->torfaktor()); ?></td>
 <?php
                 if ($lmo_einstellungen->mitVerlaengerung()) { ?>
           <td style="width:2px;">&nbsp;</td>
@@ -144,9 +144,9 @@ if ($file != '') {
                 /** Notizen anzeigen **/
                 if ($lmo_spiel->notiz != '' || $lmo_spiel->wertung > 0) {
                     //Grüner Tisch: Beidseitiges Ergebnis vorbereiten
-                    $lmo_notiz_both = ($lmo_spiel->wertung == 3) ? ' / ' . applyFactor($lmo_spiel->toreGast, $lmo_einstellungen->torfaktor()) . ':' . applyFactor($lmo_spiel->toreHeim, $lmo_einstellungen->torfaktor()) : '';
+                    $lmo_notiz_both = ($lmo_spiel->wertung == 3) ? ' / ' . $lmo_spiel->toreGastText($lmo_einstellungen->torfaktor()) . ':' . $lmo_spiel->toreHeimText($lmo_einstellungen->torfaktor()) : '';
                     //Alles in EIN Tag packen, damit das CSS es als EINE zentrierte Zeile erkennt
-                    $lmo_spielnotiz = '<strong>' . $lmo_heim . $lmo_teamaicon . ' - ' . $lmo_teambicon . $lmo_gast . '&nbsp;&nbsp;' . applyFactor($lmo_spiel->toreHeim, $lmo_einstellungen->torfaktor()) . ':' . applyFactor($lmo_spiel->toreGast, $lmo_einstellungen->torfaktor()) . $lmo_notiz_both . '</strong>';
+                    $lmo_spielnotiz = '<strong>' . $lmo_heim . $lmo_teamaicon . ' - ' . $lmo_teambicon . $lmo_gast . '&nbsp;&nbsp;' . $lmo_spiel->toreHeimText($lmo_einstellungen->torfaktor()) . ':' . $lmo_spiel->toreGastText($lmo_einstellungen->torfaktor()) . $lmo_notiz_both . '</strong>';
                     if ($lmo_einstellungen->mitVerlaengerung()) {
                         $lmo_spielnotiz .= '&nbsp;' . $lmo_zusatz . '<br>';
                     }

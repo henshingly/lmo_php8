@@ -4,14 +4,15 @@ namespace Lmo\Liga;
 
 /**
  * Ein Spiel zum Anzeigen: was die Seiten des LMO von einer Partie zeigen, abgeleitet aus den
- * Rohdaten. In der Liga hat jede Partie ein Spiel, im Pokal eine Paarung so viele, wie der Modus
- * der Runde vorsieht.
+ * Rohdaten und mit festen Typen. In der Liga hat jede Partie ein Spiel, im Pokal eine Paarung so
+ * viele, wie der Modus der Runde vorsieht.
  *
  * Die Klasse liest nur; die Rohdaten bleiben, wie sie in der Datei stehen. Fehlt eine Partie oder
  * ein Wert, gelten die Werte eines nicht angesetzten Spiels (keine Mannschaft, nicht gespielt).
  *
- *   $spiel = Spiel::ausRohdaten($liga, 3, 1);   // Spieltag 3, Partie 1
- *   echo $liga->mannschaftsname($spiel->heim), ' ', $spiel->toreHeim, ':', $spiel->toreGast;
+ *   foreach ($liga->spiele(3) as $spiel) {
+ *       echo $liga->mannschaftsname($spiel->heim), ' ', $spiel->toreHeimText(), ':', $spiel->toreGastText();
+ *   }
  */
 final class Spiel
 {
@@ -24,32 +25,30 @@ final class Spiel
     /** Nummer des Spiels der Paarung, ab 1; in der Liga immer 1 */
     public int $nr;
 
-    /** Nummer der Heimmannschaft, '0' = keine */
-    public string $heim = '0';
+    /** Nummer der Heimmannschaft, 0 = keine */
+    public int $heim = 0;
 
-    /** Nummer der Gastmannschaft, '0' = keine */
-    public string $gast = '0';
+    /** Nummer der Gastmannschaft, 0 = keine */
+    public int $gast = 0;
 
     /**
-     * Tore der Heimmannschaft: eine Zahl als Text, "_" = nicht gespielt, -1 = in der Datei leer.
-     * Bei einer Wertung am gruenen Tisch gegen diese Seite (Liga) "0".
-     *
-     * @var int|string
+     * Tore der Heimmannschaft; null = nicht gespielt. Bei einer Wertung am gruenen Tisch gegen
+     * diese Seite (Liga) 0. Zum Anzeigen: toreHeimText().
      */
-    public $toreHeim = '_';
+    public ?int $toreHeim = null;
 
-    /** @var int|string Tore der Gastmannschaft, wie $toreHeim */
-    public $toreGast = '_';
+    /** Tore der Gastmannschaft, wie $toreHeim */
+    public ?int $toreGast = null;
 
     /** Wertung am gruenen Tisch (nur Liga): 0 = keine, 1 = fuer Heim, 2 = fuer Gast, 3 = gegen beide */
     public int $wertung = 0;
 
     /**
-     * Zusatz zum Ergebnis, wie er in der Datei steht: 1 = im Elfmeterschiessen, 2 = nach
-     * Verlaengerung, 0 = keiner; null = steht nicht in der Datei oder die Liga fuehrt keinen
-     * Zusatz (Spez). Zum Anzeigen: zusatzText().
+     * Zusatz zum Ergebnis: 0 = ausdruecklich keiner, 1 = im Elfmeterschiessen, 2 = nach
+     * Verlaengerung; null = steht nicht in der Datei oder die Liga fuehrt keinen Zusatz (Spez).
+     * Zum Anzeigen: zusatzText().
      */
-    public ?string $zusatz = null;
+    public ?int $zusatz = null;
 
     /** Notiz zum Spiel */
     public string $notiz = '';
@@ -57,11 +56,14 @@ final class Spiel
     /** Link zum Spielbericht */
     public string $bericht = '';
 
-    /** TI aus der Datei: '1' = das Spiel wird im Tippspiel nicht gewertet */
-    public string $tipp = '';
+    /** TI=1 in der Datei: das Spiel wird im Tippspiel nicht gewertet */
+    public bool $ohneTippwertung = false;
 
-    /** Anstoss als Unix-Zeitstempel, '0' = keiner; in der Datei steht er als Text */
-    public string $anstoss = '0';
+    /**
+     * Anstoss als Unix-Zeitstempel. 0 = keiner festgelegt (so schreibt es der LMO, und so gilt es
+     * fuer ein Spiel, das in der Datei fehlt); null = die Angabe in der Datei ist leer oder unlesbar.
+     */
+    public ?int $anstoss = 0;
 
     private function __construct(int $spieltag, int $partie, int $nr)
     {
@@ -83,16 +85,20 @@ final class Spiel
             return $spiel;
         }
         $pokal = $liga->istPokal();
-        $spiel->heim = $roh->heim ?? '0';
-        $spiel->gast = $roh->gast ?? '0';
+        $spiel->heim = self::zahl($roh->heim) ?? 0;
+        $spiel->gast = self::zahl($roh->gast) ?? 0;
         foreach ($roh->spiele[$nr] ?? [] as $art => $wert) {
             switch ($art) {
                 case 'GA':
                 case 'GB':
-                    $tore = $wert == '' ? -1 : ($wert == '-1' ? '_' : $wert);
-                    if (!$pokal && $wert == '-2') {
+                    // -1 heisst in der Datei "nicht gespielt", ebenso eine leere oder unlesbare Angabe
+                    $tore = self::zahl($wert);
+                    if ($tore === -1) {
+                        $tore = null;
+                    }
+                    if (!$pokal && $tore === -2) {
                         $spiel->wertung = $art === 'GA' ? 1 : 2;
-                        $tore = '0';
+                        $tore = 0;
                     }
                     if ($art === 'GA') {
                         $spiel->toreHeim = $tore;
@@ -107,8 +113,8 @@ final class Spiel
                     break;
                 case 'SP':
                     // in der Liga nur, wenn sie Verlaengerung und Elfmeterschiessen fuehrt
-                    if ($pokal || ($liga->optionen['Spez'] ?? null) == 1) {
-                        $spiel->zusatz = $wert;
+                    if ($pokal || $liga->einstellungen()->mitVerlaengerung()) {
+                        $spiel->zusatz = self::zahl($wert);
                     }
                     break;
                 case 'NT':
@@ -118,10 +124,10 @@ final class Spiel
                     $spiel->bericht = $wert;
                     break;
                 case 'TI':
-                    $spiel->tipp = $wert;
+                    $spiel->ohneTippwertung = $wert == 1;
                     break;
                 case 'AT':
-                    $spiel->anstoss = $wert;
+                    $spiel->anstoss = self::zahl($wert);
                     break;
             }
         }
@@ -133,6 +139,29 @@ final class Spiel
     public function hatMannschaften(): bool
     {
         return $this->heim > 0;
+    }
+
+    /** Liegt ein Ergebnis vor? */
+    public function istGespielt(): bool
+    {
+        return $this->toreHeim !== null && $this->toreGast !== null;
+    }
+
+    /**
+     * Tore der Heimmannschaft als Anzeigetext: "_" fuer nicht gespielt, sonst die Tore geteilt
+     * durch den Torfaktor der Liga.
+     *
+     * @param int $torfaktor Einstellungen::torfaktor(); 1 = Tore wie eingegeben
+     */
+    public function toreHeimText(int $torfaktor = 1): string
+    {
+        return self::toreText($this->toreHeim, $torfaktor);
+    }
+
+    /** Tore der Gastmannschaft als Anzeigetext, wie toreHeimText() */
+    public function toreGastText(int $torfaktor = 1): string
+    {
+        return self::toreText($this->toreGast, $torfaktor);
     }
 
     /**
@@ -147,13 +176,28 @@ final class Spiel
         if ($this->zusatz === null) {
             return '';
         }
-        if ($this->zusatz == 0) {
+        if ($this->zusatz === 0) {
             return '&nbsp;';
         }
-        if ($this->zusatz == 2) {
+        if ($this->zusatz === 2) {
             return $nachVerlaengerung;
         }
 
-        return $this->zusatz == 1 ? $imElfmeterschiessen : $this->zusatz;
+        return $this->zusatz === 1 ? $imElfmeterschiessen : (string) $this->zusatz;
+    }
+
+    private static function toreText(?int $tore, int $torfaktor): string
+    {
+        if ($tore === null) {
+            return '_';
+        }
+
+        return (string) ($tore !== 0 && $torfaktor !== 0 ? $tore / $torfaktor : $tore);
+    }
+
+    /** Eine ganze Zahl aus der Datei; null, wenn dort keine steht */
+    private static function zahl(?string $wert): ?int
+    {
+        return $wert !== null && is_numeric($wert) ? (int) $wert : null;
     }
 }
