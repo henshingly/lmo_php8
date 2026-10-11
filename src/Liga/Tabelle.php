@@ -122,7 +122,9 @@ final class Tabelle
      */
     private function werte(Spiel $spiel, array $zeilen): bool
     {
-        if ($spiel->toreHeim === null || $spiel->toreGast === null) {
+        $toreHeim = $spiel->toreHeim;
+        $toreGast = $spiel->toreGast;
+        if ($toreHeim === null || $toreGast === null) {
             return false;
         }
         $e = $this->einstellungen;
@@ -134,20 +136,20 @@ final class Tabelle
         }
         $minus = $e->mitMinuspunkten();
         // Ausgang aus Sicht der Heimmannschaft: 1 = Sieg, 0 = Unentschieden, -1 = Niederlage
-        $nachToren = $spiel->toreHeim <=> $spiel->toreGast;
+        $nachToren = $toreHeim <=> $toreGast;
         $heim = $spiel->wertung === 1 ? 1 : ($spiel->wertung === 2 ? -1 : $nachToren);
         $gezaehlt = false;
 
         if ($this->art !== self::AUSWAERTS && isset($zeilen[$spiel->heim])) {
-            $zeilen[$spiel->heim]->werte($heim, $spiel->toreHeim, $spiel->toreGast, $punkte, $minus, $spiel, true);
+            $zeilen[$spiel->heim]->werte($heim, $toreHeim, $toreGast, $punkte, $minus, $spiel, true);
             $gezaehlt = true;
         }
         if ($this->art !== self::HEIM && isset($zeilen[$spiel->gast]) && $spiel->gast !== $spiel->heim) {
             if ($spiel->wertung === 3) {
                 // gegen beide: auch der Gast bekommt das Ergebnis aus Sicht der Heimmannschaft
-                $zeilen[$spiel->gast]->werte($nachToren, $spiel->toreHeim, $spiel->toreGast, $punkte, $minus, $spiel, true);
+                $zeilen[$spiel->gast]->werte($nachToren, $toreHeim, $toreGast, $punkte, $minus, $spiel, true);
             } else {
-                $zeilen[$spiel->gast]->werte(-$heim, $spiel->toreGast, $spiel->toreHeim, $punkte, $minus, $spiel, false);
+                $zeilen[$spiel->gast]->werte(-$heim, $toreGast, $toreHeim, $punkte, $minus, $spiel, false);
             }
             $gezaehlt = true;
         }
