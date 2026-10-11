@@ -1,0 +1,20 @@
+[Options]
+Name=Mit Strich
+Type=0
+Teams=2
+Rounds=1
+Matches=1
+
+[Teams]
+1=Alpha
+2=A | B
+
+[Team1]
+NOT=Notiz | mit Strich
+
+[Round1]
+TA1=1
+TB1=2
+GA1=1
+GB1=0
+NT1=Abbruch | Nebel

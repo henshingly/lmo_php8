@@ -6,9 +6,16 @@ __Alle wesentlichen Änderungen am PHP Script des LMO werden in dieser Datei dok
 _Hier schreiben wir Changelog Hinweise der nächsten Version._  
 
 ### Added  
+- `Lmo\Liga\Rohdaten\Liga` (mit `Mannschaft`, `Spieltag`, `Partie`): hält den Inhalt einer Ligadatei so, wie er in der Datei steht, und lädt und speichert ihn als Paar. Nichts wird für die Anzeige umgerechnet, ergänzt oder aufgefüllt; unbekannte Schlüssel und Abschnitte bleiben erhalten. Der Kern des LMO lädt und speichert jede Liga darüber.
 
 
 ### Changed  
+- Die beiden abgespeckten Lader `lmo-openfilename.php` und `lmo-openfiledat.php` benutzen denselben Leser und dieselbe Zuordnung der Schlüssel wie der Hauptlader.
+- Die ganze Ligadatei wird über `Lmo\Liga\LigaDaten` geschrieben; `lmo-savefile.php` enthält nur noch das Öffnen, Sperren und Schreiben der Zeilen. Die geschriebene Datei ist unverändert.
+- News, Spieltage und Partien liest `Lmo\Liga\LigaDaten`; der Lader `lmo-openfile.php` enthält nur noch den Ablauf. Die gelesenen Werte sind unverändert.
+- Auch die Abschnitte der Mannschaften (`[Teams]`, `[Teamk]`, `[Teamm]`, `[Team1]` …) werden über `Lmo\Liga\LigaDaten` gelesen und gespeichert, einschließlich der abgeleiteten Kurz- und Mittelnamen. Gelesene Werte und geschriebene Datei sind unverändert.
+- Welcher Schlüssel des Abschnitts `[Options]` zu welchem Wert der Liga gehört, für Liga oder Pokal gilt und welchen Vorgabewert hat, steht jetzt in einer Tabelle in `Lmo\Liga\LigaDaten`. Der Lader `lmo-openfile.php` und das Speichern in `lmo-savefile.php` benutzen beide diese Tabelle; die geschriebene Datei ist unverändert.
+- Das Format der Ligadatei (Abschnitte, Schlüssel, Werte) liest jetzt eine gemeinsame Klasse (`Lmo\Liga\LigaDatei`), die der Lader `lmo-openfile.php` und die Classlib benutzen.
 - Die Vorgabewerte einer Liga (Punkte je Sieg, Anzahl der Spieltage, Datumsformat …) stehen jetzt in `Lmo\Liga\LigaDaten` statt als rund 60 Einzelzeilen im Lader `lmo-openfile.php`. Am Verhalten ändert sich nichts.
 - Die Werte einer Ligadatei liegen zusätzlich gebündelt in einem Objekt (`Lmo\Liga\LigaDaten`, Variable `$ligaDaten`). Die bisherigen einzelnen Variablen (`$titel`, `$teams`, `$goala` …) bleiben gültig und zeigen auf dieselben Werte. Der gesamte LMO liest und schreibt die Liga jetzt über das Objekt (62 Dateien); an der Ausgabe ändert sich nichts. Eigene Erweiterungen, die die alten Variablen benutzen, funktionieren unverändert.
 - 62 alte Dateien nennen am Dateianfang, welche Variablen sie erwarten. PHPStan prüft damit 33 von ihnen auf Stufe 6 und 31 auf Stufe 1 statt auf Stufe 0.
@@ -21,6 +28,11 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
+- Einstellungen in `[Options]`, die der LMO nicht kennt (auch `stats`), und ganze unbekannte Abschnitte einer Ligadatei gingen beim Speichern im Admin-Bereich verloren. Sie bleiben jetzt erhalten.
+- Werden in einem Aufruf mehrere Ligen nacheinander geladen, blieben Werte der vorigen Liga stehen, die die nächste Datei nicht nennt (z. B. Strafpunkte einer Liga beim anschließenden Laden eines Pokals). Vor jedem Laden werden jetzt alle Werte geleert.
+- Ein senkrechter Strich (`|`) in einer Notiz, einem Mannschaftsnamen, einer Adresse oder einer Newszeile schnitt beim Laden alles dahinter ab.
+- Ein unlesbares Datum im letzten Spieltag einer Ligadatei (z. B. `D1=ab.cd.efgh`) ließ das Laden der Liga abbrechen; es wird jetzt geleert.
+- Classlib (Addons mini, viewer, ticker): Eine eckige Klammer in einem Liganamen, Mannschaftsnamen oder einer Notiz schnitt den Rest des Abschnitts ab (Name gekürzt, Mannschaft oder Zusatz „n. V.“ fehlten). Kommentarzeilen mit `;` am Anfang wurden als Schlüssel gelesen.
 - Tippspiel und Benutzerverwaltung: Fehlte einer Ligadatei die Anzahl der Spieltage (`Rounds`), brach der abgespeckte Lader `lmo-openfilename.php` mit „Division by zero“ ab. Beide abgespeckten Lader ergänzen fehlende Angaben jetzt wie der Hauptlader.
 
 
@@ -250,9 +262,16 @@ __All significant changes to the LMO PHP script are documented in this file.__
 _Here we write changelog notes for the next version._  
 
 ### Added  
+- `Lmo\Liga\Rohdaten\Liga` (with `Mannschaft`, `Spieltag`, `Partie`): holds the content of a league file exactly as it is in the file and loads and saves it as a pair. Nothing is converted for display, added or padded; unknown keys and sections are kept. The core of LMO loads and saves every league through it.
 
 
 ### Changed  
+- The two reduced loaders `lmo-openfilename.php` and `lmo-openfiledat.php` use the same reader and the same key mapping as the main loader.
+- The whole league file is written through `Lmo\Liga\LigaDaten`; `lmo-savefile.php` only contains opening, locking and writing the lines. The written file is unchanged.
+- News, rounds and matches are read by `Lmo\Liga\LigaDaten`; the loader `lmo-openfile.php` only contains the sequence. The values read are unchanged.
+- The team sections (`[Teams]`, `[Teamk]`, `[Teamm]`, `[Team1]` …) are now read and saved through `Lmo\Liga\LigaDaten` as well, including the derived short and medium names. Values read and the written file are unchanged.
+- Which key of the `[Options]` section belongs to which league value, applies to league or cup and has which default now is kept in one table in `Lmo\Liga\LigaDaten`. The loader `lmo-openfile.php` and saving in `lmo-savefile.php` both use this table; the written file is unchanged.
+- The format of the league file (sections, keys, values) is now read by one shared class (`Lmo\Liga\LigaDatei`) that the loader `lmo-openfile.php` and the classlib use.
 - The default values of a league (points per win, number of rounds, date format …) now live in `Lmo\Liga\LigaDaten` instead of about 60 single lines in the loader `lmo-openfile.php`. The behaviour does not change.
 - The values of a league file are additionally bundled in an object (`Lmo\Liga\LigaDaten`, variable `$ligaDaten`). The existing single variables (`$titel`, `$teams`, `$goala` …) stay valid and point to the same values. All of LMO now reads and writes the league through the object (62 files); the output does not change. Own extensions that use the old variables keep working unchanged.
 - 62 old files state at the top which variables they expect. PHPStan thereby checks 33 of them on level 6 and 31 on level 1 instead of level 0.
@@ -265,6 +284,11 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
+- Settings in `[Options]` that LMO does not know (including `stats`) and whole unknown sections of a league file were lost when saving in the admin area. They are now kept.
+- When several leagues are loaded in one request, values of the previous league remained that the next file does not mention (e.g. penalty points of a league when a cup is loaded afterwards). All values are now cleared before each load.
+- A vertical bar (`|`) in a note, a team name, an address or a news line cut off everything after it when loading.
+- An unreadable date in the last round of a league file (e.g. `D1=ab.cd.efgh`) aborted loading the league; it is now cleared.
+- Classlib (addons mini, viewer, ticker): a square bracket in a league name, team name or note cut off the rest of the section (name shortened, team or the "a.e.t." marker missing). Comment lines starting with `;` were read as keys.
 - Tip game and user administration: if a league file lacked the number of rounds (`Rounds`), the reduced loader `lmo-openfilename.php` aborted with "Division by zero". Both reduced loaders now fill in missing values like the main loader.
 
 

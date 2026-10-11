@@ -303,4 +303,44 @@ L98;
         self::assertSame(mktime(0, 0, 0, 8, 24, 2024), $eins->bis);
         self::assertSame(1, $eins->partienCount());
     }
+
+    /**
+     * Eckige Klammern in Namen und Notizen gehoeren zum Wert. Frueher endete der Abschnitt an der
+     * ersten Klammer: der Liganame war abgeschnitten, die Mannschaft und alles hinter der Notiz fehlten.
+     */
+    public function testSquareBracketsInValuesDoNotEndTheSection(): void
+    {
+        $content = str_replace(
+            ['Name=Testliga 2024/25', '1=Alpha' . "
+", 'NT1=Spielnotiz'],
+            ['Name=Testliga [Nord]', '1=FC [A] Stadt' . "
+", 'NT1=Abbruch [Nebel], Wertung = 2:1'],
+            self::LIGA,
+            $count
+        );
+        self::assertSame(3, $count);
+
+        $liga = $this->load($content);
+
+        self::assertSame('Testliga [Nord]', $liga->name);
+        self::assertSame(3, $liga->teamCount());
+        self::assertSame('FC [A] Stadt', $liga->teamForNumber(1)->name);
+        self::assertSame('Beta', $liga->teamForNumber(2)->name);
+        $partie = $liga->SpieltagForNumber(1)->partieForNumber(1);
+        self::assertSame('Abbruch [Nebel], Wertung = 2:1', $partie->notiz);
+        self::assertSame(2, $partie->getSpielEnde(), 'steht in der Datei hinter der Notiz');
+        self::assertSame('2', $liga->options->keyValues['Rounds'], 'steht in der Datei hinter dem Namen');
+        self::assertSame(2, $liga->spieltageCount());
+    }
+
+    public function testCommentLinesAreNotKeys(): void
+    {
+        $content = str_replace('Rounds=2', ";Rounds=99
+Rounds=2", self::LIGA);
+
+        $liga = $this->load($content);
+
+        self::assertSame('2', $liga->options->keyValues['Rounds']);
+        self::assertArrayNotHasKey(';Rounds', $liga->options->keyValues);
+    }
 }
