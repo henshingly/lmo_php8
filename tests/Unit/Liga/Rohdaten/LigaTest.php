@@ -338,6 +338,9 @@ L98;
         self::assertSame(mktime(0, 0, 0, 9, 2, 2024), $liga->spieltage[2]->letzterTag());
         self::assertNull($liga->spieltage[3]->ersterTag());
         self::assertSame('1.9.2024', $liga->spieltage[1]->werte['D1'], 'die Rohdaten bleiben, wie sie sind');
+        // zum Anzeigen immer TT.MM.JJJJ, sonst leer
+        self::assertSame(['01.09.2024', ''], [$liga->spieltage[1]->ersterTagText(), $liga->spieltage[1]->letzterTagText()]);
+        self::assertSame(['', '02.09.2024'], [$liga->spieltage[2]->ersterTagText(), $liga->spieltage[2]->letzterTagText()]);
     }
 
     public function testEinstellungenAendernDieRohdatenNicht(): void
