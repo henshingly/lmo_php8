@@ -35,60 +35,24 @@ require(PATH_TO_LMO . '/lmo-ligadaten.php');
   
 if ($file != "") {
   if (substr($file, -4) == ".l98") {
-    $daten = array("");
-    $sekt = "";
-     
     $datei = file(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file));
     if ($datei) {
       $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file)));
       $ligaDaten->lmtype=0;
-      for ($tt=0;$tt<count($datei);$tt++) {
-        $zeile=&$datei[$tt];
-        $zeile = trim($zeile);
-        if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
-          $sekt = trim(substr($zeile, 1, -1));
-        } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
-          $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
-          $wert = trim(substr($zeile, strpos($zeile, "=")+1));
-          if ($sekt == "Options") {
-            if ($schl == "Title") {
-              $ligaDaten->lmvers = $wert;
-            }
-            if ($schl == "Name") {
-              $ligaDaten->titel = stripslashes($wert);
-            }
-            if ($schl == "Type") {
-              $ligaDaten->lmtype = stripslashes($wert);
-            }
-            if (!isset($ligaDaten->lmtype)) {
-              $ligaDaten->lmtype = 0;
-            }
-            if ($schl == "Teams") {
-              $ligaDaten->anzteams = $wert;
-            }
-            if ($ligaDaten->lmtype == 0) {
-              if ($schl == "Rounds") {
-                $ligaDaten->anzst = $wert;
-              }
-            }
-            if (!isset($st)) {
-              if ($schl == "Actual") {
-                $st = $wert;
-              }
-            }
-            if ($schl == "Actual") {
-              $ligaDaten->stx = $wert;
-            }
-          }
-          $daten[]="$sekt|$schl|$wert|EOL";
+      // Abschnitte, Schluessel und Werte der Datei (Lmo\Liga\LigaDatei)
+      $lmo_eintraege=\Lmo\Liga\LigaDatei::zerlege($datei);
+      foreach ($lmo_eintraege as list($sekt, $schl, $wert)) {
+        if ($sekt == "Options" && $schl == "Actual" && !isset($st)) {
+          $st = $wert;
         }
       }
+      // dieser Lader liest nur Name, Version, Typ und Groesse der Liga
+      $ligaDaten->setzeOptionen($lmo_eintraege, array('Title', 'Name', 'Type', 'Teams', 'Rounds', 'Actual'));
+      unset($lmo_eintraege);
     }
     if (!isset($st)) {
       $st = 1;
     }
-    array_shift($daten);
     // Name, Version, aktueller Spieltag und Groesse des Spielplans, soweit die Datei sie nicht nennt
     $ligaDaten->ergaenzeGrunddaten();
   }

@@ -39,29 +39,25 @@ $ligaDaten->setzeStartwerte();
 $ligastats1=1;
 if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsadmin($file)){
   if (substr($file,-4)==".l98"){
-    $daten=array();
     $array=array();
-    $sekt="";
     $datei = file(PATH_TO_LMO.'/'.$dirliga.$file);
     if ($datei) {
       $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
       $ligaDaten->lmtype=0;
-      // Abschnitte, Schluessel und Werte liest Lmo\Liga\LigaDatei; hier folgt nur ihre Bedeutung
-      foreach (\Lmo\Liga\LigaDatei::zerlege($datei) as list($sekt, $schl, $wert)) {
-          if ($sekt=="Options"){
-            // $st und $stats gehoeren nicht zur Liga: gewaehlter Spieltag (auch Aufrufparameter), Statistik-Schalter
-            if ($schl=="Actual" && !isset($st)){ $st=$wert;}
-            if ($schl=="stats"){ $stats=$wert;}
-            // alle anderen Schluessel: Tabelle OPTIONEN in Lmo\Liga\LigaDaten
-            $ligaDaten->setzeOption($schl,$wert);
-          }
-          $daten[]="$sekt|$schl|$wert|EOL";
+      // Abschnitte, Schluessel und Werte der Datei (Lmo\Liga\LigaDatei)
+      $lmo_eintraege=\Lmo\Liga\LigaDatei::zerlege($datei);
+      // $st und $stats gehoeren nicht zur Liga: gewaehlter Spieltag (auch Aufrufparameter), Statistik-Schalter
+      foreach ($lmo_eintraege as list($sekt, $schl, $wert)) {
+        if ($sekt=="Options" && $schl=="Actual" && !isset($st)){ $st=$wert;}
+        if ($sekt=="Options" && $schl=="stats"){ $stats=$wert;}
       }
-
       if (!isset($st)){                         $st=1;}
       if (!isset($stats)){                      $stats=0;}
-      // alles, was die Datei nicht nennt (Lmo\Liga\LigaDaten)
-      $ligaDaten->ergaenzeVorgabewerte($defdateformat);
+      // nur der benoetigte Spieltag wird eingelesen, wenn $lmo_only_st gesetzt ist
+      $lmo_nur_spieltag=!isset($lmo_only_st) ? null : ($lmo_only_st==true ? $st-1 : false);
+      // Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\LigaDaten)
+      $ligaDaten->lies($lmo_eintraege,$defdateformat,$text[0],$text[1],$lmo_nur_spieltag);
+      unset($lmo_eintraege,$lmo_nur_spieltag);
       if ($ligaDaten->lmtype==0){
         // eigene Bezeichnung fuer Punkte/Tore gilt auch fuer die Sprachtexte, sonst umgekehrt
         if ($ligaDaten->namepkt!=""){                      $text[37]=$ligaDaten->namepkt;}
@@ -69,29 +65,6 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
         if ($ligaDaten->nametor!=""){                      $text[38]=$ligaDaten->nametor;}
         else {                                  $ligaDaten->nametor=$text[38];}
       }
-      // Felder der Mannschaften in voller Groesse, Platz 0 = "___" (Lmo\Liga\LigaDaten)
-      $ligaDaten->bereiteMannschaftenVor();
-      // News und Spieltage: Felder in voller Groesse (Lmo\Liga\LigaDaten)
-      $ligaDaten->bereiteNewsVor();
-      $ligaDaten->bereiteSpieltageVor();
-      for ($i=1;$i<=count($daten);$i++){
-        $dum=explode("|",$daten[$i-1]);
-        // [News]
-        $ligaDaten->setzeNewszeile($dum[0],$dum[1],$dum[2]);
-        // [Teams], [Teamm], [Teamk] und [Team1] ... [TeamN]
-        $ligaDaten->setzeMannschaftswert($dum[0],$dum[1],$dum[2]);
-        // [Round1] ...: Spieltage und Partien
-        $op3=\Lmo\Liga\LigaDaten::spieltagsIndex($dum[0]);
-        if (!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
-          $ligaDaten->setzeSpieltagswert($dum[0],$dum[1],$dum[2],$text[0],$text[1]);
-        }
-      }
-      // Datum des Spieltags der letzten Zeile in die Form TT.MM.JJJJ bringen
-      if (isset($op3)){
-        $ligaDaten->bereinigeSpieltagsdatum($op3);
-      }
-      // fehlende Kurz- und Mittelnamen aus dem Namen ableiten
-      $ligaDaten->ergaenzeMannschaftsnamen();
     } else {
       echo getMessage($text[224],true);
     }

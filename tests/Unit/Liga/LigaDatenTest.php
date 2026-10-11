@@ -906,22 +906,7 @@ class LigaDatenTest extends TestCase
         $lies = static function (iterable $zeilen): LigaDaten {
             $liga = new LigaDaten();
             $liga->setzeStartwerte();
-            $eintraege = \Lmo\Liga\LigaDatei::zerlege($zeilen);
-            foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
-                if ($abschnitt === 'Options') {
-                    $liga->setzeOption($schluessel, $wert);
-                }
-            }
-            $liga->ergaenzeVorgabewerte('d.m.Y H:i');
-            $liga->bereiteMannschaftenVor();
-            $liga->bereiteNewsVor();
-            $liga->bereiteSpieltageVor();
-            foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
-                $liga->setzeNewszeile($abschnitt, $schluessel, $wert);
-                $liga->setzeMannschaftswert($abschnitt, $schluessel, $wert);
-                $liga->setzeSpieltagswert($abschnitt, $schluessel, $wert, 'n.V.', 'i.E.');
-            }
-            $liga->ergaenzeMannschaftsnamen();
+            $liga->lies(\Lmo\Liga\LigaDatei::zerlege($zeilen), 'd.m.Y H:i', 'n.V.', 'i.E.');
 
             return $liga;
         };
@@ -942,5 +927,104 @@ class LigaDatenTest extends TestCase
 
         self::assertGreaterThan(2500, count($einmal));
         self::assertSame($einmal, $zweimal);
+    }
+
+    /** @return list<array{string, string, string}> */
+    private static function kleineLiga(): array
+    {
+        return \Lmo\Liga\LigaDatei::zerlege([
+            '[Options]', 'Name=Kreisliga', 'Teams=3', 'Rounds=2', 'Matches=1', 'Spez=1', 'PointsForWin=2',
+            '[News]', 'NC=1', 'N0=Meldung',
+            '[Teams]', '1=Alpha', '2=Beta', '3=Gamma',
+            '[Team2]', 'SP=2', 'NOT=Notiz | mit Strich',
+            '[Round1]', 'D1=7.9.2024', 'TA1=1', 'TB1=2', 'GA1=2', 'GB1=1', 'SP1=2', 'NT1=Abbruch | Nebel',
+            '[Round2]', 'D1=14.9.2024', 'TA1=3', 'TB1=1', 'GA1=-1', 'GB1=-1',
+        ]);
+    }
+
+    public function testLiesEineGanzeLiga(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+
+        $liga->lies(self::kleineLiga(), 'd.m.Y', 'n.V.', 'i.E.');
+
+        self::assertSame(['Kreisliga', '3', '2', '1', '2'], [$liga->titel, $liga->anzteams, $liga->anzst, $liga->anzsp, $liga->pns]);
+        self::assertSame(1, $liga->pnu, 'Vorgabewert');
+        self::assertSame(['___', 'Alpha', 'Beta', 'Gamma', ''], $liga->teams);
+        self::assertSame('Alpha', $liga->teamm[1], 'abgeleitet');
+        self::assertSame('2', $liga->strafp[2]);
+        self::assertSame(['1', '2', '2', '1', 'n.V.'], [$liga->teama[0][0], $liga->teamb[0][0], $liga->goala[0][0], $liga->goalb[0][0], $liga->mspez[0][0]]);
+        self::assertSame(['3', '1', '_', '_'], [$liga->teama[1][0], $liga->teamb[1][0], $liga->goala[1][0], $liga->goalb[1][0]]);
+        self::assertSame('7.9.2024', $liga->datum1[0]);
+        self::assertSame('14.09.2024', $liga->datum1[1], 'nur das Datum des letzten Spieltags wird bereinigt');
+    }
+
+    /** Frueher schnitt ein senkrechter Strich den Wert ab. */
+    public function testSenkrechterStrichGehoertZumWert(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+
+        $liga->lies(self::kleineLiga(), 'd.m.Y', 'n.V.', 'i.E.');
+
+        self::assertSame('Notiz | mit Strich', $liga->teamn[2]);
+        self::assertSame('Abbruch | Nebel', $liga->mnote[0][0]);
+    }
+
+    /** @return array<string, array{int|false|null, string, string}> */
+    public static function spieltagsauswahl(): array
+    {
+        return [
+            'alle' => [null, '1', '3'],
+            'nur der erste' => [0, '1', '0'],
+            'nur der zweite' => [1, '0', '3'],
+            'keiner' => [false, '0', '0'],
+        ];
+    }
+
+    /**
+     * @dataProvider spieltagsauswahl
+     * @param int|false|null $nurSpieltag
+     */
+    public function testLiesNurEinenSpieltag($nurSpieltag, string $heimSpieltag1, string $heimSpieltag2): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+
+        $liga->lies(self::kleineLiga(), 'd.m.Y', 'n.V.', 'i.E.', $nurSpieltag);
+
+        self::assertSame([$heimSpieltag1, $heimSpieltag2], [$liga->teama[0][0], $liga->teama[1][0]]);
+        self::assertSame('Alpha', $liga->teams[1], 'Mannschaften werden immer gelesen');
+    }
+
+    public function testSetzeOptionenNurBestimmteSchluessel(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+
+        $liga->setzeOptionen(self::kleineLiga(), ['Name', 'Teams']);
+
+        self::assertSame(['Kreisliga', '3'], [$liga->titel, $liga->anzteams]);
+        self::assertNull($liga->anzst);
+        self::assertNull($liga->pns);
+        self::assertNull($liga->teams, 'nur der Abschnitt [Options]');
+    }
+
+    /**
+     * Der Lader des LMO reicht Werte mit senkrechtem Strich vollstaendig durch.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testLaderLiestWerteMitSenkrechtemStrich(): void
+    {
+        $testLader = 'lmo-openfile.php';
+        $file = 'strich.l98';
+        require __DIR__ . '/fixtures/load-with.php';
+        /** @var LigaDaten $ligaDaten */
+        self::assertSame('Notiz | mit Strich', $ligaDaten->teamn[1]);
+        self::assertSame('Abbruch | Nebel', $ligaDaten->mnote[0][0]);
+        self::assertSame('A | B', $ligaDaten->teams[2]);
     }
 }

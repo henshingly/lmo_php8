@@ -934,6 +934,56 @@ class LigaDaten
         return $zusatz == $anzeigeSp1 ? '1' : null;
     }
 
+    /**
+     * Uebernimmt aus den Eintraegen einer Ligadatei den Abschnitt [Options].
+     *
+     * @param iterable<array{string, string, string}> $eintraege Ergebnis von LigaDatei::zerlege()
+     * @param string[]|null $nurSchluessel nur diese Schluessel (die abgespeckten Lader lesen nur wenige), null = alle
+     */
+    public function setzeOptionen(iterable $eintraege, ?array $nurSchluessel = null): void
+    {
+        foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
+            if ($abschnitt === 'Options' && ($nurSchluessel === null || in_array($schluessel, $nurSchluessel, true))) {
+                $this->setzeOption($schluessel, $wert);
+            }
+        }
+    }
+
+    /**
+     * Liest eine ganze Ligadatei: [Options] mit Vorgabewerten, News, Mannschaften, Spieltage und
+     * Partien. Vorher setzeStartwerte() aufrufen.
+     *
+     * @param list<array{string, string, string}> $eintraege Ergebnis von LigaDatei::zerlege() bzw. lies()
+     * @param string $datumsformat Datumsformat der Installation (Einstellung defdateformat)
+     * @param string $anzeigeSp2 Anzeigetext fuer SP=2 (Sprachtext 0)
+     * @param string $anzeigeSp1 Anzeigetext fuer SP=1 (Sprachtext 1)
+     * @param int|float|false|null $nurSpieltag null: alle Spieltage lesen; Zahl: nur den Spieltag mit diesem
+     *                                          Index (Spieltag - 1); false: keinen
+     */
+    public function lies(array $eintraege, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1, $nurSpieltag = null): void
+    {
+        $this->setzeOptionen($eintraege);
+        $this->ergaenzeVorgabewerte($datumsformat);
+        $this->bereiteMannschaftenVor();
+        $this->bereiteNewsVor();
+        $this->bereiteSpieltageVor();
+
+        $spieltag = null;
+        foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
+            $this->setzeNewszeile($abschnitt, $schluessel, $wert);
+            $this->setzeMannschaftswert($abschnitt, $schluessel, $wert);
+            $spieltag = self::spieltagsIndex($abschnitt);
+            if ($nurSpieltag === null || ($nurSpieltag !== false && $spieltag == $nurSpieltag)) {
+                $this->setzeSpieltagswert($abschnitt, $schluessel, $wert, $anzeigeSp2, $anzeigeSp1);
+            }
+        }
+        // nur der Spieltag, zu dem die letzte Zeile der Datei gehoert (wie bisher)
+        if ($spieltag !== null) {
+            $this->bereinigeSpieltagsdatum($spieltag);
+        }
+        $this->ergaenzeMannschaftsnamen();
+    }
+
     /** Liga oder Pokal, nach dem bisher bekannten Typ */
     private function art(): string
     {
