@@ -1,6 +1,6 @@
-# Classlib auf Stufe 2: zusaetzlich nicht gesetzte Variablen und Typangaben in den Kommentaren.
+# Classlib auf Stufe 3: zusaetzlich nicht gesetzte Variablen, Typangaben in den Kommentaren und Rueckgabetypen.
 parameters:
-    level: 2
+    level: 3
     phpVersion:
         min: 80000
         max: 80599

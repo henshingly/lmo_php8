@@ -32,7 +32,7 @@ class pokalRunde {
 
     /**
     * Ende der Runde (Datum) als Unix Timestamp,
-    * @var string
+    * @var integer
     * @access privat
     */
     var $end = 0;
@@ -188,7 +188,7 @@ class pokalRunde {
     *
     * @access public
     * @param integer|string $number Nummer der Partie, '' fuer alle
-    * @return object Partie
+    * @return partie|array|false Partie, alle Partien oder false, wenn es die Nummer nicht gibt
     */
     function getPartien($number = '') {
         if ($number == '' )
@@ -230,7 +230,7 @@ class pokalRunde {
     *
     * @access public
     * @param integer|string $number Nummer des Spieltags, '' fuer alle
-    * @return object Spieltag
+    * @return spieltag|array|false Spieltag, alle Spieltage oder false, wenn es die Nummer nicht gibt
     */
     function getSpieltage($number = '') {
         if ($number == '' )

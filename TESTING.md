@@ -61,7 +61,7 @@ Es laufen vier Pruefungen nacheinander:
 | Konfiguration | Stufe | Umfang |
 |---|---|---|
 | `phpstan.neon.dist` | 0 | gesamter Code (`lmo/`, `src/`, `bin/`, `tests/`): unbekannte Klassen, Funktionen und Methoden |
-| `phpstan-classlib.neon.dist` | 2 | Klassen und Funktionen der Classlib (`lmo/addon/classlib`): zusaetzlich nicht gesetzte Variablen und Typangaben in den Kommentaren |
+| `phpstan-classlib.neon.dist` | 3 | Klassen und Funktionen der Classlib (`lmo/addon/classlib`): zusaetzlich nicht gesetzte Variablen, Typangaben in den Kommentaren und Rueckgabetypen |
 | `phpstan-tests.neon.dist` | 5 | Tests ohne die Hilfsskripte in `tests/GoldenMaster/bin`: falsche Parametertypen, unmoegliche Vergleiche |
 | `phpstan-strict.neon.dist` | 8 | neuer, typisierter Code (`src/`, `bin/lmo-install`, `lmo/lmo-version.php`) |
 

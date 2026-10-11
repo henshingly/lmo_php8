@@ -119,7 +119,7 @@ class liga {
     * @author markus Doerfling <markus@doerfling.net>
     * @since 2.8 RC2
     * @param string $file Pfad zur Ligadatei (*.l98)
-    * @return object ein object passend zum Ligafile
+    * @return liga|null ein object passend zum Ligafile, null wenn es die Datei nicht gibt
     */
     static function factory($file) {
         if (!file_exists($file)) {
