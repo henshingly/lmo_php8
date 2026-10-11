@@ -9,7 +9,8 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Changed  
-- PHPStan prüft die Klassen und Funktionen der Classlib jetzt auf Stufe 1.
+- PHPStan prüft die Klassen und Funktionen der Classlib jetzt auf Stufe 2 und die Tests auf Stufe 5.
+- Classlib: Die Typangaben in den Kommentaren stimmen mit dem Verhalten überein (z. B. `team|null` statt `object` bei den Suchfunktionen, `$` vor den Parameternamen). Am Code selbst ändert sich dadurch nichts.
 
 
 ### Deprecated  
@@ -237,7 +238,8 @@ _Here we write changelog notes for the next version._
 
 
 ### Changed  
-- PHPStan now checks the classes and functions of the classlib on level 1.
+- PHPStan now checks the classes and functions of the classlib on level 2 and the tests on level 5.
+- Classlib: the types in the comments match the behaviour (e.g. `team|null` instead of `object` for the lookup functions, `$` in front of parameter names). The code itself does not change.
 
 
 ### Deprecated  
