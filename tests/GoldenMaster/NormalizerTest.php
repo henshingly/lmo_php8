@@ -70,6 +70,16 @@ final class NormalizerTest extends TestCase
         self::assertStringContainsString('{LMO_PATH}/lmo-admindownload.php on line 21', $docker);
     }
 
+    public function testVersionDoesNotDependOnTheCheckout(): void
+    {
+        $info = static fn (string $version): string => '<h1>Liga Manager Online 4 - Vers. ' . $version . '</h1>';
+
+        $tagged = Normalizer::html($info('4.2.1'), '/tmp/x');
+
+        self::assertSame($tagged, Normalizer::html($info('dev'), '/tmp/x'));
+        self::assertStringContainsString('Vers. {LMO_VERSION}</h1>', $tagged);
+    }
+
     public function testIncludePathDoesNotDependOnEnvironment(): void
     {
         $error = static fn (string $path): string => "<p>Failed opening required 'x.php' (include_path='" . $path . "') in /tmp/x/a.php</p>";

@@ -389,37 +389,16 @@ function redirect($location)
 }
 
 
-// Check URL for existence using PHP
-// Declare function
-function url_check($url)
-{
-    $url_objects = @get_headers($url);
-    return is_array($url_objects) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/', $url_objects[0]) : false;
-};
-
-$string_json = file_get_contents(PATH_TO_LMO . '/composer.json', false);
+// Installierte Version: kennt Composer (Git-Tag des Pakets). Lizenz und PHP-Mindestversion: version.json.
+// Ob es eine neuere Version gibt, fragt nur der Admin-Bereich ab (lmo-adminmain.php).
+require_once(PATH_TO_LMO . '/lmo-version.php');
+$string_json = file_get_contents(PATH_TO_LMO . '/version.json', false);
 $json_a = json_decode($string_json, true, 4);
-$lmo_version = $json_a['version'];
+$lmo_version = lmo_installed_version();
 $lmo_license = $json_a['license'];
 $lmo_version_search = array('<', '>', '=');
 $min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php']);
-$updatefilecheck_URL = $json_a['extra']['check'];
-
-// Check updateURL
-if (url_check($json_a['extra']['check'])) {
-    $LMO_UPDATE = file_get_contents($json_a['extra']['check'], false);
-    $json_update = json_decode($LMO_UPDATE, true, 4);
-    $new_lmo_version = $json_update['stable']['current'];
-    $new_lmo_version_link = $json_update['stable']['download'];
-    $new_lmo_version_changelog = $json_update['stable']['changelog'];
-    $new_lmo_version_announcement = $json_update['stable']['announcement'];
-    $new_lmo_version_time = $json_update['stable']['time'];
-    $new_lmo_version_require_php = $json_update['stable']['require']['php'];
-} else {
-    // The updateURL is unreachable.
-    $new_lmo_version = $json_a['version'];
-    $new_lmo_version_link = '';
-};
+$new_lmo_version = $lmo_version;
 
 /**
  * Sanitizes input values and logs potential XSS attempts to a custom file.

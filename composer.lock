@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc0a81dc980298d1f9b89146377e2d56",
+    "content-hash": "d0c23fd758c30fd27e0880062dc6db24",
     "packages": [
         {
             "name": "pear/console_getopt",
@@ -59,16 +59,16 @@
         },
         {
             "name": "pear/html_template_it",
-            "version": "dev-master",
+            "version": "v1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/HTML_Template_IT.git",
-                "reference": "45b8117de7ad76f52ca0fd22772512d0a246117d"
+                "reference": "47bff60a57ddefd3e177383339e717e598221544"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/HTML_Template_IT/zipball/45b8117de7ad76f52ca0fd22772512d0a246117d",
-                "reference": "45b8117de7ad76f52ca0fd22772512d0a246117d",
+                "url": "https://api.github.com/repos/pear/HTML_Template_IT/zipball/47bff60a57ddefd3e177383339e717e598221544",
+                "reference": "47bff60a57ddefd3e177383339e717e598221544",
                 "shasum": ""
             },
             "require": {
@@ -78,7 +78,6 @@
             "require-dev": {
                 "yoast/phpunit-polyfills": "^2.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -125,7 +124,7 @@
                 "source": "https://github.com/pear/HTML_Template_IT"
             },
             "abandoned": true,
-            "time": "2025-12-20T15:34:24+00:00"
+            "time": "2025-12-14T16:27:16+00:00"
         },
         {
             "name": "pear/pear-core-minimal",
@@ -2102,9 +2101,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "pear/html_template_it": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

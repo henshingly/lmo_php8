@@ -31,6 +31,8 @@ services:
       - "${WEB_PORT:-8082}:80"
     volumes:
       - ./lmo:/var/www/html/lmo
+      # Composer-Abhaengigkeiten liegen wie im Repo neben lmo/ (vorher: composer install bzw. docker compose run --rm tests)
+      - ./vendor:/var/www/html/vendor:ro
       # Laufzeitdaten getrennt vom Code (Neustart von vorn: docker compose down -v)
       - ./lmo:/srv/lmo-src:ro
       - web-config:/var/www/html/lmo/config

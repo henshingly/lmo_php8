@@ -1,4 +1,15 @@
 # Snapshots werden byte-genau verglichen: immer LF, auch unter Windows (core.autocrlf)
 tests/GoldenMaster/__snapshots__/** text eol=lf
+# Tests enthalten Ligadateien als Textblock und vergleichen sie zeilenweise: immer LF
+tests/**/*.php text eol=lf
 # Shell-Skripte laufen im Linux-Container: mit CRLF startet das Docker-Image nicht
 *.sh text eol=lf
+# wird unter Linux direkt ausgefuehrt (Shebang)
+bin/* text eol=lf
+# Nutzer bekommen per Composer nur den LMO, nicht die Entwicklungsumgebung
+/.github export-ignore
+/docker export-ignore
+/docker-compose.yml export-ignore
+/phpunit.xml.dist export-ignore
+/tests export-ignore
+/TESTING.md export-ignore

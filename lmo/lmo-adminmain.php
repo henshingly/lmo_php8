@@ -44,6 +44,18 @@ if ($action == 'admin') {
         $subdir = '';
     }
 
+    // Neueste Version laut Packagist: nur fuer den Hauptadmin, hoechstens einmal am Tag;
+    // die Update-Seite fragt immer frisch ("Version erneut pruefen").
+    if ($_SESSION['lmouserok'] == 2 && $lmo_version !== LMO_VERSION_DEV) {
+        $lmo_update = lmo_update_info(PATH_TO_CONFIGDIR . '/.update-check.json', $todo == 'update');
+        if ($lmo_update !== null) {
+            $new_lmo_version = $lmo_update['version'];
+            $new_lmo_version_time = $lmo_update['time'];
+            $new_lmo_version_require_php = $lmo_update['php'];
+            $new_lmo_version_changelog = $lmo_update['changelog'];
+        }
+    }
+
     $warning = (int)0;
     if (version_compare(PHP_VERSION, $min_php_version, '<')) echo getMessage('This LMO requires a web server with PHP ' . $min_php_version . ' or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>' . PHP_VERSION . '</mark>', $warning = $warning + 1, true);
 ?>
@@ -153,7 +165,7 @@ if ($action == 'admin') {
     </td>
     <td class="lmoMenu" align="right">
 <?php
-    if ($_SESSION['lmouserok'] == 2 && $new_lmo_version > $lmo_version) {
+    if ($_SESSION['lmouserok'] == 2 && lmo_is_newer($new_lmo_version, $lmo_version)) {
         echo '      <a href="' . $adda . 'update" onclick="return chklmolink();" class="lmopUpdate" title="' . $text[590] . '">' . $text[593] . '</a>' . "\n";
         echo '&nbsp;' . "\n";
     }

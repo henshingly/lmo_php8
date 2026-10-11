@@ -26,7 +26,7 @@ if (($action == "admin") && ($todo == "update")) {
     $adda = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=update';?>
       <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td align="center"><h1><?php if ($new_lmo_version > $lmo_version) {echo $text[593];} else {echo $text[596];}?></h1></td>
+          <td align="center"><h1><?php if (lmo_is_newer($new_lmo_version, $lmo_version)) {echo $text[593];} else {echo $text[596];}?></h1></td>
         </tr>
         <tr>
           <td align="center">
@@ -34,7 +34,7 @@ if (($action == "admin") && ($todo == "update")) {
               <tr>
                 <td class="lmost5" align="left">
 <?php
-    if ($new_lmo_version > $lmo_version) {
+    if (lmo_is_newer($new_lmo_version, $lmo_version)) {
         echo '                  ' . $text[590] . "<br><br>\n";?>
                   <fieldset>
                     <legend><?php echo $text[603];?></legend>
@@ -44,37 +44,35 @@ if (($action == "admin") && ($todo == "update")) {
                       </dl>
                       <dl>
                         <dt><label><?php echo $text[604];?>:</label></dt>
-                        <dd><a title="<?php echo $text[314];?>" href="<?php echo $new_lmo_version_link;?>">LMO v.<?php echo $new_lmo_version;?></a></dd>
+                        <dd>LMO v.<?php echo htmlspecialchars($new_lmo_version);?></dd>
                       </dl>
                   </fieldset><br>
                   <fieldset>
                     <legend><?php echo $text[591];?></legend>
                       <dl>
                         <dt><label><?php echo $text[592];?>:</label></dt>
-                        <dd><?php echo $new_lmo_version_require_php;?></dd>
+                        <dd><?php echo htmlspecialchars($new_lmo_version_require_php);?></dd>
                       </dl>
                   </fieldset><br>
                   <fieldset>
-                    <legend><?php echo $text[597] . ': ' . $new_lmo_version;?></legend>
+                    <legend><?php echo $text[597] . ': ' . htmlspecialchars($new_lmo_version);?></legend>
                       <dl>
                         <dt><label><?php echo $text[598];?>:</label></dt>
-                        <dd><?php echo $new_lmo_version;?></dd>
+                        <dd><?php echo htmlspecialchars($new_lmo_version);?></dd>
                       </dl>
-                      <dl>
-                        <dt><label><?php echo $text[599];?>:</label></dt>
-                        <dd><a target="_blank" href="<?php echo $new_lmo_version_announcement;?>"><?php echo $text[80];?></a></dd>
-                      </dl>
+<?php   if ($new_lmo_version_changelog != '') { ?>
                       <dl>
                         <dt><label><?php echo $text[600];?>:</label></dt>
-                        <dd><a target="_blank" href="<?php echo $new_lmo_version_changelog;?>"><?php echo $text[80];?></a></dd>
+                        <dd><a target="_blank" href="<?php echo htmlspecialchars($new_lmo_version_changelog);?>"><?php echo $text[80];?></a></dd>
                       </dl>
+<?php   } ?>
                       <dl>
-                        <dt><label><?php echo $text[314];?>:</label></dt>
-                        <dd><a href="<?php echo $new_lmo_version_link;?>"><?php echo $text[314];?></a></dd>
+                        <dt><label><?php echo $text[593];?>:</label></dt>
+                        <dd><code>composer update</code></dd>
                       </dl>
                       <dl>
                         <dt><label><?php echo $text[601];?>:</label></dt>
-                        <dd><?php echo $new_lmo_version_time;?></dd>
+                        <dd><?php echo htmlspecialchars($new_lmo_version_time);?></dd>
                       </dl>
                       <dl>
                         <dt><label><?php echo $text[602];?>:</label></dt>

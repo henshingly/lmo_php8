@@ -5,7 +5,7 @@ __Alle wesentlichen Änderungen am PHP Script des LMO werden in dieser Datei dok
 
 _Hier schreiben wir Changelog Hinweise der nächsten Version._  
 
-### Added   
+### Added  
 
 
 ### Changed  
@@ -21,6 +21,28 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Security  
+
+
+***
+## [4.3.0] - 2026-10-11
+
+_Hier hätten wir die Changelogs für 4.3.0._  
+
+### Added  
+* Installation per Composer: `composer require lmo/lmo_php8`, danach richtet `vendor/bin/lmo-install` den LMO im Ordner `lmo` ein. `composer update` aktualisiert ihn dort automatisch; Einstellungen, Ligen und Tipps bleiben erhalten (siehe README).  
+
+### Changed  
+* Nur noch eine `composer.json` (im Hauptordner). Lizenz und PHP-Mindestversion liest der LMO jetzt aus `lmo/version.json`; die alte `lmo/composer.json` kann nach einem Update gelöscht werden.  
+* Die Versionsnummer kommt aus dem Git-Tag des Composer-Pakets und steht in keiner Datei mehr. Ohne getaggte Version (Git-Checkout) zeigt der LMO `dev`.  
+* Die Suche nach einer neuen Version fragt Packagist statt der Prüfdatei auf vest-sport.de: nur noch im Admin-Bereich für den Hauptadmin und höchstens einmal am Tag, nicht mehr bei jedem Seitenaufruf.  
+* `pear/html_template_it` in der stabilen Version 1.3.3 statt `dev-master`.  
+* Die Update-Seite im Admin-Bereich nennt bei einer neuen Version `composer update` statt eines Download-Links; der Link zur Ankündigung im Forum entfällt.  
+
+### Removed  
+* Installation per FTP-Upload des Ordners `lmo`: Der LMO wird nur noch per Composer installiert. Bestehende Installationen lassen sich mit `lmo-install` übernehmen (siehe README).  
+
+### Security  
+* Die Composer-Abhängigkeiten liegen nicht mehr im LMO-Ordner (bisher `lmo/vendor`); `lmo-install` sperrt den Ordner `vendor` per `.htaccess`.  
 
 
 ***
@@ -211,6 +233,28 @@ _Here we write changelog notes for the next version._
 
 
 ### Security  
+
+
+***
+## [4.3.0] - 2026-10-11
+
+_Here we had the changelogs for 4.3.0._  
+
+### Added  
+* Installation with Composer: `composer require lmo/lmo_php8`, then `vendor/bin/lmo-install` sets LMO up in the folder `lmo`. `composer update` keeps it up to date automatically; settings, leagues and tips are kept (see README).  
+
+### Changed  
+* Only one `composer.json` is left (in the main folder). LMO now reads license and minimum PHP version from `lmo/version.json`; the old `lmo/composer.json` can be deleted after an update.  
+* The version number comes from the Git tag of the Composer package and is no longer kept in a file. Without a tagged version (Git checkout) LMO shows `dev`.  
+* The search for a new version asks Packagist instead of the check file on vest-sport.de: only in the admin area for the main admin and at most once a day, no longer on every page request.  
+* `pear/html_template_it` in the stable version 1.3.3 instead of `dev-master`.  
+* The update page in the admin area names `composer update` for a new version instead of a download link; the link to the forum announcement is gone.  
+
+### Removed  
+* Installation by uploading the `lmo` folder via FTP: LMO is now installed with Composer only. Existing installations can be taken over with `lmo-install` (see README).  
+
+### Security  
+* The Composer dependencies are no longer inside the LMO folder (previously `lmo/vendor`); `lmo-install` blocks the `vendor` folder with an `.htaccess`.  
 
 
 ***

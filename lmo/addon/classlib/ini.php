@@ -38,7 +38,7 @@ if (file_exists(PATH_TO_ADDONDIR . '/classlib/classes/phpthumb/phpthumb.class.ph
     require_once(PATH_TO_ADDONDIR . '/classlib/classes/phpthumb/phpthumb.class.php');
 }
 if (!defined('LMO_VERSION_NR')) {
-    define('LMO_VERSION_NR', $json_a['version']);
+    define('LMO_VERSION_NR', lmo_installed_version());
 }
 if (!defined('LMO_VERSION')) {
     define('LMO_VERSION', LMO_VERSION_NR);

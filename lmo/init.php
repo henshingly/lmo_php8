@@ -105,12 +105,13 @@ if (isset($_SESSION['lmouserlang'])){
 
 require(PATH_TO_LMO . '/lmo-langload.php');
 
+// Composer-Autoloader: pear/html_template_it und LMO_Template (classmap); nennt auch die installierte Version.
+// lmo-install legt vendor/autoload.php als Verweis an; im Repo selbst liegt vendor/ neben lmo/.
+require_once(is_file(PATH_TO_LMO . '/vendor/autoload.php') ? PATH_TO_LMO . '/vendor/autoload.php' : dirname(PATH_TO_LMO) . '/vendor/autoload.php');
 // Functions
 require_once(PATH_TO_LMO . '/lmo-functions.php');
 // Übergang Classlib
 require_once(PATH_TO_ADDONDIR . '/classlib/ini.php');
-// Composer-Autoloader: pear/html_template_it und LMO_Template (classmap)
-require_once(PATH_TO_LMO . '/vendor/autoload.php');
 
 // Remove Magic Quotes if necessary
 magicQuotesRemove($_GET);
