@@ -181,9 +181,9 @@ testen nur Tabellenseiten und die Berechnung (`pages => table`).
 Lücken des ersten Coverage-Laufs und was sie schließt:
 | Lücke (Original) | Ursache | Szenario |
 |---|---|---|
-| `lmo-calctable1.php` 68-76 | Sonderpunkte im direkten Vergleich | `direct_special` |
-| `lmo-calctable1.php` 84-93, 121-130 | Wertung am grünen Tisch im direkten Vergleich | `direct_wertung` |
-| `lmo-calctable1.php` 163 | Kegelwertung im direkten Vergleich | `direct_kegel` |
+| `Lmo\Liga\Tabelle` (direkter Vergleich)| Sonderpunkte im direkten Vergleich | `direct_special` |
+| `Lmo\Liga\Tabelle` (direkter Vergleich)| Wertung am grünen Tisch im direkten Vergleich | `direct_wertung` |
+| `Lmo\Liga\Tabelle` (direkter Vergleich)| Kegelwertung im direkten Vergleich | `direct_kegel` |
 | `lmo-showtable.php` 144-145, 188, 229-230 | Favorit, Vereins-URL, Teamnotiz | `viewopts` |
 | `lmo-showstats.php` 59-296 | Statistik-Vergleich braucht `stat1`/`stat2` | Seiten `action=stats&stat1=...` |
 | `lmo-calctable.php` 100-102, 117-119, 185-187, 202-204 | nach Analyse nicht erreichbar (siehe unten) | keines |
@@ -197,7 +197,7 @@ ist nie wahr. Das ist eine Herleitung aus dem Code, kein Beweis durch Test.
 ### v8: letzte kleine Lücken
 | Lücke | Szenario/Seite |
 |---|---|
-| `lmo-calctable1.php` 127-130 (Gastteam verliert durch Heim-Wertung im direkten Vergleich) | `direct_wertung_many` (viele Wertungsspiele) |
+| `Lmo\Liga\Tabelle` (direkter Vergleich)(Gastteam verliert durch Heim-Wertung im direkten Vergleich) | `direct_wertung_many` (viele Wertungsspiele) |
 | `lmo-showstats.php` 26-27 (`stat2` ohne `stat1`) | Seite `action=stats&stat1=0&stat2=2` |
 
 Nicht abgedeckt bleiben bewusst: die vier Wertungsblöcke in `lmo-calctable.php` (nicht erreichbar, s. o.)

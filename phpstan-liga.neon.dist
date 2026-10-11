@@ -33,7 +33,6 @@ parameters:
         - lmo/lmo-adminsubnavi.php
         - lmo/lmo-admintab.php
         - lmo/lmo-cal.php
-        - lmo/lmo-calctable1.php
         - lmo/lmo-kocal.php
         - lmo/lmo-openfiledat.php
         - lmo/lmo-openfilename.php

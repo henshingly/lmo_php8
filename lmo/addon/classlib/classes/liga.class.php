@@ -85,7 +85,7 @@ class liga {
 
     /**
     * Spieltage und Tabellenart der Tabelle, die calcTable() gerade sortiert. Der direkte
-    * Vergleich (calcTableforTeams) wertet nur diese Partien, wie lmo-calctable1.php.
+    * Vergleich (calcTableforTeams) wertet nur diese Partien, wie Lmo\Liga\Tabelle.
     * Ausserhalb von calcTable() null: dann zaehlen alle Partien.
     * @var array|null array('rounds' => array(Spieltagsnr => true), 'art' => Tabellenart)
     * @access private
