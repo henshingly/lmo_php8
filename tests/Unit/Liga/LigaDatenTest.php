@@ -72,4 +72,112 @@ class LigaDatenTest extends TestCase
         self::assertNull($ligaDaten->klfin);
         self::assertFalse(isset($klfin));
     }
+
+    public function testVorgabewerteEinerLiga(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+
+        $liga->ergaenzeVorgabewerte('d.m.Y H:i');
+
+        self::assertSame(18, $liga->anzteams);
+        self::assertSame(9.0, $liga->anzsp, 'halb so viele Partien wie Mannschaften');
+        self::assertSame(34.0, $liga->anzst, 'jeder gegen jeden, Hin- und Rueckrunde');
+        self::assertSame([3, 1, 0], [$liga->pns, $liga->pnu, $liga->pnn]);
+        self::assertSame([1, 1, 2, 2, 0, 3], [$liga->champ, $liga->anzcl, $liga->anzck, $liga->anzuc, $liga->anzar, $liga->anzab]);
+        self::assertSame('d.m.Y H:i', $liga->datf);
+        self::assertSame('k.A.', $liga->lmvers);
+        self::assertSame([1, 0, 0], [$liga->dats, $liga->datm, $liga->datc], 'datc steht schon durch die Startwerte auf 0');
+        self::assertSame([1, 1], [$liga->goalfaktor, $liga->pointsfaktor]);
+        self::assertSame(['', ''], [$liga->namepkt, $liga->nametor]);
+        // nur fuer Pokal
+        self::assertNull($liga->klfin);
+        self::assertNull($liga->spez);
+    }
+
+    public function testVorgabewerteLassenWerteAusDerDateiStehen(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->anzteams = '4';
+        $liga->pns = '2';
+        $liga->titel = 'Kreisliga';
+        $liga->goalfaktor = '';
+        $liga->anzab = '0';
+
+        $liga->ergaenzeVorgabewerte('d.m.Y');
+
+        self::assertSame('4', $liga->anzteams);
+        self::assertSame(2.0, $liga->anzsp);
+        self::assertSame(6.0, $liga->anzst);
+        self::assertSame('2', $liga->pns);
+        self::assertSame('Kreisliga', $liga->titel);
+        self::assertSame(1, $liga->goalfaktor, 'ein leerer Faktor zaehlt als fehlend');
+        self::assertSame('0', $liga->anzab, '0 ist ein Wert, kein fehlender');
+    }
+
+    public function testVorgabewerteEinesPokals(): void
+    {
+        $pokal = new LigaDaten();
+        $pokal->setzeStartwerte();
+        $pokal->lmtype = '1';
+        $pokal->anzsp = '99';
+        $pokal->anzst = '99';
+
+        $pokal->ergaenzeVorgabewerte('d.m.Y');
+
+        self::assertSame(16, $pokal->anzteams);
+        self::assertSame(8.0, $pokal->anzsp, 'wird im Pokal immer berechnet');
+        self::assertSame(4, $pokal->anzst, '16 Mannschaften: Achtelfinale bis Finale');
+        self::assertSame([1, 0], [$pokal->spez, $pokal->hands]);
+        self::assertSame([0, 0, 0], [$pokal->klfin, $pokal->playdown, $pokal->playoffmode]);
+        // nur fuer Liga
+        self::assertNull($pokal->pns);
+        self::assertNull($pokal->tabelle);
+    }
+
+    /** @return array<string, array{int|string|null, int|string|null, int|string, int|string}> */
+    public static function fieberkurven(): array
+    {
+        return [
+            'nichts gewaehlt' => [null, null, 0, 0],
+            'zwei verschiedene' => ['3', '5', '3', '5'],
+            'zweimal dieselbe' => ['3', '3', '3', 0],
+            'nur die zweite' => ['0', '5', '5', 0],
+            'nur die erste' => ['3', null, '3', 0],
+        ];
+    }
+
+    /**
+     * @dataProvider fieberkurven
+     * @param int|string|null $stat1
+     * @param int|string|null $stat2
+     * @param int|string $erwartet1
+     * @param int|string $erwartet2
+     */
+    public function testVorgabewerteOrdnenDieFieberkurve($stat1, $stat2, $erwartet1, $erwartet2): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->stat1 = $stat1;
+        $liga->stat2 = $stat2;
+
+        $liga->ergaenzeVorgabewerte('d.m.Y');
+
+        self::assertSame([$erwartet1, $erwartet2], [$liga->stat1, $liga->stat2]);
+    }
+
+    public function testStartwerteSetzenNurWasNichtUebrigBleibenDarf(): void
+    {
+        $liga = new LigaDaten();
+        $liga->titel = 'vorige Liga';
+        $liga->lmtype = '1';
+        $liga->anzteams = '8';
+
+        $liga->setzeStartwerte();
+
+        self::assertSame('', $liga->titel);
+        self::assertSame(0, $liga->lmtype);
+        self::assertSame('8', $liga->anzteams, 'bleibt, bis die Datei oder die Vorgabewerte es setzen');
+    }
 }
