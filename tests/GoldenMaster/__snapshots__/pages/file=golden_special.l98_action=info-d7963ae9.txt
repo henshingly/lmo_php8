@@ -28,7 +28,7 @@
 <table class="lmoMiddle" width="400" cellspacing="0" cellpadding="0" border="0">
 <tr>
 <td align="center">
-<h1>Liga Manager Online 4 - Vers. 4.2.1</h1>
+<h1>Liga Manager Online 4 - Vers. {LMO_VERSION}</h1>
 </td>
 </tr>
 <tr>

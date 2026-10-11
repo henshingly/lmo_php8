@@ -107,12 +107,13 @@ Tipp: `docker compose run --rm tests --stop-on-failure` bricht nach dem ersten F
 vermeidet seitenlange Ausgaben.
 
 ### Hermetische Tests: kein Netzwerkzugriff
-`lmo-functions.php` fragt bei **jedem** Seitenaufruf die Update-URL aus `composer.json`
-(`extra.check`, vest-sport.de) ab, per `get_headers()` und `file_get_contents()`. Das Ergebnis wird
-nur im Admin-Bereich angezeigt. Antwortet der Server langsam, entstehen PHP-Warnungen und
-ein Test schlaegt zufaellig fehl (so gesehen bei `12er-liga.l98&action=stats`). Die Testprozesse
-laufen deshalb mit `allow_url_fopen=0`; die Abfrage nutzt dann ihren lokalen Fallback.
-Bestehende Snapshots bleiben gueltig, weil die oeffentlichen Seiten das Ergebnis nicht verwenden.
+Nur der Admin-Bereich fragt nach einer neueren Version (`lmo-adminmain.php`, `lmo_update_info()` in
+`lmo-version.php`): bei Packagist, hoechstens einmal am Tag, und nur wenn eine getaggte Version
+installiert ist. Im Checkout ist die Version `dev`, es wird also nie gefragt. Die Testprozesse
+laufen zusaetzlich mit `allow_url_fopen=0`.
+
+Die Versionsnummer selbst kommt aus dem Git-Tag (Composer) und steht in keiner Datei. Auf der
+Info-Seite ersetzt der Normalizer sie durch `{LMO_VERSION}`; ein neuer Tag aendert keine Snapshots.
 
 ### Snapshot-Modi
 | `GOLDEN_MODE` | Verhalten |

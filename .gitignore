@@ -6,6 +6,7 @@ coverage/
 lmo/config/init-parameters.php
 lmo/config/lmo-auth.php
 lmo/config/.defaults-stamp
+lmo/config/.update-check.json
 lmo/config/cfg.txt
 lmo/config/*/cfg.txt
 lmo/addon/tipp/lmo-tippauth.txt

@@ -32,6 +32,9 @@ final class Normalizer
         // Umgebung ab (Composer-PEAR-Pfade, /usr/local/lib/php im Docker-Image, /usr/share/php auf GitHub).
         $html = preg_replace("/\\(include_path='[^']*'\\)/", "(include_path='{INCLUDE_PATH}')", $html);
 
+        // Info-Seite: Die Version nennt Composer (Git-Tag); im Checkout ist es je nach Branch "dev".
+        $html = preg_replace('#( - Vers\. )[^<\s]+#', '$1{LMO_VERSION}', $html);
+
         // Session-ID in Links und Formularen (session.use_trans_sid)
         $html = preg_replace('/PHPSESSID=[A-Za-z0-9,-]+/', 'PHPSESSID={SID}', $html);
         $html = preg_replace('/(name="PHPSESSID"\s+value=")[^"]*(")/', '$1{SID}$2', $html);
