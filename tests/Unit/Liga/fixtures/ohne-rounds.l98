@@ -1,0 +1,16 @@
+[Options]
+Name=Ohne Spieltage
+Type=0
+Teams=4
+
+[Teams]
+1=A
+2=B
+3=C
+4=D
+
+[Round1]
+D1=23.08.2024
+TA1=1
+TB1=2
+AT1=1724421600

@@ -205,6 +205,172 @@ class LigaDaten
     public $mterm = null;
 
     /**
+     * Setzt vor dem Lesen einer Datei die Werte zurueck, die nicht von der zuvor geladenen Liga
+     * uebrig bleiben duerfen. Alle anderen Felder behalten ihren Wert, bis die Datei oder
+     * ergaenzeVorgabewerte() sie setzt.
+     */
+    public function setzeStartwerte(): void
+    {
+        $this->titel = '';
+        $this->ergebnis = $this->mittore = $this->kreuz = $this->plan = $this->kurve = 1;
+        $this->datc = $this->nticker = $this->lmtype = 0;
+    }
+
+    /**
+     * Ergaenzt, was jeder Lader braucht, auch die abgespeckten (lmo-openfilename.php,
+     * lmo-openfiledat.php), die nur wenige Schluessel lesen: Name, Version, aktueller Spieltag,
+     * Datumsanzeige und die Groesse des Spielplans.
+     *
+     * Liga (Type=0): fehlende Anzahl der Partien und Spieltage ergibt sich aus der Anzahl der
+     * Mannschaften (jeder gegen jeden, Hin- und Rueckrunde). Pokal: Partien und Runden werden
+     * immer aus der Anzahl der Mannschaften berechnet.
+     */
+    public function ergaenzeGrunddaten(): void
+    {
+        if (!isset($this->stx)) {
+            $this->stx = 1;
+        }
+        if (!isset($this->lmvers)) {
+            $this->lmvers = 'k.A.';
+        }
+        if (!isset($this->titel)) {
+            $this->titel = 'No Name';
+        }
+        if (!isset($this->dats)) {
+            $this->dats = 1;
+        }
+        if (!isset($this->datm)) {
+            $this->datm = 0;
+        }
+        if (!isset($this->datc)) {
+            $this->datc = 1;
+        }
+
+        if ($this->lmtype == 0) {
+            if (!isset($this->anzteams)) {
+                $this->anzteams = 18;
+            }
+            /** @var int|float|numeric-string $teams */
+            $teams = $this->anzteams;
+            if (!isset($this->anzsp)) {
+                $this->anzsp = floor($teams / 2);
+            }
+            if (!isset($this->anzst)) {
+                /** @var int|float|numeric-string $partien */
+                $partien = $this->anzsp;
+                $this->anzst = floor($teams * ($teams - 1) / $partien);
+            }
+        } else {
+            if (!isset($this->anzteams)) {
+                $this->anzteams = 16;
+            }
+            /** @var int|float|numeric-string $teams */
+            $teams = $this->anzteams;
+            $this->anzsp = floor($teams / 2);
+            $this->anzst = strlen(decbin((int) ($teams - 1)));
+        }
+    }
+
+    /**
+     * Ergaenzt nach dem Lesen der Sektion [Options] alles, was die Datei nicht nennt.
+     * Werte aus der Datei bleiben unangetastet. Im Pokal ist Verlaengerung/Elfmeterschiessen immer an.
+     *
+     * @param string $datumsformat Datumsformat der Installation (Einstellung defdateformat)
+     */
+    public function ergaenzeVorgabewerte(string $datumsformat): void
+    {
+        $this->ergaenzeGrunddaten();
+
+        if (!isset($this->ergebnis)) {
+            $this->ergebnis = 1;
+        }
+        if (!isset($this->plan)) {
+            $this->plan = 1;
+        }
+        if (!isset($this->mittore)) {
+            $this->mittore = 1;
+        }
+        if (!isset($this->favteam)) {
+            $this->favteam = 0;
+        }
+        if (!isset($this->selteam)) {
+            $this->selteam = 0;
+        }
+        // Fieberkurve: zweimal dieselbe Mannschaft oder nur die zweite gewaehlt -> als erste fuehren
+        if (!isset($this->stat1)) {
+            $this->stat1 = 0;
+        }
+        if (!isset($this->stat2)) {
+            $this->stat2 = 0;
+        }
+        if ($this->stat1 > 0 && $this->stat1 == $this->stat2) {
+            $this->stat2 = 0;
+        }
+        if ($this->stat1 == 0 && $this->stat2 > 0) {
+            $this->stat1 = $this->stat2;
+            $this->stat2 = 0;
+        }
+        if (!isset($this->datf)) {
+            $this->datf = $datumsformat;
+        }
+        if (!isset($this->urlt)) {
+            $this->urlt = 1;
+        }
+        if (!isset($this->urlb)) {
+            $this->urlb = 0;
+        }
+        if (!isset($this->goalfaktor) || $this->goalfaktor == '') {
+            $this->goalfaktor = 1;
+        }
+        if (!isset($this->pointsfaktor) || $this->pointsfaktor == '') {
+            $this->pointsfaktor = 1;
+        }
+        if (!isset($this->enablegamesort)) {
+            $this->enablegamesort = 1;
+        }
+
+        if ($this->lmtype == 0) {
+            $this->ergaenzeVorgabewerteLiga();
+        } else {
+            $this->ergaenzeVorgabewertePokal();
+        }
+    }
+
+    private function ergaenzeVorgabewerteLiga(): void
+    {
+        $vorgaben = [
+            'kurve' => 1, 'kreuz' => 1, 'tabelle' => 1, 'ligastats' => 1,
+            'hands' => 0, 'hidr' => 0, 'onrun' => 0, 'kegel' => 0, 'minus' => 1,
+            'pns' => 3, 'pnu' => 1, 'pnn' => 0,
+            'pxs' => 0, 'pxu' => 0, 'pxn' => 0,
+            'pps' => 0, 'ppu' => 0, 'ppn' => 0,
+            'champ' => 1, 'anzcl' => 1, 'anzck' => 2, 'anzuc' => 2, 'anzar' => 0, 'anzab' => 3,
+            'namepkt' => '', 'nametor' => '',
+            'einhinrueck' => 1, 'einheimausw' => 1,
+        ];
+        foreach ($vorgaben as $feld => $wert) {
+            if (!isset($this->$feld)) {
+                $this->$feld = $wert;
+            }
+        }
+    }
+
+    private function ergaenzeVorgabewertePokal(): void
+    {
+        if (!isset($this->klfin)) {
+            $this->klfin = 0;
+        }
+        if (empty($this->playdown)) {
+            $this->playdown = 0;
+        }
+        if (empty($this->playoffmode)) {
+            $this->playoffmode = 0;
+        }
+        $this->spez = 1;
+        $this->hands = 0;
+    }
+
+    /**
      * Namen aller Felder; zugleich die Namen der Variablen, die lmo-openfile.php anbindet.
      *
      * @return string[]

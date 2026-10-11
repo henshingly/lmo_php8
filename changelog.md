@@ -9,6 +9,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Changed  
+- Die Vorgabewerte einer Liga (Punkte je Sieg, Anzahl der Spieltage, Datumsformat …) stehen jetzt in `Lmo\Liga\LigaDaten` statt als rund 60 Einzelzeilen im Lader `lmo-openfile.php`. Am Verhalten ändert sich nichts.
 - Die Werte einer Ligadatei liegen zusätzlich gebündelt in einem Objekt (`Lmo\Liga\LigaDaten`, Variable `$ligaDaten`). Die bisherigen einzelnen Variablen (`$titel`, `$teams`, `$goala` …) bleiben gültig und zeigen auf dieselben Werte. Der gesamte LMO liest und schreibt die Liga jetzt über das Objekt (62 Dateien); an der Ausgabe ändert sich nichts. Eigene Erweiterungen, die die alten Variablen benutzen, funktionieren unverändert.
 - 62 alte Dateien nennen am Dateianfang, welche Variablen sie erwarten. PHPStan prüft damit 33 von ihnen auf Stufe 6 und 31 auf Stufe 1 statt auf Stufe 0.
 
@@ -20,6 +21,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
+- Tippspiel und Benutzerverwaltung: Fehlte einer Ligadatei die Anzahl der Spieltage (`Rounds`), brach der abgespeckte Lader `lmo-openfilename.php` mit „Division by zero“ ab. Beide abgespeckten Lader ergänzen fehlende Angaben jetzt wie der Hauptlader.
 
 
 ### Security  
@@ -251,6 +253,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Changed  
+- The default values of a league (points per win, number of rounds, date format …) now live in `Lmo\Liga\LigaDaten` instead of about 60 single lines in the loader `lmo-openfile.php`. The behaviour does not change.
 - The values of a league file are additionally bundled in an object (`Lmo\Liga\LigaDaten`, variable `$ligaDaten`). The existing single variables (`$titel`, `$teams`, `$goala` …) stay valid and point to the same values. All of LMO now reads and writes the league through the object (62 files); the output does not change. Own extensions that use the old variables keep working unchanged.
 - 62 old files state at the top which variables they expect. PHPStan thereby checks 33 of them on level 6 and 31 on level 1 instead of level 0.
 
@@ -262,6 +265,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
+- Tip game and user administration: if a league file lacked the number of rounds (`Rounds`), the reduced loader `lmo-openfilename.php` aborted with "Division by zero". Both reduced loaders now fill in missing values like the main loader.
 
 
 ### Security  

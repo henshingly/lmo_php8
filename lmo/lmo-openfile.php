@@ -35,9 +35,8 @@ if (!defined('PATH_TO_LMO')) {
 // $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
 require(PATH_TO_LMO . '/lmo-ligadaten.php');
 
-$ligaDaten->titel="";
-$ligaDaten->ergebnis=$ligaDaten->mittore=$ligastats1=$ligaDaten->kreuz=$ligaDaten->plan=$ligaDaten->kurve=1;
-$ligaDaten->datc=$ligaDaten->nticker=$ligaDaten->lmtype=0;
+$ligaDaten->setzeStartwerte();
+$ligastats1=1;
 if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsadmin($file)){
   if (substr($file,-4)==".l98"){
     $daten=array();
@@ -129,74 +128,15 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
       }
 
       if (!isset($st)){                         $st=1;}
-      if (!isset($ligaDaten->stx)){                        $ligaDaten->stx=1;}
-      if (!isset($ligaDaten->ergebnis)){                   $ligaDaten->ergebnis=1;}
-      if (!isset($ligaDaten->plan)){                       $ligaDaten->plan=1;}
-      if (!isset($ligaDaten->mittore)){                    $ligaDaten->mittore=1;}
-      if (!isset($ligaDaten->favteam)){                    $ligaDaten->favteam=0;}
-      if (!isset($ligaDaten->selteam)){                    $ligaDaten->selteam=0;}
-      if (!isset($ligaDaten->stat1)){                      $ligaDaten->stat1=0;}
-      if (!isset($ligaDaten->stat2)){                      $ligaDaten->stat2=0;}
-      if (($ligaDaten->stat1>0) && ($ligaDaten->stat1==$ligaDaten->stat2)){      $ligaDaten->stat2=0;}
-      if (($ligaDaten->stat1==0) && ($ligaDaten->stat2>0)){           $ligaDaten->stat1=$ligaDaten->stat2;$ligaDaten->stat2=0;}
-      if (!isset($ligaDaten->lmvers)){                     $ligaDaten->lmvers="k.A.";}
-      if (!isset($ligaDaten->titel)){                      $ligaDaten->titel="No Name";}
-      if (!isset($ligaDaten->dats)){                       $ligaDaten->dats=1;}
-      if (!isset($ligaDaten->datm)){                       $ligaDaten->datm=0;}
-      if (!isset($ligaDaten->datc)){                       if ((isset($ligaDaten->dats)) || (isset($ligaDaten->datm))){$ligaDaten->datc=1;} else {$ligaDaten->datc=0;}}
-      if ((!isset($ligaDaten->dats)) || (!isset($ligaDaten->datm))){  $ligaDaten->datc=0;}
-      if (!isset($ligaDaten->datf)){                       $ligaDaten->datf=$defdateformat;}
-      if (!isset($ligaDaten->urlt)){                       $ligaDaten->urlt=1;}
-      if (!isset($ligaDaten->urlb)){                       $ligaDaten->urlb=0;}
       if (!isset($stats)){                      $stats=0;}
-      if (!isset($ligaDaten->goalfaktor) || $ligaDaten->goalfaktor=="")    { $ligaDaten->goalfaktor=1;}
-      if (!isset($ligaDaten->pointsfaktor) || $ligaDaten->pointsfaktor==""){ $ligaDaten->pointsfaktor=1;}
-      if (!isset($ligaDaten->enablegamesort)){             $ligaDaten->enablegamesort=1;}
+      // alles, was die Datei nicht nennt (Lmo\Liga\LigaDaten)
+      $ligaDaten->ergaenzeVorgabewerte($defdateformat);
       if ($ligaDaten->lmtype==0){
-        if (!isset($ligaDaten->kurve)){                    $ligaDaten->kurve=1;}
-        if (!isset($ligaDaten->kreuz)){                    $ligaDaten->kreuz=1;}
-        if (!isset($ligaDaten->tabelle)){                  $ligaDaten->tabelle=1;}
-        if (!isset($ligaDaten->ligastats)){                $ligaDaten->ligastats=1;}
-        if (!isset($ligaDaten->anzteams)){                 $ligaDaten->anzteams=18;}
-        if (!isset($ligaDaten->anzsp)){                    $ligaDaten->anzsp=floor($ligaDaten->anzteams/2);}
-        if (!isset($ligaDaten->anzst)){                    $ligaDaten->anzst=floor($ligaDaten->anzteams*($ligaDaten->anzteams-1)/$ligaDaten->anzsp);}
-        if (!isset($ligaDaten->hands)){                    $ligaDaten->hands=0;}
-        if (!isset($ligaDaten->hidr)){                     $ligaDaten->hidr=0;}
-        if (!isset($ligaDaten->onrun)){                    $ligaDaten->onrun=0;}
-        if (!isset($ligaDaten->kegel)){                    $ligaDaten->kegel=0;}
-        if (!isset($ligaDaten->minus)){                    $ligaDaten->minus=1;}
-        if (!isset($ligaDaten->pns)){                      $ligaDaten->pns=3;}
-        if (!isset($ligaDaten->pnu)){                      $ligaDaten->pnu=1;}
-        if (!isset($ligaDaten->pnn)){                      $ligaDaten->pnn=0;}
-        if (!isset($ligaDaten->pxs)){                      $ligaDaten->pxs=0;}
-        if (!isset($ligaDaten->pxu)){                      $ligaDaten->pxu=0;}
-        if (!isset($ligaDaten->pxn)){                      $ligaDaten->pxn=0;}
-        if (!isset($ligaDaten->pps)){                      $ligaDaten->pps=0;}
-        if (!isset($ligaDaten->ppu)){                      $ligaDaten->ppu=0;}
-        if (!isset($ligaDaten->ppn)){                      $ligaDaten->ppn=0;}
-        if (!isset($ligaDaten->champ)){                    $ligaDaten->champ=1;}
-        if (!isset($ligaDaten->anzcl)){                    $ligaDaten->anzcl=1;}
-        if (!isset($ligaDaten->anzck)){                    $ligaDaten->anzck=2;}
-        if (!isset($ligaDaten->anzuc)){                    $ligaDaten->anzuc=2;}
-        if (!isset($ligaDaten->anzar)){                    $ligaDaten->anzar=0;}
-        if (!isset($ligaDaten->anzab)){                    $ligaDaten->anzab=3;}
-        if (!isset($ligaDaten->namepkt)){                  $ligaDaten->namepkt="";}
-        if (!isset($ligaDaten->nametor)){                  $ligaDaten->nametor="";}
+        // eigene Bezeichnung fuer Punkte/Tore gilt auch fuer die Sprachtexte, sonst umgekehrt
         if ($ligaDaten->namepkt!=""){                      $text[37]=$ligaDaten->namepkt;}
         else {                                  $ligaDaten->namepkt=$text[37];}
         if ($ligaDaten->nametor!=""){                      $text[38]=$ligaDaten->nametor;}
         else {                                  $ligaDaten->nametor=$text[38];}
-        if (!isset($ligaDaten->einhinrueck)){              $ligaDaten->einhinrueck=1;}
-        if (!isset($ligaDaten->einheimausw)){              $ligaDaten->einheimausw=1;}
-      } else {
-        if (!isset($ligaDaten->anzteams)){                 $ligaDaten->anzteams    = 16;}
-        if (!isset($ligaDaten->klfin)){                    $ligaDaten->klfin       = 0;}
-        if (empty($ligaDaten->playdown)){                  $ligaDaten->playdown    = 0;}
-        if (empty($ligaDaten->playoffmode)){               $ligaDaten->playoffmode = 0;}
-        $ligaDaten->anzsp=floor($ligaDaten->anzteams/2);
-        $ligaDaten->anzst=strlen(decbin($ligaDaten->anzteams-1));
-        $ligaDaten->spez=1;
-        $ligaDaten->hands=0;
       }
       $ligaDaten->teams = array_pad($array,$ligaDaten->anzteams+2,"");
       $ligaDaten->teamm = array_pad($array,$ligaDaten->anzteams+2,"");
