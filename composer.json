@@ -59,6 +59,7 @@
         "phpstan": [
             "phpstan analyse --no-progress --memory-limit=1G",
             "phpstan analyse -c phpstan-classlib.neon.dist --no-progress --memory-limit=1G",
+            "phpstan analyse -c phpstan-tests.neon.dist --no-progress --memory-limit=1G",
             "phpstan analyse -c phpstan-strict.neon.dist --no-progress --memory-limit=1G"
         ],
         "test": "phpunit",

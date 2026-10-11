@@ -157,6 +157,7 @@ final class LeagueFactory
 
         $options = ['Name' => $name] + ($scenario['options'] ?? []);
         $section = '';
+        /** @var array<int|string, bool> $seen */
         $seen = [];
         $out = [];
 

@@ -47,7 +47,7 @@ final class SpielerAddonTest extends TestCase
     /** @return string[][] Zeilen der Statistikdatei, Spalten an "#" getrennt */
     private static function rows(): array
     {
-        $lines = array_filter(explode("\n", str_replace("\r", '', (string)file_get_contents(self::statFile()))), 'strlen');
+        $lines = array_filter(explode("\n", str_replace("\r", '', (string)file_get_contents(self::statFile()))), static fn (string $line): bool => $line !== '');
         return array_map(static fn (string $line): array => explode('#', $line), array_values($lines));
     }
 

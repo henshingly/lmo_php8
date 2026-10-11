@@ -1,0 +1,16 @@
+# Tests auf Stufe 5: falsche Parametertypen, unmoegliche Vergleiche, unbekannte Eigenschaften.
+parameters:
+    level: 5
+    phpVersion:
+        min: 80000
+        max: 80599
+    paths:
+        - tests
+    excludePaths:
+        - tests/GoldenMaster/__snapshots__
+        # Hilfsskripte: binden den alten Code ein und arbeiten mit dessen globalen Variablen
+        # (dafuer gilt Stufe 0 aus phpstan.neon.dist)
+        - tests/GoldenMaster/bin
+    # Klassen und Funktionen des LMO, die die Tests aufrufen
+    scanDirectories:
+        - lmo
