@@ -14,7 +14,8 @@ namespace Lmo\Liga;
  *
  * Gelesen wird zeilenweise: Ein Abschnitt beginnt nur mit einer Zeile, die als Ganzes in
  * eckigen Klammern steht. Eckige Klammern und weitere "=" in einem Wert gehoeren zum Wert.
- * Was die Werte bedeuten, weiss diese Klasse nicht; das ist Sache von LigaDaten und der classlib.
+ * Geschrieben wird mit einer Leerzeile zwischen den Abschnitten und Zeilenende LF.
+ * Was die Werte bedeuten, weiss diese Klasse nicht; das ist Sache von Rohdaten\Liga und LigaDaten.
  */
 final class LigaDatei
 {
@@ -80,5 +81,45 @@ final class LigaDatei
         }
 
         return $abschnitte;
+    }
+
+    /**
+     * Die Abschnitte als Text einer Ligadatei. Gegenstueck zu zerlege(); ein Abschnitt ohne Zeilen
+     * besteht nur aus seiner Kopfzeile.
+     *
+     * @param iterable<array{string, iterable<array{string, string}>}> $abschnitte je Abschnitt: Name, dann Schluessel und Wert je Zeile
+     */
+    public static function alsText(iterable $abschnitte): string
+    {
+        $text = '';
+        foreach ($abschnitte as [$abschnitt, $zeilen]) {
+            $text .= ($text === '' ? '' : "\n") . '[' . $abschnitt . "]\n";
+            foreach ($zeilen as [$schluessel, $wert]) {
+                $text .= $schluessel . '=' . $wert . "\n";
+            }
+        }
+
+        return $text;
+    }
+
+    /**
+     * Schreibt eine Ligadatei; waehrenddessen ist sie fuer andere gesperrt. Gegenstueck zu lies().
+     *
+     * @param iterable<array{string, iterable<array{string, string}>}> $abschnitte wie alsText()
+     * @return bool false, wenn sich die Datei nicht schreiben laesst
+     */
+    public static function schreibe(string $pfad, iterable $abschnitte): bool
+    {
+        $datei = @fopen($pfad, 'wb');
+        if ($datei === false) {
+            return false;
+        }
+        flock($datei, LOCK_EX);
+        $geschrieben = fwrite($datei, self::alsText($abschnitte)) !== false;
+        fflush($datei);
+        flock($datei, LOCK_UN);
+        fclose($datei);
+
+        return $geschrieben;
     }
 }
