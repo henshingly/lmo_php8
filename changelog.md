@@ -7,6 +7,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 ### Added  
 - `Lmo\Liga\Rohdaten\Liga` (mit `Mannschaft`, `Spieltag`, `Partie`): hält den Inhalt einer Ligadatei so, wie er in der Datei steht, und lädt und speichert ihn als Paar. Nichts wird für die Anzeige umgerechnet, ergänzt oder aufgefüllt; unbekannte Schlüssel und Abschnitte bleiben erhalten. Der Kern des LMO lädt und speichert jede Liga darüber.
+- `Lmo\Liga\Einstellungen`: die Einstellungen einer Liga (`[Options]`) mit ihren Vorgabewerten und den berechneten Größen (Spieltage, Partien), ohne die Rohdaten zu ändern – `Rohdaten\Liga::lies($pfad)->einstellungen()->wert('Teams')`. Dazu an den Rohdaten `Liga::mannschaftsname()` sowie `Spieltag::ersterTag()` und `letzterTag()`. Damit können Seiten direkt auf den Rohdaten arbeiten; die beiden Tippspiel-Lader tun das bereits.
 
 
 ### Changed  
@@ -270,6 +271,7 @@ _Here we write changelog notes for the next version._
 
 ### Added  
 - `Lmo\Liga\Rohdaten\Liga` (with `Mannschaft`, `Spieltag`, `Partie`): holds the content of a league file exactly as it is in the file and loads and saves it as a pair. Nothing is converted for display, added or padded; unknown keys and sections are kept. The core of LMO loads and saves every league through it.
+- `Lmo\Liga\Einstellungen`: the settings of a league (`[Options]`) with their defaults and the computed sizes (rounds, matches), without changing the raw data – `Rohdaten\Liga::lies($pfad)->einstellungen()->wert('Teams')`. In addition `Liga::mannschaftsname()` as well as `Spieltag::ersterTag()` and `letzterTag()` on the raw data. Pages can thereby work directly on the raw data; the two loaders of the prediction game already do.
 
 
 ### Changed  
