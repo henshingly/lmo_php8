@@ -102,6 +102,124 @@ class EinstellungenTest extends TestCase
         self::assertContains('PointsForWin', Einstellungen::schluessel());
     }
 
+    /** @return array<string, array{string, string}> Methode => [Schluessel, Typ] */
+    private static function methoden(): array
+    {
+        return [
+            'name' => ['Name', 'string'],
+            'programmversion' => ['Title', 'string'],
+            'mannschaften' => ['Teams', 'int'],
+            'spieltage' => ['Rounds', 'int'],
+            'partienJeSpieltag' => ['Matches', 'int'],
+            'aktuellerSpieltag' => ['Actual', 'int'],
+            'lieblingsmannschaft' => ['favTeam', 'int'],
+            'vorgewaehlteMannschaft' => ['selTeam', 'int'],
+            'punkteFuerSieg' => ['PointsForWin', 'int'],
+            'punkteFuerUnentschieden' => ['PointsForDraw', 'int'],
+            'punkteFuerNiederlage' => ['PointsForLost', 'int'],
+            'punkteFuerSiegNachVerlaengerung' => ['XtraS', 'int'],
+            'punkteFuerUnentschiedenNachVerlaengerung' => ['XtraU', 'int'],
+            'punkteFuerNiederlageNachVerlaengerung' => ['XtraV', 'int'],
+            'punkteFuerSiegImElfmeterschiessen' => ['SpezS', 'int'],
+            'punkteFuerUnentschiedenImElfmeterschiessen' => ['SpezU', 'int'],
+            'punkteFuerNiederlageImElfmeterschiessen' => ['SpezV', 'int'],
+            'mitVerlaengerung' => ['Spez', 'bool'],
+            'mitDirektemVergleich' => ['Direct', 'bool'],
+            'mitHandicap' => ['HandS', 'bool'],
+            'istKegelliga' => ['Kegel', 'bool'],
+            'ohneUnentschieden' => ['HideDraw', 'bool'],
+            'laufendeTabelle' => ['OnRun', 'int'],
+            'mitMeister' => ['Champ', 'bool'],
+            'plaetzeChampionsLeague' => ['CL', 'int'],
+            'plaetzeClQualifikation' => ['CK', 'int'],
+            'plaetzeUefaCup' => ['UC', 'int'],
+            'plaetzeRelegation' => ['AR', 'int'],
+            'plaetzeAbstieg' => ['AB', 'int'],
+            'bezeichnungPunkte' => ['namePkt', 'string'],
+            'bezeichnungTore' => ['nameTor', 'string'],
+            'mitHinRueckrundentabelle' => ['tableHinRueck', 'bool'],
+            'mitHeimAuswaertstabelle' => ['tableHeimAusw', 'bool'],
+            'fieberkurveErste' => ['kurve1', 'int'],
+            'fieberkurveZweite' => ['kurve2', 'int'],
+            'mitSpielUmPlatz3' => ['KlFin', 'bool'],
+            'mitPlaydown' => ['playdown', 'bool'],
+            'playoffModus' => ['playoffmode', 'int'],
+            'torfaktor' => ['goalfaktor', 'int'],
+            'punktfaktor' => ['pointsfaktor', 'int'],
+            'sortiertNachAnstoss' => ['enableGameSort', 'bool'],
+            'mitKalender' => ['DatC', 'bool'],
+            'mitSpieltagsdatum' => ['DatS', 'bool'],
+            'mitAnstosszeit' => ['DatM', 'bool'],
+            'mitMannschaftslinks' => ['urlT', 'bool'],
+            'mitSpielberichten' => ['urlB', 'bool'],
+            'mitSpielplan' => ['Plan', 'bool'],
+            'mitErgebnissen' => ['Ergebnis', 'bool'],
+            'mitToren' => ['mittore', 'bool'],
+            'mitNewsticker' => ['ticker', 'bool'],
+            'mitFieberkurve' => ['Graph', 'bool'],
+            'mitKreuztabelle' => ['Kreuz', 'bool'],
+            'mitTabelle' => ['Tabelle', 'bool'],
+            'mitLigastatistik' => ['Ligastats', 'bool'],
+        ];
+    }
+
+    public function testJedeEinstellungHatEineMethodeMitFestemTyp(): void
+    {
+        $ohneEigene = ['Type' => 'istPokal()', 'MinusPoints' => 'mitMinuspunkten()', 'DatF' => 'datumsformat()'];
+        $schluessel = array_merge(array_column(self::methoden(), 0), array_keys($ohneEigene));
+        sort($schluessel);
+        $alle = Einstellungen::schluessel();
+        sort($alle);
+        self::assertSame($alle, $schluessel);
+
+        foreach (self::methoden() as $methode => [, $typ]) {
+            $rueckgabe = (new \ReflectionMethod(Einstellungen::class, $methode))->getReturnType();
+            self::assertInstanceOf(\ReflectionNamedType::class, $rueckgabe);
+            self::assertSame($typ, $rueckgabe->getName(), $methode);
+        }
+    }
+
+    /**
+     * Die Methoden liefern denselben Wert wie wert(), nur mit festem Typ.
+     *
+     * @dataProvider ligadateien
+     */
+    public function testMethodenStimmenMitWertUeberein(string $pfad): void
+    {
+        $e = Liga::lies($pfad)->einstellungen();
+
+        foreach (self::methoden() as $methode => [$schluessel, $typ]) {
+            $wert = $e->wert($schluessel);
+            $erwartet = $typ === 'bool' ? $wert == 1 : ($typ === 'int' ? (int) $wert : (string) $wert);
+            self::assertSame($erwartet, $e->$methode(), $methode);
+        }
+        self::assertSame($e->wert('MinusPoints') == 2, $e->mitMinuspunkten());
+        self::assertSame($e->wert('DatF') ?? 'd.m.Y', $e->datumsformat('d.m.Y'));
+    }
+
+    public function testTypenAnEinemBeispiel(): void
+    {
+        $liga = self::liga(['Name=Kreisliga', 'Teams=4', 'Spez=1', 'urlB=0', 'goalfaktor=10', 'MinusPoints=2', 'DatF=d.m.', 'PointsForWin=viel', 'Kreuz=ja']);
+        $e = $liga->einstellungen();
+
+        self::assertSame('Kreisliga', $e->name());
+        self::assertSame([4, 2, 6], [$e->mannschaften(), $e->partienJeSpieltag(), $e->spieltage()]);
+        self::assertTrue($e->mitVerlaengerung());
+        self::assertFalse($e->mitSpielberichten());
+        self::assertTrue($e->mitSpielplan(), 'Vorgabewert');
+        self::assertSame(10, $e->torfaktor());
+        self::assertTrue($e->mitMinuspunkten());
+        self::assertSame('d.m.', $e->datumsformat('d.m.Y'));
+        self::assertSame('d.m.Y', (new Liga())->einstellungen()->datumsformat('d.m.Y'), 'ohne Angabe das Format der Installation');
+        // unlesbare Angaben: eine Zahl ist 0, ein Schalter ist nur bei 1 an
+        self::assertSame(0, $e->punkteFuerSieg());
+        self::assertFalse($e->mitKreuztabelle());
+        // im Pokal gibt es die Einstellungen der Liga nicht
+        $pokal = self::liga(['Type=1', 'PointsForWin=3', 'KlFin=1'])->einstellungen();
+        self::assertSame([0, true, true], [$pokal->punkteFuerSieg(), $pokal->mitSpielUmPlatz3(), $pokal->mitVerlaengerung()]);
+        self::assertFalse($e->mitSpielUmPlatz3());
+    }
+
     /** @return array<string, array{string}> */
     public static function ligadateien(): array
     {

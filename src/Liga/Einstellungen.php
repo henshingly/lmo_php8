@@ -10,8 +10,13 @@ namespace Lmo\Liga;
  * Die Klasse liest nur; die Rohdaten bleiben, wie sie in der Datei stehen. Gespeichert wird
  * weiterhin ueber Rohdaten\Liga.
  *
+ * Je Einstellung gibt es eine Methode mit festem Typ: Schalter (in der Datei 0 oder 1) sind bool,
+ * Anzahlen, Punkte und Nummern int, Namen string. wert() liefert daneben den Wert, wie er in der
+ * Datei steht, auch fuer Schluessel, die der LMO nicht kennt.
+ *
  *   $einstellungen = Rohdaten\Liga::lies($pfad)->einstellungen();
- *   $einstellungen->wert('Teams');
+ *   $einstellungen->mannschaften();      // int
+ *   $einstellungen->mitVerlaengerung();  // bool
  */
 final class Einstellungen
 {
@@ -142,7 +147,7 @@ final class Einstellungen
             case 'Matches':
                 return $pokal ? $this->partienAusMannschaften() : ($this->liga->optionen['Matches'] ?? $this->partienAusMannschaften());
             case 'Rounds':
-                return $this->spieltage();
+                return $this->berechneSpieltage();
             case 'goalfaktor':
             case 'pointsfaktor':
                 return ($this->liga->optionen[$schluessel] ?? '') === '' ? 1 : $this->liga->optionen[$schluessel];
@@ -158,6 +163,378 @@ final class Einstellungen
         }
 
         return $this->ausDatei($schluessel);
+    }
+
+    // --- Allgemein
+
+    /** Name der Liga, ohne die Schraegstriche der Datei */
+    public function name(): string
+    {
+        return $this->text('Name');
+    }
+
+    /** Title: Name und Version des Programms, das die Datei geschrieben hat; ohne Angabe "k.A." */
+    public function programmversion(): string
+    {
+        return $this->text('Title');
+    }
+
+    /** Teams: Anzahl der Mannschaften; ohne Angabe 18 (Liga) bzw. 16 (Pokal) */
+    public function mannschaften(): int
+    {
+        return $this->zahl('Teams');
+    }
+
+    /** Rounds: Anzahl der Spieltage, im Pokal der Runden; ohne Angabe aus der Anzahl der Mannschaften */
+    public function spieltage(): int
+    {
+        return $this->zahl('Rounds');
+    }
+
+    /** Matches: Partien je Spieltag, im Pokal Paarungen der ersten Runde; ohne Angabe aus der Anzahl der Mannschaften */
+    public function partienJeSpieltag(): int
+    {
+        return $this->zahl('Matches');
+    }
+
+    /** Actual: der aktuelle Spieltag laut Datei; ohne Angabe 1 */
+    public function aktuellerSpieltag(): int
+    {
+        return $this->zahl('Actual');
+    }
+
+    /** favTeam: Nummer der Lieblingsmannschaft, 0 = keine */
+    public function lieblingsmannschaft(): int
+    {
+        return $this->zahl('favTeam');
+    }
+
+    /** selTeam: Nummer der Mannschaft, deren Spielplan zuerst gezeigt wird, 0 = keine */
+    public function vorgewaehlteMannschaft(): int
+    {
+        return $this->zahl('selTeam');
+    }
+
+    // --- Wertung (nur Liga; im Pokal 0 bzw. false)
+
+    /** PointsForWin; ohne Angabe 3 */
+    public function punkteFuerSieg(): int
+    {
+        return $this->zahl('PointsForWin');
+    }
+
+    /** PointsForDraw; ohne Angabe 1 */
+    public function punkteFuerUnentschieden(): int
+    {
+        return $this->zahl('PointsForDraw');
+    }
+
+    /** PointsForLost; ohne Angabe 0 */
+    public function punkteFuerNiederlage(): int
+    {
+        return $this->zahl('PointsForLost');
+    }
+
+    /** XtraS */
+    public function punkteFuerSiegNachVerlaengerung(): int
+    {
+        return $this->zahl('XtraS');
+    }
+
+    /** XtraU */
+    public function punkteFuerUnentschiedenNachVerlaengerung(): int
+    {
+        return $this->zahl('XtraU');
+    }
+
+    /** XtraV */
+    public function punkteFuerNiederlageNachVerlaengerung(): int
+    {
+        return $this->zahl('XtraV');
+    }
+
+    /** SpezS */
+    public function punkteFuerSiegImElfmeterschiessen(): int
+    {
+        return $this->zahl('SpezS');
+    }
+
+    /** SpezU */
+    public function punkteFuerUnentschiedenImElfmeterschiessen(): int
+    {
+        return $this->zahl('SpezU');
+    }
+
+    /** SpezV */
+    public function punkteFuerNiederlageImElfmeterschiessen(): int
+    {
+        return $this->zahl('SpezV');
+    }
+
+    /** Spez: Verlaengerung und Elfmeterschiessen sind moeglich; ein Spiel zeigt dann seinen Zusatz (n.V., i.E.). Im Pokal immer */
+    public function mitVerlaengerung(): bool
+    {
+        return $this->schalter('Spez');
+    }
+
+    /** Direct: bei Punktgleichheit zaehlt der direkte Vergleich */
+    public function mitDirektemVergleich(): bool
+    {
+        return $this->schalter('Direct');
+    }
+
+    /** HandS: je Spieltag eine Handicap-Reihenfolge */
+    public function mitHandicap(): bool
+    {
+        return $this->schalter('HandS');
+    }
+
+    /** Kegel: Kegel-Wertung */
+    public function istKegelliga(): bool
+    {
+        return $this->schalter('Kegel');
+    }
+
+    /** HideDraw: Unentschieden werden nicht angezeigt (und koennen nicht getippt werden) */
+    public function ohneUnentschieden(): bool
+    {
+        return $this->schalter('HideDraw');
+    }
+
+    /** OnRun: Einstellung der Tabelle des laufenden Spieltags, 0 = aus */
+    public function laufendeTabelle(): int
+    {
+        return $this->zahl('OnRun');
+    }
+
+    // --- Tabelle (nur Liga)
+
+    /** Champ: der erste Platz ist als Meister markiert */
+    public function mitMeister(): bool
+    {
+        return $this->schalter('Champ');
+    }
+
+    /** CL: Plaetze Champions League */
+    public function plaetzeChampionsLeague(): int
+    {
+        return $this->zahl('CL');
+    }
+
+    /** CK: Plaetze Champions-League-Qualifikation */
+    public function plaetzeClQualifikation(): int
+    {
+        return $this->zahl('CK');
+    }
+
+    /** UC: Plaetze UEFA-Cup */
+    public function plaetzeUefaCup(): int
+    {
+        return $this->zahl('UC');
+    }
+
+    /** AR: Relegationsplaetze */
+    public function plaetzeRelegation(): int
+    {
+        return $this->zahl('AR');
+    }
+
+    /** AB: Abstiegsplaetze */
+    public function plaetzeAbstieg(): int
+    {
+        return $this->zahl('AB');
+    }
+
+    /** namePkt: eigene Bezeichnung fuer Punkte, '' = die des Sprachtexts */
+    public function bezeichnungPunkte(): string
+    {
+        return $this->text('namePkt');
+    }
+
+    /** nameTor: eigene Bezeichnung fuer Tore, '' = die des Sprachtexts */
+    public function bezeichnungTore(): string
+    {
+        return $this->text('nameTor');
+    }
+
+    /** tableHinRueck: Hin- und Rueckrundentabelle anbieten */
+    public function mitHinRueckrundentabelle(): bool
+    {
+        return $this->schalter('tableHinRueck');
+    }
+
+    /** tableHeimAusw: Heim- und Auswaertstabelle anbieten */
+    public function mitHeimAuswaertstabelle(): bool
+    {
+        return $this->schalter('tableHeimAusw');
+    }
+
+    /** kurve1: erste Mannschaft der Fieberkurve, 0 = keine */
+    public function fieberkurveErste(): int
+    {
+        return $this->zahl('kurve1');
+    }
+
+    /** kurve2: zweite Mannschaft der Fieberkurve, 0 = keine */
+    public function fieberkurveZweite(): int
+    {
+        return $this->zahl('kurve2');
+    }
+
+    // --- Pokal (in der Liga 0 bzw. false)
+
+    /** KlFin: Spiel um Platz 3 */
+    public function mitSpielUmPlatz3(): bool
+    {
+        return $this->schalter('KlFin');
+    }
+
+    /** playdown */
+    public function mitPlaydown(): bool
+    {
+        return $this->schalter('playdown');
+    }
+
+    /** playoffmode: 0 = keiner */
+    public function playoffModus(): int
+    {
+        return $this->zahl('playoffmode');
+    }
+
+    // --- Anzeige
+
+    /** goalfaktor: Teiler fuer die Anzeige der Tore (1, 10, 100) */
+    public function torfaktor(): int
+    {
+        return $this->zahl('goalfaktor');
+    }
+
+    /** pointsfaktor: Teiler fuer die Anzeige der Punkte (1, 10, 100) */
+    public function punktfaktor(): int
+    {
+        return $this->zahl('pointsfaktor');
+    }
+
+    /** enableGameSort: Partien eines Spieltags nach Anstoss sortiert zeigen */
+    public function sortiertNachAnstoss(): bool
+    {
+        return $this->schalter('enableGameSort');
+    }
+
+    /** DatC: Kalender anbieten */
+    public function mitKalender(): bool
+    {
+        return $this->schalter('DatC');
+    }
+
+    /** DatS: Datum des Spieltags anzeigen */
+    public function mitSpieltagsdatum(): bool
+    {
+        return $this->schalter('DatS');
+    }
+
+    /** DatM: Anstosszeit der Spiele anzeigen */
+    public function mitAnstosszeit(): bool
+    {
+        return $this->schalter('DatM');
+    }
+
+    /** urlT: Homepages der Mannschaften verlinken */
+    public function mitMannschaftslinks(): bool
+    {
+        return $this->schalter('urlT');
+    }
+
+    /** urlB: Spielberichte verlinken */
+    public function mitSpielberichten(): bool
+    {
+        return $this->schalter('urlB');
+    }
+
+    /** Plan: Spielplan der Mannschaften anbieten */
+    public function mitSpielplan(): bool
+    {
+        return $this->schalter('Plan');
+    }
+
+    /** Ergebnis: Ergebnisse anbieten */
+    public function mitErgebnissen(): bool
+    {
+        return $this->schalter('Ergebnis');
+    }
+
+    /** mittore: Tabelle mit Toren */
+    public function mitToren(): bool
+    {
+        return $this->schalter('mittore');
+    }
+
+    /** ticker: Newsticker an */
+    public function mitNewsticker(): bool
+    {
+        return $this->schalter('ticker');
+    }
+
+    /** Graph: Fieberkurve anbieten */
+    public function mitFieberkurve(): bool
+    {
+        return $this->schalter('Graph');
+    }
+
+    /** Kreuz: Kreuztabelle anbieten */
+    public function mitKreuztabelle(): bool
+    {
+        return $this->schalter('Kreuz');
+    }
+
+    /** Tabelle: Tabelle anbieten */
+    public function mitTabelle(): bool
+    {
+        return $this->schalter('Tabelle');
+    }
+
+    /** Ligastats: Ligastatistik anbieten */
+    public function mitLigastatistik(): bool
+    {
+        return $this->schalter('Ligastats');
+    }
+
+    /**
+     * MinusPoints: fuehrt die Liga neben den Pluspunkten auch Minuspunkte (in der Datei 2)?
+     * Ohne Angabe und im Pokal nicht.
+     */
+    public function mitMinuspunkten(): bool
+    {
+        return $this->wert('MinusPoints') == 2;
+    }
+
+    /**
+     * DatF: Datumsformat der Liga in date()-Schreibweise.
+     *
+     * @param string $vorgabe Format der Installation (Einstellung defdateformat); es gilt, wenn die Liga keines nennt
+     */
+    public function datumsformat(string $vorgabe): string
+    {
+        return (string) ($this->wert('DatF') ?? $vorgabe);
+    }
+
+    /** Ein Schalter ist an, wenn in der Datei 1 steht (bzw. der Vorgabewert 1 ist). */
+    private function schalter(string $schluessel): bool
+    {
+        return $this->wert($schluessel) == 1;
+    }
+
+    /** Eine Zahl; fehlt sie fuer diesen Typ (Liga/Pokal) oder ist sie unlesbar: 0. */
+    private function zahl(string $schluessel): int
+    {
+        $wert = $this->wert($schluessel);
+
+        return is_numeric($wert) ? (int) $wert : 0;
+    }
+
+    private function text(string $schluessel): string
+    {
+        return (string) $this->wert($schluessel);
     }
 
     /**
@@ -189,7 +566,7 @@ final class Einstellungen
     }
 
     /** Anzahl der Mannschaften als Zahl; eine unlesbare Angabe zaehlt als 0 */
-    private function mannschaften(): float
+    private function anzahlAlsZahl(): float
     {
         $teams = $this->wert('Teams');
 
@@ -198,15 +575,15 @@ final class Einstellungen
 
     private function partienAusMannschaften(): float
     {
-        return floor($this->mannschaften() / 2);
+        return floor($this->anzahlAlsZahl() / 2);
     }
 
     /**
      * @return int|float|string
      */
-    private function spieltage()
+    private function berechneSpieltage()
     {
-        $teams = $this->mannschaften();
+        $teams = $this->anzahlAlsZahl();
         if ($this->istPokal()) {
             return strlen(decbin((int) ($teams - 1)));
         }

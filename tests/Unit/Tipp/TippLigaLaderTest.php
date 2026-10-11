@@ -32,8 +32,8 @@ class TippLigaLaderTest extends TestCase
         [$erstes, $zweites] = $spiele;
         // was die Anzeige von der Liga wissen muss, traegt jedes Spiel
         self::assertSame(['Tippliga', '0', 2], [$erstes->titel, $erstes->typ, $erstes->runden]);
-        self::assertSame(['0', '1', '0', '1', '1'], [$erstes->ohneUnentschieden, $erstes->mitSpieltagsdatum, $erstes->mitAnstosszeit, $erstes->mitSpielbericht, $erstes->torfaktor]);
-        self::assertNull($erstes->mitZusatz, 'die Liga nennt Spez nicht');
+        self::assertSame([false, true, false, true, 1], [$erstes->ohneUnentschieden, $erstes->mitSpieltagsdatum, $erstes->mitAnstosszeit, $erstes->mitSpielbericht, $erstes->torfaktor]);
+        self::assertFalse($erstes->mitZusatz, 'die Liga nennt Spez nicht');
         self::assertSame(['01.03.2025', '02.03.2025', 1], [$zweites->ersterTag, $zweites->letzterTag, $zweites->spieleJePaarung]);
         // ein "|" im Namen oder in der Notiz gehoert zum Wert; frueher endete der Wert dort
         self::assertSame(['Alpha', '<strong>B | C</strong>'], [$erstes->heim, $erstes->gast], 'Lieblingsmannschaft ist hervorgehoben');

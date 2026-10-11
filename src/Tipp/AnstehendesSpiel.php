@@ -23,23 +23,23 @@ final class AnstehendesSpiel
     /** Anzahl der Runden, wie sie sich im Pokal aus der Anzahl der Mannschaften ergibt (fuer "Finale", "Halbfinale" ...) */
     public int $runden = 0;
 
-    /** @var int|string HideDraw: 0 = Unentschieden kann getippt werden */
-    public $ohneUnentschieden = 0;
+    /** HideDraw: Unentschieden kann nicht getippt werden */
+    public bool $ohneUnentschieden = false;
 
-    /** @var int|string DatS: 1 = Datum des Spieltags anzeigen */
-    public $mitSpieltagsdatum = 1;
+    /** DatS: Datum des Spieltags anzeigen */
+    public bool $mitSpieltagsdatum = true;
 
-    /** @var int|string DatM: 1 = Anstosszeit anzeigen */
-    public $mitAnstosszeit = 0;
+    /** DatM: Anstosszeit anzeigen */
+    public bool $mitAnstosszeit = false;
 
-    /** @var int|string urlB: 1 = Spielberichte verlinken */
-    public $mitSpielbericht = 0;
+    /** urlB: Spielberichte verlinken */
+    public bool $mitSpielbericht = false;
 
-    /** @var int|string|null Spez: 1 = Zusatz (n.V., i.E.) anzeigen; im Pokal immer */
-    public $mitZusatz = null;
+    /** Spez: Zusatz (n.V., i.E.) anzeigen; im Pokal immer */
+    public bool $mitZusatz = false;
 
-    /** @var int|float|string goalfaktor: Teiler fuer die Anzeige der Tore */
-    public $torfaktor = 1;
+    /** goalfaktor: Teiler fuer die Anzeige der Tore */
+    public int $torfaktor = 1;
 
     // --- der Spieltag
 
