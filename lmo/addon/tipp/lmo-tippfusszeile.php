@@ -19,6 +19,34 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var string $todo gewaehlte Aktion (Aufrufparameter)
+ *
+ * Einstellungen:
+ * @var int|string $backlink Einstellung aus cfg.txt
+ * @var int|string $calctime Einstellung aus cfg.txt
+ * @var int|string $tipp_jokertipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_jokertippmulti Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rergebnis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rremis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtendenz Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtendenzdiff Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtor Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showstsiege Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $all
+ * @var mixed $nick
+ * @var mixed $startzeit
+ * @var mixed $wertung
+ */
   
   
 

@@ -2,6 +2,17 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var int|string $st gewaehlter Spieltag
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $addb
+ * @var mixed $addr
+ */
 ?>            <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
               <tr>
 <?php

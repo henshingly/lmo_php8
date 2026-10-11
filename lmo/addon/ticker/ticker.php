@@ -20,6 +20,24 @@
 
 require_once(__DIR__ . '/../../init.php');
 
+/**
+ * Diese Datei wird direkt aufgerufen; init.php stellt bereit:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ *
+ * Einstellungen:
+ * @var int|string $ticker_standard_ligen Einstellung aus ticker/cfg.txt
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $ticker_breite
+ * @var mixed $ticker_geschwindigkeit
+ * @var mixed $ticker_notizanzeigen
+ * @var mixed $ticker_tickerart
+ * @var mixed $ticker_tickertitel
+ */
+
 // Durch gesetzte $tickerart bestimmter Parameter (für include/require)
 $ticker_tickerart = isset($tickerart) ? $tickerart : $ticker_tickerart;
 $ticker_ligen = isset($tickerligen) ? $tickerligen : $ticker_standard_ligen;

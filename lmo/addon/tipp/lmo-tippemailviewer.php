@@ -19,6 +19,33 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $dateien
+ * @var mixed $liga
+ * @var mixed $lnr
+ * @var mixed $now
+ * @var mixed $spiel
+ * @var mixed $spieltag
+ * @var mixed $then
+ * @var mixed $zeit
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $anzspiele
+ * @var mixed $datum10
+ * @var mixed $datum20
+ * @var mixed $modus0
+ * @var mixed $teama0
+ * @var mixed $teamb0
+ * @var mixed $tipp
+ * @var mixed $titel0
+ */
   
   
 if ($file != "") {

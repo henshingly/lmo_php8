@@ -20,6 +20,22 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ * @var string $diroutput Ordner fuer erzeugte Dateien (Konfiguration)
+ *
+ * Einstellungen:
+ * @var int|string $einzustats Einstellung aus cfg.txt
+ * @var int|string $einzutore Einstellung aus cfg.txt
+ * @var int|string $einzutoretab Einstellung aus cfg.txt
+ */
+
 
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {

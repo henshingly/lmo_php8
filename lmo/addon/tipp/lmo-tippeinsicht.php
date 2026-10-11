@@ -19,6 +19,48 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var string $todo gewaehlte Aktion (Aufrufparameter)
+ *
+ * Einstellungen:
+ * @var int|string $tipp_einsichterst Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_jokertipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_jokertippmulti Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rergebnis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rremis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtendenz Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtendenzdiff Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtor Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showname Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_shownick Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippeinsicht Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tipptabelle1 Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $anzgetippt
+ * @var array<int|string, mixed> $jksp2
+ * @var array<int|string, mixed> $tendenz0
+ * @var array<int|string, mixed> $tendenz1
+ * @var array<int|string, mixed> $tendenz2
+ * @var array<int|string, mixed> $tippername
+ * @var array<int|string, mixed> $tippernick
+ * @var array<int|string, mixed> $toregesa
+ * @var array<int|string, mixed> $toregesb
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var array<int|string, mixed> $btip
+ * @var mixed $k
+ * @var array<int|string, mixed>|null $tab0
+ * @var array<int|string, mixed> $tippa
+ * @var array<int|string, mixed> $tippb
+ */
   
   
 

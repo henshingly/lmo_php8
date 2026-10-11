@@ -20,6 +20,40 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $aadr Einstellung aus cfg.txt
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_immeralle Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_imvorraus Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_ligenzutippen Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippauthtxt Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $adressat
+ * @var mixed $betreff
+ * @var mixed $emailart
+ * @var array<int|string, mixed> $goaltippa
+ * @var mixed $message
+ * @var mixed $tage
+ * @var mixed $trans_lang
+ * @var mixed $viewermode
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $anzst1
+ * @var mixed $ktipp
+ * @var array<int|string, mixed> $liga
+ * @var mixed $st0
+ */
+
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tippaenderbar.php');
 $mail = lmo_mailer($aadr, $text['tipp'][92]);

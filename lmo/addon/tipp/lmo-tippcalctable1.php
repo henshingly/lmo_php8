@@ -19,6 +19,25 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $btip
+ * @var array<int|string, mixed> $goaltippa
+ * @var array<int|string, mixed> $goaltippb
+ * @var mixed $subteams
+ * @var mixed $tabtype
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $anzcnt
+ * @var mixed $endtab
+ */
   
   
 if (($file != "") && ($subteams != "")) {

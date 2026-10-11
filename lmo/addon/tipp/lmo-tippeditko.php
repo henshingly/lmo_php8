@@ -21,6 +21,40 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ *
+ * Einstellungen:
+ * @var int|string $tipp_einsichterst Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_jokertipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_jokertippmulti Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_pfeiltipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showdurchschntipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showtendenzabs Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showtendenzpro Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $breite
+ * @var array<int|string, mixed> $btip
+ * @var mixed $i
+ * @var mixed $j
+ * @var mixed $jksp
+ * @var mixed $tipp_jokertippaktiv
+ * @var mixed $trans_lang
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var array<int|string, mixed> $goaltippa
+ * @var array<int|string, mixed> $goaltippb
+ * @var mixed $punktespieltag
+ * @var mixed $tipp
+ */
+
 for ($n = 0; $n < $ligaDaten->modus[$st - 1]; $n++) {
     if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) { ?>
   <tr>

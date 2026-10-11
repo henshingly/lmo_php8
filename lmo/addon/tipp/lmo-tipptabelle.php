@@ -21,6 +21,49 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tabpkt Einstellung aus cfg.txt
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_einsichterst Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tipptabelle Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tipptabelle1 Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_wertverein Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $atore
+ * @var array<int|string, mixed> $dtore
+ * @var array<int|string, mixed> $etore
+ * @var array<int|string, mixed> $negativ
+ * @var array<int|string, mixed> $nieder
+ * @var array<int|string, mixed> $punkte
+ * @var array<int|string, mixed> $siege
+ * @var array<int|string, mixed> $spiele
+ * @var array<int|string, mixed> $spielegetippt
+ * @var array<int|string, mixed> $tab0
+ * @var array<int|string, mixed> $tipppunktegesamt
+ * @var array<int|string, mixed> $unent
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $addr
+ * @var mixed $addt
+ * @var mixed $endtab
+ * @var mixed $nick
+ * @var array<int|string, mixed> $platz1
+ * @var array<int|string, mixed> $quote
+ * @var mixed $tabdat
+ * @var mixed $tabtype
+ */
+
 
 if ($file != '' && $tipp_tipptabelle1 == 1) {
     $endtab = $st;

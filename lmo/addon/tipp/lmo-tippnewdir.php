@@ -20,6 +20,31 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $action gewaehlte Seite (Aufrufparameter)
+ * @var string $todo gewaehlte Aktion (Aufrufparameter)
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ *
+ * Einstellungen:
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_immeralle Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_ligenzutippen Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $ftype
+ * @var mixed $nick
+ * @var mixed $save
+ * @var mixed $xtipperligen
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $ftest
+ */
+
 
 if ($ftype != "") {
   if (!isset($iptype)) {

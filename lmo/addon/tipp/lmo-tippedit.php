@@ -20,6 +20,34 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tipp_akteinsicht Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_imvorraus Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_jokertipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_pfeiltipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showdurchschntipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showtendenzabs Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showtendenzpro Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippBis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $me
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $j
+ * @var mixed $jksp
+ */
+
 
 //require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($file!="") {

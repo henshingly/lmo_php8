@@ -21,6 +21,110 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string|null $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ * @var string $diroutput Ordner fuer erzeugte Dateien (Konfiguration)
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $einzustats Einstellung aus cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $agastsieg
+ * @var mixed $agastsieg1
+ * @var mixed $agastsiegtor
+ * @var mixed $agastsiegtor1
+ * @var mixed $aheimsieg
+ * @var mixed $aheimsieg1
+ * @var mixed $aheimsiegtor
+ * @var mixed $aheimsiegtor1
+ * @var mixed $akt_sieglos
+ * @var mixed $akt_unentschieden
+ * @var mixed $akt_ungeschlagen
+ * @var mixed $akt_verloren
+ * @var array<int|string, mixed> $atore
+ * @var mixed $counteranz
+ * @var mixed $counteranz1
+ * @var mixed $counteranz5
+ * @var mixed $dsgasttore
+ * @var mixed $dsheimtore
+ * @var array<int|string, mixed> $etore
+ * @var mixed $gbeide
+ * @var mixed $gdstore
+ * @var mixed $ggasttore
+ * @var mixed $gheimtore
+ * @var mixed $gzusieg1
+ * @var mixed $gzusieg2
+ * @var mixed $gzutore
+ * @var mixed $gzuunent
+ * @var mixed $hgastsieg
+ * @var mixed $hgastsieg1
+ * @var mixed $hgastsiegtor
+ * @var mixed $hgastsiegtor1
+ * @var mixed $hheimsieg
+ * @var mixed $hheimsieg1
+ * @var mixed $hheimsiegtor
+ * @var mixed $hheimsiegtor1
+ * @var mixed $htorreichm1
+ * @var mixed $htorreichm2
+ * @var mixed $htorreichm3
+ * @var mixed $htorreichm4
+ * @var mixed $htorreicht1
+ * @var mixed $htorreicht2
+ * @var mixed $htorreicht3
+ * @var mixed $htorreicht4
+ * @var mixed $max_gewonnen
+ * @var mixed $max_sieglos
+ * @var mixed $max_unentschieden
+ * @var mixed $max_ungeschlagen
+ * @var mixed $max_verloren
+ * @var array<int|string, mixed> $maxn0
+ * @var array<int|string, mixed> $maxs0
+ * @var array<int|string, mixed> $negativ
+ * @var array<int|string, mixed> $nieder
+ * @var array<int|string, mixed> $punkte
+ * @var array<int|string, mixed> $ser1
+ * @var array<int|string, mixed> $ser2
+ * @var array<int|string, mixed> $ser3
+ * @var array<int|string, mixed> $ser4
+ * @var array<int|string, mixed> $siege
+ * @var array<int|string, mixed>|null $spiele
+ * @var mixed $spieltagflag
+ * @var mixed $spieltagflag1
+ * @var mixed $spieltagflag2
+ * @var mixed $spieltagflag3
+ * @var mixed $spieltagflag4
+ * @var mixed $spieltagflag5
+ * @var array<int|string, mixed> $tab0
+ * @var mixed $team_akt_gewonnen
+ * @var mixed $team_akt_sieglos
+ * @var mixed $team_akt_unentschieden
+ * @var mixed $team_akt_ungeschlagen
+ * @var mixed $team_akt_verloren
+ * @var mixed $team_max_gewonnen
+ * @var mixed $team_max_sieglos
+ * @var mixed $team_max_unentschieden
+ * @var mixed $team_max_ungeschlagen
+ * @var mixed $team_max_verloren
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $ax
+ * @var mixed $bx
+ * @var mixed $cx
+ * @var mixed $dx
+ * @var array<int|string, mixed> $position
+ * @var mixed $rstPrg_b
+ * @var mixed $serie2
+ * @var mixed $text_a
+ * @var mixed $text_b
+ * @var mixed $v
+ */
+
 
 if ($file!="") {
   $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$ligaDaten->stat1;

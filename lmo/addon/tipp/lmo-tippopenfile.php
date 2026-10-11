@@ -20,6 +20,15 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var int|string $st gewaehlter Spieltag
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ * @var string $tippfile Tippdatei des Tippspiels
+ */
+
 // $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
 require(PATH_TO_LMO . '/lmo-ligadaten.php');
   

@@ -19,6 +19,58 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tipp_jokertipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rergebnis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rremis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtendenz Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtendenzdiff Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtor Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showemail Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showname Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_shownick Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showzus Einstellung aus tipp/cfg.txt
+ * @var array<int|string, mixed> $tipp_tipperimteam Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $spielegetipptgesamt
+ * @var array<int|string, mixed> $tab0
+ * @var array<int|string, mixed> $team
+ * @var mixed $teamintern
+ * @var mixed $teamsanzahl
+ * @var array<int|string, mixed>|null $tipperemail
+ * @var array<int|string, mixed> $tippername
+ * @var array<int|string, mixed> $tippernick
+ * @var array<int|string, mixed> $tipppunktegesamt
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $anztipper
+ * @var mixed $endtab
+ * @var mixed $laeng
+ * @var array<int|string, mixed> $platz1
+ * @var array<int|string, mixed> $punkte1gesamt
+ * @var array<int|string, mixed> $punkte2gesamt
+ * @var array<int|string, mixed> $punkte3gesamt
+ * @var array<int|string, mixed> $punkte4gesamt
+ * @var array<int|string, mixed> $punkte5gesamt
+ * @var array<int|string, mixed> $punkte6gesamt
+ * @var array<int|string, mixed> $quotegesamt
+ * @var array<int|string, mixed> $stsiege
+ * @var mixed $tipp_anzseite1
+ * @var mixed $tipp_showstsiege
+ * @var array<int|string, mixed> $tipperteam
+ */
   
 //$endtab        = isset($_REQUEST['endtab'])        ? $_REQUEST['endtab']                : ''; 
 if ($endtab == 0) {

@@ -21,6 +21,22 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ * @var string $defdateformat Datumsformat in date()-Schreibweise (Konfiguration)
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var array<int|string, mixed> $xmodus
+ * @var array<int|string, mixed> $yteama
+ * @var array<int|string, mixed> $yteamb
+ */
+
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 $xfile = isset($_POST['xfile']) ? $_POST['xfile'] : '';
 $xtitel = isset($_POST['xtitel']) ? $_POST['xtitel'] : '';

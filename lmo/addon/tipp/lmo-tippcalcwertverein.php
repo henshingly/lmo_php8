@@ -19,6 +19,28 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $anztipper
+ * @var mixed $auswertfile
+ * @var mixed $m
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $endtab
+ * @var array<int|string, mixed> $spielegetippt
+ * @var array<int|string, mixed> $tippdaten
+ * @var array<int|string, mixed> $tipppunktegesamt
+ */
   
   
 if (file_exists($auswertfile)){

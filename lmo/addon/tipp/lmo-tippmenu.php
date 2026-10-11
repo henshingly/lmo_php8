@@ -2,6 +2,30 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $todo gewaehlte Aktion (Aufrufparameter)
+ *
+ * Einstellungen:
+ * @var int|string $tipp_regeln Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_regelnlink Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_sttipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippeinsicht Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippfieber Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tipptabelle1 Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $adda
+ * @var mixed $all
+ * @var mixed $endtab
+ * @var mixed $viewermode
+ */
 ?><table class="lmoSubmenu" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td class="nobr" align="left"><?php 

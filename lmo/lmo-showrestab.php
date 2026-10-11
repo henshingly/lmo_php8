@@ -20,6 +20,35 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $action gewaehlte Seite (Aufrufparameter)
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tabonres Einstellung aus cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $atore
+ * @var mixed $dtore
+ * @var mixed $etore
+ * @var mixed $negativ
+ * @var mixed $nieder
+ * @var mixed $punkte
+ * @var mixed $siege
+ * @var mixed $spiele
+ * @var array<int|string, mixed> $tab0
+ * @var mixed $tabdat
+ * @var mixed $unent
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $endtab
+ */
+
 
 if (isset($file) && $file != "") {
   $tabtype=isset($_GET['tabtype'])?$_GET['tabtype']:0;

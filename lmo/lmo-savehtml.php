@@ -2,6 +2,30 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $diroutput Ordner fuer erzeugte Dateien (Konfiguration)
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $atore
+ * @var array<int|string, mixed> $dtore
+ * @var array<int|string, mixed> $etore
+ * @var array<int|string, mixed> $negativ
+ * @var array<int|string, mixed> $punkte
+ * @var array<int|string, mixed> $spiele
+ * @var mixed $tab1
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var array<int|string, mixed> $spielfreiaa
+ * @var array<int|string, mixed> $spielfreibb
+ * @var mixed $wmlfile
+ */
   /*
   * lmo-savehtml1.php: HTML-Ausgabe von Tabelle, aktuellem Spieltag und folgenden Spieltag
   * In der Datei lmo-savefile.php muss über der Zeile

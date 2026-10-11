@@ -21,6 +21,43 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ * @var string $defdateformat Datumsformat in date()-Schreibweise (Konfiguration)
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tipp_akteinsicht Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_einsichterst Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_immeralle Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_jokertipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_jokertippmulti Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_ligenzutippen Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_pfeiltipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showdurchschntipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showtendenzabs Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showtendenzpro Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippBis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippeinsicht Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_viewertage Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_viewertipp Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $me
+ * @var mixed $trans_lang
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $j
+ * @var mixed $viewermode
+ */
+
 
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 if ($tipp_viewertipp == 1 && $viewermode == 1) {

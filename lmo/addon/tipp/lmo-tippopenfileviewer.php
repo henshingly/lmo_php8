@@ -20,6 +20,56 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ * @var string $tippfile Tippdatei des Tippspiels
+ *
+ * Einstellungen:
+ * @var int|string $deftime Einstellung aus cfg.txt
+ * @var int|string $tipp_jokertipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippohne Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $dateien
+ * @var mixed $liga
+ * @var mixed $liganr
+ * @var mixed $now
+ * @var mixed $spiel
+ * @var mixed $spieltag
+ * @var mixed $then
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $anzspiele
+ * @var mixed $datm0
+ * @var mixed $dats0
+ * @var mixed $datum10
+ * @var mixed $datum20
+ * @var mixed $dummy1
+ * @var mixed $dummy2
+ * @var mixed $goala0
+ * @var mixed $goalb0
+ * @var mixed $goalfaktor0
+ * @var mixed $hidr0
+ * @var array<int|string, mixed> $jksp
+ * @var mixed $mberi0
+ * @var mixed $mnote0
+ * @var mixed $modus0
+ * @var mixed $rb
+ * @var mixed $teama0
+ * @var mixed $teamb0
+ * @var array<int|string, mixed> $tipp_jokertippaktiv
+ * @var array<int|string, mixed> $tippa
+ * @var mixed $tippa0
+ * @var array<int|string, mixed> $tippb
+ * @var mixed $titel0
+ * @var mixed $urlb0
+ */
+
 // $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
 require(PATH_TO_LMO . '/lmo-ligadaten.php');
 

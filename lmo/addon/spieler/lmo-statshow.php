@@ -20,6 +20,23 @@
 
 require_once(__DIR__ . '/../../init.php');
 
+/**
+ * Diese Datei wird direkt aufgerufen; init.php stellt bereit:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var string $action gewaehlte Seite (Aufrufparameter)
+ *
+ * Einstellungen:
+ * @var int|string $spieler_anzeige_pro_seite Einstellung aus spieler/cfg.txt
+ * @var int|string $spieler_extra_sortierspalte Einstellung aus spieler/cfg.txt
+ * @var int|string $spieler_nullwerte_anzeigen Einstellung aus spieler/cfg.txt
+ * @var int|string $spieler_standard_richtung Einstellung aus spieler/cfg.txt
+ * @var int|string $spieler_standard_sortierung Einstellung aus spieler/cfg.txt
+ * @var int|string $spieler_vereinsweise_anzeigen Einstellung aus spieler/cfg.txt
+ */
+
 //Konfiguration laden
 require(PATH_TO_ADDONDIR . '/spieler/lmo-statloadconfig.php');
 

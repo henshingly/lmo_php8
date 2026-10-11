@@ -19,6 +19,46 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_krit1 Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_krit2 Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_krit3 Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showstsiege Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showzus Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $kurvenmodus
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $endtab
+ * @var mixed $laeng1
+ * @var mixed $laeng2
+ * @var array<int|string, mixed> $punkte1
+ * @var array<int|string, mixed> $punkte1gesamt
+ * @var array<int|string, mixed> $punkte2
+ * @var array<int|string, mixed> $punkte2gesamt
+ * @var array<int|string, mixed> $punkte3
+ * @var array<int|string, mixed> $punkte3gesamt
+ * @var array<int|string, mixed> $punkte6
+ * @var array<int|string, mixed> $punkte6gesamt
+ * @var array<int|string, mixed> $spielegetipptgesamt
+ * @var array<int|string, mixed> $stsiege
+ * @var array<int|string, mixed> $stsiegegesamt
+ * @var array<int|string, mixed> $taba
+ * @var array<int|string, mixed> $tabb
+ * @var array<int|string, mixed> $tippdaten
+ * @var array<int|string, mixed> $tipppunktegesamt
+ */
   
   
 $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, 0, -4).".aus";

@@ -20,6 +20,16 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $xteams
+ */
+
   /**
    * @version 1.0 2005-09-22
    * @author Sebastian Janke, s.janke@tu-bs.de

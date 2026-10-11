@@ -20,6 +20,35 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $action gewaehlte Seite (Aufrufparameter)
+ * @var string $diroutput Ordner fuer erzeugte Dateien (Konfiguration)
+ *
+ * Einstellungen:
+ * @var int|string $backlink Einstellung aus cfg.txt
+ * @var int|string $calctime Einstellung aus cfg.txt
+ * @var int|string $einsavehtml Einstellung aus cfg.txt
+ * @var int|string $einspieler Einstellung aus cfg.txt
+ * @var int|string $einsprachwahl Einstellung aus cfg.txt
+ * @var int|string $eintippspiel Einstellung aus cfg.txt
+ * @var int|string $tabonres Einstellung aus cfg.txt
+ * @var int|string $tipp_immeralle Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_ligenzutippen Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $spieler_ligalink
+ * @var mixed $startzeit
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $ste
+ */
+
 
 
 $addm = $_SERVER['PHP_SELF'] . '?file=' . $file . '&amp;action=';

@@ -21,6 +21,26 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $fav_liga
+ * @var array<int|string, mixed> $fav_team
+ * @var mixed $i
+ * @var mixed $liga
+ * @var array<int|string, mixed>|null $multi_cfgarray
+ * @var mixed $mySpieltag
+ * @var mixed $partie
+ * @var mixed $template
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $spieltag
+ */
+
 foreach ($fav_team[$i] as $akt_team) {
     if (isset($multi_cfgarray['modus']) && $multi_cfgarray['modus'] == 1) {
         $spieltag = $mySpieltag->nr;
