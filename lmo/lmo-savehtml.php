@@ -2,6 +2,30 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $diroutput Ordner fuer erzeugte Dateien (Konfiguration)
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $atore
+ * @var array<int|string, mixed> $dtore
+ * @var array<int|string, mixed> $etore
+ * @var array<int|string, mixed> $negativ
+ * @var array<int|string, mixed> $punkte
+ * @var array<int|string, mixed> $spiele
+ * @var mixed $tab1
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var array<int|string, mixed> $spielfreiaa
+ * @var array<int|string, mixed> $spielfreibb
+ * @var mixed $wmlfile
+ */
   /*
   * lmo-savehtml1.php: HTML-Ausgabe von Tabelle, aktuellem Spieltag und folgenden Spieltag
   * In der Datei lmo-savefile.php muss über der Zeile
@@ -24,31 +48,31 @@ if (!defined('PATH_TO_LMO')) {
 
 $trans_lang = array( 'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1], 'Wednesday' => $text['date'][2], 'Thursday' => $text['date'][3], 'Friday' => $text['date'][4], 'Saturday' => $text['date'][5], 'Sunday' => $text['date'][6], 'Mon' => $text['date'][7], 'Tue' => $text['date'][8], 'Wed' => $text['date'][9], 'Thu' => $text['date'][10], 'Fri' => $text['date'][11], 'Sat' => $text['date'][12], 'Sun' => $text['date'][13], 'January' => $text['date'][14], 'February' => $text['date'][15], 'March' => $text['date'][16], 'April' => $text['date'][17], 'June' => $text['date'][19], 'July' => $text['date'][20], 'August' => $text['date'][21], 'September' => $text['date'][22], 'October' => $text['date'][23], 'November' => $text['date'][24], 'December' => $text['date'][25], 'Jan' => $text['date'][26], 'Feb' => $text['date'][27], 'Mar' => $text['date'][28], 'Apr' => $text['date'][29], 'May' => $text['date'][30], 'Jun' => $text['date'][31], 'Jul' => $text['date'][32], 'Aug' => $text['date'][33], 'Sep' => $text['date'][34], 'Oct' => $text['date'][35], 'Nov' => $text['date'][36], 'Dec' => $text['date'][37] );
 
-if (!isset($namepkt)) {$namepkt = "";}
-if (!isset($nametor)) {$nametor = "";}
+if (!isset($ligaDaten->namepkt)) {$ligaDaten->namepkt = "";}
+if (!isset($ligaDaten->nametor)) {$ligaDaten->nametor = "";}
 
 if ($st > 0) {
   $actual = $st;
 } else {
-  $actual = $stx;
+  $actual = $ligaDaten->stx;
 }
 
-if ($lmtype == 0) {
-  for ($i1 = 0; $i1 < $anzsp; $i1 ++) {
-    if ($goala[$actual - 1][$i1] == "-1") $goala[$actual - 1][$i1] = "_";
-    if ($goalb[$actual - 1][$i1] == "-1") $goalb[$actual - 1][$i1] = "_";
+if ($ligaDaten->lmtype == 0) {
+  for ($i1 = 0; $i1 < $ligaDaten->anzsp; $i1 ++) {
+    if ($ligaDaten->goala[$actual - 1][$i1] == "-1") $ligaDaten->goala[$actual - 1][$i1] = "_";
+    if ($ligaDaten->goalb[$actual - 1][$i1] == "-1") $ligaDaten->goalb[$actual - 1][$i1] = "_";
   }
   $endtab = $actual;
   include(PATH_TO_LMO . "/lmo-calctable.php");
 
-  for ($i1 = 0; $i1 < $anzsp; $i1 ++) {
-    if ($goala[$actual - 1][$i1] == "_") $goala[$actual - 1][$i1] = "-1";
-    if ($goalb[$actual - 1][$i1] == "_") $goalb[$actual - 1][$i1] = "-1";
+  for ($i1 = 0; $i1 < $ligaDaten->anzsp; $i1 ++) {
+    if ($ligaDaten->goala[$actual - 1][$i1] == "_") $ligaDaten->goala[$actual - 1][$i1] = "-1";
+    if ($ligaDaten->goalb[$actual - 1][$i1] == "_") $ligaDaten->goalb[$actual - 1][$i1] = "-1";
   }
 }
 $actual = $st;
 $datumanz = $actual - 1;
-if ($lmtype == 0 && $st > 0) {
+if ($ligaDaten->lmtype == 0 && $st > 0) {
   isset($tab0) ? $table1 = $tab0 : $table1 = $tab1;
   if (isset($table1)) {
     $wmlfile = fopen(PATH_TO_LMO . '/' . $diroutput . basename($file) . "-st.html", "wb");
@@ -58,7 +82,7 @@ if ($lmtype == 0 && $st > 0) {
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title><?php echo $titel;?></title>
+  <title><?php echo $ligaDaten->titel;?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
   <style type="text/css">
     body {background:#fff; color:#000; font:10pt sans-serif;}
@@ -75,30 +99,30 @@ if ($lmtype == 0 && $st > 0) {
 </head>
 <body>
   <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562];?><\/a><\/small>');</script>
-  <h1><?php echo $titel;?></h1><?php
-    $z = array_filter($teama[$st - 1], "filterZero");
+  <h1><?php echo $ligaDaten->titel;?></h1><?php
+    $z = array_filter($ligaDaten->teama[$st - 1], "filterZero");
     if (!empty($z)) {?>
 
   <table>
-  <caption><?php echo $actual . ". " . $text[2];?> <?php if ($datum1[$datumanz]!='') { echo ' - ' . $datum1[$datumanz] . ' ' . $text[4] . ' ' . $datum2[$datumanz];}?></caption><?php
-      $datsort = $mterm[$st - 1];
+  <caption><?php echo $actual . ". " . $text[2];?> <?php if ($ligaDaten->datum1[$datumanz]!='') { echo ' - ' . $ligaDaten->datum1[$datumanz] . ' ' . $text[4] . ' ' . $ligaDaten->datum2[$datumanz];}?></caption><?php
+      $datsort = $ligaDaten->mterm[$st - 1];
       asort($datsort);
       reset($datsort);
       foreach($datsort as $key => $val) {
         $i1 = $key;
-        if (($teama[$st - 1][$i1] > 0) && ($teamb[$st - 1][$i1] > 0)) {
-          $heimteam = $teams[$teama[$actual - 1][$i1]];
-          $gastteam = $teams[$teamb[$actual - 1][$i1]];
-          $heimtore = applyFactor($goala[$actual - 1][$i1], $goalfaktor);
-          $gasttore = applyFactor($goalb[$actual - 1][$i1], $goalfaktor);
+        if (($ligaDaten->teama[$st - 1][$i1] > 0) && ($ligaDaten->teamb[$st - 1][$i1] > 0)) {
+          $heimteam = $ligaDaten->teams[$ligaDaten->teama[$actual - 1][$i1]];
+          $gastteam = $ligaDaten->teams[$ligaDaten->teamb[$actual - 1][$i1]];
+          $heimtore = applyFactor($ligaDaten->goala[$actual - 1][$i1], $ligaDaten->goalfaktor);
+          $gasttore = applyFactor($ligaDaten->goalb[$actual - 1][$i1], $ligaDaten->goalfaktor);
           if ($gasttore < 0) $gasttore = "_";
           if ($heimtore < 0) $heimtore = "_";
-          if (($anzteams - ($anzst / 2 + 1)) != 0) {
-            $spielfreiaa[$i1] = $teama[$actual - 1][$i1];
-            $spielfreibb[$i1] = $teamb[$actual - 1][$i1];
+          if (($ligaDaten->anzteams - ($ligaDaten->anzst / 2 + 1)) != 0) {
+            $spielfreiaa[$i1] = $ligaDaten->teama[$actual - 1][$i1];
+            $spielfreibb[$i1] = $ligaDaten->teamb[$actual - 1][$i1];
           }
-          if ($mterm[$actual - 1][$i1] > 0) {
-            $dum1 = strtr(date($datf, $mterm[$actual-1][$i1]), $trans_lang);
+          if ($ligaDaten->mterm[$actual - 1][$i1] > 0) {
+            $dum1 = strtr(date($ligaDaten->datf, $ligaDaten->mterm[$actual-1][$i1]), $trans_lang);
           } else {
             $dum1 = "";
           } // Anstosszeit einblenden
@@ -112,7 +136,7 @@ if ($lmtype == 0 && $st > 0) {
       <td align="right"><?php echo $heimtore;?></td>
       <td>:</td>
       <td align="left"><?php echo $gasttore;?></td><?php
-          if ($msieg[$actual - 1][$i1] == 3) {?>
+          if ($ligaDaten->msieg[$actual - 1][$i1] == 3) {?>
       <td width="2">/</td>
       <td align="right"><?php echo $gasttore;?></td>
       <td align="center" width="8">:</td>
@@ -125,15 +149,15 @@ if ($lmtype == 0 && $st > 0) {
 
   </table><?php
 
-      if (($anzteams - ($anzst / 2 + 1)) != 0) {
+      if (($ligaDaten->anzteams - ($ligaDaten->anzst / 2 + 1)) != 0) {
         $spielfreicc = array_merge($spielfreiaa, $spielfreibb);
         $i = 1;
-        for ($j = 1; $j < $anzteams + 1; $j ++) {
+        for ($j = 1; $j < $ligaDaten->anzteams + 1; $j ++) {
           if (!in_array($j, $spielfreicc)) {
             if ($i == 1) {?>
       <p><small><?php echo $text[4004];?>: <?php
             }
-            echo $teams[$j];?>&nbsp;&nbsp;<?php
+            echo $ligaDaten->teams[$j];?>&nbsp;&nbsp;<?php
             $i ++;
           }
         }?>
@@ -146,21 +170,21 @@ if ($lmtype == 0 && $st > 0) {
     <tr>
       <th colspan=3>&nbsp;</th>
       <th><?php echo $text[33];?></th>
-      <th colspan=2><?php echo $namepkt;?></th>
-      <th><?php echo $nametor;?>&nbsp;</th>
+      <th colspan=2><?php echo $ligaDaten->namepkt;?></th>
+      <th><?php echo $ligaDaten->nametor;?>&nbsp;</th>
       <th align="right" >&nbsp;&nbsp;<?php echo $text[39];?></th>
     </tr>
 <?php
-    for ($i1 = 0; $i1 < $anzteams; $i1 ++) {
+    for ($i1 = 0; $i1 < $ligaDaten->anzteams; $i1 ++) {
       $platz = $i1 + 1;
       $i4 = (int)substr($table1[$i1], 35, 7);
-      $teamname = $teams[$i4];
-      $pluspunkte = applyFactor($punkte[$i4], $pointsfaktor);
-      $minuspunkte = applyFactor($negativ[$i4], $pointsfaktor);
-      $kegelnholz = applyFactor($dtore[$i4], $goalfaktor);
-      $plustore = applyFactor($etore[$i4], $goalfaktor);
-      $minustore = applyFactor($atore[$i4], $goalfaktor);
-      $torverhaeltnis = applyFactor($dtore[$i4], $goalfaktor);
+      $teamname = $ligaDaten->teams[$i4];
+      $pluspunkte = applyFactor($punkte[$i4], $ligaDaten->pointsfaktor);
+      $minuspunkte = applyFactor($negativ[$i4], $ligaDaten->pointsfaktor);
+      $kegelnholz = applyFactor($dtore[$i4], $ligaDaten->goalfaktor);
+      $plustore = applyFactor($etore[$i4], $ligaDaten->goalfaktor);
+      $minustore = applyFactor($atore[$i4], $ligaDaten->goalfaktor);
+      $torverhaeltnis = applyFactor($dtore[$i4], $ligaDaten->goalfaktor);
       $spieleteam = $spiele[$i4];
 ?>
     <tr>
@@ -169,7 +193,7 @@ if ($lmtype == 0 && $st > 0) {
       <td><?php echo $teamname;?>&nbsp;</td>
       <td align="right"><?php echo $spieleteam;?>&nbsp;</td>
       <td align="right"><?php echo $pluspunkte;
-      if ($minus == 2) {?>:</td>
+      if ($ligaDaten->minus == 2) {?>:</td>
       <td align="left"><?php echo $minuspunkte;?>&nbsp;</td>
 <?php
       } else {?></td>
@@ -184,32 +208,32 @@ if ($lmtype == 0 && $st > 0) {
   </table>
   <p><small><?php echo $text[576];?></small></p>
 <?php
-    if ($actual == $anzst) {?>
+    if ($actual == $ligaDaten->anzst) {?>
   <p><strong><?php echo $text[568];?></strong></p>
 <?php
     } else {
-      $z = array_filter($teama[$st - 1], "filterZero");
+      $z = array_filter($ligaDaten->teama[$st - 1], "filterZero");
       if (!empty($z)) {?>
   <table>
-  <caption><?php echo $actual+1;?>. <?php echo $text[2];?><?php if ($datum1[$actual]!='') { echo ' - ' . $datum1[$actual] . ' ' . $text[4] . ' ' . $datum2[$actual];}?></caption><?php
-        $datsort = $mterm[$actual];
+  <caption><?php echo $actual+1;?>. <?php echo $text[2];?><?php if ($ligaDaten->datum1[$actual]!='') { echo ' - ' . $ligaDaten->datum1[$actual] . ' ' . $text[4] . ' ' . $ligaDaten->datum2[$actual];}?></caption><?php
+        $datsort = $ligaDaten->mterm[$actual];
         asort($datsort);
         reset($datsort);
         foreach($datsort as $key => $val) {
           $i1 = $key;
-          if (($teama[$st][$i1] > 0) && ($teamb[$st][$i1] > 0)) {
-            $heimteam = $teams[$teama[$actual][$i1]];
-            $gastteam = $teams[$teamb[$actual][$i1]];
-            $heimtore = applyFactor($goala[$actual][$i1], $goalfaktor);
-            $gasttore = applyFactor($goalb[$actual][$i1], $goalfaktor);
+          if (($ligaDaten->teama[$st][$i1] > 0) && ($ligaDaten->teamb[$st][$i1] > 0)) {
+            $heimteam = $ligaDaten->teams[$ligaDaten->teama[$actual][$i1]];
+            $gastteam = $ligaDaten->teams[$ligaDaten->teamb[$actual][$i1]];
+            $heimtore = applyFactor($ligaDaten->goala[$actual][$i1], $ligaDaten->goalfaktor);
+            $gasttore = applyFactor($ligaDaten->goalb[$actual][$i1], $ligaDaten->goalfaktor);
             if ($gasttore < 0) $gasttore = "_";
             if ($heimtore < 0) $heimtore = "_";
-            if (($anzteams - ($anzst / 2 + 1)) != 0) {
-              $spielfreiaa[$i1] = $teama[$actual][$i1];
-              $spielfreibb[$i1] = $teamb[$actual][$i1];
+            if (($ligaDaten->anzteams - ($ligaDaten->anzst / 2 + 1)) != 0) {
+              $spielfreiaa[$i1] = $ligaDaten->teama[$actual][$i1];
+              $spielfreibb[$i1] = $ligaDaten->teamb[$actual][$i1];
             }
-            if ($mterm[$actual][$i1] > 0) {
-              $dum1 = strtr(date($datf, $mterm[$actual][$i1]), $trans_lang);
+            if ($ligaDaten->mterm[$actual][$i1] > 0) {
+              $dum1 = strtr(date($ligaDaten->datf, $ligaDaten->mterm[$actual][$i1]), $trans_lang);
             } else {
               $dum1 = "&nbsp;";
             } // Anstosszeit einblenden
@@ -224,7 +248,7 @@ if ($lmtype == 0 && $st > 0) {
       <td align="right"><?php echo $heimtore;?></td>
       <td>:</td>
       <td align="left"><?php echo $gasttore;?></td><?php
-            if ($msieg[$actual][$i1]==3) {?>
+            if ($ligaDaten->msieg[$actual][$i1]==3) {?>
       <td width="2">/</td>
       <td align="right"><?php echo $gasttore;?></td>
       <td align="center" width="8">:</td>
@@ -238,15 +262,15 @@ if ($lmtype == 0 && $st > 0) {
         }?>
   </table>
 <?php
-        if (($anzteams-($anzst / 2 + 1)) != 0) {
+        if (($ligaDaten->anzteams-($ligaDaten->anzst / 2 + 1)) != 0) {
           $spielfreicc = array_merge($spielfreiaa, $spielfreibb);
           $i = 1;
-          for ($j = 1; $j < $anzteams + 1; $j ++) {
+          for ($j = 1; $j < $ligaDaten->anzteams + 1; $j ++) {
             if (!in_array($j, $spielfreicc)) {
               if ($i == 1) {?>
   <p><small><?php echo $text[4004];?>: <?php
               }
-              echo $teams[$j];?>&nbsp;&nbsp;<?php
+              echo $ligaDaten->teams[$j];?>&nbsp;&nbsp;<?php
               $i ++;
             }
           }?>

@@ -22,7 +22,14 @@ if (!defined('PATH_TO_LMO')) {
 }
 
 
-if (($file!="") && ($kreuz==1)){
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-openfile.php)
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var array<int|string, mixed> $text Sprachtexte
+ */
+if (($file!="") && ($ligaDaten->kreuz==1)){
   $addc=$_SERVER['PHP_SELF']."?action=cross&amp;file=".$file."&amp;croteam=";
   $addr=$_SERVER['PHP_SELF']."?action=results&amp;file=".$file."&amp;st=";
   $croteam=!empty($_GET['croteam'])?$_GET['croteam']:0;
@@ -33,17 +40,17 @@ if (($file!="") && ($kreuz==1)){
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 
 <?php
-for ($i = 0; $i <= ($anzteams+1); $i++) {
-  for ($j = 0; $j <= ($anzteams+1); $j++) {
+for ($i = 0; $i <= ($ligaDaten->anzteams+1); $i++) {
+  for ($j = 0; $j <= ($ligaDaten->anzteams+1); $j++) {
     $dummy = "";
     if ($j == 0) {
       echo "<tr>";
     }
     if ($j == 0){
       echo "<th align='right'>";
-    } elseif ($j == ($anzteams+1)) {
+    } elseif ($j == ($ligaDaten->anzteams+1)) {
       echo "<th align='left'>";
-    } elseif ($i == 0 || $i == ($anzteams+1)){
+    } elseif ($i == 0 || $i == ($ligaDaten->anzteams+1)){
       echo "<th align='center'>";
     } elseif ($croteam != 0 && ($j == $croteam || $i == $croteam)) {
       echo "<td align='center' class='lmoBackMarkierung'>";
@@ -53,47 +60,47 @@ for ($i = 0; $i <= ($anzteams+1); $i++) {
       echo "<td align='center'>";
     }
 
-    if (($j == 0) && ($i > 0) && ($i <= $anzteams)) {
+    if (($j == 0) && ($i > 0) && ($i <= $ligaDaten->anzteams)) {
       if (($croteam != 0) && (($j == $croteam) || ($i == $croteam))) {
-        echo $teams[$i];
+        echo $ligaDaten->teams[$i];
       } else {
-        echo "<a href=\"".$addc.$i."\" title=\"".$text[26]."\">".$teams[$i]."</a>";
+        echo "<a href=\"".$addc.$i."\" title=\"".$text[26]."\">".$ligaDaten->teams[$i]."</a>";
       }
     }
-    if ($i == 0 && $j > 0 && $j <= $anzteams) {
-      echo "<a href=\"".$addc.$j."\" title=\"".$teams[$j].": ".$text[26]."\">"."".$teamk[$j].""."</a>";
+    if ($i == 0 && $j > 0 && $j <= $ligaDaten->anzteams) {
+      echo "<a href=\"".$addc.$j."\" title=\"".$ligaDaten->teams[$j].": ".$text[26]."\">"."".$ligaDaten->teamk[$j].""."</a>";
     }
-    if ($j == $anzteams+1 && $i > 0 && $i <= $anzteams || $i == $anzteams+1 && $j > 0 && $j <= $anzteams) {
-      $teams[$j] = str_replace( "'", "´", $teams[$j] ); //an attribute value literal can occur in an attribute specification list only after a VI delimiter because Team names with an apostrophe inside
-      echo "<acronym title='".$teams[$j]."'>";
-      echo HTML_smallTeamIcon($file,$teams[$j]," alt='$teamk[$j]'");
+    if ($j == $ligaDaten->anzteams+1 && $i > 0 && $i <= $ligaDaten->anzteams || $i == $ligaDaten->anzteams+1 && $j > 0 && $j <= $ligaDaten->anzteams) {
+      $ligaDaten->teams[$j] = str_replace( "'", "´", $ligaDaten->teams[$j] ); //an attribute value literal can occur in an attribute specification list only after a VI delimiter because Team names with an apostrophe inside
+      echo "<acronym title='".$ligaDaten->teams[$j]."'>";
+      echo HTML_smallTeamIcon($file,$ligaDaten->teams[$j]," alt='{$ligaDaten->teamk[$j]}'");
       echo "</acronym>";
       
     }
-    if ($j == $anzteams+1 && $i > 0 && $i <= $anzteams) {
-      $teams[$i] = str_replace( "'", "´", $teams[$i] ); //an attribute value literal can occur in an attribute specification list only after a VI delimiter because Team names with an apostrophe inside
-      echo "<acronym title='".$teams[$i]."'>";
-      echo HTML_smallTeamIcon($file,$teams[$i]," alt='$teamk[$i]'");
+    if ($j == $ligaDaten->anzteams+1 && $i > 0 && $i <= $ligaDaten->anzteams) {
+      $ligaDaten->teams[$i] = str_replace( "'", "´", $ligaDaten->teams[$i] ); //an attribute value literal can occur in an attribute specification list only after a VI delimiter because Team names with an apostrophe inside
+      echo "<acronym title='".$ligaDaten->teams[$i]."'>";
+      echo HTML_smallTeamIcon($file,$ligaDaten->teams[$i]," alt='{$ligaDaten->teamk[$i]}'");
       echo "</acronym>";
     }
 
-    if (($i > 0) && ($i <= $anzteams) && ($j > 0) && ($j <= $anzteams) && ($j != $i)) {
+    if (($i > 0) && ($i <= $ligaDaten->anzteams) && ($j > 0) && ($j <= $ligaDaten->anzteams) && ($j != $i)) {
       $l = 0;
-      for ($b = 0; $b < $anzst; $b++) {
-        for ($a = 0; $a < $anzsp; $a++) {
-          if (($i == $teama[$b][$a]) && ($j == $teamb[$b][$a])) {
-            if (($mnote[$b][$a] != "") || ($msieg[$b][$a] > 0)) {
-              if ($msieg[$b][$a] == 1) {
-                $dummy = $dummy."&#10;&#10;".$text[219].":&#10;".$teams[$teama[$b][$a]]." ".$text[211];
+      for ($b = 0; $b < $ligaDaten->anzst; $b++) {
+        for ($a = 0; $a < $ligaDaten->anzsp; $a++) {
+          if (($i == $ligaDaten->teama[$b][$a]) && ($j == $ligaDaten->teamb[$b][$a])) {
+            if (($ligaDaten->mnote[$b][$a] != "") || ($ligaDaten->msieg[$b][$a] > 0)) {
+              if ($ligaDaten->msieg[$b][$a] == 1) {
+                $dummy = $dummy."&#10;&#10;".$text[219].":&#10;".$ligaDaten->teams[$ligaDaten->teama[$b][$a]]." ".$text[211];
               }
-              if ($msieg[$b][$a] == 2) {
-                $dummy = $dummy."&#10;&#10;".$text[219].":&#10;".$teams[$teamb[$b][$a]]." ".$text[211];
+              if ($ligaDaten->msieg[$b][$a] == 2) {
+                $dummy = $dummy."&#10;&#10;".$text[219].":&#10;".$ligaDaten->teams[$ligaDaten->teamb[$b][$a]]." ".$text[211];
               }
-              if ($msieg[$b][$a] == 3) {
+              if ($ligaDaten->msieg[$b][$a] == 3) {
                 $dummy = $dummy."&#10;&#10;".$text[219].":&#10;".$text[212];
               }
-              if ($mnote[$b][$a] != "") {
-                $dummy = $dummy."&#10;&#10;".$text[22].":&#10;".$mnote[$b][$a];
+              if ($ligaDaten->mnote[$b][$a] != "") {
+                $dummy = $dummy."&#10;&#10;".$text[22].":&#10;".$ligaDaten->mnote[$b][$a];
               }
             } else {
               $dummy = "";
@@ -101,25 +108,25 @@ for ($i = 0; $i <= ($anzteams+1); $i++) {
             if ($l > 0) {
               echo "<br>";
             }
-            if ($mterm[$b][$a] > 0) {
-              $lmo_kreuz_longtime = ", ".date("D. d.m.Y H:i", $mterm[$b][$a]);
-              $lmo_kreuz_shorttime = date("d.m.", $mterm[$b][$a]);
+            if ($ligaDaten->mterm[$b][$a] > 0) {
+              $lmo_kreuz_longtime = ", ".date("D. d.m.Y H:i", $ligaDaten->mterm[$b][$a]);
+              $lmo_kreuz_shorttime = date("d.m.", $ligaDaten->mterm[$b][$a]);
             } else {
               $lmo_kreuz_longtime = "";
               $lmo_kreuz_shorttime = "";
             }
-            echo "<a href=\"".$addr.($b+1)."\" title=\"".$teams[$i]." - ".$teams[$j]." &#10;(".($b+1).". ".$text[2].$lmo_kreuz_longtime.$dummy.")\">";
-            if ($goala[$b][$a]=="_" && $lmo_kreuz_shorttime!="") {
+            echo "<a href=\"".$addr.($b+1)."\" title=\"".$ligaDaten->teams[$i]." - ".$ligaDaten->teams[$j]." &#10;(".($b+1).". ".$text[2].$lmo_kreuz_longtime.$dummy.")\">";
+            if ($ligaDaten->goala[$b][$a]=="_" && $lmo_kreuz_shorttime!="") {
               echo $lmo_kreuz_shorttime;
             } else {
-              if ($goala[$b][$a]!="_") echo "<strong>";
-              echo applyFactor($goala[$b][$a],$goalfaktor).":".applyFactor($goalb[$b][$a],$goalfaktor);
-              if ($goala[$b][$a]!="_") echo "</strong>";
+              if ($ligaDaten->goala[$b][$a]!="_") echo "<strong>";
+              echo applyFactor($ligaDaten->goala[$b][$a],$ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$b][$a],$ligaDaten->goalfaktor);
+              if ($ligaDaten->goala[$b][$a]!="_") echo "</strong>";
             }
-            if ($spez == 1) {
-              echo " ".$mspez[$b][$a];
+            if ($ligaDaten->spez == 1) {
+              echo " ".$ligaDaten->mspez[$b][$a];
             }
-            if (($mnote[$b][$a] != "") || ($msieg[$b][$a] > 0)) {
+            if (($ligaDaten->mnote[$b][$a] != "") || ($ligaDaten->msieg[$b][$a] > 0)) {
               echo " !";
             }
             echo "</a>";
@@ -129,12 +136,12 @@ for ($i = 0; $i <= ($anzteams+1); $i++) {
       }
     }
     if ($j==$i) echo "&nbsp;";
-    if ($i == 0 || $i == ($anzteams+1) || $j == 0 || $j == ($anzteams+1)) {
+    if ($i == 0 || $i == ($ligaDaten->anzteams+1) || $j == 0 || $j == ($ligaDaten->anzteams+1)) {
       echo "</th>\n";
     } else {
       echo "</td>\n";
     }
-    if ($j == ($anzteams+1)) {
+    if ($j == ($ligaDaten->anzteams+1)) {
       echo "</tr>\n";
     }
   }

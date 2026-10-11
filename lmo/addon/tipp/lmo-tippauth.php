@@ -20,6 +20,26 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string|null $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var string $action gewaehlte Seite (Aufrufparameter)
+ * @var string $todo gewaehlte Aktion (Aufrufparameter)
+ *
+ * Einstellungen:
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_gesamt Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_nurgesamt Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippauthtxt Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $all
+ * @var mixed $tt0
+ * @var mixed $tt1
+ */
+
 require(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 $xtippername = isset($_REQUEST['xtippername']) ? $_REQUEST['xtippername'] : '';
 $xtipperpass = isset($_REQUEST['xtipperpass']) ? $_REQUEST['xtipperpass'] : '';
@@ -123,7 +143,7 @@ if ($action == 'tipp') {
 ?>
  <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0] . '&nbsp;'; if (isset($titel)) {echo $titel;} ?></h1></td>
+    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0] . '&nbsp;'; if (isset($ligaDaten->titel)) {echo $ligaDaten->titel;} ?></h1></td>
   </tr>
   <tr>
     <td colspan="3" align="center"><?php

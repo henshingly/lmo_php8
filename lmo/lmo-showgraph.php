@@ -20,14 +20,28 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $platz
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $axisColor
+ */
+
 if ($_SERVER['PHP_SELF'] == '/lmo-showgraph.php')
   header("Location: /lmo.php");
 
-if (($file != "") && ($kurve == 1)){
+if (($file != "") && ($ligaDaten->kurve == 1)){
   $tension = '0.4';
   $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
-  $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
-  $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
+  $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$ligaDaten->stat1;
+  $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$ligaDaten->stat2;
   if ($show_stat1 == 0 && $show_stat2 != 0 || $show_stat1 == $show_stat2) {
     $show_stat1 = $show_stat2;
     $show_stat2 = 0;
@@ -41,9 +55,9 @@ if (($file != "") && ($kurve == 1)){
 <?php
   $tabtype = 0;
   require(PATH_TO_LMO."/lmo-calcgraph.php");
-  for ($k = 1; $k < $anzteams + 1; $k ++) {
+  for ($k = 1; $k < $ligaDaten->anzteams + 1; $k ++) {
     ${'platz_'.$k} = "";
-    for ($l = 0; $l < $anzst; $l ++) {
+    for ($l = 0; $l < $ligaDaten->anzst; $l ++) {
       ${'platz_'.$k} = ${'platz_'.$k}.$platz[$k][$l].",";
     }
   }
@@ -56,12 +70,12 @@ if (($file != "") && ($kurve == 1)){
   $pgtext2 = $text[136];
   // Anzahl Spieltage in x-Achse
   $spieltag = array();
-  for ($i = 1; $i <= $anzst; $i ++) {
+  for ($i = 1; $i <= $ligaDaten->anzst; $i ++) {
     $spieltag[] = $i;
   }
   $xAxis = implode(",", $spieltag);
 
-  for ($j = 1; $j < $anzteams + 1; $j ++) {
+  for ($j = 1; $j < $ligaDaten->anzteams + 1; $j ++) {
     ${'platz'.$j} = explode(",", ${'platz_'.$j});
     foreach(array_keys(${'platz'.$j}, '0') as $key) {
       unset(${'platz'.$j}[$key]);
@@ -77,9 +91,9 @@ if (($file != "") && ($kurve == 1)){
     } else {
       $flag = 'true';
     }
-    $teams[$j] = str_replace( "'", "´", $teams[$j] ); //Team names with an apostrophe inside destroy the graph curve
+    $ligaDaten->teams[$j] = str_replace( "'", "´", $ligaDaten->teams[$j] ); //Team names with an apostrophe inside destroy the graph curve
     $data .= "{
-                              label: '$teams[$j]',
+                              label: '{$ligaDaten->teams[$j]}',
                               fill: false,
                               lineTension: $tension,
                               backgroundColor: 'rgba($color)',
@@ -129,10 +143,10 @@ if (($file != "") && ($kurve == 1)){
                                   },
                                 },
                                 min: 1,
-                                max: <?php echo $anzteams; ?>,
+                                max: <?php echo $ligaDaten->anzteams; ?>,
                                 reverse: true,
                                 ticks: {
-                                  maxTicksLimit: <?php echo $anzteams; ?>,
+                                  maxTicksLimit: <?php echo $ligaDaten->anzteams; ?>,
                                   color: '<?php echo $axisColor; ?>'
                                 }
                               },

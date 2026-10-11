@@ -1,0 +1,53 @@
+# Wie phpstan-liga.neon.dist, aber Stufe 1: Dateien, die ihre erwarteten Variablen nennen, auf
+# hoeheren Stufen aber noch Meldungen haben (meist Zugriffe auf Werte, deren Typ unklar ist).
+# Nicht dabei, weil PHPStan den Kopfkommentar dort nicht auswertet (bleiben auf Stufe 0):
+# lmo/addon/viewer/viewer_spiel.inc.php (beginnt mit foreach), lmo/addon/ticker/ticker.php
+# (beginnt mit einer Zuweisung an eine der Variablen).
+parameters:
+    level: 1
+    phpVersion:
+        min: 80000
+        max: 80599
+    # Konstanten, die init.php erst zur Laufzeit anlegt (PATH_TO_LMO ...)
+    bootstrapFiles:
+        - phpstan-bootstrap.php
+    # Klassen und Funktionen des LMO
+    scanDirectories:
+        - lmo
+        - src
+    ignoreErrors:
+        # isset() auf eine Variable, die kurz davor gesetzt wurde: ueberfluessig, aber harmlos
+        -
+            identifier: isset.variable
+    paths:
+        - lmo/addon/spieler/lmo-statadmin.php
+        - lmo/addon/spieler/lmo-statshow.php
+        - lmo/addon/tipp/lmo-tippauth.php
+        - lmo/addon/tipp/lmo-tippcalceinsicht.php
+        - lmo/addon/tipp/lmo-tippcalctable.php
+        - lmo/addon/tipp/lmo-tippedit.php
+        - lmo/addon/tipp/lmo-tippemail.php
+        - lmo/addon/tipp/lmo-tippemailviewer.php
+        - lmo/addon/tipp/lmo-tippjokeranticheat.php
+        - lmo/addon/tipp/lmo-tippmain.php
+        - lmo/addon/tipp/lmo-tippnewdir.php
+        - lmo/addon/tipp/lmo-tippopenfile.php
+        - lmo/addon/tipp/lmo-tippopenfileall.php
+        - lmo/addon/tipp/lmo-tippopenfileviewer.php
+        - lmo/addon/tipp/lmo-tippsavewert.php
+        - lmo/addon/tipp/lmo-tipptabelle.php
+        - lmo/addon/tipp/lmo-tippviewer.php
+        - lmo/addon/tipp/lmo-tippwert.php
+        - lmo/lmo-adminedit.php
+        - lmo/lmo-adminrndprogram.php
+        - lmo/lmo-adminrounds.php
+        - lmo/lmo-adminteams.php
+        - lmo/lmo-adminuser.php
+        - lmo/lmo-calcgraph.php
+        - lmo/lmo-calctable.php
+        - lmo/lmo-openfile.php
+        - lmo/lmo-showkoprogram.php
+        - lmo/lmo-showkoresults.php
+        - lmo/lmo-showmain2.php
+        - lmo/lmo-showstats.php
+        - lmo/lmo-zustat.php

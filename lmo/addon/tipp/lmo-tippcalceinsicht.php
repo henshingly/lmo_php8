@@ -19,15 +19,32 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $endtab
+ * @var array<int|string, mixed> $tippdaten
+ */
   
   
-if ($lmtype != 0) {
-  $anzsp = $anzteams;
+if ($ligaDaten->lmtype != 0) {
+  $ligaDaten->anzsp = $ligaDaten->anzteams;
   for ($i = 0; $i < $st; $i++) {
-    $anzsp = $anzsp/2;
+    $ligaDaten->anzsp = $ligaDaten->anzsp/2;
   }
-  if (($klfin == 1) && ($st == $anzst)) {
-    $anzsp = $anzsp+1;
+  if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) {
+    $ligaDaten->anzsp = $ligaDaten->anzsp+1;
   }
 }
 
@@ -70,49 +87,49 @@ if (!file_exists($einsichtfile)) {
   $tippa = array_pad($array, $anztipper+1, "");
   $tippb = array_pad($array, $anztipper+1, "");
   for ($i = 0; $i < $anztipper; $i++) {
-    if ($lmtype != 0) {
-      $tippa[$i] = array_pad($array, $anzsp+1, "");
-      $tippb[$i] = array_pad($array, $anzsp+1, "");
-      for ($n = 0; $n < $anzsp; $n++) {
+    if ($ligaDaten->lmtype != 0) {
+      $tippa[$i] = array_pad($array, $ligaDaten->anzsp+1, "");
+      $tippb[$i] = array_pad($array, $ligaDaten->anzsp+1, "");
+      for ($n = 0; $n < $ligaDaten->anzsp; $n++) {
         $tippa[$i][$n] = array_pad(array("_"), 7, "_");
         $tippb[$i][$n] = array_pad(array("_"), 7, "_");
       }
     } else {
-      $tippa[$i] = array_pad(array("_"), $anzsp+1, "_");
-      $tippb[$i] = array_pad(array("_"), $anzsp+1, "_");
+      $tippa[$i] = array_pad(array("_"), $ligaDaten->anzsp+1, "_");
+      $tippb[$i] = array_pad(array("_"), $ligaDaten->anzsp+1, "_");
     }
   }
    
-  if ($lmtype == 0) {
-    $tendenz1 = array_pad(array("0"), $anzsp+1, "0");
-    $tendenz0 = array_pad(array("0"), $anzsp+1, "0");
-    $tendenz2 = array_pad(array("0"), $anzsp+1, "0");
-    $toregesa = array_pad(array("0"), $anzsp+1, "0");
-    $toregesb = array_pad(array("0"), $anzsp+1, "0");
-    $anzgetippt = array_pad(array("0"), $anzsp+1, "0");
-    $btip = array_pad(array("false"), $anzsp+1, "0");
+  if ($ligaDaten->lmtype == 0) {
+    $tendenz1 = array_pad(array("0"), $ligaDaten->anzsp+1, "0");
+    $tendenz0 = array_pad(array("0"), $ligaDaten->anzsp+1, "0");
+    $tendenz2 = array_pad(array("0"), $ligaDaten->anzsp+1, "0");
+    $toregesa = array_pad(array("0"), $ligaDaten->anzsp+1, "0");
+    $toregesb = array_pad(array("0"), $ligaDaten->anzsp+1, "0");
+    $anzgetippt = array_pad(array("0"), $ligaDaten->anzsp+1, "0");
+    $btip = array_pad(array("false"), $ligaDaten->anzsp+1, "0");
   } else {
-    $tendenz1 = array_pad($array, $anzsp+1, "");
-    $tendenz0 = array_pad($array, $anzsp+1, "");
-    $tendenz2 = array_pad($array, $anzsp+1, "");
-    $toregesa = array_pad($array, $anzsp+1, "");
-    $toregesb = array_pad($array, $anzsp+1, "");
-    $anzgetippt = array_pad($array, $anzsp+1, "");
-    $btip = array_pad($array, $anzsp+1, "");
-    for ($i = 0; $i < $anzsp; $i++) {
-      $tendenz1[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
-      $tendenz0[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
-      $tendenz2[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
-      $toregesa[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
-      $toregesb[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
-      $anzgetippt[$i] = array_pad(array("0"), $modus[$st-1]+1, "0");
-      $btip[$i] = array_pad(array("false"), $modus[$st-1]+1, "false");
+    $tendenz1 = array_pad($array, $ligaDaten->anzsp+1, "");
+    $tendenz0 = array_pad($array, $ligaDaten->anzsp+1, "");
+    $tendenz2 = array_pad($array, $ligaDaten->anzsp+1, "");
+    $toregesa = array_pad($array, $ligaDaten->anzsp+1, "");
+    $toregesb = array_pad($array, $ligaDaten->anzsp+1, "");
+    $anzgetippt = array_pad($array, $ligaDaten->anzsp+1, "");
+    $btip = array_pad($array, $ligaDaten->anzsp+1, "");
+    for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
+      $tendenz1[$i] = array_pad(array("0"), $ligaDaten->modus[$st-1]+1, "0");
+      $tendenz0[$i] = array_pad(array("0"), $ligaDaten->modus[$st-1]+1, "0");
+      $tendenz2[$i] = array_pad(array("0"), $ligaDaten->modus[$st-1]+1, "0");
+      $toregesa[$i] = array_pad(array("0"), $ligaDaten->modus[$st-1]+1, "0");
+      $toregesb[$i] = array_pad(array("0"), $ligaDaten->modus[$st-1]+1, "0");
+      $anzgetippt[$i] = array_pad(array("0"), $ligaDaten->modus[$st-1]+1, "0");
+      $btip[$i] = array_pad(array("false"), $ligaDaten->modus[$st-1]+1, "false");
     }
   }
    
   $t = 0;
   if ($endtab < 1) {
-    $endtab = $anzst;
+    $endtab = $ligaDaten->anzst;
   }
   for ($i = 1; $i <= count($tippdaten); $i++) {
     $dum = explode('|', $tippdaten[$i-1]);
@@ -133,7 +150,7 @@ if (!file_exists($einsichtfile)) {
     }
     $jksp2[$t] = $op8;
     if ($op4 == "GA") {
-      if ($lmtype != 0) {
+      if ($ligaDaten->lmtype != 0) {
         $tippa[$t][$op6][$op7] = $dum[2];
         if ($dum[2] > 0) {
           $toregesa[$op6][$op7] += $dum[2];
@@ -146,7 +163,7 @@ if (!file_exists($einsichtfile)) {
       }
     }
     if ($op4 == "GB") {
-      if ($lmtype != 0) {
+      if ($ligaDaten->lmtype != 0) {
         $tippb[$t][$op6][$op7] = $dum[2];
         if ($dum[2] >= 0) {
           $toregesb[$op6][$op7] += $dum[2];

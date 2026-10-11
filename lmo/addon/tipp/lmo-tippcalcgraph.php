@@ -19,6 +19,46 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_krit1 Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_krit2 Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_krit3 Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showstsiege Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showzus Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $kurvenmodus
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $endtab
+ * @var mixed $laeng1
+ * @var mixed $laeng2
+ * @var array<int|string, mixed> $punkte1
+ * @var array<int|string, mixed> $punkte1gesamt
+ * @var array<int|string, mixed> $punkte2
+ * @var array<int|string, mixed> $punkte2gesamt
+ * @var array<int|string, mixed> $punkte3
+ * @var array<int|string, mixed> $punkte3gesamt
+ * @var array<int|string, mixed> $punkte6
+ * @var array<int|string, mixed> $punkte6gesamt
+ * @var array<int|string, mixed> $spielegetipptgesamt
+ * @var array<int|string, mixed> $stsiege
+ * @var array<int|string, mixed> $stsiegegesamt
+ * @var array<int|string, mixed> $taba
+ * @var array<int|string, mixed> $tabb
+ * @var array<int|string, mixed> $tippdaten
+ * @var array<int|string, mixed> $tipppunktegesamt
+ */
   
   
 $auswertfile=PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."auswert/".substr($file, 0, -4).".aus";
@@ -72,38 +112,38 @@ if (!file_exists($auswertfile)) {
     }
   }
   for ($i=0; $i<$anztipper; $i++) {
-    $tipppunkte[$i] = array_pad(array(""),$anzst+1,"");
-    $spielegetippt[$i] = array_pad(array(""),$anzst+1,"");
+    $tipppunkte[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+    $spielegetippt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
     if ($tipp_showzus==1) {
-      $punkte1[$i] = array_pad(array(""),$anzst+1,"");
-      $punkte2[$i] = array_pad(array(""),$anzst+1,"");
-      $punkte3[$i] = array_pad(array(""),$anzst+1,"");
-      $punkte6[$i] = array_pad(array(""),$anzst+1,"");
+      $punkte1[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $punkte2[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $punkte3[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $punkte6[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
     }
     if ($kurvenmodus==2 || $kurvenmodus==3) {
-      $platz[$i] = array_pad(array(""),$anzst+1,"");
+      $platz[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
     }
     if ($kurvenmodus>2) {
-      $platz1[$i] = array_pad(array(""),$anzst+1,"");
-      $tipppunktegesamt[$i] = array_pad(array(""),$anzst+1,"");
-      $spielegetipptgesamt[$i] = array_pad(array(""),$anzst+1,"");
+      $platz1[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $tipppunktegesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $spielegetipptgesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
       if ($tipp_showzus==1) {
-        $punkte1gesamt[$i] = array_pad(array(""),$anzst+1,"");
-        $punkte2gesamt[$i] = array_pad(array(""),$anzst+1,"");
-        $punkte3gesamt[$i] = array_pad(array(""),$anzst+1,"");
-        $punkte6gesamt[$i] = array_pad(array(""),$anzst+1,"");
+        $punkte1gesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+        $punkte2gesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+        $punkte3gesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+        $punkte6gesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
       }
     }
   }
   if ($kurvenmodus==2 || $kurvenmodus==3) {
-    $taba = array_pad($array,$anzst+1,"");
+    $taba = array_pad($array,$ligaDaten->anzst+1,"");
   }
   if ($kurvenmodus>2) {
-    $tabb = array_pad($array,$anzst+1,"");
+    $tabb = array_pad($array,$ligaDaten->anzst+1,"");
   }
   
   if ($kurvenmodus>1) {
-    for ($i=0; $i<$anzst; $i++) {
+    for ($i=0; $i<$ligaDaten->anzst; $i++) {
       if ($kurvenmodus==2 || $kurvenmodus==3) {
         $taba[$i] = array("");
       }
@@ -115,7 +155,7 @@ if (!file_exists($auswertfile)) {
   
   $t=0;
   if ($endtab<1) {
-    $endtab=$anzst;
+    $endtab=$ligaDaten->anzst;
   }
   for ($i=1; $i<=count($tippdaten); $i++) {
     $dum=explode('|',$tippdaten[$i-1]);
@@ -130,8 +170,8 @@ if (!file_exists($auswertfile)) {
         $t++;
       }
       $tippernick[$t]=$op1;
-      if ($stat1==-1 && $_SESSION['lmotippername']==$tippernick[$t]) {
-        $stat1=$t;
+      if ($ligaDaten->stat1==-1 && $_SESSION['lmotippername']==$tippernick[$t]) {
+        $ligaDaten->stat1=$t;
       }
     }
     if ($op4=="TP") {
@@ -176,13 +216,13 @@ if (!file_exists($auswertfile)) {
       $stsiegegesamt = array_pad($array,$anztipper+1,"");
     }
     for ($a=0; $a<$anztipper; $a++) {
-      $stsiege[$a] = array_pad(array(""),$anzst+1,"");
+      $stsiege[$a] = array_pad(array(""),$ligaDaten->anzst+1,"");
       if ($kurvenmodus>2) {
-        $stsiegegesamt[$a] = array_pad(array(""),$anzst+1,"");
+        $stsiegegesamt[$a] = array_pad(array(""),$ligaDaten->anzst+1,"");
       }
     }
     $tab = array_pad($array,$endtab,"");
-    for ($i=0; $i<$anzst; $i++) {
+    for ($i=0; $i<$ligaDaten->anzst; $i++) {
       $tab[$i] = array("");
       for ($a=0; $a<$anztipper; $a++) {
         $tt=50000000+(int)$tipppunkte[$a][$i];
@@ -244,7 +284,7 @@ if (!file_exists($auswertfile)) {
   
   
   if ($kurvenmodus>1 && $anztipper>0) {
-    for ($jyz=0; $jyz<$anzst; $jyz++) {
+    for ($jyz=0; $jyz<$ligaDaten->anzst; $jyz++) {
       for ($a=0; $a<$anztipper; $a++) {
         if ($kurvenmodus<4) {
           $tt=(int)50000000+(int)$tipppunkte[$a][$jyz];

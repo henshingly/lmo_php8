@@ -19,6 +19,21 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var array<int|string, mixed> $text Sprachtexte
+ *
+ * Einstellungen:
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_pfeiltipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $all
+ * @var mixed $viewermode
+ */
   
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
@@ -118,7 +133,7 @@ if ($action == "tipp") {
   
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." ";if (isset($titel)){echo $titel;} ?></h1></td>
+    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." ";if (isset($ligaDaten->titel)){echo $ligaDaten->titel;} ?></h1></td>
   </tr>
   <tr>
     <td colspan="3" align="center"><?php 

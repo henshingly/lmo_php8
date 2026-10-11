@@ -20,6 +20,32 @@
 
 require_once(__DIR__ . '/../../init.php');
 
+/**
+ * Diese Datei wird direkt aufgerufen; init.php stellt bereit:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $configfile
+ * @var mixed $filename
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var array<int|string, mixed> $formel_str
+ * @var mixed $spieler_adminbereich_hilfsadmin_fuer_spalten
+ * @var mixed $spieler_adminbereich_hilfsadmin_zulassen
+ * @var mixed $spieler_adminbereich_standard_sortierung
+ * @var mixed $spieler_anzeige_pro_seite
+ * @var mixed $spieler_extra_sortierspalte
+ * @var mixed $spieler_nullwerte_anzeigen
+ * @var mixed $spieler_standard_richtung
+ * @var mixed $spieler_standard_sortierung
+ * @var mixed $spieler_vereinsweise_anzeigen
+ * @var mixed $wert
+ */
+
 if (isset($_REQUEST['sort_direction'])) {
     $stats_sort_direction = $_REQUEST['sort_direction'];
 } else {
@@ -564,8 +590,8 @@ if (isset($file) && $file != '') {
                     <td colspan="2" align="left">
                       <select name="data<?php echo $j1 . '|' . $j2;?>" size="1">
 <?php
-                        for ($j = 0; $j <= $anzteams; $j++) {?>
-                        <option<?php if (htmlentities($teams[$j]) == $data[$j1][$j2]) echo ' selected';?>><?php echo htmlentities($teams[$j]);?></option>
+                        for ($j = 0; $j <= $ligaDaten->anzteams; $j++) {?>
+                        <option<?php if (htmlentities($ligaDaten->teams[$j]) == $data[$j1][$j2]) echo ' selected';?>><?php echo htmlentities($ligaDaten->teams[$j]);?></option>
 <?php
                         }?>
                       </select>

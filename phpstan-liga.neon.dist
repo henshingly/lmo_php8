@@ -1,0 +1,49 @@
+# Alte Dateien, die die Liga ueber Lmo\Liga\LigaDaten lesen und am Dateianfang angeben, welche
+# Variablen sie erwarten (@var): Stufe 6 statt Stufe 0.
+# Besteht eine Datei aus phpstan-liga-basis.neon.dist auch Stufe 6, wandert sie hierher.
+parameters:
+    level: 6
+    phpVersion:
+        min: 80000
+        max: 80599
+    # Konstanten, die init.php erst zur Laufzeit anlegt (PATH_TO_LMO ...)
+    bootstrapFiles:
+        - phpstan-bootstrap.php
+    # Klassen und Funktionen des LMO
+    scanDirectories:
+        - lmo
+        - src
+    paths:
+        - lmo/addon/tipp/lmo-tippcalcgraph.php
+        - lmo/addon/tipp/lmo-tippcalctable1.php
+        - lmo/addon/tipp/lmo-tippcalcwert.php
+        - lmo/addon/tipp/lmo-tippcalcwertteam.php
+        - lmo/addon/tipp/lmo-tippcalcwertverein.php
+        - lmo/addon/tipp/lmo-tippeditko.php
+        - lmo/addon/tipp/lmo-tippeditliga.php
+        - lmo/addon/tipp/lmo-tippeinsicht.php
+        - lmo/addon/tipp/lmo-tippfieber.php
+        - lmo/addon/tipp/lmo-tippfusszeile.php
+        - lmo/addon/tipp/lmo-tippmenu.php
+        - lmo/addon/tipp/lmo-tippsaveeinsicht1.php
+        - lmo/addon/tipp/lmo-tippsavefile.php
+        - lmo/lmo-adminanz.php
+        - lmo/lmo-adminbasic.php
+        - lmo/lmo-adminnew.php
+        - lmo/lmo-adminsubnavi.php
+        - lmo/lmo-admintab.php
+        - lmo/lmo-cal.php
+        - lmo/lmo-calctable1.php
+        - lmo/lmo-kocal.php
+        - lmo/lmo-openfiledat.php
+        - lmo/lmo-openfilename.php
+        - lmo/lmo-savefile.php
+        - lmo/lmo-savehtml.php
+        - lmo/lmo-savehtml1.php
+        - lmo/lmo-showcross.php
+        - lmo/lmo-showgraph.php
+        - lmo/lmo-showprogram.php
+        - lmo/lmo-showrestab.php
+        - lmo/lmo-showresults.php
+        - lmo/lmo-showtable.php
+        - lmo/lmo-spieltagsmenu.php

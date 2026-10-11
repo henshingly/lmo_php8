@@ -19,6 +19,24 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ *
+ * Einstellungen:
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_jokertipp Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $goaltippa
+ * @var array<int|string, mixed> $goaltippb
+ * @var mixed $jksp
+ */
   
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
@@ -63,17 +81,17 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
     if ($tipp_jokertipp == 1) {
       fputs($datei, "@".$jksp."@\n");
     }
-    if ($lmtype != 0) {
-      $anzsp = $anzteams;
+    if ($ligaDaten->lmtype != 0) {
+      $ligaDaten->anzsp = $ligaDaten->anzteams;
       for ($i = 0; $i < $st; $i++) {
-        $anzsp = $anzsp/2;
+        $ligaDaten->anzsp = $ligaDaten->anzsp/2;
       }
-      if (($klfin == 1) && ($st == $anzst)) {
-        $anzsp = $anzsp+1;
+      if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) {
+        $ligaDaten->anzsp = $ligaDaten->anzsp+1;
       }
     }
-    for ($j = 1; $j <= $anzsp; $j++) {
-      if ($lmtype == 0) {
+    for ($j = 1; $j <= $ligaDaten->anzsp; $j++) {
+      if ($ligaDaten->lmtype == 0) {
         if ($goaltippa[$j-1] == "_") {
           fputs($datei, "GA".$j."=-1\n");
         } elseif ($goaltippa[$j-1] == "") {
@@ -89,7 +107,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
           fputs($datei, "GB".$j."=".$goaltippb[$j-1]."\n");
         }
       } else {
-        for ($n = 1; $n <= $modus[$st-1]; $n++) {
+        for ($n = 1; $n <= $ligaDaten->modus[$st-1]; $n++) {
           if ($goaltippa[$j-1][$n-1] == "_") {
             fputs($datei, "GA".$j.$n."=-1\n");
           } elseif ($goaltippa[$j-1][$n-1] == "") {

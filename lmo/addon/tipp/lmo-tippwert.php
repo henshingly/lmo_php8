@@ -19,11 +19,63 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $tipp_jokertipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rergebnis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rremis Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtendenz Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtendenzdiff Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_rtor Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showemail Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showname Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_shownick Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_showzus Einstellung aus tipp/cfg.txt
+ * @var array<int|string, mixed> $tipp_tipperimteam Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippmodus Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $spielegetipptgesamt
+ * @var array<int|string, mixed> $tab0
+ * @var array<int|string, mixed> $team
+ * @var mixed $teamintern
+ * @var mixed $teamsanzahl
+ * @var array<int|string, mixed>|null $tipperemail
+ * @var array<int|string, mixed> $tippername
+ * @var array<int|string, mixed> $tippernick
+ * @var array<int|string, mixed> $tipppunktegesamt
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $anztipper
+ * @var mixed $endtab
+ * @var mixed $laeng
+ * @var array<int|string, mixed> $platz1
+ * @var array<int|string, mixed> $punkte1gesamt
+ * @var array<int|string, mixed> $punkte2gesamt
+ * @var array<int|string, mixed> $punkte3gesamt
+ * @var array<int|string, mixed> $punkte4gesamt
+ * @var array<int|string, mixed> $punkte5gesamt
+ * @var array<int|string, mixed> $punkte6gesamt
+ * @var array<int|string, mixed> $quotegesamt
+ * @var array<int|string, mixed> $stsiege
+ * @var mixed $tipp_anzseite1
+ * @var mixed $tipp_showstsiege
+ * @var array<int|string, mixed> $tipperteam
+ */
   
 //$endtab        = isset($_REQUEST['endtab'])        ? $_REQUEST['endtab']                : ''; 
 if ($endtab == 0) {
-  if (isset($anzst)) {
-    $endtab = $anzst;
+  if (isset($ligaDaten->anzst)) {
+    $endtab = $ligaDaten->anzst;
   }
   $tabdat = "";
 } else {
@@ -34,7 +86,7 @@ $all        = isset($_REQUEST['all'])        ? $_REQUEST['all']                :
 if ($all == 1) {
   $endtab = 0;
   $tabdat = "";
-  $anzst = 0;
+  $ligaDaten->anzst = 0;
 } else {
   $st = $endtab;
 }
@@ -209,14 +261,14 @@ if ($all==0){ ?>
 }?>
         <tr>
           <th class="nobr" colspan="3"> <?php
-if (isset($lmtype) && $lmtype == 1 && $tabdat != "") {
-  if ($st == $anzst) {
+if (isset($ligaDaten->lmtype) && $ligaDaten->lmtype == 1 && $tabdat != "") {
+  if ($st == $ligaDaten->anzst) {
     $j = $text[374];
-  } elseif ($st == $anzst-1) {
+  } elseif ($st == $ligaDaten->anzst-1) {
     $j = $text[373];
-  } elseif ($st == $anzst-2) {
+  } elseif ($st == $ligaDaten->anzst-2) {
     $j = $text[372];
-  } elseif ($st == $anzst-3) {
+  } elseif ($st == $ligaDaten->anzst-3) {
     $j = $text[371];
   } else {
     $j = $st.". ".$text[370];
@@ -568,7 +620,7 @@ if ($tabdat!=""){ ?>
           <td align="left"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[43]?>"><?php echo $text[5]?> <?php echo $text[6]?></a></td><?php
   }
   $st0 = $endtab+1;
-  if ($endtab < $anzst) {?>
+  if ($endtab < $ligaDaten->anzst) {?>
           <td align="right"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[44]?>"><?php echo $text[8]?> <?php echo $text[7]?></a></td><?php
   }?>
         </tr>

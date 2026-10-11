@@ -20,10 +20,24 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var string $diroutput Ordner fuer erzeugte Dateien (Konfiguration)
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $dsgasttore
+ * @var mixed $dsheimtore
+ * @var mixed $gdstore
+ */
+
 
 $zustatoutput = '';
 if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($generate_zustat)) {
-  if ($lmtype == 0 && $zustatfile = fopen(PATH_TO_LMO.'/'.$diroutput.basename($file).".php", "wb+")) {
+  if ($ligaDaten->lmtype == 0 && $zustatfile = fopen(PATH_TO_LMO.'/'.$diroutput.basename($file).".php", "wb+")) {
 
     $zustatoutput .= "<?php\n";
     $gzutore = 0;
@@ -87,7 +101,7 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
     $serie_verloren = array();
 
 
-    for ($y1 = 1; $y1 < $anzst+1; $y1++) {
+    for ($y1 = 1; $y1 < $ligaDaten->anzst+1; $y1++) {
       $sptore1 = 0;
       $sptore = 0;
       $zuanzsp = 0;
@@ -98,45 +112,45 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
 
 
 
-      for ($i1 = 0; $i1 < $anzsp; $i1++) {
+      for ($i1 = 0; $i1 < $ligaDaten->anzsp; $i1++) {
         // Partien mit einer Mannschaft, die es in der Liga nicht gibt (z.B. Spielplan aus einer
         // Vorlage mit mehr Mannschaften), zaehlen nicht
-        if (($teama[$y1-1][$i1] > 0) && ($teamb[$y1-1][$i1] > 0) && isset($teams[$teama[$y1-1][$i1]], $teams[$teamb[$y1-1][$i1]])) {
+        if (($ligaDaten->teama[$y1-1][$i1] > 0) && ($ligaDaten->teamb[$y1-1][$i1] > 0) && isset($ligaDaten->teams[$ligaDaten->teama[$y1-1][$i1]], $ligaDaten->teams[$ligaDaten->teamb[$y1-1][$i1]])) {
 
-          $heimteam = $teams[$teama[$y1-1][$i1]];
-          $gastteam = $teams[$teamb[$y1-1][$i1]];
+          $heimteam = $ligaDaten->teams[$ligaDaten->teama[$y1-1][$i1]];
+          $gastteam = $ligaDaten->teams[$ligaDaten->teamb[$y1-1][$i1]];
 
           // Abfrage Grüne-Tisch-Entscheidung-Anfang
-          if ($goala[$y1-1][$i1] == "-1") $goala[$y1-1][$i1] = "_";
-          if (isset($msieg)) {
-            if ($msieg[$y1-1][$i1] == "1") {
+          if ($ligaDaten->goala[$y1-1][$i1] == "-1") $ligaDaten->goala[$y1-1][$i1] = "_";
+          if (isset($ligaDaten->msieg)) {
+            if ($ligaDaten->msieg[$y1-1][$i1] == "1") {
               $zusieg1 = $zusieg1+1;
               $zuunent1 = $zuunent1-1;
             }
-            if ($msieg[$y1-1][$i1] == "2") {
+            if ($ligaDaten->msieg[$y1-1][$i1] == "2") {
               $zusieg2 = $zusieg2+1;
               $zuunent1 = $zuunent1-1;
             }
-            if ($msieg[$y1-1][$i1] == "3") {
+            if ($ligaDaten->msieg[$y1-1][$i1] == "3") {
               $gbeide = $gbeide+1;
-              if ($goala[$y1-1][$i1] > $goalb[$y1-1][$i1]) {
-                $sptore1 = $sptore1+$goala[$y1-1][$i1];
+              if ($ligaDaten->goala[$y1-1][$i1] > $ligaDaten->goalb[$y1-1][$i1]) {
+                $sptore1 = $sptore1+$ligaDaten->goala[$y1-1][$i1];
                 $zusieg2 = $zusieg2+1;
-                $ggasttore = $ggasttore+$goala[$y1-1][$i1];
+                $ggasttore = $ggasttore+$ligaDaten->goala[$y1-1][$i1];
               }
-              if ($goala[$y1-1][$i1] < $goalb[$y1-1][$i1]) {
-                $sptore1 = $sptore1+$goalb[$y1-1][$i1];
+              if ($ligaDaten->goala[$y1-1][$i1] < $ligaDaten->goalb[$y1-1][$i1]) {
+                $sptore1 = $sptore1+$ligaDaten->goalb[$y1-1][$i1];
                 $zusieg2 = $zusieg2-1;
-                $gheimtore = $gheimtore+$goalb[$y1-1][$i1];
+                $gheimtore = $gheimtore+$ligaDaten->goalb[$y1-1][$i1];
               }
             }
           }
 
           // Abfrage Grüne-Tisch-Entscheidung-Ende
-          if ($goalb[$y1-1][$i1] == "-1") $goalb[$y1-1][$i1] = "_";
+          if ($ligaDaten->goalb[$y1-1][$i1] == "-1") $ligaDaten->goalb[$y1-1][$i1] = "_";
 
-          $heimtore = $goala[$y1-1][$i1];
-          $gasttore = $goalb[$y1-1][$i1];
+          $heimtore = $ligaDaten->goala[$y1-1][$i1];
+          $gasttore = $ligaDaten->goalb[$y1-1][$i1];
           if ($heimtore!='_' &&  $gasttore!='_') {
             // Höchster-Sieg checken-Anfang
             $hsieg = $heimtore-$gasttore;
@@ -370,7 +384,7 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
             $gheimtore = $gheimtore+$heimtore;
             $ggasttore = $ggasttore+$gasttore;
             $sptore1 = $sptore+$sptore1;
-            if ($goala[$y1-1][$i1] != "_") {
+            if ($ligaDaten->goala[$y1-1][$i1] != "_") {
               $zuanzsp = $zuanzsp+1;
               if ($heimtore > $gasttore) $zusieg1 = $zusieg1+1;
               if ($heimtore < $gasttore) $zusieg2 = $zusieg2+1;
@@ -446,17 +460,17 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
     // Höchster Sieg-Reset - Ende
 
     // Anzahl gleicher gewonnener Spiele und torreichstes Spiel- Anfang
-    for ($y1 = 1; $y1 < $anzst+1; $y1++) {
-      for ($i1 = 0; $i1 < $anzsp; $i1++) {
-        if ($goala[$y1-1][$i1] == $hheimsiegtor && $goala[$y1-1][$i1] == $hheimsiegtor1 && $goalb[$y1-1][$i1] == $hgastsiegtor && $goalb[$y1-1][$i1] == $hgastsiegtor1) {
+    for ($y1 = 1; $y1 < $ligaDaten->anzst+1; $y1++) {
+      for ($i1 = 0; $i1 < $ligaDaten->anzsp; $i1++) {
+        if ($ligaDaten->goala[$y1-1][$i1] == $hheimsiegtor && $ligaDaten->goala[$y1-1][$i1] == $hheimsiegtor1 && $ligaDaten->goalb[$y1-1][$i1] == $hgastsiegtor && $ligaDaten->goalb[$y1-1][$i1] == $hgastsiegtor1) {
           $counteranz = $counteranz+1;
         }
 
-        if ($goala[$y1-1][$i1] == $aheimsiegtor && $goala[$y1-1][$i1] == $aheimsiegtor1 && $goalb[$y1-1][$i1] == $agastsiegtor && $goalb[$y1-1][$i1] == $agastsiegtor1) {
+        if ($ligaDaten->goala[$y1-1][$i1] == $aheimsiegtor && $ligaDaten->goala[$y1-1][$i1] == $aheimsiegtor1 && $ligaDaten->goalb[$y1-1][$i1] == $agastsiegtor && $ligaDaten->goalb[$y1-1][$i1] == $agastsiegtor1) {
           $counteranz1 = $counteranz1+1;
         }
         $setztemp1 = $htorreicht1+$htorreicht2;
-        $setztemp2 = (int)$goala[$y1-1][$i1]+(int)$goalb[$y1-1][$i1];
+        $setztemp2 = (int)$ligaDaten->goala[$y1-1][$i1]+(int)$ligaDaten->goalb[$y1-1][$i1];
         if ($setztemp1 == $setztemp2) {
           $counteranz5 = $counteranz5+1;
         }

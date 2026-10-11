@@ -124,4 +124,7 @@ if (!function_exists('ini_get') || !ini_get('register_globals')) {
     @extract($_POST);
     @extract($_COOKIE);
 }
+
+// $ligaDaten: alle Werte einer Ligadatei als ein Objekt, verbunden mit den alten Variablen
+require(PATH_TO_LMO . '/lmo-ligadaten.php');
 ?>

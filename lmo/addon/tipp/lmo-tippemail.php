@@ -20,6 +20,40 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var int|string $st gewaehlter Spieltag
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
+ *
+ * Einstellungen:
+ * @var int|string $aadr Einstellung aus cfg.txt
+ * @var int|string $tipp_dirtipp Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_immeralle Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_imvorraus Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_ligenzutippen Einstellung aus tipp/cfg.txt
+ * @var int|string $tipp_tippauthtxt Einstellung aus tipp/cfg.txt
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $adressat
+ * @var mixed $betreff
+ * @var mixed $emailart
+ * @var array<int|string, mixed> $goaltippa
+ * @var mixed $message
+ * @var mixed $tage
+ * @var mixed $trans_lang
+ * @var mixed $viewermode
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $anzst1
+ * @var mixed $ktipp
+ * @var array<int|string, mixed> $liga
+ * @var mixed $st0
+ */
+
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tippaenderbar.php');
 $mail = lmo_mailer($aadr, $text['tipp'][92]);
@@ -98,17 +132,17 @@ if ($message != '') {
 
             $anzligen = count($dateien);
 
-            $teams = array_pad($array, 65, '');
-            $teams[0] = '___';
+            $ligaDaten->teams = array_pad($array, 65, '');
+            $ligaDaten->teams[0] = '___';
             $liga = array();
-            $titel = array();
-            $lmtype = array();
-            $anzst = array();
+            $ligaDaten->titel = array();
+            $ligaDaten->lmtype = array();
+            $ligaDaten->anzst = array();
             $spieltag = array();
-            $modus = array();
+            $ligaDaten->modus = array();
             $spiel = array();
-            $teama = array();
-            $teamb = array();
+            $ligaDaten->teama = array();
+            $ligaDaten->teamb = array();
             $zeit = array();
 
             $anzspiele = 0;
@@ -143,19 +177,19 @@ if ($message != '') {
                         if ($ktipp == 1) {
                             if ($goaltipp[$i] == '_') {
                                 if ($lliga != $liga[$i]) {
-                                    $spiele .= "\n" . $titel[$i] . ':';
+                                    $spiele .= "\n" . $ligaDaten->titel[$i] . ':';
                                 }
                                 if ($lspieltag != $spieltag[$i] || $lliga != $liga[$i]) {
-                                    if ($lmtype[$i] == 0) {
+                                    if ($ligaDaten->lmtype[$i] == 0) {
                                         $spiele .= "\n" . $spieltag[$i] . '. ' . $text[2] . ':';
                                     } else {
-                                        if ($spieltag[$i] == $anzst[$i]) {
+                                        if ($spieltag[$i] == $ligaDaten->anzst[$i]) {
                                             $j = $text[374];
-                                        } elseif ($spieltag[$i] == $anzst[$i]-1) {
+                                        } elseif ($spieltag[$i] == $ligaDaten->anzst[$i]-1) {
                                             $j = $text[373];
-                                        } elseif ($spieltag[$i] == $anzst[$i]-2) {
+                                        } elseif ($spieltag[$i] == $ligaDaten->anzst[$i]-2) {
                                             $j = $text[372];
-                                        } elseif ($spieltag[$i] == $anzst[$i]-3) {
+                                        } elseif ($spieltag[$i] == $ligaDaten->anzst[$i]-3) {
                                             $j = $text[371];
                                         } else {
                                             $j = $spieltag[$i] . '. ' . $text[370];
@@ -163,7 +197,7 @@ if ($message != '') {
                                         $spiele .= $j . ':';
                                     }
                                 }
-                                $spiele .= "\n" . $teama[$i] . ' - ' . $teamb[$i] . ' (' . $text['tipp'][87] . ' ' . $zeit[$i] . ')';
+                                $spiele .= "\n" . $ligaDaten->teama[$i] . ' - ' . $ligaDaten->teamb[$i] . ' (' . $text['tipp'][87] . ' ' . $zeit[$i] . ')';
                                 $lliga = $liga[$i];
                                 $lspieltag = $spieltag[$i];
                             }
@@ -208,26 +242,26 @@ if ($message != '') {
                         } elseif ($st == 0) {
                             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippopenfileall.php');
                             $st0 = 0;
-                            $anzst1 = $anzst;
+                            $anzst1 = $ligaDaten->anzst;
                         }
                         for (; $st0 <= $anzst1; $st0 ++) {
-                            if ($tipp_imvorraus < 0 || $st0 <= ($stx + $tipp_imvorraus)) {
-                                if ($lmtype == 0) {
-                                    for ($dd = 0; $dd < $anzsp; $dd ++) {
-                                        $zeit = zeit($mterm[$st0][$dd], $datum1[$st0], $datum2[$st0]);
+                            if ($tipp_imvorraus < 0 || $st0 <= ($ligaDaten->stx + $tipp_imvorraus)) {
+                                if ($ligaDaten->lmtype == 0) {
+                                    for ($dd = 0; $dd < $ligaDaten->anzsp; $dd ++) {
+                                        $zeit = zeit($ligaDaten->mterm[$st0][$dd], $ligaDaten->datum1[$st0], $ligaDaten->datum2[$st0]);
                                         if ($now < $zeit && $then > $zeit) {
-                                            if ((($st == 0 && $goaltippa[$st0][$dd] == '_') || ($st > 0 && $goaltippa[$dd] == '_')) && $teama[$st0][$dd] > 0) {
-                                                $spiele = $spiele . $teams[$teama[$st0][$dd]] . ' - ' . $teams[$teamb[$st0][$dd]] . ' (' . $text['tipp'][87] . ' ' . strtr(date('l, d.F.Y H:i', $zeit), $trans_lang) . ')';
+                                            if ((($st == 0 && $goaltippa[$st0][$dd] == '_') || ($st > 0 && $goaltippa[$dd] == '_')) && $ligaDaten->teama[$st0][$dd] > 0) {
+                                                $spiele = $spiele . $ligaDaten->teams[$ligaDaten->teama[$st0][$dd]] . ' - ' . $ligaDaten->teams[$ligaDaten->teamb[$st0][$dd]] . ' (' . $text['tipp'][87] . ' ' . strtr(date('l, d.F.Y H:i', $zeit), $trans_lang) . ')';
                                             }
                                         }
                                     }
-                                } elseif ($lmtype != 0) {
-                                    for ($dd = 0; $dd < $anzsp; $dd ++) {
-                                        for ($ddd = 0; $ddd < $modus[$st0]; $ddd ++) {
-                                            $zeit = zeit($mterm[$st0][$dd][$ddd], $datum1[$st0], $datum2[$st0]);
+                                } elseif ($ligaDaten->lmtype != 0) {
+                                    for ($dd = 0; $dd < $ligaDaten->anzsp; $dd ++) {
+                                        for ($ddd = 0; $ddd < $ligaDaten->modus[$st0]; $ddd ++) {
+                                            $zeit = zeit($ligaDaten->mterm[$st0][$dd][$ddd], $ligaDaten->datum1[$st0], $ligaDaten->datum2[$st0]);
                                             if ($now < $zeit && $then > $zeit) {
-                                                if ((($st == 0 && $goaltippa[$st0][$dd][$ddd] == '_') || ($st > 0 && $goaltippa[$dd][$ddd] == '_')) && $teama[$st0][$dd] > 0) {
-                                                    $spiele = $spiele . $teams[$teama[$st0][$dd]] . ' - ' . $teams[$teamb[$st0][$dd]] . ' (' . $text['tipp'][87] . ' ' . strtr(date('l, d.F.Y H:i', $zeit), $trans_lang) . ')';
+                                                if ((($st == 0 && $goaltippa[$st0][$dd][$ddd] == '_') || ($st > 0 && $goaltippa[$dd][$ddd] == '_')) && $ligaDaten->teama[$st0][$dd] > 0) {
+                                                    $spiele = $spiele . $ligaDaten->teams[$ligaDaten->teama[$st0][$dd]] . ' - ' . $ligaDaten->teams[$ligaDaten->teamb[$st0][$dd]] . ' (' . $text['tipp'][87] . ' ' . strtr(date('l, d.F.Y H:i', $zeit), $trans_lang) . ')';
                                                 }
                                             }
                                         }

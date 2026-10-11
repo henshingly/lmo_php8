@@ -21,6 +21,22 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var mixed $addr_addons
+ * @var mixed $addr_design
+ * @var mixed $addr_options
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var array<int|string, mixed> $lmo_admin_data
+ */
+
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 
 // Sicheren Hashing-Algorithmus definieren
@@ -186,7 +202,7 @@ if ($_SESSION['lmouserok'] == 2) {
                     if (substr($file, -4) == '.l98') {
                         $ligenname = substr($file, 0, -4); ?>
                 <tr>
-                  <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?php echo $show; ?>[]" value="<?php echo $ligenname; ?>"<?php if (in_array($ligenname,$helfer_ligen)) echo ' checked'; ?>><?php echo $titel; ?></td>
+                  <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?php echo $show; ?>[]" value="<?php echo $ligenname; ?>"<?php if (in_array($ligenname,$helfer_ligen)) echo ' checked'; ?>><?php echo $ligaDaten->titel; ?></td>
                 </tr>
 <?php
                     }

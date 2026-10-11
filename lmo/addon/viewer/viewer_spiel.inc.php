@@ -21,6 +21,26 @@ if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
 
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ *
+ * Weitere Variablen des einbindenden Codes:
+ * @var array<int|string, mixed> $fav_liga
+ * @var array<int|string, mixed> $fav_team
+ * @var mixed $i
+ * @var mixed $liga
+ * @var array<int|string, mixed>|null $multi_cfgarray
+ * @var mixed $mySpieltag
+ * @var mixed $partie
+ * @var mixed $template
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $spieltag
+ */
+
 foreach ($fav_team[$i] as $akt_team) {
     if (isset($multi_cfgarray['modus']) && $multi_cfgarray['modus'] == 1) {
         $spieltag = $mySpieltag->nr;
@@ -29,13 +49,13 @@ foreach ($fav_team[$i] as $akt_team) {
     if (($akt_team == $partie->heim->nr) || ($akt_team == $partie->gast->nr)) {
 
         //Anfang Relevante Daten
-        $goalfaktor = $liga->options->keyValues['goalfaktor'];
+        $ligaDaten->goalfaktor = $liga->options->keyValues['goalfaktor'];
         $template->setVariable('Liganame', $liga->name);
         $template->setVariable('Ligadatum', $liga->ligaDatumAsString());
         $template->setVariable('Spieltag', $multi_cfgarray['spieltagtext'] . ' ' . $spieltag);
         $template->setVariable('Datum', $partie->datumString('-', $multi_cfgarray['datumsformat']));
         $template->setVariable('Uhrzeit', $partie->zeitString('-', $multi_cfgarray['uhrzeitformat']));
-        $template->setVariable('Tore', $partie->hToreString($multi_cfgarray['tordummy'], $goalfaktor) . ' : ' . $partie->gToreString($multi_cfgarray['tordummy'], $goalfaktor) . ' ' . $partie->spielEndeString($text));
+        $template->setVariable('Tore', $partie->hToreString($multi_cfgarray['tordummy'], $ligaDaten->goalfaktor) . ' : ' . $partie->gToreString($multi_cfgarray['tordummy'], $ligaDaten->goalfaktor) . ' ' . $partie->spielEndeString($text));
         //Heim & Gasttore einzeln
         $template->setVariable('ToreHeim', $partie->hToreString($multi_cfgarray['tordummy']));
         $template->setVariable('ToreGast', $partie->gToreString($multi_cfgarray['tordummy']));

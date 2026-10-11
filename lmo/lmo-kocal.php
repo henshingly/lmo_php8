@@ -19,6 +19,18 @@
 if (!defined('PATH_TO_LMO')) {
     exit;  // kein Direktaufruf: diese Datei wird nur ueber LMO eingebunden
 }
+
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ * @var int|string $st gewaehlter Spieltag
+ *
+ * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
+ * @var mixed $md
+ */
   
 
 if ($file != "") {
@@ -41,8 +53,8 @@ if ($file != "") {
     }
   } else {
     $lmo_termine = array();
-    for ($n = 0; $n < $modus[$st-1]; $n++) {
-      $lmo_termine=array_filter($mterm[$st-1][$n],"filterZero");  //Nullwerte filtern
+    for ($n = 0; $n < $ligaDaten->modus[$st-1]; $n++) {
+      $lmo_termine=array_filter($ligaDaten->mterm[$st-1][$n],"filterZero");  //Nullwerte filtern
     }
     if (!empty($lmo_termine)) {
       $datum = explode('.', date("d.m.Y",min($lmo_termine)));
@@ -88,21 +100,21 @@ if ($file != "") {
   }
   
   $lmo_stlink = array_pad(array(), $lmo_arrays, '');
-  for ($j = 0; $j < $anzst; $j++) {
+  for ($j = 0; $j < $ligaDaten->anzst; $j++) {
     $lmo_stlink_title = array_pad(array(), $lmo_arrays, '');
       
       //Bezeichnungen generieren
-    $anzsp = $anzteams/2;
-    if ($j == $anzst-1) {
+    $ligaDaten->anzsp = $ligaDaten->anzteams/2;
+    if ($j == $ligaDaten->anzst-1) {
       $text2 = $text[364];
       $text1 = $text[374];
-    } elseif ($j == $anzst-2) {
+    } elseif ($j == $ligaDaten->anzst-2) {
       $text2 = $text[362];
       $text1 = $text[373];
-    } elseif ($j == $anzst-3) {
+    } elseif ($j == $ligaDaten->anzst-3) {
       $text2 = $text[360];
       $text1 = $text[372];
-    } elseif ($j == $anzst-4) {
+    } elseif ($j == $ligaDaten->anzst-4) {
       $text2 = $text[358];
       $text1 = $text[371];
     } else {
@@ -110,18 +122,18 @@ if ($file != "") {
       $text2 = ($j+1).". ".$text[376];
     }
       
-    for ($i = 0; $i < $anzsp; $i++) {
-      for ($n = 0; $n < $modus[$j]; $n++) {
-        if (!empty($mterm[$j][$i][$n]) && date($lmo_daterule, $mterm[$j][$i][$n]) == $md) { //konkretes Spieldatum vorhanden
-          $a = intval(date($lmo_daterule2, $mterm[$j][$i][$n]));
-          if (($teama[$j][$i] != 0) && ($teamb[$j][$i] != 0)) {
+    for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
+      for ($n = 0; $n < $ligaDaten->modus[$j]; $n++) {
+        if (!empty($ligaDaten->mterm[$j][$i][$n]) && date($lmo_daterule, $ligaDaten->mterm[$j][$i][$n]) == $md) { //konkretes Spieldatum vorhanden
+          $a = intval(date($lmo_daterule2, $ligaDaten->mterm[$j][$i][$n]));
+          if (($ligaDaten->teama[$j][$i] != 0) && ($ligaDaten->teamb[$j][$i] != 0)) {
             if (!empty($lmo_stlink_title[$a])) {
               $lmo_stlink_title[$a] = $lmo_stlink_title[$a].", &#10;";
             } else {
               $lmo_stlink_title[$a] = $text1.": &#10;";
             }
-            $lmo_stlink_title[$a] = $lmo_stlink_title[$a].$teams[$teama[$j][$i]]." - ".$teams[$teamb[$j][$i]];
-            if ($modus[$j] > 1) {
+            $lmo_stlink_title[$a] = $lmo_stlink_title[$a].$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." - ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]];
+            if ($ligaDaten->modus[$j] > 1) {
               $lmo_stlink_title[$a] = $lmo_stlink_title[$a]." &#10;(".($n+1).". ".$text[375].")";
             }
           }
@@ -130,14 +142,14 @@ if ($file != "") {
     }
     
     //Spieltagsdatum
-    if (!empty($datum1[$j])) {
-      $datum = explode('.', $datum1[$j]);
+    if (!empty($ligaDaten->datum1[$j])) {
+      $datum = explode('.', $ligaDaten->datum1[$j]);
       $lmo_stdatum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
     } else {
       $lmo_stdatum1 = '';
     }
-    if (!empty($datum2[$j])) {
-      $datum = explode('.', $datum2[$j]);
+    if (!empty($ligaDaten->datum2[$j])) {
+      $datum = explode('.', $ligaDaten->datum2[$j]);
       $lmo_stdatum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
     } else {
       $lmo_stdatum2 = '';
