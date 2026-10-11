@@ -317,6 +317,17 @@ L98;
         self::assertCount(3, $liga->mannschaften, 'nachfragen legt nichts an');
     }
 
+    public function testKurzUndMittelnameZumAnzeigen(): void
+    {
+        $liga = Liga::ausEintraegen(LigaDatei::zerlege(['[Teams]', '1=SV Werder/Bremen II', '2=Eintracht Frankfurt', '3=VfL', '[Teamm]', '2=SGE', '[Teamk]', '1=SVW']));
+
+        self::assertSame(['SVW', 'Bremen'], [$liga->mannschaften[1]->kurzname(), $liga->mannschaften[1]->mittelname()], 'laengstes Wort, bei gleicher Laenge das letzte; "/" trennt');
+        self::assertSame(['Eintr', 'SGE'], [$liga->mannschaften[2]->kurzname(), $liga->mannschaften[2]->mittelname()], 'die ersten 5 Zeichen');
+        self::assertSame(['VfL', 'VfL'], [$liga->mannschaften[3]->kurzname(), $liga->mannschaften[3]->mittelname()]);
+        self::assertNull($liga->mannschaften[3]->kurz, 'die Rohdaten bleiben, wie sie sind');
+        self::assertSame(['', ''], [(new \Lmo\Liga\Rohdaten\Mannschaft())->kurzname(), (new \Lmo\Liga\Rohdaten\Mannschaft())->mittelname()]);
+    }
+
     public function testSpieltagNenntErstenUndLetztenTagAlsZeit(): void
     {
         $liga = Liga::ausEintraegen(LigaDatei::zerlege(['[Round1]', 'D1=1.9.2024', 'D2=31.02.2025', '[Round2]', 'D2=02.09.2024', '[Round3]', 'D1=bald']));
