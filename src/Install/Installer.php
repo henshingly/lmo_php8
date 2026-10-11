@@ -92,8 +92,7 @@ class Installer
      */
     public static function registerScripts(string $composerJson, string $target): bool
     {
-        $json = file_get_contents($composerJson);
-        $data = json_decode($json);
+        $data = json_decode((string) file_get_contents($composerJson));
         if (!$data instanceof \stdClass) {
             throw new \RuntimeException('composer.json ist nicht lesbar: ' . $composerJson);
         }
@@ -124,7 +123,7 @@ class Installer
     /** Zielordner aus einem frueheren Lauf, oder null */
     public static function registeredTarget(string $composerJson): ?string
     {
-        $data = is_file($composerJson) ? json_decode(file_get_contents($composerJson), true) : null;
+        $data = is_file($composerJson) ? json_decode((string) file_get_contents($composerJson), true) : null;
         foreach (self::EVENTS as $event) {
             foreach ((array) ($data['scripts'][$event] ?? []) as $entry) {
                 if (($target = self::targetOf($entry)) !== null) {
@@ -204,7 +203,7 @@ class Installer
             return 0;
         }
         $removed = 0;
-        $old = file($manifest, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $old = file($manifest, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
         foreach (array_diff($old, $code) as $file) {
             $path = $target . '/' . $file;
             // nur, was wirklich unter dem Zielordner liegt und keine Daten des Nutzers enthaelt
@@ -277,18 +276,18 @@ class Installer
     {
         $path = str_replace('\\', '/', $path);
         if (!self::isAbsolute($path)) {
-            $path = str_replace('\\', '/', getcwd()) . '/' . $path;
+            $path = str_replace('\\', '/', (string) getcwd()) . '/' . $path;
         }
-        preg_match('#^([a-zA-Z]:)?/#', $path, $root);
+        $root = preg_match('#^([a-zA-Z]:)?/#', $path, $match) ? $match[0] : '';
         $parts = [];
-        foreach (explode('/', substr($path, strlen($root[0]))) as $part) {
+        foreach (explode('/', substr($path, strlen($root))) as $part) {
             if ($part === '..') {
                 array_pop($parts);
             } elseif ($part !== '' && $part !== '.') {
                 $parts[] = $part;
             }
         }
-        $path = $root[0] . implode('/', $parts);
+        $path = $root . implode('/', $parts);
         $real = realpath($path);
 
         return $real === false ? $path : str_replace('\\', '/', $real);

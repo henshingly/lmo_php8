@@ -6,7 +6,8 @@
 require_once __DIR__ . '/../src/Install/Installer.php';
 
 $autoload = $GLOBALS['_composer_autoload_path'] ?? null;
-foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../lmo/vendor/autoload.php'] as $candidate) {
+// als Paket: vendor/lmo/lmo_php8/bin; im Repo selbst: vendor/ neben bin/
+foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php'] as $candidate) {
     if ($autoload === null && is_file($candidate)) {
         $autoload = $candidate;
     }
@@ -19,7 +20,7 @@ if ($autoload === null) {
 exit(Lmo\Install\Installer::run(
     array_slice($argv, 1),
     dirname(__DIR__) . '/lmo',
-    dirname(realpath($autoload)),
-    getcwd(),
+    dirname((string) realpath($autoload)),
+    (string) getcwd(),
     STDOUT
 ));
