@@ -55,82 +55,9 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         echo getMessage($text[138]);
         flock($datei,LOCK_EX);
         fputs($datei,"[Options]\n");
-        fputs($datei,"Title=".$text[54]."\n");
-        fputs($datei,"Name=".$ligaDaten->titel."\n");
-        fputs($datei,"Type=".$ligaDaten->lmtype."\n");
-        fputs($datei,"Teams=".$ligaDaten->anzteams."\n");
-        fputs($datei,"goalfaktor=".$ligaDaten->goalfaktor."\n");
-        fputs($datei,"pointsfaktor=".$ligaDaten->pointsfaktor."\n");
-        fputs($datei,"enableGameSort=".$ligaDaten->enablegamesort."\n");
-        if ($ligaDaten->lmtype==0) {
-          fputs($datei,"Rounds=".$ligaDaten->anzst."\n");
-          fputs($datei,"Matches=".$ligaDaten->anzsp."\n");
-        }
-        if ($st>0) {
-          fputs($datei,"Actual=".$st."\n");
-        }
-        else {
-          fputs($datei,"Actual=".$ligaDaten->stx."\n");
-        }
-        if ($ligaDaten->lmtype==0) {
-          fputs($datei,"Kegel=".$ligaDaten->kegel."\n");
-          fputs($datei,"HandS=".$ligaDaten->hands."\n");
-          fputs($datei,"PointsForWin=".$ligaDaten->pns."\n");
-          fputs($datei,"PointsForDraw=".$ligaDaten->pnu."\n");
-          fputs($datei,"PointsForLost=".$ligaDaten->pnn."\n");
-          fputs($datei,"Spez=".$ligaDaten->spez."\n");
-          fputs($datei,"HideDraw=".$ligaDaten->hidr."\n");
-          fputs($datei,"OnRun=".$ligaDaten->onrun."\n");
-          if ($ligaDaten->spez==1) {
-            fputs($datei,"XtraS=".$ligaDaten->pxs."\n");
-            fputs($datei,"XtraU=".$ligaDaten->pxu."\n");
-            fputs($datei,"XtraV=".$ligaDaten->pxn."\n");
-            fputs($datei,"SpezS=".$ligaDaten->pps."\n");
-            fputs($datei,"SpezU=".$ligaDaten->ppu."\n");
-            fputs($datei,"SpezV=".$ligaDaten->ppn."\n");
-          }
-          fputs($datei,"MinusPoints=".$ligaDaten->minus."\n");
-          fputs($datei,"Direct=".$ligaDaten->direkt."\n");
-          fputs($datei,"Champ=".$ligaDaten->champ."\n");
-          fputs($datei,"CL=".$ligaDaten->anzcl."\n");
-          fputs($datei,"CK=".$ligaDaten->anzck."\n");
-          fputs($datei,"UC=".$ligaDaten->anzuc."\n");
-          fputs($datei,"AR=".$ligaDaten->anzar."\n");
-          fputs($datei,"AB=".$ligaDaten->anzab."\n");
-          if (isset($ligaDaten->namepkt)) {
-            fputs($datei,"namePkt=".$ligaDaten->namepkt."\n");
-          }
-          if (isset($ligaDaten->nametor)) {
-            fputs($datei,"nameTor=".$ligaDaten->nametor."\n");
-          }
-          fputs($datei,"tableHinRueck=".$ligaDaten->einhinrueck."\n");
-          fputs($datei,"tableHeimAusw=".$ligaDaten->einheimausw."\n");
-        }
-        else {
-          fputs($datei,"KlFin=".$ligaDaten->klfin."\n");
-          fputs($datei,"playdown=".$ligaDaten->playdown."\n");
-          fputs($datei,"playoffmode=".$ligaDaten->playoffmode."\n");
-        }
-        fputs($datei,"DatC=".$ligaDaten->datc."\n");
-        fputs($datei,"DatS=".$ligaDaten->dats."\n");
-        fputs($datei,"DatM=".$ligaDaten->datm."\n");
-        fputs($datei,"DatF=".$ligaDaten->datf."\n");
-        fputs($datei,"urlT=".$ligaDaten->urlt."\n");
-        fputs($datei,"urlB=".$ligaDaten->urlb."\n");
-        fputs($datei,"Plan=".$ligaDaten->plan."\n");
-        fputs($datei,"Ergebnis=".$ligaDaten->ergebnis."\n");
-        fputs($datei,"mittore=".$ligaDaten->mittore."\n");
-        fputs($datei,"favTeam=".$ligaDaten->favteam."\n");
-        fputs($datei,"selTeam=".$ligaDaten->selteam."\n");
-        fputs($datei,"ticker=".$ligaDaten->nticker."\n");
-
-        if ($ligaDaten->lmtype==0) {
-          fputs($datei,"Graph=".$ligaDaten->kurve."\n");
-          fputs($datei,"Kreuz=".$ligaDaten->kreuz."\n");
-          fputs($datei,"Tabelle=".$ligaDaten->tabelle."\n");
-          fputs($datei,"Ligastats=".$ligaDaten->ligastats."\n");
-          fputs($datei,"kurve1=".$ligaDaten->stat1."\n");
-          fputs($datei,"kurve2=".$ligaDaten->stat2."\n");
+        // Schluessel, Reihenfolge und Bedingungen: Tabelle OPTIONEN in Lmo\Liga\LigaDaten
+        foreach ($ligaDaten->optionenZumSpeichern($text[54], $st>0 ? $st : $ligaDaten->stx) as list($schl, $wert)) {
+          fputs($datei,$schl."=".$wert."\n");
         }
         //if ($nticker==1) {
           fputs($datei,"\n[News]\n");

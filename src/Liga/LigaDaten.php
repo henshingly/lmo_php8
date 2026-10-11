@@ -211,6 +211,7 @@ class LigaDaten
     /**
      * Abschnitt [Options] der Ligadatei: Schluessel => [Feld, gilt fuer, Vorgabewert].
      *
+     * Die Reihenfolge ist die, in der die Datei geschrieben wird (optionenZumSpeichern()).
      * "gilt fuer": Schluessel einer Liga (Type=0) werden in einem Pokal uebergangen und umgekehrt.
      * Vorgabewert null: keiner, oder er haengt von anderen Werten ab und steht deshalb in
      * ergaenzeGrunddaten() bzw. ergaenzeVorgabewerte().
@@ -222,7 +223,41 @@ class LigaDaten
         'Name' => ['titel', self::IMMER, 'No Name'],
         'Type' => ['lmtype', self::IMMER, null],
         'Teams' => ['anzteams', self::IMMER, null],
+        'goalfaktor' => ['goalfaktor', self::IMMER, 1],
+        'pointsfaktor' => ['pointsfaktor', self::IMMER, 1],
+        'enableGameSort' => ['enablegamesort', self::IMMER, 1],
+        'Rounds' => ['anzst', self::LIGA, null],
+        'Matches' => ['anzsp', self::LIGA, null],
         'Actual' => ['stx', self::IMMER, 1],
+        'Kegel' => ['kegel', self::LIGA, 0],
+        'HandS' => ['hands', self::LIGA, 0],
+        'PointsForWin' => ['pns', self::LIGA, 3],
+        'PointsForDraw' => ['pnu', self::LIGA, 1],
+        'PointsForLost' => ['pnn', self::LIGA, 0],
+        'Spez' => ['spez', self::LIGA, null],
+        'HideDraw' => ['hidr', self::LIGA, 0],
+        'OnRun' => ['onrun', self::LIGA, 0],
+        'XtraS' => ['pxs', self::LIGA, 0],
+        'XtraU' => ['pxu', self::LIGA, 0],
+        'XtraV' => ['pxn', self::LIGA, 0],
+        'SpezS' => ['pps', self::LIGA, 0],
+        'SpezU' => ['ppu', self::LIGA, 0],
+        'SpezV' => ['ppn', self::LIGA, 0],
+        'MinusPoints' => ['minus', self::LIGA, 1],
+        'Direct' => ['direkt', self::LIGA, null],
+        'Champ' => ['champ', self::LIGA, 1],
+        'CL' => ['anzcl', self::LIGA, 1],
+        'CK' => ['anzck', self::LIGA, 2],
+        'UC' => ['anzuc', self::LIGA, 2],
+        'AR' => ['anzar', self::LIGA, 0],
+        'AB' => ['anzab', self::LIGA, 3],
+        'namePkt' => ['namepkt', self::LIGA, ''],
+        'nameTor' => ['nametor', self::LIGA, ''],
+        'tableHinRueck' => ['einhinrueck', self::LIGA, 1],
+        'tableHeimAusw' => ['einheimausw', self::LIGA, 1],
+        'KlFin' => ['klfin', self::POKAL, 0],
+        'playdown' => ['playdown', self::POKAL, null],
+        'playoffmode' => ['playoffmode', self::POKAL, null],
         'DatC' => ['datc', self::IMMER, 1],
         'DatS' => ['dats', self::IMMER, 1],
         'DatM' => ['datm', self::IMMER, 0],
@@ -235,48 +270,12 @@ class LigaDaten
         'favTeam' => ['favteam', self::IMMER, 0],
         'selTeam' => ['selteam', self::IMMER, 0],
         'ticker' => ['nticker', self::IMMER, null],
-        'goalfaktor' => ['goalfaktor', self::IMMER, 1],
-        'pointsfaktor' => ['pointsfaktor', self::IMMER, 1],
-        'enableGameSort' => ['enablegamesort', self::IMMER, 1],
-
-        'Rounds' => ['anzst', self::LIGA, null],
-        'Matches' => ['anzsp', self::LIGA, null],
-        'Kegel' => ['kegel', self::LIGA, 0],
-        'HandS' => ['hands', self::LIGA, 0],
         'Graph' => ['kurve', self::LIGA, 1],
         'Kreuz' => ['kreuz', self::LIGA, 1],
         'Tabelle' => ['tabelle', self::LIGA, 1],
         'Ligastats' => ['ligastats', self::LIGA, 1],
-        'PointsForWin' => ['pns', self::LIGA, 3],
-        'PointsForDraw' => ['pnu', self::LIGA, 1],
-        'PointsForLost' => ['pnn', self::LIGA, 0],
-        'MinusPoints' => ['minus', self::LIGA, 1],
-        'Direct' => ['direkt', self::LIGA, null],
-        'Spez' => ['spez', self::LIGA, null],
-        'HideDraw' => ['hidr', self::LIGA, 0],
-        'OnRun' => ['onrun', self::LIGA, 0],
-        'XtraS' => ['pxs', self::LIGA, 0],
-        'XtraU' => ['pxu', self::LIGA, 0],
-        'XtraV' => ['pxn', self::LIGA, 0],
-        'SpezS' => ['pps', self::LIGA, 0],
-        'SpezU' => ['ppu', self::LIGA, 0],
-        'SpezV' => ['ppn', self::LIGA, 0],
-        'Champ' => ['champ', self::LIGA, 1],
-        'CL' => ['anzcl', self::LIGA, 1],
-        'CK' => ['anzck', self::LIGA, 2],
-        'UC' => ['anzuc', self::LIGA, 2],
-        'AR' => ['anzar', self::LIGA, 0],
-        'AB' => ['anzab', self::LIGA, 3],
-        'namePkt' => ['namepkt', self::LIGA, ''],
-        'nameTor' => ['nametor', self::LIGA, ''],
-        'tableHinRueck' => ['einhinrueck', self::LIGA, 1],
-        'tableHeimAusw' => ['einheimausw', self::LIGA, 1],
         'kurve1' => ['stat1', self::LIGA, null],
         'kurve2' => ['stat2', self::LIGA, null],
-
-        'KlFin' => ['klfin', self::POKAL, 0],
-        'playdown' => ['playdown', self::POKAL, null],
-        'playoffmode' => ['playoffmode', self::POKAL, null],
     ];
 
     /** Was jeder Lader braucht, auch die abgespeckten: siehe ergaenzeGrunddaten() */
@@ -284,6 +283,12 @@ class LigaDaten
 
     /** Kommen auch aus dem Seitenaufruf: die Datei setzt sie nur, wenn sie noch fehlen */
     private const NUR_WENN_LEER = ['selteam', 'stat1', 'stat2'];
+
+    /** Punkte fuer Verlaengerung und Elfmeterschiessen: stehen nur in der Datei, wenn Spez=1 */
+    private const NUR_MIT_SPEZ = ['pxs', 'pxu', 'pxn', 'pps', 'ppu', 'ppn'];
+
+    /** Eigene Bezeichnungen fuer Punkte und Tore: stehen nur in der Datei, wenn sie gesetzt sind */
+    private const NUR_WENN_GESETZT = ['namepkt', 'nametor'];
 
     /**
      * Setzt vor dem Lesen einer Datei die Werte zurueck, die nicht von der zuvor geladenen Liga
@@ -402,6 +407,42 @@ class LigaDaten
             $this->spez = 1;
             $this->hands = 0;
         }
+    }
+
+    /**
+     * Der Abschnitt [Options], wie er in die Datei geschrieben wird: nur die Schluessel, die fuer
+     * den Typ (Liga/Pokal) gelten, in der Reihenfolge der Tabelle OPTIONEN.
+     *
+     * @param string $programm Name des LMO (Sprachtext 54); er steht als Title in der Datei, nicht die
+     *                         Version, mit der die Datei zuletzt gelesen wurde
+     * @param int|string|null $aktuellerSpieltag Wert fuer Actual: der gewaehlte Spieltag, sonst der aus der Datei
+     * @return list<array{string, string}> Schluessel und Wert je Zeile
+     */
+    public function optionenZumSpeichern(string $programm, $aktuellerSpieltag): array
+    {
+        $zeilen = [];
+        foreach (self::OPTIONEN as $schluessel => [$feld, $gilt]) {
+            if ($gilt !== self::IMMER && $gilt !== $this->art()) {
+                continue;
+            }
+            if (in_array($feld, self::NUR_MIT_SPEZ, true) && $this->spez != 1) {
+                continue;
+            }
+            if (in_array($feld, self::NUR_WENN_GESETZT, true) && !isset($this->$feld)) {
+                continue;
+            }
+            if ($schluessel === 'Title') {
+                $wert = $programm;
+            } elseif ($schluessel === 'Actual') {
+                $wert = $aktuellerSpieltag;
+            } else {
+                $wert = $this->$feld;
+            }
+            /** @var int|float|string|null $wert */
+            $zeilen[] = [$schluessel, (string) $wert];
+        }
+
+        return $zeilen;
     }
 
     /** Liga oder Pokal, nach dem bisher bekannten Typ */

@@ -323,4 +323,110 @@ class LigaDatenTest extends TestCase
         self::assertSame('6', $liga->stat2, 'war noch nicht gewaehlt');
         self::assertSame('2', $liga->favteam);
     }
+
+    /**
+     * @param list<array{string, string}> $zeilen
+     * @return string[]
+     */
+    private static function schluessel(array $zeilen): array
+    {
+        return array_column($zeilen, 0);
+    }
+
+    public function testOptionenEinerLigaZumSpeichern(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->setzeOption('Title', 'alter LMO');
+        $liga->setzeOption('Name', 'Kreisliga');
+        $liga->setzeOption('Teams', '4');
+        $liga->ergaenzeVorgabewerte('d.m.Y');
+
+        $zeilen = $liga->optionenZumSpeichern('Liga Manager Online 4', 3);
+
+        self::assertSame([
+            'Title', 'Name', 'Type', 'Teams', 'goalfaktor', 'pointsfaktor', 'enableGameSort', 'Rounds', 'Matches', 'Actual',
+            'Kegel', 'HandS', 'PointsForWin', 'PointsForDraw', 'PointsForLost', 'Spez', 'HideDraw', 'OnRun',
+            'MinusPoints', 'Direct', 'Champ', 'CL', 'CK', 'UC', 'AR', 'AB', 'namePkt', 'nameTor', 'tableHinRueck', 'tableHeimAusw',
+            'DatC', 'DatS', 'DatM', 'DatF', 'urlT', 'urlB', 'Plan', 'Ergebnis', 'mittore', 'favTeam', 'selTeam', 'ticker',
+            'Graph', 'Kreuz', 'Tabelle', 'Ligastats', 'kurve1', 'kurve2',
+        ], self::schluessel($zeilen));
+        $werte = array_column($zeilen, 1, 0);
+        self::assertSame('Liga Manager Online 4', $werte['Title'], 'der Name des Programms, nicht die gelesene Version');
+        self::assertSame('Kreisliga', $werte['Name']);
+        self::assertSame('3', $werte['Actual']);
+        self::assertSame('6', $werte['Rounds'], 'berechnete Kommazahl ohne Nachkommastellen');
+        self::assertSame('2', $werte['Matches']);
+        self::assertSame('', $werte['Direct'], 'ohne Vorgabewert: leer');
+    }
+
+    public function testPunkteFuerVerlaengerungStehenNurMitSpezInDerDatei(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->ergaenzeVorgabewerte('d.m.Y');
+        self::assertNotContains('XtraS', self::schluessel($liga->optionenZumSpeichern('LMO', 1)));
+
+        $liga->spez = '1';
+        $schluessel = self::schluessel($liga->optionenZumSpeichern('LMO', 1));
+
+        self::assertSame(
+            ['Spez', 'HideDraw', 'OnRun', 'XtraS', 'XtraU', 'XtraV', 'SpezS', 'SpezU', 'SpezV', 'MinusPoints'],
+            array_slice($schluessel, array_search('Spez', $schluessel, true), 10)
+        );
+    }
+
+    public function testEigeneBezeichnungenStehenNurGesetztInDerDatei(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->ergaenzeVorgabewerte('d.m.Y');
+        $liga->namepkt = null;
+        $liga->nametor = 'Koerbe';
+
+        $werte = array_column($liga->optionenZumSpeichern('LMO', 1), 1, 0);
+
+        self::assertArrayNotHasKey('namePkt', $werte);
+        self::assertSame('Koerbe', $werte['nameTor']);
+    }
+
+    public function testOptionenEinesPokalsZumSpeichern(): void
+    {
+        $pokal = new LigaDaten();
+        $pokal->setzeStartwerte();
+        $pokal->setzeOption('Type', '1');
+        $pokal->setzeOption('Teams', '8');
+        $pokal->setzeOption('KlFin', '1');
+        $pokal->ergaenzeVorgabewerte('d.m.Y');
+
+        $zeilen = $pokal->optionenZumSpeichern('LMO', 2);
+
+        self::assertSame([
+            'Title', 'Name', 'Type', 'Teams', 'goalfaktor', 'pointsfaktor', 'enableGameSort', 'Actual',
+            'KlFin', 'playdown', 'playoffmode',
+            'DatC', 'DatS', 'DatM', 'DatF', 'urlT', 'urlB', 'Plan', 'Ergebnis', 'mittore', 'favTeam', 'selTeam', 'ticker',
+        ], self::schluessel($zeilen));
+        self::assertSame('1', array_column($zeilen, 1, 0)['KlFin']);
+    }
+
+    /** Was gespeichert wird, liest setzeOption() wieder genauso ein. */
+    public function testGespeicherteOptionenWerdenWiederGleichGelesen(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        foreach (['Name' => 'Bezirksliga', 'Teams' => '6', 'Spez' => '1', 'XtraS' => '2', 'PointsForWin' => '2', 'AB' => '1', 'DatF' => 'd.m.'] as $schluessel => $wert) {
+            $liga->setzeOption($schluessel, $wert);
+        }
+        $liga->ergaenzeVorgabewerte('d.m.Y');
+        $zeilen = $liga->optionenZumSpeichern('LMO', $liga->stx);
+
+        $wieder = new LigaDaten();
+        $wieder->setzeStartwerte();
+        foreach ($zeilen as [$schluessel, $wert]) {
+            $wieder->setzeOption($schluessel, $wert);
+        }
+        $wieder->ergaenzeVorgabewerte('d.m.Y');
+
+        self::assertSame($zeilen, $wieder->optionenZumSpeichern('LMO', $wieder->stx));
+    }
 }
