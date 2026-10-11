@@ -125,7 +125,7 @@ if ($file != "") {
     $anzst0 = strlen(decbin($ligaDaten->anzteams-1));
     foreach ($lmo_liga->mannschaften as $lmo_nr => $lmo_mannschaft) {
       if ($lmo_mannschaft->name !== null) {
-        $ligaDaten->teams[$lmo_nr] = $lmo_liga->mannschaftsname($lmo_nr);
+        $ligaDaten->teams[$lmo_nr] = $lmo_mannschaft->anzeigename();
       }
     }
     foreach ($lmo_liga->spieltage as $lmo_spieltag_nr => $lmo_spieltag) {

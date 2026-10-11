@@ -22,4 +22,13 @@ final class Mannschaft
      * @var array<string, string>
      */
     public array $werte = [];
+
+    /**
+     * Der Name zum Anzeigen. In der Datei steht er mit Schraegstrichen (O\'Neill), hier kommt er
+     * ohne zurueck; ohne Namen ''. $name selbst bleibt, wie es in der Datei steht.
+     */
+    public function anzeigename(): string
+    {
+        return stripslashes($this->name ?? '');
+    }
 }

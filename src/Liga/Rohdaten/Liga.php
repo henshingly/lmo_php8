@@ -187,14 +187,14 @@ final class Liga
     }
 
     /**
-     * Der Name einer Mannschaft zum Anzeigen. In der Datei steht er mit Schraegstrichen (O\'Neill),
-     * hier kommt er ohne zurueck. Gibt es die Mannschaft nicht oder hat sie keinen Namen: ''.
+     * Der Name zum Anzeigen fuer die Nummer einer Mannschaft, wie sie in einer Partie steht
+     * (Mannschaft::anzeigename()). Gibt es die Mannschaft nicht: ''.
      *
-     * @param int|string $nr Nummer der Mannschaft, wie sie in einer Partie steht
+     * @param int|string $nr
      */
     public function mannschaftsname($nr): string
     {
-        return stripslashes($this->mannschaften[$nr]->name ?? '');
+        return isset($this->mannschaften[$nr]) ? $this->mannschaften[$nr]->anzeigename() : '';
     }
 
     /**

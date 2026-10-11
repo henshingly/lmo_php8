@@ -305,7 +305,10 @@ L98;
     {
         $liga = Liga::ausEintraegen(LigaDatei::zerlege(['[Teams]', "1=O\\'Neill", '2=B | C', '[Teamk]', '3=XYZ']));
 
-        self::assertSame("O'Neill", $liga->mannschaftsname(1), 'ohne die Schraegstriche der Datei');
+        self::assertSame("O'Neill", $liga->mannschaften[1]->anzeigename(), 'ohne die Schraegstriche der Datei');
+        self::assertSame('', $liga->mannschaften[3]->anzeigename(), 'nur ein Kurzname');
+        // dasselbe ueber die Nummer, wie sie in einer Partie steht
+        self::assertSame("O'Neill", $liga->mannschaftsname(1));
         self::assertSame('B | C', $liga->mannschaftsname('2'), 'die Nummer steht in einer Partie als Text');
         self::assertSame('', $liga->mannschaftsname(3), 'nur ein Kurzname');
         self::assertSame('', $liga->mannschaftsname(9));
