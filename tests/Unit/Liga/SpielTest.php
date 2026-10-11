@@ -47,7 +47,7 @@ class SpielTest extends TestCase
         self::assertSame(['_', '_'], [$spiel->toreHeimText(), $spiel->toreGastText()]);
         self::assertNull($spiel->zusatz);
         self::assertSame('', $spiel->zusatzText('n.V.', 'i.E.'));
-        self::assertSame(['', '', false, 0], [$spiel->notiz, $spiel->bericht, $spiel->ohneTippwertung, $spiel->anstoss]);
+        self::assertSame(['', '', false, null], [$spiel->notiz, $spiel->bericht, $spiel->ohneTippwertung, $spiel->anstoss]);
     }
 
     public function testToreUndWertungAmGruenenTisch(): void
@@ -87,9 +87,9 @@ class SpielTest extends TestCase
         $liga = self::liga(['[Round1]', 'TA1=1', 'AT1=1724437800', 'TA2=1', 'AT2=0', 'TA3=1', 'AT3=', 'TA4=1']);
 
         self::assertSame(1724437800, Spiel::ausRohdaten($liga, 1, 1)->anstoss);
-        self::assertSame(0, Spiel::ausRohdaten($liga, 1, 2)->anstoss, 'so schreibt der LMO "kein Anstoss"');
+        self::assertNull(Spiel::ausRohdaten($liga, 1, 2)->anstoss, 'so schreibt der LMO "kein Anstoss"');
         self::assertNull(Spiel::ausRohdaten($liga, 1, 3)->anstoss, 'in der Datei leer');
-        self::assertSame(0, Spiel::ausRohdaten($liga, 1, 4)->anstoss, 'steht nicht in der Datei');
+        self::assertNull(Spiel::ausRohdaten($liga, 1, 4)->anstoss, 'steht nicht in der Datei');
     }
 
     public function testZusatzNurWennDieLigaIhnFuehrt(): void
@@ -227,7 +227,7 @@ class SpielTest extends TestCase
                     self::assertSame($aus($bruecke->mberi), $spiel->bericht, $wo);
                     self::assertSame($aus($bruecke->mtipp) == 1, $spiel->ohneTippwertung, $wo);
                     $anstoss = $aus($bruecke->mterm);
-                    self::assertSame(is_numeric($anstoss) ? (int) $anstoss : null, $spiel->anstoss, $wo);
+                    self::assertSame(is_numeric($anstoss) && $anstoss > 0 ? (int) $anstoss : null, $spiel->anstoss, $wo);
                     if (!$pokal) {
                         self::assertSame((int) $bruecke->msieg[$s][$p], $spiel->wertung, $wo);
                     }

@@ -60,8 +60,8 @@ if ($lmo_einstellungen->mitSpieltagsdatum()) {
 // die Spiele des Spieltags zum Anzeigen (Lmo\Liga\Spiel); mit eingeschalteter Sortierung nach Anstoss
 $lmo_spiele = iterator_to_array($lmo_liga->spiele((int)$st), false);
 if ($lmo_einstellungen->sortiertNachAnstoss()) {
-    // eine leere Angabe steht vor "kein Anstoss" (0); gleiche Zeiten bleiben in der Reihenfolge der Partien
-    usort($lmo_spiele, static fn (\Lmo\Liga\Spiel $a, \Lmo\Liga\Spiel $b): int => ($a->anstoss ?? -1) <=> ($b->anstoss ?? -1));
+    // Spiele ohne Anstoss stehen vorn; gleiche Zeiten bleiben in der Reihenfolge der Partien
+    usort($lmo_spiele, static fn (\Lmo\Liga\Spiel $a, \Lmo\Liga\Spiel $b): int => ($a->anstoss ?? 0) <=> ($b->anstoss ?? 0));
 }
 $spielfreia = array();
 $spielfreib = array();

@@ -100,7 +100,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=1" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">1</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">
 <strong>Mannschaft 1</strong>&nbsp;</td>
@@ -117,7 +118,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=2" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">2</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">Mannschaft 6&nbsp;</td>
 <td align="center" style="width:10px;">-</td>
@@ -134,7 +136,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=3" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">3</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">
 <strong>Mannschaft 1</strong>&nbsp;</td>
@@ -151,7 +154,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=4" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">4</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">Mannschaft 4&nbsp;</td>
 <td align="center" style="width:10px;">-</td>
@@ -168,7 +172,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=5" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">5</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">
 <strong>Mannschaft 1</strong>&nbsp;</td>
@@ -185,7 +190,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=6" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">6</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">
 <strong>Mannschaft 1</strong>&nbsp;</td>
@@ -202,7 +208,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=7" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">7</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">Mannschaft 8&nbsp;</td>
 <td align="center" style="width:10px;">-</td>
@@ -219,7 +226,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=8" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">8</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">Mannschaft 7&nbsp;</td>
 <td align="center" style="width:10px;">-</td>
@@ -236,7 +244,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=9" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">9</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">
 <strong>Mannschaft 1</strong>&nbsp;</td>
@@ -253,7 +262,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=10" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">10</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">Mannschaft 5&nbsp;</td>
 <td align="center" style="width:10px;">-</td>
@@ -270,7 +280,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=11" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">11</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">
 <strong>Mannschaft 1</strong>&nbsp;</td>
@@ -287,7 +298,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=12" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">12</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">Mannschaft 3&nbsp;</td>
 <td align="center" style="width:10px;">-</td>
@@ -304,7 +316,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=13" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">13</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">Mannschaft 2&nbsp;</td>
 <td align="center" style="width:10px;">-</td>
@@ -321,7 +334,8 @@
 <tr>
 <th style="text-align:right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/basic.l98&amp;st=14" title="Klicken Sie hier, um den gesamten Spieltag zu sehen.">14</a>&nbsp;</th>
 <td style="width:2px;">&nbsp;</td>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td style="width:2px;">&nbsp;</td>
 <td class="nobr" align="right">
 <strong>Mannschaft 1</strong>&nbsp;</td>

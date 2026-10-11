@@ -60,10 +60,10 @@ final class Spiel
     public bool $ohneTippwertung = false;
 
     /**
-     * Anstoss als Unix-Zeitstempel. 0 = keiner festgelegt (so schreibt es der LMO, und so gilt es
-     * fuer ein Spiel, das in der Datei fehlt); null = die Angabe in der Datei ist leer oder unlesbar.
+     * Anstoss als Unix-Zeitstempel; null = keiner festgelegt (in der Datei 0, leer, unlesbar
+     * oder gar nicht genannt).
      */
-    public ?int $anstoss = 0;
+    public ?int $anstoss = null;
 
     private function __construct(int $spieltag, int $partie, int $nr)
     {
@@ -127,7 +127,8 @@ final class Spiel
                     $spiel->ohneTippwertung = $wert == 1;
                     break;
                 case 'AT':
-                    $spiel->anstoss = self::zahl($wert);
+                    $anstoss = self::zahl($wert);
+                    $spiel->anstoss = $anstoss !== null && $anstoss > 0 ? $anstoss : null;
                     break;
             }
         }

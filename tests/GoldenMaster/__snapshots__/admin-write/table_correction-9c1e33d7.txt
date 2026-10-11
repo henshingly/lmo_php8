@@ -547,7 +547,8 @@ Mannschaft 3 (2-3.ST)";
 <th colspan="11" align="left">3. Spieltag</th>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=golden/handicap.l98&amp;selteam=1" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 1</a>&nbsp;</td>
@@ -563,7 +564,8 @@ Mannschaft 3 (2-3.ST)";
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=golden/handicap.l98&amp;selteam=4" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 4</a>&nbsp;</td>
@@ -579,7 +581,8 @@ Mannschaft 3 (2-3.ST)";
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=golden/handicap.l98&amp;selteam=6" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 6</a>&nbsp;</td>

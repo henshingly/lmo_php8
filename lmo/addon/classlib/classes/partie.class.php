@@ -212,7 +212,7 @@ class partie {
     {
         $dt = new DateTime();
         $dt->setTimeStamp((int)$this->zeit);
-        $str = is_numeric($this->zeit) ? $dt->format($format) : $leer;
+        $str = is_numeric($this->zeit) && $this->zeit > 0 ? $dt->format($format) : $leer;
         return $str;
     }
 
@@ -228,7 +228,7 @@ class partie {
     {
         $dt = new DateTime();
         $dt->setTimeStamp((int)$this->zeit);
-        $str = is_numeric($this->zeit) ? $dt->format($format) : $leer;
+        $str = is_numeric($this->zeit) && $this->zeit > 0 ? $dt->format($format) : $leer;
         return $str;
     }
 

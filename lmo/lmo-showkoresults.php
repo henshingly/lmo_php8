@@ -97,7 +97,7 @@ if ($file != '') {
         <tr>
 <?php
                 if ($ligaDaten->datm == 1) {
-                    if(is_numeric($ligaDaten->mterm[$st - 1][$i][$n])) {
+                    if ($ligaDaten->mterm[$st - 1][$i][$n] > 0) {  // ohne Anstoss keine Anzeige
                         $dt = new DateTime();
                         $dt->setTimeStamp((int)$ligaDaten->mterm[$st - 1][$i][$n]);
                         $dum1 = $dt->format($ligaDaten->datf);

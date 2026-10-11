@@ -132,7 +132,7 @@ if ($file != '') {
 <?php
                     for ($n = 0; $n < $ligaDaten->modus[$j]; $n++) {
                         if ($ligaDaten->datm == 1) {
-                            if(is_numeric($ligaDaten->mterm[$j][$i][$n])) {
+                            if ($ligaDaten->mterm[$j][$i][$n] > 0) {  // ohne Anstoss keine Anzeige
                                 $dt = new DateTime();
                                 $dt->setTimeStamp((int)$ligaDaten->mterm[$j][$i][$n]);
                                 $dumn1 = '<acronym title="' . $dt->format($ligaDaten->datf) . '">';

@@ -70,7 +70,8 @@
 <th colspan="15" align="left">1. Spieltag</th>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=golden/direct_wertung.l98&amp;selteam=1" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 1</a>&nbsp;</td>
@@ -86,7 +87,8 @@
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=golden/direct_wertung.l98&amp;selteam=3" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 3</a>&nbsp;</td>
@@ -105,7 +107,8 @@
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=golden/direct_wertung.l98&amp;selteam=5" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 5</a>&nbsp;</td>
@@ -121,7 +124,8 @@
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=golden/direct_wertung.l98&amp;selteam=8" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 8</a>&nbsp;</td>
