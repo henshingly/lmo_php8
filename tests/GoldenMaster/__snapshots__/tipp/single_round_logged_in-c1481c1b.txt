@@ -1,0 +1,2109 @@
+### single_round_logged_in
+=== Tippabgabe Bundesliga, Spieltag 26 ===
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>1. Bundesliga 2024/25</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" rel="stylesheet" href="http://lmo.test/lmo/lmo-style-nc.php">
+<style type="text/css">@import url("http://lmo.test/lmo/lmo-style.php");</style>
+</head>
+<body>
+<div align="center">
+<table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td colspan="2" align="center">
+<h1>1. Bundesliga 2024/25</h1>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+</td>
+</tr>
+<tr>
+<td class="lmoMenu" align="left">
+<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=cal&amp;st=26" title="Anzeige des Kalenders der Liga">Kalender</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=results" title="Anzeige der Spielergebnisse und Tabelle eines bestimmten Spieltags">Ergebnisse/Tabelle</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=program" title="Anzeige des Spielplans einer bestimmten Mannschaft">Spielpläne</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=cross" title="Anzeige aller Ergebnisse auf einen Blick">Kreuztabelle</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=graph" title="Anzeige der Fieberkurven">Fieberkurven</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=stats&amp;stat1=0&amp;stat2=0" title="Anzeige der Statistiken und Prognosen">Ligastatistik</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=spieler" title="Anzeige der Spielerstatistiken">Spielerstatistik</a>&nbsp;&nbsp;Tippspiel&nbsp;&nbsp;<td class="lmoMenu" align="right">
+<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=info" title="Informationen zu diesem PHP-Script und seinem Autor">Info</a>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<script type="text/javascript"> img0 = new Image(); img0.src = "http://lmo.test/lmo/img/lmo-admin0.gif"; img1 = new Image(); img1.src = "http://lmo.test/lmo/img/lmo-admin1.gif"; img2 = new Image(); img2.src = "http://lmo.test/lmo/img/lmo-admin2.gif"; img3 = new Image(); img3.src = "http://lmo.test/lmo/img/lmo-admin3.gif"; function lmoimg(x,y){ document.getElementsByName("ximg"+x)[0].src = y.src; } function lmotorclk(x,y,z){ if (document.all && !window.opera){ if (z==38){lmotorauf(x,y,1);} if (z==40){lmotorauf(x,y,-1);} } } function lmotorauf(x,y,z){ if (x=="a"){xx="b";} if (x=="b"){xx="a";} var a=document.getElementsByName("xtipp"+x+y)[0].value; if (a==""){a="-1";} if (a=="_"){a="-1";} var aa=document.getElementsByName("xtipp"+xx+y)[0].value; if (aa==""){aa="-1";} if (aa=="_"){aa="-1";} var ab=aa; if (isNaN(a)==true){a=0;} else {a=parseInt(a);} if ((z==1) && (a<9999)){a++;} if ((z==-1) && (a>-1)){a--;} if ((a>-1) && (aa<0)){aa=0;} if ((a<0) && (aa>-1)){aa=-1;} if (a==-1){a="";} document.getElementsByName("xtipp"+x+y)[0].value=a; if (ab!=aa){ if (aa==-1){aa="";} document.getElementsByName("xtipp"+xx+y)[0].value=aa; } } </script>
+<table class="lmoSubmenu" width="99%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td class="nobr" align="left">
+<a href="/lmo/lmo.php?action=tipp" title="zur Übersicht">Übersicht</a>&nbsp;&nbsp;Tippen&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=einsicht&amp;file=1l_2024-25.l98&amp;st=26" title="Tippeinsicht">Tippeinsicht</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98" title="so würde die Tabelle mit Deinen Tipps aussehen">Tipp-Tabelle</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=fieber&amp;file=1l_2024-25.l98" title="Anzeige der Fieberkurven">Fieberkurven</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=wert&amp;file=1l_2024-25.l98&amp;endtab=0&amp;wertung=einzel" title="Punktestand">Punktestand</a>&nbsp;&nbsp; </td>
+<td width="8">&nbsp;</td>
+<td class="nobr" align="right">
+<a href="/lmo/lmo.php?action=tipp&amp;todo=logout">Logout</a>&nbsp; </td>
+</tr>
+</table>
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td colspan="3" align="center">
+<h1>Tippspiel 1. Bundesliga 2024/25</h1>
+</td>
+</tr>
+<tr>
+<td colspan="3" align="center">
+<p class="error">
+<img src="http://lmo.test/lmo/img/wrong.svg" border="0" width="20" alt=""> Es ist noch keine Auswertung gelaufen</p>
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+<caption>tester</caption>
+<tr>
+<td align="center">
+<table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=1" title="auf diesen Spieltag wechseln">01</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=2" title="auf diesen Spieltag wechseln">02</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=3" title="auf diesen Spieltag wechseln">03</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=4" title="auf diesen Spieltag wechseln">04</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=5" title="auf diesen Spieltag wechseln">05</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=6" title="auf diesen Spieltag wechseln">06</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=7" title="auf diesen Spieltag wechseln">07</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=8" title="auf diesen Spieltag wechseln">08</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=9" title="auf diesen Spieltag wechseln">09</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=10" title="auf diesen Spieltag wechseln">10</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=11" title="auf diesen Spieltag wechseln">11</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=12" title="auf diesen Spieltag wechseln">12</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=13" title="auf diesen Spieltag wechseln">13</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=14" title="auf diesen Spieltag wechseln">14</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=15" title="auf diesen Spieltag wechseln">15</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=16" title="auf diesen Spieltag wechseln">16</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=17" title="auf diesen Spieltag wechseln">17</a>&nbsp;</td>
+</tr>
+<tr>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=18" title="auf diesen Spieltag wechseln">18</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=19" title="auf diesen Spieltag wechseln">19</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=20" title="auf diesen Spieltag wechseln">20</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=21" title="auf diesen Spieltag wechseln">21</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=22" title="auf diesen Spieltag wechseln">22</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=23" title="auf diesen Spieltag wechseln">23</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=24" title="auf diesen Spieltag wechseln">24</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=25" title="auf diesen Spieltag wechseln">25</a>&nbsp;</td>
+<td align='center'>26&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=27" title="auf diesen Spieltag wechseln">27</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=28" title="auf diesen Spieltag wechseln">28</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=29" title="auf diesen Spieltag wechseln">29</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=30" title="auf diesen Spieltag wechseln">30</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=31" title="auf diesen Spieltag wechseln">31</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=32" title="auf diesen Spieltag wechseln">32</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=33" title="auf diesen Spieltag wechseln">33</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=34" title="auf diesen Spieltag wechseln">34</a>&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align="center">
+<form name="lmoedit" action="/lmo/lmo.php" method="post">
+<input type="hidden" name="action" value="tipp">
+<input type="hidden" name="todo" value="edit">
+<input type="hidden" name="save" value="1">
+<input type="hidden" name="file" value="1l_2024-25.l98">
+<input type="hidden" name="st" value="26">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<th class="nobr" align="left" colspan="6">26. Spieltag vom 15.03.2025 bis 15.03.2025 </th>
+<th class="nobr" align="center" colspan="4"> getippte Tendenzen </th>
+<th class="nobr" align="center" colspan="2"> Ø-Tipp </th>
+<th class="nobr" align="center" colspan="5">
+<acronym title="Heimtore:Gasttore">Dein Tipp</acronym>
+<br>
+</th>
+<th class="nobr" align="center">
+<acronym title="Joker-Tipp (verdoppelt die Punktezahl)">Joker</acronym>
+</th>
+<th class="nobr" colspan="3" align="center">Ergebnis</th>
+<th class="nobr" colspan="2" align="right">Pkt.</th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<td class="nobr" align="left">15.03.2025 15:30</td>
+<td>&nbsp;</td>
+<td class="nobr" align="right">VfB Stuttgart</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">Bayer 04 Leverkusen</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa0" size="2" maxlength="4" value="2" onKeyDown="lmotorclk('a','0',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'0\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'0a\',img1)" onMouseOut="lmoimg(\'0a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg0a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'0\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'0b\',img3)" onMouseOut="lmoimg(\'0b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg0b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb0" size="2" maxlength="4" value="1" onKeyDown="lmotorclk('b','0',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'0\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'0f\',img1)" onMouseOut="lmoimg(\'0f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg0f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'0\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'0d\',img3)" onMouseOut="lmoimg(\'0d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg0d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="1">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>-</strong>
+</td>
+<td class="nobr" align="left">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td class="nobr" align="left">15.03.2025 15:30</td>
+<td>&nbsp;</td>
+<td class="nobr" align="right">RB Leipzig</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">Borussia Dortmund</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa1" size="2" maxlength="4" value="" onKeyDown="lmotorclk('a','1',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'1\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'1a\',img1)" onMouseOut="lmoimg(\'1a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg1a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'1\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'1b\',img3)" onMouseOut="lmoimg(\'1b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg1b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb1" size="2" maxlength="4" value="" onKeyDown="lmotorclk('b','1',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'1\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'1f\',img1)" onMouseOut="lmoimg(\'1f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg1f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'1\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'1d\',img3)" onMouseOut="lmoimg(\'1d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg1d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="2">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>-</strong>
+</td>
+<td class="nobr" align="left">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td class="nobr" align="left">15.03.2025 15:30</td>
+<td>&nbsp;</td>
+<td class="nobr" align="right">1.FC Heidenheim</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">Holstein Kiel</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa2" size="2" maxlength="4" value="0" onKeyDown="lmotorclk('a','2',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'2\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'2a\',img1)" onMouseOut="lmoimg(\'2a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg2a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'2\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'2b\',img3)" onMouseOut="lmoimg(\'2b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg2b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb2" size="2" maxlength="4" value="0" onKeyDown="lmotorclk('b','2',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'2\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'2f\',img1)" onMouseOut="lmoimg(\'2f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg2f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'2\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'2d\',img3)" onMouseOut="lmoimg(\'2d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg2d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="3" checked>
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>-</strong>
+</td>
+<td class="nobr" align="left">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td class="nobr" align="left">15.03.2025 15:30</td>
+<td>&nbsp;</td>
+<td class="nobr" align="right">Werder Bremen</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">Borussia M'gladbach</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa3" size="2" maxlength="4" value="" onKeyDown="lmotorclk('a','3',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'3\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'3a\',img1)" onMouseOut="lmoimg(\'3a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg3a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'3\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'3b\',img3)" onMouseOut="lmoimg(\'3b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg3b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb3" size="2" maxlength="4" value="" onKeyDown="lmotorclk('b','3',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'3\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'3f\',img1)" onMouseOut="lmoimg(\'3f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg3f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'3\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'3d\',img3)" onMouseOut="lmoimg(\'3d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg3d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="4">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>-</strong>
+</td>
+<td class="nobr" align="left">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td class="nobr" align="left">15.03.2025 15:30</td>
+<td>&nbsp;</td>
+<td class="nobr" align="right">FC Augsburg</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">VfL Wolfsburg</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa4" size="2" maxlength="4" value="" onKeyDown="lmotorclk('a','4',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'4\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'4a\',img1)" onMouseOut="lmoimg(\'4a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg4a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'4\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'4b\',img3)" onMouseOut="lmoimg(\'4b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg4b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb4" size="2" maxlength="4" value="" onKeyDown="lmotorclk('b','4',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'4\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'4f\',img1)" onMouseOut="lmoimg(\'4f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg4f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'4\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'4d\',img3)" onMouseOut="lmoimg(\'4d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg4d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="5">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>-</strong>
+</td>
+<td class="nobr" align="left">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td class="nobr" align="left">15.03.2025 15:30</td>
+<td>&nbsp;</td>
+<td class="nobr" align="right">FSV Mainz 05</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">SC Freiburg</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa5" size="2" maxlength="4" value="" onKeyDown="lmotorclk('a','5',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'5\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'5a\',img1)" onMouseOut="lmoimg(\'5a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg5a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'5\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'5b\',img3)" onMouseOut="lmoimg(\'5b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg5b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb5" size="2" maxlength="4" value="" onKeyDown="lmotorclk('b','5',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'5\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'5f\',img1)" onMouseOut="lmoimg(\'5f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg5f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'5\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'5d\',img3)" onMouseOut="lmoimg(\'5d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg5d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="6">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>-</strong>
+</td>
+<td class="nobr" align="left">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td class="nobr" align="left">15.03.2025 15:30</td>
+<td>&nbsp;</td>
+<td class="nobr" align="right">1.FC Union Berlin</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">Bayern München</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa6" size="2" maxlength="4" value="" onKeyDown="lmotorclk('a','6',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'6\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'6a\',img1)" onMouseOut="lmoimg(\'6a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg6a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'6\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'6b\',img3)" onMouseOut="lmoimg(\'6b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg6b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb6" size="2" maxlength="4" value="" onKeyDown="lmotorclk('b','6',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'6\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'6f\',img1)" onMouseOut="lmoimg(\'6f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg6f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'6\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'6d\',img3)" onMouseOut="lmoimg(\'6d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg6d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="7">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>-</strong>
+</td>
+<td class="nobr" align="left">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td class="nobr" align="left">15.03.2025 15:30</td>
+<td>&nbsp;</td>
+<td class="nobr" align="right">VfL Bochum</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">Eintracht Frankfurt</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa7" size="2" maxlength="4" value="" onKeyDown="lmotorclk('a','7',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'7\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'7a\',img1)" onMouseOut="lmoimg(\'7a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg7a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'7\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'7b\',img3)" onMouseOut="lmoimg(\'7b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg7b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb7" size="2" maxlength="4" value="" onKeyDown="lmotorclk('b','7',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'7\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'7f\',img1)" onMouseOut="lmoimg(\'7f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg7f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'7\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'7d\',img3)" onMouseOut="lmoimg(\'7d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg7d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="8">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>-</strong>
+</td>
+<td class="nobr" align="left">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td class="nobr" align="left">15.03.2025 15:30</td>
+<td>&nbsp;</td>
+<td class="nobr" align="right">FC St. Pauli</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">TSG Hoffenheim</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa8" size="2" maxlength="4" value="" onKeyDown="lmotorclk('a','8',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'8\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'8a\',img1)" onMouseOut="lmoimg(\'8a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg8a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'8\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'8b\',img3)" onMouseOut="lmoimg(\'8b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg8b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb8" size="2" maxlength="4" value="" onKeyDown="lmotorclk('b','8',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'8\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'8f\',img1)" onMouseOut="lmoimg(\'8f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg8f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'8\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'8d\',img3)" onMouseOut="lmoimg(\'8d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg8d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="9">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>-</strong>
+</td>
+<td class="nobr" align="left">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td colspan="12" align="right">
+<input class="lmo-formular-button" type="submit" title="Klicken Sie hier, um Ihre Änderungen zu speichern" name="best" value="Tipps speichern">
+</td>
+<td class="lmoFrontMarkierung" colspan="14" align="right">Pkt. Spieltag: 0 </td>
+</tr>
+<tr>
+<td class="lmoFooter" colspan="24" align="center">Tippabgabe bis 15 Minuten vor dem Anpfiff</td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align='left'>&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=25" title="vorheriger Spieltag">« vorheriger Spieltag</a>&nbsp;</td>
+<td align="right">&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=27" title="nächster Spieltag">nächster Spieltag »</a>&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="center">
+</td>
+<td align="center">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="lmoFooter" colspan="2" align="left">
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Bosanski" title="Bosanski">
+<img src="http://lmo.test/lmo/img/Bosanski.svg" height="16" style="margin-right:1mm" title="Bosanski" alt="Bosanski">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Cestina" title="Cestina">
+<img src="http://lmo.test/lmo/img/Cestina.svg" height="16" style="margin-right:1mm" title="Cestina" alt="Cestina">
+</a>
+<img src="http://lmo.test/lmo/img/Deutsch.selected.svg" height="16" border="0" title="Deutsch" alt="Deutsch">
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=English" title="English">
+<img src="http://lmo.test/lmo/img/English.svg" height="16" style="margin-right:1mm" title="English" alt="English">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Espanol" title="Espanol">
+<img src="http://lmo.test/lmo/img/Espanol.svg" height="16" style="margin-right:1mm" title="Espanol" alt="Espanol">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Francais" title="Francais">
+<img src="http://lmo.test/lmo/img/Francais.svg" height="16" style="margin-right:1mm" title="Francais" alt="Francais">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Hrvatski" title="Hrvatski">
+<img src="http://lmo.test/lmo/img/Hrvatski.svg" height="16" style="margin-right:1mm" title="Hrvatski" alt="Hrvatski">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Italiano" title="Italiano">
+<img src="http://lmo.test/lmo/img/Italiano.svg" height="16" style="margin-right:1mm" title="Italiano" alt="Italiano">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Magyar" title="Magyar">
+<img src="http://lmo.test/lmo/img/Magyar.svg" height="16" style="margin-right:1mm" title="Magyar" alt="Magyar">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Nederlands" title="Nederlands">
+<img src="http://lmo.test/lmo/img/Nederlands.svg" height="16" style="margin-right:1mm" title="Nederlands" alt="Nederlands">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Norsk" title="Norsk">
+<img src="http://lmo.test/lmo/img/Norsk.svg" height="16" style="margin-right:1mm" title="Norsk" alt="Norsk">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Portugues" title="Portugues">
+<img src="http://lmo.test/lmo/img/Portugues.svg" height="16" style="margin-right:1mm" title="Portugues" alt="Portugues">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Romanian" title="Romanian">
+<img src="http://lmo.test/lmo/img/Romanian.svg" height="16" style="margin-right:1mm" title="Romanian" alt="Romanian">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=26&amp;lmouserlang=Slovenskega" title="Slovenskega">
+<img src="http://lmo.test/lmo/img/Slovenskega.svg" height="16" style="margin-right:1mm" title="Slovenskega" alt="Slovenskega">
+</a>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td valign="bottom" align="left">
+<a href="/lmo/lmo.php" title="Hier können Sie sich eine andere Liga laden">« zur Ligenübersicht</a>&nbsp;&nbsp;&nbsp;</td>
+<td class="lmoFooter" valign="bottom" align="right">Letztes Update der Liga:&nbsp;{STAND}<br>
+<a href="https://www.liga-manager-online.org" target="_blank" class="lmo-link-trigger" data-info="<strong>Liga Manager Online</strong>This is a clone of the original Liga Manager Online.<br>
+<b>Adapted for PHP 8.</b>
+<br>Clicking this link will take you to the website of the new project." onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()">LMO 4 for PHP8</a>&nbsp;-&nbsp;<span class="lmo-text-trigger" data-info="<strong>Liga Manager Online</strong>The original Liga Manager Online project on the website www.liga-manager-online.de was discontinued at the end of 2025." onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()">© 1997-now LMO-Group</span>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!-- Dieser Container dient als das schwebende Fenster -->
+<div id="globalLMOTooltip" class="lmo-smart-tooltip">
+</div>
+<script> // Das Tooltip-Element referenzieren const sportTooltip = document.getElementById("globalLMOTooltip"); function showLMOTooltip(element) { // Text aus dem data-info Attribut auslesen const infoText = element.getAttribute("data-info"); if (!infoText) return; // Inhalt in das Fenster schreiben und sichtbar machen sportTooltip.innerHTML = infoText; sportTooltip.style.visibility = "visible"; sportTooltip.style.opacity = "1"; // Position des SVG-Icons auf dem Bildschirm ermitteln const rect = element.getBoundingClientRect(); const winW = window.innerWidth; const winH = window.innerHeight; // Standard-Position: Direkt unter dem Icon (8px Abstand) let top = rect.bottom + window.scrollY + 8; let left = rect.left + window.scrollX; // Fixed Koordinaten sportTooltip.style.position = "fixed"; top = rect.bottom + 8; left = rect.left; // AUTO-KORREKTUR: Unten if (top + sportTooltip.offsetHeight> winH) { // Über dem Icon anzeigen top = rect.top - sportTooltip.offsetHeight - 8; } // AUTO-KORREKTUR: Rechts if (left + sportTooltip.offsetWidth> winW) { // Nach links verschieben, mit 15px Sicherheitsabstand zum Rand left = winW - sportTooltip.offsetWidth - 15; } // Falls das Icon ganz links am Rand ist, Mindestabstand einhalten if (left < 10) left = 10; // Positionswerte zuweisen sportTooltip.style.top = top + "px"; sportTooltip.style.left = left + "px"; } function hideLMOTooltip() { // Fenster wieder ausblenden sportTooltip.style.visibility = "hidden"; sportTooltip.style.opacity = "0"; } </script>
+</body>
+</html>
+<!-- STDERR Warning: Undefined variable $n in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: String offset cast occurred in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Uninitialized string offset 0 in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Undefined variable $n in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: String offset cast occurred in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Uninitialized string offset 0 in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Undefined variable $n in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: String offset cast occurred in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Uninitialized string offset 0 in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Undefined variable $n in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: String offset cast occurred in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Uninitialized string offset 0 in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Undefined variable $n in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: String offset cast occurred in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Uninitialized string offset 0 in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Undefined variable $n in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: String offset cast occurred in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Uninitialized string offset 0 in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Undefined variable $n in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: String offset cast occurred in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Uninitialized string offset 0 in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Undefined variable $n in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: String offset cast occurred in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Uninitialized string offset 0 in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Undefined variable $n in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: String offset cast occurred in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 Warning: Uninitialized string offset 0 in {LMO_PATH}/addon/tipp/lmo-tippeditliga.php on line 336 -->
+--- Dateiaenderungen ---
+(keine)
+
+=== Tippabgabe Pokal, Runde 1 ===
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Tipp-Pokal</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" rel="stylesheet" href="http://lmo.test/lmo/lmo-style-nc.php">
+<style type="text/css">@import url("http://lmo.test/lmo/lmo-style.php");</style>
+</head>
+<body>
+<div align="center">
+<table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td colspan="2" align="center">
+<h1>Tipp-Pokal</h1>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+</td>
+</tr>
+<tr>
+<td class="lmoMenu" align="left">
+<a href="/lmo/lmo.php?file=tipppokal.l98&amp;action=results&amp;st=1" title="Anzeige der Spielergebnisse eines bestimmten Spieltags">Ergebnisse</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=tipppokal.l98&amp;action=program" title="Anzeige des Spielplans einer bestimmten Mannschaft">Spielpläne</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=tipppokal.l98&amp;action=spieler" title="Anzeige der Spielerstatistiken">Spielerstatistik</a>&nbsp;&nbsp;Tippspiel&nbsp;&nbsp;<td class="lmoMenu" align="right">
+<a href="/lmo/lmo.php?file=tipppokal.l98&amp;action=info" title="Informationen zu diesem PHP-Script und seinem Autor">Info</a>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<script type="text/javascript"> img0 = new Image(); img0.src = "http://lmo.test/lmo/img/lmo-admin0.gif"; img1 = new Image(); img1.src = "http://lmo.test/lmo/img/lmo-admin1.gif"; img2 = new Image(); img2.src = "http://lmo.test/lmo/img/lmo-admin2.gif"; img3 = new Image(); img3.src = "http://lmo.test/lmo/img/lmo-admin3.gif"; function lmoimg(x,y){ document.getElementsByName("ximg"+x)[0].src = y.src; } function lmotorclk(x,y,z){ if (document.all && !window.opera){ if (z==38){lmotorauf(x,y,1);} if (z==40){lmotorauf(x,y,-1);} } } function lmotorauf(x,y,z){ if (x=="a"){xx="b";} if (x=="b"){xx="a";} var a=document.getElementsByName("xtipp"+x+y)[0].value; if (a==""){a="-1";} if (a=="_"){a="-1";} var aa=document.getElementsByName("xtipp"+xx+y)[0].value; if (aa==""){aa="-1";} if (aa=="_"){aa="-1";} var ab=aa; if (isNaN(a)==true){a=0;} else {a=parseInt(a);} if ((z==1) && (a<9999)){a++;} if ((z==-1) && (a>-1)){a--;} if ((a>-1) && (aa<0)){aa=0;} if ((a<0) && (aa>-1)){aa=-1;} if (a==-1){a="";} document.getElementsByName("xtipp"+x+y)[0].value=a; if (ab!=aa){ if (aa==-1){aa="";} document.getElementsByName("xtipp"+xx+y)[0].value=aa; } } </script>
+<table class="lmoSubmenu" width="99%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td class="nobr" align="left">
+<a href="/lmo/lmo.php?action=tipp" title="zur Übersicht">Übersicht</a>&nbsp;&nbsp;Tippen&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=einsicht&amp;file=tipppokal.l98&amp;st=1" title="Tippeinsicht">Tippeinsicht</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=fieber&amp;file=tipppokal.l98" title="Anzeige der Fieberkurven">Fieberkurven</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=wert&amp;file=tipppokal.l98&amp;endtab=0&amp;wertung=einzel" title="Punktestand">Punktestand</a>&nbsp;&nbsp; </td>
+<td width="8">&nbsp;</td>
+<td class="nobr" align="right">
+<a href="/lmo/lmo.php?action=tipp&amp;todo=logout">Logout</a>&nbsp; </td>
+</tr>
+</table>
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td colspan="3" align="center">
+<h1>Tippspiel Tipp-Pokal</h1>
+</td>
+</tr>
+<tr>
+<td colspan="3" align="center">
+<p class="error">
+<img src="http://lmo.test/lmo/img/wrong.svg" border="0" width="20" alt=""> Es ist noch keine Auswertung gelaufen</p>
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+<caption>tester</caption>
+<tr>
+<td align="center">
+<table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align='center'>HF&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=2" title="zum Finale wechseln">F</a>&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align="center">
+<form name="lmoedit" action="/lmo/lmo.php" method="post">
+<input type="hidden" name="action" value="tipp">
+<input type="hidden" name="todo" value="edit">
+<input type="hidden" name="save" value="1">
+<input type="hidden" name="file" value="tipppokal.l98">
+<input type="hidden" name="st" value="1">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<th class="nobr" align="left" colspan="5">Halbfinale vom 16.03.2025 bis 18.03.2025 </th>
+<th class="nobr" align="center" colspan="4"> getippte Tendenzen </th>
+<th class="nobr" align="center" colspan="2"> Ø-Tipp </th>
+<th class="nobr" align="center" colspan="5">
+<acronym title="Heimtore:Gasttore">Dein Tipp</acronym>
+<br>
+</th>
+<th class="nobr" align="center">
+<acronym title="Joker-Tipp (verdoppelt die Punktezahl)">Joker</acronym>
+</th>
+<th class="nobr" colspan="3" align="center">Ergebnis</th>
+<th colspan="2">&nbsp;</th>
+<th class="nobr" colspan="2" align="right">Pkt.</th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td class="nobr" align="right">Alpha</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">
+<strong>B | C</strong>
+</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0 </td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp; </td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp; </td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa00" size="4" maxlength="4" value="3" onKeyDown="lmotorclk('a','00', event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'00\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'00a\',img1)" onMouseOut="lmoimg(\'00a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg00a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'00\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'00b\',img3)" onMouseOut="lmoimg(\'00b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg00b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td>:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb00" size="4" maxlength="4" value="1" onKeyDown="lmotorclk('b','00',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'00\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'00f\',img1)" onMouseOut="lmoimg(\'00f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg00f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'00\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'00d\',img3)" onMouseOut="lmoimg(\'00d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg00d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="11">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td class="lmoBackMarkierung" align="left">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>- </strong>
+</td>
+<td>&nbsp;</td>
+<td>
+<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Alpha - B | C&amp;nbsp;&amp;nbsp;_:_&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;Notiz:&lt;/strong&gt; Hinspiel | Flutlicht&lt;br&gt;" class="tooltip-trigger">
+<img src="http://lmo.test/lmo/img/lmo-st2.svg" height="15" class="svg-no-style" border="0" alt="">
+</span>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td colspan="3">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0 </td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp; </td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp; </td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa01" size="4" maxlength="4" value="" onKeyDown="lmotorclk('a','01', event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'01\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'01a\',img1)" onMouseOut="lmoimg(\'01a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg01a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'01\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'01b\',img3)" onMouseOut="lmoimg(\'01b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg01b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td>:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb01" size="4" maxlength="4" value="" onKeyDown="lmotorclk('b','01',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'01\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'01f\',img1)" onMouseOut="lmoimg(\'01f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg01f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'01\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'01d\',img3)" onMouseOut="lmoimg(\'01d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg01d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="12">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td class="lmoBackMarkierung" align="left">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>- </strong>
+</td>
+<td>&nbsp;</td>
+<td>&nbsp; </td>
+</tr>
+<tr>
+<td colspan="25">&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td class="nobr" align="right">Gamma</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">O'Neill</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0 </td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp; </td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp; </td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa10" size="4" maxlength="4" value="" onKeyDown="lmotorclk('a','10', event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'10\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'10a\',img1)" onMouseOut="lmoimg(\'10a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg10a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'10\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'10b\',img3)" onMouseOut="lmoimg(\'10b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg10b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td>:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb10" size="4" maxlength="4" value="" onKeyDown="lmotorclk('b','10',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'10\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'10f\',img1)" onMouseOut="lmoimg(\'10f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg10f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'10\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'10d\',img3)" onMouseOut="lmoimg(\'10d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg10d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="21">
+</td>
+<td class="lmoBackMarkierung" align="right">2</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">1</td>
+<td class="lmoBackMarkierung" align="left">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>- </strong>
+</td>
+<td>&nbsp;</td>
+<td>&nbsp; </td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td colspan="3">&nbsp;</td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">0-0-0 </td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp; </td>
+<td>&nbsp;</td>
+<td align="center" class="nobr">&nbsp; </td>
+<td>&nbsp;</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippa11" size="4" maxlength="4" value="" onKeyDown="lmotorclk('a','11', event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'11\',1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'11a\',img1)" onMouseOut="lmoimg(\'11a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg11a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'11\',-1);return false;" title="Einstellung der Heimtore" onMouseOver="lmoimg(\'11b\',img3)" onMouseOut="lmoimg(\'11b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg11b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td>:</td>
+<td align="right">
+<input class="lmo-formular-input" type="text" name="xtippb11" size="4" maxlength="4" value="" onKeyDown="lmotorclk('b','11',event.keyCode)">
+</td>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'11\',1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'11f\',img1)" onMouseOut="lmoimg(\'11f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg11f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'11\',-1);return false;" title="Einstellung der Gasttore" onMouseOver="lmoimg(\'11d\',img3)" onMouseOut="lmoimg(\'11d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg11d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td align="center">
+<input type="radio" name="xjokerspiel" value="22">
+</td>
+<td class="lmoBackMarkierung" align="right">_</td>
+<td class="lmoBackMarkierung" align="center">:</td>
+<td class="lmoBackMarkierung" align="left">_</td>
+<td class="lmoBackMarkierung" align="left">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>- </strong>
+</td>
+<td>&nbsp;</td>
+<td>&nbsp; </td>
+</tr>
+<tr>
+<td colspan="10" align="right">
+<input class="lmo-formular-button" type="submit" title="Klicken Sie hier, um Ihre Änderungen zu speichern" name="best" value="Tipps speichern">
+</td>
+<td class="lmoFrontMarkierung" colspan="16" align="right">Pkt. Halbfinale: 0 </td>
+</tr>
+<tr>
+<td class="lmoFooter" colspan="25" align="center">Tippabgabe bis 15 Minuten vor dem Anpfiff</td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="right">&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=2" title="nächster Spieltag">nächster Spieltag »</a>&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="center">
+</td>
+<td align="center">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="lmoFooter" colspan="2" align="left">
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Bosanski" title="Bosanski">
+<img src="http://lmo.test/lmo/img/Bosanski.svg" height="16" style="margin-right:1mm" title="Bosanski" alt="Bosanski">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Cestina" title="Cestina">
+<img src="http://lmo.test/lmo/img/Cestina.svg" height="16" style="margin-right:1mm" title="Cestina" alt="Cestina">
+</a>
+<img src="http://lmo.test/lmo/img/Deutsch.selected.svg" height="16" border="0" title="Deutsch" alt="Deutsch">
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=English" title="English">
+<img src="http://lmo.test/lmo/img/English.svg" height="16" style="margin-right:1mm" title="English" alt="English">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Espanol" title="Espanol">
+<img src="http://lmo.test/lmo/img/Espanol.svg" height="16" style="margin-right:1mm" title="Espanol" alt="Espanol">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Francais" title="Francais">
+<img src="http://lmo.test/lmo/img/Francais.svg" height="16" style="margin-right:1mm" title="Francais" alt="Francais">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Hrvatski" title="Hrvatski">
+<img src="http://lmo.test/lmo/img/Hrvatski.svg" height="16" style="margin-right:1mm" title="Hrvatski" alt="Hrvatski">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Italiano" title="Italiano">
+<img src="http://lmo.test/lmo/img/Italiano.svg" height="16" style="margin-right:1mm" title="Italiano" alt="Italiano">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Magyar" title="Magyar">
+<img src="http://lmo.test/lmo/img/Magyar.svg" height="16" style="margin-right:1mm" title="Magyar" alt="Magyar">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Nederlands" title="Nederlands">
+<img src="http://lmo.test/lmo/img/Nederlands.svg" height="16" style="margin-right:1mm" title="Nederlands" alt="Nederlands">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Norsk" title="Norsk">
+<img src="http://lmo.test/lmo/img/Norsk.svg" height="16" style="margin-right:1mm" title="Norsk" alt="Norsk">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Portugues" title="Portugues">
+<img src="http://lmo.test/lmo/img/Portugues.svg" height="16" style="margin-right:1mm" title="Portugues" alt="Portugues">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Romanian" title="Romanian">
+<img src="http://lmo.test/lmo/img/Romanian.svg" height="16" style="margin-right:1mm" title="Romanian" alt="Romanian">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98&amp;st=1&amp;lmouserlang=Slovenskega" title="Slovenskega">
+<img src="http://lmo.test/lmo/img/Slovenskega.svg" height="16" style="margin-right:1mm" title="Slovenskega" alt="Slovenskega">
+</a>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td valign="bottom" align="left">
+<a href="/lmo/lmo.php" title="Hier können Sie sich eine andere Liga laden">« zur Ligenübersicht</a>&nbsp;&nbsp;&nbsp;</td>
+<td class="lmoFooter" valign="bottom" align="right">Letztes Update der Liga:&nbsp;{STAND}<br>
+<a href="https://www.liga-manager-online.org" target="_blank" class="lmo-link-trigger" data-info="<strong>Liga Manager Online</strong>This is a clone of the original Liga Manager Online.<br>
+<b>Adapted for PHP 8.</b>
+<br>Clicking this link will take you to the website of the new project." onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()">LMO 4 for PHP8</a>&nbsp;-&nbsp;<span class="lmo-text-trigger" data-info="<strong>Liga Manager Online</strong>The original Liga Manager Online project on the website www.liga-manager-online.de was discontinued at the end of 2025." onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()">© 1997-now LMO-Group</span>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!-- Dieser Container dient als das schwebende Fenster -->
+<div id="globalLMOTooltip" class="lmo-smart-tooltip">
+</div>
+<script> // Das Tooltip-Element referenzieren const sportTooltip = document.getElementById("globalLMOTooltip"); function showLMOTooltip(element) { // Text aus dem data-info Attribut auslesen const infoText = element.getAttribute("data-info"); if (!infoText) return; // Inhalt in das Fenster schreiben und sichtbar machen sportTooltip.innerHTML = infoText; sportTooltip.style.visibility = "visible"; sportTooltip.style.opacity = "1"; // Position des SVG-Icons auf dem Bildschirm ermitteln const rect = element.getBoundingClientRect(); const winW = window.innerWidth; const winH = window.innerHeight; // Standard-Position: Direkt unter dem Icon (8px Abstand) let top = rect.bottom + window.scrollY + 8; let left = rect.left + window.scrollX; // Fixed Koordinaten sportTooltip.style.position = "fixed"; top = rect.bottom + 8; left = rect.left; // AUTO-KORREKTUR: Unten if (top + sportTooltip.offsetHeight> winH) { // Über dem Icon anzeigen top = rect.top - sportTooltip.offsetHeight - 8; } // AUTO-KORREKTUR: Rechts if (left + sportTooltip.offsetWidth> winW) { // Nach links verschieben, mit 15px Sicherheitsabstand zum Rand left = winW - sportTooltip.offsetWidth - 15; } // Falls das Icon ganz links am Rand ist, Mindestabstand einhalten if (left < 10) left = 10; // Positionswerte zuweisen sportTooltip.style.top = top + "px"; sportTooltip.style.left = left + "px"; } function hideLMOTooltip() { // Fenster wieder ausblenden sportTooltip.style.visibility = "hidden"; sportTooltip.style.opacity = "0"; } </script>
+</body>
+</html>
+--- Dateiaenderungen ---
+(keine)
+
+=== Tipptabelle Bundesliga ===
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>1. Bundesliga 2024/25</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" rel="stylesheet" href="http://lmo.test/lmo/lmo-style-nc.php">
+<style type="text/css">@import url("http://lmo.test/lmo/lmo-style.php");</style>
+</head>
+<body>
+<div align="center">
+<table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td colspan="2" align="center">
+<h1>1. Bundesliga 2024/25</h1>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+</td>
+</tr>
+<tr>
+<td class="lmoMenu" align="left">
+<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=cal&amp;st=1" title="Anzeige des Kalenders der Liga">Kalender</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=results" title="Anzeige der Spielergebnisse und Tabelle eines bestimmten Spieltags">Ergebnisse/Tabelle</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=program" title="Anzeige des Spielplans einer bestimmten Mannschaft">Spielpläne</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=cross" title="Anzeige aller Ergebnisse auf einen Blick">Kreuztabelle</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=graph" title="Anzeige der Fieberkurven">Fieberkurven</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=stats&amp;stat1=0&amp;stat2=0" title="Anzeige der Statistiken und Prognosen">Ligastatistik</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=spieler" title="Anzeige der Spielerstatistiken">Spielerstatistik</a>&nbsp;&nbsp;Tippspiel&nbsp;&nbsp;<td class="lmoMenu" align="right">
+<a href="/lmo/lmo.php?file=1l_2024-25.l98&amp;action=info" title="Informationen zu diesem PHP-Script und seinem Autor">Info</a>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<table class="lmoSubmenu" width="99%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td class="nobr" align="left">
+<a href="/lmo/lmo.php?action=tipp" title="zur Übersicht">Übersicht</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98&amp;st=1" title="Tippen">Tippen</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=einsicht&amp;file=1l_2024-25.l98&amp;st=1" title="Tippeinsicht">Tippeinsicht</a>&nbsp;&nbsp;Tipp-Tabelle&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=fieber&amp;file=1l_2024-25.l98" title="Anzeige der Fieberkurven">Fieberkurven</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=wert&amp;file=1l_2024-25.l98&amp;endtab=0&amp;wertung=einzel" title="Punktestand">Punktestand</a>&nbsp;&nbsp; </td>
+<td width="8">&nbsp;</td>
+<td class="nobr" align="right">
+<a href="/lmo/lmo.php?action=tipp&amp;todo=logout">Logout</a>&nbsp; </td>
+</tr>
+</table>
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td colspan="3" align="center">
+<h1>Tippspiel 1. Bundesliga 2024/25</h1>
+</td>
+</tr>
+<tr>
+<td colspan="3" align="center">
+<table class="lmoInner" cellspacing='0' cellpadding='0' border='0'>
+<caption>tester</caption>
+<tr>
+<td align="center">
+<table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align='center'>01&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=2" title="auf diesen Spieltag wechseln">02</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=3" title="auf diesen Spieltag wechseln">03</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=4" title="auf diesen Spieltag wechseln">04</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=5" title="auf diesen Spieltag wechseln">05</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=6" title="auf diesen Spieltag wechseln">06</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=7" title="auf diesen Spieltag wechseln">07</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=8" title="auf diesen Spieltag wechseln">08</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=9" title="auf diesen Spieltag wechseln">09</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=10" title="auf diesen Spieltag wechseln">10</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=11" title="auf diesen Spieltag wechseln">11</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=12" title="auf diesen Spieltag wechseln">12</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=13" title="auf diesen Spieltag wechseln">13</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=14" title="auf diesen Spieltag wechseln">14</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=15" title="auf diesen Spieltag wechseln">15</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=16" title="auf diesen Spieltag wechseln">16</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=17" title="auf diesen Spieltag wechseln">17</a>&nbsp;</td>
+</tr>
+<tr>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=18" title="auf diesen Spieltag wechseln">18</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=19" title="auf diesen Spieltag wechseln">19</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=20" title="auf diesen Spieltag wechseln">20</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=21" title="auf diesen Spieltag wechseln">21</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=22" title="auf diesen Spieltag wechseln">22</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=23" title="auf diesen Spieltag wechseln">23</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=24" title="auf diesen Spieltag wechseln">24</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=25" title="auf diesen Spieltag wechseln">25</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=26" title="auf diesen Spieltag wechseln">26</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=27" title="auf diesen Spieltag wechseln">27</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=28" title="auf diesen Spieltag wechseln">28</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=29" title="auf diesen Spieltag wechseln">29</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=30" title="auf diesen Spieltag wechseln">30</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=31" title="auf diesen Spieltag wechseln">31</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=32" title="auf diesen Spieltag wechseln">32</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=33" title="auf diesen Spieltag wechseln">33</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=34" title="auf diesen Spieltag wechseln">34</a>&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th class="nobr" align="center">so würde die Tabelle mit Deinen Tipps aussehen</th>
+</tr>
+<tr>
+<td align="center">
+<table class="lmoInner" cellspacing='0' cellpadding='0' border='0'>
+<caption>Tabelle&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;endtab=1&amp;nick=tester&amp;tabtype=1" title="die Heimbilanz anzeigen">Heim</a>&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;endtab=1&amp;nick=tester&amp;tabtype=2" title="die Auswärtsbilanz anzeigen">Auswärts</a>&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;endtab=1&amp;nick=tester&amp;tabtype=4" title="Hinrunde">Hinrunde</a>&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;endtab=1&amp;nick=tester&amp;tabtype=3" title="Rückrunde">Rückrunde</a>
+</caption>
+<tr>
+<th align="left" colspan="6"> 1. Spieltag&nbsp;</th>
+<th>&nbsp;</th>
+<th class="nobr" align="right"> Sp.&nbsp;</th>
+<th class="nobr" align="right"> s&nbsp;</th>
+<th class="nobr" align="right"> u&nbsp;</th>
+<th class="nobr" align="right"> n&nbsp;</th>
+<th>&nbsp;</th>
+<th class="nobr" colspan='3' align="center"> Tore </th>
+<th class="nobr" align="right"> Diff. </th>
+<th>&nbsp;</th>
+<th class="nobr" colspan="3" align="center">Pkt. </th>
+<th class="nobr" align="right">Pkt./Sp.</th>
+</tr>
+<tr>
+<td class="lmoTabelleMeister nobr nobr" align="right"> 1 </td>
+<td class="lmoTabelleMeister nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="lmoTabelleMeister nobr" align="center">&nbsp;</td>
+<td class="lmoTabelleMeister nobr nobr" align="left"> Eintracht Frankfurt</td>
+<td class="lmoTabelleMeister nobr">&nbsp;</td>
+<td class="lmoTabelleMeister nobr" align="center">&nbsp; </td>
+<td class="lmoTabelleMeister nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleMeister nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleMeister nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleMeister nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleMeister nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleMeister nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleMeister nobr" align="right">0</td>
+<td class="lmoTabelleMeister nobr" align="center" width='4'>:</td>
+<td class="lmoTabelleMeister nobr">0</td>
+<td class="lmoTabelleMeister nobr" align="right">0</td>
+<td class="lmoTabelleMeister nobr" width="2">&nbsp;</td>
+<td class="lmoTabelleMeister nobr" align="right">0</td>
+<td class="lmoTabelleMeister nobr" align="center" width="4">:</td>
+<td class="lmoTabelleMeister nobr">0</td>
+<td class="lmoTabelleMeister nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="lmoTabelleCleague nobr nobr" align="right"> 2 </td>
+<td class="lmoTabelleCleague nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="lmoTabelleCleague nobr" align="center">&nbsp;</td>
+<td class="lmoTabelleCleague nobr nobr" align="left"> VfL Wolfsburg</td>
+<td class="lmoTabelleCleague nobr">&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="center">&nbsp; </td>
+<td class="lmoTabelleCleague nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right">0</td>
+<td class="lmoTabelleCleague nobr" align="center" width='4'>:</td>
+<td class="lmoTabelleCleague nobr">0</td>
+<td class="lmoTabelleCleague nobr" align="right">0</td>
+<td class="lmoTabelleCleague nobr" width="2">&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right">0</td>
+<td class="lmoTabelleCleague nobr" align="center" width="4">:</td>
+<td class="lmoTabelleCleague nobr">0</td>
+<td class="lmoTabelleCleague nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="lmoTabelleCleague nobr nobr" align="right"> 3 </td>
+<td class="lmoTabelleCleague nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="lmoTabelleCleague nobr" align="center">&nbsp;</td>
+<td class="lmoTabelleCleague nobr nobr" align="left"> SC Freiburg</td>
+<td class="lmoTabelleCleague nobr">&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="center">&nbsp; </td>
+<td class="lmoTabelleCleague nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right">0</td>
+<td class="lmoTabelleCleague nobr" align="center" width='4'>:</td>
+<td class="lmoTabelleCleague nobr">0</td>
+<td class="lmoTabelleCleague nobr" align="right">0</td>
+<td class="lmoTabelleCleague nobr" width="2">&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right">0</td>
+<td class="lmoTabelleCleague nobr" align="center" width="4">:</td>
+<td class="lmoTabelleCleague nobr">0</td>
+<td class="lmoTabelleCleague nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="lmoTabelleCleague nobr nobr" align="right"> 4 </td>
+<td class="lmoTabelleCleague nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="lmoTabelleCleague nobr" align="center">&nbsp;</td>
+<td class="lmoTabelleCleague nobr nobr" align="left"> Borussia M'gladbach</td>
+<td class="lmoTabelleCleague nobr">&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="center">&nbsp; </td>
+<td class="lmoTabelleCleague nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleague nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right">0</td>
+<td class="lmoTabelleCleague nobr" align="center" width='4'>:</td>
+<td class="lmoTabelleCleague nobr">0</td>
+<td class="lmoTabelleCleague nobr" align="right">0</td>
+<td class="lmoTabelleCleague nobr" width="2">&nbsp;</td>
+<td class="lmoTabelleCleague nobr" align="right">0</td>
+<td class="lmoTabelleCleague nobr" align="center" width="4">:</td>
+<td class="lmoTabelleCleague nobr">0</td>
+<td class="lmoTabelleCleague nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="lmoTabelleCleaguequali nobr nobr" align="right"> 5 </td>
+<td class="lmoTabelleCleaguequali nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="lmoTabelleCleaguequali nobr" align="center">&nbsp;</td>
+<td class="lmoTabelleCleaguequali nobr nobr" align="left"> FC Augsburg</td>
+<td class="lmoTabelleCleaguequali nobr">&nbsp;</td>
+<td class="lmoTabelleCleaguequali nobr" align="center">&nbsp; </td>
+<td class="lmoTabelleCleaguequali nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleCleaguequali nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleaguequali nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleaguequali nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleaguequali nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleCleaguequali nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleCleaguequali nobr" align="right">0</td>
+<td class="lmoTabelleCleaguequali nobr" align="center" width='4'>:</td>
+<td class="lmoTabelleCleaguequali nobr">0</td>
+<td class="lmoTabelleCleaguequali nobr" align="right">0</td>
+<td class="lmoTabelleCleaguequali nobr" width="2">&nbsp;</td>
+<td class="lmoTabelleCleaguequali nobr" align="right">0</td>
+<td class="lmoTabelleCleaguequali nobr" align="center" width="4">:</td>
+<td class="lmoTabelleCleaguequali nobr">0</td>
+<td class="lmoTabelleCleaguequali nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="lmoTabelleUefa nobr nobr" align="right"> 6 </td>
+<td class="lmoTabelleUefa nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="lmoTabelleUefa nobr" align="center">&nbsp;</td>
+<td class="lmoTabelleUefa nobr nobr" align="left"> Borussia Dortmund</td>
+<td class="lmoTabelleUefa nobr">&nbsp;</td>
+<td class="lmoTabelleUefa nobr" align="center">&nbsp; </td>
+<td class="lmoTabelleUefa nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleUefa nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleUefa nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleUefa nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleUefa nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleUefa nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleUefa nobr" align="right">0</td>
+<td class="lmoTabelleUefa nobr" align="center" width='4'>:</td>
+<td class="lmoTabelleUefa nobr">0</td>
+<td class="lmoTabelleUefa nobr" align="right">0</td>
+<td class="lmoTabelleUefa nobr" width="2">&nbsp;</td>
+<td class="lmoTabelleUefa nobr" align="right">0</td>
+<td class="lmoTabelleUefa nobr" align="center" width="4">:</td>
+<td class="lmoTabelleUefa nobr">0</td>
+<td class="lmoTabelleUefa nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr nobr" align="right"> 7 </td>
+<td class="nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">&nbsp;</td>
+<td class="nobr nobr" align="left"> FC St. Pauli</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" align="center">&nbsp; </td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width='4'>:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" width="2">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width="4">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr nobr" align="right"> 8 </td>
+<td class="nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">&nbsp;</td>
+<td class="nobr nobr" align="left"> Holstein Kiel</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" align="center">&nbsp; </td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width='4'>:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" width="2">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width="4">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr nobr" align="right"> 9 </td>
+<td class="nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">&nbsp;</td>
+<td class="nobr nobr" align="left"> Werder Bremen</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" align="center">&nbsp; </td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width='4'>:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" width="2">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width="4">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr nobr" align="right"> 10 </td>
+<td class="nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">&nbsp;</td>
+<td class="nobr nobr" align="left"> TSG Hoffenheim</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" align="center">&nbsp; </td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width='4'>:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" width="2">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width="4">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr nobr" align="right"> 11 </td>
+<td class="nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">&nbsp;</td>
+<td class="nobr nobr" align="left"> 1.FC Union Berlin</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" align="center">&nbsp; </td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width='4'>:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" width="2">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width="4">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr nobr" align="right"> 12 </td>
+<td class="nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">&nbsp;</td>
+<td class="nobr nobr" align="left"> 1.FC Heidenheim</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" align="center">&nbsp; </td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width='4'>:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" width="2">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width="4">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr nobr" align="right"> 13 </td>
+<td class="nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">&nbsp;</td>
+<td class="nobr nobr" align="left"> RB Leipzig</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" align="center">&nbsp; </td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width='4'>:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" width="2">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width="4">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr nobr" align="right"> 14 </td>
+<td class="nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">&nbsp;</td>
+<td class="nobr nobr" align="left"> VfL Bochum</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" align="center">&nbsp; </td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width='4'>:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" width="2">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width="4">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr nobr" align="right"> 15 </td>
+<td class="nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">&nbsp;</td>
+<td class="nobr nobr" align="left"> VfB Stuttgart</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" align="center">&nbsp; </td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" align="right"> 0 &nbsp;</td>
+<td class="nobr" width='2'>&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width='4'>:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" width="2">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" width="4">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="lmoTabelleRelegation nobr nobr" align="right"> 16 </td>
+<td class="lmoTabelleRelegation nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="lmoTabelleRelegation nobr" align="center">&nbsp;</td>
+<td class="lmoTabelleRelegation nobr nobr" align="left"> FSV Mainz 05</td>
+<td class="lmoTabelleRelegation nobr">&nbsp;</td>
+<td class="lmoTabelleRelegation nobr" align="center">&nbsp; </td>
+<td class="lmoTabelleRelegation nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleRelegation nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleRelegation nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleRelegation nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleRelegation nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleRelegation nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleRelegation nobr" align="right">0</td>
+<td class="lmoTabelleRelegation nobr" align="center" width='4'>:</td>
+<td class="lmoTabelleRelegation nobr">0</td>
+<td class="lmoTabelleRelegation nobr" align="right">0</td>
+<td class="lmoTabelleRelegation nobr" width="2">&nbsp;</td>
+<td class="lmoTabelleRelegation nobr" align="right">0</td>
+<td class="lmoTabelleRelegation nobr" align="center" width="4">:</td>
+<td class="lmoTabelleRelegation nobr">0</td>
+<td class="lmoTabelleRelegation nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="lmoTabelleAbsteiger nobr nobr" align="right"> 17 </td>
+<td class="lmoTabelleAbsteiger nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="lmoTabelleAbsteiger nobr" align="center">&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr nobr" align="left"> Bayer 04 Leverkusen</td>
+<td class="lmoTabelleAbsteiger nobr">&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="center">&nbsp; </td>
+<td class="lmoTabelleAbsteiger nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right">0</td>
+<td class="lmoTabelleAbsteiger nobr" align="center" width='4'>:</td>
+<td class="lmoTabelleAbsteiger nobr">0</td>
+<td class="lmoTabelleAbsteiger nobr" align="right">0</td>
+<td class="lmoTabelleAbsteiger nobr" width="2">&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right">0</td>
+<td class="lmoTabelleAbsteiger nobr" align="center" width="4">:</td>
+<td class="lmoTabelleAbsteiger nobr">0</td>
+<td class="lmoTabelleAbsteiger nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+<tr>
+<td class="lmoTabelleAbsteiger nobr nobr" align="right"> 18 </td>
+<td class="lmoTabelleAbsteiger nobr">
+<img src="http://lmo.test/lmo/img/lmo-tab0.gif" width="9" height="9" border="0" alt="">
+</td>
+<td class="lmoTabelleAbsteiger nobr" align="center">&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr nobr" align="left"> Bayern München</td>
+<td class="lmoTabelleAbsteiger nobr">&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="center">&nbsp; </td>
+<td class="lmoTabelleAbsteiger nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right"> 0 &nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" width='2'>&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right">0</td>
+<td class="lmoTabelleAbsteiger nobr" align="center" width='4'>:</td>
+<td class="lmoTabelleAbsteiger nobr">0</td>
+<td class="lmoTabelleAbsteiger nobr" align="right">0</td>
+<td class="lmoTabelleAbsteiger nobr" width="2">&nbsp;</td>
+<td class="lmoTabelleAbsteiger nobr" align="right">0</td>
+<td class="lmoTabelleAbsteiger nobr" align="center" width="4">:</td>
+<td class="lmoTabelleAbsteiger nobr">0</td>
+<td class="lmoTabelleAbsteiger nobr" align="right">
+<strong>0.00</strong>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="100%" cellspacing='0' cellpadding='0' border='0'>
+<tr>
+<td align="right">&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;tabtype=0&amp;nick=tester&amp;st=2" title="nächster Spieltag">nächster Spieltag »</a>&nbsp;</td>
+</tr>
+</table>
+<p>&nbsp;</p>
+<table class="lmoInner" cellspacing='0' cellpadding='0' border='0'>
+<tr>
+<th align="center">eingebrachte Tipp-Punkte bei Beteiligung der jeweiligen Mannschaft</th>
+</tr>
+<p class="error">
+<img src="http://lmo.test/lmo/img/wrong.svg" border="0" width="20" alt=""> Es ist noch keine Auswertung gelaufen</p>
+<tr>
+<td align="center">
+<table class="lmoInner" cellspacing='0' cellpadding='0' border='0'>
+<tr>
+<th colspan='3'>1. Spieltag</th>
+<th width='2'>&nbsp;</th>
+<th class="nobr" align="right">Sp.</th>
+<th width='2'>&nbsp;</th>
+<th class="nobr" align="right">Pkt.</th>
+<th width='2'>&nbsp;</th>
+<th class="nobr" align="right">
+<strong>Pkt./Sp.</strong>
+</th>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="lmoFooter" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;endtab=&amp;nick=" title="so würde die Tabelle aussehen mit den Tipps aller Mitspieler">Tipp-Tabelle aller Mitspieler</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="center">
+</td>
+<td align="center">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="lmoFooter" colspan="2" align="left">
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Bosanski" title="Bosanski">
+<img src="http://lmo.test/lmo/img/Bosanski.svg" height="16" style="margin-right:1mm" title="Bosanski" alt="Bosanski">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Cestina" title="Cestina">
+<img src="http://lmo.test/lmo/img/Cestina.svg" height="16" style="margin-right:1mm" title="Cestina" alt="Cestina">
+</a>
+<img src="http://lmo.test/lmo/img/Deutsch.selected.svg" height="16" border="0" title="Deutsch" alt="Deutsch">
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=English" title="English">
+<img src="http://lmo.test/lmo/img/English.svg" height="16" style="margin-right:1mm" title="English" alt="English">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Espanol" title="Espanol">
+<img src="http://lmo.test/lmo/img/Espanol.svg" height="16" style="margin-right:1mm" title="Espanol" alt="Espanol">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Francais" title="Francais">
+<img src="http://lmo.test/lmo/img/Francais.svg" height="16" style="margin-right:1mm" title="Francais" alt="Francais">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Hrvatski" title="Hrvatski">
+<img src="http://lmo.test/lmo/img/Hrvatski.svg" height="16" style="margin-right:1mm" title="Hrvatski" alt="Hrvatski">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Italiano" title="Italiano">
+<img src="http://lmo.test/lmo/img/Italiano.svg" height="16" style="margin-right:1mm" title="Italiano" alt="Italiano">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Magyar" title="Magyar">
+<img src="http://lmo.test/lmo/img/Magyar.svg" height="16" style="margin-right:1mm" title="Magyar" alt="Magyar">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Nederlands" title="Nederlands">
+<img src="http://lmo.test/lmo/img/Nederlands.svg" height="16" style="margin-right:1mm" title="Nederlands" alt="Nederlands">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Norsk" title="Norsk">
+<img src="http://lmo.test/lmo/img/Norsk.svg" height="16" style="margin-right:1mm" title="Norsk" alt="Norsk">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Portugues" title="Portugues">
+<img src="http://lmo.test/lmo/img/Portugues.svg" height="16" style="margin-right:1mm" title="Portugues" alt="Portugues">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Romanian" title="Romanian">
+<img src="http://lmo.test/lmo/img/Romanian.svg" height="16" style="margin-right:1mm" title="Romanian" alt="Romanian">
+</a>
+<a href="/lmo/lmo.php?action=tipp&amp;todo=tabelle&amp;file=1l_2024-25.l98&amp;lmouserlang=Slovenskega" title="Slovenskega">
+<img src="http://lmo.test/lmo/img/Slovenskega.svg" height="16" style="margin-right:1mm" title="Slovenskega" alt="Slovenskega">
+</a>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td valign="bottom" align="left">
+<a href="/lmo/lmo.php" title="Hier können Sie sich eine andere Liga laden">« zur Ligenübersicht</a>&nbsp;&nbsp;&nbsp;</td>
+<td class="lmoFooter" valign="bottom" align="right">Letztes Update der Liga:&nbsp;{STAND}<br>
+<a href="https://www.liga-manager-online.org" target="_blank" class="lmo-link-trigger" data-info="<strong>Liga Manager Online</strong>This is a clone of the original Liga Manager Online.<br>
+<b>Adapted for PHP 8.</b>
+<br>Clicking this link will take you to the website of the new project." onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()">LMO 4 for PHP8</a>&nbsp;-&nbsp;<span class="lmo-text-trigger" data-info="<strong>Liga Manager Online</strong>The original Liga Manager Online project on the website www.liga-manager-online.de was discontinued at the end of 2025." onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()">© 1997-now LMO-Group</span>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!-- Dieser Container dient als das schwebende Fenster -->
+<div id="globalLMOTooltip" class="lmo-smart-tooltip">
+</div>
+<script> // Das Tooltip-Element referenzieren const sportTooltip = document.getElementById("globalLMOTooltip"); function showLMOTooltip(element) { // Text aus dem data-info Attribut auslesen const infoText = element.getAttribute("data-info"); if (!infoText) return; // Inhalt in das Fenster schreiben und sichtbar machen sportTooltip.innerHTML = infoText; sportTooltip.style.visibility = "visible"; sportTooltip.style.opacity = "1"; // Position des SVG-Icons auf dem Bildschirm ermitteln const rect = element.getBoundingClientRect(); const winW = window.innerWidth; const winH = window.innerHeight; // Standard-Position: Direkt unter dem Icon (8px Abstand) let top = rect.bottom + window.scrollY + 8; let left = rect.left + window.scrollX; // Fixed Koordinaten sportTooltip.style.position = "fixed"; top = rect.bottom + 8; left = rect.left; // AUTO-KORREKTUR: Unten if (top + sportTooltip.offsetHeight> winH) { // Über dem Icon anzeigen top = rect.top - sportTooltip.offsetHeight - 8; } // AUTO-KORREKTUR: Rechts if (left + sportTooltip.offsetWidth> winW) { // Nach links verschieben, mit 15px Sicherheitsabstand zum Rand left = winW - sportTooltip.offsetWidth - 15; } // Falls das Icon ganz links am Rand ist, Mindestabstand einhalten if (left < 10) left = 10; // Positionswerte zuweisen sportTooltip.style.top = top + "px"; sportTooltip.style.left = left + "px"; } function hideLMOTooltip() { // Fenster wieder ausblenden sportTooltip.style.visibility = "hidden"; sportTooltip.style.opacity = "0"; } </script>
+</body>
+</html>
+--- Dateiaenderungen ---
+(keine)
+
