@@ -95,37 +95,17 @@ if ($ftype != "") {
       $t1 = "";
       $t4 = "";
       $t2 = $text[2];
-      $datei = fopen(PATH_TO_LMO.'/'.$dirliga.$files, "rb");
-      while (!feof($datei)) {
-        $zeile = fgets($datei, 1000);
-        $zeile = trim($zeile);
-        if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
-          $sekt = substr($zeile, 1, -1);
-        } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
-        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
-          $schl = substr($zeile, 0, strpos($zeile, "="));
-          $wert = substr($zeile, strpos($zeile, "=")+1);
-          if ($schl == "Name") {
-            $t0 = $wert;
-          }
-          if ($schl == "Actual") {
-            $t1 = $wert;
-          }
-          if ($schl == "Teams") {
-            $t4 = $wert;
-          }
-          if ($schl == "Rounds") {
-            $ligaDaten->anzst = $wert;
-          }
-          if ($schl == "Type") {
-            if ($wert == "1") {
-              $t2 = $text[370];
-            }
-          }
-          if (($t0 != "") && ($t1 != "") && ($t4 != ""))break;
-        }
+      // Abschnitt [Options] der Ligadatei (Lmo\Liga\LigaDatei)
+      $lmo_optionen = \Lmo\Liga\LigaDatei::liesAbschnitt(PATH_TO_LMO.'/'.$dirliga.$files, 'Options');
+      $t0 = $lmo_optionen['Name'] ?? $t0;
+      $t1 = $lmo_optionen['Actual'] ?? $t1;
+      $t4 = $lmo_optionen['Teams'] ?? $t4;
+      if (isset($lmo_optionen['Rounds'])) {
+        $ligaDaten->anzst = $lmo_optionen['Rounds'];
       }
-      fclose($datei);
+      if (($lmo_optionen['Type'] ?? '') == "1") {
+        $t2 = $text[370];
+      }
       if ($t0 == "") {
         $j++;
         $t0 = $text[507].$j;

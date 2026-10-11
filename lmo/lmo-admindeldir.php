@@ -41,29 +41,8 @@ if ($ftype != "") {
 <?php
     for ($k = 0; $k < count($dummy); $k++) {
         $files = $dummy[$k];
-        $sekt = "";
-        $t0 = "";
-        $datei = fopen($dirliga . $files, "rb");
-        if ($datei) {
-            while (!feof($datei)) {
-                $zeile = fgets($datei, 1000);
-                $zeile = chop($zeile);
-                $zeile = trim($zeile);
-                if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
-                    $sekt = substr($zeile, 1, -1);
-                }
-                elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
-                //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
-                    $schl = substr($zeile, 0, strpos($zeile, "="));
-                    $wert = substr($zeile, strpos($zeile, "=") + 1);
-                    if ($schl == "Name") {
-                        $t0 = $wert;
-                        break;
-                    }
-                }
-            }
-        }
-        fclose($datei);
+        // Abschnitt [Options] der Ligadatei (Lmo\Liga\LigaDatei)
+        $t0 = \Lmo\Liga\LigaDatei::liesAbschnitt($dirliga . $files, 'Options')['Name'] ?? "";
         $i++;
         if ($t0 == "") {
             $j++;
