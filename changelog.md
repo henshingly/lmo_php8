@@ -9,6 +9,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Changed  
+- Die Werte einer Ligadatei liegen zusätzlich gebündelt in einem Objekt (`Lmo\Liga\LigaDaten`, Variable `$ligaDaten`). Die bisherigen einzelnen Variablen (`$titel`, `$teams`, `$goala` …) bleiben gültig und zeigen auf dieselben Werte. Kreuztabelle, Tabelle, Ergebnisse und Spielplan lesen die Liga bereits über das Objekt; an der Ausgabe ändert sich nichts.
 
 
 ### Deprecated  
@@ -249,6 +250,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Changed  
+- The values of a league file are additionally bundled in an object (`Lmo\Liga\LigaDaten`, variable `$ligaDaten`). The existing single variables (`$titel`, `$teams`, `$goala` …) stay valid and point to the same values. Cross table, table, results and schedule already read the league through the object; the output does not change.
 
 
 ### Deprecated  
