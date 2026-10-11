@@ -79,58 +79,34 @@ if (isset($file) && $file != "") {
   if ($lmo_einstellungen->mitAnstosszeit()) {
     $breite = $breite+1;
   }
-  if ($endtab_original > 1) {
-    $endtab = $endtab_original - 1;
-    require(PATH_TO_LMO."/lmo-calctable.php");
-    $platz1 = array("");
-    $platz1 = array_pad($array, $lmo_anzteams+1, "");
-    for ($x = 0; $x < $lmo_anzteams; $x++) {
-      $platz1[intval(substr($tab0[$x], 34))] = $x+1;
+  // Die Tabellen zum Anzeigen (Lmo\Liga\Tabelle). Fuehrt die Liga ein Handicap, gilt in der Gesamttabelle
+  // dessen Reihenfolge: die des aktuellen Spieltags, bei einer Tabelle "bis Spieltag X" die von X.
+  $lmo_tab_art = (int)$tabtype;
+  $lmo_tab_reihenfolge = static function (\Lmo\Liga\Tabelle $lmo_t) use ($lmo_liga, $lmo_einstellungen, $lmo_tab_art, $tabdat): array {
+    if (!$lmo_einstellungen->mitHandicap() || $lmo_tab_art != 0) {
+      return $lmo_t->reihenfolge;
     }
-    $endtab = $endtab_original;
+    $lmo_runde = empty($tabdat) ? $lmo_einstellungen->aktuellerSpieltag() : $lmo_t->bis;
+    return $lmo_t->reihenfolgeNachHandicap(isset($lmo_liga->spieltage[$lmo_runde]) ? ($lmo_liga->spieltage[$lmo_runde]->werte['HS'] ?? '0') : '0');
+  };
+  // Platz je Mannschaft am Spieltag davor, fuer die Pfeile
+  if ($endtab_original > 1) {
+    $platz1 = array_pad($array, $lmo_anzteams+1, "");
+    foreach ($lmo_tab_reihenfolge(\Lmo\Liga\Tabelle::fuerAnsicht($lmo_liga, $lmo_tab_art, (int)$endtab_original - 1)) as $x => $lmo_nr) {
+      $platz1[$lmo_nr] = $x+1;
+    }
   }
+  // Heim- und Auswaertsbilanz neben der Tabelle; bei Hin- oder Rueckrundentabelle auf diese Haelfte beschraenkt
   if ($tabonres == 2) {
     $newtabtype = $tabtype;
-    $tabtype = 1;
-    require(PATH_TO_LMO."/lmo-calctable.php");
-    $hplatz = array("");
-    $hplatz = array_pad($array, $lmo_anzteams+1, "");
-    for ($x = 0; $x < $lmo_anzteams; $x++) {
-      $hplatz[intval(substr($tab0[$x], 34))] = $x+1;
-    }
-    $hspiele = $spiele;
-    $hsiege = $siege;
-    $hunent = $unent;
-    $hnieder = $nieder;
-    $hpunkte = $punkte;
-    $hnegativ = $negativ;
-    $hetore = $etore;
-    $hatore = $atore;
-    $hdtore = $dtore;
-    $tabtype = 2;
-    require(PATH_TO_LMO."/lmo-calctable.php");
-    $aplatz = array("");
-    $aplatz = array_pad($array, $lmo_anzteams+1, "");
-    for ($x = 0; $x < $lmo_anzteams; $x++) {
-      $aplatz[intval(substr($tab0[$x], 34))] = $x+1;
-    }
-    $aspiele = $spiele;
-    $asiege = $siege;
-    $aunent = $unent;
-    $anieder = $nieder;
-    $apunkte = $punkte;
-    $anegativ = $negativ;
-    $aetore = $etore;
-    $aatore = $atore;
-    $adtore = $dtore;
-    $tabtype=$newtabtype;
+    $lmo_tab_heim = \Lmo\Liga\Tabelle::fuerAnsicht($lmo_liga, \Lmo\Liga\Tabelle::HEIM, (int)$endtab_original, $lmo_tab_art);
+    $lmo_tab_auswaerts = \Lmo\Liga\Tabelle::fuerAnsicht($lmo_liga, \Lmo\Liga\Tabelle::AUSWAERTS, (int)$endtab_original, $lmo_tab_art);
   }
-  $endtab = $endtab_original;
-  require(PATH_TO_LMO."/lmo-calctable.php");
-  $platz0 = array("");
+  $lmo_tabelle = \Lmo\Liga\Tabelle::fuerAnsicht($lmo_liga, $lmo_tab_art, (int)$endtab_original);
+  $lmo_tab_plaetze = $lmo_tab_reihenfolge($lmo_tabelle);
   $platz0 = array_pad($array, $lmo_anzteams+1, "");
-  for ($x = 0; $x < $lmo_anzteams; $x++) {
-    $platz0[intval(substr($tab0[$x], 34))] = $x+1;
+  foreach ($lmo_tab_plaetze as $x => $lmo_nr) {
+    $platz0[$lmo_nr] = $x+1;
   }
   $endtab = $endtab_original;
   if ($tabdat == "") {

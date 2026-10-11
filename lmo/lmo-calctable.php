@@ -57,17 +57,12 @@ if ($file != "") {
   $lmo_tab_anzteams = $lmo_tab_e->mannschaften();
   $lmo_tab_faktor = $lmo_tab_e->torfaktor();
 
-  // Rueckrunde beginnt nach der Saisonhaelfte, Hinrunde endet dort
-  $hoy = 0;
-  if ($lmo_tab_anzteams >= 1) {
-    if ($tabtype == 3 || $newtabtype == 3) {
-      $hoy = (int)($lmo_tab_e->spieltage()/2);
-    }
-    if ($tabtype == 4 || $newtabtype == 4) {
-      $endtab = (int)($lmo_tab_e->spieltage()/2);
-    }
+  // Rueckrunde beginnt nach der Saisonhaelfte, Hinrunde endet dort (Tabelle::fuerAnsicht())
+  $lmo_tabelle = \Lmo\Liga\Tabelle::fuerAnsicht($lmo_tab_liga, (int)$tabtype, (int)$endtab, (int)$newtabtype);
+  $hoy = $lmo_tabelle->von - 1;
+  if ($tabtype == 4 || $newtabtype == 4) {
+    $endtab = $lmo_tabelle->bis;
   }
-  $lmo_tabelle = \Lmo\Liga\Tabelle::berechne($lmo_tab_liga, (int)$tabtype, $hoy + 1, (int)$endtab);
 
   $spiele = $siege = $unent = $nieder = $punkte = $negativ = $etore = $atore = $dtore = array_fill(0, $lmo_tab_anzteams + 1, 0);
   $maxs1 = $maxs2 = $maxn1 = $maxn2 = $ser1 = $ser2 = $ser3 = $ser4 = array_fill(0, $lmo_tab_anzteams + 1, 0);

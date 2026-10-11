@@ -37,35 +37,12 @@ if (!defined('PATH_TO_LMO')) {
  * @var int|string $einzutoretab Torstatistik unter der Tabelle (Konfiguration)
  * @var int|float|string $gzutore Tore der ganzen Saison (lmo-zustat.php)
  * @var int|float|string $gdstore Tore je Spiel der ganzen Saison (lmo-zustat.php)
- * @var array<int|string, mixed> $tab0 sortierte Tabelle (lmo-calctable.php)
- * @var array<int|string, mixed> $platz1 Platz je Mannschaft am Spieltag davor (lmo-calctable.php)
- * @var array<int|string, mixed> $spiele Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $siege Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $unent Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $nieder Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $punkte Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $negativ Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $etore Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $atore Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $dtore Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $hspiele Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $hsiege Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $hunent Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $hnieder Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $hpunkte Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $hnegativ Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $hetore Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $hatore Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $hdtore Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $aspiele Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $asiege Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $aunent Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $anieder Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $apunkte Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $anegativ Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $aetore Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $aatore Tabellenspalte je Mannschaft (lmo-calctable.php)
- * @var array<int|string, mixed> $adtore Tabellenspalte je Mannschaft (lmo-calctable.php)
+ * @var \Lmo\Liga\Tabelle $lmo_tabelle die Tabelle (lmo-showrestab.php)
+ * @var list<int> $lmo_tab_plaetze Nummern der Mannschaften vom ersten zum letzten Platz (lmo-showrestab.php)
+ * @var \Lmo\Liga\Tabelle $lmo_tab_heim Heimbilanz, nur bei tabonres=2 (lmo-showrestab.php)
+ * @var \Lmo\Liga\Tabelle $lmo_tab_auswaerts Auswaertsbilanz, nur bei tabonres=2 (lmo-showrestab.php)
+ * @var array<int|string, mixed> $platz0 Platz je Mannschaft (lmo-showrestab.php)
+ * @var array<int|string, mixed> $platz1 Platz je Mannschaft am Spieltag davor (lmo-showrestab.php)
  */
 
 // Einstellungen der Liga mit Vorgabewerten (Lmo\Liga\Einstellungen)
@@ -191,7 +168,9 @@ if ($tabonres == 2) { ?>
 <?php
 $j = 1;
 for ($x = 1; $x <= $lmo_einstellungen->mannschaften(); $x++) {
-    $i = intval(substr($tab0[$x - 1], 34));
+    // Mannschaft auf diesem Platz und ihre Zeile (Lmo\Liga\Tabellenzeile)
+    $i = $lmo_tab_plaetze[$x - 1];
+    $lmo_zeile = $lmo_tabelle->zeilen[$i];
     // die Mannschaft dieser Zeile mit ihren Strafen, Torkorrekturen, ihrer Notiz und Homepage
     $lmo_mannschaft = $lmo_liga->mannschaften[$i] ?? new \Lmo\Liga\Rohdaten\Mannschaft();
     $lmo_name = $lmo_mannschaft->anzeigename();
@@ -298,105 +277,105 @@ for ($x = 1; $x <= $lmo_einstellungen->mannschaften(); $x++) {
         echo '&nbsp;';
     } ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $spiele[$i] . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $siege[$i] . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_zeile->spiele . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_zeile->siege . $dumm2; ?></td>
 <?php
     if (!$lmo_einstellungen->ohneUnentschieden()) { ?>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $unent[$i] . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_zeile->unentschieden . $dumm2; ?></td>
 <?php
     } ?>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $nieder[$i] . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_zeile->niederlagen . $dumm2; ?></td>
 <?php
     if ($tabpkt == 0) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($punkte[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($lmo_zeile->punkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
         if ($lmo_einstellungen->mitMinuspunkten()) { ?>
     <td class="<?php echo $lmo_tabelle_class?>" align="center" style="width:4px;"><strong>:</strong></td>
-    <td class="<?php echo $lmo_tabelle_class?>"><strong><?php echo applyFactor($negativ[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class?>"><strong><?php echo applyFactor($lmo_zeile->minuspunkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
         }
     } ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($etore[$i], $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($lmo_zeile->tore, $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><?php echo $dummy; ?>:<?php echo $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy . applyFactor($atore[$i], $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($dtore[$i], $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy . applyFactor($lmo_zeile->gegentore, $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($lmo_zeile->tordifferenz(), $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
 <?php
     if ($tabpkt == 1) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($punkte[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($lmo_zeile->punkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
         if ($lmo_einstellungen->mitMinuspunkten()) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($negativ[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($lmo_zeile->minuspunkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
         }
     }
     if ($tabonres == 2) {
         $lmo_tabelle_class = 'lmoTabelleHeimbilanz'; ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $hspiele[$i] . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $hsiege[$i] . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $hunent[$i] . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $hnieder[$i] . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_tab_heim->zeilen[$i]->spiele . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_tab_heim->zeilen[$i]->siege . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_tab_heim->zeilen[$i]->unentschieden . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_tab_heim->zeilen[$i]->niederlagen . $dumm2; ?></td>
 <?php
         if ($tabpkt == 0) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($hpunkte[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($lmo_tab_heim->zeilen[$i]->punkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
             if ($lmo_einstellungen->mitMinuspunkten()) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($hnegativ[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($lmo_tab_heim->zeilen[$i]->minuspunkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
             }
         } ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($hetore[$i], $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($lmo_tab_heim->zeilen[$i]->tore, $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><?php echo $dummy; ?>:<?php echo $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy . applyFactor($hatore[$i], $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($hdtore[$i], $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy . applyFactor($lmo_tab_heim->zeilen[$i]->gegentore, $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($lmo_tab_heim->zeilen[$i]->tordifferenz(), $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
 <?php
         if ($tabpkt == 1) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($hpunkte[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($lmo_tab_heim->zeilen[$i]->punkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
             if ($lmo_einstellungen->mitMinuspunkten()) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($hnegativ[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($lmo_tab_heim->zeilen[$i]->minuspunkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
             }
         }
         $lmo_tabelle_class = 'lmoTabelleGastbilanz'; ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $aspiele[$i] . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $asiege[$i] . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $aunent[$i] . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $anieder[$i] . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_tab_auswaerts->zeilen[$i]->spiele . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_tab_auswaerts->zeilen[$i]->siege . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_tab_auswaerts->zeilen[$i]->unentschieden . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $lmo_tab_auswaerts->zeilen[$i]->niederlagen . $dumm2; ?></td>
 <?php
         if ($tabpkt == 0) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($apunkte[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($lmo_tab_auswaerts->zeilen[$i]->punkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
             if ($lmo_einstellungen->mitMinuspunkten()) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($anegativ[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($lmo_tab_auswaerts->zeilen[$i]->minuspunkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
             }
         } ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($aetore[$i], $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($lmo_tab_auswaerts->zeilen[$i]->tore, $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><?php echo $dummy; ?>:<?php echo $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy . applyFactor($aatore[$i], $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($adtore[$i], $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy . applyFactor($lmo_tab_auswaerts->zeilen[$i]->gegentore, $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($lmo_tab_auswaerts->zeilen[$i]->tordifferenz(), $lmo_einstellungen->torfaktor()) . $dumm2; ?></td>
 <?php
         if ($tabpkt == 1) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
-    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($apunkte[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo applyFactor($lmo_tab_auswaerts->zeilen[$i]->punkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
             if ($lmo_einstellungen->mitMinuspunkten()) { ?>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center" style="width:4px;"><strong>:</strong></td>
-    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($anegativ[$i], $lmo_einstellungen->punktfaktor())?></strong></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><strong><?php echo applyFactor($lmo_tab_auswaerts->zeilen[$i]->minuspunkte, $lmo_einstellungen->punktfaktor())?></strong></td>
 <?php
             }
         }
