@@ -98,6 +98,10 @@ L98;
         // Bundesliga: zwei Spiele getippt, Joker auf Spiel 3; Pokal: das Hinspiel der ersten Paarung
         file_put_contents($path . '/addon/tipp/tipps/1l_2024-25_tester.tip', "[Round26]\n@3@\nGA1=2\nGB1=1\nGA3=0\nGB3=0\n");
         file_put_contents($path . '/addon/tipp/tipps/tipppokal_tester.tip', "[Round1]\nGA11=3\nGB11=1\n");
+        // "Dein letzter Tipp" zeigt die Dateizeit
+        foreach (['1l_2024-25_tester.tip', 'tipppokal_tester.tip'] as $tippdatei) {
+            touch($path . '/addon/tipp/tipps/' . $tippdatei, mktime(12, 0, 0, 3, 10, 2025));
+        }
         $client->resetChanges();
 
         return $client;
@@ -121,7 +125,7 @@ L98;
         $t->add('Tippdatei Bundesliga', (string) file_get_contents($path . '1l_2024-25_tester.tip'), '');
         $t->add('Tippdatei Pokal', (string) file_get_contents($path . 'tipppokal_tester.tip'), '');
 
-        $this->assertMatchesSnapshot('tipp', 'viewer_logged_in', $t->text());
+        $this->assertMatchesSnapshot('tipp', 'viewer_logged_in', self::ohneUhrzeit($t->text()));
     }
 
     public function testTippingASingleRoundOfLeagueAndCup(): void
@@ -136,6 +140,12 @@ L98;
         $t->add('Tipptabelle Bundesliga', $c->get('lmo.php', 'action=tipp&todo=tabelle&file=1l_2024-25.l98'), $c->changes());
 
         $this->assertMatchesSnapshot('tipp', 'single_round_logged_in', $t->text());
+    }
+
+    /** Nach dem Speichern traegt die Tippuebersicht die Sekunde des Aufrufs im Formular (xnow); die Testuhr laeuft weiter. */
+    private static function ohneUhrzeit(string $text): string
+    {
+        return (string) preg_replace(['/(name="xnow" value=")\d+/', '/^(xnow=)\d+$/m'], '$1{JETZT}', $text);
     }
 
     /** Beim ersten Anmelden wird das Kennwort gehasht (zufaelliges Salz): die Zeile des Tippers aendert sich jedes Mal anders. */

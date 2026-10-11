@@ -53,12 +53,12 @@
 <li>
 <a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=1l_2024-25.l98">1. Bundesliga 2024/25</a>
 <br>
-<small>Dein letzter Tipp: 11.10.2026 22:51 / 1. Spieltag</small>
+<small>Dein letzter Tipp: 10.03.2025 13:00 / 1. Spieltag</small>
 </li>
 <li>
 <a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=tipppokal.l98">Tipp-Pokal</a>
 <br>
-<small>Dein letzter Tipp: 11.10.2026 22:51</small>
+<small>Dein letzter Tipp: 10.03.2025 13:00</small>
 </li>
 <li>
 <a href="/lmo/lmo.php?action=tipp&amp;todo=edit&amp;file=&amp;viewermode=1">
@@ -256,7 +256,7 @@ GEAENDERT addon/tipp/lmo-tippauth.txt
 <input type="hidden" name="save" value="1">
 <input type="hidden" name="viewermode" value="1">
 <input type="hidden" name="xstart" value="0">
-<input type="hidden" name="xnow" value="1741993200">
+<input type="hidden" name="xnow" value="{JETZT}">
 <input type="hidden" name="xthen" value="1742684400">
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 <tr>
@@ -1342,7 +1342,7 @@ todo=edit
 save=1
 viewermode=1
 xstart=0
-xnow=1741993200
+xnow={JETZT}
 xthen=1742684400
 xtippa1=
 xtippb1=
@@ -1436,7 +1436,7 @@ xtippb0=0
 <input type="hidden" name="save" value="1">
 <input type="hidden" name="viewermode" value="1">
 <input type="hidden" name="xstart" value="0">
-<input type="hidden" name="xnow" value="1742040001">
+<input type="hidden" name="xnow" value="{JETZT}">
 <input type="hidden" name="xthen" value="1742684400">
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 <tr>
@@ -2648,7 +2648,7 @@ GB22=-1
 <input type="hidden" name="save" value="1">
 <input type="hidden" name="viewermode" value="1">
 <input type="hidden" name="xstart" value="2">
-<input type="hidden" name="xnow" value="1742166000">
+<input type="hidden" name="xnow" value="{JETZT}">
 <input type="hidden" name="xthen" value="1742857200">
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 <tr>
