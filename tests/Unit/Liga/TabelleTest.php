@@ -138,6 +138,20 @@ class TabelleTest extends TestCase
         self::assertSame([0, 2, 1], [$zweite->hoechsteNiederlage->tore, $zweite->hoechsteNiederlage->gegentore, count($zweite->hoechsteNiederlage->spiele)]);
     }
 
+    public function testHoechsterSiegAlsText(): void
+    {
+        $namen = ['[Teams]', '1=Eins', '2=Zwei', '3=Drei', '4=Vier'];
+        $erste = Tabelle::berechne(self::liga([], $namen))->zeilen[1];
+
+        self::assertSame('2:0 gegen Zwei (H)<br>2:0 gegen Vier (A)', $erste->hoechsterSieg->alsText(1, 'gegen', '(H)', '(A)'));
+        self::assertSame('0.2:0 gegen Zwei (H)<br>0.2:0 gegen Vier (A)', $erste->hoechsterSieg->alsText(10, 'gegen', '(H)', '(A)'), 'mit Torfaktor');
+        self::assertSame('&nbsp;', $erste->hoechsteNiederlage->alsText(1, 'gegen', '(H)', '(A)'), 'ohne Niederlage');
+
+        // ein 0:0 am gruenen Tisch als erster Sieg: davor bleibt wie bisher eine leere Zeile
+        $wertung = Tabelle::berechne(self::liga([], $namen, ['[Round1]', 'TA1=1', 'TB1=2', 'GA1=-2', 'GB1=0']))->zeilen[1];
+        self::assertSame('&nbsp;<br>0:0 gegen Zwei (H)', $wertung->hoechsterSieg->alsText(1, 'gegen', '(H)', '(A)'));
+    }
+
     public function testPunkteDerLigaUndMinuspunkte(): void
     {
         $tabelle = Tabelle::berechne(self::liga(['PointsForWin=2', 'PointsForDraw=1', 'MinusPoints=2']));
