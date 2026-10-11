@@ -1,0 +1,22 @@
+# Gesamter Code auf Stufe 0: findet unbekannte Klassen, Funktionen und Methoden.
+# Ab Stufe 1 meldet PHPStan die globalen Variablen des alten Codes (rund 9500 Stellen).
+# Aufruf: composer phpstan  bzw.  docker compose run --rm phpstan
+parameters:
+    level: 0
+    # der LMO laeuft auf PHP 8.0 bis 8.5
+    phpVersion:
+        min: 80000
+        max: 80599
+    paths:
+        - lmo
+        - src
+        - bin/lmo-install
+        - tests
+    excludePaths:
+        - lmo/addon/classlib/doc
+        - tests/GoldenMaster/__snapshots__
+    ignoreErrors:
+        # PHPStan haelt die Funktion fuer void; Xdebug liefert true bzw. false (falscher xdebug.mode)
+        -
+            identifier: function.void
+            path: tests/GoldenMaster/bin/coverage_prepend.php

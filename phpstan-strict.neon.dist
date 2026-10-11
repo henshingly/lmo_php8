@@ -1,0 +1,10 @@
+# Neuer Code auf Stufe 8. Dateien, die typisiert und ohne globale Variablen geschrieben sind, hier eintragen.
+parameters:
+    level: 8
+    phpVersion:
+        min: 80000
+        max: 80599
+    paths:
+        - src
+        - bin/lmo-install
+        - lmo/lmo-version.php
