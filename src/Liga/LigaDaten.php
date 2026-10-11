@@ -751,12 +751,23 @@ class LigaDaten
             if (empty($this->{$feld}[$spieltag])) {
                 continue;
             }
-            $teile = explode('.', (string) $this->{$feld}[$spieltag]);
-            $gueltig = count($teile) === 3 && is_numeric($teile[0]) && is_numeric($teile[1]) && is_numeric($teile[2])
-                && checkdate((int) $teile[1], (int) $teile[0], (int) $teile[2]);
-            $zeit = $gueltig ? mktime(0, 0, 0, (int) $teile[1], (int) $teile[0], (int) $teile[2]) : false;
+            $zeit = self::datumAlsZeit((string) $this->{$feld}[$spieltag]);
             $this->{$feld}[$spieltag] = $zeit === false ? '' : date('d.m.Y', $zeit);
         }
+    }
+
+    /**
+     * Das Datum eines Spieltags aus der Datei (T.M.JJJJ) als Zeitstempel, 0 Uhr.
+     *
+     * @return int|false false, wenn es leer ist oder es den Tag nicht gibt
+     */
+    public static function datumAlsZeit(string $datum)
+    {
+        $teile = explode('.', $datum);
+        $gueltig = count($teile) === 3 && is_numeric($teile[0]) && is_numeric($teile[1]) && is_numeric($teile[2])
+            && checkdate((int) $teile[1], (int) $teile[0], (int) $teile[2]);
+
+        return $gueltig ? mktime(0, 0, 0, (int) $teile[1], (int) $teile[0], (int) $teile[2]) : false;
     }
 
     /**

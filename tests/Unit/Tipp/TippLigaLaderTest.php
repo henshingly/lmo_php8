@@ -6,7 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Das Tippspiel sammelt fuer die Tippuebersicht und die Erinnerungsmail die anstehenden Spiele
- * mehrerer Ligen. Die Ligadateien liest es dabei ueber Lmo\Liga\LigaDatei.
+ * mehrerer Ligen. Die Ligadateien liest es komplett als Lmo\Liga\Rohdaten\Liga und greift je Spiel
+ * auf dessen eigene Werte zu.
  */
 class TippLigaLaderTest extends TestCase
 {
@@ -29,7 +30,9 @@ class TippLigaLaderTest extends TestCase
         // ein "|" im Namen oder in der Notiz gehoert zum Wert; frueher endete der Wert dort
         self::assertSame(['Alpha', 'Gamma'], $ligaDaten->teama);
         self::assertSame(['<strong>B | C</strong>', 'Alpha'], $ligaDaten->teamb, 'Lieblingsmannschaft ist hervorgehoben');
-        self::assertSame('Abbruch | Nebel', $ligaDaten->mnote[0]);
+        // jedes Spiel hat seine eigene Notiz; frueher galt die des vorigen Spiels weiter, wenn eine fehlte
+        self::assertSame(['Abbruch | Nebel', ''], $ligaDaten->mnote);
+        self::assertSame(['&nbsp;', '&nbsp;'], $ligaDaten->mspez);
         self::assertSame(['2', '_'], $ligaDaten->goala);
         self::assertSame(['1', '_'], $ligaDaten->goalb);
         self::assertSame(['1740826800', '1740834000'], $ligaDaten->mterm);
