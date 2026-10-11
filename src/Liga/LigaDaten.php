@@ -1034,6 +1034,64 @@ class LigaDaten
         $this->ergaenzeMannschaftsnamen();
     }
 
+    /**
+     * Liest nur den Spielplan eines Spieltags: Mannschaftsnamen, Datum, Paarungen und Anstoss,
+     * im Pokal dazu die Spiele je Paarung. Tore, Notizen und alles Weitere bleiben ungelesen.
+     * Fuer Seiten, die nur wissen muessen, wer wann spielt (Erinnerungsmail des Tippspiels).
+     *
+     * Vorher Typ und Anzahl der Mannschaften setzen (setzeOptionen(), ergaenzeGrunddaten()).
+     * Die Felder des Spielplans haben danach dieselbe Groesse wie nach lies().
+     *
+     * @param iterable<array{string, string, string}> $eintraege Ergebnis von LigaDatei::zerlege() bzw. lies()
+     * @param int|float $spieltagsIndex Spieltag - 1
+     */
+    public function liesSpielplan(iterable $eintraege, $spieltagsIndex): void
+    {
+        /** @var int|float|numeric-string $teams */
+        $teams = $this->anzteams;
+        $plaetze = max(0, (int) ($teams + 2));
+        $this->teams = $plaetze > 0 ? array_fill(0, $plaetze, '') : [];
+        $this->teams[0] = '___';
+        $pokal = $this->art() === self::POKAL;
+        if ($pokal) {
+            $this->datum1 = $this->datum2 = array_fill(0, self::POKAL_RUNDEN, '');
+            $this->modus = array_fill(0, self::POKAL_RUNDEN, '1');
+            $this->teama = $this->teamb = array_fill(0, self::POKAL_RUNDEN, array_fill(0, self::POKAL_PAARUNGEN, '0'));
+            $this->mterm = array_fill(0, self::POKAL_RUNDEN, array_fill(0, self::POKAL_PAARUNGEN, array_fill(0, self::POKAL_SPIELE, '0')));
+        } else {
+            $this->datum1 = $this->datum2 = array_fill(0, self::LIGA_SPIELTAGE, '');
+            $this->teama = $this->teamb = $this->mterm = array_fill(0, self::LIGA_SPIELTAGE, array_fill(0, self::LIGA_PARTIEN, '0'));
+        }
+
+        foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
+            if ($abschnitt === 'Teams') {
+                $this->teams[$schluessel] = stripslashes($wert);
+            }
+            $st = self::spieltagsIndex($abschnitt);
+            if (substr($abschnitt, 0, 5) !== 'Round' || $st != $spieltagsIndex) {
+                continue;
+            }
+            $art = substr($schluessel, 0, 2);
+            $partie = (int) substr($schluessel, 2) - 1;
+            if ($schluessel === 'D1') {
+                $this->datum1[$st] = $wert;
+            } elseif ($schluessel === 'D2') {
+                $this->datum2[$st] = $wert;
+            } elseif ($schluessel === 'MO' && $pokal) {
+                $this->modus[$st] = $wert;
+            } elseif ($art === 'TA') {
+                $this->teama[$st][$partie] = $wert;
+            } elseif ($art === 'TB') {
+                $this->teamb[$st][$partie] = $wert;
+            } elseif ($art === 'AT' && $pokal) {
+                $this->mterm[$st][(int) substr($schluessel, 2, -1) - 1][(int) substr($schluessel, -1) - 1] = $wert;
+            } elseif ($art === 'AT') {
+                $this->mterm[$st][$partie] = $wert;
+            }
+        }
+        $this->bereinigeSpieltagsdatum((int) $spieltagsIndex);
+    }
+
     /** Liga oder Pokal, nach dem bisher bekannten Typ */
     private function art(): string
     {

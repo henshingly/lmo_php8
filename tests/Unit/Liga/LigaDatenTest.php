@@ -1128,4 +1128,48 @@ class LigaDatenTest extends TestCase
         self::assertNotContains('rohdaten', LigaDaten::felder());
         self::assertCount(82, LigaDaten::felder());
     }
+
+    public function testLiesSpielplanLiestNurDenGewaehltenSpieltag(): void
+    {
+        $eintraege = \Lmo\Liga\LigaDatei::zerlege(explode("\n", "[Options]\nType=0\nTeams=3\n[Teams]\n1=O\\'Neill\n2=B | C\n3=Gamma\n"
+            . "[Round1]\nD1=23.08.2024\nTA1=1\nTB1=2\nGA1=4\nAT1=1724437800\n"
+            . "[Round2]\nD1=1.9.2024\nD2=31.02.2025\nTA1=2\nTB1=3\nAT1=1725042600\nTA12=3\nTB12=1\nNT1=Notiz\nMO=2"));
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->setzeOptionen($eintraege, ['Type', 'Teams']);
+
+        $liga->liesSpielplan($eintraege, 1);
+
+        self::assertSame(['___', "O'Neill", 'B | C', 'Gamma', ''], $liga->teams);
+        self::assertSame(['2', '3'], [$liga->teama[1][0], $liga->teamb[1][0]]);
+        self::assertSame(['3', '1'], [$liga->teama[1][11], $liga->teamb[1][11]]);
+        self::assertSame('1725042600', $liga->mterm[1][0]);
+        self::assertSame('01.09.2024', $liga->datum1[1], 'Datum in der Form TT.MM.JJJJ');
+        self::assertSame('', $liga->datum2[1], 'ein Datum, das es nicht gibt, wird geleert');
+        // der andere Spieltag bleibt leer, aber angelegt
+        self::assertSame(['0', '0', '0', ''], [$liga->teama[0][0], $liga->teamb[0][0], $liga->mterm[0][0], $liga->datum1[0]]);
+        self::assertSame([116, 40], [count($liga->teama), count($liga->teama[115])]);
+        // nur der Spielplan: keine Tore, keine Notizen, in der Liga kein Modus
+        self::assertNull($liga->goala);
+        self::assertNull($liga->mnote);
+        self::assertNull($liga->modus);
+    }
+
+    public function testLiesSpielplanImPokal(): void
+    {
+        $eintraege = \Lmo\Liga\LigaDatei::zerlege(explode("\n", "[Options]\nType=1\nTeams=4\n[Teams]\n1=A\n2=B\n"
+            . "[Round1]\nMO=2\nD1=01.03.2025\nTA1=1\nTB1=2\nAT11=1740826800\nAT12=1741431600\nGA11=1\n[Round2]\nMO=1\nTA1=1\nTB1=3\nAT11=5"));
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->setzeOptionen($eintraege, ['Type', 'Teams']);
+
+        $liga->liesSpielplan($eintraege, 0);
+
+        self::assertSame(['1', '2'], [$liga->teama[0][0], $liga->teamb[0][0]]);
+        self::assertSame(['1740826800', '1741431600', '0'], array_slice($liga->mterm[0][0], 0, 3), 'Anstoss je Spiel der Paarung');
+        self::assertSame(['2', '1'], [$liga->modus[0], $liga->modus[1]], 'Runde 2 ist nicht gelesen, dort steht die Vorgabe');
+        self::assertSame(['0', '0'], [$liga->teama[1][0], $liga->mterm[1][0][0]]);
+        self::assertSame([7, 64, 7], [count($liga->mterm), count($liga->mterm[0]), count($liga->mterm[0][0])]);
+        self::assertSame('01.03.2025', $liga->datum1[0]);
+    }
 }
