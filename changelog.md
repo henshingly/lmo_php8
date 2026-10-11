@@ -12,6 +12,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 ### Changed  
 - Die Classlib liest und schreibt Ligadateien über dieselbe Klasse wie der Kern (`Lmo\Liga\Rohdaten\Liga`). Von der Classlib geschriebene Dateien haben dadurch die Abschnittsfolge des Kerns und enthalten immer `[News]`, `[Teamm]` und `[Teamk]`; die Werte sind dieselben. Ob eine Datei Liga oder Pokal ist, entscheidet jetzt auch in der Classlib der Typ der Datei, nicht mehr der Modus der einzelnen Runde.
 - Die Ligalisten (Ligaübersicht, Admin: Öffnen, Löschen, Download, neue Liga, Viewer-Optionen; Tippspiel) lesen Name, Typ und Größe einer Liga über `Lmo\Liga\LigaDatei::liesAbschnitt()` statt über neun eigene Leseschleifen. Leerzeichen um Schlüssel und Wert werden dabei wie beim Laden der Liga entfernt; eine nicht lesbare Datei bricht die Liste nicht mehr ab.
+- Die Spielplanvorlage beim Anlegen einer Liga (»aus Datei übernehmen«) sowie die Tippübersicht und die Erinnerungsmail des Tippspiels lesen Ligadateien über `Lmo\Liga\Rohdaten\Liga` bzw. `Lmo\Liga\LigaDatei` statt über eigene Leseschleifen. Damit liest außer der Classlib und dem Kern niemand mehr eine Ligadatei selbst.
 - Die beiden abgespeckten Lader `lmo-openfilename.php` und `lmo-openfiledat.php` benutzen denselben Leser und dieselbe Zuordnung der Schlüssel wie der Hauptlader.
 - Die ganze Ligadatei wird über `Lmo\Liga\LigaDaten` geschrieben; `lmo-savefile.php` enthält nur noch das Öffnen, Sperren und Schreiben der Zeilen. Die geschriebene Datei ist unverändert.
 - News, Spieltage und Partien liest `Lmo\Liga\LigaDaten`; der Lader `lmo-openfile.php` enthält nur noch den Ablauf. Die gelesenen Werte sind unverändert.
@@ -34,6 +35,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 - Einstellungen in `[Options]`, die der LMO nicht kennt (auch `stats`), und ganze unbekannte Abschnitte einer Ligadatei gingen beim Speichern im Admin-Bereich verloren. Sie bleiben jetzt erhalten.
 - Werden in einem Aufruf mehrere Ligen nacheinander geladen, blieben Werte der vorigen Liga stehen, die die nächste Datei nicht nennt (z. B. Strafpunkte einer Liga beim anschließenden Laden eines Pokals). Vor jedem Laden werden jetzt alle Werte geleert.
 - Ein senkrechter Strich (`|`) in einer Notiz, einem Mannschaftsnamen, einer Adresse oder einer Newszeile schnitt beim Laden alles dahinter ab.
+- Tippspiel: Derselbe Fehler in der Tippübersicht und der Erinnerungsmail – ein `|` im Mannschaftsnamen oder in der Notiz schnitt den Rest ab.
 - Ein unlesbares Datum im letzten Spieltag einer Ligadatei (z. B. `D1=ab.cd.efgh`) ließ das Laden der Liga abbrechen; es wird jetzt geleert.
 - Classlib (Addons mini, viewer, ticker): Eine eckige Klammer in einem Liganamen, Mannschaftsnamen oder einer Notiz schnitt den Rest des Abschnitts ab (Name gekürzt, Mannschaft oder Zusatz „n. V.“ fehlten). Kommentarzeilen mit `;` am Anfang wurden als Schlüssel gelesen.
 - Tippspiel und Benutzerverwaltung: Fehlte einer Ligadatei die Anzahl der Spieltage (`Rounds`), brach der abgespeckte Lader `lmo-openfilename.php` mit „Division by zero“ ab. Beide abgespeckten Lader ergänzen fehlende Angaben jetzt wie der Hauptlader.
@@ -271,6 +273,7 @@ _Here we write changelog notes for the next version._
 ### Changed  
 - The classlib reads and writes league files through the same class as the core (`Lmo\Liga\Rohdaten\Liga`). Files written by the classlib thereby have the section order of the core and always contain `[News]`, `[Teamm]` and `[Teamk]`; the values are the same. Whether a file is a league or a cup is now decided by the file type in the classlib too, no longer by the mode of the single round.
 - The league lists (league overview, admin: open, delete, download, new league, viewer options; prediction game) read name, type and size of a league through `Lmo\Liga\LigaDatei::liesAbschnitt()` instead of nine reading loops of their own. Blanks around key and value are removed as when loading the league; an unreadable file no longer aborts the list.
+- The schedule template when creating a league ("take over from file") as well as the prediction overview and the reminder mail of the prediction game read league files through `Lmo\Liga\Rohdaten\Liga` or `Lmo\Liga\LigaDatei` instead of reading loops of their own. Apart from the classlib and the core, nothing reads a league file by itself any more.
 - The two reduced loaders `lmo-openfilename.php` and `lmo-openfiledat.php` use the same reader and the same key mapping as the main loader.
 - The whole league file is written through `Lmo\Liga\LigaDaten`; `lmo-savefile.php` only contains opening, locking and writing the lines. The written file is unchanged.
 - News, rounds and matches are read by `Lmo\Liga\LigaDaten`; the loader `lmo-openfile.php` only contains the sequence. The values read are unchanged.
@@ -293,6 +296,7 @@ _Here we write changelog notes for the next version._
 - Settings in `[Options]` that LMO does not know (including `stats`) and whole unknown sections of a league file were lost when saving in the admin area. They are now kept.
 - When several leagues are loaded in one request, values of the previous league remained that the next file does not mention (e.g. penalty points of a league when a cup is loaded afterwards). All values are now cleared before each load.
 - A vertical bar (`|`) in a note, a team name, an address or a news line cut off everything after it when loading.
+- Prediction game: the same bug in the prediction overview and the reminder mail – a `|` in a team name or a note cut off the rest.
 - An unreadable date in the last round of a league file (e.g. `D1=ab.cd.efgh`) aborted loading the league; it is now cleared.
 - Classlib (addons mini, viewer, ticker): a square bracket in a league name, team name or note cut off the rest of the section (name shortened, team or the "a.e.t." marker missing). Comment lines starting with `;` were read as keys.
 - Tip game and user administration: if a league file lacked the number of rounds (`Rounds`), the reduced loader `lmo-openfilename.php` aborted with "Division by zero". Both reduced loaders now fill in missing values like the main loader.
