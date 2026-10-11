@@ -50,6 +50,27 @@ class SpielTest extends TestCase
         self::assertSame(['', '', false, null], [$spiel->notiz, $spiel->bericht, $spiel->ohneTippwertung, $spiel->anstoss]);
     }
 
+    public function testSpielLiefertSeineMannschaften(): void
+    {
+        $liga = self::liga(['[Teams]', "1=O\\'Neill", '2=Eintracht Frankfurt', '[Teamk]', '2=SGE', '[Round1]', 'TA1=1', 'TB1=2', 'TA2=2', 'TA3=9', 'TB3=1']);
+
+        $spiel = Spiel::ausRohdaten($liga, 1, 1);
+        self::assertSame(["O'Neill", 'Eintracht Frankfurt'], [$spiel->heimName(), $spiel->gastName()]);
+        self::assertSame($liga->mannschaften[2], $spiel->gastMannschaft(), 'dieselbe Mannschaft wie in den Rohdaten');
+        self::assertSame('SGE', $spiel->gastMannschaft()->kurzname());
+
+        // der Gegner steht noch nicht fest
+        $offen = Spiel::ausRohdaten($liga, 1, 2);
+        self::assertSame(['Eintracht Frankfurt', '', '___'], [$offen->heimName(), $offen->gastName(), $offen->gastName('___')]);
+        self::assertSame('', $offen->gastMannschaft()->anzeigename(), 'eine leere Mannschaft, damit man weiterfragen kann');
+
+        // eine Nummer, die die Liga nicht kennt
+        self::assertSame('', Spiel::ausRohdaten($liga, 1, 3)->heimName('___'));
+        // ein Spiel, das es nicht gibt
+        self::assertSame(['___', '___'], [Spiel::ausRohdaten($liga, 4, 4)->heimName('___'), Spiel::ausRohdaten($liga, 4, 4)->gastName('___')]);
+        self::assertCount(2, $liga->mannschaften, 'nachfragen legt nichts an');
+    }
+
     public function testToreUndWertungAmGruenenTisch(): void
     {
         $liga = self::liga(['[Round1]', 'TA1=1', 'GA1=-1', 'GB1=', 'TA2=1', 'GA2=-2', 'GB2=3', 'TA3=1', 'GA3=0', 'GB3=-2', 'TA4=1', 'GA4=1', 'GB4=1', 'ET4=3',

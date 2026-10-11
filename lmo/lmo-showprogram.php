@@ -70,9 +70,9 @@ if ($file != '') {
             $j = $lmo_spiel->spieltag - 1;
             $i = $lmo_spiel->partie - 1;
             if (($lmo_selteam == $lmo_spiel->heim) || ($lmo_selteam == $lmo_spiel->gast)) {
-                // eine Mannschaft ohne Nummer heisst "___"
-                $lmo_heim = $lmo_spiel->heim == 0 ? '___' : $lmo_liga->mannschaftsname($lmo_spiel->heim);
-                $lmo_gast = $lmo_spiel->gast == 0 ? '___' : $lmo_liga->mannschaftsname($lmo_spiel->gast);
+                // steht eine Mannschaft noch nicht fest, heisst sie "___"
+                $lmo_heim = $lmo_spiel->heimName('___');
+                $lmo_gast = $lmo_spiel->gastName('___');
                 $lmo_zusatz = $lmo_spiel->zusatzText($text[0], $text[1]);
 ?>
         <tr>
