@@ -41,6 +41,22 @@ final class Spieltag
         return self::zeitAusDatum($this->werte['D2'] ?? '');
     }
 
+    /** Erster Tag des Spieltags zum Anzeigen (TT.MM.JJJJ); '' wenn er fehlt oder es den Tag nicht gibt */
+    public function ersterTagText(): string
+    {
+        $zeit = $this->ersterTag();
+
+        return $zeit === null ? '' : date('d.m.Y', $zeit);
+    }
+
+    /** Letzter Tag des Spieltags zum Anzeigen (TT.MM.JJJJ); '' wenn er fehlt oder es den Tag nicht gibt */
+    public function letzterTagText(): string
+    {
+        $zeit = $this->letzterTag();
+
+        return $zeit === null ? '' : date('d.m.Y', $zeit);
+    }
+
     /**
      * Ein Datum, wie es in der Ligadatei steht (T.M.JJJJ), als Zeitstempel, 0 Uhr.
      *
