@@ -61,32 +61,17 @@ if ($file!="") {
 
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfile.php");
 
-    // Einstellungen, Spieltag und Paarungen aus den Rohdaten der Liga (Lmo\Liga\Rohdaten\Liga)
-    $lmo_einstellungen = $lmo_liga->einstellungen();
-    $lmo_tipp_pokal = $lmo_einstellungen->istPokal();
-    $lmo_tipp_runden = $lmo_einstellungen->spieltage();
-    $lmo_tipp_spieltag = $lmo_liga->spieltage[(int)$st] ?? new \Lmo\Liga\Rohdaten\Spieltag();
-    $lmo_tipp_datum1 = $lmo_tipp_spieltag->ersterTagText();
-    $lmo_tipp_datum2 = $lmo_tipp_spieltag->letzterTagText();
-    // Spiele je Paarung: in der Liga eines, im Pokal nach dem Modus der Runde
-    $lmo_tipp_modus = \Lmo\Liga\Paarung::spieleJePaarung($lmo_liga, (int)$st);
-    // Paarungen dieser Runde, gezaehlt wie bisher im Tippspiel: in der Liga die Partien je Spieltag,
-    // im Pokal die Zahl der Mannschaften je Runde halbiert, im Finale mit Spiel um Platz 3 eine mehr
-    $lmo_tipp_anzsp = $lmo_einstellungen->partienJeSpieltag();
-    if ($lmo_tipp_pokal) {
-        $lmo_tipp_anzsp = $lmo_einstellungen->mannschaften();
-        for ($i=0; $i<$st; $i++) {
-            $lmo_tipp_anzsp = $lmo_tipp_anzsp/2;
-        }
-        if ($lmo_einstellungen->mitSpielUmPlatz3() && ($st==$lmo_tipp_runden)) {
-            $lmo_tipp_anzsp = $lmo_tipp_anzsp+1;
-        }
-    }
+    // Einstellungen der Liga und der Spieltag aus Sicht des Tippspiels (Lmo\Tipp\Tipprunde):
     // die Paarungen zum Anzeigen (Lmo\Liga\Paarung) unter demselben Index $i wie die Tipps
-    $lmo_tipp_paarungen = array();
-    for ($i=0; $i<$lmo_tipp_anzsp; $i++) {
-        $lmo_tipp_paarungen[$i] = \Lmo\Liga\Paarung::ausRohdaten($lmo_liga, (int)$st, $i+1, $lmo_tipp_modus);
-    }
+    $lmo_einstellungen = $lmo_liga->einstellungen();
+    $lmo_tipprunde = \Lmo\Tipp\Tipprunde::fuer($lmo_liga, (int)$st);
+    $lmo_tipp_pokal = $lmo_tipprunde->pokal;
+    $lmo_tipp_runden = $lmo_tipprunde->runden;
+    $lmo_tipp_datum1 = $lmo_tipprunde->ersterTag;
+    $lmo_tipp_datum2 = $lmo_tipprunde->letzterTag;
+    $lmo_tipp_modus = $lmo_tipprunde->spieleJePaarung;
+    $lmo_tipp_anzsp = $lmo_tipprunde->plaetze;
+    $lmo_tipp_paarungen = $lmo_tipprunde->paarungen;
 
     if (!isset($_POST['save'])) {
         $save=0;
