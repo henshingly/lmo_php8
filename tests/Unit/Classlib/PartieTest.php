@@ -99,6 +99,10 @@ final class PartieTest extends ClasslibTestCase
         self::assertSame('', $partie->datumString());
         self::assertSame('offen', $partie->datumString('offen'));
         self::assertSame('--:--', $partie->zeitString('--:--'));
+
+        // so schreibt der LMO "kein Anstoss"; frueher kam dafuer der 01.01.1970
+        $ohne = self::partie(0, 0, '0');
+        self::assertSame(['', '', 'offen'], [$ohne->datumString(), $ohne->zeitString(), $ohne->datumString('offen')]);
     }
 
     public function testSpielEnde(): void

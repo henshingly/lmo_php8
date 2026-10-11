@@ -140,7 +140,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 1</td>
 <td>-</td>
 <td>Mannschaft 7</td>
@@ -170,7 +171,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 3</td>
 <td>-</td>
 <td>Mannschaft 4</td>
@@ -200,7 +202,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 5</td>
 <td>-</td>
 <td>Mannschaft 2</td>
@@ -230,7 +233,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 8</td>
 <td>-</td>
 <td>Mannschaft 6</td>
@@ -268,7 +272,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 2</td>
 <td>-</td>
 <td>Mannschaft 3</td>
@@ -298,7 +303,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 4</td>
 <td>-</td>
 <td>Mannschaft 8</td>
@@ -328,7 +334,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 6</td>
 <td>-</td>
 <td>Mannschaft 1</td>
@@ -358,7 +365,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 7</td>
 <td>-</td>
 <td>Mannschaft 5</td>
@@ -396,7 +404,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 1</td>
 <td>-</td>
 <td>Mannschaft 5</td>
@@ -426,7 +435,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 3</td>
 <td>-</td>
 <td>Mannschaft 7</td>
@@ -456,7 +466,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 6</td>
 <td>-</td>
 <td>Mannschaft 4</td>
@@ -486,7 +497,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 8</td>
 <td>-</td>
 <td>Mannschaft 2</td>
@@ -524,7 +536,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 2</td>
 <td>-</td>
 <td>Mannschaft 6</td>
@@ -554,7 +567,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 4</td>
 <td>-</td>
 <td>Mannschaft 1</td>
@@ -584,7 +598,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 5</td>
 <td>-</td>
 <td>Mannschaft 3</td>
@@ -614,7 +629,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 7</td>
 <td>-</td>
 <td>Mannschaft 8</td>
@@ -652,7 +668,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 1</td>
 <td>-</td>
 <td>Mannschaft 3</td>
@@ -682,7 +699,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 4</td>
 <td>-</td>
 <td>Mannschaft 2</td>
@@ -712,7 +730,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 6</td>
 <td>-</td>
 <td>Mannschaft 7</td>
@@ -742,7 +761,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 8</td>
 <td>-</td>
 <td>Mannschaft 5</td>
@@ -780,7 +800,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 1</td>
 <td>-</td>
 <td>Mannschaft 2</td>
@@ -810,7 +831,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 3</td>
 <td>-</td>
 <td>Mannschaft 8</td>
@@ -840,7 +862,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 5</td>
 <td>-</td>
 <td>Mannschaft 6</td>
@@ -870,7 +893,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 7</td>
 <td>-</td>
 <td>Mannschaft 4</td>
@@ -908,7 +932,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 2</td>
 <td>-</td>
 <td>Mannschaft 7</td>
@@ -938,7 +963,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 4</td>
 <td>-</td>
 <td>Mannschaft 5</td>
@@ -968,7 +994,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 6</td>
 <td>-</td>
 <td>Mannschaft 3</td>
@@ -998,7 +1025,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 8</td>
 <td>-</td>
 <td>Mannschaft 1</td>
@@ -1036,7 +1064,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 7</td>
 <td>-</td>
 <td>Mannschaft 1</td>
@@ -1066,7 +1095,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 4</td>
 <td>-</td>
 <td>Mannschaft 3</td>
@@ -1096,7 +1126,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 2</td>
 <td>-</td>
 <td>Mannschaft 5</td>
@@ -1126,7 +1157,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 6</td>
 <td>-</td>
 <td>Mannschaft 8</td>
@@ -1164,7 +1196,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 3</td>
 <td>-</td>
 <td>Mannschaft 2</td>
@@ -1194,7 +1227,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 8</td>
 <td>-</td>
 <td>Mannschaft 4</td>
@@ -1224,7 +1258,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 1</td>
 <td>-</td>
 <td>Mannschaft 6</td>
@@ -1254,7 +1289,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 5</td>
 <td>-</td>
 <td>Mannschaft 7</td>
@@ -1292,7 +1328,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 5</td>
 <td>-</td>
 <td>Mannschaft 1</td>
@@ -1322,7 +1359,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 7</td>
 <td>-</td>
 <td>Mannschaft 3</td>
@@ -1352,7 +1390,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 4</td>
 <td>-</td>
 <td>Mannschaft 6</td>
@@ -1382,7 +1421,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 2</td>
 <td>-</td>
 <td>Mannschaft 8</td>
@@ -1420,7 +1460,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 6</td>
 <td>-</td>
 <td>Mannschaft 2</td>
@@ -1450,7 +1491,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 1</td>
 <td>-</td>
 <td>Mannschaft 4</td>
@@ -1480,7 +1522,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 3</td>
 <td>-</td>
 <td>Mannschaft 5</td>
@@ -1510,7 +1553,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 8</td>
 <td>-</td>
 <td>Mannschaft 7</td>
@@ -1548,7 +1592,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 3</td>
 <td>-</td>
 <td>Mannschaft 1</td>
@@ -1578,7 +1623,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 2</td>
 <td>-</td>
 <td>Mannschaft 4</td>
@@ -1608,7 +1654,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 7</td>
 <td>-</td>
 <td>Mannschaft 6</td>
@@ -1638,7 +1685,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 5</td>
 <td>-</td>
 <td>Mannschaft 8</td>
@@ -1676,7 +1724,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 2</td>
 <td>-</td>
 <td>Mannschaft 1</td>
@@ -1706,7 +1755,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 8</td>
 <td>-</td>
 <td>Mannschaft 3</td>
@@ -1736,7 +1786,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 6</td>
 <td>-</td>
 <td>Mannschaft 5</td>
@@ -1766,7 +1817,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 4</td>
 <td>-</td>
 <td>Mannschaft 7</td>
@@ -1804,7 +1856,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 7</td>
 <td>-</td>
 <td>Mannschaft 2</td>
@@ -1834,7 +1887,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 5</td>
 <td>-</td>
 <td>Mannschaft 4</td>
@@ -1864,7 +1918,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 3</td>
 <td>-</td>
 <td>Mannschaft 6</td>
@@ -1894,7 +1949,8 @@ sp_14_1_8=14
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>01.01.1970 01:00</td>
+<td>
+</td>
 <td>Mannschaft 1</td>
 <td>-</td>
 <td>Mannschaft 8</td>

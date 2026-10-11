@@ -763,11 +763,7 @@ class LigaDaten
      */
     public static function datumAlsZeit(string $datum)
     {
-        $teile = explode('.', $datum);
-        $gueltig = count($teile) === 3 && is_numeric($teile[0]) && is_numeric($teile[1]) && is_numeric($teile[2])
-            && checkdate((int) $teile[1], (int) $teile[0], (int) $teile[2]);
-
-        return $gueltig ? mktime(0, 0, 0, (int) $teile[1], (int) $teile[0], (int) $teile[2]) : false;
+        return Rohdaten\Spieltag::zeitAusDatum($datum) ?? false;
     }
 
     /**

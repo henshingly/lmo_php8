@@ -86,7 +86,8 @@
 <th colspan="11" align="left">1. Spieltag</th>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=dfb/12er-liga.l98&amp;selteam=1" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 1</a>&nbsp;</td>
@@ -102,7 +103,8 @@
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=dfb/12er-liga.l98&amp;selteam=3" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 3</a>&nbsp;</td>
@@ -118,7 +120,8 @@
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=dfb/12er-liga.l98&amp;selteam=5" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 5</a>&nbsp;</td>
@@ -134,7 +137,8 @@
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=dfb/12er-liga.l98&amp;selteam=7" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 7</a>&nbsp;</td>
@@ -150,7 +154,8 @@
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=dfb/12er-liga.l98&amp;selteam=9" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 9</a>&nbsp;</td>
@@ -166,7 +171,8 @@
 </td>
 </tr>
 <tr>
-<td class="nobr">01.01.1970 01:00</td>
+<td class="nobr">
+</td>
 <td width="2">&nbsp;</td>
 <td class="nobr" align="right">
 <a href="/lmo/lmo.php?action=program&amp;file=dfb/12er-liga.l98&amp;selteam=12" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 12</a>&nbsp;</td>

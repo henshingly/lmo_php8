@@ -43,7 +43,6 @@ if (!defined('PATH_TO_LMO')) {
  * @var array<int|string, mixed> $btip
  * @var mixed $i
  * @var mixed $jksp
- * @var mixed $n
  * @var mixed $tipp_jokertippaktiv
  * @var mixed $trans_lang
  *
@@ -333,11 +332,11 @@ if ($ligaDaten->urlb == 1 || $ligaDaten->mnote[$st - 1][$i] != '' || $ligaDaten-
 }
 /** Spielbericht verlinken **/
 if ($ligaDaten->urlb == 1) {
-    if ($ligaDaten->mberi[$st - 1][$i][$n] != '') {
+    if ($ligaDaten->mberi[$st - 1][$i] != '') {
         //Spielbericht Inhalt
         $lmo_spielbericht_html = '<strong>' . $ligaDaten->teams[$ligaDaten->teama[$st - 1][$i]] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $ligaDaten->teams[$ligaDaten->teamb[$st - 1][$i]] . '</strong>' . nl2br($text[270]);
         // Link mit Mouseover-Funktion und data-info Attribut
-        echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><a href="' . $ligaDaten->mberi[$st - 1][$i][$n] . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" border="0" alt=""></a></span>&nbsp;';
+        echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><a href="' . $ligaDaten->mberi[$st - 1][$i] . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" border="0" alt=""></a></span>&nbsp;';
     } else {
         echo '&nbsp;';
     }
@@ -368,7 +367,7 @@ if ($ligaDaten->mnote[$st - 1][$i] != '' || $ligaDaten->msieg[$st - 1][$i] > 0 |
         $lmo_spielnotiz .= '<br><strong>' . $text[22] . ':</strong>' . $ligaDaten->mnote[$st - 1][$i] . '<br>';
     }
     //Notiz zum Tippspiel
-    if ($ligaDaten->mtipp[$st - 1][$i][$n] == 1) {
+    if ($ligaDaten->mtipp[$st - 1][$i] == 1) {
         $lmo_spielnotiz .= '<br><strong>' . $text[487] . '</strong>' . $text['tipp'][231];
     }
     //Ausgabe als neutrales Element (kein Link)

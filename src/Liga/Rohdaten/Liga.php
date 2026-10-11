@@ -2,7 +2,10 @@
 
 namespace Lmo\Liga\Rohdaten;
 
+use Lmo\Liga\Einstellungen;
 use Lmo\Liga\LigaDatei;
+use Lmo\Liga\Paarung;
+use Lmo\Liga\Spiel;
 
 /**
  * Der Inhalt einer Ligadatei (.l98) als Rohdaten: was in der Datei steht, geordnet nach
@@ -174,6 +177,104 @@ final class Liga
     public function spieltag(int $nr): Spieltag
     {
         return $this->spieltage[$nr] ??= new Spieltag();
+    }
+
+    /**
+     * Die Einstellungen mit ihren Vorgabewerten, so wie der LMO mit ihnen arbeitet.
+     * $optionen selbst bleibt, wie es in der Datei steht.
+     */
+    public function einstellungen(): Einstellungen
+    {
+        return new Einstellungen($this);
+    }
+
+    /**
+     * Alle Mannschaften der Liga zum Durchlaufen: Nummer 1 bis zur Anzahl der Mannschaften laut
+     * Einstellungen, in dieser Reihenfolge. $mannschaften selbst enthaelt nur, was in der Datei
+     * steht, in deren Reihenfolge; eine Mannschaft, die dort fehlt, kommt hier als leere
+     * Mannschaft (und wird dabei nicht angelegt).
+     *
+     *   foreach ($liga->alleMannschaften() as $nr => $mannschaft) { ... }
+     *
+     * @return \Generator<int, Mannschaft>
+     */
+    public function alleMannschaften(): \Generator
+    {
+        $anzahl = $this->einstellungen()->mannschaften();
+        for ($nr = 1; $nr <= $anzahl; $nr++) {
+            yield $nr => $this->mannschaften[$nr] ?? new Mannschaft();
+        }
+    }
+
+    /**
+     * Die Spiele eines Spieltags zum Anzeigen (Lmo\Liga\Spiel), Partie 1 bis zur Anzahl der Partien
+     * dieses Spieltags laut Einstellungen; im Pokal je Paarung so viele Spiele, wie der Modus der
+     * Runde (MO) vorsieht. Eine Partie, die in der Datei fehlt, kommt als nicht angesetztes Spiel.
+     * Jedes Spiel traegt seinen Spieltag, seine Partie und seine Nummer in der Paarung.
+     *
+     *   foreach ($liga->spiele(3) as $spiel) { ... }
+     *
+     * @param int $spieltag Nummer des Spieltags bzw. der Runde, ab 1
+     * @return \Generator<int, Spiel>
+     */
+    public function spiele(int $spieltag): \Generator
+    {
+        $partien = $this->einstellungen()->partienImSpieltag($spieltag);
+        $jePaarung = Paarung::spieleJePaarung($this, $spieltag);
+        for ($partie = 1; $partie <= $partien; $partie++) {
+            for ($nr = 1; $nr <= $jePaarung; $nr++) {
+                yield Spiel::ausRohdaten($this, $spieltag, $partie, $nr);
+            }
+        }
+    }
+
+    /**
+     * Die Paarungen einer Runde zum Anzeigen (Lmo\Liga\Paarung), Nummer 1 bis zur Anzahl der
+     * Paarungen dieser Runde laut Einstellungen. Jede traegt ihre Spiele (im Pokal so viele, wie
+     * der Modus der Runde vorsieht) und weiss, wer gewonnen hat. Eine Paarung, die in der Datei
+     * fehlt, kommt ohne Mannschaften.
+     *
+     *   foreach ($liga->paarungen(1) as $paarung) { ... }
+     *
+     * @param int $runde Nummer der Runde bzw. des Spieltags, ab 1
+     * @return \Generator<int, Paarung>
+     */
+    public function paarungen(int $runde): \Generator
+    {
+        $anzahl = $this->einstellungen()->partienImSpieltag($runde);
+        $spiele = Paarung::spieleJePaarung($this, $runde);
+        for ($nr = 1; $nr <= $anzahl; $nr++) {
+            yield Paarung::ausRohdaten($this, $runde, $nr, $spiele);
+        }
+    }
+
+    /**
+     * Alle Spiele der Liga zum Anzeigen, Spieltag 1 bis zur Anzahl der Spieltage laut
+     * Einstellungen, je Spieltag wie spiele().
+     *
+     *   foreach ($liga->alleSpiele() as $spiel) { ... }
+     *
+     * @return \Generator<int, Spiel>
+     */
+    public function alleSpiele(): \Generator
+    {
+        $spieltage = $this->einstellungen()->spieltage();
+        for ($spieltag = 1; $spieltag <= $spieltage; $spieltag++) {
+            foreach ($this->spiele($spieltag) as $spiel) {
+                yield $spiel;
+            }
+        }
+    }
+
+    /**
+     * Der Name zum Anzeigen fuer die Nummer einer Mannschaft, wie sie in einer Partie steht
+     * (Mannschaft::anzeigename()). Gibt es die Mannschaft nicht: ''.
+     *
+     * @param int|string $nr
+     */
+    public function mannschaftsname($nr): string
+    {
+        return isset($this->mannschaften[$nr]) ? $this->mannschaften[$nr]->anzeigename() : '';
     }
 
     /**

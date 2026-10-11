@@ -132,17 +132,11 @@ if ($message != '') {
 
             $anzligen = count($dateien);
 
-            $ligaDaten->teams = array_pad($array, 65, '');
-            $ligaDaten->teams[0] = '___';
+            // anstehende Spiele aller Ligen (Lmo\Tipp\AnstehendesSpiel); gleicher Index wie $liga, $spieltag, $spiel, $zeit
+            $lmo_spiele = array();
             $liga = array();
-            $ligaDaten->titel = array();
-            $ligaDaten->lmtype = array();
-            $ligaDaten->anzst = array();
             $spieltag = array();
-            $ligaDaten->modus = array();
             $spiel = array();
-            $ligaDaten->teama = array();
-            $ligaDaten->teamb = array();
             $zeit = array();
 
             $anzspiele = 0;
@@ -177,19 +171,19 @@ if ($message != '') {
                         if ($ktipp == 1) {
                             if ($goaltipp[$i] == '_') {
                                 if ($lliga != $liga[$i]) {
-                                    $spiele .= "\n" . $ligaDaten->titel[$i] . ':';
+                                    $spiele .= "\n" . $lmo_spiele[$i]->titel . ':';
                                 }
                                 if ($lspieltag != $spieltag[$i] || $lliga != $liga[$i]) {
-                                    if ($ligaDaten->lmtype[$i] == 0) {
+                                    if ($lmo_spiele[$i]->typ == 0) {
                                         $spiele .= "\n" . $spieltag[$i] . '. ' . $text[2] . ':';
                                     } else {
-                                        if ($spieltag[$i] == $ligaDaten->anzst[$i]) {
+                                        if ($spieltag[$i] == $lmo_spiele[$i]->runden) {
                                             $j = $text[374];
-                                        } elseif ($spieltag[$i] == $ligaDaten->anzst[$i]-1) {
+                                        } elseif ($spieltag[$i] == $lmo_spiele[$i]->runden-1) {
                                             $j = $text[373];
-                                        } elseif ($spieltag[$i] == $ligaDaten->anzst[$i]-2) {
+                                        } elseif ($spieltag[$i] == $lmo_spiele[$i]->runden-2) {
                                             $j = $text[372];
-                                        } elseif ($spieltag[$i] == $ligaDaten->anzst[$i]-3) {
+                                        } elseif ($spieltag[$i] == $lmo_spiele[$i]->runden-3) {
                                             $j = $text[371];
                                         } else {
                                             $j = $spieltag[$i] . '. ' . $text[370];
@@ -197,7 +191,7 @@ if ($message != '') {
                                         $spiele .= $j . ':';
                                     }
                                 }
-                                $spiele .= "\n" . $ligaDaten->teama[$i] . ' - ' . $ligaDaten->teamb[$i] . ' (' . $text['tipp'][87] . ' ' . $zeit[$i] . ')';
+                                $spiele .= "\n" . $lmo_spiele[$i]->heim . ' - ' . $lmo_spiele[$i]->gast . ' (' . $text['tipp'][87] . ' ' . $zeit[$i] . ')';
                                 $lliga = $liga[$i];
                                 $lspieltag = $spieltag[$i];
                             }

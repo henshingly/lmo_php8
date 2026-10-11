@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var list<\Lmo\Tipp\AnstehendesSpiel> $lmo_spiele anstehende Spiele aller Ligen (wird hier ergaenzt)
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  *
  * Weitere Variablen des einbindenden Codes:
@@ -52,21 +52,15 @@ if ($file != "") {
   $liga0 = substr($dateien[$lnr], 0, -4);
   $lmtype0 = 0;
   if (substr($file, -4) == ".l98") {
-    // die ganze Liga als Rohdaten (Lmo\Liga\Rohdaten\Liga); was die Datei nicht nennt, bekommt den Vorgabewert
+    // die ganze Liga als Rohdaten (Lmo\Liga\Rohdaten\Liga) und ihre Einstellungen mit Vorgabewerten
     $lmo_liga = \Lmo\Liga\Rohdaten\Liga::lies($file);
-    $lmo_optionen = $lmo_liga->optionen;
+    $lmo_einstellungen = $lmo_liga->einstellungen();
     $lmo_pokal = $lmo_liga->istPokal();
-    $titel0 = stripslashes($lmo_optionen['Name'] ?? '');
-    $lmtype0 = stripslashes($lmo_optionen['Type'] ?? '0');
-    $ligaDaten->anzteams = $lmo_optionen['Teams'] ?? ($lmo_pokal ? 16 : 18);
+    $titel0 = $lmo_einstellungen->name();
+    $lmtype0 = $lmo_einstellungen->wert('Type');
     clearstatcache();
 
-    $anzst0 = strlen(decbin($ligaDaten->anzteams-1));
-    foreach ($lmo_liga->mannschaften as $lmo_nr => $lmo_mannschaft) {
-      if ($lmo_mannschaft->name !== null) {
-        $ligaDaten->teams[$lmo_nr] = stripslashes($lmo_mannschaft->name);
-      }
-    }
+    $anzst0 = strlen(decbin($lmo_einstellungen->mannschaften()-1));
     foreach ($lmo_liga->spieltage as $lmo_spieltag_nr => $lmo_spieltag) {
       $spieltag0 = (string)$lmo_spieltag_nr;
       // Datum des Spieltags, wie es in der Datei steht
@@ -88,15 +82,17 @@ if ($file != "") {
             // Nummer des Spiels wie im Schluessel der Datei: Partie, im Pokal gefolgt vom Spiel der Paarung
             $spiel0 = $lmo_pokal ? $lmo_partie_nr.$lmo_spiel_nr : (string)$lmo_partie_nr;
 
+            $lmo_spiel = new \Lmo\Tipp\AnstehendesSpiel();
+            $lmo_spiel->titel = $titel0;
+            $lmo_spiel->typ = $lmtype0;
+            $lmo_spiel->runden = $anzst0;
+            $lmo_spiel->spieleJePaarung = $modus0;
+            $lmo_spiel->heim = $lmo_liga->mannschaftsname($teama0);
+            $lmo_spiel->gast = $teamb0 > 0 ? $lmo_liga->mannschaftsname($teamb0) : '___';
+            $lmo_spiele[] = $lmo_spiel;
             array_push($liga, $liga0);
-            array_push($ligaDaten->titel, $titel0);
-            array_push($ligaDaten->lmtype, $lmtype0);
-            array_push($ligaDaten->anzst, $anzst0);
             array_push($spieltag, $spieltag0);
-            array_push($ligaDaten->modus, $modus0);
             array_push($spiel, $spiel0);
-            array_push($ligaDaten->teama, $ligaDaten->teams[$teama0] ?? '');
-            array_push($ligaDaten->teamb, $ligaDaten->teams[$teamb0] ?? '');
             array_push($zeit, date("d.m.Y H:i", $zeit0));
             $anzspiele++;
           }
