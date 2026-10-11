@@ -24,7 +24,8 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
+ * @var string $defdateformat Datumsformat in date()-Schreibweise (Konfiguration)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  *
@@ -36,26 +37,31 @@ if (!defined('PATH_TO_LMO')) {
 if ($file != '') {
     $addp = $_SERVER['PHP_SELF'] . '?action=program&amp;file=' . $file . '&amp;selteam=';
     $addr = $_SERVER['PHP_SELF'] . '?action=results&amp;file=' . $file . '&amp;st=';
-    $ligaDaten->selteam =! empty($_GET['selteam']) ? $_GET['selteam'] : $ligaDaten->selteam;?>
+    // Einstellungen der Liga mit Vorgabewerten (Lmo\Liga\Einstellungen) und alle Mannschaften nach Nummer
+    $lmo_einstellungen = $lmo_liga->einstellungen();
+    $lmo_anzteams = $lmo_einstellungen->mannschaften();
+    $lmo_runden = $lmo_einstellungen->spieltage();
+    $lmo_mannschaften = iterator_to_array($lmo_liga->alleMannschaften());
+    $lmo_selteam = !empty($_GET['selteam']) ? $_GET['selteam'] : $lmo_einstellungen->vorgewaehlteMannschaft();?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td valign="top" align="center">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php
-    for ($i = 1; $i <= floor($ligaDaten->anzteams / 2); $i++) { ?>
+    for ($i = 1; $i <= floor($lmo_anzteams / 2); $i++) { ?>
         <tr>
           <td align="right">
-            <acronym title="<?php echo $text[23] . ' ' . $ligaDaten->teams[$i]; ?>">
+            <acronym title="<?php echo $text[23] . ' ' . $lmo_mannschaften[$i]->anzeigename(); ?>">
 <?php
-        if ($i != $ligaDaten->selteam) { ?>
-              <a href="<?php echo $addp . $i; ?>" ><?php echo $ligaDaten->teamk[$i]; ?></a>
+        if ($i != $lmo_selteam) { ?>
+              <a href="<?php echo $addp . $i; ?>" ><?php echo $lmo_mannschaften[$i]->kurzname(); ?></a>
 <?php
         } else {
-            echo $ligaDaten->teamk[$i];
+            echo $lmo_mannschaften[$i]->kurzname();
         } ?>
             </acronym>
           </td>
-          <td>&nbsp;<?php echo HTML_smallTeamIcon($file, $ligaDaten->teams[$i], ' alt=""'); ?>&nbsp;</td>
+          <td>&nbsp;<?php echo HTML_smallTeamIcon($file, $lmo_mannschaften[$i]->anzeigename(), ' alt=""'); ?>&nbsp;</td>
         </tr>
 <?php
     } ?>
@@ -64,33 +70,39 @@ if ($file != '') {
     <td valign="top" align="center">
       <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 <?php
-    if ($ligaDaten->selteam == 0) { ?>
+    if ($lmo_selteam == 0) { ?>
         <tr>
           <td align="center" class="lmost5">&nbsp;<br><?php echo $text[24]; ?><br>&nbsp;</td>
         </tr>
 <?php
     } else {
-        for ($j = 0; $j < $ligaDaten->anzst; $j++) {
-            for ($i = 0; $i < (($ligaDaten->anzteams / 2) + 1); $i++) {
-                if (($ligaDaten->selteam == $ligaDaten->teama[$j][$i]) || ($ligaDaten->selteam == $ligaDaten->teamb[$j][$i])) { ?>
+        // $j: Runde ab 0
+        for ($j = 0; $j < $lmo_runden; $j++) {
+            // die Paarungen der Runde zum Anzeigen (Lmo\Liga\Paarung)
+            foreach ($lmo_liga->paarungen($j + 1) as $lmo_paarung) {
+                // steht eine Mannschaft noch nicht fest, heisst sie "___"
+                $lmo_heim = $lmo_paarung->heim > 0 ? $lmo_paarung->heimMannschaft()->anzeigename() : '___';
+                $lmo_gast = $lmo_paarung->gast > 0 ? $lmo_paarung->gastMannschaft()->anzeigename() : '___';
+                $lmo_heim_url = $lmo_paarung->heimMannschaft()->werte['URL'] ?? '';
+                $lmo_gast_url = $lmo_paarung->gastMannschaft()->werte['URL'] ?? '';
+                if (($lmo_selteam == $lmo_paarung->heim) || ($lmo_selteam == $lmo_paarung->gast)) { ?>
         <tr>
 <?php
-                    if ($j == $ligaDaten->anzst-1) {
+                    if ($j == $lmo_runden-1) {
                         $l = $text[364];
-                    } elseif ($j == $ligaDaten->anzst - 2) {
+                    } elseif ($j == $lmo_runden - 2) {
                         $l = $text[362];
-                    } elseif ($j == $ligaDaten->anzst - 3) {
+                    } elseif ($j == $lmo_runden - 3) {
                         $l = $text[360];
-                    } elseif ($j == $ligaDaten->anzst - 4) {
+                    } elseif ($j == $lmo_runden - 4) {
                         $l = $text[358];
                     } else {
                         $l = $j + 1;
                     }?>
           <th align="right">&nbsp;<a href="<?php echo $addr.($j + 1); ?>" title="<?php echo $text[377]; ?>"><?php echo $l; ?></a>&nbsp;</th>
 <?php
-                    $m1 = array($ligaDaten->goala[$j][$i][0], $ligaDaten->goala[$j][$i][1], $ligaDaten->goala[$j][$i][2], $ligaDaten->goala[$j][$i][3], $ligaDaten->goala[$j][$i][4], $ligaDaten->goala[$j][$i][5], $ligaDaten->goala[$j][$i][6]);
-                    $m2 = array($ligaDaten->goalb[$j][$i][0], $ligaDaten->goalb[$j][$i][1], $ligaDaten->goalb[$j][$i][2], $ligaDaten->goalb[$j][$i][3], $ligaDaten->goalb[$j][$i][4], $ligaDaten->goalb[$j][$i][5], $ligaDaten->goalb[$j][$i][6]);
-                    $m = gewinn($j, $i, $ligaDaten->modus[$j], $m1, $m2);
+                    // wer die Paarung gewonnen hat: 1 = Heim, 2 = Gast
+                    $m = $lmo_paarung->sieger();
                     if ($m == 1) { ?>
           <td class="lmoTurnierSieger nobr" align="right"><?php
                     } elseif ($m == 2) { ?>
@@ -98,16 +110,16 @@ if ($file != '') {
                     } else { ?>
           <td class="nobr" align="right"><?php
                     }
-                    if ($ligaDaten->selteam == $ligaDaten->teama[$j][$i]) {
+                    if ($lmo_selteam == $lmo_paarung->heim) {
                         echo '<strong>';
                     }
-                    echo $ligaDaten->teams[$ligaDaten->teama[$j][$i]];
-                    if ($ligaDaten->selteam == $ligaDaten->teama[$j][$i]) {
+                    echo $lmo_heim;
+                    if ($lmo_selteam == $lmo_paarung->heim) {
                         echo '</strong>';
                     }
-                    echo '&nbsp;' . HTML_smallTeamIcon($file, $ligaDaten->teams[$ligaDaten->teama[$j][$i]],' alt=""');
-                    if (($ligaDaten->teamu[$ligaDaten->teama[$j][$i]] != '') && ($ligaDaten->urlt == 1)) {
-                        echo ' <a href="' . $ligaDaten->teamu[$ligaDaten->teama[$j][$i]] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
+                    echo '&nbsp;' . HTML_smallTeamIcon($file, $lmo_heim,' alt=""');
+                    if (($lmo_heim_url != '') && $lmo_einstellungen->mitMannschaftslinks()) {
+                        echo ' <a href="' . $lmo_heim_url . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
                     } ?></td>
           <td class="lmost5" align="center" width="10">-</td>
 <?php
@@ -118,24 +130,25 @@ if ($file != '') {
                     } else { ?>
           <td align="left" class="nobr"><?php
                     }
-                    echo HTML_smallTeamIcon($file, $ligaDaten->teams[$ligaDaten->teamb[$j][$i]], ' alt=""') . '&nbsp;';
-                    if ($ligaDaten->selteam == $ligaDaten->teamb[$j][$i]) {
+                    echo HTML_smallTeamIcon($file, $lmo_gast, ' alt=""') . '&nbsp;';
+                    if ($lmo_selteam == $lmo_paarung->gast) {
                         echo '<strong>';
                     }
-                    echo $ligaDaten->teams[$ligaDaten->teamb[$j][$i]];
-                    if ($ligaDaten->selteam == $ligaDaten->teamb[$j][$i]) {
+                    echo $lmo_gast;
+                    if ($lmo_selteam == $lmo_paarung->gast) {
                         echo '</strong>';
                     }
-                    if (($ligaDaten->teamu[$ligaDaten->teamb[$j][$i]] != '') && ($ligaDaten->urlt == 1)) {
-                        echo '<a href="' . $ligaDaten->teamu[$ligaDaten->teamb[$j][$i]] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
+                    if (($lmo_gast_url != '') && $lmo_einstellungen->mitMannschaftslinks()) {
+                        echo '<a href="' . $lmo_gast_url . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
                     } ?></td>
 <?php
-                    for ($n = 0; $n < $ligaDaten->modus[$j]; $n++) {
-                        if ($ligaDaten->datm == 1) {
-                            if ($ligaDaten->mterm[$j][$i][$n] > 0) {  // ohne Anstoss keine Anzeige
+                    // die Spiele der Paarung (Lmo\Liga\Spiel); $n: Spiel ab 0
+                    foreach ($lmo_paarung->spiele as $n => $lmo_spiel) {
+                        if ($lmo_einstellungen->mitAnstosszeit()) {
+                            if ($lmo_spiel->anstoss !== null) {  // ohne Anstoss keine Anzeige
                                 $dt = new DateTime();
-                                $dt->setTimeStamp((int)$ligaDaten->mterm[$j][$i][$n]);
-                                $dumn1 = '<acronym title="' . $dt->format($ligaDaten->datf) . '">';
+                                $dt->setTimeStamp($lmo_spiel->anstoss);
+                                $dumn1 = '<acronym title="' . $dt->format($lmo_einstellungen->datumsformat($defdateformat)) . '">';
                                 $dumn2 = '</acronym>';
                             } else {
                                 $dumn1 = '';
@@ -147,32 +160,32 @@ if ($file != '') {
                         } else {
                             echo '          <td width="8">|&nbsp;&nbsp;</td>';
                         }?>
-          <td class="nobr"><?php echo $dumn1;?><?php echo applyFactor($ligaDaten->goala[$j][$i][$n], $ligaDaten->goalfaktor); ?>&nbsp;:&nbsp;<?php echo applyFactor($ligaDaten->goalb[$j][$i][$n], $ligaDaten->goalfaktor); ?><?php echo $ligaDaten->mspez[$j][$i][$n]; ?><?php echo $dumn2; ?><?php
+          <td class="nobr"><?php echo $dumn1;?><?php echo $lmo_spiel->toreHeimText($lmo_einstellungen->torfaktor()); ?>&nbsp;:&nbsp;<?php echo $lmo_spiel->toreGastText($lmo_einstellungen->torfaktor()); ?><?php echo $lmo_spiel->zusatzText($text[0], $text[1]); ?><?php echo $dumn2; ?><?php
                         /** Mannschaftsicons finden **/
                         $lmo_teamaicon = '';
                         $lmo_teambicon = '';
-                        if ($ligaDaten->urlb == 1 || $ligaDaten->mnote[$j][$i][$n] != '') {
-                            $lmo_teamaicon = HTML_smallTeamIcon($file, $ligaDaten->teams[$ligaDaten->teama[$j][$i]], ' alt=""');
-                            $lmo_teambicon = HTML_smallTeamIcon($file, $ligaDaten->teams[$ligaDaten->teamb[$j][$i]], ' alt=""');
+                        if ($lmo_einstellungen->mitSpielberichten() || $lmo_spiel->notiz != '') {
+                            $lmo_teamaicon = HTML_smallTeamIcon($file, $lmo_heim, ' alt=""');
+                            $lmo_teambicon = HTML_smallTeamIcon($file, $lmo_gast, ' alt=""');
                         }
                         /** Spielbericht verlinken **/
-                        if ($ligaDaten->urlb == 1) {
-                            if ($ligaDaten->mberi[$j][$i][$n] != '') {
+                        if ($lmo_einstellungen->mitSpielberichten()) {
+                            if ($lmo_spiel->bericht != '') {
                                 // Header für Spielbericht
-                                $lmo_spielbericht_html = '<strong>' . $ligaDaten->teams[$ligaDaten->teama[$j][$i]] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $ligaDaten->teams[$ligaDaten->teamb[$j][$i]] . '</strong>' . nl2br($text[270]);
+                                $lmo_spielbericht_html = '<strong>' . $lmo_heim . $lmo_teamaicon . ' - ' . $lmo_teambicon . $lmo_gast . '</strong>' . nl2br($text[270]);
 
                                 // Link mit Mouseover-Funktion und data-info Attribut
-                                echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><a href="' . $ligaDaten->mberi[$j][$i][$n] . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" border="0" alt=""></a></span>&nbsp;';
+                                echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><a href="' . $lmo_spiel->bericht . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" border="0" alt=""></a></span>&nbsp;';
                             } else {
                                 echo '&nbsp;';
                             }
                         }
                         /** Notizen anzeigen **/
-                        if ($ligaDaten->mnote[$j][$i][$n] != '') {
+                        if ($lmo_spiel->notiz != '') {
                             //Zentrierte Kopfzeile für Notizen
-                            $lmo_spielnotiz = '<strong>' . $ligaDaten->teams[$ligaDaten->teama[$j][$i]] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $ligaDaten->teams[$ligaDaten->teamb[$j][$i]] . '&nbsp;&nbsp;' . applyFactor($ligaDaten->goala[$j][$i][$n], $ligaDaten->goalfaktor) . ':' . applyFactor($ligaDaten->goalb[$j][$i][$n], $ligaDaten->goalfaktor) . '</strong>';
+                            $lmo_spielnotiz = '<strong>' . $lmo_heim . $lmo_teamaicon . ' - ' . $lmo_teambicon . $lmo_gast . '&nbsp;&nbsp;' . $lmo_spiel->toreHeimText($lmo_einstellungen->torfaktor()) . ':' . $lmo_spiel->toreGastText($lmo_einstellungen->torfaktor()) . '</strong>';
                             //Allgemeine Notiz
-                            $lmo_spielnotiz .= '<br><strong>' . $text[22] . ':</strong> ' . $ligaDaten->mnote[$j][$i][$n];
+                            $lmo_spielnotiz .= '<br><strong>' . $text[22] . ':</strong> ' . $lmo_spiel->notiz;
 
                             //Ausgabe als neutrales Element (kein Link)
                             echo '&nbsp;<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars(nl2br($lmo_spielnotiz)) . '" class="tooltip-trigger"><img src="' . URL_TO_IMGDIR . '/lmo-st2.svg" height="15" class="svg-no-style" border="0" alt=""></span>';
@@ -191,17 +204,17 @@ if ($file != '') {
     </td>
     <td valign="top" align="center">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php
-    for ($i = ceil($ligaDaten->anzteams / 2) + 1; $i <= $ligaDaten->anzteams; $i++) { ?>
+    for ($i = ceil($lmo_anzteams / 2) + 1; $i <= $lmo_anzteams; $i++) { ?>
         <tr>
-          <td>&nbsp;<?php echo HTML_smallTeamIcon($file, $ligaDaten->teams[$i], ' alt=""'); ?></td>
+          <td>&nbsp;<?php echo HTML_smallTeamIcon($file, $lmo_mannschaften[$i]->anzeigename(), ' alt=""'); ?></td>
           <td align="left">
-            <acronym title="<?php echo $text[23] . ' ' . $ligaDaten->teams[$i]; ?>">
+            <acronym title="<?php echo $text[23] . ' ' . $lmo_mannschaften[$i]->anzeigename(); ?>">
 <?php
-        if ($i != $ligaDaten->selteam) { ?>
-            <a href="<?php echo $addp . $i; ?>"><?php echo $ligaDaten->teamk[$i]; ?></a>
+        if ($i != $lmo_selteam) { ?>
+            <a href="<?php echo $addp . $i; ?>"><?php echo $lmo_mannschaften[$i]->kurzname(); ?></a>
 <?php
         } else {
-            echo $ligaDaten->teamk[$i];
+            echo $lmo_mannschaften[$i]->kurzname();
         }?></acronym>
           </td>
         </tr><?php

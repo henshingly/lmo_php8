@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string $st gewaehlter Spieltag
@@ -52,9 +52,12 @@ if ($file != "") {
       $lmo_month_next = strtotime("1 ".$me[1]." ".substr($cal, 2)." +1 year");
     }
   } else {
+    // Anstosszeiten der gewaehlten Runde; Spiele ohne Anstoss zaehlen nicht
     $lmo_termine = array();
-    for ($n = 0; $n < $ligaDaten->modus[$st-1]; $n++) {
-      $lmo_termine=array_filter($ligaDaten->mterm[$st-1][$n],"filterZero");  //Nullwerte filtern
+    foreach ($lmo_liga->spiele((int)$st) as $lmo_spiel) {
+      if ($lmo_spiel->anstoss !== null) {
+        $lmo_termine[] = $lmo_spiel->anstoss;
+      }
     }
     if (!empty($lmo_termine)) {
       $datum = explode('.', date("d.m.Y",min($lmo_termine)));
@@ -100,21 +103,22 @@ if ($file != "") {
   }
   
   $lmo_stlink = array_pad(array(), $lmo_arrays, '');
-  for ($j = 0; $j < $ligaDaten->anzst; $j++) {
+  $lmo_runden = $lmo_liga->einstellungen()->spieltage();
+  // $j: Runde ab 0
+  for ($j = 0; $j < $lmo_runden; $j++) {
     $lmo_stlink_title = array_pad(array(), $lmo_arrays, '');
       
       //Bezeichnungen generieren
-    $ligaDaten->anzsp = $ligaDaten->anzteams/2;
-    if ($j == $ligaDaten->anzst-1) {
+    if ($j == $lmo_runden-1) {
       $text2 = $text[364];
       $text1 = $text[374];
-    } elseif ($j == $ligaDaten->anzst-2) {
+    } elseif ($j == $lmo_runden-2) {
       $text2 = $text[362];
       $text1 = $text[373];
-    } elseif ($j == $ligaDaten->anzst-3) {
+    } elseif ($j == $lmo_runden-3) {
       $text2 = $text[360];
       $text1 = $text[372];
-    } elseif ($j == $ligaDaten->anzst-4) {
+    } elseif ($j == $lmo_runden-4) {
       $text2 = $text[358];
       $text1 = $text[371];
     } else {
@@ -122,39 +126,31 @@ if ($file != "") {
       $text2 = ($j+1).". ".$text[376];
     }
       
-    for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
-      for ($n = 0; $n < $ligaDaten->modus[$j]; $n++) {
-        if (!empty($ligaDaten->mterm[$j][$i][$n]) && date($lmo_daterule, $ligaDaten->mterm[$j][$i][$n]) == $md) { //konkretes Spieldatum vorhanden
-          $a = intval(date($lmo_daterule2, $ligaDaten->mterm[$j][$i][$n]));
-          if (($ligaDaten->teama[$j][$i] != 0) && ($ligaDaten->teamb[$j][$i] != 0)) {
+    // die Paarungen der Runde und ihre Spiele zum Anzeigen (Lmo\Liga\Paarung, Lmo\Liga\Spiel); $n: Spiel ab 0
+    foreach ($lmo_liga->paarungen($j + 1) as $lmo_paarung) {
+      foreach ($lmo_paarung->spiele as $n => $lmo_spiel) {
+        if ($lmo_spiel->anstoss !== null && date($lmo_daterule, $lmo_spiel->anstoss) == $md) { //konkretes Spieldatum vorhanden
+          $a = intval(date($lmo_daterule2, $lmo_spiel->anstoss));
+          if (($lmo_paarung->heim != 0) && ($lmo_paarung->gast != 0)) {
             if (!empty($lmo_stlink_title[$a])) {
               $lmo_stlink_title[$a] = $lmo_stlink_title[$a].", &#10;";
             } else {
               $lmo_stlink_title[$a] = $text1.": &#10;";
             }
-            $lmo_stlink_title[$a] = $lmo_stlink_title[$a].$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." - ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]];
-            if ($ligaDaten->modus[$j] > 1) {
+            $lmo_stlink_title[$a] = $lmo_stlink_title[$a].$lmo_paarung->heimMannschaft()->anzeigename()." - ".$lmo_paarung->gastMannschaft()->anzeigename();
+            if (count($lmo_paarung->spiele) > 1) {
               $lmo_stlink_title[$a] = $lmo_stlink_title[$a]." &#10;(".($n+1).". ".$text[375].")";
             }
           }
         }
       }
     }
-    
-    //Spieltagsdatum
-    if (!empty($ligaDaten->datum1[$j])) {
-      $datum = explode('.', $ligaDaten->datum1[$j]);
-      $lmo_stdatum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-    } else {
-      $lmo_stdatum1 = '';
-    }
-    if (!empty($ligaDaten->datum2[$j])) {
-      $datum = explode('.', $ligaDaten->datum2[$j]);
-      $lmo_stdatum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
-    } else {
-      $lmo_stdatum2 = '';
-    }
-    
+
+    //Spieltagsdatum: erster und letzter Tag als Zeit, '' wenn er fehlt
+    $lmo_spieltag = $lmo_liga->spieltage[$j + 1] ?? new \Lmo\Liga\Rohdaten\Spieltag();
+    $lmo_stdatum1 = $lmo_spieltag->ersterTag() ?? '';
+    $lmo_stdatum2 = $lmo_spieltag->letzterTag() ?? '';
+
     $z=array_filter($lmo_stlink_title,"filterZero");      
     if (!empty($lmo_stdatum1) && empty($z) && date($lmo_daterule, $lmo_stdatum1) == $md) {  //Nur Von... vorhanden
       $a = intval(date($lmo_daterule2, $lmo_stdatum1));
