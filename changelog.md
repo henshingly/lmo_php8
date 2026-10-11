@@ -6,7 +6,6 @@ __Alle wesentlichen Änderungen am PHP Script des LMO werden in dieser Datei dok
 _Hier schreiben wir Changelog Hinweise der nächsten Version._  
 
 ### Added  
-- Statische Analyse mit PHPStan (`composer phpstan` bzw. `docker compose run --rm phpstan`, auch in der GitHub-Action): gesamter Code auf Stufe 0, neuer Code auf Stufe 8.
 
 
 ### Changed  
@@ -19,12 +18,23 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
-- Update-Prüfung: Erlaubt der Server keine Abfragen nach außen (`allow_url_fopen` aus), wird nichts mehr versucht und keine Merkdatei geschrieben; eine beschädigte Merkdatei wird ignoriert.
-- `lmo-install` findet den Autoloader auch beim direkten Aufruf im Git-Checkout (`vendor/` neben `lmo/`).
-- Kalender im Admin-Bereich: Im Mai erschien im Kopf die Abkürzung statt des ausgeschriebenen Monatsnamens.
 
 
 ### Security  
+
+
+***
+## [4.3.1] - 2026-10-11
+
+_Hier hätten wir die Changelogs für 4.3.1._  
+
+### Added  
+* Statische Analyse mit PHPStan (`composer phpstan` bzw. `docker compose run --rm phpstan`, auch in der GitHub-Action): gesamter Code auf Stufe 0, neuer Code auf Stufe 8.  
+
+### Fixed  
+* Update-Prüfung: Erlaubt der Server keine Abfragen nach außen (`allow_url_fopen` aus), wird nichts mehr versucht und keine Merkdatei geschrieben; eine beschädigte Merkdatei wird ignoriert.  
+* `lmo-install` findet den Autoloader auch beim direkten Aufruf im Git-Checkout (`vendor/` neben `lmo/`).  
+* Kalender im Admin-Bereich: Im Mai erschien im Kopf die Abkürzung statt des ausgeschriebenen Monatsnamens.  
 
 
 ***
@@ -222,7 +232,6 @@ __All significant changes to the LMO PHP script are documented in this file.__
 _Here we write changelog notes for the next version._  
 
 ### Added  
-- Static analysis with PHPStan (`composer phpstan` or `docker compose run --rm phpstan`, also in the GitHub action): all code on level 0, new code on level 8.
 
 
 ### Changed  
@@ -235,12 +244,23 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
-- Update check: if the server does not allow outgoing requests (`allow_url_fopen` off), nothing is tried and no cache file is written; a damaged cache file is ignored.
-- `lmo-install` also finds the autoloader when called directly in a Git checkout (`vendor/` next to `lmo/`).
-- Calendar in the admin area: in May the header showed the abbreviation instead of the full month name.
 
 
 ### Security  
+
+
+***
+## [4.3.1] - 2026-10-11
+
+_Here we had the changelogs for 4.3.1._  
+
+### Added  
+* Static analysis with PHPStan (`composer phpstan` or `docker compose run --rm phpstan`, also in the GitHub action): all code on level 0, new code on level 8.  
+
+### Fixed  
+* Update check: if the server does not allow outgoing requests (`allow_url_fopen` off), nothing is tried and no cache file is written; a damaged cache file is ignored.  
+* `lmo-install` also finds the autoloader when called directly in a Git checkout (`vendor/` next to `lmo/`).  
+* Calendar in the admin area: in May the header showed the abbreviation instead of the full month name.  
 
 
 ***
