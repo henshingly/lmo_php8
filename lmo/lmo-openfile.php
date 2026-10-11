@@ -406,4 +406,13 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
   }
   $file = '';
 }
+
+// Alle Werte der Liga zusaetzlich als Objekt (Lmo\Liga\LigaDaten): Eigenschaft und Variable sind
+// dieselbe Stelle im Speicher. Neuer Code liest $ligaDaten->titel statt $titel; alter Code laeuft
+// unveraendert weiter und sieht jede Aenderung, die ueber das Objekt gemacht wird.
+$ligaDaten = new \Lmo\Liga\LigaDaten();
+foreach (\Lmo\Liga\LigaDaten::felder() as $lmo_feld) {
+    $ligaDaten->$lmo_feld = &$$lmo_feld;
+}
+unset($lmo_feld);
 ?>
