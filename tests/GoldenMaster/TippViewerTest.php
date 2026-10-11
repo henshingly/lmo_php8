@@ -142,6 +142,32 @@ L98;
         $this->assertMatchesSnapshot('tipp', 'single_round_logged_in', $t->text());
     }
 
+    /** Tipps fuer einen einzelnen Spieltag abgeben (lmo-tippedit.php), in Liga und Pokal, und die Einsicht danach. */
+    public function testSavingTipsOfASingleRound(): void
+    {
+        $c = self::client();
+        $t = new Transcript();
+
+        $c->post('lmo.php', '', ['action' => 'tipp', 'xtippername' => 'tester', 'xtipperpass' => 'geheim']);
+        $c->changes();
+        $c->get('lmo.php', 'action=tipp&todo=edit&file=1l_2024-25.l98&st=26');
+        $t->add('Bundesliga, Spieltag 26: zwei Tipps und Joker speichern', $c->submitFromLast('xtippa0', [
+            'xtippa0' => '2', 'xtippb0' => '2', 'xtippa4' => '1', 'xtippb4' => '0', 'xjokerspiel' => '5',
+        ]), $c->changes());
+        $c->get('lmo.php', 'action=tipp&todo=edit&file=tipppokal.l98&st=1');
+        $t->add('Pokal, Runde 1: Hin- und Rueckspiel der zweiten Paarung tippen', $c->submitFromLast('xtippa00', [
+            'xtippa10' => '0', 'xtippb10' => '1', 'xtippa11' => '2', 'xtippb11' => '2',
+        ]), $c->changes());
+        $t->add('Einsicht Bundesliga, Spieltag 26', $c->get('lmo.php', 'action=tipp&todo=einsicht&file=1l_2024-25.l98&st=26'), $c->changes());
+        $t->add('Einsicht Pokal, Runde 1', $c->get('lmo.php', 'action=tipp&todo=einsicht&file=tipppokal.l98&st=1'), $c->changes());
+
+        $path = $c->instance()->path() . '/addon/tipp/tipps/';
+        $t->add('Tippdatei Bundesliga', (string) file_get_contents($path . '1l_2024-25_tester.tip'), '');
+        $t->add('Tippdatei Pokal', (string) file_get_contents($path . 'tipppokal_tester.tip'), '');
+
+        $this->assertMatchesSnapshot('tipp', 'save_single_round', $t->text());
+    }
+
     /** Nach dem Speichern traegt die Tippuebersicht die Sekunde des Aufrufs im Formular (xnow); die Testuhr laeuft weiter. */
     private static function ohneUhrzeit(string $text): string
     {
