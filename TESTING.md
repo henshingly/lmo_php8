@@ -56,13 +56,14 @@ docker compose run --rm phpstan      # im Docker
 composer phpstan                     # ohne Docker
 ```
 
-Es laufen fuenf Pruefungen nacheinander:
+Es laufen sechs Pruefungen nacheinander:
 
 | Konfiguration | Stufe | Umfang |
 |---|---|---|
 | `phpstan.neon.dist` | 0 | gesamter Code (`lmo/`, `src/`, `bin/`, `tests/`): unbekannte Klassen, Funktionen und Methoden |
 | `phpstan-classlib.neon.dist` | 5 | Klassen und Funktionen der Classlib (`lmo/addon/classlib`): zusaetzlich nicht gesetzte Variablen, Typangaben in den Kommentaren, Rueckgabetypen und Parametertypen bei Aufrufen |
-| `phpstan-liga.neon.dist` | 6 | alte Dateien, die die Liga nur noch ueber `Lmo\Liga\LigaDaten` lesen (Kreuztabelle, Tabelle, Ergebnisse, Spielplan) |
+| `phpstan-liga.neon.dist` | 6 | 33 alte Dateien, die am Dateianfang nennen, welche Variablen sie erwarten |
+| `phpstan-liga-basis.neon.dist` | 1 | 31 weitere solche Dateien, die auf hoeheren Stufen noch Meldungen haben |
 | `phpstan-tests.neon.dist` | 5 | Tests ohne die Hilfsskripte in `tests/GoldenMaster/bin`: falsche Parametertypen, unmoegliche Vergleiche |
 | `phpstan-strict.neon.dist` | 8 | neuer, typisierter Code (`src/`, `bin/lmo-install`, `lmo/lmo-version.php`) |
 
@@ -77,6 +78,27 @@ Ausnahme steht mit Begruendung in `phpstan.neon.dist` (`ignoreErrors`).
 
 Geprueft wird fuer PHP 8.0 bis 8.5 (`phpVersion` in der Konfiguration), unabhaengig davon, mit
 welcher PHP-Version PHPStan selbst laeuft.
+
+### Kopfkommentar einer alten Datei
+
+Alte Dateien werden eingebunden und arbeiten mit Variablen, die der einbindende Code gesetzt hat.
+Damit PHPStan sie pruefen kann, nennt die Datei diese Variablen am Anfang:
+
+```php
+/**
+ * Diese Datei wird eingebunden und erwartet:
+ *
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var array<int|string, mixed> $text Sprachtexte
+ * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
+ */
+```
+
+Die Kommentare der 62 Dateien sind erzeugt: Welche Variablen eine Datei braucht, hat PHPStan
+gemeldet; der Typ ist `array`, wenn die Datei mit `[...]` zugreift, sonst `mixed`, und `|null`,
+wenn sie selbst mit `isset()` prueft. Die Gruppe "nicht auf jedem Weg gesetzt" nennt Variablen,
+die die Datei nur unter einer Bedingung setzt und spaeter liest: Stellen zum Hinsehen.
+`phpstan-bootstrap.php` liefert PHPStan die Konstanten, die `init.php` erst zur Laufzeit anlegt.
 
 ## So werden Abweichungen angezeigt
 - HTML wird normalisiert (Session-IDs, Temp-Pfade, Zufallsfarben der Fieberkurve entfernt,
