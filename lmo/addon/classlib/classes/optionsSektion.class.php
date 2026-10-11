@@ -77,8 +77,8 @@ class optionsSektion extends sektion {
     /**
     * Konstruktor
     *
-    * @param liga $aLiga
-    * @param array $optionDetails
+    * @param liga|string $aLiga
+    * @param array|string $optionDetails
     * @return optionsSektion
     */
     function __construct($aLiga = '', $optionDetails='') {

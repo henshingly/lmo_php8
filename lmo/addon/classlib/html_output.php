@@ -57,7 +57,7 @@ function HTML_icon($img_name, $img_type, $img_size = 'small', $html = '', $alter
  * @deprecated
  * @param string $ligaFile
  * @param string $team
- * @param string $html
+ * @param string $htmlParameter
  * @param string $alternative_text
  * @return string
  */
@@ -72,7 +72,7 @@ function HTML_smallTeamIcon($ligaFile, $team, $htmlParameter = '', $alternative_
  * @deprecated
  * @param string $ligaFile
  * @param string $team
- * @param string $html
+ * @param string $htmlParameter
  * @param string $alternative_text
  * @return string
  */
@@ -86,7 +86,7 @@ function HTML_bigTeamIcon($ligaFile, $team, $htmlParameter = '', $alternative_te
  *
  * @deprecated
  * @param string $ligaFile
- * @param string $html
+ * @param string $htmlParameter
  * @param string $alternative_text
  * @return string
  */
@@ -101,7 +101,7 @@ function HTML_smallLigaIcon($ligaFile, $htmlParameter = '', $alternative_text = 
  *
  * @deprecated
  * @param string $ligaFile
- * @param string $html
+ * @param string $htmlParameter
  * @param string $alternative_text
  * @return string
  */
@@ -116,9 +116,9 @@ function HTML_bigLigaIcon($ligaFile, $htmlParameter = '', $alternative_text = ''
  * Deprecated! Use HTML_icon() instead
  *
  * @deprecated
- * @param string $ligaFile
- * @param string $liganame
+ * @param string $spieler
  * @param string $htmlParameter
+ * @param string $alternative_text
  * @return string
  */
 
@@ -131,9 +131,9 @@ function HTML_smallSpielerIcon($spieler, $htmlParameter = '', $alternative_text 
  * Deprecated! Use HTML_icon() instead
  *
  * @deprecated
- * @param string $ligaFile
- * @param string $liganame
+ * @param string $spieler
  * @param string $htmlParameter
+ * @param string $alternative_text
  * @return string
  */
 function HTML_bigSpielerIcon($spieler, $htmlParameter = '', $alternative_text = '') {

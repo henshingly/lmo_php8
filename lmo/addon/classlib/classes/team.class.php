@@ -50,7 +50,7 @@ class team
      *
      * @param string $name
      * @param string $kurz
-     * @param string $nr
+     * @param integer|string $nr
      * @param string $mittel
      * @return team
      */

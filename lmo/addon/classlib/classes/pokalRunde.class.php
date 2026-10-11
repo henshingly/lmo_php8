@@ -55,11 +55,11 @@ class pokalRunde {
     * Konstruktor der Klasse PokalRunde, setz die wichtigsten Parameter der Runde
     *
     * @access public
-    * @param integer roundNumber Nummer der Runde
-    * @param integer mode Spielmodus
-    * @param interger begin Begin der Runde als Unix Timestamp
-    * @param interger end Ende der Runde als Unix Timestamp
-    * @param array spieltage Spieltage (objecte) dieser Runde
+    * @param integer $roundNumber Nummer der Runde
+    * @param integer $mode Spielmodus
+    * @param integer $begin Begin der Runde als Unix Timestamp
+    * @param integer $end Ende der Runde als Unix Timestamp
+    * @param array $spieltage Spieltage (objecte) dieser Runde
     * @return void
     */
     function __construct($roundNumber, $mode, $begin = 0, $end = 0, $spieltage = null) {
@@ -85,7 +85,7 @@ class pokalRunde {
     * Setzt den Modus dieser Runde zurück
     *
     * @access public
-    * @param integer value Modus der Runde
+    * @param integer $value Modus der Runde
     * @return void
     */
     function setMode($value) {
@@ -106,7 +106,7 @@ class pokalRunde {
     * Setzt das Datum an dem diese Runde beginnt als Unix Timestamp
     *
     * @access public
-    * @param integer value Begin der Runde als Unix Timestamp
+    * @param integer $value Begin der Runde als Unix Timestamp
     * @return void
     */
     function setBegin($value) {
@@ -118,7 +118,7 @@ class pokalRunde {
     * das Datum im angegeben Format zurückgegeben
     *
     * @access public
-    * @param string format der Datumsausgabe
+    * @param string $format der Datumsausgabe
     * @see date()
     * @return mixed Datum des Rundenbegins
     */
@@ -137,7 +137,7 @@ class pokalRunde {
     * Setzt das Datum an dem diese Runde Endet als Unixtimestamp
     *
     * @access public
-    * @param integer value Ende der Runde als Unix Timestamp
+    * @param integer $value Ende der Runde als Unix Timestamp
     * @return void
     */
     function setEnd($value) {
@@ -149,7 +149,7 @@ class pokalRunde {
     * das Datum im angegeben Format zurückgegeben
     *
     * @access public
-    * @param string format der Datumsausgabe
+    * @param string $format der Datumsausgabe
     * @see date()
     * @return mixed Ende dér Runde
     */
@@ -168,7 +168,7 @@ class pokalRunde {
     * Fügt Referenzen auf Partien dieser Runde hinzu
     *
     * @access public
-    * @param array/object value Objecte der partien
+    * @param array|object $value Objecte der partien
     * @return void
     */
     function addPartien(&$value) {
@@ -187,7 +187,7 @@ class pokalRunde {
     * Gibt Partien dieser Runde zurück, ist $Number ="" wird das komplette Array übergeben
     *
     * @access public
-    * @param integer Nummer der Partie
+    * @param integer|string $number Nummer der Partie, '' fuer alle
     * @return object Partie
     */
     function getPartien($number = '') {
@@ -207,7 +207,7 @@ class pokalRunde {
     * Fügt Referenzen auf die Spieltage (und die Partien dieses Spieltags) dieser Runde hinzu
     *
     * @access public
-    * @param array/object value Objecte der Spieltage
+    * @param array|object $value Objecte der Spieltage
     * @return void
     */
     function addSpieltage(&$value) {
@@ -229,7 +229,7 @@ class pokalRunde {
     * Gibt Spieltage dieser Runde zurück, ist $Number="" wird das komplette Array übergeben
     *
     * @access public
-    * @param integer Nummer des Spieltags
+    * @param integer|string $number Nummer des Spieltags, '' fuer alle
     * @return object Spieltag
     */
     function getSpieltage($number = '') {
@@ -246,7 +246,7 @@ class pokalRunde {
     * Gibt die Anzahl der Spieltage dieser Pokal Runde zurück
     *
     * @access public
-    * @return interger Anzahl der Spieltage
+    * @return integer Anzahl der Spieltage
     */
     function spieltageCount() {
         return count($this->spieltage);

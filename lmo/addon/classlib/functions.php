@@ -13,7 +13,7 @@
  *  const_array()
  *
  * @access public
- * @param constant string
+ * @param string $constant durch Komma getrennte Werte
  * @return array
  */
 function const_array($constant) {
@@ -26,7 +26,7 @@ function const_array($constant) {
  * example: strBeforChar("fussballbl2004.l98",".") returns "fussballbl2004"
  *
  * @param string $str
- * @param char $char
+ * @param string $char
  * @return string
  */
 function strBeforChar($str,$char) {
@@ -38,7 +38,7 @@ function strBeforChar($str,$char) {
  * example: strBeforChar("fussballbl2004.l98",".") returns "l98"
  *
  * @param string $str
- * @param char $char
+ * @param string $char
  * @return string
  */
 function strAfterChar($str,$char) {
@@ -92,7 +92,7 @@ function readLigaDir($dirName,&$dataArray) {
 /**
  * unscharfe Teamsuche
  *
- * @param array $teamNamesArray
+ * @param array|null $teamNamesArray
  * @param string $search
  * @return array
  */
