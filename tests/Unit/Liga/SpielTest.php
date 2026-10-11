@@ -90,6 +90,61 @@ class SpielTest extends TestCase
         self::assertSame('_', Spiel::ausRohdaten($liga, 1, 3, 3)->toreHeim, 'ein drittes Spiel gibt es nicht');
     }
 
+    public function testAlleMannschaftenSindVollstaendigUndSortiert(): void
+    {
+        // in der Datei steht Mannschaft 3 vor 1, und Mannschaft 2 fehlt
+        $liga = self::liga(['[Options]', 'Teams=4', '[Teams]', '3=Gamma', '1=Alpha', '9=Zuviel']);
+
+        $namen = [];
+        foreach ($liga->alleMannschaften() as $nr => $mannschaft) {
+            $namen[$nr] = $mannschaft->anzeigename();
+        }
+
+        self::assertSame([1 => 'Alpha', 2 => '', 3 => 'Gamma', 4 => ''], $namen);
+        self::assertSame([3, 1, 9], array_keys($liga->mannschaften), 'die Rohdaten bleiben, wie sie sind');
+    }
+
+    public function testSpieleEinesSpieltagsDerLiga(): void
+    {
+        // Partie 2 steht vor Partie 1, Partie 3 fehlt
+        $liga = self::liga(['[Options]', 'Teams=6', 'Rounds=2', '[Round2]', 'TA2=3', 'TB2=4', 'TA1=1', 'TB1=2', 'GA1=5']);
+
+        $spiele = iterator_to_array($liga->spiele(2), false);
+
+        self::assertContainsOnlyInstancesOf(Spiel::class, $spiele);
+        self::assertSame([[2, 1, 1, '1'], [2, 2, 1, '3'], [2, 3, 1, '0']], array_map(
+            static fn (Spiel $s): array => [$s->spieltag, $s->partie, $s->nr, $s->heim],
+            $spiele
+        ));
+        self::assertSame('5', $spiele[0]->toreHeim);
+        self::assertCount(3, iterator_to_array($liga->spiele(1), false), 'ein Spieltag ohne Abschnitt: nicht angesetzte Spiele');
+        self::assertCount(6, iterator_to_array($liga->alleSpiele(), false), 'zwei Spieltage mit je drei Partien');
+        self::assertSame([2], array_keys($liga->spieltage), 'durchlaufen legt nichts an');
+    }
+
+    public function testSpieleImPokalNachModusUndRunde(): void
+    {
+        $liga = self::liga(['[Options]', 'Type=1', 'Teams=8', 'KlFin=1', '[Round1]', 'MO=2', 'TA1=1', 'TB1=2', 'GA12=3', '[Round3]', 'MO=1']);
+        $e = $liga->einstellungen();
+
+        self::assertSame([4, 2, 2, 0], [$e->partienImSpieltag(1), $e->partienImSpieltag(2), $e->partienImSpieltag(3), $e->partienImSpieltag(4)],
+            'Viertelfinale, Halbfinale, Finale mit Spiel um Platz 3');
+        $runde1 = iterator_to_array($liga->spiele(1), false);
+        self::assertCount(8, $runde1, 'vier Paarungen mit Hin- und Rueckspiel');
+        self::assertSame([[1, 1], [1, 2], [2, 1], [2, 2]], array_map(static fn (Spiel $s): array => [$s->partie, $s->nr], array_slice($runde1, 0, 4)));
+        self::assertSame('3', $runde1[1]->toreHeim);
+        self::assertCount(2, iterator_to_array($liga->spiele(2), false), 'ohne Modus ein Spiel je Paarung');
+        self::assertCount(12, iterator_to_array($liga->alleSpiele(), false));
+    }
+
+    public function testPaarungenBeiVierundzwanzigMannschaften(): void
+    {
+        $e = self::liga(['[Options]', 'Type=1', 'Teams=24'])->einstellungen();
+
+        self::assertSame([8, 8, 4, 2, 1], array_map([$e, 'partienImSpieltag'], [1, 2, 3, 4, 5]));
+        self::assertSame(9, self::liga(['[Options]', 'Teams=18'])->einstellungen()->partienImSpieltag(7), 'in der Liga jeder Spieltag gleich');
+    }
+
     /** @return array<string, array{string}> */
     public static function ligadateien(): array
     {

@@ -500,6 +500,35 @@ final class Einstellungen
     }
 
     /**
+     * Anzahl der Partien eines Spieltags. In der Liga hat jeder Spieltag gleich viele
+     * (partienJeSpieltag()). Im Pokal halbiert sich die Zahl der Paarungen von Runde zu Runde,
+     * ausgehend von der Anzahl der Mannschaften; bei 24 Mannschaften sind es 8, 8, 4, 2, 1. Mit
+     * Spiel um Platz 3 hat die letzte Runde eine Paarung mehr.
+     *
+     * @param int $spieltag Nummer des Spieltags bzw. der Runde, ab 1
+     */
+    public function partienImSpieltag(int $spieltag): int
+    {
+        if (!$this->istPokal()) {
+            return $this->partienJeSpieltag();
+        }
+        $runden = $this->spieltage();
+        if ($spieltag < 1 || $spieltag > $runden) {
+            return 0;
+        }
+        $mannschaften = $this->mannschaften();
+        $paarungen = (float) $mannschaften;
+        for ($runde = 1; $runde <= $spieltag; $runde++) {
+            if ($mannschaften == 24 && $runde <= 5) {
+                $paarungen = [16, 16, 8, 4, 2][$runde - 1];
+            }
+            $paarungen /= 2;
+        }
+
+        return (int) floor($paarungen) + ($spieltag == $runden && $this->mitSpielUmPlatz3() ? 1 : 0);
+    }
+
+    /**
      * MinusPoints: fuehrt die Liga neben den Pluspunkten auch Minuspunkte (in der Datei 2)?
      * Ohne Angabe und im Pokal nicht.
      */

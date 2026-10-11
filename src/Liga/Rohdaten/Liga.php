@@ -4,6 +4,7 @@ namespace Lmo\Liga\Rohdaten;
 
 use Lmo\Liga\Einstellungen;
 use Lmo\Liga\LigaDatei;
+use Lmo\Liga\Spiel;
 
 /**
  * Der Inhalt einer Ligadatei (.l98) als Rohdaten: was in der Datei steht, geordnet nach
@@ -184,6 +185,68 @@ final class Liga
     public function einstellungen(): Einstellungen
     {
         return new Einstellungen($this);
+    }
+
+    /**
+     * Alle Mannschaften der Liga zum Durchlaufen: Nummer 1 bis zur Anzahl der Mannschaften laut
+     * Einstellungen, in dieser Reihenfolge. $mannschaften selbst enthaelt nur, was in der Datei
+     * steht, in deren Reihenfolge; eine Mannschaft, die dort fehlt, kommt hier als leere
+     * Mannschaft (und wird dabei nicht angelegt).
+     *
+     *   foreach ($liga->alleMannschaften() as $nr => $mannschaft) { ... }
+     *
+     * @return \Generator<int, Mannschaft>
+     */
+    public function alleMannschaften(): \Generator
+    {
+        $anzahl = $this->einstellungen()->mannschaften();
+        for ($nr = 1; $nr <= $anzahl; $nr++) {
+            yield $nr => $this->mannschaften[$nr] ?? new Mannschaft();
+        }
+    }
+
+    /**
+     * Die Spiele eines Spieltags zum Anzeigen (Lmo\Liga\Spiel), Partie 1 bis zur Anzahl der Partien
+     * dieses Spieltags laut Einstellungen; im Pokal je Paarung so viele Spiele, wie der Modus der
+     * Runde (MO) vorsieht. Eine Partie, die in der Datei fehlt, kommt als nicht angesetztes Spiel.
+     * Jedes Spiel traegt seinen Spieltag, seine Partie und seine Nummer in der Paarung.
+     *
+     *   foreach ($liga->spiele(3) as $spiel) { ... }
+     *
+     * @param int $spieltag Nummer des Spieltags bzw. der Runde, ab 1
+     * @return \Generator<int, Spiel>
+     */
+    public function spiele(int $spieltag): \Generator
+    {
+        $partien = $this->einstellungen()->partienImSpieltag($spieltag);
+        $jePaarung = 1;
+        if ($this->istPokal()) {
+            $modus = $this->spieltage[$spieltag]->werte['MO'] ?? 1;
+            $jePaarung = is_numeric($modus) ? max(0, (int) $modus) : 1;
+        }
+        for ($partie = 1; $partie <= $partien; $partie++) {
+            for ($nr = 1; $nr <= $jePaarung; $nr++) {
+                yield Spiel::ausRohdaten($this, $spieltag, $partie, $nr);
+            }
+        }
+    }
+
+    /**
+     * Alle Spiele der Liga zum Anzeigen, Spieltag 1 bis zur Anzahl der Spieltage laut
+     * Einstellungen, je Spieltag wie spiele().
+     *
+     *   foreach ($liga->alleSpiele() as $spiel) { ... }
+     *
+     * @return \Generator<int, Spiel>
+     */
+    public function alleSpiele(): \Generator
+    {
+        $spieltage = $this->einstellungen()->spieltage();
+        for ($spieltag = 1; $spieltag <= $spieltage; $spieltag++) {
+            foreach ($this->spiele($spieltag) as $spiel) {
+                yield $spiel;
+            }
+        }
     }
 
     /**
