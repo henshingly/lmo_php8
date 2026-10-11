@@ -4,6 +4,7 @@ namespace Lmo\Liga\Rohdaten;
 
 use Lmo\Liga\Einstellungen;
 use Lmo\Liga\LigaDatei;
+use Lmo\Liga\Paarung;
 use Lmo\Liga\Spiel;
 
 /**
@@ -219,15 +220,31 @@ final class Liga
     public function spiele(int $spieltag): \Generator
     {
         $partien = $this->einstellungen()->partienImSpieltag($spieltag);
-        $jePaarung = 1;
-        if ($this->istPokal()) {
-            $modus = $this->spieltage[$spieltag]->werte['MO'] ?? 1;
-            $jePaarung = is_numeric($modus) ? max(0, (int) $modus) : 1;
-        }
+        $jePaarung = Paarung::spieleJePaarung($this, $spieltag);
         for ($partie = 1; $partie <= $partien; $partie++) {
             for ($nr = 1; $nr <= $jePaarung; $nr++) {
                 yield Spiel::ausRohdaten($this, $spieltag, $partie, $nr);
             }
+        }
+    }
+
+    /**
+     * Die Paarungen einer Runde zum Anzeigen (Lmo\Liga\Paarung), Nummer 1 bis zur Anzahl der
+     * Paarungen dieser Runde laut Einstellungen. Jede traegt ihre Spiele (im Pokal so viele, wie
+     * der Modus der Runde vorsieht) und weiss, wer gewonnen hat. Eine Paarung, die in der Datei
+     * fehlt, kommt ohne Mannschaften.
+     *
+     *   foreach ($liga->paarungen(1) as $paarung) { ... }
+     *
+     * @param int $runde Nummer der Runde bzw. des Spieltags, ab 1
+     * @return \Generator<int, Paarung>
+     */
+    public function paarungen(int $runde): \Generator
+    {
+        $anzahl = $this->einstellungen()->partienImSpieltag($runde);
+        $spiele = Paarung::spieleJePaarung($this, $runde);
+        for ($nr = 1; $nr <= $anzahl; $nr++) {
+            yield Paarung::ausRohdaten($this, $runde, $nr, $spiele);
         }
     }
 
