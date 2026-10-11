@@ -564,4 +564,214 @@ class LigaDatenTest extends TestCase
 
         self::assertSame([['URL', ''], ['NOT', '']], $pokal->mannschaftenZumSpeichern()[3][1]);
     }
+
+    private static function ligaMitSpieltagen(string $spez = '1'): LigaDaten
+    {
+        $liga = self::ligaMitDreiMannschaften();
+        $liga->spez = $spez;
+        $liga->bereiteSpieltageVor();
+
+        return $liga;
+    }
+
+    private static function pokalMitRunden(): LigaDaten
+    {
+        $pokal = new LigaDaten();
+        $pokal->setzeStartwerte();
+        $pokal->setzeOption('Type', '1');
+        $pokal->setzeOption('Teams', '4');
+        $pokal->ergaenzeVorgabewerte('d.m.Y');
+        $pokal->bereiteSpieltageVor();
+
+        return $pokal;
+    }
+
+    public function testSpieltageEinerLigaInVollerGroesse(): void
+    {
+        $liga = self::ligaMitSpieltagen();
+
+        self::assertCount(116, $liga->teama);
+        self::assertCount(40, $liga->teama[115]);
+        self::assertSame('0', $liga->teama[0][0]);
+        self::assertSame('_', $liga->goala[115][39], 'nicht gespielt');
+        self::assertSame('', $liga->mnote[0][0]);
+        self::assertSame('0', $liga->msieg[0][0]);
+        self::assertSame('0', $liga->mterm[0][0]);
+        self::assertSame('', $liga->datum1[0]);
+        self::assertSame('0', $liga->handp[0]);
+        self::assertNull($liga->modus, 'nur im Pokal');
+    }
+
+    public function testRundenEinesPokalsInVollerGroesse(): void
+    {
+        $pokal = self::pokalMitRunden();
+
+        self::assertCount(7, $pokal->teama);
+        self::assertCount(64, $pokal->teama[6]);
+        self::assertSame('0', $pokal->teama[0][0]);
+        self::assertSame(['_', '_', '_', '_', '_', '_', '_'], $pokal->goala[6][63], 'sieben Spiele je Paarung');
+        self::assertSame('0', $pokal->mterm[0][0][0]);
+        self::assertSame('1', $pokal->modus[0]);
+        self::assertNull($pokal->msieg, 'Wertung am gruenen Tisch gibt es nur in der Liga');
+        self::assertNull($pokal->handp);
+    }
+
+    public function testSpieltagsIndex(): void
+    {
+        self::assertSame(0, LigaDaten::spieltagsIndex('Round1'));
+        self::assertSame(33, LigaDaten::spieltagsIndex('Round34'));
+        self::assertSame(-1, LigaDaten::spieltagsIndex('Options'));
+        self::assertSame(-1, LigaDaten::spieltagsIndex('Teams'));
+    }
+
+    /** @return array<string, array{string, int|string}> */
+    public static function tore(): array
+    {
+        return ['gespielt' => ['3', '3'], 'nicht gespielt' => ['-1', '_'], 'leer' => ['', -1], 'null Tore' => ['0', '0']];
+    }
+
+    /**
+     * @dataProvider tore
+     * @param int|string $anzeige
+     */
+    public function testToreWerdenFuerDieAnzeigeUmgerechnet(string $datei, $anzeige): void
+    {
+        $liga = self::ligaMitSpieltagen();
+        $liga->setzeSpieltagswert('Round2', 'GA3', $datei, 'n.V.', 'i.E.');
+        self::assertSame($anzeige, $liga->goala[1][2]);
+        self::assertSame('0', $liga->msieg[1][2]);
+
+        $pokal = self::pokalMitRunden();
+        $pokal->setzeSpieltagswert('Round2', 'GB31', $datei, 'n.V.', 'i.E.');
+        self::assertSame($anzeige, $pokal->goalb[1][2][0], 'Paarung 3, Spiel 1');
+    }
+
+    public function testWertungAmGruenenTisch(): void
+    {
+        $liga = self::ligaMitSpieltagen();
+
+        $liga->setzeSpieltagswert('Round1', 'GA1', '-2', 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Round1', 'GB2', '-2', 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Round1', 'ET3', '3', 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Round1', 'ET4', '2', 'n.V.', 'i.E.');
+
+        self::assertSame(['0', 1], [$liga->goala[0][0], $liga->msieg[0][0]], 'Heim gewinnt am gruenen Tisch');
+        self::assertSame(['0', 2], [$liga->goalb[0][1], $liga->msieg[0][1]], 'Gast gewinnt am gruenen Tisch');
+        self::assertSame(3, $liga->msieg[0][2], 'beide verlieren');
+        self::assertSame('0', $liga->msieg[0][3]);
+
+        // im Pokal gibt es keine Wertung: -2 bleibt stehen
+        $pokal = self::pokalMitRunden();
+        $pokal->setzeSpieltagswert('Round1', 'GA11', '-2', 'n.V.', 'i.E.');
+        self::assertSame('-2', $pokal->goala[0][0][0]);
+        self::assertNull($pokal->msieg);
+    }
+
+    /** @return array<string, array{string, string}> */
+    public static function zusaetze(): array
+    {
+        return ['ohne' => ['0', '&nbsp;'], 'nach Verlaengerung' => ['2', 'n.V.'], 'im Elfmeterschiessen' => ['1', 'i.E.'], 'unbekannt' => ['5', '5'], 'leer' => ['', '']];
+    }
+
+    /** @dataProvider zusaetze */
+    public function testZusatzWirdZumAnzeigetext(string $datei, string $anzeige): void
+    {
+        $liga = self::ligaMitSpieltagen('1');
+        $liga->setzeSpieltagswert('Round1', 'SP1', $datei, 'n.V.', 'i.E.');
+        self::assertSame($anzeige, $liga->mspez[0][0]);
+
+        $ohne = self::ligaMitSpieltagen('0');
+        $ohne->setzeSpieltagswert('Round1', 'SP1', $datei, 'n.V.', 'i.E.');
+        self::assertSame('', $ohne->mspez[0][0], 'in der Liga nur mit Spez=1');
+
+        $pokal = self::pokalMitRunden();
+        $pokal->setzeSpieltagswert('Round1', 'SP12', $datei, 'n.V.', 'i.E.');
+        self::assertSame($anzeige, $pokal->mspez[0][0][1], 'im Pokal immer');
+    }
+
+    public function testSpieltagUndPartieEinerLiga(): void
+    {
+        $liga = self::ligaMitSpieltagen();
+        foreach (['HS' => '030102', 'D1' => '23.08.2024', 'D2' => '24.08.2024', 'TA2' => '3', 'TB2' => '1',
+            'NT2' => 'Notiz', 'BE2' => 'bericht', 'TI2' => 'tipp', 'AT2' => '1724437800', 'MO' => '2', 'XY2' => 'unbekannt'] as $schluessel => $wert) {
+            $liga->setzeSpieltagswert('Round3', $schluessel, $wert, 'n.V.', 'i.E.');
+        }
+
+        self::assertSame(['030102', '23.08.2024', '24.08.2024'], [$liga->handp[2], $liga->datum1[2], $liga->datum2[2]]);
+        self::assertSame(['3', '1'], [$liga->teama[2][1], $liga->teamb[2][1]]);
+        self::assertSame(['Notiz', 'bericht', 'tipp', '1724437800'], [$liga->mnote[2][1], $liga->mberi[2][1], $liga->mtipp[2][1], $liga->mterm[2][1]]);
+        self::assertNull($liga->modus, 'MO gibt es nur im Pokal');
+    }
+
+    public function testRundeUndSpielEinesPokals(): void
+    {
+        $pokal = self::pokalMitRunden();
+        foreach (['MO' => '2', 'D1' => '01.03.2025', 'TA2' => '3', 'TB2' => '4', 'NT21' => 'Hinspiel', 'NT22' => 'Rueckspiel',
+            'AT22' => '1740826800'] as $schluessel => $wert) {
+            $pokal->setzeSpieltagswert('Round1', $schluessel, $wert, 'n.V.', 'i.E.');
+        }
+
+        self::assertSame('2', $pokal->modus[0]);
+        self::assertSame('01.03.2025', $pokal->datum1[0]);
+        self::assertSame(['3', '4'], [$pokal->teama[0][1], $pokal->teamb[0][1]]);
+        self::assertSame(['Hinspiel', 'Rueckspiel'], [$pokal->mnote[0][1][0], $pokal->mnote[0][1][1]]);
+        self::assertSame('1740826800', $pokal->mterm[0][1][1]);
+    }
+
+    /** Eigenheit des alten Laders, auf die sich niemand verlassen sollte, die aber erhalten bleibt. */
+    public function testJedeZeileBelegtDasHandicapIhresSpieltags(): void
+    {
+        $liga = self::ligaMitSpieltagen();
+
+        $liga->setzeSpieltagswert('Options', 'Name', 'Liga', 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Round120', 'TA1', '1', 'n.V.', 'i.E.');
+
+        self::assertSame('0', $liga->handp[-1]);
+        self::assertSame('0', $liga->handp[119]);
+        self::assertSame('1', $liga->teama[119][0], 'Spieltage hinter den 116 Plaetzen werden angelegt');
+    }
+
+    /** @return array<string, array{string, string}> */
+    public static function spieltagsdaten(): array
+    {
+        return [
+            'schon richtig' => ['23.08.2024', '23.08.2024'],
+            'ohne fuehrende Nullen' => ['7.9.2024', '07.09.2024'],
+            'kein Kalendertag' => ['30.02.2024', ''],
+            'Text' => ['ab.cd.efgh', ''],
+            'unvollstaendig' => ['23.08.', ''],
+            'leer' => ['', ''],
+        ];
+    }
+
+    /** @dataProvider spieltagsdaten */
+    public function testSpieltagsdatumWirdBereinigt(string $datei, string $bereinigt): void
+    {
+        $liga = self::ligaMitSpieltagen();
+        $liga->setzeSpieltagswert('Round2', 'D1', $datei, 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Round2', 'D2', $datei, 'n.V.', 'i.E.');
+        $liga->setzeSpieltagswert('Round1', 'D1', '1.1.2025', 'n.V.', 'i.E.');
+
+        $liga->bereinigeSpieltagsdatum(1);
+
+        self::assertSame([$bereinigt, $bereinigt], [$liga->datum1[1], $liga->datum2[1]]);
+        self::assertSame('1.1.2025', $liga->datum1[0], 'nur der genannte Spieltag');
+    }
+
+    public function testNewszeilen(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->nlines = ['alt'];
+        $liga->bereiteNewsVor();
+        $liga->setzeNewszeile('News', 'NC', '2');
+        $liga->setzeNewszeile('News', 'N0', 'Erste \\"Meldung\\"');
+        $liga->setzeNewszeile('Options', 'N1', 'gehoert nicht dazu');
+        self::assertSame(['alt', 'Erste "Meldung"'], $liga->nlines, 'ohne Newsticker wird nur angehaengt');
+
+        $liga->nticker = '1';
+        $liga->bereiteNewsVor();
+        $liga->setzeNewszeile('News', 'N0', 'Neu');
+        self::assertSame(['Neu'], $liga->nlines, 'mit Newsticker beginnen die Zeilen leer');
+    }
 }

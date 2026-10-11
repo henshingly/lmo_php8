@@ -300,6 +300,18 @@ class LigaDaten
     /** So viele Plaetze haben die Felder je Mannschaft mit Strafen und Torkorrekturen immer */
     private const PLAETZE_JE_MANNSCHAFT = 116;
 
+    /** Liga: so viele Spieltage und Partien je Spieltag haben die Felder immer */
+    private const LIGA_SPIELTAGE = 116;
+    private const LIGA_PARTIEN = 40;
+
+    /** Pokal: so viele Runden, Paarungen je Runde und Spiele je Paarung haben die Felder immer */
+    private const POKAL_RUNDEN = 7;
+    private const POKAL_PAARUNGEN = 64;
+    private const POKAL_SPIELE = 7;
+
+    /** Partie: Schluessel ohne Nummer (NT1 -> NT) => Feld, fuer Werte, die unveraendert uebernommen werden */
+    private const PARTIEWERTE = ['NT' => 'mnote', 'BE' => 'mberi', 'TI' => 'mtipp', 'AT' => 'mterm'];
+
     /** Was jeder Lader braucht, auch die abgespeckten: siehe ergaenzeGrunddaten() */
     private const GRUNDDATEN = ['stx', 'lmvers', 'titel', 'dats', 'datm', 'datc'];
 
@@ -570,6 +582,200 @@ class LigaDaten
         }
 
         return $abschnitte;
+    }
+
+    /**
+     * Bei eingeschaltetem Newsticker beginnen die Zeilen leer; sonst bleiben sie, wie sie sind,
+     * und setzeNewszeile() haengt an.
+     */
+    public function bereiteNewsVor(): void
+    {
+        if (!isset($this->nticker)) {
+            $this->nticker = 0;
+        }
+        if ($this->nticker == 1) {
+            $this->nlines = [];
+        }
+    }
+
+    /** Uebernimmt eine Zeile aus [News]; NC (Anzahl der Zeilen) wird uebergangen. */
+    public function setzeNewszeile(string $abschnitt, string $schluessel, string $wert): void
+    {
+        if ($abschnitt === 'News' && $schluessel != 'NC') {
+            $this->nlines[] = stripslashes($wert);
+        }
+    }
+
+    /**
+     * Legt vor dem Lesen der Spieltage die Felder in voller Groesse an; der alte Code greift ohne
+     * Pruefung darauf zu.
+     *
+     * Liga: 116 Spieltage mit je 40 Partien. Pokal: 7 Runden mit je 64 Paarungen, und fuer Tore,
+     * Zusatz, Notiz, Bericht, Tipp und Anstoss je Paarung 7 Spiele (Hin-/Rueckspiel ...).
+     * Tore beginnen mit "_" (nicht gespielt), Mannschaften und Anstoss mit "0".
+     * Wertung (msieg) und Handicap (handp) gibt es nur in der Liga.
+     */
+    public function bereiteSpieltageVor(): void
+    {
+        if ($this->art() === self::LIGA) {
+            $jePartie = static fn (string $wert): array => array_fill(0, self::LIGA_SPIELTAGE, array_fill(0, self::LIGA_PARTIEN, $wert));
+            $this->handp = array_fill(0, self::LIGA_SPIELTAGE, '0');
+            $this->datum1 = $this->datum2 = array_fill(0, self::LIGA_SPIELTAGE, '');
+            $this->teama = $this->teamb = $jePartie('0');
+            $this->goala = $this->goalb = $jePartie('_');
+            $this->mspez = $this->mberi = $this->mtipp = $this->mnote = $jePartie('');
+            $this->msieg = $this->mterm = $jePartie('0');
+
+            return;
+        }
+        $jeSpiel = static fn (string $wert): array => array_fill(
+            0,
+            self::POKAL_RUNDEN,
+            array_fill(0, self::POKAL_PAARUNGEN, array_fill(0, self::POKAL_SPIELE, $wert))
+        );
+        $this->datum1 = $this->datum2 = array_fill(0, self::POKAL_RUNDEN, '');
+        $this->modus = array_fill(0, self::POKAL_RUNDEN, '1');
+        $this->teama = $this->teamb = array_fill(0, self::POKAL_RUNDEN, array_fill(0, self::POKAL_PAARUNGEN, '0'));
+        $this->goala = $this->goalb = $jeSpiel('_');
+        $this->mspez = $this->mberi = $this->mtipp = $this->mnote = $jeSpiel('');
+        $this->mterm = $jeSpiel('0');
+    }
+
+    /**
+     * Index des Spieltags, den lmo-openfile.php aus dem Namen eines Abschnitts liest:
+     * "Round3" -> 2. Fuer andere Abschnitte ergibt das meist -1.
+     */
+    public static function spieltagsIndex(string $abschnitt): int
+    {
+        return (int) substr($abschnitt, 5) - 1;
+    }
+
+    /**
+     * Uebernimmt eine Zeile der Datei, soweit sie zu einem Spieltag gehoert ([Round1] ...).
+     *
+     * Spieltag: HS (Handicap), D1/D2 (Datum), im Pokal MO (Spiele je Paarung).
+     * Partie: der Schluessel endet auf die Nummer der Partie (TA3, GA3); im Pokal auf Paarung und
+     * Spiel (GA31 = Paarung 3, Spiel 1).
+     *
+     * Aus der Datei wird fuer die Anzeige umgerechnet:
+     *  - Tore: -1 -> "_" (nicht gespielt), leer -> -1; in der Liga -2 -> 0 Tore und Wertung am
+     *    gruenen Tisch fuer Heim (GA) bzw. Gast (GB); ET=3 -> Wertung gegen beide
+     *  - Zusatz SP: 0 -> "&nbsp;", 2 und 1 -> die uebergebenen Anzeigetexte. In der Liga nur mit Spez=1.
+     *
+     * Wird fuer jede Zeile der Datei aufgerufen, auch aus anderen Abschnitten: Das Handicap des
+     * Spieltags, den spieltagsIndex() fuer den Abschnitt nennt, wird dabei mit "0" belegt, falls
+     * es fehlt (so entsteht auch der Eintrag -1).
+     *
+     * @param string $anzeigeSp2 Anzeigetext fuer SP=2 (Sprachtext 0)
+     * @param string $anzeigeSp1 Anzeigetext fuer SP=1 (Sprachtext 1)
+     */
+    public function setzeSpieltagswert(string $abschnitt, string $schluessel, string $wert, string $anzeigeSp2, string $anzeigeSp1): void
+    {
+        $st = self::spieltagsIndex($abschnitt);
+        if (substr($abschnitt, 0, 5) === 'Round') {
+            $art = substr($schluessel, 0, 2);
+            if ($schluessel == 'HS') {
+                $this->handp[$st] = $wert;
+            } elseif ($schluessel == 'D1') {
+                $this->datum1[$st] = $wert;
+            } elseif ($schluessel == 'D2') {
+                $this->datum2[$st] = $wert;
+            }
+            $partie = (int) substr($schluessel, 2) - 1;
+            if ($art === 'TA') {
+                $this->teama[$st][$partie] = $wert;
+            } elseif ($art === 'TB') {
+                $this->teamb[$st][$partie] = $wert;
+            }
+
+            if ($this->art() === self::LIGA) {
+                if ($art === 'GA' || $art === 'GB') {
+                    $tore = self::toreFuerAnzeige($wert);
+                    if ($wert == '-2') {
+                        $this->msieg[$st][$partie] = $art === 'GA' ? 1 : 2;
+                        $tore = '0';
+                    }
+                    if ($art === 'GA') {
+                        $this->goala[$st][$partie] = $tore;
+                    } else {
+                        $this->goalb[$st][$partie] = $tore;
+                    }
+                } elseif ($art === 'SP') {
+                    if ($this->spez == 1) {
+                        $this->mspez[$st][$partie] = self::zusatzFuerAnzeige($wert, $anzeigeSp2, $anzeigeSp1);
+                    }
+                } elseif ($art === 'ET') {
+                    if ($wert == 3) {
+                        $this->msieg[$st][$partie] = 3;
+                    }
+                } elseif (isset(self::PARTIEWERTE[$art])) {
+                    $this->{self::PARTIEWERTE[$art]}[$st][$partie] = $wert;
+                }
+            } else {
+                if ($schluessel == 'MO') {
+                    $this->modus[$st] = $wert;
+                }
+                $paarung = (int) substr($schluessel, 2, -1) - 1;
+                $spiel = (int) substr($schluessel, -1) - 1;
+                if ($art === 'GA') {
+                    $this->goala[$st][$paarung][$spiel] = self::toreFuerAnzeige($wert);
+                } elseif ($art === 'GB') {
+                    $this->goalb[$st][$paarung][$spiel] = self::toreFuerAnzeige($wert);
+                } elseif ($art === 'SP') {
+                    $this->mspez[$st][$paarung][$spiel] = self::zusatzFuerAnzeige($wert, $anzeigeSp2, $anzeigeSp1);
+                } elseif (isset(self::PARTIEWERTE[$art])) {
+                    $this->{self::PARTIEWERTE[$art]}[$st][$paarung][$spiel] = $wert;
+                }
+            }
+        }
+        if (!isset($this->handp[$st])) {
+            $this->handp[$st] = '0';
+        }
+    }
+
+    /**
+     * Bringt das Datum eines Spieltags (D1 und D2) in die Form TT.MM.JJJJ; ein unlesbares Datum
+     * wird geleert. lmo-openfile.php ruft das nur fuer den Spieltag der letzten Zeile der Datei auf.
+     */
+    public function bereinigeSpieltagsdatum(int $spieltag): void
+    {
+        foreach (['datum1', 'datum2'] as $feld) {
+            if (empty($this->{$feld}[$spieltag])) {
+                continue;
+            }
+            $teile = explode('.', (string) $this->{$feld}[$spieltag]);
+            $gueltig = count($teile) === 3 && is_numeric($teile[0]) && is_numeric($teile[1]) && is_numeric($teile[2])
+                && checkdate((int) $teile[1], (int) $teile[0], (int) $teile[2]);
+            $zeit = $gueltig ? mktime(0, 0, 0, (int) $teile[1], (int) $teile[0], (int) $teile[2]) : false;
+            $this->{$feld}[$spieltag] = $zeit === false ? '' : date('d.m.Y', $zeit);
+        }
+    }
+
+    /**
+     * Tore aus der Datei fuer die Anzeige: -1 -> "_" (nicht gespielt), leer -> -1.
+     *
+     * @return int|string
+     */
+    private static function toreFuerAnzeige(string $wert)
+    {
+        if ($wert == '') {
+            return -1;
+        }
+
+        return $wert == '-1' ? '_' : $wert;
+    }
+
+    /** Zusatz SP aus der Datei fuer die Anzeige: 0 -> "&nbsp;", 2 und 1 -> Anzeigetext. */
+    private static function zusatzFuerAnzeige(string $wert, string $anzeigeSp2, string $anzeigeSp1): string
+    {
+        if ($wert == 0) {
+            return '&nbsp;';
+        }
+        if ($wert == 2) {
+            return $anzeigeSp2;
+        }
+
+        return $wert == 1 ? $anzeigeSp1 : $wert;
     }
 
     /** Liga oder Pokal, nach dem bisher bekannten Typ */

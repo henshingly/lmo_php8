@@ -71,174 +71,24 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
       }
       // Felder der Mannschaften in voller Groesse, Platz 0 = "___" (Lmo\Liga\LigaDaten)
       $ligaDaten->bereiteMannschaftenVor();
-      if (!isset($ligaDaten->nticker)){$ligaDaten->nticker=0;}
-      if ($ligaDaten->nticker==1){
-        $ligaDaten->nlines = array();
-      }
-      if ($ligaDaten->lmtype==0){
-        $ligaDaten->handp = array_pad(array("0"),116,"0");
-        $ligaDaten->datum1 = array_pad($array,116,"");
-        $ligaDaten->datum2 = array_pad($array,116,"");
-        $ligaDaten->teama = array_pad($array,116,"");
-        $ligaDaten->teamb = array_pad($array,116,"");
-        $ligaDaten->goala = array_pad($array,116,"");
-        $ligaDaten->goalb = array_pad($array,116,"");
-        $ligaDaten->mspez = array_pad($array,116,"");
-        $ligaDaten->mberi = array_pad($array,116,"");
-        $ligaDaten->mtipp = array_pad($array,116,"");
-        $ligaDaten->mnote = array_pad($array,116,"");
-        $ligaDaten->msieg = array_pad($array,116,"");
-        $ligaDaten->mterm = array_pad($array,116,"");
-        for ($i=0;$i<116;$i++){
-          $ligaDaten->teama[$i] = array_pad(array("0"),40,"0");
-          $ligaDaten->teamb[$i] = array_pad(array("0"),40,"0");
-          $ligaDaten->goala[$i] = array_pad(array("_"),40,"_");
-          $ligaDaten->goalb[$i] = array_pad(array("_"),40,"_");
-          $ligaDaten->mspez[$i] = array_pad($array,40,"");
-          $ligaDaten->mnote[$i] = array_pad($array,40,"");
-          $ligaDaten->mberi[$i] = array_pad($array,40,"");
-          $ligaDaten->mtipp[$i] = array_pad($array,40,"");
-          $ligaDaten->msieg[$i] = array_pad(array("0"),40,"0");
-          $ligaDaten->mterm[$i] = array_pad(array("0"),40,"0");
-        }
-      } else {
-        $ligaDaten->datum1 = array_pad($array,7,"");
-        $ligaDaten->datum2 = array_pad($array,7,"");
-        $ligaDaten->modus = array_pad(array("1"),7,"1");
-        $ligaDaten->teama = array_pad($array,7,"");
-        $ligaDaten->teamb = array_pad($array,7,"");
-        $ligaDaten->goala = array_pad($array,7,"");
-        $ligaDaten->goalb = array_pad($array,7,"");
-        $ligaDaten->mspez = array_pad($array,7,"");
-        $ligaDaten->mberi = array_pad($array,7,"");
-        $ligaDaten->mtipp = array_pad($array,7,"");
-        $ligaDaten->mnote = array_pad($array,7,"");
-        $ligaDaten->mterm = array_pad($array,7,"");
-        for ($i=0;$i<7;$i++){
-          $ligaDaten->teama[$i] = array_pad(array("0"),64,"0");
-          $ligaDaten->teamb[$i] = array_pad(array("0"),64,"0");
-          $ligaDaten->goala[$i] = array_pad($array,64,"");
-          $ligaDaten->goalb[$i] = array_pad($array,64,"");
-          $ligaDaten->mspez[$i] = array_pad($array,64,"");
-          $ligaDaten->mnote[$i] = array_pad($array,64,"");
-          $ligaDaten->mberi[$i] = array_pad($array,64,"");
-          $ligaDaten->mtipp[$i] = array_pad($array,64,"");
-          $ligaDaten->mterm[$i] = array_pad($array,64,"");
-          for ($j=0;$j<64;$j++){
-            $ligaDaten->goala[$i][$j] = array_pad(array("_"),7,"_");
-            $ligaDaten->goalb[$i][$j] = array_pad(array("_"),7,"_");
-            $ligaDaten->mspez[$i][$j] = array_pad($array,7,"");
-            $ligaDaten->mnote[$i][$j] = array_pad($array,7,"");
-            $ligaDaten->mberi[$i][$j] = array_pad($array,7,"");
-            $ligaDaten->mtipp[$i][$j] = array_pad($array,7,"");
-            $ligaDaten->mterm[$i][$j] = array_pad(array("0"),7,"0");
-          }
-        }
-      }
+      // News und Spieltage: Felder in voller Groesse (Lmo\Liga\LigaDaten)
+      $ligaDaten->bereiteNewsVor();
+      $ligaDaten->bereiteSpieltageVor();
       for ($i=1;$i<=count($daten);$i++){
         $dum=explode("|",$daten[$i-1]);
-        //if ($nticker==1){
-        if (($dum[0]=="News") && ($dum[1]!="NC")){$ligaDaten->nlines[]=stripslashes($dum[2]);}
-        //}
-
+        // [News]
+        $ligaDaten->setzeNewszeile($dum[0],$dum[1],$dum[2]);
         // [Teams], [Teamm], [Teamk] und [Team1] ... [TeamN]
         $ligaDaten->setzeMannschaftswert($dum[0],$dum[1],$dum[2]);
-        $op1=substr($dum[0],0,4);
-        $op2=substr($dum[0],0,5);
-        $op3=((int)substr($dum[0],5)-1);
-        $op4=((int)substr($dum[1],2)-1);
-        $op5=substr($dum[0],4);
-        $op6=((int)substr($dum[1],2,-1)-1);
-        $op7=((int)substr($dum[1],-1)-1);
-        $op8=substr($dum[1],0,2);
-
-
+        // [Round1] ...: Spieltage und Partien
+        $op3=\Lmo\Liga\LigaDaten::spieltagsIndex($dum[0]);
         if (!isset($lmo_only_st) || ($lmo_only_st==true && $op3==$st-1)){ // nur der benötigte Spieltag wird eingelesen
-
-        if ($op2=="Round") {
-          switch($dum[1]) {
-            case "HS":$ligaDaten->handp[$op3]=$dum[2];break;
-            case "D1":$ligaDaten->datum1[$op3]=$dum[2];break;
-            case "D2":$ligaDaten->datum2[$op3]=$dum[2];break;
-          }
-          switch ($op8) {
-            case "TA":$ligaDaten->teama[$op3][$op4]=$dum[2];break;
-            case "TB":$ligaDaten->teamb[$op3][$op4]=$dum[2];break;
-          }
-          if ($ligaDaten->lmtype==0) {
-            switch ($op8) {
-              case "GA":
-                $ligaDaten->goala[$op3][$op4]=$dum[2];
-                if ($ligaDaten->goala[$op3][$op4]==""){$ligaDaten->goala[$op3][$op4]=-1;}
-                elseif ($ligaDaten->goala[$op3][$op4]=="-1"){$ligaDaten->goala[$op3][$op4]="_";}
-                elseif ($ligaDaten->goala[$op3][$op4]=="-2"){$ligaDaten->msieg[$op3][$op4]=1;$ligaDaten->goala[$op3][$op4]="0";}
-              break;
-              case "GB":
-                $ligaDaten->goalb[$op3][$op4]=$dum[2];
-                if ($ligaDaten->goalb[$op3][$op4]==""){$ligaDaten->goalb[$op3][$op4]=-1;}
-                elseif ($ligaDaten->goalb[$op3][$op4]=="-1"){$ligaDaten->goalb[$op3][$op4]="_";}
-                elseif ($ligaDaten->goalb[$op3][$op4]=="-2"){$ligaDaten->msieg[$op3][$op4]=2;$ligaDaten->goalb[$op3][$op4]="0";}
-              break;
-              case "SP":
-                if ($ligaDaten->spez==1){
-                  $ligaDaten->mspez[$op3][$op4]=$dum[2];
-                  if ($ligaDaten->mspez[$op3][$op4]==0){$ligaDaten->mspez[$op3][$op4]="&nbsp;";}
-                  elseif ($ligaDaten->mspez[$op3][$op4]==2){$ligaDaten->mspez[$op3][$op4]=$text[0];}
-                  elseif ($ligaDaten->mspez[$op3][$op4]==1){$ligaDaten->mspez[$op3][$op4]=$text[1];}
-                }
-              break;
-              case "ET":
-                if ($dum[2]==3){$ligaDaten->msieg[$op3][$op4]=3;}
-              break;
-              case "NT":$ligaDaten->mnote[$op3][$op4]=$dum[2];break;
-              case "BE":$ligaDaten->mberi[$op3][$op4]=$dum[2];break;
-              case "TI":$ligaDaten->mtipp[$op3][$op4]=$dum[2];break;
-              case "AT":$ligaDaten->mterm[$op3][$op4]=$dum[2];break;
-            }
-          } else {
-            if ($dum[1]=="MO"){$ligaDaten->modus[$op3]=$dum[2];}
-            switch ($op8) {
-              case "GA":
-                $ligaDaten->goala[$op3][$op6][$op7]=$dum[2];
-                if ($ligaDaten->goala[$op3][$op6][$op7]==""){$ligaDaten->goala[$op3][$op6][$op7]=-1;}
-                elseif ($ligaDaten->goala[$op3][$op6][$op7]=="-1"){$ligaDaten->goala[$op3][$op6][$op7]="_";}
-              break;
-              case "GB":
-                $ligaDaten->goalb[$op3][$op6][$op7]=$dum[2];
-                if ($ligaDaten->goalb[$op3][$op6][$op7]==""){$ligaDaten->goalb[$op3][$op6][$op7]=-1;}
-                elseif ($ligaDaten->goalb[$op3][$op6][$op7]=="-1"){$ligaDaten->goalb[$op3][$op6][$op7]="_";}
-              break;
-              case "SP":
-                $ligaDaten->mspez[$op3][$op6][$op7]=$dum[2];
-                if ($ligaDaten->mspez[$op3][$op6][$op7]==0){$ligaDaten->mspez[$op3][$op6][$op7]="&nbsp;";}
-                elseif ($ligaDaten->mspez[$op3][$op6][$op7]==2){$ligaDaten->mspez[$op3][$op6][$op7]=$text[0];}
-                elseif ($ligaDaten->mspez[$op3][$op6][$op7]==1){$ligaDaten->mspez[$op3][$op6][$op7]=$text[1];}
-              break;
-              case "NT":$ligaDaten->mnote[$op3][$op6][$op7]=$dum[2];break;
-              case "BE":$ligaDaten->mberi[$op3][$op6][$op7]=$dum[2];break;
-              case "TI":$ligaDaten->mtipp[$op3][$op6][$op7]=$dum[2];break;
-              case "AT":$ligaDaten->mterm[$op3][$op6][$op7]=$dum[2];break;
-            }
-          }
-        }
-        if (!isset($ligaDaten->handp[$op3])){$ligaDaten->handp[$op3]="0";}
+          $ligaDaten->setzeSpieltagswert($dum[0],$dum[1],$dum[2],$text[0],$text[1]);
         }
       }
-      if (!empty($ligaDaten->datum1[$op3])){
-        $dat=explode(".",$ligaDaten->datum1[$op3]);
-        if (checkdate($dat[1],$dat[0],$dat[2])) {
-          $ligaDaten->datum1[$op3]=date("d.m.Y",mktime(0,0,0,$dat[1],$dat[0],$dat[2]));
-        } else {
-          $ligaDaten->datum1[$op3]="";
-        }
-      }
-      if (!empty($ligaDaten->datum2[$op3])){
-        $dat=explode(".",$ligaDaten->datum2[$op3]);
-        if (checkdate($dat[1],$dat[0],$dat[2])) {
-          $ligaDaten->datum2[$op3]=date("d.m.Y",mktime(0,0,0,$dat[1],$dat[0],$dat[2]));
-        } else {
-          $ligaDaten->datum2[$op3]="";
-        }
+      // Datum des Spieltags der letzten Zeile in die Form TT.MM.JJJJ bringen
+      if (isset($op3)){
+        $ligaDaten->bereinigeSpieltagsdatum($op3);
       }
       // fehlende Kurz- und Mittelnamen aus dem Namen ableiten
       $ligaDaten->ergaenzeMannschaftsnamen();
