@@ -46,16 +46,8 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
     if ($datei) {
       $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
       $ligaDaten->lmtype=0;
-      for ($tt=0;$tt<count($datei);$tt++) {
-        $zeile=&$datei[$tt];
-        $zeile=trim($zeile);
-        if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
-          $sekt=trim(substr($zeile,1,-1));
-        } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile,"=")!==false) && (substr($zeile,0,1)!=";")){
-          $conf=explode("=",$zeile,2);
-          $schl=trim($conf[0]);
-          $wert=trim($conf[1]);
+      // Abschnitte, Schluessel und Werte liest Lmo\Liga\LigaDatei; hier folgt nur ihre Bedeutung
+      foreach (\Lmo\Liga\LigaDatei::zerlege($datei) as list($sekt, $schl, $wert)) {
           if ($sekt=="Options"){
             switch ($schl) {
               case "Title":        $ligaDaten->lmvers=$wert;break;
@@ -124,7 +116,6 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
             }
           }
           $daten[]="$sekt|$schl|$wert|EOL";
-        }
       }
 
       if (!isset($st)){                         $st=1;}
