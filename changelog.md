@@ -10,6 +10,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Changed  
+- Die Classlib liest und schreibt Ligadateien über dieselbe Klasse wie der Kern (`Lmo\Liga\Rohdaten\Liga`). Von der Classlib geschriebene Dateien haben dadurch die Abschnittsfolge des Kerns und enthalten immer `[News]`, `[Teamm]` und `[Teamk]`; die Werte sind dieselben. Ob eine Datei Liga oder Pokal ist, entscheidet jetzt auch in der Classlib der Typ der Datei, nicht mehr der Modus der einzelnen Runde.
 - Die beiden abgespeckten Lader `lmo-openfilename.php` und `lmo-openfiledat.php` benutzen denselben Leser und dieselbe Zuordnung der Schlüssel wie der Hauptlader.
 - Die ganze Ligadatei wird über `Lmo\Liga\LigaDaten` geschrieben; `lmo-savefile.php` enthält nur noch das Öffnen, Sperren und Schreiben der Zeilen. Die geschriebene Datei ist unverändert.
 - News, Spieltage und Partien liest `Lmo\Liga\LigaDaten`; der Lader `lmo-openfile.php` enthält nur noch den Ablauf. Die gelesenen Werte sind unverändert.
@@ -28,6 +29,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
+- Classlib, Pokal: Stand in der Datei ein Wert eines Spiels (z. B. die Notiz des Hinspiels) hinter den Toren des nächsten Spiels, wurde er dem falschen Spiel zugeordnet. Sieht der Modus einer Runde mehr Spiele vor, als die Datei nennt, bricht das Laden nicht mehr ab.
 - Einstellungen in `[Options]`, die der LMO nicht kennt (auch `stats`), und ganze unbekannte Abschnitte einer Ligadatei gingen beim Speichern im Admin-Bereich verloren. Sie bleiben jetzt erhalten.
 - Werden in einem Aufruf mehrere Ligen nacheinander geladen, blieben Werte der vorigen Liga stehen, die die nächste Datei nicht nennt (z. B. Strafpunkte einer Liga beim anschließenden Laden eines Pokals). Vor jedem Laden werden jetzt alle Werte geleert.
 - Ein senkrechter Strich (`|`) in einer Notiz, einem Mannschaftsnamen, einer Adresse oder einer Newszeile schnitt beim Laden alles dahinter ab.
@@ -266,6 +268,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Changed  
+- The classlib reads and writes league files through the same class as the core (`Lmo\Liga\Rohdaten\Liga`). Files written by the classlib thereby have the section order of the core and always contain `[News]`, `[Teamm]` and `[Teamk]`; the values are the same. Whether a file is a league or a cup is now decided by the file type in the classlib too, no longer by the mode of the single round.
 - The two reduced loaders `lmo-openfilename.php` and `lmo-openfiledat.php` use the same reader and the same key mapping as the main loader.
 - The whole league file is written through `Lmo\Liga\LigaDaten`; `lmo-savefile.php` only contains opening, locking and writing the lines. The written file is unchanged.
 - News, rounds and matches are read by `Lmo\Liga\LigaDaten`; the loader `lmo-openfile.php` only contains the sequence. The values read are unchanged.
@@ -284,6 +287,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
+- Classlib, cup: if a value of a game (e.g. the note of the first leg) stood in the file after the goals of the next game, it was assigned to the wrong game. If the mode of a round expects more games than the file contains, loading no longer aborts.
 - Settings in `[Options]` that LMO does not know (including `stats`) and whole unknown sections of a league file were lost when saving in the admin area. They are now kept.
 - When several leagues are loaded in one request, values of the previous league remained that the next file does not mention (e.g. penalty points of a league when a cup is loaded afterwards). All values are now cleared before each load.
 - A vertical bar (`|`) in a note, a team name, an address or a news line cut off everything after it when loading.
