@@ -204,6 +204,87 @@ class LigaDaten
     /** @var array<int, array<int, mixed>>|null AT: Anstoss als Unix-Zeitstempel */
     public $mterm = null;
 
+    private const IMMER = 'immer';
+    private const LIGA = 'liga';
+    private const POKAL = 'pokal';
+
+    /**
+     * Abschnitt [Options] der Ligadatei: Schluessel => [Feld, gilt fuer, Vorgabewert].
+     *
+     * "gilt fuer": Schluessel einer Liga (Type=0) werden in einem Pokal uebergangen und umgekehrt.
+     * Vorgabewert null: keiner, oder er haengt von anderen Werten ab und steht deshalb in
+     * ergaenzeGrunddaten() bzw. ergaenzeVorgabewerte().
+     *
+     * @var array<string, array{string, string, int|string|null}>
+     */
+    private const OPTIONEN = [
+        'Title' => ['lmvers', self::IMMER, 'k.A.'],
+        'Name' => ['titel', self::IMMER, 'No Name'],
+        'Type' => ['lmtype', self::IMMER, null],
+        'Teams' => ['anzteams', self::IMMER, null],
+        'Actual' => ['stx', self::IMMER, 1],
+        'DatC' => ['datc', self::IMMER, 1],
+        'DatS' => ['dats', self::IMMER, 1],
+        'DatM' => ['datm', self::IMMER, 0],
+        'DatF' => ['datf', self::IMMER, null],
+        'urlT' => ['urlt', self::IMMER, 1],
+        'urlB' => ['urlb', self::IMMER, 0],
+        'Plan' => ['plan', self::IMMER, 1],
+        'Ergebnis' => ['ergebnis', self::IMMER, 1],
+        'mittore' => ['mittore', self::IMMER, 1],
+        'favTeam' => ['favteam', self::IMMER, 0],
+        'selTeam' => ['selteam', self::IMMER, 0],
+        'ticker' => ['nticker', self::IMMER, null],
+        'goalfaktor' => ['goalfaktor', self::IMMER, 1],
+        'pointsfaktor' => ['pointsfaktor', self::IMMER, 1],
+        'enableGameSort' => ['enablegamesort', self::IMMER, 1],
+
+        'Rounds' => ['anzst', self::LIGA, null],
+        'Matches' => ['anzsp', self::LIGA, null],
+        'Kegel' => ['kegel', self::LIGA, 0],
+        'HandS' => ['hands', self::LIGA, 0],
+        'Graph' => ['kurve', self::LIGA, 1],
+        'Kreuz' => ['kreuz', self::LIGA, 1],
+        'Tabelle' => ['tabelle', self::LIGA, 1],
+        'Ligastats' => ['ligastats', self::LIGA, 1],
+        'PointsForWin' => ['pns', self::LIGA, 3],
+        'PointsForDraw' => ['pnu', self::LIGA, 1],
+        'PointsForLost' => ['pnn', self::LIGA, 0],
+        'MinusPoints' => ['minus', self::LIGA, 1],
+        'Direct' => ['direkt', self::LIGA, null],
+        'Spez' => ['spez', self::LIGA, null],
+        'HideDraw' => ['hidr', self::LIGA, 0],
+        'OnRun' => ['onrun', self::LIGA, 0],
+        'XtraS' => ['pxs', self::LIGA, 0],
+        'XtraU' => ['pxu', self::LIGA, 0],
+        'XtraV' => ['pxn', self::LIGA, 0],
+        'SpezS' => ['pps', self::LIGA, 0],
+        'SpezU' => ['ppu', self::LIGA, 0],
+        'SpezV' => ['ppn', self::LIGA, 0],
+        'Champ' => ['champ', self::LIGA, 1],
+        'CL' => ['anzcl', self::LIGA, 1],
+        'CK' => ['anzck', self::LIGA, 2],
+        'UC' => ['anzuc', self::LIGA, 2],
+        'AR' => ['anzar', self::LIGA, 0],
+        'AB' => ['anzab', self::LIGA, 3],
+        'namePkt' => ['namepkt', self::LIGA, ''],
+        'nameTor' => ['nametor', self::LIGA, ''],
+        'tableHinRueck' => ['einhinrueck', self::LIGA, 1],
+        'tableHeimAusw' => ['einheimausw', self::LIGA, 1],
+        'kurve1' => ['stat1', self::LIGA, null],
+        'kurve2' => ['stat2', self::LIGA, null],
+
+        'KlFin' => ['klfin', self::POKAL, 0],
+        'playdown' => ['playdown', self::POKAL, null],
+        'playoffmode' => ['playoffmode', self::POKAL, null],
+    ];
+
+    /** Was jeder Lader braucht, auch die abgespeckten: siehe ergaenzeGrunddaten() */
+    private const GRUNDDATEN = ['stx', 'lmvers', 'titel', 'dats', 'datm', 'datc'];
+
+    /** Kommen auch aus dem Seitenaufruf: die Datei setzt sie nur, wenn sie noch fehlen */
+    private const NUR_WENN_LEER = ['selteam', 'stat1', 'stat2'];
+
     /**
      * Setzt vor dem Lesen einer Datei die Werte zurueck, die nicht von der zuvor geladenen Liga
      * uebrig bleiben duerfen. Alle anderen Felder behalten ihren Wert, bis die Datei oder
@@ -217,6 +298,27 @@ class LigaDaten
     }
 
     /**
+     * Uebernimmt eine Zeile "Schluessel=Wert" aus dem Abschnitt [Options].
+     * Unbekannte Schluessel und solche, die fuer den Typ (Liga/Pokal) nicht gelten, werden
+     * uebergangen. Der Typ ist der bis hierher gelesene: Type steht in der Datei vor den
+     * Schluesseln, die von ihm abhaengen.
+     */
+    public function setzeOption(string $schluessel, string $wert): void
+    {
+        if (!isset(self::OPTIONEN[$schluessel])) {
+            return;
+        }
+        [$feld, $gilt] = self::OPTIONEN[$schluessel];
+        if ($gilt !== self::IMMER && $gilt !== $this->art()) {
+            return;
+        }
+        if (in_array($feld, self::NUR_WENN_LEER, true) && isset($this->$feld)) {
+            return;
+        }
+        $this->$feld = $schluessel === 'Name' || $schluessel === 'Type' ? stripslashes($wert) : $wert;
+    }
+
+    /**
      * Ergaenzt, was jeder Lader braucht, auch die abgespeckten (lmo-openfilename.php,
      * lmo-openfiledat.php), die nur wenige Schluessel lesen: Name, Version, aktueller Spieltag,
      * Datumsanzeige und die Groesse des Spielplans.
@@ -227,26 +329,9 @@ class LigaDaten
      */
     public function ergaenzeGrunddaten(): void
     {
-        if (!isset($this->stx)) {
-            $this->stx = 1;
-        }
-        if (!isset($this->lmvers)) {
-            $this->lmvers = 'k.A.';
-        }
-        if (!isset($this->titel)) {
-            $this->titel = 'No Name';
-        }
-        if (!isset($this->dats)) {
-            $this->dats = 1;
-        }
-        if (!isset($this->datm)) {
-            $this->datm = 0;
-        }
-        if (!isset($this->datc)) {
-            $this->datc = 1;
-        }
+        $this->setzeVorgaben(self::GRUNDDATEN);
 
-        if ($this->lmtype == 0) {
+        if ($this->art() === self::LIGA) {
             if (!isset($this->anzteams)) {
                 $this->anzteams = 18;
             }
@@ -280,22 +365,8 @@ class LigaDaten
     public function ergaenzeVorgabewerte(string $datumsformat): void
     {
         $this->ergaenzeGrunddaten();
+        $this->setzeVorgaben(null);
 
-        if (!isset($this->ergebnis)) {
-            $this->ergebnis = 1;
-        }
-        if (!isset($this->plan)) {
-            $this->plan = 1;
-        }
-        if (!isset($this->mittore)) {
-            $this->mittore = 1;
-        }
-        if (!isset($this->favteam)) {
-            $this->favteam = 0;
-        }
-        if (!isset($this->selteam)) {
-            $this->selteam = 0;
-        }
         // Fieberkurve: zweimal dieselbe Mannschaft oder nur die zweite gewaehlt -> als erste fuehren
         if (!isset($this->stat1)) {
             $this->stat1 = 0;
@@ -313,61 +384,50 @@ class LigaDaten
         if (!isset($this->datf)) {
             $this->datf = $datumsformat;
         }
-        if (!isset($this->urlt)) {
-            $this->urlt = 1;
-        }
-        if (!isset($this->urlb)) {
-            $this->urlb = 0;
-        }
-        if (!isset($this->goalfaktor) || $this->goalfaktor == '') {
+        // ein leerer Faktor zaehlt als fehlend
+        if ($this->goalfaktor == '') {
             $this->goalfaktor = 1;
         }
-        if (!isset($this->pointsfaktor) || $this->pointsfaktor == '') {
+        if ($this->pointsfaktor == '') {
             $this->pointsfaktor = 1;
         }
-        if (!isset($this->enablegamesort)) {
-            $this->enablegamesort = 1;
-        }
 
-        if ($this->lmtype == 0) {
-            $this->ergaenzeVorgabewerteLiga();
-        } else {
-            $this->ergaenzeVorgabewertePokal();
+        if ($this->art() === self::POKAL) {
+            if (empty($this->playdown)) {
+                $this->playdown = 0;
+            }
+            if (empty($this->playoffmode)) {
+                $this->playoffmode = 0;
+            }
+            $this->spez = 1;
+            $this->hands = 0;
         }
     }
 
-    private function ergaenzeVorgabewerteLiga(): void
+    /** Liga oder Pokal, nach dem bisher bekannten Typ */
+    private function art(): string
     {
-        $vorgaben = [
-            'kurve' => 1, 'kreuz' => 1, 'tabelle' => 1, 'ligastats' => 1,
-            'hands' => 0, 'hidr' => 0, 'onrun' => 0, 'kegel' => 0, 'minus' => 1,
-            'pns' => 3, 'pnu' => 1, 'pnn' => 0,
-            'pxs' => 0, 'pxu' => 0, 'pxn' => 0,
-            'pps' => 0, 'ppu' => 0, 'ppn' => 0,
-            'champ' => 1, 'anzcl' => 1, 'anzck' => 2, 'anzuc' => 2, 'anzar' => 0, 'anzab' => 3,
-            'namepkt' => '', 'nametor' => '',
-            'einhinrueck' => 1, 'einheimausw' => 1,
-        ];
-        foreach ($vorgaben as $feld => $wert) {
+        return $this->lmtype == 0 ? self::LIGA : self::POKAL;
+    }
+
+    /**
+     * Setzt die Vorgabewerte der Tabelle OPTIONEN fuer alle Felder, die noch leer sind.
+     *
+     * @param string[]|null $nurFelder nur diese Felder, null = alle
+     */
+    private function setzeVorgaben(?array $nurFelder): void
+    {
+        foreach (self::OPTIONEN as [$feld, $gilt, $vorgabe]) {
+            if ($vorgabe === null || ($gilt !== self::IMMER && $gilt !== $this->art())) {
+                continue;
+            }
+            if ($nurFelder !== null && !in_array($feld, $nurFelder, true)) {
+                continue;
+            }
             if (!isset($this->$feld)) {
-                $this->$feld = $wert;
+                $this->$feld = $vorgabe;
             }
         }
-    }
-
-    private function ergaenzeVorgabewertePokal(): void
-    {
-        if (!isset($this->klfin)) {
-            $this->klfin = 0;
-        }
-        if (empty($this->playdown)) {
-            $this->playdown = 0;
-        }
-        if (empty($this->playoffmode)) {
-            $this->playoffmode = 0;
-        }
-        $this->spez = 1;
-        $this->hands = 0;
     }
 
     /**

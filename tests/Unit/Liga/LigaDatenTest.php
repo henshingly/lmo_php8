@@ -254,4 +254,73 @@ class LigaDatenTest extends TestCase
         self::assertSame('1724421600', $ligaDaten->mterm[0][0]);
         self::assertSame([1, 0], [$ligaDaten->dats, $ligaDaten->datm]);
     }
+
+    public function testSetzeOptionOrdnetSchluesselDenFeldernZu(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+
+        $liga->setzeOption('Title', 'Liga Manager Online 4');
+        $liga->setzeOption('Name', "O\\'Neill-Liga");
+        $liga->setzeOption('Teams', '4');
+        $liga->setzeOption('PointsForWin', '2');
+        $liga->setzeOption('DatF', 'd.m.Y');
+        $liga->setzeOption('gibtEsNicht', 'x');
+
+        self::assertSame('Liga Manager Online 4', $liga->lmvers);
+        self::assertSame("O'Neill-Liga", $liga->titel, 'der Name steht mit Schraegstrichen in der Datei');
+        self::assertSame('4', $liga->anzteams);
+        self::assertSame('2', $liga->pns);
+        self::assertSame('d.m.Y', $liga->datf);
+    }
+
+    public function testSetzeOptionUebergehtSchluesselDesAnderenTyps(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->setzeOption('Type', '0');
+        $liga->setzeOption('KlFin', '1');
+        $liga->setzeOption('Rounds', '6');
+        self::assertNull($liga->klfin, 'Spiel um Platz 3 gibt es nur im Pokal');
+        self::assertSame('6', $liga->anzst);
+
+        $pokal = new LigaDaten();
+        $pokal->setzeStartwerte();
+        $pokal->setzeOption('Type', '1');
+        $pokal->setzeOption('KlFin', '1');
+        $pokal->setzeOption('Rounds', '6');
+        $pokal->setzeOption('PointsForWin', '2');
+        self::assertSame('1', $pokal->klfin);
+        self::assertNull($pokal->anzst, 'die Zahl der Runden wird im Pokal berechnet');
+        self::assertNull($pokal->pns);
+    }
+
+    /** Die Reihenfolge in der Datei zaehlt: vor "Type" gilt die Datei als Liga. */
+    public function testSetzeOptionRichtetSichNachDemBisherGelesenenTyp(): void
+    {
+        $pokal = new LigaDaten();
+        $pokal->setzeStartwerte();
+        $pokal->setzeOption('Rounds', '6');
+        $pokal->setzeOption('Type', '1');
+
+        self::assertSame('6', $pokal->anzst);
+    }
+
+    public function testSetzeOptionLaesstWerteAusDemSeitenaufrufStehen(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->selteam = '7';
+        $liga->stat1 = '3';
+
+        $liga->setzeOption('selTeam', '1');
+        $liga->setzeOption('kurve1', '5');
+        $liga->setzeOption('kurve2', '6');
+        $liga->setzeOption('favTeam', '2');
+
+        self::assertSame('7', $liga->selteam);
+        self::assertSame('3', $liga->stat1);
+        self::assertSame('6', $liga->stat2, 'war noch nicht gewaehlt');
+        self::assertSame('2', $liga->favteam);
+    }
 }

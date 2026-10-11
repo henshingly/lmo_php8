@@ -49,71 +49,11 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
       // Abschnitte, Schluessel und Werte liest Lmo\Liga\LigaDatei; hier folgt nur ihre Bedeutung
       foreach (\Lmo\Liga\LigaDatei::zerlege($datei) as list($sekt, $schl, $wert)) {
           if ($sekt=="Options"){
-            switch ($schl) {
-              case "Title":        $ligaDaten->lmvers=$wert;break;
-              case "Name":         $ligaDaten->titel=stripslashes($wert);break;
-              case "Type":         $ligaDaten->lmtype=stripslashes($wert);break;
-              case "Teams":        $ligaDaten->anzteams=$wert;break;
-              case "Actual":       if (!isset($st))$st=$wert;$ligaDaten->stx=$wert;break;
-              case "DatC":         $ligaDaten->datc=$wert;break;
-              case "DatS":         $ligaDaten->dats=$wert;break;
-              case "DatM":         $ligaDaten->datm=$wert;break;
-              case "DatF":         $ligaDaten->datf=$wert;break;
-              case "urlT":         $ligaDaten->urlt=$wert;break;
-              case "urlB":         $ligaDaten->urlb=$wert;break;
-              case "stats":        $stats=$wert;break;
-              case "Plan":         $ligaDaten->plan=$wert;break;
-              case "Ergebnis":     $ligaDaten->ergebnis=$wert;break;
-              case "mittore":      $ligaDaten->mittore=$wert;break;
-              case "favTeam":      $ligaDaten->favteam=$wert;break;
-              case "selTeam":      if (!isset($ligaDaten->selteam))$ligaDaten->selteam=$wert;break;
-              case "ticker":       $ligaDaten->nticker=$wert;break;
-              case "goalfaktor":   $ligaDaten->goalfaktor=$wert;break;
-              case "pointsfaktor": $ligaDaten->pointsfaktor=$wert;break;
-              case "enableGameSort":$ligaDaten->enablegamesort=$wert;break;
-            }
-            if ($ligaDaten->lmtype==0){
-              switch ($schl) {
-                case "Rounds":            $ligaDaten->anzst=$wert;break;
-                case "Matches":           $ligaDaten->anzsp=$wert;break;
-                case "Kegel":             $ligaDaten->kegel=$wert;break;
-                case "HandS":             $ligaDaten->hands=$wert;break;
-                case "Graph":             $ligaDaten->kurve=$wert;break;
-                case "Kreuz":             $ligaDaten->kreuz=$wert;break;
-                case "Tabelle":           $ligaDaten->tabelle=$wert;break;
-                case "Ligastats":         $ligaDaten->ligastats=$wert;break;
-                case "PointsForWin":      $ligaDaten->pns=$wert;break;
-                case "PointsForDraw":     $ligaDaten->pnu=$wert;break;
-                case "PointsForLost":     $ligaDaten->pnn=$wert;break;
-                case "MinusPoints":       $ligaDaten->minus=$wert;break;
-                case "Direct":            $ligaDaten->direkt=$wert;break;
-                case "Spez":              $ligaDaten->spez=$wert;break;
-                case "HideDraw":          $ligaDaten->hidr=$wert;break;
-                case "OnRun":             $ligaDaten->onrun=$wert;break;
-                case "XtraS":             $ligaDaten->pxs=$wert;break;
-                case "XtraU":             $ligaDaten->pxu=$wert;break;
-                case "XtraV":             $ligaDaten->pxn=$wert;break;
-                case "SpezS":             $ligaDaten->pps=$wert;break;
-                case "SpezU":             $ligaDaten->ppu=$wert;break;
-                case "SpezV":             $ligaDaten->ppn=$wert;break;
-                case "Champ":             $ligaDaten->champ=$wert;break;
-                case "CL":                $ligaDaten->anzcl=$wert;break;
-                case "CK":                $ligaDaten->anzck=$wert;break;
-                case "UC":                $ligaDaten->anzuc=$wert;break;
-                case "AR":                $ligaDaten->anzar=$wert;break;
-                case "AB":                $ligaDaten->anzab=$wert;break;
-                case "namePkt":           $ligaDaten->namepkt=$wert;break;
-                case "nameTor":           $ligaDaten->nametor=$wert;break;
-                case "tableHinRueck":     $ligaDaten->einhinrueck=$wert;break;
-                case "tableHeimAusw":     $ligaDaten->einheimausw=$wert;break;
-                case "kurve1":            if (!isset($ligaDaten->stat1))$ligaDaten->stat1=$wert;break;
-                case "kurve2":            if (!isset($ligaDaten->stat2))$ligaDaten->stat2=$wert;break;
-              }
-            } else {
-              if ($schl=="KlFin"){         $ligaDaten->klfin=$wert;}
-              if ($schl=="playdown"){      $ligaDaten->playdown=$wert;}
-              if ($schl=="playoffmode"){   $ligaDaten->playoffmode=$wert;}
-            }
+            // $st und $stats gehoeren nicht zur Liga: gewaehlter Spieltag (auch Aufrufparameter), Statistik-Schalter
+            if ($schl=="Actual" && !isset($st)){ $st=$wert;}
+            if ($schl=="stats"){ $stats=$wert;}
+            // alle anderen Schluessel: Tabelle OPTIONEN in Lmo\Liga\LigaDaten
+            $ligaDaten->setzeOption($schl,$wert);
           }
           $daten[]="$sekt|$schl|$wert|EOL";
       }
