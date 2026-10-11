@@ -9,6 +9,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Changed  
+- Die ganze Ligadatei wird über `Lmo\Liga\LigaDaten` geschrieben; `lmo-savefile.php` enthält nur noch das Öffnen, Sperren und Schreiben der Zeilen. Die geschriebene Datei ist unverändert.
 - News, Spieltage und Partien liest `Lmo\Liga\LigaDaten`; der Lader `lmo-openfile.php` enthält nur noch den Ablauf. Die gelesenen Werte sind unverändert.
 - Auch die Abschnitte der Mannschaften (`[Teams]`, `[Teamk]`, `[Teamm]`, `[Team1]` …) werden über `Lmo\Liga\LigaDaten` gelesen und gespeichert, einschließlich der abgeleiteten Kurz- und Mittelnamen. Gelesene Werte und geschriebene Datei sind unverändert.
 - Welcher Schlüssel des Abschnitts `[Options]` zu welchem Wert der Liga gehört, für Liga oder Pokal gilt und welchen Vorgabewert hat, steht jetzt in einer Tabelle in `Lmo\Liga\LigaDaten`. Der Lader `lmo-openfile.php` und das Speichern in `lmo-savefile.php` benutzen beide diese Tabelle; die geschriebene Datei ist unverändert.
@@ -259,6 +260,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Changed  
+- The whole league file is written through `Lmo\Liga\LigaDaten`; `lmo-savefile.php` only contains opening, locking and writing the lines. The written file is unchanged.
 - News, rounds and matches are read by `Lmo\Liga\LigaDaten`; the loader `lmo-openfile.php` only contains the sequence. The values read are unchanged.
 - The team sections (`[Teams]`, `[Teamk]`, `[Teamm]`, `[Team1]` …) are now read and saved through `Lmo\Liga\LigaDaten` as well, including the derived short and medium names. Values read and the written file are unchanged.
 - Which key of the `[Options]` section belongs to which league value, applies to league or cup and has which default now is kept in one table in `Lmo\Liga\LigaDaten`. The loader `lmo-openfile.php` and saving in `lmo-savefile.php` both use this table; the written file is unchanged.
