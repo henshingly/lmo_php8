@@ -24,6 +24,34 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ***
+## [4.3.2] - 2026-10-11
+
+_Hier hätten wir die Changelogs für 4.3.2._  
+
+### Changed  
+* PHPStan prüft die Klassen und Funktionen der Classlib und die Tests jetzt auf Stufe 5.  
+* Classlib: Die Typangaben in den Kommentaren stimmen mit dem Verhalten überein (z. B. `team|null` statt `object` bei den Suchfunktionen, `$` vor den Parameternamen). Am Code selbst ändert sich dadurch nichts.  
+
+### Fixed  
+* Classlib: Ein unlesbares Spieltagsdatum in der Ligadatei (z. B. `D1=ab.cd.efgh` oder `D1=23.08.`) ließ das Laden der Liga mit einem Fehler abbrechen; es gilt jetzt als fehlend.  
+* Classlib: Das Sortieren einer Tabelle ohne Zeilen (`sortTable()`, `sortDirectTable()`) brach mit einem Fehler ab; `getVerlaufTeam()` und `getVerlaufTeams()` liefern für ein Team außerhalb der Liga ein leeres Array statt einer PHP-Warnung.  
+
+
+***
+## [4.3.1] - 2026-10-11
+
+_Hier hätten wir die Changelogs für 4.3.1._  
+
+### Added  
+* Statische Analyse mit PHPStan (`composer phpstan` bzw. `docker compose run --rm phpstan`, auch in der GitHub-Action): gesamter Code auf Stufe 0, neuer Code auf Stufe 8.  
+
+### Fixed  
+* Update-Prüfung: Erlaubt der Server keine Abfragen nach außen (`allow_url_fopen` aus), wird nichts mehr versucht und keine Merkdatei geschrieben; eine beschädigte Merkdatei wird ignoriert.  
+* `lmo-install` findet den Autoloader auch beim direkten Aufruf im Git-Checkout (`vendor/` neben `lmo/`).  
+* Kalender im Admin-Bereich: Im Mai erschien im Kopf die Abkürzung statt des ausgeschriebenen Monatsnamens.  
+
+
+***
 ## [4.3.0] - 2026-10-11
 
 _Hier hätten wir die Changelogs für 4.3.0._  
@@ -233,6 +261,34 @@ _Here we write changelog notes for the next version._
 
 
 ### Security  
+
+
+***
+## [4.3.2] - 2026-10-11
+
+_Here we had the changelogs for 4.3.2._  
+
+### Changed  
+* PHPStan now checks the classes and functions of the classlib and the tests on level 5.  
+* Classlib: the types in the comments match the behaviour (e.g. `team|null` instead of `object` for the lookup functions, `$` in front of parameter names). The code itself does not change.  
+
+### Fixed  
+* Classlib: an unreadable round date in the league file (e.g. `D1=ab.cd.efgh` or `D1=23.08.`) aborted loading the league with an error; it now counts as missing.  
+* Classlib: sorting a table without rows (`sortTable()`, `sortDirectTable()`) aborted with an error; `getVerlaufTeam()` and `getVerlaufTeams()` return an empty array for a team outside the league instead of a PHP warning.  
+
+
+***
+## [4.3.1] - 2026-10-11
+
+_Here we had the changelogs for 4.3.1._  
+
+### Added  
+* Static analysis with PHPStan (`composer phpstan` or `docker compose run --rm phpstan`, also in the GitHub action): all code on level 0, new code on level 8.  
+
+### Fixed  
+* Update check: if the server does not allow outgoing requests (`allow_url_fopen` off), nothing is tried and no cache file is written; a damaged cache file is ignored.  
+* `lmo-install` also finds the autoloader when called directly in a Git checkout (`vendor/` next to `lmo/`).  
+* Calendar in the admin area: in May the header showed the abbreviation instead of the full month name.  
 
 
 ***

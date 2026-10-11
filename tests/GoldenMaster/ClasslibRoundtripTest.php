@@ -96,7 +96,7 @@ AT11=1729011600
 
 L98;
 
-    /** @var array<string,array> Ligadatei => verlorene, neue und geaenderte Schluessel */
+    /** @var array<string,array|null> Ligadatei => verlorene, neue und geaenderte Schluessel */
     private static array $results = [];
 
     public static function setUpBeforeClass(): void

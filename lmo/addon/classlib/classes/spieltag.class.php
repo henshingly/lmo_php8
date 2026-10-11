@@ -21,14 +21,14 @@ class spieltag {
 
     /**
     * vonDatum als string,
-    * @var string
+    * @var integer|string|null Unix-Zeitstempel
     * @access public
     */
     var $von;
 
     /**
     * bisDatum als string,
-    * @var string
+    * @var integer|string|null Unix-Zeitstempel
     * @access public
     */
     var $bis;
@@ -61,8 +61,8 @@ class spieltag {
     * Konstruktor
     *
     * @param integer $new_nr
-    * @param string $new_von
-    * @param string $new_bis
+    * @param integer|string $new_von Unix-Zeitstempel oder ''
+    * @param integer|string $new_bis Unix-Zeitstempel oder ''
     * @param array $partien
     * @return spieltag
     */
@@ -87,7 +87,8 @@ class spieltag {
     *
     * @since 2.8
     * @access public
-    * @param string Sortierung
+    * @param string $sorted Sortierung
+    * @param string $sort_dir Richtung: ASC oder DESC
     * @return array Partien
     */
     function getPartien($sorted = '', $sort_dir = 'ASC') {
@@ -140,8 +141,8 @@ class spieltag {
     * Weiteren Wert des Spieltags setzen, z.B. HS (Handicap-Reihenfolge)
     *
     * @access public
-    * @param mixed value Wert, oder ein Array Schluessel => Wert
-    * @param string key Schluessel wie in der Ligadatei
+    * @param mixed $value Wert, oder ein Array Schluessel => Wert
+    * @param string $key Schluessel wie in der Ligadatei
     */
     function setParameter($value, $key = '') {
         if (is_array($value)) {
@@ -156,7 +157,7 @@ class spieltag {
     * Weiteren Wert des Spieltags lesen; ohne Schluessel alle Werte
     *
     * @access public
-    * @param string key Schluessel wie in der Ligadatei
+    * @param string $key Schluessel wie in der Ligadatei
     * @return mixed Wert, null wenn nicht gesetzt
     */
     function getParameter($key = '') {
@@ -170,8 +171,8 @@ class spieltag {
     * Gibt Partie der angegebener Nummer zurück
     *
     * @access public
-    * @param integer Partienummer
-    * @return object Die Partie
+    * @param integer|null $number Partienummer
+    * @return partie|null Die Partie
     */
     function &partieForNumber($number) {
         $result = null;
@@ -186,8 +187,9 @@ class spieltag {
     * Gibt Partie der angegebener Teamnummern zurück
     *
     * @access public
-    * @param integer Heimmannschaftsnummer integer Gastmannschaftsnummer
-    * @return object Die Partie
+    * @param integer $heimNr Heimmannschaftsnummer
+    * @param integer $gastNr Gastmannschaftsnummer
+    * @return partie|null Die Partie
     */
     function &partieForTeams($heimNr, $gastNr) {
         $count = $this->partienCount();
@@ -219,8 +221,9 @@ class spieltag {
     * Gibt Partie der angegebener Teamnamen zurück
     *
     * @access public
-    * @param string Heimmannschaftsname string Gastmannschaftsname
-    * @return object Die Partie
+    * @param string $heimName Heimmannschaftsname
+    * @param string $gastName Gastmannschaftsname
+    * @return partie|null Die Partie
     */
     function &partieForTeamNames($heimName, $gastName) {
         $result = null;
@@ -237,7 +240,7 @@ class spieltag {
     * Löscht Partie
     *
     * @access public
-    * @param objekt Partie
+    * @param object $rmvPartie Partie
     * @return bool Partie wurde gelöscht true / false
     */
     function removePartie(&$rmvPartie) {
@@ -257,12 +260,7 @@ class spieltag {
                 $index++;
             }
         }
-        if (isset($partienArray)) {
-            $this->partien = &$partienArray;
-        }
-        else {
-            $this->partien = null;
-        }
+        $this->partien = $partienArray;
         return $result;
     }
 
@@ -280,7 +278,7 @@ class spieltag {
     * Fügt Partie zum Spieltage hinzu
     *
     * @access public
-    * @param Object die Partie
+    * @param object $neuePartie die Partie
     */
     function addPartie(&$neuePartie) {
         $this->partien[] = $neuePartie; // &$ Das muss so sein

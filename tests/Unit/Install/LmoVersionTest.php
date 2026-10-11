@@ -48,10 +48,13 @@ class LmoVersionTest extends TestCase
         self::assertSame($expected, lmo_normalize_version($pretty));
     }
 
-    /** Im Repo selbst ist kein Tag installiert: Die Anzeige haengt dann nicht vom Branch ab. */
-    public function testInstalledVersionInTheRepoIsDev(): void
+    /**
+     * Im Repo selbst haengt die Anzeige nicht vom Branch ab: "dev", oder die Version,
+     * wenn genau ein getaggter Stand ausgecheckt ist.
+     */
+    public function testInstalledVersionInTheRepoIsDevOrATag(): void
     {
-        self::assertSame('dev', lmo_installed_version());
+        self::assertMatchesRegularExpression('/^(dev|\d+\.\d+\.\d+)$/', lmo_installed_version());
     }
 
     public function testLatestReleaseReadsThePackagistList(): void
@@ -124,6 +127,32 @@ class LmoVersionTest extends TestCase
 
         $latest = lmo_update_info($this->cache, true, 86400, static fn () => false, 2000);
 
+        self::assertSame('4.3.0', $latest['version']);
+    }
+
+    /** @return array<string, array{string}> */
+    public static function brokenCaches(): array
+    {
+        return [
+            'kein JSON' => ['<html>'],
+            'Version fehlt' => ['{"checked": 1000, "latest": {"time": "", "php": "", "changelog": ""}}'],
+            'Version ist kein Text' => ['{"checked": 1000, "latest": {"version": ["4.3.0"], "time": "", "php": "", "changelog": ""}}'],
+            'Zeitpunkt ist kein Zeitstempel' => ['{"checked": "gestern", "latest": null}'],
+        ];
+    }
+
+    /**
+     * Eine beschaedigte Merkdatei gilt als unbekannt und wird durch eine neue Abfrage ersetzt.
+     *
+     * @dataProvider brokenCaches
+     */
+    public function testUpdateInfoIgnoresABrokenCache(string $content): void
+    {
+        file_put_contents($this->cache, $content);
+
+        $latest = lmo_update_info($this->cache, false, 86400, static fn () => json_encode(self::packagist()), 1001);
+
+        self::assertNotNull($latest);
         self::assertSame('4.3.0', $latest['version']);
     }
 

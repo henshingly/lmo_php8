@@ -42,6 +42,7 @@ final class FormSubmitter
             return null;
         }
 
+        /** @var \DOMElement $chosen */
         $fields = [];
         foreach ($xpath->query('.//input|.//select|.//textarea', $chosen) as $element) {
             /** @var \DOMElement $element */
@@ -74,6 +75,7 @@ final class FormSubmitter
                         }
                     }
                     if (!$selected && !$element->hasAttribute('multiple') && $options->length > 0) {
+                        /** @var \DOMElement $first */
                         $first = $options->item(0);
                         $selected[] = $first->hasAttribute('value') ? $first->getAttribute('value') : trim($first->textContent);
                     }

@@ -49,6 +49,34 @@ Ohne Docker: `composer install && php vendor/bin/phpunit` (PHP ≥ 8.0, optional
 eine Abweichung geprüft und gewollt ist. Eine Abweichung ist zunächst ein Befund, kein Grund
 zum Aktualisieren.
 
+## Statische Analyse mit PHPStan
+
+```bash
+docker compose run --rm phpstan      # im Docker
+composer phpstan                     # ohne Docker
+```
+
+Es laufen vier Pruefungen nacheinander:
+
+| Konfiguration | Stufe | Umfang |
+|---|---|---|
+| `phpstan.neon.dist` | 0 | gesamter Code (`lmo/`, `src/`, `bin/`, `tests/`): unbekannte Klassen, Funktionen und Methoden |
+| `phpstan-classlib.neon.dist` | 5 | Klassen und Funktionen der Classlib (`lmo/addon/classlib`): zusaetzlich nicht gesetzte Variablen, Typangaben in den Kommentaren, Rueckgabetypen und Parametertypen bei Aufrufen |
+| `phpstan-tests.neon.dist` | 5 | Tests ohne die Hilfsskripte in `tests/GoldenMaster/bin`: falsche Parametertypen, unmoegliche Vergleiche |
+| `phpstan-strict.neon.dist` | 8 | neuer, typisierter Code (`src/`, `bin/lmo-install`, `lmo/lmo-version.php`) |
+
+Ab Stufe 1 meldet PHPStan die globalen Variablen des alten Codes, die eine Datei setzt und eine
+andere per `require` benutzt (rund 9500 Stellen). Deshalb bleibt der alte Code auf Stufe 0. Die
+Classlib besteht aus Klassen und steht deshalb auf Stufe 5; ab Stufe 6 verlangt PHPStan Typen an
+jedem Parameter und Rueckgabewert. Wird
+eine Datei typisiert und von globalen Variablen befreit, kommt sie in `phpstan-strict.neon.dist`.
+
+Auf Stufe 0 ist der gesamte Code ohne Meldung; eine Baseline gibt es deshalb nicht. Die einzige
+Ausnahme steht mit Begruendung in `phpstan.neon.dist` (`ignoreErrors`).
+
+Geprueft wird fuer PHP 8.0 bis 8.5 (`phpVersion` in der Konfiguration), unabhaengig davon, mit
+welcher PHP-Version PHPStan selbst laeuft.
+
 ## So werden Abweichungen angezeigt
 - HTML wird normalisiert (Session-IDs, Temp-Pfade, Zufallsfarben der Fieberkurve entfernt,
   Whitespace zusammengefasst, ein Tag pro Zeile). Dadurch stören Einrückungsänderungen durch

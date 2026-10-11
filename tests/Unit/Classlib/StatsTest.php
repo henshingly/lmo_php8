@@ -160,4 +160,25 @@ final class StatsTest extends ClasslibTestCase
             'Unentschieden' => [['u' => 1, 'su' => 4, 'nu' => 2], '1 Unentschieden<br>2 Spiele o. Sieg<br>4 Spiele o. Niederlage'],
         ];
     }
+
+    public function testVerlaufOfATeamOutsideTheLeagueIsEmpty(): void
+    {
+        $fremd = new \team('Fremd', 'FRE', 99);
+
+        self::assertSame([], $this->stats->getVerlaufTeam($fremd));
+        self::assertSame([], $this->stats->getVerlaufTeams($fremd, $fremd));
+    }
+
+    public function testStatsForTeamsWithoutPlayedGamesKeepChanceZero(): void
+    {
+        $liga = self::league(['A', 'B'], [[[1, 2, -1, -1]]], ['Rounds' => 1]);
+        $a = $liga->teamForName('A');
+        $b = $liga->teamForName('B');
+
+        [$statsA, $statsB] = (new \stats($liga))->calcStatsForTeams($a, $b);
+
+        // bleibt auf dem Startwert: ohne Spiele gibt es nichts zu vergleichen
+        self::assertSame(0, $statsA['chance']);
+        self::assertSame(0, $statsB['chance']);
+    }
 }

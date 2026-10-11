@@ -30,7 +30,7 @@ $trans_lang = array(
     'Sat' => $text['date'][12], 'Sun' => $text['date'][13],
     'January' => $text['date'][14], 'February' => $text['date'][15],
     'March' => $text['date'][16], 'April' => $text['date'][17],
-    'May' => $text['date'][18], 'June' => $text['date'][19],
+    'June' => $text['date'][19],
     'July' => $text['date'][20], 'August' => $text['date'][21],
     'September' => $text['date'][22], 'October' => $text['date'][23],
     'November' => $text['date'][24], 'December' => $text['date'][25],

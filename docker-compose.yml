@@ -17,6 +17,12 @@ services:
       GOLDEN_COVERAGE: ${GOLDEN_COVERAGE:-0}
       GOLDEN_NO_FAKETIME: ${GOLDEN_NO_FAKETIME:-0}
 
+  # Statische Analyse mit PHPStan (siehe TESTING.md):  docker compose run --rm phpstan
+  phpstan:
+    extends:
+      service: tests
+    entrypoint: ["sh", "-c", "[ -x vendor/bin/phpstan ] || composer install --no-interaction --no-progress --prefer-dist; composer phpstan"]
+
   # Webserver zum Ausprobieren, arbeitet live auf ./lmo:  docker compose up -d web
   # Aufruf: http://localhost:${WEB_PORT:-8082}/lmo/
   # Addons mit Beispielligen ausprobieren: http://localhost:${WEB_PORT:-8082}/demo/

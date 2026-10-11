@@ -11,5 +11,9 @@ bin/* text eol=lf
 /docker export-ignore
 /docker-compose.yml export-ignore
 /phpunit.xml.dist export-ignore
+/phpstan.neon.dist export-ignore
+/phpstan-strict.neon.dist export-ignore
+/phpstan-classlib.neon.dist export-ignore
+/phpstan-tests.neon.dist export-ignore
 /tests export-ignore
 /TESTING.md export-ignore

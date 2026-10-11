@@ -30,7 +30,7 @@ if (!defined('LMO_VERSION_DEV')) {
 /**
  * "v4.2.1" -> "4.2.1"; alles ohne Versionsnummer (dev-master, 1.0.0+no-version-set, null) -> "dev".
  */
-function lmo_normalize_version($pretty)
+function lmo_normalize_version(?string $pretty): string
 {
     $pretty = ltrim((string)$pretty, 'vV');
     if (!preg_match('/^\d+(\.\d+)+([-.]?(alpha|beta|rc|patch|p)\.?\d*)?$/i', $pretty) || strpos($pretty, '+no-version-set') !== false) {
@@ -42,7 +42,7 @@ function lmo_normalize_version($pretty)
 /**
  * Installierte Version laut Composer.
  */
-function lmo_installed_version()
+function lmo_installed_version(): string
 {
     if (!class_exists('Composer\InstalledVersions')) {
         return LMO_VERSION_DEV;
@@ -59,9 +59,11 @@ function lmo_installed_version()
  * Die Liste ist verkuerzt ("minified": "composer/2.0"): Jeder Eintrag nennt nur, was sich
  * gegenueber dem vorherigen aendert; "__unset" entfernt einen Wert.
  *
- * @return array|null ['version' => '4.3.0', 'time' => '2026-11-01', 'php' => '>=8.0', 'changelog' => URL oder '']
+ * @param mixed $packagist dekodierte Antwort von Packagist
+ * @return array{version: string, time: string, php: string, changelog: string}|null
+ *         z. B. ['version' => '4.3.0', 'time' => '2026-11-01', 'php' => '>=8.0', 'changelog' => URL oder '']
  */
-function lmo_latest_release($packagist, $package = LMO_PACKAGE)
+function lmo_latest_release($packagist, string $package = LMO_PACKAGE): ?array
 {
     $latest = null;
     $entry = array();
@@ -79,7 +81,7 @@ function lmo_latest_release($packagist, $package = LMO_PACKAGE)
         if (!preg_match('/^\d+(\.\d+)+$/', $version) || ($latest !== null && version_compare($version, $latest['version'], '<='))) {
             continue;
         }
-        $source = isset($entry['source']['url']) ? preg_replace('/\.git$/', '', (string)$entry['source']['url']) : '';
+        $source = isset($entry['source']['url']) ? (string)preg_replace('/\.git$/', '', (string)$entry['source']['url']) : '';
         $latest = array(
             'version' => $version,
             'time' => isset($entry['time']) ? substr((string)$entry['time'], 0, 10) : '',
@@ -94,23 +96,30 @@ function lmo_latest_release($packagist, $package = LMO_PACKAGE)
  * Fragt Packagist nach der neuesten Version. Das Ergebnis (auch ein Fehlschlag) wird in $cacheFile
  * gemerkt und erst nach $maxAge Sekunden oder mit $force neu geholt.
  *
- * @param callable|null $fetch nur fuer Tests: liefert den Inhalt der URL oder false
- * @return array|null wie lmo_latest_release(), null wenn nichts bekannt ist
+ * @param callable(string): (string|false)|null $fetch nur fuer Tests: liefert den Inhalt der URL oder false
+ * @return array{version: string, time: string, php: string, changelog: string}|null
+ *         wie lmo_latest_release(), null wenn nichts bekannt ist
  */
-function lmo_update_info($cacheFile, $force = false, $maxAge = 86400, $fetch = null, $now = null)
+function lmo_update_info(string $cacheFile, bool $force = false, int $maxAge = 86400, ?callable $fetch = null, ?int $now = null): ?array
 {
     $now = $now === null ? time() : $now;
     $cache = is_file($cacheFile) ? json_decode((string)@file_get_contents($cacheFile), true) : null;
-    if (!$force && is_array($cache) && isset($cache['checked']) && $now - $cache['checked'] < $maxAge && $cache['checked'] <= $now) {
-        return isset($cache['latest']) && is_array($cache['latest']) ? $cache['latest'] : null;
+    $checked = is_array($cache) && isset($cache['checked']) && is_int($cache['checked']) ? $cache['checked'] : null;
+    $known = is_array($cache) && isset($cache['latest']) ? lmo_release_from_cache($cache['latest']) : null;
+    if ($known === null && isset($cache['latest'])) {
+        $checked = null; // beschaedigte Merkdatei: neu fragen
+    }
+    if (!$force && $checked !== null && $now - $checked < $maxAge && $checked <= $now) {
+        return $known;
     }
 
     $url = 'https://repo.packagist.org/p2/' . LMO_PACKAGE . '.json';
     if ($fetch === null) {
+        // Der Server erlaubt keine Abfragen: nichts versuchen und nichts merken.
+        if (!ini_get('allow_url_fopen')) {
+            return $known;
+        }
         $fetch = static function ($url) {
-            if (!ini_get('allow_url_fopen')) {
-                return false;
-            }
             $context = stream_context_create(array('http' => array('timeout' => 3, 'user_agent' => 'LMO update check')));
             return @file_get_contents($url, false, $context);
         };
@@ -118,8 +127,8 @@ function lmo_update_info($cacheFile, $force = false, $maxAge = 86400, $fetch = n
     $json = $fetch($url);
     $latest = is_string($json) ? lmo_latest_release(json_decode($json, true)) : null;
     // bei einem Fehlschlag das letzte bekannte Ergebnis behalten
-    if ($latest === null && is_array($cache) && isset($cache['latest']) && is_array($cache['latest'])) {
-        $latest = $cache['latest'];
+    if ($latest === null) {
+        $latest = $known;
     }
     @file_put_contents($cacheFile, json_encode(array('checked' => $now, 'latest' => $latest)));
 
@@ -127,9 +136,29 @@ function lmo_update_info($cacheFile, $force = false, $maxAge = 86400, $fetch = n
 }
 
 /**
- * Gibt es eine neuere Version als die installierte? Ein Entwicklungsstand wird nie als veraltet gemeldet.
+ * Liest ein gemerktes Ergebnis; alles, was nicht wie eines aussieht, gilt als unbekannt.
+ *
+ * @param mixed $value
+ * @return array{version: string, time: string, php: string, changelog: string}|null
  */
-function lmo_is_newer($latest, $installed)
+function lmo_release_from_cache($value): ?array
+{
+    $release = array();
+    foreach (array('version', 'time', 'php', 'changelog') as $key) {
+        if (!is_array($value) || !isset($value[$key]) || !is_string($value[$key])) {
+            return null;
+        }
+        $release[$key] = $value[$key];
+    }
+    return $release['version'] === '' ? null : $release;
+}
+
+/**
+ * Gibt es eine neuere Version als die installierte? Ein Entwicklungsstand wird nie als veraltet gemeldet.
+ *
+ * @param mixed $latest
+ */
+function lmo_is_newer($latest, string $installed): bool
 {
     return $installed !== LMO_VERSION_DEV && is_string($latest) && $latest !== '' && version_compare($latest, $installed, '>');
 }

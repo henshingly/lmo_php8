@@ -15,7 +15,7 @@ class stats {
     /**
     * Referenz auf das Ligaobject
     *
-    * @var Object  Typ liga
+    * @var liga|null
     */
     var $liga = null;
 
@@ -51,7 +51,7 @@ class stats {
     *    $statsArray['maxTor'][]   object(partie) meiste Tore der Saison
     *
     * @access public
-    * @param integer spTag Spieltag für den die Statistik berechnet werden soll.
+    * @param integer $spTag Spieltag für den die Statistik berechnet werden soll.
     * @return array Statistik des Angegebenen Spieltages
     */
     function calcLigaStats($spTag = 1) {
@@ -171,9 +171,8 @@ class stats {
     *                 $statsArray['tabelle']        Tabellenzeile des Teams
     *
     * @author <a href='mailto:lmo@marcus.schug.info'>Marcus Schug</a>
-    * @param teamObject $teama Referenz auf ein TeamObject A
-    * @param teamObject $teamb Referenz auf ein TeamObject B
-    * @return array Statistik der beiden teams analog calcStatsForTeam
+    * @param team $team Referenz auf ein TeamObject
+    * @return array Statistik des Teams
     */
     function calcStatsForTeam(&$team) {
         $statsArray = array(
@@ -211,8 +210,8 @@ class stats {
     /**
     * Berechnung für den Statistikvergleich zweier Teams
     *
-    * @param teamObject $teama Referenz auf ein TeamObject A
-    * @param teamObject $teamb Referenz auf ein TeamObject B
+    * @param team $teama Referenz auf ein TeamObject A
+    * @param team $teamb Referenz auf ein TeamObject B
     * @return array Statistik der beiden teams analog calcStatsForTeam
     */
     function calcStatsForTeams(&$teama, &$teamb) {
@@ -225,14 +224,14 @@ class stats {
             $dx =($statsArrayB['tabelle']['pTor'] / $statsArrayB['tabelle']['spiele']) + ($statsArrayA['tabelle']['mTor'] / $statsArrayA['tabelle']['spiele']);
             $ex = $ax + $bx;
             $fx = $cx + $dx;
-        }
-        if (isset($ex) && ($ex > 0) && isset($fx) &&($fx > 0)) {
-            $ax = round(10000 * $ax / $ex);
-            $bx = round(10000 * $bx / $ex);
-            $cx = round(10000 * $cx / $fx);
-            $dx = round(10000 * $dx / $fx);
-            $statsArrayA['chance'] = number_format((($ax + $cx) / 200), 2, ',', '.');
-            $statsArrayB['chance'] = number_format((($bx + $dx) / 200), 2, ',', '.');
+            if ($ex > 0 && $fx > 0) {
+                $ax = round(10000 * $ax / $ex);
+                $bx = round(10000 * $bx / $ex);
+                $cx = round(10000 * $cx / $fx);
+                $dx = round(10000 * $dx / $fx);
+                $statsArrayA['chance'] = number_format((($ax + $cx) / 200), 2, ',', '.');
+                $statsArrayB['chance'] = number_format((($bx + $dx) / 200), 2, ',', '.');
+            }
         }
         $resultArray[] = $statsArrayA;
         $resultArray[] = $statsArrayB;
@@ -243,7 +242,7 @@ class stats {
     * Berechnung der Serien für ein Team
     *
     * @access public
-    * @param teamObject $team Referenz auf ein TeamObject
+    * @param team $team Referenz auf ein TeamObject
     * @return array SerienArray, array(s,n,u,su,nu)
     */
     function getSerien(&$team){
@@ -347,7 +346,7 @@ class stats {
     *                 $maxArray['Tor'][n]['partie'] mit der Referenz auf eine Partie
     *
     * @access public
-    * @param teamObject $team Referenz auf ein TeamObject
+    * @param team $team Referenz auf ein TeamObject
     * @return array MaxArray, array(sH,sA,nH,nA,Tor)
     */
     function getMaxResults(&$team){
@@ -438,10 +437,11 @@ class stats {
     /**
     * Berechnung des Saisonverlaufs für ein Team
     *
-    * @param teamObject $teama Referenz auf ein TeamObject A
+    * @param team $team Referenz auf ein TeamObject
     * @return array Saisonverlauf des Teams
     */
     function getVerlaufTeam(&$team) {
+        $positionen = array();
         $tableArray = $this->liga->calcTable($this->liga->options->keyValues['Rounds'], 'all', true);
         foreach($tableArray as $zeile){
             if ($zeile['team'] == $team){
@@ -455,11 +455,12 @@ class stats {
     /**
     * Berechnung des Saisonverlaufs für zwei Teams
     *
-    * @param teamObject $teama Referenz auf ein TeamObject A
-    * @param teamObject $teamb Referenz auf ein TeamObject B
+    * @param team $teama Referenz auf ein TeamObject A
+    * @param team $teamb Referenz auf ein TeamObject B
     * @return array Saisonverlauf der Teams
     */
     function getVerlaufTeams(&$teama, &$teamb) {
+        $positionen = array();
         $tableArray = $this->liga->calcTable($this->liga->options->keyValues['Rounds'], 'all', true);
         foreach($tableArray as $zeile){
             if ($zeile['team'] == $teama){
@@ -476,7 +477,7 @@ class stats {
     * Ausgabe der Serie als HTML
     *
     * @author Marcus Schug <lmo@marcus.schug.info>
-    * @param array Array mit Serien analog Rückgabewert von getSerien(()
+    * @param array $serienArray Array mit Serien analog Rückgabewert von getSerien(()
     * @return string Serie als HTML
     */
     function SerieToHTML($serienArray){

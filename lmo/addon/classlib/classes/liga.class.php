@@ -31,7 +31,7 @@ class liga {
 
     /**
     * Name der Liga,
-    * @var string
+    * @var string|null
     * @access public
     */
     var $name;
@@ -71,7 +71,7 @@ class liga {
 
     /**
     * Timestamp des FileDatum
-    * @var datetime
+    * @var integer|false Unix-Zeitstempel
     * @access public
     */
     var $ligaDatum;
@@ -93,6 +93,13 @@ class liga {
     var $directContext = null;
 
     /**
+    * Einstellungen der Liga (Sektion [Options] der Ligadatei); null, solange keine Liga geladen ist
+    * @var optionsSektion|null
+    * @access public
+    */
+    var $options = null;
+
+    /**
     * Konstruktor
     *
     * @param string $name
@@ -105,14 +112,31 @@ class liga {
     }
 
     /**
+    * Datum aus der Ligadatei (TT.MM.JJJJ) als Unix-Zeitstempel um 0 Uhr.
+    * Ein fehlendes oder unlesbares Datum ergibt null.
+    *
+    * @access protected
+    * @param mixed $date
+    * @return integer|null
+    */
+    static function dateToTime($date) {
+        $parts = explode('.', (string) $date);
+        if (count($parts) != 3 || !is_numeric($parts[0]) || !is_numeric($parts[1]) || !is_numeric($parts[2])) {
+            return null;
+        }
+        list($day, $month, $year) = array_map('intval', $parts);
+        return checkdate($month, $day, $year) ? mktime(0, 0, 0, $month, $day, $year) : null;
+    }
+
+    /**
     * factory
     * die Funktion sucht den Parameter LigaType im Ligafile und gibt passend hierzu ein
     * Object der Klassen liga oder einer der Kindklassen zurück
     *
     * @author markus Doerfling <markus@doerfling.net>
     * @since 2.8 RC2
-    * @param file string Pfad zur Ligadatei (*.l98)
-    * @return object ein object passend zum Ligafile
+    * @param string $file Pfad zur Ligadatei (*.l98)
+    * @return liga|null ein object passend zum Ligafile, null wenn es die Datei nicht gibt
     */
     static function factory($file) {
         if (!file_exists($file)) {
@@ -145,7 +169,7 @@ class liga {
     * Fügt ein Teamobjekt zur Liga hinzu
     *
     * @access private
-    * @param object neuesTeam Object des neuen Teams
+    * @param object $neuesTeam Object des neuen Teams
     */
     function addTeam(&$neuesTeam) {
         $this->teams[] = $neuesTeam; // Das muss so sein
@@ -155,8 +179,8 @@ class liga {
     * Gibt die Referenz auf das Teamobjekt zu einem Teamnamen zurück
     *
     * @access public
-    * @param string teamName Name des gesuchten Teams
-    * @return object das gesuchte Team als Object
+    * @param string $teamName Name des gesuchten Teams
+    * @return team|null das gesuchte Team als Object
     */
     function &teamForName($teamName) {
         $count = $this->teamCount();
@@ -178,8 +202,8 @@ class liga {
     * Gibt die Referenz auf das Teamobjekt zu einer Teamnummer zurück
     *
     * @access public
-    * @param integer teamNumber Nummer des gesuchten Teams
-    * @return object
+    * @param integer|null $teamNumber Nummer des gesuchten Teams
+    * @return team|null
     */
     function &teamForNumber($teamNumber) {
         $result = null;
@@ -217,7 +241,7 @@ class liga {
     * Fügt eine Partie zur Liga hinzu
     *
     * @access private
-    * @param object neuePartie Partie die hinzugefügt werden soll
+    * @param object $neuePartie Partie die hinzugefügt werden soll
     * @return void
     */
     function addPartie(&$neuePartie) {
@@ -227,8 +251,8 @@ class liga {
     * Gibt die Referenz auf das Partieobjekt zu einer Nummer zurück
     *
     * @access public
-    * @param integer number Nummer der gesuchten Partie
-    * @return object gesuchte Partie oder null wenn partie nicht gefunden wurde
+    * @param integer|null $number Nummer der gesuchten Partie
+    * @return partie|null gesuchte Partie oder null wenn partie nicht gefunden wurde
     */
     function &partieForNumber($number) {
         $result = null;
@@ -246,9 +270,9 @@ class liga {
     * @access public
     * @deprecated
     * @see liga::allPartieForTeams
-    * @param object heim TeamObject der Heimmannschaft
-    * @param object gast TeamObject der Gastmannschaft
-    * @return object die gesuchte Partie als Object, wenn die Partie nicht gefunden wurde null
+    * @param object $heim TeamObject der Heimmannschaft
+    * @param object $gast TeamObject der Gastmannschaft
+    * @return partie|null die gesuchte Partie als Object, wenn die Partie nicht gefunden wurde null
     */
     function &partieForTeams(&$heim, &$gast) {
         $partie = $this->allPartieForTeams($heim, $gast, false);
@@ -261,10 +285,10 @@ class liga {
     * a vs b UND b vs a zurückgegeben
 
     * @access public
-    * @param object Object der Heimmannschaft
-    * @param object Object der Gastmannschaft
-    * @param boolean Wenn true werden auch Rückspiele zurückgegeben
-    * @return array Alle gesuchten Partien (Objecte)
+    * @param object $heim Object der Heimmannschaft
+    * @param object $gast Object der Gastmannschaft
+    * @param boolean $both Wenn true werden auch Rückspiele zurückgegeben
+    * @return array|null Alle gesuchten Partien (Objecte)
     */
     function &allPartieForTeams(&$heim, &$gast, $both = false) {
         $result = array();
@@ -290,9 +314,9 @@ class liga {
     * mit den anzugebenen Namen aufeinandertreffen
     *
     * @access public
-    * @param string heimName Name der gesuchten Heimmannschaft
-    * @param string gastName Name der gesuchten Gastmannschaft
-    * @return object Object der gesuchten Partie
+    * @param string $heimName Name der gesuchten Heimmannschaft
+    * @param string $gastName Name der gesuchten Gastmannschaft
+    * @return partie|null Object der gesuchten Partie
     */
     function &partieForTeamNames($heimName, $gastName) {
         $heimName = strtolower($heimName);
@@ -317,9 +341,9 @@ class liga {
     * )
     *
     * @access public
-    * @param boolean roundSort gibr an ob nach Spieltag sortiert werden soll
-    * @param string sortDir Sortier Richtung
-    * @param object team
+    * @param boolean $roundSort gibr an ob nach Spieltag sortiert werden soll
+    * @param integer $sortDir Sortier Richtung (SORT_ASC oder SORT_DESC)
+    * @param object $team
     * @return Array
     */
     function gamesSorted($roundSort = true, $sortDir = SORT_ASC, &$team = null) {
@@ -374,7 +398,7 @@ class liga {
     * Fügt einen Spieltag zur Liga hinzu
     *
     * @access private
-    * @param object Object des neuen Spieltags
+    * @param object $neuerSpieltag Object des neuen Spieltags
     * @return void
     */
     function addSpieltag(&$neuerSpieltag) {
@@ -385,7 +409,7 @@ class liga {
     * Gibt die Anzahl der Spieltage der Liga zurück
     *
     * @access public
-    * @return interger Anzahl der Spieltage
+    * @return integer Anzahl der Spieltage
     */
     function spieltageCount() {
         return count($this->spieltage);
@@ -395,8 +419,8 @@ class liga {
     * Gibt die Referenz des Spieltags mit der angegebenen Nummer zurück
     *
     * @access public
-    * @param integer spTagNr gesuchter Spieltag
-    * @return object Spieltag der Nummer
+    * @param integer $spTagNr gesuchter Spieltag
+    * @return spieltag|null Spieltag der Nummer
     */
     function &SpieltagForNumber($spTagNr) {
         $count = $this->spielTageCount();
@@ -409,7 +433,7 @@ class liga {
         while (($i < $count) && ($found != 0)) {
             $i++;
             if (isset($this->spieltage[$i])) {
-                $found = strcmp($this->spieltage[$i]->nr, $spTagNr);
+                $found = strcmp((string) $this->spieltage[$i]->nr, (string) $spTagNr);
             }
         }
         if ($found == 0) {
@@ -425,7 +449,7 @@ class liga {
     * Gibt die Referenz des aktuellen Spieltags zurück
     *
     * @access public
-    * @return object aktueller Spieltag
+    * @return spieltag|null aktueller Spieltag
     */
     function &aktuellerSpieltag() {
         $result = null;
@@ -456,7 +480,7 @@ class liga {
     * DEBUGGING: Gibt Details des Spieltages aus
     *
     * @access public
-    * @return string
+    * @return void
     */
     function showDetails() {
         echo "LigaName = $this->name\n";
@@ -484,7 +508,7 @@ class liga {
     *
     * @access public
     * @see date()
-    * @param string dateFormat gewünschtes Ausgabeformat (siehe date())
+    * @param string $dateFormat gewünschtes Ausgabeformat (siehe date())
     * @return String
     */
     function ligaDatumAsString($dateFormat = null) {
@@ -499,8 +523,8 @@ class liga {
     * und aus dem Array gelöscht
     *
     * @access public
-    * @param string key gewünschte Option
-    * @param array array array mit den Optionen
+    * @param string $key gewünschte Option
+    * @param array|null $array array mit den Optionen
     * @return string
     */
     function getIniData($key, &$array, $partie = null) {
@@ -523,7 +547,7 @@ class liga {
     * Lädt das angegebene LigaFile und erstellt den Objektbaum
     *
     * @access public
-    * @param string fileName Pfad zum Ligafile (*.l98)
+    * @param string $fileName Pfad zum Ligafile (*.l98)
     * @return Boolean
     */
     function loadFile($fileName = '') {
@@ -600,7 +624,7 @@ class liga {
                     $team = new team($value, $teamKurz, $key, $teamMittel);
                     $teamDetails = $iniData['Team' . $tCounter];
                     foreach ($teamDetails as $detailsKey => $detailsValue) {
-                        if (isset($detailsKey) && $detailsKey != '') {
+                        if ($detailsKey != '') {
                             $team->keyValues[$detailsKey] = $detailsValue;
                         }
                     }
@@ -620,21 +644,8 @@ class liga {
             $rCounter = 1;
             while (!empty($iniData['Round' . $rCounter])) {
                 $roundSektion = 'Round' . $rCounter;
-                $startDate = preg_split('/\./', $this->getIniData('D1', $iniData[$roundSektion]));
-                $endDate = preg_split('/\./', $this->getIniData('D2', $iniData[$roundSektion]));
-                if (count($startDate) != 3 || checkDate($startDate[1], $startDate[0], $startDate[2]) === false) {  // FIX: or → ||
-                    $startTime = null;
-                }
-                else {
-                    $startTime = mktime(0, 0, 0, (int) $startDate[1], (int) $startDate[0], (int) $startDate[2]);
-                }
-
-                if (count($endDate) != 3 || checkDate($endDate[1], $endDate[0], $endDate[2]) === false) {  // FIX: <> → != und or → ||
-                    $endTime = null;
-                }
-                else {
-                    $endTime = mktime(0, 0, 0, (int) $endDate[1], (int) $endDate[0], (int) $endDate[2]);
-                }
+                $startTime = self::dateToTime($this->getIniData('D1', $iniData[$roundSektion]));
+                $endTime = self::dateToTime($this->getIniData('D2', $iniData[$roundSektion]));
 
                 $spieltag = new spieltag($rCounter, $startTime, $endTime);
                 // Modus des Spieltags
@@ -647,8 +658,8 @@ class liga {
                     }
                 }
                 for ($pCounter = 1; isset($iniData[$roundSektion][$pCounter]['TA']); $pCounter++) {
-                    $heimTeam = &$this->teamForNumber($this->getIniData('TA', $iniData[$roundSektion], $pCounter));
-                    $gastTeam = &$this->teamForNumber($this->getIniData('TB', $iniData[$roundSektion], $pCounter));
+                    $heimTeam = &$this->teamForNumber((int) $this->getIniData('TA', $iniData[$roundSektion], $pCounter));
+                    $gastTeam = &$this->teamForNumber((int) $this->getIniData('TB', $iniData[$roundSektion], $pCounter));
                     $partienNumber = 0;
                     do {  // if ($spieltag->getModus() < 1)
                         $theim = $this->getIniData('GA', $iniData[$roundSektion][$pCounter], ++$partienNumber);
@@ -697,7 +708,7 @@ class liga {
                 }
             }
             foreach ($optionDetails as $detailsKey => $detailsValue) {
-                if (isset($detailsKey) && $detailsKey != '') {
+                if ($detailsKey != '') {
                     $options->keyValues[$detailsKey] = $detailsValue;
                 }
             }
@@ -721,7 +732,7 @@ class liga {
     *   $liga->loadFromDb($pdo, 'bundesliga.l98', 'archiv/'); // mit subdir
     *
     * @access public
-    * @param PDO $pdo bestehende Datenbankverbindung
+    * @param mixed $pdo bestehende Datenbankverbindung (PDO); alles andere ergibt false
     * @param string $fileName Dateiname der Liga (z.B. "bundesliga.l98"),
     *                          ENTSPRICHT lmo_ligen.file_name. Kann auch einen
     *                          Pfad wie "archiv/bundesliga.l98" enthalten,
@@ -984,9 +995,7 @@ class liga {
 
         $options = new optionsSektion($this, $optionDetails);
         foreach ($optionDetails as $detailsKey => $detailsValue) {
-            if (isset($detailsKey) && $detailsKey != '') {
-                $options->keyValues[$detailsKey] = $detailsValue;
-            }
+            $options->keyValues[$detailsKey] = $detailsValue;
         }
         $this->options = &$options;
 
@@ -1038,9 +1047,9 @@ class liga {
     * inside of the function updateAddons() located in update_addons.php file.
     *
     * @access public
-    * @param string fileName Pfad zum ligafile
-    * @param integer message
-    * @param integer deleteEmptyRounds
+    * @param string $fileName Pfad zum ligafile
+    * @param integer $message
+    * @param integer $deleteEmptyRounds
     * @return boolean Ergebniss des Speicherns
     */
     function writeFile($fileName = '', $message = 0, $deleteEmptyRounds = 0) {
@@ -1169,7 +1178,7 @@ class liga {
     * Wird nur zum debuggen verwendet.
     *
     * @access private
-    * @param boolean htmlContent
+    * @param boolean $htmlContent
     */
     function fileContent($htmlContent = false) {
         $lf = ($htmlContent == false) ? '\n' : '<BR>';
@@ -1258,9 +1267,9 @@ class liga {
     * STDA erreicht ist (Ergebnisse hat).
     *
     * @access private
-    * @param array team Tabellenzeile
-    * @param string tableArt Art der Tabelle
-    * @param integer lastPlayed letzter Spieltag mit einem Ergebnis
+    * @param array $team Tabellenzeile
+    * @param string $tableArt Art der Tabelle
+    * @param integer $lastPlayed letzter Spieltag mit einem Ergebnis
     * @return boolean
     */
     function strafeFaellig($team, $tableArt, $lastPlayed) {
@@ -1320,9 +1329,9 @@ class liga {
     * $myArray[0..n]["possp"] Position an dem $key Spieltag
     *
     * @access public
-    * @param integer spTag Spieltag für den die Tabelle berechnet werden soll.
-    * @param string tableArt Art der Tabelle "all","heim","gast","hin","rueck"
-    * @param boolean possp wenn true wird für jeden Spieltag die Position bestimmt (Statistik)
+    * @param integer $spTag Spieltag für den die Tabelle berechnet werden soll.
+    * @param string $tableArt Art der Tabelle "all","heim","gast","hin","rueck"
+    * @param boolean $possp wenn true wird für jeden Spieltag die Position bestimmt (Statistik)
     * @return array Tabelle des Angegebenen Spieltages
     */
     function calcTable($spTag = 1, $tableArt = 'all', $possp = false) {
@@ -1555,8 +1564,8 @@ class liga {
     * sonst die des angegebenen Spieltags.
     *
     * @access protected
-    * @param array tableArray sortierte Tabelle
-    * @param integer spTag Spieltag der Tabelle
+    * @param array $tableArray sortierte Tabelle
+    * @param integer $spTag Spieltag der Tabelle
     * @return array
     */
     function sortHandicap($tableArray, $spTag) {
@@ -1587,10 +1596,12 @@ class liga {
     * ->keyValues['Kegel'] = 1 -> Pluspunkte - NegativPunkte - erziehlte Tore - Tor Differenz
     *
     * @access protected
-    * @param array tableArray Die zu sortierende Tabelle
+    * @param array $tableArray Die zu sortierende Tabelle
     * @return array
     */
     function sortTable($tableArray) {
+        // auch fuer eine leere Tabelle definiert
+        $sort_pPkt = $sort_mPkt = $sort_pTor = $sort_mTor = $sort_dTor = $sort_nr = array();
         foreach ($tableArray as $table) {
             $sort_pPkt[] = $table['pPkt'];
             $sort_mPkt[] = $this->options->keyValues['MinusPoints'] == 2 ? $table['mPkt'] : 0;
@@ -1626,8 +1637,8 @@ class liga {
     * Reihenfolge (z.B. nach Tordifferenz) - wie lmo-calctable.php.
     *
     * @access protected
-    * @param array tableArray sortierte Tabelle
-    * @param array keys Spalten, die für einen Gleichstand übereinstimmen müssen
+    * @param array $tableArray sortierte Tabelle
+    * @param array $keys Spalten, die für einen Gleichstand übereinstimmen müssen
     * @return array
     */
     function sortTiedGroups($tableArray, $keys) {
@@ -1685,7 +1696,7 @@ class liga {
     * Errechnet eine Tabelle für den Direkten vergleich von mehreren Mannschaften
     *
     * @access protected
-    * @param array subteams Alle Teams die Miteinander verglichen werden sollen
+    * @param array $subteams Alle Teams die Miteinander verglichen werden sollen
     * @return array
     */
     function calcTableforTeams($subteams) {

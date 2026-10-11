@@ -19,7 +19,7 @@ class partie {
 
     /**
     * Datum der Partie,
-    * @var date
+    * @var integer|string|null Unix-Zeitstempel, '' oder null ohne Termin
     * @access public
     */
 
@@ -33,14 +33,14 @@ class partie {
 
     /**
     * Heimmannschaft der Partie,
-    * @var array Team Objekt
+    * @var team Team Objekt
     * @access public
     */
     var $heim;
 
     /**
     * Gastmannschaft der Partie,
-    * @var array Team Objekt
+    * @var team Team Objekt
     * @access public
     */
     var $gast;
@@ -103,13 +103,13 @@ class partie {
     /**
     * Konstruktor
     *
-    * @param integer $n_spNr
-    * @param string $n_time
+    * @param integer|string $n_spNr
+    * @param integer|string|null $n_time Unix-Zeitstempel, '' oder null ohne Termin
     * @param string $n_notiz
     * @param team $n_heim
     * @param team $n_gast
-    * @param integer $n_htore
-    * @param integer $n_gtore
+    * @param integer|string $n_htore
+    * @param integer|string $n_gtore
     * @param integer $n_hpunkte
     * @param integer $n_gpunkte
     * @return partie
@@ -204,8 +204,8 @@ class partie {
     * Gibt das SpielDatum als formatierten String zurück. 'd.m.Y' = Standard
     *
     * @access public
-    * @param string leer Ausgabe, falls kein Datum vorhanden
-    * @param string format Datumsformat in date()-Notation Standard = d.m.Y
+    * @param string $leer Ausgabe, falls kein Datum vorhanden
+    * @param string $format Datumsformat in date()-Notation Standard = d.m.Y
     * @return string
     */
     function datumString($leer = '', $format = 'd.m.Y')
@@ -220,8 +220,8 @@ class partie {
     * Gibt die Anfangszeit als formatierten String zurück 'Stunden:Minuten' = Standard
     *
     * @access public
-    * @param string leer Ausgabe, falls keine Zeit vorhanden
-    * @param string format Zeitformat in date()-Notation Standard = H:i
+    * @param string $leer Ausgabe, falls keine Zeit vorhanden
+    * @param string $format Zeitformat in date()-Notation Standard = H:i
     * @return string
     */
     function zeitString($leer = '', $format = 'H:i')
@@ -236,8 +236,8 @@ class partie {
     * Gibt für eine Partie aus, ob Verlängerung oder 11/7-Meterschießen
     *
     * @access public
-    * @param array text Referenz auf Sprachvariablen
-    * @param string leer Ausgabe, falls keine n.V./i.E vorhanden
+    * @param array $text Referenz auf Sprachvariablen
+    * @param string $leer Ausgabe, falls keine n.V./i.E vorhanden
     * @return string
     */
     function spielEndeString(&$text, $leer = '')
@@ -284,8 +284,8 @@ class partie {
     *
     * @since 2.7
     * @access public
-    * @param mixed parameter Parameter die zu der Partie gespeichert werden sollen
-    * @param string key Bezeichner unter dem der Parameter gespeichert werden soll
+    * @param mixed $parameter Parameter die zu der Partie gespeichert werden sollen
+    * @param string $key Bezeichner unter dem der Parameter gespeichert werden soll
     */
     function setParameter($parameter, $key = '')
     {
@@ -302,7 +302,7 @@ class partie {
     *
     * @since 2.7
     * @access public
-    * @param string key Bezeichner des Parameters der ausgegeben werden soll, ist kein Parameter angegeben, wird das komplette array zurückgegeben.
+    * @param string $key Bezeichner des Parameters der ausgegeben werden soll, ist kein Parameter angegeben, wird das komplette array zurückgegeben.
     * @return mixed Parameter
     */
     function getParameter($key = '')
@@ -320,7 +320,7 @@ class partie {
     *
     * @since 2.7
     * @access public
-    * @param string value Link zum Spielbericht
+    * @param string $value Link zum Spielbericht
     */
     function setreportUrl($value)
     {
@@ -333,9 +333,9 @@ class partie {
     *
     * @since 2.7
     * @access public
-    * @param string ziel Zielfenster des Links
-    * @param string html Parameter
-    * @return string Link zum Spielbericht
+    * @param string|null $ziel Zielfenster des Links
+    * @param string $param html Parameter
+    * @return string|null Link zum Spielbericht
     */
     function getreportUrl($ziel = '_blank', $param = '')
     {
@@ -357,7 +357,7 @@ class partie {
     *
     * @access public
     * @since 2.7
-    * @param integer Art des Spielendes
+    * @param integer|string $value Art des Spielendes
     */
     function setSpielEnde($value)
     {
