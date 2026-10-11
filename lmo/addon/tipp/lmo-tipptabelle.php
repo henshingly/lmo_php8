@@ -25,7 +25,7 @@ if (!defined('PATH_TO_LMO')) {
 if ($file != '' && $tipp_tipptabelle1 == 1) {
     $endtab = $st;
     if ($endtab == 0) {
-        $endtab = $anzst;
+        $endtab = $ligaDaten->anzst;
         $tabdat = '';
     } else {
         $tabdat = $endtab . '. ' . $text[2];
@@ -50,8 +50,8 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
                 require(PATH_TO_ADDONDIR . '/tipp/lmo-tippcalctable.php');
                 $endtab++;
                 $platz1 = array('');
-                $platz1 = array_pad($array, $anzteams + 1, '');
-                for ($x = 0; $x < $anzteams; $x++) {
+                $platz1 = array_pad($array, $ligaDaten->anzteams + 1, '');
+                for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
                     $x3 = intval(substr($tab0[$x], 42));
                     $platz1[$x3] = $x + 1;
                 }
@@ -87,8 +87,8 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
         }
     }
     $platz0 = array('');
-    $platz0 = array_pad($array, $anzteams + 1, '');
-    for ($x = 0; $x < $anzteams; $x++) {
+    $platz0 = array_pad($array, $ligaDaten->anzteams + 1, '');
+    for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
         $x3 = intval(substr($tab0[$x], 42));
         $platz0[$x3] = $x + 1;
     }
@@ -99,7 +99,7 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
     }
     $addr = $_SERVER['PHP_SELF'] . '?action=tipp&amp;todo=tabelle&amp;file=' . $file . '&amp;tabtype=' . $tabtype . '&amp;nick=' . $nick . '&amp;st=';
     $addt = $_SERVER['PHP_SELF'] . '?action=tipp&amp;todo=tabelle&amp;file=' . $file . '&amp;endtab=&amp;nick=';
-    if ($minus == 2) {
+    if ($ligaDaten->minus == 2) {
         $dummy = ' colspan="3" align="center"';
     } else {
         $dummy = ' align="right"';
@@ -130,7 +130,7 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
         if ($tabtype != '0') { ?><a href="<?php echo $addt1 . '0'?>" title="<?php echo $text[27]; ?>"><?php echo $text[16]; ?></a><?php } else {echo $text[16];} ?>&nbsp;<?php
         if ($tabtype != '1') { ?><a href="<?php echo $addt1 . '1'?>" title="<?php echo $text[28]; ?>"><?php echo $text[41]; ?></a><?php } else {echo $text[41];} ?>&nbsp;<?php
         if ($tabtype != '2') { ?><a href="<?php echo $addt1 . '2'?>" title="<?php echo $text[29]; ?>"><?php echo $text[42]; ?></a><?php } else {echo $text[42];} ?>&nbsp;<?php
-        if ($einhinrueck == 1) {
+        if ($ligaDaten->einhinrueck == 1) {
             if ($tabtype != '4') { ?><a href="<?php echo $addt1 . '4'?>" title="<?php echo $text[4003]; ?>"><?php echo $text[4003]; ?></a><?php } else {echo $text[4003];} ?>&nbsp;<?php
             if ($tabtype != '3') { ?><a href="<?php echo $addt1 . '3'?>" title="<?php echo $text[4002]; ?>"><?php echo $text[4002]; ?></a><?php } else {echo $text[4002];}
         } ?></caption>
@@ -142,7 +142,7 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
           <th>&nbsp;</th>
           <th class="nobr" align="right"> <?php echo $text[33]; ?>&nbsp;</th>
           <th class="nobr" align="right"> <?php echo $text[34]; ?>&nbsp;</th><?php
-    if ($hidr != 1) { ?>
+    if ($ligaDaten->hidr != 1) { ?>
           <th class="nobr" align="right"> <?php echo $text[35]; ?>&nbsp;</th><?php
     } ?>
           <th class="nobr" align="right"> <?php echo $text[36]; ?>&nbsp;</th><?php
@@ -162,9 +162,9 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
           <th class="nobr" align="right"><?php echo $text[37] . '/' . $text[33]; ?></th>
         </tr><?php
     $j = 1;
-   for ($x = 1; $x <= $anzteams; $x++) {
+   for ($x = 1; $x <= $ligaDaten->anzteams; $x++) {
         $i = intval(substr($tab0[$x - 1], 42));
-        if ($i == $favteam) {
+        if ($i == $ligaDaten->favteam) {
             $dummy = '<strong>';
             $dumm2 = '</strong>';
         } else {
@@ -173,23 +173,23 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
         }
         $lmo_tabelle_class = 'nobr';
         if ($tabtype == 0) {
-            if (($x == 1) && ($champ != 0)) {
+            if (($x == 1) && ($ligaDaten->champ != 0)) {
                 $lmo_tabelle_class = 'lmoTabelleMeister nobr';
                 $j = 2;
             }
-            if (($x >= $j) && ($x < $j + $anzcl) && ($anzcl > 0)) {
+            if (($x >= $j) && ($x < $j + $ligaDaten->anzcl) && ($ligaDaten->anzcl > 0)) {
                 $lmo_tabelle_class = 'lmoTabelleCleague nobr';
             }
-            if (($x >= $j + $anzcl) && ($x < $j + $anzcl + $anzck) && ($anzck > 0)) {
+            if (($x >= $j + $ligaDaten->anzcl) && ($x < $j + $ligaDaten->anzcl + $ligaDaten->anzck) && ($ligaDaten->anzck > 0)) {
                 $lmo_tabelle_class = 'lmoTabelleCleaguequali nobr';
             }
-            if (($x >= $j + $anzcl + $anzck) && ($x < $j + $anzcl + $anzck + $anzuc) && ($anzuc > 0)) {
+            if (($x >= $j + $ligaDaten->anzcl + $ligaDaten->anzck) && ($x < $j + $ligaDaten->anzcl + $ligaDaten->anzck + $ligaDaten->anzuc) && ($ligaDaten->anzuc > 0)) {
                 $lmo_tabelle_class = 'lmoTabelleUefa nobr';
             }
-            if (($x <= $anzteams) && ($x > $anzteams - $anzab) && ($anzab > 0)) {
+            if (($x <= $ligaDaten->anzteams) && ($x > $ligaDaten->anzteams - $ligaDaten->anzab) && ($ligaDaten->anzab > 0)) {
                 $lmo_tabelle_class = 'lmoTabelleAbsteiger nobr';
             }
-            if (($x <= $anzteams - $anzab) && ($x > $anzteams - $anzab - $anzar) && ($anzar > 0)) {
+            if (($x <= $ligaDaten->anzteams - $ligaDaten->anzab) && ($x > $ligaDaten->anzteams - $ligaDaten->anzab - $ligaDaten->anzar) && ($ligaDaten->anzar > 0)) {
                 $lmo_tabelle_class = 'lmoTabelleRelegation nobr';
             }
         } ?>
@@ -215,52 +215,52 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
         } else {
             echo '          <td class="' . $lmo_tabelle_class . '">&nbsp;</td>';
         } ?>
-          <td class="<?php echo $lmo_tabelle_class; ?>" align="center"><?php echo HTML_smallTeamIcon($file, $teams[$i], ' alt=""'); ?>&nbsp;</td>
+          <td class="<?php echo $lmo_tabelle_class; ?>" align="center"><?php echo HTML_smallTeamIcon($file, $ligaDaten->teams[$i], ' alt=""'); ?>&nbsp;</td>
           <td class="<?php echo $lmo_tabelle_class; ?> nobr" align="left"> <?php
-        echo $dummy . $teams[$i] . $dumm2;
-        if (($teamu[$i] != '') && ($urlt == 1)) {
-            echo ' <a href="' . $teamu[$i] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a> ';
+        echo $dummy . $ligaDaten->teams[$i] . $dumm2;
+        if (($ligaDaten->teamu[$i] != '') && ($ligaDaten->urlt == 1)) {
+            echo ' <a href="' . $ligaDaten->teamu[$i] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a> ';
         } ?></td>
           <td class="<?php echo $lmo_tabelle_class; ?>">&nbsp;</td>
           <td class="<?php echo $lmo_tabelle_class; ?>" align="center"><?php
-        if ($teamn[$i] != '' || $strafp[$i] != 0 || $strafm[$i] != 0 || $torkorrektur1[$i] != 0 || $torkorrektur2[$i] != 0) {
+        if ($ligaDaten->teamn[$i] != '' || $ligaDaten->strafp[$i] != 0 || $ligaDaten->strafm[$i] != 0 || $ligaDaten->torkorrektur1[$i] != 0 || $ligaDaten->torkorrektur2[$i] != 0) {
             /** Notizen anzeigen
             *
             * Achtung: Da beim Speichern Strafpunkte/-tore positiv sind und Bonuspunkte negativ (altes System des LMO)
             * muss mit -1 multipliziert werden, um die Punkte/Tore richtig anzuzeigen
             */
 
-            $lmo_tabellennotiz = ' <strong>' . HTML_smallTeamIcon($file, $teams[$i], ' alt=""') . $teams[$i] . '</strong>';
+            $lmo_tabellennotiz = ' <strong>' . HTML_smallTeamIcon($file, $ligaDaten->teams[$i], ' alt=""') . $ligaDaten->teams[$i] . '</strong>';
             //Straf-/Bonuspunkte
-            if ($strafp[$i] != 0 || $strafm[$i] != 0) {
+            if ($ligaDaten->strafp[$i] != 0 || $ligaDaten->strafm[$i] != 0) {
 
                 $lmo_tabellennotiz .= '<strong>' . $text[128] . ':</strong>';
                 //Punkte
-                $lmo_tabellennotiz .= $strafp[$i] < 0 ? '+' . ((-1) * applyFactor($strafp[$i], $pointsfaktor)) : ((-1) * applyFactor($strafp[$i], $pointsfaktor));
+                $lmo_tabellennotiz .= $ligaDaten->strafp[$i] < 0 ? '+' . ((-1) * applyFactor($ligaDaten->strafp[$i], $ligaDaten->pointsfaktor)) : ((-1) * applyFactor($ligaDaten->strafp[$i], $ligaDaten->pointsfaktor));
                 //Minuspunkte
-                if ($minus == 2) {
-                    $lmo_tabellennotiz .= ':' . ($strafm[$i] < 0 ? '+' . ((-1) * applyFactor($strafm[$i], $pointsfaktor)) : ((-1) * applyFactor($strafm[$i], $pointsfaktor)));
+                if ($ligaDaten->minus == 2) {
+                    $lmo_tabellennotiz .= ':' . ($ligaDaten->strafm[$i] < 0 ? '+' . ((-1) * applyFactor($ligaDaten->strafm[$i], $ligaDaten->pointsfaktor)) : ((-1) * applyFactor($ligaDaten->strafm[$i], $ligaDaten->pointsfaktor)));
                 }
                 //Ab Spieltag
-                if ($strafdat[$i] != 0)
-                    $lmo_tabellennotiz .= '<br>' . $text[524] . '&nbsp;' . $text[2] . '&nbsp;' . $strafdat[$i] . '<br>';
+                if ($ligaDaten->strafdat[$i] != 0)
+                    $lmo_tabellennotiz .= '<br>' . $text[524] . '&nbsp;' . $text[2] . '&nbsp;' . $ligaDaten->strafdat[$i] . '<br>';
             }
             //Straf-/Bonustore
-            if ($torkorrektur1[$i] != 0 || $torkorrektur2[$i] != 0) {
+            if ($ligaDaten->torkorrektur1[$i] != 0 || $ligaDaten->torkorrektur2[$i] != 0) {
                 $lmo_tabellennotiz .= '<br>';
                 $lmo_tabellennotiz .= '<strong>' . $text[522] . ':</strong>';
                 //Tore
-                $lmo_tabellennotiz .= $torkorrektur1[$i] < 0 ? '+' . ((-1) * applyFactor($torkorrektur1[$i], $goalfaktor)) . ':' : ((-1) * applyFactor($torkorrektur1[$i], $goalfaktor)) . ':';
+                $lmo_tabellennotiz .= $ligaDaten->torkorrektur1[$i] < 0 ? '+' . ((-1) * applyFactor($ligaDaten->torkorrektur1[$i], $ligaDaten->goalfaktor)) . ':' : ((-1) * applyFactor($ligaDaten->torkorrektur1[$i], $ligaDaten->goalfaktor)) . ':';
                 //Gegentore
-                $lmo_tabellennotiz .= $torkorrektur2[$i] < 0 ? '+' . ((-1) * applyFactor($torkorrektur2[$i], $goalfaktor)) : ((-1) * applyFactor($torkorrektur2[$i], $goalfaktor));
+                $lmo_tabellennotiz .= $ligaDaten->torkorrektur2[$i] < 0 ? '+' . ((-1) * applyFactor($ligaDaten->torkorrektur2[$i], $ligaDaten->goalfaktor)) : ((-1) * applyFactor($ligaDaten->torkorrektur2[$i], $ligaDaten->goalfaktor));
                 //Ab Spieltag
-                if ($strafdat[$i] != 0)
-                    $lmo_tabellennotiz .= '<br>' . $text[524] . '&nbsp;' . $text[2] . '&nbsp;' . $strafdat[$i] . '<br>';
+                if ($ligaDaten->strafdat[$i] != 0)
+                    $lmo_tabellennotiz .= '<br>' . $text[524] . '&nbsp;' . $text[2] . '&nbsp;' . $ligaDaten->strafdat[$i] . '<br>';
             }
             //Teamnotizen
-            if ($teamn[$i] != '') {
+            if ($ligaDaten->teamn[$i] != '') {
                 $lmo_tabellennotiz .= '<br>';
-                $lmo_tabellennotiz .= '<strong>' . $text[22] . ':</strong>' . $teamn[$i];
+                $lmo_tabellennotiz .= '<strong>' . $text[22] . ':</strong>' . $ligaDaten->teamn[$i];
             }
             //Ausgabe als neutrales Element (kein Link)
             echo '
@@ -273,30 +273,30 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
           <td class="<?php echo $lmo_tabelle_class; ?>" width='2'>&nbsp;</td>
           <td class="<?php echo $lmo_tabelle_class; ?>" align="right"> <?php echo $dummy . $spiele[$i] . $dumm2; ?> &nbsp;</td>
           <td class="<?php echo $lmo_tabelle_class; ?>" align="right"> <?php echo $dummy . $siege[$i] . $dumm2; ?> &nbsp;</td><?php
-        if ($hidr != 1) { ?>
+        if ($ligaDaten->hidr != 1) { ?>
           <td class="<?php echo $lmo_tabelle_class; ?>" align="right"> <?php echo $dummy . $unent[$i] . $dumm2; ?> &nbsp;</td><?php
         } ?>
           <td class="<?php echo $lmo_tabelle_class; ?>" align="right"> <?php echo $dummy . $nieder[$i] . $dumm2; ?> &nbsp;</td><?php
         if ($tabpkt == 0) {
-            echo '          <td class="' . $lmo_tabelle_class . '" width="2">&nbsp;</td><td class="' . $lmo_tabelle_class . '" align="right">' . applyFactor($punkte[$i], $pointsfaktor) . '</td>';
-            if ($minus == 2) {
+            echo '          <td class="' . $lmo_tabelle_class . '" width="2">&nbsp;</td><td class="' . $lmo_tabelle_class . '" align="right">' . applyFactor($punkte[$i], $ligaDaten->pointsfaktor) . '</td>';
+            if ($ligaDaten->minus == 2) {
                 echo '          <td class="' . $lmo_tabelle_class . '" align="center" width="4">:</td>';
-                echo '          <td class="' . $lmo_tabelle_class . '">' . applyFactor($negativ[$i], $pointsfaktor) . '</td>';
+                echo '          <td class="' . $lmo_tabelle_class . '">' . applyFactor($negativ[$i], $ligaDaten->pointsfaktor) . '</td>';
             }
         }
         if ($tipp_tippmodus == 1) { ?>
           <td class="<?php echo $lmo_tabelle_class; ?>" width='2'>&nbsp;</td>
-          <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($etore[$i], $goalfaktor) . $dumm2; ?></td>
+          <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($etore[$i], $ligaDaten->goalfaktor) . $dumm2; ?></td>
           <td class="<?php echo $lmo_tabelle_class; ?>" align="center" width='4'><?php echo $dummy; ?>:<?php echo $dumm2; ?></td>
-          <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy . applyFactor($atore[$i], $goalfaktor) . $dumm2; ?></td>
-          <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($dtore[$i], $goalfaktor) . $dumm2; ?></td>
+          <td class="<?php echo $lmo_tabelle_class; ?>"><?php echo $dummy . applyFactor($atore[$i], $ligaDaten->goalfaktor) . $dumm2; ?></td>
+          <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . applyFactor($dtore[$i], $ligaDaten->goalfaktor) . $dumm2; ?></td>
 <?php
         }
         if ($tabpkt == 1) {
-            echo '          <td class="' . $lmo_tabelle_class . '" width="2">&nbsp;</td><td class="' . $lmo_tabelle_class . '" align="right">' . applyFactor($punkte[$i], $pointsfaktor) . '</td>';
-            if ($minus == 2) {
+            echo '          <td class="' . $lmo_tabelle_class . '" width="2">&nbsp;</td><td class="' . $lmo_tabelle_class . '" align="right">' . applyFactor($punkte[$i], $ligaDaten->pointsfaktor) . '</td>';
+            if ($ligaDaten->minus == 2) {
                 echo '          <td class="' . $lmo_tabelle_class . '" align="center" width="4">:</td>';
-                echo '          <td class="' . $lmo_tabelle_class . '">' . applyFactor($negativ[$i], $pointsfaktor) . '</td>';
+                echo '          <td class="' . $lmo_tabelle_class . '">' . applyFactor($negativ[$i], $ligaDaten->pointsfaktor) . '</td>';
             }
         } ?>
           <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><strong><?php echo $dummy . number_format($quote[$i] / 100, 2, '.', ',') . $dumm2; ?></strong></td>
@@ -319,7 +319,7 @@ if ($tabdat != '') { ?>
 <?php
     }
     $st0 = $st + 1;
-    if ($st < $anzst) { ?>
+    if ($st < $ligaDaten->anzst) { ?>
           <td align="right">&nbsp;<a href="<?php echo $addr . $st0; ?>" title="<?php echo $text[8]; ?>"><?php echo $text[8]; ?> <?php echo $text[7]; ?></a>&nbsp;</td>
 <?php
     } ?>
@@ -343,8 +343,8 @@ if ($tipp_wertverein == 1 && $tabtype == 0) { ?>
             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippcalcwertverein.php');
 
             $platz1 = array('');
-            $platz1 = array_pad($array, $anzteams + 1, '');
-            for ($x = 0; $x < $anzteams; $x++) {
+            $platz1 = array_pad($array, $ligaDaten->anzteams + 1, '');
+            for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
                 $x3 = intval(substr($tab0[$x], 25));
                 $platz1[$x3] = $x + 1;
             }
@@ -374,11 +374,11 @@ if ($tipp_wertverein == 1 && $tabtype == 0) { ?>
     }
 
     $platz0 = array('');
-    if (!isset($anzteams)) {
-        $anzteams=0;
+    if (!isset($ligaDaten->anzteams)) {
+        $ligaDaten->anzteams=0;
     }
-    $platz0 = array_pad($array, $anzteams+1, '');
-    for ($x = 0; $x < $anzteams; $x++) {
+    $platz0 = array_pad($array, $ligaDaten->anzteams+1, '');
+    for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
         $x3 = intval(substr($tab0[$x], 25));
         $platz0[$x3] = $x + 1;
     } ?>
@@ -398,10 +398,10 @@ if ($tipp_wertverein == 1 && $tabtype == 0) { ?>
     $j = 1;
     $spv = -1;
     $ppv = -1;
-    for ($x = 1; $x <= $anzteams; $x++) {
+    for ($x = 1; $x <= $ligaDaten->anzteams; $x++) {
         if (!isset($team)) break;
         $i = intval(substr($tab0[$x - 1], 25));
-        if ($team[$i] == $favteam) {
+        if ($team[$i] == $ligaDaten->favteam) {
             // favteam
             $dummy = '<strong>';
             $dumm2 = '</strong>';
@@ -428,7 +428,7 @@ if ($tipp_wertverein == 1 && $tabtype == 0) { ?>
         } else {
             echo '<td class="' . $lmo_tabelle_class . '">&nbsp;</td>';
         } ?>
-          <td class="<?php echo $lmo_tabelle_class; ?>" align="left"><?php echo $dummy . $teams[$team[$i]] . $dumm2; ?></td>
+          <td class="<?php echo $lmo_tabelle_class; ?>" align="left"><?php echo $dummy . $ligaDaten->teams[$team[$i]] . $dumm2; ?></td>
           <td class="<?php echo $lmo_tabelle_class; ?>">&nbsp;</td>
           <td class="<?php echo $lmo_tabelle_class; ?>" align="right"><?php echo $dummy . $spielegetippt[$i] . $dumm2; ?></td>
           <td class="<?php echo $lmo_tabelle_class; ?>">&nbsp;</td>

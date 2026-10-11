@@ -5,22 +5,22 @@ if (!defined('PATH_TO_LMO')) {
 ?>            <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
               <tr>
 <?php
-if (isset($anzst)) {
-    for ($i = 1; $i <= $anzst; $i++) {
-        if ($lmtype == 1) {
-            if ($i == $anzst) {
+if (isset($ligaDaten->anzst)) {
+    for ($i = 1; $i <= $ligaDaten->anzst; $i++) {
+        if ($ligaDaten->lmtype == 1) {
+            if ($i == $ligaDaten->anzst) {
                 $j = $text[364];
                 $k = $text[365];
             }
-            elseif ($i == $anzst - 1) {
+            elseif ($i == $ligaDaten->anzst - 1) {
                 $j = $text[362];
                 $k = $text[363];
             }
-            elseif ($i == $anzst - 2) {
+            elseif ($i == $ligaDaten->anzst - 2) {
                 $j = $text[360];
                 $k = $text[361];
             }
-            elseif ($i == $anzst - 3) {
+            elseif ($i == $ligaDaten->anzst - 3) {
                 $j = $text[358];
                 $k = $text[359];
             }
@@ -51,22 +51,22 @@ if (isset($anzst)) {
             echo $j;
         }?>&nbsp;</td>
 <?php
-        if (($anzst > 47) && (($anzst % 4) == 0)) {
-            if (($i == $anzst / 4) || ($i == $anzst / 2) || ($i == $anzst / 4 * 3)) {?>
+        if (($ligaDaten->anzst > 47) && (($ligaDaten->anzst % 4) == 0)) {
+            if (($i == $ligaDaten->anzst / 4) || ($i == $ligaDaten->anzst / 2) || ($i == $ligaDaten->anzst / 4 * 3)) {?>
               </tr>
               <tr>
 <?php
             }
         }
-        elseif (($anzst > 35)) {
-            if (($i == ceil($anzst / 3)) || ($i == ceil($anzst / 3 * 2))) {?>
+        elseif (($ligaDaten->anzst > 35)) {
+            if (($i == ceil($ligaDaten->anzst / 3)) || ($i == ceil($ligaDaten->anzst / 3 * 2))) {?>
               </tr>
               <tr>
 <?php
             }
         }
-        elseif (($anzst > 23)) {
-            if ($i == ceil($anzst / 2)) {?>
+        elseif (($ligaDaten->anzst > 23)) {
+            if ($i == ceil($ligaDaten->anzst / 2)) {?>
               </tr>
               <tr>
 <?php

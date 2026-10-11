@@ -54,7 +54,7 @@ while (!feof($datei)) {
 fclose($datei);
 
  
-if ($lmtype == 0) {
+if ($ligaDaten->lmtype == 0) {
   $jksp = array_pad($array, 116, "");
   $goaltippa = array_pad($array, 116, "");
   $goaltippb = array_pad($array, 116, "");
@@ -86,7 +86,7 @@ for ($i = 1; $i <= count($tippdaten); $i++) {
   $op7 = substr($dum[1], -1)-1;
   $op8 = substr($dum[1], 0, 2);
   $jksp[$op3] = $dum[3];
-  if ($lmtype == 0) {
+  if ($ligaDaten->lmtype == 0) {
     if (($op2 == "Round") && ($op8 == "GA")) {
       $goaltippa[$op3][$op4] = $dum[2];
       if ($goaltippa[$op3][$op4] == "") {

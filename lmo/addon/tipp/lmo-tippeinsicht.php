@@ -27,7 +27,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
   require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcpkt.php");
   require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
   if (!isset($st) || $st == "" || $st == 0) {
-    $st = $stx;
+    $st = $ligaDaten->stx;
   }
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalceinsicht.php");
    
@@ -112,10 +112,10 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
     if ($l >= $start && $l < $ende) {
       $k = intval(substr($tab0[$l], -6));
     }
-    if ($lmtype == 0) {
+    if ($ligaDaten->lmtype == 0) {
       $anzmodus = 1;
     } else {
-      $anzmodus = $modus[$st-1];
+      $anzmodus = $ligaDaten->modus[$st-1];
     }?>
         <tr>
           <th align="right" class="nobr"><?php 
@@ -141,26 +141,26 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
     } /* Durchschnittstipp */?>
           </th><?php 
     $punktetipper = 0;
-    for ($i = 0; $i < $anzsp; $i++) {
-      if ($teama[$st-1][$i] > 0 && $teamb[$st-1][$i] > 0) {
+    for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
+      if ($ligaDaten->teama[$st-1][$i] > 0 && $ligaDaten->teamb[$st-1][$i] > 0) {
         for ($n = 0; $n < $anzmodus; $n++) {
           if ($l == $start) {
             if ($tipp_einsichterst == 1) {
               $plus = 0;
-              if ($lmtype == 0) {
-                $btip[$i] = tippaenderbar($mterm[$st-1][$i], $datum1[$st-1], $datum2[$st-1]);
+              if ($ligaDaten->lmtype == 0) {
+                $btip[$i] = tippaenderbar($ligaDaten->mterm[$st-1][$i], $ligaDaten->datum1[$st-1], $ligaDaten->datum2[$st-1]);
               } else {
-                $btip[$i][$n] = tippaenderbar($mterm[$st-1][$i][$n], $datum1[$st-1], $datum2[$st-1]);
+                $btip[$i][$n] = tippaenderbar($ligaDaten->mterm[$st-1][$i][$n], $ligaDaten->datum1[$st-1], $ligaDaten->datum2[$st-1]);
               }
             } elseif ($tipp_einsichterst == 2) {
-              if ($lmtype != 0) {
-                if ($goala[$st-1][$i][$n] != "_" && $goalb[$st-1][$i][$n] != "_") {
+              if ($ligaDaten->lmtype != 0) {
+                if ($ligaDaten->goala[$st-1][$i][$n] != "_" && $ligaDaten->goalb[$st-1][$i][$n] != "_") {
                   $btip[$i][$n] = false;
                 } else {
                   $btip[$i][$n] = true;
                 }
               } else {
-                if ($goala[$st-1][$i] != "_" && $goalb[$st-1][$i] != "_") {
+                if ($ligaDaten->goala[$st-1][$i] != "_" && $ligaDaten->goalb[$st-1][$i] != "_") {
                   $btip[$i] = false;
                 } else {
                   $btip[$i] = true;
@@ -168,7 +168,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               }
             } else {
               // Tipps immer anzeigen
-              if ($lmtype != 0) {
+              if ($ligaDaten->lmtype != 0) {
                 $btip[$i][$n] = false;
               } else {
                 $btip[$i] = false;
@@ -177,36 +177,36 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
           }
           if ($l == ($start-1) || $l == ($ende+2)) {?>
           <th align="center" valign="center" class="nobr"><?php            if ($n == 0) {
-              echo $teamk[$teama[$st-1][$i]]."<br>";
+              echo $ligaDaten->teamk[$ligaDaten->teama[$st-1][$i]]."<br>";
             }
-            if ($lmtype != 0) {
-              if ($mtipp[$st-1][$i][$n] == 1) {
+            if ($ligaDaten->lmtype != 0) {
+              if ($ligaDaten->mtipp[$st-1][$i][$n] == 1) {
                 echo "<acronym title='".$text['tipp'][231]."'><del>";
               }
-              echo applyFactor($goala[$st-1][$i][$n],$goalfaktor).":".applyFactor($goalb[$st-1][$i][$n],$goalfaktor);
-              if ($mtipp[$st-1][$i][$n] == 1) {
+              echo applyFactor($ligaDaten->goala[$st-1][$i][$n],$ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$st-1][$i][$n],$ligaDaten->goalfaktor);
+              if ($ligaDaten->mtipp[$st-1][$i][$n] == 1) {
                 echo '</del></acronym>';
                 $nw = 1;
               }
             } else {
-              if ($mtipp[$st-1][$i] == 1) {
+              if ($ligaDaten->mtipp[$st-1][$i] == 1) {
                 echo "<acronym title='".$text['tipp'][231]."'><del>";
               }
-              echo applyFactor($goala[$st-1][$i],$goalfaktor).":".applyFactor($goalb[$st-1][$i],$goalfaktor);
-              if ($mtipp[$st-1][$i] == 1) {
+              echo applyFactor($ligaDaten->goala[$st-1][$i],$ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$st-1][$i],$ligaDaten->goalfaktor);
+              if ($ligaDaten->mtipp[$st-1][$i] == 1) {
                 echo '</del></acronym>';
                 $nw = 1;
               }
             }
             if ($n == 0) {
-              echo "<br>".$teamk[$teamb[$st-1][$i]];
+              echo "<br>".$ligaDaten->teamk[$ligaDaten->teamb[$st-1][$i]];
             }?>              
           </th><?php 
           } elseif ($l<$ende) {
-            if (($lmtype==0 && $btip[$i]==true) || ($lmtype!=0 && $btip[$i][$n]==true)){ ?>
+            if (($ligaDaten->lmtype==0 && $btip[$i]==true) || ($ligaDaten->lmtype!=0 && $btip[$i][$n]==true)){ ?>
           <td align="center" class="nobr"><?php 
             } else {
-            if ($lmtype != 0) {
+            if ($ligaDaten->lmtype != 0) {
               if ($tippa[$k][$i][$n] == -1) {
                 $tippa[$k][$i][$n] = "_";
               }
@@ -222,15 +222,15 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               }
             }
             $punktespiel = -1;
-            if ($lmtype != 0) {
+            if ($ligaDaten->lmtype != 0) {
               if ($tippa[$k][$i][$n] != "_") {
                 if ($tipp_jokertipp == 1 && $jksp2[$k] == ($i+1).($n+1)) {
                   $jkspfaktor = $tipp_jokertippmulti;
                 } else {
                   $jkspfaktor = 1;
                 }
-                if ($goala[$st-1][$i][$n] != "_") {
-                  $punktespiel = tipppunkte($tippa[$k][$i][$n], $tippb[$k][$i][$n], $goala[$st-1][$i][$n], $goalb[$st-1][$i][$n], 0, $mspez[$st-1][$i][$n], $text[0], $text[1], $jkspfaktor, $mtipp[$st-1][$i][$n]);
+                if ($ligaDaten->goala[$st-1][$i][$n] != "_") {
+                  $punktespiel = tipppunkte($tippa[$k][$i][$n], $tippb[$k][$i][$n], $ligaDaten->goala[$st-1][$i][$n], $ligaDaten->goalb[$st-1][$i][$n], 0, $ligaDaten->mspez[$st-1][$i][$n], $text[0], $text[1], $jkspfaktor, $ligaDaten->mtipp[$st-1][$i][$n]);
                 }
               } else {
                 $jkspfaktor = 1;
@@ -242,8 +242,8 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 } else {
                   $jkspfaktor = 1;
                 }
-                if ($goala[$st-1][$i] != "_") {
-                  $punktespiel = tipppunkte($tippa[$k][$i], $tippb[$k][$i], $goala[$st-1][$i], $goalb[$st-1][$i], $msieg[$st-1][$i], $mspez[$st-1][$i], $text[0], $text[1], $jkspfaktor, $mtipp[$st-1][$i]);
+                if ($ligaDaten->goala[$st-1][$i] != "_") {
+                  $punktespiel = tipppunkte($tippa[$k][$i], $tippb[$k][$i], $ligaDaten->goala[$st-1][$i], $ligaDaten->goalb[$st-1][$i], $ligaDaten->msieg[$st-1][$i], $ligaDaten->mspez[$st-1][$i], $text[0], $text[1], $jkspfaktor, $ligaDaten->mtipp[$st-1][$i]);
                 }
               } else {
                 $jkspfaktor = 1;
@@ -270,12 +270,12 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
               if ($jkspfaktor > 1) {
                 echo "<em class='lmoFrontMarkierung'>";
               }
-              if ($lmtype != 0) {
+              if ($ligaDaten->lmtype != 0) {
                 if ($tipp_rtor > 0 && ($punktespiel == $tipp_rtor * $jkspfaktor || $punktespiel == ($tipp_rtendenz+$tipp_rtor) * $jkspfaktor)) {
-                  if ($goala[$st-1][$i][$n] == $tippa[$k][$i][$n]) {
+                  if ($ligaDaten->goala[$st-1][$i][$n] == $tippa[$k][$i][$n]) {
                     $dummy1 = "<strong>";
                     $dummy2 = "</strong>";
-                  } elseif ($goalb[$st-1][$i][$n] == $tippb[$k][$i][$n]) {
+                  } elseif ($ligaDaten->goalb[$st-1][$i][$n] == $tippb[$k][$i][$n]) {
                     $dummy3 = "<strong>";
                     $dummy4 = "</strong>";
                   }
@@ -283,10 +283,10 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 echo $dummy1.$tippa[$k][$i][$n].$dummy2.":".$dummy3.$tippb[$k][$i][$n].$dummy4;
               } else {
                 if ($tipp_rtor > 0 && ($punktespiel == $tipp_rtor * $jkspfaktor || $punktespiel == ($tipp_rtendenz+$tipp_rtor) * $jkspfaktor)) {
-                  if ($goala[$st-1][$i] == $tippa[$k][$i]) {
+                  if ($ligaDaten->goala[$st-1][$i] == $tippa[$k][$i]) {
                     $dummy1 = "<strong>";
                     $dummy2 = "</strong>";
-                  } elseif ($goalb[$st-1][$i] == $tippb[$k][$i]) {
+                  } elseif ($ligaDaten->goalb[$st-1][$i] == $tippb[$k][$i]) {
                     $dummy3 = "<strong>";
                     $dummy4 = "</strong>";
                   }
@@ -313,7 +313,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                 if ($jkspfaktor > 1) {
                   echo "<p class='lmoFrontMarkierung'>";
                 }
-                if ($lmtype != 0) {
+                if ($ligaDaten->lmtype != 0) {
                   if ($tippa[$k][$i][$n] == "_" || $tippb[$k][$i][$n] == "_") {
                     echo "_";
                   } elseif ($tippa[$k][$i][$n] == $tippb[$k][$i][$n]) {
@@ -345,16 +345,16 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
           </td><?php 
           } elseif ($l==$ende){?>
           <td align="center" class="lmoLeer nobr"><?php            if ($anztipper>0){
-              if ($lmtype==0 && $btip[$i]==false){
+              if ($ligaDaten->lmtype==0 && $btip[$i]==false){
                 echo $tendenz1[$i]."-".$tendenz0[$i]."-".$tendenz2[$i];
-              } elseif ($lmtype!=0 && $btip[$i][$n]==false){
+              } elseif ($ligaDaten->lmtype!=0 && $btip[$i][$n]==false){
                 echo $tendenz1[$i][$n]."-".$tendenz0[$i][$n]."-".$tendenz2[$i][$n];
               }
             }?>
           </td><?php 
           } elseif ($l==($ende+1)){?>
           <td align="center" class="lmoLeer nobr"><strong><?php            if ($anztipper > 0 && $tipp_tippmodus == 1) {
-              if ($lmtype == 0 && $btip[$i] == false) {
+              if ($ligaDaten->lmtype == 0 && $btip[$i] == false) {
                 if ($anzgetippt[$i] > 0) {
                   if ($toregesa[$i] < 10 && $toregesb[$i] < 10) {
                     $nachkomma = 1;
@@ -363,7 +363,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
                   }
                   echo number_format(($toregesa[$i]/$anzgetippt[$i]), $nachkomma, ".", ",").":".number_format(($toregesb[$i]/$anzgetippt[$i]), $nachkomma, ".", ",");
                 }
-              } elseif ($lmtype != 0 && $btip[$i][$n] == false) {
+              } elseif ($ligaDaten->lmtype != 0 && $btip[$i][$n] == false) {
                 if ($anzgetippt[$i][$n] > 0) {
                   if ($toregesa[$i][$n] < 10 && $toregesb[$i][$n] < 10) {
                     $nachkomma = 1;
@@ -382,7 +382,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
     
     if ($l>=$start && $l<$ende){?>
           <td class="lmoFrontMarkierung" align="right"><?php echo $punktetipper?></td>
-          <td class="nobr" align="left">&nbsp; <?php      if ($tipp_tipptabelle1==1 && $l>=$start && $l<$ende && $lmtype==0){?>
+          <td class="nobr" align="left">&nbsp; <?php      if ($tipp_tipptabelle1==1 && $l>=$start && $l<$ende && $ligaDaten->lmtype==0){?>
             <a href="<?php echo $addt.rawurlencode($tippernick[$k])?>" title="<?php echo $text['tipp'][181]." ".$tippernick[$k]?>"><img src="<?php echo URL_TO_IMGDIR?>/tabelle.gif" border="0" width="10" height="12" alt="<?php echo $text['tipp'][172]?>"></a><?php 
       }?>
           </td><?php 

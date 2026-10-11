@@ -63,17 +63,17 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
     if ($tipp_jokertipp == 1) {
       fputs($datei, "@".$jksp."@\n");
     }
-    if ($lmtype != 0) {
-      $anzsp = $anzteams;
+    if ($ligaDaten->lmtype != 0) {
+      $ligaDaten->anzsp = $ligaDaten->anzteams;
       for ($i = 0; $i < $st; $i++) {
-        $anzsp = $anzsp/2;
+        $ligaDaten->anzsp = $ligaDaten->anzsp/2;
       }
-      if (($klfin == 1) && ($st == $anzst)) {
-        $anzsp = $anzsp+1;
+      if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) {
+        $ligaDaten->anzsp = $ligaDaten->anzsp+1;
       }
     }
-    for ($j = 1; $j <= $anzsp; $j++) {
-      if ($lmtype == 0) {
+    for ($j = 1; $j <= $ligaDaten->anzsp; $j++) {
+      if ($ligaDaten->lmtype == 0) {
         if ($goaltippa[$j-1] == "_") {
           fputs($datei, "GA".$j."=-1\n");
         } elseif ($goaltippa[$j-1] == "") {
@@ -89,7 +89,7 @@ if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
           fputs($datei, "GB".$j."=".$goaltippb[$j-1]."\n");
         }
       } else {
-        for ($n = 1; $n <= $modus[$st-1]; $n++) {
+        for ($n = 1; $n <= $ligaDaten->modus[$st-1]; $n++) {
           if ($goaltippa[$j-1][$n-1] == "_") {
             fputs($datei, "GA".$j.$n."=-1\n");
           } elseif ($goaltippa[$j-1][$n-1] == "") {

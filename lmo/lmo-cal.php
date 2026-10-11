@@ -41,7 +41,7 @@ $mb = date("mY", strtotime("now"));
     }
   } else {
     $lmo_termine = array();
-    $lmo_termine=array_filter($mterm[$st-1],"filterZero");  //Nullwerte filtern
+    $lmo_termine=array_filter($ligaDaten->mterm[$st-1],"filterZero");  //Nullwerte filtern
     if (!empty($lmo_termine)) {
       $datum = explode('.', date("d.m.Y",min($lmo_termine)));
       $lmo_month_prev = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]." -1 month");
@@ -87,32 +87,32 @@ $mb = date("mY", strtotime("now"));
   }
   
   $lmo_stlink = array_pad(array(), $lmo_arrays, '');
-  for ($j = 0; $j < $anzst; $j++) {
+  for ($j = 0; $j < $ligaDaten->anzst; $j++) {
     $lmo_stlink_title = array_pad(array(), $lmo_arrays, '');
     
-    for ($i = 0; $i < $anzsp; $i++) {
-      if (!empty($mterm[$j][$i]) && date($lmo_daterule, $mterm[$j][$i]) == $md) { //konkretes Spieldatum vorhanden
-        $a = intval(date($lmo_daterule2, $mterm[$j][$i]));
-        if (($teama[$j][$i] != 0) && ($teamb[$j][$i] != 0)) {
+    for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
+      if (!empty($ligaDaten->mterm[$j][$i]) && date($lmo_daterule, $ligaDaten->mterm[$j][$i]) == $md) { //konkretes Spieldatum vorhanden
+        $a = intval(date($lmo_daterule2, $ligaDaten->mterm[$j][$i]));
+        if (($ligaDaten->teama[$j][$i] != 0) && ($ligaDaten->teamb[$j][$i] != 0)) {
           if (!empty($lmo_stlink_title[$a])) {
             $lmo_stlink_title[$a] = $lmo_stlink_title[$a].", &#10;";
           } else {
             $lmo_stlink_title[$a] = ($j+1).". ".$text[2].": &#10;";
           }
-          $lmo_stlink_title[$a] = $lmo_stlink_title[$a].$teams[$teama[$j][$i]]." - ".$teams[$teamb[$j][$i]];
+          $lmo_stlink_title[$a] = $lmo_stlink_title[$a].$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." - ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]];
         }
       }
     }
     
     //Spieltagsdatum
-    if (!empty($datum1[$j])) {
-      $datum = explode('.', $datum1[$j]);
+    if (!empty($ligaDaten->datum1[$j])) {
+      $datum = explode('.', $ligaDaten->datum1[$j]);
       $lmo_stdatum1 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
     } else {
       $lmo_stdatum1 = '';
     }
-    if (!empty($datum2[$j])) {
-      $datum = explode('.', $datum2[$j]);
+    if (!empty($ligaDaten->datum2[$j])) {
+      $datum = explode('.', $ligaDaten->datum2[$j]);
       $lmo_stdatum2 = strtotime($datum[0]." ".$me[intval($datum[1])]." ".$datum[2]);
     } else {
       $lmo_stdatum2 = '';

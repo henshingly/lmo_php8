@@ -38,7 +38,7 @@ if (!file_exists($auswertfile)) {
   $datei = fopen($auswertfile, "rb");
   $anztipper = 0;
   $eigpos = -1;
-  $anzst1 = $anzst;
+  $anzst1 = $ligaDaten->anzst;
    
   if ($datei != false) {
     $tippdaten = array();

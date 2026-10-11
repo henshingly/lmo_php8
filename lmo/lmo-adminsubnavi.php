@@ -53,9 +53,9 @@ else {?>
 <?php
 }
 
-if ($hands == 1) {
+if ($ligaDaten->hands == 1) {
     if ($todo != 'tabs') {?>
-          <td align="center"><a href='<?php echo $addb . $stx; ?>' onClick="return chklmolink();" title="<?php echo $text[409]; ?>"><?php echo $text[16]; ?></a></td>
+          <td align="center"><a href='<?php echo $addb . $ligaDaten->stx; ?>' onClick="return chklmolink();" title="<?php echo $text[409]; ?>"><?php echo $text[16]; ?></a></td>
 <?php
     }
     else {?>

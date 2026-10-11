@@ -115,18 +115,18 @@ if (is_readable($filename) && $filepointer = fopen($filename, 'r+b')) {
           </td>
         </tr><?php
         //Vereinsspalte
-        for ($i = 0; $i < count($teams) - 1; $i++) {
-            $teams[$i] = stripslashes($teams[$i]);?>
+        for ($i = 0; $i < count($ligaDaten->teams) - 1; $i++) {
+            $ligaDaten->teams[$i] = stripslashes($ligaDaten->teams[$i]);?>
         <tr>
           <td align="right" class="nobr"><?php
-            if ($teams[$i] != $team) { ?>
-            <a href="<?php echo $_SERVER['PHP_SELF'] . "?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;direction=$direction&amp;team=" . $teams[$i];?>"><?php
+            if ($ligaDaten->teams[$i] != $team) { ?>
+            <a href="<?php echo $_SERVER['PHP_SELF'] . "?file=$file&amp;action=$action&amp;begin=0&amp;sort=$sort&amp;direction=$direction&amp;team=" . $ligaDaten->teams[$i];?>"><?php
             }
-            echo $teamk[$i];
-            if ($teams[$i] != $team) { ?></a><?php
+            echo $ligaDaten->teamk[$i];
+            if ($ligaDaten->teams[$i] != $team) { ?></a><?php
             }?>
           </td>
-          <td align="right"><?php echo HTML_smallTeamIcon($file, $teams[$i], ' alt=""'); ?></td>
+          <td align="right"><?php echo HTML_smallTeamIcon($file, $ligaDaten->teams[$i], ' alt=""'); ?></td>
         </tr><?php
         }?>
       </table>
@@ -217,10 +217,10 @@ if (is_readable($filename) && $filepointer = fopen($filename, 'r+b')) {
             if ($spalten[$j2] == $text['spieler'][25]) {
                 echo '
             <td' . $stat_class . ' align="left">';
-                $pos = array_search($data[$j1][$j2], $teamu);
+                $pos = array_search($data[$j1][$j2], $ligaDaten->teamu);
                 echo HTML_icon($data[$j1][$j2], 'teams', 'small') . str_replace(' ', '&nbsp;', $data[$j1][$j2]) . '&nbsp;</td>';
-                if (!empty($pos) && $teamu[$pos] != '' && $urlt == 1) {
-                    echo '<a href="' . $teamu[$pos] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $spalten[$i] . '" title="' . $text[46] . '"></a></td>';
+                if (!empty($pos) && $ligaDaten->teamu[$pos] != '' && $ligaDaten->urlt == 1) {
+                    echo '<a href="' . $ligaDaten->teamu[$pos] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $spalten[$i] . '" title="' . $text[46] . '"></a></td>';
                 }
 
             //Spielerlinks

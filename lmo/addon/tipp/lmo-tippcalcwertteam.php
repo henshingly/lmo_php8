@@ -36,7 +36,7 @@ if (!file_exists($auswertfile)) {
 } else {
   $datei = fopen($auswertfile, "rb");
   $teamsanzahl = 0; // Teamnummer
-  $anzst1 = $anzst;
+  $anzst1 = $ligaDaten->anzst;
   $team = array();
   if ($datei != false) {
     $tippdaten = array();

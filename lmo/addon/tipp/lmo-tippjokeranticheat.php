@@ -69,12 +69,12 @@ for ($ia = 1; $ia <= count($tippdaten); $ia++) {
     if ($jksp == $jkspanti) {
       $jkspanticheat = false;
     } elseif ($jkspanti > 0) {
-      if ($lmtype == 0) {
-        $btip = tippaenderbar($mterm[$st-1][$jkspanti-1], $datum1[$st-1], $datum2[$st-1]);
+      if ($ligaDaten->lmtype == 0) {
+        $btip = tippaenderbar($ligaDaten->mterm[$st-1][$jkspanti-1], $ligaDaten->datum1[$st-1], $ligaDaten->datum2[$st-1]);
       } else {
         $jkspanti1 = substr($jkspanti, 0, -1);
         $n1 = substr($jkspanti, -1);
-        $btip = tippaenderbar($mterm[$st-1][$jkspanti1-1][$n1-1], $datum1[$st-1], $datum2[$st-1]);
+        $btip = tippaenderbar($ligaDaten->mterm[$st-1][$jkspanti1-1][$n1-1], $ligaDaten->datum1[$st-1], $ligaDaten->datum2[$st-1]);
       }
       if ($btip == false) {
         $jksp = $jkspanti;

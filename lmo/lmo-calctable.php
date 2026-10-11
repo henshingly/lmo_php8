@@ -28,32 +28,32 @@ if ($file != "") {
   if (!isset($newtabtype)) {
     $newtabtype = 0;
   }
-  $spiele = array_pad($array, $anzteams+1, "0");
-  $siege = array_pad($array, $anzteams+1, "0");
-  $unent = array_pad($array, $anzteams+1, "0");
-  $nieder = array_pad($array, $anzteams+1, "0");
-  $punkte = array_pad($array, $anzteams+1, "0");
-  $negativ = array_pad($array, $anzteams+1, "0");
-  $etore = array_pad($array, $anzteams+1, "0");
-  $atore = array_pad($array, $anzteams+1, "0");
-  $dtore = array_pad($array, $anzteams+1, "0");
-  $maxs0 = array_pad($array, $anzteams+1, "&nbsp;");
-  $maxs1 = array_pad($array, $anzteams+1, "0");
-  $maxs2 = array_pad($array, $anzteams+1, "0");
-  $maxn0 = array_pad($array, $anzteams+1, "&nbsp;");
-  $maxn1 = array_pad($array, $anzteams+1, "0");
-  $maxn2 = array_pad($array, $anzteams+1, "0");
-  $ser1 = array_pad($array, $anzteams+1, "0");
-  $ser2 = array_pad($array, $anzteams+1, "0");
-  $ser3 = array_pad($array, $anzteams+1, "0");
-  $ser4 = array_pad($array, $anzteams+1, "0");
+  $spiele = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $siege = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $unent = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $nieder = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $punkte = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $negativ = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $etore = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $atore = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $dtore = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $maxs0 = array_pad($array, $ligaDaten->anzteams+1, "&nbsp;");
+  $maxs1 = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $maxs2 = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $maxn0 = array_pad($array, $ligaDaten->anzteams+1, "&nbsp;");
+  $maxn1 = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $maxn2 = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $ser1 = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $ser2 = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $ser3 = array_pad($array, $ligaDaten->anzteams+1, "0");
+  $ser4 = array_pad($array, $ligaDaten->anzteams+1, "0");
 
   // letzter Spieltag mit einem Ergebnis: Strafen "ab Spieltag X" zaehlen erst, wenn X erreicht ist
   // (die Standardtabelle rechnet bis $endtab = $anzst, auch wenn die Saison noch nicht so weit ist)
   $calc_lastst = 0;
-  for ($j = 0; $j < $anzst; $j++) {
-    for ($i = 0; $i < $anzsp; $i++) {
-      if ($goala[$j][$i] != "_" && $goalb[$j][$i] != "_") {
+  for ($j = 0; $j < $ligaDaten->anzst; $j++) {
+    for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
+      if ($ligaDaten->goala[$j][$i] != "_" && $ligaDaten->goalb[$j][$i] != "_") {
         $calc_lastst = $j+1;
         break;
       }
@@ -63,118 +63,118 @@ if ($file != "") {
   $tab0 = array();
   $stt = 0;
   $hoy = 0;
-  for ($a = 1; $a <= $anzteams; $a++) {
+  for ($a = 1; $a <= $ligaDaten->anzteams; $a++) {
     if ($tabtype == 3 || $newtabtype == 3) {
-      $hoy = (int)($anzst/2);
+      $hoy = (int)($ligaDaten->anzst/2);
     }
     if ($tabtype == 4 || $newtabtype == 4) {
-      $endtab = (int)($anzst/2);
+      $endtab = (int)($ligaDaten->anzst/2);
     }
     for ($j = $hoy; $j < $endtab; $j++) {
-      for ($i = 0; $i < $anzsp; $i++) {
+      for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
         if ($tabtype == 3 || $newtabtype == 3) {
-          $hoy = (int)($anzst/2);
+          $hoy = (int)($ligaDaten->anzst/2);
         }
         if ($tabtype == 4 || $newtabtype == 4) {
-          $endtab = (int)($anzst/2);
+          $endtab = (int)($ligaDaten->anzst/2);
         }
-        if (($goala[$j][$i] != "_") && ($goalb[$j][$i] != "_") && ((($tabtype == 0 or $tabtype == 3 or $tabtype == 4) && (($a == $teama[$j][$i]) || ($a == $teamb[$j][$i]))) || (($tabtype == 1) && ($a == $teama[$j][$i])) || (($tabtype == 2) && ($a == $teamb[$j][$i])))) {
+        if (($ligaDaten->goala[$j][$i] != "_") && ($ligaDaten->goalb[$j][$i] != "_") && ((($tabtype == 0 or $tabtype == 3 or $tabtype == 4) && (($a == $ligaDaten->teama[$j][$i]) || ($a == $ligaDaten->teamb[$j][$i]))) || (($tabtype == 1) && ($a == $ligaDaten->teama[$j][$i])) || (($tabtype == 2) && ($a == $ligaDaten->teamb[$j][$i])))) {
           if ($stt < $j+1) {
             $stt = $j+1;
           }
-          $p0s = $pns;
-          $p0u = $pnu;
-          $p0n = $pnn;
-          if ($spez == 1) {
-            if ($mspez[$j][$i] == $text[0]) {
-              $p0s = $pxs;
-              $p0u = $pxu;
-              $p0n = $pxn;
+          $p0s = $ligaDaten->pns;
+          $p0u = $ligaDaten->pnu;
+          $p0n = $ligaDaten->pnn;
+          if ($ligaDaten->spez == 1) {
+            if ($ligaDaten->mspez[$j][$i] == $text[0]) {
+              $p0s = $ligaDaten->pxs;
+              $p0u = $ligaDaten->pxu;
+              $p0n = $ligaDaten->pxn;
             }
-            if ($mspez[$j][$i] == $text[1]) {
-              $p0s = $pps;
-              $p0u = $ppu;
-              $p0n = $ppn;
+            if ($ligaDaten->mspez[$j][$i] == $text[1]) {
+              $p0s = $ligaDaten->pps;
+              $p0u = $ligaDaten->ppu;
+              $p0n = $ligaDaten->ppn;
             }
           }
           $spiele[$a]++;
-          if (($a == $teama[$j][$i]) || (($a == $teamb[$j][$i]) && ($msieg[$j][$i] == 3))) {
-            $etore[$a] = $etore[$a]+$goala[$j][$i];
-            $atore[$a] = $atore[$a]+$goalb[$j][$i];
-            if ($msieg[$j][$i] == 1) {
+          if (($a == $ligaDaten->teama[$j][$i]) || (($a == $ligaDaten->teamb[$j][$i]) && ($ligaDaten->msieg[$j][$i] == 3))) {
+            $etore[$a] = $etore[$a]+$ligaDaten->goala[$j][$i];
+            $atore[$a] = $atore[$a]+$ligaDaten->goalb[$j][$i];
+            if ($ligaDaten->msieg[$j][$i] == 1) {
               $siege[$a] = $siege[$a]+1;
               $punkte[$a] = $punkte[$a]+$p0s;
-              if ($minus == 2) {
+              if ($ligaDaten->minus == 2) {
                 $negativ[$a] = $negativ[$a]+$p0n;
               }
               $ser1[$a]++;
               $ser2[$a]++;
               $ser3[$a] = 0;
               $ser4[$a] = 0;
-              if (($goala[$j][$i]-$goalb[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] > $maxs1[$a]))) {
-                $maxs1[$a] = $goala[$j][$i];
-                $maxs2[$a] = $goalb[$j][$i];
-                $maxs0[$a] = applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
-              } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] == $maxs1[$a])) {
-                $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+              if (($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($ligaDaten->goala[$j][$i] > $maxs1[$a]))) {
+                $maxs1[$a] = $ligaDaten->goala[$j][$i];
+                $maxs2[$a] = $ligaDaten->goalb[$j][$i];
+                $maxs0[$a] = applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]]." ".$text[73];
+              } elseif ((($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($ligaDaten->goala[$j][$i] == $maxs1[$a])) {
+                $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]]." ".$text[73];
               }
-            } elseif ($msieg[$j][$i] == 2) {
+            } elseif ($ligaDaten->msieg[$j][$i] == 2) {
               $nieder[$a] = $nieder[$a]+1;
               $punkte[$a] = $punkte[$a]+$p0n;
-              if ($minus == 2) {
+              if ($ligaDaten->minus == 2) {
                 $negativ[$a] = $negativ[$a]+$p0s;
               }
               $ser3[$a]++;
               $ser4[$a]++;
               $ser1[$a] = 0;
               $ser2[$a] = 0;
-              if (($goala[$j][$i]-$goalb[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] < $maxn1[$a]))) {
-                $maxn1[$a] = $goala[$j][$i];
-                $maxn2[$a] = $goalb[$j][$i];
-                $maxn0[$a] = applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
-              } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] == $maxn1[$a])) {
-                $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+              if (($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($ligaDaten->goala[$j][$i] < $maxn1[$a]))) {
+                $maxn1[$a] = $ligaDaten->goala[$j][$i];
+                $maxn2[$a] = $ligaDaten->goalb[$j][$i];
+                $maxn0[$a] = applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]]." ".$text[73];
+              } elseif ((($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($ligaDaten->goala[$j][$i] == $maxn1[$a])) {
+                $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]]." ".$text[73];
               }
-            } elseif ($msieg[$j][$i] == 0 || $msieg[$j][$i] == 3) {
+            } elseif ($ligaDaten->msieg[$j][$i] == 0 || $ligaDaten->msieg[$j][$i] == 3) {
               // 3 = beidseitiges Ergebnis: gilt fuer beide Teams aus Sicht der Heimmannschaft
-              if ($goala[$j][$i] > $goalb[$j][$i]) {
+              if ($ligaDaten->goala[$j][$i] > $ligaDaten->goalb[$j][$i]) {
                 $siege[$a] = $siege[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0s;
-                if ($minus == 2) {
+                if ($ligaDaten->minus == 2) {
                   $negativ[$a] = $negativ[$a]+$p0n;
                 }
                 $ser1[$a]++;
                 $ser2[$a]++;
                 $ser3[$a] = 0;
                 $ser4[$a] = 0;
-                if (($goala[$j][$i]-$goalb[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] > $maxs1[$a]))) {
-                  $maxs1[$a] = $goala[$j][$i];
-                  $maxs2[$a] = $goalb[$j][$i];
-                  $maxs0[$a] = applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
-                } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goala[$j][$i] == $maxs1[$a])) {
-                  $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                if (($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($ligaDaten->goala[$j][$i] > $maxs1[$a]))) {
+                  $maxs1[$a] = $ligaDaten->goala[$j][$i];
+                  $maxs2[$a] = $ligaDaten->goalb[$j][$i];
+                  $maxs0[$a] = applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]]." ".$text[73];
+                } elseif ((($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($ligaDaten->goala[$j][$i] == $maxs1[$a])) {
+                  $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]]." ".$text[73];
                 }
-              } elseif ($goala[$j][$i] < $goalb[$j][$i]) {
+              } elseif ($ligaDaten->goala[$j][$i] < $ligaDaten->goalb[$j][$i]) {
                 $nieder[$a] = $nieder[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0n;
-                if ($minus == 2) {
+                if ($ligaDaten->minus == 2) {
                   $negativ[$a] = $negativ[$a]+$p0s;
                 }
                 $ser3[$a]++;
                 $ser4[$a]++;
                 $ser1[$a] = 0;
                 $ser2[$a] = 0;
-                if (($goala[$j][$i]-$goalb[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] < $maxn1[$a]))) {
-                  $maxn1[$a] = $goala[$j][$i];
-                  $maxn2[$a] = $goalb[$j][$i];
-                  $maxn0[$a] = applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
-                } elseif ((($goala[$j][$i]-$goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goala[$j][$i] == $maxn1[$a])) {
-                  $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goala[$j][$i], $goalfaktor).":".applyFactor($goalb[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teamb[$j][$i]]." ".$text[73];
+                if (($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($ligaDaten->goala[$j][$i] < $maxn1[$a]))) {
+                  $maxn1[$a] = $ligaDaten->goala[$j][$i];
+                  $maxn2[$a] = $ligaDaten->goalb[$j][$i];
+                  $maxn0[$a] = applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]]." ".$text[73];
+                } elseif ((($ligaDaten->goala[$j][$i]-$ligaDaten->goalb[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($ligaDaten->goala[$j][$i] == $maxn1[$a])) {
+                  $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teamb[$j][$i]]." ".$text[73];
                 }
-              } elseif ($goala[$j][$i] == $goalb[$j][$i]) {
+              } elseif ($ligaDaten->goala[$j][$i] == $ligaDaten->goalb[$j][$i]) {
                 $unent[$a] = $unent[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0u;
-                if ($minus == 2) {
+                if ($ligaDaten->minus == 2) {
                   $negativ[$a] = $negativ[$a]+$p0u;
                 }
                 $ser1[$a] = 0;
@@ -184,82 +184,82 @@ if ($file != "") {
               }
             }
           }
-          if (($a == $teamb[$j][$i]) && ($msieg[$j][$i] != 3)) {
-            $etore[$a] = $etore[$a]+$goalb[$j][$i];
-            $atore[$a] = $atore[$a]+$goala[$j][$i];
-            if ($msieg[$j][$i] == 2) {
+          if (($a == $ligaDaten->teamb[$j][$i]) && ($ligaDaten->msieg[$j][$i] != 3)) {
+            $etore[$a] = $etore[$a]+$ligaDaten->goalb[$j][$i];
+            $atore[$a] = $atore[$a]+$ligaDaten->goala[$j][$i];
+            if ($ligaDaten->msieg[$j][$i] == 2) {
               $siege[$a] = $siege[$a]+1;
               $punkte[$a] = $punkte[$a]+$p0s;
-              if ($minus == 2) {
+              if ($ligaDaten->minus == 2) {
                 $negativ[$a] = $negativ[$a]+$p0n;
               }
               $ser1[$a]++;
               $ser2[$a]++;
               $ser3[$a] = 0;
               $ser4[$a] = 0;
-              if (($goalb[$j][$i]-$goala[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] > $maxs1[$a]))) {
-                $maxs1[$a] = $goalb[$j][$i];
-                $maxs2[$a] = $goala[$j][$i];
-                $maxs0[$a] = applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
-              } elseif ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] == $maxs1[$a])) {
-                $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+              if (($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($ligaDaten->goalb[$j][$i] > $maxs1[$a]))) {
+                $maxs1[$a] = $ligaDaten->goalb[$j][$i];
+                $maxs2[$a] = $ligaDaten->goala[$j][$i];
+                $maxs0[$a] = applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." ".$text[74];
+              } elseif ((($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($ligaDaten->goalb[$j][$i] == $maxs1[$a])) {
+                $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." ".$text[74];
               }
-            } elseif ($msieg[$j][$i] == 1) {
+            } elseif ($ligaDaten->msieg[$j][$i] == 1) {
               $nieder[$a] = $nieder[$a]+1;
               $punkte[$a] = $punkte[$a]+$p0n;
-              if ($minus == 2) {
+              if ($ligaDaten->minus == 2) {
                 $negativ[$a] = $negativ[$a]+$p0s;
               }
               $ser3[$a]++;
               $ser4[$a]++;
               $ser1[$a] = 0;
               $ser2[$a] = 0;
-              if (($goalb[$j][$i]-$goala[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] < $maxn1[$a]))) {
-                $maxn1[$a] = $goalb[$j][$i];
-                $maxn2[$a] = $goala[$j][$i];
-                $maxn0[$a] = applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
-              } elseif ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] == $maxn1[$a])) {
-                $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+              if (($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($ligaDaten->goalb[$j][$i] < $maxn1[$a]))) {
+                $maxn1[$a] = $ligaDaten->goalb[$j][$i];
+                $maxn2[$a] = $ligaDaten->goala[$j][$i];
+                $maxn0[$a] = applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." ".$text[74];
+              } elseif ((($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($ligaDaten->goalb[$j][$i] == $maxn1[$a])) {
+                $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." ".$text[74];
               }
-            } elseif ($msieg[$j][$i] == 0) {
-              if ($goala[$j][$i] < $goalb[$j][$i]) {
+            } elseif ($ligaDaten->msieg[$j][$i] == 0) {
+              if ($ligaDaten->goala[$j][$i] < $ligaDaten->goalb[$j][$i]) {
                 $siege[$a] = $siege[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0s;
-                if ($minus == 2) {
+                if ($ligaDaten->minus == 2) {
                   $negativ[$a] = $negativ[$a]+$p0n;
                 }
                 $ser1[$a]++;
                 $ser2[$a]++;
                 $ser3[$a] = 0;
                 $ser4[$a] = 0;
-                if (($goalb[$j][$i]-$goala[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] > $maxs1[$a]))) {
-                  $maxs1[$a] = $goalb[$j][$i];
-                  $maxs2[$a] = $goala[$j][$i];
-                  $maxs0[$a] = applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
-                } elseif ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($goalb[$j][$i] == $maxs1[$a])) {
-                  $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+                if (($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) > ($maxs1[$a]-$maxs2[$a]) || ((($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($ligaDaten->goalb[$j][$i] > $maxs1[$a]))) {
+                  $maxs1[$a] = $ligaDaten->goalb[$j][$i];
+                  $maxs2[$a] = $ligaDaten->goala[$j][$i];
+                  $maxs0[$a] = applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." ".$text[74];
+                } elseif ((($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) == ($maxs1[$a]-$maxs2[$a])) && ($ligaDaten->goalb[$j][$i] == $maxs1[$a])) {
+                  $maxs0[$a] = $maxs0[$a]."<br>".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." ".$text[74];
                 }
-              } elseif ($goala[$j][$i] > $goalb[$j][$i]) {
+              } elseif ($ligaDaten->goala[$j][$i] > $ligaDaten->goalb[$j][$i]) {
                 $nieder[$a] = $nieder[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0n;
-                if ($minus == 2) {
+                if ($ligaDaten->minus == 2) {
                   $negativ[$a] = $negativ[$a]+$p0s;
                 }
                 $ser3[$a]++;
                 $ser4[$a]++;
                 $ser1[$a] = 0;
                 $ser2[$a] = 0;
-                if (($goalb[$j][$i]-$goala[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] < $maxn1[$a]))) {
-                  $maxn1[$a] = $goalb[$j][$i];
-                  $maxn2[$a] = $goala[$j][$i];
-                  $maxn0[$a] = applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
-                } elseif ((($goalb[$j][$i]-$goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($goalb[$j][$i] == $maxn1[$a])) {
-                  $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($goalb[$j][$i], $goalfaktor).":".applyFactor($goala[$j][$i], $goalfaktor)." ".$text[72]." ".$teams[$teama[$j][$i]]." ".$text[74];
+                if (($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) < ($maxn1[$a]-$maxn2[$a]) || ((($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($ligaDaten->goalb[$j][$i] < $maxn1[$a]))) {
+                  $maxn1[$a] = $ligaDaten->goalb[$j][$i];
+                  $maxn2[$a] = $ligaDaten->goala[$j][$i];
+                  $maxn0[$a] = applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." ".$text[74];
+                } elseif ((($ligaDaten->goalb[$j][$i]-$ligaDaten->goala[$j][$i]) == ($maxn1[$a]-$maxn2[$a])) && ($ligaDaten->goalb[$j][$i] == $maxn1[$a])) {
+                  $maxn0[$a] = $maxn0[$a]."<br>".applyFactor($ligaDaten->goalb[$j][$i], $ligaDaten->goalfaktor).":".applyFactor($ligaDaten->goala[$j][$i], $ligaDaten->goalfaktor)." ".$text[72]." ".$ligaDaten->teams[$ligaDaten->teama[$j][$i]]." ".$text[74];
                 }
-              } elseif ($goala[$j][$i] == $goalb[$j][$i]) {
+              } elseif ($ligaDaten->goala[$j][$i] == $ligaDaten->goalb[$j][$i]) {
                 $unent[$a] = $unent[$a]+1;
                 $punkte[$a] = $punkte[$a]+$p0u;
-                if ($minus == 2) {
+                if ($ligaDaten->minus == 2) {
                   $negativ[$a] = $negativ[$a]+$p0u;
                 }
                 $ser1[$a] = 0;
@@ -272,29 +272,29 @@ if ($file != "") {
         }
       }
     }
-    if (min($endtab, $calc_lastst) >= $strafdat[$a] && ($tabtype == 0 or ($tabtype == 3 && $strafdat[$a] > ($hoy = (int)($anzst/2))) or ($tabtype == 4 && $strafdat[$a] <= ($endtab = (int)($anzst/2))))) {
+    if (min($endtab, $calc_lastst) >= $ligaDaten->strafdat[$a] && ($tabtype == 0 or ($tabtype == 3 && $ligaDaten->strafdat[$a] > ($hoy = (int)($ligaDaten->anzst/2))) or ($tabtype == 4 && $ligaDaten->strafdat[$a] <= ($endtab = (int)($ligaDaten->anzst/2))))) {
                                                   // Hack-Straftore
-      $etore[$a] = $etore[$a]-$torkorrektur1[$a]; // Hack-Straftore
-      $atore[$a] = $atore[$a]-$torkorrektur2[$a]; // Hack-Straftore
+      $etore[$a] = $etore[$a]-$ligaDaten->torkorrektur1[$a]; // Hack-Straftore
+      $atore[$a] = $atore[$a]-$ligaDaten->torkorrektur2[$a]; // Hack-Straftore
     }
     $dtore[$a] = $etore[$a]-$atore[$a];
-    if (min($endtab, $calc_lastst) >= $strafdat[$a] && ($tabtype == 0 or ($tabtype == 3 && $strafdat[$a] > ($hoy = (int)($anzst/2))) or ($tabtype == 4 && $strafdat[$a] <= ($endtab = (int)($anzst/2))))) {
+    if (min($endtab, $calc_lastst) >= $ligaDaten->strafdat[$a] && ($tabtype == 0 or ($tabtype == 3 && $ligaDaten->strafdat[$a] > ($hoy = (int)($ligaDaten->anzst/2))) or ($tabtype == 4 && $ligaDaten->strafdat[$a] <= ($endtab = (int)($ligaDaten->anzst/2))))) {
                                                   // Hack-Straftore
-      $punkte[$a] = $punkte[$a]-$strafp[$a];
-      if ($minus == 2) {
-        $negativ[$a] = $negativ[$a]-$strafm[$a];
+      $punkte[$a] = $punkte[$a]-$ligaDaten->strafp[$a];
+      if ($ligaDaten->minus == 2) {
+        $negativ[$a] = $negativ[$a]-$ligaDaten->strafm[$a];
       }
     }                                             // Hack-Straftore
-    if ($kegel == 0) {
+    if ($ligaDaten->kegel == 0) {
       array_push($tab0, (50000000+$punkte[$a]).(50000000-$negativ[$a]).(50000000+$dtore[$a]).(50000000+$etore[$a]).(50000000+$a));
     } else {
       array_push($tab0, (50000000+$punkte[$a]).(50000000-$negativ[$a]).(50000000+$etore[$a]).(50000000+$dtore[$a]).(50000000+$a));
     }
   }
   rsort($tab0, SORT_STRING);
-  if ($direkt == 1) {
+  if ($ligaDaten->direkt == 1) {
     $cba = 1;
-    for ($abc = 1; $abc < $anzteams; $abc++) {
+    for ($abc = 1; $abc < $ligaDaten->anzteams; $abc++) {
       // Gleichstand = gleicher Punkte- und Minuspunkteblock (je 8 Stellen). Vorher substr(..., 7, 9):
       // nur die letzte Ziffer der Punkte, 59 und 49 Punkte galten als gleich.
       $x1 = substr($tab0[$abc-1], 0, 16);
@@ -302,14 +302,14 @@ if ($file != "") {
       if ($x1 == $x2) {
         $cba++;
       }
-      if (($x1 != $x2) || (($abc == $anzteams-1) && ($x1 == $x2))) {
+      if (($x1 != $x2) || (($abc == $ligaDaten->anzteams-1) && ($x1 == $x2))) {
         if ($cba > 1) {
           $subteams = "";
           for ($b = 1; $b <= $cba; $b++) {
             if ($b > 1) {
               $subteams = $subteams.".";
             }
-            if (($abc == $anzteams-1) && ($x1 == $x2)) {
+            if (($abc == $ligaDaten->anzteams-1) && ($x1 == $x2)) {
               $subteams = $subteams.intval(substr($tab0[$abc-$b+1], -7));
             } else {
               $subteams = $subteams.intval(substr($tab0[$abc-$b], -7));
@@ -338,15 +338,15 @@ if ($file != "") {
   if ($action == "admin") {
     $tab2 = $tab0;
   }
-  if ($hands == 1 && $tabtype==0) {
+  if ($ligaDaten->hands == 1 && $tabtype==0) {
     if (empty($tabdat) || $action == "admin") {
-      $handb = $stx-1;
+      $handb = $ligaDaten->stx-1;
     } else {
       $handb = $endtab-1;
     }
-    if ($handp[$handb] != 0) {
-      for ($ih = 0; $ih < $anzteams; $ih++) {
-        $handd = intval(substr($handp[$handb], $ih * 2, 2));
+    if ($ligaDaten->handp[$handb] != 0) {
+      for ($ih = 0; $ih < $ligaDaten->anzteams; $ih++) {
+        $handd = intval(substr($ligaDaten->handp[$handb], $ih * 2, 2));
         if ($handd < 10) {
           $handd = "0".$handd;
         }

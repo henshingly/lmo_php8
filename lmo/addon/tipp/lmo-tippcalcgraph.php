@@ -72,38 +72,38 @@ if (!file_exists($auswertfile)) {
     }
   }
   for ($i=0; $i<$anztipper; $i++) {
-    $tipppunkte[$i] = array_pad(array(""),$anzst+1,"");
-    $spielegetippt[$i] = array_pad(array(""),$anzst+1,"");
+    $tipppunkte[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+    $spielegetippt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
     if ($tipp_showzus==1) {
-      $punkte1[$i] = array_pad(array(""),$anzst+1,"");
-      $punkte2[$i] = array_pad(array(""),$anzst+1,"");
-      $punkte3[$i] = array_pad(array(""),$anzst+1,"");
-      $punkte6[$i] = array_pad(array(""),$anzst+1,"");
+      $punkte1[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $punkte2[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $punkte3[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $punkte6[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
     }
     if ($kurvenmodus==2 || $kurvenmodus==3) {
-      $platz[$i] = array_pad(array(""),$anzst+1,"");
+      $platz[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
     }
     if ($kurvenmodus>2) {
-      $platz1[$i] = array_pad(array(""),$anzst+1,"");
-      $tipppunktegesamt[$i] = array_pad(array(""),$anzst+1,"");
-      $spielegetipptgesamt[$i] = array_pad(array(""),$anzst+1,"");
+      $platz1[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $tipppunktegesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+      $spielegetipptgesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
       if ($tipp_showzus==1) {
-        $punkte1gesamt[$i] = array_pad(array(""),$anzst+1,"");
-        $punkte2gesamt[$i] = array_pad(array(""),$anzst+1,"");
-        $punkte3gesamt[$i] = array_pad(array(""),$anzst+1,"");
-        $punkte6gesamt[$i] = array_pad(array(""),$anzst+1,"");
+        $punkte1gesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+        $punkte2gesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+        $punkte3gesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
+        $punkte6gesamt[$i] = array_pad(array(""),$ligaDaten->anzst+1,"");
       }
     }
   }
   if ($kurvenmodus==2 || $kurvenmodus==3) {
-    $taba = array_pad($array,$anzst+1,"");
+    $taba = array_pad($array,$ligaDaten->anzst+1,"");
   }
   if ($kurvenmodus>2) {
-    $tabb = array_pad($array,$anzst+1,"");
+    $tabb = array_pad($array,$ligaDaten->anzst+1,"");
   }
   
   if ($kurvenmodus>1) {
-    for ($i=0; $i<$anzst; $i++) {
+    for ($i=0; $i<$ligaDaten->anzst; $i++) {
       if ($kurvenmodus==2 || $kurvenmodus==3) {
         $taba[$i] = array("");
       }
@@ -115,7 +115,7 @@ if (!file_exists($auswertfile)) {
   
   $t=0;
   if ($endtab<1) {
-    $endtab=$anzst;
+    $endtab=$ligaDaten->anzst;
   }
   for ($i=1; $i<=count($tippdaten); $i++) {
     $dum=explode('|',$tippdaten[$i-1]);
@@ -130,8 +130,8 @@ if (!file_exists($auswertfile)) {
         $t++;
       }
       $tippernick[$t]=$op1;
-      if ($stat1==-1 && $_SESSION['lmotippername']==$tippernick[$t]) {
-        $stat1=$t;
+      if ($ligaDaten->stat1==-1 && $_SESSION['lmotippername']==$tippernick[$t]) {
+        $ligaDaten->stat1=$t;
       }
     }
     if ($op4=="TP") {
@@ -176,13 +176,13 @@ if (!file_exists($auswertfile)) {
       $stsiegegesamt = array_pad($array,$anztipper+1,"");
     }
     for ($a=0; $a<$anztipper; $a++) {
-      $stsiege[$a] = array_pad(array(""),$anzst+1,"");
+      $stsiege[$a] = array_pad(array(""),$ligaDaten->anzst+1,"");
       if ($kurvenmodus>2) {
-        $stsiegegesamt[$a] = array_pad(array(""),$anzst+1,"");
+        $stsiegegesamt[$a] = array_pad(array(""),$ligaDaten->anzst+1,"");
       }
     }
     $tab = array_pad($array,$endtab,"");
-    for ($i=0; $i<$anzst; $i++) {
+    for ($i=0; $i<$ligaDaten->anzst; $i++) {
       $tab[$i] = array("");
       for ($a=0; $a<$anztipper; $a++) {
         $tt=50000000+(int)$tipppunkte[$a][$i];
@@ -244,7 +244,7 @@ if (!file_exists($auswertfile)) {
   
   
   if ($kurvenmodus>1 && $anztipper>0) {
-    for ($jyz=0; $jyz<$anzst; $jyz++) {
+    for ($jyz=0; $jyz<$ligaDaten->anzst; $jyz++) {
       for ($a=0; $a<$anztipper; $a++) {
         if ($kurvenmodus<4) {
           $tt=(int)50000000+(int)$tipppunkte[$a][$jyz];

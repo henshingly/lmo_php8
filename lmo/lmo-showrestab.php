@@ -31,21 +31,21 @@ if (isset($file) && $file != "") {
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=$action&amp;tabtype=$tabtype&amp;file=".$file."&amp;st=";
   $breite = 10;
-  if ($spez == 1) {
+  if ($ligaDaten->spez == 1) {
     $breite = $breite+2;
   }
-  if (in_array(3,$msieg[$st-1])) {
+  if (in_array(3,$ligaDaten->msieg[$st-1])) {
     $breite = $breite+4;
   }
-  if ($datm == 1) {
+  if ($ligaDaten->datm == 1) {
     $breite = $breite+1;
   }
   if ($endtab_original > 1) {
     $endtab = $endtab_original - 1;
     require(PATH_TO_LMO."/lmo-calctable.php");
     $platz1 = array("");
-    $platz1 = array_pad($array, $anzteams+1, "");
-    for ($x = 0; $x < $anzteams; $x++) {
+    $platz1 = array_pad($array, $ligaDaten->anzteams+1, "");
+    for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
       $platz1[intval(substr($tab0[$x], 34))] = $x+1;
     }
     $endtab = $endtab_original;
@@ -55,8 +55,8 @@ if (isset($file) && $file != "") {
     $tabtype = 1;
     require(PATH_TO_LMO."/lmo-calctable.php");
     $hplatz = array("");
-    $hplatz = array_pad($array, $anzteams+1, "");
-    for ($x = 0; $x < $anzteams; $x++) {
+    $hplatz = array_pad($array, $ligaDaten->anzteams+1, "");
+    for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
       $hplatz[intval(substr($tab0[$x], 34))] = $x+1;
     }
     $hspiele = $spiele;
@@ -71,8 +71,8 @@ if (isset($file) && $file != "") {
     $tabtype = 2;
     require(PATH_TO_LMO."/lmo-calctable.php");
     $aplatz = array("");
-    $aplatz = array_pad($array, $anzteams+1, "");
-    for ($x = 0; $x < $anzteams; $x++) {
+    $aplatz = array_pad($array, $ligaDaten->anzteams+1, "");
+    for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
       $aplatz[intval(substr($tab0[$x], 34))] = $x+1;
     }
     $aspiele = $spiele;
@@ -89,8 +89,8 @@ if (isset($file) && $file != "") {
   $endtab = $endtab_original;
   require(PATH_TO_LMO."/lmo-calctable.php");
   $platz0 = array("");
-  $platz0 = array_pad($array, $anzteams+1, "");
-  for ($x = 0; $x < $anzteams; $x++) {
+  $platz0 = array_pad($array, $ligaDaten->anzteams+1, "");
+  for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
     $platz0[intval(substr($tab0[$x], 34))] = $x+1;
   }
   $endtab = $endtab_original;
@@ -127,7 +127,7 @@ if (isset($file) && $file != "") {
           <td align="left">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a>&nbsp;</td><?php
    }
    $st0 = $st+1;
-   if ($st < $anzst) {?>
+   if ($st < $ligaDaten->anzst) {?>
           <td align="right">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</td><?php
    }?>
         </tr>

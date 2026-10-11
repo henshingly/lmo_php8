@@ -29,13 +29,13 @@ foreach ($fav_team[$i] as $akt_team) {
     if (($akt_team == $partie->heim->nr) || ($akt_team == $partie->gast->nr)) {
 
         //Anfang Relevante Daten
-        $goalfaktor = $liga->options->keyValues['goalfaktor'];
+        $ligaDaten->goalfaktor = $liga->options->keyValues['goalfaktor'];
         $template->setVariable('Liganame', $liga->name);
         $template->setVariable('Ligadatum', $liga->ligaDatumAsString());
         $template->setVariable('Spieltag', $multi_cfgarray['spieltagtext'] . ' ' . $spieltag);
         $template->setVariable('Datum', $partie->datumString('-', $multi_cfgarray['datumsformat']));
         $template->setVariable('Uhrzeit', $partie->zeitString('-', $multi_cfgarray['uhrzeitformat']));
-        $template->setVariable('Tore', $partie->hToreString($multi_cfgarray['tordummy'], $goalfaktor) . ' : ' . $partie->gToreString($multi_cfgarray['tordummy'], $goalfaktor) . ' ' . $partie->spielEndeString($text));
+        $template->setVariable('Tore', $partie->hToreString($multi_cfgarray['tordummy'], $ligaDaten->goalfaktor) . ' : ' . $partie->gToreString($multi_cfgarray['tordummy'], $ligaDaten->goalfaktor) . ' ' . $partie->spielEndeString($text));
         //Heim & Gasttore einzeln
         $template->setVariable('ToreHeim', $partie->hToreString($multi_cfgarray['tordummy']));
         $template->setVariable('ToreGast', $partie->gToreString($multi_cfgarray['tordummy']));

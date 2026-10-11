@@ -30,7 +30,7 @@ if ($viewermode == 1) {
         }
         echo '&nbsp;&nbsp;';
     }
-    if ($lmtype == 0 && $tipp_tipptabelle1 == 1) {
+    if ($ligaDaten->lmtype == 0 && $tipp_tipptabelle1 == 1) {
         if ($todo != 'tabelle') {
             echo '<a href="' . $adda . 'tabelle&amp;file=' . $file . '" title="' . $text['tipp'][173] . '">' . $text['tipp'][172] . '</a>';
         } else {

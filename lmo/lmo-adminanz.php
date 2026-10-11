@@ -25,36 +25,36 @@ require_once(PATH_TO_LMO . '/lmo-admintest.php');
 if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert'] == 1)) {
     require_once(PATH_TO_LMO . '/lmo-openfile.php');
     if (isset ($save) && $save == 1) {
-        for ($i = 0; $i < $anzst; $i++) {
-            for ($j = $anzsp; $j <40; $j++) {
-                $teama[$i][$j] = 0;
-                $teamb[$i][$j] = 0;
-                $goala[$i][$j] = -1;
-                $goalb[$i][$j] = -1;
-                $msieg[$i][$j] = 0;
-                $mterm[$i][$j] = '';
-                $mnote[$i][$j] = '';
-                $mberi[$i][$j] = '';
-                $mspez[$i][$j] = '_';
+        for ($i = 0; $i < $ligaDaten->anzst; $i++) {
+            for ($j = $ligaDaten->anzsp; $j <40; $j++) {
+                $ligaDaten->teama[$i][$j] = 0;
+                $ligaDaten->teamb[$i][$j] = 0;
+                $ligaDaten->goala[$i][$j] = -1;
+                $ligaDaten->goalb[$i][$j] = -1;
+                $ligaDaten->msieg[$i][$j] = 0;
+                $ligaDaten->mterm[$i][$j] = '';
+                $ligaDaten->mnote[$i][$j] = '';
+                $ligaDaten->mberi[$i][$j] = '';
+                $ligaDaten->mspez[$i][$j] = '_';
             }
         }
-        for ($i = $anzst; $i < 116; $i++) {
+        for ($i = $ligaDaten->anzst; $i < 116; $i++) {
             for ($j = 0; $j < 40; $j++) {
-                $teama[$i][$j] = 0;
-                $teamb[$i][$j] = 0;
-                $goala[$i][$j] = -1;
-                $goalb[$i][$j] = -1;
-                $msieg[$i][$j] = 0;
-                $mterm[$i][$j] = '';
-                $mnote[$i][$j] = '';
-                $mberi[$i][$j] = '';
-                $mspez[$i][$j] = '_';
+                $ligaDaten->teama[$i][$j] = 0;
+                $ligaDaten->teamb[$i][$j] = 0;
+                $ligaDaten->goala[$i][$j] = -1;
+                $ligaDaten->goalb[$i][$j] = -1;
+                $ligaDaten->msieg[$i][$j] = 0;
+                $ligaDaten->mterm[$i][$j] = '';
+                $ligaDaten->mnote[$i][$j] = '';
+                $ligaDaten->mberi[$i][$j] = '';
+                $ligaDaten->mspez[$i][$j] = '_';
             }
         }
-        $anzst = trim($_POST['xanzst']);
-        $anzsp = trim($_POST['xanzsp']);
-        if ($stx > $anzst) {
-            $stx = $anzst;
+        $ligaDaten->anzst = trim($_POST['xanzst']);
+        $ligaDaten->anzsp = trim($_POST['xanzsp']);
+        if ($ligaDaten->stx > $ligaDaten->anzst) {
+            $ligaDaten->stx = $ligaDaten->anzst;
         }
         require(PATH_TO_LMO . '/lmo-savefile.php');
     }
@@ -87,7 +87,7 @@ if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
                 <tr>
                   <td width="20">&nbsp;</td>
                   <td align="right"><acronym title="<?php echo $text[275]; ?>"><?php echo $text[274]; ?></acronym></td>
-                  <td align="right"><input class="lmo-formular-input" type="text" name="xanzst" size="3" maxlength="3" value="<?php echo $anzst; ?>" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
+                  <td align="right"><input class="lmo-formular-input" type="text" name="xanzst" size="3" maxlength="3" value="<?php echo $ligaDaten->anzst; ?>" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
                   <td align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -102,7 +102,7 @@ if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
                 <tr>
                   <td width="20">&nbsp;</td>
                   <td align="right"><acronym title="<?php echo $text[278]; ?>"><?php echo $text[277]; ?></acronym></td>
-                  <td align="right"><input class="lmo-formular-input" type="text" name="xanzsp" size="2" maxlength="2" value="<?php echo $anzsp; ?>" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
+                  <td align="right"><input class="lmo-formular-input" type="text" name="xanzsp" size="2" maxlength="2" value="<?php echo $ligaDaten->anzsp; ?>" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
                   <td align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>

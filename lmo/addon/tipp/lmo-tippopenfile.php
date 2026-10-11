@@ -54,23 +54,23 @@ while (!feof($datei)) {
 }
 fclose($datei);
 
-if ($lmtype == 0) {
-  $goaltippa = array_pad(array("_"), $anzsp+1, "_");
-  $goaltippb = array_pad(array("_"), $anzsp+1, "_");
+if ($ligaDaten->lmtype == 0) {
+  $goaltippa = array_pad(array("_"), $ligaDaten->anzsp+1, "_");
+  $goaltippb = array_pad(array("_"), $ligaDaten->anzsp+1, "_");
 } else {
-  $anzsp = $anzteams;
+  $ligaDaten->anzsp = $ligaDaten->anzteams;
   for ($i = 0; $i < $st; $i++) {
-    $anzsp = $anzsp/2;
+    $ligaDaten->anzsp = $ligaDaten->anzsp/2;
   }
-  if (($klfin == 1) && ($st == $anzst)) {
-    $anzsp = $anzsp+1;
+  if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) {
+    $ligaDaten->anzsp = $ligaDaten->anzsp+1;
   }
    
-  $goaltippa = array_pad($array, $anzsp+1, "");
-  $goaltippb = array_pad($array, $anzsp+1, "");
-  for ($i = 0; $i < $anzsp; $i++) {
-    $goaltippa[$i] = array_pad(array("_"), $modus[$st-1]+1, "_");
-    $goaltippb[$i] = array_pad(array("_"), $modus[$st-1]+1, "_");
+  $goaltippa = array_pad($array, $ligaDaten->anzsp+1, "");
+  $goaltippb = array_pad($array, $ligaDaten->anzsp+1, "");
+  for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
+    $goaltippa[$i] = array_pad(array("_"), $ligaDaten->modus[$st-1]+1, "_");
+    $goaltippb[$i] = array_pad(array("_"), $ligaDaten->modus[$st-1]+1, "_");
   }
 }
 for ($i = 1; $i <= count($tippdaten); $i++) {
@@ -84,7 +84,7 @@ for ($i = 1; $i <= count($tippdaten); $i++) {
     $op6 = (int)substr($dum[1], 2, -1)-1;
     $op7 = substr($dum[1], -1)-1;
     $op8 = substr($dum[1], 0, 2);
-    if ($lmtype == 0) {
+    if ($ligaDaten->lmtype == 0) {
       if (($op2 == "Round") && ($op8 == "GA")) {
         $goaltippa[$op4] = $dum[2];
         if ($goaltippa[$op4] == "") {
@@ -94,7 +94,7 @@ for ($i = 1; $i <= count($tippdaten); $i++) {
           $goaltippa[$op4] = "_";
         }
         if ($goaltippa[$op4] == "-2") {
-          $msieg[$op3][$op4] = 1;
+          $ligaDaten->msieg[$op3][$op4] = 1;
           $goaltippa[$op4] = "0";
         }
       }
@@ -107,7 +107,7 @@ for ($i = 1; $i <= count($tippdaten); $i++) {
           $goaltippb[$op4] = "_";
         }
         if ($goaltippb[$op4] == "-2") {
-          $msieg[$op3][$op4] = 2;
+          $ligaDaten->msieg[$op3][$op4] = 2;
           $goaltippb[$op4] = "0";
         }
       }

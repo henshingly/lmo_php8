@@ -40,222 +40,222 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         flock($datei,LOCK_EX);
         fputs($datei,"[Options]\n");
         fputs($datei,"Title=".$text[54]."\n");
-        fputs($datei,"Name=".$titel."\n");
-        fputs($datei,"Type=".$lmtype."\n");
-        fputs($datei,"Teams=".$anzteams."\n");
-        fputs($datei,"goalfaktor=".$goalfaktor."\n");
-        fputs($datei,"pointsfaktor=".$pointsfaktor."\n");
-        fputs($datei,"enableGameSort=".$enablegamesort."\n");
-        if ($lmtype==0) {
-          fputs($datei,"Rounds=".$anzst."\n");
-          fputs($datei,"Matches=".$anzsp."\n");
+        fputs($datei,"Name=".$ligaDaten->titel."\n");
+        fputs($datei,"Type=".$ligaDaten->lmtype."\n");
+        fputs($datei,"Teams=".$ligaDaten->anzteams."\n");
+        fputs($datei,"goalfaktor=".$ligaDaten->goalfaktor."\n");
+        fputs($datei,"pointsfaktor=".$ligaDaten->pointsfaktor."\n");
+        fputs($datei,"enableGameSort=".$ligaDaten->enablegamesort."\n");
+        if ($ligaDaten->lmtype==0) {
+          fputs($datei,"Rounds=".$ligaDaten->anzst."\n");
+          fputs($datei,"Matches=".$ligaDaten->anzsp."\n");
         }
         if ($st>0) {
           fputs($datei,"Actual=".$st."\n");
         }
         else {
-          fputs($datei,"Actual=".$stx."\n");
+          fputs($datei,"Actual=".$ligaDaten->stx."\n");
         }
-        if ($lmtype==0) {
-          fputs($datei,"Kegel=".$kegel."\n");
-          fputs($datei,"HandS=".$hands."\n");
-          fputs($datei,"PointsForWin=".$pns."\n");
-          fputs($datei,"PointsForDraw=".$pnu."\n");
-          fputs($datei,"PointsForLost=".$pnn."\n");
-          fputs($datei,"Spez=".$spez."\n");
-          fputs($datei,"HideDraw=".$hidr."\n");
-          fputs($datei,"OnRun=".$onrun."\n");
-          if ($spez==1) {
-            fputs($datei,"XtraS=".$pxs."\n");
-            fputs($datei,"XtraU=".$pxu."\n");
-            fputs($datei,"XtraV=".$pxn."\n");
-            fputs($datei,"SpezS=".$pps."\n");
-            fputs($datei,"SpezU=".$ppu."\n");
-            fputs($datei,"SpezV=".$ppn."\n");
+        if ($ligaDaten->lmtype==0) {
+          fputs($datei,"Kegel=".$ligaDaten->kegel."\n");
+          fputs($datei,"HandS=".$ligaDaten->hands."\n");
+          fputs($datei,"PointsForWin=".$ligaDaten->pns."\n");
+          fputs($datei,"PointsForDraw=".$ligaDaten->pnu."\n");
+          fputs($datei,"PointsForLost=".$ligaDaten->pnn."\n");
+          fputs($datei,"Spez=".$ligaDaten->spez."\n");
+          fputs($datei,"HideDraw=".$ligaDaten->hidr."\n");
+          fputs($datei,"OnRun=".$ligaDaten->onrun."\n");
+          if ($ligaDaten->spez==1) {
+            fputs($datei,"XtraS=".$ligaDaten->pxs."\n");
+            fputs($datei,"XtraU=".$ligaDaten->pxu."\n");
+            fputs($datei,"XtraV=".$ligaDaten->pxn."\n");
+            fputs($datei,"SpezS=".$ligaDaten->pps."\n");
+            fputs($datei,"SpezU=".$ligaDaten->ppu."\n");
+            fputs($datei,"SpezV=".$ligaDaten->ppn."\n");
           }
-          fputs($datei,"MinusPoints=".$minus."\n");
-          fputs($datei,"Direct=".$direkt."\n");
-          fputs($datei,"Champ=".$champ."\n");
-          fputs($datei,"CL=".$anzcl."\n");
-          fputs($datei,"CK=".$anzck."\n");
-          fputs($datei,"UC=".$anzuc."\n");
-          fputs($datei,"AR=".$anzar."\n");
-          fputs($datei,"AB=".$anzab."\n");
-          if (isset($namepkt)) {
-            fputs($datei,"namePkt=".$namepkt."\n");
+          fputs($datei,"MinusPoints=".$ligaDaten->minus."\n");
+          fputs($datei,"Direct=".$ligaDaten->direkt."\n");
+          fputs($datei,"Champ=".$ligaDaten->champ."\n");
+          fputs($datei,"CL=".$ligaDaten->anzcl."\n");
+          fputs($datei,"CK=".$ligaDaten->anzck."\n");
+          fputs($datei,"UC=".$ligaDaten->anzuc."\n");
+          fputs($datei,"AR=".$ligaDaten->anzar."\n");
+          fputs($datei,"AB=".$ligaDaten->anzab."\n");
+          if (isset($ligaDaten->namepkt)) {
+            fputs($datei,"namePkt=".$ligaDaten->namepkt."\n");
           }
-          if (isset($nametor)) {
-            fputs($datei,"nameTor=".$nametor."\n");
+          if (isset($ligaDaten->nametor)) {
+            fputs($datei,"nameTor=".$ligaDaten->nametor."\n");
           }
-          fputs($datei,"tableHinRueck=".$einhinrueck."\n");
-          fputs($datei,"tableHeimAusw=".$einheimausw."\n");
+          fputs($datei,"tableHinRueck=".$ligaDaten->einhinrueck."\n");
+          fputs($datei,"tableHeimAusw=".$ligaDaten->einheimausw."\n");
         }
         else {
-          fputs($datei,"KlFin=".$klfin."\n");
-          fputs($datei,"playdown=".$playdown."\n");
-          fputs($datei,"playoffmode=".$playoffmode."\n");
+          fputs($datei,"KlFin=".$ligaDaten->klfin."\n");
+          fputs($datei,"playdown=".$ligaDaten->playdown."\n");
+          fputs($datei,"playoffmode=".$ligaDaten->playoffmode."\n");
         }
-        fputs($datei,"DatC=".$datc."\n");
-        fputs($datei,"DatS=".$dats."\n");
-        fputs($datei,"DatM=".$datm."\n");
-        fputs($datei,"DatF=".$datf."\n");
-        fputs($datei,"urlT=".$urlt."\n");
-        fputs($datei,"urlB=".$urlb."\n");
-        fputs($datei,"Plan=".$plan."\n");
-        fputs($datei,"Ergebnis=".$ergebnis."\n");
-        fputs($datei,"mittore=".$mittore."\n");
-        fputs($datei,"favTeam=".$favteam."\n");
-        fputs($datei,"selTeam=".$selteam."\n");
-        fputs($datei,"ticker=".$nticker."\n");
+        fputs($datei,"DatC=".$ligaDaten->datc."\n");
+        fputs($datei,"DatS=".$ligaDaten->dats."\n");
+        fputs($datei,"DatM=".$ligaDaten->datm."\n");
+        fputs($datei,"DatF=".$ligaDaten->datf."\n");
+        fputs($datei,"urlT=".$ligaDaten->urlt."\n");
+        fputs($datei,"urlB=".$ligaDaten->urlb."\n");
+        fputs($datei,"Plan=".$ligaDaten->plan."\n");
+        fputs($datei,"Ergebnis=".$ligaDaten->ergebnis."\n");
+        fputs($datei,"mittore=".$ligaDaten->mittore."\n");
+        fputs($datei,"favTeam=".$ligaDaten->favteam."\n");
+        fputs($datei,"selTeam=".$ligaDaten->selteam."\n");
+        fputs($datei,"ticker=".$ligaDaten->nticker."\n");
 
-        if ($lmtype==0) {
-          fputs($datei,"Graph=".$kurve."\n");
-          fputs($datei,"Kreuz=".$kreuz."\n");
-          fputs($datei,"Tabelle=".$tabelle."\n");
-          fputs($datei,"Ligastats=".$ligastats."\n");
-          fputs($datei,"kurve1=".$stat1."\n");
-          fputs($datei,"kurve2=".$stat2."\n");
+        if ($ligaDaten->lmtype==0) {
+          fputs($datei,"Graph=".$ligaDaten->kurve."\n");
+          fputs($datei,"Kreuz=".$ligaDaten->kreuz."\n");
+          fputs($datei,"Tabelle=".$ligaDaten->tabelle."\n");
+          fputs($datei,"Ligastats=".$ligaDaten->ligastats."\n");
+          fputs($datei,"kurve1=".$ligaDaten->stat1."\n");
+          fputs($datei,"kurve2=".$ligaDaten->stat2."\n");
         }
         //if ($nticker==1) {
           fputs($datei,"\n[News]\n");
-          if (isset($nlines)) {
-            fputs($datei,"NC=".count($nlines)."\n");
-            for ($i=0; $i<count($nlines); $i++) {
-              fputs($datei,"N".$i."=".$nlines[$i]."\n");
+          if (isset($ligaDaten->nlines)) {
+            fputs($datei,"NC=".count($ligaDaten->nlines)."\n");
+            for ($i=0; $i<count($ligaDaten->nlines); $i++) {
+              fputs($datei,"N".$i."=".$ligaDaten->nlines[$i]."\n");
             }
           }
         //}
         fputs($datei,"\n[Teams]\n");
-        for ($i=1; $i<=$anzteams; $i++) {
-          fputs($datei,$i."=".$teams[$i]."\n");
+        for ($i=1; $i<=$ligaDaten->anzteams; $i++) {
+          fputs($datei,$i."=".$ligaDaten->teams[$i]."\n");
         }
         fputs($datei,"\n[Teamm]\n");
-        for ($i=1; $i<=$anzteams; $i++) {
-          fputs($datei,$i."=".$teamm[$i]."\n");
+        for ($i=1; $i<=$ligaDaten->anzteams; $i++) {
+          fputs($datei,$i."=".$ligaDaten->teamm[$i]."\n");
         }
         fputs($datei,"\n[Teamk]\n");
-        for ($i=1; $i<=$anzteams; $i++) {
-          fputs($datei,$i."=".$teamk[$i]."\n");
+        for ($i=1; $i<=$ligaDaten->anzteams; $i++) {
+          fputs($datei,$i."=".$ligaDaten->teamk[$i]."\n");
         }
-        for ($i=1; $i<=$anzteams; $i++) {
+        for ($i=1; $i<=$ligaDaten->anzteams; $i++) {
           fputs($datei,"\n[Team".$i."]\n");
-          if ($lmtype==0) {
-            fputs($datei,"SP=".$strafp[$i]."\n");
-            if ($minus==2) {
-              fputs($datei,"SM=".$strafm[$i]."\n");
+          if ($ligaDaten->lmtype==0) {
+            fputs($datei,"SP=".$ligaDaten->strafp[$i]."\n");
+            if ($ligaDaten->minus==2) {
+              fputs($datei,"SM=".$ligaDaten->strafm[$i]."\n");
             }
-            fputs($datei,"TOR1=".$torkorrektur1[$i]."\n"); // Hack-Straftore
-            fputs($datei,"TOR2=".$torkorrektur2[$i]."\n"); // Hack-Straftore
-            fputs($datei,"STDA=".$strafdat[$i]."\n");      // Hack-Straftore
+            fputs($datei,"TOR1=".$ligaDaten->torkorrektur1[$i]."\n"); // Hack-Straftore
+            fputs($datei,"TOR2=".$ligaDaten->torkorrektur2[$i]."\n"); // Hack-Straftore
+            fputs($datei,"STDA=".$ligaDaten->strafdat[$i]."\n");      // Hack-Straftore
           }
-          fputs($datei,"URL=".$teamu[$i]."\n");
-          fputs($datei,"NOT=".$teamn[$i]."\n");
+          fputs($datei,"URL=".$ligaDaten->teamu[$i]."\n");
+          fputs($datei,"NOT=".$ligaDaten->teamn[$i]."\n");
         }
-        if ($lmtype!=0) {
-          $anzsp=$anzteams;
+        if ($ligaDaten->lmtype!=0) {
+          $ligaDaten->anzsp=$ligaDaten->anzteams;
         }
-        for ($i=1; $i<=$anzst; $i++) {
+        for ($i=1; $i<=$ligaDaten->anzst; $i++) {
           fputs($datei,"\n[Round".$i."]\n");
-          if ($hands==1) {
-            fputs($datei,"HS=".$handp[$i-1]."\n");
+          if ($ligaDaten->hands==1) {
+            fputs($datei,"HS=".$ligaDaten->handp[$i-1]."\n");
           }
-          fputs($datei,"D1=".$datum1[$i-1]."\n");
-          fputs($datei,"D2=".$datum2[$i-1]."\n");
-          if ($lmtype!=0) {
-            fputs($datei,"MO=".$modus[$i-1]."\n");
-            if ($anzteams==24) {
+          fputs($datei,"D1=".$ligaDaten->datum1[$i-1]."\n");
+          fputs($datei,"D2=".$ligaDaten->datum2[$i-1]."\n");
+          if ($ligaDaten->lmtype!=0) {
+            fputs($datei,"MO=".$ligaDaten->modus[$i-1]."\n");
+            if ($ligaDaten->anzteams==24) {
               switch ($i) {
                 case 1:
                 case 2:
-                  $anzsp=16;
+                  $ligaDaten->anzsp=16;
                   break;
                 case 3:
-                  $anzsp=8;
+                  $ligaDaten->anzsp=8;
                   break;
                 case 4:
-                  $anzsp=4;
+                  $ligaDaten->anzsp=4;
                   break;
                 case 5:
-                  $anzsp=2;
+                  $ligaDaten->anzsp=2;
                   break;
               }
             }
-            $anzsp=$anzsp/2;
-            if (($klfin==1) && ($i==$anzst)) {
-              $anzsp=$anzsp+1;
+            $ligaDaten->anzsp=$ligaDaten->anzsp/2;
+            if (($ligaDaten->klfin==1) && ($i==$ligaDaten->anzst)) {
+              $ligaDaten->anzsp=$ligaDaten->anzsp+1;
             }
           }
-          for ($j=1; $j<=$anzsp; $j++) {
-            if (!isset($msieg[$i-1][$j-1])) {
-              $msieg[$i-1][$j-1]=0;
+          for ($j=1; $j<=$ligaDaten->anzsp; $j++) {
+            if (!isset($ligaDaten->msieg[$i-1][$j-1])) {
+              $ligaDaten->msieg[$i-1][$j-1]=0;
             }
-            fputs($datei,"TA".$j."=".$teama[$i-1][$j-1]."\n");
-            fputs($datei,"TB".$j."=".$teamb[$i-1][$j-1]."\n");
-            if ($lmtype==0) {
-              if ($goala[$i-1][$j-1]=="_") {
+            fputs($datei,"TA".$j."=".$ligaDaten->teama[$i-1][$j-1]."\n");
+            fputs($datei,"TB".$j."=".$ligaDaten->teamb[$i-1][$j-1]."\n");
+            if ($ligaDaten->lmtype==0) {
+              if ($ligaDaten->goala[$i-1][$j-1]=="_") {
                 fputs($datei,"GA".$j."=-1\n");
               }
-              elseif ($msieg[$i-1][$j-1]==1) {
+              elseif ($ligaDaten->msieg[$i-1][$j-1]==1) {
                 fputs($datei,"GA".$j."=-2\n");
               }
               else {
-                fputs($datei,"GA".$j."=".$goala[$i-1][$j-1]."\n");
+                fputs($datei,"GA".$j."=".$ligaDaten->goala[$i-1][$j-1]."\n");
               }
-              if ($goalb[$i-1][$j-1]=="_") {
+              if ($ligaDaten->goalb[$i-1][$j-1]=="_") {
                 fputs($datei,"GB".$j."=-1\n");
               }
-              elseif ($msieg[$i-1][$j-1]==2) {
+              elseif ($ligaDaten->msieg[$i-1][$j-1]==2) {
                 fputs($datei,"GB".$j."=-2\n");
               }
               else {
-                fputs($datei,"GB".$j."=".$goalb[$i-1][$j-1]."\n");
+                fputs($datei,"GB".$j."=".$ligaDaten->goalb[$i-1][$j-1]."\n");
               }
-              if ($msieg[$i-1][$j-1]==3) {
+              if ($ligaDaten->msieg[$i-1][$j-1]==3) {
                 fputs($datei,"ET".$j."=3\n");
               }
-              if ($spez==1) {
-                if ($mspez[$i-1][$j-1]=="_") {
+              if ($ligaDaten->spez==1) {
+                if ($ligaDaten->mspez[$i-1][$j-1]=="_") {
                   fputs($datei,"SP".$j."=0\n");
                 }
-                elseif ($mspez[$i-1][$j-1]==$text[0]) {
+                elseif ($ligaDaten->mspez[$i-1][$j-1]==$text[0]) {
                   fputs($datei,"SP".$j."=2\n");
                 }
-                elseif ($mspez[$i-1][$j-1]==$text[1]) {
+                elseif ($ligaDaten->mspez[$i-1][$j-1]==$text[1]) {
                   fputs($datei,"SP".$j."=1\n");
                 }
               }
-              fputs($datei,"NT".$j."=".$mnote[$i-1][$j-1]."\n");
-              fputs($datei,"BE".$j."=".$mberi[$i-1][$j-1]."\n");
-              fputs($datei,"TI".$j."=".$mtipp[$i-1][$j-1]."\n");
-              fputs($datei,"AT".$j."=".$mterm[$i-1][$j-1]."\n");
+              fputs($datei,"NT".$j."=".$ligaDaten->mnote[$i-1][$j-1]."\n");
+              fputs($datei,"BE".$j."=".$ligaDaten->mberi[$i-1][$j-1]."\n");
+              fputs($datei,"TI".$j."=".$ligaDaten->mtipp[$i-1][$j-1]."\n");
+              fputs($datei,"AT".$j."=".$ligaDaten->mterm[$i-1][$j-1]."\n");
             }
             else {
-              for ($n=1; $n<=$modus[$i-1]; $n++) {
-                if ($goala[$i-1][$j-1][$n-1]=="_") {
+              for ($n=1; $n<=$ligaDaten->modus[$i-1]; $n++) {
+                if ($ligaDaten->goala[$i-1][$j-1][$n-1]=="_") {
                   fputs($datei,"GA".$j.$n."=-1\n");
                 }
                 else {
-                  fputs($datei,"GA".$j.$n."=".$goala[$i-1][$j-1][$n-1]."\n");
+                  fputs($datei,"GA".$j.$n."=".$ligaDaten->goala[$i-1][$j-1][$n-1]."\n");
                 }
-                if ($goalb[$i-1][$j-1][$n-1]=="_") {
+                if ($ligaDaten->goalb[$i-1][$j-1][$n-1]=="_") {
                   fputs($datei,"GB".$j.$n."=-1\n");
                 }
                 else {
-                  fputs($datei,"GB".$j.$n."=".$goalb[$i-1][$j-1][$n-1]."\n");
+                  fputs($datei,"GB".$j.$n."=".$ligaDaten->goalb[$i-1][$j-1][$n-1]."\n");
                 }
-                if ($mspez[$i-1][$j-1][$n-1]=="_") {
+                if ($ligaDaten->mspez[$i-1][$j-1][$n-1]=="_") {
                   fputs($datei,"SP".$j.$n."=0\n");
                 }
-                elseif ($mspez[$i-1][$j-1][$n-1]==$text[0]) {
+                elseif ($ligaDaten->mspez[$i-1][$j-1][$n-1]==$text[0]) {
                   fputs($datei,"SP".$j.$n."=2\n");
                 }
-                elseif ($mspez[$i-1][$j-1][$n-1]==$text[1]) {
+                elseif ($ligaDaten->mspez[$i-1][$j-1][$n-1]==$text[1]) {
                   fputs($datei,"SP".$j.$n."=1\n");
                 }
-                fputs($datei,"NT".$j.$n."=".$mnote[$i-1][$j-1][$n-1]."\n");
-                fputs($datei,"BE".$j.$n."=".$mberi[$i-1][$j-1][$n-1]."\n");
-                fputs($datei,"TI".$j.$n."=".$mtipp[$i-1][$j-1][$n-1]."\n");
-                fputs($datei,"AT".$j.$n."=".$mterm[$i-1][$j-1][$n-1]."\n");
+                fputs($datei,"NT".$j.$n."=".$ligaDaten->mnote[$i-1][$j-1][$n-1]."\n");
+                fputs($datei,"BE".$j.$n."=".$ligaDaten->mberi[$i-1][$j-1][$n-1]."\n");
+                fputs($datei,"TI".$j.$n."=".$ligaDaten->mtipp[$i-1][$j-1][$n-1]."\n");
+                fputs($datei,"AT".$j.$n."=".$ligaDaten->mterm[$i-1][$j-1][$n-1]."\n");
               }
             }
           }

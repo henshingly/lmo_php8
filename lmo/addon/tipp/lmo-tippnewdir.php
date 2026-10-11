@@ -90,7 +90,7 @@ if ($ftype != "") {
             $t4 = $wert;
           }
           if ($schl == "Rounds") {
-            $anzst = $wert;
+            $ligaDaten->anzst = $wert;
           }
           if ($schl == "Type") {
             if ($wert == "1") {
@@ -106,7 +106,7 @@ if ($ftype != "") {
         $t0 = $text[507].$j;
       }
       if ($t2 == $text[370]) {
-        $anzst = strlen(decbin($t4-1));
+        $ligaDaten->anzst = strlen(decbin($t4-1));
       }
 
       $ftest = 0;
@@ -155,7 +155,7 @@ if ($ftype != "") {
                       }
                       echo "</option>";
 
-                      for ($y = 1; $y <= $anzst; $y++) {
+                      for ($y = 1; $y <= $ligaDaten->anzst; $y++) {
                         echo "<option value=\"".$y."\"";
                         if ($y == $t1) {
                           echo " selected";
@@ -228,7 +228,7 @@ if ($ftype != "") {
                         echo "</option>";*/
                       }
 
-                      for ($y = 1; $y <= $anzst; $y++) {
+                      for ($y = 1; $y <= $ligaDaten->anzst; $y++) {
                         echo "                <option value=\"".$y."\"";
                         if ($y == $t1) {
                           echo " selected";

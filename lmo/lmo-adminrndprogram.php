@@ -73,29 +73,29 @@ require_once(PATH_TO_LMO . "/lmo-admintest.php");
 $dummy = false;
 
 // Anzahl der Spieler
-$anzteams = $xteams;
+$ligaDaten->anzteams = $xteams;
 if (($xteams % 2) == 1) {
-    $anzteams++;
+    $ligaDaten->anzteams++;
     $dummy = true;
 }
 
-$plan = array_pad($array, 80, "");
+$ligaDaten->plan = array_pad($array, 80, "");
 for ($i = 0; $i < 40; $i++) {
-    $plan[$i] = array_pad($array, 40, "");
+    $ligaDaten->plan[$i] = array_pad($array, 40, "");
     for ($j = 0; $j < 40; $j++) {
-        $plan[$i][$j] = "-1";
+        $ligaDaten->plan[$i][$j] = "-1";
     }
 }
 
 // Selbsterklärend
-$spieltageHinrunde = $anzteams - 1;
-$spieltage = ($anzteams - 1) * 2;
+$spieltageHinrunde = $ligaDaten->anzteams - 1;
+$spieltage = ($ligaDaten->anzteams - 1) * 2;
 
 // Hat der feste Platz zu Beginn Heimrecht? Dieses Recht wechselt an jedem Spieltag, der Tisch wird gedreht.
 $festerPlatzIsHome = true;
 
 // Spieler X, Sitzbelegung durch Spieler ändert sich nicht
-$spielerNrFesterPlatz = $anzteams - 1;
+$spielerNrFesterPlatz = $ligaDaten->anzteams - 1;
 
 // Tischpartner von Spieler X
 $spielerNrGegenueberFesterPlatz = 0;
@@ -111,21 +111,21 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
     $spielerNrGegenueberFesterPlatz = $spieltag;
     if ($festerPlatzIsHome) {
         // Hinrunde
-        $plan[$spieltag][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
+        $ligaDaten->plan[$spieltag][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
         // Rueckrunde
-        $plan[$spieltag + $spieltageHinrunde][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
+        $ligaDaten->plan[$spieltag + $spieltageHinrunde][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
     }
     else {
         // Hinrunde
-        $plan[$spieltag][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
+        $ligaDaten->plan[$spieltag][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
         // Rückrunde
-        $plan[$spieltag + $spieltageHinrunde][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
+        $ligaDaten->plan[$spieltag + $spieltageHinrunde][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
     }
 
     /*
      * 2. Abschnitt: Alle weiteren Paarungen
      */
-    $beweglicheSpieler = $anzteams - 1;
+    $beweglicheSpieler = $ligaDaten->anzteams - 1;
     $zielSitzGerade = 2;
     $zielSitzUngerade = $beweglicheSpieler - $zielSitzGerade;
     $zielSitzGeradeVerschoben = ($zielSitzGerade + $spieltag) % $beweglicheSpieler;
@@ -136,9 +136,9 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
      */
     while ($zielSitzGerade < $beweglicheSpieler) {
         // Hinrunde
-        $plan[$spieltag][$zielSitzGeradeVerschoben] = $zielSitzUngeradeVerschoben;
+        $ligaDaten->plan[$spieltag][$zielSitzGeradeVerschoben] = $zielSitzUngeradeVerschoben;
         // Rückrunde
-        $plan[$spieltag + $spieltageHinrunde][$zielSitzUngeradeVerschoben] = $zielSitzGeradeVerschoben;
+        $ligaDaten->plan[$spieltag + $spieltageHinrunde][$zielSitzUngeradeVerschoben] = $zielSitzGeradeVerschoben;
 
         // Weiterrutschen der beweglichen Spieler
         $zielSitzGerade += 2;
@@ -158,7 +158,7 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
  * Die neue Spielernummer ist bereits um +1 erhöht,
  * da der LMO Indizes von 1 bis $anzteams erwartet.
  */
-$abbildungsarray = range(1,$anzteams);
+$abbildungsarray = range(1,$ligaDaten->anzteams);
 // Fisher-Yates Shuffle
 for ($i = count($abbildungsarray); --$i; $i > 0) {
     // 0 bis $i: mit $i+1 lag der Index manchmal ausserhalb des Arrays, der Spielplan verlor ein Team
@@ -173,8 +173,8 @@ for ($i = count($abbildungsarray); --$i; $i > 0) {
  */
 for ($spieltag = 0; $spieltag < $spieltage; $spieltag++) {
     $spielnr = 0;
-    for ($heim = 0; $heim < $anzteams; $heim++) {
-        $ausw = $plan[$spieltag][$heim];
+    for ($heim = 0; $heim < $ligaDaten->anzteams; $heim++) {
+        $ausw = $ligaDaten->plan[$spieltag][$heim];
         if ($ausw > -1) {
             $heim_abbild = $abbildungsarray[$heim];
             $ausw_abbild = $abbildungsarray[$ausw];

@@ -76,135 +76,135 @@ if ($newpage == 3) {
             }
         }
     }
-    $titel = $xtitel;
-    $lmtype = $xtype;
-    $anzteams = $xteams;
+    $ligaDaten->titel = $xtitel;
+    $ligaDaten->lmtype = $xtype;
+    $ligaDaten->anzteams = $xteams;
     if ($xtype == 0) {
-        $anzst = $xanzst;
-        $anzsp = $xanzsp;
+        $ligaDaten->anzst = $xanzst;
+        $ligaDaten->anzsp = $xanzsp;
     }
     else {
-        $modus = array_pad($array, 7, '1');
-        $anzst = strlen(decbin($anzteams - 1));
-        $anzsp = $anzteams;
+        $ligaDaten->modus = array_pad($array, 7, '1');
+        $ligaDaten->anzst = strlen(decbin($ligaDaten->anzteams - 1));
+        $ligaDaten->anzsp = $ligaDaten->anzteams;
     }
     $st = '1';
-    $spez = $lmtype;
+    $ligaDaten->spez = $ligaDaten->lmtype;
     if ($xtype == 0) {
-        $pns = '3';
-        $pnu = '1';
-        $pnn = '0';
-        $hidr = '0';
-        $kegel = '0';
-        $tabelle = '1';
-        $ligastats= '1';
-        $kurve = '1';
-        $kreuz = '1';
-        $onrun = '0';
-        $kegel = '0';
-        $minus = '1';
-        $direkt = '0';
-        $champ = '1';
-        $anzcl = '1';
-        $anzck = '1';
-        $anzuc = '3';
-        $anzar = '0';
-        $anzab = '3';
-        $einhinrueck = '1';
-        $einheimausw = '1';
+        $ligaDaten->pns = '3';
+        $ligaDaten->pnu = '1';
+        $ligaDaten->pnn = '0';
+        $ligaDaten->hidr = '0';
+        $ligaDaten->kegel = '0';
+        $ligaDaten->tabelle = '1';
+        $ligaDaten->ligastats= '1';
+        $ligaDaten->kurve = '1';
+        $ligaDaten->kreuz = '1';
+        $ligaDaten->onrun = '0';
+        $ligaDaten->kegel = '0';
+        $ligaDaten->minus = '1';
+        $ligaDaten->direkt = '0';
+        $ligaDaten->champ = '1';
+        $ligaDaten->anzcl = '1';
+        $ligaDaten->anzck = '1';
+        $ligaDaten->anzuc = '3';
+        $ligaDaten->anzar = '0';
+        $ligaDaten->anzab = '3';
+        $ligaDaten->einhinrueck = '1';
+        $ligaDaten->einheimausw = '1';
     }
     else {
-        $klfin = '0';
-        $playdown = '0';
-        $playoffmode = '0';
+        $ligaDaten->klfin = '0';
+        $ligaDaten->playdown = '0';
+        $ligaDaten->playoffmode = '0';
     }
-    $hands = '0';
-    $ergebnis = '1';
-    $plan ='1';
-    $datc = '1';
-    $dats = '1';
-    $datm = '1';
-    $datf = $defdateformat;
-    $enablegamesort = '1';
-    $urlt = '1';
-    $urlb = '1';
-    $favteam = '0';
-    $selteam = '0';
-    $mittore = '1';
-    $goalfaktor = '1';
-    $pointsfaktor = '1';
+    $ligaDaten->hands = '0';
+    $ligaDaten->ergebnis = '1';
+    $ligaDaten->plan ='1';
+    $ligaDaten->datc = '1';
+    $ligaDaten->dats = '1';
+    $ligaDaten->datm = '1';
+    $ligaDaten->datf = $defdateformat;
+    $ligaDaten->enablegamesort = '1';
+    $ligaDaten->urlt = '1';
+    $ligaDaten->urlb = '1';
+    $ligaDaten->favteam = '0';
+    $ligaDaten->selteam = '0';
+    $ligaDaten->mittore = '1';
+    $ligaDaten->goalfaktor = '1';
+    $ligaDaten->pointsfaktor = '1';
     if ($xtype == 0) {
-        $stat1 = '0';
-        $stat2 = '0';
+        $ligaDaten->stat1 = '0';
+        $ligaDaten->stat2 = '0';
     }
-    $nticker = '0';
-    for ($i = 1; $i <= $anzteams; $i++) {
-        $teams[$i] = $text[281] . ' '.$i;
-        $teamk[$i] = $text[282] . $i;
-        $teamm[$i] = '';
-        if ($lmtype == 0) {
-            $strafp[$i] = '0';
-            $strafdat[$i] = '0';
-            $torkorrektur1[$i] = '0';
-            $torkorrektur2[$i] = '0';
+    $ligaDaten->nticker = '0';
+    for ($i = 1; $i <= $ligaDaten->anzteams; $i++) {
+        $ligaDaten->teams[$i] = $text[281] . ' '.$i;
+        $ligaDaten->teamk[$i] = $text[282] . $i;
+        $ligaDaten->teamm[$i] = '';
+        if ($ligaDaten->lmtype == 0) {
+            $ligaDaten->strafp[$i] = '0';
+            $ligaDaten->strafdat[$i] = '0';
+            $ligaDaten->torkorrektur1[$i] = '0';
+            $ligaDaten->torkorrektur2[$i] = '0';
         }
-        $teamu[$i] = '';
-        $teamn[$i] = '';
+        $ligaDaten->teamu[$i] = '';
+        $ligaDaten->teamn[$i] = '';
     }
-    for ($i = 1; $i <= $anzst; $i++) {
-        $datum1[$i - 1] = '';
-        $datum2[$i - 1] = '';
-        if ($lmtype == 0) {
-            for ($j = 1; $j <= $anzsp; $j++) {
+    for ($i = 1; $i <= $ligaDaten->anzst; $i++) {
+        $ligaDaten->datum1[$i - 1] = '';
+        $ligaDaten->datum2[$i - 1] = '';
+        if ($ligaDaten->lmtype == 0) {
+            for ($j = 1; $j <= $ligaDaten->anzsp; $j++) {
                 if ($xprogram == 'none') {
-                    $teama[$i - 1][$j - 1] = '0';
-                    $teamb[$i - 1][$j - 1] = '0';
+                    $ligaDaten->teama[$i - 1][$j - 1] = '0';
+                    $ligaDaten->teamb[$i - 1][$j - 1] = '0';
                 }
                 else {
-                    $teama[$i - 1][$j - 1] = $yteama[$i - 1][$j - 1];
-                    $teamb[$i - 1][$j - 1] = $yteamb[$i - 1][$j - 1];
+                    $ligaDaten->teama[$i - 1][$j - 1] = $yteama[$i - 1][$j - 1];
+                    $ligaDaten->teamb[$i - 1][$j - 1] = $yteamb[$i - 1][$j - 1];
                 }
-                $goala[$i - 1][$j - 1] = '-1';
-                $goalb[$i - 1][$j - 1] = '-1';
-                $mnote[$i - 1][$j - 1] = '';
-                $mberi[$i - 1][$j - 1] = '';
-                $mterm[$i - 1][$j - 1] = '';
-                $mtipp[$i - 1][$j - 1] = '';
-                $msieg[$i - 1][$j - 1] = '';
+                $ligaDaten->goala[$i - 1][$j - 1] = '-1';
+                $ligaDaten->goalb[$i - 1][$j - 1] = '-1';
+                $ligaDaten->mnote[$i - 1][$j - 1] = '';
+                $ligaDaten->mberi[$i - 1][$j - 1] = '';
+                $ligaDaten->mterm[$i - 1][$j - 1] = '';
+                $ligaDaten->mtipp[$i - 1][$j - 1] = '';
+                $ligaDaten->msieg[$i - 1][$j - 1] = '';
             }
         }
         else {
-            $modus[$i - 1] = isset($_POST['xmod' . $i]) ? $_POST['xmod' . $i] : '1';
-            if ($anzteams == 24) {
+            $ligaDaten->modus[$i - 1] = isset($_POST['xmod' . $i]) ? $_POST['xmod' . $i] : '1';
+            if ($ligaDaten->anzteams == 24) {
                 switch ($i) {
                     case 1:
                     case 2:
-                        $anzsp = 16;
+                        $ligaDaten->anzsp = 16;
                     break;
                     case 3:
-                        $anzsp = 8;
+                        $ligaDaten->anzsp = 8;
                     break;
                     case 4:
-                        $anzsp = 4;
+                        $ligaDaten->anzsp = 4;
                     break;
                     case 5:
-                        $anzsp = 2;
+                        $ligaDaten->anzsp = 2;
                     break;
                 }
             }
-            $anzsp = $anzsp / 2;
-            for ($j = 1; $j <= $anzsp; $j++) {
-                $teama[$i - 1][$j - 1] = '0';
-                $teamb[$i - 1][$j - 1] = '0';
-                for ($n = 1; $n <= $modus[$i - 1]; $n++) {
-                    $goala[$i - 1][$j - 1][$n-1] = '-1';
-                    $goalb[$i - 1][$j - 1][$n-1] = '-1';
-                    $mnote[$i - 1][$j - 1][$n-1] = '';
-                    $mspez[$i - 1][$j - 1][$n-1] = '_';
-                    $mberi[$i - 1][$j - 1][$n-1] = '';
-                    $mterm[$i - 1][$j - 1][$n-1] = '';
-                    $mtipp[$i - 1][$j - 1][$n-1] = '';
-                    $msieg[$i - 1][$j - 1][$n-1] = '';
+            $ligaDaten->anzsp = $ligaDaten->anzsp / 2;
+            for ($j = 1; $j <= $ligaDaten->anzsp; $j++) {
+                $ligaDaten->teama[$i - 1][$j - 1] = '0';
+                $ligaDaten->teamb[$i - 1][$j - 1] = '0';
+                for ($n = 1; $n <= $ligaDaten->modus[$i - 1]; $n++) {
+                    $ligaDaten->goala[$i - 1][$j - 1][$n-1] = '-1';
+                    $ligaDaten->goalb[$i - 1][$j - 1][$n-1] = '-1';
+                    $ligaDaten->mnote[$i - 1][$j - 1][$n-1] = '';
+                    $ligaDaten->mspez[$i - 1][$j - 1][$n-1] = '_';
+                    $ligaDaten->mberi[$i - 1][$j - 1][$n-1] = '';
+                    $ligaDaten->mterm[$i - 1][$j - 1][$n-1] = '';
+                    $ligaDaten->mtipp[$i - 1][$j - 1][$n-1] = '';
+                    $ligaDaten->msieg[$i - 1][$j - 1][$n-1] = '';
                 }
             }
         }

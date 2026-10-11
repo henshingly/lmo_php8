@@ -30,9 +30,9 @@ $ticker_geschwindigkeit = isset($tickergeschwindigkeit) ? $tickergeschwindigkeit
 
 $trenner = ' +++ ';
 $array = array();
-$msieg = 0;
+$ligaDaten->msieg = 0;
 $hilf = $hilf1 = '';
-$ticker_text = $mnote = $dummy1 = $dummy2 = $dummy3 = $dummy4 = '';
+$ticker_text = $ligaDaten->mnote = $dummy1 = $dummy2 = $dummy3 = $dummy4 = '';
 ?>
 
           <script type="text/javascript" src="<?php echo URL_TO_LMO; ?>/js/jquery.min.js"></script>
@@ -56,81 +56,81 @@ foreach($ticker_array as $file) {
     $hilf = $hilf1 = '';
     require(PATH_TO_LMO . '/lmo-openfile.php');
     // lmo-openfile.php laesst bei einer fehlenden Liga die Daten der vorigen stehen
-    if (isset($lmtype) && $file != '' && file_exists(PATH_TO_LMO . '/' . $dirliga . $file)) {
+    if (isset($ligaDaten->lmtype) && $file != '' && file_exists(PATH_TO_LMO . '/' . $dirliga . $file)) {
         if($ticker_tickerart == 2) {
-            if (isset($nlines)) {
-                for($i = 0; $i < count($nlines); $i++) {
-                    if(strlen($nlines[$i]) > 0)
-                    $hilf .= $trenner . $nlines[$i];
+            if (isset($ligaDaten->nlines)) {
+                for($i = 0; $i < count($ligaDaten->nlines); $i++) {
+                    if(strlen($ligaDaten->nlines[$i]) > 0)
+                    $hilf .= $trenner . $ligaDaten->nlines[$i];
                 }
             }
             $ticker_text .= $hilf;
         }
         else {
-            if ($lmtype == 0) {
-                for ($i = 0; $i < $anzsp; $i++) {
-                    if (($teama[$stx-1][$i] > 0) && ($teamb[$stx-1][$i] > 0) ) {
-                        if ($mspez[$stx-1][$i] == '&nbsp;') {
+            if ($ligaDaten->lmtype == 0) {
+                for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
+                    if (($ligaDaten->teama[$ligaDaten->stx-1][$i] > 0) && ($ligaDaten->teamb[$ligaDaten->stx-1][$i] > 0) ) {
+                        if ($ligaDaten->mspez[$ligaDaten->stx-1][$i] == '&nbsp;') {
                             $mspezhilf = '';
                         }
                         else {
-                            $mspezhilf = ' ' . $mspez[$stx-1][$i];
+                            $mspezhilf = ' ' . $ligaDaten->mspez[$ligaDaten->stx-1][$i];
                         }
-                        if ($favteam == $teama[$stx-1][$i] || $favteam == $teamb[$stx-1][$i] || $ticker_tickerart == 1) {
-                            if ($msieg[$stx-1][$i] == 1) {
-                                $dummy1 = $text['ticker'][2] . ':' . addslashes($teams[$teama[$stx-1][$i]] . ' ' . $text[211]);
+                        if ($ligaDaten->favteam == $ligaDaten->teama[$ligaDaten->stx-1][$i] || $ligaDaten->favteam == $ligaDaten->teamb[$ligaDaten->stx-1][$i] || $ticker_tickerart == 1) {
+                            if ($ligaDaten->msieg[$ligaDaten->stx-1][$i] == 1) {
+                                $dummy1 = $text['ticker'][2] . ':' . addslashes($ligaDaten->teams[$ligaDaten->teama[$ligaDaten->stx-1][$i]] . ' ' . $text[211]);
                             }
                             else {
                                 $dummy1 = '';
                             }
-                            if ($msieg[$stx-1][$i] == 2) {
-                                $dummy2 = $text['ticker'][2] . ':' . addslashes($teams[$teamb[$stx-1][$i]] . ' ' . $text[211]);
+                            if ($ligaDaten->msieg[$ligaDaten->stx-1][$i] == 2) {
+                                $dummy2 = $text['ticker'][2] . ':' . addslashes($ligaDaten->teams[$ligaDaten->teamb[$ligaDaten->stx-1][$i]] . ' ' . $text[211]);
                             }
                             else {
                                 $dummy2 = '';
                             }
-                            if ($msieg[$stx-1][$i] == 3) {
+                            if ($ligaDaten->msieg[$ligaDaten->stx-1][$i] == 3) {
                                 $dummy3 = $text['ticker'][2] . ':' . addslashes($text['ticker'][3]);
                             }
                             else {
                                 $dummy3 = '';
                             }
-                            if ($mnote[$stx-1][$i] != '' && $ticker_notizanzeigen == 1) {
-                                $dummy4 = ' Notiz' . ': ' . $mnote[$stx-1][$i];
+                            if ($ligaDaten->mnote[$ligaDaten->stx-1][$i] != '' && $ticker_notizanzeigen == 1) {
+                                $dummy4 = ' Notiz' . ': ' . $ligaDaten->mnote[$ligaDaten->stx-1][$i];
                             }
                             else {
                                 $dummy4 = '';
                             }
-                            $hilf = $hilf . $teams[$teama[$stx-1][$i]] . " - " . $teams[$teamb[$stx-1][$i]] . " " . applyFactor($goala[$stx-1][$i], $goalfaktor) . ":" . applyFactor($goalb[$stx-1][$i], $goalfaktor) . $mspezhilf . $dummy1 . $dummy2 . $dummy3 . $dummy4 . $trenner;
+                            $hilf = $hilf . $ligaDaten->teams[$ligaDaten->teama[$ligaDaten->stx-1][$i]] . " - " . $ligaDaten->teams[$ligaDaten->teamb[$ligaDaten->stx-1][$i]] . " " . applyFactor($ligaDaten->goala[$ligaDaten->stx-1][$i], $ligaDaten->goalfaktor) . ":" . applyFactor($ligaDaten->goalb[$ligaDaten->stx-1][$i], $ligaDaten->goalfaktor) . $mspezhilf . $dummy1 . $dummy2 . $dummy3 . $dummy4 . $trenner;
                         }
                     }
                 }  // for ($i = 0; $i < $anzsp; $i++)
             }
             else {
-                for ($i = 0; $i < $anzsp; $i++) {
-                    for ($n = 0; $n < $modus[$stx-1]; $n++) {
-                        if (($teama[$stx-1][$i] > 0) && ($teamb[$stx-1][$i] > 0) ) {
-                            if ($mspez[$stx-1][$i][$n] == '&nbsp;') {
+                for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
+                    for ($n = 0; $n < $ligaDaten->modus[$ligaDaten->stx-1]; $n++) {
+                        if (($ligaDaten->teama[$ligaDaten->stx-1][$i] > 0) && ($ligaDaten->teamb[$ligaDaten->stx-1][$i] > 0) ) {
+                            if ($ligaDaten->mspez[$ligaDaten->stx-1][$i][$n] == '&nbsp;') {
                                 $mspezhilf = '';
                             }
                             else {
-                                $mspezhilf = ' ' . $mspez[$stx-1][$i][$n];
+                                $mspezhilf = ' ' . $ligaDaten->mspez[$ligaDaten->stx-1][$i][$n];
                             }
-                            if ($favteam == $teama[$stx-1][$i] || $favteam == $teamb[$stx-1][$i] || $ticker_tickerart == 1) {
-                                if ($mnote[$stx-1][$i][$n] != '' && $ticker_notizanzeigen == 1) {
-                                    $dummy4 = ' ' . $text[22] . ': ' . $mnote[$stx-1][$i][$n];
+                            if ($ligaDaten->favteam == $ligaDaten->teama[$ligaDaten->stx-1][$i] || $ligaDaten->favteam == $ligaDaten->teamb[$ligaDaten->stx-1][$i] || $ticker_tickerart == 1) {
+                                if ($ligaDaten->mnote[$ligaDaten->stx-1][$i][$n] != '' && $ticker_notizanzeigen == 1) {
+                                    $dummy4 = ' ' . $text[22] . ': ' . $ligaDaten->mnote[$ligaDaten->stx-1][$i][$n];
                                 }
                                 else {
                                     $dummy4 = '';
                                 }
-                                $hilf1 = $hilf1 . $teams[$teama[$stx-1][$i]] . " - " . $teams[$teamb[$stx-1][$i]] . " " . applyFactor($goala[$stx-1][$i][$n], $goalfaktor) . ":".applyFactor($goalb[$stx-1][$i][$n], $goalfaktor) . $mspezhilf . $dummy4 . $trenner;
+                                $hilf1 = $hilf1 . $ligaDaten->teams[$ligaDaten->teama[$ligaDaten->stx-1][$i]] . " - " . $ligaDaten->teams[$ligaDaten->teamb[$ligaDaten->stx-1][$i]] . " " . applyFactor($ligaDaten->goala[$ligaDaten->stx-1][$i][$n], $ligaDaten->goalfaktor) . ":".applyFactor($ligaDaten->goalb[$ligaDaten->stx-1][$i][$n], $ligaDaten->goalfaktor) . $mspezhilf . $dummy4 . $trenner;
                             }
                         }
                     }
                 }
             }
         }
-        $ticker_text .= " $trenner $titel ($stx{$text['ticker'][1]}): $hilf $hilf1";
+        $ticker_text .= " $trenner {$ligaDaten->titel} ({$ligaDaten->stx}{$text['ticker'][1]}): $hilf $hilf1";
     }
     else {
         // anhaengen statt ersetzen: eine fehlende Liga loescht nicht den Text der anderen

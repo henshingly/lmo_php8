@@ -22,8 +22,8 @@ if (!defined('PATH_TO_LMO')) {
   
 //$endtab        = isset($_REQUEST['endtab'])        ? $_REQUEST['endtab']                : ''; 
 if ($endtab == 0) {
-  if (isset($anzst)) {
-    $endtab = $anzst;
+  if (isset($ligaDaten->anzst)) {
+    $endtab = $ligaDaten->anzst;
   }
   $tabdat = "";
 } else {
@@ -34,7 +34,7 @@ $all        = isset($_REQUEST['all'])        ? $_REQUEST['all']                :
 if ($all == 1) {
   $endtab = 0;
   $tabdat = "";
-  $anzst = 0;
+  $ligaDaten->anzst = 0;
 } else {
   $st = $endtab;
 }
@@ -209,14 +209,14 @@ if ($all==0){ ?>
 }?>
         <tr>
           <th class="nobr" colspan="3"> <?php
-if (isset($lmtype) && $lmtype == 1 && $tabdat != "") {
-  if ($st == $anzst) {
+if (isset($ligaDaten->lmtype) && $ligaDaten->lmtype == 1 && $tabdat != "") {
+  if ($st == $ligaDaten->anzst) {
     $j = $text[374];
-  } elseif ($st == $anzst-1) {
+  } elseif ($st == $ligaDaten->anzst-1) {
     $j = $text[373];
-  } elseif ($st == $anzst-2) {
+  } elseif ($st == $ligaDaten->anzst-2) {
     $j = $text[372];
-  } elseif ($st == $anzst-3) {
+  } elseif ($st == $ligaDaten->anzst-3) {
     $j = $text[371];
   } else {
     $j = $st.". ".$text[370];
@@ -568,7 +568,7 @@ if ($tabdat!=""){ ?>
           <td align="left"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[43]?>"><?php echo $text[5]?> <?php echo $text[6]?></a></td><?php
   }
   $st0 = $endtab+1;
-  if ($endtab < $anzst) {?>
+  if ($endtab < $ligaDaten->anzst) {?>
           <td align="right"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[44]?>"><?php echo $text[8]?> <?php echo $text[7]?></a></td><?php
   }?>
         </tr>

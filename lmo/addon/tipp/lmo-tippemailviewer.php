@@ -47,7 +47,7 @@ if ($file != "") {
               $lmtype0 = stripslashes($wert);
             }
             if ($schl == "Teams") {
-              $anzteams = $wert;
+              $ligaDaten->anzteams = $wert;
             }
           }
           array_push($daten, $sekt."|".$schl."|".$wert."|EOL");
@@ -58,19 +58,19 @@ if ($file != "") {
     array_shift($daten);
     clearstatcache();
      
-    if (!isset($titel)) {
-      $titel = "No Name";
+    if (!isset($ligaDaten->titel)) {
+      $ligaDaten->titel = "No Name";
     }
     if ($lmtype0 != 0) {
-      if (!isset($anzteams)) {
-        $anzteams = 16;
+      if (!isset($ligaDaten->anzteams)) {
+        $ligaDaten->anzteams = 16;
       }
     }
-    $anzst0 = strlen(decbin($anzteams-1));
+    $anzst0 = strlen(decbin($ligaDaten->anzteams-1));
     for ($i = 1; $i <= count($daten); $i++) {
       $dum = explode('|', $daten[$i-1]);
       if ($dum[0] == "Teams") {
-        $teams[$dum[1]] = stripslashes($dum[2]);
+        $ligaDaten->teams[$dum[1]] = stripslashes($dum[2]);
       }
       $op2 = substr($dum[0], 0, 5);
       if ($op2 == "Round") {
@@ -97,14 +97,14 @@ if ($file != "") {
             }
              
             array_push($liga, $liga0);
-            array_push($titel, $titel0);
-            array_push($lmtype, $lmtype0);
-            array_push($anzst, $anzst0);
+            array_push($ligaDaten->titel, $titel0);
+            array_push($ligaDaten->lmtype, $lmtype0);
+            array_push($ligaDaten->anzst, $anzst0);
             array_push($spieltag, $spieltag0);
-            array_push($modus, $modus0);
+            array_push($ligaDaten->modus, $modus0);
             array_push($spiel, $spiel0);
-            array_push($teama, $teams[$teama0]);
-            array_push($teamb, $teams[$teamb0]);
+            array_push($ligaDaten->teama, $ligaDaten->teams[$teama0]);
+            array_push($ligaDaten->teamb, $ligaDaten->teams[$teamb0]);
             array_push($zeit, date("d.m.Y H:i", $zeit0));
             $anzspiele++;
           }

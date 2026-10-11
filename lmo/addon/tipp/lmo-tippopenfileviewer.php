@@ -60,7 +60,7 @@ if ($file != "") {
               $lmtype0 = stripslashes($wert);
             }
             if ($schl == "Teams") {
-              $anzteams = $wert;
+              $ligaDaten->anzteams = $wert;
             }
             if ($lmtype0 == 0) {
               if ($schl == "HideDraw") {
@@ -74,7 +74,7 @@ if ($file != "") {
               $datm0 = $wert;
             }
             if ($schl == "favTeam") {
-              $favteam = $wert;
+              $ligaDaten->favteam = $wert;
             }
           }
           array_push($daten, $sekt."|".$schl."|".$wert."|EOL");
@@ -108,28 +108,28 @@ if ($file != "") {
     }
     fclose($datei);
 
-    if (!isset($favteam)) {
-      $favteam = 0;
+    if (!isset($ligaDaten->favteam)) {
+      $ligaDaten->favteam = 0;
     }
-    if (!isset($titel)) {
-      $titel = "No Name";
+    if (!isset($ligaDaten->titel)) {
+      $ligaDaten->titel = "No Name";
     }
     if ($lmtype0 != 0) {
-      if (!isset($anzteams)) {
-        $anzteams = 16;
+      if (!isset($ligaDaten->anzteams)) {
+        $ligaDaten->anzteams = 16;
       }
     }
-    $anzst0 = strlen(decbin($anzteams-1));
-    if (!isset($dats)) {
-      $dats = 1;
+    $anzst0 = strlen(decbin($ligaDaten->anzteams-1));
+    if (!isset($ligaDaten->dats)) {
+      $ligaDaten->dats = 1;
     }
-    if (!isset($datm)) {
-      $datm = 0;
+    if (!isset($ligaDaten->datm)) {
+      $ligaDaten->datm = 0;
     }
     for ($i = 1; $i <= count($daten); $i++) {
       $dum = explode('|', $daten[$i-1]);
       if ($dum[0] == "Teams") {
-        $teams[$dum[1]] = stripslashes($dum[2]);
+        $ligaDaten->teams[$dum[1]] = stripslashes($dum[2]);
       }
       $op2 = substr($dum[0], 0, 5);
       if ($op2 == "Round") {
@@ -213,31 +213,31 @@ if ($file != "") {
             }
 
             array_push($liga, $liga0);
-            array_push($titel, $titel0);
-            array_push($lmtype, $lmtype0);
-            array_push($anzst, $anzst0);
-            array_push($hidr, $hidr0);
-            array_push($dats, $dats0);
-            array_push($datm, $datm0);
+            array_push($ligaDaten->titel, $titel0);
+            array_push($ligaDaten->lmtype, $lmtype0);
+            array_push($ligaDaten->anzst, $anzst0);
+            array_push($ligaDaten->hidr, $hidr0);
+            array_push($ligaDaten->dats, $dats0);
+            array_push($ligaDaten->datm, $datm0);
             array_push($spieltag, $spieltag0);
-            array_push($modus, $modus0);
-            array_push($datum1, $datum10);
-            array_push($datum2, $datum20);
+            array_push($ligaDaten->modus, $modus0);
+            array_push($ligaDaten->datum1, $datum10);
+            array_push($ligaDaten->datum2, $datum20);
             array_push($spiel, $spiel0);
-            array_push($urlb, $urlb0);
-            array_push($goalfaktor, $goalfaktor0);
-            if ($favteam == $teama0) {
-              $teama0 = "<strong>".$teams[$teama0]."</strong>";
+            array_push($ligaDaten->urlb, $urlb0);
+            array_push($ligaDaten->goalfaktor, $goalfaktor0);
+            if ($ligaDaten->favteam == $teama0) {
+              $teama0 = "<strong>".$ligaDaten->teams[$teama0]."</strong>";
             } else {
-              $teama0 = $teams[$teama0];
+              $teama0 = $ligaDaten->teams[$teama0];
             }
-            array_push($teama, $teama0);
-            if ($favteam == $teamb0) {
-              $teamb0 = "<strong>".$teams[$teamb0]."</strong>";
+            array_push($ligaDaten->teama, $teama0);
+            if ($ligaDaten->favteam == $teamb0) {
+              $teamb0 = "<strong>".$ligaDaten->teams[$teamb0]."</strong>";
             } else {
-              $teamb0 = $teams[$teamb0];
+              $teamb0 = $ligaDaten->teams[$teamb0];
             }
-            array_push($teamb, $teamb0);
+            array_push($ligaDaten->teamb, $teamb0);
             if ($goala0 == "") {
               $goala0 = -1;
             }
@@ -248,7 +248,7 @@ if ($file != "") {
               $msieg0 = 1;
               $goala0 = 0;
             }
-            array_push($goala, $goala0);
+            array_push($ligaDaten->goala, $goala0);
             if ($goalb0 == "") {
               $goalb0 = -1;
             }
@@ -259,7 +259,7 @@ if ($file != "") {
               $msieg0 = 2;
               $goalb0 = 0;
             }
-            array_push($goalb, $goalb0);
+            array_push($ligaDaten->goalb, $goalb0);
             if ($mspez0 == 0) {
               $mspez0 = "&nbsp;";
             }
@@ -269,17 +269,17 @@ if ($file != "") {
             if ($mspez0 == 1) {
               $mspez0 = $text[1];
             }
-            array_push($mspez, $mspez0);
+            array_push($ligaDaten->mspez, $mspez0);
             $mspez0 = 0;
             if (!isset($mtipp0)) {
               $mtipp0 = 0;
             }
-            array_push($mtipp, $mtipp0);
-            array_push($mnote, $mnote0);
-            array_push($mberi, $mberi0);
-            array_push($msieg, $msieg0);
+            array_push($ligaDaten->mtipp, $mtipp0);
+            array_push($ligaDaten->mnote, $mnote0);
+            array_push($ligaDaten->mberi, $mberi0);
+            array_push($ligaDaten->msieg, $msieg0);
             $msieg0 = 0;
-            array_push($mterm, $mterm0);
+            array_push($ligaDaten->mterm, $mterm0);
             array_push($tippa, "");
             array_push($tippb, "");
             array_push($jksp, "");

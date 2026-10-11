@@ -564,8 +564,8 @@ if (isset($file) && $file != '') {
                     <td colspan="2" align="left">
                       <select name="data<?php echo $j1 . '|' . $j2;?>" size="1">
 <?php
-                        for ($j = 0; $j <= $anzteams; $j++) {?>
-                        <option<?php if (htmlentities($teams[$j]) == $data[$j1][$j2]) echo ' selected';?>><?php echo htmlentities($teams[$j]);?></option>
+                        for ($j = 0; $j <= $ligaDaten->anzteams; $j++) {?>
+                        <option<?php if (htmlentities($ligaDaten->teams[$j]) == $data[$j1][$j2]) echo ' selected';?>><?php echo htmlentities($ligaDaten->teams[$j]);?></option>
 <?php
                         }?>
                       </select>

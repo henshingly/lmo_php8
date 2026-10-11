@@ -117,7 +117,7 @@ if (!isset($nw)){
         </tr>
         <tr>
           <td valign="bottom"><?php 
-  if ($file != "" && $lmtype == 0 && $all != 1) {
+  if ($file != "" && $ligaDaten->lmtype == 0 && $all != 1) {
     echo "<a href=\"".$_SERVER['PHP_SELF']."?file=".$file."&amp;action=table\">".$text[5]." ".$text['tipp'][99]."</a>&nbsp;&nbsp;&nbsp;<br>";
   }
   if ($todo != "" && $todo != "logout") {

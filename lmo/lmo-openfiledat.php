@@ -41,26 +41,26 @@ if ($file != "") {
         $wert = trim(substr($zeile, strpos($zeile, "=")+1));
         if ($sekt == "Options") {
           if ($schl == "Name") {
-            $titel = stripslashes($wert);
+            $ligaDaten->titel = stripslashes($wert);
           }
           if ($schl == "goalfaktor") {
-            $goalfaktor = $wert;
+            $ligaDaten->goalfaktor = $wert;
           }
           if ($schl == "Type") {
-            $lmtype = stripslashes($wert);
+            $ligaDaten->lmtype = stripslashes($wert);
           }
-          if (!isset($lmtype)) {
-            $lmtype = 0;
+          if (!isset($ligaDaten->lmtype)) {
+            $ligaDaten->lmtype = 0;
           }
           if ($schl == "Teams") {
-            $anzteams = $wert;
+            $ligaDaten->anzteams = $wert;
           }
-          if ($lmtype == 0) {
+          if ($ligaDaten->lmtype == 0) {
             if ($schl == "Rounds") {
-              $anzst = $wert;
+              $ligaDaten->anzst = $wert;
             }
             if ($schl == "Matches") {
-              $anzsp = $wert;
+              $ligaDaten->anzsp = $wert;
             }
           }
           if (!isset($st)) {
@@ -69,12 +69,12 @@ if ($file != "") {
             }
           }
           if ($schl == "Actual") {
-            $stx = $wert;
+            $ligaDaten->stx = $wert;
           }
-          if ($lmtype == 0) {
+          if ($ligaDaten->lmtype == 0) {
           } else {
             if ($schl == "KlFin") {
-              $klfin = $wert;
+              $ligaDaten->klfin = $wert;
             }
           }
         }
@@ -82,75 +82,75 @@ if ($file != "") {
       }
     }
     fclose($datei);
-    if (!isset($titel)) {
-      $titel = "No Name";
+    if (!isset($ligaDaten->titel)) {
+      $ligaDaten->titel = "No Name";
     }
-    if ($lmtype == 0) {
-      if (!isset($anzteams)) {
-        $anzteams = 18;
+    if ($ligaDaten->lmtype == 0) {
+      if (!isset($ligaDaten->anzteams)) {
+        $ligaDaten->anzteams = 18;
       }
-      if (!isset($anzsp)) {
-        $anzsp = floor($anzteams/2);
+      if (!isset($ligaDaten->anzsp)) {
+        $ligaDaten->anzsp = floor($ligaDaten->anzteams/2);
       }
-      if (!isset($anzst)) {
-        $anzst = floor($anzteams * ($anzteams-1)/$anzsp);
+      if (!isset($ligaDaten->anzst)) {
+        $ligaDaten->anzst = floor($ligaDaten->anzteams * ($ligaDaten->anzteams-1)/$ligaDaten->anzsp);
       }
     } else {
-      if (!isset($anzteams)) {
-        $anzteams = 16;
+      if (!isset($ligaDaten->anzteams)) {
+        $ligaDaten->anzteams = 16;
       }
-      $anzsp = floor($anzteams/2);
-      $anzst = strlen(decbin($anzteams-1));
+      $ligaDaten->anzsp = floor($ligaDaten->anzteams/2);
+      $ligaDaten->anzst = strlen(decbin($ligaDaten->anzteams-1));
     }
-    if (!isset($dats)) {
-      $dats = 1;
+    if (!isset($ligaDaten->dats)) {
+      $ligaDaten->dats = 1;
     }
-    if (!isset($datm)) {
-      $datm = 0;
+    if (!isset($ligaDaten->datm)) {
+      $ligaDaten->datm = 0;
     }
-    if (!isset($datc)) {
-      if ((isset($dats)) || (isset($datm))) {
-        $datc = 1;
+    if (!isset($ligaDaten->datc)) {
+      if ((isset($ligaDaten->dats)) || (isset($ligaDaten->datm))) {
+        $ligaDaten->datc = 1;
       } else {
-        $datc = 0;
+        $ligaDaten->datc = 0;
       }
     }
-    if ((!isset($dats)) || (!isset($datm))) {
-      $datc = 0;
+    if ((!isset($ligaDaten->dats)) || (!isset($ligaDaten->datm))) {
+      $ligaDaten->datc = 0;
     }
-    $teams = array_pad($array, $anzteams+2, "");
-    if ($lmtype == 0) {
-      $datum1 = array_pad($array, 116, "");
-      $datum2 = array_pad($array, 116, "");
-      $teama = array_pad($array, 116, "");
-      $teamb = array_pad($array, 116, "");
-      $mterm = array_pad($array, 116, "");
+    $ligaDaten->teams = array_pad($array, $ligaDaten->anzteams+2, "");
+    if ($ligaDaten->lmtype == 0) {
+      $ligaDaten->datum1 = array_pad($array, 116, "");
+      $ligaDaten->datum2 = array_pad($array, 116, "");
+      $ligaDaten->teama = array_pad($array, 116, "");
+      $ligaDaten->teamb = array_pad($array, 116, "");
+      $ligaDaten->mterm = array_pad($array, 116, "");
       for ($i = 0; $i < 116; $i++) {
-        $teama[$i] = array_pad(array("0"), 40, "0");
-        $teamb[$i] = array_pad(array("0"), 40, "0");
-        $mterm[$i] = array_pad(array("0"), 40, "0");
+        $ligaDaten->teama[$i] = array_pad(array("0"), 40, "0");
+        $ligaDaten->teamb[$i] = array_pad(array("0"), 40, "0");
+        $ligaDaten->mterm[$i] = array_pad(array("0"), 40, "0");
       }
     } else {
-      $datum1 = array_pad($array, 7, "");
-      $datum2 = array_pad($array, 7, "");
-      $modus = array_pad(array("1"), 7, "1");
-      $teama = array_pad($array, 7, "");
-      $teamb = array_pad($array, 7, "");
-      $mterm = array_pad($array, 7, "");
+      $ligaDaten->datum1 = array_pad($array, 7, "");
+      $ligaDaten->datum2 = array_pad($array, 7, "");
+      $ligaDaten->modus = array_pad(array("1"), 7, "1");
+      $ligaDaten->teama = array_pad($array, 7, "");
+      $ligaDaten->teamb = array_pad($array, 7, "");
+      $ligaDaten->mterm = array_pad($array, 7, "");
       for ($i = 0; $i < 7; $i++) {
-        $teama[$i] = array_pad(array("0"), 64, "0");
-        $teamb[$i] = array_pad(array("0"), 64, "0");
-        $mterm[$i] = array_pad($array, 64, "");
+        $ligaDaten->teama[$i] = array_pad(array("0"), 64, "0");
+        $ligaDaten->teamb[$i] = array_pad(array("0"), 64, "0");
+        $ligaDaten->mterm[$i] = array_pad($array, 64, "");
         for ($j = 0; $j < 64; $j++) {
-          $mterm[$i][$j] = array_pad(array("0"), 7, "0");
+          $ligaDaten->mterm[$i][$j] = array_pad(array("0"), 7, "0");
         }
       }
     }
-    $teams[0] = "___";
+    $ligaDaten->teams[0] = "___";
     for ($i = 1; $i <= count($daten); $i++) {
       $dum = explode('|', $daten[$i-1]);
       if ($dum[0] == "Teams") {
-        $teams[$dum[1]] = stripslashes($dum[2]);
+        $ligaDaten->teams[$dum[1]] = stripslashes($dum[2]);
       }
       $op1 = substr($dum[0], 0, 4);
       $op2 = substr($dum[0], 0, 5);
@@ -163,47 +163,47 @@ if ($file != "") {
       if ($op3 == $st-1) {
         ////////////////////////////////////////////////// nur der benötigte Spieltag wird eingelesen
         if (($op2 == "Round") && ($dum[1] == "D1")) {
-          $datum1[$op3] = $dum[2];
+          $ligaDaten->datum1[$op3] = $dum[2];
         }
-        if (isset($datum1[$op3])) {
-          if ($datum1[$op3] != "") {
-            $dummy = strtotime(substr($datum1[$op3], 0, 2)." ".$me[intval(substr($datum1[$op3], 3, 2))]." ".substr($datum1[$op3], 6, 4));
+        if (isset($ligaDaten->datum1[$op3])) {
+          if ($ligaDaten->datum1[$op3] != "") {
+            $dummy = strtotime(substr($ligaDaten->datum1[$op3], 0, 2)." ".$me[intval(substr($ligaDaten->datum1[$op3], 3, 2))]." ".substr($ligaDaten->datum1[$op3], 6, 4));
             if ($dummy > -1) {
-              $datum1[$op3] = date("d.m.Y", $dummy);
+              $ligaDaten->datum1[$op3] = date("d.m.Y", $dummy);
             } else {
-              $datum1[$op3] = "";
+              $ligaDaten->datum1[$op3] = "";
             }
           }
         }
         if (($op2 == "Round") && ($dum[1] == "D2")) {
-          $datum2[$op3] = $dum[2];
+          $ligaDaten->datum2[$op3] = $dum[2];
         }
-        if (isset($datum2[$op3])) {
-          if ($datum2[$op3] != "") {
-            $dummy = strtotime(substr($datum2[$op3], 0, 2)." ".$me[intval(substr($datum2[$op3], 3, 2))]." ".substr($datum2[$op3], 6, 4));
+        if (isset($ligaDaten->datum2[$op3])) {
+          if ($ligaDaten->datum2[$op3] != "") {
+            $dummy = strtotime(substr($ligaDaten->datum2[$op3], 0, 2)." ".$me[intval(substr($ligaDaten->datum2[$op3], 3, 2))]." ".substr($ligaDaten->datum2[$op3], 6, 4));
             if ($dummy > -1) {
-              $datum2[$op3] = date("d.m.Y", $dummy);
+              $ligaDaten->datum2[$op3] = date("d.m.Y", $dummy);
             } else {
-              $datum2[$op3] = "";
+              $ligaDaten->datum2[$op3] = "";
             }
           }
         }
         if (($op2 == "Round") && ($op8 == "TA")) {
-          $teama[$op3][$op4] = $dum[2];
+          $ligaDaten->teama[$op3][$op4] = $dum[2];
         }
         if (($op2 == "Round") && ($op8 == "TB")) {
-          $teamb[$op3][$op4] = $dum[2];
+          $ligaDaten->teamb[$op3][$op4] = $dum[2];
         }
-        if ($lmtype == 0) {
+        if ($ligaDaten->lmtype == 0) {
           if (($op2 == "Round") && ($op8 == "AT")) {
-            $mterm[$op3][$op4] = $dum[2];
+            $ligaDaten->mterm[$op3][$op4] = $dum[2];
           }
         } else {
           if (($op2 == "Round") && ($dum[1] == "MO")) {
-            $modus[$op3] = $dum[2];
+            $ligaDaten->modus[$op3] = $dum[2];
           }
           if (($op2 == "Round") && ($op8 == "AT")) {
-            $mterm[$op3][$op6][$op7] = $dum[2];
+            $ligaDaten->mterm[$op3][$op6][$op7] = $dum[2];
           }
         }
       }

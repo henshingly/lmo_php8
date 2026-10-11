@@ -32,7 +32,7 @@ if ($file != "") {
     $datei = file(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file));
     if ($datei) {
       $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.'/'.basename($file)));
-      $lmtype=0;
+      $ligaDaten->lmtype=0;
       for ($tt=0;$tt<count($datei);$tt++) {
         $zeile=&$datei[$tt];
         $zeile = trim($zeile);
@@ -44,23 +44,23 @@ if ($file != "") {
           $wert = trim(substr($zeile, strpos($zeile, "=")+1));
           if ($sekt == "Options") {
             if ($schl == "Title") {
-              $lmvers = $wert;
+              $ligaDaten->lmvers = $wert;
             }
             if ($schl == "Name") {
-              $titel = stripslashes($wert);
+              $ligaDaten->titel = stripslashes($wert);
             }
             if ($schl == "Type") {
-              $lmtype = stripslashes($wert);
+              $ligaDaten->lmtype = stripslashes($wert);
             }
-            if (!isset($lmtype)) {
-              $lmtype = 0;
+            if (!isset($ligaDaten->lmtype)) {
+              $ligaDaten->lmtype = 0;
             }
             if ($schl == "Teams") {
-              $anzteams = $wert;
+              $ligaDaten->anzteams = $wert;
             }
-            if ($lmtype == 0) {
+            if ($ligaDaten->lmtype == 0) {
               if ($schl == "Rounds") {
-                $anzst = $wert;
+                $ligaDaten->anzst = $wert;
               }
             }
             if (!isset($st)) {
@@ -69,7 +69,7 @@ if ($file != "") {
               }
             }
             if ($schl == "Actual") {
-              $stx = $wert;
+              $ligaDaten->stx = $wert;
             }
           }
           $daten[]="$sekt|$schl|$wert|EOL";
@@ -79,26 +79,26 @@ if ($file != "") {
     if (!isset($st)) {
       $st = 1;
     }
-    if (!isset($stx)) {
-      $stx = 1;
+    if (!isset($ligaDaten->stx)) {
+      $ligaDaten->stx = 1;
     }
     array_shift($daten);
-    if (!isset($lmvers)) {
-      $lmvers = "k.A.";
+    if (!isset($ligaDaten->lmvers)) {
+      $ligaDaten->lmvers = "k.A.";
     }
-    if (!isset($titel)) {
-      $titel = "No Name";
+    if (!isset($ligaDaten->titel)) {
+      $ligaDaten->titel = "No Name";
     }
-    if ($lmtype == 0) {
-      if (!isset($anzst)) {
-        $anzst = floor($anzteams * ($anzteams-1)/$anzsp);
+    if ($ligaDaten->lmtype == 0) {
+      if (!isset($ligaDaten->anzst)) {
+        $ligaDaten->anzst = floor($ligaDaten->anzteams * ($ligaDaten->anzteams-1)/$ligaDaten->anzsp);
       }
     } else {
-      if (!isset($anzteams)) {
-        $anzteams = 16;
+      if (!isset($ligaDaten->anzteams)) {
+        $ligaDaten->anzteams = 16;
       }
-      $anzsp = floor($anzteams/2);
-      $anzst = strlen(decbin($anzteams-1));
+      $ligaDaten->anzsp = floor($ligaDaten->anzteams/2);
+      $ligaDaten->anzst = strlen(decbin($ligaDaten->anzteams-1));
     }
   }
 }

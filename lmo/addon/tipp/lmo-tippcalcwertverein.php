@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
   
 if (file_exists($auswertfile)){
   $datei = fopen($auswertfile,"rb");
-  $anzteams=0;
+  $ligaDaten->anzteams=0;
 
   if ($datei!=false){
     $tippdaten=array("");
@@ -35,7 +35,7 @@ if (file_exists($auswertfile)){
       if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
         $sekt=trim(substr($zeile,1,-1));
         array_push($tippdaten,$sekt."|||EOL");
-        $anzteams++;
+        $ligaDaten->anzteams++;
       } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
         //elseif ((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
         $schl=trim(substr($zeile,0,strpos($zeile,"=")));
@@ -48,15 +48,15 @@ if (file_exists($auswertfile)){
   array_shift($tippdaten);
 
   if ($m==0){
-    $team = array_pad($array,$anzteams+1,"0");
-    $spielegetippt = array_pad($array,$anzteams+1,"0");
-    $tipppunktegesamt = array_pad($array,$anzteams+1,"0");
+    $team = array_pad($array,$ligaDaten->anzteams+1,"0");
+    $spielegetippt = array_pad($array,$ligaDaten->anzteams+1,"0");
+    $tipppunktegesamt = array_pad($array,$ligaDaten->anzteams+1,"0");
   
-    for ($i=1;$i<=$anzteams;$i++){
+    for ($i=1;$i<=$ligaDaten->anzteams;$i++){
       $team[$i]=$i;
     }
     if ($endtab<1){
-      $endtab=$anzst;
+      $endtab=$ligaDaten->anzst;
     }
   }
 
@@ -73,7 +73,7 @@ if (file_exists($auswertfile)){
 
   if ($m==($anztipper-1)){
     $tab0 = array("");
-    for ($a=1;$a<=$anzteams;$a++){
+    for ($a=1;$a<=$ligaDaten->anzteams;$a++){
       if ($tipppunktegesamt[$a]==""){$tipppunktegesamt[$a]=0;}
       if ($spielegetippt[$a]==""){$spielegetippt[$a]=0;}
       $quote=0;

@@ -130,15 +130,15 @@ if ($file!="" && $tipp_tippfieber==1){
         }
       }
       $dummy=$dummy."&amp;max=".$max;
-      $dummy=$dummy."&amp;pgst=".$anzst;
+      $dummy=$dummy."&amp;pgst=".$ligaDaten->anzst;
       if ($kurvenmodus<4) {
         $dummy=$dummy."&amp;pgplatz1=";
         if ($kurvenmodus==1) {
-          for ($j=0; $j<$anzst; $j++) {
+          for ($j=0; $j<$ligaDaten->anzst; $j++) {
             $dummy.=$tipppunkte[$fieber_stat1][$j].",";
           }
         } else {
-          for ($j=0; $j<$anzst; $j++) {
+          for ($j=0; $j<$ligaDaten->anzst; $j++) {
             $dummy.=$platz[$fieber_stat1][$j].",";
           }
         }
@@ -146,7 +146,7 @@ if ($file!="" && $tipp_tippfieber==1){
       }
       if ($kurvenmodus>2) {
         $dummy=$dummy."&amp;pgplatz1a=";
-        for ($j=0; $j<$anzst; $j++) {
+        for ($j=0; $j<$ligaDaten->anzst; $j++) {
           $dummy.=$platz1[$fieber_stat1][$j].",";
         }
         $dummy.="0";
@@ -155,11 +155,11 @@ if ($file!="" && $tipp_tippfieber==1){
         if ($kurvenmodus<4) {
           $dummy=$dummy."&amp;pgplatz2=";
           if ($kurvenmodus==1) {
-            for ($j=0; $j<$anzst; $j++) {
+            for ($j=0; $j<$ligaDaten->anzst; $j++) {
               $dummy.=$tipppunkte[$fieber_stat2][$j].",";
             }
           } else {
-            for ($j=0; $j<$anzst; $j++) {
+            for ($j=0; $j<$ligaDaten->anzst; $j++) {
               $dummy.=$platz[$fieber_stat2][$j].",";
             }
           }
@@ -167,7 +167,7 @@ if ($file!="" && $tipp_tippfieber==1){
         }
         if ($kurvenmodus>2) {
           $dummy=$dummy."&amp;pgplatz2a=";
-          for ($j=0; $j<$anzst; $j++) {
+          for ($j=0; $j<$ligaDaten->anzst; $j++) {
             $dummy.=$platz1[$fieber_stat2][$j].",";
           }
           $dummy.="0";
