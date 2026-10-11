@@ -555,13 +555,19 @@ class liga {
         $status = false;  // FIX: initialisieren, sonst Undefined variable wenn Datei nicht existiert
         if (file_exists($fileName) && !empty($fileName) && !is_dir($fileName)) {
             $this->ligaDatum = filemtime($fileName);
-            // ligaFile in einen kompletten String einlesen
-            $ligaFile = implode('', file($fileName));
-            // sectionen suchen und die einzelnen Sectionen in Array $sections speichern
-            preg_match_all('/^\[([^\]]+)+\][^\[]+/m', $ligaFile, $sections, PREG_PATTERN_ORDER);
-            for ($y = 0; $y < count($sections[0]); $y++) {
-                // Parameter und werte trennen
-                preg_match_all('/^([^=\[]+)=(.*)/m', $sections[0][$y], $parameter, PREG_PATTERN_ORDER);
+            // Abschnitte, Schluessel und Werte zeilenweise lesen (Lmo\Liga\LigaDatei, wie der Kern):
+            // eckige Klammern in Namen oder Notizen gehoeren zum Wert und beenden keinen Abschnitt.
+            // Zeilen vor dem ersten Abschnitt zaehlen nicht.
+            $abschnitte = array();
+            foreach (\Lmo\Liga\LigaDatei::abschnitte(\Lmo\Liga\LigaDatei::lies($fileName)) as $abschnitt) {
+                if ($abschnitt[0] !== '') {
+                    $abschnitte[] = $abschnitt;
+                }
+            }
+            // $sections[1] = Namen der Abschnitte, $parameter[1]/[2] = Schluessel/Werte eines Abschnitts
+            $sections = array(1 => array_column($abschnitte, 0));
+            for ($y = 0; $y < count($abschnitte); $y++) {
+                $parameter = array(1 => $abschnitte[$y][1], 2 => $abschnitte[$y][2]);
                 // Modus des Spieltags (MO): 0/leer = Liga, sonst Pokal mit mehreren Spielen je Paarung
                 $roundModus = 0;
                 foreach ($parameter[1] as $moIndex => $moKey) {
@@ -569,7 +575,7 @@ class liga {
                         $roundModus = (int) trim($parameter[2][$moIndex]);
                     }
                 }
-                for ($i = 0, $partieNumber = 0; $i < count($parameter[0]); $i++) {
+                for ($i = 0, $partieNumber = 0; $i < count($parameter[1]); $i++) {
                     // Spieltagswerte ohne Partienummer: D1, D2 und Schluessel nur aus Buchstaben (MO, HS)
                     if (!str_contains(strtolower($sections[1][$y]), 'round') || preg_match('/^D[12]$|^[A-Za-z]+$/', trim($parameter[1][$i]))) {
                         // andere Section oder SpieltagParameter
