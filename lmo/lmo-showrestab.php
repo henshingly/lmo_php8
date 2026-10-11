@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var int|string $st gewaehlter Spieltag
  * @var string $action gewaehlte Seite (Aufrufparameter)
@@ -59,22 +59,32 @@ if (isset($file) && $file != "") {
   $endtab_original = $endtab;
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
   $addr = $_SERVER['PHP_SELF']."?action=$action&amp;tabtype=$tabtype&amp;file=".$file."&amp;st=";
+  // Einstellungen der Liga mit Vorgabewerten (Lmo\Liga\Einstellungen)
+  $lmo_einstellungen = $lmo_liga->einstellungen();
+  $lmo_anzteams = $lmo_einstellungen->mannschaften();
   $breite = 10;
-  if ($ligaDaten->spez == 1) {
+  if ($lmo_einstellungen->mitVerlaengerung()) {
     $breite = $breite+2;
   }
-  if (in_array(3,$ligaDaten->msieg[$st-1])) {
+  // hat der Spieltag ein Spiel, das gegen beide gewertet ist? Dann braucht die Ergebnisliste vier Spalten mehr
+  $lmo_gegen_beide = false;
+  foreach ($lmo_liga->spiele((int)$st) as $lmo_spiel) {
+    if ($lmo_spiel->wertung == 3) {
+      $lmo_gegen_beide = true;
+    }
+  }
+  if ($lmo_gegen_beide) {
     $breite = $breite+4;
   }
-  if ($ligaDaten->datm == 1) {
+  if ($lmo_einstellungen->mitAnstosszeit()) {
     $breite = $breite+1;
   }
   if ($endtab_original > 1) {
     $endtab = $endtab_original - 1;
     require(PATH_TO_LMO."/lmo-calctable.php");
     $platz1 = array("");
-    $platz1 = array_pad($array, $ligaDaten->anzteams+1, "");
-    for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
+    $platz1 = array_pad($array, $lmo_anzteams+1, "");
+    for ($x = 0; $x < $lmo_anzteams; $x++) {
       $platz1[intval(substr($tab0[$x], 34))] = $x+1;
     }
     $endtab = $endtab_original;
@@ -84,8 +94,8 @@ if (isset($file) && $file != "") {
     $tabtype = 1;
     require(PATH_TO_LMO."/lmo-calctable.php");
     $hplatz = array("");
-    $hplatz = array_pad($array, $ligaDaten->anzteams+1, "");
-    for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
+    $hplatz = array_pad($array, $lmo_anzteams+1, "");
+    for ($x = 0; $x < $lmo_anzteams; $x++) {
       $hplatz[intval(substr($tab0[$x], 34))] = $x+1;
     }
     $hspiele = $spiele;
@@ -100,8 +110,8 @@ if (isset($file) && $file != "") {
     $tabtype = 2;
     require(PATH_TO_LMO."/lmo-calctable.php");
     $aplatz = array("");
-    $aplatz = array_pad($array, $ligaDaten->anzteams+1, "");
-    for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
+    $aplatz = array_pad($array, $lmo_anzteams+1, "");
+    for ($x = 0; $x < $lmo_anzteams; $x++) {
       $aplatz[intval(substr($tab0[$x], 34))] = $x+1;
     }
     $aspiele = $spiele;
@@ -118,8 +128,8 @@ if (isset($file) && $file != "") {
   $endtab = $endtab_original;
   require(PATH_TO_LMO."/lmo-calctable.php");
   $platz0 = array("");
-  $platz0 = array_pad($array, $ligaDaten->anzteams+1, "");
-  for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
+  $platz0 = array_pad($array, $lmo_anzteams+1, "");
+  for ($x = 0; $x < $lmo_anzteams; $x++) {
     $platz0[intval(substr($tab0[$x], 34))] = $x+1;
   }
   $endtab = $endtab_original;
@@ -156,7 +166,7 @@ if (isset($file) && $file != "") {
           <td align="left">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[6]?>"><?php echo $text[5]?> <?php echo $text[6]?></a>&nbsp;</td><?php
    }
    $st0 = $st+1;
-   if ($st < $ligaDaten->anzst) {?>
+   if ($st < $lmo_einstellungen->spieltage()) {?>
           <td align="right">&nbsp;<a href="<?php echo $addr.$st0?>" title="<?php echo $text[8]?>"><?php echo $text[8]?> <?php echo $text[7]?></a>&nbsp;</td><?php
    }?>
         </tr>
