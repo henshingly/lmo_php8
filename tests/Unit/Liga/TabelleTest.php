@@ -88,6 +88,38 @@ class TabelleTest extends TestCase
         self::assertSame([1, 0, 0, 1, 0, 1, 3], self::bilanz($abZwei, 3));
     }
 
+    public function testAnsichtenDesLmoKennenDieSaisonhaelften(): void
+    {
+        // vier Mannschaften: sechs Spieltage, die Saisonhaelfte liegt nach Spieltag 3
+        $liga = self::liga();
+
+        $rueck = Tabelle::fuerAnsicht($liga, Tabelle::RUECKRUNDE, 6);
+        $hin = Tabelle::fuerAnsicht($liga, Tabelle::HINRUNDE, 6);
+        $heimHin = Tabelle::fuerAnsicht($liga, Tabelle::HEIM, 5, Tabelle::HINRUNDE);
+        $gesamt = Tabelle::fuerAnsicht($liga, Tabelle::GESAMT, 1);
+
+        self::assertSame([4, 6], [$rueck->von, $rueck->bis]);
+        self::assertSame(0, $rueck->zeilen[1]->spiele, 'in der Rueckrunde ist noch nichts gespielt');
+        self::assertSame([1, 3], [$hin->von, $hin->bis], 'die Hinrunde endet an der Saisonhaelfte, was auch immer angegeben ist');
+        self::assertSame([2, 6], [$hin->zeilen[1]->spiele, $hin->zeilen[1]->punkte]);
+        self::assertSame([1, 3], [$heimHin->von, $heimHin->bis]);
+        self::assertSame([1, 3], [$heimHin->zeilen[1]->spiele, $heimHin->zeilen[1]->punkte], 'nur das Heimspiel');
+        self::assertSame([1, 1, 1], [$gesamt->von, $gesamt->bis, $gesamt->zeilen[1]->spiele]);
+    }
+
+    public function testPlatzUndHandicapReihenfolge(): void
+    {
+        $tabelle = Tabelle::berechne(self::liga());
+
+        self::assertSame([1, 2, 3, 4], $tabelle->reihenfolge);
+        self::assertSame([2, 4, null], [$tabelle->platz(2), $tabelle->platz(4), $tabelle->platz(9)]);
+        // der Erste der Tabelle wird auf Platz 3 gefuehrt, der Zweite auf 1, der Dritte auf 2, der Vierte auf 4
+        self::assertSame([2, 3, 1, 4], $tabelle->reihenfolgeNachHandicap('03010204'));
+        self::assertSame([1, 2, 3, 4], $tabelle->reihenfolgeNachHandicap('0'), 'ohne Angabe die Reihenfolge der Tabelle');
+        self::assertSame([1, 2, 3, 4], $tabelle->reihenfolgeNachHandicap(''));
+        self::assertSame([1, 2, 3, 4], $tabelle->reihenfolge, 'die Tabelle selbst bleibt, wie sie ist');
+    }
+
     public function testSerienUndHoechsterSieg(): void
     {
         $tabelle = Tabelle::berechne(self::liga());
