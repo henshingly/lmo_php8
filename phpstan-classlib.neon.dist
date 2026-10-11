@@ -1,0 +1,17 @@
+# Classlib auf Stufe 1: zusaetzlich Variablen, die nicht auf jedem Weg gesetzt sind.
+parameters:
+    level: 1
+    phpVersion:
+        min: 80000
+        max: 80599
+    # ohne ini.php und update_addons.php: beide binden den alten Code ein und arbeiten mit
+    # dessen globalen Variablen (dafuer gilt Stufe 0 aus phpstan.neon.dist)
+    paths:
+        - lmo/addon/classlib/classes
+        - lmo/addon/classlib/classes.php
+        - lmo/addon/classlib/functions.php
+        - lmo/addon/classlib/html_output.php
+        - lmo/addon/classlib/version.php
+    # Funktionen und Konstanten des LMO, die die Classlib benutzt
+    scanDirectories:
+        - lmo

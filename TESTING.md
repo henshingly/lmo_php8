@@ -56,15 +56,18 @@ docker compose run --rm phpstan      # im Docker
 composer phpstan                     # ohne Docker
 ```
 
-Es laufen zwei Pruefungen nacheinander:
+Es laufen drei Pruefungen nacheinander:
 
 | Konfiguration | Stufe | Umfang |
 |---|---|---|
 | `phpstan.neon.dist` | 0 | gesamter Code (`lmo/`, `src/`, `bin/`, `tests/`): unbekannte Klassen, Funktionen und Methoden |
+| `phpstan-classlib.neon.dist` | 1 | Klassen und Funktionen der Classlib (`lmo/addon/classlib`): zusaetzlich Variablen, die nicht auf jedem Weg gesetzt sind |
 | `phpstan-strict.neon.dist` | 8 | neuer, typisierter Code (`src/`, `bin/lmo-install`, `lmo/lmo-version.php`) |
 
 Ab Stufe 1 meldet PHPStan die globalen Variablen des alten Codes, die eine Datei setzt und eine
-andere per `require` benutzt (rund 9500 Stellen). Deshalb bleibt der alte Code auf Stufe 0. Wird
+andere per `require` benutzt (rund 9500 Stellen). Deshalb bleibt der alte Code auf Stufe 0. Die
+Classlib besteht aus Klassen und laesst sich schrittweise anheben (Stufe 2: rund 150 Meldungen,
+Stufe 5: rund 215, vor allem falsche Typangaben in den Kommentaren). Wird
 eine Datei typisiert und von globalen Variablen befreit, kommt sie in `phpstan-strict.neon.dist`.
 
 Auf Stufe 0 ist der gesamte Code ohne Meldung; eine Baseline gibt es deshalb nicht. Die einzige
