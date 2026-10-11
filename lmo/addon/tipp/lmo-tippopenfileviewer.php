@@ -83,19 +83,19 @@ if ($file != "") {
     exit;
   }
   if (substr($file, -4) == ".l98") {
-    // die ganze Liga als Rohdaten (Lmo\Liga\Rohdaten\Liga); was die Datei nicht nennt, bekommt den Vorgabewert
+    // die ganze Liga als Rohdaten (Lmo\Liga\Rohdaten\Liga) und ihre Einstellungen mit Vorgabewerten
     $lmo_liga = \Lmo\Liga\Rohdaten\Liga::lies(PATH_TO_LMO.'/'.$dirliga.basename($file));
-    $lmo_optionen = $lmo_liga->optionen;
+    $lmo_einstellungen = $lmo_liga->einstellungen();
     $lmo_pokal = $lmo_liga->istPokal();
-    $titel0 = stripslashes($lmo_optionen['Name'] ?? '');
-    $lmtype0 = stripslashes($lmo_optionen['Type'] ?? '0');
-    $goalfaktor0 = $lmo_optionen['goalfaktor'] ?? 1;
-    $urlb0 = $lmo_optionen['urlB'] ?? 0;
-    $hidr0 = $lmo_pokal ? 0 : ($lmo_optionen['HideDraw'] ?? 0);
-    $dats0 = $lmo_optionen['DatS'] ?? 1;
-    $datm0 = $lmo_optionen['DatM'] ?? 0;
-    $ligaDaten->anzteams = $lmo_optionen['Teams'] ?? ($lmo_pokal ? 16 : 18);
-    $ligaDaten->favteam = $lmo_optionen['favTeam'] ?? 0;
+    $titel0 = $lmo_einstellungen->wert('Name');
+    $lmtype0 = $lmo_einstellungen->wert('Type');
+    $goalfaktor0 = $lmo_einstellungen->wert('goalfaktor');
+    $urlb0 = $lmo_einstellungen->wert('urlB');
+    $hidr0 = $lmo_einstellungen->wert('HideDraw') ?? 0;
+    $dats0 = $lmo_einstellungen->wert('DatS');
+    $datm0 = $lmo_einstellungen->wert('DatM');
+    $ligaDaten->anzteams = $lmo_einstellungen->wert('Teams');
+    $ligaDaten->favteam = $lmo_einstellungen->wert('favTeam');
     clearstatcache();
 
     $tippdaten = array();
@@ -125,7 +125,7 @@ if ($file != "") {
     $anzst0 = strlen(decbin($ligaDaten->anzteams-1));
     foreach ($lmo_liga->mannschaften as $lmo_nr => $lmo_mannschaft) {
       if ($lmo_mannschaft->name !== null) {
-        $ligaDaten->teams[$lmo_nr] = stripslashes($lmo_mannschaft->name);
+        $ligaDaten->teams[$lmo_nr] = $lmo_liga->mannschaftsname($lmo_nr);
       }
     }
     foreach ($lmo_liga->spieltage as $lmo_spieltag_nr => $lmo_spieltag) {
@@ -134,8 +134,8 @@ if ($file != "") {
       $datum10 = $datum20 = "";
       $dummy1 = $dummy2 = "";
       foreach (array('D1', 'D2') as $lmo_schl) {
-        $lmo_zeit = \Lmo\Liga\LigaDaten::datumAlsZeit($lmo_spieltag->werte[$lmo_schl] ?? '');
-        if ($lmo_zeit !== false) {
+        $lmo_zeit = $lmo_schl == 'D1' ? $lmo_spieltag->ersterTag() : $lmo_spieltag->letzterTag();
+        if ($lmo_zeit !== null) {
           if ($lmo_schl == 'D1') {
             $datum10 = date("d.m.Y", $lmo_zeit);
           } else {

@@ -52,19 +52,19 @@ if ($file != "") {
   $liga0 = substr($dateien[$lnr], 0, -4);
   $lmtype0 = 0;
   if (substr($file, -4) == ".l98") {
-    // die ganze Liga als Rohdaten (Lmo\Liga\Rohdaten\Liga); was die Datei nicht nennt, bekommt den Vorgabewert
+    // die ganze Liga als Rohdaten (Lmo\Liga\Rohdaten\Liga) und ihre Einstellungen mit Vorgabewerten
     $lmo_liga = \Lmo\Liga\Rohdaten\Liga::lies($file);
-    $lmo_optionen = $lmo_liga->optionen;
+    $lmo_einstellungen = $lmo_liga->einstellungen();
     $lmo_pokal = $lmo_liga->istPokal();
-    $titel0 = stripslashes($lmo_optionen['Name'] ?? '');
-    $lmtype0 = stripslashes($lmo_optionen['Type'] ?? '0');
-    $ligaDaten->anzteams = $lmo_optionen['Teams'] ?? ($lmo_pokal ? 16 : 18);
+    $titel0 = $lmo_einstellungen->wert('Name');
+    $lmtype0 = $lmo_einstellungen->wert('Type');
+    $ligaDaten->anzteams = $lmo_einstellungen->wert('Teams');
     clearstatcache();
 
     $anzst0 = strlen(decbin($ligaDaten->anzteams-1));
     foreach ($lmo_liga->mannschaften as $lmo_nr => $lmo_mannschaft) {
       if ($lmo_mannschaft->name !== null) {
-        $ligaDaten->teams[$lmo_nr] = stripslashes($lmo_mannschaft->name);
+        $ligaDaten->teams[$lmo_nr] = $lmo_liga->mannschaftsname($lmo_nr);
       }
     }
     foreach ($lmo_liga->spieltage as $lmo_spieltag_nr => $lmo_spieltag) {
