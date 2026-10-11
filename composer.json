@@ -39,8 +39,14 @@
     "autoload": {
         "classmap": [
             "lmo/includes/LmoTemplate.php"
-        ]
+        ],
+        "psr-4": {
+            "Lmo\\Install\\": "src/Install/"
+        }
     },
+    "bin": [
+        "bin/lmo-install"
+    ],
     "autoload-dev": {
         "psr-4": {
             "Lmo\\Tests\\GoldenMaster\\": "tests/GoldenMaster/",

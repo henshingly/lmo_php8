@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+// Richtet den LMO im Ordner des Webservers ein bzw. gleicht ihn nach einem Update ab:
+//   vendor/bin/lmo-install [Zielordner]   (ohne Angabe: lmo)
+
+require_once __DIR__ . '/../src/Install/Installer.php';
+
+$autoload = $GLOBALS['_composer_autoload_path'] ?? null;
+foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../lmo/vendor/autoload.php'] as $candidate) {
+    if ($autoload === null && is_file($candidate)) {
+        $autoload = $candidate;
+    }
+}
+if ($autoload === null) {
+    fwrite(STDERR, "lmo-install: vendor/autoload.php nicht gefunden - bitte zuerst 'composer install' ausfuehren.\n");
+    exit(1);
+}
+
+exit(Lmo\Install\Installer::run(
+    array_slice($argv, 1),
+    dirname(__DIR__) . '/lmo',
+    dirname(realpath($autoload)),
+    getcwd(),
+    STDOUT
+));

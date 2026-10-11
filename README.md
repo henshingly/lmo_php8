@@ -32,11 +32,21 @@ Currently supported languages (_sorted alphabetically_)
 - Web server with at least PHP 8.0 - maximum PHP 8.5
 
 ### Installation
-1. Upload the `lmo` folder to your web space.
-2. Open `lmo.php` in your browser. LMO sets itself up (no installer, no FTP data needed).
-3. Open `lmoadmin.php` **right away** and choose the admin user name and password.
+LMO is installed with [Composer](https://getcomposer.org/).
+1. Run this in your project folder (the folder that contains or will contain `composer.json`):
+   ```
+   composer require lmo/lmo_php8
+   vendor/bin/lmo-install
+   ```
+   LMO is set up in the folder `lmo` of your project. For another folder, name it, e.g. `vendor/bin/lmo-install public/lmo`.
+2. Open `lmo/lmo.php` in your browser. LMO sets itself up.
+3. Open `lmo/lmoadmin.php` **right away** and choose the admin user name and password.
 
-Update: copy the new files over the old ones. New settings are added to your configuration automatically; an old `install` folder can be deleted.
+Update: run `composer update`. The LMO in the folder `lmo` is brought up to date automatically. Your settings, leagues, tips and a changed `.htaccess` are kept.
+
+Existing installation (uploaded by FTP): name its folder as the target of `lmo-install`. The program files are replaced, your data is kept. Make a backup first.
+
+If the web server delivers your whole project folder, the folder `vendor` next to `lmo` must not be reachable from a browser; `lmo-install` puts an `.htaccess` there. On nginx or other servers without `.htaccess`, block `vendor` and the folders `config`, `includes`, `ligen` and `vendor` inside `lmo` yourself.
 
 > [!NOTE]
 This LMO version is still a beta version. Please note this. Before copying over an existing LMO, make a backup first!
@@ -70,11 +80,21 @@ Momentan unterstützte Sprachen (_alphabetisch sortiert_)
 - Webserver mit mindestens PHP 8.0  -  maximal PHP 8.5
 
 ### Installation
-1. Den Ordner `lmo` auf den Webspace hochladen.
-2. `lmo.php` im Browser aufrufen. Der LMO richtet sich selbst ein (kein Installer, keine FTP-Daten nötig).
-3. **Sofort** `lmoadmin.php` aufrufen und Benutzername und Passwort des Admins festlegen.
+Der LMO wird mit [Composer](https://getcomposer.org/) installiert.
+1. Im Projektordner ausführen (dort, wo die `composer.json` liegt oder liegen soll):
+   ```
+   composer require lmo/lmo_php8
+   vendor/bin/lmo-install
+   ```
+   Der LMO wird im Ordner `lmo` des Projekts eingerichtet. Für einen anderen Ordner diesen angeben, z. B. `vendor/bin/lmo-install public/lmo`.
+2. `lmo/lmo.php` im Browser aufrufen. Der LMO richtet sich selbst ein.
+3. **Sofort** `lmo/lmoadmin.php` aufrufen und Benutzername und Passwort des Admins festlegen.
 
-Update: Die neuen Dateien über die alten kopieren. Neue Einstellungen werden automatisch in die Konfiguration übernommen; einen alten Ordner `install` kann man löschen.
+Update: `composer update` ausführen. Der LMO im Ordner `lmo` wird dabei automatisch aktualisiert. Einstellungen, Ligen, Tipps und eine angepasste `.htaccess` bleiben erhalten.
+
+Bestehende Installation (per FTP hochgeladen): deren Ordner als Ziel von `lmo-install` angeben. Die Programmdateien werden ersetzt, die Daten bleiben erhalten. Vorher eine Sicherung machen.
+
+Liefert der Webserver den ganzen Projektordner aus, darf der Ordner `vendor` neben `lmo` nicht per Browser erreichbar sein; `lmo-install` legt dort eine `.htaccess` ab. Bei nginx oder anderen Servern ohne `.htaccess` diesen Ordner und in `lmo` die Ordner `config`, `includes`, `ligen` und `vendor` selbst sperren.
 
 > [!NOTE]
 Bei dieser LMO Version handelt es sich immer noch um eine Beta Version. Beachtet das bitte. Vor dem drüberkopieren über einen vorhandenen LMO macht zuerst eine Sicherung!
