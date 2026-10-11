@@ -118,7 +118,7 @@ $mb = date("mY", strtotime("now"));
           } else {
             $lmo_stlink_title[$a] = ($j+1).". ".$text[2].": &#10;";
           }
-          $lmo_stlink_title[$a] = $lmo_stlink_title[$a].$lmo_spiel->heimName()." - ".$lmo_spiel->gastName();
+          $lmo_stlink_title[$a] = $lmo_stlink_title[$a].$lmo_spiel->heimMannschaft()->anzeigename()." - ".$lmo_spiel->gastMannschaft()->anzeigename();
         }
       }
     }

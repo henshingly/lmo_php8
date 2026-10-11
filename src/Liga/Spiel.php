@@ -11,7 +11,7 @@ namespace Lmo\Liga;
  * ein Wert, gelten die Werte eines nicht angesetzten Spiels (keine Mannschaft, nicht gespielt).
  *
  *   foreach ($liga->spiele(3) as $spiel) {
- *       echo $spiel->heimName(), ' - ', $spiel->gastName(), ' ', $spiel->toreHeimText(), ':', $spiel->toreGastText();
+ *       echo $spiel->heimMannschaft()->anzeigename(), ' ', $spiel->toreHeimText(), ':', $spiel->toreGastText();
  *   }
  */
 final class Spiel
@@ -25,10 +25,10 @@ final class Spiel
     /** Nummer des Spiels der Paarung, ab 1; in der Liga immer 1 */
     public int $nr;
 
-    /** Nummer der Heimmannschaft, 0 = keine. Die Mannschaft selbst: heimMannschaft(), ihr Name: heimName() */
+    /** Nummer der Heimmannschaft, 0 = keine. Die Mannschaft selbst: heimMannschaft() */
     public int $heim = 0;
 
-    /** Nummer der Gastmannschaft, 0 = keine. Die Mannschaft selbst: gastMannschaft(), ihr Name: gastName() */
+    /** Nummer der Gastmannschaft, 0 = keine. Die Mannschaft selbst: gastMannschaft() */
     public int $gast = 0;
 
     /**
@@ -141,8 +141,9 @@ final class Spiel
     }
 
     /**
-     * Die Heimmannschaft aus den Rohdaten der Liga. Steht keine fest oder kennt die Liga die Nummer
-     * nicht, kommt eine leere Mannschaft; so laesst sich ohne Pruefung weiterfragen.
+     * Die Heimmannschaft aus den Rohdaten der Liga, z. B. fuer heimMannschaft()->anzeigename().
+     * Steht keine fest oder kennt die Liga die Nummer nicht, kommt eine leere Mannschaft; so laesst
+     * sich ohne Pruefung weiterfragen.
      */
     public function heimMannschaft(): Rohdaten\Mannschaft
     {
@@ -153,22 +154,6 @@ final class Spiel
     public function gastMannschaft(): Rohdaten\Mannschaft
     {
         return $this->liga->mannschaften[$this->gast] ?? new Rohdaten\Mannschaft();
-    }
-
-    /**
-     * Name der Heimmannschaft zum Anzeigen.
-     *
-     * @param string $ohneMannschaft Text, wenn keine Heimmannschaft feststeht (z. B. "___")
-     */
-    public function heimName(string $ohneMannschaft = ''): string
-    {
-        return $this->heim > 0 ? $this->heimMannschaft()->anzeigename() : $ohneMannschaft;
-    }
-
-    /** Name der Gastmannschaft zum Anzeigen, wie heimName() */
-    public function gastName(string $ohneMannschaft = ''): string
-    {
-        return $this->gast > 0 ? $this->gastMannschaft()->anzeigename() : $ohneMannschaft;
     }
 
     /** Ist das Spiel angesetzt, steht also eine Heimmannschaft fest? */

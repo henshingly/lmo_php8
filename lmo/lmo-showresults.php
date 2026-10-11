@@ -70,8 +70,8 @@ foreach ($lmo_spiele as $lmo_spiel) {
     // $i wie bisher: Partie ab 0 (eingebundene Addons rechnen damit)
     $i = $lmo_spiel->partie - 1;
     if (($lmo_spiel->heim > 0) && ($lmo_spiel->gast > 0)) {
-        $lmo_heim = $lmo_spiel->heimName();
-        $lmo_gast = $lmo_spiel->gastName();
+        $lmo_heim = $lmo_spiel->heimMannschaft()->anzeigename();
+        $lmo_gast = $lmo_spiel->gastMannschaft()->anzeigename();
         $lmo_tore_heim = $lmo_spiel->toreHeimText($lmo_einstellungen->torfaktor());
         $lmo_tore_gast = $lmo_spiel->toreGastText($lmo_einstellungen->torfaktor());
         $lmo_zusatz = $lmo_spiel->zusatzText($text[0], $text[1]); ?>
