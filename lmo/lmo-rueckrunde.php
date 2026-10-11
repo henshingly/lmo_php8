@@ -7,7 +7,7 @@ require_once(PATH_TO_LMO."/lmo-admintest.php");
 
 if (isset($file) && $file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserok'] == 1))
 {
-  $liga = new Liga();
+  $liga = new liga();
   if ($liga->loadFile(PATH_TO_LMO.'/'.$dirliga.$file))
   {
     // nur speichern, wenn ein Rueckrundenspielplan erstellt wurde (gerade Anzahl Spieltage)
@@ -37,13 +37,13 @@ function completeSchedule($liga)
       }
       else
       {
-        $spieltag = new Spieltag($i + $daysPerRound + 1, "", "");
+        $spieltag = new spieltag($i + $daysPerRound + 1, "", "");
         $liga->addSpieltag($spieltag);
       }
 
       foreach($liga->spieltage[$i]->partien AS $p)
       {
-        $partie = new Partie($p->spNr, NULL, NULL, $p->gast, $p->heim, -1, -1, NULL, NULL);
+        $partie = new partie($p->spNr, NULL, NULL, $p->gast, $p->heim, -1, -1, NULL, NULL);
         $liga->spieltage[$i + $daysPerRound]->addPartie($partie);
       }
     }

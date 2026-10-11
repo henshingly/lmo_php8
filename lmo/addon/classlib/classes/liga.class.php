@@ -93,6 +93,13 @@ class liga {
     var $directContext = null;
 
     /**
+    * Einstellungen der Liga (Sektion [Options] der Ligadatei); null, solange keine Liga geladen ist
+    * @var optionsSektion|null
+    * @access public
+    */
+    var $options = null;
+
+    /**
     * Konstruktor
     *
     * @param string $name
@@ -456,7 +463,7 @@ class liga {
     * DEBUGGING: Gibt Details des Spieltages aus
     *
     * @access public
-    * @return string
+    * @return void
     */
     function showDetails() {
         echo "LigaName = $this->name\n";
