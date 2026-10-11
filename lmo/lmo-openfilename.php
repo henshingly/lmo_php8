@@ -88,27 +88,9 @@ if ($file != "") {
     if (!isset($st)) {
       $st = 1;
     }
-    if (!isset($ligaDaten->stx)) {
-      $ligaDaten->stx = 1;
-    }
     array_shift($daten);
-    if (!isset($ligaDaten->lmvers)) {
-      $ligaDaten->lmvers = "k.A.";
-    }
-    if (!isset($ligaDaten->titel)) {
-      $ligaDaten->titel = "No Name";
-    }
-    if ($ligaDaten->lmtype == 0) {
-      if (!isset($ligaDaten->anzst)) {
-        $ligaDaten->anzst = floor($ligaDaten->anzteams * ($ligaDaten->anzteams-1)/$ligaDaten->anzsp);
-      }
-    } else {
-      if (!isset($ligaDaten->anzteams)) {
-        $ligaDaten->anzteams = 16;
-      }
-      $ligaDaten->anzsp = floor($ligaDaten->anzteams/2);
-      $ligaDaten->anzst = strlen(decbin($ligaDaten->anzteams-1));
-    }
+    // Name, Version, aktueller Spieltag und Groesse des Spielplans, soweit die Datei sie nicht nennt
+    $ligaDaten->ergaenzeGrunddaten();
   }
 }
 

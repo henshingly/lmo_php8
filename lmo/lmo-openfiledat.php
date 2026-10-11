@@ -43,7 +43,7 @@ if ($file != "") {
     $daten = array();
     $sekt = "";
     $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
-    $datei = fopen($dirliga.$file, "rb");
+    $datei = fopen(PATH_TO_LMO.'/'.$dirliga.$file, "rb");
     while ($datei && !feof($datei)) {
       $zeile = fgets($datei, 10000);
       $zeile = trim($zeile);
@@ -96,42 +96,8 @@ if ($file != "") {
       }
     }
     fclose($datei);
-    if (!isset($ligaDaten->titel)) {
-      $ligaDaten->titel = "No Name";
-    }
-    if ($ligaDaten->lmtype == 0) {
-      if (!isset($ligaDaten->anzteams)) {
-        $ligaDaten->anzteams = 18;
-      }
-      if (!isset($ligaDaten->anzsp)) {
-        $ligaDaten->anzsp = floor($ligaDaten->anzteams/2);
-      }
-      if (!isset($ligaDaten->anzst)) {
-        $ligaDaten->anzst = floor($ligaDaten->anzteams * ($ligaDaten->anzteams-1)/$ligaDaten->anzsp);
-      }
-    } else {
-      if (!isset($ligaDaten->anzteams)) {
-        $ligaDaten->anzteams = 16;
-      }
-      $ligaDaten->anzsp = floor($ligaDaten->anzteams/2);
-      $ligaDaten->anzst = strlen(decbin($ligaDaten->anzteams-1));
-    }
-    if (!isset($ligaDaten->dats)) {
-      $ligaDaten->dats = 1;
-    }
-    if (!isset($ligaDaten->datm)) {
-      $ligaDaten->datm = 0;
-    }
-    if (!isset($ligaDaten->datc)) {
-      if ((isset($ligaDaten->dats)) || (isset($ligaDaten->datm))) {
-        $ligaDaten->datc = 1;
-      } else {
-        $ligaDaten->datc = 0;
-      }
-    }
-    if ((!isset($ligaDaten->dats)) || (!isset($ligaDaten->datm))) {
-      $ligaDaten->datc = 0;
-    }
+    // Name, Datumsanzeige und Groesse des Spielplans, soweit die Datei sie nicht nennt
+    $ligaDaten->ergaenzeGrunddaten();
     $ligaDaten->teams = array_pad($array, $ligaDaten->anzteams+2, "");
     if ($ligaDaten->lmtype == 0) {
       $ligaDaten->datum1 = array_pad($array, 116, "");

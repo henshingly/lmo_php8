@@ -180,4 +180,78 @@ class LigaDatenTest extends TestCase
         self::assertSame(0, $liga->lmtype);
         self::assertSame('8', $liga->anzteams, 'bleibt, bis die Datei oder die Vorgabewerte es setzen');
     }
+
+    /** @return array<string, array{string}> */
+    public static function kleineLader(): array
+    {
+        return ['lmo-openfilename.php' => ['lmo-openfilename.php'], 'lmo-openfiledat.php' => ['lmo-openfiledat.php']];
+    }
+
+    /**
+     * Die beiden abgespeckten Lader (Tippspiel, Benutzerverwaltung) lesen nur wenige Schluessel.
+     * Fehlt die Anzahl der Spieltage, ergibt sie sich wie im Hauptlader aus der Anzahl der Mannschaften.
+     *
+     * @dataProvider kleineLader
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testKleinerLaderErgaenztFehlendeSpieltage(string $testLader): void
+    {
+        $file = 'ohne-rounds.l98';
+        require __DIR__ . '/fixtures/load-with.php';
+        /** @var LigaDaten $ligaDaten */
+        self::assertSame('Ohne Spieltage', $ligaDaten->titel);
+        self::assertSame('4', $ligaDaten->anzteams);
+        self::assertSame(2.0, $ligaDaten->anzsp);
+        self::assertSame(6.0, $ligaDaten->anzst);
+        self::assertSame(1, $ligaDaten->stx);
+        self::assertSame('k.A.', $ligaDaten->lmvers);
+    }
+
+    /**
+     * @dataProvider kleineLader
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testKleinerLaderBerechnetDenPokal(string $testLader): void
+    {
+        $file = 'pokal.l98';
+        require __DIR__ . '/fixtures/load-with.php';
+        /** @var LigaDaten $ligaDaten */
+        self::assertSame('Kleiner Pokal', $ligaDaten->titel);
+        self::assertSame(4.0, $ligaDaten->anzsp);
+        self::assertSame(3, $ligaDaten->anzst, '8 Mannschaften: Viertelfinale bis Finale');
+    }
+
+    /**
+     * @dataProvider kleineLader
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testKleinerLaderOhneOptionsNimmtDieVorgaben(string $testLader): void
+    {
+        $file = 'ohne-options.l98';
+        require __DIR__ . '/fixtures/load-with.php';
+        /** @var LigaDaten $ligaDaten */
+        self::assertSame('No Name', $ligaDaten->titel);
+        self::assertSame(18, $ligaDaten->anzteams);
+        self::assertSame(34.0, $ligaDaten->anzst);
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testOpenfiledatLiestDenSpielplan(): void
+    {
+        $testLader = 'lmo-openfiledat.php';
+        $file = 'ohne-rounds.l98';
+        require __DIR__ . '/fixtures/load-with.php';
+        /** @var LigaDaten $ligaDaten */
+        self::assertSame('A', $ligaDaten->teams[1]);
+        self::assertSame('1', $ligaDaten->teama[0][0]);
+        self::assertSame('2', $ligaDaten->teamb[0][0]);
+        self::assertSame('1724421600', $ligaDaten->mterm[0][0]);
+        self::assertSame([1, 0], [$ligaDaten->dats, $ligaDaten->datm]);
+    }
 }
