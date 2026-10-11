@@ -28,6 +28,7 @@ if (!defined('PATH_TO_LMO')) {
  * @var int|string|null $st gewaehlter Spieltag
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
  * @var string $defdateformat Datumsformat in date()-Schreibweise (Konfiguration)
+ * @var array<int|string, mixed> $text Sprachtexte
  */
 
 // $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
@@ -36,28 +37,23 @@ require(PATH_TO_LMO . '/lmo-ligadaten.php');
   
 if ($file != "") {
   if (substr($file, -4) == ".l98") {
-    $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
-    // Abschnitte, Schluessel und Werte der Datei (Lmo\Liga\LigaDatei)
-    $lmo_eintraege=\Lmo\Liga\LigaDatei::lies(PATH_TO_LMO.'/'.$dirliga.$file);
-    $lmo_hat_options = false;
+    $lmo_pfad=PATH_TO_LMO.'/'.$dirliga.$file;
+    $stand=date($defdateformat,filemtime($lmo_pfad));
+    // die ganze Liga: Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\LigaDaten)
+    $lmo_eintraege=\Lmo\Liga\LigaDatei::lies($lmo_pfad);
     foreach ($lmo_eintraege as list($sekt, $schl, $wert)) {
-      if ($sekt == "Options") {
-        $lmo_hat_options = true;
-        if ($schl == "Actual" && !isset($st)) {
-          $st = $wert;
-        }
+      if ($sekt == "Options" && $schl == "Actual" && !isset($st)) {
+        $st = $wert;
       }
     }
-    // dieser Lader liest nur Name, Typ und Groesse der Liga und den Spielplan eines Spieltags
-    $ligaDaten->setzeOptionen($lmo_eintraege, array('Name', 'goalfaktor', 'Type', 'Teams', 'Rounds', 'Matches', 'Actual', 'KlFin'));
-    // ohne Angabe ist es eine Liga (nur wenn die Datei ueberhaupt Options enthaelt, wie bisher)
-    if ($lmo_hat_options && !isset($ligaDaten->lmtype)) {
-      $ligaDaten->lmtype = 0;
+    if (!isset($st)) {
+      $st = 1;
     }
-    // Name, Datumsanzeige und Groesse des Spielplans, soweit die Datei sie nicht nennt
-    $ligaDaten->ergaenzeGrunddaten();
-    // Mannschaftsnamen und der Spielplan des gewaehlten Spieltags
-    $ligaDaten->liesSpielplan($lmo_eintraege, $st - 1);
+    $ligaDaten->setzeStartwerte();
+    $ligaDaten->lies($lmo_eintraege,$defdateformat,$text[0],$text[1]);
+    // das Datum des gewaehlten Spieltags in der Form TT.MM.JJJJ
+    $ligaDaten->bereinigeSpieltagsdatum((int)$st-1);
+    unset($lmo_eintraege,$lmo_pfad);
   }
 }
 

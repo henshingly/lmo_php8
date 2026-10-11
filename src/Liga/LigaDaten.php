@@ -317,7 +317,7 @@ class LigaDaten
     /** Partie: Schluessel ohne Nummer (NT1 -> NT) => Feld, fuer Werte, die unveraendert uebernommen werden */
     private const PARTIEWERTE = ['NT' => 'mnote', 'BE' => 'mberi', 'TI' => 'mtipp', 'AT' => 'mterm'];
 
-    /** Was jeder Lader braucht, auch die abgespeckten: siehe ergaenzeGrunddaten() */
+    /** Was auch eine Liga ohne [Options] braucht: siehe ergaenzeGrunddaten() */
     private const GRUNDDATEN = ['stx', 'lmvers', 'titel', 'dats', 'datm', 'datc'];
 
     /** Kommen auch aus dem Seitenaufruf: die Datei setzt sie nur, wenn sie noch fehlen */
@@ -368,9 +368,8 @@ class LigaDaten
     }
 
     /**
-     * Ergaenzt, was jeder Lader braucht, auch die abgespeckten (lmo-openfilename.php,
-     * lmo-openfiledat.php), die nur wenige Schluessel lesen: Name, Version, aktueller Spieltag,
-     * Datumsanzeige und die Groesse des Spielplans.
+     * Ergaenzt, was der alte Code immer voraussetzt: Name, Version, aktueller Spieltag,
+     * Datumsanzeige und die Groesse des Spielplans. Teil von ergaenzeVorgabewerte().
      *
      * Liga (Type=0): fehlende Anzahl der Partien und Spieltage ergibt sich aus der Anzahl der
      * Mannschaften (jeder gegen jeden, Hin- und Rueckrunde). Pokal: Partien und Runden werden
@@ -973,12 +972,11 @@ class LigaDaten
      * Uebernimmt aus den Eintraegen einer Ligadatei den Abschnitt [Options].
      *
      * @param iterable<array{string, string, string}> $eintraege Ergebnis von LigaDatei::zerlege()
-     * @param string[]|null $nurSchluessel nur diese Schluessel (die abgespeckten Lader lesen nur wenige), null = alle
      */
-    public function setzeOptionen(iterable $eintraege, ?array $nurSchluessel = null): void
+    public function setzeOptionen(iterable $eintraege): void
     {
         foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
-            if ($abschnitt === 'Options' && ($nurSchluessel === null || in_array($schluessel, $nurSchluessel, true))) {
+            if ($abschnitt === 'Options') {
                 $this->setzeOption($schluessel, $wert);
             }
         }
@@ -987,26 +985,23 @@ class LigaDaten
     /**
      * Liest eine ganze Ligadatei ueber ihre Rohdaten: [Options] mit Vorgabewerten, News,
      * Mannschaften, Spieltage und Partien. Vorher setzeStartwerte() aufrufen.
+     * Gelesen wird immer alles; eine leere Liste ergibt eine leere Liga mit allen Vorgabewerten.
      *
      * @param list<array{string, string, string}> $eintraege Ergebnis von LigaDatei::zerlege() bzw. lies()
      * @param string $datumsformat Datumsformat der Installation (Einstellung defdateformat)
      * @param string $anzeigeSp2 Anzeigetext fuer SP=2 (Sprachtext 0)
      * @param string $anzeigeSp1 Anzeigetext fuer SP=1 (Sprachtext 1)
-     * @param int|float|false|null $nurSpieltag null: alle Spieltage lesen; Zahl: nur den Spieltag mit diesem
-     *                                          Index (Spieltag - 1); false: keinen
      */
-    public function lies(array $eintraege, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1, $nurSpieltag = null): void
+    public function lies(array $eintraege, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1): void
     {
-        $this->liesRohdaten(Rohdaten\Liga::ausEintraegen($eintraege), $datumsformat, $anzeigeSp2, $anzeigeSp1, $nurSpieltag);
+        $this->liesRohdaten(Rohdaten\Liga::ausEintraegen($eintraege), $datumsformat, $anzeigeSp2, $anzeigeSp1);
     }
 
     /**
      * Erzeugt aus den Rohdaten einer Liga die aufbereiteten Felder fuer den alten Code.
      * Parameter wie lies(). Vorher setzeStartwerte() aufrufen.
-     *
-     * @param int|float|false|null $nurSpieltag
      */
-    public function liesRohdaten(Rohdaten\Liga $rohdaten, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1, $nurSpieltag = null): void
+    public function liesRohdaten(Rohdaten\Liga $rohdaten, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1): void
     {
         $this->rohdaten = $rohdaten;
         $eintraege = LigaDatei::eintraege($rohdaten->abschnitte());
@@ -1022,9 +1017,7 @@ class LigaDaten
             $this->setzeNewszeile($abschnitt, $schluessel, $wert);
             $this->setzeMannschaftswert($abschnitt, $schluessel, $wert);
             $spieltag = self::spieltagsIndex($abschnitt);
-            if ($nurSpieltag === null || ($nurSpieltag !== false && $spieltag == $nurSpieltag)) {
-                $this->setzeSpieltagswert($abschnitt, $schluessel, $wert, $anzeigeSp2, $anzeigeSp1);
-            }
+            $this->setzeSpieltagswert($abschnitt, $schluessel, $wert, $anzeigeSp2, $anzeigeSp1);
         }
         // nur der Spieltag, zu dem die letzte Zeile gehoert (wie bisher; in der Reihenfolge der
         // Rohdaten ist das der letzte Spieltag, wenn kein unbekannter Abschnitt folgt)
@@ -1032,64 +1025,6 @@ class LigaDaten
             $this->bereinigeSpieltagsdatum($spieltag);
         }
         $this->ergaenzeMannschaftsnamen();
-    }
-
-    /**
-     * Liest nur den Spielplan eines Spieltags: Mannschaftsnamen, Datum, Paarungen und Anstoss,
-     * im Pokal dazu die Spiele je Paarung. Tore, Notizen und alles Weitere bleiben ungelesen.
-     * Fuer Seiten, die nur wissen muessen, wer wann spielt (Erinnerungsmail des Tippspiels).
-     *
-     * Vorher Typ und Anzahl der Mannschaften setzen (setzeOptionen(), ergaenzeGrunddaten()).
-     * Die Felder des Spielplans haben danach dieselbe Groesse wie nach lies().
-     *
-     * @param iterable<array{string, string, string}> $eintraege Ergebnis von LigaDatei::zerlege() bzw. lies()
-     * @param int|float $spieltagsIndex Spieltag - 1
-     */
-    public function liesSpielplan(iterable $eintraege, $spieltagsIndex): void
-    {
-        /** @var int|float|numeric-string $teams */
-        $teams = $this->anzteams;
-        $plaetze = max(0, (int) ($teams + 2));
-        $this->teams = $plaetze > 0 ? array_fill(0, $plaetze, '') : [];
-        $this->teams[0] = '___';
-        $pokal = $this->art() === self::POKAL;
-        if ($pokal) {
-            $this->datum1 = $this->datum2 = array_fill(0, self::POKAL_RUNDEN, '');
-            $this->modus = array_fill(0, self::POKAL_RUNDEN, '1');
-            $this->teama = $this->teamb = array_fill(0, self::POKAL_RUNDEN, array_fill(0, self::POKAL_PAARUNGEN, '0'));
-            $this->mterm = array_fill(0, self::POKAL_RUNDEN, array_fill(0, self::POKAL_PAARUNGEN, array_fill(0, self::POKAL_SPIELE, '0')));
-        } else {
-            $this->datum1 = $this->datum2 = array_fill(0, self::LIGA_SPIELTAGE, '');
-            $this->teama = $this->teamb = $this->mterm = array_fill(0, self::LIGA_SPIELTAGE, array_fill(0, self::LIGA_PARTIEN, '0'));
-        }
-
-        foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
-            if ($abschnitt === 'Teams') {
-                $this->teams[$schluessel] = stripslashes($wert);
-            }
-            $st = self::spieltagsIndex($abschnitt);
-            if (substr($abschnitt, 0, 5) !== 'Round' || $st != $spieltagsIndex) {
-                continue;
-            }
-            $art = substr($schluessel, 0, 2);
-            $partie = (int) substr($schluessel, 2) - 1;
-            if ($schluessel === 'D1') {
-                $this->datum1[$st] = $wert;
-            } elseif ($schluessel === 'D2') {
-                $this->datum2[$st] = $wert;
-            } elseif ($schluessel === 'MO' && $pokal) {
-                $this->modus[$st] = $wert;
-            } elseif ($art === 'TA') {
-                $this->teama[$st][$partie] = $wert;
-            } elseif ($art === 'TB') {
-                $this->teamb[$st][$partie] = $wert;
-            } elseif ($art === 'AT' && $pokal) {
-                $this->mterm[$st][(int) substr($schluessel, 2, -1) - 1][(int) substr($schluessel, -1) - 1] = $wert;
-            } elseif ($art === 'AT') {
-                $this->mterm[$st][$partie] = $wert;
-            }
-        }
-        $this->bereinigeSpieltagsdatum((int) $spieltagsIndex);
     }
 
     /** Liga oder Pokal, nach dem bisher bekannten Typ */
