@@ -3,22 +3,27 @@
 namespace Lmo\Liga;
 
 /**
- * Alle Daten einer Ligadatei (.l98) an einem Ort.
+ * Bruecke zwischen den Rohdaten einer Ligadatei (Rohdaten\Liga) und dem alten Code des LMO.
  *
- * lmo-openfile.php liest die Datei noch in einzelne Variablen ($titel, $anzteams, $goala ...)
- * und bindet sie danach an dieses Objekt: Variable und Eigenschaft sind dieselbe Stelle im
- * Speicher. Alter Code arbeitet deshalb unveraendert weiter, neuer Code schreibt
- * $ligaDaten->titel. Die Namen sind bewusst die der alten Variablen, damit sich Dateien
- * mechanisch umstellen lassen.
+ * Der alte Code arbeitet mit einzelnen Variablen ($titel, $anzteams, $goala ...), die fuer die
+ * Anzeige aufbereitet sind: Felder fester Groesse, "_" fuer nicht gespielt, Anzeigetexte statt
+ * Zahlen, Vorgabewerte fuer alles, was die Datei nicht nennt. Diese Klasse erzeugt beim Laden
+ * diese Werte aus den Rohdaten (lies()) und rechnet sie beim Speichern zurueck
+ * (abschnitteZumSpeichern()). lmo-ligadaten.php bindet jede oeffentliche Eigenschaft an die
+ * gleichnamige Variable: beide sind dieselbe Stelle im Speicher.
  *
- * Werte kommen als Text aus der Datei; fehlt ein Schluessel, setzt lmo-openfile.php den
- * Standardwert (meist eine Zahl). null heisst: fuer diesen Ligatyp nicht belegt.
+ * Die Namen sind bewusst die der alten Variablen. null heisst: fuer diesen Ligatyp nicht belegt.
  *
- * Ziel: Laden, Speichern und Standardwerte wandern Schritt fuer Schritt hierher bzw. zur
- * classlib (Klasse liga), die dieselbe Datei schon als Objektbaum abbildet.
+ * Neuer Code, der die Liga nicht anzeigen, sondern lesen oder aendern will, nimmt die Rohdaten.
  */
 class LigaDaten
 {
+    /**
+     * Die zuletzt gelesenen bzw. gespeicherten Rohdaten. Aus ihnen bleiben beim Speichern die
+     * Einstellungen und Abschnitte erhalten, die der LMO nicht kennt.
+     */
+    private ?Rohdaten\Liga $rohdaten = null;
+
     // ---- Sektion [Options]: fuer jede Liga ----
 
     /** @var int|string|null Title: Version des LMO, der die Datei geschrieben hat */
@@ -891,19 +896,45 @@ class LigaDaten
     }
 
     /**
+     * Rechnet die aufbereiteten Felder zurueck in Rohdaten: Gegenstueck zu liesRohdaten().
+     * Parameter wie optionenZumSpeichern() und spieltageZumSpeichern().
+     *
+     * Aus den zuletzt gelesenen Rohdaten bleiben erhalten: Einstellungen in [Options], die der LMO
+     * nicht kennt, und unbekannte Abschnitte. Unbekannte Schluessel einer Mannschaft oder Partie
+     * gehen dagegen verloren: Der alte Code verschiebt Mannschaften und Partien in seinen Feldern,
+     * und wohin ein unbekannter Wert dabei gehoert, laesst sich nicht nachvollziehen.
+     *
+     * @param int|string|null $aktuellerSpieltag
+     */
+    public function alsRohdaten(string $programm, $aktuellerSpieltag, string $anzeigeSp2, string $anzeigeSp1): Rohdaten\Liga
+    {
+        $neu = Rohdaten\Liga::ausEintraegen(LigaDatei::eintraege(array_merge(
+            [['Options', $this->optionenZumSpeichern($programm, $aktuellerSpieltag)], ['News', $this->newsZumSpeichern()]],
+            $this->mannschaftenZumSpeichern(),
+            $this->spieltageZumSpeichern($anzeigeSp2, $anzeigeSp1)
+        )));
+        if ($this->rohdaten !== null) {
+            foreach ($this->rohdaten->optionen as $schluessel => $wert) {
+                if (!isset(self::OPTIONEN[$schluessel])) {
+                    $neu->optionen[$schluessel] = $wert;
+                }
+            }
+            $neu->weitereAbschnitte = $this->rohdaten->weitereAbschnitte;
+        }
+
+        return $this->rohdaten = $neu;
+    }
+
+    /**
      * Die ganze Ligadatei in der Reihenfolge, in der sie geschrieben wird: [Options], [News],
-     * die Mannschaften, die Spieltage. Parameter wie optionenZumSpeichern() und spieltageZumSpeichern().
+     * die Mannschaften, die Spieltage, unbekannte Abschnitte. Parameter wie alsRohdaten().
      *
      * @param int|string|null $aktuellerSpieltag
      * @return list<array{string, list<array{string, string}>}> je Abschnitt: Name, dann Schluessel und Wert je Zeile
      */
     public function abschnitteZumSpeichern(string $programm, $aktuellerSpieltag, string $anzeigeSp2, string $anzeigeSp1): array
     {
-        return array_merge(
-            [['Options', $this->optionenZumSpeichern($programm, $aktuellerSpieltag)], ['News', $this->newsZumSpeichern()]],
-            $this->mannschaftenZumSpeichern(),
-            $this->spieltageZumSpeichern($anzeigeSp2, $anzeigeSp1)
-        );
+        return $this->alsRohdaten($programm, $aktuellerSpieltag, $anzeigeSp2, $anzeigeSp1)->abschnitte();
     }
 
     /**
@@ -954,8 +985,8 @@ class LigaDaten
     }
 
     /**
-     * Liest eine ganze Ligadatei: [Options] mit Vorgabewerten, News, Mannschaften, Spieltage und
-     * Partien. Vorher setzeStartwerte() aufrufen.
+     * Liest eine ganze Ligadatei ueber ihre Rohdaten: [Options] mit Vorgabewerten, News,
+     * Mannschaften, Spieltage und Partien. Vorher setzeStartwerte() aufrufen.
      *
      * @param list<array{string, string, string}> $eintraege Ergebnis von LigaDatei::zerlege() bzw. lies()
      * @param string $datumsformat Datumsformat der Installation (Einstellung defdateformat)
@@ -966,6 +997,20 @@ class LigaDaten
      */
     public function lies(array $eintraege, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1, $nurSpieltag = null): void
     {
+        $this->liesRohdaten(Rohdaten\Liga::ausEintraegen($eintraege), $datumsformat, $anzeigeSp2, $anzeigeSp1, $nurSpieltag);
+    }
+
+    /**
+     * Erzeugt aus den Rohdaten einer Liga die aufbereiteten Felder fuer den alten Code.
+     * Parameter wie lies(). Vorher setzeStartwerte() aufrufen.
+     *
+     * @param int|float|false|null $nurSpieltag
+     */
+    public function liesRohdaten(Rohdaten\Liga $rohdaten, string $datumsformat, string $anzeigeSp2, string $anzeigeSp1, $nurSpieltag = null): void
+    {
+        $this->rohdaten = $rohdaten;
+        $eintraege = LigaDatei::eintraege($rohdaten->abschnitte());
+
         $this->setzeOptionen($eintraege);
         $this->ergaenzeVorgabewerte($datumsformat);
         $this->bereiteMannschaftenVor();
@@ -981,7 +1026,8 @@ class LigaDaten
                 $this->setzeSpieltagswert($abschnitt, $schluessel, $wert, $anzeigeSp2, $anzeigeSp1);
             }
         }
-        // nur der Spieltag, zu dem die letzte Zeile der Datei gehoert (wie bisher)
+        // nur der Spieltag, zu dem die letzte Zeile gehoert (wie bisher; in der Reihenfolge der
+        // Rohdaten ist das der letzte Spieltag, wenn kein unbekannter Abschnitt folgt)
         if ($spieltag !== null) {
             $this->bereinigeSpieltagsdatum($spieltag);
         }
@@ -1015,12 +1061,21 @@ class LigaDaten
     }
 
     /**
-     * Namen aller Felder; zugleich die Namen der Variablen, die lmo-openfile.php anbindet.
+     * Namen aller aufbereiteten Felder (der oeffentlichen Eigenschaften); zugleich die Namen der
+     * Variablen, die lmo-ligadaten.php anbindet.
      *
      * @return string[]
      */
     public static function felder(): array
     {
-        return array_keys(get_class_vars(self::class));
+        static $felder = null;
+        if ($felder === null) {
+            $felder = [];
+            foreach ((new \ReflectionClass(self::class))->getProperties(\ReflectionProperty::IS_PUBLIC) as $eigenschaft) {
+                $felder[] = $eigenschaft->getName();
+            }
+        }
+
+        return $felder;
     }
 }

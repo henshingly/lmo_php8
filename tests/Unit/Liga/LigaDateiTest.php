@@ -84,4 +84,16 @@ class LigaDateiTest extends TestCase
         ], $abschnitte);
         self::assertSame([], LigaDatei::abschnitte([]));
     }
+
+    public function testAlsTextIstDasGegenstueckZuZerlege(): void
+    {
+        $abschnitte = [['Options', [['Name', 'Liga [Nord]'], ['Teams', '2']]], ['News', []], ['Teams', [['1', 'A = B']]]];
+
+        $text = LigaDatei::alsText($abschnitte);
+
+        self::assertSame("[Options]\nName=Liga [Nord]\nTeams=2\n\n[News]\n\n[Teams]\n1=A = B\n", $text);
+        self::assertSame(LigaDatei::eintraege($abschnitte), LigaDatei::zerlege(explode("\n", $text)));
+        self::assertSame([['Options', 'Name', 'Liga [Nord]'], ['Options', 'Teams', '2'], ['Teams', '1', 'A = B']], LigaDatei::eintraege($abschnitte));
+        self::assertSame('', LigaDatei::alsText([]));
+    }
 }

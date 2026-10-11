@@ -1050,4 +1050,82 @@ class LigaDatenTest extends TestCase
         self::assertSame('Abbruch | Nebel', $ligaDaten->mnote[0][0]);
         self::assertSame('A | B', $ligaDaten->teams[2]);
     }
+
+    /** @return list<array{string, string, string}> */
+    private static function ligaMitUnbekanntem(): array
+    {
+        return \Lmo\Liga\LigaDatei::zerlege([
+            '[Options]', 'Name=Kreisliga', 'Teams=2', 'Rounds=1', 'Matches=1', 'stats=1', 'Eigener=bleibt',
+            '[Teams]', '1=Alpha', '2=Beta',
+            '[Team1]', 'URL=http://alpha.example', 'Sonder=geht verloren',
+            '[Round1]', 'TA1=1', 'TB1=2', 'GA1=2', 'GB1=1', 'Foo1=geht verloren',
+            '[Eigenes]', 'Foo=Bar', 'Baz=1',
+        ]);
+    }
+
+    /**
+     * Was der LMO nicht kennt, ging frueher beim Speichern verloren. Einstellungen und ganze
+     * Abschnitte bleiben jetzt ueber die Rohdaten erhalten.
+     */
+    public function testUnbekannteEinstellungenUndAbschnitteBleibenBeimSpeichernErhalten(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->lies(self::ligaMitUnbekanntem(), 'd.m.Y', 'n.V.', 'i.E.');
+        $liga->titel = 'Umbenannt';
+
+        $abschnitte = $liga->abschnitteZumSpeichern('LMO', 1, 'n.V.', 'i.E.');
+
+        $optionen = array_column($abschnitte[0][1], 1, 0);
+        self::assertSame('Umbenannt', $optionen['Name']);
+        self::assertSame('bleibt', $optionen['Eigener']);
+        self::assertSame('1', $optionen['stats'], 'wird gelesen, stand aber nie in der Tabelle der gespeicherten Schluessel');
+        self::assertSame(['stats', 'Eigener'], array_slice(array_keys($optionen), -2), 'hinter den bekannten Einstellungen, in der Reihenfolge der Datei');
+        self::assertSame(['Eigenes', [['Foo', 'Bar'], ['Baz', '1']]], end($abschnitte));
+    }
+
+    /** Diese beiden haengen an einer Mannschaft bzw. Partie, die der alte Code verschieben kann. */
+    public function testUnbekannteWerteEinerMannschaftOderPartieGehenBeimSpeichernVerloren(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->lies(self::ligaMitUnbekanntem(), 'd.m.Y', 'n.V.', 'i.E.');
+
+        $text = \Lmo\Liga\LigaDatei::alsText($liga->abschnitteZumSpeichern('LMO', 1, 'n.V.', 'i.E.'));
+
+        self::assertStringContainsString("URL=http://alpha.example\n", $text);
+        self::assertStringNotContainsString('geht verloren', $text);
+    }
+
+    public function testRohdatenDerBrueckeSindDasWasGespeichertWird(): void
+    {
+        $liga = new LigaDaten();
+        $liga->setzeStartwerte();
+        $liga->lies(self::ligaMitUnbekanntem(), 'd.m.Y', 'n.V.', 'i.E.');
+
+        $rohdaten = $liga->alsRohdaten('LMO', 1, 'n.V.', 'i.E.');
+
+        self::assertSame('Kreisliga', $rohdaten->optionen['Name']);
+        self::assertSame(['Alpha', 'Beta'], [$rohdaten->mannschaften[1]->name, $rohdaten->mannschaften[2]->name]);
+        self::assertSame(['GA' => '2', 'GB' => '1', 'NT' => '', 'BE' => '', 'TI' => '', 'AT' => '0'], $rohdaten->spieltage[1]->partien[1]->spiele[1]);
+        self::assertSame($rohdaten->abschnitte(), $liga->abschnitteZumSpeichern('LMO', 1, 'n.V.', 'i.E.'));
+    }
+
+    public function testOhneGeleseneDateiWirdNurGespeichertWasInDenFeldernSteht(): void
+    {
+        $liga = self::ligaMitDreiMannschaften();
+        $liga->bereiteSpieltageVor();
+        $liga->anzst = 1;
+        $liga->anzsp = 1;
+
+        $abschnitte = $liga->abschnitteZumSpeichern('LMO', 1, 'n.V.', 'i.E.');
+
+        self::assertSame(['Options', 'News', 'Teams', 'Teamm', 'Teamk', 'Team1', 'Team2', 'Team3', 'Round1'], array_column($abschnitte, 0));
+    }
+
+    public function testFelderSindNurDieAufbereitetenWerte(): void
+    {
+        self::assertNotContains('rohdaten', LigaDaten::felder());
+        self::assertCount(82, LigaDaten::felder());
+    }
 }

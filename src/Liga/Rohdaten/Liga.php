@@ -83,7 +83,8 @@ final class Liga
         $pokal = $liga->istPokal();
         $weitere = [];
         foreach ($eintraege as [$abschnitt, $schluessel, $wert]) {
-            if ($abschnitt === 'Options') {
+            // Zeilen vor dem ersten Abschnitt gehoeren zu nichts und werden nicht uebernommen
+            if ($abschnitt === 'Options' || $abschnitt === '') {
                 continue;
             }
             if ($abschnitt === 'News') {

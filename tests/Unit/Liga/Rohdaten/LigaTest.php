@@ -291,4 +291,13 @@ L98;
             self::assertSame($sortiert($vorher), $sortiert($nachher), basename($pfad));
         }
     }
+
+    public function testZeilenVorDemErstenAbschnittWerdenNichtUebernommen(): void
+    {
+        $liga = Liga::ausEintraegen(self::eintraege("vorab=1\n[Options]\nName=Liga"));
+
+        self::assertSame(['Name' => 'Liga'], $liga->optionen);
+        self::assertSame([], $liga->weitereAbschnitte);
+        self::assertStringNotContainsString('vorab', $liga->alsText());
+    }
 }

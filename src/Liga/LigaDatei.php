@@ -84,6 +84,24 @@ final class LigaDatei
     }
 
     /**
+     * Die Zeilen der Abschnitte als flache Liste, wie zerlege() sie liefert.
+     *
+     * @param iterable<array{string, iterable<array{string, string}>}> $abschnitte je Abschnitt: Name, dann Schluessel und Wert je Zeile
+     * @return list<array{string, string, string}> Abschnitt, Schluessel, Wert
+     */
+    public static function eintraege(iterable $abschnitte): array
+    {
+        $eintraege = [];
+        foreach ($abschnitte as [$abschnitt, $zeilen]) {
+            foreach ($zeilen as [$schluessel, $wert]) {
+                $eintraege[] = [$abschnitt, $schluessel, $wert];
+            }
+        }
+
+        return $eintraege;
+    }
+
+    /**
      * Die Abschnitte als Text einer Ligadatei. Gegenstueck zu zerlege(); ein Abschnitt ohne Zeilen
      * besteht nur aus seiner Kopfzeile.
      *
