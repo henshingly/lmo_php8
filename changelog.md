@@ -6,7 +6,7 @@ __Alle wesentlichen Änderungen am PHP Script des LMO werden in dieser Datei dok
 _Hier schreiben wir Changelog Hinweise der nächsten Version._  
 
 ### Added  
-- `Lmo\Liga\Rohdaten\Liga` (mit `Mannschaft`, `Spieltag`, `Partie`): hält den Inhalt einer Ligadatei so, wie er in der Datei steht, und lädt und speichert ihn als Paar. Nichts wird für die Anzeige umgerechnet, ergänzt oder aufgefüllt; unbekannte Schlüssel und Abschnitte bleiben erhalten. Der LMO selbst benutzt die Klasse noch nicht.
+- `Lmo\Liga\Rohdaten\Liga` (mit `Mannschaft`, `Spieltag`, `Partie`): hält den Inhalt einer Ligadatei so, wie er in der Datei steht, und lädt und speichert ihn als Paar. Nichts wird für die Anzeige umgerechnet, ergänzt oder aufgefüllt; unbekannte Schlüssel und Abschnitte bleiben erhalten. Der Kern des LMO lädt und speichert jede Liga darüber.
 
 
 ### Changed  
@@ -28,6 +28,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
+- Einstellungen in `[Options]`, die der LMO nicht kennt (auch `stats`), und ganze unbekannte Abschnitte einer Ligadatei gingen beim Speichern im Admin-Bereich verloren. Sie bleiben jetzt erhalten.
 - Werden in einem Aufruf mehrere Ligen nacheinander geladen, blieben Werte der vorigen Liga stehen, die die nächste Datei nicht nennt (z. B. Strafpunkte einer Liga beim anschließenden Laden eines Pokals). Vor jedem Laden werden jetzt alle Werte geleert.
 - Ein senkrechter Strich (`|`) in einer Notiz, einem Mannschaftsnamen, einer Adresse oder einer Newszeile schnitt beim Laden alles dahinter ab.
 - Ein unlesbares Datum im letzten Spieltag einer Ligadatei (z. B. `D1=ab.cd.efgh`) ließ das Laden der Liga abbrechen; es wird jetzt geleert.
@@ -261,7 +262,7 @@ __All significant changes to the LMO PHP script are documented in this file.__
 _Here we write changelog notes for the next version._  
 
 ### Added  
-- `Lmo\Liga\Rohdaten\Liga` (with `Mannschaft`, `Spieltag`, `Partie`): holds the content of a league file exactly as it is in the file and loads and saves it as a pair. Nothing is converted for display, added or padded; unknown keys and sections are kept. LMO itself does not use the class yet.
+- `Lmo\Liga\Rohdaten\Liga` (with `Mannschaft`, `Spieltag`, `Partie`): holds the content of a league file exactly as it is in the file and loads and saves it as a pair. Nothing is converted for display, added or padded; unknown keys and sections are kept. The core of LMO loads and saves every league through it.
 
 
 ### Changed  
@@ -283,6 +284,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
+- Settings in `[Options]` that LMO does not know (including `stats`) and whole unknown sections of a league file were lost when saving in the admin area. They are now kept.
 - When several leagues are loaded in one request, values of the previous league remained that the next file does not mention (e.g. penalty points of a league when a cup is loaded afterwards). All values are now cleared before each load.
 - A vertical bar (`|`) in a note, a team name, an address or a news line cut off everything after it when loading.
 - An unreadable date in the last round of a league file (e.g. `D1=ab.cd.efgh`) aborted loading the league; it is now cleared.
