@@ -85,14 +85,14 @@ if ($file != "") {
     $lmo_liga = \Lmo\Liga\Rohdaten\Liga::lies(PATH_TO_LMO.'/'.$dirliga.basename($file));
     $lmo_einstellungen = $lmo_liga->einstellungen();
     $lmo_pokal = $lmo_liga->istPokal();
-    $titel0 = $lmo_einstellungen->wert('Name');
+    $titel0 = $lmo_einstellungen->name();
     $lmtype0 = $lmo_einstellungen->wert('Type');
-    $goalfaktor0 = $lmo_einstellungen->wert('goalfaktor');
-    $urlb0 = $lmo_einstellungen->wert('urlB');
-    $hidr0 = $lmo_einstellungen->wert('HideDraw') ?? 0;
-    $dats0 = $lmo_einstellungen->wert('DatS');
-    $datm0 = $lmo_einstellungen->wert('DatM');
-    $lmo_favteam = $lmo_einstellungen->wert('favTeam');
+    $goalfaktor0 = $lmo_einstellungen->torfaktor();
+    $urlb0 = $lmo_einstellungen->mitSpielberichten();
+    $hidr0 = $lmo_einstellungen->ohneUnentschieden();
+    $dats0 = $lmo_einstellungen->mitSpieltagsdatum();
+    $datm0 = $lmo_einstellungen->mitAnstosszeit();
+    $lmo_favteam = $lmo_einstellungen->lieblingsmannschaft();
     clearstatcache();
 
     $tippdaten = array();
@@ -119,7 +119,7 @@ if ($file != "") {
     }
     fclose($datei);
 
-    $anzst0 = strlen(decbin((int)$lmo_einstellungen->wert('Teams')-1));
+    $anzst0 = strlen(decbin($lmo_einstellungen->mannschaften()-1));
     foreach ($lmo_liga->spieltage as $lmo_spieltag_nr => $lmo_spieltag) {
       $spieltag0 = (string)$lmo_spieltag_nr;
       // Datum des Spieltags in der Form TT.MM.JJJJ und als Zeit; ein Datum, das es nicht gibt, zaehlt als leer
@@ -223,7 +223,7 @@ if ($file != "") {
             $lmo_spiel->mitSpieltagsdatum = $dats0;
             $lmo_spiel->mitAnstosszeit = $datm0;
             $lmo_spiel->mitSpielbericht = $urlb0;
-            $lmo_spiel->mitZusatz = $lmo_einstellungen->wert('Spez');
+            $lmo_spiel->mitZusatz = $lmo_einstellungen->mitVerlaengerung();
             $lmo_spiel->torfaktor = $goalfaktor0;
             $lmo_spiel->spieleJePaarung = $modus0;
             $lmo_spiel->ersterTag = $datum10;

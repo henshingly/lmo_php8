@@ -35,11 +35,7 @@ if ($file != '') {
     $addr = $_SERVER['PHP_SELF'] . '?action=results&amp;file=' . $file . '&amp;st=';
     // Einstellungen der Liga mit Vorgabewerten (Lmo\Liga\Einstellungen)
     $lmo_einstellungen = $lmo_liga->einstellungen();
-    $lmo_selteam = !empty($_GET['selteam']) ? $_GET['selteam'] : $lmo_einstellungen->wert('selTeam');
-    $lmo_torfaktor = $lmo_einstellungen->wert('goalfaktor');
-    $lmo_mit_zusatz = $lmo_einstellungen->wert('Spez') == 1;
-    $lmo_mit_bericht = $lmo_einstellungen->wert('urlB') == 1;
-    $lmo_datumsformat = $lmo_einstellungen->wert('DatF') ?? $defdateformat;
+    $lmo_selteam = !empty($_GET['selteam']) ? $_GET['selteam'] : $lmo_einstellungen->vorgewaehlteMannschaft();
 ?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -47,7 +43,7 @@ if ($file != '') {
     <td valign="top" align="center">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
 <?php
-    for ($i = 1; $i <= $lmo_einstellungen->wert('Teams'); $i++) {
+    for ($i = 1; $i <= $lmo_einstellungen->mannschaften(); $i++) {
         $lmo_mannschaft = $lmo_liga->mannschaften[$i] ?? new \Lmo\Liga\Rohdaten\Mannschaft(); ?>
         <tr>
           <td align="right">
@@ -70,8 +66,8 @@ if ($file != '') {
         echo '        <tr><td align="center">&nbsp;<br>' . $text[24] . '<br>&nbsp;</td></tr>';
     } else {
         // $j und $i zaehlen wie bisher ab 0 (eingebundene Addons rechnen damit)
-        for ($j = 0; $j < $lmo_einstellungen->wert('Rounds'); $j++) {
-            for ($i = 0; $i < $lmo_einstellungen->wert('Matches'); $i++) {
+        for ($j = 0; $j < $lmo_einstellungen->spieltage(); $j++) {
+            for ($i = 0; $i < $lmo_einstellungen->partienJeSpieltag(); $i++) {
                 // das Spiel zum Anzeigen (Lmo\Liga\Spiel)
                 $lmo_spiel = \Lmo\Liga\Spiel::ausRohdaten($lmo_liga, $j + 1, $i + 1);
                 if (($lmo_selteam == $lmo_spiel->heim) || ($lmo_selteam == $lmo_spiel->gast)) {
@@ -83,11 +79,11 @@ if ($file != '') {
         <tr>
           <th style="text-align:right">&nbsp;<a href="<?php echo $addr . ($j + 1); ?>" title="<?php echo $text[25]; ?>"><?php echo $j + 1; ?></a>&nbsp;</th>
 <?php
-                    if ($lmo_einstellungen->wert('DatM') == 1) {
+                    if ($lmo_einstellungen->mitAnstosszeit()) {
                         if(is_numeric($lmo_spiel->anstoss)) {
                             $dt = new DateTime();
                             $dt->setTimeStamp((int)$lmo_spiel->anstoss);
-                            $dum1 = $dt->format($lmo_datumsformat);
+                            $dum1 = $dt->format($lmo_einstellungen->datumsformat($defdateformat));
                         } else {
                             $dum1 = '';
                         }
@@ -117,11 +113,11 @@ if ($file != '') {
                         echo '</strong>';
                     } ?></td>
           <td style="width:2px;">&nbsp;</td>
-          <td align="right"><?php echo applyFactor($lmo_spiel->toreHeim, $lmo_torfaktor); ?></td>
+          <td align="right"><?php echo applyFactor($lmo_spiel->toreHeim, $lmo_einstellungen->torfaktor()); ?></td>
           <td align="center" style="width:8px;">:</td>
-          <td align="left"><?php echo applyFactor($lmo_spiel->toreGast, $lmo_torfaktor); ?></td>
+          <td align="left"><?php echo applyFactor($lmo_spiel->toreGast, $lmo_einstellungen->torfaktor()); ?></td>
 <?php
-                    if ($lmo_mit_zusatz) { ?>
+                    if ($lmo_einstellungen->mitVerlaengerung()) { ?>
           <td style="width:2px;">&nbsp;</td>
           <td align="left"><?php echo $lmo_zusatz; ?></td>
 <?php
@@ -131,12 +127,12 @@ if ($file != '') {
                     /** Mannschaftsicons finden */
                     $lmo_teamaicon = '';
                     $lmo_teambicon = '';
-                    if ($lmo_mit_bericht || $lmo_spiel->notiz != '' || $lmo_spiel->wertung > 0) {
+                    if ($lmo_einstellungen->mitSpielberichten() || $lmo_spiel->notiz != '' || $lmo_spiel->wertung > 0) {
                         $lmo_teamaicon = HTML_smallTeamIcon($file, $lmo_heim, ' alt=""');
                         $lmo_teambicon = HTML_smallTeamIcon($file, $lmo_gast, ' alt=""');
                     }
                     /** Spielbericht verlinken **/
-                    if ($lmo_mit_bericht) {
+                    if ($lmo_einstellungen->mitSpielberichten()) {
                         if ($lmo_spiel->bericht != '') {
                             //Spielbericht Inhalt
                             $lmo_spielbericht_html = '<strong>' . $lmo_heim . $lmo_teamaicon . ' - ' . $lmo_teambicon . $lmo_gast . '</strong>' . nl2br($text[270]);
@@ -149,10 +145,10 @@ if ($file != '') {
                     /** Notizen anzeigen **/
                     if ($lmo_spiel->notiz != '' || $lmo_spiel->wertung > 0) {
                         //Grüner Tisch: Beidseitiges Ergebnis vorbereiten
-                        $lmo_notiz_both = ($lmo_spiel->wertung == 3) ? ' / ' . applyFactor($lmo_spiel->toreGast, $lmo_torfaktor) . ':' . applyFactor($lmo_spiel->toreHeim, $lmo_torfaktor) : '';
+                        $lmo_notiz_both = ($lmo_spiel->wertung == 3) ? ' / ' . applyFactor($lmo_spiel->toreGast, $lmo_einstellungen->torfaktor()) . ':' . applyFactor($lmo_spiel->toreHeim, $lmo_einstellungen->torfaktor()) : '';
                         //Alles in EIN Tag packen, damit das CSS es als EINE zentrierte Zeile erkennt
-                        $lmo_spielnotiz = '<strong>' . $lmo_heim . $lmo_teamaicon . ' - ' . $lmo_teambicon . $lmo_gast . '&nbsp;&nbsp;' . applyFactor($lmo_spiel->toreHeim, $lmo_torfaktor) . ':' . applyFactor($lmo_spiel->toreGast, $lmo_torfaktor) . $lmo_notiz_both . '</strong>';
-                        if ($lmo_mit_zusatz) {
+                        $lmo_spielnotiz = '<strong>' . $lmo_heim . $lmo_teamaicon . ' - ' . $lmo_teambicon . $lmo_gast . '&nbsp;&nbsp;' . applyFactor($lmo_spiel->toreHeim, $lmo_einstellungen->torfaktor()) . ':' . applyFactor($lmo_spiel->toreGast, $lmo_einstellungen->torfaktor()) . $lmo_notiz_both . '</strong>';
+                        if ($lmo_einstellungen->mitVerlaengerung()) {
                             $lmo_spielnotiz .= '&nbsp;' . $lmo_zusatz . '<br>';
                         }
                         //Grüner Tisch: Heimteam siegt

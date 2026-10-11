@@ -56,11 +56,11 @@ if ($file != "") {
     $lmo_liga = \Lmo\Liga\Rohdaten\Liga::lies($file);
     $lmo_einstellungen = $lmo_liga->einstellungen();
     $lmo_pokal = $lmo_liga->istPokal();
-    $titel0 = $lmo_einstellungen->wert('Name');
+    $titel0 = $lmo_einstellungen->name();
     $lmtype0 = $lmo_einstellungen->wert('Type');
     clearstatcache();
 
-    $anzst0 = strlen(decbin((int)$lmo_einstellungen->wert('Teams')-1));
+    $anzst0 = strlen(decbin($lmo_einstellungen->mannschaften()-1));
     foreach ($lmo_liga->spieltage as $lmo_spieltag_nr => $lmo_spieltag) {
       $spieltag0 = (string)$lmo_spieltag_nr;
       // Datum des Spieltags, wie es in der Datei steht
