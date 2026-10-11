@@ -8,6 +8,9 @@ parameters:
         max: 80599
     paths:
         - lmo/lmo-showcross.php
+        - lmo/lmo-showprogram.php
+        - lmo/lmo-showresults.php
+        - lmo/lmo-showtable.php
     # Klassen und Funktionen des LMO
     scanDirectories:
         - lmo

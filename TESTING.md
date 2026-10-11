@@ -62,7 +62,7 @@ Es laufen fuenf Pruefungen nacheinander:
 |---|---|---|
 | `phpstan.neon.dist` | 0 | gesamter Code (`lmo/`, `src/`, `bin/`, `tests/`): unbekannte Klassen, Funktionen und Methoden |
 | `phpstan-classlib.neon.dist` | 5 | Klassen und Funktionen der Classlib (`lmo/addon/classlib`): zusaetzlich nicht gesetzte Variablen, Typangaben in den Kommentaren, Rueckgabetypen und Parametertypen bei Aufrufen |
-| `phpstan-liga.neon.dist` | 6 | alte Dateien, die die Liga nur noch ueber `Lmo\Liga\LigaDaten` lesen (bisher `lmo/lmo-showcross.php`) |
+| `phpstan-liga.neon.dist` | 6 | alte Dateien, die die Liga nur noch ueber `Lmo\Liga\LigaDaten` lesen (Kreuztabelle, Tabelle, Ergebnisse, Spielplan) |
 | `phpstan-tests.neon.dist` | 5 | Tests ohne die Hilfsskripte in `tests/GoldenMaster/bin`: falsche Parametertypen, unmoegliche Vergleiche |
 | `phpstan-strict.neon.dist` | 8 | neuer, typisierter Code (`src/`, `bin/lmo-install`, `lmo/lmo-version.php`) |
 
