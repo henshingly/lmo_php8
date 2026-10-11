@@ -84,53 +84,40 @@ if ($file != "") {
   }
   if (substr($file, -4) == ".l98") {
     $mspez0 = 0;
-    $daten = array();
-    $sekt = "";
-    if ($datei = fopen(PATH_TO_LMO.'/'.$dirliga.basename($file), "rb")) {
-      while (!feof($datei)) {
-        $zeile = fgets($datei, 1000);
-        $zeile = trim($zeile);
-        if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
-          $sekt = trim(substr($zeile, 1, -1));
-        } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
-          $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
-          $wert = trim(substr($zeile, strpos($zeile, "=")+1));
-          if ($sekt == "Options") {
-            if ($schl == "Name") {
-              $titel0 = stripslashes($wert);
-            }
-            if ($schl == "goalfaktor") {
-              $goalfaktor0 = $wert;
-            }
-            if ($schl == "urlB") {
-              $urlb0 = $wert;
-            }
-            if ($schl == "Type") {
-              $lmtype0 = stripslashes($wert);
-            }
-            if ($schl == "Teams") {
-              $ligaDaten->anzteams = $wert;
-            }
-            if ($lmtype0 == 0) {
-              if ($schl == "HideDraw") {
-                $hidr0 = $wert;
-              }
-            }
-            if ($schl == "DatS") {
-              $dats0 = $wert;
-            }
-            if ($schl == "DatM") {
-              $datm0 = $wert;
-            }
-            if ($schl == "favTeam") {
-              $ligaDaten->favteam = $wert;
-            }
+    // Abschnitte, Schluessel und Werte der Ligadatei (Lmo\Liga\LigaDatei)
+    $daten = \Lmo\Liga\LigaDatei::lies(PATH_TO_LMO.'/'.$dirliga.basename($file));
+    foreach ($daten as list($sekt, $schl, $wert)) {
+      if ($sekt == "Options") {
+        if ($schl == "Name") {
+          $titel0 = stripslashes($wert);
+        }
+        if ($schl == "goalfaktor") {
+          $goalfaktor0 = $wert;
+        }
+        if ($schl == "urlB") {
+          $urlb0 = $wert;
+        }
+        if ($schl == "Type") {
+          $lmtype0 = stripslashes($wert);
+        }
+        if ($schl == "Teams") {
+          $ligaDaten->anzteams = $wert;
+        }
+        if ($lmtype0 == 0) {
+          if ($schl == "HideDraw") {
+            $hidr0 = $wert;
           }
-          array_push($daten, $sekt."|".$schl."|".$wert."|EOL");
+        }
+        if ($schl == "DatS") {
+          $dats0 = $wert;
+        }
+        if ($schl == "DatM") {
+          $datm0 = $wert;
+        }
+        if ($schl == "favTeam") {
+          $ligaDaten->favteam = $wert;
         }
       }
-      fclose($datei);
     }
     clearstatcache();
 
@@ -177,7 +164,7 @@ if ($file != "") {
       $ligaDaten->datm = 0;
     }
     for ($i = 1; $i <= count($daten); $i++) {
-      $dum = explode('|', $daten[$i-1]);
+      $dum = $daten[$i-1];  // Abschnitt, Schluessel, Wert
       if ($dum[0] == "Teams") {
         $ligaDaten->teams[$dum[1]] = stripslashes($dum[2]);
       }
@@ -369,7 +356,7 @@ if ($file != "") {
 
                     if ($dum1[3] > 0) {
                       for ($k = $rb; $k <= count($daten); $k++) {
-                        $dum2 = explode('|', $daten[$k-1]);
+                        $dum2 = $daten[$k-1];
                         $op8 = substr($dum2[1], 0, 2);
                         if ($op8 == "AT") {
                           $spiel0 = substr($dum2[1], 2);

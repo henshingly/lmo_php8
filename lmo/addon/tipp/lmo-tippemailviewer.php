@@ -52,37 +52,21 @@ if ($file != "") {
   $liga0 = substr($dateien[$lnr], 0, -4);
   $lmtype0 = 0;
   if (substr($file, -4) == ".l98") {
-    $daten = array("");
-    $sekt = "";
-    $datei = fopen($file, "rb");
-    if ($datei) {
-      while (!feof($datei)) {
-        $zeile = fgets($datei, 1000);
-        $zeile = chop($zeile);
-        $zeile = trim($zeile);
-        if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
-          $sekt = trim(substr($zeile, 1, -1));
-        } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
-          $schl = trim(substr($zeile, 0, strpos($zeile, "=")));
-          $wert = trim(substr($zeile, strpos($zeile, "=")+1));
-          if ($sekt == "Options") {
-            if ($schl == "Name") {
-              $titel0 = stripslashes($wert);
-            }
-            if ($schl == "Type") {
-              $lmtype0 = stripslashes($wert);
-            }
-            if ($schl == "Teams") {
-              $ligaDaten->anzteams = $wert;
-            }
-          }
-          array_push($daten, $sekt."|".$schl."|".$wert."|EOL");
+    // Abschnitte, Schluessel und Werte der Ligadatei (Lmo\Liga\LigaDatei)
+    $daten = \Lmo\Liga\LigaDatei::lies($file);
+    foreach ($daten as list($sekt, $schl, $wert)) {
+      if ($sekt == "Options") {
+        if ($schl == "Name") {
+          $titel0 = stripslashes($wert);
+        }
+        if ($schl == "Type") {
+          $lmtype0 = stripslashes($wert);
+        }
+        if ($schl == "Teams") {
+          $ligaDaten->anzteams = $wert;
         }
       }
-      fclose($datei);
     }
-    array_shift($daten);
     clearstatcache();
      
     if (!isset($ligaDaten->titel)) {
@@ -95,7 +79,7 @@ if ($file != "") {
     }
     $anzst0 = strlen(decbin($ligaDaten->anzteams-1));
     for ($i = 1; $i <= count($daten); $i++) {
-      $dum = explode('|', $daten[$i-1]);
+      $dum = $daten[$i-1];  // Abschnitt, Schluessel, Wert
       if ($dum[0] == "Teams") {
         $ligaDaten->teams[$dum[1]] = stripslashes($dum[2]);
       }
