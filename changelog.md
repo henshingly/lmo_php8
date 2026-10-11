@@ -11,6 +11,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 ### Changed  
 - Die Classlib liest und schreibt Ligadateien über dieselbe Klasse wie der Kern (`Lmo\Liga\Rohdaten\Liga`). Von der Classlib geschriebene Dateien haben dadurch die Abschnittsfolge des Kerns und enthalten immer `[News]`, `[Teamm]` und `[Teamk]`; die Werte sind dieselben. Ob eine Datei Liga oder Pokal ist, entscheidet jetzt auch in der Classlib der Typ der Datei, nicht mehr der Modus der einzelnen Runde.
+- Die Ligalisten (Ligaübersicht, Admin: Öffnen, Löschen, Download, neue Liga, Viewer-Optionen; Tippspiel) lesen Name, Typ und Größe einer Liga über `Lmo\Liga\LigaDatei::liesAbschnitt()` statt über neun eigene Leseschleifen. Leerzeichen um Schlüssel und Wert werden dabei wie beim Laden der Liga entfernt; eine nicht lesbare Datei bricht die Liste nicht mehr ab.
 - Die beiden abgespeckten Lader `lmo-openfilename.php` und `lmo-openfiledat.php` benutzen denselben Leser und dieselbe Zuordnung der Schlüssel wie der Hauptlader.
 - Die ganze Ligadatei wird über `Lmo\Liga\LigaDaten` geschrieben; `lmo-savefile.php` enthält nur noch das Öffnen, Sperren und Schreiben der Zeilen. Die geschriebene Datei ist unverändert.
 - News, Spieltage und Partien liest `Lmo\Liga\LigaDaten`; der Lader `lmo-openfile.php` enthält nur noch den Ablauf. Die gelesenen Werte sind unverändert.
@@ -269,6 +270,7 @@ _Here we write changelog notes for the next version._
 
 ### Changed  
 - The classlib reads and writes league files through the same class as the core (`Lmo\Liga\Rohdaten\Liga`). Files written by the classlib thereby have the section order of the core and always contain `[News]`, `[Teamm]` and `[Teamk]`; the values are the same. Whether a file is a league or a cup is now decided by the file type in the classlib too, no longer by the mode of the single round.
+- The league lists (league overview, admin: open, delete, download, new league, viewer options; prediction game) read name, type and size of a league through `Lmo\Liga\LigaDatei::liesAbschnitt()` instead of nine reading loops of their own. Blanks around key and value are removed as when loading the league; an unreadable file no longer aborts the list.
 - The two reduced loaders `lmo-openfilename.php` and `lmo-openfiledat.php` use the same reader and the same key mapping as the main loader.
 - The whole league file is written through `Lmo\Liga\LigaDaten`; `lmo-savefile.php` only contains opening, locking and writing the lines. The written file is unchanged.
 - News, rounds and matches are read by `Lmo\Liga\LigaDaten`; the loader `lmo-openfile.php` only contains the sequence. The values read are unchanged.
