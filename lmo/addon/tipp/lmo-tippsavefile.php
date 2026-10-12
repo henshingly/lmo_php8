@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Tipp\Tipprunde $lmo_tipprunde Spieltag der Tippabgabe (lmo-tippedit.php); nur bei $st > 0
  * @var array<int|string, mixed> $text Sprachtexte
  * @var int|string $st gewaehlter Spieltag
  * @var string $todo gewaehlte Aktion (Aufrufparameter)
@@ -94,17 +94,8 @@ if ($tippfile != "") {
       if ($tipp_jokertipp == 1) {
         fputs($datei, "@".$jksp."@\n");
       }
-      if ($ligaDaten->lmtype != 0) {
-        $ligaDaten->anzsp = $ligaDaten->anzteams;
-        for ($i = 0; $i < $st; $i++) {
-          $ligaDaten->anzsp = $ligaDaten->anzsp/2;
-        }
-        if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) {
-          $ligaDaten->anzsp = $ligaDaten->anzsp+1;
-        }
-      }
-      for ($j = 1; $j <= $ligaDaten->anzsp; $j++) {
-        if ($ligaDaten->lmtype == 0) {
+      for ($j = 1; $j <= $lmo_tipprunde->plaetze; $j++) {
+        if (!$lmo_tipprunde->pokal) {
           if ($goaltippa[$j-1] == "_") {
             fputs($datei, "GA".$j."=-1\n");
           } elseif ($goaltippa[$j-1] == "") {
@@ -120,7 +111,7 @@ if ($tippfile != "") {
             fputs($datei, "GB".$j."=".$goaltippb[$j-1]."\n");
           }
         } else {
-          for ($n = 1; $n <= $ligaDaten->modus[$st-1]; $n++) {
+          for ($n = 1; $n <= $lmo_tipprunde->spieleJePaarung; $n++) {
             if ($goaltippa[$j-1][$n-1] == "_") {
               fputs($datei, "GA".$j.$n."=-1\n");
             } elseif ($goaltippa[$j-1][$n-1] == "") {

@@ -23,7 +23,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
@@ -55,10 +54,6 @@ if ($file!="") {
     $tipp_showzus=0;
     require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcpkt.php");
     require_once(PATH_TO_ADDONDIR."/tipp/lmo-tippaenderbar.php");
-    if (!isset($ligaDaten->nlines)) {
-        $ligaDaten->nlines=array();
-    }
-
     require(PATH_TO_ADDONDIR."/tipp/lmo-tippopenfile.php");
 
     // Einstellungen der Liga und der Spieltag aus Sicht des Tippspiels (Lmo\Tipp\Tipprunde):

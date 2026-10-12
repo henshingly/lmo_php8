@@ -23,7 +23,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
@@ -72,8 +71,6 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
   if (!isset($st) || $st == "" || $st == 0) {
     $st = $lmo_liga->einstellungen()->aktuellerSpieltag();
   }
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalceinsicht.php");
-
   // Einstellungen der Liga und der Spieltag aus Sicht des Tippspiels (Lmo\Tipp\Tipprunde):
   // die Paarungen zum Anzeigen (Lmo\Liga\Paarung) unter demselben Index $i wie die Tipps
   $lmo_einstellungen = $lmo_liga->einstellungen();
@@ -85,6 +82,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
   $lmo_tipp_modus = $lmo_tipprunde->spieleJePaarung;
   $lmo_tipp_anzsp = $lmo_tipprunde->plaetze;
   $lmo_tipp_paarungen = $lmo_tipprunde->paarungen;
+  require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalceinsicht.php");
    
   if (!isset($tipp_anzseite)) {
     $tipp_anzseite = 20;

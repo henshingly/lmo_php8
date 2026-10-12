@@ -6,7 +6,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Tipp\Tipprunde $lmo_tipprunde Spieltag der Tippabgabe (lmo-tippedit.php)
  * @var int|string $st gewaehlter Spieltag
  * @var string $tippfile Tippdatei des Tippspiels
  *
@@ -80,12 +80,12 @@ for ($ia = 1; $ia <= count($tippdaten); $ia++) {
     if ($jksp == $jkspanti) {
       $jkspanticheat = false;
     } elseif ($jkspanti > 0) {
-      if ($ligaDaten->lmtype == 0) {
-        $btip = tippaenderbar($ligaDaten->mterm[$st-1][$jkspanti-1], $ligaDaten->datum1[$st-1], $ligaDaten->datum2[$st-1]);
+      if (!$lmo_tipprunde->pokal) {
+        $btip = tippaenderbar((int)($lmo_tipprunde->paarungen[$jkspanti-1]->spiele[0]->anstoss ?? 0), $lmo_tipprunde->ersterTag, $lmo_tipprunde->letzterTag);
       } else {
         $jkspanti1 = substr($jkspanti, 0, -1);
         $n1 = substr($jkspanti, -1);
-        $btip = tippaenderbar($ligaDaten->mterm[$st-1][$jkspanti1-1][$n1-1], $ligaDaten->datum1[$st-1], $ligaDaten->datum2[$st-1]);
+        $btip = tippaenderbar((int)($lmo_tipprunde->paarungen[(int)$jkspanti1-1]->spiele[(int)$n1-1]->anstoss ?? 0), $lmo_tipprunde->ersterTag, $lmo_tipprunde->letzterTag);
       }
       if ($btip == false) {
         $jksp = $jkspanti;
