@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfilename.php)
+ * @var \Lmo\Liga\Rohdaten\Liga|null $lmo_liga Rohdaten der geladenen Liga (lmo-openfilename.php); fehlt, wenn die Datei nicht lesbar war
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  *
