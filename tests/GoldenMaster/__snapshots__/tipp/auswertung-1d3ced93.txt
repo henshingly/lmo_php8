@@ -3446,29 +3446,29 @@ GEAENDERT ligen/tippliga.l98
 NEU addon/tipp/tipps/auswert/gesamt.aus (179 Bytes)
 [Options]
 AnzLigen=2
-TT1=tipppokal.aus
-TT2=tippliga.aus
+TT1=tippliga.aus
+TT2=tipppokal.aus
 
 [tester]
 Team=
-TP1=6
-SG1=3
+TP1=8
+SG1=5
 P11=1
+P31=1
 P41=2
-TP2=8
-SG2=5
+TP2=6
+SG2=3
 P12=1
-P32=1
 P42=2
 
 [zweiter]
 Team=
-TP1=6
-SG1=2
-P11=1
-P31=1
-TP2=0
-SG2=3
+TP1=0
+SG1=3
+TP2=6
+SG2=2
+P12=1
+P32=1
 NEU output/tippliga.l98.php (2309 Bytes)
 <?php
 $zutore[1]=7;
