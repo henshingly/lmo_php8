@@ -6,7 +6,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga|null $lmo_liga Rohdaten der geladenen Liga; fehlt, wenn keine geladen ist
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string $st gewaehlter Spieltag
@@ -54,7 +54,7 @@ if ($viewermode == 1) {
         }
         echo '&nbsp;&nbsp;';
     }
-    if ($ligaDaten->lmtype == 0 && $tipp_tipptabelle1 == 1) {
+    if ((!isset($lmo_liga) || !$lmo_liga->einstellungen()->istPokal()) && $tipp_tipptabelle1 == 1) {
         if ($todo != 'tabelle') {
             echo '<a href="' . $adda . 'tabelle&amp;file=' . $file . '" title="' . $text['tipp'][173] . '">' . $text['tipp'][172] . '</a>';
         } else {
