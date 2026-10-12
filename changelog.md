@@ -24,9 +24,9 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ***
-## [5.0.0] - 2026-10-12
+## [4.4.0] - 2026-10-12
 
-_Hier hätten wir die Changelogs für 5.0.0._  
+_Hier hätten wir die Changelogs für 4.4.0._  
 
 ### Added  
 * `Lmo\Liga\Rohdaten\Liga` (mit `Mannschaft`, `Spieltag`, `Partie`): hält den Inhalt einer Ligadatei so, wie er in der Datei steht, und lädt und speichert ihn als Paar. Nichts wird für die Anzeige umgerechnet, ergänzt oder aufgefüllt; unbekannte Schlüssel und Abschnitte bleiben erhalten. Der Kern des LMO lädt und speichert jede Liga darüber.  
@@ -337,9 +337,9 @@ _Here we write changelog notes for the next version._
 
 
 ***
-## [5.0.0] - 2026-10-12
+## [4.4.0] - 2026-10-12
 
-_Here we had the changelogs for 5.0.0._  
+_Here we had the changelogs for 4.4.0._  
 
 ### Added  
 * `Lmo\Liga\Rohdaten\Liga` (with `Mannschaft`, `Spieltag`, `Partie`): holds the content of a league file exactly as it is in the file and loads and saves it as a pair. Nothing is converted for display, added or padded; unknown keys and sections are kept. The core of LMO loads and saves every league through it.  
