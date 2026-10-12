@@ -23,7 +23,11 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Einstellungen $lmo_einstellungen Einstellungen der Liga (lmo-tipptabelle.php)
+ * @var int $lmo_tipp_mannschaften Anzahl der Mannschaften
+ * @var int $lmo_tipp_spieltage Anzahl der Spieltage
+ * @var int $lmo_tipp_partien Partien je Spieltag
+ * @var array<int, array<int, \Lmo\Liga\Spiel>> $lmo_tipp_spiele Spiele wie die Tipps: [Spieltag-1][Partie-1]
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
  *
@@ -42,89 +46,89 @@ if (!defined('PATH_TO_LMO')) {
   
 if (($file != "") && ($subteams != "")) {
   $subteam = explode('.', $subteams);
-  $spiele1 = array_pad($array, $ligaDaten->anzteams+1, 0);
-  $siege1 = array_pad($array, $ligaDaten->anzteams+1, 0);
-  $unent1 = array_pad($array, $ligaDaten->anzteams+1, 0);
-  $nieder1 = array_pad($array, $ligaDaten->anzteams+1, 0);
-  $punkte1 = array_pad($array, $ligaDaten->anzteams+1, 0);
-  $negativ1 = array_pad($array, $ligaDaten->anzteams+1, 0);
-  $etore1 = array_pad($array, $ligaDaten->anzteams+1, 0);
-  $atore1 = array_pad($array, $ligaDaten->anzteams+1, 0);
-  $dtore1 = array_pad($array, $ligaDaten->anzteams+1, 0);
-  $quote1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $spiele1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
+  $siege1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
+  $unent1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
+  $nieder1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
+  $punkte1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
+  $negativ1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
+  $etore1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
+  $atore1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
+  $dtore1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
+  $quote1 = array_pad($array, $lmo_tipp_mannschaften+1, 0);
   $mcalc = array_pad($array, 116, "");
   $hoy = 0;
   for ($i = 0; $i < 116; $i++) {
     $mcalc[$i] = array_pad($array, 40, "0");
   }
   $tab1 = array("");
-  for ($a = 1; $a <= $ligaDaten->anzteams; $a++) {
+  for ($a = 1; $a <= $lmo_tipp_mannschaften; $a++) {
     if ($tabtype == 3) {
-      $hoy = (int)($ligaDaten->anzst/2);
+      $hoy = (int)($lmo_tipp_spieltage/2);
     }
     if ($tabtype == 4) {
-      $endtab = (int)($ligaDaten->anzst/2);
+      $endtab = (int)($lmo_tipp_spieltage/2);
     }
     for ($j = $hoy; $j < $endtab; $j++) {
-      for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
+      for ($i = 0; $i < $lmo_tipp_partien; $i++) {
         if ($btip[$j][$i] == false) {
           $b = 0;
           for ($c = 0; $c < count($subteam); $c++) {
-            if ($subteam[$c] == $ligaDaten->teama[$j][$i]) {
+            if ($subteam[$c] == $lmo_tipp_spiele[$j][$i]->heim) {
               $b++;
-            } elseif ($subteam[$c] == $ligaDaten->teamb[$j][$i]) {
+            } elseif ($subteam[$c] == $lmo_tipp_spiele[$j][$i]->gast) {
               $b++;
             }
           }
-          if (($b == 2) && ($mcalc[$j][$i] < 2) && ($goaltippa[$j][$i] != "_") && ($goaltippb[$j][$i] != "_") && ((($tabtype == 0 or $tabtype == 3 or $tabtype == 4) && (($a == $ligaDaten->teama[$j][$i]) || ($a == $ligaDaten->teamb[$j][$i]))) || (($tabtype == 1) && ($a == $ligaDaten->teama[$j][$i])) || (($tabtype == 2) && ($a == $ligaDaten->teamb[$j][$i])))) {
+          if (($b == 2) && ($mcalc[$j][$i] < 2) && ($goaltippa[$j][$i] != "_") && ($goaltippb[$j][$i] != "_") && ((($tabtype == 0 or $tabtype == 3 or $tabtype == 4) && (($a == $lmo_tipp_spiele[$j][$i]->heim) || ($a == $lmo_tipp_spiele[$j][$i]->gast))) || (($tabtype == 1) && ($a == $lmo_tipp_spiele[$j][$i]->heim)) || (($tabtype == 2) && ($a == $lmo_tipp_spiele[$j][$i]->gast)))) {
             $mcalc[$j][$i] = $mcalc[$j][$i]+1;
             $anzcnt++;
-            $p0s = $ligaDaten->pns;
-            $p0u = $ligaDaten->pnu;
-            $p0n = $ligaDaten->pnn;
+            $p0s = $lmo_einstellungen->punkteFuerSieg();
+            $p0u = $lmo_einstellungen->punkteFuerUnentschieden();
+            $p0n = $lmo_einstellungen->punkteFuerNiederlage();
             $spiele1[$a] = $spiele1[$a]+1;
-            if ($a == $ligaDaten->teama[$j][$i]) {
+            if ($a == $lmo_tipp_spiele[$j][$i]->heim) {
               $etore1[$a] = $etore1[$a]+$goaltippa[$j][$i];
               $atore1[$a] = $atore1[$a]+$goaltippb[$j][$i];
               if ($goaltippa[$j][$i] > $goaltippb[$j][$i]) {
                 $siege1[$a] = $siege1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0s;
-                if ($ligaDaten->minus == 2) {
+                if ($lmo_einstellungen->mitMinuspunkten()) {
                   $negativ1[$a] = $negativ1[$a]+$p0n;
                 }
               } elseif ($goaltippa[$j][$i] < $goaltippb[$j][$i]) {
                 $nieder1[$a] = $nieder1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0n;
-                if ($ligaDaten->minus == 2) {
+                if ($lmo_einstellungen->mitMinuspunkten()) {
                   $negativ1[$a] = $negativ1[$a]+$p0s;
                 }
               } elseif ($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
                 $unent1[$a] = $unent1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0u;
-                if ($ligaDaten->minus == 2) {
+                if ($lmo_einstellungen->mitMinuspunkten()) {
                   $negativ1[$a] = $negativ1[$a]+$p0u;
                 }
               }
             }
-            if ($a == $ligaDaten->teamb[$j][$i]) {
+            if ($a == $lmo_tipp_spiele[$j][$i]->gast) {
               $etore1[$a] = $etore1[$a]+$goaltippb[$j][$i];
               $atore1[$a] = $atore1[$a]+$goaltippa[$j][$i];
               if ($goaltippa[$j][$i] < $goaltippb[$j][$i]) {
                 $siege1[$a] = $siege1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0s;
-                if ($ligaDaten->minus == 2) {
+                if ($lmo_einstellungen->mitMinuspunkten()) {
                   $negativ1[$a] = $negativ1[$a]+$p0n;
                 }
               } elseif ($goaltippa[$j][$i] > $goaltippb[$j][$i]) {
                 $nieder1[$a] = $nieder1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0n;
-                if ($ligaDaten->minus == 2) {
+                if ($lmo_einstellungen->mitMinuspunkten()) {
                   $negativ1[$a] = $negativ1[$a]+$p0s;
                 }
               } elseif ($goaltippa[$j][$i] == $goaltippb[$j][$i]) {
                 $unent1[$a] = $unent1[$a]+1;
                 $punkte1[$a] = $punkte1[$a]+$p0u;
-                if ($ligaDaten->minus == 2) {
+                if ($lmo_einstellungen->mitMinuspunkten()) {
                   $negativ1[$a] = $negativ1[$a]+$p0u;
                 }
               }
@@ -141,7 +145,7 @@ if (($file != "") && ($subteams != "")) {
     $quote1[$a] *= 100;
     for ($c = 0; $c < count($subteam); $c++) {
       if ($subteam[$c] == $a) {
-        if ($ligaDaten->kegel == 0) {
+        if (!$lmo_einstellungen->istKegelliga()) {
           array_push($tab1, (50000000+$quote1[$a]).(50000000+$punkte1[$a]).(50000000-$negativ1[$a]).(50000000+$dtore1[$a]).(50000000+$etore1[$a]).(50000000+$c).(50000000+$a));
         } else {
           array_push($tab1, (50000000+$quote1[$a]).(50000000+$punkte1[$a]).(50000000-$negativ1[$a]).(50000000+$etore1[$a]).(50000000+$dtore1[$a]).(50000000+$c).(50000000+$a));
