@@ -1,0 +1,97 @@
+### erinnerung
+=== Liga, Spieltag 2, vier Tage ===
+An: tester@example.org
+Hallo Tina Test (tester), es fehlen:
+Delta - Alpha (Tippabgabe bis Montag, 17.März.2025 15:15)
+Ende
+-----
+An: zweite@example.org
+Hallo Zoe Zweite (zweiter), es fehlen:
+Beta - Gamma (Tippabgabe bis Sonntag, 16.März.2025 15:15)Delta - Alpha (Tippabgabe bis Montag, 17.März.2025 15:15)
+Ende
+--- Dateiaenderungen ---
+(keine)
+
+=== Liga, Spieltag 2, neun Tage ===
+An: tester@example.org
+Hallo Tina Test (tester), es fehlen:
+Delta - Alpha (Tippabgabe bis Montag, 17.März.2025 15:15)Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+-----
+An: zweite@example.org
+Hallo Zoe Zweite (zweiter), es fehlen:
+Beta - Gamma (Tippabgabe bis Sonntag, 16.März.2025 15:15)Delta - Alpha (Tippabgabe bis Montag, 17.März.2025 15:15)Alpha - Gamma (Tippabgabe bis Donnerstag, 20.März.2025 14:45)Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+--- Dateiaenderungen ---
+(keine)
+
+=== Liga, Spieltag 3, neun Tage ===
+An: tester@example.org
+Hallo Tina Test (tester), es fehlen:
+Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+-----
+An: zweite@example.org
+Hallo Zoe Zweite (zweiter), es fehlen:
+Alpha - Gamma (Tippabgabe bis Donnerstag, 20.März.2025 14:45)Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+--- Dateiaenderungen ---
+(keine)
+
+=== Liga, alle Spieltage, neun Tage ===
+An: tester@example.org
+Hallo Tina Test (tester), es fehlen:
+Delta - Alpha (Tippabgabe bis Montag, 17.März.2025 15:15)Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+-----
+An: zweite@example.org
+Hallo Zoe Zweite (zweiter), es fehlen:
+Beta - Gamma (Tippabgabe bis Sonntag, 16.März.2025 15:15)Delta - Alpha (Tippabgabe bis Montag, 17.März.2025 15:15)Alpha - Gamma (Tippabgabe bis Donnerstag, 20.März.2025 14:45)Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+--- Dateiaenderungen ---
+(keine)
+
+=== Liga, alle Spieltage, ein Tag ===
+(keine Mail)
+--- Dateiaenderungen ---
+(keine)
+
+=== Pokal, Runde 1, neun Tage ===
+An: tester@example.org
+Hallo Tina Test (tester), es fehlen:
+Alpha - Beta (Tippabgabe bis Dienstag, 18.März.2025 19:45)Gamma - Delta (Tippabgabe bis Sonntag, 16.März.2025 15:15)Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+-----
+An: zweite@example.org
+Hallo Zoe Zweite (zweiter), es fehlen:
+Alpha - Beta (Tippabgabe bis Sonntag, 16.März.2025 15:15)Alpha - Beta (Tippabgabe bis Dienstag, 18.März.2025 19:45)Gamma - Delta (Tippabgabe bis Sonntag, 16.März.2025 15:15)Gamma - Delta (Tippabgabe bis Dienstag, 18.März.2025 19:45)Alpha - Gamma (Tippabgabe bis Donnerstag, 20.März.2025 16:15)Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+--- Dateiaenderungen ---
+(keine)
+
+=== Pokal, Finale, neun Tage ===
+An: tester@example.org
+Hallo Tina Test (tester), es fehlen:
+Alpha - Gamma (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+-----
+An: zweite@example.org
+Hallo Zoe Zweite (zweiter), es fehlen:
+Alpha - Gamma (Tippabgabe bis Donnerstag, 20.März.2025 16:15)Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+--- Dateiaenderungen ---
+(keine)
+
+=== Pokal, alle Runden, neun Tage ===
+An: tester@example.org
+Hallo Tina Test (tester), es fehlen:
+Alpha - Beta (Tippabgabe bis Dienstag, 18.März.2025 19:45)Gamma - Delta (Tippabgabe bis Sonntag, 16.März.2025 15:15)Alpha - Gamma (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+-----
+An: zweite@example.org
+Hallo Zoe Zweite (zweiter), es fehlen:
+Alpha - Beta (Tippabgabe bis Sonntag, 16.März.2025 15:15)Alpha - Beta (Tippabgabe bis Dienstag, 18.März.2025 19:45)Gamma - Delta (Tippabgabe bis Sonntag, 16.März.2025 15:15)Gamma - Delta (Tippabgabe bis Dienstag, 18.März.2025 19:45)Alpha - Gamma (Tippabgabe bis Donnerstag, 20.März.2025 16:15)Beta - Delta (Tippabgabe bis Donnerstag, 20.März.2025 16:15)
+Ende
+--- Dateiaenderungen ---
+(keine)
+
