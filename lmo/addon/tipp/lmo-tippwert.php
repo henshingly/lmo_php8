@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga|null $lmo_liga Rohdaten der geladenen Liga (lmo-openfilename.php); fehlt in der Gesamtwertung
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string $st gewaehlter Spieltag
@@ -73,9 +73,12 @@ if (!defined('PATH_TO_LMO')) {
  */
   
 //$endtab        = isset($_REQUEST['endtab'])        ? $_REQUEST['endtab']                : ''; 
+// Spieltage der geladenen Liga, im Pokal die Runden; 0 ohne Liga und in der Gesamtwertung (all=1)
+$lmo_tipp_spieltage = isset($lmo_liga) ? $lmo_liga->einstellungen()->spieltage() : 0;
+$lmo_tipp_pokal = isset($lmo_liga) && $lmo_liga->einstellungen()->istPokal();
 if ($endtab == 0) {
-  if (isset($ligaDaten->anzst)) {
-    $endtab = $ligaDaten->anzst;
+  if (isset($lmo_liga)) {
+    $endtab = $lmo_tipp_spieltage;
   }
   $tabdat = "";
 } else {
@@ -86,7 +89,7 @@ $all        = isset($_REQUEST['all'])        ? $_REQUEST['all']                :
 if ($all == 1) {
   $endtab = 0;
   $tabdat = "";
-  $ligaDaten->anzst = 0;
+  $lmo_tipp_spieltage = 0;
 } else {
   $st = $endtab;
 }
@@ -261,14 +264,14 @@ if ($all==0){ ?>
 }?>
         <tr>
           <th class="nobr" colspan="3"> <?php
-if (isset($ligaDaten->lmtype) && $ligaDaten->lmtype == 1 && $tabdat != "") {
-  if ($st == $ligaDaten->anzst) {
+if ($lmo_tipp_pokal && $tabdat != "") {
+  if ($st == $lmo_tipp_spieltage) {
     $j = $text[374];
-  } elseif ($st == $ligaDaten->anzst-1) {
+  } elseif ($st == $lmo_tipp_spieltage-1) {
     $j = $text[373];
-  } elseif ($st == $ligaDaten->anzst-2) {
+  } elseif ($st == $lmo_tipp_spieltage-2) {
     $j = $text[372];
-  } elseif ($st == $ligaDaten->anzst-3) {
+  } elseif ($st == $lmo_tipp_spieltage-3) {
     $j = $text[371];
   } else {
     $j = $st.". ".$text[370];
@@ -620,7 +623,7 @@ if ($tabdat!=""){ ?>
           <td align="left"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[43]?>"><?php echo $text[5]?> <?php echo $text[6]?></a></td><?php
   }
   $st0 = $endtab+1;
-  if ($endtab < $ligaDaten->anzst) {?>
+  if ($endtab < $lmo_tipp_spieltage) {?>
           <td align="right"><a href="<?php echo $addr.$st0?>" title="<?php echo $text[44]?>"><?php echo $text[8]?> <?php echo $text[7]?></a></td><?php
   }?>
         </tr>
