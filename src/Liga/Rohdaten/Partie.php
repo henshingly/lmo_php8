@@ -23,4 +23,19 @@ final class Partie
      * @var array<int, array<string, string>> Nummer des Spiels (ab 1) => Schluessel ohne Nummer => Wert
      */
     public array $spiele = [];
+
+    /**
+     * Ein leerer Platz im Spielplan, so wie der LMO ihn nach dem Loeschen einer Partie schreibt:
+     * keine Mannschaften, nicht gespielt, kein Anstoss. Der Zusatz "_" steht fuer "kein Zusatz"
+     * und kommt nur in die Datei, wenn die Liga Verlaengerung und Elfmeterschiessen fuehrt.
+     */
+    public static function leer(): self
+    {
+        $partie = new self();
+        $partie->heim = '0';
+        $partie->gast = '0';
+        $partie->spiele[1] = ['GA' => '-1', 'GB' => '-1', 'SP' => '_', 'NT' => '', 'BE' => '', 'TI' => '', 'AT' => ''];
+
+        return $partie;
+    }
 }
