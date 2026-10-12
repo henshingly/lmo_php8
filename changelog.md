@@ -6,9 +6,11 @@ __Alle wesentlichen Änderungen am PHP Script des LMO werden in dieser Datei dok
 _Hier schreiben wir Changelog Hinweise der nächsten Version._  
 
 ### Added  
+- Die Rohdaten einer Liga lassen sich über benannte Methoden ändern, die die Schlüssel und Sonderwerte der Ligadatei kennen: an der Partie `setzeMannschaften()`, `setzeErgebnis()` (mit Wertung am grünen Tisch), `setzeZusatz()`, `setzeAnstoss()`, `setzeNotiz()`, `setzeBericht()`, `setzeOhneTippwertung()`; am Spieltag `partie()`, `setzeErstenTag()`, `setzeLetztenTag()`, `setzeTabellenkorrektur()`, `setzeSpieleJePaarung()`; an der Mannschaft `setzeUrl()`, `setzeNotiz()`, `setzeStrafpunkte()`, `setzeStrafminuspunkte()`, `setzeTorkorrektur()`, `setzeStrafeAbSpieltag()`; an der Liga `setzeEinstellung()` und `setzeNews()`.
 
 
 ### Changed  
+- Die Seiten des Adminbereichs tragen ihre Änderungen über diese Methoden ein statt über die Schlüssel der Datei (`GA`, `ET`, `HS` …). Die geschriebenen Dateien sind unverändert.
 - Die HTML-Ausgabe zum Drucken (`lmo-savehtml.php`, `lmo-savehtml1.php`) rechnet ihre Tabelle über `Lmo\Liga\Tabelle`. Die erzeugten Seiten sind unverändert.
 
 
@@ -321,9 +323,11 @@ __All significant changes to the LMO PHP script are documented in this file.__
 _Here we write changelog notes for the next version._  
 
 ### Added  
+- The raw data of a league can be changed through named methods that know the keys and special values of the league file: on the pairing `setzeMannschaften()`, `setzeErgebnis()` (with awarded results), `setzeZusatz()`, `setzeAnstoss()`, `setzeNotiz()`, `setzeBericht()`, `setzeOhneTippwertung()`; on the round `partie()`, `setzeErstenTag()`, `setzeLetztenTag()`, `setzeTabellenkorrektur()`, `setzeSpieleJePaarung()`; on the team `setzeUrl()`, `setzeNotiz()`, `setzeStrafpunkte()`, `setzeStrafminuspunkte()`, `setzeTorkorrektur()`, `setzeStrafeAbSpieltag()`; on the league `setzeEinstellung()` and `setzeNews()`.
 
 
 ### Changed  
+- The admin pages enter their changes through these methods instead of the keys of the file (`GA`, `ET`, `HS` …). The written files are unchanged.
 - The HTML output for printing (`lmo-savehtml.php`, `lmo-savehtml1.php`) computes its table through `Lmo\Liga\Tabelle`. The generated pages are unchanged.
 
 
