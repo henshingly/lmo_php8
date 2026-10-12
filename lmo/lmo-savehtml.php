@@ -73,7 +73,6 @@ if (!$lmo_html_e->istPokal()) {
 $actual = $st;
 $datumanz = $actual - 1;
 if (!$lmo_html_e->istPokal() && $st > 0) {
-  if (isset($lmo_html_tabelle)) {
     $wmlfile = fopen(PATH_TO_LMO . '/' . $diroutput . basename($file) . "-st.html", "wb");
     ob_start();
 ?>
@@ -274,7 +273,6 @@ if (!$lmo_html_e->istPokal() && $st > 0) {
 </body>
 </html>
 <?php
-  }
   fwrite($wmlfile, ob_get_contents());
   ob_end_clean();
   fclose($wmlfile);
