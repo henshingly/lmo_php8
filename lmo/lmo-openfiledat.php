@@ -50,7 +50,9 @@ if ($file != "") {
       $st = 1;
     }
     $ligaDaten->setzeStartwerte();
-    $ligaDaten->lies($lmo_eintraege,$defdateformat,$text[0],$text[1]);
+    // $lmo_liga: die Rohdaten der Liga (Lmo\Liga\Rohdaten\Liga); neue Seiten arbeiten direkt darauf
+    $lmo_liga=\Lmo\Liga\Rohdaten\Liga::ausEintraegen($lmo_eintraege);
+    $ligaDaten->liesRohdaten($lmo_liga,$defdateformat,$text[0],$text[1]);
     // das Datum des gewaehlten Spieltags in der Form TT.MM.JJJJ
     $ligaDaten->bereinigeSpieltagsdatum((int)$st-1);
     unset($lmo_eintraege,$lmo_pfad);

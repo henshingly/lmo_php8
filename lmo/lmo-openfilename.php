@@ -49,7 +49,9 @@ if ($file != "") {
     }
     // ohne lesbare Datei ergibt das eine leere Liga mit allen Vorgabewerten
     $ligaDaten->setzeStartwerte();
-    $ligaDaten->lies($lmo_eintraege,$defdateformat,$text[0],$text[1]);
+    // $lmo_liga: die Rohdaten der Liga (Lmo\Liga\Rohdaten\Liga); neue Seiten arbeiten direkt darauf
+    $lmo_liga=\Lmo\Liga\Rohdaten\Liga::ausEintraegen($lmo_eintraege);
+    $ligaDaten->liesRohdaten($lmo_liga,$defdateformat,$text[0],$text[1]);
     unset($lmo_eintraege,$lmo_pfad);
     if (!isset($st)) {
       $st = 1;
