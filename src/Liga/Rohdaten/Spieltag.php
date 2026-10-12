@@ -71,4 +71,38 @@ final class Spieltag
 
         return $zeit === false ? null : $zeit;
     }
+
+    /** Die Partie mit dieser Nummer; sie wird angelegt, wenn es sie noch nicht gibt. */
+    public function partie(int $nr): Partie
+    {
+        return $this->partien[$nr] ??= new Partie();
+    }
+
+    /** Setzt den ersten Tag des Spieltags (D1), TT.MM.JJJJ oder leer. */
+    public function setzeErstenTag(string $datum): void
+    {
+        $this->werte['D1'] = $datum;
+    }
+
+    /** Setzt den letzten Tag des Spieltags (D2), TT.MM.JJJJ oder leer. */
+    public function setzeLetztenTag(string $datum): void
+    {
+        $this->werte['D2'] = $datum;
+    }
+
+    /**
+     * Setzt die Tabellenkorrektur des Spieltags (HS): je zwei Ziffern nennen der Reihe nach fuer den
+     * ersten, zweiten ... Platz der Tabelle den Platz, auf dem die Mannschaft gefuehrt wird.
+     * Leer oder "0" = keine Korrektur.
+     */
+    public function setzeTabellenkorrektur(string $plaetze): void
+    {
+        $this->werte['HS'] = $plaetze === '' ? '0' : $plaetze;
+    }
+
+    /** Setzt im Pokal, wie viele Spiele eine Paarung der Runde hat (MO). */
+    public function setzeSpieleJePaarung(int $spiele): void
+    {
+        $this->werte['MO'] = (string) $spiele;
+    }
 }

@@ -61,4 +61,44 @@ final class Mannschaft
 
         return $mittel;
     }
+
+    /** Setzt die Adresse der Mannschaft im Netz (URL). */
+    public function setzeUrl(string $url): void
+    {
+        $this->werte['URL'] = $url;
+    }
+
+    /** Setzt die Notiz zur Mannschaft (NOT). */
+    public function setzeNotiz(string $notiz): void
+    {
+        $this->werte['NOT'] = $notiz;
+    }
+
+    /**
+     * Setzt die Strafpunkte (SP): Sie werden von den Pluspunkten abgezogen; ein negativer Wert ist
+     * ein Bonus.
+     */
+    public function setzeStrafpunkte(int $punkte): void
+    {
+        $this->werte['SP'] = (string) $punkte;
+    }
+
+    /** Setzt die Strafe bei den Minuspunkten (SM), fuer Ligen mit Minuspunkten; Vorzeichen wie bei setzeStrafpunkte(). */
+    public function setzeStrafminuspunkte(int $punkte): void
+    {
+        $this->werte['SM'] = (string) $punkte;
+    }
+
+    /** Setzt die Torkorrektur (TOR1 Tore, TOR2 Gegentore): Sie wird abgezogen; negativ = Bonus. */
+    public function setzeTorkorrektur(int $tore, int $gegentore): void
+    {
+        $this->werte['TOR1'] = (string) $tore;
+        $this->werte['TOR2'] = (string) $gegentore;
+    }
+
+    /** Setzt den Spieltag, ab dem Strafe und Torkorrektur gelten (STDA); 0 = von Anfang an. */
+    public function setzeStrafeAbSpieltag(int $spieltag): void
+    {
+        $this->werte['STDA'] = (string) $spieltag;
+    }
 }

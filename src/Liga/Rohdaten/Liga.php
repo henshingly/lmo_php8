@@ -180,6 +180,35 @@ final class Liga
     }
 
     /**
+     * Aendert eine Einstellung der Liga ([Options]), z. B. setzeEinstellung('Rounds', 34).
+     * Gelesen werden die Einstellungen ueber einstellungen().
+     *
+     * @param string $schluessel ein Schluessel, den der LMO kennt (Einstellungen::schluessel())
+     * @param int|string $wert
+     * @throws \InvalidArgumentException bei einem unbekannten Schluessel (Tippfehler)
+     */
+    public function setzeEinstellung(string $schluessel, $wert): void
+    {
+        if (!in_array($schluessel, Einstellungen::schluessel(), true)) {
+            throw new \InvalidArgumentException('Unbekannte Einstellung: ' . $schluessel);
+        }
+        $this->optionen[$schluessel] = (string) $wert;
+    }
+
+    /**
+     * Ersetzt die Newszeilen der Liga ([News]): NC nennt die Anzahl, N0, N1 ... die Zeilen.
+     *
+     * @param list<string> $zeilen
+     */
+    public function setzeNews(array $zeilen): void
+    {
+        $this->news = ['NC' => (string) count($zeilen)];
+        foreach (array_values($zeilen) as $nr => $zeile) {
+            $this->news['N' . $nr] = $zeile;
+        }
+    }
+
+    /**
      * Legt hinter der letzten eine neue Mannschaft an und zaehlt die Anzahl der Mannschaften hoch.
      * Spieltage und Partien bleiben, wie sie sind.
      *
