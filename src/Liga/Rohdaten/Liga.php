@@ -203,8 +203,9 @@ final class Liga
     public function setzeNews(array $zeilen): void
     {
         $this->news = ['NC' => (string) count($zeilen)];
-        foreach (array_values($zeilen) as $nr => $zeile) {
-            $this->news['N' . $nr] = $zeile;
+        $nr = 0;
+        foreach ($zeilen as $zeile) {
+            $this->news['N' . $nr++] = $zeile;
         }
     }
 
