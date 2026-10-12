@@ -236,12 +236,12 @@ if ($message != '') {
                         if ($st > 0) {
                             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippopenfile.php');
                             $st0 = $st - 1;
-                            $anzst1 = $st;
+                            $anzst1 = $st - 1; // nur der gewaehlte Spieltag
                             $lmo_mail_anzsp = \Lmo\Tipp\Tipprunde::fuer($lmo_liga, (int)$st)->plaetze;
                         } elseif ($st == 0) {
                             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippopenfileall.php');
                             $st0 = 0;
-                            $anzst1 = $lmo_einstellungen->spieltage();
+                            $anzst1 = $lmo_einstellungen->spieltage() - 1;
                         }
                         for (; $st0 <= $anzst1; $st0 ++) {
                             if ($tipp_imvorraus < 0 || $st0 <= ($lmo_einstellungen->aktuellerSpieltag() + $tipp_imvorraus)) {
@@ -261,7 +261,7 @@ if ($message != '') {
                                                 $lmo_mail_offen = ($st == 0 && $goaltippa[$st0][$dd] == '_') || ($st > 0 && $goaltippa[$dd] == '_');
                                             }
                                             if ($lmo_mail_offen && $lmo_mail_paarung->heim > 0) {
-                                                $spiele = $spiele . $lmo_mail_paarung->heimMannschaft()->anzeigename() . ' - ' . $lmo_mail_paarung->gastMannschaft()->anzeigename() . ' (' . $text['tipp'][87] . ' ' . strtr(date('l, d.F.Y H:i', $zeit), $trans_lang) . ')';
+                                                $spiele = $spiele . ($spiele != '' ? "\n" : '') . $lmo_mail_paarung->heimMannschaft()->anzeigename() . ' - ' . $lmo_mail_paarung->gastMannschaft()->anzeigename() . ' (' . $text['tipp'][87] . ' ' . strtr(date('l, d.F.Y H:i', $zeit), $trans_lang) . ')';
                                             }
                                         }
                                     }
