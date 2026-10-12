@@ -24,7 +24,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string|null $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
@@ -127,8 +127,14 @@ if (!defined('PATH_TO_LMO')) {
 
 
 if ($file!="") {
-  $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$ligaDaten->stat1;
-  $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$ligaDaten->stat2;
+  // Einstellungen der Liga mit Vorgabewerten (Lmo\Liga\Einstellungen) und alle Mannschaften nach Nummer
+  $lmo_einstellungen = $lmo_liga->einstellungen();
+  $lmo_anzteams = $lmo_einstellungen->mannschaften();
+  $lmo_mannschaften = iterator_to_array($lmo_liga->alleMannschaften());
+  // Name einer gewaehlten Mannschaft; ohne Auswahl "___"
+  $lmo_name = static fn ($lmo_nr): string => $lmo_nr == 0 ? '___' : $lmo_liga->mannschaftsname($lmo_nr);
+  $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$lmo_einstellungen->fieberkurveErste();
+  $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$lmo_einstellungen->fieberkurveZweite();
   if ($show_stat1==0 && $show_stat2!=0) {
     $show_stat1=$show_stat2;
     $show_stat2=0;
@@ -141,17 +147,17 @@ if ($file!="") {
   <tr>
     <td valign="top" align="center">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php
-  for ($i=1;$i<=$ligaDaten->anzteams;$i++) {?>
+  for ($i=1;$i<=$lmo_anzteams;$i++) {?>
         <tr>
           <td align="right">
-            <acronym title="<?php echo $text[57]." ".$ligaDaten->teams[$i]?>"><?php
+            <acronym title="<?php echo $text[57]." ".$lmo_mannschaften[$i]->anzeigename()?>"><?php
     if ($i!=$show_stat1) {?>
-            <a href="<?php echo $adds.$i?>&amp;stat2=<?php echo $show_stat2?>"><?php echo $ligaDaten->teamk[$i]; ?></a><?php
+            <a href="<?php echo $adds.$i?>&amp;stat2=<?php echo $show_stat2?>"><?php echo $lmo_mannschaften[$i]->kurzname(); ?></a><?php
     } else {
-      echo $ligaDaten->teamk[$i];
+      echo $lmo_mannschaften[$i]->kurzname();
     }     ?></acronym>
           </td>
-          <td><?php echo HTML_smallTeamIcon($file,$ligaDaten->teams[$i]," alt=''"); ?>&nbsp;</td>
+          <td><?php echo HTML_smallTeamIcon($file,$lmo_mannschaften[$i]->anzeigename()," alt=''"); ?>&nbsp;</td>
         </tr><?php
   }?>
       </table>
@@ -163,44 +169,59 @@ if ($file!="") {
           <td align="center">&nbsp;<br><?php echo $text[24]; ?><br>&nbsp;</td>
         </tr><?php
   } else {
-    $endtab = $ligaDaten->anzst;
-    require(PATH_TO_LMO."/lmo-calctable.php");
-    $platz0 = array("");
-    $platz0 = array_pad($array, $ligaDaten->anzteams+1, "");
-    for ($x = 0; $x < $ligaDaten->anzteams; $x++) {
-      $platz0[intval(substr($tab0[$x], 34))] = $x+1;
-    }?>
+    $endtab = $lmo_einstellungen->spieltage();
+    if (!isset($tabtype)) {
+      $tabtype = 0;
+    }
+    if (!isset($newtabtype)) {
+      $newtabtype = 0;
+    }
+    // die Tabelle der ganzen Saison (Lmo\Liga\Tabelle) und die Zeilen der beiden gewaehlten Mannschaften
+    $lmo_tabelle = \Lmo\Liga\Tabelle::fuerAnsicht($lmo_liga, (int)$tabtype, $endtab, (int)$newtabtype);
+    $endtab = $lmo_tabelle->bis;
+    $lmo_zeile1 = $lmo_tabelle->zeilen[$show_stat1] ?? new \Lmo\Liga\Tabellenzeile(0);
+    $lmo_zeile2 = $lmo_tabelle->zeilen[$show_stat2] ?? new \Lmo\Liga\Tabellenzeile(0);
+    // Platz in der Tabelle; fuehrt die Liga ein Handicap, gilt in der Gesamttabelle dessen Reihenfolge
+    $lmo_tab_plaetze = $lmo_tabelle->reihenfolge;
+    if ($lmo_einstellungen->mitHandicap() && $tabtype == 0) {
+      $lmo_runde = empty($tabdat) ? $lmo_einstellungen->aktuellerSpieltag() : $endtab;
+      $lmo_tab_plaetze = $lmo_tabelle->reihenfolgeNachHandicap(isset($lmo_liga->spieltage[$lmo_runde]) ? ($lmo_liga->spieltage[$lmo_runde]->werte['HS'] ?? '0') : '0');
+    }
+    $lmo_platz1 = array_search($lmo_zeile1->mannschaft, $lmo_tab_plaetze, true);
+    $lmo_platz1 = $lmo_platz1 === false ? '' : $lmo_platz1 + 1;
+    $lmo_platz2 = array_search($lmo_zeile2->mannschaft, $lmo_tab_plaetze, true);
+    $lmo_platz2 = $lmo_platz2 === false ? '' : $lmo_platz2 + 1;?>
         <tr>
-          <th class="text-right"><?php echo $ligaDaten->teams[$show_stat1];?></th>
+          <th class="text-right"><?php echo $lmo_name($show_stat1);?></th>
           <th class="text-center"><?php
-      echo HTML_smallTeamIcon($file,$ligaDaten->teams[$show_stat1]," alt=''")."&nbsp;";
+      echo HTML_smallTeamIcon($file,$lmo_name($show_stat1)," alt=''")."&nbsp;";
       if ($show_stat2>0 && $show_stat1!=$show_stat2) {
-        echo "&nbsp;".HTML_smallTeamIcon($file,$ligaDaten->teams[$show_stat2]," alt=''");
+        echo "&nbsp;".HTML_smallTeamIcon($file,$lmo_name($show_stat2)," alt=''");
       }?>
           </th><?php
       if ($show_stat2>0 && $show_stat1!=$show_stat2) {?>
-          <th class="text-left"><?php echo $ligaDaten->teams[$show_stat2];?></th><?php
+          <th class="text-left"><?php echo $lmo_name($show_stat2);?></th><?php
       }?>
         </tr>
 <?php
   $serie1="&nbsp;";
-  if ($ser1[$show_stat1]>0) {
-    $serie1=$ser1[$show_stat1]." ".$text[474]."<br>".$ser2[$show_stat1]." ".$text[75];
-  } elseif ($ser3[$show_stat1]>0) {
-    $serie1=$ser3[$show_stat1]." ".$text[475]."<br>".$ser4[$show_stat1]." ".$text[76];
-  } elseif ($ser2[$show_stat1]>=$ser4[$show_stat1]) {
-    $serie1=$ser2[$show_stat1]." ".$text[75];
+  if ($lmo_zeile1->serieSiege>0) {
+    $serie1=$lmo_zeile1->serieSiege." ".$text[474]."<br>".$lmo_zeile1->serieUngeschlagen." ".$text[75];
+  } elseif ($lmo_zeile1->serieNiederlagen>0) {
+    $serie1=$lmo_zeile1->serieNiederlagen." ".$text[475]."<br>".$lmo_zeile1->serieSieglos." ".$text[76];
+  } elseif ($lmo_zeile1->serieUngeschlagen>=$lmo_zeile1->serieSieglos) {
+    $serie1=$lmo_zeile1->serieUngeschlagen." ".$text[75];
   } else {
-    $serie1=$ser4[$show_stat1]." ".$text[76];
+    $serie1=$lmo_zeile1->serieSieglos." ".$text[76];
   }
   if ($show_stat2>0 && $show_stat1!=$show_stat2) {
     $chg1="k.A.";
     $chg2="k.A.";
-    if (!empty($spiele[$show_stat1])&&!empty($spiele[$show_stat2])) {
-      $ax=(100*$siege[$show_stat1]/$spiele[$show_stat1])+(100*$nieder[$show_stat2]/$spiele[$show_stat2]);
-      $bx=(100*$siege[$show_stat2]/$spiele[$show_stat2])+(100*$nieder[$show_stat1]/$spiele[$show_stat1]);
-      $cx=($etore[$show_stat1]/$spiele[$show_stat1])+($atore[$show_stat2]/$spiele[$show_stat2]);
-      $dx=($etore[$show_stat2]/$spiele[$show_stat2])+($atore[$show_stat1]/$spiele[$show_stat1]);
+    if (!empty($lmo_zeile1->spiele)&&!empty($lmo_zeile2->spiele)) {
+      $ax=(100*$lmo_zeile1->siege/$lmo_zeile1->spiele)+(100*$lmo_zeile2->niederlagen/$lmo_zeile2->spiele);
+      $bx=(100*$lmo_zeile2->siege/$lmo_zeile2->spiele)+(100*$lmo_zeile1->niederlagen/$lmo_zeile1->spiele);
+      $cx=($lmo_zeile1->tore/$lmo_zeile1->spiele)+($lmo_zeile2->gegentore/$lmo_zeile2->spiele);
+      $dx=($lmo_zeile2->tore/$lmo_zeile2->spiele)+($lmo_zeile1->gegentore/$lmo_zeile1->spiele);
       $ex=$ax+$bx;
       $fx=$cx+$dx;
     }
@@ -213,14 +234,14 @@ if ($file!="") {
       $chg2=number_format((($bx+$dx)/200),2,",",".");
     }
     $serie2="&nbsp;";
-    if ($ser1[$show_stat2]>0) {
-      $serie2=$ser1[$show_stat2]." ".$text[474]."<br>".$ser2[$show_stat2]." ".$text[75];
-    } elseif ($ser3[$show_stat2]>0) {
-      $serie2=$ser3[$show_stat2]." ".$text[475]."<br>".$ser4[$show_stat2]." ".$text[76];
-    } elseif ($ser2[$show_stat2]>=$ser4[$show_stat2]) {
-      $serie2=$ser2[$show_stat2]." ".$text[75];
+    if ($lmo_zeile2->serieSiege>0) {
+      $serie2=$lmo_zeile2->serieSiege." ".$text[474]."<br>".$lmo_zeile2->serieUngeschlagen." ".$text[75];
+    } elseif ($lmo_zeile2->serieNiederlagen>0) {
+      $serie2=$lmo_zeile2->serieNiederlagen." ".$text[475]."<br>".$lmo_zeile2->serieSieglos." ".$text[76];
+    } elseif ($lmo_zeile2->serieUngeschlagen>=$lmo_zeile2->serieSieglos) {
+      $serie2=$lmo_zeile2->serieUngeschlagen." ".$text[75];
     } else {
-      $serie2=$ser4[$show_stat2]." ".$text[76];
+      $serie2=$lmo_zeile2->serieSieglos." ".$text[76];
     }
 
 
@@ -232,54 +253,54 @@ if ($file!="") {
         </tr>
 <?php } ?>
         <tr>
-          <td align="right"><?php echo $platz0[$show_stat1];?></td>
+          <td align="right"><?php echo $lmo_platz1;?></td>
           <th class="text-center"><?php echo $text[61];?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $platz0[$show_stat2];?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $lmo_platz2;?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php echo applyFactor($punkte[$show_stat1],$ligaDaten->pointsfaktor); if ($ligaDaten->minus==2) {":".applyFactor($negativ[$show_stat1],$ligaDaten->pointsfaktor);} ?></td>
+          <td align="right"><?php echo applyFactor($lmo_zeile1->punkte,$lmo_einstellungen->punktfaktor()); if ($lmo_einstellungen->mitMinuspunkten()) {":".applyFactor($lmo_zeile1->minuspunkte,$lmo_einstellungen->punktfaktor());} ?></td>
           <th class="text-center"><?php echo $text[37]; ?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo applyFactor($punkte[$show_stat2],$ligaDaten->pointsfaktor); if ($ligaDaten->minus==2) {":".applyFactor($negativ[$show_stat2],$ligaDaten->pointsfaktor);} ?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo applyFactor($lmo_zeile2->punkte,$lmo_einstellungen->punktfaktor()); if ($lmo_einstellungen->mitMinuspunkten()) {":".applyFactor($lmo_zeile2->minuspunkte,$lmo_einstellungen->punktfaktor());} ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php echo $spiele[$show_stat1];?></td>
+          <td align="right"><?php echo $lmo_zeile1->spiele;?></td>
           <th class="text-center"><?php echo $text[63]; ?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $spiele[$show_stat2];?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $lmo_zeile2->spiele;?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php if ($spiele[$show_stat1]) {echo applyFactor(number_format($punkte[$show_stat1]/$spiele[$show_stat1],2),$ligaDaten->pointsfaktor); if ($ligaDaten->minus==2) {":".applyFactor(number_format($negativ[$show_stat1]/$spiele[$show_stat1],2),$ligaDaten->pointsfaktor);}} ?></td>
+          <td align="right"><?php if ($lmo_zeile1->spiele) {echo applyFactor(number_format($lmo_zeile1->punkte/$lmo_zeile1->spiele,2),$lmo_einstellungen->punktfaktor()); if ($lmo_einstellungen->mitMinuspunkten()) {":".applyFactor(number_format($lmo_zeile1->minuspunkte/$lmo_zeile1->spiele,2),$lmo_einstellungen->punktfaktor());}} ?></td>
           <th class="text-center"><?php echo $text[37].$text[64]; ?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {if ($spiele[$show_stat2]) {?><td align="left"><?php echo applyFactor(number_format($punkte[$show_stat2]/$spiele[$show_stat2],2),$ligaDaten->pointsfaktor); if ($ligaDaten->minus==2) {":".applyFactor(number_format($negativ[$show_stat2]/$spiele[$show_stat2],2),$ligaDaten->pointsfaktor);}} ?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {if ($lmo_zeile2->spiele) {?><td align="left"><?php echo applyFactor(number_format($lmo_zeile2->punkte/$lmo_zeile2->spiele,2),$lmo_einstellungen->punktfaktor()); if ($lmo_einstellungen->mitMinuspunkten()) {":".applyFactor(number_format($lmo_zeile2->minuspunkte/$lmo_zeile2->spiele,2),$lmo_einstellungen->punktfaktor());}} ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php echo applyFactor($etore[$show_stat1],$ligaDaten->goalfaktor).":".applyFactor($atore[$show_stat1],$ligaDaten->goalfaktor); ?></td>
+          <td align="right"><?php echo applyFactor($lmo_zeile1->tore,$lmo_einstellungen->torfaktor()).":".applyFactor($lmo_zeile1->gegentore,$lmo_einstellungen->torfaktor()); ?></td>
           <th class="text-center"><?php echo $text[38]; ?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo applyFactor($etore[$show_stat2],$ligaDaten->goalfaktor).":".applyFactor($atore[$show_stat2],$ligaDaten->goalfaktor); ?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo applyFactor($lmo_zeile2->tore,$lmo_einstellungen->torfaktor()).":".applyFactor($lmo_zeile2->gegentore,$lmo_einstellungen->torfaktor()); ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php if ($spiele[$show_stat1]) { echo number_format(applyFactor($etore[$show_stat1],$ligaDaten->goalfaktor)/$spiele[$show_stat1],2).":".number_format(applyFactor($atore[$show_stat1],$ligaDaten->goalfaktor)/$spiele[$show_stat1],2);} ?></td>
+          <td align="right"><?php if ($lmo_zeile1->spiele) { echo number_format(applyFactor($lmo_zeile1->tore,$lmo_einstellungen->torfaktor())/$lmo_zeile1->spiele,2).":".number_format(applyFactor($lmo_zeile1->gegentore,$lmo_einstellungen->torfaktor())/$lmo_zeile1->spiele,2);} ?></td>
           <th class="text-center"><?php echo $text[38].$text[64]; ?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php if ($spiele[$show_stat2]) { echo number_format(applyFactor($etore[$show_stat2],$ligaDaten->goalfaktor)/$spiele[$show_stat2],2).":".number_format(applyFactor($atore[$show_stat2],$ligaDaten->goalfaktor)/$spiele[$show_stat2],2);} ?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php if ($lmo_zeile2->spiele) { echo number_format(applyFactor($lmo_zeile2->tore,$lmo_einstellungen->torfaktor())/$lmo_zeile2->spiele,2).":".number_format(applyFactor($lmo_zeile2->gegentore,$lmo_einstellungen->torfaktor())/$lmo_zeile2->spiele,2);} ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php if ($spiele[$show_stat1]) {echo $siege[$show_stat1]." (".number_format($siege[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></td>
+          <td align="right"><?php if ($lmo_zeile1->spiele) {echo $lmo_zeile1->siege." (".number_format($lmo_zeile1->siege*100/$lmo_zeile1->spiele,2,",",".")."%)";} ?></td>
           <th class="text-center"><?php echo $text[67]; ?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php if ($spiele[$show_stat2]) {echo $siege[$show_stat2]." (".number_format($siege[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php if ($lmo_zeile2->spiele) {echo $lmo_zeile2->siege." (".number_format($lmo_zeile2->siege*100/$lmo_zeile2->spiele,2,",",".")."%)";} ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php echo $maxs0[$show_stat1]; ?></td>
+          <td align="right"><?php echo $lmo_zeile1->hoechsterSieg->alsText($lmo_einstellungen->torfaktor(), $text[72], $text[73], $text[74]); ?></td>
           <th class="top" style="text-align:center"><?php echo $text[68]; ?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $maxs0[$show_stat2] ?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $lmo_zeile2->hoechsterSieg->alsText($lmo_einstellungen->torfaktor(), $text[72], $text[73], $text[74]) ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php if ($spiele[$show_stat1]) {echo $nieder[$show_stat1]." (".number_format($nieder[$show_stat1]*100/$spiele[$show_stat1],2,",",".")."%)";} ?></td>
+          <td align="right"><?php if ($lmo_zeile1->spiele) {echo $lmo_zeile1->niederlagen." (".number_format($lmo_zeile1->niederlagen*100/$lmo_zeile1->spiele,2,",",".")."%)";} ?></td>
           <th class="text-center"><?php echo $text[69]; ?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php if ($spiele[$show_stat2]) {echo $nieder[$show_stat2]." (".number_format($nieder[$show_stat2]*100/$spiele[$show_stat2],2,",",".")."%)";} ?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php if ($lmo_zeile2->spiele) {echo $lmo_zeile2->niederlagen." (".number_format($lmo_zeile2->niederlagen*100/$lmo_zeile2->spiele,2,",",".")."%)";} ?></td><?php } ?>
         </tr>
         <tr>
-          <td align="right"><?php echo $maxn0[$show_stat1]; ?></td>
+          <td align="right"><?php echo $lmo_zeile1->hoechsteNiederlage->alsText($lmo_einstellungen->torfaktor(), $text[72], $text[73], $text[74]); ?></td>
           <th class="top" style="text-align:center"><?php echo $text[70]; ?></th>
-          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $maxn0[$show_stat2]; ?></td><?php } ?>
+          <?php if ($show_stat2>0 && $show_stat1!=$show_stat2) {?><td align="left"><?php echo $lmo_zeile2->hoechsteNiederlage->alsText($lmo_einstellungen->torfaktor(), $text[72], $text[73], $text[74]); ?></td><?php } ?>
         </tr>
         <tr>
           <td align="right"><?php echo $serie1; ?></td>
@@ -409,15 +430,15 @@ if ($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
     </td>
     <td valign="top" align="center">
       <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0"><?php
-  for ($i=1;$i<=$ligaDaten->anzteams;$i++) {?>
+  for ($i=1;$i<=$lmo_anzteams;$i++) {?>
         <tr>
-          <td><?php echo HTML_smallTeamIcon($file,$ligaDaten->teams[$i]," alt=''"); ?>&nbsp;</td>
+          <td><?php echo HTML_smallTeamIcon($file,$lmo_mannschaften[$i]->anzeigename()," alt=''"); ?>&nbsp;</td>
           <td align="left">
-            <acronym title="<?php echo $text[57]." ".$ligaDaten->teams[$i]?>"><?php
+            <acronym title="<?php echo $text[57]." ".$lmo_mannschaften[$i]->anzeigename()?>"><?php
     if ($i!=$show_stat2) {
-               ?><a href="<?php echo $adds.$show_stat1?>&amp;stat2=<?php echo $i?>"><?php echo $ligaDaten->teamk[$i]?></a><?php
+               ?><a href="<?php echo $adds.$show_stat1?>&amp;stat2=<?php echo $i?>"><?php echo $lmo_mannschaften[$i]->kurzname()?></a><?php
     } else {
-      echo $ligaDaten->teamk[$i];
+      echo $lmo_mannschaften[$i]->kurzname();
     }
           ?></acronym>
           </td>
@@ -472,10 +493,10 @@ if ($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
           <td align="left"><?php echo $text[42]."-".$text[38]?> </td>
         </tr>
         <tr>
-          <td align="right"> <strong><?php echo applyFactor($gzutore,$ligaDaten->goalfaktor);?></strong> (<?php echo $text[517]?><?php echo applyFactor($gdstore,$ligaDaten->goalfaktor)?>) </td>
-          <td align="right"> <strong><?php echo applyFactor($gheimtore,$ligaDaten->goalfaktor);?></strong><?php if ($gdstore>0) {$v=round($dsheimtore/$gdstore*100);echo " ($v% ".$text[517].applyFactor($dsheimtore,$ligaDaten->goalfaktor).")";}?> </td>
+          <td align="right"> <strong><?php echo applyFactor($gzutore,$lmo_einstellungen->torfaktor());?></strong> (<?php echo $text[517]?><?php echo applyFactor($gdstore,$lmo_einstellungen->torfaktor())?>) </td>
+          <td align="right"> <strong><?php echo applyFactor($gheimtore,$lmo_einstellungen->torfaktor());?></strong><?php if ($gdstore>0) {$v=round($dsheimtore/$gdstore*100);echo " ($v% ".$text[517].applyFactor($dsheimtore,$lmo_einstellungen->torfaktor()).")";}?> </td>
           <td>&nbsp;</td>
-          <td align="left"> <strong><?php echo applyFactor($ggasttore,$ligaDaten->goalfaktor);?></strong><?php if ($gdstore>0) {echo " (".(100-$v)."% ".$text[517].applyFactor($dsgasttore,$ligaDaten->goalfaktor).")";}?> </td>
+          <td align="left"> <strong><?php echo applyFactor($ggasttore,$lmo_einstellungen->torfaktor());?></strong><?php if ($gdstore>0) {echo " (".(100-$v)."% ".$text[517].applyFactor($dsgasttore,$lmo_einstellungen->torfaktor()).")";}?> </td>
         </tr><?php
     if ($hheimsiegtor>0) {?>
         <tr>
@@ -483,13 +504,13 @@ if ($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
         </tr><tr>
           <td align="right"><?php echo $hheimsieg?> - </td>
           <td align="left"><?php echo $hgastsieg?></td>
-          <td colspan="2" align="left"><?php echo applyFactor($hheimsiegtor,$ligaDaten->goalfaktor)?>:<?php echo applyFactor($hgastsiegtor,$ligaDaten->goalfaktor)?> (<?php echo $spieltagflag?>.<?php echo $text[4014]?>)</td>
+          <td colspan="2" align="left"><?php echo applyFactor($hheimsiegtor,$lmo_einstellungen->torfaktor())?>:<?php echo applyFactor($hgastsiegtor,$lmo_einstellungen->torfaktor())?> (<?php echo $spieltagflag?>.<?php echo $text[4014]?>)</td>
         </tr><?php
       if ($hheimsiegtor1>0) {?>
         <tr>
           <td align="right"><?php echo $hheimsieg1?> - </td>
           <td align="left"><?php echo $hgastsieg1?></td>
-          <td colspan="2" align="left"><?php echo applyFactor($hheimsiegtor1,$ligaDaten->goalfaktor)?>:<?php echo applyFactor($hgastsiegtor1,$ligaDaten->goalfaktor)?> (<?php echo $spieltagflag1?>.<?php echo $text[4014]?>)</td>
+          <td colspan="2" align="left"><?php echo applyFactor($hheimsiegtor1,$lmo_einstellungen->torfaktor())?>:<?php echo applyFactor($hgastsiegtor1,$lmo_einstellungen->torfaktor())?> (<?php echo $spieltagflag1?>.<?php echo $text[4014]?>)</td>
         </tr><?php
         if ($counteranz>2) {
           $counteranz0=$counteranz-2;?>
@@ -507,13 +528,13 @@ if ($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
         <tr>
           <td align="right"><?php echo $aheimsieg?> - </td>
           <td align="left"><?php echo $agastsieg?></td>
-          <td colspan="2" align="left"><?php echo applyFactor($aheimsiegtor,$ligaDaten->goalfaktor)?>:<?php echo applyFactor($agastsiegtor,$ligaDaten->goalfaktor)?> (<?php echo $spieltagflag2?>.<?php echo $text[4014]?>)</td>
+          <td colspan="2" align="left"><?php echo applyFactor($aheimsiegtor,$lmo_einstellungen->torfaktor())?>:<?php echo applyFactor($agastsiegtor,$lmo_einstellungen->torfaktor())?> (<?php echo $spieltagflag2?>.<?php echo $text[4014]?>)</td>
         </tr>  <?php
       if ($agastsiegtor1>0) {?>
         <tr>
           <td align="right"><?php echo $aheimsieg1?> - </td>
           <td align="left"><?php echo $agastsieg1?></td>
-          <td colspan="2" align="left"><?php echo applyFactor($aheimsiegtor1,$ligaDaten->goalfaktor)?>:<?php echo applyFactor($agastsiegtor1,$ligaDaten->goalfaktor)?>  (<?php echo $spieltagflag3?>.<?php echo $text[4014]?>)</td>
+          <td colspan="2" align="left"><?php echo applyFactor($aheimsiegtor1,$lmo_einstellungen->torfaktor())?>:<?php echo applyFactor($agastsiegtor1,$lmo_einstellungen->torfaktor())?>  (<?php echo $spieltagflag3?>.<?php echo $text[4014]?>)</td>
         </tr><?php
         if ($counteranz1>2) {
           $counteranz4=$counteranz1-2;?>
@@ -531,13 +552,13 @@ if ($ligaLoaded  and $show_stat1 > 0 and $show_stat1 <= $liga->teamCount()) {
         <tr>
           <td align="right"><?php echo $htorreichm1?> - </td>
           <td align="left"><?php echo $htorreichm2?></td>
-          <td colspan="2" align="left"><?php echo applyFactor($htorreicht1,$ligaDaten->goalfaktor)?>:<?php echo applyFactor($htorreicht2,$ligaDaten->goalfaktor)?>  (<?php echo $spieltagflag4?>.<?php echo $text[4014]?>)</td>
+          <td colspan="2" align="left"><?php echo applyFactor($htorreicht1,$lmo_einstellungen->torfaktor())?>:<?php echo applyFactor($htorreicht2,$lmo_einstellungen->torfaktor())?>  (<?php echo $spieltagflag4?>.<?php echo $text[4014]?>)</td>
         </tr><?php
       if ($spieltagflag5>0) {?>
         <tr>
           <td align="right"><?php echo $htorreichm3?> - </td>
           <td align="left"><?php echo $htorreichm4?></td>
-          <td colspan="2" align="left"><?php echo applyFactor($htorreicht3,$ligaDaten->goalfaktor)?>:<?php echo applyFactor($htorreicht4,$ligaDaten->goalfaktor)?>  (<?php echo $spieltagflag5?>.<?php echo $text[4014]?>)</td>
+          <td colspan="2" align="left"><?php echo applyFactor($htorreicht3,$lmo_einstellungen->torfaktor())?>:<?php echo applyFactor($htorreicht4,$lmo_einstellungen->torfaktor())?>  (<?php echo $spieltagflag5?>.<?php echo $text[4014]?>)</td>
         </tr><?php
         if ($counteranz5>2) {
           $counteranz6=$counteranz5-2;?>

@@ -24,7 +24,8 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
+ * @var string $defdateformat Datumsformat in date()-Schreibweise (Konfiguration)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string|null $st gewaehlter Spieltag
@@ -41,7 +42,6 @@ if (!defined('PATH_TO_LMO')) {
  * @var array<int|string, mixed> $teamt
  */
 
-if (!isset($ligaDaten->playoffmode)) $ligaDaten->playoffmode = '0';
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 if ($file != '') {
     $save = isset($_POST['save']) ? $_POST['save'] : 0;
@@ -62,225 +62,153 @@ if ($file != '') {
         }
     }
 
-    if (!isset($ligaDaten->nlines)) {
-        $ligaDaten->nlines = array();
-    }
-
     require_once(PATH_TO_LMO . '/lmo-openfile.php');
+    $lmo_einstellungen = $lmo_liga->einstellungen();
+    $lmo_pokal = $lmo_einstellungen->istPokal();
+    $lmo_spieltage = $lmo_einstellungen->spieltage();
     // Spieltag, den es in der Liga nicht gibt (z.B. st=-2 als Hilfsadmin ohne Recht auf die
     // Mannschaftsverwaltung): stattdessen den aktuellen Spieltag bearbeiten
-    if ($st < 1 || $st > $ligaDaten->anzst) {
-        $st = ($ligaDaten->stx >= 1 && $ligaDaten->stx <= $ligaDaten->anzst) ? $ligaDaten->stx : 1;
+    if ($st < 1 || $st > $lmo_spieltage) {
+        $st = ($lmo_einstellungen->aktuellerSpieltag() >= 1 && $lmo_einstellungen->aktuellerSpieltag() <= $lmo_spieltage) ? $lmo_einstellungen->aktuellerSpieltag() : 1;
     }
     if (!isset($save)) {
         $save = 0;
     }
+    $me = array('0', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     if ($save == 1) {
-        $me = array('0', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+        // Die Eingaben kommen in die Rohdaten des Spieltags (Lmo\Liga\Rohdaten\Spieltag, Partie);
+        // lmo-saveliga.php schreibt sie.
+        $lmo_spieltag = $lmo_liga->spieltag((int)$st);
         if ($_SESSION['lmouserok'] == 2) {
-            $ligaDaten->datum1[$st - 1] = isset($_POST['xdatum1']) ? trim($_POST['xdatum1']) : '';
-            if ($ligaDaten->datum1[$st - 1] != '') {
-                $datum = explode('.', $ligaDaten->datum1[$st - 1]);
-                $dummy = strtotime($datum[0] . ' ' . $me[intval($datum[1])] . ' ' . $datum[2]);
-                if ($dummy > -1) {
-                    $ligaDaten->datum1[$st - 1] = date('d.m.Y', $dummy);
-                } else {
-                    $ligaDaten->datum1[$st - 1] = '';
-                }
-            }
-            $ligaDaten->datum2[$st - 1] = isset($_POST['xdatum2']) ? trim($_POST['xdatum2']) : '';
-            if ($ligaDaten->datum2[$st - 1] != '') {
-                $datum = explode('.', $ligaDaten->datum2[$st - 1]);
-                $dummy = strtotime($datum[0] . ' ' . $me[intval($datum[1])] . ' ' . $datum[2]);
-                if ($dummy > -1) {
-                    $ligaDaten->datum2[$st - 1] = date('d.m.Y', $dummy);
-                } else {
-                    $ligaDaten->datum2[$st - 1] = '';
-                }
-            }
-        }
-        if ($ligaDaten->hands == 1) {
-            for ($i = $st - 1; $i < $ligaDaten->anzst; $i++) {
-                $ligaDaten->handp[$i] = 0;
-            }
-        }
-        if ($ligaDaten->lmtype != 0) {
-            $anzsp2 = $ligaDaten->anzteams;
-            for ($i = 0; $i < $st; $i++) {
-                if ($ligaDaten->anzteams == 24) {
-                    switch ($i) {
-                        case 0:
-                        case 1:
-                            $anzsp2 = 16;
-                        break;
-                        case 2:
-                            $anzsp2 = 8;
-                        break;
-                        case 3:
-                            $anzsp2 = 4;
-                        break;
-                        case 4:
-                            $anzsp2 = 2;
-                        break;
-                        case 5:
-                            $anzsp2 = 1;
-                        break;
-                    }
-                }
-                $anzsp2 = $anzsp2 / 2;
-            }
-            if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) {
-                $anzsp2 = $anzsp2 + 1;
-            }
-        } else {
-            $anzsp2 = $ligaDaten->anzsp;
-        }
-        for ($i = 0; $i < $anzsp2; $i++) {
-            if ($ligaDaten->lmtype == 0) {
-                $dum1 = isset($_POST['xatdat' . $i]) ? trim($_POST['xatdat' . $i]) : '';
-                $dum2 = isset($_POST['xattim' . $i]) ? trim($_POST['xattim' . $i]) : '';
-                if ($dum1 != '') {
-                    if ($dum2 == '') {
-                        $dum2 = $deftime;
-                    }
-                    $datu1 = explode('.', $dum1);
-                    $datu2 = explode(':', $dum2);
-                    $dt = DateTime::createFromFormat('d.m.Y H:i', $dum1 . ' ' . $dum2);
-                    $dt !== false ? $ligaDaten->mterm[$st - 1][$i] = $dt->getTimestamp() : $ligaDaten->mterm[$st - 1][$i] = '';
-                } else {
-                    $ligaDaten->mterm[$st - 1][$i] = '';
-                }
-            } else {
-                for ($n = 0; $n < $ligaDaten->modus[$st - 1]; $n++) {
-                    $dum1 = isset($_POST['xatdat' . $i . $n]) ? trim($_POST['xatdat' . $i . $n]) : '';
-                    $dum2 = isset($_POST['xattim' . $i . $n]) ? trim($_POST['xattim' . $i . $n]) : '';
-                    if ($dum1 != '') {
-                        if ($dum2 == '') {
-                            $dum2 = $deftime;
-                        }
-                        $datu1 = explode('.', $dum1);
-                        $datu2 = explode(':', $dum2);
-                        $dt = DateTime::createFromFormat('d.m.Y H:i', $dum1 . ' ' . $dum2);
-                        $dt !== false ? $ligaDaten->mterm[$st - 1][$i][$n] = $dt->getTimestamp() : $ligaDaten->mterm[$st - 1][$i][$n] = '';
+            foreach (array('D1' => 'xdatum1', 'D2' => 'xdatum2') as $lmo_schluessel => $lmo_feld) {
+                $lmo_datum = isset($_POST[$lmo_feld]) ? trim($_POST[$lmo_feld]) : '';
+                if ($lmo_datum != '') {
+                    $datum = explode('.', $lmo_datum);
+                    $dummy = strtotime($datum[0] . ' ' . $me[intval($datum[1])] . ' ' . $datum[2]);
+                    if ($dummy > -1) {
+                        $lmo_datum = date('d.m.Y', $dummy);
                     } else {
-                        $ligaDaten->mterm[$st - 1][$i][$n] = '';
+                        $lmo_datum = '';
                     }
                 }
+                $lmo_spieltag->werte[$lmo_schluessel] = $lmo_datum;
             }
+        }
+        // neue Ergebnisse: die Tabellenkorrektur gilt ab diesem Spieltag nicht mehr
+        if ($lmo_einstellungen->mitHandicap()) {
+            for ($i = (int)$st; $i <= $lmo_spieltage; $i++) {
+                $lmo_liga->spieltag($i)->werte['HS'] = '0';
+            }
+        }
+        // Anstoss aus Datum und Uhrzeit des Formulars: Zeitstempel, '' ohne oder mit unlesbarem Datum
+        $lmo_anstoss = static function (string $lmo_nr) use ($deftime): string {
+            $dum1 = isset($_POST['xatdat' . $lmo_nr]) ? trim($_POST['xatdat' . $lmo_nr]) : '';
+            $dum2 = isset($_POST['xattim' . $lmo_nr]) ? trim($_POST['xattim' . $lmo_nr]) : '';
+            if ($dum1 == '') {
+                return '';
+            }
+            if ($dum2 == '') {
+                $dum2 = $deftime;
+            }
+            $dt = DateTime::createFromFormat('d.m.Y H:i', $dum1 . ' ' . $dum2);
+
+            return $dt !== false ? (string)$dt->getTimestamp() : '';
+        };
+        // Tore aus dem Formular: leer und "_" heissen nicht gespielt (-1), "X" (nur Liga) 0, sonst die Zahl
+        $lmo_tore = static function (string $lmo_feld, bool $lmo_mitX): int {
+            $lmo_wert = isset($_POST[$lmo_feld]) ? trim($_POST[$lmo_feld]) : '';
+            if ($lmo_wert == '' || $lmo_wert == '_') {
+                return -1;
+            }
+            if ($lmo_mitX && strtoupper($lmo_wert) == 'X') {
+                return 0;
+            }
+
+            return intval($lmo_wert);
+        };
+        // Zusatz aus dem Formular: "_" (kein Zusatz) und die beiden Anzeigetexte; alles andere steht nicht in der Datei
+        $lmo_zusatz_setzen = static function (array &$lmo_spiel, string $lmo_wert) use ($text): void {
+            unset($lmo_spiel['SP']);
+            if ($lmo_wert == '_') {
+                $lmo_spiel['SP'] = '_';
+            } elseif ($lmo_wert == $text[0]) {
+                $lmo_spiel['SP'] = '2';
+            } elseif ($lmo_wert == $text[1]) {
+                $lmo_spiel['SP'] = '1';
+            }
+        };
+        $lmo_partien = $lmo_einstellungen->partienImSpieltag((int)$st);
+        $lmo_modus = \Lmo\Liga\Paarung::spieleJePaarung($lmo_liga, (int)$st);
+        $lmo_termine = array();
+        for ($i = 0; $i < $lmo_partien; $i++) {
+            if (!isset($lmo_spieltag->partien[$i + 1])) {
+                $lmo_spieltag->partien[$i + 1] = new \Lmo\Liga\Rohdaten\Partie();
+            }
+            $lmo_partie = $lmo_spieltag->partien[$i + 1];
             if ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert'] == 1) {
-                $ligaDaten->teama[$st - 1][$i] = isset($_POST['xteama' . $i]) ? $_POST['xteama' . $i] : '';
-                $ligaDaten->teamb[$st - 1][$i] = isset($_POST['xteamb' . $i]) ? $_POST['xteamb' . $i] : '';
+                $lmo_partie->heim = isset($_POST['xteama' . $i]) ? $_POST['xteama' . $i] : '';
+                $lmo_partie->gast = isset($_POST['xteamb' . $i]) ? $_POST['xteamb' . $i] : '';
             }
-            if ($ligaDaten->lmtype == 0) {
-                $ligaDaten->goala[$st - 1][$i] = isset($_POST['xgoala' . $i]) ? trim($_POST['xgoala' . $i]) : '';
-                if ($ligaDaten->goala[$st - 1][$i] == '' || $ligaDaten->goala[$st - 1][$i] == '_') {
-                    $ligaDaten->goala[$st - 1][$i] = -1;
-                } elseif (strtoupper($ligaDaten->goala[$st - 1][$i]) == 'X') {
-                    $ligaDaten->goala[$st - 1][$i] = 0;
-                    $ligaDaten->msieg[$st - 1][$i] = 1;
-                } else {
-                    $ligaDaten->goala[$st - 1][$i] = intval(trim($ligaDaten->goala[$st - 1][$i]));
-                    if ($ligaDaten->goala[$st - 1][$i] == '') {
-                        $ligaDaten->goala[$st - 1][$i] = '0';
-                    }
+            if (!$lmo_pokal) {
+                $lmo_spiel = $lmo_partie->spiele[1] ?? array();
+                $lmo_spiel['AT'] = $lmo_anstoss((string)$i);
+                // Wertung am gruenen Tisch: -2 auf der Seite, gegen die gewertet wird; ET=3 gegen beide
+                $lmo_wertung = $_POST['xmsieg' . $i];
+                $lmo_spiel['GA'] = $lmo_wertung == 1 ? '-2' : (string)$lmo_tore('xgoala' . $i, true);
+                $lmo_spiel['GB'] = $lmo_wertung == 2 ? '-2' : (string)$lmo_tore('xgoalb' . $i, true);
+                unset($lmo_spiel['ET']);
+                if ($lmo_wertung == 3) {
+                    $lmo_spiel['ET'] = '3';
                 }
-                $ligaDaten->goalb[$st - 1][$i] = isset($_POST['xgoalb' . $i]) ? trim($_POST['xgoalb' . $i]) : '';
-                if ($ligaDaten->goalb[$st - 1][$i] == '' || $ligaDaten->goalb[$st - 1][$i] == '_') {
-                    $ligaDaten->goalb[$st - 1][$i] = -1;
-                } elseif (strtoupper($ligaDaten->goalb[$st - 1][$i]) == 'X') {
-                    $ligaDaten->goalb[$st - 1][$i] = 0;
-                    $ligaDaten->msieg[$st - 1][$i] = 2;
-                } else {
-                    $ligaDaten->goalb[$st - 1][$i] = intval(trim($ligaDaten->goalb[$st - 1][$i]));
-                    if ($ligaDaten->goalb[$st - 1][$i] == '') {
-                        $ligaDaten->goalb[$st - 1][$i] = '0';
-                    }
+                if ($lmo_einstellungen->mitVerlaengerung()) {
+                    $lmo_zusatz_setzen($lmo_spiel, (string)$_POST['xmspez' . $i]);
                 }
-                $ligaDaten->msieg[$st - 1][$i] = $_POST['xmsieg' . $i];
-                if ($ligaDaten->spez == 1) {
-                    $ligaDaten->mspez[$st - 1][$i] = $_POST['xmspez' . $i];
-                }
-                $ligaDaten->mnote[$st - 1][$i] = trim($_POST['xmnote' . $i]);
-                $ligaDaten->mberi[$st - 1][$i] = trim($_POST['xmberi' . $i]);
+                $lmo_spiel['NT'] = trim($_POST['xmnote' . $i]);
+                $lmo_spiel['BE'] = trim($_POST['xmberi' . $i]);
                 if ($_SESSION['lmouserok'] == 2 && $ftest0 == 1) {
-                    $ligaDaten->mtipp[$st - 1][$i] = trim($_POST['xmtipp' . $i]);
+                    $lmo_spiel['TI'] = trim($_POST['xmtipp' . $i]);
                 }
-                if (($st < $ligaDaten->anzst) && ($ligaDaten->favteam > 0) && ($ligaDaten->stat1 == $ligaDaten->favteam)) {
-                    for ($y = 0; $y < $ligaDaten->anzsp; $y++) {
-                        if ($ligaDaten->teama[$st][$y] == $ligaDaten->favteam) {
-                            $ligaDaten->stat2 = $ligaDaten->teamb[$st][$y];
-                        }
-                        if ($ligaDaten->teamb[$st][$y] == $ligaDaten->favteam) {
-                            $ligaDaten->stat2 = $ligaDaten->teama[$st][$y];
-                        }
-                    }
-                }
+                $lmo_partie->spiele[1] = $lmo_spiel;
+                $lmo_termine[] = (int)$lmo_spiel['AT'];
             } else {
-                for ($n = 0; $n < $ligaDaten->modus[$st - 1]; $n++) {
-                    $ligaDaten->goala[$st - 1][$i][$n] = trim($_POST['xgoala' . $i . $n]);
-                    if ($ligaDaten->goala[$st - 1][$i][$n] == '') {
-                        $ligaDaten->goala[$st - 1][$i][$n] = -1;
-                    } elseif ($ligaDaten->goala[$st - 1][$i][$n] == '_') {
-                        $ligaDaten->goala[$st - 1][$i][$n] = -1;
-                    } else {
-                        $ligaDaten->goala[$st - 1][$i][$n] = intval(trim($ligaDaten->goala[$st - 1][$i][$n]));
-                        if ($ligaDaten->goala[$st - 1][$i][$n] == '') {
-                            $ligaDaten->goala[$st - 1][$i][$n] = '0';
-                        }
-                    }
-                    $ligaDaten->goalb[$st - 1][$i][$n] = trim($_POST['xgoalb' . $i . $n]);
-                    if ($ligaDaten->goalb[$st - 1][$i][$n] == '') {
-                        $ligaDaten->goalb[$st - 1][$i][$n] = -1;
-                    } elseif ($ligaDaten->goalb[$st - 1][$i][$n] == '_') {
-                        $ligaDaten->goalb[$st - 1][$i][$n] = -1;
-                    } else {
-                        $ligaDaten->goalb[$st - 1][$i][$n] = intval(trim($ligaDaten->goalb[$st - 1][$i][$n]));
-                        if ($ligaDaten->goalb[$st - 1][$i][$n] == '') {
-                            $ligaDaten->goalb[$st - 1][$i][$n] = '0';
-                        }
-                    }
-                    $ligaDaten->mspez[$st - 1][$i][$n] = $_POST['xmspez' . $i . $n];
-                    $ligaDaten->mnote[$st - 1][$i][$n] = trim($_POST['xmnote' . $i . $n]);
-                    $ligaDaten->mberi[$st - 1][$i][$n] = trim($_POST['xmberi' . $i . $n]);
+                for ($n = 0; $n < $lmo_modus; $n++) {
+                    $lmo_spiel = $lmo_partie->spiele[$n + 1] ?? array();
+                    $lmo_spiel['AT'] = $lmo_anstoss($i . $n);
+                    $lmo_spiel['GA'] = (string)$lmo_tore('xgoala' . $i . $n, false);
+                    $lmo_spiel['GB'] = (string)$lmo_tore('xgoalb' . $i . $n, false);
+                    $lmo_zusatz_setzen($lmo_spiel, (string)$_POST['xmspez' . $i . $n]);
+                    $lmo_spiel['NT'] = trim($_POST['xmnote' . $i . $n]);
+                    $lmo_spiel['BE'] = trim($_POST['xmberi' . $i . $n]);
                     if ($_SESSION['lmouserok'] == 2 && $ftest0 == 1) {
-                        $ligaDaten->mtipp[$st - 1][$i][$n] = trim($_POST['xmtipp' . $i . $n]);
+                        $lmo_spiel['TI'] = trim($_POST['xmtipp' . $i . $n]);
                     }
+                    $lmo_partie->spiele[$n + 1] = $lmo_spiel;
+                    $lmo_termine[] = (int)$lmo_spiel['AT'];
                 }
-                if (($st < $ligaDaten->anzst) && ($ligaDaten->favteam > 0) && ($ligaDaten->stat1 == $ligaDaten->favteam)) {
-                    for ($y = 0; $y < $ligaDaten->anzsp; $y++) {
-                        if ($ligaDaten->teama[$st][$y] == $ligaDaten->favteam) {
-                            $ligaDaten->stat2 = $ligaDaten->teamb[$st][$y];
-                        }
-                        if ($ligaDaten->teamb[$st][$y] == $ligaDaten->favteam) {
-                            $ligaDaten->stat2 = $ligaDaten->teama[$st][$y];
-                        }
-                    }
+            }
+        }
+        // Fieberkurve: fuehrt die erste Kurve die Lieblingsmannschaft, zeigt die zweite deren naechsten Gegner
+        $lmo_lieblingsmannschaft = $lmo_einstellungen->lieblingsmannschaft();
+        if ($st < $lmo_spieltage && $lmo_lieblingsmannschaft > 0 && $lmo_einstellungen->fieberkurveErste() == $lmo_lieblingsmannschaft) {
+            for ($y = 1; $y <= $lmo_einstellungen->partienJeSpieltag(); $y++) {
+                $lmo_naechste = $lmo_liga->spieltage[(int)$st + 1]->partien[$y] ?? null;
+                if ($lmo_naechste !== null && (int)$lmo_naechste->heim == $lmo_lieblingsmannschaft) {
+                    $lmo_liga->optionen['kurve2'] = (string)$lmo_naechste->gast;
+                }
+                if ($lmo_naechste !== null && (int)$lmo_naechste->gast == $lmo_lieblingsmannschaft) {
+                    $lmo_liga->optionen['kurve2'] = (string)$lmo_naechste->heim;
                 }
             }
         }
 
         /*Spieltagsdatum (falls nicht angegeben) aus Spieldaten extrahieren*/
-        function array_values_recursive($ary)
-        {
-            $lst = array();
-            foreach(array_keys($ary) as $k) {
-                $v = $ary[$k];
-                if (is_scalar($v)) {
-                    $lst[] = $v;
-                } elseif (is_array($v)) {
-                    $lst = array_merge( $lst, array_values_recursive($v));
-                }
-            }
-            return $lst;
-        }
-
-        $lmo_spieltermine = array_filter(array_values_recursive($ligaDaten->mterm[$st - 1]), 'filterZero');
+        $lmo_spieltermine = array_filter($lmo_termine, 'filterZero');
         if (!empty($lmo_spieltermine)) {
-            if (empty($ligaDaten->datum1[$st - 1])) {
-                $ligaDaten->datum1[$st - 1] = date('d.m.Y', min($lmo_spieltermine));
+            if (empty($lmo_spieltag->werte['D1'])) {
+                $lmo_spieltag->werte['D1'] = date('d.m.Y', min($lmo_spieltermine));
             }
-            if (empty($ligaDaten->datum2[$st - 1])) {
-                $ligaDaten->datum2[$st - 1] = date('d.m.Y', max($lmo_spieltermine));
+            if (empty($lmo_spieltag->werte['D2'])) {
+                $lmo_spieltag->werte['D2'] = date('d.m.Y', max($lmo_spieltermine));
             }
         }
 
@@ -295,80 +223,80 @@ if ($file != '') {
             }
         }
         // Tippspiel-Addon
+        // aktueller Spieltag: der im Formular gewaehlte, sonst der bearbeitete
         $stz = trim($_POST['xstx']);
-        if ($stz != 0) {
-            $ligaDaten->stx = $stz;
-        } else {
-            $ligaDaten->stx = $st;
-        }
-        $stz = $st;
-        $st = $ligaDaten->stx;
-        $ligaDaten->nticker = trim($_POST['xnticker']);
-        $ligaDaten->nlines = explode('\n', $_POST['xnlines']);
-        if (count($ligaDaten->nlines) > 0) {
-            for ($z = count($ligaDaten->nlines) - 1; $z >= 0; $z--) {
-                $y = array_pop($ligaDaten->nlines);
-                if ($y != '') {
-                    array_unshift($ligaDaten->nlines, $y);
-                }
+        $lmo_liga->optionen['Actual'] = $stz != 0 ? $stz : (string)$st;
+        $lmo_liga->optionen['ticker'] = trim($_POST['xnticker']);
+        $lmo_liga->news = array('NC' => '0');
+        foreach (explode('\n', $_POST['xnlines']) as $y) {
+            if ($y != '') {
+                $lmo_liga->news['N' . (count($lmo_liga->news) - 1)] = $y;
             }
         }
-        require(PATH_TO_LMO . '/lmo-savefile.php');
+        $lmo_liga->news['NC'] = (string)(count($lmo_liga->news) - 1);
+        // lmo-saveliga.php schreibt den gewaehlten Spieltag als aktuellen
+        $stz = $st;
+        $st = $lmo_liga->optionen['Actual'];
+        require(PATH_TO_LMO . '/lmo-saveliga.php');
         $st = $stz;
     }
 
     // Rückrunden-Hack
     if ($save == 990) require_once(PATH_TO_LMO . '/lmo-rueckrunde.php');
 
-        if ($ligaDaten->lmtype != 0) {
+    // der Stand nach dem Speichern: Einstellungen, Spieltag und seine Paarungen (Lmo\Liga\Paarung) zum Anzeigen
+    $lmo_einstellungen = $lmo_liga->einstellungen();
+    $lmo_spieltage = $lmo_einstellungen->spieltage();
+    $lmo_mannschaften = $lmo_einstellungen->mannschaften();
+    $lmo_partien = $lmo_einstellungen->partienImSpieltag((int)$st);
+    $lmo_modus = \Lmo\Liga\Paarung::spieleJePaarung($lmo_liga, (int)$st);
+    $lmo_playdown = $lmo_einstellungen->wert('playdown');
+    $lmo_playoffmodus = $lmo_einstellungen->playoffModus();
+    $lmo_datum1 = $lmo_liga->spieltage[(int)$st]->werte['D1'] ?? '';
+    $lmo_datum2 = $lmo_liga->spieltage[(int)$st]->werte['D2'] ?? '';
+    // Namen der Mannschaften fuer die Auswahllisten, davor "___" fuer keine
+    $lmo_namen = array_fill(0, $lmo_mannschaften + 2, '');
+    $lmo_namen[0] = '___';
+    foreach ($lmo_liga->alleMannschaften() as $lmo_nr => $lmo_mannschaft) {
+        $lmo_namen[$lmo_nr] = $lmo_mannschaft->anzeigename();
+    }
+    $lmo_newszeilen = array();
+    foreach ($lmo_liga->news as $lmo_schluessel => $lmo_wert) {
+        if ($lmo_schluessel != 'NC') {
+            $lmo_newszeilen[] = stripslashes($lmo_wert);
+        }
+    }
+    if ($lmo_pokal) {
+        // wer in den Runden davor ausgeschieden ist (1); mit Spiel um Platz 3 die Verlierer der Runde davor (2)
         $teamt = array_pad(array('0'), 129, '0');
-        if ($st > 1) {
-            for ($i = 0; $i < ($st - 1); $i++) {
-                if (!isset($ligaDaten->goalb[$i]) || !is_array($ligaDaten->goalb[$i])) {
+        for ($i = 1; $i < $st; $i++) {
+            foreach ($lmo_liga->paarungen($i) as $lmo_paarung) {
+                $m = $lmo_paarung->sieger();
+                if ($m == 0) {
                     continue;
                 }
-                $maxMatches = count($ligaDaten->goalb[$i]);
-                for ($j = 0; $j < $maxMatches; $j++) {
-                    if (!isset($ligaDaten->goalb[$i][$j]) || !isset($ligaDaten->goala[$i][$j]) || !isset($ligaDaten->teama[$i][$j]) || !isset($ligaDaten->teamb[$i][$j])) {
-                        continue;
-                    }
-                    $m1 = $ligaDaten->goala[$i][$j];
-                    $m2 = $ligaDaten->goalb[$i][$j];
-                    $m = gewinn($i, $j, $ligaDaten->modus[$i], $m1, $m2);
-
-                    if ($m == 1) {
-                        $teamt[$ligaDaten->teamb[$i][$j]] = 1;
-                    } elseif ($m == 2) {
-                        $teamt[$ligaDaten->teama[$i][$j]] = 1;
-                    }
-                    if (($ligaDaten->klfin == 1) && ($i == $st - 2)) {
-                        if ($m == 1) {
-                            $teamt[$ligaDaten->teamb[$i][$j]] = 2;
-                        } elseif ($m == 2) {
-                            $teamt[$ligaDaten->teama[$i][$j]] = 2;
-                        }
-                    }
-                }
+                $lmo_verlierer = $m == 1 ? $lmo_paarung->gast : $lmo_paarung->heim;
+                $teamt[$lmo_verlierer] = ($lmo_einstellungen->mitSpielUmPlatz3() && $i == $st - 1) ? 2 : 1;
             }
         }
     }
     $addr = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=edit&amp;file=' . $file . '&amp;st=';
     $addb = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=tabs&amp;file=' . $file . '&amp;st=';
-    $breite = 18 - $ligaDaten->lmtype;
-    if ($ligaDaten->spez == 1) {
-        $breite = $breite + 1 + (-1) * (0 - $ligaDaten->lmtype);
+    $breite = 18 - ($lmo_pokal ? 1 : 0);
+    if ($lmo_einstellungen->mitVerlaengerung()) {
+        $breite = $breite + 1 + ($lmo_pokal ? 1 : 0);
     }
 
     include(PATH_TO_LMO . '/lmo-adminsubnavi.php'); ?>
       <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td align="center"><h1><?php echo $ligaDaten->titel; ?></h1></td>
+          <td align="center"><h1><?php echo $lmo_einstellungen->name(); ?></h1></td>
         </tr>
         <tr>
           <td align="center">
 <?php
     include (PATH_TO_LMO . '/lmo-spieltagsmenu.php');
-    if ($ligaDaten->lmtype == 0) { ?>
+    if (!$lmo_pokal) { ?>
             <form  name="lmoedit_second_half" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
               <input type="hidden" name="action" value="admin">
               <input type="hidden" name="todo" value="edit">
@@ -395,34 +323,34 @@ if ($file != '') {
                   <th class="nobr" style="text-align:left" colspan="<?php echo $breite - 10; ?>">
 <?php
     echo '                    ' . $st .  '. ' . $text[2];
-    if ($ligaDaten->datum1[$st - 1] != '') {
-        $datum = explode('.', $ligaDaten->datum1[$st - 1]);
+    if ($lmo_datum1 != '') {
+        $datum = explode('.', $lmo_datum1);
         $dum1 = $me[intval($datum[1])] . ' ' . $datum[2];
     } else {
         $dum1 = '';
     }
-    if ($ligaDaten->datum2[$st - 1] != '') {
-        $datum = explode('.', $ligaDaten->datum2[$st - 1]);
+    if ($lmo_datum2 != '') {
+        $datum = explode('.', $lmo_datum2);
         $dum2 = $me[intval($datum[1])] . ' ' . $datum[2];
     } else {
         $dum2 = '';
     }
     if ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert'] == 1) { ?>
 
-                    <acronym title="<?php echo $text[105]; ?>"> <?php echo $text[3]; ?></acronym> <input class="lmo-formular-input" type="text" name="xdatum1" tabindex="01" size="10" maxlength="10" value="<?php echo $ligaDaten->datum1[$st - 1]; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum1\',\'<?php echo $dum1; ?>\')" title="<?php echo $text[139]; ?>" onMouseOver="lmoimg(\'d1\',img5)" onMouseOut="lmoimg(\'d1\',img4)"><img src="<?php echo URL_TO_IMGDIR; ?>/lmo-admin4.gif" name="ximgd1" width="12" height="11" border="0"></a>');</script>
-                    <acronym title="<?php echo $text[106]; ?>"> <?php echo $text[4]; ?></acronym> <input class="lmo-formular-input" type="text" name="xdatum2" tabindex="02" size="10" maxlength="10" value="<?php echo $ligaDaten->datum2[$st - 1]; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum2\',\'<?php echo $dum2; ?>\')" title="<?php echo $text[139]; ?>" onMouseOver="lmoimg(\'d2\',img5)" onMouseOut="lmoimg(\'d2\',img4)"><img src="<?php echo URL_TO_IMGDIR; ?>/lmo-admin4.gif" name="ximgd2" width="12" height="11" border="0"></a>');</script>
+                    <acronym title="<?php echo $text[105]; ?>"> <?php echo $text[3]; ?></acronym> <input class="lmo-formular-input" type="text" name="xdatum1" tabindex="01" size="10" maxlength="10" value="<?php echo $lmo_datum1; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum1\',\'<?php echo $dum1; ?>\')" title="<?php echo $text[139]; ?>" onMouseOver="lmoimg(\'d1\',img5)" onMouseOut="lmoimg(\'d1\',img4)"><img src="<?php echo URL_TO_IMGDIR; ?>/lmo-admin4.gif" name="ximgd1" width="12" height="11" border="0"></a>');</script>
+                    <acronym title="<?php echo $text[106]; ?>"> <?php echo $text[4]; ?></acronym> <input class="lmo-formular-input" type="text" name="xdatum2" tabindex="02" size="10" maxlength="10" value="<?php echo $lmo_datum2; ?>" onChange="dolmoedit()"> <script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum2\',\'<?php echo $dum2; ?>\')" title="<?php echo $text[139]; ?>" onMouseOver="lmoimg(\'d2\',img5)" onMouseOut="lmoimg(\'d2\',img4)"><img src="<?php echo URL_TO_IMGDIR; ?>/lmo-admin4.gif" name="ximgd2" width="12" height="11" border="0"></a>');</script>
 <?php
     }?>
                   </th>
 <?php
-    if ($ligaDaten->goalfaktor > 0 && $ligaDaten->goalfaktor != 1) { ?>
-                  <th style="text-align:center" class="nobr" colspan="<?php echo $breite - 13; ?>"><?php if ($ligaDaten->goalfaktor > 0 && $ligaDaten->goalfaktor != 1) {echo '(' . $text[553 + log10($ligaDaten->goalfaktor)] . ')';}?></th>
+    if ($lmo_einstellungen->torfaktor() > 0 && $lmo_einstellungen->torfaktor() != 1) { ?>
+                  <th style="text-align:center" class="nobr" colspan="<?php echo $breite - 13; ?>"><?php if ($lmo_einstellungen->torfaktor() > 0 && $lmo_einstellungen->torfaktor() != 1) {echo '(' . $text[553 + log10($lmo_einstellungen->torfaktor())] . ')';}?></th>
 <?php
     } else { ?>
                   <th colspan="<?php echo $breite - 13; ?>">&nbsp;</th>
 <?php
     }
-    if ($ligaDaten->lmtype == 0) { ?>
+    if (!$lmo_pokal) { ?>
                   <th style="text-align:center" class="nobr"><acronym title="<?php echo $text[213]; ?>"><img src="<?php echo URL_TO_IMGDIR; ?>/paragraph.svg" height="20" alt="<?php echo $text[217]; ?>"></acronym></th>
 <?php
     }?>
@@ -435,42 +363,19 @@ if ($file != '') {
     }?>
                 </tr>
 <?php
-    if ($ligaDaten->lmtype != 0) {
-        $ligaDaten->anzsp = $ligaDaten->anzteams;
-        for ($i = 0; $i < $st; $i++) {
-            if ($ligaDaten->anzteams == 24) {
-                switch ($i) {
-                    case 0:
-                    case 1:
-                        $ligaDaten->anzsp = 16;
-                    break;
-                    case 2:
-                        $ligaDaten->anzsp = 8 ;
-                    break;
-                    case 3:
-                        $ligaDaten->anzsp = 4;
-                    break;
-                    case 4:
-                        $ligaDaten->anzsp = 2;
-                    break;
-                    case 5:
-                        $ligaDaten->anzsp = 1;
-                    break;
-                }
-            }
-            $ligaDaten->anzsp = $ligaDaten->anzsp / 2;
-        }
-        if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) {
-            $ligaDaten->anzsp = $ligaDaten->anzsp + 1;
-        }
-    }
-    for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
-        if ($ligaDaten->lmtype == 0) { ?>
+    for ($i = 0; $i < $lmo_partien; $i++) {
+        // die Paarung mit ihren Spielen; in der Liga genau eines
+        $lmo_paarung = \Lmo\Liga\Paarung::ausRohdaten($lmo_liga, (int)$st, $i + 1);
+        $lmo_spiel = $lmo_paarung->spiele[0];
+        $lmo_tore_heim = $lmo_spiel->toreHeimText();
+        $lmo_tore_gast = $lmo_spiel->toreGastText();
+        $lmo_zusatz = $lmo_spiel->zusatzText($text[0], $text[1]);
+        if (!$lmo_pokal) { ?>
                 <tr>
 <?php
-            if (isset($ligaDaten->mterm[$st - 1][$i]) && filterZero($ligaDaten->mterm[$st - 1][$i])) {
+            if (isset($lmo_spiel->anstoss) && filterZero($lmo_spiel->anstoss)) {
                 $dt = new DateTime();
-                $dt->setTimestamp((int)$ligaDaten->mterm[$st - 1][$i]);
+                $dt->setTimestamp((int)$lmo_spiel->anstoss);
                 $dum1 = $dt->format('d.m.Y');
                 $dum2 = $dt->format('H:i');
                 $dum3 = $me[intval($dt->format('m'))] . ' ' . $dt->format('Y');
@@ -485,14 +390,14 @@ if ($file != '') {
             if ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert'] == 1) { ?>
                     <select class="lmo-formular-input" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i; ?>05">
 <?php
-                for ($y = 0; $y <= $ligaDaten->anzteams; $y++) { ?>
-                      <option value="<?php echo $y; ?>"<?php if ($y == $ligaDaten->teama[$st - 1][$i]) {echo ' selected';}?>><?php echo $ligaDaten->teams[$y]; ?></option>
+                for ($y = 0; $y <= $lmo_mannschaften; $y++) { ?>
+                      <option value="<?php echo $y; ?>"<?php if ($y == $lmo_paarung->heim) {echo ' selected';}?>><?php echo $lmo_namen[$y]; ?></option>
 <?php
                 }?>
                     </select>
 <?php
             } else {
-                echo $ligaDaten->teams[$ligaDaten->teama[$st - 1][$i]];
+                echo $lmo_namen[$lmo_paarung->heim];
             }?>
                   </td>
                   <td align="center" width="10">-</td>
@@ -501,24 +406,24 @@ if ($file != '') {
             if ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert'] == 1) { ?>
                     <select class="lmo-formular-input" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108]; ?>" tabindex="<?php echo $i; ?>06">
 <?php
-                for ($y = 0; $y <= $ligaDaten->anzteams; $y++) { ?>
-                      <option value="<?php echo $y; ?>"<?php if ($y == $ligaDaten->teamb[$st - 1][$i]) {echo ' selected';}?>><?php echo $ligaDaten->teams[$y]; ?></option>
+                for ($y = 0; $y <= $lmo_mannschaften; $y++) { ?>
+                      <option value="<?php echo $y; ?>"<?php if ($y == $lmo_paarung->gast) {echo ' selected';}?>><?php echo $lmo_namen[$y]; ?></option>
 <?php
                 }?>
                     </select>
 <?php
             } else {
-                echo $ligaDaten->teams[$ligaDaten->teamb[$st - 1][$i]];
+                echo $lmo_namen[$lmo_paarung->gast];
             }
-            if ($ligaDaten->goala[$st - 1][$i] == '-1') {
-                $ligaDaten->goala[$st - 1][$i] = '_';
+            if ($lmo_tore_heim == '-1') {
+                $lmo_tore_heim = '_';
             }
-            if ($ligaDaten->goalb[$st - 1][$i] == '-1') {
-                $ligaDaten->goalb[$st - 1][$i] = '_';
+            if ($lmo_tore_gast == '-1') {
+                $lmo_tore_gast = '_';
             }?>
                   </td>
                   <td width="2">&nbsp;</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i; ?>" tabindex="<?php echo $i; ?>07" size="2" maxlength="4" value="<?php echo $ligaDaten->goala[$st - 1][$i]; ?>" onChange="lmotorgte('a','<?php echo $i; ?>')" onKeyDown="lmotorclk('a','<?php echo $i; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i; ?>" tabindex="<?php echo $i; ?>07" size="2" maxlength="4" value="<?php echo $lmo_tore_heim; ?>" onChange="lmotorgte('a','<?php echo $i; ?>')" onKeyDown="lmotorclk('a','<?php echo $i; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung nobr" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -530,7 +435,7 @@ if ($file != '') {
                     </table>
                   </td>
                   <td class="lmoBackMarkierung" align="center" width="8">:</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i; ?>" tabindex="<?php echo $i; ?>08" size="2" maxlength="4" value="<?php echo $ligaDaten->goalb[$st - 1][$i]; ?>" onChange="lmotorgte('b','<?php echo $i; ?>')" onKeyDown="lmotorclk('b','<?php echo $i; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i; ?>" tabindex="<?php echo $i; ?>08" size="2" maxlength="4" value="<?php echo $lmo_tore_gast; ?>" onChange="lmotorgte('b','<?php echo $i; ?>')" onKeyDown="lmotorclk('b','<?php echo $i; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -542,13 +447,13 @@ if ($file != '') {
                     </table>
                   </td>
 <?php
-            if ($ligaDaten->spez == 1) { ?>
+            if ($lmo_einstellungen->mitVerlaengerung()) { ?>
                   <td width="2">&nbsp;</td>
                   <td>
                     <select class="lmo-formular-input" name="xmspez<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i; ?>09" >
-                      <option<?php if ($ligaDaten->mspez[$st - 1][$i] == '&nbsp;') {echo ' selected';}?>>_</option>
-                      <option<?php if ($ligaDaten->mspez[$st - 1][$i] == $text[0]) {echo ' selected';}?>><?php echo $text[0]; ?></option>
-                      <option<?php if ($ligaDaten->mspez[$st - 1][$i] == $text[1]) {echo ' selected';}?>><?php echo $text[1]; ?></option>
+                      <option<?php if ($lmo_zusatz == '&nbsp;') {echo ' selected';}?>>_</option>
+                      <option<?php if ($lmo_zusatz == $text[0]) {echo ' selected';}?>><?php echo $text[0]; ?></option>
+                      <option<?php if ($lmo_zusatz == $text[1]) {echo ' selected';}?>><?php echo $text[1]; ?></option>
                     </select>
                   </td>
 <?php
@@ -556,28 +461,28 @@ if ($file != '') {
                   <td width="2">&nbsp;</td>
                   <td align="center">
                     <select id="gT<?php echo $i; ?>" class="lmo-formular-input" name="xmsieg<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i; ?>10" >
-                      <option value="0"<?php if ($ligaDaten->msieg[$st - 1][$i] == 0) {echo ' selected';}?>>_</option>
-                      <option value="1"<?php if ($ligaDaten->msieg[$st - 1][$i] == 1) {echo ' selected';}?>><?php echo $text[214]; ?></option>
-                      <option value="2"<?php if ($ligaDaten->msieg[$st - 1][$i] == 2) {echo ' selected';}?>><?php echo $text[215]; ?></option>
-                      <option value="3"<?php if ($ligaDaten->msieg[$st - 1][$i] == 3) {echo ' selected';}?>><?php echo $text[216]; ?></option>
+                      <option value="0"<?php if ($lmo_spiel->wertung == 0) {echo ' selected';}?>>_</option>
+                      <option value="1"<?php if ($lmo_spiel->wertung == 1) {echo ' selected';}?>><?php echo $text[214]; ?></option>
+                      <option value="2"<?php if ($lmo_spiel->wertung == 2) {echo ' selected';}?>><?php echo $text[215]; ?></option>
+                      <option value="3"<?php if ($lmo_spiel->wertung == 3) {echo ' selected';}?>><?php echo $text[216]; ?></option>
                     </select>
 <?php
-            if ($ligaDaten->msieg[$st - 1][$i] == 0) { ?>
+            if ($lmo_spiel->wertung == 0) { ?>
                     <script type="text/javascript">document.getElementById('gT<?php echo $i; ?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'gT<?php echo $i; ?>\').style.display=\'inline\';return false;">+</a>');</script>
 <?php
             }?>
                   </td>
                   <td align="center">
-                    <input id="n<?php echo $i; ?>" class="lmo-formular-input" type="text" name="xmnote<?php echo $i; ?>" tabindex="<?php echo $i; ?>11" size="16" maxlength="255" value="<?php echo htmlentities($ligaDaten->mnote[$st - 1][$i]); ?>" onChange="dolmoedit()">
+                    <input id="n<?php echo $i; ?>" class="lmo-formular-input" type="text" name="xmnote<?php echo $i; ?>" tabindex="<?php echo $i; ?>11" size="16" maxlength="255" value="<?php echo htmlentities($lmo_spiel->notiz); ?>" onChange="dolmoedit()">
 <?php
-            if (trim($ligaDaten->mnote[$st - 1][$i]) == '') { ?>
+            if (trim($lmo_spiel->notiz) == '') { ?>
                     <script type="text/javascript">document.getElementById('n<?php echo $i; ?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n<?php echo $i; ?>\').style.display=\'inline\';return false;">+</a>');</script>
 <?php
             }?>
                   </td>
-                  <td align="center"><input id="s<?php echo $i; ?>" class="lmo-formular-input" type="text" name="xmberi<?php echo $i; ?>" tabindex="<?php echo $i; ?>12" size="16" maxlength="255" value="<?php echo htmlentities($ligaDaten->mberi[$st - 1][$i]); ?>" onChange="dolmoedit()">
+                  <td align="center"><input id="s<?php echo $i; ?>" class="lmo-formular-input" type="text" name="xmberi<?php echo $i; ?>" tabindex="<?php echo $i; ?>12" size="16" maxlength="255" value="<?php echo htmlentities($lmo_spiel->bericht); ?>" onChange="dolmoedit()">
 <?php
-            if (trim($ligaDaten->mberi[$st - 1][$i]) == '') { ?>
+            if (trim($lmo_spiel->bericht) == '') { ?>
                     <script type="text/javascript">document.getElementById('s<?php echo $i; ?>').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s<?php echo $i; ?>\').style.display=\'inline\';return false;">+</a>');</script>
 <?php
             }?>
@@ -587,8 +492,8 @@ if ($file != '') {
             if ($_SESSION['lmouserok'] == 2 && $ftest0 == 1) { ?>
                   <td>
                     <select class="lmo-formular-input" name="xmtipp<?php echo $i; ?>" onChange="dolmoedit()" tabindex="<?php echo $i; ?>13" >
-                      <option value="0"<?php if ($ligaDaten->mtipp[$st - 1][$i] < 1) {echo ' selected';}?>>_</option>
-                      <option value="1"<?php if ($ligaDaten->mtipp[$st - 1][$i] == 1) {echo ' selected';}?>><?php echo $text['tipp'][199]; ?></option>
+                      <option value="0"<?php if ((int)$lmo_spiel->ohneTippwertung < 1) {echo ' selected';}?>>_</option>
+                      <option value="1"<?php if ((int)$lmo_spiel->ohneTippwertung == 1) {echo ' selected';}?>><?php echo $text['tipp'][199]; ?></option>
                     </select>
                   </td>
 <?php
@@ -597,8 +502,12 @@ if ($file != '') {
 <?php
         } else {
             /*Pokalmodus*/
-            for ($n = 0; $n < $ligaDaten->modus[$st - 1]; $n++) {
-                if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) { ?>
+            for ($n = 0; $n < $lmo_modus; $n++) {
+                $lmo_spiel = $lmo_paarung->spiele[$n];
+                $lmo_tore_heim = $lmo_spiel->toreHeimText();
+                $lmo_tore_gast = $lmo_spiel->toreGastText();
+                $lmo_zusatz = $lmo_spiel->zusatzText($text[0], $text[1]);
+                if ($lmo_einstellungen->mitSpielUmPlatz3() && ($st == $lmo_spieltage)) { ?>
                 <tr>
                   <td class="nobr" colspan=<?php echo $breite; ?>><?php if ($i == 1) {echo '&nbsp;<br>';} echo $text[419 + $i]; ?></td>
                 </tr>
@@ -606,9 +515,9 @@ if ($file != '') {
                 }?>
                 <tr>
 <?php
-                if (isset($ligaDaten->mterm[$st - 1][$i][$n]) && filterZero($ligaDaten->mterm[$st - 1][$i][$n])) {
+                if (isset($lmo_spiel->anstoss) && filterZero($lmo_spiel->anstoss)) {
                   $dt = new DateTime();
-                  $dt->setTimestamp((int)$ligaDaten->mterm[$st - 1][$i][$n]);
+                  $dt->setTimestamp((int)$lmo_spiel->anstoss);
                   $dum1 = $dt->format('d.m.Y');
                   $dum2 = $dt->format('H:i');
                   $dum3 = $me[intval($dt->format('m'))] . ' ' . $dt->format('Y');
@@ -626,29 +535,29 @@ if ($file != '') {
                     <select class="lmo-formular-input" name="xteama<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[107]; ?>" tabindex="<?php echo $i . $n; ?>05">
 <?php
 
-                        if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst) && ($i == 1)) {
+                        if ($lmo_einstellungen->mitSpielUmPlatz3() && ($st == $lmo_spieltage) && ($i == 1)) {
                             echo '<option value="0"';
-                            if ($ligaDaten->teama[$st - 1][$i] == 0) {
+                            if ($lmo_paarung->heim == 0) {
                                 echo ' selected';
                             }
-                            echo '>' . $ligaDaten->teams[0] . '</option>';
-                            for ($y = 1; $y <= $ligaDaten->anzteams; $y++) {
-                                if (($ligaDaten->playdown == 0 && $teamt[$y] == 2) || $ligaDaten->playdown == 1) {
+                            echo '>' . $lmo_namen[0] . '</option>';
+                            for ($y = 1; $y <= $lmo_mannschaften; $y++) {
+                                if (($lmo_playdown == 0 && $teamt[$y] == 2) || $lmo_playdown == 1) {
                                     echo '<option value="' . $y . '"';
-                                    if ($y == $ligaDaten->teama[$st - 1][$i]) {
+                                    if ($y == $lmo_paarung->heim) {
                                         echo ' selected';
                                     }
-                                    echo '>' . $ligaDaten->teams[$y] . '</option>';
+                                    echo '>' . $lmo_namen[$y] . '</option>';
                                 }
                             }
                         } else {
-                            for ($y = 0; $y <= $ligaDaten->anzteams; $y++) {
-                                if (($ligaDaten->playdown == 0 && $teamt[$y] == 0) || $ligaDaten->playdown == 1) {
+                            for ($y = 0; $y <= $lmo_mannschaften; $y++) {
+                                if (($lmo_playdown == 0 && $teamt[$y] == 0) || $lmo_playdown == 1) {
                                     echo '<option value="' . $y . '"';
-                                    if ($y == $ligaDaten->teama[$st - 1][$i]) {
+                                    if ($y == $lmo_paarung->heim) {
                                         echo ' selected';
                                     }
-                                    echo '>' . $ligaDaten->teams[$y] . '</option>';
+                                    echo '>' . $lmo_namen[$y] . '</option>';
                                 }
                             }
                         }
@@ -656,7 +565,7 @@ if ($file != '') {
                     </select>
 <?php
                     } else {
-                        echo $ligaDaten->teams[$ligaDaten->teama[$st - 1][$i]];
+                        echo $lmo_namen[$lmo_paarung->heim];
                     }
 ?>
                   </td>
@@ -666,29 +575,29 @@ if ($file != '') {
                     if ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert'] == 1) { ?>
                     <select class="lmo-formular-input" name="xteamb<?php echo $i; ?>" onChange="dolmoedit()" title="<?php echo $text[108]; ?>" tabindex="<?php echo $i . $n; ?>06">
 <?php
-                        if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst) && ($i == 1)) {
+                        if ($lmo_einstellungen->mitSpielUmPlatz3() && ($st == $lmo_spieltage) && ($i == 1)) {
                             echo '<option value="0"';
-                            if ($ligaDaten->teamb[$st - 1][$i] == 0) {
+                            if ($lmo_paarung->gast == 0) {
                                 echo ' selected';
                             }
-                            echo '>' . $ligaDaten->teams[0] . '</option>';
-                            for ($y = 1; $y <= $ligaDaten->anzteams; $y++) {
-                                if (($ligaDaten->playdown == 0 && $teamt[$y] == 2) || $ligaDaten->playdown == 1) {
+                            echo '>' . $lmo_namen[0] . '</option>';
+                            for ($y = 1; $y <= $lmo_mannschaften; $y++) {
+                                if (($lmo_playdown == 0 && $teamt[$y] == 2) || $lmo_playdown == 1) {
                                     echo '<option value="' . $y . '"';
-                                    if ($y == $ligaDaten->teamb[$st - 1][$i]) {
+                                    if ($y == $lmo_paarung->gast) {
                                         echo ' selected';
                                     }
-                                    echo '>' . $ligaDaten->teams[$y] . '</option>';
+                                    echo '>' . $lmo_namen[$y] . '</option>';
                                 }
                             }
                         } else {
-                            for ($y = 0; $y <= $ligaDaten->anzteams; $y++) {
-                                if (($ligaDaten->playdown == 0 && $teamt[$y] == 0) || $ligaDaten->playdown == 1) {
+                            for ($y = 0; $y <= $lmo_mannschaften; $y++) {
+                                if (($lmo_playdown == 0 && $teamt[$y] == 0) || $lmo_playdown == 1) {
                                     echo '<option value="' . $y . '"';
-                                    if ($y == $ligaDaten->teamb[$st - 1][$i]) {
+                                    if ($y == $lmo_paarung->gast) {
                                         echo ' selected';
                                     }
-                                    echo '>' . $ligaDaten->teams[$y] . '</option>';
+                                    echo '>' . $lmo_namen[$y] . '</option>';
                                 }
                             }
                         }
@@ -696,69 +605,69 @@ if ($file != '') {
                     </select>
 <?php
                     } else {
-                        echo $ligaDaten->teams[$ligaDaten->teamb[$st - 1][$i]];
+                        echo $lmo_namen[$lmo_paarung->gast];
                     }
 ?>
                   </td>
 <?php
                 } else {
-                    if ($ligaDaten->playoffmode == 1 || $ligaDaten->playoffmode == 2) { // Modus 2-2-1 or 2-2-1-1-1
+                    if ($lmo_playoffmodus == 1 || $lmo_playoffmodus == 2) { // Modus 2-2-1 or 2-2-1-1-1
                         if ($n == 1 || $n == 4 || $n == 6) {
 ?>
-                  <td class="nobr" align="right"><?php echo $ligaDaten->teams[$ligaDaten->teama[$st - 1][$i]]; ?></td>
+                  <td class="nobr" align="right"><?php echo $lmo_namen[$lmo_paarung->heim]; ?></td>
                   <td align="center" width="10">-</td>
-                  <td class="nobr"><?php echo $ligaDaten->teams[$ligaDaten->teamb[$st - 1][$i]]; ?></td>
+                  <td class="nobr"><?php echo $lmo_namen[$lmo_paarung->gast]; ?></td>
 <?php
                         } else {
 ?>
-                  <td class="nobr" align="right"><?php echo $ligaDaten->teams[$ligaDaten->teamb[$st - 1][$i]]; ?></td>
+                  <td class="nobr" align="right"><?php echo $lmo_namen[$lmo_paarung->gast]; ?></td>
                   <td align="center" width="10">-</td>
-                  <td class="nobr"><?php echo $ligaDaten->teams[$ligaDaten->teama[$st - 1][$i]]; ?></td>
+                  <td class="nobr"><?php echo $lmo_namen[$lmo_paarung->heim]; ?></td>
 <?php
                         }
                     }
-                    if ($ligaDaten->playoffmode == 3) { // Modus 2-3-2
+                    if ($lmo_playoffmodus == 3) { // Modus 2-3-2
                         if ($n == 1 || $n == 5 || $n == 6) {
 ?>
-                  <td class="nobr" align="right"><?php echo $ligaDaten->teams[$ligaDaten->teama[$st - 1][$i]]; ?></td>
+                  <td class="nobr" align="right"><?php echo $lmo_namen[$lmo_paarung->heim]; ?></td>
                   <td align="center" width="10">-</td>
-                  <td class="nobr"><?php echo $ligaDaten->teams[$ligaDaten->teamb[$st - 1][$i]]; ?></td>
+                  <td class="nobr"><?php echo $lmo_namen[$lmo_paarung->gast]; ?></td>
 <?php
                         } else {
 ?>
-                  <td class="nobr" align="right"><?php echo $ligaDaten->teams[$ligaDaten->teamb[$st - 1][$i]]; ?></td>
+                  <td class="nobr" align="right"><?php echo $lmo_namen[$lmo_paarung->gast]; ?></td>
                   <td align="center" width="10">-</td>
-                  <td class="nobr"><?php echo $ligaDaten->teams[$ligaDaten->teama[$st - 1][$i]]; ?></td>
+                  <td class="nobr"><?php echo $lmo_namen[$lmo_paarung->heim]; ?></td>
 <?php
                         }
                     }
-                    if ($ligaDaten->playoffmode < 1) { // now Modus = everything else ($playoffmode == 0; and KO-League without $playoffmode Option like old Champions-League Finalrounds)
+                    if ($lmo_playoffmodus < 1) { // now Modus = everything else ($playoffmode == 0; and KO-League without $playoffmode Option like old Champions-League Finalrounds)
                         if ($n % 2 == 0) {
 ?>
-                  <td class="nobr" align="right"><?php echo $ligaDaten->teams[$ligaDaten->teama[$st - 1][$i]]; ?></td>
+                  <td class="nobr" align="right"><?php echo $lmo_namen[$lmo_paarung->heim]; ?></td>
                   <td align="center" width="10">-</td>
-                  <td class="nobr"><?php echo $ligaDaten->teams[$ligaDaten->teamb[$st - 1][$i]]; ?></td>
+                  <td class="nobr"><?php echo $lmo_namen[$lmo_paarung->gast]; ?></td>
 <?php
                         } else {
 ?>
-                  <td class="nobr" align="right"><?php echo $ligaDaten->teams[$ligaDaten->teamb[$st - 1][$i]]; ?></td>
+                  <td class="nobr" align="right"><?php echo $lmo_namen[$lmo_paarung->gast]; ?></td>
                   <td align="center" width="10">-</td>
-                  <td class="nobr"><?php echo $ligaDaten->teams[$ligaDaten->teama[$st - 1][$i]]; ?></td>
+                  <td class="nobr"><?php echo $lmo_namen[$lmo_paarung->heim]; ?></td>
 <?php
                         }
                     }
                 }
-                if ($ligaDaten->goala[$st - 1][$i][$n] == '-1') {
-                    $ligaDaten->goala[$st - 1][$i][$n] = '_';
+                if ($lmo_tore_heim == '-1') {
+                    $lmo_tore_heim = '_';
                 }
-                if ($ligaDaten->goalb[$st - 1][$i][$n] == '-1') {
-                    $ligaDaten->goalb[$st - 1][$i][$n] = '_';
+                if ($lmo_tore_gast == '-1') {
+                    $lmo_tore_gast = '_';
                 }
-                if ($ligaDaten->playoffmode == 1 || $ligaDaten->playoffmode == 2) { // Modus 2-2-1 or 2-2-1-1-1
+                if ($lmo_playoffmodus == 1 || $lmo_playoffmodus == 2) { // Modus 2-2-1 or 2-2-1-1-1
                     if ($n == 0 || $n == 1 || $n == 4 || $n == 6) {
 ?>
                   <td width="2">&nbsp;</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $ligaDaten->goala[$st - 1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $lmo_tore_heim; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -770,7 +679,7 @@ if ($file != '') {
                     </table>
                   </td>
                   <td class="lmoBackMarkierung" align="center" width="8">:</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $ligaDaten->goalb[$st - 1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $lmo_tore_gast; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -785,7 +694,7 @@ if ($file != '') {
                     } else {
 ?>
                   <td width="2">&nbsp;</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $ligaDaten->goalb[$st - 1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $lmo_tore_gast; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -797,7 +706,7 @@ if ($file != '') {
                     </table>
                   </td>
                   <td class="lmoBackMarkierung" align="center" width="8">:</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $ligaDaten->goala[$st - 1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $lmo_tore_heim; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -811,11 +720,11 @@ if ($file != '') {
 <?php
                     }
                 }
-                if ($ligaDaten->playoffmode == 3) { // Modus 2-3-2
+                if ($lmo_playoffmodus == 3) { // Modus 2-3-2
                     if ($n == 0 || $n == 1 || $n == 5 || $n == 6) {
 ?>
                   <td width="2">&nbsp;</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $ligaDaten->goala[$st - 1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $lmo_tore_heim; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -827,7 +736,7 @@ if ($file != '') {
                     </table>
                   </td>
                   <td class="lmoBackMarkierung" align="center" width="8">:</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $ligaDaten->goalb[$st - 1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $lmo_tore_gast; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -842,7 +751,7 @@ if ($file != '') {
                     } else {
 ?>
                   <td width="2">&nbsp;</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $ligaDaten->goalb[$st - 1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $lmo_tore_gast; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -854,7 +763,7 @@ if ($file != '') {
                     </table>
                   </td>
                   <td class="lmoBackMarkierung" align="center" width="8">:</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $ligaDaten->goala[$st - 1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $lmo_tore_heim; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -868,11 +777,11 @@ if ($file != '') {
 <?php
                     }
                 }
-                if ($ligaDaten->playoffmode < 1) { // now Modus = everything else ($playoffmode == 0; and KO-League without $playoffmode Option like old Champions-League Finalrounds)
+                if ($lmo_playoffmodus < 1) { // now Modus = everything else ($playoffmode == 0; and KO-League without $playoffmode Option like old Champions-League Finalrounds)
                     if ($n % 2 == 0) {
 ?>
                   <td width="2">&nbsp;</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $ligaDaten->goala[$st - 1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $lmo_tore_heim; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -884,7 +793,7 @@ if ($file != '') {
                     </table>
                   </td>
                   <td class="lmoBackMarkierung" align="center" width="8">:</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $ligaDaten->goalb[$st - 1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $lmo_tore_gast; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -899,7 +808,7 @@ if ($file != '') {
                     } else {
 ?>
                   <td width="2">&nbsp;</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $ligaDaten->goalb[$st - 1][$i][$n]; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[110]; ?>" class="lmo-formular-input" type="text" name="xgoalb<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>07" size="4" maxlength="4" value="<?php echo $lmo_tore_gast; ?>" onChange="lmotorgte('b','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('b','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -911,7 +820,7 @@ if ($file != '') {
                     </table>
                   </td>
                   <td class="lmoBackMarkierung" align="center" width="8">:</td>
-                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $ligaDaten->goala[$st - 1][$i][$n]; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
+                  <td class="lmoBackMarkierung" align="right"><input title="<?php echo $text[109]; ?>" class="lmo-formular-input" type="text" name="xgoala<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>08" size="4" maxlength="4" value="<?php echo $lmo_tore_heim; ?>" onChange="lmotorgte('a','<?php echo $i . $n; ?>')" onKeyDown="lmotorclk('a','<?php echo $i . $n; ?>',event.keyCode)"></td>
                   <td class="lmoBackMarkierung" align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -929,21 +838,21 @@ if ($file != '') {
                   <td class="lmoBackMarkierung" width="2">&nbsp;</td>
                   <td class="lmoBackMarkierung">
                     <select class="lmo-formular-input" name="xmspez<?php echo $i . $n; ?>" onChange="dolmoedit()" title="<?php echo $text[111]; ?>" tabindex="<?php echo $i . $n; ?>09">
-                      <option<?php if ($ligaDaten->mspez[$st - 1][$i][$n] == "&nbsp;") {echo ' selected';}?>>_</option>
-                      <option<?php if ($ligaDaten->mspez[$st - 1][$i][$n] == $text[0]) {echo ' selected';}?>><?php echo $text[0]; ?></option>
-                      <option<?php if ($ligaDaten->mspez[$st - 1][$i][$n] == $text[1]) {echo ' selected';}?>><?php echo $text[1]; ?></option>
+                      <option<?php if ($lmo_zusatz == "&nbsp;") {echo ' selected';}?>>_</option>
+                      <option<?php if ($lmo_zusatz == $text[0]) {echo ' selected';}?>><?php echo $text[0]; ?></option>
+                      <option<?php if ($lmo_zusatz == $text[1]) {echo ' selected';}?>><?php echo $text[1]; ?></option>
                     </select>
                   </td>
                   <td width="2">&nbsp;</td>
-                  <td><input class="lmo-formular-input" type="text" name="xmnote<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>10" size="16" value="<?php echo htmlentities($ligaDaten->mnote[$st - 1][$i][$n]); ?>" onChange="dolmoedit()"></td>
-                  <td><input class="lmo-formular-input" type="text" name="xmberi<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>11" size="16" value="<?php echo htmlentities($ligaDaten->mberi[$st - 1][$i][$n]); ?>" onChange="dolmoedit()"></td>
+                  <td><input class="lmo-formular-input" type="text" name="xmnote<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>10" size="16" value="<?php echo htmlentities($lmo_spiel->notiz); ?>" onChange="dolmoedit()"></td>
+                  <td><input class="lmo-formular-input" type="text" name="xmberi<?php echo $i . $n; ?>" tabindex="<?php echo $i . $n; ?>11" size="16" value="<?php echo htmlentities($lmo_spiel->bericht); ?>" onChange="dolmoedit()"></td>
 <?php
                 /**Tippspiuel-Addon*/
                 if ($_SESSION['lmouserok'] == 2 && $ftest0 == 1) { ?>
                   <td>
                     <select class="lmo-formular-input" name="xmtipp<?php echo $i . $n; ?>" onChange="dolmoedit()" title="<?php echo $text['tipp'][57]; ?>" tabindex="<?php echo $i . $n; ?>12">
-                      <option value="0"<?php if ($ligaDaten->mtipp[$st - 1][$i][$n] < 1) {echo ' selected';}?>>_</option>
-                      <option value="1"<?php if ($ligaDaten->mtipp[$st - 1][$i][$n] == 1) {echo ' selected';}?>><?php echo $text['tipp'][199]; ?></option>
+                      <option value="0"<?php if ((int)$lmo_spiel->ohneTippwertung < 1) {echo ' selected';}?>>_</option>
+                      <option value="1"<?php if ((int)$lmo_spiel->ohneTippwertung == 1) {echo ' selected';}?>><?php echo $text['tipp'][199]; ?></option>
                     </select>
                   </td>
 <?php
@@ -951,7 +860,7 @@ if ($file != '') {
                 </tr>
 <?php
             }
-            if (($ligaDaten->modus[$st - 1] > 1) && ($i < $ligaDaten->anzsp - 1)) { ?>
+            if (($lmo_modus > 1) && ($i < $lmo_partien - 1)) { ?>
                 <tr>
                   <td colspan="<?php echo $breite; ?>">&nbsp;</td>
                 </tr>
@@ -967,13 +876,13 @@ if ($file != '') {
                     <acronym title="<?php echo $text[192]; ?>"><?php echo $text[191]; ?></acronym>
                     <select class="lmo-formular-input" name="xstx" onChange="dolmoedit()" tabindex="<?php echo $i; ?>013">
 <?php
-    for ($y = 0; $y <= $ligaDaten->anzst; $y++) {
+    for ($y = 0; $y <= $lmo_spieltage; $y++) {
         echo '<option value="' . $y . '"';
         if ($save == 1) {
             if ($y == 0) {
                 echo '>' . $text[403] . '</option>';
             } else {
-                if ($y == $ligaDaten->stx) {
+                if ($y == $lmo_einstellungen->aktuellerSpieltag()) {
                     echo ' selected';
                 }
                 echo '>' . $y . '. ' . $text[2] . '</option>';
@@ -994,14 +903,14 @@ if ($file != '') {
                   <td colspan="<?php echo $breite; ?>" align="center">
                     <acronym title="<?php echo $text[208]; ?>"><?php echo $text[207]; ?></acronym>
                     <select tabindex="<?php echo $i; ?>014" class="lmo-formular-input" name="xnticker" onChange="dolmoedit()">
-                      <option value="1"<?php if ($ligaDaten->nticker == 1) {echo ' selected';}?>><?php echo $text[181]; ?></option>
-                      <option value="0"<?php if ($ligaDaten->nticker == 0) {echo ' selected';}?>><?php echo $text[182]; ?></option>
+                      <option value="1"<?php if ($lmo_einstellungen->wert('ticker') == 1) {echo ' selected';}?>><?php echo $text[181]; ?></option>
+                      <option value="0"<?php if ($lmo_einstellungen->wert('ticker') == 0) {echo ' selected';}?>><?php echo $text[182]; ?></option>
                     </select>
                   </td>
                 </tr>
                 <tr>
                   <td colspan="<?php echo $breite; ?>" align="center">
-                    <acronym title="<?php echo $text[210]; ?>"><?php echo $text[999]; ?>: </acronym><textarea tabindex="<?php echo $i; ?>015" class="lmo-formular-input" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php if (count($ligaDaten->nlines) > 0) {foreach($ligaDaten->nlines as $y) {echo $y . "\n";}} ?></textarea>
+                    <acronym title="<?php echo $text[210]; ?>"><?php echo $text[999]; ?>: </acronym><textarea tabindex="<?php echo $i; ?>015" class="lmo-formular-input" name="xnlines" cols="50" rows="4" onChange="dolmoedit()"><?php if (count($lmo_newszeilen) > 0) {foreach($lmo_newszeilen as $y) {echo $y . "\n";}} ?></textarea>
                   </td>
                 </tr>
                 <tr>

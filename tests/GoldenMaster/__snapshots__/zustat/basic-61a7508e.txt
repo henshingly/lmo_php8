@@ -1,0 +1,239 @@
+### basic
+=== nach dem Speichern von Spieltag 1 ===
+<?php
+$zutore[1]=4;
+$dstore[1]=2;
+$zutore[2]=14;
+$dstore[2]=4.67;
+$zutore[3]=8;
+$dstore[3]=2.67;
+$zutore[4]=4;
+$dstore[4]=4;
+$zutore[5]=8;
+$dstore[5]=4;
+$zutore[6]=8;
+$dstore[6]=4;
+$zutore[7]=15;
+$dstore[7]=5;
+$zutore[8]=17;
+$dstore[8]=5.67;
+$zutore[9]=5;
+$dstore[9]=2.5;
+$zutore[10]=15;
+$dstore[10]=5;
+$zutore[11]=13;
+$dstore[11]=4.33;
+$zutore[12]=4;
+$dstore[12]=4;
+$zutore[13]=4;
+$dstore[13]=4;
+$zutore[14]=10;
+$dstore[14]=5;
+$gzutore=129;
+$gdstore=4.16;
+$gzusieg1=16;
+$gzusieg2=10;
+$gzuunent=5;
+$gbeide=0;
+$gheimtore=73;
+$ggasttore=56;
+$dsheimtore=2.35;
+$dsgasttore=1.81;
+$hheimsieg="Mannschaft 4";
+$hgastsieg="Mannschaft 1";
+$hheimsiegtor="4";
+$hgastsiegtor="0";
+$spieltagflag=4;
+$hheimsieg1="Mannschaft 4";
+$hgastsieg1="Mannschaft 6";
+$hheimsiegtor1="4";
+$hgastsiegtor1="0";
+$spieltagflag1=10;
+$counteranz=3;
+$aheimsieg="Mannschaft 2";
+$agastsieg="Mannschaft 3";
+$aheimsiegtor="0";
+$agastsiegtor="4";
+$spieltagflag2=2;
+$aheimsieg1="0";
+$agastsieg1="0";
+$aheimsiegtor1="0";
+$agastsiegtor1="0";
+$spieltagflag3=0;
+$counteranz1=0;
+$htorreichm1="Mannschaft 8";
+$htorreichm2="Mannschaft 1";
+$htorreicht1="4";
+$htorreicht2="3";
+$spieltagflag4=7;
+$htorreichm3="Mannschaft 8";
+$htorreichm4="Mannschaft 7";
+$htorreicht3="4";
+$htorreicht4="3";
+$spieltagflag5=11;
+$counteranz5=3;
+$akt_gewonnen=1;
+$team_akt_gewonnen="Mannschaft 5
+Mannschaft 2
+Mannschaft 3";
+$akt_ungeschlagen=1;
+$team_akt_ungeschlagen="Mannschaft 5
+Mannschaft 2
+Mannschaft 8
+Mannschaft 3
+Mannschaft 1
+Mannschaft 7";
+$akt_unentschieden=1;
+$team_akt_unentschieden="Mannschaft 8
+Mannschaft 1
+Mannschaft 7";
+$akt_sieglos=3;
+$team_akt_sieglos="Mannschaft 6
+Mannschaft 7";
+$akt_verloren=2;
+$team_akt_verloren="Mannschaft 6";
+$max_gewonnen=3;
+$team_max_gewonnen="Mannschaft 3 (9-11.ST)";
+$max_ungeschlagen=3;
+$team_max_ungeschlagen="Mannschaft 3 (9-11.ST)";
+$max_unentschieden=1;
+$team_max_unentschieden="Mannschaft 5 (1-1.ST)
+Mannschaft 2 (1-1.ST)
+Mannschaft 8 (14-14.ST)
+Mannschaft 6 (12-12.ST)
+Mannschaft 3 (7-7.ST)
+Mannschaft 4 (2-2.ST)
+Mannschaft 1 (14-14.ST)
+Mannschaft 7 (12-12.ST)";
+$max_sieglos=3;
+$team_max_sieglos="Mannschaft 6 (12-14.ST)
+Mannschaft 7 (10-12.ST)";
+$max_verloren=2;
+$team_max_verloren="Mannschaft 5 (6-7.ST)
+Mannschaft 2 (8-9.ST)
+Mannschaft 6 (13-14.ST)
+Mannschaft 7 (10-11.ST)";
+?>
+--- Dateiaenderungen ---
+(keine)
+
+=== nach einem 9:0 im ersten Spiel ===
+<?php
+$zutore[1]=13;
+$dstore[1]=4.33;
+$zutore[2]=14;
+$dstore[2]=4.67;
+$zutore[3]=8;
+$dstore[3]=2.67;
+$zutore[4]=4;
+$dstore[4]=4;
+$zutore[5]=8;
+$dstore[5]=4;
+$zutore[6]=8;
+$dstore[6]=4;
+$zutore[7]=15;
+$dstore[7]=5;
+$zutore[8]=17;
+$dstore[8]=5.67;
+$zutore[9]=5;
+$dstore[9]=2.5;
+$zutore[10]=15;
+$dstore[10]=5;
+$zutore[11]=13;
+$dstore[11]=4.33;
+$zutore[12]=4;
+$dstore[12]=4;
+$zutore[13]=4;
+$dstore[13]=4;
+$zutore[14]=10;
+$dstore[14]=5;
+$gzutore=138;
+$gdstore=4.31;
+$gzusieg1=17;
+$gzusieg2=10;
+$gzuunent=5;
+$gbeide=0;
+$gheimtore=82;
+$ggasttore=56;
+$dsheimtore=2.56;
+$dsgasttore=1.75;
+$hheimsieg="Mannschaft 1";
+$hgastsieg="Mannschaft 7";
+$hheimsiegtor="9";
+$hgastsiegtor="0";
+$spieltagflag=1;
+$hheimsieg1="0";
+$hgastsieg1="0";
+$hheimsiegtor1="0";
+$hgastsiegtor1="0";
+$spieltagflag1=0;
+$counteranz=0;
+$aheimsieg="Mannschaft 2";
+$agastsieg="Mannschaft 3";
+$aheimsiegtor="0";
+$agastsiegtor="4";
+$spieltagflag2=2;
+$aheimsieg1="0";
+$agastsieg1="0";
+$aheimsiegtor1="0";
+$agastsiegtor1="0";
+$spieltagflag3=0;
+$counteranz1=0;
+$htorreichm1="Mannschaft 1";
+$htorreichm2="Mannschaft 7";
+$htorreicht1="9";
+$htorreicht2="0";
+$spieltagflag4=1;
+$htorreichm3="0";
+$htorreichm4="0";
+$htorreicht3="0";
+$htorreicht4="0";
+$spieltagflag5=0;
+$counteranz5=1;
+$akt_gewonnen=1;
+$team_akt_gewonnen="Mannschaft 5
+Mannschaft 2
+Mannschaft 3";
+$akt_ungeschlagen=1;
+$team_akt_ungeschlagen="Mannschaft 1
+Mannschaft 7
+Mannschaft 5
+Mannschaft 2
+Mannschaft 8
+Mannschaft 3";
+$akt_unentschieden=1;
+$team_akt_unentschieden="Mannschaft 1
+Mannschaft 7
+Mannschaft 8";
+$akt_sieglos=3;
+$team_akt_sieglos="Mannschaft 7
+Mannschaft 6";
+$akt_verloren=2;
+$team_akt_verloren="Mannschaft 6";
+$max_gewonnen=3;
+$team_max_gewonnen="Mannschaft 1 (1-3.ST)
+Mannschaft 3 (9-11.ST)";
+$max_ungeschlagen=3;
+$team_max_ungeschlagen="Mannschaft 1 (1-3.ST)
+Mannschaft 3 (9-11.ST)";
+$max_unentschieden=1;
+$team_max_unentschieden="Mannschaft 1 (14-14.ST)
+Mannschaft 7 (12-12.ST)
+Mannschaft 5 (1-1.ST)
+Mannschaft 2 (1-1.ST)
+Mannschaft 8 (14-14.ST)
+Mannschaft 6 (12-12.ST)
+Mannschaft 3 (7-7.ST)
+Mannschaft 4 (2-2.ST)";
+$max_sieglos=3;
+$team_max_sieglos="Mannschaft 7 (10-12.ST)
+Mannschaft 6 (12-14.ST)";
+$max_verloren=2;
+$team_max_verloren="Mannschaft 7 (10-11.ST)
+Mannschaft 5 (6-7.ST)
+Mannschaft 2 (8-9.ST)
+Mannschaft 6 (13-14.ST)";
+?>
+--- Dateiaenderungen ---
+(keine)
+

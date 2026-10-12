@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php, lmo-openfiledat.php); nur fuer eine einzelne Liga
  * @var array<int|string, mixed> $text Sprachtexte
  * @var int|string $st gewaehlter Spieltag
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
@@ -229,34 +229,39 @@ if ($message != '') {
                     $tippfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . substr($file, 0, -4) . '_' . $dummb[0] . '.tip';
                     $spiele = '';
                     if (file_exists($tippfile)) {
+                        // Einstellungen der Liga; so viele Paarungen je Spieltag werden durchsucht:
+                        // in der Liga die Partien, im Pokal die der gewaehlten Runde, fuer alle Runden die der ersten
+                        $lmo_einstellungen = $lmo_liga->einstellungen();
+                        $lmo_mail_anzsp = $lmo_einstellungen->partienJeSpieltag();
                         if ($st > 0) {
                             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippopenfile.php');
                             $st0 = $st - 1;
-                            $anzst1 = $st;
+                            $anzst1 = $st - 1; // nur der gewaehlte Spieltag
+                            $lmo_mail_anzsp = \Lmo\Tipp\Tipprunde::fuer($lmo_liga, (int)$st)->plaetze;
                         } elseif ($st == 0) {
                             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippopenfileall.php');
                             $st0 = 0;
-                            $anzst1 = $ligaDaten->anzst;
+                            $anzst1 = $lmo_einstellungen->spieltage() - 1;
                         }
                         for (; $st0 <= $anzst1; $st0 ++) {
-                            if ($tipp_imvorraus < 0 || $st0 <= ($ligaDaten->stx + $tipp_imvorraus)) {
-                                if ($ligaDaten->lmtype == 0) {
-                                    for ($dd = 0; $dd < $ligaDaten->anzsp; $dd ++) {
-                                        $zeit = zeit($ligaDaten->mterm[$st0][$dd], $ligaDaten->datum1[$st0], $ligaDaten->datum2[$st0]);
-                                        if ($now < $zeit && $then > $zeit) {
-                                            if ((($st == 0 && $goaltippa[$st0][$dd] == '_') || ($st > 0 && $goaltippa[$dd] == '_')) && $ligaDaten->teama[$st0][$dd] > 0) {
-                                                $spiele = $spiele . $ligaDaten->teams[$ligaDaten->teama[$st0][$dd]] . ' - ' . $ligaDaten->teams[$ligaDaten->teamb[$st0][$dd]] . ' (' . $text['tipp'][87] . ' ' . strtr(date('l, d.F.Y H:i', $zeit), $trans_lang) . ')';
-                                            }
-                                        }
+                            if ($tipp_imvorraus < 0 || $st0 <= ($lmo_einstellungen->aktuellerSpieltag() + $tipp_imvorraus)) {
+                                // der Spieltag $st0+1: Paarung $dd+1 hat den Index $dd, ihr Spiel $ddd+1 den Index $ddd
+                                $lmo_mail_runde = \Lmo\Tipp\Tipprunde::fuer($lmo_liga, $st0 + 1);
+                                for ($dd = 0; $dd < $lmo_mail_anzsp; $dd ++) {
+                                    $lmo_mail_paarung = $lmo_mail_runde->paarungen[$dd] ?? null;
+                                    if ($lmo_mail_paarung === null) {
+                                        continue;
                                     }
-                                } elseif ($ligaDaten->lmtype != 0) {
-                                    for ($dd = 0; $dd < $ligaDaten->anzsp; $dd ++) {
-                                        for ($ddd = 0; $ddd < $ligaDaten->modus[$st0]; $ddd ++) {
-                                            $zeit = zeit($ligaDaten->mterm[$st0][$dd][$ddd], $ligaDaten->datum1[$st0], $ligaDaten->datum2[$st0]);
-                                            if ($now < $zeit && $then > $zeit) {
-                                                if ((($st == 0 && $goaltippa[$st0][$dd][$ddd] == '_') || ($st > 0 && $goaltippa[$dd][$ddd] == '_')) && $ligaDaten->teama[$st0][$dd] > 0) {
-                                                    $spiele = $spiele . $ligaDaten->teams[$ligaDaten->teama[$st0][$dd]] . ' - ' . $ligaDaten->teams[$ligaDaten->teamb[$st0][$dd]] . ' (' . $text['tipp'][87] . ' ' . strtr(date('l, d.F.Y H:i', $zeit), $trans_lang) . ')';
-                                                }
+                                    foreach ($lmo_mail_paarung->spiele as $ddd => $lmo_mail_spiel) {
+                                        $zeit = zeit((int)$lmo_mail_spiel->anstoss, $lmo_mail_runde->ersterTag, $lmo_mail_runde->letzterTag);
+                                        if ($now < $zeit && $then > $zeit) {
+                                            if ($lmo_mail_runde->pokal) {
+                                                $lmo_mail_offen = ($st == 0 && $goaltippa[$st0][$dd][$ddd] == '_') || ($st > 0 && $goaltippa[$dd][$ddd] == '_');
+                                            } else {
+                                                $lmo_mail_offen = ($st == 0 && $goaltippa[$st0][$dd] == '_') || ($st > 0 && $goaltippa[$dd] == '_');
+                                            }
+                                            if ($lmo_mail_offen && $lmo_mail_paarung->heim > 0) {
+                                                $spiele = $spiele . ($spiele != '' ? "\n" : '') . $lmo_mail_paarung->heimMannschaft()->anzeigename() . ' - ' . $lmo_mail_paarung->gastMannschaft()->anzeigename() . ' (' . $text['tipp'][87] . ' ' . strtr(date('l, d.F.Y H:i', $zeit), $trans_lang) . ')';
                                             }
                                         }
                                     }

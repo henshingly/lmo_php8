@@ -1,0 +1,2926 @@
+### liga
+=== Tore: X, Leerzeichen, Text; Zusatz; Wertung ===
+### GESENDETE FELDER (POST, 40)
+action=admin
+todo=edit
+save=1
+file=golden/special.l98
+st=2
+xdatum1=
+xdatum2=
+xatdat0=
+xattim0=
+xteama0=2
+xteamb0=6
+xmsieg0=0
+xmnote0=
+xmberi0=
+xatdat1=
+xattim1=
+xteama1=4
+xteamb1=1
+xmsieg1=0
+xmnote1=
+xmberi1=
+xatdat2=
+xattim2=
+xteama2=5
+xteamb2=3
+xmnote2=
+xmberi2=
+xstx=0
+xnticker=0
+xnlines=
+xgoala0=x
+xgoalb0=2
+xmspez0=_
+xgoala1= 3 
+xgoalb1=abc
+xmspez1=(n.V.)
+xgoala2=2
+xgoalb2=1
+xmspez2=(i.E.)
+xmsieg2=1
+--- Dateiaenderungen ---
+GEAENDERT ligen/golden/special.l98
+--- vorher
++++ nachher
+@@ -9,5 +9,5 @@
+ Rounds=10
+ Matches=3
+-Actual=1
++Actual=2
+ Kegel=0
+ HandS=0
+@@ -18,4 +18,10 @@
+ HideDraw=0
+ OnRun=0
++XtraS=2
++XtraU=1
++XtraV=1
++SpezS=2
++SpezU=2
++SpezV=1
+ MinusPoints=1
+ Direct=0
+@@ -49,10 +55,4 @@
+ kurve2=0
+ 
+-XtraS=2
+-XtraU=1
+-XtraV=1
+-SpezS=2
+-SpezU=2
+-SpezV=1
+ [News]
+ 
+@@ -65,4 +65,12 @@
+ 6=Mannschaft 6
+ 
++[Teamm]
++1=Mannschaft
++2=Mannschaft
++3=Mannschaft
++4=Mannschaft
++5=Mannschaft
++6=Mannschaft
++
+ [Teamk]
+ 1=Manns
+@@ -122,6 +130,4 @@
+ 
+ [Round1]
+-SP1=1
+-SP3=2
+ D1=
+ D2=
+@@ -130,4 +136,5 @@
+ GA1=0
+ GB1=1
++SP1=1
+ NT1=
+ BE1=
+@@ -146,4 +153,5 @@
+ GA3=1
+ GB3=1
++SP3=2
+ NT3=
+ BE3=
+@@ -152,7 +160,4 @@
+ 
+ [Round2]
+-SP1=1
+-SP2=2
+-SP3=0
+ D1=
+ D2=
+@@ -160,30 +165,30 @@
+ TB1=6
+ GA1=0
+-GB1=0
++GB1=2
++SP1=0
+ NT1=
+ BE1=
+ TI1=
+-AT1=0
++AT1=
+ TA2=4
+ TB2=1
+-GA2=1
+-GB2=3
++GA2=3
++GB2=0
++SP2=2
+ NT2=
+ BE2=
+ TI2=
+-AT2=0
++AT2=
+ TA3=5
+ TB3=3
+-GA3=3
+-GB3=2
++GA3=-2
++GB3=1
++SP3=1
+ NT3=
+ BE3=
+ TI3=
+-AT3=0
++AT3=
+ 
+ [Round3]
+-SP1=1
+-SP2=2
+-SP3=2
+ D1=
+ D2=
+@@ -192,4 +197,5 @@
+ GA1=2
+ GB1=1
++SP1=1
+ NT1=
+ BE1=
+@@ -200,4 +206,5 @@
+ GA2=0
+ GB2=3
++SP2=2
+ NT2=
+ BE2=
+@@ -208,4 +215,5 @@
+ GA3=0
+ GB3=3
++SP3=2
+ NT3=
+ BE3=
+@@ -214,7 +222,4 @@
+ 
+ [Round4]
+-SP1=2
+-SP2=1
+-SP3=0
+ D1=
+ D2=
+@@ -223,4 +228,5 @@
+ GA1=1
+ GB1=2
++SP1=2
+ NT1=
+ BE1=
+@@ -231,4 +237,5 @@
+ GA2=2
+ GB2=3
++SP2=1
+ NT2=
+ BE2=
+@@ -245,6 +252,4 @@
+ 
+ [Round5]
+-SP1=1
+-SP2=2
+ D1=
+ D2=
+@@ -253,4 +258,5 @@
+ GA1=0
+ GB1=3
++SP1=1
+ NT1=
+ BE1=
+@@ -261,4 +267,5 @@
+ GA2=1
+ GB2=1
++SP2=2
+ NT2=
+ BE2=
+@@ -275,7 +282,4 @@
+ 
+ [Round6]
+-SP1=1
+-SP2=0
+-SP3=1
+ D1=
+ D2=
+@@ -284,4 +288,5 @@
+ GA1=1
+ GB1=3
++SP1=1
+ NT1=
+ BE1=
+@@ -300,4 +305,5 @@
+ GA3=0
+ GB3=2
++SP3=1
+ NT3=
+ BE3=
+@@ -306,7 +312,4 @@
+ 
+ [Round7]
+-SP1=1
+-SP2=0
+-SP3=1
+ D1=
+ D2=
+@@ -315,4 +318,5 @@
+ GA1=1
+ GB1=2
++SP1=1
+ NT1=
+ BE1=
+@@ -331,4 +335,5 @@
+ GA3=0
+ GB3=2
++SP3=1
+ NT3=
+ BE3=
+@@ -337,7 +342,4 @@
+ 
+ [Round8]
+-SP1=1
+-SP2=1
+-SP3=1
+ D1=
+ D2=
+@@ -346,4 +348,5 @@
+ GA1=0
+ GB1=3
++SP1=1
+ NT1=
+ BE1=
+@@ -354,4 +357,5 @@
+ GA2=2
+ GB2=3
++SP2=1
+ NT2=
+ BE2=
+@@ -362,4 +366,5 @@
+ GA3=1
+ GB3=1
++SP3=1
+ NT3=
+ BE3=
+@@ -368,6 +373,4 @@
+ 
+ [Round9]
+-SP1=0
+-SP2=2
+ D1=
+ D2=
+@@ -384,4 +387,5 @@
+ GA2=0
+ GB2=2
++SP2=2
+ NT2=
+ BE2=
+@@ -398,6 +402,4 @@
+ 
+ [Round10]
+-SP2=0
+-SP3=0
+ D1=
+ D2=
+NEU output/special.l98.php (1938 Bytes)
+<?php
+$zutore[1]=3;
+$dstore[1]=1.5;
+$zutore[2]=6;
+$dstore[2]=2;
+$zutore[3]=9;
+$dstore[3]=3;
+$zutore[4]=9;
+$dstore[4]=3;
+$zutore[5]=5;
+$dstore[5]=2.5;
+$zutore[6]=7;
+$dstore[6]=2.33;
+$zutore[7]=7;
+$dstore[7]=2.33;
+$zutore[8]=10;
+$dstore[8]=3.33;
+$zutore[9]=3;
+$dstore[9]=1.5;
+$zutore[10]=5;
+$dstore[10]=2.5;
+$gzutore=64;
+$gdstore=2.46;
+$gzusieg1=7;
+$gzusieg2=17;
+$gzuunent=2;
+$gbeide=0;
+$gheimtore=23;
+$ggasttore=41;
+$dsheimtore=0.88;
+$dsgasttore=1.58;
+$hheimsieg="Mannschaft 4";
+$hgastsieg="Mannschaft 1";
+$hheimsiegtor="3";
+$hgastsiegtor="0";
+$spieltagflag=2;
+$hheimsieg1="Mannschaft 3";
+$hgastsieg1="Mannschaft 4";
+$hheimsiegtor1="3";
+$hgastsiegtor1="0";
+$spieltagflag1=10;
+$counteranz=2;
+$aheimsieg="Mannschaft 4";
+$agastsieg="Mannschaft 2";
+$aheimsiegtor="0";
+$agastsiegtor="3";
+$spieltagflag2=3;
+$aheimsieg1="Mannschaft 3";
+$agastsieg1="Mannschaft 1";
+$aheimsiegtor1="0";
+$agastsiegtor1="3";
+$spieltagflag3=8;
+$counteranz1=4;
+$htorreichm1="Mannschaft 3";
+$htorreichm2="Mannschaft 6";
+$htorreicht1="2";
+$htorreicht2="3";
+$spieltagflag4=4;
+$htorreichm3="Mannschaft 2";
+$htorreichm4="Mannschaft 4";
+$htorreicht3="2";
+$htorreicht4="3";
+$spieltagflag5=8;
+$counteranz5=2;
+$akt_gewonnen=2;
+$team_akt_gewonnen="Mannschaft 3";
+$akt_ungeschlagen=2;
+$team_akt_ungeschlagen="Mannschaft 5
+Mannschaft 3";
+$akt_unentschieden=1;
+$team_akt_unentschieden="Mannschaft 5";
+$akt_sieglos=4;
+$team_akt_sieglos="Mannschaft 6";
+$akt_verloren=2;
+$team_akt_verloren="Mannschaft 6";
+$max_gewonnen=3;
+$team_max_gewonnen="Mannschaft 1 (6-8.ST)";
+$max_ungeschlagen=3;
+$team_max_ungeschlagen="Mannschaft 1 (6-8.ST)";
+$max_unentschieden=1;
+$team_max_unentschieden="Mannschaft 5 (8-8.ST)
+Mannschaft 6 (8-8.ST)
+Mannschaft 4 (5-5.ST)
+Mannschaft 3 (5-5.ST)";
+$max_sieglos=4;
+$team_max_sieglos="Mannschaft 6 (7-10.ST)";
+$max_verloren=2;
+$team_max_verloren="Mannschaft 1 (1-2.ST)
+Mannschaft 6 (9-10.ST)
+Mannschaft 4 (6-7.ST)
+Mannschaft 2 (5-6.ST)
+Mannschaft 3 (7-8.ST)";
+?>
+
+=== Wertung fuer Gast und gegen beide, nicht gespielt ===
+### GESENDETE FELDER (POST, 40)
+action=admin
+todo=edit
+save=1
+file=golden/special.l98
+st=3
+xdatum1=
+xdatum2=
+xatdat0=
+xattim0=
+xteama0=1
+xteamb0=3
+xmspez0=(i.E.)
+xmnote0=
+xmberi0=
+xatdat1=
+xattim1=
+xteama1=4
+xteamb1=2
+xmspez1=(n.V.)
+xmnote1=
+xmberi1=
+xatdat2=
+xattim2=
+xteama2=6
+xteamb2=5
+xmspez2=(n.V.)
+xmnote2=
+xmberi2=
+xstx=0
+xnticker=0
+xnlines=
+xgoala0=4
+xgoalb0=0
+xmsieg0=2
+xgoala1=1
+xgoalb1=1
+xmsieg1=3
+xgoala2=_
+xgoalb2=
+xmsieg2=1
+--- Dateiaenderungen ---
+GEAENDERT ligen/golden/special.l98
+--- vorher
++++ nachher
+@@ -9,5 +9,5 @@
+ Rounds=10
+ Matches=3
+-Actual=2
++Actual=3
+ Kegel=0
+ HandS=0
+@@ -166,5 +166,4 @@
+ GA1=0
+ GB1=2
+-SP1=0
+ NT1=
+ BE1=
+@@ -195,29 +194,30 @@
+ TA1=1
+ TB1=3
+-GA1=2
+-GB1=1
++GA1=4
++GB1=-2
+ SP1=1
+ NT1=
+ BE1=
+ TI1=
+-AT1=0
++AT1=
+ TA2=4
+ TB2=2
+-GA2=0
+-GB2=3
++GA2=1
++GB2=1
++ET2=3
+ SP2=2
+ NT2=
+ BE2=
+ TI2=
+-AT2=0
++AT2=
+ TA3=6
+ TB3=5
+-GA3=0
+-GB3=3
++GA3=-2
++GB3=-1
+ SP3=2
+ NT3=
+ BE3=
+ TI3=
+-AT3=0
++AT3=
+ 
+ [Round4]
+GEAENDERT output/special.l98.php
+--- vorher
++++ nachher
+@@ -4,5 +4,5 @@
+ $zutore[2]=6;
+ $dstore[2]=2;
+-$zutore[3]=9;
++$zutore[3]=6;
+ $dstore[3]=3;
+ $zutore[4]=9;
+@@ -20,30 +20,30 @@
+ $zutore[10]=5;
+ $dstore[10]=2.5;
+-$gzutore=64;
+-$gdstore=2.46;
+-$gzusieg1=7;
+-$gzusieg2=17;
+-$gzuunent=2;
+-$gbeide=0;
+-$gheimtore=23;
+-$ggasttore=41;
+-$dsheimtore=0.88;
+-$dsgasttore=1.58;
+-$hheimsieg="Mannschaft 4";
+-$hgastsieg="Mannschaft 1";
+-$hheimsiegtor="3";
++$gzutore=61;
++$gdstore=2.44;
++$gzusieg1=8;
++$gzusieg2=16;
++$gzuunent=1;
++$gbeide=1;
++$gheimtore=26;
++$ggasttore=35;
++$dsheimtore=1.04;
++$dsgasttore=1.4;
++$hheimsieg="Mannschaft 1";
++$hgastsieg="Mannschaft 3";
++$hheimsiegtor="4";
+ $hgastsiegtor="0";
+-$spieltagflag=2;
+-$hheimsieg1="Mannschaft 3";
+-$hgastsieg1="Mannschaft 4";
+-$hheimsiegtor1="3";
++$spieltagflag=3;
++$hheimsieg1="0";
++$hgastsieg1="0";
++$hheimsiegtor1="0";
+ $hgastsiegtor1="0";
+-$spieltagflag1=10;
+-$counteranz=2;
+-$aheimsieg="Mannschaft 4";
+-$agastsieg="Mannschaft 2";
++$spieltagflag1=0;
++$counteranz=0;
++$aheimsieg="Mannschaft 2";
++$agastsieg="Mannschaft 5";
+ $aheimsiegtor="0";
+ $agastsiegtor="3";
+-$spieltagflag2=3;
++$spieltagflag2=5;
+ $aheimsieg1="Mannschaft 3";
+ $agastsieg1="Mannschaft 1";
+@@ -51,5 +51,5 @@
+ $agastsiegtor1="3";
+ $spieltagflag3=8;
+-$counteranz1=4;
++$counteranz1=2;
+ $htorreichm1="Mannschaft 3";
+ $htorreichm2="Mannschaft 6";
+@@ -76,10 +76,11 @@
+ $max_gewonnen=3;
+ $team_max_gewonnen="Mannschaft 1 (6-8.ST)";
+-$max_ungeschlagen=3;
+-$team_max_ungeschlagen="Mannschaft 1 (6-8.ST)";
++$max_ungeschlagen=5;
++$team_max_ungeschlagen="Mannschaft 4 (1-5.ST)";
+ $max_unentschieden=1;
+ $team_max_unentschieden="Mannschaft 5 (8-8.ST)
+ Mannschaft 6 (8-8.ST)
+ Mannschaft 4 (5-5.ST)
++Mannschaft 2 (3-3.ST)
+ Mannschaft 3 (5-5.ST)";
+ $max_sieglos=4;
+
+=== Termine, Datum des Spieltags, Notiz, Bericht, Tipp ===
+### GESENDETE FELDER (POST, 41)
+action=admin
+todo=edit
+save=1
+file=golden/special.l98
+st=4
+xteama0=1
+xteamb0=2
+xgoala0=1
+xgoalb0=2
+xmspez0=(n.V.)
+xmsieg0=0
+xteama1=3
+xteamb1=6
+xgoala1=2
+xgoalb1=3
+xmspez1=(i.E.)
+xmsieg1=0
+xmnote1=
+xmberi1=
+xteama2=5
+xteamb2=4
+xgoala2=0
+xgoalb2=1
+xmspez2=_
+xmsieg2=0
+xmnote2=
+xmberi2=
+xstx=0
+xnticker=0
+xnlines=
+xdatum1=1.3.2025
+xdatum2=99.99.2025
+xatdat0=08.03.2025
+xattim0=
+xatdat1=quatsch
+xattim1=15:30
+xatdat2=09.03.2025
+xattim2=18:45
+xmnote0= Notiz mit | Strich 
+xmberi0= http://example.org/bericht?a=1&b=2 
+xmtipp1=1
+--- Dateiaenderungen ---
+GEAENDERT ligen/golden/special.l98
+--- vorher
++++ nachher
+@@ -9,5 +9,5 @@
+ Rounds=10
+ Matches=3
+-Actual=3
++Actual=4
+ Kegel=0
+ HandS=0
+@@ -222,6 +222,6 @@
+ 
+ [Round4]
+-D1=
+-D2=
++D1=01.03.2025
++D2=09.03.2025
+ TA1=1
+ TB1=2
+@@ -229,8 +229,8 @@
+ GB1=2
+ SP1=2
+-NT1=
+-BE1=
++NT1=Notiz mit | Strich
++BE1=http://example.org/bericht?a=1&b=2
+ TI1=
+-AT1=0
++AT1=1741442400
+ TA2=3
+ TB2=6
+@@ -241,13 +241,14 @@
+ BE2=
+ TI2=
+-AT2=0
++AT2=
+ TA3=5
+ TB3=4
+ GA3=0
+ GB3=1
++SP3=0
+ NT3=
+ BE3=
+ TI3=
+-AT3=0
++AT3=1741542300
+ 
+ [Round5]
+
+=== Datum des Spieltags aus den Terminen ===
+### GESENDETE FELDER (POST, 40)
+action=admin
+todo=edit
+save=1
+file=golden/special.l98
+st=5
+xteama0=2
+xteamb0=5
+xgoala0=0
+xgoalb0=3
+xmspez0=(i.E.)
+xmsieg0=0
+xmnote0=
+xmberi0=
+xatdat1=
+xattim1=
+xteama1=4
+xteamb1=3
+xgoala1=1
+xgoalb1=1
+xmspez1=(n.V.)
+xmsieg1=0
+xmnote1=
+xmberi1=
+xteama2=6
+xteamb2=1
+xgoala2=_
+xgoalb2=_
+xmspez2=_
+xmsieg2=0
+xmnote2=
+xmberi2=
+xstx=0
+xnticker=0
+xnlines=
+xdatum1=
+xdatum2=
+xatdat0=15.03.2025
+xattim0=14:00
+xatdat2=16.03.2025
+xattim2=16:00
+--- Dateiaenderungen ---
+GEAENDERT ligen/golden/special.l98
+--- vorher
++++ nachher
+@@ -9,5 +9,5 @@
+ Rounds=10
+ Matches=3
+-Actual=4
++Actual=5
+ Kegel=0
+ HandS=0
+@@ -246,5 +246,4 @@
+ GA3=0
+ GB3=1
+-SP3=0
+ NT3=
+ BE3=
+@@ -253,6 +252,6 @@
+ 
+ [Round5]
+-D1=
+-D2=
++D1=15.03.2025
++D2=16.03.2025
+ TA1=2
+ TB1=5
+@@ -263,5 +262,5 @@
+ BE1=
+ TI1=
+-AT1=0
++AT1=1742043600
+ TA2=4
+ TB2=3
+@@ -272,13 +271,14 @@
+ BE2=
+ TI2=
+-AT2=0
++AT2=
+ TA3=6
+ TB3=1
+ GA3=-1
+ GB3=-1
++SP3=0
+ NT3=
+ BE3=
+ TI3=
+-AT3=0
++AT3=1742137200
+ 
+ [Round6]
+
+=== aktueller Spieltag und News ===
+### GESENDETE FELDER (POST, 40)
+action=admin
+todo=edit
+save=1
+file=golden/special.l98
+st=1
+xdatum1=
+xdatum2=
+xatdat0=
+xattim0=
+xteama0=1
+xteamb0=5
+xgoala0=0
+xgoalb0=1
+xmspez0=(i.E.)
+xmsieg0=0
+xmnote0=
+xmberi0=
+xatdat1=
+xattim1=
+xteama1=3
+xteamb1=2
+xgoala1=_
+xgoalb1=_
+xmspez1=_
+xmsieg1=0
+xmnote1=
+xmberi1=
+xatdat2=
+xattim2=
+xteama2=6
+xteamb2=4
+xgoala2=1
+xgoalb2=1
+xmspez2=(n.V.)
+xmsieg2=0
+xmnote2=
+xmberi2=
+xstx=7
+xnticker=1
+xnlines=Erste Zeile\n\nZweite Zeile mit O'Neill\n
+--- Dateiaenderungen ---
+GEAENDERT ligen/golden/special.l98
+--- vorher
++++ nachher
+@@ -9,5 +9,5 @@
+ Rounds=10
+ Matches=3
+-Actual=5
++Actual=7
+ Kegel=0
+ HandS=0
+@@ -47,5 +47,5 @@
+ favTeam=0
+ selTeam=0
+-ticker=0
++ticker=1
+ Graph=1
+ Kreuz=1
+@@ -56,4 +56,6 @@
+ 
+ [News]
++NC=1
++N0=Erste ZeilennZweite Zeile mit O'Neilln
+ 
+ [Teams]
+@@ -140,13 +142,14 @@
+ BE1=
+ TI1=
+-AT1=0
++AT1=
+ TA2=3
+ TB2=2
+ GA2=-1
+ GB2=-1
++SP2=0
+ NT2=
+ BE2=
+ TI2=
+-AT2=0
++AT2=
+ TA3=6
+ TB3=4
+@@ -157,5 +160,5 @@
+ BE3=
+ TI3=
+-AT3=0
++AT3=
+ 
+ [Round2]
+@@ -276,5 +279,4 @@
+ GA3=-1
+ GB3=-1
+-SP3=0
+ NT3=
+ BE3=
+
+=== Partien neu ansetzen ===
+### GESENDETE FELDER (POST, 40)
+action=admin
+todo=edit
+save=1
+file=golden/special.l98
+st=6
+xdatum1=
+xdatum2=
+xatdat0=
+xattim0=
+xgoala0=1
+xgoalb0=3
+xmspez0=(i.E.)
+xmsieg0=0
+xmnote0=
+xmberi0=
+xatdat1=
+xattim1=
+xmspez1=_
+xmsieg1=0
+xmnote1=
+xmberi1=
+xatdat2=
+xattim2=
+xteama2=4
+xteamb2=6
+xgoala2=0
+xgoalb2=2
+xmspez2=(i.E.)
+xmsieg2=0
+xmnote2=
+xmberi2=
+xstx=0
+xnticker=1
+xnlines=Erste ZeilennZweite Zeile mit O'Neilln\n
+xteama0=6
+xteamb0=5
+xteama1=0
+xteamb1=0
+xgoala1=
+xgoalb1=
+--- Dateiaenderungen ---
+GEAENDERT ligen/golden/special.l98
+--- vorher
++++ nachher
+@@ -9,5 +9,5 @@
+ Rounds=10
+ Matches=3
+-Actual=7
++Actual=6
+ Kegel=0
+ HandS=0
+@@ -59,4 +59,5 @@
+ N0=Erste ZeilennZweite Zeile mit O'Neilln
+ 
++
+ [Teams]
+ 1=Mannschaft 1
+@@ -147,5 +148,4 @@
+ GA2=-1
+ GB2=-1
+-SP2=0
+ NT2=
+ BE2=
+@@ -287,6 +287,6 @@
+ D1=
+ D2=
+-TA1=5
+-TB1=1
++TA1=6
++TB1=5
+ GA1=1
+ GB1=3
+@@ -295,13 +295,14 @@
+ BE1=
+ TI1=
+-AT1=0
+-TA2=2
+-TB2=3
+-GA2=0
+-GB2=1
++AT1=
++TA2=0
++TB2=0
++GA2=-1
++GB2=-1
++SP2=0
+ NT2=
+ BE2=
+ TI2=
+-AT2=0
++AT2=
+ TA3=4
+ TB3=6
+@@ -312,5 +313,5 @@
+ BE3=
+ TI3=
+-AT3=0
++AT3=
+ 
+ [Round7]
+GEAENDERT output/special.l98.php
+--- vorher
++++ nachher
+@@ -10,6 +10,6 @@
+ $zutore[5]=5;
+ $dstore[5]=2.5;
+-$zutore[6]=7;
+-$dstore[6]=2.33;
++$zutore[6]=6;
++$dstore[6]=3;
+ $zutore[7]=7;
+ $dstore[7]=2.33;
+@@ -20,14 +20,14 @@
+ $zutore[10]=5;
+ $dstore[10]=2.5;
+-$gzutore=61;
+-$gdstore=2.44;
++$gzutore=60;
++$gdstore=2.5;
+ $gzusieg1=8;
+-$gzusieg2=16;
++$gzusieg2=15;
+ $gzuunent=1;
+ $gbeide=1;
+ $gheimtore=26;
+-$ggasttore=35;
+-$dsheimtore=1.04;
+-$dsgasttore=1.4;
++$ggasttore=34;
++$dsheimtore=1.08;
++$dsgasttore=1.42;
+ $hheimsieg="Mannschaft 1";
+ $hgastsieg="Mannschaft 3";
+@@ -65,7 +65,6 @@
+ $akt_gewonnen=2;
+ $team_akt_gewonnen="Mannschaft 3";
+-$akt_ungeschlagen=2;
+-$team_akt_ungeschlagen="Mannschaft 5
+-Mannschaft 3";
++$akt_ungeschlagen=4;
++$team_akt_ungeschlagen="Mannschaft 5";
+ $akt_unentschieden=1;
+ $team_akt_unentschieden="Mannschaft 5";
+@@ -75,5 +74,5 @@
+ $team_akt_verloren="Mannschaft 6";
+ $max_gewonnen=3;
+-$team_max_gewonnen="Mannschaft 1 (6-8.ST)";
++$team_max_gewonnen="Mannschaft 5 (5-7.ST)";
+ $max_ungeschlagen=5;
+ $team_max_ungeschlagen="Mannschaft 4 (1-5.ST)";
+@@ -90,5 +89,4 @@
+ Mannschaft 6 (9-10.ST)
+ Mannschaft 4 (6-7.ST)
+-Mannschaft 2 (5-6.ST)
+ Mannschaft 3 (7-8.ST)";
+ ?>
+\ No newline at end of file
+
+=== Handicap ab Spieltag 2 zurueckgesetzt ===
+### GESENDETE FELDER (POST, 37)
+action=admin
+todo=edit
+save=1
+file=golden/handicap.l98
+st=2
+xdatum1=
+xdatum2=
+xatdat0=
+xattim0=
+xteama0=2
+xteamb0=6
+xgoala0=2
+xgoalb0=0
+xmsieg0=0
+xmnote0=
+xmberi0=
+xatdat1=
+xattim1=
+xteama1=4
+xteamb1=1
+xgoala1=0
+xgoalb1=3
+xmsieg1=0
+xmnote1=
+xmberi1=
+xatdat2=
+xattim2=
+xteama2=5
+xteamb2=3
+xgoala2=3
+xgoalb2=2
+xmsieg2=0
+xmnote2=
+xmberi2=
+xstx=0
+xnticker=0
+xnlines=
+--- Dateiaenderungen ---
+GEAENDERT ligen/golden/handicap.l98
+--- vorher
++++ nachher
+@@ -9,5 +9,5 @@
+ Rounds=10
+ Matches=3
+-Actual=3
++Actual=2
+ Kegel=0
+ HandS=1
+@@ -59,4 +59,12 @@
+ 6=Mannschaft 6
+ 
++[Teamm]
++1=Mannschaft
++2=Mannschaft
++3=Mannschaft
++4=Mannschaft
++5=Mannschaft
++6=Mannschaft
++
+ [Teamk]
+ 1=Manns
+@@ -145,5 +153,5 @@
+ 
+ [Round2]
+-HS=030405060102
++HS=0
+ D1=
+ D2=
+@@ -155,5 +163,5 @@
+ BE1=
+ TI1=
+-AT1=0
++AT1=
+ TA2=4
+ TB2=1
+@@ -163,5 +171,5 @@
+ BE2=
+ TI2=
+-AT2=0
++AT2=
+ TA3=5
+ TB3=3
+@@ -171,8 +179,8 @@
+ BE3=
+ TI3=
+-AT3=0
++AT3=
+ 
+ [Round3]
+-HS=040506010203
++HS=0
+ D1=
+ D2=
+@@ -203,5 +211,5 @@
+ 
+ [Round4]
+-HS=050601020304
++HS=0
+ D1=
+ D2=
+@@ -232,5 +240,5 @@
+ 
+ [Round5]
+-HS=060102030405
++HS=0
+ D1=
+ D2=
+@@ -261,5 +269,5 @@
+ 
+ [Round6]
+-HS=010203040506
++HS=0
+ D1=
+ D2=
+@@ -290,5 +298,5 @@
+ 
+ [Round7]
+-HS=020304050601
++HS=0
+ D1=
+ D2=
+@@ -319,5 +327,5 @@
+ 
+ [Round8]
+-HS=030405060102
++HS=0
+ D1=
+ D2=
+@@ -348,5 +356,5 @@
+ 
+ [Round9]
+-HS=040506010203
++HS=0
+ D1=
+ D2=
+@@ -377,5 +385,5 @@
+ 
+ [Round10]
+-HS=050601020304
++HS=0
+ D1=
+ D2=
+NEU output/handicap.l98.php (1764 Bytes)
+<?php
+$zutore[1]=7;
+$dstore[1]=3.5;
+$zutore[2]=10;
+$dstore[2]=3.33;
+$zutore[3]=6;
+$dstore[3]=2;
+$zutore[4]=6;
+$dstore[4]=3;
+$zutore[5]=6;
+$dstore[5]=3;
+$zutore[6]=4;
+$dstore[6]=2;
+$zutore[7]=0;
+$dstore[7]=0;
+$zutore[8]=1;
+$dstore[8]=1;
+$zutore[9]=6;
+$dstore[9]=2;
+$zutore[10]=2;
+$dstore[10]=1;
+$gzutore=48;
+$gdstore=2.4;
+$gzusieg1=6;
+$gzusieg2=13;
+$gzuunent=1;
+$gbeide=0;
+$gheimtore=16;
+$ggasttore=32;
+$dsheimtore=0.8;
+$dsgasttore=1.6;
+$hheimsieg="Mannschaft 2";
+$hgastsieg="Mannschaft 6";
+$hheimsiegtor="2";
+$hgastsiegtor="0";
+$spieltagflag=2;
+$hheimsieg1="Mannschaft 4";
+$hgastsieg1="Mannschaft 6";
+$hheimsiegtor1="2";
+$hgastsiegtor1="0";
+$spieltagflag1=6;
+$counteranz=3;
+$aheimsieg="Mannschaft 4";
+$agastsieg="Mannschaft 1";
+$aheimsiegtor="0";
+$agastsiegtor="3";
+$spieltagflag2=2;
+$aheimsieg1="Mannschaft 4";
+$agastsieg1="Mannschaft 5";
+$aheimsiegtor1="0";
+$agastsiegtor1="3";
+$spieltagflag3=9;
+$counteranz1=4;
+$htorreichm1="Mannschaft 5";
+$htorreichm2="Mannschaft 3";
+$htorreicht1="3";
+$htorreicht2="2";
+$spieltagflag4=2;
+$htorreichm3="0";
+$htorreichm4="0";
+$htorreicht3="0";
+$htorreicht4="0";
+$spieltagflag5=0;
+$counteranz5=1;
+$akt_gewonnen=2;
+$team_akt_gewonnen="Mannschaft 1";
+$akt_ungeschlagen=2;
+$team_akt_ungeschlagen="Mannschaft 1";
+$akt_unentschieden=0;
+$team_akt_unentschieden="";
+$akt_sieglos=2;
+$team_akt_sieglos="Mannschaft 6";
+$akt_verloren=2;
+$team_akt_verloren="Mannschaft 6";
+$max_gewonnen=3;
+$team_max_gewonnen="Mannschaft 5 (1-3.ST)";
+$max_ungeschlagen=3;
+$team_max_ungeschlagen="Mannschaft 5 (1-3.ST)";
+$max_unentschieden=1;
+$team_max_unentschieden="Mannschaft 6 (1-1.ST)
+Mannschaft 4 (1-1.ST)";
+$max_sieglos=3;
+$team_max_sieglos="Mannschaft 6 (1-3.ST)";
+$max_verloren=2;
+$team_max_verloren="Mannschaft 6 (9-10.ST)
+Mannschaft 3 (2-3.ST)";
+?>
+
+=== Fieberkurve folgt dem naechsten Gegner der Lieblingsmannschaft ===
+### GESENDETE FELDER (POST, 46)
+action=admin
+todo=edit
+save=1
+file=golden/basic.l98
+st=2
+xdatum1=
+xdatum2=
+xatdat0=
+xattim0=
+xteama0=2
+xteamb0=3
+xgoala0=0
+xgoalb0=4
+xmsieg0=0
+xmnote0=
+xmberi0=
+xatdat1=
+xattim1=
+xteama1=4
+xteamb1=8
+xgoala1=2
+xgoalb1=2
+xmsieg1=0
+xmnote1=
+xmberi1=
+xatdat2=
+xattim2=
+xteama2=6
+xteamb2=1
+xgoala2=2
+xgoalb2=4
+xmsieg2=0
+xmnote2=
+xmberi2=
+xatdat3=
+xattim3=
+xteama3=7
+xteamb3=5
+xgoala3=_
+xgoalb3=_
+xmsieg3=0
+xmnote3=
+xmberi3=
+xstx=0
+xnticker=0
+xnlines=
+--- Dateiaenderungen ---
+GEAENDERT ligen/golden/basic.l98
+--- vorher
++++ nachher
+@@ -9,5 +9,5 @@
+ Rounds=14
+ Matches=4
+-Actual=1
++Actual=2
+ Kegel=0
+ HandS=0
+@@ -47,5 +47,5 @@
+ Ligastats=1
+ kurve1=3
+-kurve2=0
++kurve2=7
+ 
+ [News]
+@@ -191,5 +191,5 @@
+ BE1=
+ TI1=
+-AT1=0
++AT1=
+ TA2=4
+ TB2=8
+@@ -199,5 +199,5 @@
+ BE2=
+ TI2=
+-AT2=0
++AT2=
+ TA3=6
+ TB3=1
+@@ -207,5 +207,5 @@
+ BE3=
+ TI3=
+-AT3=0
++AT3=
+ TA4=7
+ TB4=5
+@@ -215,5 +215,5 @@
+ BE4=
+ TI4=
+-AT4=0
++AT4=
+ 
+ [Round3]
+
+=== Seite danach: Spieltag 3 mit Wertungen ===
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>LMO Admin</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" rel="stylesheet" href="http://lmo.test/lmo/lmo-style-nc.php">
+<style type="text/css">@import url("http://lmo.test/lmo/lmo-style.php");</style>
+</head>
+<body>
+<div align="center">
+<script type="text/javascript" src="http://lmo.test/lmo/js/admin.js.php">
+</script>
+<table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td colspan="2" align="center">
+<h1>Administration des Liga Manager Online 4</h1>
+</td>
+</tr>
+<tr>
+<td class="lmoMenu" align="left">
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=new&amp;newpage=0" onclick="return chklmolink();" title="Eine neue Liga erstellen">Neu</a>&nbsp; <a href="/lmo/lmoadmin.php?action=admin&amp;todo=open&amp;subdir=golden/" onclick="return chklmolink();" title="Eine Liga zum Bearbeiten öffnen">Öffnen</a>&nbsp; <a href="/lmo/lmoadmin.php?action=admin&amp;todo=delete" onclick="return chklmolink();" title="Eine nicht mehr benötigte Liga löschen">Löschen</a>&nbsp; Bearbeiten&nbsp; <a href="/lmo/lmoadmin.php?action=admin&amp;todo=upload" onclick="return chklmolink();" title="Eine Liga von Ihrer Festplatte auf diesen Server hochladen">Upload</a>&nbsp; <a href="/lmo/lmoadmin.php?action=admin&amp;todo=download" onclick="return chklmolink();" title="Eine Liga von Ihrem Server runterladen, um sie offline zu sichern">Download</a>&nbsp; <a href="/lmo/lmoadmin.php?action=admin&amp;todo=options" onclick="return chklmolink();" title="Globale Optionen für dieses Script festlegen">Optionen</a>&nbsp; <a href="/lmo/lmoadmin.php?action=admin&amp;todo=tipp" onclick="return chklmolink();" title="Tippspiel">Tippspiel</a>&nbsp; <a href="/lmo/lmoadmin.php?action=admin&amp;todo=vieweroptions" onclick="return chklmolink();" title="Konfiguration LMO-Viewer 4.1">Viewer</a>
+</td>
+<td class="lmoMenu" align="right">
+<a href="http://lmo.test/lmo/help/Deutsch/index.html" target="_blank" title="Hilfedatei aufrufen (wird in neuem Fenster geöffnet)">Hilfe</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=logout" onclick="return chklmolink();" title="Hier loggen Sie sich aus dem Admin-Bereich aus. (Das sollten Sie nach jeder Sitzung tun)">Logout</a>&nbsp; </td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="center">Ergebnisse</td>
+<td align="center">
+<a href='/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=-4' onClick="return chklmolink();" title="Eingabe der Spielerstatistiken">Spielerstatistik</a>
+</td>
+<td align="center">
+<a href='/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=-1' onClick="return chklmolink();" title="Hier legen Sie die Grundwerte und -einstellungen Ihrer Liga fest (Anzahl der Spiele, Aufsteiger usw.)">Grundeinstellungen</a>
+</td>
+<td align="center">
+<a href='/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=-2' onClick="return chklmolink();" title="Hier bearbeiten Sie die Namen, Abkürzungen, URLs und Strafpunkte der einzelnen Mannschaften">Mannschaften</a>
+</td>
+<td align="center">
+<a href='/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=-10' onclick="return chklmolink(this.href);" title="Hier können Sie bestimmte Partien anderen Spieltagen zuordnen">Spieltage</a>
+</td>
+</tr>
+</table>
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="center">
+<h1>special</h1>
+</td>
+</tr>
+<tr>
+<td align="center">
+<table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align='center'>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=1" title="auf diesen Spieltag wechseln">01</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=2" title="auf diesen Spieltag wechseln">02</a>&nbsp;</td>
+<td align='center'>03&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=4" title="auf diesen Spieltag wechseln">04</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=5" title="auf diesen Spieltag wechseln">05</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=6" title="auf diesen Spieltag wechseln">06</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=7" title="auf diesen Spieltag wechseln">07</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=8" title="auf diesen Spieltag wechseln">08</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=9" title="auf diesen Spieltag wechseln">09</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=10" title="auf diesen Spieltag wechseln">10</a>&nbsp;</td>
+</tr>
+</table>
+<form name="lmoedit_second_half" action="/lmo/lmoadmin.php" method="post">
+<input type="hidden" name="action" value="admin">
+<input type="hidden" name="todo" value="edit">
+<input type="hidden" name="save" value="990">
+<input type="hidden" name="file" value="golden/special.l98">
+<input type="hidden" name="st" value="3">
+<input type="submit" name="rueckrundeButton" class="lmo-formular-button" value="Rückrundenspielplan erstellen">
+</form>
+</td>
+</tr>
+<tr>
+<td align="center">
+<form name="lmoedit" action="/lmo/lmoadmin.php" method="post" onSubmit="return chklmopass()">
+<input type="hidden" name="action" value="admin">
+<input type="hidden" name="todo" value="edit">
+<input type="hidden" name="save" value="1">
+<input type="hidden" name="file" value="golden/special.l98">
+<input type="hidden" name="st" value="3">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<th class="nobr" style="text-align:left" colspan="9"> 3. Spieltag <acronym title="Startdatum des Spieltags (Format TT.MM.JJJJ - ggf. mit führenden Nullen)"> vom</acronym>
+<input class="lmo-formular-input" type="text" name="xdatum1" tabindex="01" size="10" maxlength="10" value="" onChange="dolmoedit()">
+<script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum1\',\'\')" title="Datum mit Hilfe des PopUp-Kalenders auswählen" onMouseOver="lmoimg(\'d1\',img5)" onMouseOut="lmoimg(\'d1\',img4)">
+<img src="http://lmo.test/lmo/img/lmo-admin4.gif" name="ximgd1" width="12" height="11" border="0">
+</a>');</script>
+<acronym title="Enddatum des Spieltags (Format TT.MM.JJJJ - ggf. mit führenden Nullen)"> bis</acronym>
+<input class="lmo-formular-input" type="text" name="xdatum2" tabindex="02" size="10" maxlength="10" value="" onChange="dolmoedit()">
+<script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xdatum2\',\'\')" title="Datum mit Hilfe des PopUp-Kalenders auswählen" onMouseOver="lmoimg(\'d2\',img5)" onMouseOut="lmoimg(\'d2\',img4)">
+<img src="http://lmo.test/lmo/img/lmo-admin4.gif" name="ximgd2" width="12" height="11" border="0">
+</a>');</script>
+</th>
+<th colspan="6">&nbsp;</th>
+<th style="text-align:center" class="nobr">
+<acronym title="spezielle Grüne-Tisch-Entscheidung (bitte nur auswählen, wenn es wirklich eine solche Entscheidung unabhängig vom Ergebnis gegeben hat!)">
+<img src="http://lmo.test/lmo/img/paragraph.svg" height="20" alt="Grüne-Tisch-Entsch.">
+</acronym>
+</th>
+<th style="text-align:center" class="nobr">
+<acronym title="Notiz zum Spiel (max. 255 Zeichen, eine eventuelle Grüne-Tisch-Entscheidung braucht hier nicht nochmal erwähnt zu werden)">
+<img src="http://lmo.test/lmo/img/notiz.svg" height="20" alt="Notiz zum Spiel">
+</acronym>
+</th>
+<th style="text-align:center" class="nobr">
+<acronym title="Tragen Sie hier den Link zum Spielbericht ein, falls Sie das anbieten möchten. (bitte eine komplette URL, die wird dann übrigens immer in einem neuen Fenster geöffnet)">
+<img src="http://lmo.test/lmo/img/spielbericht.svg" height="20" alt="URL des Spielber.">
+</acronym>
+</th>
+</tr>
+<tr>
+<td class="nobr">
+<input title="Anstoßdatum des Spiels (Format TT.MM.JJJJ - ggf. mit führenden Nullen)" class="lmo-formular-input" type="text" name="xatdat0" tabindex="003" size="10" maxlength="10" value="" onChange="dolmoedit()" ondblclick="fillAll(this);">
+<script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat0\',\'\')" title="Datum mit Hilfe des PopUp-Kalenders auswählen" onMouseOver="lmoimg(\'0c\',img5)" onMouseOut="lmoimg(\'0c\',img4)">
+<img src="http://lmo.test/lmo/img/lmo-admin4.gif" name="ximg0c" width="12" height="11" border="0">
+<\/a>');</script>
+</td>
+<td>
+<input title="AnstoßZeit des Spiels (Format HH:MM - ggf. mit führenden Nullen) - lassen Sie dieses Feld leer, wird beim Speichern automatisch die Standard-Anstoßzeit eingesetzt" class="lmo-formular-input" type="text" name="xattim0" tabindex="004" size="5" maxlength="5" value="" onChange="dolmoedit()" ondblclick="fillAll(this);">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<select class="lmo-formular-input" name="xteama0" onChange="dolmoedit()" tabindex="005">
+<option value="0">___</option>
+<option value="1" selected>Mannschaft 1</option>
+<option value="2">Mannschaft 2</option>
+<option value="3">Mannschaft 3</option>
+<option value="4">Mannschaft 4</option>
+<option value="5">Mannschaft 5</option>
+<option value="6">Mannschaft 6</option>
+</select>
+</td>
+<td align="center" width="10">-</td>
+<td class="nobr">
+<select class="lmo-formular-input" name="xteamb0" onChange="dolmoedit()" title="Gastmannschaft auswählen" tabindex="006">
+<option value="0">___</option>
+<option value="1">Mannschaft 1</option>
+<option value="2">Mannschaft 2</option>
+<option value="3" selected>Mannschaft 3</option>
+<option value="4">Mannschaft 4</option>
+<option value="5">Mannschaft 5</option>
+<option value="6">Mannschaft 6</option>
+</select>
+</td>
+<td width="2">&nbsp;</td>
+<td class="lmoBackMarkierung" align="right">
+<input title="Heimtore (0 - 9999, _ oder X)" class="lmo-formular-input" type="text" name="xgoala0" tabindex="007" size="2" maxlength="4" value="4" onChange="lmotorgte('a','0')" onKeyDown="lmotorclk('a','0',event.keyCode)">
+</td>
+<td class="lmoBackMarkierung nobr" align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'0\',1);return false;" title="Einstellung der Heimtore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'0a\',img1)" onMouseOut="lmoimg(\'0a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg0a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'0\',-1);return false;" title="Einstellung der Heimtore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'0b\',img3)" onMouseOut="lmoimg(\'0b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg0b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td class="lmoBackMarkierung" align="center" width="8">:</td>
+<td class="lmoBackMarkierung" align="right">
+<input title="Gasttore (0 - 9999, _ oder X)" class="lmo-formular-input" type="text" name="xgoalb0" tabindex="008" size="2" maxlength="4" value="0" onChange="lmotorgte('b','0')" onKeyDown="lmotorclk('b','0',event.keyCode)">
+</td>
+<td class="lmoBackMarkierung" align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td valign="bottom">
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'0\',1);return false;" title="Einstellung der Gasttore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'0f\',img1)" onMouseOut="lmoimg(\'0f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg0f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'0\',-1);return false;" title="Einstellung der Gasttore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'0d\',img3)" onMouseOut="lmoimg(\'0d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg0d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td width="2">&nbsp;</td>
+<td>
+<select class="lmo-formular-input" name="xmspez0" onChange="dolmoedit()" tabindex="009">
+<option>_</option>
+<option>(n.V.)</option>
+<option selected>(i.E.)</option>
+</select>
+</td>
+<td width="2">&nbsp;</td>
+<td align="center">
+<select id="gT0" class="lmo-formular-input" name="xmsieg0" onChange="dolmoedit()" tabindex="010">
+<option value="0">_</option>
+<option value="1">Heimteam siegt</option>
+<option value="2" selected>Gastteam siegt</option>
+<option value="3">beidseitiges Erg.</option>
+</select>
+</td>
+<td align="center">
+<input id="n0" class="lmo-formular-input" type="text" name="xmnote0" tabindex="011" size="16" maxlength="255" value="" onChange="dolmoedit()">
+<script type="text/javascript">document.getElementById('n0').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n0\').style.display=\'inline\';return false;">+</a>');</script>
+</td>
+<td align="center">
+<input id="s0" class="lmo-formular-input" type="text" name="xmberi0" tabindex="012" size="16" maxlength="255" value="" onChange="dolmoedit()">
+<script type="text/javascript">document.getElementById('s0').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s0\').style.display=\'inline\';return false;">+</a>');</script>
+</td>
+</tr>
+<tr>
+<td class="nobr">
+<input title="Anstoßdatum des Spiels (Format TT.MM.JJJJ - ggf. mit führenden Nullen)" class="lmo-formular-input" type="text" name="xatdat1" tabindex="103" size="10" maxlength="10" value="" onChange="dolmoedit()" ondblclick="fillAll(this);">
+<script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat1\',\'\')" title="Datum mit Hilfe des PopUp-Kalenders auswählen" onMouseOver="lmoimg(\'1c\',img5)" onMouseOut="lmoimg(\'1c\',img4)">
+<img src="http://lmo.test/lmo/img/lmo-admin4.gif" name="ximg1c" width="12" height="11" border="0">
+<\/a>');</script>
+</td>
+<td>
+<input title="AnstoßZeit des Spiels (Format HH:MM - ggf. mit führenden Nullen) - lassen Sie dieses Feld leer, wird beim Speichern automatisch die Standard-Anstoßzeit eingesetzt" class="lmo-formular-input" type="text" name="xattim1" tabindex="104" size="5" maxlength="5" value="" onChange="dolmoedit()" ondblclick="fillAll(this);">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<select class="lmo-formular-input" name="xteama1" onChange="dolmoedit()" tabindex="105">
+<option value="0">___</option>
+<option value="1">Mannschaft 1</option>
+<option value="2">Mannschaft 2</option>
+<option value="3">Mannschaft 3</option>
+<option value="4" selected>Mannschaft 4</option>
+<option value="5">Mannschaft 5</option>
+<option value="6">Mannschaft 6</option>
+</select>
+</td>
+<td align="center" width="10">-</td>
+<td class="nobr">
+<select class="lmo-formular-input" name="xteamb1" onChange="dolmoedit()" title="Gastmannschaft auswählen" tabindex="106">
+<option value="0">___</option>
+<option value="1">Mannschaft 1</option>
+<option value="2" selected>Mannschaft 2</option>
+<option value="3">Mannschaft 3</option>
+<option value="4">Mannschaft 4</option>
+<option value="5">Mannschaft 5</option>
+<option value="6">Mannschaft 6</option>
+</select>
+</td>
+<td width="2">&nbsp;</td>
+<td class="lmoBackMarkierung" align="right">
+<input title="Heimtore (0 - 9999, _ oder X)" class="lmo-formular-input" type="text" name="xgoala1" tabindex="107" size="2" maxlength="4" value="1" onChange="lmotorgte('a','1')" onKeyDown="lmotorclk('a','1',event.keyCode)">
+</td>
+<td class="lmoBackMarkierung nobr" align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'1\',1);return false;" title="Einstellung der Heimtore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'1a\',img1)" onMouseOut="lmoimg(\'1a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg1a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'1\',-1);return false;" title="Einstellung der Heimtore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'1b\',img3)" onMouseOut="lmoimg(\'1b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg1b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td class="lmoBackMarkierung" align="center" width="8">:</td>
+<td class="lmoBackMarkierung" align="right">
+<input title="Gasttore (0 - 9999, _ oder X)" class="lmo-formular-input" type="text" name="xgoalb1" tabindex="108" size="2" maxlength="4" value="1" onChange="lmotorgte('b','1')" onKeyDown="lmotorclk('b','1',event.keyCode)">
+</td>
+<td class="lmoBackMarkierung" align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td valign="bottom">
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'1\',1);return false;" title="Einstellung der Gasttore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'1f\',img1)" onMouseOut="lmoimg(\'1f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg1f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'1\',-1);return false;" title="Einstellung der Gasttore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'1d\',img3)" onMouseOut="lmoimg(\'1d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg1d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td width="2">&nbsp;</td>
+<td>
+<select class="lmo-formular-input" name="xmspez1" onChange="dolmoedit()" tabindex="109">
+<option>_</option>
+<option selected>(n.V.)</option>
+<option>(i.E.)</option>
+</select>
+</td>
+<td width="2">&nbsp;</td>
+<td align="center">
+<select id="gT1" class="lmo-formular-input" name="xmsieg1" onChange="dolmoedit()" tabindex="110">
+<option value="0">_</option>
+<option value="1">Heimteam siegt</option>
+<option value="2">Gastteam siegt</option>
+<option value="3" selected>beidseitiges Erg.</option>
+</select>
+</td>
+<td align="center">
+<input id="n1" class="lmo-formular-input" type="text" name="xmnote1" tabindex="111" size="16" maxlength="255" value="" onChange="dolmoedit()">
+<script type="text/javascript">document.getElementById('n1').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n1\').style.display=\'inline\';return false;">+</a>');</script>
+</td>
+<td align="center">
+<input id="s1" class="lmo-formular-input" type="text" name="xmberi1" tabindex="112" size="16" maxlength="255" value="" onChange="dolmoedit()">
+<script type="text/javascript">document.getElementById('s1').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s1\').style.display=\'inline\';return false;">+</a>');</script>
+</td>
+</tr>
+<tr>
+<td class="nobr">
+<input title="Anstoßdatum des Spiels (Format TT.MM.JJJJ - ggf. mit führenden Nullen)" class="lmo-formular-input" type="text" name="xatdat2" tabindex="203" size="10" maxlength="10" value="" onChange="dolmoedit()" ondblclick="fillAll(this);">
+<script type="text/javascript">document.write('<a href="#" onclick="opencal(\'xatdat2\',\'\')" title="Datum mit Hilfe des PopUp-Kalenders auswählen" onMouseOver="lmoimg(\'2c\',img5)" onMouseOut="lmoimg(\'2c\',img4)">
+<img src="http://lmo.test/lmo/img/lmo-admin4.gif" name="ximg2c" width="12" height="11" border="0">
+<\/a>');</script>
+</td>
+<td>
+<input title="AnstoßZeit des Spiels (Format HH:MM - ggf. mit führenden Nullen) - lassen Sie dieses Feld leer, wird beim Speichern automatisch die Standard-Anstoßzeit eingesetzt" class="lmo-formular-input" type="text" name="xattim2" tabindex="204" size="5" maxlength="5" value="" onChange="dolmoedit()" ondblclick="fillAll(this);">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<select class="lmo-formular-input" name="xteama2" onChange="dolmoedit()" tabindex="205">
+<option value="0">___</option>
+<option value="1">Mannschaft 1</option>
+<option value="2">Mannschaft 2</option>
+<option value="3">Mannschaft 3</option>
+<option value="4">Mannschaft 4</option>
+<option value="5">Mannschaft 5</option>
+<option value="6" selected>Mannschaft 6</option>
+</select>
+</td>
+<td align="center" width="10">-</td>
+<td class="nobr">
+<select class="lmo-formular-input" name="xteamb2" onChange="dolmoedit()" title="Gastmannschaft auswählen" tabindex="206">
+<option value="0">___</option>
+<option value="1">Mannschaft 1</option>
+<option value="2">Mannschaft 2</option>
+<option value="3">Mannschaft 3</option>
+<option value="4">Mannschaft 4</option>
+<option value="5" selected>Mannschaft 5</option>
+<option value="6">Mannschaft 6</option>
+</select>
+</td>
+<td width="2">&nbsp;</td>
+<td class="lmoBackMarkierung" align="right">
+<input title="Heimtore (0 - 9999, _ oder X)" class="lmo-formular-input" type="text" name="xgoala2" tabindex="207" size="2" maxlength="4" value="0" onChange="lmotorgte('a','2')" onKeyDown="lmotorclk('a','2',event.keyCode)">
+</td>
+<td class="lmoBackMarkierung nobr" align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'2\',1);return false;" title="Einstellung der Heimtore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'2a\',img1)" onMouseOut="lmoimg(\'2a\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg2a" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td>
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'a\',\'2\',-1);return false;" title="Einstellung der Heimtore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'2b\',img3)" onMouseOut="lmoimg(\'2b\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg2b" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td class="lmoBackMarkierung" align="center" width="8">:</td>
+<td class="lmoBackMarkierung" align="right">
+<input title="Gasttore (0 - 9999, _ oder X)" class="lmo-formular-input" type="text" name="xgoalb2" tabindex="208" size="2" maxlength="4" value="_" onChange="lmotorgte('b','2')" onKeyDown="lmotorclk('b','2',event.keyCode)">
+</td>
+<td class="lmoBackMarkierung" align="center">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td valign="bottom">
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'2\',1);return false;" title="Einstellung der Gasttore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'2f\',img1)" onMouseOut="lmoimg(\'2f\',img0)">
+<img src="http://lmo.test/lmo/img/lmo-admin0.gif" name="ximg2f" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<script type="text/javascript">document.write('<a href="#" onclick="lmotorauf(\'b\',\'2\',-1);return false;" title="Einstellung der Gasttore (0 - 9999, _ oder X)" onMouseOver="lmoimg(\'2d\',img3)" onMouseOut="lmoimg(\'2d\',img2)">
+<img src="http://lmo.test/lmo/img/lmo-admin2.gif" name="ximg2d" width="7" height="7" border="0">
+<\/a>')</script>
+</td>
+</tr>
+</table>
+</td>
+<td width="2">&nbsp;</td>
+<td>
+<select class="lmo-formular-input" name="xmspez2" onChange="dolmoedit()" tabindex="209">
+<option>_</option>
+<option selected>(n.V.)</option>
+<option>(i.E.)</option>
+</select>
+</td>
+<td width="2">&nbsp;</td>
+<td align="center">
+<select id="gT2" class="lmo-formular-input" name="xmsieg2" onChange="dolmoedit()" tabindex="210">
+<option value="0">_</option>
+<option value="1" selected>Heimteam siegt</option>
+<option value="2">Gastteam siegt</option>
+<option value="3">beidseitiges Erg.</option>
+</select>
+</td>
+<td align="center">
+<input id="n2" class="lmo-formular-input" type="text" name="xmnote2" tabindex="211" size="16" maxlength="255" value="" onChange="dolmoedit()">
+<script type="text/javascript">document.getElementById('n2').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n2\').style.display=\'inline\';return false;">+</a>');</script>
+</td>
+<td align="center">
+<input id="s2" class="lmo-formular-input" type="text" name="xmberi2" tabindex="212" size="16" maxlength="255" value="" onChange="dolmoedit()">
+<script type="text/javascript">document.getElementById('s2').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'s2\').style.display=\'inline\';return false;">+</a>');</script>
+</td>
+</tr>
+<tr>
+<th class="nobr" colspan="19" align="center">Diese Einstellungen sind Spieltags-unabhängig</th>
+</tr>
+<tr>
+<td class="nobr" colspan="19" align="center">
+<acronym title="Welcher Spieltag soll beim ersten Start aufgerufen werden? Diese Einstellung muß nur dann geändert werden, wenn Sie diesen Spieltag nicht als den aktuellen Spieltag setzen wollen.">Aktueller Spieltag</acronym>
+<select class="lmo-formular-input" name="xstx" onChange="dolmoedit()" tabindex="3013">
+<option value="0" selected>gewählter Spieltag</option>
+<option value="1">1. Spieltag</option>
+<option value="2">2. Spieltag</option>
+<option value="3">3. Spieltag</option>
+<option value="4">4. Spieltag</option>
+<option value="5">5. Spieltag</option>
+<option value="6">6. Spieltag</option>
+<option value="7">7. Spieltag</option>
+<option value="8">8. Spieltag</option>
+<option value="9">9. Spieltag</option>
+<option value="10">10. Spieltag</option>
+</select>
+</td>
+</tr>
+<tr>
+<td colspan="19" align="center">
+<acronym title="Soll der News-Ticker über der Liga angezeigt werden? (Für Einzeldarstellung des Ticker bitte in die Hilfedatei schauen)">Ticker anzeigen?</acronym>
+<select tabindex="3014" class="lmo-formular-input" name="xnticker" onChange="dolmoedit()">
+<option value="1" selected>Ja</option>
+<option value="0">Nein</option>
+</select>
+</td>
+</tr>
+<tr>
+<td colspan="19" align="center">
+<acronym title="Hier kommen die News für Ihren Ticker rein (immer 1 Meldung pro Zeile, bitte keine Leerzeilen lassen)">Tickertext: </acronym>
+<textarea tabindex="3015" class="lmo-formular-input" name="xnlines" cols="50" rows="4" onChange="dolmoedit()">Erste ZeilennZweite Zeile mit O'Neilln </textarea>
+</td>
+</tr>
+<tr>
+<th style="text-align:center" colspan="19" align="center">
+<input title="Klicken Sie hier, um Ihre Änderungen zu speichern" tabindex="3016" class="lmo-formular-button" type="submit" name="best" value="Spieltag und Ticker speichern">
+</th>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="lmoFooter" align="left">
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Bosanski" title="Bosanski">
+<img src="http://lmo.test/lmo/img/Bosanski.svg" height="16" style="margin-right:1mm" title="Bosanski" alt="Bosanski">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Cestina" title="Cestina">
+<img src="http://lmo.test/lmo/img/Cestina.svg" height="16" style="margin-right:1mm" title="Cestina" alt="Cestina">
+</a>
+<img src="http://lmo.test/lmo/img/Deutsch.selected.svg" height="16" border="0" title="Deutsch" alt="Deutsch">
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=English" title="English">
+<img src="http://lmo.test/lmo/img/English.svg" height="16" style="margin-right:1mm" title="English" alt="English">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Espanol" title="Espanol">
+<img src="http://lmo.test/lmo/img/Espanol.svg" height="16" style="margin-right:1mm" title="Espanol" alt="Espanol">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Francais" title="Francais">
+<img src="http://lmo.test/lmo/img/Francais.svg" height="16" style="margin-right:1mm" title="Francais" alt="Francais">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Hrvatski" title="Hrvatski">
+<img src="http://lmo.test/lmo/img/Hrvatski.svg" height="16" style="margin-right:1mm" title="Hrvatski" alt="Hrvatski">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Italiano" title="Italiano">
+<img src="http://lmo.test/lmo/img/Italiano.svg" height="16" style="margin-right:1mm" title="Italiano" alt="Italiano">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Magyar" title="Magyar">
+<img src="http://lmo.test/lmo/img/Magyar.svg" height="16" style="margin-right:1mm" title="Magyar" alt="Magyar">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Nederlands" title="Nederlands">
+<img src="http://lmo.test/lmo/img/Nederlands.svg" height="16" style="margin-right:1mm" title="Nederlands" alt="Nederlands">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Norsk" title="Norsk">
+<img src="http://lmo.test/lmo/img/Norsk.svg" height="16" style="margin-right:1mm" title="Norsk" alt="Norsk">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Portugues" title="Portugues">
+<img src="http://lmo.test/lmo/img/Portugues.svg" height="16" style="margin-right:1mm" title="Portugues" alt="Portugues">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Romanian" title="Romanian">
+<img src="http://lmo.test/lmo/img/Romanian.svg" height="16" style="margin-right:1mm" title="Romanian" alt="Romanian">
+</a>
+<a href="/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/special.l98&amp;st=3&amp;lmouserlang=Slovenskega" title="Slovenskega">
+<img src="http://lmo.test/lmo/img/Slovenskega.svg" height="16" style="margin-right:1mm" title="Slovenskega" alt="Slovenskega">
+</a>>>
+<a href="http://lmo.test/lmo/lang/lmo-admintranslate.php" class="lmo-lang-edit" title="Translation-Tool">
+<img src="http://lmo.test/lmo/img/pencil.svg" height="20" alt="Edit">
+</a>
+</td>
+</tr>
+<tr>
+<td align="left">
+<a href="http://lmo.test/lmo/lmo.php?file=golden/special.l98" target="_blank" title="So sehen Ihre Besucher das Script (wird in einem neuen Fenster geöffnet)">« zur Besucheransicht</a>
+</td>
+<td class="lmoFooter" align="right">Dauer Berechnungen u. Seitenaufbau: {ZEIT} sek.</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
+--- Dateiaenderungen ---
+(keine)
+
+=== oeffentliche Ergebnisse Spieltag 2 ===
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>special</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" rel="stylesheet" href="http://lmo.test/lmo/lmo-style-nc.php">
+<style type="text/css">@import url("http://lmo.test/lmo/lmo-style.php");</style>
+</head>
+<body>
+<div align="center">
+<table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td colspan="2" align="center">
+<h1>special</h1>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<script type="text/javascript" src="http://lmo.test/lmo/js/jquery.min.js">
+</script>
+<script type="text/javascript" src="http://lmo.test/lmo/js/jquery.marquee.min.js">
+</script>
+<script type="text/javascript"> $(function(){$('.marquee').marquee();}); </script>
+<div align="center">
+<p>Alle Ergebnisse des letzten Spieltages</p>
+<div data-duration="5000" class="marquee" style="width: 40em; overflow: hidden; background-color: var(--bs-secondary-bg-subtle);"> +++ special (6.Spieltag): Mannschaft 6 - Mannschaft 5 1:3 (i.E.) +++ Mannschaft 4 - Mannschaft 6 0:2 (i.E.) +++ </div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="lmoMenu" align="left">
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=cal&amp;st=2" title="Anzeige des Kalenders der Liga">Kalender</a>&nbsp;&nbsp;Ergebnisse/Tabelle&nbsp;&nbsp;<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=program" title="Anzeige des Spielplans einer bestimmten Mannschaft">Spielpläne</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=cross" title="Anzeige aller Ergebnisse auf einen Blick">Kreuztabelle</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=graph" title="Anzeige der Fieberkurven">Fieberkurven</a>&nbsp;&nbsp;<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=stats&amp;stat1=0&amp;stat2=0" title="Anzeige der Statistiken und Prognosen">Ligastatistik</a>&nbsp;&nbsp;&nbsp;&nbsp;<td class="lmoMenu" align="right">
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=info" title="Informationen zu diesem PHP-Script und seinem Autor">Info</a>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="center">
+<table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align='center'>
+<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=1" title="auf diesen Spieltag wechseln">01</a>&nbsp;</td>
+<td align='center'>02&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=3" title="auf diesen Spieltag wechseln">03</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=4" title="auf diesen Spieltag wechseln">04</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=5" title="auf diesen Spieltag wechseln">05</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=6" title="auf diesen Spieltag wechseln">06</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=7" title="auf diesen Spieltag wechseln">07</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=8" title="auf diesen Spieltag wechseln">08</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=9" title="auf diesen Spieltag wechseln">09</a>&nbsp;</td>
+<td align='center'>
+<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=10" title="auf diesen Spieltag wechseln">10</a>&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align="center">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<th colspan="13" align="left">2. Spieltag</th>
+</tr>
+<tr>
+<td class="nobr">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<a href="/lmo/lmo.php?action=program&amp;file=golden/special.l98&amp;selteam=2" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 2</a>&nbsp;</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">&nbsp;<a href="/lmo/lmo.php?action=program&amp;file=golden/special.l98&amp;selteam=6" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 6</a>
+</td>
+<td width="2">&nbsp;</td>
+<td align="right">0</td>
+<td align="center" width="8">:</td>
+<td align="left">2</td>
+<td width="2">&nbsp;</td>
+<td>
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr">
+</td>
+</tr>
+<tr>
+<td class="nobr">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<a href="/lmo/lmo.php?action=program&amp;file=golden/special.l98&amp;selteam=4" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 4</a>&nbsp;</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">&nbsp;<a href="/lmo/lmo.php?action=program&amp;file=golden/special.l98&amp;selteam=1" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 1</a>
+</td>
+<td width="2">&nbsp;</td>
+<td align="right">3</td>
+<td align="center" width="8">:</td>
+<td align="left">0</td>
+<td width="2">&nbsp;</td>
+<td>(n.V.)</td>
+<td width="2">&nbsp;</td>
+<td class="nobr">
+</td>
+</tr>
+<tr>
+<td class="nobr">
+</td>
+<td width="2">&nbsp;</td>
+<td class="nobr" align="right">
+<a href="/lmo/lmo.php?action=program&amp;file=golden/special.l98&amp;selteam=5" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 5</a>&nbsp;</td>
+<td align="center" width="10">-</td>
+<td class="nobr" align="left">&nbsp;<a href="/lmo/lmo.php?action=program&amp;file=golden/special.l98&amp;selteam=3" title="Hier gehts zum Spielplan der Mannschaft">Mannschaft 3</a>
+</td>
+<td width="2">&nbsp;</td>
+<td align="right">0</td>
+<td align="center" width="8">:</td>
+<td align="left">1</td>
+<td width="2">&nbsp;</td>
+<td>(i.E.)</td>
+<td width="2">&nbsp;</td>
+<td class="nobr">
+<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="&lt;strong&gt;Mannschaft 5 - Mannschaft 3&amp;nbsp;&amp;nbsp;0:1&lt;/strong&gt;&amp;nbsp;(i.E.)&lt;br&gt;&lt;strong&gt;Grüne-Tisch-Entscheidung:&lt;/strong&gt;Mannschaft 5&amp;nbsp;bekam den Sieg zugesprochen&lt;br&gt;" class="tooltip-trigger">
+<img src="http://lmo.test/lmo/img/lmo-st2.svg" height="15" class="svg-no-style" alt="">
+</span>
+</td>
+</tr>
+<tr>
+<td class="lmoFooter" align="center" width="100%" colspan="13">&nbsp;Tore: 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tore/Spiel: 2</td>
+</tr>
+<tr>
+<td align="center" width="100%" colspan="13">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="left">&nbsp;<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=1" title="vorheriger Spieltag">« vorheriger Spieltag</a>&nbsp;</td>
+<td align="right">&nbsp;<a href="/lmo/lmo.php?action=results&amp;tabtype=0&amp;file=golden/special.l98&amp;st=3" title="nächster Spieltag">nächster Spieltag »</a>&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align="center">
+<table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
+<caption>Tabelle&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/special.l98&amp;endtab=2&amp;st=2&amp;tabtype=1" title="die Heimbilanz anzeigen">Heim</a>&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/special.l98&amp;endtab=2&amp;st=2&amp;tabtype=2" title="die Auswärtsbilanz anzeigen">Auswärts</a>&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/special.l98&amp;endtab=2&amp;st=2&amp;tabtype=4" title="Hinrunde">Hinrunde</a>&nbsp;<a href="/lmo/lmo.php?action=results&amp;file=golden/special.l98&amp;endtab=2&amp;st=2&amp;tabtype=3" title="Rückrunde">Rückrunde</a>
+</caption>
+<tr>
+<th style="text-align:left" colspan="7">2. Spieltag&nbsp;</th>
+<th style="text-align:center">
+<acronym title="Spiele">Sp.</acronym>
+</th>
+<th style="text-align:center">
+<acronym title="Sieg">s</acronym>
+</th>
+<th style="text-align:right">
+<acronym title="Unentschieden">u</acronym>
+</th>
+<th style="text-align:enter">
+<acronym title="Niederlage">n</acronym>
+</th>
+<th style="width:2px;">&nbsp;</th>
+<th style="text-align:center" colspan="3">Tore</th>
+<th style="text-align:right">Diff.</th>
+<th style="width:2px;">&nbsp;</th>
+<th align="right">Pkt.</th>
+</tr>
+<tr>
+<td class="nobr" align="right">1</td>
+<td class="nobr">
+<img src='http://lmo.test/lmo/img/lmo-tab1.gif' width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">
+</td>
+<td class="nobr" align="left">Mannschaft 6</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">2</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">3</td>
+<td class="nobr" align="center" style="width:4px;">:</td>
+<td class="nobr">1</td>
+<td class="nobr" align="right">2</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>4</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr" align="right">2</td>
+<td class="nobr">
+<img src='http://lmo.test/lmo/img/lmo-tab2.gif' width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">
+</td>
+<td class="nobr" align="left">Mannschaft 5</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">2</td>
+<td class="nobr" align="right">2</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" align="center" style="width:4px;">:</td>
+<td class="nobr">1</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>4</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr" align="right">3</td>
+<td class="nobr">
+<img src='http://lmo.test/lmo/img/lmo-tab0.gif' width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">
+</td>
+<td class="nobr" align="left">Mannschaft 4</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">2</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">4</td>
+<td class="nobr" align="center" style="width:4px;">:</td>
+<td class="nobr">1</td>
+<td class="nobr" align="right">3</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>3</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr" align="right">4</td>
+<td class="nobr">
+<img src='http://lmo.test/lmo/img/lmo-tab0.gif' width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">
+</td>
+<td class="nobr" align="left">Mannschaft 1</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">2</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="right">2</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" style="width:4px;">:</td>
+<td class="nobr">4</td>
+<td class="nobr" align="right">-4</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>2</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr" align="right">5</td>
+<td class="nobr">
+<img src='http://lmo.test/lmo/img/lmo-tab0.gif' width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">
+</td>
+<td class="nobr" align="left">Mannschaft 3</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" align="center" style="width:4px;">:</td>
+<td class="nobr">0</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>1</strong>
+</td>
+</tr>
+<tr>
+<td class="nobr" align="right">6</td>
+<td class="nobr">
+<img src='http://lmo.test/lmo/img/lmo-tab0.gif' width="9" height="9" border="0" alt="">
+</td>
+<td class="nobr" align="center">
+</td>
+<td class="nobr" align="left">Mannschaft 2</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr">&nbsp;</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="right">1</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">0</td>
+<td class="nobr" align="center" style="width:4px;">:</td>
+<td class="nobr">2</td>
+<td class="nobr" align="right">-2</td>
+<td class="nobr" style="width:2px;">&nbsp;</td>
+<td class="nobr" align="right">
+<strong>0</strong>
+</td>
+</tr>
+<tr>
+<td class="lmoFooter" align="center" colspan="22">&nbsp;Gesamt-Tore: 60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tore&nbsp;/Spiel: 2.5</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="center">
+<a href="http://lmo.test/lmo/output/special.l98-st.html" title="Zeigt eine Druckansicht des aktuellen Spieltags an">Aktuellen Spieltag drucken</a>&nbsp; </td>
+<td align="center">
+<a href="http://lmo.test/lmo/output/special.l98-sp.html" title="Zeigt eine Druckansicht des kompletten Spielplan an">Ligaspielplan drucken</a>&nbsp; </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="lmoFooter" colspan="2" align="left">
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Bosanski" title="Bosanski">
+<img src="http://lmo.test/lmo/img/Bosanski.svg" height="16" style="margin-right:1mm" title="Bosanski" alt="Bosanski">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Cestina" title="Cestina">
+<img src="http://lmo.test/lmo/img/Cestina.svg" height="16" style="margin-right:1mm" title="Cestina" alt="Cestina">
+</a>
+<img src="http://lmo.test/lmo/img/Deutsch.selected.svg" height="16" border="0" title="Deutsch" alt="Deutsch">
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=English" title="English">
+<img src="http://lmo.test/lmo/img/English.svg" height="16" style="margin-right:1mm" title="English" alt="English">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Espanol" title="Espanol">
+<img src="http://lmo.test/lmo/img/Espanol.svg" height="16" style="margin-right:1mm" title="Espanol" alt="Espanol">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Francais" title="Francais">
+<img src="http://lmo.test/lmo/img/Francais.svg" height="16" style="margin-right:1mm" title="Francais" alt="Francais">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Hrvatski" title="Hrvatski">
+<img src="http://lmo.test/lmo/img/Hrvatski.svg" height="16" style="margin-right:1mm" title="Hrvatski" alt="Hrvatski">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Italiano" title="Italiano">
+<img src="http://lmo.test/lmo/img/Italiano.svg" height="16" style="margin-right:1mm" title="Italiano" alt="Italiano">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Magyar" title="Magyar">
+<img src="http://lmo.test/lmo/img/Magyar.svg" height="16" style="margin-right:1mm" title="Magyar" alt="Magyar">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Nederlands" title="Nederlands">
+<img src="http://lmo.test/lmo/img/Nederlands.svg" height="16" style="margin-right:1mm" title="Nederlands" alt="Nederlands">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Norsk" title="Norsk">
+<img src="http://lmo.test/lmo/img/Norsk.svg" height="16" style="margin-right:1mm" title="Norsk" alt="Norsk">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Portugues" title="Portugues">
+<img src="http://lmo.test/lmo/img/Portugues.svg" height="16" style="margin-right:1mm" title="Portugues" alt="Portugues">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Romanian" title="Romanian">
+<img src="http://lmo.test/lmo/img/Romanian.svg" height="16" style="margin-right:1mm" title="Romanian" alt="Romanian">
+</a>
+<a href="/lmo/lmo.php?file=golden/special.l98&amp;action=results&amp;st=2&amp;lmouserlang=Slovenskega" title="Slovenskega">
+<img src="http://lmo.test/lmo/img/Slovenskega.svg" height="16" style="margin-right:1mm" title="Slovenskega" alt="Slovenskega">
+</a>>>
+<a href="http://lmo.test/lmo/lang/lmo-admintranslate.php" class="lmo-lang-edit" title="Translation-Tool">
+<img src="http://lmo.test/lmo/img/pencil.svg" height="20" alt="Edit">
+</a>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td valign="bottom" align="left">
+<a href="/lmo/lmo.php?subdir=golden/" title="Hier können Sie sich eine andere Liga laden">« zur Ligenübersicht</a>&nbsp;&nbsp;&nbsp;</td>
+<td class="lmoFooter" valign="bottom" align="right">Letztes Update der Liga:&nbsp;{STAND}<br>
+<a href="https://www.liga-manager-online.org" target="_blank" class="lmo-link-trigger" data-info="<strong>Liga Manager Online</strong>This is a clone of the original Liga Manager Online.<br>
+<b>Adapted for PHP 8.</b>
+<br>Clicking this link will take you to the website of the new project." onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()">LMO 4 for PHP8</a>&nbsp;-&nbsp;<span class="lmo-text-trigger" data-info="<strong>Liga Manager Online</strong>The original Liga Manager Online project on the website www.liga-manager-online.de was discontinued at the end of 2025." onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()">© 1997-now LMO-Group</span>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!-- Dieser Container dient als das schwebende Fenster -->
+<div id="globalLMOTooltip" class="lmo-smart-tooltip">
+</div>
+<script> // Das Tooltip-Element referenzieren const sportTooltip = document.getElementById("globalLMOTooltip"); function showLMOTooltip(element) { // Text aus dem data-info Attribut auslesen const infoText = element.getAttribute("data-info"); if (!infoText) return; // Inhalt in das Fenster schreiben und sichtbar machen sportTooltip.innerHTML = infoText; sportTooltip.style.visibility = "visible"; sportTooltip.style.opacity = "1"; // Position des SVG-Icons auf dem Bildschirm ermitteln const rect = element.getBoundingClientRect(); const winW = window.innerWidth; const winH = window.innerHeight; // Standard-Position: Direkt unter dem Icon (8px Abstand) let top = rect.bottom + window.scrollY + 8; let left = rect.left + window.scrollX; // Fixed Koordinaten sportTooltip.style.position = "fixed"; top = rect.bottom + 8; left = rect.left; // AUTO-KORREKTUR: Unten if (top + sportTooltip.offsetHeight> winH) { // Über dem Icon anzeigen top = rect.top - sportTooltip.offsetHeight - 8; } // AUTO-KORREKTUR: Rechts if (left + sportTooltip.offsetWidth> winW) { // Nach links verschieben, mit 15px Sicherheitsabstand zum Rand left = winW - sportTooltip.offsetWidth - 15; } // Falls das Icon ganz links am Rand ist, Mindestabstand einhalten if (left < 10) left = 10; // Positionswerte zuweisen sportTooltip.style.top = top + "px"; sportTooltip.style.left = left + "px"; } function hideLMOTooltip() { // Fenster wieder ausblenden sportTooltip.style.visibility = "hidden"; sportTooltip.style.opacity = "0"; } </script>
+</body>
+</html>
+--- Dateiaenderungen ---
+NEU output/special.l98-sp.html (13197 Bytes)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>special</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+  <style type="text/css">
+    body {background:#fff; color:#000; font:10pt sans-serif;}
+    caption, p, h1 {margin:3pt auto; text-align:center;}
+    table {margin:auto; max-width:200mm;}
+    #tabelle{border:1pt solid #000; border-radius:6px; margin:2pt auto;}
+    table table {border:1pt solid #000; margin:20pt 0 2pt; border-radius:6px; auto; width:100%;}
+    td {padding:10; white-space:nowrap;}
+    th {border-bottom:1px solid #000;}
+    h1 {font:14pt bolder;}
+    caption {font-weight:bolder; white-space:nowrap;}
+  </style>
+</head>
+<body>
+  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;">zurück<\/a><\/small>');</script>
+  <h1>special</h1>
+  <table>
+    <tr>
+      <td>
+        <table>
+        <caption>1.  Spieltag</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 1</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 5&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">1</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 3</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 2&nbsp;</td>
+            <td align="right">_</td>
+            <td>:</td>
+            <td align="left">_</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 6</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 4&nbsp;</td>
+            <td align="right">1</td>
+            <td>:</td>
+            <td align="left">1</td>
+          </tr>
+        </table>
+        <table>
+        <caption>2.  Spieltag</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 2</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 6&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">2</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 4</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 1&nbsp;</td>
+            <td align="right">3</td>
+            <td>:</td>
+            <td align="left">0</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 5</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 3&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">1</td>
+          </tr>
+        </table>
+        <table>
+        <caption>3.  Spieltag</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 1</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 3&nbsp;</td>
+            <td align="right">4</td>
+            <td>:</td>
+            <td align="left">0</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 4</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 2&nbsp;</td>
+            <td align="right">1</td>
+            <td>:</td>
+            <td align="left">1</td>
+            <td width="2">/</td>
+            <td align="right">1</td>
+            <td align="center" width="8">:</td>
+            <td align="left">1</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 6</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 5&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">_</td>
+          </tr>
+        </table>
+        <table>
+        <caption>4.  Spieltag - 01.03.2025 bis 09.03.2025</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 3</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 6&nbsp;</td>
+            <td align="right">2</td>
+            <td>:</td>
+            <td align="left">3</td>
+          </tr>
+          <tr>
+            <td>08.03.2025 15:00&nbsp;</td>
+            <td align="right">Mannschaft 1</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 2&nbsp;</td>
+            <td align="right">1</td>
+            <td>:</td>
+            <td align="left">2</td>
+          </tr>
+          <tr>
+            <td>09.03.2025 18:45&nbsp;</td>
+            <td align="right">Mannschaft 5</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 4&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">1</td>
+          </tr>
+        </table>
+        <table>
+        <caption>5.  Spieltag - 15.03.2025 bis 16.03.2025</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 4</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 3&nbsp;</td>
+            <td align="right">1</td>
+            <td>:</td>
+            <td align="left">1</td>
+          </tr>
+          <tr>
+            <td>15.03.2025 14:00&nbsp;</td>
+            <td align="right">Mannschaft 2</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 5&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">3</td>
+          </tr>
+          <tr>
+            <td>16.03.2025 16:00&nbsp;</td>
+            <td align="right">Mannschaft 6</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 1&nbsp;</td>
+            <td align="right">_</td>
+            <td>:</td>
+            <td align="left">_</td>
+          </tr>
+        </table>
+        <table>
+        <caption>6.  Spieltag</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 6</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 5&nbsp;</td>
+            <td align="right">1</td>
+            <td>:</td>
+            <td align="left">3</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 4</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 6&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">2</td>
+          </tr>
+        </table>
+        <table>
+        <caption>7.  Spieltag</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 6</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 2&nbsp;</td>
+            <td align="right">1</td>
+            <td>:</td>
+            <td align="left">2</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 1</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 4&nbsp;</td>
+            <td align="right">2</td>
+            <td>:</td>
+            <td align="left">0</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 3</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 5&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">2</td>
+          </tr>
+        </table>
+        <table>
+        <caption>8.  Spieltag</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 3</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 1&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">3</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 2</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 4&nbsp;</td>
+            <td align="right">2</td>
+            <td>:</td>
+            <td align="left">3</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 5</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 6&nbsp;</td>
+            <td align="right">1</td>
+            <td>:</td>
+            <td align="left">1</td>
+          </tr>
+        </table>
+        <table>
+        <caption>9.  Spieltag</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 2</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 1&nbsp;</td>
+            <td align="right">1</td>
+            <td>:</td>
+            <td align="left">0</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 6</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 3&nbsp;</td>
+            <td align="right">0</td>
+            <td>:</td>
+            <td align="left">2</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 4</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 5&nbsp;</td>
+            <td align="right">_</td>
+            <td>:</td>
+            <td align="left">_</td>
+          </tr>
+        </table>
+        <table>
+        <caption>10.  Spieltag</caption>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 5</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 2&nbsp;</td>
+            <td align="right">_</td>
+            <td>:</td>
+            <td align="left">_</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 3</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 4&nbsp;</td>
+            <td align="right">3</td>
+            <td>:</td>
+            <td align="left">0</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right">Mannschaft 1</td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td>Mannschaft 6&nbsp;</td>
+            <td align="right">2</td>
+            <td>:</td>
+            <td align="left">0</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <table id="tabelle">
+  <caption>Tabelle</caption>
+    <tr>
+      <th colspan=3>&nbsp;</th>
+      <th>Sp.</th>
+      <th colspan=2>Pkt.&nbsp;</th>
+      <th>Tore&nbsp;</th>
+      <th align="right" >&nbsp;&nbsp;Diff.</th>
+    </tr>
+    <tr>
+      <td align="right">1&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 6&nbsp;</td>
+      <td align="right">2&nbsp;</td>
+      <td align="right">4      </td>
+      <td align="left">&nbsp;</td>      <td align="right">3:1&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;2</td>
+    </tr>
+    <tr>
+      <td align="right">2&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 5&nbsp;</td>
+      <td align="right">2&nbsp;</td>
+      <td align="right">4      </td>
+      <td align="left">&nbsp;</td>      <td align="right">1:1&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;0</td>
+    </tr>
+    <tr>
+      <td align="right">3&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 4&nbsp;</td>
+      <td align="right">2&nbsp;</td>
+      <td align="right">3      </td>
+      <td align="left">&nbsp;</td>      <td align="right">4:1&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;3</td>
+    </tr>
+    <tr>
+      <td align="right">4&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 1&nbsp;</td>
+      <td align="right">2&nbsp;</td>
+      <td align="right">2      </td>
+      <td align="left">&nbsp;</td>      <td align="right">0:4&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;-4</td>
+    </tr>
+    <tr>
+      <td align="right">5&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 3&nbsp;</td>
+      <td align="right">1&nbsp;</td>
+      <td align="right">1      </td>
+      <td align="left">&nbsp;</td>      <td align="right">1:0&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;1</td>
+    </tr>
+    <tr>
+      <td align="right">6&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 2&nbsp;</td>
+      <td align="right">1&nbsp;</td>
+      <td align="right">0      </td>
+      <td align="left">&nbsp;</td>      <td align="right">0:2&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;-2</td>
+    </tr>
+  </table>
+  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;">zurück<\/a><\/small>');</script>
+</body>
+</html>
+NEU output/special.l98-st.html (4775 Bytes)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>special</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+  <style type="text/css">
+    body {background:#fff; color:#000; font:10pt sans-serif;}
+    caption, p, h1 {margin:3pt auto; text-align:center;}
+    table {border:1pt solid #000; border-radius:6px; margin:2pt auto;}
+    td {padding:10; white-space:nowrap;}
+    th {border-bottom:1px solid #000;}
+    h1 {font:14pt bolder;}
+    caption {margin-top:10pt; font-weight:bolder; white-space:nowrap;}
+    @media print {
+      a {display:none;}
+    }
+  </style>
+</head>
+<body>
+  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;">zurück<\/a><\/small>');</script>
+  <h1>special</h1>
+  <table>
+  <caption>2. Spieltag </caption>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="right">Mannschaft 2</td><td></td>
+      <td>-</td>
+      <td></td><td>Mannschaft 6&nbsp;</td>
+      <td align="right">0</td>
+      <td>:</td>
+      <td align="left">2</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="right">Mannschaft 4</td><td></td>
+      <td>-</td>
+      <td></td><td>Mannschaft 1&nbsp;</td>
+      <td align="right">3</td>
+      <td>:</td>
+      <td align="left">0</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="right">Mannschaft 5</td><td></td>
+      <td>-</td>
+      <td></td><td>Mannschaft 3&nbsp;</td>
+      <td align="right">0</td>
+      <td>:</td>
+      <td align="left">1</td>
+    </tr>
+  </table>
+  <table>
+    <caption>Tabelle - 2. Spieltag</caption>
+    <tr>
+      <th colspan=3>&nbsp;</th>
+      <th>Sp.</th>
+      <th colspan=2>Pkt.</th>
+      <th>Tore&nbsp;</th>
+      <th align="right" >&nbsp;&nbsp;Diff.</th>
+    </tr>
+    <tr>
+      <td align="right">1&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 6&nbsp;</td>
+      <td align="right">2&nbsp;</td>
+      <td align="right">4</td>
+      <td align="left">&nbsp;</td>      <td align="right">3:1&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;2</td>
+    </tr>
+    <tr>
+      <td align="right">2&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 5&nbsp;</td>
+      <td align="right">2&nbsp;</td>
+      <td align="right">4</td>
+      <td align="left">&nbsp;</td>      <td align="right">1:1&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;0</td>
+    </tr>
+    <tr>
+      <td align="right">3&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 4&nbsp;</td>
+      <td align="right">2&nbsp;</td>
+      <td align="right">3</td>
+      <td align="left">&nbsp;</td>      <td align="right">4:1&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;3</td>
+    </tr>
+    <tr>
+      <td align="right">4&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 1&nbsp;</td>
+      <td align="right">2&nbsp;</td>
+      <td align="right">2</td>
+      <td align="left">&nbsp;</td>      <td align="right">0:4&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;-4</td>
+    </tr>
+    <tr>
+      <td align="right">5&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 3&nbsp;</td>
+      <td align="right">1&nbsp;</td>
+      <td align="right">1</td>
+      <td align="left">&nbsp;</td>      <td align="right">1:0&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;1</td>
+    </tr>
+    <tr>
+      <td align="right">6&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Mannschaft 2&nbsp;</td>
+      <td align="right">1&nbsp;</td>
+      <td align="right">0</td>
+      <td align="left">&nbsp;</td>      <td align="right">0:2&nbsp;</td>
+      <td align="right">&nbsp;&nbsp;-2</td>
+    </tr>
+  </table>
+  <p><small>Hinweis: Tabellenstand ohne vorgezogene Spiele!</small></p>
+  <table>
+  <caption>3. Spieltag</caption>    <tr>
+      <td>&nbsp;&nbsp;</td>
+      <td align="right">Mannschaft 1</td>
+      <td></td>
+      <td>-</td>
+      <td></td>
+      <td>Mannschaft 3&nbsp;</td>
+      <td align="right">4</td>
+      <td>:</td>
+      <td align="left">0</td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;</td>
+      <td align="right">Mannschaft 4</td>
+      <td></td>
+      <td>-</td>
+      <td></td>
+      <td>Mannschaft 2&nbsp;</td>
+      <td align="right">1</td>
+      <td>:</td>
+      <td align="left">1</td>      <td width="2">/</td>
+      <td align="right">1</td>
+      <td align="center" width="8">:</td>
+      <td align="left">1</td>
+
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;</td>
+      <td align="right">Mannschaft 6</td>
+      <td></td>
+      <td>-</td>
+      <td></td>
+      <td>Mannschaft 5&nbsp;</td>
+      <td align="right">0</td>
+      <td>:</td>
+      <td align="left">_</td>
+    </tr>
+  </table>
+  <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;">zurück<\/a><\/small>');</script>
+</body>
+</html>
+

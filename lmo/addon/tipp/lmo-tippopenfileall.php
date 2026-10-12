@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
  * @var string $tippfile Tippdatei des Tippspiels
  *
@@ -31,8 +31,6 @@ if (!defined('PATH_TO_LMO')) {
  * @var mixed $jkwert
  */
 
-// $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
-require(PATH_TO_LMO . '/lmo-ligadaten.php');
   
   
 if ($tippfile == "") {
@@ -65,7 +63,8 @@ while (!feof($datei)) {
 fclose($datei);
 
  
-if ($ligaDaten->lmtype == 0) {
+$lmo_tipp_alle_pokal = $lmo_liga->einstellungen()->istPokal();
+if (!$lmo_tipp_alle_pokal) {
   $jksp = array_pad($array, 116, "");
   $goaltippa = array_pad($array, 116, "");
   $goaltippb = array_pad($array, 116, "");
@@ -97,7 +96,7 @@ for ($i = 1; $i <= count($tippdaten); $i++) {
   $op7 = substr($dum[1], -1)-1;
   $op8 = substr($dum[1], 0, 2);
   $jksp[$op3] = $dum[3];
-  if ($ligaDaten->lmtype == 0) {
+  if (!$lmo_tipp_alle_pokal) {
     if (($op2 == "Round") && ($op8 == "GA")) {
       $goaltippa[$op3][$op4] = $dum[2];
       if ($goaltippa[$op3][$op4] == "") {

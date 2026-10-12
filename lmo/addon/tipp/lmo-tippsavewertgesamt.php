@@ -69,6 +69,8 @@ while ($files = readdir($verz)) {
   }
 }
 closedir($verz);
+// feste Reihenfolge der Ligen: readdir() liefert sie je nach Dateisystem anders
+sort($dummy);
 
 $anzligen = count($dummy);
 $anzligenaus = 0;

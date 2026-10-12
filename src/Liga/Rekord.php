@@ -49,4 +49,30 @@ final class Rekord
             $this->spiele[] = [$spiel, $heimsicht];
         }
     }
+
+    /**
+     * Der Rekord als Anzeigetext, je Spiel eine Zeile (getrennt mit <br>):
+     * "3:0 gegen Mannschaft (H)". Ohne Spiel "&nbsp;".
+     *
+     * @param int $torfaktor Einstellungen::torfaktor()
+     * @param string $gegen Wort zwischen Ergebnis und Gegner (Sprachtext 72)
+     * @param string $daheim Zusatz fuer ein Spiel, das aus Sicht der Heimmannschaft gewertet wurde (Sprachtext 73)
+     * @param string $auswaerts Zusatz fuer ein Auswaertsspiel (Sprachtext 74)
+     * @param string $ohneGegner Name, wenn der Gegner nicht feststeht
+     */
+    public function alsText(int $torfaktor, string $gegen, string $daheim, string $auswaerts, string $ohneGegner = '___'): string
+    {
+        $zeilen = $this->beginntLeer || $this->spiele === [] ? ['&nbsp;'] : [];
+        foreach ($this->spiele as [$spiel, $heimsicht]) {
+            if ($heimsicht) {
+                $gegner = $spiel->gast > 0 ? $spiel->gastMannschaft()->anzeigename() : $ohneGegner;
+                $zeilen[] = $spiel->toreHeimText($torfaktor) . ':' . $spiel->toreGastText($torfaktor) . ' ' . $gegen . ' ' . $gegner . ' ' . $daheim;
+            } else {
+                $gegner = $spiel->heim > 0 ? $spiel->heimMannschaft()->anzeigename() : $ohneGegner;
+                $zeilen[] = $spiel->toreGastText($torfaktor) . ':' . $spiel->toreHeimText($torfaktor) . ' ' . $gegen . ' ' . $gegner . ' ' . $auswaerts;
+            }
+        }
+
+        return implode('<br>', $zeilen);
+    }
 }

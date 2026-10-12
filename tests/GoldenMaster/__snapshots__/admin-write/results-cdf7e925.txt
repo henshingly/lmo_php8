@@ -698,13 +698,7 @@ xmberi0=http://example.org/bericht
 GEAENDERT ligen/golden/basic.l98
 --- vorher
 +++ nachher
-@@ -50,4 +50,5 @@
- 
- [News]
-+NC=0
- 
- [Teams]
-@@ -61,4 +62,14 @@
+@@ -61,4 +61,14 @@
  8=Mannschaft 8
  
 +[Teamm]
@@ -719,7 +713,7 @@ GEAENDERT ligen/golden/basic.l98
 +
  [Teamk]
  1=Manns
-@@ -136,14 +147,14 @@
+@@ -136,14 +146,14 @@
  
  [Round1]
 -D1=
@@ -741,21 +735,21 @@ GEAENDERT ligen/golden/basic.l98
 +AT1=1742059800
  TA2=3
  TB2=4
-@@ -153,5 +164,5 @@
+@@ -153,5 +163,5 @@
  BE2=
  TI2=
 -AT2=0
 +AT2=
  TA3=5
  TB3=2
-@@ -161,5 +172,5 @@
+@@ -161,5 +171,5 @@
  BE3=
  TI3=
 -AT3=0
 +AT3=
  TA4=8
  TB4=6
-@@ -169,5 +180,5 @@
+@@ -169,5 +179,5 @@
  BE4=
  TI4=
 -AT4=0
@@ -2234,7 +2228,7 @@ GEAENDERT ligen/golden/basic.l98
 +Actual=2
  Kegel=0
  HandS=0
-@@ -187,26 +187,27 @@
+@@ -186,26 +186,27 @@
  TA1=2
  TB1=3
 -GA1=0
@@ -2271,7 +2265,7 @@ GEAENDERT ligen/golden/basic.l98
 +AT3=
  TA4=7
  TB4=5
-@@ -216,5 +217,5 @@
+@@ -215,5 +216,5 @@
  BE4=
  TI4=
 -AT4=0

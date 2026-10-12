@@ -23,7 +23,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string|null $st gewaehlter Spieltag
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
@@ -31,15 +30,13 @@ if (!defined('PATH_TO_LMO')) {
  * @var array<int|string, mixed> $text Sprachtexte
  */
 
-// $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
-require(PATH_TO_LMO . '/lmo-ligadaten.php');
   
   
 if ($file != "") {
   if (substr($file, -4) == ".l98") {
     $lmo_pfad=PATH_TO_LMO.'/'.$dirliga.$file;
     $stand=date($defdateformat,filemtime($lmo_pfad));
-    // die ganze Liga: Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\LigaDaten)
+    // die ganze Liga: Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\Rohdaten\Liga)
     $lmo_eintraege=\Lmo\Liga\LigaDatei::lies($lmo_pfad);
     foreach ($lmo_eintraege as list($sekt, $schl, $wert)) {
       if ($sekt == "Options" && $schl == "Actual" && !isset($st)) {
@@ -49,10 +46,8 @@ if ($file != "") {
     if (!isset($st)) {
       $st = 1;
     }
-    $ligaDaten->setzeStartwerte();
-    $ligaDaten->lies($lmo_eintraege,$defdateformat,$text[0],$text[1]);
-    // das Datum des gewaehlten Spieltags in der Form TT.MM.JJJJ
-    $ligaDaten->bereinigeSpieltagsdatum((int)$st-1);
+        // $lmo_liga: die Rohdaten der Liga (Lmo\Liga\Rohdaten\Liga); neue Seiten arbeiten direkt darauf
+    $lmo_liga=\Lmo\Liga\Rohdaten\Liga::ausEintraegen($lmo_eintraege);
     unset($lmo_eintraege,$lmo_pfad);
   }
 }

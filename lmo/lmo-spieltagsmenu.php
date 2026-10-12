@@ -6,6 +6,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
+ * @var \Lmo\Liga\Rohdaten\Liga|null $lmo_liga Rohdaten der geladenen Liga; fehlt, wenn keine geladen ist
  * @var array<int|string, mixed> $text Sprachtexte
  * @var int|string $st gewaehlter Spieltag
  *
@@ -16,22 +17,25 @@ if (!defined('PATH_TO_LMO')) {
 ?>            <table class="lmoSubmenu" cellspacing="0" cellpadding="0" border="0">
               <tr>
 <?php
-if (isset($ligaDaten->anzst)) {
-    for ($i = 1; $i <= $ligaDaten->anzst; $i++) {
-        if ($ligaDaten->lmtype == 1) {
-            if ($i == $ligaDaten->anzst) {
+if (isset($lmo_liga)) {
+    // Spieltage der Liga, im Pokal die Runden
+    $lmo_menu_spieltage = $lmo_liga->einstellungen()->spieltage();
+    $lmo_menu_pokal = $lmo_liga->einstellungen()->istPokal();
+    for ($i = 1; $i <= $lmo_menu_spieltage; $i++) {
+        if ($lmo_menu_pokal) {
+            if ($i == $lmo_menu_spieltage) {
                 $j = $text[364];
                 $k = $text[365];
             }
-            elseif ($i == $ligaDaten->anzst - 1) {
+            elseif ($i == $lmo_menu_spieltage - 1) {
                 $j = $text[362];
                 $k = $text[363];
             }
-            elseif ($i == $ligaDaten->anzst - 2) {
+            elseif ($i == $lmo_menu_spieltage - 2) {
                 $j = $text[360];
                 $k = $text[361];
             }
-            elseif ($i == $ligaDaten->anzst - 3) {
+            elseif ($i == $lmo_menu_spieltage - 3) {
                 $j = $text[358];
                 $k = $text[359];
             }
@@ -62,22 +66,22 @@ if (isset($ligaDaten->anzst)) {
             echo $j;
         }?>&nbsp;</td>
 <?php
-        if (($ligaDaten->anzst > 47) && (($ligaDaten->anzst % 4) == 0)) {
-            if (($i == $ligaDaten->anzst / 4) || ($i == $ligaDaten->anzst / 2) || ($i == $ligaDaten->anzst / 4 * 3)) {?>
+        if (($lmo_menu_spieltage > 47) && (($lmo_menu_spieltage % 4) == 0)) {
+            if (($i == $lmo_menu_spieltage / 4) || ($i == $lmo_menu_spieltage / 2) || ($i == $lmo_menu_spieltage / 4 * 3)) {?>
               </tr>
               <tr>
 <?php
             }
         }
-        elseif (($ligaDaten->anzst > 35)) {
-            if (($i == ceil($ligaDaten->anzst / 3)) || ($i == ceil($ligaDaten->anzst / 3 * 2))) {?>
+        elseif (($lmo_menu_spieltage > 35)) {
+            if (($i == ceil($lmo_menu_spieltage / 3)) || ($i == ceil($lmo_menu_spieltage / 3 * 2))) {?>
               </tr>
               <tr>
 <?php
             }
         }
-        elseif (($ligaDaten->anzst > 23)) {
-            if ($i == ceil($ligaDaten->anzst / 2)) {?>
+        elseif (($lmo_menu_spieltage > 23)) {
+            if ($i == ceil($lmo_menu_spieltage / 2)) {?>
               </tr>
               <tr>
 <?php

@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var int $lmo_tipp_spieltage Anzahl der Spieltage (lmo-tipptabelle.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
  *
@@ -45,7 +45,7 @@ if (!defined('PATH_TO_LMO')) {
   
 if (file_exists($auswertfile)){
   $datei = fopen($auswertfile,"rb");
-  $ligaDaten->anzteams=0;
+  $lmo_tipp_vereine=0;
 
   if ($datei!=false){
     $tippdaten=array("");
@@ -57,7 +57,7 @@ if (file_exists($auswertfile)){
       if ((substr($zeile,0,1)=="[") && (substr($zeile,-1)=="]")){
         $sekt=trim(substr($zeile,1,-1));
         array_push($tippdaten,$sekt."|||EOL");
-        $ligaDaten->anzteams++;
+        $lmo_tipp_vereine++;
       } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
         //elseif ((strpos($zeile,"=")!=false) && (substr($zeile,0,1)!=";")){
         $schl=trim(substr($zeile,0,strpos($zeile,"=")));
@@ -70,15 +70,15 @@ if (file_exists($auswertfile)){
   array_shift($tippdaten);
 
   if ($m==0){
-    $team = array_pad($array,$ligaDaten->anzteams+1,"0");
-    $spielegetippt = array_pad($array,$ligaDaten->anzteams+1,"0");
-    $tipppunktegesamt = array_pad($array,$ligaDaten->anzteams+1,"0");
+    $team = array_pad($array,$lmo_tipp_vereine+1,"0");
+    $spielegetippt = array_pad($array,$lmo_tipp_vereine+1,"0");
+    $tipppunktegesamt = array_pad($array,$lmo_tipp_vereine+1,"0");
   
-    for ($i=1;$i<=$ligaDaten->anzteams;$i++){
+    for ($i=1;$i<=$lmo_tipp_vereine;$i++){
       $team[$i]=$i;
     }
     if ($endtab<1){
-      $endtab=$ligaDaten->anzst;
+      $endtab=$lmo_tipp_spieltage;
     }
   }
 
@@ -95,7 +95,7 @@ if (file_exists($auswertfile)){
 
   if ($m==($anztipper-1)){
     $tab0 = array("");
-    for ($a=1;$a<=$ligaDaten->anzteams;$a++){
+    for ($a=1;$a<=$lmo_tipp_vereine;$a++){
       if ($tipppunktegesamt[$a]==""){$tipppunktegesamt[$a]=0;}
       if ($spielegetippt[$a]==""){$spielegetippt[$a]=0;}
       $quote=0;

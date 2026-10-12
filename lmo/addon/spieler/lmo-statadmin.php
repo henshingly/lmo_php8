@@ -23,7 +23,7 @@ require_once(__DIR__ . '/../../init.php');
 /**
  * Diese Datei wird direkt aufgerufen; init.php stellt bereit:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var int|string $st gewaehlter Spieltag
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
@@ -590,8 +590,10 @@ if (isset($file) && $file != '') {
                     <td colspan="2" align="left">
                       <select name="data<?php echo $j1 . '|' . $j2;?>" size="1">
 <?php
-                        for ($j = 0; $j <= $ligaDaten->anzteams; $j++) {?>
-                        <option<?php if (htmlentities($ligaDaten->teams[$j]) == $data[$j1][$j2]) echo ' selected';?>><?php echo htmlentities($ligaDaten->teams[$j]);?></option>
+                        // die Mannschaften der Liga, davor "___" fuer keine
+                        for ($j = 0; $j <= $lmo_liga->einstellungen()->mannschaften(); $j++) {
+                            $lmo_stat_name = $j == 0 ? '___' : ($lmo_liga->mannschaften[$j] ?? new \Lmo\Liga\Rohdaten\Mannschaft())->anzeigename();?>
+                        <option<?php if (htmlentities($lmo_stat_name) == $data[$j1][$j2]) echo ' selected';?>><?php echo htmlentities($lmo_stat_name);?></option>
 <?php
                         }?>
                       </select>

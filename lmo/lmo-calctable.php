@@ -26,7 +26,7 @@ if (!defined('PATH_TO_LMO')) {
  *
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var string $action gewaehlte Seite (Aufrufparameter)
@@ -51,41 +51,21 @@ if ($file != "") {
   if (!isset($newtabtype)) {
     $newtabtype = 0;
   }
-  // Rohdaten aus dem aktuellen Stand von $ligaDaten: im Admin-Bereich ist er neuer als die Datei
-  $lmo_tab_liga = $ligaDaten->alsRohdaten($text[54], $ligaDaten->stx, $text[0], $text[1]);
+  $lmo_tab_liga = $lmo_liga;
   $lmo_tab_e = $lmo_tab_liga->einstellungen();
   $lmo_tab_anzteams = $lmo_tab_e->mannschaften();
   $lmo_tab_faktor = $lmo_tab_e->torfaktor();
 
-  // Rueckrunde beginnt nach der Saisonhaelfte, Hinrunde endet dort
-  $hoy = 0;
-  if ($lmo_tab_anzteams >= 1) {
-    if ($tabtype == 3 || $newtabtype == 3) {
-      $hoy = (int)($lmo_tab_e->spieltage()/2);
-    }
-    if ($tabtype == 4 || $newtabtype == 4) {
-      $endtab = (int)($lmo_tab_e->spieltage()/2);
-    }
+  // Rueckrunde beginnt nach der Saisonhaelfte, Hinrunde endet dort (Tabelle::fuerAnsicht())
+  $lmo_tabelle = \Lmo\Liga\Tabelle::fuerAnsicht($lmo_tab_liga, (int)$tabtype, (int)$endtab, (int)$newtabtype);
+  $hoy = $lmo_tabelle->von - 1;
+  if ($tabtype == 4 || $newtabtype == 4) {
+    $endtab = $lmo_tabelle->bis;
   }
-  $lmo_tabelle = \Lmo\Liga\Tabelle::berechne($lmo_tab_liga, (int)$tabtype, $hoy + 1, (int)$endtab);
 
   $spiele = $siege = $unent = $nieder = $punkte = $negativ = $etore = $atore = $dtore = array_fill(0, $lmo_tab_anzteams + 1, 0);
   $maxs1 = $maxs2 = $maxn1 = $maxn2 = $ser1 = $ser2 = $ser3 = $ser4 = array_fill(0, $lmo_tab_anzteams + 1, 0);
   $maxs0 = $maxn0 = array_fill(0, $lmo_tab_anzteams + 1, "&nbsp;");
-  // hoechster Sieg / hoechste Niederlage als Text: "3:0 gegen Mannschaft (H)", mehrere untereinander
-  $lmo_tab_rekord = static function (\Lmo\Liga\Rekord $lmo_r) use ($text, $lmo_tab_faktor): string {
-    $lmo_zeilen = $lmo_r->beginntLeer || $lmo_r->spiele === array() ? array("&nbsp;") : array();
-    foreach ($lmo_r->spiele as list($lmo_spiel, $lmo_heimsicht)) {
-      if ($lmo_heimsicht) {
-        $lmo_gegner = $lmo_spiel->gast > 0 ? $lmo_spiel->gastMannschaft()->anzeigename() : '___';
-        $lmo_zeilen[] = $lmo_spiel->toreHeimText($lmo_tab_faktor).":".$lmo_spiel->toreGastText($lmo_tab_faktor)." ".$text[72]." ".$lmo_gegner." ".$text[73];
-      } else {
-        $lmo_gegner = $lmo_spiel->heim > 0 ? $lmo_spiel->heimMannschaft()->anzeigename() : '___';
-        $lmo_zeilen[] = $lmo_spiel->toreGastText($lmo_tab_faktor).":".$lmo_spiel->toreHeimText($lmo_tab_faktor)." ".$text[72]." ".$lmo_gegner." ".$text[74];
-      }
-    }
-    return implode("<br>", $lmo_zeilen);
-  };
   // Sortierschluessel wie bisher: je 8 Stellen fuer Punkte, Minuspunkte, Tordifferenz und Tore (Kegelliga: Tore, Tordifferenz)
   $lmo_tab_schluessel = static function (\Lmo\Liga\Tabellenzeile $lmo_z) use ($lmo_tab_e): string {
     return $lmo_tab_e->istKegelliga()
@@ -111,10 +91,10 @@ if ($file != "") {
     $ser4[$a] = $lmo_zeile->serieSieglos;
     $maxs1[$a] = $lmo_zeile->hoechsterSieg->tore;
     $maxs2[$a] = $lmo_zeile->hoechsterSieg->gegentore;
-    $maxs0[$a] = $lmo_tab_rekord($lmo_zeile->hoechsterSieg);
+    $maxs0[$a] = $lmo_zeile->hoechsterSieg->alsText($lmo_tab_faktor, $text[72], $text[73], $text[74]);
     $maxn1[$a] = $lmo_zeile->hoechsteNiederlage->tore;
     $maxn2[$a] = $lmo_zeile->hoechsteNiederlage->gegentore;
-    $maxn0[$a] = $lmo_tab_rekord($lmo_zeile->hoechsteNiederlage);
+    $maxn0[$a] = $lmo_zeile->hoechsteNiederlage->alsText($lmo_tab_faktor, $text[72], $text[73], $text[74]);
     $tab0[] = $lmo_tab_schluessel($lmo_zeile).(50000000+$a);
   }
   rsort($tab0, SORT_STRING);
@@ -148,15 +128,17 @@ if ($file != "") {
   if ($action == "admin") {
     $tab2 = $tab0;
   }
-  if ($ligaDaten->hands == 1 && $tabtype==0) {
+  if ($lmo_tab_e->mitHandicap() && $tabtype==0) {
     if (empty($tabdat) || $action == "admin") {
-      $handb = $ligaDaten->stx-1;
+      $handb = $lmo_tab_e->aktuellerSpieltag()-1;
     } else {
       $handb = $endtab-1;
     }
-    if ($ligaDaten->handp[$handb] != 0) {
-      for ($ih = 0; $ih < $ligaDaten->anzteams; $ih++) {
-        $handd = intval(substr($ligaDaten->handp[$handb], $ih * 2, 2));
+    // Tabellenkorrektur des Spieltags (HS): je Platz zwei Ziffern
+    $lmo_tab_korrektur = $lmo_tab_liga->spieltage[$handb + 1]->werte['HS'] ?? '0';
+    if ($lmo_tab_korrektur != 0) {
+      for ($ih = 0; $ih < $lmo_tab_anzteams; $ih++) {
+        $handd = intval(substr($lmo_tab_korrektur, $ih * 2, 2));
         if ($handd < 10) {
           $handd = "0".$handd;
         }

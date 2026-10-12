@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga|null $lmo_liga Rohdaten der geladenen Liga (lmo-openfilename.php); fehlt, wenn die Datei nicht lesbar war
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  *
@@ -55,6 +55,8 @@ if ($file!="" && $tipp_tippfieber==1){
   if ($fieber_stat1==$fieber_stat2){$fieber_stat2=-1;}
   if (!isset($kurvenmodus)){$kurvenmodus=1;}
   $addg=$_SERVER['PHP_SELF']."?action=tipp&amp;todo=fieber&amp;file=".$file."&amp;stat1=";
+  // Spieltage der Liga, im Pokal die Runden
+  $lmo_tipp_spieltage = isset($lmo_liga) ? $lmo_liga->einstellungen()->spieltage() : 0;
   require(PATH_TO_ADDONDIR."/tipp/lmo-tippcalcgraph.php");
   //echo $anztipper;
 ?>
@@ -151,15 +153,15 @@ if ($file!="" && $tipp_tippfieber==1){
         }
       }
       $dummy=$dummy."&amp;max=".$max;
-      $dummy=$dummy."&amp;pgst=".$ligaDaten->anzst;
+      $dummy=$dummy."&amp;pgst=".$lmo_tipp_spieltage;
       if ($kurvenmodus<4) {
         $dummy=$dummy."&amp;pgplatz1=";
         if ($kurvenmodus==1) {
-          for ($j=0; $j<$ligaDaten->anzst; $j++) {
+          for ($j=0; $j<$lmo_tipp_spieltage; $j++) {
             $dummy.=$tipppunkte[$fieber_stat1][$j].",";
           }
         } else {
-          for ($j=0; $j<$ligaDaten->anzst; $j++) {
+          for ($j=0; $j<$lmo_tipp_spieltage; $j++) {
             $dummy.=$platz[$fieber_stat1][$j].",";
           }
         }
@@ -167,7 +169,7 @@ if ($file!="" && $tipp_tippfieber==1){
       }
       if ($kurvenmodus>2) {
         $dummy=$dummy."&amp;pgplatz1a=";
-        for ($j=0; $j<$ligaDaten->anzst; $j++) {
+        for ($j=0; $j<$lmo_tipp_spieltage; $j++) {
           $dummy.=$platz1[$fieber_stat1][$j].",";
         }
         $dummy.="0";
@@ -176,11 +178,11 @@ if ($file!="" && $tipp_tippfieber==1){
         if ($kurvenmodus<4) {
           $dummy=$dummy."&amp;pgplatz2=";
           if ($kurvenmodus==1) {
-            for ($j=0; $j<$ligaDaten->anzst; $j++) {
+            for ($j=0; $j<$lmo_tipp_spieltage; $j++) {
               $dummy.=$tipppunkte[$fieber_stat2][$j].",";
             }
           } else {
-            for ($j=0; $j<$ligaDaten->anzst; $j++) {
+            for ($j=0; $j<$lmo_tipp_spieltage; $j++) {
               $dummy.=$platz[$fieber_stat2][$j].",";
             }
           }
@@ -188,7 +190,7 @@ if ($file!="" && $tipp_tippfieber==1){
         }
         if ($kurvenmodus>2) {
           $dummy=$dummy."&amp;pgplatz2a=";
-          for ($j=0; $j<$ligaDaten->anzst; $j++) {
+          for ($j=0; $j<$lmo_tipp_spieltage; $j++) {
             $dummy.=$platz1[$fieber_stat2][$j].",";
           }
           $dummy.="0";

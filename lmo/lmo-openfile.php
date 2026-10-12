@@ -23,7 +23,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
  * @var string $defdateformat Datumsformat in date()-Schreibweise (Konfiguration)
@@ -32,10 +31,6 @@ if (!defined('PATH_TO_LMO')) {
  * @var mixed $op3
  */
 
-// $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
-require(PATH_TO_LMO . '/lmo-ligadaten.php');
-
-$ligaDaten->setzeStartwerte();
 $ligastats1=1;
 if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsadmin($file)){
   if (substr($file,-4)==".l98"){
@@ -43,7 +38,6 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
     $datei = file(PATH_TO_LMO.'/'.$dirliga.$file);
     if ($datei) {
       $stand=date($defdateformat,filemtime(PATH_TO_LMO.'/'.$dirliga.$file));
-      $ligaDaten->lmtype=0;
       // Abschnitte, Schluessel und Werte der Datei (Lmo\Liga\LigaDatei)
       $lmo_eintraege=\Lmo\Liga\LigaDatei::zerlege($datei);
       // $st und $stats gehoeren nicht zur Liga: gewaehlter Spieltag (auch Aufrufparameter), Statistik-Schalter
@@ -53,17 +47,13 @@ if (!empty($file) && file_exists(PATH_TO_LMO.'/'.$dirliga.$file) && check_hilfsa
       }
       if (!isset($st)){                         $st=1;}
       if (!isset($stats)){                      $stats=0;}
-      // Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\LigaDaten)
-      // $lmo_liga: die Rohdaten der Liga (Lmo\Liga\Rohdaten\Liga); neue Seiten arbeiten direkt darauf
+      // $lmo_liga: die Rohdaten der Liga (Lmo\Liga\Rohdaten\Liga); alle Seiten arbeiten darauf
       $lmo_liga=\Lmo\Liga\Rohdaten\Liga::ausEintraegen($lmo_eintraege);
-      $ligaDaten->liesRohdaten($lmo_liga,$defdateformat,$text[0],$text[1]);
       unset($lmo_eintraege);
-      if ($ligaDaten->lmtype==0){
-        // eigene Bezeichnung fuer Punkte/Tore gilt auch fuer die Sprachtexte, sonst umgekehrt
-        if ($ligaDaten->namepkt!=""){                      $text[37]=$ligaDaten->namepkt;}
-        else {                                  $ligaDaten->namepkt=$text[37];}
-        if ($ligaDaten->nametor!=""){                      $text[38]=$ligaDaten->nametor;}
-        else {                                  $ligaDaten->nametor=$text[38];}
+      if (!$lmo_liga->istPokal()){
+        // eine eigene Bezeichnung der Liga fuer Punkte/Tore ersetzt die Sprachtexte
+        if (($lmo_liga->optionen['namePkt'] ?? '')!=""){   $text[37]=$lmo_liga->optionen['namePkt'];}
+        if (($lmo_liga->optionen['nameTor'] ?? '')!=""){   $text[38]=$lmo_liga->optionen['nameTor'];}
       }
     } else {
       echo getMessage($text[224],true);

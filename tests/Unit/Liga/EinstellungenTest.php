@@ -4,7 +4,6 @@ namespace Lmo\Tests\Unit\Liga;
 
 use Lmo\Liga\Einstellungen;
 use Lmo\Liga\LigaDatei;
-use Lmo\Liga\LigaDaten;
 use Lmo\Liga\Rohdaten\Liga;
 use PHPUnit\Framework\TestCase;
 
@@ -235,31 +234,5 @@ class EinstellungenTest extends TestCase
         }
 
         return $faelle;
-    }
-
-    /**
-     * Solange die alten Seiten ueber LigaDaten arbeiten, muessen beide dasselbe liefern: jede
-     * Einstellung, die LigaDaten nach dem Laden in einem Feld haelt, hat hier denselben Wert.
-     *
-     * @dataProvider ligadateien
-     */
-    public function testStimmtMitLigaDatenUeberein(string $pfad): void
-    {
-        $eintraege = LigaDatei::lies($pfad);
-        $bruecke = new LigaDaten();
-        $bruecke->setzeStartwerte();
-        $bruecke->lies($eintraege, 'FORMAT DER INSTALLATION', 'n.V.', 'i.E.');
-        $einstellungen = Liga::ausEintraegen($eintraege)->einstellungen();
-
-        /** @var array<string, array{string, string, mixed}> $tabelle */
-        $tabelle = (new \ReflectionClassConstant(LigaDaten::class, 'OPTIONEN'))->getValue();
-        self::assertSame(array_keys($tabelle), Einstellungen::schluessel());
-        foreach ($tabelle as $schluessel => [$feld]) {
-            $erwartet = $bruecke->$feld;
-            if ($schluessel === 'DatF' && $erwartet === 'FORMAT DER INSTALLATION') {
-                $erwartet = null;
-            }
-            self::assertSame($erwartet, $einstellungen->wert($schluessel), $schluessel);
-        }
     }
 }

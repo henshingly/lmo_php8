@@ -132,7 +132,7 @@ if ($action == "tipp") {
   
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." ";if (isset($ligaDaten->titel)){echo $ligaDaten->titel;} ?></h1></td>
+    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0]." ";if (isset($lmo_liga)) {echo $lmo_liga->einstellungen()->name();} ?></h1></td>
   </tr>
   <tr>
     <td colspan="3" align="center"><?php 

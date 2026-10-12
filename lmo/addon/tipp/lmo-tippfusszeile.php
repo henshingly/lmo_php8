@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga|null $lmo_liga Rohdaten der geladenen Liga; fehlt, wenn keine geladen ist
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var string $todo gewaehlte Aktion (Aufrufparameter)
@@ -145,7 +145,7 @@ if (!isset($nw)){
         </tr>
         <tr>
           <td valign="bottom"><?php 
-  if ($file != "" && $ligaDaten->lmtype == 0 && $all != 1) {
+  if ($file != "" && (!isset($lmo_liga) || !$lmo_liga->einstellungen()->istPokal()) && $all != 1) {
     echo "<a href=\"".$_SERVER['PHP_SELF']."?file=".$file."&amp;action=table\">".$text[5]." ".$text['tipp'][99]."</a>&nbsp;&nbsp;&nbsp;<br>";
   }
   if ($todo != "" && $todo != "logout") {

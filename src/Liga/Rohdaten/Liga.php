@@ -180,6 +180,91 @@ final class Liga
     }
 
     /**
+     * Legt hinter der letzten eine neue Mannschaft an und zaehlt die Anzahl der Mannschaften hoch.
+     * Spieltage und Partien bleiben, wie sie sind.
+     *
+     * @return int Nummer der neuen Mannschaft
+     */
+    public function neueMannschaft(string $name): int
+    {
+        $nr = $this->einstellungen()->mannschaften() + 1;
+        $mannschaft = new Mannschaft();
+        $mannschaft->name = $name;
+        $this->mannschaften[$nr] = $mannschaft;
+        $this->optionen['Teams'] = (string) $nr;
+
+        return $nr;
+    }
+
+    /**
+     * Nimmt eine Mannschaft aus der Liga:
+     *  - ihre Partien fallen weg; die uebrigen des Spieltags ruecken auf, hinten kommen leere dazu
+     *  - die Mannschaften hinter ihr bekommen die naechstkleinere Nummer, mit allem, was zu ihnen
+     *    gehoert; die Partien, die Lieblingsmannschaft, die vorgewaehlte Mannschaft und die
+     *    Auswahl der Fieberkurve folgen den neuen Nummern
+     *  - die Anzahl der Mannschaften sinkt um eins; Spieltage und Partien je Spieltag bleiben
+     *
+     * Eine Nummer, die es nicht gibt, aendert nichts.
+     */
+    public function entferneMannschaft(int $nr): void
+    {
+        $e = $this->einstellungen();
+        $anzahl = $e->mannschaften();
+        if ($nr < 1 || $nr > $anzahl) {
+            return;
+        }
+        for ($st = 1; $st <= $e->spieltage(); $st++) {
+            $spieltag = $this->spieltage[$st] ?? null;
+            if ($spieltag === null) {
+                continue;
+            }
+            $partien = $e->partienImSpieltag($st);
+            // Plaetze des Spieltags der Reihe nach; null: steht nicht in der Datei
+            $bleiben = [];
+            for ($p = 1; $p <= $partien; $p++) {
+                $partie = $spieltag->partien[$p] ?? null;
+                if ($partie !== null && ((int) $partie->heim === $nr || (int) $partie->gast === $nr)) {
+                    continue;
+                }
+                $bleiben[] = $partie;
+            }
+            for ($p = 1; $p <= $partien; $p++) {
+                $partie = $p <= count($bleiben) ? $bleiben[$p - 1] : Partie::leer();
+                if ($partie === null) {
+                    unset($spieltag->partien[$p]);
+                    continue;
+                }
+                foreach (['heim', 'gast'] as $seite) {
+                    if ((int) $partie->$seite > $nr) {
+                        $partie->$seite = (string) ((int) $partie->$seite - 1);
+                    }
+                }
+                $spieltag->partien[$p] = $partie;
+            }
+            ksort($spieltag->partien);
+        }
+        // Fieberkurve: faellt die erste Mannschaft weg, rueckt die zweite an ihre Stelle
+        if ((int) ($this->optionen['kurve1'] ?? 0) === $nr) {
+            $this->optionen['kurve1'] = $this->optionen['kurve2'] ?? '0';
+            $this->optionen['kurve2'] = '0';
+        }
+        foreach (['favTeam', 'selTeam', 'kurve1', 'kurve2'] as $schluessel) {
+            $gewaehlt = (int) ($this->optionen[$schluessel] ?? 0);
+            if ($gewaehlt === $nr) {
+                $this->optionen[$schluessel] = '0';
+            } elseif ($gewaehlt > $nr) {
+                $this->optionen[$schluessel] = (string) ($gewaehlt - 1);
+            }
+        }
+        for ($i = $nr; $i < $anzahl; $i++) {
+            $this->mannschaften[$i] = $this->mannschaften[$i + 1] ?? new Mannschaft();
+        }
+        unset($this->mannschaften[$anzahl]);
+        ksort($this->mannschaften);
+        $this->optionen['Teams'] = (string) ($anzahl - 1);
+    }
+
+    /**
      * Die Einstellungen mit ihren Vorgabewerten, so wie der LMO mit ihnen arbeitet.
      * $optionen selbst bleibt, wie es in der Datei steht.
      */

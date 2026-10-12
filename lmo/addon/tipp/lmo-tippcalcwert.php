@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var int $lmo_tipp_spieltage Spieltage der geladenen Liga, 0 in der Gesamtwertung (lmo-tippwert.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
@@ -76,7 +76,7 @@ if (!file_exists($auswertfile)) {
   $datei = fopen($auswertfile, "rb");
   $anztipper = 0;
   $eigpos = -1;
-  $anzst1 = $ligaDaten->anzst;
+  $anzst1 = $lmo_tipp_spieltage;
    
   if ($datei != false) {
     $tippdaten = array();

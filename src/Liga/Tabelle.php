@@ -39,6 +39,12 @@ final class Tabelle
     /** @var list<int> Nummern der Mannschaften vom ersten zum letzten Platz */
     public array $reihenfolge = [];
 
+    /** Erster Spieltag, der in diese Tabelle eingeht */
+    public int $von = 1;
+
+    /** Letzter Spieltag, der in diese Tabelle eingeht */
+    public int $bis = 0;
+
     /** Letzter Spieltag, von dem ein Spiel in diese Tabelle eingegangen ist; 0 = keiner */
     public int $letzterGewerteterSpieltag = 0;
 
@@ -79,6 +85,8 @@ final class Tabelle
         $tabelle = new self($liga, $art);
         $e = $tabelle->einstellungen;
         $bis ??= $e->spieltage();
+        $tabelle->von = $von;
+        $tabelle->bis = $bis;
         $anzahl = $e->mannschaften();
         for ($nr = 1; $nr <= $anzahl; $nr++) {
             $tabelle->zeilen[$nr] = new Tabellenzeile($nr);
@@ -114,6 +122,65 @@ final class Tabelle
     }
 
     /**
+     * Die Tabelle, wie die Seiten des LMO sie waehlen: eine Art bis zu einem Spieltag. Die
+     * Rueckrundentabelle beginnt nach der Saisonhaelfte, die Hinrundentabelle endet dort, was auch
+     * immer als $bis angegeben ist.
+     *
+     * @param int $art GESAMT, HEIM, AUSWAERTS, RUECKRUNDE oder HINRUNDE
+     * @param int $bis Spieltag, bis zu dem gerechnet wird
+     * @param int $einschraenkung RUECKRUNDE oder HINRUNDE schraenkt eine Heim- oder Auswaertstabelle auf diese
+     *                            Saisonhaelfte ein (fuer die Heim- und Auswaertsbilanz neben der Hin- oder Rueckrundentabelle)
+     */
+    public static function fuerAnsicht(Rohdaten\Liga $liga, int $art, int $bis, int $einschraenkung = self::GESAMT): self
+    {
+        $e = $liga->einstellungen();
+        $haelfte = intdiv($e->spieltage(), 2);
+        $von = 1;
+        if ($e->mannschaften() >= 1) {
+            if ($art === self::RUECKRUNDE || $einschraenkung === self::RUECKRUNDE) {
+                $von = $haelfte + 1;
+            }
+            if ($art === self::HINRUNDE || $einschraenkung === self::HINRUNDE) {
+                $bis = $haelfte;
+            }
+        }
+
+        return self::berechne($liga, $art, $von, $bis);
+    }
+
+    /** Platz einer Mannschaft in dieser Tabelle, ab 1; null, wenn sie nicht in der Tabelle steht */
+    public function platz(int $mannschaft): ?int
+    {
+        $platz = array_search($mannschaft, $this->reihenfolge, true);
+
+        return $platz === false ? null : $platz + 1;
+    }
+
+    /**
+     * Die Reihenfolge nach der Handicap-Angabe eines Spieltags (HS): je zwei Ziffern nennen der
+     * Reihe nach fuer den ersten, zweiten ... Platz der Tabelle den Platz, auf dem die Mannschaft
+     * gefuehrt wird. Ohne Angabe (leer oder 0) bleibt die Reihenfolge der Tabelle.
+     *
+     * @param string $handicap Wert HS des Spieltags, z. B. "030102"
+     * @return list<int> Nummern der Mannschaften vom ersten zum letzten Platz
+     */
+    public function reihenfolgeNachHandicap(string $handicap): array
+    {
+        if ($handicap === '' || $handicap == 0) {
+            return $this->reihenfolge;
+        }
+        $schluessel = [];
+        foreach ($this->reihenfolge as $platz => $nr) {
+            // bei gleicher Angabe steht, wer in der Tabelle weiter hinten liegt, zuerst (wie bisher)
+            $schluessel[$nr] = [(int) substr($handicap, $platz * 2, 2), -$platz];
+        }
+        $nummern = $this->reihenfolge;
+        usort($nummern, static fn (int $a, int $b): int => $schluessel[$a] <=> $schluessel[$b]);
+
+        return $nummern;
+    }
+
+    /**
      * Traegt ein gespieltes Spiel bei den beteiligten Mannschaften ein, soweit sie in $zeilen
      * stehen und die Art der Tabelle ihre Seite zaehlt.
      *
@@ -122,7 +189,9 @@ final class Tabelle
      */
     private function werte(Spiel $spiel, array $zeilen): bool
     {
-        if ($spiel->toreHeim === null || $spiel->toreGast === null) {
+        $toreHeim = $spiel->toreHeim;
+        $toreGast = $spiel->toreGast;
+        if ($toreHeim === null || $toreGast === null) {
             return false;
         }
         $e = $this->einstellungen;
@@ -134,20 +203,20 @@ final class Tabelle
         }
         $minus = $e->mitMinuspunkten();
         // Ausgang aus Sicht der Heimmannschaft: 1 = Sieg, 0 = Unentschieden, -1 = Niederlage
-        $nachToren = $spiel->toreHeim <=> $spiel->toreGast;
+        $nachToren = $toreHeim <=> $toreGast;
         $heim = $spiel->wertung === 1 ? 1 : ($spiel->wertung === 2 ? -1 : $nachToren);
         $gezaehlt = false;
 
         if ($this->art !== self::AUSWAERTS && isset($zeilen[$spiel->heim])) {
-            $zeilen[$spiel->heim]->werte($heim, $spiel->toreHeim, $spiel->toreGast, $punkte, $minus, $spiel, true);
+            $zeilen[$spiel->heim]->werte($heim, $toreHeim, $toreGast, $punkte, $minus, $spiel, true);
             $gezaehlt = true;
         }
         if ($this->art !== self::HEIM && isset($zeilen[$spiel->gast]) && $spiel->gast !== $spiel->heim) {
             if ($spiel->wertung === 3) {
                 // gegen beide: auch der Gast bekommt das Ergebnis aus Sicht der Heimmannschaft
-                $zeilen[$spiel->gast]->werte($nachToren, $spiel->toreHeim, $spiel->toreGast, $punkte, $minus, $spiel, true);
+                $zeilen[$spiel->gast]->werte($nachToren, $toreHeim, $toreGast, $punkte, $minus, $spiel, true);
             } else {
-                $zeilen[$spiel->gast]->werte(-$heim, $spiel->toreGast, $spiel->toreHeim, $punkte, $minus, $spiel, false);
+                $zeilen[$spiel->gast]->werte(-$heim, $toreGast, $toreHeim, $punkte, $minus, $spiel, false);
             }
             $gezaehlt = true;
         }

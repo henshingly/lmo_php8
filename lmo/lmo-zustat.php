@@ -23,7 +23,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der Liga: beim Speichern der neue Stand (lmo-saveliga.php), sonst der geladene (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var string $diroutput Ordner fuer erzeugte Dateien (Konfiguration)
@@ -37,7 +37,11 @@ if (!defined('PATH_TO_LMO')) {
 
 $zustatoutput = '';
 if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($generate_zustat)) {
-  if ($ligaDaten->lmtype == 0 && $zustatfile = fopen(PATH_TO_LMO.'/'.$diroutput.basename($file).".php", "wb+")) {
+  $lmo_zustat_einstellungen = $lmo_liga->einstellungen();
+  $lmo_zustat_spieltage = $lmo_zustat_einstellungen->spieltage();
+  $lmo_zustat_partien = $lmo_zustat_einstellungen->partienJeSpieltag();
+  $lmo_zustat_mannschaften = $lmo_zustat_einstellungen->mannschaften();
+  if (!$lmo_zustat_einstellungen->istPokal() && $zustatfile = fopen(PATH_TO_LMO.'/'.$diroutput.basename($file).".php", "wb+")) {
 
     $zustatoutput .= "<?php\n";
     $gzutore = 0;
@@ -101,7 +105,7 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
     $serie_verloren = array();
 
 
-    for ($y1 = 1; $y1 < $ligaDaten->anzst+1; $y1++) {
+    for ($y1 = 1; $y1 < $lmo_zustat_spieltage+1; $y1++) {
       $sptore1 = 0;
       $sptore = 0;
       $zuanzsp = 0;
@@ -112,45 +116,53 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
 
 
 
-      for ($i1 = 0; $i1 < $ligaDaten->anzsp; $i1++) {
+      for ($i1 = 0; $i1 < $lmo_zustat_partien; $i1++) {
         // Partien mit einer Mannschaft, die es in der Liga nicht gibt (z.B. Spielplan aus einer
         // Vorlage mit mehr Mannschaften), zaehlen nicht
-        if (($ligaDaten->teama[$y1-1][$i1] > 0) && ($ligaDaten->teamb[$y1-1][$i1] > 0) && isset($ligaDaten->teams[$ligaDaten->teama[$y1-1][$i1]], $ligaDaten->teams[$ligaDaten->teamb[$y1-1][$i1]])) {
+        $lmo_zustat_spiel = \Lmo\Liga\Spiel::ausRohdaten($lmo_liga, $y1, $i1+1);
+        // Tore als Text: "_" fuer nicht gespielt
+        $lmo_zustat_ga = $lmo_zustat_spiel->toreHeimText();
+        $lmo_zustat_gb = $lmo_zustat_spiel->toreGastText();
+        $lmo_zustat_bekannt = true;
+        foreach (array($lmo_zustat_spiel->heim, $lmo_zustat_spiel->gast) as $lmo_zustat_nr) {
+          if ($lmo_zustat_nr <= 0 || ($lmo_zustat_nr > $lmo_zustat_mannschaften + 1 && !isset($lmo_liga->mannschaften[$lmo_zustat_nr]))) {
+            $lmo_zustat_bekannt = false;
+          }
+        }
+        if ($lmo_zustat_bekannt) {
 
-          $heimteam = $ligaDaten->teams[$ligaDaten->teama[$y1-1][$i1]];
-          $gastteam = $ligaDaten->teams[$ligaDaten->teamb[$y1-1][$i1]];
+          $heimteam = $lmo_zustat_spiel->heimMannschaft()->anzeigename();
+          $gastteam = $lmo_zustat_spiel->gastMannschaft()->anzeigename();
 
           // Abfrage Grüne-Tisch-Entscheidung-Anfang
-          if ($ligaDaten->goala[$y1-1][$i1] == "-1") $ligaDaten->goala[$y1-1][$i1] = "_";
-          if (isset($ligaDaten->msieg)) {
-            if ($ligaDaten->msieg[$y1-1][$i1] == "1") {
+          if ($lmo_zustat_spiel->wertung > 0) {
+            if ($lmo_zustat_spiel->wertung == "1") {
               $zusieg1 = $zusieg1+1;
               $zuunent1 = $zuunent1-1;
             }
-            if ($ligaDaten->msieg[$y1-1][$i1] == "2") {
+            if ($lmo_zustat_spiel->wertung == "2") {
               $zusieg2 = $zusieg2+1;
               $zuunent1 = $zuunent1-1;
             }
-            if ($ligaDaten->msieg[$y1-1][$i1] == "3") {
+            if ($lmo_zustat_spiel->wertung == "3") {
               $gbeide = $gbeide+1;
-              if ($ligaDaten->goala[$y1-1][$i1] > $ligaDaten->goalb[$y1-1][$i1]) {
-                $sptore1 = $sptore1+$ligaDaten->goala[$y1-1][$i1];
+              if ($lmo_zustat_ga > $lmo_zustat_gb) {
+                $sptore1 = $sptore1+$lmo_zustat_ga;
                 $zusieg2 = $zusieg2+1;
-                $ggasttore = $ggasttore+$ligaDaten->goala[$y1-1][$i1];
+                $ggasttore = $ggasttore+$lmo_zustat_ga;
               }
-              if ($ligaDaten->goala[$y1-1][$i1] < $ligaDaten->goalb[$y1-1][$i1]) {
-                $sptore1 = $sptore1+$ligaDaten->goalb[$y1-1][$i1];
+              if ($lmo_zustat_ga < $lmo_zustat_gb) {
+                $sptore1 = $sptore1+$lmo_zustat_gb;
                 $zusieg2 = $zusieg2-1;
-                $gheimtore = $gheimtore+$ligaDaten->goalb[$y1-1][$i1];
+                $gheimtore = $gheimtore+$lmo_zustat_gb;
               }
             }
           }
 
           // Abfrage Grüne-Tisch-Entscheidung-Ende
-          if ($ligaDaten->goalb[$y1-1][$i1] == "-1") $ligaDaten->goalb[$y1-1][$i1] = "_";
 
-          $heimtore = $ligaDaten->goala[$y1-1][$i1];
-          $gasttore = $ligaDaten->goalb[$y1-1][$i1];
+          $heimtore = $lmo_zustat_ga;
+          $gasttore = $lmo_zustat_gb;
           if ($heimtore!='_' &&  $gasttore!='_') {
             // Höchster-Sieg checken-Anfang
             $hsieg = $heimtore-$gasttore;
@@ -384,7 +396,7 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
             $gheimtore = $gheimtore+$heimtore;
             $ggasttore = $ggasttore+$gasttore;
             $sptore1 = $sptore+$sptore1;
-            if ($ligaDaten->goala[$y1-1][$i1] != "_") {
+            if ($lmo_zustat_ga != "_") {
               $zuanzsp = $zuanzsp+1;
               if ($heimtore > $gasttore) $zusieg1 = $zusieg1+1;
               if ($heimtore < $gasttore) $zusieg2 = $zusieg2+1;
@@ -460,18 +472,23 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
     // Höchster Sieg-Reset - Ende
 
     // Anzahl gleicher gewonnener Spiele und torreichstes Spiel- Anfang
-    for ($y1 = 1; $y1 < $ligaDaten->anzst+1; $y1++) {
-      for ($i1 = 0; $i1 < $ligaDaten->anzsp; $i1++) {
-        if ($ligaDaten->goala[$y1-1][$i1] == $hheimsiegtor && $ligaDaten->goala[$y1-1][$i1] == $hheimsiegtor1 && $ligaDaten->goalb[$y1-1][$i1] == $hgastsiegtor && $ligaDaten->goalb[$y1-1][$i1] == $hgastsiegtor1) {
+    for ($y1 = 1; $y1 < $lmo_zustat_spieltage+1; $y1++) {
+      for ($i1 = 0; $i1 < $lmo_zustat_partien; $i1++) {
+        $lmo_zustat_spiel = \Lmo\Liga\Spiel::ausRohdaten($lmo_liga, $y1, $i1+1);
+        // Tore als Text: "_" fuer nicht gespielt
+        $lmo_zustat_ga = $lmo_zustat_spiel->toreHeimText();
+        $lmo_zustat_gb = $lmo_zustat_spiel->toreGastText();
+        if ($lmo_zustat_ga == $hheimsiegtor && $lmo_zustat_ga == $hheimsiegtor1 && $lmo_zustat_gb == $hgastsiegtor && $lmo_zustat_gb == $hgastsiegtor1) {
           $counteranz = $counteranz+1;
         }
 
-        if ($ligaDaten->goala[$y1-1][$i1] == $aheimsiegtor && $ligaDaten->goala[$y1-1][$i1] == $aheimsiegtor1 && $ligaDaten->goalb[$y1-1][$i1] == $agastsiegtor && $ligaDaten->goalb[$y1-1][$i1] == $agastsiegtor1) {
+        if ($lmo_zustat_ga == $aheimsiegtor && $lmo_zustat_ga == $aheimsiegtor1 && $lmo_zustat_gb == $agastsiegtor && $lmo_zustat_gb == $agastsiegtor1) {
           $counteranz1 = $counteranz1+1;
         }
         $setztemp1 = $htorreicht1+$htorreicht2;
-        $setztemp2 = (int)$ligaDaten->goala[$y1-1][$i1]+(int)$ligaDaten->goalb[$y1-1][$i1];
-        if ($setztemp1 == $setztemp2) {
+        $setztemp2 = (int)$lmo_zustat_ga+(int)$lmo_zustat_gb;
+        // nur gespielte Spiele zaehlen
+        if ($lmo_zustat_spiel->istGespielt() && $setztemp1 == $setztemp2) {
           $counteranz5 = $counteranz5+1;
         }
       }

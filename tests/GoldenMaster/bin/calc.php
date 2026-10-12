@@ -42,7 +42,8 @@ $gm_columns = ['spiele', 'siege', 'unent', 'nieder', 'punkte', 'negativ', 'etore
     'maxs0', 'maxs1', 'maxs2', 'maxn0', 'maxn1', 'maxn2', 'ser1', 'ser2', 'ser3', 'ser4'];
 $gm_scalars = ['stt', 'hoy', 'anzcnt', 'subteams'];
 
-$gm_anzst = (int)$anzst;
+// Spieltage der geladenen Liga (Rohdaten aus lmo-openfile.php)
+$gm_anzst = isset($lmo_liga) ? $lmo_liga->einstellungen()->spieltage() : 0;
 $gm_endtabs = $gm_allRounds
     ? range($gm_anzst, 1)
     : array_values(array_unique([$gm_anzst, max(1, $gm_anzst - 1), max(1, intdiv($gm_anzst, 2)), min(3, $gm_anzst), 1]));

@@ -24,7 +24,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string $st gewaehlter Spieltag
@@ -34,38 +34,22 @@ require_once(PATH_TO_LMO . '/lmo-admintest.php');
 if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert'] == 1)) {
     require_once(PATH_TO_LMO . '/lmo-openfile.php');
     if (isset ($save) && $save == 1) {
-        for ($i = 0; $i < $ligaDaten->anzst; $i++) {
-            for ($j = $ligaDaten->anzsp; $j <40; $j++) {
-                $ligaDaten->teama[$i][$j] = 0;
-                $ligaDaten->teamb[$i][$j] = 0;
-                $ligaDaten->goala[$i][$j] = -1;
-                $ligaDaten->goalb[$i][$j] = -1;
-                $ligaDaten->msieg[$i][$j] = 0;
-                $ligaDaten->mterm[$i][$j] = '';
-                $ligaDaten->mnote[$i][$j] = '';
-                $ligaDaten->mberi[$i][$j] = '';
-                $ligaDaten->mspez[$i][$j] = '_';
+        // Was bisher hinter der letzten Partie oder dem letzten Spieltag lag, beginnt leer
+        $lmo_einstellungen = $lmo_liga->einstellungen();
+        $lmo_anz_spieltage = $lmo_einstellungen->spieltage();
+        $lmo_anz_partien = $lmo_einstellungen->partienJeSpieltag();
+        for ($i = 1; $i <= 116; $i++) {
+            for ($j = $i <= $lmo_anz_spieltage ? $lmo_anz_partien + 1 : 1; $j <= 40; $j++) {
+                $lmo_liga->spieltag($i)->partien[$j] = \Lmo\Liga\Rohdaten\Partie::leer();
             }
         }
-        for ($i = $ligaDaten->anzst; $i < 116; $i++) {
-            for ($j = 0; $j < 40; $j++) {
-                $ligaDaten->teama[$i][$j] = 0;
-                $ligaDaten->teamb[$i][$j] = 0;
-                $ligaDaten->goala[$i][$j] = -1;
-                $ligaDaten->goalb[$i][$j] = -1;
-                $ligaDaten->msieg[$i][$j] = 0;
-                $ligaDaten->mterm[$i][$j] = '';
-                $ligaDaten->mnote[$i][$j] = '';
-                $ligaDaten->mberi[$i][$j] = '';
-                $ligaDaten->mspez[$i][$j] = '_';
-            }
+        $lmo_liga->optionen['Rounds'] = trim($_POST['xanzst']);
+        $lmo_liga->optionen['Matches'] = trim($_POST['xanzsp']);
+        // der aktuelle Spieltag liegt hoechstens auf dem letzten
+        if ($lmo_einstellungen->aktuellerSpieltag() > $lmo_liga->optionen['Rounds']) {
+            $lmo_liga->optionen['Actual'] = $lmo_liga->optionen['Rounds'];
         }
-        $ligaDaten->anzst = trim($_POST['xanzst']);
-        $ligaDaten->anzsp = trim($_POST['xanzsp']);
-        if ($ligaDaten->stx > $ligaDaten->anzst) {
-            $ligaDaten->stx = $ligaDaten->anzst;
-        }
-        require(PATH_TO_LMO . '/lmo-savefile.php');
+        require(PATH_TO_LMO . '/lmo-saveliga.php');
     }
     $addr = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=edit&amp;file=' . $file . '&amp;st=';
     $addb = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=tabs&amp;file=' . $file . '&amp;st=';
@@ -96,7 +80,7 @@ if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
                 <tr>
                   <td width="20">&nbsp;</td>
                   <td align="right"><acronym title="<?php echo $text[275]; ?>"><?php echo $text[274]; ?></acronym></td>
-                  <td align="right"><input class="lmo-formular-input" type="text" name="xanzst" size="3" maxlength="3" value="<?php echo $ligaDaten->anzst; ?>" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
+                  <td align="right"><input class="lmo-formular-input" type="text" name="xanzst" size="3" maxlength="3" value="<?php echo $lmo_liga->einstellungen()->wert('Rounds'); ?>" onChange="lmoanzstauf('xanzst',0)" onKeyDown="lmoanzstclk('xanzst',event.keyCode)"></td>
                   <td align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
@@ -111,7 +95,7 @@ if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
                 <tr>
                   <td width="20">&nbsp;</td>
                   <td align="right"><acronym title="<?php echo $text[278]; ?>"><?php echo $text[277]; ?></acronym></td>
-                  <td align="right"><input class="lmo-formular-input" type="text" name="xanzsp" size="2" maxlength="2" value="<?php echo $ligaDaten->anzsp; ?>" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
+                  <td align="right"><input class="lmo-formular-input" type="text" name="xanzsp" size="2" maxlength="2" value="<?php echo $lmo_liga->einstellungen()->wert('Matches'); ?>" onChange="lmoanzspauf('xanzsp',0)" onKeyDown="lmoanzspclk('xanzsp',event.keyCode)"></td>
                   <td align="center">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>

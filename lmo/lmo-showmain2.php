@@ -23,7 +23,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string $st gewaehlter Spieltag
@@ -52,11 +51,17 @@ if (!defined('PATH_TO_LMO')) {
 
 
 $addm = $_SERVER['PHP_SELF'] . '?file=' . $file . '&amp;action=';
+// Einstellungen der geladenen Liga mit Vorgabewerten (Lmo\Liga\Einstellungen). Ohne geladene Liga die einer
+// leeren Liga; eingebundene Seiten und das Tippspiel fuehren ihre eigenen, deshalb ein eigener Name.
+$lmo_main_e = (new \Lmo\Liga\Rohdaten\Liga())->einstellungen();
 if ($file != '') {
     require(PATH_TO_LMO . '/lmo-openfile.php');
+    if ($file != '' && isset($lmo_liga)) {
+        $lmo_main_e = $lmo_liga->einstellungen();
+    }
     if ($file != '') {
         if (empty($_GET['endtab'])) {
-            $endtab = $ligaDaten->anzst;
+            $endtab = $lmo_main_e->spieltage();
             $ste = $st;
             $tabdat = '';
         } else {
@@ -68,8 +73,7 @@ if ($file != '') {
             $tabdat = $st . '. ' . $text[2];
         }
         if (empty($_REQUEST['action']) && $action == '') {
-            if (!isset($ligaDaten->onrun)) $ligaDaten->onrun = '0';
-            switch ($ligaDaten->onrun) {
+            switch ($lmo_main_e->laufendeTabelle()) {
                 case '0': $action = 'results';break;
                 case '1': $action = 'table';break;
                 case '2': $action = 'program';break;
@@ -118,7 +122,7 @@ if (file_exists(PATH_TO_TEMPLATEDIR . '/' . basename($file) . '.tpl.php')) {
 
 // Titel
 if ($file != '') {
-    $output_titel .= $ligaDaten->titel;
+    $output_titel .= $lmo_main_e->name();
 } else {
     $output_titel .= $action == 'tipp' ? $text['tipp'][0] : $text[53];
 }
@@ -196,65 +200,75 @@ if ($einsprachwahl == 1) {
 
 ob_start();
 if ($file != '') {
-    if ($ligaDaten->lmtype == 0) { // Für normale Ligen
+    if (!$lmo_main_e->istPokal()) { // Für normale Ligen
 
         // Kalenderlink
-        if ($ligaDaten->datc == 1) {
+        if ($lmo_main_e->mitKalender()) {
             $output_kalender .= $action != 'cal' ? '<a href="' . $addm . 'cal&amp;st=' . $st . '" title="' . $text[141] . '">' . $text[140] . '</a>' : $text[140];
             $output_kalender .= '&nbsp;&nbsp;';
         }
         // Ergebnis/Tabelle
         if ($tabonres == 0) {
-            if ($ligaDaten->ergebnis == 1) {
+            if ($lmo_main_e->mitErgebnissen()) {
                 $output_ergebnisse .= $action != 'results' ? '<a href="' . $addm . 'results&amp;st=' . $ste . '" title="' . $text[11] . '">' . $text[10] . '</a>' : $text[10];
                 $output_ergebnisse .= '&nbsp;&nbsp;';
             }
-            if ($ligaDaten->tabelle == 1) {
+            if ($lmo_main_e->mitTabelle()) {
                 $output_tabelle .= $action != 'table' ? '<a href="' . $addm . 'table" title="' . $text[17] . '">' . $text[16] . '</a>' : $text[16];
                 $output_tabelle .= '&nbsp;&nbsp;';
             }
             // Kombinierte Ansicht
         } else {
-            if ($ligaDaten->ergebnis == 1) {
+            if ($lmo_main_e->mitErgebnissen()) {
                 $output_ergebnisse .= $action != 'results' && $action != 'table' ? '<a href="' . $addm . 'results" title="' . $text[104] . '">' . $text[10] . '/' . $text[16] . '</a>' : $text[10] . '/' . $text[16];
                 $output_ergebnisse .= '&nbsp;&nbsp;';
             }
         }
 
         // Kreuztabelle
-        if ($ligaDaten->kreuz == 1) {
+        if ($lmo_main_e->mitKreuztabelle()) {
             $output_kreuztabelle .= $action != 'cross' ? '<a href="' . $addm . 'cross" title="' . $text[15] . '">' . $text[14] . '</a>' : $text[14];
             $output_kreuztabelle .= '&nbsp;&nbsp;';
         }
         // Spielplan
-        if ($ligaDaten->plan == 1) {
+        if ($lmo_main_e->mitSpielplan()) {
             $output_spielplan .= $action != 'program' ? '<a href="' . $addm . 'program" title="' . $text[13] . '">' . $text[12] . '</a>' : $text[12];
             $output_spielplan .= '&nbsp;&nbsp;';
         }
         // Fieberkurve
-        if ($ligaDaten->kurve == 1) {
+        if ($lmo_main_e->mitFieberkurve()) {
             $output_fieberkurve .= $action != 'graph' ? '<a href="' . $addm . 'graph" title="' . $text[134] . '">' . $text[133] . '</a>' : $text[133];
             $output_fieberkurve .= '&nbsp;&nbsp;';
         }
-        // Ligastatistiken
-        if ($ligaDaten->ligastats == 1) {
-            $output_ligastatistik .= $action != 'stats' ? '<a href="' . $addm . 'stats&amp;stat1=' . $ligaDaten->stat1 . '&amp;stat2=' . $ligaDaten->stat2 . '" title="' . $text[19] . '">' . $text[18] . '</a>' : $text[18];
+        // Ligastatistiken: die beiden Mannschaften aus dem Seitenaufruf, sonst die der Fieberkurve der Liga;
+        // zweimal dieselbe oder nur die zweite gewaehlt -> sie wird als erste gefuehrt
+        $lmo_main_stat1 = isset($stat1) ? $stat1 : ($lmo_liga->optionen['kurve1'] ?? 0);
+        $lmo_main_stat2 = isset($stat2) ? $stat2 : ($lmo_liga->optionen['kurve2'] ?? 0);
+        if ($lmo_main_stat1 > 0 && $lmo_main_stat1 == $lmo_main_stat2) {
+            $lmo_main_stat2 = 0;
+        }
+        if ($lmo_main_stat1 == 0 && $lmo_main_stat2 > 0) {
+            $lmo_main_stat1 = $lmo_main_stat2;
+            $lmo_main_stat2 = 0;
+        }
+        if ($lmo_main_e->mitLigastatistik()) {
+            $output_ligastatistik .= $action != 'stats' ? '<a href="' . $addm . 'stats&amp;stat1=' . $lmo_main_stat1 . '&amp;stat2=' . $lmo_main_stat2 . '" title="' . $text[19] . '">' . $text[18] . '</a>' : $text[18];
             $output_ligastatistik .= '&nbsp;&nbsp;';
         }
     } else { // Für Pokalligen
 
         // Kalenderlink
-        if ($ligaDaten->datc == 1) {
+        if ($lmo_main_e->mitKalender()) {
             $output_kalender .= $action != 'cal' ? '<a href="' . $addm . 'cal&amp;st=' . $st . '" title="' . $text[141] . '">' . $text[140] . '</a>' : $text[140];
             $output_kalender .= '&nbsp;&nbsp;';
         }
         // Ergebnisse
-        if ($ligaDaten->ergebnis == 1) {
+        if ($lmo_main_e->mitErgebnissen()) {
             $output_ergebnisse .= $action != 'results' ? '<a href="' . $addm . 'results&amp;st=' . $ste . '" title="' . $text[11] . '">' . $text[10] . '</a>' : $text[10];
             $output_ergebnisse .= '&nbsp;&nbsp;';
         }
         // Spielplan
-        if ($ligaDaten->plan == 1) {
+        if ($lmo_main_e->mitSpielplan()) {
             $output_spielplan .= $action != 'program' ? '<a href="' . $addm . 'program" title="' . $text[13] . '">' . $text[12] . '</a>' : $text[12];
             $output_spielplan .= '&nbsp;&nbsp;';
         }
@@ -264,29 +278,29 @@ if ($file != '') {
     $druck = 0;
 
     if ($action != 'tipp') {
-        if ($ligaDaten->lmtype == 0) {
+        if (!$lmo_main_e->istPokal()) {
             // Normale Liga
             switch($action) {
-                case 'cal': if ($ligaDaten->datc == 1) {require(PATH_TO_LMO . '/lmo-cal.php');}break;
-                case 'results': if ($ligaDaten->ergebnis == 1) {$druck = 1;require(PATH_TO_LMO . '/lmo-showrestab.php');}break;
-                case 'table': if ($ligaDaten->tabelle == 1) {$druck = 1;require(PATH_TO_LMO . '/lmo-showrestab.php');}break;
-                case 'cross': if ($ligaDaten->kreuz == 1) {require(PATH_TO_LMO . '/lmo-showcross.php');}break;
-                case 'program': if ($ligaDaten->plan == 1) {require(PATH_TO_LMO . '/lmo-showprogram.php');}break;
-                case 'graph': if ($ligaDaten->kurve == 1) {require(PATH_TO_LMO . '/lmo-showgraph.php');}break;
-                case 'stats': if ($ligaDaten->ligastats == 1) {require(PATH_TO_LMO . '/lmo-showstats.php');}break;
+                case 'cal': if ($lmo_main_e->mitKalender()) {require(PATH_TO_LMO . '/lmo-cal.php');}break;
+                case 'results': if ($lmo_main_e->mitErgebnissen()) {$druck = 1;require(PATH_TO_LMO . '/lmo-showrestab.php');}break;
+                case 'table': if ($lmo_main_e->mitTabelle()) {$druck = 1;require(PATH_TO_LMO . '/lmo-showrestab.php');}break;
+                case 'cross': if ($lmo_main_e->mitKreuztabelle()) {require(PATH_TO_LMO . '/lmo-showcross.php');}break;
+                case 'program': if ($lmo_main_e->mitSpielplan()) {require(PATH_TO_LMO . '/lmo-showprogram.php');}break;
+                case 'graph': if ($lmo_main_e->mitFieberkurve()) {require(PATH_TO_LMO . '/lmo-showgraph.php');}break;
+                case 'stats': if ($lmo_main_e->mitLigastatistik()) {require(PATH_TO_LMO . '/lmo-showstats.php');}break;
                 case '': /*Auswahlseite*/break;
             }
         } else {
             // Pokal Liga
             switch($action) {
-                case 'cal': if ($ligaDaten->datc == 1) {require(PATH_TO_LMO . '/lmo-kocal.php');}break;
-                case 'results': if ($ligaDaten->ergebnis == 1) {require(PATH_TO_LMO . '/lmo-showkoresults.php');}break;
-                case 'program': if ($ligaDaten->plan == 1) {require(PATH_TO_LMO . '/lmo-showkoprogram.php');}break;
+                case 'cal': if ($lmo_main_e->mitKalender()) {require(PATH_TO_LMO . '/lmo-kocal.php');}break;
+                case 'results': if ($lmo_main_e->mitErgebnissen()) {require(PATH_TO_LMO . '/lmo-showkoresults.php');}break;
+                case 'program': if ($lmo_main_e->mitSpielplan()) {require(PATH_TO_LMO . '/lmo-showkoprogram.php');}break;
             }
         }
         // Spieler-Addon
         if ($action == 'spieler') {
-            if ($ligaDaten->mittore == 1) {
+            if ($lmo_main_e->mitToren()) {
                 require(PATH_TO_ADDONDIR .'/spieler/lmo-statshow.php');
             }
         }
@@ -312,15 +326,15 @@ if ($file != '' && isset($stand)) {
         <table width="100%" cellspacing="0" cellpadding="0" border="0">
           <tr>
 <?php
-        if ($ligaDaten->lmtype == 0 && isset($druck) && $druck == 1) {
+        if (!$lmo_main_e->istPokal() && isset($druck) && $druck == 1) {
             include(PATH_TO_LMO . '/lmo-savehtml.php');
             include(PATH_TO_LMO . '/lmo-savehtml1.php');
         }?>
             <td align="center"><?php
-        if ($ligaDaten->lmtype == 0 && isset($druck) && $druck == 1 && file_exists(PATH_TO_LMO . '/' . $diroutput . basename($file) . '-st.html')) {echo '<a href="' . URL_TO_LMO . '/' . $diroutput . basename($file) . '-st.html" title="' . $text[477] . '">' . $text[478] . '</a>&nbsp;';}?>
+        if (!$lmo_main_e->istPokal() && isset($druck) && $druck == 1 && file_exists(PATH_TO_LMO . '/' . $diroutput . basename($file) . '-st.html')) {echo '<a href="' . URL_TO_LMO . '/' . $diroutput . basename($file) . '-st.html" title="' . $text[477] . '">' . $text[478] . '</a>&nbsp;';}?>
             </td>
             <td align="center"><?php
-        if ($ligaDaten->lmtype == 0 && isset($druck) && $druck == 1 && file_exists(PATH_TO_LMO . '/' . $diroutput . basename($file) . '-sp.html')) {echo '<a href="' . URL_TO_LMO . '/' . $diroutput . basename($file) . '-sp.html" title="' . $text[479] . '">' . $text[480] . '</a>&nbsp;';}?>
+        if (!$lmo_main_e->istPokal() && isset($druck) && $druck == 1 && file_exists(PATH_TO_LMO . '/' . $diroutput . basename($file) . '-sp.html')) {echo '<a href="' . URL_TO_LMO . '/' . $diroutput . basename($file) . '-sp.html" title="' . $text[479] . '">' . $text[480] . '</a>&nbsp;';}?>
             </td>
           </tr>
         </table><?php
@@ -347,7 +361,7 @@ if ($calctime == 1) {
 }
 
 // Spieler-Addon
-if ($file != '' && $einspieler == 1 && $ligaDaten->mittore == 1) {
+if ($file != '' && $einspieler == 1 && $lmo_main_e->mitToren()) {
     include(PATH_TO_ADDONDIR . '/spieler/lmo-statloadconfig.php');
     $output_spielerstatistik .= $action != 'spieler' ? '<a href="' . $addm . 'spieler" title="' . $text['spieler'][12] . '">' . $spieler_ligalink . '</a>' : $spieler_ligalink;
     $output_spielerstatistik .= '&nbsp;&nbsp;';
@@ -355,7 +369,7 @@ if ($file != '' && $einspieler == 1 && $ligaDaten->mittore == 1) {
 
 // Ticker-Addon
 $output_newsticker = '';
-if ($file != '' && $ligaDaten->nticker == 1) {
+if ($file != '' && $lmo_main_e->mitNewsticker()) {
     ob_start();
     $tickerligen = $file;
     include(PATH_TO_ADDONDIR . '/ticker/ticker.php');

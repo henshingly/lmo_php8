@@ -63,7 +63,7 @@ final class LeagueFactory
                 'options' => ['MinusPoints' => 2],
                 'wertung' => true,
             ],
-            // Direkter Vergleich (lmo-calctable1.php) mit Kegelwertung, Sonderpunkten, Wertung und Handicap.
+            // Direkter Vergleich (Lmo\Liga\Tabelle) mit Kegelwertung, Sonderpunkten, Wertung und Handicap.
             // Wenige Tore und viele Unentschieden erzeugen Punktgleichheit; nur Tabellenseiten werden geprueft.
             'direct_kegel' => [
                 'teams' => 8, 'played' => 1.0, 'maxGoals' => 1, 'pages' => 'table',

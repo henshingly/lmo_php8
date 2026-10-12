@@ -23,7 +23,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var int|string $st gewaehlter Spieltag
  * @var string $action gewaehlte Seite (Aufrufparameter)
@@ -100,18 +99,16 @@ if ($ftype != "") {
       $t0 = $lmo_optionen['Name'] ?? $t0;
       $t1 = $lmo_optionen['Actual'] ?? $t1;
       $t4 = $lmo_optionen['Teams'] ?? $t4;
-      if (isset($lmo_optionen['Rounds'])) {
-        $ligaDaten->anzst = $lmo_optionen['Rounds'];
-      }
+      // Spieltage dieser Liga, im Pokal die Runden (Lmo\Liga\Einstellungen)
+      $lmo_tipp_listenliga = new \Lmo\Liga\Rohdaten\Liga();
+      $lmo_tipp_listenliga->optionen = $lmo_optionen;
+      $lmo_tipp_anzst = $lmo_tipp_listenliga->einstellungen()->spieltage();
       if (($lmo_optionen['Type'] ?? '') == "1") {
         $t2 = $text[370];
       }
       if ($t0 == "") {
         $j++;
         $t0 = $text[507].$j;
-      }
-      if ($t2 == $text[370]) {
-        $ligaDaten->anzst = strlen(decbin($t4-1));
       }
 
       $ftest = 0;
@@ -160,7 +157,7 @@ if ($ftype != "") {
                       }
                       echo "</option>";
 
-                      for ($y = 1; $y <= $ligaDaten->anzst; $y++) {
+                      for ($y = 1; $y <= $lmo_tipp_anzst; $y++) {
                         echo "<option value=\"".$y."\"";
                         if ($y == $t1) {
                           echo " selected";
@@ -233,7 +230,7 @@ if ($ftype != "") {
                         echo "</option>";*/
                       }
 
-                      for ($y = 1; $y <= $ligaDaten->anzst; $y++) {
+                      for ($y = 1; $y <= $lmo_tipp_anzst; $y++) {
                         echo "                <option value=\"".$y."\"";
                         if ($y == $t1) {
                           echo " selected";

@@ -21,14 +21,19 @@ if (!defined('PATH_TO_LMO')) {
 }
 
 /**
+ * Speichert die Liga aus den Rohdaten: Die Seiten des Adminbereichs tragen ihre Aenderungen in
+ * $lmo_liga ein und binden diese Datei ein.
+ *
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der Liga mit den Aenderungen der Seite; danach die
+ *                                        vollstaendige Form, wie sie in der Datei steht (Lmo\Liga\Normalform)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string $st gewaehlter Spieltag
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
  * @var string $diroutput Ordner fuer erzeugte Dateien (Konfiguration)
+ * @var string $defdateformat Datumsformat in date()-Schreibweise (Konfiguration)
  *
  * Einstellungen:
  * @var int|string $einzustats Einstellung aus cfg.txt
@@ -36,33 +41,20 @@ if (!defined('PATH_TO_LMO')) {
  * @var int|string $einzutoretab Einstellung aus cfg.txt
  */
 
-
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
   if ($file!="") {
     if (substr($file,-4)==".l98") {
-      /*if ($einsavehtml==1) {
-        include(PATH_TO_LMO."/lmo-savehtml.php");
-        include(PATH_TO_LMO."/lmo-savehtml1.php");
-      }*/
+      // alles, was der LMO in die Datei schreibt; als aktueller Spieltag gilt der gewaehlte
+      $lmo_liga = \Lmo\Liga\Normalform::von($lmo_liga, $text[54], $st>0 ? $st : $lmo_liga->einstellungen()->aktuellerSpieltag(), $defdateformat);
       if ($einzutore==1 || $einzutoretab==1 || $einzustats==1) {
         include(PATH_TO_LMO."/lmo-zustat.php");
       }
-
       $datei = fopen(PATH_TO_LMO.'/'.$dirliga.$file,"wb");
-
       if ($datei) {
         echo getMessage($text[138]);
         flock($datei,LOCK_EX);
-        // Abschnitte, Schluessel und Werte der ganzen Datei: Lmo\Liga\LigaDaten
-        $lmo_abschnitte = $ligaDaten->abschnitteZumSpeichern($text[54], $st>0 ? $st : $ligaDaten->stx, $text[0], $text[1]);
-        foreach ($lmo_abschnitte as $lmo_nr => list($lmo_abschnitt, $lmo_zeilen)) {
-          fputs($datei,($lmo_nr>0 ? "\n" : "")."[".$lmo_abschnitt."]\n");
-          foreach ($lmo_zeilen as list($lmo_schl, $lmo_wert)) {
-            fputs($datei,$lmo_schl."=".$lmo_wert."\n");
-          }
-        }
-        unset($lmo_abschnitte, $lmo_nr, $lmo_abschnitt, $lmo_zeilen, $lmo_schl, $lmo_wert);
+        fputs($datei,$lmo_liga->alsText());
         flock($datei,LOCK_UN);
         if (file_exists(PATH_TO_LMO.'/'.$diroutput.'/viewer_'.substr($file,0,-4).'_count.txt')) {
           unlink(PATH_TO_LMO.'/'.$diroutput.'/viewer_'.substr($file,0,-4).'_count.txt');
@@ -76,5 +68,4 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
     }
   }
 }
-
 ?>
