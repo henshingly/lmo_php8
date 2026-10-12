@@ -147,6 +147,13 @@ L98;
         $t->add('Tipp-Fieberkurve Liga', $c->get('lmo.php', 'action=tipp&todo=fieber&file=tippliga.l98'), $c->changes());
         $t->add('Tabelle nach den eigenen Tipps', $c->get('lmo.php', 'action=tipp&todo=tabelle&file=tippliga.l98'), $c->changes());
 
+        // Speichern im Adminbereich wertet die Liga gleich mit aus (aktauswert=1), und zwar mit dem
+        // gerade eingegebenen Stand: das erste Spiel endet jetzt so, wie "tester" es getippt hat
+        $t->add('Admin aendert ein Ergebnis von Spieltag 1', $c->submitForm('lmoadmin.php', 'action=admin&todo=edit&file=tippliga.l98&st=1', 'xgoala0', [
+            'xgoala0' => '2', 'xgoalb0' => '1',
+        ]), $c->changes());
+        $t->add('Auswertungsdatei nach dem Speichern', self::auswertung($c, 'tippliga'), '');
+
         $this->assertMatchesSnapshot('tipp', 'auswertung', $t->text());
     }
 }
