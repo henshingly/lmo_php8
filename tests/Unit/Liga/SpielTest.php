@@ -3,7 +3,6 @@
 namespace Lmo\Tests\Unit\Liga;
 
 use Lmo\Liga\LigaDatei;
-use Lmo\Liga\LigaDaten;
 use Lmo\Liga\Rohdaten\Liga;
 use Lmo\Liga\Spiel;
 use PHPUnit\Framework\TestCase;
@@ -193,74 +192,5 @@ class SpielTest extends TestCase
 
         self::assertSame([8, 8, 4, 2, 1], array_map([$e, 'partienImSpieltag'], [1, 2, 3, 4, 5]));
         self::assertSame(9, self::liga(['[Options]', 'Teams=18'])->einstellungen()->partienImSpieltag(7), 'in der Liga jeder Spieltag gleich');
-    }
-
-    /** @return array<string, array{string}> */
-    public static function ligadateien(): array
-    {
-        return EinstellungenTest::ligadateien();
-    }
-
-    /**
-     * Tore, wie LigaDaten sie haelt ("_" und -1 fuer nicht gespielt), als ?int.
-     *
-     * @param mixed $tore
-     */
-    private static function toreDerBruecke($tore): ?int
-    {
-        return $tore === '_' || $tore === -1 || $tore === null || !is_numeric($tore) ? null : (int) $tore;
-    }
-
-    /**
-     * Solange die alten Seiten ueber LigaDaten arbeiten, muessen beide dasselbe liefern: fuer jede
-     * Partie der Datei und fuer einige, die es nicht gibt.
-     *
-     * @dataProvider ligadateien
-     */
-    public function testStimmtMitLigaDatenUeberein(string $pfad): void
-    {
-        $eintraege = LigaDatei::lies($pfad);
-        $bruecke = new LigaDaten();
-        $bruecke->setzeStartwerte();
-        $bruecke->lies($eintraege, 'd.m.Y', 'n.V.', 'i.E.');
-        $liga = Liga::ausEintraegen($eintraege);
-        $pokal = $liga->istPokal();
-
-        $geprueft = 0;
-        foreach (array_keys($bruecke->teama ?? []) as $s) {
-            foreach ([0, 1, 2, 8, 30] as $p) {
-                if (!isset($bruecke->teama[$s][$p])) {
-                    continue;
-                }
-                $wo = basename($pfad) . ' Spieltag ' . ($s + 1) . ' Partie ' . ($p + 1);
-                foreach ($pokal ? [0, 1, 2] : [null] as $n) {
-                    $spiel = Spiel::ausRohdaten($liga, $s + 1, $p + 1, ($n ?? 0) + 1);
-                    $aus = static fn (?array $feld) => $n === null ? ($feld[$s][$p] ?? null) : ($feld[$s][$p][$n] ?? null);
-
-                    self::assertSame((int) $bruecke->teama[$s][$p], $spiel->heim, $wo);
-                    self::assertSame((int) $bruecke->teamb[$s][$p], $spiel->gast, $wo);
-                    self::assertSame(self::toreDerBruecke($aus($bruecke->goala)), $spiel->toreHeim, $wo);
-                    self::assertSame(self::toreDerBruecke($aus($bruecke->goalb)), $spiel->toreGast, $wo);
-                    self::assertSame($aus($bruecke->mspez), $spiel->zusatzText('n.V.', 'i.E.'), $wo);
-                    self::assertSame($aus($bruecke->mnote), $spiel->notiz, $wo);
-                    self::assertSame($aus($bruecke->mberi), $spiel->bericht, $wo);
-                    self::assertSame($aus($bruecke->mtipp) == 1, $spiel->ohneTippwertung, $wo);
-                    $anstoss = $aus($bruecke->mterm);
-                    self::assertSame(is_numeric($anstoss) && $anstoss > 0 ? (int) $anstoss : null, $spiel->anstoss, $wo);
-                    if (!$pokal) {
-                        self::assertSame((int) $bruecke->msieg[$s][$p], $spiel->wertung, $wo);
-                    }
-                    $geprueft++;
-                }
-            }
-        }
-        self::assertGreaterThan(0, $geprueft);
-
-        // Namen der Mannschaften zum Anzeigen
-        foreach ($liga->alleMannschaften() as $nr => $mannschaft) {
-            self::assertSame((string) $bruecke->teams[$nr], $mannschaft->anzeigename(), "Mannschaft $nr");
-            self::assertSame((string) $bruecke->teamk[$nr], $mannschaft->kurzname(), "Kurzname $nr");
-            self::assertSame((string) $bruecke->teamm[$nr], $mannschaft->mittelname(), "Mittelname $nr");
-        }
     }
 }

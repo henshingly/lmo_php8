@@ -47,7 +47,7 @@ final class AdminAuthProbeTest extends TestCase
         foreach ([
             'lmo-adminmain.php' => 'action=admin',
             'lmo-adminedit.php' => 'action=admin&todo=edit&file=golden/basic.l98&st=1',
-            'lmo-savefile.php' => 'file=golden/basic.l98',
+            'lmo-saveliga.php' => 'file=golden/basic.l98',
             'lmo-adminmimesend.php' => '',
             'lmo-adminjavascript.php' => '',
             'lmo-admincal.php' => '',

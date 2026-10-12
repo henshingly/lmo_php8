@@ -36,7 +36,7 @@ if ($file != "") {
   if (substr($file, -4) == ".l98") {
     $lmo_pfad=PATH_TO_LMO.'/'.$dirliga.$file;
     $stand=date($defdateformat,filemtime($lmo_pfad));
-    // die ganze Liga: Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\LigaDaten)
+    // die ganze Liga: Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\Rohdaten\Liga)
     $lmo_eintraege=\Lmo\Liga\LigaDatei::lies($lmo_pfad);
     foreach ($lmo_eintraege as list($sekt, $schl, $wert)) {
       if ($sekt == "Options" && $schl == "Actual" && !isset($st)) {

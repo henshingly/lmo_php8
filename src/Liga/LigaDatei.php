@@ -15,7 +15,7 @@ namespace Lmo\Liga;
  * Gelesen wird zeilenweise: Ein Abschnitt beginnt nur mit einer Zeile, die als Ganzes in
  * eckigen Klammern steht. Eckige Klammern und weitere "=" in einem Wert gehoeren zum Wert.
  * Geschrieben wird mit einer Leerzeile zwischen den Abschnitten und Zeilenende LF.
- * Was die Werte bedeuten, weiss diese Klasse nicht; das ist Sache von Rohdaten\Liga und LigaDaten.
+ * Was die Werte bedeuten, weiss diese Klasse nicht; das ist Sache von Rohdaten\Liga.
  */
 final class LigaDatei
 {

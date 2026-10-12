@@ -1,4 +1,4 @@
-# Alte Dateien, die die Liga ueber Lmo\Liga\LigaDaten lesen und am Dateianfang angeben, welche
+# Alte Dateien, die am Dateianfang angeben, welche
 # Variablen sie erwarten (@var): Stufe 6 statt Stufe 0.
 # Besteht eine Datei aus phpstan-liga-basis.neon.dist auch Stufe 6, wandert sie hierher.
 parameters:
@@ -36,7 +36,7 @@ parameters:
         - lmo/lmo-kocal.php
         - lmo/lmo-openfiledat.php
         - lmo/lmo-openfilename.php
-        - lmo/lmo-savefile.php
+        - lmo/lmo-saveliga.php
         - lmo/lmo-savehtml.php
         - lmo/lmo-savehtml1.php
         - lmo/lmo-showcross.php

@@ -9,7 +9,7 @@
 --- Dateiaenderungen ---
 (keine)
 
-=== direkter Aufruf lmo-savefile.php ===
+=== direkter Aufruf lmo-saveliga.php ===
 
 --- Dateiaenderungen ---
 (keine)

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Die classlib muss jedes Feld erhalten, das die Oberflaeche speichert: Jede Liga wird erst von
- * LMO selbst gespeichert (lmo-savefile.php), dann mit liga::loadFile() geladen und mit
+ * LMO selbst gespeichert (lmo-saveliga.php), dann mit liga::loadFile() geladen und mit
  * liga::writeFile() gespeichert. Kein Schluessel darf verloren gehen oder sich aendern.
  *
  * Gearbeitet wird auf Kopien in ligen/roundtrip/, die anderen Tests sehen die Ligen unveraendert.

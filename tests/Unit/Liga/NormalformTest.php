@@ -3,14 +3,13 @@
 namespace Lmo\Tests\Unit\Liga;
 
 use Lmo\Liga\LigaDatei;
-use Lmo\Liga\LigaDaten;
 use Lmo\Liga\Normalform;
 use Lmo\Liga\Rohdaten\Liga;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Normalform ergaenzt die Rohdaten zu der vollstaendigen Datei, die der LMO schreibt. Solange der
- * Adminbereich noch ueber LigaDaten speichert, muessen beide dieselbe Datei ergeben.
+ * Normalform ergaenzt die Rohdaten zu der vollstaendigen Datei, die der LMO schreibt. Dass dabei
+ * dieselbe Datei entsteht wie frueher, halten die Golden-Master-Tests des Adminbereichs fest.
  */
 class NormalformTest extends TestCase
 {
@@ -42,27 +41,6 @@ class NormalformTest extends TestCase
         }
 
         return $faelle;
-    }
-
-    /**
-     * Dieselbe Datei wie beim Speichern ueber LigaDaten. Unbekannte Schluessel von Mannschaften,
-     * Spieltagen und Spielen verliert LigaDaten; die Dateien hier haben keine.
-     *
-     * @dataProvider ligadateien
-     */
-    public function testStimmtMitLigaDatenUeberein(string $pfad): void
-    {
-        $eintraege = LigaDatei::lies($pfad);
-        $bruecke = new LigaDaten();
-        $bruecke->setzeStartwerte();
-        $bruecke->lies($eintraege, 'd.m.Y', 'n.V.', 'i.E.');
-        /** @var int|string|null $aktuell */
-        $aktuell = $bruecke->stx;
-        $erwartet = $bruecke->alsRohdaten('LMO Test', $aktuell, 'n.V.', 'i.E.');
-
-        $normal = Normalform::von(Liga::ausEintraegen($eintraege), 'LMO Test', $aktuell, 'd.m.Y');
-
-        self::assertSame($erwartet->alsText(), $normal->alsText());
     }
 
     /** @dataProvider ligadateien */

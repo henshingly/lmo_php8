@@ -3,7 +3,7 @@
 namespace Lmo\Tests\Unit\Liga\Rohdaten;
 
 use Lmo\Liga\LigaDatei;
-use Lmo\Liga\LigaDaten;
+use Lmo\Liga\Normalform;
 use Lmo\Liga\Rohdaten\Liga;
 use Lmo\Tests\GoldenMaster\Support\LeagueFactory;
 use PHPUnit\Framework\TestCase;
@@ -252,12 +252,10 @@ L98;
             glob($erzeugt . '/*.l98') ?: []
         );
         foreach ($dateien as $pfad) {
-            // wie lmo-savefile.php: ueber LigaDaten gelesen und wieder geschrieben
-            $daten = new LigaDaten();
-            $daten->setzeStartwerte();
-            $daten->lies(LigaDatei::lies($pfad), 'd.m.Y H:i', 'n.V.', 'i.E.');
+            // wie lmo-saveliga.php: gelesen und in der vollstaendigen Form wieder geschrieben
+            $liga = Liga::lies($pfad);
             yield basename(dirname($pfad)) . '/' . basename($pfad) => [
-                LigaDatei::alsText($daten->abschnitteZumSpeichern('Liga Manager Online 4', $daten->stx, 'n.V.', 'i.E.')),
+                Normalform::von($liga, 'Liga Manager Online 4', $liga->einstellungen()->aktuellerSpieltag(), 'd.m.Y H:i')->alsText(),
             ];
         }
     }

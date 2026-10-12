@@ -33,7 +33,7 @@ if (!defined('PATH_TO_LMO')) {
   
 if ($file != "") {
   if (substr($file, -4) == ".l98") {
-    // die ganze Liga: Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\LigaDaten)
+    // die ganze Liga: Options mit Vorgabewerten, News, Mannschaften, Spieltage und Partien (Lmo\Liga\Rohdaten\Liga)
     $lmo_pfad=PATH_TO_LMO.'/'.$dirliga.'/'.basename($file);
     $lmo_eintraege=\Lmo\Liga\LigaDatei::lies($lmo_pfad);
     if ($lmo_eintraege) {
