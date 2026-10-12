@@ -21,7 +21,10 @@ if (!defined('PATH_TO_LMO')) {
 }
 
 /**
- * Rechnet die Tabelle und stellt sie in den Variablen bereit, mit denen die Seiten des LMO arbeiten.
+ * Test-Hilfsdatei (frueher lmo/lmo-calctable.php); das Programm selbst benutzt sie nicht mehr.
+ * CalculationTest, ClasslibParityTest, MiniAddonTest und die RealData-Tests halten die Tabelle in dieser Form fest.
+ *
+ * Rechnet die Tabelle und stellt sie in den Variablen bereit, mit denen die Seiten des LMO frueher gearbeitet haben.
  * Die Rechnung selbst macht Lmo\Liga\Tabelle; diese Datei uebersetzt nur.
  *
  * Diese Datei wird eingebunden und erwartet:

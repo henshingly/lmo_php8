@@ -11,7 +11,7 @@ die Erweiterungen (v1 bis v16) sind unten in der Reihenfolge ihrer Entstehung be
 | Test | Prüft |
 |---|---|
 | `PagesTest` | HTML der öffentlichen Seiten: Ligenübersicht, Tabelle (alle Typen, Teil-Spieltage, Heim/Auswärts, Punktespalten), Ergebnisse, Spielplan, Kreuztabelle, Statistik, Fieberkurve, Kalender, Info, Sprachen |
-| `CalculationTest` | `lmo-calctable.php` (inkl. direktem Vergleich): Sortierschlüssel und alle Bilanzspalten je Liga, 5 Tabellentypen, mehrere Spieltage, Hin-/Rückrunden-Kombinationen, Admin-Ansicht |
+| `CalculationTest` | `Lmo\Liga\Tabelle` über `tests/GoldenMaster/bin/calctable.php` (inkl. direktem Vergleich): Sortierschlüssel und alle Bilanzspalten je Liga, 5 Tabellentypen, mehrere Spieltage, Hin-/Rückrunden-Kombinationen, Admin-Ansicht |
 | `FirstRunTest` | **Neues Verhalten, kein Golden Master:** Ersteinrichtung ohne Installer (`lmo-setup.php`): Konfiguration wird aus `config-default/` angelegt, vorhandene bleibt, neue Optionen nach einem Update werden ergänzt (nur wenn sich `config-default/` geändert hat), `init-parameters.php` hat Vorrang, Fehlermeldungen, Admin-Konto per Formular (Hash, Validierung, kein zweites Setup, Sitzung endet ohne Konto), Installer und FTP-Code sind entfernt |
 | `UrlDetectionTest` | **Neues Verhalten, kein Golden Master:** `lmo_detect_url()` – Unterordner, Addon-Skripte, Alias, Einbindung von außen, HTTPS/Proxy, Port, Kommandozeile |
 
