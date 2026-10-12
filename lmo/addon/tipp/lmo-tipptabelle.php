@@ -24,7 +24,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
+ * @var \Lmo\Liga\Rohdaten\Liga|null $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php); fehlt, wenn keine geladen ist
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string $st gewaehlter Spieltag
@@ -65,15 +65,19 @@ if (!defined('PATH_TO_LMO')) {
  */
 
 
+// Einstellungen der Liga aus den Rohdaten, auch fuer die Wertung nach Vereinen weiter unten;
+// ohne geladene Liga die einer leeren
+$lmo_liga = $lmo_liga ?? new \Lmo\Liga\Rohdaten\Liga();
+$lmo_einstellungen = $lmo_liga->einstellungen();
+$lmo_tipp_mannschaften = $lmo_einstellungen->mannschaften();
+$lmo_tipp_spieltage = $lmo_einstellungen->spieltage();
+$lmo_tipp_partien = $lmo_einstellungen->partienJeSpieltag();
+// Vereine der Wertung nach Vereinen; lmo-tippcalcwertverein.php zaehlt sie aus seiner Datei
+$lmo_tipp_vereine = $lmo_tipp_mannschaften;
+
 if ($file != '' && $tipp_tipptabelle1 == 1) {
-    // Einstellungen und Spiele der Liga aus den Rohdaten; die Spiele unter denselben Indizes wie die
-    // Tipps: $lmo_tipp_spiele[Spieltag-1][Partie-1], dazu je Spieltag der erste und letzte Tag
-    $lmo_einstellungen = $lmo_liga->einstellungen();
-    $lmo_tipp_mannschaften = $lmo_einstellungen->mannschaften();
-    $lmo_tipp_spieltage = $lmo_einstellungen->spieltage();
-    $lmo_tipp_partien = $lmo_einstellungen->partienJeSpieltag();
-    // Vereine der Wertung nach Vereinen; lmo-tippcalcwertverein.php zaehlt sie aus seiner Datei
-    $lmo_tipp_vereine = $lmo_tipp_mannschaften;
+    // die Spiele unter denselben Indizes wie die Tipps: $lmo_tipp_spiele[Spieltag-1][Partie-1],
+    // dazu je Spieltag der erste und letzte Tag
     $lmo_tipp_spiele = array();
     $lmo_tipp_tage = array();
     // auch ein gewaehlter Spieltag hinter dem letzten, hoechstens so viele, wie die Tipps fassen
