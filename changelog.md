@@ -9,12 +9,14 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Changed  
+- Die HTML-Ausgabe zum Drucken (`lmo-savehtml.php`, `lmo-savehtml1.php`) rechnet ihre Tabelle über `Lmo\Liga\Tabelle`. Die erzeugten Seiten sind unverändert.
 
 
 ### Deprecated  
 
 
 ### Removed  
+- `lmo-calctable.php` gibt es nicht mehr. Die Datei hat die Tabelle zuletzt nur noch aus `Lmo\Liga\Tabelle` in die alten Einzelvariablen (`$punkte`, `$tab0` …) übersetzt; keine Seite braucht das mehr. Eigene Erweiterungen rechnen die Tabelle mit `Lmo\Liga\Tabelle::fuerAnsicht($lmo_liga, …)`.
 
 
 ### Fixed  
@@ -322,12 +324,14 @@ _Here we write changelog notes for the next version._
 
 
 ### Changed  
+- The HTML output for printing (`lmo-savehtml.php`, `lmo-savehtml1.php`) computes its table through `Lmo\Liga\Tabelle`. The generated pages are unchanged.
 
 
 ### Deprecated  
 
 
 ### Removed  
+- `lmo-calctable.php` is gone. Lately the file only translated the table from `Lmo\Liga\Tabelle` into the old individual variables (`$punkte`, `$tab0` …); no page needs that any more. Custom extensions compute the table with `Lmo\Liga\Tabelle::fuerAnsicht($lmo_liga, …)`.
 
 
 ### Fixed  
