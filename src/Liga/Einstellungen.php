@@ -579,6 +579,50 @@ final class Einstellungen
         return $alle;
     }
 
+    /** Punkte fuer Verlaengerung und Elfmeterschiessen: stehen nur in der Datei, wenn die Liga sie fuehrt (Spez=1) */
+    private const NUR_MIT_VERLAENGERUNG = ['XtraS', 'XtraU', 'XtraV', 'SpezS', 'SpezU', 'SpezV'];
+
+    /**
+     * Der Abschnitt [Options], wie der LMO ihn schreibt: jede Einstellung, die fuer den Typ
+     * (Liga/Pokal) gilt, mit ihrem Wert, in der Reihenfolge der Datei. Unbekannte Schluessel
+     * gehoeren nicht dazu (siehe Normalform).
+     *
+     * @param string $programm Name des LMO (Sprachtext 54); er steht als Title in der Datei, nicht die
+     *                         Version, mit der die Datei zuletzt geschrieben wurde
+     * @param int|string|null $aktuellerSpieltag Wert fuer Actual
+     * @param string $datumsformat Datumsformat der Installation, falls die Liga keines hat
+     * @return array<string, string>
+     */
+    public function zumSpeichern(string $programm, $aktuellerSpieltag, string $datumsformat): array
+    {
+        $art = $this->istPokal() ? self::POKAL : self::LIGA;
+        $optionen = [];
+        foreach (self::VORGABEN as $schluessel => [$gilt]) {
+            if ($gilt !== self::IMMER && $gilt !== $art) {
+                continue;
+            }
+            if (in_array($schluessel, self::NUR_MIT_VERLAENGERUNG, true) && $this->wert('Spez') != 1) {
+                continue;
+            }
+            switch ($schluessel) {
+                case 'Title':
+                    $wert = $programm;
+                    break;
+                case 'Actual':
+                    $wert = $aktuellerSpieltag;
+                    break;
+                case 'DatF':
+                    $wert = $this->datumsformat($datumsformat);
+                    break;
+                default:
+                    $wert = $this->wert($schluessel);
+            }
+            $optionen[$schluessel] = (string) $wert;
+        }
+
+        return $optionen;
+    }
+
     /**
      * Wert aus der Datei oder Vorgabewert; null, wenn der Schluessel fuer diesen Typ nicht gilt.
      *
