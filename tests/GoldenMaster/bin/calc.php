@@ -1,11 +1,11 @@
 <?php
 /**
  * Kindprozess: laedt eine Liga wie lmo-start.php/lmo-showmain2.php und fuehrt
- * lmo-calctable.php fuer alle Ansichten aus. Ausgabe: JSON auf stdout.
+ * calctable.php (in diesem Ordner) fuer alle Ansichten aus. Ausgabe: JSON auf stdout.
  * Aufruf: php calc.php <Instanzpfad> <Ligadatei relativ zu ligen/> [alle]
  * Mit "alle" wird jeder Spieltag gerechnet, sonst eine feste Auswahl (Golden Master).
  *
- * Bewusst ohne Funktionen und Klassen: lmo-calctable.php arbeitet mit dem
+ * Bewusst ohne Funktionen und Klassen: calctable.php arbeitet mit dem
  * globalen Scope und muss genau so aufgerufen werden wie im Original.
  * Eigene Variablen tragen das Praefix $gm_, damit sie nicht mit dem Altcode kollidieren.
  */
@@ -83,7 +83,7 @@ foreach ($gm_combos as $gm_combo) {
 
         $gm_entry = [];
         try {
-            require PATH_TO_LMO . '/lmo-calctable.php';
+            require __DIR__ . '/calctable.php';
         } catch (\Throwable $gm_error) {
             $gm_entry['error'] = get_class($gm_error) . ': ' . $gm_error->getMessage();
         }

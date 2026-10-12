@@ -54,7 +54,7 @@ if (isset($file) && $file != "") {
   $tabtype=isset($_GET['tabtype'])?$_GET['tabtype']:0;
   $newtabtype=0;
   if (!empty($_GET['st'])) { $endtab = $st;}
-  // Ursprünglichen Wert sichern: lmo-calctable.php kann $endtab bei Hin-/Rückrunden-Tabellen (tabtype 3/4) intern ueberschreiben, daher
+  // Ursprünglichen Wert sichern: die Tabellenberechnung konnte $endtab bei Hin-/Rückrunden-Tabellen (tabtype 3/4) intern ueberschreiben, daher
   // reicht ein einfaches $endtab--/$endtab++ nicht aus, um ihn nach dem require() wieder zuverlaessig herzustellen.
   $endtab_original = $endtab;
   $addp = $_SERVER['PHP_SELF']."?action=program&amp;file=".$file."&amp;selteam=";
