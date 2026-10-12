@@ -1063,7 +1063,7 @@ NT3=
 BE3=
 TI3=
 AT3=
-NEU output/ausvorlage.l98.php (1441 Bytes)
+NEU output/ausvorlage.l98.php (1440 Bytes)
 <?php
 $zutore[1]=0;
 $dstore[1]=0;
@@ -1127,7 +1127,7 @@ $htorreichm4="0";
 $htorreicht3="0";
 $htorreicht4="0";
 $spieltagflag5=0;
-$counteranz5=21;
+$counteranz5=0;
 $akt_gewonnen=0;
 $team_akt_gewonnen="";
 $akt_ungeschlagen=0;
