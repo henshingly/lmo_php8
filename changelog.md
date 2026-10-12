@@ -51,6 +51,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Removed  
+- `Lmo\Liga\LigaDaten` (die Variable `$ligaDaten`), `lmo-ligadaten.php` und `lmo-savefile.php` gibt es nicht mehr. Alle Seiten lesen die Liga aus den Rohdaten (`$lmo_liga`, `Lmo\Liga\Rohdaten\Liga`) und speichern über `lmo-saveliga.php`. Damit entfallen auch die alten einzelnen Variablen einer geladenen Liga (`$titel`, `$anzst`, `$anzteams`, `$teams`, `$teama`, `$goala`, `$msieg`, `$stx` …): Der LMO legt sie nicht mehr an. Eigene Erweiterungen, die sie benutzen, müssen auf `$lmo_liga` umgestellt werden, z. B. `$lmo_liga->einstellungen()->spieltage()` statt `$anzst` oder `Lmo\Liga\Spiel::ausRohdaten()` für ein Spiel.
 
 
 ### Fixed  
@@ -349,6 +350,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Removed  
+- `Lmo\Liga\LigaDaten` (the variable `$ligaDaten`), `lmo-ligadaten.php` and `lmo-savefile.php` are gone. All pages read the league from the raw data (`$lmo_liga`, `Lmo\Liga\Rohdaten\Liga`) and save through `lmo-saveliga.php`. This also removes the old individual variables of a loaded league (`$titel`, `$anzst`, `$anzteams`, `$teams`, `$teama`, `$goala`, `$msieg`, `$stx` …): LMO no longer creates them. Custom extensions using them have to switch to `$lmo_liga`, e.g. `$lmo_liga->einstellungen()->spieltage()` instead of `$anzst`, or `Lmo\Liga\Spiel::ausRohdaten()` for a game.
 
 
 ### Fixed  
