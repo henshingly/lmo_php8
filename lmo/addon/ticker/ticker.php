@@ -70,7 +70,7 @@ $ticker_array = explode(",", $ticker_ligen);
 foreach($ticker_array as $file) {
     // je Liga neu beginnen: sonst stehen die Spiele der vorigen Ligen noch einmal bei der naechsten
     $hilf = $hilf1 = '';
-    // Die Liga wird als Rohdaten gelesen (Lmo\Liga\Rohdaten\Liga); die Liga der Seite in $ligaDaten bleibt unberuehrt.
+    // Die Liga wird als Rohdaten gelesen (Lmo\Liga\Rohdaten\Liga); die Liga der Seite in $lmo_liga bleibt unberuehrt.
     $lmo_ticker_pfad = PATH_TO_LMO . '/' . $dirliga . $file;
     if (!empty($file) && file_exists($lmo_ticker_pfad) && check_hilfsadmin($file)) {
         $lmo_ticker_liga = substr($file, -4) == '.l98' ? \Lmo\Liga\Rohdaten\Liga::lies($lmo_ticker_pfad) : new \Lmo\Liga\Rohdaten\Liga();

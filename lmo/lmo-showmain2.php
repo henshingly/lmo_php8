@@ -23,7 +23,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string $st gewaehlter Spieltag
@@ -241,9 +240,19 @@ if ($file != '') {
             $output_fieberkurve .= $action != 'graph' ? '<a href="' . $addm . 'graph" title="' . $text[134] . '">' . $text[133] . '</a>' : $text[133];
             $output_fieberkurve .= '&nbsp;&nbsp;';
         }
-        // Ligastatistiken
+        // Ligastatistiken: die beiden Mannschaften aus dem Seitenaufruf, sonst die der Fieberkurve der Liga;
+        // zweimal dieselbe oder nur die zweite gewaehlt -> sie wird als erste gefuehrt
+        $lmo_main_stat1 = isset($stat1) ? $stat1 : ($lmo_liga->optionen['kurve1'] ?? 0);
+        $lmo_main_stat2 = isset($stat2) ? $stat2 : ($lmo_liga->optionen['kurve2'] ?? 0);
+        if ($lmo_main_stat1 > 0 && $lmo_main_stat1 == $lmo_main_stat2) {
+            $lmo_main_stat2 = 0;
+        }
+        if ($lmo_main_stat1 == 0 && $lmo_main_stat2 > 0) {
+            $lmo_main_stat1 = $lmo_main_stat2;
+            $lmo_main_stat2 = 0;
+        }
         if ($lmo_main_e->mitLigastatistik()) {
-            $output_ligastatistik .= $action != 'stats' ? '<a href="' . $addm . 'stats&amp;stat1=' . $ligaDaten->stat1 . '&amp;stat2=' . $ligaDaten->stat2 . '" title="' . $text[19] . '">' . $text[18] . '</a>' : $text[18];
+            $output_ligastatistik .= $action != 'stats' ? '<a href="' . $addm . 'stats&amp;stat1=' . $lmo_main_stat1 . '&amp;stat2=' . $lmo_main_stat2 . '" title="' . $text[19] . '">' . $text[18] . '</a>' : $text[18];
             $output_ligastatistik .= '&nbsp;&nbsp;';
         }
     } else { // Für Pokalligen

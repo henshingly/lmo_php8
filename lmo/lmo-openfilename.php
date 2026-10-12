@@ -23,15 +23,12 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
  * @var string $defdateformat Datumsformat in date()-Schreibweise (Konfiguration)
  * @var array<int|string, mixed> $text Sprachtexte
  */
 
-// $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
-require(PATH_TO_LMO . '/lmo-ligadaten.php');
   
   
 if ($file != "") {
@@ -48,10 +45,8 @@ if ($file != "") {
       }
     }
     // ohne lesbare Datei ergibt das eine leere Liga mit allen Vorgabewerten
-    $ligaDaten->setzeStartwerte();
-    // $lmo_liga: die Rohdaten der Liga (Lmo\Liga\Rohdaten\Liga); neue Seiten arbeiten direkt darauf
+        // $lmo_liga: die Rohdaten der Liga (Lmo\Liga\Rohdaten\Liga); neue Seiten arbeiten direkt darauf
     $lmo_liga=\Lmo\Liga\Rohdaten\Liga::ausEintraegen($lmo_eintraege);
-    $ligaDaten->liesRohdaten($lmo_liga,$defdateformat,$text[0],$text[1]);
     unset($lmo_eintraege,$lmo_pfad);
     if (!isset($st)) {
       $st = 1;

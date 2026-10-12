@@ -21,9 +21,8 @@ if (!defined('PATH_TO_LMO')) {
 }
 
 /**
- * Speichert die Liga aus den Rohdaten: fuer die Seiten des Adminbereichs, die ihre Aenderungen
- * direkt in $lmo_liga eintragen. (lmo-savefile.php speichert fuer die uebrigen Seiten noch aus
- * $ligaDaten; beide schreiben dieselbe Datei.)
+ * Speichert die Liga aus den Rohdaten: Die Seiten des Adminbereichs tragen ihre Aenderungen in
+ * $lmo_liga ein und binden diese Datei ein.
  *
  * Diese Datei wird eingebunden und erwartet:
  *

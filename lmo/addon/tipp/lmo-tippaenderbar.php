@@ -27,7 +27,9 @@ function tippaenderbar($mterm0, $datum1, $datum2) {
     global $plus; // eine Minute Sicherheitsabstand zwischen Seitenaufruf und abspeichern
     global $tipp_imvorraus;
     global $st;
-    global $stx;
+    global $lmo_liga;
+    // aktueller Spieltag der geladenen Liga
+    $stx = isset($lmo_liga) ? $lmo_liga->einstellungen()->aktuellerSpieltag() : 0;
     global $tipp_tippBis;
     global $tipp_tippohne;
     global $deftime;
