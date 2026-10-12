@@ -53,6 +53,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
+- Tippspiel, Auswertung: Die Tipper werden in fester (alphabetischer) Reihenfolge ausgewertet. Bisher hing die Reihenfolge in der Auswertungsdatei und der Zwischenstand in den Dateien der Vereinswertung davon ab, in welcher Reihenfolge das Dateisystem die Tippdateien lieferte.
 - Tippspiel, Erinnerungsmail für eine einzelne Liga: Die noch nicht getippten Spiele stehen jetzt je in einer eigenen Zeile statt ohne Trennung hintereinander. Für einen einzelnen Spieltag wird nur noch dieser durchsucht; bisher kam auch der folgende dazu und wurde mit den Tipps des gewählten verglichen, sodass Spiele in der Mail landeten, die schon getippt waren, und andere fehlten.
 - Tippspiel, Tabelle nach den Tipps: In Ligen mit direktem Vergleich brach die Seite unter PHP 8 mit einem Fatal Error ab (`lmo-tippcalctable1.php`, „Unsupported operand types: string - string“), sobald Mannschaften gleichauf lagen.
 - Classlib, Pokal: Stand in der Datei ein Wert eines Spiels (z. B. die Notiz des Hinspiels) hinter den Toren des nächsten Spiels, wurde er dem falschen Spiel zugeordnet. Sieht der Modus einer Runde mehr Spiele vor, als die Datei nennt, bricht das Laden nicht mehr ab.
@@ -344,6 +345,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
+- Prediction game, evaluation: tippers are evaluated in a fixed (alphabetical) order. Until now the order in the evaluation file and the intermediate state in the club ranking files depended on the order in which the file system returned the prediction files.
 - Prediction game, reminder mail for a single league: the games not yet predicted are now listed one per line instead of run together. For a single round only that round is searched; until now the following round was added as well and compared with the predictions of the chosen one, so the mail listed games that had already been predicted and missed others.
 - Prediction game, table by predictions: in leagues with head-to-head comparison the page aborted under PHP 8 with a fatal error (`lmo-tippcalctable1.php`, "Unsupported operand types: string - string") as soon as teams were level.
 - Classlib, cup: if a value of a game (e.g. the note of the first leg) stood in the file after the goals of the next game, it was assigned to the wrong game. If the mode of a round expects more games than the file contains, loading no longer aborts.

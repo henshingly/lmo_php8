@@ -127,7 +127,9 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
     }
   }
   closedir($verz);
-   
+  // feste Reihenfolge der Tipper: readdir() liefert sie je nach Dateisystem anders
+  sort($dummy);
+
   $anztipperliga = count($dummy);
    
   if (!isset($start)) {
