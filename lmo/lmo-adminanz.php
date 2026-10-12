@@ -38,14 +38,9 @@ if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
         $lmo_einstellungen = $lmo_liga->einstellungen();
         $lmo_anz_spieltage = $lmo_einstellungen->spieltage();
         $lmo_anz_partien = $lmo_einstellungen->partienJeSpieltag();
-        $lmo_anz_leer = array('GA' => '-1', 'GB' => '-1', 'SP' => '_', 'NT' => '', 'BE' => '', 'TI' => '', 'AT' => '');
         for ($i = 1; $i <= 116; $i++) {
             for ($j = $i <= $lmo_anz_spieltage ? $lmo_anz_partien + 1 : 1; $j <= 40; $j++) {
-                $lmo_anz_partie = new \Lmo\Liga\Rohdaten\Partie();
-                $lmo_anz_partie->heim = '0';
-                $lmo_anz_partie->gast = '0';
-                $lmo_anz_partie->spiele[1] = $lmo_anz_leer;
-                $lmo_liga->spieltag($i)->partien[$j] = $lmo_anz_partie;
+                $lmo_liga->spieltag($i)->partien[$j] = \Lmo\Liga\Rohdaten\Partie::leer();
             }
         }
         $lmo_liga->optionen['Rounds'] = trim($_POST['xanzst']);

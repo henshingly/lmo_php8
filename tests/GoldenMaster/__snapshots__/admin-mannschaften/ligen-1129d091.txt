@@ -2204,8 +2204,8 @@ GEAENDERT output/basic.l98.php
 <tr>
 <td class="nobr">
 <input class="lmo-formular-input" type="text" name="xteams7" size="32" maxlength="64" value="Neue Mannschaft" onChange="dolmoedit()">
-<input class="lmo-formular-input" type="text" name="xteamm7" size="12" maxlength="12" value="" onChange="dolmoedit()">
-<input class="lmo-formular-input" type="text" name="xteamk7" size="5" maxlength="5" value="" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xteamm7" size="12" maxlength="12" value="Mannschaft" onChange="dolmoedit()">
+<input class="lmo-formular-input" type="text" name="xteamk7" size="5" maxlength="5" value="Neue" onChange="dolmoedit()"> &nbsp; </td>
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp7" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
@@ -2327,13 +2327,13 @@ GEAENDERT ligen/golden/basic.l98
 @@ -66,4 +67,5 @@
  5=Mannschaft
  6=Mannschaft
-+7=
++7=Mannschaft
  
  [Teamk]
 @@ -74,4 +76,5 @@
  5=Manns
  6=Manns
-+7=
++7=Neue
  
  [Team1]
 @@ -118,4 +121,12 @@
@@ -2863,9 +2863,9 @@ GEAENDERT ligen/golden/basic.l98
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp3" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xstrafm3" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xtorkorrektur13" size="1" maxlength="4" value="2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur23" size="1" maxlength="4" value="-4" onChange="dolmoedit()"> Tore </td>
+<input class="lmo-formular-input" type="text" name="xtorkorrektur13" size="1" maxlength="4" value="-2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur23" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xstrafdat3" size="2" maxlength="2" value="9" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xstrafdat3" size="2" maxlength="2" value="3" onChange="dolmoedit()"> &nbsp; </td>
 <td class="nobr" align="center">
 <input id="n3" class="lmo-formular-input" type="text" name="xteamn3" tabindex="313" size="20" maxlength="255" value="" onChange="dolmoedit()">
 <script type="text/javascript">document.getElementById('n3').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n3\').style.display=\'inline\';return false;">+</a>');</script>
@@ -2892,9 +2892,9 @@ GEAENDERT ligen/golden/basic.l98
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp4" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xstrafm4" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xtorkorrektur14" size="1" maxlength="4" value="-2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur24" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
+<input class="lmo-formular-input" type="text" name="xtorkorrektur14" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur24" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xstrafdat4" size="2" maxlength="2" value="3" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xstrafdat4" size="2" maxlength="2" value="0" onChange="dolmoedit()"> &nbsp; </td>
 <td class="nobr" align="center">
 <input id="n4" class="lmo-formular-input" type="text" name="xteamn4" tabindex="413" size="20" maxlength="255" value="" onChange="dolmoedit()">
 <script type="text/javascript">document.getElementById('n4').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n4\').style.display=\'inline\';return false;">+</a>');</script>
@@ -3132,48 +3132,57 @@ GEAENDERT ligen/golden/penalties.l98
 +SM=-1
  TOR1=3
  TOR2=1
-@@ -88,7 +96,7 @@
+@@ -88,16 +96,7 @@
  NOT=
  
 -SM=-1
  [Team3]
 -SP=6
-+SP=0
-+SM=0
- TOR1=-2
- TOR2=4
-@@ -97,7 +105,7 @@
- NOT=
- 
+-TOR1=-2
+-TOR2=4
+-STDA=9
+-URL=
+-NOT=
+-
 -SM=6
- [Team4]
+-[Team4]
  SP=0
 +SM=0
  TOR1=2
  TOR2=0
-@@ -108,4 +116,5 @@
- [Team5]
+@@ -106,6 +105,7 @@
+ NOT=
+ 
+-[Team5]
++[Team4]
  SP=0
 +SM=0
  TOR1=0
  TOR2=0
-@@ -116,4 +125,5 @@
- [Team6]
+@@ -114,6 +114,7 @@
+ NOT=
+ 
+-[Team6]
++[Team5]
  SP=0
 +SM=0
  TOR1=0
  TOR2=0
-@@ -124,12 +134,5 @@
- [Team7]
+@@ -122,6 +123,7 @@
+ NOT=
+ 
+-[Team7]
++[Team6]
  SP=0
--TOR1=0
--TOR2=0
--STDA=0
--URL=
--NOT=
--
++SM=0
+ TOR1=0
+ TOR2=0
+@@ -130,6 +132,7 @@
+ NOT=
+ 
 -[Team8]
--SP=0
++[Team7]
+ SP=0
 +SM=0
  TOR1=0
  TOR2=0
@@ -4075,9 +4084,9 @@ $team_max_verloren="Mannschaft 8 (9-12.ST)";
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp3" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xstrafm3" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xtorkorrektur13" size="1" maxlength="4" value="2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur23" size="1" maxlength="4" value="-4" onChange="dolmoedit()"> Tore </td>
+<input class="lmo-formular-input" type="text" name="xtorkorrektur13" size="1" maxlength="4" value="-2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur23" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xstrafdat3" size="2" maxlength="2" value="9" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xstrafdat3" size="2" maxlength="2" value="3" onChange="dolmoedit()"> &nbsp; </td>
 <td class="nobr" align="center">
 <input id="n3" class="lmo-formular-input" type="text" name="xteamn3" tabindex="313" size="20" maxlength="255" value="" onChange="dolmoedit()">
 <script type="text/javascript">document.getElementById('n3').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n3\').style.display=\'inline\';return false;">+</a>');</script>
@@ -4104,9 +4113,9 @@ $team_max_verloren="Mannschaft 8 (9-12.ST)";
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp4" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xstrafm4" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xtorkorrektur14" size="1" maxlength="4" value="-2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur24" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
+<input class="lmo-formular-input" type="text" name="xtorkorrektur14" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur24" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xstrafdat4" size="2" maxlength="2" value="3" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xstrafdat4" size="2" maxlength="2" value="0" onChange="dolmoedit()"> &nbsp; </td>
 <td class="nobr" align="center">
 <input id="n4" class="lmo-formular-input" type="text" name="xteamn4" tabindex="413" size="20" maxlength="255" value="" onChange="dolmoedit()">
 <script type="text/javascript">document.getElementById('n4').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n4\').style.display=\'inline\';return false;">+</a>');</script>
@@ -4860,9 +4869,9 @@ GEAENDERT output/penalties.l98.php
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp3" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xstrafm3" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xtorkorrektur13" size="1" maxlength="4" value="2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur23" size="1" maxlength="4" value="-4" onChange="dolmoedit()"> Tore </td>
+<input class="lmo-formular-input" type="text" name="xtorkorrektur13" size="1" maxlength="4" value="-2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur23" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xstrafdat3" size="2" maxlength="2" value="9" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xstrafdat3" size="2" maxlength="2" value="3" onChange="dolmoedit()"> &nbsp; </td>
 <td class="nobr" align="center">
 <input id="n3" class="lmo-formular-input" type="text" name="xteamn3" tabindex="313" size="20" maxlength="255" value="" onChange="dolmoedit()">
 <script type="text/javascript">document.getElementById('n3').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n3\').style.display=\'inline\';return false;">+</a>');</script>
@@ -4889,9 +4898,9 @@ GEAENDERT output/penalties.l98.php
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp4" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xstrafm4" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xtorkorrektur14" size="1" maxlength="4" value="-2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur24" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
+<input class="lmo-formular-input" type="text" name="xtorkorrektur14" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur24" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xstrafdat4" size="2" maxlength="2" value="3" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xstrafdat4" size="2" maxlength="2" value="0" onChange="dolmoedit()"> &nbsp; </td>
 <td class="nobr" align="center">
 <input id="n4" class="lmo-formular-input" type="text" name="xteamn4" tabindex="413" size="20" maxlength="255" value="" onChange="dolmoedit()">
 <script type="text/javascript">document.getElementById('n4').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n4\').style.display=\'inline\';return false;">+</a>');</script>
@@ -4971,8 +4980,8 @@ GEAENDERT output/penalties.l98.php
 <tr>
 <td class="nobr">
 <input class="lmo-formular-input" type="text" name="xteams7" size="32" maxlength="64" value="Neue Mannschaft" onChange="dolmoedit()">
-<input class="lmo-formular-input" type="text" name="xteamm7" size="12" maxlength="12" value="" onChange="dolmoedit()">
-<input class="lmo-formular-input" type="text" name="xteamk7" size="5" maxlength="5" value="" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xteamm7" size="12" maxlength="12" value="Mannschaft" onChange="dolmoedit()">
+<input class="lmo-formular-input" type="text" name="xteamk7" size="5" maxlength="5" value="Neue" onChange="dolmoedit()"> &nbsp; </td>
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp7" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xstrafm7" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
@@ -5094,13 +5103,13 @@ GEAENDERT ligen/golden/penalties.l98
 @@ -66,4 +67,5 @@
  5=Mannschaft
  6=Mannschaft
-+7=
++7=Mannschaft
  
  [Teamk]
 @@ -74,4 +76,5 @@
  5=Manns
  6=Manns
-+7=
++7=Neue
  
  [Team1]
 @@ -123,4 +126,13 @@
@@ -5265,9 +5274,9 @@ GEAENDERT ligen/golden/penalties.l98
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp3" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xstrafm3" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xtorkorrektur13" size="1" maxlength="4" value="2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur23" size="1" maxlength="4" value="-4" onChange="dolmoedit()"> Tore </td>
+<input class="lmo-formular-input" type="text" name="xtorkorrektur13" size="1" maxlength="4" value="-2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur23" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xstrafdat3" size="2" maxlength="2" value="9" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xstrafdat3" size="2" maxlength="2" value="3" onChange="dolmoedit()"> &nbsp; </td>
 <td class="nobr" align="center">
 <input id="n3" class="lmo-formular-input" type="text" name="xteamn3" tabindex="313" size="20" maxlength="255" value="" onChange="dolmoedit()">
 <script type="text/javascript">document.getElementById('n3').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n3\').style.display=\'inline\';return false;">+</a>');</script>
@@ -5294,9 +5303,9 @@ GEAENDERT ligen/golden/penalties.l98
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp4" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xstrafm4" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xtorkorrektur14" size="1" maxlength="4" value="-2" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur24" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
+<input class="lmo-formular-input" type="text" name="xtorkorrektur14" size="1" maxlength="4" value="0" onChange="dolmoedit()"> : <input class="lmo-formular-input" type="text" name="xtorkorrektur24" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Tore </td>
 <td class="nobr" align="center">
-<input class="lmo-formular-input" type="text" name="xstrafdat4" size="2" maxlength="2" value="3" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xstrafdat4" size="2" maxlength="2" value="0" onChange="dolmoedit()"> &nbsp; </td>
 <td class="nobr" align="center">
 <input id="n4" class="lmo-formular-input" type="text" name="xteamn4" tabindex="413" size="20" maxlength="255" value="" onChange="dolmoedit()">
 <script type="text/javascript">document.getElementById('n4').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'n4\').style.display=\'inline\';return false;">+</a>');</script>
@@ -6896,8 +6905,8 @@ $team_max_verloren="Mannschaft 4 (6-7.ST)";
 <tr>
 <td class="nobr">
 <input class="lmo-formular-input" type="text" name="xteams6" size="32" maxlength="64" value="Neue Mannschaft" onChange="dolmoedit()">
-<input class="lmo-formular-input" type="text" name="xteamm6" size="12" maxlength="12" value="" onChange="dolmoedit()">
-<input class="lmo-formular-input" type="text" name="xteamk6" size="5" maxlength="5" value="" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xteamm6" size="12" maxlength="12" value="Mannschaft" onChange="dolmoedit()">
+<input class="lmo-formular-input" type="text" name="xteamk6" size="5" maxlength="5" value="Neue" onChange="dolmoedit()"> &nbsp; </td>
 <td class="lmoBackMarkierung nobr" align="center">
 <input class="lmo-formular-input" type="text" name="xstrafp6" size="1" maxlength="4" value="0" onChange="dolmoedit()"> Pkt. </td>
 <td class="nobr" align="center">
@@ -7019,13 +7028,13 @@ GEAENDERT ligen/golden/special.l98
 @@ -70,4 +71,5 @@
  4=Mannschaft
  5=Mannschaft
-+6=
++6=Mannschaft
  
  [Teamk]
 @@ -77,4 +79,5 @@
  4=Manns
  5=Manns
-+6=
++6=Neue
  
  [Team1]
 @@ -118,4 +121,12 @@

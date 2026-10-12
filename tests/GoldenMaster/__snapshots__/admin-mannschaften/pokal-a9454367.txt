@@ -240,7 +240,6 @@
 </div>
 </body>
 </html>
-<!-- STDERR Warning: Undefined array key 2 in {LMO_PATH}/lmo-adminteams.php on line 101 Warning: Undefined array key 3 in {LMO_PATH}/lmo-adminteams.php on line 101 Warning: Undefined array key 1 in {LMO_PATH}/lmo-adminteams.php on line 101 Warning: Undefined array key 2 in {LMO_PATH}/lmo-adminteams.php on line 101 Warning: Undefined array key 3 in {LMO_PATH}/lmo-adminteams.php on line 101 Warning: Trying to access array offset on null in {LMO_PATH}/lmo-adminteams.php on line 158 Warning: Undefined array key 5 in {LMO_PATH}/lmo-adminteams.php on line 158 Warning: Undefined array key 6 in {LMO_PATH}/lmo-adminteams.php on line 158 Warning: Undefined array key 7 in {LMO_PATH}/lmo-adminteams.php on line 158 Warning: Undefined array key 8 in {LMO_PATH}/lmo-adminteams.php on line 158 -->
 --- Dateiaenderungen ---
 GEAENDERT ligen/mannschaftspokal.l98
 --- vorher
@@ -683,34 +682,23 @@ GEAENDERT ligen/mannschaftspokal.l98
 -
  [Round1]
  D1=16.03.2025
-@@ -114,18 +107,19 @@
+@@ -114,12 +107,13 @@
  TI22=
  AT22=0
 -TA3=6
 -TB3=7
--GA31=-1
--GB31=-1
 +TA3=0
 +TB3=0
-+GA31=
-+GB31=
+ GA31=-1
+ GB31=-1
 +SP31=0
  NT31=
  BE31=
  TI31=
 -AT31=0
--GA32=-1
--GB32=-1
 +AT31=
-+GA32=
-+GB32=
- NT32=
- BE32=
- TI32=
--AT32=0
-+AT32=
- 
- [Round2]
+ GA32=-1
+ GB32=-1
 
 === mannschaftspokal.l98: Mannschaft anlegen ===
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -873,8 +861,8 @@ GEAENDERT ligen/mannschaftspokal.l98
 <tr>
 <td class="nobr">
 <input class="lmo-formular-input" type="text" name="xteams7" size="32" maxlength="64" value="Neue Mannschaft" onChange="dolmoedit()">
-<input class="lmo-formular-input" type="text" name="xteamm7" size="12" maxlength="12" value="" onChange="dolmoedit()">
-<input class="lmo-formular-input" type="text" name="xteamk7" size="5" maxlength="5" value="" onChange="dolmoedit()"> &nbsp; </td>
+<input class="lmo-formular-input" type="text" name="xteamm7" size="12" maxlength="12" value="Mannschaft" onChange="dolmoedit()">
+<input class="lmo-formular-input" type="text" name="xteamk7" size="5" maxlength="5" value="Neue" onChange="dolmoedit()"> &nbsp; </td>
 <td class="nobr" align="center">
 <input id="h7" class="lmo-formular-input" type="text" name="xteamu7" tabindex="714" size="30" maxlength="255" value="" onChange="dolmoedit()">
 <script type="text/javascript">document.getElementById('h7').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'h7\').style.display=\'inline\';return false;">+</a>');</script>
@@ -973,13 +961,13 @@ GEAENDERT ligen/mannschaftspokal.l98
 @@ -41,4 +42,5 @@
  5=Zeta
  6=Eta
-+7=
++7=Mannschaft
  
  [Teamk]
 @@ -49,4 +51,5 @@
  5=Zeta
  6=Eta
-+7=
++7=Neue
  
  [Team1]
 @@ -74,4 +77,8 @@
@@ -991,24 +979,12 @@ GEAENDERT ligen/mannschaftspokal.l98
 +
  [Round1]
  D1=16.03.2025
-@@ -109,13 +116,12 @@
- TA3=0
- TB3=0
--GA31=
--GB31=
+@@ -111,5 +118,4 @@
+ GA31=-1
+ GB31=-1
 -SP31=0
-+GA31=-1
-+GB31=-1
  NT31=
  BE31=
- TI31=
- AT31=
--GA32=
--GB32=
-+GA32=-1
-+GB32=-1
- NT32=
- BE32=
 
 === mannschaftspokal.l98: Nummer, die es nicht gibt ===
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
