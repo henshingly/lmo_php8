@@ -158,7 +158,7 @@ if ($file != '') {
         }
         foreach ($lmo_opt as $lmo_schluessel => $lmo_wert) {
             if ($lmo_wert !== $lmo_opt_geladen[$lmo_schluessel]) {
-                $lmo_liga->optionen[$lmo_schluessel] = (string)$lmo_wert;
+                $lmo_liga->setzeEinstellung($lmo_schluessel, (string)$lmo_wert);
             }
         }
         require(PATH_TO_LMO . '/lmo-saveliga.php');

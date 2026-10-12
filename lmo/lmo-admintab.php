@@ -79,8 +79,8 @@ if ($file != "") {
         $xc++;
       }
     }
-    // HS des Spieltags: je Platz zwei Ziffern; 0 = keine Korrektur
-    $lmo_liga->spieltag((int)$st)->werte['HS'] = $xc == $lmo_mannschaften ? '0' : $xb;
+    // je Platz zwei Ziffern; steht jede Mannschaft auf ihrem Platz, gibt es keine Korrektur
+    $lmo_liga->spieltag((int)$st)->setzeTabellenkorrektur($xc == $lmo_mannschaften ? '0' : $xb);
     require(PATH_TO_LMO."/lmo-saveliga.php");
   }
 

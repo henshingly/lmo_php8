@@ -80,7 +80,7 @@ if ($file != '') {
         // lmo-saveliga.php schreibt sie.
         $lmo_spieltag = $lmo_liga->spieltag((int)$st);
         if ($_SESSION['lmouserok'] == 2) {
-            foreach (array('D1' => 'xdatum1', 'D2' => 'xdatum2') as $lmo_schluessel => $lmo_feld) {
+            foreach (array('xdatum1', 'xdatum2') as $lmo_feld) {
                 $lmo_datum = isset($_POST[$lmo_feld]) ? trim($_POST[$lmo_feld]) : '';
                 if ($lmo_datum != '') {
                     $datum = explode('.', $lmo_datum);
@@ -91,34 +91,38 @@ if ($file != '') {
                         $lmo_datum = '';
                     }
                 }
-                $lmo_spieltag->werte[$lmo_schluessel] = $lmo_datum;
+                if ($lmo_feld == 'xdatum1') {
+                    $lmo_spieltag->setzeErstenTag($lmo_datum);
+                } else {
+                    $lmo_spieltag->setzeLetztenTag($lmo_datum);
+                }
             }
         }
         // neue Ergebnisse: die Tabellenkorrektur gilt ab diesem Spieltag nicht mehr
         if ($lmo_einstellungen->mitHandicap()) {
             for ($i = (int)$st; $i <= $lmo_spieltage; $i++) {
-                $lmo_liga->spieltag($i)->werte['HS'] = '0';
+                $lmo_liga->spieltag($i)->setzeTabellenkorrektur('0');
             }
         }
-        // Anstoss aus Datum und Uhrzeit des Formulars: Zeitstempel, '' ohne oder mit unlesbarem Datum
-        $lmo_anstoss = static function (string $lmo_nr) use ($deftime): string {
+        // Anstoss aus Datum und Uhrzeit des Formulars: Zeitstempel, null ohne oder mit unlesbarem Datum
+        $lmo_anstoss = static function (string $lmo_nr) use ($deftime): ?int {
             $dum1 = isset($_POST['xatdat' . $lmo_nr]) ? trim($_POST['xatdat' . $lmo_nr]) : '';
             $dum2 = isset($_POST['xattim' . $lmo_nr]) ? trim($_POST['xattim' . $lmo_nr]) : '';
             if ($dum1 == '') {
-                return '';
+                return null;
             }
             if ($dum2 == '') {
                 $dum2 = $deftime;
             }
             $dt = DateTime::createFromFormat('d.m.Y H:i', $dum1 . ' ' . $dum2);
 
-            return $dt !== false ? (string)$dt->getTimestamp() : '';
+            return $dt !== false ? $dt->getTimestamp() : null;
         };
-        // Tore aus dem Formular: leer und "_" heissen nicht gespielt (-1), "X" (nur Liga) 0, sonst die Zahl
-        $lmo_tore = static function (string $lmo_feld, bool $lmo_mitX): int {
+        // Tore aus dem Formular: leer und "_" heissen nicht gespielt (null), "X" (nur Liga) 0, sonst die Zahl
+        $lmo_tore = static function (string $lmo_feld, bool $lmo_mitX): ?int {
             $lmo_wert = isset($_POST[$lmo_feld]) ? trim($_POST[$lmo_feld]) : '';
             if ($lmo_wert == '' || $lmo_wert == '_') {
-                return -1;
+                return null;
             }
             if ($lmo_mitX && strtoupper($lmo_wert) == 'X') {
                 return 0;
@@ -126,64 +130,51 @@ if ($file != '') {
 
             return intval($lmo_wert);
         };
-        // Zusatz aus dem Formular: "_" (kein Zusatz) und die beiden Anzeigetexte; alles andere steht nicht in der Datei
-        $lmo_zusatz_setzen = static function (array &$lmo_spiel, string $lmo_wert) use ($text): void {
-            unset($lmo_spiel['SP']);
+        // Zusatz aus dem Formular: "_" (kein Zusatz, 0) und die beiden Anzeigetexte (2 = n.V., 1 = i.E.); alles andere: keine Angabe
+        $lmo_zusatz = static function (string $lmo_wert) use ($text): ?int {
             if ($lmo_wert == '_') {
-                $lmo_spiel['SP'] = '_';
-            } elseif ($lmo_wert == $text[0]) {
-                $lmo_spiel['SP'] = '2';
-            } elseif ($lmo_wert == $text[1]) {
-                $lmo_spiel['SP'] = '1';
+                return 0;
             }
+            if ($lmo_wert == $text[0]) {
+                return 2;
+            }
+
+            return $lmo_wert == $text[1] ? 1 : null;
         };
         $lmo_partien = $lmo_einstellungen->partienImSpieltag((int)$st);
         $lmo_modus = \Lmo\Liga\Paarung::spieleJePaarung($lmo_liga, (int)$st);
         $lmo_termine = array();
         for ($i = 0; $i < $lmo_partien; $i++) {
-            if (!isset($lmo_spieltag->partien[$i + 1])) {
-                $lmo_spieltag->partien[$i + 1] = new \Lmo\Liga\Rohdaten\Partie();
-            }
-            $lmo_partie = $lmo_spieltag->partien[$i + 1];
+            $lmo_partie = $lmo_spieltag->partie($i + 1);
             if ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert'] == 1) {
-                $lmo_partie->heim = isset($_POST['xteama' . $i]) ? $_POST['xteama' . $i] : '';
-                $lmo_partie->gast = isset($_POST['xteamb' . $i]) ? $_POST['xteamb' . $i] : '';
+                $lmo_partie->setzeMannschaften((int)($_POST['xteama' . $i] ?? 0), (int)($_POST['xteamb' . $i] ?? 0));
             }
             if (!$lmo_pokal) {
-                $lmo_spiel = $lmo_partie->spiele[1] ?? array();
-                $lmo_spiel['AT'] = $lmo_anstoss((string)$i);
-                // Wertung am gruenen Tisch: -2 auf der Seite, gegen die gewertet wird; ET=3 gegen beide
-                $lmo_wertung = $_POST['xmsieg' . $i];
-                $lmo_spiel['GA'] = $lmo_wertung == 1 ? '-2' : (string)$lmo_tore('xgoala' . $i, true);
-                $lmo_spiel['GB'] = $lmo_wertung == 2 ? '-2' : (string)$lmo_tore('xgoalb' . $i, true);
-                unset($lmo_spiel['ET']);
-                if ($lmo_wertung == 3) {
-                    $lmo_spiel['ET'] = '3';
-                }
+                $lmo_zeit = $lmo_anstoss((string)$i);
+                $lmo_partie->setzeAnstoss($lmo_zeit);
+                // mit Wertung am gruenen Tisch (0 = keine, 1 = fuer Heim, 2 = fuer Gast, 3 = gegen beide)
+                $lmo_partie->setzeErgebnis($lmo_tore('xgoala' . $i, true), $lmo_tore('xgoalb' . $i, true), (int)$_POST['xmsieg' . $i]);
                 if ($lmo_einstellungen->mitVerlaengerung()) {
-                    $lmo_zusatz_setzen($lmo_spiel, (string)$_POST['xmspez' . $i]);
+                    $lmo_partie->setzeZusatz($lmo_zusatz((string)$_POST['xmspez' . $i]));
                 }
-                $lmo_spiel['NT'] = trim($_POST['xmnote' . $i]);
-                $lmo_spiel['BE'] = trim($_POST['xmberi' . $i]);
+                $lmo_partie->setzeNotiz(trim($_POST['xmnote' . $i]));
+                $lmo_partie->setzeBericht(trim($_POST['xmberi' . $i]));
                 if ($_SESSION['lmouserok'] == 2 && $ftest0 == 1) {
-                    $lmo_spiel['TI'] = trim($_POST['xmtipp' . $i]);
+                    $lmo_partie->setzeOhneTippwertung(trim($_POST['xmtipp' . $i]) == 1);
                 }
-                $lmo_partie->spiele[1] = $lmo_spiel;
-                $lmo_termine[] = (int)$lmo_spiel['AT'];
+                $lmo_termine[] = (int)$lmo_zeit;
             } else {
                 for ($n = 0; $n < $lmo_modus; $n++) {
-                    $lmo_spiel = $lmo_partie->spiele[$n + 1] ?? array();
-                    $lmo_spiel['AT'] = $lmo_anstoss($i . $n);
-                    $lmo_spiel['GA'] = (string)$lmo_tore('xgoala' . $i . $n, false);
-                    $lmo_spiel['GB'] = (string)$lmo_tore('xgoalb' . $i . $n, false);
-                    $lmo_zusatz_setzen($lmo_spiel, (string)$_POST['xmspez' . $i . $n]);
-                    $lmo_spiel['NT'] = trim($_POST['xmnote' . $i . $n]);
-                    $lmo_spiel['BE'] = trim($_POST['xmberi' . $i . $n]);
+                    $lmo_zeit = $lmo_anstoss($i . $n);
+                    $lmo_partie->setzeAnstoss($lmo_zeit, $n + 1);
+                    $lmo_partie->setzeErgebnis($lmo_tore('xgoala' . $i . $n, false), $lmo_tore('xgoalb' . $i . $n, false), null, $n + 1);
+                    $lmo_partie->setzeZusatz($lmo_zusatz((string)$_POST['xmspez' . $i . $n]), $n + 1);
+                    $lmo_partie->setzeNotiz(trim($_POST['xmnote' . $i . $n]), $n + 1);
+                    $lmo_partie->setzeBericht(trim($_POST['xmberi' . $i . $n]), $n + 1);
                     if ($_SESSION['lmouserok'] == 2 && $ftest0 == 1) {
-                        $lmo_spiel['TI'] = trim($_POST['xmtipp' . $i . $n]);
+                        $lmo_partie->setzeOhneTippwertung(trim($_POST['xmtipp' . $i . $n]) == 1, $n + 1);
                     }
-                    $lmo_partie->spiele[$n + 1] = $lmo_spiel;
-                    $lmo_termine[] = (int)$lmo_spiel['AT'];
+                    $lmo_termine[] = (int)$lmo_zeit;
                 }
             }
         }
@@ -193,10 +184,10 @@ if ($file != '') {
             for ($y = 1; $y <= $lmo_einstellungen->partienJeSpieltag(); $y++) {
                 $lmo_naechste = $lmo_liga->spieltage[(int)$st + 1]->partien[$y] ?? null;
                 if ($lmo_naechste !== null && (int)$lmo_naechste->heim == $lmo_lieblingsmannschaft) {
-                    $lmo_liga->optionen['kurve2'] = (string)$lmo_naechste->gast;
+                    $lmo_liga->setzeEinstellung('kurve2', (string)$lmo_naechste->gast);
                 }
                 if ($lmo_naechste !== null && (int)$lmo_naechste->gast == $lmo_lieblingsmannschaft) {
-                    $lmo_liga->optionen['kurve2'] = (string)$lmo_naechste->heim;
+                    $lmo_liga->setzeEinstellung('kurve2', (string)$lmo_naechste->heim);
                 }
             }
         }
@@ -205,10 +196,10 @@ if ($file != '') {
         $lmo_spieltermine = array_filter($lmo_termine, 'filterZero');
         if (!empty($lmo_spieltermine)) {
             if (empty($lmo_spieltag->werte['D1'])) {
-                $lmo_spieltag->werte['D1'] = date('d.m.Y', min($lmo_spieltermine));
+                $lmo_spieltag->setzeErstenTag(date('d.m.Y', min($lmo_spieltermine)));
             }
             if (empty($lmo_spieltag->werte['D2'])) {
-                $lmo_spieltag->werte['D2'] = date('d.m.Y', max($lmo_spieltermine));
+                $lmo_spieltag->setzeLetztenTag(date('d.m.Y', max($lmo_spieltermine)));
             }
         }
 
@@ -225,15 +216,10 @@ if ($file != '') {
         // Tippspiel-Addon
         // aktueller Spieltag: der im Formular gewaehlte, sonst der bearbeitete
         $stz = trim($_POST['xstx']);
-        $lmo_liga->optionen['Actual'] = $stz != 0 ? $stz : (string)$st;
-        $lmo_liga->optionen['ticker'] = trim($_POST['xnticker']);
-        $lmo_liga->news = array('NC' => '0');
-        foreach (explode('\n', $_POST['xnlines']) as $y) {
-            if ($y != '') {
-                $lmo_liga->news['N' . (count($lmo_liga->news) - 1)] = $y;
-            }
-        }
-        $lmo_liga->news['NC'] = (string)(count($lmo_liga->news) - 1);
+        $lmo_liga->setzeEinstellung('Actual', $stz != 0 ? $stz : (string)$st);
+        $lmo_liga->setzeEinstellung('ticker', trim($_POST['xnticker']));
+        // die Newszeilen ohne die leeren
+        $lmo_liga->setzeNews(array_values(array_filter(explode('\n', $_POST['xnlines']), static fn (string $y): bool => $y != '')));
         // lmo-saveliga.php schreibt den gewaehlten Spieltag als aktuellen
         $stz = $st;
         $st = $lmo_liga->optionen['Actual'];

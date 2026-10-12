@@ -95,10 +95,10 @@ if ($newpage == 3) {
     // beginnt, Mannschaften mit vorlaeufigen Namen und der leere Spielplan. lmo-saveliga.php
     // ergaenzt alles Uebrige und schreibt die Datei.
     $lmo_liga = new \Lmo\Liga\Rohdaten\Liga();
-    $lmo_liga->optionen = array('Name' => (string)$xtitel, 'Type' => (string)$xtype, 'Teams' => (string)$xteams);
+    $lmo_neu = array('Name' => (string)$xtitel, 'Type' => (string)$xtype, 'Teams' => (string)$xteams);
     $st = '1';
     if ($xtype == 0) {
-        $lmo_liga->optionen += array(
+        $lmo_neu += array(
             'Rounds' => (string)$xanzst, 'Matches' => (string)$xanzsp, 'Spez' => '0', 'HandS' => '0', 'Kegel' => '0',
             'PointsForWin' => '3', 'PointsForDraw' => '1', 'PointsForLost' => '0', 'HideDraw' => '0', 'OnRun' => '0',
             'MinusPoints' => '1', 'Direct' => '0', 'Champ' => '1', 'CL' => '1', 'CK' => '1', 'UC' => '3', 'AR' => '0', 'AB' => '3',
@@ -106,13 +106,16 @@ if ($newpage == 3) {
             'kurve1' => '0', 'kurve2' => '0',
         );
     } else {
-        $lmo_liga->optionen += array('KlFin' => '0', 'playdown' => '0', 'playoffmode' => '0');
+        $lmo_neu += array('KlFin' => '0', 'playdown' => '0', 'playoffmode' => '0');
     }
-    $lmo_liga->optionen += array(
+    $lmo_neu += array(
         'goalfaktor' => '1', 'pointsfaktor' => '1', 'enableGameSort' => '1', 'DatC' => '1', 'DatS' => '1', 'DatM' => '1',
         'DatF' => $defdateformat, 'urlT' => '1', 'urlB' => '1', 'Plan' => '1', 'Ergebnis' => '1', 'mittore' => '1',
         'favTeam' => '0', 'selTeam' => '0', 'ticker' => '0',
     );
+    foreach ($lmo_neu as $lmo_schluessel => $lmo_wert) {
+        $lmo_liga->setzeEinstellung($lmo_schluessel, $lmo_wert);
+    }
     $lmo_einstellungen = $lmo_liga->einstellungen();
     for ($i = 1; $i <= $lmo_einstellungen->mannschaften(); $i++) {
         $lmo_mannschaft = $lmo_liga->mannschaft($i);
@@ -121,12 +124,13 @@ if ($newpage == 3) {
     }
     for ($i = 1; $i <= $lmo_einstellungen->spieltage(); $i++) {
         $lmo_spieltag = $lmo_liga->spieltag($i);
-        $lmo_spieltag->werte = array('D1' => '', 'D2' => '');
+        $lmo_spieltag->setzeErstenTag('');
+        $lmo_spieltag->setzeLetztenTag('');
         $lmo_spiele = 1;
         if ($xtype != 0) {
             // Pokal: so viele Spiele je Paarung, wie fuer die Runde gewaehlt
-            $lmo_spieltag->werte['MO'] = isset($_POST['xmod' . $i]) ? (string)$_POST['xmod' . $i] : '1';
-            $lmo_spiele = (int)$lmo_spieltag->werte['MO'];
+            $lmo_spiele = isset($_POST['xmod' . $i]) ? (int)$_POST['xmod' . $i] : 1;
+            $lmo_spieltag->setzeSpieleJePaarung($lmo_spiele);
         }
         for ($j = 1; $j <= $lmo_einstellungen->partienImSpieltag($i); $j++) {
             $lmo_partie = \Lmo\Liga\Rohdaten\Partie::leer();
@@ -135,8 +139,7 @@ if ($newpage == 3) {
             }
             if ($xtype == 0 && $xprogram != 'none') {
                 // der Spielplan aus der Vorlage oder der ausgeloste
-                $lmo_partie->heim = (string)$yteama[$i - 1][$j - 1];
-                $lmo_partie->gast = (string)$yteamb[$i - 1][$j - 1];
+                $lmo_partie->setzeMannschaften((int)$yteama[$i - 1][$j - 1], (int)$yteamb[$i - 1][$j - 1]);
             }
             $lmo_spieltag->partien[$j] = $lmo_partie;
         }

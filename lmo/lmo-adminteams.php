@@ -65,17 +65,16 @@ if ($file != "" && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
       if ($lmo_mannschaft->kurz == "") {
         $lmo_mannschaft->kurz = trim(substr($lmo_mittel, 0, 5));
       }
-      $lmo_mannschaft->werte['URL'] = isset($_POST["xteamu".$i])?trim($_POST["xteamu".$i]):'';
-      $lmo_mannschaft->werte['NOT'] = isset($_POST["xteamn".$i])?trim($_POST["xteamn".$i]):'';
+      $lmo_mannschaft->setzeUrl(isset($_POST["xteamu".$i])?trim($_POST["xteamu".$i]):'');
+      $lmo_mannschaft->setzeNotiz(isset($_POST["xteamn".$i])?trim($_POST["xteamn".$i]):'');
       if (!$lmo_pokal) {
         // im Formular zaehlt ein Bonus positiv, in der Datei steht er mit umgekehrtem Vorzeichen
-        $lmo_mannschaft->werte['SP'] = (string)((-1) * intval($_POST["xstrafp".$i]));
+        $lmo_mannschaft->setzeStrafpunkte((-1) * intval($_POST["xstrafp".$i]));
         if ($lmo_einstellungen->mitMinuspunkten()) {
-          $lmo_mannschaft->werte['SM'] = (string)((-1) * intval($_POST["xstrafm".$i]));
+          $lmo_mannschaft->setzeStrafminuspunkte((-1) * intval($_POST["xstrafm".$i]));
         }
-        $lmo_mannschaft->werte['TOR1'] = (string)((-1) * intval($_POST["xtorkorrektur1".$i]));
-        $lmo_mannschaft->werte['TOR2'] = (string)((-1) * intval($_POST["xtorkorrektur2".$i]));
-        $lmo_mannschaft->werte['STDA'] = (string)intval($_POST["xstrafdat".$i]);
+        $lmo_mannschaft->setzeTorkorrektur((-1) * intval($_POST["xtorkorrektur1".$i]), (-1) * intval($_POST["xtorkorrektur2".$i]));
+        $lmo_mannschaft->setzeStrafeAbSpieltag(intval($_POST["xstrafdat".$i]));
       }
     }
     require(PATH_TO_LMO."/lmo-saveliga.php");

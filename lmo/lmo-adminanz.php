@@ -43,11 +43,12 @@ if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
                 $lmo_liga->spieltag($i)->partien[$j] = \Lmo\Liga\Rohdaten\Partie::leer();
             }
         }
-        $lmo_liga->optionen['Rounds'] = trim($_POST['xanzst']);
-        $lmo_liga->optionen['Matches'] = trim($_POST['xanzsp']);
+        $lmo_anz_neu = trim($_POST['xanzst']);
+        $lmo_liga->setzeEinstellung('Rounds', $lmo_anz_neu);
+        $lmo_liga->setzeEinstellung('Matches', trim($_POST['xanzsp']));
         // der aktuelle Spieltag liegt hoechstens auf dem letzten
-        if ($lmo_einstellungen->aktuellerSpieltag() > $lmo_liga->optionen['Rounds']) {
-            $lmo_liga->optionen['Actual'] = $lmo_liga->optionen['Rounds'];
+        if ($lmo_einstellungen->aktuellerSpieltag() > $lmo_anz_neu) {
+            $lmo_liga->setzeEinstellung('Actual', $lmo_anz_neu);
         }
         require(PATH_TO_LMO . '/lmo-saveliga.php');
     }
