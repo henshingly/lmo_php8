@@ -113,7 +113,7 @@
 </tr>
 <tr>
 <td class="nobr">
-<input class="lmo-formular-input" type="text" name="xteams2" size="32" maxlength="64" value="SV O&#039;Neill/Nord Hinterwalden" onChange="dolmoedit()">
+<input class="lmo-formular-input" type="text" name="xteams2" size="32" maxlength="64" value="SV Oneill/Nord Hinterwalden" onChange="dolmoedit()">
 <input class="lmo-formular-input" type="text" name="xteamm2" size="12" maxlength="12" value="Hinterwalden" onChange="dolmoedit()">
 <input class="lmo-formular-input" type="text" name="xteamk2" size="5" maxlength="5" value="Hinte" onChange="dolmoedit()"> &nbsp; </td>
 <td class="lmoBackMarkierung nobr" align="center">
@@ -131,7 +131,7 @@
 <script type="text/javascript">document.getElementById('h2').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'h2\').style.display=\'inline\';return false;">+</a>');</script>
 </td>
 <td class="nobr">
-<a href='/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/penalties.l98&amp;st=-2&amp;team=2' onclick="return dteamlmolink(this.href,'SV O'Neill/Nord Hinterwalden');" title="Diese Mannschaft vom Spielbetrieb zurückziehen">
+<a href='/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/penalties.l98&amp;st=-2&amp;team=2' onclick="return dteamlmolink(this.href,'SV Oneill/Nord Hinterwalden');" title="Diese Mannschaft vom Spielbetrieb zurückziehen">
 <img src="http://lmo.test/lmo/img/delete.svg" height="18" alt="" border="0">
 </a>
 </td>
@@ -403,7 +403,7 @@ GEAENDERT ligen/golden/penalties.l98
 -6=Mannschaft 6
 -7=Mannschaft 7
 -8=Mannschaft 8
-+2=SV O'Neill/Nord Hinterwalden
++2=SV Oneill/Nord Hinterwalden
 +3=FC Drei
 +4=Verein 4
 +5=Verein 5
@@ -513,7 +513,7 @@ GEAENDERT ligen/golden/penalties.l98
 +SM=0
  TOR1=0
  TOR2=0
-NEU output/penalties.l98.php (1985 Bytes)
+NEU output/penalties.l98.php (1967 Bytes)
 <?php
 $zutore[1]=11;
 $dstore[1]=3.67;
@@ -558,13 +558,13 @@ $hgastsieg="Verein 7";
 $hheimsiegtor="3";
 $hgastsiegtor="0";
 $spieltagflag=1;
-$hheimsieg1="SV O&#039;Neill/Nord Hinterwalden";
+$hheimsieg1="SV Oneill/Nord Hinterwalden";
 $hgastsieg1="Verein 8";
 $hheimsiegtor1="3";
 $hgastsiegtor1="0";
 $spieltagflag1=10;
 $counteranz=6;
-$aheimsieg="SV O&#039;Neill/Nord Hinterwalden";
+$aheimsieg="SV Oneill/Nord Hinterwalden";
 $agastsieg="Verein 6";
 $aheimsiegtor="0";
 $agastsiegtor="3";
@@ -587,7 +587,7 @@ $htorreicht4="3";
 $spieltagflag5=14;
 $counteranz5=6;
 $akt_gewonnen=2;
-$team_akt_gewonnen="SV O&#039;Neill/Nord Hinterwalden";
+$team_akt_gewonnen="SV Oneill/Nord Hinterwalden";
 $akt_ungeschlagen=3;
 $team_akt_ungeschlagen="Verein 5";
 $akt_unentschieden=2;
@@ -725,7 +725,7 @@ $team_max_verloren="Verein 8 (9-12.ST)";
 </tr>
 <tr>
 <td class="nobr">
-<input class="lmo-formular-input" type="text" name="xteams2" size="32" maxlength="64" value="SV O&#039;Neill/Nord Hinterwalden" onChange="dolmoedit()">
+<input class="lmo-formular-input" type="text" name="xteams2" size="32" maxlength="64" value="SV Oneill/Nord Hinterwalden" onChange="dolmoedit()">
 <input class="lmo-formular-input" type="text" name="xteamm2" size="12" maxlength="12" value="Hinterwalden" onChange="dolmoedit()">
 <input class="lmo-formular-input" type="text" name="xteamk2" size="5" maxlength="5" value="Hinte" onChange="dolmoedit()"> &nbsp; </td>
 <td class="lmoBackMarkierung nobr" align="center">
@@ -743,7 +743,7 @@ $team_max_verloren="Verein 8 (9-12.ST)";
 <script type="text/javascript">document.getElementById('h2').style.display='none';document.write('<a href="#" onClick="this.style.display=\'none\';document.getElementById(\'h2\').style.display=\'inline\';return false;">+</a>');</script>
 </td>
 <td class="nobr">
-<a href='/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/penalties.l98&amp;st=-2&amp;team=2' onclick="return dteamlmolink(this.href,'SV O'Neill/Nord Hinterwalden');" title="Diese Mannschaft vom Spielbetrieb zurückziehen">
+<a href='/lmo/lmoadmin.php?action=admin&amp;todo=edit&amp;file=golden/penalties.l98&amp;st=-2&amp;team=2' onclick="return dteamlmolink(this.href,'SV Oneill/Nord Hinterwalden');" title="Diese Mannschaft vom Spielbetrieb zurückziehen">
 <img src="http://lmo.test/lmo/img/delete.svg" height="18" alt="" border="0">
 </a>
 </td>

@@ -109,7 +109,9 @@ L98;
         $felder = array_merge($felder, [
             // leerer Name bleibt der alte; Mittel- und Kurzname werden abgeleitet
             'xteams1' => '', 'xteamm1' => '', 'xteamk1' => '',
-            'xteams2' => " SV O'Neill/Nord Hinterwalden ", 'xteamm2' => '', 'xteamk2' => '',
+            // kein Apostroph im Namen: die Statistikdatei (lmo-zustat.php) maskiert ihn erst ab PHP 8.1,
+            // ihre Groesse in den Dateiaenderungen haengt sonst von der PHP-Version ab
+            'xteams2' => ' SV Oneill/Nord Hinterwalden ', 'xteamm2' => '', 'xteamk2' => '',
             'xteams3' => 'FC Drei', 'xteamm3' => 'Dreier', 'xteamk3' => ' D3 ', 'xteamu3' => ' http://example.org/drei ', 'xteamn3' => ' Notiz & mehr ',
             // Strafen: im Formular positiv = Bonus, in der Datei mit umgekehrtem Vorzeichen
             'xstrafp4' => '3', 'xstrafm4' => '-2', 'xtorkorrektur14' => '-4', 'xtorkorrektur24' => 'abc', 'xstrafdat4' => '7',
