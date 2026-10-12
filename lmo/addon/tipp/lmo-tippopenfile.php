@@ -23,14 +23,12 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var int|string $st gewaehlter Spieltag
  * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
  * @var string $tippfile Tippdatei des Tippspiels
  */
 
-// $ligaDaten bereitstellen (auch wenn dieser Lader innerhalb einer Funktion laeuft)
-require(PATH_TO_LMO . '/lmo-ligadaten.php');
   
   
 if ($tippfile == "") {
@@ -63,23 +61,17 @@ while (!feof($datei)) {
 }
 fclose($datei);
 
-if ($ligaDaten->lmtype == 0) {
-  $goaltippa = array_pad(array("_"), $ligaDaten->anzsp+1, "_");
-  $goaltippb = array_pad(array("_"), $ligaDaten->anzsp+1, "_");
+// der Spieltag aus Sicht des Tippspiels: so viele Paarungen und Spiele je Paarung fassen die Tipps
+$lmo_tipp_lader_runde = \Lmo\Tipp\Tipprunde::fuer($lmo_liga, (int)$st);
+if (!$lmo_tipp_lader_runde->pokal) {
+  $goaltippa = array_pad(array("_"), $lmo_tipp_lader_runde->plaetze+1, "_");
+  $goaltippb = array_pad(array("_"), $lmo_tipp_lader_runde->plaetze+1, "_");
 } else {
-  $ligaDaten->anzsp = $ligaDaten->anzteams;
-  for ($i = 0; $i < $st; $i++) {
-    $ligaDaten->anzsp = $ligaDaten->anzsp/2;
-  }
-  if (($ligaDaten->klfin == 1) && ($st == $ligaDaten->anzst)) {
-    $ligaDaten->anzsp = $ligaDaten->anzsp+1;
-  }
-   
-  $goaltippa = array_pad($array, $ligaDaten->anzsp+1, "");
-  $goaltippb = array_pad($array, $ligaDaten->anzsp+1, "");
-  for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
-    $goaltippa[$i] = array_pad(array("_"), $ligaDaten->modus[$st-1]+1, "_");
-    $goaltippb[$i] = array_pad(array("_"), $ligaDaten->modus[$st-1]+1, "_");
+  $goaltippa = array_pad($array, $lmo_tipp_lader_runde->plaetze+1, "");
+  $goaltippb = array_pad($array, $lmo_tipp_lader_runde->plaetze+1, "");
+  for ($i = 0; $i < $lmo_tipp_lader_runde->plaetze; $i++) {
+    $goaltippa[$i] = array_pad(array("_"), $lmo_tipp_lader_runde->spieleJePaarung+1, "_");
+    $goaltippb[$i] = array_pad(array("_"), $lmo_tipp_lader_runde->spieleJePaarung+1, "_");
   }
 }
 for ($i = 1; $i <= count($tippdaten); $i++) {
@@ -93,7 +85,7 @@ for ($i = 1; $i <= count($tippdaten); $i++) {
     $op6 = (int)substr($dum[1], 2, -1)-1;
     $op7 = substr($dum[1], -1)-1;
     $op8 = substr($dum[1], 0, 2);
-    if ($ligaDaten->lmtype == 0) {
+    if (!$lmo_tipp_lader_runde->pokal) {
       if (($op2 == "Round") && ($op8 == "GA")) {
         $goaltippa[$op4] = $dum[2];
         if ($goaltippa[$op4] == "") {
@@ -103,7 +95,6 @@ for ($i = 1; $i <= count($tippdaten); $i++) {
           $goaltippa[$op4] = "_";
         }
         if ($goaltippa[$op4] == "-2") {
-          $ligaDaten->msieg[$op3][$op4] = 1;
           $goaltippa[$op4] = "0";
         }
       }
@@ -116,7 +107,6 @@ for ($i = 1; $i <= count($tippdaten); $i++) {
           $goaltippb[$op4] = "_";
         }
         if ($goaltippb[$op4] == "-2") {
-          $ligaDaten->msieg[$op3][$op4] = 2;
           $goaltippb[$op4] = "0";
         }
       }
