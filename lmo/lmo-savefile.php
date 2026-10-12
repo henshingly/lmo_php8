@@ -45,6 +45,8 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
         include(PATH_TO_LMO."/lmo-savehtml.php");
         include(PATH_TO_LMO."/lmo-savehtml1.php");
       }*/
+      // der Stand, der gespeichert wird, als Rohdaten (Lmo\Liga\Rohdaten\Liga); ab hier auch in $lmo_liga
+      $lmo_liga = $ligaDaten->alsRohdaten($text[54], $st>0 ? $st : $ligaDaten->stx, $text[0], $text[1]);
       if ($einzutore==1 || $einzutoretab==1 || $einzustats==1) {
         include(PATH_TO_LMO."/lmo-zustat.php");
       }
@@ -54,8 +56,8 @@ if (($_SESSION['lmouserok']==2)||($_SESSION['lmouserok']==1)) {
       if ($datei) {
         echo getMessage($text[138]);
         flock($datei,LOCK_EX);
-        // Abschnitte, Schluessel und Werte der ganzen Datei: Lmo\Liga\LigaDaten
-        $lmo_abschnitte = $ligaDaten->abschnitteZumSpeichern($text[54], $st>0 ? $st : $ligaDaten->stx, $text[0], $text[1]);
+        // Abschnitte, Schluessel und Werte der ganzen Datei
+        $lmo_abschnitte = $lmo_liga->abschnitte();
         foreach ($lmo_abschnitte as $lmo_nr => list($lmo_abschnitt, $lmo_zeilen)) {
           fputs($datei,($lmo_nr>0 ? "\n" : "")."[".$lmo_abschnitt."]\n");
           foreach ($lmo_zeilen as list($lmo_schl, $lmo_wert)) {
