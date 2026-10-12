@@ -409,19 +409,6 @@ xnlines=
 GEAENDERT ligen/pokal2.l98
 --- vorher
 +++ nachher
-@@ -33,8 +33,8 @@
- 
- [Teamm]
--1=
--2=
--3=
--4=
-+1=Mannschaft
-+2=Mannschaft
-+3=Mannschaft
-+4=Mannschaft
- 
- [Teamk]
 @@ -91,5 +91,4 @@
  GA11=-1
  GB11=-1

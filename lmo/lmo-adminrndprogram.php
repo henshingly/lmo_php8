@@ -23,7 +23,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var array<int|string, mixed> $array leeres Array als Vorlage fuer array_pad()
  *
  * Weitere Variablen des einbindenden Codes:
@@ -83,29 +82,29 @@ require_once(PATH_TO_LMO . "/lmo-admintest.php");
 $dummy = false;
 
 // Anzahl der Spieler
-$ligaDaten->anzteams = $xteams;
+$lmo_rnd_teams = $xteams;
 if (($xteams % 2) == 1) {
-    $ligaDaten->anzteams++;
+    $lmo_rnd_teams++;
     $dummy = true;
 }
 
-$ligaDaten->plan = array_pad($array, 80, "");
+$lmo_rnd_plan = array_pad($array, 80, "");
 for ($i = 0; $i < 40; $i++) {
-    $ligaDaten->plan[$i] = array_pad($array, 40, "");
+    $lmo_rnd_plan[$i] = array_pad($array, 40, "");
     for ($j = 0; $j < 40; $j++) {
-        $ligaDaten->plan[$i][$j] = "-1";
+        $lmo_rnd_plan[$i][$j] = "-1";
     }
 }
 
 // Selbsterklärend
-$spieltageHinrunde = $ligaDaten->anzteams - 1;
-$spieltage = ($ligaDaten->anzteams - 1) * 2;
+$spieltageHinrunde = $lmo_rnd_teams - 1;
+$spieltage = ($lmo_rnd_teams - 1) * 2;
 
 // Hat der feste Platz zu Beginn Heimrecht? Dieses Recht wechselt an jedem Spieltag, der Tisch wird gedreht.
 $festerPlatzIsHome = true;
 
 // Spieler X, Sitzbelegung durch Spieler ändert sich nicht
-$spielerNrFesterPlatz = $ligaDaten->anzteams - 1;
+$spielerNrFesterPlatz = $lmo_rnd_teams - 1;
 
 // Tischpartner von Spieler X
 $spielerNrGegenueberFesterPlatz = 0;
@@ -121,21 +120,21 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
     $spielerNrGegenueberFesterPlatz = $spieltag;
     if ($festerPlatzIsHome) {
         // Hinrunde
-        $ligaDaten->plan[$spieltag][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
+        $lmo_rnd_plan[$spieltag][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
         // Rueckrunde
-        $ligaDaten->plan[$spieltag + $spieltageHinrunde][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
+        $lmo_rnd_plan[$spieltag + $spieltageHinrunde][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
     }
     else {
         // Hinrunde
-        $ligaDaten->plan[$spieltag][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
+        $lmo_rnd_plan[$spieltag][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
         // Rückrunde
-        $ligaDaten->plan[$spieltag + $spieltageHinrunde][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
+        $lmo_rnd_plan[$spieltag + $spieltageHinrunde][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
     }
 
     /*
      * 2. Abschnitt: Alle weiteren Paarungen
      */
-    $beweglicheSpieler = $ligaDaten->anzteams - 1;
+    $beweglicheSpieler = $lmo_rnd_teams - 1;
     $zielSitzGerade = 2;
     $zielSitzUngerade = $beweglicheSpieler - $zielSitzGerade;
     $zielSitzGeradeVerschoben = ($zielSitzGerade + $spieltag) % $beweglicheSpieler;
@@ -146,9 +145,9 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
      */
     while ($zielSitzGerade < $beweglicheSpieler) {
         // Hinrunde
-        $ligaDaten->plan[$spieltag][$zielSitzGeradeVerschoben] = $zielSitzUngeradeVerschoben;
+        $lmo_rnd_plan[$spieltag][$zielSitzGeradeVerschoben] = $zielSitzUngeradeVerschoben;
         // Rückrunde
-        $ligaDaten->plan[$spieltag + $spieltageHinrunde][$zielSitzUngeradeVerschoben] = $zielSitzGeradeVerschoben;
+        $lmo_rnd_plan[$spieltag + $spieltageHinrunde][$zielSitzUngeradeVerschoben] = $zielSitzGeradeVerschoben;
 
         // Weiterrutschen der beweglichen Spieler
         $zielSitzGerade += 2;
@@ -168,7 +167,7 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
  * Die neue Spielernummer ist bereits um +1 erhöht,
  * da der LMO Indizes von 1 bis $anzteams erwartet.
  */
-$abbildungsarray = range(1,$ligaDaten->anzteams);
+$abbildungsarray = range(1,$lmo_rnd_teams);
 // Fisher-Yates Shuffle
 for ($i = count($abbildungsarray); --$i; $i > 0) {
     // 0 bis $i: mit $i+1 lag der Index manchmal ausserhalb des Arrays, der Spielplan verlor ein Team
@@ -183,8 +182,8 @@ for ($i = count($abbildungsarray); --$i; $i > 0) {
  */
 for ($spieltag = 0; $spieltag < $spieltage; $spieltag++) {
     $spielnr = 0;
-    for ($heim = 0; $heim < $ligaDaten->anzteams; $heim++) {
-        $ausw = $ligaDaten->plan[$spieltag][$heim];
+    for ($heim = 0; $heim < $lmo_rnd_teams; $heim++) {
+        $ausw = $lmo_rnd_plan[$spieltag][$heim];
         if ($ausw > -1) {
             $heim_abbild = $abbildungsarray[$heim];
             $ausw_abbild = $abbildungsarray[$ausw];

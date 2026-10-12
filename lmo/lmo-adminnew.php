@@ -24,7 +24,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var string $dirliga Ligenordner relativ zum LMO (Konfiguration)
@@ -92,141 +91,58 @@ if ($newpage == 3) {
             }
         }
     }
-    $ligaDaten->titel = $xtitel;
-    $ligaDaten->lmtype = $xtype;
-    $ligaDaten->anzteams = $xteams;
-    if ($xtype == 0) {
-        $ligaDaten->anzst = $xanzst;
-        $ligaDaten->anzsp = $xanzsp;
-    }
-    else {
-        $ligaDaten->modus = array_pad($array, 7, '1');
-        $ligaDaten->anzst = strlen(decbin($ligaDaten->anzteams - 1));
-        $ligaDaten->anzsp = $ligaDaten->anzteams;
-    }
+    // Die neue Liga als Rohdaten (Lmo\Liga\Rohdaten\Liga): die Einstellungen, mit denen eine Liga
+    // beginnt, Mannschaften mit vorlaeufigen Namen und der leere Spielplan. lmo-saveliga.php
+    // ergaenzt alles Uebrige und schreibt die Datei.
+    $lmo_liga = new \Lmo\Liga\Rohdaten\Liga();
+    $lmo_liga->optionen = array('Name' => (string)$xtitel, 'Type' => (string)$xtype, 'Teams' => (string)$xteams);
     $st = '1';
-    $ligaDaten->spez = $ligaDaten->lmtype;
     if ($xtype == 0) {
-        $ligaDaten->pns = '3';
-        $ligaDaten->pnu = '1';
-        $ligaDaten->pnn = '0';
-        $ligaDaten->hidr = '0';
-        $ligaDaten->kegel = '0';
-        $ligaDaten->tabelle = '1';
-        $ligaDaten->ligastats= '1';
-        $ligaDaten->kurve = '1';
-        $ligaDaten->kreuz = '1';
-        $ligaDaten->onrun = '0';
-        $ligaDaten->kegel = '0';
-        $ligaDaten->minus = '1';
-        $ligaDaten->direkt = '0';
-        $ligaDaten->champ = '1';
-        $ligaDaten->anzcl = '1';
-        $ligaDaten->anzck = '1';
-        $ligaDaten->anzuc = '3';
-        $ligaDaten->anzar = '0';
-        $ligaDaten->anzab = '3';
-        $ligaDaten->einhinrueck = '1';
-        $ligaDaten->einheimausw = '1';
+        $lmo_liga->optionen += array(
+            'Rounds' => (string)$xanzst, 'Matches' => (string)$xanzsp, 'Spez' => '0', 'HandS' => '0', 'Kegel' => '0',
+            'PointsForWin' => '3', 'PointsForDraw' => '1', 'PointsForLost' => '0', 'HideDraw' => '0', 'OnRun' => '0',
+            'MinusPoints' => '1', 'Direct' => '0', 'Champ' => '1', 'CL' => '1', 'CK' => '1', 'UC' => '3', 'AR' => '0', 'AB' => '3',
+            'tableHinRueck' => '1', 'tableHeimAusw' => '1', 'Graph' => '1', 'Kreuz' => '1', 'Tabelle' => '1', 'Ligastats' => '1',
+            'kurve1' => '0', 'kurve2' => '0',
+        );
+    } else {
+        $lmo_liga->optionen += array('KlFin' => '0', 'playdown' => '0', 'playoffmode' => '0');
     }
-    else {
-        $ligaDaten->klfin = '0';
-        $ligaDaten->playdown = '0';
-        $ligaDaten->playoffmode = '0';
+    $lmo_liga->optionen += array(
+        'goalfaktor' => '1', 'pointsfaktor' => '1', 'enableGameSort' => '1', 'DatC' => '1', 'DatS' => '1', 'DatM' => '1',
+        'DatF' => $defdateformat, 'urlT' => '1', 'urlB' => '1', 'Plan' => '1', 'Ergebnis' => '1', 'mittore' => '1',
+        'favTeam' => '0', 'selTeam' => '0', 'ticker' => '0',
+    );
+    $lmo_einstellungen = $lmo_liga->einstellungen();
+    for ($i = 1; $i <= $lmo_einstellungen->mannschaften(); $i++) {
+        $lmo_mannschaft = $lmo_liga->mannschaft($i);
+        $lmo_mannschaft->name = $text[281] . ' '.$i;
+        $lmo_mannschaft->kurz = $text[282] . $i;
     }
-    $ligaDaten->hands = '0';
-    $ligaDaten->ergebnis = '1';
-    $ligaDaten->plan ='1';
-    $ligaDaten->datc = '1';
-    $ligaDaten->dats = '1';
-    $ligaDaten->datm = '1';
-    $ligaDaten->datf = $defdateformat;
-    $ligaDaten->enablegamesort = '1';
-    $ligaDaten->urlt = '1';
-    $ligaDaten->urlb = '1';
-    $ligaDaten->favteam = '0';
-    $ligaDaten->selteam = '0';
-    $ligaDaten->mittore = '1';
-    $ligaDaten->goalfaktor = '1';
-    $ligaDaten->pointsfaktor = '1';
-    if ($xtype == 0) {
-        $ligaDaten->stat1 = '0';
-        $ligaDaten->stat2 = '0';
-    }
-    $ligaDaten->nticker = '0';
-    for ($i = 1; $i <= $ligaDaten->anzteams; $i++) {
-        $ligaDaten->teams[$i] = $text[281] . ' '.$i;
-        $ligaDaten->teamk[$i] = $text[282] . $i;
-        $ligaDaten->teamm[$i] = '';
-        if ($ligaDaten->lmtype == 0) {
-            $ligaDaten->strafp[$i] = '0';
-            $ligaDaten->strafdat[$i] = '0';
-            $ligaDaten->torkorrektur1[$i] = '0';
-            $ligaDaten->torkorrektur2[$i] = '0';
+    for ($i = 1; $i <= $lmo_einstellungen->spieltage(); $i++) {
+        $lmo_spieltag = $lmo_liga->spieltag($i);
+        $lmo_spieltag->werte = array('D1' => '', 'D2' => '');
+        $lmo_spiele = 1;
+        if ($xtype != 0) {
+            // Pokal: so viele Spiele je Paarung, wie fuer die Runde gewaehlt
+            $lmo_spieltag->werte['MO'] = isset($_POST['xmod' . $i]) ? (string)$_POST['xmod' . $i] : '1';
+            $lmo_spiele = (int)$lmo_spieltag->werte['MO'];
         }
-        $ligaDaten->teamu[$i] = '';
-        $ligaDaten->teamn[$i] = '';
-    }
-    for ($i = 1; $i <= $ligaDaten->anzst; $i++) {
-        $ligaDaten->datum1[$i - 1] = '';
-        $ligaDaten->datum2[$i - 1] = '';
-        if ($ligaDaten->lmtype == 0) {
-            for ($j = 1; $j <= $ligaDaten->anzsp; $j++) {
-                if ($xprogram == 'none') {
-                    $ligaDaten->teama[$i - 1][$j - 1] = '0';
-                    $ligaDaten->teamb[$i - 1][$j - 1] = '0';
-                }
-                else {
-                    $ligaDaten->teama[$i - 1][$j - 1] = $yteama[$i - 1][$j - 1];
-                    $ligaDaten->teamb[$i - 1][$j - 1] = $yteamb[$i - 1][$j - 1];
-                }
-                $ligaDaten->goala[$i - 1][$j - 1] = '-1';
-                $ligaDaten->goalb[$i - 1][$j - 1] = '-1';
-                $ligaDaten->mnote[$i - 1][$j - 1] = '';
-                $ligaDaten->mberi[$i - 1][$j - 1] = '';
-                $ligaDaten->mterm[$i - 1][$j - 1] = '';
-                $ligaDaten->mtipp[$i - 1][$j - 1] = '';
-                $ligaDaten->msieg[$i - 1][$j - 1] = '';
+        for ($j = 1; $j <= $lmo_einstellungen->partienImSpieltag($i); $j++) {
+            $lmo_partie = \Lmo\Liga\Rohdaten\Partie::leer();
+            for ($n = 2; $n <= $lmo_spiele; $n++) {
+                $lmo_partie->spiele[$n] = $lmo_partie->spiele[1];
             }
-        }
-        else {
-            $ligaDaten->modus[$i - 1] = isset($_POST['xmod' . $i]) ? $_POST['xmod' . $i] : '1';
-            if ($ligaDaten->anzteams == 24) {
-                switch ($i) {
-                    case 1:
-                    case 2:
-                        $ligaDaten->anzsp = 16;
-                    break;
-                    case 3:
-                        $ligaDaten->anzsp = 8;
-                    break;
-                    case 4:
-                        $ligaDaten->anzsp = 4;
-                    break;
-                    case 5:
-                        $ligaDaten->anzsp = 2;
-                    break;
-                }
+            if ($xtype == 0 && $xprogram != 'none') {
+                // der Spielplan aus der Vorlage oder der ausgeloste
+                $lmo_partie->heim = (string)$yteama[$i - 1][$j - 1];
+                $lmo_partie->gast = (string)$yteamb[$i - 1][$j - 1];
             }
-            $ligaDaten->anzsp = $ligaDaten->anzsp / 2;
-            for ($j = 1; $j <= $ligaDaten->anzsp; $j++) {
-                $ligaDaten->teama[$i - 1][$j - 1] = '0';
-                $ligaDaten->teamb[$i - 1][$j - 1] = '0';
-                for ($n = 1; $n <= $ligaDaten->modus[$i - 1]; $n++) {
-                    $ligaDaten->goala[$i - 1][$j - 1][$n-1] = '-1';
-                    $ligaDaten->goalb[$i - 1][$j - 1][$n-1] = '-1';
-                    $ligaDaten->mnote[$i - 1][$j - 1][$n-1] = '';
-                    $ligaDaten->mspez[$i - 1][$j - 1][$n-1] = '_';
-                    $ligaDaten->mberi[$i - 1][$j - 1][$n-1] = '';
-                    $ligaDaten->mterm[$i - 1][$j - 1][$n-1] = '';
-                    $ligaDaten->mtipp[$i - 1][$j - 1][$n-1] = '';
-                    $ligaDaten->msieg[$i - 1][$j - 1][$n-1] = '';
-                }
-            }
+            $lmo_spieltag->partien[$j] = $lmo_partie;
         }
     }
     $file = $xfile . '.l98';
-    require(PATH_TO_LMO . '/lmo-savefile.php');
+    require(PATH_TO_LMO . '/lmo-saveliga.php');
 }?>
       <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
         <tr>

@@ -448,7 +448,7 @@ xmod2=1
 </body>
 </html>
 --- Dateiaenderungen ---
-NEU ligen/pokal.l98 (684 Bytes)
+NEU ligen/pokal.l98 (724 Bytes)
 [Options]
 Title=Liga Manager Online 4
 Name=Pokal
@@ -483,10 +483,10 @@ ticker=0
 4=Mannschaft 4
 
 [Teamm]
-1=
-2=
-3=
-4=
+1=Mannschaft
+2=Mannschaft
+3=Mannschaft
+4=Mannschaft
 
 [Teamk]
 1=M1
@@ -773,7 +773,7 @@ xteams4=Gelb
 GEAENDERT ligen/pokal.l98
 --- vorher
 +++ nachher
-@@ -27,14 +27,14 @@
+@@ -27,8 +27,8 @@
  
  [Teams]
 -1=Mannschaft 1
@@ -786,16 +786,6 @@ GEAENDERT ligen/pokal.l98
 +4=Gelb
  
  [Teamm]
--1=
--2=
--3=
--4=
-+1=Mannschaft
-+2=Mannschaft
-+3=Mannschaft
-+4=Mannschaft
- 
- [Teamk]
 @@ -68,5 +68,4 @@
  GA11=-1
  GB11=-1
