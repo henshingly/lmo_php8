@@ -353,7 +353,7 @@ xnlines=
 <td width="2">&nbsp;</td>
 <td>
 <select class="lmo-formular-input" name="xmspez1" onChange="dolmoedit()" tabindex="109">
-<option>_</option>
+<option selected>_</option>
 <option>(n.V.)</option>
 <option>(i.E.)</option>
 </select>
@@ -604,7 +604,7 @@ GEAENDERT ligen/golden/special.l98
 +SpezV=1
  MinusPoints=1
  Direct=0
-@@ -49,11 +55,6 @@
+@@ -49,10 +55,4 @@
  kurve2=0
  
 -XtraS=2
@@ -614,10 +614,8 @@ GEAENDERT ligen/golden/special.l98
 -SpezU=2
 -SpezV=1
  [News]
-+NC=0
  
- [Teams]
-@@ -65,4 +66,12 @@
+@@ -65,4 +65,12 @@
  6=Mannschaft 6
  
 +[Teamm]
@@ -630,14 +628,14 @@ GEAENDERT ligen/golden/special.l98
 +
  [Teamk]
  1=Manns
-@@ -122,6 +131,4 @@
+@@ -122,6 +130,4 @@
  
  [Round1]
 -SP1=1
 -SP3=2
  D1=
  D2=
-@@ -130,29 +137,29 @@
+@@ -130,29 +136,29 @@
  GA1=0
  GB1=1
 +SP1=1
@@ -673,19 +671,19 @@ GEAENDERT ligen/golden/special.l98
 -SP3=0
  D1=
  D2=
-@@ -161,4 +168,5 @@
+@@ -161,4 +167,5 @@
  GA1=0
  GB1=0
 +SP1=1
  NT1=
  BE1=
-@@ -169,4 +177,5 @@
+@@ -169,4 +176,5 @@
  GA2=1
  GB2=3
 +SP2=2
  NT2=
  BE2=
-@@ -183,7 +192,4 @@
+@@ -183,7 +191,4 @@
  
  [Round3]
 -SP1=1
@@ -693,25 +691,25 @@ GEAENDERT ligen/golden/special.l98
 -SP3=2
  D1=
  D2=
-@@ -192,4 +198,5 @@
+@@ -192,4 +197,5 @@
  GA1=2
  GB1=1
 +SP1=1
  NT1=
  BE1=
-@@ -200,4 +207,5 @@
+@@ -200,4 +206,5 @@
  GA2=0
  GB2=3
 +SP2=2
  NT2=
  BE2=
-@@ -208,4 +216,5 @@
+@@ -208,4 +215,5 @@
  GA3=0
  GB3=3
 +SP3=2
  NT3=
  BE3=
-@@ -214,7 +223,4 @@
+@@ -214,7 +222,4 @@
  
  [Round4]
 -SP1=2
@@ -719,38 +717,38 @@ GEAENDERT ligen/golden/special.l98
 -SP3=0
  D1=
  D2=
-@@ -223,4 +229,5 @@
+@@ -223,4 +228,5 @@
  GA1=1
  GB1=2
 +SP1=2
  NT1=
  BE1=
-@@ -231,4 +238,5 @@
+@@ -231,4 +237,5 @@
  GA2=2
  GB2=3
 +SP2=1
  NT2=
  BE2=
-@@ -245,6 +253,4 @@
+@@ -245,6 +252,4 @@
  
  [Round5]
 -SP1=1
 -SP2=2
  D1=
  D2=
-@@ -253,4 +259,5 @@
+@@ -253,4 +258,5 @@
  GA1=0
  GB1=3
 +SP1=1
  NT1=
  BE1=
-@@ -261,4 +268,5 @@
+@@ -261,4 +267,5 @@
  GA2=1
  GB2=1
 +SP2=2
  NT2=
  BE2=
-@@ -275,7 +283,4 @@
+@@ -275,7 +282,4 @@
  
  [Round6]
 -SP1=1
@@ -758,19 +756,19 @@ GEAENDERT ligen/golden/special.l98
 -SP3=1
  D1=
  D2=
-@@ -284,4 +289,5 @@
+@@ -284,4 +288,5 @@
  GA1=1
  GB1=3
 +SP1=1
  NT1=
  BE1=
-@@ -300,4 +306,5 @@
+@@ -300,4 +305,5 @@
  GA3=0
  GB3=2
 +SP3=1
  NT3=
  BE3=
-@@ -306,7 +313,4 @@
+@@ -306,7 +312,4 @@
  
  [Round7]
 -SP1=1
@@ -778,19 +776,19 @@ GEAENDERT ligen/golden/special.l98
 -SP3=1
  D1=
  D2=
-@@ -315,4 +319,5 @@
+@@ -315,4 +318,5 @@
  GA1=1
  GB1=2
 +SP1=1
  NT1=
  BE1=
-@@ -331,4 +336,5 @@
+@@ -331,4 +335,5 @@
  GA3=0
  GB3=2
 +SP3=1
  NT3=
  BE3=
-@@ -337,7 +343,4 @@
+@@ -337,7 +342,4 @@
  
  [Round8]
 -SP1=1
@@ -798,38 +796,38 @@ GEAENDERT ligen/golden/special.l98
 -SP3=1
  D1=
  D2=
-@@ -346,4 +349,5 @@
+@@ -346,4 +348,5 @@
  GA1=0
  GB1=3
 +SP1=1
  NT1=
  BE1=
-@@ -354,4 +358,5 @@
+@@ -354,4 +357,5 @@
  GA2=2
  GB2=3
 +SP2=1
  NT2=
  BE2=
-@@ -362,4 +367,5 @@
+@@ -362,4 +366,5 @@
  GA3=1
  GB3=1
 +SP3=1
  NT3=
  BE3=
-@@ -368,6 +374,4 @@
+@@ -368,6 +373,4 @@
  
  [Round9]
 -SP1=0
 -SP2=2
  D1=
  D2=
-@@ -384,4 +388,5 @@
+@@ -384,4 +387,5 @@
  GA2=0
  GB2=2
 +SP2=2
  NT2=
  BE2=
-@@ -398,6 +403,4 @@
+@@ -398,6 +402,4 @@
  
  [Round10]
 -SP2=0

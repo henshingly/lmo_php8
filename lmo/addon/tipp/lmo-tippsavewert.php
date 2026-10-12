@@ -23,7 +23,6 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php); nur nach dem Speichern im Adminbereich
  * @var \Lmo\Liga\Rohdaten\Liga|null $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
@@ -104,11 +103,9 @@ flock($auswertdatei, 2);
  
 if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
   echo getMessage($text['tipp'][0].': '.$text['tipp'][29]." <var>".$liga."</var> ".$text['tipp'][65]);
+  // beim Speichern im Adminbereich (todo=edit) steht der gerade eingegebene Stand schon in $lmo_liga
   if ($todo != "edit") {
     require(PATH_TO_LMO."/lmo-openfile.php");
-  } else {
-    // nach dem Speichern im Adminbereich: der gerade eingegebene Stand, nicht der beim Oeffnen der Seite gelesene
-    $lmo_liga = $ligaDaten->alsRohdaten($text[54], $ligaDaten->stx, $text[0], $text[1]);
   }
   // auch die Tipp-Lader (lmo-tippopenfile.php, lmo-tippopenfileall.php) arbeiten auf $lmo_liga
   $lmo_liga = $lmo_liga ?? new \Lmo\Liga\Rohdaten\Liga();

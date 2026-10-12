@@ -48,7 +48,7 @@ xmtipp10=1
 GEAENDERT ligen/ergebnispokal.l98
 --- vorher
 +++ nachher
-@@ -4,5 +4,26 @@
+@@ -4,5 +4,25 @@
  Type=1
  Teams=4
 +goalfaktor=1
@@ -72,10 +72,9 @@ GEAENDERT ligen/ergebnispokal.l98
 +ticker=0
 +
 +[News]
-+NC=0
  
  [Teams]
-@@ -12,18 +33,68 @@
+@@ -12,18 +32,68 @@
  4=Delta
  
 +[Teamm]
@@ -150,7 +149,7 @@ GEAENDERT ligen/ergebnispokal.l98
 +AT22=
  
  [Round2]
-@@ -31,2 +102,18 @@
+@@ -31,2 +101,18 @@
  D2=
  MO=1
 +TA1=0
@@ -171,17 +170,87 @@ GEAENDERT ligen/ergebnispokal.l98
 +AT21=0
 
 === Finale und Spiel um Platz 3 ===
-### KEIN FORMULAR GEFUNDEN (Feld: xgoala00)
-### Antwort der vorigen Seite:
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="de">
-<head>
-<title>LMO Admin</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link type="text/css" rel="stylesheet" href="http://lmo.test/lmo/lmo-style-nc.php">
-<style type="text/css
+### GESENDETE FELDER (POST, 28)
+action=admin
+todo=edit
+save=1
+file=ergebnispokal.l98
+st=2
+xdatum1=
+xdatum2=
+xatdat00=
+xattim00=
+xmspez00=_
+xmnote00=
+xmberi00=
+xatdat10=
+xattim10=
+xgoala10=_
+xgoalb10=_
+xmspez10=_
+xmnote10=
+xmberi10=
+xnticker=0
+xnlines=
+xteama0=1
+xteamb0=4
+xgoala00=1
+xgoalb00=0
+xteama1=2
+xteamb1=3
+xstx=2
 --- Dateiaenderungen ---
-(keine)
+GEAENDERT ligen/ergebnispokal.l98
+--- vorher
++++ nachher
+@@ -7,5 +7,5 @@
+ pointsfaktor=1
+ enableGameSort=1
+-Actual=1
++Actual=2
+ KlFin=1
+ playdown=0
+@@ -68,5 +68,4 @@
+ GA11=2
+ GB11=2
+-SP11=0
+ NT11=
+ BE11=http://example.org/hin
+@@ -84,5 +83,4 @@
+ GA21=-1
+ GB21=-1
+-SP21=0
+ NT21=
+ BE21=
+@@ -101,18 +99,20 @@
+ D2=
+ MO=1
+-TA1=0
+-TB1=0
+-GA11=-1
+-GB11=-1
++TA1=1
++TB1=4
++GA11=1
++GB11=0
++SP11=0
+ NT11=
+ BE11=
+ TI11=
+-AT11=0
+-TA2=0
+-TB2=0
++AT11=
++TA2=2
++TB2=3
+ GA21=-1
+ GB21=-1
++SP21=0
+ NT21=
+ BE21=
+ TI21=
+-AT21=0
++AT21=
 
 === Seite danach: Runde 1 ===
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -356,7 +425,7 @@ GEAENDERT ligen/ergebnispokal.l98
 <td class="lmoBackMarkierung" width="2">&nbsp;</td>
 <td class="lmoBackMarkierung">
 <select class="lmo-formular-input" name="xmspez00" onChange="dolmoedit()" title="Spielende auswählen" tabindex="0009">
-<option selected>_</option>
+<option>_</option>
 <option>(n.V.)</option>
 <option>(i.E.)</option>
 </select>
@@ -523,7 +592,7 @@ GEAENDERT ligen/ergebnispokal.l98
 <td class="lmoBackMarkierung" width="2">&nbsp;</td>
 <td class="lmoBackMarkierung">
 <select class="lmo-formular-input" name="xmspez10" onChange="dolmoedit()" title="Spielende auswählen" tabindex="1009">
-<option selected>_</option>
+<option>_</option>
 <option>(n.V.)</option>
 <option>(i.E.)</option>
 </select>

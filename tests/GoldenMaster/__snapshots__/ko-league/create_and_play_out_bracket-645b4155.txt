@@ -1020,7 +1020,7 @@ xgoalb10=3
 <td class="lmoBackMarkierung" width="2">&nbsp;</td>
 <td class="lmoBackMarkierung">
 <select class="lmo-formular-input" name="xmspez00" onChange="dolmoedit()" title="Spielende auswählen" tabindex="0009">
-<option>_</option>
+<option selected>_</option>
 <option>(n.V.)</option>
 <option>(i.E.)</option>
 </select>
@@ -1110,7 +1110,7 @@ xgoalb10=3
 <td class="lmoBackMarkierung" width="2">&nbsp;</td>
 <td class="lmoBackMarkierung">
 <select class="lmo-formular-input" name="xmspez10" onChange="dolmoedit()" title="Spielende auswählen" tabindex="1009">
-<option>_</option>
+<option selected>_</option>
 <option>(n.V.)</option>
 <option>(i.E.)</option>
 </select>
@@ -1225,13 +1225,7 @@ xgoalb10=3
 GEAENDERT ligen/pokal.l98
 --- vorher
 +++ nachher
-@@ -25,4 +25,5 @@
- 
- [News]
-+NC=0
- 
- [Teams]
-@@ -64,16 +65,18 @@
+@@ -64,16 +64,18 @@
  D2=
  MO=1
 -TA1=0
@@ -1828,7 +1822,7 @@ xgoalb00=2
 <td class="lmoBackMarkierung" width="2">&nbsp;</td>
 <td class="lmoBackMarkierung">
 <select class="lmo-formular-input" name="xmspez00" onChange="dolmoedit()" title="Spielende auswählen" tabindex="0009">
-<option>_</option>
+<option selected>_</option>
 <option>(n.V.)</option>
 <option>(i.E.)</option>
 </select>
@@ -1950,19 +1944,19 @@ GEAENDERT ligen/pokal.l98
 +Actual=2
  KlFin=0
  playdown=0
-@@ -69,5 +69,4 @@
+@@ -68,5 +68,4 @@
  GA11=2
  GB11=1
 -SP11=0
  NT11=
  BE11=
-@@ -78,5 +77,4 @@
+@@ -77,5 +76,4 @@
  GA21=0
  GB21=3
 -SP21=0
  NT21=
  BE21=
-@@ -88,8 +86,9 @@
+@@ -87,8 +85,9 @@
  D2=
  MO=1
 -TA1=0

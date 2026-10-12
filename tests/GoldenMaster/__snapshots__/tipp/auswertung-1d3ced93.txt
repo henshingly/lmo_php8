@@ -3380,13 +3380,7 @@ GEAENDERT addon/tipp/tipps/auswert/vereine/tippliga_zweiter.ver
 GEAENDERT ligen/tippliga.l98
 --- vorher
 +++ nachher
-@@ -50,4 +50,5 @@
- 
- [News]
-+NC=0
- 
- [Teams]
-@@ -61,4 +62,14 @@
+@@ -61,4 +61,14 @@
  8=Mannschaft 8
  
 +[Teamm]
@@ -3401,7 +3395,7 @@ GEAENDERT ligen/tippliga.l98
 +
  [Teamk]
  1=Manns
-@@ -140,10 +151,10 @@
+@@ -140,10 +150,10 @@
  TA1=1
  TB1=7
 -GA1=-1
@@ -3416,7 +3410,7 @@ GEAENDERT ligen/tippliga.l98
 +AT1=
  TA2=3
  TB2=4
-@@ -152,6 +163,6 @@
+@@ -152,6 +162,6 @@
  NT2=
  BE2=
 -TI2=
@@ -3425,7 +3419,7 @@ GEAENDERT ligen/tippliga.l98
 +AT2=
  TA3=5
  TB3=2
-@@ -160,6 +171,6 @@
+@@ -160,6 +170,6 @@
  NT3=
  BE3=
 -TI3=
@@ -3434,7 +3428,7 @@ GEAENDERT ligen/tippliga.l98
 +AT3=
  TA4=8
  TB4=6
-@@ -168,6 +179,6 @@
+@@ -168,6 +178,6 @@
  NT4=
  BE4=
 -TI4=

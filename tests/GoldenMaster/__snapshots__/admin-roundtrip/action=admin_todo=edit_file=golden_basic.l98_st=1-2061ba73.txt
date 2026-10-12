@@ -700,13 +700,7 @@ xnlines=
 GEAENDERT ligen/golden/basic.l98
 --- vorher
 +++ nachher
-@@ -50,4 +50,5 @@
- 
- [News]
-+NC=0
- 
- [Teams]
-@@ -61,4 +62,14 @@
+@@ -61,4 +61,14 @@
  8=Mannschaft 8
  
 +[Teamm]
@@ -721,28 +715,28 @@ GEAENDERT ligen/golden/basic.l98
 +
  [Teamk]
  1=Manns
-@@ -145,5 +156,5 @@
+@@ -145,5 +155,5 @@
  BE1=
  TI1=
 -AT1=0
 +AT1=
  TA2=3
  TB2=4
-@@ -153,5 +164,5 @@
+@@ -153,5 +163,5 @@
  BE2=
  TI2=
 -AT2=0
 +AT2=
  TA3=5
  TB3=2
-@@ -161,5 +172,5 @@
+@@ -161,5 +171,5 @@
  BE3=
  TI3=
 -AT3=0
 +AT3=
  TA4=8
  TB4=6
-@@ -169,5 +180,5 @@
+@@ -169,5 +179,5 @@
  BE4=
  TI4=
 -AT4=0
