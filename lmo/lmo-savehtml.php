@@ -14,13 +14,6 @@ if (!defined('PATH_TO_LMO')) {
  * @var string $diroutput Ordner fuer erzeugte Dateien (Konfiguration)
  *
  * Weitere Variablen des einbindenden Codes:
- * @var array<int|string, mixed> $atore
- * @var array<int|string, mixed> $dtore
- * @var array<int|string, mixed> $etore
- * @var array<int|string, mixed> $negativ
- * @var array<int|string, mixed> $punkte
- * @var array<int|string, mixed> $spiele
- * @var mixed $tab1
  *
  * Werden auch in dieser Datei gesetzt, aber nicht auf jedem Weg (koennen von aussen kommen):
  * @var array<int|string, mixed> $spielfreiaa
@@ -68,14 +61,19 @@ if ($st > 0) {
 }
 
 if (!$lmo_html_e->istPokal()) {
-  $endtab = $actual;
-  include(PATH_TO_LMO . "/lmo-calctable.php");
+  // Tabelle bis zu diesem Spieltag (Lmo\Liga\Tabelle); fuehrt die Liga ein Handicap, gilt die
+  // Reihenfolge der Tabellenkorrektur des aktuellen Spieltags
+  $lmo_html_tabelle = \Lmo\Liga\Tabelle::fuerAnsicht($lmo_liga, \Lmo\Liga\Tabelle::GESAMT, (int)$actual);
+  $lmo_html_reihenfolge = $lmo_html_tabelle->reihenfolge;
+  if ($lmo_html_e->mitHandicap()) {
+    $lmo_html_korrektur = $lmo_liga->spieltage[$lmo_html_e->aktuellerSpieltag()]->werte['HS'] ?? '0';
+    $lmo_html_reihenfolge = $lmo_html_tabelle->reihenfolgeNachHandicap($lmo_html_korrektur);
+  }
 }
 $actual = $st;
 $datumanz = $actual - 1;
 if (!$lmo_html_e->istPokal() && $st > 0) {
-  isset($tab0) ? $table1 = $tab0 : $table1 = $tab1;
-  if (isset($table1)) {
+  if (isset($lmo_html_tabelle)) {
     $wmlfile = fopen(PATH_TO_LMO . '/' . $diroutput . basename($file) . "-st.html", "wb");
     ob_start();
 ?>
@@ -176,15 +174,16 @@ if (!$lmo_html_e->istPokal() && $st > 0) {
 <?php
     for ($i1 = 0; $i1 < $lmo_html_e->mannschaften(); $i1 ++) {
       $platz = $i1 + 1;
-      $i4 = (int)substr($table1[$i1], 35, 7);
+      $i4 = $lmo_html_reihenfolge[$i1] ?? 0;
+      $lmo_zeile = $lmo_html_tabelle->zeilen[$i4] ?? new \Lmo\Liga\Tabellenzeile(0);
       $teamname = $i4 == 0 ? '___' : $lmo_liga->mannschaftsname($i4);
-      $pluspunkte = applyFactor($punkte[$i4], $lmo_html_e->punktfaktor());
-      $minuspunkte = applyFactor($negativ[$i4], $lmo_html_e->punktfaktor());
-      $kegelnholz = applyFactor($dtore[$i4], $lmo_html_faktor);
-      $plustore = applyFactor($etore[$i4], $lmo_html_faktor);
-      $minustore = applyFactor($atore[$i4], $lmo_html_faktor);
-      $torverhaeltnis = applyFactor($dtore[$i4], $lmo_html_faktor);
-      $spieleteam = $spiele[$i4];
+      $pluspunkte = applyFactor($lmo_zeile->punkte, $lmo_html_e->punktfaktor());
+      $minuspunkte = applyFactor($lmo_zeile->minuspunkte, $lmo_html_e->punktfaktor());
+      $kegelnholz = applyFactor($lmo_zeile->tordifferenz(), $lmo_html_faktor);
+      $plustore = applyFactor($lmo_zeile->tore, $lmo_html_faktor);
+      $minustore = applyFactor($lmo_zeile->gegentore, $lmo_html_faktor);
+      $torverhaeltnis = applyFactor($lmo_zeile->tordifferenz(), $lmo_html_faktor);
+      $spieleteam = $lmo_zeile->spiele;
 ?>
     <tr>
       <td align="right"><?php echo $platz;?>&nbsp;</td>
