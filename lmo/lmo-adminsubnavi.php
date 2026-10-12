@@ -24,7 +24,7 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der Liga: der geladene oder gerade gespeicherte Stand
  * @var array<int|string, mixed> $text Sprachtexte
  * @var int|string $st gewaehlter Spieltag
  * @var string $todo gewaehlte Aktion (Aufrufparameter)
@@ -69,9 +69,9 @@ else {?>
 <?php
 }
 
-if ($ligaDaten->hands == 1) {
+if ($lmo_liga->einstellungen()->mitHandicap()) {
     if ($todo != 'tabs') {?>
-          <td align="center"><a href='<?php echo $addb . $ligaDaten->stx; ?>' onClick="return chklmolink();" title="<?php echo $text[409]; ?>"><?php echo $text[16]; ?></a></td>
+          <td align="center"><a href='<?php echo $addb . $lmo_liga->einstellungen()->aktuellerSpieltag(); ?>' onClick="return chklmolink();" title="<?php echo $text[409]; ?>"><?php echo $text[16]; ?></a></td>
 <?php
     }
     else {?>
