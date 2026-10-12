@@ -42,16 +42,16 @@ if (!defined('PATH_TO_LMO')) {
   
 if (($file != "") && ($subteams != "")) {
   $subteam = explode('.', $subteams);
-  $spiele1 = array_pad($array, $ligaDaten->anzteams+1, "");
-  $siege1 = array_pad($array, $ligaDaten->anzteams+1, "");
-  $unent1 = array_pad($array, $ligaDaten->anzteams+1, "");
-  $nieder1 = array_pad($array, $ligaDaten->anzteams+1, "");
-  $punkte1 = array_pad($array, $ligaDaten->anzteams+1, "");
-  $negativ1 = array_pad($array, $ligaDaten->anzteams+1, "");
-  $etore1 = array_pad($array, $ligaDaten->anzteams+1, "");
-  $atore1 = array_pad($array, $ligaDaten->anzteams+1, "");
-  $dtore1 = array_pad($array, $ligaDaten->anzteams+1, "");
-  $quote1 = array_pad($array, $ligaDaten->anzteams+1, "");
+  $spiele1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $siege1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $unent1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $nieder1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $punkte1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $negativ1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $etore1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $atore1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $dtore1 = array_pad($array, $ligaDaten->anzteams+1, 0);
+  $quote1 = array_pad($array, $ligaDaten->anzteams+1, 0);
   $mcalc = array_pad($array, 116, "");
   $hoy = 0;
   for ($i = 0; $i < 116; $i++) {

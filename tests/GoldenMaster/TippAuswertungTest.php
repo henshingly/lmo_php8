@@ -156,4 +156,43 @@ L98;
 
         $this->assertMatchesSnapshot('tipp', 'auswertung', $t->text());
     }
+
+    /**
+     * Die Tabelle nach den Tipps (lmo-tipptabelle.php mit lmo-tippcalctable.php) in ihren Ansichten:
+     * gesamt, heim, auswaerts, Hin- und Rueckrunde, bis zu einem Spieltag, fuer einen anderen und
+     * fuer alle Tipper; dazu eine Liga mit Minuspunkten, Strafen und direktem Vergleich
+     * (lmo-tippcalctable1.php) und die Wertung nach Vereinen (lmo-tippcalcwertverein.php).
+     */
+    public function testTabelleNachTippsInAllenAnsichten(): void
+    {
+        $c = self::client();
+        $path = $c->instance()->path();
+        copy($c->instance()->ligenDir() . '/golden/penalties.l98', $c->instance()->ligenDir() . '/tippstrafe.l98');
+        $c->instance()->freezeLeagueTimes();
+        // viele gleiche Tipps: Mannschaften liegen gleichauf, der direkte Vergleich entscheidet
+        $tipp = $path . '/addon/tipp/tipps/tippstrafe_tester.tip';
+        file_put_contents($tipp, "[Round1]\n@0@\nGA1=1\nGB1=1\nGA2=1\nGB2=1\nGA3=2\nGB3=0\nGA4=0\nGB4=2\n"
+            . "[Round2]\n@0@\nGA1=1\nGB1=0\nGA2=0\nGB2=1\nGA3=1\nGB3=1\nGA4=2\nGB4=2\n"
+            . "[Round3]\n@0@\nGA1=0\nGB1=0\nGA2=3\nGB2=1\nGA3=1\nGB3=3\n");
+        touch($tipp, mktime(12, 0, 0, 3, 10, 2025));
+        foreach (['tippliga', 'tippstrafe'] as $liga) {
+            $c->post('lmoadmin.php', '', ['action' => 'admin', 'todo' => 'tipp', 'save' => '2', 'liga' => $liga, 'st' => '0']);
+        }
+        $c->post('lmo.php', '', ['action' => 'tipp', 'xtippername' => 'tester', 'xtipperpass' => 'geheim']);
+        $c->resetChanges();
+        $t = new Transcript();
+
+        $tabelle = 'action=tipp&todo=tabelle&file=';
+        foreach ([1 => 'heim', 2 => 'auswaerts', 4 => 'Hinrunde', 3 => 'Rueckrunde'] as $art => $name) {
+            $t->add('Liga, ' . $name, $c->get('lmo.php', $tabelle . 'tippliga.l98&tabtype=' . $art), $c->changes());
+        }
+        $t->add('Liga, bis Spieltag 2', $c->get('lmo.php', $tabelle . 'tippliga.l98&st=2'), $c->changes());
+        $t->add('Liga, anderer Tipper', $c->get('lmo.php', $tabelle . 'tippliga.l98&nick=zweiter'), $c->changes());
+        $t->add('Liga, alle Tipper', $c->get('lmo.php', $tabelle . 'tippliga.l98&nick='), $c->changes());
+        $t->add('Strafen und direkter Vergleich', $c->get('lmo.php', $tabelle . 'tippstrafe.l98'), $c->changes());
+        $t->add('Strafen und direkter Vergleich, bis Spieltag 3', $c->get('lmo.php', $tabelle . 'tippstrafe.l98&st=3'), $c->changes());
+        $t->add('Strafen und direkter Vergleich, heim', $c->get('lmo.php', $tabelle . 'tippstrafe.l98&tabtype=1'), $c->changes());
+
+        $this->assertMatchesSnapshot('tipp', 'tabelle', $t->text());
+    }
 }

@@ -48,6 +48,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Fixed  
+- Tippspiel, Tabelle nach den Tipps: In Ligen mit direktem Vergleich brach die Seite unter PHP 8 mit einem Fatal Error ab (`lmo-tippcalctable1.php`, „Unsupported operand types: string - string“), sobald Mannschaften gleichauf lagen.
 - Classlib, Pokal: Stand in der Datei ein Wert eines Spiels (z. B. die Notiz des Hinspiels) hinter den Toren des nächsten Spiels, wurde er dem falschen Spiel zugeordnet. Sieht der Modus einer Runde mehr Spiele vor, als die Datei nennt, bricht das Laden nicht mehr ab.
 - Einstellungen in `[Options]`, die der LMO nicht kennt (auch `stats`), und ganze unbekannte Abschnitte einer Ligadatei gingen beim Speichern im Admin-Bereich verloren. Sie bleiben jetzt erhalten.
 - Werden in einem Aufruf mehrere Ligen nacheinander geladen, blieben Werte der vorigen Liga stehen, die die nächste Datei nicht nennt (z. B. Strafpunkte einer Liga beim anschließenden Laden eines Pokals). Vor jedem Laden werden jetzt alle Werte geleert.
@@ -332,6 +333,7 @@ _Here we write changelog notes for the next version._
 
 
 ### Fixed  
+- Prediction game, table by predictions: in leagues with head-to-head comparison the page aborted under PHP 8 with a fatal error (`lmo-tippcalctable1.php`, "Unsupported operand types: string - string") as soon as teams were level.
 - Classlib, cup: if a value of a game (e.g. the note of the first leg) stood in the file after the goals of the next game, it was assigned to the wrong game. If the mode of a round expects more games than the file contains, loading no longer aborts.
 - Settings in `[Options]` that LMO does not know (including `stats`) and whole unknown sections of a league file were lost when saving in the admin area. They are now kept.
 - When several leagues are loaded in one request, values of the previous league remained that the next file does not mention (e.g. penalty points of a league when a cup is loaded afterwards). All values are now cleared before each load.
