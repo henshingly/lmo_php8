@@ -23,7 +23,8 @@ if (!defined('PATH_TO_LMO')) {
 /**
  * Diese Datei wird eingebunden und erwartet:
  *
- * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php)
+ * @var \Lmo\Liga\LigaDaten $ligaDaten Daten der geladenen Liga (lmo-ligadaten.php); nur nach dem Speichern im Adminbereich
+ * @var \Lmo\Liga\Rohdaten\Liga $lmo_liga Rohdaten der geladenen Liga (lmo-openfile.php)
  * @var array<int|string, mixed> $text Sprachtexte
  * @var string $file Ligadatei relativ zum Ligenordner, leer wenn keine geladen ist
  * @var int|string $st gewaehlter Spieltag
@@ -105,7 +106,17 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
   echo getMessage($text['tipp'][0].': '.$text['tipp'][29]." <var>".$liga."</var> ".$text['tipp'][65]);
   if ($todo != "edit") {
     require(PATH_TO_LMO."/lmo-openfile.php");
+    $lmo_wert_liga = $lmo_liga ?? new \Lmo\Liga\Rohdaten\Liga();
+  } else {
+    // nach dem Speichern im Adminbereich: der gerade eingegebene Stand, nicht der beim Oeffnen der Seite gelesene
+    $lmo_wert_liga = $ligaDaten->alsRohdaten($text[54], $ligaDaten->stx, $text[0], $text[1]);
   }
+  // Einstellungen der Liga; die Spieltage aus Sicht des Tippspiels (Lmo\Tipp\Tipprunde) je Nummer
+  $lmo_wert_einstellungen = $lmo_wert_liga->einstellungen();
+  $lmo_wert_pokal = $lmo_wert_einstellungen->istPokal();
+  $lmo_wert_spieltage = $lmo_wert_einstellungen->spieltage();
+  $lmo_wert_mannschaften = $lmo_wert_einstellungen->mannschaften();
+  $lmo_wert_runden = array();
   $verz = opendir(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp);
   $dummy = array();
   while ($verz && $files = readdir($verz)) {
@@ -124,15 +135,15 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
     $ende = $anztipperliga;
   }
    
-  if ($ligaDaten->lmtype != 0) {
+  if ($lmo_wert_pokal) {
     $tipp_wertverein = 0;
   }
   if ($tipp_wertverein == 1) {
-    $vpunkte = array_pad($array, $ligaDaten->anzteams+1, "");
-    $vspiele = array_pad($array, $ligaDaten->anzteams+1, "");
-    for ($i = 1; $i <= $ligaDaten->anzteams; $i++) {
-      $vpunkte[$i] = array_pad(array("0"), $ligaDaten->anzst+1, "0");
-      $vspiele[$i] = array_pad(array("0"), $ligaDaten->anzst+1, "0");
+    $vpunkte = array_pad($array, $lmo_wert_mannschaften+1, "");
+    $vspiele = array_pad($array, $lmo_wert_mannschaften+1, "");
+    for ($i = 1; $i <= $lmo_wert_mannschaften; $i++) {
+      $vpunkte[$i] = array_pad(array("0"), $lmo_wert_spieltage+1, "0");
+      $vspiele[$i] = array_pad(array("0"), $lmo_wert_spieltage+1, "0");
     }
   }
    
@@ -166,12 +177,17 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
           }
            
           $st1 = $st;
-          for ($st0 = 0; $st0 < $ligaDaten->anzst; $st0++) {
+          for ($st0 = 0; $st0 < $lmo_wert_spieltage; $st0++) {
             if ($st > 0) {
-              $st0 = $ligaDaten->anzst;
+              $st0 = $lmo_wert_spieltage;
             } else {
               $st1 = $st0+1;
             }
+            // der ausgewertete Spieltag $st1: Paarung $i+1 hat den Index $i, ihr Spiel $n+1 den Index $n
+            $lmo_wert_runden[$st1] ??= \Lmo\Tipp\Tipprunde::fuer($lmo_wert_liga, (int)$st1);
+            $lmo_wert_runde = $lmo_wert_runden[$st1];
+            // im Pokal zaehlt nur die Auswertung einer einzelnen Runde ($st > 0)
+            $lmo_wert_modus = $st == 0 ? 0 : $lmo_wert_runde->spieleJePaarung;
              
             $spielegetippt = 0;
             $tp = 0;
@@ -186,8 +202,9 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
               $punkte6 = 0;
             }
              
-            for ($i = 0; $i < $ligaDaten->anzsp; $i++) {
-              if ($ligaDaten->lmtype == 0) {
+            for ($i = 0; $i < $lmo_wert_runde->plaetze; $i++) {
+              if (!$lmo_wert_pokal) {
+                $lmo_wert_spiel = $lmo_wert_runde->paarungen[$i]->spiele[0];
                 if ($tipp_jokertipp == 1 && (($st == 0 && $jksp[$st0] == $i+1) || $jksp == $i+1)) {
                   $jkspfaktor = $tipp_jokertippmulti;
                 } else {
@@ -195,11 +212,11 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
                 }
                 $punktespiel = -1;
                 if ($st == 0) {
-                  if ($goaltippa[$st0][$i] != "_" && $ligaDaten->goala[$st0][$i] != "_") {
-                    $punktespiel = tipppunkte($goaltippa[$st0][$i], $goaltippb[$st0][$i], $ligaDaten->goala[$st0][$i], $ligaDaten->goalb[$st0][$i], $ligaDaten->msieg[$st0][$i], $ligaDaten->mspez[$st0][$i], $text[0], $text[1], $jkspfaktor, $ligaDaten->mtipp[$st0][$i]);
+                  if ($goaltippa[$st0][$i] != "_" && $lmo_wert_spiel->toreHeim !== null) {
+                    $punktespiel = tipppunkte($goaltippa[$st0][$i], $goaltippb[$st0][$i], $lmo_wert_spiel->toreHeimText(), $lmo_wert_spiel->toreGastText(), $lmo_wert_spiel->wertung, $lmo_wert_spiel->zusatzText($text[0], $text[1]), $text[0], $text[1], $jkspfaktor, (int)$lmo_wert_spiel->ohneTippwertung);
                   }
-                } elseif ($goaltippa[$i] != "_" && $ligaDaten->goala[$st-1][$i] != "_" && $ligaDaten->goala[$st-1][$i] > -1) {
-                  $punktespiel = tipppunkte($goaltippa[$i], $goaltippb[$i], $ligaDaten->goala[$st-1][$i], $ligaDaten->goalb[$st-1][$i], $ligaDaten->msieg[$st-1][$i], $ligaDaten->mspez[$st-1][$i], $text[0], $text[1], $jkspfaktor, $ligaDaten->mtipp[$st-1][$i]);
+                } elseif ($goaltippa[$i] != "_" && $lmo_wert_spiel->toreHeim !== null && $lmo_wert_spiel->toreHeim > -1) {
+                  $punktespiel = tipppunkte($goaltippa[$i], $goaltippb[$i], $lmo_wert_spiel->toreHeimText(), $lmo_wert_spiel->toreGastText(), $lmo_wert_spiel->wertung, $lmo_wert_spiel->zusatzText($text[0], $text[1]), $text[0], $text[1], $jkspfaktor, (int)$lmo_wert_spiel->ohneTippwertung);
                 }
                 if ($punktespiel > -1) {
                   $spielegetippt++;
@@ -209,19 +226,17 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
                 }
                 if ($tipp_wertverein == 1) {
                   if ($punktespiel > 0) {
-                    $vpunkte[$ligaDaten->teama[$st1-1][$i]][$st1] += $punktespiel;
-                    $vpunkte[$ligaDaten->teamb[$st1-1][$i]][$st1] += $punktespiel;
+                    $vpunkte[$lmo_wert_spiel->heim][$st1] += $punktespiel;
+                    $vpunkte[$lmo_wert_spiel->gast][$st1] += $punktespiel;
                   }
                   if ($punktespiel > -1) {
-                    $vspiele[$ligaDaten->teama[$st1-1][$i]][$st1]++;
-                    $vspiele[$ligaDaten->teamb[$st1-1][$i]][$st1]++;
+                    $vspiele[$lmo_wert_spiel->heim][$st1]++;
+                    $vspiele[$lmo_wert_spiel->gast][$st1]++;
                   }
                 }
               } else {
-                if ($st==0) {
-                  $ligaDaten->modus[$st-1]=0;
-                }
-                for ($n = 0; $n < $ligaDaten->modus[$st-1]; $n++) {
+                for ($n = 0; $n < $lmo_wert_modus; $n++) {
+                  $lmo_wert_spiel = $lmo_wert_runde->paarungen[$i]->spiele[$n];
                   if ($tipp_jokertipp == 1 && (($st == 0 && $jksp[$st0] == ($i+1).($n+1)) || $jksp == ($i+1).($n+1))) {
                     $jkspfaktor = $tipp_jokertippmulti;
                   } else {
@@ -229,11 +244,11 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
                   }
                   $punktespiel = -1;
                   if ($st == 0) {
-                    if ($goaltippa[$st0][$i][$n] != "_" && $ligaDaten->goala[$st0][$i][$n] != "_") {
-                      $punktespiel = tipppunkte($goaltippa[$st0][$i][$n], $goaltippb[$st0][$i][$n], $ligaDaten->goala[$st0][$i][$n], $ligaDaten->goalb[$st0][$i][$n], 0, $ligaDaten->mspez[$st0][$i][$n], $text[0], $text[1], $jkspfaktor, $ligaDaten->mtipp[$st0][$i][$n]);
+                    if ($goaltippa[$st0][$i][$n] != "_" && $lmo_wert_spiel->toreHeim !== null) {
+                      $punktespiel = tipppunkte($goaltippa[$st0][$i][$n], $goaltippb[$st0][$i][$n], $lmo_wert_spiel->toreHeimText(), $lmo_wert_spiel->toreGastText(), 0, $lmo_wert_spiel->zusatzText($text[0], $text[1]), $text[0], $text[1], $jkspfaktor, (int)$lmo_wert_spiel->ohneTippwertung);
                     }
-                  } elseif ($goaltippa[$i][$n] != "_" && $ligaDaten->goala[$st-1][$i][$n] != "_" && $ligaDaten->goala[$st-1][$i][$n] > -1 ) {
-                    $punktespiel = tipppunkte($goaltippa[$i][$n], $goaltippb[$i][$n], $ligaDaten->goala[$st-1][$i][$n], $ligaDaten->goalb[$st-1][$i][$n], 0, $ligaDaten->mspez[$st-1][$i][$n], $text[0], $text[1], $jkspfaktor, $ligaDaten->mtipp[$st-1][$i][$n]);
+                  } elseif ($goaltippa[$i][$n] != "_" && $lmo_wert_spiel->toreHeim !== null && $lmo_wert_spiel->toreHeim > -1) {
+                    $punktespiel = tipppunkte($goaltippa[$i][$n], $goaltippb[$i][$n], $lmo_wert_spiel->toreHeimText(), $lmo_wert_spiel->toreGastText(), 0, $lmo_wert_spiel->zusatzText($text[0], $text[1]), $text[0], $text[1], $jkspfaktor, (int)$lmo_wert_spiel->ohneTippwertung);
                   }
                   if ($punktespiel > -1) {
                     $spielegetippt++;
@@ -325,9 +340,9 @@ if (file_exists(PATH_TO_LMO.'/'.$dirliga.$file)) {
             if ($tipp_wertvereindatei) {
               flock($tipp_wertvereindatei, 2);
                
-              for ($i = 1; $i <= $ligaDaten->anzteams; $i++) {
+              for ($i = 1; $i <= $lmo_wert_mannschaften; $i++) {
                 fputs($tipp_wertvereindatei, "[".$i."]"."\n");
-                $anzst1 = $ligaDaten->anzst;
+                $anzst1 = $lmo_wert_spieltage;
                 for ($j = 1; $j <= $anzst1; $j++) {
                   if ($st > 0) {
                     $j = $st;
