@@ -52,7 +52,7 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
 </table>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?php echo $ligaDaten->titel?></h1></td>
+    <td align="center"><h1><?php echo $lmo_liga->einstellungen()->name()?></h1></td>
   </tr>
   <tr>
     <td align="center">

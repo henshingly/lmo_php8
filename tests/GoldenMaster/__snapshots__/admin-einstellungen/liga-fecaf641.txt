@@ -311,15 +311,13 @@ GEAENDERT ligen/golden/basic.l98
 +selTeam=2
  ticker=0
  Graph=1
-@@ -46,6 +46,6 @@
+@@ -46,5 +46,5 @@
  Tabelle=1
  Ligastats=1
 -kurve1=0
--kurve2=0
 +kurve1=4
-+kurve2=4
+ kurve2=0
  
- [News]
 @@ -61,4 +61,14 @@
  8=Mannschaft 8
  
@@ -750,15 +748,12 @@ GEAENDERT ligen/golden/basic.l98
 +nameTor=
  tableHinRueck=1
  tableHeimAusw=1
-@@ -46,6 +46,6 @@
+@@ -46,5 +46,5 @@
  Tabelle=1
  Ligastats=1
 -kurve1=4
--kurve2=4
-+kurve1=0
-+kurve2=5
- 
- [News]
++kurve1=5
+ kurve2=0
 
 === Anzeige: alles an, eigenes Datumsformat ===
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -1045,15 +1040,6 @@ GEAENDERT ligen/golden/basic.l98
 +OnRun=1
  MinusPoints=1
  Direct=0
-@@ -26,6 +26,6 @@
- AR=0
- AB=0
--namePkt=
--nameTor=
-+namePkt=Pkt.
-+nameTor=Tore
- tableHinRueck=1
- tableHeimAusw=1
 @@ -33,10 +33,10 @@
  DatS=1
  DatM=1
@@ -1069,15 +1055,6 @@ GEAENDERT ligen/golden/basic.l98
 +mittore=1
  favTeam=3
  selTeam=2
-@@ -46,6 +46,6 @@
- Tabelle=1
- Ligastats=1
--kurve1=0
--kurve2=5
-+kurve1=5
-+kurve2=0
- 
- [News]
 
 === Anzeige: alles aus ===
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -2497,8 +2474,8 @@ GEAENDERT ligen/golden/basic.l98
 -AB=0
 +AR=1
 +AB=2
- namePkt=Pkt.
- nameTor=Tore
+ namePkt=
+ nameTor=
  tableHinRueck=1
 -tableHeimAusw=1
 +tableHeimAusw=0
@@ -2774,8 +2751,8 @@ GEAENDERT ligen/golden/basic.l98
  CL=2
  CK=1
 @@ -28,5 +28,5 @@
- namePkt=Pkt.
- nameTor=Tore
+ namePkt=
+ nameTor=
 -tableHinRueck=1
 +tableHinRueck=0
  tableHeimAusw=0
