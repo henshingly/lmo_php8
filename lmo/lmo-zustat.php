@@ -487,7 +487,8 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
         }
         $setztemp1 = $htorreicht1+$htorreicht2;
         $setztemp2 = (int)$lmo_zustat_ga+(int)$lmo_zustat_gb;
-        if ($setztemp1 == $setztemp2) {
+        // nur gespielte Spiele zaehlen
+        if ($lmo_zustat_spiel->istGespielt() && $setztemp1 == $setztemp2) {
           $counteranz5 = $counteranz5+1;
         }
       }
