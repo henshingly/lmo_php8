@@ -23,39 +23,38 @@
   * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
   */
   
-require_once(PATH_TO_LMO."/lmo-admintest.php");
-if ($_SESSION['lmouserok']==2){
-  $ok=true;
-  $datei = fopen($cfgfile,"wb");
-  if ($datei) {
-    flock($datei,LOCK_EX);
-    foreach($cfgarray as $cfgname => $cfgvalue) {
-      if (is_array($cfgvalue)) {                                               // Addonvariablen
-        $addon_datei = fopen(PATH_TO_CONFIGDIR.'/'.$cfgname.'/cfg.txt',"wb");  //Addondatei
-        if ($addon_datei) {
-          $ok=flock($datei,LOCK_EX) && $ok;
-          foreach($cfgvalue as $addon_cfgname => $addon_cfgvalue) {
-            //echo "<pre>".$addon_datei.":".$addon_cfgname."=".${$cfgname."_".$addon_cfgname}."</pre>";
-            $ok=fwrite($addon_datei, $addon_cfgname."=".${$cfgname."_".$addon_cfgname}."\n") && $ok;
-          }
-          flock($addon_datei,LOCK_UN);
-          fclose($addon_datei);
-          clearstatcache();
+require_once (PATH_TO_LMO . '/lmo-admintest.php');
+if ($_SESSION['lmouserok'] == 2) {
+    $ok = true;
+    $datei = fopen($cfgfile, 'wb');
+    if ($datei) {
+        flock($datei, LOCK_EX);
+        foreach ($cfgarray as $cfgname => $cfgvalue) {
+            if (is_array($cfgvalue)) {                                                          // Addonvariablen
+                $addon_datei = fopen(PATH_TO_CONFIGDIR . '/' . $cfgname . '/cfg.txt', 'wb');    // Addondatei
+                if ($addon_datei) {
+                    $ok = flock($datei, LOCK_EX) && $ok;
+                    foreach ($cfgvalue as $addon_cfgname => $addon_cfgvalue) {
+                        $ok = fwrite($addon_datei, $addon_cfgname . '=' . ${$cfgname . '_' . $addon_cfgname} . "\n") && $ok;
+                    }
+                    flock($addon_datei, LOCK_UN);
+                    fclose($addon_datei);
+                    clearstatcache();
+                }
+            } else {                                                                            // Hauptkonfiguration
+                $ok = fwrite($datei, "$cfgname={${$cfgname}}\n") && $ok;
+            }
         }
-      } else {                                                                   // Hauptkonfiguration
-        $ok=fwrite($datei, "$cfgname={${$cfgname}}\n") && $ok;
-      }
+        flock($datei, LOCK_UN);
+        fclose($datei);
+        clearstatcache();
+    } else {
+        $ok = false;
     }
-    flock($datei,LOCK_UN);
-    fclose($datei);
-    clearstatcache();
-  } else {
-    $ok=false;
-  }
-  if ($ok) {
-    echo getMessage($text[138]);
-  } else {
-    echo getMessage($text[283],true);
-  }
+    if ($ok) {
+        echo getMessage($text[138]);
+    } else {
+        echo getMessage($text[283], TRUE);
+    }
 }
 ?>

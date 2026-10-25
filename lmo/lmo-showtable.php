@@ -23,6 +23,7 @@ if ($minus == 2) {
 } else {
     $dummy = ' align="right"';
 }
+
 $breite = 11;
 if ($minus == 2) {
     $breite = $breite+2;
@@ -180,12 +181,12 @@ for ($x = 1; $x <= $anzteams; $x++) {
             $y = 2;
         }
     } ?>
-    <td class="<?php echo $lmo_tabelle_class; ?>"><img src='<?php echo URL_TO_IMGDIR . '/lmo-tab' . $y . '.gif'; ?>' width="9" height="9" border="0" alt=""></td>
+    <td class="<?php echo $lmo_tabelle_class; ?>"><img src='<?php echo URL_TO_IMGDIR . '/lmo-tab' . $y . '.svg'; ?>' width="9" height="9" border="0" alt=""></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="center"><?php echo HTML_smallTeamIcon($file, $teams[$i], ' alt=""'); ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" align="left"><?php
     echo $dummy . $teams[$i] . $dumm2;
     if (($teamu[$i] != '') && ($urlt == 1)) { ?>
-        <a href="<?php echo $teamu[$i]; ?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR . '/url.png'; ?>" alt="<?php echo $text[564]?>"></a><?php
+        <a href="<?php echo $teamu[$i]; ?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR . '/url.svg'; ?>" alt="<?php echo $text[564]?>"></a><?php
     } ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><?php
@@ -200,7 +201,6 @@ for ($x = 1; $x <= $anzteams; $x++) {
         $lmo_tabellennotiz = ' <strong>' . HTML_smallTeamIcon($file, $teams[$i], ' alt=""') . $teams[$i] . '</strong>';
         //Straf-/Bonuspunkte
         if ($strafp[$i] != 0 || $strafm[$i] != 0) {
-
             $lmo_tabellennotiz .= '<strong>' . $text[128] . ':</strong>';
             //Punkte
             $lmo_tabellennotiz .= $strafp[$i] < 0 ? '+' . ((-1) * applyFactor($strafp[$i], $pointsfaktor)) : ((-1) * applyFactor($strafp[$i], $pointsfaktor));

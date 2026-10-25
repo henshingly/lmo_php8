@@ -380,7 +380,7 @@ if ($file != "" && $todo == "einsicht" && $tipp_tippeinsicht == 1) {
     if ($l>=$start && $l<$ende){?>
           <td class="lmoFrontMarkierung" align="right"><?php echo $punktetipper?></td>
           <td class="nobr" align="left">&nbsp; <?php      if ($tipp_tipptabelle1==1 && $l>=$start && $l<$ende && $lmtype==0){?>
-            <a href="<?php echo $addt.rawurlencode($tippernick[$k])?>" title="<?php echo $text['tipp'][181]." ".$tippernick[$k]?>"><img src="<?php echo URL_TO_IMGDIR?>/tabelle.gif" border="0" width="10" height="12" alt="<?php echo $text['tipp'][172]?>"></a><?php 
+            <a href="<?php echo $addt.rawurlencode($tippernick[$k])?>" title="<?php echo $text['tipp'][181]." ".$tippernick[$k]?>"><img src="<?php echo URL_TO_IMGDIR?>/tabelle.svg" border="0" width="10" height="12" alt="<?php echo $text['tipp'][172]?>"></a><?php 
       }?>
           </td><?php 
     } elseif ($l==$start-1) {?>

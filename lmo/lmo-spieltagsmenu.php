@@ -26,12 +26,12 @@ if (isset($anzst)) {
             }
         }
         else {
-            $j = sprintf("%02d", $i);
+            $j = sprintf('%02d', $i);
             $k = $text[9]; }?>
                 <td align='center'><?php
 
         if ($i != $st || empty($tabdat)) {
-            if (isset($todo) && $todo == "tabs") {
+            if (isset($todo) && $todo == 'tabs') {
                 echo '<a href="' . $addb . $i . '" title="' . $k . '">' . $j . '</a>';
             }
             else {

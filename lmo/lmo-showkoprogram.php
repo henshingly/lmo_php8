@@ -92,7 +92,7 @@ if ($file != '') {
                     }
                     echo '&nbsp;' . HTML_smallTeamIcon($file, $teams[$teama[$j][$i]],' alt=""');
                     if (($teamu[$teama[$j][$i]] != '') && ($urlt == 1)) {
-                        echo ' <a href="' . $teamu[$teama[$j][$i]] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
+                        echo ' <a href="' . $teamu[$teama[$j][$i]] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.svg" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
                     } ?></td>
           <td class="lmost5" align="center" width="10">-</td>
 <?php
@@ -112,7 +112,7 @@ if ($file != '') {
                         echo '</strong>';
                     }
                     if (($teamu[$teamb[$j][$i]] != '') && ($urlt == 1)) {
-                        echo '<a href="' . $teamu[$teamb[$j][$i]] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.png" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
+                        echo '<a href="' . $teamu[$teamb[$j][$i]] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.svg" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
                     } ?></td>
 <?php
                     for ($n = 0; $n < $modus[$j]; $n++) {
@@ -120,7 +120,7 @@ if ($file != '') {
                             if(is_numeric($mterm[$j][$i][$n])) {
                                 $dt = new DateTime();
                                 $dt->setTimeStamp((int)$mterm[$j][$i][$n]);
-                                $dumn1 = '<acronym title="' . $dt->format($datf) . '">';
+                                $dumn1 = '<acronym title="' . strtr($dt->format($datf), $trans_lang) . '">';
                                 $dumn2 = '</acronym>';
                             } else {
                                 $dumn1 = '';

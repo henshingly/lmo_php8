@@ -1,6 +1,6 @@
 <?php
-header("Content-Type: text/css");
-require(__DIR__."/init.php");
+header('Content-Type: text/css');
+require(__DIR__ . '/init.php');
 ?>
 
 .lmoMain .message{
@@ -477,7 +477,7 @@ span.colorpicker.nocolor {
 }
 span.colorpicker.invalid {
   display:              inline;
-  background-image:     url("<?php echo URL_TO_IMGDIR; ?>/attention.gif");
+  background-image:     url("<?php echo URL_TO_IMGDIR; ?>/attention.svg");
   background-position:  center;
   background-repeat:    no-repeat;
   border:               0;

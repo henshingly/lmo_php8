@@ -18,16 +18,18 @@
   */
   
   
-require_once(PATH_TO_LMO."/lmo-admintest.php");
-if (!isset($ranpass)){$ranpass="";}
-$alpha = array ('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9');
-srand((double)microtime()*1000000);
+require_once(PATH_TO_LMO . '/lmo-admintest.php');
+if (!isset($ranpass)){
+    $ranpass = '';
+}
+$alpha = array ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+srand((int)((float)microtime() * 1000000)); // PHP 8.5: (double)-Cast deprecated, srand() erwartet int
 shuffle($alpha);
-$rando = rand(8,16);
-for ($z=0;$z<$rando;$z++)
-     $carrier[$z] = next($alpha);
+$rando = rand(8, 16);
+for ($z = 0; $z < $rando; $z++)
+    $carrier[$z] = next($alpha);
      
-for ($z=0;$z<$rando;$z++)
-     $ranpass.=$carrier[$z];
+for ($z = 0; $z < $rando; $z++)
+    $ranpass .= $carrier[$z];
 echo $ranpass;
 ?>

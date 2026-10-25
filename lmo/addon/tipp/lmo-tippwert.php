@@ -367,7 +367,7 @@ for ($x = 1; $x <= $anztipper; $x++) {
       }
       if ($tabdat != "" && $stwertmodus != "nur") {
         echo "<td class=\"".$dumm1."\"";
-        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".gif' width=\"9\" height=\"9\" border=\"0\" alt=''>";
+        echo "><img src='".URL_TO_IMGDIR."/lmo-tab".$y.".svg' width=\"9\" height=\"9\" border=\"0\" alt=''>";
         echo "</td>";
       } else {
         echo "<td class=\"".$dumm1."\">&nbsp;</td>";

@@ -369,15 +369,22 @@ $min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php'
 $updatefilecheck_URL = $json_a['extra']['check'];
 
 // Check updateURL
-if (url_check($json_a['extra']['check'])) {
-    $LMO_UPDATE = file_get_contents($json_a['extra']['check'], false);
-    $json_update = json_decode($LMO_UPDATE, true, 4);
+$LMO_UPDATE = false;
+$json_update = null;
+if (!empty($json_a['extra']['check'])) {
+    $lmo_update_ctx = stream_context_create(array('http' => array('timeout' => 3, 'ignore_errors' => false)));
+    $LMO_UPDATE = @file_get_contents($json_a['extra']['check'], false, $lmo_update_ctx);
+    if ($LMO_UPDATE !== false) {
+        $json_update = json_decode($LMO_UPDATE, true, 4);
+    }
+}
+if (is_array($json_update) && isset($json_update['stable']['current'])) {
     $new_lmo_version = $json_update['stable']['current'];
-    $new_lmo_version_link = $json_update['stable']['download'];
-    $new_lmo_version_changelog = $json_update['stable']['changelog'];
-    $new_lmo_version_announcement = $json_update['stable']['announcement'];
-    $new_lmo_version_time = $json_update['stable']['time'];
-    $new_lmo_version_require_php = $json_update['stable']['require']['php'];
+    $new_lmo_version_link = $json_update['stable']['download'] ?? '';
+    $new_lmo_version_changelog = $json_update['stable']['changelog'] ?? '';
+    $new_lmo_version_announcement = $json_update['stable']['announcement'] ?? '';
+    $new_lmo_version_time = $json_update['stable']['time'] ?? '';
+    $new_lmo_version_require_php = $json_update['stable']['require']['php'] ?? '';
 } else {
     // The updateURL is unreachable.
     $new_lmo_version = $json_a['version'];

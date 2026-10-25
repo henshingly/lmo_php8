@@ -8,7 +8,7 @@ a:link {color:#0266AE; text-decoration:underline;}
 a:visited {color:#33a; text-decoration:underline;}
 ol li {margin-bottom:0.5em;}
 .classlib:before {content:url(../media/classlib.gif);}
-.attention:before {content:url(../media/attention.gif);}
+.attention:before {content:url(../media/attention.svg);}
 .attention {border:1px solid #d99; background:#ffe7e0; padding:0.4em; border-radius:8px; box-shadow:0 0 6px #888;}
 .advanced:before {content:url(../media/advanced.gif);}
 .advanced {border:1px solid #aca; background:#e0ffe7; padding:0.4em; border-radius:8px;box-shadow:0 0 6px #888;}
