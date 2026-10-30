@@ -32,7 +32,7 @@ include(PATH_TO_LMO . '/lmo-dirlist.php'); ?>
     <td align="left">
 <?php
 if ($archivlink == 1) {
-    $subdir = str_replace(array('../', './'), array('', ''), $subdir);
+    $subdir = lmo_clean_subdir($subdir);
     $dirs = get_dir($dirliga . $subdir);
     natcasesort($dirs);
     if (!empty($subdir) && substr($subdir, -1) != '/') $subdir .= '/';

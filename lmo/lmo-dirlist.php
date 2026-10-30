@@ -22,16 +22,20 @@ $addi = $_SERVER['PHP_SELF'] . '?todo=' . $todo . '&amp;file=';
 
 $_SESSION['liga_sort'] = isset($_REQUEST['liga_sort']) ? $_REQUEST['liga_sort'] : $liga_sort;
 $_SESSION['liga_sort_direction'] = isset($_REQUEST['liga_sort_direction']) ? $_REQUEST['liga_sort_direction'] : $liga_sort_direction;
-$subdir = str_replace(array('../', './'), array('', ''), $subdir);
-$verz = substr($dirliga . $subdir, -1) == '/' ? opendir(substr(PATH_TO_LMO . '/' . $dirliga . $subdir, 0, -1)) : opendir(PATH_TO_LMO . '/' . $dirliga . $subdir);
+$subdir = lmo_clean_subdir($subdir);
+$verz = substr($dirliga . $subdir, -1) == '/' ? @opendir(substr(PATH_TO_LMO . '/' . $dirliga . $subdir, 0, -1)) : @opendir(PATH_TO_LMO . '/' . $dirliga . $subdir);
+if ($verz === false) {
+    // Unterverzeichnis existiert nicht (z.B. manipulierter Aufruf): statt Warnung/Fehler einfach das Hauptverzeichnis der Ligen anzeigen.
+    $subdir = '';
+    $verz = opendir(substr($dirliga, -1) == '/' ? substr(PATH_TO_LMO . '/' . $dirliga, 0, -1) : PATH_TO_LMO . '/' . $dirliga);
+}
 $liga_counter = 0;
 $unbenannte_liga_counter = 0;
 $ligadatei = array();
-if ($verz !== false) {
 while($files = readdir($verz)) {
     if (strtolower(substr($files,-4)) == '.l98') {
         $sekt = '';
-        $datei = file_exists(PATH_TO_LMO . '/' . $dirliga . $subdir . $files) ? fopen(PATH_TO_LMO . '/' . $dirliga . $subdir . $files, 'rb') : false;
+        $datei = fopen(PATH_TO_LMO . '/' . $dirliga . $subdir . $files, 'rb');
         if ($datei && check_hilfsadmin($files)) {
             $ligadatei[$liga_counter]['file_date'] = filemtime(PATH_TO_LMO . '/' . $dirliga . $subdir . $files);  //Datum
             $ligadatei[$liga_counter]['file_name'] = $files;
@@ -119,12 +123,7 @@ while($files = readdir($verz)) {
         }
     }
 }
-} else {
-    echo getMessage($text[224], true);
-}
-if ($verz !== false) {
-    closedir($verz);
-}
+closedir($verz);
 
 usort($ligadatei, 'cmp');
 if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction'] == 'desc') $ligadatei = array_reverse($ligadatei); ?>
@@ -188,9 +187,9 @@ if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) {
 }
 
 if (isset($_SESSION['liga_sort']) && isset($_SESSION['liga_sort_direction'])) {
-    if (isset($sortprojection[$_SESSION['liga_sort']], $sortprojection[$_SESSION['liga_sort_direction']]) && $sortprojection[$_SESSION['liga_sort']] >= 0) echo 'ligaTable.sort(' . $sortprojection[$_SESSION['liga_sort']] . ',' . $sortprojection[$_SESSION['liga_sort_direction']] . ');';
+    if ($sortprojection[$_SESSION['liga_sort']] >= 0) echo 'ligaTable.sort(' . $sortprojection[$_SESSION['liga_sort']] . ',' . $sortprojection[$_SESSION['liga_sort_direction']] . ');';
 } else {
-    if (isset($sortprojection[$lmo_liga_sort], $sortprojection[$lmo_liga_sort_direction]) && $sortprojection[$lmo_liga_sort] >= 0) echo 'ligaTable.sort(' . $sortprojection[$lmo_liga_sort] . ', ' . $sortprojection[$lmo_liga_sort_direction] . ');';
+    if ($sortprojection[$lmo_liga_sort] >= 0) echo 'ligaTable.sort(' . $sortprojection[$lmo_liga_sort] . ', ' . $sortprojection[$lmo_liga_sort_direction] . ');';
 } ?>
 </script>
 <?php

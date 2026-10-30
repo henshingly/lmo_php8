@@ -79,6 +79,27 @@ if (!isset($_SESSION['lmouserfile'])) {
     $_SESSION['lmouserfile'] = '';
 }
 
+// Sicherheits-Fix: Bereinigung des Parameters "subdir" (Unterverzeichnis der Ligadateien). Das frühere str_replace(array('../','./'), ...) war
+// umgehbar: z.B. wurde aus "...././/" wieder "../" (Verzeichniswechsel nach oben). Jetzt werden alle Pfadteile einzeln geprüft: leere Teile,
+// "." und ".." fallen weg, Backslashes und Nullbytes ebenso. Ergebnis ist immer '' oder ein relativer Pfad mit abschliessendem "/".
+if (!function_exists('lmo_clean_subdir')) {
+    function lmo_clean_subdir($subdir)
+    {
+        if (!is_string($subdir)) {
+            return '';
+        }
+        $subdir = str_replace(array("\0", '\\'), array('', '/'), $subdir);
+        $parts = array();
+        foreach (explode('/', $subdir) as $part) {
+            if ($part === '' || $part === '.' || $part === '..') {
+                continue;
+            }
+            $parts[] = $part;
+        }
+        return $parts ? implode('/', $parts) . '/' : '';
+    }
+}
+
 //Language
 if (isset($_GET['lmouserlang'])){
     $_SESSION['lmouserlang'] = $_GET['lmouserlang'];

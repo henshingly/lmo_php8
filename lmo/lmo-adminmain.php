@@ -36,7 +36,7 @@ if ($action == 'admin') {
         $newpage = 0;
     }
     $file = isset($_REQUEST['file']) ? $_REQUEST['file'] : '';
-    $subdir = isset($_REQUEST['subdir']) ? $_REQUEST['subdir'] : dirname($file) . '/';
+    $subdir = isset($_REQUEST['subdir']) ? lmo_clean_subdir($_REQUEST['subdir']) : dirname($file) . '/';
     if ($subdir == '/') {
         $subdir = '';
     }

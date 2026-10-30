@@ -45,6 +45,17 @@ $languages = array(
     'Українська'  => array('uk_UA', 'ukr')
   );
 
+// Sicherheits-Fix: $deflang/$lmouserlang kommen (über ?lmouserlang=...) teils direkt aus der Anfrage und werden unten als Array-Schlüssel und in
+// Dateinamen verwendet. Nur bekannte Sprachen zulassen - sonst gab es "Undefined array key" (z.B. bei Scanner-Anfragen) und die Eingabe floss
+// ungeprüft in Dateipfade.
+if (!isset($languages[$deflang])) {
+    $deflang = 'Deutsch';
+}
+if (isset($lmouserlang) && (!is_string($lmouserlang) || !isset($languages[$lmouserlang]))) {
+    $lmouserlang = $deflang;
+    $_SESSION['lmouserlang'] = $deflang;
+}
+
 $text = array();
 
 if (!function_exists('read_langfile')) {
