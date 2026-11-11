@@ -207,7 +207,7 @@ if ($_SESSION['lmouserok'] == 2) {
   </tr>
   <tr>
     <th class="lmoMenu" align="center">
-      <a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=admin&amp;todo=tippuseredit&amp;save=-1"><?php echo $text['tipp'][136]; ?></a></th>
+      <a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=admin&amp;todo=tippuseredit&amp;save=-1"><?php echo $text['tipp'][136]; ?></a>
     </th>
   </tr>
 </table><?php }
