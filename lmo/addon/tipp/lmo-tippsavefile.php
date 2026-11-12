@@ -25,7 +25,7 @@ if ($todo == "tippuseredit") {
 }
  
 if ($tippfile != "") {
-  //if (decoct(fileperms($tippfile))!=100777){chmod ($tippfile, 0777);}
+  //if (decoct(fileperms($tippfile))!=100777) {chmod ($tippfile, 0777);}
   if (substr($tippfile, -4) == ".tip") {
     $daten = array("");
     if ($st > 0 && file_exists($tippfile)) {

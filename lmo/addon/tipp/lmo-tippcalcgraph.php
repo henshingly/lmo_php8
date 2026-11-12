@@ -123,7 +123,7 @@ if (!file_exists($auswertfile)) {
     $op4=substr($dum[1],0,2);
     // TP
     if ($tippernick[$t]!=$op1) {
-      if ($tippernick[$t]!="") {
+      if ($tippernick[$t] != '') {
         $t++;
       }
       $tippernick[$t]=$op1;

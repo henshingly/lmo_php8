@@ -20,7 +20,7 @@
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($tippfile != "") {
-  //if (decoct(fileperms($tippfile))!=100777){chmod ($tippfile, 0777);}
+  //if (decoct(fileperms($tippfile))!=100777) {chmod ($tippfile, 0777);}
   if (substr($tippfile, -4) == ".tip") {
     $daten = array("");
     if (file_exists($tippfile)) {

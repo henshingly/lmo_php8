@@ -20,12 +20,12 @@
   
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($einsichtfile != "") {
-  //if (decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}
+  //if (decoct(fileperms($einsichtfile))!=100777) {chmod ($einsichtfile, 0777);}
   if (substr($einsichtfile, -4) == ".ein") {
     $daten = array("");
     if (file_exists($einsichtfile)) {
       $datei = fopen($einsichtfile, "rb");
-      if ($datei){
+      if ($datei) {
         while (!feof($datei)) {
           $zeile = fgets($datei, 1000);
           $zeile = trim(chop($zeile));

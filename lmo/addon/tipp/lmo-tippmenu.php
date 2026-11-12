@@ -50,7 +50,7 @@ if ($viewermode == 1) {
     echo '&nbsp;&nbsp;';
 }
 /*
-if ($tipp_gesamt == 1){
+if ($tipp_gesamt == 1) {
     if ($todo != 'wert' || $all != 1) echo '<a href="' . $adda . 'wert&amp;file=' . $file . '&amp;wertung=einzel&amp;all=1" title="' . $text['tipp'][56] . '">' . $text['tipp'][56] . '</a>';
     else echo $text['tipp'][56];
 }

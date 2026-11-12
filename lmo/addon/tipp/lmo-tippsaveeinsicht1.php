@@ -21,7 +21,7 @@
 require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
 if ($file != "" && $st > 0 && $_SESSION['lmotippername'] != "") {
   $einsichtfile = PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp."einsicht/".substr($file, 0, -4)."_".$st.".ein";
-  //if (decoct(fileperms($einsichtfile))!=100777){chmod ($einsichtfile, 0777);}
+  //if (decoct(fileperms($einsichtfile))!=100777) {chmod ($einsichtfile, 0777);}
   if (substr($einsichtfile, -4) == ".ein") {
     $daten = array("");
     if (file_exists($einsichtfile)) {
