@@ -17,20 +17,17 @@
   *
   */
 
-require_once (PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
-require_once (PATH_TO_LMO . '/includes/PHPMailer.php');
-$mail = new PHPMailer(true);
+require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
+require_once(PATH_TO_LMO . '/lmo-smtp.php');
+
+$mail = lmo_mail_create($text['tipp'][92]);
 $tipp_mailtext = str_replace(array('\n', '[nick]'), array("\n", $xtippernick), $text['tipp'][303]);
 
-$mail->isMail();
-$mail->CharSet = 'UTF-8';
-$mail->Encoding = 'base64';
 $mail->Subject = $text['tipp'][13] . ' (' . $_SERVER['HTTP_HOST'] . ')';
-$mail->setFrom($aadr, $text['tipp'][92]);
 
 $mail->Body = $tipp_mailtext;
 $mail->addAddress($aadr, $text['tipp'][92]);
-if (!$mail->send()) {
+if (!lmo_mail_send($mail)) {
     echo $mail->ErrorInfo;
 }
 ?>

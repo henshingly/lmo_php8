@@ -24,13 +24,13 @@ $newpage = isset($_REQUEST['newpage']) ? 1 : 0;
 
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 if (($action == 'tipp') && ($todo == 'pwchange')) {
-    $users = array();
+    $users = array('');
     $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
     $datei = fopen($pswfile, 'rb');
     while ($datei && !feof($datei)) {
         $zeile = fgets($datei, 1000);
         $zeile = trim($zeile);
-        if ($zeile != '') {
+        if ($zeile != '' && strpos($zeile, '<?php') !== 0) {
             if ($zeile != '') {
                 array_push($users, $zeile);
             }

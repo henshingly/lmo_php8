@@ -18,15 +18,13 @@
   */
 
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
-require_once(PATH_TO_LMO . '/includes/PHPMailer.php');
+require_once(PATH_TO_LMO . '/lmo-smtp.php');
 
 if (isset($xtippername2)) {
     $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
     $lines = file($pswfile);
     // Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
-    $lines = array_values(array_filter($lines, function ($line) {
-        return !str_starts_with(trim($line), '<?php');
-    }));
+    $lines = array_values(array_filter($lines, function ($line) {return !str_starts_with(trim($line), '<?php');}));
     $userFound = false;
 
     foreach ($lines as $key => $line) {
@@ -59,12 +57,8 @@ if (isset($xtippername2)) {
 
         // 5. E-Mail versenden
         try {
-            $mail = new PHPMailer(true);
-            $mail->isMail();
-            $mail->CharSet = 'UTF-8';
-            $mail->Encoding = 'base64';
+            $mail = lmo_mail_create($text['tipp'][92]);
             $mail->Subject = $text['tipp'][79] . ' (' . $_SERVER['HTTP_HOST'] . ')';
-            $mail->setFrom($aadr, $text['tipp'][92]);
             $mail->addAddress($recipientEmail);
 
             $loginUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?action=tipp';
@@ -76,7 +70,9 @@ if (isset($xtippername2)) {
                          $text['tipp'][255] . ': ' . $loginUrl;
 
             $mail->Body = $emailbody;
-            $mail->send();
+            if (!lmo_mail_send($mail)) {
+                throw new Exception($mail->ErrorInfo);
+            }
             echo getMessage($text['tipp'][78]); // Erfolgsmeldung
             $_SESSION['lmotipperok'] = 0;
         } catch (Exception $e) {

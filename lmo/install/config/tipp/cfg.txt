@@ -1,5 +1,5 @@
 dirtipp=tipps/
-tippauthtxt=lmo-tippauth.txt
+tippauthtxt=lmo-tipperauth.php
 shownick=1
 showname=
 showemail=

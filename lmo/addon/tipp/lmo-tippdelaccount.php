@@ -18,88 +18,95 @@
   */
   
   
-require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-if (($action == "tipp") && ($todo == "delaccount")) {
-  if (!isset($xtipperpass)) {
-    $xtipperpass = "";
-  }
-  $users = array("");
-  $pswfile = PATH_TO_ADDONDIR."/tipp/".$tipp_tippauthtxt;
+require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
+if (($action == 'tipp') && ($todo == 'delaccount')) {
+    if (!isset($xtipperpass)) {
+        $xtipperpass = '';
+    }
+    $users = array('');
+    $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
   
-  $users = file($pswfile);
-  array_unshift($users,'');
+    $users = lmo_tipper_lines($pswfile);
+    array_unshift($users,'');
   
-  $gef = 0;
-  for ($i = 1; $i < count($users) && $gef == 0; $i++) {
-    $dummb = explode('|', $users[$i]);
-    if ($_SESSION['lmotippername'] == $dummb[0]) {
-      // Nick gefunden
-      $gef = 1;
-      $del = $i;
+    $gef = 0;
+    for ($i = 1; $i < count($users) && $gef == 0; $i++) {
+        $dummb = explode('|', $users[$i]);
+        if ($_SESSION['lmotippername'] == $dummb[0]) {
+            // Nick gefunden
+            $gef = 1;
+            $del = $i;
+        }
     }
-  }
-  if ($gef == 0) {
-    exit;
-  }
+    if ($gef == 0) {
+        exit;
+    }
    
-  if ($newpage == 1) {
-    $xtipperpass = trim($xtipperpass);
-    if ($xtipperpass != $dummb[1]) {
-      $newpage = 0;
-      echo getMessage($text['tipp'][42],true);
+    if ($newpage == 1) {
+        $xtipperpass = trim($xtipperpass);
+        if ($xtipperpass != $dummb[1]) {
+            $newpage = 0;
+            echo getMessage($text['tipp'][42], true);
+        }
     }
-  }
    
-  if ($newpage == 1) {
-    $userf3 = explode('|', $users[$del]);
-    $verz = opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp, 0, -1));
-    $dummy = array("");
-    while ($files = readdir($verz)) {
-      if (substr($files, -5-strlen($userf3[0])) == "_".$userf3[0].".tip") {
-        array_push($dummy, $files);
-      }
-    }
-    closedir($verz);
-    array_shift($dummy);
-    $anztippfiles = count($dummy);
-    for ($k = 0; $k < $anztippfiles; $k++) {
-      @unlink(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp.$dummy[$k]); // Tipps löschen
-    }
+    if ($newpage == 1) {
+        $userf3 = explode('|', $users[$del]);
+        $verz = opendir(substr(PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp, 0, -1));
+        $dummy = array('');
+        while ($files = readdir($verz)) {
+            if (substr($files, -5 - strlen($userf3[0])) == '_' . $userf3[0] . '.tip') {
+                array_push($dummy, $files);
+            }
+        }
+        closedir($verz);
+        array_shift($dummy);
+        $anztippfiles = count($dummy);
+        for ($k = 0; $k < $anztippfiles; $k++) {
+            @unlink(PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . $dummy[$k]); // Tipps löschen
+        }
      
-    for ($i = $del+1; $i < count($users); $i++) {
-      $users[$i-1] = $users[$i];
-    }
-    array_pop($users); // die letzte Zeile abgeschnitten
-    require(PATH_TO_ADDONDIR."/tipp/lmo-tippsaveauth.php");
-     
-    $_SESSION["lmotipperok"] = 0;
-    $lmotipperpass = "";
-    $_SESSION['lmotipperverein'] = "";
-  } // end ($newpage==1)
-
+        for ($i = $del+1; $i < count($users); $i++) {
+            $users[$i-1] = $users[$i];
+        }
+        array_pop($users); // die letzte Zeile abgeschnitten
+        require(PATH_TO_ADDONDIR . '/tipp/lmo-tippsaveauth.php');
+         
+        $_SESSION['lmotipperok'] = 0;
+        $lmotipperpass = '';
+        $_SESSION['lmotipperverein'] = '';
+    } // end ($newpage==1)
 ?>
   <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-    <caption><?php echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein']!=""){echo " - ".$_SESSION['lmotipperverein'];} ?></caption>
+    <caption><?php echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein'] != ''){echo ' - ' . $_SESSION['lmotipperverein'];} ?></caption>
     <tr>
       <th colspan="2" align="center"><?php echo $text['tipp'][6]; ?></th>
     </tr>
     <tr>
-      <td width="20">&nbsp;</td><?php if ($newpage!=1){ ?>
+      <td width="20">&nbsp;</td>
+<?php
+    if ($newpage != 1){ ?>
       <td class="nobr" align="center">
         <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return confirm('');">
           <input type="hidden" name="action" value="tipp">
           <input type="hidden" name="todo" value="delaccount">
           <input type="hidden" name="newpage" value="1">
-          <p><?php echo " ".$text['tipp'][69]; ?>: &nbsp;<input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $xtipperpass; ?>"></p>
+          <p><?php echo ' ' . $text['tipp'][69]; ?>: &nbsp;<input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $xtipperpass; ?>"></p>
           <input class="lmo-formular-button" type="submit" name="xtippersub" value="<?php echo $text[82]; ?>">
         </form>
-      </td><?php  }
-  if ($newpage==1){ /* erfolgreich*/?>
+      </td>
+<?php
+    }
+    if ($newpage == 1){ /* erfolgreich*/?>
       <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>
     </tr>
     <tr>
-      <td class="lmoFooter" colspan="2" align="right"><a href="<?php echo $_SERVER['PHP_SELF']."?action=tipp&amp"; ?>">=> <?php echo $text['tipp'][141]; ?></a></td>
-    </tr><?php  }?>
-  </table><?php } 
-$file="";
-?>
+      <td class="lmoFooter" colspan="2" align="right"><a href="<?php echo $_SERVER['PHP_SELF'] . '?action=tipp&amp'; ?>">=> <?php echo $text['tipp'][141]; ?></a></td>
+    </tr>
+<?php
+    }?>
+  </table>
+<?php
+} 
+$file = '';
+?>

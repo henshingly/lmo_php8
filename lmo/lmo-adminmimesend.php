@@ -15,7 +15,6 @@
   *
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
-  *
   */
 
 session_start();
@@ -52,23 +51,19 @@ if (($action == 'admin') && ($todo == 'email') && (($_SESSION['lmouserok'] == 1)
         closedir($verz);
         sort($dummy);
         $temp = $diroutput . 'ligen.zip';
-        require(PATH_TO_LMO . '/includes/PHPMailer.php');
+        require_once(PATH_TO_LMO . '/lmo-smtp.php');
         if ($down > 0) {
             if ($dummy[$down-1] != '' && check_hilfsadmin($dummy[$down-1])) {
                 $zipfile = new ZipArchive;
                 $zipfile->open($temp, ZipArchive::CREATE);
                 $zipfile->addFile(PATH_TO_LMO . '/' . $dirliga . $dummy[$down-1], $dummy[$down-1]);
                 $zipfile->close();
-                $mail = new PHPMailer(true);
-                $mail->isMail();
-                $mail->CharSet = 'UTF-8';
-                $mail->Encoding = 'base64';
-                $mail->setFrom($aadr, $text[341]);
+                $mail = lmo_mail_create($text[341]);
                 $mail->addAddress($madr);
                 $mail->Subject = $text[341];
                 $mail->Body = $text[342];
                 $mail->addAttachment($temp, $dummy[$down-1] . '.zip');
-                if ($mail->send()) {
+                if (lmo_mail_send($mail)) {
                     echo getMessage($text[348]);
                 }
                 else {
@@ -89,16 +84,12 @@ if (($action == 'admin') && ($todo == 'email') && (($_SESSION['lmouserok'] == 1)
                     }
                 }
                 $zipfile->close();
-                $mail = new PHPMailer(true);
-                $mail->isMail();
-                $mail->CharSet = 'UTF-8';
-                $mail->Encoding = 'base64';
-                $mail->setFrom($aadr, $text[341]);
+                $mail = lmo_mail_create($text[341]);
                 $mail->addAddress($madr);
                 $mail->Subject = $text[341];
                 $mail->Body = $text[330];
                 $mail->addAttachment($temp);
-                if ($mail->send()) {
+                if (lmo_mail_send($mail)) {
                     echo getMessage($text[348]);
                 }
                 else {

@@ -42,8 +42,7 @@ if ($action == 'tipp') {
             $_SESSION['lmotippername'] = $xtippername;
             $_SESSION['lmotipperpass'] = $xtipperpass;
             $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
-            if (($tippers = file($pswfile)) === false)
-                $tippers = array();
+            $tippers = lmo_tipper_lines($pswfile);
             $_SESSION['lmotipperok'] = -2;
             $updateFile = false; // NEU
             foreach ($tippers as $key => $tipper) {
@@ -86,7 +85,7 @@ if ($action == 'tipp') {
             }
             // Datei zurückschreiben wenn geändert
             if ($updateFile) {
-                file_put_contents($pswfile, implode('', $tippers));
+                file_put_contents($pswfile, LMO_TIPPAUTH_GUARD . "\n" . implode('', $tippers), LOCK_EX);
             }
         }
     }
@@ -107,10 +106,8 @@ if ($action == 'tipp') {
         } elseif ($todo == 'tabelle') {
             require_once(PATH_TO_LMO . '/lmo-openfile.php');
         }
-        // Fehlgeschlagenes Laden (ungültige/nicht vorhandene Liga) fängt
-        // lmo-openfile.php bereits ab, indem es $file auf '' zurück setzt.
-        // $todo muss hier ebenfalls zurueckgesetzt werden, sonst würde der
-        // nachgelagerte Block unten trotzdem die content-spezifische Datei
+        // Fehlgeschlagenes Laden (ungültige/nicht vorhandene Liga) fängt lmo-openfile.php bereits ab, indem es $file auf '' zurück setzt.
+        // $todo muss hier ebenfalls zurückgesetzt werden, sonst würde der nachgelagerte Block unten trotzdem die content-spezifische Datei
         // (z.B. lmo-tipptabelle.php) mit undefinierten Variablen aufrufen.
         if (in_array($todo, array('edit', 'einsicht', 'tabelle', 'wert', 'fieber'), true) && empty($file)) {
             $todo = '';
@@ -266,4 +263,4 @@ if ($action == 'tipp') {
 <?php
     }
 }
-?>
+?>

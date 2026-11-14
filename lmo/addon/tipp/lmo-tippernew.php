@@ -19,20 +19,20 @@
 
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 
-isset($_POST['newpage']) ? $newpage=trim($_POST['newpage']) : $newpage = 0;
-isset($_REQUEST['xtippernick']) ? $xtippernick=trim($_REQUEST['xtippernick']) : $xtippernick = '';
-isset($_POST['xtippervorname']) ? $xtippervorname=trim($_POST['xtippervorname']) : $xtippervorname = '';
-isset($_POST['xtippernachname']) ? $xtippernachname=trim($_POST['xtippernachname']): $xtippernachname = '';
-isset($_POST['xtipperemail']) ? $xtipperemail=trim($_POST['xtipperemail']) : $xtipperemail = '';
-isset($_POST['xtipperstrasse']) ? $xtipperstrasse=trim($_POST['xtipperstrasse']) : $xtipperstrasse = '';
-isset($_POST['xtipperplz']) ? $xtipperplz=trim($_POST['xtipperplz']) : $xtipperplz = '';
-isset($_POST['xtipperort']) ? $xtipperort=trim($_POST['xtipperort']) : $xtipperort = '';
-isset($_POST['xtippervereinradio']) ? $xtippervereinradio=trim($_POST['xtippervereinradio']) : $xtippervereinradio=0;
-isset($_POST['xtippervereinalt']) ? $xtippervereinalt=trim($_POST['xtippervereinalt']) : $xtippervereinalt = '';
-isset($_POST['xtippervereinneu']) ? $xtippervereinneu=trim($_POST['xtippervereinneu']) : $xtippervereinneu = '';
-isset($_REQUEST['xtipperpass']) ? $xtipperpass=trim($_REQUEST['xtipperpass']) : $xtipperpass = '';
-isset($_POST['xtipperpassw']) ? $xtipperpassw=trim($_POST['xtipperpassw']) : $xtipperpassw = '';
-isset($_POST['xtipperligen']) ? $xtipperligen=$_POST['xtipperligen'] : $xtipperligen = '';
+isset($_POST['newpage']) ? $newpage = trim($_POST['newpage']) : $newpage = 0;
+isset($_REQUEST['xtippernick']) ? $xtippernick = trim($_REQUEST['xtippernick']) : $xtippernick = '';
+isset($_POST['xtippervorname']) ? $xtippervorname = trim($_POST['xtippervorname']) : $xtippervorname = '';
+isset($_POST['xtippernachname']) ? $xtippernachname = trim($_POST['xtippernachname']): $xtippernachname = '';
+isset($_POST['xtipperemail']) ? $xtipperemail = trim($_POST['xtipperemail']) : $xtipperemail = '';
+isset($_POST['xtipperstrasse']) ? $xtipperstrasse = trim($_POST['xtipperstrasse']) : $xtipperstrasse = '';
+isset($_POST['xtipperplz']) ? $xtipperplz = trim($_POST['xtipperplz']) : $xtipperplz = '';
+isset($_POST['xtipperort']) ? $xtipperort = trim($_POST['xtipperort']) : $xtipperort = '';
+isset($_POST['xtippervereinradio']) ? $xtippervereinradio = trim($_POST['xtippervereinradio']) : $xtippervereinradio=0;
+isset($_POST['xtippervereinalt']) ? $xtippervereinalt = trim($_POST['xtippervereinalt']) : $xtippervereinalt = '';
+isset($_POST['xtippervereinneu']) ? $xtippervereinneu = trim($_POST['xtippervereinneu']) : $xtippervereinneu = '';
+isset($_REQUEST['xtipperpass']) ? $xtipperpass = trim($_REQUEST['xtipperpass']) : $xtipperpass = '';
+isset($_POST['xtipperpassw']) ? $xtipperpassw = trim($_POST['xtipperpassw']) : $xtipperpassw = '';
+isset($_POST['xtipperligen']) ? $xtipperligen = $_POST['xtipperligen'] : $xtipperligen = '';
 
 if ($tipp_freischaltcode == 1) {
     isset($_POST['xtipperemail2']) ? $xtipperemail2 = trim($_POST['xtipperemail2']) : $xtipperemail2 = '';
@@ -48,7 +48,7 @@ if ($newpage == 1) {
     while (!feof($datei)) {
         $zeile = fgets($datei,1000);
         $zeile = trim(chop($zeile));
-        if ($zeile != '') {
+        if ($zeile != '' && strpos($zeile, '<?php') !== 0) {
             if ($zeile != '') {
                 array_push($users, $zeile);
             }
@@ -354,4 +354,4 @@ if ($newpage == 1) { // Anmeldung erfolgreich
 }
 $_SESSION['lmotipperok'] = 0;
 clearstatcache(); ?>
-</table>
+</table>

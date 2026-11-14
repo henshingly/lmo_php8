@@ -18,25 +18,25 @@
   */
 
 
-if ($action == "tipp") {
-  require_once(PATH_TO_ADDONDIR."/tipp/lmo-tipptest.php");
-} elseif ($action == "admin") {
-  require_once(PATH_TO_LMO."/lmo-admintest.php");
+if ($action == 'tipp') {
+    require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
+} elseif ($action == 'admin') {
+    require_once(PATH_TO_LMO . '/lmo-admintest.php');
 }
 
-$datei = fopen($pswfile, "wb");
+$datei = fopen($pswfile, 'wb');
 if (!$datei) {
-  echo getMessage($text[283],true);
-  exit;
+    echo getMessage($text[283], true);
+    exit;
 } else {
-  echo getMessage($text[138]);
+    echo getMessage($text[138]);
 }
 flock($datei, LOCK_EX);
+fputs($datei, LMO_TIPPAUTH_GUARD . "\n");   // PHP-Schutzzeile
 for ($i = 1; $i < count($users); $i++) {
-  fputs($datei, trim($users[$i])."\n");
+    fputs($datei, trim($users[$i]) . "\n");
 }
 flock($datei, LOCK_UN);
 fclose($datei);
 clearstatcache();
-
-?>
+?>

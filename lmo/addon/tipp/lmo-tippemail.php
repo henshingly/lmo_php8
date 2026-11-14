@@ -19,30 +19,22 @@
 
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tippaenderbar.php');
-require_once(PATH_TO_LMO . '/includes/PHPMailer.php');
-$mail = new PHPMailer(true);
+require_once(PATH_TO_LMO . '/lmo-smtp.php');
 
-// Basis-URL für den [pass]-Platzhalter: da Passwoerter seit der Umstellung
-// auf password_hash() nicht mehr im Klartext vorliegen, wird statt des
-// (nutzlosen) Hash-Werts ein personalisierter Link zum Passwort-Reset
-// verschickt (nutzt denselben Mechanismus wie lmo-tippemailpass.php).
-$tippResetBaseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST']
-    . $_SERVER['PHP_SELF'] . '?action=tipp&todo=getpass&xtippername2=';
+$mail = lmo_mail_create($text['tipp'][92]);
+
+// Basis-URL für den [pass]-Platzhalter: da Passwörter seit der Umstellung auf password_hash() nicht mehr im Klartext vorliegen, wird statt des
+// (nutzlosen) Hash-Werts ein personalisierter Link zum Passwort-Reset verschickt (nutzt denselben Mechanismus wie lmo-tippemailpass.php).
+$tippResetBaseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?action=tipp&todo=getpass&xtippername2=';
 
 if ($message != '') {
     $dumma = array();
     $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
     $dumma = file($pswfile);
     // Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
-    $dumma = array_values(array_filter($dumma, function ($line) {
-        return !str_starts_with(trim($line), '<?php');
-    }));
+    $dumma = array_values(array_filter($dumma, function ($line) {return !str_starts_with(trim($line), '<?php');}));
 
-    $mail->isMail();
-    $mail->CharSet = 'UTF-8';
-    $mail->Encoding = 'base64';
     $mail->Subject = $betreff . ' (' . $_SERVER['HTTP_HOST'] . ')';
-    $mail->setFrom($aadr, $text['tipp'][92]);
     $anzemail = 0;
     $anztipper = count($dumma);
     if (!isset($start)) {
@@ -57,10 +49,10 @@ if ($message != '') {
             $dummb = explode('|', $dumma[$tippernr]);
             if (isset($dummb[9], $dummb[4]) && $dummb[9] != -1 && $dummb[4] != '') {
                 $textmessage = $message;
-                $textmessage = str_replace(array('[nick]', '[pass]', '[name]'),array($dummb[0], $tippResetBaseUrl . urlencode($dummb[0]), $dummb[3]), $textmessage);
+                $textmessage = str_replace(array('[nick]', '[pass]', '[name]'), array($dummb[0], $tippResetBaseUrl . urlencode($dummb[0]), $dummb[3]), $textmessage);
                 $mail->Body = $textmessage;
                 $mail->addAddress($dummb[4]);
-                if ($mail->send()) {
+                if (lmo_mail_send($mail)) {
                     $anzemail ++;
                 } else {
                     echo $mail->ErrorInfo;
@@ -69,7 +61,7 @@ if ($message != '') {
                 $mail->ClearReplyTos();
             }
         }
-            echo getMessage($anzemail . ' ' . $text['tipp'][175]);
+        echo getMessage($anzemail . ' ' . $text['tipp'][175]);
     } elseif ($emailart == 1) {
         $tipp_textreminder1 = str_replace(array("\r\n", "\n", "\r"), array('&#10;', '&#10;', '&#10;') , $message);
         require(PATH_TO_LMO . '/lmo-savecfg.php');
@@ -179,7 +171,7 @@ if ($message != '') {
                         $textmessage = str_replace('[spiele]', $spiele, $textmessage);
                         $mail->Body = $textmessage;
                         $mail->addAddress($dummb[4]);
-                        if ($mail->send()) {
+                        if (lmo_mail_send($mail)) {
                             $anzemail ++;
                         } else {
                             echo $mail->ErrorInfo;
@@ -246,7 +238,7 @@ if ($message != '') {
                             $textmessage = str_replace('[spiele]', $spiele, $textmessage);
                             $mail->Body = $textmessage;
                             $mail->addAddress($dummb[4]);
-                            if ($mail->send()) {
+                            if (lmo_mail_send($mail)) {
                                 $anzemail++;
                             } else {
                                 echo $mail->ErrorInfo;
@@ -270,12 +262,15 @@ if ($message != '') {
         $textmessage = str_replace('[name]', $dummb[3], $textmessage);
         $mail->Body = $textmessage;
         $mail->addAddress($dummb[4]);
-        if ($mail->send()) {
+        if (count($mail->getAllRecipientAddresses()) == 0) {
+            // Der Tipper hat keine (gültige) E-Mail-Adresse hinterlegt
+            echo getMessage($dummb[0] . ': ' . $mail->ErrorInfo, true);
+        } elseif (lmo_mail_send($mail)) {
             $anzemail++;
             $mail->ClearAllRecipients();
             $mail->ClearReplyTos();
         } else {
-            $sent = mail($dummb[4], $subject, $textmessage, $header);
+            echo $mail->ErrorInfo;
         }
     }
 }

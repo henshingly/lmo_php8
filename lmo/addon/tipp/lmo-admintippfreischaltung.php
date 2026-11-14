@@ -19,20 +19,16 @@
   */
 
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
-require_once(PATH_TO_LMO . '/includes/PHPMailer.php');
+require_once(PATH_TO_LMO . '/lmo-smtp.php');
 
-$mail = new PHPMailer(true);
+$mail = lmo_mail_create($text['tipp'][92]);
 $tipp_mailtext = str_replace(array('\n', '[nick]', '[pass]', '[url]'), array("\n", $xtippernick, $xtipperpass,  $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?action=tipp&xtippername=' . $xtippernick . '&xtipperpass=' . $xtipperpass), $text['tipp'][298]);
 
-$mail->isMail();
-$mail->CharSet = 'UTF-8';
-$mail->Encoding = 'base64';
 $mail->Subject = $text['tipp'][77] . ' (' . $_SERVER['HTTP_HOST'] . ')';
-$mail->setFrom($aadr, $text['tipp'][92]);
 
 $mail->Body = $tipp_mailtext;
 $mail->addAddress($xtipperemail, $xtippernick);
-if ($mail->send()) {
+if (lmo_mail_send($mail)) {
     echo getMessage($text['tipp'][78]);
 }
 else {

@@ -21,6 +21,78 @@
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 isset($_POST['save']) ? $save = $_POST['save'] : $save = 0;
 isset($_REQUEST['show']) ? $show = $_REQUEST['show'] : $show = 0;
+
+// ---- E-Mail-Versand (SMTP): nur Voll-Admin -------------------------------------------------
+require_once(PATH_TO_LMO . '/lmo-smtp.php');
+lmo_smtp_lang();
+$smtp_isadmin = (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 2);
+$smtp_form = lmo_smtp_load();   // Werte für die Anzeige
+$smtp_msg = '';                 // Meldungen (HTML) für den Block
+$smtp_test_html = '';           // Ergebnis der Testmail
+if (empty($_SESSION['lmo_csrf_smtp'])) {
+    $_SESSION['lmo_csrf_smtp'] = bin2hex(random_bytes(16));
+}
+if ($smtp_isadmin && $save == 1 && $show == 0 && isset($_POST['smtp_mode'])) {
+    $smtp_token_ok = isset($_POST['smtp_token']) && hash_equals($_SESSION['lmo_csrf_smtp'], (string) $_POST['smtp_token']);
+    if (!$smtp_token_ok) {
+        $smtp_msg .= getMessage($text['smtp'][25], true);
+        $smtp_test_html = '';
+        if (isset($_POST['smtp_test'])) {
+            $smtp_test_html = getMessage($text['smtp'][25], true);
+        }
+    } else {
+        $smtp_in = array(
+            'mode' => $_POST['smtp_mode'],
+            'host' => isset($_POST['smtp_host']) ? $_POST['smtp_host'] : '',
+            'port' => isset($_POST['smtp_port']) ? $_POST['smtp_port'] : 587,
+            'secure' => isset($_POST['smtp_secure']) ? $_POST['smtp_secure'] : '',
+            'username' => isset($_POST['smtp_username']) ? $_POST['smtp_username'] : '',
+            'from' => isset($_POST['smtp_from']) ? $_POST['smtp_from'] : '',
+            'password' => isset($_POST['smtp_password']) ? $_POST['smtp_password'] : '',
+        );
+        list($smtp_new, $smtp_err) = lmo_smtp_sanitize($smtp_in);
+        $smtp_clear = !empty($_POST['smtp_clearpw']);
+        $smtp_errtext = array('host' => 20, 'port' => 21, 'from' => 22, 'password' => 26);
+        if (isset($_POST['smtp_test'])) {
+            // Testmail: nichts speichern, mit den eingegebenen Werten senden
+            $save = 0;
+            if (count($smtp_err) > 0) {
+                foreach ($smtp_err as $e) {
+                    $smtp_test_html .= getMessage($text['smtp'][$smtp_errtext[$e]], true);
+                }
+            } elseif ($aadr == '' || !filter_var($aadr, FILTER_VALIDATE_EMAIL)) {
+                $smtp_test_html = getMessage($text['smtp'][27], true);
+            } else {
+                if ($smtp_new['password'] === '' && !$smtp_clear) {
+                    $smtp_new['password'] = $smtp_form['password']; // gespeichertes Passwort verwenden
+                }
+                if ($smtp_new['mode'] !== 'smtp') {
+                    $smtp_new['mode'] = 'smtp';                     // der Test prüft immer den SMTP-Weg
+                }
+                list($smtp_ok, $smtp_res) = lmo_smtp_test($smtp_new, $aadr);
+                $smtp_test_html = $smtp_ok
+                    ? getMessage($text['smtp'][17] . ' ' . htmlspecialchars($aadr) . ' (' . htmlspecialchars($smtp_res) . ').')
+                    : getMessage($text['smtp'][18] . ' ' . htmlspecialchars($smtp_res), true);
+            }
+            $smtp_new['password'] = '';
+            $smtp_form = array_merge($smtp_form, $smtp_new);
+        } elseif (count($smtp_err) > 0) {
+            // Eingabefehler: SMTP nicht speichern, Formular mit den Eingaben wieder anzeigen
+            foreach ($smtp_err as $e) {
+                $smtp_msg .= getMessage($text['smtp'][$smtp_errtext[$e]], true);
+            }
+            $smtp_new['password'] = '';
+            $smtp_form = array_merge($smtp_form, $smtp_new);
+        } elseif (lmo_smtp_save($smtp_new, $smtp_new['password'], $smtp_clear)) {
+            $smtp_msg .= getMessage($text['smtp'][28]);
+            $smtp_form = lmo_smtp_load(true);
+        } else {
+            $smtp_msg .= getMessage($text['smtp'][23], true);
+        }
+    }
+}
+// ---------------------------------------------------------------------------------------------
+
 if ($save == 1) {
     switch ($show) {
         case 0:
@@ -28,8 +100,8 @@ if ($save == 1) {
             if ($dirliga == '') {
                 $dirliga = './';
             }
-            $dirliga = str_replace('\\', '/', $dirliga);       // (Falschen) Backslash -> Slash
-            if (substr($dirliga, -1) != '/') $dirliga .= '/';  // Slash ergänzen falls nicht vorhanden
+            $dirliga = str_replace('\\', '/', $dirliga);        // (Falschen) Backslash -> Slash
+            if (substr($dirliga, -1) != '/') $dirliga .= '/';   // Slash ergänzen falls nicht vorhanden
             $ArchivDir = $dirliga . 'archiv/';
 
             $deflang = isset($_POST['xdeflang']) ? trim($_POST['xdeflang']) : $deflang;
@@ -195,6 +267,105 @@ if ($show == 0) {?>
                   <td class="nobr" align="right"><acronym title="<?php echo $text[344]; ?>"><?php echo $text[343]; ?></acronym></td>
                  <td class="nobr" colspan="4"><input class="lmo-formular-input" type="text" name="xadr" size="40" maxlength="128" value="<?php echo $aadr; ?>" onChange="dolmoedit()"></td>
                 </tr>
+<?php
+    if ($smtp_isadmin) {
+        $smtp_h = function ($v) { return htmlspecialchars((string) $v, ENT_QUOTES, 'UTF-8'); };
+        $smtp_on = ($smtp_form['mode'] === 'smtp');
+        $smtp_style = $smtp_on ? '' : ' style="display:none"';?>
+                <tr>
+                  <td class="nobr" align="right"><?php echo $text['smtp'][0]; ?></td>
+                  <td class="nobr" colspan="4">
+                    <input type="hidden" name="smtp_token" value="<?php echo $smtp_h($_SESSION['lmo_csrf_smtp']); ?>">
+                    <label><input type="radio" name="smtp_mode" value="mail"<?php if (!$smtp_on) echo ' checked'; ?> onclick="lmoSmtpToggle();dolmoedit()"> <?php echo $text['smtp'][2]; ?></label>&nbsp;&nbsp;
+                    <label><input type="radio" name="smtp_mode" value="smtp"<?php if ($smtp_on) echo ' checked'; ?> onclick="lmoSmtpToggle();dolmoedit()"> <?php echo $text['smtp'][3]; ?></label>
+                  </td>
+                </tr>
+<?php
+        if ($smtp_msg != '' || !lmo_is_https()) {?>
+                <tr>
+                  <td></td>
+                  <td colspan="4"><?php echo $smtp_msg; if (!lmo_is_https()) {?><div class="error"><?php echo $text['smtp'][19]; ?></div><?php }?></td>
+                </tr>
+<?php
+        }?>
+                <tr class="smtp-row"<?php echo $smtp_style; ?>>
+                  <td class="nobr" align="right"><?php echo $text['smtp'][4]; ?></td>
+                  <td class="nobr" colspan="4"><input class="lmo-formular-input" type="text" name="smtp_host" size="40" maxlength="255" value="<?php echo $smtp_h($smtp_form['host']); ?>" onChange="dolmoedit()" autocomplete="off"></td>
+                </tr>
+                <tr class="smtp-row"<?php echo $smtp_style; ?>>
+                  <td class="nobr" align="right"><?php echo $text['smtp'][5]; ?></td>
+                  <td class="nobr" colspan="4"><input class="lmo-formular-input" type="text" name="smtp_port" size="5" maxlength="5" value="<?php echo (int) $smtp_form['port']; ?>" onChange="dolmoedit()"></td>
+                </tr>
+                <tr class="smtp-row"<?php echo $smtp_style; ?>>
+                  <td class="nobr" align="right"><?php echo $text['smtp'][6]; ?></td>
+                  <td class="nobr" colspan="4">
+                    <select class="lmo-formular-input" name="smtp_secure" onChange="dolmoedit()">
+                      <option value="tls"<?php if ($smtp_form['secure'] === 'tls') echo ' selected'; ?>><?php echo $text['smtp'][8]; ?></option>
+                      <option value="ssl"<?php if ($smtp_form['secure'] === 'ssl') echo ' selected'; ?>><?php echo $text['smtp'][9]; ?></option>
+                      <option value=""<?php if ($smtp_form['secure'] === '') echo ' selected'; ?>><?php echo $text['smtp'][7]; ?></option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="smtp-row"<?php echo $smtp_style; ?>>
+                  <td class="nobr" align="right"><?php echo $text['smtp'][10]; ?></td>
+                  <td class="nobr" colspan="4"><input class="lmo-formular-input" type="text" name="smtp_username" size="40" maxlength="255" value="<?php echo $smtp_h($smtp_form['username']); ?>" onChange="dolmoedit()" autocomplete="off"></td>
+                </tr>
+                <tr class="smtp-row"<?php echo $smtp_style; ?>>
+                  <td class="nobr" align="right"><acronym title="<?php echo $smtp_h($text['smtp'][29]); ?>"><?php echo $text['smtp'][11]; ?></acronym></td>
+                  <td class="nobr" colspan="4"><input class="lmo-formular-input" type="password" name="smtp_password" size="40" maxlength="255" value="" onChange="dolmoedit()" autocomplete="new-password"></td>
+                </tr>
+<?php
+        if ($smtp_form['password_error']) {?>
+                <tr class="smtp-row"<?php echo $smtp_style; ?>>
+                  <td></td>
+                  <td colspan="4"><div class="error"><?php echo $text['smtp'][24]; ?></div></td>
+                </tr>
+<?php
+        } elseif ($smtp_form['password_set']) {?>
+                <tr class="smtp-row"<?php echo $smtp_style; ?>>
+                  <td></td>
+                  <td class="nobr" colspan="4"><small><?php echo $text['smtp'][14]; ?></small><br>
+                    <label><input type="checkbox" name="smtp_clearpw" value="1" onclick="dolmoedit()"> <?php echo $text['smtp'][15]; ?></label></td>
+                </tr>
+<?php
+        }?>
+                <tr class="smtp-row"<?php echo $smtp_style; ?>>
+                  <td class="nobr" align="right"><acronym title="<?php echo $smtp_h($text['smtp'][13]); ?>"><?php echo $text['smtp'][12]; ?></acronym></td>
+                  <td class="nobr" colspan="4"><input class="lmo-formular-input" type="text" name="smtp_from" size="40" maxlength="128" value="<?php echo $smtp_h($smtp_form['from']); ?>" onChange="dolmoedit()"></td>
+                </tr>
+                <tr class="smtp-row"<?php echo $smtp_style; ?>>
+                  <td></td>
+                  <td colspan="4"><input type="button" class="lmo-formular-button" value="<?php echo $smtp_h($text['smtp'][16]); ?>" onclick="lmoSmtpTest()">
+                    <span id="smtp-test-target"><?php if ($smtp_test_html != '') echo '<span id="smtp-test-result">' . $smtp_test_html . '</span>'; ?></span>
+                    <script type="text/javascript">
+                    function lmoSmtpToggle() {
+                      var on = document.getElementsByName('smtp_mode')[1].checked;
+                      var rows = document.getElementsByTagName('tr');
+                      for (var i = 0; i < rows.length; i++) {
+                        if (rows[i].className === 'smtp-row') { rows[i].style.display = on ? '' : 'none'; }
+                      }
+                    }
+                    function lmoSmtpTest() {
+                      var f = document.forms['lmoedit'], t = document.getElementById('smtp-test-target');
+                      if (!window.fetch || !window.FormData) { return; }
+                      var fd = new FormData(f);
+                      fd.set('smtp_test', '1');
+                      fd.set('smtp_mode', 'smtp');
+                      t.textContent = <?php echo json_encode($text['smtp'][30]); ?>;
+                      fetch(f.getAttribute('action'), {method: 'POST', body: fd, credentials: 'same-origin'})
+                        .then(function (r) { return r.text(); })
+                        .then(function (html) {
+                          var d = new DOMParser().parseFromString(html, 'text/html');
+                          var el = d.getElementById('smtp-test-result');
+                          if (el) { t.innerHTML = el.innerHTML; } else { t.textContent = 'Error'; }
+                        })
+                        .catch(function (e) { t.textContent = 'Error: ' + e; });
+                    }
+                    </script>
+                  </td>
+                </tr>
+<?php
+    }?>
                 <tr>
                   <td class="nobr" align="right" rowspan="2"><acronym title="<?php echo $text[532]; ?>"><?php echo $text[533]; ?></acronym></td>
                   <td class="nobr" colspan="2" rowspan="2">
@@ -209,8 +380,7 @@ if ($show == 0) {?>
                 <tr>
                   <td class="nobr" colspan="2"><input type="radio" name="xliga_sort_direction" onClick="dolmoedit()" value="desc"<?php if ($liga_sort_direction=='desc') echo ' checked'; ?>><?php echo $text[528]; ?></td>
                 </tr><?php
-}
-elseif ($show == 1) {?>
+} elseif ($show == 1) {?>
                 <tr>
                   <td class="nobr" align="right"><acronym title="<?php echo $text[228]; ?>"><?php echo $text[227]; ?></acronym></td>
                   <td class="nobr" colspan="4">
@@ -231,8 +401,7 @@ elseif ($show == 1) {?>
                   </td>
                 </tr>
 <?php
-}
-elseif ($show == 2) {?>
+} elseif ($show == 2) {?>
                 <tr>
                   <td class="nobr" align="right"><acronym title="<?php echo $text[390]; ?>"><?php echo $text[389]; ?></acronym></td>
                   <td class="nobr"><input type="checkbox" class="lmo-formular-input" name="xbacklink" onChange="dolmoedit()"<?php if ($backlink == 1) {echo ' checked';}?>></td>
