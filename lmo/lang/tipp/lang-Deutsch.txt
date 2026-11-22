@@ -303,4 +303,15 @@
 302=Nur Gesamtpunktestand anzeigen
 303=Ein neuer Tipper hat sich für das Tippspiel angemeldet: \n\nNickname: [nick]
 304=Lasse das Feld leer um keine Änderung des Passworts duchzuführen
-305
+306=Tipps nachtragen
+307=Liga wählen
+308=Tipper (Nick)
+309=Tipps bearbeiten
+310=Für diese Liga gibt es keine Tipper.
+311=Admin-Modus: Sie tragen Tipps für „[nick]“ ein. Die Zeitsperre ist aufgehoben. Bitte danach die Auswertung neu durchführen.
+312=Als Voll-Admin können Sie Tipps eines Tippers auch nach Spielbeginn eintragen oder ändern. Die Zeitsperre ist nur für Sie aufgehoben, jede Änderung wird protokolliert. Führen Sie danach die Auswertung erneut durch.
+313=Zurück
+314=Protokoll der Nachträge
+315=Noch keine Einträge.
+316=Datum
+317=Spieltag

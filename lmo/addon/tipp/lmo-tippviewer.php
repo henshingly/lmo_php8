@@ -18,13 +18,12 @@
   *
   */
 
-
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 if ($tipp_viewertipp == 1 && $viewermode == 1) {
     require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tippcalcpkt.php');
     require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tippaenderbar.php');
     $verz = opendir(substr(PATH_TO_LMO . '/' . $dirliga, 0, -1));
-    $dateien = array();
+    $dateien = [];
     if ($verz !== false) {
         while ($files = readdir($verz)) {
             if (file_exists(PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . substr($files, 0, -4) . '_' . $_SESSION['lmotippername'] . '.tip')) {
@@ -51,36 +50,36 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
 
     sort($dateien);
     $anzligen = count($dateien);
-    $teams = array_pad($array, 65, '');
+    $teams = array_pad([], 65, '');
     $teams[0] = '___';
-    $liga = array();
-    $titel = array();
-    $lmtype = array();
-    $anzst = array();
-    $hidr = array();
-    $dats = array();
-    $datm = array();
-    $spieltag = array();
-    $modus = array();
-    $datum1 = array();
-    $datum2 = array();
-    $spiel = array();
-    $teama = array();
-    $teamb = array();
-    $goala = array();
-    $goalb = array();
-    $goalfaktor = array();
-    $mspez = array();
-    $mtipp = array();
-    $mnote = array();
-    $urlb = array();
-    $mberi = array();
-    $msieg = array();
-    $mterm = array();
-    $tippa = array();
-    $tippb = array();
-    $jksp = array();
-    $tipp_jokertippaktiv = array();
+    $liga = [];
+    $titel = [];
+    $lmtype = [];
+    $anzst = [];
+    $hidr = [];
+    $dats = [];
+    $datm = [];
+    $spieltag = [];
+    $modus = [];
+    $datum1 = [];
+    $datum2 = [];
+    $spiel = [];
+    $teama = [];
+    $teamb = [];
+    $goala = [];
+    $goalb = [];
+    $goalfaktor = [];
+    $mspez = [];
+    $mtipp = [];
+    $mnote = [];
+    $urlb = [];
+    $mberi = [];
+    $msieg = [];
+    $mterm = [];
+    $tippa = [];
+    $tippb = [];
+    $jksp = [];
+    $tipp_jokertippaktiv = [];
     $anzspiele = 0;
 
     if (!isset($save)) {
@@ -102,7 +101,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     $now = mktime(0, 0, 0, substr($now1, 3, 2), substr($now1, 0, 2), substr($now1, -4));
     $then = date('d.m.Y', $then1);
     $then = mktime(0, 0, 0, substr($then, 3, 2), substr($then, 0, 2), substr($then, -4));
-    $then1 = date('d.m.Y', ($then-1));
+    $then1 = date('d.m.Y', ($then - 1));
 
     for ($liganr = 0; $liganr < $anzligen; $liganr++) {
         $file = $dateien[$liganr];
@@ -179,17 +178,17 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     }
 
     if ($tipp_showtendenzabs == 1 || $tipp_showtendenzpro == 1 || ($tipp_showdurchschntipp == 1 && $tipp_tippmodus == 1)) {
-        $tendenz1 = array_pad(array('0'), $anzspiele + 1, '0');
-        $tendenz0 = array_pad(array('0'), $anzspiele + 1, '0');
-        $tendenz2 = array_pad(array('0'), $anzspiele + 1, '0');
-        $toregesa = array_pad(array('0'), $anzspiele + 1, '0');
-        $toregesb = array_pad(array('0'), $anzspiele + 1, '0');
-        $anzgetippt = array_pad(array('0'), $anzspiele + 1, '0');
-        $btip = array_pad(array('false'), $anzspiele + 1, '0');
+        $tendenz1 = array_pad(['0'], $anzspiele + 1, '0');
+        $tendenz0 = array_pad(['0'], $anzspiele + 1, '0');
+        $tendenz2 = array_pad(['0'], $anzspiele + 1, '0');
+        $toregesa = array_pad(['0'], $anzspiele + 1, '0');
+        $toregesb = array_pad(['0'], $anzspiele + 1, '0');
+        $anzgetippt = array_pad(['0'], $anzspiele + 1, '0');
+        $btip = array_pad(['false'], $anzspiele + 1, '0');
         $start2 = 0;
         for ($i = 0; $i < $anzspiele; $i++) {
             if ($i == ($anzspiele - 1) || $spieltag[$i] != $spieltag[$i + 1] || $liga[$i] != $liga[$i + 1]) {
-                $einsichtfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp.'einsicht/' . $liga[$i].'_' . $spieltag[$i] . '.ein';
+                $einsichtfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'einsicht/' . $liga[$i] . '_' . $spieltag[$i] . '.ein';
                 require(PATH_TO_ADDONDIR . '/tipp/lmo-tippcalceinsichtviewer.php');
                 $start2 = $i + 1;
             }
@@ -217,13 +216,18 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     $viewermode = 1;
     $file = '';
     $nw = 0;
-?>
+    ?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td align="center"><h1><?php echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein'] != '') {echo ' - ' . $_SESSION['lmotipperverein'];} ?></h1></td>
+    <td align="center"><h1><?php echo $_SESSION['lmotippername'];
+    if ($_SESSION['lmotipperverein'] != '') {
+        echo ' - ' . $_SESSION['lmotipperverein'];
+    } ?></h1></td>
   </tr>
   <tr>
-    <td align="center"><?php if ($tipp_tippBis > 0) {echo $text['tipp'][87] . ' ' . $tipp_tippBis . ' ' . $text['tipp'][88];} ?></td>
+    <td align="center"><?php if ($tipp_tippBis > 0) {
+        echo $text['tipp'][87] . ' ' . $tipp_tippBis . ' ' . $text['tipp'][88];
+    } ?></td>
   </tr>
   <tr>
     <td align="center"><?php echo $text['tipp'][258] . ' ' . $now1 . ' ' . $text[4] . ' ' . $then1; ?></td>
@@ -242,7 +246,7 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
 <?php
     if ($anzspiele == 0) { ?>
         <tr>
-          <td align="center" colspan="<?php echo $breite; ?>"><?php echo getMessage($text['tipp'][262],true); ?></td>
+          <td align="center" colspan="<?php echo $breite; ?>"><?php echo getMessage($text['tipp'][262], true); ?></td>
         </tr>
 <?php
     }
@@ -302,7 +306,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
             } ?></th>
 <?php
             if ($tipp_showtendenzabs == 1 || $tipp_showtendenzpro == 1) { ?>
-          <th class="nobr" colspan="<?php if ($tipp_showtendenzabs == 1 && $tipp_showtendenzpro == 1) {echo '4';} else {echo '2';} ?>"><?php echo $text['tipp'][188]; /* Tipptendenz absolut */?></th>
+          <th class="nobr" colspan="<?php if ($tipp_showtendenzabs == 1 && $tipp_showtendenzpro == 1) {
+              echo '4';
+          } else {
+              echo '2';
+          } ?>"><?php echo $text['tipp'][188]; /* Tipptendenz absolut */?></th>
 <?php
             }
             if ($tipp_tippmodus == 1) {
@@ -313,7 +321,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
                     } ?></th>
 <?php
                 } ?>
-          <th class="nobr" align="center" colspan="<?php if ($tipp_pfeiltipp == 1) {echo '5';} else {echo '3';} ?>">
+          <th class="nobr" align="center" colspan="<?php if ($tipp_pfeiltipp == 1) {
+              echo '5';
+          } else {
+              echo '3';
+          } ?>">
             <acronym title="<?php echo $text['tipp'][241] . ':' . $text['tipp'][242]; ?>"><?php echo $text['tipp'][209]; /* Dein Tipp */?></acronym><br><?php
                 if ($goalfaktor[$i] > 0 && $goalfaktor[$i] != 1) {
                     echo '(' . $text[553 + log10($goalfaktor[$i])] . ')';
@@ -524,12 +536,20 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
                 $tipp = 2;
             } ?>
           <td class="nobr" align="center">
-              <input type="radio" name="xtipp<?php echo $i; ?>" value="1"<?php if ($tipp == 1) {echo ' checked';} if ($btip == false) {echo ' disabled';} ?>>
+              <input type="radio" name="xtipp<?php echo $i; ?>" value="1"<?php if ($tipp == 1) {
+                  echo ' checked';
+              } if ($btip == false) {
+                  echo ' disabled';
+              } ?>>
           </td>
 <?php
             if ($hidr[$i] == 0) { ?>
           <td class="nobr" align="center">
-              <input type="radio" name="xtipp<?php echo $i; ?>" value="3"<?php if ($tipp == 0) {echo ' checked';} if ($btip == false) {echo ' disabled';} ?>>
+              <input type="radio" name="xtipp<?php echo $i; ?>" value="3"<?php if ($tipp == 0) {
+                  echo ' checked';
+              } if ($btip == false) {
+                  echo ' disabled';
+              } ?>>
           </td>
 <?php
             } else { ?>
@@ -537,7 +557,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
 <?php
             } ?>
           <td class="nobr" align="center">
-              <input type="radio" name="xtipp<?php echo $i; ?>" value="2"<?php if ($tipp == 2) {echo ' checked';} if ($btip == false) {echo ' disabled';} ?>>
+              <input type="radio" name="xtipp<?php echo $i; ?>" value="2"<?php if ($tipp == 2) {
+                  echo ' checked';
+              } if ($btip == false) {
+                  echo ' disabled';
+              } ?>>
           </td>
 <?php
         } // END ($tipp_tippmodus == 0)
@@ -546,7 +570,11 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
                 $btip = false;
             } ?>
           <td class="nobr" align="center">
-              <input type="radio" name="xjokerspiel_<?php echo $liga[$i].'_' . $spieltag[$i]; ?>" value="<?php echo $spiel[$i]; ?>" <?php if ($jksp[$i] == $spiel[$i]) {echo ' checked';} if ($btip == false) {echo ' disabled';} ?>>
+              <input type="radio" name="xjokerspiel_<?php echo $liga[$i] . '_' . $spieltag[$i]; ?>" value="<?php echo $spiel[$i]; ?>" <?php if ($jksp[$i] == $spiel[$i]) {
+                  echo ' checked';
+              } if ($btip == false) {
+                  echo ' disabled';
+              } ?>>
           </td>
 <?php
         } ?>
@@ -659,8 +687,8 @@ if ($tipp_viewertipp == 1 && $viewermode == 1) {
     <td>
       <table width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td align="left"><a href="<?php echo $addr.($start - $tipp_viewertage); ?>" title="<?php echo $tipp_viewertage . ' ' . $text['tipp'][257]; ?>"><?php echo $text[5]; ?></a></td>
-          <td align="right"><a href="<?php echo $addr.($start + $tipp_viewertage); ?>" title="<?php echo $tipp_viewertage . ' ' . $text['tipp'][256]; ?>"><?php echo $text[7]; ?></a></td>
+          <td align="left"><a href="<?php echo $addr . ($start - $tipp_viewertage); ?>" title="<?php echo $tipp_viewertage . ' ' . $text['tipp'][257]; ?>"><?php echo $text[5]; ?></a></td>
+          <td align="right"><a href="<?php echo $addr . ($start + $tipp_viewertage); ?>" title="<?php echo $tipp_viewertage . ' ' . $text['tipp'][256]; ?>"><?php echo $text[7]; ?></a></td>
         </tr>
       </table>
     </td>

@@ -17,9 +17,8 @@
   *
   */
 
-
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
-$dumma = array();
+$dumma = [];
 $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
 
 $dumma = [];
@@ -47,7 +46,6 @@ foreach ($dumma as $line) {
     $email = $dummb[4] ?? '';
 
     echo '<option value="' . $nick . '">';
-    echo $nick . ' (' . $name.' - ' . $email . ')';
+    echo $nick . ' (' . $name . ' - ' . $email . ')';
     echo '</option>';
 }
-?>

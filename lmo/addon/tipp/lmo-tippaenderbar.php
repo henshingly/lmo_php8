@@ -17,10 +17,10 @@
   *
   */
 
-
 // Tipp noch änderbar oder nicht
 
-function tippaenderbar($mterm0, $datum1, $datum2) {
+function tippaenderbar($mterm0, $datum1, $datum2)
+{
     global $plus; // eine Minute Sicherheitsabstand zwischen Seitenaufruf und abspeichern
     global $tipp_imvorraus;
     global $st;
@@ -29,34 +29,34 @@ function tippaenderbar($mterm0, $datum1, $datum2) {
     global $tipp_tippohne;
     global $deftime;
 
+    // Admin-Nachtrag (lmo-tippstart.php): Zeitsperre aufgehoben
+    if (defined('LMO_TIPP_ADMINEDIT')) {
+        return true;
+    }
+
     if ($tipp_imvorraus >= 0 && $st > ($stx + $tipp_imvorraus)) {
         $btip = false;
-    }
-    else {
+    } else {
         $btip = false;
         $now = strtotime('+' . ($tipp_tippBis + $plus) . ' minute');
         if ($mterm0 > 0) {
             if ($now < $mterm0) {
                 $btip = true;
             }
-        }
-        else {
+        } else {
             if ($datum1 != '') {
                 if ($tipp_tippohne == 1 && $deftime > 0) {
                     $datum1a = mktime(substr($deftime, 0, 2), substr($deftime, 3, 2), 0, substr($datum1, 3, 2), substr($datum1, 0, 2), substr($datum1, -4));
-                }
-                else {
+                } else {
                     $datum1a = mktime(0, 0, 0, substr($datum1, 3, 2), substr($datum1, 0, 2), substr($datum1, -4));
                 }
                 if ($now < $datum1a) {
                     $btip = true;
                 }
-            }
-            elseif ($datum2 != '') {
+            } elseif ($datum2 != '') {
                 if ($tipp_tippohne == 1 && $deftime > 0) {
                     $datum1a = mktime(substr($deftime, 0, 2), substr($deftime, 3, 2), 0, substr($datum2, 3, 2), substr($datum2, 0, 2), substr($datum2, -4));
-                }
-                else {
+                } else {
                     $datum1a = mktime(0, 0, 0, substr($datum2, 3, 2), substr($datum2, 0, 2), substr($datum2, -4));
                 }
                 if ($now < $datum1a) {
@@ -68,31 +68,27 @@ function tippaenderbar($mterm0, $datum1, $datum2) {
     return $btip;
 }
 
-function zeit($mterm0, $datum1, $datum2) {
+function zeit($mterm0, $datum1, $datum2)
+{
     global $tipp_tippohne;
     global $deftime;
     global $tipp_tippBis;
 
     if ($mterm0 > 0) {
         $zeit = $mterm0;
-    }
-    elseif ($datum1 != '') {
+    } elseif ($datum1 != '') {
         if ($tipp_tippohne == 1 && $deftime > 0) {
             $zeit = mktime(substr($deftime, 0, 2), substr($deftime, 3, 2), 0, substr($datum1, 3, 2), substr($datum1, 0, 2), substr($datum1, -4));
-        }
-        else {
+        } else {
             $zeit = mktime(0, 0, 0, substr($datum1, 3, 2), substr($datum1, 0, 2), substr($datum1, -4));
         }
-    }
-    elseif ($datum2 != '') {
+    } elseif ($datum2 != '') {
         if ($tipp_tippohne == 1 && $deftime > 0) {
             $zeit = mktime(substr($deftime, 0, 2), substr($deftime, 3, 2), 0, substr($datum2, 3, 2), substr($datum2, 0, 2), substr($datum2, -4));
-        }
-        else {
+        } else {
             $zeit = mktime(0, 0, 0, substr($datum2, 3, 2), substr($datum2, 0, 2), substr($datum2, -4));
         }
-    }
-    else {
+    } else {
         $zeit = '';
     }
     if ($zeit != '') {
@@ -100,4 +96,3 @@ function zeit($mterm0, $datum1, $datum2) {
     }
     return $zeit;
 }
-?>

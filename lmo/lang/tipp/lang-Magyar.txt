@@ -303,3 +303,15 @@
 302=Csak az összes pont megjelenítése
 303=Új fogadó regisztrált a fogadási játékra: \n\nBecenév: [nick]
 304=Hagyja üresen a mezot, ha nem akar jelszót változtatni
+306=Enter tips retroactively
+307=Choose league
+308=Tipper (nick)
+309=Edit tips
+310=No tippers for this league.
+311=Admin mode: you are entering tips for "[nick]". The time limit is lifted. Please run the evaluation again afterwards.
+312=As full administrator you can enter or change tips for a tipper after the matches have started. The time limit is lifted for you only. Every change is logged. Afterwards run the evaluation again.
+313=Back
+314=Log of retroactive entries
+315=No entries yet.
+316=Date
+317=Round

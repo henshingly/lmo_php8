@@ -28,7 +28,7 @@ $mail = lmo_mail_create($text['tipp'][92]);
 $tippResetBaseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?action=tipp&todo=getpass&xtippername2=';
 
 if ($message != '') {
-    $dumma = array();
+    $dumma = [];
     $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
     $dumma = file($pswfile);
     // Die PHP-Schutzzeile am Dateianfang ist kein Tipper-Datensatz
@@ -45,15 +45,15 @@ if ($message != '') {
     }
 
     if ($emailart == 0) {
-        for ($tippernr = $start - 1; $tippernr < $ende; $tippernr ++) {
+        for ($tippernr = $start - 1; $tippernr < $ende; $tippernr++) {
             $dummb = explode('|', $dumma[$tippernr]);
             if (isset($dummb[9], $dummb[4]) && $dummb[9] != -1 && $dummb[4] != '') {
                 $textmessage = $message;
-                $textmessage = str_replace(array('[nick]', '[pass]', '[name]'), array($dummb[0], $tippResetBaseUrl . urlencode($dummb[0]), $dummb[3]), $textmessage);
+                $textmessage = str_replace(['[nick]', '[pass]', '[name]'], [$dummb[0], $tippResetBaseUrl . urlencode($dummb[0]), $dummb[3]], $textmessage);
                 $mail->Body = $textmessage;
                 $mail->addAddress($dummb[4]);
                 if (lmo_mail_send($mail)) {
-                    $anzemail ++;
+                    $anzemail++;
                 } else {
                     echo $mail->ErrorInfo;
                 }
@@ -63,13 +63,13 @@ if ($message != '') {
         }
         echo getMessage($anzemail . ' ' . $text['tipp'][175]);
     } elseif ($emailart == 1) {
-        $tipp_textreminder1 = str_replace(array("\r\n", "\n", "\r"), array('&#10;', '&#10;', '&#10;') , $message);
+        $tipp_textreminder1 = str_replace(["\r\n", "\n", "\r"], ['&#10;', '&#10;', '&#10;'], $message);
         require(PATH_TO_LMO . '/lmo-savecfg.php');
         $now = strtotime('now');
         $then = strtotime('+' . $tage . ' day');
         if ($viewermode == 1) {
             $verz = opendir(substr($dirliga, 0, -1));
-            $dateien = array();
+            $dateien = [];
             while ($files = readdir($verz)) {
                 $ftest = 1;
                 if ($tipp_immeralle != 1) {
@@ -77,7 +77,7 @@ if ($message != '') {
                     $ftest1 = '';
                     $ftest1 = explode(',', $tipp_ligenzutippen);
                     if (isset($ftest1)) {
-                        for ($u = 0; $u < count($ftest1); $u ++) {
+                        for ($u = 0; $u < count($ftest1); $u++) {
                             if ($ftest1[$u] == substr($files, 0, -4)) {
                                 $ftest = 1;
                             }
@@ -93,39 +93,39 @@ if ($message != '') {
 
             $anzligen = count($dateien);
 
-            $teams = array_pad($array, 65, '');
+            $teams = array_pad([], 65, '');
             $teams[0] = '___';
-            $liga = array();
-            $titel = array();
-            $lmtype = array();
-            $anzst = array();
-            $spieltag = array();
-            $modus = array();
-            $spiel = array();
-            $teama = array();
-            $teamb = array();
-            $zeit = array();
+            $liga = [];
+            $titel = [];
+            $lmtype = [];
+            $anzst = [];
+            $spieltag = [];
+            $modus = [];
+            $spiel = [];
+            $teama = [];
+            $teamb = [];
+            $zeit = [];
 
             $anzspiele = 0;
 
-            for ($lnr = 0; $lnr < $anzligen; $lnr ++) {
+            for ($lnr = 0; $lnr < $anzligen; $lnr++) {
                 $file = $dirliga . $dateien[$lnr];
                 require(PATH_TO_ADDONDIR . '/tipp/lmo-tippemailviewer.php');
             }
 
-            $goaltipp = array_pad(array('_'), $anzspiele + 1, '_');
+            $goaltipp = array_pad(['_'], $anzspiele + 1, '_');
 
             for ($tippernr = $start - 1; $tippernr < $ende; $tippernr++) {
                 $dummb = explode('|', $dumma[$tippernr]);
                 if (isset($dummb[10], $dummb[4]) && $dummb[10] != -1 && $dummb[4] != '') {
-                    for ($i = 0; $i < $anzspiele; $i ++) {
+                    for ($i = 0; $i < $anzspiele; $i++) {
                         $goaltipp[$i] = '_';
                     }
                     $textmessage = $message;
                     $lliga = '';
                     $lspieltag = '';
                     $spiele = '';
-                    for ($i = 0; $i < $anzspiele; $i ++) {
+                    for ($i = 0; $i < $anzspiele; $i++) {
                         if ($i == 0 || $liga[$i] != $liga[$i - 1]) {
                             $tippfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . $liga[$i] . '_' . $dummb[0] . '.tip';
                             if (file_exists($tippfile)) {
@@ -146,11 +146,11 @@ if ($message != '') {
                                     } else {
                                         if ($spieltag[$i] == $anzst[$i]) {
                                             $j = $text[374];
-                                        } elseif ($spieltag[$i] == $anzst[$i]-1) {
+                                        } elseif ($spieltag[$i] == $anzst[$i] - 1) {
                                             $j = $text[373];
-                                        } elseif ($spieltag[$i] == $anzst[$i]-2) {
+                                        } elseif ($spieltag[$i] == $anzst[$i] - 2) {
                                             $j = $text[372];
-                                        } elseif ($spieltag[$i] == $anzst[$i]-3) {
+                                        } elseif ($spieltag[$i] == $anzst[$i] - 3) {
                                             $j = $text[371];
                                         } else {
                                             $j = $spieltag[$i] . '. ' . $text[370];
@@ -172,7 +172,7 @@ if ($message != '') {
                         $mail->Body = $textmessage;
                         $mail->addAddress($dummb[4]);
                         if (lmo_mail_send($mail)) {
-                            $anzemail ++;
+                            $anzemail++;
                         } else {
                             echo $mail->ErrorInfo;
                         }
@@ -189,7 +189,7 @@ if ($message != '') {
                 require(PATH_TO_LMO . '/lmo-openfile.php');
             }
 
-            for ($tippernr = $start - 1; $tippernr < $ende; $tippernr ++) {
+            for ($tippernr = $start - 1; $tippernr < $ende; $tippernr++) {
                 $dummb = explode('|', $dumma[$tippernr]);
                 if (isset($dummb[10], $dummb[4]) && $dummb[10] != -1 && $dummb[4] != '') {
                     $textmessage = $message;
@@ -205,10 +205,10 @@ if ($message != '') {
                             $st0 = 0;
                             $anzst1 = $anzst;
                         }
-                        for (; $st0 <= $anzst1; $st0 ++) {
+                        for (; $st0 <= $anzst1; $st0++) {
                             if ($tipp_imvorraus < 0 || $st0 <= ($stx + $tipp_imvorraus)) {
                                 if ($lmtype == 0) {
-                                    for ($dd = 0; $dd < $anzsp; $dd ++) {
+                                    for ($dd = 0; $dd < $anzsp; $dd++) {
                                         $zeit = zeit($mterm[$st0][$dd], $datum1[$st0], $datum2[$st0]);
                                         if ($now < $zeit && $then > $zeit) {
                                             if ((($st == 0 && $goaltippa[$st0][$dd] == '_') || ($st > 0 && $goaltippa[$dd] == '_')) && $teama[$st0][$dd] > 0) {
@@ -217,8 +217,8 @@ if ($message != '') {
                                         }
                                     }
                                 } elseif ($lmtype != 0) {
-                                    for ($dd = 0; $dd < $anzsp; $dd ++) {
-                                        for ($ddd = 0; $ddd < $modus[$st0]; $ddd ++) {
+                                    for ($dd = 0; $dd < $anzsp; $dd++) {
+                                        for ($ddd = 0; $ddd < $modus[$st0]; $ddd++) {
                                             $zeit = zeit($mterm[$st0][$dd][$ddd], $datum1[$st0], $datum2[$st0]);
                                             if ($now < $zeit && $then > $zeit) {
                                                 if ((($st == 0 && $goaltippa[$st0][$dd][$ddd] == '_') || ($st > 0 && $goaltippa[$dd][$ddd] == '_')) && $teama[$st0][$dd] > 0) {
@@ -253,7 +253,7 @@ if ($message != '') {
         echo getMessage($anzemail . ' ' . $text['tipp'][175]);
     } elseif ($emailart == 2 && $adressat != '') {
         $dummb = explode('|', $dumma[0]);
-        for ($i = 0; $i < $anztipper && $adressat != $dummb[0]; $i ++) {
+        for ($i = 0; $i < $anztipper && $adressat != $dummb[0]; $i++) {
             $dummb = explode('|', $dumma[$i]);
         }
         $textmessage = $message;
@@ -274,5 +274,3 @@ if ($message != '') {
         }
     }
 }
-
-?>

@@ -303,3 +303,15 @@
 302=Mostra solo i punti totali
 303=Un nuovo scommettitore si è registrato al gioco delle scommesse: \n\nNickname: [nick]
 304=Lascia il campo vuoto per non modificare la password
+306=Inserire pronostici a posteriori
+307=Scegli il campionato
+308=Pronosticatore (nick)
+309=Modifica pronostici
+310=Nessun pronosticatore per questo campionato.
+311=Modalità admin: stai inserendo i pronostici di «[nick]». Il limite di tempo è disattivato. Poi esegui di nuovo la valutazione.
+312=Come amministratore completo puoi inserire o modificare i pronostici di un giocatore dopo l'inizio delle partite. Il limite di tempo è disattivato solo per te e ogni modifica viene registrata. Poi esegui di nuovo la valutazione.
+313=Indietro
+314=Registro degli inserimenti a posteriori
+315=Nessuna voce.
+316=Data
+317=Giornata

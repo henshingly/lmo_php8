@@ -47,28 +47,28 @@ if (!file_exists($auswertfile)) {
         fclose($datei);
     }
 
-    $tippernick = array_pad($array, $anztipper + 1, '');
+    $tippernick = array_pad([], $anztipper + 1, '');
 
-    $tipppunkte = array_pad($array, $anztipper + 1, '');
-    $spielegetippt = array_pad($array, $anztipper + 1, '');
+    $tipppunkte = array_pad([], $anztipper + 1, '');
+    $spielegetippt = array_pad([], $anztipper + 1, '');
     if ($tipp_showzus == 1) {
-        $punkte1 = array_pad($array, $anztipper + 1, '');
-        $punkte2 = array_pad($array, $anztipper + 1, '');
-        $punkte3 = array_pad($array, $anztipper + 1, '');
-        $punkte6 = array_pad($array, $anztipper + 1, '');
+        $punkte1 = array_pad([], $anztipper + 1, '');
+        $punkte2 = array_pad([], $anztipper + 1, '');
+        $punkte3 = array_pad([], $anztipper + 1, '');
+        $punkte6 = array_pad([], $anztipper + 1, '');
     }
     if ($kurvenmodus == 2 || $kurvenmodus == 3) {
-        $platz = array_pad($array, $anztipper + 1, '');
+        $platz = array_pad([], $anztipper + 1, '');
     }
     if ($kurvenmodus > 2) {
-        $platz1 = array_pad($array, $anztipper + 1, '');
-        $tipppunktegesamt = array_pad($array, $anztipper + 1, '');
-        $spielegetipptgesamt = array_pad($array, $anztipper + 1, '');
+        $platz1 = array_pad([], $anztipper + 1, '');
+        $tipppunktegesamt = array_pad([], $anztipper + 1, '');
+        $spielegetipptgesamt = array_pad([], $anztipper + 1, '');
         if ($tipp_showzus == 1) {
-            $punkte1gesamt = array_pad($array, $anztipper + 1, '');
-            $punkte2gesamt = array_pad($array, $anztipper + 1, '');
-            $punkte3gesamt = array_pad($array, $anztipper + 1, '');
-            $punkte6gesamt = array_pad($array, $anztipper + 1, '');
+            $punkte1gesamt = array_pad([], $anztipper + 1, '');
+            $punkte2gesamt = array_pad([], $anztipper + 1, '');
+            $punkte3gesamt = array_pad([], $anztipper + 1, '');
+            $punkte6gesamt = array_pad([], $anztipper + 1, '');
         }
     }
     for ($i = 0; $i < $anztipper; $i++) {
@@ -96,10 +96,10 @@ if (!file_exists($auswertfile)) {
         }
     }
     if ($kurvenmodus == 2 || $kurvenmodus == 3) {
-        $taba = array_pad($array, $anzst + 1, '');
+        $taba = array_pad([], $anzst + 1, '');
     }
     if ($kurvenmodus > 2) {
-        $tabb = array_pad($array, $anzst + 1, '');
+        $tabb = array_pad([], $anzst + 1, '');
     }
 
     if ($kurvenmodus > 1) {
@@ -171,9 +171,9 @@ if (!file_exists($auswertfile)) {
 
     if ($kurvenmodus > 1 && $tipp_showstsiege == 1 && ($tipp_krit1 == 6 || $tipp_krit2 == 6 || $tipp_krit3 == 6)) {
         // Spieltagssieger ermitteln
-        $stsiege = array_pad($array, $anztipper + 1, '');
+        $stsiege = array_pad([], $anztipper + 1, '');
         if ($kurvenmodus > 2) {
-            $stsiegegesamt = array_pad($array, $anztipper + 1, '');
+            $stsiegegesamt = array_pad([], $anztipper + 1, '');
         }
         for ($a = 0; $a < $anztipper; $a++) {
             $stsiege[$a] = array_pad([''], $anzst + 1, '');
@@ -181,7 +181,7 @@ if (!file_exists($auswertfile)) {
                 $stsiegegesamt[$a] = array_pad([''], $anzst + 1, '');
             }
         }
-        $tab = array_pad($array, $endtab, '');
+        $tab = array_pad([], $endtab, '');
         for ($i = 0; $i < $anzst; $i++) {
             $tab[$i] = [''];
             for ($a = 0; $a < $anztipper; $a++) {

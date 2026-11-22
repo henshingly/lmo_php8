@@ -17,7 +17,6 @@
   *
   */
 
-
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 if (($action == 'tipp') && ($todo == 'daten')) {
     $newpage = isset($_POST['newpage']) ? trim($_POST['newpage']) : 0;
@@ -30,7 +29,7 @@ if (($action == 'tipp') && ($todo == 'daten')) {
     $xtippervereinradio = isset($_POST['xtippervereinradio']) ? trim($_POST['xtippervereinradio']) : 0;
     $xtippervereinalt = isset($_POST['xtippervereinalt']) ? trim($_POST['xtippervereinalt']) : '';
     $xtippervereinneu = isset($_POST['xtippervereinneu']) ? trim($_POST['xtippervereinneu']) : '';
-    $xtipperligen = isset($_POST['xtipperligen']) ? $_POST['xtipperligen'] : array();
+    $xtipperligen = isset($_POST['xtipperligen']) ? $_POST['xtipperligen'] : [];
     $xnews = isset($_POST['xnews']) ? '1' : '-1';
     $xremind = isset($_POST['xremind']) ? '1' : '-1';
 
@@ -40,7 +39,7 @@ if (($action == 'tipp') && ($todo == 'daten')) {
         $xtipperemail2 = $xtipperemail;
     }
 
-    $users = array('');
+    $users = [''];
     $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
 
     $users = lmo_tipper_lines($pswfile);
@@ -164,11 +163,17 @@ if (($action == 'tipp') && ($todo == 'daten')) {
         }
 
     } // end ($newpage == 1)
-?>
+    ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein'] != '') {echo ' - ' . $_SESSION['lmotipperverein'];} ?></caption>
+  <caption><?php echo $_SESSION['lmotippername'];
+    if ($_SESSION['lmotipperverein'] != '') {
+        echo ' - ' . $_SESSION['lmotipperverein'];
+    } ?></caption>
   <tr>
-    <th align="center"><?php echo $text['tipp'][106];if ($tipp_tipperimteam >= 0) {echo ' / ' . $text['tipp'][2];} ?></th>
+    <th align="center"><?php echo $text['tipp'][106];
+    if ($tipp_tipperimteam >= 0) {
+        echo ' / ' . $text['tipp'][2];
+    } ?></th>
   </tr>
 <?php
     if ($newpage != 1) { ?>
@@ -188,7 +193,7 @@ if (($action == 'tipp') && ($todo == 'daten')) {
           <tr>
             <td width="20">&nbsp;</td>
             <td class="nobr" align="right"><?php echo ' ' . $text['tipp'][15]; ?> &nbsp;</td>
-            <td class="nobr" align="left"><input class="lmo-formular-input" type="text" name="xtippernachname" size="25" maxlength="32" value="<?php echo substr($tipp_tipper_daten[3], strpos($tipp_tipper_daten[3] ,' ') + 1); ?>"> &nbsp;</td>
+            <td class="nobr" align="left"><input class="lmo-formular-input" type="text" name="xtippernachname" size="25" maxlength="32" value="<?php echo substr($tipp_tipper_daten[3], strpos($tipp_tipper_daten[3], ' ') + 1); ?>"> &nbsp;</td>
           </tr>
 <?php
         }
@@ -230,8 +235,12 @@ if (($action == 'tipp') && ($todo == 'daten')) {
             <td width="20">&nbsp;</td>
             <td>&nbsp;</td>
             <td class="nobr" align="left">
-            <input type="checkbox" name="xnews" value="1"<?php if ($tipp_tipper_daten[9] != -1) {echo ' checked';} ?>><?php echo $text['tipp'][206] ?><br>
-            <input type="checkbox" name="xremind" value="1"<?php if ($tipp_tipper_daten[10] != -1) {echo ' checked';} ?>><?php echo $text['tipp'][167] ?>
+            <input type="checkbox" name="xnews" value="1"<?php if ($tipp_tipper_daten[9] != -1) {
+                echo ' checked';
+            } ?>><?php echo $text['tipp'][206] ?><br>
+            <input type="checkbox" name="xremind" value="1"<?php if ($tipp_tipper_daten[10] != -1) {
+                echo ' checked';
+            } ?>><?php echo $text['tipp'][167] ?>
             </td>
           </tr><?php
         if ($tipp_tipperimteam >= 0) { ?>
@@ -240,22 +249,31 @@ if (($action == 'tipp') && ($todo == 'daten')) {
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" colspan="2" align="left"><input type="radio" name="xtippervereinradio" value="0"<?php if ($xtippervereinradio == 0) {echo ' checked';} ?>> <?php echo $text['tipp'][50]; ?></td>
+            <td class="nobr" colspan="2" align="left"><input type="radio" name="xtippervereinradio" value="0"<?php if ($xtippervereinradio == 0) {
+                echo ' checked';
+            } ?>> <?php echo $text['tipp'][50]; ?></td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" align="left"><input type="radio" name="xtippervereinradio" value="1"<?php if ($xtippervereinradio == 1) {echo ' checked';} ?>> <?php echo $text['tipp'][48]; ?> &nbsp;</td>
+            <td class="nobr" align="left"><input type="radio" name="xtippervereinradio" value="1"<?php if ($xtippervereinradio == 1) {
+                echo ' checked';
+            } ?>> <?php echo $text['tipp'][48]; ?> &nbsp;</td>
             <td class="nobr" align="left">
               <select name="xtippervereinalt" onChange="xtippervereinradio[1].checked=true">
 <?php
-            echo '                <option value=""'; if ($xtippervereinalt == '') {echo ' selected';} echo '>' . $text['tipp'][51] . '</option>';
+            echo '                <option value=""';
+            if ($xtippervereinalt == '') {
+                echo ' selected';
+            } echo '>' . $text['tipp'][51] . '</option>';
             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippnewteams.php'); ?>
               </select>
             </td>
           </tr>
           <tr>
             <td width="20">&nbsp;</td>
-            <td class="nobr" align="left"><input type="radio" name="xtippervereinradio" value="2"<?php if ($xtippervereinradio == 2) {echo ' checked';} ?>><?php echo $text['tipp'][49]; ?></td>
+            <td class="nobr" align="left"><input type="radio" name="xtippervereinradio" value="2"<?php if ($xtippervereinradio == 2) {
+                echo ' checked';
+            } ?>><?php echo $text['tipp'][49]; ?></td>
             <td class="nobr" align="left"><input class="lmo-formular-input" type="text" name="xtippervereinneu" size="25" maxlength="32" value="<?php echo $xtippervereinneu; ?>" onFocus="xtippervereinradio[2].checked=true"></td>
           </tr><?php
         }
@@ -285,4 +303,4 @@ if (($action == 'tipp') && ($todo == 'daten')) {
 </table>
 <?php
 }
-$file = ''; ?>
+$file = ''; ?>

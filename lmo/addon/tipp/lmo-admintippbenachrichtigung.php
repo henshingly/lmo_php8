@@ -21,7 +21,7 @@ require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 require_once(PATH_TO_LMO . '/lmo-smtp.php');
 
 $mail = lmo_mail_create($text['tipp'][92]);
-$tipp_mailtext = str_replace(array('\n', '[nick]'), array("\n", $xtippernick), $text['tipp'][303]);
+$tipp_mailtext = str_replace(['\n', '[nick]'], ["\n", $xtippernick], $text['tipp'][303]);
 
 $mail->Subject = $text['tipp'][13] . ' (' . $_SERVER['HTTP_HOST'] . ')';
 
@@ -30,4 +30,3 @@ $mail->addAddress($aadr, $text['tipp'][92]);
 if (!lmo_mail_send($mail)) {
     echo $mail->ErrorInfo;
 }
-?>

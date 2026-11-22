@@ -303,3 +303,15 @@
 302=Vise ny total poengstilling
 303=En ny tpper har registrert seg for tippespillet: \n\nNick: [nick]
 304=La feltet stå tomt for å unngå å endre passordet
+306=Legg inn tips i etterkant
+307=Velg liga
+308=Tipper (kallenavn)
+309=Rediger tips
+310=Ingen tippere for denne ligaen.
+311=Adminmodus: du legger inn tips for «[nick]». Tidsgrensen er opphevet. Kjør evalueringen på nytt etterpå.
+312=Som full administrator kan du legge inn eller endre en tippers tips etter at kampene har startet. Tidsgrensen er bare opphevet for deg, og hver endring logges. Kjør evalueringen på nytt etterpå.
+313=Tilbake
+314=Logg over etterregistreringer
+315=Ingen oppføringer ennå.
+316=Dato
+317=Runde

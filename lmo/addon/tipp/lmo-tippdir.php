@@ -17,15 +17,14 @@
   *
   */
 
-
-$addi = $_SERVER['PHP_SELF'] . "?action=tipp&amp;todo=edit&amp;file=";
+$addi = $_SERVER['PHP_SELF'] . '?action=tipp&amp;todo=edit&amp;file=';
 if ($ftype != '') {
-    $verz=opendir(substr(PATH_TO_ADDONDIR."/tipp/".$tipp_dirtipp,0,-1));
-    $dummy=array();
+    $verz = opendir(substr(PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp, 0, -1));
+    $dummy = [];
     if ($verz !== false) {
-        while ($files=readdir($verz)) {
-            if (substr($files,-5-strlen($_SESSION['lmotippername']))=="_".$_SESSION['lmotippername'].$ftype) {
-                array_push($dummy,$files);
+        while ($files = readdir($verz)) {
+            if (substr($files, -5 - strlen($_SESSION['lmotippername'])) == '_' . $_SESSION['lmotippername'] . $ftype) {
+                array_push($dummy, $files);
             }
         }
         closedir($verz);
@@ -38,7 +37,7 @@ if ($ftype != '') {
     $tt1 = '';
     echo '<ul>';
     for ($k = 0; $k < count($dummy); $k++) {
-        $dummy[$k] = substr($dummy[$k], 0, -5 -strlen($_SESSION['lmotippername'])) . '.l98';
+        $dummy[$k] = substr($dummy[$k], 0, -5 - strlen($_SESSION['lmotippername'])) . '.l98';
         $sekt = '';
         $t0 = '';
         $t1 = '';
@@ -60,7 +59,7 @@ if ($ftype != '') {
                             $t0 = $wert;
                         }
                         if ($schl == 'Actual') {
-                            $t1=$wert;
+                            $t1 = $wert;
                         }
                         if ($schl == 'Teams') {
                             $t4 = $wert;
@@ -82,7 +81,7 @@ if ($ftype != '') {
                 $t0 = $text[507] . $j;
             }
             if ($t1 != '') {
-                if ($t2==$text[2]) {
+                if ($t2 == $text[2]) {
                     $t3 = ' / ' . $t1 . '. ' . $t2;
                 } else {
                     $t5 = strlen(decbin($t4 - 1));
@@ -143,4 +142,3 @@ if ($ftype != '') {
 }
 $tippfile = '';
 clearstatcache();
-?>

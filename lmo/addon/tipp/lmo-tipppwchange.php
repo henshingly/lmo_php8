@@ -24,7 +24,7 @@ $newpage = isset($_REQUEST['newpage']) ? 1 : 0;
 
 require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tipptest.php');
 if (($action == 'tipp') && ($todo == 'pwchange')) {
-    $users = array('');
+    $users = [''];
     $pswfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_tippauthtxt;
     $datei = fopen($pswfile, 'rb');
     while ($datei && !feof($datei)) {
@@ -92,14 +92,17 @@ if (($action == 'tipp') && ($todo == 'pwchange')) {
         $users[$save] = $dummb[0] . '|' . $hashedPassNeu . '|' . $dummb[2] . '|' . $dummb[3] . '|' . $dummb[4] . '|' . $dummb[5] . '|' . $dummb[6] . '|' . $dummb[7] . '|' . $dummb[8] . '|' . $dummb[9] . '|' . $dummb[10] . '|EOL';
         require(PATH_TO_ADDONDIR . '/tipp/lmo-tippsaveauth.php');
     }
-?>
+    ?>
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
-  <caption><?php echo $_SESSION['lmotippername']; if ($_SESSION['lmotipperverein'] != '') {echo ' - ' . $_SESSION['lmotipperverein'];} ?></caption>
+  <caption><?php echo $_SESSION['lmotippername'];
+    if ($_SESSION['lmotipperverein'] != '') {
+        echo ' - ' . $_SESSION['lmotipperverein'];
+    } ?></caption>
   <tr>
     <th align="center"><?php echo $text['tipp'][107]; ?></th>
   </tr>
 <?php
-    if ($newpage != 1) { ?>
+      if ($newpage != 1) { ?>
   <tr>
     <td align="center">
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -132,7 +135,7 @@ if (($action == 'tipp') && ($todo == 'pwchange')) {
     </td>
   </tr>
 <?php
-    }
+      }
     if ($newpage == 1) { /* erfolgreich */?>
   <tr>
     <td align="center"><?php echo getMessage($text['tipp'][121]); ?></td>

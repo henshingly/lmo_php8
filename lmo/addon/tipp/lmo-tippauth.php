@@ -52,7 +52,7 @@ if ($action == 'tipp') {
                         // Nick gefunden
                         $_SESSION['lmotipperok'] = -1;
                         $storedPass = $fileinfo[1];
-                        $inputPass  = $_SESSION['lmotipperpass'];
+                        $inputPass = $_SESSION['lmotipperpass'];
                         $loginOk = false;
                         // Prüfen ob Hash vorhanden
                         if (password_get_info($storedPass)['algo'] !== null) {
@@ -76,7 +76,7 @@ if ($action == 'tipp') {
                         }
                         // Login erfolgreich
                         if ($loginOk) {
-                            $lmotippername=$_SESSION['lmotippername'];
+                            $lmotippername = $_SESSION['lmotippername'];
                             $lmotipperverein = $fileinfo[5];
                             $_SESSION['lmotipperok'] = $fileinfo[2];
                         }
@@ -101,7 +101,7 @@ if ($action == 'tipp') {
         if (($todo == 'wert' && $all != 1) || $todo == 'fieber' || $todo == 'edit') {
             require(PATH_TO_LMO . '/lmo-openfilename.php');
         } elseif ($todo == 'einsicht') {
-            $lmo_only_st=true;
+            $lmo_only_st = true;
             require(PATH_TO_LMO . '/lmo-openfile.php');
         } elseif ($todo == 'tabelle') {
             require_once(PATH_TO_LMO . '/lmo-openfile.php');
@@ -109,24 +109,32 @@ if ($action == 'tipp') {
         // Fehlgeschlagenes Laden (ungültige/nicht vorhandene Liga) fängt lmo-openfile.php bereits ab, indem es $file auf '' zurück setzt.
         // $todo muss hier ebenfalls zurückgesetzt werden, sonst würde der nachgelagerte Block unten trotzdem die content-spezifische Datei
         // (z.B. lmo-tipptabelle.php) mit undefinierten Variablen aufrufen.
-        if (in_array($todo, array('edit', 'einsicht', 'tabelle', 'wert', 'fieber'), true) && empty($file)) {
+        if (in_array($todo, ['edit', 'einsicht', 'tabelle', 'wert', 'fieber'], true) && empty($file)) {
             $todo = '';
         }
 
         include(PATH_TO_ADDONDIR . '/tipp/lmo-tippmenu.php');
-?>
+        ?>
  <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0] . '&nbsp;'; if (isset($titel)) {echo $titel;} ?></h1></td>
+    <td colspan="3" align="center"><h1><?php echo $text['tipp'][0] . '&nbsp;';
+        if (isset($titel)) {
+            echo $titel;
+        } ?></h1></td>
   </tr>
   <tr>
     <td colspan="3" align="center"><?php
-        if ($todo == 'wert') {require(PATH_TO_ADDONDIR . '/tipp/lmo-tippwert.php');}
-        elseif ($todo == 'fieber') {require(PATH_TO_ADDONDIR . '/tipp/lmo-tippfieber.php');}
-        elseif ($todo == 'einsicht') {require(PATH_TO_ADDONDIR . '/tipp/lmo-tippeinsicht.php');}
-        elseif ($todo == 'tabelle') {require(PATH_TO_ADDONDIR . '/tipp/lmo-tipptabelle.php');}
-        elseif ($todo == 'info') {require(PATH_TO_LMO . '/lmo-showinfo.php');}
-        else { ?>
+            if ($todo == 'wert') {
+                require(PATH_TO_ADDONDIR . '/tipp/lmo-tippwert.php');
+            } elseif ($todo == 'fieber') {
+                require(PATH_TO_ADDONDIR . '/tipp/lmo-tippfieber.php');
+            } elseif ($todo == 'einsicht') {
+                require(PATH_TO_ADDONDIR . '/tipp/lmo-tippeinsicht.php');
+            } elseif ($todo == 'tabelle') {
+                require(PATH_TO_ADDONDIR . '/tipp/lmo-tipptabelle.php');
+            } elseif ($todo == 'info') {
+                require(PATH_TO_LMO . '/lmo-showinfo.php');
+            } else { ?>
       <form name="lmotippedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="hidden" name="action" value="tipp">
         <input type="hidden" name="file" value="<?php echo $file; ?>">
@@ -136,31 +144,31 @@ if ($action == 'tipp') {
             <th colspan="2"><?php echo $text['tipp'][44]; ?></th>
           </tr>
 <?php
-            if ($_SESSION['lmotipperok'] == -2) { ?>
+                if ($_SESSION['lmotipperok'] == -2) { ?>
           <tr>
             <td align="right" colspan="3"><?php echo getMessage($text['tipp'][43], true); ?></td>
           </tr>
 <?php
-            }
-            if (isset($xtippersub) && $_SESSION['lmotipperok'] == '' && !isset($emailbody)) { ?>
+                }
+                if (isset($xtippersub) && $_SESSION['lmotipperok'] == '' && !isset($emailbody)) { ?>
           <tr>
             <td align="right" colspan="3"><?php echo getMessage($text['tipp'][148], true); ?></td>
           </tr>
 <?php
-            } ?>
+                } ?>
           <tr>
             <td align="right"><acronym title="<?php echo $text[307]; ?>"><?php echo '&nbsp;' . $text['tipp'][23]; ?></acronym></td>
             <td align="left"><input class="lmo-formular-input" type="text" name="xtippername" size="16" maxlength="32" value="<?php echo $_SESSION['lmotippername']; ?>"></td>
           </tr>
 <?php
-            // Passwort falsch
-            if ($_SESSION['lmotipperok'] == -1){
-                $xtippername2 = $_SESSION['lmotippername']; ?>
+                // Passwort falsch
+                if ($_SESSION['lmotipperok'] == -1) {
+                    $xtippername2 = $_SESSION['lmotippername']; ?>
           <tr>
             <td align="right" colspan="3"><?php echo getMessage($text['tipp'][42], true); ?></td>
           </tr>
 <?php
-            } ?>
+                } ?>
           <tr>
             <td align="right"><acronym title="<?php echo $text[309]; ?>"><?php echo '&nbsp;' . $text[308]; ?></acronym></td>
             <td align="left"><input class="lmo-formular-input" type="password" name="xtipperpass" size="16" maxlength="32" value="<?php echo $_SESSION['lmotipperpass']; ?>"></td>
@@ -201,28 +209,32 @@ if ($action == 'tipp') {
         <tr>
           <td colspan="3" align="left">
             <ul><?php
-            $ftype = '.l98';
-            require(PATH_TO_ADDONDIR . '/tipp/lmo-tippnewdir.php');
-            $dummy =  explode('|', $tt1);
-            $ftest2 = explode('|', $tt0);
-            if (isset($dummy) && isset($ftest2)) {
-                for ($u = 0; $u < count($dummy); $u++) {
-                    if ($dummy[$u] != '' && $ftest2[$u] != '') {
-                        $dummy[$u] = substr($dummy[$u], 0, -4);
-                        $auswertfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'auswert/' . $dummy[$u] . '.aus';
-                        if ($tipp_nurgesamt == 0) { ?>
-              <li class="lmoadminli"><a href="<?php echo $addw . $dummy[$u] . '.l98'; ?>"><?php echo $ftest2[$u]; ?></a><?php if (file_exists($auswertfile)) {echo '<br><small>' . $text['tipp'][83] . ': ' . date('d.m.Y H:i', filemtime($auswertfile)) . '</small>';} ?></li>
+                $ftype = '.l98';
+                require(PATH_TO_ADDONDIR . '/tipp/lmo-tippnewdir.php');
+                $dummy = explode('|', $tt1);
+                $ftest2 = explode('|', $tt0);
+                if (isset($dummy) && isset($ftest2)) {
+                    for ($u = 0; $u < count($dummy); $u++) {
+                        if ($dummy[$u] != '' && $ftest2[$u] != '') {
+                            $dummy[$u] = substr($dummy[$u], 0, -4);
+                            $auswertfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'auswert/' . $dummy[$u] . '.aus';
+                            if ($tipp_nurgesamt == 0) { ?>
+              <li class="lmoadminli"><a href="<?php echo $addw . $dummy[$u] . '.l98'; ?>"><?php echo $ftest2[$u]; ?></a><?php if (file_exists($auswertfile)) {
+                  echo '<br><small>' . $text['tipp'][83] . ': ' . date('d.m.Y H:i', filemtime($auswertfile)) . '</small>';
+              } ?></li>
 <?php
+                            }
                         }
                     }
                 }
-            }
-            if ($tipp_gesamt == 1 && ($u > 2 || $tipp_nurgesamt == 1 && $u == 2)) {
-                $auswertfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'auswert/gesamt.aus'; ?>
-              <li class="lmoadminli"><a href="<?php echo $addw . '&amp;all=1'; ?>"><strong><?php echo $text['tipp'][25]; ?></strong></a><?php if (file_exists($auswertfile)) {echo '<br><small>' . $text['tipp'][83] . ': ' . date('d.m.Y H:i', filemtime($auswertfile)) . '</small>';} ?></li>
+                if ($tipp_gesamt == 1 && ($u > 2 || $tipp_nurgesamt == 1 && $u == 2)) {
+                    $auswertfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'auswert/gesamt.aus'; ?>
+              <li class="lmoadminli"><a href="<?php echo $addw . '&amp;all=1'; ?>"><strong><?php echo $text['tipp'][25]; ?></strong></a><?php if (file_exists($auswertfile)) {
+                  echo '<br><small>' . $text['tipp'][83] . ': ' . date('d.m.Y H:i', filemtime($auswertfile)) . '</small>';
+              } ?></li>
 <?php
-            }
-            $auswertfile = '';?>
+                }
+                $auswertfile = '';?>
             </ul>
           </td>
         </tr>
@@ -239,15 +251,15 @@ if ($action == 'tipp') {
             <th colspan="3"><?php echo $text['tipp'][74]; ?></th>
           </tr>
 <?php
-            if ($_SESSION['lmotipperok'] == -3) { ?>
+                if ($_SESSION['lmotipperok'] == -3) { ?>
           <tr>
-            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][43],true); ?></td>
+            <td align="right" colspan="3"><?php echo getMessage($text['tipp'][43], true); ?></td>
           </tr>
 <?php
-            } ?>
+                } ?>
           <tr>
             <td align="right"><acronym title="<?php echo $text[307]; ?>"><?php echo '&nbsp;' . $text['tipp'][23] . '&nbsp;' . $text['tipp'][218] . '&nbsp;' . $text['tipp'][219]; ?></acronym></td>
-            <td align="left"><input class="lmo-formular-input" type="text" name="xtippername2" size="16" maxlength="32" value="<?php echo (isset($xtippername2) ? $xtippername2 : ''); ?>"></td>
+            <td align="left"><input class="lmo-formular-input" type="text" name="xtippername2" size="16" maxlength="32" value="<?php echo(isset($xtippername2) ? $xtippername2 : ''); ?>"></td>
           </tr>
           <tr>
             <td align="right"><?php echo $text['tipp'][75]; ?></td>
@@ -258,9 +270,9 @@ if ($action == 'tipp') {
     </td>
   </tr>
 <?php
-        } ?>
+            } ?>
 </table>
 <?php
     }
 }
-?>
+?>

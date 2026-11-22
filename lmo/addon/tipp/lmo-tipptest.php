@@ -17,8 +17,7 @@
   *
   */
 
-if ( !defined('LMO_TIPPAUTH') ) {
-  die();
-  exit;
+if (!defined('LMO_TIPPAUTH')) {
+    die();
+    exit;
 }
-?>

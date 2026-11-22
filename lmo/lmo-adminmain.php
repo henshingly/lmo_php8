@@ -45,7 +45,7 @@ if ($action == 'admin') {
     if (version_compare(PHP_VERSION, $min_php_version, '<')) echo getMessage('This LMO requires a web server with PHP ' . $min_php_version . ' or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>' . PHP_VERSION . '</mark>', $warning = $warning + 1, true);
     if (@file_exists(PATH_TO_LMO . '/install/install.php') && @is_readable(PATH_TO_LMO . '/install/install.php')) {
         $install_notice = isset($text[5013]) ? $text[5013] : 'The install folder still exists. After an update, please start the update installation and then delete the folder (or set its chmod to 000).';
-        echo getMessage($install_notice, $warning = $warning + 1, true);
+        echo getMessage($install_notice, $warning = $warning + 1,true);
         if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 2) {
             // Nach einem Update per FTP: Installer starten, der fehlende Dateien/Einstellungen ergänzt
             $install_button = isset($text[5014]) ? $text[5014] : 'Start update installation';
@@ -109,7 +109,7 @@ if ($action == 'admin') {
         echo '&nbsp;' . "\n";
         /*Tippspiel-Addon*/
         if ($eintippspiel == 1) {
-            if (($todo != 'tipp') && ($todo != 'tippemail') && ($todo != 'tippuser') && ($todo != 'tippuseredit') && ($todo != 'tippoptions')) {
+            if (($todo != 'tipp') && ($todo != 'tippemail') && ($todo != 'tippuser') && ($todo != 'tippuseredit') && ($todo != 'tippoptions') && ($todo != 'tippnachtrag')) {
                 echo '      <a href="' . $adda . 'tipp" onclick="return chklmolink();" title="' . $text['tipp'][57] . '">' . $text['tipp'][0] . '</a>';
             } else {
                 echo '      ' . $text['tipp'][0];
@@ -180,6 +180,7 @@ if ($action == 'admin') {
         $tipp_addr_auswertung = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=tipp';
         $tipp_addr_email = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=tippemail';
         $tipp_addr_user = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=tippuser';
+        $tipp_addr_nachtrag = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=tippnachtrag';
         $tipp_addr_optionen = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=tippoptions';
         /*Tippspiel-Addon*/
         /*Viewer-Addon*/
@@ -232,6 +233,8 @@ if ($action == 'admin') {
             require(PATH_TO_ADDONDIR.'/tipp/lmo-admintippuser.php');
         } elseif ($todo == 'tippuseredit') {
             require(PATH_TO_ADDONDIR.'/tipp/lmo-admintippuseredit.php');
+        } elseif ($todo == 'tippnachtrag') {
+            require(PATH_TO_ADDONDIR . '/tipp/lmo-admintippnachtrag.php');
         } elseif ($todo == 'tippoptions') {
             require(PATH_TO_ADDONDIR.'/tipp/lmo-admintippoptions.php');
             /*Tippspiel-Addon*/

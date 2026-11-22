@@ -303,3 +303,15 @@
 302=Mostrar apenas total de pontos
 303=Um novo apostador registou-se no jogo de apostas: \n\nAlcunha: [nick]
 304=Deixe o campo em branco para não alterar a palavra-passe
+306=Introduzir palpites retroativamente
+307=Escolher liga
+308=Palpiteiro (nick)
+309=Editar palpites
+310=Não há palpiteiros para esta liga.
+311=Modo administrador: está a introduzir palpites para «[nick]». O limite de tempo está desativado. Depois, execute novamente a avaliação.
+312=Como administrador completo pode introduzir ou alterar palpites de um jogador depois de os jogos terem começado. O limite de tempo só é levantado para si e cada alteração é registada. Depois, execute novamente a avaliação.
+313=Voltar
+314=Registo das entradas retroativas
+315=Ainda sem entradas.
+316=Data
+317=Jornada

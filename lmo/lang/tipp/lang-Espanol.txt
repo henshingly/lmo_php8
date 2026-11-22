@@ -303,3 +303,15 @@
 302=Muestre Solamente Las Estadísticas Totales De Puntos
 303=Un Nuevo Jugador se ha Registrado para el Juego de Predicción: \n\nNombre de Usuario: [nick]
 304=Deje el campo en blanco para evitar cambiar la contraseña
+306=Introducir pronósticos a posteriori
+307=Elegir liga
+308=Pronosticador (apodo)
+309=Editar pronósticos
+310=No hay pronosticadores para esta liga.
+311=Modo administrador: está introduciendo pronósticos para «[nick]». El límite de tiempo está desactivado. Después, vuelva a ejecutar la evaluación.
+312=Como administrador completo puede introducir o cambiar los pronósticos de un jugador una vez comenzados los partidos. El límite de tiempo solo se levanta para usted y cada cambio queda registrado. Después, vuelva a ejecutar la evaluación.
+313=Volver
+314=Registro de entradas a posteriori
+315=Aún no hay entradas.
+316=Fecha
+317=Jornada

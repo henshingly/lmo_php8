@@ -18,7 +18,6 @@
   *
   */
 
-
 if ($file != '' && $tipp_tipptabelle1 == 1) {
     $endtab = $st;
     if ($endtab == 0) {
@@ -46,8 +45,8 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
                 $endtab--;
                 require(PATH_TO_ADDONDIR . '/tipp/lmo-tippcalctable.php');
                 $endtab++;
-                $platz1 = array('');
-                $platz1 = array_pad($array, $anzteams + 1, '');
+                $platz1 = [''];
+                $platz1 = array_pad([], $anzteams + 1, '');
                 for ($x = 0; $x < $anzteams; $x++) {
                     $x3 = intval(substr($tab0[$x], 42));
                     $platz1[$x3] = $x + 1;
@@ -58,7 +57,7 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
             // alle Tipper
             $tabdat = '';
             $verz = opendir(PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp);
-            $dummy = array();
+            $dummy = [];
             $liga = substr($file, 0, -4);
             while ($files = readdir($verz)) {
                 if (strtolower(substr($files, 0, strrpos($files, '_'))) == strtolower($liga) && strtolower(substr($files, -4)) == '.tip') {
@@ -88,8 +87,8 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
     // Bisher lief der Code trotzdem weiter und griff auf das nicht existierende $tab0 zu, was zu einer Kaskade von
     // "Undefined variable/array key"-Warnungen und einer sinnlosen Nullen-Tabelle führte. Jetzt wird die Tabelle in diesem Fall einfach ausgelassen.
     if (isset($tab0)) {
-        $platz0 = array('');
-        $platz0 = array_pad($array, $anzteams + 1, '');
+        $platz0 = [''];
+        $platz0 = array_pad([], $anzteams + 1, '');
         for ($x = 0; $x < $anzteams; $x++) {
             $x3 = intval(substr($tab0[$x], 42));
             $platz0[$x3] = $x + 1;
@@ -109,49 +108,72 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
 <table class="lmoInner" cellspacing='0' cellpadding='0' border='0'>
 <?php
         if ($nick != '') { ?>
-  <caption><?php if ($_SESSION['lmotipperok'] == 5) {echo $_SESSION['lmotippername'];if ($_SESSION['lmotipperverein'] != '') {echo ' - ' . $_SESSION['lmotipperverein'];}} else {echo $text['tipp'][158];} ?></caption>
+  <caption><?php if ($_SESSION['lmotipperok'] == 5) {
+      echo $_SESSION['lmotippername'];
+      if ($_SESSION['lmotipperverein'] != '') {
+          echo ' - ' . $_SESSION['lmotipperverein'];
+      }
+  } else {
+      echo $text['tipp'][158];
+  } ?></caption>
 <?php
             $hoy1 = 1;
             //  if ($tabtype == 3) {$hoy1 = ($anzst / 2 + 1);}
-            if ($tabtype!=3 && $tabtype!=4) { ?>
+            if ($tabtype != 3 && $tabtype != 4) { ?>
   <tr>
     <td align="center"><?php include(PATH_TO_LMO . '/lmo-spieltagsmenu.php'); ?></td>
   </tr>
 <?php
             }
         } /* ende if ($nick != '') */
-?>
+        ?>
   <tr>
-    <th class="nobr" align="center"><?php if ($nick == $_SESSION['lmotippername'] && $nick != '') {echo $text['tipp'][173];} elseif ($nick != '') {echo $text['tipp'][181] . ' ' . $nick;} else {echo $text['tipp'][184];} ?></th>
+    <th class="nobr" align="center"><?php if ($nick == $_SESSION['lmotippername'] && $nick != '') {
+        echo $text['tipp'][173];
+    } elseif ($nick != '') {
+        echo $text['tipp'][181] . ' ' . $nick;
+    } else {
+        echo $text['tipp'][184];
+    } ?></th>
   </tr>
   <tr>
     <td align="center">
       <table class="lmoInner" cellspacing='0' cellpadding='0' border='0'><?php
         if ($nick != '') { ?>
             <caption><?php
-            if ($tabtype != '0') { ?><a href="<?php echo $addt1 . '0'?>" title="<?php echo $text[27]; ?>"><?php echo $text[16]; ?></a><?php } else {echo $text[16];} ?>&nbsp;<?php
-            if ($tabtype != '1') { ?><a href="<?php echo $addt1 . '1'?>" title="<?php echo $text[28]; ?>"><?php echo $text[41]; ?></a><?php } else {echo $text[41];} ?>&nbsp;<?php
-            if ($tabtype != '2') { ?><a href="<?php echo $addt1 . '2'?>" title="<?php echo $text[29]; ?>"><?php echo $text[42]; ?></a><?php } else {echo $text[42];} ?>&nbsp;<?php
+            if ($tabtype != '0') { ?><a href="<?php echo $addt1 . '0'?>" title="<?php echo $text[27]; ?>"><?php echo $text[16]; ?></a><?php } else {
+                echo $text[16];
+            } ?>&nbsp;<?php
+            if ($tabtype != '1') { ?><a href="<?php echo $addt1 . '1'?>" title="<?php echo $text[28]; ?>"><?php echo $text[41]; ?></a><?php } else {
+                echo $text[41];
+            } ?>&nbsp;<?php
+            if ($tabtype != '2') { ?><a href="<?php echo $addt1 . '2'?>" title="<?php echo $text[29]; ?>"><?php echo $text[42]; ?></a><?php } else {
+                echo $text[42];
+            } ?>&nbsp;<?php
             if ($einhinrueck == 1) {
-                if ($tabtype != '4') { ?><a href="<?php echo $addt1 . '4'?>" title="<?php echo $text[4003]; ?>"><?php echo $text[4003]; ?></a><?php } else {echo $text[4003];} ?>&nbsp;<?php
-                if ($tabtype != '3') { ?><a href="<?php echo $addt1 . '3'?>" title="<?php echo $text[4002]; ?>"><?php echo $text[4002]; ?></a><?php } else {echo $text[4002];}
+                if ($tabtype != '4') { ?><a href="<?php echo $addt1 . '4'?>" title="<?php echo $text[4003]; ?>"><?php echo $text[4003]; ?></a><?php } else {
+                    echo $text[4003];
+                } ?>&nbsp;<?php
+                if ($tabtype != '3') { ?><a href="<?php echo $addt1 . '3'?>" title="<?php echo $text[4002]; ?>"><?php echo $text[4002]; ?></a><?php } else {
+                    echo $text[4002];
+                }
             } ?></caption>
     <?php
         } /* ende if ($nick != '')*/
-?>
+        ?>
         <tr>
           <th align="left" colspan="6"> <?php echo $tabdat; ?>&nbsp;</th>
           <th>&nbsp;</th>
           <th class="nobr" align="right"> <?php echo $text[33]; ?>&nbsp;</th>
           <th class="nobr" align="right"> <?php echo $text[34]; ?>&nbsp;</th><?php
-        if ($hidr != 1) { ?>
+                if ($hidr != 1) { ?>
           <th class="nobr" align="right"> <?php echo $text[35]; ?>&nbsp;</th><?php
-        } ?>
+                } ?>
           <th class="nobr" align="right"> <?php echo $text[36]; ?>&nbsp;</th><?php
-        if ($tabpkt == 0) { ?>
+                if ($tabpkt == 0) { ?>
           <th>&nbsp;</th>
           <th class="nobr" <?php echo $dummy; ?>> <?php echo $text[37]; ?>&nbsp;</th><?php
-        }
+                }
         if ($tipp_tippmodus == 1) { ?>
           <th>&nbsp;</th>
           <th class="nobr" colspan='3' align="center"> <?php echo $text[38]; ?> </th>
@@ -164,7 +186,7 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
           <th class="nobr" align="right"><?php echo $text[37] . '/' . $text[33]; ?></th>
         </tr><?php
         $j = 1;
-       for ($x = 1; $x <= $anzteams; $x++) {
+        for ($x = 1; $x <= $anzteams; $x++) {
             $i = intval(substr($tab0[$x - 1], 42));
             if ($i == $favteam) {
                 $dummy = '<strong>';
@@ -244,8 +266,9 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
                         $lmo_tabellennotiz .= ':' . ($strafm[$i] < 0 ? '+' . ((-1) * applyFactor($strafm[$i], $pointsfaktor)) : ((-1) * applyFactor($strafm[$i], $pointsfaktor)));
                     }
                     //Ab Spieltag
-                    if ($strafdat[$i] != 0)
+                    if ($strafdat[$i] != 0) {
                         $lmo_tabellennotiz .= '<br>' . $text[524] . '&nbsp;' . $text[2] . '&nbsp;' . $strafdat[$i] . '<br>';
+                    }
                 }
                 //Straf-/Bonustore
                 if ($torkorrektur1[$i] != 0 || $torkorrektur2[$i] != 0) {
@@ -256,8 +279,9 @@ if ($file != '' && $tipp_tipptabelle1 == 1) {
                     //Gegentore
                     $lmo_tabellennotiz .= $torkorrektur2[$i] < 0 ? '+' . ((-1) * applyFactor($torkorrektur2[$i], $goalfaktor)) : ((-1) * applyFactor($torkorrektur2[$i], $goalfaktor));
                     //Ab Spieltag
-                    if ($strafdat[$i] != 0)
+                    if ($strafdat[$i] != 0) {
                         $lmo_tabellennotiz .= '<br>' . $text[524] . '&nbsp;' . $text[2] . '&nbsp;' . $strafdat[$i] . '<br>';
+                    }
                 }
                 //Teamnotizen
                 if ($teamn[$i] != '') {
@@ -339,14 +363,14 @@ if ($tipp_wertverein == 1 && $tabtype == 0) { ?>
 <?php
     $st = $endtab;
     if ($nick != '') {
-        $m=0;
-        $auswertfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'auswert/vereine/' . substr($file, 0, - 4) . '_' . $nick . '.ver';
+        $m = 0;
+        $auswertfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'auswert/vereine/' . substr($file, 0, -4) . '_' . $nick . '.ver';
         if (($endtab > 1) && ($tabtype == 0) && ($tabdat != '')) {
             $endtab--;
             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippcalcwertverein.php');
 
-            $platz1 = array('');
-            $platz1 = array_pad($array, $anzteams + 1, '');
+            $platz1 = [''];
+            $platz1 = array_pad([], $anzteams + 1, '');
             for ($x = 0; $x < $anzteams; $x++) {
                 $x3 = intval(substr($tab0[$x], 25));
                 $platz1[$x3] = $x + 1;
@@ -357,10 +381,10 @@ if ($tipp_wertverein == 1 && $tabtype == 0) { ?>
     } elseif ($tipp_tipptabelle == 1) {      // alle Tipper
         $tabdat = '';
         $verz = opendir(PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'auswert/vereine/');
-        $dummy = array();
+        $dummy = [];
         $liga = substr($file, 0, -4);
         while ($files = readdir($verz)) {
-            if (strtolower(substr($files, 0, strrpos($files, '_'))) == strtolower($liga) && strtolower(substr($files, - 4)) == '.ver') {
+            if (strtolower(substr($files, 0, strrpos($files, '_'))) == strtolower($liga) && strtolower(substr($files, -4)) == '.ver') {
                 array_push($dummy, $files);
             }
         }
@@ -368,7 +392,7 @@ if ($tipp_wertverein == 1 && $tabtype == 0) { ?>
         $anztipper = count($dummy);
         for ($m = 0; $m < $anztipper; $m++) {
             $nick = substr(substr($dummy[$m], strrpos($dummy[$m], '_') + 1), 0, -4);
-            $auswertfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'auswert/vereine/' . substr($file, 0, - 4) . '_' . $nick . '.ver';
+            $auswertfile = PATH_TO_ADDONDIR . '/tipp/' . $tipp_dirtipp . 'auswert/vereine/' . substr($file, 0, -4) . '_' . $nick . '.ver';
             require(PATH_TO_ADDONDIR . '/tipp/lmo-tippcalcwertverein.php');
         }
         $nick = '';
@@ -377,11 +401,11 @@ if ($tipp_wertverein == 1 && $tabtype == 0) { ?>
     // PHP8-Fix: siehe Kommentar weiter oben - auch hier (Vereinstabelle) wird $tab0 nur gesetzt, wenn ein Tipper bzw. "alle Tipper" ausgewertet wurde;
     // andernfalls gibt es nichts anzuzeigen.
     if (isset($tab0)) {
-        $platz0 = array('');
+        $platz0 = [''];
         if (!isset($anzteams)) {
-            $anzteams=0;
+            $anzteams = 0;
         }
-        $platz0 = array_pad($array, $anzteams+1, '');
+        $platz0 = array_pad([], $anzteams + 1, '');
         for ($x = 0; $x < $anzteams; $x++) {
             $x3 = intval(substr($tab0[$x], 25));
             $platz0[$x3] = $x + 1;
@@ -390,20 +414,31 @@ if ($tipp_wertverein == 1 && $tabtype == 0) { ?>
     <td align="center">
       <table class="lmoInner" cellspacing='0' cellpadding='0' border='0'>
         <tr>
-          <th colspan='3'><?php $dummy = ' align="right"';echo $tabdat; ?></th>
+          <th colspan='3'><?php $dummy = ' align="right"';
+        echo $tabdat; ?></th>
           <th width='2'>&nbsp;</th>
           <th class="nobr" <?php echo $dummy; ?>><?php echo $text[33]; /* Spiele getippt*/ ?></th>
           <th width='2'>&nbsp;</th>
-          <th class="nobr" <?php echo $dummy; ?>><?php if ($tipp_tippmodus == 1) {echo $text[37];} else {echo $text['tipp'][122];} ?></th>
+          <th class="nobr" <?php echo $dummy; ?>><?php if ($tipp_tippmodus == 1) {
+              echo $text[37];
+          } else {
+              echo $text['tipp'][122];
+          } ?></th>
           <th width='2'>&nbsp;</th>
-          <th class="nobr" <?php echo $dummy; ?>><strong><?php if ($tipp_tippmodus == 1) {echo $text[37] . '/' . $text[33];} else {echo $text['tipp'][123] . '%';} ?></strong></th>
+          <th class="nobr" <?php echo $dummy; ?>><strong><?php if ($tipp_tippmodus == 1) {
+              echo $text[37] . '/' . $text[33];
+          } else {
+              echo $text['tipp'][123] . '%';
+          } ?></strong></th>
         </tr>
 <?php
         $j = 1;
         $spv = -1;
         $ppv = -1;
         for ($x = 1; $x <= $anzteams; $x++) {
-            if (!isset($team)) break;
+            if (!isset($team)) {
+                break;
+            }
             $i = intval(substr($tab0[$x - 1], 25));
             if ($team[$i] == $favteam) {
                 // favteam

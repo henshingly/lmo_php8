@@ -36,7 +36,7 @@ for ($n = 0; $n < $modus[$st - 1]; $n++) {
         if ($goala[$st - 1][$i][$n] != '_' && $goalb[$st - 1][$i][$n] != '_') {
             $btip1 = false;
         } else {
-            $btip1=true;
+            $btip1 = true;
         }
     } else {
         $btip1 = false;
@@ -54,8 +54,8 @@ for ($n = 0; $n < $modus[$st - 1]; $n++) {
     <td>&nbsp;</td>
 <?php
     if ($n == 0) {
-        $m1 = array($goala[$st - 1][$i][0], $goala[$st - 1][$i][1], $goala[$st - 1][$i][2], $goala[$st - 1][$i][3], $goala[$st - 1][$i][4], $goala[$st - 1][$i][5], $goala[$st - 1][$i][6]);
-        $m2 = array($goalb[$st - 1][$i][0], $goalb[$st - 1][$i][1], $goalb[$st - 1][$i][2], $goalb[$st - 1][$i][3], $goalb[$st - 1][$i][4], $goalb[$st - 1][$i][5], $goalb[$st - 1][$i][6]);
+        $m1 = [$goala[$st - 1][$i][0], $goala[$st - 1][$i][1], $goala[$st - 1][$i][2], $goala[$st - 1][$i][3], $goala[$st - 1][$i][4], $goala[$st - 1][$i][5], $goala[$st - 1][$i][6]];
+        $m2 = [$goalb[$st - 1][$i][0], $goalb[$st - 1][$i][1], $goalb[$st - 1][$i][2], $goalb[$st - 1][$i][3], $goalb[$st - 1][$i][4], $goalb[$st - 1][$i][5], $goalb[$st - 1][$i][6]];
         $m = gewinn($i, $j, $modus[$st - 1], $m1, $m2);
 
         if ($m == 1) {
@@ -251,7 +251,7 @@ for ($n = 0; $n < $modus[$st - 1]; $n++) {
     /** TENDENZMODUS **/
     if ($tipp_tippmodus == 0) {
         if ($goaltippa[$i][$n] == '' || $goaltippb[$i][$n] == '') {
-            $tipp = - 1;
+            $tipp = -1;
         } elseif ($goaltippa[$i][$n] > $goaltippb[$i][$n]) {
             $tipp = 1;
         } elseif ($goaltippa[$i][$n] == $goaltippb[$i][$n]) {
@@ -260,20 +260,38 @@ for ($n = 0; $n < $modus[$st - 1]; $n++) {
             $tipp = 2;
         } ?>
     <td align="right">
-      <input type="radio" name="xtipp<?php echo $i . $n; ?>" value="1" <?php if ($tipp == 1) {echo ' checked';} if ($btip[$i][$n] == false) {echo ' disabled';} ?>>
+      <input type="radio" name="xtipp<?php echo $i . $n; ?>" value="1" <?php if ($tipp == 1) {
+          echo ' checked';
+      } if ($btip[$i][$n] == false) {
+          echo ' disabled';
+      } ?>>
     </td><?php    if ($hidr == 0) { ?>
     <td align="center">
-      <input type="radio" name="xtipp<?php echo $i . $n; ?>" value="3" <?php if ($tipp == 0) {echo ' checked';} if ($btip[$i][$n] == false) {echo ' disabled';} ?>>
+      <input type="radio" name="xtipp<?php echo $i . $n; ?>" value="3" <?php if ($tipp == 0) {
+          echo ' checked';
+      } if ($btip[$i][$n] == false) {
+          echo ' disabled';
+      } ?>>
     </td><?php    } ?>
     <td align="right">
-      <input type="radio" name="xtipp<?php echo $i . $n; ?>" value="2" <?php if ($tipp == 2) {echo ' checked';} if ($btip[$i][$n] == false) {echo ' disabled';} ?>>
+      <input type="radio" name="xtipp<?php echo $i . $n; ?>" value="2" <?php if ($tipp == 2) {
+          echo ' checked';
+      } if ($btip[$i][$n] == false) {
+          echo ' disabled';
+      } ?>>
     </td>
 <?php
     } /* ende ($tipp_tippmodus == 0) */
 
     /** BEIDE **/
     if ($tipp_jokertipp == 1) { ?>
-    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i + 1) . ($n + 1); ?>" <?php if ($jksp == ($i + 1) . ($n + 1)) {echo ' checked';} if ($btip[$i][$n] == false) {echo ' disabled';} elseif ($tipp_jokertippaktiv == false) {echo ' disabled';} ?>></td>
+    <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo ($i + 1) . ($n + 1); ?>" <?php if ($jksp == ($i + 1) . ($n + 1)) {
+        echo ' checked';
+    } if ($btip[$i][$n] == false) {
+        echo ' disabled';
+    } elseif ($tipp_jokertippaktiv == false) {
+        echo ' disabled';
+    } ?>></td>
 <?php
     } ?>
     <td class="lmoBackMarkierung" align="right"><?php echo $goala[$st - 1][$i][$n]; ?></td>

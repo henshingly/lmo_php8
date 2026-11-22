@@ -54,6 +54,7 @@
         <li><a href="#eval">Auswertung</a></li>
         <li><a href="#newsletter">Newsletter/Reminder</a></li>
         <li><a href="#user">Userverwaltung</a></li>
+        <li><a href="#nachtrag">Tipps nachtragen</a></li>
         <li><a href="#option">Optionen</a></li>
       </ol>
       <p><img src="../../media/tippspiel01.png" alt="Tippeinsicht" width="441" height="256" align="right"> Im LMO 4 ist ein umfangreiches
@@ -100,6 +101,20 @@
         <dt>abonnierte Ligen</dt>
         <dd>Welche Ligen kann der Tipper tippen?</dd>
       </dl><a href="#top">[nach oben]</a>
+      <h3><a name="nachtrag" id="nachtrag">Tipps nachtragen</a></h3>
+      <p>Nur der <em>Voll-Admin</em> kann für einen Tipper Tipps auch nach Spielbeginn oder Spielende eintragen oder ändern, zum Beispiel
+      wenn ein Tipper seine Tipps nicht rechtzeitig abgeben konnte.</p>
+      <ol>
+        <li>Im Tippspiel-Admin den Punkt <em>Tipps nachtragen</em> wählen.</li>
+        <li>Die Liga auswählen. Es werden alle Tipper angezeigt, die für diese Liga eine Tippdatei besitzen.</li>
+        <li>Bei dem gewünschten Tipper auf <em>Tipps bearbeiten</em> klicken. Es öffnet sich die normale Tipp-Eingabe dieses Tippers. Ein
+        roter Hinweis zeigt, dass Sie im Admin-Modus arbeiten.</li>
+        <li>Spieltag wählen, Tipps eintragen und speichern.</li>
+        <li>Anschließend die <a href="#eval">Auswertung</a> erneut durchführen.</li>
+      </ol>
+      <p>Das funktioniert für alle Ligaarten (Liga, Turnier/KO) und alle Tippmodi (Ergebnis, Tendenz, auch mit Joker). Die Zeitsperre ist nur
+      für den Admin in diesem Modus aufgehoben; Tipper selbst können weiterhin nur innerhalb der Tippfrist tippen. Jeder Nachtrag wird in der Datei
+      <code>config/tipp/nachtrag.php</code> protokolliert (Datum, Admin, Tipper, Liga, Spieltag).</p><a href="#top">[nach oben]</a>
       <h3><a name="option" id="option">Optionen</a></h3>
       <p>Die ist der umfangreichste und wichtigste Punkt des Tippspiels. Sie sollten die Optionen vor dem Start des Tippspiels einmal
       komplett einstellen und während des Tippspieles nicht mehr wesentlich verändern.</p>

@@ -303,3 +303,15 @@
 302=Montrer seulement le classement total des points
 303=Un nouveau joueur s'est inscrit pour le jeu des pronostiques: \n\nIdentifiant: [nick]
 304=Laissez le champ vide pour éviter de changer le mot de passe
+306=Saisir les pronostics a posteriori
+307=Choisir la ligue
+308=Pronostiqueur (pseudo)
+309=Modifier les pronostics
+310=Aucun pronostiqueur pour cette ligue.
+311=Mode admin : vous saisissez les pronostics de « [nick] ». La limite de temps est levée. Veuillez ensuite relancer l'évaluation.
+312=En tant qu'administrateur complet, vous pouvez saisir ou modifier les pronostics d'un joueur après le début des matchs. La limite de temps n'est levée que pour vous, chaque modification est consignée. Relancez ensuite l'évaluation.
+313=Retour
+314=Journal des saisies a posteriori
+315=Aucune entrée.
+316=Date
+317=Journée

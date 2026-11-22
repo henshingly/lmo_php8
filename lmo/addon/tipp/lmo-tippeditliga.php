@@ -17,7 +17,7 @@
   *
   *
   */
-  ?>
+?>
 
           <tr>
 <?php
@@ -52,7 +52,7 @@ if (($favteam > 0) && ($favteam == $teama[$st - 1][$i])) {
 } ?></td>
             <td align="center" width="10">-</td>
             <td class="nobr" align="left"><?php
-if (($favteam> 0 ) && ($favteam == $teamb[$st - 1][$i])) {
+if (($favteam > 0) && ($favteam == $teamb[$st - 1][$i])) {
     echo '<strong>';
 }
 echo $teams[$teamb[$st - 1][$i]];
@@ -137,7 +137,7 @@ if ($tipp_tippmodus == 1) {
                 if ($toregesa[$i] < 10 && $toregesb[$i] < 10) {
                     $nachkomma = 1;
                 } else {
-                    $nachkomma=0;
+                    $nachkomma = 0;
                 }
                 echo number_format((applyFactor($toregesa[$i], $goalfaktor) / $anzgetippt[$i]), $nachkomma, '.', ',') . ':' . number_format((applyFactor($toregesb[$i], $goalfaktor) / $anzgetippt[$i]), $nachkomma, '.', ',');
             } else {
@@ -213,7 +213,7 @@ if ($tipp_tippmodus == 1) {
 
 /** TENEDENZMODUS **/
 if ($tipp_tippmodus == 0) {
-    $tipp=-1;
+    $tipp = -1;
     if ($goaltippa[$i] == '' || $goaltippb[$i] == '') {
         $tipp = -1;
     } elseif ($goaltippa[$i] > $goaltippb[$i]) {
@@ -224,24 +224,42 @@ if ($tipp_tippmodus == 0) {
         $tipp = 2;
     } ?>
             <td align="center">
-              <input type="radio" name="xtipp<?php echo $i; ?>" value="1"<?php if ($tipp == 1) {echo ' checked';} if ($btip[$i] == false) {echo ' disabled';} ?>>
+              <input type="radio" name="xtipp<?php echo $i; ?>" value="1"<?php if ($tipp == 1) {
+                  echo ' checked';
+              } if ($btip[$i] == false) {
+                  echo ' disabled';
+              } ?>>
             </td>
 <?php
     if ($hidr == 0) { ?>
             <td align="center">
-              <input type="radio" name="xtipp<?php echo $i; ?>" value="3"<?php if ($tipp == 0) {echo ' checked';} if ($btip[$i] == false) {echo ' disabled';} ?>>
+              <input type="radio" name="xtipp<?php echo $i; ?>" value="3"<?php if ($tipp == 0) {
+                  echo ' checked';
+              } if ($btip[$i] == false) {
+                  echo ' disabled';
+              } ?>>
             </td>
 <?php
     } ?>
             <td align="center">
-              <input type="radio" name="xtipp<?php echo $i; ?>" value="2"<?php if ($tipp == 2) {echo ' checked';} if ($btip[$i] == false) {echo ' disabled';} ?>>
+              <input type="radio" name="xtipp<?php echo $i; ?>" value="2"<?php if ($tipp == 2) {
+                  echo ' checked';
+              } if ($btip[$i] == false) {
+                  echo ' disabled';
+              } ?>>
             </td>
 <?php
 } /* ende ($tipp_tippmodus == 0) */
 
 /** BEIDE **/
 if ($tipp_jokertipp == 1) { ?>
-            <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo $i + 1; ?>"<?php if ($jksp == $i + 1) {echo ' checked';} if ($btip[$i] == false) {echo ' disabled';} elseif ($tipp_jokertippaktiv==false) {echo ' disabled';} ?>></td>
+            <td align="center"><input type="radio" name="xjokerspiel" value="<?php echo $i + 1; ?>"<?php if ($jksp == $i + 1) {
+                echo ' checked';
+            } if ($btip[$i] == false) {
+                echo ' disabled';
+            } elseif ($tipp_jokertippaktiv == false) {
+                echo ' disabled';
+            } ?>></td>
 <?php
 } ?>
             <td class="lmoBackMarkierung" align="right"><?php echo applyFactor($goala[$st - 1][$i], $goalfaktor); ?></td>
@@ -293,8 +311,8 @@ if ($punktespiel > 0) {
 $lmo_teamaicon = '';
 $lmo_teambicon = '';
 if ($urlb == 1 || $mnote[$st - 1][$i] != '' || $msieg[$st - 1][$i] > 0) {
-    $lmo_teamaicon=HTML_smallTeamIcon($file, $teams[$teama[$st - 1][$i]], ' alt=""') . ' ' ;
-    $lmo_teambicon=HTML_smallTeamIcon($file, $teams[$teamb[$st - 1][$i]], ' alt=""') . ' ' ;
+    $lmo_teamaicon = HTML_smallTeamIcon($file, $teams[$teama[$st - 1][$i]], ' alt=""') . ' ' ;
+    $lmo_teambicon = HTML_smallTeamIcon($file, $teams[$teamb[$st - 1][$i]], ' alt=""') . ' ' ;
 }
 /** Spielbericht verlinken **/
 if ($urlb == 1) {

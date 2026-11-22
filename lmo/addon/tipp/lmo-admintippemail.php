@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +7,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -16,37 +16,36 @@
   * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
   *
   */
-  
-  
-require_once(PATH_TO_LMO."/lmo-admintest.php");
 
-$save               = isset($_POST['save'])               ? $_POST['save']               : 0;
-$message            = isset($_POST['message'])            ? $_POST['message']            : '';
-$betreff            = !empty($_POST['betreff'])           ? $_POST['betreff']            : $text['tipp'][0];
-$betreff1           = isset($_POST['betreff1'])           ? $_POST['betreff1']           : '';
+require_once(PATH_TO_LMO . '/lmo-admintest.php');
+
+$save = isset($_POST['save']) ? $_POST['save'] : 0;
+$message = isset($_POST['message']) ? $_POST['message'] : '';
+$betreff = !empty($_POST['betreff']) ? $_POST['betreff'] : $text['tipp'][0];
+$betreff1 = isset($_POST['betreff1']) ? $_POST['betreff1'] : '';
 $tipp_textreminder1 = isset($_POST['tipp_textreminder1']) ? $_POST['tipp_textreminder1'] : '';
-$liganr             = isset($_POST['liganr'])             ? $_POST['liganr']             : -1;
-$emailart           = isset($_POST['emailart'])           ? $_POST['emailart']           : -1;
-$adressat           = isset($_POST['adressat'])           ? $_POST['adressat']           : '';
-$start              = isset($_POST['start'])              ? $_POST['start']              : 0;
-$ende               = isset($_POST['ende'])               ? $_POST['ende']               : 0;
-$tage               = isset($_POST['tage'])               ? $_POST['tage']               : 4;
-$liga1              = isset($_POST['liga1'])              ? $_POST['liga1']              : array();
-$st1                = isset($_POST['st1'])                ? $_POST['st1']                : array();
+$liganr = isset($_POST['liganr']) ? $_POST['liganr'] : -1;
+$emailart = isset($_POST['emailart']) ? $_POST['emailart'] : -1;
+$adressat = isset($_POST['adressat']) ? $_POST['adressat'] : '';
+$start = isset($_POST['start']) ? $_POST['start'] : 0;
+$ende = isset($_POST['ende']) ? $_POST['ende'] : 0;
+$tage = isset($_POST['tage']) ? $_POST['tage'] : 4;
+$liga1 = isset($_POST['liga1']) ? $_POST['liga1'] : [];
+$st1 = isset($_POST['st1']) ? $_POST['st1'] : [];
 
 if ($save == 1) {
-  if ($emailart == 1) {
-    if ($liganr == 0) {
-      $st = 0;
-      $file='';
-      $viewermode = 1;
-    } else {
-      $st = isset($st1[$liganr-1]) ? $st1[$liganr-1] : '';
-      $liga = isset($liga1[$liganr-1]) ? $liga1[$liganr-1] : '';
-      $viewermode = 0;
+    if ($emailart == 1) {
+        if ($liganr == 0) {
+            $st = 0;
+            $file = '';
+            $viewermode = 1;
+        } else {
+            $st = isset($st1[$liganr - 1]) ? $st1[$liganr - 1] : '';
+            $liga = isset($liga1[$liganr - 1]) ? $liga1[$liganr - 1] : '';
+            $viewermode = 0;
+        }
     }
-  }
-  require(PATH_TO_ADDONDIR."/tipp/lmo-tippemail.php");
+    require(PATH_TO_ADDONDIR . '/tipp/lmo-tippemail.php');
 }
 
 ?>
@@ -68,8 +67,8 @@ function changetextarea(x) {
   }
 }
 </script>
-<?php 
-include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
+<?php
+include(PATH_TO_ADDONDIR . '/tipp/lmo-admintippmenu.php');
 ?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
@@ -82,51 +81,61 @@ include(PATH_TO_ADDONDIR."/tipp/lmo-admintippmenu.php");
         <input type="hidden" name="action" value="admin">
         <input type="hidden" name="todo" value="tippemail">
         <input type="hidden" name="save" value="1">
-        <input type="hidden" name="textreminder1" value="<?php if ($tipp_textreminder1=="") {$tipp_textreminder1=$text['tipp'][174];}echo $tipp_textreminder1; ?>">
+        <input type="hidden" name="textreminder1" value="<?php if ($tipp_textreminder1 == '') {
+            $tipp_textreminder1 = $text['tipp'][174];
+        }echo $tipp_textreminder1; ?>">
         <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
           <tr>
             <td width="20">&nbsp;</td>
-            <td colspan="3" align="left"><input type="radio" name="emailart" value="0" <?php if ($emailart==0) {echo "checked";} ?> onClick="changetextarea(0)"><?php echo $text['tipp'][166]; ?></td>
+            <td colspan="3" align="left"><input type="radio" name="emailart" value="0" <?php if ($emailart == 0) {
+                echo 'checked';
+            } ?> onClick="changetextarea(0)"><?php echo $text['tipp'][166]; ?></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
-            <td align="left"><input type="radio" name="emailart" value="2" <?php if ($emailart==2) {echo "checked";} ?> onClick="changetextarea(2)"><?php echo $text['tipp'][168]; ?></td>
+            <td align="left"><input type="radio" name="emailart" value="2" <?php if ($emailart == 2) {
+                echo 'checked';
+            } ?> onClick="changetextarea(2)"><?php echo $text['tipp'][168]; ?></td>
             <td colspan="2" align="left">
               <select name="adressat" onChange="emailart[1].checked=true;changetextarea(2);">
-                <option value=""><?php echo $text['tipp'][51]?></option><?php 
-                require(PATH_TO_ADDONDIR."/tipp/lmo-tippselectemail.php");?>
+                <option value=""><?php echo $text['tipp'][51]?></option><?php
+                require(PATH_TO_ADDONDIR . '/tipp/lmo-tippselectemail.php');?>
               </select>
             </td>
           </tr>
           <tr>
             <td>&nbsp;</td>
             <td valign="top" align="left">
-              <input type="radio" name="emailart" value="1" <?php if ($emailart==1) {echo "checked";} ?> onClick="changetextarea(1)"><?php echo $text['tipp'][167]; ?>
+              <input type="radio" name="emailart" value="1" <?php if ($emailart == 1) {
+                  echo 'checked';
+              } ?> onClick="changetextarea(1)"><?php echo $text['tipp'][167]; ?>
             </td>
             <td colspan="2">
-              <table cellspacing="0" cellpadding="0" border="0"><?php 
-$ftype=".l98";
-$iptype="reminder";
-require(PATH_TO_ADDONDIR."/tipp/lmo-tippnewdir.php");
-if ($i>0) {?>
+              <table cellspacing="0" cellpadding="0" border="0"><?php
+$ftype = '.l98';
+$iptype = 'reminder';
+require(PATH_TO_ADDONDIR . '/tipp/lmo-tippnewdir.php');
+if ($i > 0) {?>
                 <tr>
                   <td colspan="2" align="left">
-                    <input type="radio" name="liganr" value="0" <?php if ($liganr==0) {echo "checked";} ?> onClick="if (emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><strong><?php echo $text['tipp'][263]?></strong>
+                    <input type="radio" name="liganr" value="0" <?php if ($liganr == 0) {
+                        echo 'checked';
+                    } ?> onClick="if (emailart[2].checked==false)changetextarea(1);emailart[2].checked=true;"><strong><?php echo $text['tipp'][263]?></strong>
                   </td>
-                </tr><?php 
+                </tr><?php
 } ?>
               </table>
             </td>
-          </tr><?php 
-$start1=1;
-$ende1=count($dumma);
+          </tr><?php
+$start1 = 1;
+$ende1 = count($dumma);
 if ($save == 1) {
-  if (isset($start)) {
-    $start1 = $start;
-  }
-  if (isset($ende)) {
-    $ende1=$ende;
-  }
+    if (isset($start)) {
+        $start1 = $start;
+    }
+    if (isset($ende)) {
+        $ende1 = $ende;
+    }
 }?>
           <tr>
             <td colspan="2">&nbsp;</td>
@@ -136,16 +145,16 @@ if ($save == 1) {
               <?php echo $text[4];?>
               <input class="lmo-formular-input" type="text" name="ende" size="2" maxlength="4" value="<?php echo $ende1; ?>">
               <?php echo $text['tipp'][170];?>
-              <input class="lmo-formular-input" type="text" name="tage" size="2" maxlength="2" value="<?php echo $tage; ?>" onFocus="emailart[2].checked=true;"><?php echo " ".$text['tipp'][171];?>
+              <input class="lmo-formular-input" type="text" name="tage" size="2" maxlength="2" value="<?php echo $tage; ?>" onFocus="emailart[2].checked=true;"><?php echo ' ' . $text['tipp'][171];?>
             </td>
           </tr>          
           <tr>
             <th colspan="4">&nbsp;</th>
-          </tr><?php 
+          </tr><?php
 if ($save == 1) {
-  if (isset($betreff)) {
-    $betreff1 = $betreff;
-  }
+    if (isset($betreff)) {
+        $betreff1 = $betreff;
+    }
 }?>
           <tr>
             <td>&nbsp;</td>
@@ -159,11 +168,11 @@ if ($save == 1) {
             <td align="left" colspan="3">
               <textarea id="message" name="message" rows="10" cols="60"><?php                if ($emailart == 1) {
                   echo $tipp_textreminder1;
-                } elseif ($message != "") {
+              } elseif ($message != '') {
                   echo $message;
-                } else {
+              } else {
                   echo $text['tipp'][295];
-                }?>
+              }?>
               </textarea>
             </td>
           </tr>

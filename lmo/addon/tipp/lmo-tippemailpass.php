@@ -34,7 +34,7 @@ if (isset($xtippername2)) {
         if ($xtippername2 == $data[0] || (isset($data[4]) && $xtippername2 == $data[4] && str_contains($data[4], '@'))) {
 
             // 1. Neues temporäres Passwort generieren (8 Zeichen)
-            $newPassword = bin2hex(random_bytes(4)); 
+            $newPassword = bin2hex(random_bytes(4));
 
             // 2. Besten verfügbaren Algorithmus wählen
             $bestAlgo = defined('PASSWORD_ARGON2ID') ? PASSWORD_ARGON2ID : PASSWORD_BCRYPT;
@@ -43,7 +43,7 @@ if (isset($xtippername2)) {
             // 3. Den alten Wert (Index 1) mit dem neuen Hash überschreiben
             $data[1] = $newHash;
             $lines[$key] = implode('|', $data);
-            
+
             $userFound = true;
             $recipientEmail = trim($data[4]);
             $tipperName = $data[0];
@@ -84,4 +84,3 @@ if (isset($xtippername2)) {
 } else {
     $_SESSION['lmotipperok'] = 0;
 }
-?>

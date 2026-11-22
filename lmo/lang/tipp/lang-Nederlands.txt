@@ -303,3 +303,15 @@
 302=Show Only Total Point Standings
 303=Een Nieuwe Speler heeft zich geregistreerd voor Bingoal: \n\nNickname: [nick]
 304=Laat het veld leeg om te voorkomen dat het wachtwoord wordt gewijzigd
+306=Voorspellingen achteraf invoeren
+307=Competitie kiezen
+308=Voorspeller (nick)
+309=Voorspellingen bewerken
+310=Geen voorspellers voor deze competitie.
+311=Beheerdersmodus: u voert voorspellingen in voor "[nick]". De tijdslimiet is opgeheven. Voer daarna de beoordeling opnieuw uit.
+312=Als volledige beheerder kunt u voorspellingen van een voorspeller invoeren of wijzigen nadat de wedstrijden zijn begonnen. De tijdslimiet is alleen voor u opgeheven en elke wijziging wordt gelogd. Voer daarna de beoordeling opnieuw uit.
+313=Terug
+314=Logboek van achteraf ingevoerde voorspellingen
+315=Nog geen items.
+316=Datum
+317=Speelronde
