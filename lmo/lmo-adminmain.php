@@ -43,7 +43,15 @@ if ($action == 'admin') {
 
     $warning = (int)0;
     if (version_compare(PHP_VERSION, $min_php_version, '<')) echo getMessage('This LMO requires a web server with PHP ' . $min_php_version . ' or higher installed.<br>Your web server does not currently support this because your PHP version is:: <mark>' . PHP_VERSION . '</mark>', $warning = $warning + 1, true);
-    if (@file_exists(PATH_TO_LMO . '/install/install.php') && @is_readable(PATH_TO_LMO . '/install/install.php')) echo getMessage('Delete install folder or set its chmod to 000!', $warning = $warning + 1,true);
+    if (@file_exists(PATH_TO_LMO . '/install/install.php') && @is_readable(PATH_TO_LMO . '/install/install.php')) {
+        $install_notice = isset($text[5013]) ? $text[5013] : 'The install folder still exists. After an update, please start the update installation and then delete the folder (or set its chmod to 000).';
+        echo getMessage($install_notice, $warning = $warning + 1, true);
+        if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 2) {
+            // Nach einem Update per FTP: Installer starten, der fehlende Dateien/Einstellungen ergänzt
+            $install_button = isset($text[5014]) ? $text[5014] : 'Start update installation';
+            echo '<form action="' . URL_TO_LMO . '/install/install.php" method="get" style="margin:0.3em"><input type="submit" value="' . htmlspecialchars($install_button) . '"></form>';
+        }
+    }
 ?>
 <script type="text/javascript" src="<?php echo URL_TO_LMO;?>/js/admin.js.php"></script>
 <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">

@@ -26,45 +26,13 @@ $lmo_version_search = array('<', '>', '=');
 $min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php']);
 $error = '';
 
-//check if the call is from maindir (lmo.php) or install/install.php directly
-if (is_readable('includes/FTP.php')) {
-    //check for ftp capabilities
-    if (!function_exists('ftp_connect')) {
-        if (function_exists('fsockopen')) {
-            require_once 'includes/Socket.php';
-        }
-        else {
-            //not ftp, no sockets -> manual
-            $_REQUEST['man'] = 1;
-        }
-    }
-    require_once 'includes/FTP.php';
-}
-else {
-    if (!function_exists('ftp_connect')) {
-        if (function_exists('fsockopen')) {
-            require_once '../includes/Socket.php';
-        }
-        else {
-            //not ftp, no sockets -> manual
-            $_REQUEST['man']=1;
-        }
-    }
-    require_once '../includes/FTP.php';
-}
-
-if (!isset($_SESSION['ftpserver'])) {
-    $_SESSION['ftpserver'] = '';
-}
-if (!isset($_SESSION['ftpuser'])) {
-    $_SESSION['ftpuser'] = '';
-}
-if (!isset($_SESSION['ftppass'])) {
-    $_SESSION['ftppass'] = '';
-}
 $_SESSION['userlang'] = isset($_GET['userlang']) ? $_GET['userlang'] : (isset($_SESSION['userlang']) ? $_SESSION['userlang'] : 'DE');
+if (!in_array($_SESSION['userlang'], array('DE', 'EN', 'FR', 'ES'), true)) {
+    $_SESSION['userlang'] = 'DE';
+}
 $userlang = $_SESSION['userlang'];
 
+// Verzeichnisse (777) und Dateien (666), die PHP beschreiben können muss
 $filelist = array(
     777 => array('ligen', 'output', 'config', 'ligen/dfb', 'config/viewer', 'config/smtp', 'addon/tipp/tipps', 'addon/tipp/tipps/auswert', 'addon/tipp/tipps/einsicht', 'addon/tipp/tipps/auswert/vereine', 'addon/spieler/stats'),
     666 => array('config/cfg.txt', 'config/lmo-auth.php', 'config/tipp/cfg.txt', 'config/spieler/cfg.txt', 'config/ticker/cfg.txt', 'config/mini/cfg.txt', 'config/classlib/cfg.txt', 'config/smtp/cfg.php', 'config/smtp/key.php', 'addon/tipp/lmo-tipperauth.php', 'ligen/*.l98')
@@ -80,28 +48,24 @@ $lang = array(
         'ERROR_WRONG_PATH' => 'Der Pfad ist nicht korrekt!',
         'ERROR_CONFIRM' => 'Es sind noch Fehler vorhanden! Der LMO wird NICHT funktionieren. Trotzdem fortfahren?',
 
-        'STEP0' => 'FTP-Zugangsdaten',
-        'STEP0_DESCRIPTION' => 'Um den LMO vollautomatisch zu installieren, ist ein Zugang per FTP notwendig.
-            Dazu müssen Sie die Logindaten für Ihren FTP-Zugang angeben. Die Daten werden vom LMO
-            nicht gespeichert oder in irgendeiner anderen Weise weiterverwendet. Falls Sie
-            manuell installieren möchten gelangen Sie
-            <a href="' . $_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">hier zur manuellen Installation.</a>',
-        'STEP0_FTP_SERVER' => 'Geben sie hier die Adresse ihres FTP-Servers ein',
-        'STEP0_FTP_SERVER_EXAMPLE' => 'Bsp.: <em><kbd>ftp.beispiel.de</kbd></em>',
-        'STEP0_FTP_LOGIN' => 'Geben Sie hier Ihren Usernamen und Ihr Passwort ein',
-        'STEP0_FTP_NO_CONNECTION' => 'Keine Verbindung zu "' . $_SESSION['ftpserver'].'" möglich. Korrigieren Sie die Adresse oder <a href="' . $_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installieren Sie manuell</a>',
-        'STEP0_FTP_NO_LOGIN' => 'Fehler beim Einloggen. Korrigieren Sie die Benutzerdaten oder <a href="' . $_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installieren Sie manuell</a>',
+        'STEP0' => 'Systemprüfung und Einrichtung',
+        'STEP0_DESCRIPTION' => 'Der Installer legt die benötigten Verzeichnisse und Konfigurationsdateien (<code>cfg.txt</code> usw.) selbst an, füllt sie mit den Ausgangswerten und versucht, die nötigen Dateirechte (CHMOD) zu setzen. Eine FTP-Verbindung ist dafür nicht erforderlich. Vorhandene Einstellungen werden nicht überschrieben, fehlende Einstellungen werden bei einem Update lediglich ergänzt.',
+        'MODE_UPDATE' => 'Update erkannt: Es sind bereits Einstellungen vorhanden. Vorhandene Dateien bleiben erhalten, es werden nur fehlende Dateien und Einstellungen ergänzt.',
+        'MODE_NEW' => 'Neuinstallation: Alle Verzeichnisse und Konfigurationsdateien werden mit den Ausgangswerten neu angelegt.',
+        'START' => 'Einrichtung starten',
+        'ERROR_INSTALLED' => 'Der LMO ist bereits installiert, der Installer ist deshalb gesperrt. Bitte löschen Sie den Ordner <code>install</code> vom Server oder geben Sie dem Ordner chmod 000.',
+        'ERROR_PATH_INVALID' => 'Der Pfad ist ungültig. Dort muss sich die Datei <code>init.php</code> des LMO befinden.',
+        'ERROR_URL_INVALID' => 'Die URL ist ungültig. Beispiel: http://www.beispiel.de/lmo',
 
-        'STEP1' => 'LMO-Verzeichnis auswählen',
-        'STEP1_SELECT_FTP_DIR' => 'Wählen Sie das LMO Verzeichnis aus',
-
-        'STEP2' => 'PHP Version überprüfen und Dateirechte setzen (CHMOD)',
-        'STEP2_MANUAL' => '<p><strong>Kopieren Sie die beiden Ordner (<code>addon</code> und <code>config</code>) <u>aus dem Ordner</u> <code>install</code> mit einem FTP-Programm über Ihr LMO-Verzeichnis.</strong></p>
-            <p><img src="img/DE_manual_copy.png" alt="Kopieren der Dateien mittels FTP-Programm" width="696"></p>
-            <p><strong>Setzen Sie danach die benötigten Rechte über ihr FTP-Programm.</strong></p>
-            <p><img src="img/DE_manual_chmod.png" alt="Setzen der Rechte mittels FTP-Programm" width="427"></p>
-            <p>Aktualisieren Sie diese Seite <a href="#" onclick="location.reload();return false;">[Reload]</a>, um
-            zu überprüfen, ob alle Rechte richtig gesetzt sind.<br><a href="' . $_SERVER['PHP_SELF'].'">[Zurück zur automatischen Installation (falls verfügbar)]</a></p>',
+        'STEP2' => 'Verzeichnisse und Dateien',
+        'STEP2_DESCRIPTION' => 'Ergebnis der Einrichtung. Alle Einträge sollten grün sein.',
+        'ST_CREATED' => 'angelegt',
+        'ST_MERGED' => 'ergänzt',
+        'ST_CHMOD' => 'Rechte gesetzt',
+        'ST_OK' => 'vorhanden',
+        'RECHECK' => 'Erneut prüfen',
+        'STEP2_MANUAL' => '<p><strong>Rote Einträge:</strong> PHP darf dort auf Ihrem Server nicht schreiben. Setzen Sie die angegebenen Rechte (CHMOD) einmalig mit Ihrem FTP-Programm und klicken Sie danach auf <em>Erneut prüfen</em>.</p>
+            <p><img src="img/DE_manual_chmod.png" alt="Setzen der Rechte mittels FTP-Programm" width="427"></p>',
 
         'STEP3' => 'Konfigurationsdatei erstellen',
         'STEP3_PATH' => 'Geben Sie hier den <strong>kompletten Pfad</strong> zum LMO an',
@@ -117,9 +81,11 @@ $lang = array(
 
         'STEP4' => 'Installation erfolgreich',
         'STEP4_TEXT1' => 'Der Liga Manager Online 4 ist installiert worden!',
-        'STEP4_TEXT2' => 'Falls Fehler aufgetreten sind, wiederholen sie die Installation oder installieren Sie den LMO manuell, indem Sie
-            die Datei <code>config/init-parameters.php</code> mit einem Texteditor anpassen und die Schreibrechte mit einem FTP-Programm
-            manuell vergeben.',
+        'STEP4_TEXT2' => 'Falls Fehler aufgetreten sind, wiederholen Sie die Installation oder legen Sie die Datei <code>config/init-parameters.php</code> mit einem Texteditor selbst an (siehe Hilfe) und vergeben Sie die Schreibrechte mit einem FTP-Programm.',
+        'CLEAN_BUTTON' => 'Installationsordner jetzt löschen',
+        'CLEAN_OK' => 'Der Ordner <code>install</code> wurde gelöscht. Der LMO ist einsatzbereit.',
+        'CLEAN_CHMOD' => 'Der Ordner <code>install</code> konnte nicht gelöscht werden und wurde stattdessen mit chmod 000 gesperrt. Löschen Sie ihn bei Gelegenheit per FTP.',
+        'CLEAN_FAIL' => 'Der Ordner <code>install</code> konnte nicht gelöscht werden. Bitte löschen Sie ihn selbst per FTP oder Dateimanager.',
         'STEP4_TEXT3' => 'Bitte löschen Sie jetzt unbedingt den Ordner <code>install</code> vom Server oder geben Sie dem Ordner chmod 000.',
         'STEP4_TEXT4' => '<ul class="attention">
             <li><strong>Link zum <acronym title="Liga Manager Online">LMO</acronym>:</strong> <a href="%s">%s</a></li>
@@ -141,26 +107,24 @@ $lang = array(
         'ERROR_WRONG_PATH' => 'Incorrect path!',
         'ERROR_CONFIRM' => 'There are still errors left! Proceed?',
 
-        'STEP0' => 'FTP login data',
-        'STEP0_DESCRIPTION' => 'To install the LMO automaticly you must insert your FTP login data.
-            The data will not saved nor published. If you want to install manually use
-            <a href="' . $_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">this link</a>.',
-        'STEP0_FTP_SERVER' => 'FTP server address',
-        'STEP0_FTP_SERVER_EXAMPLE' => 'e.g.: <em><kbd>ftp.example.com</kbd></em>',
-        'STEP0_FTP_LOGIN' => 'Insert your username and password',
-        'STEP0_FTP_NO_CONNECTION' => 'Can not establish connection to "' . $_SESSION['ftpserver'].'". Please correct the address of server or <a href="' . $_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">install manually</a>',
-        'STEP0_FTP_NO_LOGIN' => 'Login error. Please correct your user data or <a href="' . $_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">install manually</a>',
+        'STEP0' => 'System check and setup',
+        'STEP0_DESCRIPTION' => 'The installer creates the required directories and configuration files (<code>cfg.txt</code> etc.) itself, fills them with the default values and tries to set the necessary file permissions (CHMOD). No FTP connection is needed. Existing settings are never overwritten; when updating, only missing settings are added.',
+        'MODE_UPDATE' => 'Update detected: settings already exist. Existing files are kept; only missing files and settings are added.',
+        'MODE_NEW' => 'New installation: all directories and configuration files will be created with the default values.',
+        'START' => 'Start setup',
+        'ERROR_INSTALLED' => 'The LMO is already installed, so the installer is locked. Please delete the folder <code>install</code> from the server or chmod it to 000.',
+        'ERROR_PATH_INVALID' => 'The path is invalid. The file <code>init.php</code> of the LMO must be located there.',
+        'ERROR_URL_INVALID' => 'The URL is invalid. Example: http://www.example.com/lmo',
 
-        'STEP1' => 'Select LMO folder',
-        'STEP1_SELECT_FTP_DIR' => 'Please select your LMO folder',
-
-        'STEP2' => 'Check PHP version and set file permissions (CHMOD)',
-        'STEP2_MANUAL' => '<p><strong>Copy the two folders (<code>addon</code> and <code>config</code>) <u>from the</u> <code>install</code> folder via your LMO using an FTP program</strong></p>
-            <p><img src="img/EN_manual_copy.png" alt="Copying files using a FTP tool" width="696"></p>
-            <p><strong>Please chmod these file with your FTP tool.</strong></p>
-            <p><img src="img/EN_manual_chmod.png" alt="Chmod files using a FTP tool" width="427"></p>
-            <p>Press <a href="#" onclick="location.reload();return false;">[Reload]</a> for
-            a check.<br><a href="' . $_SERVER['PHP_SELF'].'">[Back to automatic installation (if available)]</a><p>',
+        'STEP2' => 'Directories and files',
+        'STEP2_DESCRIPTION' => 'Result of the setup. All entries should be green.',
+        'ST_CREATED' => 'created',
+        'ST_MERGED' => 'completed',
+        'ST_CHMOD' => 'permissions set',
+        'ST_OK' => 'present',
+        'RECHECK' => 'Check again',
+        'STEP2_MANUAL' => '<p><strong>Red entries:</strong> PHP is not allowed to write there on your server. Set the listed permissions (CHMOD) once with your FTP program and then click <em>Check again</em>.</p>
+            <p><img src="img/EN_manual_chmod.png" alt="Setting the permissions with an FTP program" width="427"></p>',
 
         'STEP3' => 'Create configuration file',
         'STEP3_PATH' => 'Please insert the <strong>absolute path</strong> to LMO',
@@ -176,8 +140,11 @@ $lang = array(
 
         'STEP4' => 'Installation successful',
         'STEP4_TEXT1' => 'Liga Manager Online 4 is successfully installed!',
-        'STEP4_TEXT2' => 'If you experienced errors repeat the installation or install manually. To install manually edit the file
-            <code>config/init-parameters.php</code> with an common text editor and chmod the files with your FTP tool.',
+        'STEP4_TEXT2' => 'If errors occurred, repeat the installation or create the file <code>config/init-parameters.php</code> yourself with a text editor (see help) and set the write permissions with an FTP program.',
+        'CLEAN_BUTTON' => 'Delete installation folder now',
+        'CLEAN_OK' => 'The folder <code>install</code> has been deleted. LMO is ready to use.',
+        'CLEAN_CHMOD' => 'The folder <code>install</code> could not be deleted and was locked with chmod 000 instead. Please delete it via FTP when convenient.',
+        'CLEAN_FAIL' => 'The folder <code>install</code> could not be deleted. Please delete it yourself via FTP or your file manager.',
         'STEP4_TEXT3' => 'Please delete the folder <code>install</code> or chmod it to 000.',
         'STEP4_TEXT4' => '<ul class="attention">
             <li><strong>Link to <acronym title="Liga Manager Online">LMO</acronym>:</strong> <a href="%s">%s</a></li>
@@ -199,26 +166,24 @@ $lang = array(
         'ERROR_WRONG_PATH' => 'Le chemin n\'est pas correct!',
         'ERROR_CONFIRM' => 'Il y a encore des erreurs! Désirez-vous quand même continuer?',
 
-        'STEP0' => 'Données d\'accès FTP',
-        'STEP0_DESCRIPTION' => 'Pour pouvoir installer le LMO automatiquement, un accès FTP est nécessaire.
-            Pour cela vous devez entrer les données d\'accès de votre serveur FTP. Ces informations ne seront pas sauvegarder ou utiliser pour d\'autres fins dans le LMO.
-            Si vous voulez installer manuellement les paramètres vous pouvez le faire
-            <a href="' . $_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">ici pour continuer avec l\'installation manuelle.</a>',
-        'STEP0_FTP_SERVER' => 'Veuillez donner l\'adresse de votre serveur FTP',
-        'STEP0_FTP_SERVER_EXAMPLE' => 'Ex.: <em><kbd>ftp.exemple.fr</kbd></em>',
-        'STEP0_FTP_LOGIN' => 'Veuillez entrer votre identifiant et votre mot de passe',
-        'STEP0_FTP_NO_CONNECTION' => 'Aucune connection sur "' . $_SESSION['ftpserver'].'" possible. Veuillez corriger l\'adresse ou bien <a href="' . $_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installez-le manuellement</a>',
-        'STEP0_FTP_NO_LOGIN' => 'Erreur de connection. Veuillez corriger l\'identifiant ou <a href="' . $_SERVER['PHP_SELF'].'?lmo_install_step=2&amp;man=1">installez-le manuellement</a>',
+        'STEP0' => 'Vérification du système et configuration',
+        'STEP0_DESCRIPTION' => 'Le programme d\'installation crée lui-même les répertoires et les fichiers de configuration nécessaires (<code>cfg.txt</code>, etc.), les remplit avec les valeurs par défaut et essaie de définir les droits d\'accès (CHMOD) requis. Aucune connexion FTP n\'est nécessaire. Les réglages existants ne sont jamais écrasés ; lors d\'une mise à jour, seuls les réglages manquants sont ajoutés.',
+        'MODE_UPDATE' => 'Mise à jour détectée : des réglages existent déjà. Les fichiers existants sont conservés ; seuls les fichiers et réglages manquants sont ajoutés.',
+        'MODE_NEW' => 'Nouvelle installation : tous les répertoires et fichiers de configuration seront créés avec les valeurs par défaut.',
+        'START' => 'Lancer la configuration',
+        'ERROR_INSTALLED' => 'Le LMO est déjà installé, le programme d\'installation est donc verrouillé. Veuillez supprimer le dossier <code>install</code> du serveur ou lui donner chmod 000.',
+        'ERROR_PATH_INVALID' => 'Le chemin n\'est pas valide. Le fichier <code>init.php</code> du LMO doit s\'y trouver.',
+        'ERROR_URL_INVALID' => 'L\'adresse URL n\'est pas valide. Exemple : http://www.exemple.fr/lmo',
 
-        'STEP1' => 'Choissisez le répertoire du LMO',
-        'STEP1_SELECT_FTP_DIR' => 'Veuillez choissir le répertoire du LMO',
-
-        'STEP2' => 'Vérifiez la version PHP et définir les droits d\'accès des fichiers (CHMOD)',
-        'STEP2_MANUAL' => '<p><strong>Copiez les deux dossiers (<code>addon</code> et <code>config</code>) <u>du dossier</u> <code>install</code> via votre LMO à l&apos;aide d&apos;un programme FTP -Répertoire.</strong></p>
-            <p><img src="img/FR_manual_copy.png" alt="" width="696"></p>
-            <p><strong>Définissez ensuite les droits requis via votre programme FTP.</strong></p>
-            <p><img src="img/FR_manual_chmod.png" alt="" width="427"></p>
-            <p>Veuillez ensuite actualiser cette page avec un <a href="#" onclick="location.reload();return false;">[Rafraîchir]</a>, pour vérifier , que tout les droits ont été placé correctement.<br><a href="' . $_SERVER['PHP_SELF'].'">[Retourner à l\'installation automatique]</a></p>',
+        'STEP2' => 'Répertoires et fichiers',
+        'STEP2_DESCRIPTION' => 'Résultat de la configuration. Toutes les entrées devraient être vertes.',
+        'ST_CREATED' => 'créé',
+        'ST_MERGED' => 'complété',
+        'ST_CHMOD' => 'droits définis',
+        'ST_OK' => 'présent',
+        'RECHECK' => 'Vérifier à nouveau',
+        'STEP2_MANUAL' => '<p><strong>Entrées rouges :</strong> PHP n\'a pas le droit d\'écrire à cet endroit sur votre serveur. Définissez une seule fois les droits indiqués (CHMOD) avec votre programme FTP, puis cliquez sur <em>Vérifier à nouveau</em>.</p>
+            <p><img src="img/FR_manual_chmod.png" alt="Définir les droits avec un programme FTP" width="427"></p>',
 
         'STEP3' => 'Création du fichier de configuration',
         'STEP3_PATH' => 'Veuillez entrer ici le <strong>chemin complet</strong> pour accèder au LMO',
@@ -234,7 +199,11 @@ $lang = array(
 
         'STEP4' => 'L\'installation a été couronné de succès',
         'STEP4_TEXT1' => 'Le Liga Manager Online 4 a été installé!',
-        'STEP4_TEXT2' => 'Si des erreurs apparaissent, veuillez répéter l\'installation ou bien installer le LMO manuellement en adaptant le fichier <code>config/init-parameters.php</code> avec un éditeur de texte et donner les droits d\'accès manuellement avec un programme FTP.',
+        'STEP4_TEXT2' => 'Si des erreurs sont survenues, répétez l\'installation ou créez vous-même le fichier <code>config/init-parameters.php</code> avec un éditeur de texte (voir l\'aide) et définissez les droits d\'écriture avec un programme FTP.',
+        'CLEAN_BUTTON' => 'Supprimer maintenant le répertoire d\'installation',
+        'CLEAN_OK' => 'Le répertoire <code>install</code> a été supprimé. LMO est prêt à l\'emploi.',
+        'CLEAN_CHMOD' => 'Le répertoire <code>install</code> n\'a pas pu être supprimé et a été verrouillé avec chmod 000. Supprimez-le par FTP dès que possible.',
+        'CLEAN_FAIL' => 'Le répertoire <code>install</code> n\'a pas pu être supprimé. Veuillez le supprimer vous-même par FTP ou avec le gestionnaire de fichiers.',
         'STEP4_TEXT3' => 'Veuillez supprimer à tout prix le répertoire <code>install</code> de votre serveur ou bien lui donner les droits d\accès chmod 000.',
         'STEP4_TEXT4' => '<ul class="attention">
             <li><strong>Le <acronym title="Liga Manager Online">LMO</acronym>:</strong> <code><a href="%s">%s</a></code>
@@ -256,24 +225,24 @@ $lang = array(
         'ERROR_WRONG_PATH' => 'Directorio incorrecto!',
         'ERROR_CONFIRM' => 'Aun hay errores! Continuar?',
 
-        'STEP0' => 'Datos de conexión FTP',
-        'STEP0_DESCRIPTION' => 'Para instalar LMO automaticamente debe insertar sus datos de la conexión FTP. Datos no guardados ni publicados. Si desea instalar manualmente use <a href="' . $_SERVER['PHP_SELF'].'?step=2&amp;man=1">este link</a>.',
-        'STEP0_FTP_SERVER' => 'Dirección servidor FTP',
-        'STEP0_FTP_SERVER_EXAMPLE' => 'ej.: <em><kbd>ftp.ejemplo.com</kbd></em>',
-        'STEP0_FTP_LOGIN' => 'Ingrese su nombre de usuario y contraseña',
-        'STEP0_FTP_NO_CONNECTION' => 'No se puede establecer conección a "' . $_SESSION['ftpserver'].'". Por favor corrija la dirección del servidor o <a href="' . $_SERVER['PHP_SELF'].'?step=2&amp;man=1">instale manualmente</a>',
-        'STEP0_FTP_NO_LOGIN' => 'Error en conección. Por favor corrija los datos de usuario o <a href="' . $_SERVER['PHP_SELF'].'?step=2&amp;man=1">instale manualmente</a>',
+        'STEP0' => 'Comprobación del sistema y configuración',
+        'STEP0_DESCRIPTION' => 'El instalador crea por sí mismo los directorios y archivos de configuración necesarios (<code>cfg.txt</code>, etc.), los rellena con los valores predeterminados e intenta establecer los permisos de archivo (CHMOD) necesarios. No se necesita conexión FTP. Los ajustes existentes nunca se sobrescriben; en una actualización solo se añaden los ajustes que faltan.',
+        'MODE_UPDATE' => 'Actualización detectada: ya existen ajustes. Los archivos existentes se conservan; solo se añaden los archivos y ajustes que faltan.',
+        'MODE_NEW' => 'Instalación nueva: todos los directorios y archivos de configuración se crearán con los valores predeterminados.',
+        'START' => 'Iniciar la configuración',
+        'ERROR_INSTALLED' => 'LMO ya está instalado, por lo que el instalador está bloqueado. Elimine la carpeta <code>install</code> del servidor o asígnele chmod 000.',
+        'ERROR_PATH_INVALID' => 'La ruta no es válida. Allí debe encontrarse el archivo <code>init.php</code> de LMO.',
+        'ERROR_URL_INVALID' => 'La URL no es válida. Ejemplo: http://www.ejemplo.es/lmo',
 
-        'STEP1' => 'Seleccione la carpeta de LMO',
-        'STEP1_SELECT_FTP_DIR' => 'Seleccione por favor su carpeta de LMO',
-
-        'STEP2' => 'Verifique la versión de PHP y establezca permisos de archivos (CHMOD)',
-        'STEP2_MANUAL' => 'Copie las dos carpetas (<code>addon</code> y <code>config</code>) <u>de la carpeta</u> <code>install</code> en su LMO usando un programa FTP.
-            <p><img src="img/ES_manual_copy.png" alt="Copiar los archivos usando el programa FTP" width="696"></p>
-            <p><strong>Luego configure los derechos requeridos a través de su programa FTP.</strong></p>
-            <p><img src="img/ES_manual_chmod.png" alt="Configurar los derechos mediante un programa FTP" width="427"></p>
-            <p>Actualiza esta página <a href="#" onclick="location.reload();return false;">[Reload]</a> para
-            para comprobar si todos los derechos están configurados correctamente.<br><a href="' . $_SERVER['PHP_SELF'].'">[Volver a la instalación automática (si está disponible)]</a></p>',
+        'STEP2' => 'Directorios y archivos',
+        'STEP2_DESCRIPTION' => 'Resultado de la configuración. Todas las entradas deberían estar en verde.',
+        'ST_CREATED' => 'creado',
+        'ST_MERGED' => 'completado',
+        'ST_CHMOD' => 'permisos establecidos',
+        'ST_OK' => 'existente',
+        'RECHECK' => 'Comprobar de nuevo',
+        'STEP2_MANUAL' => '<p><strong>Entradas en rojo:</strong> PHP no puede escribir allí en su servidor. Establezca una sola vez los permisos indicados (CHMOD) con su programa FTP y haga clic después en <em>Comprobar de nuevo</em>.</p>
+            <p><img src="img/ES_manual_chmod.png" alt="Establecer los permisos con un programa FTP" width="427"></p>',
 
         'STEP3' => 'Cree el archivo de configuración',
         'STEP3_PATH' => 'Por favor ingrese el <strong>directorio absoluto</strong> a LMO',
@@ -289,7 +258,11 @@ $lang = array(
 
         'STEP4' => 'Instalación exitosa',
         'STEP4_TEXT1' => 'Liga Manager Online 4 instalada exitosamente!',
-        'STEP4_TEXT2' => 'Si usted experimenta errores repita la instalación o instale manualmente. Para instalar manualmente edite el archivo <code>init-parameters.php</code> con un editor de textos común y cambie los permisos chmod de los archivos con su herramienta FTP.',
+        'STEP4_TEXT2' => 'Si se han producido errores, repita la instalación o cree usted mismo el archivo <code>config/init-parameters.php</code> con un editor de texto (consulte la ayuda) y establezca los permisos de escritura con un programa FTP.',
+        'CLEAN_BUTTON' => 'Eliminar ahora la carpeta de instalación',
+        'CLEAN_OK' => 'La carpeta <code>install</code> se ha eliminado. LMO está listo para usarse.',
+        'CLEAN_CHMOD' => 'No se pudo eliminar la carpeta <code>install</code>; se bloqueó con chmod 000. Elimínela por FTP cuando pueda.',
+        'CLEAN_FAIL' => 'No se pudo eliminar la carpeta <code>install</code>. Elimínela usted mismo por FTP o con el administrador de archivos.',
         'STEP4_TEXT3' => 'Por favor elimine el archivo <code>install.php</code> o cambie los permisos chmod a 000.',
         'STEP4_TEXT4' => '<ul class="attention">
             <li><strong>Enlace a <acronym title="Liga Manager Online">LMO</acronym>:</strong> <a href="%s">%s</a></li>
@@ -312,160 +285,250 @@ else {
     @error_reporting(E_ERROR | E_PARSE);
     @ini_set('display_errors', 'Off');
 }
-$lmo_install_step = isset($_REQUEST['lmo_install_step']) ? $_REQUEST['lmo_install_step'] : 0;
-if (isset($_POST['check'])) $lmo_install_step = 3;
-$_SESSION['man'] = !empty($_REQUEST['man']) ? true : false;
-
-$patherror = $urlerror = $installerror = $loginerror = '';
 
 $lmo_dir = dirname(__DIR__);
+$lmo_dir_slash = str_replace('\\', '/', $lmo_dir);
+
+/**
+ * Kopiert die Vorlagen aus install/config und install/addon an ihren Platz im LMO-Verzeichnis, ohne FTP.
+ * - fehlende Dateien werden aus der Vorlage angelegt (cfg.txt = Ausgangswerte),
+ * - bei vorhandenen cfg.txt werden nur fehlende Einstellungen am Ende ergänzt (nichts wird überschrieben).
+ * Rückgabe: array('relativer/pfad' => 'created'|'merged'|'ok'|'error')
+ */
+function lmo_install_templates($lmo_dir, $install_dir)
+{
+    $result = array();
+    $skip = array('addon/tipp/lmo-tippauth.txt');   // alte Tipperdatei, nicht mehr verwendet
+    foreach (array('config', 'addon') as $top) {
+        if (!is_dir($install_dir . '/' . $top)) {
+            continue;
+        }
+        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($install_dir . '/' . $top, FilesystemIterator::SKIP_DOTS));
+        foreach ($it as $f) {
+            if (!$f->isFile()) {
+                continue;
+            }
+            $rel = str_replace('\\', '/', substr($f->getPathname(), strlen($install_dir) + 1));
+            if (in_array($rel, $skip, true)) {
+                continue;
+            }
+            $target = $lmo_dir . '/' . $rel;
+            if (!file_exists($target)) {
+                if (!is_dir(dirname($target)) && !@mkdir(dirname($target), 0777, true)) {
+                    $result[$rel] = 'error';
+                    continue;
+                }
+                if ($rel === 'config/lmo-auth.php' && is_file($lmo_dir . '/lmo-auth.txt')) {
+                    // alte Admin-Datei (LMO 3) in die neue, geschützte Datei übernehmen
+                    $content = '<?php exit(); ?>' . "\n" . implode("\n", array_map('rtrim', file($lmo_dir . '/lmo-auth.txt'))) . "\n";
+                    $ok = @file_put_contents($target, $content, LOCK_EX) !== false;
+                }
+                else {
+                    $ok = @copy($f->getPathname(), $target);
+                }
+                if ($ok) {
+                    @chmod($target, 0666);
+                }
+                $result[$rel] = $ok ? 'created' : 'error';
+            }
+            elseif (basename($rel) === 'cfg.txt') {
+                $result[$rel] = lmo_install_merge_cfg($f->getPathname(), $target);
+            }
+        }
+    }
+    return $result;
+}
+
+/** Ergänzt in $target alle Einstellungen aus der Vorlage $template, die dort noch fehlen. */
+function lmo_install_merge_cfg($template, $target)
+{
+    $have = array();
+    $old = @file_get_contents($target);
+    if ($old === false) {
+        return 'error';
+    }
+    foreach (preg_split('/\r\n|\r|\n/', $old) as $line) {
+        if (preg_match('/^\s*([A-Za-z0-9_]+)\s*=/', $line, $m)) {
+            $have[$m[1]] = true;
+        }
+    }
+    $add = '';
+    foreach (preg_split('/\r\n|\r|\n/', (string)@file_get_contents($template)) as $line) {
+        if (preg_match('/^\s*([A-Za-z0-9_]+)\s*=/', $line, $m) && !isset($have[$m[1]])) {
+            $add .= $line . "\n";
+        }
+    }
+    if ($add === '') {
+        return 'ok';
+    }
+    if ($old !== '' && substr($old, -1) !== "\n") {
+        $add = "\n" . $add;
+    }
+    if (!is_writable($target)) {
+        @chmod($target, 0666);
+    }
+    return @file_put_contents($target, $add, FILE_APPEND | LOCK_EX) !== false ? 'merged' : 'error';
+}
+
+/** Legt Verzeichnisse an und versucht, fehlende Schreibrechte zu setzen. Liefert die Liste fürs Prüfprotokoll. */
+function lmo_install_prepare($lmo_dir, $filelist)
+{
+    $states = lmo_install_templates($lmo_dir, __DIR__);
+    $rows = array();
+    foreach ($filelist as $mode => $entries) {
+        foreach ($entries as $entry) {
+            if (strpos($entry, '*') !== false) {
+                $files = glob($lmo_dir . '/' . $entry);
+                $files = $files ? $files : array();
+                $files = array_map(function ($p) use ($lmo_dir) { return substr($p, strlen($lmo_dir) + 1); }, $files);
+            }
+            else {
+                $files = array($entry);
+            }
+            foreach ($files as $rel) {
+                $path = $lmo_dir . '/' . $rel;
+                $state = isset($states[$rel]) ? $states[$rel] : 'ok';
+                if ($mode == 777 && !is_dir($path)) {
+                    if (@mkdir($path, 0777, true)) {
+                        @chmod($path, 0777);
+                        $state = 'created';
+                    }
+                }
+                if (file_exists($path) && !is_writable($path)) {
+                    if (@chmod($path, $mode == 777 ? 0777 : 0666)) {
+                        clearstatcache();
+                        $state = is_writable($path) ? 'chmod' : 'error';
+                    }
+                    else {
+                        $state = 'error';
+                    }
+                }
+                $rows[] = array($rel, $mode, file_exists($path) && is_writable($path) ? $state : 'error');
+            }
+        }
+    }
+    return $rows;
+}
+
+/** Löscht den Ordner install (rekursiv). Rückgabe: 'deleted' | 'chmod' | 'failed' */
+function lmo_install_remove_self($dir)
+{
+    $real = realpath($dir);
+    if ($real === false || basename($real) !== 'install' || !is_file($real . '/install.php') || !is_file(dirname($real) . '/init.php')) {
+        return 'failed';
+    }
+    @chmod($real, 0777);
+    $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($real, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST);
+    foreach ($it as $f) {
+        if ($f->isDir() && !$f->isLink()) {
+            @chmod($f->getPathname(), 0777);
+            @rmdir($f->getPathname());
+        }
+        else {
+            @unlink($f->getPathname());
+        }
+    }
+    if (@rmdir($real)) {
+        return 'deleted';
+    }
+    return @chmod($real, 0) ? 'chmod' : 'failed';
+}
+
+$lmo_install_step = isset($_REQUEST['lmo_install_step']) ? (int)$_REQUEST['lmo_install_step'] : 0;
+if (isset($_POST['check'])) $lmo_install_step = 3;
+
+$patherror = $urlerror = $installerror = '';
+$rows = array();
+
+// Sperre: Ist der LMO schon installiert, darf der Installer nur noch in der laufenden Installation (gleiche Sitzung)
+// oder durch den eingeloggten Voll-Admin (Update) benutzt werden. Sonst könnte jeder per POST die Pfade überschreiben.
+$installed = is_file($lmo_dir . '/config/init-parameters.php');
+$is_admin = isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 2;
+$cleanup_ok = isset($_POST['lmo_cleanup'], $_SESSION['lmo_cleanup_token']) && is_string($_POST['lmo_cleanup'])
+    && hash_equals($_SESSION['lmo_cleanup_token'], $_POST['lmo_cleanup']);
+if ($installed && empty($_SESSION['lmo_install_run']) && !$is_admin && !$cleanup_ok) {
+    http_response_code(403);
+    echo '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>' . $lang[$userlang]['HEADER'] . '</title></head><body><h1>' . $lang[$userlang]['HEADER'] . '</h1><p style="color:#a00">' . $lang[$userlang]['ERROR_INSTALLED'] . '</p></body></html>';
+    exit();
+}
+if ($cleanup_ok) {
+    unset($_SESSION['lmo_cleanup_token']);
+    $cleanup_result = lmo_install_remove_self(__DIR__);
+    $lmo_install_step = 5;
+}
+else {
+    $_SESSION['lmo_install_run'] = true;
+}
 
 // Determine HTTP / HTTPS
-if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' or $_SERVER['SERVER_PORT'] == 443) $protocol = 'https:';
+if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' or (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) $protocol = 'https:';
 else $protocol = 'http:';
 
-$path = str_replace('\\', '/', $lmo_dir);
+$path = $lmo_dir_slash;
 if (strpos(dirname($_SERVER['SCRIPT_NAME']), '/install') !== false) {
     $url = $protocol . '//' . $_SERVER['HTTP_HOST'] . dirname(dirname($_SERVER['SCRIPT_NAME']));
 }
 else {
     $url = $protocol . '//' . $_SERVER['HTTP_HOST'] . dirname(($_SERVER['SCRIPT_NAME']));
 }
+$url = rtrim(str_replace('\\', '/', $url), '/');
 
-if ($lmo_install_step == 1) {
-    // Test FTP data
-
-    $ftp = new Net_FTP();
-    $_SESSION['ftpserver'] = isset($_POST['ftpserver']) ? trim($_POST['ftpserver']) : (!empty($_SESSION['ftpserver']) ? $_SESSION['ftpserver'] : '');
-    $_SESSION['ftpuser'] = isset($_POST['ftpuser']) ? trim($_POST['ftpuser']) : (!empty($_SESSION['ftpuser']) ? $_SESSION['ftpuser'] : '');
-    $_SESSION['ftppass'] = isset($_POST['ftppass']) ? trim($_POST['ftppass']) : (!empty($_SESSION['ftppass']) ? $_SESSION['ftppass'] : '');
-
-    if ($ftp->connect($_SESSION['ftpserver'], 21) !== true) {
-        $urlerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'].'"> ' . $lang[$userlang]['STEP0_FTP_NO_CONNECTION'] . '</p>';
-        $lmo_install_step=0;
+// Vorhandene Einstellungen (Update): Pfad und URL aus config/init-parameters.php vorbelegen
+$is_update = $installed || is_file($lmo_dir . '/config/cfg.txt') || is_file($lmo_dir . '/lmo-auth.txt');
+if ($installed) {
+    $ini = (string)@file_get_contents($lmo_dir . '/config/init-parameters.php');
+    if (preg_match('/\$lmo_dateipfad\s*=\s*([\'"])(.*?)\1\s*;/', $ini, $m) && $m[2] !== '' && is_file($m[2] . '/init.php')) {
+        $path = rtrim(str_replace('\\', '/', $m[2]), '/');
     }
-    else {
-        if ($ftp->login($_SESSION['ftpuser'], $_SESSION['ftppass']) !== true) {
-            $ftp->disconnect();
-            $loginerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'].'"> ' . $lang[$userlang]['STEP0_FTP_NO_LOGIN'] . '</p>';
-            $lmo_install_step = 0;
-        }
-    }
-
-    if ($lmo_install_step != 0) {
-        $_SESSION['ftpdir'] = isset($_POST['ftpdir']) ? trim(str_replace('../','',$_POST['ftpdir'])) : '';
-        $ftpdir = $_SESSION['ftpdir'];
-        if (empty($_POST['ftpdir'])) {
-            // Choose path
-
-            $_SESSION['view'] = isset($_GET['view']) ? trim(str_replace('../','',$_GET['view'])) : '';
-            $filelist = filecollect($ftp, $_SESSION['view']);
-        }
-        else {
-            // Path selected -> set rights
-
-            $ftp->cd($ftpdir);
-            if (PEAR::isError($ftp->size('init.php'))) {
-                // Pathtest
-                $ftp->cd('..');
-                $patherror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> "' . $ftpdir . '": ' . $lang[$userlang]['ERROR_WRONG_PATH'] . '</p>';
-                $filelist = filecollect($ftp, $_SESSION['view']);
-                $lmo_install_step = 1;
-            }
-            else {
-                foreach ($filelist as $chmod => $files) {
-                    foreach ($files as $file) {
-                        if (strpos($file,'*')) {
-                            $ligen = $ftp->ls('.', NET_FTP_FILES_ONLY);
-                            foreach ($ligen as $liga) {
-                                if (substr($liga['name'], -4) == substr($file,-4)){
-                                    $ftp->chmod($liga, $chmod);
-                                }
-                            }
-                        }
-                        else {
-                            // Handle config files
-                            if (strpos($file, 'cfg.txt') !== false || strpos($file, 'auth') !== false) {
-                                if (!file_exists($lmo_dir . '/' . $file)) {
-                                    if (strpos($file, 'lmo-auth.php')!==false && file_exists($lmo_dir . '/lmo-auth.txt')) {
-                                        // copy old auth-file into new one
-                                        $auth_old = file($lmo_dir . '/lmo-auth.txt');
-                                        $auth_file = fopen($lmo_dir . '/' . $file, 'wb');
-                                        fwrite($auth_file, '<?php exit(); ?>\n');
-                                        foreach ($auth_old as $old) {
-                                            fwrite($auth_file, $old . '\n');
-                                        }
-                                        fclose($auth_file);
-                                    }
-                                    // Copy install/cfg.txt    if cfg.txt not exists
-                                    $ftp->put(__DIR__ . '/' . $file, $file);
-                                    $ftp->chmod($file, $chmod);
-                                }
-                                else {
-                                    if (strpos($file, 'cfg.txt') !== false) {
-                                        // Merge config files
-                                        // Read config files
-                                        $cfg_old = parse_ini_file($lmo_dir . '/' . $file);
-                                        $cfg_new = parse_ini_file(__DIR__ . '/' . $file);
-                                        // Merge config files
-                                        foreach ($cfg_new as $new_key => $new_value) {
-                                            if (!array_key_exists($new_key, $cfg_old)) {
-                                                $cfg_old[$new_key] = $new_value;
-                                            }
-                                        }
-                                        // Make cfg.txt writable
-                                        $ftp->chmod($file, $chmod);
-                                        // Write merged configuration
-                                        $mergedfile = fopen($lmo_dir . '/' . $file, 'wb');
-                                        foreach ($cfg_old as $merged_key => $merged_value) {
-                                            fwrite($mergedfile, $merged_key . '=' . $merged_value . "\n");
-                                        }
-                                    }
-                                }
-                            }
-                            $ftp->chmod($file, $chmod);
-                        }
-                    }
-                }
-                $lmo_install_step = 2;
-            }
-        }
-        $ftp->disconnect();
+    if (preg_match('/\$lmo_url\s*=\s*([\'"])(https?:\/\/[^\'"\s]+)\1\s*;/i', $ini, $m)) {
+        $url = rtrim($m[2], '/');
     }
 }
 
-if ($lmo_install_step == 3) {
-    $path = isset($_POST['path']) ? $_POST['path'] : $path;
-    $url = isset($_POST['url']) ? $_POST['url'] : $url;
+if ($lmo_install_step == 1) {
+    // Verzeichnisse und Konfigurationsdateien anlegen, Rechte prüfen/setzen
+    $rows = lmo_install_prepare($lmo_dir, $filelist);
+    $lmo_install_step = 2;
+}
 
-    $path = substr($path, -1) == '/' ? substr($path, 0, -1) : $path;
-    $url = substr($url, -1) == '/' ? substr($url, 0, -1) : $url;
+if ($lmo_install_step == 3 || ($lmo_install_step == 4 && isset($_POST['path']))) {
+    $was_step4 = ($lmo_install_step == 4);
+    $path = isset($_POST['path']) ? rtrim(str_replace('\\', '/', trim($_POST['path'])), '/') : $path;
+    $url = isset($_POST['url']) ? rtrim(trim($_POST['url']), '/') : $url;
 
     $_SESSION['url1'] = $url;
 
-    $filename = $path . '/config/init-parameters.php';
-    $somecontent = "<?php \n\t\$lmo_dateipfad='" . $path . "'; //Dateipfad zum LMO\n\t\$lmo_url='" . $url . "'; //abolute URL zum LMO\n?>";
-    // Make sure the file exists and is writable
-    if (!$handle = fopen($filename, 'wb')) {
-        $installerror .= '<p class="error"><img src="../img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_OPENABLE'] . '</p>';
+    $path_ok = $path !== '' && preg_match('/^[^\x00-\x1f\'"]+$/', $path) === 1 && is_file($path . '/init.php');
+    $url_ok = preg_match('/^https?:\/\/[^\s\'"<>]+$/i', $url) === 1 && filter_var($url, FILTER_VALIDATE_URL) !== false;
+    if (!$path_ok) {
+        $installerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['ERROR_PATH_INVALID'] . '</p>';
+    }
+    elseif (!$url_ok) {
+        $installerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['ERROR_URL_INVALID'] . '</p>';
     }
     else {
-        if (!fwrite($handle, $somecontent)) {
+        $filename = $path . '/config/init-parameters.php';
+        $somecontent = "<?php \n\t\$lmo_dateipfad=" . var_export($path, true) . "; //Dateipfad zum LMO\n\t\$lmo_url=" . var_export($url, true) . "; //abolute URL zum LMO\n?>";
+        if (@file_put_contents($filename, $somecontent, LOCK_EX) === false) {
             $installerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_WRITEABLE'] . '</p>';
         }
         else {
+            @chmod($filename, 0666);
             $installerror .= '<p><em><img src="img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['SUCCESS'] . '"> ' . $lang[$userlang]['STEP3_SUCCESS_INI_FILE'] . '</em></p>';
         }
-        fclose($handle);
+    }
+    if ($was_step4) {
+        $lmo_install_step = (strpos($installerror, 'class="error"') !== false) ? 3 : 4;
     }
 }
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="<?php echo $userlang;?>">
     <head>
         <title><?php echo $lang[$userlang]['HEADER'];?></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style type="text/css">
             @media all {
                 body         {    max-width:60em;margin: 0.5em auto;padding:0 0.9em;font-size:85%;background-color: #ffffff;color: #000000;font-family:Tahoma, Verdana, sans-serif;border:1px solid #999;-moz-border-radius:8px;}
@@ -495,6 +558,14 @@ if ($lmo_install_step == 3) {
                 .w3cbutton3 a:hover {     background-color: #fc6;    color: #000;    text-decoration: none;}
                 .w3cbutton3 span.w3c {    padding: 0 0.4em;    background-color: #fff;    color: #0c479d;}
 
+                /* Darstellung auf kleinen Bildschirmen */
+                * {box-sizing:border-box;}
+                table {width:100%;}
+                input[type=text] {width:100%;max-width:40em;}
+                dd {margin:0.5em 1em;overflow-wrap:anywhere;}
+                .foot {overflow:hidden;}
+                .foot > div:last-child {clear:both;}
+
                 /*CSS3-values*/
                 dl, .error {-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;}
             }
@@ -503,249 +574,181 @@ if ($lmo_install_step == 3) {
     <body>
     <h1><?php echo $lang[$userlang]['HEADER'];?></h1><?php
 
-echo $patherror;
 if ($lmo_install_step == 0) {
-    if (!$_SESSION['man'] && !isset($_REQUEST['man'])) {
-        if (version_compare(PHP_VERSION, $min_php_version, '<')) {
-            $install_replace = array('[MIN_PHP]', '[IS_PHP]');?>
-    <h2><?php echo $lang[$userlang]['ERROR'];?></h2>
-    <table width="90%">
+    $php_ok = !version_compare(PHP_VERSION, $min_php_version, '<');?>
+    <h2><?php echo $lang[$userlang]['STEP0'];?></h2>
+    <table>
         <tr>
-            <td class="error"><?php echo '<img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . str_replace(array('[MIN_PHP]', '[IS_PHP]'), array($min_php_version, PHP_VERSION), $lang[$userlang]['PHP_ERROR_1']);
-            $error++;
-?>
+            <td><?php echo $lang[$userlang]['STEP0_DESCRIPTION'];?></td>
+        </tr>
+        <tr>
+            <td><p><em><?php echo $lang[$userlang][$is_update ? 'MODE_UPDATE' : 'MODE_NEW'];?></em></p></td>
+        </tr>
+        <tr>
+            <td>
+                <dl>
+                    <dt>PHP &ge; <?php echo $min_php_version; ?></dt>
+                    <dd><?php
+    if ($php_ok) {
+        echo '<img src="img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['SUCCESS'] . '"> PHP: ' . PHP_VERSION;
+    }
+    else {
+        echo '<img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . str_replace(array('[MIN_PHP]', '[IS_PHP]'), array($min_php_version, PHP_VERSION), $lang[$userlang]['PHP_ERROR_1']);
+    }?></dd>
+<?php if ($php_ok) { ?>
+                    <dt>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+                            <input type="hidden" name="lmo_install_step" value="1">
+                            <input type="submit" value="<?php echo $lang[$userlang]['START'];?>">
+                        </form>
+                    </dt>
+<?php } ?>
+                </dl>
             </td>
         </tr>
-    </table>
-<?php
+    </table><?php
+}
+
+if ($lmo_install_step == 2) {
+    $error = 0;
+    $labels = array('created' => $lang[$userlang]['ST_CREATED'], 'merged' => $lang[$userlang]['ST_MERGED'], 'chmod' => $lang[$userlang]['ST_CHMOD'], 'ok' => $lang[$userlang]['ST_OK'], 'error' => '');?>
+    <h2><?php echo $lang[$userlang]['STEP2'];?></h2>
+    <table>
+        <tr>
+            <td><?php echo $lang[$userlang]['STEP2_DESCRIPTION'];?></td>
+        </tr>
+        <tr>
+            <td>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onSubmit="return check();">
+                    <dl><?php
+    $last = 0;
+    foreach ($rows as $row) {
+        list($rel, $mode, $state) = $row;
+        if ($mode != $last) {
+            echo '<dt>chmod ' . $mode . '</dt>';
+            $last = $mode;
+        }
+        if ($state == 'error') {
+            $error++;
+            echo "\n                        <dd><img src='img/wrong.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> " . htmlspecialchars($rel) . ' <small>(' . $mode . ')</small></dd>';
         }
         else {
-?>
-    <h2><?php echo $lang[$userlang]['STEP0'];?></h2>
-    <table width="90%">
-        <tr>
-            <td>
-                 <?php echo $lang[$userlang]['STEP0_DESCRIPTION'];?>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">
-                <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                    <dl>
-                        <dt><?php echo $lang[$userlang]['STEP0_FTP_SERVER'];?></dt>
-                        <dd>
-                        <?php echo $urlerror?>
-                            <input name="ftpserver" type="text" size="50" value="<?php echo isset($_SESSION['ftpserver']) ? $_SESSION['ftpserver'] : $_SERVER['SERVER_NAME'];?>"><?php echo $lang[$userlang]['STEP0_FTP_SERVER_EXAMPLE'];?>
-                        </dd>
-                        <dt><?php echo $lang[$userlang]['STEP0_FTP_LOGIN'];?></dt>
-                        <dd>
-                        <?php echo $loginerror?>
-                            User:<input name="ftpuser" type="text" size="25" value="<?php echo $_SESSION['ftpuser'];?>"> Pass:<input name="ftppass" type="password" size="25" value="">
-                            <input type="hidden" name="lmo_install_step" value="1">
-                        </dd>
+            echo "\n                        <dd><img src='img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['SUCCESS'] . "'> " . htmlspecialchars($rel) . ' <small>(' . $mode . ($state != 'ok' ? ', ' . $labels[$state] : '') . ')</small></dd>';
+        }
+    }
+    if ($error > 0) {
+        echo '<dt>' . $lang[$userlang]['ERROR'] . '</dt><dd>' . $lang[$userlang]['STEP2_MANUAL'] . '</dd>';
+    }?>
+
                         <dt>
+                            <input type="hidden" name="lmo_install_step" value="3">
                             <input type="submit" value="<?php echo $lang[$userlang]['PROCEED'];?>">
+                            <button type="submit" name="lmo_install_step" value="1" onclick="this.form.onsubmit=null;"><?php echo $lang[$userlang]['RECHECK'];?></button>
                         </dt>
                     </dl>
                 </form>
-            </td>
-        </tr>
-    </table><?php
-        }
-    }
-    else {
-        $lmo_install_step = 2;
-    }
-}
-
-if ($lmo_install_step == 1) {?>
-    <h2><?php echo $lang[$userlang]['STEP1'];?></h2>
-    <table width="90%">
-        <tr>
-            <td>
-                <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                    <dl>
-                        <dt><?php echo $lang[$userlang]['STEP1_SELECT_FTP_DIR'];?></dt><?php
-    if ($_SESSION['view'] != '') {
-        echo '<dd>&nbsp;<a href="' . $_SERVER['PHP_SELF'] . '?lmo_install_step=1&amp;view=' . dirname($_SESSION['view']) . '">..</a></dd>';
-    }
-    if (!empty($filelist)) {
-        foreach ($filelist as $ftpdir) {
-            echo "<dd><input type='radio' value='$ftpdir' name='ftpdir'> <a href='" . $_SERVER['PHP_SELF'] . "?lmo_install_step=1&amp;view=$ftpdir'>" . basename($ftpdir) . '</a></dd>';
-        }
-    }
-?>
-                        <dt>
-                            <input type="hidden" name="lmo_install_step" value="1">
-                            <input type="submit" value="<?php echo $lang[$userlang]['PROCEED'];?>">
-                        </dt>
-                    </dl>
-                </form>
-            </td>
-        </tr>
-    </table><?php
-}
-
-if ($lmo_install_step == 2) { //Manuell
-?>
-    <h2><?php echo $lang[$userlang]['STEP2'];?></h2>
-    <table width="90%"><?php
-    if ($_SESSION['man']) {?>
-        <tr>
-            <td>
-                <?php echo $lang[$userlang]['STEP2_MANUAL'];?>
-            </td>
-        </tr><?php
-    }?>
-        <tr>
-            <td>
-                <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" onSubmit="return check();">
-                    <dl>
-                        <dt>PHP > <?php echo $min_php_version; ?></dt>
-                        <dd><?php
-    $error=0;
-    if (version_compare(PHP_VERSION, $min_php_version, '<')) {
-        echo '<img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> PHP: ' . PHP_VERSION;
-        $error++;
-    }
-    else {
-        echo '<img src="img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> PHP: ' . PHP_VERSION;
-    }
-    foreach ($filelist as $chmod=>$files) {
-        echo '<dt>chmod ' . ($chmod) . '</dt>';
-        foreach ($files as $file) {
-            echo "\n                        <dd>";
-            if (strpos($file,'*')) {
-                $handle = opendir ($lmo_dir . '/' . dirname($file));
-                while (false !== ($file2 = readdir($handle))) {
-                    if ($file2 != '.' && $file2 != '..' && !is_dir($lmo_dir . '/' . dirname($file) . "/$file2")) {
-                        if (is_writable($lmo_dir . '/' . dirname($file) . "/$file2")) {
-                            echo "<img src='img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['SUCCESS'] . "'> " . dirname($file) . "/$file2"." <small>(" . ($chmod) . ")</small><dd>";
-                        }
-                        else {
-                            echo "<img src='img/wrong.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> " . dirname($file) . "/$file2"." <small>(" . ($chmod) . ")</small><dd>";
-                            $error++;
-                        }
-                    }
-
-                }
-            }
-            else {
-                if (is_writable($lmo_dir . '/' . $file)) {
-                    echo "<img src='img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['SUCCESS'] . "'> $file <small>(" . ($chmod) . ")</small>";
-                }
-                else {
-                    echo "<img src='img/wrong.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> $file <small>(" . ($chmod) . ")</small>";
-                    $error++;
-                }
-            }
-        }
-    }?>
-                    </dd>
-                    <dt>
-                        <input type="hidden" name="lmo_install_step" value="3">
-                        <input type="submit" value="<?php echo $lang[$userlang]['PROCEED'];?>">
-                    </dt>
-                </dl>
-            </form>
                 <script type="text/javascript">
                 function check() {
-                    if (<?php echo $error?> > 0) {
+                    if (<?php echo (int)$error?> > 0) {
                         return confirm("<?php echo $lang[$userlang]['ERROR_CONFIRM'];?>");
                     }
                     return true;
                 }
                 </script>
-        </td>
-     </tr>
+            </td>
+        </tr>
     </table><?php
 }
 
-
 if ($lmo_install_step == 3) {?>
     <h2><?php echo $lang[$userlang]['STEP3'];?></h2>
-    <table width="90%">
+    <table>
         <tr>
             <td>
-                <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
                     <dl>
                         <dt><?php echo $lang[$userlang]['STEP3_PATH'];?></dt>
                         <dd>
-                        <?php echo $patherror?>
-                            <a href="#" onclick="document.getElementsByName('path')[0].value='<?php echo $path;?>';return false;"><em>[Auto]</em></a>
-                            <input name="path" type="text" size="55" value="<?php echo $path?>"> <?php echo $lang[$userlang]['STEP3_PATH_EXAMPLE'];?>
+                            <a href="#" onclick="document.getElementsByName('path')[0].value='<?php echo addslashes($lmo_dir_slash);?>';return false;"><em>[Auto]</em></a>
+                            <input name="path" type="text" size="55" value="<?php echo htmlspecialchars($path)?>"> <?php echo $lang[$userlang]['STEP3_PATH_EXAMPLE'];?>
                         </dd>
                         <dd><?php
-                            if (file_exists($path . '/config/init-parameters.php')) {
+                            if (is_file($path . '/init.php')) {
                                 echo '<img src="img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['SUCCESS'] . '"> ' . $lang[$userlang]['STEP3_PATH_CORRECT'];
                             }
                             else {
                                 echo '<img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_PATH_WRONG'];
-                                $error = 1;
                             }?>
                         </dd>
                         <dt><?php echo $lang[$userlang]['STEP3_URL'];?></dt>
                         <dd>
-                        <?php echo $urlerror?>
                             <a href="#" onclick="document.getElementsByName('url')[0].value='<?php echo addslashes($url)?>';return false;"><em>[Auto]</em></a>
-                            <input name="url" type="text" size="55" value="<?php echo $url?>"> <?php echo $lang[$userlang]['STEP3_URL_EXAMPLE'];?>
+                            <input name="url" type="text" size="55" value="<?php echo htmlspecialchars($url)?>"> <?php echo $lang[$userlang]['STEP3_URL_EXAMPLE'];?>
                         </dd>
                         <dd><?php
-                            echo '<img src="' . $url . '/img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_URL_CORRECT'];
+                            echo '<img src="' . htmlspecialchars($url) . '/img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_URL_CORRECT'];
                             ?>
                         </dd>
+                        <dd><?php echo $installerror; ?></dd>
                         <dt>
                             <input type="hidden" name="lmo_install_step" value="4">
                             <input type="submit" name="check" value="<?php echo $lang[$userlang]['CHECK_AGAIN'];?>">
                             <input type="submit" value="<?php echo $lang[$userlang]['PROCEED'];?>">
                         </dt>
                     </dl>
-                    <script type="text/javascript">
-                        function check() {
-                            if (<?php echo $error?> > 0) {
-                                return confirm("<?php echo $lang[$userlang]['ERROR_CONFIRM'];?>");
-                            }
-                            return true;
-                        }
-                    </script>
                 </form>
-            <td>
-        <tr>
+            </td>
+        </tr>
     </table><?php
 }
 
-
-if ($lmo_install_step == 4) {?>
+if ($lmo_install_step == 4) {
+    // Installation abgeschlossen: ab jetzt ist der Installer für fremde Aufrufe gesperrt
+    unset($_SESSION['lmo_install_run']);
+    $_SESSION['lmo_cleanup_token'] = bin2hex(random_bytes(16));
+    $u = isset($_SESSION['url1']) ? htmlspecialchars($_SESSION['url1']) : '';?>
     <h2><?php echo $lang[$userlang]['STEP4'];?></h2>
     <dl>
         <dt><?php echo $lang[$userlang]['STEP4_TEXT1'];?></dt>
         <dd><?php echo $lang[$userlang]['STEP4_TEXT2'];?></dd>
-        <dd class="error"><?php echo $lang[$userlang]['STEP4_TEXT3'];?></dd>
-        <dd><?php echo sprintf($lang[$userlang]['STEP4_TEXT4'],$_SESSION['url1'] . '/lmo.php',$_SESSION['url1'] . '/lmo.php',$_SESSION['url1'] . '/lmoadmin.php', $_SESSION['url1'] . '/lmoadmin.php', $_SESSION['url1'] . '/help/Deutsch/index.html', $_SESSION['url1'] . '/help/Deutsch/index.html')?></dd>
+        <dd class="error"><?php echo $lang[$userlang]['STEP4_TEXT3'];?>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" style="margin-top:0.5em">
+                <input type="hidden" name="lmo_cleanup" value="<?php echo htmlspecialchars($_SESSION['lmo_cleanup_token']);?>">
+                <input type="submit" value="<?php echo $lang[$userlang]['CLEAN_BUTTON'];?>">
+            </form></dd>
+        <dd><?php echo sprintf($lang[$userlang]['STEP4_TEXT4'], $u . '/lmo.php', $u . '/lmo.php', $u . '/lmoadmin.php', $u . '/lmoadmin.php', $u . '/help/Deutsch/index.html', $u . '/help/Deutsch/index.html'); ?></dd>
         <dd class="error"><?php echo $lang[$userlang]['STEP4_TEXT5'];?></dd>
         <dt><?php echo $lang[$userlang]['STEP4_TEXT6'];?></dt>
     </dl><?php
+}?>
+
+<?php
+if ($lmo_install_step == 5) {
+    $keys = array('deleted' => 'CLEAN_OK', 'chmod' => 'CLEAN_CHMOD', 'failed' => 'CLEAN_FAIL');?>
+    <h2><?php echo $lang[$userlang]['STEP4'];?></h2>
+    <p class="<?php echo $cleanup_result == 'deleted' ? '' : 'error';?>"><?php echo $lang[$userlang][$keys[$cleanup_result]];?></p>
+    <p><a href="<?php echo htmlspecialchars(isset($_SESSION['url1']) ? $_SESSION['url1'] : '..');?>/lmoadmin.php">lmoadmin.php</a></p><?php
 }?>
 
     <div class="foot">
 
     <div class="w3cbutton3">
         <a href="http://validator.w3.org/check/referer"><span class="w3c">W3C</span>
-        <span class="spec">HTML 4.01</span></a></div>
+        <span class="spec">HTML 5</span></a></div>
         <div class="w3cbutton3">
         <a href=" http://jigsaw.w3.org/css-validator/check/referer"><span class="w3c">W3C</span>
         <span class="spec">CSS 2.1</span></a></div>
         <div class="flag">
-        <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=FR"><img src="<?php echo $url;?>/img/Francais.svg" title="Francais" alt="FR" height="14"></a>
+        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?userlang=FR"><img src="<?php echo htmlspecialchars($url);?>/img/Francais.svg" title="Francais" alt="FR" height="14"></a>
         </div>
         <div class="flag">
-        <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=EN"><img src="<?php echo $url;?>/img/English.svg" title="English" alt="EN" height="14"></a>
+        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?userlang=EN"><img src="<?php echo htmlspecialchars($url);?>/img/English.svg" title="English" alt="EN" height="14"></a>
         </div>
         <div class="flag">
-        <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=ES"><img src="<?php echo $url;?>/img/Espanol.svg" title="Espanol" alt="ES" height="14"></a>
+        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?userlang=ES"><img src="<?php echo htmlspecialchars($url);?>/img/Espanol.svg" title="Espanol" alt="ES" height="14"></a>
         </div>
         <div class="flag">
-        <a href="<?php echo $_SERVER['PHP_SELF'];?>?userlang=DE"><img src="<?php echo $url;?>/img/Deutsch.svg" title="Deutsch" alt="DE" height="14"></a>
+        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?userlang=DE"><img src="<?php echo htmlspecialchars($url);?>/img/Deutsch.svg" title="Deutsch" alt="DE" height="14"></a>
         </div>
         <div class="w3cbutton3">
         <a href="<?php echo $_SERVER['PHP_SELF'];?>"><span class="w3c">RE</span>
@@ -754,20 +757,3 @@ if ($lmo_install_step == 4) {?>
     </div>
     </body>
 </html>
-
-<?php
-
-function filecollect(&$ftp, $dir = '.') {
-    $ftp->cd($dir);
-    $list = $ftp->ls('.', NET_FTP_DIRS_ONLY);
-    if ($list === false) echo 'LIST FAILS!';
-    else {
-        foreach ($list as $entry) {
-            if ($entry['name'] != '.' && $entry['name'] != '..') {
-                $return[] = $dir . '/' . $entry['name'];
-            }
-        }
-    }
-    return $return;
-}
-?>
