@@ -8,7 +8,7 @@
 [![Donate](https://img.shields.io/badge/-Buy%20me%20a%20coffee-brown.svg)](https://paypal.me/LMOforum)
 # (ENGLISH) LMO on PHP8
 Together with others, I want to ensure that Liga Manager Online runs on PHP 8.
-However, the project page is still <a target="_blank" href="https://www.liga-manager-online.de/">https://www.liga-manager-online.de/homepage/</a>
+However, the project page is still <a target="_blank" href="https://www.liga-manager-online.de/">https://www.liga-manager-online.de/</a>
 ## Description of the LMO
 With this script you can offer your visitors a great results service for your favorite leagues. The best part is that all league management takes place directly on the server. So all you have to worry about is the results and your visitors will immediately receive the latest tables, statistics and more. This is really super convenient because it means you no longer have to deal with third-party software and also saves a lot of time that you would otherwise have to spend on exports and uploads.
 
@@ -39,7 +39,7 @@ After joker has removed the forum on the LMO's project page (because of the Gene
 --------------------------------------------------------------------------------------------------------
 # (DEUTSCH) LMO auf PHP8
 Ich möchte hier mit anderen die Lauffähigkeit des Liga Managers Online unter PHP 8 gewährleisten.
-Die Projektseite ist aber weiterhin <a target="_blank" href="https://www.liga-manager-online.de/">https://www.liga-manager-online.de/homepage/</a>
+Die Projektseite ist aber weiterhin <a target="_blank" href="https://www.liga-manager-online.de/">https://www.liga-manager-online.de/</a>
 ## Beschreibung des LMO's
 Mit diesem Skript können Sie Ihren Besuchern einen tollen Ergebnisdienst über Ihre Lieblingsligen anbieten. Das Beste daran ist, dass die gesamte Verwaltung der Ligen direkt auf dem Server abläuft. Sie müssen sich also nur noch um die Ergebnisse kümmern und Ihre Besucher erhalten sofort die aktuellen Tabellen, Statistiken und mehr. Das ist wirklich super praktisch, denn so müssen Sie sich nicht mehr mit Fremdsoftware befassen und sparen sich auch noch viel Zeit, die Sie sonst für Exporte und Uploads aufwenden müssten.
 
