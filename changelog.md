@@ -6,11 +6,16 @@ __Alle wesentlichen Änderungen am PHP Script des LMO werden in dieser Datei dok
 _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 ### Added
+* Tippspiel: Neue Admin-Funktion "Tipps nachtragen" (nur Voll-Admin). Unter Tippspiel → "Tipps nachtragen" wählt der Admin Liga und Tipper und kann dessen Tipps auch nach Spielbeginn oder Spielende eintragen oder ändern (Zeitsperre nur für den Admin aufgehoben). Gilt für alle Ligaarten (Liga, KO/Turnier), beide Tippmodi (Ergebnis, Tendenz) und Joker-Tipps. Danach muss die Auswertung erneut durchgeführt werden. Jeder Nachtrag wird in `config/tipp/nachtrag.php` protokolliert und im Adminmenü angezeigt. Sprachtexte (Schlüssel 306–317) in `lang/tipp/` (14 Sprachen).
 * E-Mail-Versand über SMTP: Neuer Bereich "E-Mail-Versand" in den Optionen (nur Voll-Admin) mit Server, Port, Verschlüsselung (keine/STARTTLS/SSL), Benutzername, Passwort und Absenderadresse sowie einem Button "Testmail senden". Das Passwort wird verschlüsselt in `config/smtp/` gespeichert, bei Aufruf über HTTP erscheint ein Hinweis. Sprachdateien in `lang/smtp/` (14 Sprachen).
 * PHPMailer 7.2.0 für alle E-Mails des LMO (Ligen per Mail, Tippspiel-Anmeldung, Freischaltung, Newsletter, Reminder, Passwort-Mail). Ist SMTP eingestellt und schlägt der Versand fehl, wird als Rückfall PHP mail() verwendet.
 * Neuer Designeditor: alle Bereiche als Reiter in einem Formular, klickbare Live-Vorschau mit einer echten Liga (Ansicht und Breite wählbar), Farbschemata (9 Hauptfarben, Dunkel-Variante, eigene Farbe mit Palette und Hex-Eingabe), Kontrastwarnung, gespeicherte Designs (`config/design/`), Export/Import als JSON, Standardwerte und Verwerfen. Sprachdateien in `lang/design/` (14 Sprachen).
 
 ### Changed
+* Installer: Am Ende der Installation/Updateinstallation kann der Ordner `install/` per Button gelöscht werden (Fallback `chmod 0`). Der alte Hinweis "Delete install folder or set its chmod to 000!" im Adminbereich entfällt, der Button "Update-Installation starten" ist in allen 14 Sprachen vorhanden.
+* Designeditor: Texte nutzen jetzt die LMO-Sprachverwaltung (`$text['design'][n]`) mit englischem Fallback statt einer eigenen Funktion.
+* Hilfe "Einstiegsinformationen": Kapitel "3 Installation" und "4 Updateinstallation" getrennt, Hinweise zu Zugriffsrechten und zum Löschen des Installationsordners ergänzt.
+* Addon Tippspiel: alle Dateien in `addon/tipp/*.php` nach PSR-12 umformatiert (4 Leerzeichen, kurze Array-Syntax, einfache Anführungszeichen); `array_pad($array, …)` → `array_pad([], …)`.
 * Adminbereich: Liegt nach einem Update per FTP noch der Ordner `install/`, erscheint unter der Warnung für den Voll-Admin der Button "Start update installation", der `install/install.php` startet.
 * Installer (`install/install.php`) ohne FTP: PHP legt Verzeichnisse und alle `cfg.txt`-Dateien selbst aus den Vorlagen in `install/` an (Ausgangswerte), erkennt Updates (Hinweis in Schritt 0, Pfad und URL aus der vorhandenen `init-parameters.php` vorbelegt), ergänzt dabei nur fehlende Einstellungen und versucht fehlende Schreibrechte per `chmod` zu setzen. Prüfprotokoll mit "Erneut prüfen". `includes/FTP.php` und `includes/Socket.php` entfallen.
 * Tipperdaten werden in `addon/tipp/lmo-tipperauth.php` statt `lmo-tippauth.txt` gespeichert (mit Schutzzeile gegen direkten Aufruf). Bestehende Daten werden beim ersten Aufruf automatisch übernommen, die alte Datei wird nach erfolgreichem Schreiben gelöscht. (Idee: [babbisch](https://github.com/babbisch/LMO_PHP8))
@@ -23,12 +28,13 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 
 ### Removed
-
+* Nicht mehr benötigt: `includes/FTP.php`, `includes/Socket.php`, `install/addon/tipp/lmo-tippauth.txt`, die Grafiken `*_manual_copy.png` (`img/`, `install/img/`) und `help/media/manual_copy.png`.
 
 ### Fixed
-
+* Tippspiel, Fieberkurven (`lmo-tippcalcgraph.php`): undefinierte Variable `$anztipper` und `$tippernick` führte zu PHP-Warnungen.
 
 ### Security
+* "Tipps nachtragen" ist nur für den Voll-Admin erreichbar, Speichern nur mit Sitzungs-Token (CSRF-Schutz), Liga-Dateiname und Nickname werden geprüft, die simulierte Tipper-Anmeldung wird nach der Anfrage zurückgesetzt. Das Protokoll liegt als PHP-Datei mit `exit`-Schutzzeile vor.
 * Der Installer ist nach der Installation gesperrt (nur in der laufenden Installation oder für den angemeldeten Voll-Admin erreichbar); Pfad und URL werden geprüft und beim Schreiben von `config/init-parameters.php` korrekt maskiert.
 * Die Werte des Designeditors werden beim Speichern serverseitig geprüft (Farben, Rand, Schriftart, Schriftgröße). Ungültige Eingaben werden ignoriert und können die `cfg.txt` bzw. das Stylesheet nicht mehr beschädigen.
 * Die Tipperdatei ist als PHP-Datei mit `exit`-Schutzzeile angelegt und kann nicht mehr im Klartext über den Browser abgerufen werden.
@@ -113,11 +119,16 @@ __All significant changes to the LMO PHP script are documented in this file.__
 _Here we write changelog notes for the next version._
 
 ### Added
+* Prediction game: New admin function "Enter tips retroactively" (full admin only). Under Prediction game → "Enter tips retroactively" the admin selects a league and a tipper and can enter or change that tipper's tips even after the matches have started or ended (time limit lifted for the admin only). Works for all league types (league, KO/tournament), both tip modes (result, tendency) and joker tips. The evaluation must be run again afterwards. Every entry is logged in `config/tipp/nachtrag.php` and shown in the admin menu. Language texts (keys 306–317) in `lang/tipp/` (14 languages).
 * Sending emails via SMTP: New ‘Email Sending’ section in the options (full admin only) with server, port, encryption (none/STARTTLS/SSL), username, password and sender address, as well as a ‘Send test email’ button. The password is stored in encrypted form in `config/smtp/`; a message appears when accessed via HTTP. Language files in `lang/smtp/` (14 languages).
 * PHPMailer 7.2.0 for all LMO emails (leagues via email, prediction game registration, account activation, newsletters, reminders, password reset emails). If SMTP is configured and sending fails, PHP’s `mail()` function is used as a fallback.
 * New design editor: all sections as tabs within a single form, clickable live preview using a real league (view and width selectable), colour schemes (9 main colours, dark mode, custom colours via palette and hex input), contrast warning, saved designs (`config/design/`), export/import as JSON, default values and ‘Discard’ option. Language files in `lang/design/` (14 languages).
 
 ### Changed
+* Installer: At the end of the installation/update the `install/` folder can be deleted with a button (fallback `chmod 0`). The old notice "Delete install folder or set its chmod to 000!" in the admin area is gone; the "Start update installation" button is available in all 14 languages.
+* Design editor: texts now use the LMO language handling (`$text['design'][n]`) with English fallback instead of a separate function.
+* Help "Introduction": chapters "3 Installation" and "4 Update installation" separated; notes on permissions and on deleting the install folder added.
+* Prediction game addon: all files in `addon/tipp/*.php` reformatted to PSR-12 (4 spaces, short array syntax, single quotes); `array_pad($array, …)` → `array_pad([], …)`.
 * Admin area: If the `install/` folder remains after an update via FTP, the button “Start update installation” appears beneath the warning for full admins, which launches `install/install.php`.
 * Installer (`install/install.php`) without FTP: PHP creates directories and all `cfg.txt` files itself from the templates in `install/` (default values), detects updates (note in step 0; path and URL pre-populated from the existing `init-parameters.php`), only adds missing settings and attempts to set missing write permissions via `chmod`. Verification log with “Check again”. `includes/FTP.php` and `includes/Socket.php` are no longer required.
 * Tipper data is stored in `addon/tipp/lmo-tipperauth.php` instead of `lmo-tippauth.txt` (with a protection line to prevent direct access). Existing data is automatically imported on the first run; the old file is deleted once the write operation is successful. (Idea: [babbisch](https://github.com/babbisch/LMO_PHP8))
@@ -130,12 +141,13 @@ _Here we write changelog notes for the next version._
 
 
 ### Removed
-
+* No longer needed: `includes/FTP.php`, `includes/Socket.php`, `install/addon/tipp/lmo-tippauth.txt`, the images `*_manual_copy.png` (`img/`, `install/img/`) and `help/media/manual_copy.png`.
 
 ### Fixed
-
+* Prediction game, fever curves (`lmo-tippcalcgraph.php`): undefined variables `$anztipper` and `$tippernick` caused PHP warnings.
 
 ### Security
+* "Enter tips retroactively" is only available to the full admin; saving requires a session token (CSRF protection), league file name and nickname are validated, and the simulated tipper login is reset after the request. The log is a PHP file with an `exit` protection line.
 * The installer is locked after installation (accessible only within the current installation or to the logged-in full admin); the path and URL are checked and correctly masked when writing to `config/init-parameters.php`.
 * The design editor’s values are checked on the server side when saved (colours, margins, font, font size). Invalid entries are ignored and can no longer corrupt `cfg.txt` or the stylesheet.
 * The tipper file is created as a PHP file with an `exit` protection line and can no longer be accessed in plain text via the browser.
