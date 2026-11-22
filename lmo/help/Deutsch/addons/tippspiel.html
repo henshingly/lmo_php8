@@ -70,12 +70,17 @@
       <p>Hier haben Sie die Möglichkeit, Ihren Tippern verschiedene Nachrichten zukommen zu lassen, einen <strong>Newsletter an alle
       Tipper</strong>, <strong>persönliche Mails</strong> an Mitspieler und einen <strong>Tippreminder</strong> , der die Tipper an
       ihre Tippabgabe erinnern soll.</p>
+      <p>Alle Mails des Tippspiels (auch Anmeldebestätigung, Freischaltung und Passwort-Mail) werden mit der Versandart verschickt,
+      die Sie in den <a href="../optionen.html#optionen0101">globalen Optionen unter E-Mail-Versand</a> eingestellt haben
+      (PHP mail() oder SMTP). Wenn Mails nicht ankommen, richten Sie dort einen SMTP-Server ein und prüfen Sie ihn mit der
+      Testmail.</p>
       <p>Es gibt verschiedene Platzhalter, die beim Mailversand durch deren Entsprechnung ersetzt werden.</p>
       <dl>
         <dt>[nick]</dt>
         <dd>Nickname des jeweiligen Tippers</dd>
         <dt>[pass]</dt>
-        <dd>Nickname des jeweiligen Tippers</dd>
+        <dd>Link zum Zurücksetzen des Passworts. Passwörter werden nur noch als Hash gespeichert und können daher nicht mehr im
+        Klartext verschickt werden. Der Tipper vergibt über den Link ein neues Passwort.</dd>
         <dt>[name]</dt>
         <dd>Der richtige Name des Tippers</dd>
         <dt>[spiele]</dt>
@@ -103,7 +108,10 @@
         <dd>Hier wählen Sie, ob ein Ergebnis oder nur die Tendenz (gewonnen, unentschieden, verloren) getippt werden soll.</dd>
         <dt>Pfade</dt>
         <dd>Hier steht der Pfad, in dem das Tippspiel seine Daten speichert. Die Grundeinstellung ist <strong>/tipps</strong>. Diese
-        sollten Sie nicht ohne guten Grund ändern.</dd>
+        sollten Sie nicht ohne guten Grund ändern. Die Zugangsdaten der Tipper (Nicknamen, Passwort-Hashes, Adressen) liegen in
+        der Datei <strong>addon/tipp/lmo-tipperauth.php</strong>. Sie beginnt mit einer Schutzzeile
+        (<kbd>&lt;?php exit; ?&gt;</kbd>), die dafür sorgt, dass die Datei im Browser nichts ausgibt. Entfernen Sie diese Zeile
+        nicht. Die Datei benötigt Schreibrechte (666).</dd>
         <dt>Punkteverteilung</dt>
         <dd>Hier wird die Punktevergabe für das Tippspiel konfiguriert. Je nach Tippmodus sind unterschiedliche Einstellungen
         möglich, im Tendenzmodus gibt es naturgemäß weniger Einstellungsmöglichkeiten.</dd>

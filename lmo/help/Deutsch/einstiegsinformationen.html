@@ -44,8 +44,9 @@
         <li><a href="#1">Einleitung</a></li>
         <li><a href="#2">Systemvoraussetzungen</a></li>
         <li><a href="#3">Installation</a></li>
-        <li><a href="#4">Login/Logout</a></li>
-        <li><a href="#5">Rechtliches</a></li>
+        <li><a href="#4">Updateinstallation</a></li>
+        <li><a href="#5">Login/Logout</a></li>
+        <li><a href="#6">Rechtliches</a></li>
       </ol>
       <h3><a name="1">1. Einleitung</a></h3>
       <p>
@@ -68,59 +69,101 @@
       <h3><a name="2">2. Systemvoraussetzungen</a></h3>
       <ul>
         <li>Unix- oder Windows-Webserver (empfohlen: Apache)</li>
-        <li><em>PHP 4.1</em> (oder höher)</li>
+        <li><em>PHP 8.2</em> oder höher (empfohlen wird die aktuelle, vom Provider unterstützte PHP-Version)</li>
+        <li>für den E-Mail-Versand über einen SMTP-Server (siehe <a href="optionen.html#optionen0101">Optionen</a>): die
+        PHP-Erweiterung <em>OpenSSL</em> (verschlüsselte Verbindungen, Ablage des SMTP-Passworts) oder alternativ <em>Sodium</em></li>
         <li>empfohlen: JavaScript- und CSS-fähiger Browser</li>
       </ul><a href="#top">[nach oben]</a>
       <h3><a name="3">3. Installation</a></h3>
+      <p>Dieser Abschnitt beschreibt die <strong>Neuinstallation</strong>. Wenn Sie einen vorhandenen LMO aktualisieren, lesen Sie
+      bitte <a href="#4">4. Updateinstallation</a>.</p>
       <ol>
-        <li class='attention'>
-          <strong>Update des LMO:</strong> Beim Update des LMO 4.0 von älteren LMO4-Versionen (beta/RC1) werden keine Konfigurationsdateien überschrieben,
-            Sie können die Dateien über Ihre vorhandenen Datein kopieren. Führen Sie danach unbedingt die Installation neu aus, indem Sie
-            den LMO aufrufen. Es empfiehlt sich bei Live-Systemen den LMO für den Zeitpunkt der Installation kurz zu sperren. (z.B. über htaccess).
-            Eventuell installierte zusätzliche Addons werden nicht erkannt, diese sind also nach dem Update erneut zu installieren</li>
         <li>Das <strong>ZIP-Archiv</strong> wurde bereits von Ihnen entpackt. Achten Sie darauf, dass die Verzeichnisstruktur beim
-        Entpacken beibehalten wird.</li>
+        Entpacken beibehalten wird, und laden Sie den Inhalt auf Ihren Webspace hoch.</li>
         <li>Rufen Sie nun den LMO auf, indem Sie die Adresse zum LMO in Ihren Browser eingeben. <strong>Die Installation startet automatisch
-           und sorgt für alle Vorraussetzungen, die der Betrieb des LMO erfordert.</strong></li>
-        <li>Im Normalfall ist der LMO nun korrekt installiert. Sollte jedoch ein Fehler aufgetreten sein oder Sie können aus anderen
-        Gründen die Installation nicht abschließen, müssen Sie die folgenden Schritte manuell nachvollziehen:
-          <h4>Manuelle Installation</h4>
+           und sorgt für alle Vorraussetzungen, die der Betrieb des LMO erfordert.</strong>
+           Dabei legt PHP die benötigten Verzeichnisse und die Konfigurationsdateien (<strong>cfg.txt</strong>) mit den Ausgangswerten
+           selbst an. Ein FTP-Zugang ist dafür nicht mehr nötig.
+          <ol>
+            <li>Auf der ersten Seite („Systemprüfung und Einrichtung“) steht <em>„Neuinstallation“</em>. Ist Ihre PHP-Version ausreichend, klicken Sie auf <em>Einrichtung starten</em>.</li>
+            <li>Prüfen Sie das Protokoll (Einträge sind <em>angelegt</em>, <em>Rechte gesetzt</em> oder <em>OK</em>) und klicken Sie auf <em>Weiter</em>.</li>
+            <li>Kontrollieren Sie den vorgeschlagenen <strong>Pfad</strong> und die <strong>URL</strong> zum LMO (mit <em>[Auto]</em> lassen sich die erkannten Werte einsetzen) und klicken Sie auf <em>Weiter</em>.</li>
+            <li>Klicken Sie auf der letzten Seite auf <em>Installationsordner jetzt löschen</em>. Ist das nicht möglich, wird der Ordner
+            mit chmod 000 gesperrt oder Sie erhalten den Hinweis, ihn per FTP zu löschen. Nach der Installation ist das Installationsprogramm ohnehin gesperrt.</li>
+          </ol></li>
+        <li>Im Normalfall ist der LMO nun korrekt installiert. Meldet die Installation bei Verzeichnissen oder Dateien einen Fehler
+        (rotes Kreuz), darf PHP auf Ihrem Server dort nicht schreiben. Setzen Sie dann einmalig mit einem FTP-Programm oder dem
+        Dateimanager Ihres Providers die folgenden Zugriffsrechte (chmod) und klicken Sie auf <strong>Erneut prüfen</strong>:
+          <h4>Zugriffsrechte bei Problemen</h4>
           <ul class="advanced">
-            <li><strong>Achtung: Diese Schritte sind nur notwendig, wenn die normale Installation nicht funktioniert!</strong></li>
-            <li>Löschen Sie die Datei <strong>install/install.php</strong> und <strong>kopieren Sie danach den Inhalt
-              des Ordners install über Ihr LMO-Verzeichnis</strong><br><img width="100%" src="../media/manual_copy.png" alt=""></li>
-            <li>Ändern Sie die Datei <strong>config/init-parameters.php</strong> mit einem normalen Texteditor und tragen Sie dort die
-            benötigten Pfade ein. Falls die Datei noch nicht existiert, legen Sie diese mit einem normalen Texteditor an. </li>
-            <li>Die Datei sollte so aussehen: <code>&lt?php<br>
-  &nbsp;&nbsp;$lmo_dateipfad='<strong>/absoluter/pfad/zum/lmo</strong>'; //Dateipfad zum LMO<br>
-  &nbsp;&nbsp;$lmo_url='<strong>http://www.adresse.ihres/lmo</strong>'; //abolute URL zum LMO<br>
-?&gt;</code>
-            Ersetzen Sie die beiden markierten Werte mit <strong><acronym title="Der Weg vom Stammverzeichnis zum LMO - ">dem Dateipfad</acronym></strong> zum LMO-Verzeichnis
-            und mit <strong><acronym title=
-            "Die Adresse, die man im Browser sehen kann, bei lokalen Installationen beginnt diese mit localhost bzw. 127.0.0.1">der Webadresse zum LMO</acronym></strong>. Falls Sie
-            diese Angaben nicht wissen, fragen Sie bitte Ihren Provider.</li>
-            <li>Nun ändern Sie bei folgenden Datei die Zugriffsrechte (chmod):
+            <li><strong>Achtung: Diese Schritte sind nur notwendig, wenn die Installation Fehler meldet!</strong></li>
+            <li>Ändern Sie bei folgenden Dateien und Verzeichnissen die Zugriffsrechte (chmod):
               <dl>
                 <dt>Verzeichnisse:</dt>
                 <dd>777 - das Verzeichnis <strong>ligen</strong> und <strong>alle Unterverzeichnisse</strong></dd>
                 <dd>777 - das Verzeichnis <strong>output</strong></dd>
-                <dd>777 - das Verzeichnis <strong>config</strong> und dessen Unterverzeichnis <strong>config/viewer</strong></dd>
+                <dd>777 - das Verzeichnis <strong>config</strong> und dessen Unterverzeichnisse (u.a. <strong>config/viewer</strong> und
+                <strong>config/smtp</strong>). (Der Ordner <strong>config/design</strong> für gespeicherte Designs wird bei Bedarf
+                automatisch angelegt. Dazu muss <strong>config</strong> beschreibbar sein.)</dd>
                 <dd>777 - das Verzeichnis <strong>addon/spieler/stats</strong></dd>
                 <dd>777 - das Verzeichnis <strong>addon/tipp/tipps</strong> und <strong>alle Unterverzeichnisse</strong></dd>
-                <dt>Dateien:</dt>
+                <dt>Dateien (werden von der Installation angelegt):</dt>
                 <dd>666 - <strong>config/lmo-auth.php</strong></dd>
                 <dd>666 - <strong>addon/tipp/lmo-tipperauth.php</strong></dd>
+                <dd>666 - <strong>config/smtp/cfg.php</strong> und <strong>config/smtp/key.php</strong></dd>
                 <dd>666 - Alle Dateien <strong>cfg.txt</strong> im Verzeichnis <strong>config</strong> und dessen <strong>Unterverzeichnissen</strong></dd>
                 <dd>666 - alle Ligen im <strong>ligen</strong>-Verzeichnis und in dessen <strong>Unterverzeichnissen</strong></dd>
-                <dd>666 - alle Dateien in den Verzeichnissen <strong>output</strong> , <strong>addon/spieler/stats</strong> und
-                <strong>tipp/tipps</strong> (sofern vorhanden)</dd>
               </dl>
               <br><img width="70%" src="../media/manual_chmod.png" alt=""></li>
-            <li>Damit ist der Liga Manager Online installiert!</li>
+            <li>Die Datei <strong>config/init-parameters.php</strong> können Sie notfalls selbst mit einem Texteditor anlegen:
+            <code>&lt;?php<br>
+  &nbsp;&nbsp;$lmo_dateipfad='<strong>/absoluter/pfad/zum/lmo</strong>'; //Dateipfad zum LMO<br>
+  &nbsp;&nbsp;$lmo_url='<strong>http://www.adresse.ihres/lmo</strong>'; //abolute URL zum LMO<br>
+?&gt;</code>
+            Falls Sie diese Angaben nicht wissen, fragen Sie bitte Ihren Provider.</li>
           </ul>
         </li>
+        <li>Melden Sie sich anschließend im Adminbereich an (siehe <a href="#5">5. Login/Logout</a>).</li>
       </ol><a href="#top">[nach oben]</a>
-      <h3><a name="4">4. Login/Logout</a></h3>
+      <h3><a name="4">4. Updateinstallation</a></h3>
+      <p>Dieser Abschnitt beschreibt die Aktualisierung eines <strong>vorhandenen</strong> LMO auf eine neuere Version.</p>
+      <ol>
+        <li class='attention'><strong>Sicherung:</strong> Machen Sie vor dem Update eine Sicherung Ihrer Installation. Bei Live-Systemen empfiehlt es sich,
+        den LMO für den Zeitpunkt des Updates kurz zu sperren (z.B. über .htaccess).</li>
+        <li>Kopieren Sie die neuen Dateien über Ihre vorhandene Installation. Ihre Einstellungen (Ordner <strong>config</strong>), Ligen und
+        Tippspieldaten werden dabei nicht überschrieben, da sie nicht im Archiv enthalten sind.</li>
+        <li>Starten Sie danach unbedingt das Installationsprogramm. Es ergänzt, was die neue Version zusätzlich braucht:
+          <ol>
+            <li>Melden Sie sich im Adminbereich als Administrator an (Voll-Admin).</li>
+            <li>Im Adminbereich erscheint, solange der Ordner <strong>install</strong> vorhanden ist, ein Hinweis mit dem Button
+            <em>Update-Installation starten</em> (nur für den Voll-Admin sichtbar, in der eingestellten Sprache). Klicken Sie darauf.
+            Alternativ rufen Sie im Browser <strong>install/install.php</strong> auf (z.B. <code>http://www.adresse.ihres/lmo/install/install.php</code>).
+            Ohne Anmeldung ist das Installationsprogramm gesperrt.</li>
+            <li>Auf der ersten Seite („Systemprüfung und Einrichtung“) steht <em>„Update erkannt“</em>. Klicken Sie auf <em>Einrichtung starten</em>. Vorhandene Dateien bleiben unverändert, es werden nur
+            <strong>fehlende</strong> Verzeichnisse, Dateien und Einstellungen ergänzt (z.B. neue Einstellungen in den <strong>cfg.txt</strong>-Dateien
+            oder die Dateien neuer Addons). Bereits gespeicherte Werte werden <strong>nicht</strong> überschrieben, auch wenn sich ein
+            Standardwert in der neuen Version geändert hat.</li>
+            <li>Prüfen Sie das Protokoll (Einträge sind <em>angelegt</em>, <em>ergänzt</em> oder <em>OK</em>) und klicken Sie auf <em>Weiter</em>.
+            Pfad und Adresse sind mit Ihren bisherigen Werten vorbelegt, ändern Sie diese nur, wenn sich der Standort des LMO geändert hat.</li>
+            <li>Klicken Sie auf der letzten Seite auf <em>Installationsordner jetzt löschen</em>. Klappt das nicht, löschen Sie den Ordner <strong>install</strong> per FTP. Sobald der Ordner gelöscht ist, verschwindet der Hinweis im Adminbereich wieder.</li>
+          </ol>
+          Meldet die Installation bei Verzeichnissen oder Dateien einen Fehler (rotes Kreuz), setzen Sie die Zugriffsrechte wie unter
+          <a href="#3">3. Installation</a> (<em>Zugriffsrechte bei Problemen</em>) beschrieben und klicken Sie auf <strong>Erneut prüfen</strong>.
+          Eventuell installierte zusätzliche Addons werden nicht erkannt, diese sind also nach dem Update erneut zu installieren.</li>
+        <li class='attention'>
+          <strong>Update mit Tippspiel:</strong> Die Zugangsdaten der Tipper werden nicht mehr in der Datei
+          <strong>addon/tipp/lmo-tippauth.txt</strong> gespeichert, sondern in <strong>addon/tipp/lmo-tipperauth.php</strong>. Die
+          neue Datei beginnt mit einer Schutzzeile und kann deshalb im Browser nicht mehr als Text abgerufen werden. Die Umstellung
+          geschieht <strong>automatisch</strong> beim ersten Aufruf des LMO nach dem Update (egal ob durch einen Besucher oder den
+          Admin): Die Tipper werden übernommen und die alte .txt-Datei wird erst nach erfolgreichem Schreiben gelöscht. Sie müssen
+          also nichts tun: Das Installationsprogramm legt die neue Datei an und setzt die Schreibrechte selbst. Nur wenn es dort einen Fehler meldet, setzen Sie 666 manuell.</li>
+        <li class='attention'>
+          <strong>Update bei E-Mail-Einstellungen:</strong> Die Zugangsdaten für den SMTP-Versand liegen im Ordner
+          <strong>config/smtp/</strong>. Überschreiben oder löschen Sie diesen Ordner beim Update nicht. Geht die Datei
+          <strong>key.php</strong> verloren, kann das gespeicherte Passwort nicht mehr entschlüsselt werden und muss neu
+          eingegeben werden.</li>
+      </ol><a href="#top">[nach oben]</a>
+      <h3><a name="5">5. Login/Logout</a></h3>
       <p>
       Wenn Sie den Adminbereich betreten, sehen Sie zuerst eine Eingabemaske, mit der Sie sich beim System anmelden müssen. Nach
       der Installation ist der voreingestellte der Nutzername <kbd>admin</kbd> und das Passwort <kbd>lmo</kbd> (kleines L, kleines M,
@@ -130,7 +173,7 @@
       Wenn Sie eingeloggt sind, haben Sie rechts oben im Menü immer auch einen Befehl <strong>Logout</strong>, mit dem Sie sich aus
       dem Adminbereich ausloggen können. Das sollten Sie der Sicherheit wegen auch immer am Ende einer Sitzung tun.</p><a href=
       "#top">[nach oben]</a>
-      <h3><a name="5">5. Rechtliches</a></h3>
+      <h3><a name="6">6. Rechtliches</a></h3>
       <p class="attention">
       Dieses Skript wird unter den Bestimmungen der <a href="http://www.gnu.org/licenses/gpl.txt">GPL</a> (<a href=
       "http://www.gnu.de/gpl-ger.html">deutsche Übersetzung</a> ) herausgegeben. Das heißt, Sie dürfen das Skript nutzen,
