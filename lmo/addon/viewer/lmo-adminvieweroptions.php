@@ -309,19 +309,19 @@ if ($_SESSION['lmouserok'] == 2) {
                         <td class="nobr" align="right"><input class="lmo-formular-input" type="checkbox" name="heute_highlight" checked></td>
                         <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][40];?></td>
                         <td class="nobr" align="right"><?php echo $text['viewer'][23];?></td>
-                        <td class="nobr" align="left">&nbsp;<input class="lmo-formular-input" type="text" name="spielberichtesymbol" size="20" value="bericht.svg" onChange="document.getElementById('spielberichtesymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="spielberichtesymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/bericht.svg" alt=""></td>
+                        <td class="nobr" align="left">&nbsp;<input class="lmo-formular-input" type="text" name="spielberichtesymbol" size="20" value="bericht.svg" onChange="document.getElementById('spielberichtesymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="spielberichtesymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/bericht.svg" height="20" alt=""></td>
                       </tr>
                       <tr>
                         <td class="nobr" align="right"><input class="lmo-formular-input" type="checkbox" name="spielberichte_neues_fenster"></td>
                         <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][14];?></td>
                         <td class="nobr" align="right"><?php echo $text['viewer'][24];?></td>
-                        <td class="nobr" align="left">&nbsp;<input class="lmo-formular-input" type="text" name="tabellensymbol" size="20" value="tabelle.svg" onChange="document.getElementById('tabellensymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="tabellensymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/tabelle.svg" alt=""></td>
+                        <td class="nobr" align="left">&nbsp;<input class="lmo-formular-input" type="text" name="tabellensymbol" size="20" value="tabelle.svg" onChange="document.getElementById('tabellensymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="tabellensymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/tabelle.svg" height="20" alt=""></td>
                       </tr>
                       <tr>
                         <td class="nobr" align="right"><input class="lmo-formular-input" type="checkbox" name="tabelle_verlinken"></td>
                         <td class="nobr" align="left">&nbsp;<?php echo $text['viewer'][13];?></td>
                         <td class="nobr" align="right"><?php echo $text['viewer'][25];?></td>
-                        <td class="nobr" align="left">&nbsp;<input class="lmo-formular-input" type="text" name="notizsymbol" size="20" value="notiz.svg" onChange="document.getElementById('notizsymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="notizsymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/notiz.svg" alt=""></td>
+                        <td class="nobr" align="left">&nbsp;<input class="lmo-formular-input" type="text" name="notizsymbol" size="20" value="notiz.svg" onChange="document.getElementById('notizsymbol').src='<?php echo URL_TO_IMGDIR;?>/viewer/'+this.value;">&nbsp;<img id="notizsymbol" src="<?php echo URL_TO_IMGDIR;?>/viewer/notiz.svg" height="20" alt=""></td>
                       </tr>
                       <tr>
                         <td class="nobr" align="right"> <input class="lmo-formular-input" type="checkbox" name="mannschaftshomepages_verlinken"> </td>

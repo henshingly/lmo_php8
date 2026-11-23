@@ -316,11 +316,11 @@ if ($urlb == 1 || $mnote[$st - 1][$i] != '' || $msieg[$st - 1][$i] > 0) {
 }
 /** Spielbericht verlinken **/
 if ($urlb == 1) {
-    if ($mberi[$st - 1][$i][$n] != '') {
+    if ($mberi[$st - 1][$i] != '') {
         //Spielbericht Inhalt
         $lmo_spielbericht_html = '<strong>' . $teams[$teama[$st - 1][$i]] . $lmo_teamaicon . ' - ' . $lmo_teambicon . $teams[$teamb[$st - 1][$i]] . '</strong>' . nl2br($text[270]);
         // Link mit Mouseover-Funktion und data-info Attribut
-        echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><a href="' . $mberi[$st - 1][$i][$n] . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" border="0" alt=""></a></span>&nbsp;';
+        echo '<span onmouseover="showLMOTooltip(this)" onmouseout="hideLMOTooltip()" data-info="' . htmlspecialchars($lmo_spielbericht_html) . '" class="tooltip-trigger"><a href="' . $mberi[$st - 1][$i] . '" target="_blank"><img src="' . URL_TO_IMGDIR . '/lmo-st1.svg" height="15" class="svg-no-style" border="0" alt=""></a></span>&nbsp;';
     } else {
         echo '&nbsp;';
     }
