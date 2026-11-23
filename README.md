@@ -29,12 +29,16 @@ Currently supported languages (_sorted alphabetically_)
 - [![Spanish](https://www.liga-manager-online.org/forum_files/md/Espanol.svg)](https://www.liga-manager-online.org/test/lmo_git/lmo.php?file=1l_2023-24.l98&lmouserlang=Espanol) Spanish (also installation language)
 
 ### System requirement
-- Web server with at least PHP 8.2 - maximum PHP 8.4
+> [!IMPORTANT]
+> Web server with at least PHP 8.2 - maximum PHP 8.4
 
 > [!NOTE]
 This LMO version is still a beta version. Please note this. Before copying over an existing LMO, make a backup first!
 
-After joker has removed the forum on the LMO's project page (because of the General Data Protection Regulation GDPR), I offer a support forum for this LMO on my website (https://www.liga-manager-online.org/forum/).
+As Joker has now removed the forum from the LMO project page (due to the General Data Protection Regulation, GDPR), I am offering a support forum for this LMO on my website (https://www.liga-manager-online.org/forum/).  
+Joker has not only removed the forum software, but also the entire content of the website. He has also stated that the “**Liga Manager Online**” project has come to an end.  
+However, I do not want this online management tool to be forgotten, or simply to no longer be supported by current web servers.  
+That is why the **LMO** is still available [here](https://www.liga-manager-online.org/lmo/) for download and updates.
 
 --------------------------------------------------------------------------------------------------------
 # (DEUTSCH) LMO auf PHP8
@@ -60,9 +64,13 @@ Momentan unterstützte Sprachen (_alphabetisch sortiert_)
 - [![Hungarian](https://www.liga-manager-online.org/forum_files/md/Magyar.svg)](https://www.liga-manager-online.org/test/lmo_git/lmo.php?file=1l_2023-24.l98&lmouserlang=Magyar) Ungarisch
 
 ### Systemvoraussetzung
-- Webserver mit mindestens PHP 8.2  -  maximal PHP 8.4
+> [!IMPORTANT]
+> Webserver mit mindestens PHP 8.2  -  maximal PHP 8.4
 
 > [!NOTE]
 Bei dieser LMO Version handelt es sich immer noch um eine Beta Version. Beachtet das bitte. Vor dem drüberkopieren über einen vorhandenen LMO macht zuerst eine Sicherung!
 
-Nachdem joker auf der Projektseite des LMO's das Forum entfernt hat (wegen der Datenschutz-Grundverordnung DSGVO), biete ich auf meiner Webseite ein Supportforum für diesen LMO an (https://www.liga-manager-online.org/forum/).
+Da Joker das Forum nun von der LMO-Projektseite entfernt hat (aufgrund der Datenschutz-Grundverordnung, DSGVO), biete ich auf meiner Website (https://www.liga-manager-online.org/forum/) ein Support-Forum für dieses LMO an.  
+Joker hat ja nun nicht nur die Forensoftware entfernt, sondern auch den gesamten Inhalt der Website. Außerdem hat er erklärt, dass das Projekt „**Liga Manager Online**“ beendet sei.  
+Ich möchte jedoch nicht, dass dieses Online-Management-Tool in Vergessenheit gerät, oder einfach nicht mehr von den aktuellen Webservern unterstützt wird.  
+Deshalb steht der **LMO** weiterhin [hier](https://www.liga-manager-online.org/lmo/) zum Download und für Updates zur Verfügung.
