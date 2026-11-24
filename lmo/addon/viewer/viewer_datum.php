@@ -18,7 +18,7 @@
   *
   */
 
-$startzeit = zeitberechnung('1', - $multi_cfgarray['anzahl_tage_minus']);
+$startzeit = zeitberechnung('1', -$multi_cfgarray['anzahl_tage_minus']);
 $endzeit = zeitberechnung('2', $multi_cfgarray['anzahl_tage_plus']);
 // Durchlaufe so oft Ligen vorhanden sind
 for ($i = 1; $i <= $anzahl_ligen; $i++) {
@@ -26,7 +26,7 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
     // Ligenfile vorhanden?
     if ($liga->loadFile(PATH_TO_LMO . '/' . $dirliga . $fav_liga[$i]) == true) {
         $template->setCurrentBlock('Liga');  // Äusserer Block für die Liga
-        $template->setVariable('Anfangsdatum', date($multi_cfgarray['datumsformat'], zeitberechnung('2', - $multi_cfgarray['anzahl_tage_minus'])));  // Relevante Daten setzen
+        $template->setVariable('Anfangsdatum', date($multi_cfgarray['datumsformat'], zeitberechnung('2', -$multi_cfgarray['anzahl_tage_minus'])));  // Relevante Daten setzen
         $template->setVariable('Enddatum', date($multi_cfgarray['datumsformat'], zeitberechnung('2', $multi_cfgarray['anzahl_tage_plus'])));  // Relevante Daten setzen
         //Anfang Ergebnisse verlinken
         $template->setVariable('ErgebnisLink', URL_TO_LMO . '/lmo.php?file=' . $fav_liga[$i] . '&amp;action=results');
@@ -35,11 +35,10 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
 
         //all teams
         if ($all_teams == false) {
-        }
-        else {
+        } else {
             $team_count = count($liga->teams);
             for ($x = 0; $x < $team_count; $x++) {
-            $fav_team[$i][] = $x;
+                $fav_team[$i][] = $x;
             }
         }
 
@@ -54,11 +53,9 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                 require(PATH_TO_ADDONDIR . '/viewer/viewer_spiel.inc.php');
             }
         }
-        $template->setVariable('VERSION' ,VIEWER_VERSION);
+        $template->setVariable('VERSION', VIEWER_VERSION);
         $template->parse('Liga');
-    }
-    else  {
+    } else {
         echo getMessage($text['viewer'][49] . ' . $fav_liga[$i] . ' . $text['viewer'][50], true); // Ligenfile vorhanden? Frage beantwortet
     }
 }
-?>

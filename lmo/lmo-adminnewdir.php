@@ -22,7 +22,7 @@ require_once(PATH_TO_LMO . '/lmo-admintest.php');
 $addi = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=edit&amp;file=';
 if ($ftype != '') {
     $verz = opendir(substr(PATH_TO_LMO . '/' . $dirliga, 0, -1));
-    $dummy = array();
+    $dummy = [];
     while ($files = readdir($verz)) {
         if (strtolower(substr($files, -4)) == $ftype) {
             $dummy[] = $files;
@@ -40,17 +40,16 @@ if ($ftype != '') {
         $t2 = '';
         $t3 = '';
         $t4 = '0';
-        $datei = fopen($dirliga.$files, 'rb');
+        $datei = fopen($dirliga . $files, 'rb');
         while (!feof($datei)) {
             $zeile = fgets($datei, 5000);
             $zeile = trim($zeile);
             if ((substr($zeile, 0, 1) == '[') && (substr($zeile, -1) == ']')) {
                 $sekt = substr($zeile, 1, -1);
-            }
-            elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
-            //elseif ((strpos($zeile, '=') != false) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
+            } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
+                //elseif ((strpos($zeile, '=') != false) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
                 $schl = substr($zeile, 0, strpos($zeile, '='));
-                $wert = substr($zeile, strpos($zeile, '=')+1);
+                $wert = substr($zeile, strpos($zeile, '=') + 1);
                 if ($schl == 'Name') {
                     $t0 = $wert;
                 }
@@ -78,7 +77,10 @@ if ($ftype != '') {
                 $j++;
                 $t0 = $text[507] . $j;
             }?>
-                    <input type='radio' name='xprogram' value="<?php echo PATH_TO_LMO . '/' . $dirliga . $files . '"'; if ($xprogram == PATH_TO_LMO . '/' . $dirliga . $files) {echo ' checked';}?> onChange="dolmoedit()"><?php echo $t0; ?><br>
+                    <input type='radio' name='xprogram' value="<?php echo PATH_TO_LMO . '/' . $dirliga . $files . '"';
+            if ($xprogram == PATH_TO_LMO . '/' . $dirliga . $files) {
+                echo ' checked';
+            }?> onChange="dolmoedit()"><?php echo $t0; ?><br>
 <?php
         }
     }

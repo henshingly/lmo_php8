@@ -29,6 +29,13 @@ if ($_SESSION['lmouserok'] == 2) {
     }?> 
     </td>
     <td align="center"><?php
+    if ($todo != 'tippbackup') {?>
+      <a href='<?php echo $tipp_addr_backup?>' onClick="return chklmolink();"><?php echo isset($text['tipp'][318]) ? $text['tipp'][318] : 'Backup manager'?></a><?php
+    } else {
+        echo isset($text['tipp'][318]) ? $text['tipp'][318] : 'Backup manager';
+    }?> 
+    </td>
+    <td align="center"><?php
     if ($todo != 'tippoptions') {?>
       <a href='<?php echo $tipp_addr_optionen?>' onClick="return chklmolink();" title="<?php echo $text['tipp'][55]?>"><?php echo $text[86]?></a><?php
     } else {

@@ -17,7 +17,6 @@
   *
   */
 
-
 $zustatoutput = '';
 if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($generate_zustat)) {
     if ($lmtype == 0 && $zustatfile = fopen(PATH_TO_LMO . '/' . $diroutput . basename($file) . '.php', 'wb+')) {
@@ -73,15 +72,14 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
         $spieltagflag4 = 0;
         $spieltagflag5 = 0;
 
-        $serie = array();
-        $team_serie = array();
-        $serie_gewonnen = array();
-        $max_serie_gewonnen = array();
-        $serie_ungeschlagen = array();
-        $serie_unentschieden = array();
-        $serie_sieglos = array();
-        $serie_verloren = array();
-
+        $serie = [];
+        $team_serie = [];
+        $serie_gewonnen = [];
+        $max_serie_gewonnen = [];
+        $serie_ungeschlagen = [];
+        $serie_unentschieden = [];
+        $serie_sieglos = [];
+        $serie_verloren = [];
 
         for ($y1 = 1; $y1 < $anzst + 1; $y1++) {
             $sptore1 = 0;
@@ -99,11 +97,13 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
                     $gastteam = $teams[$teamb[$y1 - 1][$i1]];
 
                     // Abfrage Grüne-Tisch-Entscheidung-Anfang
-                    if ($goala[$y1 - 1][$i1] == '-1') $goala[$y1 - 1][$i1] = '_';
+                    if ($goala[$y1 - 1][$i1] == '-1') {
+                        $goala[$y1 - 1][$i1] = '_';
+                    }
                     if (isset($msieg)) {
                         if ($msieg[$y1 - 1][$i1] == '1') {
-                            $zusieg1 = $zusieg1+1;
-                            $zuunent1 = $zuunent1-1;
+                            $zusieg1 = $zusieg1 + 1;
+                            $zuunent1 = $zuunent1 - 1;
                         }
                         if ($msieg[$y1 - 1][$i1] == '2') {
                             $zusieg2 = $zusieg2 + 1;
@@ -125,17 +125,18 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
                     }
 
                     // Abfrage Grüne-Tisch-Entscheidung-Ende
-                    if ($goalb[$y1 - 1][$i1] == '-1') $goalb[$y1 - 1][$i1] = '_';
+                    if ($goalb[$y1 - 1][$i1] == '-1') {
+                        $goalb[$y1 - 1][$i1] = '_';
+                    }
 
                     $heimtore = $goala[$y1 - 1][$i1];
                     $gasttore = $goalb[$y1 - 1][$i1];
-                    if ($heimtore != '_' &&  $gasttore != '_') {
+                    if ($heimtore != '_' && $gasttore != '_') {
                         // Höchster-Sieg checken-Anfang
                         $hsieg = $heimtore - $gasttore;
 
-                        $serien_array[$heimteam][$y1 - 1] = $hsieg > 0 ? 1 : ($hsieg < 0 ? - 1 : 0);
-                        $serien_array[$gastteam][$y1 - 1] = $hsieg < 0 ? 1 : ($hsieg > 0 ? - 1 : 0);
-
+                        $serien_array[$heimteam][$y1 - 1] = $hsieg > 0 ? 1 : ($hsieg < 0 ? -1 : 0);
+                        $serien_array[$gastteam][$y1 - 1] = $hsieg < 0 ? 1 : ($hsieg > 0 ? -1 : 0);
 
                         // Serien gewonnen
                         if ($serien_array[$heimteam][$y1 - 1] > 0) {
@@ -312,7 +313,7 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
                         // Höchster-Sieg checken-Ende
 
                         // Höchster-Auswärtssieg checken-Anfang
-                        $asieg = $gasttore-$heimtore;
+                        $asieg = $gasttore - $heimtore;
                         if ($aheimsiegtor == $heimtore && $agastsiegtor == $gasttore) {
                             $aheimsieg1 = $heimteam;
                             $agastsieg1 = $gastteam;
@@ -359,9 +360,15 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
                         $sptore1 = $sptore + $sptore1;
                         if ($goala[$y1 - 1][$i1] != '_') {
                             $zuanzsp = $zuanzsp + 1;
-                            if ($heimtore > $gasttore) $zusieg1 = $zusieg1 + 1;
-                            if ($heimtore < $gasttore) $zusieg2 = $zusieg2 + 1;
-                            if ($heimtore == $gasttore) $zuunent1 = $zuunent1 + 1;
+                            if ($heimtore > $gasttore) {
+                                $zusieg1 = $zusieg1 + 1;
+                            }
+                            if ($heimtore < $gasttore) {
+                                $zusieg2 = $zusieg2 + 1;
+                            }
+                            if ($heimtore == $gasttore) {
+                                $zuunent1 = $zuunent1 + 1;
+                            }
                         }
                     }
                 }
@@ -374,7 +381,6 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
             // Anzahl und Art Spiele checken - Ende
 
             $zustatoutput .= '$zutore[' . $y1 . ']=' . $sptore1 . ";\n"; // Tore pro Spieltag
-
 
             if ($zuanzsp > 0) {
                 $dsxtore = round($sptore1 / $zuanzsp, 2);
@@ -450,87 +456,97 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
         // Anzahl gleicher gewonnener Spiele und torreichstes Spiel- Ende
 
         // Serienauswertung
-        $akt_gewonnen = 0; $team_akt_gewonnen = array();
-        $akt_ungeschlagen = 0; $team_akt_ungeschlagen = array();
-        $akt_unentschieden = 0; $team_akt_unentschieden = array();
-        $akt_sieglos = 0; $team_akt_sieglos = array();
-        $akt_verloren = 0; $team_akt_verloren = array();
+        $akt_gewonnen = 0;
+        $team_akt_gewonnen = [];
+        $akt_ungeschlagen = 0;
+        $team_akt_ungeschlagen = [];
+        $akt_unentschieden = 0;
+        $team_akt_unentschieden = [];
+        $akt_sieglos = 0;
+        $team_akt_sieglos = [];
+        $akt_verloren = 0;
+        $team_akt_verloren = [];
 
-        $max_gewonnen = 0; $team_max_gewonnen = array();
-        $max_ungeschlagen = 0; $team_max_ungeschlagen = array();
-        $max_unentschieden = 0; $team_max_unentschieden = array();
-        $max_sieglos = 0; $team_max_sieglos = array();
-        $max_verloren = 0; $team_max_verloren = array();
+        $max_gewonnen = 0;
+        $team_max_gewonnen = [];
+        $max_ungeschlagen = 0;
+        $team_max_ungeschlagen = [];
+        $max_unentschieden = 0;
+        $team_max_unentschieden = [];
+        $max_sieglos = 0;
+        $team_max_sieglos = [];
+        $max_verloren = 0;
+        $team_max_verloren = [];
 
         foreach ($serie as $team => $team_serien) {
             if ($team_serien['gewonnen'] > $akt_gewonnen) {
                 $akt_gewonnen = $team_serien['gewonnen'];
-                $team_akt_gewonnen = array();
+                $team_akt_gewonnen = [];
                 $team_akt_gewonnen[] = $team;
             } elseif ($team_serien['gewonnen'] == $akt_gewonnen && $akt_gewonnen > 0) {
                 $team_akt_gewonnen[] = $team;
             }
             if ($team_serien['ungeschlagen'] > $akt_ungeschlagen) {
                 $akt_ungeschlagen = $team_serien['ungeschlagen'];
-                $team_akt_ungeschlagen = array();
+                $team_akt_ungeschlagen = [];
                 $team_akt_ungeschlagen[] = $team;
             } elseif ($team_serien['ungeschlagen'] == $akt_ungeschlagen && $akt_ungeschlagen > 0) {
                 $team_akt_ungeschlagen[] = $team;
             }
             if ($team_serien['unentschieden'] > $akt_unentschieden) {
                 $akt_unentschieden = $team_serien['unentschieden'];
-                $team_akt_unentschieden = array();
+                $team_akt_unentschieden = [];
                 $team_akt_unentschieden[] = $team;
             } elseif ($team_serien['unentschieden'] == $akt_unentschieden && $akt_unentschieden > 0) {
                 $team_akt_unentschieden[] = $team;
             }
             if ($team_serien['sieglos'] > $akt_sieglos) {
                 $akt_sieglos = $team_serien['sieglos'];
-                $team_akt_sieglos = array();
+                $team_akt_sieglos = [];
                 $team_akt_sieglos[] = $team;
             } elseif ($team_serien['sieglos'] == $akt_sieglos && $akt_sieglos > 0) {
                 $team_akt_sieglos[] = $team;
             }
             if ($team_serien['verloren'] > $akt_verloren) {
                 $akt_verloren = $team_serien['verloren'];
-                $team_akt_verloren = array();
+                $team_akt_verloren = [];
                 $team_akt_verloren[] = $team;
             } elseif ($team_serien['verloren'] == $akt_verloren && $akt_verloren > 0) {
                 $team_akt_verloren[] = $team;
             }
             if ($team_serien['max_gewonnen']['count'] > $max_gewonnen) {
                 $max_gewonnen = $team_serien['max_gewonnen']['count'];
-                $team_max_gewonnen = array();
+                $team_max_gewonnen = [];
                 $team_max_gewonnen[] = $team . ' (' . $team_serien['max_gewonnen']['st'] . '.' . $text[145] . ')';
             } elseif ($team_serien['max_gewonnen']['count'] == $max_gewonnen && $max_gewonnen > 0) {
                 $team_max_gewonnen[] = $team . ' (' . $team_serien['max_gewonnen']['st'] . '.' . $text[145] . ')';
             }
             if ($team_serien['max_ungeschlagen']['count'] > $max_ungeschlagen) {
                 $max_ungeschlagen = $team_serien['max_ungeschlagen']['count'];
-                $team_max_ungeschlagen = array();
+                $team_max_ungeschlagen = [];
                 $team_max_ungeschlagen[] = $team . ' (' . $team_serien['max_ungeschlagen']['st'] . '.' . $text[145] . ')';
             } elseif ($team_serien['max_ungeschlagen']['count'] == $max_ungeschlagen && $max_ungeschlagen > 0) {
                 $team_max_ungeschlagen[] = $team . ' (' . $team_serien['max_ungeschlagen']['st'] . '.' . $text[145] . ')';
             }
             if ($team_serien['max_unentschieden']['count'] > $max_unentschieden) {
                 $max_unentschieden = $team_serien['max_unentschieden']['count'];
-                $team_max_unentschieden = array();
+                $team_max_unentschieden = [];
                 $team_max_unentschieden[] = $team . ' (' . $team_serien['max_unentschieden']['st'] . '.' . $text[145] . ')';
             } elseif ($team_serien['max_unentschieden']['count'] == $max_unentschieden && $max_unentschieden > 0) {
                 $team_max_unentschieden[] = $team . ' (' . $team_serien['max_unentschieden']['st'] . '.' . $text[145] . ')';
             }
             if ($team_serien['max_sieglos']['count'] > $max_sieglos) {
                 $max_sieglos = $team_serien['max_sieglos']['count'];
-                $team_max_sieglos = array();
+                $team_max_sieglos = [];
                 $team_max_sieglos[] = $team . ' (' . $team_serien['max_sieglos']['st'] . '.' . $text[145] . ')';
             } elseif ($team_serien['max_sieglos']['count'] == $max_sieglos && $max_sieglos > 0) {
                 $team_max_sieglos[] = $team . ' (' . $team_serien['max_sieglos']['st'] . '.' . $text[145] . ')';
             }
             if ($team_serien['max_verloren']['count'] > $max_verloren) {
                 $max_verloren = $team_serien['max_verloren']['count'];
-                $team_max_verloren = array();
+                $team_max_verloren = [];
                 $team_max_verloren[] = $team . ' (' . $team_serien['max_verloren']['st'] . '.' . $text[145] . ')';
-            } elseif ($team_serien['max_verloren']['count'] == $max_verloren && $max_verloren>0) {
+            } elseif ($team_serien['max_verloren']['count'] == $max_verloren && $max_verloren > 0) {
                 $team_max_verloren[] = $team . ' (' . $team_serien['max_verloren']['st'] . '.' . $text[145] . ')';
             }
         }
@@ -608,4 +624,3 @@ if ((isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) || isset($gene
         fclose($zustatfile);
     }
 }
-?>

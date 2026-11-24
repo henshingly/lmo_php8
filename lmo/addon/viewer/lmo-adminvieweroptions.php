@@ -27,15 +27,15 @@ if ($_SESSION['lmouserok'] == 2) {
     $verz = substr($dirliga, -1) == '/' ? opendir(substr(PATH_TO_LMO . '/' . $dirliga, 0, -1)) : opendir(PATH_TO_LMO . '/' . $dirliga);
     $tmpl_verz = substr($dirliga, -1) == '/' ? opendir(substr(PATH_TO_TEMPLATEDIR . '/viewer/', 0, -1)) : opendir(PATH_TO_TEMPLATEDIR . '/viewer/');
     $tmpl_counter = 0;
-    while($t_files = readdir($tmpl_verz)) {
+    while ($t_files = readdir($tmpl_verz)) {
         if (strtolower(substr($t_files, -8)) == '.tpl.php') {
             $tpl_files[$tmpl_counter++] = substr($t_files, 0, -8);
         }
     }
     $liga_counter = 0;
     $unbenannte_liga_counter = 0;
-    $ligadatei = array();
-    while($files = readdir($verz)) {
+    $ligadatei = [];
+    while ($files = readdir($verz)) {
         if (strtolower(substr($files, -4)) == '.l98') {
             $sekt = '';
             $datei = fopen(PATH_TO_LMO . '/' . $dirliga . $files, 'rb');
@@ -50,9 +50,8 @@ if ($_SESSION['lmouserok'] == 2) {
                     $zeile = trim($zeile);
                     if ((substr($zeile, 0, 1) == '[') && (substr($zeile, -1) == ']')) {  // Sektion
                         $sekt = substr($zeile, 1, -1);
-                    }
-                    elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  // Wert
-                    //elseif ((strpos($zeile, '=') !== false) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  // Wert
+                    } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  // Wert
+                        //elseif ((strpos($zeile, '=') !== false) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  // Wert
                         $option = explode('=', $zeile, 2);
                         $option_name = $option[0];
                         $option_wert = isset($option[1]) ? $option[1] : '';
@@ -67,7 +66,9 @@ if ($_SESSION['lmouserok'] == 2) {
                                 $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[370];
                             }
                         } // Alle benötigten Werte gefunden->Abbruch
-                        if ($ligadatei[$liga_counter]['liga_name'] != '' && $ligadatei[$liga_counter]['anz_teams'] != '')break;
+                        if ($ligadatei[$liga_counter]['liga_name'] != '' && $ligadatei[$liga_counter]['anz_teams'] != '') {
+                            break;
+                        }
                     }
                 }
                 fclose($datei);
@@ -115,7 +116,7 @@ if ($_SESSION['lmouserok'] == 2) {
     }
 
     $z = 1;
-    foreach($ligadatei as $liga) {
+    foreach ($ligadatei as $liga) {
         $ligennamen[$z] = $liga['liga_name'];
         $ligenfile[$z] = $liga['file_name'];
         $ligenteams[$z] = $liga['anz_teams'];
@@ -128,10 +129,10 @@ if ($_SESSION['lmouserok'] == 2) {
         $save_config_array = implode(';', $config_array);
         $zz = 1;
         $z = $_POST['zaehler'];
-        $ausgewaehlte_ligen_arr = array();
+        $ausgewaehlte_ligen_arr = [];
         for ($i = 1; $i < $z; $i++) {
-        $h = 'c' . $i;
-            if (isset ($_POST[$h])) {
+            $h = 'c' . $i;
+            if (isset($_POST[$h])) {
                 $ausgewaehlte_ligen_arr[$zz++] = $i;
             }
             $ausgewaehlte_ligen = count($ausgewaehlte_ligen_arr);
@@ -153,7 +154,7 @@ if ($_SESSION['lmouserok'] == 2) {
         $z = $_POST['zaehler'];
         for ($i = 0; $i <= $z; $i++) {
             $h = 't' . $i;
-            if (isset ($_POST[$h])) {
+            if (isset($_POST[$h])) {
                 $ldn = $_POST[$h];
                 $ligen_datei = substr($ldn, 0, strrpos($ldn, '['));
                 $team = substr($ldn, strrpos($ldn, '[') + 1);
@@ -168,8 +169,7 @@ if ($_SESSION['lmouserok'] == 2) {
                         $save_array[$zz] = 'liga' . $anz_ligen . '=' . $ligen_datei;
                         $teamnr = 0;
                     }
-                }
-                else {
+                } else {
                     echo '3. Formular SAVE_FILE: ' . PATH_TO_LMO . '/' . $dirliga . $ligen_datei . ' ' . $text['viewer'][42] . '<br>';
                 }
                 $zz++;
@@ -180,10 +180,9 @@ if ($_SESSION['lmouserok'] == 2) {
         $savedateiname = PATH_TO_CONFIGDIR . '/viewer/' . $save_file_name . '.view';
         $error_dateiopen = false;
         if (!$fp = fopen($savedateiname, 'w')) {
-            $error_dateiopen = true; 
+            $error_dateiopen = true;
             echo $text[567]; // Error
-        }
-        else {
+        } else {
             $config_array = explode(';', $_POST['config_array']);
             fwrite($fp, "[config]\n");
             foreach ($config_array as $w) {
@@ -196,14 +195,14 @@ if ($_SESSION['lmouserok'] == 2) {
                     $error_dateiopen = true;
                 }
             }
-            fclose ($fp);
+            fclose($fp);
         }
     }
 
     // FORMULARE
     if ($form3) {
         echo getMessage($text[138]);
-?>
+        ?>
       <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
         <tr>
           <th align="center"><h1><?php echo $text['viewer'][42];?></h1></th>
@@ -233,7 +232,7 @@ if ($_SESSION['lmouserok'] == 2) {
       </table><?php
     }
     if (!$form1 && !$form2 && !$form3) { // <!-- Hauptauswahl  -->
-?>
+        ?>
       <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
         <tr>
           <th align="center"><h1><?php echo $text['viewer'][21];?></h1></td>
@@ -281,9 +280,9 @@ if ($_SESSION['lmouserok'] == 2) {
                         <td class="nobr" align="right"><?php echo $text['viewer'][19];?></td>
                         <td class="nobr" align="left">
                           <select class="lmo-formular-input"  name="template" size="1"><?php
-        for ($tpl = 0; $tpl < $tmpl_counter; $tpl++) { ?>
+                for ($tpl = 0; $tpl < $tmpl_counter; $tpl++) { ?>
                             <option><?php echo $tpl_files[$tpl] . '</option>' . chr(13);
-        } ?>
+                } ?>
                           </select>
                         </td>
                       </tr>
@@ -356,7 +355,7 @@ if ($_SESSION['lmouserok'] == 2) {
       </table><?php
     }
     if (!$form2 && $form1 && !$form3) {  // <!-- Bei  ersten Aufruf Ligendateien anzeigen -->
-?>
+        ?>
       <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
         <tr>
           <th align="center"><h1><?php echo $text['viewer'][21];?></h1></th>
@@ -373,13 +372,13 @@ if ($_SESSION['lmouserok'] == 2) {
                     <table class="lmoInner" width="99%">
                       <tr>
                         <td class="nobr"  align="left"><?php
-        foreach($ligadatei as $liga) { ?>
+                foreach ($ligadatei as $liga) { ?>
                           <input type="checkbox" name="<?php echo 'c' . $z;?>" value="<?php echo 'c' . $z;?>"> <?php echo $liga['liga_name'] . '<br>';?>
 <?php
-            echo chr(13);
-            $z++;
-        }
-?>
+                    echo chr(13);
+                    $z++;
+                }
+        ?>
                         </td>
                       </tr>
                       <tr>
@@ -417,7 +416,7 @@ if ($_SESSION['lmouserok'] == 2) {
       </table><?php
     }
     if (!$form3 && $form2) {   // <!-- Jetzt kommt die Auswahl der Mannschaften  -->
-?>
+        ?>
       <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0" width="600">
         <tr>
           <th align="center"><h1><?php echo $text['viewer'][21];?> </h1></th>
@@ -431,32 +430,53 @@ if ($_SESSION['lmouserok'] == 2) {
                 </tr>
                 <tr>
                   <td class="nobr"><?php
-        $ges_teams = 0;
+                $ges_teams = 0;
         for ($i = 1; $i <= $ausgewaehlte_ligen; $i++) {
             $liga1 = new liga();
-            if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $ligenfile[$i]) == true) { // Ligenfile vorhanden? ?>
+            if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $ligenfile[$i]) == true) { // Ligenfile vorhanden??>
                     <table class=lmoInner cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
                         <td class="nobr"  colspan="3" align="center"><h1><?php echo $ligennamen[$i];?></h1></td>
                       </tr><?php
-                $ii = 1; $spalte = 1; $max = count($liga1->teams);
+                $ii = 1;
+                $spalte = 1;
+                $max = count($liga1->teams);
                 foreach ($liga1->teams as $mannschaft) {
-                    if ($ii > $max) break;
-                    if ($spalte == 1) echo '<tr>' . chr(13) . '<td class="nobr"  align="left">';
-                    if ($spalte == 2) echo '<td class="nobr"  align="left">';
-                    if ($spalte == 3) echo '<td class="nobr"  align="left">';
+                    if ($ii > $max) {
+                        break;
+                    }
+                    if ($spalte == 1) {
+                        echo '<tr>' . chr(13) . '<td class="nobr"  align="left">';
+                    }
+                    if ($spalte == 2) {
+                        echo '<td class="nobr"  align="left">';
+                    }
+                    if ($spalte == 3) {
+                        echo '<td class="nobr"  align="left">';
+                    }
                     echo '<input type="checkbox" name="t' . $ges_teams . '" value="' . $ligenfile[$i] . '[' . $ii . ']' . '">' . $mannschaft->name;
-                    if ($spalte == 1) echo '</td>' . chr(13);
-                    if ($spalte == 2) echo '</td>' . chr(13);
-                    if ($spalte == 3) echo '</td>' . chr(13) . '</tr>' . chr(13);
-                    $ii++; $spalte++; if ($spalte > 3) $spalte = 1; $ges_teams++;
+                    if ($spalte == 1) {
+                        echo '</td>' . chr(13);
+                    }
+                    if ($spalte == 2) {
+                        echo '</td>' . chr(13);
+                    }
+                    if ($spalte == 3) {
+                        echo '</td>' . chr(13) . '</tr>' . chr(13);
+                    }
+                    $ii++;
+                    $spalte++;
+                    if ($spalte > 3) {
+                        $spalte = 1;
+                    } $ges_teams++;
                 }
-                if ($spalte < 3) echo '</tr>';
-?>
+                if ($spalte < 3) {
+                    echo '</tr>';
+                }
+                ?>
                     </table>
 <?php
-            }
-            else {
+            } else {
                 echo '[' . PATH_TO_LMO . '/' . $dirliga . $ligenfile[$i] . '] ' . $text['viewer'][50] . '<br>';
             }
         }?>

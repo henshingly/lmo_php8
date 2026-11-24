@@ -7,13 +7,14 @@
  * @package   classLib
  */
 
-class partie {
+class partie
+{
     /**
     * Nummer der Partie,
     * @var integer
     * @access public
     */
-    var $spNr;
+    public $spNr;
 
     //  var $n_SpNr;
 
@@ -23,62 +24,62 @@ class partie {
     * @access public
     */
 
-    var $zeit;
+    public $zeit;
     /**
     * Notiz zur Partie,
     * @var string
     * @access public
     */
-    var $notiz;
+    public $notiz;
 
     /**
     * Heimmannschaft der Partie,
     * @var array Team Objekt
     * @access public
     */
-    var $heim;
+    public $heim;
 
     /**
     * Gastmannschaft der Partie,
     * @var array Team Objekt
     * @access public
     */
-    var $gast;
+    public $gast;
 
     /**
     * Heimtore der Partie,
     * @var integer
     * @access public
     */
-    var $hTore;
+    public $hTore;
 
     /**
     * Gasttore der Partie,
     * @var integer
     * @access public
     */
-    var $gTore;
+    public $gTore;
 
     /**
     * Heimpkte der Partie,
     * @var integer
     * @access private
     */
-    var $hPunkte;
+    public $hPunkte;
 
     /**
     * Gastpkte der Partie,
     * @var integer
     * @access private
     */
-    var $gPunkte;
+    public $gPunkte;
 
     /**
     * URL zum Spielbericht der Partie
     * @var string
     * @access public
     */
-    var $reportUrl = null;
+    public $reportUrl = null;
 
     /**
     * Spielende
@@ -89,7 +90,7 @@ class partie {
     * @var integer
     * @access public
     */
-    var $spielEnde = 0;
+    public $spielEnde = 0;
 
     /**
     * Other Parameter - Alle anderen Parameter die nicht direkt zugeordnet werden
@@ -98,7 +99,7 @@ class partie {
     * @var array
     * @access privat
     */
-    var $otherParameter = array();
+    public $otherParameter = [];
 
     /**
     * Konstruktor
@@ -114,7 +115,7 @@ class partie {
     * @param integer $n_gpunkte
     * @return partie
     */
-    function __construct($n_spNr, $n_time, $n_notiz, &$n_heim, &$n_gast, $n_htore, $n_gtore, $n_hpunkte = 0, $n_gpunkte = 0)
+    public function __construct($n_spNr, $n_time, $n_notiz, &$n_heim, &$n_gast, $n_htore, $n_gtore, $n_hpunkte = 0, $n_gpunkte = 0)
     {
         $this->spNr = $n_spNr;
         $this->zeit = $n_time;
@@ -127,7 +128,6 @@ class partie {
         $this->gPunkte = $n_gpunkte;
     }
 
-
     /**
     * Gibt Tore der Heimmanschaft für die Bildschirmausgabe zurück.
     *
@@ -139,12 +139,19 @@ class partie {
     * @param  string $leer Der Rückgabewert wenn Ergebnis vorhanden ist
     * @return string
     */
-    function hToreString($leer = '_', $faktor = '1')
+    public function hToreString($leer = '_', $faktor = '1')
     {
-        if ($this->hTore == -1) $str = $leer;
-        elseif ($this->hTore == -2) $str = '0*'; // Markieren als greenTable
-        elseif ($this->gTore == -2) $str = '0'; // Wenn Gast der Sieg zugesprochen wurde O Tore für Heim anzeigen
-        else $str = intval($this->hTore) / intval($faktor);
+        if ($this->hTore == -1) {
+            $str = $leer;
+        } elseif ($this->hTore == -2) {
+            $str = '0*';
+        } // Markieren als greenTable
+        elseif ($this->gTore == -2) {
+            $str = '0';
+        } // Wenn Gast der Sieg zugesprochen wurde O Tore für Heim anzeigen
+        else {
+            $str = intval($this->hTore) / intval($faktor);
+        }
         return $str;
     }
 
@@ -159,12 +166,19 @@ class partie {
     * @param  string $leer Der Rückgabewert wenn kein Ergebnis vorhanden ist
     * @return string
     */
-    function gToreString($leer = '_', $faktor = '1')
+    public function gToreString($leer = '_', $faktor = '1')
     {
-        if ($this->gTore == -1) $str = $leer;
-        elseif ($this->gTore == -2) $str = '0*'; // Markieren als greenTable
-        elseif ($this->hTore == -2) $str = '0'; // Wenn Heim der Sieg zugesprochen wurde O Tore für Gast anzeigen
-        else $str = intval($this->gTore) / intval($faktor);
+        if ($this->gTore == -1) {
+            $str = $leer;
+        } elseif ($this->gTore == -2) {
+            $str = '0*';
+        } // Markieren als greenTable
+        elseif ($this->hTore == -2) {
+            $str = '0';
+        } // Wenn Heim der Sieg zugesprochen wurde O Tore für Gast anzeigen
+        else {
+            $str = intval($this->gTore) / intval($faktor);
+        }
         return $str;
     }
 
@@ -180,7 +194,7 @@ class partie {
     * @access public
     * @return integer
     */
-    function valuateGame()
+    public function valuateGame()
     {
         $result = -1;
         if ($this->hTore > -1 and $this->gTore > -1) { // ok there is a result
@@ -199,7 +213,6 @@ class partie {
         return $result;
     }
 
-
     /**
     * Gibt das SpielDatum als formatierten String zurück. 'd.m.Y' = Standard
     *
@@ -208,7 +221,7 @@ class partie {
     * @param string format Datumsformat in date()-Notation Standard = d.m.Y
     * @return string
     */
-    function datumString($leer = '', $format = 'd.m.Y')
+    public function datumString($leer = '', $format = 'd.m.Y')
     {
         $dt = new DateTime();
         $dt->setTimeStamp((int)$this->zeit);
@@ -224,7 +237,7 @@ class partie {
     * @param string format Zeitformat in date()-Notation Standard = H:i
     * @return string
     */
-    function zeitString($leer = '', $format = 'H:i')
+    public function zeitString($leer = '', $format = 'H:i')
     {
         $dt = new DateTime();
         $dt->setTimeStamp((int)$this->zeit);
@@ -240,7 +253,7 @@ class partie {
     * @param string leer Ausgabe, falls keine n.V./i.E vorhanden
     * @return string
     */
-    function spielEndeString(&$text, $leer = '')
+    public function spielEndeString(&$text, $leer = '')
     {
         if ($this->spielEnde == 0) {
             $str = $leer;
@@ -259,7 +272,7 @@ class partie {
     *
     * @access private
     */
-    function showDetails()
+    public function showDetails()
     {
         echo $this->heim->name . ' - ' . $this->gast->name;
         echo ' Anpfiff: ' . $this->zeitString() . 'Uhr';
@@ -271,7 +284,7 @@ class partie {
     *
     * @access private
     */
-    function showDetailsHTML()
+    public function showDetailsHTML()
     {
         echo '<br>' . $this->heim->name . ' - ' . $this->gast->name;
         echo ' Anpfiff: ' . $this->zeitString() . 'Uhr';
@@ -287,9 +300,9 @@ class partie {
     * @param mixed parameter Parameter die zu der Partie gespeichert werden sollen
     * @param string key Bezeichner unter dem der Parameter gespeichert werden soll
     */
-    function setParameter($parameter, $key = '')
+    public function setParameter($parameter, $key = '')
     {
-        if (is_array($parameter) ) {
+        if (is_array($parameter)) {
             $this->otherParameter = array_merge($this->otherParameter, $parameter);
         } else {
             $this->otherParameter[$key] = $parameter;
@@ -305,7 +318,7 @@ class partie {
     * @param string key Bezeichner des Parameters der ausgegeben werden soll, ist kein Parameter angegeben, wird das komplette array zurückgegeben.
     * @return mixed Parameter
     */
-    function getParameter($key = '')
+    public function getParameter($key = '')
     {
         if ($key == '') {
             return $this->otherParameter;
@@ -322,7 +335,7 @@ class partie {
     * @access public
     * @param string value Link zum Spielbericht
     */
-    function setreportUrl($value)
+    public function setreportUrl($value)
     {
         $this->reportUrl = $value;
     }
@@ -337,13 +350,13 @@ class partie {
     * @param string html Parameter
     * @return string Link zum Spielbericht
     */
-    function getreportUrl($ziel = '_blank', $param = '')
+    public function getreportUrl($ziel = '_blank', $param = '')
     {
         if (is_null($ziel)) {
             return $this->reportUrl;
-        // FIX (PHP 8.1+): strpos() mit null als Haystack ist deprecated.
-        // $this->reportUrl ist standardmäßig null -> als '' behandeln.
-        } elseif (strpos((string) $this->reportUrl, 'http') !== 0) {
+            // FIX (PHP 8.1+): strpos() mit null als Haystack ist deprecated.
+            // $this->reportUrl ist standardmäßig null -> als '' behandeln.
+        } elseif (strpos((string)$this->reportUrl, 'http') !== 0) {
             return '<a href="http://' . $this->reportUrl . '" target="' . $ziel . "\" $param>";
         }
         return '<a href="' . $this->reportUrl . '" target="' . $ziel . "\" $param>";
@@ -359,9 +372,9 @@ class partie {
     * @since 2.7
     * @param integer Art des Spielendes
     */
-    function setSpielEnde($value)
+    public function setSpielEnde($value)
     {
-        if (is_int($value) ) {
+        if (is_int($value)) {
             $this->spielEnde = $value;
         }
     }
@@ -376,10 +389,9 @@ class partie {
     * @since 2.7
     * @return integer Art des Spielendes
     */
-    function getSpielEnde()
+    public function getSpielEnde()
     {
         return $this->spielEnde;
     }
 
 } // END class Partie
-?>

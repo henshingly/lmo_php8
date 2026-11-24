@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  *
  * Funktionen ClassLib
@@ -16,7 +16,8 @@
  * @param constant string
  * @return array
  */
-function const_array($constant) {
+function const_array($constant)
+{
     $array = explode(',', $constant);
     return $array;
 };
@@ -29,7 +30,8 @@ function const_array($constant) {
  * @param char $char
  * @return string
  */
-function strBeforChar($str,$char) {
+function strBeforChar($str, $char)
+{
     return substr($str, 0, strrpos($str, $char));
 }
 
@@ -41,7 +43,8 @@ function strBeforChar($str,$char) {
  * @param char $char
  * @return string
  */
-function strAfterChar($str,$char) {
+function strAfterChar($str, $char)
+{
     return substr($str, strrpos($str, $char) + 1);
 }
 
@@ -52,7 +55,8 @@ function strAfterChar($str,$char) {
  * @param boolean $insensitive
  * @return boolean
  */
-function in_string($needle, $haystack, $insensitive = false) {
+function in_string($needle, $haystack, $insensitive = false)
+{
     if ($insensitive) {
         return str_contains(strtolower($haystack), strtolower($needle));
     } else {
@@ -68,19 +72,20 @@ function in_string($needle, $haystack, $insensitive = false) {
  * @param array $dataArray
  * @return boolean
  */
-function readLigaDir($dirName,&$dataArray) {
+function readLigaDir($dirName, &$dataArray)
+{
     $exists = file_exists($dirName);
     if ($exists) {
         $dir = dir($dirName);
-        while($data = $dir->read()){
-            $ext = strtolower( strAfterChar($data, '.'));
+        while ($data = $dir->read()) {
+            $ext = strtolower(strAfterChar($data, '.'));
             if ($ext == 'l98') {
-                $name = trim(substr($data, 0, strrpos($data, $ext) -1));
-                $dataArray[] = array(
+                $name = trim(substr($data, 0, strrpos($data, $ext) - 1));
+                $dataArray[] = [
                   'path' => $dir->path,
                   'src' => $data,
                   'fileName' => $name
-                );
+                ];
             }
         }
         $dir->close();
@@ -95,12 +100,13 @@ function readLigaDir($dirName,&$dataArray) {
  * @param string $search
  * @return array
  */
-function findTeamName(&$teamNamesArray, $search) {
-    $results = array();
+function findTeamName(&$teamNamesArray, $search)
+{
+    $results = [];
     $expr = '/\s+|\d+|\W/i';
-    if (is_array($teamNamesArray) ) {
+    if (is_array($teamNamesArray)) {
         $match = strtolower(preg_replace($expr, '', $search));
-        foreach($teamNamesArray as $teamName) {
+        foreach ($teamNamesArray as $teamName) {
             $match_with = strtolower(preg_replace($expr, '', $teamName));
             if ($match_with == $match) {
                 $results[] = $teamName;
@@ -110,5 +116,3 @@ function findTeamName(&$teamNamesArray, $search) {
     }
     return $results;
 }
-
-?>

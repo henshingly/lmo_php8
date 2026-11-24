@@ -29,7 +29,7 @@ $ticker_breite = isset($tickerbreite) ? $breite : $ticker_breite;
 $ticker_geschwindigkeit = isset($tickergeschwindigkeit) ? $geschwindigkeit : $ticker_geschwindigkeit;
 
 $trenner = ' +++ ';
-$array = array();
+$array = [];
 $msieg = 0;
 $hilf = $hilf1 = '';
 $ticker_text = $mnote = $dummy1 = $dummy2 = $dummy3 = $dummy4 = '';
@@ -49,78 +49,70 @@ if (!isset($file)) {
     $file = '';
 }
 $file2 = $file;
-$ticker_array = explode(",", $ticker_ligen);
+$ticker_array = explode(',', $ticker_ligen);
 
-foreach($ticker_array as $file) {
+foreach ($ticker_array as $file) {
     require(PATH_TO_LMO . '/lmo-openfile.php');
     if (isset($lmtype)) {
-        if($ticker_tickerart == 2) {
+        if ($ticker_tickerart == 2) {
             if (isset($nlines)) {
-                for($i = 0; $i < count($nlines); $i++) {
-                    if(strlen($nlines[$i]) > 0)
-                    $hilf .= $trenner . $nlines[$i];
+                for ($i = 0; $i < count($nlines); $i++) {
+                    if (strlen($nlines[$i]) > 0) {
+                        $hilf .= $trenner . $nlines[$i];
+                    }
                 }
             }
             $ticker_text .= $hilf;
-        }
-        else {
+        } else {
             if ($lmtype == 0) {
                 for ($i = 0; $i < $anzsp; $i++) {
-                    if (($teama[$stx-1][$i] > 0) && ($teamb[$stx-1][$i] > 0) ) {
-                        if ($mspez[$stx-1][$i] == '&nbsp;') {
+                    if (($teama[$stx - 1][$i] > 0) && ($teamb[$stx - 1][$i] > 0)) {
+                        if ($mspez[$stx - 1][$i] == '&nbsp;') {
                             $mspezhilf = '';
+                        } else {
+                            $mspezhilf = ' ' . $mspez[$stx - 1][$i];
                         }
-                        else {
-                            $mspezhilf = ' ' . $mspez[$stx-1][$i];
-                        }
-                        if ($favteam == $teama[$stx-1][$i] || $favteam == $teamb[$stx-1][$i] || $ticker_tickerart == 1) {
-                            if ($msieg[$stx-1][$i] == 1) {
-                                $dummy1 = $text['ticker'][2] . ':' . addslashes($teams[$teama[$stx-1][$i]] . ' ' . $text[211]);
-                            }
-                            else {
+                        if ($favteam == $teama[$stx - 1][$i] || $favteam == $teamb[$stx - 1][$i] || $ticker_tickerart == 1) {
+                            if ($msieg[$stx - 1][$i] == 1) {
+                                $dummy1 = $text['ticker'][2] . ':' . addslashes($teams[$teama[$stx - 1][$i]] . ' ' . $text[211]);
+                            } else {
                                 $dummy1 = '';
                             }
-                            if ($msieg[$stx-1][$i] == 2) {
-                                $dummy2 = $text['ticker'][2] . ':' . addslashes($teams[$teamb[$stx-1][$i]] . ' ' . $text[211]);
-                            }
-                            else {
+                            if ($msieg[$stx - 1][$i] == 2) {
+                                $dummy2 = $text['ticker'][2] . ':' . addslashes($teams[$teamb[$stx - 1][$i]] . ' ' . $text[211]);
+                            } else {
                                 $dumm2y = '';
                             }
-                            if ($msieg[$stx-1][$i] == 3) {
+                            if ($msieg[$stx - 1][$i] == 3) {
                                 $dummy3 = $text['ticker'][2] . ':' . addslashes($text['ticker'][3]);
-                            }
-                            else {
+                            } else {
                                 $dummy3 = '';
                             }
-                            if ($mnote[$stx-1][$i] != '' && $ticker_notizanzeigen == 1) {
-                                $dummy4 = ' Notiz' . ': ' . $mnote[$stx-1][$i];
-                            }
-                            else {
+                            if ($mnote[$stx - 1][$i] != '' && $ticker_notizanzeigen == 1) {
+                                $dummy4 = ' Notiz' . ': ' . $mnote[$stx - 1][$i];
+                            } else {
                                 $dummy4 = '';
                             }
-                            $hilf = $hilf . $teams[$teama[$stx-1][$i]] . " - " . $teams[$teamb[$stx-1][$i]] . " " . applyFactor($goala[$stx-1][$i], $goalfaktor) . ":" . applyFactor($goalb[$stx-1][$i], $goalfaktor) . $mspezhilf . $dummy1 . $dummy2 . $dummy3 . $dummy4 . $trenner;
+                            $hilf = $hilf . $teams[$teama[$stx - 1][$i]] . ' - ' . $teams[$teamb[$stx - 1][$i]] . ' ' . applyFactor($goala[$stx - 1][$i], $goalfaktor) . ':' . applyFactor($goalb[$stx - 1][$i], $goalfaktor) . $mspezhilf . $dummy1 . $dummy2 . $dummy3 . $dummy4 . $trenner;
                         }
                     }
                 }  // for ($i = 0; $i < $anzsp; $i++)
-            }
-            else {
+            } else {
                 for ($i = 0; $i < $anzsp; $i++) {
-                    for ($n = 0; $n < $modus[$stx-1]; $n++) {
-                        if (($teama[$stx-1][$i] > 0) && ($teamb[$stx-1][$i] > 0) ) {
-                            if ($mspez[$stx-1][$i][$n] == '&nbsp;') {
+                    for ($n = 0; $n < $modus[$stx - 1]; $n++) {
+                        if (($teama[$stx - 1][$i] > 0) && ($teamb[$stx - 1][$i] > 0)) {
+                            if ($mspez[$stx - 1][$i][$n] == '&nbsp;') {
                                 $mspezhilf = '';
+                            } else {
+                                $mspezhilf = ' ' . $mspez[$stx - 1][$i][$n];
                             }
-                            else {
-                                $mspezhilf = ' ' . $mspez[$stx-1][$i][$n];
-                            }
-                            if ($favteam == $teama[$stx-1][$i] || $favteam == $teamb[$stx-1][$i] || $ticker_tickerart == 1) {
-                                if ($mnote[$stx-1][$i][$n] != '' && $notizanzeigen == 1) {
-                                    $dummy4 = ' ' . $text[22] . ': ' . $mnote[$stx-1][$i][$n];
-                                }
-                                else {
+                            if ($favteam == $teama[$stx - 1][$i] || $favteam == $teamb[$stx - 1][$i] || $ticker_tickerart == 1) {
+                                if ($mnote[$stx - 1][$i][$n] != '' && $notizanzeigen == 1) {
+                                    $dummy4 = ' ' . $text[22] . ': ' . $mnote[$stx - 1][$i][$n];
+                                } else {
                                     $dummy4 = '';
                                 }
-                                $hilf1 = $hilf1 . $teams[$teama[$stx-1][$i]] . " - " . $teams[$teamb[$stx-1][$i]] . " " . applyFactor($goala[$stx-1][$i][$n], $goalfaktor) . ":".applyFactor($goalb[$stx-1][$i][$n], $goalfaktor) . $mspezhilf . $dummy4 . $trenner;
+                                $hilf1 = $hilf1 . $teams[$teama[$stx - 1][$i]] . ' - ' . $teams[$teamb[$stx - 1][$i]] . ' ' . applyFactor($goala[$stx - 1][$i][$n], $goalfaktor) . ':' . applyFactor($goalb[$stx - 1][$i][$n], $goalfaktor) . $mspezhilf . $dummy4 . $trenner;
                             }
                         }
                     }
@@ -128,8 +120,7 @@ foreach($ticker_array as $file) {
             }
         }
         $ticker_text .= " $trenner $titel ($stx{$text['ticker'][1]}): $hilf $hilf1";
-    }
-    else {
+    } else {
         $ticker_text = $text[224] . $trenner;
     }
 } //foreach

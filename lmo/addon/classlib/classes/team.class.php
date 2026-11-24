@@ -14,25 +14,25 @@ class team
      * Name der Mannschaft
      * @var string
      */
-    var $name;
+    public $name;
 
     /**
      * Kurzbezeichnung (max.5 Zeichen)
      * @var string
      */
-    var $kurz;
+    public $kurz;
 
     /**
      * Mittellanger Teamname
      * @var string
      */
-    var $mittel;
+    public $mittel;
 
     /**
      * Nummer der Mannschaft, entspricht der Nr aus dem Ligafile
      * @var integer
      */
-    var $nr;
+    public $nr;
 
     /**
      * KeyValue Paare, die in der Team Sektion angegeben wurden.
@@ -43,7 +43,7 @@ class team
      *
      * @var array
      */
-    var $keyValues;
+    public $keyValues;
 
     /**
      * Konstruktor
@@ -54,13 +54,13 @@ class team
      * @param string $mittel
      * @return team
      */
-    function __construct($name = '', $kurz = '', $nr = '', $mittel = '')
+    public function __construct($name = '', $kurz = '', $nr = '', $mittel = '')
     {
         $this->name = $name;
         $this->kurz = $kurz;
         $this->mittel = $mittel;
         $this->nr = $nr;
-        $this->keyValues = array('SP' => 0, 'SM' => 0, 'TOR1' => 0, 'TOR2' => 0, 'STDA' => 0, 'URL' => '', 'NOT' => '');
+        $this->keyValues = ['SP' => 0, 'SM' => 0, 'TOR1' => 0, 'TOR2' => 0, 'STDA' => 0, 'URL' => '', 'NOT' => ''];
     }
 
     /**
@@ -68,7 +68,7 @@ class team
      *
      * @access private
      */
-    function addKeyValue($new_key, $new_value)
+    public function addKeyValue($new_key, $new_value)
     {
         $this->keyValues[$new_key] = $new_value;
     }
@@ -78,9 +78,8 @@ class team
      *
      * @access private
      */
-    function valueForKey($new_key)
+    public function valueForKey($new_key)
     {
         return $this->keyValues[$new_key];
     }
 }  // class team
-?>

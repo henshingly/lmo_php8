@@ -24,7 +24,9 @@ if (!isset($_SESSION)) {
     @ini_set('arg_separator.output', '&amp;');
 }
 
-if (session_id() == '') session_start();
+if (session_id() == '') {
+    session_start();
+}
 require(__DIR__ . '/config/init-parameters.php');
 
 if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
@@ -35,21 +37,49 @@ if (isset($_GET['debug']) || isset($_SESSION['debug'])) {
 $_SERVER['QUERY_STRING'] = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 
 //Path-Contants
-if (!defined('PATH_TO_LMO')) define('PATH_TO_LMO', $lmo_dateipfad);
-if (!defined('PATH_TO_ADDONDIR')) define('PATH_TO_ADDONDIR', PATH_TO_LMO . '/addon');
-if (!defined('PATH_TO_TEMPLATEDIR'))define('PATH_TO_TEMPLATEDIR', PATH_TO_LMO . '/template');
-if (!defined('PATH_TO_IMGDIR')) define('PATH_TO_IMGDIR', PATH_TO_LMO . '/img');
-if (!defined('PATH_TO_LANGDIR')) define('PATH_TO_LANGDIR', PATH_TO_LMO . '/lang');
-if (!defined('PATH_TO_CONFIGDIR')) define('PATH_TO_CONFIGDIR', PATH_TO_LMO . '/config');
-if (!defined('PATH_TO_JSDIR')) define('PATH_TO_JSDIR', PATH_TO_LMO . '/js');
+if (!defined('PATH_TO_LMO')) {
+    define('PATH_TO_LMO', $lmo_dateipfad);
+}
+if (!defined('PATH_TO_ADDONDIR')) {
+    define('PATH_TO_ADDONDIR', PATH_TO_LMO . '/addon');
+}
+if (!defined('PATH_TO_TEMPLATEDIR')) {
+    define('PATH_TO_TEMPLATEDIR', PATH_TO_LMO . '/template');
+}
+if (!defined('PATH_TO_IMGDIR')) {
+    define('PATH_TO_IMGDIR', PATH_TO_LMO . '/img');
+}
+if (!defined('PATH_TO_LANGDIR')) {
+    define('PATH_TO_LANGDIR', PATH_TO_LMO . '/lang');
+}
+if (!defined('PATH_TO_CONFIGDIR')) {
+    define('PATH_TO_CONFIGDIR', PATH_TO_LMO . '/config');
+}
+if (!defined('PATH_TO_JSDIR')) {
+    define('PATH_TO_JSDIR', PATH_TO_LMO . '/js');
+}
 
-if (!defined('URL_TO_LMO')) define('URL_TO_LMO', $lmo_url);
-if (!defined('URL_TO_ADDONDIR')) define('URL_TO_ADDONDIR', URL_TO_LMO . '/addon');
-if (!defined('URL_TO_TEMPLATEDIR')) define('URL_TO_TEMPLATEDIR', URL_TO_LMO . '/template');
-if (!defined('URL_TO_IMGDIR')) define('URL_TO_IMGDIR', URL_TO_LMO . '/img');
-if (!defined('URL_TO_LANGDIR')) define('URL_TO_LANGDIR', URL_TO_LMO . '/lang');
-if (!defined('URL_TO_CONFIGDIR')) define('URL_TO_CONFIGDIR', URL_TO_LMO . '/config');
-if (!defined('URL_TO_JSDIR')) define('URL_TO_JSDIR', URL_TO_LMO . '/js');
+if (!defined('URL_TO_LMO')) {
+    define('URL_TO_LMO', $lmo_url);
+}
+if (!defined('URL_TO_ADDONDIR')) {
+    define('URL_TO_ADDONDIR', URL_TO_LMO . '/addon');
+}
+if (!defined('URL_TO_TEMPLATEDIR')) {
+    define('URL_TO_TEMPLATEDIR', URL_TO_LMO . '/template');
+}
+if (!defined('URL_TO_IMGDIR')) {
+    define('URL_TO_IMGDIR', URL_TO_LMO . '/img');
+}
+if (!defined('URL_TO_LANGDIR')) {
+    define('URL_TO_LANGDIR', URL_TO_LMO . '/lang');
+}
+if (!defined('URL_TO_CONFIGDIR')) {
+    define('URL_TO_CONFIGDIR', URL_TO_LMO . '/config');
+}
+if (!defined('URL_TO_JSDIR')) {
+    define('URL_TO_JSDIR', URL_TO_LMO . '/js');
+}
 
 // Check Path
 if (!file_exists(PATH_TO_LMO . '/init.php')) {
@@ -88,8 +118,8 @@ if (!function_exists('lmo_clean_subdir')) {
         if (!is_string($subdir)) {
             return '';
         }
-        $subdir = str_replace(array("\0", '\\'), array('', '/'), $subdir);
-        $parts = array();
+        $subdir = str_replace(["\0", '\\'], ['', '/'], $subdir);
+        $parts = [];
         foreach (explode('/', $subdir) as $part) {
             if ($part === '' || $part === '.' || $part === '..') {
                 continue;
@@ -101,19 +131,18 @@ if (!function_exists('lmo_clean_subdir')) {
 }
 
 //Language
-if (isset($_GET['lmouserlang'])){
+if (isset($_GET['lmouserlang'])) {
     $_SESSION['lmouserlang'] = $_GET['lmouserlang'];
 }
-if (isset($_POST['lmouserlang'])){
+if (isset($_POST['lmouserlang'])) {
     $_SESSION['lmouserlang'] = $_POST['lmouserlang'];
 }
-if (isset($_SESSION['lmouserlang'])){
+if (isset($_SESSION['lmouserlang'])) {
     $lmouserlang = $_SESSION['lmouserlang'];
 } else {
     $lmouserlang = $deflang;
     $_SESSION['lmouserlang'] = $deflang;
 }
-
 
 require(PATH_TO_LMO . '/lmo-langload.php');
 
@@ -135,4 +164,3 @@ if (!function_exists('ini_get') || !ini_get('register_globals')) {
     @extract($_POST);
     @extract($_COOKIE);
 }
-?>

@@ -17,32 +17,31 @@
   *
   */
 
-
-require_once(PATH_TO_LMO."/lmo-admintest.php");
-if (($action=="admin") && ($todo=="upload") && ($_SESSION['lmouserok']==2)) {
-  $adda=$_SERVER['PHP_SELF']."?action=admin&amp;todo=";
-  if (isset($_POST['upl']) && isset($_FILES['userfile'])) {
-    $tempfilename = $_FILES['userfile']['tmp_name'];
-    $namefilename = $_FILES['userfile']['name'];
-    if (substr($namefilename,-4) != '.l98') {
-      echo getMessage($text[304],true);
-      exit;
-    }
-    $i=0;
-    $ufile=$dirliga.$namefilename;
-    while (file_exists($ufile)) {
-      $i++;
-      if ($i>0) {
-        $ufile=$dirliga.$i."_".$namefilename;
-      }
-    }
-    if (move_uploaded_file($tempfilename,$ufile)) {
-      echo getMessage($text[303].":<br>".$ufile);
-    } else {
-      echo getMessage($text[304],true);
-    }
-    @chmod($ufile,0644);
-  }?>
+require_once(PATH_TO_LMO . '/lmo-admintest.php');
+if (($action == 'admin') && ($todo == 'upload') && ($_SESSION['lmouserok'] == 2)) {
+    $adda = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=';
+    if (isset($_POST['upl']) && isset($_FILES['userfile'])) {
+        $tempfilename = $_FILES['userfile']['tmp_name'];
+        $namefilename = $_FILES['userfile']['name'];
+        if (substr($namefilename, -4) != '.l98') {
+            echo getMessage($text[304], true);
+            exit;
+        }
+        $i = 0;
+        $ufile = $dirliga . $namefilename;
+        while (file_exists($ufile)) {
+            $i++;
+            if ($i > 0) {
+                $ufile = $dirliga . $i . '_' . $namefilename;
+            }
+        }
+        if (move_uploaded_file($tempfilename, $ufile)) {
+            echo getMessage($text[303] . ':<br>' . $ufile);
+        } else {
+            echo getMessage($text[304], true);
+        }
+        @chmod($ufile, 0644);
+    }?>
 <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><h1><?php echo $text[299];?></h1></td>

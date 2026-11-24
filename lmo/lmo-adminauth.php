@@ -22,7 +22,7 @@ require_once(PATH_TO_LMO . '/lmo-admintest.php');
 if ($action == 'admin') {
     require(PATH_TO_LMO . '/lmo-admincheck_auth.php');
     if (empty($_SESSION['lmouserok'])) {
-?>
+        ?>
   <table class="lmoMain" cellspacing="0" cellpadding="0" border="0">
     <tr>
       <td colspan="3" align="center"><h1><?php echo $text[77] . ' ' . $text[54]; ?></h1></td>

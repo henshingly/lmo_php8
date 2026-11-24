@@ -7,8 +7,8 @@
  * @since classlib V2.7
  * @version  liga.class.php,v 2.7 2005/10/12 13:34:43
 */
-class ligaHandball extends liga {
-
+class ligaHandball extends liga
+{
     //const Ligatype = "Handball";
 
     /**
@@ -20,22 +20,22 @@ class ligaHandball extends liga {
     * @param  array $tableArray Die zu sortierende Tabelle
     * @return array
     */
-    function sortTable($tableArray) {
-        foreach($tableArray as $table) {
+    public function sortTable($tableArray)
+    {
+        foreach ($tableArray as $table) {
             $sort_pPkt[] = $table['pPkt'];
             $sort_spiele[] = $table['spiele'];
         }
         // Sortierung PlusPkt / Anzahl Spiele
         array_multisort($sort_pPkt, SORT_DESC, $sort_spiele, SORT_ASC, $tableArray, SORT_DESC);
         // BEGIN Direkter Vergleich
-        $subteams = array();
+        $subteams = [];
         $pPkt = 0;
         $spiele = 0;
         for ($position = 0; $position < count($tableArray); $position++) {
             if ($pPkt == $tableArray[$position]['pPkt'] && $spiele == $tableArray[$position]['spiele']) {
                 $subteams[$tableArray[$position]['team']->nr] = $tableArray[$position]['team'];
-            }
-            else {
+            } else {
                 if (count($subteams) > 1) {
                     $tmp_table = $this->calcTableforTeams($subteams);
                     $tmp_tablearray = $tableArray;
@@ -48,7 +48,7 @@ class ligaHandball extends liga {
                         }
                     }
                 }  // END if (count($subteams) > 1)
-                $subteams = array();
+                $subteams = [];
                 $pPkt = $tableArray[$position]['pPkt'];
                 $spiele = $tableArray[$position]['spiele'];
                 $subteams[$tableArray[$position]['team']->nr] = $tableArray[$position]['team'];
@@ -69,8 +69,9 @@ class ligaHandball extends liga {
     * @param  array $tableArray Die zu sortierende Tabelle
     * @return array
     */
-    function sortDirectTable($tableArray) {
-        foreach($tableArray as $table) {
+    public function sortDirectTable($tableArray)
+    {
+        foreach ($tableArray as $table) {
             $sort_pPkt[] = $table['pPkt'];
             $sort_spiele[] = $table['spiele'];
             $sort_dTor[] = $table['dTor'];
@@ -83,5 +84,3 @@ class ligaHandball extends liga {
     }
 
 }  // END CLass HandballLiga
-
-?>

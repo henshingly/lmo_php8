@@ -43,14 +43,14 @@ if ($_SESSION['lmouserok'] == 2) {
                 $finalPass = $oldHash; // Bestehenden Hash beibehalten
             }
 
-            $lmo_admin_data[$save] = array(trim($_POST['xadmin_name' . $save]), $finalPass, trim($_POST['xadmin_rang' . $save]));
+            $lmo_admin_data[$save] = [trim($_POST['xadmin_name' . $save]), $finalPass, trim($_POST['xadmin_rang' . $save])];
 
-            $lmo_helfer_ligen_neu = array();
+            $lmo_helfer_ligen_neu = [];
             if (trim($_POST['xadmin_rang' . $save]) == 1) {  // Hilfsadmin -> Ligen herausfinden
-                $lmo_helfer_ligen = isset($_POST['xhelfer_ligen' . $save]) && count($_POST['xhelfer_ligen' . $save]) > 0 ? $_POST['xhelfer_ligen' . $save] : array();
+                $lmo_helfer_ligen = isset($_POST['xhelfer_ligen' . $save]) && count($_POST['xhelfer_ligen' . $save]) > 0 ? $_POST['xhelfer_ligen' . $save] : [];
                 if (count($lmo_helfer_ligen) > 0) {
                     for ($u = 0; $u < count($lmo_helfer_ligen); $u++) {  //Alle Ligen durchgehen
-                        $l = strlen($lmo_helfer_ligen[$u]) -4;
+                        $l = strlen($lmo_helfer_ligen[$u]) - 4;
                         if (substr($lmo_helfer_ligen[$u], -4) == '.l98') {
                             $lmo_helfer_ligen[$u] = substr($lmo_helfer_ligen[$u], 0, $l);  // l98-Endung entfernen
                         }
@@ -95,17 +95,17 @@ if ($_SESSION['lmouserok'] == 2) {
         if (empty($admin_dupe) && !empty($_POST['xadmin_name']) && !empty($_POST['xadmin_pass'])) {
             // Passwort für neuen User sofort sicher hashen
             $newHash = password_hash(trim($_POST['xadmin_pass']), $bestAlgo);
-            $lmo_admin_data[] = array(trim($_POST['xadmin_name']), $newHash, 1, '', '');
+            $lmo_admin_data[] = [trim($_POST['xadmin_name']), $newHash, 1, '', ''];
 
             require(PATH_TO_LMO . '/lmo-saveauth.php');
             require(PATH_TO_LMO . '/lmo-loadauth.php');
-            $show = count($lmo_admin_data) -1;
+            $show = count($lmo_admin_data) - 1;
         } else {
             echo getMessage($text[567], true);
             $show = -1;
         }
     }
-?>
+    ?>
       <table class="lmoSubmenu" width="100%" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td align="center"><a href="<?php echo $addr_options; ?>" onclick="return chklmolink();" title="<?php echo $text[320]; ?>"><?php echo $text[319]; ?></a></td>
@@ -123,13 +123,14 @@ if ($_SESSION['lmouserok'] == 2) {
           <td valign="top">
             <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
 <?php
-    $testshow = 0;
-    foreach($lmo_admin_data as $lmo_admin) {
+        $testshow = 0;
+    foreach ($lmo_admin_data as $lmo_admin) {
         $show_admin_name = $lmo_admin[2] == 2 ? '<em>' . $lmo_admin[0] . '</em>' : $lmo_admin[0]; ?>
               <tr>
                 <td align="right"><?php
-        if ($show == $testshow) { echo ' ' . $show_admin_name . "\n"; }
-        else { ?><a href="<?php echo $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=user&amp;show=' . $testshow; ?>"><?php echo $show_admin_name; ?></a><?php } ?></td>
+        if ($show == $testshow) {
+            echo ' ' . $show_admin_name . "\n";
+        } else { ?><a href="<?php echo $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=user&amp;show=' . $testshow; ?>"><?php echo $show_admin_name; ?></a><?php } ?></td>
               </tr><?php
         $testshow++;
     } ?>
@@ -143,7 +144,7 @@ if ($_SESSION['lmouserok'] == 2) {
               <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 <?php
     $testshow = 0;
-    foreach($lmo_admin_data as $lmo_admin) {
+    foreach ($lmo_admin_data as $lmo_admin) {
         if ($show == -1 && $testshow == 0) { ?>
                 <tr>
                   <td align="center">&nbsp;<br><?php echo $text[318]; ?><br>&nbsp;</td>
@@ -161,14 +162,22 @@ if ($_SESSION['lmouserok'] == 2) {
                 </tr>
                 <tr>
                   <td align="right" rowspan="2"><?php echo $text[324]; ?></td>
-                  <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show; ?>.xadmin_erweitert<?php echo $show; ?>.disabled=true" class="lmo-formular-input" type="radio" name="xadmin_rang<?php echo $show; ?>" value="2" <?php if ($lmo_admin[2]==2) echo ' checked'; ?>><?php echo $text[326]; ?></td>
+                  <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show; ?>.xadmin_erweitert<?php echo $show; ?>.disabled=true" class="lmo-formular-input" type="radio" name="xadmin_rang<?php echo $show; ?>" value="2" <?php if ($lmo_admin[2] == 2) {
+                      echo ' checked';
+                  } ?>><?php echo $text[326]; ?></td>
                 </tr>
                 <tr>
-                  <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show; ?>.xadmin_erweitert<?php echo $show; ?>.disabled=false" class="lmo-formular-input" type="radio" name="xadmin_rang<?php echo $show; ?>" value="1" <?php if ($lmo_admin[2]==1) echo ' checked'; ?>><?php echo $text[325]; ?></td>
+                  <td align="left" colspan="2"><input onClick="document.lmoedit<?php echo $show; ?>.xadmin_erweitert<?php echo $show; ?>.disabled=false" class="lmo-formular-input" type="radio" name="xadmin_rang<?php echo $show; ?>" value="1" <?php if ($lmo_admin[2] == 1) {
+                      echo ' checked';
+                  } ?>><?php echo $text[325]; ?></td>
                 </tr>
                 <tr>
                   <td>&nbsp;</td>
-                  <td align="left"><input class="lmo-formular-input" type="checkbox" name="xadmin_erweitert<?php echo $show; ?>" <?php if (isset($lmo_admin[4]) && $lmo_admin[4]==1) echo ' checked'; ?> <?php if ($lmo_admin[2]==2) echo ' disabled'; ?>><acronym title="<?php echo $text[560]; ?>"><?php echo $text[559]; ?></acronym></td>
+                  <td align="left"><input class="lmo-formular-input" type="checkbox" name="xadmin_erweitert<?php echo $show; ?>" <?php if (isset($lmo_admin[4]) && $lmo_admin[4] == 1) {
+                      echo ' checked';
+                  } ?> <?php if ($lmo_admin[2] == 2) {
+                      echo ' disabled';
+                  } ?>><acronym title="<?php echo $text[560]; ?>"><?php echo $text[559]; ?></acronym></td>
                 </tr>
 <?php
             if ($lmo_admin[2] == 1) { ?>
@@ -183,7 +192,9 @@ if ($_SESSION['lmouserok'] == 2) {
                     if (substr($file, -4) == '.l98') {
                         $ligenname = substr($file, 0, -4); ?>
                 <tr>
-                  <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?php echo $show; ?>[]" value="<?php echo $ligenname; ?>"<?php if (in_array($ligenname,$helfer_ligen)) echo ' checked'; ?>><?php echo $titel; ?></td>
+                  <td align="left" class="lmost5" colspan="3"><input class="lmo-formular-input" type="checkbox" name="xhelfer_ligen<?php echo $show; ?>[]" value="<?php echo $ligenname; ?>"<?php if (in_array($ligenname, $helfer_ligen)) {
+                      echo ' checked';
+                  } ?>><?php echo $titel; ?></td>
                 </tr>
 <?php
                     }
@@ -228,7 +239,8 @@ if ($_SESSION['lmouserok'] == 2) {
 <?php
 }
 
-function sort_admin ($admin_a, $admin_b) {
+function sort_admin($admin_a, $admin_b)
+{
     return strnatcasecmp($admin_a[0], $admin_b[0]);
 }
 ?>

@@ -109,7 +109,8 @@ if ($action == 'tipp') {
         // Fehlgeschlagenes Laden (ungültige/nicht vorhandene Liga) fängt lmo-openfile.php bereits ab, indem es $file auf '' zurück setzt.
         // $todo muss hier ebenfalls zurückgesetzt werden, sonst würde der nachgelagerte Block unten trotzdem die content-spezifische Datei
         // (z.B. lmo-tipptabelle.php) mit undefinierten Variablen aufrufen.
-        if (in_array($todo, ['edit', 'einsicht', 'tabelle', 'wert', 'fieber'], true) && empty($file)) {
+        // Gesamtwertung (all=1) braucht bewusst keine Liga-Datei
+        if (in_array($todo, ['edit', 'einsicht', 'tabelle', 'wert', 'fieber'], true) && empty($file) && !($todo == 'wert' && isset($_REQUEST['all']) && $_REQUEST['all'] == 1)) {
             $todo = '';
         }
 

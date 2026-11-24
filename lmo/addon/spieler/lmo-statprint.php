@@ -37,9 +37,9 @@ $direction = isset($_GET['direction']) ? $_GET['direction'] : $spieler_standard_
 $team = isset($_GET['team']) ? urldecode($_GET['team']) : '';
 
 if ($filepointer = fopen($filename, 'r+b')) {
-    $spalten = array();  // Spaltenbezeichnung
-    $data = array();  // Daten
-    $typ = array();  // Spaltentyp (true=String)
+    $spalten = [];  // Spaltenbezeichnung
+    $data = [];  // Daten
+    $typ = [];  // Spaltentyp (true=String)
     $spalten = fgetcsv($filepointer, separator: '#', escape: '');  // Zeile mit Spaltenbezeichnern
     $formel = false;
     for ($i = 0; $i < count($spalten); $i++) {
@@ -51,7 +51,9 @@ if ($filepointer = fopen($filename, 'r+b')) {
             $vereinsspalte = $i;
         }
     }
-    if ($formel) fgetcsv($filepointer, separator: '#', escape: '');  // Zeile mit Formeln
+    if ($formel) {
+        fgetcsv($filepointer, separator: '#', escape: '');
+    }  // Zeile mit Formeln
 
     $linkspalte = array_search($text['spieler'][32], $spalten);  // Linkunterstützung aktiviert?
 
@@ -59,7 +61,9 @@ if ($filepointer = fopen($filename, 'r+b')) {
     while ($data[$zeile] = fgetcsv($filepointer, separator: '#', escape: '')) {
         if ((isset($vereinsspalte) && isset($data[$zeile][$vereinsspalte]) && $spieler_vereinsweise_anzeigen == 1 && $team == $data[$zeile][$vereinsspalte]) || $team == '') {
             for ($i = 0; $i < count($data[$zeile]); $i++) {
-                if (!is_numeric($data[$zeile][$i])) $typ[$i] = true;
+                if (!is_numeric($data[$zeile][$i])) {
+                    $typ[$i] = true;
+                }
             }
             $zeile++;
         } else {
@@ -67,17 +71,21 @@ if ($filepointer = fopen($filename, 'r+b')) {
         }
     }
     array_pop($data);
-    if ($spieler_nullwerte_anzeigen == 0 && !isset($typ[$sort])) $data = array_filter($data, 'filterNullwerte');  // Nullwerte ausfiltern
+    if ($spieler_nullwerte_anzeigen == 0 && !isset($typ[$sort])) {
+        $data = array_filter($data, 'filterNullwerte');
+    }  // Nullwerte ausfiltern
     if ($direction == 1) {
-        if (!isset($typ[$sort]))
+        if (!isset($typ[$sort])) {
             usort($data, 'cmpInt');
-        else
+        } else {
             usort($data, 'cmpStr2');
+        }
     } else {
-        if (!isset($typ[$sort]))
+        if (!isset($typ[$sort])) {
             usort($data, 'cmpInt2');
-        else
+        } else {
             usort($data, 'cmpStr');
+        }
     }
 
     $spaltenzahl = count($spalten);
@@ -91,7 +99,7 @@ if ($filepointer = fopen($filename, 'r+b')) {
         $maxdisplay = $zeile;
         $begin = 0;
     }
-?>
+    ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
                 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="<?php echo $text[798]; ?>">
@@ -115,7 +123,7 @@ if ($filepointer = fopen($filename, 'r+b')) {
   <body>
     <script type="text/javascript">document.write('<small><a href="#" onClick="history.back();return false;"><?php echo $text[562];?><\/a><\/small>');</script><center>
     <h1><?php
-    echo $text['spieler'][18];
+        echo $text['spieler'][18];
     if ($team != '') {
         echo ' - ' . $team;
     }?>
@@ -144,14 +152,18 @@ if ($filepointer = fopen($filename, 'r+b')) {
             if ($j2 == 0) {?>
 
           <td align="right"<?php echo $class?>><strong><?php
-                if (!isset($data[$j1 - 1][$sort]) || $data[$j1][$sort] !== $data[$j1 - 1][$sort] && $j1 != $begin) echo ($j1 + 1) . '. ';
+                if (!isset($data[$j1 - 1][$sort]) || $data[$j1][$sort] !== $data[$j1 - 1][$sort] && $j1 != $begin) {
+                    echo ($j1 + 1) . '. ';
+                }
                 if ($j1 > 0 && $j1 == $begin) {
                     for ($x = $begin - 1; $x >= 0; $x--) {
                         if ($data[$x][$sort] != $data[$j1][$sort]) {
                             echo ($x + 2) . '. ';
                             break;
                         }
-                        if ($x == 0) echo '1. ';
+                        if ($x == 0) {
+                            echo '1. ';
+                        }
                     }
                 }?></strong></td>
           <td align="center"<?php echo $class . '>' . HTML_icon($data[$j1][$j2], 'spieler', 'small') . '</td>';  // Spielerbild
@@ -164,9 +176,13 @@ if ($filepointer = fopen($filename, 'r+b')) {
                 } else {
                     echo ' align="left">';
                 }
-                if ($j2 == $sort) echo '<strong>';
+                if ($j2 == $sort) {
+                    echo '<strong>';
+                }
                 echo $data[$j1][$j2] . '&nbsp;&nbsp;';
-                if ($j2 == $sort) echo '</strong>';
+                if ($j2 == $sort) {
+                    echo '</strong>';
+                }
                 echo '</td>';
             }
         }?>
@@ -180,33 +196,44 @@ if ($filepointer = fopen($filename, 'r+b')) {
 } else {
     echo getMessage($text['spieler'][14], true);
 }
-function cmpInt ($a1, $a2) {
+function cmpInt($a1, $a2)
+{
     global $sort;
-    if ($a2[$sort] == $a1[$sort]) return 0;
+    if ($a2[$sort] == $a1[$sort]) {
+        return 0;
+    }
     return ($a1[$sort] > $a2[$sort]) ? -1 : 1;
 }
-function cmpStr ($a2, $a1) {
+function cmpStr($a2, $a1)
+{
     global $sort;
-    $a1[$sort] = strtr($a1[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ','YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
-    $a2[$sort] = strtr($a2[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ','YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
+    $a1[$sort] = strtr($a1[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
+    $a2[$sort] = strtr($a2[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
     $c = strnatcasecmp($a2[$sort], $a1[$sort]);
     return $c;
 }
-function cmpInt2 ($a1, $a2) {
+function cmpInt2($a1, $a2)
+{
     global $sort;
-    if ($a2[$sort] == $a1[$sort]) return 0;
+    if ($a2[$sort] == $a1[$sort]) {
+        return 0;
+    }
     return ($a1[$sort] > $a2[$sort]) ? 1 : -1;
 }
-function cmpStr2 ($a2, $a1) {
+function cmpStr2($a2, $a1)
+{
     global $sort;
-    $a1[$sort] = strtr($a1[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ','YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
-    $a2[$sort] = strtr($a2[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ','YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
+    $a1[$sort] = strtr($a1[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
+    $a2[$sort] = strtr($a2[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
     $c = strnatcasecmp($a2[$sort], $a1[$sort]);
     return -1 * $c;
 }
-function filterNullwerte ($a) {
+function filterNullwerte($a)
+{
     global $sort, $zeile;
-    if ($a[$sort] == 0) $zeile--;
+    if ($a[$sort] == 0) {
+        $zeile--;
+    }
     return ($a[$sort] != 0);
 }
 ?>

@@ -18,12 +18,13 @@
   */
 
 $cfgfile = PATH_TO_CONFIGDIR . '/cfg.txt';      // Konfigurationsdatei
-if (!isset($cfgarray))
-    $cfgarray = array();
+if (!isset($cfgarray)) {
+    $cfgarray = [];
+}
 if (file_exists($cfgfile)) {
     $main_cfgarray = parse_ini_file($cfgfile);  // in Array lesen
     $cfgarray += $main_cfgarray;
-    extract ($cfgarray);                        // Variablen erstellen
+    extract($cfgarray);                        // Variablen erstellen
 } else {
     die($text['viewer'][55] . ': ' . $cfgfile . ' ' . $text['viewer'][56]);
     //Fehlerhandling hier rein
@@ -32,7 +33,7 @@ if (file_exists($cfgfile)) {
 // Zeitzone setzen
 // Reihenfolge: 1. in der Konfiguration eingestellte Zeitzone, 2. Zeitzone des Servers
 // (php.ini bzw. System), 3. Europe/Berlin. Ungültige Namen werden verworfen.
-$timezone = isset($timezone) ? trim((string) $timezone) : '';
+$timezone = isset($timezone) ? trim((string)$timezone) : '';
 if ($timezone === '' || !in_array($timezone, timezone_identifiers_list(), true)) {
     $timezone = date_default_timezone_get();
     if (!in_array($timezone, timezone_identifiers_list(), true)) {
@@ -43,7 +44,7 @@ if ($timezone === '' || !in_array($timezone, timezone_identifiers_list(), true))
 date_default_timezone_set($timezone);
 
 include(PATH_TO_LMO . '/lmo-updateoptions.php');
-$handle = opendir (PATH_TO_CONFIGDIR);
+$handle = opendir(PATH_TO_CONFIGDIR);
 while (false !== ($f = readdir($handle))) {
     if (is_dir(PATH_TO_CONFIGDIR . '/' . $f) && $f != '.' && $f != '..') {
         $addon_cfgfile = PATH_TO_CONFIGDIR . '/' . $f . '/cfg.txt';                     // Konfigurationsdatei
@@ -74,7 +75,7 @@ if (!function_exists('lmo_tipper_lines')) {
     {
         $lines = is_file($pswfile) ? file($pswfile) : false;
         if ($lines === false) {
-            return array();
+            return [];
         }
         return array_values(array_filter($lines, function ($line) {
             return strpos(ltrim($line), '<?php') !== 0;
@@ -107,7 +108,7 @@ if (isset($tipp_tippauthtxt)) {
         $lmo_ok = (file_put_contents($lmo_new_auth, $lmo_data, LOCK_EX) === strlen($lmo_data)) && (file_get_contents($lmo_new_auth) === $lmo_data);
         if ($lmo_ok && $lmo_fix_cfg) {
             $lmo_cfg = file_get_contents($lmo_tipp_cfg);
-            $lmo_cfg_new = preg_replace('/^tippauthtxt=.*$/m', 'tippauthtxt=' . $lmo_new_name, (string) $lmo_cfg, 1, $lmo_cnt);
+            $lmo_cfg_new = preg_replace('/^tippauthtxt=.*$/m', 'tippauthtxt=' . $lmo_new_name, (string)$lmo_cfg, 1, $lmo_cnt);
             $lmo_ok = $lmo_cfg !== false && $lmo_cnt === 1 && file_put_contents($lmo_tipp_cfg, $lmo_cfg_new, LOCK_EX) !== false;
         }
         if ($lmo_ok) {
@@ -122,4 +123,3 @@ if (isset($tipp_tippauthtxt)) {
     }
     unset($lmo_old_auth, $lmo_new_name, $lmo_new_auth, $lmo_tipp_cfg, $lmo_data, $lmo_cfg, $lmo_cfg_new, $lmo_cnt, $lmo_ok, $lmo_fix_cfg);
 }
-?>

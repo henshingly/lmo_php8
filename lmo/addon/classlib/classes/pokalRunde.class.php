@@ -8,48 +8,49 @@
  * @package classlib
  */
 
-class pokalRunde {
+class pokalRunde
+{
     /**
     * Nummer der Runde
     * @var integer
     * @access privat
     */
-    var $roundNumber;
+    public $roundNumber;
 
     /**
     *  Modus 0->Tabelle / 1-> KO / 2->KO mir Rückspiel / 3->best of 3 / 5->best of 5 / 7->best of 7
     * @var integer
     * @access private
     */
-    var $mode = 0;
+    public $mode = 0;
 
     /**
     * Begin der Runde (Datum) als Unix Timestamp,
     * @var integer
     * @access privat
     */
-    var $begin = 0;
+    public $begin = 0;
 
     /**
     * Ende der Runde (Datum) als Unix Timestamp,
     * @var string
     * @access privat
     */
-    var $end = 0;
+    public $end = 0;
 
     /**
     * Partien dieser Runde
     * @var array of partien objects
     * @access privat
     */
-    var $partien = array();
+    public $partien = [];
 
     /**
     * Spieltage dieser Runde
     * @var array of spieltag objects
     * @access privat
     */
-    var $spieltage = array();
+    public $spieltage = [];
 
     /**
     * Konstruktor der Klasse PokalRunde, setz die wichtigsten Parameter der Runde
@@ -62,13 +63,15 @@ class pokalRunde {
     * @param array spieltage Spieltage (objecte) dieser Runde
     * @return void
     */
-    function __construct($roundNumber, $mode, $begin = 0, $end = 0, $spieltage = null) {
+    public function __construct($roundNumber, $mode, $begin = 0, $end = 0, $spieltage = null)
+    {
         $this->roundNumber = $roundNumber;
         $this->setMode($mode);
         $this->setBegin($begin);
         $this->setEnd($end);
-        if (!is_null($spieltage))
+        if (!is_null($spieltage)) {
             $this->addSpieltage($spieltage);
+        }
     }
 
     /**
@@ -77,7 +80,8 @@ class pokalRunde {
     * @access public
     * @return integer Modus dér Runde
     */
-    function getRoundNumber() {
+    public function getRoundNumber()
+    {
         return $this->roundNumber;
     }
 
@@ -88,7 +92,8 @@ class pokalRunde {
     * @param integer value Modus der Runde
     * @return void
     */
-    function setMode($value) {
+    public function setMode($value)
+    {
         $this->mode = $value;
     }
 
@@ -98,7 +103,8 @@ class pokalRunde {
     * @access public
     * @return integer Modus dér Runde
     */
-    function getMode() {
+    public function getMode()
+    {
         return $this->mode;
     }
 
@@ -109,7 +115,8 @@ class pokalRunde {
     * @param integer value Begin der Runde als Unix Timestamp
     * @return void
     */
-    function setBegin($value) {
+    public function setBegin($value)
+    {
         $this->begin = $value;
     }
 
@@ -122,15 +129,17 @@ class pokalRunde {
     * @see date()
     * @return mixed Datum des Rundenbegins
     */
-    function getBegin($format = '') {
-        if ($this->end != 0 ) {
-            if ($format == '')
+    public function getBegin($format = '')
+    {
+        if ($this->end != 0) {
+            if ($format == '') {
                 return $this->begin;
-            else
+            } else {
                 return date($format, $this->begin);
-        }
-        else
+            }
+        } else {
             return false;
+        }
     }
 
     /**
@@ -140,7 +149,8 @@ class pokalRunde {
     * @param integer value Ende der Runde als Unix Timestamp
     * @return void
     */
-    function setEnd($value) {
+    public function setEnd($value)
+    {
         $this->end = $value;
     }
 
@@ -153,15 +163,17 @@ class pokalRunde {
     * @see date()
     * @return mixed Ende dér Runde
     */
-    function getEnd($format = '') {
-        if ($this->end != 0 ) {
-            if ($format == '')
+    public function getEnd($format = '')
+    {
+        if ($this->end != 0) {
+            if ($format == '') {
                 return $this->end;
-            else
+            } else {
                 return date($format, $this->end);
-        }
-        else
+            }
+        } else {
             return false;
+        }
     }
 
     /**
@@ -171,17 +183,18 @@ class pokalRunde {
     * @param array/object value Objecte der partien
     * @return void
     */
-    function addPartien(&$value) {
+    public function addPartien(&$value)
+    {
         if (is_array($value)) {
             foreach ($value as $partie) {
-                if (is_a($partie,'partie'))
+                if (is_a($partie, 'partie')) {
                     $this->partien[$partie->spNr] = &$partie;
+                }
             }
-        }
-        elseif (is_a($value,'partie')) {
+        } elseif (is_a($value, 'partie')) {
             $this->partien[$value->spNr] = &$value;
         }
-  }
+    }
 
     /**
     * Gibt Partien dieser Runde zurück, ist $Number ="" wird das komplette Array übergeben
@@ -190,17 +203,20 @@ class pokalRunde {
     * @param integer Nummer der Partie
     * @return object Partie
     */
-    function getPartien($number = '') {
-        if ($number == '' )
+    public function getPartien($number = '')
+    {
+        if ($number == '') {
             return $this->partien;
+        }
         // FIX: array_key_exists()-Argumente waren vertauscht
         // (prüfte Keys von $this->partien[$number] statt von $this->partien,
         // was bei nicht existierendem $number einen Undefined-Array-Key-Fehler
         // verursacht hätte).
-        elseif (!array_key_exists($number, $this->partien))
+        elseif (!array_key_exists($number, $this->partien)) {
             return false;
-        else
+        } else {
             return $this->partien[$number];
+        }
     }
 
     /**
@@ -210,7 +226,8 @@ class pokalRunde {
     * @param array/object value Objecte der Spieltage
     * @return void
     */
-    function addSpieltage(&$value) {
+    public function addSpieltage(&$value)
+    {
         if (is_array($value)) {
             foreach ($value as $spieltag) {
                 if (is_a($spieltag, 'spieltag')) {
@@ -218,8 +235,7 @@ class pokalRunde {
                     $this->addPartien($spieltag->partien);
                 }
             }
-        }
-        elseif (is_a($value,'spieltag')) {
+        } elseif (is_a($value, 'spieltag')) {
             $this->spieltage[$value->nr] = $value;
             $this->addPartien($value->partien);
         }
@@ -232,14 +248,17 @@ class pokalRunde {
     * @param integer Nummer des Spieltags
     * @return object Spieltag
     */
-    function getSpieltage($number = '') {
-        if ($number == '' )
+    public function getSpieltage($number = '')
+    {
+        if ($number == '') {
             return $this->spieltage;
+        }
         // FIX: array_key_exists()-Argumente waren vertauscht (siehe getPartien())
-        elseif (!array_key_exists($number, $this->spieltage))
+        elseif (!array_key_exists($number, $this->spieltage)) {
             return false;
-        else
+        } else {
             return $this->spieltage[$number];
+        }
     }
 
     /**
@@ -248,7 +267,8 @@ class pokalRunde {
     * @access public
     * @return interger Anzahl der Spieltage
     */
-    function spieltageCount() {
+    public function spieltageCount()
+    {
         return count($this->spieltage);
     }
 
@@ -257,10 +277,11 @@ class pokalRunde {
     * @access public
     * @return array Gegner der Partien
     */
-    function getGegner() {
+    public function getGegner()
+    {
         $spieltag = reset($this->spieltage);
-        $gegner = array();
-        foreach ( $spieltag->partien as $partie) {
+        $gegner = [];
+        foreach ($spieltag->partien as $partie) {
             $gegner[]['teamA'] = $partie->heim;
             $gegner[]['teamB'] = $partie->gast;
         }
@@ -273,16 +294,17 @@ class pokalRunde {
     * @param team $teamB
     * @return array partien
     */
-    function getPartienForTeams(&$teamA, &$teamB) {
-        $result = array();
-        foreach ($this->partien as $partie ) {
-            if ( $partie->heim == $teamA || $partie->gast == $teamA ) {
-                if ( $teamB == '' || $partie->heim == $teamB || $partie->gast == $teamB ) $result[] = $partie;
+    public function getPartienForTeams(&$teamA, &$teamB)
+    {
+        $result = [];
+        foreach ($this->partien as $partie) {
+            if ($partie->heim == $teamA || $partie->gast == $teamA) {
+                if ($teamB == '' || $partie->heim == $teamB || $partie->gast == $teamB) {
+                    $result[] = $partie;
+                }
             }
         }
         return $result;
     }
 
-
 }
-?>

@@ -17,75 +17,78 @@
   *
   */
 
-if ($_SERVER['PHP_SELF'] == '/lmo-showgraph.php')
-  header("Location: /lmo.php");
+if ($_SERVER['PHP_SELF'] == '/lmo-showgraph.php') {
+    header('Location: /lmo.php');
+}
 
-if (($file != "") && ($kurve == 1)){
-  $tension = '0.4';
-  $addp=$_SERVER['PHP_SELF']."?action=graph&amp;file=".$file."&amp;stat1=";
-  $show_stat1=isset($_GET['stat1'])?$_GET['stat1']:$stat1;
-  $show_stat2=isset($_GET['stat2'])?$_GET['stat2']:$stat2;
-  if ($show_stat1 == 0 && $show_stat2 != 0 || $show_stat1 == $show_stat2) {
-    $show_stat1 = $show_stat2;
-    $show_stat2 = 0;
-  }
-?>
+if (($file != '') && ($kurve == 1)) {
+    $tension = '0.4';
+    $addp = $_SERVER['PHP_SELF'] . '?action=graph&amp;file=' . $file . '&amp;stat1=';
+    $show_stat1 = isset($_GET['stat1']) ? $_GET['stat1'] : $stat1;
+    $show_stat2 = isset($_GET['stat2']) ? $_GET['stat2'] : $stat2;
+    if ($show_stat1 == 0 && $show_stat2 != 0 || $show_stat1 == $show_stat2) {
+        $show_stat1 = $show_stat2;
+        $show_stat2 = 0;
+    }
+    ?>
 
           <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
             <tr>
               <td valign="top" align="center">
                 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 <?php
-  $tabtype = 0;
-  require(PATH_TO_LMO."/lmo-calcgraph.php");
-  for ($k = 1; $k < $anzteams + 1; $k ++) {
-    ${'platz_'.$k} = "";
-    for ($l = 0; $l < $anzst; $l ++) {
-      ${'platz_'.$k} = ${'platz_'.$k}.$platz[$k][$l].",";
+      $tabtype = 0;
+    require(PATH_TO_LMO . '/lmo-calcgraph.php');
+    for ($k = 1; $k < $anzteams + 1; $k++) {
+        ${'platz_' . $k} = '';
+        for ($l = 0; $l < $anzst; $l++) {
+            ${'platz_' . $k} = ${'platz_' . $k} . $platz[$k][$l] . ',';
+        }
     }
-  }
-?>
+    ?>
                   <tr>
                     <td align="center"><br/><canvas id="myChart" width="700" height="500"></canvas>
 <?php
-  $data = "";
-  $pgtext1 = $text[135];
-  $pgtext2 = $text[136];
-  // Anzahl Spieltage in x-Achse
-  $spieltag = array();
-  for ($i = 1; $i <= $anzst; $i ++) {
-    $spieltag[] = $i;
-  }
-  $xAxis = implode(",", $spieltag);
+      $data = '';
+    $pgtext1 = $text[135];
+    $pgtext2 = $text[136];
+    // Anzahl Spieltage in x-Achse
+    $spieltag = [];
+    for ($i = 1; $i <= $anzst; $i++) {
+        $spieltag[] = $i;
+    }
+    $xAxis = implode(',', $spieltag);
 
-  for ($j = 1; $j < $anzteams + 1; $j ++) {
-    ${'platz'.$j} = explode(",", ${'platz_'.$j});
-    foreach(array_keys(${'platz'.$j}, '0') as $key) {
-      unset(${'platz'.$j}[$key]);
-    }
-    ${'pgplatz'.$j} = implode(",", ${'platz'.$j});
-    $color = mt_rand(0, 160).",".mt_rand(0, 160).",".mt_rand(0, 160).",1";
-    $axisColor = "rgba(90, 90, 90, 1)";
-    if ($show_stat1 == 0 && $show_stat2 == 0) {
-      $flag = 'true';
-      if ($j < 3) $flag = 'false';
-    } elseif ($j == $show_stat1 || $j == $show_stat2) {
-      $flag = 'false';
-    } else {
-      $flag = 'true';
-    }
-    $teams[$j] = str_replace( "'", "´", $teams[$j] ); //Team names with an apostrophe inside destroy the graph curve
-    $data .= "{
+    for ($j = 1; $j < $anzteams + 1; $j++) {
+        ${'platz' . $j} = explode(',', ${'platz_' . $j});
+        foreach (array_keys(${'platz' . $j}, '0') as $key) {
+            unset(${'platz' . $j}[$key]);
+        }
+        ${'pgplatz' . $j} = implode(',', ${'platz' . $j});
+        $color = mt_rand(0, 160) . ',' . mt_rand(0, 160) . ',' . mt_rand(0, 160) . ',1';
+        $axisColor = 'rgba(90, 90, 90, 1)';
+        if ($show_stat1 == 0 && $show_stat2 == 0) {
+            $flag = 'true';
+            if ($j < 3) {
+                $flag = 'false';
+            }
+        } elseif ($j == $show_stat1 || $j == $show_stat2) {
+            $flag = 'false';
+        } else {
+            $flag = 'true';
+        }
+        $teams[$j] = str_replace("'", '´', $teams[$j]); //Team names with an apostrophe inside destroy the graph curve
+        $data .= "{
                               label: '$teams[$j]',
                               fill: false,
                               lineTension: $tension,
                               backgroundColor: 'rgba($color)',
                               borderColor: 'rgba($color)',
-                              data: [{${'pgplatz'.$j}}],
+                              data: [{${'pgplatz' . $j}}],
                               hidden: $flag,
                             },";
-  }
-?>
+    }
+    ?>
                       <script src="<?php echo URL_TO_LMO; ?>/js/chart.js"></script>
                       <script>
                         const ctx = document.getElementById('myChart');

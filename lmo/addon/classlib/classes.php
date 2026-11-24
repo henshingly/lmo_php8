@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * LMO Class Library Version (01/2004)
  *
@@ -33,5 +33,3 @@ require_once(PATH_TO_ADDONDIR . '/classlib/classes/ligaHandball.class.php');
 
 //Statistiken
 require_once(PATH_TO_ADDONDIR . '/classlib/classes/stats.class.php');
-
-?>

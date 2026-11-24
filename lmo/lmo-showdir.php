@@ -17,7 +17,6 @@
   *
   */
 
-
 ?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
@@ -35,10 +34,12 @@ if ($archivlink == 1) {
     $subdir = lmo_clean_subdir($subdir);
     $dirs = get_dir($dirliga . $subdir);
     natcasesort($dirs);
-    if (!empty($subdir) && substr($subdir, -1) != '/') $subdir .= '/';
+    if (!empty($subdir) && substr($subdir, -1) != '/') {
+        $subdir .= '/';
+    }
 
     $output = '';
-    foreach($dirs as $dir) {
+    foreach ($dirs as $dir) {
         $descr = @file_get_contents(PATH_TO_LMO . '/' . $dirliga . $subdir . $dir . '/dir-descr.txt');
         $output .= '        <tr>
           <td><a href="' . $_SERVER['PHP_SELF'] . '?subdir=' . $subdir . $dir . '/">' . $dir . '</a></td>';

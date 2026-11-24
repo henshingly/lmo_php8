@@ -28,10 +28,10 @@ if (($action == 'admin') && ($todo == 'delete') && ($_SESSION['lmouserok'] == 2)
         if (@unlink(PATH_TO_LMO . '/' . $dfile)) {
             echo getMessage($dfile . ' ' . $text[297]);
         } else {
-        echo getMessage($dfile . ' ' . $text[298], true);
+            echo getMessage($dfile . ' ' . $text[298], true);
         }
     }
-?>
+    ?>
       <table class="lmoMiddle" width="99%" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td align="center"><h1><?php echo $text[295]; ?></h1></td>
@@ -42,9 +42,9 @@ if (($action == 'admin') && ($todo == 'delete') && ($_SESSION['lmouserok'] == 2)
               <tr>
                 <td class="nobr" align="left">
 <?php
-    $ftype = '.l98';
+        $ftype = '.l98';
     require(PATH_TO_LMO . '/lmo-admindeldir.php');
-?>
+    ?>
                 </td>
               </tr>
             </table>

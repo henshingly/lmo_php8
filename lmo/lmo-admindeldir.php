@@ -18,11 +18,11 @@
   *
   */
 
-require_once(PATH_TO_LMO . "/lmo-admintest.php");
-$addi = $_SERVER['PHP_SELF'] . "?action=admin&amp;todo=delete&amp;del=1&amp;dfile=";
-if ($ftype != "") {
+require_once(PATH_TO_LMO . '/lmo-admintest.php');
+$addi = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=delete&amp;del=1&amp;dfile=';
+if ($ftype != '') {
     $verz = opendir(substr($dirliga, 0, -1));
-    $dummy = array("");
+    $dummy = [''];
     while ($files = readdir($verz)) {
         if (strtolower(substr($files, -4)) == $ftype) {
             array_push($dummy, $files);
@@ -33,42 +33,41 @@ if ($ftype != "") {
     sort($dummy);
     $i = 0;
     $j = 0;
-?>
+    ?>
                   <ul>
 <?php
-    for ($k = 0; $k < count($dummy); $k++) {
-        $files = $dummy[$k];
-        $sekt = "";
-        $t0 = "";
-        $datei = fopen($dirliga . $files, "rb");
-        if ($datei) {
-            while (!feof($datei)) {
-                $zeile = fgets($datei, 1000);
-                $zeile = chop($zeile);
-                $zeile = trim($zeile);
-                if ((substr($zeile, 0, 1) == "[") && (substr($zeile, -1) == "]")) {
-                    $sekt = substr($zeile, 1, -1);
-                }
-                elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
-                //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
-                    $schl = substr($zeile, 0, strpos($zeile, "="));
-                    $wert = substr($zeile, strpos($zeile, "=") + 1);
-                    if ($schl == "Name") {
-                        $t0 = $wert;
-                        break;
+        for ($k = 0; $k < count($dummy); $k++) {
+            $files = $dummy[$k];
+            $sekt = '';
+            $t0 = '';
+            $datei = fopen($dirliga . $files, 'rb');
+            if ($datei) {
+                while (!feof($datei)) {
+                    $zeile = fgets($datei, 1000);
+                    $zeile = chop($zeile);
+                    $zeile = trim($zeile);
+                    if ((substr($zeile, 0, 1) == '[') && (substr($zeile, -1) == ']')) {
+                        $sekt = substr($zeile, 1, -1);
+                    } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {
+                        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";") && ($sekt == "Options")) {
+                        $schl = substr($zeile, 0, strpos($zeile, '='));
+                        $wert = substr($zeile, strpos($zeile, '=') + 1);
+                        if ($schl == 'Name') {
+                            $t0 = $wert;
+                            break;
+                        }
                     }
                 }
             }
-        }
-        fclose($datei);
-        $i++;
-        if ($t0 == "") {
-            $j++;
-            $t0 = $text[507] . " $j";
-        }?>
+            fclose($datei);
+            $i++;
+            if ($t0 == '') {
+                $j++;
+                $t0 = $text[507] . " $j";
+            }?>
                     <li><a href="<?php echo $addi . $dirliga . $files; ?>" onclick="return dellmolink(this.href, <?php echo $t0; ?>"><?php echo $t0; ?></a></li>
 <?php
-    }
+        }
     if ($i == 0) {?>
                     <li>[<?php echo $text[223]; ?>]</li>
 <?php

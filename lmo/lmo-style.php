@@ -601,4 +601,4 @@ th.bottom {
     text-align: left;
     white-space: normal;     /* Verhindert, dass alles in einer Zeile klebt */
 }
-<?php @include(PATH_TO_TEMPLATEDIR . "/style.css"); ?>
+<?php @include(PATH_TO_TEMPLATEDIR . '/style.css'); ?>

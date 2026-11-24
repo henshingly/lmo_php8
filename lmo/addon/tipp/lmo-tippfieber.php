@@ -112,98 +112,106 @@ if ($file != '' && $tipp_tippfieber == 1) {
       if ($fieber_stat1 < 0) {
           echo '<tr><th><h2>' . $text['tipp'][284] . '</h2></th></tr>';
       } else {
-          $dummy = URL_TO_ADDONDIR . '/tipp/lmo-tipppaintgraph.php?pganz=';
-          if ($fieber_stat2 >= 0) {
-              $dummy = $dummy . '2';
-          } else {
-              $dummy = $dummy . '1';
-          }
-          $dummy = $dummy . '&amp;pgteam1=' . htmlentities($tippernick[$fieber_stat1]);
-          if ($fieber_stat2 >= 0) {
-              $dummy = $dummy . '&amp;pgteam2=' . htmlentities($tippernick[$fieber_stat2]);
-          }
+          // max = größter Wert der dargestellten Kurven (für die Skalierung der Y-Achse)
           if ($kurvenmodus == 1) {
-              if ($fieber_stat2 >= 0) {
-                  $max = max(max($tipppunkte[$fieber_stat1]), max($tipppunkte[$fieber_stat2]));
-              } else {
-                  $max = max($tipppunkte[$fieber_stat1]);
-              }
+              $max = $fieber_stat2 >= 0 ? max(max($tipppunkte[$fieber_stat1]), max($tipppunkte[$fieber_stat2])) : max($tipppunkte[$fieber_stat1]);
           } elseif ($kurvenmodus == 2) {
-              if ($fieber_stat2 >= 0) {
-                  $max = max(max($platz[$fieber_stat1]), max($platz[$fieber_stat2]));
-              } else {
-                  $max = max($platz[$fieber_stat1]);
-              }
+              $max = $fieber_stat2 >= 0 ? max(max($platz[$fieber_stat1]), max($platz[$fieber_stat2])) : max($platz[$fieber_stat1]);
           } elseif ($kurvenmodus == 3) {
-              if ($fieber_stat2 >= 0) {
-                  $max = max(max($platz[$fieber_stat1]), max($platz[$fieber_stat2]), max($platz1[$fieber_stat1]), max($platz1[$fieber_stat2]));
-              } else {
-                  $max = max(max($platz[$fieber_stat1]), max($platz1[$fieber_stat1]));
-              }
-          } elseif ($kurvenmodus == 4) {
-              if ($fieber_stat2 >= 0) {
-                  $max = max(max($platz1[$fieber_stat1]), max($platz1[$fieber_stat2]));
-              } else {
-                  $max = max($platz1[$fieber_stat1]);
-              }
+              $max = $fieber_stat2 >= 0 ? max(max($platz[$fieber_stat1]), max($platz[$fieber_stat2]), max($platz1[$fieber_stat1]), max($platz1[$fieber_stat2])) : max(max($platz[$fieber_stat1]), max($platz1[$fieber_stat1]));
+          } else {
+              $max = $fieber_stat2 >= 0 ? max(max($platz1[$fieber_stat1]), max($platz1[$fieber_stat2])) : max($platz1[$fieber_stat1]);
           }
-          $dummy = $dummy . '&amp;max=' . $max;
-          $dummy = $dummy . '&amp;pgst=' . $anzst;
-          if ($kurvenmodus < 4) {
-              $dummy = $dummy . '&amp;pgplatz1=';
-              if ($kurvenmodus == 1) {
-                  for ($j = 0; $j < $anzst; $j++) {
-                      $dummy .= $tipppunkte[$fieber_stat1][$j] . ',';
-                  }
-              } else {
-                  for ($j = 0; $j < $anzst; $j++) {
-                      $dummy .= $platz[$fieber_stat1][$j] . ',';
-                  }
-              }
-              $dummy .= '0';
-          }
-          if ($kurvenmodus > 2) {
-              $dummy = $dummy . '&amp;pgplatz1a=';
+          $max = (int)$max < 1 ? 10 : (int)$max;
+
+          // Werte eines Tippers als Liste für Chart.js ('' = noch kein Wert -> Lücke)
+          $kurveWerte = static function (array $werte) use ($anzst): array {
+              $out = [];
               for ($j = 0; $j < $anzst; $j++) {
-                  $dummy .= $platz1[$fieber_stat1][$j] . ',';
+                  $out[] = (isset($werte[$j]) && $werte[$j] !== '') ? (int)$werte[$j] : null;
               }
-              $dummy .= '0';
-          }
+              return $out;
+          };
+          $kurven = [];
+          $tipperListe = [[$fieber_stat1, '0,0,255', '0,0,128']];
           if ($fieber_stat2 >= 0) {
-              if ($kurvenmodus < 4) {
-                  $dummy = $dummy . '&amp;pgplatz2=';
-                  if ($kurvenmodus == 1) {
-                      for ($j = 0; $j < $anzst; $j++) {
-                          $dummy .= $tipppunkte[$fieber_stat2][$j] . ',';
-                      }
-                  } else {
-                      for ($j = 0; $j < $anzst; $j++) {
-                          $dummy .= $platz[$fieber_stat2][$j] . ',';
-                      }
+              $tipperListe[] = [$fieber_stat2, '255,0,0', '128,0,0'];
+          }
+          foreach ($tipperListe as [$idx, $farbe, $farbeDunkel]) {
+              $nick = $tippernick[$idx];
+              if ($kurvenmodus == 1) {
+                  $kurven[] = ['label' => $nick, 'color' => $farbe, 'data' => $kurveWerte($tipppunkte[$idx])];
+              } else {
+                  if ($kurvenmodus < 4) {
+                      $kurven[] = ['label' => $nick, 'color' => $farbe, 'data' => $kurveWerte($platz[$idx])];
                   }
-                  $dummy .= '0';
-              }
-              if ($kurvenmodus > 2) {
-                  $dummy = $dummy . '&amp;pgplatz2a=';
-                  for ($j = 0; $j < $anzst; $j++) {
-                      $dummy .= $platz1[$fieber_stat2][$j] . ',';
+                  if ($kurvenmodus > 2) {
+                      $kurven[] = ['label' => $nick . ' (Σ)', 'color' => $farbeDunkel, 'data' => $kurveWerte($platz1[$idx])];
                   }
-                  $dummy .= '0';
               }
           }
-          $dummy = $dummy . '&amp;kmodus=' . $kurvenmodus;
-          $dummy = $dummy . '&amp;pgtext1=' . $text[135];
-          //SPIELTAGE
-          if ($kurvenmodus == 1) {
-              $dummy = $dummy . '&amp;pgtext2=' . strtoupper($text['tipp'][38]);
-          }
-          // PUNKTE
-          else {
-              $dummy = $dummy . '&amp;pgtext2=' . $text[136];
-          }
-          //PLATZIERUNG
+          $kurvenAchseY = $kurvenmodus == 1 ? strtoupper($text['tipp'][38]) : $text[136];
+          $kurvenLabels = range(1, max(1, (int)$anzst));
           ?>
-          <tr><td align="center" colspan="3"><img src="<?php echo $dummy; ?>" border="0"></td></tr><?php    }?>
+          <tr>
+            <td align="center" colspan="3">
+              <div style="position:relative;width:100%;max-width:800px;"><canvas id="tippChart" width="700" height="500"></canvas></div>
+              <script src="<?php echo URL_TO_LMO; ?>/js/chart.js"></script>
+              <script>
+                (function () {
+                  var punkte = <?php echo $kurvenmodus == 1 ? 'true' : 'false'; ?>;
+                  var kurven = <?php echo json_encode($kurven, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+                  var axisColor = 'rgba(90, 90, 90, 1)';
+                  new Chart(document.getElementById('tippChart'), {
+                    type: 'line',
+                    data: {
+                      labels: <?php echo json_encode($kurvenLabels); ?>,
+                      datasets: kurven.map(function (k) {
+                        return {
+                          label: k.label,
+                          data: k.data,
+                          fill: false,
+                          spanGaps: false,
+                          tension: 0.4,
+                          cubicInterpolationMode: 'monotone',
+                          borderWidth: 3,
+                          pointRadius: 3,
+                          backgroundColor: 'rgba(' + k.color + ',1)',
+                          borderColor: 'rgba(' + k.color + ',1)'
+                        };
+                      })
+                    },
+                    options: {
+                      scales: {
+                        x: {
+                          grid: { color: axisColor },
+                          title: { display: true, text: <?php echo json_encode($text[135]); ?>, color: axisColor, font: { size: 18 } },
+                          ticks: { color: axisColor }
+                        },
+                        y: {
+                          grid: { color: axisColor },
+                          title: { display: true, text: <?php echo json_encode($kurvenAchseY); ?>, color: axisColor, font: { size: 18 } },
+                          reverse: !punkte,
+                          min: punkte ? 0 : 1,
+                          max: <?php echo $kurvenmodus == 1 ? 'undefined' : $max; ?>,
+                          ticks: { color: axisColor, precision: 0 }
+                        }
+                      },
+                      plugins: {
+                        tooltip: {
+                          mode: 'index',
+                          intersect: false,
+                          callbacks: {
+                            title: function (items) { return items[0].label + '. <?php echo addslashes($text[2]); ?>'; }
+                          }
+                        }
+                      }
+                    }
+                  });
+                })();
+              </script>
+            </td>
+          </tr><?php    }?>
         </table>
       </td>
     </tr><?php

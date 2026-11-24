@@ -7,8 +7,8 @@
  * @since classlib V2.7
  * @version  liga.class.php,v 2.7 2005/10/12 13:34:43
  */
-class ligaFussball extends liga {
-
+class ligaFussball extends liga
+{
     /**
     * Sortiert die errechnete Tabelle und gibt diese als Array zurück
     *   - Pkt - (Anzahl Spiele) - Differenz Tore - geschossene Tore -
@@ -20,8 +20,9 @@ class ligaFussball extends liga {
     * @param  array $tableArray Die zu sortierende Tabelle
     * @return array
     */
-    function sortTable($tableArray) {
-        foreach($tableArray as $table) {
+    public function sortTable($tableArray)
+    {
+        foreach ($tableArray as $table) {
             $sort_pPkt[] = $table['pPkt'];
             $sort_spiele[] = $table['spiele'];
             $sort_dTor[] = $table['dTor'];
@@ -33,7 +34,7 @@ class ligaFussball extends liga {
             if ($i > 200) {
                 die('Fehler im Script');
             }
-            if ( $sort_pPkt[$i] == $sort_pPkt[$i + 1] && $sort_spiele[$i] == $sort_spiele[$i + 1] && $sort_dTor[$i] == $sort_dTor[$i + 1] && $sort_pTor[$i] == $sort_pTor[$i + 1]) {
+            if ($sort_pPkt[$i] == $sort_pPkt[$i + 1] && $sort_spiele[$i] == $sort_spiele[$i + 1] && $sort_dTor[$i] == $sort_dTor[$i + 1] && $sort_pTor[$i] == $sort_pTor[$i + 1]) {
                 // Partien für den Direkten Vergleich suchen.
                 $allParties = $this->allPartieForTeams($tableArray[$i]['team'], $tableArray[$i + 1]['team'], true);
                 foreach ($allParties as $partie) {
@@ -44,16 +45,15 @@ class ligaFussball extends liga {
                 // das Gesamtergebnis aus Hin- und Rückspiel im direkten Vergleich
                 if ($tore[$tableArray[$i]['team']->nr] == $tore[$tableArray[$i + 1]['team']->nr]) {
                     // die Anzahl der auswärts erzielten Tore im direkten Vergleich
-                    if ( $gastTore[$tableArray[$i]['team']->nr] == $gastTore[$tableArray[$i + 1]['team']->nr] ) {
-                        unset ($tore);
+                    if ($gastTore[$tableArray[$i]['team']->nr] == $gastTore[$tableArray[$i + 1]['team']->nr]) {
+                        unset($tore);
                         // die Anzahl aller auswärts erzielten Tore
                         foreach ($this->spieltage as $spieltag) {
                             foreach ($spieltag->partien as $partie) {
                                 $tore[$partie->gast->nr] += $partie->gTore > -1 ? $partie->gTore : 0;
                             }
                         }
-                    }
-                    else {
+                    } else {
                         $tore[$tableArray[$i]['team']->nr] = $gastTore[$tableArray[$i]['team']->nr];
                         $tore[$tableArray[$i + 1]['team']->nr] = $gastTore[$tableArray[$i + 1]['team']->nr];
                     }
@@ -63,12 +63,10 @@ class ligaFussball extends liga {
                     $newTable[$i] = $tableArray[$i + 1];
                     $newTable[$i + 1] = $tableArray[$i];
                     $newTable[$i]['pos'] = ++$i;
-                }
-                else {
+                } else {
                     $newTable[$i] = $tableArray[$i];
                 }
-            }
-            else {  // END if ($sort_pPkt[$i] == $sort...
+            } else {  // END if ($sort_pPkt[$i] == $sort...
                 $newTable[$i] = $tableArray[$i];
             }
             $newTable[$i]['pos'] = $i + 1;
@@ -76,11 +74,10 @@ class ligaFussball extends liga {
         return $newTable;
     } // END function sortTable
 
-    function sortDirectTable($tableArray) {
+    public function sortDirectTable($tableArray)
+    {
         echo "function sortDirectTable($tableArray) {";
         return false;
     }
 
 } // END class FussballLiga
-
-?>

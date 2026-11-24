@@ -19,7 +19,9 @@
 
 session_start();
 require(__DIR__ . '/init.php');
-if (!isset($_SESSION['lmouserok']))$_SESSION['lmouserok'] == 0;
+if (!isset($_SESSION['lmouserok'])) {
+    $_SESSION['lmouserok'] == 0;
+}
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 $todo = isset($_GET['todo']) ? $_GET['todo'] : '';
@@ -39,10 +41,10 @@ $madr = isset($_GET['madr']) ? $_GET['madr'] : '';
 <?php
 if (($action == 'admin') && ($todo == 'email') && (($_SESSION['lmouserok'] == 1) || ($_SESSION['lmouserok'] == 2))) {
     if (($down != 0) && ($madr != '')) {
-        $array = array();
+        $array = [];
         $ftype = '.l98';
         $verz = opendir(substr($dirliga, 0, -1));
-        $dummy = array();
+        $dummy = [];
         while ($files = readdir($verz)) {
             if (strtolower(substr($files, -4)) == $ftype) {
                 array_push($dummy, $files);
@@ -53,32 +55,30 @@ if (($action == 'admin') && ($todo == 'email') && (($_SESSION['lmouserok'] == 1)
         $temp = $diroutput . 'ligen.zip';
         require_once(PATH_TO_LMO . '/lmo-smtp.php');
         if ($down > 0) {
-            if ($dummy[$down-1] != '' && check_hilfsadmin($dummy[$down-1])) {
-                $zipfile = new ZipArchive;
+            if ($dummy[$down - 1] != '' && check_hilfsadmin($dummy[$down - 1])) {
+                $zipfile = new ZipArchive();
                 $zipfile->open($temp, ZipArchive::CREATE);
-                $zipfile->addFile(PATH_TO_LMO . '/' . $dirliga . $dummy[$down-1], $dummy[$down-1]);
+                $zipfile->addFile(PATH_TO_LMO . '/' . $dirliga . $dummy[$down - 1], $dummy[$down - 1]);
                 $zipfile->close();
                 $mail = lmo_mail_create($text[341]);
                 $mail->addAddress($madr);
                 $mail->Subject = $text[341];
                 $mail->Body = $text[342];
-                $mail->addAttachment($temp, $dummy[$down-1] . '.zip');
+                $mail->addAttachment($temp, $dummy[$down - 1] . '.zip');
                 if (lmo_mail_send($mail)) {
                     echo getMessage($text[348]);
-                }
-                else {
+                } else {
                     echo getMessage($text[550] . " Details: {$mail->ErrorInfo}", true);
                 }
-?>
+                ?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]; ?><\/a>');</script></p>
 <?php
             }
-        }
-        elseif ($down == -1) {
+        } elseif ($down == -1) {
             if (count($dummy) > 0) {
-                $zipfile = new ZipArchive;
+                $zipfile = new ZipArchive();
                 $zipfile->open($temp, ZipArchive::CREATE);
-                for ($i = 0; $i < count($dummy); $i ++){
+                for ($i = 0; $i < count($dummy); $i++) {
                     if (check_hilfsadmin($dummy[$i])) {
                         $zipfile->addFile(PATH_TO_LMO . '/' . $dirliga . $dummy[$i], $dummy[$i]);
                     }
@@ -91,18 +91,16 @@ if (($action == 'admin') && ($todo == 'email') && (($_SESSION['lmouserok'] == 1)
                 $mail->addAttachment($temp);
                 if (lmo_mail_send($mail)) {
                     echo getMessage($text[348]);
-                }
-                else {
+                } else {
                     echo getMessage($text[550] . " Details: {$mail->ErrorInfo}", true);
                 }
-?>
+                ?>
   <p><script type="text/javascript">document.write('<a href="#" onclick="self.close();"><?php echo $text[347]; ?><\/a>');</script></p>
 <?php
             }
         }
         unlink($temp);
-    }
-    else {?>
+    } else {?>
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <label>Mailadresse: <input name="madr" type="text" class="lmo-formular-input" size="25" maxlength="128"></label>
     <input type="hidden" name="action" value="admin">

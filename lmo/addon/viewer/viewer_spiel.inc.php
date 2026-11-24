@@ -54,14 +54,14 @@ foreach ($fav_team[$i] as $akt_team) {
         $mgp_link_s = '';
         $mgp_link_e = '';
         //HP verlinken
-        if (isset($multi_cfgarray['mannschaftshomepages_verlinken']) && $multi_cfgarray['mannschaftshomepages_verlinken']==1) {
+        if (isset($multi_cfgarray['mannschaftshomepages_verlinken']) && $multi_cfgarray['mannschaftshomepages_verlinken'] == 1) {
             if ($partie->heim->keyValues['URL'] != '') {
-            $mhp_link_s = '<a href="' . $partie->heim->keyValues['URL'] . '" target="_blank">';
-            $mhp_link_e = '</a>';
+                $mhp_link_s = '<a href="' . $partie->heim->keyValues['URL'] . '" target="_blank">';
+                $mhp_link_e = '</a>';
             }
             if ($partie->gast->keyValues['URL'] != '') {
-            $mgp_link_s = '<a href="' . $partie->gast->keyValues['URL'] . '" target="_blank">';
-            $mgp_link_e = '</a>';
+                $mgp_link_s = '<a href="' . $partie->gast->keyValues['URL'] . '" target="_blank">';
+                $mgp_link_e = '</a>';
             }
         }//Ende HP verlinken
 
@@ -88,12 +88,10 @@ foreach ($fav_team[$i] as $akt_team) {
         if ($multi_cfgarray['mannschaftsnamen'] == 2) {
             $template->setVariable('Heim', $mhp_link_s . $partie->heim->mittel . $mhp_link_e);
             $template->setVariable('Gast', $mgp_link_s . $partie->gast->mittel . $mgp_link_e);
-        }
-        elseif ($multi_cfgarray['mannschaftsnamen'] == 1) {
+        } elseif ($multi_cfgarray['mannschaftsnamen'] == 1) {
             $template->setVariable('Heim', $mhp_link_s . $partie->heim->kurz . $mhp_link_e);
             $template->setVariable('Gast', $mgp_link_s . $partie->gast->kurz . $mgp_link_e);
-        }
-        else {
+        } else {
             $template->setVariable('Heim', $mhp_link_s . $partie->heim->name . $mhp_link_e);
             $template->setVariable('Gast', $mgp_link_s . $partie->gast->name . $mgp_link_e);
         }  //Ende Mannschaftsnamen
@@ -109,8 +107,7 @@ foreach ($fav_team[$i] as $akt_team) {
         $table_link = URL_TO_LMO . '/lmo.php?file=' . $fav_liga[$i] . '&amp;action=table&amp;st=' . $spieltag;
         if ($multi_cfgarray['tabelle_verlinken'] == '1') {
             $tlink = '<a href="' . $table_link . '" target="_blank" title="' . $text['viewer'][35] . ' (' . $text['viewer'][33] . ')"><img src="' . URL_TO_IMGDIR . '/viewer/' . $multi_cfgarray['tabellensymbol'] . '" height="20" border="0" alt="#"></a>';
-        }
-        else {
+        } else {
             $tlink = '<a href="' . $table_link . '" title="' . $text['viewer'][35] . ' (' . $text['viewer'][34] . ')"><img src="' . URL_TO_IMGDIR . '/viewer/' . $multi_cfgarray['tabellensymbol'] . '" height="20" border="0" alt="#"></a>';
         }
         $template->setVariable('Tabellenlink', $tlink);
@@ -126,10 +123,9 @@ foreach ($fav_team[$i] as $akt_team) {
         //Anfang Spielbericht
         $SpBer_link = $partie->reportUrl;
         if ($SpBer_link != '') {
-            if ($multi_cfgarray['spielberichte_neues_fenster'] == '1' ) {
+            if ($multi_cfgarray['spielberichte_neues_fenster'] == '1') {
                 $tlink = '<a href="' . $SpBer_link . '" target="_blank" title="' . $text['viewer'][38] . ' (' . $text['viewer'][33] . ')"><img src="' . URL_TO_IMGDIR . '/viewer/' . $multi_cfgarray['spielberichtesymbol'] . '" height="20" border="0" alt="#"></a>';
-            }
-            else {
+            } else {
                 $tlink = '<a href="' . $SpBer_link . '" title="' . $text['viewer'][38] . ' (' . $text['viewer'][34] . ')"><img src="' . URL_TO_IMGDIR . '/viewer/' . $multi_cfgarray['spielberichtesymbol'] . '" height="20" border="0" alt="#"></a>';
             }
             $template->setVariable('Spielbericht', $tlink);
@@ -139,12 +135,10 @@ foreach ($fav_team[$i] as $akt_team) {
         if ($multi_cfgarray['heute_highlight'] == 1) {
             if ($partie->zeit > zeitberechnung('2', -1) && $partie->zeit < zeitberechnung('2', 0)) {
                 $template->setvariable('Zeilenklasse', 'vRowHighlight');
-            }
-            else {
+            } else {
                 $template->setvariable('Zeilenklasse', 'vRow');
             }
         }  //Ende Spiele Heute hervorheben
     }
 }
 $template->parseCurrentBlock();
-?>

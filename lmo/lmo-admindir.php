@@ -17,12 +17,11 @@
   *
   */
 
-
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 $addi = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=edit&amp;file=';
 
-$valid_liga_sort = array('liga_name', 'file_name', 'file_date');
-$valid_liga_sort_direction = array('asc', 'desc');
+$valid_liga_sort = ['liga_name', 'file_name', 'file_date'];
+$valid_liga_sort_direction = ['asc', 'desc'];
 $_SESSION['liga_sort'] = (isset($_REQUEST['liga_sort']) && in_array($_REQUEST['liga_sort'], $valid_liga_sort, true))
     ? $_REQUEST['liga_sort']
     : (in_array($liga_sort, $valid_liga_sort, true) ? $liga_sort : 'liga_name');
@@ -33,7 +32,7 @@ $_SESSION['liga_sort_direction'] = (isset($_REQUEST['liga_sort_direction']) && i
 $verz = opendir(substr(PATH_TO_LMO . '/' . $dirliga, 0, -1));
 $liga_counter = 0;
 $unbenannte_liga_counter = 0;
-while($files = readdir($verz)) {
+while ($files = readdir($verz)) {
     if (strtolower(substr($files, -4)) == '.l98') {
         if ($_SESSION['lmouserok'] == 1) {
             $hilfsadmin_berechtigung = false;
@@ -60,11 +59,10 @@ while($files = readdir($verz)) {
                 while (!feof($datei)) {
                     $zeile = fgets($datei, 1000);
                     $zeile = trim($zeile);
-                    if ((substr($zeile, 0, 1) == '[') && (substr($zeile,-1) == ']')) {  //Sektion
-                        $sekt=substr($zeile, 1, -1);
-                    }
-                    elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  // Wert
-                    //elseif ((strpos($zeile, '=') !== false) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  //Wert
+                    if ((substr($zeile, 0, 1) == '[') && (substr($zeile, -1) == ']')) {  //Sektion
+                        $sekt = substr($zeile, 1, -1);
+                    } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  // Wert
+                        //elseif ((strpos($zeile, '=') !== false) && (substr($zeile, 0, 1) != ';') && ($sekt == 'Options')) {  //Wert
                         $option = explode('=', $zeile, 2);
                         $option_name = $option[0];
                         $option_wert = isset($option[1]) ? $option[1] : '';
@@ -85,8 +83,9 @@ while($files = readdir($verz)) {
                         //Alle benötigten Werte gefunden -> Abbruch
                         if ($ligadatei[$liga_counter]['liga_name'] != '' &&
                             $ligadatei[$liga_counter]['aktueller_spieltag'] != '' &&
-                            $ligadatei[$liga_counter]['anz_teams'] != '')
-                        break;
+                            $ligadatei[$liga_counter]['anz_teams'] != '') {
+                            break;
+                        }
                     }
                 }
                 fclose($datei);
@@ -101,23 +100,22 @@ while($files = readdir($verz)) {
                             case ($t5 - 1):
                                 $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[374];
                                 $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
-                            break;
+                                break;
                             case ($t5 - 2):
                                 $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[373];
                                 $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
-                            break;
+                                break;
                             case ($t5 - 3):
                                 $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[372];
                                 $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
-                            break;
+                                break;
                             case ($t5 - 4):
                                 $ligadatei[$liga_counter]['rundenbezeichnung'] = $text[371];
                                 $ligadatei[$liga_counter]['aktueller_spieltag'] = '';
-                            break;
+                                break;
                         }
                     }
-                }
-                else {
+                } else {
                     $ligadatei[$liga_counter]['rundenbezeichnung'] = '';
                 }
                 $liga_counter++;
@@ -128,13 +126,14 @@ while($files = readdir($verz)) {
 closedir($verz);
 
 usort($ligadatei, 'cmp');
-if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction'] == 'desc')
+if (isset($_SESSION['liga_sort_direction']) && $_SESSION['liga_sort_direction'] == 'desc') {
     $ligadatei = array_reverse($ligadatei);
+}
 ?>
 
 <dl>
 <?php
-foreach($ligadatei as $liga) {?>
+foreach ($ligadatei as $liga) {?>
   <dt><a href="<?php echo $addi . $dirliga . $liga['file_name']; ?>"><?php echo $liga['liga_name']; ?></a></dt>
   <dd><small><?php echo date('d.m.Y H:i', filemtime(PATH_TO_LMO . '/' . $dirliga . $liga['file_name'])) . ' / ' . $liga['rundenbezeichnung'] . ' ' . $liga['aktueller_spieltag']; ?></small></dd><?php
 }
@@ -144,13 +143,15 @@ if ($liga_counter == 0) {
 ?>
 </dl><?php
 
-function cmp ($a1, $a2) {
+function cmp($a1, $a2)
+{
     $sort = (isset($_SESSION['liga_sort']) && isset($a1[$_SESSION['liga_sort']]) && isset($a1[$_SESSION['liga_sort']])) ? $_SESSION['liga_sort'] : 'liga_name';
     if (is_numeric($a1[$sort]) && is_numeric($a2[$sort])) {  //Numerischer Vergleich
-        if ($a2[$sort] == $a1[$sort]) return 0;
-            return ($a1[$sort] > $a2[$sort]) ? 1 : -1;
-    }
-    else { //Stringvergleich
+        if ($a2[$sort] == $a1[$sort]) {
+            return 0;
+        }
+        return ($a1[$sort] > $a2[$sort]) ? 1 : -1;
+    } else { //Stringvergleich
         $a1[$sort] = strtr($a1[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
         $a2[$sort] = strtr($a2[$sort], '¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ', 'YuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy');
         return  strnatcasecmp($a1[$sort], $a2[$sort]);

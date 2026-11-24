@@ -21,7 +21,7 @@ require_once(PATH_TO_LMO . '/lmo-admintest.php');
 $subdir = isset($_REQUEST['subdir']) ? lmo_clean_subdir($_REQUEST['subdir']) : '';
 if (($action == 'admin') && ($todo == 'open')) {
     $adda = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=';
-?>
+    ?>
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td align="center"><h1><?php echo $text[294]; ?></h1></td>
@@ -35,13 +35,15 @@ if (($action == 'admin') && ($todo == 'open')) {
   <tr>
     <td align="left">
 <?php
-    $subdir = lmo_clean_subdir($subdir);
+        $subdir = lmo_clean_subdir($subdir);
     $dirs = get_dir($dirliga . $subdir);
     natcasesort($dirs);
-    if (!empty($subdir) && substr($subdir, -1) != '/') $subdir .= '/';
+    if (!empty($subdir) && substr($subdir, -1) != '/') {
+        $subdir .= '/';
+    }
 
     $output = '';
-    foreach($dirs as $dir) {
+    foreach ($dirs as $dir) {
         $descr = @file_get_contents(PATH_TO_LMO . '/' . $dirliga . $subdir . $dir . '/dir-descr.txt');
         $output .= '      <tr><td><a href="' . $adda . 'open&amp;subdir=' . $subdir . $dir . '/">' . $dir . '</a></td>';
         if ($descr != '') {
@@ -59,10 +61,10 @@ if (($action == 'admin') && ($todo == 'open')) {
       </table><?php
     }
     if (str_contains($subdir, '/')) {
-?>
+        ?>
       <p><a href="<?php echo $adda; ?>open&amp;subdir=<?php echo dirname($subdir) . '/'; ?>"><?php echo $text[5]; ?> <?php echo $text[562]; ?></a></p><?php
     }
-?>
+    ?>
     </td>
   </tr>
 </table><?php

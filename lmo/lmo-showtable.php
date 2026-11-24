@@ -26,7 +26,7 @@ if ($minus == 2) {
 
 $breite = 11;
 if ($minus == 2) {
-    $breite = $breite+2;
+    $breite = $breite + 2;
 }
 if ($tabonres == 2) {
     $gesamtbreite = 3 * $breite + 11;
@@ -38,14 +38,24 @@ if ($tabonres == 2) {
 <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
   <caption><?php
 if ($einhinrueck == 1 || $einheimausw == 1) {
-    if ($tabtype != 0) { ?><a href="<?php echo $addt1 . '0' ?>" title="<?php echo $text[27]; ?>"><?php echo $text[16]; ?></a><?php } else {echo $text[16];} ?>&nbsp;<?php
-    if ($tabonres != 2 && $einheimausw==1) {
-        if ($tabtype != 1) { ?><a href="<?php echo $addt1 . '1'; ?>" title="<?php echo $text[28]; ?>"><?php echo $text[41]; ?></a><?php } else {echo $text[41];} ?>&nbsp;<?php
-        if ($tabtype != 2) { ?><a href="<?php echo $addt1 . '2'; ?>" title="<?php echo $text[29]; ?>"><?php echo $text[42]; ?></a><?php } else {echo $text[42];} ?>&nbsp;<?php
+    if ($tabtype != 0) { ?><a href="<?php echo $addt1 . '0' ?>" title="<?php echo $text[27]; ?>"><?php echo $text[16]; ?></a><?php } else {
+        echo $text[16];
+    } ?>&nbsp;<?php
+    if ($tabonres != 2 && $einheimausw == 1) {
+        if ($tabtype != 1) { ?><a href="<?php echo $addt1 . '1'; ?>" title="<?php echo $text[28]; ?>"><?php echo $text[41]; ?></a><?php } else {
+            echo $text[41];
+        } ?>&nbsp;<?php
+        if ($tabtype != 2) { ?><a href="<?php echo $addt1 . '2'; ?>" title="<?php echo $text[29]; ?>"><?php echo $text[42]; ?></a><?php } else {
+            echo $text[42];
+        } ?>&nbsp;<?php
     }
     if ($einhinrueck == 1) {
-        if ($tabtype != 4) { ?><a href="<?php echo $addt1 . '4'; ?>" title="<?php echo $text[4003]; ?>"><?php echo $text[4003]; ?></a><?php } else {echo $text[4003];} ?>&nbsp;<?php
-        if ($tabtype != 3) { ?><a href="<?php echo $addt1 . '3'; ?>" title="<?php echo $text[4002]; ?>"><?php echo $text[4002]; ?></a><?php } else {echo $text[4002];}
+        if ($tabtype != 4) { ?><a href="<?php echo $addt1 . '4'; ?>" title="<?php echo $text[4003]; ?>"><?php echo $text[4003]; ?></a><?php } else {
+            echo $text[4003];
+        } ?>&nbsp;<?php
+        if ($tabtype != 3) { ?><a href="<?php echo $addt1 . '3'; ?>" title="<?php echo $text[4002]; ?>"><?php echo $text[4002]; ?></a><?php } else {
+            echo $text[4002];
+        }
     }
 } ?>
   </caption><?php
@@ -62,7 +72,9 @@ if ($tabonres == 2) { ?>
 <?php
 } ?>
   <tr>
-    <th style="text-align:left" colspan="7"><?php if ($tabonres!=2) {echo $tabdat;} ?>&nbsp;</th>
+    <th style="text-align:left" colspan="7"><?php if ($tabonres != 2) {
+        echo $tabdat;
+    } ?>&nbsp;</th>
     <th style="text-align:center"><acronym title="<?php echo $text[63]; ?>"><?php echo $text[33]; ?></acronym></th>
     <th style="text-align:center"><acronym title="<?php echo $text[199]; ?>"><?php echo $text[34]; ?></acronym></th>
 <?php
@@ -154,19 +166,19 @@ for ($x = 1; $x <= $anzteams; $x++) {
             $lmo_tabelle_class = 'lmoTabelleMeister nobr';
             $j = 2;
         }
-        if (($x >= $j) && ($x < $j+$anzcl) && ($anzcl > 0)) {
+        if (($x >= $j) && ($x < $j + $anzcl) && ($anzcl > 0)) {
             $lmo_tabelle_class = 'lmoTabelleCleague nobr';
         }
-        if (($x >= $j+$anzcl) && ($x < $j+$anzcl+$anzck) && ($anzck > 0)) {
+        if (($x >= $j + $anzcl) && ($x < $j + $anzcl + $anzck) && ($anzck > 0)) {
             $lmo_tabelle_class = 'lmoTabelleCleaguequali nobr';
         }
-        if (($x >= $j+$anzcl+$anzck) && ($x < $j+$anzcl+$anzck+$anzuc) && ($anzuc > 0)) {
-        $lmo_tabelle_class = 'lmoTabelleUefa nobr';
+        if (($x >= $j + $anzcl + $anzck) && ($x < $j + $anzcl + $anzck + $anzuc) && ($anzuc > 0)) {
+            $lmo_tabelle_class = 'lmoTabelleUefa nobr';
         }
-        if (($x <= $anzteams-$anzab) && ($x > $anzteams-$anzab-$anzar) && ($anzar > 0)) {
+        if (($x <= $anzteams - $anzab) && ($x > $anzteams - $anzab - $anzar) && ($anzar > 0)) {
             $lmo_tabelle_class = 'lmoTabelleRelegation nobr';
         }
-        if (($x <= $anzteams) && ($x > $anzteams-$anzab) && ($anzab > 0)) {
+        if (($x <= $anzteams) && ($x > $anzteams - $anzab) && ($anzab > 0)) {
             $lmo_tabelle_class = 'lmoTabelleAbsteiger nobr';
         }
     } ?>
@@ -209,8 +221,9 @@ for ($x = 1; $x <= $anzteams; $x++) {
                 $lmo_tabellennotiz .= ':' . ($strafm[$i] < 0 ? '+' . ((-1) * applyFactor($strafm[$i], $pointsfaktor)) : ((-1) * applyFactor($strafm[$i], $pointsfaktor)));
             }
             //Ab Spieltag
-            if ($strafdat[$i] != 0)
+            if ($strafdat[$i] != 0) {
                 $lmo_tabellennotiz .= '<br>' . $text[524] . '&nbsp;' . $text[2] . '&nbsp;' . $strafdat[$i] . '<br>';
+            }
         }
         //Straf-/Bonustore
         if ($torkorrektur1[$i] != 0 || $torkorrektur2[$i] != 0) {
@@ -221,8 +234,9 @@ for ($x = 1; $x <= $anzteams; $x++) {
             //Gegentore
             $lmo_tabellennotiz .= $torkorrektur2[$i] < 0 ? '+' . ((-1) * applyFactor($torkorrektur2[$i], $goalfaktor)) : ((-1) * applyFactor($torkorrektur2[$i], $goalfaktor));
             //Ab Spieltag
-            if ($strafdat[$i] != 0)
+            if ($strafdat[$i] != 0) {
                 $lmo_tabellennotiz .= '<br>' . $text[524] . '&nbsp;' . $text[2] . '&nbsp;' . $strafdat[$i] . '<br>';
+            }
         }
         //Teamnotizen
         if ($teamn[$i] != '') {
@@ -339,7 +353,7 @@ for ($x = 1; $x <= $anzteams; $x++) {
             }
         }
     }  /*tabonres == 2*/
-?>
+    ?>
   </tr>
 <?php
 }/*for*/
@@ -347,7 +361,7 @@ for ($x = 1; $x <= $anzteams; $x++) {
   <tr>
     <td class="lmoFooter" align="center" colspan="<?php echo $gesamtbreite; ?>">&nbsp;<?php
 if ($einzutoretab == 1) {
-    $zustat_file = str_replace('.l98', '.l98.php',  basename($file));
+    $zustat_file = str_replace('.l98', '.l98.php', basename($file));
     $zustat_dir = basename($diroutput);
     if (file_exists(PATH_TO_LMO . '/' . $zustat_dir . '/' . $zustat_file)) {
         require(PATH_TO_LMO . '/' . $zustat_dir . '/' . $zustat_file);

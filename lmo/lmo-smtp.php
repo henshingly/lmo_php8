@@ -50,15 +50,15 @@ function lmo_smtp_dir()
 /** Standardwerte */
 function lmo_smtp_defaults()
 {
-    return array(
-        'mode'     => 'mail',   // 'mail' = PHP mail(), 'smtp' = SMTP-Server
-        'host'     => '',
-        'port'     => 587,
-        'secure'   => 'tls',    // 'tls' = STARTTLS, 'ssl' = SMTPS, '' = keine
+    return [
+        'mode' => 'mail',   // 'mail' = PHP mail(), 'smtp' = SMTP-Server
+        'host' => '',
+        'port' => 587,
+        'secure' => 'tls',    // 'tls' = STARTTLS, 'ssl' = SMTPS, '' = keine
         'username' => '',
-        'from'     => '',       // optional; leer = E-Mail des Webmasters
+        'from' => '',       // optional; leer = E-Mail des Webmasters
         'password' => '',       // nur im Speicher, auf der Platte verschlüsselt
-    );
+    ];
 }
 
 /* ----------------------------------------------------------------------
@@ -194,7 +194,7 @@ function lmo_smtp_load($reload = false)
             }
         }
     }
-    $s['port'] = (int) $s['port'];
+    $s['port'] = (int)$s['port'];
     if ($encrypted !== '') {
         $s['password_set'] = true;
         $plain = lmo_smtp_decrypt($encrypted);
@@ -215,15 +215,15 @@ function lmo_smtp_load($reload = false)
 function lmo_smtp_sanitize($in)
 {
     $s = lmo_smtp_defaults();
-    $errors = array();
+    $errors = [];
     $s['mode'] = (isset($in['mode']) && $in['mode'] === 'smtp') ? 'smtp' : 'mail';
     $s['host'] = isset($in['host']) ? trim($in['host']) : '';
-    $s['port'] = isset($in['port']) ? (int) $in['port'] : 587;
+    $s['port'] = isset($in['port']) ? (int)$in['port'] : 587;
     $secure = isset($in['secure']) ? strtolower(trim($in['secure'])) : 'tls';
-    $s['secure'] = in_array($secure, array('tls', 'ssl'), true) ? $secure : '';
-    $s['username'] = isset($in['username']) ? str_replace(array("\r", "\n", "\0"), '', trim($in['username'])) : '';
+    $s['secure'] = in_array($secure, ['tls', 'ssl'], true) ? $secure : '';
+    $s['username'] = isset($in['username']) ? str_replace(["\r", "\n", "\0"], '', trim($in['username'])) : '';
     $s['from'] = isset($in['from']) ? trim($in['from']) : '';
-    $s['password'] = isset($in['password']) ? (string) $in['password'] : '';
+    $s['password'] = isset($in['password']) ? (string)$in['password'] : '';
 
     if ($s['mode'] === 'smtp') {
         if (!preg_match('/^[A-Za-z0-9._\-\[\]:]{1,255}$/', $s['host'])) {
@@ -239,7 +239,7 @@ function lmo_smtp_sanitize($in)
     if (strpbrk($s['password'], "\r\n\0") !== false) {
         $errors[] = 'password';
     }
-    return array($s, $errors);
+    return [$s, $errors];
 }
 
 /**
@@ -270,7 +270,7 @@ function lmo_smtp_save($s, $newPassword = '', $clearPassword = false)
     $data = LMO_SMTP_GUARD . "\n"
           . 'mode=' . $s['mode'] . "\n"
           . 'host=' . $s['host'] . "\n"
-          . 'port=' . (int) $s['port'] . "\n"
+          . 'port=' . (int)$s['port'] . "\n"
           . 'secure=' . $s['secure'] . "\n"
           . 'username=' . $s['username'] . "\n"
           . 'from=' . $s['from'] . "\n"
@@ -290,7 +290,7 @@ function lmo_is_https()
     if (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') {
         return true;
     }
-    if (isset($_SERVER['SERVER_PORT']) && (int) $_SERVER['SERVER_PORT'] === 443) {
+    if (isset($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443) {
         return true;
     }
     return isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https';
@@ -328,7 +328,7 @@ function lmo_mail_create($fromName = '', $s = null)
     $mail->CharSet = 'UTF-8';
     $mail->Encoding = 'base64';
 
-    $from = trim((string) $s['from']);
+    $from = trim((string)$s['from']);
     if ($from === '') {
         $from = $aadr;
     }
@@ -336,7 +336,7 @@ function lmo_mail_create($fromName = '', $s = null)
     if (lmo_smtp_configured($s)) {
         $mail->isSMTP();
         $mail->Host = $s['host'];
-        $mail->Port = (int) $s['port'];
+        $mail->Port = (int)$s['port'];
         if ($s['secure'] === 'ssl') {
             $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
         } elseif ($s['secure'] === 'tls') {
@@ -352,7 +352,7 @@ function lmo_mail_create($fromName = '', $s = null)
         } else {
             $mail->SMTPAuth = false;
         }
-        $mail->Timeout = (int) LMO_SMTP_TIMEOUT;
+        $mail->Timeout = (int)LMO_SMTP_TIMEOUT;
     } else {
         $mail->isMail();
     }
@@ -391,7 +391,7 @@ function lmo_mail_send($mail)
 function lmo_smtp_test($s, $to)
 {
     if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
-        return array(false, 'Invalid address: ' . $to);
+        return [false, 'Invalid address: ' . $to];
     }
     $mail = lmo_mail_create('LMO', $s);
     $mail->addAddress($to);
@@ -399,7 +399,7 @@ function lmo_smtp_test($s, $to)
     $mail->Body = 'Dies ist eine Testnachricht des Liga Manager Online (' . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '') . ").\nThis is a test message from Liga Manager Online.";
     $ok = $mail->send();
     $msg = $ok ? ($mail->Mailer === 'smtp' ? 'SMTP' : 'mail()') : $mail->ErrorInfo;
-    return array($ok, $msg);
+    return [$ok, $msg];
 }
 
 /** Stellt sicher, dass die Texte für das SMTP-Formular vorhanden sind (sonst Englisch). */

@@ -213,7 +213,10 @@ if (isset($_SESSION['liga_sort']) && isset($_SESSION['liga_sort_direction'])) {
 <?php
 function cmp($a1, $a2)
 {
-    $sort = (isset($_SESSION['liga_sort']) && isset($a1[$_SESSION['liga_sort']]) && isset($a1[$_SESSION['liga_sort']])) ? $_SESSION['liga_sort'] : 'liga_name';
+    // PHP8-Fix: Schluessel in BEIDEN Eintraegen pruefen, fehlende Werte als '' behandeln
+    $sort = (isset($_SESSION['liga_sort']) && isset($a1[$_SESSION['liga_sort']]) && isset($a2[$_SESSION['liga_sort']])) ? $_SESSION['liga_sort'] : 'liga_name';
+    $a1[$sort] = $a1[$sort] ?? '';
+    $a2[$sort] = $a2[$sort] ?? '';
     if (is_numeric($a1[$sort]) && is_numeric($a2[$sort])) {  //Numerischer Vergleich
         if ($a2[$sort] == $a1[$sort]) {
             return 0;

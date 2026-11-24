@@ -17,7 +17,7 @@
   *
   */
 
-$trans_lang = array(
+$trans_lang = [
     'Monday' => $text['date'][0], 'Tuesday' => $text['date'][1],
     'Wednesday' => $text['date'][2], 'Thursday' => $text['date'][3],
     'Friday' => $text['date'][4], 'Saturday' => $text['date'][5],
@@ -37,7 +37,7 @@ $trans_lang = array(
     'Jul' => $text['date'][32], 'Aug' => $text['date'][33],
     'Sep' => $text['date'][34], 'Oct' => $text['date'][35],
     'Nov' => $text['date'][36], 'Dec' => $text['date'][37]
-);
+];
 
 function check_hilfsadmin($datei)
 {
@@ -57,8 +57,7 @@ function check_hilfsadmin($datei)
     return $hilfsadmin_berechtigung;
 }
 
-
-function applyFactor ($value, $factor)
+function applyFactor($value, $factor)
 {
     if (is_numeric($value) && $value != 0 && is_numeric($factor) && $factor != 0) {
         return ($value / $factor);
@@ -70,18 +69,21 @@ function magicQuotesRemove(&$array)
 {
     //if (!get_magic_quotes_gpc())
     //return;
-    foreach($array as $key => $elem) {
-        if (is_array($elem))
+    foreach ($array as $key => $elem) {
+        if (is_array($elem)) {
             magicQuotesRemove($elem);
-        else
+        } else {
             $array[$key] = stripslashes($elem);
+        }
     }
 }
 
 function get_dir($verz)
 {
-    $ret = array();
-    if (substr($verz, -1) != '/') $verz .= '/';
+    $ret = [];
+    if (substr($verz, -1) != '/') {
+        $verz .= '/';
+    }
 
     if (!is_dir(PATH_TO_LMO . '/' . $verz)) {
         return $ret;
@@ -89,7 +91,7 @@ function get_dir($verz)
 
     $handle = opendir(PATH_TO_LMO . '/' . $verz);
     if ($handle) {
-        while ($file = readdir ($handle)) {
+        while ($file = readdir($handle)) {
             if ($file != '.' && $file != '..') {
                 if (is_dir(PATH_TO_LMO . '/' . $verz . $file)) {
                     $ret[] = $file;
@@ -105,7 +107,6 @@ function filterZero($a)
 {
     return (!empty($a));
 }
-
 
 /**
  * Returns HTML imgage code for a small team icon
@@ -155,7 +156,7 @@ function getMessage($message, $error = false)
  * @param   array   $m2     results of away team
  * @return  int     $erg    winner(home / away)
  */
-function gewinn ($gst, $gsp, $gmod, $m1, $m2)
+function gewinn($gst, $gsp, $gmod, $m1, $m2)
 {
     $erg = 0;
     if ($gmod == 1) {
@@ -204,10 +205,12 @@ function getLangSelector()
     $output_sprachauswahl = '';
     $border = '0';
 
-    $handle = opendir (PATH_TO_LANGDIR);
+    $handle = opendir(PATH_TO_LANGDIR);
     while (false !== ($f = readdir($handle))) {
-        if (preg_match('/^lang-?(.*)?\.txt$/', $f,$lang) > 0) {
-            if ($lang[1] == '') return '';
+        if (preg_match('/^lang-?(.*)?\.txt$/', $f, $lang) > 0) {
+            if ($lang[1] == '') {
+                return '';
+            }
             if ($lang[1] != $_SESSION['lmouserlang']) {
                 $border = '1mm';
                 $imgfile = URL_TO_IMGDIR . '/' . $lang[1] . '.svg';
@@ -224,7 +227,7 @@ function getLangSelector()
     closedir($handle);
     if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] == 2) {
         $output_sprachauswahl .= ' >> <a href="' . URL_TO_LMO . '/lang/lmo-admintranslate.php" class="lmo-lang-edit" title="' . htmlspecialchars($GLOBALS['text'][573]) . '">';
-        $output_sprachauswahl .= '<img src="'.URL_TO_IMGDIR.'/pencil.svg" height="20" alt="Edit">';
+        $output_sprachauswahl .= '<img src="' . URL_TO_IMGDIR . '/pencil.svg" height="20" alt="Edit">';
         $output_sprachauswahl .= '</a>';
     }
     return $output_sprachauswahl;
@@ -248,7 +251,9 @@ function getLangSelectorSide()
     if ($handle = opendir(PATH_TO_LANGDIR)) {
         while (false !== ($f = readdir($handle))) {
             if (preg_match('/^lang-?(.*)?\.txt$/', $f, $lang) > 0) {
-                if ($lang[1] == '') continue;
+                if ($lang[1] == '') {
+                    continue;
+                }
 
                 $langs[] = $lang[1];
             }
@@ -273,7 +278,7 @@ function getLangSelectorSide()
         $output .= ' >> <a href="' . URL_TO_LMO . '/lang/translate.php"
             class="lmo-lang-edit"
             title="' . htmlspecialchars($GLOBALS['text'][573]) . '">';
-        $output .= '<img src="'.URL_TO_IMGDIR.'/pencil.svg" height="20" alt="Edit">';
+        $output .= '<img src="' . URL_TO_IMGDIR . '/pencil.svg" height="20" alt="Edit">';
         $output .= '</a>';
     }
     $output .= '</div></div>';
@@ -300,15 +305,14 @@ function get_timezones()
                 $zone[0] == 'Australia' ||
                 $zone[0] == 'Europe' ||
                 $zone[0] == 'Indian' ||
-                $zone[0] == 'Pacific')
-            {
+                $zone[0] == 'Pacific') {
                 if (isset($zone[1]) != '') {
                     $locations[$zone[0]][$zone[0] . '/' . $zone[1]] = str_replace('_', ' ', $zone[1]); // Creates array(DateTimeZone => 'Friendly name')
                 }
             }
         }
     } else {
-        return array();
+        return [];
     }
     return array_reverse($locations);
 }
@@ -340,7 +344,8 @@ function php_compat_is_a($object, $class)
 
 // Define
 if (!function_exists('is_a')) {
-    function is_a($object, $class) {
+    function is_a($object, $class)
+    {
         return php_compat_is_a($object, $class);
     }
 }
@@ -350,7 +355,6 @@ function redirect($location)
 {
     header('Location: ' . $location);
 }
-
 
 // Check URL for existence using PHP
 // Declare function
@@ -364,7 +368,7 @@ $string_json = file_get_contents(PATH_TO_LMO . '/composer.json', false);
 $json_a = json_decode($string_json, true, 4);
 $lmo_version = $json_a['version'];
 $lmo_license = $json_a['license'];
-$lmo_version_search = array('<', '>', '=');
+$lmo_version_search = ['<', '>', '='];
 $min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php']);
 $updatefilecheck_URL = $json_a['extra']['check'];
 
@@ -372,7 +376,7 @@ $updatefilecheck_URL = $json_a['extra']['check'];
 $LMO_UPDATE = false;
 $json_update = null;
 if (!empty($json_a['extra']['check'])) {
-    $lmo_update_ctx = stream_context_create(array('http' => array('timeout' => 3, 'ignore_errors' => false)));
+    $lmo_update_ctx = stream_context_create(['http' => ['timeout' => 3, 'ignore_errors' => false]]);
     $LMO_UPDATE = @file_get_contents($json_a['extra']['check'], false, $lmo_update_ctx);
     if ($LMO_UPDATE !== false) {
         $json_update = json_decode($LMO_UPDATE, true, 4);
@@ -427,7 +431,7 @@ function lmo_sanitize_and_log($data, $source = 'unknown', $isStrict = true)
 
     // Logging in case of manipulation
     if ($original !== $sanitized) {
-        $timestamp = date("Y-m-d H:i:s");
+        $timestamp = date('Y-m-d H:i:s');
         $logMessage = "[$timestamp] [IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown') . "] Blocked $source\n";
         file_put_contents($logFile, $logMessage, FILE_APPEND);
     }
@@ -436,10 +440,8 @@ function lmo_sanitize_and_log($data, $source = 'unknown', $isStrict = true)
 }
 
 // First, rebuild the GET/POST command individually, then rebuild the entire REQUEST.
-$_GET     = lmo_sanitize_and_log($_GET, '$_GET', true);
-$_POST    = lmo_sanitize_and_log($_POST, '$_POST', (isset($_SESSION['lmouserok']) ? false : true));
+$_GET = lmo_sanitize_and_log($_GET, '$_GET', true);
+$_POST = lmo_sanitize_and_log($_POST, '$_POST', (isset($_SESSION['lmouserok']) ? false : true));
 
 // Manually construct $_REQUEST from the already clean values
 $_REQUEST = array_merge($_GET, $_POST, $_COOKIE);
-
-?>

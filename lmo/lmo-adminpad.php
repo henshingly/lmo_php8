@@ -17,10 +17,9 @@
   *
   */
 
-
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 if (($action == 'admin') && ($todo == '')) {
-  $adda = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo='; ?>
+    $adda = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo='; ?>
       <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
         <tr>
           <td align="center"><h1><?php echo $text[92];?></h1></td>
@@ -32,11 +31,12 @@ if (($action == 'admin') && ($todo == '')) {
                 <td class="lmost5" align="left">
                   <ul>
 <?php
-    if ($_SESSION['lmouserok'] == 2) {?>
+      if ($_SESSION['lmouserok'] == 2) {?>
                     <li class="lmoadminli"><?php echo '<a href="' . $adda . 'new">' . $text[93] . '</a>' ;?></li>
 <?php
-    }?>
-                    <li><?php echo $text[94]; ?>:<?php $ftype = '.l98'; require(PATH_TO_LMO . '/lmo-dirlist.php');?>
+      }?>
+                    <li><?php echo $text[94]; ?>:<?php $ftype = '.l98';
+    require(PATH_TO_LMO . '/lmo-dirlist.php');?>
                     </li>
 <?php
     if ($_SESSION['lmouserok'] == 2) {?>

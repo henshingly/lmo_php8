@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * OptionSektion
  *
@@ -9,20 +10,20 @@
  * @version $Id: optionsSektion.class.php 538 2010-02-07 15:14:43Z jokerlmo $
  *
  */
-class optionsSektion extends sektion {
-
+class optionsSektion extends sektion
+{
     /**
     * Nummer der Liga,
     * @var array Liga objekt
     */
-    var $aLiga;
+    public $aLiga;
 
     /**
     * Mit diesen Optionen wird ein neus Ligafile erzeugt
     * @var array of predefined keyValues
     * @access private
     */
-    var $keyValues = array(
+    public $keyValues = [
       'Title' => 'Liga Manager Online 4',
       'Name' => 'Liga Name',
       'Type' => 0,
@@ -37,7 +38,7 @@ class optionsSektion extends sektion {
       'PointsForWin' => 3,
       'PointsForDraw' => 1,
       'PointsForLost' => 0,
-      'Spez' =>  0,
+      'Spez' => 0,
       'HideDraw' => 0,
       'OnRun' => 0,
       'MinusPoints' => 1,
@@ -71,8 +72,7 @@ class optionsSektion extends sektion {
       'tableHeimAusw' => 1,
       'ticker' => 0,
       'stats' => 0,  // Neu ab classlib 2.5
-    );
-
+    ];
 
     /**
     * Konstruktor
@@ -81,7 +81,8 @@ class optionsSektion extends sektion {
     * @param array $optionDetails
     * @return optionsSektion
     */
-    function __construct($aLiga = '', $optionDetails='') {
+    public function __construct($aLiga = '', $optionDetails = '')
+    {
         $this->name = 'Options';
         if (is_array($optionDetails)) {
             foreach ($optionDetails as $key => $values) {
@@ -112,5 +113,3 @@ class optionsSektion extends sektion {
     }
 
 } // End CLASS Options
-
-?>

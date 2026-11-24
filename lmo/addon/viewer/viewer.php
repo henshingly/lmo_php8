@@ -22,7 +22,9 @@ if (!defined('VIEWER_VERSION_NR')) {
     define('VIEWER_VERSION_NR', '4.1.1');
 }
 
-if (!defined('VIEWER_VERSION'))  define('VIEWER_VERSION', '[<acronym title="Viewer ' . VIEWER_VERSION_NR . ' © LMO-Group">©</acronym>]');
+if (!defined('VIEWER_VERSION')) {
+    define('VIEWER_VERSION', '[<acronym title="Viewer ' . VIEWER_VERSION_NR . ' © LMO-Group">©</acronym>]');
+}
 
 require(__DIR__ . '/../../init.php');
 require_once(PATH_TO_ADDONDIR . '/classlib/ini.php');
@@ -41,7 +43,9 @@ $viewer_cache_counter_file = fopen($viewer_cache_counter_filename, 'rb');
 $viewer_cache_counter = intval(trim(fgets($viewer_cache_counter_file)));
 fclose($viewer_cache_counter_file);
 
-if (!isset($cfgarray))$cfgarray = array();
+if (!isset($cfgarray)) {
+    $cfgarray = [];
+}
 
 $multi1 = PATH_TO_CONFIGDIR . '/viewer/' . $multi . '.view';
 
@@ -51,9 +55,8 @@ if (file_exists($multi1)) {
     // in Array lesen & mit Hauptscript zusammenlegen
     $multi_cfgarray += $main_cfgarray;
     // Variablen erstellen
-    extract ($multi_cfgarray);
-}
-else {
+    extract($multi_cfgarray);
+} else {
     die($text['viewer'][55] . ': ' . $multi1 . ' ' . $text['viewer'][56]);
 }
 
@@ -74,20 +77,19 @@ while (isset($multi_cfgarray['liga' . $i])) {
 $multi_cfgarray['cache_refresh'] = isset($multi_cfgarray['cache_refresh']) ? $multi_cfgarray['cache_refresh'] : 0;
 
 if ($viewer_cache_counter == 0 || $viewer_cache_counter > $multi_cfgarray['cache_refresh']) {
-  //not cached or cache limit reached->generate new view
+    //not cached or cache limit reached->generate new view
 
     $i = 1;
     $output = '';
-    $fav_liga = array();
-    $fav_team = array();
+    $fav_liga = [];
+    $fav_team = [];
     while (isset($multi_cfgarray['liga' . $i])) {
         $fav_liga[$i] = $multi_cfgarray['liga' . $i];
         $ii = 1;
         //all teams if no fav teams selected
         if (!isset($multi_cfgarray[$multi_cfgarray['liga' . $i] . '_' . $ii])) {
             $all_teams = true;
-        }
-        else {
+        } else {
             $all_teams = false;
         }
         while (isset($multi_cfgarray[$multi_cfgarray['liga' . $i] . '_' . $ii])) {
@@ -108,8 +110,7 @@ if ($viewer_cache_counter == 0 || $viewer_cache_counter > $multi_cfgarray['cache
 
     if ($multi_cfgarray['modus'] == 2) {
         include(PATH_TO_ADDONDIR . '/viewer/viewer_spieltag.php');
-    }
-    else {
+    } else {
         include(PATH_TO_ADDONDIR . '/viewer/viewer_datum.php');
     }
 
@@ -125,8 +126,7 @@ if ($viewer_cache_counter == 0 || $viewer_cache_counter > $multi_cfgarray['cache
     fwrite($viewer_cache_counter_file, '1');
     fclose($viewer_cache_counter_file);
     echo $viewer_output;
-}
-else {
+} else {
     //get cache
 
     if ($viewer_cache_file = fopen(PATH_TO_LMO . '/' . $diroutput . '/viewer_' . $multi . '.txt', 'rb')) {
@@ -139,4 +139,3 @@ else {
     fwrite($viewer_cache_counter_file, ++$viewer_cache_counter);
     fclose($viewer_cache_counter_file);
 }
-?>

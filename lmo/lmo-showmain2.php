@@ -17,8 +17,6 @@
   *
   */
 
-
-
 $addm = $_SERVER['PHP_SELF'] . '?file=' . $file . '&amp;action=';
 if ($file != '') {
     require(PATH_TO_LMO . '/lmo-openfile.php');
@@ -36,16 +34,26 @@ if ($file != '') {
             $tabdat = $st . '. ' . $text[2];
         }
         if (empty($_REQUEST['action']) && $action == '') {
-            if (!isset($onrun)) $onrun = '0';
+            if (!isset($onrun)) {
+                $onrun = '0';
+            }
             switch ($onrun) {
-                case '0': $action = 'results';break;
-                case '1': $action = 'table';break;
-                case '2': $action = 'program';break;
-                case '3': $action = 'cross';break;
-                case '4': $action = 'graph';break;
-                case '5': $action = 'stats';break;
-                case '6': $action = 'cal';break;
-                case '7': $action=  'spieler';break;
+                case '0': $action = 'results';
+                    break;
+                case '1': $action = 'table';
+                    break;
+                case '2': $action = 'program';
+                    break;
+                case '3': $action = 'cross';
+                    break;
+                case '4': $action = 'graph';
+                    break;
+                case '5': $action = 'stats';
+                    break;
+                case '6': $action = 'cal';
+                    break;
+                case '7': $action = 'spieler';
+                    break;
             }
         }
     }
@@ -73,7 +81,9 @@ $output_stylesheet = '';
 $output_javascript = '';
 $p1 = '';
 
-if (!defined('LMO_TEMPLATE')) define('LMO_TEMPLATE', 'lmo-standard.tpl.php');
+if (!defined('LMO_TEMPLATE')) {
+    define('LMO_TEMPLATE', 'lmo-standard.tpl.php');
+}
 
 // Wenn ein Template der Form [liganame].tpl.php existiert, wird dieses benutzt. Das ermöglicht
 // die Nutzung verschiedener Templates für unterschiedliche Ligen
@@ -234,38 +244,66 @@ if ($file != '') {
     if ($action != 'tipp') {
         if ($lmtype == 0) {
             // Normale Liga
-            switch($action) {
-                case 'cal': if ($datc == 1) {require(PATH_TO_LMO . '/lmo-cal.php');}break;
-                case 'results': if ($ergebnis == 1) {$druck = 1;require(PATH_TO_LMO . '/lmo-showrestab.php');}break;
-                case 'table': if ($tabelle == 1) {$druck = 1;require(PATH_TO_LMO . '/lmo-showrestab.php');}break;
-                case 'cross': if ($kreuz == 1) {require(PATH_TO_LMO . '/lmo-showcross.php');}break;
-                case 'program': if ($plan == 1) {require(PATH_TO_LMO . '/lmo-showprogram.php');}break;
-                case 'graph': if ($kurve == 1) {require(PATH_TO_LMO . '/lmo-showgraph.php');}break;
-                case 'stats': if ($ligastats == 1) {require(PATH_TO_LMO . '/lmo-showstats.php');}break;
+            switch ($action) {
+                case 'cal': if ($datc == 1) {
+                    require(PATH_TO_LMO . '/lmo-cal.php');
+                }break;
+                case 'results': if ($ergebnis == 1) {
+                    $druck = 1;
+                    require(PATH_TO_LMO . '/lmo-showrestab.php');
+                }break;
+                case 'table': if ($tabelle == 1) {
+                    $druck = 1;
+                    require(PATH_TO_LMO . '/lmo-showrestab.php');
+                }break;
+                case 'cross': if ($kreuz == 1) {
+                    require(PATH_TO_LMO . '/lmo-showcross.php');
+                }break;
+                case 'program': if ($plan == 1) {
+                    require(PATH_TO_LMO . '/lmo-showprogram.php');
+                }break;
+                case 'graph': if ($kurve == 1) {
+                    require(PATH_TO_LMO . '/lmo-showgraph.php');
+                }break;
+                case 'stats': if ($ligastats == 1) {
+                    require(PATH_TO_LMO . '/lmo-showstats.php');
+                }break;
                 case '': /*Auswahlseite*/break;
             }
         } else {
             // Pokal Liga
-            switch($action) {
-                case 'cal': if ($datc == 1) {require(PATH_TO_LMO . '/lmo-kocal.php');}break;
-                case 'results': if ($ergebnis == 1) {require(PATH_TO_LMO . '/lmo-showkoresults.php');}break;
-                case 'program': if ($plan == 1) {require(PATH_TO_LMO . '/lmo-showkoprogram.php');}break;
+            switch ($action) {
+                case 'cal': if ($datc == 1) {
+                    require(PATH_TO_LMO . '/lmo-kocal.php');
+                }break;
+                case 'results': if ($ergebnis == 1) {
+                    require(PATH_TO_LMO . '/lmo-showkoresults.php');
+                }break;
+                case 'program': if ($plan == 1) {
+                    require(PATH_TO_LMO . '/lmo-showkoprogram.php');
+                }break;
             }
         }
         // Spieler-Addon
         if ($action == 'spieler') {
             if ($mittore == 1) {
-                require(PATH_TO_ADDONDIR .'/spieler/lmo-statshow.php');
+                require(PATH_TO_ADDONDIR . '/spieler/lmo-statshow.php');
             }
         }
         // Spieler-Addon
     }
-    if ($action == 'info') {require(PATH_TO_LMO . '/lmo-showinfo.php');}
+    if ($action == 'info') {
+        require(PATH_TO_LMO . '/lmo-showinfo.php');
+    }
     $p0 = 'p1';
-    $$p0 = c(1).c(0);
-} elseif ($backlink == 1 && $action != 'tipp') {require(PATH_TO_LMO . '/lmo-showdir.php');}
+    $$p0 = c(1) . c(0);
+} elseif ($backlink == 1 && $action != 'tipp') {
+    require(PATH_TO_LMO . '/lmo-showdir.php');
+}
 
-if ($action == 'tipp' && $eintippspiel == 1) {require(PATH_TO_ADDONDIR . '/tipp/lmo-tippstart.php');}
+if ($action == 'tipp' && $eintippspiel == 1) {
+    require(PATH_TO_ADDONDIR . '/tipp/lmo-tippstart.php');
+}
 $output_hauptteil .= ob_get_contents();
 ob_end_clean();
 
@@ -285,10 +323,14 @@ if ($file != '' && isset($stand)) {
             include(PATH_TO_LMO . '/lmo-savehtml1.php');
         }?>
             <td align="center"><?php
-        if ($lmtype == 0 && isset($druck) && $druck == 1 && file_exists(PATH_TO_LMO . '/' . $diroutput . basename($file) . '-st.html')) {echo '<a href="' . URL_TO_LMO . '/' . $diroutput . basename($file) . '-st.html" title="' . $text[477] . '">' . $text[478] . '</a>&nbsp;';}?>
+        if ($lmtype == 0 && isset($druck) && $druck == 1 && file_exists(PATH_TO_LMO . '/' . $diroutput . basename($file) . '-st.html')) {
+            echo '<a href="' . URL_TO_LMO . '/' . $diroutput . basename($file) . '-st.html" title="' . $text[477] . '">' . $text[478] . '</a>&nbsp;';
+        }?>
             </td>
             <td align="center"><?php
-        if ($lmtype == 0 && isset($druck) && $druck == 1 && file_exists(PATH_TO_LMO . '/' . $diroutput . basename($file) . '-sp.html')) {echo '<a href="' . URL_TO_LMO . '/' . $diroutput . basename($file) . '-sp.html" title="' . $text[479] . '">' . $text[480] . '</a>&nbsp;';}?>
+        if ($lmtype == 0 && isset($druck) && $druck == 1 && file_exists(PATH_TO_LMO . '/' . $diroutput . basename($file) . '-sp.html')) {
+            echo '<a href="' . URL_TO_LMO . '/' . $diroutput . basename($file) . '-sp.html" title="' . $text[479] . '">' . $text[480] . '</a>&nbsp;';
+        }?>
             </td>
           </tr>
         </table><?php
@@ -296,7 +338,9 @@ if ($file != '' && isset($stand)) {
         ob_end_clean();
     }
     // PDF-Addon
-    if (file_exists(PATH_TO_ADDONDIR . '/pdf/lmo-showmain2.inc.php')) include(PATH_TO_ADDONDIR . '/pdf/lmo-showmain2.inc.php');
+    if (file_exists(PATH_TO_ADDONDIR . '/pdf/lmo-showmain2.inc.php')) {
+        include(PATH_TO_ADDONDIR . '/pdf/lmo-showmain2.inc.php');
+    }
     // PDF-Addon
 }
 

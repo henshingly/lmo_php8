@@ -6,6 +6,7 @@ __Alle wesentlichen Änderungen am PHP Script des LMO werden in dieser Datei dok
 _Hier schreiben wir Changelog Hinweise der nächsten Version._
 
 ### Added
+* Neue mehrsprachige Hilfe (`help/`): Bootstrap-Oberfläche mit Seitenmenü und anklickbaren, vergrößerbaren Grafiken; vollständige Inhalte auf Deutsch, Englisch, Niederländisch, Spanisch und Französisch (Sprachwahl automatisch nach Browser). Alle Addon-Seiten, aktualisierte Inhalte (SMTP, Designeditor, Tipps nachtragen, Installation ohne FTP). Der Link im Adminmenü und im Installer zeigt auf `help/index.html`; die alte Adresse `help/Deutsch/index.html` leitet weiter.
 * E-Mail-Versand über SMTP: Neuer Bereich "E-Mail-Versand" in den Optionen (nur Voll-Admin) mit Server, Port, Verschlüsselung (keine/STARTTLS/SSL), Benutzername, Passwort und Absenderadresse sowie einem Button "Testmail senden". Das Passwort wird verschlüsselt in `config/smtp/` gespeichert, bei Aufruf über HTTP erscheint ein Hinweis. Sprachdateien in `lang/smtp/` (14 Sprachen).
 * PHPMailer 7.2.0 für alle E-Mails des LMO (Ligen per Mail, Tippspiel-Anmeldung, Freischaltung, Newsletter, Reminder, Passwort-Mail). Ist SMTP eingestellt und schlägt der Versand fehl, wird als Rückfall PHP mail() verwendet.
 * Neuer Designeditor: alle Bereiche als Reiter in einem Formular, klickbare Live-Vorschau mit einer echten Liga (Ansicht und Breite wählbar), Farbschemata (9 Hauptfarben, Dunkel-Variante, eigene Farbe mit Palette und Hex-Eingabe), Kontrastwarnung, gespeicherte Designs (`config/design/`), Export/Import als JSON, Standardwerte und Verwerfen. Sprachdateien in `lang/design/` (14 Sprachen).
@@ -21,6 +22,8 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 * Installer (`install/install.php`) ohne FTP: PHP legt Verzeichnisse und alle `cfg.txt`-Dateien selbst aus den Vorlagen in `install/` an (Ausgangswerte), erkennt Updates (Hinweis in Schritt 0, Pfad und URL aus der vorhandenen `init-parameters.php` vorbelegt), ergänzt dabei nur fehlende Einstellungen und versucht fehlende Schreibrechte per `chmod` zu setzen. Prüfprotokoll mit "Erneut prüfen". `includes/FTP.php` und `includes/Socket.php` entfallen.
 * Tipperdaten werden in `addon/tipp/lmo-tipperauth.php` statt `lmo-tippauth.txt` gespeichert (mit Schutzzeile gegen direkten Aufruf). Bestehende Daten werden beim ersten Aufruf automatisch übernommen, die alte Datei wird nach erfolgreichem Schreiben gelöscht. (Idee: [babbisch](https://github.com/babbisch/LMO_PHP8))
 * `lmo-style.php` und `lmo-style-nc.php` laden die `init.php` mit `require_once` (Voraussetzung für die Live-Vorschau).
+* Tippspiel: Die Fieberkurve der Tipper (Punkte bzw. Platzierung, Vergleich von zwei Tippern) wird jetzt wie die Liga-Fieberkurve im Browser mit Chart.js gezeichnet (`addon/tipp/lmo-tippfieber.php`) und ist damit scharf, skalierbar und mit Tooltips. Für die Kurven wird keine GD-Bibliothek mehr benötigt.
+* Hilfe: Systemvoraussetzungen korrigiert (Sodium wird nicht benötigt, OpenSSL nur für SMTP mit TLS/SSL; Zip, mbstring und Schreibrechte ergänzt).
 * Mindestanforderung des Webservers ist jetzt PHP 8.2 (`composer.json`, Installer, README und Hilfe angepasst), da einige Funktionen im LMO erst ab dieser Version laufen.
 * Hilfe: Installation (Rechte), Installation (neue Verzeichnisse/Rechte), Optionen (E-Mail-Versand, Designeditor), Dateifunktionen, Tippspiel (Mailversand, Platzhalter `[pass]`, Tipperdatei) überarbeitet.
 * Seitenquelltextausgabe der beiden Datein lmo-savehtml.php und lmo-savehtml1.php verbessert. Außerdem den Tabellen der beiden Seiten runde Ecken verpasst.
@@ -40,6 +43,8 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 ### Deprecated
 
 ### Removed
+* `addon/tipp/lmo-tipppaintgraph.php`: GD-Grafik der Tipper-Fieberkurve, ersetzt durch Chart.js in `lmo-tippfieber.php`.
+* `lmo-paintgraph.php`: alte GD-Fieberkurve der Liga, wurde seit der Umstellung auf Chart.js (`lmo-showgraph.php`) nicht mehr aufgerufen.
 * Nicht mehr benötigt: `includes/FTP.php`, `includes/Socket.php`, `install/addon/tipp/lmo-tippauth.txt`, `addon/classlib/classes/pdf/` (alte ezPDF-Bibliothek), `css/bootstrap.min.css`, `js/bootstrap.min.js`, `lang/translate.php`, `js/colorpicker.js` (vom neuen Designeditor nicht mehr verwendet), die Grafiken `*_manual_copy.png`, `help/media/attention.gif` sowie die alten GIF/PNG-Icons.
 
 ### Fixed

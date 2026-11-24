@@ -27,7 +27,7 @@ if (($action == 'admin') && ($todo == 'download') && (($_SESSION['lmouserok'] ==
     if ($down > 0) {
         $ftype = '.l98';
         $verz = opendir(substr($dirliga, 0, -1));
-        $dummy = array();
+        $dummy = [];
         while ($files = readdir($verz)) {
             if (strtolower(substr($files, -4)) == $ftype) {
                 array_push($dummy, $files);
@@ -35,16 +35,15 @@ if (($action == 'admin') && ($todo == 'download') && (($_SESSION['lmouserok'] ==
         }
         closedir($verz);
         sort($dummy);
-        if ($dummy[(int) $down - 1] != '' && check_hilfsadmin($dummy[(int) $down - 1])) {
+        if ($dummy[(int)$down - 1] != '' && check_hilfsadmin($dummy[(int)$down - 1])) {
             header('Content-Type: text/x-lmo4');
             header('Content-Disposition: attachment; filename="' . $dummy[$down - 1] . '"');
             readfile(sprintf('%s/%s', $dirliga, $dummy[$down - 1]));
         }
-    }
-    elseif ($down == -1) {
+    } elseif ($down == -1) {
         $ftype = '.l98';
         $verz = opendir(substr($dirliga, 0, -1));
-        $dummy = array();
+        $dummy = [];
         while ($files = readdir($verz)) {
             if (strtolower(substr($files, -4)) == $ftype) {
                 array_push($dummy, $files);
@@ -53,7 +52,7 @@ if (($action == 'admin') && ($todo == 'download') && (($_SESSION['lmouserok'] ==
         closedir($verz);
         sort($dummy);
         if (count($dummy) > 0) {
-            $zipfile = new zipArchive;
+            $zipfile = new zipArchive();
             $zip = $zipfile->open('ligen.zip', ZipArchive::CREATE);
             for ($i = 0; $i < count($dummy); $i++) {
                 if (check_hilfsadmin($dummy[$i])) {
@@ -68,4 +67,3 @@ if (($action == 'admin') && ($todo == 'download') && (($_SESSION['lmouserok'] ==
         }
     }
 }
-?>

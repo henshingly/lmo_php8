@@ -13,7 +13,7 @@ $Path = PATH_TO_ADDONDIR;
   <table border= '0' cellspacing='0' align='center'>
     <tr>
       <td style='font-size=10pt;background-color=#EEEEEE;border-right-style:solid;border-left-style:solid;border-top-style:solid;border-bottom-style:solid;border-width:1px;border-color:#000000'; align='center'><B>Version Control</B><BR>
-      <small><?PHP echo CLASSLIB_VERSION;?></small>
+      <small><?php echo CLASSLIB_VERSION;?></small>
       </td>
     </tr>
     <tr>
@@ -26,25 +26,25 @@ $Path = PATH_TO_ADDONDIR;
           <td>&nbsp</td>
           <td align='right'>Installed Version&nbsp;</td>
           <td>=&nbsp;</td>
-          <td><?PHP echo CLASSLIB_INFO;?>&nbsp;</td>
+          <td><?php echo CLASSLIB_INFO;?>&nbsp;</td>
         </tr>
         <tr>
           <td>&nbsp</td>
           <td align='right'>Installed in&nbsp;</td>
           <td>=&nbsp;</td>
-          <td><?PHP echo $Path;?>&nbsp;</td>
+          <td><?php echo $Path;?>&nbsp;</td>
         </tr>
         <tr>
           <td>&nbsp</td>
           <td align='right'>PHP&nbsp;</td>
           <td>=&nbsp;</td>
-          <td><?PHP echo phpversion();?>&nbsp;</td>
+          <td><?php echo phpversion();?>&nbsp;</td>
         </tr>
         <tr>
           <td>&nbsp</td>
           <td align='right'>LMO Version&nbsp;</td>
           <td>=&nbsp;</td>
-          <td><?PHP echo LMO_VERSION;?>&nbsp;</td>
+          <td><?php echo LMO_VERSION;?>&nbsp;</td>
         </tr>
         <tr>
         <tr>

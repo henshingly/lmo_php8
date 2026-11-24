@@ -50,8 +50,7 @@ if ($newpage == 2) {
         if ($xprogram == '') {
             $xprogram = 'none';
         }
-    }
-    else {
+    } else {
         $xanzst = strlen(decbin($xteams - 1));
         $xmodus = array_pad($array, 7, '1');
     }
@@ -67,8 +66,7 @@ if ($newpage == 3) {
             }
             if ($xprogram == 'random') {
                 require(PATH_TO_LMO . '/lmo-adminrndprogram.php');
-            }
-            else {
+            } else {
                 require(PATH_TO_LMO . '/lmo-adminopenprogram.php');
             }
         }
@@ -79,8 +77,7 @@ if ($newpage == 3) {
     if ($xtype == 0) {
         $anzst = $xanzst;
         $anzsp = $xanzsp;
-    }
-    else {
+    } else {
         $modus = array_pad($array, 7, '1');
         $anzst = strlen(decbin($anzteams - 1));
         $anzsp = $anzteams;
@@ -94,7 +91,7 @@ if ($newpage == 3) {
         $hidr = '0';
         $kegel = '0';
         $tabelle = '1';
-        $ligastats= '1';
+        $ligastats = '1';
         $kurve = '1';
         $kreuz = '1';
         $onrun = '0';
@@ -109,15 +106,14 @@ if ($newpage == 3) {
         $anzab = '3';
         $einhinrueck = '1';
         $einheimausw = '1';
-    }
-    else {
+    } else {
         $klfin = '0';
         $playdown = '0';
         $playoffmode = '0';
     }
     $hands = '0';
     $ergebnis = '1';
-    $plan ='1';
+    $plan = '1';
     $datc = '1';
     $dats = '1';
     $datm = '1';
@@ -136,7 +132,7 @@ if ($newpage == 3) {
     }
     $nticker = '0';
     for ($i = 1; $i <= $anzteams; $i++) {
-        $teams[$i] = $text[281] . ' '.$i;
+        $teams[$i] = $text[281] . ' ' . $i;
         $teamk[$i] = $text[282] . $i;
         $teamm[$i] = '';
         if ($lmtype == 0) {
@@ -156,8 +152,7 @@ if ($newpage == 3) {
                 if ($xprogram == 'none') {
                     $teama[$i - 1][$j - 1] = '0';
                     $teamb[$i - 1][$j - 1] = '0';
-                }
-                else {
+                } else {
                     $teama[$i - 1][$j - 1] = $yteama[$i - 1][$j - 1];
                     $teamb[$i - 1][$j - 1] = $yteamb[$i - 1][$j - 1];
                 }
@@ -169,24 +164,23 @@ if ($newpage == 3) {
                 $mtipp[$i - 1][$j - 1] = '';
                 $msieg[$i - 1][$j - 1] = '';
             }
-        }
-        else {
+        } else {
             $modus[$i - 1] = isset($_POST['xmod' . $i]) ? $_POST['xmod' . $i] : '1';
             if ($anzteams == 24) {
                 switch ($i) {
                     case 1:
                     case 2:
                         $anzsp = 16;
-                    break;
+                        break;
                     case 3:
                         $anzsp = 8;
-                    break;
+                        break;
                     case 4:
                         $anzsp = 4;
-                    break;
+                        break;
                     case 5:
                         $anzsp = 2;
-                    break;
+                        break;
                 }
             }
             $anzsp = $anzsp / 2;
@@ -194,14 +188,14 @@ if ($newpage == 3) {
                 $teama[$i - 1][$j - 1] = '0';
                 $teamb[$i - 1][$j - 1] = '0';
                 for ($n = 1; $n <= $modus[$i - 1]; $n++) {
-                    $goala[$i - 1][$j - 1][$n-1] = '-1';
-                    $goalb[$i - 1][$j - 1][$n-1] = '-1';
-                    $mnote[$i - 1][$j - 1][$n-1] = '';
-                    $mspez[$i - 1][$j - 1][$n-1] = '_';
-                    $mberi[$i - 1][$j - 1][$n-1] = '';
-                    $mterm[$i - 1][$j - 1][$n-1] = '';
-                    $mtipp[$i - 1][$j - 1][$n-1] = '';
-                    $msieg[$i - 1][$j - 1][$n-1] = '';
+                    $goala[$i - 1][$j - 1][$n - 1] = '-1';
+                    $goalb[$i - 1][$j - 1][$n - 1] = '-1';
+                    $mnote[$i - 1][$j - 1][$n - 1] = '';
+                    $mspez[$i - 1][$j - 1][$n - 1] = '_';
+                    $mberi[$i - 1][$j - 1][$n - 1] = '';
+                    $mterm[$i - 1][$j - 1][$n - 1] = '';
+                    $mtipp[$i - 1][$j - 1][$n - 1] = '';
+                    $msieg[$i - 1][$j - 1][$n - 1] = '';
                 }
             }
         }
@@ -220,7 +214,7 @@ if ($newpage < 3) {?>
             <form name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
               <input type="hidden" name="action" value="admin">
               <input type="hidden" name="todo" value="new">
-              <input type="hidden" name="newpage" value="<?php echo ($newpage + 1); ?>">
+              <input type="hidden" name="newpage" value="<?php echo($newpage + 1); ?>">
 <?php
     if ($newpage > 0) {?>
               <input type="hidden" name="xfile" value="<?php echo $xfile; ?>">
@@ -256,8 +250,12 @@ if ($newpage == 0) {?>
                   <td class="nobr" align="right"><acronym title="<?php echo $text[175]; ?>"><?php echo $text[174]; ?></acronym></td>
                   <td class="nobr" align="left"><acronym title="<?php echo  $text[175] ?>">
                     <select class="lmo-formular-input" name="xtype" onChange="dolmoedit()">
-                      <option value="0"<?php if ($xtype == 0) {echo ' selected';} ?>><?php echo $text[176]; ?></option>
-                      <option value="1"<?php if ($xtype == 1) {echo ' selected';} ?>><?php echo $text[177]; ?></option>
+                      <option value="0"<?php if ($xtype == 0) {
+                          echo ' selected';
+                      } ?>><?php echo $text[176]; ?></option>
+                      <option value="1"<?php if ($xtype == 1) {
+                          echo ' selected';
+                      } ?>><?php echo $text[177]; ?></option>
                     </select></acronym></td>
                 </tr>
 <?php
@@ -346,8 +344,7 @@ if ($newpage == 1) {
                   </td>
                 </tr>
 <?php
-    }
-    else {?>
+    } else {?>
                 <tr>
                   <td width="20">&nbsp;</td>
                   <td class="nobr" align="right"><acronym title="<?php echo $text[272]; ?>"><?php echo $text[271]; ?></acronym></td>
@@ -363,7 +360,9 @@ if ($newpage == 1) {
                 echo ' selected';
             }
             echo '>' . $i . '</option>' . "\n";
-            if ($i == 16) echo '                <option value="24">24</option>';
+            if ($i == 16) {
+                echo '                <option value="24">24</option>';
+            }
         } ?>
                     </select>
                   </td>
@@ -382,7 +381,9 @@ if ($newpage == 2) {
                   <td width="20">&nbsp;</td>
                   <td class="nobr" align="right" valign="top"><acronym title="<?php echo $text[285]; ?>"><?php echo $text[284]; ?></acronym></td>
                   <td class="nobr" align="left">
-                    <input type="radio" name="xprogram" value="none"<?php if ($xprogram == 'none') {echo ' checked';} ?> onChange="dolmoedit()"><?php echo $text[286]; ?><br><br><?php echo $text[287]; ?>:<br>
+                    <input type="radio" name="xprogram" value="none"<?php if ($xprogram == 'none') {
+                        echo ' checked';
+                    } ?> onChange="dolmoedit()"><?php echo $text[286]; ?><br><br><?php echo $text[287]; ?>:<br>
 <?php
         $ftype = '.l98';
         require(PATH_TO_LMO . '/lmo-adminnewdir.php'); ?>
@@ -396,28 +397,39 @@ if ($newpage == 2) {
             //        2. Ist die Spieltaganzahl gleich Hin- und Rückrunde oder nur Hinrunde?
             if (($xanzsp == $soll_anzsp) && (($xanzst == $soll_anzst) || ($xanzst == $soll_anzst / 2))) {?>
                     <br>
-                    <input type="radio" name="xprogram" value="random"<?php if ($xprogram == 'random') {echo ' checked';} ?> onChange="dolmoedit()"><?php echo $text[288]; ?>
+                    <input type="radio" name="xprogram" value="random"<?php if ($xprogram == 'random') {
+                        echo ' checked';
+                    } ?> onChange="dolmoedit()"><?php echo $text[288]; ?>
 <?php
             }
         }
         // Änderungen s.janke@tu-bs.de - Ende
-?>
+        ?>
                   </td>
                 </tr>
 <?php
-    }
-    else {
+    } else {
         for ($i = 1; $i <= $xanzst; $i++) {?>
                 <tr>
                   <td width="20">&nbsp;</td>
                   <td class="nobr" align="right"><acronym title="<?php echo $text[352]; ?>"><?php echo $text[351] . ' ' . $i; ?></acronym></td>
                   <td class="nobr" align="left">
                     <select class="lmo-formular-input" name="xmod<?php echo $i; ?>" onChange="dolmoedit()">
-                      <option value="1"<?php if ($xmodus[$i - 1] == 1) {echo ' selected';}?>><?php echo $text[353]; ?></option>
-                      <option value="2"<?php if ($xmodus[$i - 1] == 2) {echo ' selected';}?>><?php echo $text[354]; ?></option>
-                      <option value="3"<?php if ($xmodus[$i - 1] == 3) {echo ' selected';}?>><?php echo $text[355]; ?></option>
-                      <option value="5"<?php if ($xmodus[$i - 1] == 5) {echo ' selected';}?>><?php echo $text[356]; ?></option>
-                      <option value="7"<?php if ($xmodus[$i - 1] == 7) {echo ' selected';}?>><?php echo $text[357]; ?></option>
+                      <option value="1"<?php if ($xmodus[$i - 1] == 1) {
+                          echo ' selected';
+                      }?>><?php echo $text[353]; ?></option>
+                      <option value="2"<?php if ($xmodus[$i - 1] == 2) {
+                          echo ' selected';
+                      }?>><?php echo $text[354]; ?></option>
+                      <option value="3"<?php if ($xmodus[$i - 1] == 3) {
+                          echo ' selected';
+                      }?>><?php echo $text[355]; ?></option>
+                      <option value="5"<?php if ($xmodus[$i - 1] == 5) {
+                          echo ' selected';
+                      }?>><?php echo $text[356]; ?></option>
+                      <option value="7"<?php if ($xmodus[$i - 1] == 7) {
+                          echo ' selected';
+                      }?>><?php echo $text[357]; ?></option>
                     </select>
                   </td>
                 </tr>
@@ -432,8 +444,7 @@ if ($newpage < 3) {?>
     if ($newpage < 2) {?>
                   <td align="right"><input title="<?php echo $text[261]; ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[260]; ?>"></td>
 <?php
-    }
-    else {?>
+    } else {?>
                   <td align="right"><input title="<?php echo $text[290]; ?>" class="lmo-formular-button" type="submit" name="best" value="<?php echo $text[289]; ?>"></td>
 <?php
     }?>

@@ -334,4 +334,4 @@ th.bottom {
     height: 500px;
 }
 <?php
-@include(PATH_TO_TEMPLATEDIR."/style.css");?>
+@include(PATH_TO_TEMPLATEDIR . '/style.css');?>

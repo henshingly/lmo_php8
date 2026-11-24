@@ -7,43 +7,36 @@ if (isset($anzst)) {
             if ($i == $anzst) {
                 $j = $text[364];
                 $k = $text[365];
-            }
-            elseif ($i == $anzst - 1) {
+            } elseif ($i == $anzst - 1) {
                 $j = $text[362];
                 $k = $text[363];
-            }
-            elseif ($i == $anzst - 2) {
+            } elseif ($i == $anzst - 2) {
                 $j = $text[360];
                 $k = $text[361];
-            }
-            elseif ($i == $anzst - 3) {
+            } elseif ($i == $anzst - 3) {
                 $j = $text[358];
                 $k = $text[359];
-            }
-            else {
+            } else {
                 $j = $i;
                 $k = $text[366];
             }
-        }
-        else {
+        } else {
             $j = sprintf('%02d', $i);
-            $k = $text[9]; }?>
+            $k = $text[9];
+        }?>
                 <td align='center'><?php
 
         if ($i != $st || empty($tabdat)) {
             if (isset($todo) && $todo == 'tabs') {
                 echo '<a href="' . $addb . $i . '" title="' . $k . '">' . $j . '</a>';
-            }
-            else {
-                if($i == $st) {
+            } else {
+                if ($i == $st) {
                     echo $j;
-                }
-                else {
+                } else {
                     echo '<a href="' . $addr . $i . '" title="' . $k . '">' . $j . '</a>';
                 }
             }
-        }
-        else {
+        } else {
             echo $j;
         }?>&nbsp;</td>
 <?php
@@ -53,15 +46,13 @@ if (isset($anzst)) {
               <tr>
 <?php
             }
-        }
-        elseif (($anzst > 35)) {
+        } elseif (($anzst > 35)) {
             if (($i == ceil($anzst / 3)) || ($i == ceil($anzst / 3 * 2))) {?>
               </tr>
               <tr>
 <?php
             }
-        }
-        elseif (($anzst > 23)) {
+        } elseif (($anzst > 23)) {
             if ($i == ceil($anzst / 2)) {?>
               </tr>
               <tr>

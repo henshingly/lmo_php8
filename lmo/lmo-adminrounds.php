@@ -18,7 +18,7 @@
   *
   */
 
-if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
+if (($file != '') && ($_SESSION['lmouserok'] == 2)) {
     if (!isset($team)) {
         $team = '';
     }
@@ -29,8 +29,8 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
     $addb = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=tabs&amp;file=' . $file . '&amp;st=';
     $addz = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=edit&amp;file=' . $file . '&amp;st=-2&amp;team=';
     $meldung = '';
-    $rowMarker = array();
-?>
+    $rowMarker = [];
+    ?>
 <a name="top"></a>
 <table class="lmoSubmenu" width="100%" cellpadding="0" cellspacing="0">
  <tr>
@@ -51,14 +51,15 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
         <input type="hidden" name="st" value="<?php echo $st; ?>">
 <?php
 
-    $liga1 = new liga();
-    if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $file) == false)
-    echo $text[224];
+        $liga1 = new liga();
+    if ($liga1->loadFile(PATH_TO_LMO . '/' . $dirliga . $file) == false) {
+        echo $text[224];
+    }
 
     if (isset($_POST)) {
-        reset ($_POST);
+        reset($_POST);
         $changesFound = false;
-        foreach ($_POST as $k=>$v) {
+        foreach ($_POST as $k => $v) {
             $array = preg_split('#_#', $k);
             if (isset($array) and count($array) == 4 and ($array[0] == 'sp') and ($array[1] != $v)) {
                 $alteSpielTagNr = $array[1];
@@ -71,14 +72,14 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
                 $heim = $liga1->teamForNumber($heimNr);
                 $gast = $liga1->teamForNumber($gastNr);
 
-                $aPartie = $liga1->partieForTeams($heim,$gast);
+                $aPartie = $liga1->partieForTeams($heim, $gast);
                 if ($aSpielTag->removePartie($aPartie)) {
                     $changesFound = true;
                     $newSpielTag->addPartie($aPartie);
                     $liga1->spieltage[$neueSpielTagNr - 1] = $newSpielTag;
                     $liga1->spieltage = array_values($liga1->spieltage); // Index neu erstellen
                     $liga1->spieltage[$alteSpielTagNr - 1] = $aSpielTag;
-                    $liga1->spieltage=array_values($liga1->spieltage); // Index neu erstellen
+                    $liga1->spieltage = array_values($liga1->spieltage); // Index neu erstellen
                     $meldung = $text[5007] . ' ' . $aPartie->heim->name . ' - ' . $aPartie->gast->name . ' ' . $text[5004] . ' ' . $alteSpielTagNr . '. ' . $text[5005] . " $neueSpielTagNr . " . $text[5010] . ' ' . $text[5006] . '.<BR>';
                     $rowMarker[] = $heimNr . '-' . $gastNr;
                 }
@@ -86,7 +87,7 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
         } // End foreach
 
         if ($changesFound == true) {
-            $liga1->writeFile(PATH_TO_LMO . '/' . $dirliga . $file,0,0);
+            $liga1->writeFile(PATH_TO_LMO . '/' . $dirliga . $file, 0, 0);
         }
     }
     $liga = new liga();
@@ -107,15 +108,14 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
         </tr>
 <?php
         $pcount = 1;
-        $teamArray = array();
+        $teamArray = [];
         foreach ($spTag->partien as $partie) {
             $hTore = $partie->hTore;
             $gTore = $partie->gTore;
             if ($hTore == -1 and $gTore == -1) {
                 $hTore = '__';
                 $gTore = '__';
-            }
-            elseif ($hTore < -1 or $gTore < -1) {
+            } elseif ($hTore < -1 or $gTore < -1) {
                 $hTore = 0;
                 $gTore = 0;
             }
@@ -134,7 +134,7 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
           <td><?php echo $str1 . $partie->heim?->name . $str2; ?></td>
           <td>-</td>
           <td><?php echo $str1 . $partie->gast?->name . $str2; ?></td>
-          <td align='right' ><?php echo $str1.$hTore . $str2; ?></td>
+          <td align='right' ><?php echo $str1 . $hTore . $str2; ?></td>
           <td>:</td>
           <td align='center'><?php echo $str1 . $gTore . $str2; ?></td>
           <td></td>
@@ -143,7 +143,9 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
             echo $spTag->nr . '_' . $partie->heim?->nr . '_' . $partie->gast?->nr . '">';
             for ($sp = 1;$sp <= $liga->spieltageCount(); $sp++) {?>
               <option value=<?php echo $sp;
-                if ($spTag->nr == $sp) {echo ' selected';}
+                if ($spTag->nr == $sp) {
+                    echo ' selected';
+                }
                 echo '>' . $sp . '. ' . $text[2] . '</option>';
             }?>
             </select>
@@ -152,7 +154,7 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
 <?php
             $pcount++;
         }
-        if ($liga->options->valueForKey('Type') == 0 ) {
+        if ($liga->options->valueForKey('Type') == 0) {
             foreach ($liga->teams as $team) {
                 if (!in_array($team->nr, $teamArray)) {?>
         <tr>
@@ -171,7 +173,7 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
         //  das ein team mehrmals an einem spieltag antreten muss js-funktion muss noch gebaut werden
         //  echo "<input type='hidden' name='sptext_".$spTag->nr."' value='".implode(",",$teamArray)."'>";
     }  // end foreach ($spTag->partien as $partie)
-?>
+    ?>
         <tr>
             <th style="text-align:right" class="nobr" colspan="10">
               <acronym title="<?php echo $text[114] ?>"><input class="lmo-formular-button" type="submit" name="spPlan" value="<?php echo $text[5009]; ?>"></acronym>&nbsp;&nbsp;&nbsp;
@@ -182,5 +184,5 @@ if (($file!='') && ($_SESSION['lmouserok'] == 2)) {
       <a name="bottom"></a>
     </td>
   </tr>
-</table><?php 
+</table><?php
 }?>

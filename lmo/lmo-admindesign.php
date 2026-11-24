@@ -1,7 +1,7 @@
 <?php
 /** Liga Manager Online 4
   *
-  * https://www.liga-manager-online.org/lmo/
+  * http://lmo.sourceforge.net/
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -22,8 +22,8 @@ require_once(PATH_TO_LMO . '/lmo-admintest.php');
 require_once(PATH_TO_LMO . '/lmo-designlib.php');
 
 // Texte des Designeditors: lang/design/lang-<Sprache>.txt wird vom Kern nach $text['design'] geladen.
-// Fehlt die Datei der Sprache oder einzelne Schlüssel, werden sie mit der englischen Fassung aufgefüllt.
-$de_en = array();
+// Fehlt die Datei der Sprache oder einzelne Schluessel, werden sie mit der englischen Fassung aufgefuellt.
+$de_en = [];
 read_langfile($de_en, PATH_TO_LANGDIR . '/design/lang-English.txt');
 foreach ($de_en as $de_k => $de_v) {
     if (!isset($text['design'][$de_k]) || $text['design'][$de_k] === '') {
@@ -39,7 +39,7 @@ if ($show < 0 || $show >= count($gkeys)) {
 }
 
 if (isset($_POST['save']) && $_POST['save'] == 1) {
-    // alle Reiter stehen in einem Formular; ungültige Werte werden ignoriert (siehe lmo-designlib.php)
+    // alle Reiter stehen in einem Formular; ungueltige Werte werden ignoriert (siehe lmo-designlib.php)
     lmo_design_apply($_POST, 'xlmo_');
     require(PATH_TO_LMO . '/lmo-savecfg.php');
 }
@@ -48,57 +48,57 @@ if (empty($_SESSION['lmo_de_token'])) {
     $_SESSION['lmo_de_token'] = bin2hex(random_bytes(16));
 }
 
-// Daten für das JavaScript des Editors
-$de_values = array();
+// Daten fuer das JavaScript des Editors
+$de_values = [];
 foreach (lmo_design_keys() as $k) {
     $de_values[$k] = ${'lmo_' . $k};
 }
-$de_hot = array();
+$de_hot = [];
 foreach (lmo_design_hotspots() as $h) {
-    $de_hot[] = array('sel' => $h[0], 'group' => $h[1], 'field' => $h[2], 'label' => $h[3]);
+    $de_hot[] = ['sel' => $h[0], 'group' => $h[1], 'field' => $h[2], 'label' => $h[3]];
 }
-$de_cfg = array(
-    'groups'   => $gkeys,
+$de_cfg = [
+    'groups' => $gkeys,
     'defaults' => lmo_design_defaults(),
     'hotspots' => $de_hot,
-    'css'      => 'lmo-designcss.php',
-    'store'    => 'lmo-designstore.php',
-    'token'    => $_SESSION['lmo_de_token'],
-    'msg'      => array(
-        'export_bad'   => $text['design'][13],
-        'imported'     => $text['design'][14],
-        'defaults'     => $text['design'][15],
-        'confirm_def'  => $text['design'][18],
+    'css' => 'lmo-designcss.php',
+    'store' => 'lmo-designstore.php',
+    'token' => $_SESSION['lmo_de_token'],
+    'msg' => [
+        'export_bad' => $text['design'][13],
+        'imported' => $text['design'][14],
+        'defaults' => $text['design'][15],
+        'confirm_def' => $text['design'][18],
         'confirm_disc' => $text['design'][19],
-        'css_error'    => $text['design'][20],
-        'loading'      => $text['design'][7],
-        'ready'        => '',
-        'scheme_done'  => $text['design'][29],
-        'contrast'     => $text['design'][40],
-        'ask_name'     => $text['design'][45],
-        'saved'        => $text['design'][46],
-        'loaded'       => $text['design'][47],
-        'deleted'      => $text['design'][48],
-        'overwrite'    => $text['design'][49],
-        'confirm_del'  => $text['design'][50],
-        'store_fail'   => $text['design'][51],
-        'bad_name'     => $text['design'][55],
-        'none'         => $text['design'][56],
-    ),
-    'schemes'  => array(
-        array('id' => 'std',     'name' => $text['design'][30], 'color' => '#000099'),
-        array('id' => 'green',   'name' => $text['design'][31], 'color' => '#1b6b2f'),
-        array('id' => 'red',     'name' => $text['design'][32], 'color' => '#a01020'),
-        array('id' => 'blue',    'name' => $text['design'][33], 'color' => '#0b5fa5'),
-        array('id' => 'orange',  'name' => $text['design'][34], 'color' => '#c25b00'),
-        array('id' => 'grey',    'name' => $text['design'][35], 'color' => '#333333'),
-        array('id' => 'purple',  'name' => $text['design'][36], 'color' => '#5b2a86'),
-        array('id' => 'teal',    'name' => $text['design'][37], 'color' => '#007c80'),
-        array('id' => 'wine',    'name' => $text['design'][38], 'color' => '#6d1030'),
-    ),
-);
+        'css_error' => $text['design'][20],
+        'loading' => $text['design'][7],
+        'ready' => '',
+        'scheme_done' => $text['design'][29],
+        'contrast' => $text['design'][40],
+        'ask_name' => $text['design'][45],
+        'saved' => $text['design'][46],
+        'loaded' => $text['design'][47],
+        'deleted' => $text['design'][48],
+        'overwrite' => $text['design'][49],
+        'confirm_del' => $text['design'][50],
+        'store_fail' => $text['design'][51],
+        'bad_name' => $text['design'][55],
+        'none' => $text['design'][56],
+    ],
+    'schemes' => [
+        ['id' => 'std',     'name' => $text['design'][30], 'color' => '#000099'],
+        ['id' => 'green',   'name' => $text['design'][31], 'color' => '#1b6b2f'],
+        ['id' => 'red',     'name' => $text['design'][32], 'color' => '#a01020'],
+        ['id' => 'blue',    'name' => $text['design'][33], 'color' => '#0b5fa5'],
+        ['id' => 'orange',  'name' => $text['design'][34], 'color' => '#c25b00'],
+        ['id' => 'grey',    'name' => $text['design'][35], 'color' => '#333333'],
+        ['id' => 'purple',  'name' => $text['design'][36], 'color' => '#5b2a86'],
+        ['id' => 'teal',    'name' => $text['design'][37], 'color' => '#007c80'],
+        ['id' => 'wine',    'name' => $text['design'][38], 'color' => '#6d1030'],
+    ],
+];
 $de_leagues = lmo_design_leagues();
-$de_views = array('table' => $text[16], 'results' => $text[10], 'program' => $text[12], 'cross' => $text[14], 'cal' => $text[140]);
+$de_views = ['table' => $text[16], 'results' => $text[10], 'program' => $text[12], 'cross' => $text[14], 'cal' => $text[140]];
 $de_self = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=design&amp;show=';
 ?>
       <style type="text/css">
@@ -174,11 +174,11 @@ $de_self = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=design&amp;show=';
                   </span>
                 </div>
                 <div class="lmo-de-tabs">
-<?php
-foreach ($gkeys as $i => $gk) { ?>
-                  <a href="<?php echo $de_self . $i; ?>" data-group="<?php echo $gk; ?>"<?php if ($i == $show) echo ' class="lmo-de-on"'; ?>><?php echo $groups[$gk]['title']; ?></a>
-<?php 
-} ?>
+<?php foreach ($gkeys as $i => $gk) { ?>
+                  <a href="<?php echo $de_self . $i; ?>" data-group="<?php echo $gk; ?>"<?php if ($i == $show) {
+                      echo ' class="lmo-de-on"';
+                  } ?>><?php echo $groups[$gk]['title']; ?></a>
+<?php } ?>
                 </div>
                 <form name="lmoedit" id="lmo-de-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onSubmit="return chklmopass()">
                   <input type="hidden" name="action" value="admin">
@@ -187,7 +187,9 @@ foreach ($gkeys as $i => $gk) { ?>
                   <input type="hidden" name="show" id="lmo-de-show" value="<?php echo $show; ?>">
 <?php
 foreach ($gkeys as $i => $gk) { ?>
-                  <div class="lmo-de-group<?php if ($i == $show) echo ' lmo-de-on'; ?>" data-group="<?php echo $gk; ?>">
+                  <div class="lmo-de-group<?php if ($i == $show) {
+                      echo ' lmo-de-on';
+                  } ?>" data-group="<?php echo $gk; ?>">
                     <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 <?php
     foreach ($groups[$gk]['rows'] as $row) {
@@ -200,11 +202,9 @@ foreach ($gkeys as $i => $gk) { ?>
                       <tr id="de-row-<?php echo $row[1][0]; ?>">
                         <td width="20">&nbsp;</td>
                         <td class="nobr" align="right">
-<?php
-            foreach ($row[1] as $k) { ?>
+<?php foreach ($row[1] as $k) { ?>
                           <span class="lmo-de-color"><input class="lmo-formular-input" type="text" name="xlmo_<?php echo $k; ?>" id="de_<?php echo $k; ?>" size="7" maxlength="9" value="<?php echo htmlspecialchars(${'lmo_' . $k}); ?>" onChange="dolmoedit();"><input class="lmo-de-pick" type="color" data-for="de_<?php echo $k; ?>" tabindex="-1" value="#000000"></span>
-<?php
-            } ?>
+<?php } ?>
                         </td>
                         <td><?php echo $row[2]; ?></td>
                       </tr>
@@ -219,7 +219,9 @@ foreach ($gkeys as $i => $gk) { ?>
         } elseif ($row[0] == 'f') { ?>
                       <tr id="de-row-<?php echo $row[1]; ?>">
                         <td width="20">&nbsp;</td>
-                        <td align="right"><input class="lmo-formular-input" type="checkbox" name="xlmo_<?php echo $row[1]; ?>" id="de_<?php echo $row[1]; ?>"<?php if (${'lmo_' . $row[1]} == 'underline') echo ' checked'; ?> onClick="dolmoedit();"></td>
+                        <td align="right"><input class="lmo-formular-input" type="checkbox" name="xlmo_<?php echo $row[1]; ?>" id="de_<?php echo $row[1]; ?>"<?php if (${'lmo_' . $row[1]} == 'underline') {
+                            echo ' checked';
+                        } ?> onClick="dolmoedit();"></td>
                         <td><?php echo $row[2]; ?></td>
                       </tr>
 <?php
@@ -251,24 +253,19 @@ foreach ($gkeys as $i => $gk) { ?>
               <div class="lmo-de-preview">
                 <div class="lmo-de-tool">
                   <strong><?php echo $text['design'][0]; ?></strong>
-<?php
-if (count($de_leagues) > 0) { ?>
+<?php if (count($de_leagues) > 0) { ?>
                   <label><?php echo $text['design'][1]; ?>
                     <select id="lmo-de-league">
-<?php
-    foreach ($de_leagues as $rel => $name) { ?>
+<?php foreach ($de_leagues as $rel => $name) { ?>
                       <option value="<?php echo htmlspecialchars($rel); ?>"><?php echo htmlspecialchars($name); ?></option>
-<?php
-    } ?>
+<?php } ?>
                     </select>
                   </label>
                   <label><?php echo $text['design'][2]; ?>
                     <select id="lmo-de-view">
-<?php
-    foreach ($de_views as $v => $name) { ?>
+<?php foreach ($de_views as $v => $name) { ?>
                       <option value="<?php echo $v; ?>"><?php echo $name; ?></option>
-<?php
-    } ?>
+<?php } ?>
                     </select>
                   </label>
                   <label><?php echo $text['design'][52]; ?>
@@ -278,18 +275,14 @@ if (count($de_leagues) > 0) { ?>
                       <option value="390px"><?php echo $text['design'][57]; ?></option>
                     </select>
                   </label>
-<?php
-} ?>
+<?php } ?>
                 </div>
-<?php
-if (count($de_leagues) > 0) { ?>
+<?php if (count($de_leagues) > 0) { ?>
                 <iframe class="lmo-de-frame" id="lmo-de-frame" title="<?php echo $text['design'][0]; ?>" src="about:blank"></iframe>
                 <p class="lmo-de-hint"><?php echo $text['design'][8]; ?></p>
-<?php
-} else { ?>
+<?php } else { ?>
                 <p><?php echo $text['design'][17]; ?></p>
-<?php
-} ?>
+<?php } ?>
               </div>
             </div>
           </td>

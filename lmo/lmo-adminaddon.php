@@ -24,10 +24,12 @@ isset($_REQUEST['show']) ? $show = $_REQUEST['show'] : $show = 0;
 if ($save == 1) {
     // Es werden alle Addon-Konfigurationen dargestellt als Texteingabe behandelt
     // und anschliessend abgespeichert - Es erfolgen keine Prüfungen auf Variablentyp und -wert
-    foreach($cfgarray as $addon_name => $addon_cfg) {  //Alle Addons abklappern
+    foreach ($cfgarray as $addon_name => $addon_cfg) {  //Alle Addons abklappern
         if (is_array($addon_cfg)) {                    //Addon gefunden
             foreach ($addon_cfg as $cfg_name => $cfg_value) {
-                if (isset($_POST["x$cfg_name"])) $ {$addon_name . '_' . $cfg_name} = trim($_POST["x$cfg_name"]);    //Alle Post-vars mit x davor werden abgefragt und als Variable mit Präfix gespeichert
+                if (isset($_POST["x$cfg_name"])) {
+                    $ {$addon_name . '_' . $cfg_name} = trim($_POST["x$cfg_name"]);
+                }    //Alle Post-vars mit x davor werden abgefragt und als Variable mit Präfix gespeichert
             }
         }
     }
@@ -54,7 +56,7 @@ if ($save == 1) {
             <table class="lmoMenu" cellspacing="0" cellpadding="0" border="0">
 <?php
 $testshow = 0;
-foreach($cfgarray as $addon_name => $addon_cfg) {
+foreach ($cfgarray as $addon_name => $addon_cfg) {
     if (is_array($addon_cfg)) {?>
               <tr>
                 <td align="right"<?php if ($show == $testshow) {?> class="active"><?php echo $addon_name; ?><?php } else {?> class="lmost4"><a href="<?php echo $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=addons&amp;show=' . $testshow; ?>"><?php echo $addon_name; ?></a><?php }?></td>
@@ -75,11 +77,11 @@ foreach($cfgarray as $addon_name => $addon_cfg) {
               <table class="lmoInner" cellspacing="0" cellpadding="0" border="0">
 <?php
 $testshow = 0;
-foreach($cfgarray as $addon_name => $addon_cfg) {              //Alle Addons abklappern
+foreach ($cfgarray as $addon_name => $addon_cfg) {              //Alle Addons abklappern
     if (is_array($addon_cfg)) {
         if ($show == $testshow) {                              //Addon gefunden
             foreach ($addon_cfg as $cfg_name => $cfg_value) {  //Alle Konfigwerte des Addon
-?>
+                ?>
                 <tr>
                   <td class="lmost5" width="20">&nbsp;</td>
                   <td align="right"><?php echo $cfg_name; ?></td>

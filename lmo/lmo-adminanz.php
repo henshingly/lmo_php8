@@ -21,9 +21,9 @@
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert'] == 1)) {
     require_once(PATH_TO_LMO . '/lmo-openfile.php');
-    if (isset ($save) && $save == 1) {
+    if (isset($save) && $save == 1) {
         for ($i = 0; $i < $anzst; $i++) {
-            for ($j = $anzsp; $j <40; $j++) {
+            for ($j = $anzsp; $j < 40; $j++) {
                 $teama[$i][$j] = 0;
                 $teamb[$i][$j] = 0;
                 $goala[$i][$j] = -1;
@@ -57,7 +57,7 @@ if ($file != '' && ($_SESSION['lmouserok'] == 2 || $_SESSION['lmouserokerweitert
     }
     $addr = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=edit&amp;file=' . $file . '&amp;st=';
     $addb = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=tabs&amp;file=' . $file . '&amp;st=';
-?>
+    ?>
       <table class="lmoSubmenu" width="100%" cellpadding="0" cellspacing="0">
         <tr>
           <td align="left">

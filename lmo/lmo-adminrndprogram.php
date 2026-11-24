@@ -17,45 +17,43 @@
   *
   */
 
-  /**
-   * @version 1.0 2005-09-22
-   * @author Sebastian Janke, s.janke@tu-bs.de
-   * @return Die fertige Kreuztabelle.
-   *
-   * Schreibt die Kreuztabelle der Begegnungen (Format s.u.).<br>
-   * Das Vergabesystem arbeitet mit einem Tischemodell.<br>
-   * An jedem Tisch sitzen sich 2 Spieler gegenüber.<br>
-   * Jeder Tisch hat eine Heimrecht- und eine Auswärtsseite.<br>
-   * <u>Beispiel mit 4 Tischen und 8 Sitzplätzen:</u><br>
-   * Die Plätze werden in der Reihenfolge 0-7 vergeben.<br>
-   * 7 1 2 3<br>
-   * X o-o-o\<br>
-   * T/T l T|<br>
-   * o-o-o-o/<br>
-   * 0 6 5 4<br>
-   * <u>Legende:</u><br>
-   * T = Tisch (Heimrecht oben)<br>
-   * l = Tisch (Heimrecht unten)<br>
-   * X = Spieler mit dem festen Sitzplatz<br>
-   * o = Spieler, der gegen den Uhrzeigersinn rotieren muss.<br>
-   * - | / \ = Rotationswege der beweglichen Spieler.<br>
-   * <br>
-   * Zu Beginn eines neues Spieltages rutschen alle Spieler ohne festen Sitzplatz (0-6) jeweils einen Platz gegen den
-   * Uhrzeigersin weiter.<br>
-   * <br>
-   * Die Positionsnummer von X ist immer der höchste auftretende Index.<br>
-   * <u>Format der Kreuztabelle:</u><br>
-   * Der erste Index des Arrays (Zeilen) greift auf den Spieltag zu, der zweite
-   * Index bestimmt den Spieler mit Heimrecht. Der Wert an der Stelle des Arrays entspricht der
-   * Spaltennummer (=Spielernummer) des gegnerischen Spielers, dieser spielt auswärts. Wenn
-   * kein Spiel eingetragen ist, ist der Wert -1 (Array-Initilialisierung mit -1).<br>
-   */
+/**
+ * @version 1.0 2005-09-22
+ * @author Sebastian Janke, s.janke@tu-bs.de
+ * @return Die fertige Kreuztabelle.
+ *
+ * Schreibt die Kreuztabelle der Begegnungen (Format s.u.).<br>
+ * Das Vergabesystem arbeitet mit einem Tischemodell.<br>
+ * An jedem Tisch sitzen sich 2 Spieler gegenÃ¼ber.<br>
+ * Jeder Tisch hat eine Heimrecht- und eine AuswÃ¤rtsseite.<br>
+ * <u>Beispiel mit 4 Tischen und 8 SitzplÃ¤tzen:</u><br>
+ * Die PlÃ¤tze werden in der Reihenfolge 0-7 vergeben.<br>
+ * 7 1 2 3<br>
+ * X o-o-o\<br>
+ * T/T l T|<br>
+ * o-o-o-o/<br>
+ * 0 6 5 4<br>
+ * <u>Legende:</u><br>
+ * T = Tisch (Heimrecht oben)<br>
+ * l = Tisch (Heimrecht unten)<br>
+ * X = Spieler mit dem festen Sitzplatz<br>
+ * o = Spieler, der gegen den Uhrzeigersinn rotieren muss.<br>
+ * - | / \ = Rotationswege der beweglichen Spieler.<br>
+ * <br>
+ * Zu Beginn eines neues Spieltages rutschen alle Spieler ohne festen Sitzplatz (0-6) jeweils einen Platz gegen den
+ * Uhrzeigersin weiter.<br>
+ * <br>
+ * Die Positionsnummer von X ist immer der hÃ¶chste auftretende Index.<br>
+ * <u>Format der Kreuztabelle:</u><br>
+ * Der erste Index des Arrays (Zeilen) greift auf den Spieltag zu, der zweite
+ * Index bestimmt den Spieler mit Heimrecht. Der Wert an der Stelle des Arrays entspricht der
+ * Spaltennummer (=Spielernummer) des gegnerischen Spielers, dieser spielt auswÃ¤rts. Wenn
+ * kein Spiel eingetragen ist, ist der Wert -1 (Array-Initilialisierung mit -1).<br>
+ */
 
+require_once(PATH_TO_LMO . '/lmo-admintest.php');
 
-
-require_once(PATH_TO_LMO . "/lmo-admintest.php");
-
-/** Änderungen:
+/** Ã„nderungen:
  * a) 1. Index verdoppelt, entspricht jetzt den Spieltagen statt Spieler-Nummer.
  * b) Indizes beginnen bei 0 statt 1.
  * c) Kreuztabellen-Initialiserung komplett mit '-1' statt Hauptdiagonale mit '0'
@@ -63,7 +61,7 @@ require_once(PATH_TO_LMO . "/lmo-admintest.php");
 
 /*
  * dummy wird true, wenn der virtuelle Spieler "Spielfrei"
- * bei einer ungeraden Spielerzahl hinzugefügt wird.
+ * bei einer ungeraden Spielerzahl hinzugefÃ¼gt wird.
  * Falls es einen Dummy gibt, hat dieser die Spielernummer
  * des Spieler auf dem festen Platz ($anzteams - 1).
  */
@@ -76,29 +74,29 @@ if (($xteams % 2) == 1) {
     $dummy = true;
 }
 
-$plan = array_pad($array, 80, "");
+$plan = array_pad($array, 80, '');
 for ($i = 0; $i < 40; $i++) {
-    $plan[$i] = array_pad($array, 40, "");
+    $plan[$i] = array_pad($array, 40, '');
     for ($j = 0; $j < 40; $j++) {
-        $plan[$i][$j] = "-1";
+        $plan[$i][$j] = '-1';
     }
 }
 
-// Selbsterklärend
+// SelbsterklÃ¤rend
 $spieltageHinrunde = $anzteams - 1;
 $spieltage = ($anzteams - 1) * 2;
 
 // Hat der feste Platz zu Beginn Heimrecht? Dieses Recht wechselt an jedem Spieltag, der Tisch wird gedreht.
 $festerPlatzIsHome = true;
 
-// Spieler X, Sitzbelegung durch Spieler ändert sich nicht
+// Spieler X, Sitzbelegung durch Spieler Ã¤ndert sich nicht
 $spielerNrFesterPlatz = $anzteams - 1;
 
 // Tischpartner von Spieler X
 $spielerNrGegenueberFesterPlatz = 0;
 
-/* Hauptschleife, läuft sequentiell über die Spieltage der Hinrunde.
- * Die Rückrunde wird sofort gespiegelt mit geschrieben.
+/* Hauptschleife, lÃ¤uft sequentiell Ã¼ber die Spieltage der Hinrunde.
+ * Die RÃ¼ckrunde wird sofort gespiegelt mit geschrieben.
  */
 for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
 
@@ -111,11 +109,10 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
         $plan[$spieltag][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
         // Rueckrunde
         $plan[$spieltag + $spieltageHinrunde][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
-    }
-    else {
+    } else {
         // Hinrunde
         $plan[$spieltag][$spielerNrGegenueberFesterPlatz] = $spielerNrFesterPlatz;
-        // Rückrunde
+        // RÃ¼ckrunde
         $plan[$spieltag + $spieltageHinrunde][$spielerNrFesterPlatz] = $spielerNrGegenueberFesterPlatz;
     }
 
@@ -129,12 +126,12 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
     $zielSitzUngeradeVerschoben = ($zielSitzUngerade + $spieltag) % $beweglicheSpieler;
 
     /*
-     * Innere Schleife, läuft über alle Paarungen EINES Spieltages.
+     * Innere Schleife, lÃ¤uft Ã¼ber alle Paarungen EINES Spieltages.
      */
     while ($zielSitzGerade < $beweglicheSpieler) {
         // Hinrunde
         $plan[$spieltag][$zielSitzGeradeVerschoben] = $zielSitzUngeradeVerschoben;
-        // Rückrunde
+        // RÃ¼ckrunde
         $plan[$spieltag + $spieltageHinrunde][$zielSitzUngeradeVerschoben] = $zielSitzGeradeVerschoben;
 
         // Weiterrutschen der beweglichen Spieler
@@ -148,17 +145,17 @@ for ($spieltag = 0; $spieltag < $spieltageHinrunde; $spieltag++) {
 }
 
 /**
- * Abbildungstabelle, die eine bijektive Abbildung zwischen ursprünglicher
+ * Abbildungstabelle, die eine bijektive Abbildung zwischen ursprÃ¼nglicher
  * und neuer Spielernummer beinhaltet.
  * Die alte Spielernummer 0 bis $anzteams-1 ist der Zugriffsindex,
  * die neue Spielernummer ist der Wert an der Indexstelle.
- * Die neue Spielernummer ist bereits um +1 erhöht,
+ * Die neue Spielernummer ist bereits um +1 erhÃ¶ht,
  * da der LMO Indizes von 1 bis $anzteams erwartet.
  */
-$abbildungsarray = range(1,$anzteams);
+$abbildungsarray = range(1, $anzteams);
 // Fisher-Yates Shuffle
 for ($i = count($abbildungsarray); --$i; $i > 0) {
-    $j = @mt_rand(0, $i+1);
+    $j = @mt_rand(0, $i + 1);
     $temp = $abbildungsarray[$i];
     $abbildungsarray[$i] = $abbildungsarray[$j];
     $abbildungsarray[$j] = $temp;
@@ -175,7 +172,7 @@ for ($spieltag = 0; $spieltag < $spieltage; $spieltag++) {
             $heim_abbild = $abbildungsarray[$heim];
             $ausw_abbild = $abbildungsarray[$ausw];
             // Dummyspieler "Spielfrei" drinnen ja/nein?
-            // Berücksichtige hier Indexverschiebung +1 zwischen meinen Spielernummern und LMO
+            // BerÃ¼cksichtige hier Indexverschiebung +1 zwischen meinen Spielernummern und LMO
             if (!$dummy || ($heim_abbild != $spielerNrFesterPlatz + 1 && $ausw_abbild != $spielerNrFesterPlatz + 1)) {
                 $yteama[$spieltag][$spielnr] = $heim_abbild;
                 $yteamb[$spieltag][$spielnr] = $ausw_abbild;
@@ -185,4 +182,3 @@ for ($spieltag = 0; $spieltag < $spieltage; $spieltag++) {
         }
     }
 }
-?>

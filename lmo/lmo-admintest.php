@@ -17,9 +17,7 @@
   *
   */
 
-
-if ( !defined('LMO_AUTH') ) {
-  die ();
-  exit;
+if (!defined('LMO_AUTH')) {
+    die();
+    exit;
 }
-?>

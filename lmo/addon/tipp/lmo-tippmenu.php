@@ -1,7 +1,7 @@
 <table class="lmoSubmenu" width="99%" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td class="nobr" align="left"><?php
-if ($todo != '') {
+if ($todo != '' || (isset($_REQUEST['all']) && $_REQUEST['all'] == 1)) {
     echo '<a href="' . $_SERVER['PHP_SELF'] . '?action=tipp" title="' . $text['tipp'][53] . '">' . $text['tipp'][52] . '</a>';
 } else {
     echo $text['tipp'][52];

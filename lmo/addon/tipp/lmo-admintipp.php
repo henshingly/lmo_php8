@@ -20,6 +20,12 @@
 $save = isset($_REQUEST['save']) ? $_REQUEST['save'] : 0;
 $liga = isset($_REQUEST['liga']) ? $_REQUEST['liga'] : '';
 
+// Automatische Sicherung vor der Auswertung (Einstellung im Sicherungsmanager)
+if ($save == 2 || $save == 4) {
+    require_once(PATH_TO_ADDONDIR . '/tipp/lmo-tippbackup.php');
+    lmo_tipp_backup_auto();
+}
+
 if ($save == 2) {
     require(PATH_TO_ADDONDIR . '/tipp/lmo-tippsavewert.php');
 }

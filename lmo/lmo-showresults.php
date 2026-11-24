@@ -40,15 +40,15 @@ if ($enablegamesort == '1' && filterZero($mterm[$st - 1])) {
     asort($datsort);
     reset($datsort);
 }
-$spielfreia = array();
-$spielfreib = array();
+$spielfreia = [];
+$spielfreib = [];
 
-foreach($datsort as $key => $val) {
+foreach ($datsort as $key => $val) {
     $i = $key;
     if (($teama[$st - 1][$i] > 0) && ($teamb[$st - 1][$i] > 0)) { ?>
   <tr><?php
         if ($datm == 1) {
-            if(is_numeric($mterm[$st - 1][$i])) {
+            if (is_numeric($mterm[$st - 1][$i])) {
                 $dt = new DateTime();
                 $dt->setTimeStamp($mterm[$st - 1][$i]);
                 $dum1 = $dt->format($datf);
@@ -59,15 +59,15 @@ foreach($datsort as $key => $val) {
 <?php
         }
         /* Spielfrei-Hack-Beginn1*/
-    	$spielfreia[$i] = $teama[$st - 1][$i];
-    	$spielfreib[$i] = $teamb[$st - 1][$i];
+        $spielfreia[$i] = $teama[$st - 1][$i];
+        $spielfreib[$i] = $teamb[$st - 1][$i];
         /* Spielfrei-Hack-Ende1*/
-?>
+        ?>
     <td width="2">&nbsp;</td>
     <td class="nobr" align="right"><?php
-        if ($plan == "1") {
-            echo '<a href="' . $addp . $teama[$st - 1][$i] . '" title="' . $text[269] . '">';
-        }
+                if ($plan == '1') {
+                    echo '<a href="' . $addp . $teama[$st - 1][$i] . '" title="' . $text[269] . '">';
+                }
         if (($favteam > 0) && ($favteam == $teama[$st - 1][$i])) {
             echo '<strong>';
         }
@@ -75,7 +75,7 @@ foreach($datsort as $key => $val) {
         if (($favteam > 0) && ($favteam == $teama[$st - 1][$i])) {
             echo '</strong>';
         }
-        if ($plan == "1") {
+        if ($plan == '1') {
             echo '</a>';
         }
         echo '&nbsp;' . HTML_smallTeamIcon($file, $teams[$teama[$st - 1][$i]], ' alt=""'); ?></td>
@@ -176,7 +176,7 @@ foreach($datsort as $key => $val) {
 if ($einzutore == 1) { ?>
   <tr>
     <td class="lmoFooter" align="center" width="100%" colspan="<?php echo $breite; ?>">&nbsp;<?php
-    $zustat_file = str_replace('.l98', '.l98.php',  basename($file));
+    $zustat_file = str_replace('.l98', '.l98.php', basename($file));
     $zustat_dir = basename($diroutput);
     if (file_exists(PATH_TO_LMO . '/' . $zustat_dir . '/' . $zustat_file)) {
         require(PATH_TO_LMO . '/' . $zustat_dir . '/' . $zustat_file);
@@ -192,7 +192,7 @@ if ($einspielfrei == 1) { ?>
 
     $spielfreic = array_merge($spielfreia, $spielfreib);
     $hoy5 = 1;
-    for ($hoy8 = 1; $hoy8 < $anzteams+1; $hoy8++) {
+    for ($hoy8 = 1; $hoy8 < $anzteams + 1; $hoy8++) {
         if (!in_array($hoy8, $spielfreic)) {
             if ($hoy5 == 1) {
                 echo $text[4004] . ': ';

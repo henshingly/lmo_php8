@@ -4,7 +4,8 @@
  *
  * @param string $fileName
  */
-function updateAddons($fileName) {
+function updateAddons($fileName)
+{
     include PATH_TO_LMO . '/init.php';
     //Importieren der Konfigurations-Variablen. Alternativ müssten alle gebrauchten Variabeln hier als global deklariert werden
     include PATH_TO_LMO . '/lmo-cfgload.php';
@@ -23,7 +24,7 @@ function updateAddons($fileName) {
     $liga = basename($fileName, '.l98');
     $file = $liga . '.l98';
     $action = 'admin';
-    $array = array();
+    $array = [];
     //Liga-Datei öffnen
     include PATH_TO_LMO . '/lmo-openfile.php';
 
@@ -70,4 +71,3 @@ function updateAddons($fileName) {
     }
     // ADDON: TIPPSPIEL
 }
-?>

@@ -18,22 +18,22 @@
   *
   */
 
-function zeitberechnung($modus, $wert) {
+function zeitberechnung($modus, $wert)
+{
     // Gibt verschiedene Werte je nach $Modus zurück:
     // 1 = Tag + $wert (Tage) um 0:00 Uhr als Zeitstempel
     // 2 = Tag + $wert (Tage) um 23:59 Uhr als Zeitstempel
 
-    switch($modus) {
+    switch ($modus) {
         case '1':
             return mktime(0, 0, 0, date('m'), date('d') + $wert, date('Y'));
             // Gibt heutigen Tag + $wert (Tage) um 0:00 Uhr als Zeitstempel zurück
-        break;
+            break;
         case '2':
             return mktime(23, 59, 0, date('m'), date('d') + $wert, date('Y'));
             // Gibt heutigen Tag + $wert (Tage) um 23:59 Uhr als Zeitstempel zurück
-        break;
+            break;
         default:
             return false;
     }  // switch
 }
-?>

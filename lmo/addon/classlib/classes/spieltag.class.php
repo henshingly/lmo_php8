@@ -10,28 +10,28 @@
  * @access public
  * @version $Id: spieltag.class.php 514 2009-11-01 17:52:09Z jokerlmo $
  */
-class spieltag {
-
+class spieltag
+{
     /**
     * Spieltagsnummer,
     * @var integer
     * @access public
     */
-    var $nr;
+    public $nr;
 
     /**
     * vonDatum als string,
     * @var string
     * @access public
     */
-    var $von;
+    public $von;
 
     /**
     * bisDatum als string,
     * @var string
     * @access public
     */
-    var $bis;
+    public $bis;
 
     /**
     * modus als integer,
@@ -41,14 +41,14 @@ class spieltag {
     * @var integer
     * @access privat
     */
-    var $modus= 0;
+    public $modus = 0;
 
     /**
     * Partien des Spieltages,
     * @var array of partien objects
     * @access public
     */
-    var $partien;
+    public $partien;
 
     /**
     * Konstruktor
@@ -59,7 +59,8 @@ class spieltag {
     * @param array $partien
     * @return spieltag
     */
-    function __construct($new_nr, $new_von, $new_bis, $partien = array()) {
+    public function __construct($new_nr, $new_von, $new_bis, $partien = [])
+    {
         $this->nr = $new_nr;
         $this->von = $new_von;
         $this->bis = $new_bis;
@@ -83,8 +84,9 @@ class spieltag {
     * @param string Sortierung
     * @return array Partien
     */
-    function getPartien($sorted = '', $sort_dir = 'ASC') {
-        $result = array();
+    public function getPartien($sorted = '', $sort_dir = 'ASC')
+    {
+        $result = [];
         switch ($sorted) {
             case 'datum':
                 foreach ($this->partien as $partie) {
@@ -92,18 +94,17 @@ class spieltag {
                 }
                 if ($sort_dir == 'ASC') {
                     ksort($result, SORT_NUMERIC);
-                }
-                else {
+                } else {
                     krsort($result, SORT_NUMERIC);
                 }
                 $result = array_values($result);
-            break;
+                break;
             default:
                 $result = $this->partien;
-            break;
+                break;
         }
-    return $result;
-  }
+        return $result;
+    }
 
     /**
     * Setzt den Modus des Spieltags
@@ -113,7 +114,8 @@ class spieltag {
     * @access public
     * @parameter integer Modus des Spieltags
     */
-    function setModus($value) {
+    public function setModus($value)
+    {
         $this->modus = $value;
     }
 
@@ -125,7 +127,8 @@ class spieltag {
     * @access public
     * @return integer Modus des Spieltags
     */
-    function getModus() {
+    public function getModus()
+    {
         return $this->modus;
     }
 
@@ -136,7 +139,8 @@ class spieltag {
     * @param integer Partienummer
     * @return object Die Partie
     */
-    function &partieForNumber($number) {
+    public function &partieForNumber($number)
+    {
         $result = null;
         // Bugfix 13.10.04    if (isset($number) && $nNumber > 0 && $number <= $this->partienCount())
         if (isset($number) && $number > 0 && $number <= $this->partienCount()) {
@@ -152,7 +156,8 @@ class spieltag {
     * @param integer Heimmannschaftsnummer integer Gastmannschaftsnummer
     * @return object Die Partie
     */
-    function &partieForTeams($heimNr, $gastNr) {
+    public function &partieForTeams($heimNr, $gastNr)
+    {
         $count = $this->partienCount();
         $i = -1;
         $found = -1;
@@ -168,8 +173,7 @@ class spieltag {
         }
         if ($found == 0) {
             return $this->partien[$i];
-        }
-        else {
+        } else {
             // FIX (PHP 8): "Only variable references should be returned by
             // reference"-Notice bei direktem "return null" in einer
             // function &...(). $selectedTag ist bereits oben mit null
@@ -185,10 +189,11 @@ class spieltag {
     * @param string Heimmannschaftsname string Gastmannschaftsname
     * @return object Die Partie
     */
-    function &partieForTeamNames($heimName, $gastName) {
+    public function &partieForTeamNames($heimName, $gastName)
+    {
         $result = null;
         foreach ($this->partien as $aPartie) {
-            if (($aPartie->heim->name == $heimName ) && ($aPartie->gast->name == $gastName)) {
+            if (($aPartie->heim->name == $heimName) && ($aPartie->gast->name == $gastName)) {
                 $result = $aPartie;
                 break;
             }
@@ -203,7 +208,8 @@ class spieltag {
     * @param objekt Partie
     * @return bool Partie wurde gelöscht true / false
     */
-    function removePartie(&$rmvPartie) {
+    public function removePartie(&$rmvPartie)
+    {
         $result = false;
         reset($this->partien);
         $partienArray = $this->partien;
@@ -214,16 +220,14 @@ class spieltag {
                 $partienArray = array_values($partienArray); // Index neu erstellen
                 $result = true;
                 break;
-            }
-            else {
+            } else {
                 next($partienArray);
                 $index++;
             }
         }
         if (isset($partienArray)) {
             $this->partien = &$partienArray;
-        }
-        else {
+        } else {
             $this->partien = null;
         }
         return $result;
@@ -235,7 +239,8 @@ class spieltag {
     * @access public
     * @return integer Partieanzahl
     */
-    function partienCount() {
+    public function partienCount()
+    {
         return count($this->partien);
     }
 
@@ -245,7 +250,8 @@ class spieltag {
     * @access public
     * @param Object die Partie
     */
-    function addPartie(&$neuePartie) {
+    public function addPartie(&$neuePartie)
+    {
         $this->partien[] = $neuePartie; // &$ Das muss so sein
     }
 
@@ -254,8 +260,9 @@ class spieltag {
     *
     * @access private
     */
-    function showDetails() {
-        echo "\n" . $this->nr . '. Spieltag ('.$this->vonBisString() . ")\n";
+    public function showDetails()
+    {
+        echo "\n" . $this->nr . '. Spieltag (' . $this->vonBisString() . ")\n";
         foreach ($this->partien as $partie) {
             echo $partie->showDetails() . "\n";
         }
@@ -266,10 +273,11 @@ class spieltag {
     *
     * @access private
     */
-    function showDetailsHTML() {
+    public function showDetailsHTML()
+    {
         echo '<BR>' . $this->nr . '. Spieltag (' . $this->vonBisString() . ')';
         foreach ($this->partien as $partie) {
-          echo '<BR>' . $partie->showDetailsHTML();
+            echo '<BR>' . $partie->showDetailsHTML();
         }
     }
 
@@ -283,7 +291,8 @@ class spieltag {
     * @access public
     * @return string
     */
-    function vonBisString() {
+    public function vonBisString()
+    {
         $von = '';
         $bis = '';
         if ($this->von != '') {
@@ -305,7 +314,8 @@ class spieltag {
     * @access public
     * @return string
     */
-    function vonString() {
+    public function vonString()
+    {
         $von = '';
         if ($this->von != '') {
             $von = date('d.m.Y', $this->von);
@@ -319,7 +329,8 @@ class spieltag {
     * @access public
     * @return string
     */
-    function bisString() {
+    public function bisString()
+    {
         $bis = '';
         if ($this->bis != '') {
             $bis = date('d.m.Y', $this->bis);
@@ -328,4 +339,3 @@ class spieltag {
     }
 
 } // END class spieltag
-?>

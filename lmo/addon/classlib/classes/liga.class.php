@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /**
  * Liga
  *
@@ -8,80 +8,81 @@
  * @version  $Id: liga.class.php 569 2010-09-15 19:53:15Z jokerlmo $
  */
 #[\AllowDynamicProperties]
-class liga {
+class liga
+{
     /**
     * Nummer der Liga,
     * @var integer
     * @access private
     */
-    var $nr;
+    public $nr;
 
     /**
     * @var integer
     * @access private
     */
-    var $count;
+    public $count;
 
     /**
     * Mannschaften der Liga,
     * @var array of Team Objects
     * @access public
     */
-    var $teams = array();
+    public $teams = [];
 
     /**
     * Name der Liga,
     * @var string
     * @access public
     */
-    var $name;
+    public $name;
 
     /**
     * Kurzbezeichnung der Liga,
     * @var string
     * @access public
     */
-    var $kurz;
+    public $kurz;
 
     /**
     * @access private
     */
-    var $aktSpTag;
+    public $aktSpTag;
 
     /**
     * Partien der Liga,
     * @var array of Partien Objects
     * @access public
     */
-    var $partien = array();
+    public $partien = [];
 
     /**
     * Spieltage der Liga,
     * @var array of Spieltag Objects
     * @access public
     */
-    var $spieltage = array();
+    public $spieltage = [];
 
     /**
     * Vollständiger Pfad und Dateiname der Liga
     * @var string
     * @access public
     */
-    var $fileName;
+    public $fileName;
 
     /**
     * Timestamp des FileDatum
     * @var datetime
     * @access public
     */
-    var $ligaDatum;
+    public $ligaDatum;
 
     /**
     * Inhalt des LigaFiles fileContent[Sektion][key] = value
     * @var array
     * @access private
     */
-    var $sections = array();
+    public $sections = [];
 
     /**
     * Konstruktor
@@ -90,7 +91,8 @@ class liga {
     * @param string $kurz
     * @return liga
     */
-    function __construct($name = '', $kurz = '') {
+    public function __construct($name = '', $kurz = '')
+    {
         $this->name = $name;
         $this->kurz = $kurz;
     }
@@ -105,7 +107,8 @@ class liga {
     * @param file string Pfad zur Ligadatei (*.l98)
     * @return object ein object passend zum Ligafile
     */
-    function &factory($file) {
+    public function &factory($file)
+    {
         if (file_exists($file)) {
             $ligaFile = file($file);
             foreach ($ligaFile as $configLine) {
@@ -116,13 +119,12 @@ class liga {
             $ligaType[1] .= 'Liga';
             if (class_exists($ligaType[1])) {
                 return new $ligaType[1]();
-            }
-            else {
+            } else {
                 return new liga();
             }
-        }
-        else 
+        } else {
             $null = null;
+        }
         return $null;
     }
 
@@ -132,7 +134,8 @@ class liga {
     * @access public
     * @return integer Anzahl der Teilnehmenden Mannschaften
     */
-    function teamCount() {
+    public function teamCount()
+    {
         return count($this->teams);
     }
 
@@ -142,7 +145,8 @@ class liga {
     * @access private
     * @param object neuesTeam Object des neuen Teams
     */
-    function addTeam(&$neuesTeam) {
+    public function addTeam(&$neuesTeam)
+    {
         $this->teams[] = $neuesTeam; // Das muss so sein
     }
 
@@ -153,7 +157,8 @@ class liga {
     * @param string teamName Name des gesuchten Teams
     * @return object das gesuchte Team als Object
     */
-    function &teamForName($teamName) {
+    public function &teamForName($teamName)
+    {
         $count = $this->teamCount();
         $i = 0;
         $found = -1;
@@ -176,7 +181,8 @@ class liga {
     * @param integer teamNumber Nummer des gesuchten Teams
     * @return object
     */
-    function &teamForNumber($teamNumber) {
+    public function &teamForNumber($teamNumber)
+    {
         $result = null;
         if (isset($teamNumber) && $teamNumber > 0 && $teamNumber <= $this->teamCount()) {
             $result = $this->teams[$teamNumber - 1];
@@ -190,10 +196,11 @@ class liga {
     * @access public
     * @return array Alle Namen der Teilnehmenden Mannschaften
     */
-    function teamNames() {
-        $teamArray = array();
-        foreach ((array) $this->teams as $team) {
-            $teamArray[] = (string) $team->name;
+    public function teamNames()
+    {
+        $teamArray = [];
+        foreach ((array)$this->teams as $team) {
+            $teamArray[] = (string)$team->name;
         }
         return $teamArray;
     }
@@ -204,7 +211,8 @@ class liga {
     * @access public
     * @return integer Anzahl der Partien
     */
-    function partienCount() {
+    public function partienCount()
+    {
         return count($this->partien);
     }
 
@@ -215,7 +223,8 @@ class liga {
     * @param object neuePartie Partie die hinzugefügt werden soll
     * @return void
     */
-    function addPartie(&$neuePartie) {
+    public function addPartie(&$neuePartie)
+    {
         $this->partien[] = $neuePartie;
     }
     /**
@@ -225,7 +234,8 @@ class liga {
     * @param integer number Nummer der gesuchten Partie
     * @return object gesuchte Partie oder null wenn partie nicht gefunden wurde
     */
-    function &partieForNumber($number) {
+    public function &partieForNumber($number)
+    {
         $result = null;
         // Bugfix 13.10.04    if (isset($number) && $nNumber > 0 && $number <= $this->partienCount())
         if (isset($number) && $number > 0 && $number <= $this->partienCount()) {
@@ -245,7 +255,8 @@ class liga {
     * @param object gast TeamObject der Gastmannschaft
     * @return object die gesuchte Partie als Object, wenn die Partie nicht gefunden wurde null
     */
-    function &partieForTeams(&$heim, &$gast) {
+    public function &partieForTeams(&$heim, &$gast)
+    {
         $partie = $this->allPartieForTeams($heim, $gast, false);
         return $partie[0];
     }
@@ -261,8 +272,9 @@ class liga {
     * @param boolean Wenn true werden auch Rückspiele zurückgegeben
     * @return array Alle gesuchten Partien (Objecte)
     */
-    function &allPartieForTeams(&$heim, &$gast, $both = false) {
-        $result = array();
+    public function &allPartieForTeams(&$heim, &$gast, $both = false)
+    {
+        $result = [];
         foreach ($this->partien as $aPartie) {
             if (($aPartie->heim == $heim && $aPartie->gast == $gast) || ($both && $aPartie->heim == $gast && $aPartie->gast == $heim)) {
                 $result[] = $aPartie;
@@ -274,8 +286,7 @@ class liga {
             // function &...().
             $noResult = null;
             return $noResult;
-        }
-        else {
+        } else {
             return $result;
         }
     }
@@ -289,7 +300,8 @@ class liga {
     * @param string gastName Name der gesuchten Gastmannschaft
     * @return object Object der gesuchten Partie
     */
-    function &partieForTeamNames($heimName, $gastName) {
+    public function &partieForTeamNames($heimName, $gastName)
+    {
         $heimName = strtolower($heimName);
         $gastName = strtolower($gastName);
         $result = null;
@@ -317,21 +329,22 @@ class liga {
     * @param object team
     * @return Array
     */
-    function gamesSorted($roundSort = true, $sortDir = SORT_ASC, &$team = null) {
-        $games = array();
-        $sort_1 = array();  // FIX: initialisieren, sonst Undefined variable wenn keine Spiele vorhanden
-        $sort_2 = array();  // FIX: initialisieren, sonst Undefined variable wenn keine Spiele vorhanden
+    public function gamesSorted($roundSort = true, $sortDir = SORT_ASC, &$team = null)
+    {
+        $games = [];
+        $sort_1 = [];  // FIX: initialisieren, sonst Undefined variable wenn keine Spiele vorhanden
+        $sort_2 = [];  // FIX: initialisieren, sonst Undefined variable wenn keine Spiele vorhanden
         foreach ($this->spieltage as $spieltag) {
             foreach ($spieltag->partien as $partie) {
                 if ($partie->heim == $team || $partie->gast == $team || is_null($team)) {
                     $sort_1[] = $partie->zeit;
                     $sort_2[] = $spieltag->nr;
-                    $games[] = array(
+                    $games[] = [
                       'date' => $partie->zeit,
                       'spTag' => $spieltag->nr,
                       'spieltag' => $spieltag,
                       'partie' => $partie
-                    );
+                    ];
                 }
             }
         }
@@ -340,8 +353,7 @@ class liga {
         }
         if ($roundSort) {
             array_multisort($sort_2, $sortDir, $sort_1, $sortDir, $games);
-        }
-        else {
+        } else {
             array_multisort($sort_1, $sortDir, $games);
         }
         return $games;
@@ -358,7 +370,8 @@ class liga {
     * @return Array
     */
 
-    function gamesSortedForTeam($team = null, $roundSort = true, $sortDir = SORT_ASC) {
+    public function gamesSortedForTeam($team = null, $roundSort = true, $sortDir = SORT_ASC)
+    {
         if (!is_a($team, 'team')) {  // Wurde nichts angegeben wird das Fav. Team verwendet
             $team = $this->teamForNumber($this->options->keyValues['favTeam']);
         }
@@ -372,7 +385,8 @@ class liga {
     * @param object Object des neuen Spieltags
     * @return void
     */
-    function addSpieltag(&$neuerSpieltag) {
+    public function addSpieltag(&$neuerSpieltag)
+    {
         $this->spieltage[] = $neuerSpieltag;
     }
 
@@ -382,7 +396,8 @@ class liga {
     * @access public
     * @return interger Anzahl der Spieltage
     */
-    function spieltageCount() {
+    public function spieltageCount()
+    {
         return count($this->spieltage);
     }
 
@@ -393,7 +408,8 @@ class liga {
     * @param integer spTagNr gesuchter Spieltag
     * @return object Spieltag der Nummer
     */
-    function &SpieltagForNumber($spTagNr) {
+    public function &SpieltagForNumber($spTagNr)
+    {
         $count = $this->spielTageCount();
         if ($spTagNr > $count) {
             $spTagNr = $count;
@@ -422,7 +438,8 @@ class liga {
     * @access public
     * @return object aktueller Spieltag
     */
-    function &aktuellerSpieltag() {
+    public function &aktuellerSpieltag()
+    {
         $result = null;
         if (array_key_exists('Actual', $this->options->keyValues)) {
             $aktSpTagNr = $this->options->keyValues['Actual'];
@@ -439,7 +456,8 @@ class liga {
     * @access public
     * @return void
     */
-    function showPartienHTML() {
+    public function showPartienHTML()
+    {
         echo "<BR>Liga = $this->name";
         foreach ($this->partien as $partie) {
             $partie->showDetailsHTML();
@@ -452,7 +470,8 @@ class liga {
     * @access public
     * @return string
     */
-    function showDetails() {
+    public function showDetails()
+    {
         echo "LigaName = $this->name\n";
         foreach ($this->spieltage as $spTag) {
             $spTag->showDetails();
@@ -465,7 +484,8 @@ class liga {
     * @access public
     * @return void
     */
-    function showDetailsHTML() {
+    public function showDetailsHTML()
+    {
         echo "<BR>Liga = $this->name";
         foreach ($this->spieltage as $spTag) {
             $spTag->showDetailsHTML();
@@ -481,7 +501,8 @@ class liga {
     * @param string dateFormat gewünschtes Ausgabeformat (siehe date())
     * @return String
     */
-    function ligaDatumAsString($dateFormat = null) {
+    public function ligaDatumAsString($dateFormat = null)
+    {
         $dateFormat = !is_null($dateFormat) ? $dateFormat : $this->options->keyValues['DatF'];
         return date($dateFormat, $this->ligaDatum);
     }
@@ -497,21 +518,20 @@ class liga {
     * @param array array array mit den Optionen
     * @return string
     */
-    function getIniData($key, &$array, $partie = null) {
+    public function getIniData($key, &$array, $partie = null)
+    {
         $result = '';
         if (is_array($array)) {
             if (!is_null($partie) && array_key_exists($key, $array[$partie])) {
                 $result = $array[$partie][$key];
                 unset($array[$partie][$key]); // löschen da jetzt bekannt
-            }
-            elseif (array_key_exists($key, $array)) {
+            } elseif (array_key_exists($key, $array)) {
                 $result = $array[$key];
                 unset($array[$key]); // löschen da jetzt bekannt
             }
         }
         return $result;
     }
-
 
     /**
     * Lädt das angegebene LigaFile und erstellt den Objektbaum
@@ -520,8 +540,9 @@ class liga {
     * @param string fileName Pfad zum Ligafile (*.l98)
     * @return Boolean
     */
-    function loadFile($fileName = '') {
-        $iniData = array();
+    public function loadFile($fileName = '')
+    {
+        $iniData = [];
         $status = false;  // FIX: initialisieren, sonst Undefined variable wenn Datei nicht existiert
         if (file_exists($fileName) && !empty($fileName) && !is_dir($fileName)) {
             $this->ligaDatum = filemtime($fileName);
@@ -536,22 +557,22 @@ class liga {
                     if (!str_contains(strtolower($sections[1][$y]), 'round') || preg_match('/^D[12]$|^MO$/', trim($parameter[1][$i]))) {
                         // andere Section oder SpieltagParameter
                         $iniData[$sections[1][$y]][trim($parameter[1][$i])] = trim($parameter[2][$i]);
-                    }
-                    else {
+                    } else {
                         // Partie Filtern
                         if (!preg_match('/([a-zA-Z]+)([\d]+)/', trim($parameter[1][$i]), $infoPerPartie)) {
                             continue; // Parameter passt nicht zum erwarteten Format
                         }
                         // $infoPerPartie -> 0 kompletter treffer / 1 Art des Parameters (GA/GB ...) / 2 Nummer der Partie
-                        if (!isset($gameNumber)) $gameNumber = 0;
+                        if (!isset($gameNumber)) {
+                            $gameNumber = 0;
+                        }
                         if ($infoPerPartie[1] == 'TA') {
                             $partieNumber++;
                             $gameNumber = 0;
                         }
                         if (preg_match('/^T[AB]$/', $infoPerPartie[1])) {
                             $iniData[$sections[1][$y]][$partieNumber][$infoPerPartie[1]] = trim($parameter[2][$i]);
-                        }
-                        else {
+                        } else {
                             if ($infoPerPartie[1] == 'GA') {
                                 $gameNumber++;
                                 $iniData[$sections[1][$y]][$partieNumber][$gameNumber]['SpNr'] = $infoPerPartie[2];
@@ -594,16 +615,14 @@ class liga {
                 $endDate = preg_split('/\./', $this->getIniData('D2', $iniData[$roundSektion]));
                 if (count($startDate) != 3 || checkDate($startDate[1], $startDate[0], $startDate[2]) === false) {  // FIX: or → ||
                     $startTime = null;
-                }
-                else {
-                    $startTime = mktime(0, 0, 0, (int) $startDate[1], (int) $startDate[0], (int) $startDate[2]);
+                } else {
+                    $startTime = mktime(0, 0, 0, (int)$startDate[1], (int)$startDate[0], (int)$startDate[2]);
                 }
 
                 if (count($endDate) != 3 || checkDate($endDate[1], $endDate[0], $endDate[2]) === false) {  // FIX: <> → != und or → ||
                     $endTime = null;
-                }
-                else {
-                    $endTime = mktime(0, 0, 0, (int) $endDate[1], (int) $endDate[0], (int) $endDate[2]);
+                } else {
+                    $endTime = mktime(0, 0, 0, (int)$endDate[1], (int)$endDate[0], (int)$endDate[2]);
                 }
 
                 $spieltag = new spieltag($rCounter, $startTime, $endTime);
@@ -617,7 +636,7 @@ class liga {
                         $theim = $this->getIniData('GA', $iniData[$roundSektion][$pCounter], ++$partienNumber);
                         $tgast = $this->getIniData('GB', $iniData[$roundSektion][$pCounter], $partienNumber);
                         $notiz = $this->getIniData('NT', $iniData[$roundSektion][$pCounter], $partienNumber);
-                        $zeit  = $this->getIniData('AT', $iniData[$roundSektion][$pCounter], $partienNumber);
+                        $zeit = $this->getIniData('AT', $iniData[$roundSektion][$pCounter], $partienNumber);
 
                         if (!$spielNr = $this->getIniData('SpNr', $iniData[$roundSektion][$pCounter], $partienNumber)) {
                             $spielNr = strval($pCounter) . strval($partienNumber);
@@ -625,8 +644,7 @@ class liga {
 
                         if ($partienNumber % 2) {
                             $partie = new partie($spielNr, $zeit, $notiz, $heimTeam, $gastTeam, $theim, $tgast);
-                        }
-                        else {
+                        } else {
                             $partie = new partie($spielNr, $zeit, $notiz, $gastTeam, $heimTeam, $theim, $tgast);
                         }
 
@@ -638,8 +656,7 @@ class liga {
                         $partie->setParameter($iniData[$roundSektion][$pCounter][$partienNumber]);
                         $this->addPartie($partie);  // Partien werden zusätzlich zu der Liga hinzugefügt
                         $spieltag->addPartie($partie);
-                    }
-                    while ($partienNumber < $spieltag->getModus());
+                    } while ($partienNumber < $spieltag->getModus());
                 }
                 $this->addSpieltag($spieltag);
                 unset($iniData[$roundSektion]); // weg damit weil bekannt
@@ -653,8 +670,7 @@ class liga {
             if (isset($optionDetails['Name']) && $optionDetails['Name'] != '') {
                 if ($this->name == '') {
                     $this->name = $optionDetails['Name'];
-                }
-                else {
+                } else {
                     $optionDetails['Name'] = $this->name;
                 }
             }
@@ -692,7 +708,8 @@ class liga {
     *                        entspricht lmo_ligen.subdir
     * @return Boolean
     */
-    function loadFromDb($pdo, $fileName = '', $subdir = '') {
+    public function loadFromDb($pdo, $fileName = '', $subdir = '')
+    {
         $status = false;
         if (!($pdo instanceof PDO) || $fileName === '') {
             return $status;
@@ -705,262 +722,266 @@ class liga {
         // analog zu loadFile() bei fehlender Datei einfach false zurück.
         try {
 
-        // Pfadanteil aus $fileName herauslösen, falls vorhanden
-        // (z.B. "archiv/bundesliga.l98" -> subdir="archiv/", file="bundesliga.l98")
-        $file = $fileName;
-        if (str_contains($file, '/')) {
-            $subdir = rtrim(dirname($file), '/') . '/';
-            $file   = basename($file);
-        }
-        $subdir = ($subdir === '' || $subdir === '/') ? '' : $subdir;
+            // Pfadanteil aus $fileName herauslösen, falls vorhanden
+            // (z.B. "archiv/bundesliga.l98" -> subdir="archiv/", file="bundesliga.l98")
+            $file = $fileName;
+            if (str_contains($file, '/')) {
+                $subdir = rtrim(dirname($file), '/') . '/';
+                $file = basename($file);
+            }
+            $subdir = ($subdir === '' || $subdir === '/') ? '' : $subdir;
 
-        // ── Liga-Datensatz laden ─────────────────────────────────────────────
-        $stmtLiga = $pdo->prepare("
+            // ── Liga-Datensatz laden ─────────────────────────────────────────────
+            $stmtLiga = $pdo->prepare('
             SELECT * FROM lmo_ligen
             WHERE subdir = ? AND file_name = ?
             LIMIT 1
-        ");
-        $stmtLiga->execute([$subdir, $file]);
-        $row = $stmtLiga->fetch();
-
-        if (!$row && $subdir !== '') {
-            // Fallback: ohne Subdir versuchen (wie lmo-openfile-db.php)
-            $stmtLiga->execute(['', $file]);
+        ');
+            $stmtLiga->execute([$subdir, $file]);
             $row = $stmtLiga->fetch();
-        }
 
-        if (!$row) {
-            return $status;
-        }
+            if (!$row && $subdir !== '') {
+                // Fallback: ohne Subdir versuchen (wie lmo-openfile-db.php)
+                $stmtLiga->execute(['', $file]);
+                $row = $stmtLiga->fetch();
+            }
 
-        $ligaId = (int) $row['id'];
-        $lmtype = (int) $row['lmtype'];
+            if (!$row) {
+                return $status;
+            }
 
-        // ── Teams laden ──────────────────────────────────────────────────────
-        $stmtTeams = $pdo->prepare("
+            $ligaId = (int)$row['id'];
+            $lmtype = (int)$row['lmtype'];
+
+            // ── Teams laden ──────────────────────────────────────────────────────
+            $stmtTeams = $pdo->prepare('
             SELECT * FROM lmo_teams WHERE liga_id = ? ORDER BY team_nr
-        ");
-        $stmtTeams->execute([$ligaId]);
-        $teamRows = $stmtTeams->fetchAll();
+        ');
+            $stmtTeams->execute([$ligaId]);
+            $teamRows = $stmtTeams->fetchAll();
 
-        // Map team_nr -> team-Objekt (für Verweise aus den Spielen)
-        $teamsByNr = array();
-        foreach ($teamRows as $t) {
-            $nr     = (int) $t['team_nr'];
-            $name   = stripslashes($t['name_lang']);
-            $kurz   = $t['name_kurz']   ?: '';
-            $mittel = $t['name_mittel'] ?: '';
+            // Map team_nr -> team-Objekt (für Verweise aus den Spielen)
+            $teamsByNr = [];
+            foreach ($teamRows as $t) {
+                $nr = (int)$t['team_nr'];
+                $name = stripslashes($t['name_lang']);
+                $kurz = $t['name_kurz'] ?: '';
+                $mittel = $t['name_mittel'] ?: '';
 
-            $team = new team($name, $kurz, $nr, $mittel);
+                $team = new team($name, $kurz, $nr, $mittel);
 
-            // Strafen / Bonuswerte aus lmo_teams (nur Liga-Modus relevant,
-            // siehe optionsSektion-Defaults SP/SM/TOR1/TOR2/STDA)
-            $team->keyValues['SP']   = (int) ($t['strafp'] ?? 0);
-            $team->keyValues['SM']   = (int) ($t['strafm'] ?? 0);
-            $team->keyValues['TOR1'] = (int) ($t['torkorrektur1'] ?? 0);
-            $team->keyValues['TOR2'] = (int) ($t['torkorrektur2'] ?? 0);
-            $team->keyValues['STDA'] = $t['strafdat'] ?: 0;
-            $team->keyValues['URL']  = $t['url']      ?: '';
-            $team->keyValues['NOT']  = $t['notiz']    ?: '';
+                // Strafen / Bonuswerte aus lmo_teams (nur Liga-Modus relevant,
+                // siehe optionsSektion-Defaults SP/SM/TOR1/TOR2/STDA)
+                $team->keyValues['SP'] = (int)($t['strafp'] ?? 0);
+                $team->keyValues['SM'] = (int)($t['strafm'] ?? 0);
+                $team->keyValues['TOR1'] = (int)($t['torkorrektur1'] ?? 0);
+                $team->keyValues['TOR2'] = (int)($t['torkorrektur2'] ?? 0);
+                $team->keyValues['STDA'] = $t['strafdat'] ?: 0;
+                $team->keyValues['URL'] = $t['url'] ?: '';
+                $team->keyValues['NOT'] = $t['notiz'] ?: '';
 
-            $this->addTeam($team);
-            $teamsByNr[$nr] = &$this->teams[count($this->teams) - 1];
-        }
+                $this->addTeam($team);
+                $teamsByNr[$nr] = &$this->teams[count($this->teams) - 1];
+            }
 
-        // ── Spieltage + Spiele laden ─────────────────────────────────────────
-        $stmtRunden = $pdo->prepare("
+            // ── Spieltage + Spiele laden ─────────────────────────────────────────
+            $stmtRunden = $pdo->prepare('
             SELECT * FROM lmo_spieltage WHERE liga_id = ? ORDER BY runde_nr
-        ");
-        $stmtRunden->execute([$ligaId]);
-        $rundenRows = $stmtRunden->fetchAll();
+        ');
+            $stmtRunden->execute([$ligaId]);
+            $rundenRows = $stmtRunden->fetchAll();
 
-        if ($lmtype == 0) {
-            $stmtSpiele = $pdo->prepare("
-                SELECT * FROM lmo_spiele WHERE liga_id = ? ORDER BY runde_nr, match_nr
-            ");
-        } else {
-            $stmtSpiele = $pdo->prepare("
-                SELECT * FROM lmo_spiele WHERE liga_id = ? ORDER BY runde_nr, match_nr, ko_slot
-            ");
-        }
-        $stmtSpiele->execute([$ligaId]);
-        $spielRows = $stmtSpiele->fetchAll();
-
-        // Spiele nach runde_nr gruppieren
-        $spieleByRunde = array();
-        foreach ($spielRows as $sp) {
-            $spieleByRunde[(int) $sp['runde_nr']][] = $sp;
-        }
-
-        foreach ($rundenRows as $rd) {
-            $rundeNr = (int) $rd['runde_nr'];
-
-            // Start-/Endzeit der Runde als Unix-Timestamp (analog loadFile():
-            // dort wird D1/D2 im Format dd.mm.yyyy erwartet; in der DB liegen
-            // datum1/datum2 als Y-m-d vor)
-            $startTime = null;
-            if (!empty($rd['datum1'])) {
-                $ts = strtotime($rd['datum1']);
-                if ($ts !== false) $startTime = $ts;
-            }
-            $endTime = null;
-            if (!empty($rd['datum2'])) {
-                $ts = strtotime($rd['datum2']);
-                if ($ts !== false) $endTime = $ts;
-            }
-
-            $spieltag = new spieltag($rundeNr, $startTime, $endTime);
             if ($lmtype == 0) {
-                $spieltag->setModus(0);
+                $stmtSpiele = $pdo->prepare('
+                SELECT * FROM lmo_spiele WHERE liga_id = ? ORDER BY runde_nr, match_nr
+            ');
             } else {
-                $spieltag->setModus((int) ($rd['modus'] ?? 1));
+                $stmtSpiele = $pdo->prepare('
+                SELECT * FROM lmo_spiele WHERE liga_id = ? ORDER BY runde_nr, match_nr, ko_slot
+            ');
+            }
+            $stmtSpiele->execute([$ligaId]);
+            $spielRows = $stmtSpiele->fetchAll();
+
+            // Spiele nach runde_nr gruppieren
+            $spieleByRunde = [];
+            foreach ($spielRows as $sp) {
+                $spieleByRunde[(int)$sp['runde_nr']][] = $sp;
             }
 
-            foreach ($spieleByRunde[$rundeNr] ?? array() as $sp) {
-                $heimNr = (int) $sp['team_a'];
-                $gastNr = (int) $sp['team_b'];
+            foreach ($rundenRows as $rd) {
+                $rundeNr = (int)$rd['runde_nr'];
 
-                // KO-Modus: Spiele mit team_a=NULL und team_b=NULL sind noch nicht
-                // vergeben (z.B. Halbfinale bevor die Paarungen feststehen).
-                // Diese Platzhalter-Slots werden übersprungen, analog zum
-                // loadFile()-Verhalten (dort werden TA=0/TB=0-Zeilen nie als
-                // Partie angelegt).
-                if ($lmtype !== 0 && $heimNr === 0 && $gastNr === 0) {
-                    continue;
+                // Start-/Endzeit der Runde als Unix-Timestamp (analog loadFile():
+                // dort wird D1/D2 im Format dd.mm.yyyy erwartet; in der DB liegen
+                // datum1/datum2 als Y-m-d vor)
+                $startTime = null;
+                if (!empty($rd['datum1'])) {
+                    $ts = strtotime($rd['datum1']);
+                    if ($ts !== false) {
+                        $startTime = $ts;
+                    }
+                }
+                $endTime = null;
+                if (!empty($rd['datum2'])) {
+                    $ts = strtotime($rd['datum2']);
+                    if ($ts !== false) {
+                        $endTime = $ts;
+                    }
                 }
 
-                // FIX: teamForNumber() liefert null, falls Team-Nr unbekannt
-                // (z.B. noch nicht angelegte Slots) - dann Platzhalter-Team
-                // verwenden, damit $partie->heim/->gast nie null sind und
-                // spätere ->name/->nr Zugriffe nicht mit
-                // "Attempt to read property on null" abbrechen.
-                if (isset($teamsByNr[$heimNr])) {
-                    $heimTeam = &$teamsByNr[$heimNr];
+                $spieltag = new spieltag($rundeNr, $startTime, $endTime);
+                if ($lmtype == 0) {
+                    $spieltag->setModus(0);
                 } else {
-                    $placeholder = new team('', '', $heimNr, '');
-                    $heimTeam = $placeholder;
+                    $spieltag->setModus((int)($rd['modus'] ?? 1));
                 }
-                if (isset($teamsByNr[$gastNr])) {
-                    $gastTeam = &$teamsByNr[$gastNr];
+
+                foreach ($spieleByRunde[$rundeNr] ?? [] as $sp) {
+                    $heimNr = (int)$sp['team_a'];
+                    $gastNr = (int)$sp['team_b'];
+
+                    // KO-Modus: Spiele mit team_a=NULL und team_b=NULL sind noch nicht
+                    // vergeben (z.B. Halbfinale bevor die Paarungen feststehen).
+                    // Diese Platzhalter-Slots werden übersprungen, analog zum
+                    // loadFile()-Verhalten (dort werden TA=0/TB=0-Zeilen nie als
+                    // Partie angelegt).
+                    if ($lmtype !== 0 && $heimNr === 0 && $gastNr === 0) {
+                        continue;
+                    }
+
+                    // FIX: teamForNumber() liefert null, falls Team-Nr unbekannt
+                    // (z.B. noch nicht angelegte Slots) - dann Platzhalter-Team
+                    // verwenden, damit $partie->heim/->gast nie null sind und
+                    // spätere ->name/->nr Zugriffe nicht mit
+                    // "Attempt to read property on null" abbrechen.
+                    if (isset($teamsByNr[$heimNr])) {
+                        $heimTeam = &$teamsByNr[$heimNr];
+                    } else {
+                        $placeholder = new team('', '', $heimNr, '');
+                        $heimTeam = $placeholder;
+                    }
+                    if (isset($teamsByNr[$gastNr])) {
+                        $gastTeam = &$teamsByNr[$gastNr];
+                    } else {
+                        $placeholder = new team('', '', $gastNr, '');
+                        $gastTeam = $placeholder;
+                    }
+
+                    $goalA = $sp['goal_a'];
+                    $goalB = $sp['goal_b'];
+                    $hTore = ($goalA === '_' || $goalA === '' || $goalA === null) ? -1 : (int)$goalA;
+                    $gTore = ($goalB === '_' || $goalB === '' || $goalB === null) ? -1 : (int)$goalB;
+
+                    $zeit = !empty($sp['anstoss_ts']) ? (int)$sp['anstoss_ts'] : null;
+                    $notiz = $sp['notiz'] ?? '';
+
+                    $spielNr = (int)$sp['match_nr'];
+
+                    $partie = new partie($spielNr, $zeit, $notiz, $heimTeam, $gastTeam, $hTore, $gTore);
+                    $partie->setreportUrl($sp['bericht'] ?? '');
+
+                    // 'spez' in lmo_spiele kodiert n.V./i.E. (1/2), entspricht
+                    // SP im .l98-Format -> spielEnde
+                    $spezVal = (int)($sp['spez'] ?? 0);
+                    $partie->setSpielEnde($spezVal);
+
+                    $this->addPartie($partie);
+                    $spieltag->addPartie($partie);
+                }
+
+                $this->addSpieltag($spieltag);
+            }
+
+            // ── Options-Sektion aufbauen ──────────────────────────────────────────
+            // Mapping lmo_ligen-Spalten -> .l98-Options-Keys (siehe optionsSektion
+            // Default-keyValues sowie lmo-openfile-db.php für dieselbe Zuordnung)
+            $optionDetails = [
+                'Title' => "<acronym title='Liga Manager Online " . (defined('CLASSLIB_VERSION') ? CLASSLIB_VERSION : '') . "'>LMO</acronym>",
+                'Name' => $row['liga_name'],
+                'Type' => $lmtype,
+                'Teams' => (int)$row['anz_teams'],
+                'Rounds' => count($rundenRows),
+                'Matches' => $this->spieltageMaxPartien(),
+                'Actual' => (int)$row['aktueller_st'],
+                'Kegel' => (int)$row['kegel'],
+                'HandS' => (int)$row['hands'],
+                'PointsForWin' => (int)$row['pns'],
+                'PointsForDraw' => (int)$row['pnu'],
+                'PointsForLost' => (int)$row['pnn'],
+                'XtraS' => (int)$row['pxs'],
+                'XtraU' => (int)$row['pxu'],
+                'XtraV' => (int)$row['pxn'],
+                'SpezS' => (int)$row['pps'],
+                'SpezU' => (int)$row['ppu'],
+                'SpezV' => (int)$row['ppn'],
+                'Spez' => (int)$row['spez'],
+                'HideDraw' => (int)$row['hidr'],
+                'OnRun' => (int)$row['onrun'],
+                'MinusPoints' => (int)$row['minus'],
+                'Direct' => (int)$row['direkt'],
+                'Champ' => (int)$row['champ'],
+                'CL' => (int)$row['anzcl'],
+                'CK' => (int)$row['anzck'],
+                'UC' => (int)$row['anzuc'],
+                'AR' => (int)$row['anzar'],
+                'AB' => (int)$row['anzab'],
+                'namePkt' => $row['name_pkt'] ?: 'Pkt.',
+                'nameTor' => $row['name_tor'] ?: 'Tore',
+                'DatC' => (int)$row['datc'],
+                'DatS' => (int)$row['dats'],
+                'DatM' => (int)$row['datm'],
+                'DatF' => $row['datf'] ?: 'd.m.Y H:i',
+                'urlT' => (int)$row['urlt'],
+                'urlB' => (int)$row['urlb'],
+                'Graph' => (int)$row['kurve'],
+                'Kreuz' => (int)$row['kreuz'],
+                'Tabelle' => (int)$row['tabelle'],
+                'Ligastats' => (int)$row['ligastats'],
+                'Plan' => (int)$row['plan'],
+                'Ergebnis' => (int)$row['ergebnis'],
+                'mittore' => (int)$row['mittore'],
+                'favTeam' => (int)$row['favteam'],
+                'selTeam' => (int)$row['selteam'],
+                'kurve1' => (int)$row['stat1'],
+                'kurve2' => (int)$row['stat2'],
+                'tableHinRueck' => (int)$row['ein_hinrueck'],
+                'tableHeimAusw' => (int)$row['ein_heimausw'],
+                'ticker' => (int)$row['nticker'],
+                'klfin' => (int)($row['klfin'] ?? 0),
+                'playdown' => (int)($row['playdown'] ?? 0),
+                'playoffmode' => (int)($row['playoffmode'] ?? 0),
+                'goalfaktor' => (float)($row['goalfaktor'] ?: 1),
+                'pointsfaktor' => (float)($row['pointsfaktor'] ?: 1),
+                'enableGameSort' => (int)($row['enablegamesort'] ?? 1),
+            ];
+
+            // Liganame setzen (analog loadFile())
+            if (isset($optionDetails['Name']) && $optionDetails['Name'] != '') {
+                if ($this->name == '') {
+                    $this->name = $optionDetails['Name'];
                 } else {
-                    $placeholder = new team('', '', $gastNr, '');
-                    $gastTeam = $placeholder;
+                    $optionDetails['Name'] = $this->name;
                 }
-
-                $goalA = $sp['goal_a'];
-                $goalB = $sp['goal_b'];
-                $hTore = ($goalA === '_' || $goalA === '' || $goalA === null) ? -1 : (int) $goalA;
-                $gTore = ($goalB === '_' || $goalB === '' || $goalB === null) ? -1 : (int) $goalB;
-
-                $zeit = !empty($sp['anstoss_ts']) ? (int) $sp['anstoss_ts'] : null;
-                $notiz = $sp['notiz'] ?? '';
-
-                $spielNr = (int) $sp['match_nr'];
-
-                $partie = new partie($spielNr, $zeit, $notiz, $heimTeam, $gastTeam, $hTore, $gTore);
-                $partie->setreportUrl($sp['bericht'] ?? '');
-
-                // 'spez' in lmo_spiele kodiert n.V./i.E. (1/2), entspricht
-                // SP im .l98-Format -> spielEnde
-                $spezVal = (int) ($sp['spez'] ?? 0);
-                $partie->setSpielEnde($spezVal);
-
-                $this->addPartie($partie);
-                $spieltag->addPartie($partie);
             }
 
-            $this->addSpieltag($spieltag);
-        }
-
-        // ── Options-Sektion aufbauen ──────────────────────────────────────────
-        // Mapping lmo_ligen-Spalten -> .l98-Options-Keys (siehe optionsSektion
-        // Default-keyValues sowie lmo-openfile-db.php für dieselbe Zuordnung)
-        $optionDetails = array(
-            'Title'         => "<acronym title='Liga Manager Online " . (defined('CLASSLIB_VERSION') ? CLASSLIB_VERSION : '') . "'>LMO</acronym>",
-            'Name'          => $row['liga_name'],
-            'Type'          => $lmtype,
-            'Teams'         => (int) $row['anz_teams'],
-            'Rounds'        => count($rundenRows),
-            'Matches'       => $this->spieltageMaxPartien(),
-            'Actual'        => (int) $row['aktueller_st'],
-            'Kegel'         => (int) $row['kegel'],
-            'HandS'         => (int) $row['hands'],
-            'PointsForWin'  => (int) $row['pns'],
-            'PointsForDraw' => (int) $row['pnu'],
-            'PointsForLost' => (int) $row['pnn'],
-            'XtraS'         => (int) $row['pxs'],
-            'XtraU'         => (int) $row['pxu'],
-            'XtraV'         => (int) $row['pxn'],
-            'SpezS'         => (int) $row['pps'],
-            'SpezU'         => (int) $row['ppu'],
-            'SpezV'         => (int) $row['ppn'],
-            'Spez'          => (int) $row['spez'],
-            'HideDraw'      => (int) $row['hidr'],
-            'OnRun'         => (int) $row['onrun'],
-            'MinusPoints'   => (int) $row['minus'],
-            'Direct'        => (int) $row['direkt'],
-            'Champ'         => (int) $row['champ'],
-            'CL'            => (int) $row['anzcl'],
-            'CK'            => (int) $row['anzck'],
-            'UC'            => (int) $row['anzuc'],
-            'AR'            => (int) $row['anzar'],
-            'AB'            => (int) $row['anzab'],
-            'namePkt'       => $row['name_pkt'] ?: 'Pkt.',
-            'nameTor'       => $row['name_tor'] ?: 'Tore',
-            'DatC'          => (int) $row['datc'],
-            'DatS'          => (int) $row['dats'],
-            'DatM'          => (int) $row['datm'],
-            'DatF'          => $row['datf'] ?: 'd.m.Y H:i',
-            'urlT'          => (int) $row['urlt'],
-            'urlB'          => (int) $row['urlb'],
-            'Graph'         => (int) $row['kurve'],
-            'Kreuz'         => (int) $row['kreuz'],
-            'Tabelle'       => (int) $row['tabelle'],
-            'Ligastats'     => (int) $row['ligastats'],
-            'Plan'          => (int) $row['plan'],
-            'Ergebnis'      => (int) $row['ergebnis'],
-            'mittore'       => (int) $row['mittore'],
-            'favTeam'       => (int) $row['favteam'],
-            'selTeam'       => (int) $row['selteam'],
-            'kurve1'        => (int) $row['stat1'],
-            'kurve2'        => (int) $row['stat2'],
-            'tableHinRueck' => (int) $row['ein_hinrueck'],
-            'tableHeimAusw' => (int) $row['ein_heimausw'],
-            'ticker'        => (int) $row['nticker'],
-            'klfin'         => (int) ($row['klfin']      ?? 0),
-            'playdown'      => (int) ($row['playdown']   ?? 0),
-            'playoffmode'   => (int) ($row['playoffmode'] ?? 0),
-            'goalfaktor'    => (float) ($row['goalfaktor']   ?: 1),
-            'pointsfaktor'  => (float) ($row['pointsfaktor'] ?: 1),
-            'enableGameSort'=> (int) ($row['enablegamesort'] ?? 1),
-        );
-
-        // Liganame setzen (analog loadFile())
-        if (isset($optionDetails['Name']) && $optionDetails['Name'] != '') {
-            if ($this->name == '') {
-                $this->name = $optionDetails['Name'];
-            } else {
-                $optionDetails['Name'] = $this->name;
+            $options = new optionsSektion($this, $optionDetails);
+            foreach ($optionDetails as $detailsKey => $detailsValue) {
+                if (isset($detailsKey) && $detailsKey != '') {
+                    $options->keyValues[$detailsKey] = $detailsValue;
+                }
             }
-        }
+            $this->options = &$options;
 
-        $options = new optionsSektion($this, $optionDetails);
-        foreach ($optionDetails as $detailsKey => $detailsValue) {
-            if (isset($detailsKey) && $detailsKey != '') {
-                $options->keyValues[$detailsKey] = $detailsValue;
-            }
-        }
-        $this->options = &$options;
+            // ── Sonstige Metadaten ────────────────────────────────────────────────
+            $this->kurz = $row['file_name'] ?? '';
+            $this->fileName = $fileName;
+            // ligaDatum entspricht filemtime() bei loadFile(); hier: Zeitpunkt
+            // der letzten DB-Aktualisierung
+            $this->ligaDatum = !empty($row['updated_at']) ? strtotime($row['updated_at']) : time();
 
-        // ── Sonstige Metadaten ────────────────────────────────────────────────
-        $this->kurz     = $row['file_name'] ?? '';
-        $this->fileName = $fileName;
-        // ligaDatum entspricht filemtime() bei loadFile(); hier: Zeitpunkt
-        // der letzten DB-Aktualisierung
-        $this->ligaDatum = !empty($row['updated_at']) ? strtotime($row['updated_at']) : time();
-
-        $status = true;
-        return $status;
+            $status = true;
+            return $status;
 
         } catch (\Throwable $e) {
             // Sowohl PDOExceptions (DB-Fehler) als auch sonstige Fehler
@@ -983,7 +1004,8 @@ class liga {
     * @access private
     * @return integer
     */
-    function spieltageMaxPartien() {
+    public function spieltageMaxPartien()
+    {
         $max = 0;
         foreach ($this->spieltage as $spieltag) {
             if ($spieltag->partienCount() > $max) {
@@ -1005,13 +1027,14 @@ class liga {
     * @param integer deleteEmptyRounds
     * @return boolean Ergebniss des Speicherns
     */
-    function writeFile($fileName = '', $message = 0, $deleteEmptyRounds = 0) {
+    public function writeFile($fileName = '', $message = 0, $deleteEmptyRounds = 0)
+    {
 
         // if there is a need for any update functionality for special addons,
         // you should define them inside of the function updateAddons() located
         // in update_addons.php file.
         include PATH_TO_ADDONDIR . '/classlib/update_addons.php';
-        $iniData = array(); // Inhalt des LigaFiles
+        $iniData = []; // Inhalt des LigaFiles
         $aktSpTag = 1;
         $maxSp = 0;
         // Key "Matches" bestimmen
@@ -1067,10 +1090,11 @@ class liga {
                     $iniData['Round' . $roundCount]['TA' . $teamCounter] = $spieltag->partien[$pCounter]->heim->nr;
                     $iniData['Round' . $roundCount]['TB' . $teamCounter] = $spieltag->partien[$pCounter]->gast->nr;
                     do {
-                        if ($spieltag->getModus() > 0)
+                        if ($spieltag->getModus() > 0) {
                             $partienNumber = strval($teamCounter) . strval(++$partienCounter);
-                        else
+                        } else {
                             $partienNumber = $teamCounter;
+                        }
                         $iniData['Round' . $roundCount]['GA' . $partienNumber] = $spieltag->partien[$pCounter]->hTore;
                         $iniData['Round' . $roundCount]['GB' . $partienNumber] = $spieltag->partien[$pCounter]->gTore;
                         $iniData['Round' . $roundCount]['SP' . $partienNumber] = $spieltag->partien[$pCounter]->getSpielEnde();
@@ -1080,8 +1104,9 @@ class liga {
                         foreach ($spieltag->partien[$pCounter]->getParameter() as $otherKey => $otherParameter) {
                             $iniData['Round' . $roundCount][$otherKey . $partienNumber] = $otherParameter;
                         }
-                        if ($pCounter > 10000)
+                        if ($pCounter > 10000) {
                             die('Script Error');
+                        }
                         $pCounter++;
                     }
                     // while (is_object($spieltag->partien[$pCounter]) && $partienCounter < $spieltag->getModus() && $pCounter<$spieltag->partienCount());
@@ -1095,8 +1120,7 @@ class liga {
         if (!$datei) {
             echo '<font color="#ff0000">Cannot open file for writing (write permissions?) CLASS liga function writeFile()</font>';
             return false;
-        }
-        elseif ($datei && $message == 1) {
+        } elseif ($datei && $message == 1) {
             echo '<font color="#008800">Writing File $fileName (".$datei.")</font>';
         }
         flock($datei, LOCK_EX);
@@ -1122,7 +1146,8 @@ class liga {
     * @access private
     * @param boolean htmlContent
     */
-    function fileContent($htmlContent = false) {
+    public function fileContent($htmlContent = false)
+    {
         $lf = ($htmlContent == false) ? '\n' : '<BR>';
         // Key "Matches" bestimmen
         foreach ($this->spieltage as $spieltag) {
@@ -1191,7 +1216,8 @@ class liga {
     * @package classLib
     * @access privat
     */
-    function strafen(&$team, $spTag) {
+    public function strafen(&$team, $spTag)
+    {
         $stda = isset($team['team']->keyValues['STDA']) ? $team['team']->keyValues['STDA'] : 0;
         if ($stda == $spTag || ($stda == 0 && $spTag == 1)) {
             $team['pPkt'] -= isset($team['team']->keyValues['SP']) ? $team['team']->keyValues['SP'] : 0;
@@ -1228,7 +1254,8 @@ class liga {
     * @param boolean possp wenn true wird für jeden Spieltag die Position bestimmt (Statistik)
     * @return array Tabelle des Angegebenen Spieltages
     */
-    function calcTable($spTag = 1, $tableArt = 'all', $possp = false) {
+    public function calcTable($spTag = 1, $tableArt = 'all', $possp = false)
+    {
 
         $actual = $this->options->keyValues['Actual'];
         $spTag = ($spTag < 1) ? $actual : $spTag;
@@ -1236,9 +1263,9 @@ class liga {
 
         // FIX (PHP 8): vorinitialisieren, sonst "Undefined variable"
         // falls $this->teams leer ist.
-        $tableArray = array();
+        $tableArray = [];
         foreach ($this->teams as $team) {
-            $tableArray[] = array(
+            $tableArray[] = [
               'pos' => -1,
               'team' => $team,
               'spiele' => 0,
@@ -1250,8 +1277,8 @@ class liga {
               'dTor' => 0,
               'pPkt' => 0,
               'mPkt' => 0,
-              'possp' => array()
-            );
+              'possp' => []
+            ];
         }
         foreach ($this->spieltage as $spieltag) {
             if ($spieltag->getModus() > 0) {
@@ -1260,17 +1287,14 @@ class liga {
             if ($tableArt == 'hin' && ($spieltag->nr > ($this->spieltageCount() / 2))) {
                 if ($spTagCount < $spTag) {
                     $spTagCount++;
-                }
-                else {
+                } else {
                     break;
                 }
                 continue;
-            }
-            elseif ($tableArt == 'rueck' && ($spieltag->nr <= $this->spieltageCount() / 2)) {
+            } elseif ($tableArt == 'rueck' && ($spieltag->nr <= $this->spieltageCount() / 2)) {
                 if ($spTagCount < $spTag) {
                     $spTagCount++;
-                }
-                else {
+                } else {
                     break;
                 }
                 continue;
@@ -1283,13 +1307,11 @@ class liga {
                     $pointsForWin = $this->options->keyValues['XtraS'];
                     $pointsForDraw = $this->options->keyValues['XtraU'];
                     $pointsForLost = $this->options->keyValues['XtraV'];
-                }
-                elseif ($partie->spielEnde == 1) {  // Nach Elfmetersch. oder nach Penalty
+                } elseif ($partie->spielEnde == 1) {  // Nach Elfmetersch. oder nach Penalty
                     $pointsForWin = $this->options->keyValues['SpezS'];
                     $pointsForDraw = $this->options->keyValues['SpezU'];
                     $pointsForLost = $this->options->keyValues['SpezV'];
-                }
-                else {  // normales Spielende
+                } else {  // normales Spielende
                     $pointsForWin = $this->options->keyValues['PointsForWin'];
                     $pointsForDraw = $this->options->keyValues['PointsForDraw'];
                     $pointsForLost = $this->options->keyValues['PointsForLost'];
@@ -1334,8 +1356,7 @@ class liga {
                             $tableArray[$gastCount]['u']++;
                             $tableArray[$gastCount]['spiele']++;
                         }
-                    }
-                    elseif ($partie->gTore > $partie->hTore) {  // Gast hat gewonnen
+                    } elseif ($partie->gTore > $partie->hTore) {  // Gast hat gewonnen
                         if ($tableArt != 'gast') {
                             $tableArray[$heimCount]['mPkt'] += $pointsForWin;
                             $tableArray[$heimCount]['pPkt'] += $pointsForLost;
@@ -1348,8 +1369,7 @@ class liga {
                             $tableArray[$gastCount]['s']++;
                             $tableArray[$gastCount]['spiele']++;
                         }
-                    }
-                    elseif ($partie->gTore < $partie->hTore) {  // Heim hat gewonnen
+                    } elseif ($partie->gTore < $partie->hTore) {  // Heim hat gewonnen
                         if ($tableArt != 'gast') {
                             $tableArray[$heimCount]['pPkt'] += $pointsForWin;
                             $tableArray[$heimCount]['mPkt'] += $pointsForLost;
@@ -1362,13 +1382,11 @@ class liga {
                             $tableArray[$gastCount]['n']++;
                             $tableArray[$gastCount]['spiele']++;
                         }
-                    }
-                    else {  // nur während der Entwicklung
+                    } else {  // nur während der Entwicklung
                         echo 'Fehler in Punkteermittlung (Normales Ergebnis)';
                         echo $partie->showDetailsHTML();
                     }
-                }
-                elseif ($partie->hTore == -2) {  // O:0 Tore Heim gewinnt
+                } elseif ($partie->hTore == -2) {  // O:0 Tore Heim gewinnt
                     if ($tableArt != 'gast') {
                         $tableArray[$heimCount]['pPkt'] += $pointsForWin;
                         $tableArray[$heimCount]['mPkt'] += $pointsForLost;
@@ -1381,8 +1399,7 @@ class liga {
                         $tableArray[$gastCount]['n']++;
                         $tableArray[$gastCount]['spiele']++;
                     }
-                }
-                elseif ($partie->gTore == -2) {  // O:0 Tore Gast gewinnt
+                } elseif ($partie->gTore == -2) {  // O:0 Tore Gast gewinnt
                     if ($tableArt != 'gast') {
                         $tableArray[$heimCount]['mPkt'] += $pointsForWin;
                         $tableArray[$heimCount]['pPkt'] += $pointsForLost;
@@ -1409,8 +1426,7 @@ class liga {
             }
             if ($spTagCount < $spTag) {
                 $spTagCount++;
-            }
-            else {
+            } else {
                 break;
             }
         } // foreach Spieltage
@@ -1431,7 +1447,8 @@ class liga {
     * @param array tableArray Die zu sortierende Tabelle
     * @return array
     */
-    function sortTable($tableArray) {
+    public function sortTable($tableArray)
+    {
         foreach ($tableArray as $table) {
             $sort_pPkt[] = $table['pPkt'];
             $sort_mPkt[] = $this->options->keyValues['MinusPoints'] == 2 ? $table['mPkt'] : 0;
@@ -1442,20 +1459,18 @@ class liga {
         // ASC = auf-, DESC = absteigend
         if ($this->options->keyValues['Kegel'] == 1) {  // Sortierung Punkte,erzielte Tore
             array_multisort($sort_pPkt, SORT_DESC, $sort_mPkt, SORT_ASC, $sort_pTor, SORT_DESC, $sort_dTor, SORT_DESC, $tableArray, SORT_DESC);
-        }
-        else {  // Sortierung PlusPkt,Tordiff
+        } else {  // Sortierung PlusPkt,Tordiff
             array_multisort($sort_pPkt, SORT_DESC, $sort_mPkt, SORT_ASC, $sort_dTor, SORT_DESC, $sort_pTor, SORT_DESC, $sort_mTor, SORT_ASC, $tableArray, SORT_DESC);
         }
         // BEGIN Direkter Vergleich
         if ($this->options->keyValues['Direct'] == 1) {
-            $subteams = array();
+            $subteams = [];
             $pPkt = 0;
             $mPkt = 0;
             for ($abc = 0; $abc < count($tableArray); $abc++) {
                 if ($pPkt == $tableArray[$abc]['pPkt'] && $mPkt == $tableArray[$abc]['mPkt']) {
                     $subteams[$tableArray[$abc]['team']->nr] = $tableArray[$abc]['team'];
-                }
-                else {
+                } else {
                     if (count($subteams) > 1) {
                         $tmp_table = $this->calcTableforTeams($subteams);
                         $tmp_tablearray = $tableArray;
@@ -1468,7 +1483,7 @@ class liga {
                             }
                         }
                     } // END if (count($subteams)>1)
-                    $subteams = array();
+                    $subteams = [];
                     $pPkt = $tableArray[$abc]['pPkt'];
                     $mPkt = $tableArray[$abc]['mPkt'];
                     $subteams[$tableArray[$abc]['team']->nr] = $tableArray[$abc]['team'];
@@ -1488,13 +1503,14 @@ class liga {
     * @param array subteams Alle Teams die Miteinander verglichen werden sollen
     * @return array
     */
-    function calcTableforTeams($subteams) {
+    public function calcTableforTeams($subteams)
+    {
         $spTagCount = 1;
         // FIX (PHP 8): vorinitialisieren, sonst "Undefined variable"
         // falls $subteams leer ist.
-        $tableArray = array();
+        $tableArray = [];
         foreach ($subteams as $team) {
-            $tableArray[] = array(
+            $tableArray[] = [
               'pos' => -1,
               'team' => $team,
               'spiele' => 0,
@@ -1503,7 +1519,7 @@ class liga {
               'dTor' => 0,
               'pPkt' => 0,
               'mPkt' => 0
-            );
+            ];
         }
         foreach ($this->spieltage as $spieltag) {
             foreach ($spieltag->partien as $partie) {
@@ -1511,13 +1527,11 @@ class liga {
                     $pointsForWin = $this->options->keyValues['XtraS'];
                     $pointsForDraw = $this->options->keyValues['XtraU'];
                     $pointsForLost = $this->options->keyValues['XtraV'];
-                }
-                elseif ($partie->spielEnde == 1) {  // Nach Elfmetersch. oder nach Penalty
+                } elseif ($partie->spielEnde == 1) {  // Nach Elfmetersch. oder nach Penalty
                     $pointsForWin = $this->options->keyValues['SpezS'];
                     $pointsForDraw = $this->options->keyValues['SpezU'];
                     $pointsForLost = $this->options->keyValues['SpezV'];
-                }
-                else {  // normales Spielende
+                } else {  // normales Spielende
                     $pointsForWin = $this->options->keyValues['PointsForWin'];
                     $pointsForDraw = $this->options->keyValues['PointsForDraw'];
                     $pointsForLost = $this->options->keyValues['PointsForLost'];
@@ -1525,13 +1539,16 @@ class liga {
                 $heimCount = -1;
                 $gastCount = -1;
                 for ($count = 0; $count < count($tableArray) && ($heimCount == -1 || $gastCount == -1); $count++) {  // Teams der Partie finden
-                    if ($tableArray[$count]['team'] === $partie->heim)
+                    if ($tableArray[$count]['team'] === $partie->heim) {
                         $heimCount = $count;
-                    if ($tableArray[$count]['team'] === $partie->gast)
+                    }
+                    if ($tableArray[$count]['team'] === $partie->gast) {
                         $gastCount = $count;
+                    }
                 }
-                if ($heimCount == -1 OR $gastCount == -1)
+                if ($heimCount == -1 or $gastCount == -1) {
                     continue;
+                }
                 if ($partie->hTore > -1) {
                     // Tore für Heim hinzufügen
                     $tableArray[$heimCount]['pTor'] += $partie->hTore;
@@ -1550,31 +1567,26 @@ class liga {
                         $tableArray[$heimCount]['mPkt'] += $pointsForDraw;
                         $tableArray[$gastCount]['pPkt'] += $pointsForDraw;
                         $tableArray[$gastCount]['mPkt'] += $pointsForDraw;
-                    }
-                    elseif ($partie->gTore > $partie->hTore) {  // Gast hat gewonnen
+                    } elseif ($partie->gTore > $partie->hTore) {  // Gast hat gewonnen
                         $tableArray[$heimCount]['mPkt'] += $pointsForWin;
                         $tableArray[$gastCount]['pPkt'] += $pointsForWin;
                         $tableArray[$heimCount]['pPkt'] += $pointsForLost;
                         $tableArray[$gastCount]['mPkt'] += $pointsForLost;
-                    }
-                    elseif ($partie->gTore < $partie->hTore) {  // Heim hat gewonnen
+                    } elseif ($partie->gTore < $partie->hTore) {  // Heim hat gewonnen
                         $tableArray[$heimCount]['pPkt'] += $pointsForWin;
                         $tableArray[$gastCount]['mPkt'] += $pointsForWin;
                         $tableArray[$heimCount]['mPkt'] += $pointsForLost;
                         $tableArray[$gastCount]['pPkt'] += $pointsForLost;
-                    }
-                    else {  // nur während der Entwicklung
+                    } else {  // nur während der Entwicklung
                         echo 'Fehler in Punkteermittlung (Normales Ergebnis)';
                         echo $partie->showDetailsHTML();
                     }
-                }
-                elseif ($partie->hTore == -2) {  // O:0 Tore Heim gewinnt
+                } elseif ($partie->hTore == -2) {  // O:0 Tore Heim gewinnt
                     $tableArray[$heimCount]['pPkt'] += $pointsForWin;
                     $tableArray[$gastCount]['mPkt'] += $pointsForWin;
                     $tableArray[$heimCount]['mPkt'] += $pointsForLost;
                     $tableArray[$gastCount]['pPkt'] += $pointsForLost;
-                }
-                elseif ($partie->gTore == -2) {  // O:0 Tore Gast gewinnt
+                } elseif ($partie->gTore == -2) {  // O:0 Tore Gast gewinnt
                     $tableArray[$heimCount]['mPkt'] += $pointsForWin;
                     $tableArray[$gastCount]['pPkt'] += $pointsForWin;
                     $tableArray[$heimCount]['mPkt'] += $pointsForLost;
@@ -1597,10 +1609,9 @@ class liga {
     * @param array $tableArray Die zu sortierende Tabelle
     * @return array
     */
-    function sortDirectTable($tableArray) {
+    public function sortDirectTable($tableArray)
+    {
         return liga::sortTable($tableArray);
     }
 
 } // End Class Liga
-
-?>

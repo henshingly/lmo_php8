@@ -3,11 +3,12 @@
   * Funktion für Silent Upgrade Passwörter 15.02.2026
   */
 
-
 // Die Passwort Upgrade Funktion am Anfang der Datei
 function loginAndUpgrade($inputUser, $inputPass, $db_file)
 {
-    if (!file_exists($db_file)) return false;
+    if (!file_exists($db_file)) {
+        return false;
+    }
 
     $lines = file($db_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $bestAlgo = defined('PASSWORD_ARGON2ID') ? PASSWORD_ARGON2ID : PASSWORD_BCRYPT;
@@ -15,10 +16,14 @@ function loginAndUpgrade($inputUser, $inputPass, $db_file)
     $loginSuccess = false;
 
     foreach ($lines as $index => $line) {
-        if (strpos($line, '<?php') !== false) continue; // Schutzzeile überspringen
+        if (strpos($line, '<?php') !== false) {
+            continue;
+        } // Schutzzeile überspringen
 
         $fields = explode('|', $line);
-        if (count($fields) < 2) continue;
+        if (count($fields) < 2) {
+            continue;
+        }
 
         $storedUser = $fields[0];
         $storedHash = $fields[1];
@@ -49,10 +54,18 @@ function loginAndUpgrade($inputUser, $inputPass, $db_file)
   */
 
 // Bestehende Session-Initialisierung
-if (!isset($_SESSION['lmousername'])) { $_SESSION['lmousername'] = ''; }
-if (!isset($_SESSION['lmouserpass'])) { $_SESSION['lmouserpass'] = ''; }
-if (!isset($_SESSION['lmouserfile'])) { $_SESSION['lmouserfile'] = ''; }
-if (!isset($_SESSION['lmouserokerweitert'])) { $_SESSION['lmouserokerweitert'] = 0; }
+if (!isset($_SESSION['lmousername'])) {
+    $_SESSION['lmousername'] = '';
+}
+if (!isset($_SESSION['lmouserpass'])) {
+    $_SESSION['lmouserpass'] = '';
+}
+if (!isset($_SESSION['lmouserfile'])) {
+    $_SESSION['lmouserfile'] = '';
+}
+if (!isset($_SESSION['lmouserokerweitert'])) {
+    $_SESSION['lmouserokerweitert'] = 0;
+}
 
 // Login-Logik
 if (!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok'] == 0) {
@@ -66,7 +79,7 @@ if (!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok'] == 0) {
         if (loginAndUpgrade($_SESSION['lmousername'], $_SESSION['lmouserpass'], $lmo_auth_file)) {
 
             // Daten frisch laden (damit $lmo_admin_data die neuen Hashes hat)
-            require (PATH_TO_LMO . '/lmo-loadauth.php');
+            require(PATH_TO_LMO . '/lmo-loadauth.php');
 
             foreach ($lmo_admin_data as $lmo_admin) {
                 if ($_SESSION['lmousername'] == $lmo_admin[0]) {
@@ -81,4 +94,3 @@ if (!isset($_SESSION['lmouserok']) || $_SESSION['lmouserok'] == 0) {
         }
     }
 }
-?>

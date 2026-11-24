@@ -33,15 +33,13 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
         $ende = '';
         if ($end > $rounds) {
             $ende = $rounds;
-        }
-        else {
+        } else {
             $ende = $end;
         }
         $start = '';
         if ($star < 1) {
             $start = 1;
-        }
-        else {
+        } else {
             $start = $star;
         }
 
@@ -50,8 +48,7 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
 
         //all teams
         if ($all_teams == false) {
-        }
-        else {
+        } else {
             $team_count = count($liga->teams);
             for ($x = 0; $x < $team_count; $x++) {
                 $fav_team[$i][] = $x;
@@ -71,8 +68,7 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
             if ($liga->options->keyValues['enableGameSort'] == '1') {
                 //Spieltagssortierung ist aktiv
                 $partien = $akt_spieltag->getPartien('datum');
-            }
-            else {
+            } else {
                 $partien = $akt_spieltag->getPartien();
             }
 
@@ -84,9 +80,7 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
         }
         $template->setVariable('VERSION', VIEWER_VERSION);
         $template->parse('Liga');
-    }
-    else  {
+    } else {
         echo getMessage($text['viewer'][49] . ' . $fav_liga[$i] . ' . $text['viewer'][50], true); // Ligenfile vorhanden? Frage beantwortet
     }
 }
-?>

@@ -17,13 +17,16 @@
   *
   */
 
-
-require_once(PATH_TO_LMO . "/lmo-admintest.php");
-if (($action == "admin") && ($todo == "update")) {
+require_once(PATH_TO_LMO . '/lmo-admintest.php');
+if (($action == 'admin') && ($todo == 'update')) {
     $adda = $_SERVER['PHP_SELF'] . '?action=admin&amp;todo=update';?>
       <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
         <tr>
-          <td align="center"><h1><?php if ($new_lmo_version > $lmo_version) {echo $text[593];} else {echo $text[596];}?></h1></td>
+          <td align="center"><h1><?php if ($new_lmo_version > $lmo_version) {
+              echo $text[593];
+          } else {
+              echo $text[596];
+          }?></h1></td>
         </tr>
         <tr>
           <td align="center">
@@ -79,8 +82,7 @@ if (($action == "admin") && ($todo == "update")) {
                       </dl>
                   </fieldset>
 <?php
-    }
-    else { ?>
+    } else { ?>
                   <fieldset>
                     <legend><?php echo $text[20];?></legend>
                       <dl>

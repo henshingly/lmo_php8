@@ -40,12 +40,12 @@ if (!file_exists(dirname(__FILE__) . '/config/init-parameters.php') || isset($_P
     }
 
     $todo = isset($_REQUEST['todo']) ? $_REQUEST['todo'] : '';
-    $st = isset($_REQUEST['st']) ? $_REQUEST['st'] : NULL;
+    $st = isset($_REQUEST['st']) ? $_REQUEST['st'] : null;
     if ($todo == 'logout') {
         $_SESSION['lmouserok'] = 0;
         $_SESSION['lmouserpass'] = '';
     }
-?>
+    ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
                 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="<?php echo $text[798]; ?>">
@@ -58,17 +58,19 @@ if (!file_exists(dirname(__FILE__) . '/config/init-parameters.php') || isset($_P
 <body>
 <div align="center">
 <?php
-    $action = 'admin';
-    $array = array();
+        $action = 'admin';
+    $array = [];
     require(PATH_TO_LMO . '/lmo-adminauth.php');
     if (isset($_SESSION['lmouserok']) && $_SESSION['lmouserok'] > 0) {
-        $file =! empty($_REQUEST['file']) ? $_REQUEST['file'] : '';
-        if (!empty($file) && ($todo == 'open' || $todo == ''))
+        $file = !empty($_REQUEST['file']) ? $_REQUEST['file'] : '';
+        if (!empty($file) && ($todo == 'open' || $todo == '')) {
             $todo = 'edit';
-        if ((!empty($file) && check_hilfsadmin($file)) || empty($file))
+        }
+        if ((!empty($file) && check_hilfsadmin($file)) || empty($file)) {
             require(PATH_TO_LMO . '/lmo-adminmain.php');
+        }
     }
-?>
+    ?>
 </div>
 </body>
 </html><?php

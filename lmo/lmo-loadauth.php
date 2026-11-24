@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /** Liga Manager Online 4
   *
   * http://lmo.sourceforge.net/
@@ -7,7 +8,7 @@
   * modify it under the terms of the GNU General Public License as
   * published by the Free Software Foundation; either version 2 of
   * the License, or (at your option) any later version.
-  * 
+  *
   * This program is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -17,21 +18,20 @@
   *
   *
   */
-  
-  
+
 require_once(PATH_TO_LMO . '/lmo-admintest.php');
 
 $lmo_auth_file = PATH_TO_CONFIGDIR . '/lmo-auth.php';
-$lmo_admin_data = array();
+$lmo_admin_data = [];
 $datei = fopen($lmo_auth_file, 'rb');
 if ($datei) {
     while ($data = fgetcsv($datei, 10000, '|', '"', '\\')) {
-        if (count($data) > 1) $lmo_admin_data[] = $data;   //[0]=Name, [1]=Passwort, [2]=Rang, [3]=Ligen, [4]=Erweiterter Hilfsadmin
+        if (count($data) > 1) {
+            $lmo_admin_data[] = $data;
+        }   //[0]=Name, [1]=Passwort, [2]=Rang, [3]=Ligen, [4]=Erweiterter Hilfsadmin
     }
     fclose($datei);
 } else {
     echo getMessage($text[283], true);
     exit;
 }
-
-?>

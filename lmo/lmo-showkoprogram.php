@@ -21,7 +21,7 @@
 if ($file != '') {
     $addp = $_SERVER['PHP_SELF'] . '?action=program&amp;file=' . $file . '&amp;selteam=';
     $addr = $_SERVER['PHP_SELF'] . '?action=results&amp;file=' . $file . '&amp;st=';
-    $selteam =! empty($_GET['selteam']) ? $_GET['selteam'] : $selteam;?>
+    $selteam = !empty($_GET['selteam']) ? $_GET['selteam'] : $selteam;?>
 
 <table class="lmoMiddle" cellspacing="0" cellpadding="0" border="0">
   <tr>
@@ -60,7 +60,7 @@ if ($file != '') {
                 if (($selteam == $teama[$j][$i]) || ($selteam == $teamb[$j][$i])) { ?>
         <tr>
 <?php
-                    if ($j == $anzst-1) {
+                    if ($j == $anzst - 1) {
                         $l = $text[364];
                     } elseif ($j == $anzst - 2) {
                         $l = $text[362];
@@ -71,10 +71,10 @@ if ($file != '') {
                     } else {
                         $l = $j + 1;
                     }?>
-          <th align="right">&nbsp;<a href="<?php echo $addr.($j + 1); ?>" title="<?php echo $text[377]; ?>"><?php echo $l; ?></a>&nbsp;</th>
+          <th align="right">&nbsp;<a href="<?php echo $addr . ($j + 1); ?>" title="<?php echo $text[377]; ?>"><?php echo $l; ?></a>&nbsp;</th>
 <?php
-                    $m1 = array($goala[$j][$i][0], $goala[$j][$i][1], $goala[$j][$i][2], $goala[$j][$i][3], $goala[$j][$i][4], $goala[$j][$i][5], $goala[$j][$i][6]);
-                    $m2 = array($goalb[$j][$i][0], $goalb[$j][$i][1], $goalb[$j][$i][2], $goalb[$j][$i][3], $goalb[$j][$i][4], $goalb[$j][$i][5], $goalb[$j][$i][6]);
+                    $m1 = [$goala[$j][$i][0], $goala[$j][$i][1], $goala[$j][$i][2], $goala[$j][$i][3], $goala[$j][$i][4], $goala[$j][$i][5], $goala[$j][$i][6]];
+                    $m2 = [$goalb[$j][$i][0], $goalb[$j][$i][1], $goalb[$j][$i][2], $goalb[$j][$i][3], $goalb[$j][$i][4], $goalb[$j][$i][5], $goalb[$j][$i][6]];
                     $m = gewinn($j, $i, $modus[$j], $m1, $m2);
                     if ($m == 1) { ?>
           <td class="lmoTurnierSieger nobr" align="right"><?php
@@ -90,7 +90,7 @@ if ($file != '') {
                     if ($selteam == $teama[$j][$i]) {
                         echo '</strong>';
                     }
-                    echo '&nbsp;' . HTML_smallTeamIcon($file, $teams[$teama[$j][$i]],' alt=""');
+                    echo '&nbsp;' . HTML_smallTeamIcon($file, $teams[$teama[$j][$i]], ' alt=""');
                     if (($teamu[$teama[$j][$i]] != '') && ($urlt == 1)) {
                         echo ' <a href="' . $teamu[$teama[$j][$i]] . '" target="_blank" title="' . $text[46] . '"><img border="0" width="11" src="' . URL_TO_IMGDIR . '/url.svg" alt="' . $text[564] . '" title="' . $text[46] . '"></a>';
                     } ?></td>
@@ -117,7 +117,7 @@ if ($file != '') {
 <?php
                     for ($n = 0; $n < $modus[$j]; $n++) {
                         if ($datm == 1) {
-                            if(is_numeric($mterm[$j][$i][$n])) {
+                            if (is_numeric($mterm[$j][$i][$n])) {
                                 $dt = new DateTime();
                                 $dt->setTimeStamp((int)$mterm[$j][$i][$n]);
                                 $dumn1 = '<acronym title="' . strtr($dt->format($datf), $trans_lang) . '">';

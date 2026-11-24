@@ -1,7 +1,7 @@
 <?php
 /** Liga Manager Online 4
   *
-  * https://www.liga-manager-online.org/lmo/
+  * http://lmo.sourceforge.net/
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -17,8 +17,8 @@
   *
   *
   * Live-Vorschau des Designeditors: liefert das Stylesheet so, wie es mit den
-  * (noch nicht gespeicherten) Werten des Formulars aussehen würde.
-  * Es wird nichts gespeichert. Nur für den Voll-Admin verfügbar.
+  * (noch nicht gespeicherten) Werten des Formulars aussehen wuerde.
+  * Es wird nichts gespeichert. Nur fuer den Voll-Admin.
   */
 
 require_once(__DIR__ . '/init.php');
