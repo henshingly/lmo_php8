@@ -663,3 +663,5 @@
 5010=Játéknap
 5011=Felett
 5012=Lent
+5013=Az install mappa még létezik. Frissítés után indítsa el a frissítési telepítést, majd törölje a mappát (vagy állítsa be a chmod 000 jogosultságot).
+5014=Frissítési telepítés indítása

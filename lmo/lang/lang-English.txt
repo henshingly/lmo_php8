@@ -663,3 +663,5 @@
 5010=Matchday
 5011=Top
 5012=Bottom
+5013=The install folder still exists. After an update, please start the update installation and then delete the folder (or set its chmod to 000).
+5014=Start update installation

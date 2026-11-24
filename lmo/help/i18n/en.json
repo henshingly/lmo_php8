@@ -1,0 +1,36 @@
+{
+  "brand": {
+    "title": "LMO Help",
+    "page_title": "LMO - Help & Documentation"
+  },
+  "nav": {
+    "home": "Home",
+    "docs": "Documentation",
+    "getting_started": "Getting Started",
+    "options": "Options",
+    "edit_league": "Edit League",
+    "file_functions": "File Functions",
+    "customization": "Customization",
+    "addons": "Addons",
+    "addons_overview": "Overview",
+    "addons_extern": "External Addons",
+    "docs_page": "Documentation (overview)"
+  },
+  "sidebar": {
+    "home": "Home",
+    "getting_started": "Getting Started",
+    "options": "Options",
+    "edit_league": "Edit League",
+    "file_functions": "File Functions",
+    "customization": "Customization",
+    "addons": "Addons",
+    "addons_overview": "Overview",
+    "addons_builtin": "Built-in",
+    "addons_extern": "External Addons"
+  },
+  "footer": {
+    "version": "LMO 4 · PHP 8.2+"
+  },
+  "loading": "Loading...",
+  "fallback_notice": "This page is not yet available in the selected language. The German version is shown."
+}

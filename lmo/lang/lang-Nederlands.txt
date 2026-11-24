@@ -663,3 +663,5 @@
 5010=Spel dag
 5011=Boven
 5012=Onderstaand
+5013=De map install bestaat nog. Start na een update de update-installatie en verwijder daarna de map (of zet chmod 000).
+5014=Update-installatie starten

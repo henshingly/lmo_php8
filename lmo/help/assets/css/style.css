@@ -1,0 +1,257 @@
+:root {
+    --primary-color: #0266AE;
+    --primary-dark: #1a4d7a;
+    --secondary-color: #f0f4f8;
+    --text-color: #333;
+    --border-color: #dee2e6;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+}
+
+[data-bs-theme="dark"] {
+    --text-color: #e0e0e0;
+    --secondary-color: #1a1a1a;
+}
+
+body {
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    background-color: #fafbfc;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 1.5rem;
+    color: white !important;
+}
+
+.navbar-brand i {
+    margin-right: 0.5rem;
+}
+
+.language-btn {
+    margin: 0 2px;
+    transition: all 0.3s ease;
+    padding: 3px 7px;
+    line-height: 1;
+}
+
+.language-btn .fi {
+    display: block;
+    width: 20px;
+    height: 15px;
+    border-radius: 2px;
+}
+
+.language-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.language-btn.active {
+    background-color: white;
+    color: var(--primary-color) !important;
+    font-weight: bold;
+    box-shadow: 0 0 0 2px white;
+}
+
+/* Sidebar */
+.list-group-item {
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: var(--secondary-color);
+    border-left-color: var(--primary-color);
+    padding-left: calc(1rem + 4px);
+}
+
+.list-group-item.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.list-group-item i {
+    margin-right: 0.75rem;
+    width: 20px;
+}
+
+/* Content */
+.content-area {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Headings */
+h1 {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+h3 {
+    color: var(--primary-dark);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+}
+
+table thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+table th, table td {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--secondary-color);
+}
+
+table tbody tr:hover {
+    background-color: #e8f0f8;
+}
+
+/* Code */
+pre {
+    background-color: #f5f5f5;
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+code {
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+}
+
+inline > code {
+    background-color: #f0f0f0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    color: #c7254e;
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+footer a {
+    color: white;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .content-area {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .content-area {
+        padding: 1rem;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    table th, table td {
+        padding: 0.5rem;
+    }
+}
+
+/* Print */
+@media print {
+    .navbar, footer, .list-group {
+        display: none;
+    }
+    
+    .content-area {
+        box-shadow: none;
+        padding: 0;
+    }
+}
+/* Lightbox für Grafiken */
+img.zoomable { cursor: zoom-in; }
+.lightbox {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(0, 0, 0, .85);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 1.5rem; cursor: zoom-out;
+}
+.lightbox img { max-width: 100%; max-height: calc(100vh - 5rem); object-fit: contain; background: #fff; border-radius: .25rem; box-shadow: 0 0 30px rgba(0,0,0,.6); }
+.lightbox-caption { color: #fff; margin-top: .75rem; font-size: .9rem; text-align: center; }
+.lightbox-close { position: absolute; top: .5rem; right: 1rem; background: none; border: 0; color: #fff; font-size: 2.5rem; line-height: 1; cursor: pointer; }
+body.lightbox-open { overflow: hidden; }
+
+/* Grafiken nie breiter als der Inhaltsbereich (auch ohne Bootstrap-Klassen) */
+#content img { max-width: 100%; height: auto; cursor: zoom-in; }
+.content-area { min-width: 0; overflow-wrap: break-word; }
+#content td:first-child, #content th:first-child { white-space: nowrap; }
+#content td:first-child code { white-space: nowrap; }
+
+/* Kopfzeile immer über der mitlaufenden Seitenleiste; Seitenleiste scrollt bei langen Addon-Listen selbst */
+.navbar.sticky-top { z-index: 1030; }
+.sidebar-nav { z-index: 1000; max-height: calc(100vh - 230px); min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+
+/* Seitenleiste: kompaktere Addon-Einträge, sichtbare dünne Scrollleiste */
+.sidebar-nav { scrollbar-width: thin; scrollbar-gutter: stable; }
+.addon-submenu .addon-item { padding-top: .35rem; padding-bottom: .35rem; }
+.sidebar-nav > * { flex-shrink: 0; }
+
+/* Dropdown der Kopfzeile: bei langen Listen (Handy, kleines Fenster) scrollbar */
+.navbar .dropdown-menu { max-height: calc(100vh - 90px); overflow-y: auto; overscroll-behavior: contain; }
+
+/* Handy: aufgeklapptes Menü selbst scrollbar (Kopfzeile ist fixiert und höher als das Fenster) */
+@media (max-width: 991.98px) {
+    .navbar .navbar-collapse { max-height: calc(100vh - 115px); overflow-y: auto; overscroll-behavior: contain; }
+    .navbar .dropdown-menu { max-height: none; overflow: visible; }
+}

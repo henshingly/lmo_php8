@@ -663,3 +663,5 @@
 5010=Spilldag
 5011=Ovenfor
 5012=Under
+5013=Mappen install finnes fortsatt. Etter en oppdatering må du starte oppdateringsinstallasjonen og deretter slette mappen (eller sette chmod 000).
+5014=Start oppdateringsinstallasjon

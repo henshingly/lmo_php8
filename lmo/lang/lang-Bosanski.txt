@@ -663,3 +663,5 @@
 5010=Kolo
 5011=Gore
 5012=Dolje
+5013=Folder install još uvijek postoji. Nakon ažuriranja pokrenite instalaciju ažuriranja, a zatim izbrišite folder (ili postavite chmod 000).
+5014=Pokreni instalaciju ažuriranja

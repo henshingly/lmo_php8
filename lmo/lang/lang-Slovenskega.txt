@@ -663,3 +663,5 @@
 5010=Igralni dan
 5011=Nad
 5012=Spodaj
+5013=Mapa install še obstaja. Po posodobitvi zaženite namestitev posodobitve in nato izbrišite mapo (ali nastavite chmod 000).
+5014=Zaženi namestitev posodobitve

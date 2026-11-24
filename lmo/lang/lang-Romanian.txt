@@ -663,3 +663,5 @@
 5010=Ziua jocului
 5011=Sus
 5012=Jos
+5013=Dosarul install există încă. După o actualizare, porniți instalarea actualizării și apoi ștergeți dosarul (sau setați chmod 000).
+5014=Pornește instalarea actualizării

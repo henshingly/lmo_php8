@@ -1,0 +1,86 @@
+{
+  "default": "de",
+  "fallback": [
+    "en",
+    "de"
+  ],
+  "languages": [
+    {
+      "code": "de",
+      "name": "Deutsch",
+      "flag": "de",
+      "enabled": true,
+      "content": true
+    },
+    {
+      "code": "en",
+      "name": "English",
+      "flag": "gb",
+      "enabled": true,
+      "content": true
+    },
+    {
+      "code": "nl",
+      "name": "Nederlands",
+      "flag": "nl",
+      "enabled": true,
+      "content": true
+    },
+    {
+      "code": "es",
+      "name": "Español",
+      "flag": "es",
+      "enabled": true,
+      "content": true
+    },
+    {
+      "code": "fr",
+      "name": "Français",
+      "flag": "fr",
+      "enabled": true,
+      "content": true
+    },
+    {
+      "code": "it",
+      "name": "Italiano",
+      "flag": "it",
+      "enabled": false,
+      "content": false
+    },
+    {
+      "code": "pl",
+      "name": "Polski",
+      "flag": "pl",
+      "enabled": false,
+      "content": false
+    },
+    {
+      "code": "pt",
+      "name": "Português",
+      "flag": "pt",
+      "enabled": false,
+      "content": false
+    },
+    {
+      "code": "tr",
+      "name": "Türkçe",
+      "flag": "tr",
+      "enabled": false,
+      "content": false
+    },
+    {
+      "code": "cz",
+      "name": "Čeština",
+      "flag": "cz",
+      "enabled": false,
+      "content": false
+    },
+    {
+      "code": "ro",
+      "name": "Română",
+      "flag": "ro",
+      "enabled": false,
+      "content": false
+    }
+  ]
+}

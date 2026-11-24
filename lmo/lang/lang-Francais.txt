@@ -663,3 +663,5 @@
 5010=Jour de match
 5011=Au-dessus de
 5012=Ci-dessous
+5013=Le répertoire install existe encore. Après une mise à jour, lancez l'installation de la mise à jour puis supprimez le répertoire (ou mettez chmod 000).
+5014=Lancer l'installation de la mise à jour

@@ -95,7 +95,7 @@ $baseFile = $dir . '/lang-' . $from_lang . '.txt';
 $targetFile = $dir . '/' . $lang;
 
 // Pfade validieren (keine .. erlaubt)
-if (strpos(realpath($dir) ? : '', realpath($baseDir) ? : '') !== 0) {
+if (strpos(realpath($dir) ?: '', realpath($baseDir) ?: '') !== 0) {
     http_response_code(403);
     die('Invalid directory path');
 }
@@ -270,7 +270,9 @@ $percent = $total ? round(($done / $total) * 100) : 0;
                     <option value="main">LMO Main</option>
 <?php
 foreach ($structure as $k => $v) {
-    if ($k === 'main') continue;
+    if ($k === 'main') {
+        continue;
+    }
     // htmlspecialchars() verwenden
     $selected = ($type === $k) ? ' selected' : '';
     echo '                    <option value="' . htmlspecialchars($k) . '"' . $selected . '>Addon: ' . htmlspecialchars($k) . '</option>' . "\n";

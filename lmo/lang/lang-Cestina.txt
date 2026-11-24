@@ -663,3 +663,5 @@
 5010=Hrací den
 5011=Výše
 5012=Níže
+5013=Složka install stále existuje. Po aktualizaci spusťte instalaci aktualizace a poté složku smažte (nebo nastavte chmod 000).
+5014=Spustit instalaci aktualizace

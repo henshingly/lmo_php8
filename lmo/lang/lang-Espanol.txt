@@ -663,3 +663,5 @@
 5010=Día de juego
 5011=Arriba
 5012=Abajo
+5013=La carpeta install todavía existe. Tras una actualización, inicie la instalación de la actualización y después elimine la carpeta (o ponga chmod 000).
+5014=Iniciar la instalación de la actualización

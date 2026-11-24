@@ -1,0 +1,75 @@
+/* ── Addon submenu ───────────────────────────────────────────────────────── */
+
+.addon-chevron {
+    font-size: 0.8rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+}
+
+.addon-chevron.rotated {
+    transform: rotate(180deg);
+}
+
+.list-group-item.addon-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+}
+
+.list-group-item.addon-toggle .bi:first-child {
+    flex-shrink: 0;
+}
+
+/* Collapsible wrapper */
+.addon-submenu {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+}
+
+.addon-submenu.open {
+    max-height: 1600px;
+}
+
+/* Group label inside submenu */
+.addon-submenu-header {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--bs-secondary-color, #6c757d);
+    padding: 0.5rem 1rem 0.2rem 2.2rem;
+}
+
+/* Submenu items */
+.addon-submenu .addon-item {
+    padding-left: 2.4rem;
+    font-size: 0.92rem;
+    border-left: 4px solid transparent;
+    transition: background 0.15s, border-color 0.15s, padding-left 0.15s;
+}
+
+.addon-submenu .addon-item i {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.addon-submenu .addon-item:hover {
+    background-color: var(--secondary-color, #f0f4f8);
+    border-left-color: var(--primary-color, #0266AE);
+    padding-left: calc(2.4rem + 4px);
+}
+
+.addon-submenu .addon-item.active {
+    background-color: var(--primary-color, #0266AE);
+    border-color: var(--primary-color, #0266AE);
+    color: white;
+}
+
+.addon-submenu .addon-item.active i {
+    opacity: 1;
+    color: white;
+}

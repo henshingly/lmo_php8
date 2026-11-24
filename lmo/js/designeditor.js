@@ -1,20 +1,5 @@
-/* Liga Manager Online 4
-  *
-  * https://www.liga-manager-online.org/lmo/
-  *
-  * This program is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU General Public License as
-  * published by the Free Software Foundation; either version 2 of
-  * the License, or (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-  * General Public License for more details.
-  *
-  * REMOVING OR CHANGING THE COPYRIGHT NOTICES IS NOT ALLOWED!
-  *
-  * LMO Designeditor: klickbare Live-Vorschau, Export/Import, Standardwerte. Konfiguration kommt aus lmo-admindesign.php (window.LMO_DESIGN). */
+/* LMO Designeditor: klickbare Live-Vorschau, Export/Import, Standardwerte.
+ * Konfiguration kommt aus lmo-admindesign.php (window.LMO_DESIGN). */
 (function () {
   'use strict';
   var C = window.LMO_DESIGN;

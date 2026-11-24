@@ -19,26 +19,30 @@
 */
 
 session_start();
-if (file_exists('../composer.json')) $string_json = file_get_contents('../composer.json', false);
-if (file_exists('./composer.json')) $string_json = file_get_contents('./composer.json', false);
+if (file_exists('../composer.json')) {
+    $string_json = file_get_contents('../composer.json', false);
+}
+if (file_exists('./composer.json')) {
+    $string_json = file_get_contents('./composer.json', false);
+}
 $json_a = json_decode($string_json, true, 4);
-$lmo_version_search = array('<', '>', '=');
+$lmo_version_search = ['<', '>', '='];
 $min_php_version = str_replace($lmo_version_search, '', $json_a['require']['php']);
 $error = '';
 
 $_SESSION['userlang'] = isset($_GET['userlang']) ? $_GET['userlang'] : (isset($_SESSION['userlang']) ? $_SESSION['userlang'] : 'DE');
-if (!in_array($_SESSION['userlang'], array('DE', 'EN', 'FR', 'ES'), true)) {
+if (!in_array($_SESSION['userlang'], ['DE', 'EN', 'FR', 'ES'], true)) {
     $_SESSION['userlang'] = 'DE';
 }
 $userlang = $_SESSION['userlang'];
 
 // Verzeichnisse (777) und Dateien (666), die PHP beschreiben können muss
-$filelist = array(
-    777 => array('ligen', 'output', 'config', 'ligen/dfb', 'config/viewer', 'config/smtp', 'addon/tipp/tipps', 'addon/tipp/tipps/auswert', 'addon/tipp/tipps/einsicht', 'addon/tipp/tipps/auswert/vereine', 'addon/spieler/stats'),
-    666 => array('config/cfg.txt', 'config/lmo-auth.php', 'config/tipp/cfg.txt', 'config/spieler/cfg.txt', 'config/ticker/cfg.txt', 'config/mini/cfg.txt', 'config/classlib/cfg.txt', 'config/smtp/cfg.php', 'config/smtp/key.php', 'addon/tipp/lmo-tipperauth.php', 'ligen/*.l98')
-);
-$lang = array(
-    'DE' => array(
+$filelist = [
+    777 => ['ligen', 'output', 'config', 'ligen/dfb', 'config/viewer', 'config/smtp', 'addon/tipp/tipps', 'addon/tipp/tipps/auswert', 'addon/tipp/tipps/einsicht', 'addon/tipp/tipps/auswert/vereine', 'addon/spieler/stats'],
+    666 => ['config/cfg.txt', 'config/lmo-auth.php', 'config/tipp/cfg.txt', 'config/spieler/cfg.txt', 'config/ticker/cfg.txt', 'config/mini/cfg.txt', 'config/classlib/cfg.txt', 'config/smtp/cfg.php', 'config/smtp/key.php', 'addon/tipp/lmo-tipperauth.php', 'ligen/*.l98']
+];
+$lang = [
+    'DE' => [
         'HEADER' => 'Installation des Liga Manager Online 4',
         'PROCEED' => 'Weiter',
         'SUCCESS' => 'Erfolg',
@@ -94,10 +98,9 @@ $lang = array(
             </ul>',
         'STEP4_TEXT5' => '<a href="https://paypal.me/LMOforum/"><input type="image" src="img/SpendiermirnenKaffee.svg"></a>',
         'STEP4_TEXT6' => 'Viel Spaß!',
-    ),
+    ],
 
-
-    'EN'=>array(
+    'EN' => [
         'HEADER' => 'Installation of Liga Manager Online 4',
         'PROCEED' => 'Proceed',
         'SUCCESS' => 'Success',
@@ -153,10 +156,9 @@ $lang = array(
             </ul>',
         'STEP4_TEXT5' => '<a href="https://paypal.me/LMOforum/"><input type="image" src="img/Spendacoffee.svg"></a>',
         'STEP4_TEXT6' => 'Have fun!',
-    ),
+    ],
 
-
-    'FR'=>array(
+    'FR' => [
         'HEADER' => 'Installation du Liga Manager Online 4',
         'PROCEED' => 'Continuer',
         'SUCCESS' => 'Succès',
@@ -212,10 +214,9 @@ $lang = array(
             </ul>',
         'STEP4_TEXT5' => '<a href="https://paypal.me/LMOforum/"><input type="image" src="img/Distribueuncafe.svg"></a>',
         'STEP4_TEXT6' => 'Bon courage!',
-    ),
+    ],
 
-
-    'ES'=>array(
+    'ES' => [
         'HEADER' => 'Installación de Liga Manager Online 4',
         'PROCEED' => 'Proceder',
         'SUCCESS' => 'Exitoso',
@@ -271,17 +272,15 @@ $lang = array(
             </ul>',
         'STEP4_TEXT5' => '<a href="https://paypal.me/LMOforum/"><input type="image" src="img/Tomaruncafe.svg"></a>',
         'STEP4_TEXT6' => 'Disfrútalo!',
-    )
-);
+    ]
+];
 /*    End of config area */
-
 
 if (!empty($_GET['debug']) || !empty($_SESSION['debug'])) {
     $_SESSION['debug'] = true;
     @error_reporting(E_ALL);
     @ini_set('display_errors', 'On');
-}
-else {
+} else {
     @error_reporting(E_ERROR | E_PARSE);
     @ini_set('display_errors', 'Off');
 }
@@ -297,9 +296,9 @@ $lmo_dir_slash = str_replace('\\', '/', $lmo_dir);
  */
 function lmo_install_templates($lmo_dir, $install_dir)
 {
-    $result = array();
-    $skip = array('addon/tipp/lmo-tippauth.txt');   // alte Tipperdatei, nicht mehr verwendet
-    foreach (array('config', 'addon') as $top) {
+    $result = [];
+    $skip = ['addon/tipp/lmo-tippauth.txt'];   // alte Tipperdatei, nicht mehr verwendet
+    foreach (['config', 'addon'] as $top) {
         if (!is_dir($install_dir . '/' . $top)) {
             continue;
         }
@@ -322,16 +321,14 @@ function lmo_install_templates($lmo_dir, $install_dir)
                     // alte Admin-Datei (LMO 3) in die neue, geschützte Datei übernehmen
                     $content = '<?php exit(); ?>' . "\n" . implode("\n", array_map('rtrim', file($lmo_dir . '/lmo-auth.txt'))) . "\n";
                     $ok = @file_put_contents($target, $content, LOCK_EX) !== false;
-                }
-                else {
+                } else {
                     $ok = @copy($f->getPathname(), $target);
                 }
                 if ($ok) {
                     @chmod($target, 0666);
                 }
                 $result[$rel] = $ok ? 'created' : 'error';
-            }
-            elseif (basename($rel) === 'cfg.txt') {
+            } elseif (basename($rel) === 'cfg.txt') {
                 $result[$rel] = lmo_install_merge_cfg($f->getPathname(), $target);
             }
         }
@@ -342,7 +339,7 @@ function lmo_install_templates($lmo_dir, $install_dir)
 /** Ergänzt in $target alle Einstellungen aus der Vorlage $template, die dort noch fehlen. */
 function lmo_install_merge_cfg($template, $target)
 {
-    $have = array();
+    $have = [];
     $old = @file_get_contents($target);
     if ($old === false) {
         return 'error';
@@ -374,16 +371,15 @@ function lmo_install_merge_cfg($template, $target)
 function lmo_install_prepare($lmo_dir, $filelist)
 {
     $states = lmo_install_templates($lmo_dir, __DIR__);
-    $rows = array();
+    $rows = [];
     foreach ($filelist as $mode => $entries) {
         foreach ($entries as $entry) {
             if (strpos($entry, '*') !== false) {
                 $files = glob($lmo_dir . '/' . $entry);
-                $files = $files ? $files : array();
+                $files = $files ? $files : [];
                 $files = array_map(function ($p) use ($lmo_dir) { return substr($p, strlen($lmo_dir) + 1); }, $files);
-            }
-            else {
-                $files = array($entry);
+            } else {
+                $files = [$entry];
             }
             foreach ($files as $rel) {
                 $path = $lmo_dir . '/' . $rel;
@@ -398,12 +394,11 @@ function lmo_install_prepare($lmo_dir, $filelist)
                     if (@chmod($path, $mode == 777 ? 0777 : 0666)) {
                         clearstatcache();
                         $state = is_writable($path) ? 'chmod' : 'error';
-                    }
-                    else {
+                    } else {
                         $state = 'error';
                     }
                 }
-                $rows[] = array($rel, $mode, file_exists($path) && is_writable($path) ? $state : 'error');
+                $rows[] = [$rel, $mode, file_exists($path) && is_writable($path) ? $state : 'error'];
             }
         }
     }
@@ -423,8 +418,7 @@ function lmo_install_remove_self($dir)
         if ($f->isDir() && !$f->isLink()) {
             @chmod($f->getPathname(), 0777);
             @rmdir($f->getPathname());
-        }
-        else {
+        } else {
             @unlink($f->getPathname());
         }
     }
@@ -435,10 +429,12 @@ function lmo_install_remove_self($dir)
 }
 
 $lmo_install_step = isset($_REQUEST['lmo_install_step']) ? (int)$_REQUEST['lmo_install_step'] : 0;
-if (isset($_POST['check'])) $lmo_install_step = 3;
+if (isset($_POST['check'])) {
+    $lmo_install_step = 3;
+}
 
 $patherror = $urlerror = $installerror = '';
-$rows = array();
+$rows = [];
 
 // Sperre: Ist der LMO schon installiert, darf der Installer nur noch in der laufenden Installation (gleiche Sitzung)
 // oder durch den eingeloggten Voll-Admin (Update) benutzt werden. Sonst könnte jeder per POST die Pfade überschreiben.
@@ -455,20 +451,21 @@ if ($cleanup_ok) {
     unset($_SESSION['lmo_cleanup_token']);
     $cleanup_result = lmo_install_remove_self(__DIR__);
     $lmo_install_step = 5;
-}
-else {
+} else {
     $_SESSION['lmo_install_run'] = true;
 }
 
 // Determine HTTP / HTTPS
-if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' or (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) $protocol = 'https:';
-else $protocol = 'http:';
+if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' or (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) {
+    $protocol = 'https:';
+} else {
+    $protocol = 'http:';
+}
 
 $path = $lmo_dir_slash;
 if (strpos(dirname($_SERVER['SCRIPT_NAME']), '/install') !== false) {
     $url = $protocol . '//' . $_SERVER['HTTP_HOST'] . dirname(dirname($_SERVER['SCRIPT_NAME']));
-}
-else {
+} else {
     $url = $protocol . '//' . $_SERVER['HTTP_HOST'] . dirname(($_SERVER['SCRIPT_NAME']));
 }
 $url = rtrim(str_replace('\\', '/', $url), '/');
@@ -502,17 +499,14 @@ if ($lmo_install_step == 3 || ($lmo_install_step == 4 && isset($_POST['path'])))
     $url_ok = preg_match('/^https?:\/\/[^\s\'"<>]+$/i', $url) === 1 && filter_var($url, FILTER_VALIDATE_URL) !== false;
     if (!$path_ok) {
         $installerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['ERROR_PATH_INVALID'] . '</p>';
-    }
-    elseif (!$url_ok) {
+    } elseif (!$url_ok) {
         $installerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['ERROR_URL_INVALID'] . '</p>';
-    }
-    else {
+    } else {
         $filename = $path . '/config/init-parameters.php';
         $somecontent = "<?php \n\t\$lmo_dateipfad=" . var_export($path, true) . "; //Dateipfad zum LMO\n\t\$lmo_url=" . var_export($url, true) . "; //abolute URL zum LMO\n?>";
         if (@file_put_contents($filename, $somecontent, LOCK_EX) === false) {
             $installerror .= '<p class="error"><img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_ERROR_INI_FILE_NOT_WRITEABLE'] . '</p>';
-        }
-        else {
+        } else {
             @chmod($filename, 0666);
             $installerror .= '<p><em><img src="img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['SUCCESS'] . '"> ' . $lang[$userlang]['STEP3_SUCCESS_INI_FILE'] . '</em></p>';
         }
@@ -591,9 +585,8 @@ if ($lmo_install_step == 0) {
                     <dd><?php
     if ($php_ok) {
         echo '<img src="img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['SUCCESS'] . '"> PHP: ' . PHP_VERSION;
-    }
-    else {
-        echo '<img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . str_replace(array('[MIN_PHP]', '[IS_PHP]'), array($min_php_version, PHP_VERSION), $lang[$userlang]['PHP_ERROR_1']);
+    } else {
+        echo '<img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . str_replace(['[MIN_PHP]', '[IS_PHP]'], [$min_php_version, PHP_VERSION], $lang[$userlang]['PHP_ERROR_1']);
     }?></dd>
 <?php if ($php_ok) { ?>
                     <dt>
@@ -611,7 +604,7 @@ if ($lmo_install_step == 0) {
 
 if ($lmo_install_step == 2) {
     $error = 0;
-    $labels = array('created' => $lang[$userlang]['ST_CREATED'], 'merged' => $lang[$userlang]['ST_MERGED'], 'chmod' => $lang[$userlang]['ST_CHMOD'], 'ok' => $lang[$userlang]['ST_OK'], 'error' => '');?>
+    $labels = ['created' => $lang[$userlang]['ST_CREATED'], 'merged' => $lang[$userlang]['ST_MERGED'], 'chmod' => $lang[$userlang]['ST_CHMOD'], 'ok' => $lang[$userlang]['ST_OK'], 'error' => ''];?>
     <h2><?php echo $lang[$userlang]['STEP2'];?></h2>
     <table>
         <tr>
@@ -631,8 +624,7 @@ if ($lmo_install_step == 2) {
         if ($state == 'error') {
             $error++;
             echo "\n                        <dd><img src='img/wrong.svg' border='0' height='20' alt='" . $lang[$userlang]['ERROR'] . "'> " . htmlspecialchars($rel) . ' <small>(' . $mode . ')</small></dd>';
-        }
-        else {
+        } else {
             echo "\n                        <dd><img src='img/right.svg' border='0' height='20' alt='" . $lang[$userlang]['SUCCESS'] . "'> " . htmlspecialchars($rel) . ' <small>(' . $mode . ($state != 'ok' ? ', ' . $labels[$state] : '') . ')</small></dd>';
         }
     }
@@ -675,8 +667,7 @@ if ($lmo_install_step == 3) {?>
                         <dd><?php
                             if (is_file($path . '/init.php')) {
                                 echo '<img src="img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['SUCCESS'] . '"> ' . $lang[$userlang]['STEP3_PATH_CORRECT'];
-                            }
-                            else {
+                            } else {
                                 echo '<img src="img/wrong.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_PATH_WRONG'];
                             }?>
                         </dd>
@@ -687,7 +678,7 @@ if ($lmo_install_step == 3) {?>
                         </dd>
                         <dd><?php
                             echo '<img src="' . htmlspecialchars($url) . '/img/right.svg" border="0" height="20" alt="' . $lang[$userlang]['ERROR'] . '"> ' . $lang[$userlang]['STEP3_URL_CORRECT'];
-                            ?>
+    ?>
                         </dd>
                         <dd><?php echo $installerror; ?></dd>
                         <dt>
@@ -716,7 +707,7 @@ if ($lmo_install_step == 4) {
                 <input type="hidden" name="lmo_cleanup" value="<?php echo htmlspecialchars($_SESSION['lmo_cleanup_token']);?>">
                 <input type="submit" value="<?php echo $lang[$userlang]['CLEAN_BUTTON'];?>">
             </form></dd>
-        <dd><?php echo sprintf($lang[$userlang]['STEP4_TEXT4'], $u . '/lmo.php', $u . '/lmo.php', $u . '/lmoadmin.php', $u . '/lmoadmin.php', $u . '/help/Deutsch/index.html', $u . '/help/Deutsch/index.html'); ?></dd>
+        <dd><?php echo sprintf($lang[$userlang]['STEP4_TEXT4'], $u . '/lmo.php', $u . '/lmo.php', $u . '/lmoadmin.php', $u . '/lmoadmin.php', $u . '/help/index.html', $u . '/help/Deutsch/index.html'); ?></dd>
         <dd class="error"><?php echo $lang[$userlang]['STEP4_TEXT5'];?></dd>
         <dt><?php echo $lang[$userlang]['STEP4_TEXT6'];?></dt>
     </dl><?php
@@ -724,7 +715,7 @@ if ($lmo_install_step == 4) {
 
 <?php
 if ($lmo_install_step == 5) {
-    $keys = array('deleted' => 'CLEAN_OK', 'chmod' => 'CLEAN_CHMOD', 'failed' => 'CLEAN_FAIL');?>
+    $keys = ['deleted' => 'CLEAN_OK', 'chmod' => 'CLEAN_CHMOD', 'failed' => 'CLEAN_FAIL'];?>
     <h2><?php echo $lang[$userlang]['STEP4'];?></h2>
     <p class="<?php echo $cleanup_result == 'deleted' ? '' : 'error';?>"><?php echo $lang[$userlang][$keys[$cleanup_result]];?></p>
     <p><a href="<?php echo htmlspecialchars(isset($_SESSION['url1']) ? $_SESSION['url1'] : '..');?>/lmoadmin.php">lmoadmin.php</a></p><?php

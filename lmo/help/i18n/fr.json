@@ -1,0 +1,36 @@
+{
+  "brand": {
+    "title": "LMO Aide",
+    "page_title": "LMO - Aide & Documentation"
+  },
+  "nav": {
+    "home": "Accueil",
+    "docs": "Documentation",
+    "getting_started": "Premiers pas",
+    "options": "Options",
+    "edit_league": "Gérer la ligue",
+    "file_functions": "Fonctions fichiers",
+    "customization": "Personnalisation",
+    "addons": "Extensions",
+    "addons_overview": "Vue d'ensemble",
+    "addons_extern": "Extensions externes",
+    "docs_page": "Documentation (aperçu)"
+  },
+  "sidebar": {
+    "home": "Accueil",
+    "getting_started": "Premiers pas",
+    "options": "Options",
+    "edit_league": "Gérer la ligue",
+    "file_functions": "Fonctions fichiers",
+    "customization": "Personnalisation",
+    "addons": "Extensions",
+    "addons_overview": "Vue d'ensemble",
+    "addons_builtin": "Incluses",
+    "addons_extern": "Extensions externes"
+  },
+  "footer": {
+    "version": "LMO 4 · PHP 8.2+"
+  },
+  "loading": "Chargement...",
+  "fallback_notice": "Cette page n'est pas encore disponible dans la langue choisie. La version allemande est affichée."
+}

@@ -663,3 +663,5 @@
 5010=Spieltag
 5011=Oben
 5012=Unten
+5013=Der Ordner install ist noch vorhanden. Nach einem Update bitte die Update-Installation starten und den Ordner danach löschen (oder chmod 000 setzen).
+5014=Update-Installation starten

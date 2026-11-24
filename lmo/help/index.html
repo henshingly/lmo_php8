@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="brand.page_title">LMO - Hilfe & Dokumentation</title>
+    <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/vendor/flag-icons/css/flag-icons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/addon-submenu.css">
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════════════════ NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container-lg">
+
+            <!-- Brand -->
+            <a class="navbar-brand fw-bold" href="#home" data-page="home">
+                <i class="bi bi-book"></i>
+                <span data-i18n="brand.title">LMO Hilfe</span>
+            </a>
+
+            <!-- Mobile: language flags + burger (right-aligned) -->
+            <div class="d-flex align-items-center gap-2 d-lg-none">
+                <div class="btn-group lang-switch" role="group" aria-label="Language"></div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation öffnen">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <!-- Collapsible nav -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <!-- Home -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" data-page="home">
+                            <i class="bi bi-house"></i>
+                            <span data-i18n="nav.home">Home</span>
+                        </a>
+                    </li>
+
+                    <!-- Dokumentation dropdown -->
+                    <li class="nav-item dropdown">
+                        <!-- Desktop: text part navigates to docs page; chevron opens dropdown -->
+                        <a href="#docs" data-page="docs"
+                           class="nav-link d-none d-lg-inline-flex align-items-center pe-1 text-white text-decoration-none">
+                            <i class="bi bi-file-text me-1"></i>
+                            <span data-i18n="nav.docs">Dokumentation</span>
+                        </a>
+                        <a href="#" id="docsDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false"
+                           class="nav-link dropdown-toggle dropdown-toggle-split d-none d-lg-inline-flex px-1">
+                            <span class="visually-hidden">Dropdown öffnen</span>
+                        </a>
+                        <!-- Mobile: single toggle, no page load -->
+                        <a class="nav-link dropdown-toggle d-lg-none" href="#"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-file-text me-1"></i>
+                            <span data-i18n="nav.docs">Dokumentation</span>
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="docsDropdown">
+                            <li class="d-lg-none"><a class="dropdown-item fw-semibold" href="#docs" data-page="docs" data-i18n="nav.docs_page">Dokumentation (Übersicht)</a></li>
+                            <li class="d-lg-none"><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#getting-started" data-page="getting-started" data-i18n="nav.getting_started">Erste Schritte</a></li>
+                            <li><a class="dropdown-item" href="#options"         data-page="options"         data-i18n="nav.options">Optionen</a></li>
+                            <li><a class="dropdown-item" href="#edit-league"     data-page="edit-league"     data-i18n="nav.edit_league">Liga bearbeiten</a></li>
+                            <li><a class="dropdown-item" href="#file-functions"  data-page="file-functions"  data-i18n="nav.file_functions">Dateifunktionen</a></li>
+                            <li><a class="dropdown-item" href="#customization"   data-page="customization"   data-i18n="nav.customization">Anpassung</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header" data-i18n="nav.addons">Addons</h6></li>
+                            <li><a class="dropdown-item" href="#addons"               data-page="addons"               data-i18n="nav.addons_overview">Übersicht</a></li>
+                            <li><a class="dropdown-item" href="#addon-betting-game"   data-page="addon-betting-game">Tippspiel</a></li>
+                            <li><a class="dropdown-item" href="#addon-newsticker"     data-page="addon-newsticker">Newsticker</a></li>
+                            <li><a class="dropdown-item" href="#addon-mini-tables"    data-page="addon-mini-tables">Minitabellen</a></li>
+                            <li><a class="dropdown-item" href="#addon-mininext"       data-page="addon-mininext">Mininext</a></li>
+                            <li><a class="dropdown-item" href="#addon-player-stats"   data-page="addon-player-stats">Spielerstatistik</a></li>
+                            <li><a class="dropdown-item" href="#addon-viewer"         data-page="addon-viewer">Viewer</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header" data-i18n="nav.addons_extern">Externe Addons</h6></li>
+                            <li><a class="dropdown-item" href="#addon-club-schedule"    data-page="addon-club-schedule">Vereinsplan</a></li>
+                            <li><a class="dropdown-item" href="#addon-team-comparison"  data-page="addon-team-comparison">Teamvergleich</a></li>
+                            <li><a class="dropdown-item" href="#addon-team-schedule"    data-page="addon-team-schedule">Teamplan</a></li>
+                            <li><a class="dropdown-item" href="#addon-pdf-schedule"     data-page="addon-pdf-schedule">PDF Spielplan</a></li>
+                            <li><a class="dropdown-item" href="#addon-top-tipper"       data-page="addon-top-tipper">Top Tipper</a></li>
+                            <li><a class="dropdown-item" href="#addon-api"            data-page="addon-api">JSON-API</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Language switcher (Desktop only — mobile version is above the burger) -->
+                    <li class="nav-item d-none d-lg-flex align-items-center ms-2">
+                        <div class="btn-group lang-switch" role="group" aria-label="Language"></div>
+                    </li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════ MAIN -->
+    <main class="container-lg my-5">
+        <div class="row">
+
+            <!-- Desktop Sidebar -->
+            <nav class="col-lg-3 mb-4 d-none d-lg-block" aria-label="Seitennavigation">
+                <div class="list-group sticky-top sidebar-nav" style="top: 80px;">
+
+                    <a href="#home" class="list-group-item list-group-item-action" data-page="home">
+                        <i class="bi bi-house"></i>
+                        <span data-i18n="sidebar.home">Home</span>
+                    </a>
+
+                    <a href="#getting-started" class="list-group-item list-group-item-action" data-page="getting-started">
+                        <i class="bi bi-rocket"></i>
+                        <span data-i18n="sidebar.getting_started">Erste Schritte</span>
+                    </a>
+
+                    <a href="#options" class="list-group-item list-group-item-action" data-page="options">
+                        <i class="bi bi-sliders"></i>
+                        <span data-i18n="sidebar.options">Optionen</span>
+                    </a>
+
+                    <a href="#edit-league" class="list-group-item list-group-item-action" data-page="edit-league">
+                        <i class="bi bi-trophy"></i>
+                        <span data-i18n="sidebar.edit_league">Liga bearbeiten</span>
+                    </a>
+
+                    <a href="#file-functions" class="list-group-item list-group-item-action" data-page="file-functions">
+                        <i class="bi bi-folder2-open"></i>
+                        <span data-i18n="sidebar.file_functions">Dateifunktionen</span>
+                    </a>
+
+                    <a href="#customization" class="list-group-item list-group-item-action" data-page="customization">
+                        <i class="bi bi-palette"></i>
+                        <span data-i18n="sidebar.customization">Anpassung</span>
+                    </a>
+
+                    <!-- Addons Toggle -->
+                    <a href="#" class="list-group-item list-group-item-action addon-toggle"
+                       id="addons-toggle" aria-expanded="false" aria-controls="addons-submenu">
+                        <i class="bi bi-puzzle"></i>
+                        <span data-i18n="sidebar.addons">Addons</span>
+                        <i class="bi bi-chevron-down addon-chevron ms-auto" aria-hidden="true"></i>
+                    </a>
+
+                    <div class="addon-submenu" id="addons-submenu" aria-hidden="true">
+
+                        <a href="#addons" class="list-group-item list-group-item-action addon-item" data-page="addons">
+                            <i class="bi bi-grid"></i>
+                            <span data-i18n="sidebar.addons_overview">Übersicht</span>
+                        </a>
+
+                        <span class="addon-submenu-header" data-i18n="sidebar.addons_builtin">Mitgeliefert</span>
+
+                        <a href="#addon-betting-game"  class="list-group-item list-group-item-action addon-item" data-page="addon-betting-game"><i class="bi bi-controller"></i> Tippspiel</a>
+                        <a href="#addon-newsticker"    class="list-group-item list-group-item-action addon-item" data-page="addon-newsticker"><i class="bi bi-rss"></i> Newsticker</a>
+                        <a href="#addon-mini-tables"   class="list-group-item list-group-item-action addon-item" data-page="addon-mini-tables"><i class="bi bi-table"></i> Minitabellen</a>
+                        <a href="#addon-mininext"      class="list-group-item list-group-item-action addon-item" data-page="addon-mininext"><i class="bi bi-calendar-event"></i> Mininext</a>
+                        <a href="#addon-player-stats"  class="list-group-item list-group-item-action addon-item" data-page="addon-player-stats"><i class="bi bi-person-lines-fill"></i> Spielerstatistik</a>
+                        <a href="#addon-viewer"        class="list-group-item list-group-item-action addon-item" data-page="addon-viewer"><i class="bi bi-eye"></i> Viewer</a>
+
+                        <span class="addon-submenu-header" data-i18n="sidebar.addons_extern">Externe Addons</span>
+
+                        <a href="#addon-club-schedule"    class="list-group-item list-group-item-action addon-item" data-page="addon-club-schedule"><i class="bi bi-calendar3-range"></i> Vereinsplan</a>
+                        <a href="#addon-team-comparison"  class="list-group-item list-group-item-action addon-item" data-page="addon-team-comparison"><i class="bi bi-arrows-collapse"></i> Teamvergleich</a>
+                        <a href="#addon-team-schedule"    class="list-group-item list-group-item-action addon-item" data-page="addon-team-schedule"><i class="bi bi-calendar3"></i> Teamplan</a>
+                        <a href="#addon-pdf-schedule"     class="list-group-item list-group-item-action addon-item" data-page="addon-pdf-schedule"><i class="bi bi-file-pdf"></i> PDF Spielplan</a>
+                        <a href="#addon-top-tipper"       class="list-group-item list-group-item-action addon-item" data-page="addon-top-tipper"><i class="bi bi-award"></i> Top Tipper</a>
+                        <a href="#addon-api"           class="list-group-item list-group-item-action addon-item" data-page="addon-api"><i class="bi bi-braces"></i> JSON-API</a>
+
+                    </div>
+
+                </div>
+            </nav>
+
+            <!-- Content Area -->
+            <article class="col-lg-9">
+                <div id="content" class="content-area">
+                    <!-- Content loaded here -->
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════ FOOTER -->
+    <footer class="bg-primary text-white py-4 mt-5">
+        <div class="container-lg">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2026 <a href="https://www.liga-manager-online.org/lmo/" class="text-white" target="_blank" rel="noopener">Liga Manager Online</a> · <a href="https://github.com/henshingly/lmo_php8" class="text-white" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.liga-manager-online.org/forum/viewforum.php?f=1" class="text-white" target="_blank" rel="noopener">Forum</a></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p data-i18n="footer.version">Version 4.0+</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/marked/marked.min.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- Close navbar on item click (mobile) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var navbarCollapse = document.getElementById('navbarNav');
+            var bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse, { toggle: false });
+
+            // Close the navbar only when a final destination is chosen:
+            // dropdown-items or direct nav-links that are NOT dropdown-toggles.
+            navbarCollapse.addEventListener('click', function (e) {
+                var link = e.target.closest('a, button');
+                if (!link) return;
+                // Skip dropdown toggles — they should open the submenu, not close the navbar
+                if (link.hasAttribute('data-bs-toggle') && link.getAttribute('data-bs-toggle') === 'dropdown') return;
+                // Skip the navbar-toggler itself
+                if (link.classList.contains('navbar-toggler')) return;
+                // Close for everything else (nav-links with data-page, dropdown-items)
+                if (link.hasAttribute('data-page') || link.classList.contains('dropdown-item')) {
+                    bsCollapse.hide();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "brand": {
+    "title": "LMO Help",
+    "page_title": "LMO - Help & Documentatie"
+  },
+  "nav": {
+    "home": "Home",
+    "docs": "Documentatie",
+    "getting_started": "Aan de slag",
+    "options": "Opties",
+    "edit_league": "Competitie bewerken",
+    "file_functions": "Bestandsfuncties",
+    "customization": "Aanpassen",
+    "addons": "Uitbreidingen",
+    "addons_overview": "Overzicht",
+    "addons_extern": "Externe uitbreidingen",
+    "docs_page": "Documentatie (overzicht)"
+  },
+  "sidebar": {
+    "home": "Home",
+    "getting_started": "Aan de slag",
+    "options": "Opties",
+    "edit_league": "Competitie bewerken",
+    "file_functions": "Bestandsfuncties",
+    "customization": "Aanpassen",
+    "addons": "Uitbreidingen",
+    "addons_overview": "Overzicht",
+    "addons_builtin": "Meegeleverd",
+    "addons_extern": "Externe uitbreidingen"
+  },
+  "footer": {
+    "version": "LMO 4 · PHP 8.2+"
+  },
+  "loading": "Laden...",
+  "fallback_notice": "Deze pagina is nog niet beschikbaar in de gekozen taal. De Duitse versie wordt getoond."
+}

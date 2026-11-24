@@ -663,3 +663,5 @@
 5010=Giorno di gioco
 5011=Sopra
 5012=Sotto
+5013=La cartella install esiste ancora. Dopo un aggiornamento avviare l'installazione dell'aggiornamento e poi eliminare la cartella (o impostare chmod 000).
+5014=Avvia l'installazione dell'aggiornamento
