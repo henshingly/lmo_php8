@@ -35,7 +35,7 @@ Via URL (iframe) of als include-variabelen kun je de volgende waarden meegeven:
 | `folder` | Archiefmap voor het zoeken naar eerdere wedstrijden. Tip: maak per competitie een eigen submap in plaats van alles direct in de archiefmap te zetten. |
 | `a` | Nummer van team A. Alleen nodig als in het competitiebestand geen favoriete ploeg is ingesteld. |
 | `b` | Nummer van de tegenstander. Niet nodig voor de volgende wedstrijd, alleen als een bepaalde ontmoeting moet worden getoond. |
-| `mininext_template` | Te gebruiken template. Zonder opgave: standaardtemplate. |
+| `mini_template` | Te gebruiken template. Zonder opgave: standaardtemplate. |
 
 ---
 

@@ -35,7 +35,7 @@ Per URL (IFrame) oder als include-Variable kannst du folgende Werte übergeben:
 | `folder` | Archivordner für die Suche nach Vorpartien. Tipp: Lege je Liga einen eigenen Unterordner an statt alles direkt im Archivordner abzulegen. |
 | `a` | Nummer von Mannschaft A. Nur nötig, wenn im Ligafile keine Lieblingsmannschaft eingestellt ist. |
 | `b` | Nummer des Gegners. Nicht nötig für die nächste Partie – nur wenn eine bestimmte Paarung angezeigt werden soll. |
-| `mininext_template` | Template, das verwendet werden soll. Ohne Angabe: Standardtemplate. |
+| `mini_template` | Template, das verwendet werden soll. Ohne Angabe: Standardtemplate. |
 
 ---
 
