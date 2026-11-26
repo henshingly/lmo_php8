@@ -35,7 +35,7 @@ Via l'URL (iframe) ou comme variables d'include, tu peux transmettre les valeurs
 | `folder` | Dossier d'archive pour rechercher des matchs précédents. Astuce : crée un sous-dossier distinct par ligue plutôt que de tout mettre directement dans le dossier d'archive. |
 | `a` | Numéro de l'équipe A. Nécessaire uniquement si aucune équipe favorite n'est définie dans le fichier de la ligue. |
 | `b` | Numéro de l'adversaire. Inutile pour le prochain match, seulement si une confrontation précise doit être affichée. |
-| `mininext_template` | Modèle à utiliser. Si omis : modèle par défaut. |
+| `mini_template` | Modèle à utiliser. Si omis : modèle par défaut. |
 
 ---
 

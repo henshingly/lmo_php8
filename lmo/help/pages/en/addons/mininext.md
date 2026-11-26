@@ -35,7 +35,7 @@ Via URL (iframe) or as include variables you can pass the following values:
 | `folder` | Archive folder for searching earlier matches. Tip: create a separate subfolder per league instead of putting everything directly into the archive folder. |
 | `a` | Number of team A. Only needed if no favourite team is set in the league file. |
 | `b` | Number of the opponent. Not needed for the next match, only if a specific pairing should be shown. |
-| `mininext_template` | Template to use. If omitted: default template. |
+| `mini_template` | Template to use. If omitted: default template. |
 
 ---
 

@@ -35,7 +35,7 @@ Mediante URL (iframe) o como variables de include puedes pasar los siguientes va
 | `folder` | Carpeta de archivo para buscar partidos anteriores. Consejo: crea una subcarpeta propia por liga en lugar de poner todo directamente en la carpeta de archivo. |
 | `a` | Número del equipo A. Solo es necesario si no hay equipo favorito en el archivo de la liga. |
 | `b` | Número del rival. No es necesario para el próximo partido, solo si se debe mostrar un enfrentamiento concreto. |
-| `mininext_template` | Plantilla a usar. Si se omite: plantilla predeterminada. |
+| `mini_template` | Plantilla a usar. Si se omite: plantilla predeterminada. |
 
 ---
 
