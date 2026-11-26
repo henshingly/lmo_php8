@@ -23,9 +23,13 @@ if ($file != '') {
         $daten = [''];
         $sekt = '';
 
-        $datei = file(PATH_TO_LMO . '/' . $dirliga . '/' . basename($file));
+        // Ligen können in Unterordnern von $dirliga liegen (z. B. dfb/12er-liga.l98). Der Ordner wird bereinigt (kein ../),
+        // die Datei ohne Pfadanteil angehängt.
+        $lmo_fn_dir = lmo_clean_subdir(dirname($file) === '.' ? '' : dirname($file));
+        $lmo_fn_path = PATH_TO_LMO . '/' . rtrim($dirliga, '/') . '/' . $lmo_fn_dir . basename($file);
+        $datei = is_file($lmo_fn_path) ? file($lmo_fn_path) : false;
         if ($datei) {
-            $stand = date($defdateformat, filemtime(PATH_TO_LMO . '/' . $dirliga . '/' . basename($file)));
+            $stand = date($defdateformat, filemtime($lmo_fn_path));
             $lmtype = 0;
             for ($tt = 0;$tt < count($datei);$tt++) {
                 $zeile = &$datei[$tt];
