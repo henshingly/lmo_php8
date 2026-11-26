@@ -34,3 +34,4 @@ Diese Addons gehören nicht zum Paket und werden separat heruntergeladen.
 | [PDF Spielplan](#addon-pdf-schedule) | Spielplan einer Liga als PDF |
 | [Top Tipper](#addon-top-tipper) | Erweiterung für das Tippspiel: aktueller Stand als Minitabelle |
 | [JSON-API und Liga-Ansicht](#addon-api) | Daten der Ligen als JSON-Schnittstelle und fertige Liga-Ansicht mit Designs für andere Seiten |
+| [ICS-Kalender](#addon-ics) | Spielplan einer Mannschaft als ICS-Datei oder Kalender-Abo (Google, Apple, Outlook, Thunderbird); Link in der Tabelle |

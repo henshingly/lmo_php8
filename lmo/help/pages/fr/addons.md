@@ -34,3 +34,4 @@ Ces addons ne font pas partie du paquet et se téléchargent séparément.
 | [Calendrier PDF](#addon-pdf-schedule) | Calendrier d'une ligue en PDF |
 | [Top Tipper](#addon-top-tipper) | Extension du jeu de pronostics : classement actuel sous forme de mini-classement |
 | [API JSON et vue de ligue](#addon-api) | Données des ligues sous forme d'interface JSON et de vue de ligue prête à l'emploi avec designs pour d'autres sites |
+| [Calendrier ICS](#addon-ics) | Matchs d'une équipe sous forme de fichier ICS ou d'abonnement de calendrier (Google, Apple, Outlook, Thunderbird) ; lien dans le classement |

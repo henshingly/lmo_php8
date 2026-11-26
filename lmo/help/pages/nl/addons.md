@@ -34,3 +34,4 @@ Deze add-ons horen niet bij het pakket en worden apart gedownload.
 | [PDF-speelschema](#addon-pdf-schedule) | Speelschema van een competitie als PDF |
 | [Top-voorspeller](#addon-top-tipper) | Uitbreiding voor het voorspellingsspel: actuele stand als minitabel |
 | [JSON-API en competitieweergave](#addon-api) | Competitiegegevens als JSON-interface en kant-en-klare competitieweergave met ontwerpen voor andere sites |
+| [ICS-agenda](#addon-ics) | Speelschema van een team als ICS-bestand of agenda-abonnement (Google, Apple, Outlook, Thunderbird); link in de tabel |

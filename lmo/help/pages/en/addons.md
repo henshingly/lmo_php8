@@ -34,3 +34,4 @@ These add-ons are not part of the package and are downloaded separately.
 | [PDF schedule](#addon-pdf-schedule) | Schedule of a league as PDF |
 | [Top tipper](#addon-top-tipper) | Extension for the betting game: current standings as a mini table |
 | [JSON API and league view](#addon-api) | League data as a JSON interface and a ready-made league view with designs for other sites |
+| [ICS calendar](#addon-ics) | A team's fixtures as an ICS file or calendar subscription (Google, Apple, Outlook, Thunderbird); link in the table |
