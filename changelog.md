@@ -17,6 +17,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 * Neues Übersetzungstool `lang/lmo-admintranslate.php` (ersetzt `lang/translate.php`).
 * Neue Sprachdateien für Viewer (7), Spielerstatistik (4) und Tippspiel (4), u. a. Italienisch, Ungarisch, Portugiesisch und Slowenisch. Sprachtexte zu "Tipps nachtragen" in `lang/tipp/` (14 Sprachen).
 * Die Seitensprache wird als ISO-Code im `<html lang>` ausgegeben. Ligatyp-Hinweis nennt jetzt Dart und Volleyball.
+* ICS-Kalender-Addon: Optionale Anbindung im Kern (Liga-Option `icsT`, Link in der Tabelle, Schalter in den Grundeinstellungen). Sie ist nur aktiv, wenn `addon/ics/lmo-ics.php` vorhanden ist.
 
 ### Changed
 * Adminbereich: Liegt nach einem Update per FTP noch der Ordner `install/`, erscheint unter der Warnung für den Voll-Admin der Button "Start update installation", der `install/install.php` startet.
@@ -47,6 +48,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 * `addon/tipp/lmo-tipppaintgraph.php`: GD-Grafik der Tipper-Fieberkurve, ersetzt durch Chart.js in `lmo-tippfieber.php`.
 * `lmo-paintgraph.php`: alte GD-Fieberkurve der Liga, wurde seit der Umstellung auf Chart.js (`lmo-showgraph.php`) nicht mehr aufgerufen.
 * Nicht mehr benötigt: `includes/FTP.php`, `includes/Socket.php`, `install/addon/tipp/lmo-tippauth.txt`, `addon/classlib/classes/pdf/` (alte ezPDF-Bibliothek), `css/bootstrap.min.css`, `js/bootstrap.min.js`, `lang/translate.php`, `js/colorpicker.js` (vom neuen Designeditor nicht mehr verwendet), die Grafiken `*_manual_copy.png`, `help/media/attention.gif` sowie die alten GIF/PNG-Icons.
+* `includes/Lite.php` und `includes/LiteOutput.php` (Cache_Lite): wurden nirgends eingebunden und laufen mit PHP 8 nicht (entfernte Funktion `set_magic_quotes_runtime`).
 
 ### Fixed
 * Tippspiel: Auf der Gesamtwertung ("Gesamt" unter "Punktestände anschauen") fehlte die Navigationsleiste mit dem Link zurück zur Übersicht, weil `$todo` ohne Liga-Datei zurückgesetzt wurde (`lmo-tippmain.php`, `lmo-tippauth.php`, `lmo-tippmenu.php`).
@@ -56,6 +58,9 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 * Viewer: `$all_teams` wird initialisiert.
 * Tippspiel (Tippabgabe in Ligen): Warnungen "Undefined variable $n" und "Uninitialized string offset" beim Spielbericht-Link behoben (`lmo-tippeditliga.php`).
 * Ligaliste: Sortierung nach Spieltag/Runde (`liga_sort=aktueller_spieltag`) erzeugte die Warnung "Undefined array key" und funktioniert jetzt (`lmo-dirlist.php`); unbekannte Sortierwerte werden ignoriert.
+* Hilfe: Der Parameter des Mini-Addons heißt `mini_template` (in allen 5 Hilfesprachen berichtigt).
+* Tippspiel: Hat ein Tipper für eine Liga keine Tipp-Datei, gibt es keine Warnung (`fopen`) und keinen Abbruch mehr.
+* Adminbereich: `todo=pdfoptions` ohne installiertes PDF-Addon bricht nicht mehr mit einem Fatal Error ab (`lmo-adminmain.php`).
 
 ### Security
 * Der Installer ist nach der Installation gesperrt (nur in der laufenden Installation oder für den angemeldeten Voll-Admin erreichbar); Pfad und URL werden geprüft und beim Schreiben von `config/init-parameters.php` korrekt maskiert.
@@ -80,6 +85,7 @@ _Hier hätten wir die Changelogs für 4.1.4._
 * Erstellung eines KO-Turniers mit 24 Teams möglich (neuer UEFA Modus Champions League, Europa League)
 * Erstellung eines Rückrundenspielplans in einer Liga hinzugefügt (thx [DwB](https://github.com/babbisch) and [webfalter](https://github.com/webfalter) for help)
 * Playoff Modus kann nun bei KO-Turnieren besser dargestellt und eingestellt werden ([Preview](https://www.vest-sport.de/forum/viewtopic.php?p=833#p833)).
+* ICS calendar addon: optional hooks in the core (league option `icsT`, link in the table, switch in the basic settings). They are only active if `addon/ics/lmo-ics.php` exists.
 
 
 ### Changed
@@ -98,6 +104,7 @@ _Hier hätten wir die Changelogs für 4.1.4._
 
 ### Removed
 * alte Dateien des Addons Limporter entfernt
+* `includes/Lite.php` and `includes/LiteOutput.php` (Cache_Lite): never included anywhere and not working with PHP 8 (removed function `set_magic_quotes_runtime`).
 
 
 ### Fixed
@@ -108,6 +115,9 @@ _Hier hätten wir die Changelogs für 4.1.4._
 * PHP-Warnings im Addon Tippspiel [#13](https://github.com/henshingly/lmo_php8/issues/13) >>thx [DwB](https://github.com/babbisch)
 * Fehler, wenn Passwörter Sonderzeichen wie '@!$' enthalten und diese dann in cfg-Dateien gespeichert werden (z.B. in einem FTP Zugang eines Addons). >>thx [DwB](https://github.com/babbisch)
 * diverse Fehler im Addon Tippspiel gefixt (Dank an alle Helfer)
+* Help: the parameter of the mini addon is called `mini_template` (corrected in all 5 help languages).
+* Prediction game: no warning (`fopen`) and no abort any more if a tipper has no tip file for a league.
+* Admin area: `todo=pdfoptions` without the PDF addon installed no longer ends in a fatal error (`lmo-adminmain.php`).
 
 
 ### Security
