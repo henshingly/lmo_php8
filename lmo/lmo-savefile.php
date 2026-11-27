@@ -95,6 +95,7 @@ if (($_SESSION['lmouserok'] == 2) || ($_SESSION['lmouserok'] == 1)) {
                 fputs($datei, 'DatF=' . $datf . "\n");
                 fputs($datei, 'urlT=' . $urlt . "\n");
                 fputs($datei, 'urlB=' . $urlb . "\n");
+                fputs($datei, 'icsT=' . (isset($icst) ? $icst : 0) . "\n");
                 fputs($datei, 'Plan=' . $plan . "\n");
                 fputs($datei, 'Ergebnis=' . $ergebnis . "\n");
                 fputs($datei, 'mittore=' . $mittore . "\n");

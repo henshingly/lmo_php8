@@ -65,6 +65,8 @@ if (!empty($file) && file_exists(PATH_TO_LMO . '/' . $dirliga . $file) && check_
                                 break;
                             case 'urlB':         $urlb = $wert;
                                 break;
+                            case 'icsT':         $icst = $wert;
+                                break;
                             case 'stats':        $stats = $wert;
                                 break;
                             case 'Plan':         $plan = $wert;
@@ -240,6 +242,9 @@ if (!empty($file) && file_exists(PATH_TO_LMO . '/' . $dirliga . $file) && check_
             }
             if (!isset($urlb)) {
                 $urlb = 0;
+            }
+            if (!isset($icst)) {
+                $icst = 0;
             }
             if (!isset($stats)) {
                 $stats = 0;

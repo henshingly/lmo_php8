@@ -86,6 +86,9 @@ if ($file != '') {
                     }
                     $urlt = isset($_POST['xurlt']) ? 1 : 0;
                     $urlb = isset($_POST['xurlb']) ? 1 : 0;
+                    if (is_file(PATH_TO_ADDONDIR . '/ics/lmo-ics.php')) {
+                        $icst = isset($_POST['xicst']) ? 1 : 0;
+                    }
                 }
                 break;
             case 3:
@@ -499,6 +502,14 @@ if ($file != '') {
                         }?>></td>
                         <td class="nobr" align="left"><acronym title="<?php echo $text[266]; ?>"><?php echo $text[265]; ?></acronym></td>
                       </tr>
+<?php if (is_file(PATH_TO_ADDONDIR . '/ics/lmo-ics.php')) { ?>
+                      <tr>
+                        <td class="nobr" align="right"><input type="checkbox" class="lmo-formular-input" name="xicst" onChange="dolmoedit()"<?php if (!empty($icst)) {
+                            echo ' checked';
+                        }?>></td>
+                        <td class="nobr" align="left"><acronym title="<?php echo $text['ics'][23] ?? ''; ?>"><?php echo $text['ics'][22] ?? 'ICS'; ?></acronym></td>
+                      </tr>
+<?php } ?>
 <?php
         }
         if ($lmtype == 1) { ?>

@@ -199,6 +199,11 @@ for ($x = 1; $x <= $anzteams; $x++) {
     echo $dummy . $teams[$i] . $dumm2;
     if (($teamu[$i] != '') && ($urlt == 1)) { ?>
         <a href="<?php echo $teamu[$i]; ?>" target="_blank"><img border="0" title="<?php echo $text[46]; ?>" width="11" src="<?php echo URL_TO_IMGDIR . '/url.svg'; ?>" alt="<?php echo $text[564]?>"></a><?php
+    }
+    if (!empty($icst) && is_file(PATH_TO_ADDONDIR . '/ics/lmo-ics.php')) {
+        $lmo_ics_lang = (isset($lmouserlang) && is_file(PATH_TO_LANGDIR . '/ics/lang-' . $lmouserlang . '.txt')) ? $lmouserlang : $deflang;
+        $lmo_ics_link = URL_TO_ADDONDIR . '/ics/lmo-ics.php?' . http_build_query(['ics_liga' => $file, 'ics_team' => $i, 'ics_lang' => $lmo_ics_lang], '', '&amp;', PHP_QUERY_RFC3986); ?>
+        <a href="<?php echo $lmo_ics_link; ?>" target="_blank"><img border="0" title="<?php echo htmlspecialchars($text['ics'][24] ?? 'ICS', ENT_QUOTES, 'UTF-8'); ?>" width="11" src="<?php echo URL_TO_IMGDIR . '/ics.svg'; ?>" alt="ICS"></a><?php
     } ?></td>
     <td class="<?php echo $lmo_tabelle_class; ?>" style="width:2px;">&nbsp;</td>
     <td class="<?php echo $lmo_tabelle_class; ?>"><?php

@@ -121,6 +121,7 @@ if ($newpage == 3) {
     $enablegamesort = '1';
     $urlt = '1';
     $urlb = '1';
+    $icst = '1';
     $favteam = '0';
     $selteam = '0';
     $mittore = '1';
