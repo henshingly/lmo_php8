@@ -246,7 +246,7 @@ if ($action == 'admin') {
             } elseif ($todo == 'vieweroptions') {
                 /*Viewer-Addon*/
                 require(PATH_TO_ADDONDIR . '/viewer/lmo-adminvieweroptions.php');
-            } elseif ($todo == 'pdfoptions') {
+            } elseif ($todo == 'pdfoptions' && file_exists(PATH_TO_ADDONDIR . '/pdf/lmo-adminpdfoptions.inc.php')) {
                 /*PDF-Addon*/
                 require(PATH_TO_ADDONDIR . '/pdf/lmo-adminpdfoptions.inc.php');
             } elseif ($todo == '') {
