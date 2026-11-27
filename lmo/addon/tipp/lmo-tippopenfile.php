@@ -28,25 +28,25 @@ $tippdaten = [];
 $sekt = '';
 $jkwert = '';
 $jksp = '';
-$datei = fopen($tippfile, 'rb');
-if ($datei == false) {
-    exit;
-}
-while (!feof($datei)) {
-    $zeile = fgets($datei, 1000);
-    $zeile = trim($zeile);
-    if ((substr($zeile, 0, 1) == '@') && (substr($zeile, -1) == '@')) {
-        $jkwert = trim(substr($zeile, 1, -1));
-    } elseif ((substr($zeile, 0, 1) == '[') && (substr($zeile, -1) == ']')) {
-        $sekt = trim(substr($zeile, 1, -1));
-    } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
-        //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
-        $schl = trim(substr($zeile, 0, strpos($zeile, '=')));
-        $wert = trim(substr($zeile, strpos($zeile, '=') + 1));
-        array_push($tippdaten, $sekt . '|' . $schl . '|' . $wert . '|' . $jkwert . '|EOL');
+// A tipper without a tip file for this league simply has no tips yet.
+$datei = is_file($tippfile) ? fopen($tippfile, 'rb') : false;
+if ($datei !== false) {
+    while (!feof($datei)) {
+        $zeile = fgets($datei, 1000);
+        $zeile = trim($zeile);
+        if ((substr($zeile, 0, 1) == '@') && (substr($zeile, -1) == '@')) {
+            $jkwert = trim(substr($zeile, 1, -1));
+        } elseif ((substr($zeile, 0, 1) == '[') && (substr($zeile, -1) == ']')) {
+            $sekt = trim(substr($zeile, 1, -1));
+        } elseif ((str_contains($zeile, '=')) && (substr($zeile, 0, 1) != ';')) {
+            //elseif ((strpos($zeile, "=") != false) && (substr($zeile, 0, 1) != ";")) {
+            $schl = trim(substr($zeile, 0, strpos($zeile, '=')));
+            $wert = trim(substr($zeile, strpos($zeile, '=') + 1));
+            array_push($tippdaten, $sekt . '|' . $schl . '|' . $wert . '|' . $jkwert . '|EOL');
+        }
     }
+    fclose($datei);
 }
-fclose($datei);
 
 if ($lmtype == 0) {
     $goaltippa = array_pad(['_'], $anzsp + 1, '_');
