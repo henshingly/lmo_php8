@@ -17,6 +17,69 @@
   *
   */
 
+/**
+ * Change of the place of each tipster compared to the situation before the last
+ * matchday with tips. Places are counted by points only, tipsters with equal points
+ * share a place. Positive values mean a better place, negative a worse place.
+ * Tipsters without tips before the last matchday get no entry.
+ *
+ * @param int   $anztipper          number of tipsters
+ * @param array $spielegetippt      tipped games per tipster and matchday
+ * @param array $tipppunkte         points per tipster and matchday
+ * @param array $tipppunktegesamt   total points per tipster
+ * @return array
+ */
+if (!function_exists('lmoTippTrend')) {
+    function lmoTippTrend($anztipper, $spielegetippt, $tipppunkte, $tipppunktegesamt)
+    {
+        $trend = [];
+        $lastRound = -1;
+        for ($i = 0; $i < $anztipper; $i++) {
+            foreach ((array)($spielegetippt[$i] ?? []) as $round => $games) {
+                if ($games > 0 && $round > $lastRound) {
+                    $lastRound = (int)$round;
+                }
+            }
+        }
+        if ($lastRound < 1) {
+            return $trend;
+        }
+        $before = [];
+        for ($i = 0; $i < $anztipper; $i++) {
+            $played = 0;
+            $points = 0;
+            foreach ((array)($tipppunkte[$i] ?? []) as $round => $value) {
+                if ($round < $lastRound) {
+                    $points += (int)$value;
+                }
+            }
+            foreach ((array)($spielegetippt[$i] ?? []) as $round => $games) {
+                if ($round < $lastRound) {
+                    $played += (int)$games;
+                }
+            }
+            $before[$i] = $played > 0 ? $points : null;
+        }
+        for ($i = 0; $i < $anztipper; $i++) {
+            if ($before[$i] === null) {
+                continue;
+            }
+            $placeBefore = 1;
+            $placeNow = 1;
+            for ($j = 0; $j < $anztipper; $j++) {
+                if ($before[$j] !== null && $before[$j] > $before[$i]) {
+                    $placeBefore++;
+                }
+                if ($tipppunktegesamt[$j] > $tipppunktegesamt[$i]) {
+                    $placeNow++;
+                }
+            }
+            $trend[$i] = $placeBefore - $placeNow;
+        }
+        return $trend;
+    }
+}
+
 //$endtab        = isset($_REQUEST['endtab'])        ? $_REQUEST['endtab']                : '';
 if ($endtab == 0) {
     if (isset($anzst)) {
@@ -89,6 +152,14 @@ $platz0 = array_pad([], $anztipper + 1, '');
 for ($x = 0; $x < $anztipper; $x++) {
     $x3 = intval(substr($tab0[$x], -7));
     $platz0[$x3] = $x + 1;
+}
+
+// Overview of the whole season: show the change since the last matchday
+$trendAktiv = false;
+$trendDaten = [];
+if ($tabdat == '' && $all != 1 && $stwertmodus == 'bis' && ($wertung == 'einzel' || $wertung == 'intern') && isset($tipppunkte, $spielegetippt, $tipppunktegesamt)) {
+    $trendDaten = lmoTippTrend($anztipper, $spielegetippt, $tipppunkte, $tipppunktegesamt);
+    $trendAktiv = true;
 }
 
 if ($tabdat == '') {
@@ -378,7 +449,14 @@ for ($x = 1; $x <= $anztipper; $x++) {
                         $y = 2;
                     }
                 }
-                if ($tabdat != '' && $stwertmodus != 'nur') {
+                if ($trendAktiv) {
+                    if (isset($trendDaten[$i]) && $trendDaten[$i] > 0) {
+                        $y = 1;
+                    } elseif (isset($trendDaten[$i]) && $trendDaten[$i] < 0) {
+                        $y = 2;
+                    }
+                }
+                if (($tabdat != '' && $stwertmodus != 'nur') || $trendAktiv) {
                     echo '<td class="' . $dumm1 . '"';
                     echo "><img src='" . URL_TO_IMGDIR . '/lmo-tab' . $y . ".svg' width=\"9\" height=\"9\" border=\"0\" alt=''>";
                     echo '</td>';

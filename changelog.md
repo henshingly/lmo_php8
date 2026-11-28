@@ -18,6 +18,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 * Neue Sprachdateien für Viewer (7), Spielerstatistik (4) und Tippspiel (4), u. a. Italienisch, Ungarisch, Portugiesisch und Slowenisch. Sprachtexte zu "Tipps nachtragen" in `lang/tipp/` (14 Sprachen).
 * Die Seitensprache wird als ISO-Code im `<html lang>` ausgegeben. Ligatyp-Hinweis nennt jetzt Dart und Volleyball.
 * ICS-Kalender-Addon: Optionale Anbindung im Kern (Liga-Option `icsT`, Link in der Tabelle, Schalter in den Grundeinstellungen). Sie ist nur aktiv, wenn `addon/ics/lmo-ics.php` vorhanden ist.
+* Tippspiel: Die Wertung der ganzen Saison zeigt jetzt Pfeile für die Platzänderung seit dem letzten Spieltag (bisher nur bei gewähltem Spieltag) (`lmo-tippwert.php`).
 
 ### Changed
 * Adminbereich: Liegt nach einem Update per FTP noch der Ordner `install/`, erscheint unter der Warnung für den Voll-Admin der Button "Start update installation", der `install/install.php` startet.
@@ -87,6 +88,7 @@ _Hier hätten wir die Changelogs für 4.1.4._
 * Erstellung eines Rückrundenspielplans in einer Liga hinzugefügt (thx [DwB](https://github.com/babbisch) and [webfalter](https://github.com/webfalter) for help)
 * Playoff Modus kann nun bei KO-Turnieren besser dargestellt und eingestellt werden ([Preview](https://www.vest-sport.de/forum/viewtopic.php?p=833#p833)).
 * ICS calendar addon: optional hooks in the core (league option `icsT`, link in the table, switch in the basic settings). They are only active if `addon/ics/lmo-ics.php` exists.
+* Prediction game: the ranking of the whole season now shows arrows for the change of the place since the last matchday (before this only for a selected matchday) (`lmo-tippwert.php`).
 
 
 ### Changed
