@@ -61,6 +61,7 @@ _Hier schreiben wir Changelog Hinweise der nächsten Version._
 * Hilfe: Der Parameter des Mini-Addons heißt `mini_template` (in allen 5 Hilfesprachen berichtigt).
 * Tippspiel: Hat ein Tipper für eine Liga keine Tipp-Datei, gibt es keine Warnung (`fopen`) und keinen Abbruch mehr.
 * Adminbereich: `todo=pdfoptions` ohne installiertes PDF-Addon bricht nicht mehr mit einem Fatal Error ab (`lmo-adminmain.php`).
+* Tippspiel: Warnungen "Undefined variable $platz1" in der Wertung (Spieltag 1 und Gesamtwertung), wenn keine Vergleichsplatzierung berechnet wurde; der Platzierungspfeil entfällt dann (`lmo-tippwert.php`).
 
 ### Security
 * Der Installer ist nach der Installation gesperrt (nur in der laufenden Installation oder für den angemeldeten Voll-Admin erreichbar); Pfad und URL werden geprüft und beim Schreiben von `config/init-parameters.php` korrekt maskiert.
@@ -118,6 +119,7 @@ _Hier hätten wir die Changelogs für 4.1.4._
 * Help: the parameter of the mini addon is called `mini_template` (corrected in all 5 help languages).
 * Prediction game: no warning (`fopen`) and no abort any more if a tipper has no tip file for a league.
 * Admin area: `todo=pdfoptions` without the PDF addon installed no longer ends in a fatal error (`lmo-adminmain.php`).
+* Prediction game: warnings "Undefined variable $platz1" in the ranking (matchday 1 and overall ranking) when no previous ranking was calculated; the rank arrow is omitted then (`lmo-tippwert.php`).
 
 
 ### Security

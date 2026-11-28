@@ -52,6 +52,8 @@ if ($tipp_anzseite1 < 1) {
     $tipp_anzseite1 = 40;
 }
 
+// Previous ranking (before the last matchday); stays null if it is not calculated
+$platz1 = null;
 if ($endtab > 1 && $tabdat != '' && $stwertmodus != 'nur') {
     $endtab--;
     if ($wertung == 'einzel' || $wertung == 'intern') {
@@ -369,7 +371,7 @@ for ($x = 1; $x <= $anztipper; $x++) {
               }?>
           &nbsp;</td><?php
               $y = 0;
-                if (($endtab > 1) && ($tabdat != '') && $tipppunktegesamt[intval(substr($tab0[0], -7))] > 0 && $stwertmodus != 'nur') {
+                if (is_array($platz1) && ($endtab > 1) && ($tabdat != '') && $tipppunktegesamt[intval(substr($tab0[0], -7))] > 0 && $stwertmodus != 'nur') {
                     if ($platz0[$i] < $platz1[$i]) {
                         $y = 1;
                     } elseif ($platz0[$i] > $platz1[$i]) {
